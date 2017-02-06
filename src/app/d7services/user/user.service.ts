@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { MainService } from '../main/main.service';
+import * as globals from '../globals';
 
 @Injectable()
 export class UserService {
@@ -8,19 +9,19 @@ export class UserService {
   constructor(private mainService: MainService) {}
 
   getUser(userId): Observable<any>{
-    return this.mainService.get('/api/user/' + userId).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.get(globals.endpoint + '/user/' + userId).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   createUser(user): Observable<any>{
-    return this.mainService.post('/api/user/register', user).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.post(globals.endpoint + '/user/register', user).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   deleteUser(userId): Observable<any>{
-    return this.mainService.delete('/api/user/' + userId).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.delete(globals.endpoint + '/user/' + userId).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   updateUser(user): Observable<any>{
-    return this.mainService.put('/api/user/' + user.uid, user).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.put(globals.endpoint + '/user/' + user.uid, user).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   login(username, password): Observable<any>{
@@ -37,17 +38,11 @@ export class UserService {
 
   resetPassword(nameOrEmail): Observable<any>{
     var body = {"name": nameOrEmail};
-    return this.mainService.post('/api/user/request_new_password', body).map(response => response.json());
+    return this.mainService.post(globals.endpoint + '/user/request_new_password', body).map(response => response.json());
   }
 
-  logout(): void{
-    this.mainService.post('/api/user/logout', null).map(response => response.json()).subscribe(data => {
-      this.mainService.removeCookies();
-      console.log('logged out');
-
-    }, err => {
-      console.log(err);
-    });
+  logout(): Observable<any>{
+    return this.mainService.post(globals.endpoint + '/user/logout', null).map(response => response.json()).subscribe();
   }
 
   getStatus(session: string, token: string): Observable<any> {

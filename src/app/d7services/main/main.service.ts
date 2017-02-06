@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService } from 'angular2-cookie/core';
+import * as globals from '../globals';
+
 
 @Injectable()
 export class MainService {
 
-  private serviceURL: string = "http://localhost:81";
+  private serviceURL: string = globals.domain;
 
   constructor(private http: Http, private cookieService: CookieService) { }
 

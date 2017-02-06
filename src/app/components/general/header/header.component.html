@@ -30,9 +30,15 @@
       <li><a href="#"><i class="fa fa-lg fa-search"></i></a></li>
     </ul>
     <ul class="list-unstyled login-block">
-      <li><a class="btn btn-blue" data-toggle="modal"  data-target="#joinus-modal">Join</a></li>
-      <li><a class="btn btn-transparent" data-toggle="modal" data-target="#LoginModal">Log in</a></li>
+      <div *ngIf="isLoggedIn">
+        <span>Hello User</span>
+        <li><a class="btn btn-blue" (click)="Logout($event)">Logout</a></li>
+      </div>
+      <div *ngIf="!isLoggedIn">
+        <li><a class="btn btn-blue" data-toggle="modal"  data-target="#joinus-modal">Join</a></li>
+        <li><a class="btn btn-transparent" data-toggle="modal" data-target="#LoginModal">Log in</a></li>
+      </div>
     </ul>
     <!-- Include login modal in the header -->
-    <app-login></app-login>    
+    <app-login></app-login>
 </header>
