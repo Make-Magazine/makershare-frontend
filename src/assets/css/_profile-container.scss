@@ -1,0 +1,33 @@
+.profile-container{
+        padding: 15px 30px;
+        width:330px;
+        float: left;
+        font-size: 13px;
+        /* display: inline-block; */
+        .profile-card{
+            background-color: $white;
+            padding: 10px 0;
+            overflow: hidden;
+            border:1px solid $light-grey*0.8;
+            max-height: 320px;
+            /* width: 320px; */
+            .left{
+                max-width: 150px;
+                img,a{display: block;}
+                a{margin: 10px 0 0;padding: 8px 0;max-width: 140px}
+                img {max-width: 100%;}
+            }
+            .right{
+                max-width: 165px;
+                /* display: flex;
+                flex-direction: column; */
+                h3.profile-name {
+                    margin-top: 0;
+                }
+                .user-tag 
+                .user-city {
+                }
+            }
+        }
+        .user-role {font-size:16px;margin-top: 15px;margin-left: -15px;}
+    }

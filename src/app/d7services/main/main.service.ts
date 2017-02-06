@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
-import { CookieService } from 'angular2-cookie/core';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Injectable()
 export class MainService {

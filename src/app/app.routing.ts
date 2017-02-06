@@ -1,9 +1,12 @@
 import { RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./components/home/home.component";
+import { ProfileComponent } from "./components/account/profile/profile.component";
 
 const APP_ROUTES: Routes = [
-    // { path: 'user/:id', component: UserComponent },
+   { path: '', component: HomeComponent },
+   { path: 'user', component: ProfileComponent },
     // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
-    // { path: '', component: HomeComponent },
+
     // { path: '**', redirectTo: '/user/1', pathMatch: 'full' }
 ];
 

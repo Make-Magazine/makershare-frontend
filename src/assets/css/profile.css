@@ -1,0 +1,65 @@
+#joinus-modal .modal-dialog {
+  width: 440px;
+  margin-top: 150px; }
+  #joinus-modal .modal-dialog .modal-content {
+    height: 230px;
+    padding: 5px 10px;
+    border-radius: 0; }
+    #joinus-modal .modal-dialog .modal-content .modal-header {
+      border-bottom: none; }
+    #joinus-modal .modal-dialog .modal-content .modal-body {
+      padding: 0; }
+      #joinus-modal .modal-dialog .modal-content .modal-body h4 {
+        padding: 0;
+        margin: 0;
+        font-size: 25px; }
+    #joinus-modal .modal-dialog .modal-content .btn-blue {
+      width: 100%;
+      border-radius: 0;
+      margin: 20px 0;
+      font-size: 18px; }
+    #joinus-modal .modal-dialog .modal-content p {
+      text-align: center;
+      color: #888; }
+
+.profile-cover .cover-image {
+  min-height: 150px; }
+.profile-cover .profile-name {
+  width: 100%;
+  background-color: #000;
+  min-height: 35px;
+  padding-top: 10px; }
+  .profile-cover .profile-name h4 {
+    display: inline; }
+    .profile-cover .profile-name h4 span {
+      margin-left: 10%; }
+  .profile-cover .profile-name .bookmark {
+    display: flex;
+    right: 0; }
+    .profile-cover .profile-name .bookmark li {
+      display: inline-block; }
+      .profile-cover .profile-name .bookmark li i {
+        color: #888; }
+
+.profile-sidebar {
+  background-color: #ddd;
+  position: relative; }
+  .profile-sidebar .profile-group {
+    width: 230px;
+    /* position: absolute;
+    top: -70%;
+    left: 25%; */ }
+    .profile-sidebar .profile-group .btn {
+      width: 100%; }
+  .profile-sidebar .profile-container {
+    padding: 15px 30px;
+    width: 100%;
+    /* float: left; */
+    font-size: 13px;
+    padding-top: 10%; }
+    .profile-sidebar .profile-container > ul, .profile-sidebar .profile-container > div {
+      border-bottom: 1px solid #888; }
+    .profile-sidebar .profile-container .profile-info {
+      margin-top: 30px; }
+
+/*# sourceMappingURL=profile.css.map */

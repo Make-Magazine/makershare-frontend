@@ -1,0 +1,109 @@
+
+/* Start Making menu always hambruger icon */
+.navbar-header {
+    float: none;
+}
+
+.navbar-left, .navbar-right {
+    float: none !important;
+}
+
+.navbar-toggle {
+    display: block;
+}
+
+.navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+
+.navbar-collapse.collapse {
+    display: none !important;
+}
+
+.navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+}
+
+.navbar-nav > li {
+    float: none;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.collapse.in {
+    display: block !important;
+}
+/* End Making menu always hambruger icon */
+.main-header {
+    #navbar {
+                display: none;
+                position: absolute;
+                z-index: 999;
+                background-color: $white;
+                top: 51px;
+                border: 1px solid $main-grey;
+                border-top: none;
+                box-shadow: 1px 9px 19px 0px #222;
+                overflow: hidden;
+                min-width: 500px;
+                padding: 20px;
+                .intel-sites,.maker-sites {
+                    float: left !important;
+                    width: 50%;
+                    a {
+                        color: $main-grey*0.5;
+                    }
+                    a.greyed {color: $main-grey;}
+                }
+                .intel-sites {
+                    li:nth-child(2){
+                        margin-bottom: 80px;
+                    }
+
+                }
+                .maker-sites {
+                    li:nth-child(-n+4){
+                        border-left: 1px solid $main-grey;
+                    }
+                    li {
+                        padding: 0 0 0 15px;
+                    }
+                }
+                
+            }
+        .navbar {
+            border: none;
+            padding: 0;
+            margin: 0;
+            min-height: 0;
+            display: block;
+            position: relative;
+            
+
+            .navbar-toggle {
+                padding: 0;
+                margin: 0;
+
+                i {
+                    color: $main-grey;
+                    background-color: transparent;
+                    padding:11px 15px;
+
+                    &:hover {
+                        color: $white;
+                        background-color: $main-grey;
+                    }
+                }
+            }
+        }
+}

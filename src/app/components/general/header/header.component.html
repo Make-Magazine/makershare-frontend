@@ -1,3 +1,38 @@
-<p>
-  header works!
-</p>
+<header class="container-fluid main-header">
+  <nav class="navbar">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span><i class="fa fa-2x fa-bars"></i></span>
+      </button>
+    </div>
+    <div id="navbar" class="">
+      <ul class="nav navbar-nav intel-sites">
+        <li><a href="#">The Maker Movement</a></li>
+        <li><a href="#">Intel + Make</a></li>
+        <li><a href="#" class="greyed">About Badges</a></li>
+        <li><a href="#" class="greyed">Terms of Use</a></li>
+      </ul>
+      <ul class="nav navbar-nav maker-sites">
+        <li><a href="#" class="greyed">Other Sites</a></li>
+        <li><a href="#">Makezine</a></li>
+        <li><a href="#">Maker Faire</a></li>
+        <li><a href="#">Makers.Intel.com</a></li>
+        <li><a href="#">Maker Camp</a></li>
+        <li><a href="#">Intel Innovation Programs</a></li>
+      </ul>
+      </div><!--/.nav-collapse -->
+    </nav>
+    <ul class="list-unstyled explore">
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Challenges</a></li>
+      <li><a href="#">Learn</a></li>
+      <li><a href="#"><i class="fa fa-lg fa-search"></i></a></li>
+    </ul>
+    <ul class="list-unstyled login-block">
+      <li><a class="btn btn-blue" data-toggle="modal"  data-target="#joinus-modal">Join</a></li>
+      <li><a class="btn btn-transparent" data-toggle="modal" data-target="#LoginModal">Log in</a></li>
+    </ul>
+    <!-- Include login modal in the header -->
+    <app-login></app-login>    
+</header>
