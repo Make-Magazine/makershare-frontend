@@ -42,7 +42,7 @@ export class UserService {
   }
 
   logout(): Observable<any>{
-    return this.mainService.post(globals.endpoint + '/user/logout', null).map(response => response.json()).subscribe();
+    return this.mainService.post(globals.endpoint + '/user/logout', null).map(response => response.json());
   }
 
   getStatus(session: string, token: string): Observable<any> {

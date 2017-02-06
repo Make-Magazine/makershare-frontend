@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/account/profile/profile.component
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
+import { ExploreComponent } from './components/explore/explore.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UserService } from './d7services/user/user.service';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,

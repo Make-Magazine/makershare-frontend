@@ -22,10 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   Logout(event){
-    console.log(event);
-    this.userService.logout().subscribe();
-
-    this.router.navigate(['']);
+    this.userService.logout().subscribe(res => {
+        console.log(res);
+        this.isLoggedIn = false;
+        this.router.navigate(['']);
+    });
   }
 
 }

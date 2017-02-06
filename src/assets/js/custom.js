@@ -1,6 +1,7 @@
 $(window).bind("load resize slid.bs.carousel", function() {
   var imageHeight = $(".active .holder").height();
   $(".controllers").height( imageHeight );
+  console.log("Slid");
 });
 $(document).ready(function() {
 	 $(' .contributers').slick({
@@ -21,14 +22,15 @@ $(document).ready(function() {
 			slidesToShow: 1,
 			arrows:false,
 		}
-			,200)
+			,200) 
 	  });
 	});
 	$('.navbar-header button,#navbar').hover(function() {
 		$('#navbar').show();
-		setTimeout(function(){},200);
+		setTimeout(function(){},200);			
 	}, function() {
 
 			$('#navbar').hide();
 	});
 });
+

@@ -24,14 +24,16 @@
       </div><!--/.nav-collapse -->
     </nav>
     <ul class="list-unstyled explore">
-      <li><a href="#">Explore</a></li>
+
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['explore']">Explore</a></li>
       <li><a href="#">Challenges</a></li>
       <li><a href="#">Learn</a></li>
       <li><a href="#"><i class="fa fa-lg fa-search"></i></a></li>
     </ul>
     <ul class="list-unstyled login-block">
       <div *ngIf="isLoggedIn">
-        <span>Hello User</span>
+        <li><a class="btn btn-blue" [routerLink]="['/user']">Profile</a></li>
         <li><a class="btn btn-blue" (click)="Logout($event)">Logout</a></li>
       </div>
       <div *ngIf="!isLoggedIn">
