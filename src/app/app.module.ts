@@ -16,6 +16,7 @@ import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ProjectsComponent } from './components/account/profile/projects/projects.component';
+import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProjectsComponent } from './components/account/profile/projects/project
     LoginComponent,
     ProfileComponent,
     ExploreComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ChallengesComponent
   ],
   imports: [
     BrowserModule,

@@ -5,50 +5,19 @@
              <header class="explore-header">
                <h3>What kind of projects are you interested in?</h3>
                <ul class="list-unstyled explore-tags">
-                 <li><a href="#" class="btn btn-grey" id="arts-sub">Arts &amp; Crafts</a></li>
-                 <li><a href="#" class="btn btn-grey" id="technology-sub">Technology</a></li>
-                 <li><a href="#" class="btn btn-grey" id="workshop-sub">Workshop</a></li>
-                 <li><a href="#" class="btn btn-grey" id="things-sub">Things That Move</a></li>
-                 <li><a href="#" class="btn btn-grey" id="world-sub">Home &amp; The World</a></li>
+
+                 <li *ngFor="let parent of categories"><a class="btn btn-grey" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
+
                </ul>
                <div class="submenus">
-                 <ul class="list-unstyled arts-sub">
-                   <li><a href="#" class="btn btn-grey">3D Imaging</a></li>
-                   <li><a href="#" class="btn btn-grey">Technology</a></li>
-                   <li><a href="#" class="btn btn-grey">Workshop</a></li>
-                   <li><a href="#" class="btn btn-grey">Fabrication</a></li>
-                   <li><a href="#" class="btn btn-grey">Robotics</a></li>
+
+
+                 <ul *ngFor="let parent of categories" class="list-unstyled parent_{{parent.tid}}">
+
+                   <li *ngFor="let term of parent.children"><a (click)="projectsById($event)" class="btn btn-grey" data-id="{{term.tid}}">{{term.name}}</a></li>
+
                  </ul>
-                 <ul class="list-unstyled technology-sub">
-                   <li><a href="#" class="btn btn-grey">Arts &amp; Crafts</a></li>
-                   <li><a href="#" class="btn btn-grey">Technology</a></li>
-                   <li><a href="#" class="btn btn-grey">Workshop</a></li>
-                   <li><a href="#" class="btn btn-grey">CNC</a></li>
-                   <li><a href="#" class="btn btn-grey">Home &amp; The World</a></li>
-                 </ul>
-                 <ul class="list-unstyled workshop-sub">
-                   <li><a href="#" class="btn btn-grey">3D Imaging</a></li>
-                   <li><a href="#" class="btn btn-grey">3D Printing</a></li>
-                   <li><a href="#" class="btn btn-grey">CNC</a></li>
-                   <li><a href="#" class="btn btn-grey">Fabrication</a></li>
-                   <li><a href="#" class="btn btn-grey">Laser Cutting</a></li>
-                   <li><a href="#" class="btn btn-grey">Robotics</a></li>
-                   <li><a href="#" class="btn btn-grey">Woodworking</a></li>
-                 </ul>
-                 <ul class="list-unstyled things-sub">
-                   <li><a href="#" class="btn btn-grey">3D Printing</a></li>
-                   <li><a href="#" class="btn btn-grey">Fabrication</a></li>
-                   <li><a href="#" class="btn btn-grey">Robotics</a></li>
-                   <li><a href="#" class="btn btn-grey">Things That Move</a></li>
-                   <li><a href="#" class="btn btn-grey">CNC</a></li>
-                 </ul>
-                 <ul class="list-unstyled world-sub">
-                   <li><a href="#" class="btn btn-grey">Arts &amp; Crafts</a></li>
-                   <li><a href="#" class="btn btn-grey">Technology</a></li>
-                   <li><a href="#" class="btn btn-grey">Workshop</a></li>
-                   <li><a href="#" class="btn btn-grey">Things That Move</a></li>
-                   <li><a href="#" class="btn btn-grey">Home &amp; The World</a></li>
-                 </ul>
+
                </div>
              </header><!--/header -->
              <div class="filters container-fluid">
@@ -78,126 +47,18 @@
              </div><!-- End filters -->
              <div class="container-fluid">
                <div class="projects-grid row">
-                 <div class="col-md-3">
+
+                 <div *ngFor="let project of projects" class="col-md-3">
                    <div class="project">
                      <div class="project-title">
-                       <p>Flaming Simon</p>
+                       <p>{{project.title}}</p>
                      </div>
                      <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
+                       <img src="{{project.cover}}" alt="" class="img-responsive">
                      </div>
                    </div>
                  </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Xylobot - They Might Be Giants Version</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/XyloBot.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>LEMUR-tron</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/LEMUR.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Xylobot - They Might Be Giants Version</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/XyloBot.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>LEMUR-tron</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/LEMUR.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-3">
-                   <div class="project">
-                     <div class="project-title">
-                       <p>Flaming Simon</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="./assets/images/flaming-simon.jpg" alt="" class="img-responsive">
-                     </div>
-                   </div>
-                 </div>
+
                </div>
              </div>
              <div class="col-xs-4 col-xs-offset-4 load-more">
