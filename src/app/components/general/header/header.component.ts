@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userService.isLogedIn().subscribe(res => {
-      console.log(res);
       if(res == true){
         this.isLoggedIn = true;
       }
@@ -23,7 +22,6 @@ export class HeaderComponent implements OnInit {
 
   Logout(event){
     this.userService.logout().subscribe(res => {
-        console.log(res);
         this.isLoggedIn = false;
         this.router.navigate(['']);
     });

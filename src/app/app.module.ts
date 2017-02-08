@@ -13,7 +13,9 @@ import { ProfileComponent } from './components/account/profile/profile.component
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
+import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
+import { ProjectsComponent } from './components/account/profile/projects/projects.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ExploreComponent } from './components/explore/explore.component';
     FooterComponent,
     LoginComponent,
     ProfileComponent,
-    ExploreComponent
+    ExploreComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { ExploreComponent } from './components/explore/explore.component';
     routing,
     ReactiveFormsModule,
   ],
-  providers: [MainService, UserService, CookieService],
+  providers: [MainService, UserService, CookieService, ViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
