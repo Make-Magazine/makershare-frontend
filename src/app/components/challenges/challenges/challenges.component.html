@@ -1,0 +1,60 @@
+<div class="row">
+        <section class="col-sm-12 width-fix">
+          <div class="region region-content page-challenge">
+            <header class="challenge-header">
+              <div class="container">
+                <h3>What kind of projects are you interested in?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam quis eos cum ipsa deleniti tenetur possimus, consequatur id ipsam fugiat hic. Quae id odit minima, tempora consectetur eaque dolor fuga possimus praesentium et illum, magnam sed quia ad rem nulla.</p>
+              </div>
+            </header><!--/header -->
+            <div class="filters">
+              <div class="container">
+                <div class="row">
+                <p class="col-md-2">24 Challenges</p>
+                <div class="challenges-filter col-md-1 col-md-offset-8">
+                  <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">All Status
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="btn">All statuses</a></li>
+                    <li><a href="#" class="btn">Open</a></li>
+                    <li><a href="#" class="btn">In review</a></li>
+                    <li><a href="#" class="btn">Closed</a></li>
+                  </ul>
+                </div><!-- End challenges-filter -->
+              </div>
+              </div>
+            </div><!-- End filters -->
+            <div class="container challenges-container">
+
+              <div *ngFor="let challenge of challenges" class="challenge-card">
+                <div class="col-md-6">
+                  <div class="image-container">
+                    <img src="{{challenge.challenge_image}}" alt="" class="img-responsive">
+                    <h3 class="card-title">{{challenge.title}}</h3>
+                  </div><!-- End image-container -->
+                  </div>
+                  <div class="col-md-6">
+                      <div class="card-container">
+                        <div class="card">
+                          <p class="card-status">
+                            {{challenge.challenge_status}}
+                          </p>
+                          <p class="card-partership">{{challenge.sponsored_by}}</p>
+                          <div class="col-md-10 card-description">
+                            <p>{{challenge.description}}</p>
+                          </div>
+                          <div class="card-buttons">
+                            <a class="btn btn-grey">Follow <span class="follow-number">{{challenge.count}}</span></a>
+                          </div>
+                        </div>
+                      </div><!-- End card-container -->
+                  </div><!-- End col-md-6 -->
+              </div><!-- End challenge-card -->
+
+            </div>
+            <div class="col-xs-4 col-xs-offset-4 load-more">
+                  <a href="#" class="btn btn-white">Load more</a>
+            </div>
+
+          </div><!-- End region-content -->
+        </section>

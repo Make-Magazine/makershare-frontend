@@ -17,9 +17,11 @@ import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ProjectsComponent } from './components/account/profile/projects/projects.component';
 import { CreateProjectComponent } from './components/project/create-project/create-project.component';
+import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 
 //npm tag input
 import { TagInputModule } from 'ng2-tag-input';
+
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { TagInputModule } from 'ng2-tag-input';
     ExploreComponent,
     ProjectsComponent,
     CreateProjectComponent,
+    ChallengesComponent
   ],
   imports: [
     BrowserModule,
