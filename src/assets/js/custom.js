@@ -48,7 +48,7 @@ $(document).ready(function() {
 		$('.submenus ' + ul).siblings().hide();
 		$('.submenus ' + ul).show();
 	});
-	CKEDITOR.replace( 'project-story' );
+
 	$("#cover-upload-link").on('click', function(e){
         e.preventDefault();
         $("#cover-upload:hidden").trigger('click');

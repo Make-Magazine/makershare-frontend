@@ -12,7 +12,7 @@ import { HeaderComponent} from '../../general/header/header.component';
 })
 export class LoginComponent {
   isLogedIn = this.headerComponent.isLoggedIn;
-  public loginForm = this.fb.group({
+  private loginForm = this.fb.group({
     username: ["", Validators.required],
     password: ["", Validators.required]
   });
