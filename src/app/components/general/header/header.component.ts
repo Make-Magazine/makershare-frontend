@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
-
+import { LoginComponent } from '../../account/login/login.component';
 
 @Component({
   selector: 'app-header',

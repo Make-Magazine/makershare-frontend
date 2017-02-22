@@ -1,15 +1,19 @@
 .page-portfolio {
 	.portfolio-controls {
 		background-color: $blue*10.4;
-		padding: 15px 0 5px;
+		padding: 10px 0 5px;
 		border: 1px solid $main-grey;
 		border-top: transparent;
 		h3 {
 			font-weight: normal;
-			margin: 0;
+			margin-top: 5px;
+			font-size: 18px;
 		}
 		.contorls {
 			li {
+				&.active {
+					background-color: $main-grey;
+				}
 				display: inline-block;
 				a.btn {
 					padding: 4px 35px;
@@ -36,14 +40,84 @@
 	}
 	.portfolio-header {
 		overflow: hidden;
-		padding: 15px 0;
+		padding: 15px 0 0;
 		font-weight: bold;
 		color: $main-grey;
 		.square {
 			display: none;
 		}
-		.overlay {
-			display: block;
+	}
+	.project {
+		.project-image {
+			.overlay {
+				top: 0;
+				padding-top: 35px;
+				background-color: rgba(0,0,0,0.8);
+				a {
+					font-size: 12px;
+					padding: 5px;
+					display: block;
+					width: 60%;
+					margin: 5px auto;
+					text-align: center;
+					border-radius: 0;
+					border-width: 2px;
+					i {
+						position: static;
+						width: 20px;
+						color: $blue;
+						font-size: 15px;
+						width: 25px;	
+					}
+				}
+			}
 		}
 	}
+	.portfolio-photos {
+		.photos-header {
+			padding-top: 35px;
+			h3 {
+				margin-top: 0;
+			}
+			.btn-white {
+				position: relative;
+				font-size: 12px;
+				width: 160px;
+				text-align: right;
+				padding: 8px;
+				i {
+					float: left;
+					margin-top: 4px;
+				}
+			}
+		}
+		.photos-grid {
+			.image-container {
+				height: 150px;
+				img {
+					position: relative;
+					max-height: 100%;
+					width: 100%;
+					text-align: right;
+				}
+				i {
+					position: absolute;
+					top: 10px;
+					right: 25px;
+					font-size: 25px;
+					color: $main-grey;
+				}
+			}
+			p {
+				text-align: right;
+			}
+		}
+	}
+	.custom-footer {
+		.portfolio-controls {
+			border: 1px solid $main-grey;
+			margin-top: 30px;
+		}
+	}
+	.portfolio-photos,.portfolio-private {display: none;}
 }

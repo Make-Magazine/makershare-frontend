@@ -9,7 +9,7 @@ export class UserService {
   constructor(private mainService: MainService) {}
 
   getUser(userId): Observable<any>{
-    return this.mainService.get(globals.endpoint + '/profile?uid=' + userId).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.get(globals.endpoint + '/maker_profile_api/' + userId).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   createUser(user): Observable<any>{

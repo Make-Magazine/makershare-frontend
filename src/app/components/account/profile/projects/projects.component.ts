@@ -15,8 +15,7 @@ export class ProjectsComponent implements OnInit {
     var args = [
       ['uid', 1],
     ];
-    this.viewService.getView('profile_portfolio_projects', args).subscribe( res=> {
-      console.log(res);
+    this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
       this.profile_projects = res;
     }, err => {
 

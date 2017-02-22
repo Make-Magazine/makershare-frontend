@@ -24,11 +24,16 @@
 		float: right;
 		li {
 			display: inline-block;
-			i {
-				color: $light-grey;
-				font-size: 30px;
-				margin-left: 20px;
-				padding-top: 5px;
+			a {
+				color:$white;
+				text-decoration: none;
+				i {
+					color: $light-grey;
+					font-size: 30px;
+					margin-left: 20px;
+					padding-top: 5px;
+					width: 35px;
+				}
 			}
 		} 
 	}
@@ -136,21 +141,34 @@
     			li {
     				margin-top: 15px;
     			}
-	    		.social-links {
-	    			margin-top: 15px;
-	    			li{
-	    				display: inline-block;
-						text-align: center;
-						width: 25px;
-						vertical-align: top;
+    		}
+    		.my-web {
+    			li {
+					background-color: $light-grey*0.8;
+					font-weight: bold;
+					display: inline;
+					padding: 5px;
+					border-radius: 4px;
+    				i {
+	    				width: 18px;
+	    				font-size:17px;
 	    			}
-	    			i.fa-star {
-	    				font-size: 12px;
-	    				color: $blue;
-	    				display: none;
-	    				margin-top: 5px;
-	    			}
-	    		}
+    			}
+    		}
+    		.social-links {
+    			margin-top: 15px;
+    			li{
+    				display: inline-block;
+					text-align: center;
+					width: 25px;
+					vertical-align: top;
+    			}
+    			i.fa-star {
+    				font-size: 12px;
+    				color: $blue;
+    				display: none;
+    				margin-top: 5px;
+    			}
     		}
     		.how {
     			p{margin-top: 20px;}
