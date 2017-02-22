@@ -3,21 +3,21 @@
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
       <input type="text" class="form-control" id="projectName" formControlName="Name" placeholder="Project Name">
-      <div *ngIf="formErrors.Name" class="alert alert-danger">
+      <div *ngIf="formErrors.Name" class="alert alert-danger error-msg">
         {{ formErrors.Name }}
       </div>
     </div>
     <div class="form-group projectCategory">
       <label for="projectCategory">Category</label>
       <tag-input type="text" class="form-control" id="projectCategory" placeholder="Category" formControlName='Categories'></tag-input>
-      <div *ngIf="formErrors.Categories" class="alert alert-danger">
+      <div *ngIf="formErrors.Categories" class="alert alert-danger error-msg">
         {{ formErrors.Categories }}
       </div>
     </div>
     <div class="form-group teaser">
       <label for="teaser">Teaser</label>
       <textarea class="form-control" rows="5" id="teaser" formControlName='Teaser'></textarea>
-      <div *ngIf="formErrors.Teaser" class="alert alert-danger">
+      <div *ngIf="formErrors.Teaser" class="alert alert-danger error-msg">
         {{ formErrors.Teaser }}
       </div>
     </div>
@@ -29,7 +29,8 @@
           <p *ngIf=!ImgURL>choose a photo that is at least 600 x 400 px</p>
           <img *ngIf=ImgURL src={{ImgURL}} class="img-responsive">
         </div>
-        <div *ngIf="formErrors.Coverphoto" class="alert alert-danger">
+        <div class="clearfix"></div>
+        <div *ngIf="formErrors.Coverphoto" class="alert alert-danger error-msg">
           {{ formErrors.Coverphoto }}
         </div>
         <div class="clearfix"></div>
@@ -37,21 +38,21 @@
     <div class="form-group show-tell">
       <label for="show-tell">Show &amp; Tell Video (optional)</label>
       <input type="text" class="form-control" id="show-tell" placeholder="Enter a URL for video" formControlName='ShowTellVideo'>
-      <div *ngIf="formErrors.ShowTellVideo" class="alert alert-danger">
+      <div *ngIf="formErrors.ShowTellVideo" class="alert alert-danger error-msg">
         {{ formErrors.ShowTellVideo }}
       </div>
     </div>
     <div class="form-group aha">
       <label for="aha">AHA Moment (optional)</label>
       <input type="text" class="form-control" id="aha" placeholder="Enter a URL for video" formControlName='AhaMoment'>
-      <div *ngIf="formErrors.AhaMoment" class="alert alert-danger">
+      <div *ngIf="formErrors.AhaMoment" class="alert alert-danger error-msg">
         {{ formErrors.AhaMoment }}
       </div>
     </div>
     <div class="form-group uh-oh">
       <label for="uh-oh">UH-OH Moment (optional)</label>
       <input type="text" class="form-control" id="uh-h" placeholder="Enter a URL for video" formControlName='UhOhMoment'>
-      <div *ngIf="formErrors.UhOhMoment" class="alert alert-danger">
+      <div *ngIf="formErrors.UhOhMoment" class="alert alert-danger error-msg">
         {{ formErrors.UhOhMoment }}
       </div>
     </div>
