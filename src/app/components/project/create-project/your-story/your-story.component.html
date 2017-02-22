@@ -51,13 +51,13 @@
     <div class="form-group uh-oh">
       <label for="uh-oh">UH-OH Moment (optional)</label>
       <input type="text" class="form-control" id="uh-h" placeholder="Enter a URL for video" formControlName='UhOhMoment'>
-       <div *ngIf="formErrors.UhOhMoment" class="alert alert-danger">
+      <div *ngIf="formErrors.UhOhMoment" class="alert alert-danger">
         {{ formErrors.UhOhMoment }}
       </div>
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <textarea class="form-control ckeditor" rows="5" id="project-story"></textarea>
+      <ckeditor class="form-control" rows="5" id="project-story"></ckeditor>
     </div>
   </div><!-- End your-story -->
 </div>
