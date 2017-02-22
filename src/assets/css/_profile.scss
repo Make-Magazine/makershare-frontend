@@ -1,0 +1,287 @@
+.profile-page {background-color: $main-grey;position: relative;}
+.profile-cover {
+	overflow: hidden;
+	max-height: 220px;
+	.cover-image {
+		min-height: 150px;
+		width: 100%;
+	}
+}
+.profile-name{
+	background-color: #000;
+	color:$light-grey;
+	height: 55px;
+	padding: 15px 0 5px;
+	h4 {
+		font-weight: normal;
+		display: inline;
+		font-size: 25px;
+		margin-bottom: 5px;
+		color: $white;
+		span {margin-left: 10%;font-size: 12px}
+	}
+	.bookmark{
+		float: right;
+		li {
+			display: inline-block;
+			i {
+				color: $light-grey;
+				font-size: 30px;
+				margin-left: 20px;
+				padding-top: 5px;
+			}
+		} 
+	}
+}
+.profile-sidebar {
+	color: $main-grey*0.7;
+	position: relative;
+    top: -120px;
+	hr {
+		border-color: $main-grey;
+		margin: 10px 0 15px;
+	}
+	h5 {
+		text-transform: uppercase;
+		color: #000;
+		font-weight: bold;
+	}
+	.progress {
+		.profile-progress {
+		}
+	}
+	a.add {
+		padding: 5px;
+		font-size: 12px;
+		width: 100%;
+		text-align: right;
+		margin: 5px 0;
+		white-space: normal;
+		i {
+			font-size: 12px;
+			padding-top: 5px;
+			text-align: left;
+			float: left;
+			color: $blue;
+		}
+	}
+	.profile-container {
+		background-color: $light-grey;
+		padding: 15px;
+        width:100%;
+		padding-top: 10%;
+        font-size: 12px;
+        margin-top: 20px;
+        li,p{font-size: 12px;}
+        i{
+			width: 25px;
+			color: $main-grey;
+		}
+        .profile-group {
+        	position: relative;
+        	margin: auto;
+    		top: -120px;
+			max-width: 140px;
+    		overflow: hidden;
+    		.profile-pic{
+				border:1px solid #000;
+				width: 140px;
+				height: 140px;
+				img {
+					height: 100%;
+					width: 100%;
+				}
+    		}
+        	.btn {
+        		width: 100%;
+        		max-width: 220px;
+        		margin:  0;
+        	}
+        }
+
+		.profile-info {
+			margin-top: 30px;
+			position: relative;
+    		top: -130px;
+    		font-size: 18px;
+    		.location {
+				color:$main-grey;
+    		}
+    		.post {
+    			padding-bottom: 10px;
+    		}
+    		.awards {
+    			li{
+    				padding-bottom: 15px;
+	    			
+    			}
+    		}
+    		.interests {
+    			li {
+	    			display: inline-block;
+	    			margin-bottom: 5px;
+	    			max-width: 100px;
+	    			vertical-align: bottom;
+	    			.btn {
+	    				padding: 5px 8px;
+	    				white-space: normal;
+	    				font-weight: bold;
+	    				font-size: 10px;
+	    				background-color: $light-grey*0.9;
+	    				color: $main-grey*0.8;
+	    			}
+    			}
+    		}
+    		.makerspaces {
+    			li {
+    				margin-top: 15px;
+    			}
+	    		.social-links {
+	    			margin-top: 15px;
+	    			li{
+	    				display: inline-block;
+						text-align: center;
+						width: 25px;
+						vertical-align: top;
+	    			}
+	    			i.fa-star {
+	    				font-size: 12px;
+	    				color: $blue;
+	    				display: none;
+	    				margin-top: 5px;
+	    			}
+	    		}
+    		}
+    		.how {
+    			p{margin-top: 20px;}
+    		}
+		}
+    }
+    .report {font-size: 12px;text-decoration: none;}
+}
+/* End profile-sidebar */
+.profile-content {
+	a.btn {
+		padding: 2px;
+	}
+	.empty-content {
+		text-align: center;
+		color: #fff;
+		font-size: 18px;
+		p{
+			padding: 10px 0;
+		}
+		a {
+			display: block;
+			width: 165px;
+			text-align: right;
+			margin: auto;
+			margin-top: 10px;
+			padding-right: 5px;
+			i {
+				float: left;
+				margin-top: 4px;
+			}
+			&.btn-white {
+				text-align: center;
+				font-size: 14px;	
+			}
+		}
+	}
+}
+.profile-stats {
+	ul {
+		padding-left: 0;
+		li{
+			display: inline-block;
+			margin: 5px 10px;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: bold;
+			.number{
+				font-size: 30px;
+				font-weight: normal;
+			}
+			p {
+				display: inline-block;
+				white-space: normal;
+				width: 70px;
+				margin-left: 10px;
+				font-size: 9px;
+			}
+		}
+		
+	}
+	.switch {
+		position: absolute;
+		top: 20px;
+    	right: 40px;
+    	color: $light-grey;
+    	cursor: pointer;
+    	.grid-view {display: none;}
+	}
+}
+.modal-section {
+	#add-bio-modal,
+	#add-interests-modal,
+	#add-makerspace-modal,
+	#add-social-modal {
+		h4 {
+			font-weight: normal;
+			color: #000;
+		}
+		.modal-header, .modal-footer {
+			border-color: $light-grey*0.8 ;
+			border-width: 3px;
+		}
+		.modal-content {
+			border: 3px solid $light-grey*0.8;
+			.table {
+				input[type="checkbox"] {
+					margin-left: 20px;
+				}
+				input[type="text"] {
+					margin: 0;
+				}
+				i {width: 25px;}
+				p {margin-top: 5px;font-size: 15px;}
+				tr:first-child {
+
+				}
+			}
+		}
+		.modal-footer {
+			text-align: center;
+			.btn-light-grey {
+				border-radius: 4px;
+			}
+		}
+
+	}
+	#add-bio-modal{
+		resize: none;
+		textarea {
+			width: 100%;
+			min-height:170px;
+			overflow: visible;
+		}
+
+	}
+	#add-interests-modal{
+
+	}
+	#add-makerspace-modal{
+		a.btn-white {
+			padding: 5px;
+			margin-top: 10px;
+			font-size: 12px;
+			border-radius: 4px;
+		}
+		label {
+			margin-top: 5px;
+		}
+	}
+	#add-social-modal{
+
+	}
+}

@@ -1,0 +1,288 @@
+.page-challenge-summary, .page-challenge-summary-closed {
+	.top-content-wrapper {
+		overflow: hidden;
+		.challenge-cover {
+			height: 150px;
+			position: relative;
+			overflow: hidden;
+			padding-right: 0;
+			img {
+				position: absolute;
+				width: 100%;
+				padding-right: 15px;
+				z-index: -1;
+			}
+			.sponsor {
+				text-align: center;
+				h4 {
+				background-color: $main-grey;
+				line-height: 30px;
+				margin: 0;
+				color: $white;	
+				}
+			}
+			.challenge-status {
+				position: absolute;
+				bottom: 65px;
+				left: 50px;
+				background-color: $light-grey;
+				@include opacity(0.8);
+				display: inline-block;
+				padding: 5px 15px;
+				p{margin: 0;}
+			}
+			.challenge-title {
+				background-color: rgba(0,0,0,0.5);
+				display: inline-block;
+				position: absolute;
+				left: 15px;
+				bottom: 0;
+				h1 {
+					color: $white;
+					font-weight: normal;
+					margin: 0;
+					font-size: 25px;
+					padding: 10px 15px 20px;
+				}
+			}
+			.challenge-countdown {
+				position: absolute;
+				left: 50%;
+				top: 40%;
+				background-color: $light-grey;
+				@include opacity(0.8);
+				display: inline-block;
+				text-align: center;
+				padding: 5px;
+				p{
+					color: #000;
+					margin: 0;
+					padding: 0;
+					text-transform: uppercase;
+					&.number {
+						font-size: 30px;
+						font-weight: bold;
+					}
+				}
+
+			}
+			.challenge-actions {
+				position: absolute;
+				bottom: 0;
+				right: 20px;
+				li {
+					float: left;
+				}
+			}
+		}
+	}
+	.region-content {
+		padding-right: 0px;
+		.tabs-buttons {
+			width: 100%;
+			.challenge-submenu {
+				overflow: hidden;
+				width: 77%;
+				float: left;
+				li {
+					float: left;
+					.btn {
+						padding: 8px 15px;
+						border: none;
+						margin-right: 2px;
+						margin-top: 2px;
+					}
+					.active {
+						background-color: $main-grey;
+						color: $white;
+						.badge {
+							background-color: $white;
+							color: $main-grey;
+
+						}
+					}
+				}
+			}
+			.challenge-follow {
+				overflow: hidden;
+				width: 23%;
+				float: right;
+				li {
+					float: left;
+					width: 50%;
+					.btn{
+						padding: 8px 34px;
+						border: 1px solid $main-grey;
+						width: 100%;
+					}
+				}
+			}
+		}
+		.content-wrapper {
+			.vote {
+				position: absolute;
+				bottom: 0;
+				text-align: center;
+				width: 100%;
+				text-transform: uppercase;
+				font-weight: bold;
+				background-color: $blue;
+				color:$white;
+				a {
+					display: block;
+					padding-top: 5px;
+					padding-bottom: 5px;
+					margin-bottom: 0;
+					color: $white;
+					text-decoration: none;
+				}
+			}
+			.filters {
+				border: 1px solid $main-grey;
+				p {padding-left: 30px;}
+			}
+			.entries {
+				.entry-container {
+					position: relative;
+					overflow: hidden;
+					height: 260px;
+					margin-top: 10px;
+					color: $main-grey;
+					h4 {
+						font-size: 13px;
+						height: 28px;
+					}	
+					.image-container {
+						position: relative;
+						overflow: hidden;
+						height: 180px;
+						img {
+							position: absolute;
+							z-index: -2;
+						}
+						.entry-description {
+							position: absolute;
+							top: 0px;
+							margin: 10px 10px 5px 12px;
+							color: $white;
+							display: none;
+						}
+						.vote {display: none;}
+						.submitter {float: left;}
+						.entry-date {float: right;}
+						&:before {
+							content: "";
+							display: block;
+							position: absolute;
+							top: 0;
+							bottom: 0;
+							left: 0;
+							right: 0;
+							background: rgba(0,0,0, 0.5);
+						}
+					}
+					&:hover {
+						.entry-description, .vote {
+							display: block;
+						}
+					}
+						
+				}
+			}
+			.summary-content {
+				.description {
+					padding: 10px 15px;
+				}
+			}
+			.challenge-summary {display: block;}
+			
+			.summary-aside-content {
+				background-color: $light-grey;
+				color: $main-grey;
+				border: 1px solid $main-grey;
+				height: 100vw;
+				ul {
+					margin-top: 30px;
+					li {
+						font-size: 12px;
+						margin: 15px 0;
+					}
+				}
+			}
+			.award-container {
+				background-color: $white;
+				border: 1px solid $main-grey;
+				padding: 5px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				p {
+					font-size: 12px;
+				}
+				.name {
+					margin-top: 10px;
+					font-weight: bold;
+				}
+				img {
+					float: left;
+					width: 40%;
+					margin-right: 5px;
+				}
+				.description {float: left;width: 50%;}
+				.value {font-size: 11px;padding-top: 10px;}
+			}
+			.followers {
+				display: none;
+				width: 90%;
+				overflow: hidden;
+				margin: auto;
+				.vote {
+					position: static;
+				}
+				.follower-card {
+					height: 196px;
+					margin-top: 25px;
+					border: 1px solid $main-grey;
+					-webkit-box-sizing: border-box;
+					   -moz-box-sizing: border-box;
+					        box-sizing: border-box;
+				}
+
+			}
+			.profile-container {
+				padding: 0;
+				float: none;
+				.profile-card {
+					border: none;
+					display: flex;
+
+					.left {
+						max-width: 140px;
+						padding: 0 5px ;
+					}
+					.right {padding: 0;margin: 0;}
+				}
+			}
+		} // End content-wrapper
+	}
+}	
+.page-challenge-summary-closed {
+	.region-content {
+		.content-wrapper {
+			.summary-aside-content {
+				height: auto;
+				padding: 30px 10px;
+			} 
+			.description {
+				ul {
+					color: $main-grey;
+					li {
+						width: 49%;
+						display: inline-block;
+						margin: 5px 0;
+					}
+				}
+			}
+			
+		} 
+	}
+}

@@ -2,14 +2,12 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { ExploreComponent } from "./components/explore/explore.component";
 import { ProfileComponent } from "./components/account/profile/profile.component";
-import { CreateProjectComponent } from './components/project/create-project/create-project.component';
 import { ChallengesComponent } from "./components/challenges/challenges/challenges.component";
 
 const APP_ROUTES: Routes = [
    { path: '', component: HomeComponent },
    { path: 'user', component: ProfileComponent },
    { path: 'explore', component: ExploreComponent },
-   { path: 'project/create', component:  CreateProjectComponent},
    { path: 'challenges', component: ChallengesComponent },
     // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
 

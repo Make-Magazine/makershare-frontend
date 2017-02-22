@@ -16,8 +16,8 @@ import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ProjectsComponent } from './components/account/profile/projects/projects.component';
-import { CreateProjectComponent } from './components/project/create-project/create-project.component';
 import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
+import { ProjectModule } from './components/project/project.module';
 
 //npm tag input
 import { TagInputModule } from 'ng2-tag-input';
@@ -34,15 +34,15 @@ import { TagInputModule } from 'ng2-tag-input';
     ProfileComponent,
     ExploreComponent,
     ProjectsComponent,
-    CreateProjectComponent,
-    ChallengesComponent
+    ChallengesComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    routing,
     ReactiveFormsModule,
     TagInputModule,
+    ProjectModule,
+    routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
   bootstrap: [AppComponent]

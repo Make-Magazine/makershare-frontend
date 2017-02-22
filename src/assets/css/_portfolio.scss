@@ -1,0 +1,49 @@
+.page-portfolio {
+	.portfolio-controls {
+		background-color: $blue*10.4;
+		padding: 15px 0 5px;
+		border: 1px solid $main-grey;
+		border-top: transparent;
+		h3 {
+			font-weight: normal;
+			margin: 0;
+		}
+		.contorls {
+			li {
+				display: inline-block;
+				a.btn {
+					padding: 4px 35px;
+				}
+			}
+		}
+	}
+	.nav-portfolio {
+		border-bottom: 1px solid $main-grey;
+		padding-top: 10px;
+		ul {
+			padding-left: 15px;
+			li {
+				float: left;
+				.btn-grey-inverse {
+					padding: 7px 55px;
+				}
+				&:not(:first-child){
+					margin-left: 5px;
+				}
+			}
+		}
+
+	}
+	.portfolio-header {
+		overflow: hidden;
+		padding: 15px 0;
+		font-weight: bold;
+		color: $main-grey;
+		.square {
+			display: none;
+		}
+		.overlay {
+			display: block;
+		}
+	}
+}

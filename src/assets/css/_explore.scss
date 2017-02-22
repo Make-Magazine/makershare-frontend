@@ -1,0 +1,82 @@
+.page-explore{
+	.width-fix {padding: 0;}
+	.explore-header {
+		height: 250px;
+		background-color: $light-grey;
+		text-align: center;
+		h3 {
+			margin: auto;
+			text-align: center;
+			padding-top: 40px;
+			color: $main-grey;
+			padding-bottom: 30px;
+			font-weight: normal;
+		}
+		.explore-tags {
+			margin: 20px auto;
+			li{
+				display: inline-block;
+				a.btn {
+					padding: 5px 15px;
+					border-radius: 3px;
+				}
+			}
+		}
+	}
+	.submenus {
+		li{
+			display: inline-block;
+			margin-bottom: 7px;
+			a.btn {
+				padding: 5px 15px;
+				border-radius: 3px;
+			}
+		}
+		.arts-sub,
+		.technology-sub,
+		.workshop-sub,
+		.things-sub,
+		.world-sub {
+			display: none;
+		}
+	}
+}
+.filters {
+	min-height: 35px;
+	border: 1px solid #000;
+	color: $main-grey;
+	background-color: $white;
+	p {
+		padding-top: 10px;
+		font-size: 18px;
+		
+	}
+	.btn {
+		font-size: 18px;
+		color: $main-grey;
+	}
+}
+.page-explore,.page-showcase, .page-portfolio {
+	
+.project {
+	margin-top: 20px;
+	height: 255px;
+	overflow: hidden;
+	border: 1px solid #000;
+	.project-title {
+		background-color: $white;
+		padding: 10px;
+		height: 55px;
+		font-size: 14px;
+	}
+	.project-image {
+		background-color: $light-grey;
+		height: 100%;
+		overflow: hidden;
+		img {
+			width: 100%;
+			min-height: 200px;
+		}
+	}
+}
+}

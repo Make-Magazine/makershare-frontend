@@ -1,0 +1,137 @@
+.page-workshop-individual {
+	.top-content-wrapper {
+		background: url('http://placehold.it/1200x550') center center;
+		background-size: cover;
+		padding-top: 20px;
+		border-bottom: 1px solid $main-grey;
+		margin-bottom: 10px;
+		h2 {
+			font-size: 35px;
+			font-weight: bold;
+			color: $white;
+			text-align: center;
+		}
+		ul {
+			li {
+				display: inline-block;
+				
+			}
+			&.workshop-tags {
+				.btn {
+					padding: 5px;
+					font-size: 9px;
+					float: left;
+					margin-right: 5px;
+					background-color: $main-grey*1.8;
+					color:$main-grey*0.5;
+					font-weight: bold;
+					border-radius: 3px;
+					&:hover {background-color: $main-grey*1.6;}
+				}
+			}
+		}
+		.workshop-actions {
+			li {
+				display: block;
+				float: left;
+				.btn {
+					border-right-width: 0;
+				}
+				&:last-of-type {
+					.btn{
+						border-right-width: 1px;
+					}
+				}
+			}
+		}
+		.workshop-aside {
+			li {
+				float: left;
+				&:not(:last-child) a {
+					border-right-color: transparent;
+				}
+				.btn {
+					padding: 8px 20px;
+				}
+				&.active {
+					a.btn.btn-light-grey {
+						background-color: #fff !important;
+						border-bottom-color: $white;
+					}
+				}
+			}
+			overflow: hidden;
+			margin-bottom: -1px;
+		}
+	}
+	.workshop-content {
+		h4 {
+			font-weight: normal;
+			color: $main-grey;
+		}
+		.lesson, .fun-fact, .other-lesson {
+			border: 1px solid $main-grey;
+			padding: 5px 10px;
+			.recommended {
+				margin-top: 15px;
+				border-top: 1px solid $main-grey;
+				padding-top: 15px;
+				li {
+					margin: 5px 0 5px 35px;
+					i {
+						color: $light-grey;
+						width: 24px;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+	.workshop-instructor {
+		.profile-container {
+			width: 100%;
+			position: relative;
+			top: -50px;
+			.profile-card {
+				background-color: $light-grey;
+			}
+			.left {
+				width: 100px;
+			}
+			.right {
+				width: 180px;
+			}
+			p {
+				font-size: 10px
+			}
+			 i.fa-star-o {
+			 	bottom: 10px;
+			 }
+		}
+	}
+	.content-list {
+		padding: 10px 20px;
+		box-shadow: 1px 1px 25px 1px $main-grey*1.2;
+		overflow: hidden;
+		color: $main-grey;
+		li {
+			margin: 15px 0;
+			a {
+				color: $blue;
+				text-decoration: none;
+			}
+		}
+	}
+	.suggested {
+		margin-top: 15px;
+		h4 {font-weight: normal;}
+		li {
+			display: inline-block;
+			width: 30%;
+			.media-left {
+				width: 35%;
+			}
+		}
+	}
+
+}

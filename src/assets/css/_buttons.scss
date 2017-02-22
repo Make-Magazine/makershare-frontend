@@ -1,6 +1,6 @@
 /* btn-blue */
 .btn {
-    padding: 8px 35px;
+    padding: 5px 15px;
     border:none; 
 }
 .btn-grey{
@@ -20,6 +20,43 @@
         background-color: $main-grey*0.9;
         border-color: $main-grey*0.8;
     }
+}
+.btn-grey-inverse{
+    color: $main-grey;
+    background-color: $light-grey*0.9;
+    border-radius: 0;
+
+    &:focus {
+        color: #fff;
+        background-color: $main-grey*0.6;
+        border-color: $main-grey*0.6;
+    }
+
+    &:active, &:hover, &.active {
+        color: #fff;
+        background-color: $main-grey*0.9;
+        border-color: $main-grey*0.8;
+    }
+}
+.btn-light-grey {
+    color: $main-grey;
+    background-color: $light-grey;
+    border:1px solid  $main-grey*0.9;
+    border-radius: 0;
+    &:focus {
+        color: $main-grey;
+        background-color: $light-grey*0.6;
+        border-color: $main-grey*0.6;
+    }
+
+    &:active, &:hover {
+        color: $main-grey;
+        background-color: $light-grey*0.9;
+        border-color: $main-grey*0.8;
+    }
+}
+.btn-fit {
+    padding: 5px 10px;
 }
 .btn-blue {
     color: #fff;
@@ -47,14 +84,31 @@
         color: $blue * 0.8;
     }
 }
+.btn-white {
+    background-color: #fff;
+    border:1px solid $blue;
+    font-size: 20px;
+    &:hover, &:focus, &:active {
+        color: $blue;
+        border:1px solid $blue*1.3;
+    }
+}
 .btn-sharp {
     border-radius: 0;
-    border: 1px solid #333;
+    /* border: 1px solid #333;
     border-right: none;
     &:last-of-type{
         margin-right:0;
         border-right: 1px solid #333;
-
+    
     }
-    float: left;
+    float: left; */
+}
+.load-more {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .btn {
+        margin: 0 auto;
+        width: 100%;
+    }
 }

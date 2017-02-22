@@ -1,33 +1,63 @@
 .profile-container{
-        padding: 15px 30px;
-        width:330px;
-        float: left;
-        font-size: 13px;
-        /* display: inline-block; */
-        .profile-card{
-            background-color: $white;
-            padding: 10px 0;
-            overflow: hidden;
-            border:1px solid $light-grey*0.8;
-            max-height: 320px;
-            /* width: 320px; */
-            .left{
-                max-width: 150px;
-                img,a{display: block;}
-                a{margin: 10px 0 0;padding: 8px 0;max-width: 140px}
-                img {max-width: 100%;}
-            }
-            .right{
-                max-width: 165px;
-                /* display: flex;
-                flex-direction: column; */
-                h3.profile-name {
-                    margin-top: 0;
-                }
-                .user-tag 
-                .user-city {
-                }
-            }
+    padding: 0;
+    float: left;
+    font-size: 12px;
+    .profile-card{
+        background-color: $white;
+        padding: 10px 0;
+        overflow: hidden;
+        border:1px solid $light-grey*0.8;
+        max-height: 320px;
+        position: relative;
+        .profile-name {
+            background-color: transparent;
+            height: auto;
+            padding:0;
         }
-        .user-role {font-size:16px;margin-top: 15px;margin-left: -15px;}
+        .left{
+            width: 140px;
+            img,a{display: block;}
+            a{
+                margin: 5px 0 0;
+                padding: 8px 0;
+                max-width: 140px;
+                border-radius: 0;
+                font-size: 10px;
+            }
+            img {max-width: 100%;}
+        }
+        .right{
+            width: 120px;
+            padding: 0;
+            margin: 0;
+            h4.profile-name {
+                margin-top: 0;
+                font-size: 14px;
+                font-weight: normal;
+            }
+            .user-tag {}
+            .user-city{} 
+            .count {margin-top: 5px;margin-bottom: 5px;}
+        }
+
+        .user-city { }
     }
+    .user-role {font-size:16px;margin-top: 15px;margin-left: -15px;}
+    i.fa-star-o {
+        color: $blue;
+        position: absolute;
+        bottom: 14px;
+        right: 20px;
+        font-size: 24px;
+    }
+    &.medium-card {
+        width: auto;
+        float: none;
+        .right {
+            width: auto;
+        }
+        .left {
+            width: 100px;
+        }
+    }
+}

@@ -1,278 +1,31 @@
 @import "vars";
-@mixin gradient_bg($c1,$c2){
-    background: $c1; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient($c1, $c2); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient($c1, $c2); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient($c1, $c2); /* For Firefox 3.6 to 15 */
-    background: linear-gradient($c1, $c2); /* Standard syntax */
-}
-
+@import "mixins";
 @import "navbar";
 @import "buttons";
-@import "showcase";
+@import "project-card";
 @import "profile-container";
 @import "joinus";
-
-
-.default-header {
-    background-color: $light-grey;
-    color: $font-grey;
-    text-align: left;
-    overflow: hidden;
-    vertical-align: middle;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #333;
-    border-top: 1px solid #333;
-    margin: 5px 0 ;
-    p,h3{margin: 0;}
-    p{padding: 0 0 0 95px;}
-}
-.image-container {
-    img {
-        max-height: 300px;
-        width: 100%;
-    }
-    .card-container {
-    color: $main-grey;
-    font-weight: bold;
-    position: relative;
-    overflow: hidden;
-    .card {
-        margin: 20px;
-    }
-
-    .card-status {
-        background-color: $light-grey;
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 4px;
-        color: $main-grey;
-    }
-
-    p.card-partnership {}
-
-    .card-title {
-        font-weight: bold;
-        margin-top: 0;
-    }
-
-    .card-description {
-        h4 {
-            font-weight: bold;
-        }
-
-        p {
-            margin-bottom: 55px;
-            margin-left: -15px;
-            line-height: 30px;
-        }
-    }
-
-    .card-buttons {
-        position: absolute;
-        bottom: 10px;
-        left: 35px;
-        a.btn.btn-grey {background-color: $light-grey;color: $blue*0.8;font-size: 17px;}
-        .follow-number {
-            background-color: $light-grey*0.9;
-            padding: 3px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: $main-grey;
-            margin-left: 10px;
-        }
-    }
-}
-
-
-}
-
-/* Profile Styles */
+@import "main";
+@import "home-style";
 
 
 
 /*  Start Styling Homepage   */
-.main-header {
-    padding: 0 !important;
-    margin: 0 !important;
-    color: $main-grey;
-    border-bottom: 1px solid $main-grey;
-    display: -webkit-box;    /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox;    /* TWEENER - IE 10 */
-    display: -webkit-flex;   /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-    display: flex;           /* NEW, Spec - Firefox, Chrome, Opera */
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-        
-    .explore {
-        display: block;
-        margin-bottom: 0;
 
-        li {
-            display: inline-block;
-
-            a {
-                display: inline-block;
-                padding: 12px 35px;
-                font-size: 18px;
-                border-left: 1px solid $light-grey;
-                color: $main-grey;
-                text-decoration: none;
-                i{
-                    font-size: 1.3em;
-                }
-            }
-        }
-    }
-
-    .login-block {
-        display: block;
-        margin-bottom: 0;
-
-        li {
-            display: inline-block;
-            .btn {
-                padding: 5px 37px;
-            }
-        }
-    }
-}
-
-.msg {
-    background-color: $light-grey;
-    min-height: 30px;
-    padding: 10px;
-    text-align: center;
-    
-    p {
-        font-size: 17px;
-    }
-    h3,p {
-        margin: 0;
-        color: $main-grey;
-        
-    }
-}
-.banner {
-
-
-    /* Carousel base class */
-    .carousel {
-        height: 500px;
-
-        /* Declare heights because of positioning of img element */
-        .item {
-            height: 500px;
-            background-color: #777;
-        }
-
-        .card-container {
-            position: static;
-        }
-    }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        z-index: 10;
-        max-width: 850px;
-        margin: auto;
-        bottom: 80px;
-        padding-left: 20px;
-        padding-right: 20px;
-        h2{font-size: 35px;font-weight: 100;}
-        h4{font-size: 30px; font-weight: bold;margin-top: 30px;margin-bottom: 20px;}
-        p {font-size: 25px;}
-        a.btn {
-            margin: 0;
-            border: 1px solid #fff;
-            border-radius: 0;
-            font-size: 18px;
-        }
-    }
-
-    .carousel-inner > .item > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        height: 500px;
-    }
-
-}
-
-.browse-projects {
-    padding-bottom: 15px;
-    .default-header {
-        margin-bottom: 35px;
-        p {
-            font-size: 17px;
-
-            span {
-                font-size: 20px;
-                font-weight: bold;
-                text-transform: uppercase;
-            }
-        }
-
-        .button-group {
-            float: right;
-        }
-    }
-
-    .display {
-        overflow: hidden;
-        position: relative;
-        margin-bottom: 25px;
-
-        .card-container {
-            position: static;
-        }
-    }
-}
-
-
-
-.col-fixed-300 {width:306px;
-    position:absolute;
-    z-index: 1;
-    height:100%;}
-.col-offset-300 {
-    margin-left: 325px;
-    overflow: hidden;
-}
-.fffa {overflow: hidden;float: none;}
-.slick-dots {
-    li {
-        button:before {font-size: 15px;}
-        
-    }
-}
-
-.maker-spotlight {
-    header h3{
-        margin-left: 65px;
-        font-weight: bold;
-
-    }
-    .default-header {padding: 10px 0;margin-bottom: 0;}
-    .spotlight{
-        min-height: 240px;
-        border: 1px solid $main-grey;
-        .project-image {
-            margin-top: 5px;
-            img {
-                max-height: 170px;
-            }
-        }
-    }
-
-}
-footer {height: 35px;background-color: $main-grey*0.5;margin-top: 5px;}
 
 /* End of Showcase */
+
+
+//@import "profile";
+@import "explore";
+@import "challenge";
+@import "project";
+@import "workshop";
+@import "profile";
+@import "showcase";
+@import "create-profile";
+@import "create-project-why";
+@import "challenge-summary";
+@import "workshop-individual";
+@import "portfolio";
 @import "media";

@@ -1,0 +1,93 @@
+<div class="region region-content col-sm-8" [formGroup]="YourStoryForm">
+  <div class="your-story">
+    <div class="form-group projectName">
+      <label for="projectName">Project Name</label>
+      <input type="text" class="form-control" id="projectName" formControlName="ProjectName" placeholder="Project Name">
+    </div>
+    <div class="form-group projectCategory">
+      <label for="projectCategory">Category</label>
+      <input type="text" class="form-control" id="projectCategory" placeholder="Category">
+    </div>
+    <div class="form-group teaser">
+      <label for="teaser">Teaser</label>
+      <textarea class="form-control" rows="5" id="teaser"></textarea>
+    </div>
+    <div class="form-group cover">
+      <label class="control-label">Cover photo</label><br>
+        <a href="#" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
+        <input id="cover-upload" type="file" class="file" placeholder="Cover">
+        <div class="image-preview">
+          <p>
+            choose a photo that is at least 600 x 400 px
+          </p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="form-group show-tell">
+      <label for="show-tell">Show &amp; Tell Video (optional)</label>
+      <input type="text" class="form-control" id="show-tell" placeholder="Enter a URL for video">
+    </div>
+    <div class="form-group aha">
+      <label for="aha">AHA Moment (optional)</label>
+      <input type="text" class="form-control" id="aha" placeholder="Enter a URL for video">
+    </div>
+    <div class="form-group uh-oh">
+      <label for="uh-oh">UH-OH Moment (optional)</label>
+      <input type="text" class="form-control" id="uh-h" placeholder="Enter a URL for video">
+    </div>
+    <div class="form-group project-story">
+      <label for="project-story">Story</label>
+      <textarea class="form-control ckeditor" rows="5" id="project-story"></textarea>
+    </div>
+  </div><!-- End your-story -->
+</div>
+
+<aside class="col-md-4">
+  <div class="your-story-guide">
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>How to Choose a Project Name:</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>Choosing a category</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>Writing a teaser:</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>Making an awesome SHOW &amp; TELL video:</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!</p>
+        <img src="./assets/images/video_placeholder.jpg" alt="" class="img-responsive">
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>AHA ad UH-OH Moments</h4>
+        <p>Talk about a positive breakthrough you had while working on the project, or a learning experience or something that went horribly, horribly wrong...</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>Tips for creating a great story:</h4>
+        <p>Tell us about your project.</p>
+        <p>Think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn’t turn out the way you planned, what did you learn from your “failure”?</p>
+        <p>Definitely include a video and photos of the finished product. </p>
+      </div>
+    </div>
+  </div><!-- End your-story-guideline -->
+</aside>

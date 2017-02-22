@@ -1,26 +1,43 @@
 /* Start of Showcase */
-.showcase {
-    width: 100%;
-    .showcase-item{
-        position: relative;
-        border: 1px solid #000;
-        margin-bottom: 25px;
-        img {
-            width: 100%;
-        }
-        .title{
-            background-color: rgba(0,0,0,0.5);
-            color: #fff;
-            padding: 5px 5px;
-            width: 100%;
-            margin: 0;
-            top: 0;
-            position: absolute;
+.page-showcase { 
+    .showcase-header {
+        margin-bottom: 10px;
+        .col-md-11.col-md-offset-1 {
+            padding: 0;
         }
     }
+    color: #000;
+    h3 {
+        color: #000;
+        font-weight: normal;
+        margin-bottom: 20px;
+    }   
+    .back {margin-top: 15px;}
 
-    
-
-    
-    
+    .timestamp {
+        font-size: 10px;
+        color: $main-grey;
+    }
+    /*  Showcases coolection page  */
+    .top-content-wrapper {
+        padding: 15px 0;
+        min-height: 80px;
+        background-color: $light-grey; 
+        overflow: hidden;
+    }
+    .showcase {
+        .showcase-item {
+            .timestamp {
+                color: #fff;
+            }
+        }
+    }
+    .filters {
+        margin-bottom: 20px;
+        margin-top: 0;
+        .dropdown-menu {right: auto;}
+        button {
+            margin-top: 5px;
+        }
+    }
 }

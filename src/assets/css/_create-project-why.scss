@@ -1,0 +1,227 @@
+.page-create-project-why {
+	h1,h2,h3,h4,h5,h6 {font-weight: 700;}
+	color: $main-grey;
+	.form-group > input,textarea,#cke_how-to-make {max-width: 60%;}
+	.add-controls {
+		background-color: $light-grey*1.05;
+		border-bottom: 1px solid $main-grey;
+		padding: 10px 0 5px;
+		h3 {margin: 5px 0 0; padding: 0;}
+		.contorls{
+			li {
+				display: inline-block;
+				.btn-light-grey{
+					background-color: $white;
+				}
+				.btn-transparent {
+					color: $main-grey;
+					padding: 5px 15px;
+				}
+				.btn {
+					padding: 5px 15px;
+				}
+			}
+		}
+	}
+	.form-group {
+		margin-top: 40px;
+	}
+	input {border-radius:0px;}
+	.nav-create {
+		border-bottom: 1px solid $main-grey;
+		padding-top: 10px;
+		ul {
+			padding-left: 15px;
+			li {
+				float: left;
+				.btn-grey-inverse {
+					padding: 7px 55px;
+				}
+				&:not(:first-child){
+					margin-left: 5px;
+				}
+			}
+		}
+
+	}
+	.guideline {
+		background-color: $light-grey;
+		color: $main-grey;
+		overflow: hidden;
+		margin-bottom: 20px;
+		padding: 10px 10px 10px 15px;
+	    .question-mark {
+	    	width: 20%;
+	    	i {
+	    		font-size: 50px;
+	    		margin-top: 10px;
+	    	}
+	    }
+	    .content {
+	    	width: 80%;
+	    	p{font-size: 12px;}
+	    	h4{font-size: 14px;font-weight: bold;}
+	    }
+	}
+	
+	.custom-footer {
+		border-top: 1px solid $main-grey;
+	}
+	
+	.your-story {
+		.projectName {width: 60%;}
+		.projectCategory {width: 40%;}
+		.cover {
+			a {
+				margin-top: 5px;
+				float: left;
+				width: 40%;
+				margin-right: 10%;
+			}
+			.image-preview {
+				width: 50%;
+				float: left;
+				background-color: $light-grey*0.9;
+				color:$main-grey;
+				text-align: center;
+				padding: 10px;
+			}
+			input{
+				display: inline-block;
+			}
+			#cover-upload {display: none;}
+		}
+	}
+	.how-to {
+		form {
+			padding-bottom: 130px;
+		}
+		.projectTags {
+			p {padding: 20px;}
+		}
+		.sort{
+			width: 40px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.quantity {
+			width: 50px;
+		}
+		.carets{
+			display: inline-block;
+			width: 30px;
+			i {line-height: 10px;}
+		}
+		.tools {
+			thead {
+				th:first-child {width: 45%;}
+				th:nth-child(2) {width: 35%;}
+			}
+		}
+		.tools, .materials, .parts {
+			a {
+				font-size: 14px;
+				padding: 5px;
+				i {width: 30px;}
+			}
+		}
+		.difficulty {
+			width: 45%;
+			margin-right: 5%;display: inline-block;
+		}
+		.duration {width: 45%;display: inline-block;}
+		.resources {
+			input[type="file"] {display: none;}
+			select {width: 40%;}
+			label {
+				margin-top: 10px;
+			}
+			a.btn-white {
+				font-size: 14px;
+			}
+			a.another-resource {
+				margin-top: 15px;
+			}
+
+		}
+
+	}
+	.team {
+		padding-top: 20px;
+		form {padding-bottom: 30px;}
+		input {
+			max-width: 100%;
+		}
+		.form-group {
+			margin-top: 15px;
+		}
+		.sort {
+			label {display: block;}
+			input{
+				width: 30px;
+				display: inline-block;
+				margin-right: 5px;
+			}
+		}
+		.carets {
+				width: 10px;
+				display: inline-block;
+				vertical-align: middle;
+				i {
+					font-size: 15px;
+				}
+		}
+		.add-collaborate {
+			position: relative;
+			background-color: $light-grey;
+			overflow: hidden;
+			margin: 20px 0;
+
+		}
+		.remove {
+			position: absolute;
+		    left: 80%;
+		    bottom: 10%;
+		}
+		.collaborate {
+			position: relative;
+			background-color: $light-grey;
+			overflow: hidden;
+			margin: 20px 0;
+			.form-group  {
+				margin-top: 7px;
+			}
+			.profile-container {
+				width: 100%;
+				.profile-card {
+					.left {width: 110px;}
+					.right {
+						width: 60%;
+					}
+				}
+			}
+			.admin {
+				text-align: center;
+				i {
+					color: $blue;
+					font-size: 20px;
+				}
+			}
+		}
+		a.new-collab {
+			font-size: 14px;
+			padding: 5px;
+			i {width: 30px;}
+		}
+
+	}
+	.team-guide {padding-top: 70px;}
+}
+
+.team,.team-guide {display: none;}
+.how-to, .how-to-guide {display: none;}
+
+.borderedless td, .borderedless th {
+    border: none !important;
+    padding-left: 0 !important;
+}

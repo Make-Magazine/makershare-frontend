@@ -1,0 +1,108 @@
+
+.page-challenge {
+
+	background-color: $light-grey;
+	overflow: hidden;
+}
+.challenge-header {
+	height: 160px;
+	text-align: left;
+	h3 {
+		margin: auto;
+		padding-top: 45px;
+		color: $main-grey;
+		padding-bottom: 10px;
+        font-weight: normal;
+	}
+	
+}
+.challenges-container {
+	padding: 25px 0;
+}
+.challenge-card {
+
+    background-color: $white;
+    padding: 5px;
+    margin: 5px;
+    border:1px solid $main-grey;
+    overflow: hidden;
+    .image-container {
+        overflow: hidden;
+        position: relative;
+        padding: 0;
+        img {
+            height: 300px;
+        	width: 100%;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-top: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        	background-color: rgba(50,50,50,0.7);
+        	padding: 5px;
+        	color: $white;
+            font-size: 21px;
+
+        }
+    }
+    .card-container {
+        color: $main-grey;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+        .card {
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .card-status {
+            background-color: $light-grey;
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            color: #757575;
+            font-size: 12px;
+        }
+
+        p.card-partnership {}
+
+        
+
+        .card-description {
+            h4 {
+                font-weight: bold;
+            }
+
+            p {
+                margin-bottom: 55px;
+                margin-left: -15px;
+                font-weight: normal;
+                line-height: 25px;
+            }
+        }
+
+        .card-buttons {
+            position: relative;
+            bottom: 5px;
+            a.btn.btn-grey {
+            	background-color: $light-grey;
+            	color: $blue*0.8;
+            	font-size: 12px;
+                padding: 5px 15px;
+            }
+            .follow-number {
+                background-color: $light-grey*0.9;
+                padding: 3px 15px;
+                border-radius: 20px;
+                font-size: 13px;
+                color: $main-grey;
+                margin-left: 10px;
+            }
+        }
+    }
+
+
+   
+}
