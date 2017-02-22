@@ -6,6 +6,7 @@ import { HowToComponent } from './how-to/how-to.component';
 import { TeamComponent } from './team/team.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ng2-tag-input';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { TagInputModule } from 'ng2-tag-input';
     CommonModule,
     ReactiveFormsModule,
     TagInputModule,
+    CKEditorModule,
   ],
   declarations: [CreateProjectComponent, YourStoryComponent, HowToComponent, TeamComponent]
 })
