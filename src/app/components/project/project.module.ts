@@ -12,5 +12,3 @@ import { CreateProjectModule } from './create-project/create-project.module';
   declarations: []
 })
 export class ProjectModule { }
-
-export const ProjectComponents = [];

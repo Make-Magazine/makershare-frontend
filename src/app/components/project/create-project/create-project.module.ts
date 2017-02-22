@@ -5,11 +5,14 @@ import { YourStoryComponent } from './your-story/your-story.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { TeamComponent } from './team/team.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ng2-tag-input';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TagInputModule,
   ],
   declarations: [CreateProjectComponent, YourStoryComponent, HowToComponent, TeamComponent]
 })

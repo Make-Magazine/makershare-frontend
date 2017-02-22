@@ -19,11 +19,6 @@ import { ProjectsComponent } from './components/account/profile/projects/project
 import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 import { ProjectModule } from './components/project/project.module';
 
-//npm tag input
-import { TagInputModule } from 'ng2-tag-input';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +35,6 @@ import { TagInputModule } from 'ng2-tag-input';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    TagInputModule,
     ProjectModule,
     routing,
   ],

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-your-story',
@@ -9,10 +10,13 @@ import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
   YourStoryForm: FormGroup;
-  ProjectName: FormControl;
-  categories: FormControl;
-  teaser: FormControl;
-  coverphoto: FormControl;
+  Name: FormControl;
+  Categories: FormControl;
+  Teaser: FormControl;
+  Coverphoto: FormControl;
+  ShowTellVideo: FormControl;
+  AhaMoment: FormControl;
+  UhOhMoment: FormControl;
 
   ImgURL = '';
   accepted_image_width = 600;
@@ -29,18 +33,20 @@ export class YourStoryComponent implements OnInit {
 
   buildForm(): void {
    this.YourStoryForm = this.fb.group({
-     'ProjectName': [this.ProjectName, [
-         Validators.required,
-         Validators.minLength(4),
-       ]
-     ],
+     'Name': [this.Name, [Validators.required, Validators.minLength(4)]],
+     'Categories': [this.Categories, [Validators.required]],
+     'Teaser': [this.Teaser, [Validators.required]],
+     'Coverphoto': [this.Coverphoto, [Validators.required]],
+     'ShowTellVideo': [this.ShowTellVideo, [CustomValidators.url]],
+     'AhaMoment': [this.AhaMoment, [CustomValidators.url]],
+     'UhOhMoment': [this.UhOhMoment, [CustomValidators.url]],
    });
    this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
    this.onValueChanged(); // (re)set validation messages now
  }
 
  ImageUpdated(event){
-   this.YourStoryForm.controls['coverphoto'].setValue(null);
+   this.YourStoryForm.controls['Coverphoto'].setValue(null);
    var files = event.srcElement.files;
    if(files.length == 1 && files[0].type.startsWith("image")){
     var reader = new FileReader();
@@ -51,18 +57,18 @@ export class YourStoryComponent implements OnInit {
       let CreateComponent = this;
       image.onload = function() {
         if(image.width < CreateComponent.accepted_image_width || image.height < CreateComponent.accepted_image_height){
-          CreateComponent.formErrors.coverphoto = CreateComponent.validationMessages.coverphoto.wrongsize;
+          CreateComponent.formErrors.Coverphoto = CreateComponent.validationMessages.Coverphoto.wrongsize;
           CreateComponent.ImgURL = '';
         }else{
           CreateComponent.ImgURL = imgsrc.target.result;
-          CreateComponent.YourStoryForm.controls['coverphoto'].setValue(files[0]);
+          CreateComponent.YourStoryForm.controls['Coverphoto'].setValue(files[0]);
         }
       };
     }
     reader.readAsDataURL(files[0]);
    }
    else{
-     this.formErrors.coverphoto = this.validationMessages.coverphoto.notvalidformat;
+     this.formErrors.Coverphoto = this.validationMessages.Coverphoto.notvalidformat;
      this.ImgURL = '';     
    }
  }
@@ -89,27 +95,39 @@ export class YourStoryComponent implements OnInit {
   }
 
   formErrors = {
-     'name': '',
-     'categories': '',
-     'teaser': '',
-     'coverphoto': '',
+     'Name': '',
+     'Categories': '',
+     'Teaser': '',
+     'Coverphoto': '',
+     'ShowTellVideo': '',
+     'AhaMoment': '',
+     'UhOhMoment': '',
    };
 
    validationMessages = {
-     'name': {
+     'Name': {
        'required':      'Project Name is required.',
        'minlength':     'Project Name must be at least 4 characters long.',
      },
-     'categories': {
+     'Categories': {
        'required': 'Categories is required.'
      },
-     'teaser': {
+     'Teaser': {
        'required': 'Teaser is required.'
      },
-     'coverphoto': {
+     'Coverphoto': {
        'required': 'Cover photo is required.',
        'notvalidformat': 'Please choose an image file.',
-       'wrongsize': 'choose a photo that is at least 600 x 400 px',
+       'wrongsize': 'choose a photo that is at least 600 x 400 px.',
+     },
+     'ShowTellVideo': {
+       'url': 'Please enter a valid url, ex: http://example.com.',
+     },
+     'AhaMoment': {
+       'url': 'Please enter a valid url, ex: http://example.com.',
+     },
+     'UhOhMoment': {
+       'url': 'Please enter a valid url, ex: http://example.com.',
      },
    };
 }
