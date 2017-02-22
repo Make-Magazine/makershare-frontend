@@ -432,6 +432,9 @@ body {
     margin: 0;
     color: #757575; }
 
+.error-msg {
+  margin-top: 10px; }
+
 .front .banner {
   /* Carousel base class */
   /* Since positioning the image, we need to help out the caption */ }
@@ -1328,6 +1331,9 @@ header.showcase-project {
     margin-top: 40px; }
   .page-create-project-why input {
     border-radius: 0px; }
+  .page-create-project-why #projectCategory {
+    height: auto;
+    padding: 0; }
   .page-create-project-why .nav-create {
     border-bottom: 1px solid #757575;
     padding-top: 10px; }
