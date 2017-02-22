@@ -5,7 +5,6 @@ import { CustomValidators } from 'ng2-validation';
 @Component({
   selector: 'app-your-story',
   templateUrl: './your-story.component.html',
-  styleUrls: ['./your-story.component.css']
 })
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
@@ -17,6 +16,7 @@ export class YourStoryComponent implements OnInit {
   ShowTellVideo: FormControl;
   AhaMoment: FormControl;
   UhOhMoment: FormControl;
+  Tags: FormControl;
 
   ImgURL = '';
   accepted_image_width = 600;
@@ -40,6 +40,7 @@ export class YourStoryComponent implements OnInit {
      'ShowTellVideo': [this.ShowTellVideo, [CustomValidators.url]],
      'AhaMoment': [this.AhaMoment, [CustomValidators.url]],
      'UhOhMoment': [this.UhOhMoment, [CustomValidators.url]],
+     'Tags': [this.Tags, [Validators.required]],
    });
    this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
    this.onValueChanged(); // (re)set validation messages now
@@ -102,6 +103,7 @@ export class YourStoryComponent implements OnInit {
      'ShowTellVideo': '',
      'AhaMoment': '',
      'UhOhMoment': '',
+     'Tags': '',
    };
 
    validationMessages = {
@@ -128,6 +130,9 @@ export class YourStoryComponent implements OnInit {
      },
      'UhOhMoment': {
        'url': 'Please enter a valid url, ex: http://example.com.',
+     },
+     'Tags': {
+       'required': 'Tags is required.'
      },
    };
 }

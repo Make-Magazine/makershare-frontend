@@ -15,60 +15,62 @@
     </div>
     <div class="form-group projectHelp">
       <label for="projectHelp">Would you like help with this project?</label>
-      <textarea class="form-control" rows="5" id="projectHelp" placeholder="Tell the Community about what you are looking for help with."></textarea>
+      <textarea class="form-control" rows="5" id="projectHelp" placeholder="Tell the Community about what you are looking for help with." formControlName='HelpLookingFor'></textarea>
     </div>
     <div class="form-group tools">
       <label>Tools</label>
-      <div class="table-responsive">
-            <table class="table borderedless">
-                <thead>
-                    <th>Name</th>
-                    <th>URL</th>
-                    <th>Sort order</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
-                        <td><input type="text" placeholder="URL (optional)" class="form-control" /></td>
-                        <td><input type="text" placeholder="1" class="form-control sort" />
+      <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="table-responsive">
+        <table class="table borderedless">
+          <thead>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Sort order</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
+              <td><input type="text" placeholder="URL (optional)" class="form-control" /></td>
+              <td>
+                <input type="text" placeholder="1" class="form-control sort" />
                 <div class="carets">
                   <i class="fa fa-2x fa-caret-up"></i>
-                              <i class="fa fa-2x fa-caret-down"></i>
+                  <i class="fa fa-2x fa-caret-down"></i>
                 </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div><!-- End tools table -->
-        <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- End tools table -->
+      <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
-      <div class="form-group materials">
-          <label>Materials</label>
+    <div class="form-group materials">
+      <label>Materials</label>
       <div class="table-responsive">
-            <table class="table borderedless">
-                <thead>
-                    <th>Quantity</th>
-                    <th>Name</th>
-                    <th>Sort order</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="quantity"><input type="text" placeholder="1" class="form-control" /></td>
-                        <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
-                        <td><input type="text" placeholder="1" class="form-control sort" />
+        <table class="table borderedless">
+          <thead>
+            <th>Quantity</th>
+            <th>Name</th>
+            <th>Sort order</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="quantity"><input type="text" placeholder="1" class="form-control" /></td>
+              <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
+              <td>
+                <input type="text" placeholder="1" class="form-control sort" />
                 <div class="carets">
                   <i class="fa fa-2x fa-caret-up"></i>
-                              <i class="fa fa-2x fa-caret-down"></i>
+                  <i class="fa fa-2x fa-caret-down"></i>
                 </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div><!-- End materials table -->
-        <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
-      </div>
-      <div class="form-group parts">
-        <label>Parts</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- End materials table -->
+      <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+    </div>
+    <div class="form-group parts">
+      <label>Parts</label>
       <div class="table-responsive">
             <table class="table borderedless">
                 <thead>
