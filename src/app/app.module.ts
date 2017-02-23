@@ -15,6 +15,7 @@ import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 
+
 // New Structure
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';

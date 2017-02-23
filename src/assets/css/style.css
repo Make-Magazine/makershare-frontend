@@ -1402,6 +1402,7 @@ header.showcase-project {
     height: auto;
     padding: 0; }
   .page-create-project-why .your-story .projectTags tag-input {
+    max-width: 60%;
     height: auto;
     padding: 5px; }
   .page-create-project-why .how-to form {
@@ -1421,10 +1422,12 @@ header.showcase-project {
       line-height: 10px; }
       .page-create-project-why .how-to .carets i.sort-up {
         position: absolute;
-        top: -10px; }
+        top: -10px;
+        left: 0; }
       .page-create-project-why .how-to .carets i.sort-down {
         position: absolute;
-        bottom: -15px; }
+        bottom: -15px;
+        left: 0; }
       .page-create-project-why .how-to .carets i::before {
         float: left; }
   .page-create-project-why .how-to .tools thead th:first-child {
