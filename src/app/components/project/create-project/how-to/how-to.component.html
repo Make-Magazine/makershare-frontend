@@ -59,7 +59,7 @@
     <div class="form-group materials">
       <label>Materials</label>
       <div formArrayName="Materials" dnd-sortable-container [sortableData]="HowToForm.controls.Materials.controls" dnd-draggable [dropZones]="['MaterialsZone']">
-        <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Materials')" dnd-droppable [dropZones]="['MaterialsZone', 'zone2']">
+        <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Materials')" dnd-droppable [dropZones]="['MaterialsZone']">
           <div class="panel-heading">
             <span>Material {{i + 1}}</span>
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Materials.controls.length > 1" (click)="RemoveRow(i,'Materials')"></span>
@@ -97,8 +97,8 @@
     </div>
     <div class="form-group parts">
       <label>Parts</label>
-      <div formArrayName="Parts" dnd-sortable-container [sortableData]="HowToForm.controls.Parts.controls">
-        <div *ngFor="let Part of HowToForm.controls.Parts.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Parts')">
+      <div formArrayName="Parts" dnd-sortable-container [sortableData]="HowToForm.controls.Parts.controls" dnd-draggable [dropZones]="['PartssZone']">
+        <div *ngFor="let Part of HowToForm.controls.Parts.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Parts')" dnd-droppable [dropZones]="['PartssZone']">
           <div class="panel-heading">
             <span>Part {{i + 1}}</span>
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Parts.controls.length > 1" (click)="RemoveRow(i,'Parts')"></span>
@@ -129,8 +129,8 @@
               <label>Sort order</label>
               <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.SortOrder" />
               <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1,'Parts')"></i>
-                <i *ngIf="i < HowToForm.controls.Parts.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1,'Parts')"></i>
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Parts')"></i>
+                <i *ngIf="i < HowToForm.controls.Parts.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Parts')"></i>
               </div>
               <small *ngIf="formErrors.Parts[i].SortOrder" class="text-danger">
                 {{formErrors.Parts[i].SortOrder}}
