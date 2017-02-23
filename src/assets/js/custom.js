@@ -154,12 +154,6 @@ $(document).ready(function() {
 		fieldsArray = ["file-upload-","repo-","resources-tag-"]
 		addNewField($(this),fieldsArray,$('.resources-group'),$('.resources-group'));
     });
-    // Adding another tool
-    $(document).on('click','.tools a',function(e){
-    	e.preventDefault();
-		fieldsArray = ["tool-name-","tool-url-","tool-sort-"]
-		addNewField($(this),fieldsArray,$('.tools-row'),$('.tools-row'));
-    });
 
     // navigating the create project page tabs
     $(document).on('click','.nav-create li a', function(e){

@@ -31,56 +31,92 @@ export class HowToComponent implements OnInit {
      'Tools': this.fb.array([]),
    });
    this.AddTool();
-   this.HowToForm.valueChanges.subscribe(data => this.onValueChanged(data));
-   this.onValueChanged(); // (re)set validation messages now
- }
-
- AddTool() {
-  const control = <FormArray>this.HowToForm.controls['Tools'];
-  const addrCtrl = this.InitTool();
-  control.push(addrCtrl);    
-  /* subscribe to individual tool value changes */
-  addrCtrl.valueChanges.subscribe(x => {
-    console.log(x);
-  })
-}
-
-InitTool() {
-  return this.fb.group({
-    SortOrder:['',CustomValidators.number],
-    Name: ['', Validators.required],
-    Url: ['', CustomValidators.url],
-  });
-}
-
- onValueChanged(data?: any) {
-    if (!this.HowToForm) { return; }
-    const form = this.HowToForm;
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
+   this.HowToForm.valueChanges.subscribe(data => 
+   {
+    this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
     if(this.HowToForm.valid){
       this.HowTo.emit(this.HowToForm);
     }else{
       this.HowTo.emit(false);
     }
+   });
+   this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages); // (re)set validation messages now
+ }
+
+ AddTool() {
+  const control = <FormArray>this.HowToForm.controls['Tools'];
+  const addrCtrl = this.InitTool();
+  let index = control.length;
+  control.push(addrCtrl); 
+  this.formErrors['Tools'].push(this.GetErrorStructure('Tools')); 
+  /* subscribe to individual tool value changes */
+}
+
+RemoveTool(i: number) {
+  const control = <FormArray>this.HowToForm.controls['Tools'];
+  control.removeAt(i);
+}
+
+InitTool() {
+  return this.fb.group({
+    'SortOrder':['',CustomValidators.number],
+    'Name': ['', Validators.required],
+    'Url': ['', CustomValidators.url],
+  });
+}
+
+ChangeOrder(CurrentIndex, NewIndex){
+  const control = <FormArray>this.HowToForm.controls['Tools'];
+  let currentrow = control.at(CurrentIndex);
+  let newrow = control.at(NewIndex);
+  control.setControl(CurrentIndex,newrow);
+  control.setControl(NewIndex,currentrow);
+}
+
+ onValueChanged(form, formErrors, validationMessages) {
+    for (const field in formErrors) {
+      // clear previous error message (if any)
+      if(typeof formErrors[field] === 'string'){
+        formErrors[field] = '';
+        const control = form.get(field);
+        console.log(control);
+        if (control && control.dirty && !control.valid) {
+          const messages = validationMessages[field];
+          for (const key in control.errors) {
+            formErrors[field] += messages[key] + ' ';
+          }
+        }
+      }else{
+        form.get(field).controls.forEach((element, index) => {
+          this.onValueChanged(element,formErrors[field][index] ,validationMessages[field]);
+        });
+      }
+    }
+  }
+
+  GetErrorStructure(field?) : string | Object {
+    if(field === 'Tools'){
+      return {'Name': '','Url': ''};
+    }
+    return '';
   }
 
   formErrors = {
      'OtherProjctVideo': '',
+     'Tools': [],
    };
 
    validationMessages = {
      'OtherProjctVideo': {
        'url': 'Please enter a valid url, ex: http://example.com.',
      },
+     'Tools': {
+      'Name':{
+        'required':'Name is required',
+      },       
+      'Url':{
+        'url': 'Please enter a valid url, ex: http://example.com.',
+      },
+     }
    };
 }

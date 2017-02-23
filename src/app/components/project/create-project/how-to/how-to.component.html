@@ -19,29 +19,39 @@
     </div>
     <div class="form-group tools">
       <label>Tools</label>
-      <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="table-responsive">
-        <table class="table borderedless">
-          <thead>
-            <th>Name</th>
-            <th>URL</th>
-            <th>Sort order</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
-              <td><input type="text" placeholder="URL (optional)" class="form-control" /></td>
-              <td>
-                <input type="text" placeholder="1" class="form-control sort" />
-                <div class="carets">
-                  <i class="fa fa-2x fa-caret-up"></i>
-                  <i class="fa fa-2x fa-caret-down"></i>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- End tools table -->
-      <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <div formArrayName="Tools">
+        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Tool {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveTool(i)"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-6">
+              <label>Name</label>
+              <input type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="form-control" [formControl]="Tool.controls.Name">
+              <small *ngIf="formErrors.Tools[i].Name" class="text-danger">
+                {{formErrors.Tools[i].Name}}
+              </small>
+            </div>
+            <div class="form-group col-xs-4">
+              <label>URL</label>
+              <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.Url">
+              <small *ngIf="formErrors.Tools[i].Url" class="text-danger">
+                {{formErrors.Tools[i].Url}}
+              </small>
+            </div>
+            <div class="form-group col-xs-2">
+              <label>Sort order</label>
+              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" class="form-control sort" [formControl]="Tool.controls.SortOrder" disabled />
+              <div class="carets">
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1)"></i>
+                <i *ngIf="i < HowToForm.controls.Tools.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a (click)="AddTool()" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
     <div class="form-group materials">
       <label>Materials</label>
