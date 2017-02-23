@@ -1445,6 +1445,8 @@ header.showcase-project {
     padding: 5px; }
     .page-create-project-why .how-to .tools a i, .page-create-project-why .how-to .materials a i, .page-create-project-why .how-to .parts a i {
       width: 30px; }
+  .page-create-project-why .how-to .tools .panel-heading, .page-create-project-why .how-to .materials .panel-heading, .page-create-project-why .how-to .parts .panel-heading {
+    cursor: move; }
   .page-create-project-why .how-to .difficulty {
     width: 45%;
     margin-right: 5%;
