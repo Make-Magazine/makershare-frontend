@@ -20,7 +20,7 @@
     <div class="form-group tools">
       <label>Tools</label>
       <div formArrayName="Tools" dnd-sortable-container [sortableData]="HowToForm.controls.Tools.controls">
-        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i">
+        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Tools')">
           <div class="panel-heading">
             <span>Tool {{i + 1}}</span>
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveRow(i,'Tools')"></span>
@@ -56,11 +56,10 @@
       </div>
       <a (click)="AddRow('Tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
-    {{formErrors|json}}
     <div class="form-group materials">
       <label>Materials</label>
-      <div formArrayName="Materials">
-        <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default">
+      <div formArrayName="Materials" dnd-sortable-container [sortableData]="HowToForm.controls.Materials.controls">
+        <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Materials')">
           <div class="panel-heading">
             <span>Material {{i + 1}}</span>
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Materials.controls.length > 1" (click)="RemoveRow(i,'Materials')"></span>

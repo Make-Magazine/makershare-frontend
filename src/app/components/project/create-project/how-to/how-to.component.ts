@@ -28,6 +28,9 @@ export class HowToComponent implements OnInit {
     this.buildForm();
   }
 
+  /**
+   * Build form when Initalize the component
+   */
   buildForm(): void {
     this.HowToForm = this.fb.group({
       'OtherProjctVideo': [this.OtherProjctVideo, [CustomValidators.url]],
@@ -39,8 +42,6 @@ export class HowToComponent implements OnInit {
     this.AddRow('Materials');
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
-      console.log(this.HowToForm.valid);
-      console.log(this.HowToForm.value);
       if(this.HowToForm.valid){
         this.HowTo.emit(this.HowToForm);
       }else{
@@ -50,6 +51,9 @@ export class HowToComponent implements OnInit {
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
   }
 
+  /**
+   * Adding new element to control array and also pushing new error structure for this row
+   */
   AddRow(ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let index = control.length + 1;
@@ -99,10 +103,9 @@ export class HowToComponent implements OnInit {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
     let newrow = control.at(NewIndex);
-    control.controls[CurrentIndex]['controls'].SortOrder.setValue(NewIndex + 1);
-    control.controls[NewIndex]['controls'].SortOrder.setValue(CurrentIndex + 1);
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
+    this.SortElements(ControlName);
   }
 
   /**
@@ -145,6 +148,22 @@ export class HowToComponent implements OnInit {
    }
     return '';
   }
+
+  /**
+   * Sort rows of a field to set sort order
+   */
+  SortElements(ControlName){
+    const control = <FormArray>this.HowToForm.controls[ControlName];
+    control.controls.forEach((element, index) => {
+      element['controls']['SortOrder'].setValue(index + 1);
+    });
+  }
+
+  // SortElements(ControlName){
+  //   const control = <FormArray>this.HowToForm.controls[ControlName];
+  //   control.controls[CurrentIndex]['controls'].SortOrder.setValue(NewIndex + 1);
+
+  // }
 
   /**
    * An Object of form errors contains the error string value for each field
