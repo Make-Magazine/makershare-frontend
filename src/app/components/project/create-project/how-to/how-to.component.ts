@@ -20,6 +20,8 @@ export class HowToComponent implements OnInit {
   HelpLookingFor: FormControl;
   Tools: FormControl;
   Materials: FormControl;
+  Difficulty: FormControl;
+  Diffeculties = ['Easy', 'Moderate', 'Hard'];
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +41,7 @@ export class HowToComponent implements OnInit {
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
       'Parts': this.fb.array([]),
+      'Difficulty': [this.Diffeculties,[Validators.required,inarray(this.Diffeculties)]],
     });
     this.AddRow('Tools');
     this.AddRow('Materials');
@@ -186,6 +189,7 @@ export class HowToComponent implements OnInit {
     'Tools': [],
     'Materials': [],
     'Parts': [],
+    'Difficulty': '',
   };
 
    /**
@@ -242,6 +246,10 @@ export class HowToComponent implements OnInit {
         'required':'Quantity is required.',
         'min':'Quantity must be at least 1.',
       },
+    },
+    'Difficulty': {
+      'required': 'Difficulty required.',
+      'inarray': 'Selected difficulty is not accepted',
     },
   };
 }
