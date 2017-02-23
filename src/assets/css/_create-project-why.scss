@@ -126,10 +126,12 @@
 				&.sort-up{
 					position: absolute;
 					top: -10px;
+					left: 0;
 				}
 				&.sort-down{
 					position: absolute;
 					bottom: -15px;
+					left: 0;
 				}
 				&::before {
 					float: left;
