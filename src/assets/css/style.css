@@ -1402,6 +1402,7 @@ header.showcase-project {
     height: auto;
     padding: 0; }
   .page-create-project-why .your-story .projectTags tag-input {
+    max-width: 60%;
     height: auto;
     padding: 5px; }
   .page-create-project-why .how-to form {

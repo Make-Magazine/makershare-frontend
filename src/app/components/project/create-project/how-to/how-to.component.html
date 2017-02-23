@@ -19,8 +19,8 @@
     </div>
     <div class="form-group tools">
       <label>Tools</label>
-      <div formArrayName="Tools">
-        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default">
+      <div formArrayName="Tools" dnd-sortable-container [sortableData]="HowToForm.controls.Tools.controls">
+        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i">
           <div class="panel-heading">
             <span>Tool {{i + 1}}</span>
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveRow(i,'Tools')"></span>

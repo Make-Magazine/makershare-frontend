@@ -7,6 +7,7 @@ import { TeamComponent } from './team/team.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { DndModule } from '../../../../../node_modules/ng2-dnd';
 
 
 @NgModule({
@@ -15,6 +16,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     ReactiveFormsModule,
     TagInputModule,
     CKEditorModule,
+    DndModule.forRoot(),
+
   ],
   declarations: [CreateProjectComponent, YourStoryComponent, HowToComponent, TeamComponent]
 })
