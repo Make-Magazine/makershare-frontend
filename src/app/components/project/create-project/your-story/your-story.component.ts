@@ -24,7 +24,6 @@ export class YourStoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
   ) { 
-    this.YourStory.emit(this.YourStoryForm);
   }
 
   ngOnInit() {

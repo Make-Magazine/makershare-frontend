@@ -23,7 +23,7 @@
         <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default">
           <div class="panel-heading">
             <span>Tool {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveTool(i)"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveRow(i,'Tools')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-6">
@@ -42,42 +42,58 @@
             </div>
             <div class="form-group col-xs-2">
               <label>Sort order</label>
-              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" class="form-control sort" [formControl]="Tool.controls.SortOrder" disabled />
+              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.SortOrder" />
               <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1)"></i>
-                <i *ngIf="i < HowToForm.controls.Tools.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1)"></i>
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1,'Tools')"></i>
+                <i *ngIf="i < HowToForm.controls.Tools.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1,'Tools')"></i>
               </div>
+              <small *ngIf="formErrors.Tools[i].SortOrder" class="text-danger">
+                {{formErrors.Tools[i].SortOrder}}
+              </small>
             </div>
           </div>
         </div>
       </div>
-      <a (click)="AddTool()" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <a (click)="AddRow('Tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
     <div class="form-group materials">
       <label>Materials</label>
-      <div class="table-responsive">
-        <table class="table borderedless">
-          <thead>
-            <th>Quantity</th>
-            <th>Name</th>
-            <th>Sort order</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="quantity"><input type="text" placeholder="1" class="form-control" /></td>
-              <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
-              <td>
-                <input type="text" placeholder="1" class="form-control sort" />
-                <div class="carets">
-                  <i class="fa fa-2x fa-caret-up"></i>
-                  <i class="fa fa-2x fa-caret-down"></i>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- End materials table -->
-      <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <div formArrayName="Materials">
+        <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Material {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Materials.controls.length > 1" (click)="RemoveRow(i,'Materials')"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-2">
+              <label>Quantity</label>
+              <input type="number" id="material-quantity-{{i + 1}}" placeholder="1" class="form-control" [formControl]="Material.controls.Quantity">
+              <small *ngIf="formErrors.Materials[i].Quantity" class="text-danger">
+                {{formErrors.Materials[i].Quantity}}
+              </small>
+            </div>
+            <div class="form-group col-xs-8">
+              <label>Name</label>
+              <input type="text" id="material-name-{{i + 1}}" placeholder="Name of material" class="form-control" [formControl]="Material.controls.Name">
+              <small *ngIf="formErrors.Materials[i].Name" class="text-danger">
+                {{formErrors.Materials[i].Name}}
+              </small>
+            </div>
+            <div class="form-group col-xs-2">
+              <label>Sort order</label>
+              <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.SortOrder" />
+              <div class="carets">
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1,'Materials')"></i>
+                <i *ngIf="i < HowToForm.controls.Materials.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1,'Materials')"></i>
+              </div>
+              <small *ngIf="formErrors.Materials[i].SortOrder" class="text-danger">
+                {{formErrors.Materials[i].SortOrder}}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a (click)="AddRow('Materials')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
     <div class="form-group parts">
       <label>Parts</label>
