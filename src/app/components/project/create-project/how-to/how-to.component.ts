@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
+import { inarray } from '../../../../validations/inarray.validation'
 
 @Component({
   selector: 'app-how-to',
@@ -37,9 +38,11 @@ export class HowToComponent implements OnInit {
       'HelpLookingFor': [this.HelpLookingFor, []],
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
+      'Parts': this.fb.array([]),
     });
     this.AddRow('Tools');
     this.AddRow('Materials');
+    this.AddRow('Parts');
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
       if(this.HowToForm.valid){
@@ -90,6 +93,15 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'Name': ['', Validators.required],
           'Quantity': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+        });
+      }
+      case 'Parts':
+      {
+        return this.fb.group({
+          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'Name': ['', [Validators.required]],
+          'Link': ['', CustomValidators.url],
+          'Number': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
         });
       }
     }
@@ -145,12 +157,16 @@ export class HowToComponent implements OnInit {
     {
       return {'SortOrder':'', 'Name': '','Quantity': ''};
     }
+    case 'Parts':
+    {
+      return {'SortOrder':'', 'Name': '', 'Link': '','Number': ''};
+    }
    }
     return '';
   }
 
   /**
-   * Sort rows of a field to set sort order
+   * Sort rows of a field to set sort order equals the current index
    */
   SortElements(ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
@@ -158,12 +174,6 @@ export class HowToComponent implements OnInit {
       element['controls']['SortOrder'].setValue(index + 1);
     });
   }
-
-  // SortElements(ControlName){
-  //   const control = <FormArray>this.HowToForm.controls[ControlName];
-  //   control.controls[CurrentIndex]['controls'].SortOrder.setValue(NewIndex + 1);
-
-  // }
 
   /**
    * An Object of form errors contains the error string value for each field
@@ -175,6 +185,7 @@ export class HowToComponent implements OnInit {
     'OtherProjctVideo': '',
     'Tools': [],
     'Materials': [],
+    'Parts': [],
   };
 
    /**
@@ -213,6 +224,24 @@ export class HowToComponent implements OnInit {
         'required':'Quantity is required.',
         'min':'Quantity must be at least 1.',
       },
-    }
+    },
+    'Parts': {
+      'SortOrder':{
+        'number':'Sort order must be a number.',
+        'required':'Sort order is required',
+        'min':'Sort order must be at least 1.',
+      },
+      'Name':{
+        'required':'Name is required',
+      },
+      'Link':{
+        'url': 'Please enter a valid url, ex: http://example.com.',
+      },
+      'Number':{
+        'number':'Quantity must be a number.',
+        'required':'Quantity is required.',
+        'min':'Quantity must be at least 1.',
+      },
+    },
   };
 }

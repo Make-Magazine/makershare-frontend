@@ -97,31 +97,50 @@
     </div>
     <div class="form-group parts">
       <label>Parts</label>
-      <div class="table-responsive">
-            <table class="table borderedless">
-                <thead>
-                    <th>Number</th>
-                    <th>Name</th>
-                    <th>Link to buy</th>
-                    <th>Sort order</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="quantity"><input type="text" placeholder="1" class="form-control" /></td>
-                        <td><input type="text" placeholder="Name of tool" class="form-control" /></td>
-                        <td><input type="text" placeholder="URL (optional)" class="form-control" /></td>
-                        <td><input type="text" placeholder="1" class="form-control sort" />
-                <div class="carets">
-                  <i class="fa fa-2x fa-caret-up"></i>
-                              <i class="fa fa-2x fa-caret-down"></i>
-                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div><!-- End parts table -->
-        <a class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <div formArrayName="Parts" dnd-sortable-container [sortableData]="HowToForm.controls.Parts.controls">
+        <div *ngFor="let Part of HowToForm.controls.Parts.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Parts')">
+          <div class="panel-heading">
+            <span>Part {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Parts.controls.length > 1" (click)="RemoveRow(i,'Parts')"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-2">
+              <label>Number</label>
+              <input type="number" id="part-number-{{i + 1}}" placeholder="1" class="form-control" [formControl]="Part.controls.Number">
+              <small *ngIf="formErrors.Parts[i].Number" class="text-danger">
+                {{formErrors.Parts[i].Number}}
+              </small>
+            </div>
+            <div class="form-group col-xs-4">
+              <label>Name</label>
+              <input type="text" id="part-name-{{i + 1}}" placeholder="Name of part" class="form-control" [formControl]="Part.controls.Name">
+              <small *ngIf="formErrors.Parts[i].Name" class="text-danger">
+                {{formErrors.Parts[i].Name}}
+              </small>
+            </div>
+            <div class="form-group col-xs-4">
+              <label>Link to buy</label>
+              <input id="part-link-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Part.controls.Link">
+              <small *ngIf="formErrors.Parts[i].Link" class="text-danger">
+                {{formErrors.Parts[i].Link}}
+              </small>
+            </div>
+            <div class="form-group col-xs-2">
+              <label>Sort order</label>
+              <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.SortOrder" />
+              <div class="carets">
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up" (click)="ChangeOrder(i,i-1,'Parts')"></i>
+                <i *ngIf="i < HowToForm.controls.Parts.controls.length - 1" class="fa fa-2x fa-caret-down" (click)="ChangeOrder(i,i+1,'Parts')"></i>
+              </div>
+              <small *ngIf="formErrors.Parts[i].SortOrder" class="text-danger">
+                {{formErrors.Parts[i].SortOrder}}
+              </small>
+            </div>
+          </div>
+        </div>
       </div>
+      <a (click)="AddRow('Parts')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+    </div>
       <div class="form-group difficulty">
         <label for="">Difficulty</label>
         <br>
