@@ -31,7 +31,7 @@ export class HowToComponent implements OnInit {
   buildForm(): void {
     this.HowToForm = this.fb.group({
       'OtherProjctVideo': [this.OtherProjctVideo, [CustomValidators.url]],
-      'HelpLookingFor': [this.OtherProjctVideo, []],
+      'HelpLookingFor': [this.HelpLookingFor, []],
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
     });
@@ -39,6 +39,8 @@ export class HowToComponent implements OnInit {
     this.AddRow('Materials');
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
+      console.log(this.HowToForm.valid);
+      console.log(this.HowToForm.value);
       if(this.HowToForm.valid){
         this.HowTo.emit(this.HowToForm);
       }else{
@@ -50,23 +52,30 @@ export class HowToComponent implements OnInit {
 
   AddRow(ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
-    const addrCtrl = this.InitRow(ControlName);
-    let index = control.length;
+    let index = control.length + 1;
+    const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
 
+  /**
+   * Removing row from the array 
+   */
   RemoveRow(i: number,ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     control.removeAt(i);
+    this.formErrors[ControlName].splice(i, 1);;
   }
 
-  InitRow(ControlName) {
+  /**
+   * Initalize the row with validations array and default values
+   */
+  InitRow(ControlName,index) {
     switch (ControlName){
       case 'Tools':
       {
         return this.fb.group({
-          'SortOrder':['',[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'Name': ['', Validators.required],
           'Url': ['', CustomValidators.url],
         });
@@ -74,7 +83,7 @@ export class HowToComponent implements OnInit {
       case 'Materials':
       {
         return this.fb.group({
-          'SortOrder':['',[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'Name': ['', Validators.required],
           'Quantity': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
         });
@@ -82,16 +91,24 @@ export class HowToComponent implements OnInit {
     }
   }
 
+  /**
+   * Changeing the row position for all the fields
+   * getting the current item index and the new index then switch them
+   */
   ChangeOrder(CurrentIndex, NewIndex, ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
     let newrow = control.at(NewIndex);
+    control.controls[CurrentIndex]['controls'].SortOrder.setValue(NewIndex + 1);
+    control.controls[NewIndex]['controls'].SortOrder.setValue(CurrentIndex + 1);
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
   }
 
   /**
-   * 
+   * This function will be fired on every time we make a change on the form 
+   * formErrors[field] = ''; will delete the previous errors of the field if any
+   * before we clear the field we must check if the field is already an array of FormControls
    */
   onValueChanged(form, formErrors, validationMessages) {
     for (const field in formErrors) {
