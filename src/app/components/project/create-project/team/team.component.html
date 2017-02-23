@@ -1,148 +1,47 @@
-<div class="region region-content col-sm-8">
-  <div class="team">
-    <h4>Enter up to 7 names of people who worked on the project</h4>
-    <div id="added-collaborates">
-      <div class="row collaborate nosort">
-        <div class="col-md-7">
-          <h5>Name</h5>
-          <div class=" profile-container"><!-- start profile card-->
-            <div class="profile-card">
-              <div class="left col-sm-4">
-                <div class="profile-pic">
-                  <img src="http://placehold.it/140x140" alt="" class="img-responsive">
-                </div>
-                <a href="#" class="btn btn-blue">Message</a>
-              </div>
-              <div class="right col-sm-8">
-                <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
-                <div class="trophies">
-                  <i class="fa fa-lg fa-child"></i>
-                  <i class="fa fa-lg fa-certificate"></i>
-                  <i class="fa fa-lg fa-trophy"></i>
-                </div>
-                <p class="count">6 projects</p>
-                <p class="user-city">San Francisco, CA</p>
-                <p class="profile-tag">Electronics, Arduino, Fabrication, Design</p>
-              </div>
-            </div><!-- End profile card -->
-          </div><!-- End Profile-container -->
-          <div class="clearfix"></div>
-          <div class="form-group">
-            <label for="collab-role-2">Role</label>
-            <input type="text" class="form-control" id="collab-role-3" placeholder="Start typing a name, then select">
-          </div>	
-        </div>
-        <div class="col-md-2 admin">
-          <h5>Admin</h5>
-          <i class="fa fa-check-square" aria-hidden="true"></i>
 
-        </div>
-        <div class="col-md-3">
-          <div class="form-group sort">
-            <label for="collab-order-1">Sort Order</label>
-            <input type="text" id="collab-order-1" placeholder="1">	
-          <div class="carets">
-            <i class="fa fa-2x fa-caret-up"></i>
-                        <i class="fa fa-2x fa-caret-down"></i>
-          </div>
-          </div>
-        </div>
-        <a href="" class="btn btn-transparent remove">Remove</a>
-      </div><!-- End row collaborate -->
-      <div class="row collaborate">
+<div class="region region-content col-sm-8" [formGroup]="TeamForm">
+  <div class="team" formArrayName="Team" dnd-sortable-container [sortableData]="TeamForm.controls.Team.controls" dnd-draggable [dropZones]="['TeamZone']">
+    <div id="add-sortable" *ngFor="let Member of TeamForm.controls.Team.controls; let i=index" class="panel add-collaborate" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Team')" dnd-draggable [dropZones]="['TeamZone']">
+      <div class="panel-heading">
+        <span>Member {{i + 1}}</span>
+      </div>
+      <div class="panel-body" [formGroupName]="i">
         <div class="col-md-7">
-          <h5>Name</h5>
-          <div class=" profile-container"><!-- start profile card-->
-                      <div class="profile-card">
-                        <div class="left col-sm-4">
-                          <div class="profile-pic">
-                            <img src="http://placehold.it/140x140" alt="" class="img-responsive">
-                          </div>
-                          <a href="#" class="btn btn-blue">Message</a>
-                        </div>
-                        <div class="right col-sm-8">
-                          <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
-                          <div class="trophies">
-                            <i class="fa fa-lg fa-child"></i>
-                            <i class="fa fa-lg fa-certificate"></i>
-                            <i class="fa fa-lg fa-trophy"></i>
-                          </div>
-                          <p class="count">6 projects</p>
-                          <p class="profile-tag">Make Stuff Happen kind of person!</p>
-                          <p class="user-city">San Francisco, CA</p>
-                        </div>
-                      </div><!-- End profile card -->
-                    </div><!-- End Profile-container -->
-          <div class="clearfix"></div>
           <div class="form-group">
-            <label for="collab-role-2">Role</label>
-            <input type="text" class="form-control" id="collab-role-2" placeholder="Start typing a name, then select">
+            <label for="collab-name-{{i + 1}}">Name</label>
+            <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name">
+            <small *ngIf="formErrors.Team[i].Name" class="text-danger">
+              {{formErrors.Team[i].Name}}
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="collab-role-{{i + 1}}">Role</label>
+            <input type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Role">
+            <small *ngIf="formErrors.Team[i].Role" class="text-danger">
+              {{formErrors.Team[i].Role}}
+            </small>
           </div>	
         </div>
         <div class="col-md-3 col-md-offset-2">
           <div class="form-group sort">
-            <label for="collab-ordre-2">Sort Order</label>
-            <input type="text" id="collab-order-2" placeholder="2">	
-          <div class="carets">
-            <i class="fa fa-2x fa-caret-up"></i>
-                        <i class="fa fa-2x fa-caret-down"></i>
-          </div>
-          </div>
-        </div>
-        <a href="" class="btn btn-transparent remove">Remove</a>
-      </div><!-- End row collaborate -->
-    </div><!-- End added-collaborate -->
-    <div id="add-sortable">
-      <div class="row add-collaborate">
-        <div class="col-md-7">
-          <div class="form-group">
-            <label for="collab-name-3">Name</label>
-            <input type="text" class="form-control" id="collab-name-3" placeholder="Start typing a name, then select">
-          </div>
-          <div class="form-group">
-            <label for="collab-role-3">Role</label>
-            <input type="text" class="form-control" id="collab-role-3" placeholder="Start typing a name, then select">
-          </div>	
-        </div>
-        <div class="col-md-3 col-md-offset-2">
-          <div class="form-group sort">
-            <label for="collab-order-3">Sort Order</label>
-            <input type="text" id="collab-order-3" placeholder="3">	
+            <label for="collab-order-{{i + 1}}">Sort Order</label>
+            <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.SortOrder" readonly />
             <div class="carets">
-              <i class="fa fa-2x fa-caret-up"></i>
-                          <i class="fa fa-2x fa-caret-down"></i>
+              <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Team')"></i>
+              <i *ngIf="i < TeamForm.controls.Team.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Team')"></i>
             </div>
+            <small *ngIf="formErrors.Team[i].SortOrder" class="text-danger">
+              {{formErrors.Team[i].SortOrder}}
+            </small>
           </div>
         </div>
-        <a href="" class="btn btn-transparent remove">Remove</a>
-      </div><!-- End add-collaborate -->
-      <div class="row add-collaborate">
-        <div class="col-md-7">
-          <div class="form-group">
-            <label for="collab-name-4">Name</label>
-            <input type="text" class="form-control" id="collab-name-4" placeholder="Start typing a name, then select">
-          </div>
-          <div class="form-group">
-            <label for="collab-role-4">Role</label>
-            <input type="text" class="form-control" id="collab-role-4" placeholder="Start typing a name, then select">
-          </div>	
-        </div>
-        <div class="col-md-3 col-md-offset-2">
-          <div class="form-group sort">
-            <label for="collab-order-4">Sort Order</label>
-            <input type="text" id="collab-order-4" placeholder="4">
-            <div class="carets">
-              <i class="fa fa-2x fa-caret-up"></i>
-                          <i class="fa fa-2x fa-caret-down"></i>
-            </div>
-          </div>
-        </div>
-        <a href="" class="btn btn-transparent remove">Remove</a>
-      </div><!-- End add-collaborate -->
-        <a class="btn btn-white btn-sharp new-collab"><i class="fa fa-lg fa-plus"></i> Add more</a>
-    </div>
-  </div><!-- End team -->
+      </div>
+      <a *ngIf="TeamForm.controls.Team.controls.length > 1" (click)="RemoveRow(i, 'Team')" class="btn btn-transparent remove">Remove</a>
+    </div><!-- End add-collaborate -->
+    <a (click)="AddRow('Team')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+  </div>
 </div>
+
 
 <aside class="col-md-4">
   <div class="team-guide">

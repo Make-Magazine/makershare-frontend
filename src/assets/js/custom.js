@@ -111,48 +111,21 @@ $(document).ready(function() {
         $("#cover-upload:hidden").trigger('click');
     });
 
-    // Sorting for team members drag and drop
-    $( function () {
-	    $( "#added-collaborates" ).sortable({
-      	items: "> div:not(.nosort)"
-    	});
-	    $( "#added-collaborates" ).disableSelection();
-	    
-    });
-    // sort button
-   /* $( function() {
-    	$( ".form-group.sort" ).controlgroup()
-	    $( ".form-group.sort" ).controlgroup({
-	      "direction": "vertical"
-	    });
-    })*/
-    // Removing a collab from project team
-    $(document).on('click',".remove", function(e){
-    	e.preventDefault();
-    	// check and if not admin => remove it
-    	if (!$(this).siblings('.admin').length) {
-    		$(this).closest('div').remove();
-    	}
-    	
+		$(document).on('click',".resource-file", function(e){
+        e.preventDefault();
+        $(this).parent().find(".file").trigger('click');
     });
 
-    // Adding a collab to project team
-    $(document).on('click','.new-collab',function(e){
-    	e.preventDefault();
-    	addmore = addCollab();
-    	$(addmore).insertBefore($(this))
+		$(document).on('click',"#cover-upload-link", function(e){
+        e.preventDefault();
+        $("#cover-upload:hidden").trigger('click');
     });
+
     // Adding another makerspace
     $(document).on('click','.another-space',function(e){
     	e.preventDefault();
     	spaceArray = ["makerspace-","url-"]
 		addNewField($(this),spaceArray,$('.maker-group'),$('.makerspace div.maker-group'));   	
-    });
-    // Adding another resource
-    $(document).on('click','.another-resource',function(e){
-    	e.preventDefault();
-		fieldsArray = ["file-upload-","repo-","resources-tag-"]
-		addNewField($(this),fieldsArray,$('.resources-group'),$('.resources-group'));
     });
 
     // navigating the create project page tabs

@@ -26,7 +26,7 @@
       <div>
         <app-your-story *ngIf="current_active_tab == 'Your Story'" (YourStory)="FormUpdateHandler($event , 'Your Story')"></app-your-story>
         <app-how-to *ngIf="current_active_tab == 'How To'" (HowTo)="FormUpdateHandler($event , 'How To')"></app-how-to>
-        <app-team *ngIf="current_active_tab == 'Team'"></app-team>
+        <app-team *ngIf="current_active_tab == 'Team'" (Team)="FormUpdateHandler($event , 'Team')"></app-team>
       </div>
     </div><!-- End container -->
 

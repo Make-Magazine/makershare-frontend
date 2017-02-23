@@ -22,6 +22,10 @@ export class HowToComponent implements OnInit {
   Materials: FormControl;
   Difficulty: FormControl;
   Diffeculties = ['Easy', 'Moderate', 'Hard'];
+  Duration: FormControl;
+  Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
+  Resources: FormControl;
+  ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
 
   constructor(
     private fb: FormBuilder,
@@ -42,10 +46,13 @@ export class HowToComponent implements OnInit {
       'Materials': this.fb.array([]),
       'Parts': this.fb.array([]),
       'Difficulty': [this.Diffeculties,[Validators.required,inarray(this.Diffeculties)]],
+      'Duration': [this.Durations,[Validators.required,inarray(this.Durations)]],
+      'Resources': this.fb.array([]),
     });
     this.AddRow('Tools');
     this.AddRow('Materials');
     this.AddRow('Parts');
+    this.AddRow('Resources');
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
       if(this.HowToForm.valid){
@@ -74,7 +81,8 @@ export class HowToComponent implements OnInit {
   RemoveRow(i: number,ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     control.removeAt(i);
-    this.formErrors[ControlName].splice(i, 1);;
+    this.formErrors[ControlName].splice(i, 1);
+    this.SortElements(ControlName);
   }
 
   /**
@@ -105,6 +113,15 @@ export class HowToComponent implements OnInit {
           'Name': ['', [Validators.required]],
           'Link': ['', CustomValidators.url],
           'Number': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+        });
+      }
+      case 'Resources':
+      {
+        return this.fb.group({
+          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'File': [, []],
+          'RepoLink': ['', CustomValidators.url],
+          'Label': [this.ResourceLabels,[Validators.required,inarray(this.ResourceLabels)]],
         });
       }
     }
@@ -164,6 +181,10 @@ export class HowToComponent implements OnInit {
     {
       return {'SortOrder':'', 'Name': '', 'Link': '','Number': ''};
     }
+    case 'Resources':
+    {
+      return {'SortOrder':'', 'RepoLink': '','Label': ''};
+    }
    }
     return '';
   }
@@ -178,6 +199,16 @@ export class HowToComponent implements OnInit {
     });
   }
 
+
+  FileUpdated(event, index, ControlName){
+   var files = event.srcElement.files;
+   if(files.length == 1){
+    this.HowToForm.controls[ControlName]['controls'][index].controls.File.setValue(files[0]);
+   }else{
+     this.HowToForm.controls[ControlName]['controls'][index].controls.File.setValue(null);
+   }
+  }
+
   /**
    * An Object of form errors contains the error string value for each field
    * if the field is a multiple value field
@@ -190,6 +221,8 @@ export class HowToComponent implements OnInit {
     'Materials': [],
     'Parts': [],
     'Difficulty': '',
+    'Duration': '',
+    'Resources': [],
   };
 
    /**
@@ -249,7 +282,25 @@ export class HowToComponent implements OnInit {
     },
     'Difficulty': {
       'required': 'Difficulty required.',
-      'inarray': 'Selected difficulty is not accepted',
+      'inarray': 'Selected difficulty is not accepted.',
+    },
+    'Duration': {
+      'required': 'Duration required.',
+      'inarray': 'Selected duration is not accepted.',
+    },
+    'Resources': {
+      'SortOrder':{
+        'number':'Sort order must be a number.',
+        'required':'Sort order is required.',
+        'min':'Sort order must be at least 1.',
+      },
+      'RepoLink':{
+        'url': 'Please enter a valid url, ex: http://example.com.',
+      },
+      'Label':{
+        'required': 'Label required.',
+        'inarray': 'Selected label is not accepted.',
+      },
     },
   };
 }
