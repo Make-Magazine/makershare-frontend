@@ -92,13 +92,21 @@
 			}
 			#cover-upload {display: none;}
 		}
+		.projectTags {
+			input {
+				height: auto;
+				padding: 0;
+			}
+			tag-input {
+				height: auto;
+				padding: 5px;
+			}
+			//p {padding: 20px;}
+		}
 	}
 	.how-to {
 		form {
 			padding-bottom: 130px;
-		}
-		.projectTags {
-			p {padding: 20px;}
 		}
 		.sort{
 			width: 40px;
@@ -111,7 +119,22 @@
 		.carets{
 			display: inline-block;
 			width: 30px;
-			i {line-height: 10px;}
+			position: relative;
+			margin-left: 5px;
+			i {
+				line-height: 10px;
+				&.sort-up{
+					position: absolute;
+					top: -10px;
+				}
+				&.sort-down{
+					position: absolute;
+					bottom: -15px;
+				}
+				&::before {
+					float: left;
+				}
+			}
 		}
 		.tools {
 			thead {
@@ -120,10 +143,14 @@
 			}
 		}
 		.tools, .materials, .parts {
+			input {max-width: 100%;}
+			.form-group {margin-top: 10px;}
+			.panel-body {padding: 0;}
 			a {
 				font-size: 14px;
 				padding: 5px;
 				i {width: 30px;}
+
 			}
 		}
 		.difficulty {
