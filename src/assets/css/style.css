@@ -1398,10 +1398,14 @@ header.showcase-project {
     display: inline-block; }
   .page-create-project-why .your-story .cover #cover-upload {
     display: none; }
+  .page-create-project-why .your-story .projectTags input {
+    height: auto;
+    padding: 0; }
+  .page-create-project-why .your-story .projectTags tag-input {
+    height: auto;
+    padding: 5px; }
   .page-create-project-why .how-to form {
     padding-bottom: 130px; }
-  .page-create-project-why .how-to .projectTags p {
-    padding: 20px; }
   .page-create-project-why .how-to .sort {
     width: 40px;
     display: inline-block;
@@ -1410,13 +1414,29 @@ header.showcase-project {
     width: 50px; }
   .page-create-project-why .how-to .carets {
     display: inline-block;
-    width: 30px; }
+    width: 30px;
+    position: relative;
+    margin-left: 5px; }
     .page-create-project-why .how-to .carets i {
       line-height: 10px; }
+      .page-create-project-why .how-to .carets i.sort-up {
+        position: absolute;
+        top: -10px; }
+      .page-create-project-why .how-to .carets i.sort-down {
+        position: absolute;
+        bottom: -15px; }
+      .page-create-project-why .how-to .carets i::before {
+        float: left; }
   .page-create-project-why .how-to .tools thead th:first-child {
     width: 45%; }
   .page-create-project-why .how-to .tools thead th:nth-child(2) {
     width: 35%; }
+  .page-create-project-why .how-to .tools input, .page-create-project-why .how-to .materials input, .page-create-project-why .how-to .parts input {
+    max-width: 100%; }
+  .page-create-project-why .how-to .tools .form-group, .page-create-project-why .how-to .materials .form-group, .page-create-project-why .how-to .parts .form-group {
+    margin-top: 10px; }
+  .page-create-project-why .how-to .tools .panel-body, .page-create-project-why .how-to .materials .panel-body, .page-create-project-why .how-to .parts .panel-body {
+    padding: 0; }
   .page-create-project-why .how-to .tools a, .page-create-project-why .how-to .materials a, .page-create-project-why .how-to .parts a {
     font-size: 14px;
     padding: 5px; }
