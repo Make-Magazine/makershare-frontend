@@ -145,7 +145,7 @@
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
-        <option *ngFor="let Dif of Diffeculties; let i=index" value="Dif">{{Dif}}</option>
+        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="Dif" trackBy: trackByFn>{{Dif}}</option>
       </select>
     </div>
       <div class="form-group duration">
