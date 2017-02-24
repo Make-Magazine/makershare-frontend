@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
@@ -8,6 +8,7 @@ import { CustomValidators } from 'ng2-validation';
 })
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
+  @Input('YourStoryValues') YourStoryValues;
   YourStoryForm: FormGroup;
   Name: FormControl;
   Categories: FormControl;
@@ -16,6 +17,7 @@ export class YourStoryComponent implements OnInit {
   ShowTellVideo: FormControl;
   AhaMoment: FormControl;
   UhOhMoment: FormControl;
+  Story:FormControl;
   Tags: FormControl;
 
   ImgURL = '';
@@ -28,6 +30,10 @@ export class YourStoryComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    if(this.YourStoryValues){
+      this.YourStoryForm.setValue(this.YourStoryValues);
+      this.imageFileObjectToBase64(this.YourStoryValues.Coverphoto);
+    }
   }
 
   buildForm(): void {
@@ -39,6 +45,7 @@ export class YourStoryComponent implements OnInit {
      'ShowTellVideo': [this.ShowTellVideo, [CustomValidators.url]],
      'AhaMoment': [this.AhaMoment, [CustomValidators.url]],
      'UhOhMoment': [this.UhOhMoment, [CustomValidators.url]],
+     'Story':[this.Story,[]],
      'Tags': [this.Tags, [Validators.required]],
    });
    this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -49,6 +56,15 @@ export class YourStoryComponent implements OnInit {
    this.YourStoryForm.controls['Coverphoto'].setValue(null);
    var files = event.srcElement.files;
    if(files.length == 1 && files[0].type.startsWith("image")){
+    this.imageFileObjectToBase64(files[0]);
+   }
+   else{
+     this.formErrors.Coverphoto = this.validationMessages.Coverphoto.notvalidformat;
+     this.ImgURL = '';     
+   }
+ }
+
+ imageFileObjectToBase64(file){
     var reader = new FileReader();
     reader.onload = (imgsrc:any) => {
       var image = new Image();
@@ -61,17 +77,12 @@ export class YourStoryComponent implements OnInit {
           CreateComponent.ImgURL = '';
         }else{
           CreateComponent.ImgURL = imgsrc.target.result;
-          CreateComponent.YourStoryForm.controls['Coverphoto'].setValue(files[0]);
+          CreateComponent.YourStoryForm.controls['Coverphoto'].setValue(file);
         }
       };
     }
-    reader.readAsDataURL(files[0]);
+    reader.readAsDataURL(file);
    }
-   else{
-     this.formErrors.Coverphoto = this.validationMessages.Coverphoto.notvalidformat;
-     this.ImgURL = '';     
-   }
- }
 
  onValueChanged(data?: any) {
     if (!this.YourStoryForm) { return; }

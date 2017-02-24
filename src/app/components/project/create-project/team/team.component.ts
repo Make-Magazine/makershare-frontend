@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 
@@ -8,6 +8,7 @@ import { CustomValidators } from 'ng2-validation'
 })
 export class TeamComponent implements OnInit {
   @Output() Team = new EventEmitter();
+  @Input('TeamValues') TeamValues;
   TeamForm: FormGroup;
 
   constructor(
@@ -16,6 +17,9 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    if(this.TeamValues){
+      this.TeamForm.setValue(this.TeamValues);
+    }
   }
 
   buildForm(): void {

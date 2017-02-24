@@ -9,6 +9,7 @@ import { FormBuilder, Validators , FormControl , FormControlDirective , FormGrou
 export class CreateProjectComponent implements OnInit {
   
   current_active_tab;
+  CreateProjectComponentValues = [];
 
   constructor() {}
 
@@ -18,7 +19,9 @@ export class CreateProjectComponent implements OnInit {
 
   FormUpdateHandler (event, Component){
     if(event){
-      console.log(event);
+      this.CreateProjectComponentValues[Component] =  {};
+      this.CreateProjectComponentValues[Component] = event.value;
     }
+    console.log(this.CreateProjectComponentValues);
   }
 }
