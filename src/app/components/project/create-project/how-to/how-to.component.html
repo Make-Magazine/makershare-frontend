@@ -81,7 +81,7 @@
             </div>
             <div class="form-group col-xs-2">
               <label>Sort order</label>
-              <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.SortOrder" />
+              <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.SortOrder" readonly />
               <div class="carets">
                 <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Materials')"></i>
                 <i *ngIf="i < HowToForm.controls.Materials.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Materials')"></i>
@@ -127,7 +127,7 @@
             </div>
             <div class="form-group col-xs-2">
               <label>Sort order</label>
-              <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.SortOrder" />
+              <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.SortOrder" readonly />
               <div class="carets">
                 <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Parts')"></i>
                 <i *ngIf="i < HowToForm.controls.Parts.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Parts')"></i>
@@ -145,15 +145,68 @@
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
-        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="Dif" trackBy: trackByFn>{{Dif}}</option>
+        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="{{Dif}}" trackBy: trackByFn>{{Dif}}</option>
       </select>
+      <div *ngIf="formErrors.Difficulty" class="alert alert-danger">
+        {{ formErrors.Difficulty }}
+      </div>
     </div>
-      <div class="form-group duration">
-        <label for="">Duration</label>
-        <br>
-        <!--<select class="form-control" title="Select one">
-        <option *ngFor="let Dif of Diffeculties; let i=index" value="Dif">{{Dif}}</option>-->
-      <!--</select>-->
+    <div class="form-group duration">
+      <label for="">Duration</label>
+      <br>
+      <select class="form-control" title="Select one" formControlName='Duration'>
+        <option *ngFor="let Dur of Durations; let i=index" value="{{Dur}}">{{Dur}}</option>
+      </select>
+      <div *ngIf="formErrors.Duration" class="alert alert-danger">
+        {{ formErrors.Duration }}
+      </div>
+    </div>
+    <div class="form-group resources">
+      <label>Resources</label>
+      <div formArrayName="Resources" dnd-sortable-container [sortableData]="HowToForm.controls.Resources.controls" dnd-draggable [dropZones]="['ResourcesZone']">
+        <div *ngFor="let Resource of HowToForm.controls.Resources.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Resources')" dnd-draggable [dropZones]="['ResourcesZone']">
+          <div class="panel-heading">
+            <span>Resource {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Resources.controls.length > 1" (click)="RemoveRow(i,'Resources')"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-12">
+              <label class="control-label" for="file-upload-{{i + 1}}">File</label><br>
+              <a id="file-upload-link-{{i + 1}}" class="btn btn-white btn-sharp resource-file">Choose</a>
+              <input id="file-upload-{{i + 1}}" type="file" class="file" placeholder="Upload File" (change)="FileUpdated($event,i,'Resources')">
+              <div *ngIf="Resource.controls.File.value">{{Resource.controls.File.value.name}}</div>
+            </div>
+						<div class="form-group col-xs-10">
+              <label for="repo-{{i + 1}}">Repository Link</label>
+              <input type="text" class="form-control" id="repo-{{i + 1}}" placeholder="Enter a repository URL" [formControl]="Resource.controls.RepoLink">
+              <small *ngIf="formErrors.Resources[i].RepoLink" class="text-danger">
+                {{formErrors.Resources[i].RepoLink}}
+              </small>
+						</div>
+            <div class="form-group col-xs-2">
+              <label>Sort order</label>
+              <input id="repo-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Resource.controls.SortOrder" readonly />
+              <div class="carets">
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Resources')"></i>
+                <i *ngIf="i < HowToForm.controls.Resources.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Resources')"></i>
+              </div>
+              <small *ngIf="formErrors.Resources[i].SortOrder" class="text-danger">
+                {{formErrors.Resources[i].SortOrder}}
+              </small>
+            </div>	
+            <div class="form-group col-xs-12">
+              <label for="resource-tag-{{i + 1}}">Label</label>
+              <select id="resources-tag-{{i + 1}}" class="form-control" title="- None -" [formControl]="Resource.controls.Label">
+                <option *ngFor="let Lab of ResourceLabels; let i=index" value="{{Lab}}">{{Lab}}</option>
+              </select>
+              <small *ngIf="formErrors.Resources[i].Label" class="text-danger">
+                {{formErrors.Resources[i].Label}}
+              </small>
+						</div>
+          </div>
+        </div>
+        <a (click)="AddRow('Resources')" class="btn btn-white btn-sharp another-resource"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      </div>
     </div>
   </div><!-- End how-to -->
 </div>
