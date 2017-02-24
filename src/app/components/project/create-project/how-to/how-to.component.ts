@@ -11,12 +11,14 @@ import { inarray } from '../../../../validations/inarray.validation'
 export class HowToComponent implements OnInit {
   isFirst = true;
 
-  trackByFn(index, item) {
+/* trackByFn(index, item) {
     if(index == 0){
       this.isFirst = true;
     }
   return ;
 }
+*/
+
   /**
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component

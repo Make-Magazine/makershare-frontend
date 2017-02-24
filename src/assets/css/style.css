@@ -1434,18 +1434,18 @@ header.showcase-project {
     width: 45%; }
   .page-create-project-why .how-to .tools thead th:nth-child(2) {
     width: 35%; }
-  .page-create-project-why .how-to .tools input, .page-create-project-why .how-to .materials input, .page-create-project-why .how-to .parts input {
+  .page-create-project-why .how-to .tools input, .page-create-project-why .how-to .materials input, .page-create-project-why .how-to .parts input, .page-create-project-why .how-to .resources input {
     max-width: 100%; }
-  .page-create-project-why .how-to .tools .form-group, .page-create-project-why .how-to .materials .form-group, .page-create-project-why .how-to .parts .form-group {
+  .page-create-project-why .how-to .tools .form-group, .page-create-project-why .how-to .materials .form-group, .page-create-project-why .how-to .parts .form-group, .page-create-project-why .how-to .resources .form-group {
     margin-top: 10px; }
-  .page-create-project-why .how-to .tools .panel-body, .page-create-project-why .how-to .materials .panel-body, .page-create-project-why .how-to .parts .panel-body {
+  .page-create-project-why .how-to .tools .panel-body, .page-create-project-why .how-to .materials .panel-body, .page-create-project-why .how-to .parts .panel-body, .page-create-project-why .how-to .resources .panel-body {
     padding: 0; }
-  .page-create-project-why .how-to .tools a, .page-create-project-why .how-to .materials a, .page-create-project-why .how-to .parts a {
+  .page-create-project-why .how-to .tools a, .page-create-project-why .how-to .materials a, .page-create-project-why .how-to .parts a, .page-create-project-why .how-to .resources a {
     font-size: 14px;
     padding: 5px; }
-    .page-create-project-why .how-to .tools a i, .page-create-project-why .how-to .materials a i, .page-create-project-why .how-to .parts a i {
+    .page-create-project-why .how-to .tools a i, .page-create-project-why .how-to .materials a i, .page-create-project-why .how-to .parts a i, .page-create-project-why .how-to .resources a i {
       width: 30px; }
-  .page-create-project-why .how-to .tools .panel-heading, .page-create-project-why .how-to .materials .panel-heading, .page-create-project-why .how-to .parts .panel-heading {
+  .page-create-project-why .how-to .tools .panel-heading, .page-create-project-why .how-to .materials .panel-heading, .page-create-project-why .how-to .parts .panel-heading, .page-create-project-why .how-to .resources .panel-heading {
     cursor: move; }
   .page-create-project-why .how-to .difficulty {
     width: 45%;
