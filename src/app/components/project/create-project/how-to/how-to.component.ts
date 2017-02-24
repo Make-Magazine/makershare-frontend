@@ -21,10 +21,12 @@ export class HowToComponent implements OnInit {
   Tools: FormControl;
   Materials: FormControl;
   Difficulty: FormControl;
-  Diffeculties = ['Easy', 'Moderate', 'Hard'];
   Duration: FormControl;
-  Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
   Resources: FormControl;
+
+  // data arrays
+  Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
+  Diffeculties = ['Easy', 'Moderate', 'Hard'];
   ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
 
   constructor(
@@ -33,6 +35,10 @@ export class HowToComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+  }
+
+  SetCategories(){
+
   }
 
   /**

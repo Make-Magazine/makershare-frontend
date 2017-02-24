@@ -9,7 +9,12 @@
         <div class="col-md-7">
           <div class="form-group">
             <label for="collab-name-{{i + 1}}">Name</label>
-            <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name">
+            <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" >
+              <div *ngIf="TeamUsers[i]" >
+                <div *ngFor="let User of TeamUsers[i]">
+                  {{User.username}}
+                </div>
+              </div>
             <small *ngIf="formErrors.Team[i].Name" class="text-danger">
               {{formErrors.Team[i].Name}}
             </small>

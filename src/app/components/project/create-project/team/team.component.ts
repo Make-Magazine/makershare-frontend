@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
+import { ViewService } from '../../../../d7services/view/view.service'
 
 @Component({
   selector: 'app-team',
@@ -9,9 +10,11 @@ import { CustomValidators } from 'ng2-validation'
 export class TeamComponent implements OnInit {
   @Output() Team = new EventEmitter();
   TeamForm: FormGroup;
+  TeamUsers = [];
 
   constructor(
     private fb: FormBuilder,
+    private viewService:ViewService,
   ) {}
 
   ngOnInit() {
@@ -40,6 +43,21 @@ export class TeamComponent implements OnInit {
     const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
+    /* subscribe to individual address value changes */
+    addrCtrl.valueChanges.subscribe(data => {
+      this.TeamUsers[index - 1] = [];
+      if(data.Name.length > 1){
+        this.viewService.getView('api_users_list',[['search', data.Name]]).subscribe(results => {;
+          this.TeamUsers[index - 1] = results;
+        });
+      }
+    });
+  }
+
+  RefreshUsers(index,value){
+    this.viewService.getView('api_users_list',[['search', value]]).subscribe(results => {;
+      this.TeamUsers[index - 1] = results;
+    });
   }
 
   InitRow(ControlName,index) {

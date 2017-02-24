@@ -9,7 +9,10 @@
     </div>
     <div class="form-group projectCategory">
       <label for="projectCategory">Category</label>
-      <tag-input type="text" class="form-control" id="projectCategory" placeholder="Category" formControlName='Categories'></tag-input>
+      <tag-input type="text" class="form-control" id="projectCategory" placeholder="Category" formControlName='Categories'>
+        <tag-input-dropdown [autocompleteItems]="Categories_Data">
+        </tag-input-dropdown>
+      </tag-input>
       <div *ngIf="formErrors.Categories" class="alert alert-danger error-msg">
         {{ formErrors.Categories }}
       </div>
@@ -62,7 +65,8 @@
     </div>
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
-      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='Tags'></tag-input>
+      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='Tags'>
+      </tag-input>
       <div *ngIf="formErrors.Tags" class="alert alert-danger error-msg">
         {{ formErrors.Tags }}
       </div>

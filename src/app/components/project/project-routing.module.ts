@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateProjectComponent } from './create-project/create-project/create-project.component';
+import { CreateProjectComponent } from './create-project/create-project.module';
 
 
 const ProjectRouts: Routes = [
@@ -9,11 +9,12 @@ const ProjectRouts: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(ProjectRouts)
+    RouterModule.forChild(ProjectRouts),
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  declarations: []
 })
 
 export class ProjectRoutingModule { }
