@@ -23,7 +23,7 @@
         <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Tools')" dnd-draggable [dropZones]="['ToolsZone']">
           <div class="panel-heading">
             <span>Tool {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 1" (click)="RemoveRow(i,'Tools')"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 0" (click)="RemoveRow(i,'Tools')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-6">
@@ -62,7 +62,7 @@
         <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Materials')" dnd-droppable [dropZones]="['MaterialsZone']">
           <div class="panel-heading">
             <span>Material {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Materials.controls.length > 1" (click)="RemoveRow(i,'Materials')"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Materials.controls.length > 0" (click)="RemoveRow(i,'Materials')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-2">
@@ -101,7 +101,7 @@
         <div *ngFor="let Part of HowToForm.controls.Parts.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Parts')" dnd-droppable [dropZones]="['PartssZone']">
           <div class="panel-heading">
             <span>Part {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Parts.controls.length > 1" (click)="RemoveRow(i,'Parts')"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Parts.controls.length > 0" (click)="RemoveRow(i,'Parts')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-2">
@@ -145,7 +145,7 @@
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
-        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="{{Dif}}" >{{Dif}}</option>
+        <option *ngFor="let Dif of Diffeculties; let i=index" value="{{Dif}}" >{{Dif}}</option>
       </select>
       <div *ngIf="formErrors.Difficulty" class="alert alert-danger">
         {{ formErrors.Difficulty }}
@@ -167,7 +167,7 @@
         <div *ngFor="let Resource of HowToForm.controls.Resources.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Resources')" dnd-draggable [dropZones]="['ResourcesZone']">
           <div class="panel-heading">
             <span>Resource {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Resources.controls.length > 1" (click)="RemoveRow(i,'Resources')"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Resources.controls.length > 0" (click)="RemoveRow(i,'Resources')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-12">

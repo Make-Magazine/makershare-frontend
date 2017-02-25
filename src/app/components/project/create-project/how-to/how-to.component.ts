@@ -9,8 +9,8 @@ import { inarray } from '../../../../validations/inarray.validation'
 })
 
 export class HowToComponent implements OnInit {
-  isFirst = true;
-
+  // isFirst = true;
+  // selected1 = 'selected';
 /* trackByFn(index, item) {
     if(index == 0){
       this.isFirst = true;
@@ -76,8 +76,8 @@ export class HowToComponent implements OnInit {
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
       'Parts': this.fb.array([]),
-      'Difficulty': [this.Diffeculties,[Validators.required,inarray(this.Diffeculties)]],
-      'Duration': [this.Durations,[Validators.required,inarray(this.Durations)]],
+      'Difficulty': [this.Diffeculties[0],[Validators.required,inarray(this.Diffeculties)]],
+      'Duration': [this.Durations[0],[Validators.required,inarray(this.Durations)]],
       'Resources': this.fb.array([]),
     });
     if(this.HowToValues){
@@ -89,11 +89,6 @@ export class HowToComponent implements OnInit {
         }
       });
       this.HowToForm.setValue(this.HowToValues);
-    }else{
-      this.AddRow('Tools');
-      this.AddRow('Materials');
-      this.AddRow('Parts');
-      this.AddRow('Resources');
     }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
@@ -163,7 +158,7 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'File': [, []],
           'RepoLink': ['', CustomValidators.url],
-          'Label': [this.ResourceLabels,[Validators.required,inarray(this.ResourceLabels)]],
+          'Label': ['',[inarray(this.ResourceLabels)]],
         });
       }
     }
@@ -251,6 +246,23 @@ export class HowToComponent implements OnInit {
    }
   }
 
+
+
+
+// notComplete(NameField : string ,UrlField: string){
+  
+//   return (group: FormGroup): {[key: string]: any} => {
+//     var Name = group.controls[NameField];
+//     var Url = group.controls[UrlField];
+//     console.log (Name,Url);
+//     if (Name.value === '' && Url.value !== 0) {
+//       return {
+//         mismatchedPasswords: true
+//       };
+//     }
+//   }
+
+// }
   /**
    * An Object of form errors contains the error string value for each field
    * if the field is a multiple value field

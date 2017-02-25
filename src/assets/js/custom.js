@@ -117,11 +117,6 @@ $(document).ready(function() {
         $(this).parent().find(".file").trigger('click');
     });
 
-		$(document).on('click',"#cover-upload-link", function(e){
-        e.preventDefault();
-        $("#cover-upload:hidden").trigger('click');
-    });
-
     // Adding another makerspace
     $(document).on('click','.another-space',function(e){
     	e.preventDefault();
