@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
 import { inarray } from '../../../../validations/inarray.validation'
@@ -9,16 +9,28 @@ import { inarray } from '../../../../validations/inarray.validation'
 })
 
 export class HowToComponent implements OnInit {
+  isFirst = true;
+
+/* trackByFn(index, item) {
+    if(index == 0){
+      this.isFirst = true;
+    }
+  return ;
+}
+*/
 
   /**
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component
    */
   @Output() HowTo = new EventEmitter();
+  @Input('HowToValues') HowToValues;
   HowToForm: FormGroup;
   OtherProjctVideo: FormControl;
+  HowToMake : FormControl;
   HelpLookingFor: FormControl;
   Tools: FormControl;
+  Parts: FormControl;
   Materials: FormControl;
   Difficulty: FormControl;
   Duration: FormControl;
@@ -28,6 +40,8 @@ export class HowToComponent implements OnInit {
   Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
   Diffeculties = ['Easy', 'Moderate', 'Hard'];
   ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
+  multi_values_fields = ['Tools','Materials','Resources','Parts'];
+
 
   constructor(
     private fb: FormBuilder,
@@ -35,6 +49,16 @@ export class HowToComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    // if(this.HowToValues){
+    //   // this.multi_values_fields.forEach((element, index) => {
+    //   //   var length = this.HowToValues[element];
+    //   //   console.log(length);
+    //   //   for(var i = 0 ;i < length; i++){
+    //   //     this.AddRow(element);
+    //   //   }
+    //   // });
+    //   this.HowToForm.setValue(this.HowToValues);
+    // }
   }
 
   SetCategories(){
@@ -47,6 +71,7 @@ export class HowToComponent implements OnInit {
   buildForm(): void {
     this.HowToForm = this.fb.group({
       'OtherProjctVideo': [this.OtherProjctVideo, [CustomValidators.url]],
+      'HowToMake': [this.HowToMake, []],
       'HelpLookingFor': [this.HelpLookingFor, []],
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
@@ -55,10 +80,21 @@ export class HowToComponent implements OnInit {
       'Duration': [this.Durations,[Validators.required,inarray(this.Durations)]],
       'Resources': this.fb.array([]),
     });
-    this.AddRow('Tools');
-    this.AddRow('Materials');
-    this.AddRow('Parts');
-    this.AddRow('Resources');
+    if(this.HowToValues){
+      this.multi_values_fields.forEach((element, index) => {
+        var length = this.HowToValues[element].length;
+        console.log(length);
+        for(var i = 0 ;i < length; i++){
+          this.AddRow(element);
+        }
+      });
+      this.HowToForm.setValue(this.HowToValues);
+    }else{
+      this.AddRow('Tools');
+      this.AddRow('Materials');
+      this.AddRow('Parts');
+      this.AddRow('Resources');
+    }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
       if(this.HowToForm.valid){

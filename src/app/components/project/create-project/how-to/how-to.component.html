@@ -10,7 +10,7 @@
     <div class="form-group projectSteps">
       <div class="form-group project-steps">
         <label for="how-to-make">How to make this project:</label>
-        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}"></ckeditor>
+        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" formControlName='HowToMake'></ckeditor>
       </div>
     </div>
     <div class="form-group projectHelp">
@@ -145,7 +145,7 @@
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
-        <option *ngFor="let Dif of Diffeculties; let i=index" value="{{Dif}}">{{Dif}}</option>
+        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="{{Dif}}" >{{Dif}}</option>
       </select>
       <div *ngIf="formErrors.Difficulty" class="alert alert-danger">
         {{ formErrors.Difficulty }}

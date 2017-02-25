@@ -20,7 +20,7 @@ export class ViewService {
       });
     }
 
-    return this.mainService.get(globals.endpoint + '/views/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.get(globals.endpoint + '/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
 }

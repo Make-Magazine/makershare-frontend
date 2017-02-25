@@ -9,9 +9,11 @@
         <div class="col-md-7">
           <div class="form-group">
             <label for="collab-name-{{i + 1}}">Name</label>
-            <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" >
+            <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
               <div *ngIf="TeamUsers[i]" >
-                <div *ngFor="let User of TeamUsers[i]">
+                <div *ngFor="let User of TeamUsers[i]" (click)="SetMember(User.uid,i)">
+                  <img *ngIf="User.photo" src="{{User.photo}}">
+                  <img *ngIf="!User.photo" src="http://placehold.it/140x140">
                   {{User.username}}
                 </div>
               </div>

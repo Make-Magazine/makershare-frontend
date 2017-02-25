@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { ViewService } from '../../../../d7services/view/view.service'
@@ -10,6 +10,7 @@ import { ViewService } from '../../../../d7services/view/view.service'
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
   // form fields
+  @Input('YourStoryValues') YourStoryValues;
   YourStoryForm: FormGroup;
   Name: FormControl;
   Categories: FormControl;
@@ -18,6 +19,7 @@ export class YourStoryComponent implements OnInit {
   ShowTellVideo: FormControl;
   AhaMoment: FormControl;
   UhOhMoment: FormControl;
+  Story:FormControl;
   Tags: FormControl;
 
   // data fields
@@ -34,7 +36,6 @@ export class YourStoryComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-
     this.viewService.getView('projects_categories').subscribe(data => {
       data.forEach((element, index) => {
         this.Categories_Data[index] = {};
@@ -42,6 +43,10 @@ export class YourStoryComponent implements OnInit {
         this.Categories_Data[index].value = element.tid;
       });
     });
+    if(this.YourStoryValues){
+      this.YourStoryForm.setValue(this.YourStoryValues);
+      this.imageFileObjectToBase64(this.YourStoryValues.Coverphoto);
+    }
   }
 
   buildForm(): void {
@@ -53,6 +58,7 @@ export class YourStoryComponent implements OnInit {
      'ShowTellVideo': [this.ShowTellVideo, [CustomValidators.url]],
      'AhaMoment': [this.AhaMoment, [CustomValidators.url]],
      'UhOhMoment': [this.UhOhMoment, [CustomValidators.url]],
+     'Story':[this.Story,[]],
      'Tags': [this.Tags, [Validators.required]],
    });
    this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -63,6 +69,15 @@ export class YourStoryComponent implements OnInit {
    this.YourStoryForm.controls['Coverphoto'].setValue(null);
    var files = event.srcElement.files;
    if(files.length == 1 && files[0].type.startsWith("image")){
+    this.imageFileObjectToBase64(files[0]);
+   }
+   else{
+     this.formErrors.Coverphoto = this.validationMessages.Coverphoto.notvalidformat;
+     this.ImgURL = '';     
+   }
+ }
+
+ imageFileObjectToBase64(file){
     var reader = new FileReader();
     reader.onload = (imgsrc:any) => {
       var image = new Image();
@@ -75,17 +90,12 @@ export class YourStoryComponent implements OnInit {
           CreateComponent.ImgURL = '';
         }else{
           CreateComponent.ImgURL = imgsrc.target.result;
-          CreateComponent.YourStoryForm.controls['Coverphoto'].setValue(files[0]);
+          CreateComponent.YourStoryForm.controls['Coverphoto'].setValue(file);
         }
       };
     }
-    reader.readAsDataURL(files[0]);
+    reader.readAsDataURL(file);
    }
-   else{
-     this.formErrors.Coverphoto = this.validationMessages.Coverphoto.notvalidformat;
-     this.ImgURL = '';     
-   }
- }
 
  onValueChanged(data?: any) {
     if (!this.YourStoryForm) { return; }

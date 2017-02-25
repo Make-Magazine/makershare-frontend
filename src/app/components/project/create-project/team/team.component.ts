@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
@@ -9,8 +9,10 @@ import { ViewService } from '../../../../d7services/view/view.service'
 })
 export class TeamComponent implements OnInit {
   @Output() Team = new EventEmitter();
+  @Input('TeamValues') TeamValues;
   TeamForm: FormGroup;
   TeamUsers = [];
+  UsersDetails = [];
 
   constructor(
     private fb: FormBuilder,
@@ -19,6 +21,9 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    if(this.TeamValues){
+      this.TeamForm.setValue(this.TeamValues);
+    }
   }
 
   buildForm(): void {
@@ -27,6 +32,7 @@ export class TeamComponent implements OnInit {
     });
     this.AddRow('Team');
     this.TeamForm.valueChanges.subscribe(data => {
+      this.TeamUsers = [];
       this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
       if(this.TeamForm.valid){
         this.Team.emit(this.TeamForm);
@@ -43,21 +49,23 @@ export class TeamComponent implements OnInit {
     const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
-    /* subscribe to individual address value changes */
-    addrCtrl.valueChanges.subscribe(data => {
-      this.TeamUsers[index - 1] = [];
-      if(data.Name.length > 1){
-        this.viewService.getView('api_users_list',[['search', data.Name]]).subscribe(results => {;
-          this.TeamUsers[index - 1] = results;
-        });
-      }
+  }
+
+  SetMember(uid,index){
+    this.TeamUsers[index] = [];
+    this.UsersDetails[index] = [];
+    this.viewService.getView('profile',[['uid', uid]]).subscribe(data => {
+      this.UsersDetails[index] = data[0];
     });
   }
 
   RefreshUsers(index,value){
-    this.viewService.getView('api_users_list',[['search', value]]).subscribe(results => {;
-      this.TeamUsers[index - 1] = results;
-    });
+    this.TeamUsers[index] = [];
+    if(value.length > 1){
+      this.viewService.getView('users-list',[['search', value]]).subscribe(data => {
+        this.TeamUsers[index] = data;
+      });
+    }
   }
 
   InitRow(ControlName,index) {
@@ -70,9 +78,12 @@ export class TeamComponent implements OnInit {
 
   SortElements(ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
+    var NewUsersDetails = [];
     control.controls.forEach((element, index) => {
+      NewUsersDetails[index] = this.UsersDetails[element['controls']['SortOrder'].value - 1];
       element['controls']['SortOrder'].setValue(index + 1);
     });
+    this.UsersDetails = NewUsersDetails;
   }
 
   onValueChanged(form, formErrors, validationMessages) {
