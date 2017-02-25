@@ -145,7 +145,7 @@
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
-        <option *ngFor="let Dif of Diffeculties; let i=index" class="" value="{{Dif}}" >{{Dif}}</option>
+        <option *ngFor="let Dif of Diffeculties; let i=index" value="{{Dif}}" >{{Dif}}</option>
       </select>
       <div *ngIf="formErrors.Difficulty" class="alert alert-danger">
         {{ formErrors.Difficulty }}
