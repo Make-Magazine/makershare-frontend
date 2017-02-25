@@ -83,11 +83,6 @@ export class HowToComponent implements OnInit {
         }
       });
       this.HowToForm.setValue(this.HowToValues);
-    }else{
-      this.AddRow('Tools');
-      this.AddRow('Materials');
-      this.AddRow('Parts');
-      this.AddRow('Resources');
     }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
@@ -157,7 +152,7 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'File': [, []],
           'RepoLink': ['', CustomValidators.url],
-          'Label': [this.ResourceLabels[0],[Validators.required,inarray(this.ResourceLabels)]],
+          'Label': ['',[inarray(this.ResourceLabels)]],
         });
       }
     }
@@ -245,6 +240,23 @@ export class HowToComponent implements OnInit {
    }
   }
 
+
+
+
+// notComplete(NameField : string ,UrlField: string){
+  
+//   return (group: FormGroup): {[key: string]: any} => {
+//     var Name = group.controls[NameField];
+//     var Url = group.controls[UrlField];
+//     console.log (Name,Url);
+//     if (Name.value === '' && Url.value !== 0) {
+//       return {
+//         mismatchedPasswords: true
+//       };
+//     }
+//   }
+
+// }
   /**
    * An Object of form errors contains the error string value for each field
    * if the field is a multiple value field
