@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
 import { inarray } from '../../../../validations/inarray.validation'
+import { ViewService } from '../../../../d7services/view/view.service'
 
 @Component({
   selector: 'app-how-to',
@@ -9,16 +10,6 @@ import { inarray } from '../../../../validations/inarray.validation'
 })
 
 export class HowToComponent implements OnInit {
-  // isFirst = true;
-  // selected1 = 'selected';
-/* trackByFn(index, item) {
-    if(index == 0){
-      this.isFirst = true;
-    }
-  return ;
-}
-*/
-
   /**
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component
@@ -26,15 +17,7 @@ export class HowToComponent implements OnInit {
   @Output() HowTo = new EventEmitter();
   @Input('HowToValues') HowToValues;
   HowToForm: FormGroup;
-  OtherProjctVideo: FormControl;
-  HowToMake : FormControl;
-  HelpLookingFor: FormControl;
-  Tools: FormControl;
-  Parts: FormControl;
-  Materials: FormControl;
-  Difficulty: FormControl;
-  Duration: FormControl;
-  Resources: FormControl;
+  ToolsMaterialsParts = [];
 
   // data arrays
   Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
@@ -45,24 +28,30 @@ export class HowToComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private viewService:ViewService,
   ) {}
 
   ngOnInit() {
     this.buildForm();
-    // if(this.HowToValues){
-    //   // this.multi_values_fields.forEach((element, index) => {
-    //   //   var length = this.HowToValues[element];
-    //   //   console.log(length);
-    //   //   for(var i = 0 ;i < length; i++){
-    //   //     this.AddRow(element);
-    //   //   }
-    //   // });
-    //   this.HowToForm.setValue(this.HowToValues);
-    // }
   }
 
-  SetCategories(){
+  ToolMaterialPart(ControlName, index, value){
+    if(this.ToolsMaterialsParts[ControlName]){
+      this.ToolsMaterialsParts[ControlName][index] = [];
+    }else{
+      this.ToolsMaterialsParts[ControlName] = [];
+    }
+    if(value.length > 1){
+      this.viewService.getView('api-project-tools-materials-parts-list',[['type', ControlName],['name',value]]).subscribe(data => {
+        this.ToolsMaterialsParts[ControlName][index] = data;
+      });
+    }
+  }
 
+  SetToolMaterialPart(arrayelementname,ControlName,value,index){
+    this.ToolsMaterialsParts[arrayelementname][index] = [];
+    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Name.setValue(value.name);
+    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Nid.setValue(value.nid);
   }
 
   /**
@@ -70,9 +59,9 @@ export class HowToComponent implements OnInit {
    */
   buildForm(): void {
     this.HowToForm = this.fb.group({
-      'OtherProjctVideo': [this.OtherProjctVideo, [CustomValidators.url]],
-      'HowToMake': [this.HowToMake, []],
-      'HelpLookingFor': [this.HelpLookingFor, []],
+      'OtherProjctVideo': ['', [CustomValidators.url]],
+      'HowToMake': ['', []],
+      'HelpLookingFor': ['', []],
       'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
       'Parts': this.fb.array([]),
@@ -83,7 +72,6 @@ export class HowToComponent implements OnInit {
     if(this.HowToValues){
       this.multi_values_fields.forEach((element, index) => {
         var length = this.HowToValues[element].length;
-        console.log(length);
         for(var i = 0 ;i < length; i++){
           this.AddRow(element);
         }
@@ -133,6 +121,7 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'Name': ['', Validators.required],
           'Url': ['', CustomValidators.url],
+          'Nid': ['',Validators.required],
         });
       }
       case 'Materials':
@@ -141,6 +130,7 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'Name': ['', Validators.required],
           'Quantity': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'Nid': ['',Validators.required],
         });
       }
       case 'Parts':
@@ -150,6 +140,7 @@ export class HowToComponent implements OnInit {
           'Name': ['', [Validators.required]],
           'Link': ['', CustomValidators.url],
           'Number': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'Nid': ['',Validators.required],
         });
       }
       case 'Resources':
@@ -208,15 +199,15 @@ export class HowToComponent implements OnInit {
    switch (ControlName){
     case 'Tools':
     {
-      return {'SortOrder':'', 'Name': '','Url': ''};
+      return {'SortOrder':'', 'Name': '','Url': '','Nid': ''};
     }
     case 'Materials':
     {
-      return {'SortOrder':'', 'Name': '','Quantity': ''};
+      return {'SortOrder':'', 'Name': '','Quantity': '','Nid': ''};
     }
     case 'Parts':
     {
-      return {'SortOrder':'', 'Name': '', 'Link': '','Number': ''};
+      return {'SortOrder':'', 'Name': '', 'Link': '','Number': '','Nid': ''};
     }
     case 'Resources':
     {
@@ -231,11 +222,13 @@ export class HowToComponent implements OnInit {
    */
   SortElements(ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
+    var TempToolsMaterialsParts = [];
+    var ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
     control.controls.forEach((element, index) => {
+      this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
       element['controls']['SortOrder'].setValue(index + 1);
     });
   }
-
 
   FileUpdated(event, index, ControlName){
    var files = event.srcElement.files;
@@ -246,23 +239,6 @@ export class HowToComponent implements OnInit {
    }
   }
 
-
-
-
-// notComplete(NameField : string ,UrlField: string){
-  
-//   return (group: FormGroup): {[key: string]: any} => {
-//     var Name = group.controls[NameField];
-//     var Url = group.controls[UrlField];
-//     console.log (Name,Url);
-//     if (Name.value === '' && Url.value !== 0) {
-//       return {
-//         mismatchedPasswords: true
-//       };
-//     }
-//   }
-
-// }
   /**
    * An Object of form errors contains the error string value for each field
    * if the field is a multiple value field
@@ -296,7 +272,10 @@ export class HowToComponent implements OnInit {
       },
       'Name':{
         'required':'Name is required',
-      },       
+      }, 
+      'Nid':{
+        'required': 'Nid is required',
+      },      
       'Url':{
         'url': 'Please enter a valid url, ex: http://example.com.',
       },
@@ -315,6 +294,9 @@ export class HowToComponent implements OnInit {
         'required':'Quantity is required.',
         'min':'Quantity must be at least 1.',
       },
+      'Nid':{
+        'required': 'Nid is required',
+      },
     },
     'Parts': {
       'SortOrder':{
@@ -332,6 +314,9 @@ export class HowToComponent implements OnInit {
         'number':'Quantity must be a number.',
         'required':'Quantity is required.',
         'min':'Quantity must be at least 1.',
+      },
+      'Nid':{
+        'required': 'Nid is required',
       },
     },
     'Difficulty': {

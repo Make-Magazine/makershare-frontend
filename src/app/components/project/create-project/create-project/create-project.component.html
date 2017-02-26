@@ -15,9 +15,9 @@
       <div class="nav-create">
         <div class="container">
           <ul class="list-unstyled">
-            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-grey-inverse" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Your Story</a></li>
-            <li><a (click)="current_active_tab = 'How To'" class="btn btn-grey-inverse" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
-            <li><a (click)="current_active_tab = 'Team'" class="btn btn-grey-inverse" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
+            <li><a (click)="CheckFormValidationAndNavigate('Your Story')" class="btn btn-grey-inverse" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Your Story</a></li>
+            <li><a (click)="CheckFormValidationAndNavigate('How To')" class="btn btn-grey-inverse" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
+            <li><a (click)="CheckFormValidationAndNavigate('Team')" class="btn btn-grey-inverse" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
           </ul>
         </div>
       </div>

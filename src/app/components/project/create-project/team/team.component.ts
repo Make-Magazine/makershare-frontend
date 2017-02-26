@@ -41,9 +41,9 @@ export class TeamComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {  
       this.SetMember(data.user.uid,0);
       if(this.TeamValues){
-        console.log(this.TeamValues);
+        // console.log(this.TeamValues);
           var length = this.TeamValues.Team.length;
-          console.log(length);
+          // console.log(length);
           for(var i = 1 ;i < length; i++){
             this.AddRow('Team');
             this.SetMember( this.TeamValues.Team[i].uid,i);
@@ -119,7 +119,7 @@ export class TeamComponent implements OnInit {
   }
 
   onValueChanged(form, formErrors, validationMessages) {
-                console.log(this.TeamForm)
+    // console.log(this.TeamForm)
     for (const field in formErrors) {
       if(typeof formErrors[field] === 'string'){
         formErrors[field] = '';
