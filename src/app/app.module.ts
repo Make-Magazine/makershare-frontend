@@ -32,16 +32,10 @@ import { LearnModule } from './components/learn/learn.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-<<<<<<< HEAD
-    // LearnComponent,
-=======
 
     
-    LearnComponent,
+  //  LearnComponent,
 
-    
-
->>>>>>> 085884e74716677df3002a601be94ef9b6931cf3
   ],
   imports: [
     BrowserModule,
