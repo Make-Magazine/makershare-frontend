@@ -14,7 +14,7 @@ export class CreateProjectComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.current_active_tab = 'Your Story';
+    this.current_active_tab = 'Team';
   }
 
   FormUpdateHandler (event, Component){
@@ -22,6 +22,6 @@ export class CreateProjectComponent implements OnInit {
       this.CreateProjectComponentValues[Component] =  {};
       this.CreateProjectComponentValues[Component] = event.value;
     }
-    // console.log(this.CreateProjectComponentValues);
+     console.log(this.CreateProjectComponentValues);
   }
 }
