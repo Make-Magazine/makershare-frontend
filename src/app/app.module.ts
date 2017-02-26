@@ -19,6 +19,7 @@ import { ChallengesComponent } from './components/challenges/challenges/challeng
 // New Structure
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
+import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AccountModule } from './components/account/account.module';
     FooterComponent,
     ExploreComponent,
     ChallengesComponent,
+    LearnComponent,
   ],
   imports: [
     BrowserModule,
