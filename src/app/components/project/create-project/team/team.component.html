@@ -1,23 +1,51 @@
 
 <div class="region region-content col-sm-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="Team" dnd-sortable-container [sortableData]="TeamForm.controls.Team.controls" dnd-draggable [dropZones]="['TeamZone']">
-    <div id="add-sortable" *ngFor="let Member of TeamForm.controls.Team.controls; let i=index" class="panel add-collaborate" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Team')" dnd-draggable [dropZones]="['TeamZone']">
+    <div class="add-sortable" *ngFor="let Member of TeamForm.controls.Team.controls; let i=index; let isFirst=first; let isLast=last" class="panel add-collaborate" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Team')" dnd-draggable [dropZones]="['TeamZone']">
       <div class="panel-heading">
         <span>Member {{i + 1}}</span>
       </div>
       <div class="panel-body" [formGroupName]="i">
         <div class="col-md-7">
-          <div *ngIf="UsersDetails[i]">
-            {{UsersDetails[i].username}}
+          <div *ngIf="SelectedUser[i]">
+            <h5>Name</h5>
+            <div class=" profile-container"><!-- start profile card-->
+              <div class="profile-card">
+                <div class="left col-sm-4">
+                  <div class="profile-pic">
+                    <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" class="img-responsive">
+                    <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" class="img-responsive">
+                  </div>
+                  <a href="#" class="btn btn-blue">Message</a>
+                </div>
+                <div class="right col-sm-8">
+                  <h4 class="profile-name"><a href="#">{{SelectedUser[i].first_name}} {{SelectedUser[i].last_name}}</a></h4>
+                  <div class="trophies">
+                    <i class="fa fa-lg fa-child"></i>
+                    <i class="fa fa-lg fa-certificate"></i>
+                    <i class="fa fa-lg fa-trophy"></i>
+                  </div>
+                  <p class="count">6 projects</p>
+                  <p class="user-city">San Francisco, CA</p>
+                  <p class="profile-tag">Electronics, Arduino, Fabrication, Design</p>
+                </div>
+              </div><!-- End profile card -->
+            </div><!-- End Profile-container -->
           </div>
-          <div class="form-group" *ngIf="!UsersDetails[i]">
+          <div class="clearfix"></div>
+          <div class="form-group" *ngIf="!SelectedUser[i]" >
             <label for="collab-name-{{i + 1}}">Name</label>
             <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
               <div *ngIf="TeamUsers[i]" >
-                <div *ngFor="let User of TeamUsers[i]" (click)="SetMember(User.uid,i)">
-                  <img *ngIf="User.photo" src="{{User.photo}}">
-                  <img *ngIf="!User.photo" src="http://placehold.it/140x140">
-                  {{User.username}}
+                <div *ngFor="let User of TeamUsers[i]" (click)="SetMember(User.uid,i)" class="result">
+                  <div class="user-image-container">
+                    <img *ngIf="User.photo" src="{{User.photo}}">
+                    <img *ngIf="!User.photo" src="http://placehold.it/140x140">
+                  </div>
+                  <div class="data-container">
+                    <p>{{User.first_name}} {{User.last_name}}</p>
+                    <p>{{User.nickname}}</p> 
+                  </div>
                 </div>
               </div>
             <small *ngIf="formErrors.Team[i].Name" class="text-danger">
@@ -37,8 +65,8 @@
             <label for="collab-order-{{i + 1}}">Sort Order</label>
             <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.SortOrder" readonly />
             <div class="carets">
-              <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Team')"></i>
-              <i *ngIf="i < TeamForm.controls.Team.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Team')"></i>
+              <i *ngIf="i > 1" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Team')"></i>
+              <i *ngIf="i < !isFirst || !last " class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Team')"></i>
             </div>
             <small *ngIf="formErrors.Team[i].SortOrder" class="text-danger">
               {{formErrors.Team[i].SortOrder}}
@@ -46,7 +74,7 @@
           </div>
         </div>
       </div>
-      <a *ngIf="TeamForm.controls.Team.controls.length > 1" (click)="RemoveRow(i, 'Team')" class="btn btn-transparent remove">Remove</a>
+      <a *ngIf="TeamForm.controls.Team.controls.length > 2" (click)="RemoveRow(i, 'Team')" class="btn btn-transparent remove">Remove</a>
     </div><!-- End add-collaborate -->
     <a (click)="AddRow('Team')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
   </div>

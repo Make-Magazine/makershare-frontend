@@ -10,6 +10,7 @@ export class CreateProjectComponent implements OnInit {
   
   current_active_tab;
   CreateProjectComponentValues = [];
+  isvalid= [];
 
   constructor() {}
 
@@ -17,11 +18,22 @@ export class CreateProjectComponent implements OnInit {
     this.current_active_tab = 'Your Story';
   }
 
+  CheckFormValidationAndNavigate(NewTab){
+    this.current_active_tab = NewTab;
+    // if(this.isvalid[NewTab]){
+    //   this.current_active_tab = NewTab;
+    // }else{
+    //   console.log("Validation Faild for tab" + this.current_active_tab);
+    // }
+  }
+
   FormUpdateHandler (event, Component){
+    this.isvalid[Component] = false;
     if(event){
       this.CreateProjectComponentValues[Component] =  {};
       this.CreateProjectComponentValues[Component] = event.value;
+      this.isvalid[Component] = true;
     }
-    // console.log(this.CreateProjectComponentValues);
+     console.log(this.CreateProjectComponentValues);
   }
 }

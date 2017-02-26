@@ -1,0 +1,36 @@
+<div class="row">
+  <section class="col-sm-12 width-fix">
+    <div class="region region-content page-learn">
+      <header class="workshop-header">
+        <div class="container">
+          <h3>Get started, sharpen your skills, or become an expert</h3>
+          <p>Lorem ipsum lorem ipsum lorem ipsum</p>
+        </div>
+      </header><!--/header -->             
+      <div class="container workshop-container">
+        <div *ngFor="let learn of learns" class="workshop-card">
+          <div class="col-md-5">
+            <div class="image-container">
+              <img src="{{learn.cover_photo}}" alt="" class="img-responsive">
+            </div><!-- End image-container -->
+          </div><!-- End col-md-5 -->
+          <div class="col-md-7">
+            <div class="card-container">
+              <div class="card">
+                <h3 class="card-title">{{learn.title}}</h3>
+                <div class="card-description">
+                  <p>{{learn.brief_description}}</p>
+                </div>
+                <div class="list-unstyled workshop-tags" >
+                     <a *ngFor="let category of learn.categories" class="btn btn-grey">{{category}}</a>
+                </div>
+             
+              </div><!-- End card -->
+            </div><!-- End card-container -->
+          </div><!-- End col-md-7 -->
+        </div><!-- End workshop-card -->
+      </div>
+
+    </div>
+  </section>
+

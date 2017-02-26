@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
+import { UserService } from '../../../../d7services/user/user.service'
 
 @Component({
   selector: 'app-team',
@@ -13,35 +14,57 @@ export class TeamComponent implements OnInit {
   TeamForm: FormGroup;
   TeamUsers = [];
   UsersDetails = [];
+  SelectedUser=[];
+  // if(SelectedUser){
+  //   console.log(SelectedUser);
+  // }
 
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
+    private userService:UserService,
   ) {}
 
   ngOnInit() {
     this.buildForm();
-    if(this.TeamValues){
-      this.TeamForm.setValue(this.TeamValues);
-    }
+    // this.UsersDetails.forEach(element => {
+    //     console.log(element);
+    // });
   }
-
+  
   buildForm(): void {
     this.TeamForm = this.fb.group({
       'Team': this.fb.array([]),
     });
     this.AddRow('Team');
-    this.TeamForm.valueChanges.subscribe(data => {
-      this.TeamUsers = [];
-      this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
-      if(this.TeamForm.valid){
-        this.Team.emit(this.TeamForm);
-      }else{
-        this.Team.emit(false);
+    
+    this.userService.getStatus().subscribe(data => {  
+      this.SetMember(data.user.uid,0);
+      if(this.TeamValues){
+        // console.log(this.TeamValues);
+          var length = this.TeamValues.Team.length;
+          // console.log(length);
+          for(var i = 1 ;i < length; i++){
+            this.AddRow('Team');
+            this.SetMember( this.TeamValues.Team[i].uid,i);
+            // this.SetMember(element.,index+1))
+          }
+        this.TeamForm.setValue(this.TeamValues);  
+      } else {
+        this.AddRow('Team');
       }
-    });
+      this.TeamForm.valueChanges.subscribe(data => {
+        this.TeamUsers = [];
+        this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
+        if(this.TeamForm.valid){
+          this.Team.emit(this.TeamForm);
+        }else{
+          this.Team.emit(false);
+        }
+      });
     this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
-  }
+  });
+}
 
   AddRow(ControlName) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
@@ -54,15 +77,23 @@ export class TeamComponent implements OnInit {
   SetMember(uid,index){
     this.TeamUsers[index] = [];
     this.UsersDetails[index] = [];
-    this.viewService.getView('profile',[['uid', uid]]).subscribe(data => {
-      this.UsersDetails[index] = data[0];
+    this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
+      this.SelectedUser[index] = data[0];
+      // this.SelectedUser.forEach((element,key) => {
+      //   var values =[];
+      //   values = element;
+        // for (let key of Object.keys(values)){
+        //   console.log(key +'=>'+values[key])
+        // }
+      // });
     });
+    this.TeamForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
   }
 
   RefreshUsers(index,value){
     this.TeamUsers[index] = [];
     if(value.length > 1){
-      this.viewService.getView('users-list',[['search', value]]).subscribe(data => {
+      this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
         this.TeamUsers[index] = data;
       });
     }
@@ -71,8 +102,9 @@ export class TeamComponent implements OnInit {
   InitRow(ControlName,index) {
     return this.fb.group({
       'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-      'Name': ['', Validators.required],
+      'Name': ['', ],
       'Role': ['', Validators.required],
+      'uid': [0, Validators.required],
     });
   }
 
@@ -87,6 +119,7 @@ export class TeamComponent implements OnInit {
   }
 
   onValueChanged(form, formErrors, validationMessages) {
+    // console.log(this.TeamForm)
     for (const field in formErrors) {
       if(typeof formErrors[field] === 'string'){
         formErrors[field] = '';
@@ -146,6 +179,9 @@ export class TeamComponent implements OnInit {
       },       
       'Role':{
         'required':'Role is required',
+      },
+      'uid':{
+        'required':'uid is required',
       },
     },
   };

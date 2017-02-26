@@ -19,6 +19,7 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
+import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,12 @@ import { AccountModule } from './components/account/account.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
+
     
+    LearnComponent,
+
+    
+
   ],
   imports: [
     BrowserModule,

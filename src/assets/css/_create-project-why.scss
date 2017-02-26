@@ -192,7 +192,8 @@
 		.sort {
 			label {display: block;}
 			input{
-				width: 30px;
+				width: 45px;
+				text-align: center;
 				display: inline-block;
 				margin-right: 5px;
 			}
@@ -225,12 +226,18 @@
 			.form-group  {
 				margin-top: 7px;
 			}
+			}
 			.profile-container {
 				width: 100%;
 				.profile-card {
 					.left {width: 110px;}
 					.right {
 						width: 60%;
+					}
+					.user-city{
+							position: absolute;
+							top: 0;
+							right: 0;
 					}
 				}
 			}
@@ -241,11 +248,35 @@
 					font-size: 20px;
 				}
 			}
-		}
+		
 		a.new-collab {
 			font-size: 14px;
 			padding: 5px;
 			i {width: 30px;}
+		}
+		.result {
+			background-color: #fff;
+			width: 100%;
+			padding: 5px;
+			overflow: hidden;
+			border-bottom: 1px solid $light-grey;
+			.user-image-container {
+				width: 15%;
+				float: left;
+				margin-right: 3%;
+				img {
+					max-width: 100%;
+				}
+			}
+			.data-container {
+				float: left;
+				width: 75%;
+				font-weight: bold;
+				margin-top: 10px;
+			}
+			&:hover {
+				background-color: $light-grey;
+			}
 		}
 
 	}
