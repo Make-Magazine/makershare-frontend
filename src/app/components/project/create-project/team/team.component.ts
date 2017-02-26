@@ -94,7 +94,32 @@ export class TeamComponent implements OnInit {
     this.TeamUsers[index] = [];
     if(value.length > 1){
       this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
+        //this.TeamUsers[index] = data;
+        // console.log(data[2])
+        // console.log(this.SelectedUser)
+        // var i=0,j=0;
+        // for (i ; i < this.SelectedUser.length; i++){
+        //   for(j; j<data.length ; j++){
+        //     console.log(data[j].uid);
+        //     if (data[j].uid === this.SelectedUser[i].uid)
+        //         data.splice(j,1);
+        //   }
+        // }
+        console.log(data)
         this.TeamUsers[index] = data;
+        // this.SelectedUser.foreach((added in this.SelectedUser ){
+        //   if (data!== added){
+        //       this.TeamUsers[index] = data;
+        //   }
+        // }
+        // this.SelectedUser.forEach((element) => {
+        //   var values =[];
+        //   values = element;
+        //     if (data!== element)
+        //     this.TeamUsers[index] = data;
+        // });
+        
+        
       });
     }
   }

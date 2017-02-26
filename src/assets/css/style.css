@@ -1474,7 +1474,10 @@ header.showcase-project {
     .page-create-project-why .team input {
       max-width: 100%; }
     .page-create-project-why .team .form-group {
-      margin-top: 15px; }
+      margin-top: 9px; }
+    .page-create-project-why .team .add-collaborate {
+      border: 1px solid #757575;
+      border-radius: 0; }
     .page-create-project-why .team .sort label {
       display: block; }
     .page-create-project-why .team .sort input {
@@ -1545,12 +1548,6 @@ header.showcase-project {
         background-color: #ecf0f1; }
   .page-create-project-why .team-guide {
     padding-top: 70px; }
-
-.team, .team-guide {
-  display: none; }
-
-.how-to, .how-to-guide {
-  display: none; }
 
 .borderedless td, .borderedless th {
   border: none !important;
