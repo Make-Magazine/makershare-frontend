@@ -19,7 +19,11 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
-import { LearnComponent } from './components/learn/learn/learn.component';
+import { LearnModule } from './components/learn/learn.module';
+
+
+
+//import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +34,7 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     ExploreComponent,
 
     
-    LearnComponent,
-
-    
+  //  LearnComponent,
 
   ],
   imports: [
@@ -41,7 +43,9 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     ReactiveFormsModule,
     ProjectModule,
     AccountModule,
-     ChallengeModule,
+    ChallengeModule,
+    LearnModule,
+    
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
