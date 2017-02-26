@@ -46,7 +46,7 @@ export class UserService {
     return this.mainService.post(globals.endpoint + '/user/logout', null).map(response => response.json());
   }
 
-  getStatus(session: string, token: string): Observable<any> {
+  getStatus(): Observable<any> {
     return this.mainService.post('/api/system/connect', null).map(response => response.json());
   }
 
@@ -55,7 +55,7 @@ export class UserService {
       var token = this.mainService.getToken();
       var session = this.mainService.getSession();
       if(session && token){
-        this.getStatus(session, token).subscribe( data => {
+        this.getStatus().subscribe( data => {
             if(data.user.uid && data.user.uid > 0){
               observer.next(true);
               observer.complete();

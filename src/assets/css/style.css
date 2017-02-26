@@ -435,6 +435,9 @@ body {
 .error-msg {
   margin-top: 10px; }
 
+.dnd-sortable-drag {
+  opacity: 0.3; }
+
 .front .banner {
   /* Carousel base class */
   /* Since positioning the image, we need to help out the caption */ }
@@ -1475,7 +1478,8 @@ header.showcase-project {
     .page-create-project-why .team .sort label {
       display: block; }
     .page-create-project-why .team .sort input {
-      width: 30px;
+      width: 45px;
+      text-align: center;
       display: inline-block;
       margin-right: 5px; }
     .page-create-project-why .team .carets {
@@ -1500,22 +1504,45 @@ header.showcase-project {
       margin: 20px 0; }
       .page-create-project-why .team .collaborate .form-group {
         margin-top: 7px; }
-      .page-create-project-why .team .collaborate .profile-container {
-        width: 100%; }
-        .page-create-project-why .team .collaborate .profile-container .profile-card .left {
-          width: 110px; }
-        .page-create-project-why .team .collaborate .profile-container .profile-card .right {
-          width: 60%; }
-      .page-create-project-why .team .collaborate .admin {
-        text-align: center; }
-        .page-create-project-why .team .collaborate .admin i {
-          color: #169eff;
-          font-size: 20px; }
+    .page-create-project-why .team .profile-container {
+      width: 100%; }
+      .page-create-project-why .team .profile-container .profile-card .left {
+        width: 110px; }
+      .page-create-project-why .team .profile-container .profile-card .right {
+        width: 60%; }
+      .page-create-project-why .team .profile-container .profile-card .user-city {
+        position: absolute;
+        top: 0;
+        right: 0; }
+    .page-create-project-why .team .admin {
+      text-align: center; }
+      .page-create-project-why .team .admin i {
+        color: #169eff;
+        font-size: 20px; }
     .page-create-project-why .team a.new-collab {
       font-size: 14px;
       padding: 5px; }
       .page-create-project-why .team a.new-collab i {
         width: 30px; }
+    .page-create-project-why .team .result {
+      background-color: #fff;
+      width: 100%;
+      padding: 5px;
+      overflow: hidden;
+      border-bottom: 1px solid #ecf0f1; }
+      .page-create-project-why .team .result .user-image-container {
+        width: 15%;
+        float: left;
+        margin-right: 3%; }
+        .page-create-project-why .team .result .user-image-container img {
+          max-width: 100%; }
+      .page-create-project-why .team .result .data-container {
+        float: left;
+        width: 75%;
+        font-weight: bold;
+        margin-top: 10px; }
+      .page-create-project-why .team .result:hover {
+        background-color: #ecf0f1; }
   .page-create-project-why .team-guide {
     padding-top: 70px; }
 
