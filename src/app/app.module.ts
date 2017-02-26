@@ -13,10 +13,10 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
-import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 
 
 // New Structure
+import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnComponent } from './components/learn/learn/learn.component';
@@ -28,8 +28,12 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
+<<<<<<< HEAD
     ChallengesComponent,
     LearnComponent,
+=======
+    
+>>>>>>> 4e9299f9d2bb28d155f71a48c1530b415e7070cb
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     ReactiveFormsModule,
     ProjectModule,
     AccountModule,
+     ChallengeModule,
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],

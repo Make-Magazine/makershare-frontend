@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { ViewService } from '../../../../d7services/view/view.service'
 
 @Component({
   selector: 'app-your-story',
@@ -8,6 +9,7 @@ import { CustomValidators } from 'ng2-validation';
 })
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
+  // form fields
   @Input('YourStoryValues') YourStoryValues;
   YourStoryForm: FormGroup;
   Name: FormControl;
@@ -20,16 +22,27 @@ export class YourStoryComponent implements OnInit {
   Story:FormControl;
   Tags: FormControl;
 
+  // data fields
   ImgURL = '';
   accepted_image_width = 600;
   accepted_image_height = 400;
+  Categories_Data = [];
+
   constructor(
     private fb: FormBuilder,
+    private viewService: ViewService,
   ) { 
   }
 
   ngOnInit() {
     this.buildForm();
+    this.viewService.getView('projects_categories').subscribe(data => {
+      data.forEach((element, index) => {
+        this.Categories_Data[index] = {};
+        this.Categories_Data[index].display = element.name;
+        this.Categories_Data[index].value = element.tid;
+      });
+    });
     if(this.YourStoryValues){
       this.YourStoryForm.setValue(this.YourStoryValues);
       this.imageFileObjectToBase64(this.YourStoryValues.Coverphoto);

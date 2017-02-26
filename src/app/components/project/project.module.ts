@@ -9,6 +9,7 @@ import { CreateProjectModule } from './create-project/create-project.module';
     CreateProjectModule,
     ProjectRoutingModule,
   ],
-  declarations: []
+  declarations: [],
+  exports:[]
 })
 export class ProjectModule { }

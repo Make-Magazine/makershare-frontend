@@ -39,9 +39,9 @@
                           <p class="card-status">
                             {{challenge.challenge_status}}
                           </p>
-                          <p class="card-partership">{{challenge.sponsored_by}}</p>
+                          <p class="card-partership">In partnership with {{challenge.sponsored_by}}</p>
                           <div class="col-md-10 card-description">
-                            <p>{{challenge.description}}</p>
+                            <p>{{challenge.challenge_summary}}</p>
                           </div>
                           <div class="card-buttons">
                             <a class="btn btn-grey">Follow <span class="follow-number">{{challenge.count}}</span></a>
@@ -53,7 +53,7 @@
 
             </div>
             <div class="col-xs-4 col-xs-offset-4 load-more">
-                  <a href="#" class="btn btn-white">Load more</a>
+                  <a class="btn btn-white">Load more</a>
             </div>
 
           </div><!-- End region-content -->

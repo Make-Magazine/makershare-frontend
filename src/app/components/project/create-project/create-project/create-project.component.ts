@@ -22,6 +22,6 @@ export class CreateProjectComponent implements OnInit {
       this.CreateProjectComponentValues[Component] =  {};
       this.CreateProjectComponentValues[Component] = event.value;
     }
-    console.log(this.CreateProjectComponentValues);
+    // console.log(this.CreateProjectComponentValues);
   }
 }

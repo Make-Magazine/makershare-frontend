@@ -9,7 +9,6 @@ import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { DndModule } from 'ng2-dnd';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,8 +16,12 @@ import { DndModule } from 'ng2-dnd';
     TagInputModule,
     CKEditorModule,
     DndModule.forRoot(),
-
   ],
-  declarations: [CreateProjectComponent, YourStoryComponent, HowToComponent, TeamComponent]
+  declarations: [CreateProjectComponent, YourStoryComponent, HowToComponent, TeamComponent],
+  exports:[CreateProjectComponent]
 })
-export class CreateProjectModule { }
+
+export class CreateProjectModule { };
+export {CreateProjectComponent};
+
+
