@@ -28,12 +28,12 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-<<<<<<< HEAD
-    ChallengesComponent,
-    LearnComponent,
-=======
+
     
->>>>>>> 4e9299f9d2bb28d155f71a48c1530b415e7070cb
+    LearnComponent,
+
+    
+
   ],
   imports: [
     BrowserModule,
