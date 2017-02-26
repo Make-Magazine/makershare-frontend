@@ -10,20 +10,23 @@
             <div class="filters">
               <div class="container">
                 <div class="row">
-                <p class="col-md-2">24 Challenges</p>
-                <div class="challenges-filter col-md-1 col-md-offset-8">
-                  <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">All Status
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="btn">All statuses</a></li>
-                    <li><a href="#" class="btn">Open</a></li>
-                    <li><a href="#" class="btn">In review</a></li>
-                    <li><a href="#" class="btn">Closed</a></li>
-                  </ul>
-                </div><!-- End challenges-filter -->
+                  <div class="col-md-2">
+                    <div *ngIf="CurrentFilter">{{CurrentFilter}}</div>
+                    <div *ngIf="!CurrentFilter">{{challengescounterStatus['total']}}</div>
+                  </div>
+                  <div class="challenges-filter col-md-1 col-md-offset-8">
+                    <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">All Status
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a  class="btn" (click)="SetCurrentFilter('total')">All statuses</a></li>
+                      <li><a  class="btn" (click)="SetCurrentFilter('Open for submissions')">Open</a></li>
+                      <li><a  class="btn" (click)="SetCurrentFilter('In-review')">In review</a></li>
+                      <li><a  class="btn" (click)="SetCurrentFilter('Closed')">Closed</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              </div>
-            </div><!-- End filters -->
+            </div>
             <div class="container challenges-container">
 
               <div *ngFor="let challenge of challenges" class="challenge-card">
@@ -39,9 +42,9 @@
                           <p class="card-status">
                             {{challenge.challenge_status}}
                           </p>
-                          <p class="card-partership">{{challenge.sponsored_by}}</p>
-                          <div class="col-md-10 card-description">
-                            <p>{{challenge.description}}</p>
+                          <p class="card-partership">In partnership with {{challenge.sponsored_by}}</p>
+                          <div  class="col-md-10 card-description">
+                            <div [innerHTML]="challenge.challenge_summary"></div>
                           </div>
                           <div class="card-buttons">
                             <a class="btn btn-grey">Follow <span class="follow-number">{{challenge.count}}</span></a>
@@ -53,8 +56,9 @@
 
             </div>
             <div class="col-xs-4 col-xs-offset-4 load-more">
-                  <a href="#" class="btn btn-white">Load more</a>
+                <a *ngIf="!hideloadmore" class="btn btn-white" (click)="moreChallenge()">Load more</a>
             </div>
 
           </div><!-- End region-content -->
         </section>
+</div>

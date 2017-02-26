@@ -13,12 +13,13 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { ExploreComponent } from './components/explore/explore.component';
-import { ChallengesComponent } from './components/challenges/challenges/challenges.component';
 
 
 // New Structure
+import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
+import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,12 @@ import { AccountModule } from './components/account/account.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-    ChallengesComponent,
+
+    
+    LearnComponent,
+
+    
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,7 @@ import { AccountModule } from './components/account/account.module';
     ReactiveFormsModule,
     ProjectModule,
     AccountModule,
+     ChallengeModule,
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
