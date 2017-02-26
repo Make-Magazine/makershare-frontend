@@ -19,10 +19,13 @@
               <div class="card">
                 <h3 class="card-title">{{learn.title}}</h3>
                 <div class="card-description">
-                  <p>{{learn.brief_description}}</p>
+                  <!--<p>{{learn.brief_description}}</p>-->
+                    <div [innerHTML]="learn.brief_description"></div>
                 </div>
+                <br>
                 <div class="list-unstyled workshop-tags" >
                      <a *ngFor="let category of learn.categories" class="btn btn-grey">{{category}}</a>
+                     
                 </div>
              
               </div><!-- End card -->
