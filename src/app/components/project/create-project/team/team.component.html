@@ -7,7 +7,10 @@
       </div>
       <div class="panel-body" [formGroupName]="i">
         <div class="col-md-7">
-          <div class="form-group">
+          <div *ngIf="UsersDetails[i]">
+            {{UsersDetails[i].username}}
+          </div>
+          <div class="form-group" *ngIf="!UsersDetails[i]">
             <label for="collab-name-{{i + 1}}">Name</label>
             <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
               <div *ngIf="TeamUsers[i]" >
