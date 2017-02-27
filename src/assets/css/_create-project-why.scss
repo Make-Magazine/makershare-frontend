@@ -187,7 +187,11 @@
 			max-width: 100%;
 		}
 		.form-group {
-			margin-top: 15px;
+			margin-top: 9px;
+		}
+		.add-collaborate {
+			border: 1px solid $main-grey;
+			border-radius:0 ;
 		}
 		.sort {
 			label {display: block;}
@@ -282,9 +286,6 @@
 	}
 	.team-guide {padding-top: 70px;}
 }
-
-.team,.team-guide {display: none;}
-.how-to, .how-to-guide {display: none;}
 
 .borderedless td, .borderedless th {
     border: none !important;

@@ -125,9 +125,7 @@ $(document).ready(function() {
     });
 
     // navigating the create project page tabs
-    $(document).on('click','.nav-create li a', function(e){
-    	myToggle($(this),e,'-guide');
-    });
+
     // navigating the create profile page tabs
     $(document).on('click','.create-nav li a', function(e){
     	myToggle($(this),e);
