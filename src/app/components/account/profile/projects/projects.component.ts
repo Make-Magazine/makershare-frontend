@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../../d7services/view/view.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'profile-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
 })
 
 export class ProjectsComponent implements OnInit {
 
-  constructor(private viewService: ViewService) { }
+  constructor(
+    private router: Router,
+    private viewService: ViewService
+  ) { }
+
   profile_projects = [];
   ngOnInit() {
     var args = [
@@ -20,6 +24,10 @@ export class ProjectsComponent implements OnInit {
     }, err => {
 
     });
+  }
+
+  ShowProjectDetails(nid){
+    this.router.navigate(['/project/view', nid]);
   }
 
 }
