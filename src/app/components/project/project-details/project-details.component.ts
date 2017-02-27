@@ -21,7 +21,7 @@ export class ProjectDetailsComponent implements OnInit {
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
     .subscribe(data =>{
-      console.log(data)
+      //console.log(data)
       this.project = data;
     });
   }
