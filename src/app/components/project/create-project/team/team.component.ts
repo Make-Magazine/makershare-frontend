@@ -95,6 +95,21 @@ export class TeamComponent implements OnInit {
     if(value.length > 1){
       this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
         this.TeamUsers[index] = data;
+        var TempUsers = [];
+        for(let index in data){
+          var found = false;
+          let element = data[index]; 
+          this.SelectedUser.forEach(addeduser => {
+            if(addeduser.uid === element.uid){
+              found = true;
+              return;
+            }
+          });
+           if (!found){
+             TempUsers.push(element);
+           }
+        }
+        this.TeamUsers[index] = TempUsers;
       });
     }
   }
@@ -112,10 +127,10 @@ export class TeamComponent implements OnInit {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     var NewUsersDetails = [];
     control.controls.forEach((element, index) => {
-      NewUsersDetails[index] = this.UsersDetails[element['controls']['SortOrder'].value - 1];
+      NewUsersDetails[index] = this.SelectedUser[element['controls']['SortOrder'].value - 1];
       element['controls']['SortOrder'].setValue(index + 1);
     });
-    this.UsersDetails = NewUsersDetails;
+    this.SelectedUser = NewUsersDetails;
   }
 
   onValueChanged(form, formErrors, validationMessages) {

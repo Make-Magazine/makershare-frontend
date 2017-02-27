@@ -4,7 +4,6 @@ import { ViewService } from '../../../d7services/view/view.service';
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
-  styleUrls: ['./challenges.component.css']
 })
 export class ChallengesComponent implements OnInit {
   challenges = [];
@@ -20,7 +19,6 @@ export class ChallengesComponent implements OnInit {
   constructor(private viewService: ViewService) { }
 
   ngOnInit() {
-  
     this.moreChallenge();
     this.challengeCounter();
   }

@@ -11,10 +11,13 @@ const APP_ROUTES: Routes = [
 //    { path: 'explore', component: ExploreComponent },
     { path: 'challenges', component: ChallengesComponent },
     { path: 'learn', component: LearnComponent },
+
     { path: 'challenges/:page', component: ChallengesComponent },
     //{ path: 'learn/:page', component: LearnComponent },
     { path: 'learn/:nid', component: LearnComponent },
     
+    { path: 'learn/:page', component: LearnComponent },
+
 ]
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

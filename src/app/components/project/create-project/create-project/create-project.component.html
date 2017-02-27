@@ -5,10 +5,10 @@
         <div class="container">
           <h3 class="pull-left">Add a new project to your portfolio</h3>
           <ul class="list-unstyled pull-right contorls">
-            <li><a href="" class="btn btn-light-grey">Save as draft</a></li>
-            <li><a href="" class="btn btn-light-grey"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
-            <li><a href="" class="btn btn-blue btn-sharp">Publish</a></li>
-            <li><a href="" class="btn btn-transparent">Cancel</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Draft',0)">Save as draft</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Private',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
+            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick('Public',1)">Publish</a></li>
+            <li><a class="btn btn-transparent">Cancel</a></li>
           </ul>
         </div>
       </div>
@@ -35,10 +35,10 @@
         <div class="container">
           <h3 class="pull-left">Add a new project to your portfolio</h3>
           <ul class="list-unstyled pull-right contorls">
-            <li><a href="" class="btn btn-light-grey">Save as draft</a></li>
-            <li><a href="" class="btn btn-light-grey"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
-            <li><a href="" class="btn btn-blue btn-sharp">Publish</a></li>
-            <li><a href="" class="btn btn-transparent">Cancel</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Draft',0)">Save as draft</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Private',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
+            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick('Public',1)">Publish</a></li>
+            <li><a class="btn btn-transparent">Cancel</a></li>
           </ul>
         </div>
       </div>
