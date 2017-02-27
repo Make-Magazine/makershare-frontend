@@ -11,7 +11,6 @@ const APP_ROUTES: Routes = [
 //    { path: 'explore', component: ExploreComponent },
     { path: 'challenges', component: ChallengesComponent },
     { path: 'learn', component: LearnComponent },
-    { path: 'challenges/:page', component: ChallengesComponent },
     { path: 'learn/:page', component: LearnComponent },
 ]
 

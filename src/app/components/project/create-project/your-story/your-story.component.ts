@@ -12,15 +12,6 @@ export class YourStoryComponent implements OnInit {
   // form fields
   @Input('YourStoryValues') YourStoryValues;
   YourStoryForm: FormGroup;
-  Name: FormControl;
-  Categories: FormControl;
-  Teaser: FormControl;
-  Coverphoto: FormControl;
-  ShowTellVideo: FormControl;
-  AhaMoment: FormControl;
-  UhOhMoment: FormControl;
-  Story:FormControl;
-  Tags: FormControl;
 
   // data fields
   ImgURL = '';
@@ -45,23 +36,28 @@ export class YourStoryComponent implements OnInit {
     });
     if(this.YourStoryValues){
       this.YourStoryForm.setValue(this.YourStoryValues);
-      this.imageFileObjectToBase64(this.YourStoryValues.Coverphoto);
+      if(this.YourStoryValues.Coverphoto){
+        this.imageFileObjectToBase64(this.YourStoryValues.Coverphoto);
+      } 
     }
   }
 
   buildForm(): void {
    this.YourStoryForm = this.fb.group({
-     'Name': [this.Name, [Validators.required, Validators.minLength(4)]],
-     'Categories': [this.Categories, [Validators.required]],
-     'Teaser': [this.Teaser, [Validators.required]],
-     'Coverphoto': [this.Coverphoto, [Validators.required]],
-     'ShowTellVideo': [this.ShowTellVideo, [CustomValidators.url]],
-     'AhaMoment': [this.AhaMoment, [CustomValidators.url]],
-     'UhOhMoment': [this.UhOhMoment, [CustomValidators.url]],
-     'Story':[this.Story,[]],
-     'Tags': [this.Tags, [Validators.required]],
+     'Name': [, [Validators.required, Validators.minLength(4)]],
+     'Categories': [, [Validators.required]],
+     'Teaser': [, [Validators.required]],
+     'Coverphoto': [, [Validators.required]],
+     'ShowTellVideo': [, [CustomValidators.url]],
+     'AhaMoment': [, [CustomValidators.url]],
+     'UhOhMoment': [, [CustomValidators.url]],
+     'Story':[,[]],
+     'Tags': [, [Validators.required]],
    });
-   this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.YourStoryForm.valueChanges.subscribe(data => {
+      this.onValueChanged(data);
+      this.YourStory.emit(this.YourStoryForm);
+    });
    this.onValueChanged(); // (re)set validation messages now
  }
 
@@ -110,11 +106,6 @@ export class YourStoryComponent implements OnInit {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
-    }
-    if(this.YourStoryForm.valid){
-      this.YourStory.emit(this.YourStoryForm);
-    }else{
-      this.YourStory.emit(false);
     }
   }
 

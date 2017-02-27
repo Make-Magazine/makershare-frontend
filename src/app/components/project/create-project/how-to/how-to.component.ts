@@ -80,11 +80,7 @@ export class HowToComponent implements OnInit {
     }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
-      if(this.HowToForm.valid){
-        this.HowTo.emit(this.HowToForm);
-      }else{
-        this.HowTo.emit(false);
-      }
+      this.HowTo.emit(this.HowToForm);
     });
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
   }
