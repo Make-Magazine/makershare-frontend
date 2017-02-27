@@ -95,6 +95,16 @@ export class TeamComponent implements OnInit {
     if(value.length > 1){
       this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
         this.TeamUsers[index] = data;
+        data.forEach(element => {
+          this.SelectedUser.forEach(addeduser => {
+            if(addeduser.uid === element.uid){
+                console.log("Matched User is :")
+                console.log(element.uid , addeduser.uid, addeduser.first_name)
+            }
+          })
+            
+        });
+        
       });
     }
   }
