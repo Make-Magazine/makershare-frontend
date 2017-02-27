@@ -10,13 +10,13 @@ export class IndividualWorkshopComponent implements OnInit {
 
     constructor(private viewService: ViewService) {}
 
-  workshops = null;
+  workshopPage = null;
   ngOnInit() {
 
-      // get workshop main page from a view
+      // get individual workshop page from a view
     this.viewService.getView('individual_workshop_object', []).subscribe(data => {
       console.log(data);
-      this.workshops = data;
+      this.workshopPage = data;
     }, err => {
 
     });
