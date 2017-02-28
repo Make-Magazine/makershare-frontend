@@ -28,9 +28,7 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-
-    
-    LearnComponent,
+     LearnComponent,
 
     
 
@@ -41,7 +39,7 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     ReactiveFormsModule,
     ProjectModule,
     AccountModule,
-     ChallengeModule,
+    ChallengeModule,
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
