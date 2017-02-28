@@ -5,19 +5,26 @@ import { ProfileComponent } from "./components/account/profile/profile.component
 import { LearnComponent } from "./components/learn/learn/learn.component";
 import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
 import { ChallengesComponent } from "./components/challenge/challenge.module";
+
+
+
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";
 
 const APP_ROUTES: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'user', component: ProfileComponent },
-//    { path: 'explore', component: ExploreComponent },
-    { path: 'challenges', component: ChallengesComponent },
-    { path: 'learn', component: LearnComponent },
-
-    { path: 'challenges/:page', component: ChallengesComponent },
+   { path: '', component: HomeComponent },
+   { path: 'user', component: ProfileComponent },
+   { path: 'explore', component: ExploreComponent },
+   { path: 'challenges', component: ChallengesComponent },
+   { path: 'learn', component: LearnComponent },
+   { path: 'learn', component: LearnComponent },
+   { path: 'learn/:page', component: LearnComponent },
+   { path: 'challenge-summary', component: ChallengeSummaryComponent },
 
     { path: 'workshop/:nid', component: IndividualWorkshopComponent },
 
-]
+    // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
+
+    // { path: '**', redirectTo: '/user/1', pathMatch: 'full' }
+];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
