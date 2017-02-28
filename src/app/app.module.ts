@@ -32,15 +32,11 @@ import { LearnModule } from './components/learn/learn.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-<<<<<<< HEAD
-     LearnComponent,
 
     
-=======
 
     
-  //  LearnComponent,
->>>>>>> dd56ea78bacd51c06c00d6bba452b3862dd0460f
+
 
   ],
   imports: [
@@ -50,11 +46,10 @@ import { LearnModule } from './components/learn/learn.module';
     ProjectModule,
     AccountModule,
     ChallengeModule,
-<<<<<<< HEAD
-=======
+
+
     LearnModule,
-    
->>>>>>> dd56ea78bacd51c06c00d6bba452b3862dd0460f
+
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
