@@ -9,7 +9,7 @@ import { UserService } from '../../../d7services/user/user.service';
   templateUrl: './project-details.component.html',
 })
 export class ProjectDetailsComponent implements OnInit {
-
+  current_active_tab;
   project;
   projectDetails;
   currentuser;
@@ -25,8 +25,9 @@ export class ProjectDetailsComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService
   ) { }
-
+  
   ngOnInit() {
+    this.current_active_tab = 'project-story';
     this.route.params
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
@@ -58,6 +59,9 @@ export class ProjectDetailsComponent implements OnInit {
    
 //    this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
+  changeProjectTab(NewTab){
+    this.current_active_tab = NewTab;
+  }
   forkThis(e: Event){
     e.preventDefault();
     //console.log('forked')
