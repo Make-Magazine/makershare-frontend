@@ -1,0 +1,21 @@
+  <!-- Start Showcase -->
+  <section class="showcase">
+    <div class="container">
+      <div class="row">
+
+        <div *ngFor="let showcase of showcases" class="col-md-4">
+          <div class="showcase-item item-2" >
+            <img src="{{showcase.image}}" alt="" class="">
+            <div class="content">
+              <h4 class="title"></h4>
+              <p class="description">{{showcase.title}}</p>
+              <p class="number">{{showcase.projects.length}} projects</p>
+              <p class="timestamp">Last Updated: {{showcase.updated}}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <!-- End Showcase -->

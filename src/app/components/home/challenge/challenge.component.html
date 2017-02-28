@@ -1,0 +1,37 @@
+      <!-- Start Browse Projects -->
+  <section class="browse-projects">
+    <header class="default-header"> <!-- header -->
+    
+    </header><!-- End header -->
+    <div class="container">
+      <div class="row display"><!-- Start display -->
+        <div class="challenges-container">
+          <div class="challenge-card">
+            <div class="col-md-6">
+              <div class="image-container">
+                <img src="{{challenge.image}}" alt="" class="img-responsive">
+              </div><!-- End image-container -->
+            </div>
+            <div class="col-md-6">
+              <div class="card-container">
+                <div class="card">
+                  <p class="card-status">
+                    {{challenge.status}} {{challenge.end_date}}
+                  </p>
+                  <p class="card-partership">In partnership with: {{challenge.sponsoredBy}}</p>
+                  <h3 class="card-title">{{challenge.title}}</h3>
+                  <div class="col-md-12 card-description">
+                    <p>{{challenge.body}}</p>
+                  </div>
+                  <div class="card-buttons">
+                    <a class="btn btn-grey">Follow <span class="follow-number">3</span></a>
+                  </div>
+                </div>
+              </div><!-- End card-container -->
+            </div><!-- End col-md-6 -->
+          </div><!-- End challenge-card -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Browse Projects -->

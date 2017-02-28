@@ -4,7 +4,6 @@ import { ExploreComponent } from "./components/explore/explore.component";
 import { ProfileComponent } from "./components/account/profile/profile.component";
 import { LearnComponent } from "./components/learn/learn/learn.component";
 import { ChallengesComponent } from "./components/challenge/challenge.module";
-
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";
 
 const APP_ROUTES: Routes = [
