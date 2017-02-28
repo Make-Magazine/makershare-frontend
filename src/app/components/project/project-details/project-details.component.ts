@@ -28,6 +28,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = data;
       this.projectDetails = data;
       this.projectDetails.nid = this.route.params['value'].nid;
+      console.log(this.projectDetails.nid)
       //console.log(this.project.field_cover_photo.url)
     });
    // this.flagService.isFlagged().subscribe(data =>{});
