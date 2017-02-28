@@ -30,10 +30,10 @@ projects;
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
+      console.log(data);
       this.submission_open="Project submissions open:"+this.challenge.challenge_start_date;
       this.submission_close="Project submissions close:"+this.challenge.challenge_end_date;
       this.winners_announced="Winners announced by:"+this.challenge.wiinners_announcement_date;
-      this.entries_count=this.challenge.challenge_entries.length;
  
      
           this.dates = this.challenge.challenge_status + "Submissions close " +this.challenge.challenge_end_date;
@@ -62,7 +62,9 @@ projects;
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.projects=data;
-      //console.log(data);
+      this.entries_count=this.projects.length;
+
+      console.log(data);
     });
  
 

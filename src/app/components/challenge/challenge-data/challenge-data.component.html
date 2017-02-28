@@ -8,7 +8,7 @@
                 <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
                 <div class="sponsor"><h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}}</h4></div>
                 <div class="challenge-status">
-                  <p  [innerHtml] = "dates"><p>
+                  <p  >{{challenge.challenge_status}} submission close:{{challenge.challenge_end_date.value}}<p>
                 </div>
                 <div class="challenge-title" *ngIf="challenge.title">
                   <h1>{{challenge.title}}</h1>
@@ -65,10 +65,12 @@
                       </div><!-- End row -->
                     </div><!-- End filters -->
                     <div class="entries">
-                      <div class="col-md-4">
+                      <div *ngIf="projects">
+                      <div  *ngFor="let project of projects">
+                       <div class="col-md-4" *ngIf="project">
                         <div class="entry-container">
                           <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <img *ngIf="project.cover_photo" src="{{project.cover_photo}}" alt="" class="img-responsive">
                             <div class="entry-description">
                               <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
                             </div>
@@ -78,91 +80,12 @@
                           <p class="submitter">By <a href="">Dolores Ipsum</a></p>
                           <p class="entry-date">12.21.16</p>
                         </div><!-- End entry-container -->
+                       </div>
                       </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
                       </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
-                      </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
-                      </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
-                      </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
-                      </div>
-                      <div class="col-md-4">
-                        <div class="entry-container">
-                          <div class="image-container">
-                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
-                            <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
-                            </div>
-                            <div class="vote"><a href="">Vote</a></div>
-                          </div>
-                          <h4>Project Name Project Name Project Name</h4>
-                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
-                          <p class="entry-date">12.21.16</p>
-                        </div><!-- End entry-container -->
-                      </div>
+             
+                  
+                  
                       <div class="row">
                         <div class="col-xs-4 col-xs-offset-4 load-more">
                           <a href="#" class="btn btn-white">Load more</a>
