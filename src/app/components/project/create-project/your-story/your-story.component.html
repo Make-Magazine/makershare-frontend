@@ -2,7 +2,7 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input type="text" class="form-control" id="projectName" formControlName="Name" placeholder="Project Name">
+      <input type="text" class="form-control" id="projectName" formControlName="Name" novalidate placeholder="Project Name">
       <div *ngIf="formErrors.Name" class="alert alert-danger error-msg">
         {{ formErrors.Name }}
       </div>

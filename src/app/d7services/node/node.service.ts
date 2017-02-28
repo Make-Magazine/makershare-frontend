@@ -14,6 +14,10 @@ export class NodeService {
   	return this.mainService.get(globals.endpoint + '/node').map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  getNode(nid): Observable<any>{
+  	return this.mainService.get(globals.endpoint + '/node/'+nid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
   createNode(body): Observable<any>{
   	return this.mainService.post(globals.endpoint + '/node', body).map(res => res.json()).catch(err => Observable.throw(err));
   }

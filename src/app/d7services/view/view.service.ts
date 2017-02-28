@@ -10,7 +10,6 @@ export class ViewService {
   constructor(private mainService: MainService) { }
 
   getView(viewName: string, args?: (string | any)[][]): Observable<any>{
-
     var string_args = '';
     if(args && args.length > 0){
       var string_args = '?';

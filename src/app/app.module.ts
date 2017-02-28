@@ -19,7 +19,11 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
-import { LearnComponent } from './components/learn/learn/learn.component';
+import { LearnModule } from './components/learn/learn.module';
+
+
+
+//import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,15 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
+<<<<<<< HEAD
      LearnComponent,
 
     
+=======
+
+    
+  //  LearnComponent,
+>>>>>>> dd56ea78bacd51c06c00d6bba452b3862dd0460f
 
   ],
   imports: [
@@ -40,6 +50,11 @@ import { LearnComponent } from './components/learn/learn/learn.component';
     ProjectModule,
     AccountModule,
     ChallengeModule,
+<<<<<<< HEAD
+=======
+    LearnModule,
+    
+>>>>>>> dd56ea78bacd51c06c00d6bba452b3862dd0460f
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],

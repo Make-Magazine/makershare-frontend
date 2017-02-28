@@ -1,0 +1,72 @@
+<p>
+  project-details works!
+</p>
+<div *ngIf="project">{{project|json}}</div>
+<div class="page-project">
+  <div class="main-container container-fluid">
+    <div class="row">
+      <section class="col-sm-12 width-fix">
+        <div class="top-content-wrapper">
+          <div class="container">
+            <div class="col-md-12">
+              <ul class="list-unstyled project-actions pull-right">
+                <li><a href="#" class="btn btn-transparent btn-fit">Report this</a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit">Fork this project &nbsp;<i class="fa fa-lg fa-retweet"></i></a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+              </ul>
+              <ul class="list-unstyled project-tags pull-left">
+                <li><a href="#" class="btn btn-grey">electronics</a></li>
+                <li><a href="#" class="btn btn-grey">Arduino</a></li>
+                <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
+              </ul>
+              <div class="clearfix"></div>
+              <h2 class="project-title">Flaming Simon</h2>
+              <ul class="list-unstyled project-aside">
+                <li id="project-story-tab" class="active"><a href="" class="btn btn-light-grey">Project Story</a></li>
+                <li id="how-to-tab"><a href="" class="btn btn-light-grey">How To</a></li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div><!-- End container -->
+        </div><!-- End top-content-wrapper -->
+        <div class="container">           
+            <app-project-story></app-project-story>            
+            <app-project-how-to></app-project-how-to>
+          <aside class="col-sm-4">
+            <div class="timestamp">Created On: 04/12/2015 - Last Updated: 12/04/2016</div>
+            <div>
+              <div class="how-to-tab">
+                <div class="block-style avg-time">
+                  <p>Average Build Time: >16 hours</p>
+                </div>
+                <ul class="list-group resources">
+                  <h3>Resources</h3>
+                  <li class="list-group-item"><a href="#">Wiring Schematics - PDF - 3.6MB</a> - For hooking up your electronics and motors</li>
+                  <li class="list-group-item"><a href="#">Metal patterns- PDF - 3.6MB</a> - Inventory of shapes you will need to cut for the flower part.</li>
+                </ul>
+                <ul class="list-group tools">
+                  <h3>Tools</h3>
+                  <li class="list-group-item "> <span class="amount">1</span><span class="item"> Portable Welder</span></li>
+                  <li class="list-group-item "> <span class="amount">1</span><span class="item"> Hammer</span></li>
+                </ul>
+                <ul class="list-group boards-kits">
+                  <h3>Boards &amp; Kits</h3>
+                  <li class="list-group-item "> <span class="amount">1</span><span class="item"> Arduino 101</span></li>
+                  <li class="list-group-item "> <span class="amount"></span><span class="item"> Genuino 101</span></li>
+                  <li class="list-group-item "> <span class="amount">3</span><span class="item"> Lorem ipsums, with Dolor Sit Amet</span></li>
+                </ul>
+                <ul class="list-group materials">
+                  <h3>Materials</h3>
+                  <li class="list-group-item "> <span class="amount">One yard</span><span class="item"> Sheet metal</span></li>
+                  <li class="list-group-item "> <span class="amount">5 long pieces</span><span class="item"> Rebar</span></li>
+                </ul>
+              </div>
+            </div>
+          </aside><!-- End aside -->
+        </div>
+      </section>
+    </div><!-- End row -->
+  </div><!-- End main-container -->
+</div>

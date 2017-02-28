@@ -8,7 +8,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 })
 export class LearnComponent implements OnInit {
  learns = null;
-categories = null;
+ categories = null;
 
   constructor(private viewService: ViewService) {}
 
