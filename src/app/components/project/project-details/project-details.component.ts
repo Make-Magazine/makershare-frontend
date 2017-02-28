@@ -31,7 +31,7 @@ export class ProjectDetailsComponent implements OnInit {
       console.log(this.projectDetails.nid)
       //console.log(this.project.field_cover_photo.url)
     });
-   // this.flagService.isFlagged().subscribe(data =>{});
+   // this.flagService.isFlagged(this.projectDetails.nid,).subscribe(data =>{});
 //    this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
   forkThis(e: Event){
