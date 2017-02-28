@@ -17,8 +17,8 @@ export class ExploreComponent implements OnInit {
   ngOnInit() {
 
     // get the projects
-    this.viewService.getView('browse_projects', []).subscribe(data => {
-
+    this.viewService.getView('browse_projects').subscribe(data => {
+      console.log(data);
       this.projects = data;
     }, err => {
 

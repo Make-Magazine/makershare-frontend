@@ -24,6 +24,10 @@ export class CommentService {
     return this.mainService.post(globals.endpoint + '/comment?parameters[nid]=' + nid).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
+  getNodeCommentsById(nid: number): Observable<any>{
+    return this.mainService.get(globals.endpoint + '/comment?nid=' + nid).map(response => response.json()).catch(err => Observable.throw(err));
+  }
+
   getUserComments(uid: number): Observable<any>{
     return this.mainService.post(globals.endpoint + '/comment?parameters[uid]=' + uid).map(response => response.json()).catch(err => Observable.throw(err));
   }

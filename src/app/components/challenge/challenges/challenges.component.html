@@ -11,17 +11,14 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-2">
-                    <div *ngIf="CurrentFilter">{{CurrentFilter}}</div>
-                    <div *ngIf="!CurrentFilter">{{challengescounterStatus['total']}}</div>
+                    <div>{{currentCount}}</div>
+                    
                   </div>
                   <div class="challenges-filter col-md-1 col-md-offset-8">
-                    <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">All Status
+                    <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{currentStatusName}}
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                      <li><a  class="btn" (click)="SetCurrentFilter('total')">All statuses</a></li>
-                      <li><a  class="btn" (click)="SetCurrentFilter('Open for submissions')">Open</a></li>
-                      <li><a  class="btn" (click)="SetCurrentFilter('In-review')">In review</a></li>
-                      <li><a  class="btn" (click)="SetCurrentFilter('Closed')">Closed</a></li>
+                      <li *ngFor="let status of allstatuses"><a (click)="SetCurrentStatus($event)" data-id="{{status.tid}}" data-name="{{status.name}}" class="btn" >{{status.name}}</a></li>
                     </ul>
                   </div>
                 </div>
@@ -31,8 +28,8 @@
 
               <div *ngFor="let challenge of challenges" class="challenge-card">
                 <div class="col-md-6">
-                  <div class="image-container">
-                    <img src="{{challenge.challenge_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+                <div class="image-container">
+                <div routerLink="/challenge_summary"> <img src="{{challenge.challenge_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)"></div>
                     <h3 class="card-title">{{challenge.title}}</h3>
                   </div><!-- End image-container -->
                   </div>
@@ -40,6 +37,8 @@
                       <div class="card-container">
                         <div class="card">
                           <p class="card-status">
+                           <!--  <a class="btn btn-blue" [routerLink] = "['/challenge_summary']">link </a>
+                             -->
                             {{challenge.challenge_status}}
                           </p>
                           <p class="card-partership">In partnership with {{challenge.sponsored_by}}</p>
@@ -56,7 +55,7 @@
 
             </div>
             <div class="col-xs-4 col-xs-offset-4 load-more">
-                <a *ngIf="!hideloadmore" class="btn btn-white" (click)="moreChallenge()">Load more</a>
+                <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
             </div>
 
           </div><!-- End region-content -->
