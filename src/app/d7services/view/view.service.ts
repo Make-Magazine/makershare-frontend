@@ -18,7 +18,7 @@ export class ViewService {
         string_args += item[0] + '=' + item[1] + '&';
       });
     }
-
+   // console.log(string_args);
     return this.mainService.get(globals.endpoint + '/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
