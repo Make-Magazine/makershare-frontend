@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service'
+import { ViewService } from '../../../d7services/view/view.service';
 
 @Component({
   selector: 'app-project-details',
