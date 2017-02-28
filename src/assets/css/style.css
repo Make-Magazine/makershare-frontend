@@ -526,7 +526,8 @@ body {
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 0 10px;
-    color: #fff; }
+    color: #fff;
+    width: 100%; }
     .showcase .showcase-item .content h4.title {
       color: #fff;
       font-size: 14px; }
@@ -608,7 +609,8 @@ footer {
   .page-explore .explore-header .explore-tags {
     margin: 20px auto; }
     .page-explore .explore-header .explore-tags li {
-      display: inline-block; }
+      display: inline-block;
+      margin: 0 5px; }
       .page-explore .explore-header .explore-tags li a.btn {
         padding: 5px 15px;
         border-radius: 3px; }
@@ -624,6 +626,18 @@ footer {
 .page-explore .submenus .things-sub,
 .page-explore .submenus .world-sub {
   display: none; }
+.page-explore .submenus .parent_378,
+.page-explore .submenus .parent_390,
+.page-explore .submenus .parent_402,
+.page-explore .submenus .parent_410,
+.page-explore .submenus .parent_416 {
+  display: none; }
+  .page-explore .submenus .parent_378 li,
+  .page-explore .submenus .parent_390 li,
+  .page-explore .submenus .parent_402 li,
+  .page-explore .submenus .parent_410 li,
+  .page-explore .submenus .parent_416 li {
+    margin: 3px 0; }
 
 .filters {
   min-height: 35px;
@@ -677,7 +691,8 @@ footer {
   padding: 5px;
   margin: 5px;
   border: 1px solid #757575;
-  overflow: hidden; }
+  overflow: hidden;
+  cursor: pointer; }
   .challenge-card .image-container {
     overflow: hidden;
     position: relative;
@@ -951,7 +966,8 @@ header.showcase-project {
   padding: 10px 0;
   border-bottom: 1px solid #757575;
   overflow: hidden;
-  color: #757575; }
+  color: #757575;
+  cursor: pointer; }
   .page-learn .workshop-card .image-container {
     border: 3px solid transparent;
     height: 200px;

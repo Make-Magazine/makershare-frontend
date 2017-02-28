@@ -57,7 +57,7 @@ export class ExploreComponent implements OnInit {
   
   ShowProjectDetails(nid){
     this.router.navigate(['/project/view', nid]);
-    console.log(nid)
+    //console.log(nid)
   }
 
 }
