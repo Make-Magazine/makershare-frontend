@@ -8,7 +8,7 @@
         </div>
       </header><!--/header -->             
       <div class="container workshop-container">
-        <div *ngFor="let learn of learns" class="workshop-card">
+        <div *ngFor="let learn of learns" class="workshop-card" (click)="WorkshopDetails(learn.nid)">
           <div class="col-md-5">
             <div class="image-container">
               <img src="{{learn.cover_photo}}" alt="" class="img-responsive">

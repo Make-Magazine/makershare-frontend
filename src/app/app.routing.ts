@@ -3,7 +3,11 @@ import { HomeComponent } from "./components/home/home.component";
 import { ExploreComponent } from "./components/explore/explore.component";
 import { ProfileComponent } from "./components/account/profile/profile.component";
 import { LearnComponent } from "./components/learn/learn/learn.component";
+import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
+
+
 import { ChallengesComponent } from "./components/challenge/challenge.module";
+
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -13,10 +17,8 @@ const APP_ROUTES: Routes = [
     { path: 'learn', component: LearnComponent },
 
     { path: 'challenges/:page', component: ChallengesComponent },
-    //{ path: 'learn/:page', component: LearnComponent },
-    { path: 'learn/:nid', component: LearnComponent },
-    
-    { path: 'learn/:page', component: LearnComponent },
+
+    { path: 'workshop/:nid', component: IndividualWorkshopComponent },
 
 ]
 
