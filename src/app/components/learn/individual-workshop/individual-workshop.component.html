@@ -18,14 +18,17 @@
               </div>
             </div><!-- End container -->
           </div> <!-- End top-content-wrapper-->
+
+          <div *ngIf="workshop">
+            
           <div class="container">
             <div class="region region-content col-sm-8">
               <div class="workshop-content">
                 <div class="intro">
                   <h4>Introduction</h4>
-                  <p *ngIf="workshop">{{workshop.brief_workshop_description}}</p>
-                  <div *ngIf="workshop">
-                    <iframe width="560" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>
+                  <div [innerHTML]= "workshop.brief_workshop_description"> </div>
+                  <div>
+                    <iframe width="725" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>
                   </div>
                 </div><!-- End intro --> 
    
@@ -80,11 +83,8 @@
              
 
 
-
-
-
-
        </div> <!-- End of container --> 
+     </div> <!-- End of ngfor -->
 
         </section>
   </div>
