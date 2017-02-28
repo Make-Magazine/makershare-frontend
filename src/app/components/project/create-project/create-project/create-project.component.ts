@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators , FormControl , FormControlDirective , FormGroup} from '@angular/forms';
-import { NodeService } from '../../../../d7services/node/node.service'
+import { NodeService } from '../../../../d7services/node/node.service';
+import { CreateProject } from './create-project';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { NodeService } from '../../../../d7services/node/node.service'
 })
 export class CreateProjectComponent implements OnInit {
   
+  project: CreateProject;
+
   current_active_tab;
   CreateProjectComponentValues = [];
   isvalid = [];
@@ -19,6 +22,36 @@ export class CreateProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.current_active_tab = 'Your Story';
+    // this.project = {
+    //   nid: 0,
+    //   type : 'project',
+    //   title : 'Untitled',
+    //   field_teaser : '',
+    //   field_cover_photo : {filename : '',file : ''},//*
+    //   field_category: [{tid:0}],
+    //   field_story : '',
+    //   field_show_tell_video : '',
+    //   field_aha_moment : '', 
+    //   field_uh_oh_moment : '',
+    //   field_tags : [{tid : 0}],
+    //   field_difficulty : 0,
+    //   field_duration :  0,
+    //   field_credit_your_inspiration : '',
+    //   field_visibility : 0,
+    //   field_collaborators : [{target_id : 0}],
+    //   field_sort_order : 0,
+    //   field_tools: [{tool_id : 0,tool_url : '',tool_sort_order : 0,tool_description : '',tool_quantity : 0}],
+    //   field_materials: [{material_id : 0,material_quantity : '',material_sort_order : 0}],
+    //   field_parts: [{part_id : 0,part_sort_order : 0,part_quantity : 0}],
+    //   field_resources: [{filename : '',file : '',resource_repository_link : '',resource_label : 0}],
+    //   field_maker_memberships: [{membership_role : '',membership_sort_order : '',membership_team : 0}],
+    //   field_original_team_members : [{target_id : 0}],
+    //   field_total_forks : 0,
+    //   field_forks : [{target_id : 0}],
+    //   field_visibility2 : 0,
+    //   field_mfba17_project_id : 0,
+    //   field_how_to: '',
+    // };
   }
 
   CheckFormValidationAndNavigate(NewTab){
@@ -29,51 +62,28 @@ export class CreateProjectComponent implements OnInit {
     }
   }
 
-  FormUpdateHandler (event, Component){
-    this.isvalid[Component] = event.valid;
+  FormUpdateHandler (values, Component){
+    console.log(values);
     this.CreateProjectComponentValues[Component] =  {};
-    this.CreateProjectComponentValues[Component] = event.value;
-    if(!event.valid){
-      this.CheckFormValidations(event,Component);
-    }
-  }
-
-  CheckFormValidations(event,Component){
-    let Tempevent = event.controls;
-    for(let index in Tempevent){
-      let element = Tempevent[index];
-      console.log(element);
-      if(!element.valid){
-        this.CreateProjectComponentValues[Component][index].setValue();
-      }
-    }
+    this.CreateProjectComponentValues[Component] = values;
+    this.project = this.CreateProjectComponentValues[Component];
+    console.log(this.project);
   }
 
   SaveProjectClick(Visibility,Status){
-    if(this.ValidProjectReady()){
-      // var project = this.GettingProjectReady(Visibility,Status);
-      // this.SaveProject(project);
-    }else{
-      console.log("Project Not Ready to save");
-    }
+    this.nodeService.createNode(this.project).subscribe(project => {
+      console.log("project saved");
+      console.log(project);
+    }, err =>{
+      console.log("error");
+      console.log(err);
+    });
   }
 
-  // GettingProjectReady(Visibility,Status): Project{
+   GettingProjectReady(Visibility,Status): CreateProject{
     
-   // return project;
-  // }
-
-  ValidProjectReady():Boolean{
-    if(!this.isvalid['Your Story'] || !this.isvalid['How To'] || !this.isvalid['Team']){
-      return false;
-    }
-    for(let page in this.isvalid){
-      if(!this.isvalid[page]){
-        return false;
-      }
-    }
-    return true;
-  }
+    return this.project;
+   }
 
   SaveProject(project){
 

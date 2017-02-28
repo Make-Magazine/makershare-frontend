@@ -36,6 +36,10 @@
 				.btn {
 					border-right-width: 0;
 				}
+				.active {
+					background-color: $main-grey;
+					color:#fff;
+				}
 				&:last-of-type {
 					.btn{
 						border-right-width: 1px;

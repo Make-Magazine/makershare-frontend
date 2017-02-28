@@ -1,0 +1,30 @@
+export interface CreateProject {
+	nid: number;
+	type : 'project';
+	title : string;
+	field_teaser : string;
+	field_cover_photo :  {filename : string,file : string};
+	field_category : [{tid : number}]; 
+	field_story : string;
+	field_show_tell_video : string;
+	field_aha_moment : string;  
+  field_uh_oh_moment : string;
+	field_tags : [{tid : number}];
+	field_difficulty : number;
+	field_duration :  number;
+	field_credit_your_inspiration : string;
+	field_visibility : number;
+	field_collaborators : [{target_id : number}];
+	field_sort_order : number;
+	field_tools: [{tool_id : number,tool_url : string,tool_sort_order : number,tool_description : string,tool_quantity : number}];
+	field_materials: [{material_id : number,material_quantity : string,material_sort_order : number}];
+	field_parts: [{part_id : number,part_sort_order : number,part_quantity : number}];
+	field_resources: [{filename : string,file : string,resource_repository_link : string,resource_label : number}];
+	field_maker_memberships: [{membership_role : string,membership_sort_order : string,membership_team : number}];
+  field_original_team_members : [{target_id : number}];
+  field_total_forks : number;
+  field_forks : [{target_id : number}];
+  field_visibility2 : number;
+  field_mfba17_project_id : number;
+	field_how_to: string;
+}
