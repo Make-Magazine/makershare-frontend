@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import { FlagService } from '../../../d7services/flag/flag.service';
 
 @Component({
   selector: 'app-project-details',
@@ -9,11 +10,13 @@ import { ViewService } from '../../../d7services/view/view.service';
 export class ProjectDetailsComponent implements OnInit {
 
   project;
-
+  projectDetails;
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+    private flagService: FlagService
   ) { }
 
   ngOnInit() {
@@ -23,7 +26,23 @@ export class ProjectDetailsComponent implements OnInit {
     .subscribe(data =>{
       //console.log(data)
       this.project = data;
+      this.projectDetails = data;
+      this.projectDetails.nid = this.route.params['value'].nid;
+      //console.log(this.project.field_cover_photo.url)
     });
+   // this.flagService.isFlagged().subscribe(data =>{});
+//    this.flagService.isFlagged().subscribe(data =>{});
+  }// End ngOnInit
+  forkThis(e: Event){
+    e.preventDefault();
   }
-
+  likeThis(e: Event){
+    e.preventDefault();
+  }
+  bookmarkThis(e: Event){
+    e.preventDefault();
+  }
+  shareThis(e: Event){
+    e.preventDefault();
+  }
 }

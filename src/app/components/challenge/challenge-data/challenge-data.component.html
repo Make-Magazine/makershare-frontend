@@ -1,0 +1,332 @@
+<div class="page-challenge-summary">
+<div class="main-container container-fluid">
+      <div class="row">
+        <section class="col-sm-12 width-fix">
+          <div class="top-content-wrapper">
+            <div class="container">
+              <div class="col-md-12 challenge-cover" *ngIf="challenge" >
+                <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
+                <div class="sponsor"><h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}}</h4></div>
+                <div class="challenge-status">
+                  <p  [innerHtml] = "dates"><p>
+                </div>
+                <div class="challenge-title" *ngIf="challenge.title">
+                  <h1>{{challenge.title}}</h1>
+                </div>
+                <div class="challenge-countdown">
+                  <p class="number">15</p>
+                  <p>Days left</p>
+                </div>
+                <ul class="list-unstyled challenge-actions pull-right">
+                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div><!-- End container -->
+          </div><!-- End top-content-wrapper -->
+          <div class="container">
+            <div class="region region-content col-sm-12">
+              <div class="tabs-buttons">
+                <ul class="list-unstyled challenge-submenu">
+                  <li><a href="" class="btn btn-light-grey active">Challenge Summary</a></li>
+                  <li><a href="" class="btn btn-light-grey ">Awards &amp; Prizes <span class="badge">{{no_of_awards}}</span></a></li>
+                  <li><a href="" class="btn btn-light-grey">Rules &amp; Instructions</a></li>
+                  <li><a href="" class="btn btn-light-grey">Disscusson</a></li>
+                  <li><a href="" class="btn btn-light-grey">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                </ul>
+                <ul class="list-unstyled challenge-follow">
+                  <li><a href="" class="btn btn-blue btn-sharp">Follow</a></li>
+                  <li><a href="" class="btn btn-blue btn-sharp">Enter</a></li>
+                </ul>
+              </div>
+              <div class="content-wrapper row">
+                <div class="challenge-summary">
+                  <div class="col-md-9 summary-content">
+                    <div class="description" *ngIf="challenge">
+                      <p *ngIf="challenge.body">{{challenge.body}}</p>
+                      <p>See <a href="">Rules &amp; Instructions</a> for more details.</p>
+                    </div>
+                    <div class="filters">
+                        <div class="row">
+                        <p class="col-md-4" *ngIf="entries_count">{{entries_count}} Entries</p>
+                        <div class="sorting-filter col-md-3 col-md-offset-5">
+                          <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
+                          <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#" class="btn">Most recent</a></li>
+                            <li><a href="#" class="btn">Oldest</a></li>
+                            <li><a href="#" class="btn">Title A-Z</a></li>
+                            <li><a href="#" class="btn">Title Z-A</a></li>
+                            <li><a href="#" class="btn">Most Liked</a></li>
+                            <li><a href="#" class="btn">Most Forked</a></li>
+                          </ul>
+                        </div><!-- End sorting-filter -->
+                      </div><!-- End row -->
+                    </div><!-- End filters -->
+                    <div class="entries">
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="entry-container">
+                          <div class="image-container">
+                            <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+                            <div class="entry-description">
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                            </div>
+                            <div class="vote"><a href="">Vote</a></div>
+                          </div>
+                          <h4>Project Name Project Name Project Name</h4>
+                          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+                          <p class="entry-date">12.21.16</p>
+                        </div><!-- End entry-container -->
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-4 col-xs-offset-4 load-more">
+                          <a href="#" class="btn btn-white">Load more</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- End summary-content -->
+                  <aside class="col-sm-3 summary-aside">
+                        <div class="col-sm-12 summary-aside-content">
+                        <div *ngFor="let award of awards;let i = index;">
+                          <div class="award-container" *ngIf="award">
+                            <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
+                            <img *ngIf="award.photo" src="{{award.photo}}" alt="">
+                            <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
+                            <div class="clearfix"></div>
+                            <!--<p class="value"> {{award_data(i)}}</p>-->
+                          </div>
+                        </div>
+                        <ul class="list-unstyled" *ngIf="challenge">
+                          <h5>Challenge Timeline:</h5>
+                          <li *ngIf="submission_open" [innerHTML]="submission_open">{{submission_open}} </li>
+                          <li>Deadline to apply for free devices: November 20, 2016 at 11:55 PM PT</li>
+                          <li *ngIf="submission_close" [innerHTML]="submission_close"> {{submission_close}}</li>
+                          <li *ngIf="winners_announced" [innerHTML]="winners_announced"> {{winners_announced}}</li>
+                        </ul>
+                        </div>
+                  </aside><!-- End aside -->
+                </div><!-- End challenge-summary -->
+                <div class="followers">
+                  <div class="followers-cards">
+                    <div class="col-md-4">
+                      <div class="follower-card">
+                        <div class=" profile-container"><!-- start profile card-->
+                          <div class="profile-card">
+                            <div class="left col-sm-4">
+                              <div class="profile-pic">
+                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
+                              </div>
+                              <a href="#" class="btn btn-blue">Message</a>
+                            </div>
+                            <div class="right col-sm-8">
+                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
+                              <div class="trophies">
+                                <i class="fa fa-lg fa-child"></i>
+                                <i class="fa fa-lg fa-certificate"></i>
+                                <i class="fa fa-lg fa-trophy"></i>
+                              </div>
+                              <p class="count">6 projects</p>
+                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
+                              <p class="user-city">San Francisco, CA</p>
+                            </div>
+                          </div><!-- End profile card -->
+                        </div><!-- End Profile-container -->
+                        <div class="vote"><a href="">View challenge entry</a></div>
+                      </div>
+                    </div><!-- End col-md-4 -->
+                    <div class="col-md-4">
+                      <div class="follower-card">
+                        <div class=" profile-container"><!-- start profile card-->
+                          <div class="profile-card">
+                            <div class="left col-sm-4">
+                              <div class="profile-pic">
+                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
+                              </div>
+                              <a href="#" class="btn btn-blue">Message</a>
+                            </div>
+                            <div class="right col-sm-8">
+                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
+                              <div class="trophies">
+                                <i class="fa fa-lg fa-child"></i>
+                                <i class="fa fa-lg fa-certificate"></i>
+                                <i class="fa fa-lg fa-trophy"></i>
+                              </div>
+                              <p class="count">6 projects</p>
+                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
+                              <p class="user-city">San Francisco, CA</p>
+                            </div>
+                          </div><!-- End profile card -->
+                        </div><!-- End Profile-container -->
+                      </div><!-- End follower-card -->
+                    </div><!-- End col-md-4 -->
+                    <div class="col-md-4">
+                      <div class="follower-card">
+                        <div class=" profile-container"><!-- start profile card-->
+                          <div class="profile-card">
+                            <div class="left col-sm-4">
+                              <div class="profile-pic">
+                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
+                              </div>
+                              <a href="#" class="btn btn-blue">Message</a>
+                            </div>
+                            <div class="right col-sm-8">
+                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
+                              <div class="trophies">
+                                <i class="fa fa-lg fa-child"></i>
+                                <i class="fa fa-lg fa-certificate"></i>
+                                <i class="fa fa-lg fa-trophy"></i>
+                              </div>
+                              <p class="count">6 projects</p>
+                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
+                              <p class="user-city">San Francisco, CA</p>
+                            </div>
+                          </div><!-- End profile card -->
+                        </div><!-- End Profile-container -->
+                        <div class="vote"><a href="">View challenge entry</a></div>
+                      </div>
+                    </div><!-- End col-md-4 -->
+                    <div class="col-md-4">
+                      <div class="follower-card">
+                        <div class=" profile-container"><!-- start profile card-->
+                          <div class="profile-card">
+                            <div class="left col-sm-4">
+                              <div class="profile-pic">
+                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
+                              </div>
+                              <a href="#" class="btn btn-blue">Message</a>
+                            </div>
+                            <div class="right col-sm-8">
+                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
+                              <div class="trophies">
+                                <i class="fa fa-lg fa-child"></i>
+                                <i class="fa fa-lg fa-certificate"></i>
+                                <i class="fa fa-lg fa-trophy"></i>
+                              </div>
+                              <p class="count">6 projects</p>
+                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
+                              <p class="user-city">San Francisco, CA</p>
+                            </div>
+                          </div><!-- End profile card -->
+                        </div><!-- End Profile-container -->
+                      </div><!-- End follower-card -->
+                    </div><!-- End col-md-4 -->
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4 load-more">
+                      <a href="#" class="btn btn-white">Load more</a>
+                    </div>
+                  </div>
+                </div><!-- End followers -->
+              </div><!-- End content-wrapper -->
+            </div><!-- End region-content -->
+          </div>
+        </section>
+      </div><!-- End row -->
+    </div><!-- End main-container -->
+    <section class="modal-section">
+      <!-- Trigger the modal with a button -->
+      <!-- Modal -->
+      <div id="joinus-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <h4>Start participating in <br>our worldwide community of makers!</h4>
+            </div>
+            <button type="button" class="btn btn-blue" data-dismiss="modal">Join now</button>
+            <p>Already a member? <a href="#">Log in</a></p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+

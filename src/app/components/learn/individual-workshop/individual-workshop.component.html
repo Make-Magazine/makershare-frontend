@@ -1,0 +1,90 @@
+<div class="row">
+  <div class= "page-workshop-individual">
+        <section class="col-sm-12 width-fix">
+          <div class="top-content-wrapper">
+            <div class="container">
+              <div class="col-md-12">
+                <ul class="list-unstyled workshop-actions pull-right">
+                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
+                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                  <li><a href="#" class="btn btn-light-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+                </ul>
+                <!--<div class="list-unstyled workshop-tags pull-left">
+                   <a *ngFor="let tag of workshop.tags" class="btn btn-grey" >{{tag}}</a>
+                </div>-->
+                <!--<div class="clearfix"></div>-->
+                
+                <h2 *ngIf="workshop">{{workshop.workshop_title}}</h2>
+              </div>
+            </div><!-- End container -->
+          </div> <!-- End top-content-wrapper-->
+          <div class="container">
+            <div class="region region-content col-sm-8">
+              <div class="workshop-content">
+                <div class="intro">
+                  <h4>Introduction</h4>
+                  <p *ngIf="workshop">{{workshop.brief_workshop_description}}</p>
+                  <div *ngIf="workshop">
+                    <iframe width="560" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div><!-- End intro --> 
+   
+
+                <div class="lesson">
+                  <h4>Core Concept</h4>
+                  <div class="media">
+                    <div *ngIf="workshop" class="media-left">
+                      <img src="" alt="" class="media-object">
+                    </div>
+                    <div class="media-body">
+          
+                        <span><b>Video:</b>Name of the video</span>
+                        <span>by <a href="">Author name</a></span>
+                      
+                      <p>This is a description of what you are going to learn by reading this chapter, and this is a description of what you are going to learn by reading this chapter and this is a description of what you are going to learn by reading this chapter, without getting too wordy</p>
+                    </div>
+                    <ul class="list-unstyled recommended"> 
+                      Now try these projects:
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">My First Arduino Project</a> by Author Name</li>
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">Basic Robotics: A Tutorial</a> by Eric Singer</li>
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">The Project Name</a> by Someone</li>
+                    </ul>
+                  </div><!-- End media -->
+                </div><!-- End lesson -->
+
+
+                    <div class="fun-fact">
+                  <h4>Fun Fact</h4>
+                  <div class="media">
+                    <div class="media-left">
+                      <img src="http://placehold.it/150x150" alt="" class="media-object">
+                    </div>
+                    <div class="media-body">
+                      <p>
+                        <span><b>PDF:</b>Chapter 1, The Arduino Way</span>
+                        <span>From Getting Started with Arduino by Author Name</span>
+                      </p>
+                      <p>This is a description of what you are going to learn by reading this chapter, and this is a description of what you are going to learn by reading this chapter and this is a description of what you are going to learn by reading this chapter, without getting too wordy</p>
+                    </div>
+                    <ul class="list-unstyled recommended"> 
+                      Now try these projects:
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">My First Arduino Project</a> by Author Name</li>
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">Basic Robotics: A Tutorial</a> by Eric Singer</li>
+                      <li><i class="fa fa-lg fa-circle"></i><a href="">The Project Name</a> by Someone</li>
+                    </ul>
+                  </div>
+                </div><!-- End fun-fact -->
+
+                  </div><!-- End worksop-content -->
+                  </div><!-- End region-content -->  
+             
+
+
+
+
+
+
+       </div> <!-- End of container --> 
+
+        </section>
+  </div>
