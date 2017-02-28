@@ -3,6 +3,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { ExploreComponent } from "./components/explore/explore.component";
 import { ProfileComponent } from "./components/account/profile/profile.component";
 import { LearnComponent } from "./components/learn/learn/learn.component";
+
 import { ChallengesComponent,ChallengeDataComponent } from "./components/challenge/challenge.module";
 import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";

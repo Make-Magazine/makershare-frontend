@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from "./app.routing";
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -21,6 +20,7 @@ import { ChallengeModule } from './components/challenge/challenge.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
+import { HomeModule } from './components/home/home.module';
 
 
 
@@ -29,16 +29,9 @@ import { LearnModule } from './components/learn/learn.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-
-    
-
-    
-
-
   ],
   imports: [
     BrowserModule,
@@ -47,10 +40,8 @@ import { LearnModule } from './components/learn/learn.module';
     ProjectModule,
     AccountModule,
     ChallengeModule,
-
-
     LearnModule,
-
+    HomeModule,
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService],
