@@ -12,8 +12,8 @@
               <ul class="list-unstyled project-actions pull-right">
                 <li><a href="#" class="btn btn-transparent btn-fit">Report this</a></li>
                 <li><a href="#" class="btn btn-light-grey btn-fit" (click)="forkThis($event)">Fork this project &nbsp;<i class="fa fa-lg fa-retweet"></i></a></li>
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="likeThis($event)"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="bookmarkThis($event)"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="likeThis($event)" [class.active]="isLiked"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
+                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="bookmarkThis($event)" [class.active]="isBookmarked"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
                 <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
               </ul>
               <ul class="list-unstyled project-tags pull-left">
@@ -38,5 +38,5 @@
       </section>
     </div><!-- End row -->
   </div><!-- End main-container -->
-</div>{{project|json}}
+</div><!--{{project|json}}-->
 </div>

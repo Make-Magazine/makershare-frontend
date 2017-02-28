@@ -761,6 +761,9 @@ footer {
       float: left; }
       .page-project .top-content-wrapper .project-actions li .btn {
         border-right-width: 0; }
+      .page-project .top-content-wrapper .project-actions li .active {
+        background-color: #757575;
+        color: #fff; }
       .page-project .top-content-wrapper .project-actions li:last-of-type .btn {
         border-right-width: 1px; }
     .page-project .top-content-wrapper .project-aside {

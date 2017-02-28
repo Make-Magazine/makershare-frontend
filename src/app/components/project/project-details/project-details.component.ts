@@ -13,6 +13,11 @@ export class ProjectDetailsComponent implements OnInit {
   project;
   projectDetails;
   currentuser;
+  isLiked=true;
+  isForked;
+  isBookmarked;
+  Flags = ['like','fork','node_bookmark'];
+  FlagStates = [] ;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,25 +35,44 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = data;
       this.projectDetails = data;
       this.projectDetails.nid = this.route.params['value'].nid;
-      console.log(this.projectDetails.nid)
+      console.log(this.route.params['value'].nid)
       //console.log(this.project.field_cover_photo.url)
     });
+    var i =0;
+      for(let flag of this.Flags){
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,flag).subscribe(data =>{
+        this.FlagStates[i] = data[0];
+        i++
+      });
+       console.log(this.FlagStates[0])
+       if(this.FlagStates){
+        this.isLiked = this.FlagStates[0];
+        this.isBookmarked = this.FlagStates[2];
+       }
+      }
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
-    })
-   // this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,like).subscribe(data =>{});
+      console.log(this.currentuser.user.uid)
+    });
+   
 //    this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
   forkThis(e: Event){
     e.preventDefault();
+    console.log('forked')
   }
   likeThis(e: Event){
     e.preventDefault();
+    this.isLiked = !this.isLiked;
+    // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
   }
   bookmarkThis(e: Event){
     e.preventDefault();
+    this.isBookmarked = !this.isBookmarked;
+    console.log('bookmark')
   }
   shareThis(e: Event){
     e.preventDefault();
+    console.log('shared')
   }
 }

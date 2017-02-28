@@ -10,7 +10,7 @@ export class FlagService {
 
   isFlagged(nid: number, uid: number, flag_name: string): Observable<any>{
     var obj = {
-      "flag_name" : flag_name,
+      "flag_name" : flag_name,// like, fork, node_bookmark
       "entity_id" : nid,
       "uid" : uid,
     }   
