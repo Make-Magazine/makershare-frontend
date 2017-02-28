@@ -35,31 +35,32 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = data;
       this.projectDetails = data;
       this.projectDetails.nid = this.route.params['value'].nid;
-      console.log(this.route.params['value'].nid)
-      //console.log(this.project.field_cover_photo.url)
-    });
-    var i =0;
+      //console.log(this.route.params['value'].nid)
+      var i =0;
       for(let flag of this.Flags){
         this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,flag).subscribe(data =>{
         this.FlagStates[i] = data[0];
         i++
       });
-       console.log(this.FlagStates[0])
+       //console.log(this.FlagStates[0])
        if(this.FlagStates){
         this.isLiked = this.FlagStates[0];
         this.isBookmarked = this.FlagStates[2];
        }
       }
+      
+      //console.log(this.project.field_cover_photo.url)
+    });
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
-      console.log(this.currentuser.user.uid)
+      //console.log(this.currentuser.user.uid)
     });
    
 //    this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
   forkThis(e: Event){
     e.preventDefault();
-    console.log('forked')
+    //console.log('forked')
   }
   likeThis(e: Event){
     e.preventDefault();
@@ -69,10 +70,10 @@ export class ProjectDetailsComponent implements OnInit {
   bookmarkThis(e: Event){
     e.preventDefault();
     this.isBookmarked = !this.isBookmarked;
-    console.log('bookmark')
+    //console.log('bookmark')
   }
   shareThis(e: Event){
     e.preventDefault();
-    console.log('shared')
+    //console.log('shared')
   }
 }

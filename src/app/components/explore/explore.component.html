@@ -1,3 +1,4 @@
+<div class="page-explore">
 <div class="main-container container-fluid">
        <div class="row">
          <section class="col-sm-12 width-fix">
@@ -48,8 +49,8 @@
              <div class="container-fluid">
                <div class="projects-grid row">
 
-                 <div *ngFor="let project of projects" class="col-md-3">
-                   <div class="project">
+                 <div *ngFor="let project of projects" class="col-md-3" (click)="ShowProjectDetails(project.nid)">
+                   <div class="project" >
                      <div class="project-title">
                        <p>{{project.title}}</p>
                      </div>
@@ -69,3 +70,4 @@
          </section>
        </div><!-- End row -->
      </div><!-- End main-container -->
+</div>

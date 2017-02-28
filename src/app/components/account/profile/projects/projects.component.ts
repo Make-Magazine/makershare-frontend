@@ -30,4 +30,5 @@ export class ProjectsComponent implements OnInit {
     this.router.navigate(['/project/view', nid]);
   }
 
+
 }

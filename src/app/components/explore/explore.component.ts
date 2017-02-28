@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../d7services/view/view.service';
+import { RouterModule, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-explore',
@@ -11,6 +13,7 @@ export class ExploreComponent implements OnInit {
   categories = null;
 
   constructor(
+    private router: Router,
     private viewService: ViewService,
   ) { }
 
@@ -46,9 +49,15 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
     
       this.projects = data;
+      
     }, err => {
 
     });
+  }
+  
+  ShowProjectDetails(nid){
+    this.router.navigate(['/project/view', nid]);
+    console.log(nid)
   }
 
 }

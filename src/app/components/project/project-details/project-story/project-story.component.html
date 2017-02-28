@@ -1,14 +1,15 @@
 <div class="region region-content col-sm-8">
   <div class="project-story-tab">
     <div class="project-image">
-      <img src="{{project.field_cover_photo.url}}" alt="" class="img-responsive"> 
+      <img src="{{project.field_cover_photo.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo.url"> 
+      <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo.url"> 
     </div>
     <div class="project-stats">
       <ul class="list-unstyled">
-        <li><i class="fa fa-lg fa-eye"></i>{{project.field_visibility2.tid}}</li>
-        <li><i class="fa fa-lg fa-thumbs-up"></i>{{project.flag_count}}</li>
+        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2.tid"></i>{{project.field_visibility2.tid}}</li>
+        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project.flag_count}}</li>
         <li><i class="fa fa-lg fa-comment"></i>2</li>
-        <li><i class="fa fa-lg fa-retweet"></i>{{project.field_total_forks[0].value}}</li>
+        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0].value"></i>{{project.field_total_forks[0].value}}</li>
       </ul>
     </div>
     <hr>
@@ -42,7 +43,7 @@
 </div><!-- End region-content -->
 
 <aside class="col-sm-4">
-  <div class="timestamp" >Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
+  <div class="timestamp" *ngIf="project.created && project.changed" >Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
   <div>
     <div class="project-story-tab">
       <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#" >Vehicles Challenge</a> Winner</div>
@@ -65,7 +66,7 @@
                   <i class="fa fa-lg fa-trophy"></i>
                 </div>
                 <p class="count">6 projects</p>
-                <p class="profile-tag">{{collab.descripe_yourself}}</p>
+                <p class="profile-tag" *ngIf="collab.descripe_yourself">{{collab.descripe_yourself}}</p>
                 <p class="user-city" *ngIf="collab.location_locality && collab.location_administrative_area">{{collab.location_locality}}, {{collab.location_administrative_area}}</p>
               </div>
             </div><!-- End profile card -->
