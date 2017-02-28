@@ -2,6 +2,7 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
+import { UserService } from '../../../d7services/user/user.service';
 
 @Component({
   selector: 'app-project-details',
@@ -11,11 +12,12 @@ export class ProjectDetailsComponent implements OnInit {
 
   project;
   projectDetails;
-  
+  currentuser;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+    private userService: UserService,
     private flagService: FlagService
   ) { }
 
@@ -31,7 +33,10 @@ export class ProjectDetailsComponent implements OnInit {
       console.log(this.projectDetails.nid)
       //console.log(this.project.field_cover_photo.url)
     });
-   // this.flagService.isFlagged(this.projectDetails.nid,).subscribe(data =>{});
+    this.userService.getStatus().subscribe(data => {
+      this.currentuser = data;
+    })
+   // this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,like).subscribe(data =>{});
 //    this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
   forkThis(e: Event){
