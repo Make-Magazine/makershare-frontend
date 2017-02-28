@@ -35,6 +35,8 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(data)
       this.project = data;
       this.projectDetails = data;
+      console.log(this.project)
+      console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
       var i =0;
