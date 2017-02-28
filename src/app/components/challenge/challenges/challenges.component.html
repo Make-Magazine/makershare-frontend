@@ -32,7 +32,7 @@
               <div *ngFor="let challenge of challenges" class="challenge-card">
                 <div class="col-md-6">
                   <div class="image-container">
-                    <img src="{{challenge.challenge_image}}" alt="" class="img-responsive">
+                    <img src="{{challenge.challenge_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
                     <h3 class="card-title">{{challenge.title}}</h3>
                   </div><!-- End image-container -->
                   </div>
