@@ -34,7 +34,9 @@ import { LearnModule } from './components/learn/learn.module';
     ExploreComponent,
 
     
-  //  LearnComponent,
+
+    
+
 
   ],
   imports: [
@@ -44,8 +46,10 @@ import { LearnModule } from './components/learn/learn.module';
     ProjectModule,
     AccountModule,
     ChallengeModule,
+
+
     LearnModule,
-    
+
     routing,
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService],
