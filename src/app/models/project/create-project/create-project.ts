@@ -1,10 +1,10 @@
 export interface CreateProject {
 	nid: number;
-	type : 'project';
+	type : string;
 	title : string;
 	field_teaser : string;
 	field_cover_photo :  {filename : string,file : string};
-	field_category : [{tid : number}]; 
+	field_categories : [{und : number}]; 
 	field_story : string;
 	field_show_tell_video : string;
 	field_aha_moment : string;  
@@ -13,7 +13,6 @@ export interface CreateProject {
 	field_difficulty : number;
 	field_duration :  number;
 	field_credit_your_inspiration : string;
-	field_visibility : number;
 	field_collaborators : [{target_id : number}];
 	field_sort_order : number;
 	field_tools: [{tool_id : number,tool_url : string,tool_sort_order : number,tool_description : string,tool_quantity : number}];
@@ -27,4 +26,5 @@ export interface CreateProject {
   field_visibility2 : number;
   field_mfba17_project_id : number;
 	field_how_to: string;
+	status:number;
 }
