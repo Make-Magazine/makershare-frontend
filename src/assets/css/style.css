@@ -619,7 +619,8 @@ footer {
   margin-bottom: 7px; }
   .page-explore .submenus li a.btn {
     padding: 5px 15px;
-    border-radius: 3px; }
+    border-radius: 3px;
+    margin: 0 3px; }
 .page-explore .submenus .arts-sub,
 .page-explore .submenus .technology-sub,
 .page-explore .submenus .workshop-sub,
