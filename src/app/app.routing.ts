@@ -18,7 +18,7 @@ const APP_ROUTES: Routes = [
    { path: 'learn/:page', component: LearnComponent },
    { path: 'challenge-summary', component: ChallengeSummaryComponent },
 
-    { path: 'workshop/:nid', component: IndividualWorkshopComponent },
+   { path: 'workshop/:nid', component: IndividualWorkshopComponent },
 
     // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
 
