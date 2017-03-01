@@ -20,10 +20,10 @@ export class ChallengesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.currentCount = 0;
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
+    console.log(this.currentCount)
     
 
   }
@@ -31,7 +31,9 @@ export class ChallengesComponent implements OnInit {
   getChallenges(){
     var status_arg = [];
     var page_arg = [];
-   if(this.currentStatusId != 0){
+
+    
+    if(this.currentStatusId != 0){
       status_arg = ['status', this.currentStatusId];
       this.currentCount = this.statusesCount[this.currentStatusId];
     }else{
@@ -41,9 +43,17 @@ export class ChallengesComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
      this.viewService.getView('challenges',[status_arg, page_arg]).subscribe(data => {
-      this.challenges = this.challenges.concat(data);
+     this.challenges = this.challenges.concat(data);
+      console.log(page_arg)
+      console.log(this.challenges)
       this.loadMoreVisibilty();
+      if(!this.currentCount){
+ this.currentCount = this.statusesCount['0'];
+      }
+      
     });
+       
+    
   }
 
   // get more click
@@ -61,33 +71,33 @@ export class ChallengesComponent implements OnInit {
          arr.push(data[key]);
        }
       }
-      console.log(arr);
+      // console.log(arr);
       arr.unshift({"tid": 0, "name": "All"});
       this.allstatuses = arr;
     }, err => {
 
     });
+    
   }
 
   // get the count of challenges per status
   challengesCount() {
-    this.statusesCount = {
-      0: 6,
-      376: 1,
-      1107: 1,
-      1108: 0,
-      375: 4,
-    }
+      this.viewService.getView('maker_count_api',[]).subscribe(data => {
+      this.statusesCount=data;
+      //console.log(this.statusesCount);
+    });
   }
 
   // click function on status
    SetCurrentStatus(event){
     if(this.currentStatusId != event.target.id){
       this.challenges = [];
+ 
     }
     this.currentStatusName = event.target.name;
     this.currentStatusId = event.target.id;
-    this.getChallenges();
+    this.pageNumber = 0;
+   this.getChallenges();
   }
 
   // control load more button
