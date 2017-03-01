@@ -8,13 +8,17 @@
                 <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
                 <div class="sponsor"><h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}}</h4></div>
                 <div class="challenge-status">
-                  <p  >{{challenge.challenge_status}} submission close:{{challenge.challenge_end_date.value}}<p>
+                  <p  >{{challenge.challenge_status}} submission close:{{challenge.challenge_end_date}}<p>
                 </div>
                 <div class="challenge-title" *ngIf="challenge.title">
                   <h1>{{challenge.title}}</h1>
                 </div>
-                <div class="challenge-countdown">
-                  <p class="number">15</p>
+                <div class="challenge-countdown" *ngIf="challenge.opened">
+                  <p class="number">{{challenge.diffDays}}</p>
+                  <p>Days left</p>
+                </div>
+                 <div class="challenge-countdown" [hidden]="!challenge.opened">
+                  <p class="number">NO</p>
                   <p>Days left</p>
                 </div>
                 <ul class="list-unstyled challenge-actions pull-right">
@@ -43,8 +47,8 @@
               <div class="content-wrapper row">
                 <div class="challenge-summary">
                   <div class="col-md-9 summary-content">
-                    <div class="description" *ngIf="challenge">
-                      <p *ngIf="challenge.body">{{challenge.body}}</p>
+                    <div class="description" *ngIf="challenge" [innerHTML]="challenge.body">
+                      <p *ngIf="challenge.body" >{{challenge.body}}</p>
                       <p>See <a href="">Rules &amp; Instructions</a> for more details.</p>
                     </div>
                     <div class="filters">
@@ -72,7 +76,7 @@
                           <div class="image-container">
                             <img *ngIf="project.cover_photo" src="{{project.cover_photo}}" alt="" class="img-responsive">
                             <div class="entry-description">
-                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description</p>
+                              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description}</p>
                             </div>
                             <div class="vote"><a href="">Vote</a></div>
                           </div>
@@ -88,7 +92,7 @@
                   
                       <div class="row">
                         <div class="col-xs-4 col-xs-offset-4 load-more">
-                          <a href="#" class="btn btn-white">Load more</a>
+                            <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
                         </div>
                       </div>
                     </div>
@@ -101,15 +105,15 @@
                             <img *ngIf="award.photo" src="{{award.photo}}" alt="">
                             <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
                             <div class="clearfix"></div>
-                            <!--<p class="value"> {{award_data(i)}}</p>-->
+                            <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>
                           </div>
                         </div>
                         <ul class="list-unstyled" *ngIf="challenge">
                           <h5>Challenge Timeline:</h5>
-                          <li *ngIf="submission_open" [innerHTML]="submission_open">{{submission_open}} </li>
+                          <li *ngIf="challenge.challenge_start_date" >Project submissions open:{{challenge.challenge_start_date}} </li>
                           <li>Deadline to apply for free devices: November 20, 2016 at 11:55 PM PT</li>
-                          <li *ngIf="submission_close" [innerHTML]="submission_close"> {{submission_close}}</li>
-                          <li *ngIf="winners_announced" [innerHTML]="winners_announced"> {{winners_announced}}</li>
+                          <li *ngIf="challenge.challenge_end_date"> Project submissions close:{{challenge.challenge_end_date}}</li>
+                          <li *ngIf="challenge.winners_announcement_date">Winners announced by: {{challenge.winners_announcement_date}}</li>
                         </ul>
                         </div>
                   </aside><!-- End aside -->
