@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { CommentService } from '../../../../d7services/comment/comment.service';
+import { Observable } from "rxjs";
 import { UserService } from '../../../../d7services/user/user.service';
 import { ViewService } from '../../../../d7services/view/view.service'
 
@@ -21,11 +22,12 @@ export class ProjectStoryComponent implements OnInit {
  CommenterNid;
  comments;
  collabs = [];
+ obvfn;
   ngOnInit() {
     this.CollabNid = this.project.nid
     this.nodeComment.getNodeCommentsById(this.CollabNid).subscribe(data => {
       this.comments = data;
-      console.log(this.project.field_collaborators)
+      //console.log(this.project.field_collaborators)
       for( let element of this.comments){
         this.viewService.getView('maker_profile_card_data',[['uid',element['uid']],]).subscribe(data => {
           Object.assign(element, data[0]);
@@ -33,18 +35,42 @@ export class ProjectStoryComponent implements OnInit {
       }
       //  console.log(this.comments);
     });
-    var i = 0;
+    // var i = 0;
+    // this.getCollabs().subscribe(data => {
+    //   this.obvfn = data
+    // })
+    // console.log(this.obvfn)
+    
     //if(i == this.project.field_collaborators.length){
-      for( let maker of this.project.field_collaborators){
-        this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-        this.collabs[i] = {};
-        this.collabs[i] = data[0];
-        i++;
-        console.log(this.collabs)
-      });
+      // for( let maker of this.project.field_collaborators){
+      //   this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
+      //   this.collabs[i] = {};
+      //   this.collabs[i] = data[0];
+      //   i++;
+      //   console.log(this.collabs)
+      // });
     //}
-  }
+  // }
   //this.comments.createComment()
  }//End ngOnInit
   
+  // getCollabs(): Observable<any>{
+  //   console.log(this.project.field_collaborators)
+  //   var i=0;
+  //   var obs = Observable.create(observer => {
+  //       for( let maker of this.project.field_collaborators){
+  //         this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
+  //           this.collabs[i] = {};
+  //           this.collabs[i] = data[0];
+  //           i++;
+  //         });
+  //       }
+  //       if(i > this.project.field_collaborators.length){
+  //         observer.complete();
+  //       }else{
+  //             observer.next(false);
+  //           }
+  //   });
+  //   return obs;
+  // }
 }// End export
