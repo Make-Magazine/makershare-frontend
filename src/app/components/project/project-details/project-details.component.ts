@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+import 'rxjs/Rx';
+
 
 @Component({
   selector: 'app-project-details',
@@ -39,18 +41,13 @@ export class ProjectDetailsComponent implements OnInit {
       console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
-      var i =0;
-      for(let flag of this.Flags){
-        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,flag).subscribe(data =>{
-        this.FlagStates[i] = data[0];
-        i++
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+        this.isLiked = data[0];
+        console.log(this.isLiked)
       });
+       
        //console.log(this.FlagStates[0])
-       if(this.FlagStates){
-        this.isLiked = this.FlagStates[0];
-        this.isBookmarked = this.FlagStates[2];
-       }
-      }
+      
       
       //console.log(this.project.field_cover_photo.url)
     });
@@ -59,7 +56,7 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(this.currentuser.user.uid)
     });
    
-//    this.flagService.isFlagged().subscribe(data =>{});
+//this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
   changeProjectTab(NewTab){
     this.current_active_tab = NewTab;
