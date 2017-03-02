@@ -83,6 +83,7 @@
           <div class="col-md-7">
             <div *ngIf="SelectedUser[i]">
               <h5>Name</h5>
+
               <div class=" profile-container"><!-- start profile card-->
                 <div class="profile-card">
                   <div class="left col-sm-4">
@@ -109,7 +110,14 @@
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser[i]" >
               <label for="collab-name-{{i + 1}}">Name</label>
-              <input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
+              
+            <input ng2-auto-complete
+                   [formControl]="Member.controls.Name"
+                
+                   (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)"
+                   placeholder="Start typing a name, then select"
+                   class="form-control">
+              <!--<input type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.Name" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >-->
                 <div *ngIf="TeamUsers[i]" >
                   <div *ngFor="let User of TeamUsers[i]" (click)="SetMember(User.uid,i)" class="result">
                     <div class="user-image-container">

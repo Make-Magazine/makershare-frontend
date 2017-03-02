@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from "./app.routing";
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ExploreComponent } from './components/explore/explore.component';
-
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
@@ -31,7 +31,8 @@ import { HomeModule } from './components/home/home.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ExploreComponent,
+    ExploreComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,8 @@ import { HomeModule } from './components/home/home.module';
     LearnModule,
     HomeModule,
     routing,
+    Ng2AutoCompleteModule,
+    FormsModule
   ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService],
   bootstrap: [AppComponent]
