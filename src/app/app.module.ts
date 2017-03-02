@@ -21,7 +21,7 @@ import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
-
+import { ShowcasesCollectionComponent} from './components/showcase/showcasesCollection.component';
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -32,6 +32,7 @@ import { HomeModule } from './components/home/home.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
+    ShowcasesCollectionComponent,
   ],
   imports: [
     BrowserModule,
