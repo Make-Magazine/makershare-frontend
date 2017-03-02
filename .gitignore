@@ -40,4 +40,4 @@ testem.log
 Thumbs.db
 /nbproject/private/
 
-src/app/d7services/globals.ts
+/src/app/d7services/globals.ts
