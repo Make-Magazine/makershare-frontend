@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { EditProfileComponent } from './edit/edit-profile/edit-profile.component';
@@ -10,7 +11,8 @@ import { ProfileRoutingModule } from './profile.routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     EditProfileComponent,
