@@ -27,10 +27,10 @@
             </div>
             <div class="container challenges-container">
 
-              <div *ngFor="let challenge of challenges1" class="challenge-card">
+              <div *ngFor="let challenge of challenges" class="challenge-card">
                 <div class="col-md-6">
                 <div class="image-container">
-                <div routerLink="/challenge_summary"> <img src="{{challenge.challenge_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)"></div>
+                <div routerLink="/challenge_summary"> <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)"></div>
                     <h3 class="card-title">{{challenge.title}}</h3>
                   </div><!-- End image-container -->
                   </div>
@@ -40,7 +40,7 @@
                           <p class="card-status">
                            <!--  <a class="btn btn-blue" [routerLink] = "['/challenge_summary']">link </a>
                              -->
-                            {{challenge.challenge_status}}
+                            {{challenge.status}}
                           </p>
                           <p class="card-partership">In partnership with {{challenge.sponsored_by}}</p>
                           <div  class="col-md-10 card-description">
