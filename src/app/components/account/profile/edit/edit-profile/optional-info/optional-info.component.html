@@ -1,0 +1,181 @@
+              <form [formGroup]="optionalForm" class="optional-info" (submit)="formSubmit(this.value)">
+                <div class="form-group photo">
+                  <label class="control-label">Add a Profile photo</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a href="#" id="profiel-photo-upload-link" class="btn btn-white btn-sharp">Choose photo</a>
+                      <input id="profile-photo-upload" type="file" class="file" placeholder="Choose photo" formControlName="field_user_photo" [(ngModel)]="profile.field_user_photo">
+                      <div class="guide">
+                        <p>
+                          choose a photo that is at least 600 x 400 px
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="image-preview">
+                        <img src="http://placehold.it/100x100" alt="" class="img-responsive">
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="form-group interesets">
+                  <label for="interesets">What are your interests as a Maker?</label>
+                  <input type="text" class="form-control" id="interesets" placeholder="enter up to 5 interests" formControlName="field_maker_interests">
+                <div class="form-group bio">
+                  <label for="bio">Bio</label>
+                  <textarea class="form-control" id="bio" placeholder="Enter text" formControlName="field_maker_interests" [(ngModel)]="profile.field_bio"></textarea>
+                </div>  
+                </div> 
+                <div class="form-group how-started">
+                  <label for="how-started">How'd you get started making?</label>
+                  <input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="field_started_making" [(ngModel)]="profile.field_started_making">
+                </div> 
+                <div class="form-group makerspace">
+                  <label for="">Add your Makerspace(s)</label>
+                  <div class="maker-group">
+                    <label for="makerspace-1">Makerspace name</label>
+                    <input type="text" class="form-control" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+                    <label for="url-1">URL (optional)</label>
+                    <input type="text" class="form-control" id="url-1" placeholder="Type or paste">
+                  </div>
+                  <a href="" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+                </div>
+                <div class="form-group socials">
+                  <label for="socials">Add your other websites</label>
+                  <div class="guide">
+                    <p>indicate your preferred place to communicate - Choose one</p>
+                  </div>
+                  <table class="table borderedless">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Prefered?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p>Website or Blog</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="web-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_website_or_blog" [(ngModel)]="profile.field_social_accounts.field_website_or_blog">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="web-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Additional site</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="web-url-2" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_additional_site" [(ngModel)]="profile.field_social_accounts.field_additional_site">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="web-fav-2" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-facebook"></i> Facebook</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="fb-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_facebook" [(ngModel)]="profile.field_social_accounts.field_facebook">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="fb-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-instagram"></i> Instagram</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="ig-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_instagram" [(ngModel)]="profile.field_social_accounts.field_instagram">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="ig-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-linkedin"></i> LinkedIn</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="ln-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_linkedin" [(ngModel)]="profile.field_social_accounts.field_linkedin">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="ln-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-twitter"></i> Twitter</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="tw-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_twitter" [(ngModel)]="profile.field_social_accounts.field_twitter">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="tw-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-pinterest"></i> Pinterest</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="pn-url" placeholder="enter your UR" formControlName="optionalForm.field_social_accounts.field_pinterest" [(ngModel)]="profile.field_social_accounts.field_pinterest">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="pn-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-youtube"></i> YouTube</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="yt-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_youtube" [(ngModel)]="profile.field_social_accounts.field_youtube">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="yt-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-hackster"></i> Hackster.io</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="hk-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_hackster_io" [(ngModel)]="profile.field_social_accounts.field_hackster_io">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="hk-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-instructables"></i> Instructables</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="in-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_instructables" [(ngModel)]="profile.field_social_accounts.field_instructables">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="in-fav" id="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-lg fa-hackaday"></i> Hackaday</p>
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="hd-url" placeholder="enter your URL" formControlName="optionalForm.field_social_accounts.field_hackday" [(ngModel)]="profile.field_social_accounts.field_hackday">
+                        </td>
+                        <td>
+                          <input type="checkbox" name="hd-fav" id="">
+                        </td>
+                      </tr>
+                    </tbody>           
+                  </table>
+                </div>
+              </form>

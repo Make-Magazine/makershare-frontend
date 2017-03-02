@@ -5,9 +5,9 @@
         <div class="container">
           <h3 class="pull-left">Add a new project to your portfolio</h3>
           <ul class="list-unstyled pull-right contorls">
-            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Draft',0)">Save as draft</a></li>
-            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Private',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
-            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick('Public',1)">Publish</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick(370,1)">Save as draft</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick(370,1)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
+            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick(370,1)">Publish</a></li>
             <li><a class="btn btn-transparent">Cancel</a></li>
           </ul>
         </div>
@@ -15,16 +15,16 @@
       <div class="nav-create">
         <div class="container">
           <ul class="list-unstyled">
-            <li><a (click)="CheckFormValidationAndNavigate('Your Story')" class="btn btn-grey-inverse" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Your Story</a></li>
-            <li><a (click)="CheckFormValidationAndNavigate('How To')" class="btn btn-grey-inverse" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
-            <li><a (click)="CheckFormValidationAndNavigate('Team')" class="btn btn-grey-inverse" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
+            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-grey-inverse" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Your Story</a></li>
+            <li><a (click)="current_active_tab = 'How To'" class="btn btn-grey-inverse" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
+            <li><a (click)="current_active_tab = 'Team'" class="btn btn-grey-inverse" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
           </ul>
         </div>
       </div>
     </div><!-- End top-content-wrapper -->
     <div class="container">
       <div>
-        <app-your-story [YourStoryValues]="CreateProjectComponentValues['Your Story']" *ngIf="current_active_tab == 'Your Story'" (YourStory)="FormUpdateHandler($event , 'Your Story')"></app-your-story>
+        <app-your-story [YourStoryModel]="CreateProjectComponentValues['Your Story']" *ngIf="current_active_tab == 'Your Story'" (YourStory)="FormUpdateHandler($event , 'Your Story')"></app-your-story>
         <app-how-to [HowToValues]="CreateProjectComponentValues['How To']" *ngIf="current_active_tab == 'How To'" (HowTo)="FormUpdateHandler($event , 'How To')"></app-how-to>
         <app-team [TeamValues]="CreateProjectComponentValues['Team']" *ngIf="current_active_tab == 'Team'" (Team)="FormUpdateHandler($event , 'Team')"></app-team>
       </div>
@@ -35,9 +35,9 @@
         <div class="container">
           <h3 class="pull-left">Add a new project to your portfolio</h3>
           <ul class="list-unstyled pull-right contorls">
-            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Draft',0)">Save as draft</a></li>
-            <li><a class="btn btn-light-grey" (click)="SaveProjectClick('Private',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
-            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick('Public',1)">Publish</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick(370,1)">Save as draft</a></li>
+            <li><a class="btn btn-light-grey" (click)="SaveProjectClick(370,1)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
+            <li><a class="btn btn-blue btn-sharp" (click)="SaveProjectClick(370,1)">Publish</a></li>
             <li><a class="btn btn-transparent">Cancel</a></li>
           </ul>
         </div>

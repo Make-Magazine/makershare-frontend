@@ -16,6 +16,7 @@ export class ViewService {
       args.forEach((item, index) => {
 
         string_args += item[0] + '=' + item[1] + '&';
+        console.log(string_args)
       });
     }
    // console.log(string_args);

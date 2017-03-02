@@ -25,7 +25,7 @@ export class LoginComponent  implements OnInit{
      'ShowTellVideo': '',
      'AhaMoment': '',
      'UhOhMoment': '',
-   };
+   }; 
 
    validationMessages = {
      'username': {

@@ -22,6 +22,10 @@ export class NodeService {
   	return this.mainService.post(globals.endpoint + '/node', body).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  createProject(body): Observable<any>{
+  	return this.mainService.post(globals.endpoint + '/maker_project_api/', body).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
   UpdateNode(body): Observable<any>{
   	return this.mainService.put(globals.endpoint + '/node/' + body.nid, body).map(res => res.json()).catch(err => Observable.throw(err));
   }

@@ -11,7 +11,8 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-2">
-                    <div>{{currentCount}}</div>
+                   
+                    <p>{{currentCount}} Challenges</p>
                     
                   </div>
                   <div class="challenges-filter col-md-1 col-md-offset-8">
@@ -26,7 +27,7 @@
             </div>
             <div class="container challenges-container">
 
-              <div *ngFor="let challenge of challenges" class="challenge-card">
+              <div *ngFor="let challenge of challenges1" class="challenge-card">
                 <div class="col-md-6">
                 <div class="image-container">
                 <div routerLink="/challenge_summary"> <img src="{{challenge.challenge_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)"></div>

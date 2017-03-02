@@ -1,0 +1,55 @@
+<div class="main-container container-fluid">
+      <div class="row">
+        <section class="col-sm-12 width-fix">
+          <div class="top-content-wrapper">
+            <div class="container">
+              <h3>What's a Showcase?</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore nam quaerat inventore eveniet rerum totam.</p>
+            </div>
+          </div><!-- End top-content-wrapper -->
+          <div class="region region-content">
+            <section class="showcase">
+                <div class=" filters col-md-12">
+                  <div class="container">
+                    <p class="pull-left">{{showcases.length}} Showcase</p>
+                    <div class="sorting-filter pull-right">
+                      <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#" class="btn">Most recent</a></li>
+                        <li><a href="#" class="btn">Oldest</a></li>
+                        <li><a href="#" class="btn">Title A-Z</a></li>
+                        <li><a href="#" class="btn">Title Z-A</a></li>
+                        <li><a href="#" class="btn">Most Liked</a></li>
+                        <li><a href="#" class="btn">Most Forked</a></li>
+                      </ul>
+                    </div><!-- End sorting-filter -->
+                  </div>
+                </div>
+              <div class="container">
+                <div class="row">
+                    <div *ngFor="let showcase of showcases" class="col-md-4">
+                      <div class="showcase-item item-2">
+                        <img src="{{showcase.cover_photo}}" alt="" class="">
+                        <div class="content">
+                          <h4 class="title">Showcase: {{showcase.title}}</h4>
+                          <p class="description">{{showcase.description}}</p>
+                          <p class="number">{{showcase.number_of_projects}} projects</p>
+                          <p class="timestamp">Last Updated: {{showcase.updated_date}}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="col-sm-12">
+                    <div class="col-xs-4 col-xs-offset-4 load-more">
+                      <a href="#" class="btn btn-white">Load more</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div><!-- End region-content -->
+        </section>
+      </div><!-- End row -->
+    </div><!-- End main-container -->
