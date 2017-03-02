@@ -1,0 +1,55 @@
+              <form class="basic-info">
+                <div class="form-group userName">
+                  <label for="userName">Tell us your name</label>
+                  <p>Margot Jacob</p>
+                  <div class="guide">
+                    <p>You may add your searchable “nickname” if you are known by another name in the Maker community.</p>
+                  </div>
+                  <input type="text" class="form-control" id="userName" placeholder="Type your nickname (optional)">
+                </div>
+                <div class="form-group userCity">
+                  <label for="userCity">Where do you live?</label>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <select name="country" id="country"  class="form-control">
+                        <option value=""></option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <select name="state" id="state"  class="form-control">
+                        <option value=""></option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" class="form-control " name="city" id="city">
+                    </div>
+                  </div>
+                  <input type="checkbox" name="publish" id="publish" checked="true">Publish this info
+                  <div class="guide">
+                    <p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
+                  </div>
+                </div>
+                <div class="form-group describe">
+                  <label for="describe">How do you describe yourself as a Maker?</label>
+                  <div class="guide">
+                    <p>How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional fabricator. I am an educator. Etcetera!</p>
+                  </div>
+                  <textarea type="text" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters" maxlength="60"></textarea>
+                </div>
+                <div class="form-group birthday">
+                  <label for="birthday">What is your birthday?</label>
+                  <input type="text" class="form-control" name="birthday" id="birthday" placeholder="DD/MM/YYYY">
+                  <input type="checkbox" name="birthday-alt">I prefer not to answer. I attest that I’m over 13 years old
+                  <div class="guide">
+                    <p>This info will not be published on your profile; we ask because this platform is designed for Makers age 13 and above and some of our Challenges have age requirements.</p>
+                  </div>
+                </div>
+                <div class="form-group email">
+                  <label for="email">Enter your email address</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="email@example.com">
+                  <div class="guide">
+                    <p>This does not change the address you use to login; this is where we will send administrative emails and forward messages from other Makers. It can match your login email or not; you can change it at any time.</p>
+                  </div>
+                  <input type="checkbox" name="subscribe" checked="true">Subscribe to the Make: weekly newsletter
+                </div>
+              </form>
