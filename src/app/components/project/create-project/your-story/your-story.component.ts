@@ -3,46 +3,48 @@ import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { validimagesize } from '../../../../validations/valid-image-size.validation';
 import { ViewService } from '../../../../d7services/view/view.service';
-import { CreateYourStoryModel } from './your-story';
+import { CreateYourStoryModel, Category } from '../../../../models/project/create-project/your-story';
+import { ProjectCategory } from '../../../../models/project/project-category';
+import { CoverImage } from '../../../../models/project/create-project/cover-image';
 
 
 @Component({
   selector: 'app-your-story',
   templateUrl: './your-story.component.html',
 })
+
 export class YourStoryComponent implements OnInit {
   @Output() YourStory = new EventEmitter();
-  @Input('YourStoryValues') YourStoryValues: CreateYourStoryModel;
-  Model = {
-    title:'',
-    Categories:[],
-    field_teaser:'',
-    field_cover_photo:{filename:'',file:''},
-    field_show_tell_video:'',
-    field_aha_moment:'',
-    field_uh_oh_moment:'',
-    field_story:'',
-    field_tags:[],
-  };
-  ValidValues = {};
+  @Input('YourStoryModel') YourStoryModel: CreateYourStoryModel;
+
+  // TempModel: CreateYourStoryModel = {
+  //   title:'',
+  //   Categories:[],
+  //   field_aha_moment:'',
+  //   field_cover_photo: this.CoverImg,
+  //   field_show_tell_video:'',
+  //   field_story:'',
+  //   field_tags:[],
+  //   field_teaser:'',
+  //   field_uh_oh_moment:'',
+  // };
+
+  ValidValues:CreateYourStoryModel;
   YourStoryForm: FormGroup;
-  // data fields
+  Categories_Data:Category[];
   accepted_image_width = 600;
   accepted_image_height = 400;
-  Categories_Data = [];
+
   constructor(
     private fb: FormBuilder,
     private viewService: ViewService,
   ) {}
 
   ngOnInit() {
-    if(this.YourStoryValues){
-      this.Model = this.YourStoryValues;
-    }
+    // console.log(this.TempModel);
     this.buildForm();
     this.viewService.getView('projects_categories').subscribe(data => {
-      data.forEach((element, index) => {
-        this.Categories_Data[index] = {};
+      data.forEach((element:ProjectCategory, index) => {
         this.Categories_Data[index].display = element.name;
         this.Categories_Data[index].value = element.tid;
       });
@@ -50,20 +52,18 @@ export class YourStoryComponent implements OnInit {
   }
 
   buildForm(): void {
-   this.YourStoryForm = this.fb.group({
-     'title': [this.Model.title, [Validators.required,Validators.minLength(4)]],
-     'Categories': [this.Model.Categories, []],
-     'field_teaser': [this.Model.field_teaser, []],
-     'field_cover_photo': [this.Model.field_cover_photo, [Validators.required,validimagesize(this.accepted_image_width,this.accepted_image_height)]],
-     'field_show_tell_video': [this.Model.field_show_tell_video, [CustomValidators.url]],
-     'field_aha_moment': [this.Model.field_aha_moment, [CustomValidators.url]],
-     'field_uh_oh_moment': [this.Model.field_uh_oh_moment, [CustomValidators.url]],
-     'field_story':[this.Model.field_story,[]],
-     'field_tags': [this.Model.field_tags, []],
-   });
-    this.YourStoryForm.valueChanges.subscribe(data => {
-      this.onValueChanged(data);
+    this.YourStoryForm = this.fb.group({
+      'title': [this.YourStoryModel.title, [Validators.required,Validators.minLength(4)]],
+      'Categories': [this.YourStoryModel.Categories, [Validators.required]],
+      'field_teaser': [this.YourStoryModel.field_teaser],
+      'field_cover_photo': [this.YourStoryModel.field_cover_photo, [Validators.required,validimagesize(this.accepted_image_width,this.accepted_image_height)]],
+      'field_show_tell_video': [this.YourStoryModel.field_show_tell_video, [CustomValidators.url]],
+      'field_aha_moment': [this.YourStoryModel.field_aha_moment, [CustomValidators.url]],
+      'field_uh_oh_moment': [this.YourStoryModel.field_uh_oh_moment, [CustomValidators.url]],
+      'field_story':[this.YourStoryModel.field_story,[Validators.required]],
+      'field_tags': [this.YourStoryModel.field_tags],
     });
+    this.YourStoryForm.valueChanges.subscribe(data => this.onValueChanged(data));
     for(let index in this.YourStoryForm.controls){
       let control = this.YourStoryForm.controls[index];
       control.valueChanges.subscribe((value) => {
@@ -84,19 +84,17 @@ export class YourStoryComponent implements OnInit {
     });
   }
 
- ImageUpdated(event){
-   this.YourStoryForm.controls['field_cover_photo'].setValue({filename:'',file:''});
-   var files = event.srcElement.files;
-   if(files.length == 1 && files[0].type.startsWith("image")){
-    this.ImageFileObjectToBase64(files[0],this.YourStoryForm.controls['field_cover_photo']);
-   }
-   else{
-     this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;
-     this.YourStoryForm.controls['field_cover_photo'].patchValue({filename:'',file:''});
-   }
+  ImageUpdated(event){   
+    var files = event.srcElement.files;
+    if(files.length == 1 && files[0].type.startsWith("image")){
+      this.ImageFileObjectToBase64(files[0],this.YourStoryModel.field_cover_photo);
+    }
+    else{
+      this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;      
+    }
  }
 
- ImageFileObjectToBase64(file,field_cover_photo){
+ ImageFileObjectToBase64(file:File,ImgObject:CoverImage){
     var reader = new FileReader();
     reader.onload = (imgsrc:any) => {
       var image = new Image();
@@ -106,9 +104,11 @@ export class YourStoryComponent implements OnInit {
       image.onload = function() {
         if(image.width < CreateComponent.accepted_image_width || image.height < CreateComponent.accepted_image_height){
           CreateComponent.formErrors.field_cover_photo = CreateComponent.validationMessages.field_cover_photo.validimagesize;
-          field_cover_photo.patchValue({filename:'',file:''});
+          let EmptyImg:CoverImage;
+          ImgObject = EmptyImg;
         }else{
-          field_cover_photo.patchValue({filename:file.name,file:imgsrc.target.result});
+          ImgObject.filename = file.name;
+          ImgObject.file = imgsrc.target.result;
         }
       };
     }
@@ -134,12 +134,11 @@ export class YourStoryComponent implements OnInit {
   formErrors = {
      'title': '',
      'Categories': '',
-     'field_teaser': '',
      'field_cover_photo': '',
      'field_show_tell_video': '',
      'field_aha_moment': '',
      'field_uh_oh_moment': '',
-     'field_tags': '',
+     'field_story': '',
    };
 
    validationMessages = {
@@ -149,9 +148,6 @@ export class YourStoryComponent implements OnInit {
      },
      'Categories': {
        'required': 'Categories is required.'
-     },
-     'field_teaser': {
-       'required': 'Teaser is required.'
      },
      'field_cover_photo': {
        'required': 'Cover photo is required.',
@@ -167,8 +163,8 @@ export class YourStoryComponent implements OnInit {
      'field_uh_oh_moment': {
        'url': 'Please enter a valid url, ex: http://example.com.',
      },
-     'field_tags': {
-       'required': 'Tags is required.'
+     'field_story': {
+       'required': 'Story is required.'
      },
    };
 }
