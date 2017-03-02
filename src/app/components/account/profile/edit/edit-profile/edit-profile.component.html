@@ -1,0 +1,34 @@
+  <div class="page-create-profile">
+    <div class="main-container container-fluid">
+      <div class="row">
+        <section class="col-sm-12 width-fix">
+          <div class="top-content-wrapper">
+            <div class="container">
+              <div class="col-md-12 create-cover">
+                <h3>Welcome to the Make: Community, Margot Jacobs!</h3>
+                <p>You are now part of a worldwide community of makers eager to exchange ideas and projects with you. We are all Makers. But our interests are infinite.</p>
+                <p>What kind of maker are you?</p>
+              </div>
+            </div><!-- End container -->
+          </div><!-- End top-content-wrapper -->
+          <header class="create-nav">
+            <div class="container">
+              <ul class="list-unstyled">
+                <li><a href="" class="btn btn-light-grey btn-sharp active" id="basic-info">Basic Info</a></li>
+                <li><a href="" class="btn btn-light-grey btn-sharp" id="optional-info">Optional Info</a></li>
+              </ul>
+              <a href="" class="btn btn-blue btn-sharp save-next">Save &amp; Next</a>
+              <a href="" class="btn btn-light-grey btn-sharp skip">Skip</a>
+            </div>
+          </header>
+          <div class="container">
+            <div class="region region-content col-sm-12">
+                <app-basic-info></app-basic-info>
+                <app-optional-info [profile]="UserProfile"></app-optional-info>
+
+            </div><!-- End region-content -->
+          </div>
+        </section>
+      </div><!-- End row -->
+    </div><!-- End main-container -->
+  </div>
