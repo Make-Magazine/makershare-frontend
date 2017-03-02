@@ -17,11 +17,11 @@ import { ExploreComponent } from './components/explore/explore.component';
 
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
+import { ShowcaseModule } from './components/showcase/showcases.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
-import { ShowcasesCollectionComponent} from './components/showcase/showcasesCollection.component';
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -31,8 +31,7 @@ import { ShowcasesCollectionComponent} from './components/showcase/showcasesColl
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ExploreComponent,
-    ShowcasesCollectionComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +40,7 @@ import { ShowcasesCollectionComponent} from './components/showcase/showcasesColl
     ProjectModule,
     AccountModule,
     ChallengeModule,
+    ShowcaseModule,
     LearnModule,
     HomeModule,
     routing,

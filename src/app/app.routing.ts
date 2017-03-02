@@ -6,11 +6,12 @@ import { LearnComponent } from "./components/learn/learn/learn.component";
 import { ChallengesComponent,ChallengeDataComponent } from "./components/challenge/challenge.module";
 import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";
-import { ShowcasesCollectionComponent } from "./components/showcase/showcasesCollection.component";
+import { ShowcasesCollectionComponent, SinglShowcaseComponent } from "./components/showcase/showcases.module";
 const APP_ROUTES: Routes = [
    { path: '', component: HomeComponent },
    { path: 'user', component: ProfileComponent },
    { path:'showcases', component: ShowcasesCollectionComponent},
+   { path:'single-showcase/:nid', component: SinglShowcaseComponent},
    { path: 'explore', component: ExploreComponent },
    { path: 'challenges', component: ChallengesComponent },
    { path: 'challenge-data/:nid', component: ChallengeDataComponent },

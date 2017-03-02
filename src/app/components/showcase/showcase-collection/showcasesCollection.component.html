@@ -30,12 +30,15 @@
                 <div class="row">
                     <div *ngFor="let showcase of showcases" class="col-md-4">
                       <div class="showcase-item item-2">
-                        <img src="{{showcase.cover_photo}}" alt="" class="">
+                      <a (click)="ShowSingleShowcase(showcase.nid)">
+                        <img src="{{showcase.Cover_Photo}}" alt="" class="" (click)="ShowSingleShowcase(showcase.nid)">
+                      </a>
+
                         <div class="content">
-                          <h4 class="title">Showcase: {{showcase.title}}</h4>
+                          <h4 class="title">Showcase: {{showcase.showcase_name}}</h4>
                           <p class="description">{{showcase.description}}</p>
-                          <p class="number">{{showcase.number_of_projects}} projects</p>
-                          <p class="timestamp">Last Updated: {{showcase.updated_date}}</p>
+                          <p class="number">{{showcase.number_of_project}} projects</p>
+                          <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
                         </div>
                       </div>
                     </div>
