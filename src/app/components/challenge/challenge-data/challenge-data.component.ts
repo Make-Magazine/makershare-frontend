@@ -30,16 +30,22 @@ projectsData;
 sortData:ISorting;
 sort_order:string;
 sort_by:string;
+
 @Input() sortType:ISorting;
-  constructor(  private route: ActivatedRoute,
+@Input() pageNo:number;
+  constructor( private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,) { }
 
   ngOnInit() {
+    this.getCountProject();
     this.activeTab = 'summary';
    this.getChallengeData();
    this.sort_order = "DESC";
    this.sort_by = "created";
+
+   
+
     //awards and prizes
     this.route.params
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
@@ -146,11 +152,29 @@ sort_by:string;
 getSortType(event:any){
        this.sortData = event;
        this.sort_by=this.sortData.sort_by;
-      this.sort_order = this.sortData.sort_order;
- // console.log(this.sortData);
-   this.getProjects();
+       this.sort_order = this.sortData.sort_order;
+       this.getProjects();
   console.log(this.getProjects);
 }
-  }
+
+getPageNumber(event:any){
+  this.pageNo = event
+   console.log(this.pageNo);
+}
+
+getCountProject(){
+  var nid;
+   var nid = this.route.snapshot.params['nid'];
+   console.log(nid);
+ this.route.params
+    .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
+    .subscribe(data =>{
+      this.projects=data;
+     console.log(this.projects);
+    });
+
+
+}
+}
 
 
