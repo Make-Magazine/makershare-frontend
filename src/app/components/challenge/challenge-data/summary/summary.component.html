@@ -12,21 +12,13 @@
           <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-<<<<<<< HEAD
-            <li><a href="#" class="btn">Most recent</a></li>
-            <li><a href="#" class="btn">Oldest</a></li>
-            <li><a  (click)="sortAsc" class="btn">Title A-Z</a></li>
-            <li><a  (click)="sortDesc" class="btn">Title Z-A</a></li>
-            <li><a href="#" class="btn">Most Liked</a></li>
-            <li><a href="#" class="btn">Most Forked</a></li>
-=======
+
             <li><a (click)="mostRecent($event)" class="btn">Most recent</a></li>
             <li><a (click)="oldest($event)" class="btn">Oldest</a></li>
             <li><a (click)="sortAsc($event)" class="btn">Title A-Z</a></li>
             <li><a (click)="sortDesc($event)"class="btn">Title Z-A</a></li>
             <li><a (click)="mostLiked($event)" class="btn">Most Liked</a></li>
             <li><a (click)="mostForked($event)" class="btn">Most Forked</a></li>
->>>>>>> 4b3c0163fe64a14c6f225a5689092b5f0a6d54ee
           </ul>
         </div><!-- End sorting-filter -->
       </div><!-- End row -->
