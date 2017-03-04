@@ -15,7 +15,8 @@ export class EditProfileComponent implements OnInit {
     field_user_photo: '',
     field_bio: '',
     field_started_making: '',
-    field_social_accounts: this.profileSocial,     
+    field_social_accounts: this.profileSocial,  
+    field_address:{}
    };
 
   profileSocial: ProfileSocial = {

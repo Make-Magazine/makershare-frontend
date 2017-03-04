@@ -4,7 +4,6 @@ import { ViewService } from '../../../d7services/view/view.service';
 @Component({
   selector: 'app-challenge-data',
   templateUrl: './challenge-data.component.html',
-  styleUrls: ['./challenge-data.component.css']
 })
 export class ChallengeDataComponent implements OnInit {
 challenge;
@@ -25,12 +24,14 @@ projects_show;
 projects_more;
 challenge_start_date;
 
+activeTab;
+projectsData;
   constructor(  private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,) { }
 
   ngOnInit() {
-   
+   this.activeTab = 'summary';
    this.getChallengeData();
  
 
@@ -54,6 +55,11 @@ challenge_start_date;
  this.getProjects();
  
 
+  }
+
+  changeChallangeTab(NewTab,e){
+    e.preventDefault();
+    this.activeTab = NewTab;
   }
   
     getChallengeData(){
@@ -105,6 +111,7 @@ challenge_start_date;
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid'],[page_arg]]]))
     .subscribe(data =>{
       this.projects=data;
+      this.projectsData=data;
     this.projects_show=this.projects.slice(0, 1);
     this.projects_more=data.splice(2,data.length);
       this.entries_count=this.projects.length;
@@ -130,6 +137,8 @@ challenge_start_date;
     }
     
   }
+
+
   }
 
 

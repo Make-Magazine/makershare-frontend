@@ -7,12 +7,14 @@ import { EditProfileComponent } from './edit/edit-profile/edit-profile.component
 import { BasicInfoComponent } from './edit/edit-profile/basic-info/basic-info.component';
 import { OptionalInfoComponent } from './edit/edit-profile/optional-info/optional-info.component';
 import { ProfileRoutingModule } from './profile.routing.module';
+import {SelectModule} from 'ng-select';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule, 
     ProfileRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SelectModule
   ],
   declarations: [
     EditProfileComponent,
