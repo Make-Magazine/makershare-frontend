@@ -7,16 +7,19 @@ import {ISorting} from '../../../../models/challenge/sorting';
 export class SummaryComponent implements OnInit {
 @Input() projects; 
 @Output() sortType = new EventEmitter<ISorting>();
+@Output() pageNumber = new EventEmitter<number>();
 ActionName:string;
-
+pages:number = 0;
 sort:ISorting={
   sort_by : "",
-  sort_order:""
+  sort_order:"",
+  pageNo:0
 };
   constructor() { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
+    
   }
 
 sortAsc(sort:ISorting){
@@ -66,6 +69,8 @@ this.sortType.emit(this.sort);
  console.log(this.sort);
 }
 loadmore(){
-  console.log("load more");
+  this.pages++;
+  this.pageNumber.emit(this.pages);
+  console.log(this.pages);
 }
 }

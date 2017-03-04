@@ -30,22 +30,28 @@ projectsData;
 sortData:ISorting;
 sort_order:string;
 sort_by:string;
+
 @Input() sortType:ISorting;
-  constructor(  private route: ActivatedRoute,
+@Input() pageNo:number;
+  constructor( private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,) { }
 
   ngOnInit() {
+    this.getCountProject();
     this.activeTab = 'summary';
    this.getChallengeData();
    this.sort_order = "DESC";
    this.sort_by = "created";
+
+   
+
     //awards and prizes
     this.route.params
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.awards= data;
-      console.log(this.awards);
+     // console.log(this.awards);
       this.no_of_awards=data.length;
     });
 
@@ -73,7 +79,7 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
-      console.log(this.challenge);
+     // console.log(this.challenge);
      //calculate days difference
       if(this.challenge){
          var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
@@ -122,7 +128,7 @@ sort_by:string;
     this.projects_more=data.splice(2,data.length);
       this.entries_count=this.projects.length;
 
-      console.log(data);
+     // console.log(data);
             this.loadMoreVisibilty();
 
     });
@@ -147,11 +153,29 @@ sort_by:string;
 getSortType(event:any){
        this.sortData = event;
        this.sort_by=this.sortData.sort_by;
-      this.sort_order = this.sortData.sort_order;
- // console.log(this.sortData);
-   this.getProjects();
-  console.log(this.getProjects);
+       this.sort_order = this.sortData.sort_order;
+       this.getProjects();
+  //console.log(this.getProjects);
 }
-  }
+
+getPageNumber(event:any){
+  this.pageNo = event
+  // console.log(this.pageNo);
+}
+
+getCountProject(){
+   var nid;
+   var nid = this.route.snapshot.params['nid'];
+   console.log(nid);
+ this.route.params
+    .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
+    .subscribe(data =>{
+      this.projects=data;
+     console.log(this.projects.length);
+    });
+
+
+}
+}
 
 
