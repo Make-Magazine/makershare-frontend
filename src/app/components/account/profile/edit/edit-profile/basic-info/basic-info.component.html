@@ -1,40 +1,42 @@
-
-<form class="basic-info" [formGroup]="basicProfileForm" (ngSubmit)="compeleteProfile($event)">
+<form class="basic-info" [formGroup]="basicForm" (ngSubmit)="compeleteProfile($event)">
 	<div class="form-group userName">
 		<label for="userName">Tell us your name</label>
 		<p>Margot Jacob</p>
 		<div class="guide">
 			<p>You may add your searchable “nickname” if you are known by another name in the Maker community.</p>
 		</div>
-		<input type="text" formControlName="nickname" [(ngModel)]="profile.field_nickname" class="form-control" id="userName" placeholder="Type your nickname (optional)">
+		<input type="text" formControlName="field_nickname" class="form-control" id="userName" placeholder="Type your nickname (optional)">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_nickname').hasError('required') && basicForm.get('field_nickname').touched">
+			userName is required
+		</div>
 	</div>
 	<div class="form-group userCity">
 		<label for="userCity">Where do you live?</label>
-		<div class="row">
+		<div class="row" formGroupName="field_address">
 			<div class="col-md-3">
-				<ng-select [options]="countries" placeholder="Select Country" formControlName="country" [allowClear]="true" (selected)="profile.field_address.country=$event">
+				<ng-select [options]="countries" placeholder="Select Country" formControlName="country" [allowClear]="true">
 				</ng-select>
-				<div *ngIf="formErrors.country" class="alert alert-danger error-msg">
-					{{ formErrors.country }}
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
+					country is required
 				</div>
 			</div>
 			<div class="col-md-2">
-				<ng-select [options]="states" placeholder="Select state" formControlName="state" [allowClear]="true" (selected)="profile.field_address.state=$event">
+				<ng-select [options]="states" placeholder="Select state" formControlName="state" [allowClear]="true">
 				</ng-select>
-				<div *ngIf="formErrors.state" class="alert alert-danger error-msg">
-					{{ formErrors.country }}
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('state').hasError('required') && basicForm.get('field_address').get('state').touched">
+					state is required
 				</div>
 			</div>
 			<div class="col-md-6">
-				<input type="text" formControlName="city" [(ngModel)]="profile.field_address.city" class="form-control " name="city" id="city">
-				<div *ngIf="formErrors.city" class="alert alert-danger error-msg">
-					{{ formErrors.city }}
+				<input type="text" formControlName="city" class="form-control " name="city" id="city">
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('city').hasError('required') && basicForm.get('field_address').get('city').touched">
+					city is required
 				</div>
 			</div>
 
 		</div>
-		<input type="checkbox" formControlName="publish" [(ngModel)]="profile.field_address_publish" name="publish" id="publish"
-			checked="true">Publish this info
+		<input type="checkbox" formControlName="field_address_publish" name="publish" id="publish" checked="true">Publish this
+		info
 		<div class="guide">
 			<p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
 		</div>
@@ -45,21 +47,23 @@
 			<p>How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional
 				fabricator. I am an educator. Etcetera!</p>
 		</div>
-		<textarea type="text" formControlName="describe" [(ngModel)]="profile.field_describe_yourself" class="form-control" name="describe"
-			id="describe" placeholder="Enter up to 60 characters" maxlength="60"></textarea>
-		<div *ngIf="formErrors.describe" class="alert alert-danger error-msg">
-			{{ formErrors.describe }}
+		<textarea type="text" formControlName="field_describe_yourself" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters"
+			maxlength="60"></textarea>
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_describe_yourself').hasError('required') && basicForm.get('field_describe_yourself').touched">
+			field describe yourself is required
+		</div>
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_describe_yourself').hasError('minlength') && basicForm.get('field_describe_yourself').touched">
+			field describe yourself is required (minimum 60characters).
 		</div>
 	</div>
 	<div class="form-group birthday">
 		<label for="birthday">What is your birthday?</label>
-		<input type="text" class="form-control" name="birthday" id="birthday" placeholder="DD/MM/YYYY" formControlName="birthday"
-			[(ngModel)]="profile.field_birthday_date">
-		<div *ngIf="formErrors.birthday" class="alert alert-danger error-msg">
-			{{ formErrors.birthday }}
+		<input type="text" class="form-control" name="birthday" id="birthday" placeholder="DD/MM/YYYY" formControlName="field_birthday_date">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_birthday_date').hasError('required') && basicForm.get('field_birthday_date').touched">
+			birthday is required
 		</div>
-		<input type="checkbox" formControlName="birthdayCheck" [(ngModel)]="profile.field_birthday_status" name="birthday-alt">I
-		prefer not to answer. I attest that I’m over 13 years old
+		<input type="checkbox" formControlName="field_birthday_status" name="birthday-alt">I prefer not to answer. I attest that
+		I’m over 13 years old
 		<div class="guide">
 			<p>This info will not be published on your profile; we ask because this platform is designed for Makers age 13 and above
 				and some of our Challenges have age requirements.</p>
@@ -67,16 +71,15 @@
 	</div>
 	<div class="form-group email">
 		<label for="email">Enter your email address</label>
-		<input type="email" class="form-control" name="email" id="email" formControlName="email" [(ngModel)]="profile.mail" placeholder="email@example.com">
-		<div *ngIf="formErrors.email" class="alert alert-danger error-msg">
-			{{ formErrors.email }}
+		<input type="email" class="form-control" name="email" id="email" formControlName="mail" placeholder="email@example.com">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('mail').hasError('required') && basicForm.get('mail').touched">
+			Email is required
 		</div>
 		<div class="guide">
 			<p>This does not change the address you use to login; this is where we will send administrative emails and forward messages
 				from other Makers. It can match your login email or not; you can change it at any time.</p>
 		</div>
-		<input type="checkbox" formControlName="subscribe" [(ngModel)]="profile.field_newsletter_subscription" name="subscribe" checked="true">Subscribe
-		to the Make: weekly newsletter
+		<input type="checkbox" formControlName="field_newsletter_subscription" name="subscribe" checked="true">Subscribe to the
+		Make: weekly newsletter
 	</div>
 </form>
-             
