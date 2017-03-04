@@ -37,13 +37,16 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(data)
       this.project = data;
       this.projectDetails = data;
-      console.log(this.project)
-      console.log(this.projectDetails)
+      //console.log(this.project)
+      //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
-        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+        this.isBookmarked = data[0];
+        //console.log(this.isBookmarked)
+      });
+      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
         this.isLiked = data[0];
-        console.log(this.isLiked)
       });
        
        //console.log(this.FlagStates[0])
@@ -61,19 +64,38 @@ export class ProjectDetailsComponent implements OnInit {
   changeProjectTab(NewTab){
     this.current_active_tab = NewTab;
   }
+  likeThis(e: Event){
+    e.preventDefault();
+    if(this.isLiked){
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+        this.isLiked = !response[0];
+      });
+    }else {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+        this.isLiked = response[0];
+      });
+
+    }
+    
+    // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
+  }
   forkThis(e: Event){
     e.preventDefault();
     //console.log('forked')
   }
-  likeThis(e: Event){
-    e.preventDefault();
-    this.isLiked = !this.isLiked;
-    // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
-  }
+  
   bookmarkThis(e: Event){
     e.preventDefault();
-    this.isBookmarked = !this.isBookmarked;
-    //console.log('bookmark')
+     if(this.isBookmarked){
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+        this.isBookmarked = !response[0];
+      });
+      this.isBookmarked= !this.isBookmarked;
+    }else {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+        this.isBookmarked = response[0];
+      });
+    }
   }
   shareThis(e: Event){
     e.preventDefault();
