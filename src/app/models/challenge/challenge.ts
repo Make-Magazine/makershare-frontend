@@ -1,9 +1,8 @@
 export interface IChallenge{
-
-challenge_image: String;
-challenge_status: String;
-sponsored_by: string,
-challenge_summary: string;
-title: string;
-nid: number;
+  cover_image: string;
+  status: string;
+  sponsored_by: string,
+  summary: string;
+  title: string;
+  nid: number;
 }

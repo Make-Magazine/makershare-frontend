@@ -3,20 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProjectsComponent } from './profile/projects/projects.component';
+import { ProfileModule } from './profile/profile.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProfileModule
   ],
   declarations: [
     LoginComponent,
-    ProfileComponent,
-    ProjectsComponent,
   ],
   exports: [LoginComponent]
 })

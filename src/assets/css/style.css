@@ -1768,7 +1768,7 @@ header.showcase-project {
       font-size: 11px;
       padding-top: 10px; }
   .page-challenge-summary .region-content .content-wrapper .followers, .page-challenge-summary-closed .region-content .content-wrapper .followers {
-    display: none;
+   /* display: none;*/
     width: 90%;
     overflow: hidden;
     margin: auto; }

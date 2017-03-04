@@ -1,19 +1,14 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export const validimagesize = (width,height): ValidatorFn => {
+export const validimagesize = (width, height): ValidatorFn => {
   return (control: AbstractControl): {[key: string]: any} => {
-    var reader = new FileReader();
-    reader.onload = (imgsrc:any) => {
       var image = new Image();
-      image.src = imgsrc.target.result;
+      image.src = control.value.file;
       image.onload = function() {
-        if(image.width < width || image.height < height){
-          return {validimagesize: true};
-        }else{
+        if(image.width > width && image.height > height){
           return null;
         }
       };
-    }
-    return null;
+      return {validimagesize: true};
   };
 };

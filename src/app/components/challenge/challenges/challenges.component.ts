@@ -8,8 +8,7 @@ import{IChallenge} from '../../../models/challenge/challenge';
   templateUrl: './challenges.component.html',
 })
 export class ChallengesComponent implements OnInit {
-  challenges= [];
-  challenges1 : IChallenge[]=[];
+  challenges: IChallenge[]=[];
   challengescounter = [];
   pageNumber = 0;
   allstatuses = [];
@@ -51,8 +50,7 @@ export class ChallengesComponent implements OnInit {
       
     }
      this.viewService.getView('challenges',[status_arg, page_arg]).subscribe(data => {
-      this.challenges1= this.challenges1.concat(data);
-        console.log(this.challenges1);
+      this.challenges = this.challenges.concat(data);
            console.log(page_arg)
         
       this.loadMoreVisibilty();
