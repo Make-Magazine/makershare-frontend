@@ -70,13 +70,11 @@ export class ProjectDetailsComponent implements OnInit {
       this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
         this.isLiked = !response[0];
       });
-      this.isLiked= !this.isLiked;
     }else {
       this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
         this.isLiked = response[0];
       });
 
-      this.isLiked= !this.isLiked;
     }
     
     // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');

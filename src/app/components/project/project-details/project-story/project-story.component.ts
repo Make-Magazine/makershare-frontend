@@ -35,42 +35,16 @@ export class ProjectStoryComponent implements OnInit {
       }
       //  console.log(this.comments);
     });
-    // var i = 0;
-    // this.getCollabs().subscribe(data => {
-    //   this.obvfn = data
-    // })
-    // console.log(this.obvfn)
+    var i = 0;
+    for( let maker of this.project.field_collaborators){
+      this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
+        this.collabs[i] = {};
+        this.collabs[i] = data[0];
+        i++;
+      });
+    }
     
-    //if(i == this.project.field_collaborators.length){
-      // for( let maker of this.project.field_collaborators){
-      //   this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-      //   this.collabs[i] = {};
-      //   this.collabs[i] = data[0];
-      //   i++;
-      //   console.log(this.collabs)
-      // });
-    //}
-  // }
-  //this.comments.createComment()
  }//End ngOnInit
   
-  // getCollabs(): Observable<any>{
-  //   console.log(this.project.field_collaborators)
-  //   var i=0;
-  //   var obs = Observable.create(observer => {
-  //       for( let maker of this.project.field_collaborators){
-  //         this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-  //           this.collabs[i] = {};
-  //           this.collabs[i] = data[0];
-  //           i++;
-  //         });
-  //       }
-  //       if(i > this.project.field_collaborators.length){
-  //         observer.complete();
-  //       }else{
-  //             observer.next(false);
-  //           }
-  //   });
-  //   return obs;
-  // }
+ 
 }// End export
