@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import { ISorting } from '../../../models/challenge/sorting';
 @Component({
   selector: 'app-challenge-data',
   templateUrl: './challenge-data.component.html',
@@ -26,15 +27,19 @@ challenge_start_date;
 
 activeTab;
 projectsData;
+sortData:ISorting;
+sort_order:string;
+sort_by:string;
+@Input() sortType:ISorting;
   constructor(  private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,) { }
 
   ngOnInit() {
-   this.activeTab = 'summary';
+    this.activeTab = 'summary';
    this.getChallengeData();
- 
-
+   this.sort_order = "DESC";
+   this.sort_by = "created";
     //awards and prizes
     this.route.params
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
@@ -108,8 +113,8 @@ projectsData;
      if(this.pageNumber >=0){
       page_arg = ['page', this.pageNumber];
     }
-          this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid'],[page_arg]]]))
+      this.route.params
+    .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],[page_arg],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe(data =>{
       this.projects=data;
       this.projectsData=data;
@@ -139,7 +144,14 @@ projectsData;
     
   }
 
-
+getSortType(event:any){
+       this.sortData = event;
+       this.sort_by=this.sortData.sort_by;
+      this.sort_order = this.sortData.sort_order;
+ // console.log(this.sortData);
+   this.getProjects();
+  console.log(this.getProjects);
+}
   }
 
 

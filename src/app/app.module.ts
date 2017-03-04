@@ -12,6 +12,8 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
+import { ProfileService } from './d7services/profile/profile.service';
+
 import { ExploreComponent } from './components/explore/explore.component';
 
 
@@ -45,7 +47,7 @@ import { HomeModule } from './components/home/home.module';
     HomeModule,
     routing,
   ],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService],
+  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
