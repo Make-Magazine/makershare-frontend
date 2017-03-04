@@ -103,6 +103,7 @@ projectsData;
       }
     getProjects(){
        //challenge entries projects
+       var sort: string;
     var page_arg = [];
      if(this.pageNumber >=0){
       page_arg = ['page', this.pageNumber];

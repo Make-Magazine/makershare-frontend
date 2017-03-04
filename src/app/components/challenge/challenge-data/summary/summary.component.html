@@ -14,8 +14,8 @@
           <ul class="dropdown-menu">
             <li><a href="#" class="btn">Most recent</a></li>
             <li><a href="#" class="btn">Oldest</a></li>
-            <li><a href="#" class="btn">Title A-Z</a></li>
-            <li><a href="#" class="btn">Title Z-A</a></li>
+            <li><a  (click)="sortAsc" class="btn">Title A-Z</a></li>
+            <li><a  (click)="sortDesc" class="btn">Title Z-A</a></li>
             <li><a href="#" class="btn">Most Liked</a></li>
             <li><a href="#" class="btn">Most Forked</a></li>
           </ul>
@@ -34,7 +34,7 @@
             </div>
             <div class="vote"><a href="">Vote</a></div>
           </div>
-          <h4>Project Name Project Name Project Name</h4>
+          <h4>{{project.title}}</h4>
           <p class="submitter">By <a href="">Dolores Ipsum</a></p>
           <p class="entry-date">12.21.16</p>
         </div><!-- End entry-container -->
