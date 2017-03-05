@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
@@ -30,9 +30,9 @@ challenge_start_date;
 followers=[];
 isFollowed=true;
 Flags = ['follow'];
-FlagStates = [] ;
+FlagStates = [];
 currentuser;
-
+hideButton=false;
 activeTab;
 projectsData;
 sortData:ISorting;
@@ -78,7 +78,13 @@ sort_by:string;
    
  this.getProjects();
  this.getCurrentUser();
-
+    /*start flag */
+     //         this.challenge.nid = this.route.params['value'].nid;
+   /* console.log(this.route.params['value'].nid)
+      this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
+        this.isFollowed = data[0];
+      });*/
+    /*enf flag */
   }
 
 /* function get current user */
@@ -93,7 +99,8 @@ sort_by:string;
   /* function follow challenge*/
     followThis(e: Event){
       this.getCurrentUser();
-      console.log(this.currentuser.user.uid)
+   //   console.log(this.currentuser.user.uid)
+     // console.log(this.challenge.nid)
     e.preventDefault();
     if(this.isFollowed){
       this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
@@ -121,7 +128,13 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
-      //console.log(this.challenge['display_entries']);
+     // console.log(this.challenge['challenge_status']);
+     if(this.challenge['status_id'] == '375'){
+      this.hideButton=true;
+     }
+     else{
+this.hideButton=false;
+      }
      //calculate days difference
       if(this.challenge){
          var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
@@ -157,7 +170,7 @@ sort_by:string;
     getProjects(){
       /*cheack display_entries */
       
-      console.log("projects");
+     // console.log("projects");
       
        //challenge entries projects
        
@@ -221,7 +234,7 @@ getCountProject(){
     .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
     .subscribe(data =>{
       this.projects=data;
-     //console.log(this.projects.length);
+   //  console.log(this.projects);
     });
 
 
