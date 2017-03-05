@@ -5,13 +5,19 @@
       <p *ngIf="challenge.body" >{{challenge.body}} </p>
       <p>See <a href="">Rules &amp; Instructions</a> for more details.</p>
     </div>
-    <div class="filters">
+   
+      
+      
+   <div *ngIf="challenge" >
+     <div *ngIf="challenge.display_entries =='1'">
+     <!--start if -->
+    <div class="filters" >
         <div class="row">
         <p class="col-md-4" *ngIf="entries_count">{{entries_count}} Entries</p>
         <div class="sorting-filter col-md-3 col-md-offset-5">
           <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <span class="caret" ></span></button>
+          <ul class="dropdown-menu"  >
 
             <li><a (click)="mostRecent($event)" class="btn">Most  recent</a></li>
             <li><a (click)="oldest($event)" class="btn">Oldest</a></li>
@@ -23,7 +29,9 @@
         </div><!-- End sorting-filter -->
       </div><!-- End row -->
     </div><!-- End filters -->
-    <div class="entries" *ngIf="challenge"  >
+    </div><!--end if -->
+    </div><!--end if -->
+    <div class="entries" *ngIf="challenge" >
       <div *ngIf="challenge.display_entries =='1'">
       <div *ngIf="projects">
       <div  *ngFor="let project of projects">
