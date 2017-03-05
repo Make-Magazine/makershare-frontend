@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
-
+import{IChallenge} from '../../../models/challenge/challenge';
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
 })
 export class ChallengesComponent implements OnInit {
-  challenges = [];
+  challenges: IChallenge[]=[];
   challengescounter = [];
   pageNumber = 0;
   allstatuses = [];
@@ -47,14 +47,15 @@ export class ChallengesComponent implements OnInit {
     }
     if(this.pageNumber >=0){
       page_arg = ['page', this.pageNumber];
+      
     }
      this.viewService.getView('challenges',[status_arg, page_arg]).subscribe(data => {
-     this.challenges = this.challenges.concat(data);
-      console.log(page_arg)
-      console.log(this.challenges)
+      this.challenges = this.challenges.concat(data);
+           console.log(page_arg)
+        
       this.loadMoreVisibilty();
       if(!this.currentCount){
- this.currentCount = this.statusesCount['0'];
+            this.currentCount = this.statusesCount['0'];
       }
       // count followers
       for (let challenge of this.challenges){
@@ -74,7 +75,8 @@ export class ChallengesComponent implements OnInit {
   }
 
   // get more click
-  loadmore(){
+    loadmore(){
+     
     this.pageNumber++;
     this.getChallenges();
   }
