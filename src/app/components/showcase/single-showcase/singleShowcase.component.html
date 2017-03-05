@@ -20,14 +20,12 @@
                       <div class="profile-card">
                         <div class="left col-sm-4">
                           <div class="profile-pic">
-                          <a (click)="goToProfile(profile.pid)">
-                              <img src="{{profile.photo}}" alt="" class="" (click)="goToProfile(profile.pid)">
-                              </a>
+                            <img src="{{profile.photo}}" alt="" class="" >
                           </div>
                           <a  class="btn btn-blue">Message</a>
                         </div>
                         <div class="right col-sm-4">
-                          <h4 class="profile-name"><a href="#">{{profile.first_name}}</a></h4>
+                          <h4 class="profile-name"><a (click)="goToProfile(profile.pid)">{{profile.first_name}}</a></h4>
                           <p class="count">X projects</p>
                           <p *ngFor="let tag of profile.tags" class="user-tag">
                             {{tag}}
@@ -43,7 +41,7 @@
             <div class="container">
 
                 <div class=" filters col-md-10 col-md-offset-1">
-                  <p class="pull-left">128 Entries</p>
+                  <p class="pull-left">{{projects.length}} Entries</p>
                   <div class="sorting-filter pull-right">
                     <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
                     <span class="caret"></span></button>

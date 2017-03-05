@@ -2,6 +2,9 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
+import { FlagService } from '../../../d7services/flag/flag.service';
+import { UserService } from '../../../d7services/user/user.service';
+import 'rxjs/Rx';
 @Component({
   selector: 'app-challenge-data',
   templateUrl: './challenge-data.component.html',
@@ -24,6 +27,11 @@ pageNumber = 0;
 projects_show;
 projects_more;
 challenge_start_date;
+followers=[];
+isFollowed=true;
+Flags = ['follow'];
+FlagStates = [] ;
+currentuser;
 
 activeTab;
 projectsData;
@@ -35,7 +43,10 @@ sort_by:string;
 @Input() pageNo:number;
   constructor( private route: ActivatedRoute,
     private router: Router,
-    private viewService: ViewService,) { }
+    private viewService: ViewService,
+    private userService: UserService,
+    private flagService: FlagService
+    ) { }
 
   ngOnInit() {
     this.getCountProject();
@@ -51,7 +62,7 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.awards= data;
-     // console.log(this.awards);
+      //console.log(this.awards);
       this.no_of_awards=data.length;
     });
 
@@ -59,14 +70,45 @@ sort_by:string;
     this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']]]))
     .subscribe(data =>{
+      this.followers=data;
+    //  console.log(this.followers);
       this.no_of_followers=data.length;
     });
     
    
  this.getProjects();
- 
+ this.getCurrentUser();
 
   }
+
+/* function get current user */
+  getCurrentUser(){
+        this.userService.getStatus().subscribe(data => {
+      this.currentuser = data;
+      //console.log(this.currentuser.user.name)
+    });
+  }
+  /* end function get user*/
+
+  /* function follow challenge*/
+    followThis(e: Event){
+      this.getCurrentUser();
+      console.log(this.currentuser.user.uid)
+    e.preventDefault();
+    if(this.isFollowed){
+      this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
+        this.isFollowed = !response[0];
+      });
+    }else {
+      this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
+        this.isFollowed = response[0];
+      });
+
+    }
+    
+    // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
+  }
+  /* end function follow challenge*/ 
 
   changeChallangeTab(NewTab,e){
     e.preventDefault();
@@ -79,7 +121,7 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
-     // console.log(this.challenge);
+      //console.log(this.challenge['display_entries']);
      //calculate days difference
       if(this.challenge){
          var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
@@ -93,7 +135,7 @@ sort_by:string;
            this.challenge.opened=false;
          }
       }
-      
+     
       this.challenge.challenge_end_date=this.changeDateFormat(this.challenge.challenge_end_date.value);
       this.challenge.challenge_start_date=this.changeDateFormat(this.challenge.challenge_start_date.value);
       this.challenge.winners_announcement_date=this.changeDateFormat(this.challenge.winners_announcement_date.value);
@@ -113,19 +155,28 @@ sort_by:string;
       return datestring;    
       }
     getProjects(){
+      /*cheack display_entries */
+      
+      console.log("projects");
+      
        //challenge entries projects
+       
+       var sort: string;
     var page_arg = [];
      if(this.pageNumber >=0){
       page_arg = ['page', this.pageNumber];
     }
+
       this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],[page_arg],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
-    .subscribe(data =>{
+    .subscribe( data =>{
+        
+        
       this.projects=data;
       this.projectsData=data;
-    this.projects_show=this.projects.slice(0, 1);
-    this.projects_more=data.splice(2,data.length);
-      this.entries_count=this.projects.length;
+    //this.projects_show=this.projects.slice(0, 1);
+    //this.projects_more=data.splice(2,data.length);
+//this.entries_count=this.projects.length;
 
      // console.log(data);
             this.loadMoreVisibilty();
@@ -170,7 +221,7 @@ getCountProject(){
     .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
     .subscribe(data =>{
       this.projects=data;
-     console.log(this.projects.length);
+     //console.log(this.projects.length);
     });
 
 

@@ -6,6 +6,7 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class RulesComponent implements OnInit {
 @Input() projects; 
+@Input() challenge;
 
   constructor() { }
 

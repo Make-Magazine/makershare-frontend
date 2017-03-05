@@ -6,7 +6,7 @@ import { Component, OnInit,Input } from '@angular/core';
   
 })
 export class FollowersComponent implements OnInit {
-
+@Input() followers;
   constructor() { }
 
   ngOnInit() {
