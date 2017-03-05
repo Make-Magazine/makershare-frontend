@@ -2230,4 +2230,26 @@ header.showcase-project {
   	}
   } */ }
 
+#message-modal .modal-content {
+  padding: 5px 10px;
+  overflow: hidden; }
+  #message-modal .modal-content .recieve label {
+    width: 10%;
+    display: inline-block; }
+  #message-modal .modal-content .recieve div {
+    width: 80%;
+    display: inline-block; }
+  #message-modal .modal-content .subject label {
+    padding-bottom: 5px; }
+  #message-modal .modal-content .message-text label {
+    padding-bottom: 5px; }
+  #message-modal .modal-content .message-text textarea {
+    resize: none;
+    width: 100%; }
+  #message-modal .modal-content .actions {
+    overflow: hidden;
+    float: right; }
+    #message-modal .modal-content .actions li {
+      float: left; }
+
 /*# sourceMappingURL=style.css.map */

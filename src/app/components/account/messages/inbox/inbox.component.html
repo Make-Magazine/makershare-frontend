@@ -12,15 +12,15 @@
           <input type="checkbox"> Select all
         </div>
         <a href="" class="btn btn-transparent delete">Delete</a>
-        <a href="" class="btn btn-blue btn-sharp new-message"><i class="fa fa-lg fa-plus"></i>New Message</a>
+        <a class="btn btn-blue btn-sharp new-message" data-dismiss="modal" data-target="#message-modal" data-toggle="modal"><i class="fa fa-lg fa-plus" ></i>New Message</a>
       </section>
       <ul class="list-unstyled messages-list">
         <div *ngIf="msg"> 
         <li class="message-item" *ngFor="let message of msg">
           <div class="select">
-            <input type="checkbox">
+            <input type="checkbox" *ngIf="message.mid" >{{message.mid}}
           </div>
-          <div class="wrapper">
+          <div class="wrapper" >
             <div class="media message-info">
               <div class="media-left">
                 <a href="#">
@@ -33,10 +33,10 @@
               </div>
             </div>
             <div class="message-subject">
-                  <h4>{{message.subject}}</h4>
+                  <a routerLink="/view"><h4>{{message.subject}}</h4></a>
             </div>
             <div class="delete">
-              <i class="fa fa-2x fa-trash delete-message"></i>
+               <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage()"></a>
             </div>
           </div>
         </li>
@@ -47,3 +47,39 @@
       </div>
     </div> 
 </div>
+        <div class="modal-message">
+          <!-- Trigger the modal with a button -->
+          <!-- Modal -->
+          <div id="message-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form id="createMsg" method="post" class="form-horizontal">
+                    <div class="form-group recieve">
+                      <label class="control-label">To:</label>
+                      <div class="">
+                        <input type="text" class="form-control" name="sent-to">
+                      </div>
+                    </div>
+                    <div class="form-group subject">
+                      <label class="control-label">Subject</label>
+                      <input type="text" class="form-control" name="subject">
+                    </div>
+                    <div class="form-group message-text">
+                      <label class="control-label">Message</label>
+                      <textarea name="message-content" id="message" cols="30" rows="10"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <ul class="list-unstyled actions">
+                  <li><a href="" class="btn btn-transparent" data-dismiss="modal">Cancel</a></li>
+                  <li><a class="btn btn-blue btn-sharp">Send</a></li>
+                </ul>          
+              </div>
+            </div>
+            </div>
+        
