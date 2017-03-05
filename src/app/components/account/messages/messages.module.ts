@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InboxComponent } from './inbox/inbox.component';
 import { MessagesRoutsModule } from './messages.routing.module';
+import { ViewComponent } from './view/view.component';
 
  
 @NgModule({
@@ -10,7 +11,8 @@ import { MessagesRoutsModule } from './messages.routing.module';
     MessagesRoutsModule
   ],
   declarations: [
-    InboxComponent
+    InboxComponent,
+    ViewComponent
     ]
 })
 export class MessagesModule { }
