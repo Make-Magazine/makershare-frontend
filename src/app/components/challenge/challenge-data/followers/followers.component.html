@@ -1,94 +1,26 @@
- <div class="followers">
+ <div class="followers" *ngIf="followers">
                   <div class="followers-cards">
                     <div class="col-md-4">
-                      <div class="follower-card">
-                        <div class=" profile-container"><!-- start profile card-->
-                          <div class="profile-card">
-                            <div class="left col-sm-4">
-                              <div class="profile-pic">
-                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
-                              </div>
-                              <a href="#" class="btn btn-blue">Message</a>
-                            </div>
-                            <div class="right col-sm-8">
-                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
-                              <div class="trophies">
-                                <i class="fa fa-lg fa-child"></i>
-                                <i class="fa fa-lg fa-certificate"></i>
-                                <i class="fa fa-lg fa-trophy"></i>
-                              </div>
-                              <p class="count">6 projects</p>
-                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
-                              <p class="user-city">San Francisco, CA</p>
-                            </div>
-                          </div><!-- End profile card -->
-                        </div><!-- End Profile-container -->
-                        <div class="vote"><a href="">View challenge entry</a></div>
-                      </div>
+                  
                     </div><!-- End col-md-4 -->
                     <div class="col-md-4">
-                      <div class="follower-card">
-                        <div class=" profile-container"><!-- start profile card-->
-                          <div class="profile-card">
-                            <div class="left col-sm-4">
-                              <div class="profile-pic">
-                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
-                              </div>
-                              <a href="#" class="btn btn-blue">Message</a>
-                            </div>
-                            <div class="right col-sm-8">
-                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
-                              <div class="trophies">
-                                <i class="fa fa-lg fa-child"></i>
-                                <i class="fa fa-lg fa-certificate"></i>
-                                <i class="fa fa-lg fa-trophy"></i>
-                              </div>
-                              <p class="count">6 projects</p>
-                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
-                              <p class="user-city">San Francisco, CA</p>
-                            </div>
-                          </div><!-- End profile card -->
-                        </div><!-- End Profile-container -->
-                      </div><!-- End follower-card -->
+                    
                     </div><!-- End col-md-4 -->
                     <div class="col-md-4">
-                      <div class="follower-card">
-                        <div class=" profile-container"><!-- start profile card-->
-                          <div class="profile-card">
-                            <div class="left col-sm-4">
-                              <div class="profile-pic">
-                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
-                              </div>
-                              <a href="#" class="btn btn-blue">Message</a>
-                            </div>
-                            <div class="right col-sm-8">
-                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
-                              <div class="trophies">
-                                <i class="fa fa-lg fa-child"></i>
-                                <i class="fa fa-lg fa-certificate"></i>
-                                <i class="fa fa-lg fa-trophy"></i>
-                              </div>
-                              <p class="count">6 projects</p>
-                              <p class="profile-tag">Make Stuff Happen kind of person!</p>
-                              <p class="user-city">San Francisco, CA</p>
-                            </div>
-                          </div><!-- End profile card -->
-                        </div><!-- End Profile-container -->
-                        <div class="vote"><a href="">View challenge entry</a></div>
-                      </div>
+               
                     </div><!-- End col-md-4 -->
-                    <div class="col-md-4">
+                    <div class="col-md-4" *ngFor="let follow of followers">
                       <div class="follower-card">
                         <div class=" profile-container"><!-- start profile card-->
                           <div class="profile-card">
                             <div class="left col-sm-4">
                               <div class="profile-pic">
-                                <img src="http://placehold.it/140x140" alt="" class="img-responsive">
+                                <img src="{{follow.photo}}" alt="" class="img-responsive">
                               </div>
                               <a href="#" class="btn btn-blue">Message</a>
                             </div>
                             <div class="right col-sm-8">
-                              <h4 class="profile-name"><a href="#">Margot Jacobs</a></h4>
+                              <h4 class="profile-name"><a href="#">{{follow.username}}</a></h4>
                               <div class="trophies">
                                 <i class="fa fa-lg fa-child"></i>
                                 <i class="fa fa-lg fa-certificate"></i>

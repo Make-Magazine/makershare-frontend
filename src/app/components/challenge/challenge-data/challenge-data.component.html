@@ -45,11 +45,11 @@
                 </ul>
               </div>
               <div class="content-wrapper row">
-                <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projects]="projectsData" *ngIf="activeTab =='summary'"></app-summary>
-                <app-rules [projects]="projectsData" *ngIf="activeTab =='rules'"></app-rules>
+                <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [awards]="awards"  [projects]="projectsData" *ngIf="activeTab =='summary'"></app-summary>
+                <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
                 <app-discussion *ngIf="activeTab =='discussion'"></app-discussion>
-                <app-followers *ngIf="activeTab =='followers'"></app-followers>
-                <app-awards *ngIf="activeTab =='awards'"></app-awards>
+                <app-followers  *ngIf="activeTab =='followers'" [followers]="followers"></app-followers>
+                <app-awards  *ngIf="activeTab =='awards'"></app-awards>
                 
               </div><!-- End content-wrapper -->
             </div><!-- End region-content -->

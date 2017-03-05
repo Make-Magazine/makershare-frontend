@@ -6,6 +6,7 @@ import {ISorting} from '../../../../models/challenge/sorting';
 })
 export class SummaryComponent implements OnInit {
 @Input() projects; 
+@Input() awards;
 @Output() sortType = new EventEmitter<ISorting>();
 @Output() pageNumber = new EventEmitter<number>();
 ActionName:string;

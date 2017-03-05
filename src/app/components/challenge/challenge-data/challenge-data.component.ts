@@ -24,6 +24,7 @@ pageNumber = 0;
 projects_show;
 projects_more;
 challenge_start_date;
+followers=[];
 
 activeTab;
 projectsData;
@@ -51,7 +52,7 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.awards= data;
-     // console.log(this.awards);
+      //console.log(this.awards);
       this.no_of_awards=data.length;
     });
 
@@ -59,6 +60,8 @@ sort_by:string;
     this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']]]))
     .subscribe(data =>{
+      this.followers=data;
+      console.log(this.followers);
       this.no_of_followers=data.length;
     });
     
