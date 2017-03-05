@@ -6,7 +6,7 @@ import { Component, OnInit,Input } from '@angular/core';
   
 })
 export class AwardsComponent implements OnInit {
-
+@Input() awards;
   constructor() { }
 
   ngOnInit() {

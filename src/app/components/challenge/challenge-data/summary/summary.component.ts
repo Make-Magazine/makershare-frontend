@@ -5,7 +5,8 @@ import {ISorting} from '../../../../models/challenge/sorting';
   templateUrl: './summary.component.html'
 })
 export class SummaryComponent implements OnInit {
-@Input() projects; 
+@Input() projects;
+@Input() challenge; 
 @Input() awards;
 @Output() sortType = new EventEmitter<ISorting>();
 @Output() pageNumber = new EventEmitter<number>();
