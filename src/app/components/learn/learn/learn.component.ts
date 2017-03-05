@@ -22,7 +22,7 @@ export class LearnComponent implements OnInit {
 
     // get workshop main page from a view
     this.viewService.getView('learn', []).subscribe(data => {
-      //console.log(data);
+      console.log(data);
       this.learns = data;
     }, err => {
 

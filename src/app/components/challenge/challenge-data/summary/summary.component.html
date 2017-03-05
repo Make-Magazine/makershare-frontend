@@ -1,28 +1,30 @@
 <div class="challenge-summary">
   <div class="col-md-9 summary-content">
-    <h3>Hello World</h3>
+    <h3 >Summary  </h3>
     <div class="description" *ngIf="challenge" [innerHTML]="challenge.body">
-      <p *ngIf="challenge.body" >{{challenge.body}}</p>
+      <p *ngIf="challenge.body" >{{challenge.body}} </p>
       <p>See <a href="">Rules &amp; Instructions</a> for more details.</p>
     </div>
     <div class="filters">
         <div class="row">
         <p class="col-md-4" *ngIf="entries_count">{{entries_count}} Entries</p>
         <div class="sorting-filter col-md-3 col-md-offset-5">
-          <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
+          <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><a href="#" class="btn">Most recent</a></li>
-            <li><a href="#" class="btn">Oldest</a></li>
-            <li><a href="#" class="btn">Title A-Z</a></li>
-            <li><a href="#" class="btn">Title Z-A</a></li>
-            <li><a href="#" class="btn">Most Liked</a></li>
-            <li><a href="#" class="btn">Most Forked</a></li>
+
+            <li><a (click)="mostRecent($event)" class="btn">Most  recent</a></li>
+            <li><a (click)="oldest($event)" class="btn">Oldest</a></li>
+            <li><a (click)="sortAsc($event)" class="btn">Title A-Z</a></li>
+            <li><a (click)="sortDesc($event)"class="btn">Title Z-A</a></li>
+            <li><a (click)="mostLiked($event)" class="btn">Most Liked</a></li>
+            <li><a (click)="mostForked($event)" class="btn">Most Forked</a></li>
           </ul>
         </div><!-- End sorting-filter -->
       </div><!-- End row -->
     </div><!-- End filters -->
-    <div class="entries">
+    <div class="entries" *ngIf="challenge"  >
+      <div *ngIf="challenge.display_entries =='1'">
       <div *ngIf="projects">
       <div  *ngFor="let project of projects">
         <div class="col-md-4" *ngIf="project">
@@ -34,19 +36,19 @@
             </div>
             <div class="vote"><a href="">Vote</a></div>
           </div>
-          <h4>Project Name Project Name Project Name</h4>
-          <p class="submitter">By <a href="">Dolores Ipsum</a></p>
+          <h4>{{project.title}}</h4>
+          <p class="submitter">By <a href="">{{project.name}}</a></p>
           <p class="entry-date">12.21.16</p>
         </div><!-- End entry-container -->
         </div>
       </div>
-      </div>
+      </div></div>
 
   
   
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4 load-more">
-            <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
+           <!-- <a class="btn btn-white" (click)="loadmore()">Load more</a>-->
         </div>
       </div>
     </div>

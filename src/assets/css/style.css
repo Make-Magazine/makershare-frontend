@@ -1768,7 +1768,7 @@ header.showcase-project {
       font-size: 11px;
       padding-top: 10px; }
   .page-challenge-summary .region-content .content-wrapper .followers, .page-challenge-summary-closed .region-content .content-wrapper .followers {
-   /* display: none;*/
+   /*display: none;*/
     width: 90%;
     overflow: hidden;
     margin: auto; }
@@ -1805,11 +1805,16 @@ header.showcase-project {
     margin: 5px 0; }
 
 .page-workshop-individual .top-content-wrapper {
-  background: url("http://placehold.it/1200x550") center center;
-  background-size: cover;
-  padding-top: 20px;
   border-bottom: 1px solid #757575;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  height: 200px;
+  overflow: hidden;
+  position: relative; }
+  .page-workshop-individual .top-content-wrapper .workshop-coverphoto {
+    position: absolute;
+    width: 100%; }
+  .page-workshop-individual .top-content-wrapper > .container {
+    padding-top: 20px; }
   .page-workshop-individual .top-content-wrapper h2 {
     font-size: 35px;
     font-weight: bold;
@@ -1982,6 +1987,218 @@ header.showcase-project {
   margin-top: 30px; }
 .page-portfolio .portfolio-photos, .page-portfolio .portfolio-private {
   display: none; }
+
+.page-inbox {
+  background-color: #ecf0f1; }
+  .page-inbox .inbox-header {
+    position: relative;
+    display: flex;
+    align-content: center;
+    margin-top: 10px; }
+    .page-inbox .inbox-header > ul {
+      overflow: hidden;
+      width: 210px;
+      margin: auto;
+      position: relative;
+      bottom: 0; }
+      .page-inbox .inbox-header > ul li {
+        margin: 0;
+        float: left;
+        vertical-align: bottom; }
+        .page-inbox .inbox-header > ul li .btn {
+          border-bottom: 0; }
+        .page-inbox .inbox-header > ul li .active {
+          background-color: #fff;
+          color: #757575; }
+    .page-inbox .inbox-header span {
+<<<<<<< HEAD
+      line-height: 1em;
+      color: #757575; }
+  .page-inbox .inbox-container, .page-inbox .notification-container {
+    background-color: #fff;
+    padding: 0; }
+    .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
+      padding: 5px 10px;
+      overflow: hidden;
+      margin: 0; }
+      .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
+        display: inline-block; }
+      .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
+        display: inline-block; }
+      .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
+        float: right;
+        margin-right: 23px; }
+        .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
+          padding-right: 10px; }
+    .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
+      width: 150px;
+      margin: 20px auto;
+      font-size: 10px; }
+  .page-inbox .inbox-container .messages-list {
+    padding: 0;
+    margin: 0; }
+    .page-inbox .inbox-container .messages-list .message-item {
+      display: flex;
+      align-items: center;
+      margin: 0 5px;
+      padding: 0 5px; }
+      .page-inbox .inbox-container .messages-list .message-item .select {
+        width: 3%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid #757575;
+        width: 95%;
+        overflow: hidden;
+        padding: 5px 10px; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
+          width: 40%; }
+          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
+            width: 60px; }
+          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
+            color: #169eff;
+            text-decoration: none; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
+          width: 50%; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
+          overflow: hidden;
+          color: #757575;
+          position: relative; }
+          .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
+            float: right; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
+          background-color: #ecf0f1; }
+      .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
+        border-top: 0; }
+      .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
+        background-color: #d4d8d9; }
+  .page-inbox .notification-container .notification-list {
+    padding: 0;
+    margin: 0; }
+    .page-inbox .notification-container .notification-list .notification-item {
+      display: flex;
+      align-items: center;
+      margin: 0 5px;
+      padding: 0 5px; }
+      .page-inbox .notification-container .notification-list .notification-item .select {
+        width: 3%; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid #757575;
+        width: 95%;
+        overflow: hidden;
+        padding: 5px 10px; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
+          width: 85%; }
+          .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
+            width: 60px; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
+          overflow: hidden;
+          color: #757575;
+          position: relative; }
+          .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
+            float: right; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
+          background-color: #ecf0f1; }
+      .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
+        border-top: 0; }
+      .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
+        background-color: #d4d8d9; }
+
+.conversation-container {
+  background-color: #fff;
+  padding: 20px 50px; }
+  .conversation-container .delete-actions {
+    float: right;
+    color: #169eff;
+    margin-top: 15px; }
+  .conversation-container .conversation {
+    margin-bottom: 20px;
+    padding-bottom: 20px; }
+    .conversation-container .conversation .single-message {
+      border-bottom: 1px solid #757575; }
+      .conversation-container .conversation .single-message .message-info {
+        margin: 30px 0; }
+        .conversation-container .conversation .single-message .message-info a {
+          color: #169eff;
+          text-decoration: none; }
+        .conversation-container .conversation .single-message .message-info .media-left img {
+          width: 60px; }
+      .conversation-container .conversation .single-message .message-body {
+        margin-bottom: 20px; }
+  .conversation-container .reply-area .reply {
+    color: #757575;
+    display: block;
+    margin-bottom: 15px; }
+  .conversation-container .reply-area textarea {
+    width: 100%;
+    resize: none; }
+  .conversation-container .reply-area .send-actions {
+    text-align: right;
+    margin-top: 15px; }
+    .conversation-container .reply-area .send-actions li {
+      display: inline-block; }
+
+.inbox-container, .notification-container {
+  display: none; }
+=======
+      line-height: 1em; }
+  .page-inbox .messages {
+    background-color: #fff;
+    padding: 0; }
+    .page-inbox .messages .inbox-controls {
+      padding: 5px 10px;
+      overflow: hidden;
+      margin: 0; }
+      .page-inbox .messages .inbox-controls .selectall {
+        display: inline-block; }
+      .page-inbox .messages .inbox-controls .delete {
+        display: inline-block; }
+      .page-inbox .messages .inbox-controls .new-message {
+        float: right;
+        margin-right: 23px; }
+        .page-inbox .messages .inbox-controls .new-message i {
+          padding-right: 10px; }
+    .page-inbox .messages .messages-list {
+      padding: 0;
+      margin: 0; }
+      .page-inbox .messages .messages-list .message-item {
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+        padding: 0 5px; }
+        .page-inbox .messages .messages-list .message-item .select {
+          width: 3%; }
+        .page-inbox .messages .messages-list .message-item .wrapper {
+          display: flex;
+          align-items: center;
+          border: 1px solid #757575;
+          width: 95%;
+          overflow: hidden;
+          padding: 5px 10px; }
+          .page-inbox .messages .messages-list .message-item .wrapper .message-info {
+            width: 40%; }
+            .page-inbox .messages .messages-list .message-item .wrapper .message-info img {
+              width: 60px; }
+          .page-inbox .messages .messages-list .message-item .wrapper .message-subject {
+            width: 50%; }
+          .page-inbox .messages .messages-list .message-item .wrapper .delete-message {
+            overflow: hidden;
+            color: #757575;
+            position: relative; }
+            .page-inbox .messages .messages-list .message-item .wrapper .delete-message i {
+              float: right; }
+          .page-inbox .messages .messages-list .message-item .wrapper:hover {
+            background-color: #ecf0f1; }
+        .page-inbox .messages .messages-list .message-item:not(:first-of-type) .wrapper {
+          border-top: 0; }
+        .page-inbox .messages .messages-list .message-item.read .wrapper {
+          background-color: #d4d8d9; }
+    .page-inbox .messages .load-more {
+      width: 250px;
+      margin: 20px auto; }
+>>>>>>> 4ab8b8094ce269abefd1a6d017e6d3dbe1b6d488
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   /* .profile-sidebar{
