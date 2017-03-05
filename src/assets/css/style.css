@@ -1768,7 +1768,7 @@ header.showcase-project {
       font-size: 11px;
       padding-top: 10px; }
   .page-challenge-summary .region-content .content-wrapper .followers, .page-challenge-summary-closed .region-content .content-wrapper .followers {
-   /* display: none;*/
+    display: none;
     width: 90%;
     overflow: hidden;
     margin: auto; }
@@ -1982,6 +1982,85 @@ header.showcase-project {
   margin-top: 30px; }
 .page-portfolio .portfolio-photos, .page-portfolio .portfolio-private {
   display: none; }
+
+.page-inbox {
+  background-color: #ecf0f1; }
+  .page-inbox .inbox-header {
+    position: relative;
+    display: flex;
+    align-content: center;
+    margin-top: 10px; }
+    .page-inbox .inbox-header > ul {
+      overflow: hidden;
+      width: 210px;
+      margin: auto;
+      position: relative;
+      bottom: 0; }
+      .page-inbox .inbox-header > ul li {
+        margin: 0;
+        float: left;
+        vertical-align: bottom; }
+        .page-inbox .inbox-header > ul li .btn {
+          border-bottom: 0; }
+        .page-inbox .inbox-header > ul li .active {
+          background-color: #fff;
+          color: #757575; }
+    .page-inbox .inbox-header span {
+      line-height: 1em; }
+  .page-inbox .messages {
+    background-color: #fff;
+    padding: 0; }
+    .page-inbox .messages .inbox-controls {
+      padding: 5px 10px;
+      overflow: hidden;
+      margin: 0; }
+      .page-inbox .messages .inbox-controls .selectall {
+        display: inline-block; }
+      .page-inbox .messages .inbox-controls .delete {
+        display: inline-block; }
+      .page-inbox .messages .inbox-controls .new-message {
+        float: right;
+        margin-right: 23px; }
+        .page-inbox .messages .inbox-controls .new-message i {
+          padding-right: 10px; }
+    .page-inbox .messages .messages-list {
+      padding: 0;
+      margin: 0; }
+      .page-inbox .messages .messages-list .message-item {
+        display: flex;
+        align-items: center;
+        margin: 0 5px;
+        padding: 0 5px; }
+        .page-inbox .messages .messages-list .message-item .select {
+          width: 3%; }
+        .page-inbox .messages .messages-list .message-item .wrapper {
+          display: flex;
+          align-items: center;
+          border: 1px solid #757575;
+          width: 95%;
+          overflow: hidden;
+          padding: 5px 10px; }
+          .page-inbox .messages .messages-list .message-item .wrapper .message-info {
+            width: 40%; }
+            .page-inbox .messages .messages-list .message-item .wrapper .message-info img {
+              width: 60px; }
+          .page-inbox .messages .messages-list .message-item .wrapper .message-subject {
+            width: 50%; }
+          .page-inbox .messages .messages-list .message-item .wrapper .delete-message {
+            overflow: hidden;
+            color: #757575;
+            position: relative; }
+            .page-inbox .messages .messages-list .message-item .wrapper .delete-message i {
+              float: right; }
+          .page-inbox .messages .messages-list .message-item .wrapper:hover {
+            background-color: #ecf0f1; }
+        .page-inbox .messages .messages-list .message-item:not(:first-of-type) .wrapper {
+          border-top: 0; }
+        .page-inbox .messages .messages-list .message-item.read .wrapper {
+          background-color: #d4d8d9; }
+    .page-inbox .messages .load-more {
+      width: 250px;
+      margin: 20px auto; }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   /* .profile-sidebar{
