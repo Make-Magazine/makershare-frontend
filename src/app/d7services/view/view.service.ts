@@ -20,4 +20,18 @@ export class ViewService {
     return this.mainService.get(globals.endpoint + '/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+getCountProjectByID(viewName: string , id:string): Observable<any>{
+    var string_args = '';
+    
+   // console.log(string_args);
+    return this.mainService.get(globals.endpoint + '/' + viewName + '/'+id).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+deleteMessageById(viewName: string , id:string): Observable<any>{
+    var string_args = '';
+    
+   // console.log(string_args);
+    return this.mainService.delete(globals.endpoint + '/' + viewName + '/'+id).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
 }
