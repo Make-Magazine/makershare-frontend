@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../../../d7services/comment/comment.service';
 import { Observable } from "rxjs";
 import { UserService } from '../../../../d7services/user/user.service';
@@ -35,16 +35,27 @@ export class ProjectStoryComponent implements OnInit {
       }
       //  console.log(this.comments);
     });
-    // var i = 0;
-    // for( let maker of this.project.field_collaborators){
-    //   this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-    //     this.collabs[i] = {};
-    //     this.collabs[i] = data[0];
-    //     i++;
-    //   });
-    // }
+    var i = 0;
+    var source = Observable.create(observer => {
+      for( let maker of this.project.field_collaborators){
+        observer.next(
+        this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
+          this.collabs[i] = {};
+          this.collabs[i] = data[0];
+          console.log(this.collabs[i])
+          i++;
+        }))
+      }
+        observer.onCompleted();
+
+    });
+    // var subscription = source.subscribe(
+    // x => console.log('onNext: %s', x),
+    // e => console.log('onError: %s', e),
+    // () => console.log('onCompleted'));
     
  }//End ngOnInit
+ 
   
  
 }// End export

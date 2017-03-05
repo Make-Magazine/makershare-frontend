@@ -12,6 +12,9 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
+import { ProfileService } from './d7services/profile/profile.service';
+import { PmService } from './d7services/pm/pm.service';
+
 import { ExploreComponent } from './components/explore/explore.component';
 
 
@@ -22,6 +25,7 @@ import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
+import { MessagesModule } from './components/account/messages/messages.module'
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -44,8 +48,9 @@ import { HomeModule } from './components/home/home.module';
     LearnModule,
     HomeModule,
     routing,
+    MessagesModule,
   ],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService],
+  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
