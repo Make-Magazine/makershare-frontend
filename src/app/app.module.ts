@@ -13,6 +13,7 @@ import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ProfileService } from './d7services/profile/profile.service';
+import { PmService } from './d7services/pm/pm.service';
 
 import { ExploreComponent } from './components/explore/explore.component';
 
@@ -49,7 +50,7 @@ import { MessagesModule } from './components/account/messages/messages.module'
     routing,
     MessagesModule,
   ],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService],
+  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
