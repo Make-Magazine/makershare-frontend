@@ -9,6 +9,7 @@ import { OptionalInfoComponent } from './edit/edit-profile/optional-info/optiona
 import { ProfileRoutingModule } from './profile.routing.module';
 import {SelectModule} from '../../../../../node_modules/ng-select';
 
+
 @NgModule({
   imports: [
     CommonModule, 
