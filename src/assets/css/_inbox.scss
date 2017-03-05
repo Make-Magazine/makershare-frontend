@@ -1,0 +1,113 @@
+.page-inbox {
+	background-color: $light-grey;
+	.inbox-header {
+		position: relative;
+		display: flex;
+		align-content:center;
+		margin-top: 10px;
+		& > ul {
+			overflow: hidden;
+			width: 210px;
+			margin: auto;
+			position: relative;
+			bottom: 0;
+			li {
+				margin: 0;
+				float: left;
+				vertical-align: bottom;
+				.btn {
+					border-bottom: 0;
+				}
+				.active {
+					background-color: #fff;
+					color: $main-grey;
+				}
+			}
+		}
+		span {
+			line-height: 1em;
+			// float: right;
+			// margin-bottom: 10px;
+		}
+	}
+	.messages{
+		background-color: #fff;
+		padding: 0;
+		.inbox-controls {
+			padding: 5px 10px;
+			overflow: hidden;
+			margin: 0;
+			.selectall {
+				display: inline-block;
+			}
+			.delete {
+				display: inline-block;
+			}
+			.new-message {
+				float: right;
+				margin-right: 23px;
+				i {
+					padding-right: 10px;
+				}
+			}
+		}
+		.messages-list {
+			padding: 0;
+			margin: 0;
+			.message-item {
+				display: flex;
+				align-items:center;
+				margin: 0 5px;
+				padding: 0 5px;
+				.select { 
+					width: 3%;
+				}
+				.wrapper {
+					display: flex;
+					align-items:center;
+					border: 1px solid $main-grey;					
+					width: 95%;
+					overflow: hidden;
+					padding: 5px 10px;
+					.message-info {
+						width: 40%;
+						img {
+							width: 60px;
+						}
+					}
+					.message-subject {
+						width: 50%;
+					}
+					.delete-message {
+						overflow: hidden;
+						color: $main-grey;
+						position: relative;
+						i {
+							float: right;
+						}
+					}
+					&:hover {
+						background-color: $light-grey;
+					}
+				}
+				&:not(:first-of-type) {
+					.wrapper {
+						border-top: 0;
+					}
+				} 
+				&.read {
+					.wrapper {
+						background-color: $light-grey *0.9;
+					}
+				}
+
+				
+			}
+		}
+		.load-more {
+			width: 250px;
+			margin: 20px auto ;
+
+		}
+	}
+}
