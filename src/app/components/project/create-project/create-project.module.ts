@@ -9,11 +9,14 @@ import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { DndModule } from 'ng2-dnd';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
-
+import { Ng2CompleterModule } from "ng2-completer";
+import { kpxAutocompleteModule } from 'angular2-kpx-autocomplete/kpx-autocomplete';
 @NgModule({
   imports: [
     CommonModule,
     Ng2AutoCompleteModule,
+    Ng2CompleterModule,
+    kpxAutocompleteModule,
     ReactiveFormsModule,
     TagInputModule,
     CKEditorModule,
