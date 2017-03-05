@@ -10,6 +10,7 @@ import { ProfileRoutingModule } from './profile.routing.module';
 import { SelectModule } from '../../../../../node_modules/ng-select';
 import { IcDatepickerModule } from 'ic-datepicker';
 
+
 @NgModule({
   imports: [
     IcDatepickerModule,
