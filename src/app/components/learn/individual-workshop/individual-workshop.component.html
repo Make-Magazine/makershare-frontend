@@ -12,11 +12,7 @@
                   <li><a href="#" class="btn btn-light-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
                 </ul>
                 <div class="list-unstyled workshop-tags pull-left">
-<<<<<<< HEAD
                    <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
-=======
-                   <a *ngFor="let tag of workshop.tags" class="btn btn-grey" >{{tag}}</a>
->>>>>>> 98e075e39b2d02248712367cd0c3398097087dd4
                 </div>
                 <div class="clearfix"></div>
                 
@@ -33,7 +29,7 @@
 
                 <div *ngIf="workshop">
                 <div class="intro">
-                  <h4>Introduction</h4>
+                  <h4 >Introduction</h4>
                   <div [innerHTML]= "workshop.brief_description"> </div>
                   <div>
                     <iframe width="725" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>
@@ -42,15 +38,16 @@
                  </div> <!-- End of workshop ngIf -->
 
           
-           <div *ngFor="let object of objects">      
+           <div *ngFor="let object of objects; let i=index">      
              <!---FOR PDF CONTENT TYPE -->
                 <div *ngIf="object.learning_content_type == 'PDF' " >
                   <div class="fun-fact">
                     <h4>{{object.lesson_name}}</h4>
                     <div class="media">
                       <div class="media-left">
-                        <img src="{{object.object_image}}" alt="" class="media-object">
+                        <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)"  data-toggle="modal"  data-target="#previewer">
                         <!--<iframe width="150" height="150" [src]="pdfURl" frameborder="0" ></iframe>-->
+                        
                       </div>
                       <div class="media-body">
                         <p>
@@ -71,7 +68,6 @@
                <!-- End  ngFor of pdf object -->
  
           
- 
                <!---FOR Video CONTENT TYPE --> 
                 <div *ngIf="object.learning_content_type == 'Video' " >
                   
@@ -79,8 +75,8 @@
                     <h4>{{object.lesson_name}}</h4>
                     <div class="media">
                       <div class="media-left">
-                        <!--<img src="{{object.object_image}}" alt="" class="media-object">-->
-                        <iframe width="150" height="150" [src]="object.video" frameborder="0" ></iframe>
+                        <img src="{{object.object_image}}" alt="" class="media-object" data-toggle="modal"  data-target="#previewer">
+                        <!--<iframe width="150" height="150" [src]="videoLink" frameborder="0" ></iframe>-->
                       </div>
                       <div class="media-body">
                         <p>
@@ -107,7 +103,7 @@
                     <h4>{{object.lesson_name}}</h4>
                     <div class="media">
                       <div class="media-left">
-                        <img src="{{object.object_image}}" alt="" class="media-object">
+                        <img src="{{object.object_image}}" alt="" class="media-object" data-toggle="modal"  data-target="#previewer">
                         <!--<iframe width="150" height="150" [src]="videoObject" frameborder="0" ></iframe>-->
                       </div>
                       <div class="media-body">
@@ -155,7 +151,63 @@
 
          </div><!-- End worksop-content -->
        </div><!-- End region-content -->  
+
+  
+  <div *ngFor= "let leader of leaders">
+
+        <aside *ngIf="leader" class="col-sm-4">
+              <div class="workshop-instructor">
+                <div class=" profile-container"><!-- start profile card-->
+                  <div class="profile-card">
+                    <div class="left col-sm-4">
+                      <div class="profile-pic">
+                        <img src="{{leader.photo}}" alt="" class="img-responsive">
+                      </div>
+                      <a href="#" class="btn btn-blue">Message</a>
+                    </div>
+                    <div class="right col-sm-8">
+                      <h4 class="profile-name"><a href="#">{{leader.first_name}} {{leader.last_name}}</a></h4>
+                      <div class="trophies">
+                        <i class="fa fa-lg fa-child"></i>
+                        <i class="fa fa-lg fa-certificate"></i>
+                        <i class="fa fa-lg fa-trophy"></i>
+                      </div>
+                      <p class="count">6 projects</p>
+                      <p class="profile-tag">{{leader.describe_yourself}}</p>
+                      <p class="user-city">{{leader.country}}, {{leader.administrative_area}}</p>
+                      <i class="fa fa-lg fa-star-o"></i>
+          </div>
+                  </div><!-- End profile card -->
+                </div><!-- End Profile-container -->
+              </div><!-- End workshop-instructor -->
+              <ul class="list-unstyled content-list">
+                Contents:
+                <li><a href="">Introduction</a></li>
+                <li><a href="">Core Concept</a></li>
+                <li><a href="">Fun Fact</a></li>
+                <li><a href="">Other Lesson Name</a></li>
+                <li><a href="">Resources</a></li>
+              </ul>
+            </aside><!-- End aside -->
+  </div>
       </div> <!-- End of container --> 
 
     </section>
   </div>
+  <!-- Modal -->
+<div>
+  <div class="modal fade" id="previewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <iframe src="popupPreview" frameborder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { IndividualWorkshopComponent } from './individual-workshop/individual-wo
 import { PdfViewerComponent } from '../../../../node_modules/ng2-pdf-viewer';
 
 
+
 @NgModule({
   imports: [
     CommonModule
