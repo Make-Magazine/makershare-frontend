@@ -1,5 +1,5 @@
     <div *ngFor="let award of awards;let i = index;">
-          <div class="award-container" *ngIf="award">
+          <div class="col-lg-10" *ngIf="award">
             <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
             <img *ngIf="award.photo" src="{{award.photo}}" alt="">
             <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
