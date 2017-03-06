@@ -34,18 +34,11 @@
       <li><a href="#"><i class="fa fa-lg fa-search"></i></a></li>
     </ul>
     <ul class="list-unstyled login-block">
-      <div *ngIf="isLoggedIn">
-        <li><a class="btn btn-blue" [routerLink]="['/user']">Profile</a></li>
-        <li><a class="btn btn-blue" (click)="Logout($event)">Logout</a></li>
-        <li><a class="btn btn-blue" [routerLink]="['/project/create']">Add project</a></li>
-      </div>
-      <div>
-        <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-        <button class="btn btn-primary btn-margin" (click)="auth.signUp()" *ngIf="!auth.authenticated()">Join</button>
-        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
-        <!--<app-auth-modal></app-auth-modal>-->
-      </div>
-      
+        <li><a class="btn btn-blue" *ngIf="!auth.authenticated()" (click)="auth.login()">Login</a></li>  
+        <li><a class="btn btn-blue" *ngIf="!auth.authenticated()" (click)="auth.signUp()">Join</a></li>  
+        <li><a class="btn btn-blue" *ngIf="auth.authenticated()" (click)="auth.logout()">Logout</a></li>
+        <li><a class="btn btn-blue" *ngIf="auth.authenticated()" [routerLink]="['/user']">Profile</a></li>
+        <li><a class="btn btn-blue" *ngIf="auth.authenticated()" [routerLink]="['/project/create']">Add project</a></li>
     </ul>
     <!-- Include login modal in the header -->
       
