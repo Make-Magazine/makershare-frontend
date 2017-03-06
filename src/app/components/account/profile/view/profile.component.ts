@@ -8,7 +8,7 @@ import { JoinModalComponent } from '../../../modals/join/join-modal/join-modal.c
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile = {};
+  profile;
   constructor(
     private userService: UserService,
   ) { }
