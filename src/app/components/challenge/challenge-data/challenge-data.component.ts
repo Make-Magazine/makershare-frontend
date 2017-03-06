@@ -56,10 +56,7 @@ sort_by:string;
     this.getChallengeData();
     this.sort_order = "DESC";
     this.sort_by = "created";
-
-   
-
-    //awards and prizes
+     //awards and prizes
     this.route.params
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
     .subscribe(data =>{
@@ -77,21 +74,20 @@ sort_by:string;
       this.no_of_followers=data.length;
     });
     
-   
     this.getProjects();
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
-      //console.log(this.currentuser.user.uid);
-      this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
-        this.isFollowed = data[0];
-       /* initialize Button Follow*/
-        if(this.isFollowed==false){
-          this.ButtonFollow='Follow';
-         }else{
+    this.currentuser = data;
+    //console.log(this.currentuser.user.uid);
+    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
+    this.isFollowed = data[0];
+    /* initialize Button Follow*/
+    if(this.isFollowed==false){/* start if  */
+      this.ButtonFollow='Follow';
+    }else{
           console.log("return false");
             this.ButtonFollow='UnFollow';
-         }
+         }/* end else if  */
        
       })
     });
