@@ -5,6 +5,7 @@ import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
 import { HeaderComponent} from '../../general/header/header.component';
 
+// might this component should be removed, will find out will finish login/logout workflow
 
 @Component({
   selector: 'app-login',
