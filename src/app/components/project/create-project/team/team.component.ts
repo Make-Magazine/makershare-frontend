@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
-
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -18,13 +17,11 @@ export class TeamComponent implements OnInit {
   // if(SelectedUser){
   //   console.log(SelectedUser);
   // }
-
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
     private userService:UserService,
   ) {}
-
   ngOnInit() {
     this.buildForm();
     // this.UsersDetails.forEach(element => {
@@ -65,7 +62,6 @@ export class TeamComponent implements OnInit {
     this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
   });
 }
-
   AddRow(ControlName) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let index = control.length + 1;
@@ -73,7 +69,6 @@ export class TeamComponent implements OnInit {
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
-
   SetMember(uid,index){
     this.TeamUsers[index] = [];
     this.UsersDetails[index] = [];
@@ -89,7 +84,6 @@ export class TeamComponent implements OnInit {
     });
     this.TeamForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
   }
-
   RefreshUsers(index,value){
     this.TeamUsers[index] = [];
     if(value.length > 1){
@@ -113,7 +107,6 @@ export class TeamComponent implements OnInit {
       });
     }
   }
-
   InitRow(ControlName,index) {
     return this.fb.group({
       'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
@@ -122,7 +115,6 @@ export class TeamComponent implements OnInit {
       'uid': [0, Validators.required],
     });
   }
-
   SortElements(ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
     var NewUsersDetails = [];
@@ -132,7 +124,6 @@ export class TeamComponent implements OnInit {
     });
     this.SelectedUser = NewUsersDetails;
   }
-
   onValueChanged(form, formErrors, validationMessages) {
     // console.log(this.TeamForm)
     for (const field in formErrors) {
@@ -152,7 +143,6 @@ export class TeamComponent implements OnInit {
       }
     }
   }
-
   ChangeOrder(CurrentIndex, NewIndex, ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
@@ -161,22 +151,18 @@ export class TeamComponent implements OnInit {
     control.setControl(NewIndex,currentrow);
     this.SortElements(ControlName);
   }
-
   RemoveRow(i: number,ControlName) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
     this.SortElements(ControlName);
   }
-
   GetErrorStructure(ControlName?) : Object {
     return {'SortOrder':'', 'Name': '','Role': ''};
   }
-
   formErrors = {
     'Team': [],
   };
-
    /**
     * Validation messages object contains all error messages for each field
     * each field has multiple validations for each error
@@ -200,5 +186,4 @@ export class TeamComponent implements OnInit {
       },
     },
   };
-
 }
