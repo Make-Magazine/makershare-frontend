@@ -45,6 +45,7 @@ console.log(this.selectedProject);
 
 onCancel(event: any){
 console.log("cancel");
+   this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
   console.log("submit project");
