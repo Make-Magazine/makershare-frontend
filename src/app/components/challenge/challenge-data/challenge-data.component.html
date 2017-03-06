@@ -22,7 +22,7 @@
                   <p>Days left</p>
                 </div>
                 <ul class="list-unstyled challenge-actions pull-right">
-                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                  <li><a  class="btn btn-light-grey btn-fit" (click)="bookmarkThis($event)" [class.active]="isBookmarked"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
                   <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
@@ -47,7 +47,7 @@
               <div class="content-wrapper row">
                 <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [challenge]="challenge" [awards]="awards"  [projects]="projectsData" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
-                <app-discussion *ngIf="activeTab =='discussion'"></app-discussion>
+                <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
                 <app-followers  *ngIf="activeTab =='followers'" [followers]="followers"></app-followers>
                 <app-awards  *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
                 
