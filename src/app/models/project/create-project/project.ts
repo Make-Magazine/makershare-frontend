@@ -1,3 +1,9 @@
+/**
+ * Project model
+ * located at models/create-project/project.ts
+ * the main project object which will be posted or retrieved from drupal
+ */
+
 import { field_text } from './field_text';
 import { field_URL } from './field_URL';
 import { field_collection_item } from './field_collection_item';
@@ -27,7 +33,7 @@ export interface Project {
 	field_duration?:{und:number[]};
 	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
-	field_tags?:{und:string[]};
+	field_tags?:{und:string};
 	field_resources?:{und:field_collection_item[]};
 	field_collaborators?:{und:field_entity_reference[]};
 	field_sort_order?:{und:field_number[]};

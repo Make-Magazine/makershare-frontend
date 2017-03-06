@@ -11,6 +11,7 @@
             <section class="showcase">
                 <div class=" filters col-md-12">
                   <div class="container">
+                    <!-- {{showcaseCount}} -->
                     <p class="pull-left">{{showcases.length}} Showcase</p>
                     <div class="sorting-filter pull-right">
                       <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
@@ -30,19 +31,22 @@
                 <div class="row">
                     <div *ngFor="let showcase of showcases" class="col-md-4">
                       <div class="showcase-item item-2">
-                        <img src="{{showcase.cover_photo}}" alt="" class="">
+                      <a (click)="ShowSingleShowcase(showcase.nid)">
+                        <img src="{{showcase.Cover_Photo}}" alt="" class="" (click)="ShowSingleShowcase(showcase.nid)">
+                      </a>
+
                         <div class="content">
-                          <h4 class="title">Showcase: {{showcase.title}}</h4>
+                          <h4 class="title">Showcase: {{showcase.showcase_name}}</h4>
                           <p class="description">{{showcase.description}}</p>
-                          <p class="number">{{showcase.number_of_projects}} projects</p>
-                          <p class="timestamp">Last Updated: {{showcase.updated_date}}</p>
+                          <p class="number">{{showcase.number_of_project}} projects</p>
+                          <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
                         </div>
                       </div>
                     </div>
 
                   <div class="col-sm-12">
                     <div class="col-xs-4 col-xs-offset-4 load-more">
-                      <a href="#" class="btn btn-white">Load more</a>
+                      <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
                     </div>
                   </div>
                 </div>

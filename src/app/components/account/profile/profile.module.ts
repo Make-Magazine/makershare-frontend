@@ -7,12 +7,17 @@ import { EditProfileComponent } from './edit/edit-profile/edit-profile.component
 import { BasicInfoComponent } from './edit/edit-profile/basic-info/basic-info.component';
 import { OptionalInfoComponent } from './edit/edit-profile/optional-info/optional-info.component';
 import { ProfileRoutingModule } from './profile.routing.module';
+import { SelectModule } from '../../../../../node_modules/ng-select';
+import { IcDatepickerModule } from 'ic-datepicker';
+
 
 @NgModule({
   imports: [
+    IcDatepickerModule,
     CommonModule,
     ProfileRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SelectModule
   ],
   declarations: [
     EditProfileComponent,

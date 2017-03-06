@@ -1,0 +1,9 @@
+    <div *ngFor="let award of awards;let i = index;">
+          <div class="award-container" *ngIf="award">
+            <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
+            <img *ngIf="award.photo" src="{{award.photo}}" alt="">
+            <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
+            <div class="clearfix"></div>
+            <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>
+          </div>
+        </div>

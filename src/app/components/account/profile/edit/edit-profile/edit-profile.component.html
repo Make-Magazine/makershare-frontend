@@ -17,14 +17,14 @@
                 <li><a (click)="currentTab = 'basic'" class="btn btn-light-grey btn-sharp active" id="basic-info">Basic Info</a></li>
                 <li><a (click)="currentTab = 'optional'" class="btn btn-light-grey btn-sharp" id="optional-info">Optional Info</a></li>
               </ul>
-              <a href="" class="btn btn-blue btn-sharp save-next">Save &amp; Next</a>
+              <a (click)="saveNext()" class="btn btn-blue btn-sharp save-next">Save &amp; Next</a>
               <a href="" class="btn btn-light-grey btn-sharp skip">Skip</a>
             </div>
           </header>
           <div class="container">
             <div class="region region-content col-sm-12">
-                <app-basic-info *ngIf="currentTab == 'basic'"></app-basic-info>
-                <app-optional-info *ngIf="currentTab == 'optional'" [profile]="userProfile"></app-optional-info>
+                <app-basic-info [hidden]="currentTab !== 'basic'"     (saveBasic)="saveBasic($event)" ></app-basic-info>
+                <app-optional-info [hidden]="currentTab !== 'optional'"  (saveOptional)="saveOptional($event)"  ></app-optional-info>
 
             </div><!-- End region-content -->
           </div>

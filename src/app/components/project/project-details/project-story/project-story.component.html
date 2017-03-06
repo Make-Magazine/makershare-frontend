@@ -59,7 +59,7 @@
                 <a href="#" class="btn btn-blue">Message</a>
               </div>
               <div class="right col-sm-8">
-                <h4 class="profile-name" *ngIf="collab.first_name && collab.last_name"><a href="#">{{collab.first_name}} {{collab.last_name}}</a></h4>
+                <h4 class="profile-name" *ngIf="(collab.first_name) && (collab.last_name)"><a href="#">{{collab.first_name}} {{collab.last_name}}</a></h4>
                 <div class="trophies">
                   <i class="fa fa-lg fa-child"></i>
                   <i class="fa fa-lg fa-certificate"></i>
@@ -67,7 +67,7 @@
                 </div>
                 <p class="count">6 projects</p>
                 <p class="profile-tag" *ngIf="collab.descripe_yourself">{{collab.descripe_yourself}}</p>
-                <p class="user-city" *ngIf="collab.location_locality && collab.location_administrative_area">{{collab.location_locality}}, {{collab.location_administrative_area}}</p>
+                <p class="user-city" *ngIf="(collab.location_locality) && (collab.location_administrative_area)">{{collab.location_locality}}, {{collab.location_administrative_area}}</p>
               </div>
             </div><!-- End profile card -->
           </div><!-- End Profile-container -->

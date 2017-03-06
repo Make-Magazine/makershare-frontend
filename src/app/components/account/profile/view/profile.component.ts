@@ -7,7 +7,7 @@ import { UserService } from '../../../../d7services/user/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile = {};
+  profile;
   constructor(
     private userService: UserService,
   ) { }
@@ -23,5 +23,6 @@ export class ProfileComponent implements OnInit {
 
 
   }
+
 
 }

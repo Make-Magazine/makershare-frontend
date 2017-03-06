@@ -12,17 +12,22 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
+import { ProfileService } from './d7services/profile/profile.service';
+import { PmService } from './d7services/pm/pm.service';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { FileService } from './d7services/file/file.service';
+import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 import { ExploreComponent } from './components/explore/explore.component';
 
 
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
+import { ShowcaseModule } from './components/showcase/showcases.module';
 import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
-import { ShowcasesCollectionComponent} from './components/showcase/showcasesCollection.component';
+import { MessagesModule } from './components/account/messages/messages.module';
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -33,7 +38,6 @@ import { ShowcasesCollectionComponent} from './components/showcase/showcasesColl
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
-    ShowcasesCollectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,11 +46,15 @@ import { ShowcasesCollectionComponent} from './components/showcase/showcasesColl
     ProjectModule,
     AccountModule,
     ChallengeModule,
+    ShowcaseModule,
     LearnModule,
     HomeModule,
     routing,
+    MessagesModule,
+    Ng2Bs3ModalModule,
   ],
-  providers: [FileService ,MainService, UserService, NodeService, CookieService, ViewService,FlagService],
+  entryComponents: [],
+  providers: [TaxonomyService,FileService, MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

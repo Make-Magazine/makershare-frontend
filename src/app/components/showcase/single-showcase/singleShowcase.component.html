@@ -1,0 +1,88 @@
+<div class="main-container container-fluid">
+      <div class="row">
+        <section class="col-sm-12 width-fix">
+          <div class="region region-content">
+            <header class="showcase-header">
+              <div class="container">
+                <a (click)="goHome()" class="btn btn-white btn-sharp back"> &lt; Back Home</a>
+                <div class="col-md-11 col-md-offset-1">
+                  <div class="col-md-12">
+                    <h3>{{showcase.showcase_name}}</h3>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="timestamp">Last updated: {{showcase.last_updated}}</p>
+                    <p [innerHTML]="showcase.description"></p>
+                    <p>Enjoy !</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="timestamp">Curated by:</p>
+                    <div class=" profile-container medium-card"><!-- start profile card-->
+                      <div class="profile-card">
+                        <div class="left col-sm-4">
+                          <div class="profile-pic">
+                            <img src="{{profile.photo}}" alt="" class="" >
+                          </div>
+                          <a  class="btn btn-blue">Message</a>
+                        </div>
+                        <div class="right col-sm-4">
+                          <h4 class="profile-name"><a (click)="goToProfile(profile.pid)">{{profile.first_name}}</a></h4>
+                          <p class="count">X projects</p>
+                          <p *ngFor="let tag of profile.tags" class="user-tag">
+                            {{tag}}
+                            </p>
+                        </div>
+                        <i class="fa fa-lg fa-star-o"></i>
+                      </div><!-- End profile card -->
+                    </div><!-- End Profile-container -->
+                  </div>
+                </div>
+              </div><!-- End container -->
+            </header><!--/header -->             
+            <div class="container">
+
+                <div class=" filters col-md-10 col-md-offset-1">
+                  <p class="pull-left">{{projects.length}} Entries</p>
+                  <div class="sorting-filter pull-right">
+                    <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#" class="btn">Most recent</a></li>
+                      <li><a href="#" class="btn">Oldest</a></li>
+                      <li><a href="#" class="btn">Title A-Z</a></li>
+                      <li><a href="#" class="btn">Title Z-A</a></li>
+                      <li><a href="#" class="btn">Most Liked</a></li>
+                      <li><a href="#" class="btn">Most Forked</a></li>
+                    </ul>
+                  </div><!-- End sorting-filter -->
+                </div>
+
+            </div><!-- End filters -->
+            <div class="container">
+              <div class="projects-grid row">
+                <div class="col-md-10 col-md-offset-1">
+
+                  <div *ngFor="let project of projects" class="col-md-4">
+                    <div class="project">
+                      <div class="project-title">
+                        <p>{{project.project_name}}</p>
+                      </div>
+                      <div class="project-image">
+                        <a (click)="goToProject(project.nid)">
+                        <img src="{{project.cover_photo}}" alt="" class="" (click)="goToProject(project.nid)">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div><!-- End col -->   
+              </div><!-- End projects-grid row -->
+            </div> 
+            <div class="col-md-8 col-md-offset-2">
+              <div class="col-xs-4 col-xs-offset-4 load-more">
+                <a class="btn btn-white">Load more</a>
+              </div>
+            </div>
+          </div><!-- End region-content -->
+        </section>
+      </div><!-- End row -->
+    </div><!-- End main-container -->

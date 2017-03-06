@@ -23,6 +23,11 @@
               <label>Name</label>
               <div *ngIf="HowToForm.controls.Tools.controls[i]['controls'].Name.value">{{HowToForm.controls.Tools.controls[i]['controls'].Name.value}}</div>
               <input *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="form-control" (focus)="ToolMaterialPart('tool',i,$event.target.value)" (keyup)="ToolMaterialPart('tool',i,$event.target.value)">
+              <!--<ng2-completer *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" [ngModel]="project_name" [datasource]="url" [minSearchLength]="1" [textSearching]="project_name" [maxChars]="4" [matchClass]="'match'" [autofocus]="true" ></ng2-completer>-->
+              <ng2-completer *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" [(ngModel)]="searchStr" [dataService]="dataService" [minSearchLength]="0"></ng2-completer>
+  
+  
+              <!--<kpx-autocomplete [api-url]="'http://makerdev.orangestudio.com:8080/api/api-project-tools-materials-parts-list?type=tool&name='" [id-field]="'uid'" [description-field]="'project_name'" [(ngModel)]="yourModelProperty" name="nameOfControl" ></kpx-autocomplete>-->
               <div *ngIf="ToolsMaterialsParts['tool'] && ToolsMaterialsParts['tool'][i]" >
                 <div *ngFor="let Tool of ToolsMaterialsParts['tool'][i]" (click)="SetToolMaterialPart('tool','Tools', Tool, i)">
                   {{Tool.name}}

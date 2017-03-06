@@ -1,10 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { validimagesize } from '../../../../validations/valid-image-size.validation';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileService } from '../../../../d7services/file/file.service';
-import { CreateYourStoryModel, YourStoryCategory } from '../../../../models/project/create-project/your-story';
 import { ProjectCategory } from '../../../../models/project/project-category';
 import { FileEntity } from '../../../../models/project/create-project/file_entity';
 import { Project } from '../../../../models/project/create-project/project';
@@ -15,12 +13,23 @@ import { Project } from '../../../../models/project/create-project/project';
 })
 
 export class YourStoryComponent implements OnInit {
+  /**
+   * @output will emit the new values to the parent Component
+   * this mainly used for tags object because its an string array so we cannot pass it as a reference
+   */
   @Output() emitter = new EventEmitter();
+
+  /**
+   * @input to recieve the project object and printable values "tags and cover image"
+   */
   @Input('project') project: Project;
   @Input('FormPrintableValues') FormPrintableValues;
   cover_image:FileEntity;
   tags:string[];
 
+  /**
+   * local variables to use only inside this component
+   */
   YourStoryForm: FormGroup;
   accepted_image_width = 600;
   accepted_image_height = 400;
@@ -37,6 +46,12 @@ export class YourStoryComponent implements OnInit {
     private fileService: FileService,
   ) {}
 
+  /**
+   * on loading the component we will assign the printable variables to the parent printable variables
+   * also we will build our form
+   * and getting base details as categories 
+   * 
+   */
   ngOnInit() {
     this.cover_image = this.FormPrintableValues.cover_image;
     this.tags = this.FormPrintableValues.tags;
@@ -59,11 +74,17 @@ export class YourStoryComponent implements OnInit {
     });
   }
 
+  /**
+   * when building the form we must assign the default value which is received from the parent and building the form with Validators
+   * onValueChanged is used in two ways :
+   * 1- for the hole form to check for validation error messages
+   * 2- foreach control in the form to get the valid values only and save them to project object or emit them to the parent component
+   */
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
       'title': [this.project.title, [Validators.required,Validators.minLength(4)]],
       'field_teaser': [this.project.field_teaser.und[0].value],
-      'field_cover_photo': [this.cover_image, [Validators.required,validimagesize(this.accepted_image_width,this.accepted_image_height)]],
+      'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
       'field_uh_oh_moment': [this.project.field_uh_oh_moment.und[0].value, []],
@@ -80,18 +101,24 @@ export class YourStoryComponent implements OnInit {
       const control = this.YourStoryForm.controls[index];
       control.valueChanges.subscribe(value =>{
         if(this.isEmpty(value) || !control.valid){
-          this.SetControlValue(control,'',index);
+          this.SetControlValue('',index);
         }else{
-          this.SetControlValue(control,value,index);
+          this.SetControlValue(value,index);
         }
       });
     }
  }
 
-  SetControlValue(control:any,value:any,index:string){
+  /**
+   * setting control values
+   * this function will set the value to the project property
+   * @param value : the value to be setted in the project property
+   * @param index : the field name of the property
+   */
+  SetControlValue(value:any,index:string){
     let field = this.project[index];
     if(typeof field === 'string'){
-      field = value;
+      this.project[index] = value;
     }else if(field.und[0] && typeof field.und[0] === 'object'){
       field.und[0].value = value;
     }else if(index != 'field_tags'){
@@ -99,12 +126,22 @@ export class YourStoryComponent implements OnInit {
     }
   }
 
+  /**
+   * a very usefull method to check the variable if its empty or not
+   * this function works with all type of variables "string, number, array and object"
+   * @param variable 
+   */
   isEmpty(variable) {
     return Object.keys(variable).every(function(key) {
       return variable[key]===''||variable[key]===null;
     });
   }
 
+  /**
+   * this function will watch for the new changes in cover_image field and set the values after converting the file to base64
+   * its better if we used custom validator so we can remove the error check here "need works"
+   * @param event the selected file object
+   */
   ImageUpdated(event){ 
     this.cover_image.file = '';
     this.cover_image.filename = '';
@@ -118,6 +155,11 @@ export class YourStoryComponent implements OnInit {
     }
  }
 
+ /**
+  * converting a file object to base64
+  * @param file : the file to convert
+  * @param ImgObject : the cover image control to set the new values after converting
+  */
  ConvertToBase64(file:File,ImgObject:FileEntity){
     var reader = new FileReader();
     reader.readAsDataURL(file);
@@ -137,7 +179,12 @@ export class YourStoryComponent implements OnInit {
     };
    }
 
- onValueChanged(data?: any) {
+  /**
+   * a function to check the validation for each control and set the error messages to formerrors from messages array
+   * @param data : the data to be checked but its not required in our case
+   * this data will be helpfull if we need to make any change to the value before setting the error
+   */
+  onValueChanged(data?: any) {
     if (!this.YourStoryForm) { return; }
     const form = this.YourStoryForm;
     for (const field in this.formErrors) {
@@ -153,6 +200,11 @@ export class YourStoryComponent implements OnInit {
     }
   }
 
+  /**
+   * handling selection of categories
+   * @param tid : selected term id 
+   * @param mode : parent or child selection
+   */
   SelectTerm(tid:number,mode:string){
     if(mode == "parent"){
       this.child_categories = [];
@@ -167,6 +219,9 @@ export class YourStoryComponent implements OnInit {
     }
   }
 
+  /**
+   * pushing the selected categories to project categories field and check for dublication
+   */
   SetCategories(){
     if(this.project.field_categories.und.indexOf(this.current_parent_category) == -1){
       this.project.field_categories.und.push(this.current_parent_category);
@@ -179,6 +234,10 @@ export class YourStoryComponent implements OnInit {
     delete this.current_child_category;
   }
 
+  /**
+   * an object to store the error messages for each field 
+   * this is usefull if we has multiple errors for each field
+   */
   formErrors = {
      'title': '',
      'field_categories': '',
@@ -187,6 +246,10 @@ export class YourStoryComponent implements OnInit {
      'field_story': '',
    };
 
+   /**
+    * the error messages to set in formerrors foreach field and also for each validator
+    this way is good to save deffirent error messages for each validation
+    */
    validationMessages = {
      'title': {
        'required':      'Project Name is required.',
