@@ -33,12 +33,12 @@
                     <form>
                       <div class="form-group">
                         
-                    <select class="form-control" (change)="updateSelectedProject($event.target.value)">
+                    <select class="form-control" #item (change)="updateSelectedProject($event.target.value)">
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
                       </div>
-                      <button class="btn btn-white btn-sharp cancel" (click)="onCancel($event)">Cancel</button>
-                      <button class="btn btn-blue btn-sharp submit" (click)="onSubmit($event)">Submit</button>
+                      <button class="btn btn-white btn-sharp cancel" (click)="onCancel()">Cancel</button>
+                      <button class="btn btn-blue btn-sharp submit" (click)="onSubmit()">Submit</button>
                     </form>
                     <p class="text-center">OR</p>
                     <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
