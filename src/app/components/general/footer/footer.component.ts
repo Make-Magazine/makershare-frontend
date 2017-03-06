@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthModalComponent } from '../../modals/auth-modal/auth-modal.component';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
