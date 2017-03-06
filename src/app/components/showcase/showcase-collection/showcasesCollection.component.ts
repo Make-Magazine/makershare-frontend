@@ -11,7 +11,7 @@ export class ShowcasesCollectionComponent implements OnInit {
   showcases = [];
   pageNumber = 0;
   showcaseCount=0;
-  hideloadmore=true;
+  hideloadmore=false;
   sortData:ISorting;
   sort_order:string;
   sort_by:string;
@@ -27,8 +27,8 @@ export class ShowcasesCollectionComponent implements OnInit {
   ngOnInit() {
 
     this.sort_order = "DESC";
-    this.sort_by = "created";
-
+    this.sort_by = "changed";
+    this.showcasesCount();
     this.getShowCases();
 
   }
@@ -40,13 +40,9 @@ export class ShowcasesCollectionComponent implements OnInit {
   getShowCases(){
 
     var sort: string;
-    var page_arg = [];
-     if(this.pageNumber >=0){
-      page_arg = ['page', this.pageNumber];
-    }
     // load the showcases
     this.viewService.getView('showcases',[['page',this.pageNumber],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
-      this.showcases = data;
+      this.showcases = this.showcases.concat(data);
 
       this.loadMoreVisibilty();
     }, err => {
@@ -62,14 +58,14 @@ loadmore(){
 // control load more button
 loadMoreVisibilty(){
  // get the challenges array count
- var ch_arr_count = this.showcases.length;
- if(ch_arr_count > 1){
-   this.hideloadmore = true;
+ if(this.showcases.length == this.showcaseCount){
+    this.hideloadmore= true;
  }else{
-   this.hideloadmore = false;
+    this.hideloadmore= false;
  }
 
 }
+
 
 getSortType(event:any){
     this.sortData = event;
@@ -84,5 +80,13 @@ this.pageNo = event
 // console.log(this.pageNo);
 }
 
+// get the count of showcases
+  showcasesCount() {
+      this.viewService.getView('maker_count_showcases',[]).subscribe(data => {
+      this.showcaseCount=data;
+      console.log(this.showcaseCount);
+    });
+  }
 
+  
 }
