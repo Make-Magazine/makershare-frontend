@@ -12,6 +12,7 @@ import { MainService } from './d7services/main/main.service';
 import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
+import { FileService } from './d7services/file/file.service';
 import { ExploreComponent } from './components/explore/explore.component';
 
 
@@ -45,7 +46,7 @@ import { ShowcasesCollectionComponent} from './components/showcase/showcasesColl
     HomeModule,
     routing,
   ],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService],
+  providers: [FileService ,MainService, UserService, NodeService, CookieService, ViewService,FlagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

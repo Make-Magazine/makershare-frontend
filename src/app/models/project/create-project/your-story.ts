@@ -1,10 +1,10 @@
-import { CoverImage } from './cover-image'
+import { FileEntity } from './file_entity';
 
 export interface CreateYourStoryModel{
   title: string;
-  Categories: Category[];
+  Categories: YourStoryCategory[];
   field_teaser: string;
-  field_cover_photo: CoverImage;
+  field_cover_photo: FileEntity,
   field_show_tell_video: string;
   field_aha_moment: string;
   field_uh_oh_moment: string;
@@ -12,7 +12,7 @@ export interface CreateYourStoryModel{
   field_tags: string[];
 }
 
-export interface Category{
+export interface YourStoryCategory{
   display:string,
   value:number,
 }
