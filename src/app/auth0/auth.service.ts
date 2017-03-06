@@ -2,6 +2,8 @@ import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../d7services/user/user.service';
 import { MainService } from '../d7services/main/main.service';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+
 //import Auth0 from 'auth0-js';
 
 // Avoid name not found warnings
@@ -17,6 +19,7 @@ export class Auth {
   constructor(
     private userService: UserService,
     private mainService: MainService,
+    private notificationBarService: NotificationBarService,
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
@@ -35,6 +38,13 @@ export class Auth {
           console.log(res);
             this.mainService.saveCookies(res['token'],res['session_name'],res['sessid']);
         });
+
+            // show warning message if mail not verfied
+        if(profile['email_verified'] == false){
+          this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false});
+        }else{
+          this.notificationBarService.create({ message: 'Welcome, You are now loged in.', type: NotificationType.Success});
+        }        
 
       });      
     });
@@ -62,6 +72,7 @@ export class Auth {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
     this.mainService.removeCookies();
+    this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
     
 
   }

@@ -26,6 +26,7 @@ import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
 import { MessagesModule } from './components/account/messages/messages.module';
+import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
 
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
@@ -52,6 +53,7 @@ import { Auth } from './auth0/auth.service';
     routing,
     MessagesModule,
     Ng2Bs3ModalModule,
+    NotificationBarModule,
   ],
   entryComponents: [],
   providers: [
@@ -63,7 +65,8 @@ import { Auth } from './auth0/auth.service';
     FlagService,
     ProfileService,
     PmService,
-    Auth
+    Auth,
+    NotificationBarService
   ],
   bootstrap: [AppComponent]
 })
