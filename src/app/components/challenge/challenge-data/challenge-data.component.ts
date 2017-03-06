@@ -29,6 +29,7 @@ projects_more;
 challenge_start_date;
 followers=[];
 isFollowed=false;
+isBookmarked=false;
 Flags = ['follow'];
 
 FlagStates = [];
@@ -81,6 +82,7 @@ sort_by:string;
     //console.log(this.currentuser.user.uid);
     this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
     this.isFollowed = data[0];
+    
     /* initialize Button Follow*/
     if(this.isFollowed==false){/* start if  */
       this.ButtonFollow='Follow';
@@ -90,6 +92,11 @@ sort_by:string;
          }/* end else if  */
        
       })
+        /*bookmark start */
+    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+    this.isBookmarked = data[0];
+     })
+        /*bookmark end*/
     });
   }
 
@@ -125,6 +132,28 @@ sort_by:string;
     // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
    }
   /* end function follow challenge*/ 
+
+       /* function bookmark challenge*/
+    bookmarkThis(e: Event){
+      this.getCurrentUser();
+      console.log(this.currentuser.user.uid)
+      console.log(this.challenge.nid)
+      e.preventDefault();
+      if(this.isBookmarked){
+        this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+          this.isBookmarked = false;
+        });
+      }else {
+        this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+          this.isBookmarked = true;
+          
+         
+        });
+
+      }
+    
+   }
+  /* end function bookmark challenge*/ 
 
   changeChallangeTab(NewTab,e){
     e.preventDefault();
