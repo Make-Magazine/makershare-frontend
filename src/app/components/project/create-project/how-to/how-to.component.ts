@@ -3,7 +3,8 @@ import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, F
 import { CustomValidators } from 'ng2-validation'
 import { inarray } from '../../../../validations/inarray.validation'
 import { ViewService } from '../../../../d7services/view/view.service'
-import { CompleterService, CompleterData } from 'ng2-completer';
+import { Project } from '../../../../models/project/create-project/project';
+
 // import { domain } from '../../../../d7services/global';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -19,41 +20,27 @@ export class HowToComponent implements OnInit {
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component
    */
-  @Output() HowTo = new EventEmitter();
-  @Input('HowToValues') HowToValues;
+  @Input('project') project: Project;
+  @Input('FormPrintableValues') FormPrintableValues;
   HowToForm: FormGroup;
+
+
   ToolsMaterialsParts = [];
 
   // data arrays
-  Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
-  Diffeculties = ['Easy', 'Moderate', 'Hard'];
-  ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
-  multi_values_fields = ['Tools','Materials','Resources','Parts'];
-
-  //public url: string = "http://makerdev.orangestudio.com:8080/api/api-project-tools-materials-parts-list?type=tool&name=" ;
-    private url = [
-    { color: 'red', value: '#f00' },
-    { color: 'green', value: '#0f0' },
-    { color: 'blue', value: '#00f' },
-    { color: 'cyan', value: '#0ff' },
-    { color: 'magenta', value: '#f0f' },
-    { color: 'yellow', value: '#ff0' },
-    { color: 'black', value: '#000' }
-  ];
-  
-  private dataService: CompleterData;
+  // Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
+  // Diffeculties = ['Easy', 'Moderate', 'Hard'];
+  // ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
+  // multi_values_fields = ['Tools','Materials','Resources','Parts'];
 
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
-    private completerService: CompleterService
-  ) {
-    let timedRes = Observable.from([this.url]).delay(3000);
-    this.dataService = completerService.local(timedRes, 'color', 'color');
-    }
+  ) {}
 
   ngOnInit() {
     this.buildForm();
+    console.log(this.project.field_how_to);
   }
 
   ToolMaterialPart(ControlName, index, value){
@@ -80,28 +67,26 @@ export class HowToComponent implements OnInit {
    */
   buildForm(): void {
     this.HowToForm = this.fb.group({
-      'OtherProjctVideo': ['', [CustomValidators.url]],
-      'HowToMake': ['', []],
+      'field_how_to': [this.project.field_how_to.und[0].value],
+      'field_tools': this.fb.array([]),
       'HelpLookingFor': ['', []],
-      'Tools': this.fb.array([]),
       'Materials': this.fb.array([]),
       'Parts': this.fb.array([]),
-      'Difficulty': [this.Diffeculties[0],[Validators.required,inarray(this.Diffeculties)]],
-      'Duration': [this.Durations[0],[Validators.required,inarray(this.Durations)]],
+      // 'Difficulty': [this.Diffeculties[0],[Validators.required,inarray(this.Diffeculties)]],
+      // 'Duration': [this.Durations[0],[Validators.required,inarray(this.Durations)]],
       'Resources': this.fb.array([]),
     });
-    if(this.HowToValues){
-      this.multi_values_fields.forEach((element, index) => {
-        var length = this.HowToValues[element].length;
-        for(var i = 0 ;i < length; i++){
-          this.AddRow(element);
-        }
-      });
-      this.HowToForm.setValue(this.HowToValues);
-    }
+    // if(this.HowToValues){
+    //   this.multi_values_fields.forEach((element, index) => {
+    //     var length = this.HowToValues[element].length;
+    //     for(var i = 0 ;i < length; i++){
+    //       this.AddRow(element);
+    //     }
+    //   });
+      // this.HowToForm.setValue(this.HowToValues);
+    // }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
-      this.HowTo.emit(this.HowToForm);
     });
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
   }
@@ -114,6 +99,7 @@ export class HowToComponent implements OnInit {
     let index = control.length + 1;
     const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
+    //subscribe for changes
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
 
@@ -132,11 +118,11 @@ export class HowToComponent implements OnInit {
    */
   InitRow(ControlName,index) {
     switch (ControlName){
-      case 'Tools':
+      case 'field_tools':
       {
         return this.fb.group({
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', Validators.required],
+          'field_tool_name': ['', Validators.required],
           'Url': ['', CustomValidators.url],
           'Nid': ['',Validators.required],
         });
@@ -166,7 +152,7 @@ export class HowToComponent implements OnInit {
           'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'File': [, []],
           'RepoLink': ['', CustomValidators.url],
-          'Label': ['',[inarray(this.ResourceLabels)]],
+          // 'Label': ['',[inarray(this.ResourceLabels)]],
         });
       }
     }
@@ -214,9 +200,9 @@ export class HowToComponent implements OnInit {
    */
   GetErrorStructure(ControlName?) : string | Object {
    switch (ControlName){
-    case 'Tools':
+    case 'field_tools':
     {
-      return {'SortOrder':'', 'Name': '','Url': '','Nid': ''};
+      return {'SortOrder':'', 'field_tool_name': '','Url': '','Nid': ''};
     }
     case 'Materials':
     {
@@ -264,7 +250,7 @@ export class HowToComponent implements OnInit {
    */
   formErrors = {
     'OtherProjctVideo': '',
-    'Tools': [],
+    'field_tools': [],
     'Materials': [],
     'Parts': [],
     'Difficulty': '',
@@ -281,13 +267,13 @@ export class HowToComponent implements OnInit {
     'OtherProjctVideo': {
       'url': 'Please enter a valid url, ex: http://example.com.',
     },
-    'Tools': {
+    'field_tools': {
       'SortOrder':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
-      'Name':{
+      'field_tool_name':{
         'required':'Name is required',
       }, 
       'Nid':{

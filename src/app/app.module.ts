@@ -60,6 +60,7 @@ import { Auth } from './auth0/auth.service';
   entryComponents: [],
   providers: [
     TaxonomyService,
+    FileService,
     MainService,
     UserService,
     NodeService,
