@@ -213,12 +213,12 @@ getChallengeFollowers(){
     //  console.log(page_arg);
     }
     this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],[page_arg],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
+    .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],['page',this.pageNo],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe( data =>{
-        this.loadProject = this.projects.concat(data);
-        console.log(this.projects.concat(data));
+      this.projects=this.projects.concat(data);
+        console.log(this.projects);
       //this.projects=data;
-      this.projectsData=data;
+    //  this.projectsData=this.projectsData.concat(data);
      // this.loadMoreVisibilty();
        });
     }

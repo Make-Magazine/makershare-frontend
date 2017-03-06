@@ -42,7 +42,7 @@
                 </ul>
               </div>
               <div class="content-wrapper row">
-                <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [challenge]="challenge" [awards]="awards"  [projects]="projectsData" *ngIf="activeTab =='summary'"></app-summary>
+                <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [challenge]="challenge" [awards]="awards"  [projects]="projects" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
                 <app-followers  *ngIf="activeTab =='followers'" [challenge]="challenge"  [followers]="followers"></app-followers>
