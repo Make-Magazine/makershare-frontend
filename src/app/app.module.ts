@@ -27,6 +27,8 @@ import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
 import { MessagesModule } from './components/account/messages/messages.module';
 
+// import custom auth0 service
+import { Auth } from './auth0/auth.service';
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
 
@@ -52,7 +54,17 @@ import { MessagesModule } from './components/account/messages/messages.module';
     Ng2Bs3ModalModule,
   ],
   entryComponents: [],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
+  providers: [
+    MainService,
+    UserService,
+    NodeService,
+    CookieService,
+    ViewService,
+    FlagService,
+    ProfileService,
+    PmService,
+    Auth
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
