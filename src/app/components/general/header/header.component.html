@@ -40,8 +40,7 @@
         <li><a class="btn btn-blue" [routerLink]="['/project/create']">Add project</a></li>
       </div>
       <div *ngIf="!isLoggedIn">
-        <li><a class="btn btn-blue" data-toggle="modal"  data-target="#joinus-modal">Join</a></li>
-        <li><a class="btn btn-transparent" data-toggle="modal" data-target="#LoginModal">Log in</a></li>
+        <app-auth-modal></app-auth-modal>
       </div>
     </ul>
     <!-- Include login modal in the header -->

@@ -26,6 +26,7 @@ import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
 import { MessagesModule } from './components/account/messages/messages.module';
+import { AuthModalComponent } from './components/modals/auth-modal/auth-modal.component';
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -36,6 +37,7 @@ import { MessagesModule } from './components/account/messages/messages.module';
     HeaderComponent,
     FooterComponent,
     ExploreComponent,
+    AuthModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,16 @@ import { MessagesModule } from './components/account/messages/messages.module';
     Ng2Bs3ModalModule,
   ],
   entryComponents: [],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
+  providers: [
+    MainService,
+    UserService,
+    NodeService,
+    CookieService,
+    ViewService,
+    FlagService,
+    ProfileService,
+    PmService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
