@@ -31,6 +31,8 @@ export class BasicInfoComponent implements OnInit {
   buildForm(): void {
     this.basicForm = this.fb.group({
       'field_nickname': ['', [Validators.required]],
+      'field_first_name': ['', [Validators.required]],
+      'field_last_name': ['', [Validators.required]],
       'field_address': this.fb.group({
         'country': ['', [Validators.required]],
         'state': ['', [Validators.required, Validators.minLength(4)]],
@@ -39,7 +41,7 @@ export class BasicInfoComponent implements OnInit {
       'field_address_publish': ['', [Validators.required, Validators.minLength(4)]],
       'field_describe_yourself': ['', [Validators.required, Validators.minLength(60)]],
       'field_birthday_date': ['', [Validators.required]],
-      'mail':  ['', [Validators.required]],
+      'mail': ['', [Validators.required]],
       'field_birthday_status': [''],
       'field_newsletter_subscription': ['']
     });
@@ -49,9 +51,9 @@ export class BasicInfoComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.basicForm) { return; }
- 
+
     const form = this.basicForm;
-    this.saveBasic.emit(this.basicForm.value);
+    this.saveBasic.emit(this.basicForm);
 
   }
 

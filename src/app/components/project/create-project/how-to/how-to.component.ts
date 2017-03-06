@@ -3,6 +3,11 @@ import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, F
 import { CustomValidators } from 'ng2-validation'
 import { inarray } from '../../../../validations/inarray.validation'
 import { ViewService } from '../../../../d7services/view/view.service'
+import { CompleterService, CompleterData } from 'ng2-completer';
+// import { domain } from '../../../../d7services/global';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-how-to',
@@ -25,11 +30,27 @@ export class HowToComponent implements OnInit {
   ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
   multi_values_fields = ['Tools','Materials','Resources','Parts'];
 
+  //public url: string = "http://makerdev.orangestudio.com:8080/api/api-project-tools-materials-parts-list?type=tool&name=" ;
+    private url = [
+    { color: 'red', value: '#f00' },
+    { color: 'green', value: '#0f0' },
+    { color: 'blue', value: '#00f' },
+    { color: 'cyan', value: '#0ff' },
+    { color: 'magenta', value: '#f0f' },
+    { color: 'yellow', value: '#ff0' },
+    { color: 'black', value: '#000' }
+  ];
+  
+  private dataService: CompleterData;
 
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
-  ) {}
+    private completerService: CompleterService
+  ) {
+    let timedRes = Observable.from([this.url]).delay(3000);
+    this.dataService = completerService.local(timedRes, 'color', 'color');
+    }
 
   ngOnInit() {
     this.buildForm();
