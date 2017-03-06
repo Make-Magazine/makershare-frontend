@@ -48,11 +48,8 @@ export class OptionalInfoComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.optionalForm) { return; }
-    debugger
     const form = this.optionalForm;
     this.saveOptional.emit(this.optionalForm.value);
-  
-
   }
   formSubmit(values) {
     console.log(values);

@@ -8,7 +8,7 @@
                 <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
                 <div class="sponsor"><h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}}</h4></div>
                 <div class="challenge-status">
-                  <p  >{{challenge.challenge_status}} submission close:{{challenge.challenge_end_date}}<p>
+                  <p  >{{challenge.challenge_status}}  :{{challenge.challenge_end_date}}<p>
                 </div>
                 <div class="challenge-title" *ngIf="challenge.title">
                   <h1>{{challenge.title}}</h1>
@@ -17,12 +17,9 @@
                   <p class="number">{{challenge.diffDays}}</p>
                   <p>Days left</p>
                 </div>
-                 <div class="challenge-countdown" [hidden]="!challenge.opened">
-                  <p class="number">NO</p>
-                  <p>Days left</p>
-                </div>
+                
                 <ul class="list-unstyled challenge-actions pull-right">
-                  <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
+                  <li><a  class="btn btn-light-grey btn-fit" (click)="bookmarkThis($event)" [class.active]="isBookmarked"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
                   <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
@@ -40,14 +37,14 @@
                   <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
                 </ul>
                 <ul class="list-unstyled challenge-follow">
-                  <li><a href="" class="btn btn-blue btn-sharp" (click)="followThis($event)" [class.active]="isFollowed">Follow</a></li>
-                  <li><a href="" class="btn btn-blue btn-sharp">Enter</a></li>
+                  <li><a href="" class="btn btn-blue btn-sharp" (click)="followThis($event)" [class.active]="isFollowed">{{ButtonFollow}}</a></li>
+                  <li><a *ngIf="hideButton" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
                 </ul>
               </div>
               <div class="content-wrapper row">
                 <app-summary (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [challenge]="challenge" [awards]="awards"  [projects]="projectsData" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
-                <app-discussion *ngIf="activeTab =='discussion'"></app-discussion>
+                <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
                 <app-followers  *ngIf="activeTab =='followers'" [followers]="followers"></app-followers>
                 <app-awards  *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
                 

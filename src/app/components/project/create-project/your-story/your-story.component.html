@@ -10,9 +10,6 @@
     <div class="form-group teaser">
       <label for="teaser">Teaser</label>
       <textarea class="form-control" rows="5" id="teaser" formControlName='field_teaser'></textarea>
-      <div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
-        {{ formErrors.field_teaser }}
-      </div>
     </div>
     <div class="form-group cover">
       <label class="control-label">Cover photo</label><br>
@@ -29,18 +26,30 @@
         <div class="clearfix"></div>
     </div>
     <div class="form-group projectCategory">
-      <label for="projectCategory">Category</label>
-      <tag-input type="text" class="form-control" id="projectCategory" placeholder="Category" formControlName='Categories'>
-        <tag-input-dropdown [autocompleteItems]="Categories_Data">
-        </tag-input-dropdown>
-      </tag-input>
-      <div *ngIf="formErrors.Categories" class="alert alert-danger error-msg">
-        {{ formErrors.Categories }}
+      <label for="projectCategory">Categories</label>
+      <select class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+        <option disabled selected value> -- select an option -- </option>
+        <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
+      </select>
+      <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
+        <option disabled selected value> -- select an option -- </option>
+        <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
+      </select>
+      <div *ngIf="current_child_category" (click)="SetCategories()">add</div>
+      <div *ngIf="project.field_categories.und">
+        <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
+         <div *ngFor="let cate of all_categories">
+            <div *ngIf="selected_cate == cate.tid">{{cate.name}}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="formErrors.field_categories" class="alert alert-danger error-msg">
+        {{ formErrors.field_categories }}
       </div>
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story'></ckeditor>
+      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story' ></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
       </div>
@@ -68,8 +77,7 @@
     </div>
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
-      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='field_tags'>
-      </tag-input>
+      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='field_tags' [modelAsStrings]="true" [(ngModel)]="tags"></tag-input>
     </div>
   </div><!-- End your-story -->
 </div>

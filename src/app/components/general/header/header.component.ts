@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
-import { LoginComponent } from '../../account/login/login.component';
+import { Auth } from '../../../auth0/auth.service';
+
 
 @Component({
   selector: 'app-header',
@@ -9,22 +10,26 @@ import { LoginComponent } from '../../account/login/login.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn = false;
-  constructor(private userService: UserService, private router: Router) {}
+  // isLoggedIn = false;
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private auth: Auth
+    ) {}
 
   ngOnInit() {
-    this.userService.isLogedIn().subscribe(res => {
-      if(res == true){
-        this.isLoggedIn = true;
-      }
-    });
+    // this.userService.isLogedIn().subscribe(res => {
+    //   if(res == true){
+    //     this.isLoggedIn = true;
+    //   }
+    // });
   }
 
-  Logout(event){
-    this.userService.logout().subscribe(res => {
-        this.isLoggedIn = false;
-        this.router.navigate(['']);
-    });
-  }
+  // Logout(event){
+  //   this.userService.logout().subscribe(res => {
+  //       this.isLoggedIn = false;
+  //       this.router.navigate(['']);
+  //   });
+  // }
 
 }
