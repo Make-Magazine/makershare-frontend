@@ -24,6 +24,7 @@
     "angular2-cookie": "^1.2.6",
     "angular2-jwt": "^0.1.28",
     "angular2-kpx-autocomplete": "0.0.7",
+    "angular2-notification-bar": "^1.2.3",
     "auth0-js": "^8.3.0",
     "auth0-lock": "^10.12.2",
     "core-js": "^2.4.1",
