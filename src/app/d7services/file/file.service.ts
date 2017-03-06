@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptionsArgs, Response, Headers } from '@angular/http';
 import { Observable } from "rxjs";
 import { MainService } from '../main/main.service';
 import * as globals from '../globals';

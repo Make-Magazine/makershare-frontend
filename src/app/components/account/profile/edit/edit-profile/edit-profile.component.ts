@@ -13,9 +13,11 @@ declare var $: any;
 })
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
+  basicForm: FormGroup;
+
   currentTab = 'basic';
   userProfile: UserProfile = {
-    name:'testar',
+    name: 'testar',
     field_user_photo: '',
     field_bio: '',
     field_started_making: '',
@@ -44,7 +46,10 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveBasic(profile: UserProfile) {
+  saveBasic(basic: FormGroup) {
+
+    let profile: UserProfile = basic.value;
+    this.basicForm = basic;
     console.log(profile);
     for (var k in profile) {
       this.userProfile[k] = profile[k];
@@ -59,6 +64,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   saveProfile() {
+
     console.log(this.userProfile);
     this.profileService.createProfile(this.userProfile).subscribe(profile => {
       console.log("profile saved");
@@ -67,12 +73,17 @@ export class EditProfileComponent implements OnInit {
       console.log("error");
       console.log(err);
     });
+
   }
 
   saveNext() {
-    this.saveProfile();
-    this.currentTab = 'optional';
-    $("#optional-info").click();
+    if (this.basicForm.valid) {
+      this.saveProfile();
+      this.currentTab = 'optional';
+      $("#optional-info").click();
+    } else {
+      console.log("put toaster ");
+    }
   }
 
 

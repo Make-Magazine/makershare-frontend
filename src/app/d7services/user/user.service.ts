@@ -5,7 +5,7 @@ import * as globals from '../globals';
 
 @Injectable()
 export class UserService {
-
+  userInfo;
   constructor(private mainService: MainService) {}
 
   getUser(userId): Observable<any>{
@@ -70,6 +70,20 @@ export class UserService {
         observer.complete();
       }
 
+    });
+    return obs;
+  }
+
+    auth0_authenticate(data: any): Observable<any>{
+    this.userInfo = data;
+    var obs = Observable.create(observer => {
+      this.mainService.get('/services/session/token').map(response => response.text()).subscribe(token => {
+         this.mainService.saveCookies(token, null, null);
+         this.mainService.post(globals.endpoint + '/auth0_service/authenticate', this.userInfo).map(res => res.json()).catch(err => Observable.throw(err)).subscribe( res => {
+           observer.next(res);
+           observer.complete();
+         });
+       });
     });
     return obs;
   }

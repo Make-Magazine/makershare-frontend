@@ -10,6 +10,28 @@
 			userName is required
 		</div>
 	</div>
+  	<div class="form-group userName">
+		<label for="userName">Tell us your firstName</label>
+		<p>Margot Jacob</p>
+		<div class="guide">
+			<p>You may add your searchable firstName Name if you are known by another name in the Maker community.</p>
+		</div>
+		<input type="text" formControlName="field_first_name" class="form-control" id="firstName" placeholder="Type your firstName ">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_first_name').hasError('required') && basicForm.get('field_first_name').touched">
+			first Name is required
+		</div>
+	</div>
+  	<div class="form-group userName">
+		<label for="userName">Tell us your First name</label>
+		<p>Margot Jacob</p>
+		<div class="guide">
+			<p>You may add your searchable last Name if you are known by another name in the Maker community.</p>
+		</div>
+		<input type="text" formControlName="field_last_name" class="form-control" id="lastName" placeholder="Type your lastName ">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_last_name').hasError('required') && basicForm.get('field_last_name').touched">
+			last Name is required
+		</div>
+	</div>
 	<div class="form-group userCity">
 		<label for="userCity">Where do you live?</label>
 		<div class="row" formGroupName="field_address">
@@ -18,7 +40,7 @@
 				</ng-select>
 				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
 					country is required
-				</div>
+				</div> 
 			</div>
 			<div class="col-md-2">
 				<ng-select [options]="states" placeholder="Select state" formControlName="state" [allowClear]="true">

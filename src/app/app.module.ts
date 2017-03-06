@@ -14,7 +14,9 @@ import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ProfileService } from './d7services/profile/profile.service';
 import { PmService } from './d7services/pm/pm.service';
-
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { FileService } from './d7services/file/file.service';
+import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 import { ExploreComponent } from './components/explore/explore.component';
 
 
@@ -25,8 +27,11 @@ import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
-import { MessagesModule } from './components/account/messages/messages.module'
+import { MessagesModule } from './components/account/messages/messages.module';
+import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
 
+// import custom auth0 service
+import { Auth } from './auth0/auth.service';
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
 
@@ -35,7 +40,7 @@ import { MessagesModule } from './components/account/messages/messages.module'
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ExploreComponent
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +54,23 @@ import { MessagesModule } from './components/account/messages/messages.module'
     HomeModule,
     routing,
     MessagesModule,
+    Ng2Bs3ModalModule,
+    NotificationBarModule,
   ],
-  providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
+  entryComponents: [],
+  providers: [
+    TaxonomyService,
+    MainService,
+    UserService,
+    NodeService,
+    CookieService,
+    ViewService,
+    FlagService,
+    ProfileService,
+    PmService,
+    Auth,
+    NotificationBarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

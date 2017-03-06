@@ -39,11 +39,18 @@
         <li><a class="btn btn-blue" (click)="Logout($event)">Logout</a></li>
         <li><a class="btn btn-blue" [routerLink]="['/project/create']">Add project</a></li>
       </div>
-      <div *ngIf="!isLoggedIn">
-        <li><a class="btn btn-blue" data-toggle="modal"  data-target="#joinus-modal">Join</a></li>
-        <li><a class="btn btn-transparent" data-toggle="modal" data-target="#LoginModal">Log in</a></li>
+      <div>
+        <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+        <button class="btn btn-primary btn-margin" (click)="auth.signUp()" *ngIf="!auth.authenticated()">Join</button>
+        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+        <!--<app-auth-modal></app-auth-modal>-->
       </div>
+      
     </ul>
     <!-- Include login modal in the header -->
-    <app-login></app-login>
+      
+      
+    <!--<app-login></app-login>-->
+    
 </header>
+<notification-bar></notification-bar>
