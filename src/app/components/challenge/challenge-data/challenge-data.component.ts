@@ -28,9 +28,11 @@ projects_show;
 projects_more;
 challenge_start_date;
 followers=[];
-isFollowed=true;
+isFollowed=false;
 Flags = ['follow'];
+
 FlagStates = [];
+ButtonFollow:string;
 currentuser;
 hideButton=false;
 activeTab;
@@ -51,9 +53,9 @@ sort_by:string;
   ngOnInit() {
     this.getCountProject();
     this.activeTab = 'summary';
-   this.getChallengeData();
-   this.sort_order = "DESC";
-   this.sort_by = "created";
+    this.getChallengeData();
+    this.sort_order = "DESC";
+    this.sort_by = "created";
 
    
 
@@ -76,22 +78,29 @@ sort_by:string;
     });
     
    
- this.getProjects();
- this.getCurrentUser();
-    /*start flag */
-     //         this.challenge.nid = this.route.params['value'].nid;
-   /* console.log(this.route.params['value'].nid)
+    this.getProjects();
+    this.getCurrentUser();
+    this.userService.getStatus().subscribe(data => {
+      this.currentuser = data;
+      //console.log(this.currentuser.user.uid);
       this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
         this.isFollowed = data[0];
-      });*/
-    /*enf flag */
+       /* initialize Button Follow*/
+        if(this.isFollowed==false){
+          this.ButtonFollow='Follow';
+         }else{
+          console.log("return false");
+            this.ButtonFollow='UnFollow';
+         }
+       
+      })
+    });
   }
 
-/* function get current user */
+  /* function get current user */
   getCurrentUser(){
-        this.userService.getStatus().subscribe(data => {
+      this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
-      //console.log(this.currentuser.user.name)
     });
   }
   /* end function get user*/
@@ -99,22 +108,26 @@ sort_by:string;
   /* function follow challenge*/
     followThis(e: Event){
       this.getCurrentUser();
-   //   console.log(this.currentuser.user.uid)
-     // console.log(this.challenge.nid)
-    e.preventDefault();
-    if(this.isFollowed){
-      this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
-        this.isFollowed = !response[0];
-      });
-    }else {
-      this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
-        this.isFollowed = response[0];
-      });
+      console.log(this.currentuser.user.uid)
+      console.log(this.challenge.nid)
+      e.preventDefault();
+      if(this.isFollowed){
+        this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
+          this.isFollowed = false;
+          this.ButtonFollow='Follow';
+         // console.log(this.ButtonFollow);
+        });
+      }else {
+        this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
+          this.isFollowed = true;
+          this.ButtonFollow='UnFollow';
+          //console.log( this.ButtonFollow);
+        });
 
-    }
+      }
     
     // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
-  }
+   }
   /* end function follow challenge*/ 
 
   changeChallangeTab(NewTab,e){
@@ -196,49 +209,49 @@ this.hideButton=false;
 
     });
     }
-   // get more click
-  loadmore(){
-    this.pageNumber++;
-    this.getProjects();
-  }
-  // control load more button
-  loadMoreVisibilty(){
-    // get the challenges array count
-    var ch_arr_count = this.projects.length;
-    if(ch_arr_count > 1){
-      this.hideloadmore = true;
-    }else{
-      this.hideloadmore = false;
-    }
-    
-  }
+        // get more click
+        loadmore(){
+          this.pageNumber++;
+          this.getProjects();
+        }
+        // control load more button
+        loadMoreVisibilty(){
+          // get the challenges array count
+          var ch_arr_count = this.projects.length;
+          if(ch_arr_count > 1){
+            this.hideloadmore = true;
+          }else{
+            this.hideloadmore = false;
+          }
+          
+        }
 
-getSortType(event:any){
-       this.sortData = event;
-       this.sort_by=this.sortData.sort_by;
-       this.sort_order = this.sortData.sort_order;
-       this.getProjects();
-  //console.log(this.getProjects);
-}
+      getSortType(event:any){
+            this.sortData = event;
+            this.sort_by=this.sortData.sort_by;
+            this.sort_order = this.sortData.sort_order;
+            this.getProjects();
+        //console.log(this.getProjects);
+      }
 
-getPageNumber(event:any){
-  this.pageNo = event
-  // console.log(this.pageNo);
-}
+      getPageNumber(event:any){
+        this.pageNo = event
+        // console.log(this.pageNo);
+      }
 
-getCountProject(){
-   var nid;
-   var nid = this.route.snapshot.params['nid'];
-   console.log(nid);
- this.route.params
-    .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
-    .subscribe(data =>{
-      this.projects=data;
-   //  console.log(this.projects);
-    });
+        getCountProject(){
+          var nid;
+          var nid = this.route.snapshot.params['nid'];
+          console.log(nid);
+        this.route.params
+            .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
+            .subscribe(data =>{
+              this.projects=data;
+          //  console.log(this.projects);
+            });
 
 
-}
+        }
 }
 
 
