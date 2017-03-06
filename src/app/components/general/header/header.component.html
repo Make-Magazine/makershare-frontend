@@ -41,6 +41,7 @@
       </div>
       <div>
         <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+        <button class="btn btn-primary btn-margin" (click)="auth.signUp()" *ngIf="!auth.authenticated()">Join</button>
         <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
         <!--<app-auth-modal></app-auth-modal>-->
       </div>

@@ -10,14 +10,16 @@ let Auth0Lock = require('auth0-lock').default;
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {});
+  screen = 'login';
+  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
+    initialScreen: this.screen,
+  });
   constructor(
     private userService: UserService,
     private mainService: MainService,
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      console.log(authResult);
       localStorage.setItem('id_token', authResult.idToken);
 
       // get the user profile
@@ -26,10 +28,11 @@ export class Auth {
           alert(error);
           return;
         }
+        console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         this.userService.auth0_authenticate(data).subscribe(res => {
-            console.log(res);
+          console.log(res);
             this.mainService.saveCookies(res['token'],res['session_name'],res['sessid']);
         });
 
@@ -39,7 +42,14 @@ export class Auth {
 
   public login() {
     // Call the show method to display the widget.
-    this.lock.show();
+    this.screen = 'login';
+    this.lock.show(); 
+  }
+
+  public signUp() {
+    // Call the show method to display the widget.
+    this.screen = 'signUp';
+    this.lock.show(); 
   }
 
   public authenticated() {
