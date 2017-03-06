@@ -274,7 +274,10 @@ this.hideButton=false;
               this.projects=data;
           //  console.log(this.projects);
             });
-
+        }
+      enterToChallengeProject(nid){
+           console.log("enter to project"+ nid);
+              this.router.navigate(['/enter-challenge',nid]);
 
         }
 }
