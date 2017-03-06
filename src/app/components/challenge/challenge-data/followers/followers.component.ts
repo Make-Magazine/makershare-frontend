@@ -7,9 +7,17 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class FollowersComponent implements OnInit {
 @Input() followers;
+@Input() challenge;
+challengeNid;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loadmorefollowers(){
+this.challengeNid=this.challenge.nid
+console.log("test nid");
+  console.log(this.challengeNid);    
   }
 
 }

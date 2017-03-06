@@ -24,6 +24,7 @@ awards_data;
 projects=[];
 hideloadmore=true;
 pageNumber = 0;
+loadProject;
 projects_show;
 projects_more;
 challenge_start_date;
@@ -31,7 +32,6 @@ followers=[];
 isFollowed=false;
 isBookmarked=false;
 Flags = ['follow'];
-
 FlagStates = [];
 ButtonFollow:string;
 currentuser;
@@ -66,15 +66,8 @@ sort_by:string;
       this.no_of_awards=data.length;
     });
 
-    //challenge followers
-    this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']]]))
-    .subscribe(data =>{
-      this.followers=data;
-    //  console.log(this.followers);
-      this.no_of_followers=data.length;
-    });
-    
+   
+    this.getChallengeFollowers();
     this.getProjects();
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
@@ -90,16 +83,26 @@ sort_by:string;
           console.log("return false");
             this.ButtonFollow='UnFollow';
          }/* end else if  */
-       
       })
         /*bookmark start */
     this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
     this.isBookmarked = data[0];
      })
         /*bookmark end*/
-    });
+    }); 
   }
 
+/* function get challenge followers */
+getChallengeFollowers(){
+   //challenge followers
+    this.route.params
+    .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']]]))
+    .subscribe(data =>{
+      this.followers=data;
+     //console.log(this.no_of_followers=data.length);
+      this.no_of_followers=data.length;
+    });
+}
   /* function get current user */
   getCurrentUser(){
       this.userService.getStatus().subscribe(data => {
@@ -129,9 +132,8 @@ sort_by:string;
 
       }
     
-    // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
    }
-  /* end function follow challenge*/ 
+       /* end function follow challenge*/ 
 
        /* function bookmark challenge*/
     bookmarkThis(e: Event){
@@ -146,23 +148,18 @@ sort_by:string;
       }else {
         this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
           this.isBookmarked = true;
-          
-         
         });
-
       }
-    
    }
   /* end function bookmark challenge*/ 
-
-  changeChallangeTab(NewTab,e){
+    changeChallangeTab(NewTab,e){
     e.preventDefault();
     this.activeTab = NewTab;
   }
   
-    getChallengeData(){
+  getChallengeData(){
          //challenge data
-        this.route.params
+    this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
@@ -171,7 +168,7 @@ sort_by:string;
       this.hideButton=true;
      }
      else{
-this.hideButton=false;
+      this.hideButton=false;
       }
      //calculate days difference
       if(this.challenge){
@@ -191,51 +188,42 @@ this.hideButton=false;
       this.challenge.challenge_start_date=this.changeDateFormat(this.challenge.challenge_start_date.value);
       this.challenge.winners_announcement_date=this.changeDateFormat(this.challenge.winners_announcement_date.value);
     });
-    }
+  }
+  
     changeDateFormat(date){
       var d;
       d=new Date(date);
       var monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
       ];
-
       var month= monthNames[d.getMonth()];
       var fullYear=d.getFullYear();
       var day=d.getDate();
       var datestring = month+" "+day+","+" "+fullYear;
       return datestring;    
-      }
+    }
+    
     getProjects(){
       /*cheack display_entries */
-      
-     // console.log("projects");
-      
-       //challenge entries projects
-       
-       var sort: string;
-    var page_arg = [];
-     if(this.pageNumber >=0){
-      page_arg = ['page', this.pageNumber];
+      //challenge entries projects
+      var sort: string;
+      var page_arg = [];
+      if(this.pageNo >=0){
+      page_arg = ['page',this.pageNo];
+    //  console.log(page_arg);
     }
-
-      this.route.params
+    this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],[page_arg],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe( data =>{
-        
-        
-      this.projects=data;
+        this.loadProject = this.projects.concat(data);
+        console.log(this.projects.concat(data));
+      //this.projects=data;
       this.projectsData=data;
-    //this.projects_show=this.projects.slice(0, 1);
-    //this.projects_more=data.splice(2,data.length);
-//this.entries_count=this.projects.length;
-
-     // console.log(data);
-            this.loadMoreVisibilty();
-
-    });
+     // this.loadMoreVisibilty();
+       });
     }
         // get more click
-        loadmore(){
+    loadmore(){
           this.pageNumber++;
           this.getProjects();
         }
@@ -248,20 +236,20 @@ this.hideButton=false;
           }else{
             this.hideloadmore = false;
           }
-          
-        }
+         }
 
       getSortType(event:any){
             this.sortData = event;
             this.sort_by=this.sortData.sort_by;
             this.sort_order = this.sortData.sort_order;
             this.getProjects();
-        //console.log(this.getProjects);
       }
 
       getPageNumber(event:any){
+        
         this.pageNo = event
-        // console.log(this.pageNo);
+        this.getProjects();
+        //console.log(this.pageNo);
       }
 
         getCountProject(){
@@ -272,11 +260,8 @@ this.hideButton=false;
             .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
             .subscribe(data =>{
               this.projects=data;
-          //  console.log(this.projects);
             });
-
-
-        }
+       }
 }
 
 

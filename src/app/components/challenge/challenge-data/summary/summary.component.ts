@@ -73,6 +73,13 @@ this.sortType.emit(this.sort);
 loadmore(){
   this.pages++;
   this.pageNumber.emit(this.pages);
-  console.log(this.pages);
+ // console.log(this.pages);
 }
+  loadMoreProject(){
+    this.pages++;
+    this.pageNumber.emit(this.pages);
+//  console.log(this.pages);
+  }
+
+
 }
