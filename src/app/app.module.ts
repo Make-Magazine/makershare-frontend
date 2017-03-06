@@ -14,6 +14,10 @@ import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ProfileService } from './d7services/profile/profile.service';
 import { PmService } from './d7services/pm/pm.service';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+
+
 
 import { ExploreComponent } from './components/explore/explore.component';
 
@@ -25,7 +29,8 @@ import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
-import { MessagesModule } from './components/account/messages/messages.module'
+import { MessagesModule } from './components/account/messages/messages.module';
+import { JoinModalComponent } from './components/modals/join/join-modal/join-modal.component'
 
 
 //import { LearnComponent } from './components/learn/learn/learn.component';
@@ -35,7 +40,8 @@ import { MessagesModule } from './components/account/messages/messages.module'
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ExploreComponent
+    ExploreComponent,
+    JoinModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,12 @@ import { MessagesModule } from './components/account/messages/messages.module'
     HomeModule,
     routing,
     MessagesModule,
+    BootstrapModalModule,
+    Ng2Bs3ModalModule,
   ],
+  entryComponents: [
+        JoinModalComponent
+      ],
   providers: [MainService, UserService, NodeService, CookieService, ViewService,FlagService,ProfileService,PmService],
   bootstrap: [AppComponent]
 })
