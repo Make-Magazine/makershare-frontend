@@ -29,7 +29,7 @@
               </div>
               <div class="media-body">
                 <p class="sender"><a href="">First Lastname</a> sent you a message</p>
-                <p class="timestamp">3 days ago</p>
+                <p class="timestamp">{{message.last_updated}}</p>
               </div>
             </div>
             <div class="message-subject">
@@ -60,24 +60,24 @@
                 <div class="modal-body">
                   <form id="createMsg" method="post" class="form-horizontal">
                     <div class="form-group recieve">
-                      <label class="control-label">To:</label>
+                      <label class="control-label" >To:</label>
                       <div class="">
-                        <input type="text" class="form-control" name="sent-to">
+                        <input type="text" class="form-control" name="sent-to" *ngIf="data">{{data.recipients}}
                       </div>
                     </div>
                     <div class="form-group subject">
-                      <label class="control-label">Subject</label>
-                      <input type="text" class="form-control" name="subject">
+                      <label class="control-label" >Subject</label>
+                      <input type="text" class="form-control" name="subject" *ngIf="data">{{data.subject}}
                     </div>
                     <div class="form-group message-text">
                       <label class="control-label">Message</label>
-                      <textarea name="message-content" id="message" cols="30" rows="10"></textarea>
+                      <textarea name="message-content" id="message" cols="30" rows="10" *ngIf="data">{{data.body}}</textarea>
                     </div>
                   </form>
                 </div>
                 <ul class="list-unstyled actions">
                   <li><a href="" class="btn btn-transparent" data-dismiss="modal">Cancel</a></li>
-                  <li><a class="btn btn-blue btn-sharp">Send</a></li>
+                  <li><a class="btn btn-blue btn-sharp" (click)="sendmessage()">Send</a></li>
                 </ul>          
               </div>
             </div>
