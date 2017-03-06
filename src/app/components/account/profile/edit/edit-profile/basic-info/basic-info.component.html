@@ -36,7 +36,7 @@
 		<label for="userCity">Where do you live?</label>
 		<div class="row" formGroupName="field_address">
 			<div class="col-md-3">
-				<ng-select [options]="countries" placeholder="Select Country" formControlName="country" [allowClear]="true">
+				<ng-select [options]="allCountries" placeholder="Select Country" formControlName="country" [allowClear]="true">
 				</ng-select>
 				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
 					country is required

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { Router } from "@angular/router";
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileService } from '../../../../../../d7services/profile/profile.service';
 
 
 @Component({
@@ -16,15 +17,28 @@ export class BasicInfoComponent implements OnInit {
   @Output() saveBasic = new EventEmitter<any>();
 
   basicForm: FormGroup;
-
+  allCountries: any=[{label:'aaa',value:'akdkd'}];
 
   constructor(
+    private profileService: ProfileService,
     private fb: FormBuilder,
     private router: Router
-  ) { }
+  ) {
+        this.profileService.getAllCountries().subscribe(countries => {
+      for (var k in countries) {
+        this.allCountries.push({value:k,label:countries[k]});
+      }
+
+      console.log(this.allCountries);
+    }, err => {
+      console.log("error");
+      console.log(err);
+    });
+   }
 
   ngOnInit() {
     this.buildForm();
+
   }
 
 

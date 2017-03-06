@@ -7,6 +7,8 @@ import { ChallengesComponent,ChallengeDataComponent } from "./components/challen
 import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";
 import { ShowcasesCollectionComponent, SinglShowcaseComponent } from "./components/showcase/showcases.module";
+import { AllProfileComponent } from './components/account/profile/edit/all-profile/all-profile.component';
+
 const APP_ROUTES: Routes = [
    { path: '', component: HomeComponent },
    { path: 'user', component: ProfileComponent },
@@ -20,6 +22,7 @@ const APP_ROUTES: Routes = [
    { path: 'learn/:page', component: LearnComponent },
    { path: 'challenge-summary', component: ChallengeSummaryComponent },
    { path: 'workshop/:nid', component: IndividualWorkshopComponent },
+    { path: 'profile',  component:  AllProfileComponent}
 
     // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
 

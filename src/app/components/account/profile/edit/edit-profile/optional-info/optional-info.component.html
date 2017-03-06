@@ -3,8 +3,8 @@
                   <label class="control-label">Add a Profile photo</label>
                   <div class="row">
                     <div class="col-md-6">
-                      <a href="#" id="profiel-photo-upload-link" class="btn btn-white btn-sharp">Choose photo</a>
-                      <input id="profile-photo-upload" type="file" class="file" placeholder="Choose photo" formControlName="field_user_photo" >
+                      <a  for="upload" class="btn btn-white btn-sharp">Choose photo</a>
+                      <input id="profile-photo-upload"  (change)="onFileChange($event)" type="file" class="file" placeholder="Choose photo" formControlName="field_user_photo" >
                       <div class="guide">
                         <p>
                           choose a photo that is at least 600 x 400 px
@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="image-preview">
-                        <img src="http://placehold.it/100x100" alt="" class="img-responsive">
+                        <img src="{{imageSrc}}" alt="" class="img-responsive">
                       </div>
                     </div>
                   </div>
@@ -30,15 +30,15 @@
                   <label for="how-started">How'd you get started making?</label>
                   <input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="field_started_making" >
                 </div> 
-                <div class="form-group makerspace">
+                <div class="form-group makerspace" formArrayName="field_add_your_makerspace_s_" *ngFor="let markSpace of optionalForm.controls.field_add_your_makerspace_s_.controls; let i=index">
                   <label for="">Add your Makerspace(s)</label>
-                  <div class="maker-group">
+                  <div class="maker-group" [formGroupName]="i">
                     <label for="makerspace-1">Makerspace name</label>
-                    <input type="text" class="form-control" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+                    <input type="text" class="form-control" formControlName="field_makerspace_name" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
                     <label for="url-1">URL (optional)</label>
-                    <input type="text" class="form-control" id="url-1" placeholder="Type or paste">
+                    <input type="text" class="form-control" formControlName="field_makerspace_url"  id="url-1" placeholder="Type or paste">
                   </div>
-                  <a href="" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+                  <a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
                 </div>
                 <div class="form-group socials">
                   <label for="socials">Add your other websites</label>
