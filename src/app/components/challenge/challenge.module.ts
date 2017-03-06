@@ -8,7 +8,8 @@ import { RulesComponent } from './challenge-data/rules/rules.component'
 import { DiscussionComponent } from './challenge-data/discussion/discussion.component';
 import { FollowersComponent } from './challenge-data/followers/followers.component';
 import { SummaryComponent } from './challenge-data/summary/summary.component';
-import { AwardsComponent } from './challenge-data/awards/awards.component'
+import { AwardsComponent } from './challenge-data/awards/awards.component';
+import {ChallengeProjectComponent} from './enter-challenge-project/challenge-project.component';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AwardsComponent } from './challenge-data/awards/awards.component'
     ChallengeDataComponent,
     ChallengeSummaryComponent,
     FollowersComponent,
-   
+   ChallengeProjectComponent,
     RulesComponent,
     DiscussionComponent,
     SummaryComponent,
