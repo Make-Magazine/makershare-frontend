@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
 import { LoginComponent } from '../../account/login/login.component';
-
+import { Auth } from '../../../auth0/auth.service';
 
 
 @Component({
@@ -12,7 +12,11 @@ import { LoginComponent } from '../../account/login/login.component';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private auth: Auth
+    ) {}
 
   ngOnInit() {
     this.userService.isLogedIn().subscribe(res => {
