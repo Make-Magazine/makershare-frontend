@@ -1,9 +1,10 @@
 import { Component, OnInit,Input,Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router,RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+
 import 'rxjs/Rx';
 @Component({
   selector: 'app-challenge-data',
@@ -54,65 +55,63 @@ sort_by:string;
     private flagService: FlagService
     ) { }
 
-  ngOnInit() {
-    
-    this.getCountProject();
-    this.activeTab = 'summary';
-    this.getChallengeData();
-    this.sort_order = "DESC";
-    this.sort_by = "created";
-     //awards and prizes
-    this.route.params
-    .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
-    .subscribe(data =>{
-      this.awards= data;
-      this.no_of_awards=data.length;
-    });
+        ngOnInit() {
+          
+          this.getCountProject();
+          this.activeTab = 'summary';
+          this.getChallengeData();
+          this.sort_order = "DESC";
+          this.sort_by = "created";
+          //awards and prizes
+          this.route.params
+          .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
+          .subscribe(data =>{
+            this.awards= data;
+            this.no_of_awards=data.length;
+          });
 
-   
-    this.getChallengeFollowers();
-    this.getProjects();
-    this.getCurrentUser();
-    this.userService.getStatus().subscribe(data => {
-    this.currentuser = data;
-    //console.log(this.currentuser.user.uid);
-    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
-    this.isFollowed = data[0];
-    
-    /* initialize Button Follow*/
-    if(this.isFollowed==false){/* start if  */
-      this.ButtonFollow='Follow';
-    }else{
-          console.log("return false");
-            this.ButtonFollow='UnFollow';
-         }/* end else if  */
-      })
-        /*bookmark start */
-    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
-    this.isBookmarked = data[0];
-     })
-        /*bookmark end*/
-    }); 
+        
+          this.getChallengeFollowers();
+          this.getProjects();
+          this.getCurrentUser();
+          this.userService.getStatus().subscribe(data => {
+          this.currentuser = data;
+          //console.log(this.currentuser.user.uid);
+          this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
+          this.isFollowed = data[0];
+          
+          /* initialize Button Follow*/
+          if(this.isFollowed==false){/* start if  */
+            this.ButtonFollow='Follow';
+          }else{
+                console.log("return false");
+                  this.ButtonFollow='UnFollow';
+              }/* end else if  */
+            })
+              /*bookmark start */
+          this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+          this.isBookmarked = data[0];
+          })
+              /*bookmark end*/
+          }); 
 
-  }
+        }
 
 /* function get challenge followers */
-getChallengeFollowers(){
-   //this.getPageNumberFollowers(event);//
-   //challenge followers
-    this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']],['page',this.pageNo]]))
-    .subscribe(data =>{
-      this.followers=this.followers.concat(data);
-     // console.log(this.followers);
-     // console.log(this.followers[0]['follow_counter']);
-      if(this.followers[0]['follow_counter'] == this.followers.length){
-        console.log("end follow")
-           this.hideloadmorefollower = true;
+      getChallengeFollowers(){
+    //this.getPageNumberFollowers(event);//
+    //challenge followers
+      this.route.params
+      .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']],['page',this.pageNo]]))
+      .subscribe(data =>{
+        this.followers=this.followers.concat(data);
+        if(this.followers[0]['follow_counter'] == this.followers.length){
+          console.log("end follow")
+            this.hideloadmorefollower = true;
+        }
+        this.no_of_followers=this.followers[0]['follow_counter'];
+      });
       }
-      this.no_of_followers=this.followers[0]['follow_counter'];
-    });
-}
   /* function get current user */
   getCurrentUser(){
       this.userService.getStatus().subscribe(data => {
@@ -214,7 +213,6 @@ getChallengeFollowers(){
       var page_arg = [];
       if(this.pageNo >=0){
       page_arg = ['page',this.pageNo];
-    //  console.log(page_arg);
     }
     this.route.params
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],['page',this.pageNo],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
@@ -224,7 +222,7 @@ getChallengeFollowers(){
       });
     }
        
-        // control load more button
+        // Function to control load more button
         loadMoreVisibilty(){
           // get the challenges array count
          this.getCountProject();
@@ -234,7 +232,8 @@ getChallengeFollowers(){
             this.hideloadmoreproject = true;
           }
         }
-
+        /* END FUNCTION loadMoreVisibilty */
+        /* function to sort project apply action */
       getSortType(event:any){
             this.sortData = event;
             this.sort_by=this.sortData.sort_by;
@@ -242,39 +241,44 @@ getChallengeFollowers(){
             this.projects=[];
             this.getProjects();
       }
+      /* end function sort */
 
+      /* function to initialize page arg for loadmore for projects to send to api  */
       getPageNumber(event:any){
         this.pageNo = event
         this.getProjects();
       }
+      /* end function PN Projetcs */
 
+      /* function to initialize page arg for loadmore for followers to send to api  */
       getPageNumberFollowers(event:any){
         this.pageNo = event
         console.log(this.pageNo);
        this.getChallengeFollowers();
+     }
+     /* end function PN Followers */
 
-      }
-
+      /* function to get count projects in challenge */
         getCountProject(){
           var nid;
           var nid = this.route.snapshot.params['nid'];
-         // console.log(nid);
-        this.route.params
+          this.route.params
             .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/'+nid['nid']))
             .subscribe(data =>{
               this.countProjects=data[0];
-             console.log(data);
+             console.log(this.countProjects);
             });
-<<<<<<< HEAD
-       }
-=======
+
         }
+        /*end function count project in challenge*/
+
       enterToChallengeProject(nid){
            console.log("enter to project"+ nid);
               this.router.navigate(['/enter-challenge',nid]);
 
         }
->>>>>>> 2980a5bdef80a778d4b0417f49fe1107f12f21c3
+  
+
 }
 
 
