@@ -3,62 +3,53 @@
     <div class="form-group projectSteps">
       <div class="form-group project-steps">
         <label for="how-to-make">How to make this project:</label>
-        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" formControlName='HowToMake'></ckeditor>
+        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
       </div>
-    </div>
-    <div class="form-group projectHelp">
-      <label for="projectHelp">Would you like help with this project?</label>
-      <textarea class="form-control" rows="5" id="projectHelp" placeholder="Tell the Community about what you are looking for help with." formControlName='HelpLookingFor'></textarea>
     </div>
     <div class="form-group tools">
       <label>Tools</label>
-      <div formArrayName="Tools" dnd-sortable-container [sortableData]="HowToForm.controls.Tools.controls" dnd-draggable [dropZones]="['ToolsZone']">
-        <div *ngFor="let Tool of HowToForm.controls.Tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Tools')" dnd-draggable [dropZones]="['ToolsZone']">
+      <div formArrayName="field_tools" dnd-sortable-container [sortableData]="HowToForm.controls.field_tools.controls" dnd-draggable [dropZones]="['ToolsZone']">
+        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_tools')" dnd-draggable [dropZones]="['ToolsZone']">
           <div class="panel-heading">
             <span>Tool {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.Tools.controls.length > 0" (click)="RemoveRow(i,'Tools')"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_tools.controls.length > 0" (click)="RemoveRow(i,'field_tools')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-6">
               <label>Name</label>
-              <div *ngIf="HowToForm.controls.Tools.controls[i]['controls'].Name.value">{{HowToForm.controls.Tools.controls[i]['controls'].Name.value}}</div>
-              <input *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="form-control" (focus)="ToolMaterialPart('tool',i,$event.target.value)" (keyup)="ToolMaterialPart('tool',i,$event.target.value)">
-              <!--<ng2-completer *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" [ngModel]="project_name" [datasource]="url" [minSearchLength]="1" [textSearching]="project_name" [maxChars]="4" [matchClass]="'match'" [autofocus]="true" ></ng2-completer>-->
-              <ng2-completer *ngIf="!HowToForm.controls.Tools.controls[i]['controls'].Name.value" [(ngModel)]="searchStr" [dataService]="dataService" [minSearchLength]="0"></ng2-completer>
-  
-  
-              <!--<kpx-autocomplete [api-url]="'http://makerdev.orangestudio.com:8080/api/api-project-tools-materials-parts-list?type=tool&name='" [id-field]="'uid'" [description-field]="'project_name'" [(ngModel)]="yourModelProperty" name="nameOfControl" ></kpx-autocomplete>-->
+              <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
+              <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="form-control" (focus)="ToolMaterialPart('tool',i,$event.target.value)" (keyup)="ToolMaterialPart('tool',i,$event.target.value)">
               <div *ngIf="ToolsMaterialsParts['tool'] && ToolsMaterialsParts['tool'][i]" >
-                <div *ngFor="let Tool of ToolsMaterialsParts['tool'][i]" (click)="SetToolMaterialPart('tool','Tools', Tool, i)">
-                  {{Tool.name}}
+                <div *ngFor="let Tool of ToolsMaterialsParts['tool'][i]" (click)="SetToolMaterialPart('tool','field_tools', Tool, i)">
+                  {{Tool.project_name}}
                 </div>
               </div>
-              <small *ngIf="formErrors.Tools[i].Name" class="text-danger">
-                {{formErrors.Tools[i].Name}}
+              <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
+                {{formErrors.field_tools[i].field_tool_name}}
               </small>
             </div>
             <div class="form-group col-xs-4">
               <label>URL</label>
               <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.Url">
-              <small *ngIf="formErrors.Tools[i].Url" class="text-danger">
-                {{formErrors.Tools[i].Url}}
+              <small *ngIf="formErrors.field_tools[i].Url" class="text-danger">
+                {{formErrors.field_tools[i].Url}}
               </small>
             </div>
             <div class="form-group col-xs-2">
               <label>Sort order</label>
               <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.SortOrder" readonly />
               <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'Tools')"></i>
-                <i *ngIf="i < HowToForm.controls.Tools.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'Tools')"></i>
+                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_tools')"></i>
+                <i *ngIf="i < HowToForm.controls.field_tools.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_tools')"></i>
               </div>
-              <small *ngIf="formErrors.Tools[i].SortOrder" class="text-danger">
-                {{formErrors.Tools[i].SortOrder}}
+              <small *ngIf="formErrors.field_tools[i].SortOrder" class="text-danger">
+                {{formErrors.field_tools[i].SortOrder}}
               </small>
             </div>
           </div>
         </div>
       </div>
-      <a (click)="AddRow('Tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <a (click)="AddRow('field_tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
     <div class="form-group materials">
       <label>Materials</label>
@@ -157,7 +148,7 @@
       </div>
       <a (click)="AddRow('Parts')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
-    <div class="form-group difficulty">
+    <!--<div class="form-group difficulty">
       <label for="">Difficulty</label>
       <br>
       <select class="form-control" title="Select one" formControlName='Difficulty'>
@@ -176,7 +167,7 @@
       <div *ngIf="formErrors.Duration" class="alert alert-danger">
         {{ formErrors.Duration }}
       </div>
-    </div>
+    </div>-->
     <div class="form-group resources">
       <label>Resources</label>
       <div formArrayName="Resources" dnd-sortable-container [sortableData]="HowToForm.controls.Resources.controls" dnd-draggable [dropZones]="['ResourcesZone']">

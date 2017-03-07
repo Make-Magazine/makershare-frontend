@@ -9,15 +9,15 @@ import { ISorting } from '../../../models/challenge/sorting';
 })
 export class ShowcasesCollectionComponent implements OnInit {
   showcases = [];
-  pageNumber = 0;
   showcaseCount=0;
-  hideloadmore=true;
+  hideloadmore=false;
+  loadFlag=false;
   sortData:ISorting;
   sort_order:string;
   sort_by:string;
+  limit=3;
 
   @Input() sortType:ISorting;
-  @Input() pageNo:number;
 
   constructor(
     private viewService: ViewService,
@@ -27,8 +27,8 @@ export class ShowcasesCollectionComponent implements OnInit {
   ngOnInit() {
 
     this.sort_order = "DESC";
-    this.sort_by = "created";
-
+    this.sort_by = "changed";
+    this.showcasesCount();
     this.getShowCases();
 
   }
@@ -38,38 +38,40 @@ export class ShowcasesCollectionComponent implements OnInit {
   }
 
   getShowCases(){
-
-    var sort: string;
-    var page_arg = [];
-     if(this.pageNumber >=0){
-      page_arg = ['page', this.pageNumber];
-    }
     // load the showcases
-    this.viewService.getView('showcases',[['page',this.pageNumber],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
+      if(this.loadFlag){
+      this.limit+=3;
+    }
+      this.viewService.getView('views/showcases',[['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
       this.showcases = data;
-
-      this.loadMoreVisibilty();
     }, err => {
 
     });
+    
+    
+    this.loadMoreVisibilty();
+    this.loadFlag=false;
   }
 
   // get more click
 loadmore(){
- this.pageNumber++;
+ this.loadFlag = true;
  this.getShowCases();
 }
 // control load more button
 loadMoreVisibilty(){
  // get the challenges array count
- var ch_arr_count = this.showcases.length;
- if(ch_arr_count > 1){
-   this.hideloadmore = true;
+ debugger
+ if(this.showcases.length == this.showcaseCount-1){
+   console.log("flage");
+    this.hideloadmore= true;
+    console.log(this.hideloadmore);
  }else{
-   this.hideloadmore = false;
+    this.hideloadmore= false;
  }
 
 }
+
 
 getSortType(event:any){
     this.sortData = event;
@@ -79,10 +81,14 @@ getSortType(event:any){
 //console.log(this.getProjects);
 }
 
-getPageNumber(event:any){
-this.pageNo = event
-// console.log(this.pageNo);
-}
 
+// get the count of showcases
+  showcasesCount() {
+      this.viewService.getView('maker_count_showcases',[]).subscribe(data => {
+      this.showcaseCount=data;
+      console.log(this.showcaseCount);
+    });
+  }
 
+  
 }

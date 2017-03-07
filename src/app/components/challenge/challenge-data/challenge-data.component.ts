@@ -265,7 +265,16 @@ getChallengeFollowers(){
               this.countProjects=data[0];
              console.log(data);
             });
+<<<<<<< HEAD
        }
+=======
+        }
+      enterToChallengeProject(nid){
+           console.log("enter to project"+ nid);
+              this.router.navigate(['/enter-challenge',nid]);
+
+        }
+>>>>>>> 2980a5bdef80a778d4b0417f49fe1107f12f21c3
 }
 
 

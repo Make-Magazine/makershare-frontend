@@ -12,19 +12,8 @@
                 <div class=" filters col-md-12">
                   <div class="container">
                     <!-- {{showcaseCount}} -->
-                    <p class="pull-left">{{showcases.length}} Showcase</p>
-                    <div class="sorting-filter pull-right">
-                      <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
-                      <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="#" class="btn">Most recent</a></li>
-                        <li><a href="#" class="btn">Oldest</a></li>
-                        <li><a href="#" class="btn">Title A-Z</a></li>
-                        <li><a href="#" class="btn">Title Z-A</a></li>
-                        <li><a href="#" class="btn">Most Liked</a></li>
-                        <li><a href="#" class="btn">Most Forked</a></li>
-                      </ul>
-                    </div><!-- End sorting-filter -->
+                    <p class="pull-left">{{showcaseCount}} Showcase</p>
+                   <showcase-sorting (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"> </showcase-sorting>
                   </div>
                 </div>
               <div class="container">
@@ -37,7 +26,7 @@
 
                         <div class="content">
                           <h4 class="title">Showcase: {{showcase.showcase_name}}</h4>
-                          <p class="description">{{showcase.description}}</p>
+                          <p class="description" [innerHTML]="showcase.description"></p>
                           <p class="number">{{showcase.number_of_project}} projects</p>
                           <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
                         </div>
@@ -46,7 +35,7 @@
 
                   <div class="col-sm-12">
                     <div class="col-xs-4 col-xs-offset-4 load-more">
-                      <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
+                      <a [hidden]="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
                     </div>
                   </div>
                 </div>

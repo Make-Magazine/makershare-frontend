@@ -24,8 +24,9 @@
     </div><!-- End top-content-wrapper -->
     <div class="container">
       <div>
+        <h1 *ngIf="created">Project Saved</h1>
         <app-your-story (emitter)="UpdateTags($event)" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" ></app-your-story>
-        <app-how-to [HowToValues]="CreateProjectComponentValues['How To']" *ngIf="current_active_tab == 'How To'" (HowTo)="FormUpdateHandler($event , 'How To')"></app-how-to>
+        <app-how-to [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'"></app-how-to>
         <app-team [TeamValues]="CreateProjectComponentValues['Team']" *ngIf="current_active_tab == 'Team'" (Team)="FormUpdateHandler($event , 'Team')"></app-team>
       </div>
     </div><!-- End container -->
