@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FlagService } from '../../../d7services/flag/flag.service';
+import { UserService } from '../../../d7services/user/user.service';
 import { Http } from '@angular/http';
 
 
@@ -19,15 +21,22 @@ export class IndividualWorkshopComponent implements OnInit {
   videoURl;
   previewPdf;
   page: number = 1;
-  showElement
-  videoLink ;
+  links = []
   sanitizethis;
   popupPreview;
   leaders= [];
+  check;
+  currentuser;
+  isLiked=true;
+  isBookmarked;
+  Flags = ['like','node_bookmark'];
+  FlagStates = [] ;
   
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private userService: UserService,
+    private flagService: FlagService,
     private viewService: ViewService,
     private sanitizer :DomSanitizer,
     private http:Http,
@@ -39,13 +48,36 @@ export class IndividualWorkshopComponent implements OnInit {
     .switchMap((nid) => this.viewService.getView('individual-workshop',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.workshop = data[0];
-       console.log(this.workshop.uid)
+      //  console.log(this.workshop.uid)
+     
+      if(this.workshop.video){
+           // console.log(this.workshop[object].video)
+          if (this.youtube_parser(this.workshop.video)) {
+            this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.video;
+            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+              console.log(data.html);
+              this.workshop.video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            });
+          }
+          else if (this.vimeo_parser(this.workshop.video)){
+              this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.video;
+            
+              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+
+               this.workshop.video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            });
+          } 
+         }
+
        this.viewService.getView('maker_profile_search_data',[['uid',this.workshop.uid],]).subscribe(res => {
        this.leaders= res;
-       console.log(res)
-        });
-      console.log(this.workshop.uid);
-      this.videoURl = this.sanitizer.bypassSecurityTrustResourceUrl(this.workshop.introductory_video);
+       if (res ==  ''){
+         this.check=false;
+      }else{
+        this.check=true;
+      }
+      });
+     
     });
       //  console.log(this.route.params);
     this.route.params
@@ -54,39 +86,40 @@ export class IndividualWorkshopComponent implements OnInit {
     .subscribe(data =>{
       this.objects = data;
       console.log(data);
-      for(let index in this.objects){
-        let element = this.objects[index];
-        if(element.video){
-          if (this.youtube_parser(element.video)) {
-            this.sanitizethis = "https://www.youtube.com/oembed?url=" + element.video;
-            console.log(this.sanitizethis)
-            console.log(this.objects[index])
+      for(let object in this.objects) {
+        var i = 0
+          if(this.objects[i].video && this.objects[i].video !== ''){
+           // console.log(this.objects[object].video)
+          if (this.youtube_parser(this.objects[object].video)) {
+            this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.objects[object].video;
             this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-            console.log(data.html);
-            this.videoLink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+              console.log(data.html);
+              this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            });
+          }
+          else if (this.vimeo_parser(this.objects[object].video)){
+              this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
+            
+              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
 
-            console.log(this.videoLink)
-          });
-        }
-        else if (this.vimeo_parser(element.video))
-        {
-            this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + element.video;
-            console.log(this.sanitizethis)
-            console.log(this.objects[index])
-            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-            console.log(data.html);
-            this.videoLink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-         });
-        }
-
-        //this.objects[index].push(this.videoLink)
-        //Object.assign(this.objects[index],this.videoLink)
-        //console.log(this.objects[index])
-        }
-      
+               this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            });
+          }
+          
+         }
       }
-       
-    console.log(this.leaders)
+    });
+
+   this.getCurrentUser();
+    this.userService.getStatus().subscribe(data => {
+    this.currentuser = data;
+    this.flagService.isFlagged(this.workshop.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+    this.isLiked = data[0];
+     })
+     this.flagService.isFlagged(this.workshop.nid,this.currentuser.user.uid,'bookmark').subscribe(data =>{
+     this.isBookmarked = data[0];
+     })
+    
     });
 
      this.route.params
@@ -94,21 +127,31 @@ export class IndividualWorkshopComponent implements OnInit {
     .switchMap((nid) => this.viewService.getView('more-lessons',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.lessons = data;
-      console.log(data);
-  });
-    // this.viewService.getView('maker_profile_search_data',[['uid',this.workshop['uid']],]).subscribe(data => {
-    //    this.leader= data[0];
-    //    console.log(data[0])
-    //     });
-  
-// console.log(this.workshop.uid)
+      console.log(data); });
   }
-  // preview(i){
-  //     console.log(this.objects[i].pdf) 
-  //     this.popupPreview =  '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].pdf + '&embedded=true" frameborder="0"></iframe>'
-  //   }
+  preview(i){   
+      if(this.objects[i].pdf){
+           this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].pdf + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+          //  if (i == 0)
+          //  this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + 'http://infolab.stanford.edu/pub/papers/google.pdf' + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+          //  if(i == 1)
+          //   this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + 'https://docs.google.com/file/d/0BwEdalEj4DpeUmNaYmE0MFNyUlU/edit?pli=1' + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
 
-  youtube_parser(url){
+           this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
+        } else if (this.objects[i].book) {
+           this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+           this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
+        }
+    }
+ overlay(object)
+    { 
+      if(this.objects[object].videolink){
+      this.popupPreview =  this.objects[object].videolink;
+        }
+    }
+
+  
+youtube_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     //console.log(match[7])
@@ -119,5 +162,45 @@ export class IndividualWorkshopComponent implements OnInit {
    var match = url.match(regExp);
     return match[5];
  }
-  
+  /* function get current user */
+  getCurrentUser(){
+      this.userService.getStatus().subscribe(data => {
+      this.currentuser = data;
+    });
+  }
+  /* end function get user*/
+   
+    likeThis(e: Event){
+      this.getCurrentUser();
+      console.log(this.currentuser.user.uid)
+      console.log(this.workshop.nid)
+      e.preventDefault();
+      if(this.isLiked){
+        this.flagService.unflag(this.workshop.nid,this.currentuser.user.uid,'like').subscribe(response => {
+          this.isLiked = false;
+         
+        });
+      }else {
+        this.flagService.flag(this.workshop.nid,this.currentuser.user.uid,'like').subscribe(response => {
+          this.isLiked = true;
+        });
+
+      } 
+   }
+    bookmarkThis(e: Event){
+      this.getCurrentUser();
+      console.log(this.currentuser.user.uid)
+      console.log(this.workshop.nid)
+      e.preventDefault();
+      if(this.isBookmarked){
+        this.flagService.unflag(this.workshop.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+          this.isBookmarked = false;
+        });
+      }else {
+        this.flagService.flag(this.workshop.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+          this.isBookmarked = true;    
+        });
+      }
+    }
+ 
 }
