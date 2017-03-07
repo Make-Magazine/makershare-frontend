@@ -17,12 +17,15 @@ submission_open;
 submission_close;
 winners_announced;
 awards;
+countProjects=0;
 no_of_awards;
 no_of_followers;
 entries_count;
 awards_data;
 projects=[];
 hideloadmore=true;
+hideloadmoreproject=false;
+hideloadmorefollower=false;
 pageNumber = 0;
 loadProject;
 projects_show;
@@ -52,6 +55,7 @@ sort_by:string;
     ) { }
 
   ngOnInit() {
+    
     this.getCountProject();
     this.activeTab = 'summary';
     this.getChallengeData();
@@ -62,7 +66,6 @@ sort_by:string;
     .switchMap((nid) => this.viewService.getView('award_block',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.awards= data;
-      //console.log(this.awards);
       this.no_of_awards=data.length;
     });
 
@@ -90,17 +93,24 @@ sort_by:string;
      })
         /*bookmark end*/
     }); 
+
   }
 
 /* function get challenge followers */
 getChallengeFollowers(){
+   //this.getPageNumberFollowers(event);//
    //challenge followers
     this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']]]))
+    .switchMap((nid) => this.viewService.getView('challenge_followers',[['nid',nid['nid']],['page',this.pageNo]]))
     .subscribe(data =>{
-      this.followers=data;
-     //console.log(this.no_of_followers=data.length);
-      this.no_of_followers=data.length;
+      this.followers=this.followers.concat(data);
+     // console.log(this.followers);
+     // console.log(this.followers[0]['follow_counter']);
+      if(this.followers[0]['follow_counter'] == this.followers.length){
+        console.log("end follow")
+           this.hideloadmorefollower = true;
+      }
+      this.no_of_followers=this.followers[0]['follow_counter'];
     });
 }
   /* function get current user */
@@ -114,20 +124,16 @@ getChallengeFollowers(){
   /* function follow challenge*/
     followThis(e: Event){
       this.getCurrentUser();
-      console.log(this.currentuser.user.uid)
-      console.log(this.challenge.nid)
       e.preventDefault();
       if(this.isFollowed){
         this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
           this.isFollowed = false;
           this.ButtonFollow='Follow';
-         // console.log(this.ButtonFollow);
         });
       }else {
         this.flagService.flag(this.challenge.nid,this.currentuser.user.uid,'follow').subscribe(response => {
           this.isFollowed = true;
           this.ButtonFollow='UnFollow';
-          //console.log( this.ButtonFollow);
         });
 
       }
@@ -138,8 +144,6 @@ getChallengeFollowers(){
        /* function bookmark challenge*/
     bookmarkThis(e: Event){
       this.getCurrentUser();
-      console.log(this.currentuser.user.uid)
-      console.log(this.challenge.nid)
       e.preventDefault();
       if(this.isBookmarked){
         this.flagService.unflag(this.challenge.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
@@ -151,7 +155,8 @@ getChallengeFollowers(){
         });
       }
    }
-  /* end function bookmark challenge*/ 
+    /* end function bookmark challenge*/ 
+    
     changeChallangeTab(NewTab,e){
     e.preventDefault();
     this.activeTab = NewTab;
@@ -163,7 +168,6 @@ getChallengeFollowers(){
     .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.challenge = data[0];
-     // console.log(this.challenge['challenge_status']);
      if(this.challenge['status_id'] == '375'){
       this.hideButton=true;
      }
@@ -216,50 +220,50 @@ getChallengeFollowers(){
     .switchMap((nid) => this.viewService.getView('challenge_entries',[['nid',nid['nid']],['page',this.pageNo],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe( data =>{
       this.projects=this.projects.concat(data);
-        console.log(this.projects);
-      //this.projects=data;
-    //  this.projectsData=this.projectsData.concat(data);
-     // this.loadMoreVisibilty();
-       });
+        this.loadMoreVisibilty();
+      });
     }
-        // get more click
-    loadmore(){
-          this.pageNumber++;
-          this.getProjects();
-        }
+       
         // control load more button
         loadMoreVisibilty(){
           // get the challenges array count
-          var ch_arr_count = this.projects.length;
-          if(ch_arr_count > 1){
-            this.hideloadmore = true;
-          }else{
-            this.hideloadmore = false;
+         this.getCountProject();
+         
+          if(this.countProjects-1 == this.projects.length){
+           
+            this.hideloadmoreproject = true;
           }
-         }
+        }
 
       getSortType(event:any){
             this.sortData = event;
             this.sort_by=this.sortData.sort_by;
             this.sort_order = this.sortData.sort_order;
+            this.projects=[];
             this.getProjects();
       }
 
       getPageNumber(event:any){
-        
         this.pageNo = event
         this.getProjects();
-        //console.log(this.pageNo);
+      }
+
+      getPageNumberFollowers(event:any){
+        this.pageNo = event
+        console.log(this.pageNo);
+       this.getChallengeFollowers();
+
       }
 
         getCountProject(){
           var nid;
           var nid = this.route.snapshot.params['nid'];
-          console.log(nid);
+         // console.log(nid);
         this.route.params
-            .switchMap((nid) => this.viewService.getCountProjectByID('maker_count_project_challenge_api','nid'))
+            .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/'+nid['nid']))
             .subscribe(data =>{
-              this.projects=data;
+              this.countProjects=data[0];
+             console.log(data);
             });
        }
 }

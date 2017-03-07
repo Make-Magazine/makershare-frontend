@@ -8,6 +8,8 @@ export class SummaryComponent implements OnInit {
 @Input() projects;
 @Input() challenge; 
 @Input() awards;
+@Input() hideLoadMore;
+
 @Output() sortType = new EventEmitter<ISorting>();
 @Output() pageNumber = new EventEmitter<number>();
 ActionName:string;
@@ -70,12 +72,13 @@ this.sortType.emit(this.sort);
  this.ActionName = "Most Forked"
  console.log(this.sort);
 }
-loadmore(){
+/*loadmore(){
   this.pages++;
   this.pageNumber.emit(this.pages);
  // console.log(this.pages);
-}
+}*/
   loadMoreProject(){
+    
     this.pages++;
     this.pageNumber.emit(this.pages);
 //  console.log(this.pages);
