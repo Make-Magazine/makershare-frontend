@@ -32,13 +32,14 @@ export class CreateProjectComponent implements OnInit {
     cover_image:{file:"",filename:""},
     tags:[]
   }
+  created = false;
 
   /**
    * the project object with empty values which will be transfared to the sub components to set the values inside it before posting them
    */
   project: Project = {
     title: "Untitled",
-    type: 'project',
+    // your story values
     field_teaser:{und:[{format:null,value:""}]},
     field_story:{und:[{format:"filtered_html",value:""}]},
     field_visibility2:{und:[this.visibility]},
@@ -48,9 +49,14 @@ export class CreateProjectComponent implements OnInit {
     field_show_tell_video:{und:[{format:null}]},
     field_aha_moment:{und:[{format:null}]},
     field_uh_oh_moment:{und:[{format:null}]},
+    // how to values
+    field_how_to:{und:[{format:null,value:""}]},
+    field_tools:{und:[]},
+
     status:0,
     promote:0,
-    sticky:0
+    sticky:0,
+    type: 'project',
   };  
   
   /**
@@ -82,6 +88,7 @@ export class CreateProjectComponent implements OnInit {
   SaveProject(){
     console.log(this.project);
     this.nodeService.createNode(this.project).subscribe((project:Project) => {
+      this.created = true;
       console.log('project saved')
       // this.project = project;
     }, err =>{

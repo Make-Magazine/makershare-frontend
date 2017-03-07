@@ -33,15 +33,20 @@ export class Auth {
           alert(error);
           return;
         }
-        console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         this.userService.auth0_authenticate(data).subscribe(res => {
           console.log(res);
-            localStorage.setItem('user_id', res.user.uid);
+            if(res.user.uid != 0){
+              localStorage.setItem('user_id', res.user.uid);
+            }else{
+              localStorage.setItem('user_id', '0');
+            }
+            
+            console.log(localStorage.getItem('user_id'));
             this.mainService.saveCookies(res['token'],res['session_name'],res['sessid']);
         });
-        this.router.navigateByUrl('/user');
+        //this.router.navigateByUrl('/user');
             // show warning message if mail not verfied
         if(profile['email_verified'] == false){
           this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false});

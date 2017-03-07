@@ -78,20 +78,28 @@ getMessages() {
      //console.log(this.msg);
     });
    }
- data = {
+ messageData = {
         subject: '',
         body : '',
         recipients: '',
         thread_id : ''
 };
-  
+//   {
+//         "subject": "message3",
+//         "body" : "tesst create",
+//         "recipients": "16",
+//         "thread_id" : "5"
+//   }
 
-   sendMessage(){
-      this.pm.sendMessage(this.data).subscribe(res => {
+   sendMess(){
+      this.pm.sendMessage(this.messageData).subscribe(res => {
       res.subscribe(res => {
+        this.messageData = res;
       console.log('message sent');
       }
       )
      })
+      console.log(this.messageData);
    }
+  
 }
