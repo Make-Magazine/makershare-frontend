@@ -3,6 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../d7services/user/user.service';
 import { MainService } from '../d7services/main/main.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { Router } from '@angular/router';
 
 //import Auth0 from 'auth0-js';
 
@@ -20,6 +21,7 @@ export class Auth {
     private userService: UserService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
+    private router: Router,
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
@@ -31,20 +33,27 @@ export class Auth {
           alert(error);
           return;
         }
-        console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         this.userService.auth0_authenticate(data).subscribe(res => {
           console.log(res);
+            if(res.user.uid != 0){
+              localStorage.setItem('user_id', res.user.uid);
+            }else{
+              localStorage.setItem('user_id', '0');
+            }
+            
+            console.log(localStorage.getItem('user_id'));
             this.mainService.saveCookies(res['token'],res['session_name'],res['sessid']);
         });
-
+        //this.router.navigateByUrl('/user');
             // show warning message if mail not verfied
         if(profile['email_verified'] == false){
           this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false});
         }else{
           this.notificationBarService.create({ message: 'Welcome, You are now loged in.', type: NotificationType.Success});
         }        
+
 
       });      
     });
@@ -72,7 +81,9 @@ export class Auth {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
     this.mainService.removeCookies();
-    this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
+    this.router.navigateByUrl('/');
+    //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
+
     
 
   }

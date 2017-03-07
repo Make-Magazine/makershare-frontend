@@ -15,13 +15,13 @@
             <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_tools.controls.length > 0" (click)="RemoveRow(i,'field_tools')"></span>
           </div>
           <div class="panel-body" [formGroupName]="i">
-            <div class="form-group col-xs-6">
+            <div class="form-group col-xs-4">
               <label>Name</label>
               <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
               <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="form-control" (focus)="ToolMaterialPart('tool',i,$event.target.value)" (keyup)="ToolMaterialPart('tool',i,$event.target.value)">
               <div *ngIf="ToolsMaterialsParts['tool'] && ToolsMaterialsParts['tool'][i]" >
                 <div *ngFor="let Tool of ToolsMaterialsParts['tool'][i]" (click)="SetToolMaterialPart('tool','field_tools', Tool, i)">
-                  {{Tool.project_name}}
+                  {{Tool.name}}
                 </div>
               </div>
               <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
@@ -30,28 +30,36 @@
             </div>
             <div class="form-group col-xs-4">
               <label>URL</label>
-              <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.Url">
-              <small *ngIf="formErrors.field_tools[i].Url" class="text-danger">
-                {{formErrors.field_tools[i].Url}}
+              <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.field_tool_url">
+              <small *ngIf="formErrors.field_tools[i].field_tool_url" class="text-danger">
+                {{formErrors.field_tools[i].field_tool_url}}
               </small>
             </div>
             <div class="form-group col-xs-2">
               <label>Sort order</label>
-              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.SortOrder" readonly />
+              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.field_sort_order" readonly />
               <div class="carets">
                 <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_tools')"></i>
                 <i *ngIf="i < HowToForm.controls.field_tools.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_tools')"></i>
               </div>
-              <small *ngIf="formErrors.field_tools[i].SortOrder" class="text-danger">
-                {{formErrors.field_tools[i].SortOrder}}
+              <small *ngIf="formErrors.field_tools[i].field_sort_order" class="text-danger">
+                {{formErrors.field_tools[i].field_sort_order}}
               </small>
+            </div>
+            <div class="form-group col-xs-2">
+              <label>Quantity</label>
+              <input id="tool-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Tool.controls.field_material_quantity">
+            </div>
+            <div class="form-group col-xs-12">
+              <label for="tool-desc-{{i + 1}}">Description</label>
+              <textarea class="form-control" rows="5" id="tool-desc-{{i + 1}}" [formControl]='Tool.controls.field_description'></textarea>
             </div>
           </div>
         </div>
       </div>
-      <a (click)="AddRow('field_tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
+      <a *ngIf="HowToForm.controls.field_tools.valid" (click)="AddRow('field_tools')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
     </div>
-    <div class="form-group materials">
+    <!--<div class="form-group materials">
       <label>Materials</label>
       <div formArrayName="Materials" dnd-sortable-container [sortableData]="HowToForm.controls.Materials.controls" dnd-draggable [dropZones]="['MaterialsZone']">
         <div *ngFor="let Material of HowToForm.controls.Materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Materials')" dnd-droppable [dropZones]="['MaterialsZone']">
@@ -147,7 +155,7 @@
         </div>
       </div>
       <a (click)="AddRow('Parts')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
-    </div>
+    </div>-->
     <!--<div class="form-group difficulty">
       <label for="">Difficulty</label>
       <br>
@@ -168,7 +176,7 @@
         {{ formErrors.Duration }}
       </div>
     </div>-->
-    <div class="form-group resources">
+    <!--<div class="form-group resources">
       <label>Resources</label>
       <div formArrayName="Resources" dnd-sortable-container [sortableData]="HowToForm.controls.Resources.controls" dnd-draggable [dropZones]="['ResourcesZone']">
         <div *ngFor="let Resource of HowToForm.controls.Resources.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('Resources')" dnd-draggable [dropZones]="['ResourcesZone']">
@@ -214,7 +222,7 @@
         </div>
         <a (click)="AddRow('Resources')" class="btn btn-white btn-sharp another-resource"><i class="fa fa-lg fa-plus"></i> Add more</a>
       </div>
-    </div>
+    </div>-->
   </div><!-- End how-to -->
 </div>
 
