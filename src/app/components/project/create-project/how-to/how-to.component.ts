@@ -4,11 +4,7 @@ import { CustomValidators } from 'ng2-validation'
 import { inarray } from '../../../../validations/inarray.validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { Project } from '../../../../models/project/create-project/project';
-
-// import { domain } from '../../../../d7services/global';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
-import 'rxjs/add/observable/of';
+import { field_collection_item_tool } from '../../../../models/project/create-project/field_collection_item';
 
 @Component({
   selector: 'app-how-to',
@@ -23,15 +19,7 @@ export class HowToComponent implements OnInit {
   @Input('project') project: Project;
   @Input('FormPrintableValues') FormPrintableValues;
   HowToForm: FormGroup;
-
-
   ToolsMaterialsParts = [];
-
-  // data arrays
-  // Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
-  // Diffeculties = ['Easy', 'Moderate', 'Hard'];
-  // ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
-  // multi_values_fields = ['Tools','Materials','Resources','Parts'];
 
   constructor(
     private fb: FormBuilder,
@@ -57,34 +45,32 @@ export class HowToComponent implements OnInit {
 
   SetToolMaterialPart(arrayelementname,ControlName,value,index){
     this.ToolsMaterialsParts[arrayelementname][index] = [];
-    this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_name.setValue(value.project_name);
+    this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_name.setValue(value.name);
+    var url:URL;
+    if(this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_url.valid && this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_url.value){
+      url = this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_url.value;
+    }
+    let Tool:field_collection_item_tool = {
+      field_tool_name:{und:[{target_id:value.name}]},
+      field_sort_order:{und:[{value:index + 1}]},
+      field_tool_url:{und:[{url:url}]},
+      field_description:{und:[{value:this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_description.value}]},
+      field_material_quantity:{und:[{value:this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_material_quantity.value}]},
+    };
+    this.project.field_tools.und.push(Tool);
   }
 
   /**
-   * Build form when Initalize the component
+   * Build the form when Initalize the component
    */
   buildForm(): void {
     this.HowToForm = this.fb.group({
       'field_how_to': [this.project.field_how_to.und[0].value],
       'field_tools': this.fb.array([]),
-      'HelpLookingFor': ['', []],
-      'Materials': this.fb.array([]),
-      'Parts': this.fb.array([]),
-      // 'Difficulty': [this.Diffeculties[0],[Validators.required,inarray(this.Diffeculties)]],
-      // 'Duration': [this.Durations[0],[Validators.required,inarray(this.Durations)]],
-      'Resources': this.fb.array([]),
     });
-    // if(this.HowToValues){
-    //   this.multi_values_fields.forEach((element, index) => {
-    //     var length = this.HowToValues[element].length;
-    //     for(var i = 0 ;i < length; i++){
-    //       this.AddRow(element);
-    //     }
-    //   });
-      // this.HowToForm.setValue(this.HowToValues);
-    // }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
+      console.log(this.project);
     });
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
   }
@@ -98,10 +84,6 @@ export class HowToComponent implements OnInit {
     const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
-    // this.project.field_tools.und.push(addrCtrl.value);
-    control.valueChanges.subscribe(value => {
-      console.log(value);
-    });
   }
 
   /**
@@ -122,38 +104,11 @@ export class HowToComponent implements OnInit {
       case 'field_tools':
       {
         return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_tool_name': ['', Validators.required],
-          'Url': ['', CustomValidators.url],
-          'Nid': ['',Validators.required],
-        });
-      }
-      case 'Materials':
-      {
-        return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', Validators.required],
-          'Quantity': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Nid': ['',Validators.required],
-        });
-      }
-      case 'Parts':
-      {
-        return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', [Validators.required]],
-          'Link': ['', CustomValidators.url],
-          'Number': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Nid': ['',Validators.required],
-        });
-      }
-      case 'Resources':
-      {
-        return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'File': [, []],
-          'RepoLink': ['', CustomValidators.url],
-          // 'Label': ['',[inarray(this.ResourceLabels)]],
+          'field_tool_url': ['', CustomValidators.url],
+          'field_description': [''],
+          'field_material_quantity': [''],
         });
       }
     }
@@ -203,20 +158,20 @@ export class HowToComponent implements OnInit {
    switch (ControlName){
     case 'field_tools':
     {
-      return {'SortOrder':'', 'field_tool_name': '','Url': '','Nid': ''};
+      return {'field_sort_order':'', 'field_tool_name': '','field_tool_url': ''};
     }
-    case 'Materials':
-    {
-      return {'SortOrder':'', 'Name': '','Quantity': '','Nid': ''};
-    }
-    case 'Parts':
-    {
-      return {'SortOrder':'', 'Name': '', 'Link': '','Number': '','Nid': ''};
-    }
-    case 'Resources':
-    {
-      return {'SortOrder':'', 'RepoLink': '','Label': ''};
-    }
+    // case 'Materials':
+    // {
+    //   return {'SortOrder':'', 'Name': '','Quantity': '','Nid': ''};
+    // }
+    // case 'Parts':
+    // {
+    //   return {'SortOrder':'', 'Name': '', 'Link': '','Number': '','Nid': ''};
+    // }
+    // case 'Resources':
+    // {
+    //   return {'SortOrder':'', 'RepoLink': '','Label': ''};
+    // }
    }
     return '';
   }
@@ -226,11 +181,11 @@ export class HowToComponent implements OnInit {
    */
   SortElements(ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
-    var TempToolsMaterialsParts = [];
-    var ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
+    let TempToolsMaterialsParts = [];
+    let ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
     control.controls.forEach((element, index) => {
       this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
-      element['controls']['SortOrder'].setValue(index + 1);
+      element['controls']['field_sort_order'].setValue(index + 1);
     });
   }
 
@@ -250,13 +205,7 @@ export class HowToComponent implements OnInit {
    * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
    */
   formErrors = {
-    'OtherProjctVideo': '',
     'field_tools': [],
-    'Materials': [],
-    'Parts': [],
-    'Difficulty': '',
-    'Duration': '',
-    'Resources': [],
   };
 
    /**
@@ -265,84 +214,17 @@ export class HowToComponent implements OnInit {
     * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
     */
   validationMessages = {
-    'OtherProjctVideo': {
-      'url': 'Please enter a valid url, ex: http://example.com.',
-    },
     'field_tools': {
-      'SortOrder':{
+      'field_sort_order':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
       'field_tool_name':{
         'required':'Name is required',
-      }, 
-      'Nid':{
-        'required': 'Nid is required',
       },      
-      'Url':{
+      'field_tool_url':{
         'url': 'Please enter a valid url, ex: http://example.com.',
-      },
-    },
-    'Materials': {
-      'SortOrder':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
-      },
-      'Name':{
-        'required':'Name is required',
-      },
-      'Quantity':{
-        'number':'Quantity must be a number.',
-        'required':'Quantity is required.',
-        'min':'Quantity must be at least 1.',
-      },
-      'Nid':{
-        'required': 'Nid is required',
-      },
-    },
-    'Parts': {
-      'SortOrder':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
-      },
-      'Name':{
-        'required':'Name is required',
-      },
-      'Link':{
-        'url': 'Please enter a valid url, ex: http://example.com.',
-      },
-      'Number':{
-        'number':'Quantity must be a number.',
-        'required':'Quantity is required.',
-        'min':'Quantity must be at least 1.',
-      },
-      'Nid':{
-        'required': 'Nid is required',
-      },
-    },
-    'Difficulty': {
-      'required': 'Difficulty required.',
-      'inarray': 'Selected difficulty is not accepted.',
-    },
-    'Duration': {
-      'required': 'Duration required.',
-      'inarray': 'Selected duration is not accepted.',
-    },
-    'Resources': {
-      'SortOrder':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required.',
-        'min':'Sort order must be at least 1.',
-      },
-      'RepoLink':{
-        'url': 'Please enter a valid url, ex: http://example.com.',
-      },
-      'Label':{
-        'required': 'Label required.',
-        'inarray': 'Selected label is not accepted.',
       },
     },
   };

@@ -38,7 +38,7 @@
         <div class="col-md-4" *ngIf="project">
         <div class="entry-container">
           <div class="image-container">
-            <img *ngIf="project.cover_photo" src="{{project.cover_photo}}" alt="" class="img-responsive">
+           <a routerLink="/project-story"> <img *ngIf="project.cover_photo" src="{{project.cover_photo}}" alt="" class="img-responsive"></a>
             <div class="entry-description">
               <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description}</p>
             </div>
@@ -55,8 +55,8 @@
   
   
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 load-more">
-           <!-- <a class="btn btn-white" (click)="loadmore()">Load more</a>-->
+        <div class="col-xs-4 col-xs-offset-4 load-more" >
+            <a *ngIf="!hideLoadMore"  class="btn btn-white" (click)="loadMoreProject()">Load more </a>
         </div>
       </div>
     </div>
