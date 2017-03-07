@@ -75,7 +75,7 @@ sort_by:string;
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
-    //console.log(this.currentuser.user.uid);
+    console.log(this.currentuser);
     this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
     this.isFollowed = data[0];
     
