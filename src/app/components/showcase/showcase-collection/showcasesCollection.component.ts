@@ -44,6 +44,7 @@ export class ShowcasesCollectionComponent implements OnInit {
     }
       this.viewService.getView('views/showcases',[['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
       this.showcases = data;
+      console.log(data);
     }, err => {
 
     });
@@ -61,7 +62,6 @@ loadmore(){
 // control load more button
 loadMoreVisibilty(){
  // get the challenges array count
- debugger
  if(this.showcases.length == this.showcaseCount-1){
    console.log("flage");
     this.hideloadmore= true;

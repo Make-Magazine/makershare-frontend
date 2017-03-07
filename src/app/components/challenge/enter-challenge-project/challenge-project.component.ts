@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
-import{IChallenge} from '../../../models/challenge/challenge';
-import {ActivatedRoute, Params } from '@angular/router';
-import {IChallengeProject} from '../../../models/challenge/challengeProjects';
-import {MainService} from '../../../d7services/main/main.service'; 
+import { IChallenge} from '../../../models/challenge/challenge';
+import { ActivatedRoute, Params } from '@angular/router';
+import { IChallengeProject } from '../../../models/challenge/challengeProjects';
+import { MainService } from '../../../d7services/main/main.service'; 
+import * as globals from '../../../d7services/globals';
+
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
@@ -49,11 +51,15 @@ console.log("cancel");
    this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
-   this.viewService.add('maker_challenge_entry_api', {
-                               "type" : "challenge_entry",
-                               "field_entry_project" : this.selectedProject,
-                               "field_entry_challenge" : this.nid,
-                               })                    
+
+  var body = {
+    "type" : "challenge_entry",
+    "field_entry_project" : this.selectedProject,
+    "field_entry_challenge" : this.nid,    
+  };
+
+
+   this.viewService.add('maker_challenge_entry_api', body)                    
                             .then((status: any) => {
                                  if (status.success == false) {
                                     alert("fail to submit");
@@ -63,6 +69,12 @@ onSubmit(event: any){
                                    this.hiddenAfterSubmit = true;
                                  }
                             }); 
+
+  // this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
+  //   console.log(res);
+  // }, err => {
+  //   console.log(err);
+  // }); 
 
     console.log("submit project");
 }

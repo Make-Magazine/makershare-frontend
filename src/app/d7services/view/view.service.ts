@@ -17,7 +17,7 @@ headers:Headers;
    }
 
 public buildHeaders() {
-    this.mainService.getOptions(Option);
+    return this.mainService.getOptions(Option);
 }
 
  
@@ -48,10 +48,10 @@ add(url: string, obj: any): Promise<any> {
 }
 
 private postRequestData(url: string, data: any): Promise<any> {
-        this.buildHeaders();
+        
 
         return (<any>this.http
-            .post(globals.domain + globals.endpoint + '/'+ url  , JSON.stringify(data), { headers: this.headers })) 
+            .post(globals.domain + globals.endpoint + '/'+ url  , JSON.stringify(data), this.buildHeaders())) 
             .toPromise()
             .then((res: Response) => {
                 if (!res.json()) {
