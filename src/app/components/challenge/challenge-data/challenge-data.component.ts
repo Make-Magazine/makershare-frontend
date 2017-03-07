@@ -70,7 +70,7 @@ sort_by:string;
             this.no_of_awards=data.length;
           });
 
-<<<<<<< HEAD
+
         
           this.getChallengeFollowers();
           this.getProjects();
@@ -95,32 +95,7 @@ sort_by:string;
           })
               /*bookmark end*/
           }); 
-=======
-   
-    this.getChallengeFollowers();
-    this.getProjects();
-    this.getCurrentUser();
-    this.userService.getStatus().subscribe(data => {
-    this.currentuser = data;
-    console.log(this.currentuser);
-    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'follow').subscribe(data =>{
-    this.isFollowed = data[0];
-    
-    /* initialize Button Follow*/
-    if(this.isFollowed==false){/* start if  */
-      this.ButtonFollow='Follow';
-    }else{
-          console.log("return false");
-            this.ButtonFollow='UnFollow';
-         }/* end else if  */
-      })
-        /*bookmark start */
-    this.flagService.isFlagged(this.route.params['value'].nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
-    this.isBookmarked = data[0];
-     })
-        /*bookmark end*/
-    }); 
->>>>>>> 71c4517993bad8b8e304e10d2be5d3c554089e7c
+
 
         }
 
@@ -295,11 +270,7 @@ sort_by:string;
               this.countProjects=data[0];
              console.log(this.countProjects);
             });
-<<<<<<< HEAD
-
-=======
->>>>>>> 71c4517993bad8b8e304e10d2be5d3c554089e7c
-        }
+ }
         /*end function count project in challenge*/
 
       enterToChallengeProject(nid){
@@ -307,11 +278,6 @@ sort_by:string;
               this.router.navigate(['/enter-challenge',nid]);
 
         }
-<<<<<<< HEAD
-  
-
-=======
->>>>>>> 71c4517993bad8b8e304e10d2be5d3c554089e7c
 }
 
 
