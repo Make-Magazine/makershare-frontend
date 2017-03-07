@@ -40,7 +40,6 @@ export class HowToComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    console.log(this.project.field_how_to);
   }
 
   ToolMaterialPart(ControlName, index, value){
@@ -58,8 +57,7 @@ export class HowToComponent implements OnInit {
 
   SetToolMaterialPart(arrayelementname,ControlName,value,index){
     this.ToolsMaterialsParts[arrayelementname][index] = [];
-    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Name.setValue(value.name);
-    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Nid.setValue(value.nid);
+    this.HowToForm.controls[ControlName]['controls'][index]['controls'].field_tool_name.setValue(value.project_name);
   }
 
   /**
@@ -99,8 +97,11 @@ export class HowToComponent implements OnInit {
     let index = control.length + 1;
     const addrCtrl = this.InitRow(ControlName,index);
     control.push(addrCtrl); 
-    //subscribe for changes
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
+    // this.project.field_tools.und.push(addrCtrl.value);
+    control.valueChanges.subscribe(value => {
+      console.log(value);
+    });
   }
 
   /**
