@@ -5,6 +5,7 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import{IChallenge} from '../../../models/challenge/challenge';
 import {ActivatedRoute, Params } from '@angular/router';
 import {IChallengeProject} from '../../../models/challenge/challengeProjects';
+import {MainService} from '../../../d7services/main/main.service'; 
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
@@ -13,11 +14,12 @@ import {IChallengeProject} from '../../../models/challenge/challengeProjects';
 export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
 selectedProject : number;
+hiddenAfterSubmit : boolean =false;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
-    private flagService:FlagService,
+    private flagService:FlagService,private mainService : MainService
     ) { }
 ngOnInit(){
 
@@ -48,21 +50,28 @@ console.log("cancel");
 }
 onSubmit(event: any){
    this.viewService.add('maker_challenge_entry_api', {
-                                 
-                                  "type" : "challenge_entry",
-                                   "field_entry_project" : "13",
-                                  "field_entry_challenge" : "16"
-
-
-                            }).then((status: any) => {
+                               "type" : "challenge_entry",
+                               "field_entry_project" : this.selectedProject,
+                               "field_entry_challenge" : this.nid,
+                               })                    
+                            .then((status: any) => {
                                  if (status.success == false) {
-                                    console.log("sucess")
-                                 }else {
+                                    alert("fail to submit");
                                     console.log("fail");
+                                  //  this.router.navigate(['/challenges']);
+                                 }else {
+                                   this.hiddenAfterSubmit = true;
                                  }
                             }); 
 
     console.log("submit project");
 }
 
+onMyEntries(){
+  console.log("my entries");
+}
+
+createNewProjectForChallenge(){
+  this.router.navigate(['/createproject',this.nid]);
+}
 }

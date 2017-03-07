@@ -7,8 +7,8 @@ import { ChallengesComponent,ChallengeDataComponent } from "./components/challen
 import { IndividualWorkshopComponent } from "./components/learn/individual-workshop/individual-workshop.component";
 import { ChallengeSummaryComponent } from "./components/challenge/challenge.module";
 import { ShowcasesCollectionComponent, SinglShowcaseComponent } from "./components/showcase/showcases.module";
-import {ChallengeProjectComponent} from "./components/challenge/enter-challenge-project/challenge-project.component"
-
+import {ChallengeProjectComponent} from "./components/challenge/enter-challenge-project/challenge-project.component";
+import {CreateProjectComponent} from "./components/project/create-project/create-project/create-project.component";
 const APP_ROUTES: Routes = [
    { path: '', component: HomeComponent },
    { path: 'user', component: ProfileComponent },
@@ -22,7 +22,8 @@ const APP_ROUTES: Routes = [
    { path: 'learn/:page', component: LearnComponent },
    { path: 'challenge-summary', component: ChallengeSummaryComponent },
    { path: 'workshop/:nid', component: IndividualWorkshopComponent },
- {path:'enter-challenge/:nid' , component:ChallengeProjectComponent},
+   {path:'enter-challenge/:nid' , component:ChallengeProjectComponent},
+   {path: 'createproject/:nid' , component:CreateProjectComponent},
     // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
 
     // { path: '**', redirectTo: '/user/1', pathMatch: 'full' }

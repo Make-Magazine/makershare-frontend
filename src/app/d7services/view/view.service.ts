@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MainService } from '../main/main.service';
 import { Observable } from "rxjs";
 import * as globals from '../globals';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, RequestOptionsArgs ,Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Promise} from "@types/q";
 
 
@@ -13,13 +13,14 @@ export class ViewService {
 headers:Headers;
   constructor(private mainService: MainService , private http: Http) {
     this.buildHeaders();
+  
    }
 
 public buildHeaders() {
-        this.headers = new Headers({
-            'Content-Type': 'application/json; charset=UTF-8'
-        });
+    this.mainService.getOptions(Option);
 }
+
+ 
 
 
  getView(viewName: string, args?: (string | any)[][]): Observable<any>{
@@ -50,14 +51,14 @@ private postRequestData(url: string, data: any): Promise<any> {
         this.buildHeaders();
 
         return (<any>this.http
-            .post(globals.endpoint + '/'+ url  , JSON.stringify(data), { headers: this.headers })) 
+            .post(globals.domain + globals.endpoint + '/'+ url  , JSON.stringify(data), { headers: this.headers })) 
             .toPromise()
             .then((res: Response) => {
-                if (!res.json()['success']) {
+                if (!res.json()) {
                     
                     return res.json();
                 }
-                return res.json()['data'];
+                return res.json();
             })
             .catch(this.promisehandleError);
     }
