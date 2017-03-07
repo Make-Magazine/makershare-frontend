@@ -12,7 +12,7 @@ import {IChallengeProject} from '../../../models/challenge/challengeProjects';
 })
 export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
-selectedProject : IChallengeProject;
+selectedProject : number;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
@@ -37,17 +37,32 @@ getAllProject(){
     });
 }
 
-updateSelectedProject(event:any){
-  console.log(event.target.id);
-  this.selectedProject = event;
-console.log(this.selectedProject);
+updateSelectedProject(item:number){
+  this.selectedProject = item;
+ console.log(this.selectedProject);
 }
 
 onCancel(event: any){
 console.log("cancel");
+   this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
-  console.log("submit project");
+   this.viewService.add('maker_challenge_entry_api', {
+                                 
+                                  "type" : "challenge_entry",
+                                   "field_entry_project" : "13",
+                                  "field_entry_challenge" : "16"
+
+
+                            }).then((status: any) => {
+                                 if (status.success == false) {
+                                    console.log("sucess")
+                                 }else {
+                                    console.log("fail");
+                                 }
+                            }); 
+
+    console.log("submit project");
 }
 
 }
