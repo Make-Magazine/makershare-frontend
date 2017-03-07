@@ -13,6 +13,7 @@
      <!--start if -->
     <div class="filters" >
         <div class="row">
+          <p class="col-md-4">128 Entries</p>
         <p class="col-md-4" *ngIf="entries_count">{{entries_count}} Entries</p>
         <div class="sorting-filter col-md-3 col-md-offset-5">
           <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
@@ -36,11 +37,11 @@
       <div *ngIf="projects">
       <div  *ngFor="let project of projects">
         <div class="col-md-4" *ngIf="project">
-        <div class="entry-container">
+        <div class="entry-container" (click)="ShowProjectDetails(project.nid)">
           <div class="image-container">
-            <img *ngIf="project.cover_photo" src="{{project.cover_photo}}" alt="" class="img-responsive">
+           <img *ngIf="project.cover_photo"  src="{{project.cover_photo}}" alt="" class="img-responsive">
             <div class="entry-description">
-              <p>This is a brief description description This is a brief description description This is a brief description description This is a brief description description}</p>
+              <p>This{{project.nid}} is a brief description description This is a brief description description This is a brief description description This is a brief description description}</p>
             </div>
             <div class="vote"><a href="">Vote</a></div>
           </div>
@@ -55,8 +56,8 @@
   
   
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 load-more">
-           <!-- <a class="btn btn-white" (click)="loadmore()">Load more</a>-->
+        <div class="col-xs-4 col-xs-offset-4 load-more" >
+            <a *ngIf="!hideLoadMore"  class="btn btn-white" (click)="loadMoreProject()">Load more </a>
         </div>
       </div>
     </div>

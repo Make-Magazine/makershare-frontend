@@ -37,7 +37,8 @@
                   </div>
                   <div class="row">
                     <div class="col-xs-4 col-xs-offset-4 load-more">
-                      <a href="#" class="btn btn-white">Load more</a>
+     <a *ngIf="!hideloadmorefollower"  class="btn btn-white" (click)="loadMoreFollower()">Load more</a>
+       
                     </div>
                   </div>
                 </div><!-- End followers -->

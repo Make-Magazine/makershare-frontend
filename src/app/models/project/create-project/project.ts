@@ -6,7 +6,7 @@
 
 import { field_text } from './field_text';
 import { field_URL } from './field_URL';
-import { field_collection_item } from './field_collection_item';
+import { field_collection_item_tool } from './field_collection_item';
 import { field_entity_reference } from './field_entity_reference';
 import { field_number } from './field_number';
 import { field_file_reference } from './field_file_reference';
@@ -26,18 +26,18 @@ export interface Project {
 	field_aha_moment?:{und:field_text[]};
 	field_uh_oh_moment?:{und:field_text[]};
 	field_teaser?:{und:field_text[]};
-	field_tools?:{und:field_collection_item[]};
-	field_materials?:{und:field_collection_item[]};
-	field_parts?:{und:field_collection_item[]};
+	field_tools?:{und:field_collection_item_tool[]};
+	field_materials?:{und:field_collection_item_tool[]};
+	field_parts?:{und:field_collection_item_tool[]};
 	field_difficulty?:{und:number[]};
 	field_duration?:{und:number[]};
 	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
 	field_tags?:{und:string};
-	field_resources?:{und:field_collection_item[]};
+	field_resources?:{und:field_collection_item_tool[]};
 	field_collaborators?:{und:field_entity_reference[]};
 	field_sort_order?:{und:field_number[]};
-	field_maker_memberships?:{und:field_collection_item[]};
+	field_maker_memberships?:{und:field_collection_item_tool[]};
 	field_original_team_members?:{und:field_entity_reference[]};
 	field_total_forks?:{und:field_number[]};
 	field_forks?:{und:field_entity_reference[]};
