@@ -24,11 +24,11 @@ export class OptionalInfoComponent implements OnInit {
 
   buildForm(): void {
     this.optionalForm = this.fb.group({
-      'field_user_photo': [''],
-      'field_maker_interests': [''],
-      'field_bio': [''],
-      'field_started_making': [''],
-      'field_social_accounts': this.fb.group({
+        field_user_photo: [''],
+        field_maker_interests: [''],
+        field_bio: [''],
+        field_started_making: [''],
+        field_social_accounts: this.fb.group({
         field_website_or_blog: [''],
         field_additional_site: [''],
         field_facebook: [''],
