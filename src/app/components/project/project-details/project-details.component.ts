@@ -23,7 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
   //showcase-projects
   projectId;
   showcase={};
-  projectIndex=0;
+  projectIndex:number=0;
   projects=[];
 
   constructor(
@@ -33,11 +33,14 @@ export class ProjectDetailsComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService
   ) {
+    
     this.route.queryParams.subscribe(params => {
+      if(params["showcase"]){
             this.projectId = params["projectId"];
             this.showcase = JSON.parse(params["showcase"]);
             this.projectIndex = params["projectIndex"];
             this.projects = JSON.parse(params["projects"]);
+      }
 
         });
         debugger
@@ -45,6 +48,7 @@ export class ProjectDetailsComponent implements OnInit {
         console.log(this.projectId);
         console.log(this.projectIndex);
         console.log(this.projects);
+        
    }
    
 
@@ -70,11 +74,11 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
-        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(data =>{
         this.isBookmarked = data[0];
         //console.log(this.isBookmarked)
       });
-      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'like').subscribe(data =>{
         this.isLiked = data[0];
       });
 
@@ -91,17 +95,25 @@ export class ProjectDetailsComponent implements OnInit {
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
 
-  getProject(){
-    
+  getProject(event: Event, action: any){
+    event.preventDefault();
+    console.log(action);
+    if(action == "back"){
+    this.projectIndex--;
+    }else if(action =="next"){
+      this.projectIndex++;
+    }
     console.log(this.project);
-    //  let navigationExtras: NavigationExtras = {
-    //         queryParams: {
-    //             "projectId": nid,
-    //             "showcase": this.showcase,
-    //             "projectIndex": projectIndex 
-    //         }
-    //  }
-    //  this.router.navigate(['project/view/', nid], navigationExtras);
+    let navigationExtras: NavigationExtras = {
+            queryParams: {
+                "projectId": this.projects[this.projectIndex].nid,
+                "showcase": JSON.stringify(this.showcase),
+                "projectIndex": this.projectIndex,
+                "projects":JSON.stringify(this.projects)
+            }
+     }
+     debugger
+     this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
 
   }
   changeProjectTab(NewTab){
@@ -110,11 +122,11 @@ export class ProjectDetailsComponent implements OnInit {
   likeThis(e: Event){
     e.preventDefault();
     if(this.isLiked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = !response[0];
       });
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = response[0];
       });
 
@@ -130,12 +142,12 @@ export class ProjectDetailsComponent implements OnInit {
   bookmarkThis(e: Event){
     e.preventDefault();
      if(this.isBookmarked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = !response[0];
       });
       this.isBookmarked= !this.isBookmarked;
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = response[0];
       });
     }
