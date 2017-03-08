@@ -11,6 +11,7 @@ import { AllProfileComponent } from './components/account/profile/edit/all-profi
 
 import { ChallengeProjectComponent } from "./components/challenge/enter-challenge-project/challenge-project.component"
 
+import {CreateProjectComponent} from "./components/project/create-project/create-project/create-project.component";
 
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -27,12 +28,9 @@ const APP_ROUTES: Routes = [
     { path: 'workshop/:nid', component: IndividualWorkshopComponent },
 
     { path: 'profile', component: AllProfileComponent },
-
-
-    { path: 'enter-challenge/:nid', component: ChallengeProjectComponent },
-    // { path: 'user/:id', component: UserComponent, children: USER_ROUTES },
-
-    // { path: '**', redirectTo: '/user/1', pathMatch: 'full' }
+   { path: 'workshop/:nid', component: IndividualWorkshopComponent },
+   {path:'enter-challenge/:nid' , component:ChallengeProjectComponent},
+   {path: 'createproject/:nid' , component:CreateProjectComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

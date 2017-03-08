@@ -62,7 +62,7 @@
                       <p>{{profile.bio}}</p>
                       </div><!-- End Bio -->
                       <hr>
-                      <ul class="list-unstyled interests">
+                      <ul class="list-unstyled interests" *ngIf="profile.maker_interests.length > 0">
                       <h5>Interests</h5>
                         <li *ngFor="let interest of profile.maker_interests">{{interest.title}}</li>
                       </ul>

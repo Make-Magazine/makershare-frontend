@@ -9,15 +9,15 @@ import { ISorting } from '../../../models/challenge/sorting';
 })
 export class ShowcasesCollectionComponent implements OnInit {
   showcases = [];
-  pageNumber = 0;
   showcaseCount=0;
   hideloadmore=false;
+  loadFlag=false;
   sortData:ISorting;
   sort_order:string;
   sort_by:string;
+  limit=3;
 
   @Input() sortType:ISorting;
-  @Input() pageNo:number;
 
   constructor(
     private viewService: ViewService,
@@ -38,28 +38,32 @@ export class ShowcasesCollectionComponent implements OnInit {
   }
 
   getShowCases(){
-
-    var sort: string;
     // load the showcases
-    this.viewService.getView('showcases',[['page',this.pageNumber],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
-      this.showcases = this.showcases.concat(data);
-
+      if(this.loadFlag){
+      this.limit+=3;
+    }
+      this.viewService.getView('views/showcases',[['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
+      this.showcases = data;
       this.loadMoreVisibilty();
     }, err => {
 
     });
+    this.loadFlag=false;
   }
 
   // get more click
 loadmore(){
- this.pageNumber++;
+ this.loadFlag = true;
  this.getShowCases();
 }
 // control load more button
 loadMoreVisibilty(){
  // get the challenges array count
- if(this.showcases.length == this.showcaseCount){
+ debugger
+ if(this.showcases.length >= this.showcaseCount){
+   console.log("flage");
     this.hideloadmore= true;
+    console.log(this.hideloadmore);
  }else{
     this.hideloadmore= false;
  }
@@ -75,15 +79,11 @@ getSortType(event:any){
 //console.log(this.getProjects);
 }
 
-getPageNumber(event:any){
-this.pageNo = event
-// console.log(this.pageNo);
-}
 
 // get the count of showcases
   showcasesCount() {
       this.viewService.getView('maker_count_showcases',[]).subscribe(data => {
-      this.showcaseCount=data;
+      this.showcaseCount=data[0];
       console.log(this.showcaseCount);
     });
   }

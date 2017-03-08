@@ -13,7 +13,7 @@ export class TaxonomyService {
   }
 
   getVocalbularyTerms(vid: number): Observable<any>{
-    return this.mainService.get(globals.endpoint + '/taxonomy_term?parameters['+ vid +']=').map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.get(globals.endpoint + '/taxonomy_term?parameters[vid]='+vid).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
   getTermByName(name: string): Observable<any>{

@@ -3,16 +3,20 @@ import { CommonModule } from '@angular/common';
 import { InboxComponent } from './inbox/inbox.component';
 import { MessagesRoutsModule } from './messages.routing.module';
 import { ViewComponent } from './view/view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
  
 @NgModule({
   imports: [
     CommonModule,
-    MessagesRoutsModule
+    MessagesRoutsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     InboxComponent,
-    ViewComponent
+    ViewComponent,
+
     ]
 })
 export class MessagesModule { }

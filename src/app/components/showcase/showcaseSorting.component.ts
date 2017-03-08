@@ -19,7 +19,7 @@ import {ISorting} from '../../models/challenge/sorting';
 export class ShowcaseSortingComponent implements OnInit {
 
 @Output() sortType = new EventEmitter<ISorting>();
-@Output() pageNumber = new EventEmitter<number>();
+
 ActionName:string;
 pages:number = 0;
 sort:ISorting={

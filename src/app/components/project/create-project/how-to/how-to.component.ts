@@ -1,59 +1,60 @@
 import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
-import { inarray } from '../../../../validations/inarray.validation'
 import { ViewService } from '../../../../d7services/view/view.service'
-import { CompleterService, CompleterData } from 'ng2-completer';
-// import { domain } from '../../../../d7services/global';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
-import 'rxjs/add/observable/of';
+import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
+import { Project } from '../../../../models/project/create-project/project';
+import { TaxonomyTerm } from '../../../../models/project/create-project/taxonomy-term';
+import { field_collection_item_tool,field_collection_item_part,field_collection_item_material } from '../../../../models/project/create-project/field_collection_item';
+import { FileEntity } from '../../../../models/project/create-project/file_entity';
 
 @Component({
   selector: 'app-how-to',
   templateUrl: './how-to.component.html',
+   styles : [`
+      .tools textarea {max-width:100%;resize:none;}
+  
+  `]
 })
 
 export class HowToComponent implements OnInit {
   /**
+   * @output will emit the new values to the parent Component
+   * this mainly used for tags object because its an string array so we cannot pass it as a reference
+   */
+  @Output() emitter = new EventEmitter();
+
+  /**
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component
    */
-  @Output() HowTo = new EventEmitter();
-  @Input('HowToValues') HowToValues;
+  @Input('project') project: Project;
+  @Input('FormPrintableValues') FormPrintableValues;
   HowToForm: FormGroup;
   ToolsMaterialsParts = [];
-
-  // data arrays
-  Durations = ['1-3 hours', '3-8 hours', '8-16 hours (a weekend)', '>16 hours'];
-  Diffeculties = ['Easy', 'Moderate', 'Hard'];
-  ResourceLabels = ['Schematics', 'Code', 'Knitting Pattern'];
-  multi_values_fields = ['Tools','Materials','Resources','Parts'];
-
-  //public url: string = "http://makerdev.orangestudio.com:8080/api/api-project-tools-materials-parts-list?type=tool&name=" ;
-    private url = [
-    { color: 'red', value: '#f00' },
-    { color: 'green', value: '#0f0' },
-    { color: 'blue', value: '#00f' },
-    { color: 'cyan', value: '#0ff' },
-    { color: 'magenta', value: '#f0f' },
-    { color: 'yellow', value: '#ff0' },
-    { color: 'black', value: '#000' }
-  ];
-  
-  private dataService: CompleterData;
+  Durations:TaxonomyTerm[];
+  Difficulties:TaxonomyTerm[];
+  resources_files:FileEntity[] = [];
+  ResourceLabels:TaxonomyTerm[];
 
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
-    private completerService: CompleterService
-  ) {
-    let timedRes = Observable.from([this.url]).delay(3000);
-    this.dataService = completerService.local(timedRes, 'color', 'color');
-    }
+    private taxonomyService:TaxonomyService
+  ) {}
 
   ngOnInit() {
     this.buildForm();
+    this.resources_files = this.FormPrintableValues.resource_files;
+    this.taxonomyService.getVocalbularyTerms(5).subscribe((data:TaxonomyTerm[]) => {
+      this.Difficulties = data;
+    });
+    this.taxonomyService.getVocalbularyTerms(6).subscribe((data:TaxonomyTerm[]) => {
+      this.Durations = data;
+    });
+    this.taxonomyService.getVocalbularyTerms(12).subscribe((data:TaxonomyTerm[]) => {
+      this.ResourceLabels = data;
+    });
   }
 
   ToolMaterialPart(ControlName, index, value){
@@ -70,38 +71,91 @@ export class HowToComponent implements OnInit {
   }
 
   SetToolMaterialPart(arrayelementname,ControlName,value,index){
+    let name_with_id = value.name+' ('+value.nid+')';
     this.ToolsMaterialsParts[arrayelementname][index] = [];
-    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Name.setValue(value.name);
-    this.HowToForm.controls[ControlName]['controls'][index]['controls'].Nid.setValue(value.nid);
+    const control =  this.HowToForm.controls[ControlName]['controls'][index];
+    control.controls['field_'+arrayelementname+'_name'].setValue(name_with_id);
+    var url:URL;
+    var description:string;
+    if(arrayelementname === "tool"){
+      if(control.controls.field_tool_url.valid){
+        url = control.controls.field_tool_url.value;
+      }
+      description = control.controls.field_description.value;
+    }
+    
+    let allvalues = {
+      field_tool_name: name_with_id,
+      field_part_name: name_with_id,
+      field_material_name: name_with_id,
+      field_sort_order: index + 1,
+      field_tool_url: url,
+      field_description: description,
+      field_material_quantity: control.controls.field_material_quantity.value,
+    };
+    let Row = this.GetRowWithValues(allvalues, arrayelementname);
+    this.project[ControlName].und.push(Row);
+    control.valueChanges.subscribe(values => {
+      if(arrayelementname === "tool" && !control.controls.field_tool_url.valid){
+        values.field_tool_url = '';
+      }
+      this.project[ControlName].und[values.field_sort_order - 1] = this.GetRowWithValues(values, arrayelementname);
+    });
+  }
+
+  GetRowWithValues(values, arrayelementname):any{
+    switch(arrayelementname){
+      case 'tool':
+      {
+        let Tool:field_collection_item_tool = {
+          field_tool_name:{und:[{target_id:values.field_tool_name}]},
+          field_sort_order:{und:[{value:values.field_sort_order}]},
+          field_tool_url:{und:[{url:values.field_tool_url}]},
+          field_description:{und:[{value:values.field_description}]},
+          field_material_quantity:{und:[{value:values.field_material_quantity}]},
+        };
+        return Tool;
+      } 
+      case 'part':
+      {
+        let Part:field_collection_item_part = {
+          field_part_name:{und:[{target_id:values.field_part_name}]},
+          field_sort_order:{und:[{value:values.field_sort_order}]},
+          field_material_quantity:{und:[{value:values.field_material_quantity}]},
+        };
+        return Part;
+      } 
+      case 'material':
+      {
+        let Part:field_collection_item_material = {
+          field_material_name:{und:[{target_id:values.field_material_name}]},
+          field_sort_order:{und:[{value:values.field_sort_order}]},
+          field_material_quantity:{und:[{value:values.field_material_quantity}]},
+        };
+        return Part;
+      } 
+    }
+     
   }
 
   /**
-   * Build form when Initalize the component
+   * Build the form when Initalize the component
    */
   buildForm(): void {
     this.HowToForm = this.fb.group({
-      'OtherProjctVideo': ['', [CustomValidators.url]],
-      'HowToMake': ['', []],
-      'HelpLookingFor': ['', []],
-      'Tools': this.fb.array([]),
-      'Materials': this.fb.array([]),
-      'Parts': this.fb.array([]),
-      'Difficulty': [this.Diffeculties[0],[Validators.required,inarray(this.Diffeculties)]],
-      'Duration': [this.Durations[0],[Validators.required,inarray(this.Durations)]],
-      'Resources': this.fb.array([]),
+      'field_how_to': [this.project.field_how_to.und[0].value],
+      'field_tools': this.fb.array([]),
+      'field_parts': this.fb.array([]),
+      'field_materials': this.fb.array([]),
+      'field_difficulty': [this.project.field_difficulty.und],
+      'field_duration': [this.project.field_duration.und],
+      'field_resources': this.fb.array([]),
     });
-    if(this.HowToValues){
-      this.multi_values_fields.forEach((element, index) => {
-        var length = this.HowToValues[element].length;
-        for(var i = 0 ;i < length; i++){
-          this.AddRow(element);
-        }
-      });
-      this.HowToForm.setValue(this.HowToValues);
-    }
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
-      this.HowTo.emit(this.HowToForm);
+      this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
+      this.project.field_duration.und = this.HowToForm.controls['field_duration'].value;
+      this.emitter.emit(this.resources_files);
     });
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
   }
@@ -132,41 +186,38 @@ export class HowToComponent implements OnInit {
    */
   InitRow(ControlName,index) {
     switch (ControlName){
-      case 'Tools':
+      case 'field_tools':
       {
         return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', Validators.required],
-          'Url': ['', CustomValidators.url],
-          'Nid': ['',Validators.required],
+          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'field_tool_name': ['', Validators.required],
+          'field_tool_url': ['', CustomValidators.url],
+          'field_description': [''],
+          'field_material_quantity': [''],
         });
       }
-      case 'Materials':
+      case 'field_parts':
       {
         return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', Validators.required],
-          'Quantity': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Nid': ['',Validators.required],
+          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'field_part_name': ['', Validators.required],
+          'field_material_quantity': [''],
         });
       }
-      case 'Parts':
+      case 'field_materials':
       {
         return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Name': ['', [Validators.required]],
-          'Link': ['', CustomValidators.url],
-          'Number': [1, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'Nid': ['',Validators.required],
+          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+          'field_material_name': ['', Validators.required],
+          'field_material_quantity': [''],
         });
       }
-      case 'Resources':
+      case 'field_resources':
       {
         return this.fb.group({
-          'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'File': [, []],
-          'RepoLink': ['', CustomValidators.url],
-          'Label': ['',[inarray(this.ResourceLabels)]],
+          'field_resources_filename': ['', Validators.required],
+          'field_repository_link':['',CustomValidators.url],
+          'field_label': [1105,],
         });
       }
     }
@@ -191,6 +242,7 @@ export class HowToComponent implements OnInit {
    * before we clear the field we must check if the field is already an array of FormControls
    */
   onValueChanged(form, formErrors, validationMessages) {
+    if (!this.HowToForm) { return; }
     for (const field in formErrors) {
       if(typeof formErrors[field] === 'string'){
         formErrors[field] = '';
@@ -214,21 +266,21 @@ export class HowToComponent implements OnInit {
    */
   GetErrorStructure(ControlName?) : string | Object {
    switch (ControlName){
-    case 'Tools':
+    case 'field_tools':
     {
-      return {'SortOrder':'', 'Name': '','Url': '','Nid': ''};
+      return {'field_sort_order':'', 'field_tool_name': '','field_tool_url': ''};
     }
-    case 'Materials':
+    case 'field_parts':
     {
-      return {'SortOrder':'', 'Name': '','Quantity': '','Nid': ''};
+      return {'field_sort_order':'', 'field_part_name': ''};
     }
-    case 'Parts':
+    case 'field_materials':
     {
-      return {'SortOrder':'', 'Name': '', 'Link': '','Number': '','Nid': ''};
+      return {'field_sort_order':'', 'field_material_name': ''};
     }
-    case 'Resources':
+    case 'field_resources':
     {
-      return {'SortOrder':'', 'RepoLink': '','Label': ''};
+      return {'field_resources_filename':'', 'field_repository_link':''};
     }
    }
     return '';
@@ -239,22 +291,44 @@ export class HowToComponent implements OnInit {
    */
   SortElements(ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
-    var TempToolsMaterialsParts = [];
-    var ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
+    let TempToolsMaterialsParts = [];
+    let ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
     control.controls.forEach((element, index) => {
       this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
-      element['controls']['SortOrder'].setValue(index + 1);
+      element['controls']['field_sort_order'].setValue(index + 1);
     });
   }
 
-  FileUpdated(event, index, ControlName){
-   var files = event.srcElement.files;
-   if(files.length == 1){
-    this.HowToForm.controls[ControlName]['controls'][index].controls.File.setValue(files[0]);
-   }else{
-     this.HowToForm.controls[ControlName]['controls'][index].controls.File.setValue(null);
-   }
+  FileUpdated(event, index){
+    const control = this.HowToForm.controls['field_resources']['controls'][index];
+    let files = event.srcElement.files;
+    if(files.length == 1){
+      control.controls.field_resources_filename.setValue(files[0].name);
+      var file:FileEntity = {
+        file:'',
+        filename:''
+      };
+      this.ConvertToBase64(files[0],file);
+      console.log(file);
+      if(this.resources_files[index]){
+        this.resources_files[index] = file;
+      }else{
+        this.resources_files.push(file);
+      }
+    }
   }
+
+  ConvertToBase64(file:File,FileEntityObject:FileEntity){
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      FileEntityObject.filename = file.name;
+      FileEntityObject.file = reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+   }
 
   /**
    * An Object of form errors contains the error string value for each field
@@ -263,13 +337,10 @@ export class HowToComponent implements OnInit {
    * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
    */
   formErrors = {
-    'OtherProjctVideo': '',
-    'Tools': [],
-    'Materials': [],
-    'Parts': [],
-    'Difficulty': '',
-    'Duration': '',
-    'Resources': [],
+    'field_tools': [],
+    'field_parts': [],
+    'field_materials': [],
+    'field_resources': [],
   };
 
    /**
@@ -278,85 +349,46 @@ export class HowToComponent implements OnInit {
     * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
     */
   validationMessages = {
-    'OtherProjctVideo': {
-      'url': 'Please enter a valid url, ex: http://example.com.',
-    },
-    'Tools': {
-      'SortOrder':{
+    'field_tools': {
+      'field_sort_order':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
-      'Name':{
+      'field_tool_name':{
         'required':'Name is required',
-      }, 
-      'Nid':{
-        'required': 'Nid is required',
       },      
-      'Url':{
+      'field_tool_url':{
         'url': 'Please enter a valid url, ex: http://example.com.',
       },
     },
-    'Materials': {
-      'SortOrder':{
+    'field_parts': {
+      'field_sort_order':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
-      'Name':{
+      'field_part_name':{
         'required':'Name is required',
-      },
-      'Quantity':{
-        'number':'Quantity must be a number.',
-        'required':'Quantity is required.',
-        'min':'Quantity must be at least 1.',
-      },
-      'Nid':{
-        'required': 'Nid is required',
-      },
+      },      
     },
-    'Parts': {
-      'SortOrder':{
+    'field_materials': {
+      'field_sort_order':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
-      'Name':{
+      'field_material_name':{
         'required':'Name is required',
+      },      
+    },
+    'field_resources': {
+      'field_resources_filename':{
+        'required':'Sort order is required',
       },
-      'Link':{
+      'field_repository_link':{
         'url': 'Please enter a valid url, ex: http://example.com.',
-      },
-      'Number':{
-        'number':'Quantity must be a number.',
-        'required':'Quantity is required.',
-        'min':'Quantity must be at least 1.',
-      },
-      'Nid':{
-        'required': 'Nid is required',
-      },
-    },
-    'Difficulty': {
-      'required': 'Difficulty required.',
-      'inarray': 'Selected difficulty is not accepted.',
-    },
-    'Duration': {
-      'required': 'Duration required.',
-      'inarray': 'Selected duration is not accepted.',
-    },
-    'Resources': {
-      'SortOrder':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required.',
-        'min':'Sort order must be at least 1.',
-      },
-      'RepoLink':{
-        'url': 'Please enter a valid url, ex: http://example.com.',
-      },
-      'Label':{
-        'required': 'Label required.',
-        'inarray': 'Selected label is not accepted.',
-      },
+      },    
     },
   };
 }
