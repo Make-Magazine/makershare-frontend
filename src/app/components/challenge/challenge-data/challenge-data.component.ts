@@ -170,10 +170,10 @@ sort_by:string;
     .subscribe(data =>{
       this.challenge = data[0];
      if(this.challenge['status_id'] == '375'){
-      this.hideButton=true;
+       this.hideButton=true;
      }
      else{
-      this.hideButton=false;
+       this.hideButton=false;
       }
      //calculate days difference
       if(this.challenge){

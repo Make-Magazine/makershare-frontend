@@ -38,7 +38,8 @@
                 </ul>
                 <ul class="list-unstyled challenge-follow">
                   <li><a href="" class="btn btn-blue btn-sharp" (click)="followThis($event)" [class.active]="isFollowed">{{ButtonFollow}}</a></li>
-                  <li><a *ngIf="hideButton" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
+                  <!-- *ngIf="hideButton" -->
+                  <li><a  (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
                 </ul>
               </div>
               <div class="content-wrapper row">
