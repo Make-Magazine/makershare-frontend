@@ -10,6 +10,11 @@ import { Project } from '../../../../models/project/create-project/project';
 @Component({
   selector: 'app-your-story',
   templateUrl: './your-story.component.html',
+  styles : [`
+      .add-cate {margin-left:5px}
+      .cate-name {margin: 3px 0}
+  
+  `]
 })
 
 export class YourStoryComponent implements OnInit {
@@ -230,8 +235,8 @@ export class YourStoryComponent implements OnInit {
       this.project.field_categories.und.push(this.current_child_category);
     }
     this.YourStoryForm.controls["field_categories"].patchValue(this.project.field_categories.und);
-    delete this.current_parent_category;
-    delete this.current_child_category;
+    // delete this.current_parent_category;
+     delete this.current_child_category;
   }
 
   /**

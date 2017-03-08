@@ -25,7 +25,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="form-group projectCategory">
+    <div class="form-group projectCategory form-inline">
       <label for="projectCategory">Categories</label>
       <select class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
         <option disabled selected value> -- select an option -- </option>
@@ -35,11 +35,11 @@
         <option disabled selected value> -- select an option -- </option>
         <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
       </select>
-      <div *ngIf="current_child_category" (click)="SetCategories()">add</div>
+      <div *ngIf="current_child_category" (click)="SetCategories()" class="btn btn-blue add-cate">add</div>
       <div *ngIf="project.field_categories.und">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
          <div *ngFor="let cate of all_categories">
-            <div *ngIf="selected_cate == cate.tid">{{cate.name}}</div>
+            <div *ngIf="selected_cate == cate.tid" class="cate-name">{{cate.name}}</div>
           </div>
         </div>
       </div>
