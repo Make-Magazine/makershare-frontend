@@ -1,7 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Send Message</h1>
-    <form messageForm="NGForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+    <form messageForm="formGroup"  *ngIf="active"  (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="to">To</label>
 
