@@ -39,6 +39,7 @@ export class Auth {
           console.log(res);
             if(res.user.uid != 0){
               localStorage.setItem('user_id', res.user.uid);
+              localStorage.setItem('user_name', res.user.name);
             }else{
               localStorage.setItem('user_id', '0');
             }
