@@ -4,14 +4,39 @@ import { RouterModule, Router ,ActivatedRoute, Params} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Http,Headers, RequestOptions, Response} from '@angular/http';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { Message }  from '../sending/message';
+
 
 @Component({
+  moduleId:  module.id,
   selector: 'app-inbox',
   templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
 
-  form=FormGroup
+  //messageObj = new Message('',  '', '', 6);
+    submitted = false;
+    messageObj:Message ={
+    subject: '',
+    body : '',
+    recipients: '',
+    thread_id : 6
+  };
+  onSubmit() {
+    if(this.messageForm.valid){
+    // console.log(this.messageObj);
+      this.pm.sendMessage(this.messageObj).subscribe((messageObj:Message) => {
+      this.submitted=true;
+    //this.messageObj=messageObj
+      },
+      err =>{
+      console.log("error");
+      console.log(err);
+      })
+    }
+  }
+  active = true;
+  messageForm: FormGroup;
   messages=[]
   message
   msg=[]
@@ -21,14 +46,61 @@ export class InboxComponent implements OnInit {
   
 
   constructor( private route: ActivatedRoute,
+    private fb: FormBuilder,
     private pm: PmService,
     private router: Router,
     private http: Http,
   ) { }
 
-  ngOnInit() {
-    this.getMessages();
+  ngOnInit(): void  {
+     this.getMessages();
+     this.buildForm();
   }
+   buildForm(): void {
+      this.messageForm = this.fb.group({
+      'subject'    :  [this.messageObj.subject, Validators.required],
+      'body'       :  [this.messageObj.body, Validators.required],
+      'recipients' :  [this.messageObj.recipients, Validators.required],
+      'thread_id'  :  [this.messageObj.thread_id]
+    });
+       this.messageForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+       this.onValueChanged(); // (re)set validation messages now
+  }
+  onValueChanged(data?: any) {
+    if (!this.messageForm) { return; }
+    const form = this.messageForm;
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+  formErrors = {
+    'recipients': '',
+    'subject': '',
+    'body' : ''
+  };
+  validationMessages = {
+    'recipients': {
+    'required':      'Name is required.',
+    },
+    'subject': {
+    'required':      'Subject is required.',
+    },
+    'body': {
+    'required':      'Message Body is required.',
+    },
+
+    
+  };
+
   //get all messages
 getMessages() {
       this.pm.getMessages().subscribe(data => {

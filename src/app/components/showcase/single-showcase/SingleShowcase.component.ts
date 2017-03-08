@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 
@@ -45,8 +45,15 @@ export class SinglShowcaseComponent implements OnInit {
    goHome(){
      this.router.navigate(['']);
    }
-   goToProject(nid){
-     this.router.navigate(['project/view/', nid]);
+   public goToProject(nid, projectIndex){
+     let navigationExtras: NavigationExtras = {
+            queryParams: {
+                "projectId": nid,
+                "showcase": this.showcase,
+                "projectIndex": projectIndex 
+            }
+     }
+     this.router.navigate(['project/view/', nid], navigationExtras);
    }
 
    goToProfile(nid){
@@ -80,7 +87,7 @@ export class SinglShowcaseComponent implements OnInit {
     this.sort_by=this.sortData.sort_by;
     this.sort_order = this.sortData.sort_order;
     this.getshowCaseProjects();
-//console.log(this.getProjects);
+    //console.log(this.getProjects);
 }
    
 
