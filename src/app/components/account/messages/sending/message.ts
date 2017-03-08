@@ -1,8 +1,5 @@
-export class Message {
-  constructor(
-    public subject: string,
-    public body: string,
-    public recipients: string,
-    public thread_id:number,
-  ) {  }
+export interface Message {
+    recipients: Array<string>,
+    subject: string,
+    body: string,
 }
