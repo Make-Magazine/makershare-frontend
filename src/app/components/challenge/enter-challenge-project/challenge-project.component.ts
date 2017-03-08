@@ -28,6 +28,7 @@ ngOnInit(){
 this.nid = this.route.snapshot.params['nid'];
 
 this.getAllProject();
+console.log(localStorage.getItem('user_id'));  
 }
 
 getAllProject(){
@@ -55,7 +56,7 @@ onSubmit(event: any){
   var body = {
     "type" : "challenge_entry",
     "field_entry_project" : this.selectedProject,
-    "field_entry_challenge" : this.nid,    
+    "field_entry_challenge" : localStorage.getItem('user_id'),    
   };
 
 
