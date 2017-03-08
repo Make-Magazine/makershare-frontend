@@ -49,12 +49,20 @@ export class ProjectDetailsComponent implements OnInit {
    
 
   ngOnInit() {
+    debugger
+    this.route.params.subscribe((params: Params) => {
+        let userId = params['nid'];
+        console.log('nid');
+        console.log(userId);
+      });
+    this.route.snapshot.data[0];
     this.current_active_tab = 'project-story';
     this.route.params
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
     .subscribe(data =>{
       //console.log(data)
+
       this.project = data;
       this.projectDetails = data;
       
