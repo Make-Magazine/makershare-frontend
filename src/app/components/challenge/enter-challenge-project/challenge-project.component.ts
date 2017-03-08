@@ -6,6 +6,7 @@ import{IChallenge} from '../../../models/challenge/challenge';
 import {ActivatedRoute, Params } from '@angular/router';
 import {IChallengeProject} from '../../../models/challenge/challengeProjects';
 import {MainService} from '../../../d7services/main/main.service'; 
+import {IChallengeData} from '../../../models/challenge/challengeData';
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
@@ -15,6 +16,7 @@ export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
+challangeData:IChallengeData;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
@@ -24,8 +26,18 @@ hiddenAfterSubmit : boolean =false;
 ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
-
+this.getChallangeData();
 this.getAllProject();
+}
+
+getChallangeData(){
+    this.route.params
+    .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',this.nid['nid']]]))
+    .subscribe(data =>{
+      this.challangeData = data;
+      console.log(this.challangeData);
+      
+    });
 }
 
 getAllProject(){
@@ -54,7 +66,7 @@ onSubmit(event: any){
                                "field_entry_project" : this.selectedProject,
                                "field_entry_challenge" : this.nid,
                                })                    
-                            .then((status: any) => {
+                                .then((status: any) => {
                                  if (status.success == false) {
                                     alert("fail to submit");
                                     console.log("fail");
