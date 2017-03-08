@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, } from '@angular/core';
 import { PmService } from '../../../../d7services/pm/pm.service'
 import { RouterModule, Router ,ActivatedRoute, Params} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Http,Headers, RequestOptions, Response} from '@angular/http';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { Message }  from '../sending/message';
+import { ViewService } from '../../../../d7services/view/view.service';
 
 
 @Component({
@@ -13,28 +14,35 @@ import { Message }  from '../sending/message';
   templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
-
-  //messageObj = new Message('',  '', '', 6);
+    reciverUser = [];
+    SelectedUser=[];
+   //messageObj = new Message([],  '', '');
     submitted = false;
-    messageObj:Message ={
-    subject: '',
-    body : '',
-    recipients: '',
-    thread_id : 6
-  };
-  onSubmit() {
+    messageObj: Message = {
+      recipients: [],
+      subject: '',
+      body: '',
+    };
+    
+  onSubmit(e) {
+    e.preventDefault();
     if(this.messageForm.valid){
-    // console.log(this.messageObj);
-      this.pm.sendMessage(this.messageObj).subscribe((messageObj:Message) => {
-      this.submitted=true;
-    //this.messageObj=messageObj
+       console.log(this.messageForm.value);
+       this.messageObj.recipients = this.messageForm.value.recipients;
+       this.messageObj.body = this.messageForm.value.body;
+       this.messageObj.subject = this.messageForm.value.subject;
+      this.pm.sendMessage(this.messageObj).subscribe(res => {
+      //this.submitted=true;
+        //this.messageObj=messageObj
+        console.log(res)
       },
       err =>{
-      console.log("error");
-      console.log(err);
-      })
+        console.log("error");
+        console.log(err);
+      });
     }
   }
+  
   active = true;
   messageForm: FormGroup;
   messages=[]
@@ -50,6 +58,7 @@ export class InboxComponent implements OnInit {
     private pm: PmService,
     private router: Router,
     private http: Http,
+     private viewService: ViewService ,
   ) { }
 
   ngOnInit(): void  {
@@ -58,10 +67,9 @@ export class InboxComponent implements OnInit {
   }
    buildForm(): void {
       this.messageForm = this.fb.group({
-      'subject'    :  [this.messageObj.subject, Validators.required],
-      'body'       :  [this.messageObj.body, Validators.required],
-      'recipients' :  [this.messageObj.recipients, Validators.required],
-      'thread_id'  :  [this.messageObj.thread_id]
+      'recipients' :  ['', Validators.required],
+      'subject'    :  ['', Validators.required],
+      'body'       :  ['', Validators.required]
     });
        this.messageForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -89,17 +97,41 @@ export class InboxComponent implements OnInit {
   };
   validationMessages = {
     'recipients': {
-    'required':      'Name is required.',
+    'required':'Name is required.',
     },
     'subject': {
-    'required':      'Subject is required.',
+    'required':'Subject is required.',
     },
     'body': {
-    'required':      'Message Body is required.',
+    'required':'Message Body is required.',
     },
 
     
   };
+  RefreshUsers(index,value){
+  this.reciverUser[index] = [];
+  if(value.length > 1){
+    this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
+      this.reciverUser[index] = data;
+      var TempUsers = [];
+      for(let index in data){
+        var found = false;
+        let element = data[index]; 
+        this.SelectedUser.forEach(addeduser => {
+          if(addeduser.uid === element.uid){
+            found = true;
+            return;
+          }
+        });
+          if (!found){
+            TempUsers.push(element);
+          }
+      }
+      this.reciverUser[index] = TempUsers;
+      console.log(this.reciverUser[index])
+    });
+  }
+}
 
   //get all messages
 getMessages() {
@@ -155,23 +187,5 @@ getMessages() {
         body : '',
         recipients: '',
         thread_id : ''
-};
-//   {
-//         "subject": "message3",
-//         "body" : "tesst create",
-//         "recipients": "16",
-//         "thread_id" : "5"
-//   }
-
-   sendMess(){
-      this.pm.sendMessage(this.messageData).subscribe(res => {
-      res.subscribe(res => {
-        this.messageData = res;
-      console.log('message sent');
-      }
-      )
-     })
-      console.log(this.messageData);
-   }
-  
+  };
 }
