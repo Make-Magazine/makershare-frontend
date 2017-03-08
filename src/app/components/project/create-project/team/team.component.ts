@@ -4,6 +4,7 @@ import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
 import { Project } from '../../../../models/project/create-project/project';
+import { field_collection_item_member }  from '../../../../models/project/create-project/field_collection_item';
 
 @Component({
   selector: 'app-team',
@@ -12,7 +13,7 @@ import { Project } from '../../../../models/project/create-project/project';
 export class TeamComponent implements OnInit {
   @Input('project') project: Project;
   @Input('FormPrintableValues') FormPrintableValues;
-  
+
   TeamForm: FormGroup;
   TeamUsers = [];
   UsersDetails = [];
@@ -54,8 +55,16 @@ export class TeamComponent implements OnInit {
     this.UsersDetails[index] = [];
     this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
       this.SelectedUser[index] = data[0];
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].uid.setValue(uid);
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_sort_order.setValue(index+1);
+      let member:field_collection_item_member = {
+        field_team_member:{und:[{target_id:data[0].username+' ('+uid+')'}]},
+        field_sort_order:{und:[{value:index+1}]},
+        field_membership_role:{und:[{value:this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_membership_role.value}]}
+      };
+      this.project.field_maker_memberships.und.push(member);
     });
-    this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].uid.setValue(uid);
   }
   RefreshUsers(index,value){
     this.TeamUsers[index] = [];
