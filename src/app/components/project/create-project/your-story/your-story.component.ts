@@ -13,6 +13,8 @@ import { Project } from '../../../../models/project/create-project/project';
   styles : [`
       .add-cate {margin-left:5px}
       .cate-name {margin: 3px 0}
+      .projectCategory {width:60%}
+      .projectCategory select {width:75%;}
   
   `]
 })
