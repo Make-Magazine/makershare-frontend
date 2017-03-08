@@ -12,7 +12,7 @@ import { ViewService } from '../../../../d7services/view/view.service'
 })
 export class ProjectStoryComponent implements OnInit {
 
-@Input() project; 
+@Input() project;
   constructor(
     private nodeComment:CommentService,
     private viewService:ViewService,
@@ -35,27 +35,27 @@ export class ProjectStoryComponent implements OnInit {
       }
       //  console.log(this.comments);
     });
-    var i = 0;
-    var source = Observable.create(observer => {
-      for( let maker of this.project.field_collaborators){
-        observer.next(
-        this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-          this.collabs[i] = {};
-          this.collabs[i] = data[0];
-          console.log(this.collabs[i])
-          i++;
-        }))
-      }
-        observer.onCompleted();
-
-    });
+    // var i = 0;
+    // var source = Observable.create(observer => {
+    //   for( let maker of this.project.field_collaborators){
+    //     observer.next(
+    //     this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
+    //       this.collabs[i] = {};
+    //       this.collabs[i] = data[0];
+    //       console.log(this.collabs[i])
+    //       i++;
+    //     }))
+    //   }
+    //     observer.onCompleted();
+    //
+    // });
     // var subscription = source.subscribe(
     // x => console.log('onNext: %s', x),
     // e => console.log('onError: %s', e),
     // () => console.log('onCompleted'));
-    
+
  }//End ngOnInit
- 
-  
- 
+
+
+
 }// End export

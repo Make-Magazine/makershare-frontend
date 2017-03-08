@@ -46,11 +46,13 @@ export class SinglShowcaseComponent implements OnInit {
      this.router.navigate(['']);
    }
    public goToProject(nid, projectIndex){
+     debugger
      let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": nid,
-                "showcase": this.showcase,
-                "projectIndex": projectIndex 
+                "showcase": JSON.stringify(this.showcase),
+                "projectIndex": projectIndex,
+                "projects":JSON.stringify(this.projects)
             }
      }
      this.router.navigate(['project/view/', nid], navigationExtras);

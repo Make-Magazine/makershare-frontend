@@ -24,6 +24,7 @@ export class ProjectDetailsComponent implements OnInit {
   projectId;
   showcase={};
   projectIndex=0;
+  projects=[];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,10 +35,16 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
             this.projectId = params["projectId"];
-            this.showcase = params["showcase"];
+            this.showcase = JSON.parse(params["showcase"]);
             this.projectIndex = params["projectIndex"];
+            this.projects = JSON.parse(params["projects"]);
 
         });
+        debugger
+        console.log(this.showcase);
+        console.log(this.projectId);
+        console.log(this.projectIndex);
+        console.log(this.projects);
    }
    
 
