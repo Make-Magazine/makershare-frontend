@@ -270,13 +270,9 @@ sort_by:string;
               this.countProjects=data[0];
              console.log(this.countProjects);
             });
-<<<<<<< HEAD
-        }
-=======
  }
         /*end function count project in challenge*/
 
->>>>>>> 2e51a478c23d3c7717f93200aeedc9eb90ea7b91
       enterToChallengeProject(nid){
            console.log("enter to project"+ nid);
               this.router.navigate(['/enter-challenge',nid]);
