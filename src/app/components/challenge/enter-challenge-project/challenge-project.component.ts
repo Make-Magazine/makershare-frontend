@@ -17,7 +17,7 @@ export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
-userId: string;
+userId: number;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
@@ -27,16 +27,17 @@ userId: string;
 ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
+this.userId = parseInt(localStorage.getItem('user_id'));
+console.log(this.userId);  
 
 this.getAllProject();
-this.userId = localStorage.getItem('user_id');
-console.log(localStorage.getItem('user_id'));  
+
 }
 
 getAllProject(){
 
   this.route.params
-    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId['uid']]]))
+    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId]]))
     .subscribe(data =>{
       this.projects=data;
       console.log(this.projects);
