@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { UserProfile } from "../../../../../../models/profile/userprofile";
+import { ProfileService } from '../../../../../../d7services/profile/profile.service';
+
 
 @Component({
   selector: 'app-optional-info',
@@ -10,17 +12,31 @@ import { UserProfile } from "../../../../../../models/profile/userprofile";
 export class OptionalInfoComponent implements OnInit {
 
   @Output() saveOptional = new EventEmitter<any>();
-
+  @Input() profile: UserProfile;
+  allMarkersNames: any[] = [];
+  allMarkersUrl: any[] = [];
 
   optionalForm: FormGroup;
   imageSrc: string = "http://placehold.it/100x100";
 
   constructor(
     private fb: FormBuilder,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit() {
     this.buildForm();
+    this.profileService.getAllMarkers().subscribe(markers => {
+      for (let i = 0; i < markers.length; i++) {
+        this.allMarkersNames.push(markers[i].makerspace_name);
+        this.allMarkersUrl.push(markers[i].makerspace_url);
+
+      }
+
+    }, err => {
+      console.log("error");
+      console.log(err);
+    });
   }
 
   initMakerspace() {
@@ -39,13 +55,13 @@ export class OptionalInfoComponent implements OnInit {
 
     let reader = new FileReader();
     reader.onload = (e) => {
-      this.imageSrc = reader.result;
-    //  this.optionalForm.controls['field_user_photo'].value = reader.result;
+      this.imageSrc = this.profile.field_user_photo = reader.result;
+      //  this.optionalForm.controls['field_user_photo'].value = reader.result;
     };
     reader.readAsDataURL(file);
   }
   addMakerspace() {
-    const control = <FormArray>this.optionalForm.controls['addresses'];
+    const control = <FormArray>this.optionalForm.controls['field_add_your_makerspace_s_'];
     control.push(this.initMakerspace());
   }
 
@@ -69,7 +85,8 @@ export class OptionalInfoComponent implements OnInit {
         field_youtube: [''],
         field_hackster_io: [''],
         field_instructables: [''],
-        field_hackday: ['']
+        field_hackday: [''],
+        field_preferred:['']
       })
     });
     this.optionalForm.valueChanges.subscribe(data => this.onValueChanged(data));

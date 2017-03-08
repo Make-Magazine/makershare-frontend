@@ -4,7 +4,7 @@ import { ShowcasesCollectionComponent } from './showcase-collection/showcasesCol
 
 import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.component';
 
-//import { ChallengeSummaryComponent } from './challenge-summary/challenge-summary.component';
+import { ShowcaseSortingComponent } from './showcaseSorting.component';
 
 
 @NgModule({
@@ -13,13 +13,12 @@ import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.compone
   ],
   declarations: [
     ShowcasesCollectionComponent,
-
     SinglShowcaseComponent,
-
+    ShowcaseSortingComponent
 
   ]
 })
 export class ShowcaseModule { }
 export  {ShowcasesCollectionComponent};
 export {SinglShowcaseComponent};
-//export  {ChallengeSummaryComponent};
+export  {ShowcaseSortingComponent};

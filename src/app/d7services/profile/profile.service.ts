@@ -24,9 +24,12 @@ export class ProfileService {
   getAllCountries(): Observable<any> {
     return this.mainService.get(globals.endpoint + '/maker_address_api').map(response => response.json()).catch(err => Observable.throw(err));
   }
+    getAllMarkers(): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/marker-space').map(response => response.json()).catch(err => Observable.throw(err));
+  }
 
   getByCountry(country: string): Observable<any> {
-    return this.mainService.get(globals.endpoint + '/maker_address_api' + country).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.get(globals.endpoint + '/maker_address_api/' + country).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
 }

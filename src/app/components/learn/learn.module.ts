@@ -6,7 +6,7 @@ import { PdfViewerComponent } from '../../../../node_modules/ng2-pdf-viewer';
 
 
 
-@NgModule({
+@NgModule({ 
   imports: [
     CommonModule
   ],
@@ -17,4 +17,4 @@ import { PdfViewerComponent } from '../../../../node_modules/ng2-pdf-viewer';
   ]
 })
 export class LearnModule { }
-export {LearnComponent};
+export {LearnComponent}; 
