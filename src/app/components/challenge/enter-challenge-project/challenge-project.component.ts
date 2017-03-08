@@ -49,7 +49,9 @@ getAllProject(){
 }
 
 updateSelectedProject(item:number){
+  console.log(item);
   this.selectedProject = item;
+
  console.log(this.selectedProject);
 }
 
@@ -58,7 +60,7 @@ console.log("cancel");
    this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
-
+  
   var body = {
     "type" : "challenge_entry",
     "field_entry_project" : this.selectedProject,
