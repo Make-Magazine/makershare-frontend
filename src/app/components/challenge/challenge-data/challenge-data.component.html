@@ -38,11 +38,12 @@
                 </ul>
                 <ul class="list-unstyled challenge-follow">
                   <li><a href="" class="btn btn-blue btn-sharp" (click)="followThis($event)" [class.active]="isFollowed">{{ButtonFollow}}</a></li>
-                  <li><a *ngIf="hideButton" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
+                  <!-- *ngIf="hideButton" -->
+                  <li><a  (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
                 </ul>
               </div>
               <div class="content-wrapper row">
-                <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [challenge]="challenge" [awards]="awards"  [projects]="projects" *ngIf="activeTab =='summary'"></app-summary>
+                <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [countProjects]="countProjects" [challenge]="challenge" [awards]="awards"  [projects]="projects" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
                 <app-followers [hideloadmorefollower]="hideloadmorefollower" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge"  [followers]="followers"></app-followers>

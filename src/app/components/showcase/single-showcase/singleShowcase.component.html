@@ -42,18 +42,7 @@
 
                 <div class=" filters col-md-10 col-md-offset-1">
                   <p class="pull-left">{{projects.length}} Entries</p>
-                  <div class="sorting-filter pull-right">
-                    <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#" class="btn">Most recent</a></li>
-                      <li><a href="#" class="btn">Oldest</a></li>
-                      <li><a href="#" class="btn">Title A-Z</a></li>
-                      <li><a href="#" class="btn">Title Z-A</a></li>
-                      <li><a href="#" class="btn">Most Liked</a></li>
-                      <li><a href="#" class="btn">Most Forked</a></li>
-                    </ul>
-                  </div><!-- End sorting-filter -->
+                  <showcase-sorting (sortType)="getSortType($event)" > </showcase-sorting>
                 </div>
 
             </div><!-- End filters -->
@@ -77,7 +66,7 @@
                 </div><!-- End col -->   
               </div><!-- End projects-grid row -->
             </div> 
-            <div class="col-md-8 col-md-offset-2">
+            <div [hidden] ="true"class="col-md-8 col-md-offset-2">
               <div class="col-xs-4 col-xs-offset-4 load-more">
                 <a class="btn btn-white">Load more</a>
               </div>

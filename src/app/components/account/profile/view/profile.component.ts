@@ -13,7 +13,8 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUser(1).subscribe(res => {
+    let userId = localStorage.getItem('user_id');
+    this.userService.getUser(userId).subscribe(res => {
       console.log(res);
           this.profile = res;
 

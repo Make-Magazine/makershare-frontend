@@ -44,12 +44,10 @@ export class ShowcasesCollectionComponent implements OnInit {
     }
       this.viewService.getView('views/showcases',[['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
       this.showcases = data;
+      this.loadMoreVisibilty();
     }, err => {
 
     });
-    
-    
-    this.loadMoreVisibilty();
     this.loadFlag=false;
   }
 
@@ -62,7 +60,7 @@ loadmore(){
 loadMoreVisibilty(){
  // get the challenges array count
  debugger
- if(this.showcases.length == this.showcaseCount-1){
+ if(this.showcases.length >= this.showcaseCount){
    console.log("flage");
     this.hideloadmore= true;
     console.log(this.hideloadmore);
@@ -85,7 +83,7 @@ getSortType(event:any){
 // get the count of showcases
   showcasesCount() {
       this.viewService.getView('maker_count_showcases',[]).subscribe(data => {
-      this.showcaseCount=data;
+      this.showcaseCount=data[0];
       console.log(this.showcaseCount);
     });
   }

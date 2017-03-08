@@ -1,5 +1,6 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {ISorting} from '../../../../models/challenge/sorting';
+import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html'
@@ -8,6 +9,7 @@ export class SummaryComponent implements OnInit {
 @Input() projects;
 @Input() challenge; 
 @Input() awards;
+@Input() countProjects;
 @Input() hideLoadMore;
 
 @Output() sortType = new EventEmitter<ISorting>();
@@ -19,11 +21,11 @@ sort:ISorting={
   sort_order:"",
   pageNo:0
 };
-  constructor() { }
+  constructor( private router: Router,) { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    
+    console.log(this.countProjects)
   }
 
 sortAsc(sort:ISorting){
@@ -83,6 +85,10 @@ this.sortType.emit(this.sort);
     this.pageNumber.emit(this.pages);
 //  console.log(this.pages);
   }
-
+  ShowProjectDetails(nid){
+    console.log(nid);
+    this.router.navigate(['/project/view', nid]);
+   // console.log(nid)
+  }
 
 }

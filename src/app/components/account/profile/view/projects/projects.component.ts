@@ -17,7 +17,7 @@ export class ProjectsComponent implements OnInit {
   profile_projects = [];
   ngOnInit() {
     var args = [
-      ['uid', 1],
+      ['uid', localStorage.getItem('user_id')],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
       this.profile_projects = res;
