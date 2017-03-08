@@ -229,8 +229,8 @@ sort_by:string;
           // get the challenges array count
          this.getCountProject();
          
-          if(this.countProjects-1 == this.projects.length){
-           
+          if(this.countProjects == this.projects.length){
+           console.log("equal");
             this.hideloadmoreproject = true;
           }
         }
