@@ -18,6 +18,7 @@ projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
 userId: string;
+userName: string;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
@@ -28,15 +29,18 @@ ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
 
-this.getAllProject();
+
 this.userId = localStorage.getItem('user_id');
-console.log(localStorage.getItem('user_id'));  
+this.userName = localStorage.getItem('user_name');
+console.log(this.userId);
+console.log(this.userName);
+this.getAllProject();
 }
 
 getAllProject(){
 
   this.route.params
-    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId['uid']]]))
+    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId],['uid1',this.userName]]))
     .subscribe(data =>{
       this.projects=data;
       console.log(this.projects);
@@ -87,6 +91,6 @@ onMyEntries(){
 }
 
 createNewProjectForChallenge(){
-  this.router.navigate(['/createproject',this.nid]);
+  this.router.navigate(['/project/create']);
 }
 }

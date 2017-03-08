@@ -87,10 +87,11 @@ export class ProjectDetailsComponent implements OnInit {
 
       //console.log(this.project.field_cover_photo.url)
     });
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
+    // this.userService.getStatus().subscribe(data => {
+      this.currentuser = Number(localStorage.getItem('user_id'));
+      // console.log(typeof(this.currentuser)  )
       //console.log(this.currentuser.user.uid)
-    });
+    // });
 
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit

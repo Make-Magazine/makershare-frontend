@@ -9,6 +9,7 @@ import { FileEntity } from '../../../../models/project/create-project/file_entit
 import { field_file_reference } from '../../../../models/project/create-project/field_file_reference';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-project',
@@ -79,6 +80,7 @@ export class CreateProjectComponent implements OnInit {
     private viewService: ViewService,
     private taxonomyService:TaxonomyService,
     private notificationBarService: NotificationBarService,
+    private router: Router,
   ) {}
   ngOnInit(): void {
     this.current_active_tab = 'Your Story';
@@ -99,6 +101,7 @@ export class CreateProjectComponent implements OnInit {
     this.nodeService.createNode(this.project).subscribe((project:Project) => {
       this.created = true;
       this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
+      this.router.navigate(['/user']);
       // this.project = project;
     }, err =>{
       console.log(err);
