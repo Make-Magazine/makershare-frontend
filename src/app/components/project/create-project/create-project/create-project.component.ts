@@ -8,6 +8,7 @@ import { Project } from '../../../../models/project/create-project/project';
 import { FileEntity } from '../../../../models/project/create-project/file_entity';
 import { field_file_reference } from '../../../../models/project/create-project/field_file_reference';
 import { Observable } from "rxjs";
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 @Component({
   selector: 'app-create-project',
@@ -30,7 +31,9 @@ export class CreateProjectComponent implements OnInit {
   visibility:number = 1115; // draft
   FormPrintableValues = {
     cover_image:{file:"",filename:""},
-    tags:[]
+    tags:[],
+    resources_files:[],
+    team:[],
   }
   created = false;
 
@@ -52,6 +55,12 @@ export class CreateProjectComponent implements OnInit {
     // how to values
     field_how_to:{und:[{format:null,value:""}]},
     field_tools:{und:[]},
+    field_parts:{und:[]},
+    field_materials:{und:[]},
+    field_difficulty:{und:5},
+    field_duration:{und:8},
+    field_resources:{und:[]},
+    field_maker_memberships:{und:[]},
 
     status:0,
     promote:0,
@@ -68,9 +77,9 @@ export class CreateProjectComponent implements OnInit {
     private nodeService: NodeService,
     private fileService: FileService,
     private viewService: ViewService,
-    private taxonomyService:TaxonomyService
+    private taxonomyService:TaxonomyService,
+    private notificationBarService: NotificationBarService,
   ) {}
-
   ngOnInit(): void {
     this.current_active_tab = 'Your Story';
   }
@@ -89,11 +98,11 @@ export class CreateProjectComponent implements OnInit {
     console.log(this.project);
     this.nodeService.createNode(this.project).subscribe((project:Project) => {
       this.created = true;
-      console.log('project saved')
+      this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
       // this.project = project;
     }, err =>{
-      console.log("error");
       console.log(err);
+      this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
     });
   }
 
@@ -101,8 +110,12 @@ export class CreateProjectComponent implements OnInit {
    * form update handler from all sub components "still WIP - not finished"
    * @param event : the value of the object from sub componet emitter
    */
-  UpdateTags(event){
-    this.FormPrintableValues.tags = event;
+  UpdateFields(event,component){
+    if(component === "Your Story"){
+      this.FormPrintableValues.tags = event;
+    }else{
+      this.FormPrintableValues.resources_files = event;
+    }
   }
 
   /**

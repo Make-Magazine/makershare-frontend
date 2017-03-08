@@ -24,6 +24,7 @@ export class ProjectDetailsComponent implements OnInit {
   projectId;
   showcase={};
   projectIndex=0;
+  projects=[];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,20 +35,34 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe(params => {
             this.projectId = params["projectId"];
-            this.showcase = params["showcase"];
+            this.showcase = JSON.parse(params["showcase"]);
             this.projectIndex = params["projectIndex"];
+            this.projects = JSON.parse(params["projects"]);
 
         });
+        debugger
+        console.log(this.showcase);
+        console.log(this.projectId);
+        console.log(this.projectIndex);
+        console.log(this.projects);
    }
    
 
   ngOnInit() {
+    debugger
+    this.route.params.subscribe((params: Params) => {
+        let userId = params['nid'];
+        console.log('nid');
+        console.log(userId);
+      });
+    this.route.snapshot.data[0];
     this.current_active_tab = 'project-story';
     this.route.params
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
     .subscribe(data =>{
       //console.log(data)
+
       this.project = data;
       this.projectDetails = data;
       

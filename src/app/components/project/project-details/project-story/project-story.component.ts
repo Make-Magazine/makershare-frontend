@@ -12,7 +12,7 @@ import { ViewService } from '../../../../d7services/view/view.service'
 })
 export class ProjectStoryComponent implements OnInit {
 
-@Input() project; 
+@Input() project;
   constructor(
     private nodeComment:CommentService,
     private viewService:ViewService,
@@ -51,13 +51,14 @@ export class ProjectStoryComponent implements OnInit {
         observer.onCompleted();
 
     });
-    var subscription = source.subscribe(
-    x => console.log('onNext: %s', x),
-    e => console.log('onError: %s', e),
-    () => console.log('onCompleted'));
-    
+
+    // var subscription = source.subscribe(
+    // x => console.log('onNext: %s', x),
+    // e => console.log('onError: %s', e),
+    // () => console.log('onCompleted'));
+
  }//End ngOnInit
- 
-  
- 
+
+
+
 }// End export
