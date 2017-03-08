@@ -4,6 +4,19 @@
     <div class="row">
       <section class="col-sm-12 width-fix">
         <div class="top-content-wrapper">
+          <header *ngIf="showcase.uid" class="showcase-project">
+              <ul class="container list-unstyled">
+                <li>
+                  <a [hidden]="projectIndex == 0" (click)="getProject()" class="btn btn-white btn-sharp prev">&lt; Previous</a>
+                </li>
+                <li>
+                  <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
+                </li>
+                <li>
+                  <a [hidden]="projectIndex == projects.length-1" (click)="getProject(1)" class="btn btn-white btn-sharp next">Next &gt;</a>
+                </li>
+              </ul>
+            </header>
           <div class="container">
             <div class="col-md-12">
               <ul class="list-unstyled project-actions pull-right">
@@ -28,8 +41,8 @@
             </div>
           </div><!-- End container -->
         </div><!-- End top-content-wrapper -->
-        <div class="container">           
-            <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>            
+        <div class="container">
+            <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
             <app-project-how-to [project]="projectDetails" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
         </div>
       </section>
