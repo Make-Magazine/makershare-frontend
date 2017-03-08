@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
-import{IChallenge} from '../../../models/challenge/challenge';
-import {ActivatedRoute, Params } from '@angular/router';
-import {IChallengeProject} from '../../../models/challenge/challengeProjects';
-import {MainService} from '../../../d7services/main/main.service'; 
-import {IChallengeData} from '../../../models/challenge/challengeData';
+import { IChallenge} from '../../../models/challenge/challenge';
+import { ActivatedRoute, Params } from '@angular/router';
+import { IChallengeProject } from '../../../models/challenge/challengeProjects';
+import { MainService } from '../../../d7services/main/main.service'; 
+import * as globals from '../../../d7services/globals';
+
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
@@ -16,7 +17,6 @@ export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
-challangeData:IChallengeData;
  nid : number;
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
@@ -26,18 +26,8 @@ challangeData:IChallengeData;
 ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
-this.getChallangeData();
-this.getAllProject();
-}
 
-getChallangeData(){
-    this.route.params
-    .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',this.nid['nid']]]))
-    .subscribe(data =>{
-      this.challangeData = data;
-      console.log(this.challangeData);
-      
-    });
+this.getAllProject();
 }
 
 getAllProject(){
@@ -61,12 +51,16 @@ console.log("cancel");
    this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
-   this.viewService.add('maker_challenge_entry_api', {
-                               "type" : "challenge_entry",
-                               "field_entry_project" : this.selectedProject,
-                               "field_entry_challenge" : this.nid,
-                               })                    
-                                .then((status: any) => {
+
+  var body = {
+    "type" : "challenge_entry",
+    "field_entry_project" : this.selectedProject,
+    "field_entry_challenge" : this.nid,    
+  };
+
+
+   this.viewService.add('maker_challenge_entry_api', body)                    
+                            .then((status: any) => {
                                  if (status.success == false) {
                                     alert("fail to submit");
                                     console.log("fail");
@@ -75,6 +69,12 @@ onSubmit(event: any){
                                    this.hiddenAfterSubmit = true;
                                  }
                             }); 
+
+  // this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
+  //   console.log(res);
+  // }, err => {
+  //   console.log(err);
+  // }); 
 
     console.log("submit project");
 }

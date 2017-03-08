@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import { ISorting } from '../../../models/challenge/sorting';
 
 @Component({
   selector: 'app-single-showcases',
@@ -11,7 +12,10 @@ export class SinglShowcaseComponent implements OnInit {
   showcase = {uid:""};
   profile = {};
   projects = [];
-  
+  sortData:ISorting;
+  sort_order:string;
+  sort_by:string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -19,23 +23,37 @@ export class SinglShowcaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
+    this.sort_order = "DESC";
+    this.sort_by = "changed";
     this.getShowcase();
     
     //load showcaseprojects data
-   this.route.params
+   this.getshowCaseProjects();
+      
+  }
+  getshowCaseProjects(){
+    this.route.params
+    //next line and limit in component is to be added after back-end update
+   // .switchMap((nid) => this.viewService.getView('showcase_projects',[['nid',nid['nid']],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .switchMap((nid) => this.viewService.getView('showcase_projects',[['nid',nid['nid']]]))
     .subscribe(data =>{
       this.projects=data;
     });
-      
   }
 
    goHome(){
      this.router.navigate(['']);
    }
-   goToProject(nid){
-     this.router.navigate(['project/view/', nid]);
+   public goToProject(nid, projectIndex){
+     let navigationExtras: NavigationExtras = {
+            queryParams: {
+                "projectId": nid,
+                "showcase": this.showcase,
+                "projectIndex": projectIndex 
+            }
+     }
+     this.router.navigate(['project/view/', nid], navigationExtras);
    }
 
    goToProfile(nid){
@@ -64,6 +82,13 @@ export class SinglShowcaseComponent implements OnInit {
     });
    }
 
+    getSortType(event:any){
+    this.sortData = event;
+    this.sort_by=this.sortData.sort_by;
+    this.sort_order = this.sortData.sort_order;
+    this.getshowCaseProjects();
+    //console.log(this.getProjects);
+}
    
 
   }

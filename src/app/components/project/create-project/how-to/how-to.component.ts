@@ -9,6 +9,10 @@ import { field_collection_item_tool } from '../../../../models/project/create-pr
 @Component({
   selector: 'app-how-to',
   templateUrl: './how-to.component.html',
+   styles : [`
+      .tools textarea {max-width:100%;resize:none;}
+  
+  `]
 })
 
 export class HowToComponent implements OnInit {

@@ -31,6 +31,12 @@ export class DiscussionComponent implements OnInit {
         console.log(this.comments);
     });
 
+    this.viewService.getView('node-comments',[['nid',this.CollabNid]]).subscribe(data => {
+      this.comments  =  data;
+      console.log(this.comments);
+      
+    });
+
   }
 
 

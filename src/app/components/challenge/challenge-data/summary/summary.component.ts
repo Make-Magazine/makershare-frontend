@@ -9,7 +9,7 @@ export class SummaryComponent implements OnInit {
 @Input() projects;
 @Input() challenge; 
 @Input() awards;
-@Input() countProjects;
+@Input() projectsCount;
 @Input() hideLoadMore;
 
 @Output() sortType = new EventEmitter<ISorting>();
@@ -25,7 +25,7 @@ sort:ISorting={
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    console.log(this.countProjects)
+    console.log(this.projectsCount)
   }
 
 sortAsc(sort:ISorting){

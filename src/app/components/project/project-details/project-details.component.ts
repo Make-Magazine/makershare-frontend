@@ -1,5 +1,5 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
@@ -20,14 +20,27 @@ export class ProjectDetailsComponent implements OnInit {
   isBookmarked;
   Flags = ['like','fork','node_bookmark'];
   FlagStates = [] ;
+  //showcase-projects
+  projectId;
+  showcase={};
+  projectIndex=0;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService
-  ) { }
-  
+  ) {
+    this.route.queryParams.subscribe(params => {
+            this.projectId = params["projectId"];
+            this.showcase = params["showcase"];
+            this.projectIndex = params["projectIndex"];
+
+        });
+   }
+   
+
   ngOnInit() {
     this.current_active_tab = 'project-story';
     this.route.params
@@ -37,6 +50,7 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(data)
       this.project = data;
       this.projectDetails = data;
+      
       //console.log(this.project)
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
@@ -48,19 +62,33 @@ export class ProjectDetailsComponent implements OnInit {
       this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
         this.isLiked = data[0];
       });
-       
+
        //console.log(this.FlagStates[0])
-      
-      
+
+
       //console.log(this.project.field_cover_photo.url)
     });
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
       //console.log(this.currentuser.user.uid)
     });
-   
+
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
+
+  getProject(){
+    
+    console.log(this.project);
+    //  let navigationExtras: NavigationExtras = {
+    //         queryParams: {
+    //             "projectId": nid,
+    //             "showcase": this.showcase,
+    //             "projectIndex": projectIndex 
+    //         }
+    //  }
+    //  this.router.navigate(['project/view/', nid], navigationExtras);
+
+  }
   changeProjectTab(NewTab){
     this.current_active_tab = NewTab;
   }
@@ -76,14 +104,14 @@ export class ProjectDetailsComponent implements OnInit {
       });
 
     }
-    
+
     // this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like');
   }
   forkThis(e: Event){
     e.preventDefault();
     //console.log('forked')
   }
-  
+
   bookmarkThis(e: Event){
     e.preventDefault();
      if(this.isBookmarked){

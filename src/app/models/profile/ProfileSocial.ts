@@ -9,5 +9,6 @@ export interface ProfileSocial {
   field_youtube?: string,
   field_hackster_io?: string,
   field_instructables?: string,
-  field_hackday?: string
+  field_hackday?: string,
+  field_preferred?: string
   } 
