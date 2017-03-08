@@ -11,6 +11,10 @@ import { FileEntity } from '../../../../models/project/create-project/file_entit
 @Component({
   selector: 'app-how-to',
   templateUrl: './how-to.component.html',
+   styles : [`
+      .tools textarea {max-width:100%;resize:none;}
+  
+  `]
 })
 
 export class HowToComponent implements OnInit {
