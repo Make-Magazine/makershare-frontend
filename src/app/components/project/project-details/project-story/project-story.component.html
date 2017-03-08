@@ -81,7 +81,7 @@
         <div class="panel-heading">
           <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="project.field_aha_moment">
           <p>{{project.field_aha_moment.value}}</p>
         </div>
       </div>
@@ -89,7 +89,7 @@
         <div class="panel-heading">
           <h3><i class="fa fa-bomb"></i>UH-OH! Moment</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="project.field_aha_moment">
           <p>{{project.field_uh_oh_moment.value}}</p>
         </div>
       </div>

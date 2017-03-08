@@ -55,11 +55,11 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
-        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(data =>{
         this.isBookmarked = data[0];
         //console.log(this.isBookmarked)
       });
-      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'like').subscribe(data =>{
         this.isLiked = data[0];
       });
 
@@ -68,10 +68,11 @@ export class ProjectDetailsComponent implements OnInit {
 
       //console.log(this.project.field_cover_photo.url)
     });
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
+    // this.userService.getStatus().subscribe(data => {
+      this.currentuser = Number(localStorage.getItem('user_id'));
+      // console.log(typeof(this.currentuser)  )
       //console.log(this.currentuser.user.uid)
-    });
+    // });
 
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
@@ -95,11 +96,11 @@ export class ProjectDetailsComponent implements OnInit {
   likeThis(e: Event){
     e.preventDefault();
     if(this.isLiked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = !response[0];
       });
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = response[0];
       });
 
@@ -115,12 +116,12 @@ export class ProjectDetailsComponent implements OnInit {
   bookmarkThis(e: Event){
     e.preventDefault();
      if(this.isBookmarked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = !response[0];
       });
       this.isBookmarked= !this.isBookmarked;
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = response[0];
       });
     }
