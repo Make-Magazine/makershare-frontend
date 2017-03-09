@@ -20,8 +20,9 @@ projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
 userId: number;
- nid : number;
- challangeData: IChallengeData ={
+userName: string;
+nid : number;
+challangeData: IChallengeData ={
 title: "",
 cover_image:"",
 sponsored_by:"",
@@ -64,8 +65,7 @@ ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
 this.userId = parseInt(localStorage.getItem('user_id'));
-console.log(this.userId);  
-
+this.userName = localStorage.getItem('user_name');
 this.getAllProject();
 this.getChallangeData();
 
@@ -74,7 +74,7 @@ this.getChallangeData();
 getAllProject(){
 
   this.route.params
-    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId]]))
+    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId],['uid1',this.userName]]))
     .subscribe(data =>{
       this.projects=data;
       console.log(this.projects);
@@ -94,8 +94,9 @@ getChallangeData(){
     });
 }
 updateSelectedProject(item:number){
+  console.log(item);
   this.selectedProject = item;
- console.log(this.selectedProject);
+  console.log(this.selectedProject);
 }
 
 onCancel(event: any){
@@ -103,7 +104,7 @@ console.log("cancel");
    this.router.navigate(['/challenges']);
 }
 onSubmit(event: any){
-
+  
   var body = {
     "type" : "challenge_entry",
     "field_entry_project" : this.selectedProject,
