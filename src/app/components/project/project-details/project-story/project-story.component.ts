@@ -86,7 +86,7 @@ export class ProjectStoryComponent implements OnInit {
         let tempComm = {
           subject: this.commentData.subject,
           comment: this.commentData.comment_body.und[0].value ,
-          update_date : new Date("25/03/25T12:00:00"),
+          update_date : new Date(),
           first_name : this.currentUser.first_name,
           last_name : this.currentUser.last_name,
           nickname : this.currentUser.nickname,
