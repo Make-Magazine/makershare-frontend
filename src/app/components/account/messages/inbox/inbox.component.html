@@ -18,7 +18,7 @@
         <div *ngIf="msg"> 
         <li class="message-item" *ngFor="let message of msg">
           <div class="select">
-            <input type="checkbox" *ngIf="message.mid" >{{message.mid}}
+            <input type="checkbox" *ngIf="message.mid" >
           </div>
           <div class="wrapper" >
             <div class="media message-info">
@@ -29,7 +29,7 @@
               </div>
               <div class="media-body">
                 <p class="sender"><a href="">First Lastname</a> sent you a message</p>
-                <p class="timestamp">{{message.last_updated}}</p>
+                <p class="timestamp">{{message.last_updated | date}}</p>
               </div>
             </div>
             <div class="message-subject">
@@ -59,11 +59,21 @@
                 </div>
                 <div class="modal-body">
                   <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg" class="form-horizontal">
-                    <div class="form-group recieve">
+                    <div class="form-group"  *ngIf="!SelectedUser[i]">
                       <label class="control-label"  for="recipients-{{i + 1}}" >To:</label>
-                      <div class="">
                         <input type="text" class="form-control" name="recipients" id="recipients-{{i + 1}}"  formControlName="recipients" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
-                      </div>
+                        <div *ngIf="reciverUser[i]" >
+                              <div *ngFor="let User of reciverUser[i]" (click)="SetMember(User.uid,i)" class="result">
+                                <div class="user-image-container">
+                                  <img *ngIf="User.photo" src="{{User.photo}}">
+                                  <img *ngIf="!User.photo" src="http://placehold.it/140x140">
+                                </div>
+                                <div class="data-container">
+                                  <p>{{User.first_name}} {{User.last_name}}</p>
+                                  <p>{{User.nickname}}</p> 
+                                </div>
+                              </div>
+                        </div>
                       <div *ngIf="formErrors.recipients" class="alert alert-danger">
                          {{ formErrors.recipients }}
                       </div>

@@ -108,6 +108,13 @@ export class InboxComponent implements OnInit {
 
     
   };
+  SetMember(uid,index){
+    this.reciverUser[index] = [];
+    this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
+      this.SelectedUser[index] = data[0];
+    });
+    this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
+  }
   RefreshUsers(index,value){
   this.reciverUser[index] = [];
   if(value.length > 1){
@@ -128,7 +135,7 @@ export class InboxComponent implements OnInit {
           }
       }
       this.reciverUser[index] = TempUsers;
-      console.log(this.reciverUser[index])
+      //console.log(this.reciverUser[index])
     });
   }
 }
@@ -137,7 +144,7 @@ export class InboxComponent implements OnInit {
 getMessages() {
       this.pm.getMessages().subscribe(data => {
       this.messages=data;
-      console.log(this.messages);
+      //console.log(this.messages);
       //convert message to array
       let msg_arr = [];
       for(let key in this.messages){
@@ -145,10 +152,16 @@ getMessages() {
           msg_arr.push(this.messages[key]);
         }
         this.msg= msg_arr
+       // console.log(this.msg)
       }
       for (var _i = 0; _i < this.msg.length; _i++) {
         this.num = this.msg[_i];
-        console.log(this.num.last_updated+ new Date())
+           
+var dateObjectName = new Date(this.num.last_updated);
+console.log(dateObjectName)
+
+
+
         let num_arr = [];
           for(let key in this.num){
             if(typeof(this.num[key])=='object' && this.num.hasOwnProperty(key)){
@@ -157,6 +170,7 @@ getMessages() {
             this.num2= num_arr
             for(var i = 0; i < this.num2.length; i++) {
             this.num3 = this.num2[i];
+            //console.log(this.num3)
             // for (let user in this.num3){
             //   console.log(this.num3[user].uid);
             //   // if(user['uid'] !== 'currentUser'){
@@ -189,3 +203,18 @@ getMessages() {
         thread_id : ''
   };
 }
+
+  // 24 hours ago , 12 day ago 
+  //   function JSClock() {
+  //   var time = new Date();
+  //   var hour = time.getHours();
+  //   var minute = time.getMinutes();
+  //   var second = time.getSeconds();
+  //   var temp = '' + ((hour > 12) ? hour - 12 : hour);
+  //   if (hour == 0)
+  //     temp = '12';
+  //   temp += ((minute < 10) ? ':0' : ':') + minute;
+  //   temp += ((second < 10) ? ':0' : ':') + second;
+  //   temp += (hour >= 12) ? ' P.M.' : ' A.M.';
+  //   return temp;
+  // }
