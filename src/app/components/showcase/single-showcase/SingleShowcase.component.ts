@@ -27,7 +27,8 @@ export class SinglShowcaseComponent implements OnInit {
     this.sort_order = "DESC";
     this.sort_by = "changed";
     this.getShowcase();
-    
+    console.log('nid');
+    console.log(this.route.snapshot.data[0]);
     //load showcaseprojects data
    this.getshowCaseProjects();
       
@@ -46,11 +47,13 @@ export class SinglShowcaseComponent implements OnInit {
      this.router.navigate(['']);
    }
    public goToProject(nid, projectIndex){
+     debugger
      let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": nid,
-                "showcase": this.showcase,
-                "projectIndex": projectIndex 
+                "showcase": JSON.stringify(this.showcase),
+                "projectIndex": projectIndex,
+                "projects":JSON.stringify(this.projects)
             }
      }
      this.router.navigate(['project/view/', nid], navigationExtras);
