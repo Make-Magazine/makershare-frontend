@@ -7,9 +7,9 @@ body: string;
 rules:string;
 display_entries: number;
 nid: number;
-challenge_start_date:IChallengeStartDate;
-challenge_end_date: IChallengeEndDate;
-winners_announcement_date: IChallengeAnnouncementData;
+challenge_start_date?:IChallengeStartDate;
+challenge_end_date?: IChallengeEndDate;
+winners_announcement_date?: IChallengeAnnouncementData;
 }
 
 export interface IChallengeStartDate{
