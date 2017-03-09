@@ -11,9 +11,9 @@ import { AllProfileComponent } from './components/account/profile/edit/all-profi
 
 import { ChallengeProjectComponent } from "./components/challenge/enter-challenge-project/challenge-project.component"
 
-import {CreateProjectComponent} from "./components/project/create-project/create-project/create-project.component";
 
 const APP_ROUTES: Routes = [
+    { path: 'project', loadChildren:'app/components/project/project.module#ProjectModule' },
     { path: '', component: HomeComponent },
     { path: 'user', component: ProfileComponent },
     { path: 'showcases', component: ShowcasesCollectionComponent },
@@ -30,7 +30,6 @@ const APP_ROUTES: Routes = [
     { path: 'profile', component: AllProfileComponent },
    { path: 'workshop/:nid', component: IndividualWorkshopComponent },
    {path:'enter-challenge/:nid' , component:ChallengeProjectComponent},
-   {path: 'createproject/:nid' , component:CreateProjectComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

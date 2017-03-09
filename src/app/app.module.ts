@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -23,7 +24,6 @@ import { ExploreComponent } from './components/explore/explore.component';
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
 import { ShowcaseModule } from './components/showcase/showcases.module';
-import { ProjectModule } from './components/project/project.module';
 import { AccountModule } from './components/account/account.module';
 import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
@@ -46,7 +46,7 @@ import { Auth } from './auth0/auth.service';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    ProjectModule,
+    RouterModule,
     AccountModule,
     ChallengeModule,
     ShowcaseModule,
