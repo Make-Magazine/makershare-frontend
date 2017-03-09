@@ -1,6 +1,7 @@
 import { Address } from './address';
 import { ProfileSocial } from './ProfileSocial';
 import { Intrests } from './intrests';
+import { markerspace } from './markerspace';
 
 export interface UserProfile {
 name?: string,
@@ -11,6 +12,7 @@ roles?:number [],
 uid?: number,
 changed?: number,
 field_bio?: string,
+field_add_your_makerspace_s_?:markerspace[];
 // field_add_your_makerspace_s_: [
 // {
 // field_makerspace_name: {
