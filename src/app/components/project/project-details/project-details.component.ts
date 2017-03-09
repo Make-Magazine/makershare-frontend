@@ -43,7 +43,6 @@ export class ProjectDetailsComponent implements OnInit {
       }
 
         });
-        debugger
         console.log(this.showcase);
         console.log(this.projectId);
         console.log(this.projectIndex);
@@ -53,7 +52,6 @@ export class ProjectDetailsComponent implements OnInit {
    
 
   ngOnInit() {
-    debugger
     this.route.params.subscribe((params: Params) => {
         let userId = params['nid'];
         console.log('nid');
@@ -70,7 +68,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = data;
       this.projectDetails = data;
       
-      //console.log(this.project)
+      console.log(this.project)
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
@@ -113,7 +111,6 @@ export class ProjectDetailsComponent implements OnInit {
                 "projects":JSON.stringify(this.projects)
             }
      }
-     debugger
      this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
      this.ngOnInit();
 
