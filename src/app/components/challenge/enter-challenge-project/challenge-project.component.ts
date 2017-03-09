@@ -96,8 +96,7 @@ getChallangeData(){
 updateSelectedProject(item:number){
   console.log(item);
   this.selectedProject = item;
-
- console.log(this.selectedProject);
+  console.log(this.selectedProject);
 }
 
 onCancel(event: any){

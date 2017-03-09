@@ -43,21 +43,19 @@ export class ProjectDetailsComponent implements OnInit {
       }
 
         });
-        debugger
-        console.log(this.showcase);
-        console.log(this.projectId);
-        console.log(this.projectIndex);
-        console.log(this.projects);
+        // console.log(this.showcase);
+        // console.log(this.projectId);
+        // console.log(this.projectIndex);
+        // console.log(this.projects);
         
    }
    
 
   ngOnInit() {
-    debugger
     this.route.params.subscribe((params: Params) => {
         let userId = params['nid'];
-        console.log('nid');
-        console.log(userId);
+        // console.log('nid');
+        // console.log(userId);
       });
     this.route.snapshot.data[0];
     this.current_active_tab = 'project-story';
@@ -70,7 +68,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.project = data;
       this.projectDetails = data;
       
-      //console.log(this.project)
+      // console.log(this.project)
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
@@ -98,13 +96,13 @@ export class ProjectDetailsComponent implements OnInit {
 
   getProject(event: Event, action: any){
     event.preventDefault();
-    console.log(action);
+    // console.log(action);
     if(action == "back"){
     this.projectIndex--;
     }else if(action =="next"){
       this.projectIndex++;
     }
-    console.log(this.project);
+    // console.log(this.project);
     let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": this.projects[this.projectIndex].nid,
@@ -113,8 +111,8 @@ export class ProjectDetailsComponent implements OnInit {
                 "projects":JSON.stringify(this.projects)
             }
      }
-     debugger
      this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
+     this.ngOnInit();
 
   }
   changeProjectTab(NewTab){
