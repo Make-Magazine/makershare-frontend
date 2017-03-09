@@ -115,6 +115,7 @@ export class ProjectDetailsComponent implements OnInit {
      }
      debugger
      this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
+     this.ngOnInit();
 
   }
   changeProjectTab(NewTab){

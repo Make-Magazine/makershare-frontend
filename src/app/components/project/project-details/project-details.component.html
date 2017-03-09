@@ -7,13 +7,13 @@
           <header *ngIf="showcase.uid" class="showcase-project">
               <ul class="container list-unstyled">
                 <li>
-                  <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" class="btn btn-white btn-sharp prev">&lt; Previous</a>
+                  <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" type="button" class="btn btn-white btn-sharp prev">&lt; Previous</a>
                 </li>
                 <li>
                   <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
                 </li>
                 <li>
-                  <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" class="btn btn-white btn-sharp next">Next &gt;</a>
+                  <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" type="button" class="btn btn-white btn-sharp next">Next &gt;</a>
                 </li>
               </ul>
             </header>
