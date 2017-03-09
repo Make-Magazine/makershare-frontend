@@ -10,9 +10,16 @@
 </div>
 </form>
 
-<div *ngIf="comments">
+<div >
    <div  *ngFor="let comment of comments">
-      <div class="col-lg-10" [innerHTML]="comment.author"> </div> 
-      <div class="col-lg-10" [innerHTML]="comment.comment"> </div>
+      <div class="col-lg-10">
+        <p class="col-lg-4">{{comment.comment}}</p>
+        
+       <img class="col-lg-2" src="{{comment.photo}}" alt="" class="img-responsive"> 
+       <P class="col-lg-2"> {{comment.update_date}}</P>
+       <p class="col-lg-2">{{comment.nickname}}</p> 
+       </div> 
+  
    </div>
 </div>
+
