@@ -7,6 +7,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import { MainService } from '../../../d7services/main/main.service'; 
 import * as globals from '../../../d7services/globals';
+import {IChallengeStartDate,IChallengeData,IChallengeEndDate,IChallengeAnnouncementData} from '../../../models/challenge/challengeData';
+
 
 @Component({
   selector: 'enter-challenges-project',
@@ -17,9 +19,42 @@ export class ChallengeProjectComponent implements OnInit {
 projects:IChallengeProject[];
 selectedProject : number;
 hiddenAfterSubmit : boolean =false;
-userId: string;
-userName: string;
+userId: number;
  nid : number;
+ challangeData: IChallengeData ={
+title: "",
+cover_image:"",
+sponsored_by:"",
+public_voting: 0,
+body: "",
+rules:"",
+display_entries: 0,
+nid: 0,
+challenge_start_date :{
+  value: "",
+timezone: "",
+timezone_db: "",
+date_type: "",
+},
+challenge_end_date:{
+  value: "",
+timezone: "",
+timezone_db: "",
+date_type: "",
+},
+winners_announcement_date :{
+  value: "",
+timezone: "",
+timezone_db: "",
+date_type: "",
+},
+ };
+ challangStartDate:IChallengeStartDate={
+     value: "",
+timezone: "",
+timezone_db: "",
+date_type: "",
+ };
  constructor( private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
@@ -28,19 +63,18 @@ userName: string;
 ngOnInit(){
 
 this.nid = this.route.snapshot.params['nid'];
+this.userId = parseInt(localStorage.getItem('user_id'));
+console.log(this.userId);  
 
-
-this.userId = localStorage.getItem('user_id');
-this.userName = localStorage.getItem('user_name');
-console.log(this.userId);
-console.log(this.userName);
 this.getAllProject();
+this.getChallangeData();
+
 }
 
 getAllProject(){
 
   this.route.params
-    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId],['uid1',this.userName]]))
+    .switchMap((nid) => this.viewService.getView('profile_projects_grid',[['uid',this.userId]]))
     .subscribe(data =>{
       this.projects=data;
       console.log(this.projects);
@@ -48,6 +82,17 @@ getAllProject(){
     });
 }
 
+getChallangeData(){
+
+  this.route.params
+    .switchMap((nid) => this.viewService.getView('challenge_data',[['nid',this.nid]]))
+    .subscribe(data =>{
+      this.challangeData=data;
+      this.challangStartDate = this.challangeData.challenge_start_date;
+      console.log(this.challangStartDate);
+      
+    });
+}
 updateSelectedProject(item:number){
   this.selectedProject = item;
  console.log(this.selectedProject);
@@ -92,5 +137,9 @@ onMyEntries(){
 
 createNewProjectForChallenge(){
   this.router.navigate(['/project/create']);
+}
+
+setDayLeft(){
+
 }
 }

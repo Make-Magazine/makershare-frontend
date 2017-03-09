@@ -23,8 +23,8 @@
           </header>
           <div class="container">
             <div class="region region-content col-sm-12">
-                <app-basic-info [hidden]="currentTab !== 'basic'"     (saveBasic)="saveBasic($event)" ></app-basic-info>
-                <app-optional-info [hidden]="currentTab !== 'optional'"  (saveOptional)="saveOptional($event)"  ></app-optional-info>
+                <app-basic-info [hidden]="currentTab !== 'basic'"   [profile]="userProfile"  (saveBasic)="saveBasic($event)" ></app-basic-info>
+                <app-optional-info [hidden]="currentTab !== 'optional'" [profile]="userProfile"   (saveOptional)="saveOptional($event)"  ></app-optional-info>
 
             </div><!-- End region-content -->
           </div>
