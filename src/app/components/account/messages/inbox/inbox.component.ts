@@ -23,12 +23,44 @@ export class InboxComponent implements OnInit {
       subject: '',
       body: '',
     };
-    
-  onSubmit(e) {
+     SetMember(uid,index){
+    this.reciverUser[index] = [];
+    this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
+      this.SelectedUser[index]=data[0];
+      this.anothUser = data
+     console.log(this.anothUser)
+    });
+    //this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
+    //console.log(this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid))
+  }
+  RefreshUsers(index,value){
+  this.reciverUser[index] = [];
+  if(value.length > 1){
+    this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
+      this.reciverUser[index] = data;
+      var TempUsers = [];
+      for(let index in data){
+        var found = false;
+        let element = data[index]; 
+        this.SelectedUser.forEach(addeduser => {
+          if(addeduser.uid === element.uid){
+            found = true;
+            return;
+          }
+        });
+          if (!found){
+            TempUsers.push(element);
+          }
+      }
+      this.reciverUser[index] = TempUsers;
+      //console.log(this.reciverUser[index])
+    });
+  }
+}
+  onSubmit(e, index) {
     e.preventDefault();
     if(this.messageForm.valid){
-       console.log(this.messageForm.value);
-       this.messageObj.recipients = this.messageForm.value.recipients;
+       this.messageObj.recipients = this.SelectedUser[index].username;
        this.messageObj.body = this.messageForm.value.body;
        this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
@@ -51,6 +83,7 @@ export class InboxComponent implements OnInit {
   num:any
   num2:any
   num3:any
+  anothUser:any
   
 
   constructor( private route: ActivatedRoute,
@@ -97,48 +130,15 @@ export class InboxComponent implements OnInit {
   };
   validationMessages = {
     'recipients': {
-    'required':'Name is required.',
+      'required':'Name is required.',
     },
     'subject': {
-    'required':'Subject is required.',
+      'required':'Subject is required.',
     },
     'body': {
-    'required':'Message Body is required.',
+      'required':'Message Body is required.',
     },
-
-    
   };
-  SetMember(uid,index){
-    this.reciverUser[index] = [];
-    this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
-      this.SelectedUser[index] = data[0];
-    });
-    this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
-  }
-  RefreshUsers(index,value){
-  this.reciverUser[index] = [];
-  if(value.length > 1){
-    this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
-      this.reciverUser[index] = data;
-      var TempUsers = [];
-      for(let index in data){
-        var found = false;
-        let element = data[index]; 
-        this.SelectedUser.forEach(addeduser => {
-          if(addeduser.uid === element.uid){
-            found = true;
-            return;
-          }
-        });
-          if (!found){
-            TempUsers.push(element);
-          }
-      }
-      this.reciverUser[index] = TempUsers;
-      //console.log(this.reciverUser[index])
-    });
-  }
-}
 
   //get all messages
 getMessages() {
@@ -152,16 +152,12 @@ getMessages() {
           msg_arr.push(this.messages[key]);
         }
         this.msg= msg_arr
-       // console.log(this.msg)
+       //console.log(this.msg)
       }
       for (var _i = 0; _i < this.msg.length; _i++) {
         this.num = this.msg[_i];
-           
-var dateObjectName = new Date(this.num.last_updated);
-console.log(dateObjectName)
-
-
-
+       // console.log(this.num.thread_id)
+          
         let num_arr = [];
           for(let key in this.num){
             if(typeof(this.num[key])=='object' && this.num.hasOwnProperty(key)){
