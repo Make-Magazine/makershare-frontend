@@ -136,7 +136,7 @@ onMyEntries(){
 }
 
 createNewProjectForChallenge(){
-  this.router.navigate(['/createproject',this.nid]);
+  this.router.navigate(['/project/create']);
 }
 
 setDayLeft(){

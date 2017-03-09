@@ -63,16 +63,16 @@
               <label for="collab-order-{{i + 1}}">Sort Order</label>
               <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
               <div class="carets">
-                <i *ngIf="i > 1" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_team_member')"></i>
-                <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && (i !==0)" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_team_member')"></i>
+                <i *ngIf="i > 1" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
+                <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && (i !==0)" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
               </div>
-              <small *ngIf="formErrors.field_team_member[i].field_sort_order" class="text-danger">
-                {{formErrors.field_team_member[i].field_sort_order}}
+              <small *ngIf="formErrors.field_maker_memberships[i].field_sort_order" class="text-danger">
+                {{formErrors.field_maker_memberships[i].field_sort_order}}
               </small>
             </div>
           </div>
         </div>
-        <a *ngIf="(TeamForm.controls.field_team_member.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_team_member')" class="btn btn-transparent remove">Remove</a>
+        <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
       <div *ngIf="i!==0" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_maker_memberships')" dnd-draggable [dropZones]="['TeamZone']">
         <div class="panel-body" [formGroupName]="i">

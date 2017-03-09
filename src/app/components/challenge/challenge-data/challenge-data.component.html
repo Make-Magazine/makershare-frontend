@@ -33,7 +33,10 @@
                   <li><a  class="btn btn-light-grey active" (click)="changeChallangeTab('summary',$event)">Challenge Summary</a></li>
                   <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('awards',$event)" >Awards &amp; Prizes <span class="badge">{{no_of_awards}}</span></a></li>
                   <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
-                  <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)" >Disscusson</a></li>
+                   <div *ngIf="challenge"> 
+              <div *ngIf="challenge.discussion =='1'"> 
+                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)" >Disscusson</a></li>
+                   </div></div>
                   <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
                 </ul>
                 <ul class="list-unstyled challenge-follow">
@@ -45,7 +48,10 @@
               <div class="content-wrapper row">
                 <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards"  [projects]="projects" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
-                <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
+           
+              <app-discussion  *ngIf="activeTab =='discussion'" [challenge]="challenge">
+              </app-discussion>
+               
                 <app-followers [hideloadmorefollower]="hideloadmorefollower" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge"  [followers]="followers"></app-followers>
                 <app-awards  *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
                 

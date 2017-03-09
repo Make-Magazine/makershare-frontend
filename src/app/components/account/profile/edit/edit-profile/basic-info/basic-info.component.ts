@@ -103,7 +103,8 @@ export class BasicInfoComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.basicForm) { return; }
-
+    console.log(data);
+    console.log(this.basicForm);
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);
 
