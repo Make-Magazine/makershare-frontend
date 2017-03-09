@@ -46,7 +46,7 @@ export class ProjectStoryComponent implements OnInit {
           this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
             this.collabs[i] = {};
             this.collabs[i] = data[0];
-            console.log(this.collabs[i])
+            // console.log(this.collabs[i])
             i++;
           }))
       }
@@ -82,7 +82,21 @@ export class ProjectStoryComponent implements OnInit {
       this.commentData.comment_body.und[0].value = this.commentForm.value.comment_body;
       this.commentData.nid = this.project.nid;
       this.commentService.createComment(this.commentData).subscribe(res => {
-        this.getComments();
+        // this.comments.push(this.commentData)
+        let tempComm = {
+          subject: this.commentData.subject,
+          comment: this.commentData.comment_body.und[0].value ,
+          update_date : new Date("25/03/25T12:00:00"),
+          first_name : this.currentUser.first_name,
+          last_name : this.currentUser.last_name,
+          nickname : this.currentUser.nickname,
+          photo : this.currentUser.photo,
+        }
+        // console.log(tempComm)
+        // console.log(this.commentData)
+        // this.getComments();
+        this.comments.push(tempComm)
+        // console.log(tempComm)
       }, err => {
       });
     }
