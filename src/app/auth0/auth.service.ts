@@ -80,9 +80,16 @@ export class Auth {
 
   public logout() {
     // Remove token from localStorage
-    localStorage.removeItem('id_token');
-    this.mainService.removeCookies();
-    this.router.navigateByUrl('/');
+    this.userService.auth0_logout().subscribe(res => {
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('user_name');
+      this.mainService.removeCookies();
+      this.router.navigateByUrl('/');          
+    }, err =>{
+      console.log(err);
+    });
+
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
 
     
