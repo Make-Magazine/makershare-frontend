@@ -76,7 +76,6 @@ export class DiscussionComponent implements OnInit {
           comment: this.commentData.comment_body.und[0].value,
         }
         this.comments.push(newComment);
-        console.log(this.newcomment.nickname);
       }, err => { });
     }
     this.commentForm.reset();
