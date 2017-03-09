@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../d7services/user/user.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
