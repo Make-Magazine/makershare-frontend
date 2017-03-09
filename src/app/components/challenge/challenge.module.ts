@@ -9,19 +9,21 @@ import { DiscussionComponent } from './challenge-data/discussion/discussion.comp
 import { FollowersComponent } from './challenge-data/followers/followers.component';
 import { SummaryComponent } from './challenge-data/summary/summary.component';
 import { AwardsComponent } from './challenge-data/awards/awards.component';
-import {ChallengeProjectComponent} from './enter-challenge-project/challenge-project.component';
-
+import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ChallengesComponent,
     ChallengeDataComponent,
     ChallengeSummaryComponent,
     FollowersComponent,
-   ChallengeProjectComponent,
+    ChallengeProjectComponent,
     RulesComponent,
     DiscussionComponent,
     SummaryComponent,

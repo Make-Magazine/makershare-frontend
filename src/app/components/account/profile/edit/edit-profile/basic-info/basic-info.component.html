@@ -35,19 +35,19 @@
 		<label for="userCity">Where do you live?</label>
 		<div class="row" formGroupName="field_address">
 			<div class="col-md-3">
-				     <select 	formControlName="country" name="Select country" (ngModelChange)="setCountry($event)"  class="ui fluid search selection dropdown"> 
-        <option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
-      </select>
+				<select 	formControlName="country" name="Select country" (ngModelChange)="setCountry($event)"  class="ui fluid search selection dropdown"> 
+        	<option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
+      	</select>
 
 				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
 					country is required
 				</div> 
 			</div>
-			<div class="col-md-2">
-							     <select *ngIf="!isCity"	formControlName="state" name="Select country"   class="ui fluid search selection dropdown"> 
-        <option *ngFor="let stat of items" [attr.value]="stat">{{stat}}</option>
-      </select>
-			
+			<div class="col-md-3">
+					<select *ngIf="!isCity"	formControlName="state" name="Select country"   class="ui fluid search selection dropdown"> 
+        		<option *ngFor="let stat of items" [attr.value]="stat">{{stat}}</option>
+      		</select>
+
 				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('state').hasError('required') && basicForm.get('field_address').get('state').touched">
 					state is required
 				</div>
@@ -64,7 +64,9 @@
 					city is required
 				</div>
 			</div>
-
+				<div *ngIf="postalCode" class="col-md-4">
+					<input formControlName="postal_code" type="text" placeholder="Postal Code">
+				</div>
 		</div>
 		<input type="checkbox" formControlName="field_address_publish" name="publish" id="publish" checked="true">Publish this
 		info
