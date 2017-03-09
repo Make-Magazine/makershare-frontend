@@ -9,6 +9,7 @@ import { PmService } from '../../../../d7services/pm/pm.service';
 })
 export class ViewComponent implements OnInit {
   message
+  msg
 
   constructor(private route: ActivatedRoute,
   private pm: PmService,
@@ -18,10 +19,14 @@ export class ViewComponent implements OnInit {
     this.getMessage();
   }
   getMessage(){
-    
-     this.pm.getMessage(29).subscribe(data=>{
+     this.pm.getMessage(56).subscribe(data=>{
      this.message=data;
-     //console.log(this.message)
+     console.log(this.message.messages[0].author)
+    //  for(var i = 0; i < this.message.length; i++) {
+    //         this.msg = this.message[i];
+    //         console.log(this.msg)
+    //  }
+     
      })
   }
 

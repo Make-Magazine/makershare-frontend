@@ -57,7 +57,6 @@ export class EditProfileComponent implements OnInit {
 
     let profile: UserProfile = basic.value;
     this.basicForm = basic;
-    console.log(profile);
     for (var k in profile) {
       this.userProfile[k] = profile[k];
     }

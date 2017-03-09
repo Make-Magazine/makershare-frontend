@@ -9,9 +9,8 @@ export class PmService {
   constructor(private mainService: MainService) { }
 
   getMessage(mid: number): Observable<any>{
-      return this.mainService.get(globals.endpoint + '/privatemsg/' + mid).map(res => res.json()).catch(err => Observable.throw(err));
+      return this.mainService.get(globals.endpoint + '/privatemsg/'+ mid).map(res => res.json()).catch(err => Observable.throw(err));
   }
-
   getMessages(): Observable<any>{
       return this.mainService.get(globals.endpoint + '/privatemsg').map(res => res.json()).catch(err => Observable.throw(err));
   }  

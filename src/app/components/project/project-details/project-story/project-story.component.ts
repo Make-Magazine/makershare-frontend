@@ -1,54 +1,56 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../../../d7services/comment/comment.service';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
 import { UserService } from '../../../../d7services/user/user.service';
 import { ViewService } from '../../../../d7services/view/view.service'
+import { IComment } from '../../../../models/challenge/comment';
 
 
 @Component({
   selector: 'app-project-story',
   templateUrl: './project-story.component.html',
-  providers:[CommentService]
+  providers: [CommentService]
 })
 export class ProjectStoryComponent implements OnInit {
 
-@Input() project;
+  @Input() project;
   constructor(
-    private nodeComment:CommentService,
-    private viewService:ViewService,
-    private userService:UserService
-  ){}
- CollabNid;
- CommenterNid;
- comments;
- collabs = [];
- obvfn;
+    private commentService: CommentService,
+    private fb: FormBuilder,
+    private viewService: ViewService,
+    private userService: UserService
+
+  ) { }
+  currentUser;
+  CommenterNid;
+  comments;
+  collabs = [];
+  commentForm: FormGroup;
+  commentData: IComment = {
+    subject: '',
+    comment_body: { und: [{ value: '' }] },
+    nid: 0,
+  };
   ngOnInit() {
-    
-    this.CollabNid = this.project.nid
-    this.nodeComment.getNodeCommentsById(this.CollabNid).subscribe(data => {
-      this.comments = data;
-      //console.log(this.project.field_collaborators)
-      for( let element of this.comments){
-        
-        this.viewService.getView('maker_profile_card_data',[['uid',element['uid']],]).subscribe(data => {
-          Object.assign(element, data[0]);
-        });
-      }
-      //  console.log(this.comments);
-    });
+    this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
+      this.currentUser = data[0];
+      console.log(this.currentUser)
+    })
+    this.getComments();
+    this.buildForm();
     var i = 0;
     var source = Observable.create(observer => {
-      for( let maker of this.project.field_collaborators){
+      for (let maker of this.project.field_collaborators) {
         observer.next(
-        this.viewService.getView('maker_profile_card_data',[['uid',maker['target_id']],]).subscribe(data => {
-          this.collabs[i] = {};
-          this.collabs[i] = data[0];
-          console.log(this.collabs[i])
-          i++;
-        }))
+          this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
+            this.collabs[i] = {};
+            this.collabs[i] = data[0];
+            console.log(this.collabs[i])
+            i++;
+          }))
       }
-        observer.onCompleted();
+      observer.onCompleted();
 
     });
 
@@ -57,7 +59,36 @@ export class ProjectStoryComponent implements OnInit {
     // e => console.log('onError: %s', e),
     // () => console.log('onCompleted'));
 
- }//End ngOnInit
+  }//End ngOnInit
+
+  getComments() {
+    this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
+      this.comments = data;
+    });
+  }
+
+  /* function build form */
+  buildForm() {
+    this.commentForm = this.fb.group({
+      "subject": ['Commenter', Validators.required],
+      "comment_body": ['', Validators.required],
+    });
+
+  }
+  onSubmit(e) {
+    if (this.commentForm.valid) {
+      e.preventDefault();
+      this.commentData.subject = this.commentForm.value.subject;
+      this.commentData.comment_body.und[0].value = this.commentForm.value.comment_body;
+      this.commentData.nid = this.project.nid;
+      this.commentService.createComment(this.commentData).subscribe(res => {
+        this.getComments();
+      }, err => {
+      });
+    }
+    this.commentForm.reset();
+  }
+  /* end function build form */
 
 
 
