@@ -23,7 +23,8 @@ export class ProjectDetailsComponent implements OnInit {
   //showcase-projects
   projectId;
   showcase={};
-  projectIndex=0;
+  projectIndex:number=0;
+  projects=[];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,22 +33,40 @@ export class ProjectDetailsComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService
   ) {
+    
     this.route.queryParams.subscribe(params => {
+      if(params["showcase"]){
             this.projectId = params["projectId"];
-            this.showcase = params["showcase"];
+            this.showcase = JSON.parse(params["showcase"]);
             this.projectIndex = params["projectIndex"];
+            this.projects = JSON.parse(params["projects"]);
+      }
 
         });
+        debugger
+        console.log(this.showcase);
+        console.log(this.projectId);
+        console.log(this.projectIndex);
+        console.log(this.projects);
+        
    }
    
 
   ngOnInit() {
+    debugger
+    this.route.params.subscribe((params: Params) => {
+        let userId = params['nid'];
+        console.log('nid');
+        console.log(userId);
+      });
+    this.route.snapshot.data[0];
     this.current_active_tab = 'project-story';
     this.route.params
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
     .subscribe(data =>{
       //console.log(data)
+
       this.project = data;
       this.projectDetails = data;
       
@@ -55,11 +74,11 @@ export class ProjectDetailsComponent implements OnInit {
       //console.log(this.projectDetails)
       this.projectDetails.nid = this.route.params['value'].nid;
       //console.log(this.route.params['value'].nid)
-        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(data =>{
+        this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(data =>{
         this.isBookmarked = data[0];
         //console.log(this.isBookmarked)
       });
-      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(data =>{
+      this.flagService.isFlagged(this.projectDetails.nid,this.currentuser.user,'like').subscribe(data =>{
         this.isLiked = data[0];
       });
 
@@ -68,25 +87,35 @@ export class ProjectDetailsComponent implements OnInit {
 
       //console.log(this.project.field_cover_photo.url)
     });
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
+    // this.userService.getStatus().subscribe(data => {
+      this.currentuser = Number(localStorage.getItem('user_id'));
+      // console.log(typeof(this.currentuser)  )
       //console.log(this.currentuser.user.uid)
-    });
+    // });
 
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
 
-  getProject(){
-    
+  getProject(event: Event, action: any){
+    event.preventDefault();
+    console.log(action);
+    if(action == "back"){
+    this.projectIndex--;
+    }else if(action =="next"){
+      this.projectIndex++;
+    }
     console.log(this.project);
-    //  let navigationExtras: NavigationExtras = {
-    //         queryParams: {
-    //             "projectId": nid,
-    //             "showcase": this.showcase,
-    //             "projectIndex": projectIndex 
-    //         }
-    //  }
-    //  this.router.navigate(['project/view/', nid], navigationExtras);
+    let navigationExtras: NavigationExtras = {
+            queryParams: {
+                "projectId": this.projects[this.projectIndex].nid,
+                "showcase": JSON.stringify(this.showcase),
+                "projectIndex": this.projectIndex,
+                "projects":JSON.stringify(this.projects)
+            }
+     }
+     debugger
+     this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
+     this.ngOnInit();
 
   }
   changeProjectTab(NewTab){
@@ -95,11 +124,11 @@ export class ProjectDetailsComponent implements OnInit {
   likeThis(e: Event){
     e.preventDefault();
     if(this.isLiked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = !response[0];
       });
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'like').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'like').subscribe(response => {
         this.isLiked = response[0];
       });
 
@@ -115,12 +144,12 @@ export class ProjectDetailsComponent implements OnInit {
   bookmarkThis(e: Event){
     e.preventDefault();
      if(this.isBookmarked){
-      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = !response[0];
       });
       this.isBookmarked= !this.isBookmarked;
     }else {
-      this.flagService.flag(this.projectDetails.nid,this.currentuser.user.uid,'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.projectDetails.nid,this.currentuser.user,'node_bookmark').subscribe(response => {
         this.isBookmarked = response[0];
       });
     }

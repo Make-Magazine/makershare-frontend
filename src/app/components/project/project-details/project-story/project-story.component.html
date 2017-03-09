@@ -1,12 +1,12 @@
 <div class="region region-content col-sm-8">
   <div class="project-story-tab">
     <div class="project-image">
-      <img src="{{project.field_cover_photo.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo.url"> 
-      <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo.url"> 
+      <img src="{{project.field_cover_photo.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo.url">
+      <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo.url">
     </div>
     <div class="project-stats">
       <ul class="list-unstyled">
-        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2.tid"></i>{{project.field_visibility2.tid}}</li>
+        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2?.tid}}</li>
         <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project.flag_count}}</li>
         <li><i class="fa fa-lg fa-comment"></i>2</li>
         <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0].value"></i>{{project.field_total_forks[0].value}}</li>
@@ -16,20 +16,20 @@
     <div class="project-body">
       <p>{{project.field_teaser.value}}</p>
       <p>{{project.field_story.value}}</p>
-    </div><!-- End body -->              
+    </div><!-- End body -->
     <div class="feedback-group">
       <div class="feedback" *ngFor="let comment of comments; let i=index">
         <div class=" feed-user">
-          <img src="{{comment.photo}}" alt="" class="img-responsive pull-left">
+          <img src="{{comment?.photo}}" alt="" class="img-responsive pull-left">
           <div class="pull-left name">
-            <h5><a href="#">{{comment.name}}</a></h5>
-            <p>{{comment.nickname}}</p>
+            <h5><a href="#">{{comment?.name}}</a></h5>
+            <p>{{comment?.nickname}}</p>
           </div>
         </div>
         <div class=" feed-body">
-          <p>{{comment.subject}}</p>
+          <p>{{comment?.subject}}</p>
         </div>
-        <div class=" feed-timestamp">{{comment.changed | date:'medium'}}</div>
+        <div class=" feed-timestamp">{{comment?.changed | date:'medium'}}</div>
       </div><!-- End feedback -->
       <form>
         <div class="feedback col-md-10">
@@ -81,7 +81,7 @@
         <div class="panel-heading">
           <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="project.field_aha_moment">
           <p>{{project.field_aha_moment.value}}</p>
         </div>
       </div>
@@ -89,7 +89,7 @@
         <div class="panel-heading">
           <h3><i class="fa fa-bomb"></i>UH-OH! Moment</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="project.field_aha_moment">
           <p>{{project.field_uh_oh_moment.value}}</p>
         </div>
       </div>

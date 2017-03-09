@@ -44,6 +44,13 @@ export class EditProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+        this.profileService.getUser(1).subscribe(res => {
+
+          this.userProfile = res;
+
+    }, err => {
+      
+    });
   }
 
   saveBasic(basic: FormGroup) {
@@ -66,7 +73,7 @@ export class EditProfileComponent implements OnInit {
   saveProfile() {
 
     console.log(this.userProfile);
-    this.profileService.createProfile(this.userProfile).subscribe(profile => {
+    this.profileService.updateProfile(this.userProfile).subscribe(profile => {
       console.log("profile saved");
       console.log(profile);
     }, err => {
