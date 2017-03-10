@@ -20,12 +20,15 @@ export class ProjectDetailsComponent implements OnInit {
   isBookmarked;
   Flags = ['like','fork','node_bookmark'];
   FlagStates = [] ;
-  //showcase-projects
+  //showcase-projects-declarations
   projectId;
   showcase={};
   projectIndex:number=0;
-  projects=[];
 
+  projects=[];
+  id: number;
+
+  private sub: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -43,28 +46,22 @@ export class ProjectDetailsComponent implements OnInit {
       }
 
         });
-        // console.log(this.showcase);
-        // console.log(this.projectId);
-        // console.log(this.projectIndex);
-        // console.log(this.projects);
-        
    }
    
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-        let userId = params['nid'];
-        // console.log('nid');
-        // console.log(userId);
-      });
-    this.route.snapshot.data[0];
+    
+    this.sub = this.route.params.subscribe(params => {
+       this.id = +params['nid']; // (+) converts string 'id' to a number
+
+    // dispatch action to load the details here-solve no load issue.
+    
     this.current_active_tab = 'project-story';
     this.route.params
     // (+) converts string 'id' to a number
     .switchMap((nid) => this.viewService.getView('maker_project_api/'+nid['nid']))
     .subscribe(data =>{
       //console.log(data)
-
       this.project = data;
       this.projectDetails = data;
       
@@ -90,7 +87,7 @@ export class ProjectDetailsComponent implements OnInit {
       // console.log(typeof(this.currentuser)  )
       //console.log(this.currentuser.user.uid)
     // });
-
+ });
 //this.flagService.isFlagged().subscribe(data =>{});
   }// End ngOnInit
 
