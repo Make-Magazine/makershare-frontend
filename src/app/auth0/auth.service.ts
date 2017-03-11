@@ -39,6 +39,7 @@ export class Auth {
           console.log(res);
             if(res.user.uid != 0){
               localStorage.setItem('user_id', res.user.uid);
+              localStorage.setItem('user_name', res.user.name);
             }else{
               localStorage.setItem('user_id', '0');
             }
@@ -79,9 +80,16 @@ export class Auth {
 
   public logout() {
     // Remove token from localStorage
-    localStorage.removeItem('id_token');
-    this.mainService.removeCookies();
-    this.router.navigateByUrl('/');
+    this.userService.auth0_logout().subscribe(res => {
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('user_name');
+      this.mainService.removeCookies();
+      this.router.navigateByUrl('/');          
+    }, err =>{
+      console.log(err);
+    });
+
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
 
     

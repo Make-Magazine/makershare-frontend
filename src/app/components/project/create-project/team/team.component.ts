@@ -3,20 +3,22 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
+import { Project } from '../../../../models/project/create-project/project';
+import { field_collection_item_member }  from '../../../../models/project/create-project/field_collection_item';
+
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
 })
 export class TeamComponent implements OnInit {
-  @Output() Team = new EventEmitter();
-  @Input('TeamValues') TeamValues;
+  @Input('project') project: Project;
+  @Input('FormPrintableValues') FormPrintableValues;
+
   TeamForm: FormGroup;
   TeamUsers = [];
   UsersDetails = [];
-  SelectedUser=[];
-  // if(SelectedUser){
-  //   console.log(SelectedUser);
-  // }
+  SelectedUser = [];
+
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
@@ -24,40 +26,19 @@ export class TeamComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.buildForm();
-    // this.UsersDetails.forEach(element => {
-    //     console.log(element);
-    // });
   }
   
   buildForm(): void {
     this.TeamForm = this.fb.group({
-      'Team': this.fb.array([]),
+      'field_maker_memberships': this.fb.array([]),
     });
-    this.AddRow('Team');
+    this.AddRow('field_maker_memberships');
     
     this.userService.getStatus().subscribe(data => {  
       this.SetMember(data.user.uid,0);
-      if(this.TeamValues){
-        // console.log(this.TeamValues);
-          var length = this.TeamValues.Team.length;
-          // console.log(length);
-          for(var i = 1 ;i < length; i++){
-            this.AddRow('Team');
-            this.SetMember( this.TeamValues.Team[i].uid,i);
-            // this.SetMember(element.,index+1))
-          }
-        this.TeamForm.setValue(this.TeamValues);  
-      } else {
-        this.AddRow('Team');
-      }
       this.TeamForm.valueChanges.subscribe(data => {
         this.TeamUsers = [];
         this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
-        if(this.TeamForm.valid){
-          this.Team.emit(this.TeamForm);
-        }else{
-          this.Team.emit(false);
-        }
       });
     this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
   });
@@ -74,15 +55,16 @@ export class TeamComponent implements OnInit {
     this.UsersDetails[index] = [];
     this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
       this.SelectedUser[index] = data[0];
-      // this.SelectedUser.forEach((element,key) => {
-      //   var values =[];
-      //   values = element;
-        // for (let key of Object.keys(values)){
-        //   console.log(key +'=>'+values[key])
-        // }
-      // });
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].uid.setValue(uid);
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
+      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_sort_order.setValue(index+1);
+      let member:field_collection_item_member = {
+        field_team_member:{und:[{target_id:data[0].username+' ('+uid+')'}]},
+        field_sort_order:{und:[{value:index+1}]},
+        field_membership_role:{und:[{value:this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_membership_role.value}]}
+      };
+      this.project.field_maker_memberships.und.push(member);
     });
-    this.TeamForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
   }
   RefreshUsers(index,value){
     this.TeamUsers[index] = [];
@@ -109,18 +91,18 @@ export class TeamComponent implements OnInit {
   }
   InitRow(ControlName,index) {
     return this.fb.group({
-      'SortOrder':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-      'Name': ['', ],
-      'Role': ['', Validators.required],
-      'uid': [0, Validators.required],
+      'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+      'field_team_member': ['', Validators.required],
+      'field_membership_role': [''],
+      'uid': [, Validators.required],
     });
   }
   SortElements(ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
     var NewUsersDetails = [];
     control.controls.forEach((element, index) => {
-      NewUsersDetails[index] = this.SelectedUser[element['controls']['SortOrder'].value - 1];
-      element['controls']['SortOrder'].setValue(index + 1);
+      NewUsersDetails[index] = this.SelectedUser[element['controls']['field_sort_order'].value - 1];
+      element['controls']['field_sort_order'].setValue(index + 1);
     });
     this.SelectedUser = NewUsersDetails;
   }
@@ -158,10 +140,10 @@ export class TeamComponent implements OnInit {
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
-    return {'SortOrder':'', 'Name': '','Role': ''};
+    return {'field_sort_order':'', 'field_team_member': ''};
   }
   formErrors = {
-    'Team': [],
+    'field_maker_memberships': [],
   };
    /**
     * Validation messages object contains all error messages for each field
@@ -169,18 +151,15 @@ export class TeamComponent implements OnInit {
     * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
     */
   validationMessages = {
-    'Team': {
-      'SortOrder':{
+    'field_maker_memberships': {
+      'field_sort_order':{
         'number':'Sort order must be a number.',
         'required':'Sort order is required',
         'min':'Sort order must be at least 1.',
       },
-      'Name':{
+      'field_team_member':{
         'required':'Name is required',
       },       
-      'Role':{
-        'required':'Role is required',
-      },
       'uid':{
         'required':'uid is required',
       },

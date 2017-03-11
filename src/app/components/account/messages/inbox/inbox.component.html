@@ -18,7 +18,7 @@
         <div *ngIf="msg"> 
         <li class="message-item" *ngFor="let message of msg">
           <div class="select">
-            <input type="checkbox" *ngIf="message.mid" >{{message.mid}}
+            <input type="checkbox" *ngIf="message.mid" >
           </div>
           <div class="wrapper" >
             <div class="media message-info">
@@ -29,11 +29,11 @@
               </div>
               <div class="media-body">
                 <p class="sender"><a href="">First Lastname</a> sent you a message</p>
-                <p class="timestamp">{{message.last_updated}}</p>
+                <p class="timestamp">{{message.last_updated | date}}</p>
               </div>
             </div>
             <div class="message-subject">
-                  <a routerLink="/view"><h4>{{message.subject}}</h4></a>
+                  <a routerLink="/view/mid"><h4>{{message.subject}}</h4></a>
             </div>
             <div class="delete">
                <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage()"></a>
@@ -59,15 +59,44 @@
                 </div>
                 <div class="modal-body">
                   <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg" class="form-horizontal">
-                    <div class="form-group recieve">
+                    <div *ngIf="SelectedUser[i]">
+                      <h5>To</h5>
+                      <div class=" profile-container"><!-- start profile card-->
+                        <div class="profile-card">
+                          <div class="left col-sm-4">
+                            <div class="profile-pic">
+                              <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" class="img-responsive">
+                              <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" class="img-responsive">
+                            </div>
+                          </div>
+                          <div class="right col-sm-8">
+                            <h4 class="profile-name"><a href="#">{{SelectedUser[i].first_name}} {{SelectedUser[i].last_name}}</a></h4>
+                          </div>
+                        </div><!-- End profile card -->
+                      </div><!-- End Profile-container -->
+                   </div>
+                   
+                    <div class="form-group" *ngIf="!SelectedUser[i]">
                       <label class="control-label"  for="recipients-{{i + 1}}" >To:</label>
-                      <div class="">
+                      
                         <input type="text" class="form-control" name="recipients" id="recipients-{{i + 1}}"  formControlName="recipients" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
-                      </div>
+                        <div *ngIf="reciverUser[i]" >
+                              <div *ngFor="let User of reciverUser[i]" (click)="SetMember(User.uid,i)" class="result">
+                                <div class="user-image-container">
+                                  <img *ngIf="User.photo" src="{{User.photo}}">
+                                  <img *ngIf="!User.photo" src="http://placehold.it/140x140">
+                                </div>
+                                <div class="data-container">
+                                  <p>{{User.first_name}} {{User.last_name}}</p>
+                                  <p>{{User.nickname}}</p> 
+                                </div>
+                              </div>
+                        </div>
                       <div *ngIf="formErrors.recipients" class="alert alert-danger">
-                         {{ formErrors.recipients }}
+                          {{ formErrors.recipients }}
                       </div>
                     </div>
+                    
                     <div class="form-group subject">
                       <label class="control-label" >Subject</label>
                       <input type="text" class="form-control" name="subject" id="subject" formControlName="subject" >
@@ -84,7 +113,7 @@
                     </div>
                     <ul class="list-unstyled actions">
                         <li><a href="" class="btn btn-transparent" data-dismiss="modal">Cancel</a></li>
-                        <li><button type="submit" class="btn btn-blue btn-sharp">Send</button></li>
+                        <li><button  type="submit" class="btn btn-blue btn-sharp">Send</button></li>
                     </ul> 
                   </form>
                 </div>

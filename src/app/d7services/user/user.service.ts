@@ -74,7 +74,7 @@ export class UserService {
     return obs;
   }
 
-    auth0_authenticate(data: any): Observable<any>{
+  auth0_authenticate(data: any): Observable<any>{
     this.userInfo = data;
     var obs = Observable.create(observer => {
       this.mainService.get('/services/session/token').map(response => response.text()).subscribe(token => {
@@ -86,6 +86,9 @@ export class UserService {
        });
     });
     return obs;
+  }
+  auth0_logout(): Observable<any>{
+    return this.mainService.post(globals.endpoint + '/auth0_service/logout', null).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
 }

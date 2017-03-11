@@ -8,7 +8,7 @@
                   <img src="./assets/images/arduino-project.jpg" alt="" class="img-responsive">
                   <div class="sponsor"><h4>In partnership with: Sponsor [Logo]</h4></div>
                   <div class="challenge-status">
-                    <p>OPEN: Submissions close December 19th, 2016</p>
+                    <p>OPEN: Submissions  close December 19th, 2016</p>
                   </div>
                   <div class="challenge-title">
                     <h1>Lorem Ipsum The Challenge Name</h1>
@@ -33,7 +33,8 @@
                     <form>
                       <div class="form-group">
                         
-                    <select class="form-control" #item (change)="updateSelectedProject($event.target.value)">
+                    <select class="form-control" #item (change)="updateSelectedProject($event.target.value) ">
+                      <option [value]="none" disabled>Select a project</option>
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
                       </div>
@@ -43,7 +44,7 @@
                     </form>
                     <p class="text-center">OR</p>
                     <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
-                    <a href="" class="btn btn-blue btn-sharp create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</a>
+                    <button class="btn btn-blue btn-sharp create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
                   </div>
                 </div><!-- End content-wrapper -->
               </div><!-- End region-content -->
