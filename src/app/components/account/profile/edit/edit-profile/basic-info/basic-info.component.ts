@@ -62,17 +62,17 @@ export class BasicInfoComponent implements OnInit {
         this.isCity = false
       }
 
-      this.postalCode = false;
-      this.zipCode = false;        
-      // postal_code & zip_code
-      for(var k in info.used_fields){
-        if(info.used_fields[k] == "postal_code"){
-          this.postalCode = true;        
-        }
-        if(info.used_fields[k] == "zip_code"){
-          this.zipCode = true;        
-        }        
-      }
+      // this.postalCode = false;
+      // this.zipCode = false;        
+      // // postal_code & zip_code
+      // for(var k in info.used_fields){
+      //   if(info.used_fields[k] == "postal_code"){
+      //     this.postalCode = true;        
+      //   }
+      //   if(info.used_fields[k] == "zip_code"){
+      //     this.zipCode = true;        
+      //   }        
+      // }
       
       this.items = [];
       for (var k in info.administrative_areas) {
