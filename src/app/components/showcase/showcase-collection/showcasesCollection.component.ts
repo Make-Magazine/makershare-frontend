@@ -59,7 +59,7 @@ loadmore(){
 // control load more button
 loadMoreVisibilty(){
  // get the challenges array count
- debugger
+
  if(this.showcases.length >= this.showcaseCount){
    console.log("flage");
     this.hideloadmore= true;
