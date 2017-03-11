@@ -4,8 +4,8 @@
 		<div class="guide">
 			<p>You may add your searchable “nickname” if you are known by another name in the Maker community.</p>
 		</div>
-		<input type="text" formControlName="field_nickname" class="form-control" id="userName" placeholder="Type your nickname (optional)">
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_nickname').hasError('required') && basicForm.get('field_nickname').touched">
+		<input type="text" formControlName="nickname" class="form-control" id="userName" placeholder="Type your nickname (optional)">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('nickname').hasError('required') && basicForm.get('nickname').touched">
 			userName is required
 		</div>
 	</div>
@@ -15,8 +15,8 @@
 		<div class="guide">
 			<p>You may add your searchable firstName Name if you are known by another name in the Maker community.</p>
 		</div>
-		<input type="text" formControlName="field_first_name" class="form-control" id="firstName" placeholder="Type your firstName ">
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_first_name').hasError('required') && basicForm.get('field_first_name').touched">
+		<input type="text" formControlName="first_name" class="form-control" id="firstName" placeholder="Type your firstName ">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('first_name').hasError('required') && basicForm.get('first_name').touched">
 			first Name is required
 		</div>
 	</div>
@@ -26,20 +26,20 @@
 		<div class="guide">
 			<p>You may add your searchable last Name if you are known by another name in the Maker community.</p>
 		</div>
-		<input type="text" formControlName="field_last_name" class="form-control" id="lastName" placeholder="Type your lastName ">
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_last_name').hasError('required') && basicForm.get('field_last_name').touched">
+		<input type="text" formControlName="last_name" class="form-control" id="lastName" placeholder="Type your lastName ">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('last_name').hasError('required') && basicForm.get('last_name').touched">
 			last Name is required
 		</div>
 	</div>
 	<div class="form-group userCity">
 		<label for="userCity">Where do you live?</label>
-		<div class="row" formGroupName="field_address">
+		<div class="row" formGroupName="address">
 			<div class="col-md-3">
 				     <select 	formControlName="country" name="Select country" (ngModelChange)="setCountry($event)"  class="ui fluid search selection dropdown"> 
         <option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
       </select>
 
-				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('address').get('country').hasError('required') && basicForm.get('address').get('country').touched">
 					country is required
 				</div> 
 			</div>
@@ -48,7 +48,7 @@
         <option *ngFor="let stat of items" [attr.value]="stat">{{stat}}</option>
       </select>
 			
-				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('state').hasError('required') && basicForm.get('field_address').get('state').touched">
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('address').get('state').hasError('required') && basicForm.get('address').get('state').touched">
 					state is required
 				</div>
 			</div>
@@ -60,13 +60,13 @@
       blank-option-text="Select city"
       [source]="items" 
       placeholder="enter text"/>
-				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('city').hasError('required') && basicForm.get('field_address').get('city').touched">
+				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('address').get('city').hasError('required') && basicForm.get('address').get('city').touched">
 					city is required
 				</div>
 			</div>
 
 		</div>
-		<input type="checkbox" formControlName="field_address_publish" name="publish" id="publish" checked="true">Publish this
+		<input type="checkbox" formControlName="address_publish" name="publish" id="publish" checked="true">Publish this
 		info
 		<div class="guide">
 			<p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
@@ -78,24 +78,24 @@
 			<p>How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional
 				fabricator. I am an educator. Etcetera!</p>
 		</div>
-		<textarea type="text" formControlName="field_describe_yourself" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters"
+		<textarea type="text" formControlName="describe_yourself" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters"
 			maxlength="60"></textarea>
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_describe_yourself').hasError('required') && basicForm.get('field_describe_yourself').touched">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('describe_yourself').hasError('required') && basicForm.get('describe_yourself').touched">
 			field describe yourself is required
 		</div>
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_describe_yourself').hasError('minlength') && basicForm.get('field_describe_yourself').touched">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('describe_yourself').hasError('minlength') && basicForm.get('describe_yourself').touched">
 			field describe yourself is required (minimum 60characters).
 		</div>
 	</div>
 	<div class="form-group birthday">
 		<label for="birthday">What is your birthday?</label>
 	
-		      <ic-datepicker formControlName="field_birthday_date" options="datepickerOptions"></ic-datepicker>
+		      <ic-datepicker formControlName="birthday_date" options="datepickerOptions"></ic-datepicker>
 
-		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_birthday_date').hasError('required') && basicForm.get('field_birthday_date').touched">
+		<div class="alert alert-danger error-msg" *ngIf="basicForm.get('birthday_date').hasError('required') && basicForm.get('birthday_date').touched">
 			birthday is required
 		</div>
-		<input type="checkbox" formControlName="field_birthday_status" name="birthday-alt">I prefer not to answer. I attest that
+		<input type="checkbox" formControlName="birthday_status" name="birthday-alt">I prefer not to answer. I attest that
 		I’m over 13 years old
 		<div class="guide">
 			<p>This info will not be published on your profile; we ask because this platform is designed for Makers age 13 and above
@@ -112,7 +112,7 @@
 			<p>This does not change the address you use to login; this is where we will send administrative emails and forward messages
 				from other Makers. It can match your login email or not; you can change it at any time.</p>
 		</div>
-		<input type="checkbox" formControlName="field_newsletter_subscription" name="subscribe" checked="true">Subscribe to the
+		<input type="checkbox" formControlName="newsletter_subscription" name="subscribe" checked="true">Subscribe to the
 		Make: weekly newsletter
 	</div>
 </form>

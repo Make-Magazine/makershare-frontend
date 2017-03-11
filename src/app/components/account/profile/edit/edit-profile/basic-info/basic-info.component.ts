@@ -82,20 +82,20 @@ export class BasicInfoComponent implements OnInit {
   }
   buildForm(): void {
     this.basicForm = this.fb.group({
-      'field_nickname': ['', [Validators.required]],
-      'field_first_name': ['', [Validators.required]],
-      'field_last_name': ['', [Validators.required]],
-      'field_address': this.fb.group({
+      'nickname': ['', [Validators.required]],
+      'first_name': ['', [Validators.required]],
+      'last_name': ['', [Validators.required]],
+      'address': this.fb.group({
         'country': ['', [Validators.required]],
         'state': ['', [Validators.minLength(4)]],
         'city': ['', []]
       }),
-      'field_address_publish': ['', [Validators.required, Validators.minLength(4)]],
-      'field_describe_yourself': ['', [Validators.required, Validators.minLength(60)]],
-      'field_birthday_date': ['',],
+      'address_publish': ['', [Validators.required, Validators.minLength(4)]],
+      'describe_yourself': ['', [Validators.required, Validators.minLength(60)]],
+      'birthday_date': ['',],
       'mail': ['', [Validators.required]],
-      'field_birthday_status': [''],
-      'field_newsletter_subscription': ['']
+      'birthday_status': [''],
+      'newsletter_subscription': ['']
     });
     this.basicForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now

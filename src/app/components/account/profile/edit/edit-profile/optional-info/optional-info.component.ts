@@ -55,7 +55,7 @@ export class OptionalInfoComponent implements OnInit {
 
     let reader = new FileReader();
     reader.onload = (e) => {
-      this.imageSrc = this.profile.field_user_photo = reader.result;
+      this.imageSrc = this.profile.user_photo = reader.result;
       //  this.optionalForm.controls['field_user_photo'].value = reader.result;
     };
     reader.readAsDataURL(file);
@@ -67,10 +67,10 @@ export class OptionalInfoComponent implements OnInit {
 
   buildForm(): void {
     this.optionalForm = this.fb.group({
-        field_user_photo: [''],
-        field_maker_interests: [''],
-        field_bio: [''],
-        field_started_making: [''],
+        user_photo: [''],
+        maker_interests: [''],
+        bio: [''],
+        started_making: [''],
         field_social_accounts: this.fb.group({
       field_add_your_makerspace_s_: this.fb.array([
         this.initMakerspace(),
