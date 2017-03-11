@@ -7,9 +7,9 @@
     <div class="project-stats">
       <ul class="list-unstyled">
         <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2?.tid}}</li>
-        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project.flag_count}}</li>
+        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
         <li><i class="fa fa-lg fa-comment"></i>2</li>
-        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0]"></i>{{project.field_total_forks[0].value}}</li>
+        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0]"></i>{{project.field_total_forks[0]?.value}}</li>
       </ul>
     </div>
     <hr>
@@ -34,7 +34,7 @@
       <form [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment" class="form-horizontal">
         <div class="feedback col-md-10">
           <div class=""><img *ngIf="!currentUser?.photo" src="./assets/images/maker-robot.png" alt="" class="img-responsive"></div>
-          <div class=""><img *ngIf="currentUser?.photo"src="{{currentUser.photo}}" alt="" class="img-responsive"></div>
+          <div class=""><img *ngIf="currentUser?.photo"src="{{currentUser?.photo}}" alt="" class="img-responsive"></div>
           <div class=""><textarea name="new-feedback" id="" cols="61" rows="2" formControlName="comment_body"></textarea></div>
         </div>
         <input type="submit" class="btn  btn-white btn-sharp" value="Send">
