@@ -74,8 +74,11 @@ export class OptionalInfoComponent implements OnInit {
       field_add_your_makerspace_s_: this.fb.array([
         this.initMakerspace(),
       ]),
+      field_user_photo: [''],
+      field_maker_interests: [''],
+      field_bio: [''],
+      field_started_making: [''],
       field_social_accounts: this.fb.group({
-
         field_website_or_blog: [''],
         field_additional_site: [''],
         field_facebook: [''],

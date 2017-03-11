@@ -31,6 +31,7 @@
                 <div class="intro">
                   <h4 >Introduction</h4>
                   <div [innerHTML]= "workshop.brief_description"> </div>
+                  <br>
                   <div>
                      <div>{{workshop.video}}</div>
                     <!--<iframe width="725" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>-->
@@ -135,7 +136,6 @@
                   </div>
                   <div class="media-body">
                     <p> {{lesson.book_title}}</p>
-                   
                         <a href=""> <p> {{lesson.o_reilly}}</p> </a>
                         <a href=""> <p> {{lesson.barnes_noble}} </p> </a>
                         <a href=""> <p> {{lesson.amazon}}</p> </a>
@@ -223,6 +223,7 @@
         </div>
         <div class="modal-body" style="width: 400px; height: 600px;">
           <div [innerHTML]= "popupPreview"></div> 
+          <div *ngIf="epubFile"><app-book></app-book></div>
         </div>
       </div>
     </div>

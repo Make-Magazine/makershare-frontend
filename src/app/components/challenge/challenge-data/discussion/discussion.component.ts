@@ -37,8 +37,15 @@ export class DiscussionComponent implements OnInit {
 
 
   ngOnInit() {
+    /* service to get user data */
+    this.viewService
+      .getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')]])
+      .subscribe(data => {
+        this.currentuser = data[0];
+      });
+    /*end of service */
 
-    this.challengeNid = this.challenge.nid
+    this.challengeNid = this.challenge.nid // challenge id
     this.buildForm();
     this.getcomments();
 
@@ -47,7 +54,6 @@ export class DiscussionComponent implements OnInit {
   /* function build form */
   buildForm() {
     this.commentForm = this.fb.group({
-      "subject": ['', Validators.required],
       "comment_body": ['', Validators.required],
     });
 
@@ -57,16 +63,19 @@ export class DiscussionComponent implements OnInit {
   /* function on submit post comment */
   onSubmit(e) {
     if (this.commentForm.valid) {
-
       e.preventDefault();
 
-      this.commentData.subject = this.commentForm.value.subject;
+      this.commentData.subject = this.currentuser.author;
       this.commentData.comment_body.und[0].value = this.commentForm.value.comment_body;
       this.commentData.nid = this.challengeNid;
       this.commentService.createComment(this.commentData).subscribe(res => {
-        this.getcomments();
-      }, err => {
-      });
+        var newComment = {
+          photo: this.currentuser.photo,
+          nickname: this.currentuser.nickname,
+          comment: this.commentData.comment_body.und[0].value,
+        }
+        this.comments.unshift(newComment);
+      }, err => { });
     }
     this.commentForm.reset();
   }
@@ -77,7 +86,6 @@ export class DiscussionComponent implements OnInit {
   getcomments() {
     this.viewService.getView('node-comments', [['nid', this.challengeNid]]).subscribe(data => {
       this.comments = data;
-      console.log(this.comments);
     });
   }
   /* end function  get comments */
