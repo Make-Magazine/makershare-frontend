@@ -5,10 +5,13 @@ import { SliderComponent } from './slider/slider.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { ShowcasesComponent } from './showcases/showcases.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
+import { HomeRoutingModule } from './home-routing.module';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HomeRoutingModule
   ],
   declarations: [
     HomeComponent,

@@ -18,21 +18,18 @@ import { PmService } from './d7services/pm/pm.service';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
+import { MessagesModule } from './components/account/messages/messages.module';
+import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
+import { Auth } from './auth0/auth.service';
+import { AccountModule } from './components/account/account.module';
+
 // import { ExploreModule } from './components/explore/explore.module';
-
-
 // New Structure
 // import { ChallengeModule } from './components/challenge/challenge.module';
 // import { ShowcaseModule } from './components/showcase/showcase.module';
-import { AccountModule } from './components/account/account.module';
 // import { LearnModule } from './components/learn/learn.module';
-import { HomeModule } from './components/home/home.module';
-import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
-
+// import { HomeModule } from './components/home/home.module';
 // import custom auth0 service
-import { Auth } from './auth0/auth.service';
-
 //import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
@@ -47,14 +44,14 @@ import { Auth } from './auth0/auth.service';
     ReactiveFormsModule,
     RouterModule,
     AccountModule,
-    // ChallengeModule,
-    // ShowcaseModule,
-    // LearnModule,
-    HomeModule,
     routing,
     MessagesModule,
     Ng2Bs3ModalModule,
     NotificationBarModule,
+    // ChallengeModule,
+    // ShowcaseModule,
+    // LearnModule,
+    // HomeModule,
     // ExploreModule,
   ],
   entryComponents: [],
