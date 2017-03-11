@@ -302,7 +302,8 @@ export class HowToComponent implements OnInit {
   FileUpdated(event, index){
     const control = this.HowToForm.controls['field_resources']['controls'][index];
     let files = event.srcElement.files;
-    if(files.length == 1){
+    console.log(files);
+    if(files.length == 1 && files[0]){
       control.controls.field_resources_filename.setValue(files[0].name);
       var file:FileEntity = {
         file:'',
@@ -318,7 +319,7 @@ export class HowToComponent implements OnInit {
     }
   }
 
-  ConvertToBase64(file:File,FileEntityObject:FileEntity){
+  ConvertToBase64(file,FileEntityObject:FileEntity){
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
