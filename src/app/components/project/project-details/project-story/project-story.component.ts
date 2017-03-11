@@ -35,24 +35,26 @@ export class ProjectStoryComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
-      console.log(this.currentUser)
+      // console.log(this.currentUser)
     })
     this.getComments();
     this.buildForm();
     var i = 0;
-    var source = Observable.create(observer => {
+    // var source = Observable.create(observer => {
       for (let maker of this.project.field_collaborators) {
-        observer.next(
+        // observer.next(
           this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
             this.collabs[i] = {};
             this.collabs[i] = data[0];
             // console.log(this.collabs[i])
             i++;
-          }))
+          })
+          // )
       }
-      observer.onCompleted();
+      // observer.onCompleted();
 
-    });
+    // }
+    // );
 
     // var subscription = source.subscribe(
     // x => console.log('onNext: %s', x),
@@ -64,6 +66,7 @@ export class ProjectStoryComponent implements OnInit {
   getComments() {
     this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
       this.comments = data;
+      console.log(this.comments)
     });
   }
 

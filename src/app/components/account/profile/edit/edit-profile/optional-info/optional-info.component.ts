@@ -55,7 +55,7 @@ export class OptionalInfoComponent implements OnInit {
 
     let reader = new FileReader();
     reader.onload = (e) => {
-      this.imageSrc = this.profile.field_user_photo = reader.result;
+      this.imageSrc = this.profile.user_photo = reader.result;
       //  this.optionalForm.controls['field_user_photo'].value = reader.result;
     };
     reader.readAsDataURL(file);
@@ -67,26 +67,30 @@ export class OptionalInfoComponent implements OnInit {
 
   buildForm(): void {
     this.optionalForm = this.fb.group({
-        field_user_photo: [''],
-        field_maker_interests: [''],
-        field_bio: [''],
-        field_started_making: [''],
-        field_add_your_makerspace_s_: this.fb.array([
-           this.initMakerspace(),
-        ]),
-        field_social_accounts: this.fb.group({
-          field_website_or_blog: [''],
-          field_additional_site: [''],
-          field_facebook: [''],
-          field_instagram: [''],
-          field_linkedin: [''],
-          field_twitter: [''],
-          field_pinterest: [''],
-          field_youtube: [''],
-          field_hackster_io: [''],
-          field_instructables: [''],
-          field_hackday: [''],
-          field_preferred:['']
+      user_photo: [''],
+      maker_interests: [''],
+      bio: [''],
+      started_making: [''],
+      field_add_your_makerspace_s_: this.fb.array([
+        this.initMakerspace(),
+      ]),
+      field_user_photo: [''],
+      field_maker_interests: [''],
+      field_bio: [''],
+      field_started_making: [''],
+      field_social_accounts: this.fb.group({
+        field_website_or_blog: [''],
+        field_additional_site: [''],
+        field_facebook: [''],
+        field_instagram: [''],
+        field_linkedin: [''],
+        field_twitter: [''],
+        field_pinterest: [''],
+        field_youtube: [''],
+        field_hackster_io: [''],
+        field_instructables: [''],
+        field_hackday: [''],
+        field_preferred: ['']
       })
     });
     this.optionalForm.valueChanges.subscribe(data => this.onValueChanged(data));
