@@ -131,7 +131,7 @@ export class ChallengesComponent implements OnInit {
     
   }
     ShowChallengeDetails(nid){
-     this.router.navigate(['/challenge-data', nid]);
+     this.router.navigate(['/challenges', nid]);
   }
 
 }

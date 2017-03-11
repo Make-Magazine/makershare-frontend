@@ -22,7 +22,7 @@ import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 
 
 // New Structure
-import { ChallengeModule } from './components/challenge/challenge.module';
+// import { ChallengeModule } from './components/challenge/challenge.module';
 // import { ShowcaseModule } from './components/showcase/showcase.module';
 import { AccountModule } from './components/account/account.module';
 // import { LearnModule } from './components/learn/learn.module';
@@ -47,7 +47,7 @@ import { Auth } from './auth0/auth.service';
     ReactiveFormsModule,
     RouterModule,
     AccountModule,
-    ChallengeModule,
+    // ChallengeModule,
     // ShowcaseModule,
     // LearnModule,
     HomeModule,
