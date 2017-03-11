@@ -76,12 +76,13 @@
                       <div class="media-left" (click)="overlay(i)"  data-toggle="modal"  data-target="#previewer" >
                         <!--<img src="{{object.object_image}}" alt="" class="media-object" > -->   
                         <div [innerHTML]= "object.videolink"></div>
-                        <div [innerHTML]= "object.lesson_description"> </div>
+                      
                         <!--<iframe width="150" height="150" [src]="videoLink" frameborder="0" ></iframe>-->
                       </div>
-                      <div class="media-body">
+                      <div class="media-body"  (click)="overlay(i)"  data-toggle="modal"  data-target="#previewer">
                         <p>
                           <span><b>{{object.learning_content_type}}</b>  
+                           <div [innerHTML]= "object.lesson_description"> </div>
                            <div *ngIf="object.minutes" > Number of minutes: {{object.minutes}} </div>
                              </span>
                               </p>
@@ -223,7 +224,7 @@
         </div>
         <div class="modal-body" style="width: 400px; height: 600px;">
           <div [innerHTML]= "popupPreview"></div> 
-          <div *ngIf="epubFile"><app-book></app-book></div>
+          <div *ngIf="epubFile"><app-book [link]="epubLink"></app-book></div>
         </div>
       </div>
     </div>

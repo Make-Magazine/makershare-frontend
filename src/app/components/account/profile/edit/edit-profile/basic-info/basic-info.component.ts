@@ -45,7 +45,7 @@ export class BasicInfoComponent implements OnInit {
         this.allCountries.push({ value: k, label: countries[k] });
       }
 
-     
+
     }, err => {
       console.log("error");
       console.log(err);
@@ -61,7 +61,7 @@ export class BasicInfoComponent implements OnInit {
       } else {
         this.isCity = false
       }
-
+      
       // this.postalCode = false;
       // this.zipCode = false;        
       // // postal_code & zip_code
@@ -178,22 +178,24 @@ export class BasicInfoComponent implements OnInit {
     }
   };
 
-    onValueChanged(data?: any) {
+  onValueChanged(data?: any) {
     if (!this.basicForm) { return; }
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);
-debugger
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
+    if (form != null) {
+      for (const field in this.formErrors) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            this.formErrors[field] += messages[key] + ' ';
+          }
         }
       }
     }
+
   }
-  
+
 }

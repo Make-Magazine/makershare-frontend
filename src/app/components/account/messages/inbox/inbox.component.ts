@@ -6,7 +6,7 @@ import { Http,Headers, RequestOptions, Response} from '@angular/http';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { Message }  from '../sending/message';
 import { ViewService } from '../../../../d7services/view/view.service';
-
+import {SelectModule} from 'ng2-select';
 
 @Component({
   moduleId:  module.id,
@@ -28,7 +28,7 @@ export class InboxComponent implements OnInit {
     this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
       this.SelectedUser[index]=data[0];
       this.anothUser = data
-     console.log(this.anothUser)
+     //console.log(this.anothUser)
     });
     //this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid);
     //console.log(this.messageForm.controls['Team']['controls'][index]['controls'].uid.setValue(uid))
@@ -66,11 +66,7 @@ export class InboxComponent implements OnInit {
       this.pm.sendMessage(this.messageObj).subscribe(res => {
       //this.submitted=true;
         //this.messageObj=messageObj
-        console.log(res)
-      },
-      err =>{
-        console.log("error");
-        console.log(err);
+        //console.log(res)
       });
     }
   }
@@ -92,6 +88,7 @@ export class InboxComponent implements OnInit {
     private router: Router,
     private http: Http,
      private viewService: ViewService ,
+     
   ) { }
 
   ngOnInit(): void  {
@@ -152,11 +149,10 @@ getMessages() {
           msg_arr.push(this.messages[key]);
         }
         this.msg= msg_arr
-       //console.log(this.msg)
       }
       for (var _i = 0; _i < this.msg.length; _i++) {
         this.num = this.msg[_i];
-       // console.log(this.num.thread_id)
+        //console.log(this.num.thread_id)
           
         let num_arr = [];
           for(let key in this.num){
@@ -182,35 +178,15 @@ getMessages() {
     // if(localStorage.getItem('currentUser')){}
     
 }
- 
- deleteMessage(){
-    // console.log(this.msg[0].thread_id)
-     this.route.params
-    .switchMap((mid) => this.pm.deleteMessage(this.msg[0].thread_id))
-    .subscribe(data =>{
-     this.msg=data;
-     //console.log(this.msg);
+ deleteMessage(mid: number){
+    this.pm.deleteMessage(mid).subscribe(data =>{
+      this.msg=data;
+      console.log(this.msg);
+    }, err => {
+
     });
-   }
- messageData = {
-        subject: '',
-        body : '',
-        recipients: '',
-        thread_id : ''
-  };
+  }
+
 }
 
-  // 24 hours ago , 12 day ago 
-  //   function JSClock() {
-  //   var time = new Date();
-  //   var hour = time.getHours();
-  //   var minute = time.getMinutes();
-  //   var second = time.getSeconds();
-  //   var temp = '' + ((hour > 12) ? hour - 12 : hour);
-  //   if (hour == 0)
-  //     temp = '12';
-  //   temp += ((minute < 10) ? ':0' : ':') + minute;
-  //   temp += ((second < 10) ? ':0' : ':') + second;
-  //   temp += (hour >= 12) ? ' P.M.' : ' A.M.';
-  //   return temp;
-  // }
+
