@@ -23,9 +23,9 @@ import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
-import { ShowcaseModule } from './components/showcase/showcases.module';
+// import { ShowcaseModule } from './components/showcase/showcase.module';
 import { AccountModule } from './components/account/account.module';
-import { LearnModule } from './components/learn/learn.module';
+// import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
 import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
@@ -48,8 +48,8 @@ import { Auth } from './auth0/auth.service';
     RouterModule,
     AccountModule,
     ChallengeModule,
-    ShowcaseModule,
-    LearnModule,
+    // ShowcaseModule,
+    // LearnModule,
     HomeModule,
     routing,
     MessagesModule,
