@@ -67,14 +67,15 @@ export class OptionalInfoComponent implements OnInit {
 
   buildForm(): void {
     this.optionalForm = this.fb.group({
-        user_photo: [''],
-        maker_interests: [''],
-        bio: [''],
-        started_making: [''],
-        field_social_accounts: this.fb.group({
+      user_photo: [''],
+      maker_interests: [''],
+      bio: [''],
+      started_making: [''],
       field_add_your_makerspace_s_: this.fb.array([
         this.initMakerspace(),
       ]),
+      field_social_accounts: this.fb.group({
+
         field_website_or_blog: [''],
         field_additional_site: [''],
         field_facebook: [''],
@@ -86,7 +87,7 @@ export class OptionalInfoComponent implements OnInit {
         field_hackster_io: [''],
         field_instructables: [''],
         field_hackday: [''],
-        field_preferred:['']
+        field_preferred: ['']
       })
     });
     this.optionalForm.valueChanges.subscribe(data => this.onValueChanged(data));

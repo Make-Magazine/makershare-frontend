@@ -91,7 +91,7 @@ export class AllProfileComponent implements OnInit {
     this.saveProfile();
   }
   saveProfile() {
-    this.profileService.updateProfile(this.profile).subscribe(profile => {
+    this.profileService.updateProfile(1,this.profile).subscribe(profile => {
       console.log("profile saved");
       console.log(profile);
     }, err => {
