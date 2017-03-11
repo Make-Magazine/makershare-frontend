@@ -36,7 +36,6 @@
 		<label for="userCity">Where do you live?</label>
 		<div class="row" formGroupName="address">
 			<div class="col-md-3">
-<<<<<<< HEAD
 				<select formControlName="country" name="Select country" (ngModelChange)="setCountry($event)" class="ui fluid search selection dropdown"> 
         <option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
       </select>
@@ -51,23 +50,6 @@
 
 				<div *ngIf="formErrors.address.state" class="alert alert-danger error-msg">
 					{{ formErrors.address.state }}
-=======
-				<select 	formControlName="country" name="Select country" (ngModelChange)="setCountry($event)"  class="ui fluid search selection dropdown"> 
-        	<option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
-      	</select>
-
-				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('country').hasError('required') && basicForm.get('field_address').get('country').touched">
-					country is required
-				</div> 
-			</div>
-			<div class="col-md-3">
-					<select *ngIf="!isCity"	formControlName="state" name="Select country"   class="ui fluid search selection dropdown"> 
-        		<option *ngFor="let stat of items" [attr.value]="stat">{{stat}}</option>
-      		</select>
-
-				<div class="alert alert-danger error-msg" *ngIf="basicForm.get('field_address').get('state').hasError('required') && basicForm.get('field_address').get('state').touched">
-					state is required
->>>>>>> 85562ac5315c148fa22cb19589624b8fc638eb76
 				</div>
 			</div>
 			<div class="col-md-6">
