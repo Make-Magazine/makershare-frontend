@@ -20,7 +20,13 @@
 	</div>
 	<div class="form-group interesets">
 		<label for="interesets">What are your interests as a Maker?</label>
-		<tag-input theme='dark'></tag-input>
+<tag-input formControlName="maker_interests" [identifyBy]="'tid'" [displayBy]="'name'"
+           [onlyFromAutocomplete]="true">
+    <tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'"
+                        [autocompleteItems]="allIntersets">
+        
+    </tag-input-dropdown>
+</tag-input>
 		<div class="form-group bio">
 			<label for="bio">Bio</label>
 			<textarea class="form-control" id="bio" placeholder="Enter text" formControlName="maker_interests"></textarea>

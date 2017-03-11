@@ -15,6 +15,8 @@ export class OptionalInfoComponent implements OnInit {
   @Input() profile: UserProfile;
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
+  allIntersets: any[] = [];
+
 
   optionalForm: FormGroup;
   imageSrc: string = "http://placehold.it/100x100";
@@ -26,6 +28,12 @@ export class OptionalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+            this.profileService.getAllInterests().subscribe(allIntersets => {
+     this.allIntersets=allIntersets;
+    }, err => {
+      console.log("error");
+      console.log(err);
+    });
     this.profileService.getAllMarkers().subscribe(markers => {
       for (let i = 0; i < markers.length; i++) {
         this.allMarkersNames.push(markers[i].makerspace_name);

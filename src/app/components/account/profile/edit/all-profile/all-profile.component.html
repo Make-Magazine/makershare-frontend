@@ -36,10 +36,10 @@
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-									<a  class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<a class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i></a>
 									<img src="{{info.user_photo}}" alt="" class="">
 								</div>
-								<a  class="btn btn-blue btn-sharp">Message</a>
+								<a class="btn btn-blue btn-sharp">Message</a>
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
@@ -269,13 +269,17 @@
 				<div class="modal-body">
 
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Start typing an interest to select from existing tags">
+						<tag-input (onSelect)="onSelected($event)" [(ngModel)]="info.maker_interests" [identifyBy]="'name'" [displayBy]="'name'" [onlyFromAutocomplete]="true">
+							<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
+
+							</tag-input-dropdown>
+						</tag-input>
 					</div>
 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-blue" data-dismiss="modal">Done</button>
+					<button type="button" class="btn btn-blue" (click)="saveIntersets()" data-dismiss="modal">Done</button>
 				</div>
 			</div>
 		</div>
@@ -294,9 +298,11 @@
 						<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
 							<div class="maker-group">
 								<label for="makerspace-1">Makerspace name</label>
-								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
+									id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
 								<label for="url-1">URL (optional)</label>
-								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl" id="url-1" placeholder="Type or paste">
+								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
+									id="url-1" placeholder="Type or paste">
 							</div>
 						</div>
 						<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
@@ -368,7 +374,7 @@
 							</li>
 							<li class="form-group">
 								<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
-								<input type="text" [(ngModel)] ="info.field_social_accounts.field_hackster_io" name="web-url">
+								<input type="text" [(ngModel)]="info.field_social_accounts.field_hackster_io" name="web-url">
 								<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
 							</li>
 							<li class="form-group">

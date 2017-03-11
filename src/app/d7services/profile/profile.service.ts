@@ -28,6 +28,10 @@ export class ProfileService {
     return this.mainService.get(globals.endpoint + '/marker-space').map(response => response.json()).catch(err => Observable.throw(err));
   }
 
+ getAllInterests(): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/interests_category').map(response => response.json()).catch(err => Observable.throw(err));
+  }
+
   getByCountry(country: string): Observable<any> {
     return this.mainService.get(globals.endpoint + '/maker_address_api/' + country).map(response => response.json()).catch(err => Observable.throw(err));
   }

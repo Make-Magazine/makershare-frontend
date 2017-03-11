@@ -16,6 +16,8 @@ export class AllProfileComponent implements OnInit {
 
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
+  allIntersets: any[] = [];
+
   items: any[] = [];
   optionalForm: FormGroup;
   imageSrc: string = "http://placehold.it/100x100";
@@ -47,7 +49,23 @@ export class AllProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.buildForm();
+    this.profileService.getAllMarkers().subscribe(markers => {
+      for (let i = 0; i < markers.length; i++) {
+        this.allMarkersNames.push(markers[i].makerspace_name);
+        this.allMarkersUrl.push(markers[i].makerspace_url);
+      }
+
+    }, err => {
+      console.log("error");
+      console.log(err);
+    });
+
+    this.profileService.getAllInterests().subscribe(allIntersets => {
+      this.allIntersets = allIntersets;
+    }, err => {
+      console.log("error");
+      console.log(err);
+    });
     this.profileService.getUser(1).subscribe(res => {
 
       this.profile = res;
@@ -68,15 +86,18 @@ export class AllProfileComponent implements OnInit {
   }
 
 
-  buildForm(): void {
-
-  }
 
   saveInfo() {
     this.profile.nickname = this.info.nickname;
     this.saveProfile();
   }
 
+  onSelected(intrest) {
+    this.profile.maker_interests.push(intrest.name);
+  }
+  saveIntersets() {
+    this.saveProfile();
+  }
   saveBio() {
     this.profile.bio = this.info.bio;
     this.saveProfile();
@@ -91,7 +112,7 @@ export class AllProfileComponent implements OnInit {
     this.saveProfile();
   }
   saveProfile() {
-    this.profileService.updateProfile(1,this.profile).subscribe(profile => {
+    this.profileService.updateProfile(1, this.profile).subscribe(profile => {
       console.log("profile saved");
       console.log(profile);
     }, err => {

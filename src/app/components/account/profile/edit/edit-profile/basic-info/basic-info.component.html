@@ -39,10 +39,13 @@
 				<select formControlName="country" name="Select country" (ngModelChange)="setCountry($event)" class="ui fluid search selection dropdown"> 
         <option *ngFor="let ctry of allCountries" [attr.value]="ctry.value">{{ctry.label}}</option>
       </select>
+
 				<div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
 					{{ formErrors.address.country }}
 				</div>
 			</div>
+
+			<div class="col-md-3">
 			<div class="col-md-2">
 				<select *ngIf="!isCity" formControlName="state" name="Select country" class="ui fluid search selection dropdown"> 
         <option *ngFor="let stat of items" [attr.value]="stat">{{stat}}</option>
@@ -51,34 +54,47 @@
 				<div *ngIf="formErrors.address.state" class="alert alert-danger error-msg">
 					{{ formErrors.address.state }}
 				</div>
-			</div>
-			<div class="col-md-6">
-				<input *ngIf="isCity" ng2-auto-complete formControlName="city" blank-option-text="Select city" [source]="items" placeholder="enter text"/>
-				<div *ngIf="formErrors.address.city" class="alert alert-danger error-msg">
-					{{ formErrors.address.city }}
 				</div>
-
+				<div class="col-md-6">
+					<input *ngIf="isCity" ng2-auto-complete formControlName="city" blank-option-text="Select city" [source]="items" placeholder="enter text"
+					/>
+					<div *ngIf="formErrors.address.city" class="alert alert-danger error-msg">
+						{{ formErrors.address.city }}
+					</div>
 			</div>
-				<div *ngIf="postalCode" class="col-md-4">
+				<!--<div *ngIf="postalCode" class="col-md-4">
 					<input formControlName="postal_code" type="text" placeholder="Postal Code">
-				</div>
+				</div>-->
 		</div>
 		<input type="checkbox" formControlName="address_publish" name="publish" id="publish" checked="true">Publish this info
 		<div class="guide">
 			<p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
 		</div>
+		<div *ngIf="postalCode" class="col-md-4">
+			<input formControlName="postal_code" type="text" placeholder="Postal Code">
+		</div>
+
+
+		</div>
 	</div>
+
 	<div class="form-group describe">
+				<input type="checkbox" formControlName="address_publish" name="publish" id="publish" checked="true">Publish this info
+			<div class="guide">
+				<p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
+			</div>
 		<label for="describe">How do you describe yourself as a Maker?</label>
 		<div class="guide">
-			<p>How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional
-				fabricator. I am an educator. Etcetera!</p>
+			<p>
+				How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional
+				fabricator. I am an educator. Etcetera!
+			</p>
 		</div>
 		<textarea type="text" formControlName="describe_yourself" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters"
 			maxlength="60"></textarea>
-					<div *ngIf="formErrors.describe_yourself" class="alert alert-danger error-msg">
-					{{ formErrors.describe_yourself }}
-				</div>
+		<div *ngIf="formErrors.describe_yourself" class="alert alert-danger error-msg">
+			{{ formErrors.describe_yourself }}
+		</div>
 	</div>
 	<div class="form-group birthday">
 		<label for="birthday">What is your birthday?</label>
@@ -91,8 +107,10 @@
 		<input type="checkbox" formControlName="birthday_status" name="birthday-alt">I prefer not to answer. I attest that I’m
 		over 13 years old
 		<div class="guide">
-			<p>This info will not be published on your profile; we ask because this platform is designed for Makers age 13 and above
-				and some of our Challenges have age requirements.</p>
+			<p>
+				This info will not be published on your profile; we ask because this platform is designed for Makers age 13 and above and
+				some of our Challenges have age requirements.
+			</p>
 		</div>
 	</div>
 	<div class="form-group email">
@@ -103,10 +121,13 @@
 			{{ formErrors.mail }}
 		</div>
 		<div class="guide">
-			<p>This does not change the address you use to login; this is where we will send administrative emails and forward messages
-				from other Makers. It can match your login email or not; you can change it at any time.</p>
+			<p>
+				This does not change the address you use to login; this is where we will send administrative emails and forward messages
+				from other Makers. It can match your login email or not; you can change it at any time.
+			</p>
 		</div>
 		<input type="checkbox" formControlName="newsletter_subscription" name="subscribe" checked="true">Subscribe to the Make:
 		weekly newsletter
 	</div>
+
 </form>
