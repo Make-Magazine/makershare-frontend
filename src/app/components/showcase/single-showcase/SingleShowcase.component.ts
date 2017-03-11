@@ -43,8 +43,6 @@ export class SinglShowcaseComponent implements OnInit {
   }
 
     this.route.params
-    //next line and limit in component is to be added after back-end update
-   // .switchMap((nid) => this.viewService.getView('showcase_projects',[['nid',nid['nid']],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .switchMap((nid) => this.viewService.getView('views/showcase_projects',[['nid',nid['nid']],['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe(data =>{
       this.projects=data;
@@ -75,7 +73,6 @@ loadMoreVisibilty(){
      this.router.navigate(['']);
    }
    public goToProject(nid, projectIndex){
-     debugger
      let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": nid,
