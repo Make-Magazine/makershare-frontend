@@ -98,33 +98,102 @@ export class BasicInfoComponent implements OnInit {
   }
   buildForm(): void {
     this.basicForm = this.fb.group({
-      'field_nickname': ['', [Validators.required]],
-      'field_first_name': ['', [Validators.required]],
-      'field_last_name': ['', [Validators.required]],
-      'field_address': this.fb.group({
+      'nickname': ['', [Validators.required]],
+      'first_name': ['', [Validators.required]],
+      'last_name': ['', [Validators.required]],
+      'address': this.fb.group({
         'country': ['', [Validators.required]],
         'state': ['', [Validators.minLength(4)]],
         'city': ['', []],
         'postal_code': ['', ''],
         'zip_code': ['', '']
       }),
-      'field_address_publish': ['', [Validators.required, Validators.minLength(4)]],
-      'field_describe_yourself': ['', [Validators.required, Validators.minLength(60)]],
-      'field_birthday_date': ['',],
+      'address_publish': ['', [Validators.required, Validators.minLength(4)]],
+      'describe_yourself': ['', [Validators.required, Validators.maxLength(60)]],
+      'birthday_date': ['',],
       'mail': ['', [Validators.required]],
-      'field_birthday_status': [''],
-      'field_newsletter_subscription': ['']
+      'birthday_status': [''],
+      'newsletter_subscription': ['']
     });
     this.basicForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
   }
 
-  onValueChanged(data?: any) {
+
+
+  /**
+   * an object to store the error messages for each field 
+   * this is usefull if we has multiple errors for each field
+   */
+  formErrors = {
+    'nickname': '',
+    'first_name': '',
+    'last_name': '',
+    'address': {
+      'country': '',
+      'state': '',
+      'city': ''
+    },
+    'address_publish': '',
+    'describe_yourself': '',
+    'birthday_date': '',
+    'mail': '',
+    'birthday_status': '',
+    'newsletter_subscription': ''
+  };
+
+  /**
+   * the error messages to set in formerrors foreach field and also for each validator
+   this way is good to save deffirent error messages for each validation
+   */
+  validationMessages = {
+    'nickname': {
+      'required': 'nick Name is required.'
+    },
+    'first_name': {
+      'required': 'first name is required.'
+    },
+    'last_name': {
+      'required': 'last name is required.'
+    }
+    ,
+    'address': {
+      'country': {
+        'required': 'country is required.'
+      },
+      'state': {
+        'required': 'state is required.'
+      }
+    },
+    'address_publish': {
+      'required': 'address publish is required.'
+    },
+    'describe_yourself': {
+      'required': 'describe yourself is required.',
+      'maxlength': 'field describe yourself is required (maximum 60characters).'
+    },
+    'birthday_date': '',
+    'mail': {
+      'required': 'Email is required.'
+    }
+  };
+
+    onValueChanged(data?: any) {
     if (!this.basicForm) { return; }
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);
-
+debugger
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
-
-
+  
 }

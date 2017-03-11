@@ -12,6 +12,7 @@ import { IcDatepickerModule } from 'ic-datepicker';
 import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 import { TagInputModule } from 'ng2-tag-input';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     IcDatepickerModule,
     CommonModule,
     ProfileRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     Ng2AutoCompleteModule,
     SelectModule,

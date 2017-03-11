@@ -11,7 +11,7 @@ timezone?: string,
 roles?:number [],
 uid?: number,
 changed?: number,
-field_bio?: string,
+bio?: string,
 field_add_your_makerspace_s_?:MakerSpace[];
 // field_add_your_makerspace_s_: [
 // {
@@ -42,20 +42,20 @@ field_add_your_makerspace_s_?:MakerSpace[];
 // }
 // }
 // ],// should fix the format of this field from the back-end
-field_first_name?: string,
-field_last_name?: string,
-field_describe_yourself?: string,
-field_started_making?: string,
+first_name?: string,
+last_name?: string,
+describe_yourself?: string,
+started_making?: string,
 field_social_accounts?: ProfileSocial, // should covert from array to object
-field_nickname?: string,
-field_contact_email?: string,
-field_address?: Address,
-field_address_publish?: number,
-field_maker_interests?: Intrests[], // should replace in the back-end to be an array
-field_display_projects_likes?: number,
-field_display_project_forks?: number,
-field_user_photo?: string,
-field_profile_cover?: string,
+nickname?: string,
+contact_email?: string,
+address?: Address,
+address_publish?: number,
+maker_interests?: Intrests[], // should replace in the back-end to be an array
+display_projects_likes?: number,
+display_project_forks?: number,
+user_photo?: string,
+profile_cover?: string,
 profile_completion?: number,
 total_projects?: number,
 total_likes?: number

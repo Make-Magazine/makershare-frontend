@@ -54,7 +54,6 @@ export class DiscussionComponent implements OnInit {
   /* function build form */
   buildForm() {
     this.commentForm = this.fb.group({
-      "subject": ['', Validators.required],
       "comment_body": ['', Validators.required],
     });
 
@@ -66,7 +65,7 @@ export class DiscussionComponent implements OnInit {
     if (this.commentForm.valid) {
       e.preventDefault();
 
-      this.commentData.subject = this.commentForm.value.subject;
+      this.commentData.subject = this.currentuser.author;
       this.commentData.comment_body.und[0].value = this.commentForm.value.comment_body;
       this.commentData.nid = this.challengeNid;
       this.commentService.createComment(this.commentData).subscribe(res => {
@@ -75,7 +74,7 @@ export class DiscussionComponent implements OnInit {
           nickname: this.currentuser.nickname,
           comment: this.commentData.comment_body.und[0].value,
         }
-        this.comments.push(newComment);
+        this.comments.unshift(newComment);
       }, err => { });
     }
     this.commentForm.reset();
