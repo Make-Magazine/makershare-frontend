@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
-import { ExploreComponent } from "./components/explore/explore.component";
+// import { ExploreModule } from "./components/explore/explore.module";
 import { ProfileComponent } from "./components/account/profile/view/profile.component";
 import { LearnComponent } from "./components/learn/learn/learn.component";
 import { ChallengesComponent, ChallengeDataComponent } from "./components/challenge/challenge.module";
@@ -18,7 +18,7 @@ const APP_ROUTES: Routes = [
     { path: 'user', component: ProfileComponent },
     { path: 'showcases', component: ShowcasesCollectionComponent },
     { path: 'single-showcase/:nid', component: SinglShowcaseComponent },
-    { path: 'explore', component: ExploreComponent },
+    { path: 'explore', loadChildren:'app/components/explore/explore.module#ExploreModule' },
     { path: 'challenges', component: ChallengesComponent },
     { path: 'challenge-data/:nid', component: ChallengeDataComponent },
     { path: 'learn', component: LearnComponent },
