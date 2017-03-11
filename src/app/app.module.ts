@@ -18,7 +18,7 @@ import { PmService } from './d7services/pm/pm.service';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
-import { ExploreComponent } from './components/explore/explore.component';
+// import { ExploreModule } from './components/explore/explore.module';
 
 
 // New Structure
@@ -40,7 +40,6 @@ import { Auth } from './auth0/auth.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ExploreComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +55,7 @@ import { Auth } from './auth0/auth.service';
     MessagesModule,
     Ng2Bs3ModalModule,
     NotificationBarModule,
+    // ExploreModule,
   ],
   entryComponents: [],
   providers: [
