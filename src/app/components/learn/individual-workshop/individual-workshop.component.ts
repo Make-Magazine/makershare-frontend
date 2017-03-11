@@ -89,7 +89,7 @@ export class IndividualWorkshopComponent implements OnInit {
         this.objects = data;
         console.log(data);
         for (let object in this.objects) {
-          var i = 0
+
           if (this.objects[object].video && this.objects[object].video !== '') {
             // console.log(this.objects[object].video)
             if (this.youtube_parser(this.objects[object].video)) {
@@ -144,11 +144,11 @@ export class IndividualWorkshopComponent implements OnInit {
     } else if (this.objects[i].book) {
       if (this.objects[i].book.endsWith('.epub')) {
       this.epubFile = true;
-        this.sanitizethis = this.objects[i].book;
+        this.sanitizethis = 'http://makerdev.orangestudio.com:8080/sites/default/files/learning-object/book/2017/03/book.epub';
         // this.sanitizethis = 'http://futurepress.github.io/epub.js/reader/#epubcfi(/6/260[xchapter_124]!4/2/2/2/1:0)';
         this.epubLink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
       } else {
-        this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+        this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
         this.popupPreview = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
       }
     }

@@ -45,7 +45,7 @@ export class BasicInfoComponent implements OnInit {
         this.allCountries.push({ value: k, label: countries[k] });
       }
 
-     
+
     }, err => {
       console.log("error");
       console.log(err);
@@ -57,22 +57,22 @@ export class BasicInfoComponent implements OnInit {
     this.profileService.getByCountry(value).subscribe(info => {
       console.log(info);
       if (info.administrative_area_label == "Governorate") {
-        this.isCity = true
+        this.isCity = true;
       } else {
-        this.isCity = false
+        this.isCity = false;
       }
 
-      this.postalCode = false;
-      this.zipCode = false;        
-      // postal_code & zip_code
-      for(var k in info.used_fields){
-        if(info.used_fields[k] == "postal_code"){
-          this.postalCode = true;        
-        }
-        if(info.used_fields[k] == "zip_code"){
-          this.zipCode = true;        
-        }        
-      }
+      // this.postalCode = false;
+      // this.zipCode = false;        
+      // // postal_code & zip_code
+      // for(var k in info.used_fields){
+      //   if(info.used_fields[k] == "postal_code"){
+      //     this.postalCode = true;        
+      //   }
+      //   if(info.used_fields[k] == "zip_code"){
+      //     this.zipCode = true;        
+      //   }        
+      // }
       
       this.items = [];
       for (var k in info.administrative_areas) {
@@ -178,22 +178,24 @@ export class BasicInfoComponent implements OnInit {
     }
   };
 
-    onValueChanged(data?: any) {
+  onValueChanged(data?: any) {
     if (!this.basicForm) { return; }
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);
-debugger
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
+    if (form != null) {
+      for (const field in this.formErrors) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            this.formErrors[field] += messages[key] + ' ';
+          }
         }
       }
     }
+
   }
-  
+
 }

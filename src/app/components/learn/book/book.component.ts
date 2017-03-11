@@ -50,19 +50,4 @@ export class BookComponent implements OnInit {
   nextPage() {
       this.book.nextPage();
   }
-// book: any
-  
-//   showBook(i){   
-//    if(this.objects[i].book.endsWith('.epub'))
-//    {
-//       this.objects[i].book = ePub('assets/book/book2.epub', { fixedLayout: true, height: false,spreads: false });
-      
-//       this.objects[i].book.renderTo('bookReader');
-//       this.sanitizethis = this.objects[i].book;
-//       this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
-//       this.book.getMetadata().then(function(meta){
-//           console.log(meta);  
-//       });
-//    }
-//   }
 }
