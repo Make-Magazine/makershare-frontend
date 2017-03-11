@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { Http } from '@angular/http';
-
+import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-individual-workshop',
@@ -31,6 +31,7 @@ export class IndividualWorkshopComponent implements OnInit {
   isBookmarked;
   Flags = ['like','node_bookmark'];
   FlagStates = [] ;
+  epubFile= false;
   
   constructor(
     private route: ActivatedRoute,
@@ -86,7 +87,9 @@ export class IndividualWorkshopComponent implements OnInit {
     .subscribe(data =>{
       this.objects = data;
       console.log(data);
+     
       for(let object in this.objects) {
+         this.epubFile= false;
         var i = 0
           if(this.objects[i].video && this.objects[i].video !== ''){
            // console.log(this.objects[object].video)
@@ -139,8 +142,18 @@ export class IndividualWorkshopComponent implements OnInit {
 
            this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
         } else if (this.objects[i].book) {
-           this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
-           this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
+          if(this.objects[i].book.endsWith('.epub'))
+          {  this.epubFile= true;
+            this.sanitizethis = this.objects[i].book;
+             this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
+          }else {
+            this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+            this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
+          }
+           
+        }else{
+          this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=http://makerdev.orangestudio.com:8080/sites/default/files/learning-object/book/2017/03/os_drupal_developer_guide.docx&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+            this.popupPreview = this.sanitizer.bypassSecurityTrustHtml (this.sanitizethis);
         }
     }
  overlay(object)
