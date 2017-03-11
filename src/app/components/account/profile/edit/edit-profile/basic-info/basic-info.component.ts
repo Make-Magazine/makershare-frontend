@@ -57,11 +57,11 @@ export class BasicInfoComponent implements OnInit {
     this.profileService.getByCountry(value).subscribe(info => {
       console.log(info);
       if (info.administrative_area_label == "Governorate") {
-        this.isCity = true
+        this.isCity = true;
       } else {
-        this.isCity = false
+        this.isCity = false;
       }
-      
+
       // this.postalCode = false;
       // this.zipCode = false;        
       // // postal_code & zip_code
