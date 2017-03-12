@@ -6,6 +6,8 @@ import { PdfViewerComponent } from '../../../../node_modules/ng2-pdf-viewer';
 import { BookComponent } from './book/book.component';
 import { LearnRoutingModule }from './learn-routing.module';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 
@@ -15,6 +17,7 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
     CommonModule,
     LearnRoutingModule,
     Ng2PageScrollModule.forRoot(),
+    SharedModule,
 
   ],
   declarations: [

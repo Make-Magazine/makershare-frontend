@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
-import{IChallenge} from '../../../models/challenge/challenge';
+import { IChallenge } from '../../../models/challenge/challenge';
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
 })
 export class ChallengesComponent implements OnInit {
-  challenges: IChallenge[]=[];
+  challenges: IChallenge[] = [];
   challengescounter = [];
   pageNumber = 0;
   allstatuses = [];
@@ -17,12 +17,12 @@ export class ChallengesComponent implements OnInit {
   currentStatusId = 0;
   hideloadmore = true;
   currentCount = 0;
-  challengeFollowCount=0;
+  challengeFollowCount = 0;
   constructor(
     private viewService: ViewService,
     private router: Router,
-    private flagService:FlagService,
-    ) { }
+    private flagService: FlagService,
+  ) { }
 
   ngOnInit() {
 
@@ -30,108 +30,108 @@ export class ChallengesComponent implements OnInit {
     this.getStatuses();
     this.getChallenges();
     console.log(this.currentCount)
-    
+
 
   }
 
-  getChallenges(){
+  getChallenges() {
     var status_arg = [];
     var page_arg = [];
 
-    
-    if(this.currentStatusId != 0){
+
+    if (this.currentStatusId != 0) {
       status_arg = ['status', this.currentStatusId];
       this.currentCount = this.statusesCount[this.currentStatusId];
-    }else{
+    } else {
       this.currentCount = this.statusesCount['0'];
     }
-    if(this.pageNumber >=0){
+    if (this.pageNumber >= 0) {
       page_arg = ['page', this.pageNumber];
-      
+
     }
-     this.viewService.getView('challenges',[status_arg, page_arg]).subscribe(data => {
+    this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(data => {
       this.challenges = this.challenges.concat(data);
-           console.log(page_arg)
-        
+      console.log(page_arg)
+
       this.loadMoreVisibilty();
-      if(!this.currentCount){
-            this.currentCount = this.statusesCount['0'];
+      if (!this.currentCount) {
+        this.currentCount = this.statusesCount['0'];
       }
       // count followers
-      for (let challenge of this.challenges){
+      for (let challenge of this.challenges) {
         console.log(challenge.nid);
-        this.flagService.flagCount(challenge.nid,'follow').subscribe(data =>{
-        Object.assign(challenge,data)
-            console.log(challenge)
-            console.log(data['count'])
+        this.flagService.flagCount(challenge.nid, 'follow').subscribe(data => {
+          Object.assign(challenge, data)
+          console.log(challenge)
+          console.log(data['count'])
 
         });
-        
+
       }
-      
+
     });
-       
-    
+
+
   }
 
   // get more click
-    loadmore(){
-     
+  loadmore() {
+
     this.pageNumber++;
     this.getChallenges();
   }
 
   // Get challenges status to render them in the component
-  getStatuses(){
+  getStatuses() {
     this.viewService.getView('maker_taxonomy_category/14').subscribe(data => {
       let arr = [];
-      for(let key in data){
-       if(data.hasOwnProperty(key)){
-         arr.push(data[key]);
-       }
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+          arr.push(data[key]);
+        }
       }
       // console.log(arr);
-      arr.unshift({"tid": 0, "name": "All"});
+      arr.unshift({ "tid": 0, "name": "All" });
       this.allstatuses = arr;
     }, err => {
 
     });
-    
+
   }
 
   // get the count of challenges per status
   challengesCount() {
-      this.viewService.getView('maker_count_api',[]).subscribe(data => {
-      this.statusesCount=data;
+    this.viewService.getView('maker_count_api', []).subscribe(data => {
+      this.statusesCount = data;
       //console.log(this.statusesCount);
     });
   }
 
   // click function on status
-   SetCurrentStatus(event){
-    if(this.currentStatusId != event.target.id){
+  SetCurrentStatus(event) {
+    if (this.currentStatusId != event.target.id) {
       this.challenges = [];
- 
+
     }
     this.currentStatusName = event.target.name;
     this.currentStatusId = event.target.id;
     this.pageNumber = 0;
-   this.getChallenges();
+    this.getChallenges();
   }
 
   // control load more button
-  loadMoreVisibilty(){
+  loadMoreVisibilty() {
     // get the challenges array count
     var ch_arr_count = this.challenges.length;
-    if(this.statusesCount[this.currentStatusId] > ch_arr_count){
+    if (this.statusesCount[this.currentStatusId] > ch_arr_count) {
       this.hideloadmore = true;
-    }else{
+    } else {
       this.hideloadmore = false;
     }
-    
+
   }
-    ShowChallengeDetails(nid){
-     this.router.navigate(['/challenges', nid]);
+  ShowChallengeDetails(nid) {
+    this.router.navigate(['/challenges', nid]);
   }
 
 }

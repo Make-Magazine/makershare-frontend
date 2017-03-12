@@ -113,25 +113,27 @@ export class IndividualWorkshopComponent implements OnInit {
           }
         });
 
-      // this.getCurrentUser();
-      // this.userService.getStatus().subscribe(data => {
-      //   this.currentuser = data;
-      //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(data => {
-      //     this.isLiked = data[0];
-      //   })
-      //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'bookmark').subscribe(data => {
-      //     this.isBookmarked = data[0];
-      //   })
 
-      // });
       this.viewService.getView('more-lessons', [['nid', this.nid]])
         .subscribe(data => {
           this.lessons = data;
         });
     }
 
+    this.getCurrentUser();
+    this.userService.getStatus().subscribe(data => {
+    this.currentuser = data;
+   
 
-  }
+    
+      this.currentuser = data;
+    
+     
+
+
+  });
+}
+    
   preview(i) {
     delete this.popupPreview;
     this.epubFile = null;
@@ -184,38 +186,12 @@ export class IndividualWorkshopComponent implements OnInit {
     });
   }
   /* end function get user*/
+   
 
-  likeThis(e: Event) {
-    this.getCurrentUser();
-    console.log(this.currentuser.user.uid)
-    console.log(this.workshop.nid)
-    e.preventDefault();
-    if (this.isLiked) {
-      this.flagService.unflag(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(response => {
-        this.isLiked = false;
+ 
 
-      });
-    } else {
-      this.flagService.flag(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(response => {
-        this.isLiked = true;
-      });
 
-    }
-  }
-  bookmarkThis(e: Event) {
-    this.getCurrentUser();
-    console.log(this.currentuser.user.uid)
-    console.log(this.workshop.nid)
-    e.preventDefault();
-    if (this.isBookmarked) {
-      this.flagService.unflag(this.workshop.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = false;
-      });
-    } else {
-      this.flagService.flag(this.workshop.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = true;
-      });
-    }
-  }
+ 
+ 
 
 }

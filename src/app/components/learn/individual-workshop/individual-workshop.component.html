@@ -1,9 +1,28 @@
 <div class="row">
-  <div class="page-workshop-individual">
-    <section class="col-sm-12 width-fix">
-      <div *ngIf="workshop">
-        <div class="top-content-wrapper">
-          <img src="{{workshop?.cover_photo}}" alt="" class="workshop-coverphoto">
+
+  <div class= "page-workshop-individual">
+        <section class="col-sm-12 width-fix">
+          <div *ngIf="workshop">
+          <div class="top-content-wrapper">
+             <img src="{{workshop.cover_photo}}" alt="" class="workshop-coverphoto">
+            <div class="container">
+              <div class="col-md-12">
+                <ul class="list-unstyled workshop-actions pull-right">
+                   <app-like [nodeNid]="workshop.nid"></app-like>
+                   <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
+                  <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+                </ul>
+                <div class="list-unstyled workshop-tags pull-left">
+                   <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
+                </div>
+                <div class="clearfix"></div>
+                
+                <h2>{{workshop.workshop_title}}</h2>
+              </div>
+            </div><!-- End container -->
+          </div> <!-- End top-content-wrapper-->
+          </div><!-- End workshop checker-->
+
           <div class="container">
             <div class="col-md-12">
               <ul class="list-unstyled workshop-actions pull-right">
