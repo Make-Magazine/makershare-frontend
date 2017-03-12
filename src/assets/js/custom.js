@@ -60,27 +60,27 @@ function addCollab(){
 var squareView = true;
 /*var */
 $(document).ready(function() {
-	 $(' .contributers').slick({
-		dots: true,
-		infinite: true,
-		speed: 300,
-		slidesToShow: 1,
-		arrows:false,
+	//  $(' .contributers').slick({
+	// 	dots: true,
+	// 	infinite: true,
+	// 	speed: 300,
+	// 	slidesToShow: 1,
+	// 	arrows:false,
 
-  	});
-	$('.carousel').bind('slide.bs.carousel', function (e) {
-		setTimeout(function(){
-			$('.contributers').slick('unslick');
-		 $('.contributers').slick({
-			dots: true,
-			infinite: true,
-			speed: 300,
-			slidesToShow: 1,
-			arrows:false,
-		}
-			,200)
-	  });
-	});
+  // 	});
+	// $('.carousel').bind('slide.bs.carousel', function (e) {
+	// 	setTimeout(function(){
+	// 		$('.contributers').slick('unslick');
+	// 	 $('.contributers').slick({
+	// 		dots: true,
+	// 		infinite: true,
+	// 		speed: 300,
+	// 		slidesToShow: 1,
+	// 		arrows:false,
+	// 	}
+	// 		,200)
+	//   });
+	// });
 	$('.navbar-header button,#navbar').hover(function() {
 		$('#navbar').show();
 		setTimeout(function(){},200);

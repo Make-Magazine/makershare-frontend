@@ -1,35 +1,13 @@
 
     <div id="sidebar">
-        <div id="panels">
-          <input id="searchBox" placeholder="search" type="search">
-          
-          <a id="show-Search" class="show_view icon-search" data-view="Search">Search</a>
-
-          <a id="show-Bookmarks" class="show_view icon-bookmark" data-view="Bookmarks">Bookmarks</a>
-          <a id="show-Notes" class="show_view icon-edit" data-view="Notes">Notes</a>
-         
-        </div>
-        <div id="tocView">
-        </div>
-        <div id="searchView">
-          <ul id="searchResults"></ul>
-        </div>
-        <div id="bookmarksView">
-          <ul id="bookmarks"></ul>
-        </div>
-      </div>
       <div id="main">
         
-      
-
-          <div class="overlay"></div>
+        <div class="overlay"></div>
       
         <div id="divider"></div>
-        <!--<div *ngIf= "book"> {{book}} </div>-->
-        <div id="prev" (click)="prevPage()" class="arrow">‹</div>
+        <div id="prev" (click)="prevPage()" class="arrow" >‹</div>
         <div id="bookReader"></div>
         <div id="next" (click)="nextPage()" class="arrow">›</div>
-     
-        <!--<div id="loader"><img src="assets/js/epub.js/reader/img/loader.gif"></div>-->
       </div>
+    </div>
      
