@@ -21,15 +21,15 @@ import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
 import { SharedModule } from './components/shared/shared.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import custom auth0 service
-
 import { Auth } from './auth0/auth.service';
+
 // import { AccountModule } from './components/account/account.module';
 // import { ExploreModule } from './components/explore/explore.module';
 // New Structure
 // import { ChallengeModule } from './components/challenge/challenge.module';
-// import { ShowcaseModule } from './components/showcase/showcase.module';
+// import { ShowcaseMod    NgbModal,ule } from './components/showcase/showcase.module';
 // import { LearnModule } from './components/learn/learn.module';
 // import { HomeModule } from './components/home/home.module';
 // import custom auth0 service
@@ -45,7 +45,8 @@ import { Auth } from './auth0/auth.service';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule,
+    NgbModule,
+   RouterModule,
     // AccountModule,
     routing,
     MessagesModule,
