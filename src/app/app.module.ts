@@ -25,8 +25,7 @@ import { SharedModule } from './components/shared/shared.module';
 // import custom auth0 service
 
 import { Auth } from './auth0/auth.service';
-import { AccountModule } from './components/account/account.module';
-
+// import { AccountModule } from './components/account/account.module';
 // import { ExploreModule } from './components/explore/explore.module';
 // New Structure
 // import { ChallengeModule } from './components/challenge/challenge.module';
@@ -47,7 +46,7 @@ import { AccountModule } from './components/account/account.module';
     HttpModule,
     ReactiveFormsModule,
     RouterModule,
-    AccountModule,
+    // AccountModule,
     routing,
     MessagesModule,
     Ng2Bs3ModalModule,
