@@ -40,6 +40,7 @@ import { Auth } from './auth0/auth.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
