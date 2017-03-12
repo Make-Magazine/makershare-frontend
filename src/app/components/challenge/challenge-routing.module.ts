@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ChallengesComponent } from './challenges/challenges.component';
-import { ChallengeDataComponent } from './challenge-data/challenge-data.component';
+import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
+
 
 const ChallengeRouts: Routes = [
   {
-    path: '', 
+    path: '',
     children: [
-      { path: '', component:ChallengesComponent },
-      { path: ':nid', component:ChallengeDataComponent }
+      { path: '', component: ChallengesComponent },
+      { path: ':nid', loadChildren: 'app/components/challenge/challenge-data/challenge-data.module#ChallengeDataModule' },
+      { path: 'enter-challenge', component: ChallengeProjectComponent },
     ]
   },
 ];

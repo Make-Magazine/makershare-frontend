@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
-import { ProjectsComponent } from './view/projects/projects.component';
+// import { ProjectsComponent } from './view/projects/projects.component';
 import { EditProfileComponent } from './edit/edit-profile/edit-profile.component';
 import { BasicInfoComponent } from './edit/edit-profile/basic-info/basic-info.component';
 import { OptionalInfoComponent } from './edit/edit-profile/optional-info/optional-info.component';
@@ -33,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     BasicInfoComponent,
     OptionalInfoComponent,
     ProfileComponent,
-    ProjectsComponent
+    // ProjectsComponent
   ]
 })
 export class ProfileModule { }
