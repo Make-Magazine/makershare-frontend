@@ -8,7 +8,6 @@ import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 
 const ProfileRouts: Routes = [
   { path: 'editprofile',  component:  EditProfileComponent}
- // { path: 'project/view/:nid', component: ProjectDetailsComponent }
 ];
 
 @NgModule({
