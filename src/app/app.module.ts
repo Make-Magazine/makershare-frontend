@@ -29,6 +29,7 @@ import { LearnModule } from './components/learn/learn.module';
 import { HomeModule } from './components/home/home.module';
 import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
+import { SharedModule } from './components/shared/shared.module';
 
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
@@ -56,6 +57,7 @@ import { Auth } from './auth0/auth.service';
     MessagesModule,
     Ng2Bs3ModalModule,
     NotificationBarModule,
+    SharedModule
   ],
   entryComponents: [],
   providers: [

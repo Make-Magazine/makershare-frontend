@@ -1,0 +1,7 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment" class="form-horizontal" >
+<div class="form-group col-lg-10">
+   <label class="control-label" >Comment</label>
+   <textarea class="form-control" rows="5" id="comment" formControlName="comment_body"></textarea>
+   <input type="submit" class="btn btn-info" value="Post">
+</div>
+</form>

@@ -11,12 +11,14 @@ import { SummaryComponent } from './challenge-data/summary/summary.component';
 import { AwardsComponent } from './challenge-data/awards/awards.component';
 import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     ChallengesComponent,
@@ -24,12 +26,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChallengeSummaryComponent,
     FollowersComponent,
     ChallengeProjectComponent,
-    RulesComponent,
+    RulesComponent, 
     DiscussionComponent,
     SummaryComponent,
     AwardsComponent,
-
-  ]
+  ],
+  providers: []
 })
 export class ChallengeModule { }
 export  {ChallengesComponent};
