@@ -37,6 +37,7 @@ import { AccountModule } from './components/account/account.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,

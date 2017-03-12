@@ -13,9 +13,9 @@ import { Http } from '@angular/http';
 export class BookComponent implements OnInit {
   author: {};
   objects;
-  sanitizethis
-  popupPreview
-  epubFile
+  sanitizethis;
+  popupPreview;
+  epubFile;
 
   constructor(   
     private route: ActivatedRoute,
@@ -32,9 +32,9 @@ export class BookComponent implements OnInit {
 
   book: any
   showBook() {
-
-       this.book = ePub(this.link, { fixedLayout: true, height: false,spreads: false });
-      // this.book = ePub('http://futurepress.github.io/epub.js/reader/#epubcfi(/6/260[xchapter_124]!4/2/2/2/1:0)', { fixedLayout: true, height: false,spreads: false });
+      console.log(this.link);
+      this.book = ePub(this.link, { fixedLayout: true, height: false,spreads: false });
+      //this.book = ePub('assets/book.epub', { fixedLayout: true, height: false,spreads: false });
       
       this.book.renderTo('bookReader');
       //this.author = this.book.getMetadata();
