@@ -22,29 +22,6 @@
             </div><!-- End container -->
           </div> <!-- End top-content-wrapper-->
           </div><!-- End workshop checker-->
-
-          <div class="container">
-            <div class="col-md-12">
-              <ul class="list-unstyled workshop-actions pull-right">
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="likeThis($event)" [class.active]="isLiked"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="bookmarkThis($event)" [class.active]="isBookmarked"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
-              </ul>
-              <div class="list-unstyled workshop-tags pull-left">
-                <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
-              </div>
-              <div class="clearfix"></div>
-
-              <h2>{{workshop.workshop_title}}</h2>
-            </div>
-          </div>
-          <!-- End container -->
-        </div>
-        <!-- End top-content-wrapper-->
-      </div>
-      <!-- End workshop checker-->
-
-
       <div class="container">
         <div class="region region-content col-sm-8">
           <div class="workshop-content">
