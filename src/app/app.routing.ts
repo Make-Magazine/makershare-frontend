@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./components/home/home.component";
 import { ProfileComponent } from "./components/account/profile/view/profile.component";
 import { AllProfileComponent } from './components/account/profile/edit/all-profile/all-profile.component';
 import { ChallengeProjectComponent } from "./components/challenge/enter-challenge-project/challenge-project.component"
@@ -7,12 +6,13 @@ import { ChallengeProjectComponent } from "./components/challenge/enter-challeng
 // import { ShowcasesCollectionComponent, SinglShowcaseComponent } from "./components/showcase/showcases.module";
 // import { LearnComponent } from "./components/learn/learn/learn.component";
 // import { ChallengesComponent, ChallengeDataComponent } from "./components/challenge/challenge.module";
+// import { HomeComponent } from "./components/home/home.component";
 // import { ExploreModule } from "./components/explore/explore.module";
 
 
 const APP_ROUTES: Routes = [
-    { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
+    { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
     { path: 'user', component: ProfileComponent },
     { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
     { path: 'explore', loadChildren:'app/components/explore/explore.module#ExploreModule' },
