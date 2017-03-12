@@ -114,21 +114,14 @@ export class IndividualWorkshopComponent implements OnInit {
 
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
-<<<<<<< HEAD
     this.currentuser = data;
    
 
     
-=======
       this.currentuser = data;
-      this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(data => {
-        this.isLiked = data[0];
-      })
-      this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'bookmark').subscribe(data => {
-        this.isBookmarked = data[0];
-      })
+    
+     
 
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
     });
 
     this.route.params
@@ -189,44 +182,12 @@ export class IndividualWorkshopComponent implements OnInit {
     });
   }
   /* end function get user*/
-<<<<<<< HEAD
    
 
  
-=======
 
-  likeThis(e: Event) {
-    this.getCurrentUser();
-    console.log(this.currentuser.user.uid)
-    console.log(this.workshop.nid)
-    e.preventDefault();
-    if (this.isLiked) {
-      this.flagService.unflag(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(response => {
-        this.isLiked = false;
 
-      });
-    } else {
-      this.flagService.flag(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(response => {
-        this.isLiked = true;
-      });
+ 
+ 
 
-    }
-  }
-  bookmarkThis(e: Event) {
-    this.getCurrentUser();
-    console.log(this.currentuser.user.uid)
-    console.log(this.workshop.nid)
-    e.preventDefault();
-    if (this.isBookmarked) {
-      this.flagService.unflag(this.workshop.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = false;
-      });
-    } else {
-      this.flagService.flag(this.workshop.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = true;
-      });
-    }
-  }
-
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
 }

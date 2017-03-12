@@ -8,6 +8,7 @@ import { FollowersComponent } from './followers/followers.component';
 import { SummaryComponent } from './summary/summary.component';
 import { AwardsComponent } from './awards/awards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -17,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChallengeDataRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
+    
   ],
   declarations: [
     FollowersComponent,

@@ -75,11 +75,7 @@ export class ChallengeDataComponent implements OnInit {
     this.getChallengeFollowers();
     this.getProjects();
     this.getCurrentUser();
-<<<<<<< HEAD
 
-
-
-=======
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
       //console.log(this.currentuser.user.uid);
@@ -102,7 +98,6 @@ export class ChallengeDataComponent implements OnInit {
     });
 
 
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
   }
 
   /* function get challenge followers */
@@ -128,9 +123,6 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function get user*/
 
-<<<<<<< HEAD
-
-=======
   /* function follow challenge*/
   followThis(e: Event) {
     this.getCurrentUser();
@@ -167,7 +159,7 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function bookmark challenge*/
 
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
+
   changeChallangeTab(NewTab, e) {
     e.preventDefault();
     this.activeTab = NewTab;

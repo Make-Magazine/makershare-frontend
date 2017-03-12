@@ -20,12 +20,10 @@ import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
-<<<<<<< HEAD
 import { SharedModule } from './components/shared/shared.module';
 
 // import custom auth0 service
-=======
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
+
 import { Auth } from './auth0/auth.service';
 import { AccountModule } from './components/account/account.module';
 
@@ -54,15 +52,13 @@ import { AccountModule } from './components/account/account.module';
     MessagesModule,
     Ng2Bs3ModalModule,
     NotificationBarModule,
-<<<<<<< HEAD
+
     SharedModule
-=======
     // ChallengeModule,
     // ShowcaseModule,
     // LearnModule,
     // HomeModule,
     // ExploreModule,
->>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
   ],
   entryComponents: [],
   providers: [
