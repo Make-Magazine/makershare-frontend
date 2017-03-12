@@ -37,7 +37,7 @@
         <li><a class="btn btn-blue" *ngIf="!auth.authenticated()" (click)="auth.login()">Login</a></li>  
         <li><a class="btn btn-blue" *ngIf="!auth.authenticated()" (click)="auth.signUp()">Join</a></li>  
         <li><a class="btn btn-blue" *ngIf="auth.authenticated()" (click)="auth.logout()">Logout</a></li>
-        <li><a class="btn btn-blue" *ngIf="auth.authenticated()" [routerLink]="['/user']">Profile</a></li>
+        <li><a class="btn btn-blue" *ngIf="auth.authenticated()" [routerLink]="['/profile']">Profile</a></li>
         <li><a class="btn btn-blue" *ngIf="auth.authenticated()" [routerLink]="['/project/create']">Add project</a></li>
     </ul>
     <!-- Include login modal in the header -->

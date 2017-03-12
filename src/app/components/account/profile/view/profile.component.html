@@ -8,7 +8,7 @@
         <h4>{{profile.first_name}} {{profile.last_name}}<span>{{profile.nickname}}</span></h4>
         <ul class="bookmark">
           <li>
-            <a [routerLink]="['/editprofile']"><i class="fa fa-lg fa-pencil"></i></a>
+            <a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
           </li>
           <li>
             <a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
@@ -148,23 +148,7 @@
         </div>
         <!-- End col-md-3 -->
         <div class="col-md-9">
-          <div class="profile-content">
-            <div class="projects-grid row">
-              <div *ngFor="let project of profile_projects" class="project col-md-4" (click)="ShowProjectDetails(project.nid)">
-                <div class="project-title">
-                  <p>{{project.project_name}}</p>
-                </div>
-                <div class="project-image">
-                  <img src="{{project.cover_photo}}" alt="" class="img-responsive">
-                </div>
-              </div>
-            </div>
-            <!-- End project grid -->
-            <div class="col-xs-4 col-xs-offset-4 load-more">
-              <a href="#" class="btn btn-white">Load more</a>
-            </div>
-          </div>
-          <!-- End profile content -->
+          <profile-projects></profile-projects>
         </div>
         <!-- End col-md-9 -->
       </div>
