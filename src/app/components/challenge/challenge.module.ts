@@ -1,40 +1,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChallengesComponent } from './challenges/challenges.component';
-import { ChallengeDataComponent } from './challenge-data/challenge-data.component';
-import { ChallengeSummaryComponent } from './challenge-summary/challenge-summary.component';
-
-import { RulesComponent } from './challenge-data/rules/rules.component'
-import { DiscussionComponent } from './challenge-data/discussion/discussion.component';
-import { FollowersComponent } from './challenge-data/followers/followers.component';
-import { SummaryComponent } from './challenge-data/summary/summary.component';
-import { AwardsComponent } from './challenge-data/awards/awards.component';
 import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+<<<<<<< HEAD
 import { SharedModule } from '../shared/shared.module';
+=======
+import { ChallengeRoutingModule } from './challenge-routing.module';
+
+
+>>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     SharedModule
+=======
+    ChallengeRoutingModule,
+>>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
   ],
   declarations: [
     ChallengesComponent,
-    ChallengeDataComponent,
-    ChallengeSummaryComponent,
-    FollowersComponent,
     ChallengeProjectComponent,
+<<<<<<< HEAD
     RulesComponent, 
     DiscussionComponent,
     SummaryComponent,
     AwardsComponent,
   ],
   providers: []
+=======
+  ]
+>>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
 })
 export class ChallengeModule { }
-export  {ChallengesComponent};
-export {ChallengeDataComponent};
-export  {ChallengeSummaryComponent};
+export { ChallengesComponent };
 

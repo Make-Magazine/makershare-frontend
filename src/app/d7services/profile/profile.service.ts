@@ -13,8 +13,8 @@ export class ProfileService {
     return this.mainService.post(globals.endpoint + '/maker_profile_api', Profile).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
-  updateProfile(Profile): Observable<any> {
-    return this.mainService.post(globals.endpoint + '/maker_profile_api/'+Profile.id, Profile).map(response => response.json()).catch(err => Observable.throw(err));
+  updateProfile(id,Profile): Observable<any> {
+    return this.mainService.post(globals.endpoint + '/maker_profile_api/'+id, Profile).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
   getUser(userId): Observable<any> {
@@ -26,6 +26,10 @@ export class ProfileService {
   }
     getAllMarkers(): Observable<any> {
     return this.mainService.get(globals.endpoint + '/marker-space').map(response => response.json()).catch(err => Observable.throw(err));
+  }
+
+ getAllInterests(): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/interests_category').map(response => response.json()).catch(err => Observable.throw(err));
   }
 
   getByCountry(country: string): Observable<any> {

@@ -75,9 +75,34 @@ export class ChallengeDataComponent implements OnInit {
     this.getChallengeFollowers();
     this.getProjects();
     this.getCurrentUser();
+<<<<<<< HEAD
 
 
 
+=======
+    this.userService.getStatus().subscribe(data => {
+      this.currentuser = data;
+      //console.log(this.currentuser.user.uid);
+      this.flagService.isFlagged(this.route.params['value'].nid, this.currentuser.user.uid, 'follow').subscribe(data => {
+        this.isFollowed = data[0];
+
+        /* initialize Button Follow*/
+        if (this.isFollowed == false) {/* start if  */
+          this.ButtonFollow = 'Follow';
+        } else {
+          console.log("return false");
+          this.ButtonFollow = 'UnFollow';
+        }/* end else if  */
+      })
+      /*bookmark start */
+      this.flagService.isFlagged(this.route.params['value'].nid, this.currentuser.user.uid, 'node_bookmark').subscribe(data => {
+        this.isBookmarked = data[0];
+      })
+      /*bookmark end*/
+    });
+
+
+>>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
   }
 
   /* function get challenge followers */
@@ -103,7 +128,46 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function get user*/
 
+<<<<<<< HEAD
 
+=======
+  /* function follow challenge*/
+  followThis(e: Event) {
+    this.getCurrentUser();
+    e.preventDefault();
+    if (this.isFollowed) {
+      this.flagService.unflag(this.challenge.nid, this.currentuser.user.uid, 'follow').subscribe(response => {
+        this.isFollowed = false;
+        this.ButtonFollow = 'Follow';
+      });
+    } else {
+      this.flagService.flag(this.challenge.nid, this.currentuser.user.uid, 'follow').subscribe(response => {
+        this.isFollowed = true;
+        this.ButtonFollow = 'UnFollow';
+      });
+
+    }
+
+  }
+  /* end function follow challenge*/
+
+  /* function bookmark challenge*/
+  bookmarkThis(e: Event) {
+    this.getCurrentUser();
+    e.preventDefault();
+    if (this.isBookmarked) {
+      this.flagService.unflag(this.challenge.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+        this.isBookmarked = false;
+      });
+    } else {
+      this.flagService.flag(this.challenge.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+        this.isBookmarked = true;
+      });
+    }
+  }
+  /* end function bookmark challenge*/
+
+>>>>>>> ac3f2cb7aabd58da1248e6a204b213022cc63cf9
   changeChallangeTab(NewTab, e) {
     e.preventDefault();
     this.activeTab = NewTab;

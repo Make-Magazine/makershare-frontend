@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<a for="upload" class="btn btn-white btn-sharp">Choose photo</a>
-				<input id="profile-photo-upload" (change)="onFileChange($event)" type="file" class="file" placeholder="Choose photo" formControlName="field_user_photo">
+				<input id="profile-photo-upload" (change)="onFileChange($event)" type="file" class="file" placeholder="Choose photo" formControlName="user_photo">
 				<div class="guide">
 					<p>
 						choose a photo that is at least 600 x 400 px
@@ -20,22 +20,28 @@
 	</div>
 	<div class="form-group interesets">
 		<label for="interesets">What are your interests as a Maker?</label>
-		<tag-input theme='dark'></tag-input>
+<tag-input formControlName="maker_interests" [identifyBy]="'tid'" [displayBy]="'name'"
+           [onlyFromAutocomplete]="true">
+    <tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'"
+                        [autocompleteItems]="allIntersets">
+        
+    </tag-input-dropdown>
+</tag-input>
 		<div class="form-group bio">
 			<label for="bio">Bio</label>
-			<textarea class="form-control" id="bio" placeholder="Enter text" formControlName="field_maker_interests"></textarea>
+			<textarea class="form-control" id="bio" placeholder="Enter text" formControlName="maker_interests"></textarea>
 		</div>
 	</div>
 	<div class="form-group how-started">
 		<label for="how-started">How'd you get started making?</label>
-		<input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="field_started_making">
+		<input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="started_making">
 	</div>
 	<div formArrayName="field_add_your_makerspace_s_">
     			<label for="">Add your Makerspace(s)</label>
 		<div class="form-group makerspace" *ngFor="let markSpace of optionalForm.controls.field_add_your_makerspace_s_.controls; let i=index">
 			<div class="maker-group" [formGroupName]="i">
 				<label for="makerspace-1">Makerspace name</label>
-				<input type="text" class="form-control" *ngIf="isCity"   ng2-auto-complete [source]="allMarkersNames"  formControlName="field_makerspace_name" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+				<input type="text" class="form-control"   ng2-auto-complete [source]="allMarkersNames"  formControlName="field_makerspace_name" id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
 				<label for="url-1">URL (optional)</label>
 				<input type="text" class="form-control" ng2-auto-complete [source]="allMarkersUrl" formControlName="field_makerspace_url" id="url-1" placeholder="Type or paste">
 			</div>

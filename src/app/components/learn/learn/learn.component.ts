@@ -29,7 +29,7 @@ export class LearnComponent implements OnInit {
     });
   }
     WorkshopDetails(nid) {
-    this.router.navigate(['/workshop', nid]);
+    this.router.navigate(['/learn', nid]);
     console.log(nid)
   }
 
