@@ -50,91 +50,91 @@ export class IndividualWorkshopComponent implements OnInit {
     this.nid = this.route.params['value'].nid
     if (this.nid) {
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
-      .subscribe(data => {
-        this.workshop = data[0];
-        //  console.log(this.workshop.uid)
+        .subscribe(data => {
+          this.workshop = data[0];
+          //  console.log(this.workshop.uid)
 
-        if (this.workshop.introductory_video) {
-         // console.log (this.workshop.introductory_video)
-          
-          if (this.youtube_parser(this.workshop.introductory_video)) {
-            this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
-            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-              console.log(data.html);
-             this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
-            });
+          if (this.workshop.introductory_video) {
+            // console.log (this.workshop.introductory_video)
+
+            if (this.youtube_parser(this.workshop.introductory_video)) {
+              this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
+              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                console.log(data.html);
+                this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+              });
+            }
+            else if (this.vimeo_parser(this.workshop.introductory_video)) {
+              console.log(this.workshop.introductory_video)
+              this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.introductory_video;
+
+              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+
+                this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+              });
+            }
           }
-          else if (this.vimeo_parser(this.workshop.introductory_video)) {
-            console.log(this.workshop.introductory_video)
-            this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.introductory_video;
 
-            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+          this.viewService.getView('maker_profile_search_data', [['uid', this.workshop.uid],]).subscribe(res => {
+            this.leaders = res;
+            if (res == '') {
+              this.check = false;
+            } else {
+              this.check = true;
+            }
+          });
 
-              this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
-            });
-          }
-        }
+        });
+      //  console.log(this.route.params);
+      this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
+        .subscribe(data => {
+          this.objects = data;
+          // console.log(data);
+          for (let object in this.objects) {
 
-        this.viewService.getView('maker_profile_search_data', [['uid', this.workshop.uid],]).subscribe(res => {
-          this.leaders = res;
-          if (res == '') {
-            this.check = false;
-          } else {
-            this.check = true;
+            if (this.objects[object].video && this.objects[object].video !== '') {
+              // console.log(this.objects[object].video)
+              if (this.youtube_parser(this.objects[object].video)) {
+                this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.objects[object].video;
+                this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                  // console.log(data.html);
+                  this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+                });
+              }
+              else if (this.vimeo_parser(this.objects[object].video)) {
+                this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
+
+                this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+
+                  this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+                });
+              }
+            }
           }
         });
 
-      });
-    //  console.log(this.route.params);
-    this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
-      .subscribe(data => {
-        this.objects = data;
-       // console.log(data);
-        for (let object in this.objects) {
+      // this.getCurrentUser();
+      // this.userService.getStatus().subscribe(data => {
+      //   this.currentuser = data;
+      //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(data => {
+      //     this.isLiked = data[0];
+      //   })
+      //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'bookmark').subscribe(data => {
+      //     this.isBookmarked = data[0];
+      //   })
 
-          if (this.objects[object].video && this.objects[object].video !== '') {
-            // console.log(this.objects[object].video)
-            if (this.youtube_parser(this.objects[object].video)) {
-              this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.objects[object].video;
-              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-               // console.log(data.html);
-                this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-              });
-            }
-            else if (this.vimeo_parser(this.objects[object].video)) {
-              this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
-
-              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-
-                this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-              });
-            }
-          }
-        }
-      });
-
-    // this.getCurrentUser();
-    // this.userService.getStatus().subscribe(data => {
-    //   this.currentuser = data;
-    //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'like').subscribe(data => {
-    //     this.isLiked = data[0];
-    //   })
-    //   this.flagService.isFlagged(this.workshop.nid, this.currentuser.user.uid, 'bookmark').subscribe(data => {
-    //     this.isBookmarked = data[0];
-    //   })
-
-    // });
+      // });
       this.viewService.getView('more-lessons', [['nid', this.nid]])
-      .subscribe(data => {
-        this.lessons = data;
-      });
+        .subscribe(data => {
+          this.lessons = data;
+        });
     }
-    
+
 
   }
   preview(i) {
-     delete this.popupPreview;
-     this.epubFile = null;
+    delete this.popupPreview;
+    this.epubFile = null;
     if (this.objects[i].pdf && this.objects[i].pdf !== '') {
       this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
       //  if (i == 0)
@@ -145,9 +145,9 @@ export class IndividualWorkshopComponent implements OnInit {
       this.popupPreview = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
     } else if (this.objects[i].book && this.objects[i].book !== '') {
       if (this.objects[i].book.endsWith('.epub')) {
-      this.epubFile = true;
-      delete this.popupPreview;
-      console.log(this.objects[i]);
+        this.epubFile = true;
+        delete this.popupPreview;
+        console.log(this.objects[i]);
         // this.sanitizethis = 'http://makerdev.orangestudio.com:8080/sites/default/files/learning-object/book/2017/03/book.epub';
         // this.sanitizethis = 'http://futurepress.github.io/epub.js/reader/#epubcfi(/6/260[xchapter_124]!4/2/2/2/1:0)';
         this.epubLink = this.objects[i].book;
@@ -158,8 +158,8 @@ export class IndividualWorkshopComponent implements OnInit {
     }
   }
   overlay(object) {
-     delete this.popupPreview;
-     this.epubFile = null;
+    delete this.popupPreview;
+    this.epubFile = null;
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
     }
@@ -217,5 +217,5 @@ export class IndividualWorkshopComponent implements OnInit {
       });
     }
   }
-  
+
 }
