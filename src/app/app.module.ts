@@ -20,7 +20,6 @@ import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 import { ExploreComponent } from './components/explore/explore.component';
 
-
 // New Structure
 import { ChallengeModule } from './components/challenge/challenge.module';
 import { ShowcaseModule } from './components/showcase/showcases.module';
