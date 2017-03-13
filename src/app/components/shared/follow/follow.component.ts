@@ -17,27 +17,23 @@ export class FollowComponent implements OnInit {
     private flagService: FlagService
   ) { }
   @Input() nodeNid;
+  @Input() user;
   currentuser;
   isFollowed;
   ButtonFollow;
   ngOnInit() {
+    this.flagService.isFlagged(this.nodeNid, this.user.uid, 'follow').subscribe(data => {
+      this.isFollowed = data[0];
 
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
+      /* initialize Button Follow*/
+      if (this.isFollowed == false) {/* start if  */
+        this.ButtonFollow = 'Follow';
+      } else {
+        console.log("return false");
+        this.ButtonFollow = 'UnFollow';
+      }/* end else if  */
+    })
 
-      this.flagService.isFlagged(this.nodeNid, this.currentuser.user.uid, 'follow').subscribe(data => {
-        this.isFollowed = data[0];
-
-        /* initialize Button Follow*/
-        if (this.isFollowed == false) {/* start if  */
-          this.ButtonFollow = 'Follow';
-        } else {
-          console.log("return false");
-          this.ButtonFollow = 'UnFollow';
-        }/* end else if  */
-      })
-
-    });
 
   }
 
@@ -45,12 +41,12 @@ export class FollowComponent implements OnInit {
   followThis(e: Event) {
     e.preventDefault();
     if (this.isFollowed) {
-      this.flagService.unflag(this.nodeNid, this.currentuser.user.uid, 'follow').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.user.uid, 'follow').subscribe(response => {
         this.isFollowed = false;
         this.ButtonFollow = 'Follow';
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.currentuser.user.uid, 'follow').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.user.uid, 'follow').subscribe(response => {
         this.isFollowed = true;
         this.ButtonFollow = 'UnFollow';
       });

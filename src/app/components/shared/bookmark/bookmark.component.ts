@@ -18,34 +18,28 @@ export class BookmarkComponent implements OnInit {
     private flagService: FlagService
   ) { }
   @Input() nodeNid;
+  @Input() user;
   currentuser;
   isBookmarked
 
   ngOnInit() {
-    console.log(this.nodeNid);
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
 
       /*bookmark start */
-      this.flagService.isFlagged(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(data => {
+      this.flagService.isFlagged(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
       })
       /*bookmark end*/
-
-    });
-
-
   }
 
   /* function bookmark */
   bookmarkThis(e: Event) {
     e.preventDefault();
     if (this.isBookmarked) {
-      this.flagService.unflag(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
         this.isBookmarked = false;
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
         this.isBookmarked = true;
       });
     }
