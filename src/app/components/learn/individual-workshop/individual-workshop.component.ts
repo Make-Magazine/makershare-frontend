@@ -150,10 +150,13 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubFile = true;
         delete this.popupPreview;
         console.log(this.objects[i]);
-        // this.sanitizethis = 'http://makerdev.orangestudio.com:8080/sites/default/files/learning-object/book/2017/03/book.epub';
-        // this.sanitizethis = 'http://futurepress.github.io/epub.js/reader/#epubcfi(/6/260[xchapter_124]!4/2/2/2/1:0)';
-        this.epubLink = this.objects[i].book;
+         this.sanitizethis = this.objects[i].book;
+         this.epubLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.sanitizethis);
+        //  this.sanitizethis = 'assets/book.epub';
+        //  this.epubLink = this.sanitizethis;
       } else {
+        delete this.popupPreview;
+        this.epubFile = null;
         this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
         this.popupPreview = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
       }
