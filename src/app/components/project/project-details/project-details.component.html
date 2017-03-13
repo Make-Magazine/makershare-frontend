@@ -23,8 +23,8 @@
                 <li><a href="#" class="btn btn-transparent btn-fit">Report this</a></li>
                 <!--<li><a  class="btn btn-light-grey btn-fit"  (click)="forkThis($event)">Fork this project &nbsp;<i class="fa fa-lg fa-retweet"></i></a></li>-->
                 <app-fork  [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
-                <app-like [nodeNid]="project.nid"></app-like>
-               <app-bookmark [nodeNid]="project.nid"></app-bookmark>
+                <app-like [nodeNid]="project.nid" [user]="userLogin.user" ></app-like>
+               <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user" ></app-bookmark>
                 <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
               </ul>
               <ul class="list-unstyled project-tags pull-left">
