@@ -12,6 +12,7 @@ import { Ng2CompleterModule } from "ng2-completer";
 import { YourStoryComponent } from './your-story/your-story.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { TeamComponent } from './team/team.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { TeamComponent } from './team/team.component';
     FormsModule,
     DndModule.forRoot(),
     CreateProjectRoutingModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     YourStoryComponent,

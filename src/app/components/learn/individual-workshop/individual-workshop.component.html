@@ -1,33 +1,36 @@
 <div class="row">
 
-  <div class= "page-workshop-individual">
-        <section class="col-sm-12 width-fix">
-          <div *ngIf="workshop">
-          <div class="top-content-wrapper">
-             <img src="{{workshop.cover_photo}}" alt="" class="workshop-coverphoto">
-            <div class="container">
-              <div class="col-md-12">
-                <ul class="list-unstyled workshop-actions pull-right">
-                   <app-like [nodeNid]="workshop.nid"></app-like>
-                   <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
-                  <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
-                </ul>
-                <div class="list-unstyled workshop-tags pull-left">
-                   <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
-                </div>
-                <div class="clearfix"></div>
-                
-                <h2>{{workshop.workshop_title}}</h2>
+  <div class="page-workshop-individual">
+    <section class="col-sm-12 width-fix">
+      <div *ngIf="workshop">
+        <div class="top-content-wrapper">
+          <img src="{{workshop.cover_photo}}" alt="" class="workshop-coverphoto">
+          <div class="container">
+            <div class="col-md-12">
+              <ul class="list-unstyled workshop-actions pull-right">
+                <app-like [nodeNid]="workshop.nid"></app-like>
+                <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
+                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+              </ul>
+              <div class="list-unstyled workshop-tags pull-left">
+                <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
               </div>
-            </div><!-- End container -->
-          </div> <!-- End top-content-wrapper-->
-          </div><!-- End workshop checker-->
+              <div class="clearfix"></div>
+
+              <h2>{{workshop.workshop_title}}</h2>
+            </div>
+          </div>
+          <!-- End container -->
+        </div>
+        <!-- End top-content-wrapper-->
+      </div>
+      <!-- End workshop checker-->
       <div class="container">
         <div class="region region-content col-sm-8">
           <div class="workshop-content">
 
             <div *ngIf="workshop">
-              <div class="intro" id = "intro">
+              <div class="intro" id="intro">
                 <h4>Introduction</h4>
                 <div [innerHTML]="workshop?.brief_description"> </div>
                 <!--{{workshop.introductory_video}}-->
@@ -37,9 +40,9 @@
               <!-- End intro -->
             </div>
             <!-- End of workshop ngIf -->
-            <div *ngFor="let object of objects; let i=index" >
+            <div *ngFor="let object of objects; let i=index">
               <!---FOR PDF CONTENT TYPE -->
-              <div *ngIf="object.learning_content_type == 'PDF' " >
+              <div *ngIf="object.learning_content_type == 'PDF' ">
                 <div class="fun-fact" id="OB{{object?.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
@@ -96,14 +99,17 @@
                         <div [innerHTML]="object.related_projects"> </div>
                       </a>
                     </ul>
-                  </div>     <!-- End fun-fact -->
-                </div>    <!-- End of Object ngIf -->
-              </div>   <!-- End  ngFor of Video object -->
-           
+                  </div>
+                  <!-- End fun-fact -->
+                </div>
+                <!-- End of Object ngIf -->
+              </div>
+              <!-- End  ngFor of Video object -->
+
 
               <!---FOR Book CONTENT TYPE -->
-              <div *ngIf="object.learning_content_type == 'Book' " >
-                <div class="fun-fact" id="OB{{object.nid}}" >
+              <div *ngIf="object.learning_content_type == 'Book' ">
+                <div class="fun-fact" id="OB{{object.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
                     <div class="media-left">
@@ -114,7 +120,7 @@
                         <span><b>{{object.learning_content_type}}</b>  
                            <div *ngIf="object.chapter" > Number of Chapters: {{object.chapter}} </div>
                              </span>
-                     </p>
+                      </p>
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
                     <ul class="list-unstyled recommended">
@@ -123,11 +129,14 @@
                         <div [innerHTML]="object.related_projects"> </div>
                       </a>
                     </ul>
-                  </div>   
-                </div>    <!-- End fun-fact -->
-               </div>   <!-- End of Object ngIf -->
-            </div>   <!-- End  ngFor of learning content type -->
-           
+                  </div>
+                </div>
+                <!-- End fun-fact -->
+              </div>
+              <!-- End of Object ngIf -->
+            </div>
+            <!-- End  ngFor of learning content type -->
+
 
             <div *ngFor="let lesson of lessons">
               <div *ngIf="lesson" class="col-sm-12">
@@ -154,13 +163,18 @@
                       </div>
                     </div>
                   </li>
-               </ul>  <!-- End suggested -->
-              </div> <!-- End of more lesson Checker -->
-            </div>  <!-- End of Lesson ngFor -->
-        
-           </div>  <!-- End worksop-content -->
-          </div>  <!-- End region-content -->
-       
+                </ul>
+                <!-- End suggested -->
+              </div>
+              <!-- End of more lesson Checker -->
+            </div>
+            <!-- End of Lesson ngFor -->
+
+          </div>
+          <!-- End worksop-content -->
+        </div>
+        <!-- End region-content -->
+
 
 
         <aside class="col-sm-4">
@@ -188,9 +202,12 @@
                       <p class="user-city">{{leader.country}}, {{leader.administrative_area}}</p>
                       <i class="fa fa-lg fa-star-o"></i>
                     </div>
-                  </div> <!-- End profile card -->  
-                </div><!-- End Profile-container -->
-               </div><!-- End workshop-instructor -->
+                  </div>
+                  <!-- End profile card -->
+                </div>
+                <!-- End Profile-container -->
+              </div>
+              <!-- End workshop-instructor -->
             </div>
           </div>
 
@@ -217,30 +234,32 @@
           </div>
           <ul class="list-unstyled content-list">
             Contents:
-            <li><a pageScroll href= "#intro">Introduction</a></li>
+            <li><a pageScroll href="#intro">Introduction</a></li>
             <div *ngFor="let object of objects; let i=index;">
-              
+
               <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
-              
+
             </div>
-            <li><a pageScroll href= "#lesson">Resources</a></li>
+            <li><a pageScroll href="#lesson">Resources</a></li>
           </ul>
-        </aside>  <!-- End aside -->
-       </div> <!-- End of container -->
+        </aside>
+        <!-- End aside -->
+      </div>
+      <!-- End of container -->
     </section>
   </div>
 
   <!-- Modal -->
- <div class="modal fade" id="previewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="previewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body" style="width: 600px; height: 800px;">
-           <div [innerHTML]="popupPreview"></div>
-            <div *ngIf="epubFile">
-            <app-book [link]="epubLink" ></app-book>
+          <div [innerHTML]="popupPreview"></div>
+          <div *ngIf="epubFile">
+            <app-book [link]="epubLink"></app-book>
           </div>
         </div>
       </div>
