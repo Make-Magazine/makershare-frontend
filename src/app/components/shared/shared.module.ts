@@ -7,12 +7,16 @@ import { CommentFormComponent } from './comments/comments/comment-form.component
 import { FollowComponent } from './follow/follow.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { LikeComponent } from './like/like.component';
+import { ForkComponent } from './fork/fork.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [
     CommentComponent,
@@ -21,12 +25,14 @@ import { LikeComponent } from './like/like.component';
     FollowComponent,
     BookmarkComponent,
     LikeComponent,
+    ForkComponent,
   ],
   exports: [
     CommentComponent,
     FollowComponent,
      BookmarkComponent,
      LikeComponent,
+     ForkComponent
   ]
 })
 export class SharedModule { }
@@ -34,3 +40,4 @@ export {CommentComponent};
 export {FollowComponent};
 export {BookmarkComponent};
 export {LikeComponent};
+export {ForkComponent};
