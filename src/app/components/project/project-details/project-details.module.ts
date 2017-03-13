@@ -5,12 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectDetailsComponent } from './project-details.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
 import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
+import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ProjectDetailsRoutingModule
+    ProjectDetailsRoutingModule,
+    SharedModule,
   ],
   declarations: [ProjectDetailsComponent,ProjectStoryComponent,ProjectHowToComponent]
 })

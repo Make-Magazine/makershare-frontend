@@ -1,5 +1,9 @@
 declare var ePub: any;
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ViewService } from '../../../d7services/view/view.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-book',
@@ -8,16 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
   author: {};
-  constructor() { }
+  objects;
+  sanitizethis;
+  popupPreview;
+  epubFile;
 
+  constructor(   
+    private route: ActivatedRoute,
+    private router: Router,
+    private viewService: ViewService,
+    private sanitizer :DomSanitizer,
+    private http:Http,) {}
+
+@Input() link;
   ngOnInit() {
     this.showBook();
+    console.log(this.link)
   }
 
   book: any
   showBook() {
-    //   this.book = ePub('assets/book/book2.epub', { fixedLayout: true, height: false,spreads: false });
-      this.book = ePub('http://futurepress.github.io/epub.js', { fixedLayout: true, height: false,spreads: false });
+      console.log(this.link);
+      this.book = ePub(this.link, { fixedLayout: true, height: false,spreads: false });
+      //this.book = ePub('assets/book.epub', { fixedLayout: true, height: false,spreads: false });
       
       this.book.renderTo('bookReader');
       //this.author = this.book.getMetadata();
@@ -33,7 +50,4 @@ export class BookComponent implements OnInit {
   nextPage() {
       this.book.nextPage();
   }
-
-  
-
 }

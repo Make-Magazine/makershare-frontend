@@ -18,11 +18,11 @@ export class EditProfileComponent implements OnInit {
   currentTab = 'basic';
   userProfile: UserProfile = {
     name: 'testar',
-    field_user_photo: '',
-    field_bio: '',
-    field_started_making: '',
+    user_photo: '',
+    bio: '',
+    started_making: '',
     field_social_accounts: this.profileSocial,
-    field_address: {}
+    address: {}
   };
 
   profileSocial: ProfileSocial = {
@@ -44,12 +44,12 @@ export class EditProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-        this.profileService.getUser(1).subscribe(res => {
+    this.profileService.getUser(1).subscribe(res => {
 
-          this.userProfile = res;
+      this.userProfile = res;
 
     }, err => {
-      
+
     });
   }
 
@@ -72,7 +72,7 @@ export class EditProfileComponent implements OnInit {
   saveProfile() {
 
     console.log(this.userProfile);
-    this.profileService.updateProfile(this.userProfile).subscribe(profile => {
+    this.profileService.updateProfile(1, this.userProfile).subscribe(profile => {
       console.log("profile saved");
       console.log(profile);
     }, err => {

@@ -1,21 +1,2 @@
-<form [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment" class="form-horizontal" >
-<div class="form-group col-lg-10">
-   <label class="control-label" >Comment</label>
-   <textarea class="form-control" rows="5" id="comment" formControlName="comment_body"></textarea>
-   <input type="submit" class="btn btn-info" value="Post">
-</div>
-</form>
-
-<div>
-   <div  *ngFor="let comment of comments">
-      <div class="col-lg-10">
-        <p class="col-lg-4">{{comment.comment}}</p>
-        
-       <img class="col-lg-2" src="{{comment.photo}}" alt="" class="img-responsive"> 
-       <P class="col-lg-2"> {{comment.update_date}}</P>
-       <p class="col-lg-2">{{comment.nickname}}</p> 
-       </div> 
-  
-   </div>
-</div>
+<app-comment [nid]="challenge.nid"></app-comment>
 
