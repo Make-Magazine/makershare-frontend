@@ -25,9 +25,13 @@ export class SliderComponent implements OnInit {
     });
   }
 
-  loadMoreData(nid){
-        this.router.navigate(['/challenges', nid]);
+  loadMoreData(nid,type){
+    if(type=="Learning Sequence"){
+  this.router.navigate(['/learn', nid]);
 
+    }else{
+       this.router.navigate(['/challenges', nid]);
+    }
   }
 
 }
