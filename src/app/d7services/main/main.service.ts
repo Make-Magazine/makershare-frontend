@@ -43,28 +43,28 @@ export class MainService {
 
   	let url = this.getURL(endpoint);
   	let op = this.getOptions(options);
-  	return this.http.get(url, op).timeout(5000);
+  	return this.http.get(url, op).timeout(10000);
   }
 
   post(endpoint: string, body?: any, options?: RequestOptionsArgs): Observable<Response>{
 
   	let url = this.getURL(endpoint);
   	let op = this.getOptions(options);
-  	return this.http.post(url, body, op).timeout(5000);
+  	return this.http.post(url, body, op).timeout(10000);
   }
 
   put(endpoint: string, body: any, options?: RequestOptionsArgs): Observable<Response>{
 
   	let url = this.getURL(endpoint);
   	let op = this.getOptions(options);
-  	return this.http.put(url, body, op).timeout(5000);
+  	return this.http.put(url, body, op).timeout(10000);
   }
 
   delete(endpoint: string, options?: RequestOptionsArgs): Observable<Response>{
 
   	let url = this.getURL(endpoint);
   	let op = this.getOptions(options);
-  	return this.http.delete(url, op).timeout(5000);
+  	return this.http.delete(url, op).timeout(10000);
   }
 
   saveCookies(token: string, session_name: string, sessid: string){

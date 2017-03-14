@@ -6,7 +6,7 @@
       </div>
       <h3 class="message-subject">{{msg.subject}}</h3>
         <ul class="list-unstyled conversation">
-          <div *ngIf="messages">
+          <div>
             <li class="single-message" *ngFor="let message of messages">
               <div class="media message-info">
                 <div class="media-left">
@@ -15,12 +15,12 @@
                   </a>
                 </div>
                 <div class="media-body">
-                  <p class="sender"><a href="" >{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
+                  <p class="sender"><a href="" >{{message?.first_name}} {{message?.last_name}}</a> sent you a message</p>
                   <p class="timestamp">3 days ago</p>
                 </div>
               </div>
               <div class="message-body">
-                <p>{{message.body}}</p>
+                <p>{{message?.body}}</p>
               </div>
             </li>
           </div>

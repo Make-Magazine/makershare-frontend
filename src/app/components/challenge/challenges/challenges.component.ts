@@ -75,12 +75,8 @@ export class ChallengesComponent implements OnInit {
   }
 
   // get more click
-<<<<<<< HEAD
     loadmore(){
-=======
-  loadmore() {
 
->>>>>>> 5cd5b8bd077094e4edfa8e6facf09e8fdbf277bc
     this.pageNumber++;
     this.getChallenges();
   }

@@ -107,11 +107,13 @@ export class CreateProjectComponent implements OnInit {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
-    console.log(this.project);
+    if(this.visibility == 370){
+      this.CheckIfReadyToPublic();
+    }
     this.nodeService.createNode(this.project).subscribe((project:Project) => {
       this.created = true;
       this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
-      this.router.navigate(['/user']);
+      this.router.navigate(['/profile']);
       // this.project = project;
     }, err =>{
       console.log(err);
@@ -140,6 +142,21 @@ export class CreateProjectComponent implements OnInit {
     this.visibility = Visibility;
     this.project.status = Status;
     this.SetPrjectValues();
+  }
+
+  /**
+   * Checking the project if ready to publish
+   * otherwhise will be saved as a draft
+   */
+  CheckIfReadyToPublic(){
+    if(this.project.title == ""){
+      this.project.title = "Untitled";
+    }
+    if(this.project.field_categories.und.length == 0 || this.project.field_cover_photo.und[0].fid == 0 ||
+       this.project.title == ("Untitled" || "untitled") || this.project.field_story.und[0].value == ""){
+        this.visibility = 1115;
+        this.project.status = 0;
+       }
   }
 
   /**
