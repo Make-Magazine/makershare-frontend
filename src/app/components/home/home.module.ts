@@ -6,17 +6,13 @@ import { ChallengeComponent } from './challenge/challenge.component';
 import { ShowcasesComponent } from './showcases/showcases.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeRoutingModule } from './home-routing.module';
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-
-    HomeRoutingModule
-
-
-
-    
+    HomeRoutingModule,
+    SharedModule
   ],
   declarations: [
     HomeComponent,
