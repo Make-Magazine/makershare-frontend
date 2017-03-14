@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InboxComponent } from './inbox/inbox.component';
 import { MessagesRoutsModule } from './messages.routing.module';
 import { ViewComponent } from './view/view.component';
+import { SendComponent } from './sending/send/send.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -22,4 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ]
 })
 export class MessagesModule { }
-export  {InboxComponent};
+export  {
+  InboxComponent,
+  SendComponent,
+};

@@ -18,22 +18,14 @@ import { PmService } from './d7services/pm/pm.service';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
+
+// New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
-
-// import { AccountModule } from './components/account/account.module';
-// import { ExploreModule } from './components/explore/explore.module';
-// New Structure
-// import { ChallengeModule } from './components/challenge/challenge.module';
-// import { ShowcaseMod    NgbModal,ule } from './components/showcase/showcase.module';
-// import { LearnModule } from './components/learn/learn.module';
-// import { HomeModule } from './components/home/home.module';
-// import custom auth0 service
-//import { LearnComponent } from './components/learn/learn/learn.component';
 
 @NgModule({
   declarations: [
@@ -47,19 +39,12 @@ import { Auth } from './auth0/auth.service';
     HttpModule,
     ReactiveFormsModule,
     NgbModule,
-   RouterModule,
-    // AccountModule,
+    RouterModule,
     routing,
     MessagesModule,
     Ng2Bs3ModalModule,
     NotificationBarModule,
-
     SharedModule
-    // ChallengeModule,
-    // ShowcaseModule,
-    // LearnModule,
-    // HomeModule,
-    // ExploreModule,
   ],
   entryComponents: [],
   providers: [

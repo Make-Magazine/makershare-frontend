@@ -27,7 +27,6 @@ export class BookComponent implements OnInit {
 @Input() link;
   ngOnInit() {
     this.showBook();
-    console.log(this.link)
   }
 
   book: any
