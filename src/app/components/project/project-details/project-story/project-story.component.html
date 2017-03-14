@@ -14,8 +14,8 @@
     </div>
     <hr>
     <div class="project-body">
-      <p>{{project.field_teaser?.value}}</p>
-      <div [innerHTML]="project.field_story.value"></div>
+      <div [innerHTML]="project.field_teaser?.value"></div>
+      <div [innerHTML]="project.field_story?.value"></div>
     </div><!-- End body -->
     <div class="feedback-group">
       <div class="feedback" *ngFor="let comment of comments; let i=index">
