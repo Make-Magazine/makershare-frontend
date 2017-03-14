@@ -32,24 +32,33 @@ export class TeamComponent implements OnInit {
     this.TeamForm = this.fb.group({
       'field_maker_memberships': this.fb.array([]),
     });
-    this.AddRow('field_maker_memberships');
-    
-    this.userService.getStatus().subscribe(data => {  
-      this.SetMember(data.user.uid,0);
-      this.TeamForm.valueChanges.subscribe(data => {
-        this.TeamUsers = [];
-        this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
-      });
-    this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
-  });
-}
-  AddRow(ControlName) {
+    this.project.field_maker_memberships.und.forEach((member,index)=>{
+      this.AddRow('field_maker_memberships',member);
+      let id = this.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
+      this.SetMember(id,index);
+    });
+    this.TeamForm.valueChanges.subscribe(data => {
+      this.TeamUsers = [];
+      this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
+      this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
+    });
+  }
+
+  AddRow(ControlName,data?) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let index = control.length + 1;
-    const addrCtrl = this.InitRow(ControlName,index);
+    const addrCtrl = this.InitRow(ControlName,index,data);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
+
+  GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string){
+    let id = UsernameAndId.match(/\(([^)]+)\)/)[1];
+    if (id) {
+        return id;
+    }
+  }
+
   SetMember(uid,index){
     this.TeamUsers[index] = [];
     this.UsersDetails[index] = [];
@@ -63,7 +72,9 @@ export class TeamComponent implements OnInit {
         field_sort_order:{und:[{value:index+1}]},
         field_membership_role:{und:[{value:this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_membership_role.value}]}
       };
-      this.project.field_maker_memberships.und.push(member);
+      if(index !=0 ){
+        this.project.field_maker_memberships.und.push(member);
+      }
     });
   }
   RefreshUsers(index,value){
@@ -89,11 +100,11 @@ export class TeamComponent implements OnInit {
       });
     }
   }
-  InitRow(ControlName,index) {
+  InitRow(ControlName,index,data?) {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
-      'field_membership_role': [''],
+      'field_membership_role': [data? data.field_membership_role.und[0].value:''],
       'uid': [, Validators.required],
     });
   }

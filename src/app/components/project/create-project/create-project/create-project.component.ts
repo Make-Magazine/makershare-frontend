@@ -10,6 +10,8 @@ import { field_file_reference } from '../../../../models/project/create-project/
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { Router } from '@angular/router';
+import { UserService } from '../../../../d7services/user/user.service'
+import { field_collection_item_member } from '../../../../models/project/create-project/field_collection_item';
 
 @Component({
   selector: 'app-create-project',
@@ -80,27 +82,38 @@ export class CreateProjectComponent implements OnInit {
     private viewService: ViewService,
     private taxonomyService:TaxonomyService,
     private notificationBarService: NotificationBarService,
+    private userService:UserService,
     private router: Router,
   ) {}
   ngOnInit(): void {
+    if(this.project.field_maker_memberships.und.length == 0){
+      this.SetProjectOwner();
+    }
     this.current_active_tab = 'Your Story';
   }
 
-  /**
-   * also useless and most be deleted after updating all sub components 
-   */
-  FormUpdateHandler (values, Component){
-    console.log(this.project);
+  SetProjectOwner(){
+    this.userService.getStatus().subscribe(data => {
+      let owner:field_collection_item_member = {
+        field_team_member:{und:[{target_id:data.user.name+' ('+data.user.uid+')'}]},
+        field_membership_role:{und:[{value:'admin'}]},
+        field_sort_order:{und:[{value:1}]},
+      }
+      this.project.field_maker_memberships.und.push(owner);
+    });
   }
 
   /**
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
+    if(this.visibility == 370){
+      this.CheckIfReadyToPublic();
+    }
     this.nodeService.createNode(this.project).subscribe((project:Project) => {
       this.created = true;
       this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
-      this.router.navigate(['/user']);
+      this.router.navigate(['/profile']);
       // this.project = project;
     }, err =>{
       console.log(err);
@@ -129,6 +142,21 @@ export class CreateProjectComponent implements OnInit {
     this.visibility = Visibility;
     this.project.status = Status;
     this.SetPrjectValues();
+  }
+
+  /**
+   * Checking the project if ready to publish
+   * otherwhise will be saved as a draft
+   */
+  CheckIfReadyToPublic(){
+    if(this.project.title == ""){
+      this.project.title = "Untitled";
+    }
+    if(this.project.field_categories.und.length == 0 || this.project.field_cover_photo.und[0].fid == 0 ||
+       this.project.title == ("Untitled" || "untitled") || this.project.field_story.und[0].value == ""){
+        this.visibility = 1115;
+        this.project.status = 0;
+       }
   }
 
   /**

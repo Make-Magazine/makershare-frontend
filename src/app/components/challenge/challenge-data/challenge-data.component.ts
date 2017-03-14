@@ -45,6 +45,8 @@ export class ChallengeDataComponent implements OnInit {
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
+  followersuid;
+  uids = [];
 
   @Input() sortType: ISorting;
   @Input() pageNo: number;
@@ -78,23 +80,8 @@ export class ChallengeDataComponent implements OnInit {
 
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
-      //console.log(this.currentuser.user.uid);
-      this.flagService.isFlagged(this.route.params['value'].nid, this.currentuser.user.uid, 'follow').subscribe(data => {
-        this.isFollowed = data[0];
 
-        /* initialize Button Follow*/
-        if (this.isFollowed == false) {/* start if  */
-          this.ButtonFollow = 'Follow';
-        } else {
-          console.log("return false");
-          this.ButtonFollow = 'UnFollow';
-        }/* end else if  */
-      })
-      /*bookmark start */
-      this.flagService.isFlagged(this.route.params['value'].nid, this.currentuser.user.uid, 'node_bookmark').subscribe(data => {
-        this.isBookmarked = data[0];
-      })
-      /*bookmark end*/
+
     });
 
 
@@ -109,7 +96,6 @@ export class ChallengeDataComponent implements OnInit {
       .subscribe(data => {
         this.followers = this.followers.concat(data);
         if (this.followers[0]['follow_counter'] == this.followers.length) {
-          console.log("end follow")
           this.hideloadmorefollower = true;
         }
         this.no_of_followers = this.followers[0]['follow_counter'];
@@ -123,41 +109,7 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function get user*/
 
-  /* function follow challenge*/
-  followThis(e: Event) {
-    this.getCurrentUser();
-    e.preventDefault();
-    if (this.isFollowed) {
-      this.flagService.unflag(this.challenge.nid, this.currentuser.user.uid, 'follow').subscribe(response => {
-        this.isFollowed = false;
-        this.ButtonFollow = 'Follow';
-      });
-    } else {
-      this.flagService.flag(this.challenge.nid, this.currentuser.user.uid, 'follow').subscribe(response => {
-        this.isFollowed = true;
-        this.ButtonFollow = 'UnFollow';
-      });
 
-    }
-
-  }
-  /* end function follow challenge*/
-
-  /* function bookmark challenge*/
-  bookmarkThis(e: Event) {
-    this.getCurrentUser();
-    e.preventDefault();
-    if (this.isBookmarked) {
-      this.flagService.unflag(this.challenge.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = false;
-      });
-    } else {
-      this.flagService.flag(this.challenge.nid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
-        this.isBookmarked = true;
-      });
-    }
-  }
-  /* end function bookmark challenge*/
 
 
   changeChallangeTab(NewTab, e) {
@@ -232,7 +184,6 @@ export class ChallengeDataComponent implements OnInit {
     this.getCountProject();
 
     if (this.countProjects == this.projects.length) {
-      console.log("equal");
       this.hideloadmoreproject = true;
     }
   }
@@ -257,7 +208,6 @@ export class ChallengeDataComponent implements OnInit {
   /* function to initialize page arg for loadmore for followers to send to api  */
   getPageNumberFollowers(event: any) {
     this.pageNo = event
-    console.log(this.pageNo);
     this.getChallengeFollowers();
   }
   /* end function PN Followers */
@@ -270,13 +220,11 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
         this.countProjects = data[0];
-        console.log(this.countProjects);
       });
   }
   /*end function count project in challenge*/
 
   enterToChallengeProject(nid) {
-    console.log("enter to project" + nid);
     this.router.navigate(['/enter-challenge', nid]);
 
   }

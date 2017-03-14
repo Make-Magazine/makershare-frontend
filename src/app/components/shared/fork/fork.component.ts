@@ -3,7 +3,7 @@ import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
-import { NgbModule, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 
 @Component({
@@ -12,17 +12,35 @@ import { NgbModule, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootst
   
 })
 export class ForkComponent implements OnInit {
-
+@Input() nodeNid;
+@Input() user;// Current User Data
+currentuser;
+isForked;
 constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    private modalService: NgbModal
+    private notificationBarService: NotificationBarService,
    
   ) { }
   ngOnInit() {
-    
+
   }
+
+    /* function fork */
+  forkThis(e: Event) {
+    e.preventDefault();
+      this.flagService.flag(this.nodeNid, this.user.uid, 'fork').subscribe(response => {
+        this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
+        console.log(response);
+        this.router.navigate(['/profile']);
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        console.log(err);
+      });
+  }
+  /* end function fork */
+
 
 }

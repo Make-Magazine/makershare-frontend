@@ -11,7 +11,12 @@ import { HomeRoutingModule } from './home-routing.module';
 @NgModule({
   imports: [
     CommonModule,
+
     HomeRoutingModule
+
+
+
+    
   ],
   declarations: [
     HomeComponent,
@@ -19,6 +24,7 @@ import { HomeRoutingModule } from './home-routing.module';
     ChallengeComponent,
     ShowcasesComponent,
     SpotlightComponent,
+    
   ]
 })
 export class HomeModule { }

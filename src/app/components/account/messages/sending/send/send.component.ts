@@ -9,7 +9,8 @@ import { Message }  from '../message';
 })
 export class SendComponent implements OnInit {
 
-    message = new Message('Youssef', 'test message', 'body', 5);
+    //message = new Message('Youssef', 'test message', 'body', 5);
+    message
     submitted = false;
     // onSubmit(e) {
     //   console.log(e.value)

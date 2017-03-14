@@ -20,17 +20,17 @@ import { Observable } from 'rxjs/Observable'
 
 export class HowToComponent implements OnInit {
 
-search = (text$: Observable<string>) => 
-    text$
-      .debounceTime(200)
-      .distinctUntilChanged()
-      .map(term => {
-        if(term.length < 2){
-          return [];
-        } else{
-          return ["awdawd","adwadwwwwd"];
-        }
-      });
+// search = (text$: Observable<string>) => 
+//     text$
+//       .debounceTime(200)
+//       .distinctUntilChanged()
+//       .map(term => {
+//         if(term.length < 2){
+//           return [];
+//         } else{
+//           return ["awdawd","adwadwwwwd"];
+//         }
+//       });
 
   /**
    * @output will emit the new values to the parent Component
