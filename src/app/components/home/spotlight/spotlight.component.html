@@ -8,8 +8,8 @@
     <div class="container">
       <!-- Start Spotlight Single Item -->
 
-      <div *ngFor="let spotlight of spotlights" class="spotlight col-md-6">
-
+      <div *ngFor="let spotlight of spotlights" class="spotlight col-md-4">
+        <app-user-card [uid]="spotlight.uid"></app-user-card>
       </div>
 
     </div><!-- End container -->
