@@ -3,6 +3,7 @@ import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 @Component({
   selector: 'app-bookmark',
@@ -15,38 +16,43 @@ export class BookmarkComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-    private flagService: FlagService
+    private flagService: FlagService,
+    private notificationBarService: NotificationBarService,
+
   ) { }
   @Input() nodeNid;
+  @Input() user;
   currentuser;
   isBookmarked
 
   ngOnInit() {
-    console.log(this.nodeNid);
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
 
       /*bookmark start */
-      this.flagService.isFlagged(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(data => {
+      this.flagService.isFlagged(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        console.log(err);
       })
       /*bookmark end*/
-
-    });
-
-
   }
 
   /* function bookmark */
   bookmarkThis(e: Event) {
     e.preventDefault();
     if (this.isBookmarked) {
-      this.flagService.unflag(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
         this.isBookmarked = false;
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        console.log(err);
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.currentuser.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
         this.isBookmarked = true;
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        console.log(err);
       });
     }
   }
