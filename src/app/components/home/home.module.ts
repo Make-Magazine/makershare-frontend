@@ -12,13 +12,11 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     CommonModule,
 
-<<<<<<< HEAD
     HomeRoutingModule
 
-=======
 
-    HomeRoutingModule
->>>>>>> 8883ff431a4a607f6da9890628dba54537f406cd
+
+    
   ],
   declarations: [
     HomeComponent,
