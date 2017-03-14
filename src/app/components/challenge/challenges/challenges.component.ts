@@ -17,6 +17,7 @@ export class ChallengesComponent implements OnInit {
   currentStatusId = 0;
   hideloadmore = true;
   currentCount = 0;
+ 
   challengeFollowCount = 0;
   constructor(
     private viewService: ViewService,
@@ -62,10 +63,11 @@ export class ChallengesComponent implements OnInit {
         console.log(challenge.nid);
         this.flagService.flagCount(challenge.nid, 'follow').subscribe(data => {
           Object.assign(challenge, data)
-          console.log(challenge)
+         // console.log(challenge)
           console.log(data['count'])
 
-        });
+        }, err => {
+      });
 
       }
 
