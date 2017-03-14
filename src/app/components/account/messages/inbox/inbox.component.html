@@ -1,7 +1,7 @@
 <div class="page-inbox">
     <header class="inbox-header container">
       <ul class="list-unstyled">
-        <li><a href="" class="btn btn-grey  active">Messages</a></li>
+        <li><a href="/inbox" class="btn btn-grey  active">Messages</a></li>
         <li><a href="" class="btn btn-grey ">Notificatoins</a></li>
       </ul>
       <span class="fa fa-lg fa-cog"></span>
@@ -9,42 +9,69 @@
     <div class="container messages">
       <section class="inbox-controls"> 
         <div class="selectall">
-
-          <input type="checkbox"> Select all
+          <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
         </div>
-        <a href="" class="btn btn-transparent delete">Delete</a>
+        <a  class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
         <a class="btn btn-blue btn-sharp new-message" data-dismiss="modal" data-target="#message-modal" data-toggle="modal"><i class="fa fa-lg fa-plus" ></i>New Message</a>
       </section>
       <ul class="list-unstyled messages-list">
-        <div *ngIf="msg"> 
-        <li class="message-item" *ngFor="let message of msg">
-          <div class="select">
-            <input type="checkbox" >
-          </div>
-          <div class="wrapper" >
-            <div class="media message-info">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/150x150" alt="" class="img-responsive">
-                </a>
-              </div>
-              <div class="media-body">
-                <p class="sender"><a href="">First Lastname</a> sent you a message</p>
-                <p class="timestamp">{{message.last_updated | date}}</p>
-              </div>
+          <div *ngIf="msg"> 
+            <div *ngIf="sender"> 
+              <li class="message-item" *ngFor="let message of msg">
+                <div class="select"> 
+                  <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)" >
+                </div>
+                <div class="wrapper" >
+                  <div class="media message-info">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object" src="http://placehold.it/150x150" alt="" class="img-responsive">
+                      </a>
+                    </div>
+                    <div class="media-body"  >
+                      <p><a href="">{{sender.first_name}}</a> sent you a message</p>
+                      <p class="timestamp">{{message.last_updated | date}}</p>
+                    </div>
+                  </div>
+                  <div class="message-subject">
+                        <a  (click)="viewMessage(message.thread_id)"><h4>{{message.subject}}</h4></a>
+                  </div>
+                  <div class="delete">
+                    <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(message.thread_id)"></a>
+                  </div>
+                </div>
+              </li>
             </div>
-            <div class="message-subject">
-                  <a routerLink="/view"><h4>{{message.subject}}</h4></a>
+            <div *ngIf="reciver"> 
+              <li class="message-item" *ngFor="let message of msg">
+                <div class="select"> 
+                  <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)" >
+                </div>
+                <div class="wrapper" >
+                  <div class="media message-info">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object" src="http://placehold.it/150x150" alt="" class="img-responsive">
+                      </a>
+                    </div>
+                    <div class="media-body"  >
+                      <p>you sent a message to<a href="">{{reciver.first_name}}</a></p>
+                      <p class="timestamp">{{message.last_updated | date}}</p>
+                    </div>
+                  </div>
+                  <div class="message-subject">
+                        <a (click)="viewMessage(message.thread_id)"><h4>{{message.subject}}</h4></a>
+                  </div>
+                  <div class="delete">
+                    <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(message.thread_id)"></a>
+                  </div>
+                </div>
+              </li>
             </div>
-            <div class="delete">
-               <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(message.thread_id)"></a>
-            </div>
-          </div>
-        </li>
         </div>
       </ul>
       <div class="load-more">
-        <a class="btn btn-white">Load more</a>
+        <a class="btn btn-white" (click)="loadMore()">Load more</a>
       </div>
     </div> 
 </div>
@@ -76,11 +103,9 @@
                         </div><!-- End profile card -->
                       </div><!-- End Profile-container -->
                    </div>
-                   
-                    <div class="form-group" *ngIf="!SelectedUser[i]">
-                      <label class="control-label"  for="recipients-{{i + 1}}" >To:</label>
-                      
-                        <input type="text" class="form-control" name="recipients" id="recipients-{{i + 1}}"  formControlName="recipients" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
+                    <div class="form-group">
+                      <label class="control-label"  >To:</label>
+                        <input type="text" class="form-control" name="recipients"   formControlName="recipients" (keyup)="RefreshUsers(i,$event.target.value)" (focus)="RefreshUsers(i,$event.target.value)" >
                         <div *ngIf="reciverUser[i]" >
                               <div *ngFor="let User of reciverUser[i]" (click)="SetMember(User.uid,i)" class="result">
                                 <div class="user-image-container">
@@ -122,4 +147,5 @@
               </div>
             </div>
             </div>
+        </div>
         <!--<app-send></app-send>-->

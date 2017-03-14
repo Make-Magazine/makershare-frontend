@@ -8,7 +8,7 @@ import { SpotlightComponent } from './spotlight/spotlight.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     HomeComponent,
@@ -16,6 +16,7 @@ import { SpotlightComponent } from './spotlight/spotlight.component';
     ChallengeComponent,
     ShowcasesComponent,
     SpotlightComponent,
+    
   ]
 })
 export class HomeModule { }
