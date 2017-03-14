@@ -47,6 +47,7 @@ export class IndividualWorkshopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
     // setTimeout(1000)
     this.nid = this.route.params['value'].nid
     if (this.nid) {
@@ -124,9 +125,6 @@ export class IndividualWorkshopComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
    
-
-    
-      this.currentuser = data;
     
      
 

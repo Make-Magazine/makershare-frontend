@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
 
-        <div *ngFor="let showcase of showcases" class="col-md-4">
+        <div (click)="ShowSingleShowcase(showcase.nid)" *ngFor="let showcase of showcases" class="col-md-4">
           <div class="showcase-item item-2" >
             <img src="{{showcase.image}}" alt="" class="">
             <div class="content">
