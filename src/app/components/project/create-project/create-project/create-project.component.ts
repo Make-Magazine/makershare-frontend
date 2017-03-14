@@ -9,7 +9,7 @@ import { FileEntity } from '../../../../models/project/create-project/file_entit
 import { field_file_reference } from '../../../../models/project/create-project/field_file_reference';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
-import { Router } from '@angular/router';
+import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service'
 import { field_collection_item_member } from '../../../../models/project/create-project/field_collection_item';
 
@@ -44,11 +44,10 @@ export class CreateProjectComponent implements OnInit {
    * the project object with empty values which will be transfared to the sub components to set the values inside it before posting them
    */
   project: Project = {
-    title: "Untitled",
     // your story values
+    title: "Untitled",
     field_teaser:{und:[{format:null,value:""}]},
     field_story:{und:[{format:"filtered_html",value:""}]},
-    field_visibility2:{und:[this.visibility]},
     field_cover_photo:{und:[{fid:0}]},
     field_categories:{und:[]},
     field_tags:{und:''},
@@ -63,18 +62,15 @@ export class CreateProjectComponent implements OnInit {
     field_difficulty:{und:5},
     field_duration:{und:8},
     field_resources:{und:[]},
+    // team values
     field_maker_memberships:{und:[]},
-
+    // nonviewed values
+    field_visibility2:{und:[this.visibility]},
     status:0,
     promote:0,
     sticky:0,
     type: 'project',
   };  
-  
-  /**
-   * useless for new structure "must be deleted"
-   */
-  CreateProjectComponentValues = [];
 
   constructor(
     private nodeService: NodeService,
@@ -84,12 +80,36 @@ export class CreateProjectComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private userService:UserService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {}
+
   ngOnInit(): void {
-    if(this.project.field_maker_memberships.und.length == 0){
+    var nid;
+    this.route.params.subscribe(params => {
+      nid = params["nid"];
+    });
+    if(nid){
+      this.nodeService.getNode(nid).subscribe(data => {
+        this.ConvertProjectToCreateForm(data);
+      });
+    }else{
       this.SetProjectOwner();
     }
     this.current_active_tab = 'Your Story';
+  }
+
+  ConvertProjectToCreateForm(data){
+    let NotReadyFields = ["field_categories","field_difficulty","field_duration","field_tags","field_tools","field_materials","field_parts","field_resources","field_maker_memberships"];
+    for(let index of data){
+      let field = data[index];
+      switch(index)
+      {
+        // case "":
+        // {
+        //   this.project.
+        // }
+      }
+    }
   }
 
   SetProjectOwner(){
@@ -122,7 +142,7 @@ export class CreateProjectComponent implements OnInit {
   }
 
   /**
-   * form update handler from all sub components "still WIP - not finished"
+   * form update handler from all sub components
    * @param event : the value of the object from sub componet emitter
    */
   UpdateFields(event,component){
