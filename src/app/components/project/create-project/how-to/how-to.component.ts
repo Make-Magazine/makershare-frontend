@@ -58,7 +58,6 @@ export class HowToComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.buildForm();
     this.resources_files = this.FormPrintableValues.resource_files;
     if(!this.resources_files){
       this.resources_files = [];
@@ -72,6 +71,7 @@ export class HowToComponent implements OnInit {
     this.taxonomyService.getVocalbularyTerms(12).subscribe((data:TaxonomyTerm[]) => {
       this.ResourceLabels = data;
     });
+    this.buildForm();
   }
 
   ToolMaterialPart(ControlName, index, value){
@@ -215,9 +215,9 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_tool_name': [data? data.field_tool_name.und[0].target_id:'', Validators.required],
-          'field_tool_url': [data? data.field_tool_url.und[0].url:'', CustomValidators.url],
-          'field_description': [data? data.field_description.und[0].value:''],
-          'field_material_quantity': [data? data.field_material_quantity.und[0].value:''],
+          'field_tool_url': [data && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
+          'field_description': [data && data.field_description.und? data.field_description.und[0].value:''],
+          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_parts':
@@ -225,7 +225,7 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_part_name': [data? data.field_part_name.und[0].target_id:'', Validators.required],
-          'field_material_quantity': [data? data.field_material_quantity.und[0].value:''],
+          'field_material_quantity': [data && data.field_material_quantity? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_materials':
@@ -233,14 +233,14 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_material_name': [data? data.field_material_name.und[0].target_id:'', Validators.required],
-          'field_material_quantity': [data? data.field_material_quantity.und[0].value:''],
+          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_resources':
       {
         return this.fb.group({
           'field_resources_filename': [data? data.field_resource_file.und[0].filename:'', Validators.required],
-          'field_repository_link':[data? data.field_repository_link.und[0].url:'',CustomValidators.url],
+          'field_repository_link':[data && data.field_repository_link.und? data.field_repository_link.und[0].url:'',CustomValidators.url],
           'field_label': [data? data.field_label.und:1105,],
         });
       }

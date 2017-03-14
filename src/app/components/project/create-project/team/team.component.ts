@@ -106,7 +106,7 @@ export class TeamComponent implements OnInit {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
-      'field_membership_role': [data? data.field_membership_role.und[0].value:''],
+      'field_membership_role': [data && data.field_membership_role.und? data.field_membership_role.und[0].value:''],
       'uid': [, Validators.required],
     });
   }
