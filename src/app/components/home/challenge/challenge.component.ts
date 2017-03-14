@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../d7services/view/view.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenge',
@@ -9,6 +10,7 @@ export class ChallengeComponent implements OnInit {
   challenge = {};
   constructor(
     private viewService: ViewService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -19,5 +21,7 @@ export class ChallengeComponent implements OnInit {
 
     });
   }
-
+  ShowChallengeDetails(nid) {
+    this.router.navigate(['/challenges', nid]);
+  }
 }

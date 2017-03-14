@@ -8,33 +8,8 @@
     <div class="container">
       <!-- Start Spotlight Single Item -->
 
-      <div *ngFor="let spotlight of spotlights" class="spotlight col-md-6">
-        <div class="">
-          <div class=" profile-container"><!-- start profile card-->
-            <div class="profile-card">
-              <div class="left col-sm-4">
-                <div class="profile-pic">
-                  <img src="{{spotlight.profile_photo}}" alt="" class="img-responsive">
-                </div>
-                <a  class="btn btn-blue">Message</a>
-              </div>
-              <div class="right col-sm-8">
-                <h4 class="profile-name"><a href="#">{{spotlight.username}}</a></h4>
-                <div class="trophies">
-                  <i class="fa fa-lg fa-child"></i>
-                  <i class="fa fa-lg fa-certificate"></i>
-                  <i class="fa fa-lg fa-trophy"></i>
-                </div>
-                <p class="count">{{spotlight.count}} projects</p>
-                <!--<p class="user-city">San Francisco, CA</p>-->
-              </div>
-            </div><!-- End profile card -->
-          </div><!-- End Profile-container -->
-        </div>
-        <div class="project-image">
-          <h5>{{spotlight.project_title}}</h5>
-          <img src="http://placehold.it/200x200" alt="" class="img-responsive">
-        </div>
+      <div *ngFor="let spotlight of spotlights" class="spotlight col-md-4">
+        <app-user-card [uid]="spotlight.uid"></app-user-card>
       </div>
 
     </div><!-- End container -->

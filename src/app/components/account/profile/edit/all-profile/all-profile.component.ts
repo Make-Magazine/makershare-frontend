@@ -14,6 +14,8 @@ import { ProfileService } from '../../../../../d7services/profile/profile.servic
 })
 export class AllProfileComponent implements OnInit {
 
+  userId = localStorage.getItem('user_id');
+
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
   allIntersets: any[] = [];
@@ -112,7 +114,7 @@ export class AllProfileComponent implements OnInit {
     this.saveProfile();
   }
   saveProfile() {
-    this.profileService.updateProfile(1, this.profile).subscribe(profile => {
+    this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
       console.log("profile saved");
       console.log(profile);
     }, err => {

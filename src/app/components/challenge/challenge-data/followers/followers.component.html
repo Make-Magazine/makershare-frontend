@@ -1,46 +1,32 @@
- <div class="followers" *ngIf="followers">
-                  <div class="followers-cards">
-                    <div class="col-md-4">
-                  
-                    </div><!-- End col-md-4 -->
-                    <div class="col-md-4">
-                    
-                    </div><!-- End col-md-4 -->
-                    <div class="col-md-4">
-               
-                    </div><!-- End col-md-4 -->
-                    <div class="col-md-4" *ngFor="let follower of followers">
-                    
-                      <div class="follower-card">
-                        <app-user-card [uid]="follower.uid"></app-user-card>
-                        <!--<div class=" profile-container"> start profile card
-                          <div class="profile-card">-->
-                            <!--<div class="left col-sm-4">
-                              <div class="profile-pic">
-                                <img src="{{follow.photo}}" alt="" class="img-responsive">
-                              </div>
-                              <a href="#" class="btn btn-blue">Message</a>
-                            </div>
-                            <div class="right col-sm-8">
-                              <h4 class="profile-name"><a href="#">{{follow.username}}</a></h4>
-                              <div class="trophies">
-                                <i class="fa fa-lg fa-child"></i>
-                                <i class="fa fa-lg fa-certificate"></i>
-                                <i class="fa fa-lg fa-trophy"></i>
-                              </div>
-                              <p class="count">6 projects</p>
-                              <p class="profile-tag">{{follow.bio}}</p>
-                              <p class="user-city">{{follow.location}}</p>
-                            </div>-->
-                          <!--</div> End profile card 
-                        </div> End Profile-container -->
-                      </div><!-- End follower-card -->
-                    </div><!-- End col-md-4 -->
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-4 col-xs-offset-4 load-more">
-     <a *ngIf="!hideloadmorefollower"  class="btn btn-white" (click)="loadMoreFollower()">Load more</a>
-       
-                    </div>
-                  </div>
-                </div><!-- End followers -->
+<div class="followers" *ngIf="followers">
+  <div class="followers-cards">
+    <div class="col-md-4">
+
+    </div>
+    <!-- End col-md-4 -->
+    <div class="col-md-4">
+
+    </div>
+    <!-- End col-md-4 -->
+    <div class="col-md-4">
+
+    </div>
+    <!-- End col-md-4 -->
+    <div class="col-md-4" *ngFor="let follower of followers">
+
+      <div class="follower-card">
+        <app-user-card [uid]="follower.uid"></app-user-card>
+
+      </div>
+      <!-- End follower-card -->
+    </div>
+    <!-- End col-md-4 -->
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4 load-more">
+      <a *ngIf="!hideloadmorefollower" class="btn btn-white" (click)="loadMoreFollower()">Load more</a>
+
+    </div>
+  </div>
+</div>
+<!-- End followers -->

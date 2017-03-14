@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../d7services/view/view.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-showcases',
@@ -9,6 +10,7 @@ export class ShowcasesComponent implements OnInit {
   showcases = [];
   constructor(
     private viewService: ViewService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -18,6 +20,9 @@ export class ShowcasesComponent implements OnInit {
     }, err => {
 
     });
+  }
+  ShowSingleShowcase(nid){
+     this.router.navigate(['/showcases', nid]);
   }
 
 }

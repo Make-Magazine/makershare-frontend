@@ -9,6 +9,7 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { LikeComponent } from './like/like.component';
 import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
+import { ProjectCardComponent } from './project-card/project-card.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     LikeComponent,
     ForkComponent,
     UserCardComponent,
+    ProjectCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -34,6 +36,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     LikeComponent,
     ForkComponent,
     UserCardComponent,
+    ProjectCardComponent
   ]
 })
 export class SharedModule { }
@@ -43,3 +46,4 @@ export {BookmarkComponent};
 export {LikeComponent};
 export {ForkComponent};
 export {UserCardComponent};
+export {ProjectCardComponent};

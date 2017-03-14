@@ -7,6 +7,7 @@ import { ProfileComponent } from './view/profile.component'
 
 
 const ProfileRouts: Routes = [
+
   {
     path: '',
     children: [

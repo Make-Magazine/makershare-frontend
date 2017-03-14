@@ -35,5 +35,6 @@ card = {};
       console.log(err);
     });
   }
+  
 
 }
