@@ -4,7 +4,6 @@ import { ViewService } from './../../../d7services/view/view.service';
 @Component({
   selector: 'app-spotlight',
   templateUrl: './spotlight.component.html',
-  styleUrls: ['./spotlight.component.css']
 })
 export class SpotlightComponent implements OnInit {
   spotlights = [];

@@ -1,56 +1,69 @@
-  <div *ngIf="profile">
-        <div class="container-fluid cover-region">
-          <div class="row profile-cover">
-            <img src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">
-          </div>
-          <div class="row profile-name">
-            <div class="col-md-9 col-md-offset-3">
-              <h4>{{profile.first_name}} {{profile.last_name}}<span>{{profile.nickname}}</span></h4>
-                <ul class="bookmark">
-                  <li>
-                    <a [routerLink]="['/editprofile']"><i class="fa fa-lg fa-pencil"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa fa-lg fa-share"></i></a>
-                  </li>
+<div *ngIf="profile">
+  <div class="container-fluid cover-region">
+    <div class="row profile-cover">
+      <img src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">
+    </div>
+    <div class="row profile-name">
+      <div class="col-md-9 col-md-offset-3">
+        <h4>{{profile.first_name}} {{profile.last_name}}<span>{{profile.nickname}}</span></h4>
+        <ul class="bookmark">
+          <li>
+            <a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa fa-lg fa-share"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content-container">
+    <section class="container-fluid profile-page">
+      <div class="row profile-stats">
+        <ul class="col-md-9 col-md-offset-3 list-unstyled">
+          <li><span class="number">{{profile.total_projects}}</span>
+            <p>projects</p>
+          </li>
+          <li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
+            <p>project forks</p>
+          </li>
+          <li *ngIf="profile.total_likes != 0"><span class="number">{{profile.total_likes}}</span>
+            <p>project likes</p>
+          </li>
+          <li><span class="number">1405</span>
+            <p>views</p>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-sidebar">
+            <!-- Start Profile Sidebar -->
+            <div class=" profile-container">
+              <!-- start profile container-->
+              <div class="profile-group">
+                <!-- Start profile Group -->
+                <div class="profile-pic">
+                  <!-- Start Profiel Pic -->
+                  <img src="{{profile.user_photo}}" alt="" class="">
+                </div>
+                <a class="btn btn-blue" routerLink="/inbox">inbox</a>
+              </div>
+              <div class="profile-info">
+                <!-- Start Profile Info -->
+                <ul *ngIf="profile.check_publish" class="list-unstyled location">
+                  <li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.Governorate}}, {{profile.address.country}}</li>
+                  <hr>
                 </ul>
-            </div>
-          </div>
-        </div>
-        <div class="content-container">
-        <section class="container-fluid profile-page">
-            <div class="row profile-stats">
-              <ul class="col-md-9 col-md-offset-3 list-unstyled">
-                <li><span class="number">{{profile.total_projects}}</span><p>projects</p></li>
-                <li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span><p>project forks</p></li>
-                <li *ngIf="profile.total_likes != 0"><span class="number">{{profile.total_likes}}</span><p>project likes</p></li>
-                <li><span class="number">1405</span><p>views</p></li>
-              </ul>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <div class="profile-sidebar"><!-- Start Profile Sidebar -->
-                  <div class=" profile-container"><!-- start profile container-->
-                    <div class="profile-group"><!-- Start profile Group -->
-                      <div class="profile-pic"><!-- Start Profiel Pic -->
-                        <img src="{{profile.user_photo}}" alt="" class="">
-                      </div>
-                      <a class="btn btn-blue" routerLink="/inbox">inbox</a>
-                    </div>
-                    <div class="profile-info"><!-- Start Profile Info -->
-                      <ul *ngIf="profile.check_publish" class="list-unstyled location">
-                        <li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.Governorate}}, {{profile.address.country}}</li>
-                        <hr>
-                      </ul>
-                      
-                      <ul class="list-unstyled post">
-                        <li>"{{profile.describe_yourself}}"</li>
-                      </ul>
-                      <hr>
-                      <!--
+
+                <ul class="list-unstyled post">
+                  <li>"{{profile.describe_yourself}}"</li>
+                </ul>
+                <hr>
+                <!--
                       <ul class="list-unstyled awards">
                         <li><i class="fa fa-lg fa-child"></i>Maker Faire Bay Area 2017</li>
                         <li><i class="fa fa-lg fa-certificate"></i>Blue Ribbon, MFBA2017</li>
@@ -58,78 +71,88 @@
                       </ul>
                       <hr>
                       -->
-                      <div class="bio"><!-- Start Bio -->
-                      <p>{{profile.bio}}</p>
-                      </div><!-- End Bio -->
-                      <hr>
-                      <ul class="list-unstyled interests" *ngIf="profile.maker_interests.length > 0">
-                      <h5>Interests</h5>
-                        <li *ngFor="let interest of profile.maker_interests">{{interest.title}}</li>
-                      </ul>
-                      <hr>
-                      
-                      <ul *ngIf="profile.field_add_your_makerspace_s_" class="list-unstyled makerspaces">
-                        <h5>Makerspaces</h5>
-                        <li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
-                          <a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">
+                <div class="bio">
+                  <!-- Start Bio -->
+                  <p>{{profile.bio}}</p>
+                </div>
+                <!-- End Bio -->
+                <hr>
+                <ul class="list-unstyled interests" *ngIf="profile.maker_interests.length > 0">
+                  <h5>Interests</h5>
+                  <li *ngFor="let interest of profile.maker_interests">{{interest.title}}</li>
+                </ul>
+                <hr>
+
+                <ul *ngIf="profile.field_add_your_makerspace_s_" class="list-unstyled makerspaces">
+                  <h5>Makerspaces</h5>
+                  <li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
+                    <a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">
                             {{makerspace.field_makerspace_name}}
                           </a>
-                          <a *ngIf="!makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">
+                    <a *ngIf="!makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">
                             {{makerspace.field_makerspace_name}}
                           </a>
-                        </li>
-                      </ul>
-                        <hr>
-                      <ul class="list-unstyled my-web">
-                        <li><i class="fa fa-lg fa-globe"></i> Singerbots.com</li>
-                      </ul>
-                      <ul class="list-unstyled social-links">
-                        <li>
-                          <i class="fa fa-lg fa-facebook"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-lg fa-linkedin"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star show"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-lg fa-twitter"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-lg fa-google-plus"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-lg fa-pinterest"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-lg fa-tumblr"></i>
-                          <br>
-                          <i class="fa fa-lg fa-star"></i>
-                        </li>
-                      </ul>
-                      <hr>
-                      <div *ngIf="profile.field_started_making" class="how"><!-- Start How -->
-                        <h5>How I learned to be a maker</h5>
-                        <p>{{profile.started_making}}</p>
-                      </div><!-- End How -->
-                      <hr>
-                      <a href="#" class="report">Report this user</a>
-                    </div><!-- End profile Info -->
-                  </div><!-- End Profile Container -->
-                </div><!-- End Profile Sidebar -->
-            </div><!-- End col-md-3 -->
-            <div class="col-md-9">
-                <profile-projects></profile-projects>
-              </div><!-- End col-md-9 -->
-            </div><!-- End row -->
-        </section>
+                  </li>
+                </ul>
+                <hr>
+                <ul class="list-unstyled my-web">
+                  <li><i class="fa fa-lg fa-globe"></i> Singerbots.com</li>
+                </ul>
+                <ul class="list-unstyled social-links">
+                  <li>
+                    <i class="fa fa-lg fa-facebook"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-lg fa-linkedin"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star show"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-lg fa-twitter"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-lg fa-google-plus"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-lg fa-pinterest"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star"></i>
+                  </li>
+                  <li>
+                    <i class="fa fa-lg fa-tumblr"></i>
+                    <br>
+                    <i class="fa fa-lg fa-star"></i>
+                  </li>
+                </ul>
+                <hr>
+                <div *ngIf="profile.field_started_making" class="how">
+                  <!-- Start How -->
+                  <h5>How I learned to be a maker</h5>
+                  <p>{{profile.started_making}}</p>
+                </div>
+                <!-- End How -->
+                <hr>
+                <a href="#" class="report">Report this user</a>
+              </div>
+              <!-- End profile Info -->
+            </div>
+            <!-- End Profile Container -->
+          </div>
+          <!-- End Profile Sidebar -->
+        </div>
+        <!-- End col-md-3 -->
+        <div class="col-md-9">
+          <profile-projects></profile-projects>
+        </div>
+        <!-- End col-md-9 -->
       </div>
+      <!-- End row -->
+    </section>
   </div>
+</div>

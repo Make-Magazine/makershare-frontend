@@ -10,6 +10,8 @@ import { field_file_reference } from '../../../../models/project/create-project/
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { Router } from '@angular/router';
+import { UserService } from '../../../../d7services/user/user.service'
+import { field_collection_item_member } from '../../../../models/project/create-project/field_collection_item';
 
 @Component({
   selector: 'app-create-project',
@@ -80,17 +82,25 @@ export class CreateProjectComponent implements OnInit {
     private viewService: ViewService,
     private taxonomyService:TaxonomyService,
     private notificationBarService: NotificationBarService,
+    private userService:UserService,
     private router: Router,
   ) {}
   ngOnInit(): void {
+    if(this.project.field_maker_memberships.und.length == 0){
+      this.SetProjectOwner();
+    }
     this.current_active_tab = 'Your Story';
   }
 
-  /**
-   * also useless and most be deleted after updating all sub components 
-   */
-  FormUpdateHandler (values, Component){
-    console.log(this.project);
+  SetProjectOwner(){
+    this.userService.getStatus().subscribe(data => {
+      let owner:field_collection_item_member = {
+        field_team_member:{und:[{target_id:data.user.name+' ('+data.user.uid+')'}]},
+        field_membership_role:{und:[{value:'admin'}]},
+        field_sort_order:{und:[{value:1}]},
+      }
+      this.project.field_maker_memberships.und.push(owner);
+    });
   }
 
   /**
@@ -129,26 +139,38 @@ export class CreateProjectComponent implements OnInit {
   GettingFieldsReady(Visibility:number,Status:number){
     this.visibility = Visibility;
     this.project.status = Status;
-    this.SetYourStoryValues();
+    this.SetPrjectValues();
   }
 
   /**
    * function to migrate and map the values from the forms to the project object
    * for example you must upload the file image then reference the project cover_image field to this fid
    */
-  SetYourStoryValues(){
+  SetPrjectValues(){
     this.project.field_tags.und = this.FormPrintableValues.tags.toString();
-    let re = /^data:image\/[^;]+;base64,/g;
     let image:FileEntity = {file:this.FormPrintableValues.cover_image.file,filename:this.FormPrintableValues.cover_image.filename};
-    image.file = re[Symbol.replace](this.FormPrintableValues.cover_image.file, '');    
+    image.file = this.RemoveFileTypeFromBase64(this.FormPrintableValues.cover_image.file);    
     let tasks = [];
     if(image.file){
       tasks.push(this.fileService.SendCreatedFile(image));
     }
+    if(this.FormPrintableValues.resources_files.length > 0){
+      this.FormPrintableValues.resources_files.forEach((element:FileEntity,index:number)=>{
+        element.file = this.RemoveFileTypeFromBase64(element.file);
+        tasks.push(this.fileService.SendCreatedFile(element));
+      });
+    }
     let source = Observable.forkJoin(tasks);
     source.subscribe(
       (x) => {
-        this.project.field_cover_photo.und[0] = x[0] as field_file_reference;        
+        var index = 0;
+        if(image.file){
+          this.project.field_cover_photo.und[0] = x[0] as field_file_reference;
+          index++;
+        }
+        for(index; index < this.FormPrintableValues.resources_files.length; index++){
+          this.project.field_resources.und[index].field_resource_file.und[0] = x[index] as field_file_reference;
+        }
       },
       (err) => {
         console.log('Error: %s', err);
@@ -157,5 +179,11 @@ export class CreateProjectComponent implements OnInit {
         this.SaveProject();
       }
     );
+  }
+
+  RemoveFileTypeFromBase64(filecontent:string):string{
+    let re = /^data:image\/[^;]+;base64,/g;
+    let newcontent = re[Symbol.replace](filecontent, '');  
+    return newcontent;
   }
 }

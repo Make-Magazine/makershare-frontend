@@ -5,8 +5,9 @@ import { ViewService } from '../../../../d7services/view/view.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
 import { Project } from '../../../../models/project/create-project/project';
 import { TaxonomyTerm } from '../../../../models/project/create-project/taxonomy-term';
-import { field_collection_item_tool,field_collection_item_part,field_collection_item_material } from '../../../../models/project/create-project/field_collection_item';
+import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/create-project/field_collection_item';
 import { FileEntity } from '../../../../models/project/create-project/file_entity';
+import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'app-how-to',
@@ -18,6 +19,19 @@ import { FileEntity } from '../../../../models/project/create-project/file_entit
 })
 
 export class HowToComponent implements OnInit {
+
+search = (text$: Observable<string>) => 
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => {
+        if(term.length < 2){
+          return [];
+        } else{
+          return ["awdawd","adwadwwwwd"];
+        }
+      });
+
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
@@ -46,6 +60,9 @@ export class HowToComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.resources_files = this.FormPrintableValues.resource_files;
+    if(!this.resources_files){
+      this.resources_files = [];
+    }
     this.taxonomyService.getVocalbularyTerms(5).subscribe((data:TaxonomyTerm[]) => {
       this.Difficulties = data;
     });
@@ -302,7 +319,6 @@ export class HowToComponent implements OnInit {
   FileUpdated(event, index){
     const control = this.HowToForm.controls['field_resources']['controls'][index];
     let files = event.srcElement.files;
-    console.log(files);
     if(files.length == 1 && files[0]){
       control.controls.field_resources_filename.setValue(files[0].name);
       var file:FileEntity = {
@@ -310,13 +326,29 @@ export class HowToComponent implements OnInit {
         filename:''
       };
       this.ConvertToBase64(files[0],file);
-      console.log(file);
       if(this.resources_files[index]){
         this.resources_files[index] = file;
       }else{
         this.resources_files.push(file);
+        var url:URL;
+        if(control.controls.field_repository_link.valid){
+          url = control.value.field_repository_link;
+        }
+        let field_resource:field_collection_item_resource = {
+          field_label:{und:control.value.field_label},
+          field_repository_link:{und:[{url:url}]},
+          field_resource_file:{und:[{filename:file.filename,fid:0}]}
+        };
+        this.project.field_resources.und.push(field_resource);
+        control.valueChanges.subscribe(values => {
+          if(control.valid){
+            this.project.field_resources.und[index].field_label.und = values.field_label;
+            this.project.field_resources.und[index].field_repository_link.und[0].url = values.field_repository_link;
+          }
+        });
       }
     }
+    this.emitter.emit(this.resources_files);
   }
 
   ConvertToBase64(file,FileEntityObject:FileEntity){

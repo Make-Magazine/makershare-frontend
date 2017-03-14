@@ -4,7 +4,6 @@ import { ViewService } from './../../../d7services/view/view.service';
 @Component({
   selector: 'app-showcases',
   templateUrl: './showcases.component.html',
-  styleUrls: ['./showcases.component.css']
 })
 export class ShowcasesComponent implements OnInit {
   showcases = [];
