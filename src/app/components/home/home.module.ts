@@ -11,10 +11,9 @@ import { HomeRoutingModule } from './home-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-<<<<<<< HEAD
-=======
+
     HomeRoutingModule
->>>>>>> 5cd5b8bd077094e4edfa8e6facf09e8fdbf277bc
+
   ],
   declarations: [
     HomeComponent,
