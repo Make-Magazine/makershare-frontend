@@ -22,7 +22,7 @@
               </div>
 
               <ul class="list-unstyled challenge-actions pull-right">
-                  <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
+                  <app-bookmark [nodeNid]="challenge.nid" [user]="currentuser.user"></app-bookmark>
                 <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
               </ul>
               <div class="clearfix"></div>
@@ -47,7 +47,7 @@
               </ul>
               <ul class="list-unstyled challenge-follow" *ngIf="challenge">
                 <!--<li><a href="" class="btn btn-blue btn-sharp" (click)="followThis($event)" [class.active]="isFollowed">{{ButtonFollow}}</a></li>-->
-              <app-follow [nodeNid]="challenge.nid"></app-follow>
+              <app-follow [nodeNid]="challenge.nid" [user]="currentuser.user"></app-follow>
              
                 <!-- *ngIf="hideButton" -->
                 <li><a (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
@@ -61,7 +61,7 @@
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge">
                 </app-discussion>
 
-                <app-followers [hideloadmorefollower]="hideloadmorefollower" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)"
+                <app-followers  [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)"
                   *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
                   <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
 
