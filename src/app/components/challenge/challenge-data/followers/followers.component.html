@@ -9,11 +9,13 @@
                     <div class="col-md-4">
                
                     </div><!-- End col-md-4 -->
-                    <div class="col-md-4" *ngFor="let follow of followers">
+                    <div class="col-md-4" *ngFor="let follower of followers">
+                    
                       <div class="follower-card">
-                        <div class=" profile-container"><!-- start profile card-->
-                          <div class="profile-card">
-                            <div class="left col-sm-4">
+                        <app-user-card [uid]="follower.uid"></app-user-card>
+                        <!--<div class=" profile-container"> start profile card
+                          <div class="profile-card">-->
+                            <!--<div class="left col-sm-4">
                               <div class="profile-pic">
                                 <img src="{{follow.photo}}" alt="" class="img-responsive">
                               </div>
@@ -29,9 +31,9 @@
                               <p class="count">6 projects</p>
                               <p class="profile-tag">{{follow.bio}}</p>
                               <p class="user-city">{{follow.location}}</p>
-                            </div>
-                          </div><!-- End profile card -->
-                        </div><!-- End Profile-container -->
+                            </div>-->
+                          <!--</div> End profile card 
+                        </div> End Profile-container -->
                       </div><!-- End follower-card -->
                     </div><!-- End col-md-4 -->
                   </div>

@@ -50,29 +50,8 @@
     <div class="project-story-tab">
       <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#" >Vehicles Challenge</a> Winner</div>
       <div class="project-collaborates">
-        <div class="collaborate" *ngFor="let collab of collabs; let i=index">
-          <div class=" profile-container"><!-- start profile card-->
-            <div class="profile-card">
-              <div class="left col-sm-4">
-                <div class="profile-pic">
-                  <img *ngIf="!collab.photo" src="http://placehold.it/140x140" alt="" class="img-responsive">
-                  <img *ngIf="collab.photo" src="{{collab.photo}}" alt="" class="img-responsive">
-                </div>
-                <a href="#" class="btn btn-blue">Message</a>
-              </div>
-              <div class="right col-sm-8">
-                <h4 class="profile-name" *ngIf="(collab.first_name) && (collab.last_name)"><a href="#">{{collab.first_name}} {{collab.last_name}}</a></h4>
-                <div class="trophies">
-                  <i class="fa fa-lg fa-child"></i>
-                  <i class="fa fa-lg fa-certificate"></i>
-                  <i class="fa fa-lg fa-trophy"></i>
-                </div>
-                <p class="count">6 projects</p>
-                <p class="profile-tag" *ngIf="collab.descripe_yourself">{{collab.descripe_yourself}}</p>
-                <p class="user-city" *ngIf="(collab.location_locality) && (collab.location_administrative_area)">{{collab.location_locality}}, {{collab.location_administrative_area}}</p>
-              </div>
-            </div><!-- End profile card -->
-          </div><!-- End Profile-container -->
+        <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
+          <app-user-card [uid]="collaborator.target_id"></app-user-card>
           <div class="role" *ngIf="project.field_maker_memberships[i]">
             <h4>Role on the project</h4>
             <p>{{project.field_maker_memberships[i].membership_role}}</p>

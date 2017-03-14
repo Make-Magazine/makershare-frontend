@@ -61,7 +61,7 @@
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge">
                 </app-discussion>
 
-                <app-followers [hideloadmorefollower]="hideloadmorefollower" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)"
+                <app-followers  [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)" (pageNumber)="getPageNumberFollowers($event)"
                   *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
                   <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
 

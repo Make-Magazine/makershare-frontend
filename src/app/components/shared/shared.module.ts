@@ -8,6 +8,7 @@ import { FollowComponent } from './follow/follow.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { LikeComponent } from './like/like.component';
 import { ForkComponent } from './fork/fork.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ForkComponent } from './fork/fork.component';
     BookmarkComponent,
     LikeComponent,
     ForkComponent,
+    UserCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -31,6 +33,7 @@ import { ForkComponent } from './fork/fork.component';
     BookmarkComponent,
     LikeComponent,
     ForkComponent,
+    UserCardComponent,
   ]
 })
 export class SharedModule { }
@@ -39,3 +42,4 @@ export {FollowComponent};
 export {BookmarkComponent};
 export {LikeComponent};
 export {ForkComponent};
+export {UserCardComponent};
