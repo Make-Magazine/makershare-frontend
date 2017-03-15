@@ -50,7 +50,6 @@ export class IndividualWorkshopComponent implements OnInit {
     this.getCurrentUser();
     // setTimeout(1000)
     this.nid = this.route.params['value'].nid
-    if (this.nid) {
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
           this.workshop = data[0];
@@ -87,7 +86,7 @@ export class IndividualWorkshopComponent implements OnInit {
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
-          // console.log(data);
+           console.log(data);
           for (let object in this.objects) {
 
             if (this.objects[object].video && this.objects[object].video !== '') {
@@ -98,7 +97,7 @@ export class IndividualWorkshopComponent implements OnInit {
                 //  console.log (this.youtube_parser(this.objects[object].video))
                 this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
                 this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-                console.log(this.objects[object].videolink)
+                // console.log(this.objects[object].videolink)
                 
               }
               else if (this.vimeo_parser(this.objects[object].video)) {
@@ -118,16 +117,11 @@ export class IndividualWorkshopComponent implements OnInit {
         .subscribe(data => {
           this.lessons = data;
         });
-    }
-
+  
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
    
-    
-     
-
-
   });
 }
     
@@ -167,9 +161,7 @@ export class IndividualWorkshopComponent implements OnInit {
       this.popupPreview = this.objects[object].videolink;
     }
   }
-
-
-  youtube_parser(url) {
+ youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     //console.log(match[7])
@@ -182,17 +174,12 @@ export class IndividualWorkshopComponent implements OnInit {
   }
   /* function get current user */
   getCurrentUser() {
-    this.userService.getStatus().subscribe(data => {
+      this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
     });
   }
   /* end function get user*/
    
 
- 
-
-
- 
- 
 
 }
