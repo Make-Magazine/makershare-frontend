@@ -21,6 +21,7 @@ export class IndividualWorkshopComponent implements OnInit {
   nid;
   videoURl;
   previewPdf;
+  uid;
   page: number = 1;
   links = [];
   sanitizethis;
@@ -47,7 +48,8 @@ export class IndividualWorkshopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCurrentUser();
+    this.uid = localStorage.getItem('user_id');
+    // this.getCurrentUser();
     // setTimeout(1000)
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
@@ -83,6 +85,7 @@ export class IndividualWorkshopComponent implements OnInit {
           });
          });
       //  console.log(this.route.params);
+      console.log(this.nid);
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
@@ -118,11 +121,11 @@ export class IndividualWorkshopComponent implements OnInit {
           this.lessons = data;
         });
   
-    this.getCurrentUser();
-    this.userService.getStatus().subscribe(data => {
-    this.currentuser = data;
+    // this.getCurrentUser();
+    // this.userService.getStatus().subscribe(data => {
+    //   this.currentuser = data;
    
-  });
+    // });
 }
     
   preview(i) {
@@ -131,7 +134,7 @@ export class IndividualWorkshopComponent implements OnInit {
     if (this.objects[i].pdf && this.objects[i].pdf !== '') {
       this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
       //  if (i == 0)
-      //  this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + 'http://infolab.stanford.edu/pub/papers/google.pdf' + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
+      //  this.sanitizetcurrentuserhis =  '<iframe src="http://docs.google.com/gview?url=' + 'http://infolab.stanford.edu/pub/papers/google.pdf' + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
       //  if(i == 1)
       //   this.sanitizethis =  '<iframe src="http://docs.google.com/gview?url=' + 'https://docs.google.com/file/d/0BwEdalEj4DpeUmNaYmE0MFNyUlU/edit?pli=1' + '&embedded=true" frameborder="0" style="width:400px; height:550px;"></iframe>';
 

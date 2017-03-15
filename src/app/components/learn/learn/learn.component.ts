@@ -21,7 +21,6 @@ export class LearnComponent implements OnInit {
 
     // get workshop main page from a view
     this.viewService.getView('learn', []).subscribe(data => {
-      console.log(data);
       this.learns = data;
     }, err => {
 
@@ -29,7 +28,6 @@ export class LearnComponent implements OnInit {
   }
     WorkshopDetails(nid) {
     this.router.navigate(['/learn', nid]);
-    console.log(nid)
   }
 
 }
