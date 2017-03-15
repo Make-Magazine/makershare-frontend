@@ -66,7 +66,7 @@ export class ProjectStoryComponent implements OnInit {
   getComments() {
     this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
       this.comments = data;
-      console.log(this.comments)
+      //console.log(this.comments)
     });
   }
 
