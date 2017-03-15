@@ -25,12 +25,19 @@
             </li>
           </div>
         </ul>
-      <div class="reply-area">
-        <p class="reply">Reply</p>
-        <textarea name="" id="" cols="30" rows="5"></textarea>
-        <ul class="list-unstyled send-actions">
-          <li><a href="" class="btn btn-transparent">Cancel</a></li>
-          <li><a href="" class="btn btn-blue btn-sharp">Send</a></li>
-        </ul>
-      </div>
+        <form [formGroup]="messageForm" (ngSubmit)="onSubmit($event)">
+          <div class="reply-area">
+            <p class="reply">Reply</p>
+            <div>
+                <textarea name="body" id="" cols="30" rows="5" formControlName="body"></textarea>
+            </div>
+            <div *ngIf="formErrors.body" class="alert alert-danger">
+                          {{ formErrors.body }}
+                        </div>
+            <ul class="list-unstyled send-actions">
+              <li><a href="" class="btn btn-transparent">Cancel</a></li>
+              <li><button  type="submit" class="btn btn-blue btn-sharp">Send</button></li>
+            </ul>
+          </div>
+        </form>
     </div>

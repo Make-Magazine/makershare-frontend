@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DISABLED } from '@angular/forms/src/model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserProfile } from "../../../../../../models/profile/userprofile";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
@@ -6,6 +7,7 @@ import { Router } from "@angular/router";
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../../../../../d7services/profile/profile.service';
 import { IcDatepickerOptionsInterface } from 'ic-datepicker/dist';
+import { value } from '../../../../../../models/challenge/comment';
 
 @Component({
   selector: 'app-basic-info',
@@ -23,6 +25,7 @@ export class BasicInfoComponent implements OnInit {
   items: any[] = [];
   postalCode = false;
   zipCode = false;
+  disableBD = false;
   constructor(
     private profileService: ProfileService,
     private fb: FormBuilder,
@@ -34,11 +37,10 @@ export class BasicInfoComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-
     this.datepickerOptions = {
-      position: 'top'
+      position: 'top',
+      attrs:{}
     };
-
 
     this.profileService.getAllCountries().subscribe(countries => {
       for (var k in countries) {
@@ -56,23 +58,19 @@ export class BasicInfoComponent implements OnInit {
     console.log(value);
     this.profileService.getByCountry(value).subscribe(info => {
       console.log(info);
-      if (info.administrative_area_label == "Governorate") {
         this.isCity = true;
-      } else {
-        this.isCity = false;
+     
+      this.postalCode = false;
+      this.zipCode = false;        
+      // postal_code & zip_code
+      for(var k in info.used_fields){
+        if(info.used_fields[k] == "postal_code"){
+          this.postalCode = true;        
+        }
+        if(info.used_fields[k] == "zip_code"){
+          this.zipCode = true;        
+        }        
       }
-
-      // this.postalCode = false;
-      // this.zipCode = false;        
-      // // postal_code & zip_code
-      // for(var k in info.used_fields){
-      //   if(info.used_fields[k] == "postal_code"){
-      //     this.postalCode = true;        
-      //   }
-      //   if(info.used_fields[k] == "zip_code"){
-      //     this.zipCode = true;        
-      //   }        
-      // }
       
       this.items = [];
       for (var k in info.administrative_areas) {
@@ -105,12 +103,12 @@ export class BasicInfoComponent implements OnInit {
         'country': ['', [Validators.required]],
         'state': ['', [Validators.minLength(4)]],
         'city': ['', []],
-        'postal_code': ['', ''],
+        'postal_code': ['', [Validators.required, Validators.minLength(5)]],
         'zip_code': ['', '']
       }),
       'address_publish': ['', [Validators.required, Validators.minLength(4)]],
       'describe_yourself': ['', [Validators.required, Validators.maxLength(60)]],
-      'birthday_date': ['',],
+      'birthday_date': new FormControl({value: '', disabled: this.disableBD}, Validators.required),
       'mail': ['', [Validators.required]],
       'birthday_status': [''],
       'newsletter_subscription': ['']
@@ -177,8 +175,20 @@ export class BasicInfoComponent implements OnInit {
       'required': 'Email is required.'
     }
   };
-
+  disableBirthDate(event :any){
+     
+     if(!this.basicForm.value["birthday_status"]){
+       this.basicForm.controls["birthday_date"].reset();
+       this.disableBD = true;
+       this.datepickerOptions.attrs.readonly = true;
+     }else{
+       this.disableBD = false;
+       this.datepickerOptions.attrs.readonly = false;
+     }
+     console.log(this.disableBD);
+  }
   onValueChanged(data?: any) {
+    console.log("Validation Called");
     if (!this.basicForm) { return; }
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);
@@ -187,7 +197,7 @@ export class BasicInfoComponent implements OnInit {
         // clear previous error message (if any)
         this.formErrors[field] = '';
         const control = form.get(field);
-        if (control && control.dirty && !control.valid) {
+        if (control && (control.dirty || data=="save") && !control.valid) {
           const messages = this.validationMessages[field];
           for (const key in control.errors) {
             this.formErrors[field] += messages[key] + ' ';

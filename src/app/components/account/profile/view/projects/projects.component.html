@@ -2,12 +2,10 @@
   <div class="projects-grid row">
 
     <div *ngFor="let project of profile_projects" class="project col-md-4" (click)="ShowProjectDetails(project.nid)">
-      <div class="project-title">
-        <p>{{project.project_name}}</p>
-      </div>
-      <div class="project-image">
-        <img src="{{project.cover_photo}}" alt="" class="img-responsive">
-      </div>
+      <!-- Start Project Card -->
+     <app-project-card [projectCard]="project"></app-project-card>
+      <!-- End Project Card -->
+
     </div>
 
   </div>

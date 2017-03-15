@@ -10,6 +10,7 @@ import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 import { TagInputModule } from 'ng2-tag-input';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { FormsModule } from '@angular/forms';
+import {SharedModule}  from '../../shared/shared.module'
 
 
 
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     Ng2AutoCompleteModule,
     SelectModule,
-    TagInputModule
+    TagInputModule,
+    SharedModule
   ],
   declarations: [
     AllProfileComponent,

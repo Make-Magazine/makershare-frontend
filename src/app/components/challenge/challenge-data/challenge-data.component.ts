@@ -4,6 +4,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 import 'rxjs/Rx';
 @Component({
@@ -14,39 +15,25 @@ export class ChallengeDataComponent implements OnInit {
   challenge;
   dates;
   str;
-  submission_open;
-  submission_close;
-  winners_announced;
   awards;
   countProjects = 0;
   no_of_awards;
   no_of_followers;
-  entries_count;
-  awards_data;
   projects = [];
   hideloadmore = true;
   hideloadmoreproject = false;
   hideloadmorefollower = false;
   pageNumber = 0;
-  loadProject;
-  projects_show;
-  projects_more;
   challenge_start_date;
   followers = [];
-  isFollowed = false;
-  isBookmarked = false;
   Flags = ['follow'];
-  FlagStates = [];
-  ButtonFollow: string;
   currentuser;
   hideButton = false;
   activeTab;
-  projectsData;
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
-  followersuid;
-  uids = [];
+
 
   @Input() sortType: ISorting;
   @Input() pageNo: number;
@@ -54,11 +41,13 @@ export class ChallengeDataComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-    private flagService: FlagService
+    private flagService: FlagService,
+    private notificationBarService: NotificationBarService,
+
   ) { }
 
   ngOnInit() {
-
+   
     this.getCountProject();
     this.activeTab = 'summary';
     this.getChallengeData();
@@ -70,26 +59,21 @@ export class ChallengeDataComponent implements OnInit {
       .subscribe(data => {
         this.awards = data;
         this.no_of_awards = data.length;
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
-
-
-
     this.getChallengeFollowers();
     this.getProjects();
     this.getCurrentUser();
-
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
-
-
+    }, err => {
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
-
-
   }
 
   /* function get challenge followers */
   getChallengeFollowers() {
-    //this.getPageNumberFollowers(event);//
     //challenge followers
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
@@ -99,24 +83,30 @@ export class ChallengeDataComponent implements OnInit {
           this.hideloadmorefollower = true;
         }
         this.no_of_followers = this.followers[0]['follow_counter'];
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
+  /*end function get challenge followers */
+
   /* function get current user */
   getCurrentUser() {
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
+    }, err => {
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
   /* end function get user*/
 
-
-
-
+  /* function to change tab*/
   changeChallangeTab(NewTab, e) {
     e.preventDefault();
     this.activeTab = NewTab;
   }
+  /*  end function to change tab*/
 
+  /* function to get challenge data */
   getChallengeData() {
     //challenge data
     this.route.params
@@ -142,13 +132,14 @@ export class ChallengeDataComponent implements OnInit {
             this.challenge.opened = false;
           }
         }
-
         this.challenge.challenge_end_date = this.changeDateFormat(this.challenge.challenge_end_date.value);
         this.challenge.challenge_start_date = this.changeDateFormat(this.challenge.challenge_start_date.value);
         this.challenge.winners_announcement_date = this.changeDateFormat(this.challenge.winners_announcement_date.value);
       });
   }
-
+  /* end function to get challenge data */
+  
+  /* function to change data format */
   changeDateFormat(date) {
     var d;
     d = new Date(date);
@@ -161,6 +152,7 @@ export class ChallengeDataComponent implements OnInit {
     var datestring = month + " " + day + "," + " " + fullYear;
     return datestring;
   }
+  /* end function to change data format */
 
   getProjects() {
     /*cheack display_entries */
@@ -175,6 +167,8 @@ export class ChallengeDataComponent implements OnInit {
       .subscribe(data => {
         this.projects = this.projects.concat(data);
         this.loadMoreVisibilty();
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
 
@@ -182,12 +176,12 @@ export class ChallengeDataComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
-
     if (this.countProjects == this.projects.length) {
       this.hideloadmoreproject = true;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
+
   /* function to sort project apply action */
   getSortType(event: any) {
     this.sortData = event;
@@ -220,14 +214,17 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
         this.countProjects = data[0];
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
 
+  /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
     this.router.navigate(['/enter-challenge', nid]);
-
   }
+  /* end function to navigate to enter challenge */
 }
 
 
