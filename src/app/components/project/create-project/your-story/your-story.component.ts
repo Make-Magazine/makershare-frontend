@@ -62,12 +62,6 @@ export class YourStoryComponent implements OnInit {
   ngOnInit() {
     this.cover_image = this.FormPrintableValues.cover_image;
     this.tags = this.FormPrintableValues.tags;
-    if(this.project.field_cover_photo.und[0].fid != 0){
-      this.fileService.getFileById(this.project.field_cover_photo.und[0].fid).subscribe((file:FileEntity) =>{
-        this.cover_image.file = file.file;
-        this.cover_image.filename = file.filename;
-      });
-    }
     this.buildForm();
     this.viewService.getView('projects_categories').subscribe((categories:ProjectCategory[]) => {
       this.all_categories = categories;

@@ -40,8 +40,8 @@ export class TeamComponent implements OnInit {
     this.TeamForm.valueChanges.subscribe(data => {
       this.TeamUsers = [];
       this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
-      this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
     });
+    this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
   }
 
   AddRow(ControlName,data?) {
@@ -53,28 +53,30 @@ export class TeamComponent implements OnInit {
   }
 
   GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string){
-    let id = UsernameAndId.match(/\(([^)]+)\)/)[1];
-    if (id) {
-        return id;
-    }
+    return UsernameAndId.match(/\(([^)]+)\)/)[1];
   }
 
   SetMember(uid,index){
     this.TeamUsers[index] = [];
     this.UsersDetails[index] = [];
+    const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
     this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
       this.SelectedUser[index] = data[0];
-      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].uid.setValue(uid);
-      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
-      this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_sort_order.setValue(index+1);
+      control['controls'].uid.setValue(uid);
+      control['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
+      control['controls'].field_sort_order.setValue(index+1);
       let member:field_collection_item_member = {
         field_team_member:{und:[{target_id:data[0].username+' ('+uid+')'}]},
         field_sort_order:{und:[{value:index+1}]},
-        field_membership_role:{und:[{value:this.TeamForm.controls['field_maker_memberships']['controls'][index]['controls'].field_membership_role.value}]}
+        field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]}
       };
-      if(index !=0 ){
+      if(!this.project.field_maker_memberships.und[index]){
         this.project.field_maker_memberships.und.push(member);
       }
+      control.valueChanges.subscribe(values => {
+        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
+        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
+      });
     });
   }
   RefreshUsers(index,value){
@@ -104,7 +106,7 @@ export class TeamComponent implements OnInit {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
-      'field_membership_role': [data? data.field_membership_role.und[0].value:''],
+      'field_membership_role': [data && data.field_membership_role.und? data.field_membership_role.und[0].value:''],
       'uid': [, Validators.required],
     });
   }
@@ -148,6 +150,7 @@ export class TeamComponent implements OnInit {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
+    this.project[ControlName].und.splice(i, 1);
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {

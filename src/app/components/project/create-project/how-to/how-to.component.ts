@@ -58,7 +58,6 @@ export class HowToComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.buildForm();
     this.resources_files = this.FormPrintableValues.resource_files;
     if(!this.resources_files){
       this.resources_files = [];
@@ -72,6 +71,7 @@ export class HowToComponent implements OnInit {
     this.taxonomyService.getVocalbularyTerms(12).subscribe((data:TaxonomyTerm[]) => {
       this.ResourceLabels = data;
     });
+    this.buildForm();
   }
 
   ToolMaterialPart(ControlName, index, value){
@@ -168,6 +168,12 @@ export class HowToComponent implements OnInit {
       'field_duration': [this.project.field_duration.und],
       'field_resources': this.fb.array([]),
     });
+    let multifields = ["field_tools","field_materials","field_parts","field_resources"]
+    multifields.forEach(field =>{
+      this.project[field].und.forEach((element,index)=>{
+        this.AddRow(field,element);
+      });
+    });
     this.HowToForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
       this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
@@ -180,10 +186,10 @@ export class HowToComponent implements OnInit {
   /**
    * Adding new element to control array and also pushing new error structure for this row
    */
-  AddRow(ControlName) {
+  AddRow(ControlName,data?) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let index = control.length + 1;
-    const addrCtrl = this.InitRow(ControlName,index);
+    const addrCtrl = this.InitRow(ControlName,index,data);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
@@ -195,46 +201,47 @@ export class HowToComponent implements OnInit {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
+    this.project[ControlName].und.splice(i, 1);
     this.SortElements(ControlName);
   }
 
   /**
    * Initalize the row with validations array and default values
    */
-  InitRow(ControlName,index) {
+  InitRow(ControlName,index,data?) {
     switch (ControlName){
       case 'field_tools':
       {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_tool_name': ['', Validators.required],
-          'field_tool_url': ['', CustomValidators.url],
-          'field_description': [''],
-          'field_material_quantity': [''],
+          'field_tool_name': [data? data.field_tool_name.und[0].target_id:'', Validators.required],
+          'field_tool_url': [data && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
+          'field_description': [data && data.field_description.und? data.field_description.und[0].value:''],
+          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_parts':
       {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_part_name': ['', Validators.required],
-          'field_material_quantity': [''],
+          'field_part_name': [data? data.field_part_name.und[0].target_id:'', Validators.required],
+          'field_material_quantity': [data && data.field_material_quantity? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_materials':
       {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_material_name': ['', Validators.required],
-          'field_material_quantity': [''],
+          'field_material_name': [data? data.field_material_name.und[0].target_id:'', Validators.required],
+          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_resources':
       {
         return this.fb.group({
-          'field_resources_filename': ['', Validators.required],
-          'field_repository_link':['',CustomValidators.url],
-          'field_label': [1105,],
+          'field_resources_filename': [data? data.field_resource_file.und[0].filename:'', Validators.required],
+          'field_repository_link':[data && data.field_repository_link.und? data.field_repository_link.und[0].url:'',CustomValidators.url],
+          'field_label': [data? data.field_label.und:1105,],
         });
       }
     }
@@ -311,8 +318,12 @@ export class HowToComponent implements OnInit {
     let TempToolsMaterialsParts = [];
     let ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
     control.controls.forEach((element, index) => {
-      this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
-      element['controls']['field_sort_order'].setValue(index + 1);
+      if(this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()]){
+        this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
+      }
+      if(element['controls']['field_sort_order']){
+        element['controls']['field_sort_order'].setValue(index + 1);
+      }
     });
   }
 
@@ -323,7 +334,7 @@ export class HowToComponent implements OnInit {
       control.controls.field_resources_filename.setValue(files[0].name);
       var file:FileEntity = {
         file:'',
-        filename:''
+        filename:files[0].name
       };
       this.ConvertToBase64(files[0],file);
       if(this.resources_files[index]){

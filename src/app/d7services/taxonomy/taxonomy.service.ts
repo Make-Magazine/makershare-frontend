@@ -20,6 +20,10 @@ export class TaxonomyService {
     return this.mainService.get(globals.endpoint + '/taxonomy_term?parameters[name]=' + name).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
+  getTermByID(tid: number): Observable<any>{
+    return this.mainService.get(globals.endpoint + '/taxonomy_term/' + tid).map(response => response.json()).catch(err => Observable.throw(err));
+  }
+
   createTerm(term): Observable<any>{
     return this.mainService.post(globals.endpoint + '/taxonomy_term', term).map(response => response.json()).catch(err => Observable.throw(err));
   }
@@ -28,7 +32,7 @@ export class TaxonomyService {
     return this.mainService.put(globals.endpoint + '/taxonomy_term/' + term.vid, term).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
-  deleteTerm(vid: number): Observable<any>{
-    return this.mainService.delete(globals.endpoint + '/taxonomy_term/' + vid).map(response => response.json()).catch(err => Observable.throw(err));
+  deleteTerm(tid: number): Observable<any>{
+    return this.mainService.delete(globals.endpoint + '/taxonomy_term/' + tid).map(response => response.json()).catch(err => Observable.throw(err));
   }
 }

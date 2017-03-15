@@ -2142,8 +2142,6 @@ header.showcase-project {
 
 .inbox-container, .notification-container {
   display: none; }
-=======
-      line-height: 1em; }
   .page-inbox .messages {
     background-color: #fff;
     padding: 0; }
@@ -2198,7 +2196,33 @@ header.showcase-project {
     .page-inbox .messages .load-more {
       width: 250px;
       margin: 20px auto; }
->>>>>>> 4ab8b8094ce269abefd1a6d017e6d3dbe1b6d488
+footer {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  min-height: 35px;
+  margin-top: 5px;
+  font-size: 14px;
+  background: #F2F2F2; }
+  footer .copy img {
+    max-width: 70px; }
+  footer .copy p {
+    padding: 0;
+    margin: 0;
+    font-size: 12px; }
+  footer a.nav-link {
+    color: #4f4f4f;
+    padding: 0; }
+  footer .fa-stack-2x {
+    font-size: 1.7em; }
+  footer .fa-stack {
+    position: relative;
+    display: inline-block;
+    width: 1.7em;
+    height: 1.7em;
+    line-height: 1.7em;
+    vertical-align: middle; }
+  footer .socials {
+    margin-top: 30px; }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   /* .profile-sidebar{
