@@ -15,9 +15,10 @@
     <div class="col-md-4" *ngFor="let follower of followers">
 
       <div class="follower-card">
-        <app-user-card [uid]="follower.uid"></app-user-card>
-
-      </div>
+        <!-- Start User Card -->
+         <app-user-card [uid]="follower.uid"></app-user-card>
+        <!-- End User Card -->
+   </div>
       <!-- End follower-card -->
     </div>
     <!-- End col-md-4 -->
