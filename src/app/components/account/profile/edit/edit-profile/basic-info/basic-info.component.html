@@ -60,7 +60,7 @@
 				<div *ngIf="zipCode" class="col-md-6">
 					<input formControlName="zip_code" type="text" placeholder="Zip Code">
 				</div>
-				<div *ngIf="isCity&&postalCode" class="col-md-6">
+				<div *ngIf="postalCode" class="col-md-6">
 					<input formControlName="postal_code" blockNonNumber type="text" placeholder="Postal Code">
 				</div>
 				</div>
@@ -90,7 +90,10 @@
 
 <div class="form-group birthday">
 	<label for="birthday">What is your birthday?</label>
-	<ic-datepicker formControlName="birthday_date" options="datepickerOptions" [disabled]="disableBD" data-ng-disabled="disableBD"></ic-datepicker>
+	<ic-datepicker *ngIf="!disableBD" formControlName="birthday_date" options="datepickerOptions" [disabled]="disableBD" data-ng-disabled="disableBD"></ic-datepicker>
+	<br *ngIf="disableBD" /> 
+	<input *ngIf="disableBD" name="birthday_date" disabled>
+	<br *ngIf="disableBD" /> 
 	<div *ngIf="formErrors.birthday_date" class="alert alert-danger error-msg">
 		{{ formErrors.birthday_date }}
 	</div>
