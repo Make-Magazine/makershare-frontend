@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-learn',
@@ -13,7 +13,6 @@ export class LearnComponent implements OnInit {
  workshop;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
   ) { }

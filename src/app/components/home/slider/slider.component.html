@@ -10,8 +10,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
 
-      <div *ngFor="let slider of sliders; let i = index" class="item" [ngClass]="{'active': i === 0 }">
-
+      <div (click)="loadMoreData(slider.nid,slider.type)" *ngFor="let slider of sliders; let i = index" class="item" [ngClass]="{'active': i === 0 }">
         <img *ngIf="slider.cover_photo" class="first-slide" src="{{slider.cover_photo}}" alt="First slide">
         <img *ngIf="slider.promo_image" class="first-slide" src="{{slider.promo_image}}" alt="First slide">
         <div class="container card-container">
