@@ -139,8 +139,8 @@
               <label for="collab-order-{{i + 1}}">Sort Order</label>
               <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
               <div class="carets">
-                <i *ngIf="i > 1" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
-                <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && (i !==0)" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
+                <i *ngIf="i > 1 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
+                <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && (i !==0) && TeamForm.controls.field_maker_memberships.valid" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
               </div>
               <small *ngIf="formErrors.field_maker_memberships[i].field_sort_order" class="text-danger">
                 {{formErrors.field_maker_memberships[i].field_sort_order}}
@@ -148,7 +148,7 @@
             </div>
           </div>
         </div>
-        <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
+        <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 1) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
     </div>   
     <a *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && TeamForm.controls.field_maker_memberships.valid" (click)="AddRow('field_maker_memberships')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>

@@ -1,94 +1,97 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import {ISorting} from '../../../../models/challenge/sorting';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ISorting } from '../../../../models/challenge/sorting';
 import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html'
 })
 export class SummaryComponent implements OnInit {
-@Input() projects;
-@Input() challenge; 
-@Input() awards;
-@Input() projectsCount;
-@Input() hideLoadMore;
+  @Input() projects;
+  @Input() challenge;
+  @Input() awards;
+  @Input() projectsCount;
+  @Input() hideLoadMore;
 
-@Output() sortType = new EventEmitter<ISorting>();
-@Output() pageNumber = new EventEmitter<number>();
-ActionName:string;
-pages:number = 0;
-sort:ISorting={
-  sort_by : "",
-  sort_order:"",
-  pageNo:0
-};
-  constructor( private router: Router,) { }
+  @Output() sortType = new EventEmitter<ISorting>();
+  @Output() pageNumber = new EventEmitter<number>();
+  ActionName: string;
+  pages: number = 0;
+  sort: ISorting = {
+    sort_by: "",
+    sort_order: "",
+    pageNo: 0
+  };
+  constructor(private router: Router, ) { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    console.log(this.projectsCount)
   }
+  /* function to sort challenge Title A-z */
+  sortAsc(sort: ISorting) {
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "title"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Title A-z"
+  }
+  /* end function to sort challenge Title A-z */
 
-sortAsc(sort:ISorting){
-  this.sort.sort_order= "ASC";
-  this.sort.sort_by="title"
-  this.sortType.emit(this.sort);
-  this.ActionName = "Title A-z"
-  console.log(this.sort);
-}
+  /* function to sort challenge Title Z-A */
+  sortDesc(sort: string) {
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "title"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Title Z-A"
+  }
+  /* end function to sort challenge Title Z-A */
 
-sortDesc(sort:string){
-  this.sort.sort_order= "DESC";
-  this.sort.sort_by="title"
-  this.sortType.emit(this.sort);
-   this.ActionName = "Title Z-A"
-  console.log(this.sort);
-}
+  /* function to sort challenge Recently */
+  mostRecent(sort: string) {
+    this.sort.sort_order = "DESC"
+    this.sort.sort_by = "created"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Most Recent"
+  }
+  /* end function to sort challenge Recently */
 
-mostRecent(sort:string){
-this.sort.sort_order="DESC"
-this.sort.sort_by="created"
-this.sortType.emit(this.sort);
- this.ActionName = "Most Recent"
- console.log(this.sort);
-}
-oldest(sort:string){
-this.sort.sort_order= "ASC";
-this.sort.sort_by="created"
-this.sortType.emit(this.sort);
- this.ActionName = "Oldest"
- console.log(this.sort);
-}
+  /* function to sort challenge Oldest */
+  oldest(sort: string) {
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "created"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Oldest"
+  }
+  /* end function to sort challenge Oldest */
 
-mostLiked(sort:string){
-this.sort.sort_order= "DESC";
-this.sort.sort_by="count"
-this.sortType.emit(this.sort);
- this.ActionName = "Most Liked"
- console.log(this.sort);
+  /* function to sort challenge MostLiked */
+  mostLiked(sort: string) {
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "count"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Most Liked"
 
-}
-mostForked(sort:string){
-this.sort.sort_order= "DESC";
-this.sort.sort_by="field_total_forks_value";
-this.sortType.emit(this.sort);
- this.ActionName = "Most Forked"
- console.log(this.sort);
-}
-/*loadmore(){
-  this.pages++;
-  this.pageNumber.emit(this.pages);
- // console.log(this.pages);
-}*/
-  loadMoreProject(){
-    
+  }
+  /* end function to sort challenge MostLiked */
+
+  /* function to sort challenge MostForked */
+  mostForked(sort: string) {
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "field_total_forks_value";
+    this.sortType.emit(this.sort);
+    this.ActionName = "Most Forked"
+  }
+  /* end function to sort challenge MostLiked */
+
+  /* function load more  */
+  loadMoreProject() {
     this.pages++;
     this.pageNumber.emit(this.pages);
-//  console.log(this.pages);
   }
-  ShowProjectDetails(nid){
-    console.log(nid);
+  /* end function load more  */
+
+  /* function to navigate to project details */
+  ShowProjectDetails(nid) {
     this.router.navigate(['/project/view', nid]);
-   // console.log(nid)
   }
+  /* end function to navigate to project details */
 
 }
