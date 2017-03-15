@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../../models/profile/ProfileSocial";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from '../../../../../d7services/profile/profile.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { BasicInfoComponent } from './basic-info/basic-info.component';
 declare var $: any;
 @Component({
   selector: 'app-edit-profile',
@@ -14,6 +14,9 @@ declare var $: any;
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
   basicForm: FormGroup;
+
+  @ViewChild(BasicInfoComponent)
+  private basicComponent: BasicInfoComponent;
 
   currentTab = 'basic';
   userProfile: UserProfile = {
@@ -82,13 +85,17 @@ export class EditProfileComponent implements OnInit {
 
   }
 
-  saveNext() {
+  saveNext(event: Event) {
     if (this.basicForm.valid) {
       this.saveProfile();
       this.currentTab = 'optional';
       $("#optional-info").click();
     } else {
-      console.log("put toaster ");
+      this.basicComponent.onValueChanged("save");
+      var answer = confirm("Warning: Should fill all basic info first or profile info won't be saved.\n Still want to go to optional?");
+             if (!answer) {
+                event.preventDefault();
+            }
     }
   }
 
