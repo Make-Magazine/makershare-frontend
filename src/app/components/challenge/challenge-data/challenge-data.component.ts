@@ -47,6 +47,7 @@ export class ChallengeDataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+   
     this.getCountProject();
     this.activeTab = 'summary';
     this.getChallengeData();
@@ -73,7 +74,6 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function get challenge followers */
   getChallengeFollowers() {
-    //this.getPageNumberFollowers(event);//
     //challenge followers
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
@@ -88,6 +88,7 @@ export class ChallengeDataComponent implements OnInit {
       });
   }
   /*end function get challenge followers */
+
   /* function get current user */
   getCurrentUser() {
     this.userService.getStatus().subscribe(data => {
@@ -97,12 +98,14 @@ export class ChallengeDataComponent implements OnInit {
     });
   }
   /* end function get user*/
+
   /* function to change tab*/
   changeChallangeTab(NewTab, e) {
     e.preventDefault();
     this.activeTab = NewTab;
   }
   /*  end function to change tab*/
+
   /* function to get challenge data */
   getChallengeData() {
     //challenge data
@@ -129,13 +132,13 @@ export class ChallengeDataComponent implements OnInit {
             this.challenge.opened = false;
           }
         }
-
         this.challenge.challenge_end_date = this.changeDateFormat(this.challenge.challenge_end_date.value);
         this.challenge.challenge_start_date = this.changeDateFormat(this.challenge.challenge_start_date.value);
         this.challenge.winners_announcement_date = this.changeDateFormat(this.challenge.winners_announcement_date.value);
       });
   }
   /* end function to get challenge data */
+  
   /* function to change data format */
   changeDateFormat(date) {
     var d;
@@ -173,12 +176,12 @@ export class ChallengeDataComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
-
     if (this.countProjects == this.projects.length) {
       this.hideloadmoreproject = true;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
+
   /* function to sort project apply action */
   getSortType(event: any) {
     this.sortData = event;
@@ -217,10 +220,11 @@ export class ChallengeDataComponent implements OnInit {
   }
   /*end function count project in challenge*/
 
+  /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
     this.router.navigate(['/enter-challenge', nid]);
-
   }
+  /* end function to navigate to enter challenge */
 }
 
 

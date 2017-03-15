@@ -1,4 +1,4 @@
-<div>
+<!--<div class="col-md-10  pull-right">
    <div  *ngFor="let comment of comments.value">
       <div class="col-lg-10">
         <p class="col-lg-4">{{comment.comment}}</p>
@@ -9,4 +9,18 @@
        </div> 
   
    </div>
-</div>
+</div>-->
+
+  <div class="feedback" *ngFor="let comment of comments.value">
+        <div class=" feed-user">
+          <img width="60px;" height="60px;" src="{{comment?.photo}}" alt="" class="img-responsive pull-left">
+          <div class="pull-left name">
+            <h5><a href="#">{{comment?.nickname}}</a></h5>
+            
+          </div>
+        </div>
+        <div class=" feed-body">
+          <p>{{comment?.comment}}</p>
+        </div>
+        <div class=" feed-timestamp">{{comment?.update_date}}</div>
+      </div><!-- End feedback -->

@@ -24,7 +24,8 @@ export class LikeComponent implements OnInit {
 
   ) { }
   ngOnInit() {
-    
+        let userId = localStorage.getItem('user_id');
+    console.log(userId);
       /*like start */
       this.flagService.isFlagged(this.nodeNid, this.user.uid, 'like').subscribe(data => {
         this.isLiked = data[0];
