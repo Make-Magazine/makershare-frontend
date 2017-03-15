@@ -33,7 +33,6 @@ export class ProjectStoryComponent implements OnInit {
     nid: 0,
   };
   ngOnInit() {
-    debugger
     console.log(this.project);
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
