@@ -22,6 +22,7 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects').subscribe(data => {
       // console.log(data);
       this.projects = data;
+      console.log(this.projects)
     }, err => {
 
     });
@@ -48,6 +49,7 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
     
       this.projects = data;
+          console.log(this.projects.nid);
       
     }, err => {
 

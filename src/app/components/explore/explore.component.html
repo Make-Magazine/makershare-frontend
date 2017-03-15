@@ -50,14 +50,7 @@
                <div class="projects-grid row">
 
                  <div *ngFor="let project of projects" class="col-md-3" (click)="ShowProjectDetails(project.nid)">
-                   <div class="project" >
-                     <div class="project-title">
-                       <p>{{project.project_name}}</p>
-                     </div>
-                     <div class="project-image">
-                       <img src="{{project.cover_photo}}" alt="" class="img-responsive">
-                     </div>
-                   </div>
+                   <app-project-card [projectCard]="project" ></app-project-card>
                  </div>
 
                </div>

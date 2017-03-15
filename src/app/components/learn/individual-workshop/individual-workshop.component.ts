@@ -47,6 +47,7 @@ export class IndividualWorkshopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
     // setTimeout(1000)
     this.nid = this.route.params['value'].nid
     if (this.nid) {
@@ -81,8 +82,7 @@ export class IndividualWorkshopComponent implements OnInit {
               this.check = true;
             }
           });
-
-        });
+         });
       //  console.log(this.route.params);
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
@@ -124,9 +124,6 @@ export class IndividualWorkshopComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
    
-
-    
-      this.currentuser = data;
     
      
 
@@ -150,8 +147,9 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubFile = true;
         delete this.popupPreview;
         console.log(this.objects[i]);
-         this.sanitizethis = this.objects[i].book;
-         this.epubLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.sanitizethis);
+         //this.sanitizethis = this.objects[i].book;        
+         this.epubLink = this.objects[i].book;
+         //this.epubLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.sanitizethis);
         //  this.sanitizethis = 'assets/book.epub';
         //  this.epubLink = this.sanitizethis;
       } else {

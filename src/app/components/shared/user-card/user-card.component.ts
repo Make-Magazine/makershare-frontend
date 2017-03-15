@@ -29,11 +29,11 @@ card = {};
 
         // get card profile
     this.viewService.getView('maker_profile_card_data', [['uid',this.uid]]).subscribe(data => {
-     console.log(data);
       this.card = data[0];
     }, err => {
-      console.log(err);
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
     });
   }
+  
 
 }

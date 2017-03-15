@@ -54,7 +54,6 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
-    console.log(this.comments);
     if (this.commentForm.valid) {
       e.preventDefault();
 

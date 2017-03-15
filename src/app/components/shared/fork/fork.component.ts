@@ -33,11 +33,9 @@ constructor(private route: ActivatedRoute,
     e.preventDefault();
       this.flagService.flag(this.nodeNid, this.user.uid, 'fork').subscribe(response => {
         this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
-        console.log(response);
         this.router.navigate(['/profile']);
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
       });
   }
   /* end function fork */

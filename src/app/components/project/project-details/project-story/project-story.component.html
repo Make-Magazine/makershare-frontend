@@ -6,16 +6,16 @@
     </div>
     <div class="project-stats">
       <ul class="list-unstyled">
-        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2?.tid}}</li>
-        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
+        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2[0]?.tid}}</li>
+        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project.flag_count}}</li>
         <li><i class="fa fa-lg fa-comment"></i>2</li>
-        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0]"></i>{{project.field_total_forks[0]?.value}}</li>
+        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_forks"></i>{{project.field_forks.length}}</li>
       </ul>
     </div>
     <hr>
     <div class="project-body">
-      <p>{{project.field_teaser?.value}}</p>
-      <p>{{project.field_story?.value}}</p>
+      <div [innerHTML]="project.field_teaser?.value"></div>
+      <div [innerHTML]="project.field_story?.value"></div>
     </div><!-- End body -->
     <div class="feedback-group">
       <div class="feedback" *ngFor="let comment of comments; let i=index">
@@ -49,15 +49,17 @@
   <div>
     <div class="project-story-tab">
       <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#" >Vehicles Challenge</a> Winner</div>
-      <div class="project-collaborates">
+      <!-- Start project-collaborates -->
+      <!--<div class="project-collaborates">
         <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
           <app-user-card [uid]="collaborator.target_id"></app-user-card>
           <div class="role" *ngIf="project.field_maker_memberships[i]">
             <h4>Role on the project</h4>
             <p>{{project.field_maker_memberships[i].membership_role}}</p>
           </div>
-        </div><!-- End Collaborate -->
-      </div><!-- End project-collaborates -->
+        </div>
+      </div>-->
+      <!-- End project-collaborates -->
       <div class="panel panel-default aha">
         <div class="panel-heading">
           <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>

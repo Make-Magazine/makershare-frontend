@@ -32,12 +32,10 @@ export class FollowComponent implements OnInit {
       if (this.isFollowed == false) {/* start if  */
         this.ButtonFollow = 'Follow';
       } else {
-        console.log("return false");
         this.ButtonFollow = 'UnFollow';
       }/* end else if  */
     }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
       })
 
 
@@ -52,7 +50,6 @@ export class FollowComponent implements OnInit {
         this.ButtonFollow = 'Follow';
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
       });
     } else {
       this.flagService.flag(this.nodeNid, this.user.uid, 'follow').subscribe(response => {
@@ -60,7 +57,6 @@ export class FollowComponent implements OnInit {
         this.ButtonFollow = 'UnFollow';
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
       });
 
     }

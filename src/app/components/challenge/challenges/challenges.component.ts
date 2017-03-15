@@ -9,7 +9,6 @@ import { IChallenge } from '../../../models/challenge/challenge';
 })
 export class ChallengesComponent implements OnInit {
   challenges: IChallenge[] = [];
-  challengescounter = [];
   pageNumber = 0;
   allstatuses = [];
   statusesCount = {};
@@ -17,7 +16,6 @@ export class ChallengesComponent implements OnInit {
   currentStatusId = 0;
   hideloadmore = true;
   currentCount = 0;
-  challengeFollowCount = 0;
   constructor(
     private viewService: ViewService,
     private router: Router,
@@ -25,20 +23,14 @@ export class ChallengesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
-    console.log(this.currentCount)
-
-
   }
-
+  /* function to get challenges and count followers  */
   getChallenges() {
     var status_arg = [];
     var page_arg = [];
-
-
     if (this.currentStatusId != 0) {
       status_arg = ['status', this.currentStatusId];
       this.currentCount = this.statusesCount[this.currentStatusId];
@@ -47,41 +39,32 @@ export class ChallengesComponent implements OnInit {
     }
     if (this.pageNumber >= 0) {
       page_arg = ['page', this.pageNumber];
-
     }
     this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(data => {
       this.challenges = this.challenges.concat(data);
-      console.log(page_arg)
-
       this.loadMoreVisibilty();
       if (!this.currentCount) {
         this.currentCount = this.statusesCount['0'];
       }
       // count followers
       for (let challenge of this.challenges) {
-        console.log(challenge.nid);
         this.flagService.flagCount(challenge.nid, 'follow').subscribe(data => {
           Object.assign(challenge, data)
-          console.log(challenge)
-          console.log(data['count'])
-
+        }, err => {
         });
-
       }
 
     });
-
-
   }
+  /* end function to get challenges and count followers  */
 
-  // get more click
-    loadmore(){
-
+  /* function to get more click */
+  loadmore() {
     this.pageNumber++;
     this.getChallenges();
   }
-
-  // Get challenges status to render them in the component
+  /* end  function get more  */
+  /* function to Get challenges status to render them in the component */
   getStatuses() {
     this.viewService.getView('maker_taxonomy_category/14').subscribe(data => {
       let arr = [];
@@ -90,7 +73,6 @@ export class ChallengesComponent implements OnInit {
           arr.push(data[key]);
         }
       }
-      // console.log(arr);
       arr.unshift({ "tid": 0, "name": "All" });
       this.allstatuses = arr;
     }, err => {
@@ -98,28 +80,29 @@ export class ChallengesComponent implements OnInit {
     });
 
   }
+  /* end function get challenge status */
 
-  // get the count of challenges per status
+  /* function to get the count of challenges per status*/
   challengesCount() {
     this.viewService.getView('maker_count_api', []).subscribe(data => {
       this.statusesCount = data;
-      //console.log(this.statusesCount);
     });
   }
+  /* end function to get count of challenges*/
 
-  // click function on status
+  /* function to click function on status */
   SetCurrentStatus(event) {
     if (this.currentStatusId != event.target.id) {
       this.challenges = [];
-
     }
     this.currentStatusName = event.target.name;
     this.currentStatusId = event.target.id;
     this.pageNumber = 0;
     this.getChallenges();
   }
+  /* end function to click function  */
 
-  // control load more button
+  /* function to  control load more button*/
   loadMoreVisibilty() {
     // get the challenges array count
     var ch_arr_count = this.challenges.length;
@@ -128,10 +111,12 @@ export class ChallengesComponent implements OnInit {
     } else {
       this.hideloadmore = false;
     }
-
   }
+  /* end function to  control load more button */
+
+  /* function to navigate to challenge summary page */
   ShowChallengeDetails(nid) {
     this.router.navigate(['/challenges', nid]);
   }
-
+  /* end function to navigate to challenge summary page */
 }
