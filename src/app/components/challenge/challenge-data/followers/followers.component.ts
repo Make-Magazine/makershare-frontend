@@ -13,8 +13,6 @@ export class FollowersComponent implements OnInit {
   @Input() challenge;
   @Input() hideloadmorefollower;
   @Output() pageNumber = new EventEmitter<number>();
-  uids = [];
-  challengeNid;
   pagesFollower: number = 0;
   sort: ISorting = {
     sort_by: "",
@@ -24,12 +22,12 @@ export class FollowersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.followers);
-    
   }
+  /* function load more followers */
   loadMoreFollower() {
     this.pagesFollower++;
     this.pageNumber.emit(this.pagesFollower);
   }
+    /* end function load more followers */
 
 }
