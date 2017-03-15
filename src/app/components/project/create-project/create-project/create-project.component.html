@@ -25,9 +25,11 @@
     <div class="container">
       <div>
         <h1 *ngIf="created">Project Saved</h1>
-        <app-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" ></app-your-story>
-        <app-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'"></app-how-to>
-        <app-team [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'"></app-team>
+        <div *ngIf="ProjectLoaded">
+          <app-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" ></app-your-story>
+          <app-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'"></app-how-to>
+          <app-team [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'"></app-team>
+        </div>
       </div>
     </div><!-- End container -->
 

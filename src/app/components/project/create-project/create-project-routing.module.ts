@@ -3,10 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateProjectComponent } from './create-project/create-project.component';
 
 export const CreateProjectRoutes:Routes = [
-  {
-    path:'',
-    component:CreateProjectComponent,
-  }
+  { path:'',component:CreateProjectComponent},
+  { path:':nid',component:CreateProjectComponent}
 ]
 
 @NgModule({
