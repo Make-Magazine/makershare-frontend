@@ -15,7 +15,7 @@
             <div class="container">
               <ul class="list-unstyled">
                 <li><a (click)="currentTab = 'basic'" class="btn btn-light-grey btn-sharp active" id="basic-info">Basic Info</a></li>
-                <li><a (click)="currentTab = 'optional'" class="btn btn-light-grey btn-sharp" id="optional-info">Optional Info</a></li>
+                <li><a (click)="saveNext($event)" class="btn btn-light-grey btn-sharp" id="optional-info">Optional Info</a></li>
               </ul>
               <a (click)="saveNext($event)" class="btn btn-blue btn-sharp save-next">Save &amp; Next</a>
               <a href="" class="btn btn-light-grey btn-sharp skip">Skip</a>
