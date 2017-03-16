@@ -22,13 +22,15 @@ export class BookmarkComponent implements OnInit {
   ) { }
   @Input() nodeNid;
   @Input() user;
+  userId;
   currentuser;
   isBookmarked
 
   ngOnInit() {
+    this.userId = localStorage.getItem('user_id');
 
       /*bookmark start */
-      this.flagService.isFlagged(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(data => {
+      this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
@@ -40,13 +42,13 @@ export class BookmarkComponent implements OnInit {
   bookmarkThis(e: Event) {
     e.preventDefault();
     if (this.isBookmarked) {
-      this.flagService.unflag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
         this.isBookmarked = false;
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.user.uid, 'node_bookmark').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
         this.isBookmarked = true;
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});

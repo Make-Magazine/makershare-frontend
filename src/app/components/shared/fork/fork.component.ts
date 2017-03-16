@@ -14,6 +14,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class ForkComponent implements OnInit {
 @Input() nodeNid;
 @Input() user;// Current User Data
+userId;
 currentuser;
 isForked;
 constructor(private route: ActivatedRoute,
@@ -25,13 +26,14 @@ constructor(private route: ActivatedRoute,
    
   ) { }
   ngOnInit() {
+        this.userId = localStorage.getItem('user_id');
 
   }
 
     /* function fork */
   forkThis(e: Event) {
     e.preventDefault();
-      this.flagService.flag(this.nodeNid, this.user.uid, 'fork').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.userId, 'fork').subscribe(response => {
         this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
         this.router.navigate(['/profile']);
       }, err => {
