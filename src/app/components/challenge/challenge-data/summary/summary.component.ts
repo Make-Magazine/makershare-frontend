@@ -11,7 +11,7 @@ export class SummaryComponent implements OnInit {
   @Input() awards;
   @Input() projectsCount;
   @Input() hideLoadMore;
-
+  @Input() no;
   @Output() sortType = new EventEmitter<ISorting>();
   @Output() pageNumber = new EventEmitter<number>();
   ActionName: string;
@@ -28,6 +28,7 @@ export class SummaryComponent implements OnInit {
   }
   /* function to sort challenge Title A-z */
   sortAsc(sort: ISorting) {
+    this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title"
     this.sortType.emit(this.sort);
@@ -37,6 +38,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge Title Z-A */
   sortDesc(sort: string) {
+    this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "title"
     this.sortType.emit(this.sort);
@@ -46,8 +48,9 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge Recently */
   mostRecent(sort: string) {
+    this.pages = 0
     this.sort.sort_order = "DESC"
-    this.sort.sort_by = "created"
+    this.sort.sort_by = "createpageNumberd"
     this.sortType.emit(this.sort);
     this.ActionName = "Most Recent"
   }
@@ -55,6 +58,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge Oldest */
   oldest(sort: string) {
+    this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "created"
     this.sortType.emit(this.sort);
@@ -64,6 +68,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge MostLiked */
   mostLiked(sort: string) {
+    this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
     this.sortType.emit(this.sort);
@@ -74,6 +79,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge MostForked */
   mostForked(sort: string) {
+    this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
     this.sortType.emit(this.sort);
@@ -85,6 +91,7 @@ export class SummaryComponent implements OnInit {
   loadMoreProject() {
     this.pages++;
     this.pageNumber.emit(this.pages);
+    console.log(this.pages);
   }
   /* end function load more  */
 

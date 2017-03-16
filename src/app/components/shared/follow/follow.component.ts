@@ -21,11 +21,25 @@ export class FollowComponent implements OnInit {
   ) { }
   @Input() nodeNid;
   @Input() user;
+  @Output() countNumber = new EventEmitter<number>();
+  userId;
   currentuser;
   isFollowed;
   ButtonFollow;
+  countFollowers:number;
   ngOnInit() {
-    this.flagService.isFlagged(this.nodeNid, this.user.uid, 'follow').subscribe(data => {
+      this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
+        this.countFollowers=response['count'];
+              this.countNumber.emit(this.countFollowers);
+      console.log(this.countFollowers);
+
+      //  console.log(this.countFollowers)
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+      });
+        this.userId = localStorage.getItem('user_id');
+
+      this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
       this.isFollowed = data[0];
 
       /* initialize Button Follow*/
@@ -37,24 +51,31 @@ export class FollowComponent implements OnInit {
     }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       })
-
-
+    
   }
 
   /* function follow */
   followThis(e: Event) {
     e.preventDefault();
     if (this.isFollowed) {
-      this.flagService.unflag(this.nodeNid, this.user.uid, 'follow').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.userId, 'follow').subscribe(response => {
         this.isFollowed = false;
         this.ButtonFollow = 'Follow';
+        this.countFollowers--;
+              this.countNumber.emit(this.countFollowers);
+
+       // console.log(this.countFollowers);
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.user.uid, 'follow').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.userId, 'follow').subscribe(response => {
         this.isFollowed = true;
         this.ButtonFollow = 'UnFollow';
+        this.countFollowers++;
+              this.countNumber.emit(this.countFollowers);
+
+       // console.log(this.countFollowers['count']);
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
