@@ -1,9 +1,6 @@
 declare var ePub: any;
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-book',
@@ -18,11 +15,9 @@ export class BookComponent implements OnInit {
   epubFile;
 
   constructor(   
-    private route: ActivatedRoute,
-    private router: Router,
     private viewService: ViewService,
-    private sanitizer :DomSanitizer,
-    private http:Http,) {}
+    
+    ) {}
 
 @Input() link;
   ngOnInit() {
