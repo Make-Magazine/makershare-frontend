@@ -12,6 +12,7 @@ const ChallengeRouts: Routes = [
       { path: '', component: ChallengesComponent },
       { path: ':nid', loadChildren: 'app/components/challenge/challenge-data/challenge-data.module#ChallengeDataModule' },
       { path: 'enter-challenge', component: ChallengeProjectComponent },
+      { path: 'enter-challenge/:nid', component: ChallengeProjectComponent },
     ]
   },
 ];
