@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-learn',
@@ -13,7 +13,6 @@ export class LearnComponent implements OnInit {
  workshop;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
   ) { }
@@ -22,7 +21,6 @@ export class LearnComponent implements OnInit {
 
     // get workshop main page from a view
     this.viewService.getView('learn', []).subscribe(data => {
-      console.log(data);
       this.learns = data;
     }, err => {
 
@@ -30,7 +28,6 @@ export class LearnComponent implements OnInit {
   }
     WorkshopDetails(nid) {
     this.router.navigate(['/learn', nid]);
-    console.log(nid)
   }
 
 }

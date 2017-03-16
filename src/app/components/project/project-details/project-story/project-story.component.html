@@ -20,7 +20,7 @@
     <div class="feedback-group">
       <div class="feedback" *ngFor="let comment of comments; let i=index">
         <div class=" feed-user">
-          <img src="{{comment?.profile_photo}}" alt="" class="img-responsive pull-left">
+          <img src="{{comment?.default_profile_photo}}" alt="" class="img-responsive pull-left">
           <div class="pull-left name">
             <h5><a href="#">{{comment?.first_name}} {{comment?.last_name}}</a></h5>
             <p>{{comment?.nickname}}</p>
