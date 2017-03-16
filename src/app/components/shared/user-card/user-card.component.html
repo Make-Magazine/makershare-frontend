@@ -10,6 +10,7 @@
     </div>
     <div class="right col-sm-8">
       <h4 class="profile-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+      <h4 class="profile-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
       <div class="trophies">
         <i class="fa fa-lg fa-child"></i>
         <i class="fa fa-lg fa-certificate"></i>
