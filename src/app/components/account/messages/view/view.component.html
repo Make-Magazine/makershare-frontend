@@ -1,7 +1,8 @@
 <div class="container conversation-container" *ngIf="msg">
       <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
       <div class="delete-actions">
-        <a class="btn btn-transparent" (click) = "blockUser()">Block</a> - 
+        <a class="btn btn-transparent" (click) = "blockUser()">Block</a> -
+        <a class="btn btn-transparent" (click) = "unBlockUser()">UnBlock</a> - 
         <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
       </div>
       <h3 class="message-subject">{{msg.subject}}</h3>
@@ -15,7 +16,7 @@
                   </a>
                 </div>
                 <div class="media-body">
-                  <p class="sender"><a href="" >{{message?.first_name}} {{message?.last_name}}</a> </p>
+                  <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
                   <p class="timestamp">3 days ago</p>
                 </div>
               </div>

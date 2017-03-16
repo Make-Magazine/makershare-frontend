@@ -20,6 +20,7 @@ export class ViewComponent implements OnInit {
   userId: number;
   deleted;
   blockedUser;
+  unBlockedUser;
   messageForm: FormGroup;
   reply: Reply = {
     thread_id:0,
@@ -58,6 +59,7 @@ export class ViewComponent implements OnInit {
         }
       });
   }
+
    getCurrentUser() {
     this.userId = parseInt(localStorage.getItem('user_id'));
       this.userService.getUser(this.userId).subscribe(res => {
@@ -141,6 +143,12 @@ export class ViewComponent implements OnInit {
       this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data=>{
         this.blockedUser = data;
         console.log(this.blockedUser);
+      })
+    }
+    unBlockUser(){
+      this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data=>{
+        this.unBlockedUser = data;
+        console.log(this.unBlockedUser);
       })
     }
 }

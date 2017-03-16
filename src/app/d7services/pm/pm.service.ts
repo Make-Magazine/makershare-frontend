@@ -32,7 +32,7 @@ export class PmService {
   }
 
   unBlockUser(recipient: number): Observable<any> {
-    return this.mainService.delete(globals.endpoint + '/privatemsgblock?uid=' + recipient ).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.delete(globals.endpoint + '/privatemsgblock/' + recipient ).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   blockedUsers(): Observable<any> {
@@ -40,7 +40,7 @@ export class PmService {
   }
 
   updateSettings(data: any): Observable<any>{
-    return this.mainService.put(globals.endpoint + '/privatemsg/1', data).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.put(globals.endpoint + '/privatemsg/', data).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
 }
