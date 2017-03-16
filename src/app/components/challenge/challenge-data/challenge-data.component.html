@@ -23,7 +23,7 @@
 
               <ul class="list-unstyled challenge-actions pull-right">
                 <!-- Start Bookmark -->
-                 <app-bookmark [nodeNid]="challenge.nid" [user]="currentuser.user"></app-bookmark>
+                 <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
                 <!-- End Bookmark -->
                 <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
               </ul>
@@ -49,7 +49,7 @@
               </ul>
               <ul class="list-unstyled challenge-follow" *ngIf="challenge">
                    <!-- Start Follow -->
-                <app-follow [nodeNid]="challenge.nid" [user]="currentuser.user"></app-follow>
+                <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                    <!-- End Follow -->
                 <li><a (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
               </ul>
