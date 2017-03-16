@@ -15,6 +15,7 @@ interface comment {
 
 @Component({
   selector: 'app-comment',
+  styleUrls:['comment.css'],
   templateUrl: './comment.component.html',
 })
 export class CommentComponent implements OnInit {

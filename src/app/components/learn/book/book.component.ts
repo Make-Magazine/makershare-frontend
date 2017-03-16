@@ -28,8 +28,7 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.showBook();
   }
-
-  book: any
+   book: any
   showBook() {
       console.log(this.link);
       this.book = ePub(this.link, { fixedLayout: true, height: false,spreads: false });
