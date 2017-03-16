@@ -160,13 +160,13 @@
   
         <aside class="col-sm-4">
          
-            <div *ngFor="let leader of leaders">
-              <div *ngIf="leader" class="workshop-instructor">
+           
+              <div *ngIf="workshop" class="workshop-instructor">
                 <div class=" profile-container">
-                  <app-user-card [uid]="leader.uid"></app-user-card>
+                  <app-user-card [uid]="workshop.uid"></app-user-card>
                   </div><!-- End profile card -->
                 </div> <!-- End Profile-container -->
-           </div>  <!-- End Leader Ngfor -->
+           
             <ul class="list-unstyled content-list">
             Contents:
              <li><a pageScroll href="#intro">Introduction</a></li>
