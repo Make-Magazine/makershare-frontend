@@ -239,4 +239,9 @@ export class InboxComponent implements OnInit {
      this.router.navigate(['/view', thread_id]);
      //console.log(this.message)
   }
+  // turnOffMessages(){
+  //   this.pm.updateSettings().subscribe(data=>{
+      
+  //   })
+  // }
 }

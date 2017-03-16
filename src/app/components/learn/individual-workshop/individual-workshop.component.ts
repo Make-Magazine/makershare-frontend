@@ -19,14 +19,13 @@ export class IndividualWorkshopComponent implements OnInit {
   objects;
   lessons;
   nid;
-  videoURl;
   previewPdf;
+  uid;
   page: number = 1;
   links = [];
   sanitizethis;
   popupPreview;
   leaders = [];
-  check;
   currentuser;
   isLiked = true;
   isBookmarked;
@@ -47,8 +46,9 @@ export class IndividualWorkshopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getCurrentUser();
-    let userId = localStorage.getItem('user_id');
+    this.uid = localStorage.getItem('user_id');
+    
+
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
@@ -71,11 +71,6 @@ export class IndividualWorkshopComponent implements OnInit {
 
           this.viewService.getView('maker_profile_search_data', [['uid', this.workshop.uid],]).subscribe(res => {
             this.leaders = res;
-            if (res == '') {
-              this.check = false;
-            } else {
-              this.check = true;
-            }
           });
          });
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
@@ -108,10 +103,11 @@ export class IndividualWorkshopComponent implements OnInit {
         .subscribe(data => {
           this.lessons = data;
         });
+
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
    
-  });
+     });
 }
     
   preview(i) {
