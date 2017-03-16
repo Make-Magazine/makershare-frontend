@@ -58,17 +58,23 @@ export class BasicInfoComponent implements OnInit {
     console.log(value);
     this.profileService.getByCountry(value).subscribe(info => {
       console.log(info);
-        this.isCity = true;
-     
+
       this.postalCode = false;
-      this.zipCode = false;        
-      // postal_code & zip_code
+      this.zipCode = false;  
+      this.isCity = false    
+      // city, postal_code & zip_code
       for(var k in info.used_fields){
         if(info.used_fields[k] == "postal_code"){
-          this.postalCode = true;        
+          this.postalCode = true; 
+          this.basicForm.value.address.postal_code = '';
         }
         if(info.used_fields[k] == "zip_code"){
-          this.zipCode = true;        
+          this.zipCode = true;
+          this.basicForm.value.address.zip_code = '';
+        }  
+        if(info.used_fields[k] == "administrative_area"){       
+          this.isCity = true;
+          this.basicForm.value.address.city = '';
         }        
       }
       

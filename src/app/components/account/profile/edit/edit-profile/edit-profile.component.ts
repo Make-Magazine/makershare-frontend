@@ -95,6 +95,9 @@ export class EditProfileComponent implements OnInit {
       var answer = confirm("Warning: Should fill all basic info first or profile info won't be saved.\n Still want to go to optional?");
              if (!answer) {
                 event.preventDefault();
+            } else{
+              this.currentTab = 'optional';
+              $("#optional-info").click();
             }
     }
   }

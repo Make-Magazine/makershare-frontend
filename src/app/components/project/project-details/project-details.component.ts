@@ -52,6 +52,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getcurrentuser();
+    let userId = localStorage.getItem('user_id');
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['nid']; // (+) converts string 'id' to a number
 
