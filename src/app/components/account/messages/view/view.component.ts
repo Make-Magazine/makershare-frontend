@@ -39,12 +39,13 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        //console.log(this.msg.participants)
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
           this.userService.getUser(message.author).subscribe(res => {
             Object.assign(message, res);
+          console.log(message.user_photo)
+            
           })
           i++
         }
@@ -60,6 +61,7 @@ export class ViewComponent implements OnInit {
       this.pm.sendMessage(this.reply).subscribe(res => {
         var newComment = {
            thread_id: this.reply.thread_id,
+           photo: this.msg.user_photo,
            body: this.reply.body
         }
         console.log(newComment)
