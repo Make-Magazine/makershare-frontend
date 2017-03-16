@@ -8,8 +8,9 @@
           <div class="container">
             <div class="col-md-12">
               <ul class="list-unstyled workshop-actions pull-right">
+                 <app-like  [nodeNid]="workshop.nid" [user]="userId"></app-like>
                 <!--<div *ngIf="currentuser.user">
-                <app-like  [nodeNid]="workshop.nid" [user]="currentuser.user"></app-like>
+                <app-like  [nodeNid]="workshop.nid" [user]="userId"></app-like>
                 <app-bookmark  [nodeNid]="workshop.nid" [user]="currentuser.user"></app-bookmark>
                 </div>-->
                 <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>

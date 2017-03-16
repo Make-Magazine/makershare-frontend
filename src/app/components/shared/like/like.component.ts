@@ -27,7 +27,7 @@ export class LikeComponent implements OnInit {
         let userId = localStorage.getItem('user_id');
     console.log(userId);
       /*like start */
-      this.flagService.isFlagged(this.nodeNid, this.user.uid, 'like').subscribe(data => {
+      this.flagService.isFlagged(this.nodeNid, this.user, 'like').subscribe(data => {
         this.isLiked = data[0];
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
@@ -41,14 +41,14 @@ export class LikeComponent implements OnInit {
   likeThis(e: Event) {
     e.preventDefault();
     if (this.isLiked) {
-      this.flagService.unflag(this.nodeNid, this.user.uid, 'like').subscribe(response => {
+      this.flagService.unflag(this.nodeNid, this.user, 'like').subscribe(response => {
         this.isLiked = false;
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         console.log(err);
       });
     } else {
-      this.flagService.flag(this.nodeNid, this.user.uid, 'like').subscribe(response => {
+      this.flagService.flag(this.nodeNid, this.user, 'like').subscribe(response => {
         this.isLiked = true;
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});

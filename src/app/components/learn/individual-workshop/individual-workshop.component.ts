@@ -48,6 +48,8 @@ export class IndividualWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    let userId = localStorage.getItem('user_id');
+    console.log(userId);
     // setTimeout(1000)
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
@@ -83,7 +85,7 @@ export class IndividualWorkshopComponent implements OnInit {
           });
          });
       //  console.log(this.route.params);
-      this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
+      this.viewService.getView('individual-workshop-object1', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
            console.log(data);
@@ -117,8 +119,6 @@ export class IndividualWorkshopComponent implements OnInit {
         .subscribe(data => {
           this.lessons = data;
         });
-  
-    this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
     this.currentuser = data;
    
