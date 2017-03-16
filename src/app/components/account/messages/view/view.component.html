@@ -1,8 +1,8 @@
 <div class="container conversation-container" *ngIf="msg">
       <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
       <div class="delete-actions">
-        <a href="" class="btn btn-transparent">Block</a> - 
-        <a href="" class="btn btn-transparent">Delete</a>
+        <a class="btn btn-transparent" (click) = "blockUser()">Block</a> - 
+        <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
       </div>
       <h3 class="message-subject">{{msg.subject}}</h3>
         <ul class="list-unstyled conversation">
@@ -35,7 +35,7 @@
                           {{ formErrors.body }}
                         </div>
             <ul class="list-unstyled send-actions">
-              <li><a href="" class="btn btn-transparent">Cancel</a></li>
+              <li><button type="button" class="btn btn-transparent" (click)="cancel()">Cancel</button></li>
               <li><button  type="submit" class="btn btn-blue btn-sharp">Send</button></li>
             </ul>
           </div>

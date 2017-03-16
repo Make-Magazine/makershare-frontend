@@ -17,6 +17,9 @@ export class ViewComponent implements OnInit {
   user = [];
   messages = [];
   currentuser;
+  userId: number;
+  deleted;
+  blockedUser;
   messageForm: FormGroup;
   reply: Reply = {
     thread_id:0,
@@ -43,6 +46,7 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
+        console.log(this.msg)
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
@@ -55,13 +59,10 @@ export class ViewComponent implements OnInit {
       });
   }
    getCurrentUser() {
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
-      //console.log(this.currentuser.user.uid);
-      this.userService.getUser(this.currentuser.user.uid).subscribe(res => {
+    this.userId = parseInt(localStorage.getItem('user_id'));
+      this.userService.getUser(this.userId).subscribe(res => {
         Object.assign(this.user, res);
-          })
-    });
+          })    
   }
   onSubmit(e) {
     e.preventDefault();
@@ -78,7 +79,7 @@ export class ViewComponent implements OnInit {
            last_name: this.user['last_name'],
            body: this.reply.body
         }
-        console.log(newComment)
+        //console.log(newComment)
         this.messages.push(newComment);
       }, err => { });
     }
@@ -122,6 +123,26 @@ export class ViewComponent implements OnInit {
   previousUrl() {
      this._location.back();
   }
+  cancel(){
+    this.messageForm.reset();
+  }
+   deleteThread() {
+     console.log(this.msg.messages)
+     for (let mesg of this.msg.messages){
+        let i=0
+        this.pm.deleteMessage(mesg.mid).subscribe(data => {
+        this.deleted = data;
+        console.log(this.deleted);
+        i++
+      });
+     }
+    }
+    blockUser(){
+      this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data=>{
+        this.blockedUser = data;
+        console.log(this.blockedUser);
+      })
+    }
 }
 
  
