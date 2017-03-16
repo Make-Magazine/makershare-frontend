@@ -20,7 +20,6 @@
                 <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
               </div>
               <div class="clearfix"></div>
-
               <h2>{{workshop.workshop_title}}</h2>
             </div>
           </div><!-- End container -->
@@ -30,45 +29,40 @@
       <div class="container">
         <div class="region region-content col-sm-8">
           <div class="workshop-content">
-
             <div *ngIf="workshop">
               <div class="intro" id="intro">
                 <h4>Introduction</h4>
                 <div [innerHTML]="workshop?.brief_description"> </div>
-                <!--{{workshop.introductory_video}}-->
-                <div [innerHTML]="workshop?.introductory_video"></div>
-                <!--<iframe width="725" height="315" [src]="videoURl" frameborder="0" allowfullscreen></iframe>-->
-              </div><!-- End intro -->
+                 <div [innerHTML]="workshop?.introductory_video"></div>
+               </div><!-- End intro -->
              </div><!-- End of workshop ngIf -->
              
             <div *ngFor="let object of objects; let i=index">
-
               <!---FOR PDF CONTENT TYPE -->
               <div *ngIf="object.learning_content_type == 'PDF' ">
                 <div class="fun-fact" id="OB{{object?.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
                     <div class="media-left">
-                      <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer">
-                      <!--<iframe width="150" height="150" [src]="pdfURl" frameborder="0" ></iframe>-->
+                      <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer" height="166" width="295">
                        </div>
                         <div class="media-body">
-                        <p>
-                        <span><b>{{object.learning_content_type}}</b>  
+                         <p>
+                          <span><b>{{object.learning_content_type}}</b>  
                            <div *ngIf="object.pages" > Number of Pages: {{object.pages}} </div>
                            </span>
-                          </p>
-                      <div [innerHTML]="object.lesson_description"> </div>
+                             </p>
+                              <div [innerHTML]="object.lesson_description"> </div>
+                               </div>
+                               <ul class="list-unstyled recommended">
+                              <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                            <a href="">
+                          <div [innerHTML]="object.related_projects"> </div>
+                         </a>
+                      </ul>
                     </div>
-                    <ul class="list-unstyled recommended">
-                      <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                      <a href="">
-                        <div [innerHTML]="object.related_projects"> </div>
-                      </a>
-                    </ul>
-                  </div>
-                 </div>
-                </div> <!-- End  ngif of pdf object -->
+                   </div>
+                 </div> <!-- End  ngif of pdf object -->
             
               <!---FOR Video CONTENT TYPE -->
               <div *ngIf="object.learning_content_type == 'Video' ">
@@ -77,12 +71,17 @@
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
                     <div class="media-left" (click)="overlay(i)" data-toggle="modal" data-target="#previewer">
-                      <!--<img src="{{object.object_image}}" alt="" class="media-object" > -->
-                      <div [innerHTML]="object.videolink"></div>
-
-                      <!--<iframe width="150" height="150" [src]="videoLink" frameborder="0" ></iframe>-->
+                      <img *ngIf="object.videoImage" [src]="object.videoImage" alt="" class="media-object" height="166" width="295">
+                      <div *ngIf="object.videoPic"  class="youtube-pic">
+                        <img [src]="object.videoPic" alt="" class="media-object" height="166" width="295">
+                        <img class="play-image" src="./assets/images/video-icon.png" alt="">                        
+                      </div>
+                      
+                      <!--<img src ="assets/images/video-icon.png" alt="" class="media-object" position:"absolute">-->
+                      <!--<div [innerHTML]="object.videolink"></div>-->
+                      <!--<iframe width="150" height="150" [src]="videoImage" frameborder="0" ></iframe>-->
                     </div>
-                    <div class="media-body" (click)="overlay(i)" data-toggle="modal" data-target="#previewer">
+                    <div class="media-body">
                       <p>
                         <span><b>{{object.learning_content_type}}</b>  
                            <div [innerHTML]= "object.lesson_description"> </div>
@@ -107,7 +106,7 @@
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
                     <div class="media-left">
-                      <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer">
+                      <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer" height="166" width="295">
                     </div>
                     <div class="media-body">
                       <p>
