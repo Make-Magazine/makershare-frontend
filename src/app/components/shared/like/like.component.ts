@@ -13,6 +13,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class LikeComponent implements OnInit {
   @Input() nodeNid;
   @Input() user;
+  userId;
   currentuser;
   isLiked = false;
   constructor(private route: ActivatedRoute,
@@ -24,10 +25,9 @@ export class LikeComponent implements OnInit {
 
   ) { }
   ngOnInit() {
-        let userId = localStorage.getItem('user_id');
-    console.log(userId);
+    this.userId = localStorage.getItem('user_id');
       /*like start */
-      this.flagService.isFlagged(this.nodeNid, this.user, 'like').subscribe(data => {
+      this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
         this.isLiked = data[0];
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
