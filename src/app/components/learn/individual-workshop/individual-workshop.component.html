@@ -48,7 +48,8 @@
                        </div>
                         <div class="media-body">
                          <p>
-                          <span><b>{{object.learning_content_type}}</b>  
+                          <span><b>{{object.learning_content_type}}  ..  </b>  
+                           <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div *ngIf="object.pages" > Number of Pages: {{object.pages}} </div>
                            </span>
                              </p>
@@ -83,7 +84,8 @@
                     </div>
                     <div class="media-body">
                       <p>
-                        <span><b>{{object.learning_content_type}}</b>  
+                        <span><b>{{object.learning_content_type}}   .. </b>
+                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div [innerHTML]= "object.lesson_description"> </div>
                            <div *ngIf="object.minutes" > Number of minutes: {{object.minutes}} </div>
                              </span>
@@ -110,7 +112,8 @@
                     </div>
                     <div class="media-body">
                       <p>
-                        <span><b>{{object.learning_content_type}}</b>  
+                        <span><b>{{object.learning_content_type}}  ..  </b> 
+                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div *ngIf="object.chapter" > Number of Chapters: {{object.chapter}} </div>
                              </span>
                       </p>
