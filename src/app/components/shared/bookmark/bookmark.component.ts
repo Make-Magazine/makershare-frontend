@@ -33,7 +33,7 @@ export class BookmarkComponent implements OnInit {
       this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       })
       /*bookmark end*/
   }
@@ -45,13 +45,13 @@ export class BookmarkComponent implements OnInit {
       this.flagService.unflag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
         this.isBookmarked = false;
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     } else {
       this.flagService.flag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
         this.isBookmarked = true;
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     }
   }
