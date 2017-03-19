@@ -49,7 +49,7 @@ export class FollowComponent implements OnInit {
         this.ButtonFollow = 'UnFollow';
       }/* end else if  */
     }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       })
     
   }
@@ -66,7 +66,7 @@ export class FollowComponent implements OnInit {
 
        // console.log(this.countFollowers);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     } else {
       this.flagService.flag(this.nodeNid, this.userId, 'follow').subscribe(response => {
@@ -77,7 +77,7 @@ export class FollowComponent implements OnInit {
 
        // console.log(this.countFollowers['count']);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
 
     }
