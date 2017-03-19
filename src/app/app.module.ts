@@ -32,7 +32,6 @@ import { Auth } from './auth0/auth.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -59,7 +58,7 @@ import { Auth } from './auth0/auth.service';
     ProfileService,
     PmService,
     Auth,
-    NotificationBarService
+    NotificationBarService,
   ],
   bootstrap: [AppComponent]
 })

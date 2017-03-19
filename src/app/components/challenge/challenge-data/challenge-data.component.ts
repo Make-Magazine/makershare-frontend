@@ -235,7 +235,7 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
-    this.router.navigate(['/enter-challenge', nid]);
+    this.router.navigate(['challenges/enter-challenge', nid]);
   }
   /* end function to navigate to enter challenge */
 }

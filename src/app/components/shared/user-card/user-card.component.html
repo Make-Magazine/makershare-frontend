@@ -3,12 +3,14 @@
   <div class="profile-card">
     <div class="left col-sm-4">
       <div class="profile-pic">
-        <img src="{{card.default_profile_photo}}" alt="" class="img-responsive">
+        <img *ngIf="card.photo" src="{{card.photo}}" alt="" class="img-responsive">
+        <img *ngIf="!card.photo" src="{{card.default_photo}}" alt="" class="img-responsive">
       </div>
       <a href="#" class="btn btn-blue">Message</a>
     </div>
     <div class="right col-sm-8">
       <h4 class="profile-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+      <h4 class="profile-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
       <div class="trophies">
         <i class="fa fa-lg fa-child"></i>
         <i class="fa fa-lg fa-certificate"></i>

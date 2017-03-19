@@ -43,11 +43,11 @@ export class UserService {
   }
 
   logout(): Observable<any>{
-    return this.mainService.post(globals.endpoint + '/user/logout', null).map(response => response.json());
+    return this.mainService.post(globals.endpoint + '/user/logout').map(response => response.json());
   }
 
   getStatus(): Observable<any> {
-    return this.mainService.post('/api/system/connect', null).map(response => response.json());
+    return this.mainService.post('/api/system/connect').map(response => response.json());
   }
 
   isLogedIn(): Observable<any>{
