@@ -55,8 +55,13 @@ export class IndividualWorkshopComponent implements OnInit {
           this.workshop = data[0];
           if (this.workshop.introductory_video) {
            if (this.youtube_parser(this.workshop.introductory_video)) {
-            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:640px; height:274px;"></iframe>';
-            this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+            // this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:640px; height:274px;"></iframe>';
+            // this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+              this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
+               this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+              });
+
             }
             else if (this.vimeo_parser(this.workshop.introductory_video)) {
               // console.log(this.workshop.introductory_video)
@@ -76,11 +81,16 @@ export class IndividualWorkshopComponent implements OnInit {
           for (let object in this.objects) {
             if (this.objects[object].video && this.objects[object].video !== '') {
                if (this.youtube_parser(this.objects[object].video)) {
-                //  console.log (this.youtube_parser(this.objects[object].video))
-                this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
-                this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-                this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
+                // //  console.log (this.youtube_parser(this.objects[object].video))
+                // this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
+                // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+                // this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
               //  console.log(this.objects[object].videoImage)
+              this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.youtube_parser(this.objects[object].video);
+               this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+                this.objects[object].videoImage = data.thumbnail_url_with_play_button;
+                 });
               }
                else if (this.vimeo_parser(this.objects[object].video)) {
                 this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;

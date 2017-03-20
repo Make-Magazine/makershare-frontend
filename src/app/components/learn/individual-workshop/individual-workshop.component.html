@@ -48,7 +48,8 @@
                        </div>
                         <div class="media-body">
                          <p>
-                          <span><b>{{object.learning_content_type}}</b>  
+                          <span><b>{{object.learning_content_type}}  ..  </b>  
+                           <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div *ngIf="object.pages" > Number of Pages: {{object.pages}} </div>
                            </span>
                              </p>
@@ -72,10 +73,10 @@
                   <div class="media">
                     <div class="media-left" (click)="overlay(i)" data-toggle="modal" data-target="#previewer">
                       <img *ngIf="object.videoImage" [src]="object.videoImage" alt="" class="media-object" height="150" width="200">
-                      <div *ngIf="object.videoPic"  class="youtube-pic">
+                      <!--<div *ngIf="object.videoPic"  class="youtube-pic">
                         <img [src]="object.videoPic" alt="" class="media-object" height="150" width="200">
                         <img class="play-image" src="./assets/images/video-icon.png" alt="">                        
-                      </div>
+                      </div>-->
                       
                       <!--<img src ="assets/images/video-icon.png" alt="" class="media-object" position:"absolute">-->
                       <!--<div [innerHTML]="object.videolink"></div>-->
@@ -83,7 +84,8 @@
                     </div>
                     <div class="media-body">
                       <p>
-                        <span><b>{{object.learning_content_type}}</b>  
+                        <span><b>{{object.learning_content_type}}   .. </b>
+                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div [innerHTML]= "object.lesson_description"> </div>
                            <div *ngIf="object.minutes" > Number of minutes: {{object.minutes}} </div>
                              </span>
@@ -110,7 +112,8 @@
                     </div>
                     <div class="media-body">
                       <p>
-                        <span><b>{{object.learning_content_type}}</b>  
+                        <span><b>{{object.learning_content_type}}  ..  </b> 
+                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div *ngIf="object.chapter" > Number of Chapters: {{object.chapter}} </div>
                              </span>
                       </p>
@@ -140,13 +143,13 @@
                          </div>
                           <div class="media-body">
                           <p> {{lesson.book_title}}</p>
-                          <a href="">
+                          <a href="{{lesson.o_reilly}}">
                           <p> {{lesson.o_reilly}}</p>
                           </a>
-                          <a href="">
+                          <a href="{{lesson.barnes_noble}}">
                           <p> {{lesson.barnes_noble}} </p>
                           </a>
-                           <a href="">
+                           <a href="{{lesson.amazon}}">
                          <p> {{lesson.amazon}}</p>
                        </a>
                      </div>

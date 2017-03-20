@@ -39,7 +39,7 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
 
     this.route.queryParams.subscribe(params => {
-      if (params["showcase"]) {
+      if (params && params["showcase"]) {
         this.projectId = params["projectId"];
         this.showcase = JSON.parse(params["showcase"]);
         this.projectIndex = params["projectIndex"];
@@ -54,7 +54,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.getcurrentuser();
     let userId = localStorage.getItem('user_id');
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['nid']; // (+) converts string 'id' to a number
+    this.id = +params['nid']; // (+) converts string 'id' to a number
 
       // dispatch action to load the details here-solve no load issue.
 
@@ -65,8 +65,7 @@ export class ProjectDetailsComponent implements OnInit {
         .subscribe(data => {
           this.project = data;
           this.projectDetails = data;
-          this.projectDetails.nid = this.route.params['value'].nid;
-          console.log(this.project.nid)
+          this.projectDetails.nid = this.id;
         });
       this.currentuser = Number(localStorage.getItem('user_id'));
     });

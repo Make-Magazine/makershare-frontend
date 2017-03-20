@@ -34,10 +34,10 @@ constructor(private route: ActivatedRoute,
   forkThis(e: Event) {
     e.preventDefault();
       this.flagService.flag(this.nodeNid, this.userId, 'fork').subscribe(response => {
-        this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
+        //this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
         this.router.navigate(['/profile']);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
   }
   /* end function fork */

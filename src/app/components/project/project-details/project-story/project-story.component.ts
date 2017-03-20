@@ -42,16 +42,20 @@ export class ProjectStoryComponent implements OnInit {
     this.buildForm();
     var i = 0;
     // var source = Observable.create(observer => {
-      for (let maker of this.project.field_collaborators) {
-        // observer.next(
-          this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
-            this.collabs[i] = {};
-            this.collabs[i] = data[0];
-            // console.log(this.collabs[i])
-            i++;
-          })
-          // )
+      if(this.project.field_collaborators){
+        this.project.field_collaborators.forEach((maker,i)=>{
+
+          // observer.next(
+            this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
+              console.log(data)
+              this.collabs[i] = {};
+              this.collabs[i] = data[0];
+              // console.log(this.collabs[i])
+            })
+            // )
+        });
       }
+      
       // observer.onCompleted();
 
     // }
