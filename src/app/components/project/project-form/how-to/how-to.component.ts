@@ -3,14 +3,14 @@ import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, F
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
-import { Project } from '../../../../models/project/create-project/project';
-import { TaxonomyTerm } from '../../../../models/project/create-project/taxonomy-term';
-import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/create-project/field_collection_item';
-import { FileEntity } from '../../../../models/project/create-project/file_entity';
+import { Project } from '../../../../models/project/project-form/project';
+import { TaxonomyTerm } from '../../../../models/project/project-form/taxonomy-term';
+import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
+import { FileEntity } from '../../../../models/project/project-form/file_entity';
 import { Observable } from 'rxjs/Observable'
 
 @Component({
-  selector: 'app-how-to',
+  selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
    styles : [`
       .tools textarea {max-width:100%;resize:none;}

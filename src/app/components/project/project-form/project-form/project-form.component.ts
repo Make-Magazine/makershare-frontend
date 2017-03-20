@@ -4,9 +4,9 @@ import { NodeService } from '../../../../d7services/node/node.service';
 import { FileService } from '../../../../d7services/file/file.service';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service';
-import { Project } from '../../../../models/project/create-project/project';
-import { FileEntity } from '../../../../models/project/create-project/file_entity';
-import { field_file_reference } from '../../../../models/project/create-project/field_file_reference';
+import { Project } from '../../../../models/project/project-form/project';
+import { FileEntity } from '../../../../models/project/project-form/file_entity';
+import { field_file_reference } from '../../../../models/project/project-form/field_file_reference';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { Router,Params,ActivatedRoute } from '@angular/router';
@@ -14,8 +14,8 @@ import { UserService } from '../../../../d7services/user/user.service'
 import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/create-project/field_collection_item';
 
 @Component({
-  selector: 'app-create-project',
-  templateUrl: './create-project.component.html',
+  selector: 'app-project-form',
+  templateUrl: './project-form.component.html',
 })
 
 /**
@@ -23,7 +23,7 @@ import { field_collection_item_member,field_collection_item_tool,field_collectio
  * this component is used to managing the project like editing or creating new projects
  * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :)
  */
-export class CreateProjectComponent implements OnInit {
+export class ProjectFormComponent implements OnInit {
   /**
    * this variables are used to navigating or static project fields
    * also contain the values what will be printed in the form 

@@ -3,12 +3,12 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
-import { Project } from '../../../../models/project/create-project/project';
-import { field_collection_item_member }  from '../../../../models/project/create-project/field_collection_item';
+import { Project } from '../../../../models/project/project-form/project';
+import { field_collection_item_member }  from '../../../../models/project/project-form/field_collection_item';
 import { Observable } from 'rxjs/Observable'
 
 @Component({
-  selector: 'app-team',
+  selector: 'app-project-form-team',
   templateUrl: './team.component.html',
 })
 export class TeamComponent implements OnInit {
