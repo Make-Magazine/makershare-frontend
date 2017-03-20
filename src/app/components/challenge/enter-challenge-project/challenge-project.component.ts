@@ -23,7 +23,7 @@ export class ChallengeProjectComponent implements OnInit {
   userId: number;
   userName: string;
   nid: number;
-  enterStatus=true;
+  enterStatus = true;
 
   challangeData: IChallengeData = {
     title: "",
@@ -63,7 +63,7 @@ export class ChallengeProjectComponent implements OnInit {
     private viewService: ViewService,
     private router: Router,
     private flagService: FlagService, private mainService: MainService,
-        private notificationBarService: NotificationBarService,
+    private notificationBarService: NotificationBarService,
 
   ) { }
   ngOnInit() {
@@ -106,7 +106,7 @@ export class ChallengeProjectComponent implements OnInit {
 
   onCancel(event: any) {
     console.log("cancel");
-    this.router.navigate(['/challenges/'+this.nid]);
+    this.router.navigate(['/challenges/' + this.nid]);
   }
   onSubmit(event: any) {
 
@@ -118,6 +118,11 @@ export class ChallengeProjectComponent implements OnInit {
 
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
       console.log(res);
+
+      //this.router.navigate(['challenges/', this.challangeData.nid]);
+
+      //   this.notificationBarService.create({ message: 'You have submitted [project name] in the [Challenge Name].', type: NotificationType.Success});
+
     }, err => {
       console.log(err);
     });
@@ -135,22 +140,22 @@ export class ChallengeProjectComponent implements OnInit {
   setDayLeft() {
 
   }
-  
-/* function cheack user allowe to enter challenge */
 
-cheackenter(){
-      var nid = this.route.snapshot.params['nid'];
-      this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status',nid).subscribe(data => {
+  /* function cheack user allowe to enter challenge */
+
+  cheackenter() {
+    var nid = this.route.snapshot.params['nid'];
+    this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status', nid).subscribe(data => {
       this.enterStatus = data.status;
-     if(this.enterStatus==false){
-           this.router.navigate(['/challenges/'+this.nid]);
+      if (this.enterStatus == false) {
+        this.router.navigate(['/challenges/' + this.nid]);
 
-     }
+      }
       console.log(data);
     }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
-}
-/* end function cheack user allowe to enter challenge */
+  }
+  /* end function cheack user allowe to enter challenge */
 }
