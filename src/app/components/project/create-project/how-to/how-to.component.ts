@@ -20,18 +20,6 @@ import { Observable } from 'rxjs/Observable'
 
 export class HowToComponent implements OnInit {
 
-// search = (text$: Observable<string>) => 
-//     text$
-//       .debounceTime(200)
-//       .distinctUntilChanged()
-//       .map(term => {
-//         if(term.length < 2){
-//           return [];
-//         } else{
-//           return ["awdawd","adwadwwwwd"];
-//         }
-//       });
-
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
@@ -50,6 +38,37 @@ export class HowToComponent implements OnInit {
   Difficulties:TaxonomyTerm[];
   resources_files:FileEntity[] = [];
   ResourceLabels:TaxonomyTerm[];
+  searchFailed = {
+    tool:false,
+    part:false,
+    material:false
+  }
+
+  search = (text$: Observable<string>) =>{
+    let control = text$['source']['sourceObj'].classList[0];
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed[control] = false)
+      .switchMap((term) => 
+        {
+          if(term.length > 1){
+            return this.viewService.getView('api-project-tools-materials-parts-list',[['type', control],['name',term]])
+            .map(result => {
+              if(result.length == 0){
+                this.searchFailed[control] = true;
+              }
+              return result;
+            })
+          }
+          return [];
+        }
+      )
+  };
+        
+  test(event){
+    console.log(event);
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -74,22 +93,8 @@ export class HowToComponent implements OnInit {
     this.buildForm();
   }
 
-  ToolMaterialPart(ControlName, index, value){
-    if(this.ToolsMaterialsParts[ControlName]){
-      this.ToolsMaterialsParts[ControlName][index] = [];
-    }else{
-      this.ToolsMaterialsParts[ControlName] = [];
-    }
-    if(value.length > 1){
-      this.viewService.getView('api-project-tools-materials-parts-list',[['type', ControlName],['name',value]]).subscribe(data => {
-        this.ToolsMaterialsParts[ControlName][index] = data;
-      });
-    }
-  }
-
   SetToolMaterialPart(arrayelementname,ControlName,value,index){
     let name_with_id = value.name+' ('+value.nid+')';
-    this.ToolsMaterialsParts[arrayelementname][index] = [];
     const control =  this.HowToForm.controls[ControlName]['controls'][index];
     control.controls['field_'+arrayelementname+'_name'].setValue(name_with_id);
     var url:URL;

@@ -5,6 +5,7 @@ import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
 import { Project } from '../../../../models/project/create-project/project';
 import { field_collection_item_member }  from '../../../../models/project/create-project/field_collection_item';
+import { Observable } from 'rxjs/Observable'
 
 @Component({
   selector: 'app-team',
@@ -15,15 +16,38 @@ export class TeamComponent implements OnInit {
   @Input('FormPrintableValues') FormPrintableValues;
 
   TeamForm: FormGroup;
-  TeamUsers = [];
   UsersDetails = [];
   SelectedUser = [];
+  searchFailed = false;
 
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
     private userService:UserService,
   ) {}
+
+
+  search = (text$: Observable<string>) =>{
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed = false)
+      .switchMap((term) => 
+        {
+          if(term.length > 1){
+            return this.viewService.getView('maker_profile_search_data',[['search', term]])
+            .map(result => {
+              if(result.length == 0){
+                this.searchFailed = true;
+              }
+              return result;
+            })
+          }
+          return [];
+        }
+      )
+  };
+
   ngOnInit() {
     this.buildForm();
   }
@@ -38,7 +62,6 @@ export class TeamComponent implements OnInit {
       this.SetMember(id,index);
     });
     this.TeamForm.valueChanges.subscribe(data => {
-      this.TeamUsers = [];
       this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
     });
     this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
@@ -57,7 +80,6 @@ export class TeamComponent implements OnInit {
   }
 
   SetMember(uid,index){
-    this.TeamUsers[index] = [];
     this.UsersDetails[index] = [];
     const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
     this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
@@ -79,29 +101,7 @@ export class TeamComponent implements OnInit {
       });
     });
   }
-  RefreshUsers(index,value){
-    this.TeamUsers[index] = [];
-    if(value.length > 1){
-      this.viewService.getView('maker_profile_search_data',[['search', value]]).subscribe(data => {
-        this.TeamUsers[index] = data;
-        var TempUsers = [];
-        for(let index in data){
-          var found = false;
-          let element = data[index]; 
-          this.SelectedUser.forEach(addeduser => {
-            if(addeduser.uid === element.uid){
-              found = true;
-              return;
-            }
-          });
-           if (!found){
-             TempUsers.push(element);
-           }
-        }
-        this.TeamUsers[index] = TempUsers;
-      });
-    }
-  }
+  
   InitRow(ControlName,index,data?) {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
@@ -110,6 +110,7 @@ export class TeamComponent implements OnInit {
       'uid': [, Validators.required],
     });
   }
+  
   SortElements(ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
     var NewUsersDetails = [];
