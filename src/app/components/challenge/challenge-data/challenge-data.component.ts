@@ -33,11 +33,13 @@ export class ChallengeDataComponent implements OnInit {
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
+  enterStatus=true;
  page_arg = [];
  @Input() countFoll;
+ @Input() sortType: ISorting;
+@Input() pageNo: number;
+  @Output() submitStatus = new EventEmitter<boolean>();
 
-  @Input() sortType: ISorting;
-  @Input() pageNo: number;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -63,6 +65,8 @@ export class ChallengeDataComponent implements OnInit {
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
+    this.cheackenter();
+
     this.getChallengeFollowers();
     this.getProjects();
     this.getCurrentUser();
@@ -238,6 +242,22 @@ export class ChallengeDataComponent implements OnInit {
     this.router.navigate(['challenges/enter-challenge', nid]);
   }
   /* end function to navigate to enter challenge */
+/* function cheack user allowe to enter challenge */
+
+cheackenter(){
+      var nid = this.route.snapshot.params['nid'];
+      this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status',nid).subscribe(data => {
+      this.enterStatus = data.status;
+      this.submitStatus.emit(this.enterStatus);
+
+      console.log(data);
+    }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+
+    });
+}
+/* end function cheack user allowe to enter challenge */
+
 }
 
 
