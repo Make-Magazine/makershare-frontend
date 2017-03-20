@@ -25,8 +25,6 @@ export class InboxComponent implements OnInit {
   num: any;
   num2: any;
   num3: any;
-  dateObj;
-  currentDate;
   anothUser: any;
   author;
   sender = null;
@@ -156,47 +154,25 @@ export class InboxComponent implements OnInit {
           msg_arr.push(this.messages[key]);
         }
         this.msg = msg_arr
-        // this.dateObj = new Date(this.msg[key].last_updated * 1000);
-        // this.currentDate = new Date();
-        // this.msg[key].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
       }
-      for (let message of this.messages) {
-        console.log(message)
-         let i = 0
-         this.pm.getMessage(this.message.thread_id).subscribe(res => {
-          Object.assign(message, res);
-          
-          if (this.currentuser.user.uid === this.message.messages[0].author) {
-            this.user.getUser(this.currentuser.user.uid).subscribe(res => {
-              this.sender = res;
-              //console.log(this.sender)
-            })
-          } else if(this.currentuser.user.uid != this.message.messages[0].author) {
-            this.user.getUser(this.message.messages[0].author).subscribe(res => {
-              this.reciver = res;
-              //console.log(this.reciver)
-            })
-          }
+      //console.log(this.msg)
+      for (let message of this.msg) {
+        this.pm.getMessage(message.thread_id).subscribe(data => {
+          Object.assign(message, data);
+          console.log(message)
+          // if (this.currentuser.user.uid === this.message.messages[0].author) {
+          //   this.user.getUser(this.currentuser.user.uid).subscribe(res => {
+          //     this.sender = res;
+          //     //console.log(this.sender)
+          //   })
+          // } else if(this.currentuser.user.uid != this.message.messages[0].author) {
+          //   this.user.getUser(this.message.messages[0].author).subscribe(res => {
+          //     this.reciver = res;
+          //     //console.log(this.reciver)
+          //   })
+          // }
         })
-         i++
       }
-      // for (var _i = 0; _i < this.msg.length; _i++) {
-      //   this.num = this.msg[_i];
-      //   this.pm.getMessage(this.num.thread_id).subscribe(data => {
-      //     this.message = data;
-      //     if (this.currentuser.user.uid === this.message.messages[0].author) {
-      //       this.user.getUser(this.currentuser.user.uid).subscribe(res => {
-      //         this.sender = res;
-      //         //console.log(this.sender)
-      //       })
-      //     } else if(this.currentuser.user.uid != this.message.messages[0].author) {
-      //       this.user.getUser(this.message.messages[0].author).subscribe(res => {
-      //         this.reciver = res;
-      //         //console.log(this.reciver)
-      //       })
-      //     }
-      //   })
-      // }
     })
   }
   
