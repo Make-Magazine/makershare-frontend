@@ -106,7 +106,7 @@ export class ChallengeProjectComponent implements OnInit {
 
   onCancel(event: any) {
     console.log("cancel");
-    this.router.navigate(['/challenges']);
+    this.router.navigate(['/challenges/'+this.nid]);
   }
   onSubmit(event: any) {
 
@@ -142,7 +142,10 @@ cheackenter(){
       var nid = this.route.snapshot.params['nid'];
       this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status',nid).subscribe(data => {
       this.enterStatus = data.status;
-     
+     if(this.enterStatus==false){
+           this.router.navigate(['/challenges/'+this.nid]);
+
+     }
       console.log(data);
     }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
