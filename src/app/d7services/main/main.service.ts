@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
 import { CookieService } from 'angular2-cookie/core';
 import * as globals from '../globals';
@@ -9,62 +9,42 @@ import * as globals from '../globals';
 export class MainService {
 
   private serviceURL: string = globals.domain;
+  constructor(private http: Http, private cookieService: CookieService) {   }
 
-  constructor(private http: Http, private cookieService: CookieService) { }
+
+  GetOptions(){
+    let headers = new Headers();
+    headers.set('X-CSRF-Token', this.getToken());
+    headers.set('Content-Type', 'application/json');
+    headers.set('Accept', 'application/json');
+    let options = new RequestOptions();
+    options.headers = headers;
+    options.withCredentials = true;
+    return options;
+  }
 
  	getURL(url: string): string {
-
  		return this.serviceURL + url;
  	}
 
-  getOptions(options: RequestOptionsArgs): RequestOptionsArgs {
-
-    var headers: Headers = new Headers({
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    });
-
-    var token = this.getToken();
-    var session = this.getSession();
-    if(session && token){
-        headers.append('Cookie', session);
-        headers.append('X-CSRF-Token', token);
-    }
-
-    var basicOptions = {withCredentials: true, headers: headers};
-    if(options){
-      return Object.assign(basicOptions, options);
-    }
- 		return basicOptions;
- 	}
-
-
-  get(endpoint: string, options?: RequestOptionsArgs): Observable<Response>{
-
+  get(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	let op = this.getOptions(options);
-  	return this.http.get(url, op).timeout(10000);
+  	return this.http.get(url,this.GetOptions()).timeout(10000);
   }
 
-  post(endpoint: string, body?: any, options?: RequestOptionsArgs): Observable<Response>{
-
+  post(endpoint: string, body?: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	let op = this.getOptions(options);
-  	return this.http.post(url, body, op).timeout(10000);
+  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(10000);
   }
 
-  put(endpoint: string, body: any, options?: RequestOptionsArgs): Observable<Response>{
-
+  put(endpoint: string, body: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	let op = this.getOptions(options);
-  	return this.http.put(url, body, op).timeout(10000);
+  	return this.http.put(url, body,this.GetOptions()).timeout(10000);
   }
 
-  delete(endpoint: string, options?: RequestOptionsArgs): Observable<Response>{
-
+  delete(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	let op = this.getOptions(options);
-  	return this.http.delete(url, op).timeout(10000);
+  	return this.http.delete(url,this.GetOptions()).timeout(10000);
   }
 
   saveCookies(token: string, session_name: string, sessid: string){

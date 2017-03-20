@@ -12,13 +12,13 @@ export class ViewService {
     promisehandleError: any;
 headers:Headers;
   constructor(private mainService: MainService , private http: Http) {
-    this.buildHeaders();
+    // this.buildHeaders();
   
    }
 
-public buildHeaders() {
-    return this.mainService.getOptions(Option);
-}
+// public buildHeaders() {
+//     return this.mainService.getOptions(Option);
+// }
 
  
 
@@ -41,27 +41,4 @@ getCountProjectByID(viewName: string , id:string): Observable<any>{
    // console.log(string_args);
     return this.mainService.get(globals.endpoint + '/' + viewName + '/'+id).map(res => res.json()).catch(err => Observable.throw(err));
   }
-
- 
-add(url: string, obj: any): Promise<any> {
-        return this.postRequestData(url, obj);
-}
-
-private postRequestData(url: string, data: any): Promise<any> {
-        
-
-        return (<any>this.http
-            .post(globals.domain + globals.endpoint + '/'+ url  , JSON.stringify(data), this.buildHeaders())) 
-            .toPromise()
-            .then((res: Response) => {
-                if (!res.json()) {
-                    
-                    return res.json();
-                }
-                return res.json();
-            })
-            .catch(this.promisehandleError);
-    }
-
-
 }

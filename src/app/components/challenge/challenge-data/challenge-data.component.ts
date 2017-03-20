@@ -33,7 +33,8 @@ export class ChallengeDataComponent implements OnInit {
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
-
+ page_arg = [];
+ @Input() countFoll;
 
   @Input() sortType: ISorting;
   @Input() pageNo: number;
@@ -158,9 +159,9 @@ export class ChallengeDataComponent implements OnInit {
     /*cheack display_entries */
     //challenge entries projects
     var sort: string;
-    var page_arg = [];
+    //  this.page_arg = [];
     if (this.pageNo >= 0) {
-      page_arg = ['page', this.pageNo];
+      this.page_arg = ['page', this.pageNo];
     }
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_entries', [['nid', nid['nid']], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
@@ -176,8 +177,12 @@ export class ChallengeDataComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
-    if (this.countProjects == this.projects.length) {
+   // this.getSortType(event);
+   if (this.countProjects == this.projects.length) {
       this.hideloadmoreproject = true;
+    
+     // console.log(this.projects.length);
+    //console.log(this.countProjects);
     }
   }
   /* END FUNCTION loadMoreVisibilty */
@@ -187,18 +192,26 @@ export class ChallengeDataComponent implements OnInit {
     this.sortData = event;
     this.sort_by = this.sortData.sort_by;
     this.sort_order = this.sortData.sort_order;
-    this.projects = [];
+    this.projects=[];
+     this.pageNo=0;
     this.getProjects();
+     this.hideloadmoreproject = false;
+    this.loadMoreVisibilty();
+    console.log(this.projects);
+
   }
   /* end function sort */
 
   /* function to initialize page arg for loadmore for projects to send to api  */
   getPageNumber(event: any) {
     this.pageNo = event
+   // console.log(this.pageNo);
     this.getProjects();
   }
   /* end function PN Projetcs */
-
+  followersCounter(count){
+    this.no_of_followers = count;
+  }
   /* function to initialize page arg for loadmore for followers to send to api  */
   getPageNumberFollowers(event: any) {
     this.pageNo = event
@@ -222,7 +235,7 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
-    this.router.navigate(['/enter-challenge', nid]);
+    this.router.navigate(['challenges/enter-challenge', nid]);
   }
   /* end function to navigate to enter challenge */
 }

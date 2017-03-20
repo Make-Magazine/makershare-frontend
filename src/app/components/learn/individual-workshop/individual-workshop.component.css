@@ -1,0 +1,10 @@
+.youtube-pic {
+  position: relative;
+}
+
+.play-image {
+    width: 55px;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+}
