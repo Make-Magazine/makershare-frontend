@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service'
-import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/create-project/field_collection_item';
+import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
 
 @Component({
   selector: 'app-project-form',
