@@ -4,8 +4,8 @@ import { CustomValidators } from 'ng2-validation';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileService } from '../../../../d7services/file/file.service';
 import { ProjectCategory } from '../../../../models/project/project-category';
-import { FileEntity } from '../../../../models/project/create-project/file_entity';
-import { Project } from '../../../../models/project/create-project/project';
+import { FileEntity } from '../../../../models/project/project-form/file_entity';
+import { Project } from '../../../../models/project/project-form/project';
 
 @Component({
   selector: 'app-project-form-your-story',
