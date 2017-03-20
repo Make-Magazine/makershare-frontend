@@ -2224,6 +2224,34 @@ footer {
   footer .socials {
     margin-top: 30px; }
 
+
+/* Auth0 Forms */
+.auth0-lock-widget-container .auth0-lock-input-location{
+  width: 33.3%;
+  float: left;
+
+}
+.auth0-lock-widget-container .auth0-lock-input-lastName:after {
+    content: "Birthdate";
+    color: #aba9a9;
+    font-size: 14px;
+    padding: 0 5px;
+    font-family: inherit;
+    display: block;
+    margin-top: 10px;
+}
+
+.auth0-lock-widget-container .auth0-lock-input-lastName{
+    margin-bottom: 5px !important;
+}
+
+.auth0-lock-widget-container .auth0-lock-input-year,
+.auth0-lock-widget-container .auth0-lock-input-month,
+.auth0-lock-widget-container .auth0-lock-input-day{
+  display: block;
+  float: left;
+  width: 33.3%;
+}
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   /* .profile-sidebar{
   	position: static;
