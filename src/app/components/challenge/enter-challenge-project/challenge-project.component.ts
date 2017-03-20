@@ -8,6 +8,7 @@ import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import { MainService } from '../../../d7services/main/main.service';
 import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class ChallengeProjectComponent implements OnInit {
   userId: number;
   userName: string;
   nid: number;
+  enterStatus=true;
+
   challangeData: IChallengeData = {
     title: "",
     cover_image: "",
@@ -59,10 +62,12 @@ export class ChallengeProjectComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
-    private flagService: FlagService, private mainService: MainService
+    private flagService: FlagService, private mainService: MainService,
+        private notificationBarService: NotificationBarService,
+
   ) { }
   ngOnInit() {
-
+    this.cheackenter();
     this.nid = this.route.snapshot.params['nid'];
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.userName = localStorage.getItem('user_name');
@@ -74,7 +79,7 @@ export class ChallengeProjectComponent implements OnInit {
   getAllProject() {
 
     this.route.params
-      .switchMap((nid) => this.viewService.getView('profile_projects_grid', [['uid', this.userId], ['uid1', this.userName]]))
+      .switchMap((nid) => this.viewService.getView('enter-challenge-projects-list', [['uid', this.userId], ['uid1', this.userName]]))
       .subscribe(data => {
         this.projects = data;
         console.log(this.projects);
@@ -130,4 +135,19 @@ export class ChallengeProjectComponent implements OnInit {
   setDayLeft() {
 
   }
+  
+/* function cheack user allowe to enter challenge */
+
+cheackenter(){
+      var nid = this.route.snapshot.params['nid'];
+      this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status',nid).subscribe(data => {
+      this.enterStatus = data.status;
+     
+      console.log(data);
+    }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+
+    });
+}
+/* end function cheack user allowe to enter challenge */
 }

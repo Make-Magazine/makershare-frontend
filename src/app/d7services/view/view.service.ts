@@ -34,6 +34,14 @@ headers:Headers;
     return this.mainService.get(globals.endpoint + '/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+/* function cheack user allowe to enter challenge */
+ cheackEnterStatus(viewName: string,nid :number ): Observable<any>{
+    
+    return this.mainService.post(globals.endpoint + '/'+viewName, {"challenge_id": nid}).map(res => res.json())
+   
+}
+
+/* end function cheack user allowe to enter challenge */
 
 getCountProjectByID(viewName: string , id:string): Observable<any>{
     var string_args = '';
