@@ -227,12 +227,16 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to get count projects in challenge */
   getCountProject() {
-    var nid;
+   // var nid;
     var nid = this.route.snapshot.params['nid'];
     this.route.params
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
-        this.countProjects = data[0];
+       if(data==null){
+         this.countProjects=0
+       }else{
+        this.countProjects = data;
+       }        
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
