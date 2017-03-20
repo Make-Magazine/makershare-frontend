@@ -46,16 +46,12 @@ export class IndividualWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.uid = localStorage.getItem('user_id');
-<<<<<<< HEAD
     // this.getCurrentUser();
-    this.getCurrentUser();
     let userId = localStorage.getItem('user_id');
     console.log(userId);
     // setTimeout(1000)
-=======
     
 
->>>>>>> 413a2df39a8b157702da15b8c12b95092b23bda0
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
