@@ -5,7 +5,8 @@ const ProjectRouts: Routes = [
   {
     path: '',
     children: [
-      { path: 'create', loadChildren: 'app/components/project/create-project/create-project.module#CreateProjectModule' },
+      { path: 'create', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule' },
+      { path: 'edit', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule' },
       { path: 'view/:nid', loadChildren: 'app/components/project/project-details/project-details.module#ProjectDetailsModule' },
     ]
   },
