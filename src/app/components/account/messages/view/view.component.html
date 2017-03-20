@@ -1,8 +1,8 @@
 <div class="container conversation-container" *ngIf="msg">
       <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
       <div class="delete-actions">
-        <a class="btn btn-transparent" (click) = "blockUser()">Block</a> -
-        <a class="btn btn-transparent" (click) = "unBlockUser()">UnBlock</a> - 
+        <a class="btn btn-transparent" *ngIf="!blockedUser" (click) = "blockUser()">Block</a> 
+        <a class="btn btn-transparent" *ngIf="!unBlockedUser" (click) = "unBlockUser()">UnBlock</a> - 
         <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
       </div>
       <h3 class="message-subject">{{msg.subject}}</h3>

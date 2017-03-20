@@ -142,13 +142,13 @@ export class ViewComponent implements OnInit {
     blockUser(){
       this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data=>{
         this.blockedUser = data;
-        console.log(this.blockedUser);
+        //console.log(this.blockedUser);
       })
     }
     unBlockUser(){
       this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data=>{
         this.unBlockedUser = data;
-        console.log(this.unBlockedUser);
+        //console.log(this.unBlockedUser);
       })
     }
 }
