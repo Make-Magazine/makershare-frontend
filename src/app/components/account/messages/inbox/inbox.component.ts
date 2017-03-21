@@ -184,12 +184,12 @@ export class InboxComponent implements OnInit {
           if (this.currentuser.user.uid === message.messages[0].author) {
             this.user.getUser(this.currentuser.user.uid).subscribe(res => {
               this.sender = res;
-              //console.log(this.sender.first_name)
+              console.log(this.sender.first_name)
             })
           } else {
             this.user.getUser(message.messages[0].author).subscribe(res => {
               this.reciver = res;
-              //console.log(this.reciver.first_name)
+              console.log(this.reciver.first_name)
             })
           }
         })
@@ -205,7 +205,6 @@ export class InboxComponent implements OnInit {
       .switchMap(() => this.viewService.getView('maker_count_pm_api/'))
       .subscribe(data => {
         this.countMsg = data;
-        console.log(this.countMsg)
        });
   }
 
