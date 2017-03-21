@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateProjectComponent } from './create-project/create-project.component';
+import { ProjectFormComponent } from './project-form/project-form.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateProjectRoutingModule } from './create-project-routing.module';
+import { ProjectFormRoutingModule } from './project-form-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -24,18 +24,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CKEditorModule,
     FormsModule,
     DndModule.forRoot(),
-    CreateProjectRoutingModule,
+    ProjectFormRoutingModule,
     NgbModule.forRoot()
   ],
   declarations: [
     YourStoryComponent,
     HowToComponent,
     TeamComponent,
-    CreateProjectComponent
+    ProjectFormComponent
   ]
   
 })
 
-export class CreateProjectModule { };
+export class ProjectFormModule { };
 
 

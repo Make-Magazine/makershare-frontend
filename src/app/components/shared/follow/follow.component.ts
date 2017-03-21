@@ -26,20 +26,21 @@ export class FollowComponent implements OnInit {
   currentuser;
   isFollowed;
   ButtonFollow;
-  countFollowers:number;
+  countFollowers = 0;
   ngOnInit() {
-      this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
-        this.countFollowers=response['count'];
-              this.countNumber.emit(this.countFollowers);
+    this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
+
+      this.countFollowers = response['count'];
+      this.countNumber.emit(this.countFollowers);
       console.log(this.countFollowers);
 
       //  console.log(this.countFollowers)
-      }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      });
-        this.userId = localStorage.getItem('user_id');
+    }, err => {
+     // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+    this.userId = localStorage.getItem('user_id');
 
-      this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
+    this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
       this.isFollowed = data[0];
 
       /* initialize Button Follow*/
@@ -49,9 +50,9 @@ export class FollowComponent implements OnInit {
         this.ButtonFollow = 'UnFollow';
       }/* end else if  */
     }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      })
-    
+      //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+    })
+
   }
 
   /* function follow */
@@ -62,9 +63,9 @@ export class FollowComponent implements OnInit {
         this.isFollowed = false;
         this.ButtonFollow = 'Follow';
         this.countFollowers--;
-              this.countNumber.emit(this.countFollowers);
+        this.countNumber.emit(this.countFollowers);
 
-       // console.log(this.countFollowers);
+        // console.log(this.countFollowers);
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
@@ -73,9 +74,9 @@ export class FollowComponent implements OnInit {
         this.isFollowed = true;
         this.ButtonFollow = 'UnFollow';
         this.countFollowers++;
-              this.countNumber.emit(this.countFollowers);
+        this.countNumber.emit(this.countFollowers);
 
-       // console.log(this.countFollowers['count']);
+        // console.log(this.countFollowers['count']);
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });

@@ -1,8 +1,8 @@
 <div class="container conversation-container" *ngIf="msg">
       <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
       <div class="delete-actions">
-        <a class="btn btn-transparent" (click) = "blockUser()">Block</a> -
-        <a class="btn btn-transparent" (click) = "unBlockUser()">UnBlock</a> - 
+        <a class="btn btn-transparent" *ngIf="!blockedUser" (click) = "blockUser()">Block</a> 
+        <a class="btn btn-transparent" *ngIf="!unBlockedUser" (click) = "unBlockUser()">UnBlock</a> - 
         <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
       </div>
       <h3 class="message-subject">{{msg.subject}}</h3>
@@ -17,7 +17,12 @@
                 </div>
                 <div class="media-body">
                   <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
-                  <p class="timestamp">3 days ago</p>
+                  <p class="timestamp" *ngIf="message.timestamp < 1" > a few seconds ago  </p>
+                  <p class="timestamp" *ngIf="message.timestamp >= 1 && message.timestamp < 60" >{{message.timestamp}} minutes ago </p>
+                  <p class="timestamp" *ngIf="message.timestamp >= 60 && message.timestamp < 1440 " >{{message.timestamp/60 | number : '1.0-0'}} hours ago</p>
+                  <p class="timestamp" *ngIf="message.timestamp < 10080 && message.timestamp >= 1440 " >{{message.timestamp/(24*60) | number : '1.0-0'}} days ago</p>
+                  <!--<p class="timestamp" *ngIf="message.timestamp >168 " >{{message.timestamp | date}} </p>-->
+                  
                 </div>
               </div>
               <div class="message-body">
