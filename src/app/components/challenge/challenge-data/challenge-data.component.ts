@@ -16,12 +16,13 @@ export class ChallengeDataComponent implements OnInit {
   dates;
   str;
   awards;
+  userId;
   countProjects = 0;
   no_of_awards;
-  no_of_followers;
+  no_of_followers = 0;
   projects = [];
   hideloadmore = true;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
   hideloadmorefollower = false;
   pageNumber = 0;
   challenge_start_date;
@@ -33,11 +34,11 @@ export class ChallengeDataComponent implements OnInit {
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
-  enterStatus=true;
- page_arg = [];
- @Input() countFoll;
- @Input() sortType: ISorting;
-@Input() pageNo: number;
+  enterStatus = true;
+  page_arg = [];
+  @Input() countFoll;
+  @Input() sortType: ISorting;
+  @Input() pageNo: number;
   @Output() submitStatus = new EventEmitter<boolean>();
 
   constructor(private route: ActivatedRoute,
@@ -50,7 +51,7 @@ export class ChallengeDataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+
     this.getCountProject();
     this.activeTab = 'summary';
     this.getChallengeData();
@@ -84,12 +85,21 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
       .subscribe(data => {
         this.followers = this.followers.concat(data);
-        if (this.followers[0]['follow_counter'] == this.followers.length) {
+        if (!this.followers.length) {
           this.hideloadmorefollower = true;
+          console.log(this.followers.length)
+        } else {
+          if (this.followers[0]['follow_counter'] == this.followers.length) {
+
+            this.hideloadmorefollower = true;
+          }
+
+          this.no_of_followers = this.followers[0]['follow_counter'];
         }
-        this.no_of_followers = this.followers[0]['follow_counter'];
+        // console.log(this.followers[0]['follow_counter']);
+        // console.log(this.followers.length);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        this.notificationBarService.create({ message: 'Sorry error, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function get challenge followers */
@@ -143,7 +153,7 @@ export class ChallengeDataComponent implements OnInit {
       });
   }
   /* end function to get challenge data */
-  
+
   /* function to change data format */
   changeDateFormat(date) {
     var d;
@@ -181,25 +191,26 @@ export class ChallengeDataComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
-   // this.getSortType(event);
-   if (this.countProjects == this.projects.length) {
+    // this.getSortType(event);
+    if (this.countProjects == this.projects.length) {
       this.hideloadmoreproject = true;
-    
-     // console.log(this.projects.length);
-    //console.log(this.countProjects);
+
+      // console.log(this.projects.length);
+      //console.log(this.countProjects);
     }
   }
   /* END FUNCTION loadMoreVisibilty */
 
   /* function to sort project apply action */
   getSortType(event: any) {
+    this.projects = [];
     this.sortData = event;
     this.sort_by = this.sortData.sort_by;
     this.sort_order = this.sortData.sort_order;
-    this.projects=[];
-     this.pageNo=0;
+
+    this.pageNo = 0;
     this.getProjects();
-     this.hideloadmoreproject = false;
+    // this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
     console.log(this.projects);
 
@@ -209,11 +220,11 @@ export class ChallengeDataComponent implements OnInit {
   /* function to initialize page arg for loadmore for projects to send to api  */
   getPageNumber(event: any) {
     this.pageNo = event
-   // console.log(this.pageNo);
+    // console.log(this.pageNo);
     this.getProjects();
   }
   /* end function PN Projetcs */
-  followersCounter(count){
+  followersCounter(count) {
     this.no_of_followers = count;
   }
   /* function to initialize page arg for loadmore for followers to send to api  */
@@ -225,12 +236,16 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to get count projects in challenge */
   getCountProject() {
-    var nid;
+    // var nid;
     var nid = this.route.snapshot.params['nid'];
     this.route.params
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
-        this.countProjects = data[0];
+        if (data == null) {
+          this.countProjects = 0
+        } else {
+          this.countProjects = data;
+        }
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
@@ -242,21 +257,43 @@ export class ChallengeDataComponent implements OnInit {
     this.router.navigate(['challenges/enter-challenge', nid]);
   }
   /* end function to navigate to enter challenge */
-/* function cheack user allowe to enter challenge */
+  /* function cheack user allowe to enter challenge */
 
-cheackenter(){
-      var nid = this.route.snapshot.params['nid'];
-      this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status',nid).subscribe(data => {
+  cheackenter() {
+    var nid = this.route.snapshot.params['nid'];
+    this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status', nid).subscribe(data => {
       this.enterStatus = data.status;
       this.submitStatus.emit(this.enterStatus);
 
       console.log(data);
     }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
-}
-/* end function cheack user allowe to enter challenge */
+  }
+  /* end function cheack user allowe to enter challenge */
+  /* function to get myEnteries */
+  myEnteriesProject() {
+    /*cheack display_entries */
+    //challenge entries projects
+    this.userId = localStorage.getItem('user_id');
+    this.projects = [];
+
+    var sort: string;
+    //  this.page_arg = [];
+    if (this.pageNo >= 0) {
+      this.page_arg = ['page', this.pageNo];
+    }
+    this.route.params
+      .switchMap((nid) => this.viewService.getView('challenge_entries', [['nid', nid['nid']], ['uid', this.userId], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
+      .subscribe(data => {
+        this.projects = this.projects.concat(data);
+        this.loadMoreVisibilty();
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      });
+  }
+  /* end function my Enteries */
 
 }
 

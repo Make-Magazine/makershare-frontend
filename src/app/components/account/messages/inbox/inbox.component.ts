@@ -27,6 +27,15 @@ export class InboxComponent implements OnInit {
   num3: any;
   anothUser: any;
   author;
+  dateObj;
+  currentDate;
+  curr;
+  countMsg;
+  currentStatusId = 0;
+  currentCount = 0;
+  statusesCount = {};
+  pageNumber = 0;
+  hideloadmore = true;
   sender = null;
   reciver = null;
   reciverUser = [];
@@ -52,12 +61,13 @@ export class InboxComponent implements OnInit {
     this.getCurrentUser();
     this.getMessages();
     this.buildForm();
+    this.CountMessages();
   }
 
   SetMember(uid, index) {
-      this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-        this.SelectedUser[index] = data[0];
-      });
+    this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
+      this.SelectedUser[index] = data[0];
+    });
   }
 
   RefreshUsers(index, value) {
@@ -146,35 +156,75 @@ export class InboxComponent implements OnInit {
 
   //get all messages
   getMessages() {
-    this.pm.getMessages().subscribe(data => {
+    var status_arg = [];
+    var page_arg = [];
+    if (this.currentStatusId != 0) {
+      status_arg = ['status', this.currentStatusId];
+      this.currentCount = this.statusesCount[this.currentStatusId];
+    } else {
+      this.currentCount = this.statusesCount['0'];
+    }
+    if (this.pageNumber >= 0) {
+      page_arg = ['page', this.pageNumber];
+    }
+    this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
+      console.log(data);
       this.messages = data;
       let msg_arr = [];
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           msg_arr.push(this.messages[key]);
         }
-        this.msg = msg_arr
       }
-      for (var _i = 0; _i < this.msg.length; _i++) {
-        this.num = this.msg[_i];
-        this.pm.getMessage(this.num.thread_id).subscribe(data => {
-          this.message = data;
-          if (this.currentuser.user.uid === this.message.messages[0].author) {
+      this.msg = this.msg.concat(msg_arr);
+      this.loadMoreVisibilty();
+      console.log(this.msg);
+      for (let message of this.msg) {
+        this.pm.getMessage(message.thread_id).subscribe(data => {
+          Object.assign(message, data);
+          //the 0 author is the author for this message
+          if (this.currentuser.user.uid === message.messages[0].author) {
             this.user.getUser(this.currentuser.user.uid).subscribe(res => {
               this.sender = res;
-              //console.log(this.sender)
+              //console.log(this.sender.first_name)
             })
-          } else if(this.currentuser.user.uid != this.message.messages[0].author) {
-            this.user.getUser(this.message.messages[0].author).subscribe(res => {
+          } else {
+            this.user.getUser(message.messages[0].author).subscribe(res => {
               this.reciver = res;
-              //console.log(this.reciver)
+              //console.log(this.reciver.first_name)
             })
           }
         })
+        this.dateObj = new Date(message.last_updated * 1000);
+        this.currentDate = new Date();
+        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
       }
     })
   }
-  
+
+  CountMessages() {
+    this.route.params
+      .switchMap(() => this.viewService.getView('maker_count_pm_api/'))
+      .subscribe(data => {
+        this.countMsg = data;
+        console.log(this.countMsg)
+       });
+  }
+
+  loadMore() {
+    this.pageNumber++;
+    this.getMessages();
+  }
+  loadMoreVisibilty() {
+    // get the challenges array count
+    var arr_count = this.msg.length;
+    if (this.countMsg > arr_count) {
+      this.hideloadmore = true;
+    } else {
+      this.hideloadmore = false;
+    }
+  }
+
   getCurrentUser() {
     this.user.getStatus().subscribe(data => {
       this.currentuser = data;
@@ -190,58 +240,52 @@ export class InboxComponent implements OnInit {
 
     });
   }
-  
+
   valueChanged(mid, event) {
-     // add to deletedArr
+    // add to deletedArr
     if (event.target.checked === true) {
       this.deletedArr.push(mid);
-    }else {
+    } else {
       // remove from deletedArr
       var index = this.deletedArr.indexOf(mid, 0);
       if (index > -1) {
         this.deletedArr.splice(index, 1);
-      }      
+      }
     }
     //console.log(this.deletedArr);
   }
-  deleteMessages(){
-     for (var _i = 0; _i < this.deletedArr.length; _i++) {
+  deleteMessages() {
+    for (var _i = 0; _i < this.deletedArr.length; _i++) {
       this.pm.deleteMessage(this.deletedArr[_i]).subscribe(data => {
-      this.deleted = data;
-      console.log(this.deleted);
-    });
-     }
+        this.deleted = data;
+        console.log(this.deleted);
+      });
+    }
   }
 
-   checkAll(ev) {
-     this.msg.forEach(x => x.state = ev.target.checked)
-     if(ev.target.checked === true){
-        for (var _i = 0; _i < this.msg.length; _i++) { 
-          this.pm.deleteMessage(this.msg[_i].thread_id).subscribe(data => {
+  checkAll(ev) {
+    this.msg.forEach(x => x.state = ev.target.checked)
+    if (ev.target.checked === true) {
+      for (var _i = 0; _i < this.msg.length; _i++) {
+        this.pm.deleteMessage(this.msg[_i].thread_id).subscribe(data => {
           this.deleted = data;
-          })
+        })
         //console.log(this.msg[_i].thread_id)
-        }
-     }
+      }
+    }
   }
 
   isAllChecked(mid) {
     return this.msg.every(_ => _.state);
   }
 
-  // loadMore(){
-  //   this.pm.getMessages().subscribe(data => {
-  //     this.messages = this.messages.concat();
-  //     console.log(this.messages)
-  //   })
-  // }
-  viewMessage(thread_id){
-     this.router.navigate(['/view', thread_id]);
-     //console.log(this.message)
+  viewMessage(thread_id) {
+    this.router.navigate(['/view', thread_id]);
+    //console.log(this.message)
   }
   // turnOffMessages(){
   //   this.pm.updateSettings().subscribe(data=>{
-      
+
   //   })
   // }
 }

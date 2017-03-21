@@ -33,6 +33,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubFile = false;
   epubLink;
   utubelink;
+  file;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +47,10 @@ export class IndividualWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.uid = localStorage.getItem('user_id');
+    // this.getCurrentUser();
+    let userId = localStorage.getItem('user_id');
+    console.log(userId);
+    // setTimeout(1000)
     
 
     this.nid = this.route.params['value'].nid
@@ -124,10 +129,15 @@ export class IndividualWorkshopComponent implements OnInit {
       this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.objects[i].pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
       this.popupPreview = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
     } else if (this.objects[i].book && this.objects[i].book !== '') {
+       delete this.popupPreview;
       if (this.objects[i].book.endsWith('.epub')) {
+        
+        for( let epubFile in this.objects[i].book)
+        {
+        this.popupPreview = null;
         this.epubFile = true;
-        delete this.popupPreview;
         this.epubLink = this.objects[i].book;
+        }
        } else {
         delete this.popupPreview;
         this.epubFile = null;

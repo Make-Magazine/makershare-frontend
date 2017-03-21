@@ -5,7 +5,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { Observable } from 'rxjs/Observable'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,14 +16,17 @@ export class ViewComponent implements OnInit {
   msg;
   user = [];
   messages = [];
+  message;
   currentuser;
   userId: number;
   deleted;
   blockedUser;
   unBlockedUser;
+  dateObj;
+  currentDate;
   messageForm: FormGroup;
   reply: Reply = {
-    thread_id:0,
+    thread_id: 0,
     body: ''
   };
   constructor(
@@ -33,55 +36,62 @@ export class ViewComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,
-    
+
   ) { }
 
   ngOnInit() {
     this.buildForm();
     this.getThreads();
     var thread_id;
-    this. getCurrentUser();
+    this.getCurrentUser();
   }
-  getThreads(){
+  getThreads() {
     this.route.params
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        console.log(this.msg)
+        //console.log(this.msg)
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
           this.userService.getUser(message.author).subscribe(res => {
             Object.assign(message, res);
             //console.log(message.user_photo)
+            this.dateObj = new Date(message.timestamp * 1000);
+            this.currentDate = new Date();
+            message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
+            //console.log(message.timestamp)
+
+
           })
           i++
         }
       });
   }
 
-   getCurrentUser() {
+  getCurrentUser() {
     this.userId = parseInt(localStorage.getItem('user_id'));
-      this.userService.getUser(this.userId).subscribe(res => {
-        Object.assign(this.user, res);
-          })    
+    this.userService.getUser(this.userId).subscribe(res => {
+      Object.assign(this.user, res);
+    })
   }
   onSubmit(e) {
     e.preventDefault();
     this.getThreads();
     this.getCurrentUser();
-    if (this.messageForm.valid) {        
-       this.reply.thread_id = this.msg.pmtid;
-       this.reply.body = this.messageForm.value.body;
-       this.pm.sendMessage(this.reply).subscribe(res => {
+    if (this.messageForm.valid) {
+      this.reply.thread_id = this.msg.pmtid;
+      this.reply.body = this.messageForm.value.body;
+      this.pm.sendMessage(this.reply).subscribe(res => {
         var newComment = {
-           thread_id: this.reply.thread_id,
-           user_photo: this.user['user_photo'],
-           first_name: this.user['first_name'],
-           last_name: this.user['last_name'],
-           body: this.reply.body
+          thread_id: this.reply.thread_id,
+          user_photo: this.user['user_photo'],
+          first_name: this.user['first_name'],
+          last_name: this.user['last_name'],
+          timestamp: this.messages,
+          body: this.reply.body
         }
-        //console.log(newComment)
+        console.log(newComment)
         this.messages.push(newComment);
       }, err => { });
     }
@@ -123,34 +133,33 @@ export class ViewComponent implements OnInit {
     },
   };
   previousUrl() {
-     this._location.back();
+    this._location.back();
   }
-  cancel(){
+  cancel() {
     this.messageForm.reset();
   }
-   deleteThread() {
-     console.log(this.msg.messages)
-     for (let mesg of this.msg.messages){
-        let i=0
-        this.pm.deleteMessage(mesg.mid).subscribe(data => {
+  deleteThread() {
+    //console.log(this.msg.messages)
+    for (let mesg of this.msg.messages) {
+      let i = 0
+      this.pm.deleteMessage(mesg.mid).subscribe(data => {
         this.deleted = data;
-        console.log(this.deleted);
+        //console.log(this.deleted);
         i++
       });
-     }
     }
-    blockUser(){
-      this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data=>{
-        this.blockedUser = data;
-        console.log(this.blockedUser);
-      })
-    }
-    unBlockUser(){
-      this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data=>{
-        this.unBlockedUser = data;
-        console.log(this.unBlockedUser);
-      })
-    }
+  }
+  blockUser() {
+    this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data => {
+      this.blockedUser = data;
+      //console.log(this.blockedUser);
+    })
+  }
+  unBlockUser() {
+    this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data => {
+      this.unBlockedUser = data;
+      //console.log(this.unBlockedUser);
+    })
+  }
 }
 
- 
