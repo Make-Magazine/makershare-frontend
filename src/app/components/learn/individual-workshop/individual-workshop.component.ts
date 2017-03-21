@@ -46,6 +46,10 @@ export class IndividualWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.uid = localStorage.getItem('user_id');
+    // this.getCurrentUser();
+    let userId = localStorage.getItem('user_id');
+    console.log(userId);
+    // setTimeout(1000)
     
 
     this.nid = this.route.params['value'].nid
