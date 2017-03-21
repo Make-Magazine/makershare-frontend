@@ -168,6 +168,7 @@ export class InboxComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
+      console.log(data);
       this.messages = data;
       let msg_arr = [];
       for (let key in this.messages) {
@@ -177,6 +178,7 @@ export class InboxComponent implements OnInit {
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
+      console.log(this.msg);
       for (let message of this.msg) {
         this.pm.getMessage(message.thread_id).subscribe(data => {
           Object.assign(message, data);
