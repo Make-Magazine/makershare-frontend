@@ -3,16 +3,17 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
-import { Project } from '../../../../models/project/project-form/project';
+import { ProjectForm } from '../../../../models/project/project-form/project';
 import { field_collection_item_member }  from '../../../../models/project/project-form/field_collection_item';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
+import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 
 @Component({
   selector: 'app-project-form-team',
   templateUrl: './team.component.html',
 })
 export class TeamComponent implements OnInit {
-  @Input('project') project: Project;
+  @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
 
   TeamForm: FormGroup;
@@ -58,7 +59,7 @@ export class TeamComponent implements OnInit {
     });
     this.project.field_maker_memberships.und.forEach((member,index)=>{
       this.AddRow('field_maker_memberships',member);
-      let id = this.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
+      let id = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
       this.SetMember(id,index);
     });
     this.TeamForm.valueChanges.subscribe(data => {
@@ -73,10 +74,6 @@ export class TeamComponent implements OnInit {
     const addrCtrl = this.InitRow(ControlName,index,data);
     control.push(addrCtrl); 
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
-  }
-
-  GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string){
-    return UsernameAndId.match(/\(([^)]+)\)/)[1];
   }
 
   SetMember(uid,index){
@@ -152,6 +149,7 @@ export class TeamComponent implements OnInit {
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
     this.project[ControlName].und.splice(i, 1);
+    console.log(this.project);
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
