@@ -3,11 +3,12 @@ import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, F
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
-import { Project } from '../../../../models/project/project-form/project';
-import { TaxonomyTerm } from '../../../../models/project/project-form/taxonomy-term';
+import { ProjectForm } from '../../../../models/project/project-form/project';
+import { TaxonomyTerm } from '../../../../models/Drupal/taxonomy-term';
 import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
-import { FileEntity } from '../../../../models/project/project-form/file_entity';
-import { Observable } from 'rxjs/Observable'
+import { FileEntity } from '../../../../models/Drupal/file_entity';
+import { Observable } from 'rxjs/Observable';
+import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 
 @Component({
   selector: 'app-project-form-how-to',
@@ -30,7 +31,7 @@ export class HowToComponent implements OnInit {
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component
    */
-  @Input('project') project: Project;
+  @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
   HowToForm: FormGroup;
   ToolsMaterialsParts = [];
@@ -65,10 +66,6 @@ export class HowToComponent implements OnInit {
         }
       )
   };
-        
-  test(event){
-    console.log(event);
-  }
 
   constructor(
     private fb: FormBuilder,
@@ -77,7 +74,7 @@ export class HowToComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.resources_files = this.FormPrintableValues.resource_files;
+    this.resources_files = this.FormPrintableValues.resources_files;
     if(!this.resources_files){
       this.resources_files = [];
     }
@@ -105,6 +102,12 @@ export class HowToComponent implements OnInit {
       }
       description = control.controls.field_description.value;
     }
+    var field_quantity = "";
+    if(control.controls.field_material_quantity){
+      field_quantity = control.controls.field_material_quantity.value;
+    }else{
+      field_quantity = control.controls.field_quantity.value;
+    }
     
     let allvalues = {
       field_tool_name: name_with_id,
@@ -113,7 +116,8 @@ export class HowToComponent implements OnInit {
       field_sort_order: index + 1,
       field_tool_url: url,
       field_description: description,
-      field_material_quantity: control.controls.field_material_quantity.value,
+      field_material_quantity: field_quantity,
+      field_quantity: field_quantity,
     };
     let Row = this.GetRowWithValues(allvalues, arrayelementname);
     this.project[ControlName].und.push(Row);
@@ -219,10 +223,10 @@ export class HowToComponent implements OnInit {
       {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_tool_name': [data? data.field_tool_name.und[0].target_id:'', Validators.required],
+          'field_tool_name': [data && data.field_tool_name.und? data.field_tool_name.und[0].target_id:'', Validators.required],
           'field_tool_url': [data && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
           'field_description': [data && data.field_description.und? data.field_description.und[0].value:''],
-          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
+          'field_quantity': [data && data.field_quantity.und? data.field_quantity.und[0].value:''],
         });
       }
       case 'field_parts':
@@ -230,7 +234,7 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_part_name': [data? data.field_part_name.und[0].target_id:'', Validators.required],
-          'field_material_quantity': [data && data.field_material_quantity? data.field_material_quantity.und[0].value:''],
+          'field_quantity': [data && data.field_quantity.und? data.field_quantity.und[0].value:''],
         });
       }
       case 'field_materials':
@@ -341,7 +345,7 @@ export class HowToComponent implements OnInit {
         file:'',
         filename:files[0].name
       };
-      this.ConvertToBase64(files[0],file);
+      NodeHelper.ConvertToBase64(files[0],file);
       if(this.resources_files[index]){
         this.resources_files[index] = file;
       }else{
@@ -366,18 +370,6 @@ export class HowToComponent implements OnInit {
     }
     this.emitter.emit(this.resources_files);
   }
-
-  ConvertToBase64(file,FileEntityObject:FileEntity){
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      FileEntityObject.filename = file.name;
-      FileEntityObject.file = reader.result;
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-   }
 
   /**
    * An Object of form errors contains the error string value for each field

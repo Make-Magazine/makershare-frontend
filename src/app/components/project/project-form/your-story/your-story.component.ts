@@ -3,9 +3,10 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileService } from '../../../../d7services/file/file.service';
-import { ProjectCategory } from '../../../../models/project/project-category';
-import { FileEntity } from '../../../../models/project/project-form/file_entity';
-import { Project } from '../../../../models/project/project-form/project';
+import { ProjectCategory } from '../../../../models/project/project-form/project-category';
+import { FileEntity } from '../../../../models/Drupal/file_entity';
+import { ProjectForm } from '../../../../models/project/project-form/project';
+import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -28,7 +29,7 @@ export class YourStoryComponent implements OnInit {
   /**
    * @input to recieve the project object and printable values "tags and cover image"
    */
-  @Input('project') project: Project;
+  @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
   cover_image:FileEntity;
   tags:string[];
@@ -100,7 +101,7 @@ export class YourStoryComponent implements OnInit {
     for(let index in this.YourStoryForm.controls){
       const control = this.YourStoryForm.controls[index];
       control.valueChanges.subscribe(value =>{
-        if(this.isEmpty(value) || !control.valid){
+        if(NodeHelper.isEmpty(value) || !control.valid){
           this.SetControlValue('',index);
         }else{
           this.SetControlValue(value,index);
@@ -120,21 +121,10 @@ export class YourStoryComponent implements OnInit {
     if(typeof field === 'string'){
       this.project[index] = value;
     }else if(field.und[0] && typeof field.und[0] === 'object'){
-      field.und[0].value = value;
+      this.project[index].und[0].value = value;
     }else if(index != 'field_tags'){
-      value? field.und = value : field.und = [];
+      value? this.project[index].und = value : this.project[index].und = [];
     }
-  }
-
-  /**
-   * a very usefull method to check the variable if its empty or not
-   * this function works with all type of variables "string, number, array and object"
-   * @param variable 
-   */
-  isEmpty(variable) {
-    return Object.keys(variable).every(function(key) {
-      return variable[key]===''||variable[key]===null;
-    });
   }
 
   /**

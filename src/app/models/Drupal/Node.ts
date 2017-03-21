@@ -3,8 +3,10 @@ export interface Node{
   status: number;
   promote: number;
   sticky: number;
-  readonly type: string;
+  type: string;
   
+  name?: string;
+  picture?: number;
   nid?: number;
   vid?: number;
   language?: string;
@@ -19,24 +21,33 @@ export interface Node{
   log?: number;
   vuuid?: string;
   revision_timestamp?: number;
-
-  SetField(value:number|string|URL,FieldName:string):void;
-  GetField(FieldName:string):string|number|URL;
+  revision_uid?: number;
+  cid?: number;
+  last_comment_timestamp?: number;
+  last_comment_name?: null|string;
+  last_comment_uid?: number;
+  comment_count?: number;
 }
 
 export abstract class Node implements Node{
+
   constructor(){
+    this.Init();
+  }
+
+  public SetField(value:number|string|URL,FieldName:string):void{
+    this[FieldName] = value;
+  }
+
+  public GetField(FieldName:string):any{
+    return this[FieldName];
+  }
+  
+  protected Init(Type?:string,Values?:any):void{
     this.title = "Untitled";
     this.status = 0;
     this.promote = 0;
     this.sticky = 0;
-  }
-
-  SetField(value:number|string|URL,FieldName:string):void{
-    this[FieldName] = value;
-  }
-
-  GetField(FieldName:string):string|number|URL{
-    return this[FieldName];
+    this.type = Type;
   }
 }
