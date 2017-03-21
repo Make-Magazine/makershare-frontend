@@ -58,7 +58,7 @@
             </div>
             <div class="content-wrapper row">
               <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
-                [challenge]="challenge" [awards]="awards" [projects]="projects" *ngIf="activeTab =='summary'"></app-summary>
+                [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
 
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge">

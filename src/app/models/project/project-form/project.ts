@@ -1,31 +1,18 @@
-/**
- * Project model
- * located at models/create-project/project.ts
- * the main project object which will be posted or retrieved from drupal
- */
+import { Node } from '../../Drupal/Node';
+import { field_file_reference } from '../../Drupal/field_file_reference';
+import { field_text } from '../../Drupal/field_text';
+import { field_URL } from '../../Drupal/field_URL';
+import { field_collection_item_material,field_collection_item_part,field_collection_item_resource,field_collection_item_tool,field_collection_item_member,field_collection_item_reference_row } from './field_collection_item';
+import { field_term_reference } from '../../Drupal/field_term_reference';
+import { field_entity_reference } from '../../Drupal/field_entity_reference';
+import { field_number } from '../../Drupal/field_number';
+import { Observable } from "rxjs";
 
-import { field_text } from './field_text';
-import { field_URL } from './field_URL';
-import { field_collection_item_material,field_collection_item_part,field_collection_item_resource,field_collection_item_tool,field_collection_item_member } from './field_collection_item';
-import { field_entity_reference } from './field_entity_reference';
-import { field_number } from './field_number';
-import { field_file_reference } from './field_file_reference';
-
-export interface Project {
-	uid?: number;
-	nid?: number;
-	title: string;
-	body?:{und:field_text[]};
-	status: number;
-	promote: number;
-	sticky: number;
-	readonly type: string;
-	created?: number;
-	changed?: number;
+export interface ProjectForm extends Node{
 	field_story:{und:field_text[]};
 	field_aha_moment?:{und:field_text[]};
 	field_uh_oh_moment?:{und:field_text[]};
-	field_teaser?:{und:field_text[]};
+	field_teaser:{und:field_text[]};
 	field_tools?:{und:field_collection_item_tool[]};
 	field_materials?:{und:field_collection_item_material[]};
 	field_parts?:{und:field_collection_item_part[]};
@@ -46,8 +33,107 @@ export interface Project {
 	field_cover_photo:{und:field_file_reference[]};
 	field_how_to?:{und:field_text[]};
 	field_categories:{und:number[]};
-	path?: URL;
-	last_comment_timestamp?: number;
-	last_comment_uid?: number,
-	comment_count?: number,
+}
+
+export interface ProjectView extends Node{
+	field_story:{und:field_text[]};
+	field_aha_moment?:{und:field_text[]};
+	field_uh_oh_moment?:{und:field_text[]};
+	field_teaser:{und:field_text[]};
+  field_tools?:{und:field_collection_item_reference_row[]};
+	field_materials?:{und:field_collection_item_reference_row[]};
+	field_parts?:{und:field_collection_item_reference_row[]};
+	field_resources?:{und:field_collection_item_reference_row[]};
+	field_maker_memberships?:{und:field_collection_item_reference_row[]};
+	field_difficulty:{und:field_term_reference[]};
+	field_duration:{und:field_term_reference[]};
+	field_credit_your_inspiration?:{und:field_text[]};
+	field_show_tell_video?:{und:field_URL[]};
+	field_tags?:{und:field_term_reference[]};
+	field_collaborators?:{und:field_entity_reference[]};
+	field_sort_order?:{und:field_number[]};
+	field_original_team_members?:{und:field_entity_reference[]};
+	field_total_forks?:{und:field_number[]};
+	field_forks?:{und:field_entity_reference[]};
+	field_visibility2?:{und:field_term_reference[]};
+	field_categories?:{und:field_term_reference[]};
+	field_mfba17_project_id?:{und:field_text[]};
+	field_how_to?:{und:field_text[]};	
+	field_cover_photo?:{und:field_file_reference[]};	
+}
+
+export class ProjectView extends Node implements ProjectView{
+	constructor(Project:ProjectView){
+		super();
+		this.Init("project",Project);
+	}
+
+	protected Init(Type,Project:ProjectView){
+		super.Init(Type);
+		for (let FieldName in Project){
+			let FieldValue = Project[FieldName];
+			this.SetField(FieldValue,FieldName);
+		}
+	}
+}
+
+export class ProjectForm extends Node implements ProjectForm{
+
+	protected Init():void{
+		super.Init("project");
+		this.field_how_to = {und:[new field_text(null)]};
+    this.field_tools = {und:[]};
+    this.field_parts = {und:[]};
+    this.field_materials = {und:[]};
+    this.field_difficulty = {und:5};
+    this.field_duration = {und:8};
+    this.field_resources = {und:[]};
+    this.field_maker_memberships = {und:[]};
+    this.field_visibility2 = {und:[1115]};
+		this.field_teaser = {und:[new field_text(null)]};
+    this.field_story = {und:[new field_text("filtered_html")]};
+    this.field_cover_photo = {und:[new field_file_reference()]};
+    this.field_categories = {und:[]};
+    this.field_tags = {und:''};
+    this.field_show_tell_video = {und:[new field_URL()]};
+    this.field_aha_moment = {und:[new field_text(null)]};
+    this.field_uh_oh_moment = {und:[new field_text(null)]};
+	}
+
+	public SetField(value:any,FieldName:string):void{
+		if(this[FieldName] instanceof Object){
+			this.SetCustomFields(value, FieldName);
+		}else{
+			super.SetField(value, FieldName);
+		}
+	}
+
+	/**
+   * Checking the project if ready to publish
+   * otherwhise will be saved as a draft
+   */
+  public CheckIfReadyToPublic(){
+    if(this.GetField('title') == ""){
+      this.SetField("Untitled","title");
+    }
+    if(this.GetField("field_categories").und.length == 0 || this.GetField("field_cover_photo").und[0].fid == 0 ||
+       this.GetField('title') == ("Untitled" || "untitled") || this.GetField('field_story').und[0].value == ""){
+        this.GetField('field_visibility2').und[0] = 1115;
+        this.SetField(0,'status');
+       }
+  }
+
+	private SetCustomFields(value:any,FieldName:string):void{
+		if(typeof value === 'string' || typeof value === 'number'){
+			if(typeof this[FieldName].und === 'string' || typeof this[FieldName].und === 'number'){
+				this[FieldName].und = value;
+			}else{
+				this[FieldName].und = [+value];
+			}
+		}else if(value instanceof Array){
+			this[FieldName].und = value;
+		}else{
+			this[FieldName].und[0] = value;
+		}
+	}
 }

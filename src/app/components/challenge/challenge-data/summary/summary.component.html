@@ -7,7 +7,7 @@
     </div>
    
       
-      
+    <div *ngIf="projectsCount>0">  
    <div *ngIf="challenge" >
      <div *ngIf="challenge.display_entries =='1'">
      <!--start if -->
@@ -32,10 +32,11 @@
     </div><!-- End filters -->
     </div><!--end if -->
     </div><!--end if -->
+    </div><!--end if projects-->
     <div class="entries" *ngIf="challenge" >
       <div *ngIf="challenge.display_entries =='1'">
-      <div *ngIf="projects">
-      <div  *ngFor="let project of projects">
+      <div *ngIf="projectsChallenge">
+      <div  *ngFor="let project of projectsChallenge">
         <div class="col-md-4" *ngIf="project">
         <div class="entry-container" (click)="ShowProjectDetails(project.nid)">
           <div class="image-container">

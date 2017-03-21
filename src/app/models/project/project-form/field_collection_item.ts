@@ -37,6 +37,11 @@ export interface field_collection_item_member
   field_membership_role:{und:[field_coolection_item_reference_text]};
 }
 
+export interface field_collection_item_reference_row{
+  value: number;
+  revision_id: number;
+}
+
 interface field_coolection_item_reference_entity{
   target_id:string;
 }

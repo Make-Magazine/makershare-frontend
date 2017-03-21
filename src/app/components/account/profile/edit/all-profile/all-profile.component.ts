@@ -42,8 +42,6 @@ export class AllProfileComponent implements OnInit {
     address: {}
   };
 
-
-
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -86,8 +84,6 @@ export class AllProfileComponent implements OnInit {
 
     });
   }
-
-
 
   saveInfo() {
     this.profile.nickname = this.info.nickname;
