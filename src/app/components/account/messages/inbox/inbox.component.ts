@@ -29,7 +29,13 @@ export class InboxComponent implements OnInit {
   author;
   dateObj;
   currentDate;
-  curr
+  curr;
+  countMsg;
+  currentStatusId = 0;
+  currentCount = 0;
+  statusesCount = {};
+  pageNumber = 0;
+  hideloadmore = true;
   sender = null;
   reciver = null;
   reciverUser = [];
@@ -55,6 +61,7 @@ export class InboxComponent implements OnInit {
     this.getCurrentUser();
     this.getMessages();
     this.buildForm();
+    this.CountMessages();
   }
 
   SetMember(uid, index) {
@@ -149,16 +156,27 @@ export class InboxComponent implements OnInit {
 
   //get all messages
   getMessages() {
-    this.pm.getMessages().subscribe(data => {
+    var status_arg = [];
+    var page_arg = [];
+    if (this.currentStatusId != 0) {
+      status_arg = ['status', this.currentStatusId];
+      this.currentCount = this.statusesCount[this.currentStatusId];
+    } else {
+      this.currentCount = this.statusesCount['0'];
+    }
+    if (this.pageNumber >= 0) {
+      page_arg = ['page', this.pageNumber];
+    }
+    this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       let msg_arr = [];
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           msg_arr.push(this.messages[key]);
         }
-        this.msg = msg_arr
       }
-      //console.log(this.msg)
+      this.msg = this.msg.concat(msg_arr);
+      this.loadMoreVisibilty();
       for (let message of this.msg) {
         this.pm.getMessage(message.thread_id).subscribe(data => {
           Object.assign(message, data);
@@ -166,12 +184,12 @@ export class InboxComponent implements OnInit {
           if (this.currentuser.user.uid === message.messages[0].author) {
             this.user.getUser(this.currentuser.user.uid).subscribe(res => {
               this.sender = res;
-              //console.log(this.sender)
+              //console.log(this.sender.first_name)
             })
           } else {
             this.user.getUser(message.messages[0].author).subscribe(res => {
               this.reciver = res;
-              //console.log(this.reciver)
+              //console.log(this.reciver.first_name)
             })
           }
         })
@@ -180,6 +198,29 @@ export class InboxComponent implements OnInit {
         message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
       }
     })
+  }
+
+  CountMessages() {
+    this.route.params
+      .switchMap(() => this.viewService.getView('maker_count_pm_api/'))
+      .subscribe(data => {
+        this.countMsg = data;
+        console.log(this.countMsg)
+       });
+  }
+
+  loadMore() {
+    this.pageNumber++;
+    this.getMessages();
+  }
+  loadMoreVisibilty() {
+    // get the challenges array count
+    var arr_count = this.msg.length;
+    if (this.countMsg > arr_count) {
+      this.hideloadmore = true;
+    } else {
+      this.hideloadmore = false;
+    }
   }
 
   getCurrentUser() {
@@ -236,23 +277,6 @@ export class InboxComponent implements OnInit {
     return this.msg.every(_ => _.state);
   }
 
-// CountMessages() {
-//     var pmtid;
-//     var pmtid = this.route.snapshot.params['pmtid'];
-//     this.route.params
-//       .switchMap((pmtid) => this.viewService.getView('maker_count_project_challenge_api/' + pmtid['pmtid']))
-//       .subscribe(data => {
-//         this.countProjects = data[0];
-//       }, err => {
-//         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
-//       });
-//   }
-  loadMore(){
-    this.pm.getMessages().subscribe(data => {
-      this.messages = this.messages.concat();
-      console.log(this.messages)
-    })
-  }
   viewMessage(thread_id) {
     this.router.navigate(['/view', thread_id]);
     //console.log(this.message)

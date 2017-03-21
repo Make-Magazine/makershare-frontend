@@ -74,7 +74,7 @@
             </div>
       </ul>
       <div class="load-more">
-        <a class="btn btn-white" (click)="loadMore()">Load more</a>
+        <a class="btn btn-white" *ngIf="hideloadmore" (click)="loadMore()">Load more</a>
       </div>
     </div> 
 </div>
