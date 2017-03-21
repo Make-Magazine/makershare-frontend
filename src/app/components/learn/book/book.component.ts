@@ -12,7 +12,7 @@ export class BookComponent implements OnInit {
   objects;
   sanitizethis;
   popupPreview;
-  epubFile;
+  epubFile= false;
 
   constructor(   
     private viewService: ViewService,
@@ -25,7 +25,8 @@ export class BookComponent implements OnInit {
   }
    book: any
   showBook() {
-    
+      delete this.popupPreview;
+      this.epubFile = true;
       this.book = ePub(this.link, { fixedLayout: true, height: false,spreads: false });
       this.book.renderTo('bookReader');
       this.book.getMetadata().then(function(meta){

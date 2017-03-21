@@ -22,7 +22,7 @@ export class ChallengeDataComponent implements OnInit {
   no_of_followers = 0;
   projects = [];
   hideloadmore = true;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
   hideloadmorefollower = false;
   pageNumber = 0;
   challenge_start_date;
@@ -85,19 +85,19 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
       .subscribe(data => {
         this.followers = this.followers.concat(data);
-        if(!this.followers.length){
-        this.hideloadmorefollower = true;
-        console.log(this.followers.length)
-        }else{ 
+        if (!this.followers.length) {
+          this.hideloadmorefollower = true;
+          console.log(this.followers.length)
+        } else {
           if (this.followers[0]['follow_counter'] == this.followers.length) {
-           
+
             this.hideloadmorefollower = true;
           }
 
           this.no_of_followers = this.followers[0]['follow_counter'];
         }
         // console.log(this.followers[0]['follow_counter']);
-           // console.log(this.followers.length);
+        // console.log(this.followers.length);
       }, err => {
         this.notificationBarService.create({ message: 'Sorry error, somthing went wrong, try again later.', type: NotificationType.Error });
       });
@@ -210,7 +210,7 @@ export class ChallengeDataComponent implements OnInit {
 
     this.pageNo = 0;
     this.getProjects();
-    this.hideloadmoreproject = false;
+    // this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
     console.log(this.projects);
 
