@@ -17,7 +17,6 @@
         <a class="btn btn-blue btn-sharp new-message" data-dismiss="modal" data-target="#message-modal" data-toggle="modal"><i class="fa fa-lg fa-plus" ></i>New Message</a>
       </section>
       <ul class="list-unstyled messages-list">
-          <div *ngIf="msg"> 
             <div *ngIf="sender"> 
               <li class="message-item" *ngFor="let message of msg">
                 <div class="select"> 
@@ -32,7 +31,10 @@
                     </div>
                     <div class="media-body"  >
                       <p><a href="">{{sender.first_name}}</a> sent you a message</p>
-                      <p class="timestamp"></p>
+                      <p class="timestamp" *ngIf="message.last_updated < 1" > a few seconds ago  </p>
+                      <p class="timestamp" *ngIf="message.last_updated >= 1 && message.last_updated < 60" >{{message.last_updated}} minutes ago </p>
+                      <p class="timestamp" *ngIf="message.last_updated >= 60 && message.last_updated < 1440 " >{{message.last_updated/60 | number : '1.0-0'}} hours ago</p>
+                      <p class="timestamp" *ngIf="message.last_updated < 10080 && message.last_updated >= 1440 " >{{message.last_updated/(24*60) | number : '1.0-0'}} days ago</p>
                     </div>
                   </div>
                   <div class="message-subject">
@@ -70,7 +72,6 @@
                 </div>
               </li>
             </div>
-        </div>
       </ul>
       <div class="load-more">
         <a class="btn btn-white" (click)="loadMore()">Load more</a>

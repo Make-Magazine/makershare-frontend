@@ -4,18 +4,17 @@ import { CustomValidators } from 'ng2-validation';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileService } from '../../../../d7services/file/file.service';
 import { ProjectCategory } from '../../../../models/project/project-category';
-import { FileEntity } from '../../../../models/project/create-project/file_entity';
-import { Project } from '../../../../models/project/create-project/project';
+import { FileEntity } from '../../../../models/project/project-form/file_entity';
+import { Project } from '../../../../models/project/project-form/project';
 
 @Component({
-  selector: 'app-your-story',
+  selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
   styles : [`
       .add-cate {margin-left:5px}
       .cate-name {margin: 3px 0}
       .projectCategory {width:60%}
       .projectCategory select {width:75%;}
-  
   `]
 })
 

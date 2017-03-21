@@ -27,6 +27,9 @@ export class InboxComponent implements OnInit {
   num3: any;
   anothUser: any;
   author;
+  dateObj;
+  currentDate;
+  curr
   sender = null;
   reciver = null;
   reciverUser = [];
@@ -55,9 +58,9 @@ export class InboxComponent implements OnInit {
   }
 
   SetMember(uid, index) {
-      this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-        this.SelectedUser[index] = data[0];
-      });
+    this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
+      this.SelectedUser[index] = data[0];
+    });
   }
 
   RefreshUsers(index, value) {
@@ -159,23 +162,26 @@ export class InboxComponent implements OnInit {
       for (let message of this.msg) {
         this.pm.getMessage(message.thread_id).subscribe(data => {
           Object.assign(message, data);
-          console.log(message)
-          // if (this.currentuser.user.uid === this.message.messages[0].author) {
-          //   this.user.getUser(this.currentuser.user.uid).subscribe(res => {
-          //     this.sender = res;
-          //     //console.log(this.sender)
-          //   })
-          // } else if(this.currentuser.user.uid != this.message.messages[0].author) {
-          //   this.user.getUser(this.message.messages[0].author).subscribe(res => {
-          //     this.reciver = res;
-          //     //console.log(this.reciver)
-          //   })
-          // }
+          //the 0 author is the author for this message
+          if (this.currentuser.user.uid === message.messages[0].author) {
+            this.user.getUser(this.currentuser.user.uid).subscribe(res => {
+              this.sender = res;
+              //console.log(this.sender)
+            })
+          } else {
+            this.user.getUser(message.messages[0].author).subscribe(res => {
+              this.reciver = res;
+              //console.log(this.reciver)
+            })
+          }
         })
+        this.dateObj = new Date(message.last_updated * 1000);
+        this.currentDate = new Date();
+        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
       }
     })
   }
-  
+
   getCurrentUser() {
     this.user.getStatus().subscribe(data => {
       this.currentuser = data;
@@ -191,58 +197,69 @@ export class InboxComponent implements OnInit {
 
     });
   }
-  
+
   valueChanged(mid, event) {
-     // add to deletedArr
+    // add to deletedArr
     if (event.target.checked === true) {
       this.deletedArr.push(mid);
-    }else {
+    } else {
       // remove from deletedArr
       var index = this.deletedArr.indexOf(mid, 0);
       if (index > -1) {
         this.deletedArr.splice(index, 1);
-      }      
+      }
     }
     //console.log(this.deletedArr);
   }
-  deleteMessages(){
-     for (var _i = 0; _i < this.deletedArr.length; _i++) {
+  deleteMessages() {
+    for (var _i = 0; _i < this.deletedArr.length; _i++) {
       this.pm.deleteMessage(this.deletedArr[_i]).subscribe(data => {
-      this.deleted = data;
-      console.log(this.deleted);
-    });
-     }
+        this.deleted = data;
+        console.log(this.deleted);
+      });
+    }
   }
 
-   checkAll(ev) {
-     this.msg.forEach(x => x.state = ev.target.checked)
-     if(ev.target.checked === true){
-        for (var _i = 0; _i < this.msg.length; _i++) { 
-          this.pm.deleteMessage(this.msg[_i].thread_id).subscribe(data => {
+  checkAll(ev) {
+    this.msg.forEach(x => x.state = ev.target.checked)
+    if (ev.target.checked === true) {
+      for (var _i = 0; _i < this.msg.length; _i++) {
+        this.pm.deleteMessage(this.msg[_i].thread_id).subscribe(data => {
           this.deleted = data;
-          })
+        })
         //console.log(this.msg[_i].thread_id)
-        }
-     }
+      }
+    }
   }
 
   isAllChecked(mid) {
     return this.msg.every(_ => _.state);
   }
 
-  // loadMore(){
-  //   this.pm.getMessages().subscribe(data => {
-  //     this.messages = this.messages.concat();
-  //     console.log(this.messages)
-  //   })
-  // }
-  viewMessage(thread_id){
-     this.router.navigate(['/view', thread_id]);
-     //console.log(this.message)
+// CountMessages() {
+//     var pmtid;
+//     var pmtid = this.route.snapshot.params['pmtid'];
+//     this.route.params
+//       .switchMap((pmtid) => this.viewService.getView('maker_count_project_challenge_api/' + pmtid['pmtid']))
+//       .subscribe(data => {
+//         this.countProjects = data[0];
+//       }, err => {
+//         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+//       });
+//   }
+  loadMore(){
+    this.pm.getMessages().subscribe(data => {
+      this.messages = this.messages.concat();
+      console.log(this.messages)
+    })
+  }
+  viewMessage(thread_id) {
+    this.router.navigate(['/view', thread_id]);
+    //console.log(this.message)
   }
   // turnOffMessages(){
   //   this.pm.updateSettings().subscribe(data=>{
-      
+
   //   })
   // }
 }

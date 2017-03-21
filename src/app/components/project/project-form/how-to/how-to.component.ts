@@ -3,14 +3,14 @@ import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, F
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
-import { Project } from '../../../../models/project/create-project/project';
-import { TaxonomyTerm } from '../../../../models/project/create-project/taxonomy-term';
-import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/create-project/field_collection_item';
-import { FileEntity } from '../../../../models/project/create-project/file_entity';
+import { Project } from '../../../../models/project/project-form/project';
+import { TaxonomyTerm } from '../../../../models/project/project-form/taxonomy-term';
+import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
+import { FileEntity } from '../../../../models/project/project-form/file_entity';
 import { Observable } from 'rxjs/Observable'
 
 @Component({
-  selector: 'app-how-to',
+  selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
    styles : [`
       .tools textarea {max-width:100%;resize:none;}
@@ -19,18 +19,6 @@ import { Observable } from 'rxjs/Observable'
 })
 
 export class HowToComponent implements OnInit {
-
-// search = (text$: Observable<string>) => 
-//     text$
-//       .debounceTime(200)
-//       .distinctUntilChanged()
-//       .map(term => {
-//         if(term.length < 2){
-//           return [];
-//         } else{
-//           return ["awdawd","adwadwwwwd"];
-//         }
-//       });
 
   /**
    * @output will emit the new values to the parent Component
@@ -50,6 +38,37 @@ export class HowToComponent implements OnInit {
   Difficulties:TaxonomyTerm[];
   resources_files:FileEntity[] = [];
   ResourceLabels:TaxonomyTerm[];
+  searchFailed = {
+    tool:false,
+    part:false,
+    material:false
+  }
+
+  search = (text$: Observable<string>) =>{
+    let control = text$['source']['sourceObj'].classList[0];
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed[control] = false)
+      .switchMap((term) => 
+        {
+          if(term.length > 1){
+            return this.viewService.getView('api-project-tools-materials-parts-list',[['type', control],['name',term]])
+            .map(result => {
+              if(result.length == 0){
+                this.searchFailed[control] = true;
+              }
+              return result;
+            })
+          }
+          return [];
+        }
+      )
+  };
+        
+  test(event){
+    console.log(event);
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -74,22 +93,8 @@ export class HowToComponent implements OnInit {
     this.buildForm();
   }
 
-  ToolMaterialPart(ControlName, index, value){
-    if(this.ToolsMaterialsParts[ControlName]){
-      this.ToolsMaterialsParts[ControlName][index] = [];
-    }else{
-      this.ToolsMaterialsParts[ControlName] = [];
-    }
-    if(value.length > 1){
-      this.viewService.getView('api-project-tools-materials-parts-list',[['type', ControlName],['name',value]]).subscribe(data => {
-        this.ToolsMaterialsParts[ControlName][index] = data;
-      });
-    }
-  }
-
   SetToolMaterialPart(arrayelementname,ControlName,value,index){
     let name_with_id = value.name+' ('+value.nid+')';
-    this.ToolsMaterialsParts[arrayelementname][index] = [];
     const control =  this.HowToForm.controls[ControlName]['controls'][index];
     control.controls['field_'+arrayelementname+'_name'].setValue(name_with_id);
     var url:URL;
