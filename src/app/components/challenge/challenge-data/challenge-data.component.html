@@ -45,7 +45,7 @@
                     <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
                   </div>
                 </div>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span *ngIf="no_of_followers" class="badge">{{no_of_followers}}</span></a></li>
               </ul>
               <ul class="list-unstyled challenge-follow" *ngIf="challenge">
                    <!-- Start Follow -->

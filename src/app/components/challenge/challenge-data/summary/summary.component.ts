@@ -50,7 +50,9 @@ export class SummaryComponent implements OnInit {
   mostRecent(sort: string) {
     this.pages = 0
     this.sort.sort_order = "DESC"
-    this.sort.sort_by = "createpageNumberd"
+   // this.sort.sort_by = "createpageNumberd"
+       this.sort.sort_by = "created"
+
     this.sortType.emit(this.sort);
     this.ActionName = "Most Recent"
   }
