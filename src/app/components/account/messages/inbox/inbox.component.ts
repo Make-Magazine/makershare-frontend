@@ -43,6 +43,7 @@ export class InboxComponent implements OnInit {
   submitted = false;
   deletedArr = [];
   deleted = []
+  userId;
   messageObj: Message = {
     recipients: [],
     subject: '',
@@ -58,7 +59,7 @@ export class InboxComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    this.getCurrentUser();
+    //this.getCurrentUser();
     this.getMessages();
     this.buildForm();
     this.CountMessages();
@@ -168,7 +169,6 @@ export class InboxComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
-      console.log(data);
       this.messages = data;
       let msg_arr = [];
       for (let key in this.messages) {
@@ -178,20 +178,19 @@ export class InboxComponent implements OnInit {
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
-      console.log(this.msg);
       for (let message of this.msg) {
-        this.pm.getMessage(message.thread_id).subscribe(data => {
-          Object.assign(message, data);
-          //the 0 author is the author for this message
-          if (this.currentuser.user.uid === message.messages[0].author) {
-            this.user.getUser(this.currentuser.user.uid).subscribe(res => {
+        this.pm.postView('maker_get_pm_author/retrieve_author/', message.thread_id).subscribe(data=>{
+        this.messages = data;
+        this.userId = localStorage.getItem('user_id');
+        if (this.userId === this.messages[0].author) {
+            this.user.getUser(this.userId).subscribe(res => {
               this.sender = res;
-              console.log(this.sender.first_name)
+              //console.log(this.sender.first_name)
             })
           } else {
-            this.user.getUser(message.messages[0].author).subscribe(res => {
+            this.user.getUser(this.messages[0].author).subscribe(res => {
               this.reciver = res;
-              console.log(this.reciver.first_name)
+              //console.log(this.reciver.first_name)
             })
           }
         })
@@ -203,8 +202,9 @@ export class InboxComponent implements OnInit {
   }
 
   CountMessages() {
+    this.userId = localStorage.getItem('user_id');
     this.route.params
-      .switchMap(() => this.viewService.getView('maker_count_pm_api/'))
+      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/',this.userId))
       .subscribe(data => {
         this.countMsg = data;
        });
@@ -224,12 +224,12 @@ export class InboxComponent implements OnInit {
     }
   }
 
-  getCurrentUser() {
-    this.user.getStatus().subscribe(data => {
-      this.currentuser = data;
-      //console.log(this.currentuser.user.uid);
-    });
-  }
+  // getCurrentUser() {
+  //   this.user.getStatus().subscribe(data => {
+  //     this.currentuser = data;
+      
+  //   });
+  // }
 
   deleteMessage(mid: number) {
     this.pm.deleteMessage(mid).subscribe(data => {
