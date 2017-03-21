@@ -22,7 +22,7 @@ export class ChallengeDataComponent implements OnInit {
   no_of_followers = 0;
   projects = [];
   hideloadmore = true;
-  hideloadmoreproject = true;
+  hideloadmoreproject = false;
   hideloadmorefollower = false;
   pageNumber = 0;
   challenge_start_date;
@@ -210,7 +210,7 @@ export class ChallengeDataComponent implements OnInit {
 
     this.pageNo = 0;
     this.getProjects();
-    // this.hideloadmoreproject = false;
+     this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
     console.log(this.projects);
 

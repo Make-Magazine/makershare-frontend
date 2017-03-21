@@ -30,6 +30,7 @@ export class SummaryComponent implements OnInit {
   }
   /* function to sort challenge Title A-z */
   sortAsc(sort: ISorting) {
+    
     this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title"
@@ -51,6 +52,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to sort challenge Recently */
   mostRecent(sort: string) {
+
     this.pages = 0
     this.sort.sort_order = "DESC"
     // this.sort.sort_by = "createpageNumberd"

@@ -95,12 +95,9 @@ export class ChallengeProjectComponent implements OnInit {
       .subscribe(data => {
         this.challangeData = data;
         this.challangStartDate = this.challangeData.challenge_start_date;
-        //console.log(this.challangeData[0].nid);
-
-      });
+     });
   }
   updateSelectedProject(item: any) {
-   // console.log(item);
     this.selectedProjectName = item.target.selectedOptions[0].text;
     console.log(this.selectedProjectName);
     this.selectedProject = item.target.value;
@@ -120,18 +117,13 @@ export class ChallengeProjectComponent implements OnInit {
       "field_entry_project": this.selectedProject,
       "field_entry_challenge": this.nid,
     };
-    console.log(this.challangeData.title)
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
       console.log(res);
-    //  console.log(this.challangeData[0].nid);
        this.router.navigate(['challenges/', this.challangeData[0].nid]);
-    this.notificationBarService.create({ message: 'You have submitted Your Project '+  this.selectedProjectName + ' in the Challenge '+ this.challangeData[0].title, type: NotificationType.Success});
-
-    }, err => {
+       this.notificationBarService.create({ message: 'You have submitted Your Project '+  this.selectedProjectName + ' in the Challenge '+ this.challangeData[0].title, type: NotificationType.Success});
+  }, err => {
       console.log(err);
     });
-    console.log("submit project");
-   
   }
 
   onMyEntries() {
