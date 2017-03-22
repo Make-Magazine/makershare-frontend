@@ -1,7 +1,7 @@
 <div class="profile-content">
   <div class="projects-grid row">
 
-    <div *ngFor="let project of profile_projects" class="project col-md-4" (click)="ShowProjectDetails(project.nid)">
+    <div *ngFor="let project of profile_projects" class="project col-md-4">
       <!-- Start Project Card -->
      <app-project-card [projectCard]="project"></app-project-card>
       <!-- End Project Card -->
