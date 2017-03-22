@@ -27,9 +27,6 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  ShowProjectDetails(nid){
-    this.router.navigate(['/project/view', nid]);
-  }
-
+ 
 
 }

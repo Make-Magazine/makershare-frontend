@@ -21,8 +21,8 @@
               </div>
               <div class="card-buttons">
                 <div class="button-container-sec-3">
-                  <a class="btn btn-grey" *ngIf="challenge.count>0">Follow<span class="follow-number" *ngIf="challenge.count>0">{{challenge.followers}}</span></a>
-                  <a class="btn btn-grey" *ngIf="!challenge.count>0">Follow<span class="follow-number" *ngIf="!challenge.count>0">{{challenge.followers}}</span></a>
+                  <span class="btn btn-grey-follow" *ngIf="challenge.count>0">Follow<span class="follow-number" *ngIf="challenge.count>0">{{challenge.followers}}</span></span>
+                  <span class="btn btn-grey-follow" *ngIf="!challenge.count>0">Follow<span class="follow-number" *ngIf="!challenge.count>0">{{challenge.followers}}</span></span>
                 </div>
                 <div class="button-container-main-1">
                   <a (click)="ShowChallengeDetails(challenge.nid)" class="btn btn-main">Join Challenge</a>
