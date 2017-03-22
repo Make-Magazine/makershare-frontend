@@ -1,9 +1,14 @@
-<form [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment" class="form-horizontal">
-  <div class="col-lg-10">
-    <div class=""><img *ngIf="currentuser?.photo" width="60px;" height="60px;" src="{{currentuser?.photo}}" alt="" class="img-responsive"></div>
-
-    <div class=""><img *ngIf="!currentuser?.photo" width="60px;" height="60px;" src="./assets/images/maker-robot.png" alt="" class="img-responsive"></div>
-    <textarea class="form-control" rows="5" id="comment" formControlName="comment_body"></textarea>
-    <input type="submit" class="btn btn-info" value="Post">
+<form class="new-comment d-flex" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
+  <div class="comment-image d-flex">
+    <img *ngIf="!currentUser?.photo" src="./assets/images/defaultprofile.png" alt="" class="img-responsive d-flex mr-3">
+    <img *ngIf="currentUser?.photo" src="{{currentUser?.photo}}" alt="" class="img-responsive d-flex mr-3">
+  </div>
+  <div class="comment-body d-flex justify-content-around">
+    <textarea name="new-feedback" placeholder="Comment..." cols="60" rows="2" class="col" formControlName="comment_body"></textarea>
+    <button class="send-comment" type="submit">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
+      </span></button>
   </div>
 </form>
