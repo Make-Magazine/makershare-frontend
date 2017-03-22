@@ -1,5 +1,7 @@
 .project {
 	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 4px;
 	overflow: hidden;
 	border:none;
 	-webkit-transition: background-color 1.25s linear;
@@ -7,11 +9,14 @@
 	    -ms-transition: background-color 1.25s linear;
 	     -o-transition: background-color 1.25s linear;
 	        transition: background-color 1.25s linear;
-	.project-title {
+	.card-title {
 		background-color: $white;
 		padding: 10px;
 		height: 60px;
 		position: relative;
+		@include card-header-font-md();
+		color: $text-color-1;
+		min-height: 38px;
 		.winner {
 			display: none;
 			position: absolute;
@@ -57,7 +62,7 @@
 			}
 		}
 	}
-	&.col-md-4 {
+	&.col-lg-4 {
 		img {height: 180px;}
 		.description,.role {
 			display:none;
@@ -101,24 +106,13 @@
 			}
 		}
 	}
-	.teaser {
-		display: none;
-		width: 80%;
-		position: absolute;
-		top: 95px;
-		left: 35px;
-		color: $white;
-	}
-	&:hover {
-		/* .overlay{
-			background-color: rgba(0,100,200,0.8);
+	.profiel-pic-container {
+		width: 60px;
+		height: 60px;
+		overflow: hidden;
+		margin-bottom: 5px;
+		img {
+			width: 100%;
 		}
-		.teaser,.winner {display: block;}
-		.project-stats {
-			display: block;
-			bottom: 0;
-		}
-		i.fa-video-camera, i.fa-certificate {display: none;} */
-	}
-		
+	}		
 }

@@ -1,10 +1,16 @@
 .page-workshop-individual {
 	.top-content-wrapper {
-		background: url('http://placehold.it/1200x550') center center;
-		background-size: cover;
-		padding-top: 20px;
+		//padding-top: 20px;
 		border-bottom: 1px solid $main-grey;
 		margin-bottom: 10px;
+		height: 200px;
+		overflow: hidden;
+		position: relative;
+		.workshop-coverphoto {
+			position: absolute;
+			width: 100%;
+		}
+		& > .container {padding-top: 20px;} 
 		h2 {
 			font-size: 35px;
 			font-weight: bold;
@@ -86,6 +92,15 @@
 				}
 			}
 		}
+		.image-container {
+			width: 220px;
+			height: 180px;
+			overflow: hidden;
+			img {
+				max-width:100%;
+				height: auto;
+			}
+		}
 	}
 	.workshop-instructor {
 		.profile-container {
@@ -124,12 +139,29 @@
 	}
 	.suggested {
 		margin-top: 15px;
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		.image-container {
+			width: 160px;
+			height: 160px;
+			overflow: hidden;
+			img {
+				max-width:100%;
+				height: auto;
+			}
+		}
 		h4 {font-weight: normal;}
 		li {
-			display: inline-block;
-			width: 30%;
+			// display: inline-block;
+			// width: 30%;
+			padding-right: 10px;
 			.media-left {
-				width: 35%;
+				// width: 35%;
 			}
 		}
 	}

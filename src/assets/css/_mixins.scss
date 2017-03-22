@@ -9,3 +9,42 @@
     background: -moz-linear-gradient($c1, $c2); /* For Firefox 3.6 to 15 */
     background: linear-gradient($c1, $c2); /* Standard syntax */
 }
+
+@mixin font-setting ($ff,$fs,$fw,$tt,$lh,$c){
+	font-family: $ff;
+	font-size: $fs;
+	font-weight:$fw ;
+	text-transform: $tt;
+	line-height: $lh;
+	color: $c;
+}
+@mixin header-font (){
+	@include font-setting('Messina Modern Regular', 4em ,400 ,capitalize , 100%, $text-color-1 );
+}
+
+@mixin card-header-font-lg (){
+	@include font-setting('Messina Modern Regular', 3em ,400 ,capitalize , 90%, $text-color-2 );
+}
+@mixin card-header-font-md (){
+	@include font-setting('Messina Modern Bold', 1.5em ,700 ,none , 100%, $text-color-2 );
+}
+@mixin card-header-font-sm (){
+	@include font-setting('Messina Modern Bold', 1.125em ,700 ,none , 100%, $text-color-2 );
+}
+
+@mixin body-font-b (){
+	@include font-setting('Messina Sans Bold', 1.125em ,700 ,none , 130%, $text-color-2 );
+}
+@mixin body-font-r (){
+	@include font-setting('Messina Sans Regular', 1.125em ,400 ,none , 130%, $text-color-2 );
+}
+
+@mixin desc-font-14 (){
+	@include font-setting('Messina Sans SemiBold', 0.875em ,600 ,none , 100% , $text-color-2);
+}
+@mixin desc-font-12 (){
+	@include font-setting('Messina Sans SemiBold', 0.75em ,600 ,none , 100% , $text-color-2);
+}
+@mixin desc-font-13 (){
+	@include font-setting('Messina Sans Bold', 0.813em ,700 ,uppercase , 100% , $text-color-2);
+}

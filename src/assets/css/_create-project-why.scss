@@ -6,10 +6,14 @@
 		background-color: $light-grey*1.05;
 		border-bottom: 1px solid $main-grey;
 		padding: 10px 0 5px;
-		h3 {margin: 5px 0 0; padding: 0;}
+		overflow: hidden;
+		h3 {
+			@include card-header-font-md();
+			color: $text-color-1;
+		}
 		.contorls{
 			li {
-				display: inline-block;
+				// display: inline-block;
 				.btn-light-grey{
 					background-color: $white;
 				}
@@ -19,6 +23,10 @@
 				}
 				.btn {
 					padding: 5px 15px;
+				}
+				.btn-main {
+					left: 0;
+					top: 0;
 				}
 			}
 		}
@@ -33,6 +41,8 @@
 		padding-top: 10px;
 		ul {
 			padding-left: 15px;
+			overflow: hidden;
+			margin-bottom: 0;
 			li {
 				float: left;
 				.btn-grey-inverse {
@@ -111,8 +121,8 @@
 		}
 		.sort{
 			width: 40px;
-			display: inline-block;
-			vertical-align: top;
+			// display: inline-block;
+			// vertical-align: top;
 		}
 		.quantity {
 			width: 50px;
@@ -122,21 +132,22 @@
 			width: 30px;
 			position: relative;
 			margin-left: 5px;
+			height: 30px;
 			i {
 				line-height: 10px;
-				&.sort-up{
-					position: absolute;
-					top: -10px;
-					left: 0;
-				}
-				&.sort-down{
-					position: absolute;
-					bottom: -15px;
-					left: 0;
-				}
-				&::before {
-					float: left;
-				}
+				// &.sort-up{
+				// 	position: absolute;
+				// 	top: -10px;
+				// 	left: 0;
+				// }
+				// &.sort-down{
+				// 	position: absolute;
+				// 	bottom: -15px;
+				// 	left: 0;
+				// }
+				// &::before {
+				// 	float: left;
+				// }
 			}
 		}
 		.tools {
@@ -152,11 +163,41 @@
 			a {
 				font-size: 14px;
 				padding: 5px;
-				i {width: 30px;}
+				i {
+					line-height: 10px;
+					&.sort-up{
+						position: absolute;
+						top: -10px;
+						left: 0;
+					}
+					&.sort-down{
+						position: absolute;
+						bottom: -15px;
+						left: 0;
+					}
+					&::before {
+						float: left;
+					}
+				}
 
 			}
 			.panel-heading {
 				cursor: move;
+			}
+			.inputs-container {
+				display: -webkit-box!important;
+				display: -webkit-flex!important;
+				display: -ms-flexbox!important;
+				display: flex!important;
+				-webkit-flex-wrap: nowrap!important;
+				-ms-flex-wrap: nowrap!important;
+				flex-wrap: nowrap!important;
+				-webkit-box-pack: justify!important;
+				-webkit-justify-content: space-between!important;
+				-ms-flex-pack: justify!important;
+				justify-content: space-between!important;
+				padding-left: 20px;
+
 			}
 		}
 		.difficulty {
@@ -215,7 +256,7 @@
 			background-color: $light-grey;
 			overflow: hidden;
 			margin: 20px 0;
-
+			padding: 0 15px;
 		}
 		.remove {
 			position: absolute;
@@ -242,6 +283,7 @@
 							position: absolute;
 							top: 0;
 							right: 0;
+							font-size: 10px;
 					}
 				}
 			}

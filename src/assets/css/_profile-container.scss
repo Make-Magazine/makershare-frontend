@@ -4,7 +4,7 @@
     font-size: 12px;
     .profile-card{
         background-color: $white;
-        padding: 10px 0;
+        padding: 10px 5px;
         overflow: hidden;
         border:1px solid $light-grey*0.8;
         max-height: 320px;
@@ -15,7 +15,8 @@
             padding:0;
         }
         .left{
-            width: 140px;
+            display: inline-block;  
+            vertical-align: top;
             img,a{display: block;}
             a{
                 margin: 5px 0 0;
@@ -27,7 +28,8 @@
             img {max-width: 100%;}
         }
         .right{
-            width: 120px;
+            display: inline-block;  
+            vertical-align: top;
             padding: 0;
             margin: 0;
             h4.profile-name {

@@ -1,0 +1,14 @@
+<svg width="30" height="37" viewBox="0 0 30 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon-challenge-winner</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1521 -316)" figma:type="canvas">
+<g id="icon-challenge-winner" style="mix-blend-mode:normal;" figma:type="instance">
+<g id="icon-challenge-winner" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-1521 316.061)" fill="#F2C94C" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 30 0L 0 0L 0 27.6832L 15 36.061L 30 27.6832L 30 0ZM 16.9672 12.5111L 15 6.55655L 13.0328 12.5111L 6.66665 12.5111L 11.8169 16.1912L 9.8497 22.1457L 15 18.4656L 20.1503 22.1457L 18.183 16.1912L 23.3333 12.5111L 16.9672 12.5111Z"/>
+</defs>
+</svg>

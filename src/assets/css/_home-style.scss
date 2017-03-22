@@ -1,176 +1,114 @@
 .front {
-
-.banner {
-
-
-    /* Carousel base class */
-    .carousel {
-        height: 500px;
-
-        /* Declare heights because of positioning of img element */
-        .item {
-            height: 500px;
-            background-color: #777;
-        }
-
-        .card-container {
-            position: static;
-        }
-    }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        z-index: 10;
-        max-width: 850px;
-        margin: auto;
-        bottom: 120px;
-        padding-left: 20px;
-        padding-right: 20px;
-        background-color: rgba(0,0,0,0.4);
-        border-radius: 5px;
-        h2{font-size: 31px;font-weight: 100;color: $white;}
-        h4{font-size: 25px; font-weight: bold;margin-top: 30px;margin-bottom: 20px;color: $white;}
-        p {font-size: 23px;}
-        a.btn {
-            margin: 0;
-            border: 1px solid #fff;
-            border-radius: 0;
-            font-size: 14px;
-            padding: 5px 10px;
-        }
-    }
-
-    .carousel-inner > .item > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        height: 500px;
-    }
-
-}
-
-.browse-projects {
-    padding-bottom: 15px;
-    .default-header {
-        margin-bottom: 35px;
-        p {
-            font-size: 17px;
-
-            span {
-                font-size: 20px;
-                font-weight: bold;
-                text-transform: uppercase;
-            }
-        }
-
-        .button-group {
-            float: right;
-        }
-    }
-    .challenges-container {
-        padding: 0;
-        .challenge-card {
-            border: none;
-            .card-title {
-                font-size: 21px;
-            }
-            .card-description {
-                p {
-                    font-weight: normal;
-                    line-height: 25px;
+    background-color: $main-bg;
+    .banner {
+        position: relative;
+        /* Carousel base class */
+        .carousel {
+            // height: 500px;
+            // overflow: hidden;
+            /* Declare heights because of positioning of img element */
+            .carousel-item {
+                height: 500px;
+                width: 100%;
+                background-color: #777;
+                img {
+                    width: 100%;
                 }
             }
-            .card-buttons a.btn.btn-grey {
-                margin: 0;
-            }
-            .image-container {
-                img { height: 320px; }
+            .card-container {
+                position: absolute;
+                top: 0;
+                bottom: 80px;
+                left: 0;
+                right: 0;
             }
         }
-    }
-    .display {
-        overflow: hidden;
-        position: relative;
-        margin-bottom: 25px;
-        .card-container {
-            position: static;
+
+        /* Since positioning the image, we need to help out the caption */
+        .carousel-caption {
+            
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 5px;
+            h2{font-size: 31px;font-weight: 100;color: $white;}
+            h4{font-size: 25px; font-weight: bold;margin-top: 30px;margin-bottom: 20px;color: $white;}
+            p {font-size: 23px;}
+            a.btn {
+                
+            }
         }
+
+       
+
     }
-}
 
-}
+    .browse-projects {
+        padding-bottom: 15px;
+        padding-top: 25px;
+        .default-header {
+            margin-bottom: 35px;
+            p {
+                font-size: 17px;
 
-.showcase {
-    .showcase-item {
-        position: relative;
-        margin-bottom: 20px;
-        overflow: hidden;
-        height: 300px;
-        img {height: 100%;}
-        .content {
-            position:absolute;
-            bottom: 0px;
-            background-color: rgba(0,0,0,0.6);
-            padding: 0 10px;
-            color: #fff;
-            width: 100%;
-            h4.title {
-                color: #fff;
-                font-size: 14px;
+                span {
+                    font-size: 20px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
             }
-            .description {
-                font-size: 12px;
-            }
-            .number {
-                float: left;
-                font-size: 12px
-            }
-            .timestamp {
-                font-size: 10px;
+
+            .button-group {
                 float: right;
             }
-
         }
-        &:hover {
-            .content {
-                //bottom: 0;
+        .challenges-container {
+            padding: 0;
+            .challenge-card {
+                border: none;
+                .card-title {
+                    
+                }
+                .card-description {
+                    p {
+                    }
+                }
+                .card-buttons a.btn.btn-grey {
+                    margin: 0;
+                }
+                .image-container {
+                    img { height: 100%;width: 100%; }
+                }
             }
         }
     }
 }
+
 .maker-spotlight {
     overflow: hidden;
+    background-color: $sec-bg;
+    padding-top: 30px;
+    padding-bottom: 50px;
     header h3{
-        margin-left: 45px;
-        font-weight: bold;
+        @include header-font();
+        text-align: center;
+        margin: 25px 0;
     }
-    .default-header {padding: 10px 0;margin-bottom: 0;width: 100%;}
-    .spotlight{
-        border-style: solid;
-        border-color: $main-grey;
-        border-width: 0 1px 1px;
-        padding-bottom: 20px;
-        padding-right: 0;
-        &:nth-child(2n){
-            border-left-width: 0;
+    .spotlight-item {
+        margin-top: 15px;
+        padding: 10px;
+        .card-block {
+            padding-bottom: 0;
+        }
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            img { height: 200px;width: 100%; }
         }
         
-        overflow: hidden;
-        .project-image {
-            img {
-                max-height: 135px;
-            }
-        }
-        .profile-container {
-            margin-top: 35px;
-            margin-right: 10px;
-            .left {
-                width: 110px;
-            }
-        }
+        
     }
-
+    
 }
 
 .col-fixed-300 {width:306px;
@@ -184,10 +122,97 @@
 .fffa {overflow: hidden;float: none;}
 .slick-dots {
     li {
-        button:before {font-size: 15px;}
-        
+        button:before {font-size: 15px;}     
     }
 }
-footer {min-height: 35px;background-color: $main-grey*0.5;margin-top: 5px;}
+
+footer {
+    padding-top: 30px;
+    padding-bottom: 25px;
+    min-height: 35px;
+    font-size: 14px;
+    background: white;
+    .copy {
+        img {
+            max-width: 70px;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+        }
+    }
+    a.nav-link {
+        color: $main-grey;
+        padding: 0;
+    }
+    .fa-stack-2x {
+        font-size: 1.7em;
+    }
+    .fa-stack {
+        position: relative;
+        display: inline-block;
+        width: 1.7em;
+        height: 1.7em;
+        line-height: 1.7em;
+        vertical-align: middle;
+    }
+    .socials {
+        margin-top: 30px;
+    }
+}
 
 .width-fix {padding: 0;}
+
+.user-card {
+    .profile-pic-container {
+        .maker-photo {
+            display: block;
+            width: 80px;
+            height: 80px;
+        }
+        a {
+            width: 100%;
+        }
+        .icons {
+            img {
+                width: 25px;
+            }
+        }
+    }
+    .user-name {
+        @include card-header-font-sm();
+        a {
+            text-decoration: none;
+            color: $main-grey;
+        }
+    }
+    .user-nickname {
+        font-size: 12px;
+        margin-bottom: 0;
+        a {
+            text-decoration: none;
+            color: $light-grey;
+        }
+    }
+    .profile-tag {
+        @include card-header-font-sm();
+        margin-bottom: 5px;
+        height: 38px;
+        line-height: 17px;
+        overflow: hidden;
+        display: inline-block;
+        margin-left: 5px;
+    }
+    .profile-tag, .user-city, .count {
+        font-size: 14px;
+        // margin-bottom: 5px;
+    }
+    .user-city {
+        color: $title-color;
+    }
+    .count {
+        margin-bottom: 0;
+        color: $light-grey;
+    }
+}

@@ -1,5 +1,6 @@
-h1,h2,h3,h4,h5,h6 {font-weight: 600;color: $main-grey;}
+h1,h2,h3,h4,h5,h6 {font-family: $title-font-family;font-weight: bold;color: $main-grey;}
 body {
+    padding-right: 0 !important; 
     -webkit-transition: all 1.25s ease-in-out;
        -moz-transition: all 1.25s ease-in-out;
         -ms-transition: all 1.25s ease-in-out;
@@ -25,47 +26,59 @@ body {
 
 .main-header {
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0!important;
     color: $main-grey;
-    border-bottom: 1px solid $main-grey;
-    display: -webkit-box;    /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox;    /* TWEENER - IE 10 */
-    display: -webkit-flex;   /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-    display: flex;           /* NEW, Spec - Firefox, Chrome, Opera */
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    height: 50px;
-        
-    .explore {
-        display: block;
-        margin-bottom: 0;
-
-        li {
-            display: inline-block;
-
-            a {
-                display: inline-block;
-                padding: 12px 35px;
-                font-size: 18px;
-                border-left: 1px solid $light-grey;
-                color: $main-grey;
-                text-decoration: none;
-                i{
-                    font-size: 1.3em;
-                }
-            }
+    // height: 55px;
+    .navbar-brand {
+        width: 50px;
+        padding: 0px;
+        padding-left: 5px;
+        img {
+            width: 50px;
         }
     }
-
+    .color-text {
+        color: $main-button-1 !important;
+    }
     .login-block {
-        display: block;
         margin-bottom: 0;
 
         li {
             display: inline-block;
             .btn {
                 padding: 5px 37px;
+            }
+        }
+    }
+    .logged-in {
+        margin-bottom: 0;
+        margin-top: 5px;
+        li {
+            min-width: 40px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            a.btn {
+                font-size: 10px;
+                padding: 5px 10px;
+                
+            }
+            &.mail-icon {
+                img {
+                    width: 30px;
+                }
+            }
+            &.search-icon {
+                img {
+                    width: 23px;
+                }
+            }
+            &.min-user-img {
+                
+                img {
+                    width: 25px;
+                }
             }
         }
     }
@@ -94,4 +107,79 @@ body {
 
 .dnd-sortable-drag {
     opacity: 0.3;
+}
+
+#message-modal {
+    .modal-content {
+            padding: 5px 10px;
+            overflow: hidden;
+        .recieve {
+            label {
+                width: 10%;
+                display: inline-block;
+            }
+            div {
+                width: 80%;
+                display: inline-block;
+            }
+        }
+        .subject {
+            label {
+                padding-bottom: 5px;
+            }
+        }
+        .message-text {
+            label {
+                padding-bottom: 5px;
+            }
+            textarea {
+                resize: none;
+                width: 100%;
+            }
+        }
+        .actions {
+            overflow: hidden;
+            float: right;
+            li {
+                float: left;
+            }
+        }
+    }
+}
+.card-type {
+    position: absolute;
+    bottom: 6px;
+    right: 5px;
+    background: rgba(250,250,250,0.7);
+    padding: 2px 4px;
+}
+
+
+/* Auth0 Forms */
+.auth0-lock-widget-container .auth0-lock-input-location{
+  width: 33.3%;
+  float: left;
+
+}
+.auth0-lock-widget-container .auth0-lock-input-lastName:after {
+    content: "Birthdate";
+    color: #aba9a9;
+    font-size: 14px;
+    padding: 0 5px;
+    font-family: inherit;
+    display: block;
+    margin-top: 10px;
+}
+
+.auth0-lock-widget-container .auth0-lock-input-lastName{
+    margin-bottom: 5px !important;
+}
+
+.auth0-lock-widget-container .auth0-lock-input-year,
+.auth0-lock-widget-container .auth0-lock-input-month,
+.auth0-lock-widget-container .auth0-lock-input-day{
+  display: block;
+  float: left;
+  width: 33.3%;
+	
 }

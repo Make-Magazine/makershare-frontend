@@ -1,19 +1,23 @@
-.page-challenge-summary, .page-challenge-summary-closed {
+.page-challenge-summary, .page-challenge-summary-closed,.page-enter-challenge {
 	.top-content-wrapper {
 		overflow: hidden;
 		.challenge-cover {
-			height: 150px;
+			height: 200px;
 			position: relative;
 			overflow: hidden;
-			padding-right: 0;
+			padding-right: 0px;
+			padding-left: 0px;
 			img {
 				position: absolute;
 				width: 100%;
-				padding-right: 15px;
-				z-index: -1;
+				padding-right: 0px;
+				z-index: 0;
 			}
 			.sponsor {
 				text-align: center;
+				position: absolute;
+				width: 100%;
+				z-index: 2;
 				h4 {
 				background-color: $main-grey;
 				line-height: 30px;
@@ -23,8 +27,8 @@
 			}
 			.challenge-status {
 				position: absolute;
-				bottom: 65px;
-				left: 50px;
+				top: 40px;
+				left: 10px;
 				background-color: $light-grey;
 				@include opacity(0.8);
 				display: inline-block;
@@ -35,20 +39,20 @@
 				background-color: rgba(0,0,0,0.5);
 				display: inline-block;
 				position: absolute;
-				left: 15px;
-				bottom: 0;
+				left: 10px;
+				bottom: 10px;
 				h1 {
 					color: $white;
 					font-weight: normal;
 					margin: 0;
 					font-size: 25px;
-					padding: 10px 15px 20px;
+					padding: 10px 15px 15px;
 				}
 			}
 			.challenge-countdown {
 				position: absolute;
-				left: 50%;
-				top: 40%;
+				right: 10px;
+				top: 40px;
 				background-color: $light-grey;
 				@include opacity(0.8);
 				display: inline-block;
@@ -69,17 +73,23 @@
 			.challenge-actions {
 				position: absolute;
 				bottom: 0;
-				right: 20px;
+				right: 10px;
 				li {
 					float: left;
+					a.active {
+						background-color: $main-grey;
+						color: #fff;
+					}
 				}
 			}
 		}
 	}
 	.region-content {
 		padding-right: 0px;
+		padding-left: 0px;
 		.tabs-buttons {
 			width: 100%;
+			overflow: hidden;
 			.challenge-submenu {
 				overflow: hidden;
 				width: 77%;
@@ -114,6 +124,12 @@
 						padding: 8px 34px;
 						border: 1px solid $main-grey;
 						width: 100%;
+						color: #fff;
+					}
+					i {
+						font-weight: normal;
+						width: 25px;
+						margin-left: -15px;
 					}
 				}
 			}
@@ -138,7 +154,7 @@
 				}
 			}
 			.filters {
-				border: 1px solid $main-grey;
+				// border: 1px solid $main-grey;
 				p {padding-left: 30px;}
 			}
 			.entries {
@@ -194,7 +210,17 @@
 					padding: 10px 15px;
 				}
 			}
-			.challenge-summary {display: block;}
+			.challenge-summary {
+				.entries {
+					.row {
+						clear: both;
+					}
+				}
+				.entries-count {
+					float: none;
+					line-height: inherit;
+				}
+			}
 			
 			.summary-aside-content {
 				background-color: $light-grey;
@@ -231,22 +257,27 @@
 				.value {font-size: 11px;padding-top: 10px;}
 			}
 			.followers {
-			/*	display: none;*/
+				//display: none;
 				width: 90%;
 				overflow: hidden;
 				margin: auto;
-				.vote {
-					position: static;
-				}
+				// .vote {
+				// 	position: static;
+				// }
 				.follower-card {
-					height: 196px;
+					// height: 190px;
+					position: relative;
+					// padding-bottom: 30px;
 					margin-top: 25px;
-					border: 1px solid $main-grey;
+					margin-bottom: 20px;
+					// border: 1px solid $main-grey;
 					-webkit-box-sizing: border-box;
 					   -moz-box-sizing: border-box;
 					        box-sizing: border-box;
 				}
-
+				.row {
+					clear: both;
+				}
 			}
 			.profile-container {
 				padding: 0;
@@ -260,6 +291,18 @@
 						padding: 0 5px ;
 					}
 					.right {padding: 0;margin: 0;}
+				}
+			}
+			.challenge-award {
+				margin-bottom: 10px;
+				.image-container {
+					width: 220px;
+					height: 180px;
+					overflow: hidden;
+					img {
+						max-width: 100%;
+						height: auto;
+					}
 				}
 			}
 		} // End content-wrapper
@@ -284,5 +327,39 @@
 			}
 			
 		} 
+	}
+}
+.page-enter-challenge {
+	background-color: $main-bg;
+	p {
+		margin-top: 30px;
+		text-align: center;
+		span {
+			text-align: center;
+		}
+	}
+	.create {
+		width: 100%;
+	}
+	.cancel,.submit {
+		font-size: 15px;
+		width: 47%;
+	}
+	.submit {
+		color: #fff !important;		
+		// float: right;
+		// margin-top: 5px;
+	}
+	.challenge-enter {
+		margin: 0 auto;
+		margin-bottom: 50px;
+	}
+}
+
+.page-challenge-summary {
+	.tabs-buttons {
+		.challenge-actions {
+		display: none;
+		}
 	}
 }
