@@ -6,6 +6,8 @@ import { ProjectDetailsComponent } from './project-details.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
 import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
 import { SharedModule } from '../../shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
     ReactiveFormsModule,
     ProjectDetailsRoutingModule,
     SharedModule,
+    NgbModule,
   ],
   declarations: [ProjectDetailsComponent,ProjectStoryComponent,ProjectHowToComponent]
 })
