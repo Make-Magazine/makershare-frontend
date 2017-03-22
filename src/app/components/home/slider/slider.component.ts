@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
+  providers: [NgbCarouselConfig] // add NgbCarouselConfig to the component providers
+
 })
 export class SliderComponent implements OnInit {
   sliders = [];

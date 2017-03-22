@@ -1,22 +1,23 @@
 .page-explore{
+	background-color: $main-bg;
 	.width-fix {padding: 0;}
 	.explore-header {
-		height: 250px;
-		background-color: $light-grey;
+		padding-bottom: 25px;
+		background-color: $main-bg;
 		text-align: center;
 		h3 {
+			@include header-font();
 			margin: auto;
 			text-align: center;
 			padding-top: 40px;
 			color: $main-grey;
 			padding-bottom: 30px;
-			font-weight: normal;
 		}
 		.explore-tags {
 			margin: 20px auto;
 			li{
 				display: inline-block;
-				margin: 0 5px;
+				margin: 5px;
 				a.btn {
 					padding: 5px 15px;
 					border-radius: 3px;
@@ -57,40 +58,55 @@
 }
 .filters {
 	min-height: 35px;
-	border: 1px solid #000;
 	color: $main-grey;
-	background-color: $white;
-	p {
-		padding-top: 10px;
-		font-size: 18px;
+	.entries-count {
 		
+		font-size: 18px;
+		p {
+			margin: 0;
+		}
+		padding: 5px 15px;
 	}
 	.btn {
+		// float: right;
 		font-size: 18px;
 		color: $main-grey;
+		// line-height: 5px;
+	}
+	.sorting-filter ,.projects-filter {
+		border-left: 2px solid $main-grey;
+		button::after {
+			display: none;
+		}
+		.dropdown-menu {
+			background-color: $sec-bg*1.25;
+			color: $light-grey;
+			border-radius: 0;
+		}
+
 	}
 }
 .page-explore,.page-showcase, .page-portfolio {
 	
 .project {
-	margin-top: 20px;
-	height: 255px;
-	overflow: hidden;
-	border: 1px solid #000;
-	.project-title {
-		background-color: $white;
-		padding: 10px;
-		height: 55px;
-		font-size: 14px;
-	}
-	.project-image {
-		background-color: $light-grey;
-		height: 100%;
-		overflow: hidden;
-		img {
-			width: 100%;
-			min-height: 200px;
-		}
-	}
+// 	margin-top: 20px;
+// 	height: 255px;
+// 	overflow: hidden;
+// 	border: 1px solid #000;
+// 	.project-title {
+// 		background-color: $white;
+// 		padding: 10px;
+// 		height: 55px;
+// 		font-size: 14px;
+// 	}
+// 	.project-image {
+// 		background-color: $light-grey;
+// 		height: 100%;
+// 		overflow: hidden;
+// 		img {
+// 			width: 100%;
+// 			min-height: 200px;
+// 		}
+// 	}
 }
 }

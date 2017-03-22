@@ -26,13 +26,13 @@
 		}
 		span {
 			line-height: 1em;
-			// float: right;
-			// margin-bottom: 10px;
+			color: $main-grey;
 		}
 	}
-	.messages{
+	.inbox-container ,.notification-container{
 		background-color: #fff;
-		padding: 0;
+		padding: 20px 0;
+		margin-bottom: 10px;
 		.inbox-controls {
 			padding: 5px 10px;
 			overflow: hidden;
@@ -51,9 +51,16 @@
 				}
 			}
 		}
+		.load-more {
+			width: 150px;
+			margin: 20px auto ;
+			font-size: 10px;
+		}
+	}
+	.inbox-container {
 		.messages-list {
 			padding: 0;
-			margin: 0;
+			margin: 0 0 15px;
 			.message-item {
 				display: flex;
 				align-items:center;
@@ -73,6 +80,10 @@
 						width: 40%;
 						img {
 							width: 60px;
+						}
+						a {
+							color:$blue;
+							text-decoration: none;
 						}
 					}
 					.message-subject {
@@ -104,10 +115,109 @@
 				
 			}
 		}
-		.load-more {
-			width: 250px;
-			margin: 20px auto ;
+		
+	}
+	.notification-container{
+		.notification-list {
+			padding: 0 0 20px;
+			margin: 0 0 10px;
+			.notification-item {
+				display: flex;
+				align-items:center;
+				margin: 0 5px;
+				padding: 0 5px;
+				.select { 
+					width: 3%;
+				}
+				.wrapper {
+					// display: flex;
+					// align-items:center;
+					border: 1px solid $main-grey;					
+					width: 95%;
+					overflow: hidden;
+					padding: 5px 10px;
+					.notification-info {
+						width: 85%;
+						img {
+							width: 60px;
+						}
+					}
+					.delete-notification {
+						overflow: hidden;
+						color: $main-grey;
+						position: relative;
+						i {
+							float: right;
+						}
+					}
+					&:hover {
+						background-color: $light-grey;
+					}
+				}
+				&:not(:first-of-type) {
+					.wrapper {
+						border-top: 0;
+					}
+				} 
+				&.read {
+					.wrapper {
+						background-color: $light-grey *0.9;
+					}
+				}
 
+				
+			}
 		}
 	}
 }
+.conversation-container {
+	background-color: #fff;
+	padding: 20px 50px;
+	margin-bottom: 15px;
+	.delete-actions {
+		float: right;
+		color: $blue;
+		margin-top: 15px;
+	}
+	.conversation {
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		.single-message {
+			border-bottom: 1px solid $main-grey;
+			.message-info {
+				margin: 30px 0;
+				a {
+					color:$blue;
+					text-decoration: none;
+				}
+				img {
+					width: 60px;
+				}
+		}
+			.message-body {
+				margin-bottom: 20px;
+			}
+		}
+		
+	}
+	.reply-area {
+		.reply {
+			color: $main-grey;
+			display: block;
+			margin-bottom: 15px;
+		}
+		textarea {width: 100%;resize: none;}
+		.send-actions {
+			text-align: right;
+			li {
+				display: inline-block;
+			}
+			margin-top: 15px;
+		}
+	}
+
+}
+.inbox-container,
+// .conversation-container
+.notification-container
+ {display: none;}

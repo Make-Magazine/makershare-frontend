@@ -26,6 +26,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { Auth } from './auth0/auth.service';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     RouterModule,
     routing,
