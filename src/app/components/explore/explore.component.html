@@ -53,7 +53,7 @@
           <div class="container-fluid">
             <div class="projects-grid row">
 
-              <div *ngFor="let project of projects" class="col-md-3" (click)="ShowProjectDetails(project.nid)">
+              <div *ngFor="let project of projects" class="col-md-3" >
                 <!-- Start Project Card -->
                 <app-project-card [projectCard]="project"></app-project-card>
                 <!-- End Project Card -->
