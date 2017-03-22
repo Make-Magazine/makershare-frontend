@@ -1,21 +1,22 @@
-  <!-- Start Showcase -->
-  <section class="showcase">
-    <div class="container">
-      <div class="row">
-
-        <div (click)="ShowSingleShowcase(showcase.nid)" *ngFor="let showcase of showcases" class="col-md-4">
-          <div class="showcase-item item-2" >
-            <img src="{{showcase.image}}" alt="" class="">
-            <div class="content">
-              <h4 class="title"></h4>
-              <p class="description">{{showcase.title}}</p>
-              <p class="number">{{showcase.projects.length}} projects</p>
-              <p class="timestamp">Last Updated: {{showcase.updated}}</p>
-            </div>
+<section class="showcase">
+  <div class="container">
+    <div class="row">
+      <div (click)="ShowSingleShowcase(showcase.nid)" *ngFor="let showcase of showcases" class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="card showcase-item item-2">
+          <div class="image-container">
+            <img class="card-img-top" src="{{showcase.image}}" alt="Card image cap">
+            <span class="card-type">Showcase</span>
+          </div>
+          <div class="card-block content">
+            <h4 class="title">{{showcase.showcase_name}}</h4>
+            <p class="description">This Community Manager has been busy picking the best projects for you from the Community in this showcase of
+              incredible interactive musical robots.</p>
+            <p class="number" *ngIf="showcase.projects.length==1">{{showcase.projects.length}} project</p>
+            <p class="number" *ngIf="showcase.projects.length>1">{{showcase.projects.length}} projects</p>
+            <p class="timestamp">Last Updated: {{showcase.updated}}</p>
           </div>
         </div>
-        
       </div>
     </div>
-  </section>
-  <!-- End Showcase -->
+  </div>
+</section>
