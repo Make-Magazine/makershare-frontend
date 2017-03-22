@@ -1,83 +1,82 @@
-<div class="main-container container-fluid">
-  <div class="row">
-    <section class="col-sm-12 width-fix">
-      <div class="region region-content">
-        <header class="showcase-header">
-          <div class="container">
-            <a (click)="goHome()" class="btn btn-white btn-sharp back"> &lt; Back Home</a>
-            <div class="col-md-11 col-md-offset-1">
-              <div class="col-md-12">
-                <h3>{{showcase.showcase_name}}</h3>
-              </div>
-              <div class="col-md-6">
-                <p class="timestamp">Last updated: {{showcase.last_updated}}</p>
-                <p [innerHTML]="showcase.description"></p>
-                <p>Enjoy !</p>
-              </div>
-              <div class="col-md-6">
-                <p class="timestamp">Curated by:</p>
-                <div class=" profile-container medium-card">
-                  <!-- start profile card-->
-                  <div class="profile-card">
-                    <div class="left col-sm-4">
-                      <div class="profile-pic">
-                        <img src="{{profile.photo}}" alt="" class="">
-                      </div>
-                      <a class="btn btn-blue">Message</a>
-                    </div>
-                    <div class="right col-sm-4">
-                      <h4 class="profile-name"><a (click)="goToProfile(profile.pid)">{{profile.first_name}}</a></h4>
-                      <p class="count">X projects</p>
-                      <p *ngFor="let tag of profile.tags" class="user-tag">
-                        {{tag}}
-                      </p>
-                    </div>
-                    <i class="fa fa-lg fa-star-o"></i>
-                  </div>
-                  <!-- End profile card -->
+<div class="page-showcase">
+  <div class="main-container container-fluid">
+    <div class="row">
+      <section class="col-sm-12 width-fix">
+        <div class="region region-content">
+          <header class="showcase-header">
+            <div class="container">
+              <div class="row">
+                <div class="showcase-title col-md-12">
+                  <h3>{{showcase.showcase_name}}</h3>
                 </div>
-                <!-- End Profile-container -->
+                <div class="showcase-description col-md-6">
+                  <p class="timestamp">Last updated: {{showcase.last_updated}}</p>
+                  <p [innerHTML]="showcase.description"></p>
+                  <p>Enjoy !</p>
+                </div>
+                <div class="showcase-curated col-md-6">
+                  <div class="card-block user-card align-content-stretch content ">
+                    <div class="media">
+                      <div class="profile-pic-container flex-column align-self-start mr-3">
+                        <img src="{{profile.photo}}" alt="Maker Photo" class="maker-photo">
+                        <div class="icons d-flex flex-row justify-content-start">
+                          <img src="./assets/images/icons/icon-blue-ribbon.svg" alt="">
+                          <img src="./assets/images/icons/icon-challenge-winner.svg" alt="">
+                        </div>
+                        <a href="#" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></a>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="user-name"><a href="#">{{profile.first_name}}</a></h4>
+                        <p class="user-nickname"><a href="#">aka Goodmen</a></p>
+                        <p class="user-city title">San Francisco, CA</p>
+                        <p *ngFor="let tag of profile.tags" class="profile-tag">
+                          {{tag}}
+                        </p>
+                        <p class="count align-self-end">6 projects</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End container -->
+          </header>
+          <!--/header -->
+          <div class="container">
+            <div class="filters">
+              <div class="container">
+                <div class="row justify-content-center align-items-center">
+                  <div class="entries-count btn">
+                    <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
+                    <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
+                  </div>
+                  <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
+                </div>
+              </div>
+            </div>
+            <!-- End filters -->
+            <div class="container">
+              <div class="projects-grid row">
+                <div *ngFor="let project of projects; let i = index;" class="col-md-4">
+                  <div class="project">
+                    <app-project-card [projectCard]="project"></app-project-card>
+                  </div>
+                </div>
+                <!-- End col -->
+              </div>
+              <!-- End projects-grid row -->
+            </div>
+            <div class="text-center">
+              <div *ngIf="!hideloadmore" class="button-container-main-2">
+                <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
               </div>
             </div>
           </div>
-          <!-- End container -->
-        </header>
-        <!--/header -->
-        <div class="container">
-
-          <div class=" filters col-md-10 col-md-offset-1">
-            <!-- {{projectsCount}} -->
-            <p class="pull-left">{{projectsCount}} Projects</p>
-            <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
-          </div>
-
         </div>
-        <!-- End filters -->
-        <div class="container">
-          <div class="projects-grid row">
-            <div class="col-md-10 col-md-offset-1">
-
-              <div *ngFor="let project of projects; let i = index;" class="col-md-4">
-
-                <!-- Start Project Card -->
-                <app-project-card [projectCard]="project"></app-project-card>
-                <!-- End Project Card -->
-              </div>
-
-            </div>
-            <!-- End col -->
-          </div>
-          <!-- End projects-grid row -->
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-          <div class="col-xs-4 col-xs-offset-4 load-more">
-            <a *ngIf="!hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
-          </div>
-        </div>
-      </div>
-      <!-- End region-content -->
-    </section>
+        <!-- End region-content -->
+      </section>
+    </div>
+    <!-- End row -->
   </div>
-  <!-- End row -->
+  <!-- End main-container -->
 </div>
-<!-- End main-container -->
