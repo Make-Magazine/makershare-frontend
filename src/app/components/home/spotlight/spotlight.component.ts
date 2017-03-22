@@ -15,6 +15,7 @@ export class SpotlightComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('home_page_maker_spotlight').subscribe(data => {
       this.spotlights = data;
+      console.log(data)
     }, err => {
 
     });

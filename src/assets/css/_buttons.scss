@@ -55,6 +55,21 @@
         border-color: $main-grey*0.8;
     }
 }
+.btn-grey-follow{
+    color: #fff !important;
+    background-color: #BEBEBE;
+    border-color: $main-grey*0.9;
+    border-radius: 0;
+    @extend .displace;
+    &:active, &:hover, &.active, &:focus {
+        color: #fff;
+        background-color: #BEBEBE;
+        border-color: $main-grey*0.8;
+        position: relative !important;
+        left: -4px !important;
+        top: -4px !important;
+    }
+}
 .btn-light-grey {
     color: $main-grey;
     background-color: $light-grey;
