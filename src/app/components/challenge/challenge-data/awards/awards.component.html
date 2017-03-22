@@ -1,9 +1,15 @@
-    <div *ngFor="let award of awards;let i = index;">
-          <div class="col-lg-10" *ngIf="award">
-            <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
-            <img *ngIf="award.photo" src="{{award.photo}}" alt="">
-            <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
-            <div class="clearfix"></div>
-            <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>
-          </div>
-        </div>
+<div *ngFor="let award of awards;let i = index;">
+  <div class="col-lg-10 challenge-award" *ngIf="award">
+    <div class="media">
+      <div class="image-container d-flex mr-3">
+        <img class="" *ngIf="award.photo" src="{{award.photo}}" alt="{{award.award_name}}">
+        <img class="" *ngIf="!award.photo" src="http://placehold.it/120x120" alt="{{award.award_name}}">
+      </div>
+      <div class="media-body">
+        <h5 class="mt-0 name" *ngIf="award.award_name">{{award.award_name}}</h5>
+        <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
+        <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>    
+      </div>
+    </div>
+  </div>
+</div>

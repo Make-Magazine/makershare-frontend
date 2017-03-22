@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISorting } from '../../../../models/challenge/sorting';
 import { RouterModule, Router } from '@angular/router';
+
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html'

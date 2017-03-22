@@ -26,180 +26,204 @@
       <!-- End top-content-wrapper-->
     </div>
     <!-- End workshop checker-->
-
     <div class="container">
       <div class="row">
-      <div class="region region-content col-sm-8">
-        <div class="workshop-content">
-          <div *ngIf="workshop">
-            <div class="intro" id="intro">
-              <h4>Introduction</h4>
-              <div [innerHTML]="workshop?.brief_description"> </div>
-              <div [innerHTML]="workshop?.introductory_video"></div>
+        <div class="region region-content col-sm-8">
+          <div class="workshop-content">
+            <div *ngIf="workshop">
+              <div class="intro" id="intro">
+                <h4>Introduction</h4>
+                <div [innerHTML]="workshop?.brief_description"> </div>
+                <div [innerHTML]="workshop?.introductory_video"></div>
+              </div>
+              <!-- End intro -->
             </div>
-            <!-- End intro -->
-          </div>
-          <!-- End of workshop ngIf -->
-
-          <div *ngFor="let object of objects; let i=index">
-            <!---FOR PDF CONTENT TYPE -->
-            <div *ngIf="object.learning_content_type == 'PDF' ">
-              <div class="fun-fact" id="OB{{object?.nid}}">
-                <h4>{{object.lesson_name}}</h4>
-                <div class="media">
-                  <div class="media-left">
-                    <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
-                      height="150" width="200">
-                  </div>
-                  <div class="media-body">
-                    <p>
-                      <span><b>{{object.learning_content_type}}  ..  </b>  
+            <!-- End of workshop ngIf -->
+            <div *ngFor="let object of objects; let i=index">
+              <!---FOR PDF CONTENT TYPE -->
+              <div *ngIf="object.learning_content_type == 'PDF' ">
+                <div class="fun-fact" id="OB{{object?.nid}}">
+                  <h4>{{object.lesson_name}}</h4>
+                  <div class="media">
+                    <div class="image-container d-flex mr-3">
+                      <img src="{{object.object_image}}" alt="" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
+                        height="150" width="200">
+                    </div>
+                    <div class="media-body">
+                      <p>
+                        <span><b>{{object.learning_content_type}}  ..  </b>  
                            <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div *ngIf="object.pages" > Number of Pages: {{object.pages}} </div>
                            </span>
-                    </p>
-                    <div [innerHTML]="object.lesson_description"> </div>
+                      </p>
+                      <div [innerHTML]="object.lesson_description"> </div>
+                    </div>
+                    <ul class="list-unstyled recommended">
+                      <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                      <a href="">
+                        <div [innerHTML]="object.related_projects"> </div>
+                      </a>
+                    </ul>
                   </div>
-                  <ul class="list-unstyled recommended">
-                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                    <a href="">
-                      <div [innerHTML]="object.related_projects"> </div>
-                    </a>
-                  </ul>
                 </div>
               </div>
-            </div>
-            <!-- End  ngif of pdf object -->
-
-            <!---FOR Video CONTENT TYPE -->
-            <div *ngIf="object.learning_content_type == 'Video' ">
-
-              <div class="fun-fact" id="OB{{object?.nid}}">
-                <h4>{{object.lesson_name}}</h4>
-                <div class="media">
-                  <div class="media-left" (click)="overlay(i)" data-toggle="modal" data-target="#previewer">
-                    <img *ngIf="object.videoImage" [src]="object.videoImage" alt="" class="media-object" height="150" width="200">
-                    <!--<div *ngIf="object.videoPic"  class="youtube-pic">
+              <!-- End  ngif of pdf object -->
+              <!---FOR Video CONTENT TYPE -->
+              <div *ngIf="object.learning_content_type == 'Video' ">
+                <div class="fun-fact" id="OB{{object?.nid}}">
+                  <h4>{{object.lesson_name}}</h4>
+                  <div class="media">
+                    <div class="image-container d-flex mr-3" (click)="overlay(i)" data-toggle="modal" data-target="#previewer">
+                      <img *ngIf="object.videoImage" [src]="object.videoImage" alt="" class="media-object" height="150" width="200">
+                      <!--<div *ngIf="object.videoPic"  class="youtube-pic">
                         <img [src]="object.videoPic" alt="" class="media-object" height="150" width="200">
                         <img class="play-image" src="./assets/images/video-icon.png" alt="">                        
                       </div>-->
-
-                    <!--<img src ="assets/images/video-icon.png" alt="" class="media-object" position:"absolute">-->
-                    <!--<div [innerHTML]="object.videolink"></div>-->
-                    <!--<iframe width="150" height="150" [src]="videoImage" frameborder="0" ></iframe>-->
-                  </div>
-                  <div class="media-body">
-                    <p>
-                      <span><b>{{object.learning_content_type}}   .. </b>
+                      <!--<img src ="assets/images/video-icon.png" alt="" class="media-object" position:"absolute">-->
+                      <!--<div [innerHTML]="object.videolink"></div>-->
+                      <!--<iframe width="150" height="150" [src]="videoImage" frameborder="0" ></iframe>-->
+                    </div>
+                    <div class="media-body">
+                      <p>
+                        <span><b>{{object.learning_content_type}}   .. </b>
                         <b> From Getting Started with Arduino by {{object.author_name}} </b>  
                            <div [innerHTML]= "object.lesson_description"> </div>
                            <div *ngIf="object.minutes" > Number of minutes: {{object.minutes}} </div>
                              </span>
-                    </p>
-
+                      </p>
+                    </div>
+                    <ul class="list-unstyled recommended">
+                      <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                      <a href="">
+                        <div [innerHTML]="object.related_projects"> </div>
+                      </a>
+                    </ul>
                   </div>
-                  <ul class="list-unstyled recommended">
-                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                    <a href="">
-                      <div [innerHTML]="object.related_projects"> </div>
-                    </a>
-                  </ul>
+                  <!-- End fun-fact -->
+                </div>
+                <!-- End of Object ngIf -->
+              </div>
+              <!-- End  ngFor of Video object -->
+              <!---FOR Book CONTENT TYPE -->
+              <div *ngIf="object.learning_content_type == 'Book' ">
+                <div class="fun-fact" id="OB{{object.nid}}">
+                  <h4>{{object.lesson_name}}</h4>
+                  <div class="media">
+                    <div class="image-container d-flex mr-3">
+                      <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
+                        height="150" width="200">
+                    </div>
+                    <div class="media-body">
+                      <p>
+                        <span><b>{{object.learning_content_type}}  ..  </b> 
+                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
+                           <div *ngIf="object.chapter" > Number of Chapters: {{object.chapter}} </div>
+                             </span>
+                      </p>
+                      <div [innerHTML]="object.lesson_description"> </div>
+                    </div>
+                    <ul class="list-unstyled recommended">
+                      <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                      <a href="">
+                        <div [innerHTML]="object.related_projects"> </div>
+                      </a>
+                    </ul>
+                  </div>
                 </div>
                 <!-- End fun-fact -->
               </div>
               <!-- End of Object ngIf -->
             </div>
-            <!-- End  ngFor of Video object -->
-
-            <!---FOR Book CONTENT TYPE -->
-            <div *ngIf="object.learning_content_type == 'Book' ">
-              <div class="fun-fact" id="OB{{object.nid}}">
-                <h4>{{object.lesson_name}}</h4>
+            <!-- End  ngFor of learning content type -->
+          </div>
+          <!-- End worksop-content -->
+        </div>
+        <!-- End region-content -->
+        <aside class="col-sm-4">
+          <div *ngIf="workshop" class="workshop-instructor">
+            <div class=" profile-container">
+              <app-user-card [uid]="workshop.uid"></app-user-card>
+            </div>
+            <!-- End profile card -->
+          </div>
+          <!-- End Profile-container -->
+          <ul class="list-unstyled content-list">
+            Contents:
+            <li><a pageScroll href="#intro">Introduction</a></li>
+            <div *ngFor="let object of objects; let i=index;">
+              <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
+            </div>
+            <li><a pageScroll href="#lesson">Resources</a></li>
+          </ul>
+        </aside>
+        <!-- End aside -->
+        <div *ngFor="let lesson of lessons" class="col-12">
+          <div *ngIf="lesson" class="">
+            <h4> Like these lessons? Learn more:</h4>
+            <ul class="list-unstyled suggested" id="lesson">
+              <li>
                 <div class="media">
-                  <div class="media-left">
-                    <img src="{{object.object_image}}" alt="" class="media-object" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
-                      height="150" width="200">
+                  <div class="image-container d-flex mr-3">
+                    <img src="{{lesson.book_cover}}" alt="...">
                   </div>
                   <div class="media-body">
-                    <p>
-                      <span><b>{{object.learning_content_type}}  ..  </b> 
-                        <b> From Getting Started with Arduino by {{object.author_name}} </b>  
-                           <div *ngIf="object.chapter" > Number of Chapters: {{object.chapter}} </div>
-                             </span>
-                    </p>
-                    <div [innerHTML]="object.lesson_description"> </div>
-                  </div>
-                  <ul class="list-unstyled recommended">
-                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                    <a href="">
-                      <div [innerHTML]="object.related_projects"> </div>
+                    <p> {{lesson.book_title}}</p>
+                    <a href="{{lesson.o_reilly}}">
+                      <p> {{lesson.o_reilly}}</p>
                     </a>
-                  </ul>
-                </div>
-              </div>
-              <!-- End fun-fact -->
-            </div>
-            <!-- End of Object ngIf -->
-
-          </div>
-          <!-- End  ngFor of learning content type -->
-
-          <div *ngFor="let lesson of lessons">
-            <div *ngIf="lesson" class="col-sm-12">
-              <ul class="list-unstyled suggested" id="lesson">
-                <h4> Like these lessons? Learn more:</h4>
-                <br>
-                <li>
-                  <div class="media">
-                    <div class="media-left">
-                      <img class="media-object img-responsive" src="{{lesson.book_cover}}" alt="...">
-                    </div>
-                    <div class="media-body">
-                      <p> {{lesson.book_title}}</p>
-                      <a href="{{lesson.o_reilly}}">
-                        <p> {{lesson.o_reilly}}</p>
-                      </a>
-                      <a href="{{lesson.barnes_noble}}">
-                        <p> {{lesson.barnes_noble}} </p>
-                      </a>
-                      <a href="{{lesson.amazon}}">
-                        <p> {{lesson.amazon}}</p>
-                      </a>
-                    </div>
+                    <a href="{{lesson.barnes_noble}}">
+                      <p> {{lesson.barnes_noble}} </p>
+                    </a>
+                    <a href="{{lesson.amazon}}">
+                      <p> {{lesson.amazon}}</p>
+                    </a>
                   </div>
-                </li>
-              </ul>
-              <!-- End suggested -->
-            </div>
-            <!-- End of more lesson Checker -->
+                </div>
+              </li>
+              <li>
+                <div class="media">
+                  <div class="image-container d-flex mr-3">
+                    <img src="{{lesson.book_cover}}" alt="...">
+                  </div>
+                  <div class="media-body">
+                    <p> {{lesson.book_title}}</p>
+                    <a href="{{lesson.o_reilly}}">
+                      <p> {{lesson.o_reilly}}</p>
+                    </a>
+                    <a href="{{lesson.barnes_noble}}">
+                      <p> {{lesson.barnes_noble}} </p>
+                    </a>
+                    <a href="{{lesson.amazon}}">
+                      <p> {{lesson.amazon}}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="media">
+                  <div class="image-container d-flex mr-3">
+                    <img src="{{lesson.book_cover}}" alt="...">
+                  </div>
+                  <div class="media-body">
+                    <p> {{lesson.book_title}}</p>
+                    <a href="{{lesson.o_reilly}}">
+                      <p> {{lesson.o_reilly}}</p>
+                    </a>
+                    <a href="{{lesson.barnes_noble}}">
+                      <p> {{lesson.barnes_noble}} </p>
+                    </a>
+                    <a href="{{lesson.amazon}}">
+                      <p> {{lesson.amazon}}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- End suggested -->
           </div>
-          <!-- End of Lesson ngFor -->
+          <!-- End of more lesson Checker -->
         </div>
-        <!-- End worksop-content -->
-      </div>
-      <!-- End region-content -->
-
-      <aside class="col-sm-4">
-        <div *ngIf="workshop" class="workshop-instructor">
-          <div class=" profile-container">
-            <app-user-card [uid]="workshop.uid"></app-user-card>
-          </div>
-          <!-- End profile card -->
-        </div>
-        <!-- End Profile-container -->
-
-        <ul class="list-unstyled content-list">
-          Contents:
-          <li><a pageScroll href="#intro">Introduction</a></li>
-          <div *ngFor="let object of objects; let i=index;">
-            <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
-          </div>
-          <div *ngIf="lesson">
-            <li><a pageScroll href="#lesson">Resources</a></li>
-          </div>
-        </ul>
-      </aside>
-      <!-- End aside -->
+        <!-- End of Lesson ngFor -->
       </div>
     </div>
     <!-- End of container -->
@@ -214,11 +238,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <div [innerHTML]="popupPreview">
-          <div class="loading">
-            <h1>Loading...</h1>
-          </div>
-        </div>
+        <div [innerHTML]="popupPreview"></div>
         <div *ngIf="epubFile">
           <app-book [link]="epubLink"></app-book>
         </div>
