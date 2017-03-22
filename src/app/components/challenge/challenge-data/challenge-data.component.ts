@@ -197,7 +197,7 @@ export class ChallengeDataComponent implements OnInit {
 
       // console.log(this.projects.length);
       //console.log(this.countProjects);
-    } else if (this.countProjects > this.projects.length){
+    } else if (this.countProjects > this.projects.length) {
       setTimeout(10000);
       this.hideloadmoreproject = false;
     }
@@ -213,7 +213,7 @@ export class ChallengeDataComponent implements OnInit {
 
     this.pageNo = 0;
     this.getProjects();
-     this.hideloadmoreproject = false;
+    this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
     console.log(this.projects);
 
