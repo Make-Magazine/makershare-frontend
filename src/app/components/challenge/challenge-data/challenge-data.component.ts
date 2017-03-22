@@ -22,7 +22,7 @@ export class ChallengeDataComponent implements OnInit {
   no_of_followers = 0;
   projects = [];
   hideloadmore = true;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
   hideloadmorefollower = false;
   pageNumber = 0;
   challenge_start_date;
@@ -197,6 +197,9 @@ export class ChallengeDataComponent implements OnInit {
 
       // console.log(this.projects.length);
       //console.log(this.countProjects);
+    } else if (this.countProjects > this.projects.length){
+      setTimeout(10000);
+      this.hideloadmoreproject = false;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
