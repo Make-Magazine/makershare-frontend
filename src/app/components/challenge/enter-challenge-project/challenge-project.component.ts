@@ -126,6 +126,11 @@ export class ChallengeProjectComponent implements OnInit {
       }, err => {
       });
       /* end bookmark  */
+       /* follow auto after submit project challenge */
+      this.flagService.flag(this.challangeData[0].nid, this.userId, 'follow').subscribe(response => {
+      }, err => {
+      });
+      /* end follow  */
     }, err => {
       console.log(err);
     });
