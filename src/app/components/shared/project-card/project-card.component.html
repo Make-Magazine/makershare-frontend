@@ -1,13 +1,13 @@
-<<<<<<< HEAD
 <div class="project">
   <div class="project-title">
     <p>{{projectCard.project_name}}</p>
     <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
-=======
+
 <div class="project card">
   <div class="image-top">
-    <div class="overlay"></div>
+ 
     <a (click)="ShowProjectDetails(projectCard.nid)">
+         <div class="overlay"></div>
       <img class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
     </a>
     <div class="teaser">
@@ -19,7 +19,6 @@
       <span><i class="fa fa-lg fa-trophy"></i>1</span>
       <span><i class="fa fa-lg fa-clock-o"></i>1</span>
     </div>
->>>>>>> 3908d8eaab7cfa7ebed104bed7f4b7eb14c6b006
   </div>
   <div class="card-block d-flex justify-content-around">
     <div class="d-flex flex-column">
