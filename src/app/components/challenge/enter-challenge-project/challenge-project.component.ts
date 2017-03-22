@@ -121,11 +121,11 @@ export class ChallengeProjectComponent implements OnInit {
       console.log(res);
       this.router.navigate(['challenges/', this.challangeData[0].nid]);
       this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData[0].title, type: NotificationType.Success });
-      /* follow auto after submit project challenge */
-      this.flagService.flag(this.challangeData[0].nid, this.userId, 'follow').subscribe(response => {
+      /* bookmark auto after submit project challenge */
+      this.flagService.flag(this.challangeData[0].nid, this.userId, 'node_bookmark').subscribe(response => {
       }, err => {
       });
-      /* end fOLLOW  */
+      /* end bookmark  */
     }, err => {
       console.log(err);
     });
