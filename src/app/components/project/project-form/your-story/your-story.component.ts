@@ -220,7 +220,7 @@ export class YourStoryComponent implements OnInit {
       this.project.field_categories.und.push(this.current_child_category);
     }
     this.YourStoryForm.controls["field_categories"].patchValue(this.project.field_categories.und);
-    // delete this.current_parent_category;
+     delete this.current_parent_category;
      delete this.current_child_category;
   }
 

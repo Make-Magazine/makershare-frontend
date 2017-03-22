@@ -63,6 +63,7 @@ export class ProjectFormComponent implements OnInit {
     });
     if(nid){
       this.nodeService.getNode(nid).subscribe((project:ProjectView) => {
+        console.log(this.project);
         this.ConvertProjectToCreateForm(project);
       });
     }else{
@@ -285,7 +286,7 @@ export class ProjectFormComponent implements OnInit {
         field_sort_order:{und:[{value:1}]},
       }
       this.project.SetField(owner,'field_maker_memberships');
-      this.ProjectLoaded = true;  
+      this.ProjectLoaded = true;
     });
   }
 
