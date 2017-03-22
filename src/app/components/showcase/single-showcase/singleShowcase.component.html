@@ -4,7 +4,6 @@
       <div class="region region-content">
         <header class="showcase-header">
           <div class="container">
-            <a (click)="goHome()" class="btn btn-white btn-sharp back"> &lt; Back Home</a>
             <div class="col-md-11 col-md-offset-1">
               <div class="col-md-12">
                 <h3>{{showcase.showcase_name}}</h3>
@@ -18,22 +17,7 @@
                 <p class="timestamp">Curated by:</p>
                 <div class=" profile-container medium-card">
                   <!-- start profile card-->
-                  <div class="profile-card">
-                    <div class="left col-sm-4">
-                      <div class="profile-pic">
-                        <img src="{{profile.photo}}" alt="" class="">
-                      </div>
-                      <a class="btn btn-blue">Message</a>
-                    </div>
-                    <div class="right col-sm-4">
-                      <h4 class="profile-name"><a (click)="goToProfile(profile.pid)">{{profile.first_name}}</a></h4>
-                      <p class="count">X projects</p>
-                      <p *ngFor="let tag of profile.tags" class="user-tag">
-                        {{tag}}
-                      </p>
-                    </div>
-                    <i class="fa fa-lg fa-star-o"></i>
-                  </div>
+                  <app-user-card *ngIf="showcase.uid != ''" [uid]="showcase.uid"></app-user-card>
                   <!-- End profile card -->
                 </div>
                 <!-- End Profile-container -->
@@ -47,11 +31,12 @@
 
           <div class=" filters col-md-10 col-md-offset-1">
             <!-- {{projectsCount}} -->
-            <p class="pull-left">{{projectsCount}} Projects</p>
+            <p class="pull-right">{{projectsCount}} Projects</p>
             <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
           </div>
 
         </div>
+        <br/>
         <!-- End filters -->
         <div class="container">
           <div class="projects-grid row">
