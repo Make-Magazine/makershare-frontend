@@ -1,75 +1,65 @@
 <div class="page-explore">
-  <div class="main-container container-fluid">
-    <div class="row">
-      <section class="col-sm-12 width-fix">
-        <div class="region region-content">
-          <header class="explore-header">
-            <h3>What kind of projects are you interested in?</h3>
-            <ul class="list-unstyled explore-tags">
-
-              <li *ngFor="let parent of categories"><a class="btn btn-grey" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
-
-            </ul>
-            <div class="submenus">
-
-
-              <ul *ngFor="let parent of categories" class="list-unstyled parent_{{parent.tid}}">
-
-                <li *ngFor="let term of parent.children"><a (click)="projectsById($event)" class="btn btn-grey" data-id="{{term.tid}}">{{term.name}}</a></li>
-
-              </ul>
-
-            </div>
-          </header>
-          <!--/header -->
-          <div class="filters container-fluid">
-            <div class="row">
-              <p class="col-md-2">128 Entries</p>
-              <div class="projects-filter col-md-1 col-md-offset-7">
-                <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">All Projects
-                   <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#" class="btn">All projects</a></li>
-                  <li><a href="#" class="btn">Winners Only</a></li>
-                </ul>
+  <div class="container">
+    <header class="explore-header">
+      <div class="container">
+        <h3>Explore</h3>
+        <div class="filters">
+          <div class="container">
+            <div class="row justify-content-center align-items-center">
+              <div class="entries-count btn">
+                <p>128 Entries</p>
               </div>
-              <!-- End projects-filter -->
-              <div class="sorting-filter col-md-2">
-                <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">Most recent
-                   <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#" class="btn">Most recent</a></li>
-                  <li><a href="#" class="btn">Oldest</a></li>
-                  <li><a href="#" class="btn">Title A-Z</a></li>
-                  <li><a href="#" class="btn">Title Z-A</a></li>
-                  <li><a href="#" class="btn">Most Liked</a></li>
-                  <li><a href="#" class="btn">Most Forked</a></li>
-                </ul>
+              <div class="projects-filter dropdown">
+                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                            All Projects <i class="fa fa-lg fa-angle-down"></i>
+                          </button>
+                <div class="dropdown-menu" aria-labelledby="filter-projects">
+                  <a class="dropdown-item" href="#">All projects</a>
+                  <a class="dropdown-item" href="#">Winners Only</a>
+                </div>
               </div>
-              <!-- End sorting-filter -->
+              <div class="sorting-filter dropdown">
+                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                            Most recent <i class="fa fa-lg fa-angle-down"></i>
+                          </button>
+                <div class="dropdown-menu" aria-labelledby="filter-projects">
+                  <a class="dropdown-item" href="#">Most recent</a>
+                  <a class="dropdown-item" href="#">Oldest</a>
+                  <a class="dropdown-item" href="#">Title A-Z</a>
+                  <a class="dropdown-item" href="#">Title Z-A</a>
+                  <a class="dropdown-item" href="#">Most Liked</a>
+                  <a class="dropdown-item" href="#">Most Forked</a>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- End filters -->
-          <div class="container-fluid">
-            <div class="projects-grid row">
-
-              <div *ngFor="let project of projects" class="col-md-3" >
-                <!-- Start Project Card -->
-                <app-project-card [projectCard]="project"></app-project-card>
-                <!-- End Project Card -->
-              </div>
-
-            </div>
-          </div>
-          <div class="col-xs-4 col-xs-offset-4 load-more">
-            <a href="#" class="btn btn-white">Load more</a>
-          </div>
-
         </div>
-        <!-- End region-content -->
-      </section>
+        <!-- End filters -->
+        <ul class="list-unstyled explore-tags">
+          <li *ngFor="let parent of categories"><a class="btn btn-grey" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
+        </ul>
+        <div class="submenus">
+          <ul *ngFor="let parent of categories" class="list-unstyled parent_{{parent.tid}}">
+            <li *ngFor="let term of parent.children"><a (click)="projectsById($event)" class="btn btn-grey" data-id="{{term.tid}}">{{term.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!--/header -->
+    <div class="projects-grid row">
+      <div *ngFor="let project of projects" class="col-md-6 col-lg-4">
+        <!-- Start Project Card -->
+        <app-project-card [projectCard]="project"></app-project-card>
+        <!-- End Project Card -->
+      </div>
     </div>
-    <!-- End row -->
   </div>
-  <!-- End main-container -->
+  <div class="text-center">
+    <div class="button-container-main-2">
+      <a href="#" class="btn btn-main-2">Load more</a>
+    </div>
+  </div>
 </div>
+<!-- End region-content -->

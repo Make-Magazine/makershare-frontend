@@ -1,26 +1,20 @@
-<!--<div class="col-md-10  pull-right">
-   <div  *ngFor="let comment of comments.value">
-      <div class="col-lg-10">
-        <p class="col-lg-4">{{comment.comment}}</p>
-        
-       <img class="col-lg-2" src="{{comment.photo}}" alt="" class="img-responsive"> 
-       <P class="col-lg-2"> {{comment.update_date}}</P>
-       <p class="col-lg-2">{{comment.nickname}}</p> 
-       </div> 
-  
-   </div>
-</div>-->
+<div class="feedback-card" *ngFor="let comment of comments.value; let i=index">
+  <div class="media content-section">
+    <div class="user-pic">
+      <img *ngIf="comment?.photo" class="d-flex" src="{{comment?.photo}}" alt="">
+      <img *ngIf="!comment?.photo" class="d-flex" src="./assets/images/defaultprofile.png" alt="">
+    </div>
+    <div class="media-body">
+      <div class="user-info">
+        <div class="user-details col-sm-12 d-flex">
+          <a *ngIf="!comment?.nickname" href="#" class="user-fullname">{{comment?.first_name}} {{comment?.last_name}}</a>
+          <p *ngIf="comment?.nickname" class="user-nickname">{{comment?.nickname}}</p>
+          <p class="feed-timestamp"><i class="fa fa-circle"></i> {{comment?.update_date}}</p>
+        </div>
+      </div>
+      <p>{{comment?.comment}}</p>
+    </div>
+  </div>
+</div>
 
-  <div class="feedback" *ngFor="let comment of comments.value">
-        <div class=" feed-user">
-          <img width="60px;" height="60px;" src="{{comment?.photo}}" alt="" class="img-responsive pull-left">
-          <div class="pull-left name">
-            <h5><a href="#">{{comment?.nickname}}</a></h5>
-            
-          </div>
-        </div>
-        <div class=" feed-body">
-          <p>{{comment?.comment}}</p>
-        </div>
-        <div class=" feed-timestamp">{{comment?.update_date}}</div>
-      </div><!-- End feedback -->
+

@@ -14,7 +14,6 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
-  styleUrls: ['./enter-challenge-style.css'],
 })
 export class ChallengeProjectComponent implements OnInit {
   projects: IChallengeProject[];

@@ -55,11 +55,11 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
-.displace, .btn-grey, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
+.displace, .btn-grey, .btn-grey-follow, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
   position: relative;
   left: -4px;
   top: -4px; }
-  .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
+  .displace:active, .btn-grey:active, .btn-grey-follow:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-grey-follow:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
     left: 0;
     top: 0; }
 
@@ -98,6 +98,19 @@ header .main-header .maker-sites li {
     color: #fff;
     background-color: #1f1f1f;
     border-color: #1b1b1b; }
+
+.btn-grey-follow {
+  color: #fff !important;
+  background-color: #BEBEBE;
+  border-color: #1f1f1f;
+  border-radius: 0; }
+  .btn-grey-follow:active, .btn-grey-follow:hover, .btn-grey-follow.active, .btn-grey-follow:focus {
+    color: #fff;
+    background-color: #BEBEBE;
+    border-color: #1b1b1b;
+    position: relative !important;
+    left: -4px !important;
+    top: -4px !important; }
 
 .btn-light-grey {
   color: #222;

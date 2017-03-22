@@ -1,75 +1,61 @@
-    <div class="main-container container-fluid">
-      <div class="row">
-        <section class="col-sm-12 width-fix">
-          <div class="page-enter-challenge">
-            <div class="top-content-wrapper">
-              <div class="container">
-                <div class="col-md-12 challenge-cover">
-                  <img src="./assets/images/arduino-project.jpg" alt="" class="img-responsive">
-                  <div class="sponsor"><h4>In partnership with: Sponsor [Logo]</h4></div>
-                  <div class="challenge-status">
-                    <p>OPEN: Submissions  close December 19th, 2016</p>
-                  </div>
-                  <div class="challenge-title">
-                    <h1>Lorem Ipsum The Challenge Name</h1>
-                  </div>
-                  <div class="challenge-countdown">
-                    <p class="number">15</p>
-                    <p>Days left</p>
-                  </div>
-                  <ul class="list-unstyled challenge-actions pull-right">
-                    <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-bookmark-o"></i></a></li>
-                    <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-              </div><!-- End container -->
-            </div><!-- End top-content-wrapper -->
-            <div class="container">
-              <div class="region region-content col-sm-12">
-                <div class="content-wrapper row">
-                  <div class="col-md-4 col-md-offset-4">
-                    <p>Select an existing project from your portfolio.</p>
-                    <form>
-                      <div class="form-group">
-                        
+<div class="main-container container-fluid">
+  <div class="row">
+    <section class="col-sm-12 width-fix">
+      <div class="page-enter-challenge">
+        <div class="top-content-wrapper">
+          <div class="container">
+            <div class="col-md-12 challenge-cover">
+              <img src="{{challangeData.cover_image}}" alt="">
+              <div class="sponsor">
+                <h4 *ngIf="challangeData.sponsored_by">Sponsored By: {{challangeData.sponsored_by}} </h4>
+              </div>
+              <div class="challenge-status">
+                <p>{{challangeData.challenge_status}} :{{challangeData.challenge_end_date.value}}<p>
+              </div>
+              <div class="challenge-title" *ngIf="challangeData.title">
+                <h1>{{challangeData.title}}</h1>
+              </div>
+              <div class="challenge-countdown" *ngIf="challangeData.opened">
+                <p class="number">{{challangeData.diffDays}} </p>
+                <p>Days left</p>
+              </div>
+              <ul class="list-unstyled challenge-actions pull-right">
+                 <app-bookmark [nodeNid]="challangeData.nid"></app-bookmark>
+                <li><a class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <!-- End container -->
+        </div>
+        <!-- End top-content-wrapper -->
+        <div class="container">
+          <div class="region region-content col-sm-12">
+            <div class="content-wrapper row">
+              <div class="challenge-enter col-md-4">
+                <p>Select an existing project from your portfolio.</p>
+                <form>
+                  <div class="form-group">
                     <select class="form-control" #item (change)="updateSelectedProject($event) ">
-                      <option [value]="none"  disabled>Select a project</option>
+                      <option [value]="none" disabled>Select a project</option>
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
-                      </div>
-                      <button class="btn btn-white btn-sharp cancel" (click)="onCancel()">Cancel</button>
-                      <a *ngIf="enterStatus==true" class="btn btn-blue btn-sharp submit" (click)="onSubmit()">Submit</a>
-                      <button *ngIf="hiddenAfterSubmit" class="btn btn-blue btn-sharp submit" (click)="onMyEntries()">My Entries</button>
-                    </form>
-                    <p class="text-center">OR</p>
-                    <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
-                    <button class="btn btn-blue btn-sharp create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
                   </div>
-                </div><!-- End content-wrapper -->
-              </div><!-- End region-content -->
+                  <button class="btn btn-white btn-sharp static-btn cancel" (click)="onCancel()">Cancel</button>
+                  <a *ngIf="enterStatus==true" class="btn btn-main static-btn submit" (click)="onSubmit()">Submit</a>
+                  <button *ngIf="hiddenAfterSubmit" class="btn btn-main static-btn submit" (click)="onMyEntries()">My Entries</button>
+                </form>
+                <p class="text-center">OR</p>
+                <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
+                <button class="btn btn-main btn-sharp create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
+              </div>
             </div>
+            <!-- End content-wrapper -->
           </div>
-        </section>
-      </div><!-- End row -->
-    </div><!-- End main-container -->
-    <section class="modal-section">
-      <!-- Trigger the modal with a button -->
-      <!-- Modal -->
-      <div id="joinus-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-              <h4>Start participating in <br>our worldwide community of makers!</h4>
-            </div>
-            <button type="button" class="btn btn-blue" data-dismiss="modal">Join now</button>
-            <p>Already a member? <a href="#">Log in</a></p>
-            
-          </div>
+          <!-- End region-content -->
         </div>
       </div>
- </section>
+    </section>
+  </div>
+  <!-- End row -->
+</div>
