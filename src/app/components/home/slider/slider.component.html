@@ -6,7 +6,7 @@
         <img *ngIf="slider.promo_image" class="first-slide" src="{{slider.promo_image}}" alt="First slide">
         <div class="card-container">
           <div class="carousel-caption d-none d-md-block card">
-            <h2 *ngIf="slider.title">{{slider.title}}</h2>
+            <h2 *ngIf="slider.title" [innerHTML]="slider.title"></h2>
             <h2 *ngIf="slider.promo_headline">{{slider.promo_headline}}</h2>
             <p *ngIf="slider.promo_description">{{slider.promo_description}}</p>
             <div class="card-buttons button-container-main-1">
