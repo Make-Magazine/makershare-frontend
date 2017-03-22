@@ -2,9 +2,9 @@
   <section class="col-sm-12 width-fix">
     <div class="top-content-wrapper">
       <div class="add-controls">
-        <div class="container">
-          <h3 class="pull-left">Add a new project to your portfolio</h3>
-          <ul class="list-unstyled pull-right contorls">
+        <div class="container d-flex flex-row align-content-end flex-wrap">
+          <h3 class="mr-auto">Add a new project to your portfolio</h3>
+          <ul class="list-unstyled d-flex flex-row contorls">
             <li><a class="btn btn-light-grey" (click)="GettingFieldsReady('1115',0)">Save as draft</a></li>
             <li><a class="btn btn-light-grey" (click)="GettingFieldsReady('371',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
             <li><a class="btn btn-blue btn-sharp" (click)="GettingFieldsReady('370',1)">Publish</a></li>
@@ -26,18 +26,18 @@
       <div>
         <h1 *ngIf="created">Project Saved</h1>
         <div *ngIf="ProjectLoaded">
-          <app-project-form-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" ></app-project-form-your-story>
-          <app-project-form-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'"></app-project-form-how-to>
-          <app-project-form-team [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'"></app-project-form-team>
+          <app-project-form-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" class="row"></app-project-form-your-story>
+          <app-project-form-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'" class="row"></app-project-form-how-to>
+          <app-project-form-team [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
         </div>
       </div>
     </div><!-- End container -->
 
     <div class="custom-footer">
       <div class="add-controls">
-        <div class="container">
-          <h3 class="pull-left">Add a new project to your portfolio</h3>
-          <ul class="list-unstyled pull-right contorls">
+        <div class="container d-flex flex-row align-content-end flex-wrap">
+          <h3 class="mr-auto">Add a new project to your portfolio</h3>
+          <ul class="list-unstyled d-flex flex-row contorls">
             <li><a class="btn btn-light-grey" (click)="GettingFieldsReady('1115',0)">Save as draft</a></li>
             <li><a class="btn btn-light-grey" (click)="GettingFieldsReady('371',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
             <li><a class="btn btn-blue btn-sharp" (click)="GettingFieldsReady('370',1)">Publish</a></li>
