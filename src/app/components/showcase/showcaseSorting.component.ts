@@ -1,20 +1,23 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {ISorting} from '../../models/challenge/sorting';
+// import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'showcase-sorting',
   template: `
-       <div class="sorting-filter col-md-3 col-md-offset-5">
-          <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
-          <span class="caret" ></span></button>
-          <ul class="dropdown-menu"  >
-
-            <li><a (click)="mostRecent($event)" class="btn">Most  recent</a></li>
-            <li><a (click)="oldest($event)" class="btn">Oldest</a></li>
-            <li><a (click)="sortAsc($event)" class="btn">Title A-Z</a></li>
-            <li><a (click)="sortDesc($event)"class="btn">Title Z-A</a></li>
-          </ul>
+       <div ngbDropdown class="d-inline-block sorting-filter dropdown">
+          <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{ActionName}} <i class="fa fa-lg fa-angle-down"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <button class="dropdown-item" (click)="mostRecent($event)">Most recent</button>
+            <button class="dropdown-item" (click)="oldest($event)">Oldest</button>
+            <button class="dropdown-item" (click)="sortAsc($event)">Title A-Z</button>
+            <button class="dropdown-item" (click)="sortDesc($event)">Title Z-A</button>
+          </div>
         </div>
   `,
+    // providers: [NgbDropdownConfig] // add NgbDropdownConfig to the component providers
+
+
 })
 export class ShowcaseSortingComponent implements OnInit {
 

@@ -1,48 +1,63 @@
-<div class="main-container container-fluid">
-      <div class="row">
-        <section class="col-sm-12 width-fix">
-          <div class="top-content-wrapper">
+<div class="page-explore">
+  <div class="main-container container-fluid">
+    <div class="row">
+      <section class="col-sm-12 width-fix">
+        <div class="region region-content">
+          <header class="explore-header">
             <div class="container">
-              <h3>What's a Showcase?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore nam quaerat inventore eveniet rerum totam.</p>
-            </div>
-          </div><!-- End top-content-wrapper -->
-          <div class="region region-content">
-            <section class="showcase">
-                <div class=" filters col-md-12">
-                  <div class="container">
-                    <!-- {{showcaseCount}} -->
-                    <p class="pull-left">{{showcaseCount}} Showcase</p>
-                   <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
-                  </div>
+              <h3>Showcases</h3>
+              <div class="top-content-wrapper">
+                <div class="container">
+                  <h4>What's a Showcase?</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore
+                    explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore
+                    nam quaerat inventore eveniet rerum totam.</p>
                 </div>
-              <div class="container">
-                <div class="row">
-                    <div *ngFor="let showcase of showcases" class="col-md-4">
-                      <div class="showcase-item item-2">
-                      <a (click)="ShowSingleShowcase(showcase.nid)">
-                        <img src="{{showcase.cover_photo}}" alt="" class="" (click)="ShowSingleShowcase(showcase.nid)">
-                      </a>
-
-                        <div class="content">
-                          <h4 class="title">Showcase: {{showcase.showcase_name}}</h4>
-                          <p class="description" [innerHTML]="showcase.description"></p>
-                          <p class="number">{{showcase.number_of_project}} projects</p>
-                          <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
-                        </div>
-                      </div>
+              </div>
+              <div class="filters">
+                <div class="container">
+                  <div class="row justify-content-center align-items-center">
+                    <div class="entries-count btn">
+                      <p *ngIf="showcaseCount==1">{{showcaseCount}} Showcase</p>
+                      <p *ngIf="showcaseCount>1">{{showcaseCount}} Showcases</p>
                     </div>
-
-                  <div class="col-sm-12">
-                    <div class="col-xs-4 col-xs-offset-4 load-more">
-                      <a *ngIf="!hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
-                    </div>
+                    <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
                   </div>
                 </div>
               </div>
-            </section>
-
-          </div><!-- End region-content -->
-        </section>
-      </div><!-- End row -->
-    </div><!-- End main-container -->
+              <!-- End filters -->
+            </div>
+          </header>
+          <!--/header -->
+          <div class="container showcase">
+            <div class="showcase-grid row">
+              <div *ngFor="let showcase of showcases" class="col-lg-4 col-md-4 d-flex align-items-stretch">
+                <div class="card showcase-item item-2">
+                  <div class="image-container">
+                    <a (click)="ShowSingleShowcase(showcase.nid)">
+                      <img class="card-img-top" src="./assets/images/interactive-art-for-kids.jpg" (click)="ShowSingleShowcase(showcase.nid)">
+                    </a>
+                  </div>
+                  <div class="card-block content">
+                    <h4 class="title">{{showcase.showcase_name}}</h4>
+                    <p class="description" [innerHTML]="showcase.description"></p>
+                    <p class="number" *ngIf="showcase.number_of_project==1">{{showcase.number_of_project}} project</p>
+                    <p class="number" *ngIf="showcase.number_of_project>1">{{showcase.number_of_project}} projects</p>
+                    <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div *ngIf="!hideloadmore" class="button-container-main-2">
+            <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- End region-content -->
+  </div>
+  <!-- End main-container -->
+</div>
