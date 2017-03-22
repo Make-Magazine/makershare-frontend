@@ -1,4 +1,4 @@
-import {field_file_reference} from './field_file_reference'
+import {field_file_reference} from '../../Drupal/field_file_reference'
 
 export interface field_collection_item_tool
 {

@@ -15,7 +15,7 @@
         <img *ngIf="slider.promo_image" class="first-slide" src="{{slider.promo_image}}" alt="First slide">
         <div class="container card-container">
           <div class="carousel-caption card">
-            <h2 *ngIf="slider.title">{{slider.title}}</h2>
+            <h2 *ngIf="slider.title" [innerHTML]="slider.title"></h2>
             <h2 *ngIf="slider.promo_headline">{{slider.promo_headline}}</h2>
             <p *ngIf="slider.promo_description">{{slider.promo_description}}</p>
               <a class="btn btn-white" (click)="loadMoreData(slider.nid,slider.type)">Read more </a>
