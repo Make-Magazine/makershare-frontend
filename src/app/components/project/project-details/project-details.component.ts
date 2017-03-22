@@ -27,6 +27,7 @@ export class ProjectDetailsComponent implements OnInit {
   projectIndex: number = 0;
 
   projects = [];
+  projectdata;
   id: number;
 
   private sub: any;
@@ -56,6 +57,16 @@ export class ProjectDetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
     this.id = +params['nid']; // (+) converts string 'id' to a number
 
+     /* service to get challenge name if project enter in it */
+       // get challenge name and nid for challenge if found from a view
+    this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
+      this.projectdata = data[0];
+      console.log(this.projectdata.challenge_name);
+    }, err => {
+
+    });
+        /* end service */
+
       // dispatch action to load the details here-solve no load issue.
 
       this.current_active_tab = 'project-story';
@@ -67,6 +78,7 @@ export class ProjectDetailsComponent implements OnInit {
           this.projectDetails = data;
           this.projectDetails.nid = this.id;
         });
+       
       this.currentuser = Number(localStorage.getItem('user_id'));
     });
   }// End ngOnInit
@@ -105,5 +117,9 @@ export class ProjectDetailsComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
       this.userLogin = data
     });
+  }
+  challengePage(nid){
+        this.router.navigate(['challenges/', nid]);
+
   }
 }

@@ -35,6 +35,7 @@
               </ul>
               <div class="clearfix"></div>
               <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
+             <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
               <ul class="list-unstyled project-aside">
                 <li id="project-story-tab" class="active"><a href="" (click)="changeProjectTab('project-story')" class="btn btn-light-grey" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
                 <li id="how-to-tab"><a href="" class="btn btn-light-grey" (click)="changeProjectTab('project-how-to')" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>

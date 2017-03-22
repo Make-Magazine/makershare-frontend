@@ -1,7 +1,7 @@
 <div class="project">
   <div class="project-title">
     <p>{{projectCard.project_name}}</p>
-    <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(16)">{{projectCard.challenge_name}}</a></p>
+    <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
   </div>
   <div class="project-image">
    <a (click)="ShowProjectDetails(projectCard.nid)"> <img src="{{projectCard.cover_photo}}" alt="" class="img-responsive"></a>
