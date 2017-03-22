@@ -1,38 +1,52 @@
-<div class="row">
-  <section class="col-sm-12 width-fix">
-    <div class="region region-content page-learn">
-      <header class="workshop-header">
-        <div class="container">
-          <h3>Get started, sharpen your skills, or become an expert</h3>
-          <p>Lorem ipsum lorem ipsum lorem ipsum</p>
+<div class="workshop-page">
+  <div class="main-container container-fluid">
+    <div class="row">
+      <section class="col-sm-12 width-fix">
+        <div class="region region-content">
+          <header class="workshop-header">
+            <div class="container">
+              <h3>Workshops</h3>
+              <div class="top-content-wrapper">
+                <div class="container">
+                  <h4>Get started, sharpen your skills, or become an expert</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore
+                    explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore
+                    nam quaerat inventore eveniet rerum totam.</p>
+                </div>
+              </div>
+              <!-- End filters -->
+            </div>
+          </header>
+          <!--/header -->
+          <div class="container showcase">
+            <div class="Workshop-view row">
+              <div *ngFor="let learn of learns" (click)="WorkshopDetails(learn.nid)" class="learning col-xs-12">
+                <div class="learning-item d-flex justify-content-around">
+                  <div class="image-top">
+                    <img class="card-img-top" src="{{learn.cover_photo}}">
+                  </div>
+                  <div class="content-bottom col d-flex">
+                    <div class="content-side d-flex flex-column align-self-stretch">
+                      <h4 class="card-title" [innerHTML]="learn.workshop_title"></h4>
+                      <div class="card-description" [innerHTML]="learn.brief_description"></div>
+                      <ul class="list-unstyled d-flex flex-wrap mt-auto workshop-tags">
+                        <li><a *ngFor="let category of learn.categories" class="btn btn-soft-grey">{{category}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </header><!--/header -->             
-      <div class="container workshop-container">
-        <div *ngFor="let learn of learns" class="workshop-card" (click)="WorkshopDetails(learn.nid)">
-          <div class="col-md-5">
-            <div class="image-container">
-              <img src="{{learn.cover_photo}}" alt="" class="img-responsive">
-            </div><!-- End image-container -->
-          </div><!-- End col-md-5 -->
-          <div class="col-md-7">
-            <div class="card-container">
-              <div class="card">
-                <h3 class="card-title"> <div [innerHTML]= "learn.workshop_title" > </div></h3> 
-                <div class="card-description">
-                  <!--<p>{{learn.brief_description}}</p>-->
-                    <div [innerHTML]="learn.brief_description"></div>
-                </div>
-                <br>
-                <div class="list-unstyled workshop-tags" >
-                     <a *ngFor="let category of learn.categories" class="btn btn-grey" >{{category}}</a>  
-                </div>
-             
-              </div><!-- End card -->
-            </div><!-- End card-container -->
-          </div><!-- End col-md-7 -->
-        </div><!-- End workshop-card -->
-      </div>
-
+        <div class="text-center">
+          <div class="button-container-main-2">
+            <a class="btn btn-main-2">Load more</a>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-
+    <!-- End region-content -->
+  </div>
+  <!-- End row -->
+</div>

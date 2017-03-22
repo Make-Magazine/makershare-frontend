@@ -39,7 +39,7 @@ import { FormsModule } from '@angular/forms';
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule,
+    NgbModule.forRoot(),
     RouterModule,
     routing,
     MessagesModule,
