@@ -7,12 +7,14 @@ import { ShowcasesComponent } from './showcases/showcases.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   declarations: [
     HomeComponent,

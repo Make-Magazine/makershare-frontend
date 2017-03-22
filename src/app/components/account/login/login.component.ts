@@ -13,7 +13,7 @@ import { HeaderComponent} from '../../general/header/header.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  implements OnInit{
-  isLogedIn = this.headerComponent.isLoggedIn;
+  //isLogedIn = this.headerComponent.isLoggedIn;
   loginForm: FormGroup;
   username: FormControl;
   password: FormControl;
@@ -81,8 +81,8 @@ export class LoginComponent  implements OnInit{
     this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {
       res.subscribe(res => {
         console.log('login done');
-        this.headerComponent.isLoggedIn = true;
-        this.isLogedIn = true;
+        //this.headerComponent.isLoggedIn = true;
+        //this.isLogedIn = true;
         this.router.navigate(['user']);
       }, err => {
 

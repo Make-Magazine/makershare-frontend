@@ -1,5 +1,73 @@
-$main-grey : #757575;
-$light-grey : #ecf0f1;
+$main-grey : #222;
+$light-grey : #BEBEBE;
 $white: #fff;
 $blue: #169eff;
 $font-grey: #444;
+$sec-bg : #C4C4C4;
+$title-color: #0AA9EA;
+$title-font-family: -webkit-body;
+
+/* New Variables */
+
+$main-bg : #F2F2F2;
+$challenge-bg : #333;
+$learn-bg : #DCDCDC;
+$accent-bg-1 : #D4EFFC;
+$accent-bg-2 : #FFF;
+
+$text-color-1 : #4F4F4F;
+$text-color-2 : #828282;
+$text-color-3 : #BDBDBD;
+$text-color-4 : #FFF;
+$text-color-5 : #00AEEF;
+
+
+$main-button-1 : #EC1F30;
+$main-button-2 : #4F4F4F;
+$sec-button-1 : #00AEEF;
+$sec-button-2 : #828282;
+$sec-button-3 : #BDBDBD;
+
+$valid-winner: #F2C94C;
+$valid-faire: #00AEEF;
+$valid-other: #4F4F4F;
+
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Trirong:400,700');
+
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Trirong', serif;
+@font-face {
+	font-family: "Messina Sans SemiBold";
+	src: url("fonts/MessinaSansWeb-SemiBold.eot?") format("eot"),
+		 url("fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
+		 url("fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
+		 url("fonts/MessinaSans-SemiBold.otf") format('opentype')
+}
+@font-face {
+	font-family: "Messina Sans Regular";
+	src: url("fonts/MessinaSansWeb-Regular.eot?") format("eot"),
+		 url("fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
+		 url("fonts/MessinaSansWeb-Regular.woff") format("woff"),
+		 url("fonts/MessinaSans-Regular.otf") format('opentype')
+}
+@font-face {
+	font-family: "Messina Sans Bold";
+	src: url("fonts/MessinaSansWeb-Bold.eot?") format("eot"),
+		 url("fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
+		 url("fonts/MessinaSansWeb-Bold.woff") format("woff"),
+		 url("fonts/MessinaSans-Bold.otf") format('opentype')
+}
+@font-face {
+	font-family: "Messina Modern Regular";
+	src: url("fonts/MessinaModernWeb-Regular.eot?") format("eot"),
+		 url("fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
+		 url("fonts/MessinaModernWeb-Regular.woff") format("woff"),
+		 url("fonts/MessinaModern-Regular.otf") format('opentype')
+}
+@font-face {
+	font-family: "Messina Modern Bold";
+	src: url("fonts/MessinaModernWeb-Bold.eot?") format("eot"),
+		 url("fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
+		 url("fonts/MessinaModernWeb-Bold.woff") format("woff"),
+		 url("fonts/MessinaModern-Bold.otf") format('opentype')
+}

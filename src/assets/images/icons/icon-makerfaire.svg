@@ -1,0 +1,16 @@
+<svg width="30" height="37" viewBox="0 0 30 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon-makerfaire</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1521 -193)" figma:type="canvas">
+<g id="icon-makerfaire" style="mix-blend-mode:normal;" figma:type="instance">
+<g id="icon-makerfaire" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-1521 193)" fill="#00AEEF" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path1_fill" transform="translate(-1521 193)" fill="#00AEEF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 15.0861 15.7419C 15.9917 15.7419 16.7258 15.0078 16.7258 14.1021C 16.7258 13.1965 15.9917 12.4624 15.0861 12.4624C 14.1804 12.4624 13.4463 13.1965 13.4463 14.1021C 13.4463 15.0078 14.1804 15.7419 15.0861 15.7419Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 30 0L 30 27.6832L 15 36.061L 0 27.6832L 0 0ZM 15 5.29578C 12.9021 5.29578 11 7.18571 11 9.29578L 19 9.29578C 19 7.18571 17.098 5.29578 15 5.29578ZM 10.0125 10.2958L 10 15.2958L 12 18.2958L 11.5 18.2958L 11.5 22.2958L 10 23.2958L 9 25.2958L 14 25.2958L 14 18.2958L 16 18.2958L 16 25.2958L 21.0404 25.2958L 20 23.2958L 18.5 22.2958L 18.5 18.2958L 18 18.2958L 20 15.2958L 20 10.2958L 10.0125 10.2958ZM 21 13.5915L 21.3428 13.5915L 21.0404 19.3393C 23.2274 19.4357 23.4014 18.0127 23.4014 17.2903L 23.0438 13.5915L 23.9517 13.5915C 23.9517 12.5645 22.924 11.2958 21 11.2958L 21 13.5915ZM 9 13.5915L 8.65723 13.5915L 8.95959 19.3393C 6.77258 19.4357 6.59863 18.0127 6.59863 17.2903L 6.95618 13.5915L 6.04834 13.5915C 6.04834 12.5645 7.07605 11.2958 9 11.2958L 9 13.5915Z"/>
+</defs>
+</svg>

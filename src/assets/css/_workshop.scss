@@ -1,37 +1,65 @@
-.page-learn {
+.workshop-page {
+	background-color: $main-bg;
 	.workshop-header {
+		padding-bottom: 25px;
+		background-color: $main-bg;
 		text-align: center;
-		padding-top: 30px;
-		padding-bottom: 30px;
-		border-bottom: 1px solid $main-grey;
-	}
-	.workshop-card {
-		padding: 10px 0;
-		border-bottom: 1px solid $main-grey;
-		overflow: hidden;
-		color:$main-grey;
-		cursor:pointer;
-		.image-container {
-			border: 3px solid transparent;
-		    height: 200px;
-			margin-bottom: 5px;
-			overflow: hidden;
+		h3 {
+			@include header-font();
+			margin: auto;
+			text-align: center;
+			padding-top: 40px;
+			color: $main-grey;
+			padding-bottom: 30px;
 		}
-		.workshop-tags {
-			.btn {
-				padding: 5px;
-				font-size: 9px;
-				float: left;
-				margin-right: 5px;
-				background-color: $main-grey*1.6;
-				color:$main-grey*0.5;
-				font-weight: bold;
-				&:hover {background-color: $main-grey;}
+		.explore-tags {
+			margin: 20px auto;
+			li{
+				display: inline-block;
+				margin: 5px;
+				a.btn {
+					padding: 5px 15px;
+					border-radius: 3px;
+				}
 			}
 		}
-		&:hover {
-			.image-container {border-color: $blue;}
-			.card-title{color: $blue;}
+	}
+	.learning-item {
+		background-color: $learn-bg;
+		padding: 4px;
+		.card-img-top {
+    width: 250px;
+    height: 210px;
+			img {
+    width: 250px;
+    height: 210px;
+			}
+		}
+		.content-bottom  {
+			padding-top: 8px;
+		}
+		.workshop-tags {
+			li {
+				float: left;
+				a {
+					font-size: 11px;
+					padding: 4px;
+				}
+			}
+		}
+			.card-description {
+				display: -webkit-box;
+			-webkit-line-clamp:3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			margin-bottom: 10px;
+			min-height: 66px;
+			}
+	}
+	.Workshop-view {
+		.learning {
+			margin-bottom: 8px;
+			margin-top: 8px;
 		}
 	}
 }

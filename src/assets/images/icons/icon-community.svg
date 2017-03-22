@@ -1,0 +1,16 @@
+<svg width="30" height="37" viewBox="0 0 30 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon-community</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-579 -577)" figma:type="canvas">
+<g id="icon-community" style="mix-blend-mode:normal;" figma:type="symbol">
+<g id="icon-community" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(579 577.204)" fill="#4F4F4F" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path1_fill" transform="translate(579 577.204)" fill="#4F4F4F" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 19.0215 16.0556C 19.0215 18.2291 17.2595 19.9911 15.086 19.9911C 12.9125 19.9911 11.1505 18.2291 11.1505 16.0556C 11.1505 13.8821 12.9125 12.1201 15.086 12.1201C 17.2595 12.1201 19.0215 13.8821 19.0215 16.0556Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 30 0L 30 27.6832L 15 36.061L 0 27.6832L 0 0ZM 23.6129 16.0556C 23.6129 20.7649 19.7953 24.5825 15.086 24.5825C 10.3768 24.5825 6.55914 20.7649 6.55914 16.0556C 6.55914 11.3464 10.3768 7.52875 15.086 7.52875C 19.7953 7.52875 23.6129 11.3464 23.6129 16.0556Z"/>
+</defs>
+</svg>

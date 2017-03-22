@@ -1,4 +1,6 @@
 .page-create-profile {
+	background-color: $main-bg;
+	margin: 0px;
 	.top-content-wrapper {
 		background-color: $main-grey;
 		color: $white;
@@ -7,7 +9,7 @@
 		padding-bottom: 10px;
 	}
 	.create-nav {
-		background-color: $light-grey;
+		background-color: $main-bg;
 		overflow: hidden;
 		padding-top: 20px;
 		padding-bottom: 0;
@@ -36,24 +38,44 @@
 		margin-top: 20px;
 		color: $main-grey;
 		input{margin-top: 10px; margin-bottom: 10px;}
-		#userName, #describe, #birthday, #email {width: 50%;}
+		#userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}
 		#country {width: 30%;}
 		#state {width: 20%;}
 	}
 	.optional-info {
 		@extend .basic-info;
 		display: none;
-		a.btn-white {
-			padding: 5px 15px;
-			font-size: 14px;
+		a.btn {
+		    display: inline-block;
+		    text-align: center;
+		    padding: 6px;
+		    background-color: #4f4f4f;
+		    color: white;
+		    border: 1px solid #444;
+		    min-width: 144px;
+		    font-size: 16px;
 		}
-
-		.table {
+		
+		.social-links {
+			li:first-of-type {
+				h4 {
+					margin-left: 82%;
+					font-size: 14px;
+				}
+			}
+			label {
+				width: 30%;
+				font-size: 15px;
+			}
 			input[type="checkbox"] {
-				margin-left: 20px;
+				margin-left: 30px;
+				font-size: 15px;
 			}
 			input[type="text"] {
+				width: 50%;
 				margin: 0;
+				padding: 3px;
+				font-size: 15px;
 			}
 			i {width: 25px;}
 			p {margin-top: 5px;font-size: 15px;}
@@ -63,5 +85,9 @@
 		background-color: $light-grey;
 		padding: 15px;
 		margin: 15px 0;
+	}
+	.create-cover {
+		padding: 14px;
+		overflow: hidden;
 	}
 }

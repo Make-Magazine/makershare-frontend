@@ -1,12 +1,13 @@
 /* Start of Showcase */
 .page-showcase { 
+        background-color: $main-bg;
     .showcase-header {
         margin-bottom: 10px;
-        .col-md-11.col-md-offset-1 {
-            padding: 0;
+        .row {
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
     }
-    color: #000;
     h3 {
         color: #000;
         font-weight: normal;
@@ -25,19 +26,82 @@
         background-color: $light-grey; 
         overflow: hidden;
     }
-    .showcase {
-        .showcase-item {
-            .timestamp {
-                color: #fff;
-            }
-        }
-    }
+
     .filters {
         margin-bottom: 20px;
         margin-top: 0;
+        overflow: hidden;
         .dropdown-menu {right: auto;}
-        button {
-            margin-top: 5px;
+    }
+    .user-card {
+        background-color: white;
+    }
+    .go-back,.go-previous,.go-next {
+        display: inline-block;
+        font-size: 36px;
+        color: $text-color-1;
+    }
+}
+.showcase {
+        .showcase-item {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            padding: 4px;
+            width: 100%;
+            .timestamp {
+            }
+            .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        } 
+        img {height: 200px;width: 100%;}
+        }
+        .content {
+            font-size: 12px;
+            h4.title {
+                // font-size: 18px;
+                @include card-header-font-sm();
+                color: $text-color-1;
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                overflow: hidden;
+                max-height: 36px;
+                line-height: 18px;
+                height: 40px;
+            }
+            .description {
+                @include desc-font-14();
+                text-overflow: ellipsis;
+                word-wrap: break-word;
+                overflow: hidden;
+                max-height: 52px;
+                line-height: 18px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }
+            .number {
+                float: left;
+            }
+            .timestamp {
+                float: right;
+            }
+            .number, .timestamp {
+                @include desc-font-12();
+                margin: 0px;
+            }
+
         }
     }
+
+.go-back,.go-previous,.go-next {
+    display: inline-block;
+    font-size: 36px;
+    color: $text-color-1;
+}
+
+.projects-circle {
+    margin-bottom: 14px;
 }

@@ -1,10 +1,11 @@
 .page-project {
 		color: $main-grey;
-
+		background-color: $main-bg;
 	.top-content-wrapper {
 		padding-top: 20px;
-		border-bottom: 1px solid $main-grey;
+		border-bottom: 1px solid $light-grey;
 		margin-bottom: 10px;
+		background-color: white;
 		h2 {
 			font-size: 35px;
 			font-weight: bold;
@@ -16,16 +17,18 @@
 				
 			}
 			&.project-tags {
+				-webkit-justify-content: flex-start; /* Safari */
+  				justify-content:   flex-start;
 				.btn {
 					padding: 5px;
-					font-size: 9px;
+					font-size: 11px;
 					float: left;
 					margin-right: 5px;
-					background-color: $main-grey*1.8;
-					color:$main-grey*0.5;
-					font-weight: bold;
+					background-color: $light-grey;
+					color:$main-grey;
+					font-weight: normal;
 					border-radius: 3px;
-					&:hover {background-color: $main-grey*1.6;}
+					&:hover {background-color: $main-grey;}
 				}
 			}
 		}
@@ -34,7 +37,6 @@
 				display: block;
 				float: left;
 				.btn {
-					border-right-width: 0;
 				}
 				.active {
 					background-color: $main-grey;
@@ -42,7 +44,6 @@
 				}
 				&:last-of-type {
 					.btn{
-						border-right-width: 1px;
 					}
 				}
 			}
@@ -67,13 +68,24 @@
 			margin-bottom: -1px;
 		}
 	}
+	.project-story-tab {
+		background-color: white;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.feedback-group {
+		background-color: white;
+	}
+	.actions-button {
+	  -webkit-justify-content: flex-end; /* Safari */
+	  justify-content:   flex-end;
+	}
 	.project-image {
 		img {
 			width: 100%;
 		}
 	}
 	.project-stats {
-		background-color: $light-grey;
 		ul{
 			padding: 10px;
 			li {
@@ -89,10 +101,61 @@
 	}
 	
 	.project-body {
+		margin-bottom: 20px;
 		p{
 		}
 		&>p:first-of-type {
 			font-weight: bold;
+		}
+		.how-to-tab {
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.how-to-sidebar {
+			padding: 6px;
+			background-color: white;
+			.list-group {
+				padding: 4px;
+				margin: 4px;
+				h3 {
+				font-size: 20px;
+				}
+				li {
+					font-size: 15px;
+					a {
+					    background-color: #eee;
+					    padding: 0px 6px 0px 6px;
+					    font-size: 15px;
+					}
+					p {
+						margin: 0px;
+						font-size: 15px;
+					}
+				}
+			}
+			.avg-time {
+				overflow: hidden;
+				.average {
+					float: left;
+					line-height: 22px;
+				}
+				.hours {
+					float: left;
+				    display: block;
+				    font-size: 15px;
+				    margin: 2px;
+					color: $title-color;
+					font-weight: bold;
+					padding: 3px 5px 3px 5px;
+					span {
+						font-size: 15px;
+    					padding: 2px;
+					}
+				}
+			}
 		}
 	}
 	.tools,.boards-kits,.materials {
@@ -117,14 +180,15 @@
 			}
 			&:last-child {
 			}	
-		} 
+		}
+
 	} 
 		
 	aside {
 		
 		
 	}
-	.how-to-tab {display: none;}
+
 	.region-content .how-to-tab {
 		p {
 			padding-top: 20px;
@@ -133,8 +197,8 @@
 	}
 	.feedback-group {
 		.feedback {
-			background-color: $light-grey;
-		//	overflow: hidden;
+			background-color: #F2F2F2;
+			overflow: hidden;
 			padding: 10px 0px 0;
 			margin: 10px 0;
 			.feed-user , .feed-body , .feed-timestamp {
@@ -167,26 +231,40 @@
 				width: 25%;
 				font-size: 12px;
 			}
+			.user-nickname {
+				font-weight: bold;
+			}
 		}
 		form {
 			overflow: hidden;
 			.feedback {
+				width: 100%;
 				padding-bottom: 10px;
-				img {
-					width: 40px;
-					margin-left: 15px;
-					float: left;
-				}
-				textarea {
-					margin-left: 15px;
-					float: left;
-					resize:none;
-				}
+					.feedback-image {
+						width: 12%;
+					    display: block;
+					    overflow: hidden;
+					    float: left;
+						img {
+							width: 40px;
+							margin-left: 15px;
+							float: left;
+						}
+					}
+					.feedback-area {
+						    width: 88%;
+						    overflow: hidden;
+						    display: block;
+						textarea {
+							margin-left: 10px;
+							float: left;
+							resize:none;
+							width: 95%;
+						}
+					}
 			} 
 			a {
-				padding: 0px 25px;
-				margin: 40px 0 0 5px;
-				font-size: 16px;
+
 			}
 		}
 	}
@@ -202,26 +280,33 @@
 			margin-bottom: 10px;
 			.profile-container {
 				width: 100%;
-				padding: 0 5px;
 				float: none;
 				.profile-card {
 					border: none;
 					& > div{
 						padding: 0;
+						
 					}
 					.left {
-						width: 90px;
+						
 					}
 					.right {
-						width: 150px;
-						margin-left: 10px;
+						    padding: 0px 4px 0px 4px;
+					
 					}
 				}	
 			}
 			.role {
-				padding: 0 10px;
-				background-color: $light_grey;
-				border: 1px solid $main-grey;
+			    padding: 10px 10px 0px 10px;
+			    background-color: #eee;
+			    border: 1px solid #ccc;
+			    font-size: 13px;
+			}
+		}
+		.card {
+			border: none;
+			.user-card {
+				padding: 8px;
 			}
 		}
 	}
@@ -237,12 +322,13 @@
 			text-decoration: none;
 		}
 		padding: 15px 10px;
-		background-color: $light_grey;
-		border: 1px solid $main-grey;
+		background-color: #eee;
+		border: 1px solid #ddd;
 	}
 	.panel {	
 		border-width:3px;
 		border-radius: 15px;
+		padding: 6px;
 		.panel-heading{
 			background-color: transparent;
 			border-bottom-width: 3px;
@@ -250,9 +336,10 @@
 				font-weight: bold;
 				color: $main-grey;
 				margin: 0;
+				font-size: 20px;
 				i {
 					width: 55px;
-					font-size: 30px;
+					font-size: 25px;
 					text-align: center;
 				}
 			}
@@ -260,26 +347,138 @@
 	}
 	.block-style {
 		padding: 10px;
-		background-color: $light_grey;
+		background-color: #eee;
+		border: 1px solid #ccc;
+		font-size: 13px;
 	}
+
 	.avg-time {
 		p {margin: 0;}
-		border: 1px solid $main-grey;
+		    border: 1px solid #ccc;
 	}
-	.list-group li {
-		border-width:3px;
-		border-bottom-width: 0;
-		
-		&:first-of-type {
-			border-top-right-radius:10px;
-			border-top-left-radius:10px;
+
+
+	.feedback-group {
+		.feedback-card {
+			padding: 10px;
+			background: white;
+			margin-bottom: 4px;
+			.user-info {
+					padding: 4px 0px 4px 0px;
+				p {
+					margin-bottom: 0px;
+				}
+				.user-details {
+					padding-left: 1px;
+					.user-fullname {
+					    font-size: 16px;
+    					margin-right: 10px;
+    					color: $title-color;
+					}
+					.feed-timestamp {
+						p {
+							color: #bebebe;
+						}
+						i {
+							margin-left: 4px;
+							font-size: 4px;
+							color: #bebebe;
+						}
+						
+					}
+					.user-nickname {
+						font-weight: bold
+					}
+					p {
+						font-size: 14px;
+						padding-top: 2px;
+						color: $font-grey;
+					}
+
+				}
+				.feed-timestamp {
+					text-align: right;
+					font-size: 13px !important;
+					color: $font-grey;
+				}
+			}
+			.content-section {
+				.user-pic {
+					padding: 4px;
+					img {
+					    width: 48px;
+					    height: 48px;
+					    margin: 0 auto;
+					}
+				}
+				.media-body {
+					padding: 0px 10px 0px 10px;
+					p {
+						color: $font-grey;
+						margin: 0px;
+					}
+				}
+			}
 		}
-		&:last-child {
-			border-bottom-width: 3px;
-			border-bottom-right-radius:10px;
-			border-bottom-left-radius:10px;
+		.new-comment  {
+			    padding: 10px;
+			    background-color: white;
+			.comment-image {
+				padding-top: 4px;
+				img {
+					width: 48px;
+				    height: 48px;
+				}
+			}
+			.comment-body {
+				textarea {
+					border: 1px solid #ccc;
+					color: $font-grey;
+				    height: 54px;
+    				margin-top: 2px;
+						border-radius: 4px;
+				}
+				button {
+					display: inline-table;
+				    margin-top: 2px;
+				    padding-left: 8px;
+				    color: $light-grey;
+						border: none;
+						background: none;
+						margin: 0;
+						padding-bottom: 8px;
+					span {
+						.fa-circle {
+							font-size: 2.5em;
+						}
+						.fa-paper-plane  {
+						    font-size: 22px;
+    						line-height: 50px;
+						}
+					}
+
+					&:hover {
+						color: $main-button-1;
+						border: none;
+					}
+					&:focus {
+						border: none;
+						outline: none;
+    				outline: none;
+					}
+				}
+			}
 		}
 	}
+
+
+
+
+
+
+
+
+
 }
 header.showcase-project {
 	border-bottom: 1px solid #000;
@@ -301,8 +500,27 @@ header.showcase-project {
 	h3  {
 		text-decoration: underline;
 		display: inline-block;
+		text-align: center;
 		a {
 			color: #000;
 		}
+	}
+}
+
+header.showcase-project {
+	.previous {
+		text-align: center;
+	}
+	.title {
+		text-align: center;
+	}
+	.next {
+		text-align: center;
+	}
+}
+
+.page-project {
+	.clearfix {
+	clear: both;
 	}
 }
