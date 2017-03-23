@@ -131,13 +131,11 @@ export class IndividualWorkshopComponent implements OnInit {
     } else if (this.objects[i].book && this.objects[i].book !== '') {
        delete this.popupPreview;
       if (this.objects[i].book.endsWith('.epub')) {
-        
-        for( let epubFile in this.objects[i].book)
-        {
+    
         this.popupPreview = null;
         this.epubFile = true;
         this.epubLink = this.objects[i].book;
-        }
+        
        } else {
         delete this.popupPreview;
         this.epubFile = null;

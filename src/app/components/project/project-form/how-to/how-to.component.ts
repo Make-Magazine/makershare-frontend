@@ -432,4 +432,12 @@ export class HowToComponent implements OnInit {
       },    
     },
   };
+
+  /**
+   * 
+   * @param ControlName name of the control "tool , material , part"
+   */
+  AddNewToolMaterialPart(){
+
+  }
 }
