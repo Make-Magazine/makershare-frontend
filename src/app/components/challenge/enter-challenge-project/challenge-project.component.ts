@@ -92,22 +92,19 @@ export class ChallengeProjectComponent implements OnInit {
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', this.nid]]))
       .subscribe(data => {
-        this.challangeData = data;
-        console.log(data)
+        this.challangeData = data[0];
         // this.challangStartDate = this.challangeData.challenge_start_date;
+      }, err => {
+        console.log(err);
       });
   }
   updateSelectedProject(item: any) {
     this.selectedProjectName = item.target.selectedOptions[0].text;
-    console.log(this.selectedProjectName);
-    this.selectedProject = item.target.value;
-    console.log(this.selectedProject);
-    console.log(this.challangeData[0].title)
+    this.selectedProject = item.target.value;  
 
   }
 
   onCancel(event: any) {
-    console.log("cancel");
     this.router.navigate(['/challenges/' + this.nid]);
   }
   onSubmit(event: any) {
@@ -118,7 +115,6 @@ export class ChallengeProjectComponent implements OnInit {
       "field_entry_challenge": this.nid,
     };
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
-      console.log(res);
       this.router.navigate(['challenges/', this.challangeData[0].nid]);
       this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData[0].title, type: NotificationType.Success });
       /* bookmark auto after submit project challenge */
@@ -137,7 +133,7 @@ export class ChallengeProjectComponent implements OnInit {
   }
 
   onMyEntries() {
-    console.log("my entries");
+
   }
 
   createNewProjectForChallenge() {
@@ -158,7 +154,6 @@ export class ChallengeProjectComponent implements OnInit {
         this.router.navigate(['/challenges/' + this.nid]);
 
       }
-      console.log(data);
     }, err => {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
