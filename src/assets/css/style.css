@@ -55,13 +55,14 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
-.displace, .btn-grey, .btn-grey-follow, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
+.displace, .btn-grey, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
   position: relative;
   left: -4px;
   top: -4px; }
-  .displace:active, .btn-grey:active, .btn-grey-follow:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-grey-follow:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
+  .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
     left: 0;
-    top: 0; }
+    top: 0;
+    cursor: pointer; }
 
 /* btn-main */
 .btn {
@@ -95,22 +96,17 @@ header .main-header .maker-sites li {
     background-color: #141414;
     border-color: #141414; }
   .btn-grey-inverse:active, .btn-grey-inverse:hover, .btn-grey-inverse.active {
-    color: #fff;
+    color: #fff !important;
     background-color: #1f1f1f;
     border-color: #1b1b1b; }
 
 .btn-grey-follow {
   color: #fff !important;
   background-color: #BEBEBE;
-  border-color: #1f1f1f;
-  border-radius: 0; }
-  .btn-grey-follow:active, .btn-grey-follow:hover, .btn-grey-follow.active, .btn-grey-follow:focus {
-    color: #fff;
-    background-color: #BEBEBE;
-    border-color: #1b1b1b;
-    position: relative !important;
-    left: -4px !important;
-    top: -4px !important; }
+  border-radius: 0;
+  position: static !important;
+  top: 0px !important;
+  left: 0px !important; }
 
 .btn-light-grey {
   color: #222;
@@ -1328,6 +1324,9 @@ header.showcase-project .next {
 .page-project .clearfix {
   clear: both; }
 
+.projects-grid .project:hover {
+  cursor: pointer; }
+
 .workshop-page {
   background-color: #F2F2F2; }
   .workshop-page .workshop-header {
@@ -1357,6 +1356,8 @@ header.showcase-project .next {
   .workshop-page .learning-item {
     background-color: #DCDCDC;
     padding: 4px; }
+    .workshop-page .learning-item:hover {
+      cursor: pointer; }
     .workshop-page .learning-item .card-img-top {
       width: 250px;
       height: 210px; }
@@ -1376,7 +1377,7 @@ header.showcase-project .next {
       -webkit-box-orient: vertical;
       overflow: hidden;
       margin-bottom: 10px;
-      min-height: 66px; }
+      min-height: 100px; }
   .workshop-page .Workshop-view .learning {
     margin-bottom: 8px;
     margin-top: 8px; }
@@ -2036,6 +2037,8 @@ header.showcase-project .next {
   margin-top: 15px;
   padding: 4px;
   width: 100%; }
+  .showcase .showcase-item:hover {
+    cursor: pointer; }
   .showcase .showcase-item .image-container {
     width: 100%;
     height: 200px;

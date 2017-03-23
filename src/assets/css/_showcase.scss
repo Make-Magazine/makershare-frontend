@@ -44,6 +44,9 @@
 }
 .showcase {
         .showcase-item {
+            &:hover {
+                cursor: pointer;
+            }
             margin-bottom: 15px;
             margin-top: 15px;
             padding: 4px;
