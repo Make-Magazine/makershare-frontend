@@ -5,7 +5,7 @@ header {
         &.navbar {
             background-color: $main-bg;
             position: relative;
-            z-index: 9999;
+            z-index: 1;
         }
         .collapse.navbar-collapse {
             // width: 65%;
