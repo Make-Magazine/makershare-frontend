@@ -6,7 +6,7 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { Http } from '@angular/http';
 import { BookComponent } from '../book/book.component';
-
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-individual-workshop',
@@ -43,7 +43,9 @@ export class IndividualWorkshopComponent implements OnInit {
     private viewService: ViewService,
     private sanitizer: DomSanitizer,
     private http: Http,
-  ) { }
+    private modalService: NgbModal,
+  ) { 
+  }
 
   ngOnInit() {
     this.uid = localStorage.getItem('user_id');
@@ -168,4 +170,18 @@ export class IndividualWorkshopComponent implements OnInit {
   //     this.currentuser = data;
   //   });
   // }
+
+
+ 
+
+  open(content,i:number,mode:string) {
+    if(mode === 'preview'){
+      this.preview(i);
+    }else{
+      this.overlay(i);
+    }
+    this.modalService.open(content);
+  }
+
+
 }
