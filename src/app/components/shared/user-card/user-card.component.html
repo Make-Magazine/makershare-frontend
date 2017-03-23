@@ -1,23 +1,27 @@
+
 <div class=" profile-container" *ngIf="card[0]">
   <!-- start profile card-->
-  <div class="profile-card">
-    <div class="left col-sm-4">
-      <div class="profile-pic">
-        <img *ngIf="card[0].default_profile_photo" src="{{card[0].default_profile_photo}}" alt="" class="img-responsive">
+  <div class="card spotlight-item ">
+    <div class="card-block user-card align-content-stretch content ">
+      <div class="media">
+        <div class="profile-pic-container flex-column align-self-start mr-3">
+          <img *ngIf="card[0].default_profile_photo" src="{{card[0].default_profile_photo}}" alt="" class="img-responsive maker-photo">
+
+          <div class="icons d-flex flex-row justify-content-start">
+            <img src="./assets/images/icons/icon-blue-ribbon.svg" alt="">
+            <img src="./assets/images/icons/icon-challenge-winner.svg" alt="">
+          </div>
+          <a data-dismiss="modal" data-target="#message-modal" data-toggle="modal" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></a>
+        </div>
+        <div class="media-body">
+          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+          <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
+          <p class="user-nickname"><a href="#">aka Goodmen</a></p>
+          <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
+          <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+          <p class="count align-self-end">6 projects</p>
+        </div>
       </div>
-      <a href="#" *ngIf="hideMessage" class="btn btn-blue" data-dismiss="modal" data-target="#message-modal" data-toggle="modal" (click)="getcard()">Message</a>
-    </div>
-    <div class="right col-sm-8">
-      <h4 class="profile-name" *ngIf="(card[0].first_name) && (card[0].last_name)"><a href="#">{{card[0].first_name}} {{card[0].last_name}}</a></h4>
-      <h4 class="profile-name" *ngIf="(!card[0].first_name) && (!card[0].last_name)"><a href="#">{{card[0].name}}</a></h4>
-      <div class="trophies">
-        <i class="fa fa-lg fa-child"></i>
-        <i class="fa fa-lg fa-certificate"></i>
-        <i class="fa fa-lg fa-trophy"></i>
-      </div>
-      <p class="count">6 projects</p>
-      <p class="profile-tag" *ngIf="(card[0].tags)" [innerHTML]="card[0].tags"></p>
-      <p class="user-city" *ngIf="(card[0].city)" [innerHTML]="card[0].city"></p>
     </div>
   </div>
   <!-- End profile card -->
@@ -71,4 +75,5 @@
       </div>
     </div>
   </div>
+
 </div>

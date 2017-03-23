@@ -1,17 +1,23 @@
-  <!-- Start Maker Spotlight -->
-  <section class="maker-spotlight">
-    <header class="default-header container">
-      <div class="container">
-        <h3>Maker Spotlight</h3>
-      </div>
-    </header>
-    <div class="container">
+<section class="maker-spotlight">
+  <header class="container">
+    <h3>Maker Spotlight</h3>
+  </header>
+  <div class="container">
+    <div class="row">
       <!-- Start Spotlight Single Item -->
-
-      <div *ngFor="let spotlight of spotlights" class="spotlight col-md-4">
-        <app-user-card [uid]="spotlight.uid"></app-user-card>
+      <div class="col-md-6 d-flex align-items-stretch" *ngFor="let spotlight of spotlights">
+        <div class="card spotlight-item ">
+          <div class="image-container">
+            <img class="card-img-top" src="./assets/images/issues_robotics.jpg" alt="Card image cap">
+            <span class="card-type">Spotlight</span>
+          </div>
+          <app-user-card [uid]="spotlight.uid"></app-user-card>
+        </div>
+        <!-- End Spotlight-item -->
       </div>
-
-    </div><!-- End container -->
-  </section>
-  <!-- End Maker Spotlight -->
+      <!-- Enc col -->
+    </div>
+    <!-- End row -->
+  </div>
+  <!-- End container -->
+</section>

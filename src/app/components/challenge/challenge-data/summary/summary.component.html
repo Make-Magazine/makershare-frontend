@@ -1,86 +1,89 @@
-<div class="challenge-summary">
+<div class="challenge-summary row">
   <div class="col-md-9 summary-content">
-    <h3 >Summary  </h3>
+    <h3 class="col-12">Summary</h3>
     <div class="description" *ngIf="challenge" [innerHTML]="challenge.body">
-      <p *ngIf="challenge.body" >{{challenge.body}} </p>
+      <p *ngIf="challenge.body">{{challenge.body}} </p>
       <p>See <a href="">Rules &amp; Instructions</a> for more details.</p>
     </div>
-   
-      
-    <div *ngIf="projectsCount>0">  
-   <div *ngIf="challenge" >
-     <div *ngIf="challenge.display_entries =='1'">
-     <!--start if -->
-    <div class="filters" >
-        <div class="row">
-          <p class="col-md-4">{{projectsCount}} Entries</p>
-        <p class="col-md-4" *ngIf="entries_count">{{entries_count}} Entries</p>
-        <div class="sorting-filter col-md-3 col-md-offset-5">
-          <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{ActionName}}
-          <span class="caret" ></span></button>
-          <ul class="dropdown-menu"  >
-
-            <li><a (click)="mostRecent($event)" class="btn">Most  recent</a></li>
-            <li><a (click)="oldest($event)" class="btn">Oldest</a></li>
-            <li><a (click)="sortAsc($event)" class="btn">Title A-Z</a></li>
-            <li><a (click)="sortDesc($event)"class="btn">Title Z-A</a></li>
-            <li><a (click)="mostLiked($event)" class="btn">Most Liked</a></li>
-            <li><a (click)="mostForked($event)" class="btn">Most Forked</a></li>
-          </ul>
-        </div><!-- End sorting-filter -->
-      </div><!-- End row -->
-    </div><!-- End filters -->
-    </div><!--end if -->
-    </div><!--end if -->
-    </div><!--end if projects-->
-    <div class="entries" *ngIf="challenge" >
-      <div *ngIf="challenge.display_entries =='1'">
-      <div *ngIf="projectsChallenge">
-      <div  *ngFor="let project of projectsChallenge">
-        <div class="col-md-4" *ngIf="project">
-        <div class="entry-container" (click)="ShowProjectDetails(project.nid)">
-          <div class="image-container">
-           <img *ngIf="project.cover_photo"  src="{{project.cover_photo}}" alt="" class="img-responsive">
-            <div class="entry-description">
-              <p>This{{project.nid}} is a brief description description This is a brief description description This is a brief description description This is a brief description description}</p>
+    <div *ngIf="projectsCount>0">
+      <div *ngIf="challenge">
+        <div *ngIf="challenge.display_entries =='1'">
+          <!--start if -->
+          <div class="filters">
+            <div class="container">
+              <div class="row justify-content-center align-items-center">
+                <div class="entries-count btn">
+                  <p *ngIf="projectsCount == 1">{{projectsCount}} Entry</p>
+                  <p *ngIf="projectsCount > 1">{{projectsCount}} Entries</p>
+                </div>
+                <div class="sorting-filter dropdown">
+                  <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-challenges" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="filter-challenges">
+                    <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
+                    <a class="dropdown-item" (click)="oldest($event)" class="btn">Oldest</a>
+                    <a class="dropdown-item" (click)="sortAsc($event)" class="btn">Title A-Z</a>
+                    <a class="dropdown-item" (click)="sortDesc($event)" class="btn">Title Z-A</a>
+                    <a class="dropdown-item" (click)="mostLiked($event)" class="btn">Most Liked</a>
+                    <a class="dropdown-item" (click)="mostForked($event)" class="btn">Most Forked</a>
+                  </div>
+                </div>
+                <!-- End sorting-filter -->
+              </div>
+              <!-- End row -->
             </div>
-            <div class="vote"><a href="">Vote</a></div>
           </div>
-          <h4>{{project.title}}</h4>
-          <p class="submitter">By <a href="">{{project.name}}</a></p>
-          <p class="entry-date">12.21.16</p>
-        </div><!-- End entry-container -->
+          <!-- End filters -->
+        </div>
+        <!--end if -->
+      </div>
+      <!--end if -->
+    </div>
+    <!--end if projects-->
+    <div class="entries" *ngIf="challenge">
+      <div *ngIf="challenge.display_entries =='1'">
+        <div *ngIf="projectsChallenge" class="row">
+          <div *ngFor="let project of projectsChallenge" class="col-md-4">
+            <div *ngIf="project">
+              <app-project-card [projectCard]="project"></app-project-card>
+            </div>
+          </div>
         </div>
       </div>
-      </div></div>
-
-  
-  
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 load-more" >
-            <a *ngIf="!hideLoadMore"  class="btn btn-white" (click)="loadMoreProject()">Load more </a>
+      <div class="text-center">
+        <div class="button-container-sec-3">
+          <a class="btn btn-grey" *ngIf="!hideLoadMore" (click)="loadMoreProject($event)">Load more</a>
         </div>
       </div>
     </div>
-  </div><!-- End summary-content -->
+  </div>
+  <!-- End summary-content -->
   <aside class="col-sm-3 summary-aside">
-        <div class="col-sm-12 summary-aside-content">
-        <div *ngFor="let award of awards;let i = index;">
-          <div class="award-container" *ngIf="award">
-            <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
-            <img *ngIf="award.photo" src="{{award.photo}}" alt="">
-            <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
-            <div class="clearfix"></div>
-            <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>
+    <div class="col-sm-12 summary-aside-content">
+      <ngb-carousel *ngIf="awards">          
+          <div *ngFor="let award of awards;let i = index;">
+            <template ngbSlide>
+              <img *ngIf="award.photo" src="{{award.photo}}" alt="{{award.award_name}}">
+              <img *ngIf="!award.photo" src="http://placehold.it/180x180" alt="{{award.award_name}}" class="w-100">
+              <div class="carousel-caption">
+                <p class="name" *ngIf="award.award_name">{{award.award_name}}</p>
+                <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
+                <div class="clearfix"></div>
+                <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>
+              </div>
+            </template>
           </div>
-        </div>
-        <ul class="list-unstyled" *ngIf="challenge">
-          <h5>Challenge Timeline:</h5>
-          <li *ngIf="challenge.challenge_start_date" >Project submissions open:{{challenge.challenge_start_date}} </li>
-          <li>Deadline to apply for free devices: November 20, 2016 at 11:55 PM PT</li>
-          <li *ngIf="challenge.challenge_end_date"> Project submissions close:{{challenge.challenge_end_date}}</li>
-          <li *ngIf="challenge.winners_announcement_date">Winners announced by: {{challenge.winners_announcement_date}}</li>
-        </ul>
-        </div>
-  </aside><!-- End aside -->
-</div><!-- End challenge-summary -->
+        </ngb-carousel>
+      <ul class="list-unstyled" *ngIf="challenge">
+        <h5>Challenge Timeline:</h5>
+        <li *ngIf="challenge.challenge_start_date">Project submissions open:{{challenge.challenge_start_date}} </li>
+        <li>Deadline to apply for free devices: November 20, 2016 at 11:55 PM PT</li>
+        <li *ngIf="challenge.challenge_end_date"> Project submissions close:{{challenge.challenge_end_date}}</li>
+        <li *ngIf="challenge.winners_announcement_date">Winners announced by: {{challenge.winners_announcement_date}}</li>
+      </ul>
+    </div>
+  </aside>
+  <!-- End aside -->
+</div>
+<!-- End challenge-summary -->

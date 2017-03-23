@@ -1,89 +1,75 @@
-<div class="region region-content col-sm-8">
-  <div class="project-story-tab">
-    <div class="project-image">
-      <img src="{{project.field_cover_photo?.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo">
-      <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo">
-    </div>
-    <div class="project-stats">
-      <ul class="list-unstyled">
-        <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2[0]?.tid}}</li>
-        <li><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
-        <li><i class="fa fa-lg fa-comment"></i>2</li>
-        <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_forks"></i>{{project?.field_forks?.length}}</li>
-      </ul>
-    </div>
-    <hr>
-    <div class="project-body">
-      <div [innerHTML]="project.field_teaser?.value"></div>
-      <div [innerHTML]="project.field_story?.value"></div>
-    </div><!-- End body -->
-    <div class="feedback-group">
-      <div class="feedback" *ngFor="let comment of comments; let i=index">
-        <div class=" feed-user">
-          <img src="{{comment?.default_profile_photo}}" alt="" class="img-responsive pull-left">
-          <div class="pull-left name">
-            <h5><a href="#">{{comment?.first_name}} {{comment?.last_name}}</a></h5>
-            <p>{{comment?.nickname}}</p>
-          </div>
-        </div>
-        <div class=" feed-body">
-          <p>{{comment?.comment}}</p>
-        </div>
-        <div class=" feed-timestamp"  >{{comment?.update_date}}</div>
-      </div><!-- End feedback -->
-      <form [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment" class="form-horizontal">
-        <div class="feedback col-md-10">
-          <div class=""><img *ngIf="!currentUser?.photo" src="./assets/images/maker-robot.png" alt="" class="img-responsive"></div>
-          <div class=""><img *ngIf="currentUser?.photo"src="{{currentUser?.photo}}" alt="" class="img-responsive"></div>
-          <div class=""><textarea name="new-feedback" id="" cols="61" rows="2" formControlName="comment_body"></textarea></div>
-        </div>
-        <input type="submit" class="btn  btn-white btn-sharp" value="Send">
-
-      </form>
-    </div>
-  </div>
-</div><!-- End region-content -->
-
-<aside class="col-sm-4">
-  <div class="timestamp" *ngIf="project.created && project.changed" >Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
-  <div>
+<div class="row project-body">
+  <div class="region region-content col-lg-8 col-md-8">
     <div class="project-story-tab">
-      <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#" >Vehicles Challenge</a> Winner</div>
-      <!-- Start project-collaborates -->
-      <div class="project-collaborates">
-        <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
-          <app-user-card [uid]="collaborator.target_id"></app-user-card>
-          <div class="role" *ngIf="project.field_maker_memberships[i]">
-            <h4>Role on the project</h4>
-            <p>{{project.field_maker_memberships[i].membership_role}}</p>
-          </div>
-        </div>
+      <div class="project-image">
+        <img src="{{project.field_cover_photo?.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo">
+        <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo">
       </div>
-      <!-- End project-collaborates -->
-      <div class="panel panel-default aha">
-        <div class="panel-heading">
-          <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>
-        </div>
-        <div class="panel-body" *ngIf="project.field_aha_moment">
-          <p>{{project.field_aha_moment?.value}}</p>
-        </div>
+      <div class="project-stats">
+        <ul class="list-unstyled">
+          <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2[0]?.tid}}</li>
+          <li *ngIf="project.flag_count"><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
+          <li><i class="fa fa-lg fa-comment"></i>2</li>
+          <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_forks"></i>{{project?.field_forks?.length}}</li>
+        </ul>
       </div>
-      <div class="panel panel-default uh-oh">
-        <div class="panel-heading">
-          <h3><i class="fa fa-bomb"></i>UH-OH! Moment</h3>
-        </div>
-        <div class="panel-body" *ngIf="project.field_aha_moment">
-          <p>{{project.field_uh_oh_moment?.value}}</p>
-        </div>
+      <hr>
+      <div class="project-body">
+        <p [innerHTML]="project.field_teaser?.value"></p>
+        <p [innerHTML]="project.field_story?.value"></p>
       </div>
-      <div class="block-style fork">
-        <p>
-          Forked from: <a href="#">Name of the Last Project it came from</a>
-        </p>
-        <p>
-          by <a href="#">Margot Jacobs</a>
-        </p>
-      </div><!-- End fork -->
-    </div>
+      <!-- End body -->
+      </div>
+      <div class="feedback-group">
+        <app-comment [nid]="project.nid"></app-comment>
+      </div>
   </div>
-</aside>
+    <aside class="side-bar col-lg-4 col-md-4">
+      <div class="timestamp" *ngIf="project.created && project.changed">Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
+      <div class="sidebar-container">
+        <div class="project-story-tab">
+          <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#">Vehicles Challenge</a> Winner</div>
+          <div class="project-collaborates">
+            <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
+              <app-user-card [uid]="collaborator.target_id"></app-user-card>
+              <div class="role" *ngIf="project.field_maker_memberships[i]">
+                <h4>Role on the project</h4>
+                <p>{{project.field_maker_memberships[i].membership_role}}</p>
+              </div>
+            </div>
+            <!-- End Collaborate -->
+          </div>
+          <!-- End project-collaborates -->
+          <div class="panel panel-default aha">
+            <div class="panel-heading">
+              <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>
+            </div>
+            <div class="panel-body" *ngIf="project.field_aha_moment">
+              <p>{{project.field_aha_moment?.value}}</p>
+            </div>
+          </div>
+          <div class="panel panel-default uh-oh">
+            <div class="panel-heading">
+              <h3><i class="fa fa-bomb"></i>UH-OH! Moment</h3>
+            </div>
+            <div class="panel-body" *ngIf="project.field_aha_moment">
+              <p>{{project.field_uh_oh_moment?.value}}</p>
+
+            </div>
+          </div>
+          
+          <div *ngIf="projectInfo.challenge_status =='375'"><div *ngIf="projectInfo.sponsor_bar">  Sponsor BY <img  src="{{projectInfo.sponsor_bar}}" width="30px" height="30px"></div></div>
+
+          <div class="block-style fork">
+            <p>
+              Forked from: <a href="#">Name of the Last Project it came from</a>
+            </p>
+            <p>
+              by <a href="#">Margot Jacobs</a>
+            </p>
+          </div>
+          <!-- End fork -->
+        </div>
+      </div>
+    </aside>
+  </div>

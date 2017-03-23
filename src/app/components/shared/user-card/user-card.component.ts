@@ -60,7 +60,7 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        console.log(res)
+       
       });
     }
   }

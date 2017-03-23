@@ -157,21 +157,22 @@ $(document).ready(function() {
     // Show and hide project stats on project card
     $(document).on('mouseenter', '.project', function(){
 		if (squareView){
-			$(this).find('i.video-icon, i.badge-icon').hide('400');
-			$(this).children('.teaser').show();
-			$(this).find('.winner').show('400');
+			$(this).find('.icons').stop();
+			$(this).find('.icons').fadeOut('400');
+			$(this).find('.teaser').stop();
+			$(this).find('.teaser').fadeIn('400');
+			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeIn('400');
-			$(this).children('.project-stats').show('400');
 		}
     });
     $(document).on('mouseleave', '.project', function(){
 		if (squareView){
-			$(this).find('i.video-icon, i.badge-icon').show('400');
-			$(this).find('.winner').hide('400');
+			$(this).find('.icons').stop();
+			$(this).find('.icons').fadeIn('400');
+			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
-			$(this).children(' .winner').hide('400');
-			$(this).children('.teaser').hide();
-			$(this).children('.project-stats').hide('400');
+			$(this).find('.teaser').stop();
+			$(this).find('.teaser').fadeOut('400');
 		}
     });
 

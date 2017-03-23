@@ -9,6 +9,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { AwardsComponent } from './awards/awards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -18,7 +19,8 @@ import { SharedModule } from '../../shared/shared.module';
     ChallengeDataRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgbModule
     
   ],
   declarations: [

@@ -3,7 +3,7 @@
     <div class="region region-content page-challenge">
       <header class="challenge-header">
         <div class="container">
-          <h3>What kind of projects are you interested in?</h3>
+          <h3>Challenge</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam quis eos cum ipsa deleniti tenetur possimus,
             consequatur id ipsam fugiat hic. Quae id odit minima, tempora consectetur eaque dolor fuga possimus praesentium
             et illum, magnam sed quia ad rem nulla.</p>
@@ -12,48 +12,48 @@
       <!--/header -->
       <div class="filters">
         <div class="container">
-          <div class="row">
-            <div class="col-md-2">
-
-              <p>{{currentCount}} Challenges</p>
-
+          <div class="row justify-content-center align-items-center">
+            <div class="entries-count btn">
+              <p *ngIf="currentCount==1">{{currentCount}} Challenge</p>
+              <p *ngIf="currentCount>1">{{currentCount}} Challenges</p>
             </div>
-            <div class="challenges-filter col-md-1 col-md-offset-8">
-              <button class="btn btn-transparent dropdown-toggle" type="button" data-toggle="dropdown">{{currentStatusName}}
-                    <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li *ngFor="let status of allstatuses"><a (click)="SetCurrentStatus($event)" data-id="{{status.tid}}" data-name="{{status.name}}" class="btn">{{status.name}}</a></li>
-              </ul>
+            <div ngbDropdown class="d-inline-block sorting-filter dropdown">
+              <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{currentStatusName}} <i class="fa fa-lg fa-angle-down"></i></button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" *ngFor="let status of allstatuses" (click)="SetCurrentStatus($event)" data-id="{{status.tid}}"
+                  data-name="{{status.name}}">
+                  {{status.name}}
+                  </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- End filters -->
       <div class="container challenges-container">
-
-        <div *ngFor="let challenge of challenges" class="challenge-card">
-          <div class="col-md-6">
-            <div class="image-container">
-              <div><img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)"></div>
-              <h3 class="card-title">{{challenge.title}}</h3>
-            </div>
-            <!-- End image-container -->
+        <div *ngFor="let challenge of challenges" class="challenge-card row">
+          <div class="col-md-4 image-container">
+            <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
           </div>
-          <div class="col-md-6">
+          <!-- End image-container -->
+          <div class="col-md-8">
             <div class="card-container">
               <div class="card">
-                <p class="card-status">
-                  <!--  <a class="btn btn-blue" [routerLink] = "['/challenge_summary']">link </a>
-                             -->
-                  {{challenge.status}}
-                </p>
-                <p class="card-partership">In partnership with {{challenge.sponsored_by}}</p>
-                <div class="col-md-10 card-description">
-                  <div [innerHTML]="challenge.challenge_summary"></div>
+                <div class="flex-row">
+                  <p class="card-status">
+                    <span class="open-status">{{challenge.status}}</span>
+                  </p>
+                  <p class="card-partership" *ngIf="challenge.sponsored_by">In partnership with {{challenge.sponsored_by}}</p>
+                </div>
+                <h3 class="card-title">{{challenge.title}}</h3>
+                <div class="card-description">
+                  <p [innerHTML]="challenge.summary"></p>
                 </div>
                 <div class="card-buttons">
-                  <a class="btn btn-grey"  *ngIf="challenge.count>0">Follow <span class="follow-number" *ngIf="challenge.count>0">{{challenge.count}}</span></a>
-                  <a class="btn btn-grey"  *ngIf="!challenge.count>0">Follow <span class="follow-number" *ngIf="!challenge.count>0">0</span></a>
-
+                  <div class="button-container-sec-3">
+                    <span class="btn btn-grey-follow" *ngIf="challenge.count>0">Follow<span class="follow-number" *ngIf="challenge.count>0">{{challenge.followers}}</span></span>
+                    <span class="btn btn-grey-follow" *ngIf="!challenge.count>0">Follow<span class="follow-number" *ngIf="!challenge.count>0">{{challenge.followers}}</span></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,13 +62,14 @@
           <!-- End col-md-6 -->
         </div>
         <!-- End challenge-card -->
-
       </div>
-      <div class="col-xs-4 col-xs-offset-4 load-more">
-        <a *ngIf="hideloadmore" class="btn btn-white" (click)="loadmore()">Load more</a>
+      <div class="text-center">
+        <div class="button-container-sec-3" *ngIf="hideloadmore">
+          <a *ngIf="hideloadmore" (click)="loadmore()" class="btn btn-grey">Load more</a>
+        </div>
       </div>
-
     </div>
     <!-- End region-content -->
   </section>
 </div>
+<!-- End row -->

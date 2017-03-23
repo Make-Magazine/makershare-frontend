@@ -8,10 +8,10 @@
               <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
               <div class="sponsor">
                 <h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}} </h4>
+                 
               </div>
               <div class="challenge-status">
-                <p>{{challenge.challenge_status}} :{{challenge.challenge_end_date}}
-                  <p>
+                <p>{{challenge.challenge_status}} :{{challenge.challenge_end_date}}<p>
               </div>
               <div class="challenge-title" *ngIf="challenge.title">
                 <h1>{{challenge.title}}</h1>
@@ -20,12 +20,14 @@
                 <p class="number">{{challenge.diffDays}} </p>
                 <p>Days left</p>
               </div>
-
+              <div class="challenge-sponser-image" *ngIf="challenge.diffDays">
+              <img *ngIf="challenge.sponsor_bar" src="{{challenge.sponsor_bar}}">
+                </div>
               <ul class="list-unstyled challenge-actions pull-right">
                 <!-- Start Bookmark -->
                  <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
                 <!-- End Bookmark -->
-                <li><a href="#" class="btn btn-light-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+                <li><a href="#" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -45,26 +47,24 @@
                     <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
                   </div>
                 </div>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span *ngIf="no_of_followers" class="badge">{{no_of_followers}}</span></a></li>
+                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
               <ul class="list-unstyled challenge-follow" *ngIf="challenge">
                    <!-- Start Follow -->
                 <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                    <!-- End Follow -->
-                <li><a *ngIf="hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-blue btn-sharp">Enter</a></li>
-                <li><a (click)="myEnteriesProject()" class="btn btn-blue btn-sharp">My Enteries</a></li>
-  
+                <li><a *ngIf="hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-main static-btn btn-sharp">Enter</a></li>
               </ul>
             </div>
             <div class="content-wrapper row">
-              <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
+              <app-summary class="col-12" [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
                 [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects" *ngIf="activeTab =='summary'"></app-summary>
                 <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
 
                 <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge">
                 </app-discussion>
 
-                <app-followers [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
+                <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
                   (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
                   <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
 
@@ -78,24 +78,3 @@
     <!-- End row -->
   </div>
   <!-- End main-container -->
-  <section class="modal-section">
-    <!-- Trigger the modal with a button -->
-    <!-- Modal -->
-    <div id="joinus-modal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <h4>Start participating in <br>our worldwide community of makers!</h4>
-          </div>
-          <button type="button" class="btn btn-blue" data-dismiss="modal">Join now</button>
-          <p>Already a member? <a href="#">Log in</a></p>
-
-        </div>
-      </div>
-    </div>
-  </section>
-</div>

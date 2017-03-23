@@ -22,14 +22,12 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
       this.profile_projects = res;
+      console.log(res);
     }, err => {
 
     });
   }
 
-  ShowProjectDetails(nid){
-    this.router.navigate(['/project/view', nid]);
-  }
-
+ 
 
 }

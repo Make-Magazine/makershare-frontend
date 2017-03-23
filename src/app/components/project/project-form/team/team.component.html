@@ -9,20 +9,20 @@
   </div>
 </template>
 
-<div class="region region-content col-sm-8" [formGroup]="TeamForm">
+<div class="region region-content col-sm-10" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships" dnd-sortable-container [sortableData]="TeamForm.controls.field_maker_memberships.controls" dnd-draggable [dropZones]="['TeamZone']">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="panel add-collaborate">
       <div *ngIf="i==0">
-        <div class="panel-body" [formGroupName]="i">
+        <div class="panel-body inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser[i]">
               <h5>Name</h5>
               <div class=" profile-container"><!-- start profile card-->
-                <div class="profile-card">
+                <div class="profile-card row">
                   <div class="left col-sm-4">
                     <div class="profile-pic">
-                      <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" class="img-responsive">
-                      <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" class="img-responsive">
+                      <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" >
+                      <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" >
                     </div>
                     <a href="#" class="btn btn-blue">Message</a>
                   </div>
@@ -140,6 +140,7 @@
     <a *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && TeamForm.controls.field_maker_memberships.valid" (click)="AddRow('field_maker_memberships')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
   </div>
 </div>
+<!--
 <aside class="col-md-4">
   <div class="team-guide">
     <div class="guideline">
@@ -149,5 +150,6 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ullam reprehenderit minus molestiae minima nihil quibusdam hic ut, sint tenetur, esse iure consequatur, quasi quo.</p>
       </div>
     </div>
-  </div><!-- End team-guideline -->
+  </div>
 </aside>
+-->

@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProjectHowToComponent implements OnInit {
   @Input() project;
+  @Input() projectInfo;
   constructor() { }
 
   ngOnInit() {

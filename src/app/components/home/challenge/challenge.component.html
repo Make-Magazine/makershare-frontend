@@ -1,37 +1,39 @@
-      <!-- Start Browse Projects -->
-  <section class="browse-projects">
-    <header class="default-header"> <!-- header -->
-    
-    </header><!-- End header -->
-    <div class="container">
-      <div class="row display"><!-- Start display -->
-        <div class="challenges-container">
-          <div (click)="ShowChallengeDetails(challenge.nid)" class="challenge-card">
-            <div class="col-md-6">
-              <div class="image-container">
-                <img src="{{challenge.cover_image}}" alt="" class="img-responsive">
-              </div><!-- End image-container -->
-            </div>
-            <div class="col-md-6">
-              <div class="card-container">
-                <div class="card">
-                  <p class="card-status">
-                    {{challenge.status}} {{challenge.end_date}}
-                  </p>
-                  <p class="card-partership">In partnership with: {{challenge.sponsoredBy}}</p>
-                  <h3 class="card-title">{{challenge.title}}</h3>
-                  <div class="col-md-12 card-description">
-                    <p [innerHTML]="challenge.body"></p>
-                  </div>
-                  <div class="card-buttons">
-                    <a class="btn btn-grey">Follow <span class="follow-number">3</span></a>
-                  </div>
-                </div>
-              </div><!-- End card-container -->
-            </div><!-- End col-md-6 -->
-          </div><!-- End challenge-card -->
+<section class="browse-projects">
+  <div class="container">
+    <div class="challenges-container">
+      <div (click)="ShowChallengeDetails(challenge.nid)" class="challenge-card row">
+        <div class="col-md-4 image-container">
+          <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
         </div>
+        <!-- End image-container -->
+        <div class="col-md-8">
+          <div class="card-container">
+            <div class="card">
+              <div class="flex-row">
+                <p class="card-status">
+                  <span class="open-status">{{challenge.end_date}}</span>
+                </p>
+                <p class="card-partership" *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsoredBy}}</p>
+              </div>
+              <h3 class="card-title">{{challenge.title}}</h3>
+              <div class="card-description">
+                <p [innerHTML]="challenge.body"></p>
+              </div>
+              <div class="card-buttons">
+                <div class="button-container-sec-3">
+                  <span class="btn btn-grey-follow" *ngIf="challenge.count>0">Follow<span class="follow-number" *ngIf="challenge.count>0">{{challenge.followers}}</span></span>
+                  <span class="btn btn-grey-follow" *ngIf="!challenge.count>0">Follow<span class="follow-number" *ngIf="!challenge.count>0">{{challenge.followers}}</span></span>
+                </div>
+                <div class="button-container-main-1">
+                  <a (click)="ShowChallengeDetails(challenge.nid)" class="btn btn-main">Join Challenge</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End card-container -->
+        </div>
+        <!-- End col-md-6 -->
       </div>
     </div>
-  </section>
-  <!-- End Browse Projects -->
+  </div>
+</section>

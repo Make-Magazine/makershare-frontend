@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -52,7 +53,7 @@ export class ProfileComponent implements OnInit {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
       this.profile = res;
-      console.log(this.profile.field_social_accounts.field_facebook);
+      console.log(res);
     }, err => {
 
     });
@@ -62,38 +63,29 @@ export class ProfileComponent implements OnInit {
         this.allMarkersNames.push(markers[i].makerspace_name);
         this.allMarkersUrl.push(markers[i].makerspace_url);
       }
-
     }, err => {
-      console.log("error");
       console.log(err);
     });
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
       this.allIntersets = allIntersets;
     }, err => {
-      console.log("error");
       console.log(err);
     });
-    // this.profileService.getUser(1).subscribe(res => {
 
-    //   this.profile = res;
-    //   this.info = res;
-    //   console.log(this.profile);
-
-    //   this.profileService.getByCountry(this.info.address.country).subscribe(info => {
-    //     for (var k in info.administrative_areas) {
-    //       this.items.push(info.administrative_areas[k]);
-    //     }
-    //   }, err => {
-    //     console.log("error");
-    //     console.log(err);
-    //   });
-    // }, err => {
-
-    // });
+    this.BuildForm();
   }// end of OnInit 
 
+  BuildForm(){
+    this.optionalForm = this.fb.group({
+      'name': [''],
+      'city': [''],
+      'state': [''],
+    });
+  }
+
   saveInfo() {
+    // this.optionalForm.value;
     this.profile.nickname = this.info.nickname;
     this.saveProfile();
   }
@@ -119,10 +111,8 @@ export class ProfileComponent implements OnInit {
   }
   saveProfile() {
     this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
-      console.log("profile saved");
-      console.log(profile);
+      
     }, err => {
-      console.log("error");
       console.log(err);
     });
   }
@@ -133,12 +123,11 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  onFileChange(event: Event) {
+  onFileChange(event: Event) {      console.log("profile saved");
     let file = (<any>event.target).files[0];
     if (!file) {
       return;
     }
-
 
     let reader = new FileReader();
     reader.onload = (e) => {

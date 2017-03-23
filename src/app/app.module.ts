@@ -15,7 +15,6 @@ import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ProfileService } from './d7services/profile/profile.service';
 import { PmService } from './d7services/pm/pm.service';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 
@@ -26,6 +25,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,11 +37,11 @@ import { Auth } from './auth0/auth.service';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    NgbModule,
+    FormsModule,
+    NgbModule.forRoot(),
     RouterModule,
     routing,
     MessagesModule,
-    Ng2Bs3ModalModule,
     NotificationBarModule,
     SharedModule
   ],

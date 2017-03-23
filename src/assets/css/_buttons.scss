@@ -1,14 +1,31 @@
-/* btn-blue */
+.displace {
+    position: relative;
+    left: -4px;
+    top: -4px;
+    &:active,&:hover {
+        left: 0;
+        top: 0;
+    }
+}
+
+
+/* btn-main */
+
+
 .btn {
     padding: 5px 15px;
     border:none; 
+    border-radius: 0;
+}
+.btn.active, .btn:active {
+    box-shadow: none !important;
 }
 .btn-grey{
-    color: #fff;
+    color: #fff !important;
     background-color: $main-grey;
     border-color: $main-grey*0.9;
     border-radius: 0;
-
+    @extend .displace;
     &:focus {
         color: #fff;
         background-color: $main-grey*0.6;
@@ -38,6 +55,21 @@
         border-color: $main-grey*0.8;
     }
 }
+.btn-grey-follow{
+    color: #fff !important;
+    background-color: #BEBEBE;
+    border-color: $main-grey*0.9;
+    border-radius: 0;
+    @extend .displace;
+    &:active, &:hover, &.active, &:focus {
+        color: #fff;
+        background-color: #BEBEBE;
+        border-color: $main-grey*0.8;
+        position: relative !important;
+        left: -4px !important;
+        top: -4px !important;
+    }
+}
 .btn-light-grey {
     color: $main-grey;
     background-color: $light-grey;
@@ -58,30 +90,60 @@
 .btn-fit {
     padding: 5px 10px;
 }
-.btn-blue {
+.btn-main {
     color: #fff;
-    background-color: $blue;
-    border-color: $blue*0.9;
-
+    background-color: $main-button-1;
+    border-color: $main-button-1*0.9;
+    @extend .displace;
     &:focus {
         color: #fff;
-        background-color: $blue*0.9;
-        border-color: $blue*0.8;
+        background-color: $main-button-1*0.9;
+        border-color: $main-button-1*0.8;
     }
 
     &:active, &:hover {
         color: #fff;
-        background-color: $blue*0.9;
-        border-color: $blue*0.8;
+        background-color: $main-button-1*0.9;
+        border-color: $main-button-1*0.8;
+        left: 0;
+        top: 0;
     }
 }
 
-.btn-transparent {
-    color: $blue;
-    background: transparent;
+.btn-main-2 {
+    color: #fff;
+    background-color: $main-button-2;
+    border-color: $main-button-2*0.9;
+    @extend .displace;
+    &:focus {
+        color: #fff;
+        background-color: $main-button-2*0.9;
+        border-color: $main-button-2*0.8;
+    }
 
+    &:active, &:hover {
+        color: #fff;
+        background-color: $main-button-2*0.9;
+        border-color: $main-button-2*0.8;
+        left: 0;
+        top: 0;
+    }
+}
+.btn-border {
+    color: $light-grey;
+    background: transparent;
+    border: 1px solid $light-grey;
     &:focus, &:active, &:hover {
-        color: $blue * 0.8;
+        border: 1px solid $main-grey;
+        color: $main-grey;
+    }
+}
+.btn-transparent {
+    color: $main-grey*0.8;
+    background: transparent;
+    &:focus, &:active, &:hover {
+        color: $main-grey;
+        box-shadow: none;
     }
 }
 .btn-white {
@@ -95,20 +157,72 @@
 }
 .btn-sharp {
     border-radius: 0;
-    /* border: 1px solid #333;
-    border-right: none;
-    &:last-of-type{
-        margin-right:0;
-        border-right: 1px solid #333;
-    
-    }
-    float: left; */
 }
 .load-more {
     margin-top: 50px;
     margin-bottom: 50px;
     .btn {
         margin: 0 auto;
-        width: 100%;
+        width: auto;
+        display: block;
+        width: 150px;
+        margin: 0 auto;
     }
+}
+
+.message-btn {
+    color: $light-grey;
+    font-size: 20px;
+    margin: auto;
+    &:hover, &:focus, &:active {
+        color: $main-grey;
+    }
+}
+
+.btn-dark-grey {
+    @extend .displace;
+    background-color: $main-grey;
+    color: $white;
+    border: 1px solid $font-grey;
+    &:hover, &:focus, &:active {
+        color: $white;
+    }
+}
+
+.btn-soft-grey {
+    @extend .displace;
+    color: #757575 !important;
+    background-color: #ecf0f1;
+    border: 1px solid rgba(105, 105, 105, 0.44);
+    border-radius: 0;
+    font-size: 13px;
+    &:hover {
+        color: #757575 !important;
+    }
+}
+.button-container-main-1, 
+.button-container-main-2,
+.button-container-sec-2,
+.button-container-sec-3
+ {
+    margin-left: 3px;
+    display: inline-block;
+}
+.button-container-main-1 {
+    border: 2px solid $main-button-1;
+}
+.button-container-main-2 {
+    border: 2px solid $main-button-2;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.button-container-sec-2 {
+    border: 2px solid $sec-button-2;
+}
+.button-container-sec-3 {
+    border: 2px solid $sec-button-3;
+}
+.static-btn {
+    left: 0;
+    top: 0;
 }

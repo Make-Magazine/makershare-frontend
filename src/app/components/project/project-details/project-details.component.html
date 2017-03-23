@@ -1,54 +1,56 @@
+<div *ngIf="projectdata">
 <div *ngIf="project">
-<div class="page-project">
-  <div class="main-container container-fluid">
+  <div class="page-project">
     <div class="row">
-      <section class="col-sm-12 width-fix">
+      <section class="col width-fix">
         <div class="top-content-wrapper">
-          <header *ngIf="showcase.uid" class="showcase-project">
-              <ul class="container list-unstyled">
-                <li>
-                  <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" type="button" class="btn btn-white btn-sharp prev">&lt; Previous</a>
-                </li>
-                <li>
-                  <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
-                </li>
-                <li>
-                  <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" type="button" class="btn btn-white btn-sharp next">Next &gt;</a>
-                </li>
-              </ul>
-            </header>
           <div class="container">
             <div class="col-md-12">
-              <ul class="list-unstyled project-actions pull-right">
-                <li><a href="#" class="btn btn-transparent btn-fit">Report this</a></li>
-                <!--<li><a  class="btn btn-light-grey btn-fit"  (click)="forkThis($event)">Fork this project &nbsp;<i class="fa fa-lg fa-retweet"></i></a></li>-->
+              <div class="projects-circle d-flex justify-content-between col-md-12" *ngIf="showcase.uid">
+                <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" class="go-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+                <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
+                <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" class="go-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              </div>
+              <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
+                <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
                 <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
-                <app-like [nodeNid]="project.nid" [user]="userId" ></app-like>
-               <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user" ></app-bookmark>
-                <li><a href="#" class="btn btn-light-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
-                <li class="btn btn-light-grey btn-fit"  [routerLink]="['/project/edit/',project.nid]">Edit Project</li>
+                <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
+                <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
+                <li class="project-share"><a href="#" class="btn btn-soft-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+                <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
               </ul>
               <ul class="list-unstyled project-tags pull-left">
+                <li><a href="#" class="btn btn-grey">electronics</a></li>
+                <li><a href="#" class="btn btn-grey">Arduino</a></li>
+                <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
                 <li><a href="#" class="btn btn-grey">electronics</a></li>
                 <li><a href="#" class="btn btn-grey">Arduino</a></li>
                 <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
               </ul>
               <div class="clearfix"></div>
               <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
+              <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
               <ul class="list-unstyled project-aside">
-                <li id="project-story-tab" class="active"><a href="" (click)="changeProjectTab('project-story')" class="btn btn-light-grey" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
-                <li id="how-to-tab"><a href="" class="btn btn-light-grey" (click)="changeProjectTab('project-how-to')" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
+                <li id="project-story-tab" class="active"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
+                <li id="how-to-tab"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
-          </div><!-- End container -->
-        </div><!-- End top-content-wrapper -->
+          </div>
+          <!-- End container -->
+        </div>
+        <!-- End top-content-wrapper -->
         <div class="container">
-            <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
-            <app-project-how-to [project]="projectDetails" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+          <app-project-story [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+          <app-project-how-to [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
         </div>
       </section>
-    </div><!-- End row -->
-  </div><!-- End main-container -->
-</div><!--{{project|json}}-->
+    </div>
+  </div>
 </div>
+</div>
+
+
+
+
+

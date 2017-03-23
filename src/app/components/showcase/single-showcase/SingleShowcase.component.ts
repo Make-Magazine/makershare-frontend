@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
+import { UserCardComponent } from '../../shared/user-card/user-card.component'
 
 @Component({
   selector: 'app-single-showcases',
@@ -46,6 +47,8 @@ export class SinglShowcaseComponent implements OnInit {
     .switchMap((nid) => this.viewService.getView('views/showcase_projects',[['nid',nid['nid']],['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe(data =>{
       this.projects=data;
+      console.log("projects");
+      console.log(this.projects);
       this.loadMoreVisibilty();
     });
     this.loadFlag=false;
@@ -69,9 +72,11 @@ loadMoreVisibilty(){
 
 }
 
-   goHome(){
+   goHome()
+   {
      this.router.navigate(['']);
    }
+
    public goToProject(nid, projectIndex){
      let navigationExtras: NavigationExtras = {
             queryParams: {
@@ -87,23 +92,18 @@ loadMoreVisibilty(){
    goToProfile(nid){
      this.router.navigate(['user']);
    }
-   getProfile(uid){
-     //load profile data
-
-    this.viewService.getView('maker_profile_search_data',[['uid',uid],])
-    .subscribe(data =>{
-      this.profile = data[0];
-    });
-   }
-
+   
    getShowcase(){
      // load the showcase data
      this.route.params
     .switchMap((nid) => this.viewService.getView('showcase',[['nid',nid['nid']]]))
     .subscribe(data =>{
+      console.log(data[0]);
        this.showcase = data[0];
 
-    this.getProfile(this.showcase.uid);
+
+    //this.getProfile(this.showcase.uid);
+
     });
    }
 
