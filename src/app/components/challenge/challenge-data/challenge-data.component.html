@@ -8,9 +8,7 @@
               <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
               <div class="sponsor">
                 <h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}} </h4>
-                <div *ngIf="challenge.diffDays">
-              <img *ngIf="challenge.sponsor_bar" src="{{challenge.sponsor_bar}}" width="30px" height="30px">
-                </div>    
+                 
               </div>
               <div class="challenge-status">
                 <p>{{challenge.challenge_status}} :{{challenge.challenge_end_date}}<p>
@@ -22,7 +20,9 @@
                 <p class="number">{{challenge.diffDays}} </p>
                 <p>Days left</p>
               </div>
-
+              <div class="challenge-sponser" *ngIf="challenge.diffDays">
+              <img *ngIf="challenge.sponsor_bar" src="{{challenge.sponsor_bar}}" width="30px" height="30px">
+                </div>
               <ul class="list-unstyled challenge-actions pull-right">
                 <!-- Start Bookmark -->
                  <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
