@@ -93,7 +93,8 @@ export class ChallengeProjectComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', this.nid]]))
       .subscribe(data => {
         this.challangeData = data;
-        this.challangStartDate = this.challangeData.challenge_start_date;
+        console.log(data)
+        // this.challangStartDate = this.challangeData.challenge_start_date;
       });
   }
   updateSelectedProject(item: any) {
