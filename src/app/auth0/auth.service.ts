@@ -75,6 +75,14 @@ export class Auth {
 
       });
     });
+
+    this.lock.on("authorization_error", (err) => {
+      console.log(err);
+      if(err.error == "unauthorized"){
+        console.log('it is true');
+        this.notificationBarService.create({ message: err.error_description, type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
+      }
+    });
   }
 
   public login() {
