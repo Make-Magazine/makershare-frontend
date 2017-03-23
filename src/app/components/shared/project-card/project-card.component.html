@@ -1,48 +1,43 @@
-<div class="project">
-  <div class="project-title">
-    <div class="project card">
-      <div class="image-top">
-
-        <a (click)="ShowProjectDetails(projectCard.nid)">
-          <div class="overlay"></div>
-          <img class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
-        </a>
-        <div class="teaser">
-          <p class="project-text-case">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
-            recognition on mo st people's faces, albeit instant confusion on others'.</p>
-            <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
-        </div>
-        <div class="list-unstyled icons">
-          <span><i class="fa fa-lg fa-video-camera"></i></span>
-          <span><i class="fa fa-lg fa-trophy"></i>1</span>
-          <span><i class="fa fa-lg fa-clock-o"></i>1</span>
-        </div>
+<div class="project card">
+  <div class="image-top">
+      <div class="overlay"></div>
+      <img class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
+    <div class="teaser">
+      <p class="project-text-case">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
+        recognition on mo st people's faces, albeit instant confusion on others'.</p>
+      <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
+    </div>
+    <div class="list-unstyled icons">
+      <span><i class="fa fa-lg fa-video-camera"></i></span>
+      <span><i class="fa fa-lg fa-trophy"></i>1</span>
+      <span><i class="fa fa-lg fa-clock-o"></i>1</span>
+    </div>
+  </div>
+  <div class="card-block d-flex justify-content-around">
+    <div class="d-flex flex-column">
+      <div class="profiel-pic-container">
+        <img src="http://placehold.it/80x80" alt="">
       </div>
-      <div class="card-block d-flex justify-content-around">
-        <div class="d-flex flex-column">
-          <div class="profiel-pic-container">
-            <img src="http://placehold.it/80x80" alt="">
-          </div>
-          <div class="icons-side flex-row d-flex align-items-start">
-            <img src="./assets/images/icons/icon-blue-ribbon.svg" />
-            <img src="./assets/images/icons/icon-challenge-winner.svg" />
-          </div>
-        </div>
-        <div class="content-side col">
-          <h4 class="card-title">{{projectCard.project_name}}</h4>
-          <p class="card-text project-text-grid">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
-            recognition on mo st people's faces, albeit instant confusion on others'.</p>
-          <div class="card-role">
-            <p>Role on the project: Concept, design, fabrication, performance</p>
-          </div>
-        </div>
-      </div>
-      <div class="card-stats card-block">
-        <ul class="d-flex justify-content-around list-unstyled">
-          <li><i class="fa fa-lg fa-eye"></i>70</li>
-          <li><i class="fa fa-lg fa-thumbs-up"></i>26</li>
-          <li><i class="fa fa-lg fa-comment"></i>2</li>
-          <li><i class="fa fa-lg fa-retweet"></i>1</li>
-        </ul>
+      <div class="icons-side flex-row d-flex align-items-start">
+        <img src="./assets/images/icons/icon-blue-ribbon.svg" />
+        <img src="./assets/images/icons/icon-challenge-winner.svg" />
       </div>
     </div>
+    <div class="content-side col">
+      <h4 class="card-title">{{projectCard.project_name}}</h4>
+      <p class="card-text project-text-grid">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
+        recognition on mo st people's faces, albeit instant confusion on others'.</p>
+      <div class="card-role">
+        <p>Role on the project: Concept, design, fabrication, performance</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-stats card-block">
+    <ul class="d-flex justify-content-around list-unstyled">
+      <li><i class="fa fa-lg fa-eye"></i>70</li>
+      <li><i class="fa fa-lg fa-thumbs-up"></i>26</li>
+      <li><i class="fa fa-lg fa-comment"></i>2</li>
+      <li><i class="fa fa-lg fa-retweet"></i>1</li>
+    </ul>
+  </div>
+</div>
