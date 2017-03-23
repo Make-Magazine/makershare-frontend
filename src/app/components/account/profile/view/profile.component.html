@@ -49,8 +49,8 @@
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div class="profile-fullname"><span>Eric Singer</span></div>
-								<div class="profile-nickname"><span>AKA Erok</span></div>
+								<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
+								<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
 								<ul *ngIf="profile.address_publish" class="list-unstyled location">
 									<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
 								</ul>
@@ -83,13 +83,13 @@
 										<li>{{interest.title}}</li>
 									</div>
 								</ul>
-								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_">
+								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
 									<h5>Makerspaces</h5>
 									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-pencil"></i></a>
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 									</li>
-									<ul *ngIf="!profile.field_add_your_makerspace_s_" class="list-unstyled makerspaces">
+									<ul *ngIf="profile.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
 										<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 									</ul>
 								</ul>

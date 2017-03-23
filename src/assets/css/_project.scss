@@ -524,3 +524,11 @@ header.showcase-project {
 	clear: both;
 	}
 }
+
+.projects-grid {
+	.project {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

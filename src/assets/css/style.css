@@ -55,13 +55,14 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
-.displace, .btn-grey, .btn-grey-follow, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
+.displace, .btn-grey, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
   position: relative;
   left: -4px;
   top: -4px; }
-  .displace:active, .btn-grey:active, .btn-grey-follow:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-grey-follow:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
+  .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
     left: 0;
-    top: 0; }
+    top: 0;
+    cursor: pointer; }
 
 /* btn-main */
 .btn {
@@ -95,22 +96,17 @@ header .main-header .maker-sites li {
     background-color: #141414;
     border-color: #141414; }
   .btn-grey-inverse:active, .btn-grey-inverse:hover, .btn-grey-inverse.active {
-    color: #fff;
+    color: #fff !important;
     background-color: #1f1f1f;
     border-color: #1b1b1b; }
 
 .btn-grey-follow {
   color: #fff !important;
   background-color: #BEBEBE;
-  border-color: #1f1f1f;
-  border-radius: 0; }
-  .btn-grey-follow:active, .btn-grey-follow:hover, .btn-grey-follow.active, .btn-grey-follow:focus {
-    color: #fff;
-    background-color: #BEBEBE;
-    border-color: #1b1b1b;
-    position: relative !important;
-    left: -4px !important;
-    top: -4px !important; }
+  border-radius: 0;
+  position: static !important;
+  top: 0px !important;
+  left: 0px !important; }
 
 .btn-light-grey {
   color: #222;
@@ -977,6 +973,9 @@ footer {
         font-size: 13px;
         margin-left: 10px; }
 
+.page-challenge-summary {
+  background-color: #F2F2F2; }
+
 .page-project {
   color: #222;
   background-color: #F2F2F2; }
@@ -1325,6 +1324,9 @@ header.showcase-project .next {
 .page-project .clearfix {
   clear: both; }
 
+.projects-grid .project:hover {
+  cursor: pointer; }
+
 .workshop-page {
   background-color: #F2F2F2; }
   .workshop-page .workshop-header {
@@ -1354,6 +1356,8 @@ header.showcase-project .next {
   .workshop-page .learning-item {
     background-color: #DCDCDC;
     padding: 4px; }
+    .workshop-page .learning-item:hover {
+      cursor: pointer; }
     .workshop-page .learning-item .card-img-top {
       width: 250px;
       height: 210px; }
@@ -1373,7 +1377,7 @@ header.showcase-project .next {
       -webkit-box-orient: vertical;
       overflow: hidden;
       margin-bottom: 10px;
-      min-height: 66px; }
+      min-height: 100px; }
   .workshop-page .Workshop-view .learning {
     margin-bottom: 8px;
     margin-top: 8px; }
@@ -1866,7 +1870,7 @@ header.showcase-project .next {
 
 .project .image-top {
   width: 100%;
-  height: 260px;
+  height: auto;
   overflow: hidden;
   position: relative; }
   .project .image-top img {
@@ -1981,7 +1985,7 @@ header.showcase-project .next {
   display: none;
   width: 80%;
   position: absolute;
-  top: 26%;
+  top: 13%;
   left: 0px;
   color: #fff;
   bottom: 0;
@@ -2033,6 +2037,8 @@ header.showcase-project .next {
   margin-top: 15px;
   padding: 4px;
   width: 100%; }
+  .showcase .showcase-item:hover {
+    cursor: pointer; }
   .showcase .showcase-item .image-container {
     width: 100%;
     height: 200px;
@@ -2499,6 +2505,16 @@ header.showcase-project .next {
         .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p.number {
           font-size: 30px;
           font-weight: bold; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image {
+      position: absolute;
+      display: block;
+      top: 40px;
+      right: 120px;
+      width: 50px;
+      height: auto; }
+      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image img {
+        width: 100%;
+        height: auto; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions {
       position: absolute;
       bottom: 0;
@@ -2612,10 +2628,11 @@ header.showcase-project .next {
     float: none;
     line-height: inherit; }
   .page-challenge-summary .region-content .content-wrapper .summary-aside-content, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content, .page-enter-challenge .region-content .content-wrapper .summary-aside-content {
-    background-color: #BEBEBE;
+    background-color: white;
     color: #222;
-    border: 1px solid #222;
-    height: 100vw; }
+    border: 1px solid #f2f2f2;
+    padding-top: 14px;
+    padding-bottom: 14px; }
     .page-challenge-summary .region-content .content-wrapper .summary-aside-content ul, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content ul, .page-enter-challenge .region-content .content-wrapper .summary-aside-content ul {
       margin-top: 30px; }
       .page-challenge-summary .region-content .content-wrapper .summary-aside-content ul li, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content ul li, .page-enter-challenge .region-content .content-wrapper .summary-aside-content ul li {

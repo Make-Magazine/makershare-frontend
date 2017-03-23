@@ -129,6 +129,7 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
+        console.log(data);
         if (this.challenge['status_id'] == '375') {
           this.hideButton = true;
         }

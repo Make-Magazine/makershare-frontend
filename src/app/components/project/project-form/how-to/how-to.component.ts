@@ -2,8 +2,10 @@ import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
+import { NodeService } from '../../../../d7services/node/node.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
 import { ProjectForm } from '../../../../models/project/project-form/project';
+import { ToolMaterialPart } from '../../../../models/project/project-form/ToolMaterialPart';
 import { TaxonomyTerm } from '../../../../models/Drupal/taxonomy-term';
 import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
@@ -44,7 +46,7 @@ export class HowToComponent implements OnInit {
     part:false,
     material:false
   }
-  CurrentModal;
+  CurrentModal:string;
 
   search = (text$: Observable<string>) =>{
     let control = text$['source']['sourceObj'].classList[0];
@@ -71,7 +73,8 @@ export class HowToComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private viewService:ViewService,
-    private taxonomyService:TaxonomyService
+    private taxonomyService:TaxonomyService,
+    private nodeService:NodeService
   ) {}
 
   ngOnInit() {
@@ -224,10 +227,10 @@ export class HowToComponent implements OnInit {
       {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_tool_name': [data && data.field_tool_name.und? data.field_tool_name.und[0].target_id:'', Validators.required],
-          'field_tool_url': [data && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
-          'field_description': [data && data.field_description.und? data.field_description.und[0].value:''],
-          'field_quantity': [data && data.field_quantity.und? data.field_quantity.und[0].value:''],
+          'field_tool_name': [data && data.field_tool_name && data.field_tool_name.und? data.field_tool_name.und[0].target_id:'', Validators.required],
+          'field_tool_url': [data && data.field_tool_url && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
+          'field_description': [data && data.field_description && data.field_description.und? data.field_description.und[0].value:''],
+          'field_quantity': [data && data.field_quantity && data.field_quantity.und? data.field_quantity.und[0].value:''],
         });
       }
       case 'field_parts':
@@ -235,7 +238,7 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_part_name': [data? data.field_part_name.und[0].target_id:'', Validators.required],
-          'field_quantity': [data && data.field_quantity.und? data.field_quantity.und[0].value:''],
+          'field_quantity': [data && data.field_quantity && data.field_quantity.und? data.field_quantity.und[0].value:''],
         });
       }
       case 'field_materials':
@@ -243,14 +246,14 @@ export class HowToComponent implements OnInit {
         return this.fb.group({
           'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
           'field_material_name': [data? data.field_material_name.und[0].target_id:'', Validators.required],
-          'field_material_quantity': [data && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
+          'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
         });
       }
       case 'field_resources':
       {
         return this.fb.group({
-          'field_resources_filename': [data? data.field_resource_file.und[0].filename:'', Validators.required],
-          'field_repository_link':[data && data.field_repository_link.und? data.field_repository_link.und[0].url:'',CustomValidators.url],
+          'field_resources_filename': [data? data.field_resource_file && data.field_resource_file.und[0].filename:'', Validators.required],
+          'field_repository_link':[data && data.field_repository_link && data.field_repository_link.und? data.field_repository_link.und[0].url:'',CustomValidators.url],
           'field_label': [data? data.field_label.und:1105,],
         });
       }
@@ -435,10 +438,24 @@ export class HowToComponent implements OnInit {
   };
 
   /**
-   * 
-   * @param ControlName name of the control "tool , material , part"
+   * Handle the click on create new tool , material or part from the modal
+   * @param CloseButton the button element to close after successful submitting
+   * @param NameInput the input element to get the value of the field name
    */
-  AddNewToolMaterialPart(){
-
+  AddNewToolMaterialPart(CloseButton:HTMLButtonElement,NameInput:HTMLInputElement){
+    if(!NameInput.value){
+      CloseButton.click();
+      return;
+    }
+    let NewToolMaterialPart:ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
+    let FieldName = 'field_'+this.CurrentModal+'s';
+    NewToolMaterialPart.SetField(NameInput.value,"title");
+    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode)=>{
+      NewNode.name = NameInput.value;
+      CloseButton.click();
+      NameInput.value = '';
+      this.searchFailed[this.CurrentModal] = false;
+      this.SetToolMaterialPart(this.CurrentModal,FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length-1);
+    });
   }
 }
