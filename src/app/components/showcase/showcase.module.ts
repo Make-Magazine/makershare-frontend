@@ -5,15 +5,20 @@ import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.compone
 import { ShowcaseSortingComponent } from './showcaseSorting.component';
 import { ShowcaseRoutingModule } from './showcase-routing.module'
 import { SharedModule } from '../shared/shared.module';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ShowcaseRoutingModule,
     SharedModule,
+
+
     NgbModule
+
   ],
   declarations: [
     ShowcasesCollectionComponent,

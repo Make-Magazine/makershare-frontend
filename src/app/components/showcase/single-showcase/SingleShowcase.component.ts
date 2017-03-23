@@ -100,7 +100,10 @@ loadMoreVisibilty(){
     .subscribe(data =>{
       console.log(data[0]);
        this.showcase = data[0];
-    
+
+
+    //this.getProfile(this.showcase.uid);
+
     });
    }
 

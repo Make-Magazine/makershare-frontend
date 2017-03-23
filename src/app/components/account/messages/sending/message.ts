@@ -1,5 +1,5 @@
 export interface Message {
-    recipients: Array<string>,
+    recipients:string,
     subject: string,
     body: string,
 }

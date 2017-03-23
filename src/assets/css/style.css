@@ -61,7 +61,8 @@ header .main-header .maker-sites li {
   top: -4px; }
   .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
     left: 0;
-    top: 0; }
+    top: 0;
+    cursor: pointer; }
 
 /* btn-main */
 .btn {
@@ -1323,6 +1324,9 @@ header.showcase-project .next {
 .page-project .clearfix {
   clear: both; }
 
+.projects-grid .project:hover {
+  cursor: pointer; }
+
 .workshop-page {
   background-color: #F2F2F2; }
   .workshop-page .workshop-header {
@@ -1352,6 +1356,8 @@ header.showcase-project .next {
   .workshop-page .learning-item {
     background-color: #DCDCDC;
     padding: 4px; }
+    .workshop-page .learning-item:hover {
+      cursor: pointer; }
     .workshop-page .learning-item .card-img-top {
       width: 250px;
       height: 210px; }
@@ -1371,7 +1377,7 @@ header.showcase-project .next {
       -webkit-box-orient: vertical;
       overflow: hidden;
       margin-bottom: 10px;
-      min-height: 66px; }
+      min-height: 100px; }
   .workshop-page .Workshop-view .learning {
     margin-bottom: 8px;
     margin-top: 8px; }
@@ -2031,6 +2037,8 @@ header.showcase-project .next {
   margin-top: 15px;
   padding: 4px;
   width: 100%; }
+  .showcase .showcase-item:hover {
+    cursor: pointer; }
   .showcase .showcase-item .image-container {
     width: 100%;
     height: 200px;

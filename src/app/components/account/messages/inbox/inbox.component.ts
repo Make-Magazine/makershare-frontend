@@ -8,6 +8,7 @@ import { Message } from '../sending/message';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
+import { Location } from '@angular/common'
 
 
 @Component({
@@ -40,15 +41,18 @@ export class InboxComponent implements OnInit {
   reciver = null;
   reciverUser = [];
   SelectedUser = [];
+  selected = [];
   submitted = false;
   deletedArr = [];
   deleted = []
   userId;
+  s=[];
   messageObj: Message = {
-    recipients: [],
+    recipients: '',
     subject: '',
     body: '',
   };
+  userSelected = []
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -56,6 +60,7 @@ export class InboxComponent implements OnInit {
     private http: Http,
     private user: UserService,
     private viewService: ViewService,
+    private _location: Location,
 
   ) { }
   ngOnInit(): void {
@@ -65,9 +70,9 @@ export class InboxComponent implements OnInit {
     this.CountMessages();
   }
 
-  SetMember(uid, index) {
+  SetMember(uid,) {
     this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-      this.SelectedUser[index] = data[0];
+      this.SelectedUser=data;
     });
   }
 
@@ -96,16 +101,20 @@ export class InboxComponent implements OnInit {
     }
   }
 
-  onSubmit(e, index) {
+  onSubmit(e) {
     e.preventDefault();
+    for(let selected_usrs of this.SelectedUser ){
+      console.log(selected_usrs)
+    }
     if (this.messageForm.valid) {
-      this.messageObj.recipients = this.SelectedUser[index].username;
+      console.log(this.selected[0].username)
+      //this.messageObj.recipients = this.SelectedUser[i][0].username.toString();
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         //this.submitted=true;
         //this.messageObj=messageObj
-        //console.log(res)
+        console.log(res)
       });
     }
   }
@@ -155,6 +164,14 @@ export class InboxComponent implements OnInit {
     },
   };
 
+  resetForm() {
+    this.messageForm.reset();
+  }
+
+  hidepopup() {
+    this._location.path();
+  }
+
   //get all messages
   getMessages() {
     var status_arg = [];
@@ -179,10 +196,11 @@ export class InboxComponent implements OnInit {
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
       for (let message of this.msg) {
-        this.pm.postView('maker_get_pm_author/retrieve_author/', message.thread_id).subscribe(data=>{
-        this.messages = data;
-        this.userId = localStorage.getItem('user_id');
-        if (this.userId === this.messages[0].author) {
+        this.pm.postView('maker_get_pm_author/retrieve_author/', message.thread_id).subscribe(data => {
+          this.messages = data;
+          //console.log(this.messages)
+          this.userId = localStorage.getItem('user_id');
+          if (this.userId === this.messages[0].author) {
             this.user.getUser(this.userId).subscribe(res => {
               this.sender = res;
               //console.log(this.sender.first_name)
@@ -196,7 +214,7 @@ export class InboxComponent implements OnInit {
         })
         this.dateObj = new Date(message.last_updated * 1000);
         this.currentDate = new Date();
-        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
+        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
       }
     })
   }
@@ -204,10 +222,11 @@ export class InboxComponent implements OnInit {
   CountMessages() {
     this.userId = localStorage.getItem('user_id');
     this.route.params
-      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/',this.userId))
+      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
       .subscribe(data => {
         this.countMsg = data;
-       });
+        //console.log(this.countMsg)
+      });
   }
 
   loadMore() {
@@ -227,7 +246,7 @@ export class InboxComponent implements OnInit {
   // getCurrentUser() {
   //   this.user.getStatus().subscribe(data => {
   //     this.currentuser = data;
-      
+
   //   });
   // }
 
@@ -257,7 +276,7 @@ export class InboxComponent implements OnInit {
     for (var _i = 0; _i < this.deletedArr.length; _i++) {
       this.pm.deleteMessage(this.deletedArr[_i]).subscribe(data => {
         this.deleted = data;
-        console.log(this.deleted);
+        //console.log(this.deleted);
       });
     }
   }
