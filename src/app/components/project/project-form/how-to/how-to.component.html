@@ -24,7 +24,7 @@
               <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
               <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)">
               <div *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value && searchFailed['tool']">
-                Tool not found <a href="" class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-tool-modal">Create New</a>
+                Tool not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-tool-modal" (click)="CurrentModal = 'tool''">Create New</a>
               </div>
               <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
                 {{formErrors.field_tools[i].field_tool_name}}
@@ -227,11 +227,11 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add new Tool</h4>
+						<h4 class="modal-title">Add new {{CurrentModal}}</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name">Tool Name</label>
+							<label for="name">{{CurrentModal}} Name</label>
 							<input type="text" class="form-control"  id="name" [(ngModel)]="">
 						</div>
 						<hr>

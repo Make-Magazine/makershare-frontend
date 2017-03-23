@@ -44,6 +44,7 @@ export class HowToComponent implements OnInit {
     part:false,
     material:false
   }
+  CurrentModal;
 
   search = (text$: Observable<string>) =>{
     let control = text$['source']['sourceObj'].classList[0];

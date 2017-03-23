@@ -302,17 +302,17 @@ export class ChallengeDataComponent implements OnInit {
 
     /* service to get challenge name if project enter in it */
        // get challenge name and nid for challenge if found from a view
-   getProjectData(){
-      /* service to get challenge name if project enter in it */
-       // get challenge name and nid for challenge if found from a view
-    this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
-      this.projectdata = data[0];
-      console.log(this.projectdata.challenge_name);
-    }, err => {
+  //  getProjectData(){
+  //     /* service to get challenge name if project enter in it */
+  //      // get challenge name and nid for challenge if found from a view
+  //   this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
+  //     this.projectdata = data[0];
+  //     console.log(this.projectdata.challenge_name);
+  //   }, err => {
 
-    });
-        /* end service */
-   }
+  //   });
+  //       /* end service */
+  //  }
         /* end service */
 
 }
