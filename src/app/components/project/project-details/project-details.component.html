@@ -1,3 +1,4 @@
+<div *ngIf="projectdata">
 <div *ngIf="project">
   <div class="page-project">
     <div class="row">
@@ -16,6 +17,7 @@
                 <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
                 <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
                 <li class="project-share"><a href="#" class="btn btn-soft-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+                <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
               </ul>
               <ul class="list-unstyled project-tags pull-left">
                 <li><a href="#" class="btn btn-grey">electronics</a></li>
@@ -27,7 +29,7 @@
               </ul>
               <div class="clearfix"></div>
               <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
-             <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
+              <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
               <ul class="list-unstyled project-aside">
                 <li id="project-story-tab" class="active"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
                 <li id="how-to-tab"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
@@ -39,14 +41,14 @@
         </div>
         <!-- End top-content-wrapper -->
         <div class="container">
-          <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
-          <app-project-how-to [project]="projectDetails" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+          <app-project-story [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+          <app-project-how-to [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
         </div>
       </section>
     </div>
   </div>
 </div>
-
+</div>
 
 
 

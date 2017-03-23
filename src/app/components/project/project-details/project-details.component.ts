@@ -57,12 +57,11 @@ export class ProjectDetailsComponent implements OnInit {
     let userId = localStorage.getItem('user_id');
     this.sub = this.route.params.subscribe(params => {
     this.id = +params['nid']; // (+) converts string 'id' to a number
-
      /* service to get challenge name if project enter in it */
        // get challenge name and nid for challenge if found from a view
     this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
       this.projectdata = data[0];
-      console.log(this.projectdata.challenge_name);
+      console.log(this.projectdata);
     }, err => {
 
     });

@@ -1,470 +1,490 @@
-<div class="profile-page">
+<div class="profile-page profile-empty-edit">
 	<div *ngIf="profile">
-		<div class="container-fluid cover-region">
+		<section class="container-fluid cover-region">
+			<!-- start profile-cover -->
 			<div class="row profile-cover">
 				<a href="" class="btn btn-light-grey edit hidden-sm-down" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i> &nbsp;Edit cover photo&nbsp;</a>
+				<a href="" class="btn btn-light-grey edit hidden-md-up" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i></a>
 				<img src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">
-			</div>
-			<div class="row profile-name">
-				<div class="col-md-9 col-md-offset-3">
-					<h4>{{profile.first_name}} {{profile.last_name}}<span>{{profile.nickname}}</span></h4>
-					<ul class="bookmark">
-						<li>
-							<a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
-						</li>
-						<li>
-							<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
-						</li>
-						<li>
-							<a href=""><i class="fa fa-lg fa-share"></i></a>
-						</li>
-					</ul>
+				<div class="profile-name profile-stats hidden-md-up">
+					<div class="row container">
+						<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
+							<!-- Start Bookmsrk-section -->
+							<li>
+								<a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
+							</li>
+							<li class="col-sm-2 col-2">
+								<a href="" routerLink="/inbox"><i class="fa fa-lg fa-comment message"></i></a>
+							</li>
+							<li class="col-sm-2 col-2">
+								<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
+							</li>
+							<li class="col-sm-2 col-2">
+								<a href=""><i class="fa fa-lg fa-share"></i></a>
+							</li>
+						</ul>
+						<!-- End Bookmark-section -->
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="content-container">
-			<section class="container-fluid profile-page">
-				<div class="row profile-stats">
-					<ul class="col-md-9 col-md-offset-3 list-unstyled">
-						<li><span class="number">{{profile.total_projects}}</span>
-							<p>projects</p>
-						</li>
-						<li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
-							<p>project forks</p>
-						</li>
-						<li *ngIf="profile.total_likes != 0"><span class="number">{{profile.total_likes}}</span>
-							<p>project likes</p>
-						</li>
-						<li><span class="number">1405</span>
-							<p>views</p>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<div class="profile-sidebar">
-							<!-- Start Profile Sidebar -->
-							<div class=" profile-container">
-								<!-- start profile container-->
-								<div class="profile-group">
-									<!-- Start profile Group -->
-									<div class="profile-pic">
-										<!-- Start Profiel Pic -->
-										<a href="" class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<img src="{{profile.user_photo}}" alt="" class="">
-									</div>
-									<a class="btn btn-blue btn-sharp" routerLink="/inbox">inbox</a>
+		</section>
+		<!-- End profile-cover -->
+
+		<!-- .............................................................. -->
+
+
+		<section class="container body-region">
+			<!-- Start sidebar-left -->
+			<div class="row body-content">
+				<div class="left-section col-lg-4 col-md-4">
+					<div class="profile-sidebar">
+						<div class=" profile-container">
+							<div class="profile-group">
+								<div class="profile-pic">
+									<!-- Start Profiel Pic -->
+									<a href="" class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<img src="{{profile.user_photo}}" alt="" class="">
+									<div class="profile-type"><span>Maker</span></div>
 								</div>
-								<div class="profile-info">
-									<!-- Start Profile Info -->
-									<ul *ngIf="profile.address_publish" class="list-unstyled location">
-										<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
-										<hr>
-									</ul>
-
-									<ul class="list-unstyled post">
-										<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<li>"{{profile.describe_yourself}}"</li>
-									</ul>
-									<hr>
-
-									<p>Profile Completeness</p>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
-											<span class="profile-progress">{{info.profile_completion+'%'}}</span>
-										</div>
+							</div>
+							<!-- End profile-group -->
+							<div class="profile-info">
+								<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
+								<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
+								<ul *ngIf="profile.address_publish" class="list-unstyled location">
+									<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
+								</ul>
+								<hr>
+								<ul class="list-unstyled post">
+									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<li>"{{profile.describe_yourself}}"</li>
+								</ul>
+								<hr>
+								<p>Profile Completeness</p>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+										<span class="profile-progress">{{info.profile_completion+'%'}}</span>
 									</div>
-									<!-- Start Bio -->
-									<div *ngIf="profile.bio" class="bio">
-										<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<p>{{profile.bio}}</p>
+								</div>
+								<!-- Start Bio -->
+								<div *ngIf="profile.bio" class="bio">
+									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<p>{{profile.bio}}</p>
+								</div>
+								<div *ngIf="!profile.bio" class="bio">
+									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-bio-modal">
+										<i class="fa fa-lg fa-plus"></i> Add your bio
+									</a>
+								</div>
+								<!-- End Bio -->
+								<ul class="list-unstyled interests" *ngIf="profile.maker_interests && profile.maker_interests.length > 0">
+									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
+									<div *ngFor="let interest of profile.maker_interests">
+										<li>{{interest.title}}</li>
 									</div>
-									<div *ngIf="!profile.bio" class="bio">
-
-										<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-bio-modal">
-											<i class="fa fa-lg fa-plus"></i> Add your bio </a>
-									</div>
-									<!-- End Bio -->
-									<hr>
-									<ul class="list-unstyled interests" *ngIf="profile.maker_interests && profile.maker_interests.length > 0">
-										<h5>Interests</h5>
-										<a href="" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<div *ngFor="let interest of profile.maker_interests">
-											<li>{{interest.title}}</li>
-										</div>
-									</ul>
-									<ul class="list-unstyled interests" *ngIf="!profile.maker_interests ">
-										<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
-									</ul>
-									<hr>
-									<ul *ngIf="profile.field_add_your_makerspace_s_" class="list-unstyled makerspaces">
-										<h5>Makerspaces</h5>
-										<a href="" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
-											<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
-										</li>
-									</ul>
-									<ul *ngIf="!profile.field_add_your_makerspace_s_" class="list-unstyled makerspaces">
+								</ul>
+								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
+									<h5>Makerspaces</h5>
+									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
+										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
+									</li>
+									<ul *ngIf="profile.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
 										<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 									</ul>
-									<hr>
-									<div *ngIf="profile.field_social_accounts">
-										<a href="" data-toggle="modal" data-target="#add-social-modal"><i class="fa fa-lg fa-pencil"></i></a>
-										<ul class="list-unstyled my-web">
-											<li>
-												<a *ngIf="profile.field_social_accounts.field_website_or_blog" href="{{profile.field_social_accounts.field_website_or_blog}}"
-													class="fa fa-lg fa-globe"></a> {{profile.field_social_accounts.field_website_or_blog}}</li>
-										</ul>
-										<ul class="list-unstyled social-links">
-											<li>
-												<a *ngIf="profile.field_social_accounts.field_facebook" href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
-												</a>
-												<br>
-												<i class="fa fa-lg fa-star"></i>
-											</li>
-											<li>
-												<a *ngIf="profile.field_social_accounts.field_linkedin" href="{{profile.field_social_accounts.field_linkedin}}" class="fa fa-lg fa-linkedin"></a>
-												<br>
-												<i class="fa fa-lg fa-star show"></i>
+								</ul>
+								<div *ngIf="profile.field_social_accounts">
+									<a href="" data-toggle="modal" data-target="#add-social-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<ul class="list-unstyled my-web">
+										<li>
+											<a *ngIf="profile.field_social_accounts.field_website_or_blog" href="{{profile.field_social_accounts.field_website_or_blog}}"
+											 class="fa fa-lg fa-globe"></a> {{profile.field_social_accounts.field_website_or_blog}}</li>
+									</ul>
+									<ul class="list-unstyled social-links">
+										<li>
+											<a *ngIf="profile.field_social_accounts.field_facebook" href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
+											</a>
+											<br>
+											<i class="fa fa-lg fa-star"></i>
+										</li>
+										<li>
+											<a *ngIf="profile.field_social_accounts.field_linkedin" href="{{profile.field_social_accounts.field_linkedin}}" class="fa fa-lg fa-linkedin"></a>
+											<br>
+											<i class="fa fa-lg fa-star show"></i>
 
-											</li>
-											<li>
-												<a *ngIf="profile.field_social_accounts.field_twitter" href="{{profile.field_social_accounts.field_twitter}}" class="fa fa-lg fa-twitter"></a>
-												<br>
-												<i class="fa fa-lg fa-star"></i>
-											</li>
-											<li>
-												<i class="fa fa-lg fa-google-plus"></i>
-												<br>
-												<i class="fa fa-lg fa-star"></i>
-											</li>
-											<li>
-												<a *ngIf="profile.field_social_accounts.field_pinterest" href="{{profile.field_social_accounts.field_pinterest}}" class="fa fa-lg fa-pinterest"></a>
-												<br>
-												<i class="fa fa-lg fa-star"></i>
-											</li>
-											<li>
-												<i class="fa fa-lg fa-tumblr"></i>
-												<br>
-												<i class="fa fa-lg fa-star"></i>
-											</li>
-										</ul>
-									</div>
-									<div *ngIf="!profile.field_social_accounts">
-										<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-social-modal"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a>
-									</div>
-									<hr>
-									<div *ngIf="profile.field_started_making" class="how">
-										<!-- Start How -->
-										<h5>How I learned to be a maker</h5>
-										<p>{{profile.started_making}}</p>
-									</div>
-									<!-- End How -->
-									<hr>
-									<a href="#" class="report">Report this user</a>
+										</li>
+										<li>
+											<a *ngIf="profile.field_social_accounts.field_twitter" href="{{profile.field_social_accounts.field_twitter}}" class="fa fa-lg fa-twitter"></a>
+											<br>
+											<i class="fa fa-lg fa-star"></i>
+										</li>
+										<li>
+											<i class="fa fa-lg fa-google-plus"></i>
+											<br>
+											<i class="fa fa-lg fa-star"></i>
+										</li>
+										<li>
+											<a *ngIf="profile.field_social_accounts.field_pinterest" href="{{profile.field_social_accounts.field_pinterest}}" class="fa fa-lg fa-pinterest"></a>
+											<br>
+											<i class="fa fa-lg fa-star"></i>
+										</li>
+										<li>
+											<i class="fa fa-lg fa-tumblr"></i>
+											<br>
+											<i class="fa fa-lg fa-star"></i>
+										</li>
+									</ul>
 								</div>
-								<!-- End profile Info -->
+								<div *ngIf="!profile.field_social_accounts">
+									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-social-modal"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a>
+								</div>
+								<div *ngIf="profile.field_started_making" class="how">
+									<!-- Start How -->
+									<h5>How I learned to be a maker</h5>
+									<p>{{profile.started_making}}</p>
+								</div>
+								<a href="#" class="report">Report this user</a>
+								<!-- End How -->
 							</div>
-							<!-- End Profile Container -->
+							<!-- End col-md-3 -->
 						</div>
-						<!-- End Profile Sidebar -->
-					</div>
-					<!-- End col-md-3 -->
-					<div class="col-md-9">
-						<profile-projects></profile-projects>
-					</div>
-					<!-- End col-md-9 -->
-				</div>
-				<!-- End row -->
-			</section>
-		</div>
-	</div>
-	<section class="modal-section">
-		<!-- Trigger the modal with a button -->
-		<!-- Join us Modal -->
-		<div id="joinus-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<h4>Start participating in <br>our worldwide community of makers!</h4>
-					</div>
-					<button type="button" class="btn btn-blue" data-dismiss="modal">Join now</button>
-					<p>Already a member? <a href="#">Log in</a></p>
-
-				</div>
-			</div>
-		</div>
-		<!-- Add Edit Info Modal -->
-		<div id="edit-info-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Edit info</h4>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group">
-							<label for="edit-nickname">Add or edit your nickname</label>
-							<input type="text" class="form-control" [(ngModel)]="info.nickname" id="edit-nickname">
-						</div>
-						<hr>
-						<div class="form-group">
-							<label for="edit-city">Edit location</label>
-
-							<input type="text" class="form-control" [(ngModel)]="info.address.city" id="edit-city">
-							<input type="text" class="form-control" [(ngModel)]="info.address.state" id="edit-state">
-						</div>
-						<div class="clearfix"></div>
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="saveInfo()" data-dismiss="modal">Save</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Add Cover Photo Modal -->
-		<div id="edit-cover-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Choose Photo</h4>
-						<ul class="list-unstyled">
-							<li class="upload"><a href="" class="btn btn-transparent active">Upload</a></li>
-							<li class="your-photos"><a href="" class="btn btn-transparent">Your Photos</a></li>
-						</ul>
-						<span class="info uplad">
-                        <p>DID YOU KNOW?</p>
-                        <p>You can also add images from your phone and they will be available here under "Your Photos"</p>
-                    </span>
-						<span class="info your-photo-tab">
-                        <p>DID YOU KNOW?</p>
-                        <p>You can also add images from your phone</p>
-                    </span>
-					</div>
-					<div class="modal-body">
-						<div class="upload-tab">
-							<img src="./assets/images/Drag_Drop.png" alt="">
-							<p>Drag a photo here</p>
-							<p>or</p>
-							<a href="" class="btn btn-white">Select a photo from your computer</a>
-						</div>
-						<div class="your-photo-tab">
-							<p>Percent of storage used (3.2 MB of 100 MB)</p>
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
-									<span class="profile-progress">10%</span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-								<div class="col-md-3 col-sm-6 image-container">
-									<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-									<i class="fa fa-lg fa-close"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" data-dismiss="modal">Save</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Add bio Modal -->
-		<div id="add-bio-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add your bio</h4>
-					</div>
-					<div class="modal-body">
-						<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.describe_yourself" placeholder="Start your story"></textarea>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="saveBio()" data-dismiss="modal">Done</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Add interests Modal -->
-		<div id="add-interests-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add up to 20 interests</h4>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group">
-							<tag-input (onSelect)="onSelected($event)" [(ngModel)]="info.maker_interests" [identifyBy]="'name'" [displayBy]="'name'"
-								[onlyFromAutocomplete]="true">
-								<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
-
-								</tag-input-dropdown>
-								</tag-input>
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="saveIntersets()" data-dismiss="modal">Done</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Add Makerspace Modal -->
-		<div id="add-makerspace-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add your Makerspace(s)</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group makerspace">
-							<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
-								<div class="maker-group">
-									<label for="makerspace-1">Makerspace name</label>
-									<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
-										id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
-										<label for="url-1">URL (optional)</label>
-										<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
-											id="url-1" placeholder="Type or paste">
-								</div>
-							</div>
-							<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" (click)="saveMarkerspaces()" class="btn btn-blue" data-dismiss="modal">Done</button>
+						<!-- End sidebar-left -->
 					</div>
 				</div>
 
-			</div>
-		</div>
-		<!-- Add Social Modal -->
-		<div id="add-social-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Share your social and other Maker accounts:</h4>
-					</div>
-					<div class="modal-body">
-
-						<div class="form-group socials">
-							<ul class="list-unstyled social-links">
+				<div class="right-section col-lg-8 col-md-8">
+					<!-- Start Content-region -->
+					<div class="profile-name profile-stats hidden-sm-down">
+						<div class="row container">
+							<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
 								<li>
-									<h4>Prefered?</h4>
+									<a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label">Website or Blog</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_website_or_blog" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
+								<li class="profile-message">
+									<a href="#" class="btn btn-main btn-sharp" data-toggle="modal" data-target="#message-modal">Message</a>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label">Additional site</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_additional_site" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
+								<li><span class="number">{{profile.total_projects}}</span>
+									<p>projects</p>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_facebook" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook">
+								<li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
+									<p>project forks</p>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_instagram" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram">
+								<li *ngIf="profile.total_likes != 0"><span class="number">{{profile.total_likes}}</span>
+									<p>project likes</p>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_linkedin" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin">
+								<li><span class="number">1405</span>
+									<p>views</p>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_twitter" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter">
+								<!-- Start Bookmsrk-section -->
+								<li>
+									<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_pinterest" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
-								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_youtube" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_youtube">
-								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_hackster_io" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
-								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_instructables" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instructables">
-								</li>
-								<li class="form-group">
-									<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
-									<input type="text" [(ngModel)]="info.field_social_accounts.field_hackday" name="web-url">
-									<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackday">
+								<li>
+									<a href=""><i class="fa fa-lg fa-share"></i></a>
 								</li>
 							</ul>
+							<!-- End Bookmark-section -->
+						</div>
+						<div class="profile-content">
+							<div class="empty-content row">
+								<div class="col-lg-12 col-md-12">
+									<profile-projects></profile-projects>
+								</div>
+							</div>
+							<!-- End project grid -->
 						</div>
 
+						<section class="modal-section">
+							<!-- Trigger the modal with a button -->
+							<!-- Join us Modal -->
+							<div id="joinus-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<h4>Start participating in <br>our worldwide community of makers!</h4>
+										</div>
+										<button type="button" class="btn btn-main" data-dismiss="modal">Join now</button>
+										<p>Already a member? <a href="#">Log in</a></p>
+									</div>
+								</div>
+							</div>
+							<!-- Add Edit Info Modal -->
+							<div id="edit-info-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit info</h4>
+										</div>
+										<div class="modal-body">
+											<div [formGroup]="optionalForm">
+												<div class="form-group">
+													<label for="edit-nickname">Add or edit your nickname</label>
+													<input formControlName="name" type="text" class="form-control" id="edit-nickname" [(ngModel)]="info.nickname">
+												</div>
+												<hr>
+												<div class="form-group">
+													<label for="edit-city">Edit location</label>
+
+													<input formControlName="city" type="text" class="form-control" [(ngModel)]="info.address.city" id="edit-city">
+													<input formControlName="state" type="text" class="form-control" [(ngModel)]="info.address.state" id="edit-state">
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main" (click)="saveInfo()" data-dismiss="modal">Save</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Add Cover Photo Modal -->
+							<div id="edit-cover-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Choose Photo</h4>
+											<ul class="list-unstyled">
+												<li class="upload"><a href="" class="btn btn-transparent active">Upload</a></li>
+												<li class="your-photos"><a href="" class="btn btn-transparent">Your Photos</a></li>
+											</ul>
+											<span class="info uplad">
+											<p>DID YOU KNOW?</p>
+											<p>You can also add images from your phone and they will be available here under "Your Photos"</p>
+											</span>
+											<span class="info your-photo-tab">
+											<p>DID YOU KNOW?</p>
+											<p>You can also add images from your phone</p>
+											</span>
+										</div>
+										<div class="modal-body">
+											<div class="upload-tab">
+												<img src="./assets/images/Drag_Drop.png" alt="">
+												<p>Drag a photo here</p>
+												<p>or</p>
+												<a href="" class="btn btn-white">Select a photo from your computer</a>
+											</div>
+											<div class="your-photo-tab">
+												<p>Percent of storage used (3.2 MB of 100 MB)</p>
+												<div class="progress">
+													<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+														<span class="profile-progress">10%</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main" data-dismiss="modal">Save</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Add bio Modal -->
+							<div id="add-bio-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Add your bio</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.describe_yourself" placeholder="Start your story"></textarea>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main done-btn" (click)="saveBio()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Add interests Modal -->
+							<div id="add-interests-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Add up to 20 interests</h4>
+										</div>
+										<div class="modal-body">
+
+											<div class="form-group">
+												<tag-input (onSelect)="onSelected($event)" [(ngModel)]="info.maker_interests" [identifyBy]="'name'" [displayBy]="'name'"
+												 [onlyFromAutocomplete]="true">
+													<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
+													</tag-input-dropdown>
+												</tag-input>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-blue" (click)="saveIntersets()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Add Makerspace Modal -->
+							<div id="add-makerspace-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Add your Makerspace(s)</h4>
+										</div>
+										<div class="modal-body">
+											<div class="form-group makerspace">
+												<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
+													<div class="maker-group">
+														<label for="makerspace-1">Makerspace name</label>
+														<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
+														 id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+														<label for="url-1">URL (optional)</label>
+														<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
+														 id="url-1" placeholder="Type or paste">
+													</div>
+												</div>
+												<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" (click)="saveMarkerspaces()" class="btn btn-blue" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Add Social Modal -->
+							<div id="add-social-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Share your social and other Maker accounts:</h4>
+										</div>
+										<div class="modal-body">
+
+											<div class="form-group socials">
+												<ul class="list-unstyled social-links">
+													<li>
+														<h4>Prefered?</h4>
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label">Website or Blog</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_website_or_blog" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label">Additional site</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_additional_site" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_facebook" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_instagram" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_linkedin" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_twitter" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_pinterest" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_youtube" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_youtube">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_hackster_io" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_instructables" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instructables">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_hackday" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackday">
+													</li>
+												</ul>
+											</div>
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-blue" (click)="saveSocial()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</section>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="saveSocial()" data-dismiss="modal">Done</button>
-					</div>
+					<!-- End profile content -->
 				</div>
 
+
 			</div>
-		</div>
-	</section>
+		</section>
+		<!-- End body-group -->
+	</div>
 </div>

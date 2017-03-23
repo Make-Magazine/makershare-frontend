@@ -36,6 +36,7 @@ export class ChallengeDataComponent implements OnInit {
   sort_by: string;
   enterStatus = true;
   page_arg = [];
+  projectdata;
   @Input() countFoll;
   @Input() sortType: ISorting;
   @Input() pageNo: number;
@@ -254,6 +255,7 @@ export class ChallengeDataComponent implements OnInit {
       });
   }
   /*end function count project in challenge*/
+  
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
@@ -297,6 +299,21 @@ export class ChallengeDataComponent implements OnInit {
       });
   }
   /* end function my Enteries */
+
+    /* service to get challenge name if project enter in it */
+       // get challenge name and nid for challenge if found from a view
+  //  getProjectData(){
+  //     /* service to get challenge name if project enter in it */
+  //      // get challenge name and nid for challenge if found from a view
+  //   this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
+  //     this.projectdata = data[0];
+  //     console.log(this.projectdata.challenge_name);
+  //   }, err => {
+
+  //   });
+  //       /* end service */
+  //  }
+        /* end service */
 
 }
 

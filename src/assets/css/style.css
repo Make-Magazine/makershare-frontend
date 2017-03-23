@@ -20,7 +20,7 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     position: relative;
-    z-index: 9999; }
+    z-index: 1; }
   header nav .collapse.navbar-collapse {
     width: auto; }
   header nav .navbar-toggler {
@@ -977,6 +977,9 @@ footer {
         font-size: 13px;
         margin-left: 10px; }
 
+.page-challenge-summary {
+  background-color: #F2F2F2; }
+
 .page-project {
   color: #222;
   background-color: #F2F2F2; }
@@ -1866,7 +1869,7 @@ header.showcase-project .next {
 
 .project .image-top {
   width: 100%;
-  height: 260px;
+  height: auto;
   overflow: hidden;
   position: relative; }
   .project .image-top img {
@@ -1981,7 +1984,7 @@ header.showcase-project .next {
   display: none;
   width: 80%;
   position: absolute;
-  top: 26%;
+  top: 13%;
   left: 0px;
   color: #fff;
   bottom: 0;
@@ -2499,6 +2502,16 @@ header.showcase-project .next {
         .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p.number {
           font-size: 30px;
           font-weight: bold; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image {
+      position: absolute;
+      display: block;
+      top: 40px;
+      right: 120px;
+      width: 50px;
+      height: auto; }
+      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image img {
+        width: 100%;
+        height: auto; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions {
       position: absolute;
       bottom: 0;
@@ -2612,10 +2625,11 @@ header.showcase-project .next {
     float: none;
     line-height: inherit; }
   .page-challenge-summary .region-content .content-wrapper .summary-aside-content, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content, .page-enter-challenge .region-content .content-wrapper .summary-aside-content {
-    background-color: #BEBEBE;
+    background-color: white;
     color: #222;
-    border: 1px solid #222;
-    height: 100vw; }
+    border: 1px solid #f2f2f2;
+    padding-top: 14px;
+    padding-bottom: 14px; }
     .page-challenge-summary .region-content .content-wrapper .summary-aside-content ul, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content ul, .page-enter-challenge .region-content .content-wrapper .summary-aside-content ul {
       margin-top: 30px; }
       .page-challenge-summary .region-content .content-wrapper .summary-aside-content ul li, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content ul li, .page-enter-challenge .region-content .content-wrapper .summary-aside-content ul li {

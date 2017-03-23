@@ -22,6 +22,7 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
       this.profile_projects = res;
+      console.log(res);
     }, err => {
 
     });
