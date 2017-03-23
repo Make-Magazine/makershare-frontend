@@ -4,12 +4,15 @@ import { ShowcasesCollectionComponent } from './showcase-collection/showcasesCol
 import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.component';
 import { ShowcaseSortingComponent } from './showcaseSorting.component';
 import { ShowcaseRoutingModule } from './showcase-routing.module'
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ShowcaseRoutingModule
+    ShowcaseRoutingModule,
+    SharedModule,
+
   ],
   declarations: [
     ShowcasesCollectionComponent,

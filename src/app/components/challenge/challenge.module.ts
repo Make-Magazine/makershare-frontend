@@ -4,8 +4,6 @@ import { ChallengesComponent } from './challenges/challenges.component';
 import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from '../shared/shared.module';
-
 import { ChallengeRoutingModule } from './challenge-routing.module';
 
 
@@ -15,7 +13,6 @@ import { ChallengeRoutingModule } from './challenge-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
     ChallengeRoutingModule,
   ],
   declarations: [

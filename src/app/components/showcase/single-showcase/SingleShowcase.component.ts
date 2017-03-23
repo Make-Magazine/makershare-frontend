@@ -102,6 +102,7 @@ loadMoreVisibilty(){
     .switchMap((nid) => this.viewService.getView('showcase',[['nid',nid['nid']]]))
     .subscribe(data =>{
        this.showcase = data[0];
+
     this.getProfile(this.showcase.uid);
     });
    }

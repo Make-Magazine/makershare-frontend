@@ -16,7 +16,10 @@
                   </div>
                   <div class="col-md-6">
                     <p class="timestamp">Curated by:</p>
-                    <div class=" profile-container medium-card"><!-- start profile card-->
+                     <!-- Start User Card -->
+                      <app-user-card [uid]="showcase.uid"></app-user-card>
+                      <!-- End User Card -->
+                    <!--<div class=" profile-container medium-card">
                       <div class="profile-card">
                         <div class="left col-sm-4">
                           <div class="profile-pic">
@@ -32,8 +35,8 @@
                             </p>
                         </div>
                         <i class="fa fa-lg fa-star-o"></i>
-                      </div><!-- End profile card -->
-                    </div><!-- End Profile-container -->
+                      </div>
+                    </div>-->
                   </div>
                 </div>
               </div><!-- End container -->

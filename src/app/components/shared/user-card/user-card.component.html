@@ -1,26 +1,74 @@
-<div class=" profile-container" *ngIf="card">
+<div class=" profile-container" *ngIf="card[0]">
   <!-- start profile card-->
   <div class="profile-card">
     <div class="left col-sm-4">
       <div class="profile-pic">
-        <img *ngIf="card.photo" src="{{card.photo}}" alt="" class="img-responsive">
-        <img *ngIf="!card.photo" src="{{card.default_photo}}" alt="" class="img-responsive">
+        <img *ngIf="card[0].default_profile_photo" src="{{card[0].default_profile_photo}}" alt="" class="img-responsive">
       </div>
-      <a href="#" class="btn btn-blue">Message</a>
+      <a href="#" *ngIf="hideMessage" class="btn btn-blue" data-dismiss="modal" data-target="#message-modal" data-toggle="modal" (click)="getcard()">Message</a>
     </div>
     <div class="right col-sm-8">
-      <h4 class="profile-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
-      <h4 class="profile-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
+      <h4 class="profile-name" *ngIf="(card[0].first_name) && (card[0].last_name)"><a href="#">{{card[0].first_name}} {{card[0].last_name}}</a></h4>
+      <h4 class="profile-name" *ngIf="(!card[0].first_name) && (!card[0].last_name)"><a href="#">{{card[0].name}}</a></h4>
       <div class="trophies">
         <i class="fa fa-lg fa-child"></i>
         <i class="fa fa-lg fa-certificate"></i>
         <i class="fa fa-lg fa-trophy"></i>
       </div>
       <p class="count">6 projects</p>
-      <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
-      <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+      <p class="profile-tag" *ngIf="(card[0].tags)" [innerHTML]="card[0].tags"></p>
+      <p class="user-city" *ngIf="(card[0].city)" [innerHTML]="card[0].city"></p>
     </div>
   </div>
   <!-- End profile card -->
 </div>
 <!-- End Profile-container -->
+
+<div class="modal-message">
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+  <div id="message-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" (click)="resetForm()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg"  class="form-horizontal">
+            <!--<div class="form-group" *ngIf="card">
+              <div class="result">
+                <div class="user-image-container">
+                  <img *ngIf="card.photo" src="{{card.photo}}">
+                  <img *ngIf="!card.photo" src="{{card.default_photo}}">
+                </div>
+                <div class="data-container">
+                  <p  *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</p>
+                </div>
+              </div>
+            </div>-->
+
+            <div class="form-group subject">
+              <label class="control-label">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
+            </div>
+            <div *ngIf="formErrors.subject" class="alert alert-danger">
+              {{ formErrors.subject }}
+            </div>
+            <div class="form-group message-text">
+              <label class="control-label">Message</label>
+              <textarea name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
+            </div>
+            <div *ngIf="formErrors.body" class="alert alert-danger">
+              {{ formErrors.body }}
+            </div>
+            <ul class="list-unstyled actions">
+              <li><a href="" class="btn btn-transparent" data-dismiss="modal" (click)="resetForm()">Cancel</a></li>
+              <li><button type="submit" class="btn btn-blue btn-sharp"[disabled]="!messageForm.valid" >Send</button></li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
