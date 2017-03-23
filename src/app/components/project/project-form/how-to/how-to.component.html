@@ -24,7 +24,7 @@
               <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
               <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)">
               <div *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value && searchFailed['tool']">
-                Tool not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-tool-modal" (click)="CurrentModal = 'tool''">Create New</a>
+                Tool not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'tool'">Create New</a>
               </div>
               <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
                 {{formErrors.field_tools[i].field_tool_name}}
@@ -75,7 +75,7 @@
               <div *ngIf="HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value">{{HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value}}</div>
               <input *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value" type="text" id="part-name-{{i + 1}}" placeholder="Name of part" class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('part','field_parts', $event.item, i)">
               <div *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value && searchFailed['part']">
-                Part not found <a>Create new</a>
+                Part not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'part'">Create New</a>
               </div>
               <small *ngIf="formErrors.field_parts[i].field_part_name" class="text-danger">
                 {{formErrors.field_parts[i].field_part_name}}
@@ -115,7 +115,7 @@
               <div *ngIf="HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value">{{HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value}}</div>
               <input *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value" type="text" id="material-name-{{i + 1}}" placeholder="Name of material" class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('material','field_materials', $event.item, i)">
               <div *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value && searchFailed['material']">
-                Material not found <a>Create new</a>
+                Material not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'material'">Create New</a>
               </div>
               <small *ngIf="formErrors.field_materials[i].field_material_name" class="text-danger">
                 {{formErrors.field_materials[i].field_material_name}}
@@ -231,15 +231,15 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name">{{CurrentModal}} Name</label>
-							<input type="text" class="form-control"  id="name" [(ngModel)]="">
+							<label for="name">{{CurrentModal}} name:</label>
+							<input #Name type="text" class="form-control"  id="name">
 						</div>
 						<hr>
 						<div class="clearfix"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="AddNewToolMaterialPart()" data-dismiss="modal">Save</button>
+						<button #CloseButton type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-blue" (click)="AddNewToolMaterialPart(CloseButton,Name)" data-dismiss="modal">Create and link</button>
 					</div>
 				</div>
 			</div>
