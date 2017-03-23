@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -52,7 +53,7 @@ export class ProfileComponent implements OnInit {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
       this.profile = res;
-      console.log(this.profile.field_social_accounts.field_facebook);
+      // console.log(this.profile.field_social_accounts.field_facebook);
     }, err => {
 
     });
@@ -91,9 +92,20 @@ export class ProfileComponent implements OnInit {
     // }, err => {
 
     // });
+
+    this.BuildForm();
   }// end of OnInit 
 
+  BuildForm(){
+    this.optionalForm = this.fb.group({
+      'name': [''],
+      'city': [''],
+      'state': [''],
+    });
+  }
+
   saveInfo() {
+    // this.optionalForm.value;
     this.profile.nickname = this.info.nickname;
     this.saveProfile();
   }

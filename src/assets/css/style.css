@@ -20,7 +20,7 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     position: relative;
-    z-index: 9999; }
+    z-index: 1; }
   header nav .collapse.navbar-collapse {
     width: auto; }
   header nav .navbar-toggler {
