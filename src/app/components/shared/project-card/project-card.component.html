@@ -1,9 +1,8 @@
-<div class="project card">
-  <div class="image-top">
-    <a (click)="ShowProjectDetails(projectCard.nid)">
+<div class="project card" (click)="ShowProjectDetails(projectCard.nid)">
+  <div class="image-top" >
       <div class="overlay"></div>
-      <img class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
-    </a>
+      <img *ngIf="projectCard.cover_photo" class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
+      <img *ngIf="!projectCard.cover_photo" src="http://placehold.it/335x250" alt="">
     <div class="teaser">
       <p class="project-text-case">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
         recognition on mo st people's faces, albeit instant confusion on others'.</p>
