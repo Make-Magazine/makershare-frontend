@@ -15,6 +15,7 @@ import { IComment } from '../../../../models/challenge/comment';
 export class ProjectStoryComponent implements OnInit {
 
   @Input() project;
+  @Input() projectInfo; 
   constructor(
     private commentService: CommentService,
     private fb: FormBuilder,
@@ -34,6 +35,7 @@ export class ProjectStoryComponent implements OnInit {
   };
   ngOnInit() {
     console.log(this.project);
+    console.log(this.projectInfo);
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
       // console.log(this.currentUser)
