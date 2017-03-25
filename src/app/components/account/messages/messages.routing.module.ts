@@ -9,7 +9,6 @@ import { ViewComponent } from './view/view.component';
 const MessagesRouts: Routes = [
   { path: 'inbox',  component:  InboxComponent},
    { path: 'view/:thread_id', component:  ViewComponent}
- // { path: 'project/view/:nid', component: ProjectDetailsComponent }
 ];
 
 @NgModule({
