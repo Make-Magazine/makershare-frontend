@@ -5,7 +5,7 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Message } from '../../account/messages/sending/message';
+import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { PmService } from '../../../d7services/pm/pm.service';
 
 })
 export class UserCardComponent implements OnInit {
-  card = {};
+  card = [];
   active = true;
   userId;
   hideMessage=false;
@@ -45,9 +45,9 @@ export class UserCardComponent implements OnInit {
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
-      this.card = data;
-      this.isCurrentUser();
-      //console.log(this.card[0].uid)
+      this.card = data[0];
+      //this.isCurrentUser();
+      console.log(this.card['uid'])
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -108,14 +108,14 @@ export class UserCardComponent implements OnInit {
     },
   };
 
-  isCurrentUser(){
-    this.userId = localStorage.getItem('user_id');
-    if(this.card[0].uid === this.userId){
-      this.hideMessage=false;
-    }else{
-      this.hideMessage = true;
-    }
-  }
+  // isCurrentUser(){
+  //   this.userId = localStorage.getItem('user_id');
+  //   if(this.card[0].uid === this.userId){
+  //     this.hideMessage=false;
+  //   }else{
+  //     this.hideMessage = true;
+  //   }
+  // }
 
 
 }
