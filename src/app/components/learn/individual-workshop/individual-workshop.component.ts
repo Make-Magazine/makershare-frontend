@@ -85,6 +85,7 @@ export class IndividualWorkshopComponent implements OnInit {
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
+          console.log(this.objects)
           for (let object in this.objects) {
             if (this.objects[object].video && this.objects[object].video !== '') {
                if (this.youtube_parser(this.objects[object].video)) {
@@ -137,6 +138,8 @@ export class IndividualWorkshopComponent implements OnInit {
         this.popupPreview = null;
         this.epubFile = true;
        } else {
+        var x =  this.objects[i].book.split('.').pop();
+        console.log(x);
         delete this.popupPreview;
         this.epubFile = null;
         this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
