@@ -7,6 +7,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-card',
@@ -14,6 +15,7 @@ import { PmService } from '../../../d7services/pm/pm.service';
 
 })
 export class UserCardComponent implements OnInit {
+  closeResult: string;
   card = {};
   active = true;
   userId;
@@ -26,6 +28,7 @@ export class UserCardComponent implements OnInit {
     body: '',
   };
   @Input() uid;
+  @Input() name;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -34,6 +37,7 @@ export class UserCardComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private pm: PmService,
     private fb: FormBuilder,
+    private modalService: NgbModal,
 
   ) { }
   ngOnInit() {
@@ -47,7 +51,7 @@ export class UserCardComponent implements OnInit {
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
       this.isCurrentUser();
-      console.log(this.card)
+      //console.log(this.card)
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -57,7 +61,7 @@ export class UserCardComponent implements OnInit {
     e.preventDefault();
     if (this.messageForm.valid) {
       this.messageObj.recipients = this.card['name'];
-      console.log(this.messageObj.recipients)
+      //console.log(this.messageObj.recipients)
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
@@ -117,6 +121,22 @@ export class UserCardComponent implements OnInit {
       this.hideMessage = true;
     }
   }
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }

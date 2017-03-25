@@ -9,6 +9,7 @@ import { ViewService } from '../../../../d7services/view/view.service';
 import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { Location } from '@angular/common'
   templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
+  closeResult: string;
   currentuser;
   active = true;
   messageForm: FormGroup;
@@ -60,7 +62,7 @@ export class InboxComponent implements OnInit {
     private http: Http,
     private user: UserService,
     private viewService: ViewService,
-    private _location: Location,
+    private _location: Location,private modalService: NgbModal,
 
   ) { }
   ngOnInit(): void {
@@ -70,9 +72,10 @@ export class InboxComponent implements OnInit {
     this.CountMessages();
   }
 
-  SetMember(uid,) {
+  SetMember(uid,i) {
     this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-      this.SelectedUser=data;
+      this.SelectedUser[i]= this.SelectedUser.push(data);
+      //console.log(this.SelectedUser[0][0].username)
     });
   }
 
@@ -104,11 +107,11 @@ export class InboxComponent implements OnInit {
   onSubmit(e) {
     e.preventDefault();
     for(let selected_usrs of this.SelectedUser ){
-      console.log(selected_usrs)
+      console.log(selected_usrs[0].username)
+      this.messageObj.recipients = selected_usrs[0].username;
     }
     if (this.messageForm.valid) {
-      console.log(this.selected[0].username)
-      //this.messageObj.recipients = this.SelectedUser[i][0].username.toString();
+      //this.messageObj.recipients = this.SelectedUser[0][0].username;
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
@@ -306,4 +309,21 @@ export class InboxComponent implements OnInit {
 
   //   })
   // }
+   open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 }

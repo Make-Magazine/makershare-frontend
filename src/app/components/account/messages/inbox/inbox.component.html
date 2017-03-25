@@ -14,8 +14,8 @@
       <div class="selectall">
         <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
       </div>
-      <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
-      <a class="btn btn-main btn-sharp new-message" data-dismiss="modal" data-target="#message-modal" data-toggle="modal"><i class="fa fa-lg fa-plus" ></i>New Message</a>
+      <a href="/inbox" class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
+      <a class="btn btn-main btn-sharp new-message" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
     </section>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg">
@@ -45,7 +45,7 @@
             </a>
           </div>
           <div class="delete">
-            <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(message.thread_id)"></a>
+            <a href="/inbox" class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(message.thread_id)"></a>
           </div>
         </div>
       </li>
@@ -60,15 +60,15 @@
 <div class="modal-message">
   <!-- Trigger the modal with a button -->
   <!-- Modal -->
-  <div id="message-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" (click)="resetForm()">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg" class="form-horizontal">
+
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" (click)="resetForm()">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+              <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg" class="form-horizontal">
             <div *ngIf="SelectedUser[i]">
               <h5>To</h5>
               <div class=" profile-container">
@@ -128,10 +128,5 @@
               <li><button type="submit" class="btn btn-blue btn-sharp" [disabled]="!messageForm.valid" (click)="hidepopup()">Send</button></li>
             </ul>
           </form>
-        </div>
-
-      </div>
-    </div>
   </div>
-</div>
-<!--<app-send></app-send>-->
+</template>
