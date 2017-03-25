@@ -74,8 +74,7 @@ export class InboxComponent implements OnInit {
 
   SetMember(uid,i) {
     this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-      this.SelectedUser[i]= this.SelectedUser.push(data);
-      //console.log(this.SelectedUser[0][0].username)
+       this.SelectedUser.push(data);
     });
   }
 
@@ -106,13 +105,12 @@ export class InboxComponent implements OnInit {
 
   onSubmit(e) {
     e.preventDefault();
-    for(let selected_usrs of this.SelectedUser ){
-      console.log(selected_usrs[0].username)
-      this.messageObj.recipients = selected_usrs[0].username;
-    }
     if (this.messageForm.valid) {
+      for (var i = 0; i < this.SelectedUser.length; i++) {
+        this.messageObj.recipients = this.SelectedUser[i][0].username;
+      }
       //this.messageObj.recipients = this.SelectedUser[0][0].username;
-      this.messageObj.body = this.messageForm.value.body;
+      this.messageObj.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         //this.submitted=true;
