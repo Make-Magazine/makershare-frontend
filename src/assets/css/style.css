@@ -3100,7 +3100,7 @@ header.showcase-project .next {
 
 .inbox-container,
 .notification-container {
-  display: none; }
+  display: block; }
 
 .page-search-result {
   background-color: #F2F2F2; }

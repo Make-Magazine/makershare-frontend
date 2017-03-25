@@ -16,7 +16,7 @@
           <a *ngIf="auth.authenticated()" [routerLink]="['/profile']"><img src="./assets/images/icons/user.svg" alt="" class="img-responsive" ></a>
         </li>
         <li class="mail-icon">
-          <a href=""><img src="./assets/images/icons/mail.svg" alt=""></a>
+          <a [routerLink]="['/inbox']"><img src="./assets/images/icons/mail.svg" alt=""></a>
         </li>
         <li class="search-icon">
           <a href=""><img src="./assets/images/icons/search.svg" alt=""></a>

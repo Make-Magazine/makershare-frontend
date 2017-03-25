@@ -5,7 +5,7 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Message } from '../../account/messages/sending/message';
+import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class UserCardComponent implements OnInit {
   card = {};
   active = true;
   userId;
+  user;
   hideMessage=false;
   messageForm: FormGroup;
   messageObj: Message = {
@@ -41,26 +42,26 @@ export class UserCardComponent implements OnInit {
   }
 
   getcard() {
-
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
-      this.card = data;
+      this.card = data[0];
       this.isCurrentUser();
-      //console.log(this.card[0].uid)
+      console.log(this.card)
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
-  onSubmit(e, index) {
+  onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
-      this.messageObj.recipients = this.card[0].name;
+      this.messageObj.recipients = this.card['name'];
+      console.log(this.messageObj.recipients)
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-       
+       console.log(res);
       });
     }
   }
@@ -110,7 +111,7 @@ export class UserCardComponent implements OnInit {
 
   isCurrentUser(){
     this.userId = localStorage.getItem('user_id');
-    if(this.card[0].uid === this.userId){
+    if(this.card['uid'] === this.userId){
       this.hideMessage=false;
     }else{
       this.hideMessage = true;

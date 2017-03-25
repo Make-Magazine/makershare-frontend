@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ChallengeRoutingModule,
     NgbModule,
+    SharedModule,
   ],
   declarations: [
     ChallengesComponent,
