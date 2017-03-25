@@ -14,11 +14,11 @@
           <button data-dismiss="modal" data-target="#message-modal" data-toggle="modal" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
         </div>
         <div class="media-body">
-          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
-          <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
+          <h4 class="user-name" *ngIf="(card[0].first_name) && (card[0].last_name)"><a href="#">{{card[0].first_name}} {{card[0].last_name}}</a></h4>
+          <h4 class="user-name" *ngIf="(!card[0].first_name) && (!card[0].last_name)"><a href="#">{{card[0].name}}</a></h4>
           <p class="user-nickname"><a href="#">aka Goodmen</a></p>
-          <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
-          <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+          <p class="profile-tag" *ngIf="(card[0].tags)" [innerHTML]="card[0].tags"></p>
+          <p class="user-city" *ngIf="(card[0].city)" [innerHTML]="card[0].city"></p>
           <p class="count align-self-end">6 projects</p>
         </div>
       </div>
