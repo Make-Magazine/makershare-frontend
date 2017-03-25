@@ -1,4 +1,10 @@
 .page-create-project-why {
+	.ng2-imgcrop{
+		display:block;
+		canvas{
+				display:block;width:100%;
+			}
+	}
 	h1,h2,h3,h4,h5,h6 {font-weight: 700;}
 	color: $main-grey;
 	.form-group > input,textarea,#cke_how-to-make {max-width: 60%;}

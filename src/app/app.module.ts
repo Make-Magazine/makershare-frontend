@@ -17,6 +17,7 @@ import { ProfileService } from './d7services/profile/profile.service';
 import { PmService } from './d7services/pm/pm.service';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
+import { DndModule } from 'ng2-dnd';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     NgbModule.forRoot(),
+    DndModule.forRoot(),
     RouterModule,
     routing,
     MessagesModule,

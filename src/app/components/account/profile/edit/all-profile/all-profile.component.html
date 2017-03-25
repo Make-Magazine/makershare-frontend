@@ -299,11 +299,11 @@
 						<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
 							<div class="maker-group">
 								<label for="makerspace-1">Makerspace name</label>
-								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
-									id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
+								<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
+									id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">-->
 								<label for="url-1">URL (optional)</label>
-								<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
-									id="url-1" placeholder="Type or paste">
+								<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
+									id="url-1" placeholder="Type or paste">-->
 							</div>
 						</div>
 						<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>

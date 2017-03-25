@@ -2186,6 +2186,11 @@ header.showcase-project .next {
 
 .page-create-project-why {
   color: #222; }
+  .page-create-project-why .ng2-imgcrop {
+    display: block; }
+    .page-create-project-why .ng2-imgcrop canvas {
+      display: block;
+      width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
     font-weight: 700; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
@@ -3080,7 +3085,7 @@ header.showcase-project .next {
 
 .inbox-container,
 .notification-container {
-  display: block; }
+  display: none; }
 
 .page-search-result {
   background-color: #F2F2F2; }
