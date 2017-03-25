@@ -77,6 +77,7 @@ export class ProjectDetailsComponent implements OnInit {
           this.project = data;
           this.projectDetails = data;
           this.projectDetails.nid = this.id;
+          console.log(this.projectDetails);
         });
        
       this.currentuser = Number(localStorage.getItem('user_id'));

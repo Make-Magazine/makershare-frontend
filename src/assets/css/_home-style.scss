@@ -4,8 +4,8 @@
         position: relative;
         /* Carousel base class */
         .carousel {
-            // height: 500px;
-            // overflow: hidden;
+            height: 500px;
+            overflow: hidden;
             /* Declare heights because of positioning of img element */
             .carousel-item {
                 height: 500px;
