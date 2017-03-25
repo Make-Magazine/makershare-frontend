@@ -14,9 +14,10 @@ import { PmService } from '../../../d7services/pm/pm.service';
 
 })
 export class UserCardComponent implements OnInit {
-  card = [];
+  card = {};
   active = true;
   userId;
+  user;
   hideMessage=false;
   messageForm: FormGroup;
   messageObj: Message = {
@@ -41,26 +42,26 @@ export class UserCardComponent implements OnInit {
   }
 
   getcard() {
-
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      //this.isCurrentUser();
-      console.log(this.card['uid'])
+      this.isCurrentUser();
+      console.log(this.card)
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
-  onSubmit(e, index) {
+  onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
-      this.messageObj.recipients = this.card[0].name;
+      this.messageObj.recipients = this.card['name'];
+      console.log(this.messageObj.recipients)
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-       
+       console.log(res);
       });
     }
   }
@@ -108,14 +109,14 @@ export class UserCardComponent implements OnInit {
     },
   };
 
-  // isCurrentUser(){
-  //   this.userId = localStorage.getItem('user_id');
-  //   if(this.card[0].uid === this.userId){
-  //     this.hideMessage=false;
-  //   }else{
-  //     this.hideMessage = true;
-  //   }
-  // }
+  isCurrentUser(){
+    this.userId = localStorage.getItem('user_id');
+    if(this.card['uid'] === this.userId){
+      this.hideMessage=false;
+    }else{
+      this.hideMessage = true;
+    }
+  }
 
 
 }
