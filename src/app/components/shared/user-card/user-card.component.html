@@ -1,4 +1,3 @@
-
 <div class=" profile-container" *ngIf="card">
   <!-- start profile card-->
   <div class="card spotlight-item ">
@@ -11,7 +10,7 @@
             <img src="./assets/images/icons/icon-blue-ribbon.svg" alt="">
             <img src="./assets/images/icons/icon-challenge-winner.svg" alt="">
           </div>
-          <button (click)="getcard()" data-dismiss="modal" data-target="#message-modal" data-toggle="modal" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
+          <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
         </div>
         <div class="media-body">
           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
@@ -27,20 +26,15 @@
   <!-- End profile card -->
 </div>
 <!-- End Profile-container -->
-
-<div class="modal-message">
-  <!-- Trigger the modal with a button -->
-  <!-- Modal -->
-  <div id="message-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" (click)="resetForm()">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg"  class="form-horizontal">
-            <!--<div class="form-group" *ngIf="card">
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" (click)="resetForm()">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" id="createMsg" class="form-horizontal">
+      <!--<div class="form-group" *ngIf="card">
               <div class="result">
                 <div class="user-image-container">
                   <img *ngIf="card.photo" src="{{card.photo}}">
@@ -52,28 +46,24 @@
               </div>
             </div>-->
 
-            <div class="form-group subject">
-              <label class="control-label">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
-            </div>
-            <div *ngIf="formErrors.subject" class="alert alert-danger">
-              {{ formErrors.subject }}
-            </div>
-            <div class="form-group message-text">
-              <label class="control-label">Message</label>
-              <textarea name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
-            </div>
-            <div *ngIf="formErrors.body" class="alert alert-danger">
-              {{ formErrors.body }}
-            </div>
-            <ul class="list-unstyled actions">
-              <li><a href="" class="btn btn-transparent" data-dismiss="modal" (click)="resetForm()">Cancel</a></li>
-              <li><button type="submit" class="btn btn-blue btn-sharp"[disabled]="!messageForm.valid" >Send</button></li>
-            </ul>
-          </form>
-        </div>
+      <div class="form-group subject">
+        <label class="control-label">Subject</label>
+        <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
       </div>
-    </div>
+      <div *ngIf="formErrors.subject" class="alert alert-danger">
+        {{ formErrors.subject }}
+      </div>
+      <div class="form-group message-text">
+        <label class="control-label">Message</label>
+        <textarea name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
+      </div>
+      <div *ngIf="formErrors.body" class="alert alert-danger">
+        {{ formErrors.body }}
+      </div>
+      <ul class="list-unstyled actions">
+        <li><a  class="btn btn-transparent" data-dismiss="modal" (click)="resetForm()">Cancel</a></li>
+        <li><button type="submit" class="btn btn-blue btn-sharp" [disabled]="!messageForm.valid">Send</button></li>
+      </ul>
+    </form>
   </div>
-
-</div>
+</template>
