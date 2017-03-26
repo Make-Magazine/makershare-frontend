@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef,Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -34,6 +34,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubLink;
   utubelink;
   file;
+  @Input() name;
 
   constructor(
     private route: ActivatedRoute,
