@@ -15,10 +15,9 @@ import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 @Component({
   selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
-   styles : [`
-      .tools textarea {max-width:100%;resize:none;}
-  
-  `]
+   styles : [
+     '.tools textarea {max-width:100%;resize:none;}'
+  ]
 })
 
 export class HowToComponent implements OnInit {
@@ -45,7 +44,7 @@ export class HowToComponent implements OnInit {
     tool:false,
     part:false,
     material:false
-  }
+  };
   CurrentModal:string;
 
   search = (text$: Observable<string>) =>{
@@ -180,6 +179,7 @@ export class HowToComponent implements OnInit {
       'field_difficulty': [this.project.field_difficulty.und],
       'field_duration': [this.project.field_duration.und],
       'field_resources': this.fb.array([]),
+      'field_credit_your_inspiration': [this.project.field_credit_your_inspiration.und[0].value]
     });
     let multifields = ["field_tools","field_materials","field_parts","field_resources"]
     multifields.forEach(field =>{

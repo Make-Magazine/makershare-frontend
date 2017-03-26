@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'ng2-select';
 import { IcDatepickerModule } from 'ic-datepicker';
 import { TagInputModule } from 'ng2-tag-input';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   imports: [
@@ -20,7 +19,6 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     SelectModule,
     IcDatepickerModule,
     TagInputModule,
-    Ng2AutoCompleteModule,
   ],
   declarations: [
     EditProfileComponent,

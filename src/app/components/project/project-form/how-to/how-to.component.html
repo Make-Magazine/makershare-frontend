@@ -188,6 +188,10 @@
         <a *ngIf="HowToForm.controls.field_resources.valid" (click)="AddRow('field_resources')" class="btn btn-white btn-sharp another-resource"><i class="fa fa-lg fa-plus"></i> Add more</a>
       </div>
     </div>
+    <div class="form-group col-xs-12 credit-your-inspiration">
+      <label for="credit-your-inspiration">Credit Your Inspiration</label>
+      <input type="text" class="form-control" id="credit-your-inspiration" formControlName="field_credit_your_inspiration" [(ngModel)]="project.field_credit_your_inspiration.und[0].value" novalidate placeholder="Credit Your Inspiration">
+    </div>
   </div><!-- End how-to -->
 </div>
 <!--
