@@ -75,8 +75,27 @@ export class ProjectDetailsComponent implements OnInit {
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
         .subscribe(data => {
           this.project = data;
-          this.projectDetails = data;
+          var i=0;
+          for(let resource of this.project.field_resources) {
+              var resourceExt = resource.resource_file.split('.').pop();
+              this.project.field_resources[i]['extension']=resourceExt;
+              var size = parseInt(resource.filesize);
+              if (size > 1 && size < 1024){
+                this.project.field_resources[i]['filesize']= size;
+              };
+            // else if (size == 1024 && size > 1024) {
+            //   var size2 = Math.floor( size / 1000);
+            //   this.project.field_resources[i]['filesize']= size2 + 'MB';
+            // }
+            // console.log(parseInt(resource.filesize));
+            // console.log(size2);
+            i++
+
+          }
+          this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
+          console.log(this.projectDetails);
+          
         });
        
       this.currentuser = Number(localStorage.getItem('user_id'));
@@ -122,4 +141,5 @@ export class ProjectDetailsComponent implements OnInit {
         this.router.navigate(['challenges/', nid]);
 
   }
+
 }

@@ -25,7 +25,8 @@ export class EditProfileComponent implements OnInit {
     bio: '',
     started_making: '',
     field_social_accounts: this.profileSocial,
-    address: {}
+    address: {},
+    pass:"MOcs56"
   };
 
   profileSocial: ProfileSocial = {

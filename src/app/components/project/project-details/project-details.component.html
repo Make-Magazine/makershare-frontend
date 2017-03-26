@@ -31,8 +31,8 @@
               <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
               <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
               <ul class="list-unstyled project-aside">
-                <li id="project-story-tab" class="active"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
-                <li id="how-to-tab"><a class="btn btn-soft-grey" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
+                <li id="project-story-tab"><a class="btn btn-tabs active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
+                <li id="how-to-tab"><a class="btn btn-tabs" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
