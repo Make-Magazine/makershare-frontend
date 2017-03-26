@@ -43,18 +43,20 @@ export class InboxComponent implements OnInit {
   reciver = null;
   reciverUser = [];
   SelectedUser = [];
-  selected = [];
   submitted = false;
   deletedArr = [];
   deleted = []
   userId;
-  s=[];
   messageObj: Message = {
     recipients: '',
     subject: '',
     body: '',
   };
-  userSelected = []
+  selected = [];
+  profile;
+  pm_disabed = true;
+  disabled;
+  onemMg =[];
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -72,9 +74,9 @@ export class InboxComponent implements OnInit {
     this.CountMessages();
   }
 
-  SetMember(uid,i) {
+  SetMember(uid) {
     this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-       this.SelectedUser.push(data);
+      this.SelectedUser.push(data);
     });
   }
 
@@ -106,12 +108,14 @@ export class InboxComponent implements OnInit {
   onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
-      for (var i = 0; i < this.SelectedUser.length; i++) {
-        this.messageObj.recipients = this.SelectedUser[i][0].username;
+      var str : string = '';
+      for(let selectedUsers of this.SelectedUser){
+        str += selectedUsers[0].username +  ', ' ;
       }
-      //this.messageObj.recipients = this.SelectedUser[0][0].username;
-      this.messageObj.body;
-      this.messageObj.subject = this.messageForm.value.subject;
+       //console.log(str)
+       this.messageObj.recipients = str;
+      this.messageObj.body =  this.messageForm.value.subject;
+      this.messageObj.subject = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         //this.submitted=true;
         //this.messageObj=messageObj
@@ -165,7 +169,8 @@ export class InboxComponent implements OnInit {
     },
   };
 
-  resetForm() {
+  resetForm(e) {
+    e.preventDefault();
     this.messageForm.reset();
   }
 
@@ -188,31 +193,37 @@ export class InboxComponent implements OnInit {
     }
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
-      let msg_arr = [];
+      var msg_arr = [];
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
+          this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
+           
+          
+           this.userId = localStorage.getItem('user_id');
+           if(this.userId === author[0].author){
+            this.user.getUser(this.userId).subscribe(res => {
+              this.messages[key].sender = true;
+              this.messages[key].user_photo = res.user_photo;
+              this.messages[key].first_name = res.first_name;
+              this.messages[key].last_name = res.last_name;
+               
+            })
+           }else{
+            this.user.getUser(author[0].author).subscribe(res => {
+              this.messages[key].reciver = true;
+               this.messages[key].user_photo = res.user_photo;
+              this.messages[key].first_name = res.first_name;
+              this.messages[key].last_name = res.last_name;              
+            })
+           }
+           
+          })
           msg_arr.push(this.messages[key]);
         }
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
       for (let message of this.msg) {
-        this.pm.postView('maker_get_pm_author/retrieve_author/', message.thread_id).subscribe(data => {
-          this.messages = data;
-          //console.log(this.messages)
-          this.userId = localStorage.getItem('user_id');
-          if (this.userId === this.messages[0].author) {
-            this.user.getUser(this.userId).subscribe(res => {
-              this.sender = res;
-              //console.log(this.sender.first_name)
-            })
-          } else {
-            this.user.getUser(this.messages[0].author).subscribe(res => {
-              this.reciver = res;
-              //console.log(this.reciver.first_name)
-            })
-          }
-        })
         this.dateObj = new Date(message.last_updated * 1000);
         this.currentDate = new Date();
         message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
@@ -243,21 +254,11 @@ export class InboxComponent implements OnInit {
       this.hideloadmore = false;
     }
   }
-
-  // getCurrentUser() {
-  //   this.user.getStatus().subscribe(data => {
-  //     this.currentuser = data;
-
-  //   });
-  // }
-
-  deleteMessage(mid: number) {
-    this.pm.deleteMessage(mid).subscribe(data => {
-      this.msg = data;
-      //console.log(this.msg);
-    }, err => {
-
-    });
+  deleteMessage(mid:number, i) {
+      //console.log(mid)
+      this.pm.deleteMessage(mid).subscribe(data=>{
+        console.log(data)
+      }) 
   }
 
   valueChanged(mid, event) {
@@ -275,10 +276,8 @@ export class InboxComponent implements OnInit {
   }
   deleteMessages() {
     for (var _i = 0; _i < this.deletedArr.length; _i++) {
-      this.pm.deleteMessage(this.deletedArr[_i]).subscribe(data => {
-        this.deleted = data;
-        //console.log(this.deleted);
-      });
+      var index = this.msg.indexOf(this.deletedArr[_i], 0);
+      delete this.msg[index];
     }
   }
 
@@ -286,9 +285,7 @@ export class InboxComponent implements OnInit {
     this.msg.forEach(x => x.state = ev.target.checked)
     if (ev.target.checked === true) {
       for (var _i = 0; _i < this.msg.length; _i++) {
-        this.pm.deleteMessage(this.msg[_i].thread_id).subscribe(data => {
-          this.deleted = data;
-        })
+        this.pm.deleteMessage(this.msg[_i].thread_id).subscribe()
         //console.log(this.msg[_i].thread_id)
       }
     }
@@ -302,10 +299,12 @@ export class InboxComponent implements OnInit {
     this.router.navigate(['/view', thread_id]);
     //console.log(this.message)
   }
-  // turnOffMessages(){
-  //   this.pm.updateSettings().subscribe(data=>{
+  // turnOffMessages(e){
+  //   if(e.target.checked === true){
+  //     this.pm.updateSettings(this.messages[0].thread_id,pm_disabed).subscribe(data=>{
 
-  //   })
+  //     })
+  //   }
   // }
    open(content) {
     this.modalService.open(content).result.then((result) => {
