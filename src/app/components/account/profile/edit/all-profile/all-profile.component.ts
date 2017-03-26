@@ -31,7 +31,8 @@ export class AllProfileComponent implements OnInit {
     started_making: '',
     field_social_accounts: {},
     address: {},
-    field_add_your_makerspace_s_: [{}]
+    field_add_your_makerspace_s_: [{}],
+    pass:""
   };
   profile: UserProfile = {
     name: 'testar',
@@ -39,7 +40,8 @@ export class AllProfileComponent implements OnInit {
     bio: '',
     started_making: '',
     field_social_accounts: {},
-    address: {}
+    address: {},
+    pass:""
   };
 
   constructor(
