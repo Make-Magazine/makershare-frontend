@@ -177,6 +177,7 @@ export class ProfileComponent implements OnInit {
   }
 
   fileChangeListener(file:File,cropper) {
+    if(!file) return;
     this.CoverImageData = {};
     var image:any = new Image();
     var myReader:FileReader = new FileReader();
@@ -193,6 +194,7 @@ export class ProfileComponent implements OnInit {
     }
 
   saveCropped(){
+    if(!this.CoverImageData.image) return;
     this.profile.profile_cover = this.CoverImageData.image;
     this.saveProfile();
   }
