@@ -2326,7 +2326,8 @@ header.showcase-project .next {
   .page-create-project-why .how-to form {
     padding-bottom: 130px; }
   .page-create-project-why .how-to .sort {
-    width: 40px; }
+    width: 40px;
+    margin: 0 10px; }
   .page-create-project-why .how-to .quantity {
     width: 50px; }
   .page-create-project-why .how-to .carets {
