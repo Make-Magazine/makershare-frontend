@@ -266,11 +266,21 @@
 											</span>
 										</div>
 										<div class="modal-body">
-											<div class="upload-tab">
-												<img src="./assets/images/Drag_Drop.png" alt="">
+											<div ng2FileDrop class="upload-tab pull-left"
+											(ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
+                			(ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
+											>
+												<img *ngIf="!coverPhotoAttached"  src="./assets/images/Drag_Drop.png" alt="">
+												<img-cropper #cropper *ngIf="coverPhotoAttached" [image]="data" [settings]="cropperSettings"></img-cropper><br>
+
+												<!--<img *ngIf="coverPhotoAttached" src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">-->
+
 												<p>Drag a photo here</p>
 												<p>or</p>
-												<a href="" class="btn btn-white">Select a photo from your computer</a>
+												<a class="btn btn-white " (click)="loadImg($event)">
+													Select a photo from your computer
+													<input type="file"  (change)="fileChangeListener($event)" id="upload" style="display:none;" />
+												</a>
 											</div>
 											<div class="your-photo-tab">
 												<p>Percent of storage used (3.2 MB of 100 MB)</p>
@@ -313,7 +323,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-main" data-dismiss="modal">Save</button>
+											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped($event)">Save</button>
 										</div>
 									</div>
 								</div>

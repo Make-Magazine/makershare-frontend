@@ -29,5 +29,6 @@ user_photo?: string,
 profile_cover?: string,
 profile_completion?: number,
 total_projects?: number,
-total_likes?: number
+total_likes?: number,
+pass:string
 }
