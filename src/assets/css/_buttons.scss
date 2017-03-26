@@ -106,7 +106,7 @@
 }
 
 .btn-main-2 {
-    color: #fff;
+    color: #fff !important;
     background-color: $main-button-2;
     border-color: $main-button-2*0.9;
     @extend .displace;

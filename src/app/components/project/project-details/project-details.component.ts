@@ -81,7 +81,7 @@ export class ProjectDetailsComponent implements OnInit {
               this.project.field_resources[i]['extension']=resourceExt;
               var size = parseInt(resource.filesize);
               if (size > 1 && size < 1024){
-                this.project.field_resources[i]['filesize']= size;
+                this.project.field_resources[i]['filesize']= size + 'KB';
               };
             // else if (size == 1024 && size > 1024) {
             //   var size2 = Math.floor( size / 1000);
