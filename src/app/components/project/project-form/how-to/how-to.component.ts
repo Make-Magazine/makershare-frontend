@@ -11,6 +11,7 @@ import { field_collection_item_tool,field_collection_item_part,field_collection_
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project-form-how-to',
@@ -73,7 +74,8 @@ export class HowToComponent implements OnInit {
     private fb: FormBuilder,
     private viewService:ViewService,
     private taxonomyService:TaxonomyService,
-    private nodeService:NodeService
+    private nodeService:NodeService,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit() {
@@ -436,6 +438,11 @@ export class HowToComponent implements OnInit {
       },    
     },
   };
+
+  OpenAddModal(Template,Control){
+    this.CurrentModal = Control;
+    this.modalService.open(Template);
+  }
 
   /**
    * Handle the click on create new tool , material or part from the modal
