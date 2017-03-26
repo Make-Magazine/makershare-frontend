@@ -98,6 +98,7 @@ export class ProjectForm extends Node implements ProjectForm{
     this.field_show_tell_video = {und:[new field_URL()]};
     this.field_aha_moment = {und:[new field_text(null)]};
     this.field_uh_oh_moment = {und:[new field_text(null)]};
+		this.field_credit_your_inspiration = {und:[new field_text(null)]};
 	}
 
 	public SetField(value:any,FieldName:string):void{

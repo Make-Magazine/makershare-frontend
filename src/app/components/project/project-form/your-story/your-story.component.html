@@ -13,8 +13,8 @@
     </div>
     <div class="form-group cover">
       <label class="control-label">Cover photo</label><br>
-        <a href="#" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
-        <input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >
+        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
+        <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
         <div class="image-preview">
           <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
           <img *ngIf="YourStoryForm.value.field_cover_photo.file" src="{{YourStoryForm.value.field_cover_photo.file}}" class="img-responsive">
@@ -25,17 +25,20 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="form-group projectCategory form-inline">
+    <div class="form-group projectCategory d-flex flex-row">
       <label for="projectCategory">Categories</label>
-      <select class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
-        <option disabled selected value> -- select an option -- </option>
-        <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
-      </select>
-      <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
-        <option disabled selected value> -- select an option -- </option>
-        <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
-      </select>
-      <div *ngIf="current_child_category" (click)="SetCategories()" class="btn btn-blue add-cate">add</div>
+      <div class="categories-group d-flex flex-column">
+        <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+          <option disabled selected value="_none_"> -- select an option -- </option>
+          <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
+        </select>
+        <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
+          <option disabled selected value> -- select an option -- </option>
+          <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
+        </select>
+      </div>
+      
+      <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate">add</div>
       <div *ngIf="project.field_categories.und">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
          <div *ngFor="let cate of all_categories">
@@ -64,16 +67,10 @@
     <div class="form-group aha">
       <label for="aha">AHA Moment (optional)</label>
       <input type="text" class="form-control" id="aha" placeholder="Enter a URL for video" formControlName='field_aha_moment'>
-      <div *ngIf="formErrors.field_aha_moment" class="alert alert-danger error-msg">
-        {{ formErrors.field_aha_moment }}
-      </div>
     </div>
     <div class="form-group uh-oh">
       <label for="uh-oh">UH-OH Moment (optional)</label>
       <input type="text" class="form-control" id="uh-h" placeholder="Enter a URL for video" formControlName='field_uh_oh_moment'>
-      <div *ngIf="formErrors.field_uh_oh_moment" class="alert alert-danger error-msg">
-        {{ formErrors.field_uh_oh_moment }}
-      </div>
     </div>
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
@@ -132,3 +129,20 @@
   </div>
 </aside>
  -->
+
+<!--Cover image modal-->
+ <template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings" ></img-cropper>
+  </div>
+  <div class="modal-footer">
+    <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="ImageUpdated(closebtn,true)">Skip</button>
+    <button type="button" class="btn btn-primary" (click)="ImageUpdated(closebtn,false)">Save</button>
+  </div>
+</template>

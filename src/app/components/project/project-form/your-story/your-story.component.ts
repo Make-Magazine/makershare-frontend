@@ -7,6 +7,8 @@ import { ProjectCategory } from '../../../../models/project/project-form/project
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { ProjectForm } from '../../../../models/project/project-form/project';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { CropperSettings } from 'ng2-img-cropper';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -46,12 +48,19 @@ export class YourStoryComponent implements OnInit {
   current_child_category:number;
   child_categories:ProjectCategory[] = [];
   all_categories:ProjectCategory[];
+
+  //image cropper 
+  cropperSettings: CropperSettings;
+  imagedata:any;
   
   constructor(
     private fb: FormBuilder,
     private viewService: ViewService,
     private fileService: FileService,
-  ) {}
+    private modalService: NgbModal,
+  ) {
+    this.SetCropperSettings();
+  }
 
   /**
    * on loading the component we will assign the printable variables to the parent printable variables
@@ -132,42 +141,30 @@ export class YourStoryComponent implements OnInit {
    * its better if we used custom validator so we can remove the error check here "need works"
    * @param event the selected file object
    */
-  ImageUpdated(event){ 
+  ImageUpdated(closebtn:HTMLButtonElement,SkipCropping:boolean){ 
+    closebtn.click();
     this.cover_image.file = '';
     this.cover_image.filename = '';
     this.formErrors.field_cover_photo = '';
-    var files = event.srcElement.files;
-    if(files.length == 1 && files[0].type.startsWith("image")){
-      this.ConvertToBase64(files[0],this.cover_image);
+    if(!NodeHelper.isEmpty(this.imagedata)){
+      if(SkipCropping){
+        let img = new Image();
+        img.src = this.imagedata.original.src;
+        if(img.width < this.accepted_image_width || img.height < this.accepted_image_height){
+          this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.validimagesize;
+        }else{
+          this.cover_image.file = this.imagedata.original.src;
+        }
+      }else{
+        this.cover_image.file = this.imagedata.image;
+      }
+      this.cover_image.filename = "myprojectcover.png";
+      this.imagedata = {};
     }
-    else{
-      this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;      
+    if(!this.cover_image.file && !this.formErrors.field_cover_photo){
+      this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;
     }
  }
-
- /**
-  * converting a file object to base64
-  * @param file : the file to convert
-  * @param ImgObject : the cover image control to set the new values after converting
-  */
- ConvertToBase64(file:File,ImgObject:FileEntity){
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    let CreateComponent = this;
-    reader.onload = function () {
-      var image = new Image();
-      image.src = reader.result;
-      if(image.width < CreateComponent.accepted_image_width || image.height < CreateComponent.accepted_image_height){
-        CreateComponent.formErrors.field_cover_photo = CreateComponent.validationMessages.field_cover_photo.validimagesize;
-      }else{
-        ImgObject.filename = file.name;
-        ImgObject.file = reader.result;
-      }
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-   }
 
   /**
    * a function to check the validation for each control and set the error messages to formerrors from messages array
@@ -212,7 +209,8 @@ export class YourStoryComponent implements OnInit {
   /**
    * pushing the selected categories to project categories field and check for dublication
    */
-  SetCategories(){
+  SetCategories(ParentCategoryElement:HTMLSelectElement){
+    ParentCategoryElement.value = "_none_";
     if(this.project.field_categories.und.indexOf(this.current_parent_category) == -1){
       this.project.field_categories.und.push(this.current_parent_category);
     }
@@ -260,4 +258,18 @@ export class YourStoryComponent implements OnInit {
        'required': 'Story is required.'
      },
    };
+
+  SetCropperSettings():void{
+    this.cropperSettings = new CropperSettings();
+    this.cropperSettings.width = 600;
+    this.cropperSettings.height = 400;
+    this.cropperSettings.minWidth = 600;
+    this.cropperSettings.minHeight = 400;
+    this.cropperSettings.dynamicSizing = true;
+    this.imagedata = {};
+  }
+
+  OpenCoverImageModal(Template){
+    this.modalService.open(Template,{size:'lg'});
+  }
 }

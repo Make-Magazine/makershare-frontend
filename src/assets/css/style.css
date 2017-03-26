@@ -55,11 +55,20 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
-.displace, .btn-grey, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
+.displace, .btn-dark-grey, .btn-soft-grey, .button-container-main-1 .btn,
+.button-container-main-2 .btn,
+.button-container-sec-2 .btn,
+.button-container-sec-3 .btn {
   position: relative;
   left: -4px;
   top: -4px; }
-  .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
+  .displace:active, .btn-dark-grey:active, .btn-soft-grey:active, .button-container-main-1 .btn:active,
+  .button-container-main-2 .btn:active,
+  .button-container-sec-2 .btn:active,
+  .button-container-sec-3 .btn:active, .displace:hover, .btn-dark-grey:hover, .btn-soft-grey:hover, .button-container-main-1 .btn:hover,
+  .button-container-main-2 .btn:hover,
+  .button-container-sec-2 .btn:hover,
+  .button-container-sec-3 .btn:hover {
     left: 0;
     top: 0;
     cursor: pointer; }
@@ -136,12 +145,10 @@ header .main-header .maker-sites li {
   .btn-main:active, .btn-main:hover {
     color: #fff;
     background-color: #d41c2b;
-    border-color: #bd1926;
-    left: 0;
-    top: 0; }
+    border-color: #bd1926; }
 
 .btn-main-2 {
-  color: #fff;
+  color: #fff !important;
   background-color: #4F4F4F;
   border-color: #474747; }
   .btn-main-2:focus {
@@ -151,9 +158,7 @@ header .main-header .maker-sites li {
   .btn-main-2:active, .btn-main-2:hover {
     color: #fff;
     background-color: #474747;
-    border-color: #3f3f3f;
-    left: 0;
-    top: 0; }
+    border-color: #3f3f3f; }
 
 .btn-border {
   color: #BEBEBE;
@@ -358,7 +363,8 @@ header .main-header .maker-sites li {
 .profile-container {
   padding: 0;
   float: left;
-  font-size: 12px; }
+  font-size: 12px;
+  width: 100%; }
   .profile-container .profile-card {
     background-color: #fff;
     padding: 10px 5px;
@@ -1234,82 +1240,6 @@ footer {
     border: 1px solid #ccc; }
     .page-project .avg-time p {
       margin: 0; }
-  .page-project .feedback-group .feedback-card {
-    padding: 10px;
-    background: white;
-    margin-bottom: 4px; }
-    .page-project .feedback-group .feedback-card .user-info {
-      padding: 4px 0px 4px 0px; }
-      .page-project .feedback-group .feedback-card .user-info p {
-        margin-bottom: 0px; }
-      .page-project .feedback-group .feedback-card .user-info .user-details {
-        padding-left: 1px; }
-        .page-project .feedback-group .feedback-card .user-info .user-details .user-fullname {
-          font-size: 16px;
-          margin-right: 10px;
-          color: #0AA9EA; }
-        .page-project .feedback-group .feedback-card .user-info .user-details .feed-timestamp p {
-          color: #bebebe; }
-        .page-project .feedback-group .feedback-card .user-info .user-details .feed-timestamp i {
-          margin-left: 4px;
-          font-size: 4px;
-          color: #bebebe; }
-        .page-project .feedback-group .feedback-card .user-info .user-details .user-nickname {
-          font-weight: bold; }
-        .page-project .feedback-group .feedback-card .user-info .user-details p {
-          font-size: 14px;
-          padding-top: 2px;
-          color: #444; }
-      .page-project .feedback-group .feedback-card .user-info .feed-timestamp {
-        text-align: right;
-        font-size: 13px !important;
-        color: #444; }
-    .page-project .feedback-group .feedback-card .content-section .user-pic {
-      padding: 4px; }
-      .page-project .feedback-group .feedback-card .content-section .user-pic img {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto; }
-    .page-project .feedback-group .feedback-card .content-section .media-body {
-      padding: 0px 10px 0px 10px; }
-      .page-project .feedback-group .feedback-card .content-section .media-body p {
-        color: #444;
-        margin: 0px; }
-  .page-project .feedback-group .new-comment {
-    padding: 10px;
-    background-color: white; }
-    .page-project .feedback-group .new-comment .comment-image {
-      padding-top: 4px; }
-      .page-project .feedback-group .new-comment .comment-image img {
-        width: 48px;
-        height: 48px; }
-    .page-project .feedback-group .new-comment .comment-body textarea {
-      border: 1px solid #ccc;
-      color: #444;
-      height: 54px;
-      margin-top: 2px;
-      border-radius: 4px; }
-    .page-project .feedback-group .new-comment .comment-body button {
-      display: inline-table;
-      margin-top: 2px;
-      padding-left: 8px;
-      color: #BEBEBE;
-      border: none;
-      background: none;
-      margin: 0;
-      padding-bottom: 8px; }
-      .page-project .feedback-group .new-comment .comment-body button span .fa-circle {
-        font-size: 2.5em; }
-      .page-project .feedback-group .new-comment .comment-body button span .fa-paper-plane {
-        font-size: 22px;
-        line-height: 50px; }
-      .page-project .feedback-group .new-comment .comment-body button:hover {
-        color: #EC1F30;
-        border: none; }
-      .page-project .feedback-group .new-comment .comment-body button:focus {
-        border: none;
-        outline: none;
-        outline: none; }
 
 header.showcase-project {
   border-bottom: 1px solid #000;
@@ -1347,6 +1277,85 @@ header.showcase-project .next {
 .projects-grid .project:hover {
   cursor: pointer; }
 
+.feedback-group {
+  margin-bottom: 10px; }
+  .feedback-group .feedback-card {
+    padding: 10px;
+    background: white;
+    margin-bottom: 4px; }
+    .feedback-group .feedback-card .user-info {
+      padding: 4px 0px 4px 0px; }
+      .feedback-group .feedback-card .user-info p {
+        margin-bottom: 0px; }
+      .feedback-group .feedback-card .user-info .user-details {
+        padding-left: 1px; }
+        .feedback-group .feedback-card .user-info .user-details .user-fullname {
+          font-size: 16px;
+          margin-right: 10px;
+          color: #0AA9EA; }
+        .feedback-group .feedback-card .user-info .user-details .feed-timestamp p {
+          color: #bebebe; }
+        .feedback-group .feedback-card .user-info .user-details .feed-timestamp i {
+          margin-left: 4px;
+          font-size: 4px;
+          color: #bebebe; }
+        .feedback-group .feedback-card .user-info .user-details .user-nickname {
+          font-weight: bold; }
+        .feedback-group .feedback-card .user-info .user-details p {
+          font-size: 14px;
+          padding-top: 2px;
+          color: #444; }
+      .feedback-group .feedback-card .user-info .feed-timestamp {
+        text-align: right;
+        font-size: 13px !important;
+        color: #444; }
+    .feedback-group .feedback-card .content-section .user-pic {
+      padding: 4px; }
+      .feedback-group .feedback-card .content-section .user-pic img {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto; }
+    .feedback-group .feedback-card .content-section .media-body {
+      padding: 0px 10px 0px 10px; }
+      .feedback-group .feedback-card .content-section .media-body p {
+        color: #444;
+        margin: 0px; }
+  .feedback-group .new-comment {
+    padding: 10px;
+    background-color: white; }
+    .feedback-group .new-comment .comment-image {
+      padding-top: 4px; }
+      .feedback-group .new-comment .comment-image img {
+        width: 48px;
+        height: 48px; }
+    .feedback-group .new-comment .comment-body textarea {
+      border: 1px solid #ccc;
+      color: #444;
+      height: 54px;
+      margin-top: 2px;
+      border-radius: 4px; }
+    .feedback-group .new-comment .comment-body button {
+      display: inline-table;
+      margin-top: 2px;
+      padding-left: 8px;
+      color: #BEBEBE;
+      border: none;
+      background: none;
+      margin: 0;
+      padding-bottom: 8px; }
+      .feedback-group .new-comment .comment-body button span .fa-circle {
+        font-size: 2.5em; }
+      .feedback-group .new-comment .comment-body button span .fa-paper-plane {
+        font-size: 22px;
+        line-height: 50px; }
+      .feedback-group .new-comment .comment-body button:hover {
+        color: #EC1F30;
+        border: none; }
+      .feedback-group .new-comment .comment-body button:focus {
+        border: none;
+        outline: none;
+        outline: none; }
+
 .workshop-page {
   background-color: #F2F2F2; }
   .workshop-page .workshop-header {
@@ -1374,7 +1383,7 @@ header.showcase-project .next {
           padding: 5px 15px;
           border-radius: 3px; }
   .workshop-page .learning-item {
-    background-color: #DCDCDC;
+    background-color: white;
     padding: 4px; }
     .workshop-page .learning-item:hover {
       cursor: pointer; }
@@ -1922,7 +1931,6 @@ header.showcase-project .next {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-all;
   overflow: hidden;
   line-height: 30px; }
 .project .card-text {
@@ -2206,6 +2214,11 @@ header.showcase-project .next {
 
 .page-create-project-why {
   color: #222; }
+  .page-create-project-why .ng2-imgcrop {
+    display: block; }
+    .page-create-project-why .ng2-imgcrop canvas {
+      display: block;
+      width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
     font-weight: 700; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
@@ -2276,7 +2289,17 @@ header.showcase-project .next {
   .page-create-project-why .your-story .projectName {
     width: 60%; }
   .page-create-project-why .your-story .projectCategory {
-    width: 40%; }
+    width: 100%;
+    align-items: flex-start; }
+    .page-create-project-why .your-story .projectCategory label,
+    .page-create-project-why .your-story .projectCategory .add-cate {
+      margin-top: 5px; }
+    .page-create-project-why .your-story .projectCategory .categories-group {
+      margin-left: 15px; }
+      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
+      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
+        width: 100% !important;
+        margin-bottom: 5px; }
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
     float: left;
@@ -2744,122 +2767,133 @@ header.showcase-project .next {
 
 .page-challenge-summary .tabs-buttons .challenge-actions {
   display: none; }
+.page-challenge-summary .content-wrapper {
+  padding: 0px 14px; }
 
-.page-workshop-individual .top-content-wrapper {
-  border-bottom: 1px solid #222;
-  margin-bottom: 10px;
-  height: 200px;
-  overflow: hidden;
-  position: relative; }
-  .page-workshop-individual .top-content-wrapper .workshop-coverphoto {
-    position: absolute;
-    width: 100%; }
-  .page-workshop-individual .top-content-wrapper > .container {
-    padding-top: 20px; }
-  .page-workshop-individual .top-content-wrapper h2 {
-    font-size: 35px;
-    font-weight: bold;
-    color: #fff;
-    text-align: center; }
-  .page-workshop-individual .top-content-wrapper ul li {
-    display: inline-block; }
-  .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn {
-    padding: 5px;
-    font-size: 9px;
-    float: left;
-    margin-right: 5px;
-    background-color: #3d3d3d;
-    color: #111111;
-    font-weight: bold;
-    border-radius: 3px; }
-    .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
-      background-color: #363636; }
-  .page-workshop-individual .top-content-wrapper .workshop-actions li {
-    display: block;
-    float: left; }
-    .page-workshop-individual .top-content-wrapper .workshop-actions li .btn {
-      border-right-width: 0; }
-    .page-workshop-individual .top-content-wrapper .workshop-actions li:last-of-type .btn {
-      border-right-width: 1px; }
-  .page-workshop-individual .top-content-wrapper .workshop-aside {
+.page-workshop-individual {
+  background-color: #F2F2F2; }
+  .page-workshop-individual .region-content {
+    background-color: white; }
+  .page-workshop-individual .related-books {
+    background-color: white;
+    padding: 4px; }
+  .page-workshop-individual .top-content-wrapper {
+    border-bottom: 1px solid #222;
+    margin-bottom: 10px;
+    height: 200px;
     overflow: hidden;
-    margin-bottom: -1px; }
-    .page-workshop-individual .top-content-wrapper .workshop-aside li {
+    position: relative; }
+    .page-workshop-individual .top-content-wrapper .workshop-coverphoto {
+      position: absolute;
+      width: 100%; }
+    .page-workshop-individual .top-content-wrapper > .container {
+      padding-top: 20px; }
+    .page-workshop-individual .top-content-wrapper h2 {
+      font-size: 35px;
+      font-weight: bold;
+      color: #fff;
+      text-align: center; }
+    .page-workshop-individual .top-content-wrapper ul li {
+      display: inline-block; }
+    .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn {
+      padding: 5px;
+      font-size: 9px;
+      float: left;
+      margin-right: 5px;
+      background-color: #3d3d3d;
+      color: #111111;
+      font-weight: bold;
+      border-radius: 3px; }
+      .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
+        background-color: #363636; }
+    .page-workshop-individual .top-content-wrapper .workshop-actions li {
+      display: block;
       float: left; }
-      .page-workshop-individual .top-content-wrapper .workshop-aside li:not(:last-child) a {
-        border-right-color: transparent; }
-      .page-workshop-individual .top-content-wrapper .workshop-aside li .btn {
-        padding: 8px 20px; }
-      .page-workshop-individual .top-content-wrapper .workshop-aside li.active a.btn.btn-light-grey {
-        background-color: #fff !important;
-        border-bottom-color: #fff; }
-.page-workshop-individual .workshop-content h4 {
-  font-weight: normal;
-  color: #222; }
-.page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
-  border: 1px solid #222;
-  padding: 5px 10px; }
-  .page-workshop-individual .workshop-content .lesson .recommended, .page-workshop-individual .workshop-content .fun-fact .recommended, .page-workshop-individual .workshop-content .other-lesson .recommended {
-    margin-top: 15px;
-    border-top: 1px solid #222;
-    padding-top: 15px; }
-    .page-workshop-individual .workshop-content .lesson .recommended li, .page-workshop-individual .workshop-content .fun-fact .recommended li, .page-workshop-individual .workshop-content .other-lesson .recommended li {
-      margin: 5px 0 5px 35px; }
-      .page-workshop-individual .workshop-content .lesson .recommended li i, .page-workshop-individual .workshop-content .fun-fact .recommended li i, .page-workshop-individual .workshop-content .other-lesson .recommended li i {
-        color: #BEBEBE;
-        width: 24px;
-        font-size: 12px; }
-.page-workshop-individual .workshop-content .image-container {
-  width: 220px;
-  height: 180px;
-  overflow: hidden; }
-  .page-workshop-individual .workshop-content .image-container img {
-    max-width: 100%;
-    height: auto; }
-.page-workshop-individual .workshop-instructor .profile-container {
-  width: 100%;
-  position: relative;
-  top: -50px; }
-  .page-workshop-individual .workshop-instructor .profile-container .profile-card {
-    background-color: #BEBEBE; }
-  .page-workshop-individual .workshop-instructor .profile-container .left {
-    width: 100px; }
-  .page-workshop-individual .workshop-instructor .profile-container .right {
-    width: 180px; }
-  .page-workshop-individual .workshop-instructor .profile-container p {
-    font-size: 10px; }
-  .page-workshop-individual .workshop-instructor .profile-container i.fa-star-o {
-    bottom: 10px; }
-.page-workshop-individual .content-list {
-  padding: 10px 20px;
-  box-shadow: 1px 1px 25px 1px #292929;
-  overflow: hidden;
-  color: #222; }
-  .page-workshop-individual .content-list li {
-    margin: 15px 0; }
-    .page-workshop-individual .content-list li a {
-      color: #169eff;
-      text-decoration: none; }
-.page-workshop-individual .suggested {
-  margin-top: 15px;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; }
-  .page-workshop-individual .suggested .image-container {
-    width: 160px;
-    height: 160px;
+      .page-workshop-individual .top-content-wrapper .workshop-actions li .btn {
+        border-right-width: 0; }
+      .page-workshop-individual .top-content-wrapper .workshop-actions li:last-of-type .btn {
+        border-right-width: 1px; }
+    .page-workshop-individual .top-content-wrapper .workshop-aside {
+      overflow: hidden;
+      margin-bottom: -1px; }
+      .page-workshop-individual .top-content-wrapper .workshop-aside li {
+        float: left; }
+        .page-workshop-individual .top-content-wrapper .workshop-aside li:not(:last-child) a {
+          border-right-color: transparent; }
+        .page-workshop-individual .top-content-wrapper .workshop-aside li .btn {
+          padding: 8px 20px; }
+        .page-workshop-individual .top-content-wrapper .workshop-aside li.active a.btn.btn-light-grey {
+          background-color: #fff !important;
+          border-bottom-color: #fff; }
+  .page-workshop-individual .workshop-content h4 {
+    font-weight: normal;
+    color: #222; }
+  .page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
+    background-color: white;
+    padding: 10px;
+    padding: 5px 10px; }
+    .page-workshop-individual .workshop-content .lesson .recommended, .page-workshop-individual .workshop-content .fun-fact .recommended, .page-workshop-individual .workshop-content .other-lesson .recommended {
+      margin-top: 15px;
+      border-top: 1px solid #222;
+      padding-top: 15px; }
+      .page-workshop-individual .workshop-content .lesson .recommended li, .page-workshop-individual .workshop-content .fun-fact .recommended li, .page-workshop-individual .workshop-content .other-lesson .recommended li {
+        margin: 5px 0 5px 35px; }
+        .page-workshop-individual .workshop-content .lesson .recommended li i, .page-workshop-individual .workshop-content .fun-fact .recommended li i, .page-workshop-individual .workshop-content .other-lesson .recommended li i {
+          color: #BEBEBE;
+          width: 24px;
+          font-size: 12px; }
+  .page-workshop-individual .workshop-content .image-container {
+    width: 220px;
+    height: 180px;
     overflow: hidden; }
-    .page-workshop-individual .suggested .image-container img {
+    .page-workshop-individual .workshop-content .image-container img {
       max-width: 100%;
       height: auto; }
-  .page-workshop-individual .suggested h4 {
-    font-weight: normal; }
-  .page-workshop-individual .suggested li {
-    padding-right: 10px; }
+  .page-workshop-individual .workshop-instructor .profile-container {
+    width: 100%;
+    position: relative;
+    top: -50px; }
+    .page-workshop-individual .workshop-instructor .profile-container .profile-card {
+      background-color: #BEBEBE; }
+    .page-workshop-individual .workshop-instructor .profile-container .left {
+      width: 100px; }
+    .page-workshop-individual .workshop-instructor .profile-container .right {
+      width: 180px; }
+    .page-workshop-individual .workshop-instructor .profile-container p {
+      font-size: 10px; }
+    .page-workshop-individual .workshop-instructor .profile-container i.fa-star-o {
+      bottom: 10px; }
+  .page-workshop-individual .content-list {
+    padding: 10px 20px;
+    box-shadow: 1px 1px 25px 1px #292929;
+    overflow: hidden;
+    color: #222;
+    background-color: white; }
+    .page-workshop-individual .content-list li {
+      margin: 15px 0; }
+      .page-workshop-individual .content-list li a {
+        color: #169eff;
+        text-decoration: none; }
+  .page-workshop-individual .suggested {
+    margin-top: 15px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .page-workshop-individual .suggested .image-container {
+      width: 160px;
+      height: 160px;
+      overflow: hidden; }
+      .page-workshop-individual .suggested .image-container img {
+        max-width: 100%;
+        height: auto; }
+    .page-workshop-individual .suggested h4 {
+      font-weight: normal; }
+    .page-workshop-individual .suggested li {
+      padding: 8px; }
 
 .page-portfolio .portfolio-controls {
   background-color: #e5ffff;
@@ -3100,7 +3134,7 @@ header.showcase-project .next {
 
 .inbox-container,
 .notification-container {
-  display: block; }
+  display: none; }
 
 .page-search-result {
   background-color: #F2F2F2; }

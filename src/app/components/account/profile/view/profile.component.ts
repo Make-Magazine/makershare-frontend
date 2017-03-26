@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
@@ -8,7 +8,8 @@ import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
+import { CropperSettings } from 'ng2-img-cropper';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,7 +17,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 export class ProfileComponent implements OnInit {
  
   userId = localStorage.getItem('user_id');
-
+  // cover declarations
+  cropperSettings: CropperSettings;
+  coverPhotoSrc: string;
+  coverPhotoAttached: boolean = false;
+  CoverImageData:any;
+  public rendrer:Renderer;
+  //end of cover declarations
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
   allIntersets: any[] = [];
@@ -32,7 +39,8 @@ export class ProfileComponent implements OnInit {
     started_making: '',
     field_social_accounts: {},
     address: {},
-    field_add_your_makerspace_s_: [{}]
+    field_add_your_makerspace_s_: [{}],
+    pass:"MOcs56",
   };
   profile: UserProfile = {
     name: 'testar',
@@ -40,19 +48,38 @@ export class ProfileComponent implements OnInit {
     bio: '',
     started_making: '',
     field_social_accounts: {},
-    address: {}
+    address: {},
+    pass:"MOcs56",
   };
   constructor(
    private fb: FormBuilder,
     private profileService: ProfileService,
     private router: Router,
    private userService: UserService,
-  ) { }
+  ) { 
+    this.cropperSettings = new CropperSettings();
+    this.cropperSettings.width = 100;
+    this.cropperSettings.height = 100;
+    this.cropperSettings.croppedWidth =100;
+    this.cropperSettings.croppedHeight = 100;
+    this.cropperSettings.canvasWidth = 400;
+    this.cropperSettings.canvasHeight = 300;
+    this.cropperSettings.minWidth = 100;
+    this.cropperSettings.minHeight = 100;
+
+    this.cropperSettings.rounded = false;
+
+    this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+    this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
+    this.cropperSettings.noFileInput = true;
+    this.CoverImageData = {};
+  }
 
   ngOnInit() {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
       this.profile = res;
+      this.profile.pass = "MOcs56";
       console.log(res);
     }, err => {
 
@@ -142,5 +169,33 @@ export class ProfileComponent implements OnInit {
 
   editprofile() {
     this.router.navigate(['profile/editprofile',]);
+  }
+  // cover section
+
+  loadImg(event: Event){
+    $("#upload").click();
+  }
+
+  fileChangeListener(file:File,cropper) {
+    if(!file) return;
+    this.CoverImageData = {};
+    var image:any = new Image();
+    var myReader:FileReader = new FileReader();
+    myReader.onloadend = function (loadEvent:any) {
+        image.src = loadEvent.target.result;
+        cropper.setImage(image);
+    };
+
+    myReader.readAsDataURL(file);
+}
+
+    private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
+      this.fileChangeListener(acceptedFile.file,cropper)
+    }
+
+  saveCropped(){
+    if(!this.CoverImageData.image) return;
+    this.profile.profile_cover = this.CoverImageData.image;
+    this.saveProfile();
   }
 }
