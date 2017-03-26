@@ -79,6 +79,7 @@ export class TeamComponent implements OnInit {
     const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
     this.viewService.getView('maker_profile_card_data',[['uid',uid]]).subscribe(data => {
       this.SelectedUser[index] = data[0];
+      console.log(this.SelectedUser)
       control['controls'].uid.setValue(uid);
       control['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
       control['controls'].field_sort_order.setValue(index+1);
