@@ -201,7 +201,6 @@ export class ProjectFormComponent implements OnInit {
         // field team
         for(let i=0; i< data.field_maker_memberships.und.length;i++){
           let member = x[index];
-          console.log(x);
           if(member['field_team_member'].und){
             subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
             this.project.field_maker_memberships.und.push(member as field_collection_item_member);
