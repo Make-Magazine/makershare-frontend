@@ -10,6 +10,7 @@ import { LikeComponent } from './like/like.component';
 import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [
     CommentComponent,
