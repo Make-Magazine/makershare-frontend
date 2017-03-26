@@ -14,7 +14,7 @@ export class ProfileService {
   }
 
   updateProfile(id,Profile): Observable<any> {
-    return this.mainService.post(globals.endpoint + '/maker_profile_api/'+id, Profile).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.put(globals.endpoint + '/maker_profile_api/'+id, Profile).map(response => response.json()).catch(err => Observable.throw(err));
   }
 
   getUser(userId): Observable<any> {
