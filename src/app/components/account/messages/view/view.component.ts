@@ -139,7 +139,6 @@ export class ViewComponent implements OnInit {
     this.messageForm.reset();
   }
   deleteThread() {
-    //console.log(this.msg.messages)
     for (let mesg of this.msg.messages) {
       let i = 0
       this.pm.deleteMessage(mesg.mid).subscribe(data => {
