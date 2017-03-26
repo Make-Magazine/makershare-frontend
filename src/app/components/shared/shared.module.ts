@@ -11,13 +11,17 @@ import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ImageCropperComponent } from 'ng2-img-cropper';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
+
   ],
   declarations: [
     CommentComponent,
