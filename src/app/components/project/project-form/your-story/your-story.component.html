@@ -7,7 +7,7 @@
         {{ formErrors.title }}
       </div>
     </div>
-    <div class="form-group teaser">
+    <div class="form-group">
       <label for="teaser">Teaser</label>
       <textarea class="form-control" rows="5" id="teaser" formControlName='field_teaser'></textarea>
     </div>
@@ -25,17 +25,20 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="form-group projectCategory form-inline">
+    <div class="form-group projectCategory d-flex flex-row">
       <label for="projectCategory">Categories</label>
-      <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
-        <option disabled selected value="_none_"> -- select an option -- </option>
-        <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
-      </select>
-      <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
-        <option disabled selected value> -- select an option -- </option>
-        <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
-      </select>
-      <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-blue add-cate">add</div>
+      <div class="categories-group d-flex flex-column">
+        <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+          <option disabled selected value="_none_"> -- select an option -- </option>
+          <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
+        </select>
+        <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
+          <option disabled selected value> -- select an option -- </option>
+          <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
+        </select>
+      </div>
+      
+      <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate">add</div>
       <div *ngIf="project.field_categories.und">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
          <div *ngFor="let cate of all_categories">

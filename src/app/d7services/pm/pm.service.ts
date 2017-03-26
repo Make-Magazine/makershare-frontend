@@ -47,8 +47,8 @@ export class PmService {
     return this.mainService.get(globals.endpoint + '/privatemsgblock/').map(res => res.json()).catch(err => Observable.throw(err));
   }
 
-  updateSettings(data: any): Observable<any> {
-    return this.mainService.put(globals.endpoint + '/privatemsg/', data).map(res => res.json()).catch(err => Observable.throw(err));
+  updateSettings(mid:number,data: any): Observable<any> {
+    return this.mainService.put(globals.endpoint + '/privatemsg/' + mid, data).map(res => res.json()).catch(err => Observable.throw(err));
   }
   postView(viewName: string, uid: number){
     return this.mainService.post(globals.endpoint + '/' + viewName, {"uid" : uid}).map(res => res.json());

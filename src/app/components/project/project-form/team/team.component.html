@@ -11,34 +11,13 @@
 
 <div class="region region-content col-sm-10" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships" dnd-sortable-container [sortableData]="TeamForm.controls.field_maker_memberships.controls" dnd-draggable [dropZones]="['TeamZone']">
-    <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="panel add-collaborate">
+    <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div *ngIf="i==0">
-        <div class="panel-body inputs-container flex-column flex-md-row row" [formGroupName]="i">
+        <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <h5>Name</h5>
-              <div class=" profile-container"><!-- start profile card-->
-                <div class="profile-card row">
-                  <div class="left col-sm-4">
-                    <div class="profile-pic">
-                      <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" >
-                      <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" >
-                    </div>
-                    <a href="#" class="btn btn-blue">Message</a>
-                  </div>
-                  <div class="right col-sm-8">
-                    <h4 class="profile-name"><a href="#">{{SelectedUser[i].first_name}} {{SelectedUser[i].last_name}}</a></h4>
-                    <div class="trophies">
-                      <i class="fa fa-lg fa-child"></i>
-                      <i class="fa fa-lg fa-certificate"></i>
-                      <i class="fa fa-lg fa-trophy"></i>
-                    </div>
-                    <p class="count">6 projects</p>
-                    <p class="user-city">San Francisco, CA</p>
-                    <p class="profile-tag">Electronics, Arduino, Fabrication, Design</p>
-                  </div>
-                </div><!-- End profile card -->
-              </div><!-- End Profile-container -->
+              <app-user-card [uid]="SelectedUser[i].uid"></app-user-card>
             </div>
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
@@ -57,32 +36,11 @@
         <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
       <div *ngIf="i!==0" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_maker_memberships')" dnd-draggable [dropZones]="['TeamZone']">
-        <div class="panel-body" [formGroupName]="i">
+        <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <h5>Name</h5>
-              <div class=" profile-container"><!-- start profile card-->
-                <div class="profile-card">
-                  <div class="left col-sm-4">
-                    <div class="profile-pic">
-                      <img *ngIf="SelectedUser[i].photo" src="{{SelectedUser[i].photo}}" alt="" class="img-responsive">
-                      <img *ngIf="!SelectedUser[i].photo" src="http://placehold.it/100x100" alt="" class="img-responsive">
-                    </div>
-                    <a href="#" class="btn btn-blue">Message</a>
-                  </div>
-                  <div class="right col-sm-8">
-                    <h4 class="profile-name"><a href="#">{{SelectedUser[i].first_name}} {{SelectedUser[i].last_name}}</a></h4>
-                    <div class="trophies">
-                      <i class="fa fa-lg fa-child"></i>
-                      <i class="fa fa-lg fa-certificate"></i>
-                      <i class="fa fa-lg fa-trophy"></i>
-                    </div>
-                    <p class="count">6 projects</p>
-                    <p class="user-city">San Francisco, CA</p>
-                    <p class="profile-tag">Electronics, Arduino, Fabrication, Design</p>
-                  </div>
-                </div><!-- End profile card -->
-              </div><!-- End Profile-container -->
+              <app-user-card [uid]="SelectedUser[i].uid"></app-user-card>
             </div>
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
