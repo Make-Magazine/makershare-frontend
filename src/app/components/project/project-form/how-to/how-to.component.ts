@@ -11,6 +11,7 @@ import { field_collection_item_tool,field_collection_item_part,field_collection_
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project-form-how-to',
@@ -73,7 +74,8 @@ export class HowToComponent implements OnInit {
     private fb: FormBuilder,
     private viewService:ViewService,
     private taxonomyService:TaxonomyService,
-    private nodeService:NodeService
+    private nodeService:NodeService,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit() {
@@ -141,7 +143,7 @@ export class HowToComponent implements OnInit {
           field_sort_order:{und:[{value:values.field_sort_order}]},
           field_tool_url:{und:[{url:values.field_tool_url}]},
           field_description:{und:[{value:values.field_description}]},
-          field_material_quantity:{und:[{value:values.field_material_quantity}]},
+          field_quantity:{und:[{value:values.field_quantity}]},
         };
         return Tool;
       } 
@@ -150,7 +152,7 @@ export class HowToComponent implements OnInit {
         let Part:field_collection_item_part = {
           field_part_name:{und:[{target_id:values.field_part_name}]},
           field_sort_order:{und:[{value:values.field_sort_order}]},
-          field_material_quantity:{und:[{value:values.field_material_quantity}]},
+          field_quantity:{und:[{value:values.field_quantity}]},
         };
         return Part;
       } 
@@ -270,6 +272,10 @@ export class HowToComponent implements OnInit {
     let newrow = control.at(NewIndex);
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
+    let currentr = this.project['ControlName'].und[CurrentIndex];
+    let newr = this.project['ControlName'].und[NewIndex];
+    this.project['ControlName'].und[CurrentIndex] = currentr;
+    this.project['ControlName'].und[NewIndex] = newr;
     this.SortElements(ControlName);
   }
 
@@ -436,6 +442,11 @@ export class HowToComponent implements OnInit {
       },    
     },
   };
+
+  OpenAddModal(Template,Control){
+    this.CurrentModal = Control;
+    this.modalService.open(Template);
+  }
 
   /**
    * Handle the click on create new tool , material or part from the modal

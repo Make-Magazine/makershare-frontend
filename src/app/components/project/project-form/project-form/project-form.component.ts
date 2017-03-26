@@ -63,7 +63,6 @@ export class ProjectFormComponent implements OnInit {
     });
     if(nid){
       this.nodeService.getNode(nid).subscribe((project:ProjectView) => {
-        console.log(this.project);
         this.ConvertProjectToCreateForm(project);
       });
     }else{
@@ -202,10 +201,12 @@ export class ProjectFormComponent implements OnInit {
         // field team
         for(let i=0; i< data.field_maker_memberships.und.length;i++){
           let member = x[index];
-          subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
-          this.project.field_maker_memberships.und.push(member as field_collection_item_member);
+          if(member['field_team_member'].und){
+            subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
+            this.project.field_maker_memberships.und.push(member as field_collection_item_member);
+          }
           index++;
-        }    
+        }
       },
       (err) => {
         console.log('Error: %s', err);
@@ -244,8 +245,10 @@ export class ProjectFormComponent implements OnInit {
             // field team
             for(let i = 0; i < data.field_maker_memberships.und.length ; i++){
               let member = subx[subindex];
-              let id = this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id;
-              this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id = member['name']+' ('+id+')';
+              if(member){
+                let id = this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id;
+                this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id = member['name']+' ('+id+')';
+              }
               subindex++;
             }
           },
@@ -254,7 +257,7 @@ export class ProjectFormComponent implements OnInit {
           },
           () => {
             if(this.project.field_cover_photo.und){
-              this.fileService.getFileById(this.project.field_cover_photo.und[0].fid).subscribe((file:FileEntity) =>{
+              this.fileService.getFileById(this.project.field_cover_photo.und[0].fid as number).subscribe((file:FileEntity) =>{
                 file.file = "data:"+file.filemime+";base64,"+file.file;
                 this.FormPrintableValues.cover_image = file;
                 this.ProjectLoaded = true;
@@ -294,7 +297,6 @@ export class ProjectFormComponent implements OnInit {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
-    console.log(this.project);
     if(this.project.GetField("field_visibility2").und[0] == 370){
       this.project.CheckIfReadyToPublic();
     }
@@ -379,9 +381,33 @@ export class ProjectFormComponent implements OnInit {
         console.log('Error: %s', err);
       },
       () => {
-        this.SaveProject();
+        this.ResetFieldCollectionEmptyRows();
       }
     );
+  }
+
+  ResetFieldCollectionEmptyRows(){
+    for(let i = this.project.field_maker_memberships.und.length-1;i < 7; i++){
+      let member = new field_collection_item_member();
+      this.project.field_maker_memberships.und.push(member);
+    }
+    for(let i = this.project.field_tools.und.length-1;i < 20; i++){
+      let tool = new field_collection_item_tool();
+      this.project.field_tools.und.push(tool);
+    }
+    for(let i = this.project.field_parts.und.length-1;i < 20; i++){
+      let part = new field_collection_item_part();
+      this.project.field_parts.und.push(part);
+    }
+    for(let i = this.project.field_materials.und.length-1;i < 20; i++){
+      let material = new field_collection_item_material();
+      this.project.field_materials.und.push(material);
+    }
+    for(let i = this.project.field_resources.und.length-1;i < 20; i++){
+      let resource = new field_collection_item_resource();
+      this.project.field_resources.und.push(resource);
+    }
+    this.SaveProject();
   }
 
 }
