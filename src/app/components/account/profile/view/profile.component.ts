@@ -8,8 +8,8 @@ import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Ng2FileDropModule, Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile, Ng2FileDropRejections }  from 'ng2-file-drop';
-import { CropperSettings, ImageCropperComponent as Ng2ImageCropperComponent, ImageCropper } from 'ng2-img-cropper';
+import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
+import { CropperSettings } from 'ng2-img-cropper';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,8 +21,7 @@ export class ProfileComponent implements OnInit {
   cropperSettings: CropperSettings;
   coverPhotoSrc: string;
   coverPhotoAttached: boolean = false;
-  data:any;
-  @ViewChild('cropper', ImageCropper) cropper:ImageCropper;
+  CoverImageData:any;
   public rendrer:Renderer;
   //end of cover declarations
   allMarkersNames: any[] = [];
@@ -72,8 +71,8 @@ export class ProfileComponent implements OnInit {
 
     this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
-    this.cropperSettings.noFileInput = false;
-    this.data = {image: this.coverPhotoSrc};
+    this.cropperSettings.noFileInput = true;
+    this.CoverImageData = {};
   }
 
   ngOnInit() {
@@ -177,50 +176,24 @@ export class ProfileComponent implements OnInit {
     $("#upload").click();
   }
 
-  fileChangeListener(event: any) {
-    let image:any = new Image();
-    let file = (<any>event.target).files[0];
-    if (!file) {
-        return;
-    }
-    let reader = new FileReader();
-    this.cropper = new ImageCropper(this.cropperSettings);
-    let that = this;
-    reader.onload = () => {
-        image.src = reader.result;
-        if(this.cropperSettings.noFileInput){
-          that.cropper.setImage(image);
-        }
-        that.coverPhotoSrc = image.src;
-        that.coverPhotoAttached = true;
+  fileChangeListener(file:File,cropper) {
+    this.CoverImageData = {};
+    var image:any = new Image();
+    var myReader:FileReader = new FileReader();
+    myReader.onloadend = function (loadEvent:any) {
+        image.src = loadEvent.target.result;
+        cropper.setImage(image);
     };
-    reader.readAsDataURL(file);
-  }
 
-    private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
+    myReader.readAsDataURL(file);
+}
 
-      // Load the image in
-      let fileReader = new FileReader();
-      fileReader.onload = () => {
+    private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
+      this.fileChangeListener(acceptedFile.file,cropper)
+    }
 
-          // Set and show the image
-          this.coverPhotoSrc = fileReader.result;
-          this.coverPhotoAttached = true;
-      };
-
-      // Read in the file
-      fileReader.readAsDataURL(acceptedFile.file);
-
-  }
-
-  // Takes the dropped image and displays it in the image tag
-  private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
-
-    // Respond to the reason for rejection
-  }
-  saveCropped(event: Event){
-    event.preventDefault();
-    this.profile.profile_cover = this.data.image;
+  saveCropped(){
+    this.profile.profile_cover = this.CoverImageData.image;
     this.saveProfile();
   }
 }

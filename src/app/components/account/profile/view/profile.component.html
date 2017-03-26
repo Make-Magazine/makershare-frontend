@@ -266,20 +266,18 @@
 											</span>
 										</div>
 										<div class="modal-body">
-											<div ng2FileDrop class="upload-tab pull-left"
-											(ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
-                			(ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
-											>
-												<img *ngIf="!coverPhotoAttached"  src="./assets/images/Drag_Drop.png" alt="">
-												<img-cropper #cropper *ngIf="coverPhotoAttached" [image]="data" [settings]="cropperSettings"></img-cropper><br>
+											<div ng2FileDrop class="upload-tab pull-left"	(ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+												<img *ngIf="!CoverImageData.original" src="./assets/images/Drag_Drop.png" alt="">
+												<img-cropper [hidden]="!CoverImageData.original" #cropper [image]="CoverImageData" [settings]="cropperSettings"></img-cropper><br>
 
 												<!--<img *ngIf="coverPhotoAttached" src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">-->
-
-												<p>Drag a photo here</p>
-												<p>or</p>
+												<div *ngIf="!CoverImageData.original">
+													<p>Drag a photo here</p>
+													<p>or</p>
+												</div>
 												<a class="btn btn-white " (click)="loadImg($event)">
 													Select a photo from your computer
-													<input type="file"  (change)="fileChangeListener($event)" id="upload" style="display:none;" />
+													<input type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 												</a>
 											</div>
 											<div class="your-photo-tab">
@@ -323,7 +321,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped($event)">Save</button>
+											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped()">Save</button>
 										</div>
 									</div>
 								</div>

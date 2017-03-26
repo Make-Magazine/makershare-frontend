@@ -10,7 +10,7 @@ import { LikeComponent } from './like/like.component';
 import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
-import { ImageCropperComponent } from 'ng2-img-cropper';
+// import { ImageCropperComponent } from 'ng2-img-cropper';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -33,7 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    ImageCropperComponent
+    // ImageCropperComponent
   ],
   exports: [
     CommentComponent,
@@ -43,7 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    ImageCropperComponent
+    // ImageCropperComponent
   ]
 })
 export class SharedModule { }
@@ -54,4 +54,4 @@ export {LikeComponent};
 export {ForkComponent};
 export {UserCardComponent};
 export {ProjectCardComponent};
-export {ImageCropperComponent};
+// export {ImageCropperComponent};

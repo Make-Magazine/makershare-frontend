@@ -12,7 +12,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ImageCropperModule } from 'ng2-img-cropper';
+import { Ng2FileDropModule }  from 'ng2-file-drop';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SelectModule,
     TagInputModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    ImageCropperModule,
+    Ng2FileDropModule
   ],
   declarations: [
     AllProfileComponent,
