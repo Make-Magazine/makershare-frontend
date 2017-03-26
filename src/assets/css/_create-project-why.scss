@@ -87,7 +87,22 @@
 	
 	.your-story {
 		.projectName {width: 60%;}
-		.projectCategory {width: 40%;}
+		.projectCategory {
+				width: 100%;
+				align-items:flex-start;
+				label,
+				.add-cate {
+					margin-top: 5px;
+				}
+				.categories-group {
+					margin-left: 15px;
+					#projectCategoryParent, 
+					#projectCategoryChildren {
+						width: 100% !important;
+						margin-bottom: 5px;
+					}
+				}
+		}
 		.cover {
 			a {
 				margin-top: 5px;
@@ -127,6 +142,7 @@
 		}
 		.sort{
 			width: 40px;
+			margin: 0 10px;
 			// display: inline-block;
 			// vertical-align: top;
 		}

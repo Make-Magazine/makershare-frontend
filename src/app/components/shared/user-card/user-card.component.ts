@@ -69,7 +69,8 @@ export class UserCardComponent implements OnInit {
       });
     }
   }
-  resetForm() {
+  resetForm(e) {
+    e.preventDefault();
     this.messageForm.reset();
   }
 

@@ -11,9 +11,9 @@
 
 <div class="region region-content col-sm-10" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships" dnd-sortable-container [sortableData]="TeamForm.controls.field_maker_memberships.controls" dnd-draggable [dropZones]="['TeamZone']">
-    <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="panel add-collaborate">
+    <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div *ngIf="i==0">
-        <div class="panel-body inputs-container flex-column flex-md-row row" [formGroupName]="i">
+        <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <h5>Name</h5>
@@ -57,7 +57,7 @@
         <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
       <div *ngIf="i!==0" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_maker_memberships')" dnd-draggable [dropZones]="['TeamZone']">
-        <div class="panel-body" [formGroupName]="i">
+        <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <h5>Name</h5>
