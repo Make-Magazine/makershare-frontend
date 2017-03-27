@@ -76,6 +76,9 @@ export class ProfileComponent implements OnInit {
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
     this.cropperSettings.noFileInput = true;
     this.CoverImageData = {};
+
+   
+
   }
 
   ngOnInit() {
@@ -205,7 +208,7 @@ export class ProfileComponent implements OnInit {
   }
 
  limitText(limitField, limitCount, limitNum) {
-   this.countdown2 = '';
+
    console.log('limit')
       console.log (limitField)
       // console.log ( limitCount)
@@ -221,4 +224,6 @@ export class ProfileComponent implements OnInit {
       
 	}
 }
+
+
 }

@@ -43,7 +43,7 @@
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-									<a href="" class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<a href="" class="btn btn-light-grey edit" data-toggle="modal" data-target="#edit-cover-modal"><i class="fa fa-lg fa-pencil"></i></a>
 									<img src="{{profile.user_photo}}" alt="" class="">
 									<div class="profile-type"><span>Maker</span></div>
 								</div>
@@ -55,15 +55,15 @@
 							</form>-->
            
 							<!-- End profile-group -->
-							<div class="profile-info">
+							<div class="profile-info" >
+								<div data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i>
 								<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 								<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
 								<ul *ngIf="profile.address_publish" class="list-unstyled location">
 									<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
 								</ul>
-
-						
-								<hr>
+								</div>
+               	<hr>
 								<ul class="list-unstyled post">
 									<!--<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>-->
 									<li>"{{profile.describe_yourself}}"</li>
@@ -345,7 +345,7 @@
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
+											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}"  name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
 												(keyup)="limitText(profile.bio,countdown,550)" maxlength="550">
 											</ckeditor>
 												<font size="1">(Maximum characters: 550)<br> You have
