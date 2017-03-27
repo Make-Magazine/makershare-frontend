@@ -8,12 +8,11 @@
 
            
 
-          <div  class="icons d-flex flex-row justify-content-start">
-             <div *ngFor="let badge of badges;">
-                <img src="{{badge?.goal_image}}" alt="">
-                              
+          <div  class="icons-side-user">
+             <div class="user-icon" *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="">                
             </div>
-            
+          
           </div>
           <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
         </div>
@@ -23,7 +22,10 @@
           <p class="user-nickname"><a href="#">aka Goodmen</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
           <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
-          <p class="count align-self-end">6 projects</p>
+           <div >
+                 <p *ngIf="projectCount" class="count align-self-end">{{projectCount.project_count}} projects</p>
+
+            </div>
         </div>
       </div>
     </div>
