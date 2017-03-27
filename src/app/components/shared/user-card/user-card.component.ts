@@ -17,6 +17,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class UserCardComponent implements OnInit {
   closeResult: string;
   card = {};
+  badges=[];
   active = true;
   userId;
   user;
@@ -42,6 +43,7 @@ export class UserCardComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.getcard();
+    this.getBadges();
     this.buildForm();
   }
 
@@ -52,6 +54,15 @@ export class UserCardComponent implements OnInit {
       this.card = data[0];
       this.isCurrentUser();
       //console.log(this.card)
+    }, err => {
+      // notification error  in service 
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+  }
+  getBadges(){
+       // service to get profile card Badges
+    this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
+      this.badges = data;
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
