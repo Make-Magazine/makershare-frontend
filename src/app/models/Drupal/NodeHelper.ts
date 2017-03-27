@@ -7,6 +7,10 @@ export class NodeHelper{
     return newcontent;
   }
 
+  public static AddFileTypeToBase64(filecontent:string,filemime:string):string{
+    return "data:"+filemime+";base64,"+filecontent;
+  }
+
   /**
    * a very usefull method to check the variable if its empty or not
    * this function works with all type of variables "string, number, array and object"

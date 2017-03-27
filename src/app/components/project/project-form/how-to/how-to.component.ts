@@ -126,12 +126,27 @@ export class HowToComponent implements OnInit {
     };
     let Row = this.GetRowWithValues(allvalues, arrayelementname);
     this.project[ControlName].und.push(Row);
-    control.valueChanges.subscribe(values => {
-      if(arrayelementname === "tool" && !control.controls.field_tool_url.valid){
-        values.field_tool_url = '';
-      }
-      this.project[ControlName].und[values.field_sort_order - 1] = this.GetRowWithValues(values, arrayelementname);
-    });
+    this.ControlValueChangesSubscribe(control,0,ControlName);
+  }
+
+  ControlValueChangesSubscribe(control,index,ControlName?){
+    if(ControlName && ControlName !== 'field_resources'){
+      let temp = ControlName.substring(0, ControlName.length-1);
+      let arrayelementname = temp.split("_")[1];
+      control.valueChanges.subscribe(values => {
+        if(arrayelementname === "tool" && (!control.controls.field_tool_url || !control.controls.field_tool_url.valid)){
+          values.field_tool_url = '';
+        }
+        this.project[ControlName].und[values.field_sort_order - 1] = this.GetRowWithValues(values, arrayelementname);
+      });
+    }else{
+      control.valueChanges.subscribe(values => {
+        if(control.valid){
+          this.project.field_resources.und[index].field_label.und = values.field_label;
+          this.project.field_resources.und[index].field_repository_link.und[0].url = values.field_repository_link;
+        }
+      });
+    }
   }
 
   GetRowWithValues(values, arrayelementname):any{
@@ -158,12 +173,12 @@ export class HowToComponent implements OnInit {
       } 
       case 'material':
       {
-        let Part:field_collection_item_material = {
+        let Material:field_collection_item_material = {
           field_material_name:{und:[{target_id:values.field_material_name}]},
           field_sort_order:{und:[{value:values.field_sort_order}]},
           field_material_quantity:{und:[{value:values.field_material_quantity}]},
         };
-        return Part;
+        return Material;
       } 
     }
      
@@ -206,6 +221,9 @@ export class HowToComponent implements OnInit {
     let index = control.length + 1;
     const addrCtrl = this.InitRow(ControlName,index,data);
     control.push(addrCtrl); 
+    if(data){
+      this.ControlValueChangesSubscribe(addrCtrl,index-1,ControlName);
+    }
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
 
@@ -272,10 +290,10 @@ export class HowToComponent implements OnInit {
     let newrow = control.at(NewIndex);
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
-    let currentr = this.project['ControlName'].und[CurrentIndex];
-    let newr = this.project['ControlName'].und[NewIndex];
-    this.project['ControlName'].und[CurrentIndex] = currentr;
-    this.project['ControlName'].und[NewIndex] = newr;
+    let currentr = this.project[ControlName].und[CurrentIndex];
+    let newr = this.project[ControlName].und[NewIndex];
+    this.project[ControlName].und[CurrentIndex] = newr;
+    this.project[ControlName].und[NewIndex] = currentr;
     this.SortElements(ControlName);
   }
 
@@ -334,16 +352,20 @@ export class HowToComponent implements OnInit {
    */
   SortElements(ControlName){
     const control = <FormArray>this.HowToForm.controls[ControlName];
-    let TempToolsMaterialsParts = [];
+    var TempToolsMaterialsParts = [];
+    TempToolsMaterialsParts[ControlName] = [];
     let ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
     control.controls.forEach((element, index) => {
       if(this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()]){
         this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
       }
-      if(element['controls']['field_sort_order']){
+      if(this.project[ControlName].und[index].field_sort_order){
+        this.project[ControlName].und[index].field_sort_order.und[0].value = index + 1; 
         element['controls']['field_sort_order'].setValue(index + 1);
       }
+      TempToolsMaterialsParts[ControlName].push(this.project[ControlName].und[index]);
     });
+    this.project[ControlName].und = TempToolsMaterialsParts[ControlName];
   }
 
   FileUpdated(event, index){
@@ -370,12 +392,7 @@ export class HowToComponent implements OnInit {
           field_resource_file:{und:[{filename:file.filename,fid:0}]}
         };
         this.project.field_resources.und.push(field_resource);
-        control.valueChanges.subscribe(values => {
-          if(control.valid){
-            this.project.field_resources.und[index].field_label.und = values.field_label;
-            this.project.field_resources.und[index].field_repository_link.und[0].url = values.field_repository_link;
-          }
-        });
+        this.ControlValueChangesSubscribe(control,index);
       }
     }
     this.emitter.emit(this.resources_files);
