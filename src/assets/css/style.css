@@ -3187,10 +3187,6 @@ header.showcase-project .next {
     .conversation-container .reply-area .send-actions li {
       display: inline-block; }
 
-.inbox-container,
-.notification-container {
-  display: none; }
-
 .page-search-result {
   background-color: #F2F2F2; }
   .page-search-result .top-content-wrapper {
