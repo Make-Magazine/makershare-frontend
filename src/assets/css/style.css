@@ -55,11 +55,20 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
-.displace, .btn-grey, .btn-main, .btn-main-2, .btn-dark-grey, .btn-soft-grey {
+.displace, .btn-dark-grey, .btn-soft-grey, .button-container-main-1 .btn,
+.button-container-main-2 .btn,
+.button-container-sec-2 .btn,
+.button-container-sec-3 .btn {
   position: relative;
   left: -4px;
   top: -4px; }
-  .displace:active, .btn-grey:active, .btn-main:active, .btn-main-2:active, .btn-dark-grey:active, .btn-soft-grey:active, .displace:hover, .btn-grey:hover, .btn-main:hover, .btn-main-2:hover, .btn-dark-grey:hover, .btn-soft-grey:hover {
+  .displace:active, .btn-dark-grey:active, .btn-soft-grey:active, .button-container-main-1 .btn:active,
+  .button-container-main-2 .btn:active,
+  .button-container-sec-2 .btn:active,
+  .button-container-sec-3 .btn:active, .displace:hover, .btn-dark-grey:hover, .btn-soft-grey:hover, .button-container-main-1 .btn:hover,
+  .button-container-main-2 .btn:hover,
+  .button-container-sec-2 .btn:hover,
+  .button-container-sec-3 .btn:hover {
     left: 0;
     top: 0;
     cursor: pointer; }
@@ -136,9 +145,7 @@ header .main-header .maker-sites li {
   .btn-main:active, .btn-main:hover {
     color: #fff;
     background-color: #d41c2b;
-    border-color: #bd1926;
-    left: 0;
-    top: 0; }
+    border-color: #bd1926; }
 
 .btn-main-2 {
   color: #fff !important;
@@ -151,9 +158,7 @@ header .main-header .maker-sites li {
   .btn-main-2:active, .btn-main-2:hover {
     color: #fff;
     background-color: #474747;
-    border-color: #3f3f3f;
-    left: 0;
-    top: 0; }
+    border-color: #3f3f3f; }
 
 .btn-border {
   color: #BEBEBE;
@@ -2212,6 +2217,11 @@ header.showcase-project .next {
 
 .page-create-project-why {
   color: #222; }
+  .page-create-project-why .ng2-imgcrop {
+    display: block; }
+    .page-create-project-why .ng2-imgcrop canvas {
+      display: block;
+      width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
     font-weight: 700; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
@@ -2282,7 +2292,17 @@ header.showcase-project .next {
   .page-create-project-why .your-story .projectName {
     width: 60%; }
   .page-create-project-why .your-story .projectCategory {
-    width: 40%; }
+    width: 100%;
+    align-items: flex-start; }
+    .page-create-project-why .your-story .projectCategory label,
+    .page-create-project-why .your-story .projectCategory .add-cate {
+      margin-top: 5px; }
+    .page-create-project-why .your-story .projectCategory .categories-group {
+      margin-left: 15px; }
+      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
+      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
+        width: 100% !important;
+        margin-bottom: 5px; }
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
     float: left;
@@ -2309,7 +2329,8 @@ header.showcase-project .next {
   .page-create-project-why .how-to form {
     padding-bottom: 130px; }
   .page-create-project-why .how-to .sort {
-    width: 40px; }
+    width: 40px;
+    margin: 0 10px; }
   .page-create-project-why .how-to .quantity {
     width: 50px; }
   .page-create-project-why .how-to .carets {

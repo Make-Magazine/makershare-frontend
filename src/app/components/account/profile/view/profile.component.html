@@ -265,20 +265,18 @@
 											</span>
 										</div>
 										<div class="modal-body">
-											<div ng2FileDrop class="upload-tab pull-left"
-											(ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
-                			(ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
-											>
-												<img *ngIf="!coverPhotoAttached"  src="./assets/images/Drag_Drop.png" alt="">
-												<img-cropper #cropper *ngIf="coverPhotoAttached" [image]="data" [settings]="cropperSettings"></img-cropper><br>
+											<div ng2FileDrop class="upload-tab pull-left"	(ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+												<img *ngIf="!CoverImageData.original" src="./assets/images/Drag_Drop.png" alt="">
+												<img-cropper [hidden]="!CoverImageData.original" #cropper [image]="CoverImageData" [settings]="cropperSettings"></img-cropper><br>
 
 												<!--<img *ngIf="coverPhotoAttached" src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">-->
-
-												<p>Drag a photo here</p>
-												<p>or</p>
+												<div *ngIf="!CoverImageData.original">
+													<p>Drag a photo here</p>
+													<p>or</p>
+												</div>
 												<a class="btn btn-white " (click)="loadImg($event)">
 													Select a photo from your computer
-													<input type="file"  (change)="fileChangeListener($event)" id="upload" style="display:none;" />
+													<input type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 												</a>
 											</div>
 											<div class="your-photo-tab">
@@ -322,7 +320,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped($event)">Save</button>
+											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped()">Save</button>
 										</div>
 									</div>
 								</div>
@@ -386,10 +384,10 @@
 												<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
 													<div class="maker-group">
 														<label for="makerspace-1">Makerspace name</label>
-														<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"
+														<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"-->
 														 id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">
 														<label for="url-1">URL (optional)</label>
-														<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
+														<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"-->
 														 id="url-1" placeholder="Type or paste">
 													</div>
 												</div>

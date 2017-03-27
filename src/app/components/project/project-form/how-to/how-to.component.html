@@ -13,48 +13,54 @@
     <div class="form-group tools">
       <label>Tools</label>
       <div formArrayName="field_tools" dnd-sortable-container [sortableData]="HowToForm.controls.field_tools.controls" dnd-draggable [dropZones]="['ToolsZone']">
-        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_tools')" dnd-draggable [dropZones]="['ToolsZone']">
-          <div class="panel-heading">
+        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_tools')" dnd-draggable [dropZones]="['ToolsZone']">
+          <div class="card-header">
             <span>Tool {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_tools.controls.length > 0" (click)="RemoveRow(i,'field_tools')"></span>
+            <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_tools.controls.length > 0" (click)="RemoveRow(i,'field_tools')"></span>
           </div>
-          <div class="panel-body" [formGroupName]="i">
-            <div class="form-group col-xs-4">
-              <label>Name</label>
-              <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
-              <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)">
-              <div *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value && searchFailed['tool']">
-                Tool not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'tool'">Create New</a>
+          <div class="card-block d-flex flex-column" [formGroupName]="i">
+            <div class="row inputs-container flex-column flex-md-row">
+              <div class="form-group col-12 col-md-5 d-flex flex-column">
+                <label>Name</label>
+                <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
+                <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)">
+                <div *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value && searchFailed['tool']">
+                  Tool not found <a class="btn btn-light-grey edit" (click)="OpenAddModal(addmodal,'tool')">Create New</a>
+                </div>
+                <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
+                  {{formErrors.field_tools[i].field_tool_name}}
+                </small>
               </div>
-              <small *ngIf="formErrors.field_tools[i].field_tool_name" class="text-danger">
-                {{formErrors.field_tools[i].field_tool_name}}
-              </small>
-            </div>
-            <div class="form-group col-xs-4">
-              <label>URL</label>
-              <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.field_tool_url">
-              <small *ngIf="formErrors.field_tools[i].field_tool_url" class="text-danger">
-                {{formErrors.field_tools[i].field_tool_url}}
-              </small>
-            </div>
-            <div class="form-group col-xs-2">
-              <label>Sort order</label>
-              <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.field_sort_order" readonly />
-              <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_tools')"></i>
-                <i *ngIf="i < HowToForm.controls.field_tools.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_tools')"></i>
+              <div class="form-group col-12 col-md-4 d-flex flex-column">
+                <label>URL</label>
+                <input id="tool-url-{{i + 1}}" type="text" placeholder="URL (optional)" class="form-control" [formControl]="Tool.controls.field_tool_url">
+                <small *ngIf="formErrors.field_tools[i].field_tool_url" class="text-danger">
+                  {{formErrors.field_tools[i].field_tool_url}}
+                </small>
               </div>
-              <small *ngIf="formErrors.field_tools[i].field_sort_order" class="text-danger">
-                {{formErrors.field_tools[i].field_sort_order}}
-              </small>
+              <div class="form-group col-12 col-md-3 d-flex flex-row flex-md-column align-items-center">
+                <label>Sort order</label>
+                <div class="d-flex flex-row align-items-stretch">
+                  <input id="tool-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Tool.controls.field_sort_order" readonly />
+                  <div class="carets d-flex flex-column">
+                    <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_tools')"></i>
+                    <i *ngIf="i < HowToForm.controls.field_tools.controls.length - 1" class="fa fa-2x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_tools')"></i>
+                  </div>
+                  <small *ngIf="formErrors.field_tools[i].field_sort_order" class="text-danger">
+                    {{formErrors.field_tools[i].field_sort_order}}
+                  </small>
+                </div>
+              </div>
             </div>
-            <div class="form-group col-xs-2">
-              <label>Quantity</label>
-              <input id="tool-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Tool.controls.field_quantity">
-            </div>
-            <div class="form-group col-xs-12">
-              <label for="tool-desc-{{i + 1}}">Description</label>
-              <textarea class="form-control" rows="5" id="tool-desc-{{i + 1}}" [formControl]='Tool.controls.field_description'></textarea>
+            <div class="row inputs-container flex-column flex-md-row">
+              <div class="form-group col-md-4">
+                <label>Quantity</label>
+                <input id="tool-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Tool.controls.field_quantity">
+              </div>
+              <div class="form-group col-12 col-md-8">
+                <label for="tool-desc-{{i + 1}}">Description</label>
+                <textarea class="form-control" rows="5" id="tool-desc-{{i + 1}}" [formControl]='Tool.controls.field_description'></textarea>
+              </div>
             </div>
           </div>
         </div>
@@ -64,37 +70,39 @@
     <div class="form-group parts">
       <label>Boards & Kits</label>
       <div formArrayName="field_parts" dnd-sortable-container [sortableData]="HowToForm.controls.field_parts.controls" dnd-draggable [dropZones]="['PartsZone']">
-        <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_parts')" dnd-draggable [dropZones]="['PartsZone']">
-          <div class="panel-heading">
+        <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_parts')" dnd-draggable [dropZones]="['PartsZone']">
+          <div class="card-header">
             <span>Part {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_parts.controls.length > 0" (click)="RemoveRow(i,'field_parts')"></span>
+            <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_parts.controls.length > 0" (click)="RemoveRow(i,'field_parts')"></span>
           </div>
-          <div class="panel-body" [formGroupName]="i">
-            <div class="form-group col-xs-8">
-              <label>Name</label>
-              <div *ngIf="HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value">{{HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value}}</div>
-              <input *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value" type="text" id="part-name-{{i + 1}}" placeholder="Name of part" class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('part','field_parts', $event.item, i)">
-              <div *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value && searchFailed['part']">
-                Part not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'part'">Create New</a>
+          <div class="card-block d-flex flex-column" [formGroupName]="i">
+            <div class="row inputs-container flex-column flex-md-row">
+              <div class="form-group col-12 col-md-5 d-flex flex-column">
+                <label>Name</label>
+                <div *ngIf="HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value">{{HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value}}</div>
+                <input *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value" type="text" id="part-name-{{i + 1}}" placeholder="Name of part" class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('part','field_parts', $event.item, i)">
+                <div *ngIf="!HowToForm.controls.field_parts.controls[i]['controls'].field_part_name.value && searchFailed['part']">
+                  Part not found <a class="btn btn-light-grey edit" (click)="OpenAddModal(addmodal,'part')">Create New</a>
+                </div>
+                <small *ngIf="formErrors.field_parts[i].field_part_name" class="text-danger">
+                  {{formErrors.field_parts[i].field_part_name}}
+                </small>
               </div>
-              <small *ngIf="formErrors.field_parts[i].field_part_name" class="text-danger">
-                {{formErrors.field_parts[i].field_part_name}}
-              </small>
-            </div>
-            <div class="form-group col-xs-2">
-              <label>Sort order</label>
-              <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.field_sort_order" readonly />
-              <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_parts')"></i>
-                <i *ngIf="i < HowToForm.controls.field_parts.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_parts')"></i>
+              <div class="form-group col-12 col-md-4 d-flex flex-column">
+                <label>Quantity</label>
+                <input id="part-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Part.controls.field_quantity">
               </div>
-              <small *ngIf="formErrors.field_parts[i].field_sort_order" class="text-danger">
-                {{formErrors.field_parts[i].field_sort_order}}
-              </small>
-            </div>
-            <div class="form-group col-xs-2">
-              <label>Quantity</label>
-              <input id="part-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Part.controls.field_quantity">
+              <div class="form-group col-12 col-md-3 d-flex flex-row flex-md-column align-items-center">
+                <label>Sort order</label>
+                <input id="part-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Part.controls.field_sort_order" readonly />
+                <div class="carets d-flex flex-column">
+                  <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_parts')"></i>
+                  <i *ngIf="i < HowToForm.controls.field_parts.controls.length - 1" class="fa fa-2x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_parts')"></i>
+                </div>
+                <small *ngIf="formErrors.field_parts[i].field_sort_order" class="text-danger">
+                  {{formErrors.field_parts[i].field_sort_order}}
+                </small>
+              </div>
             </div>
           </div>
         </div>
@@ -104,37 +112,39 @@
     <div class="form-group materials">
       <label>Materials</label>
       <div formArrayName="field_materials" dnd-sortable-container [sortableData]="HowToForm.controls.field_materials.controls" dnd-draggable [dropZones]="['MaterialsZone']">
-        <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_materials')" dnd-draggable [dropZones]="['MaterialsZone']">
-          <div class="panel-heading">
+        <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_materials')" dnd-draggable [dropZones]="['MaterialsZone']">
+          <div class="card-header">
             <span>Material {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_materials.controls.length > 0" (click)="RemoveRow(i,'field_materials')"></span>
+            <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_materials.controls.length > 0" (click)="RemoveRow(i,'field_materials')"></span>
           </div>
-          <div class="panel-body" [formGroupName]="i">
-            <div class="form-group col-xs-8">
-              <label>Name</label>
-              <div *ngIf="HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value">{{HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value}}</div>
-              <input *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value" type="text" id="material-name-{{i + 1}}" placeholder="Name of material" class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('material','field_materials', $event.item, i)">
-              <div *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value && searchFailed['material']">
-                Material not found <a class="btn btn-light-grey edit" data-toggle="modal" data-target="#add-modal" (click)="CurrentModal = 'material'">Create New</a>
+          <div class="card-block" [formGroupName]="i">
+            <div class="row inputs-container flex-column flex-md-row">
+              <div class="form-group col-12 col-md-5 d-flex flex-column">
+                <label>Name</label>
+                <div *ngIf="HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value">{{HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value}}</div>
+                <input *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value" type="text" id="material-name-{{i + 1}}" placeholder="Name of material" class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('material','field_materials', $event.item, i)">
+                <div *ngIf="!HowToForm.controls.field_materials.controls[i]['controls'].field_material_name.value && searchFailed['material']">
+                  Material not found <a class="btn btn-light-grey edit" (click)="OpenAddModal(addmodal,'material')">Create New</a>
+                </div>
+                <small *ngIf="formErrors.field_materials[i].field_material_name" class="text-danger">
+                  {{formErrors.field_materials[i].field_material_name}}
+                </small>
               </div>
-              <small *ngIf="formErrors.field_materials[i].field_material_name" class="text-danger">
-                {{formErrors.field_materials[i].field_material_name}}
-              </small>
-            </div>
-            <div class="form-group col-xs-2">
-              <label>Sort order</label>
-              <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.field_sort_order" readonly />
-              <div class="carets">
-                <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_materials')"></i>
-                <i *ngIf="i < HowToForm.controls.field_materials.controls.length - 1" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_materials')"></i>
+              <div class="form-group col-12 col-md-4 d-flex flex-column">
+                <label>Quantity</label>
+                <input id="material-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Material.controls.field_material_quantity">
               </div>
-              <small *ngIf="formErrors.field_materials[i].field_sort_order" class="text-danger">
-                {{formErrors.field_materials[i].field_sort_order}}
-              </small>
-            </div>
-            <div class="form-group col-xs-2">
-              <label>Quantity</label>
-              <input id="material-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Material.controls.field_material_quantity">
+              <div class="form-group col-md-3 d-flex flex-row flex-md-column align-items-center">
+                <label>Sort order</label>
+                <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.field_sort_order" readonly />
+                <div class="carets  d-flex flex-column">
+                  <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_materials')"></i>
+                  <i *ngIf="i < HowToForm.controls.field_materials.controls.length - 1" class="fa fa-2x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_materials')"></i>
+                </div>
+                <small *ngIf="formErrors.field_materials[i].field_sort_order" class="text-danger">
+                  {{formErrors.field_materials[i].field_sort_order}}
+                </small>
+              </div>
             </div>
           </div>
         </div>
@@ -158,12 +168,12 @@
     <div class="form-group resources">
       <label>Resources</label>
       <div formArrayName="field_resources" dnd-sortable-container [sortableData]="HowToForm.controls.field_resources.controls" dnd-draggable [dropZones]="['ResourcesZone']">
-        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="panel panel-default" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_resources')" dnd-draggable [dropZones]="['ResourcesZone']">
-          <div class="panel-heading">
+        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_resources')" dnd-draggable [dropZones]="['ResourcesZone']">
+          <div class="card-header">
             <span>Resource {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="HowToForm.controls.field_resources.controls.length > 0" (click)="RemoveRow(i,'field_resources')"></span>
+            <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_resources.controls.length > 0" (click)="RemoveRow(i,'field_resources')"></span>
           </div>
-          <div class="panel-body" [formGroupName]="i">
+          <div class="card-block" [formGroupName]="i">
             <div class="form-group col-xs-12">
               <label class="control-label" for="file-upload-{{i + 1}}">File</label><br>
               <a id="file-upload-link-{{i + 1}}" class="btn btn-white btn-sharp resource-file">Choose</a>
@@ -187,6 +197,10 @@
         </div>
         <a *ngIf="HowToForm.controls.field_resources.valid" (click)="AddRow('field_resources')" class="btn btn-white btn-sharp another-resource"><i class="fa fa-lg fa-plus"></i> Add more</a>
       </div>
+    </div>
+    <div class="form-group col-xs-12 credit-your-inspiration">
+      <label for="credit-your-inspiration">Credit Your Inspiration</label>
+      <input type="text" class="form-control" id="credit-your-inspiration" formControlName="field_credit_your_inspiration" [(ngModel)]="project.field_credit_your_inspiration.und[0].value" novalidate placeholder="Credit Your Inspiration">
     </div>
   </div><!-- End how-to -->
 </div>
@@ -221,26 +235,19 @@
 <!-- MODALS -->
 
 <!-- Add Modal -->
-		<div id="add-modal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add new {{CurrentModal}}</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label for="name">{{CurrentModal}} name:</label>
-							<input #Name type="text" class="form-control"  id="name">
-						</div>
-						<hr>
-						<div class="clearfix"></div>
-					</div>
-					<div class="modal-footer">
-						<button #CloseButton type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-blue" (click)="AddNewToolMaterialPart(CloseButton,Name)" data-dismiss="modal">Create and link</button>
-					</div>
-				</div>
-			</div>
-		</div>
+<template #addmodal let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Add new {{CurrentModal}}</h4>
+  </div>
+  <div class="modal-body">
+    <label for="name">{{CurrentModal}} name:</label>
+    <input #Name type="text" class="form-control"  id="name">
+  </div>
+  <div class="modal-footer">
+    <button #CloseButton type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="AddNewToolMaterialPart(CloseButton,Name)">Save</button>
+  </div>
+</template>
