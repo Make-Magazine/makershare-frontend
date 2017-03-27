@@ -10,7 +10,7 @@
 </template>
 
 <div class="region region-content col-sm-10" [formGroup]="TeamForm">
-  <div class="team" formArrayName="field_maker_memberships" dnd-sortable-container [sortableData]="TeamForm.controls.field_maker_memberships.controls" dnd-draggable [dropZones]="['TeamZone']">
+  <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div>
         <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
