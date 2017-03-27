@@ -17,7 +17,6 @@ export class TeamComponent implements OnInit {
   @Input('FormPrintableValues') FormPrintableValues;
 
   TeamForm: FormGroup;
-  UsersDetails = [];
   SelectedUser = [];
   searchFailed = false;
 
@@ -77,10 +76,10 @@ export class TeamComponent implements OnInit {
   }
 
   SetMember(uid,index){
-    this.UsersDetails[index] = [];
     const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
-    this.viewService.getView('maker_profile_card_data',[['uid',uid],]).subscribe(data => {
+    this.viewService.getView('maker_profile_card_data',[['uid',uid]]).subscribe(data => {
       this.SelectedUser[index] = data[0];
+      console.log(this.SelectedUser)
       control['controls'].uid.setValue(uid);
       control['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
       control['controls'].field_sort_order.setValue(index+1);
@@ -93,7 +92,11 @@ export class TeamComponent implements OnInit {
         this.project.field_maker_memberships.und.push(member);
       }
       control.valueChanges.subscribe(values => {
-        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
+        if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
+          this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
+        }else{
+          this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
+        }
         this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
       });
     });
@@ -103,7 +106,7 @@ export class TeamComponent implements OnInit {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
-      'field_membership_role': [data && data.field_membership_role.und? data.field_membership_role.und[0].value:''],
+      'field_membership_role': [data && data.field_membership_role && data.field_membership_role.und? data.field_membership_role.und[0].value:''],
       'uid': [, Validators.required],
     });
   }
@@ -111,10 +114,14 @@ export class TeamComponent implements OnInit {
   SortElements(ControlName){
     const control = <FormArray>this.TeamForm.controls[ControlName];
     var NewUsersDetails = [];
+    var NewProjectFieldTeam = [];
     control.controls.forEach((element, index) => {
       NewUsersDetails[index] = this.SelectedUser[element['controls']['field_sort_order'].value - 1];
-      element['controls']['field_sort_order'].setValue(index + 1);
+      this.project.field_maker_memberships.und[index].field_sort_order.und[0].value = index + 1;
+      NewProjectFieldTeam.push(this.project.field_maker_memberships.und[index]);
+      element['controls']['field_sort_order'].patchValue(index + 1);
     });
+    this.project.field_maker_memberships.und = NewProjectFieldTeam;
     this.SelectedUser = NewUsersDetails;
   }
   onValueChanged(form, formErrors, validationMessages) {
@@ -142,6 +149,10 @@ export class TeamComponent implements OnInit {
     let newrow = control.at(NewIndex);
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
+    let currentmember = this.project.field_maker_memberships.und[CurrentIndex];
+    let newmember = this.project.field_maker_memberships.und[NewIndex];
+    this.project.field_maker_memberships.und[CurrentIndex] = newmember;
+    this.project.field_maker_memberships.und[NewIndex] = currentmember;
     this.SortElements(ControlName);
   }
   RemoveRow(i: number,ControlName) {
@@ -149,11 +160,10 @@ export class TeamComponent implements OnInit {
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
     this.project[ControlName].und.splice(i, 1);
-    console.log(this.project);
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
-    return {'field_sort_order':'', 'field_team_member': ''};
+    return {'field_sort_order':'', 'field_team_member': '','uid': ''};
   }
   formErrors = {
     'field_maker_memberships': [],

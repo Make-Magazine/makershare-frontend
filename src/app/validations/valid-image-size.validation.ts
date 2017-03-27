@@ -1,5 +1,9 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-
+/**
+ * not working
+ * @param width 
+ * @param height 
+ */
 export const validimagesize = (width, height): ValidatorFn => {
   return (control: AbstractControl): {[key: string]: any} => {
       var image = new Image();

@@ -40,7 +40,7 @@
                   </div>
                   <div class="card-block content">
                     <h4 class="title">{{showcase.showcase_name}}</h4>
-                    <p class="description" [innerHTML]="showcase.description"></p>
+                    <div class="description" [innerHTML]="showcase.description"></div>
                     <p class="number" *ngIf="showcase.number_of_project==1">{{showcase.number_of_project}} project</p>
                     <p class="number" *ngIf="showcase.number_of_project>1">{{showcase.number_of_project}} projects</p>
                     <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>

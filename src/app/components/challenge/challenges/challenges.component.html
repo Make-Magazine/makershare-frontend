@@ -31,7 +31,7 @@
       </div>
       <!-- End filters -->
       <div class="container challenges-container">
-        <div *ngFor="let challenge of challenges" class="challenge-card row">
+        <div *ngFor="let challenge of challenges" class="challenge-card row" (click)="ShowChallengeDetails(challenge.nid)">
           <div class="col-md-4 image-container">
             <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
           </div>

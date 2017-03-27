@@ -45,7 +45,7 @@
                 <div class="fun-fact" id="OB{{object?.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
-                    <div class="image-container d-flex mr-3">
+                    <div class="image-container d-flex mr-1">
                       <img src="{{object.object_image}}" alt="" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
                         height="150" width="200">
                     </div>
@@ -73,7 +73,7 @@
                 <div class="fun-fact" id="OB{{object?.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
-                    <div class="image-container d-flex mr-3" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
+                    <div class="image-container d-flex mr-1" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
                       <img *ngIf="object.videoImage" [src]="object.videoImage" alt="" class="media-object" height="150" width="200">
                       <!--<div *ngIf="object.videoPic"  class="youtube-pic">
                         <img [src]="object.videoPic" alt="" class="media-object" height="150" width="200">
@@ -109,7 +109,7 @@
                 <div class="fun-fact" id="OB{{object.nid}}">
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
-                    <div class="image-container d-flex mr-3">
+                    <div class="image-container d-flex mr-1">
                       <img src="{{object.object_image}}" alt="" class="media-object" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer"
                         height="150" width="200">
                     </div>
@@ -157,14 +157,18 @@
           </ul>
         </aside>
         <!-- End aside -->
+<<<<<<< HEAD
         
         <div *ngFor="let lesson of lessons" class="col-12">
+=======
+        <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3">
+>>>>>>> 879b896d376d00b5cddb7ac3cde844a6b64fefab
           <div *ngIf="lesson" class="">
             <h4> Like these lessons? Learn more:</h4>
             <ul class="list-unstyled suggested" id="lesson">
               <li>
                 <div class="media">
-                  <div class="image-container d-flex mr-3">
+                  <div class="image-container d-flex mr-1">
                     <img src="{{lesson.book_cover}}" alt="...">
                   </div>
                   <div class="media-body">
@@ -181,7 +185,49 @@
                   </div>
                 </div>
               </li>
+<<<<<<< HEAD
              </ul>
+=======
+              <li>
+                <div class="media">
+                  <div class="image-container d-flex mr-1">
+                    <img src="{{lesson.book_cover}}" alt="...">
+                  </div>
+                  <div class="media-body">
+                    <p> {{lesson.book_title}}</p>
+                    <a href="{{lesson.o_reilly}}">
+                      <p> {{lesson.o_reilly}}</p>
+                    </a>
+                    <a href="{{lesson.barnes_noble}}">
+                      <p> {{lesson.barnes_noble}} </p>
+                    </a>
+                    <a href="{{lesson.amazon}}">
+                      <p> {{lesson.amazon}}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="media">
+                  <div class="image-container d-flex mr-1">
+                    <img src="{{lesson.book_cover}}" alt="...">
+                  </div>
+                  <div class="media-body">
+                    <p> {{lesson.book_title}}</p>
+                    <a href="{{lesson.o_reilly}}">
+                      <p> {{lesson.o_reilly}}</p>
+                    </a>
+                    <a href="{{lesson.barnes_noble}}">
+                      <p> {{lesson.barnes_noble}} </p>
+                    </a>
+                    <a href="{{lesson.amazon}}">
+                      <p> {{lesson.amazon}}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+>>>>>>> 879b896d376d00b5cddb7ac3cde844a6b64fefab
             <!-- End suggested -->
           </div>
           <!-- End of more lesson Checker -->

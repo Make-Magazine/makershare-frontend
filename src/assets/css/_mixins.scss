@@ -40,7 +40,7 @@
 }
 
 @mixin desc-font-14 (){
-	@include font-setting('Messina Sans SemiBold', 0.875em ,600 ,none , 100% , $text-color-2);
+	@include font-setting('Messina Sans SemiBold', 1em ,600 ,none , 100% , $text-color-2);
 }
 @mixin desc-font-12 (){
 	@include font-setting('Messina Sans SemiBold', 0.75em ,600 ,none , 100% , $text-color-2);

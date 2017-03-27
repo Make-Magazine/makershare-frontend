@@ -65,25 +65,33 @@
             font-size: 12px;
             h4.title {
                 // font-size: 18px;
-                @include card-header-font-sm();
+                @include card-header-font-md();
                 color: $text-color-1;
                 text-overflow: ellipsis;
-                word-wrap: break-word;
                 overflow: hidden;
-                max-height: 36px;
-                line-height: 18px;
-                height: 40px;
+                max-height: 40px;
+                line-height: 20px;
+                height: 38px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             .description {
                 @include desc-font-14();
                 text-overflow: ellipsis;
                 word-wrap: break-word;
                 overflow: hidden;
-                max-height: 52px;
                 line-height: 18px;
+                font-size: 15px;
+                p {
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin-bottom: 30px;
+                min-height: 54px;
+                }
             }
             .number {
                 float: left;
@@ -92,7 +100,7 @@
                 float: right;
             }
             .number, .timestamp {
-                @include desc-font-12();
+                @include desc-font-14();
                 margin: 0px;
             }
 

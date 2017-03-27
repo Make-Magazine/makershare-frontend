@@ -8,11 +8,9 @@ import { SelectModule } from 'ng2-select';
 import { IcDatepickerModule } from 'ic-datepicker';
 import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 import { TagInputModule } from 'ng2-tag-input';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { FormsModule } from '@angular/forms';
-import { SharedModule }  from '../../shared/shared.module'
+import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 
 @NgModule({
@@ -22,7 +20,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2AutoCompleteModule,
     SelectModule,
     TagInputModule,
     SharedModule,

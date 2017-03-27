@@ -4,8 +4,7 @@
       <img *ngIf="projectCard.cover_photo" class="card-img-top" src="{{projectCard.cover_photo}}" alt="">
       <img *ngIf="!projectCard.cover_photo" src="http://placehold.it/335x250" alt="">
     <div class="teaser">
-      <p class="project-text-case">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
-        recognition on mo st people's faces, albeit instant confusion on others'.</p>
+      <p class="project-text-case">{{projectCard.teaser}}</p>
       <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
     </div>
     <div class="list-unstyled icons">
@@ -16,8 +15,9 @@
   </div>
   <div class="card-block d-flex justify-content-around">
     <div class="d-flex flex-column">
-      <div class="profiel-pic-container">
-        <img src="http://placehold.it/80x80" alt="">
+      <div class="profiel-pic-container" *ngIf="projectCard.uid != myid">
+        <img *ngIf="!projectCard.maker_photo" src="http://placehold.it/80x80" alt="">
+        <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
       </div>
       <div class="icons-side flex-row d-flex align-items-start">
         <img src="./assets/images/icons/icon-blue-ribbon.svg" />
@@ -26,8 +26,7 @@
     </div>
     <div class="content-side col">
       <h4 class="card-title">{{projectCard.project_name}}</h4>
-      <p class="card-text project-text-grid">"It's just like Simon . . . but with flamethrowers!" This is the line I use to draw people in. It provokes instant
-        recognition on mo st people's faces, albeit instant confusion on others'.</p>
+      <p class="card-text project-text-grid">{{projectCard.teaser}}</p>
       <div class="card-role">
         <p>Role on the project: Concept, design, fabrication, performance</p>
       </div>
@@ -36,9 +35,15 @@
   <div class="card-stats card-block">
     <ul class="d-flex justify-content-around list-unstyled">
       <li><i class="fa fa-lg fa-eye"></i>70</li>
-      <li><i class="fa fa-lg fa-thumbs-up"></i>26</li>
-      <li><i class="fa fa-lg fa-comment"></i>2</li>
-      <li><i class="fa fa-lg fa-retweet"></i>1</li>
+      <li>
+        <i class="fa fa-lg fa-thumbs-up"></i><span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span><span *ngIf="!projectCard.number_of_likes">0</span>
+      </li>
+      <li>
+        <i class="fa fa-lg fa-comment"></i><span *ngIf="projectCard.comment_count">{{projectCard.comment_count}}</span><span *ngIf="!projectCard.comment_count">0</span>
+        </li>
+      <li>
+        <i class="fa fa-lg fa-retweet"></i><span *ngIf="projectCard.forks_count">{{projectCard.forks_count}}</span><span *ngIf="!projectCard.forks_count">0</span>
+      </li>
     </ul>
   </div>
 </div>

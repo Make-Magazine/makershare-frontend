@@ -1,5 +1,5 @@
 export interface field_file_reference {
-  fid: number;
+  fid: number|'';
   uid?: number;
   filename?: string;
   uri?: string;
@@ -16,6 +16,6 @@ export interface field_file_reference {
 
 export class field_file_reference implements field_file_reference {
   constructor(){
-    this.fid = 0;
+    this.fid = '';
   }
 }
