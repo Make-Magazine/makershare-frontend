@@ -1534,6 +1534,16 @@ header.showcase-project .next {
     font-size: 14px; }
   .profile-sidebar .progress {
     margin-bottom: 10px; }
+  .profile-sidebar .single-icon {
+    width: 100%; }
+    .profile-sidebar .single-icon img {
+      width: 34px;
+      height: 40px;
+      padding: 3px; }
+    .profile-sidebar .single-icon p {
+      margin-bottom: 1px;
+      line-height: normal;
+      padding: 10px 0px; }
   .profile-sidebar .interests {
     margin: 0px; }
   .profile-sidebar a.add {
@@ -1955,9 +1965,6 @@ header.showcase-project .next {
   .project .image-top img {
     height: auto;
     width: 100%; }
-.project .card-block .icons-side img {
-  width: 20px;
-  height: auto; }
 .project .icons {
   position: absolute;
   color: white;
@@ -2024,7 +2031,7 @@ header.showcase-project .next {
   .profile-page .card-block {
     background-color: white; }
     .profile-page .card-block .icons-side img {
-      width: 30px;
+      width: 24px;
       height: 30px; }
   .profile-page .load-more {
     width: 100%; }
