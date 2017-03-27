@@ -58,6 +58,7 @@ export class YourStoryComponent implements OnInit {
     private viewService: ViewService,
     private fileService: FileService,
     private modalService: NgbModal,
+    
   ) {
     this.SetCropperSettings();
   }
@@ -266,10 +267,23 @@ export class YourStoryComponent implements OnInit {
     this.cropperSettings.minWidth = 600;
     this.cropperSettings.minHeight = 400;
     this.cropperSettings.dynamicSizing = true;
+    this.cropperSettings.noFileInput = true;    
     this.imagedata = {};
   }
 
   OpenCoverImageModal(Template){
-    this.modalService.open(Template,{size:'lg'});
+    this.modalService.open(Template);
+  }
+  UploadBtn($event,cropper){
+    if($event.target.files.length ===0) return; 
+    var image:any = new Image();
+    var file:File = $event.target.files[0];
+    var myReader:FileReader = new FileReader();
+    myReader.onloadend = function (loadEvent:any) {
+        image.src = loadEvent.target.result;
+        cropper.setImage(image);
+    };
+
+    myReader.readAsDataURL(file);
   }
 }

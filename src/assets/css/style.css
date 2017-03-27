@@ -2356,16 +2356,18 @@ header.showcase-project .next {
     padding: 0 30px; }
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
-    float: left;
     width: 40%;
     margin-right: 10%; }
   .page-create-project-why .your-story .cover .image-preview {
-    width: 50%;
-    float: left;
-    background-color: #ababab;
-    color: #222;
-    text-align: center;
-    padding: 10px; }
+    width: 50%; }
+    .page-create-project-why .your-story .cover .image-preview p {
+      width: 100%;
+      background-color: #ababab;
+      color: #222;
+      text-align: center;
+      padding: 10px; }
+    .page-create-project-why .your-story .cover .image-preview img {
+      max-width: 100%; }
   .page-create-project-why .your-story .cover input {
     display: inline-block; }
   .page-create-project-why .your-story .cover #cover-upload {
@@ -2536,6 +2538,9 @@ header.showcase-project .next {
 .borderedless td, .borderedless th {
   border: none !important;
   padding-left: 0 !important; }
+
+.modal-body .file-upload a {
+  margin-bottom: 10px; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
