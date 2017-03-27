@@ -258,6 +258,13 @@ header .main-header .maker-sites li {
 .btn-tabs.active {
   background-color: #f2f2f2; }
 
+.btn-soft-tag {
+  color: #757575 !important;
+  background-color: #ecf0f1;
+  border: 1px solid rgba(105, 105, 105, 0.44);
+  border-radius: 0;
+  font-size: 13px; }
+
 .project {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -751,8 +758,7 @@ footer {
   height: 38px;
   line-height: 17px;
   overflow: hidden;
-  display: inline-block;
-  margin-left: 5px; }
+  display: inline-block; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
 .user-card .user-city {
@@ -1933,7 +1939,8 @@ header.showcase-project .next {
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 30px;
-  text-align: left; }
+  text-align: left;
+  width: 194px; }
 .project .card-text {
   overflow: hidden;
   display: -webkit-box;
@@ -2707,7 +2714,7 @@ header.showcase-project .next {
       font-size: 11px;
       padding-top: 10px; }
   .page-challenge-summary .region-content .content-wrapper .followers, .page-challenge-summary-closed .region-content .content-wrapper .followers, .page-enter-challenge .region-content .content-wrapper .followers {
-    width: 90%;
+    width: 100%;
     overflow: hidden;
     margin: auto; }
     .page-challenge-summary .region-content .content-wrapper .followers .follower-card, .page-challenge-summary-closed .region-content .content-wrapper .followers .follower-card, .page-enter-challenge .region-content .content-wrapper .followers .follower-card {
