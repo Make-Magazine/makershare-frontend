@@ -6,7 +6,6 @@ import { ProjectFormRoutingModule } from './project-form-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { DndModule } from 'ng2-dnd';
 import { YourStoryComponent } from './your-story/your-story.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { TeamComponent } from './team/team.component';
@@ -21,7 +20,6 @@ import { SharedModule } from '../../shared/shared.module';
     TagInputModule,
     CKEditorModule,
     FormsModule,
-    DndModule,
     ProjectFormRoutingModule,
     NgbModule,
     ImageCropperModule,
