@@ -11,8 +11,10 @@ import { YourStoryComponent } from './your-story/your-story.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { TeamComponent } from './team/team.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { SharedModule } from '../../shared/shared.module';
     NgbModule,
     ImageCropperModule,
     SharedModule
+
   ],
   declarations: [
     YourStoryComponent,
