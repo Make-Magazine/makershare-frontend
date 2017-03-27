@@ -190,14 +190,10 @@ export class ProfileComponent implements OnInit {
     myReader.readAsDataURL(file);
 }
 
-<<<<<<< HEAD
-   // Takes the dropped image and displays it in the image ElementTagNameMap
-   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
-=======
-    private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
+     private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
       this.fileChangeListener(acceptedFile.file,cropper)
     }
->>>>>>> 879b896d376d00b5cddb7ac3cde844a6b64fefab
+
 
   saveCropped(){
     if(!this.CoverImageData.image) return;
