@@ -25,29 +25,34 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="form-group projectCategory d-flex flex-row">
-      <label for="projectCategory">Categories</label>
-      <div class="categories-group d-flex flex-column">
-        <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
-          <option disabled selected value="_none_"> -- select an option -- </option>
-          <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}">{{parent_category.name}}</option>
-        </select>
-        <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
-          <option disabled selected value> -- select an option -- </option>
-          <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}">{{child_category.name}}</option>
-        </select>
+    <div class="form-group projectCategory d-flex flex-column">
+      <label for="projectCategory" class="">Categories</label>
+      <div class="categories-group d-flex flex-row row">
+        <div class="col-md-4">
+          <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+            <option disabled selected value="_none_"> -- select an option -- </option>
+            <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
+            <option disabled selected value> -- select an option -- </option>
+            <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
+          </select>
+        </div>
+        <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate col-md-2">add</div>
       </div>
-      
-      <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate">add</div>
-      <div *ngIf="project.field_categories.und">
+    </div>
+    <div class="d-flex flex-column cate-list row">
+      <div *ngIf="formErrors.field_categories" class="alert alert-danger error-msg col-md-12">
+        {{ formErrors.field_categories }}
+      </div>
+      <div *ngIf="project.field_categories.und" class="cate-list">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
-         <div *ngFor="let cate of all_categories">
-            <div *ngIf="selected_cate == cate.tid" class="cate-name">{{cate.name}}</div>
+          <div *ngFor="let cate of all_categories;" class="">
+            <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item"><span [innerHTML]="cate.parentName"></span> &nbsp; >  <span [innerHTML]="cate.name"></span></p>
           </div>
         </div>
-      </div>
-      <div *ngIf="formErrors.field_categories" class="alert alert-danger error-msg">
-        {{ formErrors.field_categories }}
       </div>
     </div>
     <div class="form-group project-story">

@@ -2335,15 +2335,25 @@ header.showcase-project .next {
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
-    .page-create-project-why .your-story .projectCategory label,
-    .page-create-project-why .your-story .projectCategory .add-cate {
+    .page-create-project-why .your-story .projectCategory label {
       margin-top: 5px; }
+    .page-create-project-why .your-story .projectCategory .add-cate {
+      margin-bottom: 5px;
+      width: auto; }
     .page-create-project-why .your-story .projectCategory .categories-group {
+      width: 100%;
       margin-left: 15px; }
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
         width: 100% !important;
-        margin-bottom: 5px; }
+        margin-bottom: 5px;
+        padding: 5px 10px; }
+    .page-create-project-why .your-story .projectCategory p.cate-name {
+      margin-left: 15px; }
+    .page-create-project-why .your-story .projectCategory .list-group-item {
+      width: 50%; }
+  .page-create-project-why .your-story .cate-list {
+    padding: 0 30px; }
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
     float: left;
@@ -2446,7 +2456,7 @@ header.showcase-project .next {
     .page-create-project-why .team input {
       max-width: 100%; }
     .page-create-project-why .team .form-group {
-      margin-top: 9px; }
+      margin-top: 0px; }
     .page-create-project-why .team .add-collaborate {
       border: 1px solid #222;
       border-radius: 0; }
@@ -2462,7 +2472,7 @@ header.showcase-project .next {
       display: inline-block;
       vertical-align: middle; }
       .page-create-project-why .team .carets i {
-        font-size: 15px; }
+        font-size: 20px; }
     .page-create-project-why .team .add-collaborate {
       position: relative;
       background-color: #BEBEBE;
@@ -3176,10 +3186,6 @@ header.showcase-project .next {
     margin-top: 15px; }
     .conversation-container .reply-area .send-actions li {
       display: inline-block; }
-
-.inbox-container,
-.notification-container {
-  display: none; }
 
 .page-search-result {
   background-color: #F2F2F2; }

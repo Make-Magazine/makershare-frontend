@@ -156,16 +156,20 @@ export class ProjectFormComponent implements OnInit {
         if(data.field_tools.und){
           for(index; index < data.field_tools.und.length;index++){
             let tool = x[index];
-            subtasks.push(this.nodeService.getNode(tool['field_tool_name'].und[0].target_id));
-            this.project.field_tools.und.push(tool as field_collection_item_tool);
+            if(tool['field_tool_name'].und){
+              subtasks.push(this.nodeService.getNode(tool['field_tool_name'].und[0].target_id));
+              this.project.field_tools.und.push(tool as field_collection_item_tool);
+            }
           }
         }
         //field materials
         if(data.field_materials.und){
           for(let i=0; i < data.field_materials.und.length ; i++){
             let material = x[index];
-            subtasks.push(this.nodeService.getNode(material['field_material_name'].und[0].target_id));
-            this.project.field_materials.und.push(material as field_collection_item_material);
+            if(material['field_material_name'].und){
+              subtasks.push(this.nodeService.getNode(material['field_material_name'].und[0].target_id));
+              this.project.field_materials.und.push(material as field_collection_item_material);
+            }
             index++;
           }
         }
@@ -173,8 +177,10 @@ export class ProjectFormComponent implements OnInit {
         if(data.field_parts.und){
           for(let i=0; i < data.field_parts.und.length ; i++){
             let part = x[index];
-            subtasks.push(this.nodeService.getNode(part['field_part_name'].und[0].target_id));
-            this.project.field_parts.und.push(part as field_collection_item_part);
+            if(part['field_part_name'].und){
+              subtasks.push(this.nodeService.getNode(part['field_part_name'].und[0].target_id));
+              this.project.field_parts.und.push(part as field_collection_item_part);
+            }
             index++;
           }
         }
@@ -190,11 +196,13 @@ export class ProjectFormComponent implements OnInit {
         if(data.field_resources.und){
           for(let i=0; i < data.field_resources.und.length ; i++){
             let resource = x[index];
-            let value = resource['field_label'].und[0].tid;
-            delete resource['field_label'].und;
-            resource['field_label'].und = value;
-            this.project.field_resources.und.push(resource as field_collection_item_resource);
-            this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
+            if(resource['field_resource_file'].und){
+              let value = resource['field_label'].und[0].tid;
+              delete resource['field_label'].und;
+              resource['field_label'].und = value;
+              this.project.field_resources.und.push(resource as field_collection_item_resource);
+              this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
+            }
             index++;
           }
         }
@@ -218,38 +226,45 @@ export class ProjectFormComponent implements OnInit {
             var subindex = 0;
             // field tools
             if(data.field_tools.und){
-              for(subindex; subindex < data.field_tools.und.length ; subindex++){
+              for(let i = 0; i < data.field_tools.und.length ; i++){
                 let tool = subx[subindex];
-                let id = this.project.field_tools.und[subindex].field_tool_name.und[0].target_id;
-                this.project.field_tools.und[subindex].field_tool_name.und[0].target_id = tool['title']+' ('+id+')';
+                if(tool && tool['title']){
+                  let id = this.project.field_tools.und[i].field_tool_name.und[0].target_id;
+                  this.project.field_tools.und[i].field_tool_name.und[0].target_id = tool['title']+' ('+id+')';
+                  subindex++;
+                }
               }
             }
             // field materials
             if(data.field_materials.und){
               for(let i = 0; i < data.field_materials.und.length ; i++){
                 let material = subx[subindex];
-                let id = this.project.field_materials.und[i].field_material_name.und[0].target_id;
-                this.project.field_materials.und[i].field_material_name.und[0].target_id = material['title']+' ('+id+')';
-                subindex++;
+                if(material && material['title']){
+                  let id = this.project.field_materials.und[i].field_material_name.und[0].target_id;
+                  this.project.field_materials.und[i].field_material_name.und[0].target_id = material['title']+' ('+id+')';
+                  subindex++;
+                }
               }
             }
             // field parts
             if(data.field_parts.und){
               for(let i = 0; i < data.field_parts.und.length ; i++){
                 let part = subx[subindex];
-                let id = this.project.field_parts.und[i].field_part_name.und[0].target_id;
-                this.project.field_parts.und[i].field_part_name.und[0].target_id = part['title']+' ('+id+')';
-                subindex++;
+                if(part && part['title']){
+                  let id = this.project.field_parts.und[i].field_part_name.und[0].target_id;
+                  this.project.field_parts.und[i].field_part_name.und[0].target_id = part['title']+' ('+id+')';
+                  subindex++;
+                }
               }
             }
             // field team
             for(let i = 0; i < data.field_maker_memberships.und.length ; i++){
               let member = subx[subindex];
-              if(member){
+              if(member && member['name']){
                 let id = this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id;
                 this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id = member['name']+' ('+id+')';
+                subindex++;
               }
-              subindex++;
             }
           },
           (err) => {
@@ -258,7 +273,7 @@ export class ProjectFormComponent implements OnInit {
           () => {
             if(this.project.field_cover_photo.und){
               this.fileService.getFileById(this.project.field_cover_photo.und[0].fid as number).subscribe((file:FileEntity) =>{
-                file.file = "data:"+file.filemime+";base64,"+file.file;
+                file.file = NodeHelper.AddFileTypeToBase64(file.file,file.filemime);
                 this.FormPrintableValues.cover_image = file;
                 this.ProjectLoaded = true;
               });
@@ -348,33 +363,36 @@ export class ProjectFormComponent implements OnInit {
    * for example you must upload the file image then reference the project cover_image field to this fid
    */
   SetPrjectValues(){
-    console.log(this.project);
+    var tasks = [];
     this.project.SetField(this.FormPrintableValues.tags.toString(),"field_tags");
-    let image:FileEntity = {file:this.FormPrintableValues.cover_image.file,filename:this.FormPrintableValues.cover_image.filename};
-    image.file = NodeHelper.RemoveFileTypeFromBase64(this.FormPrintableValues.cover_image.file);    
-    let tasks = [];
-    if(image.file){
-      tasks.push(this.fileService.SendCreatedFile(image));
+    var image:FileEntity = {file:this.FormPrintableValues.cover_image.file,filename:this.FormPrintableValues.cover_image.filename};
+    if(!this.FormPrintableValues.cover_image['fid']){
+      image.file = NodeHelper.RemoveFileTypeFromBase64(this.FormPrintableValues.cover_image.file);    
+      if(image.file){
+        tasks.push(this.fileService.SendCreatedFile(image));
+      }
     }
     if(this.FormPrintableValues.resources_files.length > 0){
       this.FormPrintableValues.resources_files.forEach((element:FileEntity,index:number)=>{
-        element.file = NodeHelper.RemoveFileTypeFromBase64(element.file);
-        tasks.push(this.fileService.SendCreatedFile(element));
+        if(!element.fid){
+          element.file = NodeHelper.RemoveFileTypeFromBase64(element.file);
+          tasks.push(this.fileService.SendCreatedFile(element));
+        }
       });
     }
     let source = Observable.forkJoin(tasks);
     source.subscribe(
       (x) => {
         var index = 0;
-        if(image.file){
+        if(!this.FormPrintableValues.cover_image['fid'] && image.file){
           this.project.SetField(x[0] as field_file_reference,'field_cover_photo');
           index++;
         }
         for(let i=0; i < this.FormPrintableValues.resources_files.length; i++){
-          if(this.project.field_resources.und[i]){
+          if(!this.FormPrintableValues.resources_files[i].fid && this.project.field_resources.und[i]){
             this.project.field_resources.und[i].field_resource_file.und[0] = x[index] as field_file_reference;
+            index++;
           }
-          index++;
         }
       },
       (err) => {
@@ -387,23 +405,23 @@ export class ProjectFormComponent implements OnInit {
   }
 
   ResetFieldCollectionEmptyRows(){
-    for(let i = this.project.field_maker_memberships.und.length-1;i < 7; i++){
+    for(let i = this.project.field_maker_memberships.und.length-1;i < 6; i++){
       let member = new field_collection_item_member();
       this.project.field_maker_memberships.und.push(member);
     }
-    for(let i = this.project.field_tools.und.length-1;i < 20; i++){
+    for(let i = this.project.field_tools.und.length-1;i < 19; i++){
       let tool = new field_collection_item_tool();
       this.project.field_tools.und.push(tool);
     }
-    for(let i = this.project.field_parts.und.length-1;i < 20; i++){
+    for(let i = this.project.field_parts.und.length-1;i < 19; i++){
       let part = new field_collection_item_part();
       this.project.field_parts.und.push(part);
     }
-    for(let i = this.project.field_materials.und.length-1;i < 20; i++){
+    for(let i = this.project.field_materials.und.length-1;i < 19; i++){
       let material = new field_collection_item_material();
       this.project.field_materials.und.push(material);
     }
-    for(let i = this.project.field_resources.und.length-1;i < 20; i++){
+    for(let i = this.project.field_resources.und.length-1;i < 19; i++){
       let resource = new field_collection_item_resource();
       this.project.field_resources.und.push(resource);
     }
