@@ -11,7 +11,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ImageCropperModule } from 'ng2-img-cropper';
 
 @NgModule({
   imports: [
@@ -23,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SelectModule,
     TagInputModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    ImageCropperModule
   ],
   declarations: [
     AllProfileComponent,
