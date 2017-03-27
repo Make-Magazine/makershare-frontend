@@ -59,7 +59,7 @@
               <i class="fa fa-check-square" aria-hidden="true"></i>
           </div>
         </div>
-        <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 1)" (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
+        <a *ngIf="(i > 0)" (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
     </div>   
     <a *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && TeamForm.controls.field_maker_memberships.valid" (click)="AddRow('field_maker_memberships')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>

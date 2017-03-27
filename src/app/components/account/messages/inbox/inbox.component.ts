@@ -197,7 +197,6 @@ export class InboxComponent implements OnInit {
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
-           
           
            this.userId = localStorage.getItem('user_id');
            if(this.userId === author[0].author){
@@ -255,9 +254,7 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(mid:number, i) {
-      this.pm.deleteMessage(mid).subscribe(data=>{
-        console.log(data)
-      }) 
+      this.pm.deleteMessage(mid).subscribe();
   }
 
   valueChanged(mid, event) {

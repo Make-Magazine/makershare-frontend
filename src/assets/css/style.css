@@ -530,7 +530,8 @@ body {
   .main-header .color-text {
     color: #EC1F30 !important; }
   .main-header .login-block {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin-top: 3px; }
     .main-header .login-block li {
       display: inline-block; }
       .main-header .login-block li .btn {
@@ -690,7 +691,7 @@ body {
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
     font-family: "Messina Modern Regular";
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -699,7 +700,7 @@ body {
     margin: 25px 0; }
   .maker-spotlight .spotlight-item {
     margin-top: 15px;
-    padding: 10px; }
+    padding: 4px; }
     .maker-spotlight .spotlight-item .card-block {
       padding-bottom: 0; }
     .maker-spotlight .spotlight-item .image-container {
@@ -814,7 +815,7 @@ footer {
     text-align: center; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular";
-      font-size: 4em;
+      font-size: 3.5em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -941,7 +942,7 @@ footer {
   text-align: center; }
   .challenge-header h3 {
     font-family: "Messina Modern Regular";
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -1256,6 +1257,14 @@ footer {
       color: #169eff;
       font-weight: bold;
       text-decoration: none; }
+  .page-project .aha .card-heading {
+    padding: 6px 8px 0px 8px; }
+  .page-project .aha .card-block {
+    padding: 8px; }
+  .page-project .uh-oh .card-heading {
+    padding: 6px 8px 0px 8px; }
+  .page-project .uh-oh .card-block {
+    padding: 8px; }
   .page-project .panel {
     border-width: 3px;
     border-radius: 15px;
@@ -1405,7 +1414,7 @@ header.showcase-project .next {
     text-align: center; }
     .workshop-page .workshop-header h3 {
       font-family: "Messina Modern Regular";
-      font-size: 4em;
+      font-size: 3.5em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -1975,7 +1984,7 @@ header.showcase-project .next {
   overflow: hidden;
   line-height: 30px;
   text-align: left;
-  width: 194px; }
+  width: 100%; }
 .project .card-text {
   overflow: hidden;
   display: -webkit-box;
@@ -2356,16 +2365,18 @@ header.showcase-project .next {
     padding: 0 30px; }
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
-    float: left;
     width: 40%;
     margin-right: 10%; }
   .page-create-project-why .your-story .cover .image-preview {
-    width: 50%;
-    float: left;
-    background-color: #ababab;
-    color: #222;
-    text-align: center;
-    padding: 10px; }
+    width: 50%; }
+    .page-create-project-why .your-story .cover .image-preview p {
+      width: 100%;
+      background-color: #ababab;
+      color: #222;
+      text-align: center;
+      padding: 10px; }
+    .page-create-project-why .your-story .cover .image-preview img {
+      max-width: 100%; }
   .page-create-project-why .your-story .cover input {
     display: inline-block; }
   .page-create-project-why .your-story .cover #cover-upload {
@@ -2536,6 +2547,9 @@ header.showcase-project .next {
 .borderedless td, .borderedless th {
   border: none !important;
   padding-left: 0 !important; }
+
+.modal-body .file-upload a {
+  margin-bottom: 10px; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -3235,7 +3249,7 @@ header.showcase-project .next {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
       font-family: "Messina Modern Regular";
-      font-size: 4em;
+      font-size: 3.5em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;

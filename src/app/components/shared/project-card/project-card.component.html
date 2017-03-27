@@ -8,7 +8,7 @@
       <p *ngIf="projectCard.challenge_name"> Entered in <a (click)="challengePage(projectCard.challenge_nid)">{{projectCard.challenge_name}}</a></p>
     </div>
     <div class="list-unstyled icons">
-      <span><i class="fa fa-lg fa-video-camera"></i></span>
+      <span *ngIf="projectCard.video_check"><i class="fa fa-lg fa-video-camera"></i></span>
       <span><i class="fa fa-lg fa-trophy"></i>1</span>
       <span><i class="fa fa-lg fa-clock-o"></i>1</span>
     </div>
@@ -20,8 +20,10 @@
         <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
       </div>
       <div class="icons-side flex-row d-flex align-items-start">
-        <img src="./assets/images/icons/icon-blue-ribbon.svg" />
-        <img src="./assets/images/icons/icon-challenge-winner.svg" />
+        <div *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="">
+                              
+            </div>
       </div>
     </div>
     <div class="content-side col">
