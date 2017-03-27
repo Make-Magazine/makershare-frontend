@@ -283,7 +283,6 @@ export class YourStoryComponent implements OnInit {
         image.src = loadEvent.target.result;
         cropper.setImage(image);
     };
-
     myReader.readAsDataURL(file);
   }
 }
