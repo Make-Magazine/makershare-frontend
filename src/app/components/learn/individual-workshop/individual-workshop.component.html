@@ -18,7 +18,7 @@
               <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
             </div>
             <div class="clearfix"></div>
-            <h2>{{workshop.workshop_title}}</h2>
+            <h2 [innerHTML]="workshop.workshop_title"> </h2>
           </div>
         </div>
         <!-- End container -->
@@ -36,7 +36,6 @@
                 <div [innerHTML]="workshop?.brief_description"> </div>
                 <div [innerHTML]="workshop?.introductory_video"></div>
               </div>
-              <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
               <!-- End intro -->
             </div>
             <!-- End of workshop ngIf -->
@@ -47,7 +46,7 @@
                   <h4>{{object.lesson_name}}</h4>
                   <div class="media">
                     <div class="image-container d-flex mr-1">
-                      <img src="{{object.object_image}}" alt="" (click)="preview(i)" data-toggle="modal" data-target="#previewer"
+                      <img src="{{object.object_image}}" alt="" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer"
                         height="150" width="200">
                     </div>
                     <div class="media-body">
@@ -59,13 +58,13 @@
                       </p>
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
-                    <ul class="list-unstyled recommended">
+                  </div>
+                   <ul class="list-unstyled recommended">
                       <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
                       <a href="">
                         <div [innerHTML]="object.related_projects"> </div>
                       </a>
                     </ul>
-                  </div>
                 </div>
               </div>
               <!-- End  ngif of pdf object -->
@@ -154,18 +153,24 @@
             <div *ngFor="let object of objects; let i=index;">
               <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
             </div>
-            <li><a pageScroll href="#lesson">Resources</a></li>
+
+           <div *ngFor="let lesson of lessons">
+            <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+            <li ><a pageScroll href="#lesson">Resources</a></li>
+          </div>
+          </div>
           </ul>
         </aside>
         <!-- End aside -->
+
         <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3">
-          <div *ngIf="lesson" class="">
-            <h4> Like these lessons? Learn more:</h4>
+          <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+           <h4> Like these lessons? Learn more:</h4>
             <ul class="list-unstyled suggested" id="lesson">
               <li>
                 <div class="media">
-                  <div class="image-container d-flex mr-1">
-                    <img src="{{lesson.book_cover}}" alt="...">
+                  <div *ngIf= "lesson.book_cover" class="image-container d-flex mr-1">
+                    <img src="{{lesson.book_cover}}" alt="">
                   </div>
                   <div class="media-body">
                     <p> {{lesson.book_title}}</p>
@@ -181,45 +186,8 @@
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="media">
-                  <div class="image-container d-flex mr-1">
-                    <img src="{{lesson.book_cover}}" alt="...">
-                  </div>
-                  <div class="media-body">
-                    <p> {{lesson.book_title}}</p>
-                    <a href="{{lesson.o_reilly}}">
-                      <p> {{lesson.o_reilly}}</p>
-                    </a>
-                    <a href="{{lesson.barnes_noble}}">
-                      <p> {{lesson.barnes_noble}} </p>
-                    </a>
-                    <a href="{{lesson.amazon}}">
-                      <p> {{lesson.amazon}}</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media">
-                  <div class="image-container d-flex mr-1">
-                    <img src="{{lesson.book_cover}}" alt="...">
-                  </div>
-                  <div class="media-body">
-                    <p> {{lesson.book_title}}</p>
-                    <a href="{{lesson.o_reilly}}">
-                      <p> {{lesson.o_reilly}}</p>
-                    </a>
-                    <a href="{{lesson.barnes_noble}}">
-                      <p> {{lesson.barnes_noble}} </p>
-                    </a>
-                    <a href="{{lesson.amazon}}">
-                      <p> {{lesson.amazon}}</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+             </ul>
+
             <!-- End suggested -->
           </div>
           <!-- End of more lesson Checker -->
@@ -243,4 +211,6 @@
       <app-book [link]="epubLink"></app-book>
     </div>
   </div>
+
 </template>
+

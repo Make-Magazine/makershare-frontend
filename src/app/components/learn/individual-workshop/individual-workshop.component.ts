@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef,Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -34,6 +34,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubLink;
   utubelink;
   file;
+  @Input() name;
 
   constructor(
     private route: ActivatedRoute,
@@ -58,7 +59,7 @@ export class IndividualWorkshopComponent implements OnInit {
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
-          console.log(data);
+         // console.log(data);
           this.workshop = data[0];
           if (this.workshop.introductory_video) {
            if (this.youtube_parser(this.workshop.introductory_video)) {
@@ -85,7 +86,7 @@ export class IndividualWorkshopComponent implements OnInit {
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
-          console.log(this.objects)
+          //console.log(this.objects)
           for (let object in this.objects) {
             if (this.objects[object].video && this.objects[object].video !== '') {
                if (this.youtube_parser(this.objects[object].video)) {
@@ -116,7 +117,8 @@ export class IndividualWorkshopComponent implements OnInit {
 
       this.viewService.getView('more-lessons', [['nid', this.nid]])
         .subscribe(data => {
-          this.lessons = data;
+            this.lessons = data;
+          
         });
 
     this.userService.getStatus().subscribe(data => {
@@ -165,16 +167,6 @@ export class IndividualWorkshopComponent implements OnInit {
     var match = url.match(regExp);
     return match[5];
   }
-  /* function get current user */
-  // getCurrentUser() {
-  //     this.userService.getStatus().subscribe(data => {
-  //     this.currentuser = data;
-  //   });
-  // }
-
-
- 
-
   open(content,i:number,mode:string) {
     if(mode === 'preview'){
       this.preview(i);
@@ -183,6 +175,11 @@ export class IndividualWorkshopComponent implements OnInit {
     }
     this.modalService.open(content);
   }
-
-
+limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
 }
