@@ -7,6 +7,7 @@ import { ProjectForm } from '../../../../models/project/project-form/project';
 import { field_collection_item_member }  from '../../../../models/project/project-form/field_collection_item';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { UserInvitations } from '../../../../models/project/project-form/UserInvitations'
 
 @Component({
   selector: 'app-project-form-team',
@@ -16,9 +17,11 @@ export class TeamComponent implements OnInit {
   @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
 
+  InvitationEmails:UserInvitations;
   TeamForm: FormGroup;
   SelectedUser = [];
   searchFailed = false;
+  EmailValid = true;
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +53,8 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(this.project.field_maker_memberships.und[0].field_team_member.und[0].target_id);
+    this.InvitationEmails = new UserInvitations(uid);
   }
   
   buildForm(): void {
@@ -75,29 +80,41 @@ export class TeamComponent implements OnInit {
     this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
   }
 
-  SetMember(uid,index){
+  SetMember(uid,index,email?){
     const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
-    this.viewService.getView('maker_profile_card_data',[['uid',uid]]).subscribe(data => {
-      this.SelectedUser[index] = data[0];
-      control['controls'].uid.setValue(uid);
-      control['controls'].field_team_member.setValue(data[0].username+' ('+uid+')');
-      control['controls'].field_sort_order.setValue(index+1);
-      let member:field_collection_item_member = {
-        field_team_member:{und:[{target_id:data[0].username+' ('+uid+')'}]},
-        field_sort_order:{und:[{value:index+1}]},
-        field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]}
-      };
-      if(!this.project.field_maker_memberships.und[index]){
-        this.project.field_maker_memberships.und.push(member);
+    if(email){
+      this.SelectedUser[index] = {invitation:true,email:email};
+      control['controls'].uid.setValue(0);
+      control['controls'].field_team_member.setValue(email);
+      this.SetValueChangeSubscriber(index,control);
+    }else{
+      this.viewService.getView('maker_profile_card_data',[['uid',uid]]).subscribe(data => {
+        data.uid = uid;
+        this.SelectedUser[index] = data[0];
+        control['controls'].uid.setValue(data.uid);
+        control['controls'].field_team_member.setValue(data[0].username+' ('+data.uid+')');
+        this.SetValueChangeSubscriber(index,control,data);
+    });
+    }
+  }
+
+  SetValueChangeSubscriber(index,control,data?){
+    control['controls'].field_sort_order.setValue(index+1);
+    let member:field_collection_item_member = {
+      field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
+      field_sort_order:{und:[{value:index+1}]},
+      field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]}
+    };
+    if(!this.project.field_maker_memberships.und[index]){
+      this.project.field_maker_memberships.und.push(member);
+    }
+    control.valueChanges.subscribe(values => {
+      if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
+        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
+      }else{
+        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
       }
-      control.valueChanges.subscribe(values => {
-        if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
-          this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
-        }else{
-          this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
-        }
-        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
-      });
+      this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
     });
   }
   
@@ -146,6 +163,12 @@ export class TeamComponent implements OnInit {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
     let newrow = control.at(NewIndex);
+    if(NodeHelper.IsEmail(control.value[CurrentIndex].field_team_member) && NodeHelper.IsEmail(control.value[NewIndex].field_team_member)){
+      let CurrentEmailIndex = this.InvitationEmails.mails.indexOf(control.value[CurrentIndex].field_team_member);
+      let NewEmailIndex = this.InvitationEmails.mails.indexOf(control.value[NewIndex].field_team_member);
+      this.InvitationEmails[CurrentEmailIndex] = control.value[NewIndex].field_team_member;
+      this.InvitationEmails[NewEmailIndex] = control.value[CurrentIndex].field_team_member;
+    }
     control.setControl(CurrentIndex,newrow);
     control.setControl(NewIndex,currentrow);
     let currentmember = this.project.field_maker_memberships.und[CurrentIndex];
@@ -156,6 +179,11 @@ export class TeamComponent implements OnInit {
   }
   RemoveRow(i: number,ControlName) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
+    let email = control.value[i].field_team_member;
+    if(NodeHelper.IsEmail(email)){
+      this.InvitationEmails.mails.splice(this.InvitationEmails.mails.indexOf(email) ,1)
+      console.log(this.InvitationEmails);
+    }
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
     this.project[ControlName].und.splice(i, 1);
@@ -181,10 +209,29 @@ export class TeamComponent implements OnInit {
       },
       'field_team_member':{
         'required':'Name is required',
+        'email':'Email address is not valid',
+        'inarray':'Email already invited',
       },       
       'uid':{
         'required':'uid is required',
       },
     },
   };
+
+  InviteUser(input:HTMLInputElement,index){
+    if(NodeHelper.IsEmail(input.value)){
+      if(this.InvitationEmails.mails.indexOf(input.value) !== -1){
+        this.formErrors.field_maker_memberships[index].field_team_member = this.validationMessages.field_maker_memberships.field_team_member.inarray;
+        this.EmailValid = false;
+      }else{
+        this.InvitationEmails.mails.push(input.value);
+        this.formErrors.field_maker_memberships[index].field_team_member = '';
+        this.EmailValid = true;// check
+        this.SetMember(0,index,input.value);
+      }
+    }else{
+      this.EmailValid = false;
+      this.formErrors.field_maker_memberships[index].field_team_member = this.validationMessages.field_maker_memberships.field_team_member.email;
+    }
+  }
 }
