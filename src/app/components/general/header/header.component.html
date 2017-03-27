@@ -21,7 +21,7 @@
         <li class="search-icon">
           <a href=""><img src="./assets/images/icons/search.svg" alt=""></a>
         </li>
-                <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
+        <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
       </ul>
     </div>
     <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
@@ -57,6 +57,9 @@
           <a class="nav-link" href="#">Makers.Intel.com</a>
           <a class="nav-link" href="#">Maker Camp</a>
           <a class="nav-link" href="#">Intel Innovation Programs</a>
+        </li>
+        <li class="nav-item hidden-md-up">
+          <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
         </li>
         <li class="nav-item dropdown  hidden-sm-down">
           <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button"
