@@ -213,8 +213,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  // Takes the dropped image and displays it in the image tag
-  private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
+   // Takes the dropped image and displays it in the image ElementTagNameMap
+   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
 
     // Respond to the reason for rejection
   }
@@ -223,4 +223,12 @@ export class ProfileComponent implements OnInit {
     this.profile.profile_cover = this.data.image;
     this.saveProfile();
   }
+
+ limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
 }

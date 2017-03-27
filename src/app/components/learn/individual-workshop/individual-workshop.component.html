@@ -157,6 +157,7 @@
           </ul>
         </aside>
         <!-- End aside -->
+        
         <div *ngFor="let lesson of lessons" class="col-12">
           <div *ngIf="lesson" class="">
             <h4> Like these lessons? Learn more:</h4>
@@ -180,45 +181,7 @@
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="media">
-                  <div class="image-container d-flex mr-3">
-                    <img src="{{lesson.book_cover}}" alt="...">
-                  </div>
-                  <div class="media-body">
-                    <p> {{lesson.book_title}}</p>
-                    <a href="{{lesson.o_reilly}}">
-                      <p> {{lesson.o_reilly}}</p>
-                    </a>
-                    <a href="{{lesson.barnes_noble}}">
-                      <p> {{lesson.barnes_noble}} </p>
-                    </a>
-                    <a href="{{lesson.amazon}}">
-                      <p> {{lesson.amazon}}</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media">
-                  <div class="image-container d-flex mr-3">
-                    <img src="{{lesson.book_cover}}" alt="...">
-                  </div>
-                  <div class="media-body">
-                    <p> {{lesson.book_title}}</p>
-                    <a href="{{lesson.o_reilly}}">
-                      <p> {{lesson.o_reilly}}</p>
-                    </a>
-                    <a href="{{lesson.barnes_noble}}">
-                      <p> {{lesson.barnes_noble}} </p>
-                    </a>
-                    <a href="{{lesson.amazon}}">
-                      <p> {{lesson.amazon}}</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+             </ul>
             <!-- End suggested -->
           </div>
           <!-- End of more lesson Checker -->

@@ -166,16 +166,6 @@ export class IndividualWorkshopComponent implements OnInit {
     var match = url.match(regExp);
     return match[5];
   }
-  /* function get current user */
-  // getCurrentUser() {
-  //     this.userService.getStatus().subscribe(data => {
-  //     this.currentuser = data;
-  //   });
-  // }
-
-
- 
-
   open(content,i:number,mode:string) {
     if(mode === 'preview'){
       this.preview(i);
@@ -184,6 +174,11 @@ export class IndividualWorkshopComponent implements OnInit {
     }
     this.modalService.open(content);
   }
-
-
+limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
 }
