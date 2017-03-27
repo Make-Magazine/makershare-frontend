@@ -255,7 +255,6 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(mid:number, i) {
-      //console.log(mid)
       this.pm.deleteMessage(mid).subscribe(data=>{
         console.log(data)
       }) 

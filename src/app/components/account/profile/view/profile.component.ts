@@ -114,8 +114,6 @@ export class ProfileComponent implements OnInit {
   saveInfo() {
     // this.optionalForm.value;
     this.profile.nickname = this.info.nickname;
-    this.profile.address.city = this.info.address.city;
-    this.profile.address.state = this.info.address.state;
     this.saveProfile();
   }
 
