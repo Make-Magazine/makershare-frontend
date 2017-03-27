@@ -9,10 +9,13 @@ import { ProjectForm } from '../../../../models/project/project-form/project';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 import { CropperSettings } from 'ng2-img-cropper';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
+  providers: [NgbTooltipConfig],
   styles : [`
       .add-cate {margin-left:5px}
       .cate-name {margin: 3px 0}
@@ -58,9 +61,11 @@ export class YourStoryComponent implements OnInit {
     private viewService: ViewService,
     private fileService: FileService,
     private modalService: NgbModal,
-    
+    private config: NgbTooltipConfig,
   ) {
     this.SetCropperSettings();
+    config.placement = 'right';
+    config.triggers = 'click:blur';
   }
 
   /**
@@ -258,6 +263,34 @@ export class YourStoryComponent implements OnInit {
      'field_story': {
        'required': 'Story is required.'
      },
+   };
+
+   TooltipText = {
+     'projectName': {
+       'title': 'How to Choose a Project Name:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!'
+     },
+     'category': {
+       'title': 'Choosing a category',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+     },
+     'teaser': {
+       'title': 'Writing a teaser:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+     },
+     'show_tell': {
+       'title': 'Making an awesome SHOW &amp; TELL video:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!',
+       'img_src' : 'http://placehold.it/160x90'
+     },
+     'AHA': {
+       'title': 'AHA ad UH-OH Moments',
+       'guide' : 'Talk about a positive breakthrough you had while working on the project, or a learning experience or something that went horribly, horribly wrong...'
+     },
+     'story': {
+       'title': 'Tips for creating a great story:',
+       'guide' : `<p>Think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn’t turn out the way you planned, what did you learn from your “failure”?</p><p>Definitely include a video and photos of the finished product. </p>`
+     }
    };
 
   SetCropperSettings():void{
