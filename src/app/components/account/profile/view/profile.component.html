@@ -75,7 +75,7 @@
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
 									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
-									<p [innerHTML]= "profile.bio"></p>
+									<p [innerHTML]="profile.bio"></p>
 								</div>
 								<div *ngIf="!profile.bio" class="bio">
 									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-bio-modal">
@@ -271,7 +271,7 @@
 											</span>
 										</div>
 										<div class="modal-body">
-											<div ng2FileDrop class="upload-tab pull-left"	(ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+											<div ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
 												<img *ngIf="!CoverImageData.original" src="./assets/images/Drag_Drop.png" alt="">
 												<img-cropper [hidden]="!CoverImageData.original" #cropper [image]="CoverImageData" [settings]="cropperSettings"></img-cropper><br>
 
@@ -284,46 +284,46 @@
 													Select a photo from your computer
 													<input type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 												</a>
-										</div>
-										<div class="your-photo-tab">
-											<p>Percent of storage used (3.2 MB of 100 MB)</p>
-											<div class="progress">
-												<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
-													<span class="profile-progress">10%</span>
+											</div>
+											<div class="your-photo-tab">
+												<p>Percent of storage used (3.2 MB of 100 MB)</p>
+												<div class="progress">
+													<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
+														<span class="profile-progress">10%</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
+													<div class="col-md-3 col-sm-6 image-container">
+														<img src="http://placehold.it/200x200" alt="" class="img-responsive">
+														<i class="fa fa-lg fa-close"></i>
+													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-												<div class="col-md-3 col-sm-6 image-container">
-													<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-													<i class="fa fa-lg fa-close"></i>
-												</div>
-											</div>
 										</div>
-									</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-main" data-dismiss="modal" (click)="saveCropped()">Save</button>
@@ -331,63 +331,63 @@
 									</div>
 								</div>
 							</div>
-					</div>
-					<!-- Add bio Modal -->
-					<div id="add-bio-modal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title">Add your bio</h4>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-								<div class="modal-body">
-									<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.describe_yourself" placeholder="Start your story" nKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,550);"
-										onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,550);" maxlength="550">
-										</textarea>
-										<font size="1">(Maximum characters: 550)<br> You have
-											<input readonly type="text" name="countdown" size="3" value="550"> characters left.
-										</font>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-main done-btn" (click)="saveBio()" data-dismiss="modal">Done</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Add interests Modal -->
-					<div id="add-interests-modal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Add up to 20 interests</h4>
-								</div>
-								<div class="modal-body">
 
-									<div class="form-group">
-										<tag-input (onSelect)="onSelected($event)" [(ngModel)]="info.maker_interests" [identifyBy]="'name'" [displayBy]="'name'"
-											[onlyFromAutocomplete]="true">
-											<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
-											</tag-input-dropdown>
-											</tag-input>
+							<!-- Add bio Modal -->
+							<div id="add-bio-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Add your bio</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.describe_yourself" placeholder="Start your story" nKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,550);"
+												onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,550);" maxlength="550">
+												</textarea>
+												<font size="1">(Maximum characters: 550)<br> You have
+													<input readonly type="text" name="countdown" size="3" value="550"> characters left.
+												</font>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main done-btn" (click)="saveBio()" data-dismiss="modal">Done</button>
+										</div>
 									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-blue" (click)="saveIntersets()" data-dismiss="modal">Done</button>
-								</div>
 							</div>
+							<!-- Add interests Modal -->
+							<div id="add-interests-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Add up to 20 interests</h4>
+										</div>
+										<div class="modal-body">
 
-						<!--</div>
+											<div class="form-group">
+												<tag-input (onSelect)="onSelected($event)" [(ngModel)]="info.maker_interests" [identifyBy]="'name'" [displayBy]="'name'"
+													[onlyFromAutocomplete]="true">
+													<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
+													</tag-input-dropdown>
+													</tag-input>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-blue" (click)="saveIntersets()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+
+									<!--</div>
 					</div>-->
-					<!-- Add Makerspace Modal -->
-					<!--<div id="add-makerspace-modal" class="modal fade" role="dialog">
+									<!-- Add Makerspace Modal -->
+									<!--<div id="add-makerspace-modal" class="modal fade" role="dialog">
 						<div class="modal-dialog">-->
-							<!-- Modal content-->
-							<!--<div class="modal-content">
+									<!-- Modal content-->
+									<!--<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Add your Makerspace(s)</h4>
@@ -403,131 +403,131 @@
 													<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"
 														id="url-1" placeholder="Type or paste">-->
 
-							<!-- Add Makerspace Modal -->
-							<div id="add-makerspace-modal" class="modal fade" role="dialog">
-								<div class="modal-dialog">
-									<!-- Modal content-->
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">Add your Makerspace(s)</h4>
-										</div>
-										<div class="modal-body">
-											<div class="form-group makerspace">
-												<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
-													<div class="maker-group">
-														<label for="makerspace-1">Makerspace name</label>
-														<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"-->
-														 <!--id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">-->
-														<label for="url-1">URL (optional)</label>
-														<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"-->
-														 <!--id="url-1" placeholder="Type or paste">-->
+									<!-- Add Makerspace Modal -->
+									<div id="add-makerspace-modal" class="modal fade" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+													<h4 class="modal-title">Add your Makerspace(s)</h4>
+												</div>
+												<div class="modal-body">
+													<div class="form-group makerspace">
+														<div class="maker-group" *ngFor="let markSpace of info.field_add_your_makerspace_s_; let i=index">
+															<div class="maker-group">
+																<label for="makerspace-1">Makerspace name</label>
+																<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_name" ng2-auto-complete [source]="allMarkersNames"-->
+																<!--id="makerspace-1" placeholder="Start typing to select from an existing Makerspace or add your own">-->
+																<label for="url-1">URL (optional)</label>
+																<!--<input type="text" class="form-control" [(ngModel)]="markSpace.field_makerspace_url" ng2-auto-complete [source]="allMarkersUrl"-->
+																<!--id="url-1" placeholder="Type or paste">-->
+															</div>
+														</div>
+														<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 													</div>
 												</div>
 												<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 											</div>
 										</div>
-										<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" (click)="saveMarkerspaces()" class="btn btn-blue" data-dismiss="modal">Done</button>
+										</div>
 									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-									<button type="button" (click)="saveMarkerspaces()" class="btn btn-blue" data-dismiss="modal">Done</button>
-								</div>
 							</div>
-						</div>
-					</div>
-					<!-- Add Social Modal -->
-					<div id="add-social-modal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Share your social and other Maker accounts:</h4>
-								</div>
-								<div class="modal-body">
+							<!-- Add Social Modal -->
+							<div id="add-social-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Share your social and other Maker accounts:</h4>
+										</div>
+										<div class="modal-body">
 
-									<div class="form-group socials">
-										<ul class="list-unstyled social-links">
-											<li>
-												<h4>Prefered?</h4>
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label">Website or Blog</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_website_or_blog" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label">Additional site</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_additional_site" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_facebook" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_instagram" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_linkedin" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_twitter" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_pinterest" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_youtube" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_youtube">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_hackster_io" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_instructables" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instructables">
-											</li>
-											<li class="form-group">
-												<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
-												<input type="text" [(ngModel)]="info.field_social_accounts.field_hackday" name="web-url">
-												<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackday">
-											</li>
-										</ul>
+											<div class="form-group socials">
+												<ul class="list-unstyled social-links">
+													<li>
+														<h4>Prefered?</h4>
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label">Website or Blog</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_website_or_blog" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label">Additional site</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_additional_site" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_facebook" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_instagram" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_linkedin" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_twitter" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_pinterest" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_youtube" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_youtube">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_hackster_io" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_instructables" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_instructables">
+													</li>
+													<li class="form-group">
+														<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
+														<input type="text" [(ngModel)]="info.field_social_accounts.field_hackday" name="web-url">
+														<input type="radio" [(ngModel)]="info.field_social_accounts.field_preferred" name="field_preferred" value="field_hackday">
+													</li>
+												</ul>
+											</div>
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-blue" (click)="saveSocial()" data-dismiss="modal">Done</button>
+										</div>
 									</div>
 
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-light-grey" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-blue" (click)="saveSocial()" data-dismiss="modal">Done</button>
-								</div>
 							</div>
-
-						</div>
+						</section>
 					</div>
-					</section>
+					<!-- End profile content -->
 				</div>
-				<!-- End profile content -->
+
+
 			</div>
-
-
+		</section>
+		<!-- End body-group -->
 	</div>
-	</section>
-	<!-- End body-group -->
-</div>
 </div>
