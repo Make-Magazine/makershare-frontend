@@ -10,36 +10,13 @@
 </template>
 
 <div class="region region-content col-sm-10" [formGroup]="TeamForm">
-  <div class="team" formArrayName="field_maker_memberships" dnd-sortable-container [sortableData]="TeamForm.controls.field_maker_memberships.controls" dnd-draggable [dropZones]="['TeamZone']">
+  <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
-      <div *ngIf="i==0">
+      <div>
         <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-7">
             <div *ngIf="SelectedUser && SelectedUser[i]">
-              <h5>Name</h5>
-              <app-user-card [uid]="SelectedUser[i].uid"></app-user-card>
-            </div>
-            <div class="clearfix"></div>
-            <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
-              <label for="collab-name-{{i + 1}}">Name</label>
-            </div>
-            <div class="form-group">
-              <label for="collab-role-{{i + 1}}">Role</label>
-              <input type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="role" [formControl]="Member.controls.field_membership_role">
-            </div>	
-          </div>
-          <div *ngIf="i==0" class="col-md-2 admin">
-              <h5>Admin</h5>
-              <i class="fa fa-check-square" aria-hidden="true"></i>
-          </div>
-        </div>
-        <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 2) && (i !==0) " (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
-      </div><!-- End add-collaborate -->
-      <div *ngIf="i!==0" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_maker_memberships')" dnd-draggable [dropZones]="['TeamZone']">
-        <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
-          <div class="col-md-7">
-            <div *ngIf="SelectedUser && SelectedUser[i]">
-              <h5>Name</h5>
+              <label>Name</label>
               <app-user-card [uid]="SelectedUser[i].uid"></app-user-card>
             </div>
             <div class="clearfix"></div>
@@ -61,18 +38,24 @@
               </small>
             </div>	
           </div>
-          <div class="col-md-3 col-md-offset-2">
-            <div class="form-group sort">
+          <div class="col-md-3">
+            <div class="form-group sort d-flex flex-row flex-md-column align-items-center">
               <label for="collab-order-{{i + 1}}">Sort Order</label>
-              <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
-              <div class="carets">
-                <i *ngIf="i > 1 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-2x fa-caret-up sort-up" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
-                <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && TeamForm.controls.field_maker_memberships.valid" class="fa fa-2x fa-caret-down sort-down" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
+              <div class="d-flex flex-row">
+                <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
+                <div class="carets d-flex flex-column">
+                  <i *ngIf="i > 1 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
+                  <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && i != 0 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
+                </div>
+                <small *ngIf="formErrors.field_maker_memberships[i].field_sort_order" class="text-danger">
+                  {{formErrors.field_maker_memberships[i].field_sort_order}}
+                </small>
               </div>
-              <small *ngIf="formErrors.field_maker_memberships[i].field_sort_order" class="text-danger">
-                {{formErrors.field_maker_memberships[i].field_sort_order}}
-              </small>
             </div>
+          </div>
+          <div *ngIf="i==0" class="col-md-2 admin d-flex flex-column">
+              <label>Admin</label>
+              <i class="fa fa-check-square" aria-hidden="true"></i>
           </div>
         </div>
         <a *ngIf="(TeamForm.controls.field_maker_memberships.controls.length > 1)" (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>

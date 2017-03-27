@@ -20,8 +20,9 @@
 		.contorls{
 			li {
 				// display: inline-block;
-				.btn-light-grey{
+				.btn-soft-grey{
 					background-color: $white;
+					color: $main-grey;
 				}
 				.btn-transparent {
 					color: $main-grey;
@@ -29,10 +30,7 @@
 				}
 				.btn {
 					padding: 5px 15px;
-				}
-				.btn-main {
-					left: 0;
-					top: 0;
+					font-size: 13px
 				}
 			}
 		}
@@ -90,19 +88,35 @@
 		.projectCategory {
 				width: 100%;
 				align-items:flex-start;
-				label,
-				.add-cate {
+				label {
 					margin-top: 5px;
 				}
+				.add-cate {
+					margin-bottom: 5px;
+					width: auto;
+				}
 				.categories-group {
+					width: 100%;
 					margin-left: 15px;
 					#projectCategoryParent, 
 					#projectCategoryChildren {
 						width: 100% !important;
 						margin-bottom: 5px;
+						padding: 5px 10px;
 					}
 				}
+				
+				p.cate-name {
+					margin-left: 15px;
+
+				}
+				.list-group-item {
+					width: 50%;
+				}
 		}
+		.cate-list {
+					padding: 0 30px;
+				}
 		.cover {
 			a {
 				margin-top: 5px;
@@ -250,7 +264,7 @@
 			max-width: 100%;
 		}
 		.form-group {
-			margin-top: 9px;
+			margin-top: 0px;
 		}
 		.add-collaborate {
 			border: 1px solid $main-grey;
@@ -270,7 +284,7 @@
 				display: inline-block;
 				vertical-align: middle;
 				i {
-					font-size: 15px;
+					font-size: 20px;
 				}
 		}
 		.add-collaborate {
@@ -311,6 +325,7 @@
 			}
 			.admin {
 				text-align: center;
+				
 				i {
 					color: $blue;
 					font-size: 20px;

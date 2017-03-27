@@ -191,13 +191,22 @@ export class ProfileComponent implements OnInit {
     myReader.readAsDataURL(file);
 }
 
-    private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
+     private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
       this.fileChangeListener(acceptedFile.file,cropper)
     }
+
 
   saveCropped(){
     if(!this.CoverImageData.image) return;
     this.profile.profile_cover = this.CoverImageData.image;
     this.saveProfile();
   }
+
+ limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
 }

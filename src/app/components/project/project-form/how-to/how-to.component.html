@@ -12,8 +12,8 @@
     </div>
     <div class="form-group tools">
       <label>Tools</label>
-      <div formArrayName="field_tools" dnd-sortable-container [sortableData]="HowToForm.controls.field_tools.controls" dnd-draggable [dropZones]="['ToolsZone']">
-        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_tools')" dnd-draggable [dropZones]="['ToolsZone']">
+      <div formArrayName="field_tools">
+        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="card">
           <div class="card-header">
             <span>Tool {{i + 1}}</span>
             <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_tools.controls.length > 0" (click)="RemoveRow(i,'field_tools')"></span>
@@ -69,8 +69,8 @@
     </div>
     <div class="form-group parts">
       <label>Boards & Kits</label>
-      <div formArrayName="field_parts" dnd-sortable-container [sortableData]="HowToForm.controls.field_parts.controls" dnd-draggable [dropZones]="['PartsZone']">
-        <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_parts')" dnd-draggable [dropZones]="['PartsZone']">
+      <div formArrayName="field_parts">
+        <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="card">
           <div class="card-header">
             <span>Part {{i + 1}}</span>
             <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_parts.controls.length > 0" (click)="RemoveRow(i,'field_parts')"></span>
@@ -111,8 +111,8 @@
     </div>
     <div class="form-group materials">
       <label>Materials</label>
-      <div formArrayName="field_materials" dnd-sortable-container [sortableData]="HowToForm.controls.field_materials.controls" dnd-draggable [dropZones]="['MaterialsZone']">
-        <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_materials')" dnd-draggable [dropZones]="['MaterialsZone']">
+      <div formArrayName="field_materials">
+        <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="card">
           <div class="card-header">
             <span>Material {{i + 1}}</span>
             <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_materials.controls.length > 0" (click)="RemoveRow(i,'field_materials')"></span>
@@ -137,7 +137,7 @@
               <div class="form-group col-md-3 d-flex flex-row flex-md-column align-items-center">
                 <label>Sort order</label>
                 <input id="material-sort-{{i + 1}}" type="text" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Material.controls.field_sort_order" readonly />
-                <div class="carets  d-flex flex-column">
+                <div class="carets d-flex flex-column">
                   <i *ngIf="i > 0" class="fa fa-2x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_materials')"></i>
                   <i *ngIf="i < HowToForm.controls.field_materials.controls.length - 1" class="fa fa-2x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_materials')"></i>
                 </div>
@@ -167,8 +167,8 @@
     </div>
     <div class="form-group resources">
       <label>Resources</label>
-      <div formArrayName="field_resources" dnd-sortable-container [sortableData]="HowToForm.controls.field_resources.controls" dnd-draggable [dropZones]="['ResourcesZone']">
-        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card" dnd-sortable [sortableIndex]="i" (dragenter)="SortElements('field_resources')" dnd-draggable [dropZones]="['ResourcesZone']">
+      <div formArrayName="field_resources">
+        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card">
           <div class="card-header">
             <span>Resource {{i + 1}}</span>
             <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_resources.controls.length > 0" (click)="RemoveRow(i,'field_resources')"></span>
