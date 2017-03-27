@@ -1,19 +1,19 @@
 /* New Variables */
 @font-face {
   font-family: "Messina Sans SemiBold";
-  src: url("fonts/MessinaSansWeb-SemiBold.eot?") format("eot"), url("fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"), url("fonts/MessinaSansWeb-SemiBold.woff") format("woff"), url("fonts/MessinaSans-SemiBold.otf") format("opentype"); }
+  src: url("../fonts/MessinaSansWeb-SemiBold.eot") format("eot"), url("../fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"), url("../fonts/MessinaSansWeb-SemiBold.woff") format("woff"), url("../fonts/MessinaSans-SemiBold.otf") format("opentype"); }
 @font-face {
   font-family: "Messina Sans Regular";
-  src: url("fonts/MessinaSansWeb-Regular.eot?") format("eot"), url("fonts/MessinaSansWeb-Regular.woff2") format("woff2"), url("fonts/MessinaSansWeb-Regular.woff") format("woff"), url("fonts/MessinaSans-Regular.otf") format("opentype"); }
+  src: url("../fonts/MessinaSansWeb-Regular.eot") format("eot"), url("../fonts/MessinaSansWeb-Regular.woff2") format("woff2"), url("../fonts/MessinaSansWeb-Regular.woff") format("woff"), url("../fonts/MessinaSans-Regular.otf") format("opentype"); }
 @font-face {
   font-family: "Messina Sans Bold";
-  src: url("fonts/MessinaSansWeb-Bold.eot?") format("eot"), url("fonts/MessinaSansWeb-Bold.woff2") format("woff2"), url("fonts/MessinaSansWeb-Bold.woff") format("woff"), url("fonts/MessinaSans-Bold.otf") format("opentype"); }
+  src: url("../fonts/MessinaSansWeb-Bold.eot") format("eot"), url("../fonts/MessinaSansWeb-Bold.woff2") format("woff2"), url("../fonts/MessinaSansWeb-Bold.woff") format("woff"), url("../fonts/MessinaSans-Bold.otf") format("opentype"); }
 @font-face {
   font-family: "Messina Modern Regular";
-  src: url("fonts/MessinaModernWeb-Regular.eot?") format("eot"), url("fonts/MessinaModernWeb-Regular.woff2") format("woff2"), url("fonts/MessinaModernWeb-Regular.woff") format("woff"), url("fonts/MessinaModern-Regular.otf") format("opentype"); }
+  src: url("../fonts/MessinaModernWeb-Regular.eot") format("eot"), url("../fonts/MessinaModernWeb-Regular.woff2") format("woff2"), url("../fonts/MessinaModernWeb-Regular.woff") format("woff"), url("../fonts/MessinaModern-Regular.otf") format("opentype"); }
 @font-face {
   font-family: "Messina Modern Bold";
-  src: url("fonts/MessinaModernWeb-Bold.eot?") format("eot"), url("fonts/MessinaModernWeb-Bold.woff2") format("woff2"), url("fonts/MessinaModernWeb-Bold.woff") format("woff"), url("fonts/MessinaModern-Bold.otf") format("opentype"); }
+  src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"), url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"), url("../fonts/MessinaModernWeb-Bold.woff") format("woff"), url("../fonts/MessinaModern-Bold.otf") format("opentype"); }
 header nav {
   font-size: 14px;
   color: #222; }
@@ -1633,21 +1633,21 @@ header.showcase-project .next {
   .profile-content .empty-content .import-page {
     font-size: 16px; }
 
-.profile-stats ul {
+.profile-stats .bookmark ul {
   padding-right: 0;
   margin-bottom: 0px; }
-  .profile-stats ul li {
+  .profile-stats .bookmark ul li {
     display: inline-block;
     margin: 0px;
     color: #222;
     font-weight: bold;
     padding-left: 2px;
     padding-right: 2px; }
-    .profile-stats ul li .number {
+    .profile-stats .bookmark ul li .number {
       font-size: 20px;
       font-weight: normal;
       margin-right: 4px; }
-    .profile-stats ul li p {
+    .profile-stats .bookmark ul li p {
       display: inline-block;
       white-space: normal;
       width: 70px;
@@ -1657,28 +1657,28 @@ header.showcase-project .next {
 
 .profile-empty-edit .profile-stats {
   overflow: hidden; }
-  .profile-empty-edit .profile-stats ul {
+  .profile-empty-edit .profile-stats .bookmark ul {
     padding-right: 0;
     margin-bottom: 0px; }
-    .profile-empty-edit .profile-stats ul li {
+    .profile-empty-edit .profile-stats .bookmark ul li {
       display: inline-block;
       margin: 0px;
       color: #222;
       font-weight: bold;
       padding-left: 2px;
       padding-right: 2px; }
-      .profile-empty-edit .profile-stats ul li .number {
+      .profile-empty-edit .profile-stats .bookmark ul li .number {
         font-size: 25px;
         font-weight: normal;
         margin-right: 4px; }
-      .profile-empty-edit .profile-stats ul li p {
+      .profile-empty-edit .profile-stats .bookmark ul li p {
         display: inline-block;
         white-space: normal;
         width: 70px;
         margin-left: 10px;
         font-size: 12px;
         margin: 0 auto; }
-      .profile-empty-edit .profile-stats ul li i {
+      .profile-empty-edit .profile-stats .bookmark ul li i {
         margin-top: 9px; }
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -1927,7 +1927,8 @@ header.showcase-project .next {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 30px; }
+  line-height: 30px;
+  text-align: left; }
 .project .card-text {
   overflow: hidden;
   display: -webkit-box;
@@ -1953,14 +1954,14 @@ header.showcase-project .next {
     .project .card-stats ul li i {
       margin-right: 6px;
       font-size: 20px; }
+    .project .card-stats ul li span {
+      margin: 0px; }
 
 .profile-page {
   background-color: #F2F2F2;
   margin: 0px; }
   .profile-page .main-header {
     background-color: white; }
-  .profile-page .card {
-    background-color: inherit !important; }
   .profile-page .card-block {
     background-color: white; }
     .profile-page .card-block .icons-side img {
@@ -1990,11 +1991,6 @@ header.showcase-project .next {
         color: white; }
       .profile-page .cover-region .profile-name .row .bookmark .message {
         color: #EC1F30 !important; }
-  .profile-page .projects-grid .image-top {
-    position: relative;
-    width: 100%;
-    height: 260px;
-    overflow: hidden; }
 
 .overlay {
   width: 100%;
@@ -2074,21 +2070,24 @@ header.showcase-project .next {
   font-size: 12px; }
   .showcase .content h4.title {
     font-family: "Messina Modern Bold";
-    font-size: 1.125em;
+    font-size: 1.5em;
     font-weight: 700;
     text-transform: none;
     line-height: 100%;
     color: #828282;
     color: #4F4F4F;
     text-overflow: ellipsis;
-    word-wrap: break-word;
     overflow: hidden;
-    max-height: 36px;
-    line-height: 18px;
-    height: 40px; }
+    max-height: 40px;
+    line-height: 20px;
+    height: 38px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
   .showcase .content .description {
     font-family: "Messina Sans SemiBold";
-    font-size: 0.875em;
+    font-size: 1em;
     font-weight: 600;
     text-transform: none;
     line-height: 100%;
@@ -2096,18 +2095,22 @@ header.showcase-project .next {
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
-    max-height: 52px;
     line-height: 18px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; }
+    font-size: 15px; }
+    .showcase .content .description p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 30px;
+      min-height: 54px; }
   .showcase .content .number {
     float: left; }
   .showcase .content .timestamp {
     float: right; }
   .showcase .content .number, .showcase .content .timestamp {
     font-family: "Messina Sans SemiBold";
-    font-size: 0.75em;
+    font-size: 1em;
     font-weight: 600;
     text-transform: none;
     line-height: 100%;
@@ -3210,7 +3213,7 @@ header.showcase-project .next {
         margin-bottom: 5px; }
       .total-result .project-result .projects-item .card-text {
         font-family: "Messina Sans SemiBold";
-        font-size: 0.875em;
+        font-size: 1em;
         font-weight: 600;
         text-transform: none;
         line-height: 100%;
@@ -3319,7 +3322,7 @@ header.showcase-project .next {
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city, .total-result .makers-item .content-bottom .content-side .count {
       font-family: "Messina Sans SemiBold";
-      font-size: 0.875em;
+      font-size: 1em;
       font-weight: 600;
       text-transform: none;
       line-height: 100%;

@@ -19,16 +19,6 @@ export class EditProfileComponent implements OnInit {
   private basicComponent: BasicInfoComponent;
 
   currentTab = 'basic';
-  userProfile: UserProfile = {
-    name: 'testar',
-    user_photo: '',
-    bio: '',
-    started_making: '',
-    field_social_accounts: this.profileSocial,
-    address: {},
-    pass:"MOcs56"
-  };
-
   profileSocial: ProfileSocial = {
     field_website_or_blog: '',
     field_additional_site: '',
@@ -42,6 +32,18 @@ export class EditProfileComponent implements OnInit {
     field_instructables: '',
     field_hackday: ''
   };
+
+
+  userProfile: UserProfile = {
+    name: 'testar',
+    user_photo: '',
+    bio: '',
+    started_making: '',
+    field_social_accounts: this.profileSocial,
+    address: {},
+    pass:"MOcs56"
+  };
+
 
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute,

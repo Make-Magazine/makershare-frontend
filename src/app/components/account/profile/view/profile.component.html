@@ -6,7 +6,7 @@
 				<a href="" class="btn btn-light-grey edit hidden-sm-down" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i> &nbsp;Edit cover photo&nbsp;</a>
 				<a href="" class="btn btn-light-grey edit hidden-md-up" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i></a>
 				<img src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">
-				<div class="profile-name profile-stats hidden-md-up">
+				<div class="profile-name profile-stats">
 					<div class="row container">
 						<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
 							<!-- Start Bookmsrk-section -->
@@ -77,6 +77,7 @@
 									</a>
 								</div>
 								<!-- End Bio -->
+
 								<ul class="list-unstyled interests" *ngIf="profile.maker_interests && profile.maker_interests.length > 0">
 									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
 									<div *ngFor="let interest of profile.maker_interests">
@@ -84,8 +85,6 @@
 									</div>
 								</ul>
 								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
-									<h5>Makerspaces</h5>
-									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-makerspace-modal"><i class="fa fa-lg fa-pencil"></i></a>
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 									</li>
@@ -154,7 +153,7 @@
 
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
-					<div class="profile-name profile-stats hidden-sm-down">
+					<div class="profile-name profile-stats">
 						<div class="row container">
 							<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
 								<li>
@@ -186,7 +185,7 @@
 							<!-- End Bookmark-section -->
 						</div>
 						<div class="profile-content">
-							<div class="empty-content row">
+							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects></profile-projects>
 								</div>
