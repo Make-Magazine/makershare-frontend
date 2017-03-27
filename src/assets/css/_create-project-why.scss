@@ -20,8 +20,9 @@
 		.contorls{
 			li {
 				// display: inline-block;
-				.btn-light-grey{
+				.btn-soft-grey{
 					background-color: $white;
+					color: $main-grey;
 				}
 				.btn-transparent {
 					color: $main-grey;
@@ -29,10 +30,7 @@
 				}
 				.btn {
 					padding: 5px 15px;
-				}
-				.btn-main {
-					left: 0;
-					top: 0;
+					font-size: 13px
 				}
 			}
 		}
