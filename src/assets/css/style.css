@@ -2456,7 +2456,7 @@ header.showcase-project .next {
     .page-create-project-why .team input {
       max-width: 100%; }
     .page-create-project-why .team .form-group {
-      margin-top: 9px; }
+      margin-top: 0px; }
     .page-create-project-why .team .add-collaborate {
       border: 1px solid #222;
       border-radius: 0; }
@@ -2472,7 +2472,7 @@ header.showcase-project .next {
       display: inline-block;
       vertical-align: middle; }
       .page-create-project-why .team .carets i {
-        font-size: 15px; }
+        font-size: 20px; }
     .page-create-project-why .team .add-collaborate {
       position: relative;
       background-color: #BEBEBE;

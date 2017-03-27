@@ -264,7 +264,7 @@
 			max-width: 100%;
 		}
 		.form-group {
-			margin-top: 9px;
+			margin-top: 0px;
 		}
 		.add-collaborate {
 			border: 1px solid $main-grey;
@@ -284,7 +284,7 @@
 				display: inline-block;
 				vertical-align: middle;
 				i {
-					font-size: 15px;
+					font-size: 20px;
 				}
 		}
 		.add-collaborate {
@@ -325,6 +325,7 @@
 			}
 			.admin {
 				text-align: center;
+				
 				i {
 					color: $blue;
 					font-size: 20px;
