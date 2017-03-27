@@ -2578,6 +2578,9 @@ header.showcase-project .next {
 .modal-body .file-upload a {
   margin-bottom: 10px; }
 
+.tooltip-inner {
+  max-width: 400px !important; }
+
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
   .page-challenge-summary .top-content-wrapper .challenge-cover, .page-challenge-summary-closed .top-content-wrapper .challenge-cover, .page-enter-challenge .top-content-wrapper .challenge-cover {
