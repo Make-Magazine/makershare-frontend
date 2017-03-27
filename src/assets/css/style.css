@@ -766,7 +766,7 @@ footer {
 .user-card .profile-pic-container a {
   width: 100%; }
 .user-card .profile-pic-container .icons img {
-  width: 25px; }
+  width: 27px; }
 .user-card .user-name {
   font-family: "Messina Modern Bold";
   font-size: 1.125em;
@@ -1534,6 +1534,16 @@ header.showcase-project .next {
     font-size: 14px; }
   .profile-sidebar .progress {
     margin-bottom: 10px; }
+  .profile-sidebar .single-icon {
+    width: 100%; }
+    .profile-sidebar .single-icon img {
+      width: 34px;
+      height: 40px;
+      padding: 3px; }
+    .profile-sidebar .single-icon p {
+      margin-bottom: 1px;
+      line-height: normal;
+      padding: 10px 0px; }
   .profile-sidebar .interests {
     margin: 0px; }
   .profile-sidebar a.add {
@@ -2021,7 +2031,7 @@ header.showcase-project .next {
   .profile-page .card-block {
     background-color: white; }
     .profile-page .card-block .icons-side img {
-      width: 30px;
+      width: 24px;
       height: 30px; }
   .profile-page .load-more {
     width: 100%; }

@@ -87,6 +87,19 @@
 		.profile-progress {
 		}
 	}
+	.single-icon {
+		width: 100%;
+		img {
+    width: 34px;
+    height: 40px;
+    padding: 3px;
+		}
+		p {
+    margin-bottom: 1px;
+    line-height: normal;
+    padding: 10px 0px;
+		}
+	}
 	.interests {
 		margin: 0px;
 	}
@@ -688,7 +701,7 @@
 	background-color: white;
 		.icons-side {
 			img {
-				width: 30px;
+				width: 24px;
 				height: 30px;
 			}
 		}
