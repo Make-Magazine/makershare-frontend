@@ -11,7 +11,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
 import { ViewService } from '../../../../d7services/view/view.service';
-
+import { FileEntity } from '../../../../models/Drupal/file_entity';
+import { domain } from '../../../../d7services/example.globals';
+import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { FileService } from '../../../../d7services/file/file.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,18 +23,19 @@ import { ViewService } from '../../../../d7services/view/view.service';
 export class ProfileComponent implements OnInit {
  
   userId = localStorage.getItem('user_id');
-   badges=[];
+  badges=[];
   // cover declarations
   cropperSettings: CropperSettings;
   coverPhotoSrc: string;
   coverPhotoAttached: boolean = false;
   CoverImageData:any;
-  public rendrer:Renderer;
+  coverFile:FileEntity={filename:"",file:""};
   //end of cover declarations
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
   allIntersets: any[] = [];
-
+  
+  temp:string;
   items: any[] = [];
   optionalForm: FormGroup;
   imageSrc: string = "http://placehold.it/100x100";
@@ -61,6 +65,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
+    private fileService: FileService
   ) { 
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 100;
@@ -84,6 +89,10 @@ export class ProfileComponent implements OnInit {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
       this.profile = res;
+      this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {     
+    			console.log(res);
+          this.profile.profile_cover = res.uri;
+        });
       this.profile.pass = "MOcs56";
       console.log(res);
     }, err => {
@@ -192,8 +201,10 @@ export class ProfileComponent implements OnInit {
         image.src = loadEvent.target.result;
         cropper.setImage(image);
     };
-
+    
     myReader.readAsDataURL(file);
+    this.coverFile.filename = file.name;
+    this.coverFile.uri = domain+"/sites/default/files/maker/cover_photo/"+file.name;
 }
 
      private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
@@ -203,18 +214,15 @@ export class ProfileComponent implements OnInit {
 
   saveCropped(){
     if(!this.CoverImageData.image) return;
-    this.profile.profile_cover = this.CoverImageData.image;
+    //this.profile.profile_cover = this.CoverImageData.image;
+    this.coverFile.file =  NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
+    this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {     
+			console.log(res);
+      this.profile.profile_cover = res.fid
+        });
     this.saveProfile();
   }
-
- limitText(limitField, limitCount, limitNum) {
-	if (limitField.value.length > limitNum) {
-		limitField.value = limitField.value.substring(0, limitNum);
-	} else {
-		limitCount.value = limitNum - limitField.value.length;
-	}
-}
-  /* function get Badges */
+   /* function get Badges */
   getBadges(){
        // service to get profile card Badges
     this.viewService.getView('api_user_badges', [['uid', this.userId]]).subscribe(data => {
@@ -223,4 +231,13 @@ export class ProfileComponent implements OnInit {
     });
   }
    /* end function get Badges */
+ limitString(model,key,length){
+  if(typeof model[key] != "undefined"){
+    if (model[key].length>length){
+      this.temp=model[key];
+      model[key]=this.temp.substr(0,length);
+    }
+  }
+}
+
 }
