@@ -88,19 +88,35 @@
 		.projectCategory {
 				width: 100%;
 				align-items:flex-start;
-				label,
-				.add-cate {
+				label {
 					margin-top: 5px;
 				}
+				.add-cate {
+					margin-bottom: 5px;
+					width: auto;
+				}
 				.categories-group {
+					width: 100%;
 					margin-left: 15px;
 					#projectCategoryParent, 
 					#projectCategoryChildren {
 						width: 100% !important;
 						margin-bottom: 5px;
+						padding: 5px 10px;
 					}
 				}
+				
+				p.cate-name {
+					margin-left: 15px;
+
+				}
+				.list-group-item {
+					width: 50%;
+				}
 		}
+		.cate-list {
+					padding: 0 30px;
+				}
 		.cover {
 			a {
 				margin-top: 5px;
