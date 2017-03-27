@@ -72,9 +72,9 @@
 										<span class="profile-progress">{{profile.profile_completion+'%'}}</span>
 									</div>
 								</div>
-		<!-- start Badges-->
-								<div class="icons d-flex flex-row justify-content-start">
-									<div *ngFor="let badge of badges;">
+								<!-- start Badges-->
+								<div class="icons">
+									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}"><p>{{badge?.title}}</p><br>
 									</div>
 								</div>
