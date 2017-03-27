@@ -8,12 +8,11 @@
 
            
 
-          <div  class="icons d-flex flex-row justify-content-start">
-             <div *ngFor="let badge of badges;">
-                <img src="{{badge?.goal_image}}" alt="">
-                              
+          <div  class="icons-side-user">
+             <div class="user-icon" *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="">                
             </div>
-            
+          
           </div>
           <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
         </div>

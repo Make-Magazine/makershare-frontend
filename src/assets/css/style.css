@@ -314,7 +314,7 @@ a:not([href]):not([tabindex]) {
   .project .card-title {
     background-color: #fff;
     padding: 10px;
-    height: 60px;
+    height: 90px;
     position: relative;
     font-family: "Messina Modern Bold";
     font-size: 1.5em;
@@ -702,7 +702,7 @@ body {
     margin-top: 15px;
     padding: 4px; }
     .maker-spotlight .spotlight-item .card-block {
-      padding-bottom: 0; }
+      padding: 10px; }
     .maker-spotlight .spotlight-item .image-container {
       width: 100%;
       height: 200px;
@@ -762,11 +762,19 @@ footer {
 .user-card .profile-pic-container .maker-photo {
   display: block;
   width: 80px;
-  height: 80px; }
+  height: 80px;
+  margin-bottom: 4px; }
 .user-card .profile-pic-container a {
   width: 100%; }
-.user-card .profile-pic-container .icons img {
-  width: 27px; }
+.user-card .profile-pic-container .icons-side-user {
+  width: 80px;
+  overflow: hidden; }
+  .user-card .profile-pic-container .icons-side-user .user-icon {
+    float: left; }
+    .user-card .profile-pic-container .icons-side-user .user-icon img {
+      width: 26px; }
+.user-card .profile-pic-container .message-btn {
+  padding: 0px; }
 .user-card .user-name {
   font-family: "Messina Modern Bold";
   font-size: 1.125em;
@@ -1965,6 +1973,15 @@ header.showcase-project .next {
   .project .image-top img {
     height: auto;
     width: 100%; }
+.project .card-block {
+  min-height: 214px; }
+.project .icons-side-project {
+  width: 60px; }
+  .project .icons-side-project .project-icon {
+    float: left; }
+    .project .icons-side-project .project-icon img {
+      width: 30px;
+      height: 36px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -1989,7 +2006,7 @@ header.showcase-project .next {
   min-height: 38px;
   padding: 0px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 30px;
