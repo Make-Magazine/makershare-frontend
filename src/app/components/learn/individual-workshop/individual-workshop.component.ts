@@ -59,7 +59,7 @@ export class IndividualWorkshopComponent implements OnInit {
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
-          console.log(data);
+         // console.log(data);
           this.workshop = data[0];
           if (this.workshop.introductory_video) {
            if (this.youtube_parser(this.workshop.introductory_video)) {
@@ -86,7 +86,7 @@ export class IndividualWorkshopComponent implements OnInit {
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
-          console.log(this.objects)
+          //console.log(this.objects)
           for (let object in this.objects) {
             if (this.objects[object].video && this.objects[object].video !== '') {
                if (this.youtube_parser(this.objects[object].video)) {
@@ -117,7 +117,8 @@ export class IndividualWorkshopComponent implements OnInit {
 
       this.viewService.getView('more-lessons', [['nid', this.nid]])
         .subscribe(data => {
-          this.lessons = data;
+            this.lessons = data;
+          
         });
 
     this.userService.getStatus().subscribe(data => {

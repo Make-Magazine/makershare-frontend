@@ -58,13 +58,13 @@
                       </p>
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
-                    <ul class="list-unstyled recommended">
+                  </div>
+                   <ul class="list-unstyled recommended">
                       <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
                       <a href="">
                         <div [innerHTML]="object.related_projects"> </div>
                       </a>
                     </ul>
-                  </div>
                 </div>
               </div>
               <!-- End  ngif of pdf object -->
@@ -153,19 +153,24 @@
             <div *ngFor="let object of objects; let i=index;">
               <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
             </div>
-            <li><a pageScroll href="#lesson">Resources</a></li>
+
+           <div *ngFor="let lesson of lessons">
+            <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+            <li ><a pageScroll href="#lesson">Resources</a></li>
+          </div>
+          </div>
           </ul>
         </aside>
         <!-- End aside -->
 
         <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3">
-          <div *ngIf="lesson" class="">
-            <h4> Like these lessons? Learn more:</h4>
+          <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+           <h4> Like these lessons? Learn more:</h4>
             <ul class="list-unstyled suggested" id="lesson">
               <li>
                 <div class="media">
                   <div *ngIf= "lesson.book_cover" class="image-container d-flex mr-1">
-                    <img src="{{lesson.book_cover}}" alt="...">
+                    <img src="{{lesson.book_cover}}" alt="">
                   </div>
                   <div class="media-body">
                     <p> {{lesson.book_title}}</p>
