@@ -766,7 +766,7 @@ footer {
 .user-card .profile-pic-container a {
   width: 100%; }
 .user-card .profile-pic-container .icons img {
-  width: 25px; }
+  width: 27px; }
 .user-card .user-name {
   font-family: "Messina Modern Bold";
   font-size: 1.125em;
@@ -1955,6 +1955,9 @@ header.showcase-project .next {
   .project .image-top img {
     height: auto;
     width: 100%; }
+.project .card-block .icons-side img {
+  width: 20px;
+  height: auto; }
 .project .icons {
   position: absolute;
   color: white;
