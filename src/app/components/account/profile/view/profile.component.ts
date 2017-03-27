@@ -17,6 +17,8 @@ import { CropperSettings } from 'ng2-img-cropper';
 })
 export class ProfileComponent implements OnInit {
  
+ countdown = '';
+//  countdown2;
   userId = localStorage.getItem('user_id');
   // cover declarations
   cropperSettings: CropperSettings;
@@ -203,10 +205,20 @@ export class ProfileComponent implements OnInit {
   }
 
  limitText(limitField, limitCount, limitNum) {
-	if (limitField.value.length > limitNum) {
-		limitField.value = limitField.value.substring(0, limitNum);
+   this.countdown2 = '';
+   console.log('limit')
+      console.log (limitField)
+      // console.log ( limitCount)
+      
+	if (limitField.length > limitNum) {
+		limitField = limitField.substring(0, limitNum);
+ 
+
 	} else {
-		limitCount.value = limitNum - limitField.value.length;
+		 limitCount = limitNum - limitField.length;
+      console.log ( limitCount)
+      this.countdown = limitCount;
+      
 	}
 }
 }

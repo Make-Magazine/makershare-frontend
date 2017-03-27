@@ -1,3 +1,4 @@
+
 <div class="profile-page profile-empty-edit">
 	<div *ngIf="profile">
 		<section class="container-fluid cover-region">
@@ -52,7 +53,7 @@
 									<font size="1">(Maximum characters: 15)<br> You have <input readonly type="text" name="countdown" size="3" value="15"> characters
 										left.</font>
 							</form>-->
-
+           
 							<!-- End profile-group -->
 							<div class="profile-info">
 								<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
@@ -60,22 +61,24 @@
 								<ul *ngIf="profile.address_publish" class="list-unstyled location">
 									<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
 								</ul>
+
+						
 								<hr>
 								<ul class="list-unstyled post">
-									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
+									<!--<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>-->
 									<li>"{{profile.describe_yourself}}"</li>
 								</ul>
 								<hr>
 								<p>Profile Completeness</p>
 								<div class="progress">
-									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:'{{profile.profile_completion}}%';">
+									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:'{{profile.profile_completion}}';">
 										<span class="profile-progress">{{profile.profile_completion+'%'}}</span>
 									</div>
 								</div>
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
 									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
-									<p [innerHTML]="profile.bio"></p>
+									<div [innerHTML]="profile.bio"></div>
 								</div>
 								<div *ngIf="!profile.bio" class="bio">
 									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-bio-modal">
@@ -342,11 +345,11 @@
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.describe_yourself" placeholder="Start your story" nKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,550);"
-												onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,550);" maxlength="550">
-												</textarea>
+											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
+												(keyup)="limitText(profile.bio,countdown,550)" maxlength="550">
+											</ckeditor>
 												<font size="1">(Maximum characters: 550)<br> You have
-													<input readonly type="text" name="countdown" size="3" value="550"> characters left.
+													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value= "{{countdown}}"> characters left.
 												</font>
 										</div>
 										<div class="modal-footer">
