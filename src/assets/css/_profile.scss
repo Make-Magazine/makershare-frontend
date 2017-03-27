@@ -608,6 +608,14 @@
 			width: 100%;
 		}
 	}
+	.card-block {
+		.icons-side  {
+			img {
+				width: 20px;
+    		height: auto;
+			}
+		}
+	}
 	.icons {
 		position: absolute;
 		color: white;
