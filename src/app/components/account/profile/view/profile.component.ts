@@ -10,6 +10,8 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
+import { ViewService } from '../../../../d7services/view/view.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +20,7 @@ import { CropperSettings } from 'ng2-img-cropper';
 export class ProfileComponent implements OnInit {
  
   userId = localStorage.getItem('user_id');
+   badges=[];
   // cover declarations
   cropperSettings: CropperSettings;
   coverPhotoSrc: string;
@@ -53,10 +56,11 @@ export class ProfileComponent implements OnInit {
     pass:"MOcs56",
   };
   constructor(
-   private fb: FormBuilder,
+    private fb: FormBuilder,
     private profileService: ProfileService,
     private router: Router,
-   private userService: UserService,
+    private viewService: ViewService,
+    private userService: UserService,
   ) { 
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 100;
@@ -102,6 +106,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.BuildForm();
+    this.getBadges();
   }// end of OnInit 
 
   BuildForm(){
@@ -209,4 +214,13 @@ export class ProfileComponent implements OnInit {
 		limitCount.value = limitNum - limitField.value.length;
 	}
 }
+  /* function get Badges */
+  getBadges(){
+       // service to get profile card Badges
+    this.viewService.getView('api_user_badges', [['uid', this.userId]]).subscribe(data => {
+      this.badges = data;
+    }, err => {
+    });
+  }
+   /* end function get Badges */
 }
