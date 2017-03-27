@@ -72,6 +72,13 @@
 										<span class="profile-progress">{{profile.profile_completion+'%'}}</span>
 									</div>
 								</div>
+								<!-- start Badges-->
+								<div class="icons d-flex flex-row justify-content-start">
+									<div *ngFor="let badge of badges;">
+										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
+									</div>
+								</div>
+								<!--End Badges -->
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
 									<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>
