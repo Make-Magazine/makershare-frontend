@@ -10,6 +10,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -125,6 +126,7 @@ export class ProfileComponent implements OnInit {
   }
   saveBio() {
     this.profile.bio = this.info.bio;
+    this.profile.describe_yourself = this.info.describe_yourself;
     this.saveProfile();
   }
 

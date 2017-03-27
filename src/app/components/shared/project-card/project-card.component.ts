@@ -9,8 +9,10 @@ export class ProjectCardComponent implements OnInit {
   @Input() projectCard;
   constructor(private router: Router, private route: ActivatedRoute, ) { }
   nid;
+  myid;
   ngOnInit() {
-
+    this.myid = localStorage.getItem('user_id');
+    console.log(this.projectCard)
   }
 
   challengePage(nid) {

@@ -9,11 +9,9 @@ import { IcDatepickerModule } from 'ic-datepicker';
 import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
-import { SharedModule }  from '../../shared/shared.module'
+import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { Ng2FileDropModule }  from 'ng2-file-drop';
-
 
 @NgModule({
   imports: [
@@ -26,8 +24,7 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
     TagInputModule,
     SharedModule,
     NgbModule,
-    ImageCropperModule,
-    Ng2FileDropModule
+    ImageCropperModule
   ],
   declarations: [
     AllProfileComponent,
