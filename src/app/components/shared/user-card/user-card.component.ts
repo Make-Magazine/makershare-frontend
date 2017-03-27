@@ -51,6 +51,7 @@ export class UserCardComponent implements OnInit {
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
+      console.log(data[0]);
       this.card = data[0];
       this.isCurrentUser();
       //console.log(this.card)

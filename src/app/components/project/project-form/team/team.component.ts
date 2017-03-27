@@ -7,13 +7,14 @@ import { ProjectForm } from '../../../../models/project/project-form/project';
 import { field_collection_item_member }  from '../../../../models/project/project-form/field_collection_item';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
-import { UserInvitations } from '../../../../models/project/project-form/UserInvitations'
+import { UserInvitations } from '../../../../models/project/project-form/UserInvitations';
 
 @Component({
   selector: 'app-project-form-team',
   templateUrl: './team.component.html',
 })
 export class TeamComponent implements OnInit {
+  @Output() emitter = new EventEmitter();
   @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
 
@@ -38,7 +39,7 @@ export class TeamComponent implements OnInit {
       .switchMap((term) => 
         {
           if(term.length > 1){
-            return this.viewService.getView('maker_profile_search_data',[['search', term]])
+            return this.viewService.getView('maker_profile_search_data',[['email', term]])
             .map(result => {
               if(result.length == 0){
                 this.searchFailed = true;
@@ -52,6 +53,7 @@ export class TeamComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.InvitationEmails = this.FormPrintableValues.InvitationEmails;
     this.buildForm();
     let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(this.project.field_maker_memberships.und[0].field_team_member.und[0].target_id);
     this.InvitationEmails = new UserInvitations(uid);
@@ -63,11 +65,16 @@ export class TeamComponent implements OnInit {
     });
     this.project.field_maker_memberships.und.forEach((member,index)=>{
       this.AddRow('field_maker_memberships',member);
-      let id = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
-      this.SetMember(id,index);
+      if(!NodeHelper.IsEmail(member.field_team_member.und[0].target_id)){
+        let id = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
+        this.SetMember(id,index);
+      }else{
+        this.SetMember(0,index,member.field_team_member.und[0].target_id);
+      }
     });
     this.TeamForm.valueChanges.subscribe(data => {
       this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
+      this.emitter.emit(this.InvitationEmails);
     });
     this.onValueChanged(this.TeamForm, this.formErrors, this.validationMessages);
   }
@@ -132,7 +139,7 @@ export class TeamComponent implements OnInit {
     var NewUsersDetails = [];
     var NewProjectFieldTeam = [];
     control.controls.forEach((element, index) => {
-      NewUsersDetails[index] = this.SelectedUser[element['controls']['field_sort_order'].value - 1];
+      NewUsersDetails[index] = this.SelectedUser[index];
       this.project.field_maker_memberships.und[index].field_sort_order.und[0].value = index + 1;
       NewProjectFieldTeam.push(this.project.field_maker_memberships.und[index]);
       element['controls']['field_sort_order'].patchValue(index + 1);
@@ -160,17 +167,20 @@ export class TeamComponent implements OnInit {
     }
   }
   ChangeOrder(CurrentIndex, NewIndex, ControlName){
+    let temp = this.SelectedUser[CurrentIndex];
+    this.SelectedUser[CurrentIndex] = this.SelectedUser[NewIndex];
+    this.SelectedUser[NewIndex]= temp;
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
     let newrow = control.at(NewIndex);
     if(NodeHelper.IsEmail(control.value[CurrentIndex].field_team_member) && NodeHelper.IsEmail(control.value[NewIndex].field_team_member)){
       let CurrentEmailIndex = this.InvitationEmails.mails.indexOf(control.value[CurrentIndex].field_team_member);
       let NewEmailIndex = this.InvitationEmails.mails.indexOf(control.value[NewIndex].field_team_member);
-      this.InvitationEmails[CurrentEmailIndex] = control.value[NewIndex].field_team_member;
-      this.InvitationEmails[NewEmailIndex] = control.value[CurrentIndex].field_team_member;
+      this.InvitationEmails.mails[CurrentEmailIndex] = control.value[NewIndex].field_team_member;
+      this.InvitationEmails.mails[NewEmailIndex] = control.value[CurrentIndex].field_team_member;
     }
     control.setControl(CurrentIndex,newrow);
-    control.setControl(NewIndex,currentrow);
+    control.setControl(NewIndex,currentrow); 
     let currentmember = this.project.field_maker_memberships.und[CurrentIndex];
     let newmember = this.project.field_maker_memberships.und[NewIndex];
     this.project.field_maker_memberships.und[CurrentIndex] = newmember;
@@ -182,11 +192,11 @@ export class TeamComponent implements OnInit {
     let email = control.value[i].field_team_member;
     if(NodeHelper.IsEmail(email)){
       this.InvitationEmails.mails.splice(this.InvitationEmails.mails.indexOf(email) ,1)
-      console.log(this.InvitationEmails);
     }
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
     this.project[ControlName].und.splice(i, 1);
+    this.SelectedUser.splice(i,1);
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
@@ -218,6 +228,11 @@ export class TeamComponent implements OnInit {
     },
   };
 
+  /**
+   * Invite new users to join the project
+   * @param input the input email html element
+   * @param index current field collection index
+   */
   InviteUser(input:HTMLInputElement,index){
     if(NodeHelper.IsEmail(input.value)){
       if(this.InvitationEmails.mails.indexOf(input.value) !== -1){
