@@ -191,7 +191,7 @@
 								<li>
 									<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 								</li>
-								<app-shared-buttons [url]="linkToShare" [title]="customTitle" [description]="customDescription" [image]="customImage" ></app-shared-buttons>
+								<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
 							</ul>
 							<!-- End Bookmark-section -->
 							  <div class="switch col-lg-4 col-md-4 col-sm-4 col hidden-sm-down"><!-- Start Switch-view -->
