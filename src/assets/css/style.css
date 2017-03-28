@@ -313,7 +313,7 @@ a:not([href]):not([tabindex]) {
   .project .card-title {
     background-color: #fff;
     padding: 10px;
-    height: 90px;
+    height: 60px;
     position: relative;
     font-family: "Messina Modern Bold";
     font-size: 1.5em;
@@ -594,10 +594,13 @@ body {
 
 .card-type {
   position: absolute;
-  bottom: 6px;
-  right: 5px;
-  background: rgba(250, 250, 250, 0.7);
-  padding: 2px 4px; }
+  top: 45px;
+  right: -22px;
+  padding: 2px 4px;
+  transform: rotate(-90deg);
+  text-transform: uppercase;
+  color: #BEBEBE;
+  padding-bottom: 0; }
 
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location {
@@ -2007,10 +2010,8 @@ header.showcase-project .next {
   top: 10px; }
 
 .project.card {
-  width: 95%; }
-.project .card-block {
-  padding-top: 0;
-  margin-top: -5px; }
+  width: 95%;
+  border-radius: 0; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -2018,18 +2019,24 @@ header.showcase-project .next {
   position: relative;
   top: -15px;
   left: -24px; }
+  .project .image-top .card-img-top {
+    border-radius: 0; }
   .project .image-top img {
     height: auto;
     width: 100%; }
 .project .card-block {
-  min-height: 214px; }
+  padding: 0 10px;
+  margin-top: -5px;
+  height: 175px; }
+  .project .card-block .content-side {
+    padding-left: 5px;
+    width: 80%; }
 .project .icons-side-project {
   width: 60px; }
   .project .icons-side-project .project-icon {
     float: left; }
     .project .icons-side-project .project-icon img {
-      width: 30px;
-      height: 36px; }
+      width: 20px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -2081,10 +2088,13 @@ header.showcase-project .next {
   .project .card-stats ul li {
     float: left;
     font-size: 15px;
-    text-align: center; }
-    .project .card-stats ul li i {
-      margin-right: 6px;
-      font-size: 20px; }
+    width: 60px; }
+    .project .card-stats ul li img {
+      margin-right: 6px; }
+      .project .card-stats ul li img.project-likes {
+        width: 12px; }
+      .project .card-stats ul li img.project-views {
+        width: 20px; }
     .project .card-stats ul li span {
       margin: 0px; }
 
@@ -2133,7 +2143,6 @@ header.showcase-project .next {
 
 .teaser {
   display: none;
-  width: 80%;
   position: absolute;
   top: 13%;
   left: 0px;
