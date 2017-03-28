@@ -5,10 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './edit-portfolio.component.html',
 })
 export class EditPortfolioComponent implements OnInit {
-
+  CurrentTab:string;
+  
   constructor() { }
 
   ngOnInit() {
+    this.CurrentTab = 'public';
   }
 
 }

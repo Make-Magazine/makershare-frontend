@@ -321,6 +321,7 @@ export class ProjectFormComponent implements OnInit {
     }
     if(this.project.GetField("nid")){
       delete this.project.field_original_team_members;
+      delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
         this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
         this.router.navigate(['/profile']);

@@ -108,6 +108,7 @@ export class ProfileComponent implements OnInit {
         //console.log(res);
         this.profile.profile_cover = res.uri;
       });
+      localStorage.setItem('user_photo', this.profile.user_photo);
       this.profile.pass = "MOcs56";
       //console.log(res);
     }, err => {
