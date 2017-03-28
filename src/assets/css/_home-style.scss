@@ -96,7 +96,7 @@
         margin-top: 15px;
         padding: 4px;;
         .card-block {
-            padding-bottom: 0;
+            padding: 10px;
         }
         .image-container {
             width: 100%;
@@ -170,17 +170,23 @@ footer {
             display: block;
             width: 80px;
             height: 80px;
+            margin-bottom: 4px;
         }
         a {
             width: 100%;
         }
-        .icons {
-            img {
-                width: 27px;
+        .icons-side-user {
+            width: 80px;
+            overflow: hidden;
+            .user-icon {
+                float: left;
+                img {
+                    width: 26px;
+                }
             }
-            &:hover {
-                
-            }
+        }
+        .message-btn {
+            padding: 0px;
         }
     }
     .user-name {

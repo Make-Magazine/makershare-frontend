@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { NodeService } from '../../../../d7services/node/node.service';
 import { FileService } from '../../../../d7services/file/file.service';
 import { ViewService } from '../../../../d7services/view/view.service';
+import { MainService } from '../../../../d7services/main/main.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service';
 import { ProjectForm, ProjectView } from '../../../../models/project/project-form/project';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
@@ -13,6 +14,7 @@ import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
 import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { UserInvitations } from '../../../../models/project/project-form/UserInvitations';
 
 @Component({
   selector: 'app-project-form',
@@ -37,6 +39,7 @@ export class ProjectFormComponent implements OnInit {
     cover_image:{file:"",filename:""},
     tags:[],
     resources_files:[],
+    InvitationEmails:{uid:'',mails:[]}
   }
 
   /**
@@ -53,6 +56,7 @@ export class ProjectFormComponent implements OnInit {
     private userService:UserService,
     private router: Router,
     private route: ActivatedRoute,
+    private mainService:MainService
   ) {}
 
   ngOnInit(): void {
@@ -342,6 +346,8 @@ export class ProjectFormComponent implements OnInit {
   UpdateFields(event,component){
     if(component === "Your Story"){
       this.FormPrintableValues.tags = event;
+    }else if (component === "Team"){
+      this.FormPrintableValues.InvitationEmails = event;
     }else{
       this.FormPrintableValues.resources_files = event;
     }
@@ -425,7 +431,18 @@ export class ProjectFormComponent implements OnInit {
       let resource = new field_collection_item_resource();
       this.project.field_resources.und.push(resource);
     }
-    this.SaveProject();
+    this.InviteTeam();
+  }
+
+  InviteTeam(){
+    if(this.FormPrintableValues.InvitationEmails.mails.length !== 0){
+      this.mainService.post('/api/team_service/build',this.FormPrintableValues.InvitationEmails).subscribe(data=>{
+        console.log(data);
+        //this.SaveProject();
+      });
+    }else{
+      this.SaveProject();
+    }
   }
 
 }

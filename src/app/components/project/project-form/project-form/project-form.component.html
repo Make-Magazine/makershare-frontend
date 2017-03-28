@@ -28,7 +28,7 @@
         <div *ngIf="ProjectLoaded">
           <app-project-form-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" class="row"></app-project-form-your-story>
           <app-project-form-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'" class="row"></app-project-form-how-to>
-          <app-project-form-team [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
+          <app-project-form-team (emitter)="UpdateFields($event,'Team')" [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
         </div>
       </div>
     </div><!-- End container -->

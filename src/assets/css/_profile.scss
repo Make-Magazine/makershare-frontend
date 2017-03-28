@@ -621,6 +621,19 @@
 			width: 100%;
 		}
 	}
+	.card-block {
+		min-height: 214px;
+	}
+	.icons-side-project {
+		width: 60px;
+		.project-icon {
+			float: left;
+			img {
+				width: 30px;
+				height: 36px;
+			}
+		}
+	}
 	.icons {
 		position: absolute;
 		color: white;
@@ -643,7 +656,7 @@
 		min-height: 38px;
 		padding: 0px;
 		display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 		overflow: hidden;
     line-height: 30px;
