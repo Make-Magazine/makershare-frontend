@@ -50,6 +50,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.showcase = JSON.parse(params["showcase"]);
         this.projectIndex = params["projectIndex"];
         this.projects = JSON.parse(params["projects"]);
+        //console.log(this.projects)
       }
 
     });

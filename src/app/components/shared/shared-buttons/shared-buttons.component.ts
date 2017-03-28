@@ -11,7 +11,6 @@ export class SharedButtonsComponent implements OnInit {
   @Input() PageTitle;
   @Input() PageDescription;
   @Input() PageImage;
-  //@Input() tags;
 
   constructor(
     private modalService: NgbModal,

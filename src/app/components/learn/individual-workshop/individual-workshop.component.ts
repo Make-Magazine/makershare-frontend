@@ -53,16 +53,13 @@ export class IndividualWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.uid = localStorage.getItem('user_id');
-    // this.getCurrentUser();
     let userId = localStorage.getItem('user_id');
-    //console.log(userId);
-    // setTimeout(1000)
+
     
 
     this.nid = this.route.params['value'].nid
       this.viewService.getView('individual-workshop', [['nid', this.nid]])
         .subscribe(data => {
-         // console.log(data);
           this.workshop = data[0];
           this.customTitle = this.workshop.workshop_title;
           this.customDescription = this.workshop.brief_description;
@@ -78,7 +75,6 @@ export class IndividualWorkshopComponent implements OnInit {
 
             }
             else if (this.vimeo_parser(this.workshop.introductory_video)) {
-              // console.log(this.workshop.introductory_video)
               this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.introductory_video;
 
               this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
@@ -92,7 +88,6 @@ export class IndividualWorkshopComponent implements OnInit {
       this.viewService.getView('individual-workshop-object', [['nid', this.nid]])
         .subscribe(data => {
           this.objects = data;
-          //console.log(this.objects)
           for (let object in this.objects) {
             if (this.objects[object].video && this.objects[object].video !== '') {
                if (this.youtube_parser(this.objects[object].video)) {
@@ -109,11 +104,9 @@ export class IndividualWorkshopComponent implements OnInit {
               }
                else if (this.vimeo_parser(this.objects[object].video)) {
                 this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
-                // console.log(this.sanitizethis);
                 this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
                 this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
                 this.objects[object].videoImage = data.thumbnail_url_with_play_button;
-                // console.log(data);
               });
               }
             }
@@ -147,7 +140,6 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubFile = true;
        } else {
         var x =  this.objects[i].book.split('.').pop();
-        //console.log(x);
         delete this.popupPreview;
         this.epubFile = null;
         this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
@@ -165,7 +157,6 @@ export class IndividualWorkshopComponent implements OnInit {
  youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
-    //console.log(match[7])
     return (match && match[7].length == 11) ? match[7]:'';
   }
   vimeo_parser(url) {
