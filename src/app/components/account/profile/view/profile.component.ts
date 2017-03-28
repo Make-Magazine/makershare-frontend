@@ -26,7 +26,27 @@ import { FileService } from '../../../../d7services/file/file.service';
 })
 export class ProfileComponent implements OnInit {
 
- 
+ ckEditorConfig: {} = {
+    "toolbarGroups": [
+          { "name": "document", "groups": [ "mode", "document", "doctools" ] },
+          { "name": "editing", "groups": [ "find", "selection", "spellchecker", "editing" ] },
+          { "name": "forms", "groups": [ "forms" ] }
+      ],
+      "removeButtons":"Source,Save,Templates,Find,Replace,Scayt,SelectAll",
+      "extraPlugins": 'wordcount',
+      "wordcount":{
+      "maxCharCount": '100',
+      "showParagraphs": false,
+      "showWordCount": false,
+       showCharCount: true,
+       countSpacesAsChars: true,
+       countHTML: false,
+       maxWordCount: -1,
+      },
+
+     };
+
+
  countdown = '';
 //  countdown2;
 
