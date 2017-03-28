@@ -1,4 +1,3 @@
-
 <div class="profile-page profile-empty-edit">
 	<div *ngIf="profile">
 		<section class="container-fluid cover-region">
@@ -48,24 +47,19 @@
 									<div class="profile-type"><span>Maker</span></div>
 								</div>
 							</div>
-							<!--<form name="myform">
-								<input name="limitedtextfield" type="text" onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,15);" maxlength="15"><br>
-									<font size="1">(Maximum characters: 15)<br> You have <input readonly type="text" name="countdown" size="3" value="15"> characters
-										left.</font>
-							</form>-->
-           
+						
 							<!-- End profile-group -->
-							<div class="profile-info" >
+							<div class="profile-info">
 								<div data-toggle="modal" data-target="#edit-info-modal"><i class="fa fa-lg fa-pencil"></i>
-								<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
-								<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
-								<ul *ngIf="profile.address_publish" class="list-unstyled location">
-									<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
-								</ul>
+									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
+									<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
+									<ul *ngIf="profile.address_publish" class="list-unstyled location">
+										<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.governorate}}, {{profile.address.country}}</li>
+									</ul>
 								</div>
-               	<hr>
+								<hr>
 								<ul class="list-unstyled post">
-									<!--<a href="" data-toggle="modal" data-target="#add-bio-modal"><i class="fa fa-lg fa-pencil"></i></a>-->
+									<a href="" data-toggle="modal" data-target="#add-description-modal"><i class="fa fa-lg fa-pencil"></i></a>
 									<li>"{{profile.describe_yourself}}"</li>
 								</ul>
 								<hr>
@@ -157,6 +151,11 @@
 									<!-- Start How -->
 									<h5>How I learned to be a maker</h5>
 									<p>{{profile.started_making}}</p>
+								</div>
+									<div *ngIf="!profile.field_started_making" class="how">
+									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-maker-starting-modal">
+										<i class="fa fa-lg fa-plus"></i> How'd you get started making?
+									</a>
 								</div>
 								<a href="#" class="report">Report this user</a>
 								<!-- End How -->
@@ -341,6 +340,32 @@
 									</div>
 								</div>
 							</div>
+							<!-- Add Description Modal -->
+							<div id="add-description-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Add your description</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<textarea name="limitedtextfield" id="description-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Describe your most powerful motivation, inspiration or aspiration."
+												(keypress)="limitText(profile.describe_yourself,countdown,140)" (keyup)="limitText(profile.describe_yourself,countdown,140)"
+												maxlength="140">
+												</textarea>
+												<font size="1">(Maximum characters: 140)<br> You have
+													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value="{{countdown}}"> characters
+													left.
+												</font>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main done-btn" (click)="saveBio()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+								</div>
+							</div>
 
 							<!-- Add bio Modal -->
 							<div id="add-bio-modal" class="modal fade" role="dialog">
@@ -352,12 +377,21 @@
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}"  name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
+											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio"
+												placeholder="Start your story">
+												</ckeditor>
+												<!--<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
 												(keyup)="limitText(profile.bio,countdown,550)" maxlength="550">
 											</ckeditor>
 												<font size="1">(Maximum characters: 550)<br> You have
 													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value= "{{countdown}}"> characters left.
-												</font>
+												</font>-->
+												<!--<textarea name="limitedtextfield" id="bio-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Start your story" (keypress)="limitText(profile.describe_yourself,countdown,5)"
+												(keyup)="limitText(profile.describe_yourself,countdown,5)" maxlength="5">
+												</textarea>
+												<font size="1">(Maximum characters: 5)<br> You have
+													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value= "{{countdown}}"> characters left.
+												</font>-->
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
@@ -530,6 +564,35 @@
 
 								</div>
 							</div>
+
+								<!-- Add maker starting Modal -->
+							<div id="add-maker-starting-modal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Add you starting as a Maker</h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<textarea name="limitedtextfield" id="description-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Add your starting as a Maker"
+												(keypress)="limitText(profile.describe_yourself,countdown,300)" (keyup)="limitText(profile.describe_yourself,countdown,300)"
+												maxlength="300">
+												</textarea>
+												<font size="1">(Maximum characters: 300)<br> You have
+													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value="{{countdown}}"> characters
+													left.
+												</font>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-light-grey close-btn" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-main done-btn" (click)="saveBio()" data-dismiss="modal">Done</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
 						</section>
 					</div>
 					<!-- End profile content -->

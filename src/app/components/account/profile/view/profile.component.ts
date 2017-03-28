@@ -57,6 +57,7 @@ export class ProfileComponent implements OnInit {
     address: {},
     pass:"MOcs56",
   };
+  ckeditorCongfig = {};
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -80,11 +81,11 @@ export class ProfileComponent implements OnInit {
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
     this.cropperSettings.noFileInput = true;
     this.CoverImageData = {};
-
+    this.ckeditorCongfig = {extraPlugins: 'wordcount', wordcount: {maxCharCount: 5}}
    
 
   }
-
+  
   ngOnInit() {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
@@ -239,5 +240,7 @@ export class ProfileComponent implements OnInit {
     });
   }
    /* end function get Badges */
-
+   
+    
+   
 }
