@@ -69,15 +69,15 @@ export class ProjectDetailsComponent implements OnInit {
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
         .subscribe(data => {
           this.project = data;
-          if (this.project.title) {
-            this.customTitle = this.project.title.value;
-          }
-          if (this.project.field_teaser) {
-            this.customDescription = this.project.field_teaser.value;
-          }
-          if (this.project.field_cover_photo) {
-            this.customImage = this.project.field_cover_photo.url;
-          }
+          // if (this.project.title) {
+          //   this.customTitle = this.project.title.value;
+          // }
+          // if (this.project.field_teaser) {
+          //   this.customDescription = this.project.field_teaser.value;
+          // }
+          // if (this.project.field_cover_photo) {
+          //   this.customImage = this.project.field_cover_photo.url;
+          // }
           var i = 0;
           if (this.project.field_resources) {
             for (let resource of this.project.field_resources) {
