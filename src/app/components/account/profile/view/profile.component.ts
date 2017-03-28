@@ -263,8 +263,8 @@ export class ProfileComponent implements OnInit {
 
  limitText(limitField, limitCount, limitNum) {
 
-   console.log('limit')
-      console.log (limitField)
+  //  console.log('limit')
+  //     console.log (limitField)
       // console.log ( limitCount)
       
 	if (limitField.length > limitNum) {
@@ -273,7 +273,7 @@ export class ProfileComponent implements OnInit {
 
 	} else {
 		 limitCount = limitNum - limitField.length;
-      console.log ( limitCount)
+      // console.log ( limitCount)
       this.countdown = limitCount;
       
 	}
