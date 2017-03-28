@@ -14,6 +14,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./individual-workshop.component.css']
 })
 export class IndividualWorkshopComponent implements OnInit {
+  customTitle: string;
+  customDescription: string;
+  customImage: string;
 
   workshop;
   objects;
@@ -52,7 +55,7 @@ export class IndividualWorkshopComponent implements OnInit {
     this.uid = localStorage.getItem('user_id');
     // this.getCurrentUser();
     let userId = localStorage.getItem('user_id');
-    console.log(userId);
+    //console.log(userId);
     // setTimeout(1000)
     
 
@@ -61,6 +64,9 @@ export class IndividualWorkshopComponent implements OnInit {
         .subscribe(data => {
          // console.log(data);
           this.workshop = data[0];
+          this.customTitle = this.workshop.workshop_title;
+          this.customDescription = this.workshop.brief_description;
+          this.customImage = this.workshop.cover_photo;
           if (this.workshop.introductory_video) {
            if (this.youtube_parser(this.workshop.introductory_video)) {
             // this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:640px; height:274px;"></iframe>';
@@ -141,7 +147,7 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubFile = true;
        } else {
         var x =  this.objects[i].book.split('.').pop();
-        console.log(x);
+        //console.log(x);
         delete this.popupPreview;
         this.epubFile = null;
         this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
