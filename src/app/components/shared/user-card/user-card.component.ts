@@ -49,19 +49,17 @@ export class UserCardComponent implements OnInit {
    }
   ngOnInit() {
     this.getcard();
-    this.getBadges();
-    this.buildForm();
-    this.getProjectCountByUser();
+    //this.getBadges();
+    //this.buildForm();
+    //this.getProjectCountByUser();
   }
 
   getcard() {
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
-      console.log(data[0]);
       this.card = data[0];
       this.isCurrentUser();
-      //console.log(this.card)
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -89,7 +87,6 @@ export class UserCardComponent implements OnInit {
     e.preventDefault();
     if (this.messageForm.valid) {
       this.messageObj.recipients = this.card['name'];
-      //console.log(this.messageObj.recipients)
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
