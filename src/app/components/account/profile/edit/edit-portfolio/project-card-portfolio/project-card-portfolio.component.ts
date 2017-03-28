@@ -25,6 +25,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       nid:nid,
       field_visibility2:{und:[NewVisibility]},
     }
+    
     this.nodeService.UpdateNode(project).subscribe(data=>{
       this.emitter.emit();
     });

@@ -102,8 +102,8 @@ export class TeamComponent implements OnInit {
         control['controls'].field_team_member.setValue(data[0].username+' ('+data.uid+')');
         this.SetValueChangeSubscriber(index,control,data);
     });
-    }
   }
+}
 
   SetValueChangeSubscriber(index,control,data?){
     control['controls'].field_sort_order.setValue(index+1);
@@ -124,12 +124,12 @@ export class TeamComponent implements OnInit {
       this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
     });
   }
-  
   InitRow(ControlName,index,data?) {
     return this.fb.group({
       'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
-      'field_membership_role': [data && data.field_membership_role && data.field_membership_role.und? data.field_membership_role.und[0].value:''],
+      'field_membership_role': [data && data.field_membership_role && data.field_membership_role.und? data.field_membership_role.und[0].value:'',
+      Validators.maxLength(140)],
       'uid': [, Validators.required],
     });
   }
@@ -200,7 +200,7 @@ export class TeamComponent implements OnInit {
     this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
-    return {'field_sort_order':'', 'field_team_member': '','uid': ''};
+    return {'field_sort_order':'', 'field_team_member': '','uid': '','field_membership_role':''};
   }
   formErrors = {
     'field_maker_memberships': [],
@@ -225,6 +225,9 @@ export class TeamComponent implements OnInit {
       'uid':{
         'required':'uid is required',
       },
+      'field_membership_role':{
+        'maxlength': 'Max length error'
+      }
     },
   };
 

@@ -7,8 +7,8 @@
     </div>
   </div>
   <!-- End portfolio-header -->
-  <div *ngIf="Projects" class="projects-grid row">
-    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects()" [ngClass]="{'col-md-3': DefaultView == 'grid','col-md-12': DefaultView == 'showcase' }" ></project-card-portfolio>
+  <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
+    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects()" [ngClass]="{'col-md-3': DefaultView == 'grid','col-md-12': DefaultView == 'showcase' }" dnd-sortable [sortableIndex]="i"></project-card-portfolio>
   </div>
   <!-- End project-grid -->
 </div>
