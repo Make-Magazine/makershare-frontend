@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,6 +10,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() projectCard;
+  @Input() navigationExtras:NavigationExtras;
   badges=[];
   constructor(private router: Router,
   private route: ActivatedRoute,
@@ -37,12 +38,11 @@ export class ProjectCardComponent implements OnInit {
   }
   challengePage(nid) {
     //console.log(nid);
-
     this.router.navigate(['challenges/', nid]);
 
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]);
+    this.router.navigate(['/project/view', nid], this.navigationExtras);
    // console.log(nid)
   }
 }
