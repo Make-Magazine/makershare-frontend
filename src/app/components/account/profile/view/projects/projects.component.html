@@ -3,7 +3,7 @@
 
     <div *ngFor="let project of profile_projects" class="col-md-6">
       <!-- Start Project Card -->
-      <app-project-card [projectCard]="project"></app-project-card>
+      <app-project-card [nid]="project.nid"></app-project-card>
       <!-- End Project Card -->
 
     </div>

@@ -142,7 +142,7 @@
         <aside class="col-sm-4">
           <div *ngIf="workshop" class="workshop-instructor">
             <div class=" profile-container">
-              <app-user-card [uid]="workshop.uid"></app-user-card>
+              <app-user-card *ngIf="workshop.uid" [uid]="workshop.uid"></app-user-card>
             </div>
             <!-- End profile card -->
           </div>
