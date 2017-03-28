@@ -45,7 +45,7 @@ export class InboxComponent implements OnInit {
   SelectedUser = [];
   submitted = false;
   deletedArr = [];
-  deleted = []
+  deleted;
   userId;
   messageObj: Message = {
     recipients: '',
@@ -57,6 +57,7 @@ export class InboxComponent implements OnInit {
   pm_disabed = true;
   disabled;
   onemMg =[];
+  //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -64,7 +65,8 @@ export class InboxComponent implements OnInit {
     private http: Http,
     private user: UserService,
     private viewService: ViewService,
-    private _location: Location,private modalService: NgbModal,
+    private _location: Location,
+    private modalService: NgbModal,
 
   ) { }
   ngOnInit(): void {
@@ -74,17 +76,11 @@ export class InboxComponent implements OnInit {
     this.CountMessages();
   }
 
-  SetMember(uid) {
-    this.viewService.getView('maker_profile_card_data', [['uid', uid],]).subscribe(data => {
-      this.SelectedUser.push(data);
-    });
-  }
-
   RefreshUsers(index, value) {
-    this.reciverUser[index] = [];
+    this.reciverUser = [];
     if (value.length > 1) {
       this.viewService.getView('maker_profile_search_data', [['search', value]]).subscribe(data => {
-        this.reciverUser[index] = data;
+        this.reciverUser = data;
         var TempUsers = [];
         for (let index in data) {
           var found = false;
@@ -95,14 +91,26 @@ export class InboxComponent implements OnInit {
               return;
             }
           });
+          
           if (!found) {
             TempUsers.push(element);
           }
         }
-        this.reciverUser[index] = TempUsers;
-        //console.log(this.reciverUser[index])
+        this.reciverUser = TempUsers;
+        //console.log(this.reciverUser)
       });
     }
+  }
+
+  /**
+  * selct users to send message
+  */
+  SetMember(uid, i) {
+    //this.hideUser = false;
+    this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
+      this.SelectedUser.push(data);
+      //console.log(this.SelectedUser[0][0].username)
+    });
   }
 
   onSubmit(e) {
@@ -113,13 +121,13 @@ export class InboxComponent implements OnInit {
         str += selectedUsers[0].username +  ', ' ;
       }
        //console.log(str)
-       this.messageObj.recipients = str;
+      this.messageObj.recipients = str;
       this.messageObj.body =  this.messageForm.value.subject;
       this.messageObj.subject = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         //this.submitted=true;
         //this.messageObj=messageObj
-        console.log(res)
+        //console.log(res)
       });
     }
   }
@@ -152,15 +160,11 @@ export class InboxComponent implements OnInit {
   }
 
   formErrors = {
-    'recipients': '',
     'subject': '',
     'body': ''
   };
 
   validationMessages = {
-    'recipients': {
-      'required': 'Name is required.',
-    },
     'subject': {
       'required': 'Subject is required.',
     },
@@ -253,8 +257,9 @@ export class InboxComponent implements OnInit {
       this.hideloadmore = false;
     }
   }
-  deleteMessage(mid:number, i) {
-      this.pm.deleteMessage(mid).subscribe();
+  deleteMessage(i) {
+       this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
+       delete this.msg[i];
   }
 
   valueChanged(mid, event) {
@@ -273,7 +278,7 @@ export class InboxComponent implements OnInit {
   deleteMessages() {
     for (var _i = 0; _i < this.deletedArr.length; _i++) {
       var index = this.msg.indexOf(this.deletedArr[_i], 0);
-      delete this.msg[index];
+      delete this.msg[index]; 
     }
   }
 
