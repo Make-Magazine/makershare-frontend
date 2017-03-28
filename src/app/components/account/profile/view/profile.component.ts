@@ -114,7 +114,8 @@ export class ProfileComponent implements OnInit {
           this.profile.profile_cover = res.uri;
           this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Profile on Maker Share community.";
           this.customImage = this.profile.user_photo;
-
+          // set user photo in local store to use it in the header
+          localStorage.setItem('user_photo', this.profile.user_photo);
         });
       this.profile.pass = "MOcs56";
       //console.log(res);
