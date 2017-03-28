@@ -1,0 +1,14 @@
+<li class="col-sm-2 col-2">
+  <a (click)="open(content)"><i class="fa fa-lg fa-share"></i></a>
+</li>
+
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <share-buttons [title]="PageTitle" [description]="PageDescription" [image]="PageImage" ></share-buttons>
+  </div>
+</template>

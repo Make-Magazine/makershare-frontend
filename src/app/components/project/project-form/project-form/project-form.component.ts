@@ -436,9 +436,17 @@ export class ProjectFormComponent implements OnInit {
 
   InviteTeam(){
     if(this.FormPrintableValues.InvitationEmails.mails.length !== 0){
-      this.mainService.post('/api/team_service/build',this.FormPrintableValues.InvitationEmails).subscribe(data=>{
-        console.log(data);
-        //this.SaveProject();
+      this.mainService.post('/api/team_service/build',this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data=>{
+        for(let email in data){
+          let user = data[email];
+          this.project.field_maker_memberships.und.forEach((row:field_collection_item_member,index:number)=>{
+            if(row.field_team_member.und[0].target_id === email){
+              row.field_team_member.und[0].target_id = user.name+' ('+user.uid+')';
+              return;
+            }
+          });
+        }
+        this.SaveProject();
       });
     }else{
       this.SaveProject();
