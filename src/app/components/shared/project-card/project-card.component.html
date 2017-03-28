@@ -1,12 +1,12 @@
 <div *ngIf="view=='grid'">
   <div class="project card" (click)="ShowProjectDetails(project.nid)">
     <div class="image-top">
-      <div class="overlay"></div>
+      <!-- <div class="overlay"></div> -->
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
       <img *ngIf="!project.cover_photo" src="http://placehold.it/335x250" alt="">
-      <div class="teaser">
+      <!-- <div class="teaser">
         <p *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
-      </div>
+      </div>  -->
       <div class="list-unstyled icons">
         <span *ngIf="project.video_check"><i class="fa fa-lg fa-video-camera"></i></span>
         <span><i class="fa fa-lg fa-trophy"></i>1</span>
@@ -14,8 +14,9 @@
       </div>
     </div>
     <div class="card-block d-flex justify-content-around">
+      <p class="card-type">Project</p>
       <div class="d-flex flex-column">
-        <div class="profiel-pic-container" *ngIf="profilePage">
+        <div class="profiel-pic-container">
           <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
           <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
         </div>
@@ -25,12 +26,11 @@
           </div>
         </div>
       </div>
-
       <div class="content-side col d-flex flex-column justify-content-start">
         <h4 class="card-title">{{project.project_name}}</h4>
         <p class="card-text">{{project.teaser}}</p>
         <div class="card-stats mt-auto">
-          <ul class="d-flex justify-content-start list-unstyled">
+          <ul class="list-unstyled">
             <li>
               <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
@@ -44,6 +44,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
