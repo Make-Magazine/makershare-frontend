@@ -7,7 +7,7 @@
           <div class="container">
             <div class="row justify-content-center align-items-center">
               <div class="entries-count btn">
-                <p>128 Projects</p>
+                <p>{{countProject}} Projects</p>
               </div>
               <div class="projects-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
@@ -56,7 +56,8 @@
   </div>
   <div class="text-center">
     <div class="button-container-main-2">
-      <a href="#" class="btn btn-main-2">Load more</a>
+      <a class="btn btn-main-2" *ngIf="!hideLoadMore" (click)="loadMoreProject($event)">Load more</a>
+
     </div>
   </div>
 </div>

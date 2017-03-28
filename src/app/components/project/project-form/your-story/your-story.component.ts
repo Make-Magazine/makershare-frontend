@@ -232,6 +232,8 @@ export class YourStoryComponent implements OnInit {
      'field_show_tell_video': '',
      'field_story': '',
      'field_teaser': '',
+     'field_aha_moment': '',
+     'field_uh_oh_moment': ''
    };
 
    /**
@@ -259,6 +261,12 @@ export class YourStoryComponent implements OnInit {
      },
      'field_teaser':{
        'maxlength': 'Max number of characters is 250'
+     },
+     'field_aha_moment':{
+       'maxlength': 'Max number of characters is 350'
+     },
+      'field_uh_oh_moment':{
+       'maxlength': 'Max number of characters is 350'
      }
    };
 

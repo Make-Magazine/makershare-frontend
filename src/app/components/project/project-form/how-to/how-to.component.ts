@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
@@ -7,7 +7,7 @@ import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.servic
 import { ProjectForm } from '../../../../models/project/project-form/project';
 import { ToolMaterialPart } from '../../../../models/project/project-form/ToolMaterialPart';
 import { TaxonomyTerm } from '../../../../models/Drupal/taxonomy-term';
-import { field_collection_item_tool,field_collection_item_part,field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
+import { field_collection_item_tool, field_collection_item_part, field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
@@ -16,8 +16,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
-   styles : [
-     '.tools textarea {max-width:100%;resize:none;}'
+  styles: [
+    '.tools textarea {max-width:100%;resize:none;}'
   ]
 })
 
@@ -37,83 +37,82 @@ export class HowToComponent implements OnInit {
   @Input('FormPrintableValues') FormPrintableValues;
   HowToForm: FormGroup;
   ToolsMaterialsParts = [];
-  Durations:TaxonomyTerm[];
-  Difficulties:TaxonomyTerm[];
-  resources_files:FileEntity[] = [];
-  ResourceLabels:TaxonomyTerm[];
+  Durations: TaxonomyTerm[];
+  Difficulties: TaxonomyTerm[];
+  resources_files: FileEntity[] = [];
+  ResourceLabels: TaxonomyTerm[];
   searchFailed = {
-    tool:false,
-    part:false,
-    material:false
+    tool: false,
+    part: false,
+    material: false
   };
-  CurrentModal:string;
+  CurrentModal: string;
 
-  search = (text$: Observable<string>) =>{
+  search = (text$: Observable<string>) => {
     let control = text$['source']['sourceObj'].classList[0];
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
       .do(() => this.searchFailed[control] = false)
-      .switchMap((term) => 
-        {
-          if(term.length > 1){
-            return this.viewService.getView('api-project-tools-materials-parts-list',[['type', control],['name',term]])
+      .switchMap((term) => {
+        if (term.length > 1) {
+          return this.viewService.getView('api-project-tools-materials-parts-list', [['type', control], ['name', term]])
             .map(result => {
-              if(result.length == 0){
+              if (result.length == 0) {
                 this.searchFailed[control] = true;
               }
               return result;
             })
-          }
-          return [];
         }
+        return [];
+      }
       )
   };
 
   constructor(
     private fb: FormBuilder,
-    private viewService:ViewService,
-    private taxonomyService:TaxonomyService,
-    private nodeService:NodeService,
+    private viewService: ViewService,
+    private taxonomyService: TaxonomyService,
+    private nodeService: NodeService,
     private modalService: NgbModal,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.resources_files = this.FormPrintableValues.resources_files;
-    if(!this.resources_files){
+    if (!this.resources_files) {
       this.resources_files = [];
     }
-    this.taxonomyService.getVocalbularyTerms(5).subscribe((data:TaxonomyTerm[]) => {
+    this.taxonomyService.getVocalbularyTerms(5).subscribe((data: TaxonomyTerm[]) => {
       this.Difficulties = data;
     });
-    this.taxonomyService.getVocalbularyTerms(6).subscribe((data:TaxonomyTerm[]) => {
+    this.taxonomyService.getVocalbularyTerms(6).subscribe((data: TaxonomyTerm[]) => {
       this.Durations = data;
     });
-    this.taxonomyService.getVocalbularyTerms(12).subscribe((data:TaxonomyTerm[]) => {
+    this.taxonomyService.getVocalbularyTerms(12).subscribe((data: TaxonomyTerm[]) => {
       this.ResourceLabels = data;
     });
     this.buildForm();
   }
 
-  SetToolMaterialPart(arrayelementname,ControlName,value,index){
-    let name_with_id = value.name+' ('+value.nid+')';
-    const control =  this.HowToForm.controls[ControlName]['controls'][index];
-    control.controls['field_'+arrayelementname+'_name'].setValue(name_with_id);
-    var url:URL;
-    var description:string;
-    if(arrayelementname === "tool"){
-      if(control.controls.field_tool_url.valid){
+  SetToolMaterialPart(arrayelementname, ControlName, value, index) {
+    let name_with_id = value.name + ' (' + value.nid + ')';
+    const control = this.HowToForm.controls[ControlName]['controls'][index];
+    control.controls['field_' + arrayelementname + '_name'].setValue(name_with_id);
+    var url: URL;
+    var description: string;
+    if (arrayelementname === "tool") {
+      if (control.controls.field_tool_url.valid) {
         url = control.controls.field_tool_url.value;
       }
       description = control.controls.field_description.value;
     }
     var field_quantity = "";
-    if(control.controls.field_material_quantity){
+    if (control.controls.field_material_quantity) {
       field_quantity = control.controls.field_material_quantity.value;
-    }else{
+    } else {
       field_quantity = control.controls.field_quantity.value;
     }
-    
+
     let allvalues = {
       field_tool_name: name_with_id,
       field_part_name: name_with_id,
@@ -126,22 +125,22 @@ export class HowToComponent implements OnInit {
     };
     let Row = this.GetRowWithValues(allvalues, arrayelementname);
     this.project[ControlName].und.push(Row);
-    this.ControlValueChangesSubscribe(control,0,ControlName);
+    this.ControlValueChangesSubscribe(control, 0, ControlName);
   }
 
-  ControlValueChangesSubscribe(control,index,ControlName?){
-    if(ControlName && ControlName !== 'field_resources'){
-      let temp = ControlName.substring(0, ControlName.length-1);
+  ControlValueChangesSubscribe(control, index, ControlName?) {
+    if (ControlName && ControlName !== 'field_resources') {
+      let temp = ControlName.substring(0, ControlName.length - 1);
       let arrayelementname = temp.split("_")[1];
       control.valueChanges.subscribe(values => {
-        if(arrayelementname === "tool" && (!control.controls.field_tool_url || !control.controls.field_tool_url.valid)){
+        if (arrayelementname === "tool" && (!control.controls.field_tool_url || !control.controls.field_tool_url.valid)) {
           values.field_tool_url = '';
         }
         this.project[ControlName].und[values.field_sort_order - 1] = this.GetRowWithValues(values, arrayelementname);
       });
-    }else{
+    } else {
       control.valueChanges.subscribe(values => {
-        if(control.valid){
+        if (control.valid) {
           this.project.field_resources.und[index].field_label.und = values.field_label;
           this.project.field_resources.und[index].field_repository_link.und[0].url = values.field_repository_link;
         }
@@ -149,39 +148,39 @@ export class HowToComponent implements OnInit {
     }
   }
 
-  GetRowWithValues(values, arrayelementname):any{
-    switch(arrayelementname){
+  GetRowWithValues(values, arrayelementname): any {
+    switch (arrayelementname) {
       case 'tool':
-      {
-        let Tool:field_collection_item_tool = {
-          field_tool_name:{und:[{target_id:values.field_tool_name}]},
-          field_sort_order:{und:[{value:values.field_sort_order}]},
-          field_tool_url:{und:[{url:values.field_tool_url}]},
-          field_description:{und:[{value:values.field_description}]},
-          field_quantity:{und:[{value:values.field_quantity}]},
-        };
-        return Tool;
-      } 
+        {
+          let Tool: field_collection_item_tool = {
+            field_tool_name: { und: [{ target_id: values.field_tool_name }] },
+            field_sort_order: { und: [{ value: values.field_sort_order }] },
+            field_tool_url: { und: [{ url: values.field_tool_url }] },
+            field_description: { und: [{ value: values.field_description }] },
+            field_quantity: { und: [{ value: values.field_quantity }] },
+          };
+          return Tool;
+        }
       case 'part':
-      {
-        let Part:field_collection_item_part = {
-          field_part_name:{und:[{target_id:values.field_part_name}]},
-          field_sort_order:{und:[{value:values.field_sort_order}]},
-          field_quantity:{und:[{value:values.field_quantity}]},
-        };
-        return Part;
-      } 
+        {
+          let Part: field_collection_item_part = {
+            field_part_name: { und: [{ target_id: values.field_part_name }] },
+            field_sort_order: { und: [{ value: values.field_sort_order }] },
+            field_quantity: { und: [{ value: values.field_quantity }] },
+          };
+          return Part;
+        }
       case 'material':
-      {
-        let Material:field_collection_item_material = {
-          field_material_name:{und:[{target_id:values.field_material_name}]},
-          field_sort_order:{und:[{value:values.field_sort_order}]},
-          field_material_quantity:{und:[{value:values.field_material_quantity}]},
-        };
-        return Material;
-      } 
+        {
+          let Material: field_collection_item_material = {
+            field_material_name: { und: [{ target_id: values.field_material_name }] },
+            field_sort_order: { und: [{ value: values.field_sort_order }] },
+            field_material_quantity: { und: [{ value: values.field_material_quantity }] },
+          };
+          return Material;
+        }
     }
-     
+
   }
 
   /**
@@ -198,14 +197,14 @@ export class HowToComponent implements OnInit {
       'field_resources': this.fb.array([]),
       'field_credit_your_inspiration': [this.project.field_credit_your_inspiration.und[0].value]
     });
-    let multifields = ["field_tools","field_materials","field_parts","field_resources"]
-    multifields.forEach(field =>{
-      this.project[field].und.forEach((element,index)=>{
-        this.AddRow(field,element);
+    let multifields = ["field_tools", "field_materials", "field_parts", "field_resources"]
+    multifields.forEach(field => {
+      this.project[field].und.forEach((element, index) => {
+        this.AddRow(field, element);
       });
     });
     this.HowToForm.valueChanges.subscribe(data => {
-      this.onValueChanged(this.HowToForm, this.formErrors,this.validationMessages);
+      this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
       this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
       this.project.field_duration.und = this.HowToForm.controls['field_duration'].value;
       this.emitter.emit(this.resources_files);
@@ -216,21 +215,21 @@ export class HowToComponent implements OnInit {
   /**
    * Adding new element to control array and also pushing new error structure for this row
    */
-  AddRow(ControlName,data?) {
+  AddRow(ControlName, data?) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let index = control.length + 1;
-    const addrCtrl = this.InitRow(ControlName,index,data);
-    control.push(addrCtrl); 
-    if(data){
-      this.ControlValueChangesSubscribe(addrCtrl,index-1,ControlName);
+    const addrCtrl = this.InitRow(ControlName, index, data);
+    control.push(addrCtrl);
+    if (data) {
+      this.ControlValueChangesSubscribe(addrCtrl, index - 1, ControlName);
     }
-    this.formErrors[ControlName].push(this.GetErrorStructure(ControlName)); 
+    this.formErrors[ControlName].push(this.GetErrorStructure(ControlName));
   }
 
   /**
    * Removing row from the array 
    */
-  RemoveRow(i: number,ControlName) {
+  RemoveRow(i: number, ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     control.removeAt(i);
     this.formErrors[ControlName].splice(i, 1);
@@ -241,42 +240,42 @@ export class HowToComponent implements OnInit {
   /**
    * Initalize the row with validations array and default values
    */
-  InitRow(ControlName,index,data?) {
-    switch (ControlName){
+  InitRow(ControlName, index, data?) {
+    switch (ControlName) {
       case 'field_tools':
-      {
-        return this.fb.group({
-          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_tool_name': [data && data.field_tool_name && data.field_tool_name.und? data.field_tool_name.und[0].target_id:'', Validators.required],
-          'field_tool_url': [data && data.field_tool_url && data.field_tool_url.und? data.field_tool_url.und[0].url:'', CustomValidators.url],
-          'field_description': [data && data.field_description && data.field_description.und? data.field_description.und[0].value:''],
-          'field_quantity': [data && data.field_quantity && data.field_quantity.und? data.field_quantity.und[0].value:''],
-        });
-      }
+        {
+          return this.fb.group({
+            'field_sort_order': [index, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+            'field_tool_name': [data && data.field_tool_name && data.field_tool_name.und ? data.field_tool_name.und[0].target_id : '', Validators.required],
+            'field_tool_url': [data && data.field_tool_url && data.field_tool_url.und ? data.field_tool_url.und[0].url : '', CustomValidators.url],
+            'field_description': [data && data.field_description && data.field_description.und ? data.field_description.und[0].value : ''],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : ''],
+          });
+        }
       case 'field_parts':
-      {
-        return this.fb.group({
-          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_part_name': [data? data.field_part_name.und[0].target_id:'', Validators.required],
-          'field_quantity': [data && data.field_quantity && data.field_quantity.und? data.field_quantity.und[0].value:''],
-        });
-      }
+        {
+          return this.fb.group({
+            'field_sort_order': [index, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+            'field_part_name': [data ? data.field_part_name.und[0].target_id : '', Validators.required],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : ''],
+          });
+        }
       case 'field_materials':
-      {
-        return this.fb.group({
-          'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
-          'field_material_name': [data? data.field_material_name.und[0].target_id:'', Validators.required],
-          'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und? data.field_material_quantity.und[0].value:''],
-        });
-      }
+        {
+          return this.fb.group({
+            'field_sort_order': [index, [CustomValidators.number, Validators.required, CustomValidators.min(1)]],
+            'field_material_name': [data ? data.field_material_name.und[0].target_id : '', Validators.required],
+            'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und ? data.field_material_quantity.und[0].value : ''],
+          });
+        }
       case 'field_resources':
-      {
-        return this.fb.group({
-          'field_resources_filename': [data? data.field_resource_file && data.field_resource_file.und[0].filename:'', Validators.required],
-          'field_repository_link':[data && data.field_repository_link && data.field_repository_link.und? data.field_repository_link.und[0].url:'',CustomValidators.url],
-          'field_label': [data? data.field_label.und:1105,],
-        });
-      }
+        {
+          return this.fb.group({
+            'field_resources_filename': [data ? data.field_resource_file && data.field_resource_file.und[0].filename : '', Validators.required],
+            'field_repository_link': [data && data.field_repository_link && data.field_repository_link.und ? data.field_repository_link.und[0].url : '', CustomValidators.url],
+            'field_label': [data ? data.field_label.und : 1105,],
+          });
+        }
     }
   }
 
@@ -284,12 +283,12 @@ export class HowToComponent implements OnInit {
    * Changeing the row position for all the fields
    * getting the current item index and the new index then switch them
    */
-  ChangeOrder(CurrentIndex, NewIndex, ControlName){
+  ChangeOrder(CurrentIndex, NewIndex, ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     let currentrow = control.at(CurrentIndex);
     let newrow = control.at(NewIndex);
-    control.setControl(CurrentIndex,newrow);
-    control.setControl(NewIndex,currentrow);
+    control.setControl(CurrentIndex, newrow);
+    control.setControl(NewIndex, currentrow);
     let currentr = this.project[ControlName].und[CurrentIndex];
     let newr = this.project[ControlName].und[NewIndex];
     this.project[ControlName].und[CurrentIndex] = newr;
@@ -305,7 +304,7 @@ export class HowToComponent implements OnInit {
   onValueChanged(form, formErrors, validationMessages) {
     if (!this.HowToForm) { return; }
     for (const field in formErrors) {
-      if(typeof formErrors[field] === 'string'){
+      if (typeof formErrors[field] === 'string') {
         formErrors[field] = '';
         const control = form.get(field);
         if (control && control.dirty && !control.valid) {
@@ -314,9 +313,9 @@ export class HowToComponent implements OnInit {
             formErrors[field] += messages[key] + ' ';
           }
         }
-      }else{
+      } else {
         form.get(field).controls.forEach((element, index) => {
-          this.onValueChanged(element,formErrors[field][index] ,validationMessages[field]);
+          this.onValueChanged(element, formErrors[field][index], validationMessages[field]);
         });
       }
     }
@@ -325,42 +324,42 @@ export class HowToComponent implements OnInit {
   /**
    * A method to return the error message structure of each field to use them in formErrors
    */
-  GetErrorStructure(ControlName?) : string | Object {
-   switch (ControlName){
-    case 'field_tools':
-    {
-      return {'field_sort_order':'', 'field_tool_name': '','field_tool_url': ''};
+  GetErrorStructure(ControlName?): string | Object {
+    switch (ControlName) {
+      case 'field_tools':
+        {
+          return { 'field_sort_order': '', 'field_tool_name': '', 'field_tool_url': '' };
+        }
+      case 'field_parts':
+        {
+          return { 'field_sort_order': '', 'field_part_name': '' };
+        }
+      case 'field_materials':
+        {
+          return { 'field_sort_order': '', 'field_material_name': '' };
+        }
+      case 'field_resources':
+        {
+          return { 'field_resources_filename': '', 'field_repository_link': '' };
+        }
     }
-    case 'field_parts':
-    {
-      return {'field_sort_order':'', 'field_part_name': ''};
-    }
-    case 'field_materials':
-    {
-      return {'field_sort_order':'', 'field_material_name': ''};
-    }
-    case 'field_resources':
-    {
-      return {'field_resources_filename':'', 'field_repository_link':''};
-    }
-   }
     return '';
   }
 
   /**
    * Sort rows of a field to set sort order equals the current index
    */
-  SortElements(ControlName){
+  SortElements(ControlName) {
     const control = <FormArray>this.HowToForm.controls[ControlName];
     var TempToolsMaterialsParts = [];
     TempToolsMaterialsParts[ControlName] = [];
-    let ctrlnamesingle = ControlName.substring(0, ControlName.length-1);
+    let ctrlnamesingle = ControlName.substring(0, ControlName.length - 1);
     control.controls.forEach((element, index) => {
-      if(this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()]){
-        this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index]=[];
+      if (this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()]) {
+        this.ToolsMaterialsParts[ctrlnamesingle.toLowerCase()][index] = [];
       }
-      if(this.project[ControlName].und[index].field_sort_order){
-        this.project[ControlName].und[index].field_sort_order.und[0].value = index + 1; 
+      if (this.project[ControlName].und[index].field_sort_order) {
+        this.project[ControlName].und[index].field_sort_order.und[0].value = index + 1;
         element['controls']['field_sort_order'].setValue(index + 1);
       }
       TempToolsMaterialsParts[ControlName].push(this.project[ControlName].und[index]);
@@ -368,31 +367,31 @@ export class HowToComponent implements OnInit {
     this.project[ControlName].und = TempToolsMaterialsParts[ControlName];
   }
 
-  FileUpdated(event, index){
+  FileUpdated(event, index) {
     const control = this.HowToForm.controls['field_resources']['controls'][index];
     let files = event.srcElement.files;
-    if(files.length == 1 && files[0]){
+    if (files.length == 1 && files[0]) {
       control.controls.field_resources_filename.setValue(files[0].name);
-      var file:FileEntity = {
-        file:'',
-        filename:files[0].name
+      var file: FileEntity = {
+        file: '',
+        filename: files[0].name
       };
-      NodeHelper.ConvertToBase64(files[0],file);
-      if(this.resources_files[index]){
+      NodeHelper.ConvertToBase64(files[0], file);
+      if (this.resources_files[index]) {
         this.resources_files[index] = file;
-      }else{
+      } else {
         this.resources_files.push(file);
-        var url:URL;
-        if(control.controls.field_repository_link.valid){
+        var url: URL;
+        if (control.controls.field_repository_link.valid) {
           url = control.value.field_repository_link;
         }
-        let field_resource:field_collection_item_resource = {
-          field_label:{und:control.value.field_label},
-          field_repository_link:{und:[{url:url}]},
-          field_resource_file:{und:[{filename:file.filename,fid:0}]}
+        let field_resource: field_collection_item_resource = {
+          field_label: { und: control.value.field_label },
+          field_repository_link: { und: [{ url: url }] },
+          field_resource_file: { und: [{ filename: file.filename, fid: 0 }] }
         };
         this.project.field_resources.und.push(field_resource);
-        this.ControlValueChangesSubscribe(control,index);
+        this.ControlValueChangesSubscribe(control, index);
       }
     }
     this.emitter.emit(this.resources_files);
@@ -409,58 +408,65 @@ export class HowToComponent implements OnInit {
     'field_parts': [],
     'field_materials': [],
     'field_resources': [],
+    'field_credit_your_inspiration': ''
+
+
   };
 
-   /**
-    * Validation messages object contains all error messages for each field
-    * each field has multiple validations for each error
-    * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
-    */
+  /**
+   * Validation messages object contains all error messages for each field
+   * each field has multiple validations for each error
+   * @see https://angular.io/docs/ts/latest/cookbook/form-validation.html
+   */
   validationMessages = {
     'field_tools': {
-      'field_sort_order':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
+      'field_sort_order': {
+        'number': 'Sort order must be a number.',
+        'required': 'Sort order is required',
+        'min': 'Sort order must be at least 1.',
       },
-      'field_tool_name':{
-        'required':'Name is required',
-      },      
-      'field_tool_url':{
+      'field_tool_name': {
+        'required': 'Name is required',
+      },
+      'field_tool_url': {
         'url': 'Please enter a valid url, ex: http://example.com.',
       },
     },
     'field_parts': {
-      'field_sort_order':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
+      'field_sort_order': {
+        'number': 'Sort order must be a number.',
+        'required': 'Sort order is required',
+        'min': 'Sort order must be at least 1.',
       },
-      'field_part_name':{
-        'required':'Name is required',
-      },      
+      'field_part_name': {
+        'required': 'Name is required',
+      },
     },
     'field_materials': {
-      'field_sort_order':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
+      'field_sort_order': {
+        'number': 'Sort order must be a number.',
+        'required': 'Sort order is required',
+        'min': 'Sort order must be at least 1.',
       },
-      'field_material_name':{
-        'required':'Name is required',
-      },      
+      'field_material_name': {
+        'required': 'Name is required',
+      },
     },
     'field_resources': {
-      'field_resources_filename':{
-        'required':'Sort order is required',
+      'field_resources_filename': {
+        'required': 'Sort order is required',
       },
-      'field_repository_link':{
+      'field_repository_link': {
         'url': 'Please enter a valid url, ex: http://example.com.',
-      },    
+      },
     },
+    'field_credit_your_inspiration': {
+      'maxlength': 'Max number of characters is 140 '
+    }
+
   };
 
-  OpenAddModal(Template,Control){
+  OpenAddModal(Template, Control) {
     this.CurrentModal = Control;
     this.modalService.open(Template);
   }
@@ -470,20 +476,20 @@ export class HowToComponent implements OnInit {
    * @param CloseButton the button element to close after successful submitting
    * @param NameInput the input element to get the value of the field name
    */
-  AddNewToolMaterialPart(CloseButton:HTMLButtonElement,NameInput:HTMLInputElement){
-    if(!NameInput.value){
+  AddNewToolMaterialPart(CloseButton: HTMLButtonElement, NameInput: HTMLInputElement) {
+    if (!NameInput.value) {
       CloseButton.click();
       return;
     }
-    let NewToolMaterialPart:ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
-    let FieldName = 'field_'+this.CurrentModal+'s';
-    NewToolMaterialPart.SetField(NameInput.value,"title");
-    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode)=>{
+    let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
+    let FieldName = 'field_' + this.CurrentModal + 's';
+    NewToolMaterialPart.SetField(NameInput.value, "title");
+    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
       NewNode.name = NameInput.value;
       CloseButton.click();
       NameInput.value = '';
       this.searchFailed[this.CurrentModal] = false;
-      this.SetToolMaterialPart(this.CurrentModal,FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length-1);
+      this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
     });
   }
 }

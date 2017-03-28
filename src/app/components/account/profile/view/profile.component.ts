@@ -26,6 +26,11 @@ import { FileService } from '../../../../d7services/file/file.service';
 })
 export class ProfileComponent implements OnInit {
 
+ 
+ countdown = '';
+//  countdown2;
+
+
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
   customImage: string;
@@ -71,6 +76,7 @@ export class ProfileComponent implements OnInit {
     address: {},
     pass: "MOcs56",
   };
+  ckeditorCongfig = {};
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -96,8 +102,11 @@ export class ProfileComponent implements OnInit {
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
     this.cropperSettings.noFileInput = true;
     this.CoverImageData = {};
-  }
+    this.ckeditorCongfig = {extraPlugins: 'wordcount', wordcount: {maxCharCount: 5}}
+   
 
+  }
+  
   ngOnInit() {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
@@ -231,6 +240,26 @@ export class ProfileComponent implements OnInit {
     this.fileChangeListener(acceptedFile.file, cropper)
   }
 
+
+ limitText(limitField, limitCount, limitNum) {
+
+   console.log('limit')
+      console.log (limitField)
+      // console.log ( limitCount)
+      
+	if (limitField.length > limitNum) {
+		limitField = limitField.substring(0, limitNum);
+ 
+
+	} else {
+		 limitCount = limitNum - limitField.length;
+      console.log ( limitCount)
+      this.countdown = limitCount;
+      
+	}
+}
+
+
   saveCropped() {
     if (!this.CoverImageData.image) return;
     //this.profile.profile_cover = this.CoverImageData.image;
@@ -241,6 +270,7 @@ export class ProfileComponent implements OnInit {
     });
     this.saveProfile();
   }
+
   /* function get Badges */
   getBadges() {
     // service to get profile card Badges
@@ -249,6 +279,11 @@ export class ProfileComponent implements OnInit {
     }, err => {
     });
   }
+
+   /* end function get Badges */
+   
+    
+
   /* end function get Badges */
   limitString(model, key, length) {
     if (typeof model[key] != "undefined") {
@@ -258,4 +293,5 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
+
 }
