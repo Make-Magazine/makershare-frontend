@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
+import { ISorting } from '../../models/explore/sorting';
+
 
 
 @Component({
@@ -14,32 +16,20 @@ export class ExploreComponent implements OnInit {
   pages: number = 0;
   countProject=0;
   hideloadmoreproject = false;
-
   page_arg;
+  sort: ISorting = {
+    sort_by: "title",
+    sort_order: "ASC",
+    pageNo: 0
+  };
   constructor(
     private router: Router,
     private viewService: ViewService,
   ) { }
 
   ngOnInit() {
-
-    this.getProjects();
+     this.getProjects();
     this.getCountProject();
-    // get the categories
-    // this.viewService.getView('maker_taxonomy_category/2', []).subscribe(data => {
-
-
-    //   let arr = [];
-    //   for(let key in data){
-    //    if(data.hasOwnProperty(key)){
-    //      arr.push(data[key]);
-    //    }
-    //   }
-    //   this.categories = arr;
-    // }, err => {
-
-    // });
-
   }
 
 getProjects(){
@@ -47,7 +37,10 @@ getProjects(){
      if (this.pages >= 0) {
       this.page_arg = ['page', this.pages];
     }
-    this.viewService.getView('browse_projects', [['page', this.pages]]).subscribe(data => {
+    if(this.pages == 0) {
+      this.projects = [];
+    }
+    this.viewService.getView('browse_projects', [['page', this.pages],['sort_by', this.sort.sort_by],['sort_order', this.sort.sort_order]]).subscribe(data => {
       // console.log(data);
       this.projects = this.projects.concat(data);
       console.log(this.projects);
@@ -97,6 +90,65 @@ getProjects(){
     }
   }
   /* END FUNCTION loadMoreVisibilty */
+    /* function to sort challenge Title A-z */
+  sortAsc() {
+
+    this.pages = 0;
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "title";
+    this.getProjects();
+  }
+  /* end function to sort challenge Title A-z */
+  /* function to sort challenge Title Z-A */
+  sortDesc() {
+
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "title_1"
+    this.getProjects();
+
+  }
+  /* end function to sort challenge Title Z-A */
+   /* function to sort challenge Recently */
+  mostRecent() {
+
+    this.pages = 0
+    this.sort.sort_order = "DESC"
+    // this.sort.sort_by = "createpageNumberd"
+    this.sort.sort_by = "created_2"
+    this.getProjects();
+
+  }
+  /* function to sort challenge Oldest */
+  oldest() {
+    this.pages = 0
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "created_1"
+       this.getProjects();
+
+  }
+  /* end function to sort challenge Oldest */
+
+  /* function to sort challenge MostLiked */
+  mostLiked() {
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "count"
+    this.getProjects();
+
+  }
+  /* end function to sort challenge MostLiked */
+
+  /* function to sort challenge MostForked */
+  mostForked() {
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "field_total_forks_value";
+    this.getProjects();
+
+  }
+  /* end function to sort challenge MostLiked */
+
  
 
 }
