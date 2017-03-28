@@ -43,7 +43,7 @@ export class ChallengesComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
     this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.challenges = this.challenges.concat(data);
 
       this.loadMoreVisibilty();

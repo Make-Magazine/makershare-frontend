@@ -380,7 +380,7 @@
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio"
+											<ckeditor id="how-to-make" rows="5" [config]="ckEditorConfig" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio"
 												placeholder="Start your story">
 												</ckeditor>
 												<!--<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"

@@ -29,8 +29,8 @@ export class UserService {
       this.mainService.saveCookies(token, null, null);
       var body = {"name": username, "pass": password};
       return this.mainService.post('/api/user/login', body).map(response => response.json()).map(user => {
-        console.log("login ok", user);
-        console.log(user);
+        // console.log("login ok", user);
+        // console.log(user);
         this.mainService.saveCookies(user.token, user.session_name, user.sessid);
         return user;
       });

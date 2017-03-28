@@ -95,7 +95,7 @@ export class ChallengeProjectComponent implements OnInit {
         this.challangeData = data[0];
         // this.challangStartDate = this.challangeData.challenge_start_date;
       }, err => {
-        console.log(err);
+        // console.log(err);
       });
   }
   updateSelectedProject(item: any) {
@@ -133,7 +133,7 @@ export class ChallengeProjectComponent implements OnInit {
        }
       /* end follow  */
     }, err => {
-      console.log(err);
+      // console.log(err);
     });
   }
 
