@@ -46,7 +46,7 @@
         <div *ngIf="projectsChallenge" class="projects-grid  row">
           <div *ngFor="let project of projectsChallenge" class="col-md-6">
             <div *ngIf="project">
-              <app-project-card [projectCard]="project"></app-project-card>
+              <app-project-card [nid]="project.nid"></app-project-card>
             </div>
           </div>
         </div>

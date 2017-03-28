@@ -16,12 +16,6 @@ import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
   providers: [NgbTooltipConfig],
-  styles : [`
-      .add-cate {margin-left:5px}
-      .cate-name {margin: 3px 0}
-      .projectCategory {width:60%}
-      .projectCategory select {width:75%;}
-  `]
 })
 
 export class YourStoryComponent implements OnInit {

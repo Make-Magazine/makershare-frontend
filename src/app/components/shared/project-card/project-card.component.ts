@@ -9,9 +9,12 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbTooltipConfig],
 })
 export class ProjectCardComponent implements OnInit {
-  @Input() projectCard;
-  @Input() navigationExtras:NavigationExtras;
+
+
+  @Input() nid;
+  // @Input() navigationExtras:NavigationExtras;
   badges=[];
+    project={};
   constructor(private router: Router,
   private route: ActivatedRoute,
   private viewService: ViewService,
@@ -20,16 +23,23 @@ export class ProjectCardComponent implements OnInit {
     config.placement = 'bottom';
     config.triggers = 'hover';
  }
-  nid;
   myid;
   ngOnInit() {
-    this.myid = localStorage.getItem('user_id');
+    this.getProjectCard();
     this.getBadgesProject();
     //console.log(this.projectCard)
   }
+  getProjectCard(){
+      this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
+      this.project = res[0];
+      console.log(this.project);
+    }, err => {
+
+    });
+  }
   getBadgesProject(){
        // service to get profile card Badges
-    this.viewService.getView('api-project-badges', [['nid',this.projectCard.nid]]).subscribe(data => {
+    this.viewService.getView('api-project-badges', [['nid',this.nid]]).subscribe(data => {
       this.badges = data;
     }, err => {
       // notification error  in service 
@@ -42,7 +52,9 @@ export class ProjectCardComponent implements OnInit {
 
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid], this.navigationExtras);
+    this.router.navigate(['/project/view', nid]
+    // , this.navigationExtras
+    );
    // console.log(nid)
   }
 }
