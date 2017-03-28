@@ -1,56 +1,28 @@
 <div *ngIf="projectdata">
-<div *ngIf="project">
-  <div class="page-project">
-    <div class="row">
-      <section class="col width-fix">
-        <div class="top-content-wrapper">
-          <div class="container">
-            <div class="col-md-12">
-              <div class="projects-circle d-flex justify-content-between col-md-12" *ngIf="showcase.uid">
-                <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" class="go-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-                <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
-                <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" class="go-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+  <div *ngIf="project">
+    <div class="page-project">
+      <div class="row">
+        <section class="col width-fix">
+          <div class="top-content-wrapper">
+            <div class="container">
+              <div class="col-md-12">
+                <app-project-header [project]="projectDetails" [projectInfo]="projectdata"></app-project-header>            
+                <ul class="list-unstyled project-aside">
+                  <li id="project-story-tab"><a class="btn btn-tabs active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
+                  <li id="how-to-tab"><a class="btn btn-tabs" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
+                </ul>
+                <div class="clearfix"></div>
               </div>
-              <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
-                <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
-                <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
-                <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
-                <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
-                <app-shared-buttons *ngIf="project.title" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
-                <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
-              </ul>
-              <ul class="list-unstyled project-tags pull-left">
-                <li><a href="#" class="btn btn-grey">electronics</a></li>
-                <li><a href="#" class="btn btn-grey">Arduino</a></li>
-                <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
-                <li><a href="#" class="btn btn-grey">electronics</a></li>
-                <li><a href="#" class="btn btn-grey">Arduino</a></li>
-                <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
-              </ul>
-              <div class="clearfix"></div>
-              <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
-              <div *ngIf="projectdata"> <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p></div>
-              <ul class="list-unstyled project-aside">
-                <li id="project-story-tab"><a class="btn btn-tabs active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
-                <li id="how-to-tab"><a class="btn btn-tabs" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
-              </ul>
-              <div class="clearfix"></div>
             </div>
+            <!-- End container -->
           </div>
-          <!-- End container -->
-        </div>
-        <!-- End top-content-wrapper -->
-        <div class="container">
-          <app-project-story [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-story'"></app-project-story>
-          <app-project-how-to [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
-        </div>
-      </section>
+          <!-- End top-content-wrapper -->
+          <div class="container">
+            <app-project-story [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+            <app-project-how-to [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
-
-
-
