@@ -2337,6 +2337,8 @@ header.showcase-project .next {
   .page-create-project-why #projectCategory {
     height: auto;
     padding: 0; }
+    .page-create-project-why #projectCategory select {
+      width: 75%; }
   .page-create-project-why .nav-create {
     border-bottom: 1px solid #222;
     padding-top: 10px; }
@@ -2379,6 +2381,7 @@ header.showcase-project .next {
       margin-top: 5px; }
     .page-create-project-why .your-story .projectCategory .add-cate {
       margin-bottom: 5px;
+      margin-left: 5px;
       width: auto; }
     .page-create-project-why .your-story .projectCategory .categories-group {
       width: 100%;
@@ -2389,6 +2392,7 @@ header.showcase-project .next {
         margin-bottom: 5px;
         padding: 5px 10px; }
     .page-create-project-why .your-story .projectCategory p.cate-name {
+      margin: 3px 0;
       margin-left: 15px; }
     .page-create-project-why .your-story .projectCategory .list-group-item {
       width: 50%; }

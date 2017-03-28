@@ -99,7 +99,7 @@ loadMoreVisibilty(){
      this.route.params
     .switchMap((nid) => this.viewService.getView('showcase',[['nid',nid['nid']]]))
     .subscribe(data =>{
-      console.log(data[0]);
+      console.log(data[0].uid);
        this.showcase = data[0];
 
 

@@ -2,10 +2,11 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input type="text" class="form-control" id="projectName" ngbTooltip="{{TooltipText.projectName.title}}  {{TooltipText.projectName.guide}}"   formControlName="title" novalidate placeholder="Project Name">
-      <div *ngIf="formErrors.title" class="alert alert-danger error-msg">
-        {{ formErrors.title }}
-      </div>
+      <input type="text" class="form-control" id="projectName" ngbTooltip="{{TooltipText.projectName.title}}  {{TooltipText.projectName.guide}}"
+        formControlName="title" novalidate placeholder="Project Name">
+        <div *ngIf="formErrors.title" class="alert alert-danger error-msg">
+          {{ formErrors.title }}
+        </div>
     </div>
     <div class="form-group">
       <label for="teaser">Teaser</label>
@@ -22,8 +23,8 @@
         </div>
       </div>
       <div *ngIf="formErrors.field_cover_photo" class="alert alert-danger error-msg">
-          {{ formErrors.field_cover_photo }}
-        </div>
+        {{ formErrors.field_cover_photo }}
+      </div>
     </div>
     <div class="form-group projectCategory d-flex flex-column">
       <label for="projectCategory" class="">Categories</label>
@@ -35,10 +36,11 @@
           </select>
         </div>
         <div class="col-md-4">
-          <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child')">
+          <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
+            (change)="SelectTerm($event.target.value,'child')">
             <option disabled selected value> -- select an option -- </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
-          </select>
+            </select>
         </div>
         <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate col-md-2">add</div>
       </div>
@@ -50,14 +52,14 @@
       <div *ngIf="project.field_categories.und" class="cate-list">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
           <div *ngFor="let cate of all_categories;" class="">
-            <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item"><span [innerHTML]="cate.parentName"></span> &nbsp; >  <span [innerHTML]="cate.name"></span></p>
+            <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item"><span [innerHTML]="cate.parentName"></span> &nbsp; > <span [innerHTML]="cate.name"></span></p>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story' ></ckeditor>
+      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story'></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
       </div>
@@ -79,9 +81,11 @@
     </div>
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
-      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='field_tags' [modelAsStrings]="true" [(ngModel)]="tags"></tag-input>
+      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='field_tags' [modelAsStrings]="true"
+        [(ngModel)]="tags"></tag-input>
     </div>
-  </div><!-- End your-story -->
+  </div>
+  <!-- End your-story -->
 </div>
 <!--
 <aside class="col-md-4">
@@ -136,7 +140,7 @@
  -->
 
 <!--Cover image modal-->
- <template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -144,10 +148,10 @@
   </div>
   <div class="modal-body">
     <div class="file-upload">
-      <a class="btn btn-white btn-sharp"  (click)="file.click()">Upload</a>
+      <a class="btn btn-white btn-sharp" (click)="file.click()">Upload</a>
       <input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event,imagecropper)">
     </div>
-    <img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings" ></img-cropper>
+    <img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper>
   </div>
   <div class="modal-footer">
     <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
