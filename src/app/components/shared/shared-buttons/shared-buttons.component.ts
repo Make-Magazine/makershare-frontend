@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-shared-buttons',
@@ -7,19 +7,22 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class SharedButtonsComponent implements OnInit {
   closeResult: string;
-  @Input() url;
-  @Input() title;
-  @Input() description;
-  @Input() image;
+  @Input() PageUrl;
+  @Input() PageTitle;
+  @Input() PageDescription;
+  @Input() PageImage;
   //@Input() tags;
-  
+
   constructor(
     private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
+   console.log(this.PageUrl);
+   console.log(this.PageTitle);
   }
-open(content) {
+
+  open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -33,8 +36,7 @@ open(content) {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 }
- 

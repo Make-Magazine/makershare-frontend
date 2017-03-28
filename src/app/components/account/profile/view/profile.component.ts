@@ -34,13 +34,14 @@ export class ProfileComponent implements OnInit {
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
   customImage: string;
+  linkToShare: string = 'https://google.com';
   //customTags: string;
 
 
   userId = localStorage.getItem('user_id');
   badges=[];
   // cover declarations
-  cropperSettings: CropperSettings;
+  cropperSettings: CropperSettings;s
   coverPhotoSrc: string;
   coverPhotoAttached: boolean = false;
 
