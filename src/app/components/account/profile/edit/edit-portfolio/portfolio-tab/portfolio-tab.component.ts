@@ -13,6 +13,7 @@ export class PortfolioTabComponent implements OnInit {
   //grid/showcase
   DefaultView:string;
   Projects:ProjectCardPortfolio[] = [];
+  uid:number;
 
   constructor(
     private viewService:ViewService,
@@ -20,9 +21,17 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //get user grid type
-    this.DefaultView = "grid";
-    this.UpdateProjects();
+    this.userService.getStatus().subscribe(user=>{
+      this.uid = user.user.uid;
+      this.userService.getUser(user.user.uid).subscribe(userdata=>{
+        this.DefaultView = "grid";
+        console.log(userdata);
+        if(userdata.projects_view){
+          this.DefaultView = userdata.projects_view;
+        }
+        this.UpdateProjects();
+      });
+    });
   }
 
   UpdateProjects(){
@@ -32,7 +41,13 @@ export class PortfolioTabComponent implements OnInit {
   }
 
   ChangeDefaultView(NewView:string){
-    // this.userService.updateUser()
+    let user = {
+      uid:this.uid,
+      field_project_view:{und:NewView},
+    };
+    this.userService.updateUser(user).subscribe(data=>{
+      this.DefaultView = NewView;
+    });
   }
 
 }
