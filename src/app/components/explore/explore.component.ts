@@ -50,7 +50,7 @@ getProjects(){
     this.viewService.getView('browse_projects', [['page', this.pages]]).subscribe(data => {
       // console.log(data);
       this.projects = this.projects.concat(data);
-      console.log(this.projects);
+      // console.log(this.projects);
     }, err => {
 
     });
@@ -68,7 +68,7 @@ getProjects(){
   getCountProject(){
      this.viewService.getView('maker_count_all_projects').subscribe(data => {
       this.countProject = data[0];
-      console.log(this.countProject);
+      // console.log(this.countProject);
     }, err => {
 
     });
@@ -77,7 +77,7 @@ getProjects(){
   /* function load more  */
   loadMoreProject() {
     this.pages++;
-    console.log(this.pages);
+    // console.log(this.pages);
     this.getProjects();
   }
   /* end function load more  */
