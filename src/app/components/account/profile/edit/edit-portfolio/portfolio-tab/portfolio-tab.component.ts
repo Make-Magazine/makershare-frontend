@@ -2,6 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { ViewService } from '../../../../../../d7services/view/view.service';
 import { ProjectCardPortfolio } from '../../../../../../models/project/project-form/project';
 import { UserService } from '../../../../../../d7services/user/user.service';
+import { NodeService } from '../../../../../../d7services/node/node.service';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'portfolio-tab',
@@ -18,6 +20,7 @@ export class PortfolioTabComponent implements OnInit {
   constructor(
     private viewService:ViewService,
     private userService:UserService,
+    private nodeService:NodeService,
   ) { }
 
   ngOnInit() {
@@ -48,6 +51,24 @@ export class PortfolioTabComponent implements OnInit {
     this.userService.updateUser(user).subscribe(data=>{
       this.DefaultView = NewView;
     });
+  }
+
+  SaveProjectsOrder(){
+    var tasks=[];
+    this.Projects.forEach((project:ProjectCardPortfolio,index:number)=>{
+      let ProjectwithOrder = {
+        nid:project.nid,
+        field_sort_order:{und:[{value:index + 1}]},
+      };
+      tasks.push(this.nodeService.UpdateNode(ProjectwithOrder));
+    });
+    let source = Observable.forkJoin(tasks);
+    source.subscribe(
+      (x) => {},(err) => {console.log('Error: %s', err);},
+      () => {
+        console.log("saved");
+      }
+    );
   }
 
 }
