@@ -16,6 +16,7 @@ export class SummaryComponent implements OnInit {
   @Output() sortType = new EventEmitter<ISorting>();
   @Output() pageNumber = new EventEmitter<number>();
   ActionName: string;
+  view = 'grid';
   pages: number = 0;
   sort: ISorting = {
     sort_by: "",

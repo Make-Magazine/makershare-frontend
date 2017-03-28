@@ -26,35 +26,28 @@ import { FileService } from '../../../../d7services/file/file.service';
 })
 export class ProfileComponent implements OnInit {
 
-  // Title=Maker Portfolio
-  // Profile pic 
-  // description
-  //( Maker’s First Name, Last Name
-  // Learn all about about this Maker and their work).
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
   customImage: string;
-  //customTags: string;
-
 
   userId = localStorage.getItem('user_id');
-  badges=[];
+  badges = [];
   // cover declarations
-  cropperSettings: CropperSettings;s
+  cropperSettings: CropperSettings; s
   coverPhotoSrc: string;
   coverPhotoAttached: boolean = false;
 
   public rendrer: Renderer;
 
-  CoverImageData:any;
-  coverFile:FileEntity={filename:"",file:""};
+  CoverImageData: any;
+  coverFile: FileEntity = { filename: "", file: "" };
 
   //end of cover declarations
   allMarkersNames: any[] = [];
   allMarkersUrl: any[] = [];
   allIntersets: any[] = [];
-  
-  temp:string;
+
+  temp: string;
   items: any[] = [];
   optionalForm: FormGroup;
   imageSrc: string = "http://placehold.it/100x100";
@@ -85,7 +78,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private viewService: ViewService,
     private fileService: FileService
-  ) { 
+  ) {
 
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 100;
@@ -109,14 +102,13 @@ export class ProfileComponent implements OnInit {
     let userId = localStorage.getItem('user_id');
     this.userService.getUser(userId).subscribe(res => {
       this.profile = res;
-      this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {     
-    			console.log(res);
-          this.profile.profile_cover = res.uri;
-          this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Profile on Maker Share community.";
-          this.customImage = this.profile.user_photo;
-          // set user photo in local store to use it in the header
-          localStorage.setItem('user_photo', this.profile.user_photo);
-        });
+      this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      this.customImage = this.profile.user_photo;
+      this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {
+        //console.log(res);
+        this.profile.profile_cover = res.uri;
+      });
+      localStorage.setItem('user_photo', this.profile.user_photo);
       this.profile.pass = "MOcs56";
       //console.log(res);
     }, err => {
@@ -180,7 +172,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
 
     }, err => {
-      console.log(err);
+      //console.log(err);
     });
   }
   onValueChanged(data?: any) {
@@ -191,7 +183,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onFileChange(event: Event) {
-    console.log("profile saved");
+    //console.log("profile saved");
     let file = (<any>event.target).files[0];
     if (!file) {
       return;
@@ -226,50 +218,44 @@ export class ProfileComponent implements OnInit {
       image.src = loadEvent.target.result;
       cropper.setImage(image);
     };
-    
+
     myReader.readAsDataURL(file);
 
     this.coverFile.filename = file.name;
-    let file_url = domain+"/sites/default/files/maker/cover_photo/"+file.name;
+    let file_url = domain + "/sites/default/files/maker/cover_photo/" + file.name;
     this.coverFile.uri = file_url as string;
-}
+  }
 
 
   private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper)
   }
-  // sharedButtons(){
-  //   this.customTitle = 'Maker Portfolio';
-  //   this.customDescription = this.profile.first_name + this.profile.last_name + 'Learn all about about this Maker and their work';
-  //   this.customImage = this.profile.user_photo;
-  //   //this.customTags = this.profile.tags;
-  // }
 
-  saveCropped(){
-    if(!this.CoverImageData.image) return;
+  saveCropped() {
+    if (!this.CoverImageData.image) return;
     //this.profile.profile_cover = this.CoverImageData.image;
-    this.coverFile.file =  NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
-    this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {     
-			console.log(res);
+    this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
+    this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
+      //console.log(res);
       this.profile.profile_cover = res.fid
-        });
+    });
     this.saveProfile();
   }
-   /* function get Badges */
-  getBadges(){
-       // service to get profile card Badges
+  /* function get Badges */
+  getBadges() {
+    // service to get profile card Badges
     this.viewService.getView('api_user_badges', [['uid', this.userId]]).subscribe(data => {
       this.badges = data;
     }, err => {
     });
   }
-   /* end function get Badges */
- limitString(model,key,length){
-  if(typeof model[key] != "undefined"){
-    if (model[key].length>length){
-      this.temp=model[key];
-      model[key]=this.temp.substr(0,length);
+  /* end function get Badges */
+  limitString(model, key, length) {
+    if (typeof model[key] != "undefined") {
+      if (model[key].length > length) {
+        this.temp = model[key];
+        model[key] = this.temp.substr(0, length);
+      }
     }
   }
-}
 }

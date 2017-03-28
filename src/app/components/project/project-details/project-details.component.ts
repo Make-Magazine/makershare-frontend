@@ -12,6 +12,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './project-details.component.html',
 })
 export class ProjectDetailsComponent implements OnInit {
+  customTitle: string;
+  customDescription: string;
+  customImage: string; 
+
   current_active_tab;
   project;
   projectDetails;
@@ -61,7 +65,7 @@ export class ProjectDetailsComponent implements OnInit {
        // get challenge name and nid for challenge if found from a view
     this.viewService.getView('project_data', [['nid',this.id]]).subscribe(data => {
       this.projectdata = data[0];
-      console.log(this.projectdata);
+      //console.log(this.projectdata);
     }, err => {
 
     });
@@ -75,6 +79,9 @@ export class ProjectDetailsComponent implements OnInit {
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
         .subscribe(data => {
           this.project = data;
+          this.customTitle = this.project.title.value;
+          this.customDescription = this.project.field_teaser.value;
+          this.customImage = this.project.field_cover_photo.url;
           var i=0;
           for(let resource of this.project.field_resources) {
               var resourceExt = resource.resource_file.split('.').pop();
@@ -94,7 +101,7 @@ export class ProjectDetailsComponent implements OnInit {
           }
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
-          console.log(this.projectDetails);
+          //console.log(this.projectDetails);
           
         });
        

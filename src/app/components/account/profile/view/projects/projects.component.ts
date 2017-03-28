@@ -13,6 +13,7 @@ export class ProjectsComponent implements OnInit {
     private router: Router,
     private viewService: ViewService
   ) { }
+  view = 'grid';
 
   profile_projects = [];
   ngOnInit() {

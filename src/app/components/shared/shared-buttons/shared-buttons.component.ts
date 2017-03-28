@@ -18,8 +18,6 @@ export class SharedButtonsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   console.log(this.PageUrl);
-   console.log(this.PageTitle);
   }
 
   open(content) {
