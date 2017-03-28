@@ -4,15 +4,16 @@
 
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h3 style="color: black">Share With Your Friends </h3>
   </div>
   <div class="modal-body">
-    <share-buttons [title]="PageTitle" [description]="PageDescription" [image]="PageImage" 
-               [tumblr]="false"
-               [whatsApp]="false"
-               [stumbleUpOn]="false"
- ></share-buttons>
+    <share-buttons [title]="PageTitle" [description]="PageDescription" [image]="PageImage" [tumblr]="false" [whatsApp]="false"
+      [stumbleUpOn]="false"></share-buttons>
   </div>
+  <div class="modal-footer"> 
+    <ul class="list-unstyled actions">
+    <li><a style="color: black" (click)="c('Close click')">Cancel</a></li>
+  </ul>
+  </div>
+  
 </template>
