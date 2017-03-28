@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
   customImage: string;
-  linkToShare: string = 'https://google.com';
   //customTags: string;
 
 
@@ -113,6 +112,9 @@ export class ProfileComponent implements OnInit {
       this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {     
     			console.log(res);
           this.profile.profile_cover = res.uri;
+          this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Profile on Maker Share community.";
+          this.customImage = this.profile.user_photo;
+
         });
       this.profile.pass = "MOcs56";
       //console.log(res);
