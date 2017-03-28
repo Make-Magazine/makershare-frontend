@@ -27,7 +27,7 @@
                 <!-- Start Bookmark -->
                  <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
                 <!-- End Bookmark -->
-                <li><a href="#" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+                <app-shared-buttons *ngIf="challenge.title" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
               </ul>
               <div class="clearfix"></div>
             </div>
