@@ -21,10 +21,11 @@
       </div>
       <div class="icons-side-project">
         <div class="project-icon" *ngFor="let badge of badges;">
-          <img src="{{badge?.goal_image}}" alt="">
+          <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
       </div>
     </div>
+
     <div class="content-side col">
       <h4 class="card-title">{{project.project_name}}</h4>
       <p class="card-text project-text-grid">{{project.teaser}}</p>

@@ -77,7 +77,7 @@ loadMoreVisibilty(){
      this.router.navigate(['']);
    }
 
-   public goToProject(nid, projectIndex){
+   public  goToProject(nid, projectIndex):NavigationExtras{
      let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": nid,
@@ -86,7 +86,8 @@ loadMoreVisibilty(){
                 "projects":JSON.stringify(this.projects)
             }
      }
-     this.router.navigate(['project/view/', nid], navigationExtras);
+     return navigationExtras;
+     //this.router.navigate(['project/view/', nid], navigationExtras);
    }
 
    goToProfile(nid){
