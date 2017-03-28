@@ -1786,7 +1786,9 @@ header.showcase-project .next {
 .modal-section #add-bio-modal h4,
 .modal-section #add-interests-modal h4,
 .modal-section #add-makerspace-modal h4,
-.modal-section #add-social-modal h4 {
+.modal-section #add-social-modal h4,
+.modal-section #add-description-modal h4,
+.modal-section #add-maker-starting-modal h4 {
   font-weight: normal;
   color: #000;
   font-size: 18px; }
@@ -1796,35 +1798,49 @@ header.showcase-project .next {
 .modal-section #add-makerspace-modal .modal-header,
 .modal-section #add-makerspace-modal .modal-footer,
 .modal-section #add-social-modal .modal-header,
-.modal-section #add-social-modal .modal-footer {
+.modal-section #add-social-modal .modal-footer,
+.modal-section #add-description-modal .modal-header,
+.modal-section #add-description-modal .modal-footer,
+.modal-section #add-maker-starting-modal .modal-header,
+.modal-section #add-maker-starting-modal .modal-footer {
   border-color: #989898;
   border-width: 3px; }
 .modal-section #add-bio-modal .modal-content,
 .modal-section #add-interests-modal .modal-content,
 .modal-section #add-makerspace-modal .modal-content,
-.modal-section #add-social-modal .modal-content {
+.modal-section #add-social-modal .modal-content,
+.modal-section #add-description-modal .modal-content,
+.modal-section #add-maker-starting-modal .modal-content {
   border: 3px solid #989898; }
   .modal-section #add-bio-modal .modal-content li:first-of-type h4,
   .modal-section #add-interests-modal .modal-content li:first-of-type h4,
   .modal-section #add-makerspace-modal .modal-content li:first-of-type h4,
-  .modal-section #add-social-modal .modal-content li:first-of-type h4 {
+  .modal-section #add-social-modal .modal-content li:first-of-type h4,
+  .modal-section #add-description-modal .modal-content li:first-of-type h4,
+  .modal-section #add-maker-starting-modal .modal-content li:first-of-type h4 {
     margin-left: 82%;
     font-size: 14px; }
   .modal-section #add-bio-modal .modal-content label,
   .modal-section #add-interests-modal .modal-content label,
   .modal-section #add-makerspace-modal .modal-content label,
-  .modal-section #add-social-modal .modal-content label {
+  .modal-section #add-social-modal .modal-content label,
+  .modal-section #add-description-modal .modal-content label,
+  .modal-section #add-maker-starting-modal .modal-content label {
     width: 30%;
     font-size: 15px; }
   .modal-section #add-bio-modal .modal-content input[type="checkbox"],
   .modal-section #add-interests-modal .modal-content input[type="checkbox"],
   .modal-section #add-makerspace-modal .modal-content input[type="checkbox"],
-  .modal-section #add-social-modal .modal-content input[type="checkbox"] {
+  .modal-section #add-social-modal .modal-content input[type="checkbox"],
+  .modal-section #add-description-modal .modal-content input[type="checkbox"],
+  .modal-section #add-maker-starting-modal .modal-content input[type="checkbox"] {
     margin-left: 30px; }
   .modal-section #add-bio-modal .modal-content input[type="text"],
   .modal-section #add-interests-modal .modal-content input[type="text"],
   .modal-section #add-makerspace-modal .modal-content input[type="text"],
-  .modal-section #add-social-modal .modal-content input[type="text"] {
+  .modal-section #add-social-modal .modal-content input[type="text"],
+  .modal-section #add-description-modal .modal-content input[type="text"],
+  .modal-section #add-maker-starting-modal .modal-content input[type="text"] {
     width: 50%;
     margin: 0;
     padding: 3px;
@@ -1832,43 +1848,59 @@ header.showcase-project .next {
   .modal-section #add-bio-modal .modal-content i,
   .modal-section #add-interests-modal .modal-content i,
   .modal-section #add-makerspace-modal .modal-content i,
-  .modal-section #add-social-modal .modal-content i {
+  .modal-section #add-social-modal .modal-content i,
+  .modal-section #add-description-modal .modal-content i,
+  .modal-section #add-maker-starting-modal .modal-content i {
     width: 25px; }
   .modal-section #add-bio-modal .modal-content p,
   .modal-section #add-interests-modal .modal-content p,
   .modal-section #add-makerspace-modal .modal-content p,
-  .modal-section #add-social-modal .modal-content p {
+  .modal-section #add-social-modal .modal-content p,
+  .modal-section #add-description-modal .modal-content p,
+  .modal-section #add-maker-starting-modal .modal-content p {
     margin-top: 5px;
     font-size: 15px; }
 .modal-section #add-bio-modal .modal-footer,
 .modal-section #add-interests-modal .modal-footer,
 .modal-section #add-makerspace-modal .modal-footer,
-.modal-section #add-social-modal .modal-footer {
+.modal-section #add-social-modal .modal-footer,
+.modal-section #add-description-modal .modal-footer,
+.modal-section #add-maker-starting-modal .modal-footer {
   text-align: center; }
   .modal-section #add-bio-modal .modal-footer .btn-light-grey,
   .modal-section #add-interests-modal .modal-footer .btn-light-grey,
   .modal-section #add-makerspace-modal .modal-footer .btn-light-grey,
-  .modal-section #add-social-modal .modal-footer .btn-light-grey {
+  .modal-section #add-social-modal .modal-footer .btn-light-grey,
+  .modal-section #add-description-modal .modal-footer .btn-light-grey,
+  .modal-section #add-maker-starting-modal .modal-footer .btn-light-grey {
     border-radius: 4px; }
 .modal-section #add-bio-modal .modal-footer .close-btn,
 .modal-section #add-interests-modal .modal-footer .close-btn,
 .modal-section #add-makerspace-modal .modal-footer .close-btn,
-.modal-section #add-social-modal .modal-footer .close-btn {
+.modal-section #add-social-modal .modal-footer .close-btn,
+.modal-section #add-description-modal .modal-footer .close-btn,
+.modal-section #add-maker-starting-modal .modal-footer .close-btn {
   border: 1px solid #444; }
   .modal-section #add-bio-modal .modal-footer .close-btn:hover,
   .modal-section #add-interests-modal .modal-footer .close-btn:hover,
   .modal-section #add-makerspace-modal .modal-footer .close-btn:hover,
-  .modal-section #add-social-modal .modal-footer .close-btn:hover {
+  .modal-section #add-social-modal .modal-footer .close-btn:hover,
+  .modal-section #add-description-modal .modal-footer .close-btn:hover,
+  .modal-section #add-maker-starting-modal .modal-footer .close-btn:hover {
     cursor: pointer; }
 .modal-section #add-bio-modal .modal-footer .done-btn,
 .modal-section #add-interests-modal .modal-footer .done-btn,
 .modal-section #add-makerspace-modal .modal-footer .done-btn,
-.modal-section #add-social-modal .modal-footer .done-btn {
+.modal-section #add-social-modal .modal-footer .done-btn,
+.modal-section #add-description-modal .modal-footer .done-btn,
+.modal-section #add-maker-starting-modal .modal-footer .done-btn {
   border: 1px solid #444; }
   .modal-section #add-bio-modal .modal-footer .done-btn:hover,
   .modal-section #add-interests-modal .modal-footer .done-btn:hover,
   .modal-section #add-makerspace-modal .modal-footer .done-btn:hover,
-  .modal-section #add-social-modal .modal-footer .done-btn:hover {
+  .modal-section #add-social-modal .modal-footer .done-btn:hover,
+  .modal-section #add-description-modal .modal-footer .done-btn:hover,
+  .modal-section #add-maker-starting-modal .modal-footer .done-btn:hover {
     cursor: pointer; }
 .modal-section #add-interests-modal .modal-content input[type="text"] {
   width: 100% !important;
@@ -1974,11 +2006,18 @@ header.showcase-project .next {
   right: 10px;
   top: 10px; }
 
+.project.card {
+  width: 95%; }
+.project .card-block {
+  padding-top: 0;
+  margin-top: -5px; }
 .project .image-top {
   width: 100%;
   height: auto;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  top: -15px;
+  left: -24px; }
   .project .image-top img {
     height: auto;
     width: 100%; }

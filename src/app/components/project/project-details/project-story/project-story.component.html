@@ -31,7 +31,6 @@
           <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#">Vehicles Challenge</a> Winner</div>
           <div class="project-collaborates">
             <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
-              <app-user-card *ngIf="collaborator.target_id" [uid]="collaborator.target_id"></app-user-card>
               <div class="role" *ngIf="project.field_maker_memberships[i]">
                 <h4>Role on the project</h4>
                 <p>{{project.field_maker_memberships[i].membership_role}}</p>

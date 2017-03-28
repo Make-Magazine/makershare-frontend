@@ -402,7 +402,9 @@
 	#add-bio-modal,
 	#add-interests-modal,
 	#add-makerspace-modal,
-	#add-social-modal {
+	#add-social-modal,
+	#add-description-modal,
+	#add-maker-starting-modal {
 		h4 {
 			font-weight: normal;
 			color: #000;
@@ -611,11 +613,20 @@
 }
 
 .project  {
+	&.card {
+    width: 95%;
+	}
+	 .card-block {
+		  padding-top: 0;
+    	margin-top: -5px;
+	 }
 	.image-top {
 			width: 100%;
 			height: auto;
 			overflow: hidden;
 			position: relative;
+			top: -15px;
+    	left: -24px;
 		img {
 			height: auto;
 			width: 100%;

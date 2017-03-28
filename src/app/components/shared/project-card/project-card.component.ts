@@ -12,9 +12,11 @@ export class ProjectCardComponent implements OnInit {
 
 
   @Input() nid;
+  @Input() view;
+
   // @Input() navigationExtras:NavigationExtras;
   badges=[];
-    project={};
+  project={};
   constructor(private router: Router,
   private route: ActivatedRoute,
   private viewService: ViewService,
@@ -27,15 +29,14 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
-    //console.log(this.projectCard)
   }
   getProjectCard(){
       this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
       this.project = res[0];
-      console.log(this.project);
     }, err => {
 
     });
+    
   }
   getBadgesProject(){
        // service to get profile card Badges

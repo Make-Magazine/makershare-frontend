@@ -8,6 +8,7 @@ import { ProjectHowToComponent } from './project-how-to/project-how-to.component
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectHeaderComponent } from './project-header/project-header.component';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     NgbModule,
   ],
-  declarations: [ProjectDetailsComponent,ProjectStoryComponent,ProjectHowToComponent]
+  declarations: [ProjectDetailsComponent,ProjectStoryComponent,ProjectHowToComponent, ProjectHeaderComponent]
 })
 export class ProjectDetailsModule { }

@@ -93,7 +93,7 @@ export class YourStoryComponent implements OnInit {
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
       'title': [this.project.title, [Validators.required,Validators.minLength(4)]],
-      'field_teaser': [this.project.field_teaser.und[0].value],
+      'field_teaser': [this.project.field_teaser.und[0].value,Validators.maxLength(250)],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
@@ -144,7 +144,6 @@ export class YourStoryComponent implements OnInit {
   ImageUpdated(closebtn:HTMLButtonElement,SkipCropping:boolean){ 
     closebtn.click();
     this.cover_image.file = '';
-    this.cover_image.filename = '';
     this.formErrors.field_cover_photo = '';
     if(!NodeHelper.isEmpty(this.imagedata)){
       if(SkipCropping){
@@ -154,11 +153,11 @@ export class YourStoryComponent implements OnInit {
           this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.validimagesize;
         }else{
           this.cover_image.file = this.imagedata.original.src;
+          
         }
       }else{
         this.cover_image.file = this.imagedata.image;
       }
-      this.cover_image.filename = "myprojectcover.png";
       this.imagedata = {};
     }
     if(!this.cover_image.file && !this.formErrors.field_cover_photo){
@@ -232,6 +231,9 @@ export class YourStoryComponent implements OnInit {
      'field_cover_photo': '',
      'field_show_tell_video': '',
      'field_story': '',
+     'field_teaser': '',
+     'field_aha_moment': '',
+     'field_uh_oh_moment': ''
    };
 
    /**
@@ -257,6 +259,15 @@ export class YourStoryComponent implements OnInit {
      'field_story': {
        'required': 'Story is required.'
      },
+     'field_teaser':{
+       'maxlength': 'Max number of characters is 250'
+     },
+     'field_aha_moment':{
+       'maxlength': 'Max number of characters is 350'
+     },
+      'field_uh_oh_moment':{
+       'maxlength': 'Max number of characters is 350'
+     }
    };
 
    TooltipText = {
@@ -305,6 +316,7 @@ export class YourStoryComponent implements OnInit {
     if($event.target.files.length ===0) return; 
     var image:any = new Image();
     var file:File = $event.target.files[0];
+    this.cover_image.filename = file.name;
     var myReader:FileReader = new FileReader();
     myReader.onloadend = function (loadEvent:any) {
         image.src = loadEvent.target.result;

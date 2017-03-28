@@ -1,0 +1,45 @@
+<div class="page-portfolio">
+  <div class="top-content-wrapper">
+    <div class="portfolio-controls">
+      <div class="container d-flex flex-row align-items-center">
+        <h3 class="mr-auto">You are editing your portfolio</h3>
+        <ul class="list-unstyled contorls">
+          <li><a class="btn btn-main btn-sharp">Save</a></li>
+          <li><a class="btn btn-transparent">Cancel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-portfolio" style="overflow: hidden;">
+      <div class="container">
+        <ul class="list-unstyled">
+          <li><a (click)="CurrentTab = 'public'"  [ngClass]="{'active': CurrentTab == 'public'}" class="btn btn-grey-inverse" id="public">Portfolio</a></li>
+          <li><a (click)="CurrentTab = 'private'"  [ngClass]="{'active': CurrentTab == 'private'}" class="btn btn-grey-inverse" id="private">Private Projects</a></li>
+          <li><a (click)="CurrentTab = 'draft'"  [ngClass]="{'active': CurrentTab == 'draft'}" class="btn btn-grey-inverse" id="drafts">Drafts</a></li>
+          <li><a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="btn btn-grey-inverse" id="photos">File manager</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top-content-wrapper -->
+  <div class="container">
+    <div class="region region-content col-sm-12">
+      <portfolio-tab *ngIf="CurrentTab === 'public'" [status]="370"></portfolio-tab>
+      <portfolio-tab *ngIf="CurrentTab === 'private'" [status]="371"></portfolio-tab>
+      <portfolio-tab *ngIf="CurrentTab === 'draft'" [status]="1115"></portfolio-tab>
+      <div *ngIf="CurrentTab === 'file'">file manager</div>
+    </div>
+  </div>
+  <!-- End container -->
+  <div class="custom-footer">
+    <div class="portfolio-controls">
+      <div class="container d-flex flex-row align-items-center">
+        <h3 class="mr-auto">You are editing your portfolio</h3>
+        <ul class="list-unstyled contorls">
+          <li><a class="btn btn-main btn-sharp">Save</a></li>
+          <li><a class="btn btn-transparent">Cancel</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End custom-footer -->
+</div>

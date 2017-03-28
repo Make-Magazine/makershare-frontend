@@ -7,7 +7,7 @@
             <div class="col-md-12 challenge-cover" *ngIf="challenge">
               <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
               <div class="sponsor">
-                <h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}} </h4>
+                <h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}}  <!-- Count Project -->{{countProjects}} </h4>
                  
               </div>
               <div class="challenge-status">
@@ -23,11 +23,12 @@
               <div class="challenge-sponser-image" *ngIf="challenge.diffDays">
               <img *ngIf="challenge.sponsor_bar" src="{{challenge.sponsor_bar}}">
                 </div>
+
               <ul class="list-unstyled challenge-actions pull-right">
                 <!-- Start Bookmark -->
                  <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
                 <!-- End Bookmark -->
-                <li><a href="#" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+                <app-shared-buttons *ngIf="challenge.title" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -40,7 +41,7 @@
             <div class="tabs-buttons">
               <ul class="list-unstyled challenge-submenu">
                 <li><a class="btn btn-light-grey active" (click)="changeChallangeTab('summary',$event)">Challenge Summary</a></li>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge">{{no_of_awards}}</span></a></li>
+                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
                 <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
                 <div *ngIf="challenge">
                   <div *ngIf="challenge.discussion =='1'">
