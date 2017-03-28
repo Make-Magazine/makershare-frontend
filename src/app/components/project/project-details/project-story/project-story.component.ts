@@ -34,8 +34,8 @@ export class ProjectStoryComponent implements OnInit {
     nid: 0,
   };
   ngOnInit() {
-    console.log(this.project);
-    console.log(this.projectInfo);
+    // console.log(this.project);
+    // console.log(this.projectInfo);
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
       // console.log(this.currentUser)
@@ -49,7 +49,7 @@ export class ProjectStoryComponent implements OnInit {
 
           // observer.next(
             this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
-              console.log(data)
+              // console.log(data)
               this.collabs[i] = {};
               this.collabs[i] = data[0];
               // console.log(this.collabs[i])
@@ -72,7 +72,7 @@ export class ProjectStoryComponent implements OnInit {
 
   getComments() {
     this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.comments = data;
       //console.log(this.comments)
 

@@ -79,11 +79,11 @@ export class EditProfileComponent implements OnInit {
 
     console.log(this.userProfile);
     this.profileService.updateProfile(1, this.userProfile).subscribe(profile => {
-      console.log("profile saved");
-      console.log(profile);
+      // console.log("profile saved");
+      // console.log(profile);
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
 
   }

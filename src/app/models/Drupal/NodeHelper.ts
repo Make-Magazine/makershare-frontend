@@ -30,7 +30,7 @@ export class NodeHelper{
       FileEntityObject.file = reader.result;
     };
     reader.onerror = function (error) {
-      console.log('Error: ', error);
+      // console.log('Error: ', error);
     };
    }
 

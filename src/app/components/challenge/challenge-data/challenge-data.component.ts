@@ -59,7 +59,7 @@ export class ChallengeDataComponent implements OnInit {
   ngOnInit() {
 
     this.getCountProject();
-    this.activeTab = 'summary';
+    this.activeTab = 'awards';
     this.getChallengeData();
     this.sort_order = "DESC";
     this.sort_by = "created";
@@ -134,6 +134,7 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
+        console.log(data[0]);
         this.customTitle = this.challenge.title;
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
@@ -258,13 +259,14 @@ export class ChallengeDataComponent implements OnInit {
           this.countProjects = 0
         } else {
           this.countProjects = data;
+          // console.log(data[0]);
         }
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
-  
+
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
@@ -309,8 +311,8 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function my Enteries */
 
-    /* service to get challenge name if project enter in it */
-       // get challenge name and nid for challenge if found from a view
+  /* service to get challenge name if project enter in it */
+  // get challenge name and nid for challenge if found from a view
   //  getProjectData(){
   //     /* service to get challenge name if project enter in it */
   //      // get challenge name and nid for challenge if found from a view
@@ -322,7 +324,7 @@ export class ChallengeDataComponent implements OnInit {
   //   });
   //       /* end service */
   //  }
-        /* end service */
+  /* end service */
 
 }
 

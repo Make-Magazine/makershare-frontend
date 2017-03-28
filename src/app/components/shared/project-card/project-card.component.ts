@@ -13,16 +13,17 @@ export class ProjectCardComponent implements OnInit {
 
   @Input() nid;
   @Input() view;
-
+  // @Input() profilePage;
   // @Input() navigationExtras:NavigationExtras;
   badges=[];
   project={};
+  
   constructor(private router: Router,
   private route: ActivatedRoute,
   private viewService: ViewService,
   private config: NgbTooltipConfig,
 ) {
-    config.placement = 'bottom';
+    config.placement = 'right';
     config.triggers = 'hover';
  }
   myid;
@@ -33,6 +34,7 @@ export class ProjectCardComponent implements OnInit {
   getProjectCard(){
       this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
       this.project = res[0];
+      // console.log(this.project)
     }, err => {
 
     });

@@ -1,7 +1,6 @@
 
 .page-challenge {
 	background-color: $main-bg;
-	overflow: hidden;
     padding-bottom: 40px;
     .entries-count p {}
     .sorting-filter {
@@ -33,27 +32,16 @@
         height: 320px;
     }
     .card-container {
-        .card-status, .card-partership {
+        .card-partership {
             @include body-font-r();
             text-transform: none;
-            font-size: 12px;
+            font-size: 14px;
             display: inline-block; 
-            .open-status, .closed-status {
-                font-weight: bold;
-                font-size: 18px;
-                padding-right: 5px;
+            min-height: 16px;
+            margin-bottom: 10px;
+            p {
+                margin-bottom: 0px;
             }
-            .open-status{
-                color: $main-button-1;
-            } 
-            .closed-status {
-                color: $white;
-            }
-        }
-        .card-partership {
-            padding-left: 10px;
-            margin-left: 5px;
-            border-left: 2px solid $text-color-2;
         }
         .card-description {
             h4 {
@@ -63,22 +51,56 @@
             p {
             }
         }
-        .card-buttons {
-            bottom: 5px;
-            align-self: end;
-            a.btn.btn-grey {
-                background-color: $light-grey;
+
+        .challene-card-footer {
+            .challene-card-footer-1 {
+                bottom: 5px;
+                align-self: end;
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
             }
-            .follow-number {
-                background-color: $light-grey*0.9;
-                padding: 3px 15px;
-                border-radius: 20px;
-                font-size: 13px;
-                margin-left: 10px;
+            .challenge-card-footer-2 {
+                .challenge-card-count {
+                    font-size: 14px;
+                    .follow-count {
+                        padding-left: 10px;
+                    }
+                    .entries-count {
+                        padding-right: 10px;
+                        border-right: 1px solid white;
+                    }
+                }
+                .challenge-card-status {
+                    .open-status, .closed-status {
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding-right: 5px;
+                    }
+                    .open-status{
+                        color: white;
+                    } 
+                    .closed-status {
+                        color: $main-button-1;
+                    }
+                    .challenge-end-date {
+                        font-size: 14px;
+                    }
+                }
             }
         }
+
     }
 }
+
+
+
+
+
+
+
+
+
 
 .challenge-header {
 	margin-bottom: 25px;
@@ -99,11 +121,13 @@
 .challenges-container {
 	padding: 25px 0;
 }
+.page-challenge {
 .challenge-card {
-    padding: 5px;
+    position: relative;
+    padding: 16px;
     overflow: hidden;
     cursor:pointer;
-    background-color: white;
+    background-color: $challenge-bg;
     .single-challenge {
         padding: 10px;
         img {
@@ -128,8 +152,12 @@
         color: $white;
         // font-weight: bold;
         position: relative;
-        overflow: hidden;
-        padding: 22px 15px 0px 0px;
+        .challenge-type-bagde {
+            position: absolute;
+            top: 10px;
+            right: -49px;
+            transform: rotate(-90deg);
+        }
         .card-title {
             @include card-header-font-lg();
             font-size: 38px;
@@ -138,6 +166,7 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             min-height: 67px;
+            color: white;
         }
         .card-status {
             @include body-font-b();
@@ -155,15 +184,14 @@
             p {
                 @include body-font-r();
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 5;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                min-height: 70px;
+                min-height: 116px;
+                color: white;
             }
         }
         .card-buttons {
-            bottom: 5px;
-            align-self: end;
             a.btn.btn-grey {
             	background-color: $light-grey;
             }
@@ -177,7 +205,7 @@
         }
     }
 }
-
+}
 .page-challenge-summary {
     background-color: #F2F2F2;
 }

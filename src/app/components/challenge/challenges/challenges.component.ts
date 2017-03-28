@@ -16,6 +16,7 @@ export class ChallengesComponent implements OnInit {
   currentStatusId = 0;
   hideloadmore = true;
   currentCount = 0;
+  challenge;
   constructor(
     private viewService: ViewService,
     private router: Router,
@@ -26,6 +27,7 @@ export class ChallengesComponent implements OnInit {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
+
   }
   /* function to get challenges and count followers  */
   getChallenges() {
@@ -41,8 +43,9 @@ export class ChallengesComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
     this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.challenges = this.challenges.concat(data);
+
       this.loadMoreVisibilty();
       if (!this.currentCount) {
         this.currentCount = this.statusesCount['0'];
@@ -54,7 +57,6 @@ export class ChallengesComponent implements OnInit {
         }, err => {
         });
       }
-
     });
   }
   /* end function to get challenges and count followers  */
@@ -119,5 +121,8 @@ export class ChallengesComponent implements OnInit {
   ShowChallengeDetails(nid) {
     this.router.navigate(['/challenges', nid]);
   }
-  /* end function to navigate to challenge summary page */
-}
+
+    enterToChallengeProject(nid) {
+    this.router.navigate(['challenges/enter-challenge', nid]);
+  }
+};

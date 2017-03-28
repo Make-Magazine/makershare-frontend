@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
+import { CKEditorModule } from 'ng2-ckeditor';
+
+
 @NgModule({
   imports: [
     IcDatepickerModule,
@@ -24,6 +27,7 @@ import { ImageCropperModule } from 'ng2-img-cropper';
     SharedModule,
     NgbModule,
     ImageCropperModule,
+    CKEditorModule
 
   ],
   declarations: [

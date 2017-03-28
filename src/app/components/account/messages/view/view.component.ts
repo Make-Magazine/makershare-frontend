@@ -91,7 +91,7 @@ export class ViewComponent implements OnInit {
           timestamp: this.messages,
           body: this.reply.body
         }
-        console.log(newComment)
+        // console.log(newComment)
         this.messages.push(newComment);
       }, err => { });
     }

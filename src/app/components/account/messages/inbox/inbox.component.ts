@@ -126,8 +126,7 @@ export class InboxComponent implements OnInit {
       this.messageObj.subject = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         //this.submitted=true;
-        //this.messageObj=messageObj
-        //console.log(res)
+
       });
     }
   }

@@ -5,71 +5,92 @@
         <div class="top-content-wrapper">
           <div class="container">
             <div class="col-md-12 challenge-cover" *ngIf="challenge">
-              <img src="{{challenge.cover_image}}" alt="" class="img-responsive" *ngIf="challenge.cover_image">
-              <div class="sponsor">
-                <h4 *ngIf="challenge.sponsored_by">{{challenge.sponsored_by}} </h4>
-                 
-              </div>
-              <div class="challenge-status">
-                <p>{{challenge.challenge_status}} :{{challenge.challenge_end_date}}<p>
-              </div>
-              <div class="challenge-title" *ngIf="challenge.title">
-                <h1>{{challenge.title}}</h1>
-              </div>
-              <div class="challenge-countdown" *ngIf="challenge.opened">
-                <p class="number">{{challenge.diffDays}} </p>
-                <p>Days left</p>
-              </div>
-              <div class="challenge-sponser-image" *ngIf="challenge.diffDays">
-              <img *ngIf="challenge.sponsor_bar" src="{{challenge.sponsor_bar}}">
+
+              <div class="challenge-card row">
+                <div class="col-md-4 left-side">
+                  <div class="image-container">
+                    <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+                  </div>
+                  <div class="challene-card-footer-3">
+                    <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Enter Mission</span>
+                    </div>
+                    <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
+                  </div>
                 </div>
-              <ul class="list-unstyled challenge-actions pull-right">
-                <!-- Start Bookmark -->
-                 <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
-                <!-- End Bookmark -->
-                <app-shared-buttons *ngIf="challenge.title" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
-              </ul>
-              <div class="clearfix"></div>
+                <!-- End image-container -->
+                <div class="col-md-8">
+                  <div class="card-container">
+                    <div class="card">
+                      <div class="challenge-type-bagde">
+                        <p>Mission</p>
+                      </div>
+                      <div class="card-partership">
+                        <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p>
+                      </div>
+                      <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
+                      <div class="card-description">
+                        <p [innerHTML]="challenge.body"></p>
+                      </div>
+                      <div class="challene-card-footer d-flex">
+                        <div class="challenge-card-footer-2 ml-3">
+                          <div class="challenge-card-count">
+                            <span class="entries-count">{{challenge.entries_count}}
+                       <span *ngIf="challenge.entries_count>1">Entries</span>
+                            <span *ngIf="challenge.entries_count <= 1">Entry</span>
+                            </span>
+                            <span class="follow-count">{{challenge.followers}}
+                            <span *ngIf="challenge.followers>1">Followers</span>
+                            <span *ngIf="challenge.followers==1">Follower</span>
+                            <span *ngIf="!challenge.followers">0 Follower</span>
+                            </span>
+                          </div>
+                          <div class="challenge-card-status">
+                            <span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
+                            <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
+                            <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.challenge_status}}</span>
+                            <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.challenge_status}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End card-container -->
+                </div>
+                <!-- End col-md-6 -->
+              </div>
             </div>
+
+
+
           </div>
           <!-- End container -->
         </div>
         <!-- End top-content-wrapper -->
         <div class="container">
-          <div class="region region-content col-sm-12">
-            <div class="tabs-buttons">
+          <div class="region region-content col-sm-12 row">
+            <div class="tabs-buttons col-md-3">
               <ul class="list-unstyled challenge-submenu">
-                <li><a class="btn btn-light-grey active" (click)="changeChallangeTab('summary',$event)">Challenge Summary</a></li>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge">{{no_of_awards}}</span></a></li>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
-                <div *ngIf="challenge">
-                  <div *ngIf="challenge.discussion =='1'">
-                    <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
-                  </div>
-                </div>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
-              </ul>
-              <ul class="list-unstyled challenge-follow" *ngIf="challenge">
-                   <!-- Start Follow -->
-                <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
-                   <!-- End Follow -->
-                <li><a *ngIf="hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)" class="btn btn-main static-btn btn-sharp">Enter</a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
+                <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="button-item" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>
-            <div class="content-wrapper row">
-              <app-summary class="col-12" [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
-                [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects" *ngIf="activeTab =='summary'"></app-summary>
-                <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
 
-                <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge">
-                </app-discussion>
-
-                <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
-                  (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
-                  <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
-
+            <div class="challenge-details col-md-9">
+              <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
+              <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
+              <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
+                (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
+              <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
             </div>
             <!-- End content-wrapper -->
+          </div>
+          <div class="content-wrapper">
+            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"
+              [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
           </div>
           <!-- End region-content -->
         </div>

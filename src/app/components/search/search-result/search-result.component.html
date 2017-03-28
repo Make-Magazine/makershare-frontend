@@ -1,0 +1,11 @@
+<template #rt let-r="result" let-t="term">
+  <div class="data-container">
+    {{r.tm_item_label[0]}}
+  </div>
+</template>
+<div class="container">
+  <input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
+  <p>
+    search-result works!
+  </p>
+</div>

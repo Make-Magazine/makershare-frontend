@@ -313,7 +313,7 @@ a:not([href]):not([tabindex]) {
   .project .card-title {
     background-color: #fff;
     padding: 10px;
-    height: 90px;
+    height: 60px;
     position: relative;
     font-family: "Messina Modern Bold";
     font-size: 1.5em;
@@ -594,10 +594,13 @@ body {
 
 .card-type {
   position: absolute;
-  bottom: 6px;
-  right: 5px;
-  background: rgba(250, 250, 250, 0.7);
-  padding: 2px 4px; }
+  top: 45px;
+  right: -22px;
+  padding: 0;
+  transform: rotate(-90deg);
+  text-transform: uppercase;
+  color: #BEBEBE;
+  margin: 0; }
 
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location {
@@ -893,7 +896,6 @@ footer {
 
 .page-challenge {
   background-color: #F2F2F2;
-  overflow: hidden;
   padding-bottom: 40px; }
 
 .challenge-card {
@@ -913,7 +915,7 @@ footer {
     padding: 0;
     width: 350px;
     height: 320px; }
-  .challenge-card .card-container .card-status, .challenge-card .card-container .card-partership {
+  .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
     font-size: 1.125em;
     font-weight: 400;
@@ -921,33 +923,36 @@ footer {
     line-height: 130%;
     color: #828282;
     text-transform: none;
-    font-size: 12px;
-    display: inline-block; }
-    .challenge-card .card-container .card-status .open-status, .challenge-card .card-container .card-status .closed-status, .challenge-card .card-container .card-partership .open-status, .challenge-card .card-container .card-partership .closed-status {
-      font-weight: bold;
-      font-size: 18px;
-      padding-right: 5px; }
-    .challenge-card .card-container .card-status .open-status, .challenge-card .card-container .card-partership .open-status {
-      color: #EC1F30; }
-    .challenge-card .card-container .card-status .closed-status, .challenge-card .card-container .card-partership .closed-status {
-      color: #fff; }
-  .challenge-card .card-container .card-partership {
-    padding-left: 10px;
-    margin-left: 5px;
-    border-left: 2px solid #828282; }
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .challenge-card .card-container .card-partership p {
+      margin-bottom: 0px; }
   .challenge-card .card-container .card-description h4 {
     font-weight: bold; }
-  .challenge-card .card-container .card-buttons {
+  .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
     bottom: 5px;
     align-self: end; }
-    .challenge-card .card-container .card-buttons a.btn.btn-grey {
+    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
       background-color: #BEBEBE; }
-    .challenge-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
-      padding: 3px 15px;
-      border-radius: 20px;
-      font-size: 13px;
-      margin-left: 10px; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+    font-size: 14px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+      padding-left: 10px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 5px; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+    color: white; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+    color: #EC1F30; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+    font-size: 14px; }
 
 .challenge-header {
   margin-bottom: 25px;
@@ -976,32 +981,36 @@ footer {
 .challenges-container {
   padding: 25px 0; }
 
-.challenge-card {
-  padding: 5px;
+.page-challenge .challenge-card {
+  position: relative;
+  padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: white; }
-  .challenge-card .single-challenge {
+  background-color: #333; }
+  .page-challenge .challenge-card .single-challenge {
     padding: 10px; }
-    .challenge-card .single-challenge img {
+    .page-challenge .challenge-card .single-challenge img {
       width: 250px; }
-    .challenge-card .single-challenge .card-partership {
+    .page-challenge .challenge-card .single-challenge .card-partership {
       color: #EC1F30; }
-  .challenge-card .image-container {
+  .page-challenge .challenge-card .image-container {
     overflow: hidden;
     position: relative;
     padding: 0;
     width: 450px;
     height: 290px; }
-    .challenge-card .image-container img {
+    .page-challenge .challenge-card .image-container img {
       width: 100%;
       height: 100%; }
-  .challenge-card .card-container {
+  .page-challenge .challenge-card .card-container {
     color: #fff;
-    position: relative;
-    overflow: hidden;
-    padding: 22px 15px 0px 0px; }
-    .challenge-card .card-container .card-title {
+    position: relative; }
+    .page-challenge .challenge-card .card-container .challenge-type-bagde {
+      position: absolute;
+      top: 10px;
+      right: -49px;
+      transform: rotate(-90deg); }
+    .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
       font-size: 3em;
       font-weight: 400;
@@ -1013,8 +1022,9 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 67px; }
-    .challenge-card .card-container .card-status {
+      min-height: 67px;
+      color: white; }
+    .page-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Bold";
       font-size: 1.125em;
       font-weight: 700;
@@ -1023,9 +1033,9 @@ footer {
       color: #828282;
       display: inline-block;
       text-transform: none; }
-    .challenge-card .card-container .card-description h4 {
+    .page-challenge .challenge-card .card-container .card-description h4 {
       font-weight: bold; }
-    .challenge-card .card-container .card-description p {
+    .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
       font-size: 1.125em;
       font-weight: 400;
@@ -1033,21 +1043,19 @@ footer {
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 70px; }
-    .challenge-card .card-container .card-buttons {
-      bottom: 5px;
-      align-self: end; }
-      .challenge-card .card-container .card-buttons a.btn.btn-grey {
-        background-color: #BEBEBE; }
-      .challenge-card .card-container .card-buttons .follow-number {
-        background-color: #ababab;
-        padding: 3px 15px;
-        border-radius: 20px;
-        font-size: 13px;
-        margin-left: 10px; }
+      min-height: 116px;
+      color: white; }
+    .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-challenge .challenge-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
 
 .page-challenge-summary {
   background-color: #F2F2F2; }
@@ -1732,31 +1740,29 @@ header.showcase-project .next {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-empty-edit .profile-stats {
-  overflow: hidden; }
-  .profile-empty-edit .profile-stats .bookmark ul {
-    padding-right: 0;
-    margin-bottom: 0px; }
-    .profile-empty-edit .profile-stats .bookmark ul li {
+.profile-empty-edit .profile-stats .bookmark ul {
+  padding-right: 0;
+  margin-bottom: 0px; }
+  .profile-empty-edit .profile-stats .bookmark ul li {
+    display: inline-block;
+    margin: 0px;
+    color: #222;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-right: 2px; }
+    .profile-empty-edit .profile-stats .bookmark ul li .number {
+      font-size: 25px;
+      font-weight: normal;
+      margin-right: 4px; }
+    .profile-empty-edit .profile-stats .bookmark ul li p {
       display: inline-block;
-      margin: 0px;
-      color: #222;
-      font-weight: bold;
-      padding-left: 2px;
-      padding-right: 2px; }
-      .profile-empty-edit .profile-stats .bookmark ul li .number {
-        font-size: 25px;
-        font-weight: normal;
-        margin-right: 4px; }
-      .profile-empty-edit .profile-stats .bookmark ul li p {
-        display: inline-block;
-        white-space: normal;
-        width: 70px;
-        margin-left: 10px;
-        font-size: 12px;
-        margin: 0 auto; }
-      .profile-empty-edit .profile-stats .bookmark ul li i {
-        margin-top: 9px; }
+      white-space: normal;
+      width: 70px;
+      margin-left: 10px;
+      font-size: 12px;
+      margin: 0 auto; }
+    .profile-empty-edit .profile-stats .bookmark ul li i {
+      margin-top: 9px; }
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
 .profile-empty-edit .cover-region .bookmark .number {
@@ -1781,7 +1787,9 @@ header.showcase-project .next {
 .modal-section #add-bio-modal h4,
 .modal-section #add-interests-modal h4,
 .modal-section #add-makerspace-modal h4,
-.modal-section #add-social-modal h4 {
+.modal-section #add-social-modal h4,
+.modal-section #add-description-modal h4,
+.modal-section #add-maker-starting-modal h4 {
   font-weight: normal;
   color: #000;
   font-size: 18px; }
@@ -1791,35 +1799,49 @@ header.showcase-project .next {
 .modal-section #add-makerspace-modal .modal-header,
 .modal-section #add-makerspace-modal .modal-footer,
 .modal-section #add-social-modal .modal-header,
-.modal-section #add-social-modal .modal-footer {
+.modal-section #add-social-modal .modal-footer,
+.modal-section #add-description-modal .modal-header,
+.modal-section #add-description-modal .modal-footer,
+.modal-section #add-maker-starting-modal .modal-header,
+.modal-section #add-maker-starting-modal .modal-footer {
   border-color: #989898;
   border-width: 3px; }
 .modal-section #add-bio-modal .modal-content,
 .modal-section #add-interests-modal .modal-content,
 .modal-section #add-makerspace-modal .modal-content,
-.modal-section #add-social-modal .modal-content {
+.modal-section #add-social-modal .modal-content,
+.modal-section #add-description-modal .modal-content,
+.modal-section #add-maker-starting-modal .modal-content {
   border: 3px solid #989898; }
   .modal-section #add-bio-modal .modal-content li:first-of-type h4,
   .modal-section #add-interests-modal .modal-content li:first-of-type h4,
   .modal-section #add-makerspace-modal .modal-content li:first-of-type h4,
-  .modal-section #add-social-modal .modal-content li:first-of-type h4 {
+  .modal-section #add-social-modal .modal-content li:first-of-type h4,
+  .modal-section #add-description-modal .modal-content li:first-of-type h4,
+  .modal-section #add-maker-starting-modal .modal-content li:first-of-type h4 {
     margin-left: 82%;
     font-size: 14px; }
   .modal-section #add-bio-modal .modal-content label,
   .modal-section #add-interests-modal .modal-content label,
   .modal-section #add-makerspace-modal .modal-content label,
-  .modal-section #add-social-modal .modal-content label {
+  .modal-section #add-social-modal .modal-content label,
+  .modal-section #add-description-modal .modal-content label,
+  .modal-section #add-maker-starting-modal .modal-content label {
     width: 30%;
     font-size: 15px; }
   .modal-section #add-bio-modal .modal-content input[type="checkbox"],
   .modal-section #add-interests-modal .modal-content input[type="checkbox"],
   .modal-section #add-makerspace-modal .modal-content input[type="checkbox"],
-  .modal-section #add-social-modal .modal-content input[type="checkbox"] {
+  .modal-section #add-social-modal .modal-content input[type="checkbox"],
+  .modal-section #add-description-modal .modal-content input[type="checkbox"],
+  .modal-section #add-maker-starting-modal .modal-content input[type="checkbox"] {
     margin-left: 30px; }
   .modal-section #add-bio-modal .modal-content input[type="text"],
   .modal-section #add-interests-modal .modal-content input[type="text"],
   .modal-section #add-makerspace-modal .modal-content input[type="text"],
-  .modal-section #add-social-modal .modal-content input[type="text"] {
+  .modal-section #add-social-modal .modal-content input[type="text"],
+  .modal-section #add-description-modal .modal-content input[type="text"],
+  .modal-section #add-maker-starting-modal .modal-content input[type="text"] {
     width: 50%;
     margin: 0;
     padding: 3px;
@@ -1827,43 +1849,59 @@ header.showcase-project .next {
   .modal-section #add-bio-modal .modal-content i,
   .modal-section #add-interests-modal .modal-content i,
   .modal-section #add-makerspace-modal .modal-content i,
-  .modal-section #add-social-modal .modal-content i {
+  .modal-section #add-social-modal .modal-content i,
+  .modal-section #add-description-modal .modal-content i,
+  .modal-section #add-maker-starting-modal .modal-content i {
     width: 25px; }
   .modal-section #add-bio-modal .modal-content p,
   .modal-section #add-interests-modal .modal-content p,
   .modal-section #add-makerspace-modal .modal-content p,
-  .modal-section #add-social-modal .modal-content p {
+  .modal-section #add-social-modal .modal-content p,
+  .modal-section #add-description-modal .modal-content p,
+  .modal-section #add-maker-starting-modal .modal-content p {
     margin-top: 5px;
     font-size: 15px; }
 .modal-section #add-bio-modal .modal-footer,
 .modal-section #add-interests-modal .modal-footer,
 .modal-section #add-makerspace-modal .modal-footer,
-.modal-section #add-social-modal .modal-footer {
+.modal-section #add-social-modal .modal-footer,
+.modal-section #add-description-modal .modal-footer,
+.modal-section #add-maker-starting-modal .modal-footer {
   text-align: center; }
   .modal-section #add-bio-modal .modal-footer .btn-light-grey,
   .modal-section #add-interests-modal .modal-footer .btn-light-grey,
   .modal-section #add-makerspace-modal .modal-footer .btn-light-grey,
-  .modal-section #add-social-modal .modal-footer .btn-light-grey {
+  .modal-section #add-social-modal .modal-footer .btn-light-grey,
+  .modal-section #add-description-modal .modal-footer .btn-light-grey,
+  .modal-section #add-maker-starting-modal .modal-footer .btn-light-grey {
     border-radius: 4px; }
 .modal-section #add-bio-modal .modal-footer .close-btn,
 .modal-section #add-interests-modal .modal-footer .close-btn,
 .modal-section #add-makerspace-modal .modal-footer .close-btn,
-.modal-section #add-social-modal .modal-footer .close-btn {
+.modal-section #add-social-modal .modal-footer .close-btn,
+.modal-section #add-description-modal .modal-footer .close-btn,
+.modal-section #add-maker-starting-modal .modal-footer .close-btn {
   border: 1px solid #444; }
   .modal-section #add-bio-modal .modal-footer .close-btn:hover,
   .modal-section #add-interests-modal .modal-footer .close-btn:hover,
   .modal-section #add-makerspace-modal .modal-footer .close-btn:hover,
-  .modal-section #add-social-modal .modal-footer .close-btn:hover {
+  .modal-section #add-social-modal .modal-footer .close-btn:hover,
+  .modal-section #add-description-modal .modal-footer .close-btn:hover,
+  .modal-section #add-maker-starting-modal .modal-footer .close-btn:hover {
     cursor: pointer; }
 .modal-section #add-bio-modal .modal-footer .done-btn,
 .modal-section #add-interests-modal .modal-footer .done-btn,
 .modal-section #add-makerspace-modal .modal-footer .done-btn,
-.modal-section #add-social-modal .modal-footer .done-btn {
+.modal-section #add-social-modal .modal-footer .done-btn,
+.modal-section #add-description-modal .modal-footer .done-btn,
+.modal-section #add-maker-starting-modal .modal-footer .done-btn {
   border: 1px solid #444; }
   .modal-section #add-bio-modal .modal-footer .done-btn:hover,
   .modal-section #add-interests-modal .modal-footer .done-btn:hover,
   .modal-section #add-makerspace-modal .modal-footer .done-btn:hover,
-  .modal-section #add-social-modal .modal-footer .done-btn:hover {
+  .modal-section #add-social-modal .modal-footer .done-btn:hover,
+  .modal-section #add-description-modal .modal-footer .done-btn:hover,
+  .modal-section #add-maker-starting-modal .modal-footer .done-btn:hover {
     cursor: pointer; }
 .modal-section #add-interests-modal .modal-content input[type="text"] {
   width: 100% !important;
@@ -1969,23 +2007,34 @@ header.showcase-project .next {
   right: 10px;
   top: 10px; }
 
+.project.card {
+  width: 95%;
+  border-radius: 0; }
 .project .image-top {
   width: 100%;
   height: auto;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  top: -15px;
+  left: -24px; }
+  .project .image-top .card-img-top {
+    border-radius: 0; }
   .project .image-top img {
     height: auto;
     width: 100%; }
 .project .card-block {
-  min-height: 214px; }
+  padding: 0 10px;
+  margin-top: -5px;
+  height: 175px; }
+  .project .card-block .content-side {
+    padding-left: 5px;
+    width: 80%; }
 .project .icons-side-project {
   width: 60px; }
   .project .icons-side-project .project-icon {
     float: left; }
     .project .icons-side-project .project-icon img {
-      width: 30px;
-      height: 36px; }
+      width: 20px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -2037,10 +2086,13 @@ header.showcase-project .next {
   .project .card-stats ul li {
     float: left;
     font-size: 15px;
-    text-align: center; }
-    .project .card-stats ul li i {
-      margin-right: 6px;
-      font-size: 20px; }
+    width: 60px; }
+    .project .card-stats ul li img {
+      margin-right: 6px; }
+      .project .card-stats ul li img.project-likes {
+        width: 12px; }
+      .project .card-stats ul li img.project-views {
+        width: 20px; }
     .project .card-stats ul li span {
       margin: 0px; }
 
@@ -2089,7 +2141,6 @@ header.showcase-project .next {
 
 .teaser {
   display: none;
-  width: 80%;
   position: absolute;
   top: 13%;
   left: 0px;
@@ -2591,92 +2642,85 @@ header.showcase-project .next {
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover, .page-challenge-summary-closed .top-content-wrapper .challenge-cover, .page-enter-challenge .top-content-wrapper .challenge-cover {
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    padding-right: 0px;
-    padding-left: 0px; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover img, .page-enter-challenge .top-content-wrapper .challenge-cover img {
-      position: absolute;
+  .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 2; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor h4, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor h4, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor h4 {
+      background-color: #222;
+      line-height: 30px;
+      margin: 0;
+      color: #fff; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background-color: #BEBEBE;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    /* For IE8 and earlier */
+    display: inline-block;
+    padding: 5px 15px; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status p, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status p, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status p {
+      margin: 0; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    bottom: 10px; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title h1 {
+      color: #fff;
+      font-weight: normal;
+      margin: 0;
+      font-size: 25px;
+      padding: 10px 15px 15px; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    background-color: #BEBEBE;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    /* For IE8 and earlier */
+    display: inline-block;
+    text-align: center;
+    padding: 5px; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p {
+      color: #000;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p.number {
+        font-size: 30px;
+        font-weight: bold; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image {
+    position: absolute;
+    display: block;
+    top: 40px;
+    right: 120px;
+    width: 50px;
+    height: auto; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image img {
       width: 100%;
-      padding-right: 0px;
-      z-index: 0; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor {
-      text-align: center;
-      position: absolute;
-      width: 100%;
-      z-index: 2; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor h4, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor h4, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor h4 {
-        background-color: #222;
-        line-height: 30px;
-        margin: 0;
-        color: #fff; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status {
-      position: absolute;
-      top: 40px;
-      left: 10px;
-      background-color: #BEBEBE;
-      opacity: 0.8;
-      filter: alpha(opacity=80);
-      /* For IE8 and earlier */
-      display: inline-block;
-      padding: 5px 15px; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status p, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status p, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status p {
-        margin: 0; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title {
-      background-color: rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      position: absolute;
-      left: 10px;
-      bottom: 10px; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title h1 {
-        color: #fff;
-        font-weight: normal;
-        margin: 0;
-        font-size: 25px;
-        padding: 10px 15px 15px; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown {
-      position: absolute;
-      right: 10px;
-      top: 40px;
-      background-color: #BEBEBE;
-      opacity: 0.8;
-      filter: alpha(opacity=80);
-      /* For IE8 and earlier */
-      display: inline-block;
-      text-align: center;
-      padding: 5px; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p {
-        color: #000;
-        margin: 0;
-        padding: 0;
-        text-transform: uppercase; }
-        .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown p.number, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown p.number {
-          font-size: 30px;
-          font-weight: bold; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image {
-      position: absolute;
-      display: block;
-      top: 40px;
-      right: 120px;
-      width: 50px;
       height: auto; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image img {
-        width: 100%;
-        height: auto; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions {
-      position: absolute;
-      bottom: 0;
-      right: 10px; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
-        float: left; }
-        .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
-          background-color: #222;
-          color: #fff; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions {
+    position: absolute;
+    bottom: 0;
+    right: 10px; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
+      float: left; }
+      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
+        background-color: #222;
+        color: #fff; }
 .page-challenge-summary .region-content, .page-challenge-summary-closed .region-content, .page-enter-challenge .region-content {
   padding-right: 0px;
-  padding-left: 0px; }
+  padding-left: 0px;
+  background-color: white;
+  margin: 0px;
+  padding: 10px;
+  min-height: 360px; }
   .page-challenge-summary .region-content .tabs-buttons, .page-challenge-summary-closed .region-content .tabs-buttons, .page-enter-challenge .region-content .tabs-buttons {
     width: 100%;
     overflow: hidden; }
@@ -2684,19 +2728,22 @@ header.showcase-project .next {
       overflow: hidden;
       width: 77%;
       float: left; }
-      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li {
-        float: left; }
-        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .btn {
-          padding: 8px 15px;
-          border: none;
-          margin-right: 2px;
-          margin-top: 2px; }
-        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
-          background-color: #222;
-          color: #fff; }
-          .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
-            background-color: #fff;
-            color: #222; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu .button-item, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu .button-item, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu .button-item {
+        clear: both; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu a, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu a, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu a {
+        color: #0AA9EA; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu span, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu span, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu span {
+        color: #0AA9EA; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .btn {
+        padding: 8px 15px;
+        border: none;
+        margin-right: 2px;
+        margin-top: 2px; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
+        color: #BEBEBE; }
+        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
+          background-color: #fff;
+          color: #222; }
     .page-challenge-summary .region-content .tabs-buttons .challenge-follow, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow, .page-enter-challenge .region-content .tabs-buttons .challenge-follow {
       overflow: hidden;
       width: 23%;
@@ -2843,6 +2890,76 @@ header.showcase-project .next {
       .page-challenge-summary .region-content .content-wrapper .challenge-award .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .challenge-award .image-container img, .page-enter-challenge .region-content .content-wrapper .challenge-award .image-container img {
         max-width: 100%;
         height: auto; }
+.page-challenge-summary .challenge-card, .page-challenge-summary-closed .challenge-card, .page-enter-challenge .challenge-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #333; }
+  .page-challenge-summary .challenge-card .left-side, .page-challenge-summary-closed .challenge-card .left-side, .page-enter-challenge .challenge-card .left-side {
+    padding: 0px;
+    overflow: hidden; }
+  .page-challenge-summary .challenge-card .single-challenge, .page-challenge-summary-closed .challenge-card .single-challenge, .page-enter-challenge .challenge-card .single-challenge {
+    padding: 10px; }
+    .page-challenge-summary .challenge-card .single-challenge img, .page-challenge-summary-closed .challenge-card .single-challenge img, .page-enter-challenge .challenge-card .single-challenge img {
+      width: 250px; }
+    .page-challenge-summary .challenge-card .single-challenge .card-partership, .page-challenge-summary-closed .challenge-card .single-challenge .card-partership, .page-enter-challenge .challenge-card .single-challenge .card-partership {
+      color: #EC1F30; }
+  .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
+    height: auto; }
+  .page-challenge-summary .challenge-card .challene-card-footer-3, .page-challenge-summary-closed .challenge-card .challene-card-footer-3, .page-enter-challenge .challenge-card .challene-card-footer-3 {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-challenge-summary .challenge-card .card-container .challenge-type-bagde, .page-challenge-summary-closed .challenge-card .card-container .challenge-type-bagde, .page-enter-challenge .challenge-card .card-container .challenge-type-bagde {
+      position: absolute;
+      top: 10px;
+      right: -49px;
+      transform: rotate(-90deg); }
+    .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
+      font-family: "Messina Modern Regular";
+      font-size: 3em;
+      font-weight: 400;
+      text-transform: capitalize;
+      line-height: 90%;
+      color: #828282;
+      font-size: 38px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 67px;
+      color: white; }
+    .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
+      font-family: "Messina Sans Bold";
+      font-size: 1.125em;
+      font-weight: 700;
+      text-transform: none;
+      line-height: 130%;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-challenge-summary .challenge-card .card-container .card-description h4, .page-challenge-summary-closed .challenge-card .card-container .card-description h4, .page-enter-challenge .challenge-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
+      font-family: "Messina Sans Regular";
+      font-size: 1.125em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 130%;
+      color: #828282;
+      min-height: 116px;
+      color: white; }
+    .page-challenge-summary .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-challenge-summary-closed .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-enter-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-challenge-summary .challenge-card .card-container .card-buttons .follow-number, .page-challenge-summary-closed .challenge-card .card-container .card-buttons .follow-number, .page-enter-challenge .challenge-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
 
 .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content {
   height: auto;
@@ -2875,7 +2992,8 @@ header.showcase-project .next {
 .page-challenge-summary .tabs-buttons .challenge-actions {
   display: none; }
 .page-challenge-summary .content-wrapper {
-  padding: 0px 14px; }
+  padding: 10px;
+  margin-top: 20px; }
 
 .page-workshop-individual {
   background-color: #F2F2F2; }
@@ -3831,10 +3949,7 @@ header.showcase-project .next {
     bottom: 13px; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title h1 {
       font-size: 15px !important;
-      padding: 5px 15px !important; }
-
-  .front .browse-projects .challenges-container .challenge-card .card-description {
-    display: none; } }
+      padding: 5px 15px !important; } }
 @media only screen and (max-width: 623px) {
   .profile-page .row .col-md-9 {
     padding: 0px; }
@@ -4087,48 +4202,8 @@ header.showcase-project .next {
   .main-header .logged-in li.button-container-main-1 {
     display: none; }
 
-  .challenge-card .single-challenge {
-    flex-wrap: wrap; }
-    .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
-  .challenge-card .image-container {
-    width: 550px; }
-
   .challenge-header p {
-    width: 100%; }
-
-  .page-challenge .challenge-card {
-    width: 85%;
-    margin: 0 auto 10px; }
-    .page-challenge .challenge-card > .col-md-8 {
-      padding: 0; }
-    .page-challenge .challenge-card .image-container {
-      width: 100%;
-      height: auto;
-      margin: auto; }
-      .page-challenge .challenge-card .image-container img {
-        max-width: 100%; }
-    .page-challenge .challenge-card .card-container {
-      padding: 0;
-      margin-top: 5px; }
-      .page-challenge .challenge-card .card-container .card-title {
-        font-size: 20px; }
-      .page-challenge .challenge-card .card-container .card-partership {
-        display: none; }
-      .page-challenge .challenge-card .card-container .card-description {
-        display: none; }
-        .page-challenge .challenge-card .card-container .card-description h4 {
-          font-weight: bold; }
-        .page-challenge .challenge-card .card-container .card-description p {
-          font-family: "Messina Sans Regular";
-          font-size: 1.125em;
-          font-weight: 400;
-          text-transform: none;
-          line-height: 130%;
-          color: #828282;
-          color: #fff;
-          margin-bottom: 55px;
-          margin-left: -15px; } }
+    width: 100%; } }
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   .maker-spotlight .spotlight:nth-child(2n) {
     border-left-width: 1px; }
