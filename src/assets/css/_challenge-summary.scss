@@ -93,6 +93,7 @@
 		background-color: white;
 		margin: 0px;
 		padding: 10px;
+		min-height: 360px;
 		.tabs-buttons {
 			width: 100%;
 			overflow: hidden;
@@ -117,8 +118,7 @@
 						margin-top: 2px;
 					}
 					.active {
-						background-color: $main-grey;
-						color: $white;
+						color: $light-grey;
 						.badge {
 							background-color: $white;
 							color: $main-grey;
