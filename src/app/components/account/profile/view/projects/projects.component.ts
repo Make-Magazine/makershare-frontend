@@ -14,7 +14,7 @@ export class ProjectsComponent implements OnInit {
     private viewService: ViewService
   ) { }
   view = 'grid';
-
+  userPic = false;
   profile_projects = [];
   ngOnInit() {
     var args = [

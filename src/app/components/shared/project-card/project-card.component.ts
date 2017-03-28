@@ -13,16 +13,17 @@ export class ProjectCardComponent implements OnInit {
 
   @Input() nid;
   @Input() view;
-
+  // @Input() profilePage;
   // @Input() navigationExtras:NavigationExtras;
   badges=[];
   project={};
+  
   constructor(private router: Router,
   private route: ActivatedRoute,
   private viewService: ViewService,
   private config: NgbTooltipConfig,
 ) {
-    config.placement = 'bottom';
+    config.placement = 'right';
     config.triggers = 'hover';
  }
   myid;
