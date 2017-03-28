@@ -574,17 +574,6 @@
 			}
 		}
 	}
-	.front {
-		.browse-projects {
-			.challenges-container {
-				.challenge-card {
-					.card-description {
-						display: none;
-					}
-				}
-			}
-		}
-	}
 }
 
 @media only screen and (max-width: 623px) {
@@ -1037,73 +1026,11 @@
 	        }
 		}
 	}
-	.challenge-card {
-	    .single-challenge {
-	    	flex-wrap:wrap;
-	        img {
-	            // height: 100%;
-	        }
-	        .card-partership {
-	            color: $main-button-1;
-	        }
-	    }
-	    .image-container {
-	    	width: 550px;
-	    }
-	}
+
 
 	.challenge-header {
 	    p {
 	        width: 100%;
-	    }
-	}
-	.page-challenge {
-	    .challenge-card {
-	        width: 85%;
-	        margin: 0 auto 10px;
-	        & > .col-md-8 {
-	        	padding: 0;
-	        }
-	        .image-container {
-	            width: 100%;
-	            height: auto;
-	            margin: auto;
-	            img {
-	            	max-width: 100%;
-	            }
-	        }
-	        .card-container {
-	        	// width: 95%;
-	        	// margin: auto;
-	        	padding: 0;
-	        	margin-top: 5px;
-	            .card-title {
-	               font-size: 20px;
-	            }
-	            .card-status, .card-partership {
-	                
-	            }
-	            .card-partership {
-	                display: none;
-	            }
-	            .card-description {
-	            	display: none;
-	                h4 {
-	                    font-weight: bold;
-	                }
-
-	                p {
-	                    @include body-font-r();
-	                    color: $white;
-	                    margin-bottom: 55px;
-	                    margin-left: -15px;
-	                }
-	            }
-	            .card-buttons {  
-	                .button-container-sec-3 {
-	                }
-	            }
-	        }
 	    }
 	}
 }
