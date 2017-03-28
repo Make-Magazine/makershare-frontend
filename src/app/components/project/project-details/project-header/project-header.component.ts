@@ -12,18 +12,16 @@ export class ProjectHeaderComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  userLogin
-  currentuser
-  userId
+  userLogin;
+  currentuser;
+  userId;
 
   ngOnInit() {
-    this.userService.getStatus().subscribe(data => {
-      this.userLogin = data
-    });
+    this.getcurrentuser();
     this.userId = localStorage.getItem('user_id');
     this.currentuser = Number(localStorage.getItem('user_id'));
-    console.log(this.userLogin)
   }
+  
   getcurrentuser(){
     this.userService.getStatus().subscribe(data => {
       this.userLogin = data

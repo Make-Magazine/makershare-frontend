@@ -2,7 +2,7 @@
   <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
   <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
   <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
-  <app-bookmark [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
+  <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
   <li class="project-share"><a href="#" class="btn btn-soft-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
   <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
 </ul>
