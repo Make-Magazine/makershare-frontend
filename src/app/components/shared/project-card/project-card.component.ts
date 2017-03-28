@@ -8,7 +8,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() projectCard;
-  @Input() navigationExtras:NavigationExtras;
+  // @Input() navigationExtras:NavigationExtras;
   badges=[];
   constructor(private router: Router, private route: ActivatedRoute,     private viewService: ViewService,
 ) { }
@@ -34,7 +34,9 @@ export class ProjectCardComponent implements OnInit {
 
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid], this.navigationExtras);
+    this.router.navigate(['/project/view', nid]
+    // , this.navigationExtras
+    );
    // console.log(nid)
   }
 }
