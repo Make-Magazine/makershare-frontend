@@ -4,8 +4,8 @@
       <div class="container d-flex flex-row align-items-center">
         <h3 class="mr-auto">You are editing your portfolio</h3>
         <ul class="list-unstyled contorls">
-          <li><a class="btn btn-main btn-sharp">Save</a></li>
-          <li><a class="btn btn-transparent">Cancel</a></li>
+          <li><a (click)="Tab.SaveProjectsOrder()" class="btn btn-main btn-sharp">Save</a></li>
+          <li><a [routerLink]="['/profile']" class="btn btn-transparent">Cancel</a></li>
         </ul>
       </div>
     </div>
@@ -23,9 +23,9 @@
   <!-- End top-content-wrapper -->
   <div class="container">
     <div class="region region-content col-sm-12">
-      <portfolio-tab *ngIf="CurrentTab === 'public'" [status]="370"></portfolio-tab>
-      <portfolio-tab *ngIf="CurrentTab === 'private'" [status]="371"></portfolio-tab>
-      <portfolio-tab *ngIf="CurrentTab === 'draft'" [status]="1115"></portfolio-tab>
+      <portfolio-tab #tab *ngIf="CurrentTab === 'public'" [status]="370"></portfolio-tab>
+      <portfolio-tab #tab *ngIf="CurrentTab === 'private'" [status]="371"></portfolio-tab>
+      <portfolio-tab #tab *ngIf="CurrentTab === 'draft'" [status]="1115"></portfolio-tab>
       <div *ngIf="CurrentTab === 'file'">file manager</div>
     </div>
   </div>
@@ -35,8 +35,8 @@
       <div class="container d-flex flex-row align-items-center">
         <h3 class="mr-auto">You are editing your portfolio</h3>
         <ul class="list-unstyled contorls">
-          <li><a class="btn btn-main btn-sharp">Save</a></li>
-          <li><a class="btn btn-transparent">Cancel</a></li>
+          <li><a (click)="Tab.SaveProjectsOrder()" class="btn btn-main btn-sharp">Save</a></li>
+          <li><a [routerLink]="['/profile']" class="btn btn-transparent">Cancel</a></li>
         </ul>
       </div>
     </div>

@@ -9,6 +9,7 @@ const APP_ROUTES: Routes = [
     { path: 'learn', loadChildren: 'app/components/learn/learn.module#LearnModule' },
     { path: 'challenges', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'profile', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
+    { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
