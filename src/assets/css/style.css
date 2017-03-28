@@ -313,7 +313,7 @@ a:not([href]):not([tabindex]) {
   .project .card-title {
     background-color: #fff;
     padding: 10px;
-    height: 90px;
+    height: 60px;
     position: relative;
     font-family: "Messina Modern Bold";
     font-size: 1.5em;
@@ -2003,9 +2003,6 @@ header.showcase-project .next {
 
 .project.card {
   width: 95%; }
-.project .card-block {
-  padding-top: 0;
-  margin-top: -5px; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -2017,7 +2014,12 @@ header.showcase-project .next {
     height: auto;
     width: 100%; }
 .project .card-block {
-  min-height: 214px; }
+  padding: 0 10px;
+  margin-top: -5px;
+  height: 175px; }
+  .project .card-block .content-side {
+    padding-left: 5px;
+    width: 80%; }
 .project .icons-side-project {
   width: 60px; }
   .project .icons-side-project .project-icon {
@@ -2076,10 +2078,13 @@ header.showcase-project .next {
   .project .card-stats ul li {
     float: left;
     font-size: 15px;
-    text-align: center; }
-    .project .card-stats ul li i {
-      margin-right: 6px;
-      font-size: 20px; }
+    width: 60px; }
+    .project .card-stats ul li img {
+      margin-right: 6px; }
+      .project .card-stats ul li img.project-likes {
+        width: 12px; }
+      .project .card-stats ul li img.project-views {
+        width: 20px; }
     .project .card-stats ul li span {
       margin: 0px; }
 
@@ -2128,7 +2133,6 @@ header.showcase-project .next {
 
 .teaser {
   display: none;
-  width: 80%;
   position: absolute;
   top: 13%;
   left: 0px;
