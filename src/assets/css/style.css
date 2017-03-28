@@ -596,11 +596,11 @@ body {
   position: absolute;
   top: 45px;
   right: -22px;
-  padding: 2px 4px;
+  padding: 0;
   transform: rotate(-90deg);
   text-transform: uppercase;
   color: #BEBEBE;
-  padding-bottom: 0; }
+  margin: 0; }
 
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location {
