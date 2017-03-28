@@ -22,10 +22,10 @@
               <div class="sorting-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">
-                  Most recent <i class="fa fa-lg fa-angle-down"></i>
+                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="filter-projects">
-                    <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
+                    <a class="dropdown-item" (click)="mostRecent()" class="btn">Most recent</a>
                     <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
                     <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
                     <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>

@@ -22,6 +22,7 @@ export class ExploreComponent implements OnInit {
     sort_order: "ASC",
     pageNo: 0
   };
+  ActionName="Most Recent";
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -96,6 +97,8 @@ getProjects(){
     this.pages = 0;
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
+    this.ActionName = "Title A-z"
+
     this.getProjects();
   }
   /* end function to sort challenge Title A-z */
@@ -105,6 +108,8 @@ getProjects(){
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "title_1"
+    this.ActionName = "Title Z-A"
+
     this.getProjects();
 
   }
@@ -116,6 +121,8 @@ getProjects(){
     this.sort.sort_order = "DESC"
     // this.sort.sort_by = "createpageNumberd"
     this.sort.sort_by = "created_2"
+        this.ActionName = "Most Recent"
+
     this.getProjects();
 
   }
@@ -124,6 +131,8 @@ getProjects(){
     this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "created_1"
+        this.ActionName = "Oldest"
+
        this.getProjects();
 
   }
@@ -134,6 +143,8 @@ getProjects(){
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
+        this.ActionName = "Most Liked"
+
     this.getProjects();
 
   }
@@ -144,6 +155,8 @@ getProjects(){
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
+        this.ActionName = "Most Forked"
+
     this.getProjects();
 
   }
