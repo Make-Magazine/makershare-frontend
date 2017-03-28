@@ -7,20 +7,29 @@ import { ViewService } from '../../../d7services/view/view.service';
   templateUrl: './project-card.component.html',
 })
 export class ProjectCardComponent implements OnInit {
-  @Input() projectCard;
+  @Input() nid;
   badges=[];
+  project={};
   constructor(private router: Router, private route: ActivatedRoute,     private viewService: ViewService,
 ) { }
-  nid;
+
   myid;
   ngOnInit() {
-    this.myid = localStorage.getItem('user_id');
+    this.getProjectCard();
     this.getBadgesProject();
     //console.log(this.projectCard)
   }
+  getProjectCard(){
+      this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
+      this.project = res[0];
+      console.log(this.project);
+    }, err => {
+
+    });
+  }
   getBadgesProject(){
        // service to get profile card Badges
-    this.viewService.getView('api-project-badges', [['nid',this.projectCard.nid]]).subscribe(data => {
+    this.viewService.getView('api-project-badges', [['nid',this.nid]]).subscribe(data => {
       this.badges = data;
     }, err => {
       // notification error  in service 

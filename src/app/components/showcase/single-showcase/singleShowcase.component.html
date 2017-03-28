@@ -39,7 +39,7 @@
               <div class="projects-grid row">
                 <div *ngFor="let project of projects; let i = index;" class="col-md-4">
                   <div class="project">
-                    <app-project-card [projectCard]="project"></app-project-card>
+                    <app-project-card [nid]="project.nid"></app-project-card>
                   </div>
                 </div>
                 <!-- End col -->
