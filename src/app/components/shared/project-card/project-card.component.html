@@ -3,12 +3,12 @@
     <div class="image-top">
       <!-- <div class="overlay"></div> -->
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
-      <img *ngIf="!project.cover_photo" src="http://placehold.it/335x250" alt="">
+      <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
       <!-- <div class="teaser">
         <p *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </div>  -->
       <div class="list-unstyled icons">
-        <span *ngIf="project.video_check"><i class="fa fa-lg fa-video-camera"></i></span>
+        <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
         <span><i class="fa fa-lg fa-trophy"></i>1</span>
         <span><i class="fa fa-lg fa-clock-o"></i>1</span>
       </div>
@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="content-side col d-flex flex-column justify-content-start">
-        <h4 class="card-title">{{project.project_name}}</h4>
-        <p class="card-text">{{project.teaser}}</p>
+        <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+        <p class="card-text" innerHTML="{{project.teaser}}"></p>
         <div class="card-stats mt-auto">
           <ul class="list-unstyled">
             <li>
@@ -39,7 +39,7 @@
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
               <span>70</span>
-            </li>            
+            </li>
           </ul>
         </div>
       </div>

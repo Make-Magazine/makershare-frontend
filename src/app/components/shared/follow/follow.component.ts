@@ -32,7 +32,7 @@ export class FollowComponent implements OnInit {
 
       this.countFollowers = response['count'];
       this.countNumber.emit(this.countFollowers);
-      console.log(this.countFollowers);
+      // console.log(this.countFollowers);
 
       //  console.log(this.countFollowers)
     }, err => {

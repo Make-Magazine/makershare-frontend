@@ -42,7 +42,7 @@ sortAsc(sort:ISorting){
   this.sort.sort_by="title"
   this.sortType.emit(this.sort);
   this.ActionName = "Title A-z"
-  console.log(this.sort);
+  // console.log(this.sort);
 }
 
 sortDesc(sort:string){
@@ -50,7 +50,7 @@ sortDesc(sort:string){
   this.sort.sort_by="title"
   this.sortType.emit(this.sort);
    this.ActionName = "Title Z-A"
-  console.log(this.sort);
+  // console.log(this.sort);
 }
 
 mostRecent(sort:string){
@@ -58,14 +58,14 @@ this.sort.sort_order="DESC"
 this.sort.sort_by="changed"
 this.sortType.emit(this.sort);
  this.ActionName = "Most Recent"
- console.log(this.sort);
+//  console.log(this.sort);
 }
 oldest(sort:string){
 this.sort.sort_order= "ASC";
 this.sort.sort_by="changed"
 this.sortType.emit(this.sort);
  this.ActionName = "Oldest"
- console.log(this.sort);
+//  console.log(this.sort);
 }
 
 }

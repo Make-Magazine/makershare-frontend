@@ -596,11 +596,11 @@ body {
   position: absolute;
   top: 45px;
   right: -22px;
-  padding: 2px 4px;
+  padding: 0;
   transform: rotate(-90deg);
   text-transform: uppercase;
   color: #BEBEBE;
-  padding-bottom: 0; }
+  margin: 0; }
 
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location {
@@ -1740,31 +1740,29 @@ header.showcase-project .next {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-empty-edit .profile-stats {
-  overflow: hidden; }
-  .profile-empty-edit .profile-stats .bookmark ul {
-    padding-right: 0;
-    margin-bottom: 0px; }
-    .profile-empty-edit .profile-stats .bookmark ul li {
+.profile-empty-edit .profile-stats .bookmark ul {
+  padding-right: 0;
+  margin-bottom: 0px; }
+  .profile-empty-edit .profile-stats .bookmark ul li {
+    display: inline-block;
+    margin: 0px;
+    color: #222;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-right: 2px; }
+    .profile-empty-edit .profile-stats .bookmark ul li .number {
+      font-size: 25px;
+      font-weight: normal;
+      margin-right: 4px; }
+    .profile-empty-edit .profile-stats .bookmark ul li p {
       display: inline-block;
-      margin: 0px;
-      color: #222;
-      font-weight: bold;
-      padding-left: 2px;
-      padding-right: 2px; }
-      .profile-empty-edit .profile-stats .bookmark ul li .number {
-        font-size: 25px;
-        font-weight: normal;
-        margin-right: 4px; }
-      .profile-empty-edit .profile-stats .bookmark ul li p {
-        display: inline-block;
-        white-space: normal;
-        width: 70px;
-        margin-left: 10px;
-        font-size: 12px;
-        margin: 0 auto; }
-      .profile-empty-edit .profile-stats .bookmark ul li i {
-        margin-top: 9px; }
+      white-space: normal;
+      width: 70px;
+      margin-left: 10px;
+      font-size: 12px;
+      margin: 0 auto; }
+    .profile-empty-edit .profile-stats .bookmark ul li i {
+      margin-top: 9px; }
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
 .profile-empty-edit .cover-region .bookmark .number {

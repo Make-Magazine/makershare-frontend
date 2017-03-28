@@ -49,15 +49,15 @@ export class BasicInfoComponent implements OnInit {
 
 
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
   }
 
   public setCountry(value: any): void {
-    console.log(value);
+    // console.log(value);
     this.profileService.getByCountry(value).subscribe(info => {
-      console.log(info);
+      // console.log(info);
 
       this.postalCode = false;
       this.zipCode = false;  
@@ -84,8 +84,8 @@ export class BasicInfoComponent implements OnInit {
       }
 
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
   }
 

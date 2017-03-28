@@ -31,7 +31,7 @@ export class LikeComponent implements OnInit {
         this.isLiked = data[0];
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
+        // console.log(err);
       })
       /*like end*/
 
@@ -45,14 +45,14 @@ export class LikeComponent implements OnInit {
         this.isLiked = false;
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
+        // console.log(err);
       });
     } else {
       this.flagService.flag(this.nodeNid, this.user, 'like').subscribe(response => {
         this.isLiked = true;
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        console.log(err);
+        // console.log(err);
       });
     }
   }
