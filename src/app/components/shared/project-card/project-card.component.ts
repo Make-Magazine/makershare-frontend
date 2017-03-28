@@ -20,7 +20,7 @@ export class ProjectCardComponent implements OnInit {
   private viewService: ViewService,
   private config: NgbTooltipConfig,
 ) {
-    config.placement = 'bottom';
+    config.placement = 'right';
     config.triggers = 'hover';
  }
   myid;

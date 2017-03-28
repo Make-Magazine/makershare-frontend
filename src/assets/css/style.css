@@ -893,7 +893,6 @@ footer {
 
 .page-challenge {
   background-color: #F2F2F2;
-  overflow: hidden;
   padding-bottom: 40px; }
 
 .challenge-card {
@@ -913,7 +912,7 @@ footer {
     padding: 0;
     width: 350px;
     height: 320px; }
-  .challenge-card .card-container .card-status, .challenge-card .card-container .card-partership {
+  .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
     font-size: 1.125em;
     font-weight: 400;
@@ -921,33 +920,36 @@ footer {
     line-height: 130%;
     color: #828282;
     text-transform: none;
-    font-size: 12px;
-    display: inline-block; }
-    .challenge-card .card-container .card-status .open-status, .challenge-card .card-container .card-status .closed-status, .challenge-card .card-container .card-partership .open-status, .challenge-card .card-container .card-partership .closed-status {
-      font-weight: bold;
-      font-size: 18px;
-      padding-right: 5px; }
-    .challenge-card .card-container .card-status .open-status, .challenge-card .card-container .card-partership .open-status {
-      color: #EC1F30; }
-    .challenge-card .card-container .card-status .closed-status, .challenge-card .card-container .card-partership .closed-status {
-      color: #fff; }
-  .challenge-card .card-container .card-partership {
-    padding-left: 10px;
-    margin-left: 5px;
-    border-left: 2px solid #828282; }
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .challenge-card .card-container .card-partership p {
+      margin-bottom: 0px; }
   .challenge-card .card-container .card-description h4 {
     font-weight: bold; }
-  .challenge-card .card-container .card-buttons {
+  .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
     bottom: 5px;
     align-self: end; }
-    .challenge-card .card-container .card-buttons a.btn.btn-grey {
+    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
       background-color: #BEBEBE; }
-    .challenge-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
-      padding: 3px 15px;
-      border-radius: 20px;
-      font-size: 13px;
-      margin-left: 10px; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+    font-size: 14px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+      padding-left: 10px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 5px; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+    color: white; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+    color: #EC1F30; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+    font-size: 14px; }
 
 .challenge-header {
   margin-bottom: 25px;
@@ -977,10 +979,11 @@ footer {
   padding: 25px 0; }
 
 .challenge-card {
-  padding: 5px;
+  position: relative;
+  padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: white; }
+  background-color: #333; }
   .challenge-card .single-challenge {
     padding: 10px; }
     .challenge-card .single-challenge img {
@@ -998,9 +1001,12 @@ footer {
       height: 100%; }
   .challenge-card .card-container {
     color: #fff;
-    position: relative;
-    overflow: hidden;
-    padding: 22px 15px 0px 0px; }
+    position: relative; }
+    .challenge-card .card-container .challenge-type-bagde {
+      position: absolute;
+      top: 10px;
+      right: -49px;
+      transform: rotate(-90deg); }
     .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
       font-size: 3em;
@@ -1013,7 +1019,8 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 67px; }
+      min-height: 67px;
+      color: white; }
     .challenge-card .card-container .card-status {
       font-family: "Messina Sans Bold";
       font-size: 1.125em;
@@ -1033,21 +1040,19 @@ footer {
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 70px; }
-    .challenge-card .card-container .card-buttons {
-      bottom: 5px;
-      align-self: end; }
-      .challenge-card .card-container .card-buttons a.btn.btn-grey {
-        background-color: #BEBEBE; }
-      .challenge-card .card-container .card-buttons .follow-number {
-        background-color: #ababab;
-        padding: 3px 15px;
-        border-radius: 20px;
-        font-size: 13px;
-        margin-left: 10px; }
+      min-height: 116px;
+      color: white; }
+    .challenge-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .challenge-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
 
 .page-challenge-summary {
   background-color: #F2F2F2; }
@@ -3831,10 +3836,7 @@ header.showcase-project .next {
     bottom: 13px; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title h1 {
       font-size: 15px !important;
-      padding: 5px 15px !important; }
-
-  .front .browse-projects .challenges-container .challenge-card .card-description {
-    display: none; } }
+      padding: 5px 15px !important; } }
 @media only screen and (max-width: 623px) {
   .profile-page .row .col-md-9 {
     padding: 0px; }
@@ -4087,48 +4089,8 @@ header.showcase-project .next {
   .main-header .logged-in li.button-container-main-1 {
     display: none; }
 
-  .challenge-card .single-challenge {
-    flex-wrap: wrap; }
-    .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
-  .challenge-card .image-container {
-    width: 550px; }
-
   .challenge-header p {
-    width: 100%; }
-
-  .page-challenge .challenge-card {
-    width: 85%;
-    margin: 0 auto 10px; }
-    .page-challenge .challenge-card > .col-md-8 {
-      padding: 0; }
-    .page-challenge .challenge-card .image-container {
-      width: 100%;
-      height: auto;
-      margin: auto; }
-      .page-challenge .challenge-card .image-container img {
-        max-width: 100%; }
-    .page-challenge .challenge-card .card-container {
-      padding: 0;
-      margin-top: 5px; }
-      .page-challenge .challenge-card .card-container .card-title {
-        font-size: 20px; }
-      .page-challenge .challenge-card .card-container .card-partership {
-        display: none; }
-      .page-challenge .challenge-card .card-container .card-description {
-        display: none; }
-        .page-challenge .challenge-card .card-container .card-description h4 {
-          font-weight: bold; }
-        .page-challenge .challenge-card .card-container .card-description p {
-          font-family: "Messina Sans Regular";
-          font-size: 1.125em;
-          font-weight: 400;
-          text-transform: none;
-          line-height: 130%;
-          color: #828282;
-          color: #fff;
-          margin-bottom: 55px;
-          margin-left: -15px; } }
+    width: 100%; } }
 @media only screen and (min-width: 769px) and (max-width: 991px) {
   .maker-spotlight .spotlight:nth-child(2n) {
     border-left-width: 1px; }
