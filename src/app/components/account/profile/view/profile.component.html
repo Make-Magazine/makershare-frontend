@@ -353,7 +353,7 @@
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<textarea name="limitedtextfield" id="description-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Describe your most powerful motivation, inspiration or aspiration."
+											<textarea rows ="5" name="limitedtextfield" id="description-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Describe your most powerful motivation, inspiration or aspiration."
 												(keypress)="limitText(profile.describe_yourself,countdown,140)" (keyup)="limitText(profile.describe_yourself,countdown,140)"
 												maxlength="140">
 												</textarea>
@@ -570,12 +570,12 @@
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
-											<h4 class="modal-title">Add you starting as a Maker</h4>
+											<h4 class="modal-title">Add your starting as a Maker</h4>
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 										</div>
 										<div class="modal-body">
-											<textarea name="limitedtextfield" id="description-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Add your starting as a Maker"
-												(keypress)="limitText(profile.describe_yourself,countdown,300)" (keyup)="limitText(profile.describe_yourself,countdown,300)"
+											<textarea rows="5" name="limitedtextfield" id="start-making-textarea" [(ngModel)]="profile.started_making" placeholder="Add your starting as a Maker"
+												(keypress)="limitText(profile.started_making,countdown,300)" (keyup)="limitText(profile.started_making,countdown,300)"
 												maxlength="300">
 												</textarea>
 												<font size="1">(Maximum characters: 300)<br> You have

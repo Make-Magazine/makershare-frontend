@@ -32,8 +32,8 @@
             </div>
             <div class="form-group">
               <label for="collab-role-{{i + 1}}">Role</label>
-              <input type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.field_membership_role">
-             {{Member.controls.field_membership_role.value.length}}/140
+              <input maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.field_membership_role">
+               {{Member.controls.field_membership_role.value.length}}/140
               <small *ngIf="formErrors.field_maker_memberships[i].field_membership_role" class="text-danger">
                 {{formErrors.field_maker_memberships[i].field_membership_role}}
               </small>

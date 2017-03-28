@@ -241,23 +241,23 @@ export class ProfileComponent implements OnInit {
   }
 
 
-//  limitText(limitField, limitCount, limitNum) {
+ limitText(limitField, limitCount, limitNum) {
 
-//    console.log('limit')
-//       console.log (limitField)
-//       // console.log ( limitCount)
+   console.log('limit')
+      console.log (limitField)
+      // console.log ( limitCount)
       
-// 	if (limitField.length > limitNum) {
-// 		limitField = limitField.substring(0, limitNum);
+	if (limitField.length > limitNum) {
+		limitField = limitField.substring(0, limitNum);
  
 
-// 	} else {
-// 		 limitCount = limitNum - limitField.length;
-//       console.log ( limitCount)
-//       this.countdown = limitCount;
+	} else {
+		 limitCount = limitNum - limitField.length;
+      console.log ( limitCount)
+      this.countdown = limitCount;
       
-// 	}
-// }
+	}
+}
 
 
   saveCropped() {
