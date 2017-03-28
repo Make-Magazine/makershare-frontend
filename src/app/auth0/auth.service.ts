@@ -56,7 +56,9 @@ export class Auth {
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
+              localStorage.setItem('user_photo', res.user_photo);
             } else {
+              localStorage.setItem('user_photo', res.user_photo);
               localStorage.setItem('user_id', '0');
             }
 

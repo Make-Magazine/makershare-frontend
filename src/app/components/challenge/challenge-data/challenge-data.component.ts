@@ -12,6 +12,11 @@ import 'rxjs/Rx';
   templateUrl: './challenge-data.component.html',
 })
 export class ChallengeDataComponent implements OnInit {
+
+  customTitle: string;
+  customDescription: string;
+  customImage: string;
+
   challenge;
   dates;
   str;
@@ -88,7 +93,7 @@ export class ChallengeDataComponent implements OnInit {
         this.followers = this.followers.concat(data);
         if (!this.followers.length) {
           this.hideloadmorefollower = true;
-          console.log(this.followers.length)
+          //console.log(this.followers.length)
         } else {
           if (this.followers[0]['follow_counter'] == this.followers.length) {
 
@@ -129,7 +134,10 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
-        console.log(data);  
+        this.customTitle = this.challenge.title;
+        this.customDescription = this.challenge.body;
+        this.customImage = this.challenge.cover_image;
+
         if (this.challenge['status_id'] == '375') {
           this.hideButton = true;
         }
@@ -217,7 +225,7 @@ export class ChallengeDataComponent implements OnInit {
     this.getProjects();
     this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
-    console.log(this.projects);
+    //console.log(this.projects);
 
   }
   /* end function sort */
@@ -271,7 +279,7 @@ export class ChallengeDataComponent implements OnInit {
       this.enterStatus = data.status;
       this.submitStatus.emit(this.enterStatus);
 
-      console.log(data);
+      //console.log(data);
     }, err => {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 

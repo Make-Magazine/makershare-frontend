@@ -13,6 +13,7 @@ const ProfileRouts: Routes = [
     children: [
       { path: '', component: ProfileComponent },
       { path: 'editprofile', loadChildren: 'app/components/account/profile/edit/edit-profile/edit-profile.module#EditProfileModule' },
+      { path: 'editportfolio', loadChildren: 'app/components/account/profile/edit/edit-portfolio/edit-portfolio.module#EditPortfolioModule' },
     ]
   }
 ];

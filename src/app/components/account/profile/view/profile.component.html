@@ -19,8 +19,8 @@
 							<li class="col-sm-2 col-2">
 								<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 							</li>
-							<li class="col-sm-2 col-2">
-								<a href=""><i class="fa fa-lg fa-share"></i></a>
+							<li>
+									<a href=""><i class="fa fa-lg fa-share"></i></a>
 							</li>
 						</ul>
 						<!-- End Bookmark-section -->
@@ -191,12 +191,15 @@
 								<li>
 									<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 								</li>
-								<li>
-									<a href=""><i class="fa fa-lg fa-share"></i></a>
-								</li>
+								<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
 							</ul>
 							<!-- End Bookmark-section -->
+							  <div class="switch col-lg-4 col-md-4 col-sm-4 col hidden-sm-down"><!-- Start Switch-view -->
+									<p class="square-view">Grid view <i class="fa fa-lg fa-square"></i></p>
+									<p class="grid-view">Case view <i class="fa fa-lg fa-bars"></i></p>
+              </div><!-- End Switch-view -->
 						</div>
+						<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
@@ -537,3 +540,5 @@
 		<!-- End body-group -->
 	</div>
 </div>
+
+

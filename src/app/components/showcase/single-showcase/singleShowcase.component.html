@@ -37,11 +37,11 @@
             <!-- End filters -->
             <div class="container">
               <div class="projects-grid row">
-                <div *ngFor="let project of projects; let i = index;" class="col-md-4">
                   <div class="project">
-                    <app-project-card [nid]="project.nid"></app-project-card>
+                     <!-- Start Project Card -->
+          <app-project-card *ngFor="let project of projects; let i = index;" [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>
+          <!-- End Project Card -->
                  </div>
-                </div>
                 <!-- End col -->
               </div>
               <!-- End projects-grid row -->

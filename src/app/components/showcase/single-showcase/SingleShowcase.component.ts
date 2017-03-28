@@ -11,6 +11,7 @@ import { UserCardComponent } from '../../shared/user-card/user-card.component'
 export class SinglShowcaseComponent implements OnInit {
 
   showcase = {uid:""};
+  view = 'grid';
   profile = {};
   projects = [];
   hideloadmore=false;

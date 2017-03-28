@@ -62,6 +62,11 @@ export interface ProjectView extends Node{
 	field_cover_photo?:{und:field_file_reference[]};	
 }
 
+export interface ProjectCardPortfolio extends Node{
+	grid_image:URL;
+	showcase_image:URL;
+}
+
 export class ProjectView extends Node implements ProjectView{
 	constructor(Project:ProjectView){
 		super();
