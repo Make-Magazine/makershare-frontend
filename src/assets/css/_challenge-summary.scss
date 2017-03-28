@@ -90,6 +90,9 @@
 	.region-content {
 		padding-right: 0px;
 		padding-left: 0px;
+		background-color: white;
+		margin: 0px;
+		padding: 10px;
 		.tabs-buttons {
 			width: 100%;
 			overflow: hidden;
@@ -97,8 +100,16 @@
 				overflow: hidden;
 				width: 77%;
 				float: left;
+				.button-item {
+					clear: both;
+				}
+				a {
+					color: $title-color;
+				}
+				span {
+					color: $title-color;
+				}
 				li {
-					float: left;
 					.btn {
 						padding: 8px 15px;
 						border: none;
@@ -448,6 +459,8 @@
 		}
 	}
 	.content-wrapper {
-		padding: 0px 14px;
+		padding: 10px;
+    margin-top: 20px;
+
 	}
 }

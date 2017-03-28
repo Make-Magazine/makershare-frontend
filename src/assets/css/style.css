@@ -2716,7 +2716,10 @@ header.showcase-project .next {
         color: #fff; }
 .page-challenge-summary .region-content, .page-challenge-summary-closed .region-content, .page-enter-challenge .region-content {
   padding-right: 0px;
-  padding-left: 0px; }
+  padding-left: 0px;
+  background-color: white;
+  margin: 0px;
+  padding: 10px; }
   .page-challenge-summary .region-content .tabs-buttons, .page-challenge-summary-closed .region-content .tabs-buttons, .page-enter-challenge .region-content .tabs-buttons {
     width: 100%;
     overflow: hidden; }
@@ -2724,19 +2727,23 @@ header.showcase-project .next {
       overflow: hidden;
       width: 77%;
       float: left; }
-      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li {
-        float: left; }
-        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .btn {
-          padding: 8px 15px;
-          border: none;
-          margin-right: 2px;
-          margin-top: 2px; }
-        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
-          background-color: #222;
-          color: #fff; }
-          .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
-            background-color: #fff;
-            color: #222; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu .button-item, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu .button-item, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu .button-item {
+        clear: both; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu a, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu a, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu a {
+        color: #0AA9EA; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu span, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu span, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu span {
+        color: #0AA9EA; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .btn {
+        padding: 8px 15px;
+        border: none;
+        margin-right: 2px;
+        margin-top: 2px; }
+      .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
+        background-color: #222;
+        color: #fff; }
+        .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
+          background-color: #fff;
+          color: #222; }
     .page-challenge-summary .region-content .tabs-buttons .challenge-follow, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow, .page-enter-challenge .region-content .tabs-buttons .challenge-follow {
       overflow: hidden;
       width: 23%;
@@ -2985,7 +2992,8 @@ header.showcase-project .next {
 .page-challenge-summary .tabs-buttons .challenge-actions {
   display: none; }
 .page-challenge-summary .content-wrapper {
-  padding: 0px 14px; }
+  padding: 10px;
+  margin-top: 20px; }
 
 .page-workshop-individual {
   background-color: #F2F2F2; }

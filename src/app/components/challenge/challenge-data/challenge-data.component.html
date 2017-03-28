@@ -72,14 +72,10 @@
           <div class="region region-content col-sm-12 row">
             <div class="tabs-buttons col-md-3">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="btn btn-light-grey " (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
-                <div *ngIf="challenge">
-                  <div *ngIf="challenge.discussion =='1'">
-                    <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
-                  </div>
-                </div>
-                <li><a href="" class="btn btn-light-grey" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
+                <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="button-item" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
+                <li><a href="" class="button-item" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>
 
@@ -90,11 +86,11 @@
                 (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
               <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
             </div>
-            <div class="content-wrapper row">
-              <app-summary class="col-12" [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"
-                [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
-            </div>
             <!-- End content-wrapper -->
+          </div>
+          <div class="content-wrapper">
+            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"
+              [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
           </div>
           <!-- End region-content -->
         </div>
