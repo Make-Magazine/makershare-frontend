@@ -211,13 +211,17 @@ export class ProjectFormComponent implements OnInit {
           }
         }
         // field team
-        for(let i=0; i< data.field_maker_memberships.und.length;i++){
-          let member = x[index];
-          if(member['field_team_member'].und){
-            subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
-            this.project.field_maker_memberships.und.push(member as field_collection_item_member);
+        if(data.field_maker_memberships.und){
+          for(let i=0; i< data.field_maker_memberships.und.length;i++){
+            let member = x[index];
+            if(member['field_team_member'].und){
+              subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
+              this.project.field_maker_memberships.und.push(member as field_collection_item_member);
+            }
+            index++;
           }
-          index++;
+        }else{
+          this.SetProjectOwner();
         }
       },
       (err) => {
@@ -301,15 +305,13 @@ export class ProjectFormComponent implements OnInit {
   }
 
   SetProjectOwner(){
-    this.userService.getStatus().subscribe(data => {
-      let owner:field_collection_item_member = {
-        field_team_member:{und:[{target_id:data.user.name+' ('+data.user.uid+')'}]},
-        field_membership_role:{und:[{value:'admin'}]},
-        field_sort_order:{und:[{value:1}]},
-      }
-      this.project.SetField(owner,'field_maker_memberships');
-      this.ProjectLoaded = true;
-    });
+    let owner:field_collection_item_member = {
+      field_team_member:{und:[{target_id:localStorage.getItem("user_name")+' ('+localStorage.getItem("user_id")+')'}]},
+      field_membership_role:{und:[{value:'admin'}]},
+      field_sort_order:{und:[{value:1}]},
+    }
+    this.project.SetField(owner,'field_maker_memberships');
+    this.ProjectLoaded = true;
   }
 
   /**
