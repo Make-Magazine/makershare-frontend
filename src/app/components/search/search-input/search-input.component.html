@@ -1,0 +1,1 @@
+<input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
