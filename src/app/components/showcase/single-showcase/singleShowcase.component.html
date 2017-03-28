@@ -15,7 +15,7 @@
                   <p>Enjoy !</p>
                 </div>
                 <div class="showcase-curated col-md-6">
-                  <app-user-card [uid]="showcase.uid"></app-user-card>
+                  <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
                 </div>
               </div>
             </div>
@@ -39,7 +39,7 @@
               <div class="projects-grid row">
                 <div *ngFor="let project of projects; let i = index;" class="col-md-4">
                   <div class="project">
-                    <app-project-card [projectCard]="project"></app-project-card>
+                    <app-project-card [projectCard]="project" [navigationExtras]="goToProject(project.nid, i)"></app-project-card>
                   </div>
                 </div>
                 <!-- End col -->

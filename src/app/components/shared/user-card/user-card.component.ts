@@ -8,15 +8,19 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
-
+  providers: [NgbTooltipConfig],
 })
 export class UserCardComponent implements OnInit {
   closeResult: string;
   card = {};
+  projectCount={};
+  projectCount2={};
+  badges=[];
   active = true;
   userId;
   user;
@@ -38,20 +42,44 @@ export class UserCardComponent implements OnInit {
     private pm: PmService,
     private fb: FormBuilder,
     private modalService: NgbModal,
-
-  ) { }
+    private config: NgbTooltipConfig,
+  ) {
+    config.placement = 'bottom';
+    config.triggers = 'hover';
+   }
   ngOnInit() {
     this.getcard();
+    this.getBadges();
     this.buildForm();
+    this.getProjectCountByUser();
   }
 
   getcard() {
     // get card profile
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
+      console.log(data[0]);
       this.card = data[0];
       this.isCurrentUser();
       //console.log(this.card)
+    }, err => {
+      // notification error  in service 
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+  }
+  getBadges(){
+       // service to get profile card Badges
+    this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
+      this.badges = data;
+    }, err => {
+      // notification error  in service 
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+  }
+  getProjectCountByUser(){
+       // service to get profile card Badges
+    this.viewService.getView('maker_projects_count', [['uid', this.uid]]).subscribe(data => {
+      this.projectCount = data[0];
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -65,7 +93,6 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-       console.log(res);
       });
     }
   }

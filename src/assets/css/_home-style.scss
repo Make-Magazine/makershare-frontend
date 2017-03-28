@@ -94,9 +94,10 @@
     }
     .spotlight-item {
         margin-top: 15px;
-        padding: 10px;
+        padding: 4px;
+        border: none;
         .card-block {
-            padding-bottom: 0;
+            padding: 10px;
         }
         .image-container {
             width: 100%;
@@ -170,14 +171,23 @@ footer {
             display: block;
             width: 80px;
             height: 80px;
+            margin-bottom: 4px;
         }
         a {
             width: 100%;
         }
-        .icons {
-            img {
-                width: 25px;
+        .icons-side-user {
+            width: 80px;
+            overflow: hidden;
+            .user-icon {
+                float: left;
+                img {
+                    width: 26px;
+                }
             }
+        }
+        .message-btn {
+            padding: 0px;
         }
     }
     .user-name {
@@ -209,9 +219,14 @@ footer {
     }
     .user-city {
         color: $title-color;
+        div {
+            float: left;
+            margin-right: 6px;
+        }
     }
     .count {
         margin-bottom: 0;
         color: $light-grey;
+        clear: both;
     }
 }

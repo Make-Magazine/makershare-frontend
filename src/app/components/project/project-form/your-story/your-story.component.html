@@ -2,7 +2,7 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="Project Name">
+      <input type="text" class="form-control" id="projectName" ngbTooltip="{{TooltipText.projectName.title}}  {{TooltipText.projectName.guide}}"   formControlName="title" novalidate placeholder="Project Name">
       <div *ngIf="formErrors.title" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>
@@ -11,19 +11,19 @@
       <label for="teaser">Teaser</label>
       <textarea class="form-control" rows="5" id="teaser" formControlName='field_teaser'></textarea>
     </div>
-    <div class="form-group cover">
+    <div class="form-group cover d-flex flex-column">
       <label class="control-label">Cover photo</label><br>
+      <div class="d-flex flex-row align-items-start">
         <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
         <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
         <div class="image-preview">
           <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
           <img *ngIf="YourStoryForm.value.field_cover_photo.file" src="{{YourStoryForm.value.field_cover_photo.file}}" class="img-responsive">
         </div>
-        <div class="clearfix"></div>
-        <div *ngIf="formErrors.field_cover_photo" class="alert alert-danger error-msg">
+      </div>
+      <div *ngIf="formErrors.field_cover_photo" class="alert alert-danger error-msg">
           {{ formErrors.field_cover_photo }}
         </div>
-        <div class="clearfix"></div>
     </div>
     <div class="form-group projectCategory d-flex flex-column">
       <label for="projectCategory" class="">Categories</label>
@@ -71,11 +71,11 @@
     </div>
     <div class="form-group aha">
       <label for="aha">AHA Moment (optional)</label>
-      <input type="text" class="form-control" id="aha" placeholder="Enter a URL for video" formControlName='field_aha_moment'>
+      <input type="text" class="form-control" id="aha" placeholder="Enter your text" formControlName='field_aha_moment'>
     </div>
     <div class="form-group uh-oh">
       <label for="uh-oh">UH-OH Moment (optional)</label>
-      <input type="text" class="form-control" id="uh-h" placeholder="Enter a URL for video" formControlName='field_uh_oh_moment'>
+      <input type="text" class="form-control" id="uh-h" placeholder="Enter your text" formControlName='field_uh_oh_moment'>
     </div>
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
@@ -143,6 +143,10 @@
     </button>
   </div>
   <div class="modal-body">
+    <div class="file-upload">
+      <a class="btn btn-white btn-sharp"  (click)="file.click()">Upload</a>
+      <input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event,imagecropper)">
+    </div>
     <img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings" ></img-cropper>
   </div>
   <div class="modal-footer">

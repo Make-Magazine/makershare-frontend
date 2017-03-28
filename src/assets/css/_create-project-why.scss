@@ -120,17 +120,22 @@
 		.cover {
 			a {
 				margin-top: 5px;
-				float: left;
 				width: 40%;
 				margin-right: 10%;
 			}
 			.image-preview {
 				width: 50%;
-				float: left;
-				background-color: $light-grey*0.9;
-				color:$main-grey;
-				text-align: center;
-				padding: 10px;
+				p {
+					width: 100%;
+					background-color: $light-grey*0.9;
+					color:$main-grey;
+					text-align: center;
+					padding: 10px;
+				}
+				img {
+					max-width: 100%;
+				}
+				
 			}
 			input{
 				display: inline-block;
@@ -370,3 +375,11 @@
     border: none !important;
     padding-left: 0 !important;
 }
+.modal-body {
+	.file-upload {
+		a {
+			margin-bottom: 10px;
+		}
+	}
+}
+.tooltip-inner {max-width:400px!important}
