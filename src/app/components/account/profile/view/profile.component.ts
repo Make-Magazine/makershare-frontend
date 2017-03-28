@@ -204,7 +204,8 @@ export class ProfileComponent implements OnInit {
     
     myReader.readAsDataURL(file);
     this.coverFile.filename = file.name;
-    this.coverFile.uri = domain+"/sites/default/files/maker/cover_photo/"+file.name;
+    let file_url = domain+"/sites/default/files/maker/cover_photo/"+file.name;
+    this.coverFile.uri = file_url as string;
 }
 
      private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,cropper) {
