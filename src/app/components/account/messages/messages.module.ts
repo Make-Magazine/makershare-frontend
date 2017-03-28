@@ -5,7 +5,6 @@ import { MessagesRoutsModule } from './messages.routing.module';
 import { ViewComponent } from './view/view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {ShareButtonsModule} from 'ng2-sharebuttons';
 
 
  
@@ -16,7 +15,6 @@ import {ShareButtonsModule} from 'ng2-sharebuttons';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ShareButtonsModule.forRoot()
 
   ],
   declarations: [

@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { NodeService } from '../../../../d7services/node/node.service';
 import { FileService } from '../../../../d7services/file/file.service';
 import { ViewService } from '../../../../d7services/view/view.service';
+import { MainService } from '../../../../d7services/main/main.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service';
 import { ProjectForm, ProjectView } from '../../../../models/project/project-form/project';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
@@ -13,6 +14,7 @@ import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
 import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { UserInvitations } from '../../../../models/project/project-form/UserInvitations';
 
 @Component({
   selector: 'app-project-form',
@@ -37,6 +39,7 @@ export class ProjectFormComponent implements OnInit {
     cover_image:{file:"",filename:""},
     tags:[],
     resources_files:[],
+    InvitationEmails:{uid:'',mails:[]}
   }
 
   /**
@@ -53,6 +56,7 @@ export class ProjectFormComponent implements OnInit {
     private userService:UserService,
     private router: Router,
     private route: ActivatedRoute,
+    private mainService:MainService
   ) {}
 
   ngOnInit(): void {
@@ -317,6 +321,7 @@ export class ProjectFormComponent implements OnInit {
     }
     if(this.project.GetField("nid")){
       delete this.project.field_original_team_members;
+      delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
         this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
         this.router.navigate(['/profile']);
@@ -342,6 +347,8 @@ export class ProjectFormComponent implements OnInit {
   UpdateFields(event,component){
     if(component === "Your Story"){
       this.FormPrintableValues.tags = event;
+    }else if (component === "Team"){
+      this.FormPrintableValues.InvitationEmails = event;
     }else{
       this.FormPrintableValues.resources_files = event;
     }
@@ -425,7 +432,26 @@ export class ProjectFormComponent implements OnInit {
       let resource = new field_collection_item_resource();
       this.project.field_resources.und.push(resource);
     }
-    this.SaveProject();
+    this.InviteTeam();
+  }
+
+  InviteTeam(){
+    if(this.FormPrintableValues.InvitationEmails.mails.length !== 0){
+      this.mainService.post('/api/team_service/build',this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data=>{
+        for(let email in data){
+          let user = data[email];
+          this.project.field_maker_memberships.und.forEach((row:field_collection_item_member,index:number)=>{
+            if(row.field_team_member.und[0].target_id === email){
+              row.field_team_member.und[0].target_id = user.name+' ('+user.uid+')';
+              return;
+            }
+          });
+        }
+        this.SaveProject();
+      });
+    }else{
+      this.SaveProject();
+    }
   }
 
 }

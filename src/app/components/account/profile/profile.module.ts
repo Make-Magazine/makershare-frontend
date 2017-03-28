@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { CKEditorModule } from 'ng2-ckeditor';
 
+
 @NgModule({
   imports: [
     IcDatepickerModule,
@@ -27,6 +28,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     NgbModule,
     ImageCropperModule,
     CKEditorModule
+
   ],
   declarations: [
     AllProfileComponent,

@@ -11,8 +11,8 @@ import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
-
+import { ShareButtonsModule } from "ng2-sharebuttons";
+import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ShareButtonsModule.forRoot()
   ],
   declarations: [
     CommentComponent,
@@ -32,7 +33,7 @@ import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    ShareButtonsComponent,
+    SharedButtonsComponent,
   ],
   exports: [
     CommentComponent,
@@ -42,7 +43,7 @@ import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    ShareButtonsComponent,
+    SharedButtonsComponent,
   ]
 })
 export class SharedModule { }
@@ -53,4 +54,4 @@ export {LikeComponent};
 export {ForkComponent};
 export {UserCardComponent};
 export {ProjectCardComponent};
-export {ShareButtonsComponent};
+export {SharedButtonsComponent}

@@ -8,15 +8,18 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
-
+  providers: [NgbTooltipConfig],
 })
 export class UserCardComponent implements OnInit {
   closeResult: string;
   card = {};
+  projectCount={};
+  projectCount2={};
   badges=[];
   active = true;
   userId;
@@ -39,12 +42,16 @@ export class UserCardComponent implements OnInit {
     private pm: PmService,
     private fb: FormBuilder,
     private modalService: NgbModal,
-
-  ) { }
+    private config: NgbTooltipConfig,
+  ) {
+    config.placement = 'bottom';
+    config.triggers = 'hover';
+   }
   ngOnInit() {
     this.getcard();
-    this.getBadges();
-    this.buildForm();
+    //this.getBadges();
+    //this.buildForm();
+    //this.getProjectCountByUser();
   }
 
   getcard() {
@@ -53,7 +60,6 @@ export class UserCardComponent implements OnInit {
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
       this.isCurrentUser();
-      //console.log(this.card)
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -68,15 +74,22 @@ export class UserCardComponent implements OnInit {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
+  getProjectCountByUser(){
+       // service to get profile card Badges
+    this.viewService.getView('maker_projects_count', [['uid', this.uid]]).subscribe(data => {
+      this.projectCount = data[0];
+    }, err => {
+      // notification error  in service 
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+  }
   onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
       this.messageObj.recipients = this.card['name'];
-      //console.log(this.messageObj.recipients)
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-       console.log(res);
       });
     }
   }

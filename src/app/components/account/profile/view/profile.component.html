@@ -5,7 +5,7 @@
 			<div class="row profile-cover">
 				<a href="" class="btn btn-light-grey edit hidden-sm-down" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i> &nbsp;Edit cover photo&nbsp;</a>
 				<a href="" class="btn btn-light-grey edit hidden-md-up" data-toggle="modal" data-target="#edit-cover-modal">&nbsp;<i class="fa fa-lg fa-pencil"></i></a>
-				<img src="{{profile.profile_cover}}" alt="" class="cover-image img-responsive">
+				<img [src]="profile.profile_cover" alt="" class="cover-image img-responsive">
 				<div class="profile-name profile-stats">
 					<div class="row container">
 						<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
@@ -14,13 +14,13 @@
 								<a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
 							</li>
 							<li class="col-sm-2 col-2">
-								<a href="" routerLink="/inbox"><i class="fa fa-lg fa-comment message"></i></a>
+								<a href="" [routerLink]="['/inbox']"><i class="fa fa-lg fa-comment message"></i></a>
 							</li>
 							<li class="col-sm-2 col-2">
 								<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 							</li>
-							<li class="col-sm-2 col-2">
-								<a href=""><i class="fa fa-lg fa-share"></i></a>
+							<li>
+									<a href=""><i class="fa fa-lg fa-share"></i></a>
 							</li>
 						</ul>
 						<!-- End Bookmark-section -->
@@ -70,9 +70,9 @@
 									</div>
 								</div>
 								<!-- start Badges-->
-								<div class="icons d-flex flex-row justify-content-start">
-									<div *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
+								<div class="icons">
+									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
+										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}"><p>{{badge?.title}}</p><br>
 									</div>
 								</div>
 								<!--End Badges -->
@@ -150,7 +150,7 @@
 								<div *ngIf="profile.field_started_making" class="how">
 									<!-- Start How -->
 									<h5>How I learned to be a maker</h5>
-									<p>{{profile.started_making}}</p>
+									<p>{{profile.started_making}}</p>																																					
 								</div>
 									<div *ngIf="!profile.field_started_making" class="how">
 									<a href="" class="btn btn-white add" data-toggle="modal" data-target="#add-maker-starting-modal">
@@ -163,7 +163,7 @@
 							<!-- End col-md-3 -->
 						</div>
 						<!-- End sidebar-left -->
-					</div>
+					</div>																																																																																																																																																																																																																																																		
 				</div>
 
 				<div class="right-section col-lg-8 col-md-8">
@@ -193,12 +193,15 @@
 								<li>
 									<a href=""><i class="fa fa-lg fa-bookmark-o"></i></a>
 								</li>
-								<li>
-									<a href=""><i class="fa fa-lg fa-share"></i></a>
-								</li>
+								<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
 							</ul>
 							<!-- End Bookmark-section -->
+							  <div class="switch col-lg-4 col-md-4 col-sm-4 col hidden-sm-down"><!-- Start Switch-view -->
+									<p class="square-view">Grid view <i class="fa fa-lg fa-square"></i></p>
+									<p class="grid-view">Case view <i class="fa fa-lg fa-bars"></i></p>
+              </div><!-- End Switch-view -->
 						</div>
+						<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
@@ -383,14 +386,10 @@
 												<!--<ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'wordcount'}" name="bio-textarea" id="bio-textarea" [(ngModel)]="profile.bio" placeholder="Start your story" (keypress)="limitText(profile.bio,countdown,550)"
 												(keyup)="limitText(profile.bio,countdown,550)" maxlength="550">
 											</ckeditor>
-												<font size="1">(Maximum characters: 550)<br> You have
-													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value= "{{countdown}}"> characters left.
-												</font>-->
-												<!--<textarea name="limitedtextfield" id="bio-textarea" [(ngModel)]="profile.describe_yourself" placeholder="Start your story" (keypress)="limitText(profile.describe_yourself,countdown,5)"
-												(keyup)="limitText(profile.describe_yourself,countdown,5)" maxlength="5">
+										 	<textarea name="bio-textarea" id="bio-textarea" [(ngModel)]="info.bio" placeholder="Start your story" (change)="limitString(info,'bio',550)" maxlength="550">
 												</textarea>
-												<font size="1">(Maximum characters: 5)<br> You have
-													<input [(ngModel)]="countdown" readonly type="text" name="countdown" size="3" value= "{{countdown}}"> characters left.
+												<font size="1">(Maximum characters: 550)<br> You have
+													<input readonly type="text" name="countdown" size="3" [value]="550-info.bio.length"> characters left.
 												</font>-->
 										</div>
 										<div class="modal-footer">
@@ -604,3 +603,5 @@
 		<!-- End body-group -->
 	</div>
 </div>
+
+

@@ -15,7 +15,7 @@
                   <p>Enjoy !</p>
                 </div>
                 <div class="showcase-curated col-md-6">
-                  <app-user-card [uid]="showcase.uid"></app-user-card>
+                  <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
                 </div>
               </div>
             </div>
@@ -37,11 +37,11 @@
             <!-- End filters -->
             <div class="container">
               <div class="projects-grid row">
-                <div *ngFor="let project of projects; let i = index;" class="col-md-4">
                   <div class="project">
-                    <app-project-card [projectCard]="project"></app-project-card>
-                  </div>
-                </div>
+                     <!-- Start Project Card -->
+          <app-project-card *ngFor="let project of projects; let i = index;" [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>
+          <!-- End Project Card -->
+                 </div>
                 <!-- End col -->
               </div>
               <!-- End projects-grid row -->

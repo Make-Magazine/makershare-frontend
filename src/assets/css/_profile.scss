@@ -87,6 +87,19 @@
 		.profile-progress {
 		}
 	}
+	.single-icon {
+		width: 100%;
+		img {
+    width: 34px;
+    height: 40px;
+    padding: 3px;
+		}
+		p {
+    margin-bottom: 1px;
+    line-height: normal;
+    padding: 10px 0px;
+		}
+	}
 	.interests {
 		margin: 0px;
 	}
@@ -609,10 +622,15 @@
 		}
 	}
 	.card-block {
-		.icons-side  {
+		min-height: 214px;
+	}
+	.icons-side-project {
+		width: 60px;
+		.project-icon {
+			float: left;
 			img {
-				width: 20px;
-    		height: auto;
+				width: 30px;
+				height: 36px;
 			}
 		}
 	}
@@ -638,7 +656,7 @@
 		min-height: 38px;
 		padding: 0px;
 		display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 		overflow: hidden;
     line-height: 30px;
@@ -696,7 +714,7 @@
 	background-color: white;
 		.icons-side {
 			img {
-				width: 30px;
+				width: 24px;
 				height: 30px;
 			}
 		}
