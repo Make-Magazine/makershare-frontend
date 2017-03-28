@@ -304,7 +304,6 @@ a:not([href]):not([tabindex]) {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 4px;
-  overflow: hidden;
   border: none;
   -webkit-transition: background-color 1.25s linear;
   -moz-transition: background-color 1.25s linear;
@@ -339,8 +338,8 @@ a:not([href]):not([tabindex]) {
   .project .project-image {
     background-color: #BEBEBE;
     height: auto;
-    overflow: hidden;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
     .project .project-image .overlay {
       width: 100%;
       height: 100%;
@@ -700,7 +699,8 @@ body {
     margin: 25px 0; }
   .maker-spotlight .spotlight-item {
     margin-top: 15px;
-    padding: 4px; }
+    padding: 4px;
+    border: none; }
     .maker-spotlight .spotlight-item .card-block {
       padding: 10px; }
     .maker-spotlight .spotlight-item .image-container {
@@ -807,9 +807,13 @@ footer {
   font-size: 14px; }
 .user-card .user-city {
   color: #0AA9EA; }
+  .user-card .user-city div {
+    float: left;
+    margin-right: 6px; }
 .user-card .count {
   margin-bottom: 0;
-  color: #BEBEBE; }
+  color: #BEBEBE;
+  clear: both; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -2333,6 +2337,8 @@ header.showcase-project .next {
   .page-create-project-why #projectCategory {
     height: auto;
     padding: 0; }
+    .page-create-project-why #projectCategory select {
+      width: 75%; }
   .page-create-project-why .nav-create {
     border-bottom: 1px solid #222;
     padding-top: 10px; }
@@ -2375,6 +2381,7 @@ header.showcase-project .next {
       margin-top: 5px; }
     .page-create-project-why .your-story .projectCategory .add-cate {
       margin-bottom: 5px;
+      margin-left: 5px;
       width: auto; }
     .page-create-project-why .your-story .projectCategory .categories-group {
       width: 100%;
@@ -2385,6 +2392,7 @@ header.showcase-project .next {
         margin-bottom: 5px;
         padding: 5px 10px; }
     .page-create-project-why .your-story .projectCategory p.cate-name {
+      margin: 3px 0;
       margin-left: 15px; }
     .page-create-project-why .your-story .projectCategory .list-group-item {
       width: 50%; }

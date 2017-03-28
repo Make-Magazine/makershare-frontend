@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
-
 @NgModule({
   imports: [
     IcDatepickerModule,
@@ -24,7 +23,8 @@ import { ImageCropperModule } from 'ng2-img-cropper';
     TagInputModule,
     SharedModule,
     NgbModule,
-    ImageCropperModule
+    ImageCropperModule,
+
   ],
   declarations: [
     AllProfileComponent,

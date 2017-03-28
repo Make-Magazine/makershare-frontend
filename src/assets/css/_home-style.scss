@@ -94,7 +94,8 @@
     }
     .spotlight-item {
         margin-top: 15px;
-        padding: 4px;;
+        padding: 4px;
+        border: none;
         .card-block {
             padding: 10px;
         }
@@ -218,9 +219,14 @@ footer {
     }
     .user-city {
         color: $title-color;
+        div {
+            float: left;
+            margin-right: 6px;
+        }
     }
     .count {
         margin-bottom: 0;
         color: $light-grey;
+        clear: both;
     }
 }

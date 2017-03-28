@@ -5,21 +5,17 @@
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-
-           
-
           <div  class="icons-side-user">
              <div class="user-icon" *ngFor="let badge of badges;">
-                <img src="{{badge?.goal_image}}" alt="">                
+                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">                
             </div>
-          
           </div>
-          <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o"></i></button>
+          <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>
         </div>
         <div class="media-body">
           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
-          <p class="user-nickname"><a href="#">aka Goodmen</a></p>
+          <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
           <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
            <div >
