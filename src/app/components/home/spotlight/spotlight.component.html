@@ -11,7 +11,7 @@
             <img class="card-img-top" src="./assets/images/issues_robotics.jpg" alt="Card image cap">
             <span class="card-type">Spotlight</span>
           </div>
-          <app-user-card [uid]="spotlight.uid"></app-user-card>
+          <app-user-card *ngIf="spotlight.uid" [uid]="spotlight.uid"></app-user-card>
         </div>
         <!-- End Spotlight-item -->
       </div>

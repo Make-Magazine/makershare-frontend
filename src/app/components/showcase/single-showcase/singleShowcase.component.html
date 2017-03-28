@@ -15,7 +15,7 @@
                   <p>Enjoy !</p>
                 </div>
                 <div class="showcase-curated col-md-6">
-                  <app-user-card [uid]="showcase.uid"></app-user-card>
+                  <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
                 </div>
               </div>
             </div>

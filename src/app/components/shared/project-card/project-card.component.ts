@@ -1,16 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
+  providers: [NgbTooltipConfig],
 })
 export class ProjectCardComponent implements OnInit {
   @Input() projectCard;
   badges=[];
-  constructor(private router: Router, private route: ActivatedRoute,     private viewService: ViewService,
-) { }
+  constructor(private router: Router,
+  private route: ActivatedRoute,
+  private viewService: ViewService,
+  private config: NgbTooltipConfig,
+) {
+    config.placement = 'bottom';
+    config.triggers = 'hover';
+ }
   nid;
   myid;
   ngOnInit() {

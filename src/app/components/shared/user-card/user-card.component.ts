@@ -8,11 +8,12 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
-
+  providers: [NgbTooltipConfig],
 })
 export class UserCardComponent implements OnInit {
   closeResult: string;
@@ -41,8 +42,11 @@ export class UserCardComponent implements OnInit {
     private pm: PmService,
     private fb: FormBuilder,
     private modalService: NgbModal,
-
-  ) { }
+    private config: NgbTooltipConfig,
+  ) {
+    config.placement = 'bottom';
+    config.triggers = 'hover';
+   }
   ngOnInit() {
     this.getcard();
     this.getBadges();
@@ -89,7 +93,6 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-       console.log(res);
       });
     }
   }
