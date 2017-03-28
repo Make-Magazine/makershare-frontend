@@ -7,6 +7,7 @@ import { ShowcaseRoutingModule } from './showcase-routing.module'
 import { SharedModule } from '../shared/shared.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowcaseProjectComponent } from './showcase-project/showcase-project.component';
 // import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -23,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     ShowcasesCollectionComponent,
     SinglShowcaseComponent,
-    ShowcaseSortingComponent
+    ShowcaseSortingComponent,
+    ShowcaseProjectComponent
   ],
       // providers: [NgbCarouselConfig] // add NgbCarouselConfig to the component providers
 

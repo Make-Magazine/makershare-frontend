@@ -1969,11 +1969,18 @@ header.showcase-project .next {
   right: 10px;
   top: 10px; }
 
+.project.card {
+  width: 95%; }
+.project .card-block {
+  padding-top: 0;
+  margin-top: -5px; }
 .project .image-top {
   width: 100%;
   height: auto;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  top: -15px;
+  left: -24px; }
   .project .image-top img {
     height: auto;
     width: 100%; }
