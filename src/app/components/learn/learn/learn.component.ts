@@ -14,7 +14,7 @@ export class LearnComponent implements OnInit {
 pages: number = 0;
 page_arg;
 countWorkshop = 0;
-hideloadmoreworkshop = false;
+hideloadmoreworkshop = true;
 
 
   constructor(
