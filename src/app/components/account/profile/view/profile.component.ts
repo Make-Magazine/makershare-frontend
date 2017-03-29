@@ -145,7 +145,6 @@ export class ProfileComponent implements OnInit {
   }
   saveProfile() {
     this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
-      
     }, err => {
       console.log(err);
     });
@@ -204,6 +203,9 @@ export class ProfileComponent implements OnInit {
   saveCropped(){
     if(!this.CoverImageData.image) return;
     this.profile.profile_cover = this.CoverImageData.image;
+        console.log('ggggggggggggggggggggggggggggggggggggggggggggggggg')
+
+    console.log(this.profile.profile_cover)
     this.saveProfile();
   }
 
