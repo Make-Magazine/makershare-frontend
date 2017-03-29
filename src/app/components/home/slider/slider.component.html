@@ -10,7 +10,8 @@
             <h2 *ngIf="slider.promo_headline">{{slider.promo_headline}}</h2>
             <p *ngIf="slider.promo_description">{{slider.promo_description}}</p>
             <div class="card-buttons button-container-main-1">
-              <a class="btn btn-main" >Read more</a>
+              <a class="btn btn-main" (click)="loadMoreData(slider.nid,slider.type)">Read more </a>
+
             </div>
           </div>
         </div>
