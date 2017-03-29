@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
       "removeButtons":"Source,Save,Templates,Find,Replace,Scayt,SelectAll",
       "extraPlugins": 'wordcount',
       "wordcount":{
-      "maxCharCount": '100',
+      "maxCharCount": '550',
       "showParagraphs": false,
       "showWordCount": false,
        showCharCount: true,
