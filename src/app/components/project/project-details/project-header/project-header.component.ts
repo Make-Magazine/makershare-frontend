@@ -20,6 +20,8 @@ export class ProjectHeaderComponent implements OnInit {
     this.getcurrentuser();
     this.userId = localStorage.getItem('user_id');
     this.currentuser = Number(localStorage.getItem('user_id'));
+
+    
   }
   
   getcurrentuser(){

@@ -50,7 +50,7 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        //console.log(this.msg)
+        console.log(this.msg)
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
@@ -91,7 +91,7 @@ export class ViewComponent implements OnInit {
           timestamp: this.messages,
           body: this.reply.body
         }
-        console.log(newComment)
+        // console.log(newComment)
         this.messages.push(newComment);
       }, err => { });
     }

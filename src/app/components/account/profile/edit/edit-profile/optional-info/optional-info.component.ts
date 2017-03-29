@@ -31,8 +31,8 @@ export class OptionalInfoComponent implements OnInit {
             this.profileService.getAllInterests().subscribe(allIntersets => {
      this.allIntersets=allIntersets;
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
     this.profileService.getAllMarkers().subscribe(markers => {
       for (let i = 0; i < markers.length; i++) {
@@ -42,8 +42,8 @@ export class OptionalInfoComponent implements OnInit {
       }
 
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
   }
 
@@ -111,7 +111,7 @@ export class OptionalInfoComponent implements OnInit {
     this.saveOptional.emit(this.optionalForm.value);
   }
   formSubmit(values) {
-    console.log(values);
+    // console.log(values);
   }
 }
 

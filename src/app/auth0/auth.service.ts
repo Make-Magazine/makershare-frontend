@@ -38,21 +38,21 @@ export class Auth {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       
-      console.log(authResult);
+      // console.log(authResult);
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
-          console.log(error);
+          // console.log(error);
           return;
         }
-        console.log(profile);
+        // console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         if (profile['email_verified'] == true) {
-          console.log('will send request to drupal auth');
+          // console.log('will send request to drupal auth');
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
-              console.log(res);
+              // console.log(res);
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
@@ -79,9 +79,9 @@ export class Auth {
     });
 
     this.lock.on("authorization_error", (err) => {
-      console.log(err);
+      // console.log(err);
       if(err.error == "unauthorized"){
-        console.log('it is true');
+        // console.log('it is true');
         this.notificationBarService.create({ message: err.error_description, type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
       }
     });

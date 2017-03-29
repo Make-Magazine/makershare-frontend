@@ -158,26 +158,26 @@ $(document).ready(function() {
     });
 
     // Show and hide project stats on project card
-    $(document).on('mouseenter', '.project', function(){
-		if (squareView){
-			$(this).find('.icons').stop();
-			$(this).find('.icons').fadeOut('400');
-			$(this).find('.teaser').stop();
-			$(this).find('.teaser').fadeIn('400');
-			$(this).find('.overlay').stop();
-			$(this).find('.overlay').fadeIn('400');
-		}
-    });
-    $(document).on('mouseleave', '.project', function(){
-		if (squareView){
-			$(this).find('.icons').stop();
-			$(this).find('.icons').fadeIn('400');
-			$(this).find('.overlay').stop();
-			$(this).find('.overlay').fadeOut('400');
-			$(this).find('.teaser').stop();
-			$(this).find('.teaser').fadeOut('400');
-		}
-    });
+    // $(document).on('mouseenter', '.project', function(){
+		// if (squareView){
+		// 	$(this).find('.icons').stop();
+		// 	$(this).find('.icons').fadeOut('400');
+		// 	$(this).find('.teaser').stop();
+		// 	$(this).find('.teaser').fadeIn('400');
+		// 	$(this).find('.overlay').stop();
+		// 	$(this).find('.overlay').fadeIn('400');
+		// }
+    // });
+    // $(document).on('mouseleave', '.project', function(){
+		// if (squareView){
+		// 	$(this).find('.icons').stop();
+		// 	$(this).find('.icons').fadeIn('400');
+		// 	$(this).find('.overlay').stop();
+		// 	$(this).find('.overlay').fadeOut('400');
+		// 	$(this).find('.teaser').stop();
+		// 	$(this).find('.teaser').fadeOut('400');
+		// }
+    // });
 
     /*$(document).on('click','.tools a, .materials a, .parts a', function(e){
     	e.preventDefault();

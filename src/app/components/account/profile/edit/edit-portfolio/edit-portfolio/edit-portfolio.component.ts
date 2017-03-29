@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-edit-portfolio',
   templateUrl: './edit-portfolio.component.html',
 })
 export class EditPortfolioComponent implements OnInit {
+  @ViewChild('tab') Tab; 
   CurrentTab:string;
   
   constructor() { }
@@ -12,5 +13,4 @@ export class EditPortfolioComponent implements OnInit {
   ngOnInit() {
     this.CurrentTab = 'public';
   }
-
 }

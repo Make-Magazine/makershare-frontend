@@ -58,29 +58,29 @@ export class AllProfileComponent implements OnInit {
       }
 
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
       this.allIntersets = allIntersets;
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
     this.profileService.getUser(1).subscribe(res => {
 
       this.profile = res;
       this.info = res;
-      console.log(this.info);
+      // console.log(this.info);
 
       this.profileService.getByCountry(this.info.address.country).subscribe(info => {
         for (var k in info.administrative_areas) {
           this.items.push(info.administrative_areas[k]);
         }
       }, err => {
-        console.log("error");
-        console.log(err);
+        // console.log("error");
+        // console.log(err);
       });
     }, err => {
 
@@ -113,11 +113,11 @@ export class AllProfileComponent implements OnInit {
   }
   saveProfile() {
     this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
-      console.log("profile saved");
-      console.log(profile);
+      // console.log("profile saved");
+      // console.log(profile);
     }, err => {
-      console.log("error");
-      console.log(err);
+      // console.log("error");
+      // console.log(err);
     });
   }
   onValueChanged(data?: any) {
