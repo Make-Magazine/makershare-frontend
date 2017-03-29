@@ -5,6 +5,8 @@ sponsored_by:string;
 public_voting: number;
 body: string;
 rules:string;
+opened:boolean;
+diffDays:number;
 display_entries: number;
 nid: number;
 challenge_start_date?:IChallengeStartDate;
