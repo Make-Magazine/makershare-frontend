@@ -183,6 +183,7 @@ export class ChallengeDataComponent implements OnInit {
   getProjects() {
     /*cheack display_entries */
     //challenge entries projects
+     this.projects=[];
     var sort: string;
     //  this.page_arg = [];
     if (this.pageNo >= 0) {
