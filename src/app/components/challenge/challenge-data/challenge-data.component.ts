@@ -12,6 +12,11 @@ import 'rxjs/Rx';
   templateUrl: './challenge-data.component.html',
 })
 export class ChallengeDataComponent implements OnInit {
+
+  customTitle: string;
+  customDescription: string;
+  customImage: string;
+
   challenge;
   dates;
   str;
@@ -54,7 +59,7 @@ export class ChallengeDataComponent implements OnInit {
   ngOnInit() {
 
     this.getCountProject();
-    this.activeTab = 'summary';
+    this.activeTab = 'awards';
     this.getChallengeData();
     this.sort_order = "DESC";
     this.sort_by = "created";
@@ -88,7 +93,7 @@ export class ChallengeDataComponent implements OnInit {
         this.followers = this.followers.concat(data);
         if (!this.followers.length) {
           this.hideloadmorefollower = true;
-          console.log(this.followers.length)
+          //console.log(this.followers.length)
         } else {
           if (this.followers[0]['follow_counter'] == this.followers.length) {
 
@@ -129,7 +134,11 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
-        console.log(data);  
+        console.log(data[0]);
+        this.customTitle = this.challenge.title;
+        this.customDescription = this.challenge.body;
+        this.customImage = this.challenge.cover_image;
+
         if (this.challenge['status_id'] == '375') {
           this.hideButton = true;
         }
@@ -217,7 +226,7 @@ export class ChallengeDataComponent implements OnInit {
     this.getProjects();
     this.hideloadmoreproject = false;
     this.loadMoreVisibilty();
-    console.log(this.projects);
+    //console.log(this.projects);
 
   }
   /* end function sort */
@@ -250,13 +259,14 @@ export class ChallengeDataComponent implements OnInit {
           this.countProjects = 0
         } else {
           this.countProjects = data;
+          // console.log(data[0]);
         }
       }, err => {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
-  
+
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
@@ -271,7 +281,7 @@ export class ChallengeDataComponent implements OnInit {
       this.enterStatus = data.status;
       this.submitStatus.emit(this.enterStatus);
 
-      console.log(data);
+      //console.log(data);
     }, err => {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
@@ -301,8 +311,8 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* end function my Enteries */
 
-    /* service to get challenge name if project enter in it */
-       // get challenge name and nid for challenge if found from a view
+  /* service to get challenge name if project enter in it */
+  // get challenge name and nid for challenge if found from a view
   //  getProjectData(){
   //     /* service to get challenge name if project enter in it */
   //      // get challenge name and nid for challenge if found from a view
@@ -314,7 +324,7 @@ export class ChallengeDataComponent implements OnInit {
   //   });
   //       /* end service */
   //  }
-        /* end service */
+  /* end service */
 
 }
 

@@ -22,6 +22,7 @@ import { MessagesModule } from './components/account/messages/messages.module';
 import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DndModule } from 'ng2-dnd';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
 import { FormsModule } from '@angular/forms';
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     routing,
     MessagesModule,
     NotificationBarModule,
-    SharedModule
+    SharedModule,
+    DndModule.forRoot(),
   ],
   entryComponents: [],
   providers: [

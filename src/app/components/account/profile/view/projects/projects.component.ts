@@ -13,7 +13,8 @@ export class ProjectsComponent implements OnInit {
     private router: Router,
     private viewService: ViewService
   ) { }
-
+  view = 'grid';
+  userPic = false;
   profile_projects = [];
   ngOnInit() {
     var args = [
@@ -22,7 +23,7 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
       this.profile_projects = res;
-      console.log(res);
+      // console.log(res);
     }, err => {
 
     });

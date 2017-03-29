@@ -9,16 +9,13 @@ import { ProjectForm } from '../../../../models/project/project-form/project';
 import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
 import { CropperSettings } from 'ng2-img-cropper';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
-  styles : [`
-      .add-cate {margin-left:5px}
-      .cate-name {margin: 3px 0}
-      .projectCategory {width:60%}
-      .projectCategory select {width:75%;}
-  `]
+  providers: [NgbTooltipConfig],
 })
 
 export class YourStoryComponent implements OnInit {
@@ -58,9 +55,11 @@ export class YourStoryComponent implements OnInit {
     private viewService: ViewService,
     private fileService: FileService,
     private modalService: NgbModal,
-    
+    private config: NgbTooltipConfig,
   ) {
     this.SetCropperSettings();
+    config.placement = 'right';
+    config.triggers = 'click:blur';
   }
 
   /**
@@ -94,7 +93,7 @@ export class YourStoryComponent implements OnInit {
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
       'title': [this.project.title, [Validators.required,Validators.minLength(4)]],
-      'field_teaser': [this.project.field_teaser.und[0].value],
+      'field_teaser': [this.project.field_teaser.und[0].value,Validators.maxLength(250)],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
@@ -145,7 +144,6 @@ export class YourStoryComponent implements OnInit {
   ImageUpdated(closebtn:HTMLButtonElement,SkipCropping:boolean){ 
     closebtn.click();
     this.cover_image.file = '';
-    this.cover_image.filename = '';
     this.formErrors.field_cover_photo = '';
     if(!NodeHelper.isEmpty(this.imagedata)){
       if(SkipCropping){
@@ -155,11 +153,11 @@ export class YourStoryComponent implements OnInit {
           this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.validimagesize;
         }else{
           this.cover_image.file = this.imagedata.original.src;
+          
         }
       }else{
         this.cover_image.file = this.imagedata.image;
       }
-      this.cover_image.filename = "myprojectcover.png";
       this.imagedata = {};
     }
     if(!this.cover_image.file && !this.formErrors.field_cover_photo){
@@ -233,6 +231,9 @@ export class YourStoryComponent implements OnInit {
      'field_cover_photo': '',
      'field_show_tell_video': '',
      'field_story': '',
+     'field_teaser': '',
+     'field_aha_moment': '',
+     'field_uh_oh_moment': ''
    };
 
    /**
@@ -258,6 +259,43 @@ export class YourStoryComponent implements OnInit {
      'field_story': {
        'required': 'Story is required.'
      },
+     'field_teaser':{
+       'maxlength': 'Max number of characters is 250'
+     },
+     'field_aha_moment':{
+       'maxlength': 'Max number of characters is 350'
+     },
+      'field_uh_oh_moment':{
+       'maxlength': 'Max number of characters is 350'
+     }
+   };
+
+   TooltipText = {
+     'projectName': {
+       'title': 'How to Choose a Project Name:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!'
+     },
+     'category': {
+       'title': 'Choosing a category',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+     },
+     'teaser': {
+       'title': 'Writing a teaser:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+     },
+     'show_tell': {
+       'title': 'Making an awesome SHOW &amp; TELL video:',
+       'guide' : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptates magni ducimus id quos, fugiat repellat harum reprehenderit, laborum est officiis distinctio veniam nulla facere!',
+       'img_src' : 'http://placehold.it/160x90'
+     },
+     'AHA': {
+       'title': 'AHA ad UH-OH Moments',
+       'guide' : 'Talk about a positive breakthrough you had while working on the project, or a learning experience or something that went horribly, horribly wrong...'
+     },
+     'story': {
+       'title': 'Tips for creating a great story:',
+       'guide' : `<p>Think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn’t turn out the way you planned, what did you learn from your “failure”?</p><p>Definitely include a video and photos of the finished product. </p>`
+     }
    };
 
   SetCropperSettings():void{
@@ -278,6 +316,7 @@ export class YourStoryComponent implements OnInit {
     if($event.target.files.length ===0) return; 
     var image:any = new Image();
     var file:File = $event.target.files[0];
+    this.cover_image.filename = file.name;
     var myReader:FileReader = new FileReader();
     myReader.onloadend = function (loadEvent:any) {
         image.src = loadEvent.target.result;

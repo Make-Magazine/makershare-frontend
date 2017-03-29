@@ -11,6 +11,7 @@ import { UserCardComponent } from '../../shared/user-card/user-card.component'
 export class SinglShowcaseComponent implements OnInit {
 
   showcase = {uid:""};
+  view = 'grid';
   profile = {};
   projects = [];
   hideloadmore=false;
@@ -47,8 +48,6 @@ export class SinglShowcaseComponent implements OnInit {
     .switchMap((nid) => this.viewService.getView('views/showcase_projects',[['nid',nid['nid']],['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe(data =>{
       this.projects=data;
-      console.log("projects");
-      console.log(this.projects);
       this.loadMoreVisibilty();
     });
     this.loadFlag=false;
@@ -77,7 +76,7 @@ loadMoreVisibilty(){
      this.router.navigate(['']);
    }
 
-   public goToProject(nid, projectIndex){
+   public  goToProject(nid, projectIndex):NavigationExtras{
      let navigationExtras: NavigationExtras = {
             queryParams: {
                 "projectId": nid,
@@ -86,7 +85,8 @@ loadMoreVisibilty(){
                 "projects":JSON.stringify(this.projects)
             }
      }
-     this.router.navigate(['project/view/', nid], navigationExtras);
+     return navigationExtras;
+     //this.router.navigate(['project/view/', nid], navigationExtras);
    }
 
    goToProfile(nid){
@@ -98,7 +98,6 @@ loadMoreVisibilty(){
      this.route.params
     .switchMap((nid) => this.viewService.getView('showcase',[['nid',nid['nid']]]))
     .subscribe(data =>{
-      console.log(data[0]);
        this.showcase = data[0];
 
 

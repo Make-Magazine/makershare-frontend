@@ -12,7 +12,7 @@
                 <app-like  [nodeNid]="workshop.nid" [user]="uid"></app-like>
                 <app-bookmark  [nodeNid]="workshop.nid"></app-bookmark>
                 </div>-->
-              <li><a href="#" class="btn btn-soft-grey btn-fit" (click)="shareThis($event)">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>
+              <app-shared-buttons *ngIf="workshop.nid" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
             </ul>
             <div class="list-unstyled workshop-tags pull-left">
               <a *ngFor="let tags of workshop.tags" class="btn btn-grey">{{tags}}</a>
@@ -142,7 +142,7 @@
         <aside class="col-sm-4">
           <div *ngIf="workshop" class="workshop-instructor">
             <div class=" profile-container">
-              <app-user-card [uid]="workshop.uid"></app-user-card>
+              <app-user-card *ngIf="workshop.uid" [uid]="workshop.uid"></app-user-card>
             </div>
             <!-- End profile card -->
           </div>

@@ -16,6 +16,7 @@ export class SummaryComponent implements OnInit {
   @Output() sortType = new EventEmitter<ISorting>();
   @Output() pageNumber = new EventEmitter<number>();
   ActionName: string;
+  view = 'grid';
   pages: number = 0;
   sort: ISorting = {
     sort_by: "",
@@ -27,7 +28,7 @@ export class SummaryComponent implements OnInit {
   ngOnInit() {
     this.ActionName = "Most Recent"
 
-    console.log(this.projectsChallenge);
+    // console.log(this.projectsChallenge);
   }
   /* function to sort challenge Title A-z */
   sortAsc(sort: ISorting) {
@@ -99,7 +100,7 @@ export class SummaryComponent implements OnInit {
   loadMoreProject() {
     this.pages++;
     this.pageNumber.emit(this.pages);
-    console.log(this.pages);
+    // console.log(this.pages);
   }
   /* end function load more  */
 

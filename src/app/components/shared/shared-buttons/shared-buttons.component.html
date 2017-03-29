@@ -1,0 +1,19 @@
+<li class="col-sm-2 col-2">
+  <a (click)="open(content)" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a>
+</li>
+
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <h3 style="color: black">Share With Your Friends </h3>
+  </div>
+  <div class="modal-body">
+    <share-buttons [title]="PageTitle" [description]="PageDescription" [image]="PageImage" [tumblr]="false" [whatsApp]="false"
+      [stumbleUpOn]="false"></share-buttons>
+  </div>
+  <div class="modal-footer"> 
+    <ul class="list-unstyled actions">
+    <li><a style="color: black" (click)="c('Close click')">Cancel</a></li>
+  </ul>
+  </div>
+  
+</template>

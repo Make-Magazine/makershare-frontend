@@ -39,7 +39,11 @@
 		margin-top: 40px;
 	}
 	input {border-radius:0px;}
-	#projectCategory {height: auto;padding: 0;}
+	#projectCategory {
+		height: auto;
+		padding: 0;
+		select {width:75%;}
+	}
 	.nav-create {
 		border-bottom: 1px solid $main-grey;
 		padding-top: 10px;
@@ -93,6 +97,7 @@
 				}
 				.add-cate {
 					margin-bottom: 5px;
+					margin-left:5px;
 					width: auto;
 				}
 				.categories-group {
@@ -107,6 +112,7 @@
 				}
 				
 				p.cate-name {
+					margin: 3px 0;					
 					margin-left: 15px;
 
 				}
@@ -382,3 +388,4 @@
 		}
 	}
 }
+.tooltip-inner {max-width:400px!important}

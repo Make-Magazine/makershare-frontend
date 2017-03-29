@@ -134,47 +134,50 @@ $(document).ready(function() {
     // Toggle profile grid and square view
     $(document).on('click', '.switch', function(){
     	$(this).children().toggle();
-    	if($('.project').hasClass('col-md-4')){
-    		$('.project').removeClass('col-md-4');
-    		$('.project').addClass('col-md-12');
-    		$('.project-stats').css({
-				display: 'block',
-				bottom: '120px'
-			});
+    	if($('.project-item ').hasClass('col-md-6')){
+    		$('.project-item ').removeClass('col-md-6');
+    		$('.project-item ').addClass('col-md-12');
+				$('.project-item .content-side p.project-text-grid').css({display: 'block'});
+    		// $('.project-stats').css({
+				// display: 'block',
+				// bottom: '120px'
+			// });
     		squareView = false;
     	} else {
-    		$('.project').removeClass('col-md-12');
-    		$('.project').addClass('col-md-4');
-    		$('.project-stats').css({
-				display: 'none',
-				bottom: '120px'
-			});
+    		$('.project-item').removeClass('col-md-12');
+    		$('.project-item').addClass('col-md-6');
+				$('.project-item .content-side p.project-text-grid').css({display: 'none'});
+    		// $('.project-stats').css({
+				// display: 'none',
+				// bottom: '120px'
+			// });
     		squareView = true;
     	}
+
 
     });
 
     // Show and hide project stats on project card
-    $(document).on('mouseenter', '.project', function(){
-		if (squareView){
-			$(this).find('.icons').stop();
-			$(this).find('.icons').fadeOut('400');
-			$(this).find('.teaser').stop();
-			$(this).find('.teaser').fadeIn('400');
-			$(this).find('.overlay').stop();
-			$(this).find('.overlay').fadeIn('400');
-		}
-    });
-    $(document).on('mouseleave', '.project', function(){
-		if (squareView){
-			$(this).find('.icons').stop();
-			$(this).find('.icons').fadeIn('400');
-			$(this).find('.overlay').stop();
-			$(this).find('.overlay').fadeOut('400');
-			$(this).find('.teaser').stop();
-			$(this).find('.teaser').fadeOut('400');
-		}
-    });
+    // $(document).on('mouseenter', '.project', function(){
+		// if (squareView){
+		// 	$(this).find('.icons').stop();
+		// 	$(this).find('.icons').fadeOut('400');
+		// 	$(this).find('.teaser').stop();
+		// 	$(this).find('.teaser').fadeIn('400');
+		// 	$(this).find('.overlay').stop();
+		// 	$(this).find('.overlay').fadeIn('400');
+		// }
+    // });
+    // $(document).on('mouseleave', '.project', function(){
+		// if (squareView){
+		// 	$(this).find('.icons').stop();
+		// 	$(this).find('.icons').fadeIn('400');
+		// 	$(this).find('.overlay').stop();
+		// 	$(this).find('.overlay').fadeOut('400');
+		// 	$(this).find('.teaser').stop();
+		// 	$(this).find('.teaser').fadeOut('400');
+		// }
+    // });
 
     /*$(document).on('click','.tools a, .materials a, .parts a', function(e){
     	e.preventDefault();
