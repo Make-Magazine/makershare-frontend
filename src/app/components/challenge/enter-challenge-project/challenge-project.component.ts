@@ -32,6 +32,8 @@ export class ChallengeProjectComponent implements OnInit {
     public_voting: 0,
     body: "",
     rules: "",
+    diffDays:0,
+    opened:false,
     display_entries: 0,
     nid: 0,
     challenge_start_date: {
@@ -94,14 +96,45 @@ export class ChallengeProjectComponent implements OnInit {
       .subscribe(data => {
         this.challangeData = data[0];
         console.log(this.challangeData);
+          //calculate days difference
+        if (this.challangeData) {
+          var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+          var todayDate = new Date();
+          var endDate = new Date(this.challangeData.challenge_end_date.value);
+          var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
+          console.log(diffDays);
+          if (diffDays >= 0) {
+            this.challangeData.diffDays = diffDays
+          } else {
+            this.challangeData.opened = false;
+          }
+        }
+        this.challangeData.challenge_end_date.value = this.changeDateFormat(this.challangeData.challenge_end_date.value);
+        this.challangeData.challenge_start_date.value = this.changeDateFormat(this.challangeData.challenge_start_date.value);
+        this.challangeData.winners_announcement_date.value = this.changeDateFormat(this.challangeData.winners_announcement_date.value);
+      
         // this.challangStartDate = this.challangeData.challenge_start_date;
       }, err => {
         // console.log(err);
       });
   }
+   /* function to change data format */
+  changeDateFormat(date) {
+    var d;
+    d = new Date(date);
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    var month = monthNames[d.getMonth()];
+    var fullYear = d.getFullYear();
+    var day = d.getDate();
+    var datestring = month + " " + day + "," + " " + fullYear;
+    return datestring;
+  }
+  /* end function to change data format */
   updateSelectedProject(item: any) {
     this.selectedProjectName = item.target.selectedOptions[0].text;
-    this.selectedProject = item.target.value;  
+    this.selectedProject = item.target.value;
 
   }
 
@@ -116,22 +149,22 @@ export class ChallengeProjectComponent implements OnInit {
       "field_entry_challenge": this.nid,
     };
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
-      this.router.navigate(['challenges/',  this.nid]);
-     // console.log(this.challangeData.title)
+      this.router.navigate(['challenges/', this.nid]);
+      // console.log(this.challangeData.title)
       this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
       /* bookmark auto after submit project challenge */
-     if(this.nid){
-      this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
-      }, err => {
-      });
-     }
+      if (this.nid) {
+        this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
+        }, err => {
+        });
+      }
       /* end bookmark  */
-       /* follow auto after submit project challenge */
-       if(this.nid){
-      this.flagService.flag(this.nid, this.userId, 'follow').subscribe(response => {
-      }, err => {
-      });
-       }
+      /* follow auto after submit project challenge */
+      if (this.nid) {
+        this.flagService.flag(this.nid, this.userId, 'follow').subscribe(response => {
+        }, err => {
+        });
+      }
       /* end follow  */
     }, err => {
       // console.log(err);
