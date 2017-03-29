@@ -40,8 +40,9 @@
           </div>
         </div>
         <div class="text-center">
-          <div class="button-container-main-2">
-            <a class="btn btn-main-2">Load more</a>
+          <div class="button-container-main-2" *ngIf="!hideloadmoreworkshop">
+            <a class="btn btn-main-2"  (click)="loadMoreWorkshop()">Load more</a>
+
           </div>
         </div>
       </section>
