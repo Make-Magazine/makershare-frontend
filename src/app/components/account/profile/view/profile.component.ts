@@ -10,9 +10,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-
 import { SharedButtonsComponent } from '../../../shared/shared-buttons/shared-buttons.component';
-
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { domain } from '../../../../d7services/example.globals';
@@ -29,19 +27,22 @@ export class ProfileComponent implements OnInit {
  ckEditorConfig: {} = {
     "toolbarGroups": [
           { "name": "document", "groups": [ "mode", "document", "doctools" ] },
+          { "name": 'clipboard',   "groups": [ 'clipboard', 'undo' ] },
           { "name": "editing", "groups": [ "find", "selection", "spellchecker", "editing" ] },
-          { "name": "forms", "groups": [ "forms" ] }
+          { "name": "forms", "groups": [ "forms" ] },
+          { "name" : 'paragraph',   "groups": [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+          { "name": 'document',	   "groups": [ 'mode', 'document', 'doctools' ] },
+          { "name": 'styles' }
       ],
       "removeButtons":"Source,Save,Templates,Find,Replace,Scayt,SelectAll",
       "extraPlugins": 'wordcount',
       "wordcount":{
-      "maxCharCount": '550',
       "showParagraphs": false,
       "showWordCount": false,
-       showCharCount: true,
-       countSpacesAsChars: true,
-       countHTML: false,
-       maxWordCount: -1,
+      "showCharCount": true,
+      "countSpacesAsChars": true,
+      "countHTML": false,
+      "maxCharCount": '550',
       },
 
      };
@@ -115,9 +116,7 @@ export class ProfileComponent implements OnInit {
     this.cropperSettings.canvasHeight = 300;
     this.cropperSettings.minWidth = 100;
     this.cropperSettings.minHeight = 100;
-
     this.cropperSettings.rounded = false;
-
     this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
     this.cropperSettings.noFileInput = true;
@@ -279,7 +278,6 @@ export class ProfileComponent implements OnInit {
 	}
 }
 
-
   saveCropped() {
     if (!this.CoverImageData.image) return;
     //this.profile.profile_cover = this.CoverImageData.image;
@@ -299,11 +297,7 @@ export class ProfileComponent implements OnInit {
     }, err => {
     });
   }
-
-   /* end function get Badges */
    
-    
-
   /* end function get Badges */
   limitString(model, key, length) {
     if (typeof model[key] != "undefined") {
