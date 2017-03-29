@@ -54,8 +54,8 @@
     </div>
   </div>
   <div class="text-center">
-    <div class="button-container-main-2">
-      <a class="btn btn-main-2" *ngIf="!hideLoadMore" (click)="loadMoreProject($event)">Load more</a>
+    <div class="button-container-main-2" *ngIf="!hideLoadMore">
+      <a class="btn btn-main-2"  (click)="loadMoreProject()">Load more</a>
     </div>
   </div>
 </div>
