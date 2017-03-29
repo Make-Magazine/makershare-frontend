@@ -109,9 +109,17 @@ export class InboxComponent implements OnInit {
     //this.hideUser = false;
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
       this.SelectedUser.push(data);
-      //console.log(this.SelectedUser[0][0].username)
+      this.messageForm.reset();
     });
   }
+// deleteArray(uid) {
+//   let del_arr = [];
+//   for(let del_arr of this.SelectedUser){
+//     var index = del_arr.indexOf(uid, 0);
+//     del_arr.splice(index, 1);
+//   }
+
+// }
 
   onSubmit(e) {
     e.preventDefault();
@@ -133,7 +141,7 @@ export class InboxComponent implements OnInit {
 
   buildForm(): void {
     this.messageForm = this.fb.group({
-      'recipients': ['', Validators.required],
+      'recipients': [''],
       'subject': ['', Validators.required],
       'body': ['', Validators.required]
     });
@@ -197,6 +205,7 @@ export class InboxComponent implements OnInit {
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
+      var i = 0
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
@@ -221,16 +230,27 @@ export class InboxComponent implements OnInit {
            
           })
           msg_arr.push(this.messages[key]);
+          
+          this.dateObj = new Date(msg_arr[i].last_updated * 1000);
+          this.currentDate = new Date();
+          msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+          i++
         }
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
-      for (let message of this.msg) {
-        this.dateObj = new Date(message.last_updated * 1000);
-        this.currentDate = new Date();
-        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-      }
+    //  var i = 0
+    //   for (let message of this.msg) {
+    //     this.dateObj = new Date(message.last_updated * 1000);
+    //     this.currentDate = new Date();
+    //     this.msg[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+    //     i++;
+    //   }  
     })
+  }
+
+  getMessageTime(){
+    
   }
 
   CountMessages() {
@@ -272,12 +292,12 @@ export class InboxComponent implements OnInit {
         this.deletedArr.splice(index, 1);
       }
     }
-    //console.log(this.deletedArr);
   }
   deleteMessages() {
     for (var _i = 0; _i < this.deletedArr.length; _i++) {
-      var index = this.msg.indexOf(this.deletedArr[_i], 0);
-      delete this.msg[index]; 
+      this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+      var index = this.deletedArr.indexOf(_i, 0);
+        this.msg.splice(index, 1);
     }
   }
 
@@ -286,7 +306,6 @@ export class InboxComponent implements OnInit {
     if (ev.target.checked === true) {
       for (var _i = 0; _i < this.msg.length; _i++) {
         this.pm.deleteMessage(this.msg[_i].thread_id).subscribe()
-        //console.log(this.msg[_i].thread_id)
       }
     }
   }

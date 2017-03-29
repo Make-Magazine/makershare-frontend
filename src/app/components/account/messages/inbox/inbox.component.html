@@ -39,7 +39,7 @@
               <p class="timestamp" *ngIf="message.last_updated > 60 && message.last_updated < 1440 ">{{message.last_updated/60 | number : '1.0-0'}} hours ago</p>
               <p class="timestamp" *ngIf="message.last_updated == 1440 ">{{message.last_updated/(24*60) | number : '1.0-0'}} day ago</p>
               <p class="timestamp" *ngIf="message.last_updated > 1440 && message.last_updated < 10080 ">{{message.last_updated/(24*60) | number : '1.0-0'}} days ago</p>
-              <p class="timestamp" *ngIf="message.last_updated >= 10080 ">{{dateObj | date:'medium'}}</p>
+              <!--<p class="timestamp" *ngIf="message.last_updated >= 10080 ">{{dateObj | date:'medium'}}</p>-->
             </div>
           </div>
           <div class="message-subject">
@@ -66,14 +66,17 @@
 
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true" (click)="resetForm($event)">&times;</span>
+    <button type="button" class="close" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
+      <span aria-hidden="true" >&times;</span>
     </button>
   </div>
   <div class="modal-body">
         <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)" id="createMsg" class="form-horizontal">
             <div *ngFor=" let user of SelectedUser">
-               <p >{{user[0].username}}</p>
+              <!--<div class="user-image-container">
+                <img *ngIf="user[0].default_profile_photo" src="{{user[0].default_profile_photo}}" class="img-responsive">
+              </div>-->
+               <p *ngIf="SelectedUser" >{{user[0].first_name}} {{user[0].last_name}}</p>
               <!-- End Profile-container -->
             </div>
             <div class="form-group"  >
