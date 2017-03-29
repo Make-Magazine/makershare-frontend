@@ -38,6 +38,7 @@ export class ProjectsComponent implements OnInit {
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
        this.loadMoreVisibilty();
+
     }, err => {
 
     });
@@ -46,7 +47,6 @@ export class ProjectsComponent implements OnInit {
   getCountProject() {
     this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
       this.countProject = data[0];
-       console.log(this.countProject);
     }, err => {
 
     });
@@ -62,11 +62,9 @@ export class ProjectsComponent implements OnInit {
     this.getCountProject();
     if (this.countProject == this.profile_projects.length) {
       this.hideloadmoreproject = true;
-      console.log(this.profile_projects.length);
 
     } else if (this.countProject > this.profile_projects.length) {
       setTimeout(10000);
-            console.log(this.profile_projects.length);
 
       this.hideloadmoreproject = false;
     }

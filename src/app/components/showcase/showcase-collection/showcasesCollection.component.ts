@@ -60,9 +60,9 @@ loadmore(){
 loadMoreVisibilty(){
  // get the challenges array count
  if(this.showcases.length >= this.showcaseCount){
-   console.log("flage");
+  //  console.log("flage");
     this.hideloadmore= true;
-    console.log(this.hideloadmore);
+    // console.log(this.hideloadmore);
  }else{
     this.hideloadmore= false;
  }
@@ -83,7 +83,7 @@ getSortType(event:any){
   showcasesCount() {
       this.viewService.getView('maker_count_showcases',[]).subscribe(data => {
       this.showcaseCount=data[0];
-      console.log(this.showcaseCount);
+      // console.log(this.showcaseCount);
     });
   }
 

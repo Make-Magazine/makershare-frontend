@@ -48,8 +48,6 @@ export class SinglShowcaseComponent implements OnInit {
     .switchMap((nid) => this.viewService.getView('views/showcase_projects',[['nid',nid['nid']],['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]))
     .subscribe(data =>{
       this.projects=data;
-      console.log("projects");
-      console.log(this.projects);
       this.loadMoreVisibilty();
     });
     this.loadFlag=false;
@@ -100,7 +98,6 @@ loadMoreVisibilty(){
      this.route.params
     .switchMap((nid) => this.viewService.getView('showcase',[['nid',nid['nid']]]))
     .subscribe(data =>{
-      console.log(data[0].uid);
        this.showcase = data[0];
 
 
