@@ -7,7 +7,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Message } from '../../../d7services/pm/message';
 import { PmService } from '../../../d7services/pm/pm.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -18,13 +18,13 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class UserCardComponent implements OnInit {
   closeResult: string;
   card = {};
-  projectCount={};
-  projectCount2={};
-  badges=[];
+  projectCount = {};
+  projectCount2 = {};
+  badges = [];
   active = true;
   userId;
   user;
-  hideMessage=false;
+  hideMessage = false;
   messageForm: FormGroup;
   messageObj: Message = {
     recipients: '',
@@ -46,11 +46,11 @@ export class UserCardComponent implements OnInit {
   ) {
     config.placement = 'bottom';
     config.triggers = 'hover';
-   }
+  }
   ngOnInit() {
     this.getcard();
     //this.getBadges();
-    //this.buildForm();
+    this.buildForm();
     //this.getProjectCountByUser();
   }
 
@@ -65,8 +65,8 @@ export class UserCardComponent implements OnInit {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
-  getBadges(){
-       // service to get profile card Badges
+  getBadges() {
+    // service to get profile card Badges
     this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
       this.badges = data;
     }, err => {
@@ -74,8 +74,8 @@ export class UserCardComponent implements OnInit {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
-  getProjectCountByUser(){
-       // service to get profile card Badges
+  getProjectCountByUser() {
+    // service to get profile card Badges
     this.viewService.getView('maker_projects_count', [['uid', this.uid]]).subscribe(data => {
       this.projectCount = data[0];
     }, err => {
@@ -138,11 +138,11 @@ export class UserCardComponent implements OnInit {
     },
   };
 
-  isCurrentUser(){
+  isCurrentUser() {
     this.userId = localStorage.getItem('user_id');
-    if(this.card['uid'] === this.userId){
-      this.hideMessage=false;
-    }else{
+    if (this.card['uid'] === this.userId) {
+      this.hideMessage = false;
+    } else {
       this.hideMessage = true;
     }
   }
@@ -160,7 +160,7 @@ export class UserCardComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 

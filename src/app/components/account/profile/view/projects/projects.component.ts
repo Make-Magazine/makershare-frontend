@@ -14,25 +14,61 @@ export class ProjectsComponent implements OnInit {
     private viewService: ViewService
   ) { }
   view = 'grid';
+  pages: number = 0;
+  page_arg;
+  countProject = 0;
+  hideloadmoreproject = false;
+
   userPic = false;
   profile_projects = [];
   ngOnInit() {
+    this.getProjects();
+    this.getCountProject();
+  }
+  addProject(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/project/create']);
+  }
+  getProjects() {
     var args = [
       ['uid', localStorage.getItem('user_id')],
       ['uid1', localStorage.getItem('user_name')],
+      ['page', this.pages],
     ];
-    this.viewService.getView('profile_projects_grid', args).subscribe( res=> {
-      this.profile_projects = res;
-      // console.log(res);
+    this.viewService.getView('profile_projects_grid', args).subscribe(res => {
+      this.profile_projects = this.profile_projects.concat(res);
+       this.loadMoreVisibilty();
+
     }, err => {
 
     });
   }
-  addProject(event :Event){
-    event.preventDefault();
-    this.router.navigate(['/project/create']);
+  /* function to get count projects */
+  getCountProject() {
+    this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
+      this.countProject = data[0];
+    }, err => {
+
+    });
   }
+  /* end count function */
+  loadMoreProject() {
+    this.pages++;
+    this.getProjects();
+  }
+   // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    this.getCountProject();
+    if (this.countProject == this.profile_projects.length) {
+      this.hideloadmoreproject = true;
 
+    } else if (this.countProject > this.profile_projects.length) {
+      setTimeout(10000);
 
+      this.hideloadmoreproject = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 
 }
