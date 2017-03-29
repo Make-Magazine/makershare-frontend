@@ -51,7 +51,7 @@ export class UserCardComponent implements OnInit {
     this.getcard();
     //this.getBadges();
     this.buildForm();
-    //this.getProjectCountByUser();
+    this.getProjectCountByUser();
   }
 
   getcard() {
