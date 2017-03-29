@@ -205,6 +205,7 @@ export class InboxComponent implements OnInit {
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
+      var i = 0
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
@@ -229,16 +230,27 @@ export class InboxComponent implements OnInit {
            
           })
           msg_arr.push(this.messages[key]);
+          
+          this.dateObj = new Date(msg_arr[i].last_updated * 1000);
+          this.currentDate = new Date();
+          msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+          i++
         }
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
-      for (let message of this.msg) {
-        this.dateObj = new Date(message.last_updated * 1000);
-        this.currentDate = new Date();
-        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-      }
+    //  var i = 0
+    //   for (let message of this.msg) {
+    //     this.dateObj = new Date(message.last_updated * 1000);
+    //     this.currentDate = new Date();
+    //     this.msg[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+    //     i++;
+    //   }  
     })
+  }
+
+  getMessageTime(){
+    
   }
 
   CountMessages() {
