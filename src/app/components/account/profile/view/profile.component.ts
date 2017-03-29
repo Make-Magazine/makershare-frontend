@@ -44,12 +44,10 @@ export class ProfileComponent implements OnInit {
       "countHTML": false,
       "maxCharCount": '550',
       },
-
      };
 
 
  countdown = '';
-//  countdown2;
 
 
   customTitle: string = 'Maker Portfolio';
@@ -261,10 +259,6 @@ export class ProfileComponent implements OnInit {
 
 
  limitText(limitField, limitCount, limitNum) {
-
-  //  console.log('limit')
-  //     console.log (limitField)
-      // console.log ( limitCount)
       
 	if (limitField.length > limitNum) {
 		limitField = limitField.substring(0, limitNum);
@@ -283,8 +277,7 @@ export class ProfileComponent implements OnInit {
     //this.profile.profile_cover = this.CoverImageData.image;
     this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
     this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
-      //console.log(res);
-      this.profile.profile_cover = res.fid
+     this.profile.profile_cover = res.fid
     });
     this.saveProfile();
   }
@@ -297,8 +290,8 @@ export class ProfileComponent implements OnInit {
     }, err => {
     });
   }
-   
-  /* end function get Badges */
+   /* end function get Badges */
+
   limitString(model, key, length) {
     if (typeof model[key] != "undefined") {
       if (model[key].length > length) {
