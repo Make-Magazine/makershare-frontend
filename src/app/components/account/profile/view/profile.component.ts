@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
 
 
  countdown = '';
-
+countProject=0;
 
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
@@ -158,6 +158,7 @@ export class ProfileComponent implements OnInit {
 
     this.BuildForm();
     this.getBadges();
+    this.getCountProject();
   }// end of OnInit 
 
   BuildForm() {
@@ -291,6 +292,15 @@ export class ProfileComponent implements OnInit {
     });
   }
    /* end function get Badges */
+     /* function to get count projects */
+  getCountProject() {
+    this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
+      this.countProject = data[0];
+    }, err => {
+
+    });
+  }
+  /* end count function */
 
   limitString(model, key, length) {
     if (typeof model[key] != "undefined") {
