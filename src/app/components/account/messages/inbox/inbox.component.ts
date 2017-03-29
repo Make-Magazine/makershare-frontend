@@ -109,9 +109,17 @@ export class InboxComponent implements OnInit {
     //this.hideUser = false;
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
       this.SelectedUser.push(data);
-      //console.log(this.SelectedUser[0][0].username)
+      this.messageForm.reset();
     });
   }
+// deleteArray(uid) {
+//   let del_arr = [];
+//   for(let del_arr of this.SelectedUser){
+//     var index = del_arr.indexOf(uid, 0);
+//     del_arr.splice(index, 1);
+//   }
+
+// }
 
   onSubmit(e) {
     e.preventDefault();
@@ -133,7 +141,7 @@ export class InboxComponent implements OnInit {
 
   buildForm(): void {
     this.messageForm = this.fb.group({
-      'recipients': ['', Validators.required],
+      'recipients': [''],
       'subject': ['', Validators.required],
       'body': ['', Validators.required]
     });
@@ -272,12 +280,12 @@ export class InboxComponent implements OnInit {
         this.deletedArr.splice(index, 1);
       }
     }
-    //console.log(this.deletedArr);
   }
   deleteMessages() {
     for (var _i = 0; _i < this.deletedArr.length; _i++) {
-      var index = this.msg.indexOf(this.deletedArr[_i], 0);
-      delete this.msg[index]; 
+      this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+      var index = this.deletedArr.indexOf(_i, 0);
+        this.msg.splice(index, 1);
     }
   }
 
@@ -286,7 +294,6 @@ export class InboxComponent implements OnInit {
     if (ev.target.checked === true) {
       for (var _i = 0; _i < this.msg.length; _i++) {
         this.pm.deleteMessage(this.msg[_i].thread_id).subscribe()
-        //console.log(this.msg[_i].thread_id)
       }
     }
   }
