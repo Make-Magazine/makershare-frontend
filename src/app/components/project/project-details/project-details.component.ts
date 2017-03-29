@@ -20,7 +20,7 @@ export class ProjectDetailsComponent implements OnInit {
   currentuser;
   projectId;
   showcase = {};
-  // projectIndex: number = 0;
+  projectIndex: number = 0;
   projects = [];
   projectdata;
   id: number;
@@ -34,15 +34,15 @@ export class ProjectDetailsComponent implements OnInit {
     private flagService: FlagService
   ) {
 
-    // this.route.queryParams.subscribe(params => {
-    //   if (params && params["showcase"]) {
-    //     this.projectId = params["projectId"];
-    //     this.showcase = JSON.parse(params["showcase"]);
-    //     this.projectIndex = params["projectIndex"];
-    //     this.projects = JSON.parse(params["projects"]);
-    //   }
+    this.route.queryParams.subscribe(params => {
+      if (params && params["showcase"]) {
+        this.projectId = params["projectId"];
+        this.showcase = JSON.parse(params["showcase"]);
+        this.projectIndex = params["projectIndex"];
+        this.projects = JSON.parse(params["projects"]);
+      }
 
-    // });
+    });
   }
 
 
@@ -107,25 +107,25 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }// End ngOnInit
 
-  // getProject(event: Event, action: any) {
-  //   event.preventDefault();
-  //   if (action == "back") {
-  //     this.projectIndex--;
-  //   } else if (action == "next") {
-  //     this.projectIndex++;
-  //   }
-  //   let navigationExtras: NavigationExtras = {
-  //     queryParams: {
-  //       "projectId": this.projects[this.projectIndex].nid,
-  //       "showcase": JSON.stringify(this.showcase),
-  //       "projectIndex": this.projectIndex,
-  //       "projects": JSON.stringify(this.projects)
-  //     }
-  //   }
-  //   this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
-  //   this.ngOnInit();
+  getProject(event: Event, action: any) {
+    event.preventDefault();
+    if (action == "back") {
+      this.projectIndex--;
+    } else if (action == "next") {
+      this.projectIndex++;
+    }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "projectId": this.projects[this.projectIndex].nid,
+        "showcase": JSON.stringify(this.showcase),
+        "projectIndex": this.projectIndex,
+        "projects": JSON.stringify(this.projects)
+      }
+    }
+    this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
+    this.ngOnInit();
 
-  // }
+  }
   changeProjectTab(NewTab) {
     this.current_active_tab = NewTab;
   }

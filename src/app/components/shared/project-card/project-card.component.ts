@@ -12,9 +12,8 @@ export class ProjectCardComponent implements OnInit {
 
 
   @Input() nid;
-  @Input() view;
   // @Input() profilePage;
-  // @Input() navigationExtras:NavigationExtras;
+  @Input() navigationExtras:NavigationExtras;
   badges=[];
   project={};
   
@@ -54,9 +53,7 @@ export class ProjectCardComponent implements OnInit {
 
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]
-    // , this.navigationExtras
-    );
+    this.router.navigate(['/project/view', nid] , this.navigationExtras);
    // console.log(nid)
   }
 }

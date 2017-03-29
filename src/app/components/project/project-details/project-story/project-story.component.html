@@ -5,14 +5,14 @@
         <img src="{{project.field_cover_photo?.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo">
         <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo">
       </div>
-      <div class="project-stats">
+      <!--<div class="project-stats">
         <ul class="list-unstyled">
-          <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2[0]?.tid}}</li>
+          <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2[0]"></i>{{project?.field_visibility2[0]?.tid}}</li>
           <li *ngIf="project.flag_count"><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
           <li><i class="fa fa-lg fa-comment"></i>2</li>
-          <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks"></i>{{project.field_total_forks[0].value}}</li>
+          <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks[0]"></i>{{project?.field_total_forks[0]?.value}}</li>
         </ul>
-      </div>
+      </div>-->
       <hr>
       <div class="project-body">
         <p [innerHTML]="project.field_teaser?.value"></p>
