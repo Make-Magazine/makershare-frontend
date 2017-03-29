@@ -2907,6 +2907,13 @@ header.showcase-project .next {
       color: #EC1F30; }
   .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
     height: auto; }
+  .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: block;
+    top: 10px;
+    left: 10px; }
   .page-challenge-summary .challenge-card .challene-card-footer-3, .page-challenge-summary-closed .challenge-card .challene-card-footer-3, .page-enter-challenge .challenge-card .challene-card-footer-3 {
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -2973,11 +2980,9 @@ header.showcase-project .next {
 
 .page-enter-challenge {
   background-color: #F2F2F2; }
-  .page-enter-challenge p {
-    margin-top: 30px;
-    text-align: center; }
-    .page-enter-challenge p span {
-      text-align: center; }
+  .page-enter-challenge .region-content {
+    background-color: inherit;
+    margin-top: 20px; }
   .page-enter-challenge .create {
     width: 100%; }
   .page-enter-challenge .cancel, .page-enter-challenge .submit {
@@ -2988,12 +2993,21 @@ header.showcase-project .next {
   .page-enter-challenge .challenge-enter {
     margin: 0 auto;
     margin-bottom: 50px; }
+    .page-enter-challenge .challenge-enter .text-center {
+      margin-top: 20px; }
+  .page-enter-challenge .card-container .card-description p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical; }
 
 .page-challenge-summary .tabs-buttons .challenge-actions {
   display: none; }
 .page-challenge-summary .content-wrapper {
   padding: 10px;
   margin-top: 20px; }
+.page-challenge-summary .challenge-card-footer-2 {
+  margin-left: 0px !important; }
 
 .page-workshop-individual {
   background-color: #F2F2F2; }

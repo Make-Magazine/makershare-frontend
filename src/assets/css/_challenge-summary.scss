@@ -345,6 +345,14 @@
         img {
             height: auto;
         }
+				.sponsor_bar {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				display: block;
+				top: 10px;
+				left: 10px;
+			}
     }
 		.challene-card-footer-3 {
 			margin-top: 10px;
@@ -427,12 +435,10 @@
 }
 .page-enter-challenge {
 	background-color: $main-bg;
-	p {
-		margin-top: 30px;
-		text-align: center;
-		span {
-			text-align: center;
-		}
+	.region-content {
+		background-color: inherit;
+		margin-top: 20px;
+
 	}
 	.create {
 		width: 100%;
@@ -449,6 +455,19 @@
 	.challenge-enter {
 		margin: 0 auto;
 		margin-bottom: 50px;
+		.text-center {
+					margin-top: 20px;
+		}
+	}
+	.card-container {
+		.card-description {
+			p {
+			overflow: hidden;
+			display: -webkit-box;
+    	-webkit-line-clamp: 5;
+    	-webkit-box-orient: vertical;
+			}
+		}
 	}
 }
 
@@ -463,4 +482,7 @@
     margin-top: 20px;
 
 	}
+	 .challenge-card-footer-2 {
+		 margin-left: 0px !important;
+	 }  
 }

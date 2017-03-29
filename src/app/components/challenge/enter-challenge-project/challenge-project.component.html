@@ -4,6 +4,62 @@
       <div class="page-enter-challenge">
         <div class="top-content-wrapper">
           <div class="container">
+            <div class="col-md-12 challenge-cover" *ngIf="challangeData">
+              <div class="challenge-card row">
+                <div class="col-md-4 left-side">
+                  <div class="image-container">
+                    <img src="{{challangeData.cover_image}}" alt="" *ngIf="challangeData.cover_image" class="img-responsive">
+                    <img src="{{challangeData.sponsor_bar}}" alt="" *ngIf="challangeData.sponsor_bar" class="sponsor_bar img-responsive">
+                  </div>
+                </div>
+                <!-- End image-container -->
+                <div class="col-md-8">
+                  <div class="card-container">
+                    <div class="card">
+                      <div class="challenge-type-bagde">
+                        <p>Mission</p>
+                      </div>
+                      <div class="card-partership">
+                        <p *ngIf="challangeData.sponsored_by">Sponsored by {{challangeData.sponsored_by}}</p>
+                      </div>
+                      <h3 class="card-title" >{{challangeData.title}}</h3>
+                      <div class="card-description">
+                        <p [innerHTML]="challangeData.body"></p>
+                      </div>
+                      <div class="challene-card-footer d-flex">
+                        <div class="challenge-card-footer-2">
+                          <div class="challenge-card-count">
+                            <span class="entries-count">{{challangeData.entries_count}}
+                       <span *ngIf="challangeData.entries_count>1">Entries</span>
+                            <span *ngIf="challangeData.entries_count <= 1">Entry</span>
+                            </span>
+                            <span class="follow-count">{{challangeData.followers}}
+                            <span *ngIf="challangeData.followers>1">Followers</span>
+                            <span *ngIf="challangeData.followers==1">Follower</span>
+                            <span *ngIf="!challangeData.followers">0 Follower</span>
+                            </span>
+                          </div>
+                          <div class="challenge-card-status">
+                            <span class="closed-status" *ngIf="challangeData.diffDays>1">{{challangeData.diffDays}} DAYS</span>
+                            <span class="closed-status" *ngIf="challangeData.diffDays<=1">{{challangeData.diffDays}} DAY</span>
+                            <span class="closed-status" *ngIf="challangeData.status_id == 376">{{challangeData.challenge_status}}</span>
+                            <span class="open-status" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_status}}</span>
+                            <span class="challenge-end-date" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_end_date.value}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End card-container -->
+                </div>
+                <!-- End col-md-6 -->
+              </div>
+            </div>
+          </div>
+          <!-- End container -->
+        </div>
+        <!--<div class="top-content-wrapper">
+          <div class="container">
             <div class="col-md-12 challenge-cover">
               <img src="{{challangeData.cover_image}}" alt="">
               <div class="sponsor">
@@ -26,9 +82,7 @@
               <div class="clearfix"></div>
             </div>
           </div>
-          <!-- End container -->
-        </div>
-        <!-- End top-content-wrapper -->
+        </div>-->
         <div class="container">
           <div class="region region-content col-sm-12">
             <div class="content-wrapper row">
@@ -41,13 +95,20 @@
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
                   </div>
-                  <button class="btn btn-white btn-sharp static-btn cancel" (click)="onCancel()">Cancel</button>
-                  <a *ngIf="enterStatus==true" class="btn btn-main static-btn submit" (click)="onSubmit()">Submit</a>
-                  <button *ngIf="hiddenAfterSubmit" class="btn btn-main static-btn submit" (click)="onMyEntries()">My Entries</button>
+                  <div class="enter-form-buttons d-flex">
+                    <div class="button-container-sec-2 w-50">
+                      <span class="btn btn-main-2 w-100" (click)="onCancel()">Cancel</span>
+                    </div>
+                    <div class="button-container-main-1 w-50" *ngIf="enterStatus==true">
+                      <span class="btn btn-main w-100" *ngIf="enterStatus==true" (click)="onSubmit()">Submit</span>
+                    </div>
+                  </div>
                 </form>
                 <p class="text-center">OR</p>
                 <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
-                <button class="btn btn-main btn-sharp create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
+                <div class="button-container-main-1 w-100">
+                  <span class="btn btn-main w-100 create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</span>
+                </div>
               </div>
             </div>
             <!-- End content-wrapper -->
