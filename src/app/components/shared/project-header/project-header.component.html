@@ -1,11 +1,11 @@
 <div *ngIf="project">
-  <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
+  <ul  class="d-flex align-content-start flex-wrap actions-button pull-right">
     <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
     <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
     <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
     <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
     <!--<li class="project-share"><a href="#" class="btn btn-soft-grey btn-fit">Share &nbsp;<i class="fa fa-lg fa-share-alt"></i></a></li>-->
-    <app-shared-buttons *ngIf="project.title" [PageTitle]="project.title.value" [PageDescription]="project.field_teaser.value" [PageImage]="project.field_cover_photo.url" ></app-shared-buttons>
+    <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage" ></app-shared-buttons>
     <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
   </ul>
   <ul class="list-unstyled project-tags pull-left">
@@ -17,7 +17,11 @@
     <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
   </ul>
   <div class="clearfix"></div>
-  <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
+  <!-- 
+  
+   -->
+  <h2 class="project-title" *ngIf="project.title" innerHTML="{{project.title.value}}"></h2>
+   
   <div *ngIf="projectdata">
     <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p>
   </div>

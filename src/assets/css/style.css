@@ -301,6 +301,7 @@ a:not([href]):not([tabindex]) {
   font-size: 13px; }
 
 .project {
+  position: relative;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 4px;
@@ -2161,6 +2162,12 @@ header.showcase-project .next {
 .page-showcase {
   background-color: #F2F2F2;
   /*  Showcases coolection page  */ }
+  .page-showcase .showcase-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10000; }
   .page-showcase .showcase-header {
     margin-bottom: 10px; }
     .page-showcase .showcase-header .row {

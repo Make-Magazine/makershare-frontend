@@ -7,7 +7,6 @@
       <app-comment [nid]="project.nid"></app-comment>
     </div>
   </div>
-
   <aside class="side-bar col-lg-4 col-md-4">
     <div class="timestamp" *ngIf="project.created && project.changed">Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
     <div class="sidebar-container">
@@ -18,7 +17,7 @@
         <div class="block-style avg-time" *ngIf="project.field_difficulty">
           <p>Difficulty : {{project.field_difficulty}}</p>
         </div>
-        <ul class="list-group resources" *ngIf="resource">
+        <ul *ngIf="project.field_resources" class="list-group resources">
           <h3>Resources</h3>
           <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
             <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>
