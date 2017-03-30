@@ -1,0 +1,156 @@
+<li class="col-sm-2 col-2">
+  <a (click)="open(content)" class="btn btn-soft-orange btn-fit">Give Beta Feedback</a>
+</li>
+
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <h3 style="color: black"></h3>
+  </div>
+  <div class="modal-body">
+    <h3 class="text-center">Feedback Form</h3>
+<form [formGroup]="feedbackForm">
+    <div class="form-group">
+    <label >I want to submit:	</label>
+     <select class="form-control"  formControlName='field_want_submit' id="exampleSelect1">
+        <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" (click)=checkFeedbackType(i)>{{feedback_type.name}}</option>
+      </select>
+    </div>
+  <fieldset class="form-group">
+    <label>The bug is on the page I’m looking at right now. Yes/No?	</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" formControlName='field_bug_in_page'[value]="1" id="optionsRadios1"  checked>
+        Yes: Pre-fill with the URL of the selected page      
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" formControlName='field_bug_in_page'[value]="0" id="optionsRadios2" >
+      No: What is the URL where you see the bug. You can also describe how you got to the bug in the text field below.      </label>
+    </div>
+  </fieldset>
+  <div>
+  <label for="example-text-input" class="form-label">if bug not in page:</label>
+      <div>
+        <input class="form-control" type="text" placeholder="enter url"  formControlName="field_bug_not_in_page_">
+      </div>
+  </div>
+  <div>
+  <label for="example-text-input" class="form-label">I’m using this browser:</label>
+      <div>
+        <input class="form-control" type="text" placeholder="enter browser name" formControlName="field_browser">
+      </div>
+  </div>
+  <div>
+  <label for="example-text-input" class="form-label">I’m using this OS:</label>
+      <div>
+        <input class="form-control" type="text" placeholder="enter os name"  formControlName="field_os">
+      </div>
+  </div>
+  <div>
+  <label for="example-text-input" class="form-label">I’m using this size screen</label>
+      <div>
+        <input class="form-control" type="text" placeholder="enter screen size" formControlName="field_screen_size">
+      </div>
+  </div>
+  <div class="form-group">
+    <label >I want to submit:	</label>
+     <select class="form-control"  formControlName='field_my_bug' id="exampleSelect1">
+        <option *ngFor="let bug_type of bug_types; let i=index" value="{{bug_type.tid}}" >{{bug_type.name}}</option>
+      </select>
+    </div>
+  <div class="form-group">
+    <label for="exampleTextarea">Describe the behavior in a way in as much detail as you can so that engineering can fix it quickly!	</label>
+    <textarea class="form-control" id="exampleTextarea" rows="5" formControlName='body'></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">Upload screenshots of what you see especially broken images or error messages	</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" formControlName='field_upload_screenshots' >
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </div>
+   <div class="form-group">
+    <label >I would like a</label>
+     <select class="form-control"  formControlName='field_would_like' id="exampleSelect1">
+        <option *ngFor="let feature of features; let i=index" value="{{feature.tid}}" >{{feature.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Describe the feature and why you think it’s important:	</label>
+      <textarea class="form-control" id="exampleTextarea" rows="5" formControlName='field_describe_feature'></textarea>
+    </div>
+       <div class="form-group">
+      <label for="exampleTextarea">Here’s how your site could be better:	</label>
+      <textarea class="form-control" id="exampleTextarea" rows="5" formControlName='field_better_site'></textarea>
+    </div>
+    <div>
+    <label for="example-text-input" class="form-label">How likely am to recommend your site to other Makers?</label>
+      <div>
+        <input class="form-control" type="number" min="1" max="10" formControlName="field_recommend_site">
+      </div>
+      <small id="textHelp" class="form-text text-muted">1-10 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!--<form class="new-feedback d-flex" [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event)" id="postFeedback">
+   <div *ngIf="feedback_types" class="form-group row">
+      <label for="" class=" col-4 form-label">I want to submit:	</label>
+      <br>
+      <select class="form-control col-8" title="Select one"  formControlName='field_want_submit' >
+        <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Gender</label>
+        <div >
+            <label>
+            <input type="radio" formControlName='field_bug_in_page'[value]="1">
+            Yes
+            </label>
+        </div>
+        <div >
+          <label>
+          <input type="radio"  formControlName='field_bug_in_page'[value]="0">
+          NO
+          </label>
+        </div>
+    </div>
+    <div>
+      <input type="text" formControlName="field_bug_not_in_page_">
+    </div>
+    <div *ngIf="bug_types" class="form-group row ">
+      <label for="" class=" form-label">I want to submit:	</label>
+      <br>
+      <select class="form-control" title="Select one"  formControlName='field_my_bug' >
+        <option *ngFor="let bug_type of bug_types; let i=index" value="{{bug_type.tid}}" >{{bug_type.name}}</option>
+      </select>
+    </div>
+    <div *ngIf="features" class="form-group row">
+      <label for="" class=" form-label">I want to submit:	</label>
+      <br>
+      <select class="form-control" title="Select one"  formControlName='field_would_like' >
+        <option *ngFor="let feature of features; let i=index" value="{{feature.tid}}" >{{feature.name}}</option>
+      </select>
+    </div>
+    <!--<div class="form-group ">
+      <label for="aha">AHA Moment (optional)</label>
+      <input maxlength="350" type="text" class="form-control" id="aha" placeholder="Enter your text" formControlName='field_aha_moment'>
+         {{YourStoryForm.value.field_aha_moment.length}}\350
+      <div *ngIf="formErrors.field_aha_moment" class="alert alert-danger error-msg">
+      {{ formErrors.field_aha_moment }}
+    </div>
+    </div>-->
+    <!--<div class="form-group d-flex flex-row">
+       <input type="radio" [(ngModel)]="model.bug_in_page"  name="bug_in_page" value="1">Yes<br>
+       <input type="radio" [(ngModel)]="model.bug_in_page"  name="bug_in_page" value="0">No
+    </div>-->
+
+<!--</form>-->
+  </div>
+  <div class="modal-footer"> 
+    <ul class="list-unstyled actions">
+    <li><a style="color: black" (click)="c('Close click')">Cancel</a></li>
+  </ul>
+  </div>
+  
+</template>
