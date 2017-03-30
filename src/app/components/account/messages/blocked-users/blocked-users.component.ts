@@ -16,15 +16,13 @@ export class BlockedUsersComponent implements OnInit {
   ngOnInit() {
     this.getBlockedUsers();
   }
-  getBlockedUsers(){
-    this.pm.getAllBlocked().subscribe(data=>{
+  getBlockedUsers() {
+    this.pm.getAllBlocked().subscribe(data => {
       this.blocked = data;
     })
   }
-  unBlockUsers(uid) {
+  unBlockUsers(uid, i) {
     this.pm.unBlockUser(uid).subscribe();
-
-      var index = this.blocked.indexOf(uid, 0);
-     this.blocked.splice(index,1)
-    }
+    this.blocked.splice(i, 1);
+  }
 }
