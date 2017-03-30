@@ -15,7 +15,7 @@ export class ShowcasesCollectionComponent implements OnInit {
   sortData:ISorting;
   sort_order:string;
   sort_by:string;
-  limit=3;
+  limit=4;
 
   @Input() sortType:ISorting;
 

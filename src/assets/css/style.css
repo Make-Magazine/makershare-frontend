@@ -886,6 +886,8 @@ footer {
   .filters .btn {
     font-size: 18px;
     color: #222; }
+  .filters .dropdown-toggle {
+    cursor: pointer; }
   .filters .sorting-filter, .filters .projects-filter {
     border-left: 2px solid #222; }
     .filters .sorting-filter button::after, .filters .projects-filter button::after {
@@ -1090,6 +1092,8 @@ footer {
         border-radius: 3px; }
         .page-project .top-content-wrapper ul.project-tags .btn:hover {
           background-color: #222; }
+      .page-project .top-content-wrapper ul.project-tags .btn:hover {
+        cursor: default; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
