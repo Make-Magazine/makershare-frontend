@@ -901,7 +901,8 @@ footer {
     .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
       background-color: whitesmoke;
       color: #BEBEBE;
-      border-radius: 0; }
+      border-radius: 0;
+      z-index: 10; }
 
 .page-challenge {
   background-color: #F2F2F2;
@@ -2253,10 +2254,10 @@ header.showcase-project .next {
       position: relative;
       padding: 0;
       width: 450px;
-      height: 290px; }
+      height: auto; }
       .showcase-card-backlayer .showcase-card .image-container img {
         width: 100%;
-        height: 100%; }
+        height: auto; }
     .showcase-card-backlayer .showcase-card .card-container {
       color: #fff;
       position: relative; }
@@ -2365,7 +2366,7 @@ header.showcase-project .next {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10000; }
+  z-index: 5; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -2385,6 +2386,39 @@ header.showcase-project .next {
   overflow: inherit !important;
   height: auto !important;
   min-height: 70px; }
+
+img {
+  max-width: 100%; }
+
+/* front page */
+.front .challenge-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #333; }
+  .front .challenge-card span {
+    color: white; }
+  .front .challenge-card a {
+    color: white; }
+  .front .challenge-card p, .front .challenge-card h3 {
+    color: white; }
+.front .showcase .col-lg-4 {
+  margin-bottom: 10px; }
+  .front .showcase .col-lg-4 .showcase-item .image-container {
+    width: 340px;
+    height: 265px; }
+    .front .showcase .col-lg-4 .showcase-item .image-container img {
+      width: 100%;
+      height: 100%; }
+  .front .showcase .col-lg-4 .showcase-item .content .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 88px;
+    color: #444;
+    line-height: 140%; }
 
 .page-create-profile {
   background-color: #F2F2F2;
@@ -3786,6 +3820,7 @@ header.showcase-project .next {
   border: 0;
   background: transparent; }
 
+<<<<<<< HEAD
 .spinning-preloader-container {
   position: fixed;
   top: 0;
@@ -3991,577 +4026,52 @@ header.showcase-project .next {
     margin: 0 auto;
     display: block;
     float: none !important; } }
+=======
+>>>>>>> 944cfd372172d0f10968ca89852a57744fa55e32
 @media only screen and (max-width: 414px) {
-  .profile-stats .switch {
-    display: none !important; }
-
-  .profile-name {
-    height: 70px; }
-    .profile-name h4 {
-      font-size: 16px;
-      margin-top: 0px; }
-    .profile-name span {
-      margin-top: 10px !important; }
-
-  .profile-stats ul li {
-    width: 49%;
-    margin: 5px 0px !important; }
-    .profile-stats ul li .number {
-      font-size: 27px; }
-
-  .profile-cover .user-group {
-    left: 10px !important;
-    right: auto !important; }
-
-  .content-container .container-fluid {
-    padding-left: 4px;
-    padding-right: 4px;
-    position: static;
-    overflow: hidden; }
-    .content-container .container-fluid .container {
-      padding: 0px; }
-      .content-container .container-fluid .container .profile-content {
-        overflow: hidden; }
-        .content-container .container-fluid .container .profile-content a.btn {
-          font-size: 15px; }
-        .content-container .container-fluid .container .profile-content .projects-grid {
-          padding: 0px 16px 0px 16px; }
-    .content-container .container-fluid .profile-stats {
-      width: 100%;
-      padding: 8px;
-      margin: 0px; }
-
-  .empty-edit-content .profile-content .empty-content .form-control {
-    width: 90%;
-    margin: 0 auto; }
-  .empty-edit-content .profile-content .empty-content .col-md-8 {
-    padding: 0px 30px 0px 30px; }
-
-  header.create-nav a.save-next,
-  header.create-nav a.skip {
-    display: none; }
-
-  .search-results .result-item .single-result .single-data {
-    max-width: 79% !important; }
-
-  .profile-container .profile-card .left {
-    float: left; }
-  .profile-container .profile-card .right {
-    float: left;
-    width: 59%; }
-
-  .page-showcase .filters p {
-    width: 50%;
-    padding-left: 0px; }
-  .page-showcase .filters .sorting-filter {
-    width: 50%; }
-
-  .page-learn .load-more .btn {
-    width: 150px !important;
-    font-size: 16px; }
-
-  .page-workshop-individual .media-left {
-    display: block;
-    vertical-align: baseline; }
-  .page-workshop-individual .media-body {
-    clear: both;
-    width: 100%;
-    float: none; }
-
-  .suggested li .media-left {
-    width: 30% !important; }
-
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status {
-    left: 3px !important; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title {
-    left: 3px; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor h4, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor h4, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor h4 {
-    font-size: 14px; }
-
-  .page-create-project-why .team .profile-container .profile-card .user-city {
-    position: static;
-    margin: 0px; }
-  .page-create-project-why .team .profile-container .profile-card .count {
-    margin: 0px; }
-  .page-create-project-why .team .remove {
-    position: static; }
-  .page-create-project-why .form-group {
-    margin-top: 18px; }
-  .page-create-project-why .your-story .cover a {
-    padding: 2px; }
-  .page-create-project-why .how-to form {
-    padding-bottom: 10px; }
-
-  .page-create-project-why .nav-create ul li .btn-grey-inverse {
-    padding: 7px 16px !important; }
-  .page-create-project-why .team .profile-container .profile-card .left {
-    width: 80px !important;
-    padding: 0px 4px 0px 2px !important; }
-
-  .page-portfolio .nav-portfolio ul li .btn-grey-inverse {
-    padding: 5px 7px;
-    margin: 1px; }
-
-  .profile-container .profile-card .right .profile-tag {
-    margin-bottom: 0px; }
-
-  .page-learn .workshop-card .image-container {
-    height: auto; }
-
-  .profile-sidebar .profile-container {
-    margin-top: 0px !important; }
-
-  .profile-empty-edit .profile-stats ul li {
-    margin-top: 0px !important; }
-    .profile-empty-edit .profile-stats ul li i {
-      margin-top: 4px !important; }
-    .profile-empty-edit .profile-stats ul li .message {
-      margin-top: 2px !important; }
-    .profile-empty-edit .profile-stats ul li .number {
-      margin-top: 0px !important;
-      line-height: 22px; }
-    .profile-empty-edit .profile-stats ul li p {
-      float: left;
-      margin-top: 6px !important; }
-
-  .page-create-profile .basic-info #userName, .page-create-profile .optional-info #userName, .page-create-profile .basic-info #describe, .page-create-profile .optional-info #describe, .page-create-profile .basic-info #birthday, .page-create-profile .optional-info #birthday, .page-create-profile .basic-info #email, .page-create-profile .optional-info #email {
-    width: 100%;
-    font-size: 15px; }
-  .page-create-profile .basic-info #country, .page-create-profile .optional-info #country {
-    width: 100%;
-    margin-top: 10px; }
-  .page-create-profile .basic-info #state, .page-create-profile .optional-info #state {
-    width: 100%;
-    margin-top: 10px; }
-  .page-create-profile .optional-info .social-links label {
-    width: 100%; }
-  .page-create-profile .optional-info .social-links input[type="text"] {
-    width: 85%; }
-  .page-create-profile .optional-info .social-links input[type="checkbox"] {
-    margin: 0;
-    width: 12%; } }
-@media only screen and (max-width: 430px) {
-  .profile-name span {
-    margin-left: 10px !important; } }
-@media only screen and (max-width: 525px) {
-  .profile-name .bookmark li a {
-    font-size: 14px; }
-    .profile-name .bookmark li a i {
-      margin-left: 0px;
-      font-size: 24px;
-      width: 28px; }
-  .profile-name .container {
-    padding-left: 0px;
-    padding-right: 0px; }
-
-  .page-project .feedback-group form .feedback .feedback-image {
-    width: 20%; }
-    .page-project .feedback-group form .feedback .feedback-image img {
-      margin-left: 10px; }
-  .page-project .feedback-group form .feedback .feedback-area {
-    width: 80%; }
-    .page-project .feedback-group form .feedback .feedback-area textarea {
-      margin-left: 0px;
-      width: 97%; }
-
-  .page-project .project-collaborates .collaborate .profile-container .profile-card .right {
-    padding: 6px 4px 0px 4px; }
-
-  .search-results .result-item .single-result .single-data {
-    max-width: 85%;
-    width: auto;
-    margin-left: 0%;
-    padding: 0px 6px 0px 6px; }
-    .search-results .result-item .single-result .single-data .name {
-      overflow: hidden; }
-      .search-results .result-item .single-result .single-data .name p {
-        float: left !important; }
-    .search-results .result-item .single-result .single-data .awards {
-      overflow: hidden; }
-      .search-results .result-item .single-result .single-data .awards li {
-        float: left !important; }
-    .search-results .result-item .single-result .single-data .project-stats {
-      float: left; }
-
-  .page-showcase .load-more {
-    width: 100%; }
-    .page-showcase .load-more .btn {
-      display: block;
-      width: 124px;
-      margin: 0 auto;
-      left: 0px;
-      right: 0px;
-      font-size: 17px; }
-
-  .maker-spotlight .spotlight {
-    padding: 0px 10px 10px 10px !important; }
-  .maker-spotlight .profile-container {
-    width: 100% !important;
-    margin-right: 0px !important; }
-    .maker-spotlight .profile-container .profile-card .right {
-      padding: 4px !important; }
-
-  .page-challenge-summary .region-content .tabs-buttons .challenge-submenu {
-    width: 100% !important; }
-
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status {
-    width: 60%; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status p, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status p, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-status p {
-      font-size: 15px; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title {
-    width: 60%;
-    bottom: 13px; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-title h1 {
-      font-size: 15px !important;
-      padding: 5px 15px !important; } }
-@media only screen and (max-width: 623px) {
-  .profile-page .row .col-md-9 {
-    padding: 0px; }
-
-  .page-workshop-individual .suggested li {
-    width: 100%; }
-    .page-workshop-individual .suggested li .media-left {
-      width: 20%; }
-
-  .page-challenge-summary .region-content .tabs-buttons .challenge-submenu, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu {
-    width: 65%; }
-  .page-challenge-summary .region-content .tabs-buttons .challenge-follow, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow, .page-enter-challenge .region-content .tabs-buttons .challenge-follow {
-    width: 35%; }
-
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-countdown {
-    top: 34px;
-    right: 26px;
-    left: inherit !important;
-    font-size: 10px; }
-
-  .profile-name .bookmark li a {
-    font-size: 14px; }
-    .profile-name .bookmark li a i {
-      margin-left: 0px;
-      font-size: 24px; }
-  .profile-name .container {
-    padding-left: 0px;
-    padding-right: 0px; } }
-@media only screen and (max-width: 767px) {
-  .page-search-result .load-more {
-    display: block;
-    width: 100px;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 30px; }
-
-  header.showcase-project .previous {
-    display: table;
-    float: left;
-    width: 50%; }
-    header.showcase-project .previous a {
-      width: 100px;
-      font-size: 15px; }
-  header.showcase-project .title {
-    display: table-footer-group;
-    clear: both;
-    width: 100%;
-    float: left; }
-  header.showcase-project .next {
-    text-align: center;
-    display: inline-block;
-    width: 50%; }
-    header.showcase-project .next a {
-      width: 100px;
-      font-size: 15px; }
-
-  .cover-region .profile-name {
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    padding: 0px;
-    margin-top: 0px; }
-  .cover-region .profile-page {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    background: -webkit-linear-gradient(transparent, black);
-    background: -o-linear-gradient(transparent, black);
-    background: linear-gradient(transparent, black); }
-    .cover-region .profile-page .profile-stats ul li {
-      color: white; }
-
-  .profile-cover .user-group {
-    display: block;
-    position: absolute;
-    top: 62px;
-    right: 0px;
-    left: 0px; }
-
-  .cover-region .profile-name h4 {
-    padding-top: 9px; }
-  .cover-region .profile-name span {
-    margin-top: 19px;
-    margin-left: 15px; }
-
-  .maker-spotlight .spotlight .profile-container {
-    width: 380px; }
-
-  .profile-stats ul {
-    padding-right: 15px; }
-
-  .left-section {
-    margin-top: 10px; }
-
-  footer {
-    text-align: center; }
-    footer .copy {
-      order: 4; }
-    footer .newsletter {
-      order: 2; }
-    footer .sitemap-1 {
-      order: 3;
-      margin-bottom: 10px; }
-    footer .sitemap-2 {
-      order: 5; }
-    footer .sitemap-1, footer .sitemap-2 {
-      padding-top: 10px; }
-      footer .sitemap-1 .nav, footer .sitemap-2 .nav {
-        flex-direction: row !important;
-        justify-content: center; }
-        footer .sitemap-1 .nav a, footer .sitemap-2 .nav a {
-          float: left;
-          padding: 0 5px; }
-          footer .sitemap-1 .nav a:not(:last-of-type), footer .sitemap-2 .nav a:not(:last-of-type) {
-            border-right: 2px solid #222; }
-    footer .socials {
-      order: 1;
-      margin-bottom: 5px; }
-      footer .socials .nav {
-        -webkit-box-pack: center !important;
-        -webkit-justify-content: center !important;
-        -ms-flex-pack: center !important;
-        justify-content: center !important; }
-    footer br {
-      display: none; }
-    footer .modal {
-      top: 30px; }
-
-  .profile-empty-edit .profile-name .row {
-    padding: 0px; }
-  .profile-empty-edit .profile-cover a.edit {
-    top: inherit;
-    bottom: 9px; } }
-@media only screen and (max-width: 768px) {
-  .front .banner .carousel {
-    height: 250px; }
-    .front .banner .carousel .carousel-item {
-      height: 250px; }
-
-  .main-header .explore {
-    display: none; }
-
-  .maker-spotlight .spotlight .profile-container {
-    width: 380px; }
-
-  .page-explore .explore-header h3 {
-    padding-bottom: 5px; }
-
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status {
-    left: 15px; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1 {
-    font-size: 20px; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-countdown, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-countdown {
-    left: 65%; }
-  .page-challenge-summary .region-content .tabs-buttons .challenge-follow li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow li .btn {
-    padding: 8px 0; }
-
-  .page-create-project-why .guideline {
-    display: none; }
-  .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
-    max-width: 100%; }
-  .page-create-project-why .nav-create ul {
-    padding-left: 15px; }
-    .page-create-project-why .nav-create ul li {
-      float: left; }
-      .page-create-project-why .nav-create ul li .btn-grey-inverse {
-        padding: 7px 25px; }
-      .page-create-project-why .nav-create ul li:not(:first-child) {
-        margin-left: 5px; }
-  .page-create-project-why .add-controls .contorls {
-    margin-top: 10px;
-    float: left !important; }
-    .page-create-project-why .add-controls .contorls li .btn-transparent {
-      padding: 5px 5px; }
-    .page-create-project-why .add-controls .contorls li .btn {
-      padding: 5px 5px; }
-
-  .page-create-profile .optional-info,
-  .page-create-profile .basic-info,
-  .page-create-profile .optional-info,
-  .page-create-profile .optional-info,
-  .page-create-profile .basic-info,
-  .page-create-profile .optional-info {
-    width: 90%; }
-
-  .page-create-profile .top-content-wrapper p {
-    width: 95%; }
-
-  .page-project .top-content-wrapper .project-actions li.project-report {
-    clear: both;
-    width: 100%;
-    float: right;
-    text-align: right; }
-  .page-project .top-content-wrapper .project-actions li.project-share,
-  .page-project .top-content-wrapper .project-actions li.project-bookmakr,
-  .page-project .top-content-wrapper .project-actions li.project-like,
-  .page-project .top-content-wrapper .project-actions li.project-fork {
-    float: right; }
-  .page-project .top-content-wrapper .project-actions li .btn {
-    border-right-width: 1px; }
-  .page-project .top-content-wrapper .project-tags {
-    clear: both; }
-
-  .page-workshop-individual .profile-container {
-    clear: both;
-    margin-top: 80px; }
-
-  .maker-spotlight .spotlight:nth-child(2n) {
-    border-left-width: thin; }
-
-  .cover-region .profile-name h4 {
-    display: block;
-    float: left;
-    width: auto; }
-  .cover-region .profile-name span {
-    display: block;
-    float: left;
-    margin-top: 18px;
-    margin-left: 14px; }
-
-  .profile-sidebar {
-    position: static; }
-    .profile-sidebar .profile-container .profile-info .interests li {
-      max-width: none; }
-
-  .bookmark li #profile-msg {
+  .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
+    .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 {
+      width: 100%; }
+      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 div {
+        width: 100%; }
+      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 span {
+        width: 100%; }
+    .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 {
+      margin-left: 0px;
+      width: 100%; }
+      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 div {
+        width: 100%; }
+      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 span {
+        width: 100%; } }
+@media only screen and (max-width: 575px) {
+  /* project card */
+  .project.card {
+    width: 100%; }
+    .project.card .image-top {
+      position: inherit;
+      top: 0;
+      left: 0; }
+    .project.card .card-block {
+      padding: 8px;
+      margin-top: 0px;
+      min-height: 175px; }
+      .project.card .card-block .card-type {
+        display: none; }
 
-  header #MainNav {
-    position: absolute;
-    top: 54px;
-    right: 0;
-    /* width: 220px; */
-    /* padding-left: 25px; */
-    background: #F2F2F2;
-    padding: 0 20px; }
-    header #MainNav .maker-menu-sm a:not(:first-of-type) {
-      padding-left: 10px;
-      color: #858585; }
+  /* showcase card */
+  .page-showcase .showcases-container {
+    padding: 20px 15px; }
 
-  header nav.navbar {
-    padding-left: 0; }
-  header nav #makerMenu {
-    background: white;
-    padding: 0 15px;
-    position: absolute; }
-  header nav .log-block {
-    margin-left: auto !important; }
-
-  .main-header .logged-in li.button-container-main-1 {
-    display: none; }
-
-  .challenge-header p {
-    width: 100%; } }
-@media only screen and (min-width: 769px) and (max-width: 991px) {
-  .maker-spotlight .spotlight:nth-child(2n) {
-    border-left-width: 1px; }
-
-  .maker-spotlight .spotlight .profile-container {
-    width: 380px; }
-
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-status, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-status {
-    left: 15px; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-title h1, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-title h1 {
-    font-size: 20px; }
-  .page-challenge-summary .region-content .tabs-buttons .challenge-follow li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow li .btn {
-    padding: 8px 0; }
-
-  .page-create-project-why .guideline .question-mark i {
-    font-size: 40px; }
-  .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
-    max-width: 100%; }
-  .page-create-project-why .add-controls .contorls {
-    margin-top: 10px;
-    float: left !important; } }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .front .banner .carousel {
-    height: 400px; }
-    .front .banner .carousel .carousel-item {
-      height: 400px; }
-    .front .banner .carousel .card-container {
-      bottom: 60px; }
-  .front .banner .carousel-caption h2 {
-    font-size: 28px; }
-  .front .banner .carousel-caption h4 {
-    font-size: 22px; }
-  .front .banner .carousel-caption p {
-    font-size: 20px; }
-
-  .page-workshop-individual .workshop-instructor .profile-container .left {
-    float: none;
-    width: 120px;
-    display: block;
-    margin: 0 auto; }
-  .page-workshop-individual .workshop-instructor .profile-container .right {
-    width: 100%;
-    margin-top: 6px; }
-
-  .profile-stats .switch {
-    display: inline-block;
-    top: 104px;
-    right: 17px;
-    padding: 3px;
-    min-width: 110px;
-    text-align: center; }
-    .profile-stats .switch p {
-      margin: 0px; }
-
-  .challenge-card .single-challenge .card-partership {
-    color: #EC1F30; }
-  .challenge-card .image-container {
-    width: 550px; }
-
-  .project-collaborates .card-block .media {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-    -webkit-flex-direction: column !important;
-    -ms-flex-direction: column !important;
-    flex-direction: column !important; } }
-@media only screen and (max-width: 991px) {
-  .profile-page .row .col-md-9 {
-    clear: both; }
-
-  .empty-edit .profile-name .bookmark {
-    padding-top: 7px; }
-
-  .profile-sidebar .profile-container {
-    padding-top: 14px; }
-
-  .empty-edit-content .profile-page {
-    padding-bottom: 40px; }
-
-  .switch-cover {
-    display: block; }
-
-  .profile-stats ul li {
-    text-align: center; }
-    .profile-stats ul li .number {
+  .showcase-card-backlayer .showcase-card .image-container {
+    width: auto; }
+    .showcase-card-backlayer .showcase-card .image-container img {
       width: 100%;
-      display: block; }
-
-  .navbar-toggleable-md .navbar-nav .dropdown-menu {
-    position: absolute; } }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .page-workshop-individual .workshop-instructor .profile-container .right {
-    width: 150px; } }
-@media only screen and (min-width: 1200px) {
-  .page-search-result .search-filters li {
-    display: block; } }
+      width: auto; } }
+@media only screen and (max-width: 767px) {
+  .showcase-card-backlayer .showcase-card .content-container {
+    padding-top: 12px; }
+    .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
+      display: none; } }
 
 /*# sourceMappingURL=style.css.map */

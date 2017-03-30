@@ -11,7 +11,7 @@
               <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 content-container">
             <div class="card-container">
               <div class="card">
                 <div class="showcase-type-badge">
@@ -63,6 +63,7 @@
       <div class="container">
         <div class="projects-grid row">
           <div class="project col-md-4" *ngFor="let project of projects; let i = index;">
+            <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>
             <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
           </div>
         </div>
