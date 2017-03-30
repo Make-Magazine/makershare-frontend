@@ -1,0 +1,16 @@
+   <div class="learning col-xs-12">
+     <div class="learning-item d-flex justify-content-around">
+                  <div class="image-top">
+                    <img class="card-img-top" src="{{learn.cover_photo}}">
+                  </div>
+                  <div class="content-bottom col d-flex">
+                    <div class="content-side d-flex flex-column align-self-stretch">
+                      <h4 class="card-title" [innerHTML]="learn.workshop_title"></h4>
+                      <div class="card-description" [innerHTML]="learn.brief_description"></div>
+                      <ul class="list-unstyled d-flex flex-wrap mt-auto workshop-tags">
+                        <li><a *ngFor="let category of learn.categories" class="btn btn-soft-tag">{{category}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </div>
