@@ -27,6 +27,8 @@ import { DndModule } from 'ng2-dnd';
 import { Auth } from './auth0/auth.service';
 import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
+import {NgSpinningPreloader} from 'ng2-spinning-preloader';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { SearchBoxComponent } from './components/general/header/search-box/searc
     PmService,
     Auth,
     NotificationBarService,
+    NgSpinningPreloader
   ],
   bootstrap: [AppComponent]
 })
