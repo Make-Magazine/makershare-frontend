@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-<<<<<<< HEAD
-import { NavigationExtras, Router, ActivatedRoute, Params } from '@angular/router';
-=======
 import { Router, ActivatedRoute, Params } from '@angular/router';
->>>>>>> a0bcd5d70fcd34dc3e6293b7e069d3676db694e1
 import { ViewService } from '../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
