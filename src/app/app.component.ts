@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {NgSpinningPreloader} from 'ng2-spinning-preloader';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,9 @@ import {NgSpinningPreloader} from 'ng2-spinning-preloader';
   styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app works!'; 
-  constructor(private ngSpinningPreloader: NgSpinningPreloader) {}
-  ngOnInit() {
-    this.ngSpinningPreloader.stop();
-  }  
+  constructor() {}
+
 }
    
