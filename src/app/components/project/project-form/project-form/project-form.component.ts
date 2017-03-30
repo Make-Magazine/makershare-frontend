@@ -5,16 +5,16 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { MainService } from '../../../../d7services/main/main.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service';
-import { ProjectForm, ProjectView } from '../../../../models/project/project-form/project';
-import { FileEntity } from '../../../../models/Drupal/file_entity';
-import { field_file_reference } from '../../../../models/Drupal/field_file_reference';
+import { ProjectForm, ProjectView } from '../../../../models';
+import { FileEntity } from '../../../../models';
+import { field_file_reference } from '../../../../models';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
-import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
-import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
-import { UserInvitations } from '../../../../models/project/project-form/UserInvitations';
+import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models';
+import { NodeHelper } from '../../../../models';
+import { UserInvitations } from '../../../../models';
 
 @Component({
   selector: 'app-project-form',

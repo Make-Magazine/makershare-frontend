@@ -17,7 +17,11 @@
     <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
   </ul>
   <div class="clearfix"></div>
-  <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
+  <!-- 
+  
+   -->
+  <h2 class="project-title" *ngIf="project.title" innerHTML="{{project.title.value}}"></h2>
+   
   <div *ngIf="projectdata">
     <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p>
   </div>

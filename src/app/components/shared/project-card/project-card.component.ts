@@ -1,19 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
   providers: [NgbTooltipConfig],
 })
 export class ProjectCardComponent implements OnInit {
-
-
   @Input() nid;
-  // @Input() profilePage;
-  @Input() navigationExtras:NavigationExtras;
+  @Input() view;
   badges=[];
   project={};
   
@@ -25,7 +21,6 @@ export class ProjectCardComponent implements OnInit {
     config.placement = 'right';
     config.triggers = 'hover';
  }
-  myid;
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
@@ -34,7 +29,6 @@ export class ProjectCardComponent implements OnInit {
       this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
       this.project = res[0];
     }, err => {
-
     });
     
   }
@@ -50,14 +44,11 @@ export class ProjectCardComponent implements OnInit {
   challengePage(nid) {
     //console.log(nid);
     this.router.navigate(['challenges/', nid]);
-
   }
   ShowProjectDetails(nid) {
-    if(this.navigationExtras.queryParams){  
-      this.router.navigate(['/project/view', nid] , this.navigationExtras);
-    }else{
-      this.router.navigate(['/project/view', nid]);
-    }
+    this.router.navigate(['/project/view', nid]
+    // , this.navigationExtras
+    );
    // console.log(nid)
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProjectCardPortfolio } from '../../../../../../models/project/project-form/project';
+import { ProjectCardPortfolio } from '../../../../../../models';
 import { NodeService } from '../../../../../../d7services/node/node.service'
 
 @Component({

@@ -14,6 +14,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
+import { ProjectHeaderComponent } from './project-header/project-header.component';
+import { ProjectStoryComponent } from './project-story/project-story.component';
+import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
 
 
 @NgModule({
@@ -22,7 +25,7 @@ import { ChallengeCardComponent } from './challenge-card/challenge-card.componen
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ShareButtonsModule.forRoot()
+    ShareButtonsModule.forRoot(),
   ],
   declarations: [
     CommentComponent,
@@ -36,6 +39,9 @@ import { ChallengeCardComponent } from './challenge-card/challenge-card.componen
     ProjectCardComponent,
     SharedButtonsComponent,
     ChallengeCardComponent,
+    ProjectHeaderComponent,
+    ProjectStoryComponent,
+    ProjectHowToComponent
   ],
   exports: [
     CommentComponent,
@@ -47,6 +53,9 @@ import { ChallengeCardComponent } from './challenge-card/challenge-card.componen
     ProjectCardComponent,
     SharedButtonsComponent,
     ChallengeCardComponent,
+    ProjectHeaderComponent,
+    ProjectStoryComponent,
+    ProjectHowToComponent
   ]
 })
 export class SharedModule { }
@@ -59,3 +68,6 @@ export {UserCardComponent};
 export {ProjectCardComponent};
 export {SharedButtonsComponent};
 export {ChallengeCardComponent};
+export {ProjectHeaderComponent};
+export {ProjectStoryComponent};
+export {ProjectHowToComponent};
