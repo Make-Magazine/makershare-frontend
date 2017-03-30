@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -53,7 +53,7 @@ export class ProjectCardComponent implements OnInit {
 
   }
   ShowProjectDetails(nid) {
-    if(this.navigationExtras.queryParams){  
+    if(this.navigationExtras && this.navigationExtras.queryParams){  
       this.router.navigate(['/project/view', nid] , this.navigationExtras);
     }else{
       this.router.navigate(['/project/view', nid]);

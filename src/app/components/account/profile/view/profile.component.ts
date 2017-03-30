@@ -12,9 +12,9 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop'
 import { CropperSettings } from 'ng2-img-cropper';
 import { SharedButtonsComponent } from '../../../shared/shared-buttons/shared-buttons.component';
 import { ViewService } from '../../../../d7services/view/view.service';
-import { FileEntity } from '../../../../models/Drupal/file_entity';
+import { FileEntity } from '../../../../models';
 import { domain } from '../../../../d7services/example.globals';
-import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
 
 
