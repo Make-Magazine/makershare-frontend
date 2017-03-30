@@ -901,7 +901,8 @@ footer {
     .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
       background-color: whitesmoke;
       color: #BEBEBE;
-      border-radius: 0; }
+      border-radius: 0;
+      z-index: 10; }
 
 .page-challenge {
   background-color: #F2F2F2;
@@ -2365,7 +2366,7 @@ header.showcase-project .next {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10000; }
+  z-index: 5; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
