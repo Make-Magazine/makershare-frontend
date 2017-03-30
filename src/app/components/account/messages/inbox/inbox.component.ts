@@ -10,6 +10,7 @@ import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 
 @Component({
@@ -67,6 +68,7 @@ export class InboxComponent implements OnInit {
     private viewService: ViewService,
     private _location: Location,
     private modalService: NgbModal,
+    private notificationBarService: NotificationBarService,
 
   ) { }
   ngOnInit(): void {
@@ -74,6 +76,7 @@ export class InboxComponent implements OnInit {
     this.getMessages();
     this.buildForm();
     this.CountMessages();
+    this.getStatus();
   }
 
   RefreshUsers(index, value) {
@@ -97,7 +100,6 @@ export class InboxComponent implements OnInit {
           }
         }
         this.reciverUser = TempUsers;
-        //console.log(this.reciverUser)
       });
     }
   }
@@ -112,15 +114,7 @@ export class InboxComponent implements OnInit {
       this.messageForm.reset();
     });
   }
-// deleteArray(uid) {
-//   let del_arr = [];
-//   for(let del_arr of this.SelectedUser){
-//     var index = del_arr.indexOf(uid, 0);
-//     del_arr.splice(index, 1);
-//   }
-
-// }
-
+  
   onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
@@ -128,14 +122,20 @@ export class InboxComponent implements OnInit {
       for(let selectedUsers of this.SelectedUser){
         str += selectedUsers[0].username +  ', ' ;
       }
-       //console.log(str)
       this.messageObj.recipients = str;
-      this.messageObj.body =  this.messageForm.value.subject;
-      this.messageObj.subject = this.messageForm.value.body;
+      this.messageObj.subject =  this.messageForm.value.subject;
+      this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        //this.submitted=true;
-
+        var newMessage = {
+          user_photo: this.user['user_photo'],
+          sender: 'you send a message',
+          last_updated: new Date(),
+          subject: this.messageObj.subject,
+        }
+         this.msg.unshift(newMessage);
+        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
       });
+      
     }
   }
 
@@ -239,18 +239,7 @@ export class InboxComponent implements OnInit {
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
-    //  var i = 0
-    //   for (let message of this.msg) {
-    //     this.dateObj = new Date(message.last_updated * 1000);
-    //     this.currentDate = new Date();
-    //     this.msg[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-    //     i++;
-    //   }  
     })
-  }
-
-  getMessageTime(){
-    
   }
 
   CountMessages() {
@@ -259,7 +248,6 @@ export class InboxComponent implements OnInit {
       .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
       .subscribe(data => {
         this.countMsg = data;
-        //console.log(this.countMsg)
       });
   }
 
@@ -316,15 +304,8 @@ export class InboxComponent implements OnInit {
 
   viewMessage(thread_id) {
     this.router.navigate(['/view', thread_id]);
-    //console.log(this.message)
   }
-  // turnOffMessages(e){
-  //   if(e.target.checked === true){
-  //     this.pm.updateSettings(this.messages[0].thread_id,pm_disabed).subscribe(data=>{
 
-  //     })
-  //   }
-  // }
    open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -341,5 +322,22 @@ export class InboxComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  turnOffMessages(){
+    this.userId = localStorage.getItem('user_id');
+      this.pm.updateSettings(this.userId, {'pm_disabled':true}).subscribe(data=>{
+        //console.log(data)
+      })
+  }
+   /*
+   *if message turned off the data[0]=disabled
+   */
+  getStatus(){
+    this.userId = localStorage.getItem('user_id');
+    this.pm.getStatus(this.userId).subscribe(data=>{
+      console.log(data[0]);
+    })
+    
   }
 }

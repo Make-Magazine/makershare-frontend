@@ -26,12 +26,14 @@ import { DndModule } from 'ng2-dnd';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
 import { FormsModule } from '@angular/forms';
+import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    SearchBoxComponent,
   ],
   imports: [
     BrowserModule,

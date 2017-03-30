@@ -12,7 +12,7 @@ const ShowcaseRoutes: Routes = [
       { path: '', component:ShowcasesCollectionComponent },
       { path: ':nid', component:SinglShowcaseComponent },
       // { path: '760/project2/:nid', loadChildren:'app/components/showcase/showcase-project/showcase-project.module#ShowcaseProjectModule' }
-      { path: 'project2/:nid/:pnid', component:ShowcaseProjectComponent }
+      { path: 'project2/:nid/:sort1/:sort2/:pnid', component:ShowcaseProjectComponent }
     ]
   },
 ];

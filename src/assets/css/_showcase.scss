@@ -1,118 +1,30 @@
-/* Start of Showcase */
-.page-showcase { 
-        background-color: $main-bg;
-        .showcase-wrapper {
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            z-index: 10000;
-        }
+.page-showcase,
+.page-single-showcase {
+    background-color: $main-bg;
+    padding-bottom: 40px;
     .showcase-header {
-        margin-bottom: 10px;
-        .row {
-            margin-top: 20px;
-            margin-bottom: 40px;
+        margin-bottom: 25px;
+        text-align: center;
+        h3 {
+            @include header-font();
+            margin: auto;
+            padding-top: 45px;
+            padding-bottom: 10px;
+            font-weight: normal;
+        }
+        p {
+            @include body-font-r();
+            width: 85%;
+            margin: auto;
         }
     }
-    h3 {
-        color: #000;
-        font-weight: normal;
-        margin-bottom: 20px;
-    }   
-    .back {margin-top: 15px;}
+    .showcases-container {
+    padding: 25px 0;
+    }
+     
 
-    .timestamp {
-        font-size: 10px;
-        color: $main-grey;
-    }
-    /*  Showcases coolection page  */
-    .top-content-wrapper {
-        padding: 15px 0;
-        min-height: 80px;
-        background-color: $light-grey; 
-        overflow: hidden;
-    }
-
-    .filters {
-        margin-bottom: 20px;
-        margin-top: 0;
-        overflow: hidden;
-        .dropdown-menu {right: auto;}
-    }
-    .user-card {
-        background-color: white;
-    }
-    .go-back,.go-previous,.go-next {
-        display: inline-block;
-        font-size: 36px;
-        color: $text-color-1;
-    }
 }
-.showcase {
-        .showcase-item {
-            &:hover {
-                cursor: pointer;
-            }
-            margin-bottom: 15px;
-            margin-top: 15px;
-            padding: 4px;
-            width: 100%;
-            .timestamp {
-            }
-            .image-container {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        } 
-        img {height: 200px;width: 100%;}
-        }
-        .content {
-            font-size: 12px;
-            h4.title {
-                // font-size: 18px;
-                @include card-header-font-md();
-                color: $text-color-1;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                max-height: 40px;
-                line-height: 20px;
-                height: 38px;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .description {
-                @include desc-font-14();
-                text-overflow: ellipsis;
-                word-wrap: break-word;
-                overflow: hidden;
-                line-height: 18px;
-                font-size: 15px;
-                p {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                margin-bottom: 30px;
-                min-height: 54px;
-                }
-            }
-            .number {
-                float: left;
-            }
-            .timestamp {
-                float: right;
-            }
-            .number, .timestamp {
-                @include desc-font-14();
-                margin: 0px;
-            }
 
-        }
-    }
 
 .go-back,.go-previous,.go-next {
     display: inline-block;
@@ -122,4 +34,270 @@
 
 .projects-circle {
     margin-bottom: 14px;
+}
+
+.showcase-card-backlayer {
+        background-color: $showcase-layer;
+        transition: background-color 0.8s ease;
+        padding-right: 23px;
+        padding-bottom: 9px;
+        margin-bottom: 10px;
+        -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        &:hover {
+        background-color: $valid-faire;
+        transition: background-color 0.8s ease;
+        }
+    .showcase-card {
+        position: relative;
+        padding: 16px;
+        overflow: hidden;
+        cursor:pointer;
+        background-color: white;
+        -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            .card {
+            background-color: transparent;
+            border: none;
+        }
+        .single-showcase {
+            padding: 10px;
+            img {
+                width: 250px;
+            }
+            .card-partership {
+                color: $main-button-1;
+            }
+        }
+        .left-side {
+            padding: 0px;
+            overflow: hidden;
+        }
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            width: 450px;
+            height: auto;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .card-container {
+            color: $white;
+            // font-weight: bold;
+            position: relative;
+            .showcase-type-badge {
+                position: absolute;
+                top: 24px;
+                right: -55px;
+                transform: rotate(-90deg);
+                p {
+                    margin: 0px;
+                    color: $text-color-3;
+                }
+            }
+            .card-title {
+                @include card-header-font-lg();
+                font-size: 38px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                height: 67px;
+                color: $font-grey;
+            }
+            .card-status {
+                @include body-font-b();
+                display: inline-block;
+                text-transform: none;
+            }
+
+            p.card-partnership {}
+
+            .card-description {
+                h4 {
+                    font-weight: bold;
+                }
+
+                p {
+                    @include body-font-r();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    height: 160px;
+                    color: $font-grey;
+                    line-height: 140%;
+                }
+            }
+            .card-buttons {
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+                .follow-number {
+                    background-color: $light-grey*0.9;
+                    padding: 3px 15px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    margin-left: 10px;
+                }
+            }
+        }
+                .showcase-card-footer {
+            .showcase-card-footer-1 {
+                bottom: 5px;
+                align-self: end;
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+            }
+            .showcase-card-footer-2 {
+                padding-top: 4px;
+                .showcase-card-count {
+                    font-size: 14px;
+                    div {
+                        float: left;
+                        margin-right: 8px;
+                        min-width: 50px;
+                    }
+                    .projects-count-div {
+                        margin-left: 20px;
+                    }
+                    .views-count {
+                        color: $text-color-3;
+                    }
+                    .showcase-views {
+                        width: 22px;
+                        height: auto;
+                    }
+                    .update-date {
+                        padding-right: 10px;
+                        color: $text-color-3;
+                    }
+                    .showcase-date {
+                        padding-left: 16px;
+                        height: auto;
+                    }
+                    .projects-count {
+                        color: $text-color-3;
+                    }
+                }
+                .showcase-card-status {
+                    .open-status, .closed-status {
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page-single-showcase {
+        .showcase-card-backlayer {
+            background-color: $showcase-layer;
+            transition: inherit;
+            padding-right: 23px;
+            padding-bottom: 9px;
+            margin-bottom: 10px;
+            -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            &:hover {
+            background-color: $showcase-layer;
+            transition: inherit;
+        }
+    }
+    .projects-grid {
+        .showcase-wrapper {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 5;
+        }
+        .project.card {
+            border: 1px solid #4ab0d8;
+            -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            
+        }
+    }
+    .card-description {
+        p {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        -webkit-line-clamp: inherit !important;
+        min-height: 168px; 
+        }
+    }
+    .card-title {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        -webkit-line-clamp: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        min-height: 70px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+
+
+/* front page */
+.front {
+    .challenge-card  {
+        position: relative;
+    padding: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #333;
+        span {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        p, h3 {
+            color: white;
+        }
+    }
+    .showcase {
+        .col-lg-4 {
+            margin-bottom: 10px;
+            .showcase-item {
+                .image-container {
+                    width: 340px;
+                    height: 265px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .content {
+                    .description {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    height: 88px;
+                    color: $font-grey;
+                    line-height: 140%;
+                    }
+                }
+            }
+        }
+    }
 }
