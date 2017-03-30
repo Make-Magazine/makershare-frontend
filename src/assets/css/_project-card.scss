@@ -9,6 +9,13 @@
 	    -ms-transition: background-color 1.25s linear;
 	     -o-transition: background-color 1.25s linear;
 	        transition: background-color 1.25s linear;
+	.showcase-wrapper {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 10000;
+	}
 	.card-title {
 		background-color: $white;
 		padding: 10px;

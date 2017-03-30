@@ -311,6 +311,12 @@ a:not([href]):not([tabindex]) {
   -ms-transition: background-color 1.25s linear;
   -o-transition: background-color 1.25s linear;
   transition: background-color 1.25s linear; }
+  .project .showcase-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10000; }
   .project .card-title {
     background-color: #fff;
     padding: 10px;
@@ -1863,7 +1869,9 @@ header.showcase-project .next {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 15px; }
+  font-size: 15px;
+  margin: auto;
+  width: 80%; }
   .project .card-text.project-text-grid {
     display: none; }
 .project .card-role p {
@@ -2352,6 +2360,12 @@ header.showcase-project .next {
   .page-single-showcase .showcase-card-backlayer:hover {
     background-color: #c5edfb;
     transition: inherit; }
+.page-single-showcase .projects-grid .showcase-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10000; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);

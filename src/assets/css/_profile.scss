@@ -43,7 +43,6 @@
 		font-size: 25px;
 		margin-bottom: 5px;
 		color: $white;
-		
 		}
 	span {margin-left: 20px;font-size: 12px}
 	.bookmark{
@@ -484,6 +483,8 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		font-size: 15px;
+		margin: auto;
+    width: 80%;
 		&.project-text-grid {
 			display: none;
 		}
@@ -497,7 +498,6 @@
 			font-size: 15px;
 			color: $light-grey;
 		}
-
 	}
 	.card-stats {
 		padding: 2px;
@@ -520,7 +520,6 @@
 			}	
 		}
 	}
-
 }
 
 

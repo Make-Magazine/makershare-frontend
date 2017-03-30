@@ -305,12 +305,7 @@ export class InboxComponent implements OnInit {
   viewMessage(thread_id) {
     this.router.navigate(['/view', thread_id]);
   }
-  turnOffMessages(){
-    this.userId = localStorage.getItem('user_id');
-      this.pm.updateSettings(this.userId, {'pm_disabled':true}).subscribe(data=>{
-        console.log(data)
-      })
-  }
+
    open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -327,6 +322,13 @@ export class InboxComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  turnOffMessages(){
+    this.userId = localStorage.getItem('user_id');
+      this.pm.updateSettings(this.userId, {'pm_disabled':true}).subscribe(data=>{
+        //console.log(data)
+      })
   }
    /*
    *if message turned off the data[0]=disabled

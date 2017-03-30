@@ -21,6 +21,8 @@
     .showcases-container {
     padding: 25px 0;
     }
+     
+
 }
 
 
@@ -212,11 +214,19 @@
         }
     }
     .projects-grid {
+        .showcase-wrapper {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10000;
+        }
         .project.card {
             border: 1px solid #4ab0d8;
             -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
             -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
             box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            
         }
     }
     .card-description {
