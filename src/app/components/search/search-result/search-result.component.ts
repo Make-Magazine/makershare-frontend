@@ -1,37 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { SolrService } from '../../../d7services/solr/solr.service';
 import { SearchInputComponent } from './../search-input/search-input.component';
-import { ProjectCardComponent } from '../../shared/shared.module';
-import { UserCardComponent } from '../../shared/shared.module';
+import { ProjectCardComponent,UserCardComponent, ChallengeCardComponent, ShowcaseCardComponent, LearnCardComponent } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
+  urlQuery: Observable<string>;
   searchFailed = false;
   query: string;
+  searchTerm : string;
   projects = [];
   challenges = [];
   showcases = [];
-  learning = [];
+  workshops = [];
   users = [];
 
   // Counts
   projectsCount = 0;
   challengesCount = 0;
   showcasesCount = 0;
-  learningCount = 0;
+  workshopsCount = 0;
   usersCount = 0;
   
+  //Query Counts
+  projectsCountQuery = 6;
+  challengesCountQuery = 2;
+  showcasesCountQuery = 2;
+  workshopsCountQuery = 2;
+  usersCountQuery = 6;
+
 
   project_view = 'grid';
   constructor(
     private solrService: SolrService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
 
@@ -47,7 +55,7 @@ export class SearchResultComponent implements OnInit {
             return this.solrService.autocomplete(query)
             .map(result => {
               
-              console.log(result);
+              
               return result.response.docs;
             })
           }
@@ -57,6 +65,17 @@ export class SearchResultComponent implements OnInit {
   };
 
   ngOnInit() {
+
+    this.urlQuery = this.route.queryParams.map(params => params['query'] || 'None');
+    this.urlQuery.subscribe(query => {
+      if(query.length > 0){
+        this.query = decodeURIComponent(query);
+        this.searchQuery();
+      }
+      
+    })
+
+
   }
 
   itemSelected(item) {
@@ -69,10 +88,11 @@ export class SearchResultComponent implements OnInit {
     if(this.query.length == 0) {
       return;
     }
+
+    this.searchTerm = this.query;
+
     // projects
-    this.solrService.selectProjects(this.query, 6).subscribe(result => {
-      console.log(result);
-      console.log(result.response.docs);
+    this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
       this.projects = [];
       this.projects = result.response.docs;
       this.projectsCount = result.response.numFound;
@@ -81,8 +101,7 @@ export class SearchResultComponent implements OnInit {
     });
 
     // challenges
-    this.solrService.selectChallenges(this.query, 6).subscribe(result => {
-      console.log(result.response.docs);
+    this.solrService.selectChallenges(this.query, this.challengesCountQuery).subscribe(result => {
       this.challenges = [];
       this.challenges = result.response.docs;
       this.challengesCount = result.response.numFound;
@@ -91,8 +110,7 @@ export class SearchResultComponent implements OnInit {
     });  
 
     // showcases
-    this.solrService.selectShowcases(this.query, 6).subscribe(result => {
-      console.log(result.response.docs);
+    this.solrService.selectShowcases(this.query, this.showcasesCountQuery).subscribe(result => {
       this.showcases = [];
       this.showcases = result.response.docs;
       this.showcasesCount = result.response.numFound;
@@ -100,19 +118,17 @@ export class SearchResultComponent implements OnInit {
       console.log(err);
     });    
 
-    // learning
-    this.solrService.selectLearning(this.query, 6).subscribe(result => {
-      console.log(result.response.docs);
-      this.learning = [];
-      this.learning = result.response.docs;
-      this.learningCount = result.response.numFound;
+    // workshops
+    this.solrService.selectworkshops(this.query, this.workshopsCountQuery).subscribe(result => {
+      this.workshops = [];
+      this.workshops = result.response.docs;
+      this.workshopsCount = result.response.numFound;
     }, err => {
       console.log(err);
     });        
 
     // users
-    this.solrService.selectUsers(this.query, 6).subscribe(result => {
-      console.log(result.response.docs);
+    this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(result => {
       this.users = [];
       this.users = result.response.docs;
       this.usersCount = result.response.numFound;
@@ -121,4 +137,11 @@ export class SearchResultComponent implements OnInit {
     });      
   }
 
+  searchTypeNavigate(type: string){
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'query': encodeURIComponent(this.query) },
+      // fragment: 'anchor'
+    };    
+     this.router.navigate(['/search', type], navigationExtras);
+  }
 }

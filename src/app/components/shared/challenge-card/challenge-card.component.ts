@@ -21,8 +21,10 @@ challenge=[];
     }
 
   getChallenges(){
-        this.viewService.getView('shared-challenge-card',[['nid',this.challengeNid]]).subscribe(data => {
+     this.viewService.getView('shared-challenge-card',[['nid',this.challengeNid]]).subscribe(data => {
      this.challenge = data[0];
+  }, err => {
+      console.log(err);
   });
 }
  /* function to navigate to challenge summary page */
