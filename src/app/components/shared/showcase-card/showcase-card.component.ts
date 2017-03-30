@@ -7,20 +7,20 @@ import { ViewService } from '../../../d7services/view/view.service';
   templateUrl: './showcase-card.component.html',
 })
 export class ShowcaseCardComponent implements OnInit {
-showcase=[];  
- @Input() showcaseNid;
-   constructor(private route: ActivatedRoute,
+  showcase = [];
+  @Input() showcaseNid;
+  constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
 
-  ){ }
+  ) { }
   ngOnInit() {
     this.getShowcases();
   }
-    getShowcases(){
-        this.viewService.getView('shared-showcase-card',[['nid',this.showcaseNid]]).subscribe(data => {
-     this.showcase = data[0];
-  });
-}
+  getShowcases() {
+    this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
+      this.showcase = data[0];
+    });
+  }
 
 }

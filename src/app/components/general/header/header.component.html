@@ -4,8 +4,13 @@
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="./assets/images/logo.png" alt=""></a>
-    <div class="log-block flex-last">
+    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
+    <div class="log-block d-flex flex-row flex-last">
+      <ul class="list-unstyled logged-in">
+        <li class="search-icon">
+          <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
+        </li>
+      </ul>  
       <ul class="list-unstyled login-block" *ngIf="!auth.authenticated()">
         <li class="button-container-main-1"><a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login</a></li>
       </ul>
@@ -18,11 +23,9 @@
         <li class="mail-icon">
           <a [routerLink]="['/inbox']"><img src="./assets/images/icons/mail.svg" alt=""></a>
         </li>
-        <li class="search-icon">
-          <a href=""><img src="./assets/images/icons/search.svg" alt=""></a>
-        </li>
         <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
       </ul>
+          
     </div>
     <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
       <ul class="navbar-nav justify-content-md-between">
@@ -86,5 +89,8 @@
       </ul>
     </div>
   </nav>
+  
+  <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
+
 </header>
 <notification-bar></notification-bar>
