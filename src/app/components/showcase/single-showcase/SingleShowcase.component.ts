@@ -20,7 +20,7 @@ export class SinglShowcaseComponent implements OnInit {
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
-  limit = 3;
+  limit = 9;
   showcasenumber
   showcaseNid
 // @Output() showcaseNid = new EventEmitter();
@@ -108,6 +108,7 @@ export class SinglShowcaseComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('showcase_projects_nid', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.projectsCount = data.length;
+        // console.log(data.length);
       });
 
   }

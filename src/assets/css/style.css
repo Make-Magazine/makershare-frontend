@@ -2160,13 +2160,16 @@ header.showcase-project .next {
   .teaser p {
     line-height: 20px; }
 
-.page-showcase {
+.page-showcase,
+.page-single-showcase {
   background-color: #F2F2F2;
   padding-bottom: 40px; }
-  .page-showcase .showcase-header {
+  .page-showcase .showcase-header,
+  .page-single-showcase .showcase-header {
     margin-bottom: 25px;
     text-align: center; }
-    .page-showcase .showcase-header h3 {
+    .page-showcase .showcase-header h3,
+    .page-single-showcase .showcase-header h3 {
       font-family: "Messina Modern Regular";
       font-size: 3.5em;
       font-weight: 400;
@@ -2177,7 +2180,8 @@ header.showcase-project .next {
       padding-top: 45px;
       padding-bottom: 10px;
       font-weight: normal; }
-    .page-showcase .showcase-header p {
+    .page-showcase .showcase-header p,
+    .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular";
       font-size: 1.125em;
       font-weight: 400;
@@ -2186,7 +2190,8 @@ header.showcase-project .next {
       color: #828282;
       width: 85%;
       margin: auto; }
-  .page-showcase .showcases-container {
+  .page-showcase .showcases-container,
+  .page-single-showcase .showcases-container {
     padding: 25px 0; }
 
 .go-back, .go-previous, .go-next {
@@ -2199,12 +2204,16 @@ header.showcase-project .next {
 
 .showcase-card-backlayer {
   background-color: #c5edfb;
+  transition: background-color 0.8s ease;
   padding-right: 23px;
   padding-bottom: 9px;
   margin-bottom: 10px;
   -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .showcase-card-backlayer:hover {
+    background-color: #00AEEF;
+    transition: background-color 0.8s ease; }
   .showcase-card-backlayer .showcase-card {
     position: relative;
     padding: 16px;
@@ -2306,16 +2315,15 @@ header.showcase-project .next {
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
-          padding-left: 10px;
           color: #BDBDBD; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
           width: 22px;
           height: auto; }
-        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .likes-count {
+        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
           padding-right: 10px;
           color: #BDBDBD; }
-        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes {
-          width: 13px;
+        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-date {
+          padding-left: 16px;
           height: auto; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
@@ -2323,6 +2331,19 @@ header.showcase-project .next {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
+
+.page-single-showcase .showcase-card-backlayer {
+  background-color: #c5edfb;
+  transition: inherit;
+  padding-right: 23px;
+  padding-bottom: 9px;
+  margin-bottom: 10px;
+  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .page-single-showcase .showcase-card-backlayer:hover {
+    background-color: #c5edfb;
+    transition: inherit; }
 
 .page-create-profile {
   background-color: #F2F2F2;
