@@ -1,64 +1,77 @@
-<div class="page-showcase">
-  <div class="main-container container-fluid">
-    <div class="row">
-      <section class="col-sm-12 width-fix">
-        <div class="region region-content">
-          <header class="showcase-header">
-            <div class="container">
-              <div class="row">
-                <div class="showcase-title col-md-12">
-                  <h3>{{showcase.showcase_name}}</h3>
-                </div>
-                <div class="showcase-description col-md-6">
-                  <p class="timestamp">Last updated: {{showcase.last_updated}}</p>
-                  <p [innerHTML]="showcase.description"></p>
-                  <p>Enjoy !</p>
-                </div>
-                <div class="showcase-curated col-md-6">
-                  <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
-                </div>
-              </div>
+<section class="page-single-showcase">
+  <div class="region region-content">
+    <div class="container showcases-container">
+      <div class="showcase-card-backlayer container">
+        <div class="showcase-card row">
+          <div class="col-md-4 left-side">
+            <div class="image-container">
+              <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
             </div>
-            <!-- End container -->
-          </header>
-          <!--/header -->
-          <div class="container">
-            <div class="filters">
-              <div class="container">
-                <div class="row justify-content-center align-items-center">
-                  <div class="entries-count btn">
-                    <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
-                    <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
+            <div class="showcase-card-footer-3">
+              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card-container">
+              <div class="card">
+                <div class="showcase-type-badge">
+                  <p>Showcase</p>
+                </div>
+                <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
+                <div class="card-description">
+                  <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
+                </div>
+                <div class="showcase-card-footer d-flex">
+                  <div class="showcase-card-footer-1">
                   </div>
-                  <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
+                  <div class="showcase-card-footer-2">
+                    <div class="showcase-card-count d-felx">
+                      <div class="views-count-div">
+                        <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
+                        <span class="views-count">1129</span>
+                      </div>
+                      <div class="projects-count-div">
+                        <span class="projects-count">{{projectsCount}}
+                           <span *ngIf="projectsCount>1">projects</span>
+                        <span *ngIf="projectsCount<=1">project</span>
+                        </span>
+                      </div>
+                      <div class="showcase-date" *ngIf="showcase.last_updated">
+                        <span class="update-date">Last update: {{showcase.last_updated}}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <!-- End filters -->
-            <div class="container">
-              <div class="projects-grid row">
-                <div class="project" *ngFor="let project of projects; let i = index;">
-                  <!-- Start Project Card -->
-                  <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid,showcaseNid)">
-                  </div>                    
-                  <app-project-card [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>                  
-                  <!-- End Project Card -->
-                </div>
-                <!-- End col -->
-              </div>
-              <!-- End projects-grid row -->
-            </div>
-            <div class="text-center">
-              <div *ngIf="!hideloadmore" class="button-container-main-2">
-                <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
               </div>
             </div>
           </div>
         </div>
-        <!-- End region-content -->
-      </section>
+      </div>
+      <div class="container">
+        <div class="filters">
+          <div class="container">
+            <div class="row d-flex justify-content-end align-items-center">
+              <div class="entries-count btn">
+                <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
+                <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
+              </div>
+              <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="projects-grid row">
+          <div class="project col-md-4" *ngFor="let project of projects; let i = index;">
+            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <div *ngIf="!hideloadmore" class="button-container-main-2">
+          <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
+        </div>
+      </div>
     </div>
-    <!-- End row -->
   </div>
-  <!-- End main-container -->
-</div>
+  <section>

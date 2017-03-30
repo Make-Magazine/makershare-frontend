@@ -1,4 +1,5 @@
-.page-showcase {
+.page-showcase,
+.page-single-showcase {
     background-color: $main-bg;
     padding-bottom: 40px;
     .showcase-header {
@@ -35,12 +36,17 @@
 
 .showcase-card-backlayer {
         background-color: $showcase-layer;
+        transition: background-color 0.8s ease;
         padding-right: 23px;
         padding-bottom: 9px;
         margin-bottom: 10px;
         -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
         -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
         box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        &:hover {
+        background-color: $valid-faire;
+        transition: background-color 0.8s ease;
+        }
     .showcase-card {
         position: relative;
         padding: 16px;
@@ -62,6 +68,10 @@
             .card-partership {
                 color: $main-button-1;
             }
+        }
+        .left-side {
+            padding: 0px;
+            overflow: hidden;
         }
         .image-container {
             overflow: hidden;
@@ -156,19 +166,18 @@
                         margin-left: 20px;
                     }
                     .views-count {
-                        padding-left: 10px;
                         color: $text-color-3;
                     }
                     .showcase-views {
                         width: 22px;
                         height: auto;
                     }
-                    .likes-count {
+                    .update-date {
                         padding-right: 10px;
                         color: $text-color-3;
                     }
-                    .showcase-likes {
-                        width: 13px;
+                    .showcase-date {
+                        padding-left: 16px;
                         height: auto;
                     }
                     .projects-count {
@@ -184,5 +193,48 @@
                 }
             }
         }
+    }
+}
+
+.page-single-showcase {
+        .showcase-card-backlayer {
+            background-color: $showcase-layer;
+            transition: inherit;
+            padding-right: 23px;
+            padding-bottom: 9px;
+            margin-bottom: 10px;
+            -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+            &:hover {
+            background-color: $showcase-layer;
+            transition: inherit;
+        }
+    }
+    .projects-grid {
+        .project.card {
+            border: 1px solid #4ab0d8;
+            -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        }
+    }
+    .card-description {
+        p {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        -webkit-line-clamp: inherit !important;
+        min-height: 168px; 
+        }
+    }
+    .card-title {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        -webkit-line-clamp: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        min-height: 70px;
     }
 }
