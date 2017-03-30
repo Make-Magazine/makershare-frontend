@@ -198,10 +198,10 @@ countProject=0;
   }
   saveProfile(profile :any) {
     this.profileService.updateProfile(this.userId, profile).subscribe(profile => {
-
     }, err => {
       //console.log(err);
     });
+    this.ngOnInit();
   }
   onValueChanged(data?: any) {
 
@@ -279,10 +279,11 @@ countProject=0;
     //this.profile.profile_cover = this.CoverImageData.image;
     this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
     this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
+      console.log(res);
      this.profile.profile_cover = res.fid
      console.log(this.profile.profile_cover);
+     this.saveProfile(this.profile);
     });
-    this.saveProfile(this.profile);
   }
 
   /* function get Badges */
