@@ -1,49 +1,52 @@
 <div class="challenge-card row">
- <div class="col-md-4 image-container">
-            <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-          </div>
-           <!--End image-container -->
-          <div class="col-md-8">
-            <div class="card-container">
-              <div class="card">
-                <div class="challenge-type-bagde"><p>Mission</p></div>
-                <div class="card-partership">
-                  <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p></div>
-                <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
-                <div class="card-description">
-                  <p [innerHTML]="challenge.summary"></p>
-                </div>
-                <div class="challene-card-footer d-flex">
-                <div class="challene-card-footer-1">
-                  <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
-                    <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Join Mission</span>
-                  </div>
-                  <div class="button-container-sec-2" *ngIf="challenge.status_id == 376">
-                    <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
-                  </div>
-                </div>
-                <div class="challenge-card-footer-2 ml-3">
-                <div class="challenge-card-count">
-                  <span class="entries-count">{{challenge.entries_count}}
-                       <span *ngIf="challenge.entries_count>1">Entries</span>
-                  <span *ngIf="challenge.entries_count <= 1">Entry</span>
-                  </span>
-                  <span class="follow-count">{{challenge.followers}}
-                      <span *ngIf="challenge.followers>1">Followers</span>
-                  <span *ngIf="challenge.followers==1">Follower</span>
-                  <span *ngIf="!challenge.followers">0 Follower</span>
-                  </span>
-                </div>
-                <div class="challenge-card-status">
-                  <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
-                  <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>
-                  <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date}}</span>
-                </div>
-                </div>
-                </div>
-              </div>
+  <div class="col-md-4 image-container">
+    <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+  </div>
+  <!--End image-container -->
+  <div class="col-md-8">
+    <div class="card-container">
+      <div class="card">
+        <div class="challenge-type-badge">
+          <p>Mission</p>
+        </div>
+        <div class="card-partership">
+          <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p>
+        </div>
+        <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
+        <div class="card-description">
+          <p [innerHTML]="challenge.summary"></p>
+        </div>
+        <div class="challene-card-footer d-flex">
+          <div class="challene-card-footer-1">
+            <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
+              <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Join Mission</span>
             </div>
-             <!--End card-container -->
+            <div class="button-container-sec-2" *ngIf="challenge.status_id == 376">
+              <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+            </div>
           </div>
+          <div class="challenge-card-footer-2 ml-3">
+            <div class="challenge-card-count">
+              <span class="entries-count">{{challenge.entries_count}}
+                       <span *ngIf="challenge.entries_count>1">Entries</span>
+              <span *ngIf="challenge.entries_count <= 1">Entry</span>
+              </span>
+              <span class="follow-count">{{challenge.followers}}
+                      <span *ngIf="challenge.followers>1">Followers</span>
+              <span *ngIf="challenge.followers==1">Follower</span>
+              <span *ngIf="!challenge.followers">0 Follower</span>
+              </span>
+            </div>
+            <div class="challenge-card-status">
+              <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
+              <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End card-container -->
+  </div>
 </div>
-          <!-- End col-md-6 -->
+<!-- End col-md-6 -->
