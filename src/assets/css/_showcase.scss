@@ -1,6 +1,13 @@
 /* Start of Showcase */
 .page-showcase { 
         background-color: $main-bg;
+        .showcase-wrapper {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10000;
+        }
     .showcase-header {
         margin-bottom: 10px;
         .row {

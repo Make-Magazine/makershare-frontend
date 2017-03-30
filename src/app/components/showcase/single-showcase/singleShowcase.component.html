@@ -37,11 +37,13 @@
             <!-- End filters -->
             <div class="container">
               <div class="projects-grid row">
-                  <div class="project">
-                     <!-- Start Project Card -->
-          <app-project-card *ngFor="let project of projects; let i = index;" [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>
-          <!-- End Project Card -->
-                 </div>
+                <div class="project" *ngFor="let project of projects; let i = index;">
+                  <!-- Start Project Card -->
+                  <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid,showcaseNid)">
+                  </div>                    
+                  <app-project-card [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>                  
+                  <!-- End Project Card -->
+                </div>
                 <!-- End col -->
               </div>
               <!-- End projects-grid row -->
