@@ -7,7 +7,6 @@
     <!--<span class="fa fa-lg fa-cog">
       <input type="checkbox" (click)="turnOffMessages($event)">Turn Off Messages
       </span>-->
-      <button (click)="turnOffMessages()">Turn Off</button>
   </header>
   <!--/header -->
   <div class="container inbox-container">
@@ -16,6 +15,8 @@
         <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
       </div>
       <a  class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
+      <!--<button (click)="turnOffMessages()" class="btn btn-main btn-sharp new-message">Turn Off Messages</button>-->
+      <button [routerLink]="['/blocked']" class="btn btn-main btn-sharp new-message">Blocked users</button>
       <a class="btn btn-main btn-sharp new-message" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
     </section>
     <ul class="list-unstyled messages-list">

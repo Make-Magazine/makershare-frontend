@@ -5,6 +5,7 @@ import { MessagesRoutsModule } from './messages.routing.module';
 import { ViewComponent } from './view/view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 
 
  
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     InboxComponent,
     ViewComponent,
+    BlockedUsersComponent,
 
     ]
 })

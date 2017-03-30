@@ -1,0 +1,8 @@
+<ul class="list-group" *ngFor="let user of blocked">
+  <li class="list-group-item justify-content-between">
+    {{user.firstname}}  {{user.lastname}}
+    <span>
+      <button type="button" class="btn btn-secondary" (click)="unBlockUsers(user.uid)" >UnBlock</button>
+    </span>
+  </li>
+</ul>
