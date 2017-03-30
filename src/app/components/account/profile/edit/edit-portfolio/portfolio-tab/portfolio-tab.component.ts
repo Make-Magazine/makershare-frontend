@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ViewService } from '../../../../../../d7services/view/view.service';
-import { ProjectCardPortfolio } from '../../../../../../models/project/project-form/project';
+import { ProjectCardPortfolio } from '../../../../../../models';
 import { UserService } from '../../../../../../d7services/user/user.service';
 import { NodeService } from '../../../../../../d7services/node/node.service';
 import { Observable } from "rxjs";

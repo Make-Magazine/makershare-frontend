@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { UserService } from '../../../../d7services/user/user.service';
+import { UserService } from '../../../d7services/user/user.service';
 
 @Component({
   selector: 'app-project-header',
@@ -16,12 +16,23 @@ export class ProjectHeaderComponent implements OnInit {
   currentuser;
   userId;
 
+  customTitle: string = '';
+  customDescription: string = '';
+  customImage: string = '';
+
   ngOnInit() {
     this.getcurrentuser();
     this.userId = localStorage.getItem('user_id');
     this.currentuser = Number(localStorage.getItem('user_id'));
-
-    
+    if (this.project.title) {
+      this.customTitle = this.project.title.value;
+    }
+    if (this.project.field_teaser) {
+      this.customDescription = this.project.field_teaser.value;
+    }
+    if (this.project.field_cover_photo) {
+      this.customImage = this.project.field_cover_photo.url;
+    }
   }
   
   getcurrentuser(){

@@ -49,9 +49,9 @@ export class UserCardComponent implements OnInit {
   }
   ngOnInit() {
     this.getcard();
-    //this.getBadges();
+    this.getBadges();
     this.buildForm();
-    //this.getProjectCountByUser();
+    this.getProjectCountByUser();
   }
 
   getcard() {

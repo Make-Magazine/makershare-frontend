@@ -30,6 +30,11 @@
 					border-radius: 3px;
 					&:hover {background-color: $main-grey;}
 				}
+				.btn {
+					&:hover {
+						cursor: default;
+					}
+				}
 			}
 		}
 		.project-actions {

@@ -16,6 +16,7 @@ export class SharedButtonsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.PageImage = encodeURIComponent(this.PageImage);
   }
 
   open(content) {
