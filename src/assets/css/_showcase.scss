@@ -214,14 +214,12 @@
         }
     }
     .projects-grid {
-        .project {
-            .showcase-wrapper {
+        .showcase-wrapper {
             display: block;
             width: 100%;
             height: 100%;
             position: absolute;
             z-index: 10000;
-        }
         }
         .project.card {
             border: 1px solid #4ab0d8;
