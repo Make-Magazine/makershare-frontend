@@ -1,4 +1,4 @@
-import { Node } from '../../Drupal/Node';
+import { Node } from '../../';
 
 export interface ToolMaterialPart extends Node{
   

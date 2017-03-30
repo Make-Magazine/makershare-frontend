@@ -49,7 +49,6 @@ export class Auth {
         var data = profile;
         data.idToken = authResult.idToken;
         if (profile['email_verified'] == true) {
-          // console.log('will send request to drupal auth');
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
               // console.log(res);
