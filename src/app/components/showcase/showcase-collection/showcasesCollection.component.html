@@ -19,50 +19,7 @@
     <!-- End filters -->
     <div class="container showcases-container">
       <div class="showcase-card-backlayer container" *ngFor="let showcase of showcases">
-        <div class="showcase-card row">
-          <div class="col-md-4 image-container">
-            <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
-          </div>
-          <!--End image-container -->
-          <div class="col-md-8">
-            <div class="card-container">
-              <div class="card">
-                <div class="showcase-type-badge">
-                  <p>Showcase</p>
-                </div>
-                <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
-                <div class="card-description">
-                  <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
-                </div>
-                <div class="showcase-card-footer d-flex">
-                  <div class="showcase-card-footer-1">
-                    <div class="button-container-main-1">
-                      <span class="btn btn-main" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>
-                    </div>
-                  </div>
-                  <div class="showcase-card-footer-2 ml-4">
-                    <div class="showcase-card-count d-felx">
-                      <div class="views-count-div">
-                        <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
-                        <span class="views-count">1129</span>
-                      </div>
-                      <div class="projects-count-div">
-                        <span class="projects-count">{{showcase.number_of_project}}
-                           <span *ngIf="showcase.number_of_project>1">projects</span>
-                        <span *ngIf="showcase.number_of_project<=1">project</span>
-                        </span>
-                      </div>
-                      <div class="showcase-date" *ngIf="showcase.updated_date">
-                        <span class="update-date">Last update: {{showcase.updated_date}}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--End card-container -->
-          </div>
-        </div>
+ <app-showcase-card [showcaseNid]="showcase.nid"></app-showcase-card>
       </div>
       <!-- End col-md-6 -->
     </div>
