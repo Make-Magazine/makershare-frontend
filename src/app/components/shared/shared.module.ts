@@ -13,6 +13,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
+import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SharedButtonsComponent } from './shared-buttons/shared-buttons.componen
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    ChallengeCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -44,6 +46,7 @@ import { SharedButtonsComponent } from './shared-buttons/shared-buttons.componen
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    ChallengeCardComponent,
   ]
 })
 export class SharedModule { }
@@ -54,4 +57,5 @@ export {LikeComponent};
 export {ForkComponent};
 export {UserCardComponent};
 export {ProjectCardComponent};
-export {SharedButtonsComponent}
+export {SharedButtonsComponent};
+export {ChallengeCardComponent};
