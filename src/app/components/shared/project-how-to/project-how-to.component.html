@@ -7,7 +7,6 @@
       <app-comment [nid]="project.nid"></app-comment>
     </div>
   </div>
-
   <aside class="side-bar col-lg-4 col-md-4">
     <div class="timestamp" *ngIf="project.created && project.changed">Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
     <div class="sidebar-container">
@@ -15,7 +14,7 @@
         <div class="block-style avg-time">
           <p class="average">Average Build Time:</p><i class="fa fa-clock-o hours" aria-hidden="true"><span>{{project.field_duration}} Hours</span></i>
         </div>
-        <div class="block-style avg-time">
+        <div class="block-style avg-time" *ngIf="project.field_difficulty">
           <p>Difficulty : {{project.field_difficulty}}</p>
         </div>
         <ul *ngIf="project.field_resources" class="list-group resources">
@@ -24,15 +23,15 @@
             <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>
           </li>
         </ul>
-        <ul class="list-group tools">
+        <ul class="list-group tools" *ngIf="tool">
           <h3>Tools</h3>
           <li class="list-group-item" *ngFor="let tool of project.field_tools; let i=index"><span class="amount">{{tool.tool_quantity}} - </span><span class="item"> {{tool.tool_name}}</span></li>
         </ul>
-        <ul class="list-group boards-kits">
+        <ul class="list-group boards-kits" *ngIf="part">
           <h3>Boards &amp; Kits</h3>
           <li class="list-group-item" *ngFor="let part of project.field_parts; let i=index"> <span class="amount">{{part.part_quantity}} - </span><span class="item"> {{part.part_name}}</span></li>
         </ul>
-        <ul class="list-group materials">
+        <ul class="list-group materials" *ngIf="material">
           <h3>Materials</h3>
           <li class="list-group-item" *ngFor="let material of project.field_materials; let i=index"> <span class="amount">{{material.material_quantity}} - </span><span class="item"> {{material.material_id}}</span></li>
         </ul>
