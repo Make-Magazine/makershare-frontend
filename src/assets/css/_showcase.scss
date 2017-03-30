@@ -69,6 +69,10 @@
                 color: $main-button-1;
             }
         }
+        .left-side {
+            padding: 0px;
+            overflow: hidden;
+        }
         .image-container {
             overflow: hidden;
             position: relative;
@@ -206,5 +210,31 @@
             background-color: $showcase-layer;
             transition: inherit;
         }
+    }
+    .projects-grid {
+        .project.card {
+            border: 1px solid #4ab0d8;
+            -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+            box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        }
+    }
+    .card-description {
+        p {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        -webkit-line-clamp: inherit !important;
+        min-height: 168px; 
+        }
+    }
+    .card-title {
+        display: block !important;
+        -webkit-box-orient: inherit !important;
+        -webkit-line-clamp: inherit !important;
+        overflow: inherit !important;
+        height: auto !important;
+        min-height: 70px;
     }
 }

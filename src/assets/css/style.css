@@ -302,8 +302,8 @@ a:not([href]):not([tabindex]) {
 
 .project {
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 4px;
   border: none;
   -webkit-transition: background-color 1.25s linear;
@@ -2237,6 +2237,9 @@ header.showcase-project .next {
         width: 250px; }
       .showcase-card-backlayer .showcase-card .single-showcase .card-partership {
         color: #EC1F30; }
+    .showcase-card-backlayer .showcase-card .left-side {
+      padding: 0px;
+      overflow: hidden; }
     .showcase-card-backlayer .showcase-card .image-container {
       overflow: hidden;
       position: relative;
@@ -2349,6 +2352,25 @@ header.showcase-project .next {
   .page-single-showcase .showcase-card-backlayer:hover {
     background-color: #c5edfb;
     transition: inherit; }
+.page-single-showcase .projects-grid .project.card {
+  border: 1px solid #4ab0d8;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+.page-single-showcase .card-description p {
+  display: block !important;
+  -webkit-box-orient: inherit !important;
+  overflow: inherit !important;
+  height: auto !important;
+  -webkit-line-clamp: inherit !important;
+  min-height: 168px; }
+.page-single-showcase .card-title {
+  display: block !important;
+  -webkit-box-orient: inherit !important;
+  -webkit-line-clamp: inherit !important;
+  overflow: inherit !important;
+  height: auto !important;
+  min-height: 70px; }
 
 .page-create-profile {
   background-color: #F2F2F2;
