@@ -17,6 +17,8 @@ import { ChallengeCardComponent } from './challenge-card/challenge-card.componen
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
 import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
+import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
+import { LearnCardComponent } from './learn-card/learn-card.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { ProjectHowToComponent } from './project-how-to/project-how-to.component
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
-    ProjectHowToComponent
+    ProjectHowToComponent,
+    ShowcaseCardComponent,
+    LearnCardComponent
   ],
   exports: [
     CommentComponent,
@@ -55,19 +59,23 @@ import { ProjectHowToComponent } from './project-how-to/project-how-to.component
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
-    ProjectHowToComponent
+    ProjectHowToComponent,
+    ShowcaseCardComponent,
+    LearnCardComponent
   ]
 })
 export class SharedModule { }
-export {CommentComponent};
-export {FollowComponent};
-export {BookmarkComponent};
-export {LikeComponent};
-export {ForkComponent};
-export {UserCardComponent};
-export {ProjectCardComponent};
-export {SharedButtonsComponent};
-export {ChallengeCardComponent};
-export {ProjectHeaderComponent};
-export {ProjectStoryComponent};
-export {ProjectHowToComponent};
+export { CommentComponent };
+export { FollowComponent };
+export { BookmarkComponent };
+export { LikeComponent };
+export { ForkComponent };
+export { UserCardComponent };
+export { ProjectCardComponent };
+export { SharedButtonsComponent };
+export { ChallengeCardComponent };
+export { ProjectHeaderComponent };
+export { ProjectStoryComponent };
+export { ProjectHowToComponent };
+export { ShowcaseCardComponent };
+export { LearnCardComponent }; 
