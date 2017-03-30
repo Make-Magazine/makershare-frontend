@@ -51,6 +51,7 @@
 		.project-image {
 			.overlay {
 				top: 0;
+				display: none;
 				padding-top: 35px;
 				background-color: rgba(0,0,0,0.8);
 				a {
@@ -71,6 +72,11 @@
 					}
 				}
 			}
+			&:hover{
+					.overlay {
+						display: block;
+					}
+				}
 		}
 	}
 	.portfolio-photos {
