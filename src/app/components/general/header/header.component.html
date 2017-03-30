@@ -1,12 +1,12 @@
 <header class="container main-header">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded justify-content-md-between navbar-toggleable-sm flex-row">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded justify-content-md-start navbar-toggleable-sm flex-row">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#MainNav" aria-controls="MainNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
-    <div class="log-block d-flex flex-row flex-last">
-      <ul class="list-unstyled logged-in">
+    <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
+      <ul class="list-unstyled logged-in d-flex align-items-center">
         <li class="search-icon">
           <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
         </li>
@@ -33,19 +33,16 @@
           <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['explore']">Explore</a>
+          <a class="nav-link" [routerLink]="['explore']">Projects</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['challenges']">Challenges</a>
+          <a class="nav-link" [routerLink]="['challenges']">Missions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['learn']">Learn</a>
+          <a class="nav-link" [routerLink]="['learn']">Learning</a>
         </li>
         <li class="nav-item hidden-md-up maker-menu-sm">
           <a class="nav-link menu-title" href="#">More</a>
