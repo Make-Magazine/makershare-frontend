@@ -23,7 +23,7 @@ export class SinglShowcaseComponent implements OnInit {
   limit = 9;
   showcasenumber
   showcaseNid
-// @Output() showcaseNid = new EventEmitter();
+  // @Output() showcaseNid = new EventEmitter();
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -112,8 +112,8 @@ export class SinglShowcaseComponent implements OnInit {
       });
 
   }
-  ShowcasePojectNav(nid,snid){
-    this.router.navigate(['/showcases/project2/',snid,nid]);
+  ShowcasePojectNav(nid, snid) {
+    this.router.navigate(['/showcases/project2/', snid, nid]);
     // this.showcaseNid.emit(this.route.params['value'].nid)
   }
 
