@@ -22,4 +22,7 @@ learn=[];
      this.learn = data[0];
   });
 }
+  WorkshopDetails(nid) {
+    this.router.navigate(['/learn', nid]);
+  }
 }
