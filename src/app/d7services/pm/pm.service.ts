@@ -54,5 +54,15 @@ export class PmService {
     return this.mainService.post(globals.endpoint + '/' + viewName, {"uid" : uid}).map(res => res.json());
   }
   
+  getStatus(uid: number): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/privatemsggetstatus/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+  getBlocked(uid: number): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/privatemsgblocked/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+  getAllBlocked(): Observable<any> {
+    return this.mainService.get(globals.endpoint + '/privatemsgblock').map(res => res.json()).catch(err => Observable.throw(err));
+  }
 
 }

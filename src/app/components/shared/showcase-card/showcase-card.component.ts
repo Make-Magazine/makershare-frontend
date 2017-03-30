@@ -17,10 +17,15 @@ export class ShowcaseCardComponent implements OnInit {
   ngOnInit() {
     this.getShowcases();
   }
+
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
       this.showcase = data[0];
     });
   }
+  ShowSingleShowcase(nid) {
+    this.router.navigate(['/showcases', nid]);
+  }
+
 
 }
