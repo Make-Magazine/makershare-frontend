@@ -1,11 +1,104 @@
 <template #rt let-r="result" let-t="term">
   <div class="data-container">
-    {{r.tm_item_label[0]}}
+    <div *ngIf="r.tm_title">{{r.tm_title[0]}}</div>
+    <div *ngIf="r.tm_name">{{r.tm_name[0]}}</div>
   </div>
 </template>
-<div class="container">
-  <input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
-  <p>
-    search-result works!
-  </p>
-</div>
+
+<section class="page-search-content">
+    <div class="top-content-wrapper">
+      <div class="container">
+          <div class="row d-flex justify-content-around">
+            <div class="col-lg-8">
+                <div id="imaginary_container">
+                  <div class="input-group stylish-input-group">
+                      <input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
+                      <span class="input-group-addon">
+                      <button type="button" (click)="searchQuery()" value="search">
+                        <i class="fa fa-search"></i>
+                      </button>  
+                      </span>
+                  </div>
+                </div>
+            </div>
+            <div class="sort col-lg-4">
+
+            </div>
+          </div>
+      </div>
+      <!-- End container -->
+    </div>
+    <!-- End top-content-wrapper -->
+    <div class="container">
+      <div class="region region-content ">
+          <div class="search-term">
+            <h3>"Robotics"</h3>
+            <p>Search Results</p>
+          </div>
+          <div class="row total-result">
+
+            <!-- Projects -->
+            <div *ngIf="projects.length > 0" class="col-md-12 project-result result-section">
+                
+                <div class="results-header d-flex justify-content-end">
+                  <div class="result-title mr-auto"><span>Projects</span></div>
+                  <div class="view-all-result"><span>{{projectsCount}} Results | </span><a href="">See all results</a></div>
+                </div>
+                <div class="row projects-result">
+                  <app-project-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4"></app-project-card>
+                </div>
+            </div>
+  
+            <!-- Challenges -->
+            <div *ngIf="challenges.length > 0" class="col-md-12 project-result result-section">
+                
+                <div class="results-header d-flex justify-content-end">
+                  <div class="result-title mr-auto"><span>Challenges</span></div>
+                  <div class="view-all-result"><span>{{challengesCount}} Results | </span><a href="">See all results</a></div>
+                </div>
+                <div class="row projects-result">
+                  <div *ngFor="let challenge of challenges" class="">{{challenge.is_nid}}</div>
+                </div>
+            </div>
+
+            <!-- Showcases -->
+            <div *ngIf="showcases.length > 0" class="col-md-12 project-result result-section">
+                
+                <div class="results-header d-flex justify-content-end">
+                  <div class="result-title mr-auto"><span>Showcases</span></div>
+                  <div class="view-all-result"><span>{{showcasesCount}} Results | </span><a href="">See all results</a></div>
+                </div>
+                <div class="row projects-result">
+                  <div *ngFor="let showcase of showcases" class="">{{showcase.is_nid}}</div>
+                </div>
+            </div>
+              
+            <!-- Learning -->
+            <div *ngIf="learning.length > 0" class="col-md-12 project-result result-section">
+                
+                <div class="results-header d-flex justify-content-end">
+                  <div class="result-title mr-auto"><span>Workshops</span></div>
+                  <div class="view-all-result"><span>{{learningCount}} Results | </span><a href="">See all results</a></div>
+                </div>
+                <div class="row projects-result">
+                  <div *ngFor="let learn of learning" class="">{{learn.is_nid}}</div>
+                </div>
+            </div>
+
+            <!-- Users -->
+            <div *ngIf="users.length > 0" class="col-md-12 project-result result-section">   
+                <div class="results-header d-flex justify-content-end">
+                  <div class="result-title mr-auto"><span>Makers</span></div>
+                  <div class="view-all-result"><span>{{usersCount}} Results | </span><a href="">See all results</a></div>
+                </div>
+                <div class="row projects-result">
+                  {{users | json}}
+                  <app-user-card *ngFor="let user of users" [uid]="24"></app-user-card>
+                </div>
+            </div>
+
+
+          </div>
+      </div>
+    </div>
+</section>

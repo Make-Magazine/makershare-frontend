@@ -10,9 +10,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-
 import { SharedButtonsComponent } from '../../../shared/shared-buttons/shared-buttons.component';
-
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileEntity } from '../../../../models/Drupal/file_entity';
 import { domain } from '../../../../d7services/example.globals';
@@ -29,27 +27,28 @@ export class ProfileComponent implements OnInit {
  ckEditorConfig: {} = {
     "toolbarGroups": [
           { "name": "document", "groups": [ "mode", "document", "doctools" ] },
+          { "name": 'clipboard',   "groups": [ 'clipboard', 'undo' ] },
           { "name": "editing", "groups": [ "find", "selection", "spellchecker", "editing" ] },
-          { "name": "forms", "groups": [ "forms" ] }
+          { "name": "forms", "groups": [ "forms" ] },
+          { "name" : 'paragraph',   "groups": [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+          { "name": 'document',	   "groups": [ 'mode', 'document', 'doctools' ] },
+          { "name": 'styles' }
       ],
       "removeButtons":"Source,Save,Templates,Find,Replace,Scayt,SelectAll",
       "extraPlugins": 'wordcount',
       "wordcount":{
-      "maxCharCount": '100',
       "showParagraphs": false,
       "showWordCount": false,
-       showCharCount: true,
-       countSpacesAsChars: true,
-       countHTML: false,
-       maxWordCount: -1,
+      "showCharCount": true,
+      "countSpacesAsChars": true,
+      "countHTML": false,
+      "maxCharCount": '550',
       },
-
      };
 
 
  countdown = '';
-//  countdown2;
-
+countProject=0;
 
   customTitle: string = 'Maker Portfolio';
   customDescription: string;
@@ -115,9 +114,7 @@ export class ProfileComponent implements OnInit {
     this.cropperSettings.canvasHeight = 300;
     this.cropperSettings.minWidth = 100;
     this.cropperSettings.minHeight = 100;
-
     this.cropperSettings.rounded = false;
-
     this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
     this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
     this.cropperSettings.noFileInput = true;
@@ -133,8 +130,9 @@ export class ProfileComponent implements OnInit {
       this.profile = res;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
       this.customImage = this.profile.user_photo;
-      this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {
-        //console.log(res);
+      console.log(this.profile.profile_cover);
+      this.fileService.getFileById(Number(this.profile.profile_cover)).subscribe((res: any) => {
+        console.log(res);
         this.profile.profile_cover = res.uri;
       });
       localStorage.setItem('user_photo', this.profile.user_photo);
@@ -161,6 +159,7 @@ export class ProfileComponent implements OnInit {
 
     this.BuildForm();
     this.getBadges();
+    this.getCountProject();
   }// end of OnInit 
 
   BuildForm() {
@@ -174,35 +173,35 @@ export class ProfileComponent implements OnInit {
   saveInfo() {
     // this.optionalForm.value;
     this.profile.nickname = this.info.nickname;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
 
   onSelected(intrest) {
     this.profile.maker_interests.push(intrest.name);
   }
   saveIntersets() {
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
   saveBio() {
     this.profile.bio = this.info.bio;
     this.profile.describe_yourself = this.info.describe_yourself;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
 
   saveSocial() {
     this.profile.field_social_accounts = this.info.field_social_accounts;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
   saveMarkerspaces() {
     this.profile.field_add_your_makerspace_s_ = this.info.field_add_your_makerspace_s_;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
-  saveProfile() {
-    this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
-
+  saveProfile(profile :any) {
+    this.profileService.updateProfile(this.userId, profile).subscribe(profile => {
     }, err => {
       //console.log(err);
     });
+    this.ngOnInit();
   }
   onValueChanged(data?: any) {
 
@@ -262,10 +261,6 @@ export class ProfileComponent implements OnInit {
 
 
  limitText(limitField, limitCount, limitNum) {
-
-  //  console.log('limit')
-  //     console.log (limitField)
-      // console.log ( limitCount)
       
 	if (limitField.length > limitNum) {
 		limitField = limitField.substring(0, limitNum);
@@ -279,16 +274,16 @@ export class ProfileComponent implements OnInit {
 	}
 }
 
-
   saveCropped() {
     if (!this.CoverImageData.image) return;
     //this.profile.profile_cover = this.CoverImageData.image;
     this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
     this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
-      //console.log(res);
-      this.profile.profile_cover = res.fid
+      console.log(res);
+     this.profile.profile_cover = res.fid
+     console.log(this.profile.profile_cover);
+     this.saveProfile(this.profile);
     });
-    this.saveProfile();
   }
 
   /* function get Badges */
@@ -299,12 +294,17 @@ export class ProfileComponent implements OnInit {
     }, err => {
     });
   }
-
    /* end function get Badges */
-   
-    
+     /* function to get count projects */
+  getCountProject() {
+    this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
+      this.countProject = data[0];
+    }, err => {
 
-  /* end function get Badges */
+    });
+  }
+  /* end count function */
+
   limitString(model, key, length) {
     if (typeof model[key] != "undefined") {
       if (model[key].length > length) {

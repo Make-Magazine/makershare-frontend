@@ -6,7 +6,8 @@
           <!--start if -->
           <div class="filters">
             <div class="container">
-              <div class="row justify-content-center align-items-center">
+             
+              <div class="row float-right">
                 <div class="entries-count btn">
                   <p *ngIf="projectsCount == 1">{{projectsCount}} Entry</p>
                   <p *ngIf="projectsCount > 1">{{projectsCount}} Entries</p>
@@ -16,14 +17,14 @@
                     aria-expanded="false">
                     {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="filter-challenges">
-                      <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
-                      <a class="dropdown-item" (click)="oldest($event)" class="btn">Oldest</a>
-                      <a class="dropdown-item" (click)="sortAsc($event)" class="btn">Title A-Z</a>
-                      <a class="dropdown-item" (click)="sortDesc($event)" class="btn">Title Z-A</a>
-                      <a class="dropdown-item" (click)="mostLiked($event)" class="btn">Most Liked</a>
-                      <a class="dropdown-item" (click)="mostForked($event)" class="btn">Most Forked</a>
-                    </div>
+                  <div class="dropdown-menu" aria-labelledby="filter-challenges">
+                    <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
+                    <a class="dropdown-item" (click)="oldest($event)" class="btn">Oldest</a>
+                    <a class="dropdown-item" (click)="sortAsc($event)" class="btn">Title A-Z</a>
+                    <a class="dropdown-item" (click)="sortDesc($event)" class="btn">Title Z-A</a>
+                    <a class="dropdown-item" (click)="mostLiked($event)" class="btn">Most Liked</a>
+                    <a class="dropdown-item" (click)="mostForked($event)" class="btn">Most Forked</a>
+                  </div>
                 </div>
                 <!-- End sorting-filter -->
               </div>
@@ -38,15 +39,14 @@
     </div>
     <!--end if projects-->
     <div class="entries" *ngIf="challenge">
-      <div *ngIf="challenge.display_entries =='1'">
+      <div class="entries-section" *ngIf="challenge.display_entries =='1'">
         <div *ngIf="projectsChallenge" class="projects-grid  row">
-
           <!-- Start Project Card -->
           <app-project-card *ngFor="let project of projectsChallenge" [view]="view" [nid]="project.nid" class="col-md-4"></app-project-card>
           <!-- End Project Card -->
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center" *ngIf="!hideLoadMore">
         <div class="button-container-sec-3">
           <a class="btn btn-grey" *ngIf="!hideLoadMore" (click)="loadMoreProject($event)">Load more</a>
         </div>

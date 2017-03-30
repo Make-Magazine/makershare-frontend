@@ -1,6 +1,6 @@
 <div class="followers conatiner" *ngIf="followers">
   <div class="followers-cards row">
-    <div class="col-md-4" *ngFor="let follower of followers">
+    <div class="col-md-6 mb-1" *ngFor="let follower of followers">
       <div class="follower-card">
         <!-- Start User Card -->
         <app-user-card [uid]="follower.uid"></app-user-card>
@@ -11,7 +11,7 @@
     <!-- End col-md-4 -->
   </div>
   <div class="text-center">
-    <div class="button-container-sec-3">
+    <div class="button-container-sec-3" *ngIf="!hideloadmorefollower">
       <a class="btn btn-grey" *ngIf="!hideloadmorefollower" (click)="loadMoreFollower($event)">Load more</a>
     </div>
   </div>
