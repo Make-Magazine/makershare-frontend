@@ -3,8 +3,13 @@
     <div class="container showcases-container">
       <div class="showcase-card-backlayer container">
         <div class="showcase-card row">
-          <div class="col-md-4 image-container">
-            <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
+          <div class="col-md-4 left-side">
+            <div class="image-container">
+              <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
+            </div>
+            <div class="showcase-card-footer-3">
+              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
+            </div>
           </div>
           <div class="col-md-8">
             <div class="card-container">
@@ -19,7 +24,7 @@
                 <div class="showcase-card-footer d-flex">
                   <div class="showcase-card-footer-1">
                   </div>
-                  <div class="showcase-card-footer-2 ml-4">
+                  <div class="showcase-card-footer-2">
                     <div class="showcase-card-count d-felx">
                       <div class="views-count-div">
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
@@ -70,27 +75,3 @@
     </div>
   </div>
   <section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>-->
