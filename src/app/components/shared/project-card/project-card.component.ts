@@ -53,7 +53,11 @@ export class ProjectCardComponent implements OnInit {
 
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid] , this.navigationExtras);
+    if(this.navigationExtras.queryParams){  
+      this.router.navigate(['/project/view', nid] , this.navigationExtras);
+    }else{
+      this.router.navigate(['/project/view', nid]);
+    }
    // console.log(nid)
   }
 }

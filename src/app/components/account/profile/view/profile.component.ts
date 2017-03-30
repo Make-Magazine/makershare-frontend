@@ -130,8 +130,9 @@ countProject=0;
       this.profile = res;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
       this.customImage = this.profile.user_photo;
-      this.fileService.getFileById(+this.profile.profile_cover).subscribe((res: any) => {
-        //console.log(res);
+      console.log(this.profile.profile_cover);
+      this.fileService.getFileById(Number(this.profile.profile_cover)).subscribe((res: any) => {
+        console.log(res);
         this.profile.profile_cover = res.uri;
       });
       localStorage.setItem('user_photo', this.profile.user_photo);
@@ -172,31 +173,31 @@ countProject=0;
   saveInfo() {
     // this.optionalForm.value;
     this.profile.nickname = this.info.nickname;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
 
   onSelected(intrest) {
     this.profile.maker_interests.push(intrest.name);
   }
   saveIntersets() {
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
   saveBio() {
     this.profile.bio = this.info.bio;
     this.profile.describe_yourself = this.info.describe_yourself;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
 
   saveSocial() {
     this.profile.field_social_accounts = this.info.field_social_accounts;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
   saveMarkerspaces() {
     this.profile.field_add_your_makerspace_s_ = this.info.field_add_your_makerspace_s_;
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
-  saveProfile() {
-    this.profileService.updateProfile(this.userId, this.profile).subscribe(profile => {
+  saveProfile(profile :any) {
+    this.profileService.updateProfile(this.userId, profile).subscribe(profile => {
 
     }, err => {
       //console.log(err);
@@ -279,8 +280,9 @@ countProject=0;
     this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
     this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
      this.profile.profile_cover = res.fid
+     console.log(this.profile.profile_cover);
     });
-    this.saveProfile();
+    this.saveProfile(this.profile);
   }
 
   /* function get Badges */
