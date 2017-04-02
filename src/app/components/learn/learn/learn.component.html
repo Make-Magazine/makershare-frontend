@@ -1,52 +1,77 @@
-<div class="workshop-page">
-  <div class="main-container container-fluid">
-    <div class="row">
-      <section class="col-sm-12 width-fix">
-        <div class="region region-content">
-          <header class="workshop-header">
-            <div class="container">
-              <h3>Workshops</h3>
-              <div class="top-content-wrapper">
-                <div class="container">
-                  <h4>Get started, sharpen your skills, or become an expert</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore
-                    explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore
-                    nam quaerat inventore eveniet rerum totam.</p>
-                </div>
+<section class="learn-page-data">
+    <div class="region region-content page-learn">
+      <header class="learn-header">
+        <div class="container">
+          <h3>Learning</h3>
+          <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est optio cumque nihil impedit quo minu id quod maxime placeat facere possimus, omnis voluptas assumenda</p>
+        </div>
+      </header>
+      <!--/header -->
+      <div class="filters">
+        <div class="container">
+          <div class="row justify-content-end align-items-center">
+            <!--<div class="entries-count btn">-->
+              <!--<p *ngIf="currentCount==1">{{currentCount}} Learning Workshop</p>-->
+              <!--<p *ngIf="currentCount>1">{{currentCount}} Learning Workshops</p>-->
+            <!--</div>-->
+            <!--<div ngbDropdown class="d-inline-block sorting-filter dropdown">
+              <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{currentStatusName}} <i class="fa fa-lg fa-angle-down"></i></button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" *ngFor="let status of allstatuses" (click)="SetCurrentStatus($event)" data-id="{{status.tid}}"
+                  data-name="{{status.name}}">
+                  {{status.name}}
+                  </button>
               </div>
-              <!-- End filters -->
-            </div>
-          </header>
-          <!--/header -->
-          <div class="container showcase">
-            <div class="Workshop-view row">
-              <div *ngFor="let learn of learns" (click)="WorkshopDetails(learn.nid)" class="learning col-xs-12">
-                <div class="learning-item d-flex justify-content-around">
-                  <div class="image-top">
-                    <img class="card-img-top" src="{{learn.cover_photo}}">
-                  </div>
-                  <div class="content-bottom col d-flex">
-                    <div class="content-side d-flex flex-column align-self-stretch">
-                      <h4 class="card-title" [innerHTML]="learn.workshop_title"></h4>
-                      <div class="card-description" [innerHTML]="learn.brief_description"></div>
-                      <ul class="list-unstyled d-flex flex-wrap mt-auto workshop-tags">
-                        <li><a *ngFor="let category of learn.categories" class="btn btn-soft-tag">{{category}}</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div>-->
           </div>
         </div>
-        <div class="text-center">
-          <div class="button-container-main-2">
-            <a class="btn btn-main-2">Load more</a>
+      </div>
+      <!-- End filters -->
+      <div class="container learn-container">
+        <div *ngFor="let learn of learns"  class="learn-card row">
+          <div class="col-md-4 image-container">
+            <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
           </div>
+          <!-- End image-container -->
+          <div class="col-md-8">
+            <div class="card-container">
+              <div class="card">
+                <div class="learn-type-bagde"><p>WORKSHOP</p></div>
+                <div class="card-partership">
+                  <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
+                  </div>
+                <h3 class="card-title" [innerHTML]="learn.workshop_title"></h3>
+                <div class="card-description" >
+                  <p [innerHTML]="learn.brief_description"></p>
+                </div>
+                <div class="learn-card-footer d-flex">
+                <div class="learn-card-footer-1">
+                  <div class="button-container-main-1" >
+                    <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)" >Get Started</span>
+                  </div>
+                </div>
+                <div class="learn-card-footer-2 ml-3">
+                <!--<div class="learn-card-count">
+                  <span class="entries-count">{{challenge.entries_count}}
+                       <span *ngIf="challenge.entries_count>1">Lessons</span>
+                  <span *ngIf="challenge.entries_count <= 1">Lesson</span>
+                  </span>
+                  </div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End card-container -->
+          </div>
+          <!-- End col-md-6 -->
         </div>
-      </section>
+        <!-- End challenge-card -->
+      </div>
+      <div class="text-center">
+        <div class="button-container-sec-3" *ngIf="hideloadmore">
+          <a *ngIf="hideloadmore" (click)="loadmore()" class="btn btn-grey">Load more</a>
+        </div>
+      </div>
     </div>
     <!-- End region-content -->
-  </div>
-  <!-- End row -->
-</div>
+  </section>
