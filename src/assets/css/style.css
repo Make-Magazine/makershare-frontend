@@ -831,6 +831,98 @@ footer {
   color: #BEBEBE;
   clear: both; }
 
+.user-card-small.card-block {
+  padding-top: 10px;
+  padding-bottom: 0;
+  padding-left: 0; }
+.user-card-small .icons-side-user {
+  width: 80px;
+  overflow: hidden; }
+  .user-card-small .icons-side-user .user-icon {
+    float: left; }
+    .user-card-small .icons-side-user .user-icon img {
+      width: 26px; }
+.user-card-small .card-type {
+  top: 30px; }
+.user-card-small .count-list {
+  margin-top: 10px; }
+.user-card-small .card-stats {
+  padding: 2px;
+  color: #BEBEBE; }
+  .user-card-small .card-stats ul li {
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    color: #BEBEBE; }
+    .user-card-small .card-stats ul li img {
+      margin-right: 6px; }
+      .user-card-small .card-stats ul li img.project-likes {
+        width: 12px; }
+      .user-card-small .card-stats ul li img.project-views {
+        width: 20px; }
+    .user-card-small .card-stats ul li span {
+      margin: 0px; }
+.user-card-small .profile-pic-container {
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 0;
+  position: relative;
+  left: -10px;
+  top: -30px; }
+  .user-card-small .profile-pic-container .maker-photo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 4px; }
+  .user-card-small .profile-pic-container a {
+    width: 100%; }
+  .user-card-small .profile-pic-container .message-btn {
+    padding: 0px; }
+.user-card-small .user-name {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282; }
+  .user-card-small .user-name a {
+    text-decoration: none;
+    color: #222; }
+.user-card-small .user-nickname {
+  font-size: 12px;
+  margin-bottom: 0; }
+  .user-card-small .user-nickname a {
+    text-decoration: none;
+    color: #BEBEBE; }
+.user-card-small .profile-tag {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  margin-bottom: 5px;
+  height: 38px;
+  line-height: 17px;
+  overflow: hidden;
+  display: inline-block; }
+.user-card-small .profile-tag, .user-card-small .user-city, .user-card-small .count {
+  font-size: 14px; }
+.user-card-small .user-city {
+  color: #0AA9EA; }
+  .user-card-small .user-city div {
+    float: left;
+    margin-right: 6px; }
+.user-card-small .count {
+  margin-bottom: 0;
+  color: #BEBEBE;
+  clear: both; }
+
 /*  Start Styling Homepage   */
 /* End of Showcase */
 .profile-page {
@@ -2033,7 +2125,6 @@ footer {
           background-color: #fff !important;
           border-bottom-color: #fff; }
   .page-project .project-story-tab {
-    background-color: white;
     padding: 10px;
     margin-bottom: 10px; }
   .page-project .feedback-group {
@@ -2170,18 +2261,11 @@ footer {
     text-align: right;
     margin: 5px 0 10px; }
   .page-project .project-collaborates .collaborate {
-    border: 1px solid #BEBEBE;
+    background-color: #fff;
     margin-top: 10px;
     margin-bottom: 10px; }
     .page-project .project-collaborates .collaborate .profile-container {
-      width: 100%;
-      float: none; }
-      .page-project .project-collaborates .collaborate .profile-container .profile-card {
-        border: none; }
-        .page-project .project-collaborates .collaborate .profile-container .profile-card > div {
-          padding: 0; }
-        .page-project .project-collaborates .collaborate .profile-container .profile-card .right {
-          padding: 0px 4px 0px 4px; }
+      margin: 10px 0; }
     .page-project .project-collaborates .collaborate .role {
       padding: 10px 10px 0px 10px;
       background-color: #eee;
