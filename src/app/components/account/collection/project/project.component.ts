@@ -52,7 +52,7 @@ export class ProjectComponent implements OnInit {
     if (event.target.checked === true) {
       this.deletedArr.push(mid);
 
-      console.log(this.deletedArr)
+     // console.log(this.deletedArr)
     } else {
       // remove from deletedArr
       var index = this.deletedArr.indexOf(mid, 0);
@@ -60,6 +60,20 @@ export class ProjectComponent implements OnInit {
         this.deletedArr.splice(index, 1);
       }
     }
+  }
+    /**
+ * delete selected messages
+ */
+  deleteMessages() {
+    console.log(this.deletedArr);
+  /*  for (var _i = 0; _i < this.deletedArr.length; _i++) {
+     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+        this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
+     // 
+     }
+    }
+   // this.msg.splice(this.deletedArr.length,1)
+   this.getProjectBookmark();*/
   }
 
 }

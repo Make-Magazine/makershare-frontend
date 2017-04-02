@@ -252,7 +252,7 @@ export class InboxComponent implements OnInit {
             msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' '  + 'hours ago';
           }else if(msg_arr[i].last_updated === 1440){
             msg_arr[i].last_updated = 'day ago';
-          }else if(msg_arr[i].last_updated > 1440 && msg_arr[i].last_updated < 10080){
+          }else if(msg_arr[i].last_updated > 1440 && msg_arr[i].last_updated <= 10080){
             msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' '  + 'days ago';
           }
           i++
