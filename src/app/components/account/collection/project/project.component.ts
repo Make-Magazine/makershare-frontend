@@ -2,6 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FlagService } from '../../../../d7services/flag/flag.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Location } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-project',
@@ -16,7 +22,9 @@ export class ProjectComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
-        private flagService: FlagService,
+    private flagService: FlagService,
+        private _location: Location,
+
 
 
   ) { }
@@ -36,23 +44,23 @@ export class ProjectComponent implements OnInit {
 
     });
   }
-    deleteMessage(i) {
+  deleteMessage(i) {
 
-       
-      this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
-     this.getProjectBookmark(); 
-     }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      });
-     // console.log(this.projects[i]['nid']);
-    
+
+    this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
+      this.getProjectBookmark();
+    }, err => {
+      //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+    });
+    // console.log(this.projects[i]['nid']);
+
   }
-    valueChanged(mid, event) {
+  valueChanged(mid, event) {
     // add to deletedArr
     if (event.target.checked === true) {
       this.deletedArr.push(mid);
 
-     // console.log(this.deletedArr)
+      // console.log(this.deletedArr)
     } else {
       // remove from deletedArr
       var index = this.deletedArr.indexOf(mid, 0);
@@ -61,19 +69,36 @@ export class ProjectComponent implements OnInit {
       }
     }
   }
-    /**
- * delete selected messages
- */
+  /**
+* delete selected messages
+*/
   deleteMessages() {
     console.log(this.deletedArr);
-  /*  for (var _i = 0; _i < this.deletedArr.length; _i++) {
-     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
-        this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
-     // 
-     }
-    }
-   // this.msg.splice(this.deletedArr.length,1)
-   this.getProjectBookmark();*/
+    for (var i = 0; i < this.deletedArr.length; i++) {
+      this.flagService.unflag(this.deletedArr[i], this.userId, 'node_bookmark').subscribe(response => {
+        this.getProjectBookmark();
+      }, err => {
+        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+      });
+}
   }
 
+
+    checkAll(ev) {
+    this.projects.forEach(x => x.state = ev.target.checked)
+    for (var _i = 0; _i < this.projects.length; _i++) {
+      if (ev.target.checked === true) {
+        this.deletedArr.push(this.projects[_i].nid);
+        console.log(this.projects[_i].nid)
+      } else {
+        var index = this.deletedArr.indexOf(this.projects[_i].nid, 0);
+        if (index > -1) {
+          this.deletedArr.splice(index, 1);
+        }
+      }
+    }
+  }
+  isAllChecked() {
+    return this.projects.every(_ => _.state);
+  }
 }
