@@ -9,6 +9,8 @@ import { FlagService } from '../../../../d7services/flag/flag.service';
 })
 export class ProjectComponent implements OnInit {
   projects = [];
+  deletedArr = [];
+
   userId
   type = 'project';
   constructor(private route: ActivatedRoute,
@@ -44,6 +46,20 @@ export class ProjectComponent implements OnInit {
       });
      // console.log(this.projects[i]['nid']);
     
+  }
+    valueChanged(mid, event) {
+    // add to deletedArr
+    if (event.target.checked === true) {
+      this.deletedArr.push(mid);
+
+      console.log(this.deletedArr)
+    } else {
+      // remove from deletedArr
+      var index = this.deletedArr.indexOf(mid, 0);
+      if (index > -1) {
+        this.deletedArr.splice(index, 1);
+      }
+    }
   }
 
 }
