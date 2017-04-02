@@ -240,7 +240,8 @@ export class InboxComponent implements OnInit {
 
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
-          msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+          msg_arr[i].last_updated = Math.abs(this.dateObj - this.currentDate) / (60 * 1000);
+          console.log(msg_arr[i].last_updated)
           if(msg_arr[i].last_updated === 1){
             msg_arr[i].last_updated = 'minute ago';
           }else if(msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60){
