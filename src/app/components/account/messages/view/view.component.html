@@ -17,14 +17,14 @@
                 </div>
                 <div class="media-body">
                   <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
-                  <p class="timestamp" *ngIf="message.timestamp == 1">{{message.timestamp}} minute ago </p>
-                  <p class="timestamp" *ngIf="message.timestamp > 1 && message.timestamp < 60" >{{message.timestamp}} minutes ago </p>
+                  <p class="timestamp" *ngIf="message.timestamp">{{message.timestamp}}</p>
+                  <!--<p class="timestamp" *ngIf="message.timestamp > 1 && message.timestamp < 60" >{{message.timestamp}} minutes ago </p>
                   <p class="timestamp" *ngIf="message.timestamp == 60" >{{message.timestamp/60 | number : '1.0-0'}} hour ago</p>
                   <p class="timestamp" *ngIf="message.timestamp > 60 && message.timestamp < 1440 " >{{message.timestamp/60 | number : '1.0-0'}} hours ago</p>
                   <p class="timestamp" *ngIf="message.timestamp == 1440 " >{{message.timestamp/(24*60) | number : '1.0-0'}} 1 day ago</p>
                   <p class="timestamp" *ngIf="message.timestamp < 10080 && message.timestamp >= 1440 " >{{message.timestamp/(24*60) | number : '1.0-0'}} days ago</p>
                   <p class="timestamp" *ngIf="message.timestamp >= 10080 ">{{dateObj | date:'medium'}}</p>
-                  <p class="timestamp" *ngIf="!message.timestamp" >Now</p>
+                  <p class="timestamp" *ngIf="!message.timestamp" >Now</p>-->
                   
                 </div>
               </div>

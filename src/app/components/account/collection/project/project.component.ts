@@ -19,6 +19,8 @@ export class ProjectComponent implements OnInit {
 
   userId
   type = 'project';
+  checkState = false;
+  check = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -99,6 +101,7 @@ export class ProjectComponent implements OnInit {
     }
   }
   isAllChecked() {
+
     return this.projects.every(_ => _.state);
   }
 }

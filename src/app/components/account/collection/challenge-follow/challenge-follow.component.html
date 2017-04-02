@@ -1,4 +1,6 @@
-
+<div *ngIf="challenges.length>0">
+<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
+<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
 <table class="table">
   <thead>
     <tr>
@@ -7,6 +9,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let challenge of challenges let i=index;">
+      <div class="select" *ngIf="challenge">
+        <input type="checkbox" value="{{challenge.nid}}"  [(ngModel)]="challenge.state"  (change)="valueChanged(challenge.nid,$event)">
+      </div>
       <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
           <div class="delete">
             <a  class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
@@ -14,3 +19,4 @@
     </tr>
   </tbody>
 </table>
+</div>

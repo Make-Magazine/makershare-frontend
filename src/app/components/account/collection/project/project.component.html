@@ -1,6 +1,6 @@
+<div *ngIf="projects.length>0">
 <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
 <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
-
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +11,7 @@
 
     <tr *ngFor="let project of projects let i=index;">
       <div class="select" *ngIf="project">
-        <input type="checkbox" value="{{project.nid}}" [(ngModel)="project.state" (change)="valueChanged(project.nid,$event)">
+        <input type="checkbox" value="{{project.nid}}"  [(ngModel)]="project.state"  (change)="valueChanged(project.nid,$event)">
       </div>
       <td *ngIf="project">{{project.project_name}}</td>
       <div class="delete">
@@ -20,3 +20,4 @@
     </tr>
   </tbody>
 </table>
+</div>

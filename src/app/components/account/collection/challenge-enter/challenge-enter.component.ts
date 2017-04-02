@@ -22,4 +22,29 @@ export class ChallengeEnterComponent implements OnInit {
 
     });
   }
+    deleteMessage(i) {
+   /* 
+    // this.mainService.delete(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
+    //   this.router.navigate(['challenges/', this.nid]);
+    //   // console.log(this.challangeData.title)
+    //   this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
+    //   /* bookmark auto after submit project challenge */
+    //   if (this.nid) {
+    //     this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
+    //     }, err => {
+    //     });
+    //   }
+    //   /* end bookmark  */
+    //   /* follow auto after submit project challenge */
+    //   if (this.nid) {
+    //     this.flagService.flag(this.nid, this.userId, 'follow').subscribe(response => {
+    //     }, err => {
+    //     });
+    //   }
+    //   /* end follow  */
+    // }, err => {
+    //   // console.log(err);
+    // });
+
+  }
 }

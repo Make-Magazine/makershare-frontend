@@ -7,11 +7,13 @@ import { ChallengeFollowComponent } from '../collection/challenge-follow/challen
 import { ChallengeEnterComponent } from '../collection/challenge-enter/challenge-enter.component';
 import { CollectionRoutingModule } from './collection-routing.module'
 import {CollectionComponent}from "./collection.component"
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    CollectionRoutingModule
+    CollectionRoutingModule,
+    FormsModule
   ],
   declarations: [
     ProjectComponent,
