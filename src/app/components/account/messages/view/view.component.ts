@@ -75,6 +75,23 @@ export class ViewComponent implements OnInit {
             this.dateObj = new Date(message.timestamp * 1000);
             this.currentDate = new Date();
             message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
+          if(message.timestamp < 1){
+            message.timestamp = 'Now';
+          }else if(message.timestamp === 1){
+            message.timestamp = 'minute ago';
+          }else if(message.timestamp > 1 && message.timestamp < 60){
+            message.timestamp = message.timestamp + ' '  +  'minutes ago';
+          }else if(message.timestamp > 60 && message.timestamp < 120){
+            message.timestamp = Math.floor(message.timestamp/60) + ' ' +  'hour ago';
+          }else if(message.timestamp >= 120 && message.timestamp < 1440){
+            message.timestamp = Math.floor(message.timestamp/60) + ' '  + 'hours ago';
+          }else if(message.timestamp >= 1440 && message.timestamp < 2880){
+            message.timestamp = Math.floor(message.timestamp/(24*60)) + ' ' + 'day ago';
+          }else if(message.timestamp > 2880 && message.timestamp < 10080){
+            message.timestamp = Math.floor(message.timestamp/(24*60)) + ' '  + 'days ago';
+          }else if (message.timestamp > 10080){
+            message.timestamp = this.dateObj.toLocaleDateString();
+          }
           })
           i++
         }
@@ -101,7 +118,9 @@ export class ViewComponent implements OnInit {
           user_photo: this.user['user_photo'],
           first_name: this.user['first_name'],
           last_name: this.user['last_name'],
-          body: this.reply.body
+          body: this.reply.body,
+          timestamp: 'Now' 
+
         }
         this.messages.push(newComment);
       }, err => { });
