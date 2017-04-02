@@ -52,6 +52,7 @@ export class UserCardComponent implements OnInit {
     this.getBadges();
     this.buildForm();
     this.getProjectCountByUser();
+    this.checkUserLogin()
   }
 
   getcard() {
@@ -163,6 +164,9 @@ export class UserCardComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+  checkUserLogin(){
+    
   }
 
 }
