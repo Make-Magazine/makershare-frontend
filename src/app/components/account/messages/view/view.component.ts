@@ -16,6 +16,8 @@ import { ViewService } from '../../../../d7services/view/view.service';
 export class ViewComponent implements OnInit {
   msg;
   uid;
+  status;
+  hideTurnOn
   user = [];
   messages = [];
   message;
@@ -46,6 +48,7 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getStatus();
     this.buildForm();
     this.getThreads();
     var thread_id;
@@ -172,6 +175,21 @@ export class ViewComponent implements OnInit {
     // this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
     //   console.log(data);
     // })
+  }
+
+    /*
+  *if message turned off the data[0]=disabled
+  */
+  getStatus() {
+    this.userId = parseInt(localStorage.getItem('user_id'));
+    this.pm.getStatus(this.userId).subscribe(data => {
+      this.status = data;
+      if (this.status == false) {
+        this.hideTurnOn = false;
+      } else if (this.status.setting === "disabled") {
+        this.hideTurnOn = true;
+      }
+    })
   }
   
 }

@@ -35,7 +35,7 @@
           </div>
         </ul>
         <form [formGroup]="messageForm" (ngSubmit)="onSubmit($event)">
-          <div class="reply-area" [hidden]="block">
+          <div class="reply-area" [hidden]="block" *ngIf="!hideTurnOn">
             <p class="reply">Reply</p>
             <div>
                 <textarea [hidden]="block" name="body" id="" cols="30" rows="5" formControlName="body"></textarea>
