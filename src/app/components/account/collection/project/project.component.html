@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects let i=index;">
+      <td *ngIf="project">{{project.project_name}}</td>
+       <div class="delete">
+            <a  class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+          </div>
+    </tr>
+  </tbody>
+</table>

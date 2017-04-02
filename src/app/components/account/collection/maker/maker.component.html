@@ -1,0 +1,12 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td *ngIf="user">{{user.user_name}}</td>
+    </tr>
+  </tbody>
+</table>
