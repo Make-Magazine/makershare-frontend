@@ -28,6 +28,8 @@ import { Auth } from './auth0/auth.service';
 import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
