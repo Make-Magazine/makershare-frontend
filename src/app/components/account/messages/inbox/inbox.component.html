@@ -38,7 +38,7 @@
               <p class="timestamp" *ngIf="message.last_updated > 60 && message.last_updated < 1440 ">{{message.last_updated/60 | number : '1.0-0'}} hours ago</p>
               <p class="timestamp" *ngIf="message.last_updated == 1440 ">{{message.last_updated/(24*60) | number : '1.0-0'}} day ago</p>
               <p class="timestamp" *ngIf="message.last_updated > 1440 && message.last_updated < 10080 ">{{message.last_updated/(24*60) | number : '1.0-0'}} days ago</p>-->
-              <p class="timestamp" *ngIf="message.last_updated >= 10080 ">{{dateObj | date:'medium'}}</p>
+              <p class="timestamp" *ngIf="message.last_updated > 10080 ">{{dateObj | date}}</p>
               <p class="timestamp" *ngIf="!message.last_updated">Now</p>
             </div>
           </div>
