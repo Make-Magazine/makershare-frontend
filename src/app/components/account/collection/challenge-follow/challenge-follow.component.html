@@ -8,6 +8,9 @@
   <tbody>
     <tr *ngFor="let challenge of challenges let i=index;">
       <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
+          <div class="delete">
+            <a  class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+          </div>
     </tr>
   </tbody>
 </table>

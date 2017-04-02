@@ -35,8 +35,7 @@ export class ProjectComponent implements OnInit {
     });
   }
     deleteMessage(i) {
-      // this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-      // delete this.msg[i];
+
        
       this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
      this.getProjectBookmark(); 
