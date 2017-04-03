@@ -70,7 +70,7 @@ export class ChallengeDataComponent implements OnInit {
         this.awards = data;
         this.no_of_awards = data.length;
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+       // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
     this.cheackenter();
 
@@ -80,7 +80,7 @@ export class ChallengeDataComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
     }, err => {
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+     // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
 
@@ -105,7 +105,7 @@ export class ChallengeDataComponent implements OnInit {
         // console.log(this.followers[0]['follow_counter']);
         // console.log(this.followers.length);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry error, somthing went wrong, try again later.', type: NotificationType.Error });
+        //this.notificationBarService.create({ message: 'Sorry error, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function get challenge followers */
@@ -195,7 +195,7 @@ export class ChallengeDataComponent implements OnInit {
         this.projects = this.projects.concat(data);
         this.loadMoreVisibilty();
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /* function to get myEnteries */
@@ -215,7 +215,7 @@ export class ChallengeDataComponent implements OnInit {
       .subscribe(data => {
         this.projects = this.projects.concat(data);
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   // Function to control load more button
@@ -282,7 +282,7 @@ export class ChallengeDataComponent implements OnInit {
           // console.log(data[0]);
         }
       }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
@@ -303,7 +303,7 @@ export class ChallengeDataComponent implements OnInit {
 
       //console.log(data);
     }, err => {
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+     // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
   }
