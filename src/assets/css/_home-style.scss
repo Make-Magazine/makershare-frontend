@@ -255,7 +255,6 @@ footer {
         margin-bottom: 5px;
         height: 38px;
         line-height: 17px;
-        overflow: hidden;
         display: inline-block;
     }
     .profile-tag, .user-city, .count {
@@ -280,6 +279,9 @@ footer {
         padding-top: 10px;
         padding-bottom: 0;
         padding-left: 0;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     }
     .icons-side-user {
             width: 80px;

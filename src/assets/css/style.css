@@ -246,8 +246,7 @@ a:not([href]):not([tabindex]).btn-dark-grey {
 .btn-soft-grey,
 a:not([href]):not([tabindex]).btn-soft-grey {
   color: #757575 !important;
-  background-color: #ecf0f1;
-  border: 1px solid rgba(105, 105, 105, 0.44);
+  background-color: white;
   border-radius: 0;
   font-size: 13px; }
   .btn-soft-grey:hover,
@@ -323,10 +322,10 @@ a:not([href]):not([tabindex]) {
     height: 70px;
     position: relative;
     font-family: "Messina Modern Regular" !important;
-    font-size: 48pt !important;
+    font-size: 40pt !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
-    line-height: 90% !important;
+    line-height: 100% !important;
     color: #828282;
     color: #4F4F4F;
     min-height: 38px; }
@@ -844,7 +843,6 @@ footer {
   margin-bottom: 5px;
   height: 38px;
   line-height: 17px;
-  overflow: hidden;
   display: inline-block; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
@@ -861,7 +859,10 @@ footer {
 .user-card-small.card-block {
   padding-top: 10px;
   padding-bottom: 0;
-  padding-left: 0; }
+  padding-left: 0;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
 .user-card-small .icons-side-user {
   width: 80px;
   overflow: hidden; }
@@ -2048,10 +2049,10 @@ footer {
         margin: 0px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 48pt !important;
+      font-size: 40pt !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 90% !important;
+      line-height: 100% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -2135,7 +2136,7 @@ footer {
         .page-project .top-content-wrapper .project-aside li:not(:last-child) a {
           border-right-color: transparent; }
         .page-project .top-content-wrapper .project-aside li .btn {
-          padding: 12px 20px;
+          padding: 14px 34px;
           -moz-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26);
           -webkit-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26);
           box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26); }
@@ -2143,14 +2144,24 @@ footer {
           background-color: #fff !important;
           border-bottom-color: #fff; }
   .page-project .project-story-tab {
-    padding: 10px;
     margin-bottom: 10px; }
+    .page-project .project-story-tab .project-body-content {
+      padding: 8px;
+      background-color: white;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-project .feedback-group {
-    background-color: white; }
+    background-color: white;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
-    justify-content: flex-end; }
+    justify-content: flex-end;
+    padding-top: 2px;
+    margin: 0px; }
   .page-project .project-image img {
     width: 100%; }
   .page-project .project-stats ul {
@@ -2225,7 +2236,7 @@ footer {
     overflow: hidden;
     padding: 10px 0px 0;
     margin: 10px 0; }
-    .page-project .feedback-group .feedback .feed-user, .page-project .feedback-group .feedback .feed-body, .page-project .feedback-group .feedback .feed-timestamp {
+    .page-project .feedback-group .feedback .feed-user, .page-project .feedback-group .feedback .feed-body {
       display: inline-block;
       vertical-align: top; }
     .page-project .feedback-group .feedback .feed-user {
@@ -2279,16 +2290,16 @@ footer {
     text-align: right;
     margin: 5px 0 10px; }
   .page-project .project-collaborates .collaborate {
-    background-color: #fff;
     margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 26px; }
     .page-project .project-collaborates .collaborate .profile-container {
-      margin: 10px 0; }
-    .page-project .project-collaborates .collaborate .role {
-      padding: 10px 10px 0px 10px;
-      background-color: #eee;
-      border: 1px solid #ccc;
+      margin: 10px 0;
+      padding-left: 12px; }
+    .page-project .project-collaborates .collaborate .collaborate-role {
+      clear: both;
       font-size: 13px; }
+      .page-project .project-collaborates .collaborate .collaborate-role p {
+        margin: 0px; }
   .page-project .project-collaborates .card {
     border: none; }
     .page-project .project-collaborates .card .user-card {
@@ -2304,14 +2315,36 @@ footer {
       color: #169eff;
       font-weight: bold;
       text-decoration: none; }
-  .page-project .aha .card-heading {
-    padding: 6px 8px 0px 8px; }
-  .page-project .aha .card-block {
-    padding: 8px; }
-  .page-project .uh-oh .card-heading {
-    padding: 6px 8px 0px 8px; }
-  .page-project .uh-oh .card-block {
-    padding: 8px; }
+  .page-project .aha {
+    margin-bottom: 20px;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-project .aha .card-heading {
+      padding: 6px 8px 0px 8px; }
+      .page-project .aha .card-heading p {
+        text-align: center;
+        color: #EC1F30; }
+    .page-project .aha .card-block {
+      padding: 0px 14px; }
+  .page-project .uh-oh {
+    margin-bottom: 20px;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-project .uh-oh .card-heading {
+      padding: 6px 8px 0px 8px; }
+      .page-project .uh-oh .card-heading p {
+        text-align: center;
+        color: #EC1F30; }
+    .page-project .uh-oh .card-block {
+      padding: 0px 14px; }
+  .page-project .license-report .license {
+    font-size: 14px;
+    color: #828282; }
+  .page-project .license-report .report {
+    font-size: 14px;
+    color: #11B3F0; }
   .page-project .panel {
     border-width: 3px;
     border-radius: 15px;
@@ -2402,21 +2435,21 @@ header.showcase-project .next {
           font-size: 14px;
           padding-top: 2px;
           color: #444; }
-      .feedback-group .feedback-card .user-info .feed-timestamp {
-        text-align: right;
-        font-size: 13px !important;
-        color: #444; }
-    .feedback-group .feedback-card .content-section .user-pic {
-      padding: 4px; }
-      .feedback-group .feedback-card .content-section .user-pic img {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto; }
+    .feedback-group .feedback-card .feed-timestamp {
+      margin: 0px;
+      color: #bebebe;
+      font-size: 13px; }
+    .feedback-group .feedback-card .content-section .user-pic img {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto; }
     .feedback-group .feedback-card .content-section .media-body {
-      padding: 0px 10px 0px 10px; }
+      padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {
         color: #444;
         margin: 0px; }
+  .feedback-group .comment-body p {
+    margin: 0px; }
   .feedback-group .new-comment {
     padding: 10px;
     background-color: white; }
@@ -2425,40 +2458,70 @@ header.showcase-project .next {
       .feedback-group .new-comment .comment-image img {
         width: 48px;
         height: 48px; }
-    .feedback-group .new-comment .comment-body textarea {
-      border: 1px solid #ccc;
-      color: #444;
-      height: 54px;
-      margin-top: 2px;
-      border-radius: 4px; }
-    .feedback-group .new-comment .comment-body button {
-      display: inline-table;
-      margin-top: 2px;
-      padding-left: 8px;
-      color: #BEBEBE;
-      border: none;
-      background: none;
-      margin: 0;
-      padding-bottom: 8px; }
-      .feedback-group .new-comment .comment-body button span .fa-circle {
-        font-size: 2.5em; }
-      .feedback-group .new-comment .comment-body button span .fa-paper-plane {
-        font-size: 22px;
-        line-height: 50px; }
-      .feedback-group .new-comment .comment-body button:hover {
-        color: #EC1F30;
-        border: none; }
-      .feedback-group .new-comment .comment-body button:focus {
+    .feedback-group .new-comment .comment-body {
+      position: relative; }
+      .feedback-group .new-comment .comment-body textarea {
+        border: 1px solid #ccc;
+        color: #444;
+        margin-top: 2px;
+        position: relative; }
+        .feedback-group .new-comment .comment-body textarea .feedback-label {
+          width: 100%;
+          font-weight: bold; }
+        .feedback-group .new-comment .comment-body textarea::-webkit-input-placeholder {
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 4px; }
+        .feedback-group .new-comment .comment-body textarea:-moz-placeholder {
+          /* older Firefox*/
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 4px; }
+        .feedback-group .new-comment .comment-body textarea::-moz-placeholder {
+          /* Firefox 19+ */
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 4px; }
+        .feedback-group .new-comment .comment-body textarea:-ms-input-placeholder {
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 4px; }
+      .feedback-group .new-comment .comment-body button {
+        display: inline-table;
+        color: #BEBEBE;
         border: none;
-        outline: none;
-        outline: none; }
+        margin: 0;
+        position: absolute;
+        bottom: 15px;
+        right: 23px;
+        background: none; }
+        .feedback-group .new-comment .comment-body button:hover {
+          cursor: pointer; }
+        .feedback-group .new-comment .comment-body button span {
+          width: auto;
+          height: auto;
+          line-height: normal; }
+          .feedback-group .new-comment .comment-body button span i {
+            font-size: 22px;
+            font-weight: bold; }
+        .feedback-group .new-comment .comment-body button:hover {
+          color: #EC1F30;
+          border: none; }
+        .feedback-group .new-comment .comment-body button:focus {
+          border: none;
+          outline: none;
+          outline: none; }
 
 .page-project .projectsingle-card {
+  border: 1px solid #4ab0d8;
   position: relative;
   padding: 16px;
   cursor: pointer;
   background-color: white;
-  padding: 12px 12px 0px 0px; }
+  padding: 12px 12px 0px 0px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-project .projectsingle-card .left-side {
     position: relative;
     top: -26px;
@@ -2472,15 +2535,16 @@ header.showcase-project .next {
       height: auto; }
       .page-project .projectsingle-card .left-side .image-container img {
         width: 100%;
-        height: 360px;
+        height: 400px;
         max-width: 100%; }
     .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges {
       margin: 0px; }
       .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges .project-badge {
-        width: 40px;
-        height: auto; }
+        width: 30px;
+        height: auto;
+        padding-top: 2px; }
   .page-project .projectsingle-card .right-side {
-    padding-left: 0px; }
+    padding: 0px; }
     .page-project .projectsingle-card .right-side .card-container {
       position: relative; }
       .page-project .projectsingle-card .right-side .card-container .card {
@@ -2490,18 +2554,17 @@ header.showcase-project .next {
         text-decoration: underline; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 48pt !important;
+        font-size: 40pt !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
-        line-height: 90% !important;
+        line-height: 100% !important;
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 166px;
-        line-height: 100%; }
+        height: 164px; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -2511,11 +2574,6 @@ header.showcase-project .next {
         text-transform: none !important;
         line-height: 110% !important;
         color: #828282;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        height: 70px;
         margin-bottom: 10px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
@@ -2524,7 +2582,7 @@ header.showcase-project .next {
         color: #828282;
         font-size: 14px; }
       .page-project .projectsingle-card .right-side .card-container .project-card-footer {
-        margin-top: 16px; }
+        margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
           margin: 0 auto; }
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
@@ -2653,10 +2711,10 @@ header.showcase-project .next {
       color: #4F4F4F; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 48pt !important;
+      font-size: 40pt !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 90% !important;
+      line-height: 100% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -3688,16 +3746,15 @@ header.showcase-project .next {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 48pt !important;
+        font-size: 40pt !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
-        line-height: 90% !important;
+        line-height: 100% !important;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-height: 107px;
+        max-height: 114px;
         min-height: 70px;
         color: #444; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
@@ -4495,10 +4552,10 @@ img {
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 48pt !important;
+      font-size: 40pt !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 90% !important;
+      line-height: 100% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -4833,10 +4890,10 @@ img {
     position: relative; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 48pt !important;
+      font-size: 40pt !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 90% !important;
+      line-height: 100% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
