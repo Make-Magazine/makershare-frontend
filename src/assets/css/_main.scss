@@ -154,7 +154,7 @@ body {
     right: -17px;
     padding: 0;
     transform: rotate(-90deg);
-    text-transform: uppercase;
+    text-transform: uppercase !important;
     color: $light-grey;
     margin: 0;
 }
