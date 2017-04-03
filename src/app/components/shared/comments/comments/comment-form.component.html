@@ -1,3 +1,4 @@
+<div *ngIf="checkUserLogin==true">
 <form class="new-comment" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
   <label class="feedback-label">Feedback</label>
   <div class="comment-body d-flex justify-content-around">
@@ -9,3 +10,4 @@
     </button>
   </div>
 </form>
+</div>

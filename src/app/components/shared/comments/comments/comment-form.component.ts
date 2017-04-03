@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CommentService } from '../../../../d7services/comment/comment.service';
 import { ViewService } from '../../../../d7services/view/view.service'
+import { UserService } from '../../../../d7services/user/user.service'
 import { IComment } from '../../../../models/challenge/comment';
 
 @Component({
@@ -13,6 +14,7 @@ import { IComment } from '../../../../models/challenge/comment';
 
 export class CommentFormComponent implements OnInit {
   @Input('nodeId') nodeId;
+  checkUserLogin=[];
   @Input('comments') comments;
   title: string = 'Comments';
   commentForm: FormGroup;
@@ -29,10 +31,12 @@ export class CommentFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
-    private viewService: ViewService,    
+    private viewService: ViewService,
+    private userService: UserService,    
   ) { }
 
   ngOnInit() {
+    this.checkLogin();//check login to disable comments for anonymous user
     /* service to get user data */
     this.viewService
       .getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')]])
@@ -80,5 +84,13 @@ export class CommentFormComponent implements OnInit {
     });
   }
   /* end function  get comments */
+    /* function check login */
+  checkLogin() {
+    this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+    });
+  }
+  /* end function  check login */
+    
 
 }
