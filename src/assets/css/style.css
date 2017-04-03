@@ -2422,60 +2422,172 @@ header.showcase-project .next {
         outline: none;
         outline: none; }
 
-.workshop-page {
+.page-learn {
+  background-color: white;
+  padding-bottom: 40px; }
+
+.learn-card {
+  margin-bottom: 10px; }
+  .learn-card .card {
+    background-color: transparent;
+    border: none; }
+  .learn-card .single-learn {
+    padding: 10px; }
+    .learn-card .single-learn img {
+      width: 250px; }
+    .learn-card .single-learn .card-partership {
+      color: #EC1F30; }
+  .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 350px;
+    height: 320px; }
+  .learn-card .card-container .card-partership {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .learn-card .card-container .card-partership p {
+      margin-bottom: 0px; }
+  .learn-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-1 {
+    bottom: 5px;
+    align-self: end; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
+      background-color: #BEBEBE; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
+    font-size: 14px; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
+      padding-left: 10px; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status, .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 5px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
+    color: white; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+    color: #EC1F30; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
+    font-size: 14px; }
+
+.learn-header {
+  margin-bottom: 25px;
+  text-align: center; }
+  .learn-header h3 {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F;
+    margin: auto;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    font-weight: normal; }
+  .learn-header p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    width: 85%;
+    margin: auto; }
+
+.learn-container {
+  padding: 25px 0; }
+
+.page-learn .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
   background-color: #F2F2F2; }
-  .workshop-page .workshop-header {
-    padding-bottom: 25px;
-    background-color: #F2F2F2;
-    text-align: center; }
-    .workshop-page .workshop-header h3 {
+  .page-learn .learn-card .learn-item {
+    padding: 10px; }
+    .page-learn .learn-card .learn-item img {
+      width: 250px; }
+    .page-learn .learn-card .learn-item .card-partership {
+      color: #EC1F30; }
+  .page-learn .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 450px;
+    height: 290px; }
+    .page-learn .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-learn .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-learn .learn-card .card-container .learn-type-bagde {
+      position: absolute;
+      top: 18px;
+      right: -69px;
+      transform: rotate(-90deg);
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 64pt !important;
+      font-size: 48pt !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
-      color: #4F4F4F;
-      margin: auto;
-      text-align: center;
-      padding-top: 40px;
-      color: #222;
-      padding-bottom: 30px; }
-    .workshop-page .workshop-header .explore-tags {
-      margin: 20px auto; }
-      .workshop-page .workshop-header .explore-tags li {
-        display: inline-block;
-        margin: 5px; }
-        .workshop-page .workshop-header .explore-tags li a.btn {
-          padding: 5px 15px;
-          border-radius: 3px; }
-  .workshop-page .learning-item {
-    background-color: white;
-    padding: 4px; }
-    .workshop-page .learning-item:hover {
-      cursor: pointer; }
-    .workshop-page .learning-item .card-img-top {
-      width: 250px;
-      height: 210px; }
-      .workshop-page .learning-item .card-img-top img {
-        width: 250px;
-        height: 210px; }
-    .workshop-page .learning-item .content-bottom {
-      padding-top: 8px; }
-    .workshop-page .learning-item .workshop-tags li {
-      float: left; }
-      .workshop-page .learning-item .workshop-tags li a {
-        font-size: 11px;
-        padding: 4px; }
-    .workshop-page .learning-item .card-description {
+      line-height: 90% !important;
+      color: #828282;
+      font-size: 38px;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      margin-bottom: 10px;
-      min-height: 100px; }
-  .workshop-page .Workshop-view .learning {
-    margin-bottom: 8px;
-    margin-top: 8px; }
+      min-height: 67px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-status {
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-learn .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-learn .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 116px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-learn .learn-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
+
+.page-learn-summary {
+  background-color: #F2F2F2; }
 
 .profile-page {
   position: relative;
@@ -4361,11 +4473,9 @@ img {
 
 .page-workshop-individual {
   background-color: #F2F2F2; }
-  .page-workshop-individual .region-content {
-    background-color: white; }
   .page-workshop-individual .related-books {
     background-color: white;
-    padding: 4px; }
+    padding: 0px; }
   .page-workshop-individual .top-content-wrapper {
     border-bottom: 1px solid #222;
     margin-bottom: 10px;
@@ -4417,6 +4527,15 @@ img {
   .page-workshop-individual .workshop-content h4 {
     font-weight: normal;
     color: #222; }
+  .page-workshop-individual .workshop-content .learning-card {
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 5px 15px;
+    box-shadow: 2px 6px 22px #888888; }
+  .page-workshop-individual .workshop-content .card-img-top {
+    box-shadow: 0px 7px 12px #888888;
+    width: 187px;
+    height: 252px; }
   .page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
     background-color: white;
     padding: 10px;
@@ -4477,12 +4596,180 @@ img {
       height: 160px;
       overflow: hidden; }
       .page-workshop-individual .suggested .image-container img {
-        max-width: 100%;
-        height: auto; }
+        height: auto;
+        position: relative;
+        left: -30px;
+        top: -25px; }
     .page-workshop-individual .suggested h4 {
       font-weight: normal; }
     .page-workshop-individual .suggested li {
       padding: 8px; }
+  .page-workshop-individual .suggest-card {
+    border: 2px solid red;
+    box-sizing: border-box; }
+    .page-workshop-individual .suggest-card img {
+      position: relative;
+      top: -9px;
+      left: -16px; }
+
+.page-learn {
+  background: #F2F2F2;
+  padding-bottom: 0px; }
+
+.learn-card .card {
+  background-color: transparent;
+  border: none; }
+.learn-card .single-learn {
+  padding: 10px; }
+  .learn-card .single-learn img {
+    width: 250px; }
+  .learn-card .single-learn .card-partership {
+    color: #EC1F30; }
+.learn-card .image-container {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  width: 350px;
+  height: 320px; }
+.learn-card .card-container .card-partership {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 18pt !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 110% !important;
+  color: #828282;
+  text-transform: none;
+  font-size: 14px;
+  display: inline-block;
+  min-height: 16px;
+  margin-bottom: 10px; }
+  .learn-card .card-container .card-partership p {
+    margin-bottom: 0px; }
+.learn-card .card-container .card-description h4 {
+  font-weight: bold; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-1 {
+  bottom: 5px;
+  align-self: end; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
+    background-color: #BEBEBE; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
+  font-size: 14px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
+    padding-left: 10px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
+    padding-right: 10px;
+    border-right: 1px solid white; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status, .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+  font-weight: bold;
+  font-size: 16px;
+  padding-right: 5px; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
+  color: white; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+  color: #EC1F30; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
+  font-size: 14px; }
+
+.learn-header {
+  margin-bottom: 25px;
+  text-align: center; }
+  .learn-header h3 {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F;
+    margin: auto;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    font-weight: normal; }
+  .learn-header p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    width: 85%;
+    margin: auto; }
+
+.learn-container {
+  padding: 25px 0; }
+
+.page-learn .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #ddd; }
+  .page-learn .learn-card .learn-item {
+    padding: 10px; }
+    .page-learn .learn-card .learn-item img {
+      width: 250px; }
+    .page-learn .learn-card .learn-item .card-partership {
+      color: #EC1F30; }
+  .page-learn .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 450px;
+    height: 290px; }
+    .page-learn .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-learn .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-learn .learn-card .card-container .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 48pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 90% !important;
+      color: #828282;
+      font-size: 38px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 67px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-status {
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-learn .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-learn .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 116px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-learn .learn-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
+
+.page-learn-summary {
+  background-color: #F2F2F2; }
 
 .page-portfolio .portfolio-controls {
   background-color: #e5ffff;
