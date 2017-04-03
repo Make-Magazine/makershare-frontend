@@ -22,9 +22,9 @@
       <div class="card-container">
         <div class="card">
           <div class="projects-circle">< Next project - Project name ></div>
-          <h3 class="card-title" innerHTML="{{project.title.value}}"></h3>
+          <h3 class="card-title" innerHTML="{{project.title?.value}}"></h3>
           <div class="card-description">
-            <p innerHTML="{{project.field_teaser.value}}"></p>
+            <p innerHTML="{{project.field_teaser?.value}}"></p>
           </div>
           <div class="card-date">
             <span class="project-date pr-2">Created on: {{project.created}}</span><span class="project-date">Updated on: {{project.changed}}</span>
