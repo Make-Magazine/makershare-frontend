@@ -29,17 +29,15 @@
               <!--<div class="learn-card-footer d-flex">-->
               <div class="learn-card-footer-1">
                 <ul>
-                  <a *ngFor="let tags of workshop.tags" class="btn btn-grey workshop-tags" [innerHTML]="tags" ></a>
+                  <a *ngFor="let tags of workshop.tags" class="btn btn-grey workshop-tags" [innerHTML]="tags"></a>
                 </ul>
               </div>
 
               <div class="learn-card-footer-2 ml-3">
-                <!--<div class="learn-card-count">
-                  <span class="entries-count">{{challenge.entries_count}}
-                       <span *ngIf="challenge.entries_count>1">Lessons</span>
-                  <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                  </span>
-                  </div>-->
+                <div class="lessons-count btn">
+                  <p *ngIf="countlessons==1">{{countlessons}} Lesson </p>
+                  <p *ngIf="countlessons>1">{{countlessons}} Lessons</p>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +208,7 @@
           <!-- End Profile-container -->
           <ul class="list-unstyled content-list">
             Contents:
-             <div *ngFor="let object of objects; let i=index;">
+            <div *ngFor="let object of objects; let i=index;">
               <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
             </div>
 
