@@ -23,7 +23,7 @@
 }
 
 @mixin card-header-font-lg (){
-	@include font-setting('Messina Modern Regular', 48pt ,400 ,capitalize , 90%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 40pt ,400 ,capitalize , 100%, $text-color-2 );
 }
 @mixin card-header-font-md (){
 	@include font-setting('Messina Modern Bold', 24pt ,700 ,none , 100%, $text-color-2 );
