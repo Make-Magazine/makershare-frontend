@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
-
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,9 @@ import { Auth } from '../../../auth0/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // isLoggedIn = false;
+  
+  showSearchBox: boolean = false;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -31,5 +33,15 @@ export class HeaderComponent implements OnInit {
   //       this.router.navigate(['']);
   //   });
   // }
+
+  
+
+  openSearchBox(){
+    this.showSearchBox = true;
+  } 
+
+  onNotify(event){
+    this.showSearchBox = false;
+  }
 
 }

@@ -1,63 +1,32 @@
-<div class="page-explore">
-  <div class="main-container container-fluid">
-    <div class="row">
-      <section class="col-sm-12 width-fix">
-        <div class="region region-content">
-          <header class="explore-header">
-            <div class="container">
-              <h3>Showcases</h3>
-              <div class="top-content-wrapper">
-                <div class="container">
-                  <h4>What's a Showcase?</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae rerum, architecto animi incidunt dolore
-                    explicabo voluptates, cumque ut ullam earum itaque illum! Ad dolores velit commodi? Rem nostrum dolore
-                    nam quaerat inventore eveniet rerum totam.</p>
-                </div>
-              </div>
-              <div class="filters">
-                <div class="container">
-                  <div class="row justify-content-center align-items-center">
-                    <div class="entries-count btn">
-                      <p *ngIf="showcaseCount==1">{{showcaseCount}} Showcase</p>
-                      <p *ngIf="showcaseCount>1">{{showcaseCount}} Showcases</p>
-                    </div>
-                    <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
-                  </div>
-                </div>
-              </div>
-              <!-- End filters -->
-            </div>
-          </header>
-          <!--/header -->
-          <div class="container showcase">
-            <div class="showcase-grid row">
-              <div *ngFor="let showcase of showcases" class="col-lg-4 col-md-4 d-flex align-items-stretch">
-                <div class="card showcase-item item-2">
-                  <div class="image-container">
-                    <a (click)="ShowSingleShowcase(showcase.nid)">
-                      <img class="card-img-top" src="./assets/images/interactive-art-for-kids.jpg" (click)="ShowSingleShowcase(showcase.nid)">
-                    </a>
-                  </div>
-                  <div class="card-block content">
-                    <h4 class="title">{{showcase.showcase_name}}</h4>
-                    <div class="description" [innerHTML]="showcase.description"></div>
-                    <p class="number" *ngIf="showcase.number_of_project==1">{{showcase.number_of_project}} project</p>
-                    <p class="number" *ngIf="showcase.number_of_project>1">{{showcase.number_of_project}} projects</p>
-                    <p class="timestamp">Last Updated: {{showcase.updated_date | date: 'dd/MM/yyyy'}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+<section class="page-showcase">
+  <div class="region region-content">
+    <header class="showcase-header">
+      <div class="container">
+        <h3 class="page-header">Showcases</h3>
+      </div>
+    </header>
+    <div class="filters">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="entries-count btn">
+            <p *ngIf="showcaseCount==1">{{showcaseCount}} Showcase</p>
+            <p *ngIf="showcaseCount>1">{{showcaseCount}} Showcases</p>
           </div>
+          <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
         </div>
-        <div class="text-center">
-          <div *ngIf="!hideloadmore" class="button-container-main-2">
-            <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
-    <!-- End region-content -->
+    <!-- End filters -->
+    <div class="container showcases-container">
+      <div class="showcase-card-backlayer container" *ngFor="let showcase of showcases">
+      <app-showcase-card [showcaseNid]="showcase.nid"></app-showcase-card>
+      </div>
+      <!-- End col-md-6 -->
+    </div>
   </div>
-  <!-- End main-container -->
-</div>
+  <div class="text-center">
+    <div *ngIf="!hideloadmore" class="button-container-main-2">
+      <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
+    </div>
+  </div>
+</section>

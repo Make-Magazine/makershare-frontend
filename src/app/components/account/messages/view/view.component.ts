@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
 import { Location } from '@angular/common';
+import { ViewService } from '../../../../d7services/view/view.service';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { Location } from '@angular/common';
 })
 export class ViewComponent implements OnInit {
   msg;
+  uid;
+  status;
+  hideTurnOn
   user = [];
   messages = [];
   message;
@@ -25,6 +29,9 @@ export class ViewComponent implements OnInit {
   dateObj;
   currentDate;
   messageForm: FormGroup;
+  block;
+  date;
+  commentDate;
   reply: Reply = {
     thread_id: 0,
     body: ''
@@ -36,33 +43,38 @@ export class ViewComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,
+    private viewService: ViewService,
 
   ) { }
 
   ngOnInit() {
+    this.getStatus();
     this.buildForm();
     this.getThreads();
     var thread_id;
     this.getCurrentUser();
+    this.getBlockedUser();
   }
   getThreads() {
     this.route.params
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        console.log(this.msg)
+        this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
+          if(data.author==this.msg.messages[0].author){
+            this.block = true;
+          }else{
+            this.block = false;
+          }
+        })
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
           this.userService.getUser(message.author).subscribe(res => {
             Object.assign(message, res);
-            //console.log(message.user_photo)
             this.dateObj = new Date(message.timestamp * 1000);
             this.currentDate = new Date();
             message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
-            //console.log(message.timestamp)
-
-
           })
           i++
         }
@@ -79,6 +91,7 @@ export class ViewComponent implements OnInit {
     e.preventDefault();
     this.getThreads();
     this.getCurrentUser();
+
     if (this.messageForm.valid) {
       this.reply.thread_id = this.msg.pmtid;
       this.reply.body = this.messageForm.value.body;
@@ -88,10 +101,8 @@ export class ViewComponent implements OnInit {
           user_photo: this.user['user_photo'],
           first_name: this.user['first_name'],
           last_name: this.user['last_name'],
-          timestamp: this.messages,
           body: this.reply.body
         }
-        // console.log(newComment)
         this.messages.push(newComment);
       }, err => { });
     }
@@ -151,14 +162,35 @@ export class ViewComponent implements OnInit {
   blockUser() {
     this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data => {
       this.blockedUser = data;
-      //console.log(this.blockedUser);
+      this.block = true;
     })
   }
   unBlockUser() {
     this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data => {
       this.unBlockedUser = data;
-      //console.log(this.unBlockedUser);
+      this.block =  false;
     })
   }
+  getBlockedUser(){
+    // this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
+    //   console.log(data);
+    // })
+  }
+
+    /*
+  *if message turned off the data[0]=disabled
+  */
+  getStatus() {
+    this.userId = parseInt(localStorage.getItem('user_id'));
+    this.pm.getStatus(this.userId).subscribe(data => {
+      this.status = data;
+      if (this.status == false) {
+        this.hideTurnOn = false;
+      } else if (this.status.setting === "disabled") {
+        this.hideTurnOn = true;
+      }
+    })
+  }
+  
 }
 

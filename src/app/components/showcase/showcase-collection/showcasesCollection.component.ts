@@ -15,7 +15,7 @@ export class ShowcasesCollectionComponent implements OnInit {
   sortData:ISorting;
   sort_order:string;
   sort_by:string;
-  limit=3;
+  limit=4;
 
   @Input() sortType:ISorting;
 
@@ -44,6 +44,7 @@ export class ShowcasesCollectionComponent implements OnInit {
     }
       this.viewService.getView('views/showcases',[['display_id','services_1'],['limit',this.limit],['sort_by',this.sort_by],['sort_order',this.sort_order]]).subscribe(data => {
       this.showcases = data;
+      console.log(this.showcases)
       this.loadMoreVisibilty();
     }, err => {
 

@@ -73,6 +73,9 @@
 		color: $main-grey;
 		// line-height: 5px;
 	}
+	.dropdown-toggle {
+		cursor: pointer;
+	}
 	.sorting-filter ,.projects-filter {
 		border-left: 2px solid $main-grey;
 		button::after {
@@ -82,6 +85,9 @@
 			background-color: $sec-bg*1.25;
 			color: $light-grey;
 			border-radius: 0;
+			z-index: 10;
+			right: 0;
+			left: auto;
 		}
 
 	}

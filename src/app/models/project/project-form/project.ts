@@ -1,11 +1,12 @@
-import { Node } from '../../Drupal/Node';
-import { field_file_reference } from '../../Drupal/field_file_reference';
-import { field_text } from '../../Drupal/field_text';
-import { field_URL } from '../../Drupal/field_URL';
-import { field_collection_item_material,field_collection_item_part,field_collection_item_resource,field_collection_item_tool,field_collection_item_member,field_collection_item_reference_row } from './field_collection_item';
-import { field_term_reference } from '../../Drupal/field_term_reference';
-import { field_entity_reference } from '../../Drupal/field_entity_reference';
-import { field_number } from '../../Drupal/field_number';
+import { Node } from '../../';
+import { field_file_reference } from '../../';
+import { field_text } from '../../';
+import { field_URL } from '../../';
+import * as field_collection_item from './field_collection_item';
+import { field_term_reference } from '../../';
+import { field_entity_reference } from '../../';
+import { field_number } from '../../';
+
 import { Observable } from "rxjs";
 
 export interface ProjectForm extends Node{
@@ -13,18 +14,18 @@ export interface ProjectForm extends Node{
 	field_aha_moment?:{und:field_text[]};
 	field_uh_oh_moment?:{und:field_text[]};
 	field_teaser:{und:field_text[]};
-	field_tools?:{und:field_collection_item_tool[]};
-	field_materials?:{und:field_collection_item_material[]};
-	field_parts?:{und:field_collection_item_part[]};
+	field_tools?:{und:field_collection_item.field_collection_item_tool[]};
+	field_materials?:{und:field_collection_item.field_collection_item_material[]};
+	field_parts?:{und:field_collection_item.field_collection_item_part[]};
 	field_difficulty?:{und:number};
 	field_duration?:{und:number};
 	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
 	field_tags?:{und:string};
-	field_resources?:{und:field_collection_item_resource[]};
+	field_resources?:{und:field_collection_item.field_collection_item_resource[]};
 	field_collaborators?:{und:field_entity_reference[]};
 	field_sort_order?:{und:field_number[]};
-	field_maker_memberships?:{und:field_collection_item_member[]};
+	field_maker_memberships?:{und:field_collection_item.field_collection_item_member[]};
 	field_original_team_members?:{und:field_entity_reference[]};
 	field_total_forks?:{und:field_number[]};
 	field_forks?:{und:field_entity_reference[]};
@@ -40,11 +41,11 @@ export interface ProjectView extends Node{
 	field_aha_moment?:{und:field_text[]};
 	field_uh_oh_moment?:{und:field_text[]};
 	field_teaser:{und:field_text[]};
-  field_tools?:{und:field_collection_item_reference_row[]};
-	field_materials?:{und:field_collection_item_reference_row[]};
-	field_parts?:{und:field_collection_item_reference_row[]};
-	field_resources?:{und:field_collection_item_reference_row[]};
-	field_maker_memberships?:{und:field_collection_item_reference_row[]};
+  field_tools?:{und:field_collection_item.field_collection_item_reference_row[]};
+	field_materials?:{und:field_collection_item.field_collection_item_reference_row[]};
+	field_parts?:{und:field_collection_item.field_collection_item_reference_row[]};
+	field_resources?:{und:field_collection_item.field_collection_item_reference_row[]};
+	field_maker_memberships?:{und:field_collection_item.field_collection_item_reference_row[]};
 	field_difficulty:{und:field_term_reference[]};
 	field_duration:{und:field_term_reference[]};
 	field_credit_your_inspiration?:{und:field_text[]};

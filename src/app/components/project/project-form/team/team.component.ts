@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
-import { ProjectForm } from '../../../../models/project/project-form/project';
-import { field_collection_item_member }  from '../../../../models/project/project-form/field_collection_item';
+import { ProjectForm } from '../../../../models';
+import { field_collection_item_member }  from '../../../../models';
 import { Observable } from 'rxjs/Observable';
-import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
-import { UserInvitations } from '../../../../models/project/project-form/UserInvitations';
+import { NodeHelper } from '../../../../models';
+import { UserInvitations } from '../../../../models';
 
 @Component({
   selector: 'app-project-form-team',

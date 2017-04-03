@@ -7,7 +7,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SharedButtonsComponent implements OnInit {
   closeResult: string;
-  @Input() PageUrl;
   @Input() PageTitle;
   @Input() PageDescription;
   @Input() PageImage;
@@ -17,6 +16,7 @@ export class SharedButtonsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.PageImage = encodeURIComponent(this.PageImage);
   }
 
   open(content) {

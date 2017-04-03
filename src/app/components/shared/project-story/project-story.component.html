@@ -7,10 +7,10 @@
       </div>
       <div class="project-stats">
         <ul class="list-unstyled">
-          <li><i class="fa fa-lg fa-eye" *ngIf="project.field_visibility2"></i>{{project.field_visibility2[0]?.tid}}</li>
+          <li *ngIf="project.field_visibility2"><i class="fa fa-lg fa-eye"></i>{{project.field_visibility2[0]?.tid}}</li>
           <li *ngIf="project.flag_count"><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
           <li><i class="fa fa-lg fa-comment"></i>2</li>
-          <li><i class="fa fa-lg fa-retweet" *ngIf="project.field_total_forks"></i>{{project.field_total_forks[0].value}}</li>
+          <li *ngIf="project.field_total_forks"><i class="fa fa-lg fa-retweet"></i>{{project.field_total_forks[0].value}}</li>
         </ul>
       </div>
       <hr>
@@ -31,7 +31,7 @@
           <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#">Vehicles Challenge</a> Winner</div>
           <div class="project-collaborates" *ngIf="project.field_collaborators">
             <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
-                <app-user-card [uid]="collaborator.target_id"></app-user-card>              
+                <app-user-card-small [uid]="collaborator.target_id"></app-user-card-small>        
             </div>
             <!-- End Collaborate -->
           </div>

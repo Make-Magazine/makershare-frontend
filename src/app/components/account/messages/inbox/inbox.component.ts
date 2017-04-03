@@ -9,7 +9,8 @@ import { ViewService } from '../../../../d7services/view/view.service';
 import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 
 @Component({
@@ -56,7 +57,10 @@ export class InboxComponent implements OnInit {
   profile;
   pm_disabed = true;
   disabled;
-  onemMg =[];
+  onemMg = [];
+  allChecked
+  hideTurnOn;
+  status;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -67,13 +71,15 @@ export class InboxComponent implements OnInit {
     private viewService: ViewService,
     private _location: Location,
     private modalService: NgbModal,
+    private notificationBarService: NotificationBarService,
 
   ) { }
   ngOnInit(): void {
-    //this.getCurrentUser();
+    this.getCurrentUser();
     this.getMessages();
     this.buildForm();
     this.CountMessages();
+    this.getStatus();
   }
 
   RefreshUsers(index, value) {
@@ -91,13 +97,12 @@ export class InboxComponent implements OnInit {
               return;
             }
           });
-          
+
           if (!found) {
             TempUsers.push(element);
           }
         }
         this.reciverUser = TempUsers;
-        //console.log(this.reciverUser)
       });
     }
   }
@@ -109,31 +114,41 @@ export class InboxComponent implements OnInit {
     //this.hideUser = false;
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
       this.SelectedUser.push(data);
-      //console.log(this.SelectedUser[0][0].username)
+      this.messageForm.reset();
     });
   }
-
+  getCurrentUser() {
+    this.userId = parseInt(localStorage.getItem('user_id'));
+    this.user.getUser(this.userId).subscribe(res => {
+      Object.assign(this.user, res);
+    })
+  }
   onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
-      var str : string = '';
-      for(let selectedUsers of this.SelectedUser){
-        str += selectedUsers[0].username +  ', ' ;
+      var str: string = '';
+      for (let selectedUsers of this.SelectedUser) {
+        str += selectedUsers[0].username + ', ';
       }
-       //console.log(str)
       this.messageObj.recipients = str;
-      this.messageObj.body =  this.messageForm.value.subject;
-      this.messageObj.subject = this.messageForm.value.body;
+      this.messageObj.subject = this.messageForm.value.subject;
+      this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        //this.submitted=true;
-
+        var newMessage = {
+          user_photo: this.user['user_photo'],
+          sender: 'you send a message',
+          subject: this.messageObj.subject,
+        }
+        this.msg.unshift(newMessage);
+        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
       });
+
     }
   }
 
   buildForm(): void {
     this.messageForm = this.fb.group({
-      'recipients': ['', Validators.required],
+      'recipients': [''],
       'subject': ['', Validators.required],
       'body': ['', Validators.required]
     });
@@ -197,39 +212,54 @@ export class InboxComponent implements OnInit {
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
+      var i = 0
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
-          
-           this.userId = localStorage.getItem('user_id');
-           if(this.userId === author[0].author){
-            this.user.getUser(this.userId).subscribe(res => {
-              this.messages[key].sender = true;
-              this.messages[key].user_photo = res.user_photo;
-              this.messages[key].first_name = res.first_name;
-              this.messages[key].last_name = res.last_name;
-               
-            })
-           }else{
-            this.user.getUser(author[0].author).subscribe(res => {
-              this.messages[key].reciver = true;
-               this.messages[key].user_photo = res.user_photo;
-              this.messages[key].first_name = res.first_name;
-              this.messages[key].last_name = res.last_name;              
-            })
-           }
-           
+
+            this.userId = localStorage.getItem('user_id');
+            if (this.userId === author[0].author) {
+              this.user.getUser(this.userId).subscribe(res => {
+                this.messages[key].sender = true;
+                this.messages[key].user_photo = res.user_photo;
+                this.messages[key].first_name = res.first_name;
+                this.messages[key].last_name = res.last_name;
+
+              })
+            } else {
+              this.user.getUser(author[0].author).subscribe(res => {
+                this.messages[key].reciver = true;
+                this.messages[key].user_photo = res.user_photo;
+                this.messages[key].first_name = res.first_name;
+                this.messages[key].last_name = res.last_name;
+              })
+            }
+
           })
           msg_arr.push(this.messages[key]);
+
+          this.dateObj = new Date(msg_arr[i].last_updated * 1000);
+          this.currentDate = new Date();
+          msg_arr[i].last_updated = Math.abs(this.dateObj - this.currentDate) / (60 * 1000);
+          console.log(msg_arr[i].last_updated)
+          if(msg_arr[i].last_updated === 1){
+            msg_arr[i].last_updated = 'minute ago';
+          }else if(msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60){
+            msg_arr[i].last_updated =  Math.floor(msg_arr[i].last_updated) + ' '  +  'minutes ago';
+          }else if(msg_arr[i].last_updated === 60){
+            msg_arr[i].last_updated = 'hour ago';
+          }else if(msg_arr[i].last_updated > 60 && msg_arr[i].last_updated < 1440){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' '  + 'hours ago';
+          }else if(msg_arr[i].last_updated === 1440){
+            msg_arr[i].last_updated = 'day ago';
+          }else if(msg_arr[i].last_updated > 1440 && msg_arr[i].last_updated <= 10080){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' '  + 'days ago';
+          }
+          i++
         }
       }
       this.msg = this.msg.concat(msg_arr);
       this.loadMoreVisibilty();
-      for (let message of this.msg) {
-        this.dateObj = new Date(message.last_updated * 1000);
-        this.currentDate = new Date();
-        message.last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-      }
     })
   }
 
@@ -239,7 +269,6 @@ export class InboxComponent implements OnInit {
       .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
       .subscribe(data => {
         this.countMsg = data;
-        //console.log(this.countMsg)
       });
   }
 
@@ -257,8 +286,8 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(i) {
-       this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-       delete this.msg[i];
+    this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
+    delete this.msg[i];
   }
 
   valueChanged(mid, event) {
@@ -272,21 +301,19 @@ export class InboxComponent implements OnInit {
         this.deletedArr.splice(index, 1);
       }
     }
-    //console.log(this.deletedArr);
-  }
-  deleteMessages() {
-    for (var _i = 0; _i < this.deletedArr.length; _i++) {
-      var index = this.msg.indexOf(this.deletedArr[_i], 0);
-      delete this.msg[index]; 
-    }
   }
 
   checkAll(ev) {
     this.msg.forEach(x => x.state = ev.target.checked)
-    if (ev.target.checked === true) {
-      for (var _i = 0; _i < this.msg.length; _i++) {
-        this.pm.deleteMessage(this.msg[_i].thread_id).subscribe()
-        //console.log(this.msg[_i].thread_id)
+
+    for (var _i = 0; _i < this.msg.length; _i++) {
+      if (ev.target.checked === true) {
+        this.deletedArr.push(this.msg[_i].thread_id);
+      } else {
+        var index = this.deletedArr.indexOf(this.msg[_i].thread_id, 0);
+        if (index > -1) {
+          this.deletedArr.splice(index, 1);
+        }
       }
     }
   }
@@ -294,19 +321,21 @@ export class InboxComponent implements OnInit {
   isAllChecked(mid) {
     return this.msg.every(_ => _.state);
   }
+  /**
+ * delete selected messages
+ */
+  deleteMessages() {
+    for (var _i = 0; _i < this.msg.length; _i++) {
+     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+    }
+    this.msg.splice(this.deletedArr.length,1)
+  }
 
   viewMessage(thread_id) {
     this.router.navigate(['/view', thread_id]);
-    //console.log(this.message)
   }
-  // turnOffMessages(e){
-  //   if(e.target.checked === true){
-  //     this.pm.updateSettings(this.messages[0].thread_id,pm_disabed).subscribe(data=>{
 
-  //     })
-  //   }
-  // }
-   open(content) {
+  open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -320,7 +349,42 @@ export class InboxComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
+  }
+  /*
+  * disable messages
+   */
+  turnOffMessages() {
+    this.userId = localStorage.getItem('user_id');
+    this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
+      this.hideTurnOn = true;
+      this.notificationBarService.create({ message: 'You have disabled Privatemsg and are not allowed to write messages', type: NotificationType.Success });
+    })
+  }
+  /**
+   * enable messages
+   */
+  turnOnMessages() {
+    this.userId = localStorage.getItem('user_id');
+    this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
+      this.hideTurnOn = false;
+      this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
+    })
+  }
+  /*
+  *if message turned off the data[0]=disabled
+  */
+  getStatus() {
+    this.userId = localStorage.getItem('user_id');
+    this.pm.getStatus(this.userId).subscribe(data => {
+      this.status = data;
+      if (this.status == false) {
+        this.hideTurnOn = false;
+      } else if (this.status.setting === "disabled") {
+        this.hideTurnOn = true;
+      }
+    })
+
   }
 }

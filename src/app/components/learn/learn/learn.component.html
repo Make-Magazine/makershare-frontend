@@ -1,20 +1,21 @@
 <section class="learn-page-data">
-    <div class="region region-content page-learn">
-      <header class="learn-header">
-        <div class="container">
-          <h3>Learning</h3>
-          <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est optio cumque nihil impedit quo minu id quod maxime placeat facere possimus, omnis voluptas assumenda</p>
-        </div>
-      </header>
-      <!--/header -->
-      <div class="filters">
-        <div class="container">
-          <div class="row justify-content-end align-items-center">
-            <!--<div class="entries-count btn">-->
-              <!--<p *ngIf="currentCount==1">{{currentCount}} Learning Workshop</p>-->
-              <!--<p *ngIf="currentCount>1">{{currentCount}} Learning Workshops</p>-->
-            <!--</div>-->
-            <!--<div ngbDropdown class="d-inline-block sorting-filter dropdown">
+  <div class="region region-content page-learn">
+    <header class="learn-header">
+      <div class="container">
+        <h3>Learning</h3>
+        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est optio cumque nihil
+          impedit quo minu id quod maxime placeat facere possimus, omnis voluptas assumenda</p>
+      </div>
+    </header>
+    <!--/header -->
+    <div class="filters">
+      <div class="container">
+        <div class="row justify-content-end align-items-center">
+          <div class="workshop-count btn">
+          <p *ngIf="countWorkshop==1">{{countWorkshop}} Learning Workshop</p>
+          <p *ngIf="countWorkshop>1">{{countWorkshop}} Learning Workshops</p>
+          </div>
+          <!--<div ngbDropdown class="d-inline-block sorting-filter dropdown">
               <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{currentStatusName}} <i class="fa fa-lg fa-angle-down"></i></button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <button class="dropdown-item" *ngFor="let status of allstatuses" (click)="SetCurrentStatus($event)" data-id="{{status.tid}}"
@@ -23,55 +24,23 @@
                   </button>
               </div>
             </div>-->
-          </div>
-        </div>
-      </div>
-      <!-- End filters -->
-      <div class="container learn-container">
-        <div *ngFor="let learn of learns"  class="learn-card row">
-          <div class="col-md-4 image-container">
-            <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
-          </div>
-          <!-- End image-container -->
-          <div class="col-md-8">
-            <div class="card-container">
-              <div class="card">
-                <div class="learn-type-bagde"><p>WORKSHOP</p></div>
-                <div class="card-partership">
-                  <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
-                  </div>
-                <h3 class="card-title" [innerHTML]="learn.workshop_title"></h3>
-                <div class="card-description" >
-                  <p [innerHTML]="learn.brief_description"></p>
-                </div>
-                <div class="learn-card-footer d-flex">
-                <div class="learn-card-footer-1">
-                  <div class="button-container-main-1" >
-                    <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)" >Get Started</span>
-                  </div>
-                </div>
-                <div class="learn-card-footer-2 ml-3">
-                <!--<div class="learn-card-count">
-                  <span class="entries-count">{{challenge.entries_count}}
-                       <span *ngIf="challenge.entries_count>1">Lessons</span>
-                  <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                  </span>
-                  </div>-->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End card-container -->
-          </div>
-          <!-- End col-md-6 -->
-        </div>
-        <!-- End challenge-card -->
-      </div>
-      <div class="text-center">
-        <div class="button-container-sec-3" *ngIf="hideloadmore">
-          <a *ngIf="hideloadmore" (click)="loadmore()" class="btn btn-grey">Load more</a>
         </div>
       </div>
     </div>
-    <!-- End region-content -->
-  </section>
+    <!-- End filters -->
+    <div class="container learn-container">
+      <div *ngFor="let learn of learns" class="learn-card row">
+        <app-learn-card [workshopNid]="learn.nid"></app-learn-card>
+       
+        <!-- End col-md-6 -->
+      </div>
+      <!-- End challenge-card -->
+    </div>
+    <div class="text-center">
+      <div class="button-container-main-2" *ngIf="!hideloadmoreworkshop">
+        <a class="btn btn-main-2" (click)="loadMoreWorkshop()">Load more</a>
+      </div>
+    </div>
+  </div>
+  <!-- End region-content -->
+</section>

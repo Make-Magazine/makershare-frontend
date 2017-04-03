@@ -4,11 +4,16 @@
       <section class="col-sm-12 width-fix">
         <div class="top-content-wrapper">
           <div class="container">
+
             <div class="col-md-12 challenge-cover" *ngIf="challenge">
+              <!--<div class="button-container-main-1 float-right">
+                <button class="btn btn-main" (click)="myEnteriesProject()">My Entries</button>
+                <button class="btn btn-main" (click)="getProjects()">All Project</button>
+              </div>-->
               <div class="challenge-card row">
                 <div class="col-md-4 left-side">
                   <div class="image-container">
-                    <img src="{{challenge.cover_image}}" alt="" *ngIf="challenge.cover_image" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+                    <img src="{{challenge.cover_image}}" alt="" *ngIf="challenge.cover_image" class="img-responsive">
                     <img src="{{challenge.sponsor_bar}}" alt="" *ngIf="challenge.sponsor_bar" class="sponsor_bar img-responsive">
                   </div>
                   <div class="challene-card-footer-3">
@@ -32,7 +37,7 @@
                       <div class="card-partership">
                         <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p>
                       </div>
-                      <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
+                      <h3 class="card-title">{{challenge.title}}</h3>
                       <div class="card-description">
                         <p [innerHTML]="challenge.body"></p>
                       </div>
@@ -89,8 +94,8 @@
             <!-- End content-wrapper -->
           </div>
           <div class="content-wrapper">
-            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"
-              [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
+            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
+              [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
           </div>
           <!-- End region-content -->
         </div>

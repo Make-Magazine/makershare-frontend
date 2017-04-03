@@ -49,9 +49,10 @@ export class UserCardComponent implements OnInit {
   }
   ngOnInit() {
     this.getcard();
-    //this.getBadges();
+    this.getBadges();
     this.buildForm();
-    //this.getProjectCountByUser();
+    this.getProjectCountByUser();
+    this.checkUserLogin()
   }
 
   getcard() {
@@ -90,6 +91,7 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
+        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
       });
     }
   }
@@ -162,6 +164,9 @@ export class UserCardComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+  checkUserLogin(){
+    
   }
 
 }
