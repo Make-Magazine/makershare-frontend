@@ -1,3 +1,5 @@
+.page-workshop-single {
+    background-color: $main-bg;
 .page-workshop-individual {
 	.region-content {
 			}
@@ -83,8 +85,7 @@
 		}
 		.learning-card {
 			background-color: #fff;
-			margin-top: 10px;
-			padding: 5px 15px;
+			padding: 12px;
 	        box-shadow: 2px 6px 22px #888888;
 	
 		}
@@ -203,7 +204,7 @@
     left: -16px;
 		}
 	}
-	
+}	
 }
 
  .page-workshop-individual{
@@ -212,7 +213,7 @@
 		padding: 16px;
 		overflow: hidden;
 		cursor:pointer;
-		background-color: #D0D3D4;
+		background-color: $learn-card-bg;
 		box-shadow: 0px 2px 22px #888888;
 
 		.learn-item {
@@ -227,7 +228,7 @@
 		.image-container {
 			overflow: hidden;
 			position: relative;
-			padding: 0;
+			padding: 0px;
 			width: 450px;
 			height: 290px;
 			img {
@@ -235,16 +236,22 @@
 				height: 100%;
 			}
 		}
+		.container-content {
+        position: relative;
+    }
 		.card-container {
 			color: $white;
 			// font-weight: bold;
 			position: relative;
 			.learn-type-bagde {
-				position: absolute;
-				top: 18px;
-				right: -69px;
-				transform: rotate(-90deg);
-						color: #4F4F4F;
+					position: absolute;
+					top: 38px;
+					right: -50px;
+					transform: rotate(-90deg);
+					color: #4F4F4F;
+					p {
+							margin: 0px;
+					}
 						}
 				.card-title {
 				@include card-header-font-lg();
@@ -279,6 +286,15 @@
 					color: #4F4F4F;
 				}
 			}
+			.learn-card-footer-2 {
+				font-size: 14px;
+				color: $text-color-1;
+					.workshop-count {
+						p {
+							color: $text-color-1;
+						}
+					}
+			}
 			.card-buttons {
 				a.btn.btn-grey {
 					background-color: $light-grey;
@@ -298,15 +314,7 @@
                 // }
 				
             }
-
-            .learn-card-footer-2 {
-				  font-size: 14px;
-					color: $text-color-1;
-               
-       
-            }
         }
-
  }
 
 
