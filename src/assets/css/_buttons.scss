@@ -123,9 +123,9 @@ a:not([href]):not([tabindex]).btn-main-2 {
 }
 .btn-border,
 a:not([href]):not([tabindex]).btn-border {
-    color: $light-grey;
+    color: $main-grey;
     background: transparent;
-    border: 1px solid $light-grey;
+    border: 1px solid $main-grey;
     &:focus, &:active, &:hover {
         border: 1px solid $main-grey;
         color: $main-grey;
