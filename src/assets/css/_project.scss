@@ -75,7 +75,6 @@
 		}
 	}
 	.project-story-tab {
-		background-color: white;
 		padding: 10px;
 		margin-bottom: 10px;
 	}
@@ -289,27 +288,31 @@
 	}
 	.project-collaborates {
 		.collaborate {
-			border: 1px solid $light-grey;
+			background-color: #fff;
 			margin-top: 10px;
 			margin-bottom: 10px;
-			.profile-container {
-				width: 100%;
-				float: none;
-				.profile-card {
-					border: none;
-					& > div{
-						padding: 0;
+			// .profile-container {
+			// 	width: 100%;
+			// 	float: none;
+			// 	.profile-card {
+			// 		border: none;
+			// 		& > div{
+			// 			padding: 0;
 						
-					}
-					.left {
+			// 		}
+			// 		.left {
 						
-					}
-					.right {
-						    padding: 0px 4px 0px 4px;
+			// 		}
+			// 		.right {
+			// 			    padding: 0px 4px 0px 4px;
 					
-					}
-				}	
+			// 		}
+			// 	}	
+			// }
+			.profile-container {
+				margin: 10px 0;				
 			}
+			
 			.role {
 			    padding: 10px 10px 0px 10px;
 			    background-color: #eee;

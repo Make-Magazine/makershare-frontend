@@ -320,13 +320,13 @@ a:not([href]):not([tabindex]) {
   .project .card-title {
     background-color: #fff;
     padding: 10px;
-    height: 60px;
+    height: 70px;
     position: relative;
-    font-family: "Messina Modern Bold";
-    font-size: 1.5em;
-    font-weight: 700;
-    text-transform: none;
-    line-height: 100%;
+    font-family: "Messina Modern Regular" !important;
+    font-size: 48pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 90% !important;
     color: #828282;
     color: #4F4F4F;
     min-height: 38px; }
@@ -596,9 +596,15 @@ body {
       float: left; }
 
 .card-type {
+  font-family: "Messina Sans SemiBold" !important;
+  font-size: 14pt !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
   position: absolute;
   top: 45px;
-  right: -22px;
+  right: -17px;
   padding: 0;
   transform: rotate(-90deg);
   text-transform: uppercase;
@@ -695,11 +701,11 @@ body {
   padding-top: 30px;
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
-    font-family: "Messina Modern Regular";
-    font-size: 3.5em;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 100%;
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
     color: #4F4F4F;
     text-align: center;
     margin: 25px 0; }
@@ -810,11 +816,11 @@ footer {
 .user-card .profile-pic-container .message-btn {
   padding: 0px; }
 .user-card .user-name {
-  font-family: "Messina Modern Bold";
-  font-size: 1.125em;
-  font-weight: 700;
-  text-transform: none;
-  line-height: 100%;
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
   color: #828282; }
   .user-card .user-name a {
     text-decoration: none;
@@ -826,11 +832,11 @@ footer {
     text-decoration: none;
     color: #BEBEBE; }
 .user-card .profile-tag {
-  font-family: "Messina Modern Bold";
-  font-size: 1.125em;
-  font-weight: 700;
-  text-transform: none;
-  line-height: 100%;
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
   color: #828282;
   margin-bottom: 5px;
   height: 38px;
@@ -849,8 +855,1034 @@ footer {
   color: #BEBEBE;
   clear: both; }
 
+.user-card-small.card-block {
+  padding-top: 10px;
+  padding-bottom: 0;
+  padding-left: 0; }
+.user-card-small .icons-side-user {
+  width: 80px;
+  overflow: hidden; }
+  .user-card-small .icons-side-user .user-icon {
+    float: left; }
+    .user-card-small .icons-side-user .user-icon img {
+      width: 26px; }
+.user-card-small .card-type {
+  top: 30px; }
+.user-card-small .count-list {
+  margin-top: 10px; }
+.user-card-small .card-stats {
+  padding: 2px;
+  color: #BEBEBE; }
+  .user-card-small .card-stats ul li {
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    color: #BEBEBE; }
+    .user-card-small .card-stats ul li img {
+      margin-right: 6px; }
+      .user-card-small .card-stats ul li img.project-likes {
+        width: 12px; }
+      .user-card-small .card-stats ul li img.project-views {
+        width: 20px; }
+    .user-card-small .card-stats ul li span {
+      margin: 0px; }
+.user-card-small .profile-pic-container {
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 0;
+  position: relative;
+  left: -10px;
+  top: -30px; }
+  .user-card-small .profile-pic-container .maker-photo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 4px; }
+  .user-card-small .profile-pic-container a {
+    width: 100%; }
+  .user-card-small .profile-pic-container .message-btn {
+    padding: 0px; }
+.user-card-small .user-name {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282; }
+  .user-card-small .user-name a {
+    text-decoration: none;
+    color: #222; }
+.user-card-small .user-nickname {
+  font-size: 12px;
+  margin-bottom: 0; }
+  .user-card-small .user-nickname a {
+    text-decoration: none;
+    color: #BEBEBE; }
+.user-card-small .profile-tag {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 18pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  margin-bottom: 5px;
+  height: 38px;
+  line-height: 17px;
+  overflow: hidden;
+  display: inline-block; }
+.user-card-small .profile-tag, .user-card-small .user-city, .user-card-small .count {
+  font-size: 14px; }
+.user-card-small .user-city {
+  color: #0AA9EA; }
+  .user-card-small .user-city div {
+    float: left;
+    margin-right: 6px; }
+.user-card-small .count {
+  margin-bottom: 0;
+  color: #BEBEBE;
+  clear: both; }
+
 /*  Start Styling Homepage   */
 /* End of Showcase */
+.profile-page {
+  position: relative;
+  margin-top: 14px; }
+
+.profile-cover {
+  overflow: hidden;
+  max-height: 220px;
+  position: relative; }
+  .profile-cover .cover-image {
+    height: 100%;
+    width: 100%; }
+  .profile-cover .user-group {
+    position: relative;
+    margin: auto;
+    top: -120px;
+    max-width: 150px;
+    overflow: hidden;
+    display: none; }
+    .profile-cover .user-group .profile-pic {
+      border: 1px solid #000;
+      width: 150px;
+      height: 150px;
+      position: relative; }
+      .profile-cover .user-group .profile-pic img {
+        height: auto;
+        width: 100%; }
+    .profile-cover .user-group .btn {
+      width: 100%;
+      max-width: 220px;
+      margin: 0; }
+
+.profile-name {
+  color: #0AA9EA;
+  padding: 15px 0 5px;
+  margin-top: 20px; }
+  .profile-name h4 {
+    font-weight: normal;
+    display: inline;
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #fff; }
+  .profile-name span {
+    margin-left: 20px;
+    font-size: 12px; }
+  .profile-name .bookmark li {
+    height: auto;
+    display: block;
+    float: left; }
+    .profile-name .bookmark li #profile-msg {
+      display: none; }
+    .profile-name .bookmark li a {
+      color: #fff;
+      text-decoration: none; }
+      .profile-name .bookmark li a i {
+        color: #222;
+        font-size: 30px;
+        margin-left: 20px;
+        width: 35px; }
+      .profile-name .bookmark li a .message {
+        color: #EC1F30; }
+
+<<<<<<< HEAD
+.challenge-card {
+  margin-bottom: 10px; }
+  .challenge-card .card {
+    background-color: transparent;
+    border: none; }
+  .challenge-card .single-challenge {
+    padding: 10px; }
+    .challenge-card .single-challenge img {
+      width: 250px; }
+    .challenge-card .single-challenge .card-partership {
+      color: #EC1F30; }
+  .challenge-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    height: auto; }
+  .challenge-card .card-container .card-partership {
+    font-family: "Messina Sans Regular";
+    font-size: 1.125em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 130%;
+    color: #828282;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .challenge-card .card-container .card-partership p {
+      margin-bottom: 0px; }
+  .challenge-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
+    bottom: 5px;
+    align-self: end; }
+    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
+      background-color: #BEBEBE; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+    font-size: 14px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+      padding-left: 10px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
+  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+=======
+.profile-sidebar {
+  overflow: hidden;
+  color: #181818; }
+  .profile-sidebar hr {
+    border-color: #222;
+    margin: 10px 0 15px; }
+  .profile-sidebar h5 {
+    color: #000;
+>>>>>>> 0fdb51d8ef3d47f3571e64269c6643133fbc8574
+    font-weight: bold;
+    font-size: 14px; }
+  .profile-sidebar .progress {
+    margin-bottom: 10px; }
+  .profile-sidebar .single-icon {
+    width: 100%; }
+    .profile-sidebar .single-icon img {
+      width: 34px;
+      height: 40px;
+      padding: 3px; }
+    .profile-sidebar .single-icon p {
+      margin-bottom: 1px;
+      line-height: normal;
+      padding: 10px 0px; }
+  .profile-sidebar .interests {
+    margin: 0px; }
+  .profile-sidebar a.add {
+    padding: 5px;
+    font-size: 13px;
+    width: 100%;
+    text-align: right;
+    margin: 5px 0;
+    white-space: normal;
+    border: 1px solid #444;
+    color: #444; }
+    .profile-sidebar a.add i {
+      font-size: 12px;
+      padding-top: 4px;
+      text-align: left;
+      float: left;
+      color: #444; }
+  .profile-sidebar .profile-container {
+    background-color: #ffffff;
+    padding: 15px;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    .profile-sidebar .profile-container li, .profile-sidebar .profile-container p {
+      font-size: 13px; }
+      .profile-sidebar .profile-container li a, .profile-sidebar .profile-container p a {
+        color: #0AA9EA; }
+    .profile-sidebar .profile-container i {
+      width: 25px;
+      color: #222; }
+    .profile-sidebar .profile-container .profile-group .profile-pic {
+      position: relative; }
+      .profile-sidebar .profile-container .profile-group .profile-pic img {
+        height: auto;
+        width: 100%; }
+      .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.58);
+        padding: 0px 8px 0px 8px;
+        font-size: 13px;
+        font-weight: bold;
+        font-family: serif; }
+    .profile-sidebar .profile-container .profile-group .btn {
+      width: 100%;
+      max-width: 220px;
+      margin: 0; }
+    .profile-sidebar .profile-container .profile-info {
+      margin-top: 16px;
+      font-size: 18px; }
+      .profile-sidebar .profile-container .profile-info .profile-fullname {
+        text-align: left;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: -webkit-body; }
+      .profile-sidebar .profile-container .profile-info .profile-nickname {
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: -webkit-body; }
+      .profile-sidebar .profile-container .profile-info .location {
+        color: #0AA9EA; }
+      .profile-sidebar .profile-container .profile-info .awards {
+        margin-top: 20px;
+        margin-bottom: 12px; }
+        .profile-sidebar .profile-container .profile-info .awards li {
+          padding-bottom: 15px; }
+          .profile-sidebar .profile-container .profile-info .awards li img {
+            width: 26px;
+            height: 26px;
+            margin-right: 5px; }
+      .profile-sidebar .profile-container .profile-info .interests li {
+        display: inline-block;
+        margin-bottom: 5px;
+        max-width: 100px;
+        vertical-align: bottom; }
+        .profile-sidebar .profile-container .profile-info .interests li.btn {
+          padding: 5px 8px;
+          white-space: normal;
+          font-weight: bold;
+          font-size: 10px;
+          background-color: white;
+          color: #1b1b1b;
+          border: 1px solid #222;
+          display: initial; }
+      .profile-sidebar .profile-container .profile-info .makerspaces li {
+        margin-top: 15px;
+        color: #0AA9EA; }
+      .profile-sidebar .profile-container .profile-info .my-web li {
+        background-color: #989898;
+        font-weight: bold;
+        display: inline;
+        padding: 5px;
+        border-radius: 4px; }
+        .profile-sidebar .profile-container .profile-info .my-web li i {
+          width: 18px;
+          font-size: 17px; }
+      .profile-sidebar .profile-container .profile-info .social-links {
+        margin-top: 15px; }
+        .profile-sidebar .profile-container .profile-info .social-links li {
+          display: inline-block;
+          text-align: center;
+          width: 25px;
+          vertical-align: top; }
+        .profile-sidebar .profile-container .profile-info .social-links i.fa-star {
+          font-size: 12px;
+          color: #169eff;
+          display: none;
+          margin-top: 5px; }
+      .profile-sidebar .profile-container .profile-info .how p {
+        margin-top: 20px; }
+  .profile-sidebar .report {
+    font-size: 12px;
+    text-decoration: none;
+    color: #0AA9EA; }
+    .profile-sidebar .report:hover {
+      color: #0AA9EA; }
+
+/* End profile-sidebar */
+.profile-content a.btn {
+  padding: 2px; }
+.profile-content .empty-content {
+  text-align: center;
+  color: #444;
+  font-size: 18px;
+  padding: 14px;
+  margin-top: 20px;
+  margin: 20px 0px 20px 0px; }
+  .profile-content .empty-content p {
+    padding: 10px 0; }
+  .profile-content .empty-content a {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 7px;
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+    margin: 0px 6px 0px 6px;
+    min-width: 144px; }
+    .profile-content .empty-content a i {
+      float: left;
+      margin: 4px 6px 0px 0px;
+      font-size: 18px; }
+    .profile-content .empty-content a.btn-white {
+      text-align: center;
+      font-size: 14px; }
+  .profile-content .empty-content input {
+    margin-bottom: 26px; }
+  .profile-content .empty-content .import-page {
+    font-size: 16px; }
+
+.profile-stats .bookmark ul {
+  padding-right: 0;
+  margin-bottom: 0px; }
+  .profile-stats .bookmark ul li {
+    display: inline-block;
+    margin: 0px;
+    color: #222;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-right: 2px; }
+    .profile-stats .bookmark ul li .number {
+      font-size: 20px;
+      font-weight: normal;
+      margin-right: 4px; }
+    .profile-stats .bookmark ul li p {
+      display: inline-block;
+      white-space: normal;
+      width: 70px;
+      margin-left: 10px;
+      font-size: 9px;
+      margin: 0 auto; }
+
+.profile-header {
+  margin-top: 50px; }
+  .profile-header .display-style {
+    padding-right: 10px; }
+    .profile-header .display-style img {
+      width: 30px; }
+  .profile-header .bookmark li {
+    border-left: 3px solid #222;
+    padding: 0 10px;
+    height: 24px; }
+
+.profile-empty-edit .cover-region .bookmark .message {
+  margin-top: 4px; }
+.profile-empty-edit .cover-region .bookmark .number {
+  margin-top: 0px;
+  width: auto;
+  color: white; }
+.profile-empty-edit .cover-region .bookmark p {
+  margin-top: 13px;
+  text-align: left;
+  color: white; }
+
+.switch {
+  color: #BEBEBE;
+  cursor: pointer;
+  text-align: right;
+  margin: 5px 0; }
+  .switch p {
+    margin-bottom: 0px;
+    color: #222;
+    margin-left: 10px; }
+
+.add-bio-modal h4,
+.add-interests-modal h4,
+.add-makerspace-modal h4,
+.add-social-modal h4,
+.add-description-modal h4,
+.add-maker-starting-modal h4 {
+  font-weight: normal;
+  color: #000;
+  font-size: 18px; }
+.add-bio-modal .modal-header, .add-bio-modal .modal-footer,
+.add-interests-modal .modal-header,
+.add-interests-modal .modal-footer,
+.add-makerspace-modal .modal-header,
+.add-makerspace-modal .modal-footer,
+.add-social-modal .modal-header,
+.add-social-modal .modal-footer,
+.add-description-modal .modal-header,
+.add-description-modal .modal-footer,
+.add-maker-starting-modal .modal-header,
+.add-maker-starting-modal .modal-footer {
+  border-color: #989898;
+  border-width: 3px; }
+.add-bio-modal .modal-content,
+.add-interests-modal .modal-content,
+.add-makerspace-modal .modal-content,
+.add-social-modal .modal-content,
+.add-description-modal .modal-content,
+.add-maker-starting-modal .modal-content {
+  border: 3px solid #989898; }
+  .add-bio-modal .modal-content li:first-of-type h4,
+  .add-interests-modal .modal-content li:first-of-type h4,
+  .add-makerspace-modal .modal-content li:first-of-type h4,
+  .add-social-modal .modal-content li:first-of-type h4,
+  .add-description-modal .modal-content li:first-of-type h4,
+  .add-maker-starting-modal .modal-content li:first-of-type h4 {
+    margin-left: 82%;
+    font-size: 14px; }
+  .add-bio-modal .modal-content label,
+  .add-interests-modal .modal-content label,
+  .add-makerspace-modal .modal-content label,
+  .add-social-modal .modal-content label,
+  .add-description-modal .modal-content label,
+  .add-maker-starting-modal .modal-content label {
+    width: 30%;
+    font-size: 15px; }
+  .add-bio-modal .modal-content input[type="checkbox"],
+  .add-interests-modal .modal-content input[type="checkbox"],
+  .add-makerspace-modal .modal-content input[type="checkbox"],
+  .add-social-modal .modal-content input[type="checkbox"],
+  .add-description-modal .modal-content input[type="checkbox"],
+  .add-maker-starting-modal .modal-content input[type="checkbox"] {
+    margin-left: 30px; }
+  .add-bio-modal .modal-content input[type="text"],
+  .add-interests-modal .modal-content input[type="text"],
+  .add-makerspace-modal .modal-content input[type="text"],
+  .add-social-modal .modal-content input[type="text"],
+  .add-description-modal .modal-content input[type="text"],
+  .add-maker-starting-modal .modal-content input[type="text"] {
+    width: 50%;
+    margin: 0;
+    padding: 3px;
+    font-size: 15px; }
+  .add-bio-modal .modal-content i,
+  .add-interests-modal .modal-content i,
+  .add-makerspace-modal .modal-content i,
+  .add-social-modal .modal-content i,
+  .add-description-modal .modal-content i,
+  .add-maker-starting-modal .modal-content i {
+    width: 25px; }
+  .add-bio-modal .modal-content p,
+  .add-interests-modal .modal-content p,
+  .add-makerspace-modal .modal-content p,
+  .add-social-modal .modal-content p,
+  .add-description-modal .modal-content p,
+  .add-maker-starting-modal .modal-content p {
+    margin-top: 5px;
+    font-size: 15px; }
+.add-bio-modal .modal-footer,
+.add-interests-modal .modal-footer,
+.add-makerspace-modal .modal-footer,
+.add-social-modal .modal-footer,
+.add-description-modal .modal-footer,
+.add-maker-starting-modal .modal-footer {
+  text-align: center; }
+  .add-bio-modal .modal-footer .btn-light-grey,
+  .add-interests-modal .modal-footer .btn-light-grey,
+  .add-makerspace-modal .modal-footer .btn-light-grey,
+  .add-social-modal .modal-footer .btn-light-grey,
+  .add-description-modal .modal-footer .btn-light-grey,
+  .add-maker-starting-modal .modal-footer .btn-light-grey {
+    border-radius: 4px; }
+.add-bio-modal .modal-footer .close-btn,
+.add-interests-modal .modal-footer .close-btn,
+.add-makerspace-modal .modal-footer .close-btn,
+.add-social-modal .modal-footer .close-btn,
+.add-description-modal .modal-footer .close-btn,
+.add-maker-starting-modal .modal-footer .close-btn {
+  border: 1px solid #444; }
+  .add-bio-modal .modal-footer .close-btn:hover,
+  .add-interests-modal .modal-footer .close-btn:hover,
+  .add-makerspace-modal .modal-footer .close-btn:hover,
+  .add-social-modal .modal-footer .close-btn:hover,
+  .add-description-modal .modal-footer .close-btn:hover,
+  .add-maker-starting-modal .modal-footer .close-btn:hover {
+    cursor: pointer; }
+.add-bio-modal .modal-footer .done-btn,
+.add-interests-modal .modal-footer .done-btn,
+.add-makerspace-modal .modal-footer .done-btn,
+.add-social-modal .modal-footer .done-btn,
+.add-description-modal .modal-footer .done-btn,
+.add-maker-starting-modal .modal-footer .done-btn {
+  border: 1px solid #444; }
+  .add-bio-modal .modal-footer .done-btn:hover,
+  .add-interests-modal .modal-footer .done-btn:hover,
+  .add-makerspace-modal .modal-footer .done-btn:hover,
+  .add-social-modal .modal-footer .done-btn:hover,
+  .add-description-modal .modal-footer .done-btn:hover,
+  .add-maker-starting-modal .modal-footer .done-btn:hover {
+    cursor: pointer; }
+
+.add-interests-modal .modal-content input[type="text"] {
+  width: 100% !important;
+  margin-top: 17px;
+  font-size: 15px; }
+
+.add-makerspace-modal .modal-content .makerspace {
+  width: 60%;
+  margin: auto; }
+  .add-makerspace-modal .modal-content .makerspace label {
+    width: 100%; }
+  .add-makerspace-modal .modal-content .makerspace a.btn-white {
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    border-radius: 4px; }
+  .add-makerspace-modal .modal-content .makerspace label {
+    margin-top: 5px;
+    width: 100%; }
+  .add-makerspace-modal .modal-content .makerspace input[type="text"] {
+    width: 100%;
+    font-size: 15px; }
+  .add-makerspace-modal .modal-content .makerspace .maker-group {
+    margin-bottom: 20px; }
+  .add-makerspace-modal .modal-content .makerspace i {
+    font-size: 15px; }
+
+.add-bio-modal {
+  resize: none; }
+  .add-bio-modal textarea {
+    width: 100%;
+    min-height: 170px;
+    overflow: visible;
+    font-size: 15px; }
+
+.edit-info-modal label {
+  display: block; }
+.edit-info-modal #edit-nickname {
+  width: 50%; }
+.edit-info-modal #edit-city {
+  width: 30%;
+  float: left; }
+.edit-info-modal #edit-state {
+  width: 10%;
+  margin-left: 5%;
+  float: left; }
+
+.edit-cover-modal .modal-dialog {
+  width: 60%; }
+.edit-cover-modal .modal-header {
+  position: relative;
+  padding-bottom: 0; }
+.edit-cover-modal .info {
+  float: right;
+  background-color: #BEBEBE;
+  font-size: 10px;
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 5px; }
+.edit-cover-modal ul {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0; }
+  .edit-cover-modal ul li {
+    display: inline-block; }
+.edit-cover-modal .upload, .edit-cover-modal .your-photos {
+  bottom: 0; }
+  .edit-cover-modal .upload a, .edit-cover-modal .your-photos a {
+    font-size: 18px;
+    color: #222;
+    border-radius: 0; }
+    .edit-cover-modal .upload a.active, .edit-cover-modal .your-photos a.active {
+      border-bottom: 1px solid #169eff; }
+.edit-cover-modal .your-photo-tab {
+  display: none; }
+  .edit-cover-modal .your-photo-tab .progress {
+    width: 30%; }
+  .edit-cover-modal .your-photo-tab .image-container {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px; }
+    .edit-cover-modal .your-photo-tab .image-container i {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #222; }
+.edit-cover-modal .upload-tab {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222; }
+  .edit-cover-modal .upload-tab img {
+    width: 200px;
+    margin: auto; }
+.edit-cover-modal .modal-footer {
+  text-align: center; }
+
+.profile-cover a.edit, .profile-sidebar a.edit {
+  position: absolute;
+  width: auto !important;
+  padding: 3px;
+  border: none;
+  border-radius: 4px;
+  right: 10px;
+  top: 10px; }
+
+.project.card {
+  width: 95%;
+  border-radius: 0; }
+.project .image-top {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  top: -15px;
+  left: -24px; }
+  .project .image-top .card-img-top {
+    border-radius: 0; }
+  .project .image-top img {
+    height: auto;
+    width: 100%; }
+.project .card-block {
+  padding: 0 10px;
+  margin-top: -5px;
+  height: 175px; }
+  .project .card-block .content-side {
+    padding-left: 5px;
+    width: 80%; }
+.project .icons-side-project {
+  width: 60px; }
+  .project .icons-side-project .project-icon {
+    float: left; }
+    .project .icons-side-project .project-icon img {
+      width: 20px; }
+.project .icons {
+  position: absolute;
+  color: white;
+  top: -12px;
+  left: -10px;
+  font-size: 13px;
+  padding: 20px; }
+  .project .icons span {
+    margin: 2px;
+    font-size: 13px; }
+    .project .icons span i {
+      margin-right: 4px;
+      font-size: 17px; }
+.project .card-title {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 24pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  color: #4F4F4F;
+  min-height: 38px;
+  padding: 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 30px;
+  text-align: left;
+  width: 100%; }
+.project .card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin: auto;
+  width: 80%; }
+  .project .card-text.project-text-grid {
+    display: none; }
+.project .card-role p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 15px;
+  color: #BEBEBE; }
+.project .card-stats {
+  padding: 2px;
+  color: #BEBEBE; }
+  .project .card-stats ul li {
+    float: left;
+    font-size: 15px;
+    width: 60px; }
+    .project .card-stats ul li img {
+      margin-right: 6px; }
+      .project .card-stats ul li img.project-likes {
+        width: 12px; }
+      .project .card-stats ul li img.project-views {
+        width: 20px; }
+    .project .card-stats ul li span {
+      margin: 0px; }
+
+.profile-page {
+  background-color: #F2F2F2;
+  margin: 0px; }
+  .profile-page .main-header {
+    background-color: white; }
+  .profile-page .card-block {
+    background-color: white; }
+    .profile-page .card-block .icons-side img {
+      width: 24px;
+      height: 30px; }
+  .profile-page .load-more {
+    width: 100%; }
+    .profile-page .load-more a {
+      margin: 0 auto;
+      display: block; }
+  .profile-page .profile-message {
+    padding: 0px; }
+    .profile-page .profile-message .button-container-main-2 {
+      margin-left: 5px;
+      margin-bottom: 0px;
+      margin-top: 0px; }
+  .profile-page .cover-region .profile-name .row {
+    margin: 0 auto;
+    width: 100%; }
+    .profile-page .cover-region .profile-name .row .bookmark {
+      background: -webkit-linear-gradient(black, transparent);
+      background: -o-linear-gradient(black, transparent);
+      background: linear-gradient(black, transparent);
+      padding: 10px 6px 6px 6px;
+      margin: 0; }
+      .profile-page .cover-region .profile-name .row .bookmark li a i {
+        color: white; }
+      .profile-page .cover-region .profile-name .row .bookmark .message {
+        color: #EC1F30 !important; }
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 100, 200, 0.6);
+  display: none;
+  z-index: 10; }
+
+.teaser {
+  display: none;
+  position: absolute;
+  top: 13%;
+  left: 0px;
+  color: #fff;
+  bottom: 0;
+  right: 0px;
+  margin: 0 auto;
+  z-index: 11;
+  height: 100px; }
+  .teaser p {
+    line-height: 20px; }
+
+#add-bio-modal h4,
+#add-interests-modal h4,
+#add-makerspace-modal h4,
+#add-social-modal h4,
+#add-description-modal h4,
+#add-maker-starting-modal h4 {
+  font-weight: normal;
+  color: #000;
+  font-size: 18px; }
+#add-bio-modal .modal-header, #add-bio-modal .modal-footer,
+#add-interests-modal .modal-header,
+#add-interests-modal .modal-footer,
+#add-makerspace-modal .modal-header,
+#add-makerspace-modal .modal-footer,
+#add-social-modal .modal-header,
+#add-social-modal .modal-footer,
+#add-description-modal .modal-header,
+#add-description-modal .modal-footer,
+#add-maker-starting-modal .modal-header,
+#add-maker-starting-modal .modal-footer {
+  border-color: #989898;
+  border-width: 3px; }
+#add-bio-modal .modal-content,
+#add-interests-modal .modal-content,
+#add-makerspace-modal .modal-content,
+#add-social-modal .modal-content,
+#add-description-modal .modal-content,
+#add-maker-starting-modal .modal-content {
+  border: 3px solid #989898; }
+  #add-bio-modal .modal-content li:first-of-type h4,
+  #add-interests-modal .modal-content li:first-of-type h4,
+  #add-makerspace-modal .modal-content li:first-of-type h4,
+  #add-social-modal .modal-content li:first-of-type h4,
+  #add-description-modal .modal-content li:first-of-type h4,
+  #add-maker-starting-modal .modal-content li:first-of-type h4 {
+    margin-left: 82%;
+    font-size: 14px; }
+  #add-bio-modal .modal-content label,
+  #add-interests-modal .modal-content label,
+  #add-makerspace-modal .modal-content label,
+  #add-social-modal .modal-content label,
+  #add-description-modal .modal-content label,
+  #add-maker-starting-modal .modal-content label {
+    width: 30%;
+    font-size: 15px; }
+  #add-bio-modal .modal-content input[type="checkbox"],
+  #add-interests-modal .modal-content input[type="checkbox"],
+  #add-makerspace-modal .modal-content input[type="checkbox"],
+  #add-social-modal .modal-content input[type="checkbox"],
+  #add-description-modal .modal-content input[type="checkbox"],
+  #add-maker-starting-modal .modal-content input[type="checkbox"] {
+    margin-left: 30px; }
+  #add-bio-modal .modal-content input[type="text"],
+  #add-interests-modal .modal-content input[type="text"],
+  #add-makerspace-modal .modal-content input[type="text"],
+  #add-social-modal .modal-content input[type="text"],
+  #add-description-modal .modal-content input[type="text"],
+  #add-maker-starting-modal .modal-content input[type="text"] {
+    width: 50%;
+    margin: 0;
+    padding: 3px;
+    font-size: 15px; }
+  #add-bio-modal .modal-content i,
+  #add-interests-modal .modal-content i,
+  #add-makerspace-modal .modal-content i,
+  #add-social-modal .modal-content i,
+  #add-description-modal .modal-content i,
+  #add-maker-starting-modal .modal-content i {
+    width: 25px; }
+  #add-bio-modal .modal-content p,
+  #add-interests-modal .modal-content p,
+  #add-makerspace-modal .modal-content p,
+  #add-social-modal .modal-content p,
+  #add-description-modal .modal-content p,
+  #add-maker-starting-modal .modal-content p {
+    margin-top: 5px;
+    font-size: 15px; }
+#add-bio-modal .modal-footer,
+#add-interests-modal .modal-footer,
+#add-makerspace-modal .modal-footer,
+#add-social-modal .modal-footer,
+#add-description-modal .modal-footer,
+#add-maker-starting-modal .modal-footer {
+  text-align: center; }
+  #add-bio-modal .modal-footer .btn-light-grey,
+  #add-interests-modal .modal-footer .btn-light-grey,
+  #add-makerspace-modal .modal-footer .btn-light-grey,
+  #add-social-modal .modal-footer .btn-light-grey,
+  #add-description-modal .modal-footer .btn-light-grey,
+  #add-maker-starting-modal .modal-footer .btn-light-grey {
+    border-radius: 4px; }
+#add-bio-modal .modal-footer .close-btn,
+#add-interests-modal .modal-footer .close-btn,
+#add-makerspace-modal .modal-footer .close-btn,
+#add-social-modal .modal-footer .close-btn,
+#add-description-modal .modal-footer .close-btn,
+#add-maker-starting-modal .modal-footer .close-btn {
+  border: 1px solid #444; }
+  #add-bio-modal .modal-footer .close-btn:hover,
+  #add-interests-modal .modal-footer .close-btn:hover,
+  #add-makerspace-modal .modal-footer .close-btn:hover,
+  #add-social-modal .modal-footer .close-btn:hover,
+  #add-description-modal .modal-footer .close-btn:hover,
+  #add-maker-starting-modal .modal-footer .close-btn:hover {
+    cursor: pointer; }
+#add-bio-modal .modal-footer .done-btn,
+#add-interests-modal .modal-footer .done-btn,
+#add-makerspace-modal .modal-footer .done-btn,
+#add-social-modal .modal-footer .done-btn,
+#add-description-modal .modal-footer .done-btn,
+#add-maker-starting-modal .modal-footer .done-btn {
+  border: 1px solid #444; }
+  #add-bio-modal .modal-footer .done-btn:hover,
+  #add-interests-modal .modal-footer .done-btn:hover,
+  #add-makerspace-modal .modal-footer .done-btn:hover,
+  #add-social-modal .modal-footer .done-btn:hover,
+  #add-description-modal .modal-footer .done-btn:hover,
+  #add-maker-starting-modal .modal-footer .done-btn:hover {
+    cursor: pointer; }
+
+#add-interests-modal .modal-content input[type="text"] {
+  width: 100% !important;
+  margin-top: 17px;
+  font-size: 15px; }
+
+#add-makerspace-modal .modal-content .makerspace {
+  width: 60%;
+  margin: auto; }
+  #add-makerspace-modal .modal-content .makerspace label {
+    width: 100%; }
+  #add-makerspace-modal .modal-content .makerspace a.btn-white {
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    border-radius: 4px; }
+  #add-makerspace-modal .modal-content .makerspace label {
+    margin-top: 5px;
+    width: 100%; }
+  #add-makerspace-modal .modal-content .makerspace input[type="text"] {
+    width: 100%;
+    font-size: 15px; }
+  #add-makerspace-modal .modal-content .makerspace .maker-group {
+    margin-bottom: 20px; }
+  #add-makerspace-modal .modal-content .makerspace i {
+    font-size: 15px; }
+
+#add-bio-modal {
+  resize: none; }
+  #add-bio-modal textarea {
+    width: 100%;
+    min-height: 170px;
+    overflow: visible;
+    font-size: 15px; }
+
+#edit-info-modal label {
+  display: block; }
+#edit-info-modal #edit-nickname {
+  width: 50%; }
+#edit-info-modal #edit-city {
+  width: 30%;
+  float: left; }
+#edit-info-modal #edit-state {
+  width: 10%;
+  margin-left: 5%;
+  float: left; }
+
+#edit-cover-modal .modal-dialog {
+  width: 60%; }
+#edit-cover-modal .modal-header {
+  position: relative;
+  padding-bottom: 0; }
+#edit-cover-modal .info {
+  float: right;
+  background-color: #BEBEBE;
+  font-size: 10px;
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 5px; }
+#edit-cover-modal ul {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0; }
+  #edit-cover-modal ul li {
+    display: inline-block; }
+#edit-cover-modal .upload, #edit-cover-modal .your-photos {
+  bottom: 0; }
+  #edit-cover-modal .upload a, #edit-cover-modal .your-photos a {
+    font-size: 18px;
+    color: #222;
+    border-radius: 0; }
+    #edit-cover-modal .upload a.active, #edit-cover-modal .your-photos a.active {
+      border-bottom: 1px solid #169eff; }
+#edit-cover-modal .your-photo-tab {
+  display: none; }
+  #edit-cover-modal .your-photo-tab .progress {
+    width: 30%; }
+  #edit-cover-modal .your-photo-tab .image-container {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px; }
+    #edit-cover-modal .your-photo-tab .image-container i {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      color: #222; }
+#edit-cover-modal .upload-tab {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222; }
+  #edit-cover-modal .upload-tab img {
+    width: 200px;
+    margin: auto; }
+#edit-cover-modal .modal-footer {
+  text-align: center; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
@@ -860,11 +1892,11 @@ footer {
     background-color: #F2F2F2;
     text-align: center; }
     .page-explore .explore-header h3 {
-      font-family: "Messina Modern Regular";
-      font-size: 3.5em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 100%;
+      font-family: "Messina Modern Regular" !important;
+      font-size: 64pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
       color: #4F4F4F;
       margin: auto;
       text-align: center;
@@ -926,7 +1958,9 @@ footer {
       background-color: whitesmoke;
       color: #BEBEBE;
       border-radius: 0;
-      z-index: 10; }
+      z-index: 10;
+      right: 0;
+      left: auto; }
 
 .page-challenge {
   background-color: #F2F2F2;
@@ -947,14 +1981,14 @@ footer {
     overflow: hidden;
     position: relative;
     padding: 0;
-    width: 100%;
-    height: auto; }
+    width: 350px;
+    height: 320px; }
   .challenge-card .card-container .card-partership {
-    font-family: "Messina Sans Regular";
-    font-size: 1.125em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 130%;
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 14pt !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
     color: #828282;
     text-transform: none;
     font-size: 14px;
@@ -965,52 +1999,52 @@ footer {
       margin-bottom: 0px; }
   .challenge-card .card-container .card-description h4 {
     font-weight: bold; }
-  .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
-    bottom: 5px;
-    align-self: end; }
-    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
-      background-color: #BEBEBE; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-    font-size: 14px; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
-      padding-left: 10px; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-      padding-right: 10px;
-      border-right: 1px solid white; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-    font-weight: bold;
-    font-size: 16px;
-    padding-right: 5px; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
-    color: white; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-    color: #EC1F30; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
-    font-size: 14px; }
+  .challenge-card .card-container .challene-card-footer {
+    margin-top: auto; }
+    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
+        background-color: #BEBEBE; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+      font-size: 14px; }
+      .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+        padding-left: 10px; }
+      .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+        padding-right: 10px;
+        border-right: 1px solid white; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+      font-weight: bold;
+      font-size: 16px;
+      padding-right: 5px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+      color: white; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+      color: #EC1F30; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+      font-size: 14px; }
 
 .challenge-header {
   margin-bottom: 25px;
   text-align: center; }
   .challenge-header h3 {
-    font-family: "Messina Modern Regular";
-    font-size: 3.5em;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 100%;
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
     color: #4F4F4F;
     margin: auto;
     padding-top: 45px;
     padding-bottom: 10px;
     font-weight: normal; }
   .challenge-header p {
-    font-family: "Messina Sans Regular";
-    font-size: 1.125em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 130%;
-    color: #828282;
-    width: 85%;
-    margin: auto; }
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 14pt !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282; }
 
 .challenges-container {
   padding: 25px 10px; }
@@ -1039,8 +2073,17 @@ footer {
       max-width: 100%; }
   .page-challenge .challenge-card .card-container {
     color: #fff;
-    position: relative; }
+    position: relative;
+    height: 100%; }
+    .page-challenge .challenge-card .card-container .card {
+      height: 100%; }
     .page-challenge .challenge-card .card-container .challenge-type-badge {
+      font-family: "Messina Sans SemiBold" !important;
+      font-size: 14pt !important;
+      font-weight: 600 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
       position: absolute;
       top: 15px;
       right: -45px;
@@ -1048,42 +2091,38 @@ footer {
       .page-challenge .challenge-card .card-container .challenge-type-badge p {
         margin: 0px; }
     .page-challenge .challenge-card .card-container .card-title {
-      font-family: "Messina Modern Regular";
-      font-size: 3em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 90%;
+      font-family: "Messina Modern Regular" !important;
+      font-size: 48pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 90% !important;
       color: #828282;
-      font-size: 38px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 67px;
+      max-height: 107px;
+      min-height: 70px;
       color: white; }
     .page-challenge .challenge-card .card-container .card-status {
-      font-family: "Messina Sans Bold";
-      font-size: 1.125em;
-      font-weight: 700;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
       color: #828282;
       display: inline-block;
       text-transform: none; }
     .page-challenge .challenge-card .card-container .card-description h4 {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
-      font-family: "Messina Sans Regular";
-      font-size: 1.125em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans SemiBold" !important;
+      font-size: 14pt !important;
+      font-weight: 600 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
       color: #828282;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      min-height: 116px;
+      height: 85px;
       color: white; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BEBEBE; }
@@ -1148,7 +2187,6 @@ footer {
           background-color: #fff !important;
           border-bottom-color: #fff; }
   .page-project .project-story-tab {
-    background-color: white;
     padding: 10px;
     margin-bottom: 10px; }
   .page-project .feedback-group {
@@ -1285,18 +2323,11 @@ footer {
     text-align: right;
     margin: 5px 0 10px; }
   .page-project .project-collaborates .collaborate {
-    border: 1px solid #BEBEBE;
+    background-color: #fff;
     margin-top: 10px;
     margin-bottom: 10px; }
     .page-project .project-collaborates .collaborate .profile-container {
-      width: 100%;
-      float: none; }
-      .page-project .project-collaborates .collaborate .profile-container .profile-card {
-        border: none; }
-        .page-project .project-collaborates .collaborate .profile-container .profile-card > div {
-          padding: 0; }
-        .page-project .project-collaborates .collaborate .profile-container .profile-card .right {
-          padding: 0px 4px 0px 4px; }
+      margin: 10px 0; }
     .page-project .project-collaborates .collaborate .role {
       padding: 10px 10px 0px 10px;
       background-color: #eee;
@@ -1466,6 +2497,7 @@ header.showcase-project .next {
         outline: none;
         outline: none; }
 
+<<<<<<< HEAD
 .page-project .projectsingle-card {
   position: relative;
   padding: 16px;
@@ -1548,59 +2580,174 @@ header.showcase-project .next {
               color: white; }
 
 .workshop-page {
+=======
+.page-learn {
+  background-color: white;
+  padding-bottom: 40px; }
+
+.learn-card {
+  margin-bottom: 10px; }
+  .learn-card .card {
+    background-color: transparent;
+    border: none; }
+  .learn-card .single-learn {
+    padding: 10px; }
+    .learn-card .single-learn img {
+      width: 250px; }
+    .learn-card .single-learn .card-partership {
+      color: #EC1F30; }
+  .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 350px;
+    height: 320px; }
+  .learn-card .card-container .card-partership {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .learn-card .card-container .card-partership p {
+      margin-bottom: 0px; }
+  .learn-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-1 {
+    bottom: 5px;
+    align-self: end; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
+      background-color: #BEBEBE; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
+    font-size: 14px; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
+      padding-left: 10px; }
+    .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status, .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+    font-weight: bold;
+    font-size: 16px;
+    padding-right: 5px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
+    color: white; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+    color: #EC1F30; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
+    font-size: 14px; }
+
+.learn-header {
+  margin-bottom: 25px;
+  text-align: center; }
+  .learn-header h3 {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F;
+    margin: auto;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    font-weight: normal; }
+  .learn-header p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    width: 85%;
+    margin: auto; }
+
+.learn-container {
+  padding: 25px 0; }
+
+.page-learn .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+>>>>>>> 0fdb51d8ef3d47f3571e64269c6643133fbc8574
   background-color: #F2F2F2; }
-  .workshop-page .workshop-header {
-    padding-bottom: 25px;
-    background-color: #F2F2F2;
-    text-align: center; }
-    .workshop-page .workshop-header h3 {
-      font-family: "Messina Modern Regular";
-      font-size: 3.5em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 100%;
-      color: #4F4F4F;
-      margin: auto;
-      text-align: center;
-      padding-top: 40px;
-      color: #222;
-      padding-bottom: 30px; }
-    .workshop-page .workshop-header .explore-tags {
-      margin: 20px auto; }
-      .workshop-page .workshop-header .explore-tags li {
-        display: inline-block;
-        margin: 5px; }
-        .workshop-page .workshop-header .explore-tags li a.btn {
-          padding: 5px 15px;
-          border-radius: 3px; }
-  .workshop-page .learning-item {
-    background-color: white;
-    padding: 4px; }
-    .workshop-page .learning-item:hover {
-      cursor: pointer; }
-    .workshop-page .learning-item .card-img-top {
-      width: 250px;
-      height: 210px; }
-      .workshop-page .learning-item .card-img-top img {
-        width: 250px;
-        height: 210px; }
-    .workshop-page .learning-item .content-bottom {
-      padding-top: 8px; }
-    .workshop-page .learning-item .workshop-tags li {
-      float: left; }
-      .workshop-page .learning-item .workshop-tags li a {
-        font-size: 11px;
-        padding: 4px; }
-    .workshop-page .learning-item .card-description {
+  .page-learn .learn-card .learn-item {
+    padding: 10px; }
+    .page-learn .learn-card .learn-item img {
+      width: 250px; }
+    .page-learn .learn-card .learn-item .card-partership {
+      color: #EC1F30; }
+  .page-learn .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 450px;
+    height: 290px; }
+    .page-learn .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-learn .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-learn .learn-card .card-container .learn-type-bagde {
+      position: absolute;
+      top: 18px;
+      right: -69px;
+      transform: rotate(-90deg);
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 48pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 90% !important;
+      color: #828282;
+      font-size: 38px;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      margin-bottom: 10px;
-      min-height: 100px; }
-  .workshop-page .Workshop-view .learning {
-    margin-bottom: 8px;
-    margin-top: 8px; }
+      min-height: 67px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-status {
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-learn .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-learn .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 116px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-learn .learn-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
+
+.page-learn-summary {
+  background-color: #F2F2F2; }
 
 .profile-page {
   position: relative;
@@ -1861,29 +3008,17 @@ header.showcase-project .next {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-empty-edit .profile-stats .bookmark ul {
-  padding-right: 0;
-  margin-bottom: 0px; }
-  .profile-empty-edit .profile-stats .bookmark ul li {
-    display: inline-block;
-    margin: 0px;
-    color: #222;
-    font-weight: bold;
-    padding-left: 2px;
-    padding-right: 2px; }
-    .profile-empty-edit .profile-stats .bookmark ul li .number {
-      font-size: 25px;
-      font-weight: normal;
-      margin-right: 4px; }
-    .profile-empty-edit .profile-stats .bookmark ul li p {
-      display: inline-block;
-      white-space: normal;
-      width: 70px;
-      margin-left: 10px;
-      font-size: 12px;
-      margin: 0 auto; }
-    .profile-empty-edit .profile-stats .bookmark ul li i {
-      margin-top: 9px; }
+.profile-header {
+  margin-top: 50px; }
+  .profile-header .display-style {
+    padding-right: 10px; }
+    .profile-header .display-style img {
+      width: 30px; }
+  .profile-header .bookmark li {
+    border-left: 3px solid #222;
+    padding: 0 10px;
+    height: 24px; }
+
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
 .profile-empty-edit .cover-region .bookmark .number {
@@ -1898,12 +3033,12 @@ header.showcase-project .next {
 .switch {
   color: #BEBEBE;
   cursor: pointer;
-  text-align: right; }
-  .switch .grid-view {
-    display: none; }
+  text-align: right;
+  margin: 5px 0; }
   .switch p {
     margin-bottom: 0px;
-    color: #0AA9EA; }
+    color: #222;
+    margin-left: 10px; }
 
 .add-bio-modal h4,
 .add-interests-modal h4,
@@ -2177,11 +3312,11 @@ header.showcase-project .next {
       margin-right: 4px;
       font-size: 17px; }
 .project .card-title {
-  font-family: "Messina Modern Bold";
-  font-size: 1.5em;
-  font-weight: 700;
-  text-transform: none;
-  line-height: 100%;
+  font-family: "Messina Modern Bold" !important;
+  font-size: 24pt !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
   color: #828282;
   color: #4F4F4F;
   min-height: 38px;
@@ -2198,7 +3333,6 @@ header.showcase-project .next {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 15px;
   margin: auto;
   width: 80%; }
   .project .card-text.project-text-grid {
@@ -2512,11 +3646,11 @@ header.showcase-project .next {
     text-align: center; }
     .page-showcase .showcase-header h3,
     .page-single-showcase .showcase-header h3 {
-      font-family: "Messina Modern Regular";
-      font-size: 3.5em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 100%;
+      font-family: "Messina Modern Regular" !important;
+      font-size: 64pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
       color: #4F4F4F;
       margin: auto;
       padding-top: 45px;
@@ -2524,11 +3658,11 @@ header.showcase-project .next {
       font-weight: normal; }
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
-      font-family: "Messina Sans Regular";
-      font-size: 1.125em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
       color: #828282;
       width: 85%;
       margin: auto; }
@@ -2545,7 +3679,7 @@ header.showcase-project .next {
   margin-bottom: 10px; }
 
 .showcase-card-backlayer {
-  background-color: #c5edfb;
+  background-color: #D4EEFC;
   transition: background-color 0.8s ease;
   padding-right: 23px;
   padding-bottom: 9px;
@@ -2554,7 +3688,7 @@ header.showcase-project .next {
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
   .showcase-card-backlayer:hover {
-    background-color: #00AEEF;
+    background-color: #11B3F0;
     transition: background-color 0.8s ease; }
   .showcase-card-backlayer .showcase-card {
     position: relative;
@@ -2588,7 +3722,10 @@ header.showcase-project .next {
         height: auto; }
     .showcase-card-backlayer .showcase-card .card-container {
       color: #fff;
+      height: 100%;
       position: relative; }
+      .showcase-card-backlayer .showcase-card .card-container .card {
+        height: 100%; }
       .showcase-card-backlayer .showcase-card .card-container .showcase-type-badge {
         position: absolute;
         top: 24px;
@@ -2598,44 +3735,42 @@ header.showcase-project .next {
           margin: 0px;
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
-        font-family: "Messina Modern Regular";
-        font-size: 3em;
-        font-weight: 400;
-        text-transform: capitalize;
-        line-height: 90%;
+        font-family: "Messina Modern Regular" !important;
+        font-size: 48pt !important;
+        font-weight: 400 !important;
+        text-transform: capitalize !important;
+        line-height: 90% !important;
         color: #828282;
-        font-size: 38px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 67px;
+        max-height: 107px;
+        min-height: 70px;
         color: #444; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
-        font-family: "Messina Sans Bold";
-        font-size: 1.125em;
-        font-weight: 700;
-        text-transform: none;
-        line-height: 130%;
+        font-family: "Messina Sans Bold" !important;
+        font-size: 18pt !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
         color: #828282;
         display: inline-block;
         text-transform: none; }
       .showcase-card-backlayer .showcase-card .card-container .card-description h4 {
         font-weight: bold; }
       .showcase-card-backlayer .showcase-card .card-container .card-description p {
-        font-family: "Messina Sans Regular";
-        font-size: 1.125em;
-        font-weight: 400;
-        text-transform: none;
-        line-height: 130%;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 160px;
-        color: #444;
-        line-height: 140%; }
+        color: #444; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BEBEBE; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons .follow-number {
@@ -2678,7 +3813,7 @@ header.showcase-project .next {
         padding-right: 5px; }
 
 .page-single-showcase .showcase-card-backlayer {
-  background-color: #c5edfb;
+  background-color: #D4EEFC;
   transition: inherit;
   padding-right: 23px;
   padding-bottom: 9px;
@@ -2687,7 +3822,7 @@ header.showcase-project .next {
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
   .page-single-showcase .showcase-card-backlayer:hover {
-    background-color: #c5edfb;
+    background-color: #D4EEFC;
     transition: inherit; }
 .page-single-showcase .projects-grid .showcase-wrapper {
   display: block;
@@ -2850,11 +3985,11 @@ img {
     padding: 10px 0 5px;
     overflow: hidden; }
     .page-create-project-why .add-controls h3 {
-      font-family: "Messina Modern Bold";
-      font-size: 1.5em;
-      font-weight: 700;
-      text-transform: none;
-      line-height: 100%;
+      font-family: "Messina Modern Bold" !important;
+      font-size: 24pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
       color: #828282;
       color: #4F4F4F; }
     .page-create-project-why .add-controls .contorls li .btn-soft-grey {
@@ -3411,11 +4546,11 @@ img {
       right: -49px;
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
-      font-family: "Messina Modern Regular";
-      font-size: 3em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 90%;
+      font-family: "Messina Modern Regular" !important;
+      font-size: 48pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 90% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -3425,22 +4560,22 @@ img {
       min-height: 67px;
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
-      font-family: "Messina Sans Bold";
-      font-size: 1.125em;
-      font-weight: 700;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
       color: #828282;
       display: inline-block;
       text-transform: none; }
     .page-challenge-summary .challenge-card .card-container .card-description h4, .page-challenge-summary-closed .challenge-card .card-container .card-description h4, .page-enter-challenge .challenge-card .card-container .card-description h4 {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
-      font-family: "Messina Sans Regular";
-      font-size: 1.125em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
       color: #828282;
       min-height: 116px;
       color: white; }
@@ -3500,11 +4635,9 @@ img {
 
 .page-workshop-individual {
   background-color: #F2F2F2; }
-  .page-workshop-individual .region-content {
-    background-color: white; }
   .page-workshop-individual .related-books {
     background-color: white;
-    padding: 4px; }
+    padding: 0px; }
   .page-workshop-individual .top-content-wrapper {
     border-bottom: 1px solid #222;
     margin-bottom: 10px;
@@ -3556,6 +4689,15 @@ img {
   .page-workshop-individual .workshop-content h4 {
     font-weight: normal;
     color: #222; }
+  .page-workshop-individual .workshop-content .learning-card {
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 5px 15px;
+    box-shadow: 2px 6px 22px #888888; }
+  .page-workshop-individual .workshop-content .card-img-top {
+    box-shadow: 0px 7px 12px #888888;
+    width: 187px;
+    height: 252px; }
   .page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
     background-color: white;
     padding: 10px;
@@ -3616,12 +4758,180 @@ img {
       height: 160px;
       overflow: hidden; }
       .page-workshop-individual .suggested .image-container img {
-        max-width: 100%;
-        height: auto; }
+        height: auto;
+        position: relative;
+        left: -30px;
+        top: -25px; }
     .page-workshop-individual .suggested h4 {
       font-weight: normal; }
     .page-workshop-individual .suggested li {
       padding: 8px; }
+  .page-workshop-individual .suggest-card {
+    border: 2px solid red;
+    box-sizing: border-box; }
+    .page-workshop-individual .suggest-card img {
+      position: relative;
+      top: -9px;
+      left: -16px; }
+
+.page-learn {
+  background: #F2F2F2;
+  padding-bottom: 0px; }
+
+.learn-card .card {
+  background-color: transparent;
+  border: none; }
+.learn-card .single-learn {
+  padding: 10px; }
+  .learn-card .single-learn img {
+    width: 250px; }
+  .learn-card .single-learn .card-partership {
+    color: #EC1F30; }
+.learn-card .image-container {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  width: 350px;
+  height: 320px; }
+.learn-card .card-container .card-partership {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 18pt !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 110% !important;
+  color: #828282;
+  text-transform: none;
+  font-size: 14px;
+  display: inline-block;
+  min-height: 16px;
+  margin-bottom: 10px; }
+  .learn-card .card-container .card-partership p {
+    margin-bottom: 0px; }
+.learn-card .card-container .card-description h4 {
+  font-weight: bold; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-1 {
+  bottom: 5px;
+  align-self: end; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
+    background-color: #BEBEBE; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
+  font-size: 14px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
+    padding-left: 10px; }
+  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
+    padding-right: 10px;
+    border-right: 1px solid white; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status, .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+  font-weight: bold;
+  font-size: 16px;
+  padding-right: 5px; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
+  color: white; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
+  color: #EC1F30; }
+.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
+  font-size: 14px; }
+
+.learn-header {
+  margin-bottom: 25px;
+  text-align: center; }
+  .learn-header h3 {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 64pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F;
+    margin: auto;
+    padding-top: 45px;
+    padding-bottom: 10px;
+    font-weight: normal; }
+  .learn-header p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 18pt !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    width: 85%;
+    margin: auto; }
+
+.learn-container {
+  padding: 25px 0; }
+
+.page-learn .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #ddd; }
+  .page-learn .learn-card .learn-item {
+    padding: 10px; }
+    .page-learn .learn-card .learn-item img {
+      width: 250px; }
+    .page-learn .learn-card .learn-item .card-partership {
+      color: #EC1F30; }
+  .page-learn .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 450px;
+    height: 290px; }
+    .page-learn .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-learn .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-learn .learn-card .card-container .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 48pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 90% !important;
+      color: #828282;
+      font-size: 38px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 67px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-status {
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-learn .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-learn .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 116px;
+      color: #4F4F4F; }
+    .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+    .page-learn .learn-card .card-container .card-buttons .follow-number {
+      background-color: #ababab;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
+
+.page-learn-summary {
+  background-color: #F2F2F2; }
 
 .page-portfolio .portfolio-controls {
   background-color: #e5ffff;
@@ -3863,6 +5173,11 @@ img {
     .conversation-container .reply-area .send-actions li {
       display: inline-block; }
 
+.challenge-entered {
+  margin: 10px;
+  border: 1px solid;
+  padding: 10px; }
+
 .page-search-result {
   background-color: #F2F2F2; }
   .page-search-result .top-content-wrapper {
@@ -3910,19 +5225,19 @@ img {
   .page-search-result .search-term {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
-      font-family: "Messina Modern Regular";
-      font-size: 3.5em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 100%;
+      font-family: "Messina Modern Regular" !important;
+      font-size: 64pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
       color: #4F4F4F;
       text-align: center; }
     .page-search-result .search-term p {
-      font-family: "Messina Sans Regular";
-      font-size: 1.125em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 130%;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
       color: #828282;
       text-align: center; }
 
@@ -3947,20 +5262,20 @@ img {
       .total-result .project-result .projects-item .card-block {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
-        font-family: "Messina Modern Bold";
-        font-size: 1.125em;
-        font-weight: 700;
-        text-transform: none;
-        line-height: 100%;
+        font-family: "Messina Modern Bold" !important;
+        font-size: 18pt !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
         color: #828282;
         color: #4F4F4F;
         margin-bottom: 5px; }
       .total-result .project-result .projects-item .card-text {
-        font-family: "Messina Sans SemiBold";
-        font-size: 1em;
-        font-weight: 600;
-        text-transform: none;
-        line-height: 100%;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
         color: #828282; }
       .total-result .project-result .projects-item .card-title, .total-result .project-result .projects-item .card-text {
         display: -webkit-box;
@@ -3988,22 +5303,22 @@ img {
     .total-result .challenge-item .content-bottom {
       padding-top: 24px; }
       .total-result .challenge-item .content-bottom .content-side .challenge-close, .total-result .challenge-item .content-bottom .content-side .challenge-open {
-        font-family: "Messina Sans Bold";
-        font-size: 1.125em;
-        font-weight: 700;
-        text-transform: none;
-        line-height: 130%;
+        font-family: "Messina Sans Bold" !important;
+        font-size: 18pt !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
         color: #828282; }
       .total-result .challenge-item .content-bottom .content-side .challenge-open {
         color: #EC1F30; }
       .total-result .challenge-item .content-bottom .content-side .challenge-close {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
-        font-family: "Messina Sans Regular";
-        font-size: 1.125em;
-        font-weight: 400;
-        text-transform: none;
-        line-height: 130%;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 18pt !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
         color: #828282;
         color: #BDBDBD !important; }
         .total-result .challenge-item .content-bottom .content-side .sponser-name p {
@@ -4022,11 +5337,11 @@ img {
             height: 80%;
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
-        font-family: "Messina Modern Bold";
-        font-size: 1.125em;
-        font-weight: 700;
-        text-transform: none;
-        line-height: 100%;
+        font-family: "Messina Modern Bold" !important;
+        font-size: 18pt !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
         color: #828282;
         clear: both;
         color: white; }
@@ -4055,25 +5370,25 @@ img {
       clear: both;
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
-      font-family: "Messina Modern Bold";
-      font-size: 1.125em;
-      font-weight: 700;
-      text-transform: none;
-      line-height: 100%;
+      font-family: "Messina Modern Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
       color: #828282;
       color: #4F4F4F;
       font-size: 19px;
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city, .total-result .makers-item .content-bottom .content-side .count {
-      font-family: "Messina Sans SemiBold";
-      font-size: 1em;
-      font-weight: 600;
-      text-transform: none;
-      line-height: 100%;
+      font-family: "Messina Sans SemiBold" !important;
+      font-size: 14pt !important;
+      font-weight: 600 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
       color: #828282;
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city {
-      color: #00AEEF; }
+      color: #11B3F0; }
     .total-result .makers-item .content-bottom .icons {
       margin-top: 5px; }
       .total-result .makers-item .content-bottom .icons img {
@@ -4083,11 +5398,11 @@ img {
     .total-result .makers-item .content-bottom .like-view {
       margin-bottom: 0px; }
   .total-result .results-header .result-title span {
-    font-family: "Messina Modern Bold";
-    font-size: 1.5em;
-    font-weight: 700;
-    text-transform: none;
-    line-height: 100%;
+    font-family: "Messina Modern Bold" !important;
+    font-size: 24pt !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
     color: #828282;
     color: #4F4F4F;
     font-size: 30px;

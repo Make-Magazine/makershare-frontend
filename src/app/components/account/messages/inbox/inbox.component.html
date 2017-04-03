@@ -4,9 +4,6 @@
       <li><a href="" class="btn btn-grey">Messages</a></li>
       <li><a href="" class="btn btn-grey active">Notificatoins</a></li>
     </ul>
-    <!--<span class="fa fa-lg fa-cog">
-      <input type="checkbox" (click)="turnOffMessages($event)">Turn Off Messages
-      </span>-->
   </header>
   <!--/header -->
   <div class="container inbox-container">
@@ -14,10 +11,11 @@
       <div class="selectall">
         <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
       </div>
-      <a  class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
-      <!--<button (click)="turnOffMessages()" class="btn btn-main btn-sharp new-message">Turn Off Messages</button>-->
+        <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
+      <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
+      <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()" >Turn on Messages</button>
       <button [routerLink]="['/blocked']" class="btn btn-main btn-sharp new-message">Blocked users</button>
-      <a class="btn btn-main btn-sharp new-message" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
+      <a class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
     </section>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg; let i=index;">
@@ -34,14 +32,15 @@
             <div class="media-body">
               <p class="sender" *ngIf="message.sender"> you sent a message  <a href=""></a></p>
               <p class="sender" *ngIf="message.reciver"><a href="">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
-              <p class="timestamp" *ngIf="message.last_updated == 1">{{message.last_updated}} minute ago </p>
-              <p class="timestamp" *ngIf="message.last_updated > 1 && message.last_updated < 60">{{message.last_updated}} minutes ago </p>
+              <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
+              <!--<p class="timestamp" *ngIf="message.last_updated > 1 && message.last_updated < 60">{{message.last_updated}} minutes ago </p>
               <p class="timestamp" *ngIf="message.last_updated == 60" >{{message.last_updated/60 | number : '1.0-0'}} hour ago</p>
               <p class="timestamp" *ngIf="message.last_updated > 60 && message.last_updated < 1440 ">{{message.last_updated/60 | number : '1.0-0'}} hours ago</p>
               <p class="timestamp" *ngIf="message.last_updated == 1440 ">{{message.last_updated/(24*60) | number : '1.0-0'}} day ago</p>
-              <p class="timestamp" *ngIf="message.last_updated > 1440 && message.last_updated < 10080 ">{{message.last_updated/(24*60) | number : '1.0-0'}} days ago</p>
-              <p class="timestamp" *ngIf="message.last_updated >= 10080 ">{{dateObj | date:'medium'}}</p>
-              <p class="timestamp" *ngIf="!message.last_updated">Now</p>
+              <p class="timestamp" *ngIf="message.last_updated > 1440 && message.last_updated < 10080 ">{{message.last_updated/(24*60) | number : '1.0-0'}} days ago</p>-->
+              <!--<p class="timestamp" *ngIf="message.last_updated > 10080 ">{{dateObj | date}}</p>-->
+              <!--<p class="timestamp" *ngIf="!message.last_updated">Now</p>-->
+
             </div>
           </div>
           <div class="message-subject">

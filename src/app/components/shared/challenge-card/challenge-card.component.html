@@ -14,7 +14,7 @@
         </div>
         <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
         <div class="card-description">
-          <p [innerHTML]="challenge.summary"></p>
+          <p [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex">
           <div class="challene-card-footer-1">

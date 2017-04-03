@@ -333,39 +333,57 @@
 		}
 	}
 }
-.profile-empty-edit {
-	.profile-stats {
-		.bookmark {
-		ul {
-			padding-right: 0;
-			margin-bottom: 0px;
-			li{
-				display: inline-block;
-				margin: 0px;
-				color: $main-grey;
-				font-weight: bold;
-				padding-left: 2px;
-	    		padding-right: 2px;
-				.number{
-					font-size: 25px;
-					font-weight: normal;
-					margin-right: 4px;
-				}
-				p {
-					display: inline-block;
-					white-space: normal;
-					width: 70px;
-					margin-left: 10px;
-					font-size: 12px;
-					margin: 0 auto;
-				}
-				i {
-					margin-top: 9px;
-					}
-				}
-			}
+
+.profile-header {
+	margin-top: 50px;
+	.display-style {
+		padding-right: 10px;
+		img {
+			width: 30px;
 		}
 	}
+	.bookmark {
+		li {
+			border-left: 3px solid #222;
+			padding: 0 10px;
+			height: 24px;
+		}
+	}
+}
+
+.profile-empty-edit {
+	// .profile-stats {
+	// 	.bookmark {
+	// 	ul {
+	// 		padding-right: 0;
+	// 		margin-bottom: 0px;
+	// 		li{
+	// 			display: inline-block;
+	// 			margin: 0px;
+	// 			color: $main-grey;
+	// 			font-weight: bold;
+	// 			padding-left: 2px;
+	//     		padding-right: 2px;
+	// 			.number{
+	// 				font-size: 25px;
+	// 				font-weight: normal;
+	// 				margin-right: 4px;
+	// 			}
+	// 			p {
+	// 				display: inline-block;
+	// 				white-space: normal;
+	// 				width: 70px;
+	// 				margin-left: 10px;
+	// 				font-size: 12px;
+	// 				margin: 0 auto;
+	// 			}
+	// 			i {
+	// 				margin-top: 9px;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 	.cover-region {
 		.bookmark {
 			.message {
@@ -390,10 +408,11 @@
     	color: $light-grey;
     	cursor: pointer;
     	text-align: right;
-    	.grid-view {display: none;}
+			margin: 5px 0;
     	p {
     		margin-bottom: 0px;
-    		color: $title-color;
+    		color: $main-grey;
+				margin-left: 10px;
     	}
 	}
 
@@ -683,7 +702,6 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
-		font-size: 15px;
 		margin: auto;
     width: 80%;
 		&.project-text-grid {
