@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommentService } from '../../../../d7services/comment/comment.service';
+import { CommentService } from '../../../d7services/comment/comment.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
-import { UserService } from '../../../../d7services/user/user.service';
-import { ViewService } from '../../../../d7services/view/view.service'
-import { IComment } from '../../../../models/challenge/comment';
+import { UserService } from '../../../d7services/user/user.service';
+import { ViewService } from '../../../d7services/view/view.service'
+import { IComment } from '../../../models/challenge/comment';
 
 
 @Component({

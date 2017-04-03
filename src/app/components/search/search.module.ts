@@ -4,10 +4,12 @@ import { SearchRoutingModule } from './search-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { AllResultComponent } from './all-result/all-result.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 // Services
 import { SolrService } from '../../d7services/solr/solr.service';
+
 
 @NgModule({
   imports: [
@@ -17,7 +19,7 @@ import { SolrService } from '../../d7services/solr/solr.service';
     FormsModule,
     SharedModule,
   ],
-  declarations: [SearchInputComponent, SearchResultComponent],
+  declarations: [SearchInputComponent, SearchResultComponent, AllResultComponent],
   providers: [SolrService]
 })
 export class SearchModule { }

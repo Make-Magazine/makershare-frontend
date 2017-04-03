@@ -4,13 +4,13 @@ import { CustomValidators } from 'ng2-validation'
 import { ViewService } from '../../../../d7services/view/view.service'
 import { NodeService } from '../../../../d7services/node/node.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
-import { ProjectForm } from '../../../../models/project/project-form/project';
-import { ToolMaterialPart } from '../../../../models/project/project-form/ToolMaterialPart';
-import { TaxonomyTerm } from '../../../../models/Drupal/taxonomy-term';
-import { field_collection_item_tool, field_collection_item_part, field_collection_item_material, field_collection_item_resource } from '../../../../models/project/project-form/field_collection_item';
-import { FileEntity } from '../../../../models/Drupal/file_entity';
+import { ProjectForm } from '../../../../models';
+import { ToolMaterialPart } from '../../../../models';
+import { TaxonomyTerm } from '../../../../models';
+import { field_collection_item_tool, field_collection_item_part, field_collection_item_material, field_collection_item_resource } from '../../../../models';
+import { FileEntity } from '../../../../models';
 import { Observable } from 'rxjs/Observable';
-import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { NodeHelper } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

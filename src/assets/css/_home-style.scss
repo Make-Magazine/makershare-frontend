@@ -230,3 +230,107 @@ footer {
         clear: both;
     }
 }
+.user-card-small {
+    &.card-block {
+        padding-top: 10px;
+        padding-bottom: 0;
+        padding-left: 0;
+    }
+    .icons-side-user {
+            width: 80px;
+            overflow: hidden;
+            .user-icon {
+                float: left;
+                img {
+                    width: 26px;
+                }
+            }
+        }
+        .card-type {
+            top: 30px;
+        }
+        .count-list {
+            margin-top: 10px;
+        }
+        .card-stats {
+		padding: 2px;
+		color: $light-grey;
+		ul li {
+            @include desc-font-12();
+            font-weight: normal !important;
+            font-size: 13px !important;
+            color: $light-grey;
+			img {
+				margin-right: 6px;
+				&.project-likes {
+					width: 12px;
+				}
+				&.project-views{
+					width: 20px;
+				}
+			}
+			span {
+				margin: 0px;
+			}	
+		}
+	}
+    .profile-pic-container {
+        padding-left: 0;
+        padding-top: 10px;
+        padding-bottom: 0;
+        position: relative;
+        left: -10px;
+        top: -30px;
+        .maker-photo {
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 4px;
+        }
+        a {
+            width: 100%;
+        }
+        .message-btn {
+            padding: 0px;
+        }
+    }
+    .user-name {
+        @include card-header-font-sm();
+        a {
+            text-decoration: none;
+            color: $main-grey;
+        }
+    }
+    .user-nickname {
+        font-size: 12px;
+        margin-bottom: 0;
+        a {
+            text-decoration: none;
+            color: $light-grey;
+        }
+    }
+    .profile-tag {
+        @include card-header-font-sm();
+        margin-bottom: 5px;
+        height: 38px;
+        line-height: 17px;
+        overflow: hidden;
+        display: inline-block;
+    }
+    .profile-tag, .user-city, .count {
+        font-size: 14px;
+        // margin-bottom: 5px;
+    }
+    .user-city {
+        color: $title-color;
+        div {
+            float: left;
+            margin-right: 6px;
+        }
+    }
+    .count {
+        margin-bottom: 0;
+        color: $light-grey;
+        clear: both;
+    }
+}

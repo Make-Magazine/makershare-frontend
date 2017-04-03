@@ -9,15 +9,19 @@
     <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
   </ul>
   <ul class="list-unstyled project-tags pull-left">
-    <li><a href="#" class="btn btn-grey">electronics</a></li>
-    <li><a href="#" class="btn btn-grey">Arduino</a></li>
-    <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
-    <li><a href="#" class="btn btn-grey">electronics</a></li>
-    <li><a href="#" class="btn btn-grey">Arduino</a></li>
-    <li><a href="#" class="btn btn-grey">microcontrollers</a></li>
+    <li><a class="btn btn-grey">electronics</a></li>
+    <li><a class="btn btn-grey">Arduino</a></li>
+    <li><a class="btn btn-grey">microcontrollers</a></li>
+    <li><a class="btn btn-grey">electronics</a></li>
+    <li><a class="btn btn-grey">Arduino</a></li>
+    <li><a class="btn btn-grey">microcontrollers</a></li>
   </ul>
   <div class="clearfix"></div>
-  <h2 class="project-title" *ngIf="project.title.value">{{project.title.value}}</h2>
+  <!-- 
+  
+   -->
+  <h2 class="project-title" *ngIf="project.title" innerHTML="{{project.title.value}}"></h2>
+   
   <div *ngIf="projectdata">
     <p>Entered In Challenge <a (click)="challengePage(projectdata.challenge_nid)">{{projectdata.challenge_name}}</a></p>
   </div>

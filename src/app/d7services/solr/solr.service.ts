@@ -21,28 +21,33 @@ export class SolrService {
     
   }
 
+  // select general query
+  selectContent(query: string,count: number = 10, skip:number, type:string): Observable<any> {
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:'+type+'&fq=tm_title:'+query+'&rows='+count+'&start='+skip+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
+  }
+
   // select projects query
   selectProjects(query: string,count: number = 10): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=ss_type:project&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:project&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
   }
 
   // select challenges query
   selectChallenges(query: string,count: number = 10): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=ss_type:challenge&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:challenge&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
   }  
 
   // select showcases query
   selectShowcases(query: string,count: number = 10): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=ss_type:showcase&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:showcase&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
   }
 
   // select learning sequence query
-  selectLearning(query: string,count: number = 10): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=ss_type:learning_sequence&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
+  selectworkshops(query: string,count: number = 10): Observable<any> {
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:learning_sequence&fq=tm_title:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
   }
 
   // select users query
-  selectUsers(query: string,count: number = 10): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=index_id:user_index&fq=spell:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_uid').map(res => res.json()).timeout(10000);
+  selectUsers(query: string,count: number = 10, skip: number = 0): Observable<any> {
+     return this.http.get(globals.solrPath + 'select?fq=index_id:user_index&fq=spell:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_uid&fq=is_status:1').map(res => res.json()).timeout(10000);
   }      
 }

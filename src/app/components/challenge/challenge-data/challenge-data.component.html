@@ -1,11 +1,10 @@
-    
 <div *ngIf="challenge" class="page-challenge-summary">
   <div class="main-container container-fluid">
     <div class="row">
       <section class="col-sm-12 width-fix">
         <div class="top-content-wrapper">
           <div class="container">
-            
+
             <div class="col-md-12 challenge-cover" *ngIf="challenge">
               <!--<div class="button-container-main-1 float-right">
                 <button class="btn btn-main" (click)="myEnteriesProject()">My Entries</button>
@@ -23,12 +22,10 @@
                     </div>
                     <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                     <ul class="list-unstyled challenge-actions pull-right">
-                       <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
-
-                    <li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
-              </ul>
+                      <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
+                      <li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
+                    </ul>
                   </div>
-               
                 </div>
                 <!-- End image-container -->
                 <div class="col-md-8">
@@ -97,8 +94,8 @@
             <!-- End content-wrapper -->
           </div>
           <div class="content-wrapper">
-            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)"
-              [projectsCount]="countProjects" [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
+            <app-summary [hideLoadMore]="hideloadmoreproject" (sortType)="getSortType($event)" (pageNumber)="getPageNumber($event)" [projectsCount]="countProjects"
+              [challenge]="challenge" [awards]="awards" [projectsChallenge]="projects"></app-summary>
           </div>
           <!-- End region-content -->
         </div>

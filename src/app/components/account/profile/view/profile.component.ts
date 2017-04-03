@@ -1,22 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output, Renderer, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
-import { Router } from "@angular/router";
-import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile } from 'ng2-file-drop';
+import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
 import { SharedButtonsComponent } from '../../../shared/shared-buttons/shared-buttons.component';
 import { ViewService } from '../../../../d7services/view/view.service';
-import { FileEntity } from '../../../../models/Drupal/file_entity';
-import { domain } from '../../../../d7services/example.globals';
-import { NodeHelper } from '../../../../models/Drupal/NodeHelper';
+import { FileEntity, NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
-
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Observable'
+import { value } from '../../../../models/challenge/comment';
 
 @Component({
   selector: 'app-profile',
@@ -47,254 +42,157 @@ export class ProfileComponent implements OnInit {
       },
      };
 
-
- countdown = '';
-countProject=0;
-
-  customTitle: string = 'Maker Portfolio';
+  formGroup:FormGroup;
+  CoverImageData: any = {};
+  ProfilePicData: any = {};
+  FileName:string = '';
+  ProjectsCount:number;
+  CovercropperSettings: CropperSettings;
+  ProfilecropperSettings: CropperSettings;
+  allIntersets:Array<any>;
+  uid:number;
   customDescription: string;
-  customImage: string;
-
-  userId = localStorage.getItem('user_id');
-  badges = [];
-  // cover declarations
-  cropperSettings: CropperSettings; s
-  coverPhotoSrc: string;
-  coverPhotoAttached: boolean = false;
-
-  public rendrer: Renderer;
-
-  CoverImageData: any;
-  coverFile: FileEntity = { filename: "", file: "" };
-
-  //end of cover declarations
-  allMarkersNames: any[] = [];
-  allMarkersUrl: any[] = [];
-  allIntersets: any[] = [];
-
-  temp: string;
-  items: any[] = [];
-  optionalForm: FormGroup;
-  imageSrc: string = "http://placehold.it/100x100";
-
-  info: UserProfile = {
-    name: 'testar',
-    user_photo: '',
-    bio: '',
-    started_making: '',
-    field_social_accounts: {},
-    address: {},
-    field_add_your_makerspace_s_: [{}],
-    pass: "MOcs56",
+  badges:Array<any>;
+  Loading:boolean;
+  profile: UserProfile;
+  ProfileInfo:UserProfile = {
+    address:{
+      city:'',
+      country:'',
+    },
+    nickname:'',
+    describe_yourself:'',
+    bio:'',
+    field_social_accounts:{
+      field_website_or_blog:'',
+      field_additional_site:'',
+      field_facebook:'',
+      field_instagram:'',
+      field_linkedin:'',
+      field_twitter:'',
+      field_pinterest:'',
+      field_youtube:'',
+      field_hackster_io:'',
+      field_instructables:'',
+      field_hackday:'',
+      field_preferred:''
+    },
+    started_making:''
   };
-  profile: UserProfile = {
-    name: 'testar',
-    user_photo: '',
-    bio: '',
-    started_making: '',
-    field_social_accounts: {},
-    address: {},
-    pass: "MOcs56",
-  };
-  ckeditorCongfig = {};
+
   constructor(
-    private fb: FormBuilder,
     private profileService: ProfileService,
-    private router: Router,
     private userService: UserService,
     private viewService: ViewService,
-    private fileService: FileService
+    private fileService: FileService,
+    private modalService: NgbModal,
+    private fb:FormBuilder,
   ) {
 
-    this.cropperSettings = new CropperSettings();
-    this.cropperSettings.width = 100;
-    this.cropperSettings.height = 100;
-    this.cropperSettings.croppedWidth = 100;
-    this.cropperSettings.croppedHeight = 100;
-    this.cropperSettings.canvasWidth = 400;
-    this.cropperSettings.canvasHeight = 300;
-    this.cropperSettings.minWidth = 100;
-    this.cropperSettings.minHeight = 100;
-    this.cropperSettings.rounded = false;
-    this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
-    this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
-    this.cropperSettings.noFileInput = true;
-    this.CoverImageData = {};
-    this.ckeditorCongfig = {extraPlugins: 'wordcount', wordcount: {maxCharCount: 5}}
-   
+    this.CovercropperSettings = new CropperSettings();
+    this.CovercropperSettings.width = 1800;
+    this.CovercropperSettings.height = 220;
+    this.CovercropperSettings.croppedWidth = 1800;
+    this.CovercropperSettings.croppedHeight = 220;
+    this.CovercropperSettings.canvasWidth = 430;
+    this.CovercropperSettings.canvasHeight = 315;
+    this.CovercropperSettings.minWidth = 1800;
+    this.CovercropperSettings.minHeight = 220;
+    this.CovercropperSettings.noFileInput = true;
 
+    this.ProfilecropperSettings = new CropperSettings();
+    this.ProfilecropperSettings.width = 660;
+    this.ProfilecropperSettings.height = 660;
+    this.ProfilecropperSettings.croppedWidth = 660;
+    this.ProfilecropperSettings.croppedHeight = 660;
+    this.ProfilecropperSettings.canvasWidth = 430;
+    this.ProfilecropperSettings.canvasHeight = 315;
+    this.ProfilecropperSettings.minWidth = 330;
+    this.ProfilecropperSettings.minHeight = 330;
+    this.ProfilecropperSettings.noFileInput = true;
   }
   
   ngOnInit() {
-    let userId = localStorage.getItem('user_id');
-    this.userService.getUser(userId).subscribe(res => {
-      this.profile = res;
-      this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
-      this.customImage = this.profile.user_photo;
-      console.log(this.profile.profile_cover);
-      this.fileService.getFileById(Number(this.profile.profile_cover)).subscribe((res: any) => {
-        console.log(res);
-        this.profile.profile_cover = res.uri;
-      });
-      localStorage.setItem('user_photo', this.profile.user_photo);
-      this.profile.pass = "MOcs56";
-      //console.log(res);
-    }, err => {
-
-    });
-
-    this.profileService.getAllMarkers().subscribe(markers => {
-      for (let i = 0; i < markers.length; i++) {
-        this.allMarkersNames.push(markers[i].makerspace_name);
-        this.allMarkersUrl.push(markers[i].makerspace_url);
-      }
-    }, err => {
-      //console.log(err);
-    });
-
-    this.profileService.getAllInterests().subscribe(allIntersets => {
-      this.allIntersets = allIntersets;
-    }, err => {
-      //console.log(err);
-    });
-
-    this.BuildForm();
-    this.getBadges();
-    this.getCountProject();
-  }// end of OnInit 
-
-  BuildForm() {
-    this.optionalForm = this.fb.group({
-      'name': [''],
-      'city': [''],
-      'state': [''],
+    this.Loading = true;
+    this.uid = +localStorage.getItem('user_id');
+    var tasks = [];
+    tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
+    // tasks.push(this.profileService.getAllMarkers());
+    tasks.push(this.profileService.getAllInterests());
+    tasks.push(this.viewService.getView('maker_count_all_projects/'+this.uid));
+    let source = Observable.forkJoin(tasks).subscribe((data)=>{
+      let index = 0;
+      this.badges = data[index++] as Array<any>;
+      this.allIntersets = data[index++] as Array<any>;
+      this.ProjectsCount = data[index++] as number;
+      this.UpdateUser();
     });
   }
 
-  saveInfo() {
-    // this.optionalForm.value;
-    this.profile.nickname = this.info.nickname;
-    this.saveProfile(this.profile);
-  }
+  // old structure not finished
 
   onSelected(intrest) {
     this.profile.maker_interests.push(intrest.name);
   }
-  saveIntersets() {
-    this.saveProfile(this.profile);
-  }
-  saveBio() {
-    this.profile.bio = this.info.bio;
-    this.profile.describe_yourself = this.info.describe_yourself;
-    this.saveProfile(this.profile);
-  }
 
-  saveSocial() {
-    this.profile.field_social_accounts = this.info.field_social_accounts;
-    this.saveProfile(this.profile);
-  }
   saveMarkerspaces() {
-    this.profile.field_add_your_makerspace_s_ = this.info.field_add_your_makerspace_s_;
-    this.saveProfile(this.profile);
-  }
-  saveProfile(profile :any) {
-    this.profileService.updateProfile(this.userId, profile).subscribe(profile => {
-    }, err => {
-      //console.log(err);
-    });
-    this.ngOnInit();
-  }
-  onValueChanged(data?: any) {
-
-  }
-  initMakerspace() {
-
+    this.SaveUser(this.profile);
   }
 
-  onFileChange(event: Event) {
-    //console.log("profile saved");
-    let file = (<any>event.target).files[0];
-    if (!file) {
-      return;
-    }
-
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      this.imageSrc = this.profile.user_photo = reader.result;
-      //  this.optionalForm.controls['field_user_photo'].value = reader.result;
-    };
-    reader.readAsDataURL(file);
-  }
   addMakerspace() {
-    this.info.field_add_your_makerspace_s_.push({});
+    this.profile.field_add_your_makerspace_s_.push({});
   }
 
-  editprofile() {
-    this.router.navigate(['profile/editprofile',]);
+  // new structure
+  OpenModal(Template,CSSClass:string){
+    this.modalService.open(Template,{windowClass:CSSClass});
   }
-  // cover section
 
-  loadImg(event: Event) {
-    $("#upload").click();
+  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+    this.fileChangeListener(acceptedFile.file, cropper)
   }
 
   fileChangeListener(file: File, cropper) {
     if (!file) return;
     this.CoverImageData = {};
+    this.ProfilePicData = {};
+    this.FileName = file.name;
     var image: any = new Image();
     var myReader: FileReader = new FileReader();
     myReader.onloadend = function (loadEvent: any) {
       image.src = loadEvent.target.result;
       cropper.setImage(image);
     };
-
     myReader.readAsDataURL(file);
+  }  
 
-    this.coverFile.filename = file.name;
-    let file_url = domain + "/sites/default/files/maker/cover_photo/" + file.name;
-    this.coverFile.uri = file_url as string;
-  }
-
-
-  private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
-    this.fileChangeListener(acceptedFile.file, cropper)
-  }
-
-
- limitText(limitField, limitCount, limitNum) {
-      
-	if (limitField.length > limitNum) {
-		limitField = limitField.substring(0, limitNum);
- 
-
-	} else {
-		 limitCount = limitNum - limitField.length;
-      // console.log ( limitCount)
-      this.countdown = limitCount;
-      
-	}
-}
-
-  saveCropped() {
-    if (!this.CoverImageData.image) return;
-    //this.profile.profile_cover = this.CoverImageData.image;
-    this.coverFile.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImageData.image);
-    this.fileService.SendCreatedFile(this.coverFile).subscribe((res: any) => {
-      console.log(res);
-     this.profile.profile_cover = res.fid
-     console.log(this.profile.profile_cover);
-     this.saveProfile(this.profile);
+  SaveImage(closebtn:HTMLButtonElement,DataObject,ImageType){
+    closebtn.click();
+    let image:FileEntity = {file:NodeHelper.RemoveFileTypeFromBase64(DataObject.image),filename:this.FileName};
+    this.fileService.SendCreatedFile(image).subscribe((data)=>{
+      var user:UserProfile;
+      if(ImageType === 'cover'){
+        user = {uid:this.uid,profile_cover:data.fid};
+      }else{
+        user = {uid:this.uid,user_photo:data.fid};
+      }
+      this.CoverImageData = {};
+      this.ProfilePicData = {};
+      this.FileName = '';
+      this.SaveUser(user);
     });
   }
 
-  /* function get Badges */
-  getBadges() {
-    // service to get profile card Badges
-    this.viewService.getView('api_user_badges', [['uid', this.userId]]).subscribe(data => {
-      this.badges = data;
-    }, err => {
-    });
+  SaveInfo(closebtn:HTMLButtonElement) {
+    closebtn.click();
+    if(this.formGroup.valid) {
+      this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
+      this.ProfileInfo.started_making = this.formGroup.value.started_making;
+    }
+    this.ProfileInfo.field_social_accounts
+    this.SaveUser(this.ProfileInfo);
   }
+<<<<<<< HEAD
 
    /* end function get Badges */
      /* function to get count projects */
@@ -302,18 +200,39 @@ countProject=0;
     this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
       this.countProject = data[0];
     }, err => {
+=======
+>>>>>>> 2452b4f0f816ff2e29963ce1c08537e72d18c3ac
 
+  SaveUser(user:UserProfile){
+    this.Loading = true;
+    user.uid = this.uid;
+    this.profileService.updateProfile(user.uid,user).subscribe(data=>{
+      this.UpdateUser();
     });
   }
-  /* end count function */
 
-  limitString(model, key, length) {
-    if (typeof model[key] != "undefined") {
-      if (model[key].length > length) {
-        this.temp = model[key];
-        model[key] = this.temp.substr(0, length);
+  UpdateUser(){
+    this.userService.getUser(this.uid).subscribe(res => {
+      this.profile = res;
+      this.ProfileInfo.nickname = res.nickname;
+      this.ProfileInfo.address = res.address;
+      this.ProfileInfo.describe_yourself = res.describe_yourself;
+      this.ProfileInfo.bio = res.bio;
+      if(res.field_social_accounts){
+        this.ProfileInfo.field_social_accounts = res.field_social_accounts;
       }
-    }
+      this.ProfileInfo.started_making = res.started_making;
+      this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      localStorage.setItem('user_photo', this.profile.user_photo);
+      this.formGroup = this.fb.group({
+        describe_yourself: [this.ProfileInfo.describe_yourself,Validators.maxLength(140)],
+        started_making: [this.ProfileInfo.started_making,Validators.maxLength(300)]
+      })
+      this.Loading = false;
+    });
+  }
+  prefer(value : string){
+    this.ProfileInfo.field_social_accounts.field_preferred = value;
   }
 
 }

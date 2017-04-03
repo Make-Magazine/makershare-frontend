@@ -15,7 +15,13 @@ import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import {Ng2DeviceDetector} from 'ng2-device-detector';
-
+import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
+import { ProjectHeaderComponent } from './project-header/project-header.component';
+import { ProjectStoryComponent } from './project-story/project-story.component';
+import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
+import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
+import { LearnCardComponent } from './learn-card/learn-card.component';
+import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
 
 
 @NgModule({
@@ -41,6 +47,13 @@ import {Ng2DeviceDetector} from 'ng2-device-detector';
     ProjectCardComponent,
     SharedButtonsComponent,
     FeedbackComponent,
+    ChallengeCardComponent,
+    ProjectHeaderComponent,
+    ProjectStoryComponent,
+    ProjectHowToComponent,
+    ShowcaseCardComponent,
+    LearnCardComponent,
+    UserCardSmallComponent
   ],
   exports: [
     CommentComponent,
@@ -52,6 +65,13 @@ import {Ng2DeviceDetector} from 'ng2-device-detector';
     ProjectCardComponent,
     SharedButtonsComponent,
     FeedbackComponent,
+    ChallengeCardComponent,
+    ProjectHeaderComponent,
+    ProjectStoryComponent,
+    ProjectHowToComponent,
+    ShowcaseCardComponent,
+    LearnCardComponent,
+    UserCardSmallComponent
   ]
   
 })
@@ -65,4 +85,10 @@ export {UserCardComponent};
 export {ProjectCardComponent};
 export {SharedButtonsComponent};
 export {FeedbackComponent};
-
+export { ChallengeCardComponent };
+export { ProjectHeaderComponent };
+export { ProjectStoryComponent };
+export { ProjectHowToComponent };
+export { ShowcaseCardComponent };
+export { LearnCardComponent }; 
+export { UserCardSmallComponent };
