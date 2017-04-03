@@ -13,8 +13,8 @@
                 </div>
                 <app-project-header [project]="projectDetails" [projectInfo]="projectdata"></app-project-header>            
                 <ul class="list-unstyled project-aside">
-                  <li id="project-story-tab"><a class="btn btn-tabs active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
-                  <li id="how-to-tab"><a class="btn btn-tabs" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
+                  <li id="project-story-tab"><a class="btn btn-tabs project-story active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
+                  <li id="how-to-tab"><a class="btn btn-tabs how-to" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>

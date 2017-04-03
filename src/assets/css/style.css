@@ -2075,8 +2075,8 @@ footer {
       line-height: 100% !important;
       color: #828282;
       position: absolute;
-      top: 15px;
-      right: -45px;
+      top: 24px;
+      right: -50px;
       transform: rotate(-90deg); }
       .page-challenge .challenge-card .card-container .challenge-type-badge p {
         margin: 0px; }
@@ -2179,7 +2179,7 @@ footer {
   .page-project .project-story-tab {
     margin-bottom: 10px; }
     .page-project .project-story-tab .project-body-content {
-      padding: 8px;
+      padding: 16px;
       background-color: white;
       -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -2210,58 +2210,69 @@ footer {
     margin-bottom: 20px; }
     .page-project .project-body > p:first-of-type {
       font-weight: bold; }
-    .page-project .project-body .how-to-tab {
-      overflow: hidden; }
-      .page-project .project-body .how-to-tab img {
-        width: 100%;
-        height: auto; }
-    .page-project .project-body .how-to-sidebar {
-      padding: 6px;
-      background-color: white; }
-      .page-project .project-body .how-to-sidebar .list-group {
-        padding: 4px; }
-        .page-project .project-body .how-to-sidebar .list-group h3 {
-          font-size: 20px; }
-        .page-project .project-body .how-to-sidebar .list-group li {
-          font-size: 15px; }
-          .page-project .project-body .how-to-sidebar .list-group li a {
-            background-color: #eee;
-            padding: 0px 6px 0px 6px;
-            font-size: 15px; }
-          .page-project .project-body .how-to-sidebar .list-group li p {
-            margin: 0px;
-            font-size: 15px; }
-      .page-project .project-body .how-to-sidebar .avg-time {
-        overflow: hidden; }
-        .page-project .project-body .how-to-sidebar .avg-time .average {
-          float: left;
-          line-height: 22px; }
-        .page-project .project-body .how-to-sidebar .avg-time .hours {
-          float: left;
-          display: block;
-          font-size: 15px;
-          margin: 2px;
-          color: #0AA9EA;
-          font-weight: bold;
-          padding: 3px 5px 3px 5px; }
-          .page-project .project-body .how-to-sidebar .avg-time .hours span {
-            font-size: 15px;
-            padding: 2px; }
-  .page-project .tools, .page-project .boards-kits, .page-project .materials {
-    width: 100%; }
-  .page-project .list-group-item {
-    padding: 10px; }
-  .page-project .tools li .amount, .page-project .boards-kits li .amount {
-    display: inline-block; }
-  .page-project .tools li .item, .page-project .boards-kits li .item {
-    margin-left: 4px; }
-  .page-project .materials li .amount {
-    display: inline-block; }
-  .page-project .materials li .item {
-    margin-left: 4px; }
-  .page-project .region-content .how-to-tab p {
-    padding: 20px 10px 10px 10px;
-    background-color: white; }
+    .page-project .project-body .how-to-tab img {
+      width: 100%;
+      height: auto; }
+    .page-project .project-body .how-to-tab .project-body-content {
+      padding: 16px;
+      background-color: white;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-project .project-body .how-to-sidebar .difficulty-duration {
+      background-color: white;
+      padding: 18px 10px 34px 10px;
+      text-align: center;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      .page-project .project-body .how-to-sidebar .difficulty-duration p {
+        color: #ED1C24;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold; }
+      .page-project .project-body .how-to-sidebar .difficulty-duration span {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #444; }
+    .page-project .project-body .how-to-sidebar .tools-kits {
+      background-color: white;
+      margin-top: 26px;
+      padding: 10px 10px 26px 10px;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      .page-project .project-body .how-to-sidebar .tools-kits .tools, .page-project .project-body .how-to-sidebar .tools-kits .materials, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits {
+        margin-bottom: 30px; }
+        .page-project .project-body .how-to-sidebar .tools-kits .tools p, .page-project .project-body .how-to-sidebar .tools-kits .materials p, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits p {
+          color: #ED1C24;
+          text-align: center;
+          margin-top: 10px;
+          font-size: 18px; }
+        .page-project .project-body .how-to-sidebar .tools-kits .tools li, .page-project .project-body .how-to-sidebar .tools-kits .materials li, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits li {
+          border: none;
+          padding: 0px 6px; }
+        .page-project .project-body .how-to-sidebar .tools-kits .tools .count, .page-project .project-body .how-to-sidebar .tools-kits .materials .count, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .count {
+          min-width: 38px;
+          color: #444; }
+        .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
+          color: #444; }
+      .page-project .project-body .how-to-sidebar .tools-kits hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 90%; }
+      .page-project .project-body .how-to-sidebar .tools-kits .resources p {
+        color: #ED1C24;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 18px; }
+      .page-project .project-body .how-to-sidebar .tools-kits .resources li {
+        border: none;
+        padding: 6px; }
+        .page-project .project-body .how-to-sidebar .tools-kits .resources li a {
+          text-decoration: underline;
+          color: #00AEEF; }
   .page-project .region-content .how-to-tab h3 {
     font-weight: normal; }
   .page-project .feedback-group .feedback {
@@ -2447,7 +2458,7 @@ header.showcase-project .next {
     background: white;
     margin-bottom: 4px; }
     .feedback-group .feedback-card .user-info {
-      padding: 4px 0px 4px 0px; }
+      padding: 4px 0px 0px 0px; }
       .feedback-group .feedback-card .user-info p {
         margin-bottom: 0px; }
       .feedback-group .feedback-card .user-info .user-details {

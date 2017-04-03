@@ -191,4 +191,22 @@ $(document).ready(function() {
 		$tr.after($clone);
 		$clone.find(':text').val('');
     });*/
+
+
+/* trigger project tabs buttons another button click event */
+
+jQuery(document).on("click", ".read-story", function() {
+		alert (a);
+		jQuery(".project-story").trigger('click');
+
+});
+
+
+jQuery(document).on("click", ".build-project", function() {
+			alert (b);
+			jQuery(".how-to").trigger('click');
+
+});
+
+
 });
