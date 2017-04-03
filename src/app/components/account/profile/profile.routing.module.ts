@@ -14,6 +14,8 @@ const ProfileRouts: Routes = [
       { path: '', component: ProfileComponent },
       { path: 'editprofile', loadChildren: 'app/components/account/profile/edit/edit-profile/edit-profile.module#EditProfileModule' },
       { path: 'editportfolio', loadChildren: 'app/components/account/profile/edit/edit-portfolio/edit-portfolio.module#EditPortfolioModule' },
+      { path: 'collection', loadChildren: 'app/components/account/collection/collection.module#CollectionModule' },
+
     ]
   }
 ];

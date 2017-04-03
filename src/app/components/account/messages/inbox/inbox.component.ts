@@ -59,7 +59,7 @@ export class InboxComponent implements OnInit {
   disabled;
   onemMg = [];
   allChecked
-  hideTurnOn;
+  hideTurnOn: boolean = false;
   status;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
@@ -75,11 +75,15 @@ export class InboxComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    this.getCurrentUser();
-    this.getMessages();
-    this.buildForm();
-    this.CountMessages();
     this.getStatus();
+    if(this.hideTurnOn){
+      this.getCurrentUser();
+      this.getMessages();
+      this.buildForm();
+      this.CountMessages();
+    }
+    
+    
   }
 
   RefreshUsers(index, value) {
@@ -381,6 +385,7 @@ export class InboxComponent implements OnInit {
   getStatus() {
     this.userId = localStorage.getItem('user_id');
     this.pm.getStatus(this.userId).subscribe(data => {
+      
       this.status = data;
       if (this.status == false) {
         this.hideTurnOn = false;

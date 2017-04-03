@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learn',
@@ -8,13 +8,13 @@ import { Router} from '@angular/router';
   styleUrls: ['./learn.component.css']
 })
 export class LearnComponent implements OnInit {
- learns = [];
- categories = null;
- workshop;
-pages: number = 0;
-page_arg;
-countWorkshop = 0;
-hideloadmoreworkshop = true;
+  learns = [];
+  categories = null;
+  workshop;
+  pages: number = 0;
+  page_arg;
+  countWorkshop = 0;
+  hideloadmoreworkshop = true;
 
 
   constructor(
@@ -23,25 +23,25 @@ hideloadmoreworkshop = true;
   ) { }
 
   ngOnInit() {
-this.getWorkshop();
+    this.getWorkshop();
   }
-  getWorkshop(){
+  getWorkshop() {
     var args = [
       ['page', this.pages],
     ];
     // get workshop main page from a view
     this.viewService.getView('learn', args).subscribe(res => {
-    this.learns=this.learns.concat(res);
-    this.loadMoreVisibilty();
+      this.learns = this.learns.concat(res);
+      this.loadMoreVisibilty();
 
 
-console.log(this.learns);
+      // console.log(this.learns);
 
     }, err => {
 
     });
   }
-   /* function to get count projects */
+  /* function to get count projects */
   getCountWorkshop() {
     this.viewService.getView('maker_count_all_workshops/').subscribe(data => {
       this.countWorkshop = data[0];
@@ -50,13 +50,13 @@ console.log(this.learns);
     });
   }
   /* end count function */
-    WorkshopDetails(nid) {
+  WorkshopDetails(nid) {
     this.router.navigate(['/learn', nid]);
   }
-  loadMoreWorkshop(){
-     this.pages++;
-     console.log(this.pages);
-     this.getWorkshop();
+  loadMoreWorkshop() {
+    this.pages++;
+    // console.log(this.pages);
+    this.getWorkshop();
 
   }
   // Function to control load more button
