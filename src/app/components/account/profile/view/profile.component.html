@@ -1,42 +1,44 @@
 <div class="profile-page profile-empty-edit">
 	<div *ngIf="!Loading">
 		<section class="container-fluid cover-region">
-			<!-- start profile-cover -->
-			<div class="row profile-cover">
-				<div (click)="OpenModal(coverimagemodal,'edit-cover-modal')">
-					<a class="btn btn-light-grey edit hidden-sm-down">&nbsp;<i class="fa fa-lg fa-pencil"></i> &nbsp;Edit cover photo&nbsp;</a>
-					<a class="btn btn-light-grey edit hidden-md-up">&nbsp;<i class="fa fa-lg fa-pencil"></i></a>
-				</div>
-				<img [src]="profile.profile_cover" alt="" class="cover-image img-responsive">
-				<div class="profile-name profile-stats">
-					<div class="row container">
-						<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
-							<!-- Start Bookmsrk-section -->
-							<li>
-								<a (click)="editprofile()"><i class="fa fa-lg fa-pencil"></i></a>
-							</li>
-							<li class="col-sm-2 col-2">
-								<a [routerLink]="['/inbox']"><i class="fa fa-lg fa-comment message"></i></a>
-							</li>
-							<li class="col-sm-2 col-2">
-								<a><i class="fa fa-lg fa-bookmark-o"></i></a>
-							</li>
-							<li>
-									<a><i class="fa fa-lg fa-share"></i></a>
-							</li>
-						</ul>
-						<!-- End Bookmark-section -->
-					</div>
-				</div>
-			</div>
 		</section>
-		<!-- End profile-cover -->
-
-		<!-- .............................................................. -->
-
-
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
+			<div class="row">
+				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
+					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">
+						<p class="square-view"><img src="./assets/images/icons/hamburger.png" alt="">Grid view</p>
+						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Case view</p>
+					</div>
+					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+						<!--<li>
+							<a [routerLink]="['/profile/editprofile']"><i class="fa fa-lg fa-pencil"></i></a>
+						</li>-->
+						<!--<li class="profile-message">
+							<a class="btn btn-main btn-sharp" data-toggle="modal" data-target="#message-modal">Message</a>
+						</li>-->
+						<!--<li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
+							<p>project forks</p>
+						</li>-->
+						<li *ngIf="ProjectsCount">
+							<p><span class="number">{{ProjectsCount}}</span> projects</p>
+						</li>
+
+						<li *ngIf="profile.total_likes != 0">
+							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
+						</li>
+						<li>
+							<p><span class="number">1405</span> views</p>
+						</li>
+						<!-- Start Bookmsrk-section -->
+						<!--<li>
+							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
+						</li>-->
+						<!--<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>-->
+					</ul>
+					<!-- End Bookmark-section -->
+				</div>
+			</div>
 			<div class="row body-content">
 				<div class="left-section col-lg-4 col-md-4">
 					<div class="profile-sidebar">
@@ -71,7 +73,8 @@
 								<!-- start Badges-->
 								<div class="icons">
 									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}"><p>{{badge?.title}}</p><br>
+										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
+										<p>{{badge?.title}}</p><br>
 									</div>
 								</div>
 								<!--End Badges -->
@@ -106,8 +109,8 @@
 									<ul class="list-unstyled my-web">
 										<li>
 											<a (click)="OpenModal(socialaccountsmodal,'add-social-modal')" href="{{profile.field_social_accounts.field_website_or_blog}}"
-												class="fa fa-lg fa-globe">
-											</a> 
+											 class="fa fa-lg fa-globe">
+											</a>
 											{{profile.field_social_accounts.field_website_or_blog}}
 										</li>
 									</ul>
@@ -152,9 +155,9 @@
 								<div *ngIf="profile.started_making" class="how">
 									<!-- Start How -->
 									<h5>How I learned to be a maker</h5>
-									<p>{{profile.started_making}}</p>																																					
+									<p>{{profile.started_making}}</p>
 								</div>
-									<div *ngIf="!profile.started_making" class="how">
+								<div *ngIf="!profile.started_making" class="how">
 									<a (click)="OpenModal(startedmakingmodal,'add-maker-starting-modal')">
 										<i class="fa fa-lg fa-plus"></i> How'd you get started making?
 									</a>
@@ -165,44 +168,11 @@
 							<!-- End col-md-3 -->
 						</div>
 						<!-- End sidebar-left -->
-					</div>																																																																																																																																																																																																																																																		
+					</div>
 				</div>
-
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
-						<div class="row container">
-							<ul class="bookmark d-flex justify-content-around col-lg-12 col-md-12 col-sm-12 col">
-								<li>
-									<a [routerLink]="['/profile/editprofile']"><i class="fa fa-lg fa-pencil"></i></a>
-								</li>
-								<li class="profile-message">
-									<a class="btn btn-main btn-sharp" data-toggle="modal" data-target="#message-modal">Message</a>
-								</li>
-								<li><span class="number">{{ProjectsCount}}</span>
-									<p>projects</p>
-								</li>
-								<li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
-									<p>project forks</p>
-								</li>
-								<li *ngIf="profile.total_likes != 0"><span class="number">{{profile.total_likes}}</span>
-									<p>project likes</p>
-								</li>
-								<li><span class="number">1405</span>
-									<p>views</p>
-								</li>
-								<!-- Start Bookmsrk-section -->
-								<li>
-									<a><i class="fa fa-lg fa-bookmark-o"></i></a>
-								</li>
-								<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo" ></app-shared-buttons>
-							</ul>
-							<!-- End Bookmark-section -->
-							  <div class="switch col-lg-4 col-md-4 col-sm-4 col hidden-sm-down"><!-- Start Switch-view -->
-									<p class="square-view">Grid view <i class="fa fa-lg fa-square"></i></p>
-									<p class="grid-view">Case view <i class="fa fa-lg fa-bars"></i></p>
-              </div><!-- End Switch-view -->
-						</div>
 						<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>
 						<div class="profile-content">
 							<div class="row">
@@ -244,11 +214,10 @@
 										<div class="modal-body">
 
 											<div class="form-group">
-												<tag-input (onSelect)="onSelected($event)" [identifyBy]="'name'" [displayBy]="'name'"
-													[onlyFromAutocomplete]="true">
+												<tag-input (onSelect)="onSelected($event)" [identifyBy]="'name'" [displayBy]="'name'" [onlyFromAutocomplete]="true">
 													<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
 													</tag-input-dropdown>
-													</tag-input>
+												</tag-input>
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -266,7 +235,7 @@
 													<h4 class="modal-title">Add your Makerspace(s)</h4>
 												</div>
 												<div class="modal-body">
-														<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+													<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 												</div>
 												<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 											</div>
@@ -282,92 +251,11 @@
 					</div>
 					<!-- End profile content -->
 				</div>
-
-
 			</div>
 		</section>
 		<!-- End body-group -->
 	</div>
 </div>
-
-<!--Cover image modal-->
-<template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
-	<div class="modal-header">
-		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<h4 class="modal-title">Choose Photo</h4>
-		<ul class="list-unstyled">
-			<li class="upload"><a class="btn btn-transparent active">Upload</a></li>
-			<li class="your-photos"><a class="btn btn-transparent">Your Photos</a></li>
-		</ul>
-		<span class="info uplad">
-		<p>DID YOU KNOW?</p>
-		<p>You can also add images from your phone and they will be available here under "Your Photos"</p>
-		</span>
-		<span class="info your-photo-tab">
-		<p>DID YOU KNOW?</p>
-		<p>You can also add images from your phone</p>
-		</span>
-	</div>
-	<div class="modal-body">
-		<div ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-			<img *ngIf="!CoverImageData.original" src="./assets/images/Drag_Drop.png" alt="">
-			<img-cropper [hidden]="!CoverImageData.original" #cropper [image]="CoverImageData" [settings]="CovercropperSettings"></img-cropper><br>
-			<div *ngIf="!CoverImageData.original">
-				<p>Drag a photo here</p>
-				<p>or</p>
-			</div>
-			<a class="btn btn-white" (click)="fileinput.click()">
-				Select a photo from your computer
-				<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
-			</a>
-		</div>
-		<div class="your-photo-tab">
-			<p>Percent of storage used (3.2 MB of 100 MB)</p>
-			<div class="progress">
-				<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;">
-					<span class="profile-progress">10%</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-				<div class="col-md-3 col-sm-6 image-container">
-					<img src="http://placehold.it/200x200" alt="" class="img-responsive">
-					<i class="fa fa-lg fa-close"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-		<button type="button" class="btn btn-primary" (click)="SaveImage(closebtn,CoverImageData,'cover')">Save</button>
-	</div>
-</template>
-
 
 <!--profile profile-pic modal-->
 <template #profilpicmodal let-c="close" let-d="dismiss" ngbModalContainer>
@@ -485,8 +373,8 @@
 	</div>
 	<div class="modal-body">
 		<div class="form-group" [formGroup]="formGroup">
-			<textarea rows ="5" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea" placeholder="Describe your most powerful motivation, inspiration or aspiration." maxlength="140"></textarea>
-			{{140 - formGroup.value.describe_yourself.length}} char left
+			<textarea rows="5" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea" placeholder="Describe your most powerful motivation, inspiration or aspiration."
+			 maxlength="140"></textarea> {{140 - formGroup.value.describe_yourself.length}} char left
 			<div *ngIf="!formGroup.valid">max length 140</div>
 		</div>
 		<div class="clearfix"></div>
@@ -507,7 +395,8 @@
 	</div>
 	<div class="modal-body">
 		<div class="form-group">
-			<ckeditor id="how-to-make" rows="5" [config]="ckEditorConfig" name="bio-textarea" id="bio-textarea" [(ngModel)]="ProfileInfo.bio"	placeholder="Start your story">
+			<ckeditor id="how-to-make" rows="5" [config]="ckEditorConfig" name="bio-textarea" id="bio-textarea" [(ngModel)]="ProfileInfo.bio"
+			 placeholder="Start your story">
 			</ckeditor>
 		</div>
 		<div class="clearfix"></div>
@@ -607,9 +496,9 @@
 		<h4 class="modal-title">Add your starting as a Maker</h4>
 	</div>
 	<div class="modal-body" [formGroup]="formGroup">
-		<textarea formControlName="started_making" rows="5" name="limitedtextfield" id="start-making-textarea" placeholder="Add your starting as a Maker"	maxlength="300">
-		</textarea>
-		{{300 - formGroup.value.started_making.length}}
+		<textarea formControlName="started_making" rows="5" name="limitedtextfield" id="start-making-textarea" placeholder="Add your starting as a Maker"
+		 maxlength="300">
+		</textarea> {{300 - formGroup.value.started_making.length}}
 		<div *ngIf="!formGroup.valid">max length 300</div>
 		<div class="clearfix"></div>
 	</div>

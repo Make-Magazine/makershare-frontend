@@ -322,11 +322,11 @@ a:not([href]):not([tabindex]) {
     padding: 10px;
     height: 70px;
     position: relative;
-    font-family: "Messina Modern Bold" !important;
-    font-size: 24pt !important;
-    font-weight: 700 !important;
-    text-transform: none !important;
-    line-height: 100% !important;
+    font-family: "Messina Modern Regular" !important;
+    font-size: 48pt !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 90% !important;
     color: #828282;
     color: #4F4F4F;
     min-height: 38px; }
@@ -1851,29 +1851,17 @@ header.showcase-project .next {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-empty-edit .profile-stats .bookmark ul {
-  padding-right: 0;
-  margin-bottom: 0px; }
-  .profile-empty-edit .profile-stats .bookmark ul li {
-    display: inline-block;
-    margin: 0px;
-    color: #222;
-    font-weight: bold;
-    padding-left: 2px;
-    padding-right: 2px; }
-    .profile-empty-edit .profile-stats .bookmark ul li .number {
-      font-size: 25px;
-      font-weight: normal;
-      margin-right: 4px; }
-    .profile-empty-edit .profile-stats .bookmark ul li p {
-      display: inline-block;
-      white-space: normal;
-      width: 70px;
-      margin-left: 10px;
-      font-size: 12px;
-      margin: 0 auto; }
-    .profile-empty-edit .profile-stats .bookmark ul li i {
-      margin-top: 9px; }
+.profile-header {
+  margin-top: 50px; }
+  .profile-header .display-style {
+    padding-right: 10px; }
+    .profile-header .display-style img {
+      width: 30px; }
+  .profile-header .bookmark li {
+    border-left: 3px solid #222;
+    padding: 0 10px;
+    height: 24px; }
+
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
 .profile-empty-edit .cover-region .bookmark .number {
@@ -1888,12 +1876,12 @@ header.showcase-project .next {
 .switch {
   color: #BEBEBE;
   cursor: pointer;
-  text-align: right; }
-  .switch .grid-view {
-    display: none; }
+  text-align: right;
+  margin: 5px 0; }
   .switch p {
     margin-bottom: 0px;
-    color: #0AA9EA; }
+    color: #222;
+    margin-left: 10px; }
 
 .add-bio-modal h4,
 .add-interests-modal h4,
