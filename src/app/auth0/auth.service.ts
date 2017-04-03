@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../d7services/user/user.service';
 import { MainService } from '../d7services/main/main.service';
+import { Observable } from 'rxjs/Observable';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as globals from '../d7services/globals';
 
 //import Auth0 from 'auth0-js';
@@ -13,10 +14,19 @@ let Auth0Lock = require('auth0-lock').default;
 
 @Injectable()
 export class Auth {
+
   // Configure Auth0
+  // redirectURLObs: Observable<string>;
+  // redirectURL: string;
   screen = 'login';
   yearsArr= [];
   lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
+    loginUrl: '/login',
+    auth: {
+        redirectUrl: globals.appURL,
+        responseType: 'token',
+        params: {state: localStorage.getItem('redirectUrl')},
+    },
     socialButtonStyle: 'small',
     initialScreen: this.screen,
     languageDictionary: {
@@ -34,11 +44,12 @@ export class Auth {
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       
-      // console.log(authResult);
+       console.log(authResult);
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
@@ -56,6 +67,10 @@ export class Auth {
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
               localStorage.setItem('user_photo', res.user_photo);
+              if(authResult.state != ''){
+                this.router.navigate([authResult.state]);
+              }
+              
             } else {
               localStorage.setItem('user_photo', res.user_photo);
               localStorage.setItem('user_id', '0');
@@ -85,6 +100,19 @@ export class Auth {
       }
     });
   }
+
+    // ngOnInit() {
+    //   this.redirectURLObs = this.route.queryParams.map(params => params['redirectUrl'] || '');
+    //   this.redirectURLObs.subscribe(param => {
+    //     if(param.length > 0){
+    //       this.redirectURL = param;
+    //       console.log(this.redirectURL);
+    //     }
+        
+    //   }); 
+    // }
+
+
 
   public login() {
     // Call the show method to display the widget.
