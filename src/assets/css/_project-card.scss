@@ -21,7 +21,7 @@
 		padding: 10px;
 		height: 70px;
 		position: relative;
-		@include card-header-font-md();
+		@include card-header-font-lg();
 		color: $text-color-1;
 		min-height: 38px;
 		.winner {
