@@ -887,7 +887,9 @@ footer {
     .user-card-small .icons-side-user .user-icon img {
       width: 26px; }
 .user-card-small .card-type {
-  top: 30px; }
+  top: 35px;
+  right: -18px;
+  font-size: 16px !important; }
 .user-card-small .count-list {
   margin-top: 10px; }
 .user-card-small .card-stats {
@@ -917,11 +919,12 @@ footer {
   padding-bottom: 0;
   position: relative;
   left: -10px;
-  top: -30px; }
+  top: -30px;
+  margin-bottom: -20px; }
   .user-card-small .profile-pic-container .maker-photo {
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 136px;
+    height: 160px;
     margin-bottom: 4px; }
   .user-card-small .profile-pic-container a {
     width: 100%; }
@@ -1639,7 +1642,7 @@ footer {
   color: #fff;
   bottom: 0;
   right: 0px;
-  margin: 0 auto;
+  margin: auto;
   z-index: 11;
   height: 100px; }
   .teaser p {
