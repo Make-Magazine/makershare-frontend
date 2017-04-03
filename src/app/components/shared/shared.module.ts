@@ -20,6 +20,8 @@ import { ProjectHowToComponent } from './project-how-to/project-how-to.component
 import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
 import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
+import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
-    UserCardSmallComponent
+    UserCardSmallComponent,
+    LearnUserCardComponent
   ],
   exports: [
     CommentComponent,
@@ -64,7 +67,9 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
-    UserCardSmallComponent
+    UserCardSmallComponent,
+    LearnUserCardComponent
+
   ]
 })
 export class SharedModule { }
@@ -83,3 +88,4 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
+export { LearnUserCardComponent };

@@ -4729,7 +4729,6 @@ img {
 .page-workshop-individual .learn-card {
   position: relative;
   padding: 16px;
-  overflow: hidden;
   cursor: pointer;
   background-color: #D0D3D4;
   box-shadow: 0px 2px 22px #888888; }
@@ -4740,7 +4739,6 @@ img {
     .page-workshop-individual .learn-card .learn-item .card-partership {
       color: #ED1C24; }
   .page-workshop-individual .learn-card .image-container {
-    overflow: hidden;
     position: relative;
     padding: 0;
     width: 450px;
@@ -4792,7 +4790,6 @@ img {
       display: -webkit-box;
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
-      overflow: hidden;
       min-height: 116px;
       color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .card-buttons a.btn.btn-grey {
