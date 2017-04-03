@@ -1,3 +1,4 @@
+<div *ngIf="checkUserLogin==true">
 <form class="new-comment d-flex" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
   <div class="comment-image d-flex">
     <img *ngIf="!currentUser?.photo" src="./assets/images/defaultprofile.png" alt="" class="img-responsive d-flex mr-3">
@@ -12,3 +13,4 @@
       </span></button>
   </div>
 </form>
+</div>
