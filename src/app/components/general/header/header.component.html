@@ -23,8 +23,9 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
-              <button class="dropdown-item" >Account Settings</button>
+              <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
               <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
+              <button class="dropdown-item" >Account Settings</button>
               <button class="dropdown-item" (click)="auth.logout()">Logout</button>
             </div>
           </div>
@@ -40,11 +41,7 @@
             </div>
           </div>
         </li>-->
-        <li class="mail-icon">
-          <a [routerLink]="['/inbox']"><img src="./assets/images/icons/mail.svg" alt=""></a>
-        </li>
         <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
-        <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
       </ul>
 
     </div>
