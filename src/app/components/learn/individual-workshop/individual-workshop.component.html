@@ -7,15 +7,12 @@
           <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
         </ul>
         <div class="learn-card row">
-          <div class="col-md-4 image-container">
-            <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
-            <div class="media workshop-creator" *ngIf="workshopLeader">
-              <img class="d-flex align-self-start mr-3" src="{{workshopLeader.default_profile_photo}}" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0" *ngIf="(workshopLeader.first_name) && (workshopLeader.last_name)">{{workshopLeader.first_name}} {{workshopLeader.last_name}}</h5>
-                {{workshopLeader.nickname}}
-                <div *ngIf="(workshopLeader.city)" [innerHTML]="workshopLeader.city"> </div>
-              </div>
+          <div class="col-md-4">
+            <div class="image-container">
+              <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
+            </div>
+            <div *ngIf="workshop.uid">
+              <app-learn-user-card [uid]="workshop.uid"></app-learn-user-card>
             </div>
           </div>
 
@@ -50,7 +47,7 @@
             </div>
           </div>
           <!-- End card-container -->
-                  <!--<div class="media workshop-creator" *ngIf="workshopLeader">
+          <!--<div class="media workshop-creator" *ngIf="workshopLeader">
               <img class="d-flex align-self-start mr-3" src="{{workshopLeader.default_profile_photo}}" alt="Generic placeholder image">
               <div class="media-body">
                 <h5 class="mt-0" *ngIf="(workshopLeader.first_name) && (workshopLeader.last_name)">{{workshopLeader.first_name}} {{workshopLeader.last_name}}</h5>
@@ -63,7 +60,7 @@
 
       </div>
       <!-- End workshop-card -->
-       
+
     </div>
     <!-- End region-content -->
   </section>
@@ -90,20 +87,20 @@
                   <div class="card" id="OB{{object?.nid}}" style="border: none;">
                     <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                       data-toggle="modal" data-target="#previewer">
-                    <div class="card-block">
-                      <h4 class="card-title">{{object.learning_content_type}}</h4>
-                      <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-                      <p class="card-text">Getting Started with: <br> Arduino by {{object.author_name}}
-                      </p>
-                    </div>
-                    <!--<ul class="list-group list-group-flush">
+                      <div class="card-block">
+                        <h4 class="card-title">{{object.learning_content_type}}</h4>
+                        <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
+                        <p class="card-text">Getting Started with: <br> Arduino by {{object.author_name}}
+                        </p>
+                      </div>
+                      <!--<ul class="list-group list-group-flush">
                   <li class="list-group-item">Cras justo odio</li>
                   <li class="list-group-item">Dapibus ac facilisis in</li>
                   <li class="list-group-item">Vestibulum at eros</li>
                 </ul>-->
-                    <div class="card-block">
-                      <a href="#" class="card-link">Card link</a>
-                    </div>
+                      <div class="card-block">
+                        <a href="#" class="card-link">Card link</a>
+                      </div>
                   </div>
                   <div class="media-body" style="margin-left: 11px;">
                     <h4>{{object.lesson_name}}</h4>
@@ -177,20 +174,20 @@
                   <div class="card" id="OB{{object?.nid}}" style="border: none;">
                     <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                       data-toggle="modal" data-target="#previewer">
-                    <div class="card-block">
-                      <h4 class="card-title">{{object.learning_content_type}}</h4>
-                      <div class="card-text" *ngIf="object.chapter"> Number of Chapters: {{object.chapter}} </div>
-                      <p class="card-text">Getting Started with: <br> Arduino by {{object.author_name}}
-                      </p>
-                    </div>
-                    <!--<ul class="list-group list-group-flush">
+                      <div class="card-block">
+                        <h4 class="card-title">{{object.learning_content_type}}</h4>
+                        <div class="card-text" *ngIf="object.chapter"> Number of Chapters: {{object.chapter}} </div>
+                        <p class="card-text">Getting Started with: <br> Arduino by {{object.author_name}}
+                        </p>
+                      </div>
+                      <!--<ul class="list-group list-group-flush">
                   <li class="list-group-item">Cras justo odio</li>
                   <li class="list-group-item">Dapibus ac facilisis in</li>
                   <li class="list-group-item">Vestibulum at eros</li>
                 </ul>-->
-                    <div class="card-block">
-                      <a href="#" class="card-link">Card link</a>
-                    </div>
+                      <div class="card-block">
+                        <a href="#" class="card-link">Card link</a>
+                      </div>
                   </div>
                   <div class="media-body" style="margin-left: 11px;">
                     <h4>{{object.lesson_name}}</h4>
