@@ -133,25 +133,25 @@ $(document).ready(function() {
 
     // Toggle profile grid and square view
     $(document).on('click', '.switch', function(){
-    	$(this).children().toggle();
+    	// $(this).children().toggle();
     	if($('.project-item ').hasClass('col-md-6')){
     		$('.project-item ').removeClass('col-md-6');
     		$('.project-item ').addClass('col-md-12');
-				$('.project-item .content-side p.project-text-grid').css({display: 'block'});
+				// $('.project-item .content-side p.project-text-grid').css({display: 'block'});
     		// $('.project-stats').css({
 				// display: 'block',
 				// bottom: '120px'
 			// });
-    		squareView = false;
+    		// squareView = false;
     	} else {
     		$('.project-item').removeClass('col-md-12');
     		$('.project-item').addClass('col-md-6');
-				$('.project-item .content-side p.project-text-grid').css({display: 'none'});
+				// $('.project-item .content-side p.project-text-grid').css({display: 'none'});
     		// $('.project-stats').css({
 				// display: 'none',
 				// bottom: '120px'
 			// });
-    		squareView = true;
+    		// squareView = true;
     	}
 
 

@@ -31,7 +31,7 @@
           <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#">Vehicles Challenge</a> Winner</div>
           <div class="project-collaborates" *ngIf="project.field_collaborators">
             <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
-                <app-user-card [uid]="collaborator.target_id"></app-user-card>              
+                <app-user-card-small [uid]="collaborator.target_id"></app-user-card-small>        
             </div>
             <!-- End Collaborate -->
           </div>

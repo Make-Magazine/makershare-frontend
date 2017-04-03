@@ -3,6 +3,7 @@ import { AuthGuardService } from './auth0/auth-guard.service';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
 
+
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
     { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
@@ -14,6 +15,7 @@ const APP_ROUTES: Routes = [
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},
     { path: '**', component: Four04Component }
+
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

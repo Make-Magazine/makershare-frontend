@@ -142,6 +142,7 @@ export class InboxComponent implements OnInit {
           user_photo: this.user['user_photo'],
           sender: 'you send a message',
           subject: this.messageObj.subject,
+          last_updated : 'Now',
         }
         this.msg.unshift(newMessage);
         this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
@@ -245,6 +246,23 @@ export class InboxComponent implements OnInit {
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
           msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+          if(msg_arr[i].last_updated < 1){
+            msg_arr[i].last_updated = 'Now';
+          }else if(msg_arr[i].last_updated === 1){
+            msg_arr[i].last_updated = 'minute ago';
+          }else if(msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60){
+            msg_arr[i].last_updated = msg_arr[i].last_updated + ' '  +  'minutes ago';
+          }else if(msg_arr[i].last_updated > 60 && msg_arr[i].last_updated < 120){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' ' +  'hour ago';
+          }else if(msg_arr[i].last_updated >= 120 && msg_arr[i].last_updated < 1440){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' '  + 'hours ago';
+          }else if(msg_arr[i].last_updated >= 1440 && msg_arr[i].last_updated < 2880){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' ' + 'day ago';
+          }else if(msg_arr[i].last_updated > 2880 && msg_arr[i].last_updated < 10080){
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' '  + 'days ago';
+          }else if (msg_arr[i].last_updated > 10080){
+            msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
+          }
           i++
         }
       }
@@ -295,7 +313,6 @@ export class InboxComponent implements OnInit {
 
   checkAll(ev) {
     this.msg.forEach(x => x.state = ev.target.checked)
-
     for (var _i = 0; _i < this.msg.length; _i++) {
       if (ev.target.checked === true) {
         this.deletedArr.push(this.msg[_i].thread_id);
@@ -348,6 +365,7 @@ export class InboxComponent implements OnInit {
   turnOffMessages() {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
+      this.hideTurnOn = true;
       this.notificationBarService.create({ message: 'You have disabled Privatemsg and are not allowed to write messages', type: NotificationType.Success });
     })
   }
@@ -357,6 +375,7 @@ export class InboxComponent implements OnInit {
   turnOnMessages() {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
+      this.hideTurnOn = false;
       this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
     })
   }

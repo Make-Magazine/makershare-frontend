@@ -1,0 +1,103 @@
+<div class=" profile-container" *ngIf="card.invited_user=='0' || card.invited_user==''">
+  <!-- start profile card-->
+  <div class="card spotlight-item ">
+    <div class="card-block user-card-small align-content-stretch content ">
+      <div class="media">
+        <div class="profile-pic-container flex-column align-self-start mr-3">
+          <img *ngIf="!card.photo_lg" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
+          <img *ngIf="card.photo_lg" src="{{card.photo_lg}}" alt="" class="img-responsive maker-photo">
+        </div>
+        <div class="media-body">
+          <div class="card-type">Maker</div>
+          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+          <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
+          <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+          <div>
+            <div class="icons-side-user">
+              <div class="user-icon" *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+              </div>
+            </div>
+            <div class="card-stats mt-auto">
+              <ul class="list-unstyled d-flex flex-row justify-content-between align-items-center count-list">
+                <li>
+                  <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                  <span>1234</span>
+                </li>
+                <li>
+                  <img src="./assets/images/icons/views.png" class="project-views" alt="">
+                  <span>70</span>
+                </li>
+                <li *ngIf="projectCount" class="count">{{projectCount.project_count}} projects</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End profile card -->
+</div>
+<div class=" profile-container" *ngIf="card.invited_user=='1'">
+  <!-- start profile card If Invited-->
+  <div class="card spotlight-item ">
+    <div class="card-block user-card-small  align-content-stretch content ">
+      <div class="media">
+        <div class="profile-pic-container flex-column align-self-start mr-3">
+          <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
+
+        </div>
+        <div class="media-body">
+          <p class="user-nickname" *ngIf="card.contact_email">{{card.contact_email}}</p>
+          <h4 class="user-name">invitation Was Sent </h4>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End profile card Invited-->
+</div>
+
+<!-- End Profile-container -->
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" (click)="resetForm($event)">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg"
+      class="form-horizontal">
+      <!--<div class="form-group" *ngIf="card">
+              <div class="result">
+                <div class="user-image-container">
+                  <img *ngIf="card.photo" src="{{card.photo}}">
+                  <img *ngIf="!card.photo" src="{{card.default_photo}}">
+                </div>
+                <div class="data-container">
+                  <p  *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</p>
+                </div>
+              </div>
+            </div>-->
+
+      <div class="form-group subject">
+        <label class="control-label">Subject</label>
+        <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
+      </div>
+      <div *ngIf="formErrors.subject" class="alert alert-danger">
+        {{ formErrors.subject }}
+      </div>
+      <div class="form-group message-text">
+        <label class="control-label">Message</label>
+        <textarea name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
+      </div>
+      <div *ngIf="formErrors.body" class="alert alert-danger">
+        {{ formErrors.body }}
+      </div>
+      <ul class="list-unstyled actions">
+        <li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>
+        <li><button type="submit" class="btn btn-blue btn-sharp" [disabled]="!messageForm.valid">Send</button></li>
+      </ul>
+    </form>
+  </div>
+</template>

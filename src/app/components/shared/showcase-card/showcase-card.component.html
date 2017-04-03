@@ -1,4 +1,4 @@
-       <div class="showcase-card row">
+       <div class="showcase-card row d-flex align-items-stretch">
           <div class="col-md-4 col-sm-12 col-xs-12 image-container">
             <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
           </div>
@@ -11,9 +11,9 @@
                 </div>
                 <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
                 <div class="card-description">
-                  <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
+                  <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
                 </div>
-                <div class="showcase-card-footer d-flex">
+                <div class="showcase-card-footer mt-auto">
                   <div class="showcase-card-footer-1">
                     <div class="button-container-main-1">
                       <span class="btn btn-main" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>

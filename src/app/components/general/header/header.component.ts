@@ -12,7 +12,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 export class HeaderComponent implements OnInit {
   
   showSearchBox: boolean = false;
-
+  user_photo
   constructor(
     private userService: UserService,
     private router: Router,
@@ -25,6 +25,8 @@ export class HeaderComponent implements OnInit {
     //     this.isLoggedIn = true;
     //   }
     // });
+    this.user_photo = localStorage.getItem('user_photo');
+    console.log(this.user_photo)
   }
 
   // Logout(event){
@@ -43,5 +45,6 @@ export class HeaderComponent implements OnInit {
   onNotify(event){
     this.showSearchBox = false;
   }
+
 
 }
