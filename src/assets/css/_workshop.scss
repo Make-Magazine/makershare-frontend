@@ -2,16 +2,12 @@
 .page-learn {
 	background-color: white;
     padding-bottom: 40px;
-    .entries-count p {}
-    .sorting-filter {
-        .btn {
-        }
-    }
-    
+
 }
 .learn-card {
-    margin-bottom: 10px;
-    .card {
+ margin-bottom: 10px;
+  
+      .card {
         background-color: transparent;
         border: none;
     }
@@ -49,7 +45,6 @@
             }
 				
         }
-
         .learn-card-footer {
             .learn-card-footer-1 {
                 bottom: 5px;
@@ -113,10 +108,11 @@
 .page-learn {
 .learn-card {
     position: relative;
-    padding: 16px;
+    padding: 26px;
     overflow: hidden;
     cursor:pointer;
     background-color: $main-bg;
+
     .learn-item {
         padding: 10px;
         img {
@@ -148,7 +144,7 @@
             transform: rotate(-90deg);
 						 color: #4F4F4F;
 			        }
-				  .card-title {
+			  .card-title {
             @include card-header-font-lg();
             font-size: 38px;
             display: -webkit-box;
