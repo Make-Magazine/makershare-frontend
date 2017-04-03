@@ -21,7 +21,7 @@ export class ShowcaseComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
-        private _location: Location,
+    private _location: Location,
 
 
 
