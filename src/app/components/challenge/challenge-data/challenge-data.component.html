@@ -1,14 +1,20 @@
+    
 <div *ngIf="challenge" class="page-challenge-summary">
   <div class="main-container container-fluid">
     <div class="row">
       <section class="col-sm-12 width-fix">
         <div class="top-content-wrapper">
           <div class="container">
+            
             <div class="col-md-12 challenge-cover" *ngIf="challenge">
+              <!--<div class="button-container-main-1 float-right">
+                <button class="btn btn-main" (click)="myEnteriesProject()">My Entries</button>
+                <button class="btn btn-main" (click)="getProjects()">All Project</button>
+              </div>-->
               <div class="challenge-card row">
                 <div class="col-md-4 left-side">
                   <div class="image-container">
-                    <img src="{{challenge.cover_image}}" alt="" *ngIf="challenge.cover_image" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+                    <img src="{{challenge.cover_image}}" alt="" *ngIf="challenge.cover_image" class="img-responsive">
                     <img src="{{challenge.sponsor_bar}}" alt="" *ngIf="challenge.sponsor_bar" class="sponsor_bar img-responsive">
                   </div>
                   <div class="challene-card-footer-3">
@@ -18,9 +24,11 @@
                     <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                     <ul class="list-unstyled challenge-actions pull-right">
                        <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
+
                     <li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
               </ul>
                   </div>
+               
                 </div>
                 <!-- End image-container -->
                 <div class="col-md-8">
@@ -32,7 +40,7 @@
                       <div class="card-partership">
                         <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p>
                       </div>
-                      <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
+                      <h3 class="card-title">{{challenge.title}}</h3>
                       <div class="card-description">
                         <p [innerHTML]="challenge.body"></p>
                       </div>

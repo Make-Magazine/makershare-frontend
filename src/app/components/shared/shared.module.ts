@@ -14,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import {Ng2DeviceDetector} from 'ng2-device-detector';
+
 
 
 @NgModule({
@@ -22,7 +24,10 @@ import { FeedbackComponent } from './feedback/feedback.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ShareButtonsModule.forRoot()
+    ShareButtonsModule.forRoot(),
+    Ng2DeviceDetector,
+
+
   ],
   declarations: [
     CommentComponent,
@@ -48,6 +53,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     SharedButtonsComponent,
     FeedbackComponent,
   ]
+  
 })
 export class SharedModule { }
 export {CommentComponent};

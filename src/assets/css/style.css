@@ -3006,6 +3006,12 @@ header.showcase-project .next {
 .page-challenge-summary .content-wrapper {
   padding: 10px;
   margin-top: 20px; }
+.page-challenge-summary .challenge-card-footer-2 {
+  margin-left: 0px !important; }
+.page-challenge-summary .filters {
+  margin-bottom: 16px; }
+.page-challenge-summary .entries {
+  clear: both; }
 
 .page-workshop-individual {
   background-color: #F2F2F2; }

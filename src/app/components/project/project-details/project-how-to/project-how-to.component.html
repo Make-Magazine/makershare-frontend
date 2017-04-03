@@ -18,7 +18,7 @@
         <div class="block-style avg-time">
           <p>Difficulty : {{project.field_difficulty}}</p>
         </div>
-        <ul class="list-group resources">
+        <ul *ngIf="project.field_resources" class="list-group resources">
           <h3>Resources</h3>
           <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
             <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>

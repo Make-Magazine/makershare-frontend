@@ -183,6 +183,7 @@ export class ChallengeDataComponent implements OnInit {
   getProjects() {
     /*cheack display_entries */
     //challenge entries projects
+     this.projects=[];
     var sort: string;
     //  this.page_arg = [];
     if (this.pageNo >= 0) {
@@ -197,7 +198,26 @@ export class ChallengeDataComponent implements OnInit {
         this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
+  /* function to get myEnteries */
+  myEnteriesProject() {
+    /*cheack display_entries */
+    //challenge entries projects
+    this.userId = localStorage.getItem('user_id');
+    this.projects = [];
 
+    var sort: string;
+    //  this.page_arg = [];
+    if (this.pageNo >= 0) {
+      this.page_arg = ['page', this.pageNo];
+    }
+    this.route.params
+      .switchMap((nid) => this.viewService.getView('challenge_entries', [['nid', nid['nid']], ['uid', this.userId], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
+      .subscribe(data => {
+        this.projects = this.projects.concat(data);
+      }, err => {
+        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      });
+  }
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
@@ -206,8 +226,8 @@ export class ChallengeDataComponent implements OnInit {
     if (this.countProjects == this.projects.length) {
       this.hideloadmoreproject = true;
 
-      // console.log(this.projects.length);
-      //console.log(this.countProjects);
+       console.log(this.projects.length);
+      console.log(this.countProjects);
     } else if (this.countProjects > this.projects.length) {
       setTimeout(10000);
       this.hideloadmoreproject = false;
@@ -287,29 +307,10 @@ export class ChallengeDataComponent implements OnInit {
 
     });
   }
-  /* end function cheack user allowe to enter challenge */
-  /* function to get myEnteries */
-  myEnteriesProject() {
-    /*cheack display_entries */
-    //challenge entries projects
-    this.userId = localStorage.getItem('user_id');
-    this.projects = [];
 
-    var sort: string;
-    //  this.page_arg = [];
-    if (this.pageNo >= 0) {
-      this.page_arg = ['page', this.pageNo];
-    }
-    this.route.params
-      .switchMap((nid) => this.viewService.getView('challenge_entries', [['nid', nid['nid']], ['uid', this.userId], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
-      .subscribe(data => {
-        this.projects = this.projects.concat(data);
-        this.loadMoreVisibilty();
-      }, err => {
-        this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
-      });
-  }
   /* end function my Enteries */
+  /* end function cheack user allowe to enter challenge */
+  
 
   /* service to get challenge name if project enter in it */
   // get challenge name and nid for challenge if found from a view
