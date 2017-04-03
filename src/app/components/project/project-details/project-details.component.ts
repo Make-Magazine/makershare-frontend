@@ -54,7 +54,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         
         this.projectdata = data[0];
-        //console.log(this.projectdata);
+        console.log(this.projectdata);
       }, err => {
 
       });
@@ -99,7 +99,7 @@ export class ProjectDetailsComponent implements OnInit {
 
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
-          //console.log(this.projectDetails);
+          console.log(this.projectDetails);
 
         });
 

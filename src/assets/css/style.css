@@ -365,12 +365,8 @@ a:not([href]):not([tabindex]) {
       .project .project-image i.badge-icon {
         bottom: 5px;
         right: 5px; }
-  .project.col-lg-4 img {
-    height: 180px; }
   .project.col-lg-4 .description, .project.col-lg-4 .role {
     display: none; }
-  .project.col-md-12 img {
-    height: 250px; }
   .project.col-md-12 a {
     position: absolute;
     bottom: 0;
@@ -546,7 +542,7 @@ body {
     margin-bottom: 0;
     margin-top: 5px; }
     .main-header .logged-in li {
-      min-width: 40px;
+      min-width: 36px;
       text-align: center;
       display: inline-block;
       vertical-align: middle; }
@@ -558,7 +554,7 @@ body {
       .main-header .logged-in li.search-icon img {
         width: 23px; }
       .main-header .logged-in li.min-user-img img {
-        width: 25px; }
+        width: 27px; }
 
 .msg {
   background-color: #BEBEBE;
@@ -740,19 +736,33 @@ body {
   font-size: 15px; }
 
 footer {
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 25px;
   min-height: 35px;
   font-size: 14px;
   background: white; }
-  footer .copy img {
-    max-width: 70px; }
+  footer .copy .first-logo-link {
+    margin-right: 10px; }
+  footer .copy .second-logo-link {
+    padding-left: 10px;
+    border-left: 1px solid #4f4f4f; }
+  footer .copy .first-logo {
+    width: 100px;
+    height: 75px;
+    max-width: 100px; }
+  footer .copy .second-logo {
+    width: 170px;
+    max-width: 170px; }
   footer .copy p {
-    padding: 0;
     margin: 0;
-    font-size: 12px; }
+    font-size: 12px;
+    color: #4f4f4f; }
+  footer .copy .copyright {
+    padding-top: 8px; }
+  footer .copy .logo-title {
+    padding: 12px 0px 0px 4px; }
   footer a.nav-link {
-    color: #222;
+    color: #4F4F4F;
     padding: 0; }
   footer .fa-stack-2x {
     font-size: 1.7em; }
@@ -763,8 +773,22 @@ footer {
     height: 1.7em;
     line-height: 1.7em;
     vertical-align: middle; }
-  footer .socials {
-    margin-top: 30px; }
+  footer .socials-newsletter div {
+    padding-bottom: 4px; }
+  footer .socials-newsletter .newsletter .input-group-addon {
+    background: none;
+    background-color: #00AEEF;
+    color: white; }
+  footer .footer-subtitle {
+    color: #00AEEF;
+    font-size: 16px;
+    width: 100%;
+    padding-bottom: 4px;
+    margin: 0px; }
+  footer .sitemap-1 a, footer .sitemap-2 a {
+    font-size: 16px;
+    color: #828282;
+    line-height: 25px; }
 
 .width-fix {
   padding: 0; }
@@ -923,8 +947,8 @@ footer {
     overflow: hidden;
     position: relative;
     padding: 0;
-    width: 350px;
-    height: 320px; }
+    width: 100%;
+    height: auto; }
   .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
     font-size: 1.125em;
@@ -989,7 +1013,7 @@ footer {
     margin: auto; }
 
 .challenges-container {
-  padding: 25px 0; }
+  padding: 25px 10px; }
 
 .page-challenge .challenge-card {
   position: relative;
@@ -1007,11 +1031,12 @@ footer {
     overflow: hidden;
     position: relative;
     padding: 0;
-    width: 450px;
-    height: 290px; }
+    width: 100%;
+    height: auto; }
     .page-challenge .challenge-card .image-container img {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      max-width: 100%; }
   .page-challenge .challenge-card .card-container {
     color: #fff;
     position: relative; }
@@ -1077,9 +1102,7 @@ footer {
   background-color: #F2F2F2; }
   .page-project .top-content-wrapper {
     padding-top: 20px;
-    border-bottom: 1px solid #BEBEBE;
-    margin-bottom: 10px;
-    background-color: white; }
+    margin-bottom: 10px; }
     .page-project .top-content-wrapper h2 {
       font-size: 35px;
       font-weight: bold;
@@ -1117,7 +1140,10 @@ footer {
         .page-project .top-content-wrapper .project-aside li:not(:last-child) a {
           border-right-color: transparent; }
         .page-project .top-content-wrapper .project-aside li .btn {
-          padding: 8px 20px; }
+          padding: 12px 20px;
+          -moz-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26);
+          -webkit-box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26);
+          box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.26); }
         .page-project .top-content-wrapper .project-aside li.active a.btn.btn-light-grey {
           background-color: #fff !important;
           border-bottom-color: #fff; }
@@ -1439,6 +1465,87 @@ header.showcase-project .next {
         border: none;
         outline: none;
         outline: none; }
+
+.page-project .projectsingle-card {
+  position: relative;
+  padding: 16px;
+  cursor: pointer;
+  background-color: white;
+  padding: 12px 12px 0px 0px; }
+  .page-project .projectsingle-card .left-side {
+    position: relative;
+    top: -26px;
+    left: -20px;
+    padding: 0px; }
+    .page-project .projectsingle-card .left-side .image-container {
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+      width: 100%;
+      height: auto; }
+      .page-project .projectsingle-card .left-side .image-container img {
+        width: 100%;
+        height: 360px;
+        max-width: 100%; }
+    .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges {
+      margin: 0px; }
+      .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges .project-badge {
+        width: 40px;
+        height: auto; }
+  .page-project .projectsingle-card .right-side {
+    padding-left: 0px; }
+    .page-project .projectsingle-card .right-side .card-container {
+      position: relative; }
+      .page-project .projectsingle-card .right-side .card-container .card {
+        border: none; }
+      .page-project .projectsingle-card .right-side .card-container .projects-circle {
+        color: #00AEEF;
+        text-decoration: underline; }
+      .page-project .projectsingle-card .right-side .card-container .card-title {
+        font-family: "Messina Modern Regular";
+        font-size: 3em;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 90%;
+        color: #828282;
+        font-size: 38px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 110px;
+        line-height: 100%; }
+      .page-project .projectsingle-card .right-side .card-container .card-description h4 {
+        font-weight: bold; }
+      .page-project .projectsingle-card .right-side .card-container .card-description p {
+        font-family: "Messina Sans Regular";
+        font-size: 1.125em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 130%;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 70px;
+        margin-bottom: 10px; }
+      .page-project .projectsingle-card .right-side .card-container .card-date {
+        color: #828282;
+        font-size: 13px; }
+      .page-project .projectsingle-card .right-side .card-container .card-tags {
+        color: #828282;
+        font-size: 14px; }
+      .page-project .projectsingle-card .right-side .card-container .project-card-footer {
+        margin-top: 16px; }
+        .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
+          margin: 0 auto; }
+          .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
+            border: 1px solid rgba(130, 130, 130, 0.2); }
+            .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a.active {
+              background-color: #EC1F30;
+              border: 1px solid rgba(130, 130, 130, 0.2);
+              color: white; }
 
 .workshop-page {
   background-color: #F2F2F2; }
@@ -2028,7 +2135,9 @@ header.showcase-project .next {
 
 .project.card {
   width: 95%;
-  border-radius: 0; }
+  border-radius: 0;
+  margin: 0 auto;
+  margin-bottom: 24px; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -2433,7 +2542,7 @@ header.showcase-project .next {
   color: #4F4F4F; }
 
 .projects-circle {
-  margin-bottom: 14px; }
+  margin-bottom: 10px; }
 
 .showcase-card-backlayer {
   background-color: #c5edfb;
@@ -2582,8 +2691,8 @@ header.showcase-project .next {
     transition: inherit; }
 .page-single-showcase .projects-grid .showcase-wrapper {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 99%;
+  height: 99%;
   position: absolute;
   z-index: 5; }
 .page-single-showcase .projects-grid .project.card {
@@ -4198,11 +4307,27 @@ img {
     width: auto; }
     .showcase-card-backlayer .showcase-card .image-container img {
       width: 100%;
-      width: auto; } }
+      width: auto; }
+
+  footer .sitemap .sitemap-1, footer .sitemap .sitemap-2, footer .sitemap .socials {
+    padding-top: 8px; } }
 @media only screen and (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
       display: none; } }
+@media only screen and (max-width: 991px) {
+  /* Footer */
+  footer {
+    padding-top: 30px; }
+    footer .container .copy {
+      order: 4;
+      margin: 0; }
+      footer .container .copy nav {
+        padding: 0px; }
+    footer .container .socials-newsletter {
+      margin-top: 20px; }
+    footer .container .sitemap {
+      margin: 0; } }
 
 /*# sourceMappingURL=style.css.map */

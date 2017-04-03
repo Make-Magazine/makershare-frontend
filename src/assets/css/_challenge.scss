@@ -28,8 +28,8 @@
         overflow: hidden;
         position: relative;
         padding: 0;
-        width: 350px;
-        height: 320px;
+        width: 100%;
+        height: auto;
     }
     .card-container {
         .card-partership {
@@ -119,7 +119,7 @@
     }
 }
 .challenges-container {
-	padding: 25px 0;
+	padding: 25px 10px;
 }
 .page-challenge {
 .challenge-card {
@@ -141,11 +141,12 @@
         overflow: hidden;
         position: relative;
         padding: 0;
-        width: 450px;
-        height: 290px;
+        width: 100%;
+        height: auto;
         img {
             width: 100%;
             height: 100%;
+            max-width: 100%;
         }
     }
     .card-container {
