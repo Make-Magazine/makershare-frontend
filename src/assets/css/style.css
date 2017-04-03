@@ -747,6 +747,8 @@ footer {
   min-height: 35px;
   font-size: 14px;
   background: white; }
+  footer .copy nav {
+    height: 75px; }
   footer .copy .first-logo-link {
     margin-right: 10px; }
   footer .copy .second-logo-link {
@@ -783,10 +785,10 @@ footer {
     padding-bottom: 4px; }
   footer .socials-newsletter .newsletter .input-group-addon {
     background: none;
-    background-color: #00AEEF;
+    background-color: #11B3F0;
     color: white; }
   footer .footer-subtitle {
-    color: #00AEEF;
+    color: #11B3F0;
     font-size: 16px;
     width: 100%;
     padding-bottom: 4px;
@@ -1010,54 +1012,6 @@ footer {
       .profile-name .bookmark li a .message {
         color: #EC1F30; }
 
-<<<<<<< HEAD
-.challenge-card {
-  margin-bottom: 10px; }
-  .challenge-card .card {
-    background-color: transparent;
-    border: none; }
-  .challenge-card .single-challenge {
-    padding: 10px; }
-    .challenge-card .single-challenge img {
-      width: 250px; }
-    .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
-  .challenge-card .image-container {
-    overflow: hidden;
-    position: relative;
-    padding: 0;
-    width: 100%;
-    height: auto; }
-  .challenge-card .card-container .card-partership {
-    font-family: "Messina Sans Regular";
-    font-size: 1.125em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 130%;
-    color: #828282;
-    text-transform: none;
-    font-size: 14px;
-    display: inline-block;
-    min-height: 16px;
-    margin-bottom: 10px; }
-    .challenge-card .card-container .card-partership p {
-      margin-bottom: 0px; }
-  .challenge-card .card-container .card-description h4 {
-    font-weight: bold; }
-  .challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
-    bottom: 5px;
-    align-self: end; }
-    .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
-      background-color: #BEBEBE; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-    font-size: 14px; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
-      padding-left: 10px; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-      padding-right: 10px;
-      border-right: 1px solid white; }
-  .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-=======
 .profile-sidebar {
   overflow: hidden;
   color: #181818; }
@@ -1066,7 +1020,6 @@ footer {
     margin: 10px 0 15px; }
   .profile-sidebar h5 {
     color: #000;
->>>>>>> 0fdb51d8ef3d47f3571e64269c6643133fbc8574
     font-weight: bold;
     font-size: 14px; }
   .profile-sidebar .progress {
@@ -1519,7 +1472,9 @@ footer {
 
 .project.card {
   width: 95%;
-  border-radius: 0; }
+  border-radius: 0;
+  margin: 0 auto;
+  margin-bottom: 24px; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -1981,8 +1936,8 @@ footer {
     overflow: hidden;
     position: relative;
     padding: 0;
-    width: 350px;
-    height: 320px; }
+    width: 100%;
+    height: auto; }
   .challenge-card .card-container .card-partership {
     font-family: "Messina Sans SemiBold" !important;
     font-size: 14pt !important;
@@ -2497,7 +2452,6 @@ header.showcase-project .next {
         outline: none;
         outline: none; }
 
-<<<<<<< HEAD
 .page-project .projectsingle-card {
   position: relative;
   padding: 16px;
@@ -2531,14 +2485,14 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
-        color: #00AEEF;
+        color: #11B3F0;
         text-decoration: underline; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
-        font-family: "Messina Modern Regular";
-        font-size: 3em;
-        font-weight: 400;
-        text-transform: capitalize;
-        line-height: 90%;
+        font-family: "Messina Modern Regular" !important;
+        font-size: 48pt !important;
+        font-weight: 400 !important;
+        text-transform: capitalize !important;
+        line-height: 90% !important;
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
@@ -2550,11 +2504,11 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
-        font-family: "Messina Sans Regular";
-        font-size: 1.125em;
-        font-weight: 400;
-        text-transform: none;
-        line-height: 130%;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 18pt !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -2579,8 +2533,6 @@ header.showcase-project .next {
               border: 1px solid rgba(130, 130, 130, 0.2);
               color: white; }
 
-.workshop-page {
-=======
 .page-learn {
   background-color: white;
   padding-bottom: 40px; }
@@ -2673,7 +2625,6 @@ header.showcase-project .next {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
->>>>>>> 0fdb51d8ef3d47f3571e64269c6643133fbc8574
   background-color: #F2F2F2; }
   .page-learn .learn-card .learn-item {
     padding: 10px; }
@@ -4325,15 +4276,11 @@ img {
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-sponser-image img, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-sponser-image img {
       width: 100%;
       height: auto; }
-  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions {
-    position: absolute;
-    bottom: 0;
-    right: 10px; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
-      float: left; }
-      .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
-        background-color: #222;
-        color: #fff; }
+  .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
+    float: left; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
+      background-color: #222;
+      color: #fff; }
 .page-challenge-summary .region-content, .page-challenge-summary-closed .region-content, .page-enter-challenge .region-content {
   padding-right: 0px;
   padding-left: 0px;
