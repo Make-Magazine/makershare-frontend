@@ -522,7 +522,8 @@ body {
   padding: 0 !important;
   margin: 0 !important;
   color: #222;
-  width: 100%; }
+  width: 100%;
+  background-color: #F2F2F2; }
   .main-header .navbar-brand {
     width: 50px;
     padding: 0px;
@@ -2496,10 +2497,10 @@ header.showcase-project .next {
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 110px;
+        height: 166px;
         line-height: 100%; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
@@ -5530,7 +5531,7 @@ img {
   }                */
   100% {
     opacity: 1; } }
-@media only screen and (max-width: 414px) {
+@media (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 {
@@ -5546,7 +5547,7 @@ img {
         width: 100%; }
       .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 span {
         width: 100%; } }
-@media only screen and (max-width: 575px) {
+@media (max-width: 575px) {
   /* project card */
   .project.card {
     width: 100%; }
@@ -5573,12 +5574,12 @@ img {
 
   footer .sitemap .sitemap-1, footer .sitemap .sitemap-2, footer .sitemap .socials {
     padding-top: 8px; } }
-@media only screen and (max-width: 767px) {
+@media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
       display: none; } }
-@media only screen and (max-width: 991px) {
+@media (max-width: 991px) {
   /* Footer */
   footer {
     padding-top: 30px; }
@@ -5591,5 +5592,9 @@ img {
       margin-top: 20px; }
     footer .container .sitemap {
       margin: 0; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1282px;
+    max-width: 100%; } }
 
 /*# sourceMappingURL=style.css.map */
