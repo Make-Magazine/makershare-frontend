@@ -10,22 +10,40 @@
         <li class="search-icon">
           <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
         </li>
-      </ul>  
+      </ul>
       <ul class="list-unstyled login-block" *ngIf="!auth.authenticated()">
         <li class="button-container-main-1"><a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login</a></li>
       </ul>
       <ul class="list-unstyled logged-in" *ngIf="auth.authenticated()">
         <!-- <li><a href="" class="btn btn-white btn-sharp">Beta Feedback</a></li> -->
-        <li class="min-user-img">
-          <a *ngIf="auth.authenticated()" [routerLink]="['/profile']"><img src="{{user_photo}}" alt="" class="img-responsive" ></a>
+        <li class="min-user-img" *ngIf="auth.authenticated()">
+          <div ngbDropdown class="d-inline-block account-controls dropdown">
+            <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
+              <img src="{{user_photo}}" alt="" class="img-responsive">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
+              <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
+              <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
+              <button class="dropdown-item" >Account Settings</button>
+              <button class="dropdown-item" (click)="auth.logout()">Logout</button>
+            </div>
+          </div>
         </li>
-        <li class="mail-icon">
-          <a [routerLink]="['/inbox']"><img src="./assets/images/icons/mail.svg" alt=""></a>
-        </li>
+        <!--<li>
+          <div ngbDropdown class="d-inline-block account-controls dropdown">
+            <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{ActionName}} <i class="fa fa-lg fa-bars"></i></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <button class="dropdown-item" (click)="mostRecent($event)">Most recent</button>
+              <button class="dropdown-item" (click)="oldest($event)">Oldest</button>
+              <button class="dropdown-item" (click)="sortAsc($event)">Title A-Z</button>
+              <button class="dropdown-item" (click)="sortDesc($event)">Title Z-A</button>
+            </div>
+          </div>
+        </li>-->
         <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
-        <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
       </ul>
-          
+
     </div>
     <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
       <ul class="navbar-nav justify-content-md-between">
@@ -62,8 +80,8 @@
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
         </li>
         <li class="nav-item dropdown  hidden-sm-down">
-          <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button"
-            aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
+            aria-expanded="false">
             More <i class="fa fa-lg fa-angle-down"></i>
           </a>
           <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
@@ -86,7 +104,7 @@
       </ul>
     </div>
   </nav>
-  
+
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
 
 </header>
