@@ -817,7 +817,7 @@
         @include card-header-font-md;
 
         color: $text-color-1;
-        min-height: 38px;
+        height: 64px;
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -833,11 +833,17 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        margin: auto;
-        width: 80%;
-
+        margin: 0 5px;
+        color:$main-grey;
         &.project-text-grid {
             display: none;
+        }
+    }
+    .categories {
+        display: none;
+        span {
+            margin-left: 3px;
+            color: $light-grey;
         }
     }
 
@@ -959,7 +965,8 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgba(0, 100, 200, 0.6);
+    background-color: $blue;
+    opacity: 0.6;
     display: none;
     z-index: 10;
 }
@@ -972,12 +979,16 @@
     color: #fff;
     bottom: 0;
     right: 0px;
-    margin: 0 auto;
+    margin: auto;
     z-index: 11;
     height: 100px;
 
     p {
         line-height: 20px;
+    }
+    .overlay-text {
+        width: 80%;
+        margin: 0 auto;
     }
 }
 

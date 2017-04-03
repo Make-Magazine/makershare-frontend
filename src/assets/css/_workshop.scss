@@ -21,11 +21,14 @@
         }
     }
     .image-container {
-        overflow: hidden;
+        // overflow: hidden;
+        // position: relative;
+        // padding: 0px 15px;
+        // width: 350px;
+        // height: 320px;
+    }
+    .container-content {
         position: relative;
-        padding: 0;
-        width: 350px;
-        height: 320px;
     }
     .card-container {
         .card-partership {
@@ -44,6 +47,11 @@
                 font-weight: bold;
             }
 				
+        }
+        .workshop-tags {
+            ul {
+                padding: 0px;
+            }
         }
         .learn-card-footer {
             .learn-card-footer-1 {
@@ -108,7 +116,7 @@
 .page-learn {
 .learn-card {
     position: relative;
-    padding: 26px;
+    padding: 16px;
     overflow: hidden;
     cursor:pointer;
     background-color: $main-bg;
@@ -125,7 +133,7 @@
     .image-container {
         overflow: hidden;
         position: relative;
-        padding: 0;
+        padding: 0px 15px;
         width: 450px;
         height: 290px;
         img {
@@ -139,10 +147,13 @@
         position: relative;
         .learn-type-bagde {
             position: absolute;
-            top: 18px;
-            right: -69px;
+            top: 38px;
+            right: -50px;
             transform: rotate(-90deg);
-						 color: #4F4F4F;
+            color: #4F4F4F;
+            p {
+                margin: 0px;
+            }
 			        }
 			  .card-title {
             @include card-header-font-lg();

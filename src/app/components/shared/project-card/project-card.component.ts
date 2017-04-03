@@ -28,6 +28,7 @@ export class ProjectCardComponent implements OnInit {
   getProjectCard(){
       this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
       this.project = res[0];
+      console.log(this.project)
     }, err => {
     });
     
