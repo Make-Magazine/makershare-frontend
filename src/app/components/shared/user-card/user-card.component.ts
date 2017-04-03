@@ -149,10 +149,17 @@ export class UserCardComponent implements OnInit {
     }
   }
   open(content) {
+       this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
     });
   }
 

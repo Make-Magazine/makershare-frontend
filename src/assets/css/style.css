@@ -893,7 +893,9 @@ footer {
     .user-card-small .icons-side-user .user-icon img {
       width: 26px; }
 .user-card-small .card-type {
-  top: 30px; }
+  top: 35px;
+  right: -18px;
+  font-size: 16px !important; }
 .user-card-small .count-list {
   margin-top: 10px; }
 .user-card-small .card-stats {
@@ -923,11 +925,12 @@ footer {
   padding-bottom: 0;
   position: relative;
   left: -10px;
-  top: -30px; }
+  top: -30px;
+  margin-bottom: -20px; }
   .user-card-small .profile-pic-container .maker-photo {
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 136px;
+    height: 160px;
     margin-bottom: 4px; }
   .user-card-small .profile-pic-container a {
     width: 100%; }
@@ -1645,7 +1648,7 @@ footer {
   color: #fff;
   bottom: 0;
   right: 0px;
-  margin: 0 auto;
+  margin: auto;
   z-index: 11;
   height: 100px; }
   .teaser p {
@@ -3940,7 +3943,6 @@ img {
 .page-workshop-individual .learn-card {
   position: relative;
   padding: 16px;
-  overflow: hidden;
   cursor: pointer;
   background-color: #DCDCDC;
   box-shadow: 0px 2px 22px #888888; }
@@ -3951,14 +3953,11 @@ img {
     .page-workshop-individual .learn-card .learn-item .card-partership {
       color: #ED1C24; }
   .page-workshop-individual .learn-card .image-container {
-    overflow: hidden;
     position: relative;
-    padding: 0px;
-    width: 450px;
-    height: 290px; }
+    padding: 0px; }
     .page-workshop-individual .learn-card .image-container img {
       width: 100%;
-      height: 100%; }
+      height: auto; }
   .page-workshop-individual .learn-card .container-content {
     position: relative; }
   .page-workshop-individual .learn-card .card-container {
@@ -4007,7 +4006,6 @@ img {
       display: -webkit-box;
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
-      overflow: hidden;
       min-height: 116px;
       color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .learn-card-footer-2 {
@@ -4017,6 +4015,9 @@ img {
         color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BEBEBE; }
+  .page-workshop-individual .learn-card .workshop-creator {
+    overflow: hidden;
+    margin-top: 10px; }
 .page-workshop-individual .learn-card-footer .learn-card-footer-1 {
   bottom: 5px;
   align-self: end;
