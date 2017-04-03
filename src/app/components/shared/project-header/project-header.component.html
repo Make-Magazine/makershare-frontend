@@ -1,28 +1,34 @@
 <div class="col-md-12 project-cover">
   <div class="projectsingle-card row">
-
-
     <div class="col-md-8 left-side">
       <div class="image-container">
         <img src="{{project.field_cover_photo.url}}" alt="" class="img-responsive">
       </div>
-      <div class="project-card-footer-3">
-        <ul class="project-card-badges">
+      <div class="project-card-footer-3 d-flex justify-content-end">
+        <ul class="project-card-badges mr-auto">
           <li class="project-badge"><img src="./assets/images/badges/awards@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/challenge-winner@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/community-manager@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/productivity@2x.png.png" alt="" class="img-responsive"></li>
         </ul>
+        <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
+          <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
+          <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
+          <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
+          <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
+          <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
+          <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
+        </ul>
       </div>
     </div>
-
-
     <!-- End image-container -->
     <div class="col-md-4 right-side">
       <div class="card-container">
         <div class="card">
-          <div class="projects-circle">< Next project - Project name ></div>
-          <h3 class="card-title" innerHTML="{{project.title?.value}}"></h3>
+          <div class="projects-circle">
+            < Next project - Project name>
+          </div>
+          <h3 class="card-title" innerHTML="{{project.title.value}}"></h3>
           <div class="card-description">
             <p innerHTML="{{project.field_teaser?.value}}"></p>
           </div>
@@ -33,13 +39,10 @@
             <span class="project-tag pr-2" *ngFor="let tag of project.field_tags">{{tag.tag_name}},</span>
           </div>
           <div class="project-card-footer d-flex">
-           
-
-                <ul class="list-unstyled project-aside">
-                  <li id="project-story-tab"><a class="btn btn-tabs active">Read Story</a></li>
-                  <li id="how-to-tab"><a class="btn btn-tabs">Build project</a></li>
-                </ul>
-
+            <ul class="list-unstyled project-aside">
+              <li id="project-story-tab"><a class="btn btn-tabs active">Read Story</a></li>
+              <li id="how-to-tab"><a class="btn btn-tabs">Build project</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -48,18 +51,6 @@
     <!-- End col-md-6 -->
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--
@@ -72,7 +63,6 @@
     <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
     <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
     <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
-  
     <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
     <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
   </ul>
