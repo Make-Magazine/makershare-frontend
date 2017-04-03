@@ -1,29 +1,20 @@
 <div class="profile-page profile-empty-edit">
 	<div *ngIf="!Loading">
 		<section class="container-fluid cover-region">
-		</section>		
+		</section>
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
 					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">
+						<a class="profile-message mr-auto" data-toggle="modal" data-target="#message-modal"><img src="./assets/images/icons/mail.svg" alt="">Message This Maker</a>
 						<p class="square-view"><img src="./assets/images/icons/hamburger.png" alt="">Grid view</p>
 						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Case view</p>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
-						<!--<li>
-							<a [routerLink]="['/profile/editprofile']"><i class="fa fa-lg fa-pencil"></i></a>
-						</li>-->
-						<!--<li class="profile-message">
-							<a class="btn btn-main btn-sharp" data-toggle="modal" data-target="#message-modal">Message</a>
-						</li>-->
-						<!--<li *ngIf="profile.total_forks != 0"><span class="number">{{profile.total_forks}}</span>
-							<p>project forks</p>
-						</li>-->
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
 						</li>
-
 						<li *ngIf="profile.total_likes != 0">
 							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 						</li>
@@ -48,7 +39,7 @@
 									<!-- Start Profiel Pic -->
 									<a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><i class="fa fa-lg fa-pencil"></i></a>
 									<img src="{{profile.user_photo}}" alt="" class="">
-									<div class="profile-type"><span>Maker</span></div>
+									<div class="card-type"><span>Maker</span></div>
 								</div>
 							</div>
 							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
@@ -58,7 +49,7 @@
 							<div class="profile-info">
 								<div (click)="OpenModal(editinfomodal,'edit-info-modal')"><i class="fa fa-lg fa-pencil"></i>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
-									<div class="profile-nickname"><span>{{profile.nickname}}</span></div>
+									<div class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
 									<ul *ngIf="profile.address_publish" class="list-unstyled location">
 										<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
 									</ul>
@@ -115,25 +106,26 @@
 									<a (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-pencil"></i></a>
 									<br/>
 									<div class="list-unstyled social-links">
-							<strong>		Social  </strong>
-											<a *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
-											</a>
-											<br>
-											<a *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}" class="fa fa-lg fa-linkedin">
-											</a>
-											<br>
-											<a *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}" class="fa fa-lg fa-twitter">
-											</a>
-											<br>
-											<a *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}" class="fa fa-lg fa-instagram">
-											</a>
+										<strong>		Social  </strong>
+										<a *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
+										</a>
+										<br>
+										<a *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}" class="fa fa-lg fa-linkedin">
+										</a>
+										<br>
+										<a *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}" class="fa fa-lg fa-twitter">
+										</a>
+										<br>
+										<a *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}"
+										 class="fa fa-lg fa-instagram">
+										</a>
 									</div>
 									<br/>
-								<strong>	Links </strong>
+									<strong>	Links </strong>
 									<a *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
 										My Website
 										</a>
-										<a *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
+									<a *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
 											My Photography
 											</a>
 									<br/>
@@ -162,7 +154,7 @@
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
-						<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>
+						<!--<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>-->
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
@@ -414,37 +406,41 @@
 					<li class="form-group">
 						<label for="" class="control-label">Website or Blog</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_website_or_blog" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog" >
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label">Additional site</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_additional_site" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site" >
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_facebook" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook" #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook"
+						 #pr (ngModelChange)="prefer(pr.vlaue)">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_instagram" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram" #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram"
+						 #pr (ngModelChange)="prefer(pr.vlaue)">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_linkedin" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin"  #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin"
+						 #pr (ngModelChange)="prefer(pr.vlaue)">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_twitter" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter"  #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter"
+						 #pr (ngModelChange)="prefer(pr.vlaue)">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
 						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_pinterest" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest" >
+						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>

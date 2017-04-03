@@ -38,7 +38,7 @@ export class AuthGuardService implements CanActivate, CanLoad{
   }
 
   canLoad(route): boolean {
-    var obs = Observable.create(observer => {
+    var obs2 = Observable.create(observer => {
       this.userService.isLogedIn().subscribe(data => {
         if(data == false){
           observer.next(false);  
@@ -53,7 +53,7 @@ export class AuthGuardService implements CanActivate, CanLoad{
       });
 
     });
-    return obs;
+    return obs2;
   }
   
 

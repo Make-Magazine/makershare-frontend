@@ -138,19 +138,19 @@ a:not([href]):not([tabindex]).btn-fit {
 .btn-main,
 a:not([href]):not([tabindex]).btn-main {
   color: #fff;
-  background-color: #EC1F30;
-  border-color: #d41c2b; }
+  background-color: #ED1C24;
+  border-color: #d51920; }
   .btn-main:focus,
   a:not([href]):not([tabindex]).btn-main:focus {
     color: #fff;
-    background-color: #d41c2b;
-    border-color: #bd1926; }
+    background-color: #d51920;
+    border-color: #be161d; }
   .btn-main:active, .btn-main:hover,
   a:not([href]):not([tabindex]).btn-main:active,
   a:not([href]):not([tabindex]).btn-main:hover {
     color: #fff;
-    background-color: #d41c2b;
-    border-color: #bd1926; }
+    background-color: #d51920;
+    border-color: #be161d; }
 
 .btn-main-2,
 a:not([href]):not([tabindex]).btn-main-2 {
@@ -195,14 +195,14 @@ a:not([href]):not([tabindex]).btn-transparent {
 .btn-white,
 a:not([href]):not([tabindex]).btn-white {
   background-color: #fff;
-  border: 1px solid #169eff;
+  border: 1px solid #00AEEF;
   font-size: 20px; }
   .btn-white:hover, .btn-white:focus, .btn-white:active,
   a:not([href]):not([tabindex]).btn-white:hover,
   a:not([href]):not([tabindex]).btn-white:focus,
   a:not([href]):not([tabindex]).btn-white:active {
-    color: #169eff;
-    border: 1px solid #1dcdff; }
+    color: #00AEEF;
+    border: 1px solid #00e2ff; }
 
 .btn-sharp,
 a:not([href]):not([tabindex]).btn-sharp {
@@ -261,7 +261,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
   display: inline-block; }
 
 .button-container-main-1 {
-  border: 2px solid #EC1F30; }
+  border: 2px solid #ED1C24; }
 
 .button-container-main-2 {
   border: 2px solid #4F4F4F;
@@ -334,7 +334,7 @@ a:not([href]):not([tabindex]) {
       position: absolute;
       bottom: -10px;
       right: 10px;
-      color: #169eff; }
+      color: #00AEEF; }
       .project .card-title .winner li {
         display: inline-block; }
         .project .card-title .winner li i {
@@ -449,7 +449,7 @@ a:not([href]):not([tabindex]) {
     margin-top: 15px;
     margin-left: -15px; }
   .profile-container i.fa-star-o {
-    color: #169eff;
+    color: #00AEEF;
     position: absolute;
     bottom: 14px;
     right: 20px;
@@ -530,7 +530,7 @@ body {
     .main-header .navbar-brand img {
       width: 50px; }
   .main-header .color-text {
-    color: #EC1F30 !important; }
+    color: #ED1C24 !important; }
   .main-header .login-block {
     margin-bottom: 0;
     margin-top: 3px; }
@@ -607,7 +607,7 @@ body {
   right: -17px;
   padding: 0;
   transform: rotate(-90deg);
-  text-transform: uppercase;
+  text-transform: uppercase !important;
   color: #BEBEBE;
   margin: 0; }
 
@@ -985,9 +985,7 @@ footer {
       margin: 0; }
 
 .profile-name {
-  color: #0AA9EA;
-  padding: 15px 0 5px;
-  margin-top: 20px; }
+  color: #0AA9EA; }
   .profile-name h4 {
     font-weight: normal;
     display: inline;
@@ -1012,11 +1010,11 @@ footer {
         margin-left: 20px;
         width: 35px; }
       .profile-name .bookmark li a .message {
-        color: #EC1F30; }
+        color: #ED1C24; }
 
 .profile-sidebar {
-  overflow: hidden;
-  color: #181818; }
+  color: #181818;
+  margin-top: -10px; }
   .profile-sidebar hr {
     border-color: #222;
     margin: 10px 0 15px; }
@@ -1068,10 +1066,14 @@ footer {
       width: 25px;
       color: #222; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
-      position: relative; }
+      position: relative;
+      margin-bottom: -100px; }
       .profile-sidebar .profile-container .profile-group .profile-pic img {
         height: auto;
-        width: 100%; }
+        width: 100%;
+        position: relative;
+        top: -110px;
+        left: -40px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -1144,7 +1146,7 @@ footer {
           vertical-align: top; }
         .profile-sidebar .profile-container .profile-info .social-links i.fa-star {
           font-size: 12px;
-          color: #169eff;
+          color: #00AEEF;
           display: none;
           margin-top: 5px; }
       .profile-sidebar .profile-container .profile-info .how p {
@@ -1219,9 +1221,10 @@ footer {
     .profile-header .display-style img {
       width: 30px; }
   .profile-header .bookmark li {
-    border-left: 3px solid #222;
     padding: 0 10px;
     height: 24px; }
+    .profile-header .bookmark li:not(:first-of-type) {
+      border-left: 3px solid #222; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -1435,7 +1438,7 @@ footer {
     color: #222;
     border-radius: 0; }
     .edit-cover-modal .upload a.active, .edit-cover-modal .your-photos a.active {
-      border-bottom: 1px solid #169eff; }
+      border-bottom: 1px solid #00AEEF; }
 .edit-cover-modal .your-photo-tab {
   display: none; }
   .edit-cover-modal .your-photo-tab .progress {
@@ -1474,9 +1477,7 @@ footer {
 
 .project.card {
   width: 95%;
-  border-radius: 0;
-  margin: 0 auto;
-  margin-bottom: 24px; }
+  border-radius: 0; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -1580,11 +1581,12 @@ footer {
       margin: 0 auto;
       display: block; }
   .profile-page .profile-message {
-    padding: 0px; }
-    .profile-page .profile-message .button-container-main-2 {
-      margin-left: 5px;
-      margin-bottom: 0px;
-      margin-top: 0px; }
+    padding: 0px;
+    color: #00AEEF !important;
+    text-transform: uppercase; }
+    .profile-page .profile-message img {
+      width: 40px;
+      margin-right: 5px; }
   .profile-page .cover-region .profile-name .row {
     margin: 0 auto;
     width: 100%; }
@@ -1812,7 +1814,7 @@ footer {
     color: #222;
     border-radius: 0; }
     #edit-cover-modal .upload a.active, #edit-cover-modal .your-photos a.active {
-      border-bottom: 1px solid #169eff; }
+      border-bottom: 1px solid #00AEEF; }
 #edit-cover-modal .your-photo-tab {
   display: none; }
   #edit-cover-modal .your-photo-tab .progress {
@@ -1933,7 +1935,7 @@ footer {
     .challenge-card .single-challenge img {
       width: 250px; }
     .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
+      color: #ED1C24; }
   .challenge-card .image-container {
     overflow: hidden;
     position: relative;
@@ -1977,7 +1979,7 @@ footer {
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
       color: white; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-      color: #EC1F30; }
+      color: #ED1C24; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
       font-size: 14px; }
 
@@ -2017,7 +2019,7 @@ footer {
     .page-challenge .challenge-card .single-challenge img {
       width: 250px; }
     .page-challenge .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
+      color: #ED1C24; }
   .page-challenge .challenge-card .image-container {
     overflow: hidden;
     position: relative;
@@ -2312,7 +2314,7 @@ footer {
     .page-project .project-awards i {
       width: 30px; }
     .page-project .project-awards a {
-      color: #169eff;
+      color: #00AEEF;
       font-weight: bold;
       text-decoration: none; }
   .page-project .aha {
@@ -2458,6 +2460,7 @@ header.showcase-project .next {
       .feedback-group .new-comment .comment-image img {
         width: 48px;
         height: 48px; }
+<<<<<<< HEAD
     .feedback-group .new-comment .comment-body {
       position: relative; }
       .feedback-group .new-comment .comment-body textarea {
@@ -2489,6 +2492,32 @@ header.showcase-project .next {
       .feedback-group .new-comment .comment-body button {
         display: inline-table;
         color: #BEBEBE;
+=======
+    .feedback-group .new-comment .comment-body textarea {
+      border: 1px solid #ccc;
+      color: #444;
+      height: 54px;
+      margin-top: 2px;
+      border-radius: 4px; }
+    .feedback-group .new-comment .comment-body button {
+      display: inline-table;
+      margin-top: 2px;
+      padding-left: 8px;
+      color: #BEBEBE;
+      border: none;
+      background: none;
+      margin: 0;
+      padding-bottom: 8px; }
+      .feedback-group .new-comment .comment-body button span .fa-circle {
+        font-size: 2.5em; }
+      .feedback-group .new-comment .comment-body button span .fa-paper-plane {
+        font-size: 22px;
+        line-height: 50px; }
+      .feedback-group .new-comment .comment-body button:hover {
+        color: #ED1C24;
+        border: none; }
+      .feedback-group .new-comment .comment-body button:focus {
+>>>>>>> 439269634e88d75b1821436280d0852270bb41ea
         border: none;
         margin: 0;
         position: absolute;
@@ -2588,7 +2617,7 @@ header.showcase-project .next {
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
             border: 1px solid rgba(130, 130, 130, 0.2); }
             .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a.active {
-              background-color: #EC1F30;
+              background-color: #ED1C24;
               border: 1px solid rgba(130, 130, 130, 0.2);
               color: white; }
 
@@ -2606,7 +2635,7 @@ header.showcase-project .next {
     .learn-card .single-learn img {
       width: 250px; }
     .learn-card .single-learn .card-partership {
-      color: #EC1F30; }
+      color: #ED1C24; }
   .learn-card .image-container {
     overflow: hidden;
     position: relative;
@@ -2648,7 +2677,7 @@ header.showcase-project .next {
   .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
     color: white; }
   .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
-    color: #EC1F30; }
+    color: #ED1C24; }
   .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
     font-size: 14px; }
 
@@ -2681,7 +2710,7 @@ header.showcase-project .next {
 
 .page-learn .learn-card {
   position: relative;
-  padding: 16px;
+  padding: 26px;
   overflow: hidden;
   cursor: pointer;
   background-color: #F2F2F2; }
@@ -2690,7 +2719,7 @@ header.showcase-project .next {
     .page-learn .learn-card .learn-item img {
       width: 250px; }
     .page-learn .learn-card .learn-item .card-partership {
-      color: #EC1F30; }
+      color: #ED1C24; }
   .page-learn .learn-card .image-container {
     overflow: hidden;
     position: relative;
@@ -2791,9 +2820,7 @@ header.showcase-project .next {
       margin: 0; }
 
 .profile-name {
-  color: #0AA9EA;
-  padding: 15px 0 5px;
-  margin-top: 20px; }
+  color: #0AA9EA; }
   .profile-name h4 {
     font-weight: normal;
     display: inline;
@@ -2818,11 +2845,11 @@ header.showcase-project .next {
         margin-left: 20px;
         width: 35px; }
       .profile-name .bookmark li a .message {
-        color: #EC1F30; }
+        color: #ED1C24; }
 
 .profile-sidebar {
-  overflow: hidden;
-  color: #181818; }
+  color: #181818;
+  margin-top: -10px; }
   .profile-sidebar hr {
     border-color: #222;
     margin: 10px 0 15px; }
@@ -2874,10 +2901,14 @@ header.showcase-project .next {
       width: 25px;
       color: #222; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
-      position: relative; }
+      position: relative;
+      margin-bottom: -100px; }
       .profile-sidebar .profile-container .profile-group .profile-pic img {
         height: auto;
-        width: 100%; }
+        width: 100%;
+        position: relative;
+        top: -110px;
+        left: -40px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -2950,7 +2981,7 @@ header.showcase-project .next {
           vertical-align: top; }
         .profile-sidebar .profile-container .profile-info .social-links i.fa-star {
           font-size: 12px;
-          color: #169eff;
+          color: #00AEEF;
           display: none;
           margin-top: 5px; }
       .profile-sidebar .profile-container .profile-info .how p {
@@ -3025,9 +3056,10 @@ header.showcase-project .next {
     .profile-header .display-style img {
       width: 30px; }
   .profile-header .bookmark li {
-    border-left: 3px solid #222;
     padding: 0 10px;
     height: 24px; }
+    .profile-header .bookmark li:not(:first-of-type) {
+      border-left: 3px solid #222; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -3241,7 +3273,7 @@ header.showcase-project .next {
     color: #222;
     border-radius: 0; }
     .edit-cover-modal .upload a.active, .edit-cover-modal .your-photos a.active {
-      border-bottom: 1px solid #169eff; }
+      border-bottom: 1px solid #00AEEF; }
 .edit-cover-modal .your-photo-tab {
   display: none; }
   .edit-cover-modal .your-photo-tab .progress {
@@ -3280,9 +3312,7 @@ header.showcase-project .next {
 
 .project.card {
   width: 95%;
-  border-radius: 0;
-  margin: 0 auto;
-  margin-bottom: 24px; }
+  border-radius: 0; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -3386,11 +3416,12 @@ header.showcase-project .next {
       margin: 0 auto;
       display: block; }
   .profile-page .profile-message {
-    padding: 0px; }
-    .profile-page .profile-message .button-container-main-2 {
-      margin-left: 5px;
-      margin-bottom: 0px;
-      margin-top: 0px; }
+    padding: 0px;
+    color: #00AEEF !important;
+    text-transform: uppercase; }
+    .profile-page .profile-message img {
+      width: 40px;
+      margin-right: 5px; }
   .profile-page .cover-region .profile-name .row {
     margin: 0 auto;
     width: 100%; }
@@ -3618,7 +3649,7 @@ header.showcase-project .next {
     color: #222;
     border-radius: 0; }
     #edit-cover-modal .upload a.active, #edit-cover-modal .your-photos a.active {
-      border-bottom: 1px solid #169eff; }
+      border-bottom: 1px solid #00AEEF; }
 #edit-cover-modal .your-photo-tab {
   display: none; }
   #edit-cover-modal .your-photo-tab .progress {
@@ -3717,7 +3748,7 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .single-showcase img {
         width: 250px; }
       .showcase-card-backlayer .showcase-card .single-showcase .card-partership {
-        color: #EC1F30; }
+        color: #ED1C24; }
     .showcase-card-backlayer .showcase-card .left-side {
       padding: 0px;
       overflow: hidden; }
@@ -4230,7 +4261,7 @@ img {
     .page-create-project-why .team .admin {
       text-align: center; }
       .page-create-project-why .team .admin i {
-        color: #169eff;
+        color: #00AEEF;
         font-size: 20px; }
     .page-create-project-why .team a.new-collab {
       font-size: 14px;
@@ -4392,7 +4423,7 @@ img {
     width: 100%;
     text-transform: uppercase;
     font-weight: bold;
-    background-color: #169eff;
+    background-color: #00AEEF;
     color: #fff; }
     .page-challenge-summary .region-content .content-wrapper .vote a, .page-challenge-summary-closed .region-content .content-wrapper .vote a, .page-enter-challenge .region-content .content-wrapper .vote a {
       display: block;
@@ -4529,7 +4560,7 @@ img {
     .page-challenge-summary .challenge-card .single-challenge img, .page-challenge-summary-closed .challenge-card .single-challenge img, .page-enter-challenge .challenge-card .single-challenge img {
       width: 250px; }
     .page-challenge-summary .challenge-card .single-challenge .card-partership, .page-challenge-summary-closed .challenge-card .single-challenge .card-partership, .page-enter-challenge .challenge-card .single-challenge .card-partership {
-      color: #EC1F30; }
+      color: #ED1C24; }
   .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
     height: auto; }
   .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
@@ -4638,204 +4669,225 @@ img {
 .page-challenge-summary .entries {
   clear: both; }
 
-.page-workshop-individual {
-  background-color: #F2F2F2; }
-  .page-workshop-individual .related-books {
-    background-color: white;
-    padding: 0px; }
-  .page-workshop-individual .top-content-wrapper {
-    border-bottom: 1px solid #222;
-    margin-bottom: 10px;
-    height: 200px;
-    overflow: hidden;
-    position: relative; }
-    .page-workshop-individual .top-content-wrapper .workshop-coverphoto {
-      position: absolute;
-      width: 100%; }
-    .page-workshop-individual .top-content-wrapper > .container {
-      padding-top: 20px; }
-    .page-workshop-individual .top-content-wrapper h2 {
-      font-size: 35px;
-      font-weight: bold;
-      color: #fff;
-      text-align: center; }
-    .page-workshop-individual .top-content-wrapper ul li {
-      display: inline-block; }
-    .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn {
-      padding: 5px;
-      font-size: 9px;
-      float: left;
-      margin-right: 5px;
-      background-color: #3d3d3d;
-      color: #111111;
-      font-weight: bold;
-      border-radius: 3px; }
-      .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
-        background-color: #363636; }
-    .page-workshop-individual .top-content-wrapper .workshop-actions li {
-      display: block;
-      float: left; }
-      .page-workshop-individual .top-content-wrapper .workshop-actions li .btn {
-        border-right-width: 0; }
-      .page-workshop-individual .top-content-wrapper .workshop-actions li:last-of-type .btn {
-        border-right-width: 1px; }
-    .page-workshop-individual .top-content-wrapper .workshop-aside {
-      overflow: hidden;
-      margin-bottom: -1px; }
-      .page-workshop-individual .top-content-wrapper .workshop-aside li {
-        float: left; }
-        .page-workshop-individual .top-content-wrapper .workshop-aside li:not(:last-child) a {
-          border-right-color: transparent; }
-        .page-workshop-individual .top-content-wrapper .workshop-aside li .btn {
-          padding: 8px 20px; }
-        .page-workshop-individual .top-content-wrapper .workshop-aside li.active a.btn.btn-light-grey {
-          background-color: #fff !important;
-          border-bottom-color: #fff; }
-  .page-workshop-individual .workshop-content h4 {
-    font-weight: normal;
-    color: #222; }
-  .page-workshop-individual .workshop-content .learning-card {
-    background-color: #fff;
-    margin-top: 10px;
-    padding: 5px 15px;
-    box-shadow: 2px 6px 22px #888888; }
-  .page-workshop-individual .workshop-content .card-img-top {
-    box-shadow: 0px 7px 12px #888888;
-    width: 187px;
-    height: 252px; }
-  .page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
-    background-color: white;
-    padding: 10px;
-    padding: 5px 10px; }
-    .page-workshop-individual .workshop-content .lesson .recommended, .page-workshop-individual .workshop-content .fun-fact .recommended, .page-workshop-individual .workshop-content .other-lesson .recommended {
-      margin-top: 15px;
-      border-top: 1px solid #222;
-      padding-top: 15px; }
-      .page-workshop-individual .workshop-content .lesson .recommended li, .page-workshop-individual .workshop-content .fun-fact .recommended li, .page-workshop-individual .workshop-content .other-lesson .recommended li {
-        margin: 5px 0 5px 35px; }
-        .page-workshop-individual .workshop-content .lesson .recommended li i, .page-workshop-individual .workshop-content .fun-fact .recommended li i, .page-workshop-individual .workshop-content .other-lesson .recommended li i {
-          color: #BEBEBE;
-          width: 24px;
-          font-size: 12px; }
-  .page-workshop-individual .workshop-content .image-container {
-    width: 220px;
-    height: 180px;
-    overflow: hidden; }
-    .page-workshop-individual .workshop-content .image-container img {
-      max-width: 100%;
-      height: auto; }
-  .page-workshop-individual .workshop-instructor .profile-container {
-    width: 100%;
-    position: relative;
-    top: -50px; }
-    .page-workshop-individual .workshop-instructor .profile-container .profile-card {
-      background-color: #BEBEBE; }
-    .page-workshop-individual .workshop-instructor .profile-container .left {
-      width: 100px; }
-    .page-workshop-individual .workshop-instructor .profile-container .right {
-      width: 180px; }
-    .page-workshop-individual .workshop-instructor .profile-container p {
-      font-size: 10px; }
-    .page-workshop-individual .workshop-instructor .profile-container i.fa-star-o {
-      bottom: 10px; }
-  .page-workshop-individual .content-list {
-    padding: 10px 20px;
-    box-shadow: 1px 1px 25px 1px #292929;
-    overflow: hidden;
-    color: #222;
-    background-color: white; }
-    .page-workshop-individual .content-list li {
-      margin: 15px 0; }
-      .page-workshop-individual .content-list li a {
-        color: #169eff;
-        text-decoration: none; }
-  .page-workshop-individual .suggested {
-    margin-top: 15px;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; }
-    .page-workshop-individual .suggested .image-container {
-      width: 160px;
-      height: 160px;
-      overflow: hidden; }
-      .page-workshop-individual .suggested .image-container img {
-        height: auto;
-        position: relative;
-        left: -30px;
-        top: -25px; }
-    .page-workshop-individual .suggested h4 {
-      font-weight: normal; }
-    .page-workshop-individual .suggested li {
-      padding: 8px; }
-  .page-workshop-individual .suggest-card {
-    border: 2px solid red;
-    box-sizing: border-box; }
-    .page-workshop-individual .suggest-card img {
-      position: relative;
-      top: -9px;
-      left: -16px; }
-
-.page-learn {
-  background: #F2F2F2;
-  padding-bottom: 0px; }
-
-.learn-card .card {
-  background-color: transparent;
-  border: none; }
-.learn-card .single-learn {
-  padding: 10px; }
-  .learn-card .single-learn img {
-    width: 250px; }
-  .learn-card .single-learn .card-partership {
-    color: #EC1F30; }
-.learn-card .image-container {
+.page-workshop-individual .related-books {
+  background-color: white;
+  padding: 0px; }
+.page-workshop-individual .top-content-wrapper {
+  border-bottom: 1px solid #222;
+  margin-bottom: 10px;
+  height: 200px;
   overflow: hidden;
-  position: relative;
-  padding: 0;
-  width: 350px;
-  height: 320px; }
-.learn-card .card-container .card-partership {
-  font-family: "Messina Sans Regular" !important;
-  font-size: 18pt !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 110% !important;
-  color: #828282;
-  text-transform: none;
+  position: relative; }
+  .page-workshop-individual .top-content-wrapper .workshop-coverphoto {
+    position: absolute;
+    width: 100%; }
+  .page-workshop-individual .top-content-wrapper > .container {
+    padding-top: 20px; }
+  .page-workshop-individual .top-content-wrapper h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center; }
+  .page-workshop-individual .top-content-wrapper ul li {
+    display: inline-block; }
+  .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn {
+    padding: 5px;
+    font-size: 9px;
+    float: left;
+    margin-right: 5px;
+    font-weight: bold;
+    border-radius: 3px; }
+    .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
+      background-color: #363636; }
+  .page-workshop-individual .top-content-wrapper .workshop-actions li {
+    display: block;
+    float: left; }
+    .page-workshop-individual .top-content-wrapper .workshop-actions li .btn {
+      border-right-width: 0; }
+    .page-workshop-individual .top-content-wrapper .workshop-actions li:last-of-type .btn {
+      border-right-width: 1px; }
+  .page-workshop-individual .top-content-wrapper .workshop-aside {
+    overflow: hidden;
+    margin-bottom: -1px; }
+    .page-workshop-individual .top-content-wrapper .workshop-aside li {
+      float: left; }
+      .page-workshop-individual .top-content-wrapper .workshop-aside li:not(:last-child) a {
+        border-right-color: transparent; }
+      .page-workshop-individual .top-content-wrapper .workshop-aside li .btn {
+        padding: 8px 20px; }
+      .page-workshop-individual .top-content-wrapper .workshop-aside li.active a.btn.btn-light-grey {
+        background-color: #fff !important;
+        border-bottom-color: #fff; }
+.page-workshop-individual .workshop-content h4 {
+  font-weight: normal;
+  color: #222; }
+.page-workshop-individual .workshop-content .learning-card {
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 5px 15px;
+  box-shadow: 2px 6px 22px #888888; }
+.page-workshop-individual .workshop-content .card-img-top {
+  box-shadow: 0px 7px 12px #888888;
+  width: 187px;
+  height: 252px; }
+.page-workshop-individual .workshop-content .lesson, .page-workshop-individual .workshop-content .fun-fact, .page-workshop-individual .workshop-content .other-lesson {
+  background-color: white;
+  padding: 10px;
+  padding: 5px 10px; }
+  .page-workshop-individual .workshop-content .lesson .recommended, .page-workshop-individual .workshop-content .fun-fact .recommended, .page-workshop-individual .workshop-content .other-lesson .recommended {
+    margin-top: 15px;
+    border-top: 1px solid #222;
+    padding-top: 15px; }
+    .page-workshop-individual .workshop-content .lesson .recommended li, .page-workshop-individual .workshop-content .fun-fact .recommended li, .page-workshop-individual .workshop-content .other-lesson .recommended li {
+      margin: 5px 0 5px 35px; }
+      .page-workshop-individual .workshop-content .lesson .recommended li i, .page-workshop-individual .workshop-content .fun-fact .recommended li i, .page-workshop-individual .workshop-content .other-lesson .recommended li i {
+        color: #BEBEBE;
+        width: 24px;
+        font-size: 12px; }
+.page-workshop-individual .workshop-content .lessons-count {
   font-size: 14px;
-  display: inline-block;
-  min-height: 16px;
-  margin-bottom: 10px; }
-  .learn-card .card-container .card-partership p {
-    margin-bottom: 0px; }
-.learn-card .card-container .card-description h4 {
-  font-weight: bold; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-1 {
-  bottom: 5px;
-  align-self: end; }
-  .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
+  color: #4F4F4F;
+  margin-left: -1rem !important; }
+.page-workshop-individual .workshop-content .image-container {
+  width: 220px;
+  height: 180px;
+  overflow: hidden; }
+  .page-workshop-individual .workshop-content .image-container img {
+    max-width: 100%;
+    height: auto; }
+.page-workshop-individual .workshop-instructor .profile-container {
+  width: 100%;
+  position: relative;
+  top: -50px; }
+  .page-workshop-individual .workshop-instructor .profile-container .profile-card {
     background-color: #BEBEBE; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
-  font-size: 14px; }
-  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
-    padding-left: 10px; }
-  .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
-    padding-right: 10px;
-    border-right: 1px solid white; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status, .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
-  font-weight: bold;
-  font-size: 16px;
-  padding-right: 5px; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .open-status {
-  color: white; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .closed-status {
-  color: #EC1F30; }
-.learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-status .learn-end-date {
-  font-size: 14px; }
+  .page-workshop-individual .workshop-instructor .profile-container .left {
+    width: 100px; }
+  .page-workshop-individual .workshop-instructor .profile-container .right {
+    width: 180px; }
+  .page-workshop-individual .workshop-instructor .profile-container p {
+    font-size: 10px; }
+  .page-workshop-individual .workshop-instructor .profile-container i.fa-star-o {
+    bottom: 10px; }
+.page-workshop-individual .content-list {
+  padding: 10px 20px;
+  box-shadow: 1px 1px 25px 1px #292929;
+  overflow: hidden;
+  color: #222;
+  background-color: white; }
+  .page-workshop-individual .content-list li {
+    margin: 15px 0; }
+    .page-workshop-individual .content-list li a {
+      color: #00AEEF;
+      text-decoration: none; }
+.page-workshop-individual .suggested {
+  margin-top: 15px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .page-workshop-individual .suggested .image-container {
+    width: 160px;
+    height: 160px;
+    overflow: hidden; }
+    .page-workshop-individual .suggested .image-container img {
+      height: auto;
+      position: relative;
+      left: -30px;
+      top: -25px; }
+  .page-workshop-individual .suggested h4 {
+    font-weight: normal; }
+  .page-workshop-individual .suggested li {
+    padding: 8px; }
+.page-workshop-individual .suggest-card {
+  border: 2px solid red;
+  box-sizing: border-box; }
+  .page-workshop-individual .suggest-card img {
+    position: relative;
+    top: -9px;
+    left: -16px; }
+
+.page-workshop-individual .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #D0D3D4;
+  box-shadow: 0px 2px 22px #888888; }
+  .page-workshop-individual .learn-card .learn-item {
+    padding: 10px; }
+    .page-workshop-individual .learn-card .learn-item img {
+      width: 250px; }
+    .page-workshop-individual .learn-card .learn-item .card-partership {
+      color: #ED1C24; }
+  .page-workshop-individual .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 450px;
+    height: 290px; }
+    .page-workshop-individual .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-workshop-individual .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .page-workshop-individual .learn-card .card-container .learn-type-bagde {
+      position: absolute;
+      top: 18px;
+      right: -69px;
+      transform: rotate(-90deg);
+      color: #4F4F4F; }
+    .page-workshop-individual .learn-card .card-container .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 40pt !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
+      color: #828282;
+      font-size: 38px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 67px;
+      color: #4F4F4F; }
+    .page-workshop-individual .learn-card .card-container .card-status {
+      font-family: "Messina Sans Bold" !important;
+      font-size: 18pt !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-workshop-individual .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .page-workshop-individual .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 18pt !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 116px;
+      color: #4F4F4F; }
+    .page-workshop-individual .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BEBEBE; }
+.page-workshop-individual .learn-card-footer .learn-card-footer-1 {
+  bottom: 5px;
+  align-self: end;
+  color: black; }
+.page-workshop-individual .learn-card-footer .learn-card-footer-2 {
+  font-size: 14px;
+  color: #4F4F4F; }
 
 .learn-header {
   margin-bottom: 25px;
@@ -4864,82 +4916,11 @@ img {
 .learn-container {
   padding: 25px 0; }
 
-.page-learn .learn-card {
-  position: relative;
-  padding: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: #ddd; }
-  .page-learn .learn-card .learn-item {
-    padding: 10px; }
-    .page-learn .learn-card .learn-item img {
-      width: 250px; }
-    .page-learn .learn-card .learn-item .card-partership {
-      color: #EC1F30; }
-  .page-learn .learn-card .image-container {
-    overflow: hidden;
-    position: relative;
-    padding: 0;
-    width: 450px;
-    height: 290px; }
-    .page-learn .learn-card .image-container img {
-      width: 100%;
-      height: 100%; }
-  .page-learn .learn-card .card-container {
-    color: #fff;
-    position: relative; }
-    .page-learn .learn-card .card-container .card-title {
-      font-family: "Messina Modern Regular" !important;
-      font-size: 40pt !important;
-      font-weight: 400 !important;
-      text-transform: capitalize !important;
-      line-height: 100% !important;
-      color: #828282;
-      font-size: 38px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      min-height: 67px;
-      color: #4F4F4F; }
-    .page-learn .learn-card .card-container .card-status {
-      font-family: "Messina Sans Bold" !important;
-      font-size: 18pt !important;
-      font-weight: 700 !important;
-      text-transform: none !important;
-      line-height: 110% !important;
-      color: #828282;
-      display: inline-block;
-      text-transform: none; }
-    .page-learn .learn-card .card-container .card-description h4 {
-      font-weight: bold; }
-    .page-learn .learn-card .card-container .card-description p {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 110% !important;
-      color: #828282;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      min-height: 116px;
-      color: #4F4F4F; }
-    .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
-      background-color: #BEBEBE; }
-    .page-learn .learn-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
-      padding: 3px 15px;
-      border-radius: 20px;
-      font-size: 13px;
-      margin-left: 10px; }
-
 .page-learn-summary {
   background-color: #F2F2F2; }
 
 .page-portfolio .portfolio-controls {
-  background-color: #e5ffff;
+  background-color: cyan;
   padding: 10px 0 5px;
   border: 1px solid #222;
   border-top: transparent; }
@@ -4988,7 +4969,7 @@ img {
     .page-portfolio .project .project-image .overlay a i {
       position: static;
       width: 20px;
-      color: #169eff;
+      color: #00AEEF;
       font-size: 15px;
       width: 25px; }
 .page-portfolio .project .project-image:hover .overlay {
@@ -5095,7 +5076,7 @@ img {
           .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
             width: 60px; }
           .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
-            color: #169eff;
+            color: #00AEEF;
             text-decoration: none; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
           width: 50%; }
@@ -5149,7 +5130,7 @@ img {
   margin-bottom: 15px; }
   .conversation-container .delete-actions {
     float: right;
-    color: #169eff;
+    color: #00AEEF;
     margin-top: 15px; }
   .conversation-container .conversation {
     margin-bottom: 20px;
@@ -5159,7 +5140,7 @@ img {
       .conversation-container .conversation .single-message .message-info {
         margin: 30px 0; }
         .conversation-container .conversation .single-message .message-info a {
-          color: #169eff;
+          color: #00AEEF;
           text-decoration: none; }
         .conversation-container .conversation .single-message .message-info img {
           width: 60px; }
@@ -5315,7 +5296,7 @@ img {
         line-height: 110% !important;
         color: #828282; }
       .total-result .challenge-item .content-bottom .content-side .challenge-open {
-        color: #EC1F30; }
+        color: #ED1C24; }
       .total-result .challenge-item .content-bottom .content-side .challenge-close {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
@@ -5413,7 +5394,7 @@ img {
     font-size: 30px;
     font-weight: normal; }
   .total-result .results-header .view-all-result a {
-    color: #EC1F30;
+    color: #ED1C24;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold; }

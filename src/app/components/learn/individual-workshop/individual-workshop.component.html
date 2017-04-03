@@ -1,5 +1,5 @@
-<section class="learn-page-data">
-  <div class="region region-content page-learn">
+<section class="page-workshop-individual">
+  <div class="region region-content">
     <div *ngIf="workshop" class="container learn-container">
       <ul class="list-unstyled workshop-actions pull-right">
         <app-like [nodeNid]="workshop.nid"></app-like>
@@ -8,7 +8,15 @@
       <div class="learn-card row">
         <div class="col-md-4 image-container">
           <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
-
+          <div class="media workshop-creator" *ngIf="workshopLeader">
+            <img class="d-flex align-self-start mr-3" src="{{workshopLeader.default_profile_photo}}" alt="Generic placeholder image"
+              style="height: 93px;">
+              <div class="media-body">
+                <h5 class="mt-0" *ngIf="(workshopLeader.first_name) && (workshopLeader.last_name)">{{workshopLeader.first_name}} {{workshopLeader.last_name}}</h5>
+                {{workshopLeader.nickname}}
+                <div *ngIf="(workshopLeader.city)" [innerHTML]="workshopLeader.city"> </div>
+              </div>
+          </div>
         </div>
 
         <!-- End image-container -->
@@ -27,26 +35,22 @@
               </div>
 
               <!--<div class="learn-card-footer d-flex">-->
-              <div class="learn-card-footer-1">
+              <div class="workshop-tags">
                 <ul>
-                  <a *ngFor="let tags of workshop.tags" class="btn btn-grey workshop-tags" [innerHTML]="tags" ></a>
+                  <a *ngFor="let tags of workshop.tags" class="btn btn-soft-tag" [innerHTML]="tags"></a>
                 </ul>
               </div>
-
-              <div class="learn-card-footer-2 ml-3">
-                <!--<div class="learn-card-count">
-                  <span class="entries-count">{{challenge.entries_count}}
-                       <span *ngIf="challenge.entries_count>1">Lessons</span>
-                  <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                  </span>
-                  </div>-->
+              <div class="learn-card-footer-2">
+                <div class="workshop-count btn ">
+                  <p *ngIf="countlessons==1">{{countlessons}} Lesson </p>
+                  <p *ngIf="countlessons>1">{{countlessons}} Lessons</p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
         <!-- End card-container -->
-        <div class="media" *ngIf="workshopLeader">
+        <div class="media workshop-creator" *ngIf="workshopLeader">
           <img class="d-flex align-self-start mr-3" src="{{workshopLeader.default_profile_photo}}" alt="Generic placeholder image"
             style="height: 93px;">
             <div class="media-body">
@@ -210,7 +214,7 @@
           <!-- End Profile-container -->
           <ul class="list-unstyled content-list">
             Contents:
-             <div *ngFor="let object of objects; let i=index;">
+            <div *ngFor="let object of objects; let i=index;">
               <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
             </div>
 
