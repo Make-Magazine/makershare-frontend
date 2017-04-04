@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { LoaderService } from './components/shared/loader/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent {
-  title = 'app works!'; 
-  constructor() {}
+export class AppComponent implements OnInit {
+  showLoader: boolean;
+  constructor(
+    private loaderService: LoaderService
+  ) {}
+
+  ngOnInit() {
+      this.loaderService.status.subscribe((val: boolean) => {
+          this.showLoader = val;
+      });
+  }
 
 }
    
