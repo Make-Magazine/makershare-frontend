@@ -1,6 +1,7 @@
+import { field_URL } from '../../../../models/Drupal';
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -40,8 +41,61 @@ export class ProfileComponent implements OnInit {
       "maxCharCount": '550',
       },
      };
+  
+  regexp = new RegExp('/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/');
+  
 
+  formErrors={
+    field_website_or_blog:'',
+    field_additional_site:'',
+    field_facebook:'',
+    field_instagram:'',
+    field_linkedin:'',
+    field_twitter:''
+  };
+
+  options = {
+        placeholder: "+ interest",
+        secondaryPlaceholder: "Enter a new interest",
+        separatorKeys: [4, 5],
+        maxItems: 10
+    }
+
+  validationMessages = {
+    'field_website_or_blog': {
+      'pattern': 'invalid Website URL'
+    },
+    'field_additional_site': {
+      'pattern': 'invalid Website URL'
+    },
+    'field_facebook': {
+      'pattern': 'invalid Website URL'
+    },
+    'field_instagram': {
+      'pattern': 'invalid Website URL'
+    },
+    'field_linkedin': {
+      'pattern': 'invalid Website URL'
+    },
+    'field_twitter': {
+      'pattern': 'invalid Website URL'
+    }
+  };
   formGroup:FormGroup;
+  FormGroupSocial:FormGroup;
+  buildFormSocial() {
+    this.FormGroupSocial= this.fb.group({
+      'field_website_or_blog': ['', [Validators.pattern(this.regexp)]],
+      'field_additional_site': ['', [Validators.pattern(this.regexp)]],
+      'field_facebook': ['', [Validators.pattern(this.regexp)]],
+      'field_instagram': ['', [Validators.pattern(this.regexp)]],
+      'field_linkedin': ['', [Validators.pattern(this.regexp)]],
+      'field_twitter': ['', [Validators.pattern(this.regexp)]],
+    });
+    this.FormGroupSocial.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.onValueChanged(); // (re)set validation messages now
+  }
+
   CoverImageData: any = {};
   ProfilePicData: any = {};
   FileName:string = '';
@@ -88,6 +142,8 @@ export class ProfileComponent implements OnInit {
     private fb:FormBuilder,
   ) {
 
+    
+    this.buildFormSocial();
     this.CovercropperSettings = new CropperSettings();
     this.CovercropperSettings.width = 1800;
     this.CovercropperSettings.height = 220;
@@ -112,6 +168,14 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit() {
+
+    this.profileService.getAllInterests().subscribe(allIntersets => {
+     this.allIntersets=allIntersets;
+    }, err => {
+      // console.log("error");
+      // console.log(err);
+    });
+
     this.Loading = true;
     this.uid = +localStorage.getItem('user_id');
     var tasks = [];
@@ -132,6 +196,20 @@ export class ProfileComponent implements OnInit {
 
   onSelected(intrest) {
     this.profile.maker_interests.push(intrest.name);
+  }
+
+  interestSelected(interest) {
+    if(this.ProfileInfo.maker_interests[0].name){
+        this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(0), 1);
+    }
+    
+    this.ProfileInfo.maker_interests.push(interest.tid);
+    this.SaveUser(this.ProfileInfo);
+  }
+
+  onInterestRemoved(interest, id:number) {
+      this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(id), 1);
+      this.SaveUser(this.ProfileInfo);
   }
 
   saveMarkerspaces() {
@@ -181,15 +259,28 @@ export class ProfileComponent implements OnInit {
       this.SaveUser(user);
     });
   }
-
+ 
   SaveInfo(closebtn:HTMLButtonElement) {
-    closebtn.click();
+    
     if(this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
-    this.ProfileInfo.field_social_accounts
-    this.SaveUser(this.ProfileInfo);
+    
+    this.onValueChanged();
+    let flag = true;
+    for(let feild in this.formErrors){
+        if( this.formErrors[feild] != ""){
+          flag= false;
+        }
+    }
+    debugger
+    if(flag){
+        Object.assign(this.ProfileInfo.field_social_accounts , this.FormGroupSocial.value);
+        this.SaveUser(this.ProfileInfo);
+        closebtn.click();
+  }
+  
   }
 
   SaveUser(user:UserProfile){
@@ -210,18 +301,40 @@ export class ProfileComponent implements OnInit {
       if(res.field_social_accounts){
         this.ProfileInfo.field_social_accounts = res.field_social_accounts;
       }
+      this.ProfileInfo.maker_interests = res.maker_interests;
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
       localStorage.setItem('user_photo', this.profile.user_photo);
       this.formGroup = this.fb.group({
         describe_yourself: [this.ProfileInfo.describe_yourself,Validators.maxLength(140)],
-        started_making: [this.ProfileInfo.started_making,Validators.maxLength(300)]
+        started_making: [this.ProfileInfo.started_making,Validators.maxLength(300)],
       })
       this.Loading = false;
     });
   }
-  prefer(value : string){
-    this.ProfileInfo.field_social_accounts.field_preferred = value;
+  
+  prefer(event : string){
+    this.ProfileInfo.field_social_accounts.field_preferred = event;
+    
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.FormGroupSocial) { return; }
+    const form = this.FormGroupSocial;
+    if (form != null) {
+      for (const field in this.formErrors) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && control.value!= '' && !control.value.match(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/)) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            this.formErrors[field] += messages[key] + ' ';
+          }
+        }
+      }
+    }
+
   }
 
 }

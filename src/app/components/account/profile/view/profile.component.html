@@ -104,31 +104,31 @@
 								</ul>
 								<div *ngIf="profile.field_social_accounts">
 									<a (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-pencil"></i></a>
-									<br/>
-									<div class="list-unstyled social-links">
-										<strong>		Social  </strong>
+									<hr>
+									<div class="social-links">
+										<strong> Social </strong>
+										<br>&nbsp;&nbsp;
 										<a *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
-										</a>
-										<br>
+										</a>&nbsp;&nbsp;
 										<a *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}" class="fa fa-lg fa-linkedin">
-										</a>
-										<br>
+										</a>	&nbsp;&nbsp;
 										<a *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}" class="fa fa-lg fa-twitter">
-										</a>
-										<br>
+										</a> &nbsp;&nbsp;
 										<a *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}"
 										 class="fa fa-lg fa-instagram">
 										</a>
 									</div>
-									<br/>
-									<strong>	Links </strong>
+									<hr>
+									<strong> Links </strong>
+									<br>
 									<a *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
 										My Website
-										</a>
+									</a>
+									<br>
 									<a *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
 											My Photography
-											</a>
-									<br/>
+									</a>
+									<br>
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
 									<a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a>
@@ -143,6 +143,18 @@
 										<i class="fa fa-lg fa-plus"></i> How'd you get started making?
 									</a>
 								</div>
+								<hr>
+								<strong>Interests</strong>
+								 <tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
+								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event,$tag.id)" value="tid" [inputId]="tid"
+								 [placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems" 
+								 [separatorKeys]="options.separatorKeys">
+										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
+																				[autocompleteItems]="allIntersets" value="tid" display="name" inputId="tid">
+												
+										</tag-input-dropdown>
+								</tag-input>
+								<hr>
 								<a class="report">Report this user</a>
 								<!-- End How -->
 							</div>
@@ -354,6 +366,7 @@
 	</div>
 	<div class="modal-body">
 		<div class="form-group" [formGroup]="formGroup">
+
 			<textarea rows="5" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea" placeholder="Describe your most powerful motivation, inspiration or aspiration."
 			 maxlength="140"></textarea> {{140 - formGroup.value.describe_yourself.length}} char left
 			<div *ngIf="!formGroup.valid">max length 140</div>
@@ -397,7 +410,7 @@
 		<h4 class="modal-title">Add your social accounts</h4>
 	</div>
 	<div class="modal-body">
-		<div class="form-group">
+		<div class="form-group" [formGroup]="FormGroupSocial">
 			<div class="form-group socials">
 				<ul class="list-unstyled social-links">
 					<li>
@@ -405,62 +418,80 @@
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label">Website or Blog</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_website_or_blog" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_website_or_blog">
+						<input type="text"  formControlName="field_website_or_blog" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_website_or_blog">
 					</li>
+					<div *ngIf="formErrors.field_website_or_blog" class="alert alert-danger error-msg">
+						{{ formErrors.field_website_or_blog }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label">Additional site</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_additional_site" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_additional_site">
+						<input type="text"  formControlName="field_additional_site" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_additional_site">
 					</li>
+					<div *ngIf="formErrors.field_additional_site" class="alert alert-danger error-msg">
+						{{ formErrors.field_additional_site }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_facebook" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_facebook"
-						 #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="text"  formControlName="field_facebook" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_facebook"
+						 #pr (ngModelChange)="prefer($event)">
 					</li>
+					<div *ngIf="formErrors.field_facebook" class="alert alert-danger error-msg">
+						{{ formErrors.field_facebook }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_instagram" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_instagram"
-						 #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="text"  formControlName="field_instagram" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_instagram"
+						 #pr (ngModelChange)="prefer($event)">
 					</li>
+					<div *ngIf="formErrors.field_instagram" class="alert alert-danger error-msg">
+						{{ formErrors.field_instagram }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_linkedin" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_linkedin"
-						 #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="text"  formControlName="field_linkedin" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_linkedin"
+						 #pr (ngModelChange)="prefer($event)">
 					</li>
+					<div *ngIf="formErrors.field_linkedin" class="alert alert-danger error-msg">
+						{{ formErrors.field_linkedin }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_twitter" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_twitter"
-						 #pr (ngModelChange)="prefer(pr.vlaue)">
+						<input type="text" formControlName="field_twitter" name="web-url">
+						<input type="radio"  name="field_preferred" value="field_twitter"
+						 #pr (ngModelChange)="prefer($event)">
 					</li>
+					<div *ngIf="formErrors.field_twitter" class="alert alert-danger error-msg">
+						{{ formErrors.field_twitter }}
+					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_pinterest" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_pinterest">
+						<input type="text"  name="web-url">
+						<input type="radio"  name="field_preferred" value="field_pinterest">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_youtube" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_youtube">
+						<input type="text"  name="web-url">
+						<input type="radio"  name="field_preferred" value="field_youtube">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_hackster_io" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_hackster_io">
+						<input type="text"  name="web-url">
+						<input type="radio"  name="field_preferred" value="field_hackster_io">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_instructables" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_instructables">
+						<input type="text"  name="web-url">
+						<input type="radio"  name="field_preferred" value="field_instructables">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
-						<input type="text" [(ngModel)]="ProfileInfo.field_social_accounts.field_hackday" name="web-url">
-						<input type="radio" [(ngModel)]="ProfileInfo.field_social_accounts.field_preferred" name="field_preferred" value="field_hackday">
+						<input type="text"  name="web-url">
+						<input type="radio" name="field_preferred" value="field_hackday">
 					</li>
 				</ul>
 			</div>
