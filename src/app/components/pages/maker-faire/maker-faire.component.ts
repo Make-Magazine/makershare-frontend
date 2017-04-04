@@ -13,7 +13,9 @@ import { LoaderService } from '../../shared/loader/loader.service';
       </section>  
   `,
 })
-export class MakezineComponent implements OnInit {
+
+export class MakerFaireComponent implements OnInit {
+
   title = '';
   body = ''
   constructor(
@@ -32,5 +34,6 @@ export class MakezineComponent implements OnInit {
       this.loaderService.display(false);
     });
   }
+
 
 }

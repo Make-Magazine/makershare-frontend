@@ -52,7 +52,6 @@
     .showcase-card {
         position: relative;
         padding: 16px;
-        overflow: hidden;
         cursor:pointer;
         background-color: white;
         -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
@@ -73,13 +72,10 @@
         }
         .left-side {
             padding: 0px;
-            overflow: hidden;
         }
         .image-container {
-            overflow: hidden;
             position: relative;
             padding: 0;
-            width: 450px;
             height: auto;
             img {
                 width: 100%;

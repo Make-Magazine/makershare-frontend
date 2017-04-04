@@ -37,6 +37,12 @@ export class UserService {
     });
   }
 
+  getAnonymousToken(): Observable<any>{
+    return this.mainService.get('/services/session/token').map(response => response.text()).map(token => {
+      this.mainService.saveCookies(token, null, null);
+    });    
+  }
+
   resetPassword(nameOrEmail): Observable<any>{
     var body = {"name": nameOrEmail};
     return this.mainService.post(globals.endpoint + '/user/request_new_password', body).map(response => response.json());
@@ -89,6 +95,13 @@ export class UserService {
   }
   auth0_logout(): Observable<any>{
     return this.mainService.post(globals.endpoint + '/auth0_service/logout', null).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+  geIdFromUrl(url: string): Observable<any>{
+    let body = {
+      url: url,
+    }
+    return this.mainService.post(globals.endpoint + '/maker_profile_api/get_id', body).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
 }

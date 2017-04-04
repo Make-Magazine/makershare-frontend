@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { Router } from '@angular/router';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-learn',
@@ -20,12 +21,14 @@ export class LearnComponent implements OnInit {
   constructor(
     private router: Router,
     private viewService: ViewService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
     this.getWorkshop();
   }
   getWorkshop() {
+    this.loaderService.display(true);
     var args = [
       ['page', this.pages],
     ];
@@ -33,12 +36,9 @@ export class LearnComponent implements OnInit {
     this.viewService.getView('learn', args).subscribe(res => {
       this.learns = this.learns.concat(res);
       this.loadMoreVisibilty();
-
-
-      // console.log(this.learns);
-
+      this.loaderService.display(false);
     }, err => {
-
+      this.loaderService.display(false);
     });
   }
   /* function to get count projects */
