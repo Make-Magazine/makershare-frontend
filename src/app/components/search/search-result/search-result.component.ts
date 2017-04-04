@@ -4,6 +4,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { SolrService } from '../../../d7services/solr/solr.service';
 import { SearchInputComponent } from './../search-input/search-input.component';
 import { ProjectCardComponent,UserCardComponent, ChallengeCardComponent, ShowcaseCardComponent, LearnCardComponent } from '../../shared/shared.module';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-search-result',
@@ -40,6 +41,7 @@ export class SearchResultComponent implements OnInit {
     private solrService: SolrService,
     private router: Router,
     private route: ActivatedRoute,
+    private loaderService: LoaderService,
   ) { }
 
 
@@ -84,7 +86,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   searchQuery(){
-    
+    this.loaderService.display(true);
     if(this.query.length == 0) {
       return;
     }
@@ -132,8 +134,10 @@ export class SearchResultComponent implements OnInit {
       this.users = [];
       this.users = result.response.docs;
       this.usersCount = result.response.numFound;
+      this.loaderService.display(false);
     }, err => {
       console.log(err);
+      this.loaderService.display(false);
     });      
   }
 

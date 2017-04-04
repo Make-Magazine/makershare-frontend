@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
+import { UserService } from './d7services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,19 @@ import { LoaderService } from './components/shared/loader/loader.service';
 export class AppComponent implements OnInit {
   showLoader: boolean;
   constructor(
-    private loaderService: LoaderService
-  ) {}
+    private loaderService: LoaderService,
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
-      this.loaderService.status.subscribe((val: boolean) => {
-          this.showLoader = val;
-      });
+
+    this.userService.getAnonymousToken().subscribe(data => {});
+    this.loaderService.status.subscribe((val: boolean) => {
+      this.showLoader = val;
+    });
+
+
+
   }
 
 }
-   

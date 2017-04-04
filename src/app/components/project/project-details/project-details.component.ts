@@ -6,6 +6,7 @@ import { UserService } from '../../../d7services/user/user.service';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-project-details',
@@ -33,7 +34,8 @@ export class ProjectDetailsComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-    private flagService: FlagService
+    private flagService: FlagService,
+    private loaderService: LoaderService,
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -43,12 +45,13 @@ export class ProjectDetailsComponent implements OnInit {
         this.projectIndex = params["projectIndex"];
         this.projects = JSON.parse(params["projects"]);
       }
-
     });
   }
 
 
   ngOnInit() {
+    this.loaderService.display(true);
+
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['nid']; // (+) converts string 'id' to a number
       /* service to get challenge name if project enter in it */
@@ -99,8 +102,9 @@ export class ProjectDetailsComponent implements OnInit {
 
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
-          console.log(this.projectDetails);
-
+          this.loaderService.display(false);
+        }, err => {
+          this.loaderService.display(false);
         });
 
       this.currentuser = Number(localStorage.getItem('user_id'));
