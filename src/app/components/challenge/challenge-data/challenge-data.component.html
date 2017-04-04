@@ -18,13 +18,14 @@
                   </div>
                   <div class="challene-card-footer-3">
                     <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
-                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Enter Mission</span>
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Accept Mission</span>
                     </div>
                     <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                     <ul class="list-unstyled challenge-actions pull-right">
-                       <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
-                    <li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>
-                   </ul>
+                      <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
+                      <!--<li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>-->
+                  <app-shared-buttons *ngIf="challenge.title" [PageTitle]="challenge.title" [PageDescription]="challenge.body" [PageImage]="challenge.cover_image" ></app-shared-buttons>
+                    </ul>
                   </div>
                 </div>
                 <!-- End image-container -->
