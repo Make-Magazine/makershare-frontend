@@ -1089,9 +1089,11 @@ footer {
     font-size: 12px;
     margin-top: 20px;
     margin-bottom: 20px; }
-    .profile-sidebar .profile-container li, .profile-sidebar .profile-container p {
+    .profile-sidebar .profile-container li,
+    .profile-sidebar .profile-container p {
       font-size: 13px; }
-      .profile-sidebar .profile-container li a, .profile-sidebar .profile-container p a {
+      .profile-sidebar .profile-container li a,
+      .profile-sidebar .profile-container p a {
         color: #0AA9EA; }
     .profile-sidebar .profile-container i {
       width: 25px;
@@ -1295,7 +1297,8 @@ footer {
   font-weight: normal;
   color: #000;
   font-size: 18px; }
-.add-bio-modal .modal-header, .add-bio-modal .modal-footer,
+.add-bio-modal .modal-header,
+.add-bio-modal .modal-footer,
 .add-interests-modal .modal-header,
 .add-interests-modal .modal-footer,
 .add-makerspace-modal .modal-header,
@@ -1470,13 +1473,16 @@ footer {
   bottom: 0; }
   .edit-cover-modal ul li {
     display: inline-block; }
-.edit-cover-modal .upload, .edit-cover-modal .your-photos {
+.edit-cover-modal .upload,
+.edit-cover-modal .your-photos {
   bottom: 0; }
-  .edit-cover-modal .upload a, .edit-cover-modal .your-photos a {
+  .edit-cover-modal .upload a,
+  .edit-cover-modal .your-photos a {
     font-size: 18px;
     color: #222;
     border-radius: 0; }
-    .edit-cover-modal .upload a.active, .edit-cover-modal .your-photos a.active {
+    .edit-cover-modal .upload a.active,
+    .edit-cover-modal .your-photos a.active {
       border-bottom: 1px solid #00AEEF; }
 .edit-cover-modal .your-photo-tab {
   display: none; }
@@ -1505,7 +1511,8 @@ footer {
 .edit-cover-modal .modal-footer {
   text-align: center; }
 
-.profile-cover a.edit, .profile-sidebar a.edit {
+.profile-cover a.edit,
+.profile-sidebar a.edit {
   position: absolute;
   width: auto !important;
   padding: 3px;
@@ -1536,12 +1543,8 @@ footer {
   .project .card-block .content-side {
     padding-left: 5px;
     width: 80%; }
-.project .icons-side-project {
-  width: 60px; }
-  .project .icons-side-project .project-icon {
-    float: left; }
-    .project .icons-side-project .project-icon img {
-      width: 20px; }
+.project .icons-side-project .project-icon img {
+  width: 35px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -1563,7 +1566,7 @@ footer {
   line-height: 100% !important;
   color: #828282;
   color: #4F4F4F;
-  height: 64px;
+  height: auto;
   padding: 0px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -1571,7 +1574,8 @@ footer {
   overflow: hidden;
   line-height: 30px;
   text-align: left;
-  width: 100%; }
+  width: 100%;
+  margin: 0; }
 .project .card-text {
   overflow: hidden;
   display: -webkit-box;
@@ -1598,8 +1602,7 @@ footer {
   color: #BEBEBE; }
   .project .card-stats ul li {
     float: left;
-    font-size: 15px;
-    width: 60px; }
+    font-size: 15px; }
     .project .card-stats ul li img {
       margin-right: 6px; }
       .project .card-stats ul li img.project-likes {
@@ -1680,7 +1683,8 @@ footer {
   font-weight: normal;
   color: #000;
   font-size: 18px; }
-#add-bio-modal .modal-header, #add-bio-modal .modal-footer,
+#add-bio-modal .modal-header,
+#add-bio-modal .modal-footer,
 #add-interests-modal .modal-header,
 #add-interests-modal .modal-footer,
 #add-makerspace-modal .modal-header,
@@ -1855,13 +1859,16 @@ footer {
   bottom: 0; }
   #edit-cover-modal ul li {
     display: inline-block; }
-#edit-cover-modal .upload, #edit-cover-modal .your-photos {
+#edit-cover-modal .upload,
+#edit-cover-modal .your-photos {
   bottom: 0; }
-  #edit-cover-modal .upload a, #edit-cover-modal .your-photos a {
+  #edit-cover-modal .upload a,
+  #edit-cover-modal .your-photos a {
     font-size: 18px;
     color: #222;
     border-radius: 0; }
-    #edit-cover-modal .upload a.active, #edit-cover-modal .your-photos a.active {
+    #edit-cover-modal .upload a.active,
+    #edit-cover-modal .your-photos a.active {
       border-bottom: 1px solid #00AEEF; }
 #edit-cover-modal .your-photo-tab {
   display: none; }

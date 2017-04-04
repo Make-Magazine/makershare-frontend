@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private auth: Auth
-    ) {}
+    ) {  this.router = router;}
 
   ngOnInit() {
     // this.userService.isLogedIn().subscribe(res => {
@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
     //     this.isLoggedIn = true;
     //   }
     // });
+    // localStorage.setItem('redirectUrl', this.router.url);
     this.user_photo = localStorage.getItem('user_photo');
     console.log(this.user_photo)
   }

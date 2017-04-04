@@ -183,7 +183,7 @@ export class ExploreComponent implements OnInit {
       categories.forEach((element, index) => {
         if (element.parent_tid) {
           this.categories_childs.push(element);
-        } else {
+        }else{
           this.categories_parents.push(element);
         }
       });
