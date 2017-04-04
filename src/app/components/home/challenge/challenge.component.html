@@ -1,11 +1,10 @@
 <section class="browse-projects">
   <div class="container">
     <div class="challenges-container">
-      <div (click)="ShowChallengeDetails(challenge.nid)" class="challenge-card row">
+      <!--<div (click)="ShowChallengeDetails(challenge.nid)" class="challenge-card row">
         <div class="col-md-4 image-container">
           <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
         </div>
-        <!-- End image-container -->
         <div class="col-md-8">
           <div class="card-container">
             <div class="card">
@@ -27,9 +26,10 @@
               </div>
             </div>
           </div>
-          <!-- End card-container -->
         </div>
-        <!-- End col-md-6 -->
+      </div>-->
+      <div class="page-challenge">
+        <app-challenge-card [challengeNid]="752"></app-challenge-card>
       </div>
     </div>
   </div>

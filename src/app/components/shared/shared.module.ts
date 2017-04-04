@@ -21,6 +21,7 @@ import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
 import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
+import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 
 
 
@@ -50,7 +51,8 @@ import { LearnUserCardComponent } from './learn-user-card/learn-user-card.compon
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
-    LearnUserCardComponent
+    LearnUserCardComponent,
+    ShowcaseGeneralCardComponent
   ],
   exports: [
     CommentComponent,
@@ -68,7 +70,8 @@ import { LearnUserCardComponent } from './learn-user-card/learn-user-card.compon
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
-    LearnUserCardComponent
+    LearnUserCardComponent,
+    ShowcaseGeneralCardComponent
 
   ]
 })
@@ -89,3 +92,4 @@ export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
 export { LearnUserCardComponent };
+export { ShowcaseGeneralCardComponent };
