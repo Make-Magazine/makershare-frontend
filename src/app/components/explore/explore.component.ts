@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { ISorting } from '../../models/explore/sorting';
+import { ProjectCategory } from '../../models';
 
 
 
@@ -23,6 +24,9 @@ export class ExploreComponent implements OnInit {
     pageNo: 0
   };
   ActionName = "Most Recent";
+  categories_parents:ProjectCategory[]= [];
+  categories_childs:ProjectCategory[] = [];
+  all_categories:ProjectCategory[];
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -44,11 +48,11 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       // console.log(data);
       this.projects = this.projects.concat(data);
-      // console.log(this.projects);
+      //console.log(this.projects);
     }, err => {
 
     });
-
+    this.getProjectCategories()
   }
   projectsById(event) {
     var id = event.target.id;
@@ -160,6 +164,20 @@ export class ExploreComponent implements OnInit {
   }
   /* end function to sort challenge MostLiked */
 
-
+  getProjectCategories(){
+    this.viewService.getView('projects_categories').subscribe((categories:ProjectCategory[]) => {
+      this.all_categories = categories;
+      // console.log(this.all_categories)
+      categories.forEach((element,index) =>{
+        if(element.parent_tid){
+          this.categories_childs.push(element);
+        //  console.log(this.categories_childs)
+        }else{
+          this.categories_parents.push(element);
+         // console.log(this.categories_parents)          
+        }
+      });
+    });
+  }
 
 }

@@ -1,12 +1,15 @@
-<div *ngIf="view == 'grid'">
+<!--<div *ngIf="view == 'grid'">-->
+  <div>
   <div class="project card" (click)="ShowProjectDetails(project.nid)">
     <div class="image-top">
-      <!-- <div class="overlay"></div> -->
-      <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
+      <div class="overlay"></div>
+      <img *ngIf="project.cover_photo && view == 'grid'" class="card-img-top" src="{{project.cover_photo}}" alt="">
+      <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
       <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
-      <!-- <div class="teaser">
-        <p *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
-      </div>  -->
+      <div class="teaser">
+        <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
+        <p *ngIf="project.challenge_name">Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
+      </div>
       <div class="list-unstyled icons">
         <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
         <span><i class="fa fa-lg fa-trophy"></i>1</span>
@@ -29,6 +32,9 @@
       <div class="content-side col d-flex flex-column justify-content-start">
         <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
         <p class="card-text" innerHTML="{{project.teaser}}"></p>
+        <p class="categories">
+          <span *ngFor="let category of project.categories; let i = index" innerHTML="{{category}}"></span>
+        </p>
         <div class="card-stats mt-auto">
           <ul class="list-unstyled">
             <li>

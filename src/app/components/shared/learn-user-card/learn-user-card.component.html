@@ -1,0 +1,9 @@
+<div class="media workshop-creator" *ngIf="card">
+  <img class="d-flex align-self-start mr-3" *ngIf="!card.photo" src="http://placehold.it/70x70" alt="Generic placeholder image">
+  <img class="d-flex align-self-start mr-3" *ngIf="card.photo" src="{{card.photo}}" alt="Generic placeholder image">
+  <div class="media-body">
+    <h5 class="mt-0" *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</h5>
+    {{card.nickname}}
+    <div *ngIf="card.city">{{card.city.locality}} , {{card.city.country}}</div>
+  </div>
+</div>

@@ -123,12 +123,33 @@ a:not([href]):not([tabindex]).btn-main-2 {
 }
 .btn-border,
 a:not([href]):not([tabindex]).btn-border {
+    background: transparent;
+    border-radius: 0;
+    color: $main-grey;
+    border: 1px solid $main-grey;
+    &:focus, &:active, &:hover {
+        // color: $red;
+        border: 1px solid $red;
+
+    }
+}
+
+.btn-border-tag,
+a:not([href]):not([tabindex]).btn-border-tag {
+    border-radius: 0;
+    color: $main-grey;
+    border: 1px solid $main-grey;
+}
+
+.btn-border-projects,
+a:not([href]):not([tabindex]).btn-border {
     color: $light-grey;
     background: transparent;
-    border: 1px solid $light-grey;
+    border: 1px solid $main-grey;
     &:focus, &:active, &:hover {
         border: 1px solid $main-grey;
         color: $main-grey;
+
     }
 }
 .btn-transparent,

@@ -1,3 +1,4 @@
+<div *ngIf="checkUserLogin==true">
 <form class="new-comment" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
   <label class="feedback-label">Feedback</label>
   <div class="comment-body d-flex justify-content-around">
@@ -9,3 +10,9 @@
     </button>
   </div>
 </form>
+</div>
+<div *ngIf="checkUserLogin==false">
+  <p>Please<a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login
+         </a> to Add Your Comment</p>
+  </div>
+

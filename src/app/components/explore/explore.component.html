@@ -14,37 +14,39 @@
                   aria-expanded="false">
                   All Projects <i class="fa fa-lg fa-angle-down"></i>
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="filter-projects">
-                    <a class="dropdown-item" href="#">All projects</a>
-                    <a class="dropdown-item" href="#">Winners Only</a>
-                  </div>
+                <div class="dropdown-menu" aria-labelledby="filter-projects">
+                  <a class="dropdown-item" href="#">All projects</a>
+                  <a class="dropdown-item" href="#">Winners Only</a>
+                </div>
               </div>
               <div class="sorting-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">
                   {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="filter-projects">
-                    <a class="dropdown-item" (click)="mostRecent()" class="btn">Most recent</a>
-                    <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
-                    <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
-                    <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
-                    <a class="dropdown-item" (click)="mostLiked()" class="btn">Most Liked</a>
-                    <a class="dropdown-item" (click)="mostForked()" class="btn">Most Forked</a>
+                <div class="dropdown-menu" aria-labelledby="filter-projects">
+                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Most recent</a>
+                  <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
+                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
+                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
+                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most Liked</a>
+                  <a class="dropdown-item" (click)="mostForked()" class="btn">Most Forked</a>
 
-                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <!-- End filters -->
         <ul class="list-unstyled explore-tags">
-          <li *ngFor="let parent of categories"><a class="btn btn-grey" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
+          <li *ngFor="let parent of categories_parents"><a class="btn btn-border" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
         </ul>
         <div class="submenus">
-          <ul *ngFor="let parent of categories" class="list-unstyled parent_{{parent.tid}}">
-            <li *ngFor="let term of parent.children"><a (click)="projectsById($event)" class="btn btn-grey" data-id="{{term.tid}}">{{term.name}}</a></li>
-          </ul>
+          <div *ngFor="let parent of categories_parents">
+            <ul *ngIf="categories_childs.parentName == parent.name" class="list-unstyled parent_{{parent.tid}}">
+              <li *ngFor="let term of categories_childs"><a (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}">{{term.name}}</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
@@ -55,7 +57,7 @@
   </div>
   <div class="text-center">
     <div class="button-container-main-2" *ngIf="!hideLoadMore">
-      <a class="btn btn-main-2"  (click)="loadMoreProject()">Load more</a>
+      <a class="btn btn-main-2" (click)="loadMoreProject()">Load more</a>
     </div>
   </div>
 </div>
