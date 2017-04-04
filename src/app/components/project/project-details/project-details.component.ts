@@ -59,7 +59,6 @@ export class ProjectDetailsComponent implements OnInit {
       this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         
         this.projectdata = data[0];
-        console.log(this.projectdata);
       }, err => {
 
       });
