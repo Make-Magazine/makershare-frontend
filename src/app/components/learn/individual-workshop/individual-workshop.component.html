@@ -107,8 +107,7 @@
                     <div [innerHTML]="object.lesson_description"> </div>
                   </div>
                 </div>
-                <br>
-                <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'PDF' ">
+                  <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'PDF' ">
                   <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
                   <a href="">
                     <div [innerHTML]="object.related_projects"> </div>
@@ -194,7 +193,7 @@
                     <div [innerHTML]="object.lesson_description"> </div>
                   </div>
                 </div>
-                <br>
+    
                 <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'Book' ">
                   <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
                   <a href="">
