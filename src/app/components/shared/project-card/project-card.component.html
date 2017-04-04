@@ -1,5 +1,5 @@
 <!--<div *ngIf="view == 'grid'">-->
-  <div>
+<div>
   <div class="project card" (click)="ShowProjectDetails(project.nid)">
     <div class="image-top">
       <div class="overlay"></div>
@@ -16,27 +16,34 @@
         <span><i class="fa fa-lg fa-clock-o"></i>1</span>
       </div>
     </div>
-    <div class="card-block d-flex justify-content-around">
+    <div class="card-block d-flex flex-column justify-content-around">
       <p class="card-type">Project</p>
       <div class="d-flex flex-column">
-        <div class="profiel-pic-container">
-          <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
-          <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+        <div class="d-flex flex-row">
+          <div class="profiel-pic-container mr-2">
+            <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
+            <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+          </div>
+          <div class="d-flex flex-column">
+            <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+            <p class="maker-name">By {{first_name}} {{last_name}}</p>
+          </div>
         </div>
-        <div class="icons-side-project" *ngIf="badge">
+
+        <div class="icons-side-project d-flex flex-row" *ngIf="badges">
           <div class="project-icon" *ngFor="let badge of badges;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
           </div>
         </div>
       </div>
       <div class="content-side col d-flex flex-column justify-content-start">
-        <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-        <p class="card-text" innerHTML="{{project.teaser}}"></p>
-        <p class="categories">
+
+        <!--<p class="card-text" innerHTML="{{project.teaser}}"></p>-->
+        <!--<p class="categories">
           <span *ngFor="let category of project.categories; let i = index" innerHTML="{{category}}"></span>
-        </p>
+        </p>-->
         <div class="card-stats mt-auto">
-          <ul class="list-unstyled">
+          <ul class="list-unstyled d-flex justify-content-between">
             <li>
               <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
@@ -45,6 +52,9 @@
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
               <span>70</span>
+            </li>
+            <li>
+              <span>{{project.maker_project_count}} projects</span>
             </li>
           </ul>
         </div>
