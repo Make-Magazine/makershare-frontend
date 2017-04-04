@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { ISorting } from '../../models/explore/sorting';
-
+import { ProjectCategory } from '../../models';
+import { LoaderService } from '../shared/loader/loader.service';
 
 
 @Component({
@@ -23,17 +24,25 @@ export class ExploreComponent implements OnInit {
     pageNo: 0
   };
   ActionName = "Most Recent";
+  categories_parents: ProjectCategory[] = [];
+  categories_childs: ProjectCategory[] = [];
+  all_categories: ProjectCategory[];
   constructor(
     private router: Router,
     private viewService: ViewService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
     this.getProjects();
     this.getCountProject();
+    this.getProjectCategories();
   }
 
   getProjects() {
+    // show spinner
+    this.loaderService.display(true);
+
     // get the projects
     if (this.pages >= 0) {
       this.page_arg = ['page', this.pages];
@@ -42,18 +51,25 @@ export class ExploreComponent implements OnInit {
       this.projects = [];
     }
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
-      // console.log(data);
+      
       this.projects = this.projects.concat(data);
-      // console.log(this.projects);
-    }, err => {
+      // hide spinner
+      this.loaderService.display(false);
 
+    }, err => {
+      // hide spinner
+      this.loaderService.display(false);
     });
 
   }
   projectsById(event) {
+    // show spinner
+    this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
+      // hide spinner
+      this.loaderService.display(false);      
     }, err => {
 
     });
@@ -89,7 +105,7 @@ export class ExploreComponent implements OnInit {
   /* END FUNCTION loadMoreVisibilty */
   /* function to sort challenge Title A-z */
   sortAsc() {
-     this.projects = [];
+    this.projects = [];
     this.pages = 0;
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
@@ -100,7 +116,7 @@ export class ExploreComponent implements OnInit {
   /* end function to sort challenge Title A-z */
   /* function to sort challenge Title Z-A */
   sortDesc() {
- this.projects = [];
+    this.projects = [];
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "title_1"
@@ -112,7 +128,7 @@ export class ExploreComponent implements OnInit {
   /* end function to sort challenge Title Z-A */
   /* function to sort challenge Recently */
   mostRecent() {
- this.projects = [];
+    this.projects = [];
     this.pages = 0
     this.sort.sort_order = "DESC"
     this.sort.sort_by = "created_2"
@@ -123,7 +139,7 @@ export class ExploreComponent implements OnInit {
   }
   /* function to sort challenge Oldest */
   oldest() {
-     this.projects = [];
+    this.projects = [];
     this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "created_1"
@@ -136,7 +152,7 @@ export class ExploreComponent implements OnInit {
 
   /* function to sort challenge MostLiked */
   mostLiked() {
-     this.projects = [];
+    this.projects = [];
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
@@ -149,7 +165,7 @@ export class ExploreComponent implements OnInit {
 
   /* function to sort challenge MostForked */
   mostForked() {
-     this.projects = [];
+    this.projects = [];
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
@@ -160,6 +176,20 @@ export class ExploreComponent implements OnInit {
   }
   /* end function to sort challenge MostLiked */
 
-
+  getProjectCategories() {
+    this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
+      this.all_categories = categories;
+      // console.log(this.all_categories)
+      categories.forEach((element, index) => {
+        if (element.parent_tid) {
+          this.categories_childs.push(element);
+        }else{
+          this.categories_parents.push(element);
+        }
+      });
+      // console.log(this.categories_childs);
+      // console.log(this.categories_parents);          
+    });
+  }
 
 }

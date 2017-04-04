@@ -79,10 +79,10 @@
           <div class="region region-content col-sm-12 row">
             <div class="tabs-buttons col-md-3">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="button-item" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
-                <li><a href="" class="button-item" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
-                <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="button-item" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
-                <li><a href="" class="button-item" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
+                <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>
             <div class="challenge-details col-md-9">

@@ -25,9 +25,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
+import { AuthGuardService } from './auth0/auth-guard.service';
 import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
-
+import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
+import { Four04Component } from './auth0/four04/four04.component';
+// loader service
+import { LoaderService } from './components/shared/loader/loader.service';
 
 
 @NgModule({
@@ -36,6 +40,8 @@ import { SearchBoxComponent } from './components/general/header/search-box/searc
     HeaderComponent,
     FooterComponent,
     SearchBoxComponent,
+    AccessDeniedComponent,
+    Four04Component,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,10 @@ import { SearchBoxComponent } from './components/general/header/search-box/searc
     ProfileService,
     PmService,
     Auth,
+    AuthGuardService,
     NotificationBarService,
+    LoaderService,
+    
   ],
   bootstrap: [AppComponent]
 })

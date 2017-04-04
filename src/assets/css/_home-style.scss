@@ -128,28 +128,50 @@
 }
 
 footer {
-    padding-top: 30px;
+    padding-top: 50px;
     padding-bottom: 25px;
     min-height: 35px;
     font-size: 14px;
     background: white;
     .copy {
-        img {
-            max-width: 70px;
+        nav {
+            height: 75px;
+        }
+        .first-logo-link {
+            margin-right: 10px;
+        }
+        .second-logo-link {
+            padding-left: 10px;
+            border-left: 1px solid #4f4f4f;
+        }
+        .first-logo {
+            width: 100px;
+            height: 75px;
+            max-width: 100px;
+        }
+        .second-logo {
+            width: 170px;
+            max-width: 170px;
         }
         p {
-            padding: 0;
             margin: 0;
             font-size: 12px;
+            color: #4f4f4f;
+        }
+        .copyright {
+            padding-top: 8px;
+        }
+        .logo-title {
+            padding: 12px 0px 0px 4px;
         }
     }
     a.nav-link {
-        color: $main-grey;
+        color: $text-color-1;
         padding: 0;
     }
     .fa-stack-2x {
         font-size: 1.7em;
-    }
+    } 
     .fa-stack {
         position: relative;
         display: inline-block;
@@ -158,8 +180,31 @@ footer {
         line-height: 1.7em;
         vertical-align: middle;
     }
-    .socials {
-        margin-top: 30px;
+    .socials-newsletter {
+        div {
+            padding-bottom: 4px;
+        }
+        .newsletter {
+            .input-group-addon {
+                background: none;
+                background-color: $text-color-5;
+                color: white;
+            }
+        }
+    }
+    .footer-subtitle {
+        color: $text-color-5;
+        font-size: 16px;
+        width: 100%;
+        padding-bottom: 4px;
+        margin: 0px;
+    } 
+    .sitemap-1, .sitemap-2 {
+        a {
+            font-size: 16px;
+            color: $text-color-2;
+            line-height: 25px;
+        }
     }
 }
 
@@ -210,7 +255,6 @@ footer {
         margin-bottom: 5px;
         height: 38px;
         line-height: 17px;
-        overflow: hidden;
         display: inline-block;
     }
     .profile-tag, .user-city, .count {
@@ -235,6 +279,9 @@ footer {
         padding-top: 10px;
         padding-bottom: 0;
         padding-left: 0;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     }
     .icons-side-user {
             width: 80px;
@@ -247,7 +294,9 @@ footer {
             }
         }
         .card-type {
-            top: 30px;
+            top: 35px;
+            right: -18px;
+            font-size: 16px !important;
         }
         .count-list {
             margin-top: 10px;
@@ -281,10 +330,11 @@ footer {
         position: relative;
         left: -10px;
         top: -30px;
+        margin-bottom: -20px;
         .maker-photo {
             display: block;
-            width: 80px;
-            height: 80px;
+            width: 136px;
+            height: 160px;
             margin-bottom: 4px;
         }
         a {

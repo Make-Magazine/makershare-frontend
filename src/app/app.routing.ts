@@ -1,4 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuardService } from './auth0/auth-guard.service';
+import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
+import { Four04Component } from './auth0/four04/four04.component';
 
 
 const APP_ROUTES: Routes = [
@@ -10,6 +13,8 @@ const APP_ROUTES: Routes = [
     { path: 'challenges', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'profile', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
+    { path: 'access-denied', component:  AccessDeniedComponent},
+    { path: '**', component: Four04Component }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

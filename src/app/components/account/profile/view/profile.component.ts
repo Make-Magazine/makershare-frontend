@@ -11,6 +11,7 @@ import { FileEntity, NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
+import { value } from '../../../../models/challenge/comment';
 
 @Component({
   selector: 'app-profile',
@@ -183,10 +184,11 @@ export class ProfileComponent implements OnInit {
 
   SaveInfo(closebtn:HTMLButtonElement) {
     closebtn.click();
-    if(this.formGroup.valid){
+    if(this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
+    this.ProfileInfo.field_social_accounts
     this.SaveUser(this.ProfileInfo);
   }
 
@@ -217,6 +219,9 @@ export class ProfileComponent implements OnInit {
       })
       this.Loading = false;
     });
+  }
+  prefer(value : string){
+    this.ProfileInfo.field_social_accounts.field_preferred = value;
   }
 
 }

@@ -12,9 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './project-details.component.html',
 })
 export class ProjectDetailsComponent implements OnInit {
-
-
-  current_active_tab;
+  
+  current_active_tab = 'project-story';
+  changeProjectTab(NewTab) {
+    this.current_active_tab = NewTab;
+  }
   project;
   projectDetails;
   currentuser;
@@ -54,15 +56,13 @@ export class ProjectDetailsComponent implements OnInit {
       this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         
         this.projectdata = data[0];
-        //console.log(this.projectdata);
+        console.log(this.projectdata);
       }, err => {
 
       });
       /* end service */
 
       // dispatch action to load the details here-solve no load issue.
-
-      this.current_active_tab = 'project-story';
       this.route.params
         // (+) converts string 'id' to a number
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
@@ -78,28 +78,28 @@ export class ProjectDetailsComponent implements OnInit {
           //   this.customImage = this.project.field_cover_photo.url;
           // }
           var i = 0;
-          // if (this.project.field_resources) {
-          //   for (let resource of this.project.field_resources) {
-          //     var resourceExt = resource.resource_file.split('.').pop();
-          //     this.project.field_resources[i]['extension'] = resourceExt;
-          //     var size = parseInt(resource.filesize);
-          //     if (size > 1 && size < 1024) {
-          //       this.project.field_resources[i]['filesize'] = size + 'KB';
-          //     };
-          //     // else if (size == 1024 && size > 1024) {
-          //     //   var size2 = Math.floor( size / 1000);
-          //     //   this.project.field_resources[i]['filesize']= size2 + 'MB';
-          //     // }
-          //     // console.log(parseInt(resource.filesize));
-          //     // console.log(size2);
-          //     i++
+          if (this.project.field_resources) {
+            for (let resource of this.project.field_resources) {
+              var resourceExt = resource.resource_file.split('.').pop();
+              this.project.field_resources[i]['extension'] = resourceExt;
+              var size = parseInt(resource.filesize);
+              if (size > 1 && size < 1024) {
+                this.project.field_resources[i]['filesize'] = size + 'KB';
+              };
+              // else if (size == 1024 && size > 1024) {
+              //   var size2 = Math.floor( size / 1000);
+              //   this.project.field_resources[i]['filesize']= size2 + 'MB';
+              // }
+              // console.log(parseInt(resource.filesize));
+              // console.log(size2);
+              i++
 
-          //   }
-          // }
+            }
+          }
 
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
-          //console.log(this.projectDetails);
+          console.log(this.projectDetails);
 
         });
 
@@ -126,9 +126,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.ngOnInit();
 
   }
-  changeProjectTab(NewTab) {
-    this.current_active_tab = NewTab;
-  }
+  
 
   forkThis(e: Event) {
     e.preventDefault();

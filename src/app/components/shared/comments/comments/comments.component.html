@@ -4,20 +4,22 @@
       <img *ngIf="comment?.photo" class="d-flex" src="{{comment?.photo}}" alt="">
       <img *ngIf="!comment?.photo" class="d-flex" src="./assets/images/defaultprofile.png" alt="">
     </div>
-    <div class="media-body">
+    <div class="media-body mt-auto">
       <div class="user-info">
         <div class="user-details col-sm-12 d-flex">
-          <a *ngIf="!comment?.nickname" href="#" class="user-fullname">{{comment?.first_name}} {{comment?.last_name}}</a>
+          <p *ngIf="!comment?.nickname" href="#" class="user-fullname">{{comment?.first_name}} {{comment?.last_name}}</p>
           <p *ngIf="comment?.nickname" class="user-nickname">{{comment?.nickname}}</p>
-          <p class="feed-timestamp"><i class="fa fa-circle"></i> {{comment?.update_date}}</p>
         </div>
       </div>
+    </div>
+  </div>
+  <p class="feed-timestamp" *ngIf="comment?.comment">Posted on {{comment?.update_date}}</p>
+  <div class="media-body">
+    <div class="comment-body">
       <p>{{comment?.comment}}</p>
     </div>
   </div>
   <div class="media content-section" *ngIf="!comment?.comment">
-  <p>There is no comments yet...</p>
+    <p>There is no comments yet...</p>
   </div>
 </div>
-
-

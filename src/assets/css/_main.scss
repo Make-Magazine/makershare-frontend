@@ -29,6 +29,7 @@ body {
     margin: 0!important;
     color: $main-grey;
     width: 100%;
+    background-color: $main-bg;
     // height: 55px;
     .navbar-brand {
         width: 50px;
@@ -56,7 +57,7 @@ body {
         margin-bottom: 0;
         margin-top: 5px;
         li {
-            min-width: 40px;
+            min-width: 36px;
             text-align: center;
             display: inline-block;
             vertical-align: middle;
@@ -78,7 +79,7 @@ body {
             &.min-user-img {
                 
                 img {
-                    width: 25px;
+                    width: 27px;
                 }
             }
         }
@@ -151,14 +152,20 @@ body {
     @include desc-font-14();
     position: absolute;
     top: 45px;
-    right: -17px;
+    right: -30px;
     padding: 0;
     transform: rotate(-90deg);
-    text-transform: uppercase;
+    text-transform: uppercase !important;
     color: $light-grey;
     margin: 0;
 }
 
+.dropdown-menu {
+    padding: 0;
+    button {
+        padding: 0.5em 1em;
+    }
+}
 
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location{

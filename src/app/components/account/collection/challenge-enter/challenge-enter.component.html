@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Challenge Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let challenge of challenges">
+      <td *ngIf="challenge.project_name">{{challenge.project_name}}</td>
+      <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
+      
+    </tr>
+  </tbody>
+</table>

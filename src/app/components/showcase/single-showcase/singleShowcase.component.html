@@ -3,7 +3,7 @@
     <div class="container showcases-container">
       <div class="showcase-card-backlayer container">
         <div class="showcase-card row">
-          <div class="col-md-4 left-side">
+          <div class="col-lg-4 col-md-6 col-sm-12 left-side">
             <div class="image-container">
               <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
             </div>
@@ -11,7 +11,7 @@
               <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
             </div>
           </div>
-          <div class="col-md-8 content-container">
+          <div class="col-lg-8 col-md-6 col-sm-12 content-container">
             <div class="card-container">
               <div class="card">
                 <div class="showcase-type-badge">
@@ -21,7 +21,7 @@
                 <div class="card-description">
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
-                <div class="showcase-card-footer d-flex">
+                <div class="showcase-card-footer d-flex mt-auto">
                   <div class="showcase-card-footer-1">
                   </div>
                   <div class="showcase-card-footer-2">
@@ -62,7 +62,7 @@
       </div>
       <div class="container">
         <div class="projects-grid row">
-          <div class="project col-md-4" *ngFor="let project of projects; let i = index;">
+          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of projects; let i = index;">
             <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>
             <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
           </div>

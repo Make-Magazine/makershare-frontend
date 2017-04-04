@@ -1,71 +1,54 @@
 <div class="row project-body" *ngIf="project">
   <div class="region region-content col-lg-8 col-md-8">
     <div class="project-story-tab">
-      <div class="project-image">
-        <img src="{{project.field_cover_photo?.url}}" alt="" class="img-responsive" *ngIf="project.field_cover_photo">
-        <img src="http://placehold.it/350x350" alt="" class="img-responsive" *ngIf="!project.field_cover_photo">
-      </div>
-      <div class="project-stats">
-        <ul class="list-unstyled">
-          <li *ngIf="project.field_visibility2"><i class="fa fa-lg fa-eye"></i>{{project.field_visibility2[0]?.tid}}</li>
-          <li *ngIf="project.flag_count"><i class="fa fa-lg fa-thumbs-up" *ngIf="project.flag_count"></i>{{project?.flag_count}}</li>
-          <li><i class="fa fa-lg fa-comment"></i>2</li>
-          <li *ngIf="project.field_total_forks"><i class="fa fa-lg fa-retweet"></i>{{project.field_total_forks[0].value}}</li>
-        </ul>
-      </div>
-      <hr>
-      <div class="project-body">
+      <div class="project-body-content">
         <p [innerHTML]="project.field_teaser?.value"></p>
         <p [innerHTML]="project.field_story?.value"></p>
       </div>
       <!-- End body -->
-      </div>
-      <div class="feedback-group">
-        <app-comment [nid]="project.nid"></app-comment>
-      </div>
+    </div>
+    <div class="feedback-group">
+      <app-comment [nid]="project.nid"></app-comment>
+    </div>
   </div>
-    <aside class="side-bar col-lg-4 col-md-4">
-      <div class="timestamp" *ngIf="project.created && project.changed">Created On: {{project.created}} - Last Updated: {{project.changed}} </div>
-      <div class="sidebar-container">
-        <div class="project-story-tab">
-          <div class="project-awards"><i class="fa fa-lg fa-trophy"></i><a href="#">Vehicles Challenge</a> Winner</div>
-          <div class="project-collaborates" *ngIf="project.field_collaborators">
-            <div class="collaborate" *ngFor="let collaborator of project.field_collaborators; let i=index">
-                <app-user-card-small [uid]="collaborator.target_id"></app-user-card-small>        
-            </div>
-            <!-- End Collaborate -->
+  <aside class="side-bar col-lg-4 col-md-4">
+    <div class="sidebar-container">
+      <div class="project-story-tab">
+        <div class="card aha" *ngIf="project.field_aha_moment">
+          <div class="card-heading">
+            <p>AHA! Moment</p>
           </div>
-          <!-- End project-collaborates -->
-          <div class="card aha">
-            <div class="card-heading">
-              <h3><i class="fa fa-lightbulb-o"></i>AHA! Moment</h3>
-            </div>
-            <div class="card-block" *ngIf="project.field_aha_moment">
-              <p>{{project.field_aha_moment?.value}}</p>
-            </div>
+          <div class="card-block">
+            <p>{{project.field_aha_moment?.value}}</p>
           </div>
-          <div class="card uh-oh">
-            <div class="card-heading">
-              <h3><i class="fa fa-bomb"></i>UH-OH! Moment</h3>
-            </div>
-            <div class="card-block" *ngIf="project.field_aha_moment">
-              <p>{{project.field_uh_oh_moment?.value}}</p>
-
-            </div>
-          </div>
-          
-          <div *ngIf="projectInfo.challenge_status =='375'"><div *ngIf="projectInfo.sponsor_bar">  Sponsor BY <img  src="{{projectInfo.sponsor_bar}}" width="30px" height="30px"></div></div>
-
-          <div class="block-style fork">
-            <p>
-              Forked from: <a href="#">Name of the Last Project it came from</a>
-            </p>
-            <p>
-              by <a href="#">Margot Jacobs</a>
-            </p>
-          </div>
-          <!-- End fork -->
         </div>
+        <div class="card uh-oh" *ngIf="project.field_aha_moment">
+          <div class="card-heading">
+            <p>UH-OH! Moment</p>
+          </div>
+          <div class="card-block">
+            <p>{{project.field_uh_oh_moment?.value}}</p>
+          </div>
+        </div>
+        <div class="project-collaborates" *ngIf="project.field_maker_memberships">
+          <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
+            <app-user-card-small [uid]="collaborator.membership_team"></app-user-card-small>
+            <div class="collaborate-role">
+              <p>ROLE IN PROJECT</p>
+              <p>{{collaborator.membership_role}}</p>
+            </div>
+          </div>
+          <!-- End Collaborate -->
+        </div>
+        <!-- End project-collaborates -->
       </div>
-    </aside>
-  </div>
+    </div>
+
+    <div class="license-report">
+      <a class="license" href="#">LICENSE: Creative Commons</a>
+      <hr>
+      <a class="report" href="#">Report This Project</a>
+    </div>
+
+  </aside>
+</div>

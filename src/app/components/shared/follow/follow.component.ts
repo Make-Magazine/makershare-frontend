@@ -18,28 +18,36 @@ export class FollowComponent implements OnInit {
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
 
-  ) { }
+
+  ) {
+  this.router = router;
+  }
+
   @Input() nodeNid;
   @Input() user;
   @Output() countNumber = new EventEmitter<number>();
   userId;
   currentuser;
+  checkUserLogin = false;
   isFollowed;
   ButtonFollow;
   countFollowers = 0;
   ngOnInit() {
+
     this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
 
       this.countFollowers = response['count'];
       this.countNumber.emit(this.countFollowers);
-      // console.log(this.countFollowers);
 
-      //  console.log(this.countFollowers)
     }, err => {
-     // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
+      // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.userId = localStorage.getItem('user_id');
-
+  this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        
+      }else{
     this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
       this.isFollowed = data[0];
 
@@ -52,39 +60,55 @@ export class FollowComponent implements OnInit {
     }, err => {
       //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
     })
-
+      }//end else if
+  });//end if check user login
   }
-
   /* function follow */
   followThis(e: Event) {
-    e.preventDefault();
-    if (this.isFollowed) {
-      this.flagService.unflag(this.nodeNid, this.userId, 'follow').subscribe(response => {
-        this.isFollowed = false;
-        this.ButtonFollow = 'Follow';
-        this.countFollowers--;
-        this.countNumber.emit(this.countFollowers);
+    this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }
+      e.preventDefault();
+      if (this.isFollowed) {
+        this.flagService.unflag(this.nodeNid, this.userId, 'follow').subscribe(response => {
+          this.isFollowed = false;
+          this.ButtonFollow = 'Follow';
+          this.countFollowers--;
+          this.countNumber.emit(this.countFollowers);
 
-        // console.log(this.countFollowers);
-      }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      });
-    } else {
-      this.flagService.flag(this.nodeNid, this.userId, 'follow').subscribe(response => {
-        this.isFollowed = true;
-        this.ButtonFollow = 'UnFollow';
-        this.countFollowers++;
-        this.countNumber.emit(this.countFollowers);
+        }, err => {
+          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        });
+      } else {
+        this.flagService.flag(this.nodeNid, this.userId, 'follow').subscribe(response => {
+          this.isFollowed = true;
+          this.ButtonFollow = 'UnFollow';
+          this.countFollowers++;
+          this.countNumber.emit(this.countFollowers);
 
-        // console.log(this.countFollowers['count']);
-      }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      });
+        }, err => {
+          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        });
 
-    }
+      }
+
+    });//end if check user login
 
   }
   /* end function follow */
+  /* function check login */
+  checkLogin() {
+    this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        this.router.navigate(['/access-denied']);
+      }
+    });
+  }
+  /* end function  check login */
 
 
 

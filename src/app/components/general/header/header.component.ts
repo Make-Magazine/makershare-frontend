@@ -12,12 +12,12 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 export class HeaderComponent implements OnInit {
   
   showSearchBox: boolean = false;
-
+  user_photo
   constructor(
     private userService: UserService,
     private router: Router,
     private auth: Auth
-    ) {}
+    ) {  this.router = router;}
 
   ngOnInit() {
     // this.userService.isLogedIn().subscribe(res => {
@@ -25,6 +25,9 @@ export class HeaderComponent implements OnInit {
     //     this.isLoggedIn = true;
     //   }
     // });
+    // localStorage.setItem('redirectUrl', this.router.url);
+    this.user_photo = localStorage.getItem('user_photo');
+    console.log(this.user_photo)
   }
 
   // Logout(event){
@@ -43,5 +46,6 @@ export class HeaderComponent implements OnInit {
   onNotify(event){
     this.showSearchBox = false;
   }
+
 
 }

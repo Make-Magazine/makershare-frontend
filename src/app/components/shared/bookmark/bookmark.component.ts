@@ -19,27 +19,40 @@ export class BookmarkComponent implements OnInit {
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
 
-  ) { }
+  ) {this.router = router; }
   @Input() nodeNid;
   @Input() user;
   userId;
+    checkUserLogin = false;
+
   currentuser;
   isBookmarked
 
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
-
+  this.userId = localStorage.getItem('user_id');
+  this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {}else{
       /*bookmark start */
       this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       })
+    }//end else
+  });//end userservice isLogedIn
       /*bookmark end*/
   }
 
   /* function bookmark */
   bookmarkThis(e: Event) {
+        this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }
     e.preventDefault();
     if (this.isBookmarked) {
       this.flagService.unflag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
@@ -54,6 +67,7 @@ export class BookmarkComponent implements OnInit {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
     }
+    });//end if check user login
   }
   /* end function bookmark */
 

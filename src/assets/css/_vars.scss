@@ -1,17 +1,33 @@
-$main-grey : #222;
-$light-grey : #BEBEBE;
+// Main Colors Palette 
+
 $white: #fff;
-$blue: #169eff;
-$font-grey: #444;
-$sec-bg : #C4C4C4;
-$title-color: #0AA9EA;
-$title-font-family: -webkit-body;
+$shade-1:#F2F2F2;
+$shade-2:#DCDCDC;
+$shade-3:#BDBDBD;
+$shade-5:#828282;
+$shade-4:#4F4F4F;
+$shade-6:#474747;
+$shade-7:#333333;
+$blue: #00AEEF;
+$orange:#F2C94C;
+$red: #ED1C24;
+
 
 /* New Variables */
 
+$title-font-family: -webkit-body;
+
+$main-grey : #222;
+$light-grey : #BEBEBE;
+$light-blue: #D4EFFC;
+$font-grey: #444;
+$sec-bg : #C4C4C4;
+$title-color: #0AA9EA;
+
+
 $main-bg : #F2F2F2;
 $challenge-bg : #333;
-$learn-bg : #DCDCDC;
+$learn-card-bg : $shade-2;
 $accent-bg-1 : #D4EFFC;
 $accent-bg-2 : #FFF;
 
@@ -22,7 +38,8 @@ $text-color-4 : #FFF;
 $text-color-5 : #11B3F0;
 
 
-$main-button-1 : #EC1F30;
+$main-button-1 : #ED1C24;
+
 $main-button-2 : #4F4F4F;
 $sec-button-1 : #11B3F0;
 $sec-button-2 : #828282;
@@ -33,6 +50,8 @@ $valid-faire: #11B3F0;
 $valid-other: #4F4F4F;
 
 $showcase-layer: #D4EEFC;
+
+
 
 // @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Trirong:400,700');
 
