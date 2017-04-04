@@ -15,7 +15,7 @@ import { Auth } from '../../../../auth0/auth.service';
 
 export class CommentFormComponent implements OnInit {
   @Input('nodeId') nodeId;
-  checkUserLogin=[];
+  checkUserLogin=false;
   @Input('comments') comments;
   title: string = 'Comments';
   commentForm: FormGroup;
@@ -91,6 +91,7 @@ export class CommentFormComponent implements OnInit {
   checkLogin() {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
+      console.log(this.checkUserLogin);
     });
   }
   /* end function  check login */

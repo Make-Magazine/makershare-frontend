@@ -8,7 +8,8 @@ import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { OnboardingComponent } from './onboarding/onboarding.component';
+// import {} from './'
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChallengeComponent,
     ShowcasesComponent,
     SpotlightComponent,
-    
+    OnboardingComponent,    
   ]
 })
 export class HomeModule { }

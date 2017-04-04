@@ -18,7 +18,7 @@
                   </div>
                   <div class="challene-card-footer-3">
                     <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
-                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Enter Mission</span>
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Accept Mission</span>
                     </div>
                     <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                     <ul class="list-unstyled challenge-actions pull-right">
