@@ -1,14 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ViewService } from '../../../d7services/view/view.service';
+import { LoaderService } from '../../shared/loader/loader.service';
 @Component({
   selector: 'app-about-badges',
   templateUrl: './about-badges.component.html',
 })
 export class AboutBadgesComponent implements OnInit {
-
-  constructor() { }
+  title = '';
+  body = ''
+  constructor(
+    private viewService: ViewService,
+    private loaderService: LoaderService,
+  ) { }
 
   ngOnInit() {
+    this.loaderService.display(true);
+    this.viewService.getView('pages', [['nid', 797]]).subscribe(data => {
+      this.title = data.title;
+      this.body = data.body;
+      this.loaderService.display(false);
+    }, err => {
+      console.log(err);
+      this.loaderService.display(false);
+    });
   }
 
 }
