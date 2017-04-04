@@ -1,12 +1,13 @@
 import { Component, OnInit, Input,Inject} from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {  FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaxonomyService } from '../../../d7services/taxonomy/taxonomy.service'
 import { TaxonomyTerm } from '../../../models/Drupal/taxonomy-term';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
 import {Device} from 'ng2-device-detector';
+import { NodeService } from '../../../d7services/node/node.service'
 
 
 
@@ -17,7 +18,6 @@ import {Device} from 'ng2-device-detector';
 })
 export class FeedbackComponent implements OnInit {
     feedbackForm: FormGroup;
-    feedback;
     feedback_types;
     bug_types;
     features;
@@ -27,39 +27,31 @@ export class FeedbackComponent implements OnInit {
     current_url;
     full_url;
     date;
-
+    screen;
+    navigator;
+    submitted=false;
+    formErrors = {
+        'field_want_submit':'' 
+      };
+    validationMessages = {
+      'field_want_submit': {required:'please select a value '},
+  };
  closeResult: string;
 
  CurrentType:number;
 
   constructor(
       private modalService: NgbModal,
-       fb: FormBuilder,
+      private fb: FormBuilder,
       private taxonomyService: TaxonomyService,
       private userService: UserService,
-      private router: Router,
-      private activatedRoute: ActivatedRoute,
+      private nodeService:NodeService,
       @Inject(DOCUMENT) private document: any,
       private device: Device
 ) {
-      this.full_url=this.document.location.href;
-      this.feedbackForm = fb.group({
-      // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
-      'field_want_submit' : '',
-      'field_my_bug': '',
-      'field_would_like' : '',
-      'field_bug_not_in_page_' : '',
-      'field_bug_in_page' :'' ,
-      'field_browser' : '',
-      'field_os':'',
-      'field_screen_size':'',
-      'body':'',
-      'field_describe_feature':'',
-      'field_better_site':'',
-      'field_recommend_site':'',
-      'field_upload_screenshots':''
-    })
-
+    this.deviceInfo();
+    this.screen=screen
+    this.full_url=this.document.location.href;
  }
 
   ngOnInit() {
@@ -69,7 +61,8 @@ export class FeedbackComponent implements OnInit {
     var date;
     this.date=this.changeDateFormat(todayDate);
     this.username = localStorage.getItem('user_name');
-    // this.feedbackForm = new FormGroup({
+    this.navigator=navigator;
+   // this.feedbackForm = new FormGroup({
     //    field_want_submit: new FormControl(),
     //    field_my_bug:new FormControl(),
     //    field_would_like:new FormControl(),
@@ -98,23 +91,69 @@ export class FeedbackComponent implements OnInit {
       this.taxonomyService.getVocalbularyTerms(27).subscribe((data: TaxonomyTerm[]) => {
       this.feedback_types = data;
       console.log('feedback_types');
-      console.log(data);
     });
     //bug types
       this.taxonomyService.getVocalbularyTerms(26).subscribe((data: TaxonomyTerm[]) => {
       this.bug_types = data;
       console.log('bug_types');
-      console.log(data);
     }); 
     //feature
       this.taxonomyService.getVocalbularyTerms(28).subscribe((data: TaxonomyTerm[]) => {
       this.features = data;
       console.log('features');
-      console.log(data);
     });
-     this.deviceInfo();
+   this.buildform();
+   
 
   }
+  buildform(){
+   // field_want_submit=this.feedback.field_want_submit;
+
+      this.feedbackForm = this.fb.group({
+      // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
+      'field_want_submit':[ '',Validators.required],
+      'field_my_bug': '',
+      'field_would_like' : '',
+      'field_bug_not_in_page_' :this.full_url,
+      'field_bug_in_page' :'' ,
+      'field_browser' : this.device.browser+" "+this.device.browser_version,
+      'field_os':navigator.platform,
+      'field_screen_size':this.screen.height+'X'+this .screen.width ,
+      'body':'',
+      'field_describe_feature':'',
+      'field_better_site':'',
+      'field_recommend_site':'',
+      'field_upload_screenshots':''
+    });
+     this.feedbackForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+     this.onValueChanged(); // (re)set validation messages now
+}
+//for required fields 
+  onValueChanged(data?: any) {
+    if (!this.feedbackForm) { return; }
+    const form = this.feedbackForm;
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+        //for submitted empty fields
+      if (!control.valid && this.submitted) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+       if (control && (control.dirty || data=="save") && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            this.formErrors[field] += messages[key] + ' ';
+          }
+        }
+    
+    }
+  }
+
 open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -164,9 +203,46 @@ open(content) {
     console.log(this.device);
  
   }
-  submitForm(value: any):void{
-  console.log('Reactive Form Data: ')
-  console.log(value);
+  onSubmit(value){
+    this.submitted=true;
+    this.onValueChanged();
+     if(this.feedbackForm.valid){
+       console.log('gggggggggggggggggggggggggggggggggggg');
+
+       // let FieldName = 'field_' + this.CurrentModal + 's';
+    
+    // und[0].value='';
+    var feedback={
+        type:'feedback',
+        title:'',
+        field_want_submit:{
+          '#validated':true,
+          und:[{
+            tid :''
+        }]
+        },
+         field_browser:{
+          und:[{
+            value:''
+        }]
+        },
+
+      // field_browser:und[0].value
+
+    }
+
+       feedback.field_want_submit.und[0].tid=this.feedbackForm.value.field_want_submit;
+       feedback.field_browser.und[0].value=this.feedbackForm.value.field_want_submit;
+       feedback.title=this.feedbackForm.value.title = 'feedback 12345678990';
+       console.log(feedback)
+      this.nodeService.createNode(feedback).subscribe((NewNode) => {
+       
+      });
+   // this.feedback.SetField(this.date, "title");
+    //this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
+     // NewNode.name = this.date;
+     }
+
 }
 }
 

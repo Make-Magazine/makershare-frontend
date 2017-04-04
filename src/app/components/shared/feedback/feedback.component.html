@@ -9,59 +9,47 @@
 <div class="modal-body">
   <div class=text-right>{{date}}</div>
   Your name:{{username}}
-  <form [formGroup]="feedbackForm" (ngSubmit)="submitForm(feedbackForm.value)">
+  <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event)" novalidate>
     <div class="form-group">
       <label>I want to submit:	</label>
       <select class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
         <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
       </select>
     </div>
-    
-    <!--<fieldset class="form-group">
-      <label>The bug is on the page I’m looking at right now. Yes/No?	</label>
-      <div class="form-check">
-        <label class="form-check-label">
-        <input type="radio" class="form-check-input" formControlName='field_bug_in_page'[value]="1" id="optionsRadios1"  checked>
-        Yes: Pre-fill with the URL of the selected page      
-      </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-        <input type="radio" class="form-check-input" formControlName='field_bug_in_page'[value]="0" id="optionsRadios2" >
-      No: What is the URL where you see the bug. You can also describe how you got to the bug in the text field below.      </label>
-      </div>
-    </fieldset>-->
+     <div *ngIf="formErrors.field_want_submit" class="alert alert-danger error-msg">
+       {{formErrors.field_want_submit}}
+                        </div>
     <div *ngIf="CurrentType == 1185">
      <label>The bug is on the page I’m looking at right now. Yes/No?	</label>
      <div>
       <label for="example-text-input" class="form-label">Yes:</label>
       <div>
-        <input class="form-control" type="text"  [formControl]="feedbackForm.controls['field_bug_not_in_page_']" value="{{full_url}}">
+        <input class="form-control" type="text" disabled [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
       </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">NO:</label>
       <div>
-        <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
+        <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_in_page']">
       </div>
     </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this browser:</label>
       <div *ngIf="device">
-        <input class="form-control" type="text" placeholder="enter browser name" [formControl]="feedbackForm.controls['field_browser']" value="{{device.browser}} {{device.browser_version}}">
+        <input class="form-control" type="text" placeholder="enter browser name" [formControl]="feedbackForm.controls['field_browser']" >
       </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this OS:</label>
       <div *ngIf="device">
-        <input class="form-control" type="text" placeholder="enter os name" [formControl]="feedbackForm.controls['field_os']" value="{{device.os}}">
+        <input class="form-control" type="text" placeholder="enter os name" [formControl]="feedbackForm.controls['field_os']" >
       </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this size screen</label>
       <div>
-        <input class="form-control" type="text" placeholder="enter screen size" [formControl]="feedbackForm.controls['field_screen_size']">
+        <input class="form-control" type="text" placeholder="enter screen size" [formControl]="feedbackForm.controls['field_screen_size']" >
       </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1185">
@@ -101,62 +89,9 @@
       <small id="textHelp" class="form-text text-muted">1-10 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
-  <!--<form class="new-feedback d-flex" [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event)" id="postFeedback">
-   <div *ngIf="feedback_types" class="form-group row">
-      <label for="" class=" col-4 form-label">I want to submit:	</label>
-      <br>
-      <select class="form-control col-8" title="Select one"  formControlName='field_want_submit' >
-        <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
-      </select>
-    </div>
-    <div>
-      <label>Gender</label>
-        <div >
-            <label>
-            <input type="radio" formControlName='field_bug_in_page'[value]="1">
-            Yes
-            </label>
-        </div>
-        <div >
-          <label>
-          <input type="radio"  formControlName='field_bug_in_page'[value]="0">
-          NO
-          </label>
-        </div>
-    </div>
-    <div>
-      <input type="text" formControlName="field_bug_not_in_page_">
-    </div>
-    <div *ngIf="bug_types" class="form-group row ">
-      <label for="" class=" form-label">I want to submit:	</label>
-      <br>
-      <select class="form-control" title="Select one"  formControlName='field_my_bug' >
-        <option *ngFor="let bug_type of bug_types; let i=index" value="{{bug_type.tid}}" >{{bug_type.name}}</option>
-      </select>
-    </div>
-    <div *ngIf="features" class="form-group row">
-      <label for="" class=" form-label">I want to submit:	</label>
-      <br>
-      <select class="form-control" title="Select one"  formControlName='field_would_like' >
-        <option *ngFor="let feature of features; let i=index" value="{{feature.tid}}" >{{feature.name}}</option>
-      </select>
-    </div>
-    <!--<div class="form-group ">
-      <label for="aha">AHA Moment (optional)</label>
-      <input maxlength="350" type="text" class="form-control" id="aha" placeholder="Enter your text" formControlName='field_aha_moment'>
-         {{YourStoryForm.value.field_aha_moment.length}}\350
-      <div *ngIf="formErrors.field_aha_moment" class="alert alert-danger error-msg">
-      {{ formErrors.field_aha_moment }}
-    </div>
-    </div>-->
-  <!--<div class="form-group d-flex flex-row">
-       <input type="radio" [(ngModel)]="model.bug_in_page"  name="bug_in_page" value="1">Yes<br>
-       <input type="radio" [(ngModel)]="model.bug_in_page"  name="bug_in_page" value="0">No
-    </div>-->
 
-  <!--</form>-->
 </div>
 <div class="modal-footer">
   <ul class="list-unstyled actions">

@@ -22,17 +22,13 @@
         <li class="mail-icon">
           <a [routerLink]="['/inbox']"><img src="./assets/images/icons/mail.svg" alt=""></a>
         </li>
-<<<<<<< HEAD
         <li class="search-icon">
           <a href=""><img src="./assets/images/icons/search.svg" alt=""></a>
         </li>
-                   <app-feedback></app-feedback>
-
+        <app-feedback></app-feedback>
         <li>
         </li>
-=======
         <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
->>>>>>> 2452b4f0f816ff2e29963ce1c08537e72d18c3ac
         <li *ngIf="auth.authenticated()" class="button-container-main-1"><a class="btn btn-main" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a></li>
       </ul>
           

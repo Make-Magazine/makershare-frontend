@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
       "removeButtons":"Source,Save,Templates,Find,Replace,Scayt,SelectAll",
       "extraPlugins": 'wordcount',
       "wordcount":{
-
       "showParagraphs": false,
       "showWordCount": false,
       "showCharCount": true,
@@ -192,16 +191,6 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.field_social_accounts
     this.SaveUser(this.ProfileInfo);
   }
-<<<<<<< HEAD
-
-   /* end function get Badges */
-     /* function to get count projects */
-  getCountProject() {
-    this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
-      this.countProject = data[0];
-    }, err => {
-=======
->>>>>>> 2452b4f0f816ff2e29963ce1c08537e72d18c3ac
 
   SaveUser(user:UserProfile){
     this.Loading = true;

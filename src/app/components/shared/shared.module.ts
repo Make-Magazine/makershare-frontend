@@ -14,7 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import {Ng2DeviceDetector} from 'ng2-device-detector';
+import { Ng2DeviceDetector} from 'ng2-device-detector';
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
@@ -32,8 +32,6 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     NgbModule,
     ShareButtonsModule.forRoot(),
     Ng2DeviceDetector,
-
-
   ],
   declarations: [
     CommentComponent,
