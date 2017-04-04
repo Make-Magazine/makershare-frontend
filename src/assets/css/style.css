@@ -2326,7 +2326,7 @@ footer {
       padding: 6px 8px 0px 8px; }
       .page-project .aha .card-heading p {
         text-align: center;
-        color: #EC1F30; }
+        color: #ED1C24; }
     .page-project .aha .card-block {
       padding: 0px 14px; }
   .page-project .uh-oh {
@@ -2338,7 +2338,7 @@ footer {
       padding: 6px 8px 0px 8px; }
       .page-project .uh-oh .card-heading p {
         text-align: center;
-        color: #EC1F30; }
+        color: #ED1C24; }
     .page-project .uh-oh .card-block {
       padding: 0px 14px; }
   .page-project .license-report .license {
@@ -2460,7 +2460,6 @@ header.showcase-project .next {
       .feedback-group .new-comment .comment-image img {
         width: 48px;
         height: 48px; }
-<<<<<<< HEAD
     .feedback-group .new-comment .comment-body {
       position: relative; }
       .feedback-group .new-comment .comment-body textarea {
@@ -2492,32 +2491,6 @@ header.showcase-project .next {
       .feedback-group .new-comment .comment-body button {
         display: inline-table;
         color: #BEBEBE;
-=======
-    .feedback-group .new-comment .comment-body textarea {
-      border: 1px solid #ccc;
-      color: #444;
-      height: 54px;
-      margin-top: 2px;
-      border-radius: 4px; }
-    .feedback-group .new-comment .comment-body button {
-      display: inline-table;
-      margin-top: 2px;
-      padding-left: 8px;
-      color: #BEBEBE;
-      border: none;
-      background: none;
-      margin: 0;
-      padding-bottom: 8px; }
-      .feedback-group .new-comment .comment-body button span .fa-circle {
-        font-size: 2.5em; }
-      .feedback-group .new-comment .comment-body button span .fa-paper-plane {
-        font-size: 22px;
-        line-height: 50px; }
-      .feedback-group .new-comment .comment-body button:hover {
-        color: #ED1C24;
-        border: none; }
-      .feedback-group .new-comment .comment-body button:focus {
->>>>>>> 439269634e88d75b1821436280d0852270bb41ea
         border: none;
         margin: 0;
         position: absolute;
@@ -2534,7 +2507,7 @@ header.showcase-project .next {
             font-size: 22px;
             font-weight: bold; }
         .feedback-group .new-comment .comment-body button:hover {
-          color: #EC1F30;
+          color: #ED1C24;
           border: none; }
         .feedback-group .new-comment .comment-body button:focus {
           border: none;
