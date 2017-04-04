@@ -4,6 +4,7 @@ import { CommentService } from '../../../../d7services/comment/comment.service';
 import { ViewService } from '../../../../d7services/view/view.service'
 import { UserService } from '../../../../d7services/user/user.service'
 import { IComment } from '../../../../models/challenge/comment';
+import { Auth } from '../../../../auth0/auth.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -33,6 +34,8 @@ export class CommentFormComponent implements OnInit {
     private commentService: CommentService,
     private viewService: ViewService,
     private userService: UserService,    
+        private auth: Auth
+
   ) { }
 
   ngOnInit() {
