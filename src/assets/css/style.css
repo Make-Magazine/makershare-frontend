@@ -317,6 +317,12 @@ a:not([href]):not([tabindex]) {
   border-radius: 0;
   font-size: 13px; }
 
+#dropdownMenu1:hover {
+  cursor: pointer; }
+
+.dropdown-item:hover {
+  cursor: pointer; }
+
 .project {
   position: relative;
   margin-top: 10px;
@@ -1099,6 +1105,14 @@ footer {
         position: relative;
         top: -110px;
         left: -40px; }
+      .profile-sidebar .profile-container .profile-group .profile-pic a {
+        z-index: 1;
+        top: -100px;
+        position: absolute;
+        background-color: white;
+        text-align: center;
+        font-size: 15px;
+        left: -30px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -2364,6 +2378,7 @@ footer {
       text-decoration: none; }
   .page-project .aha {
     margin-bottom: 20px;
+    border: none;
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -2376,6 +2391,7 @@ footer {
       padding: 0px 14px; }
   .page-project .uh-oh {
     margin-bottom: 20px;
+    border: none;
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -2632,12 +2648,12 @@ header.showcase-project .next {
         margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
           margin: 0 auto; }
+          .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li.active a {
+            background-color: #ED1C24;
+            border: 1px solid rgba(130, 130, 130, 0.2);
+            color: white; }
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
             border: 1px solid rgba(130, 130, 130, 0.2); }
-            .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a.active {
-              background-color: #ED1C24;
-              border: 1px solid rgba(130, 130, 130, 0.2);
-              color: white; }
 
 .page-learn {
   background-color: white;
