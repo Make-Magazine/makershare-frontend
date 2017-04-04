@@ -7,6 +7,7 @@ import { UserService } from '../../../d7services/user/user.service';
 import { Http } from '@angular/http';
 import { BookComponent } from '../book/book.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-individual-workshop',
@@ -50,10 +51,12 @@ export class IndividualWorkshopComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private http: Http,
     private modalService: NgbModal,
+    private loaderService: LoaderService,
   ) {
   }
 
   ngOnInit() {
+    this.loaderService.display(true);
     this.uid = localStorage.getItem('user_id');
     let userId = localStorage.getItem('user_id');
     this.nid = this.route.params['value'].nid
@@ -116,6 +119,9 @@ export class IndividualWorkshopComponent implements OnInit {
             }
           }
         }
+        this.loaderService.display(false);
+      }, err => {
+        this.loaderService.display(false);
       });
 
 

@@ -17,7 +17,7 @@
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
           <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
-          <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+          <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
           <div>
             <p *ngIf="projectCount" class="count align-self-end">{{projectCount.project_count}} projects</p>
           </div>
