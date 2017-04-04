@@ -199,15 +199,10 @@ export class ProfileComponent implements OnInit {
   }
 
   interestSelected(interest) {
-    console.log(this.ProfileInfo.maker_interests);
     this.SaveUser(this.ProfileInfo);
   }
 
   onInterestRemoved(interest) {
-
-      let id = this.ProfileInfo.maker_interests.indexOf(interest);
-      this.ProfileInfo.maker_interests = [];
-      this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(id), 1);
       this.SaveUser(this.ProfileInfo);
   }
 
