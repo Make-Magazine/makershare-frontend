@@ -5,6 +5,7 @@ import { ISorting } from '../../../models/challenge/sorting';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
 
 import 'rxjs/Rx';
 @Component({
