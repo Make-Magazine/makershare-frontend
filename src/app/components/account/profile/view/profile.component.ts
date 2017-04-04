@@ -13,7 +13,7 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
-
+import { Intrests} from '../../../../models/profile/intrests';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -95,7 +95,7 @@ export class ProfileComponent implements OnInit {
     this.FormGroupSocial.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
   }
-
+  tempMakerInterstsHolder:Array<Intrests>=[];
   CoverImageData: any = {};
   ProfilePicData: any = {};
   FileName:string = '';
@@ -199,11 +199,6 @@ export class ProfileComponent implements OnInit {
   }
 
   interestSelected(interest) {
-    if(this.ProfileInfo.maker_interests[0].name){
-        this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(0), 1);
-    }
-    
-    this.ProfileInfo.maker_interests.push(interest.tid);
     this.SaveUser(this.ProfileInfo);
   }
 
@@ -301,7 +296,16 @@ export class ProfileComponent implements OnInit {
       if(res.field_social_accounts){
         this.ProfileInfo.field_social_accounts = res.field_social_accounts;
       }
+      /**/
       this.ProfileInfo.maker_interests = res.maker_interests;
+      /**/
+      for(let tid in this.ProfileInfo.maker_interests) {
+            let intrest:Intrests= this.allIntersets.filter(function( obj ) {
+              return obj.tid == tid;
+            });
+            this.tempMakerInterstsHolder.push(intrest);
+      }
+
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
       localStorage.setItem('user_photo', this.profile.user_photo);
