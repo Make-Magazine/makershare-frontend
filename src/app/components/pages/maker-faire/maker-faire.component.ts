@@ -13,7 +13,9 @@ import { LoaderService } from '../../shared/loader/loader.service';
       </section>  
   `,
 })
-export class IntelMakeComponent implements OnInit {
+
+export class MakerFaireComponent implements OnInit {
+
   title = '';
   body = ''
   constructor(
@@ -23,7 +25,7 @@ export class IntelMakeComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 796]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 801]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
       this.loaderService.display(false);
@@ -32,5 +34,6 @@ export class IntelMakeComponent implements OnInit {
       this.loaderService.display(false);
     });
   }
+
 
 }

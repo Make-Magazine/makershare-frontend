@@ -32,13 +32,17 @@ import { AccessDeniedComponent } from './auth0/access-denied/access-denied.compo
 import { Four04Component } from './auth0/four04/four04.component';
 // loader service
 import { LoaderService } from './components/shared/loader/loader.service';
-import { PagesComponent } from './components/pages/pages.component';
+// static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
 import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
 import { AboutBadgesComponent } from './components/pages/about-badges/about-badges.component';
 import { TermsComponent } from './components/pages/terms/terms.component';
 import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
 import { MakezineComponent } from './components/pages/makezine/makezine.component';
+import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
+import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
+import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 
 
 @NgModule({
@@ -49,13 +53,16 @@ import { MakezineComponent } from './components/pages/makezine/makezine.componen
     SearchBoxComponent,
     AccessDeniedComponent,
     Four04Component,
-    PagesComponent,
     MakerMovementComponent,
     IntelMakeComponent,
     AboutBadgesComponent,
     TermsComponent,
     OtherSitesComponent,
     MakezineComponent,
+    MakerFaireComponent,
+    MakerIntelComponent,
+    MakerCampComponent,
+    IntelInnovationComponent,
   ],
   imports: [
     BrowserModule,
