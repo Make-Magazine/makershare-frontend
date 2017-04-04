@@ -39,6 +39,7 @@ import { AboutBadgesComponent } from './components/pages/about-badges/about-badg
 import { TermsComponent } from './components/pages/terms/terms.component';
 import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
 import { MakezineComponent } from './components/pages/makezine/makezine.component';
+import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { MakezineComponent } from './components/pages/makezine/makezine.componen
     TermsComponent,
     OtherSitesComponent,
     MakezineComponent,
+    MakerFaireComponent,
   ],
   imports: [
     BrowserModule,
