@@ -82,10 +82,10 @@ export class ProjectDetailsComponent implements OnInit {
             for (let resource of this.project.field_resources) {
               var resourceExt = resource.resource_file.split('.').pop();
               this.project.field_resources[i]['extension'] = resourceExt;
-              var size = parseInt(resource.filesize);
-              if (size > 1 && size < 1024) {
-                this.project.field_resources[i]['filesize'] = size + 'KB';
-              };
+              // var size = parseInt(resource.filesize);
+              // if (size > 1 && size < 1024) {
+              //   this.project.field_resources[i]['filesize'] = size + 'KB';
+              // };
               // else if (size == 1024 && size > 1024) {
               //   var size2 = Math.floor( size / 1000);
               //   this.project.field_resources[i]['filesize']= size2 + 'MB';

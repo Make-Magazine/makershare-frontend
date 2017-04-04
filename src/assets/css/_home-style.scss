@@ -237,6 +237,7 @@ footer {
     }
     .user-name {
         @include card-header-font-sm();
+                min-height: 24px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -245,6 +246,7 @@ footer {
     .user-nickname {
         font-size: 12px;
         margin-bottom: 0;
+        min-height: 18px;
         a {
             text-decoration: none;
             color: $light-grey;
@@ -256,6 +258,7 @@ footer {
         height: 38px;
         line-height: 17px;
         display: inline-block;
+        min-height: 50px;
     }
     .profile-tag, .user-city, .count {
         font-size: 14px;
@@ -263,6 +266,8 @@ footer {
     }
     .user-city {
         color: $title-color;
+        min-height: 21px;
+        margin-bottom: 4px;
         div {
             float: left;
             margin-right: 6px;
@@ -346,6 +351,7 @@ footer {
     }
     .user-name {
         @include card-header-font-sm();
+        min-height: 24px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -354,6 +360,7 @@ footer {
     .user-nickname {
         font-size: 12px;
         margin-bottom: 0;
+        min-height: 18px;
         a {
             text-decoration: none;
             color: $light-grey;
@@ -366,6 +373,7 @@ footer {
         line-height: 17px;
         overflow: hidden;
         display: inline-block;
+        min-height: 50px;
     }
     .profile-tag, .user-city, .count {
         font-size: 14px;
@@ -373,6 +381,8 @@ footer {
     }
     .user-city {
         color: $title-color;
+        min-height: 21px;
+        margin-bottom: 4px;
         div {
             float: left;
             margin-right: 6px;

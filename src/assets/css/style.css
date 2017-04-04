@@ -856,13 +856,15 @@ footer {
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  min-height: 24px; }
   .user-card .user-name a {
     text-decoration: none;
     color: #222; }
 .user-card .user-nickname {
   font-size: 12px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  min-height: 18px; }
   .user-card .user-nickname a {
     text-decoration: none;
     color: #BEBEBE; }
@@ -876,11 +878,14 @@ footer {
   margin-bottom: 5px;
   height: 38px;
   line-height: 17px;
-  display: inline-block; }
+  display: inline-block;
+  min-height: 50px; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
 .user-card .user-city {
-  color: #0AA9EA; }
+  color: #0AA9EA;
+  min-height: 21px;
+  margin-bottom: 4px; }
   .user-card .user-city div {
     float: left;
     margin-right: 6px; }
@@ -953,13 +958,15 @@ footer {
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  min-height: 24px; }
   .user-card-small .user-name a {
     text-decoration: none;
     color: #222; }
 .user-card-small .user-nickname {
   font-size: 12px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  min-height: 18px; }
   .user-card-small .user-nickname a {
     text-decoration: none;
     color: #BEBEBE; }
@@ -974,11 +981,14 @@ footer {
   height: 38px;
   line-height: 17px;
   overflow: hidden;
-  display: inline-block; }
+  display: inline-block;
+  min-height: 50px; }
 .user-card-small .profile-tag, .user-card-small .user-city, .user-card-small .count {
   font-size: 14px; }
 .user-card-small .user-city {
-  color: #0AA9EA; }
+  color: #0AA9EA;
+  min-height: 21px;
+  margin-bottom: 4px; }
   .user-card-small .user-city div {
     float: left;
     margin-right: 6px; }
@@ -2246,8 +2256,14 @@ footer {
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
-    .page-project .feedback-group .login-link a {
-      color: blue; }
+    .page-project .feedback-group .login-link {
+      padding: 10px; }
+      .page-project .feedback-group .login-link .feedback-label {
+        width: 100%;
+        font-weight: bold; }
+      .page-project .feedback-group .login-link a {
+        color: #11B3F0;
+        text-decoration: underline; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
@@ -3017,7 +3033,6 @@ header.showcase-project .next {
   .showcase-card-backlayer .showcase-card {
     position: relative;
     padding: 16px;
-    overflow: hidden;
     cursor: pointer;
     background-color: white;
     -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
@@ -3033,13 +3048,10 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .single-showcase .card-partership {
         color: #ED1C24; }
     .showcase-card-backlayer .showcase-card .left-side {
-      padding: 0px;
-      overflow: hidden; }
+      padding: 0px; }
     .showcase-card-backlayer .showcase-card .image-container {
-      overflow: hidden;
       position: relative;
       padding: 0;
-      width: 450px;
       height: auto; }
       .showcase-card-backlayer .showcase-card .image-container img {
         width: 100%;

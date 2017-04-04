@@ -23,17 +23,31 @@
             <p>Tools</p>
             <li class="list-group-item" *ngFor="let tool of project.field_tools; let i=index">
               <span class="count">{{tool.tool_quantity}}</span>
-              <span class="item">{{tool.tool_name}}</span>
-              </li>
+              <span class="item">
+                <a *ngIf="tool.tool_url" href="{{tool.tool_url}}">{{tool.tool_name}}</a>
+                <span *ngIf="!tool.tool_url">{{tool.tool_name}}</span>
+              </span>
+            </li>
           </ul>
           <hr *ngIf="project.field_parts">
+
+
+
+
           <ul class="list-group boards-kits" *ngIf="project.field_parts">
             <p>Boards + Kits</p>
             <li class="list-group-item" *ngFor="let part of project.field_parts; let i=index">
               <span class="count">{{part.part_quantity}}</span>
-              <span class="item"> {{part.part_name}}</span>
-              </li>
+              <span class="item">
+                <a *ngIf="part.part_url" href="">{{part.part_name}}</a>
+                <span *ngIf="!part.part_url">{{part.part_name}}</span>
+              </span>
+            </li>
           </ul>
+
+
+
+
           <hr *ngIf="project.field_materials">
           <ul class="list-group materials" *ngIf="project.field_materials">
             <p>Materials</p>
@@ -46,7 +60,7 @@
           <ul *ngIf="project.field_resources" class="list-group resources">
             <p>Resources</p>
             <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
-              <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>
+              <a href="{{resource.resource_file}}">{{resource.term_name}} - {{resource.extension}} - {{resource.filesize}}</a>
             </li>
           </ul>
         </div>
