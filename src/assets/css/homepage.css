@@ -317,12 +317,6 @@ a:not([href]):not([tabindex]) {
   border-radius: 0;
   font-size: 13px; }
 
-#dropdownMenu1:hover {
-  cursor: pointer; }
-
-.dropdown-item:hover {
-  cursor: pointer; }
-
 .project {
   position: relative;
   margin-top: 10px;
@@ -1105,14 +1099,6 @@ footer {
         position: relative;
         top: -110px;
         left: -40px; }
-      .profile-sidebar .profile-container .profile-group .profile-pic a {
-        z-index: 1;
-        top: -100px;
-        position: absolute;
-        background-color: white;
-        text-align: center;
-        font-size: 15px;
-        left: -30px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -2378,7 +2364,6 @@ footer {
       text-decoration: none; }
   .page-project .aha {
     margin-bottom: 20px;
-    border: none;
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -2391,7 +2376,6 @@ footer {
       padding: 0px 14px; }
   .page-project .uh-oh {
     margin-bottom: 20px;
-    border: none;
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -2648,12 +2632,12 @@ header.showcase-project .next {
         margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
           margin: 0 auto; }
-          .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li.active a {
-            background-color: #ED1C24;
-            border: 1px solid rgba(130, 130, 130, 0.2);
-            color: white; }
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
             border: 1px solid rgba(130, 130, 130, 0.2); }
+            .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a.active {
+              background-color: #ED1C24;
+              border: 1px solid rgba(130, 130, 130, 0.2);
+              color: white; }
 
 .page-learn {
   background-color: white;
@@ -3873,7 +3857,9 @@ img {
     padding: 12px;
     box-shadow: 2px 6px 22px #888888; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
-    box-shadow: 0px 7px 12px #888888; }
+    box-shadow: 0px 7px 12px #888888;
+    width: 187px;
+    height: 252px; }
   .page-workshop-single .page-workshop-individual .workshop-content .lesson, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson {
     background-color: white;
     padding: 10px;
@@ -4018,6 +4004,7 @@ img {
       line-height: 110% !important;
       color: #828282;
       display: -webkit-box;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       min-height: 116px;
       color: #4F4F4F; }
@@ -4782,4 +4769,4 @@ img {
     width: 1282px;
     max-width: 100%; } }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=homepage.css.map */

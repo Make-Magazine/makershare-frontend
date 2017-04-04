@@ -191,4 +191,24 @@ $(document).ready(function() {
 		$tr.after($clone);
 		$clone.find(':text').val('');
     });*/
+
+
+/* trigger project tabs buttons another button click event */
+
+// 		$(document).on('click',".read-story", function(e){
+// 			e.preventDefault();
+// 			$('#project-story').trigger('click');
+// 			alert('CLICKED 1');
+// });
+
+// 		$(document).on('click',".build-project", function(e){
+// 			e.preventDefault();
+// 			$('#how-to').trigger('click');
+// 			alert('CLICKED 2');
+// });
+
+
+
+
+
 });

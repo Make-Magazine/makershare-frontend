@@ -177,7 +177,15 @@
                     top: -110px;
                     left: -40px;
                 }
-
+                a {
+                    z-index: 1;
+                    top: -100px;
+                    position: absolute;
+                    background-color: white;
+                    text-align: center;
+                    font-size: 15px;
+                    left: -30px;
+                }
                 .profile-type {
                     position: absolute;
                     bottom: 10px;

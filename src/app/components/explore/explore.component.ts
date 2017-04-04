@@ -48,7 +48,7 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       // console.log(data);
       this.projects = this.projects.concat(data);
-      // console.log(this.projects);
+      //console.log(this.projects);
     }, err => {
 
     });
@@ -171,10 +171,10 @@ export class ExploreComponent implements OnInit {
       categories.forEach((element,index) =>{
         if(element.parent_tid){
           this.categories_childs.push(element);
-          console.log(this.categories_childs)
+        //  console.log(this.categories_childs)
         }else{
           this.categories_parents.push(element);
-          console.log(this.categories_parents)          
+         // console.log(this.categories_parents)          
         }
       });
     });

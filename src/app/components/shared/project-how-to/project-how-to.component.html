@@ -1,39 +1,56 @@
 <div class="row project-body">
   <div class="region region-content col-lg-8 col-md-8">
     <div class="how-to-tab">
-      <p [innerHTML]="project.field_how_to?.value"></p>
-    </div>
-    <div class="feedback-group">
-      <app-comment [nid]="project.nid"></app-comment>
+      <div class="project-body-content">
+        <p [innerHTML]="project.field_how_to?.value" *ngIf="project.field_how_to?.value"></p>
+        <p [innerHTML]="project.field_how_to?.value" *ngIf="!project.field_how_to?.value">There is no content available!</p>
+      </div>
     </div>
   </div>
+
+
+
+
   <aside class="side-bar col-lg-4 col-md-4">
     <div class="sidebar-container">
       <div class="how-to-sidebar">
-        <div class="block-style avg-time">
-          <p class="average">Average Build Time:</p><i class="fa fa-clock-o hours" aria-hidden="true"><span>{{project.field_duration}} Hours</span></i>
+        <div class="difficulty-duration" *ngIf="project.field_difficulty || project.field_duration">
+          <p>Difficulty + Duration</p>
+          <span>{{project.field_difficulty}} - {{project.field_duration}}</span>
         </div>
-        <div class="block-style avg-time" *ngIf="project.field_difficulty">
-          <p>Difficulty : {{project.field_difficulty}}</p>
+        <div class="tools-kits" *ngIf="project.field_tools || project.field_parts || project.field_materials || project.field_resources">
+          <ul class="list-group tools" *ngIf="project.field_tools">
+            <p>Tools</p>
+            <li class="list-group-item" *ngFor="let tool of project.field_tools; let i=index">
+              <span class="count">{{tool.tool_quantity}}</span>
+              <span class="item">{{tool.tool_name}}</span>
+              </li>
+          </ul>
+          <hr *ngIf="project.field_parts">
+          <ul class="list-group boards-kits" *ngIf="project.field_parts">
+            <p>Boards + Kits</p>
+            <li class="list-group-item" *ngFor="let part of project.field_parts; let i=index">
+              <span class="count">{{part.part_quantity}}</span>
+              <span class="item"> {{part.part_name}}</span>
+              </li>
+          </ul>
+          <hr *ngIf="project.field_materials">
+          <ul class="list-group materials" *ngIf="project.field_materials">
+            <p>Materials</p>
+            <li class="list-group-item" *ngFor="let material of project.field_materials; let i=index">
+              <span class="count">{{material.material_quantity}}</span>
+              <span class="item"> {{material.material_id}}</span>
+              </li>
+          </ul>
+          <hr *ngIf="project.field_resources">
+          <ul *ngIf="project.field_resources" class="list-group resources">
+            <p>Resources</p>
+            <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
+              <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>
+            </li>
+          </ul>
         </div>
-        <ul *ngIf="project.field_resources" class="list-group resources">
-          <h3>Resources</h3>
-          <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
-            <a href="{{resource.resource_file}}">{{resource.filename}} - {{resource.extension}} - {{resource.filesize}}</a>
-          </li>
-        </ul>
-        <ul class="list-group tools" *ngIf="tool">
-          <h3>Tools</h3>
-          <li class="list-group-item" *ngFor="let tool of project.field_tools; let i=index"><span class="amount">{{tool.tool_quantity}} - </span><span class="item"> {{tool.tool_name}}</span></li>
-        </ul>
-        <ul class="list-group boards-kits" *ngIf="part">
-          <h3>Boards &amp; Kits</h3>
-          <li class="list-group-item" *ngFor="let part of project.field_parts; let i=index"> <span class="amount">{{part.part_quantity}} - </span><span class="item"> {{part.part_name}}</span></li>
-        </ul>
-        <ul class="list-group materials" *ngIf="material">
-          <h3>Materials</h3>
-          <li class="list-group-item" *ngFor="let material of project.field_materials; let i=index"> <span class="amount">{{material.material_quantity}} - </span><span class="item"> {{material.material_id}}</span></li>
-        </ul>
+
       </div>
     </div>
   </aside>

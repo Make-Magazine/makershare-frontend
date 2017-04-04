@@ -43,7 +43,11 @@ export class FollowComponent implements OnInit {
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.userId = localStorage.getItem('user_id');
-
+  this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        
+      }else{
     this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
       this.isFollowed = data[0];
 
@@ -56,7 +60,8 @@ export class FollowComponent implements OnInit {
     }, err => {
       //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
     })
-
+      }//end else if
+  });//end if check user login
   }
   /* function follow */
   followThis(e: Event) {
