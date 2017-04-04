@@ -346,6 +346,7 @@
 	}
 	.aha {
 		margin-bottom: 20px;
+		border: none;
 		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -362,6 +363,7 @@
 	}
 	.uh-oh {
 		margin-bottom: 20px;
+		border: none;
 		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -719,13 +721,13 @@ header.showcase-project {
 						ul {
 							margin: 0 auto;
 							li {
+								&.active a {
+									background-color: $main-button-1;
+									border: 1px solid rgba(130, 130, 130, 0.2);
+									color: white;
+								}
 								a {
 									border: 1px solid rgba(130, 130, 130, 0.2);
-									&.active {
-										background-color: $main-button-1;
-										border: 1px solid rgba(130, 130, 130, 0.2);
-										color: white;
-									}
 								}
 							}
 						}

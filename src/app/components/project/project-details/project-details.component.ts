@@ -12,9 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './project-details.component.html',
 })
 export class ProjectDetailsComponent implements OnInit {
-
-
-  current_active_tab;
+  
+  current_active_tab = 'project-story';
+  changeProjectTab(NewTab) {
+    this.current_active_tab = NewTab;
+  }
   project;
   projectDetails;
   currentuser;
@@ -61,8 +63,6 @@ export class ProjectDetailsComponent implements OnInit {
       /* end service */
 
       // dispatch action to load the details here-solve no load issue.
-
-      this.current_active_tab = 'project-story';
       this.route.params
         // (+) converts string 'id' to a number
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
@@ -126,9 +126,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.ngOnInit();
 
   }
-  changeProjectTab(NewTab) {
-    this.current_active_tab = NewTab;
-  }
+  
 
   forkThis(e: Event) {
     e.preventDefault();

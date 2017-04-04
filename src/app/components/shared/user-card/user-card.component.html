@@ -5,9 +5,9 @@
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-          <div  class="icons-side-user">
-             <div class="user-icon" *ngFor="let badge of badges;">
-                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">                
+          <div class="icons-side-user">
+            <div class="user-icon" *ngFor="let badge of badges;">
+              <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
           </div>
           <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>
@@ -18,10 +18,9 @@
           <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
           <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
-           <div >
-                 <p *ngIf="projectCount" class="count align-self-end">{{projectCount.project_count}} projects</p>
-
-            </div>
+          <div>
+            <p *ngIf="projectCount" class="count align-self-end">{{projectCount.project_count}} projects</p>
+          </div>
         </div>
       </div>
     </div>
@@ -35,7 +34,7 @@
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-          
+
         </div>
         <div class="media-body">
           <p class="user-nickname" *ngIf="card.contact_email">{{card.contact_email}}</p>
@@ -56,7 +55,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg" class="form-horizontal">
+    <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg"
+      class="form-horizontal">
       <!--<div class="form-group" *ngIf="card">
               <div class="result">
                 <div class="user-image-container">

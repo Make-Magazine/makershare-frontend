@@ -15,6 +15,8 @@ export class LikeComponent implements OnInit {
   @Input() user;
   userId;
   currentuser;
+      checkUserLogin = false;
+
   isLiked = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -23,9 +25,14 @@ export class LikeComponent implements OnInit {
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
 
-  ) { }
+  ) { this.router = router; }
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
+      this.userId = localStorage.getItem('user_id');
+  this.userId = localStorage.getItem('user_id');
+  this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {}else{
       /*like start */
       this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
         this.isLiked = data[0];
@@ -33,12 +40,22 @@ export class LikeComponent implements OnInit {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         // console.log(err);
       })
+
       /*like end*/
+    }//end else 
+      });//end userservice isLogedIn
+
 
   }
 
   /* function like */
   likeThis(e: Event) {
+          this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }
     e.preventDefault();
     if (this.isLiked) {
       this.flagService.unflag(this.nodeNid, this.user, 'like').subscribe(response => {
@@ -55,6 +72,8 @@ export class LikeComponent implements OnInit {
         // console.log(err);
       });
     }
+        });//end if check user login
+
   }
   /* end function like */
 
