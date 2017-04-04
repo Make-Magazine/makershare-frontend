@@ -3,8 +3,15 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
-  selector: 'app-intel-make',
-  templateUrl: './intel-make.component.html',
+  selector: 'app-about-badges',
+  template: `
+      <section class="page-node">
+        <div class="container">
+          <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
+          <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
+        </div>
+      </section>  
+  `,
 })
 export class IntelMakeComponent implements OnInit {
   title = '';
