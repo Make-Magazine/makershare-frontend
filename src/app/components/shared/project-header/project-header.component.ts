@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
 
 @Component({
@@ -7,10 +7,12 @@ import { UserService } from '../../../d7services/user/user.service';
 })
 export class ProjectHeaderComponent implements OnInit {
   @Input('project') project;
-  @Input() projectInfo; 
+  @Input() projectInfo;
+  @Output() SwitchTab = new EventEmitter();
+
   constructor(
     private userService: UserService,
-  ) { }
+  ) {}
 
   userLogin;
   currentuser;
@@ -39,6 +41,10 @@ export class ProjectHeaderComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
       this.userLogin = data
     });
+  }
+
+  SwitchTabFunc(NewTab) {
+    this.SwitchTab.emit(NewTab);
   }
 
 }

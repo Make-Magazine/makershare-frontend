@@ -171,12 +171,12 @@ export class ExploreComponent implements OnInit {
       categories.forEach((element,index) =>{
         if(element.parent_tid){
           this.categories_childs.push(element);
-        //  console.log(this.categories_childs)
         }else{
           this.categories_parents.push(element);
-         // console.log(this.categories_parents)          
         }
       });
+      console.log(this.categories_childs);
+      console.log(this.categories_parents);          
     });
   }
 

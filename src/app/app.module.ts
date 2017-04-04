@@ -30,7 +30,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
-
+// loader service
+import { LoaderService } from './components/shared/loader/loader.service';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { Four04Component } from './auth0/four04/four04.component';
     Auth,
     AuthGuardService,
     NotificationBarService,
+    LoaderService,
     
   ],
   bootstrap: [AppComponent]

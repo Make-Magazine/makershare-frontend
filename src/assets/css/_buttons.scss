@@ -274,3 +274,15 @@ a:not([href]):not([tabindex]) {
     border-radius: 0;
     font-size: 13px;
 }
+
+#dropdownMenu1 {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.dropdown-item {
+    &:hover {
+        cursor: pointer;
+    }
+}
