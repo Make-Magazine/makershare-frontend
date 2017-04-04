@@ -268,7 +268,6 @@ export class ProfileComponent implements OnInit {
           flag= false;
         }
     }
-    debugger
     if(flag){
         Object.assign(this.ProfileInfo.field_social_accounts , this.FormGroupSocial.value);
         this.SaveUser(this.ProfileInfo);
