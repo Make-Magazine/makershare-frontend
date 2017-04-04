@@ -101,13 +101,17 @@
 		}
 	}
 	.project-story-tab {
-		margin-bottom: 10px;
+		margin-bottom: 30px;
 		.project-body-content {
 			padding: 16px;
 			background-color: white;
 			-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+			p {
+				 @include desc-font-14();
+				 line-height: inherit !important;
+			}
 		}
 	}
 	.feedback-group {
@@ -144,6 +148,7 @@
 	
 	.project-body {
 		margin-bottom: 20px;
+		margin-top: 30px;
 		p{
 		}
 		&>p:first-of-type {
@@ -160,6 +165,10 @@
 			-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+			p {
+				@include desc-font-14();
+				line-height: inherit !important;
+			}
 			}
 		}
 		.how-to-sidebar {
@@ -171,10 +180,12 @@
 				-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 				box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 				p {
-					color: $red;
+					color: $red !important;
 					text-align: center;
 					font-size: 18px;
 					font-weight: bold;
+					@include desc-font-14();
+				 	line-height: inherit !important;
 				}
 				span {
 					text-align: center;
@@ -193,21 +204,29 @@
 				.tools, .materials, .boards-kits {
 					margin-bottom: 30px;
 					p {
-					color: #ED1C24;
+					color: $red !important;
 					text-align: center;
 					margin-top: 10px;
 					font-size: 18px;
+					@include desc-font-14();
+				 	line-height: inherit !important;
 					}
 					li {
 						border: none;
 						padding: 0px 6px;
+						@include desc-font-14();
+				 		line-height: inherit !important;
 					}
 					.count {
 						min-width: 38px;
 						color: $font-grey;
+						@include desc-font-14();
+				 		line-height: inherit !important;
 					}
 					.item {
 						color: $font-grey;
+						@include desc-font-14();
+				 		line-height: inherit !important;
 					}
 				}
 				hr {
@@ -217,17 +236,21 @@
 					}
 				.resources {
 					p {
-					color: #ED1C24;
+					color: $red !important;
 					text-align: center;
 					margin-top: 10px;
 					font-size: 18px;
+					@include desc-font-14();
+				 	line-height: inherit !important;
 					}
 					li {
 						border: none;
 						padding: 6px;
 						a {
 							text-decoration: underline;
-							color: $blue;
+							color: $blue !important;
+							@include desc-font-14();
+				 			line-height: inherit !important;
 						}
 					}
 				}
@@ -380,11 +403,17 @@
 			padding: 6px 8px 0px 8px;
 			p {
 				text-align: center;
-				color: $main-button-1;
+				color: $red !important;
+				@include desc-font-14();
+				line-height: inherit !important;
 			}
 		}
 		.card-block {
     padding: 0px 14px;
+		 p {
+			@include desc-font-14();
+			line-height: inherit !important;
+		 }
 		}
 	}
 	.uh-oh {
@@ -397,11 +426,17 @@
 			padding: 6px 8px 0px 8px;
 			p {
 			text-align: center;
-			color: $main-button-1;
+			color: $red !important;
+			@include desc-font-14();
+			line-height: inherit !important;
 			}
 		}
 		.card-block {
     padding: 0px 14px;
+		p {
+			@include desc-font-14();
+			line-height: inherit !important;
+		}
 		}
 	}
 	.license-report {
@@ -579,6 +614,8 @@ header.showcase-project {
 		.comment-body {
 			p {
 				margin: 0px;
+				@include desc-font-14();
+				line-height: inherit !important;
 			}
 		}
 		.new-comment  {
