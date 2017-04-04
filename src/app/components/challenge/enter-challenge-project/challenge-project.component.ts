@@ -95,14 +95,14 @@ export class ChallengeProjectComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', this.nid]]))
       .subscribe(data => {
         this.challangeData = data[0];
-        console.log(this.challangeData);
+        
           //calculate days difference
         if (this.challangeData) {
           var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
           var todayDate = new Date();
           var endDate = new Date(this.challangeData.challenge_end_date.value);
           var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
-          console.log(diffDays);
+          
           if (diffDays >= 0) {
             this.challangeData.diffDays = diffDays
           } else {

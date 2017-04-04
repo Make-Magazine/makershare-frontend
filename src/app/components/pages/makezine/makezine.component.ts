@@ -3,8 +3,15 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
-  selector: 'app-makezine',
-  templateUrl: './makezine.component.html',
+  selector: 'app-about-badges',
+  template: `
+      <section class="page-node">
+        <div class="container">
+          <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
+          <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
+        </div>
+      </section>  
+  `,
 })
 export class MakezineComponent implements OnInit {
   title = '';
@@ -16,9 +23,9 @@ export class MakezineComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 797]]).subscribe(data => {
-      this.title = data.title;
-      this.body = data.body;
+    this.viewService.getView('pages', [['nid', 800]]).subscribe(data => {
+      this.title = data[0].title;
+      this.body = data[0].body;
       this.loaderService.display(false);
     }, err => {
       console.log(err);

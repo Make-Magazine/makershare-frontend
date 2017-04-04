@@ -84,8 +84,8 @@
               <!-- End of workshop ngIf -->
               <div *ngFor="let object of objects; let i=index">
                 <div class="row">
-                  <div class="media learning-card" *ngIf="object.learning_content_type == 'PDF' ">
-                    <div class="card col-sm-3" id="OB{{object?.nid}}" style="border: none;">
+                  <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;">
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                         data-toggle="modal" data-target="#previewer">
                         <div class="card-block">
@@ -103,7 +103,7 @@
                           <a href="#" class="card-link">Card link</a>
                         </div>
                     </div>
-                    <div class="media-body col-sm-9">
+                    <div class="media-body col-lg-9">
                       <h4>{{object.lesson_name}}</h4>
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
@@ -117,8 +117,8 @@
                   <!-- End  ngif of pdf object -->
                   <!---FOR Video CONTENT TYPE -->
 
-                  <div class="media learning-card" *ngIf="object.learning_content_type == 'Video' ">
-                    <div class="card col-sm-3" id="OB{{object?.nid}}" style="border: none;" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
+                  <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Video' ">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
                       <div class="video-image">
                       <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap">
                       </div>
@@ -172,8 +172,8 @@
                   <!-- End  ngFor of Video object -->
                   <!---FOR Book CONTENT TYPE -->
 
-                  <div class="media learning-card" *ngIf="object.learning_content_type == 'Book' ">
-                    <div class="card col-sm-3" id="OB{{object?.nid}}" style="border: none;">
+                  <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Book' ">
+                    <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;">
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                         data-toggle="modal" data-target="#previewer">
                         <div class="card-block">

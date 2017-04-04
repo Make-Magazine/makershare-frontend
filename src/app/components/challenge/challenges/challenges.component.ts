@@ -4,6 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { UserService } from '../../../d7services/user/user.service';
 
 @Component({
   selector: 'app-challenges',
@@ -24,6 +25,8 @@ export class ChallengesComponent implements OnInit {
     private router: Router,
     private flagService: FlagService,
     private loaderService: LoaderService,
+        private userService: UserService,
+
   ) { }
 
   ngOnInit() {
@@ -134,6 +137,15 @@ export class ChallengesComponent implements OnInit {
   }
 
     enterToChallengeProject(nid) {
+      
+     this.userService.isLogedIn().subscribe(data => {
+      //this.checkUserLogin = data;
+      if (data == false) {
+        //localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }else{
     this.router.navigate(['challenges/enter-challenge', nid]);
+      }
+          });
   }
-};
+}

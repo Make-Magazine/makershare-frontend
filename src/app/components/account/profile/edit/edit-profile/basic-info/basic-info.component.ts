@@ -90,15 +90,15 @@ export class BasicInfoComponent implements OnInit {
   }
 
   public cou(value: any): void {
-    console.log('Removed value is: ', value);
+    
   }
 
   public typed(value: any): void {
-    console.log('New search input: ', value);
+    
   }
 
   public refreshValue(value: any): void {
-    console.log('Selected value is: ', value);
+    
   }
   buildForm(): void {
     this.basicForm = this.fb.group({
@@ -191,10 +191,10 @@ export class BasicInfoComponent implements OnInit {
        this.disableBD = false;
        this.datepickerOptions.attrs.readonly = false;
      }
-     console.log(this.disableBD);
+     
   }
   onValueChanged(data?: any) {
-    console.log("Validation Called");
+    
     if (!this.basicForm) { return; }
     const form = this.basicForm;
     this.saveBasic.emit(this.basicForm);

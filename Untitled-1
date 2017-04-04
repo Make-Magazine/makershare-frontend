@@ -73,7 +73,7 @@ export class ChallengesComponent implements OnInit {
   challengesCount() {
       this.viewService.getView('maker_count_api',[]).subscribe(data => {
       this.statusesCount=data;
-      console.log(this.statusesCount);
+    
     });
   }
 
