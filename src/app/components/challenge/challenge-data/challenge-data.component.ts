@@ -303,7 +303,15 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
+          this.userService.isLogedIn().subscribe(data => {
+      //this.checkUserLogin = data;
+      if (data == false) {
+        //localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }else{
     this.router.navigate(['challenges/enter-challenge', nid]);
+      }
+          });
   }
   /* end function to navigate to enter challenge */
   /* function cheack user allowe to enter challenge */
