@@ -93,8 +93,9 @@ $(document).ready(function() {
   $(document).on('mouseover', '.explore-tags li a', function() {
     id = $(this).attr('id');
     ul = "ul."+id;
-    $('.submenus ' + ul).siblings().hide();
-    $('.submenus ' + ul).show();
+    $('.submenus div ' + ul).parent('div').siblings().hide();
+    $('.submenus div ' + ul).parent('div').show();
+    $('.submenus div ' + ul).show();
 
   });
   $(document).on('click','.project-aside a', function(e){

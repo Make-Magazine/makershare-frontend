@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-// import { ProjectHeaderComponent } from '../../shared/project-header/project-header.component'
-// import { ProjectStoryComponent } from '../../shared/project-story/project-story.component'
-// import { ProjectHowToComponent } from '../../shared/project-how-to/project-how-to.component'
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoaderService } from '../../shared/loader/loader.service';
+
 @Component({
   selector: 'app-showcase-project',
   templateUrl: './showcase-project.component.html',
@@ -39,10 +38,12 @@ export class ShowcaseProjectComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-    private flagService: FlagService
+    private flagService: FlagService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
+
     this.projectNid = this.route.params['value'].pnid;
     this.showcaseNid = this.route.params['value'].nid;
     this.current_active_tab = 'project-story';
@@ -88,6 +89,12 @@ export class ShowcaseProjectComponent implements OnInit {
       this.project = data;
       this.projectDetails = this.project;
       this.projectDetails.nid = this.projectNid;
+      //hide spinner
+      this.loaderService.display(false);
+
+    }, err => {
+      //hide spinner
+      this.loaderService.display(false);
     });
   }
 

@@ -11,8 +11,8 @@
   </div>
 </form>
 </div>
-<div *ngIf="checkUserLogin==false">
-  <p>Please<a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login
-         </a> to Add Your Comment</p>
+<div class="login-link" *ngIf="!auth.authenticated()">
+  <label class="feedback-label">Feedback</label>
+  <p>Please <a class="join-link" (click)="auth.login()"> Join / Login </a>to Add Your Comment</p>
   </div>
 

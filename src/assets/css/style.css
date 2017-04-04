@@ -277,6 +277,11 @@ a:not([href]):not([tabindex]).btn-soft-grey {
 .button-container-sec-3 {
   margin-left: 3px;
   display: inline-block; }
+  .button-container-main-1 .btn,
+  .button-container-main-2 .btn,
+  .button-container-sec-2 .btn,
+  .button-container-sec-3 .btn {
+    padding: 8px 16px; }
 
 .button-container-main-1 {
   border: 2px solid #ED1C24; }
@@ -2179,6 +2184,26 @@ footer {
           background-color: #222; }
       .page-project .top-content-wrapper ul.project-tags .btn:hover {
         cursor: default; }
+    .page-project .top-content-wrapper .project-likes {
+      min-width: 60px;
+      text-align: right;
+      padding: 0px 12px; }
+      .page-project .top-content-wrapper .project-likes img {
+        width: 12px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-likes span {
+        font-size: 14px;
+        color: #828282; }
+    .page-project .top-content-wrapper .project-views {
+      min-width: 60px;
+      text-align: right;
+      padding: 0px 12px; }
+      .page-project .top-content-wrapper .project-views img {
+        width: 21px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-views span {
+        font-size: 14px;
+        color: #828282; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
@@ -2201,18 +2226,28 @@ footer {
           background-color: #fff !important;
           border-bottom-color: #fff; }
   .page-project .project-story-tab {
-    margin-bottom: 10px; }
+    margin-bottom: 30px; }
     .page-project .project-story-tab .project-body-content {
       padding: 16px;
       background-color: white;
       -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      .page-project .project-story-tab .project-body-content p {
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
   .page-project .feedback-group {
     background-color: white;
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-project .feedback-group .login-link a {
+      color: blue; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
@@ -2231,7 +2266,8 @@ footer {
         width: 25px;
         color: #222; }
   .page-project .project-body {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    margin-top: 30px; }
     .page-project .project-body > p:first-of-type {
       font-weight: bold; }
     .page-project .project-body .how-to-tab img {
@@ -2243,6 +2279,14 @@ footer {
       -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      .page-project .project-body .how-to-tab .project-body-content p {
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
     .page-project .project-body .how-to-sidebar .difficulty-duration {
       background-color: white;
       padding: 18px 10px 34px 10px;
@@ -2251,10 +2295,17 @@ footer {
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
       .page-project .project-body .how-to-sidebar .difficulty-duration p {
-        color: #ED1C24;
+        color: #ED1C24 !important;
         text-align: center;
         font-size: 18px;
-        font-weight: bold; }
+        font-weight: bold;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
       .page-project .project-body .how-to-sidebar .difficulty-duration span {
         text-align: center;
         font-size: 20px;
@@ -2270,33 +2321,75 @@ footer {
       .page-project .project-body .how-to-sidebar .tools-kits .tools, .page-project .project-body .how-to-sidebar .tools-kits .materials, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits {
         margin-bottom: 30px; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools p, .page-project .project-body .how-to-sidebar .tools-kits .materials p, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits p {
-          color: #ED1C24;
+          color: #ED1C24 !important;
           text-align: center;
           margin-top: 10px;
-          font-size: 18px; }
+          font-size: 18px;
+          font-family: "Messina Sans SemiBold" !important;
+          font-size: 14pt !important;
+          font-weight: 600 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools li, .page-project .project-body .how-to-sidebar .tools-kits .materials li, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits li {
           border: none;
-          padding: 0px 6px; }
+          padding: 0px 6px;
+          font-family: "Messina Sans SemiBold" !important;
+          font-size: 14pt !important;
+          font-weight: 600 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .count, .page-project .project-body .how-to-sidebar .tools-kits .materials .count, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .count {
           min-width: 38px;
-          color: #444; }
+          color: #444;
+          font-family: "Messina Sans SemiBold" !important;
+          font-size: 14pt !important;
+          font-weight: 600 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
-          color: #444; }
+          color: #444;
+          font-family: "Messina Sans SemiBold" !important;
+          font-size: 14pt !important;
+          font-weight: 600 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          line-height: inherit !important; }
       .page-project .project-body .how-to-sidebar .tools-kits hr {
         margin-top: 10px;
         margin-bottom: 10px;
         width: 90%; }
       .page-project .project-body .how-to-sidebar .tools-kits .resources p {
-        color: #ED1C24;
+        color: #ED1C24 !important;
         text-align: center;
         margin-top: 10px;
-        font-size: 18px; }
+        font-size: 18px;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
       .page-project .project-body .how-to-sidebar .tools-kits .resources li {
         border: none;
         padding: 6px; }
         .page-project .project-body .how-to-sidebar .tools-kits .resources li a {
           text-decoration: underline;
-          color: #00AEEF; }
+          color: #00AEEF !important;
+          font-family: "Messina Sans SemiBold" !important;
+          font-size: 14pt !important;
+          font-weight: 600 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          line-height: inherit !important; }
   .page-project .region-content .how-to-tab h3 {
     font-weight: normal; }
   .page-project .feedback-group .feedback {
@@ -2393,9 +2486,24 @@ footer {
       padding: 6px 8px 0px 8px; }
       .page-project .aha .card-heading p {
         text-align: center;
-        color: #ED1C24; }
+        color: #ED1C24 !important;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
     .page-project .aha .card-block {
       padding: 0px 14px; }
+      .page-project .aha .card-block p {
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
   .page-project .uh-oh {
     margin-bottom: 20px;
     border: none;
@@ -2406,9 +2514,24 @@ footer {
       padding: 6px 8px 0px 8px; }
       .page-project .uh-oh .card-heading p {
         text-align: center;
-        color: #ED1C24; }
+        color: #ED1C24 !important;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
     .page-project .uh-oh .card-block {
       padding: 0px 14px; }
+      .page-project .uh-oh .card-block p {
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 14pt !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: inherit !important; }
   .page-project .license-report .license {
     font-size: 14px;
     color: #828282; }
@@ -2519,7 +2642,14 @@ header.showcase-project .next {
         color: #444;
         margin: 0px; }
   .feedback-group .comment-body p {
-    margin: 0px; }
+    margin: 0px;
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 14pt !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    line-height: inherit !important; }
   .feedback-group .new-comment {
     padding: 10px;
     background-color: white; }
@@ -2534,7 +2664,8 @@ header.showcase-project .next {
         border: 1px solid #ccc;
         color: #444;
         margin-top: 2px;
-        position: relative; }
+        position: relative;
+        padding: 0px 6px; }
         .feedback-group .new-comment .comment-body textarea .feedback-label {
           width: 100%;
           font-weight: bold; }
