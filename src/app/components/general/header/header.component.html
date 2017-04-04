@@ -3,34 +3,34 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#MainNav" aria-controls="MainNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
-    <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
-      <ul class="list-unstyled logged-in d-flex align-items-center">
-        <li class="search-icon">
-          <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
-        </li>
-      </ul>
-      <ul class="list-unstyled login-block" *ngIf="!auth.authenticated()">
-        <li class="button-container-main-1"><a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login</a></li>
-      </ul>
-      <ul class="list-unstyled logged-in" *ngIf="auth.authenticated()">
-        <!-- <li><a href="" class="btn btn-white btn-sharp">Beta Feedback</a></li> -->
-        <li class="min-user-img" *ngIf="auth.authenticated()">
-          <div ngbDropdown class="d-inline-block account-controls dropdown">
-            <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
+      </button>
+      <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
+      <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
+        <ul class="list-unstyled logged-in d-flex align-items-center">
+          <li class="search-icon">
+            <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
+          </li>
+        </ul>
+        <ul class="list-unstyled login-block" *ngIf="!auth.authenticated()">
+          <li class="button-container-main-1"><a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login</a></li>
+        </ul>
+        <ul class="list-unstyled logged-in" *ngIf="auth.authenticated()">
+          <!-- <li><a href="" class="btn btn-white btn-sharp">Beta Feedback</a></li> -->
+          <li class="min-user-img" *ngIf="auth.authenticated()">
+            <div ngbDropdown class="d-inline-block account-controls dropdown">
+              <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
               <img src="{{user_photo}}" alt="" class="img-responsive">
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
-              <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
-              <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
-              <button class="dropdown-item" >Account Settings</button>
-              <button class="dropdown-item" (click)="auth.logout()">Logout</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
+                <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
+                <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
+                <button class="dropdown-item">Account Settings</button>
+                <button class="dropdown-item" (click)="auth.logout()">Logout</button>
+              </div>
             </div>
-          </div>
-        </li>
-        <!--<li>
+          </li>
+          <!--<li>
           <div ngbDropdown class="d-inline-block account-controls dropdown">
             <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{ActionName}} <i class="fa fa-lg fa-bars"></i></button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -41,68 +41,66 @@
             </div>
           </div>
         </li>-->
-        <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
-      </ul>
+          <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
+        </ul>
 
-    </div>
-    <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
-      <ul class="navbar-nav justify-content-md-between">
-        <li class="nav-item hidden-md-up">
-          <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['explore']">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['challenges']">Missions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['learn']">Learning</a>
-        </li>
-        <li class="nav-item hidden-md-up maker-menu-sm">
-          <a class="nav-link menu-title" href="#">More</a>
-          <a class="nav-link" href="#">The Maker Movement</a>
-          <a class="nav-link" href="#">Intel + Make</a>
-          <a class="nav-link" href="#">About Badges</a>
-          <a class="nav-link" href="#">Terms of Use</a>
-          <a class="nav-link" href="#">Go to the full site</a>
-          <a class="nav-link" href="#" class="other">Other Sites</a>
-          <a class="nav-link" href="#">Makezine</a>
-          <a class="nav-link" href="#">Maker Faire</a>
-          <a class="nav-link" href="#">Makers.Intel.com</a>
-          <a class="nav-link" href="#">Maker Camp</a>
-          <a class="nav-link" href="#">Intel Innovation Programs</a>
-        </li>
-        <li class="nav-item hidden-md-up">
-          <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
-        </li>
-        <li class="nav-item dropdown  hidden-sm-down">
-          <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            More <i class="fa fa-lg fa-angle-down"></i>
-          </a>
-          <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
-            <div class="intel-sites ">
-              <a href="#" class="dropdown-item">The Maker Movement</a>
-              <a href="#" class="dropdown-item">Intel + Make</a>
-              <a href="#" class="dropdown-item greyed">About Badges</a>
-              <a href="#" class="dropdown-item greyed">Terms of Use</a>
-            </div>
-            <div class="maker-sites ">
-              <a href="#" class="dropdown-item greyed">Other Sites</a>
-              <a href="#" class="dropdown-item">Makezine</a>
-              <a href="#" class="dropdown-item">Maker Faire</a>
-              <a href="#" class="dropdown-item">Makers.Intel.com</a>
-              <a href="#" class="dropdown-item">Maker Camp</a>
-              <a href="#" class="dropdown-item">Intel Innovation Programs</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+      </div>
+      <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
+        <ul class="navbar-nav justify-content-md-between">
+          <li class="nav-item hidden-md-up">
+            <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['explore']">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['challenges']">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['learn']">Learning</a>
+          </li>
+          <li class="nav-item hidden-md-up maker-menu-sm">
+            <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
+            <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
+            <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
+            <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
+            <a [routerLink]="['other-sites']" class="dropdown-item greyed">Other Sites</a>
+            <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
+            <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
+            <a [routerLink]="['makers-intel']" class="dropdown-item">Makers.Intel.com</a>
+            <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
+            <a [routerLink]="['intel-innovation-programs']" class="dropdown-item">Intel Innovation Programs</a>
+          </li>
+          <li class="nav-item hidden-md-up">
+            <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
+          </li>
+          <li class="nav-item dropdown  hidden-sm-down">
+            <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              More <i class="fa fa-lg fa-angle-down"></i>
+              </a>
+              <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
+                <div class="intel-sites ">
+                  <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
+                  <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
+                  <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
+                  <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
+                </div>
+                <div class="maker-sites ">
+                  <a [routerLink]="['other-sites']" class="dropdown-item greyed">Other Sites</a>
+                  <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
+                  <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
+                  <a [routerLink]="['makers-intel']" class="dropdown-item">Makers.Intel.com</a>
+                  <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
+                  <a [routerLink]="['intel-innovation-programs']" class="dropdown-item">Intel Innovation Programs</a>
+                </div>
+              </div>
+          </li>
+        </ul>
+      </div>
   </nav>
 
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
