@@ -26,7 +26,7 @@ constructor(private route: ActivatedRoute,
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
    
-  ) { }
+  ) {  this.router = router; }
   ngOnInit() {
         this.userId = localStorage.getItem('user_id');
 
