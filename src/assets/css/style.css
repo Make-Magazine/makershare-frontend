@@ -2246,6 +2246,8 @@ footer {
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-project .feedback-group .login-link a {
+      color: blue; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
