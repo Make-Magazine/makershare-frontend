@@ -9,47 +9,42 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view ='grid';
-  badges=[];
-  project={};
-  
+  @Input() view = 'grid';
+  badges = [];
+  project = {};
+
   constructor(private router: Router,
-  private route: ActivatedRoute,
-  private viewService: ViewService,
-  private config: NgbTooltipConfig,
-) {
-    config.placement = 'right';
+    private route: ActivatedRoute,
+    private viewService: ViewService,
+    private config: NgbTooltipConfig,
+  ) {
+    config.placement = 'bottom';
     config.triggers = 'hover';
- }
+  }
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
   }
-  getProjectCard(){
-      this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe( res=> {
+  getProjectCard() {
+    this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
-      console.log(this.project)
-    }, err => {
+      this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
+        this.project['maker_project_count'] = data[0]
+        console.log(this.project['maker_project_count'])
+      })
     });
-    
   }
-  getBadgesProject(){
-       // service to get profile card Badges
-    this.viewService.getView('api-project-badges', [['nid',this.nid]]).subscribe(data => {
+  
+  getBadgesProject() {
+    this.viewService.getView('api-project-badges', [['nid', this.nid]]).subscribe(data => {
       this.badges = data;
-    }, err => {
-      // notification error  in service 
-  //    this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
   challengePage(nid) {
-    //console.log(nid);
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
     this.router.navigate(['/project/view', nid]
-    // , this.navigationExtras
     );
-   // console.log(nid)
   }
 }
