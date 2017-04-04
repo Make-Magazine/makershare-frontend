@@ -2179,6 +2179,26 @@ footer {
           background-color: #222; }
       .page-project .top-content-wrapper ul.project-tags .btn:hover {
         cursor: default; }
+    .page-project .top-content-wrapper .project-likes {
+      min-width: 60px;
+      text-align: right;
+      padding: 0px 12px; }
+      .page-project .top-content-wrapper .project-likes img {
+        width: 12px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-likes span {
+        font-size: 14px;
+        color: #828282; }
+    .page-project .top-content-wrapper .project-views {
+      min-width: 60px;
+      text-align: right;
+      padding: 0px 12px; }
+      .page-project .top-content-wrapper .project-views img {
+        width: 21px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-views span {
+        font-size: 14px;
+        color: #828282; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
@@ -2534,7 +2554,8 @@ header.showcase-project .next {
         border: 1px solid #ccc;
         color: #444;
         margin-top: 2px;
-        position: relative; }
+        position: relative;
+        padding: 0px 6px; }
         .feedback-group .new-comment .comment-body textarea .feedback-label {
           width: 100%;
           font-weight: bold; }
