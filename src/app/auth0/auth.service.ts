@@ -51,7 +51,7 @@ export class Auth implements OnInit {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       
-       console.log(authResult);
+       
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {

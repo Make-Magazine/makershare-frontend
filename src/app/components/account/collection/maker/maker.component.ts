@@ -56,7 +56,7 @@ export class MakerComponent implements OnInit {
 * delete selected messages
 */
   deleteMessages() {
-    console.log(this.deletedArr);
+    
     for (var i = 0; i < this.deletedArr.length; i++) {
       this.flagService.unflag(this.deletedArr[i], this.userId, 'maker_bookmark').subscribe(response => {
         this.getUserBookmark();
@@ -71,7 +71,7 @@ export class MakerComponent implements OnInit {
     for (var _i = 0; _i < this.users.length; _i++) {
       if (ev.target.checked === true) {
         this.deletedArr.push(this.users[_i].nid);
-        console.log(this.users[_i].nid)
+        
       } else {
         var index = this.deletedArr.indexOf(this.users[_i].nid, 0);
         if (index > -1) {
