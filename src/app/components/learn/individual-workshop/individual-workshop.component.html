@@ -8,7 +8,7 @@
             <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
           </ul>-->
           <div class="learn-card d-flex flex-column flex-md-row ">
-            <div class="col-md-4">
+            <div class="col-md-4 individual-card-img">
               <div class="image-container">
                 <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
               </div>
@@ -119,7 +119,9 @@
 
                   <div class="media learning-card" *ngIf="object.learning_content_type == 'Video' ">
                     <div class="card col-sm-3" id="OB{{object?.nid}}" style="border: none;" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
+                      <div class="video-image">
                       <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap">
+                      </div>
                       <!--<div *ngIf="object.videoPic"  class="youtube-pic">
                         <img [src]="object.videoPic" alt="" class="media-object" height="150" width="200">
                         <img class="play-image" src="./assets/images/video-icon.png" alt="">                        
@@ -204,7 +206,7 @@
             <!-- End worksop-content -->
           </div>
           <!-- End region-content -->
-          <aside class="col-md-2">
+          <aside class="col-md-2 list-position">
             <!-- End Profile-container -->
             <ul class="list-unstyled content-list">
               Contents:
