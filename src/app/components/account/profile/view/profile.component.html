@@ -146,7 +146,7 @@
 								<hr>
 								<strong>Interests</strong>
 								 <tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
-								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event,$tag.id)" value="tid" [inputId]="tid"
+								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
 								 [placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems" 
 								 [separatorKeys]="options.separatorKeys">
 										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
