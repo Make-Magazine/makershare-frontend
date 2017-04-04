@@ -26,10 +26,9 @@
           </div>
           <div class="d-flex flex-column">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <p class="maker-name">By {{first_name}} {{last_name}}</p>
+            <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
           </div>
         </div>
-
         <div class="icons-side-project d-flex flex-row" *ngIf="badges">
           <div class="project-icon" *ngFor="let badge of badges;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
