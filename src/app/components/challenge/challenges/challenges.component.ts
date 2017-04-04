@@ -3,6 +3,8 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
+import { LoaderService } from '../../shared/loader/loader.service';
+
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
@@ -21,6 +23,7 @@ export class ChallengesComponent implements OnInit {
     private viewService: ViewService,
     private router: Router,
     private flagService: FlagService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,9 @@ export class ChallengesComponent implements OnInit {
   }
   /* function to get challenges and count followers  */
   getChallenges() {
+    // show spinner
+    this.loaderService.display(true);
+
     var status_arg = [];
     var page_arg = [];
     if (this.currentStatusId != 0) {
@@ -57,6 +63,11 @@ export class ChallengesComponent implements OnInit {
         }, err => {
         });
       }
+      // hide spinner
+      this.loaderService.display(false);
+    }, err => {
+      // hide spinner
+      this.loaderService.display(false);      
     });
   }
   /* end function to get challenges and count followers  */

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
 import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 import { UserCardComponent } from '../../shared/user-card/user-card.component'
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-single-showcases',
@@ -28,9 +29,12 @@ export class SinglShowcaseComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
+    // show spinner
+    this.loaderService.display(true);
 
     this.sort_order = "DESC";
     this.sort_by = "changed";
@@ -52,8 +56,9 @@ export class SinglShowcaseComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('views/showcase_projects', [['nid', nid['nid']], ['display_id', 'services_1'], ['limit', this.limit], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
       .subscribe(data => {
         this.projects = data;
-        console.log(this.projects)
         this.loadMoreVisibilty();
+        // hide spinner
+        this.loaderService.display(false);
       });
     this.loadFlag = false;
   }

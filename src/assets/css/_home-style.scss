@@ -171,7 +171,7 @@ footer {
     }
     .fa-stack-2x {
         font-size: 1.7em;
-    }
+    } 
     .fa-stack {
         position: relative;
         display: inline-block;
@@ -255,7 +255,6 @@ footer {
         margin-bottom: 5px;
         height: 38px;
         line-height: 17px;
-        overflow: hidden;
         display: inline-block;
     }
     .profile-tag, .user-city, .count {
@@ -280,6 +279,9 @@ footer {
         padding-top: 10px;
         padding-bottom: 0;
         padding-left: 0;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     }
     .icons-side-user {
             width: 80px;
@@ -292,7 +294,9 @@ footer {
             }
         }
         .card-type {
-            top: 30px;
+            top: 35px;
+            right: -18px;
+            font-size: 16px !important;
         }
         .count-list {
             margin-top: 10px;
@@ -326,10 +330,11 @@ footer {
         position: relative;
         left: -10px;
         top: -30px;
+        margin-bottom: -20px;
         .maker-photo {
             display: block;
-            width: 80px;
-            height: 80px;
+            width: 136px;
+            height: 160px;
             margin-bottom: 4px;
         }
         a {

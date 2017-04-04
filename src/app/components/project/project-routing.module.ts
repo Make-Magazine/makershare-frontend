@@ -8,8 +8,8 @@ const ProjectRouts: Routes = [
   {
     path: '',
     children: [
-      { path: 'create', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule',  canActivate: [AuthGuardService] },
-      { path: 'edit', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule' ,  canActivate: [AuthGuardService]},
+      { path: 'create', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
+      { path: 'edit', loadChildren: 'app/components/project/project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
       { path: 'view/:nid', loadChildren: 'app/components/project/project-details/project-details.module#ProjectDetailsModule' },
     ]
   },

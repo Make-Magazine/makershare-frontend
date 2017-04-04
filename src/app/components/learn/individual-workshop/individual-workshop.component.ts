@@ -37,7 +37,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubLink;
   utubelink;
   file;
-  workshopLeader;
+  workshopLeader = null;
   countlessons;
   @Input() name;
 
