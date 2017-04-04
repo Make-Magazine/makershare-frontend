@@ -39,12 +39,12 @@
         </div>
         <!-- End filters -->
         <ul class="list-unstyled explore-tags">
-          <li *ngFor="let parent of categories_parents"><a class="btn btn-border" id="parent_{{parent.tid}}">{{parent.name}}</a></li>
+          <li *ngFor="let parent of categories_parents"><a class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name" ></a></li>
         </ul>
         <div class="submenus">
           <div *ngFor="let parent of categories_parents">
-            <ul *ngIf="categories_childs.parentName == parent.name" class="list-unstyled parent_{{parent.tid}}">
-              <li *ngFor="let term of categories_childs"><a (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}">{{term.name}}</a></li>
+            <ul class="list-unstyled parent_{{parent.tid}}">
+              <li *ngFor="let term of categories_childs"><a *ngIf="term.parent_tid == parent.tid" (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a></li>
             </ul>
           </div>
         </div>
