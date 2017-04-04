@@ -40,6 +40,9 @@ import { TermsComponent } from './components/pages/terms/terms.component';
 import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
 import { MakezineComponent } from './components/pages/makezine/makezine.component';
 import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
+import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
+import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 
 
 @NgModule({
@@ -57,6 +60,9 @@ import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.
     OtherSitesComponent,
     MakezineComponent,
     MakerFaireComponent,
+    MakerIntelComponent,
+    MakerCampComponent,
+    IntelInnovationComponent,
   ],
   imports: [
     BrowserModule,
