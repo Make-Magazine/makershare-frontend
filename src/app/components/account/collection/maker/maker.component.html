@@ -1,3 +1,6 @@
+<div *ngIf="users.length==0">
+  <p>No bookmarked users yet</p>
+  </div>
 <div *ngIf="users.length>0">
   <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
   <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>

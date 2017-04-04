@@ -35,6 +35,32 @@
 				}
 			}
 		}
+		.project-likes { 
+			min-width: 60px;
+			text-align: right;
+			padding: 0px 12px;
+			img {
+				width: 12px;
+				height: auto;
+			}
+			span {
+				font-size: 14px;
+				color: $text-color-2;
+			}
+		}
+		.project-views {
+			min-width: 60px;
+			text-align: right;
+			padding: 0px 12px;
+			img {
+				width: 21px;
+				height: auto;
+			}
+			span {
+				font-size: 14px;
+				color: $text-color-2;
+			}
+		}
 		.project-actions {
 			li {
 				display: block;
@@ -572,6 +598,7 @@ header.showcase-project {
 					color: $font-grey;
     			margin-top: 2px;
 					position: relative;
+					    padding: 0px 6px;
 					.feedback-label {
 						width: 100%;
 						font-weight: bold;

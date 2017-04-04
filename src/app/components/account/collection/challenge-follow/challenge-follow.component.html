@@ -1,3 +1,6 @@
+<div *ngIf="challenges.length==0">
+  <p>No followed challenges yet</p>
+  </div>
 <div *ngIf="challenges.length>0">
 <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
 <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>

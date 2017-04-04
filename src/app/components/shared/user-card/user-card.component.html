@@ -1,11 +1,11 @@
-<div class=" profile-container" *ngIf="card.invited_user=='0' || card.invited_user==''">
+<div class=" profile-container h-100" *ngIf="card.invited_user=='0' || card.invited_user==''">
   <!-- start profile card-->
-  <div class="card spotlight-item ">
+  <div class="card spotlight-item h-100">
     <div class="card-block user-card align-content-stretch content ">
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-          <div class="icons-side-user">
+          <div class="icons-side-user" *ngIf="badges">
             <div class="user-icon" *ngFor="let badge of badges;">
               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
@@ -34,12 +34,10 @@
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-
         </div>
         <div class="media-body">
           <p class="user-nickname" *ngIf="card.contact_email">{{card.contact_email}}</p>
           <h4 class="user-name">invitation Was Sent </h4>
-
         </div>
       </div>
     </div>
