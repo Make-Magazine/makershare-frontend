@@ -1,3 +1,8 @@
+<div *ngIf="challenges.length==0">
+  <p>No followed challenges yet</p>
+  </div>
+  <div *ngIf="challenges.length>0">
+
 <table class="table">
   <thead>
     <tr>
@@ -13,3 +18,4 @@
     </tr>
   </tbody>
 </table>
+  </div>
