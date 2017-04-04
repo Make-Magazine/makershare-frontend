@@ -8,7 +8,7 @@ import { SpotlightComponent } from './spotlight/spotlight.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StaticSectionComponent } from './static-section/static-section.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
 
 @NgModule({
   imports: [
@@ -23,8 +23,7 @@ import { StaticSectionComponent } from './static-section/static-section.componen
     ChallengeComponent,
     ShowcasesComponent,
     SpotlightComponent,
-    StaticSectionComponent,
-    
+    OnboardingComponent,    
   ]
 })
 export class HomeModule { }
