@@ -32,7 +32,7 @@ import { AccessDeniedComponent } from './auth0/access-denied/access-denied.compo
 import { Four04Component } from './auth0/four04/four04.component';
 // loader service
 import { LoaderService } from './components/shared/loader/loader.service';
-import { PagesComponent } from './components/pages/pages.component';
+// static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
 import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
 import { AboutBadgesComponent } from './components/pages/about-badges/about-badges.component';
@@ -50,7 +50,6 @@ import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.
     SearchBoxComponent,
     AccessDeniedComponent,
     Four04Component,
-    PagesComponent,
     MakerMovementComponent,
     IntelMakeComponent,
     AboutBadgesComponent,
