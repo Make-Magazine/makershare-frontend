@@ -120,8 +120,14 @@
 		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		.login-link {
+			padding: 10px;
+			.feedback-label {
+				width: 100%;
+				font-weight: bold;
+			}
 			a {
-				color: blue;
+				color: $text-color-5;
+				text-decoration: underline;
 			}
 		}
 	}
