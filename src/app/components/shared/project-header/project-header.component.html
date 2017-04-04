@@ -18,6 +18,15 @@
           <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
           <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
           <li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>
+          <li class="project-likes">
+            <img src="./assets/images/icons/light-not-selected.png" alt="">
+            <span *ngIf="project.count_flag.like">{{project.count_flag.like}}</span>
+            <span *ngIf="!project.count_flag.like">0</span>
+          </li>
+          <li class="project-views">
+            <img src="./assets/images/icons/views.png" alt="">
+            <span>70</span>
+          </li>
         </ul>
       </div>
     </div>
