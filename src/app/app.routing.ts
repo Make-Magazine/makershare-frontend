@@ -21,8 +21,7 @@ const APP_ROUTES: Routes = [
     { path: 'challenges', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'profile', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
-    { path: 'access-denied', component:  AccessDeniedComponent},
-    { path: '**', component: Four04Component },
+    { path: 'access-denied', component:  AccessDeniedComponent},    
     // static pages
     { path: 'maker-movement', component: MakerMovementComponent},
     { path: 'intel-make', component: IntelMakeComponent},
@@ -31,6 +30,8 @@ const APP_ROUTES: Routes = [
     { path: 'other-sites', component: OtherSitesComponent},
     { path: 'makezine', component: MakezineComponent},
     { path: 'maker-faire', component: MakerFaireComponent},
+    // not found, should be the last routing
+    { path: '**', component: Four04Component },
 
 ];
 
