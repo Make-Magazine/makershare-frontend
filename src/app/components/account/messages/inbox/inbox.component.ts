@@ -76,12 +76,12 @@ export class InboxComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.getStatus();
-    if(this.hideTurnOn){
+
       this.getCurrentUser();
       this.getMessages();
       this.buildForm();
       this.CountMessages();
-    }
+    
     
     
   }
