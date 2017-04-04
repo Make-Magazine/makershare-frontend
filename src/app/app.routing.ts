@@ -10,7 +10,9 @@ import { TermsComponent } from './components/pages/terms/terms.component';
 import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
 import { MakezineComponent } from './components/pages/makezine/makezine.component';
 import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
-
+import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
+import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
+import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
@@ -23,13 +25,16 @@ const APP_ROUTES: Routes = [
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},    
     // static pages
-    { path: 'maker-movement', component: MakerMovementComponent},
+    { path: 'the-maker-movement', component: MakerMovementComponent},
     { path: 'intel-make', component: IntelMakeComponent},
     { path: 'about-badges', component: AboutBadgesComponent},
-    { path: 'terms', component: TermsComponent},
+    { path: 'terms-of-use', component: TermsComponent},
     { path: 'other-sites', component: OtherSitesComponent},
     { path: 'makezine', component: MakezineComponent},
     { path: 'maker-faire', component: MakerFaireComponent},
+    { path: 'makers-intel', component: MakerIntelComponent},
+    { path: 'maker-camp', component: MakerCampComponent},
+    { path: 'intel-innovation-programs', component: IntelInnovationComponent},
     // not found, should be the last routing
     { path: '**', component: Four04Component },
 

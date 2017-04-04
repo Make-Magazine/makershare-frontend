@@ -20,7 +20,7 @@ export class FollowComponent implements OnInit {
 
 
   ) {
-  this.router = router;
+    this.router = router;
   }
 
   @Input() nodeNid;
@@ -43,32 +43,32 @@ export class FollowComponent implements OnInit {
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.userId = localStorage.getItem('user_id');
-  this.userService.isLogedIn().subscribe(data => {
+    this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
-        
-      }else{
-    this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
-      this.isFollowed = data[0];
 
-      /* initialize Button Follow*/
-      if (this.isFollowed == false) {/* start if  */
-        this.ButtonFollow = 'Follow';
       } else {
-        this.ButtonFollow = 'UnFollow';
-      }/* end else if  */
-    }, err => {
-      //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-    })
+        this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
+          this.isFollowed = data[0];
+
+          /* initialize Button Follow*/
+          if (this.isFollowed == false) {/* start if  */
+            this.ButtonFollow = 'Follow';
+          } else {
+            this.ButtonFollow = 'UnFollow';
+          }/* end else if  */
+        }, err => {
+          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        })
       }//end else if
-  });//end if check user login
+    });//end if check user login
   }
   /* function follow */
   followThis(e: Event) {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
-
+        this.router.navigate(['/access-denied']);
       }
       e.preventDefault();
       if (this.isFollowed) {

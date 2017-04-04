@@ -50,7 +50,7 @@ export class BookmarkComponent implements OnInit {
         this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
-        localStorage.setItem('redirectUrl', this.router.url);
+        //localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
       }
     e.preventDefault();
