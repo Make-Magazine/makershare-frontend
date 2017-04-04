@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     //     this.isLoggedIn = true;
     //   }
     // });
-     localStorage.setItem('redirectUrl', this.router.url);
+    // localStorage.setItem('redirectUrl', this.router.url);
     this.user_photo = localStorage.getItem('user_photo');
     console.log(this.user_photo)
   }
