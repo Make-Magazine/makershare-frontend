@@ -6,4 +6,7 @@
     {{card.nickname}}
     <div *ngIf="card.city">{{card.city.locality}} , {{card.city.country}}</div>
   </div>
+   <div class="media-body" *ngIf="(!card.first_name) && (!card.last_name)">
+    <h5 class="mt-0" *ngIf="leader">{{leader}}</h5>
+  </div>
 </div>
