@@ -5212,7 +5212,10 @@ img {
     footer .container .socials-newsletter {
       margin-top: 20px; }
     footer .container .sitemap {
-      margin: 0; } }
+      margin: 0; }
+
+  .page-workshop-single .page-workshop-individual .workshop-content .learning-card {
+    height: auto; } }
 @media (min-width: 1200px) {
   .container {
     width: 1282px;
