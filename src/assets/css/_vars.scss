@@ -1,55 +1,78 @@
 // Main Colors Palette 
 
-$white: #fff;
-$shade-1:#F2F2F2;
-$shade-2:#DCDCDC;
-$shade-3:#BDBDBD;
-$shade-5:#828282;
-$shade-4:#4F4F4F;
-$shade-6:#474747;
-$shade-7:#333333;
-$blue: #00AEEF;
-$orange:#F2C94C;
-$red: #ED1C24;
-
+$white:				#fff;
+$shade-1:			#F2F2F2;
+$shade-2:			#DCDCDC;
+$shade-3:			#BDBDBD;
+$shade-4:			#4F4F4F;
+$shade-5:			#828282;
+$shade-6:			#474747;
+$shade-7:			#333333;
+$blue: 				#00AEEF;
+$light-blue:	#D4EFFC;
+$orange:			#F2C94C;
+$red: 				#ED1C24;
 
 /* New Variables */
 
+
+$site-bg: $shade-1;
+$mission-cards-bg: $shade-7;
+$learn-cards-bg: $shade-2;
+$project-cards-bg: $white;
+$showcase-cards-light-bg: $light-blue;
+$showcase-cards-medium-bg: $blue;
+$showcase-cards-red-bg: $red;
+
+$text-color-1 : $shade-4;
+$text-color-2 : $shade-5;
+$text-color-3 : $shade-3;
+$text-color-4 : $white;
+$text-color-5 : $red;
+$text-color-6 : $blue;
+
+$btn-primary-1: $shade-4;
+$btn-primary-2: $red;
+
+$btn-secondary-1: $shade-5;
+$btn-secondary-2: $shade-3;
+$btn-secondary-3: $blue;
+
+$validation-1:$orange;
+$validation-1:$blue;
+$validation-1:$shade-4;
+
+
+
+
+
+
 $title-font-family: -webkit-body;
 
-$main-grey : #222;
-$light-grey : #BEBEBE;
-$light-blue: #D4EFFC;
-$font-grey: #444;
-$sec-bg : #C4C4C4;
-$title-color: #0AA9EA;
+$main-button-1:$red;
+$main-grey : $shade-7;
+$light-grey : $shade-3;
+$font-grey: $shade-7;
+$sec-bg : $shade-2;
+$title-color: $blue;
 
 
-$main-bg : #F2F2F2;
-$challenge-bg : #333;
+$main-bg : $shade-1;
+$challenge-bg : $shade-7;
 $learn-card-bg : $shade-2;
-$accent-bg-1 : #D4EFFC;
-$accent-bg-2 : #FFF;
+$accent-bg-1 : $light-blue;
+$accent-bg-2 : $white;
 
-$text-color-1 : #4F4F4F;
-$text-color-2 : #828282;
-$text-color-3 : #BDBDBD;
-$text-color-4 : #FFF;
-$text-color-5 : #11B3F0;
+$valid-faire:$blue;
 
 
-$main-button-1 : #ED1C24;
+$main-button-2 : $shade-4;
+$sec-button-1 : $blue;
+$sec-button-2 : $shade-5;
+$sec-button-3 : $shade-3;
 
-$main-button-2 : #4F4F4F;
-$sec-button-1 : #11B3F0;
-$sec-button-2 : #828282;
-$sec-button-3 : #BDBDBD;
 
-$valid-winner: #F2C94C;
-$valid-faire: #11B3F0;
-$valid-other: #4F4F4F;
-
-$showcase-layer: #D4EEFC;
+$showcase-layer: $light-blue;
 
 
 
