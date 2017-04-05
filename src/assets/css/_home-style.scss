@@ -311,7 +311,7 @@ footer {
 		padding: 2px;
 		color: $light-grey;
 		ul li {
-            @include desc-font-12();
+            @include desc-font-2();
             font-weight: normal !important;
             font-size: 13px !important;
             color: $light-grey;

@@ -149,10 +149,10 @@ body {
     }
 }
 .card-type {
-    @include desc-font-14();
+    @include desc-font-1();
     position: absolute;
     top: 45px;
-    right: -30px;
+    right: -20px;
     padding: 0;
     transform: rotate(-90deg);
     text-transform: uppercase !important;

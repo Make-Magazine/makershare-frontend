@@ -32,7 +32,7 @@
     }
     .card-container {
         .card-partership {
-            @include body-font-r();
+            @include body-font-2();
             text-transform: none;
             font-size: 14px;
             display: inline-block; 
@@ -105,7 +105,7 @@
         font-weight: normal;
 	}
     p {
-        @include body-font-r();
+        @include body-font-2();
         width: 85%;
         margin: auto;
     }
@@ -166,7 +166,7 @@
             color: #4F4F4F;
         }
         .card-status {
-            @include body-font-b();
+            @include body-font-1();
             display: inline-block;
             text-transform: none;
         }
@@ -179,7 +179,7 @@
             }
 
             p {
-                @include body-font-r();
+                @include body-font-2();
                 display: -webkit-box;
                 -webkit-line-clamp: 5;
                 -webkit-box-orient: vertical;

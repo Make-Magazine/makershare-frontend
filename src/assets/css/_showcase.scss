@@ -13,7 +13,7 @@
             font-weight: normal;
         }
         p {
-            @include body-font-r();
+            @include body-font-2();
             width: 85%;
             margin: auto;
         }
@@ -109,7 +109,7 @@
                 color: $font-grey;
             }
             .card-status {
-                @include body-font-b();
+                @include body-font-1();
                 display: inline-block;
                 text-transform: none;
             }
@@ -122,7 +122,7 @@
                 }
 
                 p {
-                    @include desc-font-14();
+                    @include desc-font-1();
                     display: -webkit-box;
                     -webkit-line-clamp: 5;
                     -webkit-box-orient: vertical;
@@ -372,7 +372,7 @@ img {
                 color: $font-grey;
             }
             .card-status {
-                @include body-font-b();
+                @include body-font-1();
                 display: inline-block;
                 text-transform: none;
             }
@@ -385,7 +385,7 @@ img {
                 }
 
                 p {
-                    @include desc-font-14();
+                    @include desc-font-1();
                     display: -webkit-box;
                     -webkit-line-clamp: 4;
                     -webkit-box-orient: vertical;

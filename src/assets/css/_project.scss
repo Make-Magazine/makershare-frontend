@@ -109,7 +109,7 @@
 			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			p {
-				 @include desc-font-14();
+				 @include desc-font-1();
 				 line-height: inherit !important;
 			}
 		}
@@ -177,7 +177,7 @@
 			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 			p {
-				@include desc-font-14();
+				@include desc-font-1();
 				line-height: inherit !important;
 			}
 			}
@@ -195,7 +195,7 @@
 					text-align: center;
 					font-size: 18px;
 					font-weight: bold;
-					@include desc-font-14();
+					@include desc-font-1();
 				 	line-height: inherit !important;
 				}
 				span {
@@ -219,24 +219,24 @@
 					text-align: center;
 					margin-top: 10px;
 					font-size: 18px;
-					@include desc-font-14();
+					@include desc-font-1();
 				 	line-height: inherit !important;
 					}
 					li {
 						border: none;
 						padding: 0px 6px;
-						@include desc-font-14();
+						@include desc-font-1();
 				 		line-height: inherit !important;
 					}
 					.count {
 						min-width: 38px;
 						color: $font-grey;
-						@include desc-font-14();
+						@include desc-font-1();
 				 		line-height: inherit !important;
 					}
 					.item {
 						color: $font-grey;
-						@include desc-font-14();
+						@include desc-font-1();
 				 		line-height: inherit !important;
 					}
 				}
@@ -251,7 +251,7 @@
 					text-align: center;
 					margin-top: 10px;
 					font-size: 18px;
-					@include desc-font-14();
+					@include desc-font-1();
 				 	line-height: inherit !important;
 					}
 					li {
@@ -260,7 +260,7 @@
 						a {
 							text-decoration: underline;
 							color: $blue !important;
-							@include desc-font-14();
+							@include desc-font-1();
 				 			line-height: inherit !important;
 						}
 					}
@@ -415,14 +415,14 @@
 			p {
 				text-align: center;
 				color: $red !important;
-				@include desc-font-14();
+				@include desc-font-1();
 				line-height: inherit !important;
 			}
 		}
 		.card-block {
     padding: 0px 14px;
 		 p {
-			@include desc-font-14();
+			@include desc-font-1();
 			line-height: inherit !important;
 		 }
 		}
@@ -438,14 +438,14 @@
 			p {
 			text-align: center;
 			color: $red !important;
-			@include desc-font-14();
+			@include desc-font-1();
 			line-height: inherit !important;
 			}
 		}
 		.card-block {
     padding: 0px 14px;
 		p {
-			@include desc-font-14();
+			@include desc-font-1();
 			line-height: inherit !important;
 		}
 		}
@@ -625,7 +625,7 @@ header.showcase-project {
 		.comment-body {
 			p {
 				margin: 0px;
-				@include desc-font-14();
+				@include desc-font-1();
 				line-height: inherit !important;
 			}
 		}
@@ -779,7 +779,7 @@ header.showcase-project {
             }
 
             p {
-                @include body-font-r();
+                @include body-font-2();
 								margin-bottom: 10px;
             }
         }
