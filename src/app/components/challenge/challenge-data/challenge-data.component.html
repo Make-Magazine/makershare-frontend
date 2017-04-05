@@ -50,9 +50,9 @@
                             <span *ngIf="challenge.entries_count <= 1">Entry</span>
                             </span>
                             <span class="follow-count">{{no_of_followers}}
-                            <span *ngIf="challenge.followers>1">Followers</span>
-                            <span *ngIf="challenge.followers==1">Follower</span>
-                            <span *ngIf="!challenge.followers">0 Follower</span>
+                            <span *ngIf="no_of_followers>1">Followers</span>
+                            <span *ngIf="no_of_followers==1">Follower</span>
+                            <span *ngIf="!no_of_followers">0 Follower</span>
                             </span>
                           </div>
                           <div class="challenge-card-status">
