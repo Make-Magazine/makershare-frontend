@@ -49,10 +49,10 @@
                        <span *ngIf="challenge.entries_count>1">Entries</span>
                             <span *ngIf="challenge.entries_count <= 1">Entry</span>
                             </span>
-                            <span class="follow-count">{{challenge.followers}}
-                            <span *ngIf="challenge.followers>1">Followers</span>
-                            <span *ngIf="challenge.followers==1">Follower</span>
-                            <span *ngIf="!challenge.followers">0 Follower</span>
+                            <span class="follow-count">{{no_of_followers}}
+                            <span *ngIf="no_of_followers>1">Followers</span>
+                            <span *ngIf="no_of_followers==1">Follower</span>
+                            <span *ngIf="!no_of_followers">0 Follower</span>
                             </span>
                           </div>
                           <div class="challenge-card-status">
@@ -82,7 +82,10 @@
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}" (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}" (click)="changeChallangeTab('followers',$event)">Followers  <span class="badge">{{no_of_followers}}
+                   
+                            <span *ngIf="!no_of_followers">0 </span>
+                            </span></a></li>
               </ul>
             </div>
             <div class="challenge-details col-md-9">
