@@ -105,7 +105,6 @@ export class ShowcaseProjectComponent implements OnInit {
         for (let project of data) {
           this.allProjects.push(project.project_nid)
         }
-        console.log(this.allProjects)
         if (!this.projectIndex)
           this.projectIndex = this.allProjects.indexOf(this.projectNid)
 
@@ -124,7 +123,6 @@ export class ShowcaseProjectComponent implements OnInit {
       if (this.projectIndex == 0) return
       this.projectIndex--;
       this.projectNid = this.allProjects[this.projectIndex];
-      console.log(this.projectNid)
       this.getProjectData();
       this.getProjectDetails();
       this.current_active_tab = 'project-story';
@@ -132,7 +130,6 @@ export class ShowcaseProjectComponent implements OnInit {
     } else if (action == "next") {
       this.projectIndex++;
       this.projectNid = this.allProjects[this.projectIndex];
-      console.log(this.projectNid)
       this.getProjectData();
       this.getProjectDetails();
       this.getProjectsIds();

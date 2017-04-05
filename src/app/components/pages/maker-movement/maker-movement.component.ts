@@ -24,9 +24,10 @@ export class MakerMovementComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 797]]).subscribe(data => {
-      this.title = data.title;
-      this.body = data.body;
+    this.viewService.getView('pages', [['nid', 795]]).subscribe(data => {
+
+      this.title = data[0].title;
+      this.body = data[0].body;
       this.loaderService.display(false);
     }, err => {
       console.log(err);

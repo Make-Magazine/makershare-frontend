@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
         placeholder: "+ interest",
         secondaryPlaceholder: "Enter a new interest",
         separatorKeys: [4, 5],
-        maxItems: 10
+        maxItems: 20
     }
 
   validationMessages = {
@@ -268,7 +268,6 @@ export class ProfileComponent implements OnInit {
           flag= false;
         }
     }
-    debugger
     if(flag){
         Object.assign(this.ProfileInfo.field_social_accounts , this.FormGroupSocial.value);
         this.SaveUser(this.ProfileInfo);

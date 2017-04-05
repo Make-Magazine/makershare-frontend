@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     // });
    // localStorage.setItem('redirectUrl', this.router.url);
     this.user_photo = localStorage.getItem('user_photo');
-    console.log(this.user_photo)
+    
   }
 
   // Logout(event){
@@ -46,6 +46,5 @@ export class HeaderComponent implements OnInit {
   onNotify(event){
     this.showSearchBox = false;
   }
-
 
 }

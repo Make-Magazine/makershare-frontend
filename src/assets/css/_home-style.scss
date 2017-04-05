@@ -238,6 +238,7 @@ footer {
     .user-name {
         @include card-header-font-sm();
                 min-height: 24px;
+                margin-bottom: 2px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -245,7 +246,7 @@ footer {
     }
     .user-nickname {
         font-size: 12px;
-        margin-bottom: 0;
+        margin-bottom: 2px;
         min-height: 18px;
         a {
             text-decoration: none;
@@ -352,6 +353,7 @@ footer {
     .user-name {
         @include card-header-font-sm();
         min-height: 24px;
+        margin-bottom: 2px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -359,7 +361,7 @@ footer {
     }
     .user-nickname {
         font-size: 12px;
-        margin-bottom: 0;
+        margin-bottom: 2px;
         min-height: 18px;
         a {
             text-decoration: none;
@@ -398,5 +400,13 @@ footer {
     width: auto !important;
 }
 .slick-track {
-    height: 125px;
+    min-height: 150px;
+    max-height: 170px;
+    img {
+       height: 170px;
+    }
 }
+
+
+
+

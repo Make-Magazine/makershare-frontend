@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import { UserService } from '../../../d7services/user/user.service';
 
 
 @Component({
@@ -13,6 +14,8 @@ challenge=[];
    constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+            private userService: UserService,
+
 
   ){ }
 
@@ -32,8 +35,17 @@ challenge=[];
     this.router.navigate(['/challenges', nid]);
   }
 
-    enterToChallengeProject(nid) {
+   enterToChallengeProject(nid) {
+      
+     this.userService.isLogedIn().subscribe(data => {
+      //this.checkUserLogin = data;
+      if (data == false) {
+        //localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }else{
     this.router.navigate(['challenges/enter-challenge', nid]);
+      }
+          });
   }
 
 }

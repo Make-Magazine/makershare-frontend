@@ -17,6 +17,7 @@ export class ChallengeComponent implements OnInit {
     // load the challenge from the api
     this.viewService.getView('home_page_challenge').subscribe(data =>{
       this.challenge = data[0];
+      console.log(this.challenge);
     }, err => {
 
     });
