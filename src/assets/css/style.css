@@ -4333,6 +4333,9 @@ img {
   .page-workshop-single .page-workshop-individual .workshop-content h4 {
     font-weight: normal;
     color: #333333; }
+  .page-workshop-single .page-workshop-individual .workshop-content .border-style {
+    border: none;
+    margin-bottom: 10px; }
   .page-workshop-single .page-workshop-individual .workshop-content .learning-card {
     background-color: #fff;
     padding: 24px 12px;

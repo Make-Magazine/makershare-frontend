@@ -85,7 +85,7 @@
               <div *ngFor="let object of objects; let i=index">
                 <div class="row">
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
-                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                         data-toggle="modal" data-target="#previewer">
                         <div class="card-block">
@@ -118,7 +118,7 @@
                   <!---FOR Video CONTENT TYPE -->
 
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Video' ">
-                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}" (click)="open(content,i,'overlay')" data-toggle="modal" data-target="#previewer">
                       <div class="video-image">
                       <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap">
                       </div>
@@ -173,7 +173,7 @@
                   <!---FOR Book CONTENT TYPE -->
 
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Book' ">
-                    <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column" id="OB{{object?.nid}}" style="border: none;">
+                    <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}" >
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
                         data-toggle="modal" data-target="#previewer">
                         <div class="card-block">
