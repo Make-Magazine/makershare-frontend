@@ -1762,8 +1762,11 @@ footer {
   .project .card-block .content-side {
     padding-left: 5px;
     width: 80%; }
-.project .icons-side-project .project-icon img {
-  width: 35px; }
+.project .icons-side-project .project-icon {
+  height: 45px; }
+  .project .icons-side-project .project-icon img {
+    width: auto;
+    height: 40px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -2145,12 +2148,15 @@ footer {
   color: #828282;
   color: #00AEEF; }
 .maker-card.project .card-block .maker-descripe {
-  font-family: "Messina Modern Bold" !important;
-  font-size: 1.5em !important;
-  font-weight: 700 !important;
+  font-family: "Messina Modern Regular" !important;
+  font-size: 1.167em !important;
+  font-weight: 400 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  margin-top: 5px; }
+.maker-card.project .card-block .card-stats ul {
+  margin-bottom: 0; }
 
 .social-links a {
   display: inline-block;
@@ -5409,7 +5415,18 @@ img {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
-      display: none; } }
+      display: none; }
+
+  .profile-container .maker-card.project {
+    margin-top: 20px; }
+    .profile-container .maker-card.project .card-block {
+      height: auto; }
+      .profile-container .maker-card.project .card-block .maker-name {
+        margin-top: 10px; }
+      .profile-container .maker-card.project .card-block .card-type {
+        right: -10px; }
+      .profile-container .maker-card.project .card-block .icons-side-user {
+        margin-top: auto !important; } }
 @media (max-width: 991px) {
   /* Footer */
   footer {

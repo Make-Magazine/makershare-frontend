@@ -100,6 +100,23 @@
 			}
 		}
 	}
+	.profile-container {
+		.maker-card.project {
+			margin-top: 20px;
+			.card-block{
+				height: auto;
+				 .maker-name {
+					 margin-top: 10px;
+				 }
+				 .card-type {
+					 right: -10px;
+				 }
+				 .icons-side-user {
+					 margin-top: auto !important;
+				 }
+			}
+		}
+	}
 }
 
 
