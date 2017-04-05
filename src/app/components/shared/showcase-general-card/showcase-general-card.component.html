@@ -1,4 +1,4 @@
-       <div class="showcase-card">
+       <div class="showcase-card" *ngIf="showcase">
           <div class="content-container">
             <div class="card-container">
               <div class="card">
@@ -6,8 +6,8 @@
                   <p>Showcase</p>
                 </div>
                 <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
-                <div class="card-description">
-                  <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
+                <div class="card-description" *ngIf="showcase.description_trim">
+                  <p [innerHTML]="showcase.description_trim" ></p>
                 </div>
                 <div class="showcase-card-footer mt-auto d-flex">
                   <div class="showcase-card-footer-2 ml-4">
@@ -16,7 +16,7 @@
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                         <span class="views-count">1129</span>
                       </div>
-                      <div class="projects-count-div">
+                      <div class="projects-count-div" *ngIf="showcase.number_of_project">
                         <span class="projects-count">{{showcase.number_of_project}}
                            <span *ngIf="showcase.number_of_project>1">projects</span>
                         <span *ngIf="showcase.number_of_project<=1">project</span>
