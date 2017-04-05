@@ -1296,8 +1296,7 @@ footer {
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
     .profile-sidebar .profile-container i {
-      width: 25px;
-      color: #333333; }
+      width: 25px; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
       position: relative;
       margin-bottom: -100px; }
@@ -2096,6 +2095,13 @@ footer {
     margin: auto; }
 #edit-cover-modal .modal-footer {
   text-align: center; }
+
+.social-links a {
+  display: inline-block;
+  padding: 0.5em 0em;
+  color: #333333; }
+  .social-links a i.fa-inverse:before {
+    padding-left: 10px; }
 
 .page-explore {
   background-color: #F2F2F2; }

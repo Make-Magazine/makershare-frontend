@@ -8,7 +8,7 @@
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
 					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">
 						<a class="profile-message mr-auto" data-toggle="modal" data-target="#message-modal"><img src="./assets/images/icons/mail.svg" alt="">Message This Maker</a>
-						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>						
+						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
 						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
@@ -42,6 +42,7 @@
 									<div class="card-type"><span>Maker</span></div>
 								</div>
 							</div>
+							<p>Profile Completeness</p>
 							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
 								<ngb-progressbar type="info" [value]="profile.profile_completion" [striped]="true" [animated]="true"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
 							</div>
@@ -67,14 +68,15 @@
 								</ul>
 								<!-- describe yourself-->
 								<hr>
-								<p>Profile Completeness</p>
-								<!-- start Badges-->
+								<p>Badges</p>
+					<!-- start Badges-->
 								<div class="icons">
 									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
 										<p>{{badge?.title}}</p><br>
 									</div>
 								</div>
+								<hr>
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
@@ -88,7 +90,8 @@
 								</div>
 								<!-- End Bio -->
 
-								
+								<hr>
+
 
 								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
@@ -100,8 +103,7 @@
 								</ul>
 								<div *ngIf="profile.field_social_accounts">
 									<a (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-pencil"></i></a>
-									<hr>
-									<div class="social-links">
+									<!--<div class="social-links">
 										<strong> Social </strong>
 										<br>&nbsp;&nbsp;
 										<a *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}" class="fa fa-lg fa-facebook">
@@ -113,6 +115,76 @@
 										<a *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}"
 										 class="fa fa-lg fa-instagram">
 										</a>
+									</div>-->
+									<div class="social-links">
+										<span class="footer-subtitle">Social</span><br>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-globe  fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-globe  fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_pinterest != '' " href="{{profile.field_social_accounts.field_pinterest}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_youtube != '' " href="{{profile.field_social_accounts.field_youtube}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_hackster_io != '' " href="{{profile.field_social_accounts.field_hackster_io}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_instructables != '' " href="{{profile.field_social_accounts.field_instructables}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_hackday != '' " href="{{profile.field_social_accounts.field_hackday}}">
+											<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
+						</span>
+										</a>
+
 									</div>
 									<hr>
 									<strong> Links </strong>
@@ -129,6 +201,7 @@
 								<div *ngIf="!profile.field_social_accounts">
 									<a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a>
 								</div>
+								<hr>
 								<div *ngIf="profile.started_making" class="how">
 									<!-- Start How -->
 									<h5>How I learned to be a maker</h5>
@@ -150,17 +223,16 @@
 								</ul>
 
 								<strong>Interests</strong>
-								 <tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
-								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
-								 [placeholder]="''" [secondaryPlaceholder]="''" [maxItems]="options.maxItems" 
-								 [separatorKeys]="options.separatorKeys">
-										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
-																				[autocompleteItems]="allIntersets" value="tid" display="name" inputId="tid">
+								<tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
+									[displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
+									[placeholder]="''" [secondaryPlaceholder]="''" [maxItems]="options.maxItems" [separatorKeys]="options.separatorKeys">
+									<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
+										inputId="tid">
 										</tag-input-dropdown>
-								</tag-input>
-								<hr>
-								<a class="report">Report this user</a>
-								<!-- End How -->
+										</tag-input>
+										<hr>
+										<a class="report">Report this user</a>
+										<!-- End How -->
 							</div>
 							<!-- End col-md-3 -->
 						</div>
@@ -213,12 +285,12 @@
 											<div class="form-group">
 												<tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
 													[displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
-													[placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems" 
+													[placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems"
 													[separatorKeys]="options.separatorKeys">
-														<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
-																								[autocompleteItems]="allIntersets" value="tid" display="name" inputId="tid">
+													<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
+														inputId="tid">
 														</tag-input-dropdown>
-												</tag-input>
+														</tag-input>
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -376,8 +448,8 @@
 		<div class="form-group" [formGroup]="formGroup">
 
 			<textarea rows="5" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea" placeholder="Describe your most powerful motivation, inspiration or aspiration."
-			 maxlength="140"></textarea> {{140 - formGroup.value.describe_yourself.length}} char left
-			<div *ngIf="!formGroup.valid">max length 140</div>
+				maxlength="140"></textarea> {{140 - formGroup.value.describe_yourself.length}} char left
+				<div *ngIf="!formGroup.valid">max length 140</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -398,8 +470,8 @@
 	<div class="modal-body">
 		<div class="form-group">
 			<ckeditor id="how-to-make" rows="5" [config]="ckEditorConfig" name="bio-textarea" id="bio-textarea" [(ngModel)]="ProfileInfo.bio"
-			 placeholder="Start your story">
-			</ckeditor>
+				placeholder="Start your story">
+				</ckeditor>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -426,43 +498,40 @@
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label">Website or Blog</label>
-						<input type="text"  formControlName="field_website_or_blog" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_website_or_blog">
+						<input type="text" formControlName="field_website_or_blog" name="web-url">
+						<input type="radio" name="field_preferred" value="field_website_or_blog">
 					</li>
 					<div *ngIf="formErrors.field_website_or_blog" class="alert alert-danger error-msg">
 						{{ formErrors.field_website_or_blog }}
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label">Additional site</label>
-						<input type="text"  formControlName="field_additional_site" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_additional_site">
+						<input type="text" formControlName="field_additional_site" name="web-url">
+						<input type="radio" name="field_preferred" value="field_additional_site">
 					</li>
 					<div *ngIf="formErrors.field_additional_site" class="alert alert-danger error-msg">
 						{{ formErrors.field_additional_site }}
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
-						<input type="text"  formControlName="field_facebook" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_facebook"
-						 #pr (ngModelChange)="prefer($event)">
+						<input type="text" formControlName="field_facebook" name="web-url">
+						<input type="radio" name="field_preferred" value="field_facebook" #pr (ngModelChange)="prefer($event)">
 					</li>
 					<div *ngIf="formErrors.field_facebook" class="alert alert-danger error-msg">
 						{{ formErrors.field_facebook }}
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
-						<input type="text"  formControlName="field_instagram" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_instagram"
-						 #pr (ngModelChange)="prefer($event)">
+						<input type="text" formControlName="field_instagram" name="web-url">
+						<input type="radio" name="field_preferred" value="field_instagram" #pr (ngModelChange)="prefer($event)">
 					</li>
 					<div *ngIf="formErrors.field_instagram" class="alert alert-danger error-msg">
 						{{ formErrors.field_instagram }}
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
-						<input type="text"  formControlName="field_linkedin" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_linkedin"
-						 #pr (ngModelChange)="prefer($event)">
+						<input type="text" formControlName="field_linkedin" name="web-url">
+						<input type="radio" name="field_preferred" value="field_linkedin" #pr (ngModelChange)="prefer($event)">
 					</li>
 					<div *ngIf="formErrors.field_linkedin" class="alert alert-danger error-msg">
 						{{ formErrors.field_linkedin }}
@@ -470,35 +539,34 @@
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
 						<input type="text" formControlName="field_twitter" name="web-url">
-						<input type="radio"  name="field_preferred" value="field_twitter"
-						 #pr (ngModelChange)="prefer($event)">
+						<input type="radio" name="field_preferred" value="field_twitter" #pr (ngModelChange)="prefer($event)">
 					</li>
 					<div *ngIf="formErrors.field_twitter" class="alert alert-danger error-msg">
 						{{ formErrors.field_twitter }}
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
-						<input type="text"  name="web-url">
-						<input type="radio"  name="field_preferred" value="field_pinterest">
+						<input type="text" name="web-url">
+						<input type="radio" name="field_preferred" value="field_pinterest">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
-						<input type="text"  name="web-url">
-						<input type="radio"  name="field_preferred" value="field_youtube">
+						<input type="text" name="web-url">
+						<input type="radio" name="field_preferred" value="field_youtube">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
-						<input type="text"  name="web-url">
-						<input type="radio"  name="field_preferred" value="field_hackster_io">
+						<input type="text" name="web-url">
+						<input type="radio" name="field_preferred" value="field_hackster_io">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
-						<input type="text"  name="web-url">
-						<input type="radio"  name="field_preferred" value="field_instructables">
+						<input type="text" name="web-url">
+						<input type="radio" name="field_preferred" value="field_instructables">
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
-						<input type="text"  name="web-url">
+						<input type="text" name="web-url">
 						<input type="radio" name="field_preferred" value="field_hackday">
 					</li>
 				</ul>
@@ -521,10 +589,10 @@
 	</div>
 	<div class="modal-body" [formGroup]="formGroup">
 		<textarea formControlName="started_making" rows="5" name="limitedtextfield" id="start-making-textarea" placeholder="Add your starting as a Maker"
-		 maxlength="300">
-		</textarea> {{300 - formGroup.value.started_making.length}}
-		<div *ngIf="!formGroup.valid">max length 300</div>
-		<div class="clearfix"></div>
+			maxlength="300">
+			</textarea> {{300 - formGroup.value.started_making.length}}
+			<div *ngIf="!formGroup.valid">max length 300</div>
+			<div class="clearfix"></div>
 	</div>
 	<div class="modal-footer">
 		<button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
