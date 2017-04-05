@@ -515,11 +515,12 @@ a:not([href]):not([tabindex]) {
       color: #333333; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: -webkit-body;
+  font-family: 'Messina Modern Regular';
   font-weight: bold;
   color: #333333; }
 
 body {
+  font-family: 'Messina Sans Regular';
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
   -moz-transition: all 1.25s ease-in-out;
@@ -632,7 +633,7 @@ body {
   color: #828282;
   position: absolute;
   top: 45px;
-  right: -20px;
+  right: -30px;
   padding: 0;
   transform: rotate(-90deg);
   text-transform: uppercase !important;
@@ -1014,13 +1015,15 @@ footer {
   padding: 40px 0; }
   .banner #homeBanner {
     padding: 0 15px;
-    max-width: 500px; }
+    max-width: 700px; }
     .banner #homeBanner h2 {
-      font-family: 'Open Sans', sans-serif;
-      text-transform: uppercase;
-      font-size: 18px;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
       color: #EC1F30;
-      font-weight: 300;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
       font-weight: 300;
@@ -1046,7 +1049,6 @@ footer {
 .what-is-ms {
   padding: 40px 0; }
   .what-is-ms h2 {
-    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     font-size: 18px;
     color: #EC1F30;
@@ -1092,7 +1094,6 @@ footer {
         padding: 15px 15px 40px; } }
     .info-w-parallax .info-card h2 {
       text-align: center;
-      font-family: 'Open Sans', sans-serif;
       text-transform: uppercase;
       font-size: 18px;
       color: #EC1F30;
@@ -3462,10 +3463,10 @@ img {
         line-height: 100% !important;
         color: #828282;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 220px;
+        height: 190px;
         color: #333333; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
