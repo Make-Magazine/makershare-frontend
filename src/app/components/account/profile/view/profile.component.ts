@@ -171,6 +171,7 @@ export class ProfileComponent implements OnInit {
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
      this.allIntersets=allIntersets;
+     console.log(this.profile)
     }, err => {
       // console.log("error");
       // console.log(err);
