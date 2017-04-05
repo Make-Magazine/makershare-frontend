@@ -139,7 +139,6 @@
         }
         i {
             width: 25px;
-            color: $main-grey;
         }
         .profile-group {
             .profile-pic {
@@ -1098,3 +1097,14 @@
         }
 	}
 }
+    .social-links {
+        a{
+            display: inline-block;
+            padding: 0.5em 0em;
+            color:$shade-7;
+            i.fa-inverse:before{
+                padding-left: 10px;
+            }
+         }
+        
+     }
