@@ -139,6 +139,7 @@
         }
         i {
             width: 25px;
+            
         }
         .profile-group {
             .profile-pic {
@@ -181,16 +182,11 @@
             margin-top: 16px;
             font-size: 18px;
             .profile-fullname {
-                text-align: left;
-                font-size: 24px;
-                font-weight: bold;
-                font-family: -webkit-body;
+                @include card-header-font-md ();
+
             }
             .profile-nickname {
-                text-align: left;
-                font-size: 15px;
-                font-weight: bold;
-                font-family: -webkit-body;
+               @include desc-font-1 ();
             }
             .location {
                 color: $title-color;
@@ -1103,6 +1099,9 @@
                 margin-bottom: 0;
             }
         }
+        .card-type {
+            right: -22px;
+        }
 	}
 }
     .social-links {
@@ -1114,5 +1113,10 @@
                 padding-left: 10px;
             }
          }
+       }
+         .edit-icon{
+             float: right;
+             color: $text-color-6;
+         }
         
-     }
+     
