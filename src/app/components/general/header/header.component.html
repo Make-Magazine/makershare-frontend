@@ -68,18 +68,6 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['learn']">Learning</a>
           </li>
-          <li class="nav-item hidden-md-up maker-menu-sm">
-            <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
-            <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
-            <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
-            <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
-            <a [routerLink]="['other-sites']" class="dropdown-item greyed">Other Sites</a>
-            <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
-            <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
-            <a [routerLink]="['makers-intel']" class="dropdown-item">Makers.Intel.com</a>
-            <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
-            <a [routerLink]="['intel-innovation-programs']" class="dropdown-item">Intel Innovation Programs</a>
-          </li>
           <li class="nav-item hidden-md-up">
             <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
           </li>
