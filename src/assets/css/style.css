@@ -818,10 +818,10 @@ footer {
     padding-bottom: 4px; }
   footer .socials-newsletter .newsletter .input-group-addon {
     background: none;
-    background-color: #ED1C24;
+    background-color: #00AEEF;
     color: white; }
   footer .footer-subtitle {
-    color: #ED1C24;
+    color: #00AEEF;
     font-size: 16px;
     width: 100%;
     padding-bottom: 4px;
@@ -2446,7 +2446,7 @@ footer {
         width: 100%;
         font-weight: bold; }
       .page-project .feedback-group .login-link a {
-        color: #ED1C24;
+        color: #00AEEF;
         text-decoration: underline; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
@@ -2737,7 +2737,7 @@ footer {
     color: #828282; }
   .page-project .license-report .report {
     font-size: 14px;
-    color: #ED1C24; }
+    color: #00AEEF; }
   .page-project .panel {
     border-width: 3px;
     border-radius: 15px;
@@ -4996,7 +4996,7 @@ img {
       color: #828282;
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city {
-      color: #ED1C24; }
+      color: #00AEEF; }
     .total-result .makers-item .content-bottom .icons {
       margin-top: 5px; }
       .total-result .makers-item .content-bottom .icons img {
