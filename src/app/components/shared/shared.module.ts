@@ -22,6 +22,7 @@ import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
+import { MakerCardComponent } from './maker-card/maker-card.component';
 
 
 
@@ -52,7 +53,8 @@ import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-g
     LearnCardComponent,
     UserCardSmallComponent,
     LearnUserCardComponent,
-    ShowcaseGeneralCardComponent
+    ShowcaseGeneralCardComponent,
+    MakerCardComponent
   ],
   exports: [
     CommentComponent,
