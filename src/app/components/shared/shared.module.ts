@@ -73,8 +73,8 @@ import { MakerCardComponent } from './maker-card/maker-card.component';
     LearnCardComponent,
     UserCardSmallComponent,
     LearnUserCardComponent,
-    ShowcaseGeneralCardComponent
-
+    ShowcaseGeneralCardComponent,
+    MakerCardComponent
   ]
 })
 export class SharedModule { }
@@ -95,3 +95,4 @@ export { LearnCardComponent };
 export { UserCardSmallComponent };
 export { LearnUserCardComponent };
 export { ShowcaseGeneralCardComponent };
+export { MakerCardComponent };
