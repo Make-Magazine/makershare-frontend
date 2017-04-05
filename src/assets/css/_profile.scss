@@ -700,8 +700,10 @@
     }
     .icons-side-project {
         .project-icon {
+            height: 45px;
             img {
-                width: 35px;
+                width: auto;
+                height: 40px;
             }
         }
     }
@@ -1105,7 +1107,16 @@
             color:$city-color
         }
         .maker-descripe {
-            @include card-header-font-sm();
+            @include desc-font-5();
+            margin-top: 5px;
+        }
+        .card-stats {
+            ul {
+                margin-bottom: 0;
+            }
+        }
+        .card-type {
+            right: -22px;
         }
 	}
 }
