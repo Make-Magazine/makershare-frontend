@@ -757,8 +757,7 @@
         padding: 2px;
         color: $light-grey;
         ul li {
-            float: left;
-            font-size: 15px;
+            @include desc-font-2();
             img {
                 margin-right: 6px;
                 &.project-likes {
@@ -1076,4 +1075,26 @@
     .modal-footer {
         text-align: center;
     }
+}
+
+.maker-card.project {
+	.card-block {
+		// height: 225px;
+        p {
+            margin-bottom: 0;
+        }
+        .maker-name {
+            @include card-header-font-sm ()
+        }
+        .maker-nickname {
+            @include desc-font-1 ()
+        }
+        .maker-city {
+            @include desc-font-3 ();
+            color:$city-color
+        }
+        .maker-descripe {
+            @include card-header-font-sm();
+        }
+	}
 }
