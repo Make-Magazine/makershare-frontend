@@ -1,12 +1,24 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>User Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td *ngIf="user">{{user.user_name}}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="users.length==0">
+  <p>No bookmarked users yet</p>
+  </div>
+<div *ngIf="users.length>0">
+  <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
+  <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users let i=index;">
+        <div class="select" *ngIf="user">
+          <input type="checkbox" value="{{user.uid}}" [(ngModel)]="user.state" (change)="valueChanged(user.uid,$event)">
+        </div>
+        <td *ngIf="user">{{user.user_name}}</td>
+        <div class="delete">
+          <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+        </div>
+      </tr>
+    </tbody>
+  </table>

@@ -37,7 +37,8 @@ export class IndividualWorkshopComponent implements OnInit {
   epubLink;
   utubelink;
   file;
-  workshopLeader;
+  workshopLeader = null;
+  countlessons;
   @Input() name;
 
   constructor(
@@ -128,6 +129,8 @@ export class IndividualWorkshopComponent implements OnInit {
       this.currentuser = data;
 
     });
+
+     this.getCountlessons();
   }
 
   preview(i) {
@@ -176,5 +179,13 @@ export class IndividualWorkshopComponent implements OnInit {
     }
     this.modalService.open(content);
   }
+  getCountlessons() {
+    this.route.params
+    .switchMap((nid) => this.viewService.getView('maker_count_lessons/' + nid['nid']))
+      .subscribe(data => {
+      this.countlessons = data[0];
+    }, err => {
 
+    });
+  }
 }

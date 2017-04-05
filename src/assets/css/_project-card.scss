@@ -19,7 +19,6 @@
 	.card-title {
 		background-color: $white;
 		padding: 10px;
-		height: 70px;
 		position: relative;
 		@include card-header-font-lg();
 		color: $text-color-1;
@@ -70,13 +69,11 @@
 		}
 	}
 	&.col-lg-4 {
-		img {height: 180px;}
 		.description,.role {
 			display:none;
 		}
 	}
 	&.col-md-12 {
-		img {height: 250px;}
 		a {
 			position: absolute;;
 		    bottom: 0;

@@ -24,25 +24,25 @@
      <div>
       <label for="example-text-input" class="form-label">Yes:</label>
       <div>
-        <input class="form-control" type="text" disabled [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
+        <input class="form-control" type="text" disabled [formControl]="feedbackForm.controls['field_bug_in_page']">
       </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">NO:</label>
       <div>
-        <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_in_page']">
+        <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
       </div>
     </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this browser:</label>
-      <div *ngIf="device">
+      <div >
         <input class="form-control" type="text" placeholder="enter browser name" [formControl]="feedbackForm.controls['field_browser']" >
       </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this OS:</label>
-      <div *ngIf="device">
+      <div >
         <input class="form-control" type="text" placeholder="enter os name" [formControl]="feedbackForm.controls['field_os']" >
       </div>
     </div>

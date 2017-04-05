@@ -93,8 +93,9 @@ $(document).ready(function() {
   $(document).on('mouseover', '.explore-tags li a', function() {
     id = $(this).attr('id');
     ul = "ul."+id;
-    $('.submenus ' + ul).siblings().hide();
-    $('.submenus ' + ul).show();
+    $('.submenus div ' + ul).parent('div').siblings().hide();
+    $('.submenus div ' + ul).parent('div').show();
+    $('.submenus div ' + ul).show();
 
   });
   $(document).on('click','.project-aside a', function(e){
@@ -132,52 +133,56 @@ $(document).ready(function() {
     });
 
     // Toggle profile grid and square view
-    $(document).on('click', '.switch', function(){
+    $(document).on('click', '.square-view , .grid-view', function(){
     	// $(this).children().toggle();
-    	if($('.project-item ').hasClass('col-md-6')){
-    		$('.project-item ').removeClass('col-md-6');
-    		$('.project-item ').addClass('col-md-12');
-				// $('.project-item .content-side p.project-text-grid').css({display: 'block'});
-    		// $('.project-stats').css({
-				// display: 'block',
-				// bottom: '120px'
-			// });
-    		// squareView = false;
+    	if(squareView){
+    		$('.projects-grid .project-item ').removeClass('col-lg-6');
+    		$('.projects-grid .project-item ').addClass('col-lg-12');
+				$('.projects-grid .project-item .content-side p.project-text-grid').css({display: 'block'});
+    		$('.projects-grid .project-stats').css({
+				display: 'block',
+				bottom: '120px'
+			});
+			$('.projects-grid .categories').css({
+				display: 'block',
+			});
+    		squareView = false;
     	} else {
-    		$('.project-item').removeClass('col-md-12');
-    		$('.project-item').addClass('col-md-6');
-				// $('.project-item .content-side p.project-text-grid').css({display: 'none'});
-    		// $('.project-stats').css({
-				// display: 'none',
-				// bottom: '120px'
-			// });
-    		// squareView = true;
+    		$('.projects-grid .project-item').removeClass('col-lg-12');
+    		$('.projects-grid .project-item').addClass('col-lg-6');
+				$('.projects-grid .project-item .content-side p.project-text-grid').css({display: 'none'});
+    		$('.projects-grid .project-stats').css({
+					display: 'none',
+					bottom: '120px'
+				});
+				$('.projects-grid .categories').css({
+					display: 'none',
+				});
+    		squareView = true;
     	}
-
-
     });
 
     // Show and hide project stats on project card
-    // $(document).on('mouseenter', '.project', function(){
-		// if (squareView){
-		// 	$(this).find('.icons').stop();
-		// 	$(this).find('.icons').fadeOut('400');
-		// 	$(this).find('.teaser').stop();
-		// 	$(this).find('.teaser').fadeIn('400');
-		// 	$(this).find('.overlay').stop();
-		// 	$(this).find('.overlay').fadeIn('400');
-		// }
-    // });
-    // $(document).on('mouseleave', '.project', function(){
-		// if (squareView){
-		// 	$(this).find('.icons').stop();
-		// 	$(this).find('.icons').fadeIn('400');
-		// 	$(this).find('.overlay').stop();
-		// 	$(this).find('.overlay').fadeOut('400');
-		// 	$(this).find('.teaser').stop();
-		// 	$(this).find('.teaser').fadeOut('400');
-		// }
-    // });
+    $(document).on('mouseenter', '.project', function(){
+		if (squareView){
+			$(this).find('.icons').stop();
+			$(this).find('.icons').fadeOut('400');
+			$(this).find('.teaser').stop();
+			$(this).find('.teaser').fadeIn('400');
+			$(this).find('.overlay').stop();
+			$(this).find('.overlay').fadeIn('400');
+		}
+    });
+    $(document).on('mouseleave', '.project', function(){
+		if (squareView){
+			$(this).find('.icons').stop();
+			$(this).find('.icons').fadeIn('400');
+			$(this).find('.overlay').stop();
+			$(this).find('.overlay').fadeOut('400');
+			$(this).find('.teaser').stop();
+			$(this).find('.teaser').fadeOut('400');
+		}
+    });
 
     /*$(document).on('click','.tools a, .materials a, .parts a', function(e){
     	e.preventDefault();
@@ -187,4 +192,24 @@ $(document).ready(function() {
 		$tr.after($clone);
 		$clone.find(':text').val('');
     });*/
+
+
+/* trigger project tabs buttons another button click event */
+
+// 		$(document).on('click',".read-story", function(e){
+// 			e.preventDefault();
+// 			$('#project-story').trigger('click');
+// 			alert('CLICKED 1');
+// });
+
+// 		$(document).on('click',".build-project", function(e){
+// 			e.preventDefault();
+// 			$('#how-to').trigger('click');
+// 			alert('CLICKED 2');
+// });
+
+
+
+
+
 });

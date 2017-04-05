@@ -6,7 +6,7 @@ import { TaxonomyTerm } from '../../../models/Drupal/taxonomy-term';
 import { UserService } from '../../../d7services/user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
-import {Device} from 'ng2-device-detector';
+//import {Device} from 'ng2-device-detector';
 import { NodeService } from '../../../d7services/node/node.service'
 
 
@@ -39,7 +39,48 @@ export class FeedbackComponent implements OnInit {
  closeResult: string;
 
  CurrentType:number;
+   feedback={
+        type:'feedback',
+        title:'',
+        field_want_submit:{
+          und:''
+        },
+         field_browser:{
+          und:[{
+            value:''
+        }]
+        }, field_os:{
+          und:[{
+            value:''
+        }]
+        },
+        field_bug_not_in_page_:{
+          und:[{
+            value:''
+        }]
+        },
+         field_bug_in_page:{
+          und:[{
+            value:''
+        }]
+        },
+        field_screen_size:{
+            und:[{
+            value:''
+        }]
+        },
+        field_my_bug:{
+          und:''
+        },
+        body:{
+          und:[{
+              value:''
+          }]
+        }
 
+      // field_browser:und[0].value
+
+    } 
   constructor(
       private modalService: NgbModal,
       private fb: FormBuilder,
@@ -47,18 +88,18 @@ export class FeedbackComponent implements OnInit {
       private userService: UserService,
       private nodeService:NodeService,
       @Inject(DOCUMENT) private document: any,
-      private device: Device
+     // private device: Device
 ) {
-    this.deviceInfo();
     this.screen=screen
     this.full_url=this.document.location.href;
+    // this.navigator.os = navigator.platform;
+    // this.navigator.browser=navigator.userAgent;
  }
 
   ngOnInit() {
     //console.log(navigator.userAgent);
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     var todayDate = new Date();     
-    var date;
     this.date=this.changeDateFormat(todayDate);
     this.username = localStorage.getItem('user_name');
     this.navigator=navigator;
@@ -108,15 +149,15 @@ export class FeedbackComponent implements OnInit {
   }
   buildform(){
    // field_want_submit=this.feedback.field_want_submit;
-
+   console.log(this.navigator);
       this.feedbackForm = this.fb.group({
       // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
       'field_want_submit':[ '',Validators.required],
       'field_my_bug': '',
       'field_would_like' : '',
-      'field_bug_not_in_page_' :this.full_url,
-      'field_bug_in_page' :'' ,
-      'field_browser' : this.device.browser+" "+this.device.browser_version,
+      'field_bug_not_in_page_' :'',
+      'field_bug_in_page' :this.full_url ,
+      'field_browser' : navigator.userAgent/*this.device.browser+" "+this.device.browser_version*/,
       'field_os':navigator.platform,
       'field_screen_size':this.screen.height+'X'+this .screen.width ,
       'body':'',
@@ -196,54 +237,55 @@ open(content) {
 }
   
  checkFeedbackType(feedback){
-   console.log(feedback);
  }
- deviceInfo() {
-    console.log('hello `Home` component');
-    console.log(this.device);
- 
+
+  onFileChange(event: Event) {
+    let file = (<any>event.target).files[0];
+    if (!file) {
+      return;
+    }
   }
+
+
   onSubmit(value){
     this.submitted=true;
     this.onValueChanged();
      if(this.feedbackForm.valid){
-       console.log('gggggggggggggggggggggggggggggggggggg');
+       var now = Date.now();
+       var feedback=this.feedback;
+       feedback.title=this.feedbackForm.value.title = this.username+'_'+now;
+       feedback.field_want_submit.und=this.feedbackForm.value.field_want_submit;
+       if(feedback.field_want_submit.und == "1185"){
+          feedback.field_browser.und[0].value=this.feedbackForm.value.field_browser;
+          feedback.field_os.und[0].value=this.feedbackForm.value.field_os;
+          if(this.feedbackForm.value.field_bug_not_in_page_.length == 0){
+            feedback.field_bug_in_page.und[0].value=this.feedbackForm.value.field_bug_in_page
+            delete(feedback.field_bug_not_in_page_)
+          }else{
+            feedback.field_bug_not_in_page_.und[0].value=this.feedbackForm.value.field_bug_not_in_page_
+            delete(feedback.field_bug_in_page);
+          }
+          feedback.field_screen_size.und[0].value=this.feedbackForm.value.field_screen_size
+          feedback.field_my_bug.und=this.feedbackForm.value.field_my_bug
+          feedback.body.und[0].value=this.feedbackForm.value.body
 
-       // let FieldName = 'field_' + this.CurrentModal + 's';
-    
-    // und[0].value='';
-    var feedback={
-        type:'feedback',
-        title:'',
-        field_want_submit:{
-          '#validated':true,
-          und:[{
-            tid :''
-        }]
-        },
-         field_browser:{
-          und:[{
-            value:''
-        }]
-        },
+       }else if(feedback.field_want_submit.und == "1186"){
 
-      // field_browser:und[0].value
-
-    }
-
-       feedback.field_want_submit.und[0].tid=this.feedbackForm.value.field_want_submit;
-       feedback.field_browser.und[0].value=this.feedbackForm.value.field_want_submit;
-       feedback.title=this.feedbackForm.value.title = 'feedback 12345678990';
+       }
        console.log(feedback)
-      this.nodeService.createNode(feedback).subscribe((NewNode) => {
-       
+        this.nodeService.createNode(feedback).subscribe((NewNode) => {
+      }, err =>{
+        console.log(err);
+       // this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
-   // this.feedback.SetField(this.date, "title");
-    //this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
-     // NewNode.name = this.date;
+      
+  
      }
 
 }
+  OpenCoverImageModal(Template){
+    this.modalService.open(Template);
+  }
 }
 
  

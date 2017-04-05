@@ -14,7 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { Ng2DeviceDetector} from 'ng2-device-detector';
+//import { Ng2DeviceDetector} from 'ng2-device-detector';
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
@@ -22,6 +22,8 @@ import { ProjectHowToComponent } from './project-how-to/project-how-to.component
 import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
 import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
+import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
+
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
-    Ng2DeviceDetector,
+//Ng2DeviceDetector,
   ],
   declarations: [
     CommentComponent,
@@ -51,7 +53,8 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
-    UserCardSmallComponent
+    UserCardSmallComponent,
+    LearnUserCardComponent
   ],
   exports: [
     CommentComponent,
@@ -69,7 +72,9 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
     ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
-    UserCardSmallComponent
+    UserCardSmallComponent,
+    LearnUserCardComponent
+
   ]
   
 })
@@ -90,3 +95,5 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
+
+export { LearnUserCardComponent };
