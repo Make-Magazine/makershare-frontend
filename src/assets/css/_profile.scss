@@ -189,7 +189,21 @@
                @include desc-font-1 ();
             }
             .location {
+                @include card-header-font-md ();
+
                 color: $title-color;
+            }
+            .profile-describe-yourself{
+             @include desc-font-1 ();
+
+            }
+            .badges{
+             @include desc-font-1 ();
+             
+
+            }
+            .bio{
+                 @include body-font-1 ();
             }
             .post {}
             .awards {
@@ -255,6 +269,7 @@
                     display: none;
                     margin-top: 5px;
                 }
+               
             }
             .how {
                 p {
@@ -1085,7 +1100,8 @@
             @include desc-font-1 ()
         }
         .maker-city {
-            @include desc-font-3 ();
+            @include card-header-font-md ()
+;
             color:$city-color
         }
         .maker-descripe {
@@ -1103,9 +1119,19 @@
             }
          }
        }
+        .mywebsite{
+                    color: $text-color-6;
+                    text-decoration: none ; 
+                }
          .edit-icon{
              float: right;
              color: $text-color-6;
+         }
+         .started_making{
+             @include body-font-1 ();
+         }
+         .global-title{
+              @include card-header-font-sm ();
          }
         
      

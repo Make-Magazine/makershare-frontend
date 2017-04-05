@@ -42,9 +42,9 @@
 									<div class="card-type"><span>Maker</span></div>
 								</div>
 							</div>
-							<p>Profile Completeness</p>
+							<p class="global-title">Profile Completeness</p>
 							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
-								<ngb-progressbar  [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
+								<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
@@ -59,7 +59,7 @@
 								<!-- describe yourself-->
 								<ul *ngIf="ProfileInfo.describe_yourself != '' " class="list-unstyled post">
 									<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
-									<li>"{{ProfileInfo.describe_yourself}}"</li>
+									<li class="profile-describe-yourself">"{{ProfileInfo.describe_yourself}}"</li>
 								</ul>
 								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post">
 									<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')" class="btn btn-white add ">
@@ -68,12 +68,12 @@
 								</ul>
 								<!-- describe yourself-->
 								<hr>
-								<p>Badges</p>
-					<!-- start Badges-->
+								<p class="global-title">Badges</p>
+								<!-- start Badges-->
 								<div class="icons">
 									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
-										<p>{{badge?.title}}</p><br>
+										<p class="badges">{{badge?.title}}</p><br>
 									</div>
 								</div>
 								<hr>
@@ -81,11 +81,11 @@
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
 									<a (click)="OpenModal(biomodal,'add-bio-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
-									<div [innerHTML]="profile.bio"></div>
+									<div class="bio" [innerHTML]="profile.bio"></div>
 								</div>
 								<div *ngIf="!profile.bio" class="bio">
 									<a (click)="OpenModal(biomodal,'add-bio-modal')" class="btn btn-white add">
-										<i class="fa fa-lg fa-plus"></i> Add your bio
+										<i class="fa fa-lg fa-plus"></i> <p class="global-title">Add your bio</p>
 									</a>
 								</div>
 								<!-- End Bio -->
@@ -117,19 +117,8 @@
 										</a>
 									</div>-->
 									<div class="social-links">
-										<span class="footer-subtitle">Social</span><br>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
-											<span class="fa-stack fa-lg">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-globe  fa-stack-1x fa-inverse"></i>
-						</span>
-										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
-											<span class="fa-stack fa-lg">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-globe  fa-stack-1x fa-inverse"></i>
-						</span>
-										</a>
+										<span class="global-title">Social</span><br>
+								
 										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
 											<span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x"></i>
@@ -187,14 +176,14 @@
 
 									</div>
 									<hr>
-									<strong> Links </strong>
+									<p class="global-title"> Links </p>
 									<br>
-									<a *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
-										My Website
-									</a>
-									<br>
-									<a *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
-											My Photography
+
+									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
+							{{profile.field_social_accounts.field_website_or_blog}}
+									</a><br>
+									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
+							{{profile.field_social_accounts.field_additional_site}}
 									</a>
 									<br>
 								</div>
@@ -204,8 +193,8 @@
 								<hr>
 								<div *ngIf="profile.started_making" class="how">
 									<!-- Start How -->
-									<h5>How I learned to be a maker</h5>
-									<p>{{profile.started_making}}</p>
+									<p class="global-title">How I learned to be a maker</p>
+									<p class="started_making">{{profile.started_making}}</p>
 								</div>
 								<div *ngIf="!profile.started_making" class="how">
 									<a (click)="OpenModal(startedmakingmodal,'add-maker-starting-modal')">
@@ -222,7 +211,7 @@
 									<a (click)="OpenModal(add-interests-modal,'modal fade')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
 								</ul>
 
-								<strong>Interests</strong>
+								<p class="global-title">Interests</p>
 								<tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
 									[displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
 									[placeholder]="''" [secondaryPlaceholder]="''" [maxItems]="options.maxItems" [separatorKeys]="options.separatorKeys">
