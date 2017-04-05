@@ -1351,15 +1351,19 @@ footer {
       margin-top: 16px;
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
-        text-align: left;
-        font-size: 24px;
-        font-weight: bold;
-        font-family: -webkit-body; }
+        font-family: "Messina Modern Bold" !important;
+        font-size: 2em !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
-        text-align: left;
-        font-size: 15px;
-        font-weight: bold;
-        font-family: -webkit-body; }
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
       .profile-sidebar .profile-container .profile-info .location {
         color: #00AEEF; }
       .profile-sidebar .profile-container .profile-info .awards {
@@ -2122,6 +2126,10 @@ footer {
   color: #333333; }
   .social-links a i.fa-inverse:before {
     padding-left: 10px; }
+
+.edit-icon {
+  float: right;
+  color: #00AEEF; }
 
 .page-explore {
   background-color: #F2F2F2; }
