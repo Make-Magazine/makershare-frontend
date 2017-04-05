@@ -35,6 +35,10 @@
 	@include font-setting('Messina Modern Bold', 1.5em ,700 ,none , 100%, $text-color-2 );
 	// 18pt
 }
+@mixin card-header-font-xs (){
+	@include font-setting('Messina Modern Bold', 1.167em ,700 ,none , 100%, $text-color-2 );
+	// 14pt
+}
 
 @mixin body-font-1 (){
 	@include font-setting('Messina Sans Regular', 1.5em ,400 ,none , 110%, $text-color-2 );

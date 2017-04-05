@@ -176,16 +176,16 @@
 
 									</div>
 									<hr>
-									<p class="global-title"> Links </p>
-									<br>
 
+									<p class="global-title"> Links </p>
+							
 									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">
 							{{profile.field_social_accounts.field_website_or_blog}}
 									</a><br>
 									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">
 							{{profile.field_social_accounts.field_additional_site}}
 									</a>
-									<br>
+									
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
 									<a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a>
