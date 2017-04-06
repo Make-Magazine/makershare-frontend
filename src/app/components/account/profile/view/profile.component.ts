@@ -14,7 +14,7 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
 import { Intrests} from '../../../../models/profile/intrests';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -142,7 +142,7 @@ export class ProfileComponent implements OnInit {
     private fileService: FileService,
     private modalService: NgbModal,
     private fb:FormBuilder,
-    private route:ActivatedRoute
+    private route:ActivatedRoute, private router:Router
   ) {
 
     
@@ -302,6 +302,7 @@ export class ProfileComponent implements OnInit {
   }
 
   UpdateUser(){
+    if(typeof this.uid != "undefined") {
     this.userService.getUser(this.uid).subscribe(res => {
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
@@ -324,6 +325,9 @@ export class ProfileComponent implements OnInit {
       })
       this.Loading = false;
     });
+    } else {
+      this.router.navigate(['**']);
+    }
   }
   
   prefer(event : string){
