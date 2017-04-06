@@ -3,13 +3,14 @@
 </li>
 
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
-  <div class="modal-header">
+<div class="modal-header">
     <h3 style="color: black"></h3>
   </div>
 <div class="modal-body">
-  <div class=text-right>{{date}}</div>
-  Your name:{{username}}
-  <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event)" novalidate>
+  <div *ngIf="NID == false">
+  <!--<div class=text-right>{{date}}</div>-->
+  <p *ngIf="username">Your name:{{username}}<p>
+  <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event)" novalidate >
     <div class="form-group">
       <label>I want to submit:	</label>
       <select class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
@@ -33,12 +34,17 @@
         <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
       </div>
     </div>
+    <div class="form-group" *ngIf="CurrentType == 1185">
+      <label for="exampleTextarea">You can also describe how you got to the bug in the text field below.</label>
+      <textarea class="form-control" id="exampleTextarea" rows="5" [formControl]="feedbackForm.controls['field_describe_bug']"></textarea>
+    </div>
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this browser:</label>
-      <div >
+      <div *ngIf="device.browserName && device.browserVersion">
         <input class="form-control" type="text" placeholder="enter browser name" [formControl]="feedbackForm.controls['field_browser']" >
       </div>
+      
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">I’m using this OS:</label>
@@ -53,7 +59,7 @@
       </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1185">
-      <label>I want to submit:	</label>
+      <label>My bug involves:	</label>
       <select class="form-control" [formControl]="feedbackForm.controls['field_my_bug']" id="exampleSelect1">
         <option *ngFor="let bug_type of bug_types; let i=index" value="{{bug_type.tid}}" >{{bug_type.name}}</option>
       </select>
@@ -64,8 +70,8 @@
     </div>
     <div class="form-group"*ngIf="CurrentType == 1185">
       <label for="exampleInputFile">Upload screenshots of what you see especially broken images or error messages	</label>
-      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']">
-      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+      <input type="file" class="form-control-file"  placeholder="Choose photo" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']" (change)="uploadFile($event)"  >
+      <small id="fileHelp" class="form-text text-muted">maximum upload size 5M</small>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1186">
       <label>I would like a</label>
@@ -82,16 +88,60 @@
       <textarea class="form-control" id="exampleTextarea" rows="5" [formControl]="feedbackForm.controls['field_better_site']"></textarea>
     </div>
     <div *ngIf="CurrentType == 1187">
-      <label for="example-text-input" class="form-label">How likely am to recommend your site to other Makers?</label>
-      <div>
-        <input class="form-control" type="number" min="1" max="10" [formControl]="feedbackForm.controls['field_recommend_site']">
-      </div>
-      <small id="textHelp" class="form-text text-muted">1-10 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
+      <label  class="form-label">How likely am to recommend your site to other Makers?</label>
+  <div class="row">
+    <div class="col-md-2">
+    <label class="md-check">
+      <input type="radio" value="1"  [formControl]="feedbackForm.controls['field_recommend_site']">
+      <p>Not likely at all</p>
+    </label>
     </div>
+     <div class="col-md-2">
+    <label class="md-check">
+      <input type="radio" value="2"  [formControl]="feedbackForm.controls['field_recommend_site']">     
+      <p>Somewhat unlikely</p>
+    </label>
+    </div>
+    <div class="col-md-2">
+
+    <label class="md-check">
+      <input type="radio" value="3"  [formControl]="feedbackForm.controls['field_recommend_site']">     
+     <p> Not sure</p>
+    </label>
+    </div>
+        <div class="col-md-2">
+
+    <label class="md-check">
+      <input type="radio" value="4"  [formControl]="feedbackForm.controls['field_recommend_site']">     
+      <p>Likely</p>
+    </label>
+    </div>
+    <div class="col-md-2">
+    <label class="md-check">
+      <input type="radio" value="5"  [formControl]="feedbackForm.controls['field_recommend_site']">     
+     <p>Extremely likely</p>
+    </label>
+    </div>
+  </div>
+   <small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
+   </div>
+ 
 
     <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
+  </div>
+  
+<div *ngIf="NID !== false">  
+<p >
+    Your message has been submitted; you may receive a direct message with follow-up.
+    Thank you for your active participation!
+</p>
 
+<div align="center">
+    <button type="button" class="btn btn-lg btn-primary" (click)="c('Close click')">OK</button>
+</div>
+
+</div>
 </div>
 <div class="modal-footer">
   <ul class="list-unstyled actions">

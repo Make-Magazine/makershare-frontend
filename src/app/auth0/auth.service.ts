@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../d7services/user/user.service';
 import { MainService } from '../d7services/main/main.service';
@@ -13,19 +13,21 @@ import * as globals from '../d7services/globals';
 let Auth0Lock = require('auth0-lock').default;
 
 @Injectable()
-export class Auth {
+export class Auth implements OnInit {
 
   // Configure Auth0
   // redirectURLObs: Observable<string>;
   // redirectURL: string;
   screen = 'login';
   yearsArr= [];
+  state = '';
+  
   lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
     loginUrl: '/login',
     auth: {
         redirectUrl: globals.appURL,
         responseType: 'token',
-        params: {state: localStorage.getItem('redirectUrl')},
+        params: {state: this.state},
     },
     socialButtonStyle: 'small',
     initialScreen: this.screen,
@@ -49,7 +51,7 @@ export class Auth {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       
-       console.log(authResult);
+       
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
@@ -68,7 +70,7 @@ export class Auth {
               localStorage.setItem('user_name', res.user.name);
               localStorage.setItem('user_photo', res.user_photo);
               if(authResult.state != ''){
-                this.router.navigate([authResult.state]);
+             //   this.router.navigate([authResult.state]);
               }
               
             } else {
@@ -101,16 +103,9 @@ export class Auth {
     });
   }
 
-    // ngOnInit() {
-    //   this.redirectURLObs = this.route.queryParams.map(params => params['redirectUrl'] || '');
-    //   this.redirectURLObs.subscribe(param => {
-    //     if(param.length > 0){
-    //       this.redirectURL = param;
-    //       console.log(this.redirectURL);
-    //     }
-        
-    //   }); 
-    // }
+    ngOnInit() {
+   
+    }
 
 
 

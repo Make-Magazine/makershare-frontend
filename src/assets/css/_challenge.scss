@@ -33,7 +33,7 @@
     }
     .card-container {
         .card-partership {
-            @include desc-font-14();
+            @include desc-font-1();
             text-transform: none;
             font-size: 14px;
             display: inline-block; 
@@ -114,7 +114,7 @@
         font-weight: normal;
 	}
     p {
-        @include desc-font-14();
+        @include desc-font-1();
     }
 }
 .challenges-container {
@@ -157,7 +157,7 @@
             height: 100%;
         }
         .challenge-type-badge {
-            @include desc-font-14();
+            @include desc-font-1();
             position: absolute;
             top: 24px;
             right: -50px;
@@ -177,7 +177,7 @@
             color: white;
         }
         .card-status {
-            @include body-font-b();
+            @include body-font-1();
             display: inline-block;
             text-transform: none;
         }
@@ -190,7 +190,7 @@
             }
 
             p {
-                @include desc-font-14();
+                @include desc-font-1();
                 height: 85px;
                 color: white;
             }

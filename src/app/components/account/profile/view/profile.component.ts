@@ -13,7 +13,7 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
-
+import { Intrests} from '../../../../models/profile/intrests';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
         placeholder: "+ interest",
         secondaryPlaceholder: "Enter a new interest",
         separatorKeys: [4, 5],
-        maxItems: 10
+        maxItems: 20
     }
 
   validationMessages = {
@@ -199,16 +199,10 @@ export class ProfileComponent implements OnInit {
   }
 
   interestSelected(interest) {
-    if(this.ProfileInfo.maker_interests[0].name){
-        this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(0), 1);
-    }
-    
-    this.ProfileInfo.maker_interests.push(interest.tid);
     this.SaveUser(this.ProfileInfo);
   }
 
-  onInterestRemoved(interest, id:number) {
-      this.ProfileInfo.maker_interests.splice(this.profile.maker_interests.indexOf(id), 1);
+  onInterestRemoved(interest) {
       this.SaveUser(this.ProfileInfo);
   }
 
@@ -274,7 +268,6 @@ export class ProfileComponent implements OnInit {
           flag= false;
         }
     }
-    debugger
     if(flag){
         Object.assign(this.ProfileInfo.field_social_accounts , this.FormGroupSocial.value);
         this.SaveUser(this.ProfileInfo);
@@ -286,6 +279,7 @@ export class ProfileComponent implements OnInit {
   SaveUser(user:UserProfile){
     this.Loading = true;
     user.uid = this.uid;
+
     this.profileService.updateProfile(user.uid,user).subscribe(data=>{
       this.UpdateUser();
     });
@@ -301,7 +295,10 @@ export class ProfileComponent implements OnInit {
       if(res.field_social_accounts){
         this.ProfileInfo.field_social_accounts = res.field_social_accounts;
       }
+      /**/
       this.ProfileInfo.maker_interests = res.maker_interests;
+      /**/
+
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
       localStorage.setItem('user_photo', this.profile.user_photo);

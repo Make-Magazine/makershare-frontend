@@ -88,12 +88,8 @@
 								</div>
 								<!-- End Bio -->
 
-								<ul class="list-unstyled interests" *ngIf="profile.maker_interests && profile.maker_interests.length > 0">
-									<a class="btn btn-white add" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
-									<div *ngFor="let interest of profile.maker_interests">
-										<li>{{interest.title}}</li>
-									</div>
-								</ul>
+								
+
 								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
@@ -144,14 +140,22 @@
 									</a>
 								</div>
 								<hr>
+
+								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length == 0">
+									<a class="btn btn-white add" data-toggle="modal" data-target="#add-interests-modal"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
+								</ul>
+
+								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length != 0">
+									<a (click)="OpenModal(add-interests-modal,'modal fade')"><i class="fa fa-lg fa-pencil"></i></a>
+								</ul>
+
 								<strong>Interests</strong>
 								 <tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
-								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event,$tag.id)" value="tid" [inputId]="tid"
-								 [placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems" 
+								 [displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
+								 [placeholder]="''" [secondaryPlaceholder]="''" [maxItems]="options.maxItems" 
 								 [separatorKeys]="options.separatorKeys">
 										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
 																				[autocompleteItems]="allIntersets" value="tid" display="name" inputId="tid">
-												
 										</tag-input-dropdown>
 								</tag-input>
 								<hr>
@@ -207,9 +211,13 @@
 										<div class="modal-body">
 
 											<div class="form-group">
-												<tag-input (onSelect)="onSelected($event)" [identifyBy]="'name'" [displayBy]="'name'" [onlyFromAutocomplete]="true">
-													<tag-input-dropdown [identifyBy]="'name'" [displayBy]="'name'" [autocompleteItems]="allIntersets">
-													</tag-input-dropdown>
+												<tag-input [(ngModel)]="ProfileInfo.maker_interests" (onAdd)="interestSelected($event)" [identifyBy]="'tid'" display="name"
+													[displayBy]="'name'" [onlyFromAutocomplete]="true" (onRemove)="onInterestRemoved($event)" value="tid" [inputId]="tid"
+													[placeholder]="options.placeholder" [secondaryPlaceholder]="options.secondaryPlaceholder" [maxItems]="options.maxItems" 
+													[separatorKeys]="options.separatorKeys">
+														<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'"
+																								[autocompleteItems]="allIntersets" value="tid" display="name" inputId="tid">
+														</tag-input-dropdown>
 												</tag-input>
 											</div>
 										</div>

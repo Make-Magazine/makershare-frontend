@@ -187,13 +187,13 @@ footer {
         .newsletter {
             .input-group-addon {
                 background: none;
-                background-color: $text-color-5;
+                background-color: $text-color-6;
                 color: white;
             }
         }
     }
     .footer-subtitle {
-        color: $text-color-5;
+        color: $text-color-6;
         font-size: 16px;
         width: 100%;
         padding-bottom: 4px;
@@ -237,6 +237,8 @@ footer {
     }
     .user-name {
         @include card-header-font-sm();
+                min-height: 24px;
+                margin-bottom: 2px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -244,7 +246,8 @@ footer {
     }
     .user-nickname {
         font-size: 12px;
-        margin-bottom: 0;
+        margin-bottom: 2px;
+        min-height: 18px;
         a {
             text-decoration: none;
             color: $light-grey;
@@ -256,6 +259,7 @@ footer {
         height: 38px;
         line-height: 17px;
         display: inline-block;
+        min-height: 50px;
     }
     .profile-tag, .user-city, .count {
         font-size: 14px;
@@ -263,6 +267,8 @@ footer {
     }
     .user-city {
         color: $title-color;
+        min-height: 21px;
+        margin-bottom: 4px;
         div {
             float: left;
             margin-right: 6px;
@@ -305,7 +311,7 @@ footer {
 		padding: 2px;
 		color: $light-grey;
 		ul li {
-            @include desc-font-12();
+            @include desc-font-2();
             font-weight: normal !important;
             font-size: 13px !important;
             color: $light-grey;
@@ -346,6 +352,8 @@ footer {
     }
     .user-name {
         @include card-header-font-sm();
+        min-height: 24px;
+        margin-bottom: 2px;
         a {
             text-decoration: none;
             color: $main-grey;
@@ -353,7 +361,8 @@ footer {
     }
     .user-nickname {
         font-size: 12px;
-        margin-bottom: 0;
+        margin-bottom: 2px;
+        min-height: 18px;
         a {
             text-decoration: none;
             color: $light-grey;
@@ -366,6 +375,7 @@ footer {
         line-height: 17px;
         overflow: hidden;
         display: inline-block;
+        min-height: 50px;
     }
     .profile-tag, .user-city, .count {
         font-size: 14px;
@@ -373,6 +383,8 @@ footer {
     }
     .user-city {
         color: $title-color;
+        min-height: 21px;
+        margin-bottom: 4px;
         div {
             float: left;
             margin-right: 6px;
@@ -384,3 +396,17 @@ footer {
         clear: both;
     }
 }
+.slick-slide {
+    width: auto !important;
+}
+.slick-track {
+    min-height: 150px;
+    max-height: 170px;
+    img {
+       height: 170px;
+    }
+}
+
+
+
+

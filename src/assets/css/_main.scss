@@ -1,5 +1,6 @@
-h1,h2,h3,h4,h5,h6 {font-family: $title-font-family;font-weight: bold;color: $main-grey;}
+h1,h2,h3,h4,h5,h6 {font-family: 'Messina Modern Regular';font-weight: bold;color: $main-grey;}
 body {
+    font-family: 'Messina Sans Regular';
     padding-right: 0 !important; 
     -webkit-transition: all 1.25s ease-in-out;
        -moz-transition: all 1.25s ease-in-out;
@@ -149,7 +150,7 @@ body {
     }
 }
 .card-type {
-    @include desc-font-14();
+    @include desc-font-1();
     position: absolute;
     top: 45px;
     right: -30px;

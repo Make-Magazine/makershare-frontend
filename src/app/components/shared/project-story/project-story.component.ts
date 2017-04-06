@@ -45,8 +45,8 @@ export class ProjectStoryComponent implements OnInit {
     var i = 0;
     // var source = Observable.create(observer => {
       if(this.project.field_collaborators){
-        this.project.field_collaborators.forEach((maker,i)=>{
-
+        let i=0;
+          for (let maker of this.project.field_collaborators){
           // observer.next(
             this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
               // console.log(data)
@@ -55,7 +55,8 @@ export class ProjectStoryComponent implements OnInit {
               // console.log(this.collabs[i])
             })
             // )
-        });
+            i++
+        };
       }
       
       // observer.onCompleted();

@@ -72,7 +72,7 @@ export class ShowcaseComponent implements OnInit {
 * delete selected messages
 */
   deleteMessages() {
-    console.log(this.deletedArr);
+    
     for (var i = 0; i < this.deletedArr.length; i++) {
       this.flagService.unflag(this.deletedArr[i], this.userId, 'node_bookmark').subscribe(response => {
         this.getShowcaseBookmark();
@@ -88,7 +88,7 @@ export class ShowcaseComponent implements OnInit {
     for (var _i = 0; _i < this.showcases.length; _i++) {
       if (ev.target.checked === true) {
         this.deletedArr.push(this.showcases[_i].nid);
-        console.log(this.showcases[_i].nid)
+        
       } else {
         var index = this.deletedArr.indexOf(this.showcases[_i].nid, 0);
         if (index > -1) {

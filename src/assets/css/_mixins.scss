@@ -19,32 +19,35 @@
 	color: $c ;
 }
 @mixin header-font (){
-	@include font-setting('Messina Modern Regular', 64pt ,400 ,capitalize , 100%, $text-color-1 );
+	@include font-setting('Messina Modern Regular', 5.3em ,400 ,capitalize , 100%, $text-color-1 );
 }
 
 @mixin card-header-font-lg (){
-	@include font-setting('Messina Modern Regular', 40pt ,400 ,capitalize , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 4em ,400 ,capitalize , 100%, $text-color-2 );
 }
 @mixin card-header-font-md (){
-	@include font-setting('Messina Modern Bold', 24pt ,700 ,none , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Bold', 2em ,700 ,none , 100%, $text-color-2 );
 }
 @mixin card-header-font-sm (){
-	@include font-setting('Messina Modern Bold', 18pt ,700 ,none , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Bold', 1.5em ,700 ,none , 100%, $text-color-2 );
 }
 
-@mixin body-font-b (){
-	@include font-setting('Messina Sans Bold', 18pt ,700 ,none , 110%, $text-color-2 );
+@mixin body-font-1 (){
+	@include font-setting('Messina Sans Regular', 1.5em ,700 ,none , 110%, $text-color-2 );
 }
-@mixin body-font-r (){
-	@include font-setting('Messina Sans Regular', 18pt ,400 ,none , 110%, $text-color-2 );
+@mixin body-font-2(){
+	@include font-setting('Messina Sans Regular', 1.5em ,400 ,none , 110%, $text-color-2 );
 }
 
-@mixin desc-font-14 (){
-	@include font-setting('Messina Sans SemiBold', 14pt ,600 ,none , 100% , $text-color-2);
+@mixin desc-font-1 (){
+	@include font-setting('Messina Sans Regular', 1.167em ,600 ,none , 100% , $text-color-2);
 }
-@mixin desc-font-12 (){
-	@include font-setting('Messina Sans SemiBold', 12pt ,600 ,none , 100% , $text-color-2);
+@mixin desc-font-2 (){
+	@include font-setting('Messina Sans Regular', 1em ,600 ,none , 100% , $text-color-2);
 }
-@mixin desc-font-13 (){
-	@include font-setting('Messina Sans Bold', 16pt ,700 ,uppercase , 100% , $text-color-2);
+@mixin desc-font-3 (){
+	@include font-setting('Messina Sans SemiBold', 1em ,600 ,none , 100% , $text-color-2);
+}
+@mixin desc-font-4 (){
+	@include font-setting('Messina Sans SemiBold', 1.313em ,700 ,uppercase , 100% , $text-color-2);
 }

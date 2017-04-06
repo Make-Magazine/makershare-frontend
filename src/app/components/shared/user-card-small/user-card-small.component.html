@@ -11,7 +11,7 @@
           <div class="card-type">Maker</div>
           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
-          <p class="user-city" *ngIf="(card.city)" [innerHTML]="card.city"></p>
+          <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
           <div class="icons-side-user">
             <div class="user-icon" *ngFor="let badge of badges;">
               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">

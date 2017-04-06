@@ -16,7 +16,7 @@
   src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"), url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"), url("../fonts/MessinaModernWeb-Bold.woff") format("woff"), url("../fonts/MessinaModern-Bold.otf") format("opentype"); }
 header nav {
   font-size: 14px;
-  color: #222; }
+  color: #333333; }
   header nav.navbar {
     background-color: #F2F2F2;
     position: relative;
@@ -34,7 +34,7 @@ header nav {
     display: none; }
   header nav .dropdown-menu {
     font-size: 14px;
-    color: #222;
+    color: #333333;
     font-weight: normal;
     margin-top: 9px;
     border-radius: 0;
@@ -45,13 +45,13 @@ header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
   header .main-header .intel-sites a, header .main-header .maker-sites a {
-    color: #111111; }
+    color: #1a1a1a; }
   header .main-header .intel-sites a.greyed, header .main-header .maker-sites a.greyed {
-    color: #222; }
+    color: #333333; }
 header .main-header .intel-sites li:nth-child(2) {
   margin-bottom: 80px; }
 header .main-header .maker-sites li:nth-child(-n+4) {
-  border-left: 1px solid #222; }
+  border-left: 1px solid #333333; }
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
@@ -84,30 +84,30 @@ header .main-header .maker-sites li {
 
 .btn-grey, a:not([href]):not([tabindex]).btn-grey {
   color: #fff !important;
-  background-color: #222;
-  border-color: #1f1f1f;
+  background-color: #333333;
+  border-color: #2e2e2e;
   border-radius: 0; }
   .btn-grey:focus, a:not([href]):not([tabindex]).btn-grey:focus {
     color: #fff;
-    background-color: #141414;
-    border-color: #141414; }
+    background-color: #1f1f1f;
+    border-color: #1f1f1f; }
   .btn-grey:active, .btn-grey:hover, a:not([href]):not([tabindex]).btn-grey:active, a:not([href]):not([tabindex]).btn-grey:hover {
     color: #fff;
-    background-color: #1f1f1f;
-    border-color: #1b1b1b; }
+    background-color: #2e2e2e;
+    border-color: #292929; }
 
 .btn-grey-inverse, a:not([href]):not([tabindex]).btn-grey-inverse {
-  color: #222;
-  background-color: #ababab;
+  color: #333333;
+  background-color: #aaaaaa;
   border-radius: 0; }
   .btn-grey-inverse:focus, a:not([href]):not([tabindex]).btn-grey-inverse:focus {
     color: #fff;
-    background-color: #141414;
-    border-color: #141414; }
+    background-color: #1f1f1f;
+    border-color: #1f1f1f; }
   .btn-grey-inverse:active, .btn-grey-inverse:hover, .btn-grey-inverse.active, a:not([href]):not([tabindex]).btn-grey-inverse:active, a:not([href]):not([tabindex]).btn-grey-inverse:hover, a:not([href]):not([tabindex]).btn-grey-inverse.active {
     color: #fff !important;
-    background-color: #1f1f1f;
-    border-color: #1b1b1b; }
+    background-color: #2e2e2e;
+    border-color: #292929; }
 
 .btn-grey-follow, a:not([href]):not([tabindex]).btn-grey-follow {
   color: #fff !important;
@@ -118,18 +118,18 @@ header .main-header .maker-sites li {
   left: 0px !important; }
 
 .btn-light-grey, a:not([href]):not([tabindex]).btn-light-grey {
-  color: #222;
-  background-color: #BEBEBE;
-  border: 1px solid #1f1f1f;
+  color: #333333;
+  background-color: #BDBDBD;
+  border: 1px solid #2e2e2e;
   border-radius: 0; }
   .btn-light-grey:focus, a:not([href]):not([tabindex]).btn-light-grey:focus {
-    color: #222;
-    background-color: #727272;
-    border-color: #141414; }
+    color: #333333;
+    background-color: #717171;
+    border-color: #1f1f1f; }
   .btn-light-grey:active, .btn-light-grey:hover, a:not([href]):not([tabindex]).btn-light-grey:active, a:not([href]):not([tabindex]).btn-light-grey:hover {
-    color: #222;
-    background-color: #ababab;
-    border-color: #1b1b1b; }
+    color: #333333;
+    background-color: #aaaaaa;
+    border-color: #292929; }
 
 .btn-fit,
 a:not([href]):not([tabindex]).btn-fit {
@@ -173,8 +173,8 @@ a:not([href]):not([tabindex]).btn-main-2 {
 a:not([href]):not([tabindex]).btn-border {
   background: transparent;
   border-radius: 0;
-  color: #222;
-  border: 1px solid #222; }
+  color: #333333;
+  border: 1px solid #333333; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
   a:not([href]):not([tabindex]).btn-border:active,
@@ -184,30 +184,30 @@ a:not([href]):not([tabindex]).btn-border {
 .btn-border-tag,
 a:not([href]):not([tabindex]).btn-border-tag {
   border-radius: 0;
-  color: #222;
-  border: 1px solid #222; }
+  color: #333333;
+  border: 1px solid #333333; }
 
 .btn-border-projects,
 a:not([href]):not([tabindex]).btn-border {
-  color: #BEBEBE;
+  color: #BDBDBD;
   background: transparent;
-  border: 1px solid #222; }
+  border: 1px solid #333333; }
   .btn-border-projects:focus, .btn-border-projects:active, .btn-border-projects:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
   a:not([href]):not([tabindex]).btn-border:active,
   a:not([href]):not([tabindex]).btn-border:hover {
-    border: 1px solid #222;
-    color: #222; }
+    border: 1px solid #333333;
+    color: #333333; }
 
 .btn-transparent,
 a:not([href]):not([tabindex]).btn-transparent {
-  color: #1b1b1b;
+  color: #292929;
   background: transparent; }
   .btn-transparent:focus, .btn-transparent:active, .btn-transparent:hover,
   a:not([href]):not([tabindex]).btn-transparent:focus,
   a:not([href]):not([tabindex]).btn-transparent:active,
   a:not([href]):not([tabindex]).btn-transparent:hover {
-    color: #222;
+    color: #333333;
     box-shadow: none; }
 
 .btn-white,
@@ -238,7 +238,7 @@ a:not([href]):not([tabindex]).btn-sharp {
 
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
-  color: #BEBEBE;
+  color: #BDBDBD;
   font-size: 20px;
   margin: auto;
   border: none;
@@ -247,14 +247,14 @@ a:not([href]):not([tabindex]).message-btn {
   a:not([href]):not([tabindex]).message-btn:hover,
   a:not([href]):not([tabindex]).message-btn:focus,
   a:not([href]):not([tabindex]).message-btn:active {
-    color: #222;
+    color: #333333;
     cursor: pointer; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
-  background-color: #222;
+  background-color: #333333;
   color: #fff;
-  border: 1px solid #444; }
+  border: 1px solid #333333; }
   .btn-dark-grey:hover, .btn-dark-grey:focus, .btn-dark-grey:active,
   a:not([href]):not([tabindex]).btn-dark-grey:hover,
   a:not([href]):not([tabindex]).btn-dark-grey:focus,
@@ -350,7 +350,7 @@ a:not([href]):not([tabindex]) {
     padding: 10px;
     position: relative;
     font-family: "Messina Modern Regular" !important;
-    font-size: 40pt !important;
+    font-size: 4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -370,7 +370,7 @@ a:not([href]):not([tabindex]) {
           font-size: 16px;
           bottom: 0; }
   .project .project-image {
-    background-color: #BEBEBE;
+    background-color: #BDBDBD;
     height: auto;
     position: relative;
     overflow: hidden; }
@@ -403,9 +403,9 @@ a:not([href]):not([tabindex]) {
     display: block;
     position: relative;
     padding: 10px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #333333;
     background-color: #fff;
-    color: #222; }
+    color: #333333; }
   .project .project-stats {
     display: none;
     position: absolute;
@@ -440,7 +440,7 @@ a:not([href]):not([tabindex]) {
     background-color: #fff;
     padding: 10px 5px;
     overflow: hidden;
-    border: 1px solid #989898;
+    border: 1px solid #979797;
     max-height: 320px;
     position: relative; }
     .profile-container .profile-card .profile-name {
@@ -512,14 +512,15 @@ a:not([href]):not([tabindex]) {
       font-size: 18px; }
     #joinus-modal .modal-dialog .modal-content p {
       text-align: center;
-      color: #222; }
+      color: #333333; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: -webkit-body;
+  font-family: 'Messina Modern Regular';
   font-weight: bold;
-  color: #222; }
+  color: #333333; }
 
 body {
+  font-family: 'Messina Sans Regular';
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
   -moz-transition: all 1.25s ease-in-out;
@@ -528,8 +529,8 @@ body {
   transition: all 1.25s ease-in-out; }
 
 .default-header {
-  background-color: #BEBEBE;
-  color: #444;
+  background-color: #BDBDBD;
+  color: #333333;
   text-align: left;
   overflow: hidden;
   vertical-align: middle;
@@ -548,7 +549,7 @@ body {
 .main-header {
   padding: 0 !important;
   margin: 0 !important;
-  color: #222;
+  color: #333333;
   width: 100%;
   background-color: #F2F2F2; }
   .main-header .navbar-brand {
@@ -585,7 +586,7 @@ body {
         width: 27px; }
 
 .msg {
-  background-color: #BEBEBE;
+  background-color: #BDBDBD;
   min-height: 30px;
   padding: 10px;
   text-align: center; }
@@ -593,7 +594,7 @@ body {
     font-size: 17px; }
   .msg h3, .msg p {
     margin: 0;
-    color: #222; }
+    color: #333333; }
 
 .error-msg {
   margin-top: 10px; }
@@ -624,8 +625,8 @@ body {
       float: left; }
 
 .card-type {
-  font-family: "Messina Sans SemiBold" !important;
-  font-size: 14pt !important;
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.167em !important;
   font-weight: 600 !important;
   text-transform: none !important;
   line-height: 100% !important;
@@ -636,7 +637,7 @@ body {
   padding: 0;
   transform: rotate(-90deg);
   text-transform: uppercase !important;
-  color: #BEBEBE;
+  color: #BDBDBD;
   margin: 0; }
 
 .dropdown-menu {
@@ -730,12 +731,12 @@ body {
 
 .maker-spotlight {
   overflow: hidden;
-  background-color: #C4C4C4;
+  background-color: #DCDCDC;
   padding-top: 30px;
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 64pt !important;
+    font-size: 5.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -818,10 +819,10 @@ footer {
     padding-bottom: 4px; }
   footer .socials-newsletter .newsletter .input-group-addon {
     background: none;
-    background-color: #11B3F0;
+    background-color: #00AEEF;
     color: white; }
   footer .footer-subtitle {
-    color: #11B3F0;
+    color: #00AEEF;
     font-size: 16px;
     width: 100%;
     padding-bottom: 4px;
@@ -852,23 +853,26 @@ footer {
   padding: 0px; }
 .user-card .user-name {
   font-family: "Messina Modern Bold" !important;
-  font-size: 18pt !important;
+  font-size: 1.5em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  min-height: 24px;
+  margin-bottom: 2px; }
   .user-card .user-name a {
     text-decoration: none;
-    color: #222; }
+    color: #333333; }
 .user-card .user-nickname {
   font-size: 12px;
-  margin-bottom: 0; }
+  margin-bottom: 2px;
+  min-height: 18px; }
   .user-card .user-nickname a {
     text-decoration: none;
-    color: #BEBEBE; }
+    color: #BDBDBD; }
 .user-card .profile-tag {
   font-family: "Messina Modern Bold" !important;
-  font-size: 18pt !important;
+  font-size: 1.5em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
@@ -876,17 +880,20 @@ footer {
   margin-bottom: 5px;
   height: 38px;
   line-height: 17px;
-  display: inline-block; }
+  display: inline-block;
+  min-height: 50px; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
 .user-card .user-city {
-  color: #0AA9EA; }
+  color: #00AEEF;
+  min-height: 21px;
+  margin-bottom: 4px; }
   .user-card .user-city div {
     float: left;
     margin-right: 6px; }
 .user-card .count {
   margin-bottom: 0;
-  color: #BEBEBE;
+  color: #BDBDBD;
   clear: both; }
 
 .user-card-small.card-block {
@@ -911,17 +918,17 @@ footer {
   margin-top: 10px; }
 .user-card-small .card-stats {
   padding: 2px;
-  color: #BEBEBE; }
+  color: #BDBDBD; }
   .user-card-small .card-stats ul li {
-    font-family: "Messina Sans SemiBold" !important;
-    font-size: 12pt !important;
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1em !important;
     font-weight: 600 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282;
     font-weight: normal !important;
     font-size: 13px !important;
-    color: #BEBEBE; }
+    color: #BDBDBD; }
     .user-card-small .card-stats ul li img {
       margin-right: 6px; }
       .user-card-small .card-stats ul li img.project-likes {
@@ -949,23 +956,26 @@ footer {
     padding: 0px; }
 .user-card-small .user-name {
   font-family: "Messina Modern Bold" !important;
-  font-size: 18pt !important;
+  font-size: 1.5em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  min-height: 24px;
+  margin-bottom: 2px; }
   .user-card-small .user-name a {
     text-decoration: none;
-    color: #222; }
+    color: #333333; }
 .user-card-small .user-nickname {
   font-size: 12px;
-  margin-bottom: 0; }
+  margin-bottom: 2px;
+  min-height: 18px; }
   .user-card-small .user-nickname a {
     text-decoration: none;
-    color: #BEBEBE; }
+    color: #BDBDBD; }
 .user-card-small .profile-tag {
   font-family: "Messina Modern Bold" !important;
-  font-size: 18pt !important;
+  font-size: 1.5em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
@@ -974,21 +984,206 @@ footer {
   height: 38px;
   line-height: 17px;
   overflow: hidden;
-  display: inline-block; }
+  display: inline-block;
+  min-height: 50px; }
 .user-card-small .profile-tag, .user-card-small .user-city, .user-card-small .count {
   font-size: 14px; }
 .user-card-small .user-city {
-  color: #0AA9EA; }
+  color: #00AEEF;
+  min-height: 21px;
+  margin-bottom: 4px; }
   .user-card-small .user-city div {
     float: left;
     margin-right: 6px; }
 .user-card-small .count {
   margin-bottom: 0;
-  color: #BEBEBE;
+  color: #BDBDBD;
   clear: both; }
+
+.slick-slide {
+  width: auto !important; }
+
+.slick-track {
+  min-height: 150px;
+  max-height: 170px; }
+  .slick-track img {
+    height: 170px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
+.banner {
+  padding: 40px 0; }
+  .banner #homeBanner {
+    padding: 0 15px;
+    max-width: 700px; }
+    .banner #homeBanner h2 {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      color: #EC1F30;
+      margin-bottom: 20px; }
+    .banner #homeBanner h1 {
+      font-weight: 300;
+      margin-bottom: 40px; }
+
+.carousel-slider .slick-prev {
+  left: 0;
+  z-index: 20;
+  width: 50px;
+  height: 50px; }
+.carousel-slider .slick-next {
+  right: 0;
+  z-index: 20;
+  width: 50px;
+  height: 50px; }
+.carousel-slider .slick-prev.slick-disabled:before,
+.carousel-slider .slick-next.slick-disabled:before,
+.carousel-slider .slick-prev:before,
+.carousel-slider .slick-next:before {
+  opacity: 0.5;
+  font-size: 40px; }
+
+.what-is-ms {
+  padding: 40px 0; }
+  .what-is-ms h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #EC1F30;
+    font-weight: 300;
+    margin-bottom: 20px; }
+  .what-is-ms h3 {
+    font-size: 1.5rem;
+    font-weight: 300; }
+  .what-is-ms img {
+    margin-top: 30px; }
+
+.add-animation {
+  transform: translate3D(0px, 150px, 0px);
+  -webkit-transform: translate3D(0px, 150px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out 0.6s;
+  -moz-transition: all 0.3s ease-out 0.6s;
+  -o-transition: all 0.3s ease-out 0.6s;
+  -ms-transition: all 0.3s ease-out 0.6s;
+  transition: all 0.3s ease-out 0.6s; }
+  .add-animation.animate {
+    transform: translate3D(0px, 0px, 0px);
+    -webkit-transform: translate3D(0px, 0px, 0px);
+    opacity: 1; }
+
+.info-w-parallax {
+  height: 882px;
+  position: relative; }
+  @media screen and (max-width: 767px) {
+    .info-w-parallax {
+      height: auto; } }
+  .info-w-parallax .container {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  .info-w-parallax .info-card {
+    background-color: #fff;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px 60px;
+    margin-top: 15px;
+    margin-bottom: 15px; }
+    @media screen and (max-width: 767px) {
+      .info-w-parallax .info-card {
+        padding: 15px 15px 40px; } }
+    .info-w-parallax .info-card h2 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
+      margin-bottom: 20px; }
+    .info-w-parallax .info-card h3 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 300; }
+
+.parallax-bg {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  position: relative; }
+  .parallax-bg > img {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    z-index: 1; }
+    @media screen and (max-width: 767px) {
+      .parallax-bg > img {
+        position: absolute; } }
+  .parallax-bg .parallax-container {
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0; }
+    @media screen and (max-width: 767px) {
+      .parallax-bg .parallax-container {
+        position: relative; } }
+
+.parallax-red-line {
+  position: relative; }
+  .parallax-red-line .parallax-red-line-left {
+    position: absolute;
+    z-index: 3;
+    height: 360px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-left: 3px solid #EC1F30;
+    left: 60px;
+    top: -180px; }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .parallax-red-line .parallax-red-line-left {
+        left: 40px; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .parallax-red-line .parallax-red-line-left {
+        left: -30px; } }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      .parallax-red-line .parallax-red-line-left {
+        left: -15px; } }
+    @media screen and (max-width: 575px) {
+      .parallax-red-line .parallax-red-line-left {
+        display: none; } }
+  .parallax-red-line .parallax-red-line-right {
+    position: absolute;
+    z-index: 3;
+    height: 290px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-right: 3px solid #EC1F30;
+    top: -130px;
+    right: 60px; }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .parallax-red-line .parallax-red-line-right {
+        right: 40px;
+        left: initial; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .parallax-red-line .parallax-red-line-right {
+        right: -30px;
+        left: initial; } }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      .parallax-red-line .parallax-red-line-right {
+        right: -30px;
+        left: initial; } }
+    @media screen and (max-width: 575px) {
+      .parallax-red-line .parallax-red-line-right {
+        display: none; } }
+
 .profile-page {
   position: relative;
   margin-top: 14px; }
@@ -1021,7 +1216,7 @@ footer {
       margin: 0; }
 
 .profile-name {
-  color: #0AA9EA; }
+  color: #00AEEF; }
   .profile-name h4 {
     font-weight: normal;
     display: inline;
@@ -1041,7 +1236,7 @@ footer {
       color: #fff;
       text-decoration: none; }
       .profile-name .bookmark li a i {
-        color: #222;
+        color: #333333;
         font-size: 30px;
         margin-left: 20px;
         width: 35px; }
@@ -1049,10 +1244,10 @@ footer {
         color: #ED1C24; }
 
 .profile-sidebar {
-  color: #181818;
+  color: #242424;
   margin-top: -10px; }
   .profile-sidebar hr {
-    border-color: #222;
+    border-color: #333333;
     margin: 10px 0 15px; }
   .profile-sidebar h5 {
     color: #000;
@@ -1079,14 +1274,14 @@ footer {
     text-align: right;
     margin: 5px 0;
     white-space: normal;
-    border: 1px solid #444;
-    color: #444; }
+    border: 1px solid #333333;
+    color: #333333; }
     .profile-sidebar a.add i {
       font-size: 12px;
       padding-top: 4px;
       text-align: left;
       float: left;
-      color: #444; }
+      color: #333333; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 15px;
@@ -1099,10 +1294,10 @@ footer {
       font-size: 13px; }
       .profile-sidebar .profile-container li a,
       .profile-sidebar .profile-container p a {
-        color: #0AA9EA; }
+        color: #00AEEF; }
     .profile-sidebar .profile-container i {
       width: 25px;
-      color: #222; }
+      color: #333333; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
       position: relative;
       margin-bottom: -100px; }
@@ -1147,7 +1342,7 @@ footer {
         font-weight: bold;
         font-family: -webkit-body; }
       .profile-sidebar .profile-container .profile-info .location {
-        color: #0AA9EA; }
+        color: #00AEEF; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -1168,14 +1363,14 @@ footer {
           font-weight: bold;
           font-size: 10px;
           background-color: white;
-          color: #1b1b1b;
-          border: 1px solid #222;
+          color: #292929;
+          border: 1px solid #333333;
           display: initial; }
       .profile-sidebar .profile-container .profile-info .makerspaces li {
         margin-top: 15px;
-        color: #0AA9EA; }
+        color: #00AEEF; }
       .profile-sidebar .profile-container .profile-info .my-web li {
-        background-color: #989898;
+        background-color: #979797;
         font-weight: bold;
         display: inline;
         padding: 5px;
@@ -1200,16 +1395,16 @@ footer {
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
-    color: #0AA9EA; }
+    color: #00AEEF; }
     .profile-sidebar .report:hover {
-      color: #0AA9EA; }
+      color: #00AEEF; }
 
 /* End profile-sidebar */
 .profile-content a.btn {
   padding: 2px; }
 .profile-content .empty-content {
   text-align: center;
-  color: #444;
+  color: #333333;
   font-size: 18px;
   padding: 14px;
   margin-top: 20px;
@@ -1221,9 +1416,9 @@ footer {
     text-align: center;
     margin-top: 10px;
     padding: 7px;
-    background-color: #222;
+    background-color: #333333;
     color: white;
-    border: 1px solid #444;
+    border: 1px solid #333333;
     margin: 0px 6px 0px 6px;
     min-width: 144px; }
     .profile-content .empty-content a i {
@@ -1244,7 +1439,7 @@ footer {
   .profile-stats .bookmark ul li {
     display: inline-block;
     margin: 0px;
-    color: #222;
+    color: #333333;
     font-weight: bold;
     padding-left: 2px;
     padding-right: 2px; }
@@ -1284,13 +1479,13 @@ footer {
   color: white; }
 
 .switch {
-  color: #BEBEBE;
+  color: #BDBDBD;
   cursor: pointer;
   text-align: right;
   margin: 5px 0; }
   .switch p {
     margin-bottom: 0px;
-    color: #222;
+    color: #333333;
     margin-left: 10px; }
 
 .add-bio-modal h4,
@@ -1314,7 +1509,7 @@ footer {
 .add-description-modal .modal-footer,
 .add-maker-starting-modal .modal-header,
 .add-maker-starting-modal .modal-footer {
-  border-color: #989898;
+  border-color: #979797;
   border-width: 3px; }
 .add-bio-modal .modal-content,
 .add-interests-modal .modal-content,
@@ -1322,7 +1517,7 @@ footer {
 .add-social-modal .modal-content,
 .add-description-modal .modal-content,
 .add-maker-starting-modal .modal-content {
-  border: 3px solid #989898; }
+  border: 3px solid #979797; }
   .add-bio-modal .modal-content li:first-of-type h4,
   .add-interests-modal .modal-content li:first-of-type h4,
   .add-makerspace-modal .modal-content li:first-of-type h4,
@@ -1467,7 +1662,7 @@ footer {
   padding-bottom: 0; }
 .edit-cover-modal .info {
   float: right;
-  background-color: #BEBEBE;
+  background-color: #BDBDBD;
   font-size: 10px;
   width: 50%;
   padding: 10px;
@@ -1484,7 +1679,7 @@ footer {
   .edit-cover-modal .upload a,
   .edit-cover-modal .your-photos a {
     font-size: 18px;
-    color: #222;
+    color: #333333;
     border-radius: 0; }
     .edit-cover-modal .upload a.active,
     .edit-cover-modal .your-photos a.active {
@@ -1502,14 +1697,14 @@ footer {
       position: absolute;
       top: 10px;
       right: 25px;
-      color: #222; }
+      color: #333333; }
 .edit-cover-modal .upload-tab {
   width: 300px;
   margin: auto;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  color: #222; }
+  color: #333333; }
   .edit-cover-modal .upload-tab img {
     width: 200px;
     margin: auto; }
@@ -1565,7 +1760,7 @@ footer {
       font-size: 17px; }
 .project .card-title {
   font-family: "Messina Modern Bold" !important;
-  font-size: 24pt !important;
+  font-size: 2em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
@@ -1587,24 +1782,24 @@ footer {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   margin: 0 5px;
-  color: #222; }
+  color: #333333; }
   .project .card-text.project-text-grid {
     display: none; }
 .project .categories {
   display: none; }
   .project .categories span {
     margin-left: 3px;
-    color: #BEBEBE; }
+    color: #BDBDBD; }
 .project .card-role p {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   font-size: 15px;
-  color: #BEBEBE; }
+  color: #BDBDBD; }
 .project .card-stats {
   padding: 2px;
-  color: #BEBEBE; }
+  color: #BDBDBD; }
   .project .card-stats ul li {
     float: left;
     font-size: 15px; }
@@ -1700,7 +1895,7 @@ footer {
 #add-description-modal .modal-footer,
 #add-maker-starting-modal .modal-header,
 #add-maker-starting-modal .modal-footer {
-  border-color: #989898;
+  border-color: #979797;
   border-width: 3px; }
 #add-bio-modal .modal-content,
 #add-interests-modal .modal-content,
@@ -1708,7 +1903,7 @@ footer {
 #add-social-modal .modal-content,
 #add-description-modal .modal-content,
 #add-maker-starting-modal .modal-content {
-  border: 3px solid #989898; }
+  border: 3px solid #979797; }
   #add-bio-modal .modal-content li:first-of-type h4,
   #add-interests-modal .modal-content li:first-of-type h4,
   #add-makerspace-modal .modal-content li:first-of-type h4,
@@ -1853,7 +2048,7 @@ footer {
   padding-bottom: 0; }
 #edit-cover-modal .info {
   float: right;
-  background-color: #BEBEBE;
+  background-color: #BDBDBD;
   font-size: 10px;
   width: 50%;
   padding: 10px;
@@ -1870,7 +2065,7 @@ footer {
   #edit-cover-modal .upload a,
   #edit-cover-modal .your-photos a {
     font-size: 18px;
-    color: #222;
+    color: #333333;
     border-radius: 0; }
     #edit-cover-modal .upload a.active,
     #edit-cover-modal .your-photos a.active {
@@ -1888,14 +2083,14 @@ footer {
       position: absolute;
       top: 10px;
       right: 25px;
-      color: #222; }
+      color: #333333; }
 #edit-cover-modal .upload-tab {
   width: 300px;
   margin: auto;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  color: #222; }
+  color: #333333; }
   #edit-cover-modal .upload-tab img {
     width: 200px;
     margin: auto; }
@@ -1912,7 +2107,7 @@ footer {
     text-align: center; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 64pt !important;
+      font-size: 5.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -1920,7 +2115,7 @@ footer {
       margin: auto;
       text-align: center;
       padding-top: 40px;
-      color: #222;
+      color: #333333;
       padding-bottom: 30px; }
     .page-explore .explore-header .explore-tags {
       margin: 20px auto; }
@@ -1958,7 +2153,7 @@ footer {
 
 .filters {
   min-height: 35px;
-  color: #222; }
+  color: #333333; }
   .filters .entries-count {
     font-size: 18px;
     padding: 5px 15px; }
@@ -1966,16 +2161,16 @@ footer {
       margin: 0; }
   .filters .btn {
     font-size: 18px;
-    color: #222; }
+    color: #333333; }
   .filters .dropdown-toggle {
     cursor: pointer; }
   .filters .sorting-filter, .filters .projects-filter {
-    border-left: 2px solid #222; }
+    border-left: 2px solid #333333; }
     .filters .sorting-filter button::after, .filters .projects-filter button::after {
       display: none; }
     .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
-      background-color: whitesmoke;
-      color: #BEBEBE;
+      background-color: white;
+      color: #BDBDBD;
       border-radius: 0;
       z-index: 10;
       right: 0;
@@ -2003,8 +2198,8 @@ footer {
     width: 100%;
     height: auto; }
   .challenge-card .card-container .card-partership {
-    font-family: "Messina Sans SemiBold" !important;
-    font-size: 14pt !important;
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.167em !important;
     font-weight: 600 !important;
     text-transform: none !important;
     line-height: 100% !important;
@@ -2024,7 +2219,7 @@ footer {
       bottom: 5px;
       align-self: end; }
       .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
-        background-color: #BEBEBE; }
+        background-color: #BDBDBD; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
       font-size: 14px; }
       .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
@@ -2048,7 +2243,7 @@ footer {
   text-align: center; }
   .challenge-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 64pt !important;
+    font-size: 5.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -2058,8 +2253,8 @@ footer {
     padding-bottom: 10px;
     font-weight: normal; }
   .challenge-header p {
-    font-family: "Messina Sans SemiBold" !important;
-    font-size: 14pt !important;
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.167em !important;
     font-weight: 600 !important;
     text-transform: none !important;
     line-height: 100% !important;
@@ -2073,7 +2268,7 @@ footer {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #333; }
+  background-color: #333333; }
   .page-challenge .challenge-card .single-challenge {
     padding: 10px; }
     .page-challenge .challenge-card .single-challenge img {
@@ -2097,8 +2292,8 @@ footer {
     .page-challenge .challenge-card .card-container .card {
       height: 100%; }
     .page-challenge .challenge-card .card-container .challenge-type-badge {
-      font-family: "Messina Sans SemiBold" !important;
-      font-size: 14pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.167em !important;
       font-weight: 600 !important;
       text-transform: none !important;
       line-height: 100% !important;
@@ -2111,7 +2306,7 @@ footer {
         margin: 0px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 40pt !important;
+      font-size: 4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -2124,8 +2319,8 @@ footer {
       min-height: 70px;
       color: white; }
     .page-challenge .challenge-card .card-container .card-status {
-      font-family: "Messina Sans Bold" !important;
-      font-size: 18pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -2135,8 +2330,8 @@ footer {
     .page-challenge .challenge-card .card-container .card-description h4 {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
-      font-family: "Messina Sans SemiBold" !important;
-      font-size: 14pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.167em !important;
       font-weight: 600 !important;
       text-transform: none !important;
       line-height: 100% !important;
@@ -2144,9 +2339,9 @@ footer {
       height: 85px;
       color: white; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
     .page-challenge .challenge-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
+      background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
       font-size: 13px;
@@ -2156,7 +2351,7 @@ footer {
   background-color: #F2F2F2; }
 
 .page-project {
-  color: #222;
+  color: #333333;
   background-color: #F2F2F2; }
   .page-project .top-content-wrapper {
     padding-top: 20px;
@@ -2164,7 +2359,7 @@ footer {
     .page-project .top-content-wrapper h2 {
       font-size: 35px;
       font-weight: bold;
-      color: #222; }
+      color: #333333; }
     .page-project .top-content-wrapper ul li {
       display: inline-block; }
     .page-project .top-content-wrapper ul.project-tags {
@@ -2176,12 +2371,12 @@ footer {
         font-size: 11px;
         float: left;
         margin-right: 5px;
-        background-color: #BEBEBE;
-        color: #222;
+        background-color: #BDBDBD;
+        color: #333333;
         font-weight: normal;
         border-radius: 3px; }
         .page-project .top-content-wrapper ul.project-tags .btn:hover {
-          background-color: #222; }
+          background-color: #333333; }
       .page-project .top-content-wrapper ul.project-tags .btn:hover {
         cursor: default; }
     .page-project .top-content-wrapper .project-likes {
@@ -2208,7 +2403,7 @@ footer {
       display: block;
       float: left; }
       .page-project .top-content-wrapper .project-actions li .active {
-        background-color: #222;
+        background-color: #333333;
         color: #fff; }
     .page-project .top-content-wrapper .project-aside {
       overflow: hidden;
@@ -2234,8 +2429,8 @@ footer {
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
       .page-project .project-story-tab .project-body-content p {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2246,8 +2441,14 @@ footer {
     -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
-    .page-project .feedback-group .login-link a {
-      color: blue; }
+    .page-project .feedback-group .login-link {
+      padding: 10px; }
+      .page-project .feedback-group .login-link .feedback-label {
+        width: 100%;
+        font-weight: bold; }
+      .page-project .feedback-group .login-link a {
+        color: #00AEEF;
+        text-decoration: underline; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
@@ -2264,7 +2465,7 @@ footer {
       vertical-align: bottom; }
       .page-project .project-stats ul li i {
         width: 25px;
-        color: #222; }
+        color: #333333; }
   .page-project .project-body {
     margin-bottom: 20px;
     margin-top: 30px; }
@@ -2280,8 +2481,8 @@ footer {
       -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
       box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
       .page-project .project-body .how-to-tab .project-body-content p {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2299,8 +2500,8 @@ footer {
         text-align: center;
         font-size: 18px;
         font-weight: bold;
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2310,7 +2511,7 @@ footer {
         text-align: center;
         font-size: 20px;
         font-weight: bold;
-        color: #444; }
+        color: #333333; }
     .page-project .project-body .how-to-sidebar .tools-kits {
       background-color: white;
       margin-top: 26px;
@@ -2325,8 +2526,8 @@ footer {
           text-align: center;
           margin-top: 10px;
           font-size: 18px;
-          font-family: "Messina Sans SemiBold" !important;
-          font-size: 14pt !important;
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
           font-weight: 600 !important;
           text-transform: none !important;
           line-height: 100% !important;
@@ -2335,8 +2536,8 @@ footer {
         .page-project .project-body .how-to-sidebar .tools-kits .tools li, .page-project .project-body .how-to-sidebar .tools-kits .materials li, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits li {
           border: none;
           padding: 0px 6px;
-          font-family: "Messina Sans SemiBold" !important;
-          font-size: 14pt !important;
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
           font-weight: 600 !important;
           text-transform: none !important;
           line-height: 100% !important;
@@ -2344,18 +2545,18 @@ footer {
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .count, .page-project .project-body .how-to-sidebar .tools-kits .materials .count, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .count {
           min-width: 38px;
-          color: #444;
-          font-family: "Messina Sans SemiBold" !important;
-          font-size: 14pt !important;
+          color: #333333;
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
           font-weight: 600 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
-          color: #444;
-          font-family: "Messina Sans SemiBold" !important;
-          font-size: 14pt !important;
+          color: #333333;
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
           font-weight: 600 !important;
           text-transform: none !important;
           line-height: 100% !important;
@@ -2370,8 +2571,8 @@ footer {
         text-align: center;
         margin-top: 10px;
         font-size: 18px;
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2383,8 +2584,8 @@ footer {
         .page-project .project-body .how-to-sidebar .tools-kits .resources li a {
           text-decoration: underline;
           color: #00AEEF !important;
-          font-family: "Messina Sans SemiBold" !important;
-          font-size: 14pt !important;
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
           font-weight: 600 !important;
           text-transform: none !important;
           line-height: 100% !important;
@@ -2407,7 +2608,7 @@ footer {
       .page-project .feedback-group .feedback .feed-user img {
         width: 60px;
         background-color: #fff;
-        border: 1px solid #222;
+        border: 1px solid #333333;
         margin-right: 10px;
         margin-bottom: 5px; }
       .page-project .feedback-group .feedback .feed-user .name {
@@ -2487,8 +2688,8 @@ footer {
       .page-project .aha .card-heading p {
         text-align: center;
         color: #ED1C24 !important;
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2497,8 +2698,8 @@ footer {
     .page-project .aha .card-block {
       padding: 0px 14px; }
       .page-project .aha .card-block p {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2515,8 +2716,8 @@ footer {
       .page-project .uh-oh .card-heading p {
         text-align: center;
         color: #ED1C24 !important;
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2525,8 +2726,8 @@ footer {
     .page-project .uh-oh .card-block {
       padding: 0px 14px; }
       .page-project .uh-oh .card-block p {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -2537,7 +2738,7 @@ footer {
     color: #828282; }
   .page-project .license-report .report {
     font-size: 14px;
-    color: #11B3F0; }
+    color: #00AEEF; }
   .page-project .panel {
     border-width: 3px;
     border-radius: 15px;
@@ -2547,7 +2748,7 @@ footer {
       border-bottom-width: 3px; }
       .page-project .panel .panel-heading h3 {
         font-weight: bold;
-        color: #222;
+        color: #333333;
         margin: 0;
         font-size: 20px; }
         .page-project .panel .panel-heading h3 i {
@@ -2615,7 +2816,7 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details .user-fullname {
           font-size: 16px;
           margin-right: 10px;
-          color: #0AA9EA; }
+          color: #00AEEF; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp p {
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp i {
@@ -2627,7 +2828,7 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
-          color: #444; }
+          color: #333333; }
     .feedback-group .feedback-card .feed-timestamp {
       margin: 0px;
       color: #bebebe;
@@ -2639,12 +2840,12 @@ header.showcase-project .next {
     .feedback-group .feedback-card .content-section .media-body {
       padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {
-        color: #444;
+        color: #333333;
         margin: 0px; }
   .feedback-group .comment-body p {
     margin: 0px;
-    font-family: "Messina Sans SemiBold" !important;
-    font-size: 14pt !important;
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.167em !important;
     font-weight: 600 !important;
     text-transform: none !important;
     line-height: 100% !important;
@@ -2662,7 +2863,7 @@ header.showcase-project .next {
       position: relative; }
       .feedback-group .new-comment .comment-body textarea {
         border: 1px solid #ccc;
-        color: #444;
+        color: #333333;
         margin-top: 2px;
         position: relative;
         padding: 0px 6px; }
@@ -2689,7 +2890,7 @@ header.showcase-project .next {
           padding-top: 4px; }
       .feedback-group .new-comment .comment-body button {
         display: inline-table;
-        color: #BEBEBE;
+        color: #BDBDBD;
         border: none;
         margin: 0;
         position: absolute;
@@ -2751,11 +2952,11 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
-        color: #11B3F0;
+        color: #00AEEF;
         text-decoration: underline; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 40pt !important;
+        font-size: 4em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 100% !important;
@@ -2770,7 +2971,7 @@ header.showcase-project .next {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
-        font-size: 18pt !important;
+        font-size: 1.5em !important;
         font-weight: 400 !important;
         text-transform: none !important;
         line-height: 110% !important;
@@ -2812,7 +3013,7 @@ header.showcase-project .next {
     position: relative; }
   .learn-card .card-container .card-partership {
     font-family: "Messina Sans Regular" !important;
-    font-size: 18pt !important;
+    font-size: 1.5em !important;
     font-weight: 400 !important;
     text-transform: none !important;
     line-height: 110% !important;
@@ -2832,7 +3033,7 @@ header.showcase-project .next {
     bottom: 5px;
     align-self: end; }
     .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
   .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
     font-size: 14px; }
     .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
@@ -2856,7 +3057,7 @@ header.showcase-project .next {
   text-align: center; }
   .learn-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 64pt !important;
+    font-size: 5.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -2867,7 +3068,7 @@ header.showcase-project .next {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular" !important;
-    font-size: 18pt !important;
+    font-size: 1.5em !important;
     font-weight: 400 !important;
     text-transform: none !important;
     line-height: 110% !important;
@@ -2912,7 +3113,7 @@ header.showcase-project .next {
         margin: 0px; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 40pt !important;
+      font-size: 4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -2925,8 +3126,8 @@ header.showcase-project .next {
       min-height: 67px;
       color: #4F4F4F; }
     .page-learn .learn-card .card-container .card-status {
-      font-family: "Messina Sans Bold" !important;
-      font-size: 18pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -2937,7 +3138,7 @@ header.showcase-project .next {
       font-weight: bold; }
     .page-learn .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -2949,9 +3150,9 @@ header.showcase-project .next {
       min-height: 116px;
       color: #4F4F4F; }
     .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
     .page-learn .learn-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
+      background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
       font-size: 13px;
@@ -2971,7 +3172,7 @@ header.showcase-project .next {
     .page-showcase .showcase-header h3,
     .page-single-showcase .showcase-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 64pt !important;
+      font-size: 5.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -2983,7 +3184,7 @@ header.showcase-project .next {
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -3003,7 +3204,7 @@ header.showcase-project .next {
   margin-bottom: 10px; }
 
 .showcase-card-backlayer {
-  background-color: #D4EEFC;
+  background-color: #D4EFFC;
   transition: background-color 0.8s ease;
   padding-right: 23px;
   padding-bottom: 9px;
@@ -3012,12 +3213,11 @@ header.showcase-project .next {
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
   .showcase-card-backlayer:hover {
-    background-color: #11B3F0;
+    background-color: #00AEEF;
     transition: background-color 0.8s ease; }
   .showcase-card-backlayer .showcase-card {
     position: relative;
     padding: 16px;
-    overflow: hidden;
     cursor: pointer;
     background-color: white;
     -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
@@ -3033,13 +3233,10 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .single-showcase .card-partership {
         color: #ED1C24; }
     .showcase-card-backlayer .showcase-card .left-side {
-      padding: 0px;
-      overflow: hidden; }
+      padding: 0px; }
     .showcase-card-backlayer .showcase-card .image-container {
-      overflow: hidden;
       position: relative;
       padding: 0;
-      width: 450px;
       height: auto; }
       .showcase-card-backlayer .showcase-card .image-container img {
         width: 100%;
@@ -3060,7 +3257,7 @@ header.showcase-project .next {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 40pt !important;
+        font-size: 4em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 100% !important;
@@ -3070,10 +3267,10 @@ header.showcase-project .next {
         -webkit-box-orient: vertical;
         max-height: 114px;
         min-height: 70px;
-        color: #444; }
+        color: #333333; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
-        font-family: "Messina Sans Bold" !important;
-        font-size: 18pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.5em !important;
         font-weight: 700 !important;
         text-transform: none !important;
         line-height: 110% !important;
@@ -3083,8 +3280,8 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .card-container .card-description h4 {
         font-weight: bold; }
       .showcase-card-backlayer .showcase-card .card-container .card-description p {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -3093,11 +3290,11 @@ header.showcase-project .next {
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: #444; }
+        color: #333333; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
-        background-color: #BEBEBE; }
+        background-color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons .follow-number {
-        background-color: #ababab;
+        background-color: #aaaaaa;
         padding: 3px 15px;
         border-radius: 20px;
         font-size: 13px;
@@ -3106,7 +3303,7 @@ header.showcase-project .next {
       bottom: 5px;
       align-self: end; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-1 a.btn.btn-grey {
-        background-color: #BEBEBE; }
+        background-color: #BDBDBD; }
     .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 {
       padding-top: 4px; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count {
@@ -3136,7 +3333,7 @@ header.showcase-project .next {
         padding-right: 5px; }
 
 .page-single-showcase .showcase-card-backlayer {
-  background-color: #D4EEFC;
+  background-color: #D4EFFC;
   transition: inherit;
   padding-right: 23px;
   padding-bottom: 9px;
@@ -3145,7 +3342,7 @@ header.showcase-project .next {
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
   .page-single-showcase .showcase-card-backlayer:hover {
-    background-color: #D4EEFC;
+    background-color: #D4EFFC;
     transition: inherit; }
 .page-single-showcase .projects-grid .showcase-wrapper {
   display: block;
@@ -3203,14 +3400,144 @@ img {
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 88px;
-    color: #444;
+    color: #333333;
     line-height: 140%; }
+
+.showcase-card-backlayer-home {
+  background-color: #D4EFFC;
+  transition: background-color 0.8s ease;
+  padding-right: 9px;
+  padding-bottom: 9px;
+  margin-bottom: 10px;
+  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .showcase-card-backlayer-home:hover {
+    background-color: #00AEEF;
+    transition: background-color 0.8s ease; }
+  .showcase-card-backlayer-home .showcase-card {
+    position: relative;
+    padding: 16px;
+    cursor: pointer;
+    background-color: white;
+    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    .showcase-card-backlayer-home .showcase-card .card {
+      background-color: transparent;
+      border: none; }
+    .showcase-card-backlayer-home .showcase-card .single-showcase {
+      padding: 10px; }
+      .showcase-card-backlayer-home .showcase-card .single-showcase img {
+        width: 250px; }
+      .showcase-card-backlayer-home .showcase-card .single-showcase .card-partership {
+        color: #ED1C24; }
+    .showcase-card-backlayer-home .showcase-card .left-side {
+      padding: 0px; }
+    .showcase-card-backlayer-home .showcase-card .image-container {
+      position: relative;
+      padding: 0;
+      height: auto; }
+      .showcase-card-backlayer-home .showcase-card .image-container img {
+        width: 100%;
+        height: auto; }
+    .showcase-card-backlayer-home .showcase-card .card-container {
+      color: #fff;
+      height: 100%;
+      position: relative; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card {
+        height: 100%; }
+      .showcase-card-backlayer-home .showcase-card .card-container .showcase-type-badge {
+        position: absolute;
+        top: 24px;
+        right: -40px;
+        transform: rotate(-90deg); }
+        .showcase-card-backlayer-home .showcase-card .card-container .showcase-type-badge p {
+          margin: 0px;
+          color: #BDBDBD; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-title {
+        font-family: "Messina Modern Regular" !important;
+        font-size: 4em !important;
+        font-weight: 400 !important;
+        text-transform: capitalize !important;
+        line-height: 100% !important;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 190px;
+        color: #333333; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-status {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.5em !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
+        color: #828282;
+        display: inline-block;
+        text-transform: none; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description h4 {
+        font-weight: bold; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #333333;
+        height: 71px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
+        background-color: #BDBDBD; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
+        background-color: #aaaaaa;
+        padding: 3px 15px;
+        border-radius: 20px;
+        font-size: 13px;
+        margin-left: 10px; }
+    .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-1 a.btn.btn-grey {
+        background-color: #BDBDBD; }
+    .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 {
+      padding-top: 4px; }
+      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count {
+        font-size: 14px; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count div {
+          float: left;
+          margin-right: 8px;
+          min-width: 50px; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
+          margin-left: 20px; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
+          color: #BDBDBD; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
+          width: 22px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
+          padding-right: 10px;
+          color: #BDBDBD; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-date {
+          padding-left: 16px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
+          color: #BDBDBD; }
+      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
+        font-weight: bold;
+        font-size: 16px;
+        padding-right: 5px; }
 
 .page-create-profile {
   background-color: #F2F2F2;
   margin: 0px; }
   .page-create-profile .top-content-wrapper {
-    background-color: #222;
+    background-color: #333333;
     color: #fff;
     padding-bottom: 10px; }
     .page-create-profile .top-content-wrapper h3 {
@@ -3242,7 +3569,7 @@ img {
     width: 60%;
     margin: auto;
     margin-top: 20px;
-    color: #222; }
+    color: #333333; }
     .page-create-profile .basic-info input, .page-create-profile .optional-info input {
       margin-top: 10px;
       margin-bottom: 10px; }
@@ -3284,7 +3611,7 @@ img {
       margin-top: 5px;
       font-size: 15px; }
   .page-create-profile .guide {
-    background-color: #BEBEBE;
+    background-color: #BDBDBD;
     padding: 15px;
     margin: 15px 0; }
   .page-create-profile .create-cover {
@@ -3292,7 +3619,7 @@ img {
     overflow: hidden; }
 
 .page-create-project-why {
-  color: #222; }
+  color: #333333; }
   .page-create-project-why .ng2-imgcrop {
     display: block; }
     .page-create-project-why .ng2-imgcrop canvas {
@@ -3303,13 +3630,13 @@ img {
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
     max-width: 60%; }
   .page-create-project-why .add-controls {
-    background-color: #c8c8c8;
-    border-bottom: 1px solid #222;
+    background-color: #c6c6c6;
+    border-bottom: 1px solid #333333;
     padding: 10px 0 5px;
     overflow: hidden; }
     .page-create-project-why .add-controls h3 {
       font-family: "Messina Modern Bold" !important;
-      font-size: 24pt !important;
+      font-size: 2em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 100% !important;
@@ -3317,9 +3644,9 @@ img {
       color: #4F4F4F; }
     .page-create-project-why .add-controls .contorls li .btn-soft-grey {
       background-color: #fff;
-      color: #222; }
+      color: #333333; }
     .page-create-project-why .add-controls .contorls li .btn-transparent {
-      color: #222;
+      color: #333333;
       padding: 5px 15px; }
     .page-create-project-why .add-controls .contorls li .btn {
       padding: 5px 15px;
@@ -3334,7 +3661,7 @@ img {
     .page-create-project-why #projectCategory select {
       width: 75%; }
   .page-create-project-why .nav-create {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #333333;
     padding-top: 10px; }
     .page-create-project-why .nav-create ul {
       padding-left: 15px;
@@ -3347,8 +3674,8 @@ img {
         .page-create-project-why .nav-create ul li:not(:first-child) {
           margin-left: 5px; }
   .page-create-project-why .guideline {
-    background-color: #BEBEBE;
-    color: #222;
+    background-color: #BDBDBD;
+    color: #333333;
     overflow: hidden;
     margin-bottom: 20px;
     padding: 10px 10px 10px 15px; }
@@ -3365,7 +3692,7 @@ img {
         font-size: 14px;
         font-weight: bold; }
   .page-create-project-why .custom-footer {
-    border-top: 1px solid #222; }
+    border-top: 1px solid #333333; }
   .page-create-project-why .your-story .projectName {
     width: 60%; }
   .page-create-project-why .your-story .projectCategory {
@@ -3400,8 +3727,8 @@ img {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
       width: 100%;
-      background-color: #ababab;
-      color: #222;
+      background-color: #aaaaaa;
+      color: #333333;
       text-align: center;
       padding: 10px; }
     .page-create-project-why .your-story .cover .image-preview img {
@@ -3498,7 +3825,7 @@ img {
     .page-create-project-why .team .form-group {
       margin-top: 0px; }
     .page-create-project-why .team .add-collaborate {
-      border: 1px solid #222;
+      border: 1px solid #333333;
       border-radius: 0; }
     .page-create-project-why .team .sort label {
       display: block; }
@@ -3515,7 +3842,7 @@ img {
         font-size: 20px; }
     .page-create-project-why .team .add-collaborate {
       position: relative;
-      background-color: #BEBEBE;
+      background-color: #BDBDBD;
       overflow: hidden;
       margin: 20px 0;
       padding: 0 15px; }
@@ -3525,7 +3852,7 @@ img {
       bottom: 10%; }
     .page-create-project-why .team .collaborate {
       position: relative;
-      background-color: #BEBEBE;
+      background-color: #BDBDBD;
       overflow: hidden;
       margin: 20px 0; }
       .page-create-project-why .team .collaborate .form-group {
@@ -3556,7 +3883,7 @@ img {
       width: 100%;
       padding: 5px;
       overflow: hidden;
-      border-bottom: 1px solid #BEBEBE; }
+      border-bottom: 1px solid #BDBDBD; }
       .page-create-project-why .team .result .user-image-container {
         width: 15%;
         float: left;
@@ -3569,7 +3896,7 @@ img {
         font-weight: bold;
         margin-top: 10px; }
       .page-create-project-why .team .result:hover {
-        background-color: #BEBEBE; }
+        background-color: #BDBDBD; }
   .page-create-project-why .team-guide {
     padding-top: 70px; }
 
@@ -3591,7 +3918,7 @@ img {
     width: 100%;
     z-index: 2; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor h4, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor h4, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor h4 {
-      background-color: #222;
+      background-color: #333333;
       line-height: 30px;
       margin: 0;
       color: #fff; }
@@ -3599,7 +3926,7 @@ img {
     position: absolute;
     top: 40px;
     left: 10px;
-    background-color: #BEBEBE;
+    background-color: #BDBDBD;
     opacity: 0.8;
     filter: alpha(opacity=80);
     /* For IE8 and earlier */
@@ -3623,7 +3950,7 @@ img {
     position: absolute;
     right: 10px;
     top: 40px;
-    background-color: #BEBEBE;
+    background-color: #BDBDBD;
     opacity: 0.8;
     filter: alpha(opacity=80);
     /* For IE8 and earlier */
@@ -3651,7 +3978,7 @@ img {
   .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
     float: left; }
     .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
-      background-color: #222;
+      background-color: #333333;
       color: #fff; }
 .page-challenge-summary .region-content, .page-challenge-summary-closed .region-content, .page-enter-challenge .region-content {
   padding-right: 0px;
@@ -3670,19 +3997,19 @@ img {
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu .button-item, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu .button-item, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu .button-item {
         clear: both; }
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu a, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu a, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu a {
-        color: #0AA9EA; }
+        color: #00AEEF; }
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu span, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu span, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu span {
-        color: #0AA9EA; }
+        color: #00AEEF; }
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .btn {
         padding: 8px 15px;
         border: none;
         margin-right: 2px;
         margin-top: 2px; }
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
-        color: #BEBEBE; }
+        color: #BDBDBD; }
         .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
           background-color: #fff;
-          color: #222; }
+          color: #333333; }
     .page-challenge-summary .region-content .tabs-buttons .challenge-follow, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow, .page-enter-challenge .region-content .tabs-buttons .challenge-follow {
       overflow: hidden;
       width: 23%;
@@ -3692,7 +4019,7 @@ img {
         width: 50%; }
         .page-challenge-summary .region-content .tabs-buttons .challenge-follow li .btn, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow li .btn, .page-enter-challenge .region-content .tabs-buttons .challenge-follow li .btn {
           padding: 8px 34px;
-          border: 1px solid #222;
+          border: 1px solid #333333;
           width: 100%;
           color: #fff; }
         .page-challenge-summary .region-content .tabs-buttons .challenge-follow li i, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-follow li i, .page-enter-challenge .region-content .tabs-buttons .challenge-follow li i {
@@ -3722,7 +4049,7 @@ img {
     overflow: hidden;
     height: 260px;
     margin-top: 10px;
-    color: #222; }
+    color: #333333; }
     .page-challenge-summary .region-content .content-wrapper .entries .entry-container h4, .page-challenge-summary-closed .region-content .content-wrapper .entries .entry-container h4, .page-enter-challenge .region-content .content-wrapper .entries .entry-container h4 {
       font-size: 13px;
       height: 28px; }
@@ -3765,7 +4092,7 @@ img {
     line-height: inherit; }
   .page-challenge-summary .region-content .content-wrapper .summary-aside-content, .page-challenge-summary-closed .region-content .content-wrapper .summary-aside-content, .page-enter-challenge .region-content .content-wrapper .summary-aside-content {
     background-color: white;
-    color: #222;
+    color: #333333;
     border: 1px solid #f2f2f2;
     padding-top: 14px;
     padding-bottom: 14px; }
@@ -3776,7 +4103,7 @@ img {
         margin: 15px 0; }
   .page-challenge-summary .region-content .content-wrapper .award-container, .page-challenge-summary-closed .region-content .content-wrapper .award-container, .page-enter-challenge .region-content .content-wrapper .award-container {
     background-color: #fff;
-    border: 1px solid #222;
+    border: 1px solid #333333;
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -3834,7 +4161,7 @@ img {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #333; }
+  background-color: #333333; }
   .page-challenge-summary .challenge-card .left-side, .page-challenge-summary-closed .challenge-card .left-side, .page-enter-challenge .challenge-card .left-side {
     padding: 0px;
     overflow: hidden; }
@@ -3866,7 +4193,7 @@ img {
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 40pt !important;
+      font-size: 4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -3879,8 +4206,8 @@ img {
       min-height: 67px;
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
-      font-family: "Messina Sans Bold" !important;
-      font-size: 18pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -3891,7 +4218,7 @@ img {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -3899,9 +4226,9 @@ img {
       min-height: 116px;
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-challenge-summary-closed .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-enter-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
     .page-challenge-summary .challenge-card .card-container .card-buttons .follow-number, .page-challenge-summary-closed .challenge-card .card-container .card-buttons .follow-number, .page-enter-challenge .challenge-card .card-container .card-buttons .follow-number {
-      background-color: #ababab;
+      background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
       font-size: 13px;
@@ -3911,7 +4238,7 @@ img {
   height: auto;
   padding: 30px 10px; }
 .page-challenge-summary-closed .region-content .content-wrapper .description ul {
-  color: #222; }
+  color: #333333; }
   .page-challenge-summary-closed .region-content .content-wrapper .description ul li {
     width: 49%;
     display: inline-block;
@@ -3958,7 +4285,7 @@ img {
     background-color: white;
     padding: 0px; }
   .page-workshop-single .page-workshop-individual .top-content-wrapper {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #333333;
     margin-bottom: 10px;
     height: 200px;
     overflow: hidden;
@@ -3983,7 +4310,7 @@ img {
       font-weight: bold;
       border-radius: 3px; }
       .page-workshop-single .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
-        background-color: #363636; }
+        background-color: #525252; }
     .page-workshop-single .page-workshop-individual .top-content-wrapper .workshop-actions li {
       display: block;
       float: left; }
@@ -4005,27 +4332,31 @@ img {
           border-bottom-color: #fff; }
   .page-workshop-single .page-workshop-individual .workshop-content h4 {
     font-weight: normal;
-    color: #222; }
+    color: #333333; }
   .page-workshop-single .page-workshop-individual .workshop-content .learning-card {
     background-color: #fff;
-    padding: 12px;
-    box-shadow: 2px 6px 22px #888888; }
+    padding: 24px 12px;
+    box-shadow: 2px 6px 22px #888888;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 40px; }
+  .page-workshop-single .page-workshop-individual .workshop-content .video-image img {
+    width: 227px;
+    height: 270px; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
-    box-shadow: 0px 7px 12px #888888;
-    width: 187px;
-    height: 252px; }
+    box-shadow: 0px 7px 12px #888888; }
   .page-workshop-single .page-workshop-individual .workshop-content .lesson, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson {
     background-color: white;
     padding: 10px;
     padding: 5px 10px; }
     .page-workshop-single .page-workshop-individual .workshop-content .lesson .recommended, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact .recommended, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson .recommended {
       margin-top: 15px;
-      border-top: 1px solid #222;
+      border-top: 1px solid #333333;
       padding-top: 15px; }
       .page-workshop-single .page-workshop-individual .workshop-content .lesson .recommended li, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact .recommended li, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson .recommended li {
         margin: 5px 0 5px 35px; }
         .page-workshop-single .page-workshop-individual .workshop-content .lesson .recommended li i, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact .recommended li i, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson .recommended li i {
-          color: #BEBEBE;
+          color: #BDBDBD;
           width: 24px;
           font-size: 12px; }
   .page-workshop-single .page-workshop-individual .workshop-content .lessons-count {
@@ -4044,7 +4375,7 @@ img {
     position: relative;
     top: -50px; }
     .page-workshop-single .page-workshop-individual .workshop-instructor .profile-container .profile-card {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
     .page-workshop-single .page-workshop-individual .workshop-instructor .profile-container .left {
       width: 100px; }
     .page-workshop-single .page-workshop-individual .workshop-instructor .profile-container .right {
@@ -4053,11 +4384,13 @@ img {
       font-size: 10px; }
     .page-workshop-single .page-workshop-individual .workshop-instructor .profile-container i.fa-star-o {
       bottom: 10px; }
+  .page-workshop-single .page-workshop-individual .list-position {
+    padding-top: 32px; }
   .page-workshop-single .page-workshop-individual .content-list {
     padding: 10px 20px;
-    box-shadow: 1px 1px 25px 1px #292929;
+    box-shadow: 1px 1px 25px 1px #3d3d3d;
     overflow: hidden;
-    color: #222;
+    color: #333333;
     background-color: white; }
     .page-workshop-single .page-workshop-individual .content-list li {
       margin: 15px 0; }
@@ -4106,6 +4439,8 @@ img {
       width: 250px; }
     .page-workshop-individual .learn-card .learn-item .card-partership {
       color: #ED1C24; }
+  .page-workshop-individual .learn-card .individual-card-img {
+    padding: 0px; }
   .page-workshop-individual .learn-card .image-container {
     position: relative;
     padding: 0px; }
@@ -4113,7 +4448,8 @@ img {
       width: 100%;
       height: auto; }
   .page-workshop-individual .learn-card .container-content {
-    position: relative; }
+    position: relative;
+    padding-right: 0px; }
   .page-workshop-individual .learn-card .card-container {
     color: #fff;
     position: relative; }
@@ -4127,7 +4463,7 @@ img {
         margin: 0px; }
     .page-workshop-individual .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 40pt !important;
+      font-size: 4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -4140,8 +4476,8 @@ img {
       min-height: 67px;
       color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .card-status {
-      font-family: "Messina Sans Bold" !important;
-      font-size: 18pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -4152,13 +4488,12 @@ img {
       font-weight: bold; }
     .page-workshop-individual .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       min-height: 116px;
       color: #4F4F4F; }
@@ -4168,7 +4503,7 @@ img {
       .page-workshop-individual .learn-card .card-container .learn-card-footer-2 .workshop-count p {
         color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .card-buttons a.btn.btn-grey {
-      background-color: #BEBEBE; }
+      background-color: #BDBDBD; }
   .page-workshop-individual .learn-card .workshop-creator {
     overflow: hidden;
     margin-top: 10px; }
@@ -4182,7 +4517,7 @@ img {
   text-align: center; }
   .learn-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 64pt !important;
+    font-size: 5.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -4193,7 +4528,7 @@ img {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular" !important;
-    font-size: 18pt !important;
+    font-size: 1.5em !important;
     font-weight: 400 !important;
     text-transform: none !important;
     line-height: 110% !important;
@@ -4210,7 +4545,7 @@ img {
 .page-portfolio .portfolio-controls {
   background-color: cyan;
   padding: 10px 0 5px;
-  border: 1px solid #222;
+  border: 1px solid #333333;
   border-top: transparent; }
   .page-portfolio .portfolio-controls h3 {
     font-weight: normal;
@@ -4219,11 +4554,11 @@ img {
   .page-portfolio .portfolio-controls .contorls li {
     display: inline-block; }
     .page-portfolio .portfolio-controls .contorls li.active {
-      background-color: #222; }
+      background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
 .page-portfolio .nav-portfolio {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #333333;
   padding-top: 10px; }
   .page-portfolio .nav-portfolio ul {
     padding-left: 15px; }
@@ -4237,7 +4572,7 @@ img {
   overflow: hidden;
   padding: 15px 0 0;
   font-weight: bold;
-  color: #222; }
+  color: #333333; }
   .page-portfolio .portfolio-header .square {
     display: none; }
 .page-portfolio .project .project-image .overlay {
@@ -4287,17 +4622,17 @@ img {
     top: 10px;
     right: 25px;
     font-size: 25px;
-    color: #222; }
+    color: #333333; }
 .page-portfolio .portfolio-photos .photos-grid p {
   text-align: right; }
 .page-portfolio .custom-footer .portfolio-controls {
-  border: 1px solid #222;
+  border: 1px solid #333333;
   margin-top: 30px; }
 .page-portfolio .portfolio-photos, .page-portfolio .portfolio-private {
   display: none; }
 
 .page-inbox {
-  background-color: #BEBEBE; }
+  background-color: #BDBDBD; }
   .page-inbox .inbox-header {
     position: relative;
     display: flex;
@@ -4317,10 +4652,10 @@ img {
           border-bottom: 0; }
         .page-inbox .inbox-header > ul li .active {
           background-color: #fff;
-          color: #222; }
+          color: #333333; }
     .page-inbox .inbox-header span {
       line-height: 1em;
-      color: #222; }
+      color: #333333; }
   .page-inbox .inbox-container, .page-inbox .notification-container {
     background-color: #fff;
     padding: 20px 0;
@@ -4355,7 +4690,7 @@ img {
       .page-inbox .inbox-container .messages-list .message-item .wrapper {
         display: flex;
         align-items: center;
-        border: 1px solid #222;
+        border: 1px solid #333333;
         width: 95%;
         overflow: hidden;
         padding: 5px 10px; }
@@ -4370,16 +4705,16 @@ img {
           width: 50%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
           overflow: hidden;
-          color: #222;
+          color: #333333;
           position: relative; }
           .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
             float: right; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
-          background-color: #BEBEBE; }
+          background-color: #BDBDBD; }
       .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
         border-top: 0; }
       .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
-        background-color: #ababab; }
+        background-color: #aaaaaa; }
   .page-inbox .notification-container .notification-list {
     padding: 0 0 20px;
     margin: 0 0 10px; }
@@ -4391,7 +4726,7 @@ img {
       .page-inbox .notification-container .notification-list .notification-item .select {
         width: 3%; }
       .page-inbox .notification-container .notification-list .notification-item .wrapper {
-        border: 1px solid #222;
+        border: 1px solid #333333;
         width: 95%;
         overflow: hidden;
         padding: 5px 10px; }
@@ -4401,16 +4736,16 @@ img {
             width: 60px; }
         .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
           overflow: hidden;
-          color: #222;
+          color: #333333;
           position: relative; }
           .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
             float: right; }
         .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
-          background-color: #BEBEBE; }
+          background-color: #BDBDBD; }
       .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
         border-top: 0; }
       .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
-        background-color: #ababab; }
+        background-color: #aaaaaa; }
 
 .conversation-container {
   background-color: #fff;
@@ -4424,7 +4759,7 @@ img {
     margin-bottom: 20px;
     padding-bottom: 20px; }
     .conversation-container .conversation .single-message {
-      border-bottom: 1px solid #222; }
+      border-bottom: 1px solid #333333; }
       .conversation-container .conversation .single-message .message-info {
         margin: 30px 0; }
         .conversation-container .conversation .single-message .message-info a {
@@ -4435,7 +4770,7 @@ img {
       .conversation-container .conversation .single-message .message-body {
         margin-bottom: 20px; }
   .conversation-container .reply-area .reply {
-    color: #222;
+    color: #333333;
     display: block;
     margin-bottom: 15px; }
   .conversation-container .reply-area textarea {
@@ -4473,15 +4808,15 @@ img {
       .page-search-result .top-content-wrapper .sort p, .page-search-result .top-content-wrapper .sort div {
         display: inline-block; }
       .page-search-result .top-content-wrapper .sort .btn-default {
-        background-color: #BEBEBE; }
+        background-color: #BDBDBD; }
   .page-search-result .search-filters {
     margin-top: 25px; }
     .page-search-result .search-filters li {
       display: inline-block; }
       .page-search-result .search-filters li a.btn {
-        color: #222; }
+        color: #333333; }
       .page-search-result .search-filters li .active, .page-search-result .search-filters li a:hover {
-        background-color: #BEBEBE;
+        background-color: #BDBDBD;
         box-shadow: none; }
   .page-search-result .load-more-section {
     text-align: center;
@@ -4500,7 +4835,7 @@ img {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 64pt !important;
+      font-size: 5.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -4508,7 +4843,7 @@ img {
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
@@ -4537,7 +4872,7 @@ img {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
         font-family: "Messina Modern Bold" !important;
-        font-size: 18pt !important;
+        font-size: 1.5em !important;
         font-weight: 700 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -4545,8 +4880,8 @@ img {
         color: #4F4F4F;
         margin-bottom: 5px; }
       .total-result .project-result .projects-item .card-text {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 14pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
         font-weight: 600 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -4567,7 +4902,7 @@ img {
               margin-right: 4px; }
   .total-result .challenge-item {
     padding: 4px;
-    background-color: #333; }
+    background-color: #333333; }
     .total-result .challenge-item .image-top {
       width: 170px;
       height: 150px; }
@@ -4577,8 +4912,8 @@ img {
     .total-result .challenge-item .content-bottom {
       padding-top: 24px; }
       .total-result .challenge-item .content-bottom .content-side .challenge-close, .total-result .challenge-item .content-bottom .content-side .challenge-open {
-        font-family: "Messina Sans Bold" !important;
-        font-size: 18pt !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.5em !important;
         font-weight: 700 !important;
         text-transform: none !important;
         line-height: 110% !important;
@@ -4589,7 +4924,7 @@ img {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
         font-family: "Messina Sans Regular" !important;
-        font-size: 18pt !important;
+        font-size: 1.5em !important;
         font-weight: 400 !important;
         text-transform: none !important;
         line-height: 110% !important;
@@ -4612,7 +4947,7 @@ img {
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
         font-family: "Messina Modern Bold" !important;
-        font-size: 18pt !important;
+        font-size: 1.5em !important;
         font-weight: 700 !important;
         text-transform: none !important;
         line-height: 100% !important;
@@ -4645,7 +4980,7 @@ img {
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
       font-family: "Messina Modern Bold" !important;
-      font-size: 18pt !important;
+      font-size: 1.5em !important;
       font-weight: 700 !important;
       text-transform: none !important;
       line-height: 100% !important;
@@ -4654,15 +4989,15 @@ img {
       font-size: 19px;
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city, .total-result .makers-item .content-bottom .content-side .count {
-      font-family: "Messina Sans SemiBold" !important;
-      font-size: 14pt !important;
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.167em !important;
       font-weight: 600 !important;
       text-transform: none !important;
       line-height: 100% !important;
       color: #828282;
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city {
-      color: #11B3F0; }
+      color: #00AEEF; }
     .total-result .makers-item .content-bottom .icons {
       margin-top: 5px; }
       .total-result .makers-item .content-bottom .icons img {
@@ -4673,7 +5008,7 @@ img {
       margin-bottom: 0px; }
   .total-result .results-header .result-title span {
     font-family: "Messina Modern Bold" !important;
-    font-size: 24pt !important;
+    font-size: 2em !important;
     font-weight: 700 !important;
     text-transform: none !important;
     line-height: 100% !important;
@@ -4721,7 +5056,7 @@ img {
     .search-overlay .search-results .list-title {
       text-align: center;
       color: #222;
-      background-color: #3d3d3d;
+      background-color: #5c5c5c;
       margin: 0;
       padding: 10px 0; }
 
@@ -4909,8 +5244,8 @@ img {
   -o-animation: spinner 1500ms infinite linear;
   animation: spinner 1500ms infinite linear;
   border-radius: 0.5em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0; }
+  -webkit-box-shadow: rgba(213, 25, 32, 0.75) 1.5em 0 0 0, rgba(213, 25, 32, 0.75) 1.1em 1.1em 0 0, rgba(213, 25, 32, 0.75) 0 1.5em 0 0, rgba(213, 25, 32, 0.75) -1.1em 1.1em 0 0, rgba(213, 25, 32, 0.75) -1.5em 0 0 0, rgba(213, 25, 32, 0.75) -1.1em -1.1em 0 0, rgba(213, 25, 32, 0.75) 0 -1.5em 0 0, rgba(213, 25, 32, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(213, 25, 32, 0.75) 1.5em 0 0 0, rgba(213, 25, 32, 0.75) 1.1em 1.1em 0 0, rgba(213, 25, 32, 0.75) 0 1.5em 0 0, rgba(213, 25, 32, 0.75) -1.1em 1.1em 0 0, rgba(213, 25, 32, 0.75) -1.5em 0 0 0, rgba(213, 25, 32, 0.75) -1.1em -1.1em 0 0, rgba(213, 25, 32, 0.75) 0 -1.5em 0 0, rgba(213, 25, 32, 0.75) 1.1em -1.1em 0 0; }
 
 /* Animation */
 @-webkit-keyframes spinner {
@@ -5025,7 +5360,10 @@ img {
     footer .container .socials-newsletter {
       margin-top: 20px; }
     footer .container .sitemap {
-      margin: 0; } }
+      margin: 0; }
+
+  .page-workshop-single .page-workshop-individual .workshop-content .learning-card {
+    height: auto; } }
 @media (min-width: 1200px) {
   .container {
     width: 1282px;

@@ -91,7 +91,6 @@ export class CommentFormComponent implements OnInit {
   checkLogin() {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
-      console.log(this.checkUserLogin);
     });
   }
   /* end function  check login */

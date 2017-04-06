@@ -68,7 +68,7 @@
 			text-align: center;
 		}
 		p {
-			@include body-font-r();
+			@include body-font-2();
 			text-align: center;
 		}
 	}
@@ -104,7 +104,7 @@
 				 margin-bottom: 5px;
 			}
 			.card-text {
-				@include desc-font-14 ();
+				@include desc-font-1 ();
 			}
 			.card-title, .card-text {
 				display: -webkit-box;
@@ -146,7 +146,7 @@
 			padding-top: 24px;
 			.content-side {
 				.challenge-close, .challenge-open {
-					@include body-font-b();
+					@include body-font-1();
 				}
 				.challenge-open {
 					color: $main-button-1;
@@ -155,7 +155,7 @@
 					color: white;
 				}
 				.sponser-name {
-					@include body-font-r ();
+					@include body-font-2();
 					color:	$text-color-3 !important;
 					p {
 						float: left;
@@ -228,14 +228,14 @@
 					margin-bottom: 5px;
 				}
 				.user-city,.count  {
-					@include desc-font-14();
+					@include desc-font-1();
 					margin-bottom: 5px;
 				}
 				.count {
 
 				}
 				.user-city {
-					color: $text-color-5;	
+					color: $text-color-6;	
 				}
 			}
 			.icons  {

@@ -1,19 +1,9 @@
-<section class="showcase">
+<section class="showcase-home">
   <div class="container">
     <div class="row">
-      <div (click)="ShowSingleShowcase(showcase.nid)" *ngFor="let showcase of showcases" class="col-lg-4 col-md-6 d-flex align-items-stretch">
-        <div class="card showcase-item item-2">
-          <div class="image-container">
-            <img class="card-img-top" src="{{showcase.image}}" alt="Card image cap">
-            <span class="card-type">Showcase</span>
-          </div>
-          <div class="card-block content">
-            <h4 class="title">{{showcase.showcase_name}}</h4>
-            <p class="description" [innerHTML]="showcase.description"></p>
-            <p class="number" *ngIf="showcase.projects.length==1">{{showcase.projects.length}} project</p>
-            <p class="number" *ngIf="showcase.projects.length>1">{{showcase.projects.length}} projects</p>
-            <p class="timestamp">Last Updated: {{showcase.updated}}</p>
-          </div>
+      <div (click)="ShowSingleShowcase(showcase.nid)" *ngFor="let showcase of showcases" class="col-lg-4 col-md-6">
+        <div class="showcase-card-backlayer-home" *ngIf="showcase.nid">
+          <app-showcase-gen-card [showcaseNid]="showcase.nid"></app-showcase-gen-card>
         </div>
       </div>
     </div>

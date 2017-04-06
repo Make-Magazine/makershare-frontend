@@ -77,7 +77,7 @@ export class EditProfileComponent implements OnInit {
 
   saveProfile() {
 
-    console.log(this.userProfile);
+    
     this.profileService.updateProfile(1, this.userProfile).subscribe(profile => {
       // console.log("profile saved");
       // console.log(profile);
