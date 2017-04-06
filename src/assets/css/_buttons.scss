@@ -127,6 +127,7 @@ a:not([href]):not([tabindex]).btn-border {
     border-radius: 0;
     color: $main-grey;
     border: 1px solid $main-grey;
+    @include body-font-2();
     &:focus, &:active, &:hover {
         // color: $red;
         border: 1px solid $red;

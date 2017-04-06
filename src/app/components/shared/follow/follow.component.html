@@ -1,6 +1,6 @@
   <div class="button-container-sec-2" *ngIf="ButtonFollow">
-  <span class="btn btn-main-2" (click)="followThis($event)" [class.active]="isFollowed" [innerHTML]="ButtonFollow"></span>
+  <span class="btn btn-main-2" (click)="followThis($event)" [class.active]="isFollowed">{{ButtonFollow}}</span>
   </div>
   <div class="button-container-sec-2" *ngIf="!ButtonFollow">
-  <span class="btn btn-main-2" (click)="followThis($event)">Follow</span>
+  <span class="btn btn-main-2" (click)="followThis($event)">{{ButtonFollow}}</span>
   </div>

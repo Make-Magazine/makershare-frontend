@@ -23,6 +23,8 @@ header nav {
     z-index: 1; }
   header nav .collapse.navbar-collapse {
     width: auto; }
+  header nav #MainNav .nav-item {
+    margin-left: 15px; }
   header nav .navbar-toggler {
     border: none;
     top: 5px;
@@ -174,7 +176,13 @@ a:not([href]):not([tabindex]).btn-border {
   background: transparent;
   border-radius: 0;
   color: #333333;
-  border: 1px solid #333333; }
+  border: 1px solid #333333;
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.5em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 110% !important;
+  color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
   a:not([href]):not([tabindex]).btn-border:active,
@@ -566,7 +574,13 @@ body {
     .main-header .login-block li {
       display: inline-block; }
       .main-header .login-block li .btn {
-        padding: 5px 37px; }
+        padding: 0 10px; }
+      .main-header .login-block li img {
+        width: 30px;
+        height: 30px; }
+      .main-header .login-block li a.nav-linkdropdown-toggle.navbar-left {
+        padding-left: 0;
+        padding-right: 0; }
   .main-header .logged-in {
     margin-bottom: 0;
     margin-top: 5px; }
@@ -627,7 +641,7 @@ body {
 .card-type {
   font-family: "Messina Sans Regular" !important;
   font-size: 1.167em !important;
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   text-transform: none !important;
   line-height: 100% !important;
   color: #828282;
@@ -922,7 +936,7 @@ footer {
   .user-card-small .card-stats ul li {
     font-family: "Messina Sans Regular" !important;
     font-size: 1em !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282;
@@ -1023,7 +1037,7 @@ footer {
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
-      color: #EC1F30;
+      color: #ED1C24;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
       font-weight: 300;
@@ -1049,10 +1063,13 @@ footer {
 .what-is-ms {
   padding: 40px 0; }
   .what-is-ms h2 {
-    text-transform: uppercase;
-    font-size: 18px;
-    color: #EC1F30;
-    font-weight: 300;
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.5em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 110% !important;
+    color: #828282;
+    color: #ED1C24;
     margin-bottom: 20px; }
   .what-is-ms h3 {
     font-size: 1.5rem;
@@ -1093,12 +1110,15 @@ footer {
       .info-w-parallax .info-card {
         padding: 15px 15px 40px; } }
     .info-w-parallax .info-card h2 {
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 18px;
-      color: #EC1F30;
-      font-weight: 300;
-      margin-bottom: 20px; }
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      color: #ED1C24;
+      margin-bottom: 20px;
+      text-align: center; }
     .info-w-parallax .info-card h3 {
       text-align: center;
       font-size: 36px;
@@ -1296,8 +1316,7 @@ footer {
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
     .profile-sidebar .profile-container i {
-      width: 25px;
-      color: #333333; }
+      width: 25px; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
       position: relative;
       margin-bottom: -100px; }
@@ -1311,10 +1330,10 @@ footer {
         z-index: 1;
         top: -100px;
         position: absolute;
-        background-color: white;
+        background-color: rgba(200, 200, 200, 0.8);
         text-align: center;
         font-size: 15px;
-        left: -30px; }
+        right: 47px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -1332,17 +1351,53 @@ footer {
       margin-top: 16px;
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
-        text-align: left;
-        font-size: 24px;
-        font-weight: bold;
-        font-family: -webkit-body; }
+        font-family: "Messina Modern Bold" !important;
+        font-size: 2em !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
-        text-align: left;
-        font-size: 15px;
-        font-weight: bold;
-        font-family: -webkit-body; }
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
       .profile-sidebar .profile-container .profile-info .location {
+        font-family: "Messina Modern Bold" !important;
+        font-size: 2em !important;
+        font-weight: 700 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
         color: #00AEEF; }
+      .profile-sidebar .profile-container .profile-info .profile-describe-yourself {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
+      .profile-sidebar .profile-container .profile-info .badges {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        color: #4F4F4F; }
+      .profile-sidebar .profile-container .profile-info .bio {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.5em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
+        color: #828282; }
+        .profile-sidebar .profile-container .profile-info .bio i {
+          font-size: 24px;
+          line-height: .75em;
+          vertical-align: -15% !important; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -1711,6 +1766,9 @@ footer {
 .edit-cover-modal .modal-footer {
   text-align: center; }
 
+.profile-cover p,
+.profile-sidebar p {
+  color: #4F4F4F; }
 .profile-cover a.edit,
 .profile-sidebar a.edit {
   position: absolute;
@@ -1743,8 +1801,11 @@ footer {
   .project .card-block .content-side {
     padding-left: 5px;
     width: 80%; }
-.project .icons-side-project .project-icon img {
-  width: 35px; }
+.project .icons-side-project .project-icon {
+  height: 45px; }
+  .project .icons-side-project .project-icon img {
+    width: auto;
+    height: 40px; }
 .project .icons {
   position: absolute;
   color: white;
@@ -1801,8 +1862,12 @@ footer {
   padding: 2px;
   color: #BDBDBD; }
   .project .card-stats ul li {
-    float: left;
-    font-size: 15px; }
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282; }
     .project .card-stats ul li img {
       margin-right: 6px; }
       .project .card-stats ul li img.project-likes {
@@ -2097,6 +2162,79 @@ footer {
 #edit-cover-modal .modal-footer {
   text-align: center; }
 
+.maker-card.project .card-block p {
+  margin-bottom: 0; }
+.maker-card.project .card-block .maker-name {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282; }
+.maker-card.project .card-block .maker-nickname {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.167em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282; }
+.maker-card.project .card-block .maker-city {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.167em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  color: #00AEEF; }
+.maker-card.project .card-block .maker-descripe {
+  font-family: "Messina Modern Regular" !important;
+  font-size: 1.167em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  margin-top: 5px;
+  font-weight: bold; }
+.maker-card.project .card-block .card-stats ul {
+  margin-bottom: 0; }
+.maker-card.project .card-block .card-type {
+  right: -22px; }
+
+.social-links a {
+  display: inline-block;
+  padding: 0.5em 0em;
+  color: #4F4F4F; }
+  .social-links a i.fa-inverse:before {
+    padding-left: 10px; }
+
+.mywebsite {
+  color: #00AEEF;
+  text-decoration: none !important; }
+
+.edit-icon {
+  float: right;
+  color: #00AEEF; }
+
+.started_making {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.5em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 110% !important;
+  color: #828282; }
+
+.global-title {
+  font-family: "Messina Modern Bold" !important;
+  font-size: 1.167em !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  color: #4F4F4F; }
+
+.links-site {
+  padding-bottom: -2px; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
@@ -2200,7 +2338,7 @@ footer {
   .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular" !important;
     font-size: 1.167em !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282;
@@ -2255,7 +2393,7 @@ footer {
   .challenge-header p {
     font-family: "Messina Sans Regular" !important;
     font-size: 1.167em !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282; }
@@ -2294,7 +2432,7 @@ footer {
     .page-challenge .challenge-card .card-container .challenge-type-badge {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.167em !important;
-      font-weight: 600 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 100% !important;
       color: #828282;
@@ -2321,7 +2459,7 @@ footer {
     .page-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.5em !important;
-      font-weight: 700 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
@@ -2332,7 +2470,7 @@ footer {
     .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.167em !important;
-      font-weight: 600 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 100% !important;
       color: #828282;
@@ -2431,7 +2569,7 @@ footer {
       .page-project .project-story-tab .project-body-content p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2483,7 +2621,7 @@ footer {
       .page-project .project-body .how-to-tab .project-body-content p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2502,7 +2640,7 @@ footer {
         font-weight: bold;
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2528,7 +2666,7 @@ footer {
           font-size: 18px;
           font-family: "Messina Sans Regular" !important;
           font-size: 1.167em !important;
-          font-weight: 600 !important;
+          font-weight: 400 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
@@ -2538,7 +2676,7 @@ footer {
           padding: 0px 6px;
           font-family: "Messina Sans Regular" !important;
           font-size: 1.167em !important;
-          font-weight: 600 !important;
+          font-weight: 400 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
@@ -2548,7 +2686,7 @@ footer {
           color: #333333;
           font-family: "Messina Sans Regular" !important;
           font-size: 1.167em !important;
-          font-weight: 600 !important;
+          font-weight: 400 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
@@ -2557,7 +2695,7 @@ footer {
           color: #333333;
           font-family: "Messina Sans Regular" !important;
           font-size: 1.167em !important;
-          font-weight: 600 !important;
+          font-weight: 400 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
@@ -2573,7 +2711,7 @@ footer {
         font-size: 18px;
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2586,7 +2724,7 @@ footer {
           color: #00AEEF !important;
           font-family: "Messina Sans Regular" !important;
           font-size: 1.167em !important;
-          font-weight: 600 !important;
+          font-weight: 400 !important;
           text-transform: none !important;
           line-height: 100% !important;
           color: #828282;
@@ -2690,7 +2828,7 @@ footer {
         color: #ED1C24 !important;
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2700,7 +2838,7 @@ footer {
       .page-project .aha .card-block p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2718,7 +2856,7 @@ footer {
         color: #ED1C24 !important;
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2728,7 +2866,7 @@ footer {
       .page-project .uh-oh .card-block p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -2846,7 +2984,7 @@ header.showcase-project .next {
     margin: 0px;
     font-family: "Messina Sans Regular" !important;
     font-size: 1.167em !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282;
@@ -3128,7 +3266,7 @@ header.showcase-project .next {
     .page-learn .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.5em !important;
-      font-weight: 700 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
@@ -3271,7 +3409,7 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.5em !important;
-        font-weight: 700 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 110% !important;
         color: #828282;
@@ -3282,7 +3420,7 @@ header.showcase-project .next {
       .showcase-card-backlayer .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -3471,7 +3609,7 @@ img {
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.5em !important;
-        font-weight: 700 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 110% !important;
         color: #828282;
@@ -3482,7 +3620,7 @@ img {
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
@@ -4208,7 +4346,7 @@ img {
     .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.5em !important;
-      font-weight: 700 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
@@ -4478,7 +4616,7 @@ img {
     .page-workshop-individual .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.5em !important;
-      font-weight: 700 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 110% !important;
       color: #828282;
@@ -4882,7 +5020,7 @@ img {
       .total-result .project-result .projects-item .card-text {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.167em !important;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282; }
@@ -4914,7 +5052,7 @@ img {
       .total-result .challenge-item .content-bottom .content-side .challenge-close, .total-result .challenge-item .content-bottom .content-side .challenge-open {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.5em !important;
-        font-weight: 700 !important;
+        font-weight: 400 !important;
         text-transform: none !important;
         line-height: 110% !important;
         color: #828282; }
@@ -4991,7 +5129,7 @@ img {
     .total-result .makers-item .content-bottom .content-side .user-city, .total-result .makers-item .content-bottom .content-side .count {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.167em !important;
-      font-weight: 600 !important;
+      font-weight: 400 !important;
       text-transform: none !important;
       line-height: 100% !important;
       color: #828282;
@@ -5328,8 +5466,6 @@ img {
       padding: 8px;
       margin-top: 0px;
       min-height: 175px; }
-      .project.card .card-block .card-type {
-        display: none; }
 
   /* showcase card */
   .page-showcase .showcases-container {
@@ -5347,7 +5483,18 @@ img {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
-      display: none; } }
+      display: none; }
+
+  .profile-container .maker-card.project {
+    margin-top: 20px; }
+    .profile-container .maker-card.project .card-block {
+      height: auto; }
+      .profile-container .maker-card.project .card-block .maker-name {
+        margin-top: 10px; }
+      .profile-container .maker-card.project .card-block .card-type {
+        right: -10px; }
+      .profile-container .maker-card.project .card-block .icons-side-user {
+        margin-top: auto !important; } }
 @media (max-width: 991px) {
   /* Footer */
   footer {

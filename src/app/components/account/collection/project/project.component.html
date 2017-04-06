@@ -8,7 +8,10 @@
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Project Name</th>
+      <th>Project Image</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +21,12 @@
         <input type="checkbox" value="{{project.nid}}"  [(ngModel)]="project.state"  (change)="valueChanged(project.nid,$event)">
       </div>
       <td *ngIf="project">{{project.project_name}}</td>
-      <div class="delete">
-        <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-      </div>
+      <td *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive">               
+      </td>
+      <td class="delete">        <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+</td>
+
+      
     </tr>
   </tbody>
 </table>
