@@ -771,7 +771,7 @@ header.showcase-project {
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            height: 164px;
+            height: 197px;
         }
         .card-description {
             h4 {
@@ -811,3 +811,102 @@ header.showcase-project {
 		}
 	}
 }
+
+/* project card on search page */
+.project-search-card {
+	margin: 0px;
+	border: none;
+	.project-card-small {
+        padding-top: 10px;
+        padding-bottom: 0;
+        padding-left: 0;
+				border: 1px solid #4ab0d8;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+				&:hover {
+					cursor: pointer;
+				}
+				.media {
+					    margin-bottom: -8px;
+					.project-pic-container {
+						padding-left: 0;
+						padding-top: 10px;
+						padding-bottom: 0;
+						position: relative;
+						left: -20px;
+						top: -40px;
+						margin-bottom: -20px;
+						width: 180px;
+						height: 145px;
+							.maker-photo {
+									display: block;
+									width: 136px;
+									height: 160px;
+									margin-bottom: 4px;
+							}
+					}
+					.media-body {
+							.card-title {
+								margin-left: -8px;
+							}
+							.card-type {
+								top: 40px;
+								right: -24px;
+								font-size: 16px !important;
+						}
+					}
+				}
+				.maker-project-info {
+				    padding: 2px 5px 5px 5px;
+					.profile-pic-container {
+						img {
+							width: 70px;
+							height: 70px;
+						}
+					}
+					.maker-name {
+
+					}
+					.card-stats  {
+							padding: 2px;
+							color: $light-grey;
+							ul {
+								    margin-bottom: 6px;
+								li {
+											@include desc-font-2();
+											font-weight: normal !important;
+											font-size: 13px !important;
+											color: $light-grey;
+											min-width: 60px;
+    									margin: 0px 4px;
+								img {
+									margin-right: 6px;
+									&.project-likes {
+										width: 12px;
+									}
+									&.project-views{
+										width: 20px;
+									}
+								}
+								span {
+									margin: 0px;
+								}	
+							}
+							}
+						.icons-side-user {
+								width: 80px;
+								overflow: hidden;
+								.user-icon {
+										float: left;
+										img {
+											width: 30px;
+										}
+								}
+						}
+					}
+				}
+	}
+}
+
+

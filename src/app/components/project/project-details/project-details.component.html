@@ -6,11 +6,6 @@
           <div class="top-content-wrapper">
             <div class="container">
               <div class="project-full-card">
-                <!--<div class="projects-circle d-flex justify-content-between col-md-12" *ngIf="showcase.uid">
-                <a *ngIf="projectIndex != 0" (click)="getProject($event,'back')" class="go-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-                <h3><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
-                <a *ngIf="projectIndex != projects.length-1" (click)="getProject($event,'next')" class="go-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                </div>-->
                 <app-project-header [project]="projectDetails" [projectInfo]="projectdata" (SwitchTab)="changeProjectTab($event)"></app-project-header>            
               </div>
             </div>

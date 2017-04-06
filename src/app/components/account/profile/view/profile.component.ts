@@ -12,16 +12,20 @@ import { FileEntity, NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
+import { LoaderService } from '../../../shared/loader/loader.service';
 import { value } from '../../../../models/challenge/comment';
 import { Intrests } from '../../../../models/profile/intrests';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,Params } from '@angular/router';
+import {MessageModalComponent} from '../../../shared/message-modal/message-modal.component';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
+  idProfile;
 
-  ckEditorConfig: {} = {
+ ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
       { "name": 'clipboard', "groups": ['clipboard', 'undo'] },
@@ -98,7 +102,7 @@ export class ProfileComponent implements OnInit {
   formGroup: FormGroup;
   FormGroupSocial: FormGroup;
   buildFormSocial() {
-    console.log(this.profile.field_social_accounts);
+    
     this.FormGroupSocial = this.fb.group({
       'field_website_or_blog': [this.profile.field_social_accounts.field_website_or_blog, [Validators.pattern(this.regexp)]],
       'field_additional_site': [this.profile.field_social_accounts.field_additional_site, [Validators.pattern(this.regexp)]],
@@ -159,7 +163,8 @@ export class ProfileComponent implements OnInit {
     private fileService: FileService,
     private modalService: NgbModal,
     private fb: FormBuilder,
-    private route: ActivatedRoute, private router: Router
+    private route: ActivatedRoute, private router: Router,
+    private loaderService: LoaderService,
   ) {
     this.ProfilecropperSettings = new CropperSettings();
     this.ProfilecropperSettings.width = 660;
@@ -176,6 +181,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
+    this.userService.getStatus().subscribe(data => {
+      if(data.user.uid > 0){
+        this.idProfile = data.user.uid;
+      }
+    });
     /*check if navigating to profile with username paramter => get uid from name 
       else get uid from local storage
     */
@@ -205,7 +215,7 @@ export class ProfileComponent implements OnInit {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-      this.ProjectsCount = data[index++] as number;
+    //  this.ProjectsCount = data[index++] as number;
       this.UpdateUser();
     });
   }

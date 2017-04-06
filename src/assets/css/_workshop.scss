@@ -201,6 +201,97 @@
     background-color: #F2F2F2;
 }
 
+
+/* learn card on search page */
+/* challenge card on search page */
+.page-search-content {
+    .learn-card {
+        position: relative;
+        padding: 8px 8px 0px 8px;
+        cursor:pointer;
+        background-color: $shade-2;
+        -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+        .learn-type-badge {
+            position: absolute;
+            top: 26px;
+            right: -38px;
+            transform: rotate(-90deg);
+            p {
+                margin: 0px;
+            }
+        }
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            height: 215px;
+            width: 170px;
+            top: -22px;
+            left: -22px;
+            img {
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+            }
+        }
+        .content-container {
+            padding-left: 0px;
+        }
+        .card-container {
+            color: $white;
+            // font-weight: bold;
+            position: relative;
+            height: 100%;
+            .card {
+                .card-title {
+                @include card-header-font-lg();
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                height: 92px;
+                color:$shade-4;
+                font-size: 3em !important;
+                margin-bottom: 54px;
+            }
+            .card-status {
+                @include body-font-1();
+                display: inline-block;
+                text-transform: none;
+            }
+            .card-partership {
+                @include desc-font-2();
+                text-transform: none;
+                font-size: 14px;
+                display: inline-block; 
+                min-height: 16px;
+                margin-bottom: 10px;
+                h4 {
+                    font-weight: bold;
+                }
+
+                p {
+                    @include desc-font-2();
+                }
+            }
+            .card-description {
+                p {
+                @include desc-font-1();
+                height: 85px;
+                color: white;
+                }
+                }
+            }
+            .workshop-count {
+                color: $shade-5;
+            }
+
+            }
+        }
+    }
+
 .front {
     .page-learn {
         background-color: transparent;
@@ -283,3 +374,4 @@
         }
     }
 }
+

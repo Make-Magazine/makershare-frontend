@@ -1,7 +1,8 @@
-<div class=" profile-container hidden-md-up" *ngIf="card">
+<div class=" profile-container" *ngIf="card">
   <!-- start profile card-->
-  <div class="maker-card project card spotlight-item ">
-    <div class="card-block user-card-small align-content-stretch content ">
+
+  <div class="maker-card">
+    <div class="card-block user-card-search align-content-stretch content ">
       <div class="media d-flex align-items-stretch">
         <div class="profile-pic-container flex-column align-self-start">
           <div class="overlay"></div>
@@ -21,11 +22,11 @@
           </div>
           <div class="card-stats w-100 mt-md-auto">
             <ul class="list-unstyled d-flex justify-content-between">
-              <li>
+              <!--<li>
                 <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                 <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
                 <span *ngIf="!project.number_of_likes">0</span>
-              </li>
+              </li>-->
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
                 <span>70</span>
