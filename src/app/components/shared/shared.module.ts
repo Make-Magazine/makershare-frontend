@@ -13,6 +13,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+//import { Ng2DeviceDetector} from 'ng2-device-detector';
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
@@ -23,6 +25,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
+import { VideoDisplayComponent } from './video-display/video-display.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 
 
@@ -34,6 +37,7 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
+//Ng2DeviceDetector,
   ],
   declarations: [
     CommentComponent,
@@ -46,6 +50,7 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
@@ -56,6 +61,7 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
+    VideoDisplayComponent,
     MakerSearchCardComponent,
   ],
   exports: [
@@ -67,6 +73,7 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
@@ -76,19 +83,23 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     UserCardSmallComponent,
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
+    VideoDisplayComponent,
+
     MakerCardComponent,
     MakerSearchCardComponent,
   ]
+  
 })
 export class SharedModule { }
-export { CommentComponent };
-export { FollowComponent };
-export { BookmarkComponent };
-export { LikeComponent };
-export { ForkComponent };
-export { UserCardComponent };
-export { ProjectCardComponent };
-export { SharedButtonsComponent };
+export {CommentComponent};
+export {FollowComponent};
+export {BookmarkComponent};
+export {LikeComponent};
+export {ForkComponent};
+export {UserCardComponent};
+export {ProjectCardComponent};
+export {SharedButtonsComponent};
+export {FeedbackComponent};
 export { ChallengeCardComponent };
 export { ProjectHeaderComponent };
 export { ProjectStoryComponent };
@@ -96,7 +107,10 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
+
 export { LearnUserCardComponent };
+
 export { ShowcaseGeneralCardComponent };
+export { VideoDisplayComponent };
 export { MakerCardComponent };
 export { MakerSearchCardComponent };

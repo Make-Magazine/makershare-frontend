@@ -19,14 +19,30 @@
               <img src="{{user_photo}}" alt="" class="img-responsive">
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
                 <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
-                <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
-                <button class="dropdown-item" [routerLink]="['/profile/settings']">Account Settings</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio/collection/bookmark']">Bookmarks</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio/settings/notifications']">Account Settings</button>
                 <button class="dropdown-item" (click)="auth.logout()">Logout</button>
               </div>
             </div>
-          </li>
+        </li>
+<li>
+        <app-feedback></app-feedback>
+  </li>     
+        <!--<li>
+
+          <div ngbDropdown class="d-inline-block account-controls dropdown">
+            <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{ActionName}} <i class="fa fa-lg fa-bars"></i></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <button class="dropdown-item" (click)="mostRecent($event)">Most recent</button>
+              <button class="dropdown-item" (click)="oldest($event)">Oldest</button>
+              <button class="dropdown-item" (click)="sortAsc($event)">Title A-Z</button>
+              <button class="dropdown-item" (click)="sortDesc($event)">Title Z-A</button>
+            </div>
+          </div>
+        </li>-->
+          
           <li class="nav-item dropdown  hidden-sm-down">
             <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
               aria-expanded="false">

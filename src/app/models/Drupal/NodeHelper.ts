@@ -21,7 +21,6 @@ export class NodeHelper{
       return variable[key]===''||variable[key]===null;
     });
   }
-
   public static ConvertToBase64(file,FileEntityObject){
     var reader = new FileReader();
     reader.readAsDataURL(file);
