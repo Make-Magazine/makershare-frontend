@@ -198,9 +198,8 @@
 
             }
             .badges{
-             @include desc-font-1 ();
-             
-
+             @include desc-font-2 ();
+             color: $text-color-1;    
             }
             .bio{
                  @include body-font-1 ();
@@ -658,6 +657,10 @@
 
 .profile-cover,
 .profile-sidebar {
+    p{
+    color: $text-color-1;
+
+    }
     a.edit {
         position: absolute;
         width: auto !important;
@@ -1125,7 +1128,7 @@
         a{
             display: inline-block;
             padding: 0.5em 0em;
-            color:$shade-7;
+            color:$text-color-1;
             i.fa-inverse:before{
                 padding-left: 10px;
             }
@@ -1133,7 +1136,7 @@
        }
         .mywebsite{
                     color: $text-color-6;
-                    text-decoration: none ; 
+                    text-decoration: none !important; 
                 }
          .edit-icon{
              float: right;
@@ -1143,7 +1146,12 @@
              @include body-font-1 ();
          }
          .global-title{
-              @include card-header-font-sm ();
+              @include card-header-font-xs ();
+                color: $text-color-1;
+              
+         }
+         .links-site{
+             padding-bottom: -2px;
          }
         
      

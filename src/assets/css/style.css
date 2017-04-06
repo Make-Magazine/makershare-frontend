@@ -1381,11 +1381,12 @@ footer {
         color: #828282; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular" !important;
-        font-size: 1.167em !important;
+        font-size: 1em !important;
         font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
-        color: #828282; }
+        color: #828282;
+        color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .bio {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.5em !important;
@@ -1761,6 +1762,9 @@ footer {
 .edit-cover-modal .modal-footer {
   text-align: center; }
 
+.profile-cover p,
+.profile-sidebar p {
+  color: #4F4F4F; }
 .profile-cover a.edit,
 .profile-sidebar a.edit {
   position: absolute;
@@ -2195,13 +2199,13 @@ footer {
 .social-links a {
   display: inline-block;
   padding: 0.5em 0em;
-  color: #333333; }
+  color: #4F4F4F; }
   .social-links a i.fa-inverse:before {
     padding-left: 10px; }
 
 .mywebsite {
   color: #00AEEF;
-  text-decoration: none; }
+  text-decoration: none !important; }
 
 .edit-icon {
   float: right;
@@ -2217,11 +2221,15 @@ footer {
 
 .global-title {
   font-family: "Messina Modern Bold" !important;
-  font-size: 1.5em !important;
+  font-size: 1.167em !important;
   font-weight: 700 !important;
   text-transform: none !important;
   line-height: 100% !important;
-  color: #828282; }
+  color: #828282;
+  color: #4F4F4F; }
+
+.links-site {
+  padding-bottom: -2px; }
 
 .page-explore {
   background-color: #F2F2F2; }
