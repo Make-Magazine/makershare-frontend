@@ -1,13 +1,11 @@
-
 .page-learn {
-	background-color: white;
+    background-color: white;
     padding-bottom: 40px;
-
 }
+
 .learn-card {
- margin-bottom: 10px;
-  
-      .card {
+    margin-bottom: 10px;
+    .card {
         background-color: transparent;
         border: none;
     }
@@ -35,7 +33,7 @@
             @include body-font-2();
             text-transform: none;
             font-size: 14px;
-            display: inline-block; 
+            display: inline-block;
             min-height: 16px;
             margin-bottom: 10px;
             p {
@@ -46,7 +44,6 @@
             h4 {
                 font-weight: bold;
             }
-				
         }
         .workshop-tags {
             ul {
@@ -73,14 +70,15 @@
                     }
                 }
                 .learn-card-status {
-                    .open-status, .closed-status {
+                    .open-status,
+                    .closed-status {
                         font-weight: bold;
                         font-size: 16px;
                         padding-right: 5px;
                     }
-                    .open-status{
+                    .open-status {
                         color: white;
-                    } 
+                    }
                     .closed-status {
                         color: $main-button-1;
                     }
@@ -90,122 +88,119 @@
                 }
             }
         }
-
     }
 }
 
 .learn-header {
-	margin-bottom: 25px;
-	text-align: center;
+    margin-bottom: 25px;
+    text-align: center;
     h3 {
         @include header-font();
         margin: auto;
         padding-top: 45px;
-		padding-bottom: 10px;
+        padding-bottom: 10px;
         font-weight: normal;
-	}
+    }
     p {
         @include body-font-2();
         width: 85%;
         margin: auto;
     }
 }
+
 .learn-container {
-	padding: 25px 0;
+    padding: 25px 0;
 }
+
 .page-learn {
-.learn-card {
-    position: relative;
-    padding: 16px;
-    overflow: hidden;
-    cursor:pointer;
-    background-color: $main-bg;
-
-    .learn-item {
-        padding: 10px;
-        img {
-            width: 250px;
-        }
-        .card-partership {
-            color: $main-button-1;
-        }
-    }
-    .image-container {
+    .learn-card {
+        position: relative;
+        padding: 16px;
         overflow: hidden;
-        position: relative;
-        padding: 0px 15px;
-        width: 450px;
-        height: 290px;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .card-container {
-        color: $white;
-        // font-weight: bold;
-        position: relative;
-        .learn-type-bagde {
-            position: absolute;
-            top: 38px;
-            right: -50px;
-            transform: rotate(-90deg);
-            color: #4F4F4F;
-            p {
-                margin: 0px;
+        cursor: pointer;
+        background-color: $learn-cards-bg;
+        .learn-item {
+            padding: 10px;
+            img {
+                width: 250px;
             }
-			        }
-			  .card-title {
-            @include card-header-font-lg();
-            font-size: 38px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            .card-partership {
+                color: $main-button-1;
+            }
+        }
+        .image-container {
             overflow: hidden;
-            min-height: 67px;
-            color: #4F4F4F;
-        }
-        .card-status {
-            @include body-font-1();
-            display: inline-block;
-            text-transform: none;
-        }
-
-        p.card-partnership {}
-
-        .card-description {
-            h4 {
-                font-weight: bold;
+            position: relative;
+            padding: 0px 15px;
+            img {
+                width: 100%;
+                height: 100%;
             }
-
-            p {
-                @include body-font-2();
+        }
+        .card-container {
+            color: $white;
+            // font-weight: bold;
+            position: relative;
+            .learn-type-bagde {
+                position: absolute;
+                top: 38px;
+                right: -50px;
+                transform: rotate(-90deg);
+                color: #4F4F4F;
+                p {
+                    margin: 0px;
+                }
+            }
+            .card-title {
+                @include card-header-font-lg();
+                font-size: 38px;
                 display: -webkit-box;
-                -webkit-line-clamp: 5;
+                -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                min-height: 116px;
+                min-height: 67px;
                 color: #4F4F4F;
             }
-        }
-        .card-buttons {
-            a.btn.btn-grey {
-            	background-color: $light-grey;
+            .card-status {
+                @include body-font-1();
+                display: inline-block;
+                text-transform: none;
             }
-            .follow-number {
-                background-color: $light-grey*0.9;
-                padding: 3px 15px;
-                border-radius: 20px;
-                font-size: 13px;
-                margin-left: 10px;
+            p.card-partnership {}
+            .card-description {
+                h4 {
+                    font-weight: bold;
+                }
+                p {
+                    @include body-font-2();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    min-height: 116px;
+                    color: #4F4F4F;
+                }
+            }
+            .card-buttons {
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+                .follow-number {
+                    background-color: $light-grey*0.9;
+                    padding: 3px 15px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    margin-left: 10px;
+                }
             }
         }
     }
 }
-}
+
 .page-learn-summary {
     background-color: #F2F2F2;
 }
+
 
 /* learn card on search page */
 /* challenge card on search page */
@@ -296,3 +291,87 @@
             }
         }
     }
+
+.front {
+    .page-learn {
+        background-color: transparent;
+        .learn-card {
+            .learn-item {
+                padding: 10px;
+                img {
+                    width: 250px;
+                }
+                .card-partership {
+                    color: $main-button-1;
+                }
+            }
+            .image-container {
+                overflow: hidden;
+                position: relative;
+                padding: 0px 15px;
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+            .card-container {
+                color: $white;
+                // font-weight: bold;
+                position: relative;
+                .learn-type-bagde {
+                    position: absolute;
+                    top: 38px;
+                    right: -50px;
+                    transform: rotate(-90deg);
+                    color: #4F4F4F;
+                    p {
+                        margin: 0px;
+                    }
+                }
+                .card-title {
+                    @include card-header-font-lg();
+                    font-size: 38px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    min-height: 67px;
+                    color: #4F4F4F;
+                }
+                .card-status {
+                    @include body-font-1();
+                    display: inline-block;
+                    text-transform: none;
+                }
+                p.card-partnership {}
+                .card-description {
+                    h4 {
+                        font-weight: bold;
+                    }
+                    p {
+                        @include body-font-2();
+                        display: -webkit-box;
+                        -webkit-line-clamp: 5;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        min-height: 116px;
+                        color: #4F4F4F;
+                    }
+                }
+                .card-buttons {
+                    a.btn.btn-grey {
+                        background-color: $light-grey;
+                    }
+                    .follow-number {
+                        background-color: $light-grey*0.9;
+                        padding: 3px 15px;
+                        border-radius: 20px;
+                        font-size: 13px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+

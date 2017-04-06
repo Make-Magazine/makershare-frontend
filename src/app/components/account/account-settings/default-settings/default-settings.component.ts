@@ -6,10 +6,10 @@ import * as globals from '../../../../d7services/globals';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 @Component({
-  selector: 'app-notifications-settings',
-  templateUrl: './notifications-settings.component.html',
+  selector: 'app-default-settings',
+  templateUrl: './default-settings.component.html',
 })
-export class NotificationsSettingsComponent implements OnInit {
+export class defaultSettingsComponent implements OnInit {
   notifications;
   email_notifications: Array<string> = [];
   web_notifications: Array<string> = [];
@@ -51,7 +51,6 @@ export class NotificationsSettingsComponent implements OnInit {
         this.email_notifications.splice(index, 1);
       }
     }
-    console.log(this.email_notifications);
   }
 
   checkedWeb(num, event) {
@@ -71,7 +70,6 @@ export class NotificationsSettingsComponent implements OnInit {
         this.web_notifications.splice(index, 1);
       }
     }
-    console.log(this.web_notifications);
   }
 
   updateNotificationSettings(e) {

@@ -1,6 +1,7 @@
 <div class="challenge-card row">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
-    <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+    <img *ngIf="!front" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+    <img *ngIf="front" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
   </div>
   <!--End image-container -->
   <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">

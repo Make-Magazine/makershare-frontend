@@ -9,7 +9,7 @@ import { ProjectForm } from '../../../../models';
 import { NodeHelper } from '../../../../models';
 import { CropperSettings } from 'ng2-img-cropper';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipConfig  } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
