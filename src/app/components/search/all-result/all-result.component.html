@@ -27,7 +27,7 @@
 
     <!--makers-->
     <div *ngIf="type == 'maker'" class="row">
-      <app-user-card *ngFor="let item of result" [uid]="item.is_uid"></app-user-card>
+      <app-maker-search-card *ngFor="let item of result" [uid]="item.is_uid"></app-maker-search-card>
     </div>
   
     <div class="text-center" *ngIf="resultCount > result.length">
