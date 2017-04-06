@@ -29,6 +29,7 @@ export class MakerComponent implements OnInit {
     // get users Has Bookmark from a view
     this.viewService.getView('maker-bookmark').subscribe(res => {
       this.users = res;
+      console.log(this.users)
     }, err => {
     });
   }
