@@ -6,10 +6,10 @@ import * as globals from '../../../../d7services/globals';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
 
 @Component({
-  selector: 'app-notifications-settings',
-  templateUrl: './notifications-settings.component.html',
+  selector: 'app-default-settings',
+  templateUrl: './default-settings.component.html',
 })
-export class NotificationsSettingsComponent implements OnInit {
+export class defaultSettingsComponent implements OnInit {
   notifications;
   email_notifications: Array<string> = [];
   web_notifications: Array<string> = [];
