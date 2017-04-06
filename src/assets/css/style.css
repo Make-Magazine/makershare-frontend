@@ -2179,9 +2179,9 @@ footer {
   line-height: 100% !important;
   color: #828282; }
 .maker-card.project .card-block .maker-city {
-  font-family: "Messina Modern Bold" !important;
-  font-size: 2em !important;
-  font-weight: 700 !important;
+  font-family: "Messina Sans Regular" !important;
+  font-size: 1.167em !important;
+  font-weight: 400 !important;
   text-transform: none !important;
   line-height: 100% !important;
   color: #828282;
@@ -2193,7 +2193,8 @@ footer {
   text-transform: none !important;
   line-height: 100% !important;
   color: #828282;
-  margin-top: 5px; }
+  margin-top: 5px;
+  font-weight: bold; }
 .maker-card.project .card-block .card-stats ul {
   margin-bottom: 0; }
 .maker-card.project .card-block .card-type {
