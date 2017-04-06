@@ -29,7 +29,6 @@ import { BaseComponent } from './base/base.component';
     NgbModule,
     ImageCropperModule,
     CKEditorModule
-
   ],
   declarations: [
     AllProfileComponent,
