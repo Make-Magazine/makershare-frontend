@@ -51,7 +51,6 @@ export class NotificationsSettingsComponent implements OnInit {
         this.email_notifications.splice(index, 1);
       }
     }
-    console.log(this.email_notifications);
   }
 
   checkedWeb(num, event) {
@@ -71,7 +70,6 @@ export class NotificationsSettingsComponent implements OnInit {
         this.web_notifications.splice(index, 1);
       }
     }
-    console.log(this.web_notifications);
   }
 
   updateNotificationSettings(e) {
