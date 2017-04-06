@@ -24,6 +24,7 @@ import { LearnUserCardComponent } from './learn-user-card/learn-user-card.compon
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
 import { VideoDisplayComponent } from './video-display/video-display.component';
+import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 
 
 
@@ -56,7 +57,8 @@ import { VideoDisplayComponent } from './video-display/video-display.component';
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
-    VideoDisplayComponent
+    VideoDisplayComponent,
+    MakerSearchCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -76,8 +78,10 @@ import { VideoDisplayComponent } from './video-display/video-display.component';
     UserCardSmallComponent,
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
-    VideoDisplayComponent
+    VideoDisplayComponent,
 
+    MakerCardComponent,
+    MakerSearchCardComponent,
   ]
 })
 export class SharedModule { }
@@ -99,3 +103,5 @@ export { UserCardSmallComponent };
 export { LearnUserCardComponent };
 export { ShowcaseGeneralCardComponent };
 export { VideoDisplayComponent };
+export { MakerCardComponent };
+export { MakerSearchCardComponent };

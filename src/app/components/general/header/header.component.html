@@ -22,7 +22,7 @@
                 <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
                 <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
                 <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
-                <button class="dropdown-item">Account Settings</button>
+                <button class="dropdown-item" [routerLink]="['/profile/settings']">Account Settings</button>
                 <button class="dropdown-item" (click)="auth.logout()">Logout</button>
               </div>
             </div>
@@ -68,22 +68,10 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['learn']">Learning</a>
           </li>
-          <li class="nav-item hidden-md-up maker-menu-sm">
-            <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
-            <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
-            <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
-            <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
-            <a [routerLink]="['other-sites']" class="dropdown-item greyed">Other Sites</a>
-            <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
-            <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
-            <a [routerLink]="['makers-intel']" class="dropdown-item">Makers.Intel.com</a>
-            <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
-            <a [routerLink]="['intel-innovation-programs']" class="dropdown-item">Intel Innovation Programs</a>
-          </li>
           <li class="nav-item hidden-md-up">
             <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
           </li>
-          <li class="nav-item button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
+          <li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
         </ul>
       </div>
   </nav>

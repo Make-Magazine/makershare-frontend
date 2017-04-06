@@ -1,0 +1,123 @@
+<form>
+   <fieldset class="form-group container">
+      <div >
+        <br>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            <h5>Send me a notification when:</h5>
+          </label>    
+          <label class="form-check-label text-center col-1">
+            <h5>Email</h5>
+          </label> 
+          <label class="form-check-label text-center col-1">
+            <h5>Web</h5>
+          </label>            
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            I am subscribed to the Newsletter
+          </label>
+            <input type="checkbox" class="col-1" name="subscribed_email" id="subscribed_email" value="option" [checked]= "email_notifications.indexOf('1') !== -1" (change)="checkedEmail('1',$event)" >          
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            I receive other promotional mailings
+          </label>
+            <input type="checkbox" class="col-1" name="receive_email" id="receive_email" value="option" [checked]= "email_notifications.indexOf('2') !== -1" (change)="checkedEmail('2',$event)" >          
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            I earn a new badge
+          </label>
+          <input type="checkbox" name="earn_email" class="col-1"  id="earn_email" value="option" [checked]= "email_notifications.indexOf('3') !== -1" (change)="checkedEmail('3',$event)" >
+          <input type="checkbox" name="earn_web" class="col-1" id="earn_web" value="option"[checked]= "web_notifications.indexOf('1') !== -1" (change)="checkedWeb('1',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            I win a Challenge
+          </label>
+          <input type="checkbox" name="win_email" class="col-1" id="win_email" value="option" [checked]= "email_notifications.indexOf('4') !== -1" (change)="checkedEmail('4',$event)" >
+          <input type="checkbox" name="win_web" class="col-1" id="win_web" value="option" [checked]= "web_notifications.indexOf('2') !== -1" (change)="checkedWeb('2',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            A deadline is coming up for a challenge I’m following
+          </label>
+          <input type="checkbox" name="deadline_email" class="col-1" id="deadline_email" value="option" [checked]= "email_notifications.indexOf('5') !== -1" (change)="checkedEmail('5',$event)" >
+          <input type="checkbox" name="deadline_web" class="col-1" id="deadline_web" value="option" [checked]= "web_notifications.indexOf('3') !== -1" (change)="checkedWeb('3',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone submits a new entry for a challenge I’m following
+          </label>
+          <input type="checkbox" name="submits_email" class="col-1" id="submits_email" value="option" [checked]= "email_notifications.indexOf('6') !== -1" (change)="checkedEmail('6',$event)" >
+          <input type="checkbox" name="submits_web" class="col-1" id="submits_web" value="option" [checked]= "web_notifications.indexOf('4') !== -1" (change)="checkedWeb('4',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone votes on a Challenge entry I’ve submitted
+          </label>
+          <input type="checkbox" name="votes_email" class="col-1" id="votes_email" value="option" [checked]= "email_notifications.indexOf('7') !== -1" (change)="checkedEmail('7',$event)"  >
+        <input type="checkbox" name="votes_web"class="col-1" id="votes_web" value="option" [checked]= "web_notifications.indexOf('5') !== -1" (change)="checkedWeb('5',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            My project is featured on the Home Page
+          </label>
+          <input type="checkbox" name="project_home_email" class="col-1"  id="project_home_email" value="option" [checked]= "email_notifications.indexOf('8') !== -1" (change)="checkedEmail('8',$event)" >
+         <input type="checkbox" name="project_home_web" class="col-1" id="project_home_web" value="option" [checked]= "web_notifications.indexOf('6') !== -1" (change)="checkedWeb('6',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            My profile is featured on the Home Page
+          </label>
+          <input type="checkbox" name="profile_email" class="col-1"  id="profile_email" value="option" [checked]= "email_notifications.indexOf('9') !== -1" (change)="checkedEmail('9',$event)" >
+          <input type="checkbox" name="profile_web" class="col-1" id="profile_web" value="option" [checked]= "web_notifications.indexOf('7') !== -1" (change)="checkedWeb('7',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            My project is featured in a Showcase
+          </label>
+          <input type="checkbox" class="col-1" name="project_Showcase_email" clas id="project_Showcase_email" value="option" [checked]= "email_notifications.indexOf('10') !== -1" (change)="checkedEmail('10',$event)" >
+            <input type="checkbox" class="col-1" name="project_Showcase_web" id="project_Showcase_web" value="option" [checked]= "web_notifications.indexOf('8') !== -1"(change)="checkedWeb('8',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone messages me
+          </label>
+          <input type="checkbox" class="col-1" name="messages_email" clas id="messages_email" value="option" [checked]= "email_notifications.indexOf('11') !== -1" (change)="checkedEmail('11',$event)" >
+          <input type="checkbox" class="col-1" name="messages_web" id="messages_web" value="option" [checked]= "web_notifications.indexOf('9') !== -1" (change)="checkedWeb('9',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone adds me as a collaborator to a project
+          </label>
+          <input type="checkbox" class="col-1" name="collaborator_email" clas id="collaborator_email" value="option" [checked]= "email_notifications.indexOf('12') !== -1" (change)="checkedEmail('12',$event)" >
+          <input type="checkbox" class="col-1" name="collaborator_web" id="collaborator_web" value="option" [checked]= "web_notifications.indexOf('10') !== -1" (change)="checkedWeb('10',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone has credited me in a project
+          </label>
+          <input type="checkbox" class="col-1" name="credited_email" clas id="credited_email" value="option" [checked]= "email_notifications.indexOf('13') !== -1" (change)="checkedEmail('13',$event)" >
+          <input type="checkbox" class="col-1" name="credited_web" id="credited_web" value="option" [checked]= "web_notifications.indexOf('11') !== -1" (change)="checkedWeb('11',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            Someone new Liked one of my projects
+          </label>
+          <input type="checkbox" class="col-1" name="liked_email" clas id="liked_email" value="option" [checked]= "email_notifications.indexOf('14') !== -1" (change)="checkedEmail('14',$event)" >
+            <input type="checkbox" class="col-1" name="liked_web" id="liked_web" value="option" [checked]= "web_notifications.indexOf('12') !== -1" (change)="checkedWeb('12',$event)" >
+        </div>
+        <div class="form-check row">
+          <label class="form-check-label col-8">
+            There’s a new comment on one of my projects
+          </label>
+          <input type="checkbox" name="comment_email" class="col-1" id="comment_email" value="option" [checked]= "email_notifications.indexOf('15') !== -1" (change)="checkedEmail('15',$event)" >
+          <input type="checkbox" name="comment_web" class="col-1" id="comment_web" value="option" [checked]= "web_notifications.indexOf('13') !== -1" (change)="checkedWeb('13',$event)" >
+        </div>
+      </div>
+      <br>
+    <button type="submit" class="btn btn-blue btn-sharp" (click)="updateNotificationSettings($event)" >Save changes</button>             
+    </fieldset>
+</form>

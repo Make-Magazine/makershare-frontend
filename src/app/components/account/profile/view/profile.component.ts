@@ -14,12 +14,15 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
 import { Intrests} from '../../../../models/profile/intrests';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-
+userIdProfile;
+countProject;
  ckEditorConfig: {} = {
     "toolbarGroups": [
           { "name": "document", "groups": [ "mode", "document", "doctools" ] },
@@ -104,6 +107,7 @@ export class ProfileComponent implements OnInit {
   ProfilecropperSettings: CropperSettings;
   allIntersets:Array<any>;
   uid:number;
+  userName:string;
   customDescription: string;
   badges:Array<any>;
   Loading:boolean;
@@ -140,6 +144,7 @@ export class ProfileComponent implements OnInit {
     private fileService: FileService,
     private modalService: NgbModal,
     private fb:FormBuilder,
+    private route:ActivatedRoute, private router:Router
   ) {
 
     
@@ -168,6 +173,35 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit() {
+    
+       this.userService.getStatus().subscribe(data => {
+      if(data.user.uid > 0){
+        // logged in 
+  this.route.params.subscribe((params: Params) => {
+         this.userName = params['user_name'];
+      });
+        this.userService.getIdFromUrl(this.userName).subscribe( data => {
+           this.userIdProfile = data.uid;
+              console.log(this.userIdProfile);
+        this.getCountProject();
+        }, err => {
+  
+        });
+      }
+    }, err => {
+    });
+    //console.log(this.route.snapshot.params['user_name']);
+    this.userName = this.route.snapshot.params['user_name'];
+    /*check if navigating to profile with username paramter => get uid from name 
+      else get uid from local storage
+    */
+    if(typeof this.userName != "undefined") {
+    this.userService.getIdFromUrl(this.userName).subscribe(res => {
+      this.uid = res.uid;
+    });
+  } else {
+    this.uid = +localStorage.getItem('user_id');
+    }
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
      this.allIntersets=allIntersets;
@@ -178,22 +212,33 @@ export class ProfileComponent implements OnInit {
     });
 
     this.Loading = true;
-    this.uid = +localStorage.getItem('user_id');
     var tasks = [];
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     // tasks.push(this.profileService.getAllMarkers());
     tasks.push(this.profileService.getAllInterests());
-    tasks.push(this.viewService.getView('maker_count_all_projects/'+this.uid));
+    tasks.push(this.viewService.getView('maker_count_all_projects/'+this.userIdProfile));
     let source = Observable.forkJoin(tasks).subscribe((data)=>{
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-      this.ProjectsCount = data[index++] as number;
+    //  this.ProjectsCount = data[index++] as number;
+      console.log(this.userIdProfile)
+      console.log(this.ProjectsCount)
       this.UpdateUser();
     });
   }
 
   // old structure not finished
+    /* function to get count projects */
+  getCountProject() {
+    this.viewService.getView('maker_count_all_projects/'+this.userIdProfile).subscribe(data => {
+      this.ProjectsCount = data[0];
+      console.log(this.ProjectsCount)
+    }, err => {
+
+    });
+  }
+  /* end count function */
 
   onSelected(intrest) {
     this.profile.maker_interests.push(intrest.name);
@@ -287,6 +332,7 @@ export class ProfileComponent implements OnInit {
   }
 
   UpdateUser(){
+    if(typeof this.uid != "undefined") {
     this.userService.getUser(this.uid).subscribe(res => {
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
@@ -309,6 +355,9 @@ export class ProfileComponent implements OnInit {
       })
       this.Loading = false;
     });
+    } else {
+      this.router.navigate(['**']);
+    }
   }
   
   prefer(event : string){
