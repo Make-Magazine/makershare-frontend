@@ -3544,17 +3544,31 @@ img {
 .showcase-card-backlayer-home {
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  padding-right: 9px;
-  padding-bottom: 9px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
   .showcase-card-backlayer-home:hover {
     background-color: #00AEEF;
     transition: background-color 0.8s ease; }
+  .showcase-card-backlayer-home:hover .showcase-card-backlayer-home-2 {
+    transition: background-color 0.8s ease;
+    background-color: #D4EFFC;
+    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .showcase-card-backlayer-home .showcase-card-backlayer-home-2 {
+    background-color: #D4EFFC;
+    transition: background-color 0.8s ease;
+    margin-bottom: 10px;
+    position: relative;
+    top: -10px;
+    left: -9px;
+    background-color: transparent; }
   .showcase-card-backlayer-home .showcase-card {
     position: relative;
+    top: -16px;
+    left: -9px;
     padding: 16px;
     cursor: pointer;
     background-color: white;
@@ -3605,7 +3619,8 @@ img {
         -webkit-box-orient: vertical;
         overflow: hidden;
         height: 190px;
-        color: #333333; }
+        color: #333333;
+        margin-bottom: 20px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.5em !important;
@@ -3615,21 +3630,23 @@ img {
         color: #828282;
         display: inline-block;
         text-transform: none; }
-      .showcase-card-backlayer-home .showcase-card .card-container .card-description h4 {
-        font-weight: bold; }
-      .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
-        font-family: "Messina Sans Regular" !important;
-        font-size: 1.167em !important;
-        font-weight: 400 !important;
-        text-transform: none !important;
-        line-height: 100% !important;
-        color: #828282;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        color: #333333;
-        height: 71px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description {
+        margin-bottom: 60px; }
+        .showcase-card-backlayer-home .showcase-card .card-container .card-description h4 {
+          font-weight: bold; }
+        .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1.167em !important;
+          font-weight: 400 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          color: #333333;
+          height: 71px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
