@@ -178,7 +178,7 @@ export class ProfileComponent implements OnInit {
       else get uid from local storage
     */
     if(typeof this.userName != "undefined") {
-    this.userService.geIdFromUrl(this.userName).subscribe(res => {
+    this.userService.getIdFromUrl(this.userName).subscribe(res => {
       this.uid = res.uid;
     });
   } else {
