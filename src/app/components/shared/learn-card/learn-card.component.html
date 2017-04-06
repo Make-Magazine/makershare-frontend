@@ -16,7 +16,8 @@
 </div>-->
 <div class="row">
   <div class="col-md-4 image-container">
-    <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+    <img *ngIf="!front" src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+    <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
   </div>
   <div class="col-md-8 container-conten">
     <div class="card-container">
