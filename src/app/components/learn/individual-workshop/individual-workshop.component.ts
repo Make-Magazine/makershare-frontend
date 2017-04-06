@@ -42,6 +42,8 @@ export class IndividualWorkshopComponent implements OnInit {
   countlessons;
   @Input() name;
 
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -52,8 +54,7 @@ export class IndividualWorkshopComponent implements OnInit {
     private http: Http,
     private modalService: NgbModal,
     private loaderService: LoaderService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.loaderService.display(true);
@@ -64,29 +65,27 @@ export class IndividualWorkshopComponent implements OnInit {
       .subscribe(data => {
         this.workshop = data[0];
         if (this.workshop.uid) {
-        this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
-          this.workshopLeader = data[0];
-          console.log(this.workshopLeader)
-        });
-      }
+          this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
+            this.workshopLeader = data[0];
+            console.log(this.workshopLeader)
+          });
+        }
         this.customTitle = this.workshop.workshop_title;
         this.customDescription = this.workshop.brief_description;
         this.customImage = this.workshop.cover_photo;
         if (this.workshop.introductory_video) {
           if (this.youtube_parser(this.workshop.introductory_video)) {
-            // this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:640px; height:274px;"></iframe>';
-            // this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-            this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
-            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-              this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
-            });
+            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
+            this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+            // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
+            // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+            //   this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            // });
 
           }
           else if (this.vimeo_parser(this.workshop.introductory_video)) {
             this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.introductory_video;
-
             this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-
               this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
             });
           }
@@ -99,18 +98,20 @@ export class IndividualWorkshopComponent implements OnInit {
         for (let object in this.objects) {
           if (this.objects[object].video && this.objects[object].video !== '') {
             if (this.youtube_parser(this.objects[object].video)) {
-              // //  console.log (this.youtube_parser(this.objects[object].video))
-              // this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
-              // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-              // this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
-              //  console.log(this.objects[object].videoImage)
-              this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.youtube_parser(this.objects[object].video);
-              this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-                this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-                this.objects[object].videoImage = data.thumbnail_url_with_play_button;
-              });
+              //  console.log (this.youtube_parser(this.objects[object].video))
+              this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) + '"frameborder="0" style="width:100%; height:270px;"></iframe>';
+              this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+              this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
+
+              // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.youtube_parser(this.objects[object].video);
+              // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+              //   this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+              //   this.objects[object].videoImage = data.thumbnail_url_with_play_button;
+              // });
             }
             else if (this.vimeo_parser(this.objects[object].video)) {
+              // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
+              // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
               this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
               this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
                 this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
@@ -124,7 +125,6 @@ export class IndividualWorkshopComponent implements OnInit {
         this.loaderService.display(false);
       });
 
-
     this.viewService.getView('more-lessons', [['nid', this.nid]])
       .subscribe(data => {
         this.lessons = data;
@@ -136,7 +136,7 @@ export class IndividualWorkshopComponent implements OnInit {
 
     });
 
-     this.getCountlessons();
+    this.getCountlessons();
   }
 
   preview(i) {
@@ -166,6 +166,9 @@ export class IndividualWorkshopComponent implements OnInit {
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
     }
+    // else {
+    //   this.popupPreview = this.workshop.introductory_video;
+    // }
   }
   youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -176,6 +179,7 @@ export class IndividualWorkshopComponent implements OnInit {
     var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
     return match[5];
+
   }
   open(content, i: number, mode: string) {
     if (mode === 'preview') {
@@ -187,11 +191,17 @@ export class IndividualWorkshopComponent implements OnInit {
   }
   getCountlessons() {
     this.route.params
-    .switchMap((nid) => this.viewService.getView('maker_count_lessons/' + nid['nid']))
+      .switchMap((nid) => this.viewService.getView('maker_count_lessons/' + nid['nid']))
       .subscribe(data => {
-      this.countlessons = data[0];
-    }, err => {
+        this.countlessons = data[0];
+      }, err => {
 
-    });
+      });
+  }
+
+  introvideo(content)
+  {
+      this.popupPreview= this.workshop.introductory_video
+      this.modalService.open(content);
   }
 }
