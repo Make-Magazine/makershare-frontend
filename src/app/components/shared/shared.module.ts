@@ -23,6 +23,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
+import { VideoDisplayComponent } from './video-display/video-display.component';
 
 
 
@@ -54,7 +55,8 @@ import { MakerCardComponent } from './maker-card/maker-card.component';
     UserCardSmallComponent,
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
-    MakerCardComponent
+    MakerCardComponent,
+    VideoDisplayComponent
   ],
   exports: [
     CommentComponent,
@@ -73,7 +75,8 @@ import { MakerCardComponent } from './maker-card/maker-card.component';
     LearnCardComponent,
     UserCardSmallComponent,
     LearnUserCardComponent,
-    ShowcaseGeneralCardComponent
+    ShowcaseGeneralCardComponent,
+    VideoDisplayComponent
 
   ]
 })
@@ -95,3 +98,4 @@ export { LearnCardComponent };
 export { UserCardSmallComponent };
 export { LearnUserCardComponent };
 export { ShowcaseGeneralCardComponent };
+export { VideoDisplayComponent };

@@ -1,5 +1,8 @@
 .page-workshop-single {
     background-color: $main-bg;
+			.modal-body .div iframe {
+		width: 100%;
+	}
 .page-workshop-individual {
 	.region-content {
 			}
@@ -96,13 +99,21 @@
       margin-bottom: 40px;
 	
 		}
-		.video-image {
-			img {
-				width: 227px;
-				height: 270px;
+		.modal-block
+		{
+			border: 1px solid black;
+			.card-modal
+			{
+				padding-left: 32px;
 			}
-	
 		}
+		
+		// .video-image {
+		// 	img {
+	  // 		width:480px;
+		//    height:270px;
+		// 	}
+		// }
 			.card-img-top{
 			box-shadow: 0px 7px 12px #888888;
 			// width: 187px;
@@ -183,6 +194,7 @@
 		}
 	}
 	.suggested {
+		
 		margin-top: 15px;
 		display: -webkit-flex;
 		display: -moz-flex;
@@ -298,11 +310,12 @@
 				}
 
 				p {
-					@include body-font-2();
+					@include body-font-2 ();
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					min-height: 116px;
 					color: #4F4F4F;
+					line-height: 100% !important;
 				}
 			}
 			.learn-card-footer-2 {
@@ -338,30 +351,5 @@
 				
             }
         }
+
  }
-
-
-
-.learn-header {
-	margin-bottom: 25px;
-	text-align: center;
-    h3 {
-        @include header-font();
-        margin: auto;
-        padding-top: 45px;
-		padding-bottom: 10px;
-        font-weight: normal;
-	}
-    p {
-        @include body-font-2();
-        width: 85%;
-        margin: auto;
-    }
-}
-.learn-container {
-	padding: 25px 0;
-}
-
-.page-learn-summary {
-    background-color: #F2F2F2;
-}
