@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotificationsSettingsComponent } from './notifications-settings/notifications-settings.component';
+import { defaultSettingsComponent } from './default-settings/default-settings.component';
 import { AccountSettingsRoutingModule} from './account-settings-routing.module';
+import { ParentSettingsComponent } from './parent-settings/parent-settings.component';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { ChallengeAdminSettingsComponent } from './challenge-admin-settings/challenge-admin-settings.component';
+import { CommunityManagerSettingsComponent } from './community-manager-settings/community-manager-settings.component';
 
 @NgModule({
   imports: [
@@ -9,14 +13,18 @@ import { AccountSettingsRoutingModule} from './account-settings-routing.module';
     AccountSettingsRoutingModule
   ],
   declarations: [
-    NotificationsSettingsComponent
+    defaultSettingsComponent,
+    ParentSettingsComponent,
+    AdminSettingsComponent,
+    ChallengeAdminSettingsComponent,
+    CommunityManagerSettingsComponent
     ],
     exports: [
  
-    NotificationsSettingsComponent
+    defaultSettingsComponent
   ]
 })
 export class AccountSettingsModule { }
 export  {
-  NotificationsSettingsComponent,
+  defaultSettingsComponent,
 };
