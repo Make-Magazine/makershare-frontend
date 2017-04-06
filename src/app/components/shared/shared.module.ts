@@ -24,6 +24,10 @@ import { LearnUserCardComponent } from './learn-user-card/learn-user-card.compon
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
+import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
+import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
+import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
+import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 
 
 
@@ -57,6 +61,10 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
     MakerSearchCardComponent,
+    ProjectSearchCardComponent,
+    ChallengeSearchCardComponent,
+    ShowcaeSearchCardComponent,
+    LearnSearchCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -78,6 +86,10 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
     MakerSearchCardComponent,
+    ProjectSearchCardComponent,
+    ChallengeSearchCardComponent,
+    ShowcaeSearchCardComponent,
+    LearnSearchCardComponent,
   ]
 })
 export class SharedModule { }
@@ -100,3 +112,7 @@ export { LearnUserCardComponent };
 export { ShowcaseGeneralCardComponent };
 export { MakerCardComponent };
 export { MakerSearchCardComponent };
+export { ProjectSearchCardComponent };
+export { ChallengeSearchCardComponent };
+export { ShowcaeSearchCardComponent };
+export { LearnSearchCardComponent };

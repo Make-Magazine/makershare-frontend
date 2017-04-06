@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="learn-card row">
+    <div class="image-container col-lg-4 col-md-12 col-sm-12 col-xs-12">
+      <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+    </div>
+    <!--End image-container -->
+    <div class="content-container col-lg-8 col-md-12 col-sm-12 col-xs-12">
+      <div class="card-container">
+        <div class="card">
+          <div class="learn-type-badge">
+            <p>LEARN</p>
+          </div>
+          <div class="card-partership">
+            <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
+          </div>
+          <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
+          <div class="workshop-count mt-auto">
+            <p *ngIf="countlessons==1">{{countlessons}} Lesson </p>
+            <p *ngIf="countlessons>1">{{countlessons}} Lessons</p>
+          </div>
+        </div>
+      </div>
+      <!--End card-container -->
+    </div>
+  </div>
+  <!-- End col-md-6 -->
+</div>

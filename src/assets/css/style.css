@@ -1781,7 +1781,9 @@ footer {
 
 .project.card {
   width: 95%;
-  border-radius: 0; }
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto; }
 .project .image-top {
   width: 100%;
   height: auto;
@@ -2235,6 +2237,123 @@ footer {
 .links-site {
   padding-bottom: -2px; }
 
+/* maker card on search page */
+.page-search-content {
+  margin: 0px;
+  border: none; }
+  .page-search-content .user-card-search {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    min-height: 210px; }
+    .page-search-content .user-card-search:hover {
+      cursor: pointer; }
+    .page-search-content .user-card-search .media {
+      margin-bottom: -8px; }
+      .page-search-content .user-card-search .media .profile-pic-container {
+        padding-left: 0;
+        padding-top: 10px;
+        padding-bottom: 0;
+        position: relative;
+        left: -20px;
+        top: -36px;
+        margin-bottom: -20px;
+        width: 172px;
+        height: 215px; }
+        .page-search-content .user-card-search .media .profile-pic-container .maker-photo {
+          display: block;
+          width: 172px;
+          height: 215px; }
+      .page-search-content .user-card-search .media .media-body .card-title {
+        margin-left: -8px; }
+      .page-search-content .user-card-search .media .media-body .card-type {
+        top: 32px;
+        right: -2px;
+        font-size: 16px !important; }
+    .page-search-content .user-card-search .profile-pic-container img {
+      width: 70px;
+      height: 70px; }
+    .page-search-content .user-card-search .user-name {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      min-height: 24px;
+      margin-bottom: 2px; }
+      .page-search-content .user-card-search .user-name a {
+        text-decoration: none;
+        color: #333333; }
+    .page-search-content .user-card-search .user-nickname {
+      font-size: 12px;
+      margin-bottom: 2px;
+      min-height: 18px; }
+      .page-search-content .user-card-search .user-nickname a {
+        text-decoration: none;
+        color: #BDBDBD; }
+    .page-search-content .user-card-search .profile-tag {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 700 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-bottom: 5px;
+      height: 38px;
+      line-height: 17px;
+      display: inline-block;
+      min-height: 50px; }
+    .page-search-content .user-card-search .profile-tag, .page-search-content .user-card-search .user-city, .page-search-content .user-card-search .count {
+      font-size: 14px; }
+    .page-search-content .user-card-search .user-city {
+      color: #00AEEF;
+      min-height: 21px;
+      margin-bottom: 4px; }
+      .page-search-content .user-card-search .user-city div {
+        float: left;
+        margin-right: 6px; }
+    .page-search-content .user-card-search .count {
+      margin-bottom: 0;
+      color: #BDBDBD;
+      clear: both; }
+    .page-search-content .user-card-search .card-stats {
+      padding: 2px;
+      color: #BDBDBD; }
+      .page-search-content .user-card-search .card-stats ul {
+        margin-bottom: 6px; }
+        .page-search-content .user-card-search .card-stats ul li {
+          font-family: "Messina Sans Regular" !important;
+          font-size: 1em !important;
+          font-weight: 400 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          font-weight: normal !important;
+          font-size: 13px !important;
+          color: #BDBDBD;
+          min-width: 60px;
+          margin: 0px 4px; }
+          .page-search-content .user-card-search .card-stats ul li img {
+            margin-right: 6px; }
+            .page-search-content .user-card-search .card-stats ul li img.project-likes {
+              width: 12px; }
+            .page-search-content .user-card-search .card-stats ul li img.project-views {
+              width: 20px; }
+          .page-search-content .user-card-search .card-stats ul li span {
+            margin: 0px; }
+      .page-search-content .user-card-search .card-stats .icons-side-user {
+        width: 80px;
+        overflow: hidden; }
+        .page-search-content .user-card-search .card-stats .icons-side-user .user-icon {
+          float: left; }
+          .page-search-content .user-card-search .card-stats .icons-side-user .user-icon img {
+            width: 30px; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
@@ -2487,6 +2606,119 @@ footer {
 
 .page-challenge-summary {
   background-color: #F2F2F2; }
+
+/* challenge card on search page */
+.page-search-content .challenge-card {
+  position: relative;
+  padding: 8px 8px 0px 8px;
+  cursor: pointer;
+  background-color: #333333;
+  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .page-search-content .challenge-card .single-challenge {
+    padding: 10px; }
+    .page-search-content .challenge-card .single-challenge img {
+      width: 250px; }
+    .page-search-content .challenge-card .single-challenge .card-partership {
+      color: #ED1C24; }
+  .page-search-content .challenge-card .challenge-type-badge {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.167em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    position: absolute;
+    top: 26px;
+    right: -38px;
+    transform: rotate(-90deg); }
+    .page-search-content .challenge-card .challenge-type-badge p {
+      margin: 0px; }
+  .page-search-content .challenge-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    height: 215px;
+    width: 170px;
+    top: -22px;
+    left: -22px; }
+    .page-search-content .challenge-card .image-container img {
+      width: 100%;
+      max-width: 100%;
+      height: 100%; }
+  .page-search-content .challenge-card .content-container {
+    padding-left: 0px; }
+  .page-search-content .challenge-card .card-container {
+    color: #fff;
+    position: relative;
+    height: 100%; }
+    .page-search-content .challenge-card .card-container .card .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 4em !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 92px;
+      color: white;
+      font-size: 3em !important;
+      margin-bottom: 30px; }
+    .page-search-content .challenge-card .card-container .card .card-status {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-search-content .challenge-card .card-container .card .card-partership {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      text-transform: none;
+      font-size: 14px;
+      display: inline-block;
+      min-height: 16px;
+      margin-bottom: 10px; }
+      .page-search-content .challenge-card .card-container .card .card-partership h4 {
+        font-weight: bold; }
+      .page-search-content .challenge-card .card-container .card .card-partership p {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
+    .page-search-content .challenge-card .card-container .card .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.167em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      height: 85px;
+      color: white; }
+    .page-search-content .challenge-card .card-container .challenge-card-footer-2 span {
+      color: #828282; }
+    .page-search-content .challenge-card .card-container .challene-card-footer {
+      margin-top: inherit; }
+    .page-search-content .challenge-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BDBDBD; }
+    .page-search-content .challenge-card .card-container .card-buttons .follow-number {
+      background-color: #aaaaaa;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
 
 .page-project {
   color: #333333;
@@ -3104,7 +3336,7 @@ header.showcase-project .next {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 164px; }
+        height: 197px; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -3131,6 +3363,81 @@ header.showcase-project .next {
             color: white; }
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
             border: 1px solid rgba(130, 130, 130, 0.2); }
+
+/* project card on search page */
+.project-search-card {
+  margin: 0px;
+  border: none; }
+  .project-search-card .project-card-small {
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    border: 1px solid #4ab0d8;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .project-search-card .project-card-small:hover {
+      cursor: pointer; }
+    .project-search-card .project-card-small .media {
+      margin-bottom: -8px; }
+      .project-search-card .project-card-small .media .project-pic-container {
+        padding-left: 0;
+        padding-top: 10px;
+        padding-bottom: 0;
+        position: relative;
+        left: -20px;
+        top: -40px;
+        margin-bottom: -20px;
+        width: 180px;
+        height: 145px; }
+        .project-search-card .project-card-small .media .project-pic-container .maker-photo {
+          display: block;
+          width: 136px;
+          height: 160px;
+          margin-bottom: 4px; }
+      .project-search-card .project-card-small .media .media-body .card-title {
+        margin-left: -8px; }
+      .project-search-card .project-card-small .media .media-body .card-type {
+        top: 40px;
+        right: -24px;
+        font-size: 16px !important; }
+    .project-search-card .project-card-small .maker-project-info {
+      padding: 2px 5px 5px 5px; }
+      .project-search-card .project-card-small .maker-project-info .profile-pic-container img {
+        width: 70px;
+        height: 70px; }
+      .project-search-card .project-card-small .maker-project-info .card-stats {
+        padding: 2px;
+        color: #BDBDBD; }
+        .project-search-card .project-card-small .maker-project-info .card-stats ul {
+          margin-bottom: 6px; }
+          .project-search-card .project-card-small .maker-project-info .card-stats ul li {
+            font-family: "Messina Sans Regular" !important;
+            font-size: 1em !important;
+            font-weight: 400 !important;
+            text-transform: none !important;
+            line-height: 100% !important;
+            color: #828282;
+            font-weight: normal !important;
+            font-size: 13px !important;
+            color: #BDBDBD;
+            min-width: 60px;
+            margin: 0px 4px; }
+            .project-search-card .project-card-small .maker-project-info .card-stats ul li img {
+              margin-right: 6px; }
+              .project-search-card .project-card-small .maker-project-info .card-stats ul li img.project-likes {
+                width: 12px; }
+              .project-search-card .project-card-small .maker-project-info .card-stats ul li img.project-views {
+                width: 20px; }
+            .project-search-card .project-card-small .maker-project-info .card-stats ul li span {
+              margin: 0px; }
+        .project-search-card .project-card-small .maker-project-info .card-stats .icons-side-user {
+          width: 80px;
+          overflow: hidden; }
+          .project-search-card .project-card-small .maker-project-info .card-stats .icons-side-user .user-icon {
+            float: left; }
+            .project-search-card .project-card-small .maker-project-info .card-stats .icons-side-user .user-icon img {
+              width: 30px; }
 
 .page-learn {
   background-color: white;
@@ -3298,6 +3605,98 @@ header.showcase-project .next {
 
 .page-learn-summary {
   background-color: #F2F2F2; }
+
+/* learn card on search page */
+/* challenge card on search page */
+.page-search-content .learn-card {
+  position: relative;
+  padding: 8px 8px 0px 8px;
+  cursor: pointer;
+  background-color: #DCDCDC;
+  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .page-search-content .learn-card .learn-type-badge {
+    position: absolute;
+    top: 26px;
+    right: -38px;
+    transform: rotate(-90deg); }
+    .page-search-content .learn-card .learn-type-badge p {
+      margin: 0px; }
+  .page-search-content .learn-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    height: 215px;
+    width: 170px;
+    top: -22px;
+    left: -22px; }
+    .page-search-content .learn-card .image-container img {
+      width: 100%;
+      max-width: 100%;
+      height: 100%; }
+  .page-search-content .learn-card .content-container {
+    padding-left: 0px; }
+  .page-search-content .learn-card .card-container {
+    color: #fff;
+    position: relative;
+    height: 100%; }
+    .page-search-content .learn-card .card-container .card .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 4em !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 92px;
+      color: #4F4F4F;
+      font-size: 3em !important;
+      margin-bottom: 54px; }
+    .page-search-content .learn-card .card-container .card .card-status {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .page-search-content .learn-card .card-container .card .card-partership {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      text-transform: none;
+      font-size: 14px;
+      display: inline-block;
+      min-height: 16px;
+      margin-bottom: 10px; }
+      .page-search-content .learn-card .card-container .card .card-partership h4 {
+        font-weight: bold; }
+      .page-search-content .learn-card .card-container .card .card-partership p {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282; }
+    .page-search-content .learn-card .card-container .card .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.167em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      height: 85px;
+      color: white; }
+    .page-search-content .learn-card .card-container .workshop-count {
+      color: #828282; }
 
 .page-showcase,
 .page-single-showcase {
@@ -3684,6 +4083,135 @@ img {
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
+        font-weight: bold;
+        font-size: 16px;
+        padding-right: 5px; }
+
+/* showcase card on search page */
+.page-search-content .showcase-card-backlayer {
+  background-color: #D4EFFC;
+  transition: inherit;
+  padding: 0px;
+  margin-bottom: 10px;
+  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  .page-search-content .showcase-card-backlayer .showcase-card {
+    position: relative;
+    padding: 16px;
+    top: -12px;
+    left: -12px;
+    cursor: pointer;
+    background-color: white;
+    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    .page-search-content .showcase-card-backlayer .showcase-card .card {
+      background-color: transparent;
+      border: none; }
+    .page-search-content .showcase-card-backlayer .showcase-card .single-showcase {
+      padding: 10px; }
+      .page-search-content .showcase-card-backlayer .showcase-card .single-showcase img {
+        width: 250px; }
+      .page-search-content .showcase-card-backlayer .showcase-card .single-showcase .card-partership {
+        color: #ED1C24; }
+    .page-search-content .showcase-card-backlayer .showcase-card .left-side {
+      padding: 0px; }
+    .page-search-content .showcase-card-backlayer .showcase-card .image-container {
+      position: relative;
+      padding: 0;
+      height: auto; }
+      .page-search-content .showcase-card-backlayer .showcase-card .image-container img {
+        width: 100%;
+        height: auto; }
+    .page-search-content .showcase-card-backlayer .showcase-card .card-container {
+      color: #fff;
+      height: 100%;
+      position: relative; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card {
+        height: 100%; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .showcase-type-badge {
+        position: absolute;
+        top: 24px;
+        right: -40px;
+        transform: rotate(-90deg); }
+        .page-search-content .showcase-card-backlayer .showcase-card .card-container .showcase-type-badge p {
+          margin: 0px;
+          color: #BDBDBD; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-title {
+        font-family: "Messina Modern Regular" !important;
+        font-size: 3em !important;
+        font-weight: 400 !important;
+        text-transform: capitalize !important;
+        line-height: 100% !important;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        height: 98px;
+        overflow: hidden;
+        color: #333333; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-status {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.5em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 110% !important;
+        color: #828282;
+        display: inline-block;
+        text-transform: none; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-description h4 {
+        font-weight: bold; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-description p {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 1.167em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #333333;
+        height: 37px; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
+        background-color: #BDBDBD; }
+      .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-buttons .follow-number {
+        background-color: #aaaaaa;
+        padding: 3px 15px;
+        border-radius: 20px;
+        font-size: 13px;
+        margin-left: 10px; }
+    .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-1 a.btn.btn-grey {
+        background-color: #BDBDBD; }
+    .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 {
+      padding-top: 4px; }
+      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count {
+        font-size: 14px; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count div {
+          float: left;
+          margin-right: 8px;
+          min-width: 50px; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
+          margin-left: 20px; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
+          color: #BDBDBD; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
+          width: 22px;
+          height: auto; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
+          padding-right: 10px;
+          color: #BDBDBD; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-date {
+          padding-left: 16px;
+          height: auto; }
+        .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
+          color: #BDBDBD; }
+      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
@@ -5226,6 +5754,10 @@ img {
 .stylish-input-group button {
   border: 0;
   background: transparent; }
+
+/* new style */
+.page-search-content {
+  background-color: #F2F2F2; }
 
 .spinning-preloader-container {
   position: fixed;
