@@ -6,17 +6,7 @@
           <div class="top-content-wrapper">
             <div class="container">
               <div class="col-md-12">
-                <div class="projects-circle d-flex justify-content-between col-md-12" *ngIf="showcase.uid">
-                  <a *ngIf="projectIndex > 0" (click)="switchProject($event,'back')" class="go-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-                  <h3 class="m-auto"><a href="">Showcase - {{showcase.showcase_name}}</a></h3>
-                  <a *ngIf="allProjects && projectIndex != allProjects.length-1" (click)="switchProject($event,'next')" class="go-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                </div>
-                <app-project-header [project]="projectDetails" [projectInfo]="projectdata"></app-project-header>
-                <ul class="list-unstyled project-aside">
-                  <li id="project-story-tab"><a class="btn btn-tabs active" (click)="changeProjectTab('project-story',$event)" [ngClass]="{'active': current_active_tab == 'project-story' }">Project Story</a></li>
-                  <li id="how-to-tab"><a class="btn btn-tabs" (click)="changeProjectTab('project-how-to',$event)" [ngClass]="{'active': current_active_tab == 'project-how-to' }">How To</a></li>
-                </ul>
-                <div class="clearfix"></div>
+                <app-project-header [project]="projectDetails" [projectInfo]="projectdata" [showcaseInfo]="navigateShowcase" (SwitchTab)="changeProjectTab($event)" (ProjectNewId)="switchProject($event)"></app-project-header>
               </div>
             </div>
             <!-- End container-->

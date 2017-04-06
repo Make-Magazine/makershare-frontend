@@ -1,4 +1,4 @@
-<div class="challenge-card row">
+<div class="challenge-card row" *ngIf="challenge">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
     <img *ngIf="!front" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="front" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
@@ -10,11 +10,11 @@
         <div class="challenge-type-badge">
           <p>Mission</p>
         </div>
-        <div class="card-partership">
-          <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge?.sponsored_by}}</p>
+        <div class="card-partership" *ngIf="challenge.sponsored_by">
+          <p>Sponsored by {{challenge.sponsored_by}}</p>
         </div>
-        <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
-        <div class="card-description">
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
+        <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex">
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="challenge-card-footer-2 ml-3">
-            <div class="challenge-card-count">
+            <div class="challenge-card-count"  *ngIf="challenge.entries_count">
               <span class="entries-count">{{challenge.entries_count}}
                        <span *ngIf="challenge.entries_count>1">Entries</span>
               <span *ngIf="challenge.entries_count <= 1">Entry</span>

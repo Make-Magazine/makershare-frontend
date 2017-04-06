@@ -1,7 +1,7 @@
 <div class="front">
   <app-onboarding></app-onboarding>
-  <app-challenge></app-challenge>
-  <app-showcases></app-showcases>
+  <!--<app-challenge></app-challenge>
+  <app-showcases></app-showcases>-->
   <!--<div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
@@ -9,18 +9,44 @@
       </div>
     </div>
   </div>-->
-  <div class="container page-learn row">
-    <div class="col-md-8 page-learn">
-      <div class="learn-card">
-        <app-learn-card [workshopNid]="118" [front]=true></app-learn-card>
-      </div>
-    </div>
-    <div class="col-md-8 challenge-page-data">
-      <div class=" challenges-container">
-        <app-challenge-card [challengeNid]="882" [front]=true></app-challenge-card>
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of homeCards;let i = index" [ngClass]="{'col-md-6 col-lg-4': item.type == 'project' ,'col-md-4': item.type == 'maker' ,'col-md-4': item.type == 'showcase', 'col-md-8': item.type == 'challenge' ,'col-md-8': item.type == 'learning_sequence' }">
+        <div *ngIf="item.type == 'challenge'">
+          <div class="challenge-page-data">
+            <div class=" challenges-container">
+              <app-challenge-card [challengeNid]="item.id" [front]=true></app-challenge-card>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.type == 'showcase'">
+          <div  class="">
+            <div class="showcase-card-backlayer-home" *ngIf="item.id">
+              <div class="showcase-card-backlayer-home-2" *ngIf="item.id">
+                <app-showcase-gen-card [showcaseNid]="item.id"></app-showcase-gen-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.type == 'maker'"></div>
+        <div *ngIf="item.type == 'project'">
+          <app-project-card  [view]="view" [nid]="786" class=""></app-project-card>
+        </div>
+        <div *ngIf="item.type == 'learning_sequence'">
+          <div class="container page-learn">
+            <div class="page-learn">
+              <div class="learn-card">
+                <app-learn-card [workshopNid]="item.id" [front]=true></app-learn-card>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+
+
   <app-spotlight></app-spotlight>
 
   <section class="modal-section">
