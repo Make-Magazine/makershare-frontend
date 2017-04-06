@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
 import { Intrests} from '../../../../models/profile/intrests';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import {MessageModalComponent} from '../../../shared/message-modal/message-modal.component';
 
 @Component({
   selector: 'app-profile',
@@ -182,7 +183,7 @@ countProject;
       });
         this.userService.getIdFromUrl(this.userName).subscribe( data => {
            this.userIdProfile = data.uid;
-              console.log(this.userIdProfile);
+              //console.log(this.userIdProfile);
         this.getCountProject();
         }, err => {
   
@@ -222,8 +223,8 @@ countProject;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
     //  this.ProjectsCount = data[index++] as number;
-      console.log(this.userIdProfile)
-      console.log(this.ProjectsCount)
+      //console.log(this.userIdProfile)
+      //console.log(this.ProjectsCount)
       this.UpdateUser();
     });
   }
@@ -233,7 +234,7 @@ countProject;
   getCountProject() {
     this.viewService.getView('maker_count_all_projects/'+this.userIdProfile).subscribe(data => {
       this.ProjectsCount = data[0];
-      console.log(this.ProjectsCount)
+      //console.log(this.ProjectsCount)
     }, err => {
 
     });

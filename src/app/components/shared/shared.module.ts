@@ -25,6 +25,7 @@ import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-g
 import { MakerCardComponent } from './maker-card/maker-card.component';
 import { VideoDisplayComponent } from './video-display/video-display.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
+import { MessageModalComponent } from './message-modal/message-modal.component';
 
 
 
@@ -59,6 +60,7 @@ import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker
     MakerCardComponent,
     VideoDisplayComponent,
     MakerSearchCardComponent,
+    MessageModalComponent,
   ],
   exports: [
     CommentComponent,
