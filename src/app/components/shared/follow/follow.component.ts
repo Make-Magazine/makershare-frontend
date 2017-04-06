@@ -50,12 +50,13 @@ export class FollowComponent implements OnInit {
       } else {
         this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
           this.isFollowed = data[0];
+          console.log(this.isFollowed);
 
           /* initialize Button Follow*/
           if (this.isFollowed == false) {/* start if  */
-            this.ButtonFollow = 'Following';
-          } else {
             this.ButtonFollow = 'Follow';
+          } else {
+            this.ButtonFollow = 'Following';
           }/* end else if  */
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});

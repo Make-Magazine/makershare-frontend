@@ -52,7 +52,7 @@
                             <span class="follow-count">{{no_of_followers}}
                             <span *ngIf="no_of_followers>1">Followers</span>
                             <span *ngIf="no_of_followers==1">Follower</span>
-                            <span *ngIf="!no_of_followers">0 Follower</span>
+                            <span *ngIf="!no_of_followers">Follower</span>
                             </span>
                           </div>
                           <div class="challenge-card-status">
@@ -84,7 +84,6 @@
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}" (click)="changeChallangeTab('discussion',$event)">Disscusson</a></li>
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}" (click)="changeChallangeTab('followers',$event)">Followers  <span class="badge">{{no_of_followers}}
                    
-                            <span *ngIf="!no_of_followers">0 </span>
                             </span></a></li>
               </ul>
             </div>
