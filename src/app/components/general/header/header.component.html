@@ -22,7 +22,7 @@
                 <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
                 <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
                 <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
-                <button class="dropdown-item">Account Settings</button>
+                <button class="dropdown-item" [routerLink]="['/profile/settings']">Account Settings</button>
                 <button class="dropdown-item" (click)="auth.logout()">Logout</button>
               </div>
             </div>
@@ -71,7 +71,7 @@
           <li class="nav-item hidden-md-up">
             <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
           </li>
-          <li class="nav-item button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
+          <li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
         </ul>
       </div>
   </nav>

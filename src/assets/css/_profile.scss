@@ -153,13 +153,13 @@
                     left: -40px;
                 }
                 a {
-                    z-index: 1;
+                  z-index: 1;
                     top: -100px;
                     position: absolute;
-                    background-color: white;
+                    background-color: rgba(200,200,200,0.8);
                     text-align: center;
                     font-size: 15px;
-                    left: -30px;
+                    right: 47px;
                 }
                 .profile-type {
                     position: absolute;
@@ -203,6 +203,12 @@
             }
             .bio{
                  @include body-font-1 ();
+                 
+                  i{
+                         font-size: 24px;
+    line-height: .75em;
+    vertical-align: -15% !important;
+                  }
             }
             .post {}
             .awards {

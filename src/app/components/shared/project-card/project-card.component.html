@@ -8,7 +8,7 @@
       <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
       <div class="teaser">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
-        <p class="overlay-text" *ngIf="project.challenge_name">Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
+        <p class="overlay-text" *ngIf="project.challenge_name"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </div>
       <div class="list-unstyled icons">
         <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
