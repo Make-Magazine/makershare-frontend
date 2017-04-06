@@ -22,7 +22,6 @@
                 </div>
             </div>
             <div class="sort col-lg-4">
-
             </div>
           </div>
       </div>
@@ -46,13 +45,13 @@
                     <span>{{projectsCount}} Results</span>
                     <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | See all results</a></div>
                 </div>
-                <div class="row projects-result">
-                  <app-project-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4"></app-project-card>
+                <div class="row projects-result mt-5">
+                  <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4 mb-5"></app-project-search-card>
                 </div>
             </div>
   
             <!-- Challenges -->
-            <div *ngIf="challenges.length > 0" class="col-md-12 project-result result-section">
+            <div *ngIf="challenges.length > 0" class="col-md-12 challenge-result result-section">
                 
                 <div class="results-header d-flex justify-content-end">
                   <div class="result-title mr-auto"><span>Challenges</span></div>
@@ -60,13 +59,13 @@
                     <span>{{challengesCount}} Results</span>
                     <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | See all results</a></div>
                 </div>
-                <div class="row projects-result">
-                  <app-challenge-card *ngFor="let challenge of challenges"  [challengeNid]="challenge.is_nid" class="col-md-12"></app-challenge-card>
+                <div class="row projects-result mt-5">
+                  <app-challenge-search-card *ngFor="let challenge of challenges"  [challengeNid]="challenge.is_nid" class="col-md-6"></app-challenge-search-card>
                 </div>
             </div>
 
             <!-- Showcases -->
-            <div *ngIf="showcases.length > 0" class="col-md-12 project-result result-section">
+            <div *ngIf="showcases.length > 0" class="col-md-12 showcase-result result-section">
                 
                 <div class="results-header d-flex justify-content-end">
                   <div class="result-title mr-auto"><span>Showcases</span></div>
@@ -74,13 +73,13 @@
                     <span>{{showcasesCount}} Results</span>
                     <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | See all results</a></div>
                 </div>
-                <div class="row projects-result">
-                  <app-showcase-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-6 col-md-6 col-sm-12"></app-showcase-card>
+                <div class="row projects-result mt-5">
+                  <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-6 col-md-6 col-sm-12"></app-showcase-search-card>
                 </div>
             </div>
               
             <!-- Learning -->
-            <div *ngIf="workshops.length > 0" class="col-md-12 project-result result-section">
+            <div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
                 
                 <div class="results-header d-flex justify-content-end">
                   <div class="result-title mr-auto"><span>Workshops</span></div>
@@ -88,21 +87,21 @@
                     <span>{{workshopsCount}} Results</span>
                     <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | See all results</a></div>
                 </div>
-                <div class="row projects-result">
-                  <app-learn-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-12 col-md-12 col-sm-12"></app-learn-card>
+                <div class="row projects-result mt-5">
+                  <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-md-6"></app-learn-search-card>
                 </div>
             </div>
 
             <!-- Users -->
-            <div *ngIf="users.length > 0" class="col-md-12 project-result result-section">   
+            <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">   
                 <div class="results-header d-flex justify-content-end">
                   <div class="result-title mr-auto"><span>Makers</span></div>
                   <div class="view-all-result">
                     <span>{{usersCount}} Results</span>
                     <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | See all results</a></div>
                 </div>
-                <div class="row projects-result">
-                  <app-user-card *ngFor="let user of users" [uid]="user.is_uid"></app-user-card>
+                <div class="row projects-result mt-5">
+                  <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4 mb-5"></app-maker-search-card>
                 </div>
             </div>
 

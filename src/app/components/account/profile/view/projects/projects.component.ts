@@ -37,6 +37,7 @@ private activatedRoute: ActivatedRoute,
       });
         this.userService.getIdFromUrl(this.userName).subscribe( data => {
            this.uid = data.uid;
+           console.log(this.uid)
               this.getProjects();
                this.getCountProject();
         

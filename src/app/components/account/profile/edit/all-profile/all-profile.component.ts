@@ -100,11 +100,15 @@ export class AllProfileComponent implements OnInit {
   }
   saveBio() {
     this.profile.bio = this.info.bio;
+    console.log('ghaddadaaaaaaaaaaaaaaaa');
     this.saveProfile();
   }
 
   saveSocial() {
     this.profile.field_social_accounts = this.info.field_social_accounts;
+    console.log('ghadaaaaaaaaaaaaaaaaaaaaaaa');
+        console.log(this.info.field_social_accounts);
+
     this.saveProfile();
   }
   saveMarkerspaces() {

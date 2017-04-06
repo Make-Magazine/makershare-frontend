@@ -1,0 +1,35 @@
+<div class="showcase-card-backlayer">
+  <div class="showcase-card">
+    <!--End image-container -->
+    <div class="content-container">
+      <div class="card-container">
+        <div class="card">
+          <div class="showcase-type-badge">
+            <p>Showcase</p>
+          </div>
+          <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
+          <div class="card-description">
+            <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
+          </div>
+          <div class="showcase-card-footer mt-auto d-flex">
+            <div class="showcase-card-footer-2">
+              <div class="showcase-card-count d-felx">
+                <div class="views-count-div">
+                  <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
+                  <span class="views-count">1129</span>
+                </div>
+                <div class="projects-count-div">
+                  <span class="projects-count">{{showcase.number_of_project}}
+                           <span *ngIf="showcase.number_of_project>1">projects</span>
+                  <span *ngIf="showcase.number_of_project<=1">project</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End card-container -->
+    </div>
+  </div>
+</div>

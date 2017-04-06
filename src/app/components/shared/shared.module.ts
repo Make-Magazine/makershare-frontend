@@ -13,6 +13,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareButtonsModule } from "ng2-sharebuttons";
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+//import { Ng2DeviceDetector} from 'ng2-device-detector';
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
@@ -26,6 +28,10 @@ import { MakerCardComponent } from './maker-card/maker-card.component';
 import { VideoDisplayComponent } from './video-display/video-display.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
+import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
+import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
+import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
+import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 
 
 
@@ -36,6 +42,7 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
+//Ng2DeviceDetector,
   ],
   declarations: [
     CommentComponent,
@@ -48,6 +55,7 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
@@ -61,6 +69,10 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
     VideoDisplayComponent,
     MakerSearchCardComponent,
     MessageModalComponent,
+    ProjectSearchCardComponent,
+    ChallengeSearchCardComponent,
+    ShowcaeSearchCardComponent,
+    LearnSearchCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -71,6 +83,7 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
     UserCardComponent,
     ProjectCardComponent,
     SharedButtonsComponent,
+    FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
     ProjectStoryComponent,
@@ -84,17 +97,23 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
 
     MakerCardComponent,
     MakerSearchCardComponent,
+    ProjectSearchCardComponent,
+    ChallengeSearchCardComponent,
+    ShowcaeSearchCardComponent,
+    LearnSearchCardComponent,
   ]
+  
 })
 export class SharedModule { }
-export { CommentComponent };
-export { FollowComponent };
-export { BookmarkComponent };
-export { LikeComponent };
-export { ForkComponent };
-export { UserCardComponent };
-export { ProjectCardComponent };
-export { SharedButtonsComponent };
+export {CommentComponent};
+export {FollowComponent};
+export {BookmarkComponent};
+export {LikeComponent};
+export {ForkComponent};
+export {UserCardComponent};
+export {ProjectCardComponent};
+export {SharedButtonsComponent};
+export {FeedbackComponent};
 export { ChallengeCardComponent };
 export { ProjectHeaderComponent };
 export { ProjectStoryComponent };
@@ -102,8 +121,14 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
+
 export { LearnUserCardComponent };
+
 export { ShowcaseGeneralCardComponent };
 export { VideoDisplayComponent };
 export { MakerCardComponent };
 export { MakerSearchCardComponent };
+export { ProjectSearchCardComponent };
+export { ChallengeSearchCardComponent };
+export { ShowcaeSearchCardComponent };
+export { LearnSearchCardComponent };

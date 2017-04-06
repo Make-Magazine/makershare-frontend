@@ -12,6 +12,8 @@ import { FileEntity, NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
+import { LoaderService } from '../../../shared/loader/loader.service';
+
 import { value } from '../../../../models/challenge/comment';
 import { Intrests} from '../../../../models/profile/intrests';
 import {Router, ActivatedRoute, Params} from '@angular/router';
@@ -24,6 +26,7 @@ import {MessageModalComponent} from '../../../shared/message-modal/message-modal
 export class ProfileComponent implements OnInit {
 userIdProfile;
 countProject;
+idProfile;
  ckEditorConfig: {} = {
     "toolbarGroups": [
           { "name": "document", "groups": [ "mode", "document", "doctools" ] },
@@ -145,6 +148,8 @@ countProject;
     private fileService: FileService,
     private modalService: NgbModal,
     private fb:FormBuilder,
+        private loaderService: LoaderService,
+
     private route:ActivatedRoute, private router:Router
   ) {
 
@@ -174,17 +179,21 @@ countProject;
   }
   
   ngOnInit() {
-    
+        //this.loaderService.display(true);
+
        this.userService.getStatus().subscribe(data => {
       if(data.user.uid > 0){
+        this.idProfile = data.user.uid;
         // logged in 
   this.route.params.subscribe((params: Params) => {
          this.userName = params['user_name'];
       });
         this.userService.getIdFromUrl(this.userName).subscribe( data => {
            this.userIdProfile = data.uid;
-              //console.log(this.userIdProfile);
+
         this.getCountProject();
+                        //   this.loaderService.display(false);
+
         }, err => {
   
         });
@@ -206,7 +215,7 @@ countProject;
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
      this.allIntersets=allIntersets;
-     console.log(this.profile)
+  //   console.log(this.profile)
     }, err => {
       // console.log("error");
       // console.log(err);
@@ -223,8 +232,6 @@ countProject;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
     //  this.ProjectsCount = data[index++] as number;
-      //console.log(this.userIdProfile)
-      //console.log(this.ProjectsCount)
       this.UpdateUser();
     });
   }

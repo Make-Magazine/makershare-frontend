@@ -293,18 +293,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // .region-content {display: none;}
 .search-overlay {
 	display: none;
@@ -345,4 +333,10 @@
 .stylish-input-group button{
     border:0;
     background:transparent;
+}
+
+
+/* new style */
+.page-search-content {
+	background-color: $main-bg;
 }
