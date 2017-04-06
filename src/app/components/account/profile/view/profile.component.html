@@ -231,11 +231,11 @@
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
-						<!--<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>-->
+						<a class="btn btn-main btn-sharp" [routerLink]="['/profile/editportfolio']">Edit Portfolio</a>
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<profile-projects></profile-projects>
+									<profile-projects [uid]="uid"></profile-projects>
 								</div>
 							</div>
 							<!-- End project grid -->
