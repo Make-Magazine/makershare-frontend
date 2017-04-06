@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { ViewService } from '../../../../../d7services/view/view.service';
-import { RouterModule, Router } from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { UserService } from '../../../../../d7services/user/user.service';
 
 @Component({
   selector: 'profile-projects',
@@ -11,10 +12,14 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private router: Router,
+        private userService: UserService,
+private activatedRoute: ActivatedRoute,
     private viewService: ViewService
   ) { }
   view = 'grid';
   pages: number = 0;
+  userName;
+  @Input() uid;
   page_arg;
   countProject = 0;
   hideloadmoreproject = false;
@@ -22,8 +27,26 @@ export class ProjectsComponent implements OnInit {
   userPic = false;
   profile_projects = [];
   ngOnInit() {
-    this.getProjects();
-    this.getCountProject();
+          // check if user is logged in or not
+  //  this.loaderService.display(true);
+    this.userService.getStatus().subscribe(data => {
+      if(data.user.uid > 0){
+        // logged in 
+  this.activatedRoute.params.subscribe((params: Params) => {
+         this.userName = params['user_name'];
+      });
+        this.userService.getIdFromUrl(this.userName).subscribe( data => {
+           this.uid = data.uid;
+              this.getProjects();
+               this.getCountProject();
+        
+        }, err => {
+  
+        });
+      }
+    }, err => {
+    });
+ 
   }
   addProject(event: Event) {
     event.preventDefault();
@@ -31,8 +54,8 @@ export class ProjectsComponent implements OnInit {
   }
   getProjects() {
     var args = [
-      ['uid', localStorage.getItem('user_id')],
-      ['uid1', localStorage.getItem('user_name')],
+      ['uid', this.uid],
+      
       ['page', this.pages],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
@@ -45,7 +68,7 @@ export class ProjectsComponent implements OnInit {
   }
   /* function to get count projects */
   getCountProject() {
-    this.viewService.getView('maker_count_all_projects/'+  [localStorage.getItem('user_id')]).subscribe(data => {
+    this.viewService.getView('maker_count_all_projects/'+this.uid).subscribe(data => {
       this.countProject = data[0];
     }, err => {
 

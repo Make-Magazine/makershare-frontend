@@ -139,7 +139,7 @@
         }
         i {
             width: 25px;
-            color: $main-grey;
+            
         }
         .profile-group {
             .profile-pic {
@@ -153,13 +153,13 @@
                     left: -40px;
                 }
                 a {
-                    z-index: 1;
+                  z-index: 1;
                     top: -100px;
                     position: absolute;
-                    background-color: white;
+                    background-color: rgba(200,200,200,0.8);
                     text-align: center;
                     font-size: 15px;
-                    left: -30px;
+                    right: 47px;
                 }
                 .profile-type {
                     position: absolute;
@@ -182,19 +182,33 @@
             margin-top: 16px;
             font-size: 18px;
             .profile-fullname {
-                text-align: left;
-                font-size: 24px;
-                font-weight: bold;
-                font-family: -webkit-body;
+                @include card-header-font-md ();
+
             }
             .profile-nickname {
-                text-align: left;
-                font-size: 15px;
-                font-weight: bold;
-                font-family: -webkit-body;
+               @include desc-font-1 ();
             }
             .location {
+                @include card-header-font-md ();
+
                 color: $title-color;
+            }
+            .profile-describe-yourself{
+             @include desc-font-1 ();
+
+            }
+            .badges{
+             @include desc-font-2 ();
+             color: $text-color-1;    
+            }
+            .bio{
+                 @include body-font-1 ();
+                 
+                  i{
+                         font-size: 24px;
+    line-height: .75em;
+    vertical-align: -15% !important;
+                  }
             }
             .post {}
             .awards {
@@ -260,6 +274,7 @@
                     display: none;
                     margin-top: 5px;
                 }
+               
             }
             .how {
                 p {
@@ -648,6 +663,10 @@
 
 .profile-cover,
 .profile-sidebar {
+    p{
+    color: $text-color-1;
+
+    }
     a.edit {
         position: absolute;
         width: auto !important;
@@ -690,8 +709,10 @@
     }
     .icons-side-project {
         .project-icon {
+            height: 45px;
             img {
-                width: 35px;
+                width: auto;
+                height: 40px;
             }
         }
     }
@@ -757,8 +778,7 @@
         padding: 2px;
         color: $light-grey;
         ul li {
-            float: left;
-            font-size: 15px;
+            @include desc-font-2();
             img {
                 margin-right: 6px;
                 &.project-likes {
@@ -1077,3 +1097,67 @@
         text-align: center;
     }
 }
+
+.maker-card.project {
+	.card-block {
+		// height: 225px;
+        p {
+            margin-bottom: 0;
+        }
+        .maker-name {
+            @include card-header-font-sm ()
+        }
+        .maker-nickname {
+            @include desc-font-1 ()
+        }
+        .maker-city {
+            @include desc-font-1 ()
+;
+            color:$city-color
+        }
+        .maker-descripe {
+            @include desc-font-5();
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        .card-stats {
+            ul {
+                margin-bottom: 0;
+            }
+        }
+        .card-type {
+            right: -22px;
+        }
+	}
+}
+    .social-links {
+        a{
+            display: inline-block;
+            padding: 0.5em 0em;
+            color:$text-color-1;
+            i.fa-inverse:before{
+                padding-left: 10px;
+            }
+         }
+       }
+        .mywebsite{
+                    color: $text-color-6;
+                    text-decoration: none !important; 
+                }
+         .edit-icon{
+             float: right;
+             color: $text-color-6;
+         }
+         .started_making{
+             @include body-font-1 ();
+         }
+         .global-title{
+              @include card-header-font-xs ();
+                color: $text-color-1;
+              
+         }
+         .links-site{
+             padding-bottom: -2px;
+         }
+        
+     

@@ -11,29 +11,25 @@
             <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
           </li>
         </ul>
-        <ul class="list-unstyled login-block" *ngIf="!auth.authenticated()">
-          <li class="button-container-main-1"><a class="btn btn-main" *ngIf="!auth.authenticated()" (click)="auth.login()">Join / Login</a></li>
-        </ul>
-        <ul class="list-unstyled logged-in" *ngIf="auth.authenticated()">
-          <!-- <li><a href="" class="btn btn-white btn-sharp">Beta Feedback</a></li> -->
+        <ul class="list-unstyled login-block">
+          <li *ngIf="!auth.authenticated()"><a class="" (click)="auth.login()"><img src="http://placehold.it/70x70" alt=""></a></li>
           <li class="min-user-img" *ngIf="auth.authenticated()">
             <div ngbDropdown class="d-inline-block account-controls dropdown">
               <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
               <img src="{{user_photo}}" alt="" class="img-responsive">
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <button class="dropdown-item" [routerLink]="['/profile']">Profile</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
                 <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
-                <button class="dropdown-item" [routerLink]="['/profile/collection']">Bookmarks</button>
-                <button class="dropdown-item">Account Settings</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio/collection/bookmark']">Bookmarks</button>
+                <button class="dropdown-item" [routerLink]="['/portfolio/settings/notifications']">Account Settings</button>
                 <button class="dropdown-item" (click)="auth.logout()">Logout</button>
               </div>
             </div>
         </li>
-
+<li>
         <app-feedback></app-feedback>
-        <li>
-        </li>
+  </li>     
         <!--<li>
 
           <div ngbDropdown class="d-inline-block account-controls dropdown">
@@ -46,46 +42,11 @@
             </div>
           </div>
         </li>-->
-          <li class="button-container-main-1"><a class="btn btn-main btn-sharp" *ngIf="auth.authenticated()" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
-        </ul>
-
-      </div>
-      <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
-        <ul class="navbar-nav justify-content-md-between">
-          <li class="nav-item hidden-md-up">
-            <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['explore']">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['challenges']">Missions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['learn']">Learning</a>
-          </li>
-          <li class="nav-item hidden-md-up maker-menu-sm">
-            <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
-            <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
-            <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
-            <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
-            <a [routerLink]="['other-sites']" class="dropdown-item greyed">Other Sites</a>
-            <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
-            <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
-            <a [routerLink]="['makers-intel']" class="dropdown-item">Makers.Intel.com</a>
-            <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
-            <a [routerLink]="['intel-innovation-programs']" class="dropdown-item">Intel Innovation Programs</a>
-          </li>
-          <li class="nav-item hidden-md-up">
-            <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
-          </li>
+          
           <li class="nav-item dropdown  hidden-sm-down">
             <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
               aria-expanded="false">
-              More <i class="fa fa-lg fa-angle-down"></i>
+              <img src="./assets/images/icons/hamburger.png" alt="">
               </a>
               <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
                 <div class="intel-sites ">
@@ -104,6 +65,29 @@
                 </div>
               </div>
           </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
+        <ul class="navbar-nav justify-content-md-between">
+          <li class="nav-item hidden-md-up">
+            <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['explore']">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['challenges']">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['learn']">Learning</a>
+          </li>
+          <li class="nav-item hidden-md-up">
+            <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
+          </li>
+          <li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
         </ul>
       </div>
   </nav>

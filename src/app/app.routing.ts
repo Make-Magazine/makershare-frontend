@@ -21,7 +21,7 @@ const APP_ROUTES: Routes = [
     { path: 'explore', loadChildren: 'app/components/explore/explore.module#ExploreModule' },
     { path: 'learn', loadChildren: 'app/components/learn/learn.module#LearnModule' },
     { path: 'challenges', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
-    { path: 'profile', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
+    { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},    
     // static pages

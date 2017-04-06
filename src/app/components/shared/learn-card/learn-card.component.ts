@@ -9,6 +9,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 export class LearnCardComponent implements OnInit {
 learn=[];
 @Input() workshopNid; 
+@Input() front;
  constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,

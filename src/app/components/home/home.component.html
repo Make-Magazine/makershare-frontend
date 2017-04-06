@@ -2,6 +2,25 @@
   <app-onboarding></app-onboarding>
   <app-challenge></app-challenge>
   <app-showcases></app-showcases>
+  <!--<div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <app-maker-card [uid]="1"></app-maker-card>
+      </div>
+    </div>
+  </div>-->
+  <div class="container page-learn row">
+    <div class="col-md-8 page-learn">
+      <div class="learn-card">
+        <app-learn-card [workshopNid]="118" [front]=true></app-learn-card>
+      </div>
+    </div>
+    <div class="col-md-8 challenge-page-data">
+      <div class=" challenges-container">
+        <app-challenge-card [challengeNid]="882" [front]=true></app-challenge-card>
+      </div>
+    </div>
+  </div>
   <app-spotlight></app-spotlight>
 
   <section class="modal-section">
@@ -23,5 +42,5 @@
       </div>
     </div>
   </section>
-  
+
 </div>

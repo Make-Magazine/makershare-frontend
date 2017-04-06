@@ -7,7 +7,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Challenge Name</th>
+       <th></th>
+        <th>Challenge Name</th>
+        <th>Challenge Image</th>
+        <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +19,9 @@
         <input type="checkbox" value="{{challenge.nid}}"  [(ngModel)]="challenge.state"  (change)="valueChanged(challenge.nid,$event)">
       </div>
       <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
-          <div class="delete">
-            <a  class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-          </div>
+       <td *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive">  </td>             
+      <td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>
+
     </tr>
   </tbody>
 </table>
