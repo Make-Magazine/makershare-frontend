@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { CollectionModule } from '../account/collection/collection.module';
-
+import { AccountSettingsModule} from '../account/account-settings/account-settings.module'
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ProfileModule,
-    CollectionModule
+    CollectionModule,
+    AccountSettingsModule,
   ],
   declarations: [],
   exports: []
