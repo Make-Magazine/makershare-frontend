@@ -45,7 +45,7 @@
 	//18pt
 }
 @mixin body-font-2(){
-	@include font-setting('Messina Sans Regular', 1.5em ,400 ,none , 110%, $text-color-2 );
+	@include font-setting('Messina Sans Regular', 1.313em ,400 ,none , 110%, $text-color-2 );
 	//16pt
 }
 
