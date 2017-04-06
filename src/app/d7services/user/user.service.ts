@@ -97,11 +97,19 @@ export class UserService {
     return this.mainService.post(globals.endpoint + '/auth0_service/logout', null).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
-  geIdFromUrl(url: string): Observable<any>{
+  getIdFromUrl(url: string): Observable<any>{
     let body = {
       url: url,
     }
     return this.mainService.post(globals.endpoint + '/maker_profile_api/get_id', body).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+
+  getUrlFromId(uid: number): Observable<any>{
+    let body = {
+      uid: uid,
+    }
+    return this.mainService.post(globals.endpoint + '/maker_profile_api/get_url', body).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
 }

@@ -13,6 +13,7 @@ import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { BaseComponent } from './base/base.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
   declarations: [
     AllProfileComponent,
     ProfileComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    BaseComponent
   ]
 })
 export class ProfileModule { }

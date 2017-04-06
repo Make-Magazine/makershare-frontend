@@ -14,6 +14,7 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { value } from '../../../../models/challenge/comment';
 import { Intrests} from '../../../../models/profile/intrests';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -104,6 +105,7 @@ export class ProfileComponent implements OnInit {
   ProfilecropperSettings: CropperSettings;
   allIntersets:Array<any>;
   uid:number;
+  userName:string;
   customDescription: string;
   badges:Array<any>;
   Loading:boolean;
@@ -140,6 +142,7 @@ export class ProfileComponent implements OnInit {
     private fileService: FileService,
     private modalService: NgbModal,
     private fb:FormBuilder,
+    private route:ActivatedRoute, private router:Router
   ) {
 
     
@@ -168,6 +171,19 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit() {
+    
+    //console.log(this.route.snapshot.params['user_name']);
+    this.userName = this.route.snapshot.params['user_name'];
+    /*check if navigating to profile with username paramter => get uid from name 
+      else get uid from local storage
+    */
+    if(typeof this.userName != "undefined") {
+    this.userService.getIdFromUrl(this.userName).subscribe(res => {
+      this.uid = res.uid;
+    });
+  } else {
+    this.uid = +localStorage.getItem('user_id');
+    }
 
     this.profileService.getAllInterests().subscribe(allIntersets => {
      this.allIntersets=allIntersets;
@@ -178,7 +194,6 @@ export class ProfileComponent implements OnInit {
     });
 
     this.Loading = true;
-    this.uid = +localStorage.getItem('user_id');
     var tasks = [];
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     // tasks.push(this.profileService.getAllMarkers());
@@ -287,6 +302,7 @@ export class ProfileComponent implements OnInit {
   }
 
   UpdateUser(){
+    if(typeof this.uid != "undefined") {
     this.userService.getUser(this.uid).subscribe(res => {
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
@@ -309,6 +325,9 @@ export class ProfileComponent implements OnInit {
       })
       this.Loading = false;
     });
+    } else {
+      this.router.navigate(['**']);
+    }
   }
   
   prefer(event : string){
