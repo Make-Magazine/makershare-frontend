@@ -10,9 +10,9 @@
           <p>Mission</p>
         </div>
         <div class="card-partership">
-          <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsored_by}}</p>
+          <p *ngIf="challenge.sponsored_by">Sponsored by {{challenge?.sponsored_by}}</p>
         </div>
-        <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge.title}}</h3>
+        <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
         <div class="card-description">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
