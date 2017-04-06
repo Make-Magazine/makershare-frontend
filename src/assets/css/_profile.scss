@@ -1102,13 +1102,14 @@
             @include desc-font-1 ()
         }
         .maker-city {
-            @include card-header-font-md ()
+            @include desc-font-1 ()
 ;
             color:$city-color
         }
         .maker-descripe {
             @include desc-font-5();
             margin-top: 5px;
+            font-weight: bold;
         }
         .card-stats {
             ul {
