@@ -1330,10 +1330,10 @@ footer {
         z-index: 1;
         top: -100px;
         position: absolute;
-        background-color: white;
+        background-color: rgba(200, 200, 200, 0.8);
         text-align: center;
         font-size: 15px;
-        left: -30px; }
+        right: 47px; }
       .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
         position: absolute;
         bottom: 10px;
@@ -1394,6 +1394,10 @@ footer {
         text-transform: none !important;
         line-height: 110% !important;
         color: #828282; }
+        .profile-sidebar .profile-container .profile-info .bio i {
+          font-size: 24px;
+          line-height: .75em;
+          vertical-align: -15% !important; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }

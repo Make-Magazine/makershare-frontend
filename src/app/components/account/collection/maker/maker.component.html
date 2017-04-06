@@ -7,7 +7,10 @@
   <table class="table">
     <thead>
       <tr>
+        <th></th>
         <th>User Name</th>
+        <th>User Image</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -15,10 +18,12 @@
         <div class="select" *ngIf="user">
           <input type="checkbox" value="{{user.uid}}" [(ngModel)]="user.state" (change)="valueChanged(user.uid,$event)">
         </div>
-        <td *ngIf="user">{{user.user_name}}</td>
-        <div class="delete">
-          <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-        </div>
+      <td *ngIf="user">{{user.user_name}}</td>
+      <td *ngIf="user"><img class="d-flex mr-3" src="{{user.image}}" alt="" class="img-responsive">  </td>             
+      <td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>
+
       </tr>
     </tbody>
   </table>
+</div>
+
