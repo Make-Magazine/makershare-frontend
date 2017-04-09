@@ -23,8 +23,6 @@ import {MessageModalComponent} from '../../../shared/message-modal/message-modal
 })
 export class ProfileComponent implements OnInit {
   idProfile;
-  user;
-  hideMsgs = false;
  ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
@@ -209,7 +207,8 @@ export class ProfileComponent implements OnInit {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-      this.ProjectsCount = data[index++] as number;
+     this.ProjectsCount = data[index++] as number;
+
       this.UpdateUser();
     });
   }
@@ -281,6 +280,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.maker_interests = res.maker_interests;
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      if(this.idProfile==this.uid)
       localStorage.setItem('user_photo', this.profile.user_photo);
       this.formGroup = this.fb.group({
         describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
@@ -289,9 +289,6 @@ export class ProfileComponent implements OnInit {
       this.buildFormSocial();
       this.Loading = false;
     });
-  }
-  prefer(event: string) {
-    this.ProfileInfo.field_social_accounts.field_preferred = event;
   }
   onValueChanged(data?: any) {
     if (!this.FormGroupSocial) { return; }

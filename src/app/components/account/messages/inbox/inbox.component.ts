@@ -10,7 +10,7 @@ import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 
 @Component({

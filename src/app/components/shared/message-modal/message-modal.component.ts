@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Message } from '../../../d7services/pm/message';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { PmService } from '../../../d7services/pm/pm.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
