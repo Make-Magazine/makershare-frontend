@@ -1321,14 +1321,14 @@ footer {
     .profile-sidebar .profile-container i {
       width: 25px; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
-      position: relative;
-      margin-bottom: -100px; }
+      position: relative; }
       .profile-sidebar .profile-container .profile-group .profile-pic img {
         height: auto;
         width: 100%;
         position: relative;
         top: -110px;
-        left: -40px; }
+        left: -40px;
+        margin-bottom: -100px; }
       .profile-sidebar .profile-container .profile-group .profile-pic a {
         z-index: 1;
         top: -100px;
@@ -1539,7 +1539,7 @@ footer {
 .switch {
   color: #BDBDBD;
   cursor: pointer;
-  text-align: left;
+  text-align: right;
   margin: 5px 0; }
   .switch p {
     margin-bottom: 0px;
@@ -1899,7 +1899,7 @@ footer {
       display: block; }
   .profile-page .profile-message {
     padding: 0px;
-    color: black !important;
+    color: #00AEEF !important;
     text-transform: uppercase; }
     .profile-page .profile-message img {
       width: 40px;
