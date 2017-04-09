@@ -17,14 +17,12 @@ import { value } from '../../../../models/challenge/comment';
 import { Intrests } from '../../../../models/profile/intrests';
 import { ActivatedRoute, Router,Params } from '@angular/router';
 import {MessageModalComponent} from '../../../shared/message-modal/message-modal.component';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
   idProfile;
-
  ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
@@ -46,10 +44,7 @@ export class ProfileComponent implements OnInit {
       "maxCharCount": '550',
     },
   };
-
   regexp = new RegExp('/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/');
-
-
   formErrors = {
     field_website_or_blog: '',
     field_additional_site: '',
@@ -63,7 +58,6 @@ export class ProfileComponent implements OnInit {
     field_instructables: '',
     field_hackday: '',
   };
-
   validationMessages = {
     'field_website_or_blog': {
       'pattern': 'invalid Website URL'
@@ -120,7 +114,6 @@ export class ProfileComponent implements OnInit {
     this.FormGroupSocial.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
   }
-
   ProfilePicData: any = {};
   FileName: string = '';
   ProjectsCount: number;
@@ -155,7 +148,6 @@ export class ProfileComponent implements OnInit {
     },
     started_making: ''
   };
-
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -177,13 +169,13 @@ export class ProfileComponent implements OnInit {
     this.ProfilecropperSettings.minHeight = 330;
     this.ProfilecropperSettings.noFileInput = true;
   }
-
   ngOnInit() {
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
       if(data.user.uid > 0){
         this.idProfile = data.user.uid;
+
       }
     });
     /*check if navigating to profile with username paramter => get uid from name 
@@ -200,8 +192,8 @@ export class ProfileComponent implements OnInit {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
     }
+    
   }
-
   GetUserDetails(){
     if (!this.uid) {
       this.router.navigate(['**']);
@@ -215,19 +207,17 @@ export class ProfileComponent implements OnInit {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-    //  this.ProjectsCount = data[index++] as number;
+     this.ProjectsCount = data[index++] as number;
+
       this.UpdateUser();
     });
   }
-
   OpenModal(Template, CSSClass: string) {
     this.modalService.open(Template, { windowClass: CSSClass });
   }
-
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper)
   }
-
   fileChangeListener(file: File, cropper) {
     if (!file) return;
     this.ProfilePicData = {};
@@ -240,7 +230,6 @@ export class ProfileComponent implements OnInit {
     };
     myReader.readAsDataURL(file);
   }
-
   SaveImage(closebtn: HTMLButtonElement, DataObject, ImageType) {
     closebtn.click();
     let image: FileEntity = { file: NodeHelper.RemoveFileTypeFromBase64(DataObject.image), filename: this.FileName };
@@ -252,14 +241,11 @@ export class ProfileComponent implements OnInit {
       this.SaveUser(user);
     });
   }
-
   SaveInfo(closebtn: HTMLButtonElement) {
-
     if (this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
-
     this.onValueChanged();
     let flag = true;
     for (let feild in this.formErrors) {
@@ -272,9 +258,7 @@ export class ProfileComponent implements OnInit {
       this.SaveUser(this.ProfileInfo);
       closebtn.click();
     }
-
   }
-
   SaveUser(user: UserProfile) {
     this.Loading = true;
     user.uid = this.uid;
@@ -282,9 +266,8 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-
   UpdateUser() {
-    console.log("1w")
+    //console.log("1w")
     this.userService.getUser(this.uid).subscribe(res => {
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
@@ -297,6 +280,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.maker_interests = res.maker_interests;
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      if(this.idProfile==this.uid)
       localStorage.setItem('user_photo', this.profile.user_photo);
       this.formGroup = this.fb.group({
         describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
@@ -306,11 +290,6 @@ export class ProfileComponent implements OnInit {
       this.Loading = false;
     });
   }
-
-  prefer(event: string) {
-    this.ProfileInfo.field_social_accounts.field_preferred = event;
-  }
-
   onValueChanged(data?: any) {
     if (!this.FormGroupSocial) { return; }
     const form = this.FormGroupSocial;
@@ -327,7 +306,5 @@ export class ProfileComponent implements OnInit {
         }
       }
     }
-
   }
-
 }

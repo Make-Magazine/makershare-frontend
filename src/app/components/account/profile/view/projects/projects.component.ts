@@ -61,6 +61,7 @@ private activatedRoute: ActivatedRoute,
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
+      console.log(this.profile_projects)
        this.loadMoreVisibilty();
 
     }, err => {

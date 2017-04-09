@@ -3,7 +3,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../d7services/user/user.service';
 import { MainService } from '../d7services/main/main.service';
 import { Observable } from 'rxjs/Observable';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as globals from '../d7services/globals';
 
