@@ -341,12 +341,10 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
-			<input type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" >
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value">
 			<small *ngIf="searchFailed" class="text-danger">
 				Country not found.
 			</small>
-			<input [(ngModel)]="ProfileInfo.address.country" type="text" class="form-control" id="edit-country">
-			<input [(ngModel)]="ProfileInfo.address.city" type="text" class="form-control" id="edit-city">
 		</div>
 		<div class="clearfix"></div>
 	</div>

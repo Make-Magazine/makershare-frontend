@@ -149,7 +149,6 @@ export class ProfileComponent implements OnInit {
   profile: UserProfile;
   ProfileInfo: UserProfile = {
     address: {
-      city: '',
       country: '',
     },
     nickname: '',
