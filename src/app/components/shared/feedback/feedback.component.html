@@ -33,6 +33,10 @@
       <div>
         <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
       </div>
+      <small  class="form-text text-muted">enter url in the form (http/https/ftp)://www.google.com</small>
+      <div *ngIf="formErrors.field_bug_not_in_page_" class="alert alert-danger error-msg">
+        {{formErrors.field_bug_not_in_page_}}
+      </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1185">
       <label for="exampleTextarea">You can also describe how you got to the bug in the text field below.</label>
