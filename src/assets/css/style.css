@@ -178,10 +178,10 @@ a:not([href]):not([tabindex]).btn-border {
   color: #333333;
   border: 1px solid #333333;
   font-family: "Messina Sans Regular" !important;
-  font-size: 1.16em !important;
+  font-size: 1.1em !important;
   font-weight: 400 !important;
   text-transform: none !important;
-  line-height: 110% !important;
+  line-height: 115% !important;
   color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
@@ -361,7 +361,7 @@ a:not([href]):not([tabindex]) {
     font-size: 3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
-    line-height: 100% !important;
+    line-height: 105% !important;
     color: #828282;
     color: #4F4F4F;
     min-height: 38px; }
@@ -1032,10 +1032,10 @@ footer {
     max-width: 700px; }
     .banner #homeBanner h2 {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       color: #ED1C24;
       margin-bottom: 20px; }
@@ -1064,10 +1064,10 @@ footer {
   padding: 40px 0; }
   .what-is-ms h2 {
     font-family: "Messina Sans Regular" !important;
-    font-size: 1.16em !important;
+    font-size: 1.1em !important;
     font-weight: 400 !important;
     text-transform: none !important;
-    line-height: 110% !important;
+    line-height: 115% !important;
     color: #828282;
     color: #ED1C24;
     margin-bottom: 20px; }
@@ -1111,10 +1111,10 @@ footer {
         padding: 15px 15px 40px; } }
     .info-w-parallax .info-card h2 {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       color: #ED1C24;
       margin-bottom: 20px;
@@ -1786,14 +1786,15 @@ footer {
   width: 95%;
   border-radius: 0;
   padding: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  top: 15px; }
 .project .image-top {
   width: 100%;
   height: auto;
   overflow: hidden;
   position: relative;
   top: -15px;
-  left: -24px; }
+  left: -20px; }
   .project .image-top .card-img-top {
     border-radius: 0; }
   .project .image-top img {
@@ -1881,6 +1882,117 @@ footer {
         width: 20px; }
     .project .card-stats ul li span {
       margin: 0px; }
+
+.project-home {
+  height: 375px; }
+  .project-home.card {
+    border-radius: 0;
+    padding: 0;
+    margin: 0 auto;
+    top: 15px; }
+  .project-home .image-top {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    top: -15px;
+    left: -20px; }
+    .project-home .image-top .card-img-top {
+      border-radius: 0; }
+    .project-home .image-top img {
+      height: auto;
+      width: 100%; }
+  .project-home .card-block {
+    padding: 0 5px;
+    margin-top: -5px; }
+    .project-home .card-block .content-side {
+      padding-left: 5px;
+      width: 80%; }
+    .project-home .card-block .profiel-pic-container img {
+      width: 90px; }
+  .project-home .icons-side-project .project-icon {
+    height: 30px; }
+    .project-home .icons-side-project .project-icon img {
+      width: auto;
+      height: 30px; }
+  .project-home .icons {
+    position: absolute;
+    color: white;
+    top: -12px;
+    left: -10px;
+    font-size: 13px;
+    padding: 20px; }
+    .project-home .icons span {
+      margin: 2px;
+      font-size: 13px; }
+      .project-home .icons span i {
+        margin-right: 4px;
+        font-size: 17px; }
+  .project-home .card-title {
+    font-family: "Messina Modern Bold" !important;
+    font-size: 1.5em !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    color: #4F4F4F;
+    height: auto;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .project-home .maker-name {
+    font-family: "Messina Sans SemiBold" !important;
+    font-size: 0.9em !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    color: #00AEEF; }
+  .project-home .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0 5px;
+    color: #333333; }
+    .project-home .card-text.project-text-grid {
+      display: none; }
+  .project-home .categories {
+    display: none; }
+    .project-home .categories span {
+      margin-left: 3px;
+      color: #BDBDBD; }
+  .project-home .card-role p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 15px;
+    color: #BDBDBD; }
+  .project-home .card-stats {
+    padding: 2px;
+    color: #BDBDBD; }
+    .project-home .card-stats ul li {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282; }
+      .project-home .card-stats ul li img {
+        margin-right: 6px; }
+        .project-home .card-stats ul li img.project-likes {
+          width: 12px; }
+        .project-home .card-stats ul li img.project-views {
+          width: 20px; }
+      .project-home .card-stats ul li span {
+        margin: 0px; }
 
 .profile-page {
   background-color: #F2F2F2;
@@ -2569,7 +2681,7 @@ footer {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -2661,7 +2773,7 @@ footer {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3332,7 +3444,7 @@ header.showcase-project .next {
         font-size: 3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
-        line-height: 100% !important;
+        line-height: 105% !important;
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
@@ -3344,10 +3456,10 @@ header.showcase-project .next {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
-        font-size: 1.16em !important;
+        font-size: 1.1em !important;
         font-weight: 400 !important;
         text-transform: none !important;
-        line-height: 110% !important;
+        line-height: 115% !important;
         color: #828282;
         margin-bottom: 10px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
@@ -3461,10 +3573,10 @@ header.showcase-project .next {
     position: relative; }
   .learn-card .card-container .card-partership {
     font-family: "Messina Sans Regular" !important;
-    font-size: 1.16em !important;
+    font-size: 1.1em !important;
     font-weight: 400 !important;
     text-transform: none !important;
-    line-height: 110% !important;
+    line-height: 115% !important;
     color: #828282;
     text-transform: none;
     font-size: 14px;
@@ -3517,10 +3629,10 @@ header.showcase-project .next {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular" !important;
-    font-size: 1.16em !important;
+    font-size: 1.1em !important;
     font-weight: 400 !important;
     text-transform: none !important;
-    line-height: 110% !important;
+    line-height: 115% !important;
     color: #828282;
     width: 85%;
     margin: auto; }
@@ -3563,7 +3675,7 @@ header.showcase-project .next {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -3585,16 +3697,15 @@ header.showcase-project .next {
       font-weight: bold; }
     .page-learn .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 116px;
       color: #4F4F4F; }
     .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
@@ -3648,7 +3759,7 @@ header.showcase-project .next {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3700,47 +3811,50 @@ header.showcase-project .next {
     .page-search-content .learn-card .card-container .workshop-count {
       color: #828282; }
 
-.front .page-learn {
-  background-color: transparent; }
-  .front .page-learn .learn-card .learn-item {
+.front .learn-card {
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #DCDCDC; }
+  .front .learn-card .learn-item {
     padding: 10px; }
-    .front .page-learn .learn-card .learn-item img {
+    .front .learn-card .learn-item img {
       width: 250px; }
-    .front .page-learn .learn-card .learn-item .card-partership {
+    .front .learn-card .learn-item .card-partership {
       color: #ED1C24; }
-  .front .page-learn .learn-card .image-container {
+  .front .learn-card .image-container {
     overflow: hidden;
     position: relative;
     padding: 0px 15px; }
-    .front .page-learn .learn-card .image-container img {
-      max-width: 100%;
-      height: auto; }
-  .front .page-learn .learn-card .card-container {
+    .front .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .front .learn-card .card-container {
     color: #fff;
     position: relative; }
-    .front .page-learn .learn-card .card-container .learn-type-bagde {
+    .front .learn-card .card-container .learn-type-bagde {
       position: absolute;
       top: 38px;
       right: -50px;
       transform: rotate(-90deg);
       color: #4F4F4F; }
-      .front .page-learn .learn-card .card-container .learn-type-bagde p {
+      .front .learn-card .card-container .learn-type-bagde p {
         margin: 0px; }
-    .front .page-learn .learn-card .card-container .card-title {
+    .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 67px;
       color: #4F4F4F; }
-    .front .page-learn .learn-card .card-container .card-status {
+    .front .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.3em !important;
       font-weight: 400 !important;
@@ -3749,24 +3863,23 @@ header.showcase-project .next {
       color: #828282;
       display: inline-block;
       text-transform: none; }
-    .front .page-learn .learn-card .card-container .card-description h4 {
+    .front .learn-card .card-container .card-description h4 {
       font-weight: bold; }
-    .front .page-learn .learn-card .card-container .card-description p {
+    .front .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 116px;
       color: #4F4F4F; }
-    .front .page-learn .learn-card .card-container .card-buttons a.btn.btn-grey {
+    .front .learn-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
-    .front .page-learn .learn-card .card-container .card-buttons .follow-number {
+    .front .learn-card .card-container .card-buttons .follow-number {
       background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
@@ -3796,10 +3909,10 @@ header.showcase-project .next {
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       width: 85%;
       margin: auto; }
@@ -3807,7 +3920,9 @@ header.showcase-project .next {
   .page-single-showcase .showcases-container {
     padding: 25px 0; }
 
-.go-back, .go-previous, .go-next {
+.go-back,
+.go-previous,
+.go-next {
   display: inline-block;
   font-size: 36px;
   color: #4F4F4F; }
@@ -3872,7 +3987,7 @@ header.showcase-project .next {
         font-size: 3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
-        line-height: 100% !important;
+        line-height: 105% !important;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -3939,7 +4054,8 @@ header.showcase-project .next {
           height: auto; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
-      .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
+      .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
+      .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
@@ -3996,7 +4112,8 @@ img {
     color: white; }
   .front .challenge-card a {
     color: white; }
-  .front .challenge-card p, .front .challenge-card h3 {
+  .front .challenge-card p,
+  .front .challenge-card h3 {
     color: white; }
 .front .showcase .col-lg-4 {
   margin-bottom: 10px; }
@@ -4018,10 +4135,12 @@ img {
 .showcase-card-backlayer-home {
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  margin-bottom: 40px;
   -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+  height: 375px;
+  margin-top: 25px;
+  margin-bottom: 20px; }
   .showcase-card-backlayer-home:hover {
     background-color: #00AEEF;
     transition: background-color 0.8s ease; }
@@ -4038,7 +4157,9 @@ img {
     position: relative;
     top: -10px;
     left: -9px;
-    background-color: transparent; }
+    background-color: transparent;
+    height: 375px;
+    margin-top: 9px !important; }
   .showcase-card-backlayer-home .showcase-card {
     position: relative;
     top: -16px;
@@ -4048,7 +4169,8 @@ img {
     background-color: white;
     -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
     -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    height: 375px; }
     .showcase-card-backlayer-home .showcase-card .card {
       background-color: transparent;
       border: none; }
@@ -4086,7 +4208,7 @@ img {
         font-size: 3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
-        line-height: 100% !important;
+        line-height: 105% !important;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -4157,7 +4279,8 @@ img {
           height: auto; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
-      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
+      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
+      .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
@@ -4286,7 +4409,8 @@ img {
           height: auto; }
         .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
-      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status, .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
+      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
+      .page-search-content .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
@@ -4954,7 +5078,7 @@ img {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -4976,10 +5100,10 @@ img {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       min-height: 116px;
       color: white; }
@@ -5230,7 +5354,7 @@ img {
       font-size: 3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -5252,10 +5376,10 @@ img {
       font-weight: bold; }
     .page-workshop-individual .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -5578,10 +5702,10 @@ img {
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 1.16em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 110% !important;
+      line-height: 115% !important;
       color: #828282;
       text-align: center; }
 
@@ -5659,10 +5783,10 @@ img {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
         font-family: "Messina Sans Regular" !important;
-        font-size: 1.16em !important;
+        font-size: 1.1em !important;
         font-weight: 400 !important;
         text-transform: none !important;
-        line-height: 110% !important;
+        line-height: 115% !important;
         color: #828282;
         color: #BDBDBD !important; }
         .total-result .challenge-item .content-bottom .content-side .sponser-name p {
@@ -6114,7 +6238,7 @@ img {
     height: auto; } }
 @media (min-width: 1200px) {
   .container {
-    width: 1282px;
+    width: 1140px;
     max-width: 100%; } }
 
 /*# sourceMappingURL=style.css.map */

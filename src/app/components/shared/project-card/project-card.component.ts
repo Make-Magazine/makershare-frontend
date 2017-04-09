@@ -10,6 +10,8 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
   @Input() view = 'grid';
+  @Input() front;
+  
   badges = [];
   project = {};
 

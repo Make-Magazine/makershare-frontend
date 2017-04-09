@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('maker_homepage_api').subscribe(data =>{
       this.homeCards = data;
+      console.log(data)
       for (let r of data)
       if(r.type=="project")
       console.log(r)
