@@ -8,7 +8,8 @@
 			<div class="row">
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
 					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">	
-							<a  *ngIf="idProfile != uid" class="profile-message mr-auto" ><app-message-modal [uid]="uid"></app-message-modal>Message This Maker</a>
+						<a class="profile-message mr-auto"> <app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>Share this profile</a>
+						<a  *ngIf="idProfile != uid" class="profile-message mr-auto" ><app-message-modal [uid]="uid"></app-message-modal>Message This Maker</a>
 						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
 						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>
@@ -26,7 +27,6 @@
 						<!--<li>
 							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
 						</li>-->
-						<!--<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>-->
 					</ul>
 					<!-- End Bookmark-section -->
 				</div>
