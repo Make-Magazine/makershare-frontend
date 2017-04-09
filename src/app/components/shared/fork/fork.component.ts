@@ -43,7 +43,7 @@ constructor(private route: ActivatedRoute,
     e.preventDefault();
       this.flagService.flag(this.nodeNid, this.userId, 'fork').subscribe(response => {
         //this.notificationBarService.create({ message: 'A private version of this project is now available for editing from Drafts in your Portfolio.', type: NotificationType.Success});
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/portfolio']);
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });

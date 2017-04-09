@@ -28,7 +28,6 @@ export class ProjectCardComponent implements OnInit {
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
-
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0]
       })
@@ -46,5 +45,9 @@ export class ProjectCardComponent implements OnInit {
   ShowProjectDetails(nid) {
     this.router.navigate(['/project/view', nid]
     );
+  }
+  userProfile(fName,lName){
+        this.router.navigate(['/portfolio/',fName,lName ])
+
   }
 }

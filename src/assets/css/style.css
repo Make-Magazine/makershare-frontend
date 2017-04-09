@@ -1235,6 +1235,9 @@ footer {
       max-width: 220px;
       margin: 0; }
 
+.ng2-dropdown-menu {
+  z-index: 9999999999999 !important; }
+
 .profile-name {
   color: #00AEEF; }
   .profile-name h4 {
@@ -3958,7 +3961,7 @@ header.showcase-project .next {
   width: 99%;
   height: 99%;
   position: absolute;
-  z-index: 5; }
+  z-index: 5000; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);

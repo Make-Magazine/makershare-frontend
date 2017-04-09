@@ -36,6 +36,10 @@
     }
 }
 
+.ng2-dropdown-menu{
+    z-index: 9999999999999 !important;
+}
+
 .profile-name {
     color: $title-color;
     h4 {

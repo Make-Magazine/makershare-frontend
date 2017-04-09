@@ -31,6 +31,12 @@ export class ShowcaseProjectComponent implements OnInit {
   projectNid;
   showcaseNid;
   allProjects;
+  navigateShowcase = {
+    name:String,
+    totalNumber:Number,
+    index:Number,
+    length:Number
+  };
   private sub: any;
 
   constructor(
@@ -52,6 +58,7 @@ export class ShowcaseProjectComponent implements OnInit {
     this.getProjectDetails();
     this.getProjectsIds();
     this.getShowcaseData();
+    // this.navigateSetting();
     this.currentuser = Number(localStorage.getItem('user_id'));
 
 
@@ -103,10 +110,16 @@ export class ShowcaseProjectComponent implements OnInit {
       .subscribe(data => {
         this.allProjects = [];
         for (let project of data) {
-          this.allProjects.push(project.project_nid)
+          this.allProjects.push(project.project_nid);
+          console.log(this.allProjects)
+          this.navigateShowcase['totalNumber'] = this.allProjects;
+          this.navigateShowcase['length'] = this.allProjects.length;
+
         }
+        
         if (!this.projectIndex)
           this.projectIndex = this.allProjects.indexOf(this.projectNid)
+          this.navigateShowcase['index'] = this.projectIndex
 
       });
   }
@@ -115,26 +128,26 @@ export class ShowcaseProjectComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
+        this.navigateShowcase["name"]= this.showcase['showcase_name']
       });
   }
-  switchProject(event: Event, action: any) {
-    event.preventDefault();
-    if (action == "back") {
-      if (this.projectIndex == 0) return
-      this.projectIndex--;
-      this.projectNid = this.allProjects[this.projectIndex];
-      this.getProjectData();
-      this.getProjectDetails();
-      this.current_active_tab = 'project-story';
-
-    } else if (action == "next") {
-      this.projectIndex++;
-      this.projectNid = this.allProjects[this.projectIndex];
-      this.getProjectData();
-      this.getProjectDetails();
-      this.getProjectsIds();
-      this.getShowcaseData();
-      this.current_active_tab = 'project-story';
-    }
+  switchProject(NewIndex) {
+    this.projectIndex = NewIndex;
+    this.projectNid = this.allProjects[this.projectIndex];
+    this.getProjectData();
+    this.getProjectDetails();
+    this.getProjectsIds();
+    this.getShowcaseData();
+    this.current_active_tab = 'project-story';
   }
+  // navigateSetting(){
+  //   setTimeout(500)
+  //   if(this.showcase['showcase_name'] && this.projectIndex && this.allProjects)
+  //   this.navigateShowcase = {
+  //     "name":this.showcase['showcase_name'],
+  //     "index":this.projectIndex,
+  //     "totalNumber":this.allProjects.length
+  //   }
+  //   console.log(this.navigateShowcase)
+  // }
 }
