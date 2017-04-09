@@ -35,14 +35,17 @@ export class FeedbackComponent implements OnInit {
   NID=false;
   formErrors = {
     'field_want_submit': '',
-    'field_recommend_site': '',
-    'field_bug_not_in_page_':''
+    'field_bug_not_in_page_':'',
+    'field_upload_screenshots':''
 
   };
   validationMessages = {
-    'field_want_submit': { required: 'please select a value ' },
-    'field_recommend_site': {},
-    'field_bug_not_in_page_':{ pattern:'please enter a valid url'}
+    'field_want_submit': { required: 'please select a value' },
+    'field_bug_not_in_page_':{ pattern:'please enter a valid url'},
+    'field_upload_screenshots':{
+       'validimagesize': 'choose a photo of size less than 5MB',
+       'validateType':'please choose an image'
+     }
   };
   closeResult: string;
   imagedata: any;
@@ -294,8 +297,12 @@ export class FeedbackComponent implements OnInit {
       if (n !== -1 && files[0].size < 5242880) {
         NodeHelper.ConvertToBase64(files[0], this.file);
         console.log(files[0]);
-       
+       if(files[0].size > 1048576){
+        this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
+       }
         this.file.filename = files[0].name;
+      }else{
+       this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
       }
     }
   }
