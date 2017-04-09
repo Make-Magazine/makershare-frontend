@@ -94,7 +94,7 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     VideoDisplayComponent,
-
+    MessageModalComponent,
     MakerCardComponent,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
@@ -121,9 +121,8 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
-
 export { LearnUserCardComponent };
-
+export  { MessageModalComponent };
 export { ShowcaseGeneralCardComponent };
 export { VideoDisplayComponent };
 export { MakerCardComponent };
