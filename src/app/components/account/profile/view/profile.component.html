@@ -244,7 +244,6 @@
 						<div *ngIf="idProfile && uid">
 							<div *ngIf="idProfile==uid">
 								<a class="btn btn-main btn-sharp edit-profile-btn" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
-
 							</div>
 						</div>
 
@@ -366,13 +365,15 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
+<<<<<<< HEAD
 			<input type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry"
 			 [resultTemplate]="rt">
+=======
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value">
+>>>>>>> 79190577be4543a71acd8a7ef2c8512fad8c80c0
 			<small *ngIf="searchFailed" class="text-danger">
 				Country not found.
 			</small>
-			<input [(ngModel)]="ProfileInfo.address.country" type="text" class="form-control" id="edit-country">
-			<input [(ngModel)]="ProfileInfo.address.city" type="text" class="form-control" id="edit-city">
 		</div>
 		<div class="clearfix"></div>
 	</div>

@@ -1,7 +1,8 @@
 <!--<div *ngIf="view == 'grid'">-->
 <div *ngIf="project && !front">
-  <div class="project card" (click)="ShowProjectDetails(project.nid)">
-    <div class="image-top">
+  <div class="project card" >
+    <div class="image-top" (click)="ShowProjectDetails(project.nid)">
+
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
       <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
@@ -23,14 +24,15 @@
           <div class="profiel-pic-container mr-2">
             <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+            <app-message-modal *ngIf="project.uid != userId" [uid]="project.uid"></app-message-modal>
+            
           </div>
-          <div class="d-flex flex-column">
-            <app-message-modal [uid]="project.uid"></app-message-modal>
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)"><p class="maker-name">By {{project.first_name}} {{project.last_name}}</p></a>
           </div>
         </div>
-        <div class="icons-side-project d-flex flex-row" *ngIf="badges">
+        <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
           <div class="project-icon" *ngFor="let badge of badges;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
           </div>

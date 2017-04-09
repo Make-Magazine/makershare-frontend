@@ -14,6 +14,7 @@ export class ProjectCardComponent implements OnInit {
   
   badges = [];
   project = {};
+  userId
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -26,11 +27,12 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
+    this.userId = parseInt(localStorage.getItem('user_id'));
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
-       console.log(this.project)
+      // console.log(this.project)
     /*  this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0]
       })*/
