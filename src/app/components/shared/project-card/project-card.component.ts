@@ -46,4 +46,8 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['/project/view', nid]
     );
   }
+  userProfile(fName,lName){
+        this.router.navigate(['/portfolio/',fName,lName ])
+
+  }
 }
