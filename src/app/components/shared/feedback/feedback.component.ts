@@ -11,6 +11,7 @@ import { NodeService } from '../../../d7services/node/node.service'
 import { FileService } from '../../../d7services/file/file.service';
 import { FileEntity } from '../../../models';
 import { NodeHelper } from '../../../models';
+import { Observable } from "rxjs";
 
 
 
@@ -31,6 +32,7 @@ export class FeedbackComponent implements OnInit {
   full_url;
   date;
   submitted = false;
+  flag =false;
   field_upload_screenshots: FileEntity
   NID=false;
   formErrors = {
@@ -111,11 +113,7 @@ export class FeedbackComponent implements OnInit {
       }]
     },
     field_upload_screenshots: {
-      und: [
-        {
-          fid: ''
-        }
-      ]
+      und: []
     },
     field_would_like: {
       und: ''
@@ -277,34 +275,39 @@ export class FeedbackComponent implements OnInit {
     //selected files ftom event
     if(event.srcElement){
     let files = event.srcElement.files;
-  //  if (files.length !== 0 ){
-  //    for (var i = 0; i < files.length; i++) { 
-  //         var str = files[i].type;
-  //         var n = str.search("image");
-  //       if (n !== -1 && files[i].size < 5242880) {
-  //       NodeHelper.ConvertToBase64(files[i],this.fileArray[i]);
-       
-  //       //this.file.filename = files[0].name;
-  //     }
-  //    }
-  //       console.log(this.fileArray);
+    // if (files.length == 1 && files[0]) {
+    //   var str = files[0].type;
+    //   var n = str.search("image");
+    //   //if type is image
+    //   if (n !== -1 && files[0].size < 5242880) {
+    //     NodeHelper.ConvertToBase64(files[0], this.file);
+    //    //maximum upload size 2 MB
+    //    if(files[0].size > 1048576){
+    //     this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
+    //    }
+    //     this.file.filename = files[0].name;
+    //   }else{
+    //    this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
+    //   }
+    // }
+      if (files.length >= 1 ){
+   
+     for (var i = 0; i < files.length; i++) { 
+       this.fileArray[i] = {
+          fid:'',
+          file:'',
+          filename:''
+        }
+          // var str = files[i].type;
+          // var n = str.search("image");
+        // if (n !== -1 && files[i].size < 5242880) {
+        NodeHelper.ConvertToBase64(files[i],this.fileArray[i]);
+        this.fileArray[i].filename = files[i].name;
 
-  //  }
-    if (files.length == 1 && files[0]) {
-      var str = files[0].type;
-      var n = str.search("image");
-      //if type is image
-      if (n !== -1 && files[0].size < 5242880) {
-        NodeHelper.ConvertToBase64(files[0], this.file);
-        console.log(files[0]);
-       if(files[0].size > 1048576){
-        this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
-       }
-        this.file.filename = files[0].name;
-      }else{
-       this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
-      }
-    }
+     
+     }
+
+   }
   }
   }
 
@@ -445,27 +448,75 @@ export class FeedbackComponent implements OnInit {
         // this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
   }
+  //create observable to check if all images are uploaded 
+    isUploaded(): Observable<any>{
+    var obs = Observable.create(observer => {
+        if(this.fileArray.length >= 1 ){
+                      this.feedback.field_upload_screenshots.und = [];
+
+        for (let i = 0; i < this.fileArray.length; i++){
+            this.fileService.SendCreatedFile(this.fileArray[i]).subscribe((NewFile) => {
+            console.log(NewFile.fid);
+            this.feedback.field_upload_screenshots.und[i]={fid:0};
+            this.feedback.field_upload_screenshots.und[i].fid=NewFile.fid;
+            observer.next(true);
+            observer.complete();
+        }, err => {
+          console.log(err);
+          observer.next(false);
+          observer.complete();
+        });
+
+        }
+      }
+    });
+    return obs;
+  }
+
 
   onSubmit(value) {
     var feedback = this.feedback;
     this.submitted = true;
     this.onValueChanged();
-    this.file.file = NodeHelper.RemoveFileTypeFromBase64(this.file.file)
+    console.log(this.fileArray);
+    for(let i=0; i < this.fileArray.length;i++){
+          //this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+      this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+    }
     if (this.feedbackForm.valid) {
-      if (this.file.file) {
-        this.fileService.SendCreatedFile(this.file).subscribe((NewFile) => {
-          this.file.fid = NewFile.fid;
-          this.feedback.field_upload_screenshots.und = [];
-          this.feedback.field_upload_screenshots.und.push({fid:NewFile.fid});
-          this.SaveNode();
-        //  feedback.field_upload_screenshots.und[0].fid = this.file.fid
-        }, err => {
+      var tasks=[];
+      this.fileArray.forEach((element,index)=>{
+        tasks.push(this.fileService.SendCreatedFile(element));
+      });
+      let source = Observable.forkJoin(tasks).subscribe(
+        (x) =>{
+          this.fileArray.forEach((element,index)=>{
+            let file = x[index] as FileEntity;
+            this.feedback.field_upload_screenshots.und.push({fid:file.fid});
+          });
+        },(err)=>{
           console.log(err);
-          // this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
+        },()=>{
+          this.SaveNode();
         });
-      }else{
-        this.SaveNode()
-      }
+      // this.isUploaded().subscribe(data =>{
+//       console.log(data)
+//       console.log(this.feedback);
+//       this.SaveNode();
+//  });
+      // if (this.file.file) {
+      //   this.fileService.SendCreatedFile(this.file).subscribe((NewFile) => {
+      //     this.file.fid = NewFile.fid;
+      //     this.feedback.field_upload_screenshots.und = [];
+      //     this.feedback.field_upload_screenshots.und.push({fid:NewFile.fid});
+      //     this.SaveNode();
+      //   //  feedback.field_upload_screenshots.und[0].fid = this.file.fid
+      //   }, err => {
+      //     console.log(err);
+      //   });
+      // }else{
+      //   this.SaveNode()
+      // }
 
     }
 
