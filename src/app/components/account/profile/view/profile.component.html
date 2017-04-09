@@ -9,8 +9,8 @@
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
 					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">	
 							<a  *ngIf="idProfile != uid" class="profile-message mr-auto" ><app-message-modal [uid]="uid"></app-message-modal>Message This Maker</a>
-						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+						<p class="grid-view active"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+						<p class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
@@ -214,7 +214,7 @@
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
 									<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">
-						<a class="btn btn-main btn-sharp" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
+						<a class="btn btn-main btn-sharp edit-profile-btn" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
 
 						</div></div>
 

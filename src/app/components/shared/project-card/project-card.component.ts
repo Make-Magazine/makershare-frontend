@@ -38,14 +38,16 @@ export class ProjectCardComponent implements OnInit {
   
   getBadgesProject() {
     this.viewService.getView('api-project-badges', [['nid', this.nid]]).subscribe(data => {
-      this.badges = data;
+      for(let i=0; i<data.length && i<4; i++){
+        this.badges.push(data[i])
+      }
     });
   }
   challengePage(nid) {
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]
+    this.router.navigate(['/project/view/', nid]
     );
   }
   userProfile(fName,lName){

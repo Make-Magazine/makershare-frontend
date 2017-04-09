@@ -24,6 +24,6 @@ learn=[];
   });
 }
   WorkshopDetails(nid) {
-    this.router.navigate(['/learn', nid]);
+    this.router.navigate(['/workshops', nid]);
   }
 }
