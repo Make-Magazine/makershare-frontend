@@ -103,7 +103,7 @@ export class ChallengeCardComponent implements OnInit {
   /* end function to change data format */
   /* function to navigate to challenge summary page */
   ShowChallengeDetails(nid) {
-    this.router.navigate(['/challenges', nid]);
+    this.router.navigate(['/missions', nid]);
   }
 
   enterToChallengeProject(nid) {
@@ -114,7 +114,7 @@ export class ChallengeCardComponent implements OnInit {
         //localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
       } else {
-        this.router.navigate(['challenges/enter-challenge', nid]);
+        this.router.navigate(['missions/enter-mission', nid]);
       }
     });
   }

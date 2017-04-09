@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
     ) {  }
 
   ngOnInit() {
-    // this.userService.isLogedIn().subscribe(res => {
-    //   if(res == true){
-    //     this.isLoggedIn = true;
-    //   }
-    // });
+    this.userService.isLogedIn().subscribe(res => {
+      if(res == true){
+     this.user_photo = localStorage.getItem('user_photo');
+      }
+    });
    // localStorage.setItem('redirectUrl', this.router.url);
     this.user_photo = localStorage.getItem('user_photo');
     

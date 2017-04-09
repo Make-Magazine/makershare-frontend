@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef, Injector, Injectable, state } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild } from '@angular/core';
 import { PmService } from '../../../../d7services/pm/pm.service'
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -19,9 +19,13 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
   templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
+  @ViewChild('myInput')
+  myInputVariable: any;
+  searchValue:string = '';
   closeResult: string;
   currentuser;
   active = true;
+  searchFailed = false;
   messageForm: FormGroup;
   messages = [];
   message;
@@ -86,31 +90,27 @@ export class InboxComponent implements OnInit {
     
   }
 
-  RefreshUsers(index, value) {
-    this.reciverUser = [];
-    if (value.length > 0) {
-      this.viewService.getView('maker_profile_search_data', [['search', value]]).subscribe(data => {
-        console.log(data)
-        this.reciverUser = data;
-        var TempUsers = [];
-        for (let index in data) {
-          var found = false;
-          let element = data[index];
-          this.SelectedUser.forEach(addeduser => {
-            if (addeduser.uid === element.uid) {
-              found = true;
-              return;
-            }
-          });
-
-          if (!found) {
-            TempUsers.push(element);
+  search = (text$: Observable<string>) =>{
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed = false)
+      .switchMap((term) => 
+        {
+          if(term.length > 1){
+            return this.viewService.getView('maker_profile_search_data',[['email', term]])
+            .map(result => {
+              console.log(result)
+              if(result.length == 0){
+                this.searchFailed = true;
+              }
+              return result;
+            })
           }
+          return [];
         }
-        this.reciverUser = TempUsers;
-      });
-    }
-  }
+      )
+  };
 
   /**
   * selct users to send message
@@ -120,6 +120,7 @@ export class InboxComponent implements OnInit {
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
       this.SelectedUser.push(data);
       this.messageForm.reset();
+       this.myInputVariable.nativeElement.value = "";
     });
   }
   getCurrentUser() {
@@ -146,7 +147,7 @@ export class InboxComponent implements OnInit {
           last_updated : 'Now',
         }
         this.msg.unshift(newMessage);
-        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
@@ -253,7 +254,7 @@ export class InboxComponent implements OnInit {
             msg_arr[i].last_updated = 'minute ago';
           }else if(msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60){
             msg_arr[i].last_updated = msg_arr[i].last_updated + ' '  +  'minutes ago';
-          }else if(msg_arr[i].last_updated > 60 && msg_arr[i].last_updated < 120){
+          }else if(msg_arr[i].last_updated >= 60 && msg_arr[i].last_updated < 120){
             msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' ' +  'hour ago';
           }else if(msg_arr[i].last_updated >= 120 && msg_arr[i].last_updated < 1440){
             msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' '  + 'hours ago';
@@ -396,4 +397,9 @@ export class InboxComponent implements OnInit {
     })
 
   }
+
+  reset() {
+   
+  }
+
 }

@@ -33,6 +33,10 @@
       <div>
         <input class="form-control" type="text" placeholder="enter url" [formControl]="feedbackForm.controls['field_bug_not_in_page_']">
       </div>
+      <small  class="form-text text-muted">enter url in the form (http/https/ftp)://www.google.com</small>
+      <div *ngIf="formErrors.field_bug_not_in_page_" class="alert alert-danger error-msg">
+        {{formErrors.field_bug_not_in_page_}}
+      </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1185">
       <label for="exampleTextarea">You can also describe how you got to the bug in the text field below.</label>
@@ -70,8 +74,12 @@
     </div>
     <div class="form-group"*ngIf="CurrentType == 1185">
       <label for="exampleInputFile">Upload screenshots of what you see especially broken images or error messages	</label>
-      <input type="file" class="form-control-file"  placeholder="Choose photo" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']" (change)="uploadFile($event)"  >
-      <small id="fileHelp" class="form-text text-muted">maximum upload size 5M</small>
+      <input type="file" class="form-control-file" id="files"  placeholder="Choose photo" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']" (change)="uploadFile($event)" multiple >
+      <pre id="filelist" style="display:none;"></pre>
+      <small id="fileHelp" class="form-text text-muted">maximum upload size 2M</small>
+       <div *ngIf="formErrors.field_upload_screenshots" class="alert alert-danger error-msg">
+        {{formErrors.field_upload_screenshots}}
+      </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1186">
       <label>I would like a</label>
