@@ -23,8 +23,6 @@ import {MessageModalComponent} from '../../../shared/message-modal/message-modal
 })
 export class ProfileComponent implements OnInit {
   idProfile;
-  user;
-  hideMsgs = false;
  ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
@@ -289,9 +287,6 @@ export class ProfileComponent implements OnInit {
       this.buildFormSocial();
       this.Loading = false;
     });
-  }
-  prefer(event: string) {
-    this.ProfileInfo.field_social_accounts.field_preferred = event;
   }
   onValueChanged(data?: any) {
     if (!this.FormGroupSocial) { return; }
