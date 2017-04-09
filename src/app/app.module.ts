@@ -19,7 +19,7 @@ import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar';
+import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar/release';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
