@@ -309,7 +309,7 @@ export class ChallengeDataComponent implements OnInit {
         //localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
       }else{
-    this.router.navigate(['challenges/enter-challenge', nid]);
+    this.router.navigate(['missions/enter-mission', nid]);
       }
           });
   }

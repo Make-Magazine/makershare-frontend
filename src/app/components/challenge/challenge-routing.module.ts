@@ -13,8 +13,8 @@ const ChallengeRouts: Routes = [
     children: [
       { path: '', component: ChallengesComponent },
       { path: ':nid', loadChildren: 'app/components/challenge/challenge-data/challenge-data.module#ChallengeDataModule' },
-      { path: 'enter-challenge', component: ChallengeProjectComponent,  canActivate: [AuthGuardService] },
-      { path: 'enter-challenge/:nid', component: ChallengeProjectComponent , canActivate: [AuthGuardService] },
+      { path: 'enter-mission', component: ChallengeProjectComponent,  canActivate: [AuthGuardService] },
+      { path: 'enter-mission/:nid', component: ChallengeProjectComponent , canActivate: [AuthGuardService] },
     ]
   },
 ];

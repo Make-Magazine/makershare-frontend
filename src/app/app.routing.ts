@@ -20,7 +20,7 @@ const APP_ROUTES: Routes = [
     { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
     { path: 'explore', loadChildren: 'app/components/explore/explore.module#ExploreModule' },
     { path: 'learn', loadChildren: 'app/components/learn/learn.module#LearnModule' },
-    { path: 'challenges', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
+    { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'portfolio/:name', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: 'app/components/account/account.module#AccountModule' },
