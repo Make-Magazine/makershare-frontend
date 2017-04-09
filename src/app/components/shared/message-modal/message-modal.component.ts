@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Message } from '../../../d7services/pm/message';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { PmService } from '../../../d7services/pm/pm.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-message-modal',
@@ -11,6 +13,8 @@ import { UserService } from '../../../d7services/user/user.service';
 })
 export class MessageModalComponent implements OnInit {
   @Input() uid;
+  userId;
+  closeResult: string;
   messageForm: FormGroup;
   messageObj: Message = {
     recipients: '',
@@ -23,22 +27,25 @@ export class MessageModalComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private fb: FormBuilder,
     private pm: PmService,
-    private userService : UserService,
+    private userService: UserService,
+    private modalService: NgbModal,
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.buildForm();
-    this.getUserData();
+    this.checkUserLogin();
   }
-  getUserData(){
-    this.userService.getUser(this.uid).subscribe(data=>{
-      console.log(data)
+  getUserData() {
+    this.userService.getUser(this.uid).subscribe(data => {
+      this.user = data;
     })
   }
-    onSubmit(e) {
+
+  onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
-      // this.messageObj.recipients = this.name;
+      this.messageObj.recipients = this.user.name;
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
@@ -90,5 +97,33 @@ export class MessageModalComponent implements OnInit {
       'required': 'Message Body is required.',
     },
   };
+
+  open(content) {
+    this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) {
+        localStorage.setItem('redirectUrl', this.router.url);
+        this.router.navigate(['/access-denied']);
+      }
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  checkUserLogin() {
+
+  }
 
 }
