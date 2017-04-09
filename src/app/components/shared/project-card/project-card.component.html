@@ -26,7 +26,7 @@
           </div>
           <div class="d-flex flex-column">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+            <a (click)="userProfile(project.first_name,project.last_name)"><p class="maker-name">By {{project.first_name}} {{project.last_name}}</p></a>
           </div>
         </div>
         <div class="icons-side-project d-flex flex-row" *ngIf="badges">

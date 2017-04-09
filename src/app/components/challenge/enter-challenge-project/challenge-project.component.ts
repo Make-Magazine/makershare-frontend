@@ -8,7 +8,7 @@ import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import { MainService } from '../../../d7services/main/main.service';
 import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 
 @Component({

@@ -1539,7 +1539,7 @@ footer {
 .switch {
   color: #BDBDBD;
   cursor: pointer;
-  text-align: right;
+  text-align: left;
   margin: 5px 0; }
   .switch p {
     margin-bottom: 0px;
@@ -2011,7 +2011,7 @@ footer {
       display: block; }
   .profile-page .profile-message {
     padding: 0px;
-    color: #00AEEF !important;
+    color: black !important;
     text-transform: uppercase; }
     .profile-page .profile-message img {
       width: 40px;
