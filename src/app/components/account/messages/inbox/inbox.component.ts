@@ -147,7 +147,7 @@ export class InboxComponent implements OnInit {
           last_updated : 'Now',
         }
         this.msg.unshift(newMessage);
-        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
