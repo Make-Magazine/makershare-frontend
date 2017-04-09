@@ -11,6 +11,7 @@ import { NodeService } from '../../../d7services/node/node.service'
 import { FileService } from '../../../d7services/file/file.service';
 import { FileEntity } from '../../../models';
 import { NodeHelper } from '../../../models';
+import { Observable } from "rxjs";
 
 
 
@@ -31,15 +32,22 @@ export class FeedbackComponent implements OnInit {
   full_url;
   date;
   submitted = false;
+  flag =false;
   field_upload_screenshots: FileEntity
   NID=false;
   formErrors = {
     'field_want_submit': '',
-    'field_recommend_site': ''
+    'field_bug_not_in_page_':'',
+    'field_upload_screenshots':''
+
   };
   validationMessages = {
-    'field_want_submit': { required: 'please select a value ' },
-    'field_recommend_site': {}
+    'field_want_submit': { required: 'please select a value' },
+    'field_bug_not_in_page_':{ pattern:'please enter a valid url'},
+    'field_upload_screenshots':{
+       'validimagesize': 'choose a photo of size less than 5MB',
+       'validateType':'please choose an image'
+     }
   };
   closeResult: string;
   imagedata: any;
@@ -105,11 +113,7 @@ export class FeedbackComponent implements OnInit {
       }]
     },
     field_upload_screenshots: {
-      und: [
-        {
-          fid: ''
-        }
-      ]
+      und: []
     },
     field_would_like: {
       und: ''
@@ -165,8 +169,9 @@ export class FeedbackComponent implements OnInit {
       this.features = data;
     });
     this.buildform();
-
-
+// var x= /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test('http://www.ahmed.fg');
+// console.log('regeeeeeeeeeex')
+// console.log(x)
   }
 
   buildform() {
@@ -176,7 +181,8 @@ export class FeedbackComponent implements OnInit {
       'field_want_submit': ['', Validators.required],
       'field_my_bug': '',
       'field_would_like': '',
-      'field_bug_not_in_page_': '',
+      //url validation
+      'field_bug_not_in_page_':['', Validators.pattern(/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/)],
       'field_describe_bug':'',
       'field_bug_in_page': this.full_url,
       'field_browser': this.device.browserName + ' ' + this.device.browserVersion,
@@ -202,18 +208,20 @@ export class FeedbackComponent implements OnInit {
       this.formErrors[field] = '';
       const control = form.get(field);
       //for submitted empty fields
+      console.log(this.submitted);
       if (!control.valid && this.submitted) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
-      if (control && (control.dirty || data == "save") && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
+      // if (control && (control.dirty || data == "save") && !control.valid) {
+      //   console.log('second_case');
+      //   const messages = this.validationMessages[field];
+      //   for (const key in control.errors) {
+      //     this.formErrors[field] += messages[key] + ' ';
+      //   }
+      // }
 
     }
   }
@@ -267,30 +275,39 @@ export class FeedbackComponent implements OnInit {
     //selected files ftom event
     if(event.srcElement){
     let files = event.srcElement.files;
-  //  if (files.length !== 0 ){
-  //    for (var i = 0; i < files.length; i++) { 
-  //         var str = files[i].type;
-  //         var n = str.search("image");
-  //       if (n !== -1 && files[i].size < 5242880) {
-  //       NodeHelper.ConvertToBase64(files[i],this.fileArray[i]);
-       
-  //       //this.file.filename = files[0].name;
-  //     }
-  //    }
-  //       console.log(this.fileArray);
+    // if (files.length == 1 && files[0]) {
+    //   var str = files[0].type;
+    //   var n = str.search("image");
+    //   //if type is image
+    //   if (n !== -1 && files[0].size < 5242880) {
+    //     NodeHelper.ConvertToBase64(files[0], this.file);
+    //    //maximum upload size 2 MB
+    //    if(files[0].size > 1048576){
+    //     this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
+    //    }
+    //     this.file.filename = files[0].name;
+    //   }else{
+    //    this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
+    //   }
+    // }
+      if (files.length >= 1 ){
+   
+     for (var i = 0; i < files.length; i++) { 
+       this.fileArray[i] = {
+          fid:'',
+          file:'',
+          filename:''
+        }
+          // var str = files[i].type;
+          // var n = str.search("image");
+        // if (n !== -1 && files[i].size < 5242880) {
+        NodeHelper.ConvertToBase64(files[i],this.fileArray[i]);
+        this.fileArray[i].filename = files[i].name;
 
-  //  }
-    if (files.length == 1 && files[0]) {
-      var str = files[0].type;
-      var n = str.search("image");
-      //if type is image
-      if (n !== -1 && files[0].size < 5242880) {
-        NodeHelper.ConvertToBase64(files[0], this.file);
-        console.log(files[0]);
-       
-        this.file.filename = files[0].name;
-      }
-    }
+     
+     }
+
+   }
   }
   }
 
@@ -431,27 +448,75 @@ export class FeedbackComponent implements OnInit {
         // this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
   }
+  //create observable to check if all images are uploaded 
+    isUploaded(): Observable<any>{
+    var obs = Observable.create(observer => {
+        if(this.fileArray.length >= 1 ){
+                      this.feedback.field_upload_screenshots.und = [];
+
+        for (let i = 0; i < this.fileArray.length; i++){
+            this.fileService.SendCreatedFile(this.fileArray[i]).subscribe((NewFile) => {
+            console.log(NewFile.fid);
+            this.feedback.field_upload_screenshots.und[i]={fid:0};
+            this.feedback.field_upload_screenshots.und[i].fid=NewFile.fid;
+            observer.next(true);
+            observer.complete();
+        }, err => {
+          console.log(err);
+          observer.next(false);
+          observer.complete();
+        });
+
+        }
+      }
+    });
+    return obs;
+  }
+
 
   onSubmit(value) {
     var feedback = this.feedback;
     this.submitted = true;
     this.onValueChanged();
-    this.file.file = NodeHelper.RemoveFileTypeFromBase64(this.file.file)
+    console.log(this.fileArray);
+    for(let i=0; i < this.fileArray.length;i++){
+          //this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+      this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+    }
     if (this.feedbackForm.valid) {
-      if (this.file.file) {
-        this.fileService.SendCreatedFile(this.file).subscribe((NewFile) => {
-          this.file.fid = NewFile.fid;
-          this.feedback.field_upload_screenshots.und = [];
-          this.feedback.field_upload_screenshots.und.push({fid:NewFile.fid});
-          this.SaveNode();
-        //  feedback.field_upload_screenshots.und[0].fid = this.file.fid
-        }, err => {
+      var tasks=[];
+      this.fileArray.forEach((element,index)=>{
+        tasks.push(this.fileService.SendCreatedFile(element));
+      });
+      let source = Observable.forkJoin(tasks).subscribe(
+        (x) =>{
+          this.fileArray.forEach((element,index)=>{
+            let file = x[index] as FileEntity;
+            this.feedback.field_upload_screenshots.und.push({fid:file.fid});
+          });
+        },(err)=>{
           console.log(err);
-          // this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
+        },()=>{
+          this.SaveNode();
         });
-      }else{
-        this.SaveNode()
-      }
+      // this.isUploaded().subscribe(data =>{
+//       console.log(data)
+//       console.log(this.feedback);
+//       this.SaveNode();
+//  });
+      // if (this.file.file) {
+      //   this.fileService.SendCreatedFile(this.file).subscribe((NewFile) => {
+      //     this.file.fid = NewFile.fid;
+      //     this.feedback.field_upload_screenshots.und = [];
+      //     this.feedback.field_upload_screenshots.und.push({fid:NewFile.fid});
+      //     this.SaveNode();
+      //   //  feedback.field_upload_screenshots.und[0].fid = this.file.fid
+      //   }, err => {
+      //     console.log(err);
+      //   });
+      // }else{
+      //   this.SaveNode()
+      // }
 
     }
 

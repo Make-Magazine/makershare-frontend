@@ -6,6 +6,12 @@
         margin-bottom: 20px;
         left: 40%;
     }
+    .profile-share {
+        a {
+            font-size: 20px;
+            background-color: transparent;
+        }
+    }
 }
 
 .profile-cover {
@@ -153,13 +159,13 @@
         .profile-group {
             .profile-pic {
                 position: relative;
-                margin-bottom: -100px;
                 img {
                     height: auto;
                     width: 100%;
                     position: relative;
                     top: -110px;
                     left: -40px;
+                    margin-bottom: -100px;
                 }
                 a {
                   z-index: 1;

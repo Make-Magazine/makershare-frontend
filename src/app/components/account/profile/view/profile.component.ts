@@ -22,8 +22,31 @@ import {MessageModalComponent} from '../../../shared/message-modal/message-modal
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
+
+  CountriesList = [];
+
+  SearchCountry = (text$: Observable<string>) =>{
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed = false)
+      .map((term) => 
+        {
+          if(term.length > 1){
+            let res = this.CountriesList.filter(element => new RegExp(term, 'gi').test(element.value)).splice(0, 10);
+            if(res){ 
+              return res;
+            }
+            this.searchFailed = true;
+          }
+          return [];
+        }
+      )
+  };
+
+  searchFailed:boolean = false;
   idProfile;
- ckEditorConfig: {} = {
+  ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
       { "name": 'clipboard', "groups": ['clipboard', 'undo'] },
@@ -202,11 +225,13 @@ export class ProfileComponent implements OnInit {
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.profileService.getAllInterests());
     tasks.push(this.viewService.getView('maker_count_all_projects/' + this.uid));
+    tasks.push(this.viewService.getView('maker_address_api'));
     let source = Observable.forkJoin(tasks).subscribe((data) => {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
       this.ProjectsCount = data[index++] as number;
+      this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
     });
   }
@@ -265,8 +290,8 @@ export class ProfileComponent implements OnInit {
     });
   }
   UpdateUser() {
-    //console.log("1w")
     this.userService.getUser(this.uid).subscribe(res => {
+      console.log(res);
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
       this.ProfileInfo.address = res.address;
@@ -278,6 +303,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.maker_interests = res.maker_interests;
       this.ProfileInfo.started_making = res.started_making;
       this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      if(this.idProfile==this.uid)
       localStorage.setItem('user_photo', this.profile.user_photo);
       this.formGroup = this.fb.group({
         describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
