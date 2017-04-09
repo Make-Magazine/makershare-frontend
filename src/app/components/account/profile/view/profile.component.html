@@ -52,9 +52,14 @@
 							<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<div  (click)="OpenModal(editinfomodal,'edit-info-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></div></div>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 									<div class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
-									<ul *ngIf="profile.address_publish" class="list-unstyled location">
-										<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
+									<ul *ngIf="idProfile == uid || profile.address_publish" class="list-unstyled location">
+										<li *ngIf="profile.address" ><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
+										<li *ngIf="!profile.address" ><i class="fa fa-lg fa-map-marker"></i></li>
 									</ul>
+									<div *ngIf="idProfile == uid">
+										<div (click)="ProfileInfo.address_publish = 0;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 1">Unpublish</div>
+										<div (click)="ProfileInfo.address_publish = 1;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 0">Publish</div>
+									</div>
 								</div>
 								<hr>
 								<!-- describe yourself-->
@@ -314,6 +319,12 @@
 	</div>
 </template>
 
+<template #rt let-r="result" let-t="term">
+  <div class="data-container">
+    {{r.value}}
+  </div>
+</template>
+
 <!-- Add Edit Info Modal -->
 <template #editinfomodal let-c="close" let-d="dismiss" ngbModalContainer>
 	<div class="modal-header">
@@ -330,6 +341,10 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
+			<input type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" >
+			<small *ngIf="searchFailed" class="text-danger">
+				Country not found.
+			</small>
 			<input [(ngModel)]="ProfileInfo.address.country" type="text" class="form-control" id="edit-country">
 			<input [(ngModel)]="ProfileInfo.address.city" type="text" class="form-control" id="edit-city">
 		</div>
