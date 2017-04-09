@@ -6,6 +6,7 @@ import { ViewComponent } from './view/view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
  
@@ -16,6 +17,7 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    SharedModule,
 
   ],
   declarations: [
