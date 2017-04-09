@@ -12,8 +12,10 @@
             <div class="image-container">
               <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
                 <img *ngIf= "workshop.introductory_video" class="play-image" src="./assets/images/video-icon.png" alt="" style="width: 100px;" (click)="introvideo(content)">
-             <!--<div [innerHTML]="workshop?.introductory_video"></div>-->
-             </div>
+              </div>
+               <!--<div *ngIf= "workshop.introductory_video">
+                         <app-video-display [link]="workshop.introductory_video"></app-video-display>
+                  </div>-->
           
             <div *ngIf="workshop.uid">
               <app-learn-user-card [uid]="workshop.uid" [leader]="workshop.leader_name"></app-learn-user-card>
@@ -242,10 +244,13 @@
     </button>
   </div>
   <div class="modal-body">
-    <div [innerHTML]="popupPreview"></div>
-    <div *ngIf="epubFile">
+        <div [innerHTML]="popupPreview"></div>
+       <!--<div *ngIf="workshop.introductory_video ">
+       <app-video-display [link]="workshop.introductory_video"></app-video-display>
+    </div>-->
+      <div *ngIf="epubFile">
       <app-book [link]="epubLink"></app-book>
     </div>
-  </div>
+    </div>
 
 </template>
