@@ -215,7 +215,7 @@ export class ProfileComponent implements OnInit {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-    //  this.ProjectsCount = data[index++] as number;
+      this.ProjectsCount = data[index++] as number;
       this.UpdateUser();
     });
   }
