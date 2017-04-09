@@ -2,13 +2,13 @@
 	<div *ngIf="!Loading">
 		<section class="container-fluid cover-region">
 		</section>
+		
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
-					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style" >
-						<!--<app-message-modal [uid]="data.user.uid"></app-message-modal>-->
-						<!--<a class="profile-message mr-auto" data-toggle="modal" data-target="#message-modal"><img src="./assets/images/icons/mail.svg" alt="">Message This Maker</a>-->
+					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">	
+							<a  [hidden]="hideMsgs" class="profile-message mr-auto" ><app-message-modal [uid]="userIdProfile"></app-message-modal>Message This Maker</a>
 						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
 						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>

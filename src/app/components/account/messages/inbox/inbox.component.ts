@@ -88,8 +88,9 @@ export class InboxComponent implements OnInit {
 
   RefreshUsers(index, value) {
     this.reciverUser = [];
-    if (value.length > 1) {
+    if (value.length > 0) {
       this.viewService.getView('maker_profile_search_data', [['search', value]]).subscribe(data => {
+        console.log(data)
         this.reciverUser = data;
         var TempUsers = [];
         for (let index in data) {
