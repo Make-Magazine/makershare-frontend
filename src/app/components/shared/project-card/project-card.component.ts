@@ -47,7 +47,8 @@ export class ProjectCardComponent implements OnInit {
     );
   }
   userProfile(fName,lName){
-        this.router.navigate(['/portfolio/',fName,lName ])
+    var name=fName+lName;
+        this.router.navigate(['/portfolio/',name])
 
   }
 }
