@@ -12,7 +12,7 @@
           </li>
         </ul>
         <ul class="list-unstyled login-block">
-          <li *ngIf="!auth.authenticated()"><a class="" (click)="auth.login()"><img src="http://placehold.it/70x70" alt=""></a></li>
+          <li *ngIf="!auth.authenticated()"><a class="login-div" (click)="auth.login()">Log in</a></li>
           <li class="min-user-img" *ngIf="auth.authenticated()">
             <div ngbDropdown class="d-inline-block account-controls dropdown">
               <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
@@ -21,8 +21,8 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
                 <button class="dropdown-item" [routerLink]="['/inbox']">Inbox</button>
-                <button class="dropdown-item" [routerLink]="['/portfolio/collection/bookmark']">Bookmarks</button>
-                <button class="dropdown-item" [routerLink]="['/portfolio/settings/notifications']">Account Settings</button>
+                <button class="dropdown-item" [routerLink]="['/account/collection/bookmark']">Bookmarks</button>
+                <button class="dropdown-item" [routerLink]="['/account/settings/notifications']">Account Settings</button>
                 <button class="dropdown-item" (click)="auth.logout()">Logout</button>
               </div>
             </div>
@@ -79,10 +79,10 @@
             <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['challenges']">Missions</a>
+            <a class="nav-link" [routerLink]="['missions']">Missions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['learn']">Learning</a>
+            <a class="nav-link" [routerLink]="['workshops']">Workshops</a>
           </li>
           <li class="nav-item hidden-md-up">
             <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>

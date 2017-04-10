@@ -10,7 +10,7 @@
               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
           </div>
-          <!--<button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>-->
+          <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>
         </div>
         <div class="media-body">
           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>

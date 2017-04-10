@@ -646,7 +646,8 @@ header.showcase-project {
 					color: $font-grey;
     			margin-top: 2px;
 					position: relative;
-					    padding: 0px 6px;
+			    padding: 0px 6px;
+					resize: none;
 					.feedback-label {
 						width: 100%;
 						font-weight: bold;

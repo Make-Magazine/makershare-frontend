@@ -1,17 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileModule } from './profile/profile.module';
-import { CollectionModule } from '../account/collection/collection.module';
-import { AccountSettingsModule} from '../account/account-settings/account-settings.module'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AccountRountingModule } from './account-rounting.module';
+import { SelectModule } from 'ng2-select';
+import { IcDatepickerModule } from 'ic-datepicker';
+import { TagInputModule } from 'ng2-tag-input';
+import { FormsModule } from '@angular/forms';
+import { SharedModule }  from '../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ng2-img-cropper';
+import { CKEditorModule } from 'ng2-ckeditor';
+
 @NgModule({
   imports: [
+    IcDatepickerModule,
     CommonModule,
+    AccountRountingModule,
     FormsModule,
     ReactiveFormsModule,
-    ProfileModule,
-    CollectionModule,
-    AccountSettingsModule,
+    SelectModule,
+    TagInputModule,
+    SharedModule,
+    NgbModule,
+    ImageCropperModule,
+    CKEditorModule
   ],
   declarations: [],
   exports: []

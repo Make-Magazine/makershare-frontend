@@ -3,7 +3,7 @@ import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { MainService } from '../../../../d7services/main/main.service';
 import * as globals from '../../../../d7services/globals';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 @Component({
   selector: 'app-default-settings',

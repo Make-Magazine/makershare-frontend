@@ -15,11 +15,6 @@ const ProfileRouts: Routes = [
     children: [
       { path: '',  component: BaseComponent},
       { path: ':user_name', component: profilecomponent },
-      { path: 'editprofile', loadChildren: 'app/components/account/profile/edit/edit-profile/edit-profile.module#EditProfileModule',  canActivate: [AuthGuardService]},
-      { path: 'editportfolio', loadChildren: 'app/components/account/profile/edit/edit-portfolio/edit-portfolio.module#EditPortfolioModule',  canActivate: [AuthGuardService]},
-      { path: 'collection', loadChildren: 'app/components/account/collection/collection.module#CollectionModule',  canActivate: [AuthGuardService]},
-      { path: 'settings', loadChildren: 'app/components/account/account-settings/account-settings.module.ts#AccountSettingsModule',  canActivate: [AuthGuardService]},
-
     ]
   }
 ];

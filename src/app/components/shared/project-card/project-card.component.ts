@@ -10,8 +10,11 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
   @Input() view = 'grid';
+  @Input() front;
+  
   badges = [];
   project = {};
+  userId
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -24,27 +27,35 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
+    this.userId = parseInt(localStorage.getItem('user_id'));
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
-
-      this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
+      // console.log(this.project)
+    /*  this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0]
-      })
+      })*/
     });
   }
   
   getBadgesProject() {
     this.viewService.getView('api-project-badges', [['nid', this.nid]]).subscribe(data => {
-      this.badges = data;
+      for(let i=0; i<data.length && i<4; i++){
+        this.badges.push(data[i])
+      }
     });
   }
   challengePage(nid) {
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]
+    this.router.navigate(['/project/view/', nid]
     );
+  }
+  userProfile(fName,lName){
+    var name=fName+lName;
+        this.router.navigate(['/portfolio/',name])
+
   }
 }

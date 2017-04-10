@@ -1,7 +1,7 @@
 <div class="front">
   <app-onboarding></app-onboarding>
-  <app-challenge></app-challenge>
-  <app-showcases></app-showcases>
+  <!--<app-challenge></app-challenge>
+  <app-showcases></app-showcases>-->
   <!--<div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-6">
@@ -9,6 +9,43 @@
       </div>
     </div>
   </div>-->
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
+        'col-md-4 col-lg-4'   : item.type == 'project' ,
+        'col-md-4'            : item.type == 'maker' ,
+        'col-md-4'            : item.type == 'showcase',
+        'col-md-8'            : item.type == 'challenge' ,
+        'col-md-8'            : item.type == 'learning_sequence'
+          }">
+        <!-- Challenge Cards -->
+        <div *ngIf="item.type == 'challenge'" class="challenge-page-data">
+          <div class=" challenges-container">
+            <app-challenge-card [challengeNid]="item.id" [front]=true></app-challenge-card>
+          </div>
+        </div>
+
+        <!-- Showcase Cards -->
+        <div *ngIf="item.type == 'showcase'" class="showcase-card-backlayer-home">
+          <div class="showcase-card-backlayer-home-2" *ngIf="item.id">
+            <app-showcase-gen-card [showcaseNid]="item.id"></app-showcase-gen-card>
+          </div>
+        </div>
+
+        <!-- Maker Cards -->
+        <div *ngIf="item.type == 'maker'"></div>
+
+        <!-- Project Cards -->
+        <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="786" class="" [front]=true></app-project-card>
+
+        <!-- Learn Cards -->
+        <div *ngIf="item.type == 'learning_sequence'" class="learn-card">
+          <app-learn-card [workshopNid]="item.id" [front]=true></app-learn-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <app-spotlight></app-spotlight>
 
   <section class="modal-section">

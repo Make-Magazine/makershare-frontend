@@ -9,7 +9,7 @@ import { ProjectForm, ProjectView } from '../../../../models';
 import { FileEntity } from '../../../../models';
 import { field_file_reference } from '../../../../models';
 import { Observable } from "rxjs";
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Router,Params,ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
 import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models';
@@ -326,7 +326,7 @@ export class ProjectFormComponent implements OnInit {
       delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
         this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
@@ -334,7 +334,7 @@ export class ProjectFormComponent implements OnInit {
     }else{
       this.nodeService.createNode(this.project).subscribe((project:ProjectView) => {
         this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});

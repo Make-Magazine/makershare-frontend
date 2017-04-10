@@ -27,6 +27,7 @@ import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-g
 import { MakerCardComponent } from './maker-card/maker-card.component';
 import { VideoDisplayComponent } from './video-display/video-display.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
+import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
@@ -67,6 +68,7 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
     MakerCardComponent,
     VideoDisplayComponent,
     MakerSearchCardComponent,
+    MessageModalComponent,
     ProjectSearchCardComponent,
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
@@ -92,7 +94,7 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     VideoDisplayComponent,
-
+    MessageModalComponent,
     MakerCardComponent,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
@@ -119,9 +121,8 @@ export { ProjectHowToComponent };
 export { ShowcaseCardComponent };
 export { LearnCardComponent }; 
 export { UserCardSmallComponent };
-
 export { LearnUserCardComponent };
-
+export  { MessageModalComponent };
 export { ShowcaseGeneralCardComponent };
 export { VideoDisplayComponent };
 export { MakerCardComponent };
