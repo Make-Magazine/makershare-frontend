@@ -4,22 +4,25 @@
       <div *ngIf="workshop" class="container learn-container">
 
         <!--<ul class="list-unstyled workshop-actions col-1 pull-right">
-            <app-like [nodeNid]="workshop.nid"></app-like>
+           
             <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
           </ul>-->
+
         <div class="learn-card d-flex flex-column flex-md-row ">
           <div class="col-md-4 individual-card-img">
             <div class="image-container">
               <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
-                <img *ngIf= "workshop.introductory_video" class="play-image" src="./assets/images/video-icon.png" alt="" style="width: 100px;" (click)="introvideo(content)">
-              </div>
-               <!--<div *ngIf= "workshop.introductory_video">
+              <img *ngIf="workshop.introductory_video" class="play-image" src="./assets/images/video-icon.png" alt="" style="width: 100px;"
+                (click)="introvideo(content)">
+            </div>
+            <!--<div *ngIf= "workshop.introductory_video">
                          <app-video-display [link]="workshop.introductory_video"></app-video-display>
                   </div>-->
-          
+
             <div *ngIf="workshop.uid">
               <app-learn-user-card [uid]="workshop.uid" [leader]="workshop.leader_name"></app-learn-user-card>
             </div>
+
 
           </div>
 
@@ -33,6 +36,11 @@
                 <div class="card-partership">
                   <p *ngIf="workshop.brought_by"> Brought to you by {{workshop.brought_by}} </p>
                 </div>
+                <ul class="list-unstyled workshop-actions pull-right">
+                  <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
+                  <app-shared-buttons *ngIf="workshop.workshop_title" [PageTitle]="workshop.workshop_title" [PageDescription]="workshop.brief_description"
+                    [PageImage]="workshop.cover_photo"></app-shared-buttons>
+                </ul>
                 <h3 class="card-title" [innerHTML]="workshop.workshop_title"></h3>
                 <div class="card-description">
                   <p [innerHTML]="workshop.brief_description"></p>
@@ -64,11 +72,16 @@
             </div>-->
         </div>
         <!-- End col-md-6 -->
+               <div *ngIf="workshop.nid" class="feedback-group">
+                   <label class="feedback-label">Questions</label>
+      <app-comment [nid]="workshop.nid"></app-comment>
+    </div>
       </div>
       <!-- End workshop-card -->
     </div>
     <!-- End region-content -->
   </section>
+
 
   <div class="page-workshop-individual">
     <section class="col-sm-12 width-fix">
@@ -165,7 +178,7 @@
                       data-toggle="modal" data-target="#previewer">
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
-                        <div class="card-text" *ngIf="object.chapter"> Number of Chapters: {{object.chapter}} </div>
+                        <div class="card-text" *ngIf="object.chapter"> Number of Pages: {{object.chapter}} </div>
                         <p class="card-text"> {{object.object_title}} </p>
                       </div>
                       <div class="card-block modal-block">
@@ -184,6 +197,29 @@
                     <div [innerHTML]="object.related_projects"> </div>
                   </a>
                 </ul>
+                <!---FOR HTML CONTENT TYPE -->
+                <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'HTML' ">
+                  <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
+                    <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap">
+                    <div class="card-block">
+                      <h4 class="card-title">{{object.learning_content_type}}</h4>
+                      <p class="card-text"> {{object.object_title}} </p>
+                    </div>
+                    <!--<ul class="list-group list-group-flush">
+                          <li class="list-group-item">Cras justo odio</li>
+                          <li class="list-group-item">Dapibus ac facilisis in</li>
+                          <li class="list-group-idata-toggle="modal" data-target="#previewer"tem">Vestibulum at eros</li>
+                        </ul>-->
+                    <div class="card-block modal-block">
+                      <a href="{{object.original_source}}" class="card-link html-card">Original Source</a>
+                    </div>
+                  </div>
+                  <div class="media-body col-lg-9">
+                    <h4>{{object.lesson_name}}</h4>
+                    <div [innerHTML]="object.lesson_description"> </div>
+                  </div>
+                </div>
+
               </div>
               <!-- End  ngFor of learning content type -->
             </div>
@@ -230,6 +266,7 @@
           <!-- End of more lesson Checker -->
         </div>
         <!-- End of Lesson ngFor -->
+   
       </div>
   </div>
   <!-- End of container -->
@@ -244,13 +281,13 @@
     </button>
   </div>
   <div class="modal-body">
-        <div [innerHTML]="popupPreview"></div>
-       <!--<div *ngIf="workshop.introductory_video ">
+    <div [innerHTML]="popupPreview"></div>
+    <!--<div *ngIf="workshop.introductory_video ">
        <app-video-display [link]="workshop.introductory_video"></app-video-display>
     </div>-->
-      <div *ngIf="epubFile">
+    <div *ngIf="epubFile">
       <app-book [link]="epubLink"></app-book>
     </div>
-    </div>
+  </div>
 
 </template>

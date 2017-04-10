@@ -15,7 +15,8 @@ import { LoaderService } from '../../shared/loader/loader.service';
   styleUrls: ['./individual-workshop.component.css']
 })
 export class IndividualWorkshopComponent implements OnInit {
-  customTitle: string;
+  
+   customTitle: string;
   customDescription: string;
   customImage: string;
   workshop;

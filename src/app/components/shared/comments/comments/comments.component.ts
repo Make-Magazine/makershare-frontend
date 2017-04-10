@@ -13,6 +13,9 @@ export class CommentsComponent implements OnInit {
   @Input("nodeId") nodeId;
   @Input("comments") comments;
 
+  
+
+
   // @Output() comments = new EventEmitter<any>();
   constructor(
     private viewService: ViewService, 
@@ -20,6 +23,7 @@ export class CommentsComponent implements OnInit {
   newcomment;
   challengeNid;
   CommenterNid;
+  
   collabs = [];
   obvfn;
   commentForm: FormGroup;
