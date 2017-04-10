@@ -51,7 +51,7 @@ export class LearnComponent implements OnInit {
   }
   /* end count function */
   WorkshopDetails(nid) {
-    this.router.navigate(['/learn', nid]);
+    this.router.navigate(['/workshops', nid]);
   }
   loadMoreWorkshop() {
     this.pages++;

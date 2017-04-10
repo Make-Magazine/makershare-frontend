@@ -30,7 +30,7 @@ export class SliderComponent implements OnInit {
 
   loadMoreData(nid,type){
     if(type=="Learning Sequence"){
-  this.router.navigate(['/learn', nid]);
+  this.router.navigate(['/workshops', nid]);
 
     }else{
        this.router.navigate(['/challenges', nid]);

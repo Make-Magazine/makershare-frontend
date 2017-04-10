@@ -40,6 +40,7 @@ export class ProjectHeaderComponent implements OnInit {
     if(this.showcaseInfo){
       console.log(this.showcaseInfo)
     }
+    console.log(this.project)
   }
   
   getcurrentuser(){

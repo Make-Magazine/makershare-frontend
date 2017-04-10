@@ -2,16 +2,20 @@
 	<div *ngIf="profile">
 		<section class="container-fluid cover-region">
 		</section>
-		
+
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
-					<div class="d-flex flex-row switch justify-content-end hidden-sm-down display-style">	
-						<a class="profile-message mr-auto"> <app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>Share this profile</a>
-						<a  *ngIf="idProfile != uid" class="profile-message mr-auto" ><app-message-modal [uid]="uid"></app-message-modal>Message This Maker</a>
-						<p class="square-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-						<p class="grid-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+					<div class="d-flex flex-row switch justify-content-end align-items-center hidden-sm-down display-style">
+						<a *ngIf="idProfile != uid" class="profile-message">
+							<app-message-modal [uid]="uid"></app-message-modal>
+						</a>
+						<a class="profile-share mr-auto">
+							<app-shared-buttons *ngIf="profile.first_name" [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+						</a>
+						<p class="grid-view active"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+						<p class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
@@ -38,7 +42,9 @@
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-								<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><i class=" edit-icon fa fa-lg fa-pencil"></i></a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><i class=" edit-icon fa fa-lg fa-pencil"></i></a></div>
+									</div>
 									<img src="{{profile.user_photo_with_style}}" alt="" class="">
 									<div class="card-type"><span>Maker</span></div>
 								</div>
@@ -49,23 +55,37 @@
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-							<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<div  (click)="OpenModal(editinfomodal,'edit-info-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></div></div>
+								<div *ngIf="idProfile && uid">
+									<div *ngIf="idProfile==uid">
+										<div (click)="OpenModal(editinfomodal,'edit-info-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></div>
+									</div>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 									<div class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
-									<ul *ngIf="profile.address_publish" class="list-unstyled location">
-										<li><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
+									<ul *ngIf="idProfile == uid || profile.address_publish" class="list-unstyled location">
+										<li *ngIf="profile.address"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
+										<li *ngIf="!profile.address"><i class="fa fa-lg fa-map-marker"></i></li>
 									</ul>
+									<div *ngIf="idProfile == uid">
+										<div (click)="ProfileInfo.address_publish = 0;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 1">Unpublish</div>
+										<div (click)="ProfileInfo.address_publish = 1;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 0">Publish</div>
+									</div>
 								</div>
 								<hr>
 								<!-- describe yourself-->
 								<ul *ngIf="ProfileInfo.describe_yourself != '' " class="list-unstyled post">
-									<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
+									</div>
 									<li class="profile-describe-yourself">"{{ProfileInfo.describe_yourself}}"</li>
 								</ul>
 								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post">
-									<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')" class="btn btn-white add ">
-										<i class="fa fa-lg fa-plus"></i> Describe your self ?
-									</a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid">
+											<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')" class="btn btn-white add ">
+												<i class="fa fa-lg fa-plus"></i> Describe your self ?
+											</a>
+										</div>
+									</div>
 								</ul>
 								<!-- describe yourself-->
 								<hr>
@@ -81,7 +101,9 @@
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
-									<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<a (click)="OpenModal(biomodal,'add-bio-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(biomodal,'add-bio-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
+									</div>
 									<div class="bio" [innerHTML]="profile.bio"></div>
 								</div>
 								<div *ngIf="!profile.bio" class="bio">
@@ -174,7 +196,9 @@
 
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
-							<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">			<a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid"> <a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div>
+									</div>
 								</div>
 								<hr>
 								<div *ngIf="profile.started_making" class="how">
@@ -183,9 +207,13 @@
 									<p class="started_making">{{profile.started_making}}</p>
 								</div>
 								<div *ngIf="!profile.started_making" class="how">
-										<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">	<a (click)="OpenModal(startedmakingmodal,'add-maker-starting-modal')">
-										<i class="fa fa-lg fa-plus"></i> How'd you get started making?
-									</a></div></div>
+									<div *ngIf="idProfile && uid">
+										<div *ngIf="idProfile==uid">
+											<a (click)="OpenModal(startedmakingmodal,'add-maker-starting-modal')">
+												<i class="fa fa-lg fa-plus"></i> How'd you get started making?
+											</a>
+										</div>
+									</div>
 								</div>
 								<hr>
 
@@ -213,10 +241,11 @@
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
-									<div *ngIf="idProfile && uid"><div *ngIf="idProfile==uid">
-						<a class="btn btn-main btn-sharp" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
-
-						</div></div>
+						<div *ngIf="idProfile && uid">
+							<div *ngIf="idProfile==uid">
+								<a class="btn btn-main btn-sharp edit-profile-btn" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
+							</div>
+						</div>
 
 						<div class="profile-content">
 							<div class="row">
@@ -314,6 +343,12 @@
 	</div>
 </template>
 
+<template #rt let-r="result" let-t="term">
+	<div class="data-container">
+		{{r.value}}
+	</div>
+</template>
+
 <!-- Add Edit Info Modal -->
 <template #editinfomodal let-c="close" let-d="dismiss" ngbModalContainer>
 	<div class="modal-header">
@@ -330,8 +365,10 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
-			<input [(ngModel)]="ProfileInfo.address.country" type="text" class="form-control" id="edit-country">
-			<input [(ngModel)]="ProfileInfo.address.city" type="text" class="form-control" id="edit-city">
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value">
+			<small *ngIf="searchFailed" class="text-danger">
+				Country not found.
+			</small>
 		</div>
 		<div class="clearfix"></div>
 	</div>
