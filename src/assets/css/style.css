@@ -5274,6 +5274,10 @@ img {
   align-self: end;
   color: black; }
 
+.modal-dialog .modal-content .modal-body iframe {
+  width: 100%;
+  max-width: 100%; }
+
 .page-portfolio .portfolio-controls {
   background-color: cyan;
   padding: 10px 0 5px;

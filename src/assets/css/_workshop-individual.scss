@@ -353,3 +353,14 @@
         }
 
  }
+
+.modal-dialog {
+	.modal-content {
+		.modal-body {
+			iframe {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+	}
+}
