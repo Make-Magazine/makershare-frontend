@@ -46,7 +46,6 @@ import { IntelInnovationComponent } from './components/pages/intel-innovation/in
 // GA
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
-
 @NgModule({
   declarations: [
     AppComponent,

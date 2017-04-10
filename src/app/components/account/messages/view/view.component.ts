@@ -36,6 +36,7 @@ export class ViewComponent implements OnInit {
     thread_id: 0,
     body: ''
   };
+  id
   constructor(
     private route: ActivatedRoute,
     private pm: PmService,
@@ -60,10 +61,10 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
-          if(data.author==this.msg.messages[0].author){
+        this.pm.getBlocked(this.msg.messages[0].author).subscribe(data => {
+          if (data.author == this.msg.messages[0].author) {
             this.block = true;
-          }else{
+          } else {
             this.block = false;
           }
         })
@@ -74,24 +75,24 @@ export class ViewComponent implements OnInit {
             Object.assign(message, res);
             this.dateObj = new Date(message.timestamp * 1000);
             this.currentDate = new Date();
-            message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) /(60*1000));
-          if(message.timestamp < 1){
-            message.timestamp = 'Now';
-          }else if(message.timestamp === 1){
-            message.timestamp = 'minute ago';
-          }else if(message.timestamp > 1 && message.timestamp < 60){
-            message.timestamp = message.timestamp + ' '  +  'minutes ago';
-          }else if(message.timestamp > 60 && message.timestamp < 120){
-            message.timestamp = Math.floor(message.timestamp/60) + ' ' +  'hour ago';
-          }else if(message.timestamp >= 120 && message.timestamp < 1440){
-            message.timestamp = Math.floor(message.timestamp/60) + ' '  + 'hours ago';
-          }else if(message.timestamp >= 1440 && message.timestamp < 2880){
-            message.timestamp = Math.floor(message.timestamp/(24*60)) + ' ' + 'day ago';
-          }else if(message.timestamp > 2880 && message.timestamp < 10080){
-            message.timestamp = Math.floor(message.timestamp/(24*60)) + ' '  + 'days ago';
-          }else if (message.timestamp > 10080){
-            message.timestamp = this.dateObj.toLocaleDateString();
-          }
+            message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+            if (message.timestamp < 1) {
+              message.timestamp = 'Now';
+            } else if (message.timestamp === 1) {
+              message.timestamp = 'minute ago';
+            } else if (message.timestamp > 1 && message.timestamp < 60) {
+              message.timestamp = message.timestamp + ' ' + 'minutes ago';
+            } else if (message.timestamp >= 60 && message.timestamp < 120) {
+              message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hour ago';
+            } else if (message.timestamp >= 120 && message.timestamp < 1440) {
+              message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hours ago';
+            } else if (message.timestamp >= 1440 && message.timestamp < 2880) {
+              message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'day ago';
+            } else if (message.timestamp > 2880 && message.timestamp < 10080) {
+              message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'days ago';
+            } else if (message.timestamp > 10080) {
+              message.timestamp = this.dateObj.toLocaleDateString();
+            }
           })
           i++
         }
@@ -119,7 +120,7 @@ export class ViewComponent implements OnInit {
           first_name: this.user['first_name'],
           last_name: this.user['last_name'],
           body: this.reply.body,
-          timestamp: 'Now' 
+          timestamp: 'Now'
 
         }
         this.messages.push(newComment);
@@ -179,26 +180,26 @@ export class ViewComponent implements OnInit {
     }
   }
   blockUser() {
-    this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data => {
-      this.blockedUser = data;
-      this.block = true;
-    })
+      this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data => {
+        this.blockedUser = data;
+        this.block = true;
+      })
   }
   unBlockUser() {
     this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data => {
       this.unBlockedUser = data;
-      this.block =  false;
+      this.block = false;
     })
   }
-  getBlockedUser(){
+  getBlockedUser() {
     // this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
     //   console.log(data);
     // })
   }
 
-    /*
-  *if message turned off the data[0]=disabled
-  */
+  /*
+*if message turned off the data[0]=disabled
+*/
   getStatus() {
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.pm.getStatus(this.userId).subscribe(data => {
@@ -210,6 +211,12 @@ export class ViewComponent implements OnInit {
       }
     })
   }
-  
+  deleteReplay(i) {
+    this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data=>{
+      console.log(data)
+    });
+    delete this.messages[i];
+  }
+
 }
 

@@ -4,13 +4,13 @@
 
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
 <div class="modal-header">
-    <h3 style="color: black"></h3>
+      <a style="color: black" (click)="c('Close click')" >X</a>
   </div>
 <div class="modal-body">
   <div *ngIf="NID == false">
   <!--<div class=text-right>{{date}}</div>-->
-  <p *ngIf="username">Your name:{{username}}<p>
-  <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event)" novalidate >
+  <p *ngIf="full_name">Your name:{{full_name}}<p>
+  <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event,CurrentType)" novalidate >
     <div class="form-group">
       <label>I want to submit:	</label>
       <select class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
@@ -19,14 +19,15 @@
     </div>
      <div *ngIf="formErrors.field_want_submit" class="alert alert-danger error-msg">
        {{formErrors.field_want_submit}}
-                        </div>
+    </div>
     <div *ngIf="CurrentType == 1185">
      <label>The bug is on the page I’m looking at right now. Yes/No?	</label>
      <div>
-      <label for="example-text-input" class="form-label">Yes:</label>
-      <div>
+      <label for="example-text-input" class="label">Yes:</label>
+      <a href="{{full_url}}" id="field_bug_in_page" >{{full_url}}</a>
+      <!--<div>
         <input class="form-control" type="text" disabled [formControl]="feedbackForm.controls['field_bug_in_page']">
-      </div>
+      </div>-->
     </div>
     <div *ngIf="CurrentType == 1185">
       <label for="example-text-input" class="form-label">NO:</label>
@@ -76,7 +77,7 @@
       <label for="exampleInputFile">Upload screenshots of what you see especially broken images or error messages	</label>
       <input type="file" class="form-control-file" id="files"  placeholder="Choose photo" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']" (change)="uploadFile($event)" multiple >
       <pre id="filelist" style="display:none;"></pre>
-      <small id="fileHelp" class="form-text text-muted">maximum upload size 2M</small>
+      <small id="fileHelp" class="form-text text-muted">maximum upload size 1M</small>
        <div *ngIf="formErrors.field_upload_screenshots" class="alert alert-danger error-msg">
         {{formErrors.field_upload_screenshots}}
       </div>
@@ -100,12 +101,15 @@
   <div class="row">
     <div class="col-md-2">
     <label class="md-check">
+      <p>1</p>
       <input type="radio" value="1"  [formControl]="feedbackForm.controls['field_recommend_site']">
       <p>Not likely at all</p>
     </label>
     </div>
-     <div class="col-md-2">
-    <label class="md-check">
+     <div  class="col-md-2">
+    <label class="md-check "  >
+     <p class>2</p>
+
       <input type="radio" value="2"  [formControl]="feedbackForm.controls['field_recommend_site']">     
       <p>Somewhat unlikely</p>
     </label>
@@ -113,6 +117,7 @@
     <div class="col-md-2">
 
     <label class="md-check">
+      <p>3</p>
       <input type="radio" value="3"  [formControl]="feedbackForm.controls['field_recommend_site']">     
      <p> Not sure</p>
     </label>
@@ -120,12 +125,16 @@
         <div class="col-md-2">
 
     <label class="md-check">
+            <p>4</p>
+
       <input type="radio" value="4"  [formControl]="feedbackForm.controls['field_recommend_site']">     
       <p>Likely</p>
     </label>
     </div>
     <div class="col-md-2">
     <label class="md-check">
+           <p> 5</p>
+
       <input type="radio" value="5"  [formControl]="feedbackForm.controls['field_recommend_site']">     
      <p>Extremely likely</p>
     </label>
@@ -146,7 +155,7 @@
 </p>
 
 <div align="center">
-    <button type="button" class="btn btn-lg btn-primary" (click)="c('Close click')">OK</button>
+    <button type="button" class="btn btn-lg btn-primary" (click)="c('Close click')" (click)="resetNID()">OK</button>
 </div>
 
 </div>
@@ -154,7 +163,7 @@
 <div class="modal-footer">
   <ul class="list-unstyled actions">
     <li>
-      <a style="color: black" (click)="c('Close click')">Cancel</a>
+      <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
     </li>
   </ul>
 </div>

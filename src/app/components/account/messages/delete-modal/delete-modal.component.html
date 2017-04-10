@@ -1,3 +1,19 @@
-<p>
-  delete-modal works!
-</p>
+<a (click)="open(content)">Delete</a>
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
+      <span aria-hidden="true" >&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg" class="form-horizontal">
+    <div class="modal-body">
+      <div class="form-group">
+        <h5 class="control-label">You are deleting this message. Are you sure? Yes, continue/Cancel</h5>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
+        <button  class="btn btn-blue btn-sharp">Yes</button>
+    </div>
+  </form>
+</template>
