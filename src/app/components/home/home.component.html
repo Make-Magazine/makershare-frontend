@@ -15,7 +15,7 @@
         'col-md-4 col-lg-4'   : item.type == 'project' ,
         'col-md-4'            : item.type == 'maker' ,
         'col-md-4'            : item.type == 'showcase',
-        'col-md-8'            : item.type == 'challenge' ,
+        'col-md-12'            : item.type == 'challenge' ,
         'col-md-8'            : item.type == 'learning_sequence'
           }">
         <!-- Challenge Cards -->
@@ -33,7 +33,9 @@
         </div>
 
         <!-- Maker Cards -->
-        <div *ngIf="item.type == 'maker'"></div>
+        <div *ngIf="item.type == 'maker'">
+            <app-maker-card [uid]="item.id"></app-maker-card>
+        </div>
 
         <!-- Project Cards -->
         <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="item.id"></app-project-card>
