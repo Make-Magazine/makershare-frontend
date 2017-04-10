@@ -1,6 +1,17 @@
 .profile-page {
     position: relative;
     margin-top: 14px;
+    .edit-profile-btn {
+        position: relative;
+        margin-bottom: 20px;
+        left: 40%;
+    }
+    .profile-share {
+        a {
+            font-size: 20px;
+            background-color: transparent;
+        }
+    }
 }
 
 .profile-cover {
@@ -148,13 +159,13 @@
         .profile-group {
             .profile-pic {
                 position: relative;
-                margin-bottom: -100px;
                 img {
                     height: auto;
                     width: 100%;
                     position: relative;
                     top: -110px;
                     left: -40px;
+                    margin-bottom: -100px;
                 }
                 a {
                   z-index: 1;
@@ -377,6 +388,10 @@
 .profile-header {
     margin-top: 50px;
     .display-style {
+        cursor:pointer;
+        .active {
+            opacity: 0.3;
+        }
         padding-right: 10px;
         img {
             width: 30px;
@@ -446,8 +461,6 @@
 }
 
 .switch {
-    color: $light-grey;
-    cursor: pointer;
     text-align: right;
     margin: 5px 0;
     p {
@@ -687,7 +700,9 @@
         width: 95%;
         border-radius: 0;
         padding: 0;
-        margin: 0 auto;
+        margin: 0 auto 30px;
+        top: 15px;
+
     }
     .image-top {
         width: 100%;
@@ -695,7 +710,7 @@
         overflow: hidden;
         position: relative;
         top: -15px;
-        left: -24px;
+        left: -20px;
         .card-img-top {
             border-radius: 0;
         }
@@ -801,6 +816,136 @@
     }
 }
 
+.project-home {
+    height: 375px;
+    &.card {
+        // width: 95%;
+        border-radius: 0;
+        padding: 0;
+        margin: 0 auto;
+        top: 15px;
+
+    }
+    .image-top {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+        top: -15px;
+        left: -20px;
+        .card-img-top {
+            border-radius: 0;
+        }
+        img {
+            height: auto;
+            width: 100%;
+        }
+    }
+    .card-block {
+        padding: 0 5px;
+        margin-top: -5px;
+        // height: 175px;
+        .content-side {
+            padding-left: 5px;
+            width: 80%;
+        }
+        .profiel-pic-container {
+            img {
+                width: 90px;
+            }
+        }
+    }
+    .icons-side-project {
+        .project-icon {
+            height: 30px;
+            img {
+                width: auto;
+                height: 30px;
+            }
+        }
+    }
+    .icons {
+        position: absolute;
+        color: white;
+        top: -12px;
+        left: -10px;
+        font-size: 13px;
+        padding: 20px;
+        span {
+            margin: 2px;
+            font-size: 13px;
+            i {
+                margin-right: 4px;
+                font-size: 17px;
+            }
+        }
+    }
+    .card-title {
+        @include card-header-font-md;
+        color: $text-color-1;
+        height: auto;
+        padding: 0px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 30px;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+    }
+    .maker-name {
+        @include desc-font-3 ();
+        color: $text-color-6;
+    }
+    .card-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin: 0 5px;
+        color: $main-grey;
+        &.project-text-grid {
+            display: none;
+        }
+    }
+    .categories {
+        display: none;
+        span {
+            margin-left: 3px;
+            color: $light-grey;
+        }
+    }
+    .card-role {
+        p {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 15px;
+            color: $light-grey;
+        }
+    }
+    .card-stats {
+        padding: 2px;
+        color: $light-grey;
+        ul li {
+            @include desc-font-2();
+            img {
+                margin-right: 6px;
+                &.project-likes {
+                    width: 12px;
+                }
+                &.project-views {
+                    width: 20px;
+                }
+            }
+            span {
+                margin: 0px;
+            }
+        }
+    }
+}
 .profile-page {
     background-color: $main-bg;
     margin: 0px;

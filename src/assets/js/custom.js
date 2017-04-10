@@ -115,7 +115,7 @@ $(document).ready(function () {
 	});
 
 	// Toggle profile grid and square view
-	$(document).on('click', '.square-view , .grid-view', function () {
+	$(document).on('click', '.square-view', function () {
 		// $(this).children().toggle();
 		if (squareView) {
 			$('.projects-grid .project-item ').removeClass('col-lg-6');
@@ -129,7 +129,11 @@ $(document).ready(function () {
 				display: 'block',
 			});
 			squareView = false;
-		} else {
+		} 
+	});
+	$(document).on('click', '.grid-view', function () {
+		// $(this).children().toggle();
+		if (!squareView) {
 			$('.projects-grid .project-item').removeClass('col-lg-12');
 			$('.projects-grid .project-item').addClass('col-lg-6');
 			$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'none' });
@@ -143,7 +147,6 @@ $(document).ready(function () {
 			squareView = true;
 		}
 	});
-
 	// Show and hide project stats on project card
 	$(document).on('mouseenter', '.project', function () {
 		if (squareView) {
@@ -166,6 +169,14 @@ $(document).ready(function () {
 		}
 	});
 
+	$(document).on('click', '.display-style p',function(){
+		if($(this).hasClass('active')) {
+			
+		}else {
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');			
+		}
+	})
 	//Index page parallax bg
 	window_width = $(window).width();
 	window_height = $(window).height();

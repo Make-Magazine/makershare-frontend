@@ -139,7 +139,7 @@ export class ChallengeProjectComponent implements OnInit {
   }
 
   onCancel(event: any) {
-    this.router.navigate(['/challenges/' + this.nid]);
+    this.router.navigate(['/missions/' + this.nid]);
   }
   onSubmit(event: any) {
 
@@ -149,7 +149,7 @@ export class ChallengeProjectComponent implements OnInit {
       "field_entry_challenge": this.nid,
     };
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
-      this.router.navigate(['challenges/', this.nid]);
+      this.router.navigate(['missions/', this.nid]);
       // console.log(this.challangeData.title)
       this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
       /* bookmark auto after submit project challenge */
@@ -190,7 +190,7 @@ export class ChallengeProjectComponent implements OnInit {
     this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status', nid).subscribe(data => {
       this.enterStatus = data.status;
       if (this.enterStatus == false) {
-        this.router.navigate(['/challenges/' + this.nid]);
+        this.router.navigate(['/missions/' + this.nid]);
 
       }
     }, err => {

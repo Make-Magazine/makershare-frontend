@@ -174,10 +174,9 @@
                 p {
                     @include body-font-2();
                     display: -webkit-box;
-                    -webkit-line-clamp: 5;
+                    -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
-                    min-height: 116px;
                     color: #4F4F4F;
                 }
             }
@@ -200,15 +199,14 @@
 .page-learn-summary {
     background-color: #F2F2F2;
 }
-
-
 /* learn card on search page */
 /* challenge card on search page */
+
 .page-search-content {
     .learn-card {
         position: relative;
         padding: 8px 8px 0px 8px;
-        cursor:pointer;
+        cursor: pointer;
         background-color: $shade-2;
         -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
         -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
@@ -246,132 +244,132 @@
             height: 100%;
             .card {
                 .card-title {
-                @include card-header-font-lg();
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                height: 92px;
-                color:$shade-4;
-                font-size: 3em !important;
-                margin-bottom: 54px;
-            }
-            .card-status {
-                @include body-font-1();
-                display: inline-block;
-                text-transform: none;
-            }
-            .card-partership {
-                @include desc-font-2();
-                text-transform: none;
-                font-size: 14px;
-                display: inline-block; 
-                min-height: 16px;
-                margin-bottom: 10px;
-                h4 {
-                    font-weight: bold;
-                }
-
-                p {
-                    @include desc-font-2();
-                }
-            }
-            .card-description {
-                p {
-                @include desc-font-1();
-                height: 85px;
-                color: white;
-                }
-                }
-            }
-            .workshop-count {
-                color: $shade-5;
-            }
-
-            }
-        }
-    }
-
-.front {
-    .page-learn {
-        background-color: transparent;
-        .learn-card {
-            .learn-item {
-                padding: 10px;
-                img {
-                    width: 250px;
-                }
-                .card-partership {
-                    color: $main-button-1;
-                }
-            }
-            .image-container {
-                overflow: hidden;
-                position: relative;
-                padding: 0px 15px;
-                img {
-                    max-width: 100%;
-                    height: auto;
-                }
-            }
-            .card-container {
-                color: $white;
-                // font-weight: bold;
-                position: relative;
-                .learn-type-bagde {
-                    position: absolute;
-                    top: 38px;
-                    right: -50px;
-                    transform: rotate(-90deg);
-                    color: #4F4F4F;
-                    p {
-                        margin: 0px;
-                    }
-                }
-                .card-title {
                     @include card-header-font-lg();
-                    font-size: 38px;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
-                    min-height: 67px;
-                    color: #4F4F4F;
+                    height: 92px;
+                    color: $shade-4;
+                    font-size: 3em !important;
+                    margin-bottom: 54px;
                 }
                 .card-status {
                     @include body-font-1();
                     display: inline-block;
                     text-transform: none;
                 }
-                p.card-partnership {}
-                .card-description {
+                .card-partership {
+                    @include desc-font-2();
+                    text-transform: none;
+                    font-size: 14px;
+                    display: inline-block;
+                    min-height: 16px;
+                    margin-bottom: 10px;
                     h4 {
                         font-weight: bold;
                     }
                     p {
-                        @include body-font-2();
-                        display: -webkit-box;
-                        -webkit-line-clamp: 5;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                        min-height: 116px;
-                        color: #4F4F4F;
+                        @include desc-font-2();
                     }
                 }
-                .card-buttons {
-                    a.btn.btn-grey {
-                        background-color: $light-grey;
-                    }
-                    .follow-number {
-                        background-color: $light-grey*0.9;
-                        padding: 3px 15px;
-                        border-radius: 20px;
-                        font-size: 13px;
-                        margin-left: 10px;
+                .card-description {
+                    p {
+                        @include desc-font-1();
+                        height: 85px;
+                        color: white;
                     }
                 }
+            }
+            .workshop-count {
+                color: $shade-5;
             }
         }
     }
 }
 
+.front {
+    .learn-card {
+        position: relative;
+        padding: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        background-color: $learn-cards-bg;
+        height: 390px;
+        margin-bottom: 35px;
+        .learn-item {
+            padding: 10px;
+            img {
+                width: 250px;
+            }
+            .card-partership {
+                color: $main-button-1;
+            }
+        }
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            padding: 0px 15px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .card-container {
+            color: $white;
+            // font-weight: bold;
+            position: relative;
+            .learn-type-bagde {
+                position: absolute;
+                top: 38px;
+                right: -50px;
+                transform: rotate(-90deg);
+                color: #4F4F4F;
+                p {
+                    margin: 0px;
+                }
+            }
+            .card-title {
+                @include card-header-font-lg();
+                font-size: 38px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                // min-height: 67px;
+                color: #4F4F4F;
+            }
+            .card-status {
+                @include body-font-1();
+                display: inline-block;
+                text-transform: none;
+            }
+            p.card-partnership {}
+            .card-description {
+                h4 {
+                    font-weight: bold;
+                }
+                p {
+                    @include body-font-2();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    color: #4F4F4F;
+                }
+            }
+            .card-buttons {
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+                .follow-number {
+                    background-color: $light-grey*0.9;
+                    padding: 3px 15px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
