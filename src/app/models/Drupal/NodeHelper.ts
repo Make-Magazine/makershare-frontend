@@ -33,6 +33,21 @@ export class NodeHelper{
     };
    }
 
+  // public static getImageDetails(file,FileEntityObject){
+  //   var reader = new FileReader();
+   
+  //   reader.onload = function () {
+  //     FileEntityObject.filename = file.name;
+  //     FileEntityObject.file = reader.result;
+  //     FileEntityObject.width = reader.result;
+  //     FileEntityObject.height = file.height;
+  //   };
+  //   reader.onerror = function (error) {
+  //     // console.log('Error: ', error);
+  //   };
+  //  }
+
+
   public static GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string){
     return UsernameAndId.match(/\(([^)]+)\)/)[1];
   }
