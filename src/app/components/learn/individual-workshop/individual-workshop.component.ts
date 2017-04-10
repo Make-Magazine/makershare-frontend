@@ -15,7 +15,8 @@ import { LoaderService } from '../../shared/loader/loader.service';
   styleUrls: ['./individual-workshop.component.css']
 })
 export class IndividualWorkshopComponent implements OnInit {
-  customTitle: string;
+  
+   customTitle: string;
   customDescription: string;
   customImage: string;
   workshop;
@@ -37,6 +38,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubFile = false;
   epubLink;
   utubelink;
+  introlink= false;
   file;
   workshopLeader = null;
   countlessons;
@@ -67,7 +69,7 @@ export class IndividualWorkshopComponent implements OnInit {
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];
-            console.log(this.workshopLeader)
+            // console.log(this.workshopLeader)
           });
         }
         this.customTitle = this.workshop.workshop_title;
@@ -162,6 +164,7 @@ export class IndividualWorkshopComponent implements OnInit {
   }
   overlay(object) {
     delete this.popupPreview;
+     this.introlink= false;
     this.epubFile = null;
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
@@ -200,8 +203,11 @@ export class IndividualWorkshopComponent implements OnInit {
   }
 
   introvideo(content)
-  {
-      this.popupPreview= this.workshop.introductory_video
-      this.modalService.open(content);
+  
+  { 
+      this.introlink= true;  
+      delete this.popupPreview;
+      this.popupPreview = this.workshop.introductory_video;
+       this.modalService.open(content);
   }
 }

@@ -5,3 +5,7 @@
   <img [src]="link.link" alt="" class="media-object">
   <img class="play-image" src="./assets/images/video-icon.png" alt="">
 </div>-->
+ 
+ <div  *ngIf= "link"> 
+   <div [innerHTML]="link"></div>
+ </div>
