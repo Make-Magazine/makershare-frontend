@@ -5212,7 +5212,8 @@ img {
       font-weight: bold;
       border-radius: 3px; }
       .page-workshop-single .page-workshop-individual .top-content-wrapper ul.workshop-tags .btn:hover {
-        background-color: #525252; }
+        background-color: #525252;
+        cursor: inherit; }
     .page-workshop-single .page-workshop-individual .top-content-wrapper .workshop-actions li {
       display: block;
       float: left; }
@@ -5336,7 +5337,6 @@ img {
 .page-workshop-individual .learn-card {
   position: relative;
   padding: 16px;
-  cursor: pointer;
   background-color: #DCDCDC;
   box-shadow: 0px 2px 22px #888888; }
   .page-workshop-individual .learn-card .learn-item {
@@ -5347,6 +5347,8 @@ img {
       color: #ED1C24; }
   .page-workshop-individual .learn-card .individual-card-img {
     padding: 0px; }
+    .page-workshop-individual .learn-card .individual-card-img .play-image:hover {
+      cursor: pointer; }
   .page-workshop-individual .learn-card .image-container {
     position: relative;
     padding: 0px; }
@@ -5418,6 +5420,12 @@ img {
   bottom: 5px;
   align-self: end;
   color: black; }
+.page-workshop-individual .workshop-tags ul .btn-border-tag:hover {
+  cursor: inherit !important; }
+.page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]):hover {
+  cursor: inherit !important; }
+.page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]).btn-border-tag:hover {
+  cursor: inherit !important; }
 
 .modal-dialog .modal-content .modal-body iframe {
   width: 100%;
