@@ -421,7 +421,7 @@ export class FeedbackComponent implements OnInit {
     var now = Date.now();
     var feedback = this.feedback;
     console.log(feedback);
-    feedback.title = this.feedbackForm.value.title = 'hhhhhhhhhhhhhhh' + '_' + now;
+    feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
     feedback.field_want_submit.und = this.feedbackForm.value.field_want_submit;
     if (feedback.field_want_submit.und == "1185") {
       if (this.feedbackForm.value.field_describe_bug) {
