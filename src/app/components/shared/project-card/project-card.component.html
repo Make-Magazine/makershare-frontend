@@ -16,8 +16,8 @@
         
       </body>
       </html>project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
-      <img *ngIf="!project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
-      <img *ngIf="project.cover_photo" src="http://placehold.it/365x290" alt="">
+      <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
+      <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
       <div class="teaser">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
