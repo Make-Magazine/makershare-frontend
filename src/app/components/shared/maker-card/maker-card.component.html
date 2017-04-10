@@ -6,7 +6,7 @@
   </div>
   <div class="card-block d-flex flex-column justify-content-around">
     <p class="card-type">Maker</p>
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-row">
       <div class="icons-side-project d-flex flex-row" *ngIf="badges">
         <div class="project-icon" *ngFor="let badge of badges;">
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">

@@ -63,8 +63,8 @@
       <div class="container">
         <div class="projects-grid row">
           <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of projects; let i = index;">
-            <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>
             <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+            <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>
           </div>
         </div>
       </div>
