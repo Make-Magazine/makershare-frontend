@@ -4,25 +4,20 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-
 @Component({
   selector: 'app-follow',
   templateUrl: './follow.component.html',
 })
 export class FollowComponent implements OnInit {
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
-
-
   ) {
     this.router = router;
   }
-
   @Input() nodeNid;
   @Input() user;
   @Output() countNumber = new EventEmitter<number>();
@@ -33,12 +28,9 @@ export class FollowComponent implements OnInit {
   ButtonFollow;
   countFollowers = 0;
   ngOnInit() {
-
     this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
-
       this.countFollowers = response['count'];
       this.countNumber.emit(this.countFollowers);
-
     }, err => {
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
@@ -46,12 +38,10 @@ export class FollowComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
-
       } else {
         this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
           this.isFollowed = data[0];
           console.log(this.isFollowed);
-
           /* initialize Button Follow*/
           if (this.isFollowed == false) {/* start if  */
             this.ButtonFollow = 'Follow';
@@ -78,7 +68,6 @@ export class FollowComponent implements OnInit {
           this.ButtonFollow = 'Follow';
           this.countFollowers--;
           this.countNumber.emit(this.countFollowers);
-
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
@@ -88,15 +77,11 @@ export class FollowComponent implements OnInit {
           this.ButtonFollow = 'Following';
           this.countFollowers++;
           this.countNumber.emit(this.countFollowers);
-
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
-
       }
-
     });//end if check user login
-
   }
   /* end function follow */
   /* function check login */
@@ -109,7 +94,4 @@ export class FollowComponent implements OnInit {
     });
   }
   /* end function  check login */
-
-
-
 }
