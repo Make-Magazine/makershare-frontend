@@ -311,7 +311,7 @@ Definitely include a video and photos of the finished product.`
     'show_tell': {
       'title': 'Making a Show and Tell video:',
       'guide': 'embed video:  ',
-      'video': 'https://www.youtube.com/watch?v=pnLXBSM3LF8'
+      'video': 'https://drive.google.com/file/d/0B7kKuw_1dgfJMHd4Q0l1cmpNMFE/view?ts=58ecedcc'
     },
     'aha': {
       'title': 'AHA Moment:',
