@@ -12,6 +12,7 @@ import { UserService } from '../../../d7services/user/user.service';
   templateUrl: './challenge-card.component.html',
 })
 export class ChallengeCardComponent implements OnInit {
+  countProjects=0;
   challenge: IChallengeData = {
     title: "",
     cover_image: "",
@@ -61,6 +62,7 @@ export class ChallengeCardComponent implements OnInit {
 
   ngOnInit() {
     this.getChallenges();
+    this.getCountProject();
   }
 
   getChallenges() {
@@ -87,6 +89,23 @@ export class ChallengeCardComponent implements OnInit {
       console.log(err);
     });
   }
+   /* function to get count projects in challenge */
+  getCountProject() {
+    // var nid;
+      this.viewService.getView('maker_count_project_challenge_api/' +this.challengeNid)
+      .subscribe(data => {
+        if (data == null) {
+          this.countProjects = 0
+           console.log(data);
+        } else {
+          this.countProjects = data;
+           console.log(data[0]);
+        }
+      }, err => {
+     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      });
+  }
+  /*end function count project in challenge*/
   /* function to change data format */
   changeDateFormat(date) {
     var d;

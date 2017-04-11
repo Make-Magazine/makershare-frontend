@@ -20,6 +20,7 @@ export class IndividualWorkshopComponent implements OnInit {
   customDescription: string;
   customImage: string;
   workshop;
+  title="Questions";
   objects;
   lessons
   learns;
