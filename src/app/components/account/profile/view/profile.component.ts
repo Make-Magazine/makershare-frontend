@@ -290,7 +290,6 @@ export class ProfileComponent implements OnInit {
   }
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(res => {
-      console.log(res);
       this.profile = res;
       this.ProfileInfo.nickname = res.nickname;
       this.ProfileInfo.address = res.address;
