@@ -5366,6 +5366,8 @@ img {
     .page-workshop-individual .learn-card .workshop-actions li a.active {
       background-color: #333333;
       color: #fff; }
+  .page-workshop-individual .learn-card .workshop-actions .btn {
+    background-color: #DCDCDC; }
   .page-workshop-individual .learn-card .container-content {
     position: relative;
     padding-right: 0px; }

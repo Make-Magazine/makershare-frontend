@@ -273,15 +273,22 @@
 			}
 		
 		}
+		// .shares-buttons{
+		// 	background-color: $light-grey
+
+		// }
 
 				.workshop-actions {
 					
 				li {
 					float: left;
-					a.active {
+						a.active {
 						background-color: $main-grey;
 						color: #fff;
 					}
+				}
+				.btn {
+						background-color: $learn-card-bg ;
 				}
 			}
 	
