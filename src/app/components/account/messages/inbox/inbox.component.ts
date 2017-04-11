@@ -21,7 +21,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class InboxComponent implements OnInit {
   @ViewChild('myInput')
   myInputVariable: any;
-  searchValue:string = '';
+  searchValue: string = '';
   closeResult: string;
   currentuser;
   active = true;
@@ -65,6 +65,7 @@ export class InboxComponent implements OnInit {
   allChecked
   hideTurnOn: boolean = false;
   status;
+  blocked;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -81,34 +82,32 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
     this.getStatus();
 
-      this.getCurrentUser();
-      this.getMessages();
-      this.buildForm();
-      this.CountMessages();
-    
-    
-    
+    this.getCurrentUser();
+    this.getMessages();
+    this.buildForm();
+    this.CountMessages();
+    this.getBlockedUsers();
+
+
   }
 
-  search = (text$: Observable<string>) =>{
+  search = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
       .do(() => this.searchFailed = false)
-      .switchMap((term) => 
-        {
-          if(term.length > 1){
-            return this.viewService.getView('maker_profile_search_data',[['email', term]])
+      .switchMap((term) => {
+        if (term.length > 1) {
+          return this.viewService.getView('maker_profile_search_data', [['email', term]])
             .map(result => {
-              console.log(result)
-              if(result.length == 0){
+              if (result.length == 0) {
                 this.searchFailed = true;
               }
               return result;
             })
-          }
-          return [];
         }
+        return [];
+      }
       )
   };
 
@@ -120,7 +119,7 @@ export class InboxComponent implements OnInit {
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
       this.SelectedUser.push(data);
       this.messageForm.reset();
-       this.myInputVariable.nativeElement.value = "";
+      this.myInputVariable.nativeElement.value = "";
     });
   }
   getCurrentUser() {
@@ -144,10 +143,10 @@ export class InboxComponent implements OnInit {
           user_photo: this.user['user_photo'],
           sender: 'you send a message',
           subject: this.messageObj.subject,
-          last_updated : 'Now',
+          last_updated: 'Now',
         }
         this.msg.unshift(newMessage);
-        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
@@ -248,21 +247,21 @@ export class InboxComponent implements OnInit {
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
           msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-          if(msg_arr[i].last_updated < 1){
+          if (msg_arr[i].last_updated < 1) {
             msg_arr[i].last_updated = 'Now';
-          }else if(msg_arr[i].last_updated === 1){
+          } else if (msg_arr[i].last_updated === 1) {
             msg_arr[i].last_updated = 'minute ago';
-          }else if(msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60){
-            msg_arr[i].last_updated = msg_arr[i].last_updated + ' '  +  'minutes ago';
-          }else if(msg_arr[i].last_updated >= 60 && msg_arr[i].last_updated < 120){
-            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' ' +  'hour ago';
-          }else if(msg_arr[i].last_updated >= 120 && msg_arr[i].last_updated < 1440){
-            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/60) + ' '  + 'hours ago';
-          }else if(msg_arr[i].last_updated >= 1440 && msg_arr[i].last_updated < 2880){
-            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' ' + 'day ago';
-          }else if(msg_arr[i].last_updated > 2880 && msg_arr[i].last_updated < 10080){
-            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated/(24*60)) + ' '  + 'days ago';
-          }else if (msg_arr[i].last_updated > 10080){
+          } else if (msg_arr[i].last_updated > 1 && msg_arr[i].last_updated < 60) {
+            msg_arr[i].last_updated = msg_arr[i].last_updated + ' ' + 'minutes ago';
+          } else if (msg_arr[i].last_updated >= 60 && msg_arr[i].last_updated < 120) {
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated / 60) + ' ' + 'hour ago';
+          } else if (msg_arr[i].last_updated >= 120 && msg_arr[i].last_updated < 1440) {
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated / 60) + ' ' + 'hours ago';
+          } else if (msg_arr[i].last_updated >= 1440 && msg_arr[i].last_updated < 2880) {
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated / (24 * 60)) + ' ' + 'day ago';
+          } else if (msg_arr[i].last_updated > 2880 && msg_arr[i].last_updated < 10080) {
+            msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated / (24 * 60)) + ' ' + 'days ago';
+          } else if (msg_arr[i].last_updated > 10080) {
             msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
           }
           i++
@@ -335,9 +334,9 @@ export class InboxComponent implements OnInit {
  */
   deleteMessages() {
     for (var _i = 0; _i < this.msg.length; _i++) {
-     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+      this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
     }
-    this.msg.splice(this.deletedArr.length,1)
+    this.msg.splice(this.deletedArr.length, 1)
   }
 
   viewMessage(thread_id) {
@@ -368,7 +367,7 @@ export class InboxComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
       this.hideTurnOn = true;
-      this.notificationBarService.create({ message: 'You have disabled Privatemsg and are not allowed to write messages', type: NotificationType.Success });
+      this.notificationBarService.create({ message: 'You have turned off messaging', type: NotificationType.Success });
     })
   }
   /**
@@ -387,7 +386,7 @@ export class InboxComponent implements OnInit {
   getStatus() {
     this.userId = localStorage.getItem('user_id');
     this.pm.getStatus(this.userId).subscribe(data => {
-      
+
       this.status = data;
       if (this.status == false) {
         this.hideTurnOn = false;
@@ -399,7 +398,18 @@ export class InboxComponent implements OnInit {
   }
 
   reset() {
-   
+
   }
 
+  getBlockedUsers() {
+    this.pm.getAllBlocked().subscribe(data => {
+      this.blocked = data;
+    })
+  }
+
+  unBlockUsers(uid, i) {
+    this.pm.unBlockUser(uid).subscribe();
+    var index = this.blocked.indexOf(uid, 0);
+    this.blocked.splice(index, 1);
+  }
 }

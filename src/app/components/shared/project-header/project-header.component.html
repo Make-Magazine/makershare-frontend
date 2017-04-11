@@ -5,7 +5,7 @@
         <img src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
       </div>
       <div class="project-card-footer-3 d-flex justify-content-end">
-        <ul class="project-card-badges mr-auto">
+        <ul class="project-card-badges d-flex mr-auto">
           <li class="project-badge"><img src="./assets/images/badges/awards@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/challenge-winner@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/community-manager@2x.png.png" alt="" class="img-responsive"></li>
@@ -13,7 +13,7 @@
         </ul>
         <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
           <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
-          <app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>
+          <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
           <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
           <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
           <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>

@@ -24,6 +24,7 @@ export class VideoDisplayComponent implements OnInit {
   links = [];
   sanitizethis;
   newLink: Object ;
+   introlink= false; 
 
 
   constructor(
@@ -39,23 +40,29 @@ export class VideoDisplayComponent implements OnInit {
   @Input() link;
 
   ngOnInit() {
-    console.log(this.link)
-    if (this.youtube_parser(this.link)) {
-       console.log (this.youtube_parser(this.link))
-      this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.link) + ' "frameborder="0" style="width:480px; height:270px;"></iframe>';
-      this.newLink['link'] = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-      this.newLink['Pic'] = "https://img.youtube.com/vi/" + this.youtube_parser(this.link) + "/hqdefault.jpg";
-      console.log (this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis))
-      console.log (this.newLink['Pic'])
-    }
-    else if (this.vimeo_parser(this.link)) {
-      this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.link;
-      this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-        this.link.link = this.sanitizer.bypassSecurityTrustHtml(data.html);
-        this.link.Image = data.thumbnail_url_with_play_button;
-      });
-    }
-  }
+    // console.log(this.link)
+     this.introlink= true; 
+
+     if (this.link) {
+          if (this.youtube_parser(this.link)) {
+            // console.log(this.youtube_parser(this.link));
+            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.link) +' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
+            this.link = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+            // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
+            // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+            //   this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            // });
+
+          }
+          else if (this.vimeo_parser(this.link)) {
+            this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.link;
+            this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+             this.link = this.sanitizer.bypassSecurityTrustHtml(data.html);
+            });
+          }
+        }
+
+ }
 
   youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -69,13 +76,5 @@ export class VideoDisplayComponent implements OnInit {
 
   }
 
-  // youtube_checker(link) {
-  //   this.youtube_parser(link);
-
-  //   this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(link) + ' "frameborder="0" style="width:480px; height:270px;"></iframe>';
-  //   this.link.videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-  //   console.log(this.link.videolink)
-  //   this.link.videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(link) + "/hqdefault.jpg";
-  // }
 
 }

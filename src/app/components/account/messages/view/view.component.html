@@ -1,52 +1,47 @@
 <div class="container conversation-container" *ngIf="msg">
-      <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
-      <div class="delete-actions">
-        <a class="btn btn-transparent" *ngIf="!block" (click) = "blockUser()">Block</a> 
-        <a class="btn btn-transparent" *ngIf="block"  (click) = "unBlockUser()">UnBlock</a> - 
-        <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
-      </div>
-      <h3 class="message-subject">{{msg.subject}}</h3>
-        <ul class="list-unstyled conversation">
-          <div>
-            <li class="single-message" *ngFor="let message of messages">
-              <div class="media message-info">
-                <div class="media-left">
-                  <a href="#">
-                    <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" >
-                  </a>
-                </div>
-                <div class="media-body">
-                  <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
-                  <p class="timestamp" *ngIf="message.timestamp">{{message.timestamp}}</p>
-                  <!--<p class="timestamp" *ngIf="message.timestamp > 1 && message.timestamp < 60" >{{message.timestamp}} minutes ago </p>
-                  <p class="timestamp" *ngIf="message.timestamp == 60" >{{message.timestamp/60 | number : '1.0-0'}} hour ago</p>
-                  <p class="timestamp" *ngIf="message.timestamp > 60 && message.timestamp < 1440 " >{{message.timestamp/60 | number : '1.0-0'}} hours ago</p>
-                  <p class="timestamp" *ngIf="message.timestamp == 1440 " >{{message.timestamp/(24*60) | number : '1.0-0'}} 1 day ago</p>
-                  <p class="timestamp" *ngIf="message.timestamp < 10080 && message.timestamp >= 1440 " >{{message.timestamp/(24*60) | number : '1.0-0'}} days ago</p>
-                  <p class="timestamp" *ngIf="message.timestamp >= 10080 ">{{dateObj | date:'medium'}}</p>
-                  <p class="timestamp" *ngIf="!message.timestamp" >Now</p>-->
-                  
-                </div>
-              </div>
-              <div class="message-body">
-                <p>{{message?.body}}</p>
-              </div>
-            </li>
+  <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
+  <div class="delete-actions" *ngIf="userId != msg.messages[0].author">
+    <a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>
+    <a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>
+  </div>
+  <div class="delete-actions">
+    <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
+  </div>
+  <h3 class="message-subject">{{msg.subject}}</h3>
+  <ul class="list-unstyled conversation">
+    <div>
+      <li class="single-message" *ngFor="let message of messages;let i=index;">
+        <div class="media message-info">
+          <div class="media-left">
+              <img class="d-flex mr-3" src="{{message?.user_photo}}"> 
           </div>
-        </ul>
-        <form [formGroup]="messageForm" (ngSubmit)="onSubmit($event)">
-          <div class="reply-area" [hidden]="block" *ngIf="!hideTurnOn">
-            <p class="reply">Reply</p>
-            <div>
-                <textarea [hidden]="block" name="body" id="" cols="30" rows="5" formControlName="body"></textarea>
-            </div>
-            <div *ngIf="formErrors.body" class="alert alert-danger">
-                          {{ formErrors.body }}
-                        </div>
-            <ul class="list-unstyled send-actions">
-              <li><button type="button" class="btn btn-transparent" (click)="cancel()">Cancel</button></li>
-              <li><button  type="submit" class="btn btn-blue btn-sharp">Send</button></li>
-            </ul>
+          <div class="media-body">
+            <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
+            <p class="timestamp" >{{message?.timestamp}}</p>
+          </div> 
+          <div class="delete">
+            <a class="fa fa-2x fa-trash delete-message" (click)="deleteReplay(i)"></a>
           </div>
-        </form>
+        </div>
+        <div class="message-body">
+          <p>{{message?.body}}</p>
+        </div>
+      </li>
     </div>
+  </ul>
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit($event)">
+    <div class="reply-area" [hidden]="block" *ngIf="!hideTurnOn">
+      <p class="reply">Reply</p>
+      <div>
+        <textarea [hidden]="block" name="body" id="" cols="30" rows="5" formControlName="body"></textarea>
+      </div>
+      <div *ngIf="formErrors.body" class="alert alert-danger">
+        {{ formErrors.body }}
+      </div>
+      <ul class="list-unstyled send-actions">
+        <li><button type="button" class="btn btn-transparent" (click)="cancel()">Cancel</button></li>
+        <li><button type="submit" class="btn btn-blue btn-sharp">Send</button></li>
+      </ul>
+    </div>
+  </form>
+</div>

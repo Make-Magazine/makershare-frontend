@@ -43,7 +43,8 @@ import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.
 import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
 import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
-
+// GA
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { IntelInnovationComponent } from './components/pages/intel-innovation/in
     NotificationBarModule,
     SharedModule,
     DndModule.forRoot(),
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
   ],
   entryComponents: [],
   providers: [

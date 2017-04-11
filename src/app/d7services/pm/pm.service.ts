@@ -65,4 +65,8 @@ export class PmService {
     return this.mainService.get(globals.endpoint + '/privatemsgblock').map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  deleteReplay(mid: number): Observable<any> {
+    return this.mainService.delete(globals.endpoint + '/privatemsgdeletereplay/' + mid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
 }

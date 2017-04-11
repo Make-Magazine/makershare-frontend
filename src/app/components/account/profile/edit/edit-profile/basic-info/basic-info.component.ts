@@ -102,7 +102,7 @@ export class BasicInfoComponent implements OnInit {
   }
   buildForm(): void {
     this.basicForm = this.fb.group({
-      'nickname': ['', [Validators.required]],
+      'nickname': ['', []],
       'first_name': ['', [Validators.required]],
       'last_name': ['', [Validators.required]],
       'address': this.fb.group({

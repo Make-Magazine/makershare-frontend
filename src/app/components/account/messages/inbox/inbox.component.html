@@ -22,6 +22,7 @@
       <div class="selectall">
         <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
       </div>
+      <!--<app-delete-modal>Delete</app-delete-modal>-->
       <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
       <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
       <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
@@ -56,6 +57,9 @@
           <div class="delete">
             <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
           </div>
+          <div *ngFor="let block of blocked">
+            <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
+          </div>
         </div>
       </li>
     </ul>
@@ -79,13 +83,13 @@
     <div class="modal-body">
       <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
         id="createMsg" class="form-horizontal">
-        <div *ngFor=" let user of SelectedUser" (ngSubmit)="resetForm($event)" >
+        <div *ngFor=" let user of SelectedUser" (ngSubmit)="resetForm($event)">
           <app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label class="control-label">To:</label>
           <input #myInput type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name to send" [ngbTypeahead]="search"
-            [resultTemplate]="rt"  (selectItem)="SetMember($event.item.uid, i)">
+            [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
         </div>
         <div class="form-group subject">
           <label class="control-label">Subject</label>

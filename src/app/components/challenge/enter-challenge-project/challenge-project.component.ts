@@ -16,6 +16,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
   templateUrl: './challenge-project.component.html',
 })
 export class ChallengeProjectComponent implements OnInit {
+  countProjects=0;
   projects: IChallengeProject[];
   selectedProject: number;
   hiddenAfterSubmit: boolean = false;
@@ -88,7 +89,23 @@ export class ChallengeProjectComponent implements OnInit {
 
       });
   }
-
+   /* function to get count projects in challenge */
+  getCountProject() {
+    // var nid;
+      this.viewService.getView('maker_count_project_challenge_api/' +this.challengeNid)
+      .subscribe(data => {
+        if (data == null) {
+          this.countProjects = 0
+           console.log(data);
+        } else {
+          this.countProjects = data;
+           console.log(data[0]);
+        }
+      }, err => {
+     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      });
+  }
+  /*end function count project in challenge*/
   getChallangeData() {
 
     this.route.params
