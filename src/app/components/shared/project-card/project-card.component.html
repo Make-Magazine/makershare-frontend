@@ -1,8 +1,8 @@
 <!--<div *ngIf="view == 'grid'">-->
 <div *ngIf="project && !front">
-  <div class="project card" >
+  <div class="project card">
+    <p class="card-type">Project</p>
     <div class="image-top" (click)="ShowProjectDetails(project.nid)">
-
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
       <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
@@ -18,7 +18,6 @@
       </div>
     </div>
     <div class="card-block d-flex flex-column justify-content-around">
-      <p class="card-type">Project</p>
       <div class="d-flex flex-column">
         <div class="d-flex flex-row">
           <div class="profiel-pic-container mr-2">
@@ -27,12 +26,14 @@
           </div>
           <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <a (click)="userProfile(project.first_name,project.last_name)"><p class="maker-name">By {{project.first_name}} {{project.last_name}}</p></a>
+            <a (click)="userProfile(project.first_name,project.last_name)">
+              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+            </a>
           </div>
         </div>
-                  <div> 
-            <app-message-modal *ngIf="project.uid != userId" [uid]="project.uid"></app-message-modal>
-          </div>
+        <div>
+          <app-message-modal *ngIf="project.uid != userId" [uid]="project.uid"></app-message-modal>
+        </div>
         <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
           <div class="project-icon" *ngFor="let badge of badges;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
@@ -67,6 +68,7 @@
 </div>
 <div *ngIf="project && front">
   <div class="project-home card" (click)="ShowProjectDetails(project.nid)">
+    <p class="card-type">Project</p>
     <div class="image-top">
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
@@ -82,7 +84,6 @@
       </div>
     </div>
     <div class="card-block d-flex flex-column justify-content-around">
-      <p class="card-type">Project</p>
       <div class="d-flex flex-column">
         <div class="d-flex flex-row">
           <div class="profiel-pic-container mr-2">
@@ -100,8 +101,8 @@
           </div>
         </div>
       </div>
+      <app-message-modal *ngIf="project.uid != userId" [uid]="project.uid"></app-message-modal>
       <div class="content-side d-flex flex-column justify-content-start">
-
         <!--<p class="card-text" innerHTML="{{project.teaser}}"></p>-->
         <!--<p class="categories">
           <span *ngFor="let category of project.categories; let i = index" innerHTML="{{category}}"></span>

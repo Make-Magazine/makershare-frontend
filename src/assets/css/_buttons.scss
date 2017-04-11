@@ -191,10 +191,14 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
     color: $light-grey;
+    width: 40px;
     font-size: 20px;
     margin: auto;
     border: none;
     background: inherit;
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
     &:hover, &:focus, &:active {
         color: $main-grey;
         cursor: pointer;

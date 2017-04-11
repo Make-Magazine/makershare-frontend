@@ -723,6 +723,7 @@
         padding: 0 10px;
         margin-top: -5px;
         height: 175px;
+        position: relative;
         .content-side {
             padding-left: 5px;
             width: 80%;
@@ -845,19 +846,20 @@
         padding: 0 5px;
         margin-top: -5px;
         // height: 175px;
+        position: relative;
         .content-side {
             padding-left: 5px;
             width: 80%;
         }
         .profiel-pic-container {
             img {
-                width: 90px;
+                width: 60px;
             }
         }
     }
     .icons-side-project {
         .project-icon {
-            height: 30px;
+            // height: 30px;
             img {
                 width: auto;
                 height: 30px;
