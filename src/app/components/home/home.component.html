@@ -38,7 +38,7 @@
         </div>
 
         <!-- Project Cards -->
-        <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="item.id"></app-project-card>
+        <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="item.id" [front]=true></app-project-card>
 
         <!-- Learn Cards -->
         <div *ngIf="item.type == 'learning_sequence'" class="learn-card">

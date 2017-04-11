@@ -723,6 +723,7 @@
         padding: 0 10px;
         margin-top: -5px;
         height: 175px;
+        position: relative;
         .content-side {
             padding-left: 5px;
             width: 80%;
@@ -824,7 +825,7 @@
         padding: 0;
         margin: 0 auto;
         top: 15px;
-
+        margin-bottom: 30px;
     }
     .image-top {
         width: 100%;
@@ -833,6 +834,8 @@
         position: relative;
         top: -15px;
         left: -20px;
+        height: 240px;
+        margin-bottom: -10px;
         .card-img-top {
             border-radius: 0;
         }
@@ -845,19 +848,21 @@
         padding: 0 5px;
         margin-top: -5px;
         // height: 175px;
+        position: relative;
         .content-side {
             padding-left: 5px;
             width: 80%;
         }
         .profiel-pic-container {
             img {
-                width: 90px;
+                width: 60px;
             }
         }
     }
     .icons-side-project {
+        margin-top: 5px;
         .project-icon {
-            height: 30px;
+            // height: 30px;
             img {
                 width: auto;
                 height: 30px;

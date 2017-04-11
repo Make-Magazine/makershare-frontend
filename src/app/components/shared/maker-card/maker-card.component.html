@@ -1,11 +1,11 @@
 <div class="maker-card project card hidden-sm-down" *ngIf="card">
+  <p class="card-type">Maker</p>  
   <div class="image-top">
     <div class="overlay"></div>
     <img *ngIf="card.photo_lg" class="card-img-top" src="{{card.photo_lg}}" alt="">
     <img *ngIf="!card.photo_lg" src="http://placehold.it/365x290" alt="">
   </div>
   <div class="card-block d-flex flex-column justify-content-around">
-    <p class="card-type">Maker</p>
     <div class="d-flex flex-row">
       <div class="icons-side-project d-flex flex-row" *ngIf="badges">
         <div class="project-icon" *ngFor="let badge of badges;">
