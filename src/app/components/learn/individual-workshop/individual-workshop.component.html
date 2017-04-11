@@ -2,12 +2,6 @@
   <section class="page-workshop-individual">
     <div class="region region-content">
       <div *ngIf="workshop" class="container learn-container">
-
-        <!--<ul class="list-unstyled workshop-actions col-1 pull-right">
-           
-            <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
-          </ul>-->
-
         <div class="learn-card d-flex flex-column flex-md-row ">
           <div class="col-md-4 individual-card-img">
             <div class="image-container">
@@ -18,15 +12,12 @@
             <!--<div *ngIf= "workshop.introductory_video">
                          <app-video-display [link]="workshop.introductory_video"></app-video-display>
                   </div>-->
-
             <div *ngIf="workshop.uid">
               <app-learn-user-card [uid]="workshop.uid" [leader]="workshop.leader_name"></app-learn-user-card>
             </div>
-
-
           </div>
-
           <!-- End image-container -->
+
           <div class="col-md-8 container-content">
             <div class="card-container">
               <div class="card">
@@ -72,16 +63,14 @@
             </div>-->
         </div>
         <!-- End col-md-6 -->
-               <div *ngIf="workshop.nid" class="feedback-group">
-                   <label class="feedback-label">Questions</label>
-      <app-comment [nid]="workshop.nid"></app-comment>
-    </div>
+        <!--<div *ngIf="workshop.nid" class="feedback-group">
+          <app-comment [nid]="workshop.nid" [titleform]="title"></app-comment>
+        </div>-->
       </div>
       <!-- End workshop-card -->
     </div>
     <!-- End region-content -->
   </section>
-
 
   <div class="page-workshop-individual">
     <section class="col-sm-12 width-fix">
@@ -95,9 +84,9 @@
                 <div [innerHTML]="workshop?.brief_description"> </div>
                 <div [innerHTML]="workshop?.introductory_video"></div>
               </div>
-             
-            </div>-->
+             </div>-->
               <!-- End of workshop ngIf -->
+
               <div *ngFor="let object of objects; let i=index">
                 <div class="row">
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
@@ -109,14 +98,13 @@
                           <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
                           <p class="card-text"> {{object.object_title}} </p>
                         </div>
-                        <!--<ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-idata-toggle="modal" data-target="#previewer"tem">Vestibulum at eros</li>
-                        </ul>-->
-                        <div class="card-block modal-block">
-                          <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</a>
+
+                        <div class="button-container-main-1  modal-block">
+                          <span class="btn btn-main" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</span>
                         </div>
+                        <!--<div class="card-block modal-block">
+                          <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</a>
+                        </div>-->
                     </div>
                     <div class="media-body col-lg-9">
                       <h4>{{object.lesson_name}}</h4>
@@ -152,9 +140,6 @@
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
                         <p class="card-text"> {{object.object_title}} </p>
                       </div>
-                      <!--<div class="card-block modal-block">
-                        <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</a>
-                      </div>-->
                   </div>
 
                   <div class="media-body col-sm-9">
@@ -181,8 +166,11 @@
                         <div class="card-text" *ngIf="object.chapter"> Number of Pages: {{object.chapter}} </div>
                         <p class="card-text"> {{object.object_title}} </p>
                       </div>
-                      <div class="card-block modal-block">
+                      <!--<div class="card-block modal-block">
                         <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</a>
+                      </div>-->
+                      <div class="button-container-main-1  modal-block">
+                        <span class="btn btn-main" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Lunch Reader</span>
                       </div>
                   </div>
                   <div class="media-body col-sm-9">
@@ -205,13 +193,12 @@
                       <h4 class="card-title">{{object.learning_content_type}}</h4>
                       <p class="card-text"> {{object.object_title}} </p>
                     </div>
-                    <!--<ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-idata-toggle="modal" data-target="#previewer"tem">Vestibulum at eros</li>
-                        </ul>-->
-                    <div class="card-block modal-block">
-                      <a href="{{object.original_source}}" class="card-link html-card">Original Source</a>
+
+                    <!--<div class="button-container-main-1">
+                          <span class="btn btn-main" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Visit Original Sourcer</span>
+                        </div>-->
+                    <div class="button-container-main-1  html-block">
+                      <a href="{{object.original_source}}" class="btn btn-main" target="_blank">Original Source</a>
                     </div>
                   </div>
                   <div class="media-body col-lg-9">
@@ -219,14 +206,20 @@
                     <div [innerHTML]="object.lesson_description"> </div>
                   </div>
                 </div>
-
               </div>
-              <!-- End  ngFor of learning content type -->
+            </div>
+
+            <div *ngIf="workshop" >
+              <div *ngIf="workshop.nid" class=" learning-card">
+                <app-comment [nid]="workshop.nid" [titleform]="title"></app-comment>
+              </div>
             </div>
           </div>
           <!-- End worksop-content -->
         </div>
         <!-- End region-content -->
+
+
         <aside class="col-md-2 list-position">
           <!-- End Profile-container -->
           <ul class="list-unstyled content-list">
@@ -266,7 +259,7 @@
           <!-- End of more lesson Checker -->
         </div>
         <!-- End of Lesson ngFor -->
-   
+
       </div>
   </div>
   <!-- End of container -->

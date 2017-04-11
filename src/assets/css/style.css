@@ -5245,12 +5245,10 @@ img {
     box-shadow: 2px 6px 22px #888888;
     width: 100%;
     margin-bottom: 40px; }
+  .page-workshop-single .page-workshop-individual .workshop-content .html-block {
+    width: 74%; }
   .page-workshop-single .page-workshop-individual .workshop-content .modal-block {
-    border: 1px solid black; }
-    .page-workshop-single .page-workshop-individual .workshop-content .modal-block .card-modal {
-      padding-left: 32px; }
-    .page-workshop-single .page-workshop-individual .workshop-content .modal-block .html-card {
-      padding-left: 23px; }
+    width: 68%; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
     box-shadow: 0px 7px 12px #888888; }
   .page-workshop-single .page-workshop-individual .workshop-content .lesson, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson {
