@@ -42,7 +42,10 @@ header nav {
     border-radius: 0;
     background-color: #fff;
     border: none;
-    box-shadow: 2px 6px 12px 1px #333; }
+    box-shadow: 2px 6px 12px 1px #333;
+    right: 0;
+    left: auto;
+    z-index: 10000; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
