@@ -10,18 +10,6 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg" class="form-horizontal">
-      <!--<div class="form-group" *ngIf="card">
-              <div class="result">
-                <div class="user-image-container">
-                  <img *ngIf="card.photo" src="{{card.photo}}">
-                  <img *ngIf="!card.photo" src="{{card.default_photo}}">
-                </div>
-                <div class="data-container">
-                  <p  *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</p>
-                </div>
-              </div>
-            </div>-->
-
       <div class="form-group subject">
               <label class="control-label">Subject</label>
               <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
