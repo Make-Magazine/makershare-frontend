@@ -330,3 +330,140 @@
         }
     }
 }
+.front {
+    .front-challenge-card {
+        margin-bottom: 10px;
+        position: relative;
+        padding: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        background-color: #333;
+        height: 390px;
+        top: -10px;
+        span {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        p,
+        h3 {
+            color: white;
+        }
+        .card {
+            background-color: transparent;
+            border: none;
+            .card-title {
+                @include card-header-font-md-2();
+                color: $white;
+                max-height: 145px;
+                overflow: hidden;
+            }
+            .card-type {
+                top: 25px;
+                right: -45px;
+                p {
+                    margin-bottom: 0;                
+                }
+            }
+        }
+        .single-challenge {
+            padding: 10px;
+            img {
+                width: 250px;
+            }
+            .card-partership {
+                color: $main-button-1;
+            }
+        }
+        .image-container {
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            width: 100%;
+            height: 360px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .card-container {
+            .card-partership {
+                @include desc-font-1();
+                text-transform: none;
+                font-size: 14px;
+                display: inline-block; 
+                min-height: 16px;
+                margin-bottom: 10px;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+            .card-description {
+                h4 {
+                    font-weight: bold;
+                }
+
+                p {
+                }
+            }
+
+            .challene-card-footer {
+                margin-top: auto;
+                .challene-card-footer-1 {
+                    bottom: 5px;
+                    align-self: end;
+                    a.btn.btn-grey {
+                        background-color: $light-grey;
+                    }
+                }
+                .challenge-card-footer-2 {
+                    .challenge-card-count {
+                        font-size: 12px;
+                        .follow-count {
+                            padding-left: 10px;
+                        }
+                        .entries-count {
+                            padding-right: 10px;
+                            border-right: 1px solid white;
+                        }
+                    }
+                    .challenge-card-status {
+                        .open-status, .closed-status {
+                            // font-weight: bold;
+                            font-size: 12px;
+                            padding-right: 5px;
+                        }
+                        .open-status{
+                            color: white;
+                        } 
+                        .closed-status {
+                            color: $text-color-6;
+                        }
+                        .challenge-end-date {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    .challenge-card-full.front-challenge-card {
+        padding: 0;
+        height: 350px;
+        margin-top: 20px;
+        .card-type {
+            z-index: 1000;
+        }
+        .card-container {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+        }
+    }
+
+
+
+
+}

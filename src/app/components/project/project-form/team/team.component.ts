@@ -252,4 +252,11 @@ export class TeamComponent implements OnInit {
       this.formErrors.field_maker_memberships[index].field_team_member = this.validationMessages.field_maker_memberships.field_team_member.email;
     }
   }
+
+    sidebarText = {
+    'team': {
+      'title': 'Your Team:',
+      'guide': 'If you worked on this project with other members of the community, this is the place to let everyone know. By putting their information here, this project will be shared across all of your portfolios. What to take ownership of your portion of the project, add that information to the Story of the project.'
+      }
+    }
 }
