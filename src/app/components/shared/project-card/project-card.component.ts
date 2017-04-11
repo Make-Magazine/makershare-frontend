@@ -29,9 +29,9 @@ export class ProjectCardComponent implements OnInit {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
       console.log(this.project)
-    /*  this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
+     this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0]
-      })*/
+      })
     });
   }
   
@@ -41,11 +41,11 @@ export class ProjectCardComponent implements OnInit {
     });
   }
   challengePage(nid) {
-    this.router.navigate(['challenges/', nid]);
+    this.router.navigate(['missions/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]
-    );
+    console.log(nid);
+    this.router.navigate(['/project/view', nid]);
   }
   userProfile(fName,lName){
     var name=fName+lName;
