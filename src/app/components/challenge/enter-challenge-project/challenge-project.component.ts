@@ -89,17 +89,19 @@ export class ChallengeProjectComponent implements OnInit {
 
       });
   }
-   /* function to get count projects in challenge */
+  
+  /* function to get count projects in challenge */
   getCountProject() {
     // var nid;
-      this.viewService.getView('maker_count_project_challenge_api/' +this.challengeNid)
+    var nid = this.route.snapshot.params['nid'];
+    this.route.params
+      .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
         if (data == null) {
           this.countProjects = 0
-           console.log(data);
         } else {
           this.countProjects = data;
-           console.log(data[0]);
+          // console.log(data[0]);
         }
       }, err => {
      //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
