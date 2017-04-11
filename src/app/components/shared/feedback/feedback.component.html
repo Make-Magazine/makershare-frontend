@@ -7,7 +7,7 @@
       <a style="color: black" (click)="c('Close click')" >X</a>
   </div>
 <div class="modal-body">
-  <div *ngIf="NID == false">
+  <div *ngIf="submitted == false">
   <!--<div class=text-right>{{date}}</div>-->
   <p *ngIf="full_name">Your name:{{full_name}}<p>
   <form [formGroup]="feedbackForm"  (ngSubmit)="onSubmit($event,CurrentType)" novalidate >
@@ -17,14 +17,14 @@
         <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
       </select>
     </div>
-     <div *ngIf="formErrors.field_want_submit" class="alert alert-danger error-msg">
+     <div *ngIf="formErrors.field_want_submit && !CurrentType" class="alert alert-danger error-msg">
        {{formErrors.field_want_submit}}
     </div>
     <div *ngIf="CurrentType == 1185">
      <label>The bug is on the page I’m looking at right now. Yes/No?	</label>
      <div>
       <label for="example-text-input" class="label">Yes:</label>
-      <a href="{{full_url}}" id="field_bug_in_page" >{{full_url}}</a>
+      <a *ngIf="full_url" href="{{full_url}}" id="field_bug_in_page"  >{{full_url}}</a>
       <!--<div>
         <input class="form-control" type="text" disabled [formControl]="feedbackForm.controls['field_bug_in_page']">
       </div>-->
@@ -143,29 +143,28 @@
    <small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
    </div>
  
-
     <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
   </div>
   
-<div *ngIf="NID !== false">  
-<p >
-    Your message has been submitted; you may receive a direct message with follow-up.
-    Thank you for your active participation!
-</p>
+<div *ngIf="submitted == true">  
+  <p >
+      Your message has been submitted; you may receive a direct message with follow-up.
+      Thank you for your active participation!
+  </p>
 
-<div align="center">
-    <button type="button" class="btn btn-lg btn-primary" (click)="c('Close click')" (click)="resetNID()">OK</button>
-</div>
+  <div align="center">
+      <button type="button" class="btn btn-lg btn-primary" (click)="c('Close click')" (click)="resetNID()">OK</button>
+  </div>
 
-</div>
-</div>
-<div class="modal-footer">
-  <ul class="list-unstyled actions">
-    <li>
-      <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
-    </li>
-  </ul>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <ul class="list-unstyled actions">
+      <li>
+        <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
+      </li>
+    </ul>
 </div>
 
 </template>

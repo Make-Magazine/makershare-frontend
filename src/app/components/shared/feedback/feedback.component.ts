@@ -38,10 +38,11 @@ export class FeedbackComponent implements OnInit {
     'field_want_submit': '',
     'field_bug_not_in_page_': '',
     'field_upload_screenshots': ''
-
   };
   validationMessages = {
-    'field_want_submit': { required: 'please select a value' },
+    'field_want_submit': { 
+      required: 'please select a value' 
+    },
     'field_bug_not_in_page_': {
       pattern: 'please enter a valid url',
       validateRequired: 'this value is required'
@@ -49,7 +50,7 @@ export class FeedbackComponent implements OnInit {
     'field_upload_screenshots': {
       'validimagesize': 'choose a photo of size less than 5MB',
       'validateType': 'please choose an image',
-      'validResolution': 'please choose an image of 1000x1000px'
+      // 'validResolution': 'please choose an image of 1000x1000px'
     }
   };
   closeResult: string;
@@ -220,14 +221,12 @@ export class FeedbackComponent implements OnInit {
       'field_recommend_site': '',
       'field_upload_screenshots': ''
     });
-    this.feedbackForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-    this.onValueChanged(); // (re)set validation messages now
+    // this.feedbackForm.valueChanges
+    //   .subscribe(data => this.onValueChanged(data));
+    
     this.feedbackForm.reset();
     //update values after reset
-    this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
-    this.feedbackForm.controls['field_os'].setValue(navigator.platform);
-    this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+  
     //this.feedbackForm.controls['field_bug_in_page'].setValue(this.full_url);
   }
 
@@ -240,7 +239,7 @@ export class FeedbackComponent implements OnInit {
       this.formErrors[field] = '';
       const control = form.get(field);
       //for submitted empty fields
-      if (!control.valid && this.submitted) {
+      if (!control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
@@ -258,13 +257,17 @@ export class FeedbackComponent implements OnInit {
   }
   //open modal
   open(content) {
+    this.CurrentType=null;
+    this.feedbackForm.reset();
     this.router.events.subscribe((event) => {
       console.log('route changed');
       console.log(this.document.location.href)
       this.full_url = this.document.location.href;
-      this.feedbackForm.controls['field_bug_in_page'].setValue(this.full_url);
 
     });
+         this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
+         this.feedbackForm.controls['field_os'].setValue(navigator.platform);
+         this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
@@ -302,8 +305,8 @@ export class FeedbackComponent implements OnInit {
     return datestring;
   }
   checkFeedbackType(feedback) {
-
-  }
+ 
+}
 
   uploadFile(event) {
     const control = this.feedbackForm.controls['field_upload_screenshots'];
@@ -421,7 +424,15 @@ export class FeedbackComponent implements OnInit {
     var now = Date.now();
     var feedback = this.feedback;
     console.log(feedback);
+    if(this.full_name){
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
+
+    }
+    else{
+      this.full_name ='anoymous';
+      feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
+
+    }
     feedback.field_want_submit.und = this.feedbackForm.value.field_want_submit;
     if (feedback.field_want_submit.und == "1185") {
       if (this.feedbackForm.value.field_describe_bug) {
@@ -433,12 +444,13 @@ export class FeedbackComponent implements OnInit {
       if (this.feedbackForm.value.field_os) {
         feedback.field_os.und[0].value = this.feedbackForm.value.field_os;
       }
-      if (this.feedbackForm.value.field_bug_not_in_page_.length == 0) {
-        feedback.field_bug_in_page.und[0].url = this.full_url;
-        delete (feedback.field_bug_not_in_page_);
-      } else {
-        feedback.field_bug_not_in_page_.und[0].url = this.feedbackForm.value.field_bug_not_in_page_;
+      if (this.feedbackForm.value.field_bug_not_in_page_) {
+            feedback.field_bug_not_in_page_.und[0].url = this.feedbackForm.value.field_bug_not_in_page_;
+        console.log(this.feedbackForm.value.field_bug_not_in_page_)
         delete (feedback.field_bug_in_page);
+      } else {
+       feedback.field_bug_in_page.und[0].url = this.full_url;
+        delete (feedback.field_bug_not_in_page_);
       }
       if (this.feedbackForm.value.field_screen_size) {
         feedback.field_screen_size.und[0].value = this.feedbackForm.value.field_screen_size
@@ -499,6 +511,7 @@ export class FeedbackComponent implements OnInit {
     this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
       console.log(NewNode.nid);
       this.NID = NewNode.nid;
+      this.submitted=true
       //let currentRoute=this.router.url
       // console.log(this.router.url)
     }, err => {
@@ -506,18 +519,16 @@ export class FeedbackComponent implements OnInit {
     });
   }
   onSubmit(value, type) {
-    if (type == 1185) {
-
-    }
+  
     var feedback = this.feedback;
-    this.submitted = true;
     this.onValueChanged();
+    
     for (let i = 0; i < this.fileArray.length; i++) {
       this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
     }
-    if (this.feedbackForm.value.field_bug_not_in_page_.length == 0 && this.feedbackForm.value.field_bug_in_page.length == 0) {
-      this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
-    }
+    // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
+    //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
+    // }
     if (this.feedbackForm.valid) {
 
       if (this.feedbackForm.value.field_upload_screenshots) {
@@ -546,7 +557,9 @@ export class FeedbackComponent implements OnInit {
   }
 
   resetNID() {
-    this.NID = false;
+    this.submitted = false;
+    delete(this.CurrentType);
+
   }
 
 
