@@ -15,6 +15,7 @@ import { Auth } from '../../../../auth0/auth.service';
 
 export class CommentFormComponent implements OnInit {
   @Input('nodeId') nodeId;
+  @Input() titlecomment;
   checkUserLogin=false;
   @Input('comments') comments;
   title: string = 'Comments';

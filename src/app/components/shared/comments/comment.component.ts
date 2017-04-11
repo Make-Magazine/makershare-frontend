@@ -21,7 +21,7 @@ interface comment {
 export class CommentComponent implements OnInit {
 
   @Input() nid;
-  @Input() title;
+  @Input() titleform;
   
   
   comments = {

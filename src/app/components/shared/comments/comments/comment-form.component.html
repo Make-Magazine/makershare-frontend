@@ -1,7 +1,7 @@
 <div *ngIf="checkUserLogin==true">
 <form class="new-comment" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
-  <!--<label class="feedback-label">Feedback</label>-->
-    <!--<label class="feedback-label">{{title}}</label>-->
+  <label *ngIf="!titlecomment" class="feedback-label">Feedback</label>
+    <label *ngIf="titlecomment" class="feedback-label">{{titlecomment}}</label>
   <div class="comment-body d-flex justify-content-around">
     <textarea name="new-feedback" placeholder="What would you like to say?" cols="100" rows="6" class="col" formControlName="comment_body"></textarea>
     <button class="send-comment" type="submit">
@@ -13,7 +13,8 @@
 </form>
 </div>
 <div class="login-link" *ngIf="!auth.authenticated()">
-  <!--<label class="feedback-label">{{title}}</label>-->
+  <label *ngIf="!titlecomment" class="feedback-label">Feedback</label>
+    <label *ngIf="titlecomment" class="feedback-label">{{titlecomment}}</label>
   <p>Please <a class="join-link" (click)="auth.login()"> Join / Login </a> to Add Your Comment</p>
   </div>
 
