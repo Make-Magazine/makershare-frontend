@@ -32,8 +32,8 @@
             </a>
           </div>
         </div>
-        <div>
-          <app-message-modal *ngIf="project.uid != userId" [uid]="project.uid"></app-message-modal>
+        <div *ngIf="project.uid != userId">
+          <app-message-modal  [uid]="project.uid"></app-message-modal>
         </div>
         <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
           <div class="project-icon" *ngFor="let badge of badges;">
