@@ -8,7 +8,7 @@
     <p>{{r.nickname}}</p> 
   </div>
 </template>
-<div class="region region-content col-sm-10" [formGroup]="TeamForm">
+<div class="region region-content col-sm-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div>
@@ -22,7 +22,7 @@
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
               <label for="collab-name-{{i + 1}}">Name</label>
-              <input #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name, then select" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
+              <input #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
               <div *ngIf="searchFailed">
                 User not registered <button type="button" class="btn btn-primary" (click)="InviteUser(username,i)">Invite</button>
               </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
               <label for="collab-role-{{i + 1}}">Role</label>
-              <input maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="Start typing a name, then select" [formControl]="Member.controls.field_membership_role">
+              <input maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="What role did this person play on the project?" [formControl]="Member.controls.field_membership_role">
                {{Member.controls.field_membership_role.value.length}}/140
               <small *ngIf="formErrors.field_maker_memberships[i].field_membership_role" class="text-danger">
                 {{formErrors.field_maker_memberships[i].field_membership_role}}
@@ -65,16 +65,15 @@
     <a *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && TeamForm.controls.field_maker_memberships.valid" (click)="AddRow('field_maker_memberships')" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i> Add more</a>
   </div>
 </div>
-<!--
+<!--side bar guide-->
 <aside class="col-md-4">
   <div class="team-guide">
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
-        <h4>Helper text about teams</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia ullam reprehenderit minus molestiae minima nihil quibusdam hic ut, sint tenetur, esse iure consequatur, quasi quo.</p>
+        <h4>{{sidebarText.team.title}}</h4>
+        <p>{{sidebarText.team.guide}}</p>
       </div>
     </div>
   </div>
 </aside>
--->

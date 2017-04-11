@@ -27,11 +27,13 @@
                 <div class="card-partership">
                   <p *ngIf="workshop.brought_by"> Brought to you by {{workshop.brought_by}} </p>
                 </div>
+                
                 <ul class="list-unstyled workshop-actions pull-right">
                   <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
                   <app-shared-buttons *ngIf="workshop.workshop_title" [PageTitle]="workshop.workshop_title" [PageDescription]="workshop.brief_description"
                     [PageImage]="workshop.cover_photo"></app-shared-buttons>
                 </ul>
+             
                 <h3 class="card-title" [innerHTML]="workshop.workshop_title"></h3>
                 <div class="card-description">
                   <p [innerHTML]="workshop.brief_description"></p>
