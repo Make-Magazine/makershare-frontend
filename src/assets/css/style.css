@@ -6477,5 +6477,8 @@ img {
   .container {
     width: 1140px;
     max-width: 100%; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .front .lone-card {
+    order: 5; } }
 
 /*# sourceMappingURL=style.css.map */

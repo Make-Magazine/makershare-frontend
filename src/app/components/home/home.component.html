@@ -10,9 +10,10 @@
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
          <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
-        'col-md-12'           : i == 0 ,
-        'col-md-4 col-lg-4'   : i == 1 || i == 4 || i == 5 || i == 6 || i == 7 || i == 9 || i == 10 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17,
-        'col-md-8'            : i == 2 || i == 3 || i == 8 || i == 11
+        'col-md-12 col-lg-12' : i == 0 ,
+        'col-md-6 col-lg-4'   : item.type == 'project' || item.type == 'showcase' || item.type == 'maker' ,
+        'col-md-12 col-lg-8'  : item.type == 'challenge' || item.type == 'learning_sequence',
+        'lone-card' : i == 1
           }">
         <!-- Challenge Cards -->
         <div *ngIf="item.type == 'challenge' && i == 0" class="challenge-page-data">
