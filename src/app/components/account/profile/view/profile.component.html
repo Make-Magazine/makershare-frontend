@@ -368,10 +368,24 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
-			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value">
+			<label for="country">Country</label>
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 			<small *ngIf="searchFailed" class="text-danger">
 				Country not found.
 			</small>
+			<label *ngIf="profile.address.city" for="city">City</label>
+			<input *ngIf="profile.address.city" [ngModel]="profile.address.city" type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
+
+			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="posta_code">Postal code</label>
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" [ngModel]="profile.address.postal_code" type="text" class="form-control" id="posta_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+
+			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('zip_code') != -1" for="zip_code">Zip code</label>
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('zip_code') != -1" [ngModel]="profile.address.zip_code" type="text" class="form-control" id="zip_code" (change)="ProfileInfo.address.zip_code = $event.target.value">
+
+			<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
+			<select id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
+				<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
+			</select>
 		</div>
 		<div class="clearfix"></div>
 	</div>

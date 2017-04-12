@@ -15,7 +15,6 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BaseComponent } from './base/base.component';
 
-
 @NgModule({
   imports: [
     IcDatepickerModule,
@@ -34,7 +33,7 @@ import { BaseComponent } from './base/base.component';
     AllProfileComponent,
     ProfileComponent,
     ProjectsComponent,
-    BaseComponent
+    BaseComponent,
   ]
 })
 export class ProfileModule { }

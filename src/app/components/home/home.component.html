@@ -1,25 +1,28 @@
 <div class="front">
   <app-onboarding></app-onboarding>
-  <!--<app-challenge></app-challenge>
-  <app-showcases></app-showcases>-->
-  <!--<div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <app-maker-card [uid]="1"></app-maker-card>
-      </div>
-    </div>
-  </div>-->
   <div class="container">
-    <div class="row">
-      <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
+    <div class="row" *ngIf="homeCards">
+      <!--<div *ngFor="let item of homeCards;let i = index" [ngClass]="{
         'col-md-4 col-lg-4'   : item.type == 'project' ,
         'col-md-4'            : item.type == 'maker' ,
         'col-md-4'            : item.type == 'showcase',
-        'col-md-12'            : item.type == 'challenge' ,
+        'col-md-8'            : item.type == 'challenge' ,
         'col-md-8'            : item.type == 'learning_sequence'
+          }">-->
+         <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
+        'col-md-12 col-lg-12' : i == 0 ,
+        'col-md-6 col-lg-4'   : item.type == 'project' || item.type == 'showcase' || item.type == 'maker' ,
+        'col-md-12 col-lg-8'  : item.type == 'challenge' || item.type == 'learning_sequence',
+        'lone-card' : i == 1
           }">
         <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge'" class="challenge-page-data">
+        <div *ngIf="item.type == 'challenge' && i == 0" class="challenge-page-data">
+          <div class=" challenges-container">
+            <app-challenge-card [challengeNid]="item.id" [front]=true [first]=true></app-challenge-card>
+          </div>
+        </div>
+        <!-- Challenge Cards -->
+        <div *ngIf="item.type == 'challenge' && i != 0" class="challenge-page-data">
           <div class=" challenges-container">
             <app-challenge-card [challengeNid]="item.id" [front]=true></app-challenge-card>
           </div>
@@ -47,9 +50,6 @@
       </div>
     </div>
   </div>
-
-  <app-spotlight></app-spotlight>
-
   <section class="modal-section">
     <!-- Trigger the modal with a button -->
     <!-- Modal -->

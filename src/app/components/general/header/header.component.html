@@ -6,12 +6,10 @@
       </button>
       <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
       <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
-        <ul class="list-unstyled logged-in d-flex align-items-center">
+        <ul class="list-unstyled login-block">
           <li class="search-icon">
             <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
           </li>
-        </ul>
-        <ul class="list-unstyled login-block">
           <li *ngIf="!auth.authenticated()"><a class="login-div" (click)="auth.login()">Log in</a></li>
           <li class="min-user-img" *ngIf="auth.authenticated()">
             <div ngbDropdown class="d-inline-block account-controls dropdown">
@@ -28,7 +26,7 @@
             </div>
         </li>
 <li>
-        <app-feedback></app-feedback>
+        <!--<app-feedback></app-feedback>-->
   </li>     
         <!--<li>
 

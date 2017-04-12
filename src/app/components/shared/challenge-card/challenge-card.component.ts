@@ -52,6 +52,7 @@ export class ChallengeCardComponent implements OnInit {
   challengeData = [];
   @Input() challengeNid;
   @Input() front:boolean = false;
+  @Input() first:boolean = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
