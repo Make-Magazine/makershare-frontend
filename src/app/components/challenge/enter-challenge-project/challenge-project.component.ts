@@ -9,6 +9,7 @@ import { MainService } from '../../../d7services/main/main.service';
 import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 
 @Component({
@@ -67,6 +68,8 @@ export class ChallengeProjectComponent implements OnInit {
     private router: Router,
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
+        private loaderService: LoaderService,
+
 
   ) { }
   ngOnInit() {
@@ -161,6 +164,7 @@ export class ChallengeProjectComponent implements OnInit {
     this.router.navigate(['/missions/' + this.nid]);
   }
   onSubmit(event: any) {
+    this.loaderService.display(true);
 
     let body = {
       "type": "challenge_entry",
@@ -171,6 +175,8 @@ export class ChallengeProjectComponent implements OnInit {
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
       this.router.navigate(['missions/', this.nid]);
       // console.log(this.challangeData.title)
+          this.loaderService.display(false);
+
       this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
       /* bookmark auto after submit project challenge */
       if (this.nid) {
