@@ -1,243 +1,318 @@
 @media (max-width: 414px) {
-	.showcase-card-backlayer {
-		.showcase-card {
-			.content-container {
-				.showcase-card-footer {
-					display: block !important;
-					.showcase-card-footer-1 {
-						width: 100%;
-						div {
-							width: 100%;
-						}
-						span {
-							width: 100%;
-						}
-					}
-					.showcase-card-footer-2 {
-						margin-left: 0px;
-						width: 100%;
-						div {
-							width: 100%;
-						}
-						span {
-							width: 100%;
-						}
-					}
-				}
-			}
-		}
-	}
+    .showcase-card-backlayer {
+        .showcase-card {
+            .content-container {
+                .showcase-card-footer {
+                    display: block !important;
+                    .showcase-card-footer-1 {
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                    .showcase-card-footer-2 {
+                        margin-left: 0px;
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-
-
 
 @media (max-width: 575px) {
-	/* project card */
-	.project.card {
-	width: 100%;
-		.image-top {
-			position: inherit;
-			top: 0;
-			left: 0;
-		}
-		.card-block {
-			padding: 8px;
-			margin-top: 0px;
-			min-height: 175px;
-		}
-	}
-	/* showcase card */
-	.page-showcase {
-		.showcases-container {
-			padding: 20px 15px;
-		}
-	}
-	.showcase-card-backlayer {
-		.showcase-card {
-			.image-container {
-				width: auto;
-				img {
-					width: 100%;
-					width: auto;
-				}
-			}
-			.content-container {
-				.showcase-type-badge {
-					p {
-
-					}
-				}
-			}
-		}
-	}
-	footer {
-		.sitemap {
-			.sitemap-1, .sitemap-2, .socials {
-				padding-top: 8px;
-			}			
-		}
-	}
+    /* project card */
+    .project.card {
+        width: 100%;
+        .image-top {
+            position: inherit;
+            top: 0;
+            left: 0;
+        }
+        .card-block {
+            padding: 8px;
+            margin-top: 0px;
+            min-height: 175px;
+        }
+    }
+    /* showcase card */
+    .page-showcase {
+        .showcases-container {
+            padding: 20px 15px;
+        }
+    }
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                width: auto;
+                img {
+                    width: 100%;
+                    width: auto;
+                }
+            }
+            .content-container {
+                .showcase-type-badge {
+                    p {}
+                }
+            }
+        }
+    }
+    footer {
+        .sitemap {
+            .sitemap-1,
+            .sitemap-2,
+            .socials {
+                padding-top: 8px;
+            }
+        }
+    }
 }
-
-
 
 @media (max-width: 767px) {
-	.showcase-card-backlayer {
-		.showcase-card {
-			.image-container {
-				img {
-
-				}
-			}
-			.content-container {
-				padding-top: 12px;
-				.showcase-type-badge {
-					display: none;
-				}
-			}
-		}
-	}
-	.profile-container {
-		.maker-card.project {
-			margin-top: 20px;
-			.card-block{
-				height: auto;
-				 .maker-name {
-					 margin-top: 10px;
-				 }
-				 .card-type {
-					 right: -10px;
-				 }
-				 .icons-side-user {
-					 margin-top: auto !important;
-				 }
-			}
-		}
-	}
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                img {}
+            }
+            .content-container {
+                padding-top: 12px;
+                .showcase-type-badge {
+                    display: none;
+                }
+            }
+        }
+    }
+    .profile-container {
+        .maker-card.project {
+            margin-top: 20px;
+            .card-block {
+                height: auto;
+                .maker-name {
+                    margin-top: 10px;
+                }
+                .card-type {
+                    right: -10px;
+                }
+                .icons-side-user {
+                    margin-top: auto !important;
+                }
+            }
+        }
+    }
 }
-
 
 @media (max-width: 991px) {
-	/* Footer */
-	footer {
-		padding-top: 30px;
-		.container {
-			.copy {
-				order: 4;
-				margin: 0;
-				nav {
-					padding: 0px;
-				}
-			}
-			.socials-newsletter {
-				margin-top: 20px;
-			}
-			.sitemap {
-				margin: 0;
-			}
-		}
-	}
-	.page-workshop-single {
-		.page-workshop-individual {
-			.workshop-content {
-				.learning-card {
-					height: auto;
-				}
-			} 
-		}
-	} 
-	
+    /* Footer */
+    footer {
+        padding-top: 30px;
+        .container {
+            .copy {
+                order: 4;
+                margin: 0;
+                nav {
+                    padding: 0px;
+                }
+            }
+            .socials-newsletter {
+                margin-top: 20px;
+            }
+            .sitemap {
+                margin: 0;
+            }
+        }
+    }
+    .page-workshop-single {
+        .page-workshop-individual {
+            .workshop-content {
+                .learning-card {
+                    height: auto;
+                }
+            }
+        }
+    }
 }
-
-
 
 @media (min-width: 1200px) {
-	.container {
-		width: 1140px;
-    max-width: 100%;
-	}
-}
-
-
-@media only screen and (max-width: 767px) {
 
 }
 
+@media only screen and (max-width: 767px) {}
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {}
 
-}
+@media only screen and (max-width: 320px) {}
 
-
-
-
-
-
-
-
-
-
-
-
- @media only screen and (max-width: 320px) {
-	
-	
-  
-}
-
-
-@media only screen and (max-width: 525px) and (min-width: 321px) {
-
-}
+@media only screen and (max-width: 525px) and (min-width: 321px) {}
 
 @media only screen and (max-width: 414px) {
-	
-}
-
-@media only screen and (max-width: 430px) {
-
-}
-
-@media only screen and (max-width: 525px) {
-
-
-}
-
-@media only screen and (max-width: 623px) {
- 
-}
-
-@media only screen and (max-width: 767px) {
-
-}
-
-
-@media only screen and (max-width: 768px) {
-  
-}
-
- 
-
-@media only screen and (min-width: 769px) and (max-width: 991px) {
-  
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-	.front {
-		.lone-card {
-			order: 5;
-		}
+	.project-mobile-card {
+        .project-card-small {
+            .media { 
+								
+						}
+				}
 	}
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 430px) {}
 
+@media only screen and (max-width: 525px) {}
+
+@media only screen and (max-width: 623px) {}
+
+@media only screen and (max-width: 767px) {
+    .project-mobile-card {
+        margin: 30px 0px;
+    }
+    .project-mobile-card {
+        .project-card-small {
+            .media {
+							margin-bottom: -15px;
+                .media-body {
+                    .card-title{
+												height: 80px;
+												overflow: hidden;
+												line-height: 27px;
+										}
+                }
+            }
+        }
+    }
+		$showcase-height:250px;
+		.showcase-card-backlayer-home {
+				height: $showcase-height;
+				.showcase-card-backlayer-home-2 {
+						height: $showcase-height;
+				}
+				.showcase-card {
+						height: $showcase-height;
+						.card-container {
+								.card-title {
+									@include card-header-font-md();
+									color: $font-grey;
+									height: 55px;
+    							margin-bottom: 30px;
+								}
+								.card-description {
+										p {
+											height: 58px;
+										}
+								}
+						}
+				}
+		}
+		.front {
+			.learn-card {
+					.image-container {
+							padding:0 30px 0 15px;
+							max-height: 160px;
+							max-width: 520px;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #4F4F4F;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #4F4F4F;
+									}
+							}
+					}
+			}
+			.front-challenge-card {
+					height: 420px;
+					.image-container {
+                        padding:0 30px 0 15px;
+                        max-height: 160px;
+                        max-width: 520px;
+                        background: url('../images/placeholder.png') center center;
+                        background-size: cover;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #fff;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #fff;
+											overflow: hidden;
+									}
+							}
+					}
+					.challene-card-footer-1 {
+						order: 3
+					}
+					.challenge-card-footer-2 {
+						margin-bottom: 5px;
+						@include desc-font-3;
+						color: $text-color-2;
+					}
+			}
+	}
 }
+
+@media only screen and (max-width: 768px) {}
+
+@media only screen and (min-width: 769px) and (max-width: 991px) {}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .front {
+        .lone-card {
+            order: 5;
+        }
+    }
+    .project {
+        .image-top {
+            width: 305px;
+        }
+    }
+    .project-home {
+        .image-top {
+            width: 325px;
+        }
+     }
+}
+
+@media only screen and (max-width: 991px) {}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-
+    .project {
+        .image-top {
+            width: 275px;
+        }
+    }
+    .project-home {
+        .image-top {
+            width: 285px;
+        }
+     }
 }
 
-@media only screen and (min-width: 1200px) {
-
-}
+@media only screen and (min-width: 1200px) {}

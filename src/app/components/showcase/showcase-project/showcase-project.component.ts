@@ -111,7 +111,6 @@ export class ShowcaseProjectComponent implements OnInit {
         this.allProjects = [];
         for (let project of data) {
           this.allProjects.push(project.project_nid);
-          console.log(this.allProjects)
           this.navigateShowcase['totalNumber'] = this.allProjects;
           this.navigateShowcase['length'] = this.allProjects.length;
 
