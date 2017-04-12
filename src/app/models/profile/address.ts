@@ -5,5 +5,6 @@ export interface Address {
   postal_code?: number,
   state?:string,
   zip_code?:string,
-  city?:string
+  city?:string,
+  code?:string
 }

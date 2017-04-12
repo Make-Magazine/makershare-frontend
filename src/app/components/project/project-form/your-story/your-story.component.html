@@ -18,7 +18,7 @@
     <div class="form-group cover d-flex flex-column">
       <label class="control-label">Cover photo</label><br>
       <div class="d-flex flex-row align-items-start" >
-        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp" >Choose</a>
+        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp" ngbTooltip="{{TooltipText.cover_image.guide}}"  >Choose</a>
         <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
         <div class="image-preview">
           <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
@@ -34,14 +34,14 @@
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4" >
           <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')" >
-            <option disabled selected value="_none_"  > -- select an option -- </option>
+            <option disabled selected value="_none_" > -- select an option -- </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
           </select>
         </div>
         <div class="col-md-4">
           <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
-            (change)="SelectTerm($event.target.value,'child')">
-            <option disabled selected value> -- select an option -- </option>
+            (change)="SelectTerm($event.target.value,'child')" ngbTooltip="{{TooltipText.category.guide}}">
+            <option disabled selected value > -- select an option -- </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
             </select>
         </div>
@@ -62,7 +62,7 @@
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story' ></ckeditor>
+      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story' ngbTooltip="{{TooltipText.story.guide}}"></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
       </div>
@@ -145,7 +145,9 @@
       <div class="pull-left content">
         <h4>{{sidebarText.show_tell.title}}</h4>
         <p>{{sidebarText.show_tell.guide}}</p>
-       
+        <video width="250" height="150" controls>
+          <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
+      </video>
       </div>
     </div>
     <div class="guideline">
