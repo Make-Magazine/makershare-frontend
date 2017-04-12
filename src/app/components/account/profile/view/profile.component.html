@@ -9,13 +9,11 @@
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
 					<div class="d-flex flex-row switch justify-content-end align-items-center hidden-sm-down display-style">
 						<a class="profile-share mr-auto">
-							<app-shared-buttons  [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
 						</a>
-						<a *ngIf="idProfile != uid" class="profile-message">
+						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
 							<app-message-modal [uid]="uid"></app-message-modal>
 						</a>
-						<p class="grid-view active"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-						<p class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
@@ -42,8 +40,8 @@
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><i class=" edit-icon fa fa-lg fa-pencil"></i></a></div>
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><i class=" edit-icon fa fa-lg fa-pencil"></i></a></div>
 									</div>
 									<img src="{{profile.user_photo_with_style}}" alt="" class="">
 									<div class="card-type"><span>Maker</span></div>
@@ -55,18 +53,18 @@
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div *ngIf="idProfile && uid">
-									<div *ngIf="idProfile==uid">
+								<div *ngIf="CurrentLoggedUserId && uid">
+									<div *ngIf="CurrentLoggedUserId==uid">
 										<div (click)="OpenModal(editinfomodal,'edit-info-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></div>
 									</div>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 									<div class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
-									<ul *ngIf="idProfile == uid || profile.address_publish" class="list-unstyled location">
+									<ul *ngIf="CurrentLoggedUserId == uid || profile.address_publish" class="list-unstyled location">
 										<li *ngIf="profile.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="profile.address && CountryFieldsAndDetails.administrative_areas"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
 										<li *ngIf="!profile.address"><i class="fa fa-lg fa-map-marker"></i></li>
 									</ul>
-									<div *ngIf="idProfile == uid">
+									<div *ngIf="CurrentLoggedUserId == uid">
 										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 1">Unpublish</div>
 										<div (click)="ProfileInfo.address_publish = 1;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 0">Publish</div>
 									</div>
@@ -74,14 +72,14 @@
 								<hr>
 								<!-- describe yourself-->
 								<ul *ngIf="ProfileInfo.describe_yourself != '' " class="list-unstyled post">
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
 									</div>
 									<li class="profile-describe-yourself">"{{ProfileInfo.describe_yourself}}"</li>
 								</ul>
 								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post">
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid">
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid">
 											<a (click)="OpenModal(describeyourselfmodal,'add-description-modal')" class="btn btn-white add ">
 												<i class="fa fa-lg fa-plus"></i> Describe your self ?
 											</a>
@@ -102,8 +100,8 @@
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid"> <a (click)="OpenModal(biomodal,'add-bio-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(biomodal,'add-bio-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
 									</div>
 									<div class="bio" [innerHTML]="profile.bio"></div>
 								</div>
@@ -116,16 +114,18 @@
 								<!-- End Bio -->
 								<hr>
 
-								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_ != ''">
+								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_">
+									<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a></div>
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
+										<div *ngIf="!makerspace.field_makerspace_url">  {{makerspace.field_makerspace_name}} </div>
 									</li>
 								</ul>
 								<ul *ngIf="profile.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
-									<a *ngIf="idProfile && uid && idProfile==uid" class="btn btn-white add" (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" class="btn btn-white add" (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 								</ul>
 								<div *ngIf="profile.field_social_accounts">
-									<a *ngIf="idProfile && uid && idProfile==uid" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
 									<div class="social-links">
 										<span class="global-title">Social</span><br>
 										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
@@ -197,8 +197,8 @@
 
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid"> <a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div>
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div>
 									</div>
 								</div>
 								<hr>
@@ -208,8 +208,8 @@
 									<p class="started_making">{{profile.started_making}}</p>
 								</div>
 								<div *ngIf="!profile.started_making" class="how">
-									<div *ngIf="idProfile && uid">
-										<div *ngIf="idProfile==uid">
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid">
 											<a (click)="OpenModal(startedmakingmodal,'add-maker-starting-modal')">
 												<i class="fa fa-lg fa-plus"></i> How'd you get started making?
 											</a>
@@ -219,11 +219,11 @@
 								<hr>
 
 								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length == 0">
-									<a *ngIf="idProfile && uid && idProfile==uid" class="btn btn-white add" (click)="OpenModal(interestsmodal,'add-interests-modal')"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" class="btn btn-white add" (click)="OpenModal(interestsmodal,'add-interests-modal')"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
 								</ul>
 
 								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length != 0">
-									<a *ngIf="idProfile && uid && idProfile==uid" (click)="OpenModal(interestsmodal,'add-interests-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" (click)="OpenModal(interestsmodal,'add-interests-modal')"><i class="fa fa-lg fa-pencil edit-icon"></i></a>
 								</ul>
 
 								<p class="global-title">Interests</p>
@@ -233,7 +233,7 @@
 								<hr>
 								<!--<a class="report">Report this user</a>-->
 								<div *ngIf="uid">
-								<app-report-user [userReportId]="uid"></app-report-user>
+									<app-report-user [userReportId]="uid"></app-report-user>
 								</div>
 								<!-- End How -->
 							</div>
@@ -245,16 +245,11 @@
 				<div class="right-section col-lg-8 col-md-8">
 					<!-- Start Content-region -->
 					<div class="profile-name profile-stats">
-						<div *ngIf="idProfile && uid">
-							<div *ngIf="idProfile==uid">
-								<a class="btn btn-main btn-sharp edit-profile-btn" [routerLink]="['/account/editportfolio']">Edit Portfolio</a>
-							</div>
-						</div>
-
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<profile-projects [uid]="uid"></profile-projects>
+									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid"></profile-projects>
+									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid"></app-edit-portfolio>
 								</div>
 							</div>
 							<!-- End project grid -->
@@ -370,17 +365,22 @@
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
 			<label for="country">Country</label>
-			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select"
+			 [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 			<small *ngIf="searchFailed" class="text-danger">
 				Country not found.
 			</small>
 			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>
-			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
+			 type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
 
 			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>
-			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postal_code && !profile.address.postcode && !profile.address.zip_code" [ngModel]="profile.address.postal_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postal_code && !profile.address.postcode && !profile.address.zip_code"
+			 [ngModel]="profile.address.postal_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
+			 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode"
+			 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
 
 			<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
 			<select *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
@@ -460,87 +460,87 @@
 						<input type="text" formControlName="field_website_or_blog" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog" [checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'">
 					</li>
-					<div *ngIf="formErrors.field_website_or_blog" class="alert alert-danger error-msg">
-						{{ formErrors.field_website_or_blog }}
+					<div *ngIf="!FormGroupSocial.field_website_or_blog.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label">Additional site</label>
 						<input type="text" formControlName="field_additional_site" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site" [checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'">
 					</li>
-					<div *ngIf="formErrors.field_additional_site" class="alert alert-danger error-msg">
-						{{ formErrors.field_additional_site }}
+					<div *ngIf="!FormGroupSocial.field_additional_site.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-facebook"></i> Facebook</label>
 						<input type="text" formControlName="field_facebook" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook" [checked]="profile.field_social_accounts.field_preferred == 'field_facebook'">
 					</li>
-					<div *ngIf="formErrors.field_facebook" class="alert alert-danger error-msg">
-						{{ formErrors.field_facebook }}
+					<div *ngIf="!FormGroupSocial.field_facebook.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instagram"></i> Instagram</label>
 						<input type="text" formControlName="field_instagram" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram" [checked]="profile.field_social_accounts.field_preferred == 'field_instagram'">
 					</li>
-					<div *ngIf="formErrors.field_instagram" class="alert alert-danger error-msg">
-						{{ formErrors.field_instagram }}
+					<div *ngIf="!FormGroupSocial.field_instagram.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-linkedin"></i> LinkedIn</label>
 						<input type="text" formControlName="field_linkedin" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin" [checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'">
 					</li>
-					<div *ngIf="formErrors.field_linkedin" class="alert alert-danger error-msg">
-						{{ formErrors.field_linkedin }}
+					<div *ngIf="!FormGroupSocial.field_linkedin.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-twitter"></i> Twitter</label>
 						<input type="text" formControlName="field_twitter" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter" [checked]="profile.field_social_accounts.field_preferred == 'field_twitter'">
 					</li>
-					<div *ngIf="formErrors.field_twitter" class="alert alert-danger error-msg">
-						{{ formErrors.field_twitter }}
+					<div *ngIf="!FormGroupSocial.field_twitter.valid" class="alert alert-danger error-msg">
+						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
 						<input type="text" name="web-url" formControlName="field_pinterest">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest" [checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'">
-						<div *ngIf="formErrors.field_pinterest" class="alert alert-danger error-msg">
-							{{ formErrors.field_pinterest }}
+						<div *ngIf="!FormGroupSocial.field_pinterest.valid" class="alert alert-danger error-msg">
+							wrong url
 						</div>
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
 						<input type="text" name="web-url" formControlName="field_youtube">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube" [checked]="profile.field_social_accounts.field_preferred == 'field_youtube'">
-						<div *ngIf="formErrors.field_youtube" class="alert alert-danger error-msg">
-							{{ formErrors.field_youtube }}
+						<div *ngIf="!FormGroupSocial.field_youtube.valid" class="alert alert-danger error-msg">
+							wrong url
 						</div>
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
 						<input type="text" name="web-url" formControlName="field_hackster_io">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'">
-						<div *ngIf="formErrors.field_hackster_io" class="alert alert-danger error-msg">
-							{{ formErrors.field_hackster_io }}
+						<div *ngIf="!FormGroupSocial.field_hackster_io.valid" class="alert alert-danger error-msg">
+							wrong url
 						</div>
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
 						<input type="text" name="web-url" formControlName="field_instructables">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables" [checked]="profile.field_social_accounts.field_preferred == 'field_instructables'">
-						<div *ngIf="formErrors.field_instructables" class="alert alert-danger error-msg">
-							{{ formErrors.field_instructables }}
+						<div *ngIf="!FormGroupSocial.field_instructables.valid" class="alert alert-danger error-msg">
+							wrong url
 						</div>
 					</li>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
 						<input type="text" name="web-url" formControlName="field_hackday">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday" [checked]="profile.field_social_accounts.field_preferred == 'field_hackday'">
-						<div *ngIf="formErrors.field_hackday" class="alert alert-danger error-msg">
-							{{ formErrors.field_hackday }}
+						<div *ngIf="!FormGroupSocial.field_hackday.valid" class="alert alert-danger error-msg">
+							wrong url
 						</div>
 					</li>
 				</ul>
@@ -596,7 +596,6 @@
 	</div>
 </template>
 
-
 <template #makerspacemodal let-c="close" let-d="dismiss" ngbModalContainer>
 	<div class="modal-header">
 		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -605,10 +604,28 @@
 		<h4 class="modal-title">Add your Makerspace(s)</h4>
 	</div>
 	<div class="modal-body">
-		<a (click)="addMakerspace()" class="btn btn-white btn-sharp another-space"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+		<div class="form-group" [formGroup]="formGroup">
+			<div *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index" formArrayName="field_add_your_makerspace_s_">
+				<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);"><span aria-hidden="true">&times;</span></div>
+				<div class="form-group" [formGroupName]="i">
+					<input type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms" (selectItem)="SelectMakerspace(i,$event)">
+					<input type="text" formControlName="field_makerspace_url">
+					<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
+						wrong url
+					</small>
+				</div>
+			</div>
+		</div>
+		<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn btn-white btn-sharp" (click)="AddMakerspaceRow()"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 	</div>
 	<div class="modal-footer">
 		<button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
 		<button type="button" class="btn btn-primary" (click)="SaveInfo(closebtn)">Save</button>
 	</div>
+</template>
+
+<template #ms let-r="result" let-t="term">
+  <div class="data-container-makerspace">
+    {{r.title}}
+  </div>
 </template>
