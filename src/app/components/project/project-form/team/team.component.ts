@@ -97,6 +97,7 @@ export class TeamComponent implements OnInit {
     }else{
       this.viewService.getView('maker_profile_card_data',[['uid',uid]]).subscribe(data => {
         data.uid = uid;
+        console.log(data[0])
         this.SelectedUser[index] = data[0];
         control['controls'].uid.setValue(data.uid);
         control['controls'].field_team_member.setValue(data[0].username+' ('+data.uid+')');
