@@ -19,7 +19,7 @@
       <p>{{comment?.comment}}</p>
     </div>
   </div>
-  <div class="media content-section" *ngIf="!comment?.comment">
+  </div>
+  <div class="media content-section" *ngIf="comments.value?.length == 1">
     <p>{{titlecomment.ifempty}}</p>
   </div>
-</div>
