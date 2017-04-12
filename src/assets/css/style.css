@@ -2021,6 +2021,81 @@ footer {
       .project-home .card-stats ul li span {
         margin: 0px; }
 
+/* project card on search page */
+.project-mobile-card {
+  margin: 0px;
+  border: none; }
+  .project-mobile-card .project-card-small {
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    border: 1px solid #4ab0d8;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .project-mobile-card .project-card-small:hover {
+      cursor: pointer; }
+    .project-mobile-card .project-card-small .media {
+      margin-bottom: -25px; }
+      .project-mobile-card .project-card-small .media .project-pic-container {
+        padding-left: 0;
+        padding-top: 10px;
+        padding-bottom: 0;
+        position: relative;
+        left: -20px;
+        top: -40px;
+        margin-bottom: -20px;
+        width: 150px;
+        height: 125px; }
+        .project-mobile-card .project-card-small .media .project-pic-container .maker-photo {
+          display: block;
+          width: 136px;
+          height: 160px;
+          margin-bottom: 4px; }
+      .project-mobile-card .project-card-small .media .media-body .card-title {
+        margin-left: -8px; }
+      .project-mobile-card .project-card-small .media .media-body .card-type {
+        top: 40px;
+        right: -24px;
+        font-size: 16px !important; }
+    .project-mobile-card .project-card-small .maker-project-info {
+      padding: 2px 5px 5px 5px; }
+      .project-mobile-card .project-card-small .maker-project-info .profile-pic-container img {
+        width: 70px;
+        height: 70px; }
+      .project-mobile-card .project-card-small .maker-project-info .maker-name {
+        color: #00AEEF; }
+      .project-mobile-card .project-card-small .maker-project-info .card-stats {
+        padding: 2px;
+        color: #BDBDBD; }
+        .project-mobile-card .project-card-small .maker-project-info .card-stats ul {
+          margin-bottom: 6px; }
+          .project-mobile-card .project-card-small .maker-project-info .card-stats ul li {
+            font-family: "Messina Sans Regular" !important;
+            font-size: 0.9em !important;
+            font-weight: 400 !important;
+            text-transform: none !important;
+            line-height: 100% !important;
+            color: #828282;
+            font-weight: normal !important;
+            font-size: 13px !important;
+            color: #BDBDBD;
+            min-width: 60px;
+            margin: 0px 4px; }
+            .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img {
+              margin-right: 6px; }
+              .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img.project-likes {
+                width: 12px; }
+              .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img.project-views {
+                width: 20px; }
+            .project-mobile-card .project-card-small .maker-project-info .card-stats ul li span {
+              margin: 0px; }
+      .project-mobile-card .project-card-small .maker-project-info .icons-side-user {
+        width: 140px;
+        overflow: hidden; }
+        .project-mobile-card .project-card-small .maker-project-info .icons-side-user .user-icon img {
+          width: 30px; }
+
 .profile-page {
   background-color: #F2F2F2;
   margin: 0px; }
@@ -2056,6 +2131,9 @@ footer {
         color: white; }
       .profile-page .cover-region .profile-name .row .bookmark .message {
         color: #EC1F30 !important; }
+
+.card .icons-side-user .user-icon img {
+  width: 30px; }
 
 .overlay {
   width: 100%;
@@ -2412,7 +2490,9 @@ footer {
       line-height: 17px;
       display: inline-block;
       min-height: 50px; }
-    .page-search-content .user-card-search .profile-tag, .page-search-content .user-card-search .user-city, .page-search-content .user-card-search .count {
+    .page-search-content .user-card-search .profile-tag,
+    .page-search-content .user-card-search .user-city,
+    .page-search-content .user-card-search .count {
       font-size: 14px; }
     .page-search-content .user-card-search .user-city {
       color: #00AEEF;
@@ -2601,6 +2681,159 @@ footer {
           width: 20px; }
       .maker-card .card-stats ul li span {
         margin: 0px; }
+
+.mobile-profile-container {
+  margin: 10px -15px; }
+  .mobile-profile-container .maker-mobile-card.card {
+    width: 95%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 auto 30px;
+    top: 15px;
+    border: none; }
+  .mobile-profile-container .maker-mobile-card .card-type {
+    right: -15px; }
+  .mobile-profile-container .maker-mobile-card .image-top {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    top: -15px;
+    left: -20px; }
+    .mobile-profile-container .maker-mobile-card .image-top .card-img-top {
+      border-radius: 0; }
+    .mobile-profile-container .maker-mobile-card .image-top img {
+      height: auto;
+      width: 100%; }
+  .mobile-profile-container .maker-mobile-card .card-block {
+    padding: 15px 10px;
+    margin-top: -5px;
+    position: relative; }
+    .mobile-profile-container .maker-mobile-card .card-block .content-side {
+      padding-left: 5px;
+      width: 80%; }
+    .mobile-profile-container .maker-mobile-card .card-block p {
+      margin-bottom: 0; }
+    .mobile-profile-container .maker-mobile-card .card-block .maker-name {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 115% !important;
+      color: #828282; }
+    .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.95em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-bottom: 2px; }
+    .mobile-profile-container .maker-mobile-card .card-block .maker-city {
+      font-family: "Messina Sans SemiBold" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-bottom: 5px;
+      color: #00AEEF; }
+    .mobile-profile-container .maker-mobile-card .card-block .maker-descripe {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 0.95em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-top: 5px;
+      font-weight: bold; }
+    .mobile-profile-container .maker-mobile-card .card-block .card-stats ul {
+      margin-bottom: 0; }
+  .mobile-profile-container .maker-mobile-card .icons-side-project .project-icon {
+    height: 45px; }
+    .mobile-profile-container .maker-mobile-card .icons-side-project .project-icon img {
+      width: auto;
+      height: 40px; }
+  .mobile-profile-container .maker-mobile-card .icons {
+    position: absolute;
+    color: white;
+    top: -12px;
+    left: -10px;
+    font-size: 13px;
+    padding: 20px; }
+    .mobile-profile-container .maker-mobile-card .icons span {
+      margin: 2px;
+      font-size: 13px; }
+      .mobile-profile-container .maker-mobile-card .icons span i {
+        margin-right: 4px;
+        font-size: 17px; }
+  .mobile-profile-container .maker-mobile-card .card-title {
+    font-family: "Messina Modern Bold" !important;
+    font-size: 1.5em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 115% !important;
+    color: #828282;
+    color: #4F4F4F;
+    height: auto;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .mobile-profile-container .maker-mobile-card .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0 5px;
+    color: #333333; }
+    .mobile-profile-container .maker-mobile-card .card-text.project-text-grid {
+      display: none; }
+  .mobile-profile-container .maker-mobile-card .categories {
+    display: none; }
+    .mobile-profile-container .maker-mobile-card .categories span {
+      margin-left: 3px;
+      color: #BDBDBD; }
+  .mobile-profile-container .maker-mobile-card .card-role p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 15px;
+    color: #BDBDBD; }
+  .mobile-profile-container .maker-mobile-card .card-stats {
+    padding: 2px;
+    color: #BDBDBD;
+    width: 230px; }
+    .mobile-profile-container .maker-mobile-card .card-stats ul li {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      width: 70px; }
+      .mobile-profile-container .maker-mobile-card .card-stats ul li img {
+        margin-right: 6px; }
+        .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-likes {
+          width: 12px; }
+        .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-views {
+          width: 20px; }
+      .mobile-profile-container .maker-mobile-card .card-stats ul li span {
+        margin: 0px; }
+  .mobile-profile-container .maker-mobile-card .profile-pic-container {
+    width: 150px;
+    height: 120px;
+    position: relative;
+    top: -25px;
+    left: -25px;
+    margin-bottom: -20px;
+    margin-right: -15px; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -3878,7 +4111,8 @@ header.showcase-project .next {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #DCDCDC; }
+  background-color: #DCDCDC;
+  margin: 10px 0; }
   .page-learn .learn-card .learn-item {
     padding: 10px; }
     .page-learn .learn-card .learn-item img {
@@ -3900,7 +4134,8 @@ header.showcase-project .next {
       top: 38px;
       right: -50px;
       transform: rotate(-90deg);
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      padding: 0px 10px 0px 0px; }
       .page-learn .learn-card .card-container .learn-type-bagde p {
         margin: 0px; }
     .page-learn .learn-card .card-container .card-title {
@@ -3916,7 +4151,8 @@ header.showcase-project .next {
       -webkit-box-orient: vertical;
       overflow: hidden;
       min-height: 67px;
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      padding: 0px 10px 0px 0px; }
     .page-learn .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.3em !important;
@@ -5557,13 +5793,16 @@ img {
     .page-workshop-individual .learn-card .image-container img {
       width: 100%;
       height: auto; }
-  .page-workshop-individual .learn-card .workshop-actions li {
-    float: left; }
-    .page-workshop-individual .learn-card .workshop-actions li a.active {
-      background-color: #333333;
-      color: #fff; }
-  .page-workshop-individual .learn-card .workshop-actions .btn {
-    background-color: #DCDCDC; }
+  .page-workshop-individual .learn-card .workshop-actions {
+    position: absolute;
+    right: 20px; }
+    .page-workshop-individual .learn-card .workshop-actions li {
+      float: left; }
+      .page-workshop-individual .learn-card .workshop-actions li a.active {
+        background-color: #333333;
+        color: #fff; }
+    .page-workshop-individual .learn-card .workshop-actions .btn {
+      background-color: #DCDCDC; }
   .page-workshop-individual .learn-card .container-content {
     position: relative;
     padding-right: 0px; }
@@ -6441,7 +6680,9 @@ img {
       width: 100%;
       width: auto; }
 
-  footer .sitemap .sitemap-1, footer .sitemap .sitemap-2, footer .sitemap .socials {
+  footer .sitemap .sitemap-1,
+  footer .sitemap .sitemap-2,
+  footer .sitemap .socials {
     padding-top: 8px; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
@@ -6479,6 +6720,45 @@ img {
   .container {
     width: 1140px;
     max-width: 100%; } }
+@media only screen and (max-width: 767px) {
+  .project-mobile-card {
+    margin: 30px 0px; }
+
+  .project-mobile-card .project-card-small .media {
+    margin-bottom: -15px; }
+    .project-mobile-card .project-card-small .media .media-body .card-title {
+      height: 80px;
+      overflow: hidden;
+      line-height: 27px; }
+
+  .showcase-card-backlayer-home {
+    background-color: #D4EFFC;
+    transition: background-color 0.8s ease;
+    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    height: 250px;
+    margin-top: 25px;
+    margin-bottom: 20px; }
+    .showcase-card-backlayer-home:hover {
+      background-color: #00AEEF;
+      transition: background-color 0.8s ease; }
+    .showcase-card-backlayer-home .showcase-card-backlayer-home-2 {
+      height: 250px; }
+    .showcase-card-backlayer-home .showcase-card {
+      height: 250px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-title {
+        font-family: "Messina Modern Bold" !important;
+        font-size: 1.5em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 115% !important;
+        color: #828282;
+        color: #333333;
+        height: 55px;
+        margin-bottom: 30px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+        height: 58px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; } }

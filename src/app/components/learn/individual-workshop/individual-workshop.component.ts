@@ -72,6 +72,7 @@ export class IndividualWorkshopComponent implements OnInit {
     this.viewService.getView('individual-workshop', [['nid', this.nid]])
       .subscribe(data => {
         this.workshop = data[0];
+        console.log(this.workshop)
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];

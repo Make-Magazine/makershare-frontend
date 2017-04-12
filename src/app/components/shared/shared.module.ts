@@ -33,7 +33,24 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
+import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
+ 
+ let config = {
+    breakPoints: {
+        xs: {max: 575},
+        sm: {min: 576, max: 767},
+        md: {min: 768, max: 991},
+        lg: {min: 992, max: 1199},
+        xl: {min: 1200}
+    },
+    debounceTime: 100 // allow to debounce checking timer
+  };
 
+
+
+  export function ResponsiveDefinition(){ 
+          return new ResponsiveConfig(config);
+  };
 
 
 @NgModule({
@@ -43,6 +60,7 @@ import { ReportUserComponent } from './report-user/report-user.component';
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
+    ResponsiveModule
 //Ng2DeviceDetector,
   ],
   declarations: [
@@ -104,7 +122,11 @@ import { ReportUserComponent } from './report-user/report-user.component';
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ReportUserComponent,
-  ]
+  ],
+  providers:[{
+     provide: ResponsiveConfig, 
+     useFactory: ResponsiveDefinition }]
+
   
 })
 export class SharedModule { }
