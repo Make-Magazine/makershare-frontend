@@ -87,6 +87,7 @@
           <div class="region region-content col-sm-12">
             <div class="content-wrapper row">
               <div class="challenge-enter col-md-4">
+                <div *ngIf="projects?.length > 0">
                 <p>Select an existing project from your portfolio.</p>
                 <form>
                   <div class="form-group">
@@ -105,6 +106,7 @@
                   </div>
                 </form>
                 <p class="text-center">OR</p>
+                </div>
                 <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
                 <div class="button-container-main-1 w-100">
                   <span class="btn btn-main w-100 create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</span>

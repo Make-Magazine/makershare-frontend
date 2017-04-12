@@ -71,7 +71,7 @@
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex flex-column flex-md-row mt-auto align-items-md-center">
-          <div class="challene-card-footer-1">
+          <div class="challene-card-footer-1" *ngIf="challenge.nid">
             <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
               <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Accept Mission</span>
             </div>
