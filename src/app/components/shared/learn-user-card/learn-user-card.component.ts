@@ -58,6 +58,7 @@ export class LearnUserCardComponent implements OnInit {
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
+      // console.log(this.card);
 
     }, err => {
       // notification error  in service 

@@ -63,6 +63,7 @@
 				}
 			}
 		}
+
 		.workshop-aside {
 			li {
 				float: left;
@@ -297,6 +298,13 @@
 						background-color: $learn-card-bg ;
 				}
 			}
+
+		.default{
+			img{
+				width: 70px;
+				height: 70px;
+			}
+		}
 	
 		.container-content {
         position: relative;
