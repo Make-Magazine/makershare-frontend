@@ -47,7 +47,7 @@
     }
 }
 
-.ng2-dropdown-menu{
+.ng2-dropdown-menu {
     z-index: 9999999999999 !important;
 }
 
@@ -154,7 +154,6 @@
         }
         i {
             width: 25px;
-            
         }
         .profile-group {
             .profile-pic {
@@ -168,10 +167,10 @@
                     margin-bottom: -100px;
                 }
                 a {
-                  z-index: 1;
+                    z-index: 1;
                     top: -100px;
                     position: absolute;
-                    background-color: rgba(200,200,200,0.8);
+                    background-color: rgba(200, 200, 200, 0.8);
                     text-align: center;
                     font-size: 15px;
                     right: 47px;
@@ -198,32 +197,28 @@
             font-size: 18px;
             .profile-fullname {
                 @include card-header-font-md ();
-
             }
             .profile-nickname {
-               @include desc-font-1 ();
+                @include desc-font-1 ();
             }
             .location {
                 @include card-header-font-md ();
-
                 color: $title-color;
             }
-            .profile-describe-yourself{
-             @include desc-font-1 ();
-
+            .profile-describe-yourself {
+                @include desc-font-1 ();
             }
-            .badges{
-             @include desc-font-2 ();
-             color: $text-color-1;    
+            .badges {
+                @include desc-font-2 ();
+                color: $text-color-1;
             }
-            .bio{
-                 @include body-font-1 ();
-                 
-                  i{
-                         font-size: 24px;
-    line-height: .75em;
-    vertical-align: -15% !important;
-                  }
+            .bio {
+                @include body-font-1 ();
+                i {
+                    font-size: 24px;
+                    line-height: .75em;
+                    vertical-align: -15% !important;
+                }
             }
             .post {}
             .awards {
@@ -289,7 +284,6 @@
                     display: none;
                     margin-top: 5px;
                 }
-               
             }
             .how {
                 p {
@@ -388,7 +382,7 @@
 .profile-header {
     margin-top: 50px;
     .display-style {
-        cursor:pointer;
+        cursor: pointer;
         .active {
             opacity: 0.3;
         }
@@ -680,9 +674,8 @@
 
 .profile-cover,
 .profile-sidebar {
-    p{
-    color: $text-color-1;
-
+    p {
+        color: $text-color-1;
     }
     a.edit {
         position: absolute;
@@ -702,7 +695,6 @@
         padding: 0;
         margin: 0 auto 30px;
         top: 15px;
-
     }
     .image-top {
         width: 100%;
@@ -854,7 +846,7 @@
             width: 80%;
         }
         .profiel-pic-container {
-            width: 60px;            
+            width: 60px;
             img {
                 width: 100%;
             }
@@ -889,7 +881,7 @@
     .card-title {
         @include card-header-font-md;
         color: $text-color-1;
-        height:60px;
+        height: 60px;
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -952,6 +944,106 @@
         }
     }
 }
+
+
+/* project card on search page */
+
+.project-mobile-card {
+    margin: 0px;
+    border: none;
+    .project-card-small {
+        padding-top: 10px;
+        padding-bottom: 0;
+        padding-left: 0;
+        border: 1px solid #4ab0d8;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        &:hover {
+            cursor: pointer;
+        }
+        .media {
+            margin-bottom: -25px;
+            .project-pic-container {
+                padding-left: 0;
+                padding-top: 10px;
+                padding-bottom: 0;
+                position: relative;
+                left: -20px;
+                top: -40px;
+                margin-bottom: -20px;
+                width: 150px;
+                height: 125px;
+                .maker-photo {
+                    display: block;
+                    width: 136px;
+                    height: 160px;
+                    margin-bottom: 4px;
+                }
+            }
+            .media-body {
+                .card-title {
+                    margin-left: -8px;
+                }
+                .card-type {
+                    top: 40px;
+                    right: -24px;
+                    font-size: 16px !important;
+                }
+            }
+        }
+        .maker-project-info {
+            padding: 2px 5px 5px 5px;
+            .profile-pic-container {
+                img {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+            .maker-name {
+                color: $text-color-6;
+            }
+            .card-stats {
+                padding: 2px;
+                color: $light-grey;
+                ul {
+                    margin-bottom: 6px;
+                    li {
+                        @include desc-font-2();
+                        font-weight: normal !important;
+                        font-size: 13px !important;
+                        color: $light-grey;
+                        min-width: 60px;
+                        margin: 0px 4px;
+                        img {
+                            margin-right: 6px;
+                            &.project-likes {
+                                width: 12px;
+                            }
+                            &.project-views {
+                                width: 20px;
+                            }
+                        }
+                        span {
+                            margin: 0px;
+                        }
+                    }
+                }
+            }
+            .icons-side-user {
+                    // width: 80px;
+                    width: 140px;
+                    overflow: hidden;
+                    .user-icon {
+                        img {
+                            width: 30px;
+                        }
+                    }
+                }
+        }
+    }
+}
+
 .profile-page {
     background-color: $main-bg;
     margin: 0px;
@@ -1001,6 +1093,16 @@
                         color: #EC1F30 !important;
                     }
                 }
+            }
+        }
+    }
+}
+.card {
+    .icons-side-user {
+        // width: 80px;
+        .user-icon {
+            img {
+                width: 30px;
             }
         }
     }
@@ -1256,41 +1358,46 @@
 }
 
 .social-links {
-a{
-    display: inline-block;
-    padding: 0.5em 0em;
-    color:$text-color-1;
-    i.fa-inverse:before{
-        padding-left: 10px;
-    }
+    a {
+        display: inline-block;
+        padding: 0.5em 0em;
+        color: $text-color-1;
+        i.fa-inverse:before {
+            padding-left: 10px;
+        }
     }
 }
-.mywebsite{
-            color: $text-color-6;
-            text-decoration: none !important; 
-        }
-    .edit-icon{
-        float: right;
-        color: $text-color-6;
-    }
-    .started_making{
-        @include body-font-1 ();
-    }
-    .global-title{
-        @include card-header-font-xs ();
-        color: $text-color-1;
-        
-    }
-    .links-site{
-        padding-bottom: -2px;
-    }
+
+.mywebsite {
+    color: $text-color-6;
+    text-decoration: none !important;
+}
+
+.edit-icon {
+    float: right;
+    color: $text-color-6;
+}
+
+.started_making {
+    @include body-font-1 ();
+}
+
+.global-title {
+    @include card-header-font-xs ();
+    color: $text-color-1;
+}
+
+.links-site {
+    padding-bottom: -2px;
+}
 
 
 /* maker card on search page */
+
 .page-search-content {
-	margin: 0px;
-	border: none;
-	.user-card-search {
+    margin: 0px;
+    border: none;
+    .user-card-search {
         background-color: white;
         padding-top: 10px;
         padding-bottom: 0;
@@ -1298,13 +1405,13 @@ a{
         -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-            min-height: 210px;
+        min-height: 210px;
         &:hover {
             cursor: pointer;
         }
         .media {
-                margin-bottom: -8px;
-            .profile-pic-container  {
+            margin-bottom: -8px;
+            .profile-pic-container {
                 padding-left: 0;
                 padding-top: 10px;
                 padding-bottom: 0;
@@ -1331,96 +1438,97 @@ a{
                 }
             }
         }
-            .profile-pic-container {
-                img {
-                    width: 70px;
-                    height: 70px;
+        .profile-pic-container {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        .user-name {
+            @include card-header-font-sm();
+            min-height: 24px;
+            margin-bottom: 2px;
+            a {
+                text-decoration: none;
+                color: $main-grey;
+            }
+        }
+        .user-nickname {
+            font-size: 12px;
+            margin-bottom: 2px;
+            min-height: 18px;
+            a {
+                text-decoration: none;
+                color: $light-grey;
+            }
+        }
+        .profile-tag {
+            @include card-header-font-sm();
+            margin-bottom: 5px;
+            height: 38px;
+            line-height: 17px;
+            display: inline-block;
+            min-height: 50px;
+        }
+        .profile-tag,
+        .user-city,
+        .count {
+            font-size: 14px;
+            // margin-bottom: 5px;
+        }
+        .user-city {
+            color: $title-color;
+            min-height: 21px;
+            margin-bottom: 4px;
+            div {
+                float: left;
+                margin-right: 6px;
+            }
+        }
+        .count {
+            margin-bottom: 0;
+            color: $light-grey;
+            clear: both;
+        }
+        .card-stats {
+            padding: 2px;
+            color: $light-grey;
+            ul {
+                margin-bottom: 6px;
+                li {
+                    @include desc-font-2();
+                    font-weight: normal !important;
+                    font-size: 13px !important;
+                    color: $light-grey;
+                    min-width: 60px;
+                    margin: 0px 4px;
+                    img {
+                        margin-right: 6px;
+                        &.project-likes {
+                            width: 12px;
+                        }
+                        &.project-views {
+                            width: 20px;
+                        }
+                    }
+                    span {
+                        margin: 0px;
+                    }
                 }
             }
-            .user-name {
-                    @include card-header-font-sm();
-                            min-height: 24px;
-                            margin-bottom: 2px;
-                    a {
-                        text-decoration: none;
-                        color: $main-grey;
-                    }
-                }
-                .user-nickname {
-                    font-size: 12px;
-                    margin-bottom: 2px;
-                    min-height: 18px;
-                    a {
-                        text-decoration: none;
-                        color: $light-grey;
-                    }
-                }
-                .profile-tag {
-                    @include card-header-font-sm();
-                    margin-bottom: 5px;
-                    height: 38px;
-                    line-height: 17px;
-                    display: inline-block;
-                    min-height: 50px;
-                }
-                .profile-tag, .user-city, .count {
-                    font-size: 14px;
-                    // margin-bottom: 5px;
-                }
-                .user-city {
-                    color: $title-color;
-                    min-height: 21px;
-                    margin-bottom: 4px;
-                    div {
-                        float: left;
-                        margin-right: 6px;
-                    }
-                }
-                .count {
-                    margin-bottom: 0;
-                    color: $light-grey;
-                    clear: both;
-                }
-            .card-stats  {
-                padding: 2px;
-                color: $light-grey;
-                ul {
-                        margin-bottom: 6px;
-                    li {
-                        @include desc-font-2();
-                        font-weight: normal !important;
-                        font-size: 13px !important;
-                        color: $light-grey;
-                        min-width: 60px;
-                        margin: 0px 4px;
-                        img {
-                            margin-right: 6px;
-                            &.project-likes {
-                                width: 12px;
-                            }
-                            &.project-views{
-                                width: 20px;
-                            }
-                        }
-                        span {
-                            margin: 0px;
-                        }	
-                    }
-                }
-                .icons-side-user {
-                    width: 80px;
-                    overflow: hidden;
-                    .user-icon {
-                        float: left;
+            .icons-side-user {
+                width: 80px;
+                overflow: hidden;
+                .user-icon {
+                    float: left;
                     img {
                         width: 30px;
-                        }
-                     }
+                    }
                 }
             }
         }
-	}
-
+    }
+}
 
 .maker-card {
     height: 375px;
@@ -1472,7 +1580,7 @@ a{
         .maker-city {
             @include desc-font-3 ();
             margin-bottom: 5px;
-            color:$city-color
+            color: $city-color
         }
         .maker-descripe {
             @include desc-font-5();
@@ -1572,4 +1680,167 @@ a{
         }
     }
 }
+.mobile-profile-container {
+    margin: 10px -15px;
+    .maker-mobile-card {
+        // height: 165px;
+        &.card {
+            width: 95%;
+            border-radius: 0;
+            padding: 0;
+            margin: 0 auto 30px;
+            top: 15px;
+            border: none
+        }
+        .card-type {
+            right: -15px;
+        }
+        .image-top {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            top: -15px;
+            left: -20px;
+            .card-img-top {
+                border-radius: 0;
+            }
+            img {
+                height: auto;
+                width: 100%;
+            }
+        }
+        .card-block {
+            padding: 15px 10px;
+            margin-top: -5px;
+            position: relative;
+            .content-side {
+                padding-left: 5px;
+                width: 80%;
+            }
+            p {
+                margin-bottom: 0;
+            }
+            .maker-name {
+                @include card-header-font-md ()
+            }
+            .maker-nickname {
+                @include desc-font-1 ();
+                margin-bottom: 2px;
+            }
+            .maker-city {
+                @include desc-font-3 ();
+                margin-bottom: 5px;
+                color: $city-color
+            }
+            .maker-descripe {
+                @include desc-font-5();
+                margin-top: 5px;
+                font-weight: bold;
+            }
+            .card-stats {
+                ul {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .icons-side-project {
+            .project-icon {
+                height: 45px;
+                img {
+                    width: auto;
+                    height: 40px;
+                }
+            }
+        }
+        .icons {
+            position: absolute;
+            color: white;
+            top: -12px;
+            left: -10px;
+            font-size: 13px;
+            padding: 20px;
+            span {
+                margin: 2px;
+                font-size: 13px;
+                i {
+                    margin-right: 4px;
+                    font-size: 17px;
+                }
+            }
+        }
+        .card-title {
+            @include card-header-font-md;
+            color: $text-color-1;
+            height: auto;
+            padding: 0px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 30px;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+        }
+        .card-text {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin: 0 5px;
+            color: $main-grey;
+            &.project-text-grid {
+                display: none;
+            }
+        }
+        .categories {
+            display: none;
+            span {
+                margin-left: 3px;
+                color: $light-grey;
+            }
+        }
+        .card-role {
+            p {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                font-size: 15px;
+                color: $light-grey;
+            }
+        }
+        .card-stats {
+            padding: 2px;
+            color: $light-grey;
+            width: 230px;
+            ul li {
+                @include desc-font-2();
+                width: 70px;
+                img {
+                    margin-right: 6px;
+                    &.project-likes {
+                        width: 12px;
+                    }
+                    &.project-views {
+                        width: 20px;
+                    }
+                }
+                span {
+                    margin: 0px;
+                }
+            }
+        }
+        .profile-pic-container {
+            width: 150px;
+            height: 120px;
+            position: relative;
+            top: -25px;
+            left: -25px;
+            margin-bottom: -20px;
+            margin-right: -15px;
+        }
+    }
 
+}
