@@ -1,6 +1,6 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ViewService } from '../../../../../d7services/view/view.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../../../d7services/user/user.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private router: Router,
-        private userService: UserService,
-private activatedRoute: ActivatedRoute,
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
     private viewService: ViewService
   ) { }
   view = 'grid';
@@ -27,26 +27,26 @@ private activatedRoute: ActivatedRoute,
   userPic = false;
   profile_projects = [];
   ngOnInit() {
-          // check if user is logged in or not
-  //  this.loaderService.display(true);
+    // check if user is logged in or not
+    //  this.loaderService.display(true);
     this.userService.getStatus().subscribe(data => {
-      if(data.user.uid > 0){
+      if (data.user.uid > 0) {
         // logged in 
-  this.activatedRoute.params.subscribe((params: Params) => {
-         this.userName = params['user_name'];
-      });
-        this.userService.getIdFromUrl(this.userName).subscribe( data => {
-           this.uid = data.uid;
-              this.getProjects();
-               this.getCountProject();
-        
+        this.activatedRoute.params.subscribe((params: Params) => {
+          this.userName = params['user_name'];
+        });
+        this.userService.getIdFromUrl(this.userName).subscribe(data => {
+          this.uid = data.uid;
+          this.getProjects();
+          this.getCountProject();
+
         }, err => {
-  
+
         });
       }
     }, err => {
     });
- 
+
   }
   addProject(event: Event) {
     event.preventDefault();
@@ -55,12 +55,12 @@ private activatedRoute: ActivatedRoute,
   getProjects() {
     var args = [
       ['uid', this.uid],
-      
+
       ['page', this.pages],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
-       this.loadMoreVisibilty();
+      this.loadMoreVisibilty();
 
     }, err => {
 
@@ -68,7 +68,7 @@ private activatedRoute: ActivatedRoute,
   }
   /* function to get count projects */
   getCountProject() {
-    this.viewService.getView('maker_count_all_projects/'+this.uid).subscribe(data => {
+    this.viewService.getView('maker_count_all_projects/' + this.uid).subscribe(data => {
       this.countProject = data[0];
     }, err => {
 
@@ -79,7 +79,7 @@ private activatedRoute: ActivatedRoute,
     this.pages++;
     this.getProjects();
   }
-   // Function to control load more button
+  // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
