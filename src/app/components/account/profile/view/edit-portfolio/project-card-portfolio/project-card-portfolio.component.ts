@@ -20,6 +20,12 @@ export class ProjectCardPortfolioComponent implements OnInit {
   ngOnInit() {
   }
 
+  DeleteProject(nid:number){
+    this.nodeService.DeleteNode(nid).subscribe(data=>{
+      this.emitter.emit();
+    });
+  }
+
   UpdateProjectVisibility(nid:number,NewVisibility:number){
     let project = {
       nid:nid,
