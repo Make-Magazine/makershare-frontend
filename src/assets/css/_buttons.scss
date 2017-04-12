@@ -196,8 +196,8 @@ a:not([href]):not([tabindex]).message-btn {
     margin: auto;
     border: none;
     background: inherit;
-    // position: absolute;
-    bottom: 40px;
+    position: absolute;
+    bottom: 48px;
     right: 10px;
     &:hover, &:focus, &:active {
         color: $main-grey;
