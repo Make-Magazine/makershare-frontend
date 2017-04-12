@@ -30,8 +30,7 @@
                 
                 <ul class="list-unstyled workshop-actions pull-right">
                   <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
-                  <app-shared-buttons *ngIf="workshop.workshop_title" [PageTitle]="workshop.workshop_title" [PageDescription]="workshop.brief_description"
-                    [PageImage]="workshop.cover_photo"></app-shared-buttons>
+                  <app-shared-buttons *ngIf="workshop.workshop_title" [PageTitle]="workshop.workshop_title" [PageDescription]="workshop.brief_description" [PageImage]="workshop.cover_photo"></app-shared-buttons>
                 </ul>
              
                 <h3 class="card-title" [innerHTML]="workshop.workshop_title"></h3>
