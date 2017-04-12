@@ -9,6 +9,7 @@
       <a *ngIf="Visibility == 370 || Visibility == 1115" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn btn-white"><i class="fa fa-lg fa-eye-slash"></i> Set to private</a>
       <a *ngIf="Visibility == 371 || Visibility == 1115" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn btn-white"><i class="fa fa-lg fa-eye"></i> Set to public</a>
       <a [routerLink]="['/project/edit',Project.nid]" class="btn btn-white"><i class="fa fa-lg fa-pencil"></i> Edit Project</a>
+      <a (click)="DeleteProject(Project.nid)" class="btn btn-white"> Delete project </a>
       <a class="btn btn-white"><i class="fa fa-lg fa-caret-left"></i> Drag to reorder <i class="fa fa-lg fa-caret-right"></i></a>
     </div>
   </div>
@@ -25,6 +26,7 @@
       <a *ngIf="Visibility == 370 || Visibility == 1115" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn btn-white"><i class="fa fa-lg fa-eye-slash"></i> Set to private</a>
       <a *ngIf="Visibility == 371 || Visibility == 1115" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn btn-white"><i class="fa fa-lg fa-eye"></i> Set to public</a>
       <a [routerLink]="['/project/edit',Project.nid]" class="btn btn-white"><i class="fa fa-lg fa-pencil"></i> Edit Project</a>
+      <a (click)="DeleteProject(Project.nid)" class="btn btn-white"> Delete project </a>
       <a class="btn btn-white"><i class="fa fa-lg fa-caret-left"></i> Drag to reorder <i class="fa fa-lg fa-caret-right"></i></a>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { field_URL } from '../../../../models/Drupal';
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl,FormArray } from '@angular/forms';
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -12,9 +12,9 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { LoaderService } from '../../../shared/loader/loader.service';
-import { value } from '../../../../models/challenge/comment';
 import { Intrests } from '../../../../models/profile/intrests';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { CustomValidators } from 'ng2-validation'
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +23,26 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   CountriesList = [];
+  SearchMakerspace = (text$: Observable<string>) =>{
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.searchFailed = false)
+      .switchMap((term) => 
+        {
+          if(term.length > 1){
+            return this.viewService.getView('api_makerspaces',[['search', term]])
+            .map(result => {
+              if(result.length == 0){
+                this.searchFailed = true;
+              }
+              return result;
+            })
+          }
+          return [];
+        }
+      )
+  };
 
   SearchCountry = (text$: Observable<string>) => {
     return text$
@@ -38,12 +58,11 @@ export class ProfileComponent implements OnInit {
           this.searchFailed = true;
         }
         return [];
-      }
-      )
+      })
   };
 
   searchFailed: boolean = false;
-  idProfile;
+  CurrentLoggedUserId:number;
   ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
@@ -132,8 +151,6 @@ export class ProfileComponent implements OnInit {
       'field_hackday': [this.profile.field_social_accounts.field_hackday, [Validators.pattern(this.regexp)]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
     });
-    this.FormGroupSocial.valueChanges.subscribe(data => this.onValueChanged(data));
-    this.onValueChanged(); // (re)set validation messages now
   }
   ProfilePicData: any = {};
   FileName: string = '';
@@ -170,7 +187,8 @@ export class ProfileComponent implements OnInit {
       field_hackday: '',
       field_preferred: ''
     },
-    started_making: ''
+    started_making: '',
+    field_add_your_makerspace_s_:[]
   };
   constructor(
     private profileService: ProfileService,
@@ -198,9 +216,7 @@ export class ProfileComponent implements OnInit {
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
       if (data.user.uid > 0) {
-        this.idProfile = data.user.uid;
-        console.log(this.idProfile);
-      
+        this.CurrentLoggedUserId = data.user.uid;
       }
     });
     /*check if navigating to profile with username paramter => get uid from name 
@@ -209,9 +225,6 @@ export class ProfileComponent implements OnInit {
     if (userName) {
       this.userService.getIdFromUrl(userName).subscribe(res => {
         this.uid = res.uid;
-          console.log(this.uid);
-        this.GetUserDetails();
-      }, () => {
         this.GetUserDetails();
       });
     } else {
@@ -279,21 +292,16 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
-
   SaveInfo(closebtn: HTMLButtonElement) {
     if (this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
+      this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
+      this.SaveUser(this.ProfileInfo);
+      closebtn.click();
     }
     this.ReSetAddressValues();
-    this.onValueChanged();
-    let flag = true;
-    for (let feild in this.formErrors) {
-      if (this.formErrors[feild] != "") {
-        flag = false;
-      }
-    }
-    if (flag) {
+    if (this.FormGroupSocial.valid) {
       Object.assign(this.ProfileInfo.field_social_accounts, this.FormGroupSocial.value);
       this.SaveUser(this.ProfileInfo);
       closebtn.click();
@@ -306,11 +314,31 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-
   GetCountryDetails(CountryKey: string) {
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
     });
+  }
+  AddMakerspaceRow(makerspace?){
+    const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
+    let MakerspaceGroup:FormGroup = this.fb.group({
+      field_makerspace_name:[makerspace? makerspace.field_makerspace_name:'',Validators.required],
+      field_makerspace_url:[makerspace && makerspace.field_makerspace_url? makerspace.field_makerspace_url:'', CustomValidators.url],
+      id:[makerspace? makerspace.id:'',Validators.required]
+    });
+    control.push(MakerspaceGroup);
+  }
+  BuildForm(){
+    this.formGroup = this.fb.group({
+      describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
+      started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
+      field_add_your_makerspace_s_:this.fb.array([]),
+    });
+    if(this.ProfileInfo.field_add_your_makerspace_s_){
+      this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace,index) => {
+        this.AddMakerspaceRow(makerspace);
+      });
+    } 
   }
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(
@@ -320,18 +348,21 @@ export class ProfileComponent implements OnInit {
       }, (err) => {
         console.log(err);
       }, () => {
-        if (this.idProfile == this.uid)
+        if (this.CurrentLoggedUserId == this.uid)
           localStorage.setItem('user_photo', this.profile.user_photo);
-        this.formGroup = this.fb.group({
-          describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-          started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
-        });
+        this.BuildForm();
         this.buildFormSocial();
         this.Loading = false;
       }
     )
   }
-
+  SelectMakerspace(index:number,event){
+    let makerspace = event.item;
+    event.preventDefault();
+    const field_add_your_makerspace_s_ = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
+    field_add_your_makerspace_s_.controls[index]['controls'].id.setValue(makerspace.id);
+    field_add_your_makerspace_s_.controls[index]['controls'].field_makerspace_name.setValue(makerspace.title);
+  }
   SetUser(user: UserProfile) {
     console.log(user);
     this.profile = user;
@@ -342,26 +373,10 @@ export class ProfileComponent implements OnInit {
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
     }
+    this.ProfileInfo.field_add_your_makerspace_s_ = user.field_add_your_makerspace_s_;
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
   }
 
-  onValueChanged(data?: any) {
-    if (!this.FormGroupSocial) { return; }
-    const form = this.FormGroupSocial;
-    if (form != null) {
-      for (const field in this.formErrors) {
-        // clear previous error message (if any)
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (control && control.dirty && control.value != '' && !control.value.match(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/)) {
-          const messages = this.validationMessages[field];
-          for (const key in control.errors) {
-            this.formErrors[field] += messages[key] + ' ';
-          }
-        }
-      }
-    }
-  }
 }
