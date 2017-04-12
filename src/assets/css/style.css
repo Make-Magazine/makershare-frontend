@@ -3851,8 +3851,8 @@ header.showcase-project .next {
         border: none;
         margin: 0;
         position: absolute;
-        bottom: 15px;
-        right: 23px;
+        bottom: 8px;
+        right: 12px;
         background: none; }
         .feedback-group .new-comment .comment-body button:hover {
           cursor: pointer; }
@@ -3861,7 +3861,7 @@ header.showcase-project .next {
           height: auto;
           line-height: normal; }
           .feedback-group .new-comment .comment-body button span i {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: bold; }
         .feedback-group .new-comment .comment-body button:hover {
           color: #ED1C24;
@@ -3907,7 +3907,8 @@ header.showcase-project .next {
     .page-project .projectsingle-card .right-side .card-container {
       position: relative; }
       .page-project .projectsingle-card .right-side .card-container .card {
-        border: none; }
+        border: none;
+        min-height: 388px; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
         color: #00AEEF;
         text-decoration: underline; }
@@ -3920,10 +3921,10 @@ header.showcase-project .next {
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 197px; }
+        max-height: 197px; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
