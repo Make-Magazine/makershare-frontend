@@ -28,7 +28,6 @@ export class ReportUserComponent implements OnInit {
     if(this.userId && this.userReportId){
       this.flagService.isFlagged(this.userReportId, this.userId, 'report').subscribe(data => {
           this.isReported = data[0];
-                    console.log(data[0]);
 
       });
     }
