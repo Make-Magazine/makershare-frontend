@@ -32,6 +32,7 @@ import { ProjectSearchCardComponent } from './search-cards/project-search-card/p
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
+import { ReportUserComponent } from './report-user/report-user.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
  
  let config = {
@@ -44,6 +45,8 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
     },
     debounceTime: 100 // allow to debounce checking timer
   };
+
+
 
   export function ResponsiveDefinition(){ 
           return new ResponsiveConfig(config);
@@ -89,6 +92,7 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
+    ReportUserComponent,
   ],
   exports: [
     CommentComponent,
@@ -117,10 +121,12 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
+    ReportUserComponent,
   ],
   providers:[{
      provide: ResponsiveConfig, 
      useFactory: ResponsiveDefinition }]
+
   
 })
 export class SharedModule { }
@@ -150,3 +156,4 @@ export { ProjectSearchCardComponent };
 export { ChallengeSearchCardComponent };
 export { ShowcaeSearchCardComponent };
 export { LearnSearchCardComponent };
+export { ReportUserComponent };

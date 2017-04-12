@@ -8,6 +8,7 @@ import { FileEntity } from '../../../../models';
 import { ProjectForm } from '../../../../models';
 import { NodeHelper } from '../../../../models';
 import { CropperSettings } from 'ng2-img-cropper';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -49,6 +50,8 @@ export class YourStoryComponent implements OnInit {
   //image cropper 
   cropperSettings: CropperSettings;
   imagedata: any;
+  sanitizethis;
+  show_video
 
   constructor(
     private fb: FormBuilder,
@@ -56,10 +59,12 @@ export class YourStoryComponent implements OnInit {
     private fileService: FileService,
     private modalService: NgbModal,
     private config: NgbTooltipConfig,
+    private sanitizer: DomSanitizer,
+
   ) {
     this.SetCropperSettings();
     config.placement = 'right';
-    config.triggers = 'click:blur';
+    config.triggers = 'hover';
   }
 
   /**
@@ -82,6 +87,8 @@ export class YourStoryComponent implements OnInit {
         }
       });
     });
+    // this.sanitizethis = '<iframe src="https://drive.google.com/file/d/0B7kKuw_1dgfJMHd4Q0l1cmpNMFE/view?ts=58ecedcc ></iframe>';
+    // this.show_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
   }
 
   /**
@@ -311,7 +318,7 @@ Definitely include a video and photos of the finished product.`
     'show_tell': {
       'title': 'Making a Show and Tell video:',
       'guide': 'embed video:  ',
-      'video': 'https://drive.google.com/file/d/0B7kKuw_1dgfJMHd4Q0l1cmpNMFE/view?ts=58ecedcc'
+      // 'video': this.show_video
     },
     'aha': {
       'title': 'AHA Moment:',
@@ -332,6 +339,9 @@ Definitely include a video and photos of the finished product.`
     },
     'teaser': {
       'guide': 'Describe your project in a sentence or two.'
+    },
+    'cover_image':{
+      'guide': 'Can support GIFs.'
     },
     'category': {
       'guide': 'This will help others find your project.'

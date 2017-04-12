@@ -62,12 +62,13 @@
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 									<div class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
 									<ul *ngIf="idProfile == uid || profile.address_publish" class="list-unstyled location">
-										<li *ngIf="profile.address"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address.city}}</li>
+										<li *ngIf="profile.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
+										<li *ngIf="profile.address && CountryFieldsAndDetails.administrative_areas"><i class="fa fa-lg fa-map-marker"></i> {{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
 										<li *ngIf="!profile.address"><i class="fa fa-lg fa-map-marker"></i></li>
 									</ul>
 									<div *ngIf="idProfile == uid">
-										<div (click)="ProfileInfo.address_publish = 0;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 1">Unpublish</div>
-										<div (click)="ProfileInfo.address_publish = 1;SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 0">Publish</div>
+										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 1">Unpublish</div>
+										<div (click)="ProfileInfo.address_publish = 1;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="profile.address_publish == 0">Publish</div>
 									</div>
 								</div>
 								<hr>
@@ -230,7 +231,10 @@
 								 [inputId]="tid">
 								</tag-input>
 								<hr>
-								<a class="report">Report this user</a>
+								<!--<a class="report">Report this user</a>-->
+								<div *ngIf="uid">
+								<app-report-user [userReportId]="uid"></app-report-user>
+								</div>
 								<!-- End How -->
 							</div>
 							<!-- End col-md-3 -->
@@ -365,10 +369,23 @@
 		<hr>
 		<div class="form-group">
 			<label for="edit-city">Edit location</label>
-			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value">
+			<label for="country">Country</label>
+			<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Start typing a name, then select" [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 			<small *ngIf="searchFailed" class="text-danger">
 				Country not found.
 			</small>
+			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
+
+			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postal_code && !profile.address.postcode && !profile.address.zip_code" [ngModel]="profile.address.postal_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+
+			<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
+			<select *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
+				<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
+			</select>
 		</div>
 		<div class="clearfix"></div>
 	</div>
