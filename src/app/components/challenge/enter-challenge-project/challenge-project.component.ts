@@ -214,7 +214,7 @@ export class ChallengeProjectComponent implements OnInit {
 
       }
     }, err => {
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    //  this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
   }
