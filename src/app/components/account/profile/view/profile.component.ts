@@ -6,7 +6,6 @@ import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-import { SharedButtonsComponent } from '../../../shared/shared-buttons/shared-buttons.component';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FileEntity, NodeHelper } from '../../../../models';
 import { FileService } from '../../../../d7services/file/file.service';
@@ -15,8 +14,8 @@ import { Observable } from 'rxjs/Observable'
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { value } from '../../../../models/challenge/comment';
 import { Intrests } from '../../../../models/profile/intrests';
-import { ActivatedRoute, Router,Params } from '@angular/router';
-import {MessageModalComponent} from '../../../shared/message-modal/message-modal.component';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -25,26 +24,25 @@ export class ProfileComponent implements OnInit {
 
   CountriesList = [];
 
-  SearchCountry = (text$: Observable<string>) =>{
+  SearchCountry = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
       .do(() => this.searchFailed = false)
-      .map((term) => 
-        {
-          if(term.length > 1){
-            let res = this.CountriesList.filter(element => new RegExp(term, 'gi').test(element.value)).splice(0, 10);
-            if(res){ 
-              return res;
-            }
-            this.searchFailed = true;
+      .map((term) => {
+        if (term.length > 1) {
+          let res = this.CountriesList.filter(element => new RegExp(term, 'gi').test(element.value)).splice(0, 10);
+          if (res) {
+            return res;
           }
-          return [];
+          this.searchFailed = true;
         }
+        return [];
+      }
       )
   };
 
-  searchFailed:boolean = false;
+  searchFailed: boolean = false;
   idProfile;
   ckEditorConfig: {} = {
     "toolbarGroups": [
@@ -119,7 +117,7 @@ export class ProfileComponent implements OnInit {
   formGroup: FormGroup;
   FormGroupSocial: FormGroup;
   buildFormSocial() {
-    
+
     this.FormGroupSocial = this.fb.group({
       'field_website_or_blog': [this.profile.field_social_accounts.field_website_or_blog, [Validators.pattern(this.regexp)]],
       'field_additional_site': [this.profile.field_social_accounts.field_additional_site, [Validators.pattern(this.regexp)]],
@@ -147,6 +145,10 @@ export class ProfileComponent implements OnInit {
   badges: Array<any>;
   Loading: boolean;
   profile: UserProfile;
+  CountryFieldsAndDetails = {
+    used_fields:[],
+    administrative_area_label:'',
+  };
   ProfileInfo: UserProfile = {
     address: {
       country: '',
@@ -195,7 +197,7 @@ export class ProfileComponent implements OnInit {
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
-      if(data.user.uid > 0){
+      if (data.user.uid > 0) {
         this.idProfile = data.user.uid;
       }
     });
@@ -206,16 +208,16 @@ export class ProfileComponent implements OnInit {
       this.userService.getIdFromUrl(userName).subscribe(res => {
         this.uid = res.uid;
         this.GetUserDetails();
-      },()=>{
+      }, () => {
         this.GetUserDetails();
       });
     } else {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
     }
-    
+
   }
-  GetUserDetails(){
+  GetUserDetails() {
     if (!this.uid) {
       this.router.navigate(['**']);
       return;
@@ -268,6 +270,14 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
+    if(this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate){
+      let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
+      if(!this.profile.address[administrative_area_label]){
+        this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
+      }else{
+        this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
+      }
+    }
     this.onValueChanged();
     let flag = true;
     for (let feild in this.formErrors) {
@@ -288,29 +298,47 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-  UpdateUser() {
-    this.userService.getUser(this.uid).subscribe(res => {
-      this.profile = res;
-      this.ProfileInfo.nickname = res.nickname;
-      this.ProfileInfo.address = res.address;
-      this.ProfileInfo.describe_yourself = res.describe_yourself;
-      this.ProfileInfo.bio = res.bio;
-      if (res.field_social_accounts) {
-        this.ProfileInfo.field_social_accounts = res.field_social_accounts;
-      }
-      this.ProfileInfo.maker_interests = res.maker_interests;
-      this.ProfileInfo.started_making = res.started_making;
-      this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
-      if(this.idProfile==this.uid)
-      localStorage.setItem('user_photo', this.profile.user_photo);
-      this.formGroup = this.fb.group({
-        describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-        started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
-      });
-      this.buildFormSocial();
-      this.Loading = false;
+
+  GetCountryDetails(CountryKey:string){
+    this.viewService.getView('maker_address_api/'+CountryKey).subscribe((data)=>{
+      this.CountryFieldsAndDetails = data;
     });
   }
+  UpdateUser() {
+    this.userService.getUser(this.uid).subscribe(
+      (profile:UserProfile)=>{
+        this.SetUser(profile);
+        this.GetCountryDetails(profile.address.code);
+      },(err)=>{
+        console.log(err);
+      },()=>{
+        if (this.idProfile == this.uid)
+          localStorage.setItem('user_photo', this.profile.user_photo);
+        this.formGroup = this.fb.group({
+          describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
+          started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
+        });
+        this.buildFormSocial();
+        this.Loading = false;
+      }
+    )
+  }
+
+  SetUser(user:UserProfile){
+    console.log(user);
+    this.profile = user;
+    this.ProfileInfo.nickname = user.nickname;
+    this.ProfileInfo.address = user.address;
+    this.ProfileInfo.describe_yourself = user.describe_yourself;
+    this.ProfileInfo.bio = user.bio;
+    if (user.field_social_accounts) {
+      this.ProfileInfo.field_social_accounts = user.field_social_accounts;
+    }
+    this.ProfileInfo.maker_interests = user.maker_interests;
+    this.ProfileInfo.started_making = user.started_making;
+    this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+  }
+
   onValueChanged(data?: any) {
     if (!this.FormGroupSocial) { return; }
     const form = this.FormGroupSocial;

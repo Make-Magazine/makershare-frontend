@@ -20,7 +20,12 @@ export class IndividualWorkshopComponent implements OnInit {
   customDescription: string;
   customImage: string;
   workshop;
-  title="Questions";
+  title={
+    title : "Questions",
+     placeholder: "Ask a question",
+     ifempty: "There is no questions yet ..",
+  };
+  //  title="Questions";
   objects;
   lessons
   learns;
