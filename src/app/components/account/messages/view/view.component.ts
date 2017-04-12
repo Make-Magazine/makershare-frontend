@@ -213,7 +213,6 @@ export class ViewComponent implements OnInit {
   }
   deleteReplay(i) {
     this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data=>{
-      console.log(data)
     });
     delete this.messages[i];
   }

@@ -258,8 +258,6 @@ export class FeedbackComponent implements OnInit {
   //open modal
   open(content) {
     this.router.events.subscribe((event) => {
-      console.log('route changed');
-      console.log(this.document.location.href)
       this.full_url = this.document.location.href;
       this.feedbackForm.controls['field_bug_in_page'].setValue(this.full_url);
 
@@ -307,7 +305,6 @@ export class FeedbackComponent implements OnInit {
   uploadFile(event) {
     const control = this.feedbackForm.controls['field_upload_screenshots'];
     //selected files ftom event
-    console.log(event);
     if (event.srcElement) {
       let files = event.srcElement.files;
       // if (files.length == 1 && files[0]) {
@@ -419,7 +416,6 @@ export class FeedbackComponent implements OnInit {
   SaveNode() {
     var now = Date.now();
     var feedback = this.feedback;
-    console.log(feedback);
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
     feedback.field_want_submit.und = this.feedbackForm.value.field_want_submit;
     if (feedback.field_want_submit.und == "1185") {
@@ -494,9 +490,7 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_upload_screenshots);
       delete (feedback.field_describe_bug);
     }
-    console.log(feedback);
     this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
-      console.log(NewNode.nid);
       this.NID = NewNode.nid;
       //let currentRoute=this.router.url
       // console.log(this.router.url)
