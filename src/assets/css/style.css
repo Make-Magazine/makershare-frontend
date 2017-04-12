@@ -4111,7 +4111,8 @@ header.showcase-project .next {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #DCDCDC; }
+  background-color: #DCDCDC;
+  margin: 10px 0; }
   .page-learn .learn-card .learn-item {
     padding: 10px; }
     .page-learn .learn-card .learn-item img {
@@ -4133,7 +4134,8 @@ header.showcase-project .next {
       top: 38px;
       right: -50px;
       transform: rotate(-90deg);
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      padding: 0px 10px 0px 0px; }
       .page-learn .learn-card .card-container .learn-type-bagde p {
         margin: 0px; }
     .page-learn .learn-card .card-container .card-title {
@@ -4149,7 +4151,8 @@ header.showcase-project .next {
       -webkit-box-orient: vertical;
       overflow: hidden;
       min-height: 67px;
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      padding: 0px 10px 0px 0px; }
     .page-learn .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
       font-size: 1.3em !important;
@@ -5790,13 +5793,16 @@ img {
     .page-workshop-individual .learn-card .image-container img {
       width: 100%;
       height: auto; }
-  .page-workshop-individual .learn-card .workshop-actions li {
-    float: left; }
-    .page-workshop-individual .learn-card .workshop-actions li a.active {
-      background-color: #333333;
-      color: #fff; }
-  .page-workshop-individual .learn-card .workshop-actions .btn {
-    background-color: #DCDCDC; }
+  .page-workshop-individual .learn-card .workshop-actions {
+    position: absolute;
+    right: 20px; }
+    .page-workshop-individual .learn-card .workshop-actions li {
+      float: left; }
+      .page-workshop-individual .learn-card .workshop-actions li a.active {
+        background-color: #333333;
+        color: #fff; }
+    .page-workshop-individual .learn-card .workshop-actions .btn {
+      background-color: #DCDCDC; }
   .page-workshop-individual .learn-card .container-content {
     position: relative;
     padding-right: 0px; }
