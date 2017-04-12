@@ -190,6 +190,118 @@
             }
         }
     }
+		$showcase-height:250px;
+		.showcase-card-backlayer-home {
+				background-color: $showcase-layer;
+				transition: background-color 0.8s ease;
+				-moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+				-webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+				box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+				height: $showcase-height;
+				margin-top: 25px;
+				margin-bottom: 20px;
+				&:hover {
+						background-color: $valid-faire;
+						transition: background-color 0.8s ease;
+				}
+				&:hover .showcase-card-backlayer-home-2 {
+					
+				}
+				.showcase-card-backlayer-home-2 {
+						height: $showcase-height;
+				}
+				.showcase-card {
+						height: $showcase-height;
+						.card {
+						}
+						.single-showcase {
+								img {
+								}
+								.card-partership {
+								}
+						}
+						.left-side {
+						}
+						.image-container {
+								img {
+								}
+						}
+						.card-container {
+								.card {
+								}
+								.showcase-type-badge {
+										p {
+										}
+								}
+								.card-title {
+									@include card-header-font-md();
+									color: $font-grey;
+									height: 55px;
+    							margin-bottom: 30px;
+								}
+								.card-status {
+								}
+								p.card-partnership {}
+								.card-description {
+										// margin-bottom: 60px;
+										h4 {
+										}
+										p {
+											height: 58px;
+										}
+								}
+								.card-buttons {
+										a.btn.btn-grey {
+											
+										}
+										.follow-number {
+											
+										}
+								}
+						}
+						.showcase-card-footer {
+								.showcase-card-footer-1 {
+								
+										a.btn.btn-grey {
+											
+										}
+								}
+								.showcase-card-footer-2 {
+									
+										.showcase-card-count {
+										
+												div {
+														
+												}
+												.projects-count-div {
+													
+												}
+												.views-count {
+														
+												}
+												.showcase-views {
+												
+												}
+												.update-date {
+													
+												}
+												.showcase-date {
+														
+												}
+												.projects-count {
+													
+												}
+										}
+										.showcase-card-status {
+												.open-status,
+												.closed-status {
+													
+												}
+										}
+								}
+						}
+				}
+		}
 }
 
 @media only screen and (max-width: 768px) {}

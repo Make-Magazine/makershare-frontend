@@ -6729,7 +6729,36 @@ img {
     .project-mobile-card .project-card-small .media .media-body .card-title {
       height: 80px;
       overflow: hidden;
-      line-height: 27px; } }
+      line-height: 27px; }
+
+  .showcase-card-backlayer-home {
+    background-color: #D4EFFC;
+    transition: background-color 0.8s ease;
+    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    height: 250px;
+    margin-top: 25px;
+    margin-bottom: 20px; }
+    .showcase-card-backlayer-home:hover {
+      background-color: #00AEEF;
+      transition: background-color 0.8s ease; }
+    .showcase-card-backlayer-home .showcase-card-backlayer-home-2 {
+      height: 250px; }
+    .showcase-card-backlayer-home .showcase-card {
+      height: 250px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-title {
+        font-family: "Messina Modern Bold" !important;
+        font-size: 1.5em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 115% !important;
+        color: #828282;
+        color: #333333;
+        height: 55px;
+        margin-bottom: 30px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+        height: 58px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; } }
