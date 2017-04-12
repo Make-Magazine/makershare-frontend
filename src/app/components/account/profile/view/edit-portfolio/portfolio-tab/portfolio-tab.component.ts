@@ -63,7 +63,7 @@ export class PortfolioTabComponent implements OnInit {
     source.subscribe(
       (x) => {},(err) => {console.log(err);},
       () => {
-        this.router.navigate(['/portfolio']);
+        
       }
     );
   }
