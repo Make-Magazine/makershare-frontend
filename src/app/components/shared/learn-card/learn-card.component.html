@@ -18,12 +18,12 @@
   <div class="col-md-4 image-container">
     <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
   </div>
-  <div class="col-md-8 container-conten">
-    <div class="card-container">
-      <div class="card">
-        <div class="learn-type-bagde">
+  <div class="col-md-8 container-content">
+    <div class="learn-type-bagde">
           <p>WORKSHOP</p>
         </div>
+    <div class="card-container">
+      <div class="card">
         <div class="card-partership">
           <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
         </div>
@@ -52,53 +52,14 @@
   </div>
 </div>
 <div *ngIf="front">
-  <div class="row"  *hideItBootstrap="['sm','xs']">
+  <div class="row">
+    <p class="card-type">WORKSHOP</p>
     <div class="col-md-5 image-container">
       <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
     </div>
-    <div class="col-md-7 container-conten">
+    <div class="col-md-7 container-content">
       <div class="card-container h-100">
         <div class="card h-100">
-          <div class="learn-type-bagde">
-            <p>WORKSHOP</p>
-          </div>
-          <div class="card-partership">
-            <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
-          </div>
-          <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
-          <div class="card-description">
-            <p [innerHTML]="learn.brief_description"></p>
-          </div>
-          <div class="learn-card-footer d-flex mt-auto">
-            <div class="learn-card-footer-1">
-              <div class="button-container-main-1">
-                <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)">Get Started</span>
-              </div>
-            </div>
-            <div class="learn-card-footer-2 ml-3">
-              <!--<div class="learn-card-count">
-                    <span class="entries-count">{{challenge.entries_count}}
-                        <span *ngIf="challenge.entries_count>1">Lessons</span>
-                    <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                    </span>
-                    </div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End card-container -->
-    </div>
-  </div>
-  <div class="row"  *showItBootstrap="['sm','xs']">
-    <div class="col-md-5 image-container">
-      <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
-    </div>
-    <div class="col-md-7 container-conten">
-      <div class="card-container h-100">
-        <div class="card h-100">
-          <div class="learn-type-bagde">
-            <p>WORKSHOP</p>
-          </div>
           <div class="card-partership">
             <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
           </div>
