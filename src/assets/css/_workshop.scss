@@ -119,6 +119,7 @@
         overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
+        margin: 10px 0;
         .learn-item {
             padding: 10px;
             img {
@@ -147,8 +148,10 @@
                 right: -50px;
                 transform: rotate(-90deg);
                 color: #4F4F4F;
+                padding: 0px 10px 0px 0px;
                 p {
                     margin: 0px;
+                   
                 }
             }
             .card-title {
@@ -160,6 +163,7 @@
                 overflow: hidden;
                 min-height: 67px;
                 color: #4F4F4F;
+                 padding: 0px 10px 0px 0px;
             }
             .card-status {
                 @include body-font-1();
