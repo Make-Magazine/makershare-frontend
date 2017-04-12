@@ -231,7 +231,10 @@
 								 [inputId]="tid">
 								</tag-input>
 								<hr>
-								<a class="report">Report this user</a>
+								<!--<a class="report">Report this user</a>-->
+								<div *ngIf="uid">
+								<app-report-user [userReportId]="uid"></app-report-user>
+								</div>
 								<!-- End How -->
 							</div>
 							<!-- End col-md-3 -->

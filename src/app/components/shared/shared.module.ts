@@ -32,6 +32,7 @@ import { ProjectSearchCardComponent } from './search-cards/project-search-card/p
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
+import { ReportUserComponent } from './report-user/report-user.component';
 
 
 
@@ -73,6 +74,7 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
+    ReportUserComponent,
   ],
   exports: [
     CommentComponent,
@@ -101,6 +103,7 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
+    ReportUserComponent,
   ]
   
 })
@@ -131,3 +134,4 @@ export { ProjectSearchCardComponent };
 export { ChallengeSearchCardComponent };
 export { ShowcaeSearchCardComponent };
 export { LearnSearchCardComponent };
+export { ReportUserComponent };
