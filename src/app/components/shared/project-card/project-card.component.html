@@ -4,7 +4,6 @@
     <p class="card-type">Project</p>
     <div class="image-top" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>
-      {{view}}
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
       <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
       <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">

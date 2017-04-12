@@ -93,6 +93,7 @@ export class ChallengeCardComponent implements OnInit {
    /* function to get count projects in challenge */
   getCountProject() {
     // var nid;
+    console.log(this.challengeNid)
       this.viewService.getView('maker_count_project_challenge_api/' +this.challengeNid)
       .subscribe(data => {
         if (data == null) {
@@ -100,7 +101,7 @@ export class ChallengeCardComponent implements OnInit {
            console.log(data);
         } else {
           this.countProjects = data;
-           console.log(data[0]);
+           console.log(this.countProjects);
         }
       }, err => {
      //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });

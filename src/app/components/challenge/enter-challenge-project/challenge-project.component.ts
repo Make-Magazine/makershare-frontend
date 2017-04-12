@@ -162,11 +162,12 @@ export class ChallengeProjectComponent implements OnInit {
   }
   onSubmit(event: any) {
 
-    var body = {
+    let body = {
       "type": "challenge_entry",
       "field_entry_project": this.selectedProject,
       "field_entry_challenge": this.nid,
     };
+    console.log(body);
     this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
       this.router.navigate(['missions/', this.nid]);
       // console.log(this.challangeData.title)
