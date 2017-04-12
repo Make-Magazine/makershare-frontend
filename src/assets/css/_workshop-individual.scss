@@ -47,10 +47,12 @@
 				}
 			}
 		}
-	.workshop-actions {
+	.workshop-actions {  
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 			li {
 				display: block;
 				float: left;
+			
 				.btn {
 					border-right-width: 0;
 				}
@@ -61,6 +63,7 @@
 				}
 			}
 		}
+
 		.workshop-aside {
 			li {
 				float: left;
@@ -279,9 +282,13 @@
 		// }
 
 				.workshop-actions {
+					   position: absolute;
+         right: 20px;      
 					
 				li {
 					float: left;
+						// border: 1px solid $main-grey;
+
 						a.active {
 						background-color: $main-grey;
 						color: #fff;
@@ -291,6 +298,13 @@
 						background-color: $learn-card-bg ;
 				}
 			}
+
+		.default{
+			img{
+				width: 70px;
+				height: 70px;
+			}
+		}
 	
 		.container-content {
         position: relative;
