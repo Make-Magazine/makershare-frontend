@@ -294,6 +294,11 @@
 
 .front {
     .learn-card {
+        .card-type {
+            top: 60px;
+            right: -30px;
+            color: $text-color-2;	
+        }
         position: relative;
         padding: 16px;
         overflow: hidden;

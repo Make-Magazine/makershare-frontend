@@ -192,116 +192,91 @@
     }
 		$showcase-height:250px;
 		.showcase-card-backlayer-home {
-				background-color: $showcase-layer;
-				transition: background-color 0.8s ease;
-				-moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-				-webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-				box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
 				height: $showcase-height;
-				margin-top: 25px;
-				margin-bottom: 20px;
-				&:hover {
-						background-color: $valid-faire;
-						transition: background-color 0.8s ease;
-				}
-				&:hover .showcase-card-backlayer-home-2 {
-					
-				}
 				.showcase-card-backlayer-home-2 {
 						height: $showcase-height;
 				}
 				.showcase-card {
 						height: $showcase-height;
-						.card {
-						}
-						.single-showcase {
-								img {
-								}
-								.card-partership {
-								}
-						}
-						.left-side {
-						}
-						.image-container {
-								img {
-								}
-						}
 						.card-container {
-								.card {
-								}
-								.showcase-type-badge {
-										p {
-										}
-								}
 								.card-title {
 									@include card-header-font-md();
 									color: $font-grey;
 									height: 55px;
     							margin-bottom: 30px;
 								}
-								.card-status {
-								}
-								p.card-partnership {}
 								.card-description {
-										// margin-bottom: 60px;
-										h4 {
-										}
 										p {
 											height: 58px;
-										}
-								}
-								.card-buttons {
-										a.btn.btn-grey {
-											
-										}
-										.follow-number {
-											
-										}
-								}
-						}
-						.showcase-card-footer {
-								.showcase-card-footer-1 {
-								
-										a.btn.btn-grey {
-											
-										}
-								}
-								.showcase-card-footer-2 {
-									
-										.showcase-card-count {
-										
-												div {
-														
-												}
-												.projects-count-div {
-													
-												}
-												.views-count {
-														
-												}
-												.showcase-views {
-												
-												}
-												.update-date {
-													
-												}
-												.showcase-date {
-														
-												}
-												.projects-count {
-													
-												}
-										}
-										.showcase-card-status {
-												.open-status,
-												.closed-status {
-													
-												}
 										}
 								}
 						}
 				}
 		}
+		.front {
+			.learn-card {
+					.image-container {
+							padding:0 30px 0 15px;
+							max-height: 160px;
+							max-width: 520px;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #4F4F4F;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #4F4F4F;
+									}
+							}
+					}
+			}
+			.front-challenge-card {
+					height: 420px;
+					.image-container {
+							padding:0 30px 0 15px;
+							max-height: 160px;
+							max-width: 520px;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #fff;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #fff;
+											overflow: hidden;
+									}
+							}
+					}
+					.challene-card-footer-1 {
+						order: 3
+					}
+					.challenge-card-footer-2 {
+						margin-bottom: 5px;
+						@include desc-font-3;
+						color: $text-color-2;
+					}
+			}
+	}
 }
 
 @media only screen and (max-width: 768px) {}
