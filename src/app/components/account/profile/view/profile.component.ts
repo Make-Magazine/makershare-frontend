@@ -146,8 +146,8 @@ export class ProfileComponent implements OnInit {
   Loading: boolean;
   profile: UserProfile;
   CountryFieldsAndDetails = {
-    used_fields:[],
-    administrative_area_label:'',
+    used_fields: [],
+    administrative_area_label: '',
   };
   ProfileInfo: UserProfile = {
     address: {
@@ -268,19 +268,24 @@ export class ProfileComponent implements OnInit {
       this.SaveUser(user);
     });
   }
+
+  ReSetAddressValues(){
+    if (this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate) {
+      let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
+      if (!this.profile.address[administrative_area_label]) {
+        this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
+      } else {
+        this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
+      }
+    }
+  }
+
   SaveInfo(closebtn: HTMLButtonElement) {
     if (this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
-    if(this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate){
-      let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
-      if(!this.profile.address[administrative_area_label]){
-        this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
-      }else{
-        this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
-      }
-    }
+    this.ReSetAddressValues();
     this.onValueChanged();
     let flag = true;
     for (let feild in this.formErrors) {
@@ -302,19 +307,19 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  GetCountryDetails(CountryKey:string){
-    this.viewService.getView('maker_address_api/'+CountryKey).subscribe((data)=>{
+  GetCountryDetails(CountryKey: string) {
+    this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
     });
   }
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(
-      (profile:UserProfile)=>{
+      (profile: UserProfile) => {
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
-      },(err)=>{
+      }, (err) => {
         console.log(err);
-      },()=>{
+      }, () => {
         if (this.idProfile == this.uid)
           localStorage.setItem('user_photo', this.profile.user_photo);
         this.formGroup = this.fb.group({
@@ -327,7 +332,7 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  SetUser(user:UserProfile){
+  SetUser(user: UserProfile) {
     console.log(user);
     this.profile = user;
     this.ProfileInfo.nickname = user.nickname;
