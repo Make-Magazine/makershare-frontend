@@ -197,6 +197,8 @@ export class ProfileComponent implements OnInit {
     this.userService.getStatus().subscribe(data => {
       if(data.user.uid > 0){
         this.idProfile = data.user.uid;
+        console.log(this.idProfile);
+      
       }
     });
     /*check if navigating to profile with username paramter => get uid from name 
@@ -205,6 +207,7 @@ export class ProfileComponent implements OnInit {
     if (userName) {
       this.userService.getIdFromUrl(userName).subscribe(res => {
         this.uid = res.uid;
+          console.log(this.uid);
         this.GetUserDetails();
       },()=>{
         this.GetUserDetails();
