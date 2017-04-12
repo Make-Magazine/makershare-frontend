@@ -81,7 +81,7 @@ export class YourStoryComponent implements OnInit {
       this.all_categories = categories;
       categories.forEach((element, index) => {
         if (element.parent_tid) {
-          this.project_categories_childs.push(element);
+          this.project_categories_childs.push(element);          
         } else {
           this.project_categories_parents.push(element);
         }
