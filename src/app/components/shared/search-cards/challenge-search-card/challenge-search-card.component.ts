@@ -60,7 +60,6 @@ challengeData=[];
 
   ngOnInit() {
    this.getChallenges();
-   console.log(this.challengeNid)
     }
 
   getChallenges(){

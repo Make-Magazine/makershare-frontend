@@ -50,7 +50,6 @@ export class CommentFormComponent implements OnInit {
       });
     /*end of service */    
       this.buildForm();
-      console.log(this.titlecomment)
   }
 
   /* function build form */

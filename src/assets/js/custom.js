@@ -18,8 +18,6 @@ function myToggle(a, e, b) {
 // addNewField ( $(this) , arrayOfFieldsIds,group to clone,conatiner to get length)
 function addNewField(a, b, g, c) {
 	d = c.length + 1;
-	console.log(c.length);
-	console.log(d)
 	newResource = a.prev(g).clone();
 
 	for (i = 0; i <= b.length; i++) {
