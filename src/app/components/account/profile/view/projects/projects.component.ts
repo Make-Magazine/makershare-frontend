@@ -37,7 +37,6 @@ private activatedRoute: ActivatedRoute,
       });
         this.userService.getIdFromUrl(this.userName).subscribe( data => {
            this.uid = data.uid;
-           console.log(this.uid)
               this.getProjects();
                this.getCountProject();
         
@@ -61,7 +60,6 @@ private activatedRoute: ActivatedRoute,
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
-      console.log(this.profile_projects)
        this.loadMoreVisibilty();
 
     }, err => {

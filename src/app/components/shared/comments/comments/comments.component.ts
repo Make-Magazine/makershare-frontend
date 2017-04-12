@@ -12,6 +12,7 @@ export class CommentsComponent implements OnInit {
   title: string = 'Comment';
   @Input("nodeId") nodeId;
   @Input("comments") comments;
+  @Input() titlecomment;
 
   
 

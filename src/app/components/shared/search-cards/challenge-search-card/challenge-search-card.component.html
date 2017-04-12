@@ -1,5 +1,5 @@
-<div class="container">
-<div class="challenge-card row">
+<div class="container ">
+<div class="challenge-card row" *ngIf="challenge">
   <div class="image-container col-lg-4 col-md-12 col-sm-12 col-xs-12">
     <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
   </div>
@@ -16,7 +16,7 @@
         <h3 class="card-title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
         <div class="challene-card-footer d-flex">
           <div class="challenge-card-footer-2">
-            <div class="challenge-card-count">
+            <div class="challenge-card-count" *ngIf="challenge.entries_count">
               <span class="entries-count">{{challenge.entries_count}}
               <span *ngIf="challenge.entries_count>1">Entries</span>
               <span *ngIf="challenge.entries_count <= 1">Entry</span>
@@ -28,9 +28,9 @@
               </span>
             </div>
             <div class="challenge-card-status">
-              <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
-              <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date.value}}</span>
+              <span class="closed-status" *ngIf="challenge.status && challenge.status_id == 376">{{challenge.status}}</span>
+              <span class="open-status" *ngIf="challenge.status && challenge.status_id != 376">{{challenge.status}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.challenge_end_date && challenge.status_id != 376">{{challenge.challenge_end_date}}</span>
             </div>
           </div>
         </div>
