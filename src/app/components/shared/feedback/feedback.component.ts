@@ -340,14 +340,49 @@ export class FeedbackComponent implements OnInit {
         // if (n !== -1 && files[i].size < 5242880) {
         var str = files[i].type;
         var n = str.search("image");
+                  let file1:FileEntity
+
         //if type is image
         if (n !== -1) {
-          NodeHelper.ConvertToBase64(files[i], this.fileArray[i]);
+    //        var reader = new FileReader();
+    // reader.readAsDataURL(files[i]);
+    // reader.onload = function () {
+    //   file1.filename = files[i].name;
+    //   file1.file = reader.result;
+    // };
+    // reader.onerror = function (error) {
+    //   // console.log('Error: ', error);
+    // };
+    // this.fileArray[i].file=file1.file
+    // this.fileArray[i].filename=file1.filename
+  NodeHelper.ConvertToBase64(files[i], file1);
+      this.fileArray[i].file=file1.file
+    this.fileArray[i].filename=file1.filename
           //maximum upload size 1 MB
           if (files[i].size > 1048576) {
+            this.validationMessages.field_upload_screenshots.validimagesize=files[i].name+'exceeded 1 MB please choose another photo';
             this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
           }
-          // var currFile = files[i];
+
+    //       console.log(this.fileArray[i]);
+    //       file1=files[i];
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(this.fileArray[i]);
+    // reader.onload = function () {
+    //   FileEntityObject.filename = file.name;
+    //   FileEntityObject.file = reader.result;
+    // };
+    // reader.onerror = function (error) {
+    //   // console.log('Error: ', error);
+    // };
+          // let img = new Image();
+          // img.src = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+          
+          // console.log( NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file));
+          // console.log(img.src);  
+          // console.log(img.width);
+          // console.log(img.height);      
+          //  var currFile = files[i];
           // var reader = new FileReader();
           // reader.onload = (function(theFile){
           //     var img = new Image;

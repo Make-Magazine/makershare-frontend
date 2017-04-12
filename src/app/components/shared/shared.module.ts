@@ -34,7 +34,6 @@ import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
