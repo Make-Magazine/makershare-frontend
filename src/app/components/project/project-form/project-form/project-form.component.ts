@@ -318,6 +318,9 @@ export class ProjectFormComponent implements OnInit {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
+    if(!this.project.title){
+      this.project.SetField("Untitled","title");
+    }
     if(this.project.GetField("field_visibility2").und[0] == 370){
       this.project.CheckIfReadyToPublic();
     }

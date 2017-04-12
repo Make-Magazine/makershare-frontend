@@ -1,26 +1,18 @@
-<div class="row page-create-project-why">
-  <section class="col-sm-12 width-fix">
+<div class="page-create-project-why">
+  <section class="container">
     <div class="top-content-wrapper">
-      <div class="nav-create">
-        <div class="container">
-          <ul class="list-unstyled">
+      <div class="add-controls">
+        <div class="container d-flex flex-row align-content-end flex-wrap">
+          <ul class="list-unstyled d-flex flex-row contorls">
             <li><a (click)="current_active_tab = 'default-settings'" class="btn btn-grey-inverse" id="default-settings" [ngClass]="{'active': current_active_tab == 'default-settings' }">Account & Notification Settings</a></li>
-            <li>
-              <a (click)="current_active_tab = 'site-admin-settings'" class="btn btn-grey-inverse" id="site-admin-settings"
-                [ngClass]="{'active': current_active_tab == 'site-admin-settings' }">Site Admin Settings</a>
-            </li>
-            <li>
-              <a (click)="current_active_tab = 'challenge-admin-settings'" class="btn btn-grey-inverse" id="challenge-admin-settings" [ngClass]="{'active': current_active_tab == 'challenge-admin-settings' }">Challenge Admin Settings</a>
-            </li>
-            <li>
-              <a (click)="current_active_tab = 'community-manager-settings'" class="btn btn-grey-inverse" id="community-manager-settings"
-                [ngClass]="{'active': current_active_tab == 'community-manager-settings' }">Community Mgr Settings</a>
-            </li>
+            <li><a (click)="current_active_tab = 'site-admin-settings'" class="btn btn-grey-inverse" id="site-admin-settings" [ngClass]="{'active': current_active_tab == 'site-admin-settings' }">Site Admin Settings</a></li>
+            <li><a (click)="current_active_tab = 'challenge-admin-settings'" class="btn btn-grey-inverse" id="challenge-admin-settings" [ngClass]="{'active': current_active_tab == 'challenge-admin-settings' }">Challenge Admin Settings</a></li>
+            <li><a (click)="current_active_tab = 'community-manager-settings'" class="btn btn-grey-inverse" id="community-manager-settings" [ngClass]="{'active': current_active_tab == 'community-manager-settings' }">Community Mgr Settings</a></li>
           </ul>
         </div>
       </div>
-      <div class="container">
-        <div>
+      <div class="nav-create">
+        <div class="container">
           <app-default-settings *ngIf="current_active_tab == 'default-settings'" class="row"></app-default-settings>
           <app-admin-settings *ngIf="current_active_tab == 'site-admin-settings'" class="row"></app-admin-settings>
           <app-challenge-admin-settings *ngIf="current_active_tab == 'challenge-admin-settings'" class="row"></app-challenge-admin-settings>

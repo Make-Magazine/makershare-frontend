@@ -15,6 +15,8 @@ import { Auth } from '../../../../auth0/auth.service';
 
 export class CommentFormComponent implements OnInit {
   @Input('nodeId') nodeId;
+  // @Input() titlecomment: Object;
+    @Input() titlecomment;
   checkUserLogin=false;
   @Input('comments') comments;
   title: string = 'Comments';
@@ -48,6 +50,7 @@ export class CommentFormComponent implements OnInit {
       });
     /*end of service */    
       this.buildForm();
+      console.log(this.titlecomment)
   }
 
   /* function build form */

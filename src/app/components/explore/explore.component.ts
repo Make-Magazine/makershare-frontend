@@ -51,7 +51,6 @@ export class ExploreComponent implements OnInit {
       this.projects = [];
     }
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
-      
       this.projects = this.projects.concat(data);
       // hide spinner
       this.loaderService.display(false);
