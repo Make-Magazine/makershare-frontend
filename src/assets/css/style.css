@@ -42,7 +42,10 @@ header nav {
     border-radius: 0;
     background-color: #fff;
     border: none;
-    box-shadow: 2px 6px 12px 1px #333; }
+    box-shadow: 2px 6px 12px 1px #333;
+    right: 0;
+    left: auto;
+    z-index: 10000; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -247,10 +250,13 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
   color: #BDBDBD;
+  width: 40px;
   font-size: 20px;
   margin: auto;
   border: none;
-  background: inherit; }
+  background: inherit;
+  bottom: 40px;
+  right: 10px; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
   a:not([href]):not([tabindex]).message-btn:hover,
   a:not([href]):not([tabindex]).message-btn:focus,
@@ -1818,7 +1824,8 @@ footer {
 .project .card-block {
   padding: 0 10px;
   margin-top: -5px;
-  height: 175px; }
+  height: 175px;
+  position: relative; }
   .project .card-block .content-side {
     padding-left: 5px;
     width: 80%; }
@@ -1904,14 +1911,16 @@ footer {
     border-radius: 0;
     padding: 0;
     margin: 0 auto;
-    top: 15px; }
+    top: 15px;
+    margin-bottom: 30px; }
   .project-home .image-top {
     width: 100%;
     height: auto;
     overflow: hidden;
     position: relative;
     top: -15px;
-    left: -20px; }
+    left: -20px;
+    height: 240px; }
     .project-home .image-top .card-img-top {
       border-radius: 0; }
     .project-home .image-top img {
@@ -1919,14 +1928,17 @@ footer {
       width: 100%; }
   .project-home .card-block {
     padding: 0 5px;
-    margin-top: -5px; }
+    margin-top: -5px;
+    position: relative; }
     .project-home .card-block .content-side {
       padding-left: 5px;
       width: 80%; }
-    .project-home .card-block .profiel-pic-container img {
-      width: 90px; }
-  .project-home .icons-side-project .project-icon {
-    height: 30px; }
+    .project-home .card-block .profiel-pic-container {
+      width: 60px; }
+      .project-home .card-block .profiel-pic-container img {
+        width: 100%; }
+  .project-home .icons-side-project {
+    margin-top: 5px; }
     .project-home .icons-side-project .project-icon img {
       width: auto;
       height: 30px; }
@@ -1951,7 +1963,7 @@ footer {
     line-height: 115% !important;
     color: #828282;
     color: #4F4F4F;
-    height: auto;
+    height: 60px;
     padding: 0px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -2294,44 +2306,6 @@ footer {
 #edit-cover-modal .modal-footer {
   text-align: center; }
 
-.maker-card.project .card-block p {
-  margin-bottom: 0; }
-.maker-card.project .card-block .maker-name {
-  font-family: "Messina Modern Bold" !important;
-  font-size: 1.16em !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 100% !important;
-  color: #828282; }
-.maker-card.project .card-block .maker-nickname {
-  font-family: "Messina Sans Regular" !important;
-  font-size: 0.95em !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 100% !important;
-  color: #828282; }
-.maker-card.project .card-block .maker-city {
-  font-family: "Messina Sans Regular" !important;
-  font-size: 0.95em !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 100% !important;
-  color: #828282;
-  color: #00AEEF; }
-.maker-card.project .card-block .maker-descripe {
-  font-family: "Messina Modern Regular" !important;
-  font-size: 0.95em !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 100% !important;
-  color: #828282;
-  margin-top: 5px;
-  font-weight: bold; }
-.maker-card.project .card-block .card-stats ul {
-  margin-bottom: 0; }
-.maker-card.project .card-block .card-type {
-  right: -22px; }
-
 .social-links a {
   display: inline-block;
   padding: 0.5em 0em;
@@ -2483,6 +2457,150 @@ footer {
           float: left; }
           .page-search-content .user-card-search .card-stats .icons-side-user .user-icon img {
             width: 30px; }
+
+.maker-card {
+  height: 375px; }
+  .maker-card.card {
+    width: 95%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 auto 30px;
+    top: 15px;
+    border: none; }
+  .maker-card .card-type {
+    right: -22px; }
+  .maker-card .image-top {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    top: -15px;
+    left: -20px; }
+    .maker-card .image-top .card-img-top {
+      border-radius: 0; }
+    .maker-card .image-top img {
+      height: auto;
+      width: 100%; }
+  .maker-card .card-block {
+    padding: 0 10px;
+    margin-top: -5px;
+    height: 175px;
+    position: relative; }
+    .maker-card .card-block .content-side {
+      padding-left: 5px;
+      width: 80%; }
+    .maker-card .card-block p {
+      margin-bottom: 0; }
+    .maker-card .card-block .maker-name {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 115% !important;
+      color: #828282; }
+    .maker-card .card-block .maker-nickname {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.95em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-bottom: 2px; }
+    .maker-card .card-block .maker-city {
+      font-family: "Messina Sans SemiBold" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-bottom: 5px;
+      color: #00AEEF; }
+    .maker-card .card-block .maker-descripe {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 0.95em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      margin-top: 5px;
+      font-weight: bold; }
+    .maker-card .card-block .card-stats ul {
+      margin-bottom: 0; }
+  .maker-card .icons-side-project .project-icon {
+    height: 45px; }
+    .maker-card .icons-side-project .project-icon img {
+      width: auto;
+      height: 40px; }
+  .maker-card .icons {
+    position: absolute;
+    color: white;
+    top: -12px;
+    left: -10px;
+    font-size: 13px;
+    padding: 20px; }
+    .maker-card .icons span {
+      margin: 2px;
+      font-size: 13px; }
+      .maker-card .icons span i {
+        margin-right: 4px;
+        font-size: 17px; }
+  .maker-card .card-title {
+    font-family: "Messina Modern Bold" !important;
+    font-size: 1.5em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 115% !important;
+    color: #828282;
+    color: #4F4F4F;
+    height: auto;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .maker-card .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0 5px;
+    color: #333333; }
+    .maker-card .card-text.project-text-grid {
+      display: none; }
+  .maker-card .categories {
+    display: none; }
+    .maker-card .categories span {
+      margin-left: 3px;
+      color: #BDBDBD; }
+  .maker-card .card-role p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 15px;
+    color: #BDBDBD; }
+  .maker-card .card-stats {
+    padding: 2px;
+    color: #BDBDBD; }
+    .maker-card .card-stats ul li {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282; }
+      .maker-card .card-stats ul li img {
+        margin-right: 6px; }
+        .maker-card .card-stats ul li img.project-likes {
+          width: 12px; }
+        .maker-card .card-stats ul li img.project-views {
+          width: 20px; }
+      .maker-card .card-stats ul li span {
+        margin: 0px; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -2849,6 +2967,105 @@ footer {
       border-radius: 20px;
       font-size: 13px;
       margin-left: 10px; }
+
+.front .front-challenge-card {
+  margin-bottom: 10px;
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #333;
+  height: 390px;
+  top: -10px; }
+  .front .front-challenge-card span {
+    color: white; }
+  .front .front-challenge-card a {
+    color: white; }
+  .front .front-challenge-card p,
+  .front .front-challenge-card h3 {
+    color: white; }
+  .front .front-challenge-card .card {
+    background-color: transparent;
+    border: none; }
+    .front .front-challenge-card .card .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 3em !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
+      color: #828282;
+      color: #fff;
+      max-height: 145px;
+      overflow: hidden; }
+    .front .front-challenge-card .card .card-type {
+      top: 25px;
+      right: -45px; }
+      .front .front-challenge-card .card .card-type p {
+        margin-bottom: 0; }
+  .front .front-challenge-card .single-challenge {
+    padding: 10px; }
+    .front .front-challenge-card .single-challenge img {
+      width: 250px; }
+    .front .front-challenge-card .single-challenge .card-partership {
+      color: #ED1C24; }
+  .front .front-challenge-card .image-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    height: 360px; }
+    .front .front-challenge-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .front .front-challenge-card .card-container .card-partership {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 0.95em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin-bottom: 10px; }
+    .front .front-challenge-card .card-container .card-partership p {
+      margin-bottom: 0px; }
+  .front .front-challenge-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .front .front-challenge-card .card-container .challene-card-footer {
+    margin-top: auto; }
+    .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
+        background-color: #BDBDBD; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+      font-size: 12px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+        padding-left: 10px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+        padding-right: 10px;
+        border-right: 1px solid white; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+      font-size: 12px;
+      padding-right: 5px; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+      color: white; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+      color: #00AEEF; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+      font-size: 12px; }
+.front .challenge-card-full.front-challenge-card {
+  padding: 0;
+  height: 350px;
+  margin-top: 20px; }
+  .front .challenge-card-full.front-challenge-card .card-type {
+    z-index: 1000; }
+  .front .challenge-card-full.front-challenge-card .card-container {
+    position: absolute;
+    bottom: 15px;
+    left: 15px; }
 
 .page-project {
   color: #333333;
@@ -3844,7 +4061,8 @@ header.showcase-project .next {
   .front .learn-card .image-container {
     overflow: hidden;
     position: relative;
-    padding: 0px 15px; }
+    padding: 0 0 0 15px;
+    height: 360px; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4120,19 +4338,6 @@ img {
   max-width: 100%; }
 
 /* front page */
-.front .challenge-card {
-  position: relative;
-  padding: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: #333; }
-  .front .challenge-card span {
-    color: white; }
-  .front .challenge-card a {
-    color: white; }
-  .front .challenge-card p,
-  .front .challenge-card h3 {
-    color: white; }
 .front .showcase .col-lg-4 {
   margin-bottom: 10px; }
   .front .showcase .col-lg-4 .showcase-item .image-container {
@@ -4244,23 +4449,21 @@ img {
         color: #828282;
         display: inline-block;
         text-transform: none; }
-      .showcase-card-backlayer-home .showcase-card .card-container .card-description {
-        margin-bottom: 60px; }
-        .showcase-card-backlayer-home .showcase-card .card-container .card-description h4 {
-          font-weight: bold; }
-        .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
-          font-family: "Messina Sans Regular" !important;
-          font-size: 0.95em !important;
-          font-weight: 400 !important;
-          text-transform: none !important;
-          line-height: 100% !important;
-          color: #828282;
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          color: #333333;
-          height: 71px; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description h4 {
+        font-weight: bold; }
+      .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 0.95em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #333333;
+        height: 71px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
@@ -5245,12 +5448,10 @@ img {
     box-shadow: 2px 6px 22px #888888;
     width: 100%;
     margin-bottom: 40px; }
+  .page-workshop-single .page-workshop-individual .workshop-content .html-block {
+    width: 74%; }
   .page-workshop-single .page-workshop-individual .workshop-content .modal-block {
-    border: 1px solid black; }
-    .page-workshop-single .page-workshop-individual .workshop-content .modal-block .card-modal {
-      padding-left: 32px; }
-    .page-workshop-single .page-workshop-individual .workshop-content .modal-block .html-card {
-      padding-left: 23px; }
+    width: 68%; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
     box-shadow: 0px 7px 12px #888888; }
   .page-workshop-single .page-workshop-individual .workshop-content .lesson, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson {
@@ -5361,6 +5562,8 @@ img {
     .page-workshop-individual .learn-card .workshop-actions li a.active {
       background-color: #333333;
       color: #fff; }
+  .page-workshop-individual .learn-card .workshop-actions .btn {
+    background-color: #DCDCDC; }
   .page-workshop-individual .learn-card .container-content {
     position: relative;
     padding-right: 0px; }
@@ -6276,5 +6479,8 @@ img {
   .container {
     width: 1140px;
     max-width: 100%; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .front .lone-card {
+    order: 5; } }
 
 /*# sourceMappingURL=style.css.map */

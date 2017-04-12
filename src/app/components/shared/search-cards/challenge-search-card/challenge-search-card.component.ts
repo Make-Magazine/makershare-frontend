@@ -47,6 +47,7 @@ export class ChallengeSearchCardComponent implements OnInit {
     timezone_db: "",
     date_type: "",
   };
+  loading=true
 challengeData=[];  
  @Input() challengeNid;
    constructor(private route: ActivatedRoute,
@@ -59,6 +60,7 @@ challengeData=[];
 
   ngOnInit() {
    this.getChallenges();
+   console.log(this.challengeNid)
     }
 
   getChallenges(){

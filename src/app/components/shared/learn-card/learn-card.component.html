@@ -56,8 +56,8 @@
     <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
   </div>
   <div class="col-md-7 container-conten">
-    <div class="card-container">
-      <div class="card">
+    <div class="card-container h-100">
+      <div class="card h-100">
         <div class="learn-type-bagde">
           <p>WORKSHOP</p>
         </div>
@@ -68,7 +68,7 @@
         <div class="card-description">
           <p [innerHTML]="learn.brief_description"></p>
         </div>
-        <div class="learn-card-footer d-flex">
+        <div class="learn-card-footer d-flex mt-auto">
           <div class="learn-card-footer-1">
             <div class="button-container-main-1">
               <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)">Get Started</span>

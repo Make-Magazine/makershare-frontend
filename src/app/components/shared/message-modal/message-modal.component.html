@@ -1,4 +1,4 @@
- <button (click)="open(content)" (click)="getUserData()" class="message-btn" style="width: 50px" >
+ <button (click)="open(content)" (click)="getUserData()" class="message-btn">
    <i  ngbTooltip="Send Message"></i>
    <img src="./assets/images/icons/mail.svg" alt="">
  </button>
@@ -11,14 +11,14 @@
   <div class="modal-body">
     <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg" class="form-horizontal">
       <div class="form-group subject">
-              <label class="control-label" style="color: black">Subject</label>
+              <label class="control-label">Subject</label>
               <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
             </div>
       <div *ngIf="formErrors.subject" class="alert alert-danger">
         {{ formErrors.subject }}
       </div>
       <div class="form-group message-text">
-        <label class="control-label" style="color: black">Message</label>
+        <label class="control-label">Message</label>
         <textarea name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
       </div>
       <div *ngIf="formErrors.body" class="alert alert-danger">

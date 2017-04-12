@@ -13,7 +13,7 @@ export class ProjectCardComponent implements OnInit {
   @Input() front;
   
   badges = [];
-  project;
+  project ={};
   userId;
 
   constructor(private router: Router,
@@ -31,7 +31,6 @@ export class ProjectCardComponent implements OnInit {
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
-      console.log(this.nid)
       this.project = res[0];
     /*  this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0]
