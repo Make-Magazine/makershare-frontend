@@ -5677,7 +5677,11 @@ img {
     width: 100%; }
   .page-workshop-single .page-workshop-individual .related-books {
     background-color: white;
-    padding: 0px; }
+    padding: 10px 0px; }
+    .page-workshop-single .page-workshop-individual .related-books h5 {
+      padding-top: 10px; }
+    .page-workshop-single .page-workshop-individual .related-books ul {
+      padding: 0px; }
   .page-workshop-single .page-workshop-individual .top-content-wrapper {
     border-bottom: 1px solid #333333;
     margin-bottom: 10px;
