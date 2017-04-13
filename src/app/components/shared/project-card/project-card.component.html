@@ -1,10 +1,10 @@
 <!--<div *ngIf="view == 'grid'">-->
 <div *ngIf="project && !front">
-  <div class="project card">
+  <div class="project card" *hideItBootstrap="['sm','xs']">
     <p class="card-type">Project</p>
     <div class="image-top" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>
-      <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
+      <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
       <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
       <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
       <div class="teaser">
@@ -61,6 +61,46 @@
               <span>{{project.maker_project_count}} projects</span>
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="project-mobile-card card" (click)="ShowProjectDetails(project.nid)" *showItBootstrap="['sm','xs']">
+    <div class="card-type">Project</div>
+    <div class="card-block project-card-small align-content-stretch content ">
+      <div class="media d-flex align-items-stretch">
+        <div class="project-pic-container flex-column align-self-start">
+          <div class="overlay"></div>
+          <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
+          <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
+        </div>
+        <div class="media-body d-flex align-items-start flex-column">
+          <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+        </div>
+      </div>
+      <div class="maker-project-info d-flex align-items-stretch flex-row">
+        <div class="d-flex flex-column w-100">
+          <div class="d-flex">
+            <div class="icons-side-user d-flex">
+              <div class="user-icon" *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+              </div>
+            </div>
+            <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+          </div>
+          <div class="card-stats mt-auto d-flex">
+            <ul class="list-unstyled d-flex justify-content-start align-items-end w-100 mt-auto">
+              <li class="w-25">
+                <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+                <span *ngIf="!project.number_of_likes">0</span>
+              </li>
+              <li class="w-25">
+                <img src="./assets/images/icons/views.png" class="project-views" alt="">
+                <span>170</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -129,7 +169,7 @@
     </div>
   </div>
   <div class="project-mobile-card card" (click)="ShowProjectDetails(project.nid)" *showItBootstrap="['sm','xs']">
-    <div class="card-type">Project</div>    
+    <div class="card-type">Project</div>
     <div class="card-block project-card-small align-content-stretch content ">
       <div class="media d-flex align-items-stretch">
         <div class="project-pic-container flex-column align-self-start">
@@ -149,7 +189,7 @@
                 <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
               </div>
             </div>
-          <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>            
+            <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
           </div>
           <div class="card-stats mt-auto d-flex">
             <ul class="list-unstyled d-flex justify-content-start align-items-end w-100 mt-auto">

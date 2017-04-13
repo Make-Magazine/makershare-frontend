@@ -13,13 +13,13 @@
       </div>
     </div>
   </div>
-  <p class="feed-timestamp" *ngIf="comment?.comment">Posted on {{comment?.update_date}}</p>
+  <p class="feed-timestamp" *ngIf="comment?.comment"> {{comment?.post_date}}</p>
   <div class="media-body">
     <div class="comment-body">
       <p>{{comment?.comment}}</p>
     </div>
   </div>
-  <div class="media content-section" *ngIf="!comment?.comment">
+  </div>
+  <div class="media content-section" *ngIf="comments.value?.length == 1">
     <p>{{titlecomment.ifempty}}</p>
   </div>
-</div>
