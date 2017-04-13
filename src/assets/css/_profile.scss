@@ -817,6 +817,7 @@
         padding: 2px;
         color: $light-grey;
         ul li {
+            width: 50px;
             @include desc-font-2();
             img {
                 margin-right: 6px;
