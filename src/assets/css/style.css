@@ -4202,6 +4202,15 @@ header.showcase-project .next {
   cursor: pointer;
   background-color: #DCDCDC;
   margin: 10px 0; }
+  .page-learn .learn-card .learn-type-bagde {
+    position: absolute;
+    top: 38px;
+    right: -40px;
+    transform: rotate(-90deg);
+    color: #4F4F4F;
+    padding: 0px 10px 0px 0px; }
+    .page-learn .learn-card .learn-type-bagde p {
+      margin: 0px; }
   .page-learn .learn-card .learn-item {
     padding: 10px; }
     .page-learn .learn-card .learn-item img {
@@ -4218,15 +4227,6 @@ header.showcase-project .next {
   .page-learn .learn-card .card-container {
     color: #fff;
     position: relative; }
-    .page-learn .learn-card .card-container .learn-type-bagde {
-      position: absolute;
-      top: 38px;
-      right: -50px;
-      transform: rotate(-90deg);
-      color: #4F4F4F;
-      padding: 0px 10px 0px 0px; }
-      .page-learn .learn-card .card-container .learn-type-bagde p {
-        margin: 0px; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
       font-size: 3em !important;
