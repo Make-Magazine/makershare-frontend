@@ -2,8 +2,8 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input  type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="What do you call your project?" ngbTooltip="{{TooltipText.project_name.guide}}" >
-        <div *ngIf="formErrors.title" class="alert alert-danger error-msg">
+      <input  type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="What do you call your project?" ngbTooltip="{{TooltipText.project_name.guide}}" (focusout)="TitleFocused = true">
+        <div *ngIf="formErrors.title && TitleFocused" class="alert alert-danger error-msg">
           {{ formErrors.title }}
         </div>
     </div>
@@ -54,8 +54,11 @@
       </div>
       <div *ngIf="project.field_categories.und" class="cate-list">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
-          <div *ngFor="let cate of all_categories;" class="">
-            <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item"><span [innerHTML]="cate.parentName"></span> &nbsp; > <span [innerHTML]="cate.name"></span></p>
+          <div *ngFor="let cate of all_categories" class="">
+            <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item">
+              <span [innerHTML]="cate.parentName"></span> &nbsp; > <span [innerHTML]="cate.name"></span>
+              <span (click)="RemoveCategory(cate.tid,cate.parent_tid)" aria-hidden="true">&times;</span>
+            </p>
           </div>
         </div>
       </div>
