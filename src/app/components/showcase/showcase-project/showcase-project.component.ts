@@ -62,7 +62,7 @@ export class ShowcaseProjectComponent implements OnInit {
     this.currentuser = Number(localStorage.getItem('user_id'));
 
     var i = 0;
-    if (this.project.field_resources) {
+    if (this.project && this.project.field_resources) {
       for (let resource of this.project.field_resources) {
         var resourceExt = resource.resource_file.split('.').pop();
         this.project.field_resources[i]['extension'] = resourceExt;
