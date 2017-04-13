@@ -135,10 +135,12 @@
       </p>
       <div>
         <label class="md-check ">
-        <input type="checkbox"   (change)="checkBoxValue($event)" />
-        <div *ngIf="button==true">
-         <span class="btn btn-main w-100" (click)="onSubmit()" >Submit</span>
-       </div>
+        <input type="checkbox"   (change)="checkBoxValue($event)" /> i agree
+        
+        <div class="ml-auto" *ngIf="button == true">
+            <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+            <button  type="button" class="btn btn-primary" (click)="onSubmit($event)">Submit</button>
+          </div>
 
     </label>
       </div>
