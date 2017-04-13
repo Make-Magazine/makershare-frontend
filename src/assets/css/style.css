@@ -1355,13 +1355,21 @@ footer {
       width: 25px; }
     .profile-sidebar .profile-container .profile-group .profile-pic {
       position: relative; }
-      .profile-sidebar .profile-container .profile-group .profile-pic img {
-        height: auto;
-        width: 100%;
+      .profile-sidebar .profile-container .profile-group .profile-pic .card-type {
+        font-size: 1.35em !important;
+        right: -32px; }
+      .profile-sidebar .profile-container .profile-group .profile-pic .image-container {
         position: relative;
+        background: url("../images/placeholder.png") center center;
+        background-size: cover;
+        width: 370px;
+        height: 280px;
         top: -110px;
-        left: -40px;
+        left: -60px;
         margin-bottom: -100px; }
+      .profile-sidebar .profile-container .profile-group .profile-pic img {
+        height: 100%;
+        width: 100%; }
       .profile-sidebar .profile-container .profile-group .profile-pic a {
         z-index: 1;
         top: -100px;
@@ -2884,6 +2892,13 @@ footer {
     margin-right: -15px;
     background: url("../images/placeholder.png") center center;
     background-size: cover; }
+
+.edit-buttons {
+  width: 25px !important;
+  height: 25px !important;
+  float: right; }
+  .edit-buttons path {
+    fill: red; }
 
 .page-explore {
   background-color: #F2F2F2; }
