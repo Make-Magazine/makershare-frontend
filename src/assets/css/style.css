@@ -1923,6 +1923,7 @@ footer {
   padding: 2px;
   color: #BDBDBD; }
   .project .card-stats ul li {
+    width: 50px;
     font-family: "Messina Sans Regular" !important;
     font-size: 0.9em !important;
     font-weight: 400 !important;
@@ -5145,7 +5146,7 @@ img {
   .page-create-project-why .custom-footer {
     border-top: 1px solid #333333; }
   .page-create-project-why .your-story .projectName {
-    width: 60%; }
+    width: 100%; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
