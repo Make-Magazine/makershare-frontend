@@ -11,9 +11,9 @@ export class ProjectCardComponent implements OnInit {
   @Input() nid;
   @Input() view = 'grid';
   @Input() front;
-  
+
   badges = [];
-  project ={};
+  project = {};
   userId;
 
   constructor(private router: Router,
@@ -32,16 +32,16 @@ export class ProjectCardComponent implements OnInit {
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
       this.project = res[0];
-    /*  this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
-        this.project['maker_project_count'] = data[0]
-      })*/
+      this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
+        this.project['maker_project_count'] = data[0];
+      });
     });
   }
-  
+
   getBadgesProject() {
     this.viewService.getView('api-project-badges', [['nid', this.nid]]).subscribe(data => {
-      for(let i=0; i<data.length && i<4; i++){
-        this.badges.push(data[i])
+      for (let i = 0; i < data.length && i < 4; i++) {
+        this.badges.push(data[i]);
       }
     });
   }
@@ -49,12 +49,10 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view/', nid]
-    );
+    this.router.navigate(['/project/view/', nid]);
   }
-  userProfile(fName,lName){
-    var name=fName+lName;
-        this.router.navigate(['/portfolio/',name])
-
+  userProfile(fName, lName) {
+    var name = fName + lName;
+    this.router.navigate(['/portfolio/', name]);
   }
 }
