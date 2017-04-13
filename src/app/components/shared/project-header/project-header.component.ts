@@ -19,7 +19,7 @@ export class ProjectHeaderComponent implements OnInit {
   userLogin;
   currentuser;
   userId;
-
+  tags = [];
   customTitle: string = '';
   customDescription: string = '';
   customImage: string = '';
@@ -38,6 +38,12 @@ export class ProjectHeaderComponent implements OnInit {
       this.customImage = this.project.field_cover_photo.url;
     }
     if(this.showcaseInfo){
+    }
+    // this.project.field_tags
+    let i =0;
+    for (let tag in this.project.field_tags) {
+      if(this.project.field_tags[tag] != "")
+      this.tags.push(this.project.field_tags[tag]);
     }
   }
   

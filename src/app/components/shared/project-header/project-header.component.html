@@ -48,10 +48,10 @@
           <div class="card-date">
             <span class="project-date pr-2">Created on: {{project.created}}</span><span class="project-date">Updated on: {{project.changed}}</span>
           </div>
-          <!--<div class="card-tags" *ngIf="project.field_tags">
-            <span class="project-tag pr-2" *ngFor="let tag of project.field_tags">{{tag.tag_name}},</span>
-          </div>-->
-          <div class="project-card-footer d-flex">
+          <div class="card-tags" *ngIf="project.field_tags">
+            <span class="project-tag pr-2" *ngFor="let tag of tags">{{tag.tag_name}},</span>
+          </div>
+          <div class="project-card-footer d-flex mt-auto">
             <ul class="list-unstyled project-aside">
               <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Read Story</a></li>
               <li id="build-project"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">Build project</a></li>
