@@ -2570,7 +2570,9 @@ footer {
     overflow: hidden;
     position: relative;
     top: -15px;
-    left: -20px; }
+    left: -20px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .maker-card .image-top .card-img-top {
       border-radius: 0; }
     .maker-card .image-top img {
@@ -3263,7 +3265,9 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: 360px; }
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4330,7 +4334,8 @@ header.showcase-project .next {
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
-    color: #828282; }
+    color: #828282;
+    margin-right: 15px; }
   .front .learn-card .learn-item {
     padding: 10px; }
     .front .learn-card .learn-item img {
@@ -4340,8 +4345,10 @@ header.showcase-project .next {
   .front .learn-card .image-container {
     overflow: hidden;
     position: relative;
-    padding: 0 0 0 15px;
-    height: 360px; }
+    padding: 0;
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -6796,7 +6803,7 @@ img {
         height: 58px; }
 
   .front .learn-card .image-container {
-    padding: 0 30px 0 15px;
+    margin: 0 30px 0 15px;
     max-height: 160px;
     max-width: 520px; }
   .front .learn-card .card-container .card-title {
@@ -6825,7 +6832,7 @@ img {
   .front .front-challenge-card {
     height: 420px; }
     .front .front-challenge-card .image-container {
-      padding: 0 30px 0 15px;
+      margin: 0 30px 0 15px;
       max-height: 160px;
       max-width: 520px;
       background: url("../images/placeholder.png") center center;
