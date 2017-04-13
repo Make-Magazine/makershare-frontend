@@ -120,6 +120,18 @@
         cursor: pointer;
         background-color: $learn-cards-bg;
         margin: 10px 0;
+        .learn-type-bagde {
+            position: absolute;
+            top: 38px;
+            right: -40px;
+            transform: rotate(-90deg);
+            color: #4F4F4F;
+            padding: 0px 10px 0px 0px;
+            p {
+                margin: 0px;
+                
+            }
+        }
         .learn-item {
             padding: 10px;
             img {
@@ -142,18 +154,6 @@
             color: $white;
             // font-weight: bold;
             position: relative;
-            .learn-type-bagde {
-                position: absolute;
-                top: 38px;
-                right: -50px;
-                transform: rotate(-90deg);
-                color: #4F4F4F;
-                padding: 0px 10px 0px 0px;
-                p {
-                    margin: 0px;
-                   
-                }
-            }
             .card-title {
                 @include card-header-font-lg();
                 font-size: 38px;

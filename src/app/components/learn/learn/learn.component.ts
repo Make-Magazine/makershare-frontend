@@ -66,8 +66,8 @@ export class LearnComponent implements OnInit {
     if (this.countWorkshop == this.learns.length) {
       this.hideloadmoreworkshop = true;
 
-    } else if (this.countWorkshop > this.learns.length) {
-      setTimeout(10000);
+    } else if (this.countWorkshop < this.learns.length) {
+      // setTimeout(10000);
 
       this.hideloadmoreworkshop = false;
     }
