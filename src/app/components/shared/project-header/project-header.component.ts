@@ -38,9 +38,7 @@ export class ProjectHeaderComponent implements OnInit {
       this.customImage = this.project.field_cover_photo.url;
     }
     if(this.showcaseInfo){
-      console.log(this.showcaseInfo)
     }
-    console.log(this.project)
   }
   
   getcurrentuser(){

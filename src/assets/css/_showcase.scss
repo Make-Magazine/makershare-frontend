@@ -51,7 +51,6 @@
     .showcase-card {
         position: relative;
         padding: 16px;
-        cursor: pointer;
         background-color: white;
         -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
         -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
@@ -76,6 +75,7 @@
             position: relative;
             padding: 0;
             height: auto;
+            cursor: pointer;
             img {
                 width: 100%;
                 height: auto;
@@ -106,6 +106,7 @@
                 max-height: 114px;
                 min-height: 70px;
                 color: $font-grey;
+                cursor: pointer;        
             }
             .card-status {
                 @include body-font-1();
@@ -249,23 +250,7 @@ img {
 /* front page */
 
 .front {
-    .challenge-card {
-        position: relative;
-        padding: 16px;
-        overflow: hidden;
-        cursor: pointer;
-        background-color: #333;
-        span {
-            color: white;
-        }
-        a {
-            color: white;
-        }
-        p,
-        h3 {
-            color: white;
-        }
-    }
+    
     .showcase {
         .col-lg-4 {
             margin-bottom: 10px;

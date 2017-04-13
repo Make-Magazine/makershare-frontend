@@ -37,7 +37,7 @@ export class FeedbackComponent implements OnInit {
   formErrors = {
     'field_want_submit': '',
     'field_bug_not_in_page_': '',
-    'field_upload_screenshots': ''
+    'field_upload_screenshots': []
   };
   validationMessages = {
     'field_want_submit': { 
@@ -48,7 +48,7 @@ export class FeedbackComponent implements OnInit {
       validateRequired: 'this value is required'
     },
     'field_upload_screenshots': {
-      'validimagesize': 'choose a photo of size less than 5MB',
+      'validimagesize': 'choose a photo of size less than 1MB',
       'validateType': 'please choose an image',
       // 'validResolution': 'please choose an image of 1000x1000px'
     }
@@ -182,25 +182,7 @@ export class FeedbackComponent implements OnInit {
     this.buildform();
 
   }
-    //create observable to check if profile finished loading
-  //   isProfileLoaded(): Observable<any>{
-  //   var obs = Observable.create(observer => {
-  //       this.userId = localStorage.getItem('user_id');
-  //       this.userService.getUser(this.userId).subscribe(res => {
-  //       this.profile = res;
-  //       observer.next(true);
-  //       observer.complete();
-  //       console.log(this.profile);
-  //   }, err => {
-  //         console.log(err);
-  //         observer.next(false);
-  //         observer.complete();
-  //   });
- 
-  //   });
-  //   console.log(obs)
-  //   return obs;
-  // }
+
   buildform() {
     //document.getElementById('field_bug_in_page').innerHTML=this.full_url
     this.feedbackForm = this.fb.group({
@@ -221,13 +203,9 @@ export class FeedbackComponent implements OnInit {
       'field_recommend_site': '',
       'field_upload_screenshots': ''
     });
-    // this.feedbackForm.valueChanges
-    //   .subscribe(data => this.onValueChanged(data));
-    
+ 
     this.feedbackForm.reset();
-    //update values after reset
-  
-    //this.feedbackForm.controls['field_bug_in_page'].setValue(this.full_url);
+
   }
 
   //to show form errors
@@ -236,6 +214,7 @@ export class FeedbackComponent implements OnInit {
     const form = this.feedbackForm;
     for (const field in this.formErrors) {
       // clear previous error message (if any)
+      if(field != 'field_upload_screenshots'){
       this.formErrors[field] = '';
       const control = form.get(field);
       //for submitted empty fields
@@ -245,14 +224,8 @@ export class FeedbackComponent implements OnInit {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
-      // if (control && (control.dirty || data == "save") && !control.valid) {
-      //   console.log('second_case');
-      //   const messages = this.validationMessages[field];
-      //   for (const key in control.errors) {
-      //     this.formErrors[field] += messages[key] + ' ';
-      //   }
-      // }
-
+     
+    }
     }
   }
   //open modal
@@ -260,14 +233,11 @@ export class FeedbackComponent implements OnInit {
     this.CurrentType=null;
     this.feedbackForm.reset();
     this.router.events.subscribe((event) => {
-      console.log('route changed');
-      console.log(this.document.location.href)
       this.full_url = this.document.location.href;
-
     });
-         this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
-         this.feedbackForm.controls['field_os'].setValue(navigator.platform);
-         this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+    this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
+    this.feedbackForm.controls['field_os'].setValue(navigator.platform);
+    this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
@@ -309,27 +279,12 @@ export class FeedbackComponent implements OnInit {
 }
 
   uploadFile(event) {
+    this.formErrors.field_upload_screenshots=[];
     const control = this.feedbackForm.controls['field_upload_screenshots'];
     //selected files ftom event
     console.log(event);
     if (event.srcElement) {
       let files = event.srcElement.files;
-      // if (files.length == 1 && files[0]) {
-      //   var str = files[0].type;
-      //   var n = str.search("image");
-      //   //if type is image
-      //   if (n !== -1 && files[0].size < 5242880) {
-      //     NodeHelper.ConvertToBase64(files[0], this.file);
-      //    //maximum upload size 2 MB
-      //    if(files[0].size > 1048576){
-      //     this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
-      //    }
-      //     this.file.filename = files[0].name;
-      //   }else{
-      //    this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
-      //   }
-      // }
-
       for (var i = 0; i < files.length; i++) {
         this.fileArray[i] = {
           fid: '',
@@ -337,70 +292,23 @@ export class FeedbackComponent implements OnInit {
           filename: ''
         }
 
-        // if (n !== -1 && files[i].size < 5242880) {
         var str = files[i].type;
         var n = str.search("image");
                   let file1:FileEntity
 
         //if type is image
         if (n !== -1) {
-    //        var reader = new FileReader();
-    // reader.readAsDataURL(files[i]);
-    // reader.onload = function () {
-    //   file1.filename = files[i].name;
-    //   file1.file = reader.result;
-    // };
-    // reader.onerror = function (error) {
-    //   // console.log('Error: ', error);
-    // };
-    // this.fileArray[i].file=file1.file
-    // this.fileArray[i].filename=file1.filename
-  NodeHelper.ConvertToBase64(files[i], file1);
-      this.fileArray[i].file=file1.file
-    this.fileArray[i].filename=file1.filename
-          //maximum upload size 1 MB
-          if (files[i].size > 1048576) {
-            this.validationMessages.field_upload_screenshots.validimagesize=files[i].name+'exceeded 1 MB please choose another photo';
-            this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validimagesize;
-          }
 
-    //       console.log(this.fileArray[i]);
-    //       file1=files[i];
-    //     var reader = new FileReader();
-    //     reader.readAsDataURL(this.fileArray[i]);
-    // reader.onload = function () {
-    //   FileEntityObject.filename = file.name;
-    //   FileEntityObject.file = reader.result;
-    // };
-    // reader.onerror = function (error) {
-    //   // console.log('Error: ', error);
-    // };
-          // let img = new Image();
-          // img.src = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
-          
-          // console.log( NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file));
-          // console.log(img.src);  
-          // console.log(img.width);
-          // console.log(img.height);      
-          //  var currFile = files[i];
-          // var reader = new FileReader();
-          // reader.onload = (function(theFile){
-          //     var img = new Image;
-          //     var fileName = theFile.name;
-          //     img.onload  = function() {
-          //         alert(img.width);
-                  
-          //     };
-          //     return function(e){
-          //         this.imagedata = 'testsss';
-          //         // 
-          //     };
-          // })(currFile);   
-          // console.log(this.imagedata + 'asdasdads');
-          // reader.readAsDataURL(currFile);
+           NodeHelper.ConvertToBase64(files[i], this.fileArray[i]);
+
+          if (files[i].size > 1048576) {
+            this.validationMessages.field_upload_screenshots.validimagesize=files[i].name+' '+'exceeded 1MB please upload another photo';
+            this.formErrors.field_upload_screenshots[i] = this.validationMessages.field_upload_screenshots.validimagesize;
+          }
           this.fileArray[i].filename = files[i].name;
-        } else {
-          this.formErrors.field_upload_screenshots = this.validationMessages.field_upload_screenshots.validateType;
+          } else {
+          this.validationMessages.field_upload_screenshots.validateType=files[i].name+' '+'please choose an image';
+          this.formErrors.field_upload_screenshots[i] = this.validationMessages.field_upload_screenshots.validateType;
         }
       }
     }
@@ -461,12 +369,9 @@ export class FeedbackComponent implements OnInit {
     console.log(feedback);
     if(this.full_name){
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
-
-    }
-    else{
+    }else{
       this.full_name ='anoymous';
       feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
-
     }
     feedback.field_want_submit.und = this.feedbackForm.value.field_want_submit;
     if (feedback.field_want_submit.und == "1185") {
@@ -522,7 +427,7 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_screen_size);
       delete (feedback.field_better_site);
       delete (feedback.field_recommend_site);
-    } else if (feedback.field_want_submit.und == "1187") {
+    }else if (feedback.field_want_submit.und == "1187") {
       if (this.feedbackForm.value.field_better_site) {
         feedback.field_better_site.und[0].value = this.feedbackForm.value.field_better_site;
       }
@@ -542,13 +447,13 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_upload_screenshots);
       delete (feedback.field_describe_bug);
     }
+    console.log(this.feedbackForm);
     console.log(feedback);
     this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
       console.log(NewNode.nid);
       this.NID = NewNode.nid;
       this.submitted=true
-      //let currentRoute=this.router.url
-      // console.log(this.router.url)
+
     }, err => {
       console.log(err);
     });
@@ -556,6 +461,7 @@ export class FeedbackComponent implements OnInit {
   onSubmit(value, type) {
   
     var feedback = this.feedback;
+    
     this.onValueChanged();
     
     for (let i = 0; i < this.fileArray.length; i++) {
@@ -564,7 +470,8 @@ export class FeedbackComponent implements OnInit {
     // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
     //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
     // }
-    if (this.feedbackForm.valid) {
+  console.log(this.formErrors);
+    if (this.feedbackForm.valid && this.formErrors.field_upload_screenshots.length == 0 && this.formErrors.field_bug_not_in_page_ == '') {
 
       if (this.feedbackForm.value.field_upload_screenshots) {
         var tasks = [];

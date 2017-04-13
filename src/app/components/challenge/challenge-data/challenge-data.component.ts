@@ -292,7 +292,6 @@ export class ChallengeDataComponent implements OnInit {
           this.countProjects = 0
         } else {
           this.countProjects = data;
-          // console.log(data[0]);
         }
       }, err => {
      //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });

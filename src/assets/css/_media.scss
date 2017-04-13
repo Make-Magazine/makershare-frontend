@@ -1,1421 +1,295 @@
 @media (max-width: 414px) {
-	.showcase-card-backlayer {
-		.showcase-card {
-			.content-container {
-				.showcase-card-footer {
-					display: block !important;
-					.showcase-card-footer-1 {
-						width: 100%;
-						div {
-							width: 100%;
-						}
-						span {
-							width: 100%;
-						}
-					}
-					.showcase-card-footer-2 {
-						margin-left: 0px;
-						width: 100%;
-						div {
-							width: 100%;
-						}
-						span {
-							width: 100%;
-						}
-					}
-				}
-			}
-		}
-	}
+    .showcase-card-backlayer {
+        .showcase-card {
+            .content-container {
+                .showcase-card-footer {
+                    display: block !important;
+                    .showcase-card-footer-1 {
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                    .showcase-card-footer-2 {
+                        margin-left: 0px;
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-
-
 
 @media (max-width: 575px) {
-	/* project card */
-	.project.card {
-	width: 100%;
-		.image-top {
-			position: inherit;
-			top: 0;
-			left: 0;
-		}
-		.card-block {
-			padding: 8px;
-			margin-top: 0px;
-			min-height: 175px;
-		}
-	}
-	/* showcase card */
-	.page-showcase {
-		.showcases-container {
-			padding: 20px 15px;
-		}
-	}
-	.showcase-card-backlayer {
-		.showcase-card {
-			.image-container {
-				width: auto;
-				img {
-					width: 100%;
-					width: auto;
-				}
-			}
-			.content-container {
-				.showcase-type-badge {
-					p {
-
-					}
-				}
-			}
-		}
-	}
-	footer {
-		.sitemap {
-			.sitemap-1, .sitemap-2, .socials {
-				padding-top: 8px;
-			}			
-		}
-	}
+    /* project card */
+    .project.card {
+        width: 100%;
+        .image-top {
+            position: inherit;
+            top: 0;
+            left: 0;
+        }
+        .card-block {
+            padding: 8px;
+            margin-top: 0px;
+            min-height: 175px;
+        }
+    }
+    /* showcase card */
+    .page-showcase {
+        .showcases-container {
+            padding: 20px 15px;
+        }
+    }
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                width: auto;
+                img {
+                    width: 100%;
+                    width: auto;
+                }
+            }
+            .content-container {
+                .showcase-type-badge {
+                    p {}
+                }
+            }
+        }
+    }
+    footer {
+        .sitemap {
+            .sitemap-1,
+            .sitemap-2,
+            .socials {
+                padding-top: 8px;
+            }
+        }
+    }
 }
-
-
 
 @media (max-width: 767px) {
-	.showcase-card-backlayer {
-		.showcase-card {
-			.image-container {
-				img {
-
-				}
-			}
-			.content-container {
-				padding-top: 12px;
-				.showcase-type-badge {
-					display: none;
-				}
-			}
-		}
-	}
-	.profile-container {
-		.maker-card.project {
-			margin-top: 20px;
-			.card-block{
-				height: auto;
-				 .maker-name {
-					 margin-top: 10px;
-				 }
-				 .card-type {
-					 right: -10px;
-				 }
-				 .icons-side-user {
-					 margin-top: auto !important;
-				 }
-			}
-		}
-	}
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                img {}
+            }
+            .content-container {
+                padding-top: 12px;
+                .showcase-type-badge {
+                    display: none;
+                }
+            }
+        }
+    }
+    .profile-container {
+        .maker-card.project {
+            margin-top: 20px;
+            .card-block {
+                height: auto;
+                .maker-name {
+                    margin-top: 10px;
+                }
+                .card-type {
+                    right: -10px;
+                }
+                .icons-side-user {
+                    margin-top: auto !important;
+                }
+            }
+        }
+    }
 }
-
 
 @media (max-width: 991px) {
-	/* Footer */
-	footer {
-		padding-top: 30px;
-		.container {
-			.copy {
-				order: 4;
-				margin: 0;
-				nav {
-					padding: 0px;
-				}
-			}
-			.socials-newsletter {
-				margin-top: 20px;
-			}
-			.sitemap {
-				margin: 0;
-			}
-		}
-	}
-	.page-workshop-single {
-		.page-workshop-individual {
-			.workshop-content {
-				.learning-card {
-					height: auto;
-				}
-			} 
-		}
-	} 
+    /* Footer */
+    footer {
+        padding-top: 30px;
+        .container {
+            .copy {
+                order: 4;
+                margin: 0;
+                nav {
+                    padding: 0px;
+                }
+            }
+            .socials-newsletter {
+                margin-top: 20px;
+            }
+            .sitemap {
+                margin: 0;
+            }
+        }
+    }
+    .page-workshop-single {
+        .page-workshop-individual {
+            .workshop-content {
+                .learning-card {
+                    height: auto;
+                }
+            }
+        }
+    }
 }
-
-
 
 @media (min-width: 1200px) {
-	.container {
-		width: 1140px;
-    max-width: 100%;
+
+}
+
+@media only screen and (max-width: 767px) {}
+
+@media only screen and (max-width: 767px) {}
+
+@media only screen and (max-width: 320px) {}
+
+@media only screen and (max-width: 525px) and (min-width: 321px) {}
+
+@media only screen and (max-width: 414px) {
+	.project-mobile-card {
+        .project-card-small {
+            .media { 
+								
+						}
+				}
 	}
 }
 
+@media only screen and (max-width: 430px) {}
+
+@media only screen and (max-width: 525px) {}
+
+@media only screen and (max-width: 623px) {}
 
 @media only screen and (max-width: 767px) {
-
+    .project-mobile-card {
+        margin: 30px 0px;
+    }
+    .project-mobile-card {
+        .project-card-small {
+            .media {
+							margin-bottom: -15px;
+                .media-body {
+                    .card-title{
+												height: 80px;
+												overflow: hidden;
+												line-height: 27px;
+										}
+                }
+            }
+        }
+    }
+		$showcase-height:250px;
+		.showcase-card-backlayer-home {
+				height: $showcase-height;
+				.showcase-card-backlayer-home-2 {
+						height: $showcase-height;
+				}
+				.showcase-card {
+						height: $showcase-height;
+						.card-container {
+								.card-title {
+									@include card-header-font-md();
+									color: $font-grey;
+									height: 55px;
+    							margin-bottom: 30px;
+								}
+								.card-description {
+										p {
+											height: 58px;
+										}
+								}
+						}
+				}
+		}
+		.front {
+			.learn-card {
+					.image-container {
+							padding:0 30px 0 15px;
+							max-height: 160px;
+							max-width: 520px;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #4F4F4F;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #4F4F4F;
+									}
+							}
+					}
+			}
+			.front-challenge-card {
+					height: 420px;
+					.image-container {
+							padding:0 30px 0 15px;
+							max-height: 160px;
+							max-width: 520px;
+					}
+					.card-container {
+							.card-title {
+									@include card-header-font-md();
+									display: -webkit-box;
+									-webkit-line-clamp: 2;
+									-webkit-box-orient: vertical;
+									height: 55px;
+									color: #fff;
+							}
+							.card-description {
+									p {
+											@include desc-font-1();
+											line-height: 125% !important;
+											-webkit-line-clamp: 3;
+											height: 55px;
+											color: #fff;
+											overflow: hidden;
+									}
+							}
+					}
+					.challene-card-footer-1 {
+						order: 3
+					}
+					.challenge-card-footer-2 {
+						margin-bottom: 5px;
+						@include desc-font-3;
+						color: $text-color-2;
+					}
+			}
+	}
 }
 
+@media only screen and (max-width: 768px) {}
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 769px) and (max-width: 991px) {}
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .front {
+        .lone-card {
+            order: 5;
+        }
+    }
 }
 
+@media only screen and (max-width: 991px) {}
 
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
 
-
-
-
-
-
-
-
-
-
-//  @media only screen and (max-width: 320px) {
-// 	.page-challenge-summary, .page-challenge-summary-closed, {
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 				.challenge-countdown {
-// 					display: none;
-// 				}
-// 				.challenge-actions {
-// 					display: none;
-// 				}
-// 				.challenge-status {
-// 					width: 98% !important;
-// 				}
-// 				.challenge-title {
-// 					width: 98% !important;
-// 					bottom: 26px !important;
-// 				}
-// 			}
-// 		}
-// 		.tabs-buttons {
-// 			.challenge-actions {
-// 				display: block;
-// 				width: 40%;
-// 				li {
-// 					float: right;
-// 				}
-// 			}
-// 			.challenge-follow {
-// 				float: left !important;
-// 				width: 60% !important;
-// 			}
-// 		}
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 					height: 170px !important;
-// 				img {
-// 					height: 170px !important;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-enter-challenge {
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 				.challenge-countdown {
-// 					display: none;
-// 				}
-// 				.challenge-actions {
-
-// 				}
-// 				.challenge-status {
-// 					width: 98% !important;
-// 					top: 32px;
-// 					bottom: inherit;
-// 					p {
-// 						font-size: 14px;
-// 					}
-// 				}
-// 				.challenge-title {
-// 					width: 98% !important;
-// 					top: 86px !important;
-//     				bottom: inherit;
-//     				padding: 5px;
-//     				h1 {
-//     					padding: 0px !important;
-//     				} 
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-enter-challenge {
-// 		.top-content-wrapper {
-// 			overflow: visible;
-// 				.challenge-cover {
-// 					overflow: visible;
-// 					.challenge-actions{
-// 					bottom: -62px !important;
-//     				right: 5px !important;
-// 				}
-// 			}
-// 			.container {
-// 				margin-bottom: 30px;
-// 			}
-// 		}
-// 	}
-	
-// 		.browse-projects  {
-// 			.challenges-container {
-// 				.challenge-card {
-// 					.card-buttons 
-// 						a.btn.btn-grey {
-// 							margin-bottom: 5px;
-// 						}
-					
-// 				}
-// 			}
-// 		}
-	
-// 	.maker-spotlight {
-// 	    .spotlight-item {
-// 	        margin-top: 15px;
-// 	        padding: 10px;
-// 	        .media{
-// 	        	-webkit-box-orient: vertical;
-// 				-webkit-box-direction: normal;
-// 				-webkit-flex-direction: column;
-// 				-ms-flex-direction: column;
-// 				flex-direction: column;
-// 	        }
-// 	        .image-container {
-// 	            width: 100%;
-// 	            height: auto;
-// 	            overflow: hidden;
-// 	            position: relative;
-// 	            img { height: auto;width: 100%; }
-// 	        }
-// 	        .user-name {
-// 	        	margin-top: 10px;
-// 	        }
-// 	        .profile-tag, .user-city, .count {
-// 	            margin-bottom: 5px;
-// 	        }
-// 	    }
-// 	}
-// 	.showcase {
-//         .content {
-//             .number {
-//                 float: none;
-//             }
-//             .timestamp {
-//                 float: none;
-//             }
-//         }
-//     }
-// }
-
-
-// @media only screen and (max-width: 525px) and (min-width: 321px) {
-// 	.page-challenge-summary {
-// 		.tabs-buttons {
-// 			.challenge-follow {
-// 				width: 240px !important;
-// 				margin: 0 auto;
-// 				display: block;
-// 				float: none !important;
-// 			}
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 414px) {
-// 	.profile-stats {
-// 		.switch {
-// 			display: none !important;
-// 		}
-// 	}
-// 		.profile-name {
-// 			height: 70px;
-// 			h4 {
-// 			font-size: 16px;
-// 			margin-top: 0px;
-// 			}
-// 			span {
-// 				margin-top: 10px !important;
-// 			}
-// 	}
-// 	.profile-stats {
-// 		ul {
-// 			li {
-// 				width: 49%;
-// 				margin: 5px 0px !important;
-// 				.number {
-// 					    font-size: 27px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-cover {
-// 		.user-group {
-// 			left: 10px !important;
-//     		right: auto !important;
-// 		}
-// 	}
-// 	.content-container {
-// 		.container-fluid {
-// 			padding-left: 4px;
-//    			padding-right: 4px;
-//    			position: static;
-//     		overflow: hidden;
-// 			.container {
-// 							padding: 0px;
-// 				.profile-content {
-// 					overflow: hidden;
-// 					a.btn {
-// 						font-size: 15px;
-// 					}
-// 					.projects-grid  {
-// 						padding: 0px 16px 0px 16px;
-// 						.project {
-
-
-// 						}
-// 					}
-// 				}
-// 			}
-// 			.profile-stats {
-// 				width: 100%;
-//     			padding: 8px;
-//    				margin: 0px;
-// 			}
-// 		}
-// 	}
-// 	.empty-edit-content {
-// 		.profile-content {
-// 			.empty-content {
-// 				.form-control {
-// 					width: 90%;
-//     				margin: 0 auto;
-// 				}
-// 				.col-md-8 {
-// 					padding: 0px 30px 0px 30px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	header.create-nav {
-// 		a.save-next,
-// 		a.skip {
-// 			display: none;
-// 		}
-// 	}
-// 	.search-results {
-// 		.result-item {
-// 			.single-result {
-// 				.single-data {
-// 					max-width: 79% !important;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-container {
-// 		.profile-card {
-// 			.left {
-// 				float: left;
-// 			}
-// 			.right {
-// 				float: left;
-// 				width: 59%;
-// 			}
-// 		}
-// 	}
-// 	.page-showcase {
-// 		.filters {
-// 			p {
-// 				width: 50%;
-// 				padding-left: 0px;
-// 			}
-// 			.sorting-filter {
-// 				width: 50%
-// 			}
-// 		}
-// 	}
-// 	.page-learn {
-// 		.load-more {
-// 			.btn  {
-// 				width: 150px !important;
-// 				font-size: 16px; 
-// 			}
-// 		}
-// 	}
-// 	.page-workshop-individual {
-// 			.media-left {
-// 			    display: block;
-// 				vertical-align: baseline;
-// 			}
-// 			.media-body {
-// 				clear: both;
-// 				width: 100%;
-// 				float: none;
-// 			}
-// 		}
-// 		.suggested {
-// 			li {
-// 			.media-left {
-// 				width: 30% !important;
-// 			}
-// 		}
-// 	}
-// 	.page-challenge-summary, .page-challenge-summary-closed,.page-enter-challenge{
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 				.challenge-status{
-// 					left:3px !important;
-// 				}
-// 				.challenge-title {
-// 					left:3px;
-// 				}
-// 				.sponsor h4 {
-// 					font-size: 14px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-create-project-why {
-// 		.team {
-// 			.profile-container {
-// 				.profile-card {
-// 					.user-city {
-// 						position: static;
-// 						margin: 0px;
-// 					}
-// 					.count {
-// 						margin: 0px;
-// 					}
-// 				}
-// 			}
-// 			.remove {
-// 				position: static;
-// 			}
-// 		}
-// 		.form-group {
-// 			margin-top: 18px;
-// 		}
-// 		.your-story {
-// 			.cover {
-// 				a{
-// 					padding: 2px;
-// 				}
-// 			}
-// 		}
-// 		.how-to {
-// 			form {
-// 				padding-bottom: 10px;
-// 			}
-// 		}
-// 	}
-// 	.page-create-project-why {
-// 		.nav-create {
-// 			ul li {
-// 				.btn-grey-inverse {
-// 				    padding: 7px 16px !important;
-// 				}
-// 			}
-// 		}
-// 		.team {
-// 			.profile-container {
-// 				.profile-card {
-// 					.left {
-// 						width: 80px !important;
-//     					padding: 0px 4px 0px 2px !important;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-portfolio {
-// 		.nav-portfolio {
-// 			ul li {
-// 				.btn-grey-inverse {
-// 				    padding: 5px 7px;
-//    					margin: 1px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-container {
-// 		.profile-card {
-// 			.right {
-// 				.profile-tag {
-// 				margin-bottom: 0px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-learn {
-// 		.workshop-card {
-// 			.image-container {
-// 				height: auto;
-// 			}
-// 		}
-// 	}
-// 	.profile-sidebar {
-// 		.profile-container {
-// 			margin-top: 0px !important;
-// 		}
-// 	}
-// 	.profile-empty-edit {
-// 		.profile-stats {
-// 			ul {
-// 				li{
-// 					margin-top: 0px !important;
-// 					i {
-// 						margin-top: 4px !important;
-// 					}
-// 					.message {
-// 						margin-top: 2px !important;
-// 					}
-// 					.number {
-// 						margin-top: 0px !important;
-// 						line-height: 22px;
-// 					}
-// 					p {
-// 						float: left;
-// 						margin-top: 6px !important;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-create-profile {
-// 		.basic-info {
-// 			#userName, #describe, #birthday, #email {width: 100%;font-size: 15px;}
-// 			#country {width: 100%;margin-top: 10px}
-// 			#state {width: 100%;margin-top: 10px;}
-// 		}
-// 		.optional-info {
-// 			.social-links {
-// 				label {
-// 					width: 100%;
-// 				}
-// 				input[type="text"] {
-// 					width: 85%;
-// 				}
-// 				input[type="checkbox"] {
-// 			    	margin: 0;
-//     				width: 12%;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 430px) {
-// 	.profile-name {
-// 		span {
-// 			margin-left: 10px !important;
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 525px) {
-// 	.profile-name {
-// 		.bookmark {
-// 			li {
-// 				a {
-// 					font-size: 14px;
-// 					i {
-// 						margin-left: 0px;
-// 						font-size: 24px;
-// 						width: 28px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 		.container {
-// 			padding-left: 0px;
-// 			padding-right: 0px;
-// 		}
-// 	}
-// 	.page-project {
-// 		.feedback-group {
-// 			form {
-// 				.feedback {
-// 					.feedback-image {
-// 						width: 20%;
-// 						img {
-// 							margin-left: 10px;
-// 						}
-// 					}
-// 					.feedback-area {
-// 						width: 80%;
-// 						textarea {
-// 							margin-left: 0px;
-// 							width: 97%;
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-project {
-// 		.project-collaborates {
-// 			.collaborate {
-// 				.profile-container {
-// 					.profile-card {
-// 						.right {
-// 							    padding: 6px 4px 0px 4px;
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.search-results {
-// 		.result-item {
-// 			.single-result {
-// 				.single-data {
-// 					max-width: 85%;
-// 					width: auto;
-// 					margin-left: 0%;
-// 					padding: 0px 6px 0px 6px;
-// 					.name {
-// 						overflow: hidden;
-// 						p {
-// 							float: left !important;
-// 						}
-// 					}
-// 					.awards {
-// 						overflow: hidden;
-// 						li {
-// 							float: left !important;
-// 						}
-// 					}
-// 					.project-stats {
-// 						float: left;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-showcase {
-// 		.load-more {
-// 			width: 100%;
-// 			.btn {
-// 			    display: block;
-// 			    width: 124px;
-// 			    margin: 0 auto;
-// 			    left: 0px;
-// 			    right: 0px;
-// 			    font-size: 17px;
-// 			}
-// 		}
-// 	}
-// 	.maker-spotlight {
-// 		.spotlight {
-// 			padding: 0px 10px 10px 10px !important;
-// 		}
-// 		.profile-container {
-// 			width: 100% !important;
-//     		margin-right: 0px !important;
-// 			.profile-card {
-// 				.right {
-// 					padding: 4px !important;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-challenge-summary {
-// 		.region-content {
-// 			.tabs-buttons {
-// 				.challenge-submenu {
-// 					width: 100% !important;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-challenge-summary, .page-challenge-summary-closed,.page-enter-challenge {
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 				.challenge-status {
-// 					width: 60%;
-// 					p {
-// 						font-size: 15px;
-// 					}
-// 				}
-// 				.challenge-title {
-// 					width: 60%;
-// 					bottom: 13px;
-// 					h1 {
-// 						font-size: 15px !important;
-// 						padding: 5px 15px !important;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 623px) {
-//     .profile-page {
-//     	.row {
-//     		.col-md-9 {
-//     			padding:0px;
-//     		}	
-//     	} 
-//     }
-// 	.page-workshop-individual {
-// 		.suggested {
-// 			li {
-// 				width: 100%;
-// 				.media-left {
-// 					width: 20%;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-challenge-summary, .page-challenge-summary-closed,.page-enter-challenge {
-// 		.region-content {
-// 			.tabs-buttons {
-// 				.challenge-submenu {
-// 					width: 65%;
-// 				}
-// 				.challenge-follow {
-// 					width: 35%;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.page-challenge-summary, .page-challenge-summary-closed,.page-enter-challenge{
-// 		.top-content-wrapper {
-// 			.challenge-cover {
-// 				.challenge-countdown {
-// 					top: 34px;
-// 					right: 26px;
-// 					left: inherit !important;
-// 					font-size: 10px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-name {
-// 		.bookmark {
-// 			li {
-// 				a {
-// 					font-size: 14px;
-// 					i {
-// 						margin-left: 0px;
-// 						font-size: 24px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 		.container {
-// 			padding-left: 0px;
-// 			padding-right: 0px;
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 767px) {
-// 	.page-search-result {
-// 		.load-more {
-// 			    display: block;
-// 			    width: 100px;
-// 			    text-align: center;
-// 			    margin: 0 auto;
-// 			    margin-bottom: 30px;
-// 		}
-// 	}
-// 		header.showcase-project {
-// 		.previous {
-// 		    display: table;
-// 		    float: left;
-// 		    width: 50%;
-// 		    a {
-// 				width: 100px;
-// 				font-size: 15px;
-// 		    }
-// 		}
-// 		.title {
-// 		    display: table-footer-group;
-// 		    clear: both;
-// 		    width: 100%;
-// 		    float: left;
-// 		    a {
-
-// 		    }
-// 		}
-// 		.next {
-// 			text-align: center;
-// 			display: inline-block;
-// 			width: 50%;
-// 			a {
-// 				width: 100px;
-// 				font-size: 15px;
-// 			}
-// 		}
-// 	}
-// 	.cover-region{
-// 	    .profile-name {
-// 	        position: absolute;
-// 	        top: 0px;
-// 	        width: 100%;
-// 	        padding: 0px;
-// 	        margin-top: 0px;
-
-// 	    }
-// 	    .profile-page {
-// 			position: absolute;
-// 			bottom: 0px;
-// 			width: 100%;
-// 			background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-// 			background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-// 			background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-// 			.profile-stats {
-// 				ul li {
-// 					color: white;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-cover {
-// 		.user-group {
-// 			display: block;
-// 			position: absolute;
-// 			top: 62px;
-// 			right: 0px;
-// 			left: 0px;
-// 		}
-// 	}
-//     .cover-region {
-// 		.profile-name {
-// 			h4 {
-// 				padding-top: 9px;
-// 			}
-// 			span {
-// 				margin-top: 19px;
-//     			margin-left: 15px;
-// 			}
-// 		}
-// 	}
-	
-
-// 	.maker-spotlight .spotlight .profile-container {
-// 		width: 380px;
-// 	}
-// 	.profile-stats {
-// 		ul {
-// 			padding-right: 15px;
-// 		}
-// 	}
-// 	.left-section  {
-// 		margin-top: 10px;
-// 	}
-
-// 	footer {
-// 		text-align: center;
-// 		.copy {order: 4;}
-// 		.newsletter {order: 2}
-// 		.sitemap-1 {order: 3;margin-bottom: 10px;}
-// 		.sitemap-2 {order: 5;}
-// 		.sitemap-1, .sitemap-2 {
-// 			padding-top: 10px;
-// 			.nav {
-// 				flex-direction:row!important;
-// 				justify-content: center;
-// 				a{
-// 					float: left;
-// 					padding: 0 5px;
-// 					&:not(:last-of-type) {
-// 						border-right: 2px solid $main-grey;
-// 					}
-// 				}
-// 			}
-// 		}
-// 		.socials {
-// 			order: 1;
-// 			margin-bottom: 5px;
-// 			.nav{
-// 				-webkit-box-pack: center!important;
-// 			    -webkit-justify-content: center!important;
-// 			    -ms-flex-pack: center!important;
-// 			    justify-content: center!important;
-// 			}
-// 		}
-// 		br {display: none;}
-// 		.modal {
-// 			top: 30px;
-// 		}
-// 	}
-// 	.profile-empty-edit {
-// 		.profile-name {
-// 			.row {
-// 				padding: 0px;
-// 			}
-// 		}
-// 		.profile-cover {
-// 			a.edit {
-// 			    top: inherit;
-//     			bottom: 9px;
-// 			}
-// 		}
-
-// 	}
-// }
-
-
-// @media only screen and (max-width: 768px) {
-//     .front {
-// 		.banner {
-// 		    .carousel {
-// 		        height: 250px;
-		        
-// 		        .carousel-item {
-// 		            height: 250px;
-// 		        }
-// 		    }
-// 		}
-// 	}
-//     .main-header {
-//         .explore {
-//             display: none;
-//         }
-//     }
-
-//     .maker-spotlight .spotlight .profile-container {
-//         width: 380px;
-//     }
-
-//     .showcase .showcase-item {}
-
-//     .page-explore {
-//         .explore-header {
-//             h3 {
-//                 padding-bottom: 5px;
-//             }
-//         }
-//     }
-
-//     .page-challenge-summary, .page-challenge-summary-closed {
-//         .top-content-wrapper {
-//             .challenge-cover {
-//                 .challenge-status {
-//                     left: 15px;
-//                 }
-
-//                 .challenge-title {
-//                     h1 {
-//                         font-size: 20px;
-//                     }
-//                 }
-
-//                 .challenge-countdown {
-//                     left: 65%;
-//                 }
-//             }
-//         }
-
-//         .region-content {
-//             .tabs-buttons {
-//                 .challenge-follow {
-//                     li {
-//                         .btn {
-//                             padding: 8px 0;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     .page-create-project-why {
-//         .guideline {
-//             display: none;
-//         }
-
-//         .form-group > input, textarea, #cke_how-to-make {
-//             max-width: 100%;
-//         }
-
-//         .nav-create {
-//             ul {
-//                 padding-left: 15px;
-
-//                 li {
-//                     float: left;
-
-//                     .btn-grey-inverse {
-//                         padding: 7px 25px;
-//                     }
-
-//                     &:not(:first-child) {
-//                         margin-left: 5px;
-//                     }
-//                 }
-//             }
-//         }
-
-//         .add-controls {
-//             .contorls {
-//                 margin-top: 10px;
-//                 float: left !important;
-
-//                 li {
-//                     .btn-transparent {
-//                         padding: 5px 5px;
-//                     }
-
-//                     .btn {
-//                         padding: 5px 5px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// 	.page-create-profile,
-// 	.page-create-profile {
-// 		.optional-info,
-// 		.basic-info {
-// 			width: 90%;
-// 		}
-// 	}
-// 	.page-create-profile {
-// 		.top-content-wrapper {
-
-// 			p {
-// 				width: 95%;
-// 			}
-// 		}
-// 	}
-// 	.page-project {
-// 		.top-content-wrapper {
-// 			.project-actions {
-// 				li.project-report {
-// 					    clear: both;
-// 					    width: 100%;
-// 					    float: right;
-// 					    text-align: right;
-// 				}
-// 				li.project-share,
-// 				li.project-bookmakr,
-// 				li.project-like,
-// 				li.project-fork {
-// 					float: right;
-// 				}
-// 				li .btn {
-// 					border-right-width: 1px;
-// 				}
-// 			}
-// 			.project-tags {
-// 				clear: both;
-// 			}
-// 		}
-// 	}
-// 	.page-workshop-individual {
-// 		.profile-container {
-// 			clear: both;
-// 			margin-top: 80px;
-// 		}
-// 	}
-// 	.maker-spotlight {
-// 		.spotlight:nth-child(2n) {
-// 			border-left-width: thin;
-// 		}
-// 	}
-// 	.cover-region{
-// 	    .profile-name {
-// 	        h4 {
-// 	        	display: block;
-// 	    		float: left;
-// 	    		width: auto;
-// 	        }
-// 	        span {
-// 	        	display: block;
-// 			    float: left;
-// 			    margin-top: 18px;
-// 			    margin-left: 14px;
-// 	        }
-// 	    }
-//     }
-//     .profile-sidebar {
-//     	position: static;
-//         .profile-container {
-//         	.profile-info {
-//         		.interests {
-//         			li {
-//         				max-width: none;
-//         			}
-//         		}
-//         	}
-//         }
-//     }
-
-//     .bookmark{
-// 		li {
-// 			#profile-msg {
-// 				display: block !important;
-// 			}
-
-// 		} 
-// 	}
-// 	header {
-// 		#MainNav {
-// 			position: absolute;
-// 		    top: 54px;
-// 		    right: 0;
-// 		    /* width: 220px; */
-// 		    /* padding-left: 25px; */
-// 		    background: $main-bg;
-// 		    padding: 0 20px;
-// 		    .maker-menu-sm {
-// 		    	a:not(:first-of-type){
-// 		    		padding-left: 10px;
-// 		    		color: $light-grey*0.7;
-// 		    	}
-// 		    }
-// 		}
-// 	}
-// 	header {
-// 	    nav {   
-// 	        &.navbar {
-// 	            // background-color: transparent;
-// 	            padding-left: 0;
-// 	        }
-// 	        .collapse.navbar-collapse {
-// 	            // width: 65%;
-// 	            ul.navbar-nav {
-// 	                // width: 80%;
-// 	            }
-// 	        }
-// 	        #makerMenu	 {
-// 	            background: white;
-// 	            // width: 220px;
-// 	            padding: 0 15px;
-// 	            position: absolute;	            
-// 	        }
-// 	        .log-block {
-// 	        	margin-left: auto!important
-// 	        }
-	        
-// 	    }
-// 	}
-// 	.main-header{
-// 		.logged-in {
-// 			li.button-container-main-1 {
-// 	        	display: none;
-// 	        }
-// 		}
-// 	}
-
-
-// 	.challenge-header {
-// 	    p {
-// 	        width: 100%;
-// 	    }
-// 	}
-// }
-
- 
-
-// @media only screen and (min-width: 769px) and (max-width: 991px) {
-//     .maker-spotlight .spotlight:nth-child(2n) {
-//         border-left-width: 1px;
-//     }
-
-//     .maker-spotlight .spotlight .profile-container {
-//         width: 380px;
-//     }
-
-//     .page-challenge-summary, .page-challenge-summary-closed {
-//         .top-content-wrapper {
-//             .challenge-cover {
-//                 .challenge-status {
-//                     left: 15px;
-//                 }
-
-//                 .challenge-title {
-//                     h1 {
-//                         font-size: 20px;
-//                     }
-//                 }
-//             }
-//         }
-
-//         .region-content {
-//             .tabs-buttons {
-//                 .challenge-follow {
-//                     li {
-//                         .btn {
-//                             padding: 8px 0;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-
-//     .page-create-project-why {
-//         .guideline {
-//             .question-mark {
-//                 i {
-//                     font-size: 40px;
-//                 }
-//             }
-//         }
-
-//         .form-group > input, textarea, #cke_how-to-make {
-//             max-width: 100%;
-//         }
-
-//         .add-controls {
-//             .contorls {
-//                 margin-top: 10px;
-//                 float: left !important;
-//             }
-//         }
-//     }
-// }
-
-// @media only screen and (min-width: 768px) and (max-width: 991px) {
-// 	.front {
-// 		.banner {
-// 		    .carousel {
-// 		        height: 400px;
-		        
-// 		        .carousel-item {
-// 		            height: 400px;
-// 		        }
-
-// 		        .card-container {
-// 		            bottom: 60px;
-// 		        }
-// 		    }
-// 		    .carousel-caption {
-// 		        h2{font-size: 28px;}
-// 		        h4{font-size: 22px;}
-// 		        p {font-size: 20px;}
-// 		    }
-// 		}
-// 	}
-// 	.page-workshop-individual {
-// 		.workshop-instructor {
-// 			.profile-container {
-// 				.left {
-// 					float: none;
-// 					width: 120px;
-// 					display: block;
-// 					margin: 0 auto;
-// 				}
-// 				.right {
-// 					width: 100%;
-// 					margin-top: 6px;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.profile-stats {
-// 		.switch {
-// 			display: inline-block;
-// 		    top: 104px;
-// 		    right: 17px;
-// 			padding: 3px;
-// 			min-width: 110px;
-// 			text-align: center;
-// 			p {
-// 				margin: 0px;
-// 			}
-// 		}
-// 	}
-// 	.challenge-card {
-// 	    .single-challenge {
-// 	        img {
-// 	            // height: 100%;
-// 	        }
-// 	        .card-partership {
-// 	            color: $main-button-1;
-// 	        }
-// 	    }
-// 	    .image-container {
-// 	    	width: 550px;
-// 	    }
-// 	}
-// 	.project-collaborates {
-// 		.card-block  {
-// 			.media {
-// 			    -webkit-box-orient: vertical!important;
-// 			    -webkit-box-direction: normal!important;
-// 			    -webkit-flex-direction: column!important;
-// 			    -ms-flex-direction: column!important;
-// 			    flex-direction: column!important;
-// 			}
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 991px) {
-// 	.profile-page {
-// 		.row {
-// 			.col-md-9 {
-// 				clear: both;
-// 			}
-// 		}
-// 	}
-// 	.empty-edit {
-// 		.profile-name {
-// 			.bookmark {
-// 				padding-top: 7px;
-// 			}
-// 		}
-// 	}
-// 	.profile-sidebar {
-// 		.profile-container {
-// 			padding-top: 14px;
-// 		}
-// 	}
-// 	.empty-edit-content {
-// 		.profile-page {
-// 			padding-bottom: 40px;
-// 		}
-// 	}
-// 	.switch-cover {
-// 		display: block;
-// 	}
-// 	.profile-stats {
-// 		ul li {
-// 			text-align: center;
-// 			.number {
-// 				width: 100%;
-// 				display: block;
-// 			}
-// 		}
-// 	}
-// 	.navbar-toggleable-md {
-// 		.navbar-nav {
-// 			.dropdown-menu {
-// 				position: absolute;
-// 			}
-// 		}	
-// 	} 
-// }
-
-// @media only screen and (min-width: 992px) and (max-width: 1199px) {
-// 	.page-workshop-individual {
-// 		.workshop-instructor {
-// 			.profile-container {
-// 				.right {
-// 					width: 150px;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// @media only screen and (min-width: 1200px) {
-//     .page-search-result {
-//         .search-filters {
-//             li {
-//                 display: block;
-//             }
-//         }
-//     }
-// }
+@media only screen and (min-width: 1200px) {}
