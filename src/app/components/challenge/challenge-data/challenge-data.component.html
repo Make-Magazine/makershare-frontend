@@ -20,7 +20,7 @@
                     <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Accept Mission</span>
                     </div>
-                    <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
+                    <app-follow *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
                     <ul class="list-unstyled challenge-actions pull-right">
                       <app-bookmark [nodeNid]="challenge.nid"></app-bookmark>
                       <!--<li><a class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a></li>-->
