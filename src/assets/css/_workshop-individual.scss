@@ -8,7 +8,13 @@
 			}
 	.related-books  {
 		background-color: white;
-		padding: 0px;
+		padding: 10px 0px;
+		h5 {
+			padding-top: 10px;
+		}
+		ul{
+			padding: 0px;
+		}
 	}
 	.top-content-wrapper {
 		//padding-top: 20px;
