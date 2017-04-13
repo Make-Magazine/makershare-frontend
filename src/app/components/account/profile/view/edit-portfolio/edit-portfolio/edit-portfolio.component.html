@@ -17,8 +17,8 @@
           </a>
         </div>
         <div class="display-style d-flex ml-auto">
-          <p [ngClass]="{'active': DefaultView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-          <p [ngClass]="{'active': DefaultView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+          <p [ngClass]="{'active': ActiveView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+          <p [ngClass]="{'active': ActiveView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
         </div>
       </div>
     </div>
