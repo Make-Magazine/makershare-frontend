@@ -91,7 +91,7 @@
                   <p>Select an existing project from your portfolio.</p>
                   <form>
                     <div class="form-group">
-                      <select class="form-control" #item (change)="updateSelectedProject($event) ">
+                      <select class="form-control" #item (change)="updateSelectedProject($event)">
                       <option [value]="none" disabled>Select a project</option>
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
