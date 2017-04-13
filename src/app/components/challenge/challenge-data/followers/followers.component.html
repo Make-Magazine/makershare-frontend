@@ -1,7 +1,7 @@
 <div class="followers conatiner" *ngIf="followers">
   <div class="followers-cards row d-flex align-items-stretch">
     <div class="col-md-6 mb-1" *ngFor="let follower of followers">
-      <div class="follower-card  h-100">
+      <div class="follower-card h-100">
         <!-- Start User Card -->
         <app-user-card-small [uid]="follower.uid"></app-user-card-small>
         <!-- End User Card -->
