@@ -78,9 +78,14 @@ export class ReportUserComponent implements OnInit {
         this.router.navigate(['/access-denied']);
       }
       e.preventDefault();
+      this.reasonReport=this.reportForm.value.field_appropriate_response;
       if ((this.isReported == false)) {
-        this.reasonReport=this.reportForm.value.field_appropriate_response;
-        this.flagService.flag(this.userReportId, this.userId, 'report',).subscribe(response => {
+        var report={
+            field_reason_for_reporting: this.selectedReasonName,
+            field_appropriate_response: this.reasonReport,
+        }
+        
+        this.flagService.flag(this.userReportId, this.userId, 'report', report).subscribe(response => {
           this.isReported = true;
           this.notificationBarService.create({ message: 'User has been reported.', type: NotificationType.Success });
         }, err => {
