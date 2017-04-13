@@ -7,10 +7,6 @@
       </div>
     </div>
   </div>
-
-
-
-
   <aside class="side-bar col-lg-4 col-md-4">
     <div class="sidebar-container">
       <div class="how-to-sidebar">
@@ -30,10 +26,6 @@
             </li>
           </ul>
           <hr *ngIf="project.field_parts">
-
-
-
-
           <ul class="list-group boards-kits" *ngIf="project.field_parts">
             <p>Boards + Kits</p>
             <li class="list-group-item" *ngFor="let part of project.field_parts; let i=index">
@@ -44,17 +36,13 @@
               </span>
             </li>
           </ul>
-
-
-
-
           <hr *ngIf="project.field_materials">
           <ul class="list-group materials" *ngIf="project.field_materials">
             <p>Materials</p>
             <li class="list-group-item" *ngFor="let material of project.field_materials; let i=index">
               <span class="count">{{material.material_quantity}}</span>
               <span class="item"> {{material.material_id}}</span>
-              </li>
+            </li>
           </ul>
           <hr *ngIf="project.field_resources">
           <ul *ngIf="project.field_resources" class="list-group resources">
@@ -64,7 +52,6 @@
             </li>
           </ul>
         </div>
-
       </div>
     </div>
   </aside>

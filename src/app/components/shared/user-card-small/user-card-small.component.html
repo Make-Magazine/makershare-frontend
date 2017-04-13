@@ -1,7 +1,7 @@
-<div class=" profile-container" *ngIf="card.invited_user=='0' || card.invited_user==''">
+<div class=" profile-container mb-2" *ngIf="card.invited_user=='0' || card.invited_user==''">
   <!-- start profile card-->
-  <div class="card spotlight-item ">
-    <div class="card-block user-card-small align-content-stretch content ">
+  <div class="card spotlight-item">
+    <div class="card-block user-card-small align-content-stretch content">
       <div class="media d-flex align-items-stretch">
         <div class="profile-pic-container flex-column align-self-start" (click)="userProfile(card.first_name,card.last_name)">
           <img *ngIf="!card.photo_lg" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">

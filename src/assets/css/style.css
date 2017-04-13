@@ -932,7 +932,6 @@ footer {
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
 .user-card-small .icons-side-user {
-  width: 80px;
   overflow: hidden; }
   .user-card-small .icons-side-user .user-icon {
     float: left; }
@@ -3933,9 +3932,9 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
         color: #00AEEF; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .go-previous {
-          margin-right: 5px; }
+          margin-right: 10px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .go-next {
-          margin-left: 5px; }
+          margin-left: 10px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle i {
           font-size: 25px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .showcase-nav a {
