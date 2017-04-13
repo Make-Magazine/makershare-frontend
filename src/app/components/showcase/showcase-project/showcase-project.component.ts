@@ -32,10 +32,10 @@ export class ShowcaseProjectComponent implements OnInit {
   showcaseNid;
   allProjects;
   navigateShowcase = {
-    name:String,
-    totalNumber:Number,
-    index:Number,
-    length:Number
+    name: String,
+    totalNumber: Number,
+    index: Number,
+    length: Number
   };
   private sub: any;
 
@@ -61,19 +61,15 @@ export class ShowcaseProjectComponent implements OnInit {
     // this.navigateSetting();
     this.currentuser = Number(localStorage.getItem('user_id'));
 
+    var i = 0;
+    if (this.project && this.project.field_resources) {
+      for (let resource of this.project.field_resources) {
+        var resourceExt = resource.resource_file.split('.').pop();
+        this.project.field_resources[i]['extension'] = resourceExt;
+        i++
+      }
+    }
 
-    // if (data.field_resources) {
-    //   console.log(data.field_resources)
-    // for (let resource of this.project.field_resources) {
-    //   var resourceExt = resource.resource_file.split('.').pop();
-    //   this.project.field_resources[i]['extension'] = resourceExt;
-    //   var size = parseInt(resource.filesize);
-    //   if (size > 1 && size < 1024) {
-    //     this.project.field_resources[i]['filesize'] = size + 'KB';
-    //   };
-    //   i++
-    // }
-    // }
   } // End of ngOnInit
 
   changeProjectTab(NewTab) {
@@ -115,10 +111,10 @@ export class ShowcaseProjectComponent implements OnInit {
           this.navigateShowcase['length'] = this.allProjects.length;
 
         }
-        
+
         if (!this.projectIndex)
           this.projectIndex = this.allProjects.indexOf(this.projectNid)
-          this.navigateShowcase['index'] = this.projectIndex
+        this.navigateShowcase['index'] = this.projectIndex
 
       });
   }
@@ -127,7 +123,7 @@ export class ShowcaseProjectComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        this.navigateShowcase["name"]= this.showcase['showcase_name']
+        this.navigateShowcase["name"] = this.showcase['showcase_name']
       });
   }
   switchProject(NewIndex) {
