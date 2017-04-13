@@ -46,6 +46,7 @@ export class YourStoryComponent implements OnInit {
   current_child_category: number;
   child_categories: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
+  TitleFocused = false;
 
   //image cropper 
   cropperSettings: CropperSettings;
@@ -190,6 +191,21 @@ export class YourStoryComponent implements OnInit {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
+    }
+  }
+
+  RemoveCategory(CategoryId:number,CategoryParentId:number):void{
+    this.project.field_categories.und.splice(this.project.field_categories.und.indexOf(CategoryId),1);
+    var flag = false;
+    this.project.field_categories.und.forEach((category,index)=>{
+      let catIndex = this.all_categories.map(element => element.tid).indexOf(category);
+      if(this.all_categories[catIndex].parent_tid == CategoryParentId){
+        flag = true;
+        return;
+      }
+    });
+    if(!flag){
+      this.project.field_categories.und.splice(this.project.field_categories.und.indexOf(CategoryParentId),1);
     }
   }
 
