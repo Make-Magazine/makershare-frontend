@@ -21,6 +21,7 @@ export class FollowComponent implements OnInit {
   @Input() nodeNid;
   @Input() user;
   @Output() countNumber = new EventEmitter<number>();
+  @Output() HideLoadMore = new EventEmitter();
   userId;
   currentuser;
   checkUserLogin = false;
@@ -68,6 +69,8 @@ export class FollowComponent implements OnInit {
           this.ButtonFollow = 'Follow';
           this.countFollowers--;
           this.countNumber.emit(this.countFollowers);
+          this.HideLoadMore.emit();
+          this.nodeNid=this.nodeNid;
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
@@ -77,6 +80,7 @@ export class FollowComponent implements OnInit {
           this.ButtonFollow = 'Following';
           this.countFollowers++;
           this.countNumber.emit(this.countFollowers);
+          this.HideLoadMore.emit();
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });

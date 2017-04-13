@@ -51,6 +51,11 @@
           <div class="card-tags" *ngIf="project.field_tags">
             <span class="project-tag pr-2" *ngFor="let tag of tags">{{tag.tag_name}},</span>
           </div>
+          <div class="card-tags" *ngIf="project.field_categories">
+            <span class="project-tag" *ngFor="let category of project.field_categories">
+              <span *ngIf="!category.is_parent">{{category.name}},</span>
+              </span>
+          </div>
           <div class="project-card-footer d-flex mt-auto">
             <ul class="list-unstyled project-aside">
               <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Read Story</a></li>
@@ -67,7 +72,6 @@
 
 
 <!--
-
 
 
 <div *ngIf="project">
