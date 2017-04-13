@@ -32,7 +32,6 @@ export class PortfolioTabComponent implements OnInit {
   UpdateProjects(){
     this.viewService.getView('portfolio-projects',[['status',this.status]]).subscribe((projects:ProjectCardPortfolio[])=>{
       this.Projects = projects;
-      console.log(this.Projects)
     })
   }
 
