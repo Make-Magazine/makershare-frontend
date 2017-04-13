@@ -6,12 +6,10 @@
       </button>
       <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""></a>
       <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
-        <ul class="list-unstyled logged-in d-flex align-items-center">
+        <ul class="list-unstyled login-block">
           <li class="search-icon">
             <a (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
           </li>
-        </ul>
-        <ul class="list-unstyled login-block">
           <li *ngIf="!auth.authenticated()"><a class="login-div" (click)="auth.login()">Log in</a></li>
           <li class="min-user-img" *ngIf="auth.authenticated()">
             <div ngbDropdown class="d-inline-block account-controls dropdown">
@@ -30,6 +28,7 @@
       <li *ngIf="auth.authenticated()">
         <app-feedback></app-feedback>
       </li>     
+
         <!--<li>
 
           <div ngbDropdown class="d-inline-block account-controls dropdown">
@@ -52,7 +51,7 @@
                 <div class="intel-sites ">
                   <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
                   <a [routerLink]="['intel-make']" class="dropdown-item">Intel + Make</a>
-                  <a [routerLink]="['about-badges']" class="dropdown-item greyed">About Badges</a>
+                  <a [routerLink]="['about-badges']" class="dropdown-item greyed"> Badges</a>
                   <a [routerLink]="['terms-of-use']" class="dropdown-item greyed">Terms of Use</a>
                 </div>
                 <div class="maker-sites ">
@@ -73,7 +72,7 @@
             <a href="" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['explore']">Projects</a>
+            <a class="nav-link" [routerLink]="['projects']">Projects</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['showcases']">Showcases</a>

@@ -9,13 +9,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OnboardingComponent } from './onboarding/onboarding.component';
+
 // import {} from './'
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
   ],
   declarations: [
     HomeComponent,
@@ -24,7 +25,8 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
     ShowcasesComponent,
     SpotlightComponent,
     OnboardingComponent,    
-  ]
+  ],
+  
 })
 export class HomeModule { }
 export {HomeComponent};

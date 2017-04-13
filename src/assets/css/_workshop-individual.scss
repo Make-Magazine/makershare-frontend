@@ -47,10 +47,12 @@
 				}
 			}
 		}
-	.workshop-actions {
+	.workshop-actions {  
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 			li {
 				display: block;
 				float: left;
+			
 				.btn {
 					border-right-width: 0;
 				}
@@ -273,15 +275,26 @@
 			}
 		
 		}
+		// .shares-buttons{
+		// 	background-color: $light-grey
+
+		// }
 
 				.workshop-actions {
+					   position: absolute;
+         right: 20px;      
 					
 				li {
 					float: left;
-					a.active {
+						// border: 1px solid $main-grey;
+
+						a.active {
 						background-color: $main-grey;
 						color: #fff;
 					}
+				}
+				.btn {
+						background-color: $learn-card-bg ;
 				}
 			}
 	

@@ -2,12 +2,12 @@
   {{ r.name}}
 </template>
 
-<div class="region region-content col-sm-10" [formGroup]="HowToForm">
+<div class="region region-content col-sm-8" [formGroup]="HowToForm">
   <div class="how-to">
     <div class="form-group projectSteps">
       <div class="form-group project-steps">
         <label for="how-to-make">How to make this project:</label>
-        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+        <ckeditor id="how-to-make" rows="5" [config]="{extraPlugins: 'divarea'}" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value" ngbTooltip="{{TooltipText.how_to.guide}}"></ckeditor>
       </div>
     </div>
     <div class="form-group tools">
@@ -23,7 +23,7 @@
               <div class="form-group col-12 col-md-5 d-flex flex-column">
                 <label>Name</label>
                 <div *ngIf="HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value">{{HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value}}</div>
-                <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Name of tool" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)">
+                <input *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value" type="text" id="tool-name-{{i + 1}}" placeholder="Tool name" class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="SetToolMaterialPart('tool','field_tools', $event.item, i)" ngbTooltip="{{TooltipText.tool_name.guide}}">
                 <div *ngIf="!HowToForm.controls.field_tools.controls[i]['controls'].field_tool_name.value && searchFailed['tool']">
                   Tool not found <a class="btn btn-light-grey edit" (click)="OpenAddModal(addmodal,'tool')">Create New</a>
                 </div>
@@ -132,7 +132,7 @@
               </div>
               <div class="form-group col-12 col-md-4 d-flex flex-column">
                 <label>Quantity</label>
-                <input id="material-quantity-{{i + 1}}" type="text" placeholder="quantity" class="form-control" [formControl]="Material.controls.field_material_quantity">
+                <input id="material-quantity-{{i + 1}}" type="text" placeholder="Quantity or amount" class="form-control" [formControl]="Material.controls.field_material_quantity">
               </div>
               <div class="form-group col-md-3 d-flex flex-row flex-md-column align-items-center">
                 <label>Sort order</label>
@@ -195,12 +195,12 @@
 						</div>
           </div>
         </div>
-        <a *ngIf="HowToForm.controls.field_resources.valid" (click)="AddRow('field_resources')" class="btn btn-white btn-sharp another-resource"><i class="fa fa-lg fa-plus"></i> Add more</a>
+        <a *ngIf="HowToForm.controls.field_resources.valid" (click)="AddRow('field_resources')" class="btn btn-white btn-sharp another-resource" ngbTooltip="{{TooltipText.resources.guide}}"><i class="fa fa-lg fa-plus"></i> Add more</a>
       </div>
     </div>
     <div class="form-group col-xs-12 credit-your-inspiration">
       <label for="credit-your-inspiration">Credit Your Inspiration</label>
-      <input maxlength="140" type="text" class="form-control" id="credit-your-inspiration" formControlName="field_credit_your_inspiration" [(ngModel)]="project.field_credit_your_inspiration.und[0].value" novalidate placeholder="Credit Your Inspiration">
+      <input maxlength="140" type="text" class="form-control" id="credit-your-inspiration" formControlName="field_credit_your_inspiration" [(ngModel)]="project.field_credit_your_inspiration.und[0].value" novalidate placeholder="Credit Your Inspiration" ngbTooltip="{{TooltipText.inspiration.guide}}">
       {{HowToForm.value.field_credit_your_inspiration.length}}\140
     </div>
     <div *ngIf="formErrors.field_credit_your_inspiration" class="alert alert-danger error-msg">
@@ -209,33 +209,21 @@
 
   </div><!-- End how-to -->
 </div>
-<!--
 <aside class="col-md-4">
   <div class="how-to-guide">
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
-        <h4>Tags</h4>
-        <p>These will be used to help others find your project. Select up to 10.</p>
-      </div>
-    </div>
-    <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
-      <div class="pull-left content">
-        <h4>Guidelines regarding How-To</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      </div>
-    </div>
-    <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
-      <div class="pull-left content">
-        <h4>Helper Text about Project Help</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <h4>{{sidebarText.how_to.title}}</h4>
+        <p>{{sidebarText.how_to.guide}}</p>
       </div>
     </div>
   </div>
 </aside>
--->
 
 <!-- MODALS -->
 

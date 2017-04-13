@@ -492,4 +492,49 @@ export class HowToComponent implements OnInit {
       this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
     });
   }
+  sidebarText = {
+    'how_to': {
+      'title': 'How to:',
+      'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
+    },
+    'tools': {
+      'title': 'Tools // Boards & Kits // Materials:',
+      'guide': `We've devised three categories to represent the different elements that might have been used to create this project.
+
+Tools: The items you use to affect your materials (crochet hooks, screwdrivers, laser cutters, etc)
+
+Boards: Any pre-made electronic board (Edison, Arduino, Raspberry Pi, etc)
+& Kits: Any purchased kit containing combinations of tools, boards, and/or materials.
+
+Materials: Anything that your final project is made from, not including Boards & Kits (cloth, thread, nails, monitor, wood, etc)`
+    },
+    'difficulties_duration': {
+      'title': 'Difficulty & Duration:',
+      'guide': 'How difficult would it be for the average person to recrate this? How long would it take them?'
+    },
+
+    'resources': {
+      'title': 'Resources:',
+      'guide': `Are there any important files associated with your project that you'd like to share? This is the place for those. From vector to 3D files, patterns to code, please uploaded any files associated with your poject here.`
+    },
+    'credit_your_inspiration': {
+      'title': 'How to:',
+      'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
+    },
+  }
+
+  TooltipText = {
+    'how_to': {
+      'guide': 'Describe your process.'
+    },
+    'tool_name': {
+      'guide': 'Include the manufacturer name if it\'\s relevant.',
+    },
+    'resources': {
+      'guide' : 'Upload any files associated with your project.'
+    },
+    'inspiration': {
+      'guide': 'Who or what sparked your idea for this project.'
+    }
+  }
 }

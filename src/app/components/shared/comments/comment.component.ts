@@ -21,7 +21,12 @@ interface comment {
 export class CommentComponent implements OnInit {
 
   @Input() nid;
-  @Input() titleform;
+  // @Input() titleform: Object;
+  @Input() titleform= {
+      title : "Feedback",
+     placeholder: "What would you like to say? ",
+     ifempty: "There is no comments yet ..",
+  };
   
   
   comments = {

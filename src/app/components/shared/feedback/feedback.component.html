@@ -78,8 +78,12 @@
       <input type="file" class="form-control-file" id="files"  placeholder="Choose photo" id="exampleInputFile" aria-describedby="fileHelp" [formControl]="feedbackForm.controls['field_upload_screenshots']" (change)="uploadFile($event)" multiple >
       <pre id="filelist" style="display:none;"></pre>
       <small id="fileHelp" class="form-text text-muted">maximum upload size 1M</small>
-       <div *ngIf="formErrors.field_upload_screenshots" class="alert alert-danger error-msg">
-        {{formErrors.field_upload_screenshots}}
+       <div *ngIf="formErrors.field_upload_screenshots.length > 0" class="alert alert-danger error-msg">
+         <div *ngFor="let error of formErrors.field_upload_screenshots">
+             <small>{{error}}</small>
+        </div>
+                   <!--<small>{{formErrors.field_upload_screenshots}}</small>-->
+
       </div>
     </div>
     <div class="form-group" *ngIf="CurrentType == 1186">

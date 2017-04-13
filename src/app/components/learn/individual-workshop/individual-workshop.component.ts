@@ -20,7 +20,12 @@ export class IndividualWorkshopComponent implements OnInit {
   customDescription: string;
   customImage: string;
   workshop;
-  title="Questions";
+  title={
+    title : "Questions",
+     placeholder: "Ask a question",
+     ifempty: "There is no questions yet ..",
+  };
+  //  title="Questions";
   objects;
   lessons
   learns;
@@ -67,6 +72,7 @@ export class IndividualWorkshopComponent implements OnInit {
     this.viewService.getView('individual-workshop', [['nid', this.nid]])
       .subscribe(data => {
         this.workshop = data[0];
+        console.log(this.workshop)
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];
