@@ -298,6 +298,7 @@ export class ProfileComponent implements OnInit {
   SaveUser(user: UserProfile) {
     this.Loading = true;
     user.uid = this.uid;
+    //delete user.field_add_your_makerspace_s_;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
     });
