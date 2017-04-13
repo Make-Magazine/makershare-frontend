@@ -460,7 +460,7 @@
 						<input type="text" formControlName="field_website_or_blog" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog" [checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_website_or_blog.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_website_or_blog.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -468,7 +468,7 @@
 						<input type="text" formControlName="field_additional_site" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site" [checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_additional_site.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_additional_site.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -476,7 +476,7 @@
 						<input type="text" formControlName="field_facebook" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook" [checked]="profile.field_social_accounts.field_preferred == 'field_facebook'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_facebook.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_facebook.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -484,7 +484,7 @@
 						<input type="text" formControlName="field_instagram" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram" [checked]="profile.field_social_accounts.field_preferred == 'field_instagram'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_instagram.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_instagram.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -492,7 +492,7 @@
 						<input type="text" formControlName="field_linkedin" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin" [checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_linkedin.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_linkedin.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -500,14 +500,14 @@
 						<input type="text" formControlName="field_twitter" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter" [checked]="profile.field_social_accounts.field_preferred == 'field_twitter'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_twitter.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_twitter.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
 						<input type="text" name="web-url" formControlName="field_pinterest">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest" [checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'">
-						<div *ngIf="!FormGroupSocial.field_pinterest.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -515,7 +515,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
 						<input type="text" name="web-url" formControlName="field_youtube">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube" [checked]="profile.field_social_accounts.field_preferred == 'field_youtube'">
-						<div *ngIf="!FormGroupSocial.field_youtube.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_youtube.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -523,7 +523,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
 						<input type="text" name="web-url" formControlName="field_hackster_io">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'">
-						<div *ngIf="!FormGroupSocial.field_hackster_io.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -531,7 +531,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
 						<input type="text" name="web-url" formControlName="field_instructables">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables" [checked]="profile.field_social_accounts.field_preferred == 'field_instructables'">
-						<div *ngIf="!FormGroupSocial.field_instructables.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_instructables.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -539,7 +539,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
 						<input type="text" name="web-url" formControlName="field_hackday">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday" [checked]="profile.field_social_accounts.field_preferred == 'field_hackday'">
-						<div *ngIf="!FormGroupSocial.field_hackday.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_hackday.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
