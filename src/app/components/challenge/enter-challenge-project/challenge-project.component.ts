@@ -10,6 +10,7 @@ import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -26,7 +27,6 @@ export class ChallengeProjectComponent implements OnInit {
   nid: number;
   enterStatus = true;
   selectedProjectName;
-
   challangeData: IChallengeData = {
     title: "",
     cover_image: "",
@@ -63,14 +63,17 @@ export class ChallengeProjectComponent implements OnInit {
     timezone_db: "",
     date_type: "",
   };
+  checked:false;
+  error:string;
+  closeResult: string;
+
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
-        private loaderService: LoaderService,
-
-
+    private loaderService: LoaderService,
+    private modalService: NgbModal,
   ) { }
   ngOnInit() {
     this.cheackenter();
@@ -163,7 +166,8 @@ export class ChallengeProjectComponent implements OnInit {
   onCancel(event: any) {
     this.router.navigate(['/missions/' + this.nid]);
   }
-  onSubmit(event: any) {
+  onSubmit() {
+    if(this.checked){
     this.loaderService.display(true);
 
     let body = {
@@ -195,6 +199,9 @@ export class ChallengeProjectComponent implements OnInit {
     }, err => {
       // console.log(err);
     });
+    }else{
+      this.error='You must agree to challenge rules and eligibility requirements before entering.'
+    }
   }
 
   onMyEntries() {
@@ -225,4 +232,18 @@ export class ChallengeProjectComponent implements OnInit {
     });
   }
   /* end function cheack user allowe to enter challenge */
+  checkBoxValue(item:any){
+    this.error='';
+    this.checked=item.target.checked;
+    if(this.checked){
+      this.onSubmit();
+    }
+  }
+   open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = 'Closed with: ${result}';
+    }, (reason) => {
+      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+    });
+  }
 }
