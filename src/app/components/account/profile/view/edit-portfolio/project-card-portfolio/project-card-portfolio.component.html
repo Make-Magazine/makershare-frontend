@@ -111,7 +111,7 @@
           </div>
           <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <p class="card-text" *ngIf="project.teaser && type == 'grid'" innerHTML="{{project.teaser}}"></p>        
+            <p class="card-text" *ngIf="project.teaser && type == 'showcase'" innerHTML="{{project.teaser}}"></p>        
             <a (click)="userProfile(project.first_name,project.last_name)">
               <p *ngIf="type == 'grid'" class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
             </a>
