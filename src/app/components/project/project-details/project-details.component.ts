@@ -70,6 +70,7 @@ export class ProjectDetailsComponent implements OnInit {
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
         .subscribe(data => {
           this.project = data;
+          console.log(data);
           // if (this.project.title) {
           //   this.customTitle = this.project.title.value;
           // }
