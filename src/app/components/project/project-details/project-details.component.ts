@@ -59,9 +59,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         
         this.projectdata = data[0];
-      }, err => {
-
-      });
+      }, err => {});
       /* end service */
 
       // dispatch action to load the details here-solve no load issue.
@@ -70,7 +68,6 @@ export class ProjectDetailsComponent implements OnInit {
         .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
         .subscribe(data => {
           this.project = data;
-          
           var i = 0;
           if (this.project.field_resources) {
             for (let resource of this.project.field_resources) {
@@ -79,7 +76,6 @@ export class ProjectDetailsComponent implements OnInit {
               i++
             }
           }
-
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
           this.loaderService.display(false);
@@ -108,7 +104,6 @@ export class ProjectDetailsComponent implements OnInit {
     }
     this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
     this.ngOnInit();
-
   }
   
 
