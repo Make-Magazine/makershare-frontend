@@ -14,6 +14,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BaseComponent } from './base/base.component';
+import { EditPortfolioComponent } from './view/edit-portfolio/edit-portfolio/edit-portfolio.component';
+import { PortfolioTabComponent } from './view/edit-portfolio/portfolio-tab/portfolio-tab.component';
+import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-card-portfolio/project-card-portfolio.component';
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   imports: [
@@ -27,13 +31,17 @@ import { BaseComponent } from './base/base.component';
     SharedModule,
     NgbModule,
     ImageCropperModule,
-    CKEditorModule
+    CKEditorModule,
+    DndModule
   ],
   declarations: [
     AllProfileComponent,
     ProfileComponent,
     ProjectsComponent,
     BaseComponent,
+    EditPortfolioComponent,
+    PortfolioTabComponent,
+    ProjectCardPortfolioComponent,
   ]
 })
 export class ProfileModule { }

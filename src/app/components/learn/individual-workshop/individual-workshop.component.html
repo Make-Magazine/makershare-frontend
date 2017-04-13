@@ -12,7 +12,8 @@
             <!--<div *ngIf= "workshop.introductory_video">
                          <app-video-display [link]="workshop.introductory_video"></app-video-display>
                   </div>-->
-            <div *ngIf="workshop.uid">
+            <div *ngIf="workshop.uid" class= "default">
+              
               <app-learn-user-card [uid]="workshop.uid" [leader]="workshop.leader_name"></app-learn-user-card>
             </div>
           </div>
