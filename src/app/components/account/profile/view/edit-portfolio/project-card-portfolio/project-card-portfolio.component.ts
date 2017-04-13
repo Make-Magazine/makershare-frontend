@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectCardPortfolio } from '../../../../../../models';
 import { NodeService } from '../../../../../../d7services/node/node.service'
+import { ViewService } from '../../../../../../d7services/view/view.service';
 
 @Component({
   selector: 'project-card-portfolio',
@@ -12,12 +13,17 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Input() Project:ProjectCardPortfolio;
   @Input() Visibility:number;
   @Output() emitter = new EventEmitter();
-
+  project
   constructor(
-    private nodeService:NodeService
+    private nodeService:NodeService,
+    private viewService: ViewService,
+
   ) { }
 
   ngOnInit() {
+    this.viewService.getView('api-project-card', [['nid', this.Project.nid]]).subscribe(res => {
+      this.project = res[0];
+  });
   }
 
   DeleteProject(nid:number){

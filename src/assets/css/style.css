@@ -343,6 +343,21 @@ a:not([href]):not([tabindex]) {
 .dropdown-item:hover {
   cursor: pointer; }
 
+.btn-white, a:not([href]):not([tabindex]).btn-white {
+  color: #333333;
+  background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #999; }
+  .btn-white:focus, a:not([href]):not([tabindex]).btn-white:focus {
+    color: #fff;
+    background: #ff242f;
+    border-color: transparent; }
+  .btn-white:active, .btn-white:hover, .btn-white.active, a:not([href]):not([tabindex]).btn-white:active, a:not([href]):not([tabindex]).btn-white:hover, a:not([href]):not([tabindex]).btn-white.active {
+    color: #fff;
+    background: #ED1C24;
+    border-color: transparent; }
+
 .project {
   position: relative;
   margin-top: 10px;
@@ -1267,9 +1282,6 @@ footer {
     font-size: 25px;
     margin-bottom: 5px;
     color: #fff; }
-  .profile-name span {
-    margin-left: 20px;
-    font-size: 12px; }
   .profile-name .bookmark li {
     height: auto;
     display: block;
@@ -1536,13 +1548,6 @@ footer {
 
 .profile-header {
   margin-top: 50px; }
-  .profile-header .display-style {
-    cursor: pointer;
-    padding-right: 10px; }
-    .profile-header .display-style .active {
-      opacity: 0.3; }
-    .profile-header .display-style img {
-      width: 30px; }
   .profile-header .bookmark li {
     padding: 0 10px;
     height: 24px; }
@@ -2158,6 +2163,32 @@ footer {
   opacity: 0.6;
   display: none;
   z-index: 10; }
+
+.overlay-portfolio {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(200, 200, 200, 0.6);
+  display: none;
+  z-index: 10; }
+  .overlay-portfolio p {
+    display: block;
+    font-size: 12px;
+    color: #4F4F4F;
+    text-align: center; }
+    .overlay-portfolio p.btn {
+      background-color: #F2F2F2;
+      border: 1px solid #333333; }
+      .overlay-portfolio p.btn:hover, .overlay-portfolio p.btn:active, .overlay-portfolio p.btn.active {
+        background-color: #ED1C24;
+        border-color: #ED1C24;
+        color: #fff; }
+  .overlay-portfolio span {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    height: 25px;
+    line-height: 28px; }
 
 .teaser {
   display: none;
@@ -5950,17 +5981,22 @@ img {
       background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
-.page-portfolio .nav-portfolio {
-  border-bottom: 1px solid #333333;
-  padding-top: 10px; }
-  .page-portfolio .nav-portfolio ul {
-    padding-left: 15px; }
-    .page-portfolio .nav-portfolio ul li {
-      float: left; }
-      .page-portfolio .nav-portfolio ul li .btn-grey-inverse {
-        padding: 7px 55px; }
-      .page-portfolio .nav-portfolio ul li:not(:first-child) {
-        margin-left: 5px; }
+.page-portfolio .nav-portfolio .nav .btn-white {
+  padding: 10px 10px;
+  min-width: 110px;
+  font-size: 13px;
+  height: 39px;
+  line-height: 23px; }
+.page-portfolio .nav-portfolio .display-style {
+  cursor: pointer;
+  padding-right: 10px; }
+  .page-portfolio .nav-portfolio .display-style p {
+    color: #828282;
+    font-size: 12px; }
+    .page-portfolio .nav-portfolio .display-style p.active {
+      opacity: 0.3; }
+  .page-portfolio .nav-portfolio .display-style img {
+    width: 30px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
   padding: 15px 0 0;
