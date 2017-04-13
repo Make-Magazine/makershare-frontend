@@ -25,9 +25,10 @@
               </div>
             </div>
         </li>
-<li>
-        <!--<app-feedback></app-feedback>-->
-  </li>     
+      <li *ngIf="auth.authenticated()">
+        <app-feedback></app-feedback>
+      </li>     
+
         <!--<li>
 
           <div ngbDropdown class="d-inline-block account-controls dropdown">
