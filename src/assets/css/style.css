@@ -1903,7 +1903,8 @@ footer {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   margin: 0 5px;
-  color: #333333; }
+  color: #333333;
+  height: 50px; }
   .project .card-text.project-text-grid {
     display: none; }
 .project .categories {
