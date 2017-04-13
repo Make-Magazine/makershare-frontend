@@ -1489,7 +1489,6 @@ footer {
         .profile-sidebar .profile-container .profile-info .social-links li {
           display: inline-block;
           text-align: center;
-          width: 25px;
           vertical-align: top; }
         .profile-sidebar .profile-container .profile-info .social-links i.fa-star {
           font-size: 12px;
