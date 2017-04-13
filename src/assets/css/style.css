@@ -4948,36 +4948,34 @@ img {
       width: 30%; }
     .page-create-profile .basic-info #state, .page-create-profile .optional-info #state {
       width: 20%; }
-  .page-create-profile .optional-info {
-    display: none; }
-    .page-create-profile .optional-info a.btn {
-      display: inline-block;
-      text-align: center;
-      padding: 6px;
-      background-color: #4f4f4f;
-      color: white;
-      border: 1px solid #444;
-      min-width: 144px;
-      font-size: 16px; }
-    .page-create-profile .optional-info .social-links li:first-of-type h4 {
-      margin-left: 82%;
-      font-size: 14px; }
-    .page-create-profile .optional-info .social-links label {
-      width: 30%;
-      font-size: 15px; }
-    .page-create-profile .optional-info .social-links input[type="checkbox"] {
-      margin-left: 30px;
-      font-size: 15px; }
-    .page-create-profile .optional-info .social-links input[type="text"] {
-      width: 50%;
-      margin: 0;
-      padding: 3px;
-      font-size: 15px; }
-    .page-create-profile .optional-info .social-links i {
-      width: 25px; }
-    .page-create-profile .optional-info .social-links p {
-      margin-top: 5px;
-      font-size: 15px; }
+  .page-create-profile .optional-info a.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 6px;
+    background-color: #4f4f4f;
+    color: white;
+    border: 1px solid #444;
+    min-width: 144px;
+    font-size: 16px; }
+  .page-create-profile .optional-info .social-links li:first-of-type h4 {
+    margin-left: 82%;
+    font-size: 14px; }
+  .page-create-profile .optional-info .social-links label {
+    width: 30%;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="checkbox"] {
+    margin-left: 30px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="text"] {
+    width: 50%;
+    margin: 0;
+    padding: 3px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links i {
+    width: 25px; }
+  .page-create-profile .optional-info .social-links p {
+    margin-top: 5px;
+    font-size: 15px; }
   .page-create-profile .guide {
     background-color: #BDBDBD;
     padding: 15px;

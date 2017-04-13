@@ -18,7 +18,6 @@ import { Observable } from "rxjs";
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
   feedbackForm: FormGroup;
@@ -159,7 +158,6 @@ export class FeedbackComponent implements OnInit {
         this.profile = res;
        // console.log(this.profile.full_name);
         this.full_name=res.full_name
-        console.log(this.full_name)
     }, err => {
           console.log(err);
     });
