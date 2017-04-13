@@ -113,38 +113,38 @@ $(document).ready(function () {
 	});
 
 	// Toggle profile grid and square view
-	$(document).on('click', '.square-view', function () {
-		// $(this).children().toggle();
-		if (squareView) {
-			$('.projects-grid .project-item ').removeClass('col-lg-6');
-			$('.projects-grid .project-item ').addClass('col-lg-12');
-			$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'block' });
-			$('.projects-grid .project-stats').css({
-				display: 'block',
-				bottom: '120px'
-			});
-			$('.projects-grid .categories').css({
-				display: 'block',
-			});
-			squareView = false;
-		} 
-	});
-	$(document).on('click', '.grid-view', function () {
-		// $(this).children().toggle();
-		if (!squareView) {
-			$('.projects-grid .project-item').removeClass('col-lg-12');
-			$('.projects-grid .project-item').addClass('col-lg-6');
-			$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'none' });
-			$('.projects-grid .project-stats').css({
-				display: 'none',
-				bottom: '120px'
-			});
-			$('.projects-grid .categories').css({
-				display: 'none',
-			});
-			squareView = true;
-		}
-	});
+	// $(document).on('click', '.square-view', function () {
+	// 	// $(this).children().toggle();
+	// 	if (squareView) {
+	// 		$('.projects-grid .project-item ').removeClass('col-lg-6');
+	// 		$('.projects-grid .project-item ').addClass('col-lg-12');
+	// 		$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'block' });
+	// 		$('.projects-grid .project-stats').css({
+	// 			display: 'block',
+	// 			bottom: '120px'
+	// 		});
+	// 		$('.projects-grid .categories').css({
+	// 			display: 'block',
+	// 		});
+	// 		squareView = false;
+	// 	} 
+	// });
+	// $(document).on('click', '.grid-view', function () {
+	// 	// $(this).children().toggle();
+	// 	if (!squareView) {
+	// 		$('.projects-grid .project-item').removeClass('col-lg-12');
+	// 		$('.projects-grid .project-item').addClass('col-lg-6');
+	// 		$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'none' });
+	// 		$('.projects-grid .project-stats').css({
+	// 			display: 'none',
+	// 			bottom: '120px'
+	// 		});
+	// 		$('.projects-grid .categories').css({
+	// 			display: 'none',
+	// 		});
+	// 		squareView = true;
+	// 	}
+	// });
 	// Show and hide project stats on project card
 	$(document).on('mouseenter', '.project', function () {
 		if (squareView) {
@@ -154,6 +154,8 @@ $(document).ready(function () {
 			$(this).find('.teaser').fadeIn('400');
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeIn('400');
+			$(this).find('.overlay-portfolio').stop();
+			$(this).find('.overlay-portfolio').addClass('d-flex');
 		}
 	});
 	$(document).on('mouseleave', '.project', function () {
@@ -162,6 +164,8 @@ $(document).ready(function () {
 			$(this).find('.icons').fadeIn('400');
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
+			$(this).find('.overlay-portfolio').stop();
+			$(this).find('.overlay-portfolio').removeClass('d-flex');
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
 		}

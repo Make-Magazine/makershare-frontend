@@ -58,7 +58,7 @@ export class ChallengeDataComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
-    private loaderService: LoaderService,    
+    private loaderService: LoaderService,
 
   ) { }
 
@@ -78,27 +78,34 @@ export class ChallengeDataComponent implements OnInit {
         this.awards = data;
         this.no_of_awards = data.length;
       }, err => {
-       // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
     this.cheackenter();
 
-    this.getChallengeFollowers();
+    this.getChallengeFollowers(true);
     this.getProjects();
     this.getCurrentUser();
     this.userService.getStatus().subscribe(data => {
       this.currentuser = data;
     }, err => {
-     // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
   }
 
   /* function get challenge followers */
-  getChallengeFollowers() {
+  getChallengeFollowers(follow_update: boolean) {
     //challenge followers
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
       .subscribe(data => {
-        this.followers = this.followers.concat(data);
+        if (follow_update) {
+          console.log(this.pageNumber)
+          this.followers = this.followers.concat(data);
+        } else {
+          console.log(this.pageNumber)
+
+          this.followers = data;
+        }
         if (!this.followers.length) {
           this.hideloadmorefollower = true;
           //console.log(this.followers.length)
@@ -115,6 +122,7 @@ export class ChallengeDataComponent implements OnInit {
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry error, somthing went wrong, try again later.', type: NotificationType.Error });
       });
+
   }
   /*end function get challenge followers */
 
@@ -130,8 +138,10 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to change tab*/
   changeChallangeTab(NewTab, e) {
+
     e.preventDefault();
     this.activeTab = NewTab;
+
   }
   /*  end function to change tab*/
 
@@ -193,7 +203,7 @@ export class ChallengeDataComponent implements OnInit {
 
     /*cheack display_entries */
     //challenge entries projects
-     this.projects=[];
+    this.projects = [];
     var sort: string;
     //  this.page_arg = [];
     if (this.pageNo >= 0) {
@@ -205,14 +215,14 @@ export class ChallengeDataComponent implements OnInit {
         this.projects = this.projects.concat(data);
         this.loadMoreVisibilty();
         // hide spinner
-        this.loaderService.display(false);      
+        this.loaderService.display(false);
       }, err => {
-     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
         // hide spinner
-        this.loaderService.display(false);        
+        this.loaderService.display(false);
       });
-    
-    
+
+
   }
   /* function to get myEnteries */
   myEnteriesProject() {
@@ -231,7 +241,8 @@ export class ChallengeDataComponent implements OnInit {
       .subscribe(data => {
         this.projects = this.projects.concat(data);
       }, err => {
-     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        // this.followers = this.followers.concat(data);
+        //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   // Function to control load more button
@@ -273,11 +284,13 @@ export class ChallengeDataComponent implements OnInit {
   /* end function PN Projetcs */
   followersCounter(count) {
     this.no_of_followers = count;
+    this.pageNo = 0;
+    this.getChallengeFollowers(false);
   }
   /* function to initialize page arg for loadmore for followers to send to api  */
   getPageNumberFollowers(event: any) {
     this.pageNo = event
-    this.getChallengeFollowers();
+    this.getChallengeFollowers(true);
   }
   /* end function PN Followers */
 
@@ -294,7 +307,7 @@ export class ChallengeDataComponent implements OnInit {
           this.countProjects = data;
         }
       }, err => {
-     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
@@ -302,15 +315,15 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to navigate to enter challenge */
   enterToChallengeProject(nid) {
-          this.userService.isLogedIn().subscribe(data => {
+    this.userService.isLogedIn().subscribe(data => {
       //this.checkUserLogin = data;
       if (data == false) {
         //localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
-      }else{
-    this.router.navigate(['missions/enter-mission', nid]);
+      } else {
+        this.router.navigate(['missions/enter-mission', nid]);
       }
-          });
+    });
   }
   /* end function to navigate to enter challenge */
   /* function cheack user allowe to enter challenge */
@@ -323,14 +336,14 @@ export class ChallengeDataComponent implements OnInit {
 
       //console.log(data);
     }, err => {
-     // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
   }
 
   /* end function my Enteries */
   /* end function cheack user allowe to enter challenge */
-  
+
 
   /* service to get challenge name if project enter in it */
   // get challenge name and nid for challenge if found from a view

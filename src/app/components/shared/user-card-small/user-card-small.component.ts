@@ -164,4 +164,8 @@ closeResult: string;
       return `with: ${reason}`;
     }
   }
+  userProfile(fName, lName) {
+    var name = fName + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
 }

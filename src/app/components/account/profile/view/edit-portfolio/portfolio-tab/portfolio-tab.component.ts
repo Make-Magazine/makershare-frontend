@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class PortfolioTabComponent implements OnInit {
   @Input() status:number;
+  @Input() DefaultView:string;
 
   //grid/showcase
-  DefaultView:string;
   Projects:ProjectCardPortfolio[] = [];
 
   constructor(
@@ -25,29 +25,14 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUser(localStorage.getItem("user_id")).subscribe(userdata=>{
-      this.DefaultView = "grid";
-      if(userdata.projects_view){
-        this.DefaultView = userdata.projects_view;
-      }
-      this.UpdateProjects();
-    });
+    this.UpdateProjects()
+    
   }
 
   UpdateProjects(){
     this.viewService.getView('portfolio-projects',[['status',this.status]]).subscribe((projects:ProjectCardPortfolio[])=>{
       this.Projects = projects;
     })
-  }
-
-  ChangeDefaultView(NewView:string){
-    let user = {
-      uid:localStorage.getItem("user_id"),
-      field_project_view:{und:NewView},
-    };
-    this.userService.updateUser(user).subscribe(data=>{
-      this.DefaultView = NewView;
-    });
   }
 
   SaveProjectsOrder(){

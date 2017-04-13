@@ -26,6 +26,7 @@ export class CommentComponent implements OnInit {
       title : "Feedback",
      placeholder: "be the first to post a comment",
      ifempty: "There is no comments yet ..",
+     join:" to Add Your Comment",
   };
   
   

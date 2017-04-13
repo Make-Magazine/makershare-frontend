@@ -764,7 +764,25 @@ header.showcase-project {
 				}
 				.projects-circle {
 					color: $sec-button-1 ;
-					text-decoration: underline;
+					.go-previous {
+						margin-right: 10px;
+					}
+					.go-next {
+						margin-left: 10px;						
+					}
+					i {
+						font-size: 25px;					
+					}
+					.showcase-nav {
+						
+						a {
+							@include desc-font-1();
+							color: $sec-button-1 ;
+							font-size: 15px !important;
+							text-decoration: none;
+						}
+					}
+					// text-decoration: underline;
 				}
         .card-title {
             @include card-header-font-lg();
