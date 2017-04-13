@@ -58,7 +58,9 @@
               <span>70</span>
             </li>
             <li>
-              <span>{{project.maker_project_count}} projects</span>
+              <span *ngIf="project.maker_project_count > '1'" >{{project.maker_project_count}}  projects</span>
+              <span *ngIf="project.maker_project_count == '1'" >{{project.maker_project_count}}  project</span>
+              <!--<span *ngIf="project.maker_project_count == 0" > 0 projects</span>-->
             </li>
           </ul>
         </div>
@@ -161,7 +163,8 @@
               <span>70</span>
             </li>
             <li>
-              <span>{{project.maker_project_count}} projects</span>
+              <span *ngIf="project.maker_project_count > '1'" >{{project.maker_project_count}}  projects</span>
+              <span *ngIf="project.maker_project_count == '1'" >{{project.maker_project_count}}  project</span>
             </li>
           </ul>
         </div>

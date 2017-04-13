@@ -2570,7 +2570,9 @@ footer {
     overflow: hidden;
     position: relative;
     top: -15px;
-    left: -20px; }
+    left: -20px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .maker-card .image-top .card-img-top {
       border-radius: 0; }
     .maker-card .image-top img {
@@ -3263,7 +3265,9 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: 360px; }
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -3927,8 +3931,23 @@ header.showcase-project .next {
         border: none;
         min-height: 388px; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
-        color: #00AEEF;
-        text-decoration: underline; }
+        color: #00AEEF; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .go-previous {
+          margin-right: 5px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .go-next {
+          margin-left: 5px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle i {
+          font-size: 25px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .showcase-nav a {
+          font-family: "Messina Sans Regular" !important;
+          font-size: 0.95em !important;
+          font-weight: 400 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          color: #00AEEF;
+          font-size: 15px !important;
+          text-decoration: none; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
         font-size: 3em !important;
@@ -4315,7 +4334,8 @@ header.showcase-project .next {
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
-    color: #828282; }
+    color: #828282;
+    margin-right: 15px; }
   .front .learn-card .learn-item {
     padding: 10px; }
     .front .learn-card .learn-item img {
@@ -4325,8 +4345,10 @@ header.showcase-project .next {
   .front .learn-card .image-container {
     overflow: hidden;
     position: relative;
-    padding: 0 0 0 15px;
-    height: 360px; }
+    padding: 0;
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4578,7 +4600,9 @@ header.showcase-project .next {
   width: 99%;
   height: 99%;
   position: absolute;
-  z-index: 5000; }
+  z-index: 5000;
+  top: 0;
+  left: -8px; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -6783,7 +6807,7 @@ img {
         height: 58px; }
 
   .front .learn-card .image-container {
-    padding: 0 30px 0 15px;
+    margin: 0 30px 0 15px;
     max-height: 160px;
     max-width: 520px; }
   .front .learn-card .card-container .card-title {
@@ -6812,7 +6836,7 @@ img {
   .front .front-challenge-card {
     height: 420px; }
     .front .front-challenge-card .image-container {
-      padding: 0 30px 0 15px;
+      margin: 0 30px 0 15px;
       max-height: 160px;
       max-width: 520px;
       background: url("../images/placeholder.png") center center;

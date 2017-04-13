@@ -38,18 +38,19 @@ export class ProjectHeaderComponent implements OnInit {
       this.customImage = this.project.field_cover_photo.url;
     }
     if(this.showcaseInfo){
+      
     }
-    // this.project.field_tags
     let i =0;
     for (let tag in this.project.field_tags) {
       if(this.project.field_tags[tag] != "")
       this.tags.push(this.project.field_tags[tag]);
     }
+    console.log(this.showcaseInfo)
   }
   
   getcurrentuser(){
     this.userService.getStatus().subscribe(data => {
-      this.userLogin = data
+      this.userLogin = data;
     });
   }
 
@@ -57,13 +58,13 @@ export class ProjectHeaderComponent implements OnInit {
     this.SwitchTab.emit(NewTab);
   }
 
-  SwitchProjectFunc(ProjectIndex,action) {
+  SwitchProjectFunc(e,action) {
     if (action == "back") {
-      ProjectIndex--;
-      this.ProjectNewId.emit(ProjectIndex);
+      this.showcaseInfo.index--;
+      this.ProjectNewId.emit(this.showcaseInfo.index);
     } else if (action == "next") {
-      ProjectIndex++;
-      this.ProjectNewId.emit(ProjectIndex);
+      this.showcaseInfo.index++;
+      this.ProjectNewId.emit(this.showcaseInfo.index);
     }
   }
 

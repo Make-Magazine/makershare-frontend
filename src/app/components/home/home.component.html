@@ -44,7 +44,7 @@
         <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="item.id" [front]=true></app-project-card>
 
         <!-- Learn Cards -->
-        <div *ngIf="item.type == 'learning_sequence'" class="learn-card">
+        <div *ngIf="item.type == 'learning_sequence'" class="">
           <app-learn-card [workshopNid]="item.id" [front]=true></app-learn-card>
         </div>
       </div>
