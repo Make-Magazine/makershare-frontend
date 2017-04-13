@@ -157,14 +157,24 @@
         }
         .profile-group {
             .profile-pic {
+                .card-type {
+                    font-size: 1.35em !important;
+                    right: -32px;
+                }
                 position: relative;
-                img {
-                    height: auto;
-                    width: 100%;
-                    position: relative;
+                .image-container {
+                    position: relative;                    
+                    background: url('../images/placeholder.png') center center;
+                    background-size: cover;
+                    width: 370px;
+                    height: 280px;
                     top: -110px;
-                    left: -40px;
-                    margin-bottom: -100px;
+                    left: -60px;
+                    margin-bottom: -100px;        
+                }
+                img {
+                    height: 100%;
+                    width: 100%;
                 }
                 a {
                     z-index: 1;
@@ -1887,4 +1897,12 @@
         }
     }
 
+}
+.edit-buttons{
+    width: 25px !important;
+    height: 25px !important;
+    float: right;
+    path {
+        fill:red;
+    }
 }
