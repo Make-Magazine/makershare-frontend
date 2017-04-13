@@ -18,7 +18,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './challenge-project.component.html',
 })
 export class ChallengeProjectComponent implements OnInit {
-  countProjects=0;
+  countProjects = 0;
+  button = false;
   projects: IChallengeProject[];
   selectedProject: number;
   hiddenAfterSubmit: boolean = false;
@@ -34,8 +35,8 @@ export class ChallengeProjectComponent implements OnInit {
     public_voting: 0,
     body: "",
     rules: "",
-    diffDays:0,
-    opened:false,
+    diffDays: 0,
+    opened: false,
     display_entries: 0,
     nid: 0,
     challenge_start_date: {
@@ -63,8 +64,8 @@ export class ChallengeProjectComponent implements OnInit {
     timezone_db: "",
     date_type: "",
   };
-  checked:false;
-  error:string;
+  checked: false;
+  error: string;
   closeResult: string;
 
   constructor(private route: ActivatedRoute,
@@ -95,7 +96,7 @@ export class ChallengeProjectComponent implements OnInit {
 
       });
   }
-  
+
   /* function to get count projects in challenge */
   getCountProject() {
     // var nid;
@@ -110,7 +111,7 @@ export class ChallengeProjectComponent implements OnInit {
           // console.log(data[0]);
         }
       }, err => {
-     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
@@ -120,14 +121,14 @@ export class ChallengeProjectComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', this.nid]]))
       .subscribe(data => {
         this.challangeData = data[0];
-        
-          //calculate days difference
+
+        //calculate days difference
         if (this.challangeData) {
           var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
           var todayDate = new Date();
           var endDate = new Date(this.challangeData.challenge_end_date.value);
           var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
-          
+
           if (diffDays >= 0) {
             this.challangeData.diffDays = diffDays
           } else {
@@ -137,13 +138,13 @@ export class ChallengeProjectComponent implements OnInit {
         this.challangeData.challenge_end_date.value = this.changeDateFormat(this.challangeData.challenge_end_date.value);
         this.challangeData.challenge_start_date.value = this.changeDateFormat(this.challangeData.challenge_start_date.value);
         this.challangeData.winners_announcement_date.value = this.changeDateFormat(this.challangeData.winners_announcement_date.value);
-      
+
         // this.challangStartDate = this.challangeData.challenge_start_date;
       }, err => {
         // console.log(err);
       });
   }
-   /* function to change data format */
+  /* function to change data format */
   changeDateFormat(date) {
     var d;
     d = new Date(date);
@@ -167,40 +168,40 @@ export class ChallengeProjectComponent implements OnInit {
     this.router.navigate(['/missions/' + this.nid]);
   }
   onSubmit() {
-    if(this.checked){
-    this.loaderService.display(true);
+    if (this.checked) {
+      this.loaderService.display(true);
 
-    let body = {
-      "type": "challenge_entry",
-      "field_entry_project": this.selectedProject,
-      "field_entry_challenge": this.nid,
-    };
-    console.log(body);
-    this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
-      this.router.navigate(['missions/', this.nid]);
-      // console.log(this.challangeData.title)
-          this.loaderService.display(false);
+      let body = {
+        "type": "challenge_entry",
+        "field_entry_project": this.selectedProject,
+        "field_entry_challenge": this.nid,
+      };
+      console.log(body);
+      this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
+        this.router.navigate(['missions/', this.nid]);
+        // console.log(this.challangeData.title)
+        this.loaderService.display(false);
 
-      this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
-      /* bookmark auto after submit project challenge */
-      if (this.nid) {
-        this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
-        }, err => {
-        });
-      }
-      /* end bookmark  */
-      /* follow auto after submit project challenge */
-      if (this.nid) {
-        this.flagService.flag(this.nid, this.userId, 'follow').subscribe(response => {
-        }, err => {
-        });
-      }
-      /* end follow  */
-    }, err => {
-      // console.log(err);
-    });
-    }else{
-      this.error='You must agree to challenge rules and eligibility requirements before entering.'
+        this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
+        /* bookmark auto after submit project challenge */
+        if (this.nid) {
+          this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
+          }, err => {
+          });
+        }
+        /* end bookmark  */
+        /* follow auto after submit project challenge */
+        if (this.nid) {
+          this.flagService.flag(this.nid, this.userId, 'follow').subscribe(response => {
+          }, err => {
+          });
+        }
+        /* end follow  */
+      }, err => {
+        // console.log(err);
+      });
+    } else {
+      this.error = 'You must agree to challenge rules and eligibility requirements before entering.'
     }
   }
 
@@ -227,19 +228,24 @@ export class ChallengeProjectComponent implements OnInit {
 
       }
     }, err => {
-    //  this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      //  this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
 
     });
   }
   /* end function cheack user allowe to enter challenge */
-  checkBoxValue(item:any){
-    this.error='';
-    this.checked=item.target.checked;
-    if(this.checked){
-      this.onSubmit();
+  checkBoxValue(item: any) {
+    this.error = '';
+    console.log(item.target);
+    this.checked = item.target.checked;
+    if (this.checked) {
+      //this.onSubmit();
+      this.button = true;
+    } else {
+      this.button = false;
+
     }
   }
-   open(content) {
+  open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
