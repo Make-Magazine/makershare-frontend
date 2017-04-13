@@ -719,6 +719,22 @@
             width: 100%;
         }
     }
+    .image-top-lg {
+        background-color: #bbb;
+        overflow: hidden;
+        background: url('../images/placeholder.png') center center;
+        background-size: cover;
+        position: relative;
+        top: -15px;
+        left: -20px;
+        .card-img-top {
+            border-radius: 0;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
     .card-block {
         padding: 0 10px;
         margin-top: -5px;
