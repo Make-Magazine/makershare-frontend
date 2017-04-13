@@ -1,24 +1,34 @@
 <div class="page-portfolio">
   <div class="top-content-wrapper">
     <div class="nav-portfolio" style="overflow: hidden;">
-      <div class="container">
-        <ul class="list-unstyled">
-          <li><a (click)="CurrentTab = 'public'"  [ngClass]="{'active': CurrentTab == 'public'}" class="btn btn-grey-inverse" id="public">Portfolio</a></li>
-          <li><a (click)="CurrentTab = 'private'"  [ngClass]="{'active': CurrentTab == 'private'}" class="btn btn-grey-inverse" id="private">Private Projects</a></li>
-          <li><a (click)="CurrentTab = 'draft'"  [ngClass]="{'active': CurrentTab == 'draft'}" class="btn btn-grey-inverse" id="drafts">Drafts</a></li>
-          <li><a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="btn btn-grey-inverse" id="photos">File manager</a></li>
-        </ul>
+      <div class="container d-flex justify-content-center">
+        <div class="nav">
+          <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white" id="public">
+            <p>Portfolio</p>
+          </a>
+          <a (click)="CurrentTab = 'private'" [ngClass]="{'active': CurrentTab == 'private'}" class="nav-item btn btn-white" id="private">
+            <p>Private Projects</p>
+          </a>
+          <a (click)="CurrentTab = 'draft'" [ngClass]="{'active': CurrentTab == 'draft'}" class="nav-item btn btn-white" id="drafts">
+            <p>Drafts</p>
+          </a>
+          <a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="nav-item btn btn-white" id="photos">
+            <p>File manager</p>
+          </a>
+        </div>
+        <div class="display-style d-flex ml-auto">
+          <p [ngClass]="{'active': DefaultView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+          <p [ngClass]="{'active': DefaultView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+        </div>
       </div>
     </div>
   </div>
   <!-- End top-content-wrapper -->
-  <div class="container">
-    <div class="region region-content col-sm-12">
-      <portfolio-tab *ngIf="CurrentTab === 'public'" [status]="370"></portfolio-tab>
-      <portfolio-tab *ngIf="CurrentTab === 'private'" [status]="371"></portfolio-tab>
-      <portfolio-tab *ngIf="CurrentTab === 'draft'" [status]="1115"></portfolio-tab>
-      <div *ngIf="CurrentTab === 'file'">file manager</div>
-    </div>
+  <div class="region region-content">
+    <portfolio-tab *ngIf="CurrentTab === 'public'" [status]="370" [DefaultView]="DefaultView"></portfolio-tab>
+    <portfolio-tab *ngIf="CurrentTab === 'private'" [status]="371" [DefaultView]="DefaultView"></portfolio-tab>
+    <portfolio-tab *ngIf="CurrentTab === 'draft'" [status]="1115" [DefaultView]="DefaultView"></portfolio-tab>
+    <div *ngIf="CurrentTab === 'file'">file manager</div>
   </div>
   <!-- End container -->
 </div>
