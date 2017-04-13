@@ -343,6 +343,21 @@ a:not([href]):not([tabindex]) {
 .dropdown-item:hover {
   cursor: pointer; }
 
+.btn-white, a:not([href]):not([tabindex]).btn-white {
+  color: #333333;
+  background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #999; }
+  .btn-white:focus, a:not([href]):not([tabindex]).btn-white:focus {
+    color: #fff;
+    background: #ff242f;
+    border-color: transparent; }
+  .btn-white:active, .btn-white:hover, .btn-white.active, a:not([href]):not([tabindex]).btn-white:active, a:not([href]):not([tabindex]).btn-white:hover, a:not([href]):not([tabindex]).btn-white.active {
+    color: #fff;
+    background: #ED1C24;
+    border-color: transparent; }
+
 .project {
   position: relative;
   margin-top: 10px;
@@ -932,7 +947,6 @@ footer {
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
 .user-card-small .icons-side-user {
-  width: 80px;
   overflow: hidden; }
   .user-card-small .icons-side-user .user-icon {
     float: left; }
@@ -1267,9 +1281,6 @@ footer {
     font-size: 25px;
     margin-bottom: 5px;
     color: #fff; }
-  .profile-name span {
-    margin-left: 20px;
-    font-size: 12px; }
   .profile-name .bookmark li {
     height: auto;
     display: block;
@@ -1332,7 +1343,8 @@ footer {
     width: 100%;
     font-size: 12px;
     margin-top: 20px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    position: relative; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -1341,36 +1353,51 @@ footer {
         color: #00AEEF; }
     .profile-sidebar .profile-container i {
       width: 25px; }
-    .profile-sidebar .profile-container .profile-group .profile-pic {
-      position: relative; }
-      .profile-sidebar .profile-container .profile-group .profile-pic img {
-        height: auto;
+    .profile-sidebar .profile-container .image-container {
+      position: relative;
+      background: url("../images/placeholder.png") center center;
+      background-size: cover;
+      width: 365px;
+      height: 280px;
+      top: -110px;
+      left: -60px;
+      margin-bottom: -100px;
+      overflow: hidden; }
+      .profile-sidebar .profile-container .image-container img {
         width: 100%;
-        position: relative;
-        top: -110px;
-        left: -40px;
-        margin-bottom: -100px; }
-      .profile-sidebar .profile-container .profile-group .profile-pic a {
-        z-index: 1;
-        top: -100px;
-        position: absolute;
-        background-color: rgba(200, 200, 200, 0.8);
-        text-align: center;
-        font-size: 15px;
-        right: 47px; }
-      .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background-color: rgba(255, 255, 255, 0.58);
-        padding: 0px 8px 0px 8px;
-        font-size: 13px;
-        font-weight: bold;
-        font-family: serif; }
-    .profile-sidebar .profile-container .profile-group .btn {
-      width: 100%;
-      max-width: 220px;
-      margin: 0; }
+        height: 100%; }
+    .profile-sidebar .profile-container .profile-group {
+      position: relative; }
+      .profile-sidebar .profile-container .profile-group .card-type {
+        font-size: 1.35em !important;
+        right: -32px;
+        top: -130px; }
+      .profile-sidebar .profile-container .profile-group .profile-pic {
+        position: relative; }
+        .profile-sidebar .profile-container .profile-group .profile-pic img {
+          height: 100%;
+          width: 100%; }
+        .profile-sidebar .profile-container .profile-group .profile-pic a {
+          z-index: 1;
+          top: -100px;
+          position: absolute;
+          background-color: rgba(200, 200, 200, 0.8);
+          text-align: center;
+          font-size: 15px;
+          right: 47px; }
+        .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background-color: rgba(255, 255, 255, 0.58);
+          padding: 0px 8px 0px 8px;
+          font-size: 13px;
+          font-weight: bold;
+          font-family: serif; }
+      .profile-sidebar .profile-container .profile-group .btn {
+        width: 100%;
+        max-width: 220px;
+        margin: 0; }
     .profile-sidebar .profile-container .profile-info {
       margin-top: 16px;
       font-size: 18px; }
@@ -1536,13 +1563,6 @@ footer {
 
 .profile-header {
   margin-top: 50px; }
-  .profile-header .display-style {
-    cursor: pointer;
-    padding-right: 10px; }
-    .profile-header .display-style .active {
-      opacity: 0.3; }
-    .profile-header .display-style img {
-      width: 30px; }
   .profile-header .bookmark li {
     padding: 0 10px;
     height: 24px; }
@@ -1828,6 +1848,19 @@ footer {
   .project .image-top img {
     height: 100%;
     width: 100%; }
+.project .image-top-lg {
+  background-color: #bbb;
+  overflow: hidden;
+  background: url("../images/placeholder.png") center center;
+  background-size: cover;
+  position: relative;
+  top: -15px;
+  left: -20px; }
+  .project .image-top-lg .card-img-top {
+    border-radius: 0; }
+  .project .image-top-lg img {
+    height: 100%;
+    width: 100%; }
 .project .card-block {
   padding: 0 10px;
   margin-top: -5px;
@@ -1878,7 +1911,8 @@ footer {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   margin: 0 5px;
-  color: #333333; }
+  color: #333333;
+  height: 50px; }
   .project .card-text.project-text-grid {
     display: none; }
 .project .categories {
@@ -1897,6 +1931,7 @@ footer {
   padding: 2px;
   color: #BDBDBD; }
   .project .card-stats ul li {
+    width: 80px;
     font-family: "Messina Sans Regular" !important;
     font-size: 0.9em !important;
     font-weight: 400 !important;
@@ -1948,6 +1983,8 @@ footer {
       width: 80%; }
     .project-home .card-block .profiel-pic-container {
       width: 60px; }
+      .project-home .card-block .profiel-pic-container .title-name {
+        width: 80%; }
       .project-home .card-block .profiel-pic-container img {
         width: 100%; }
   .project-home .icons-side-project {
@@ -2158,6 +2195,32 @@ footer {
   opacity: 0.6;
   display: none;
   z-index: 10; }
+
+.overlay-portfolio {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(200, 200, 200, 0.6);
+  display: none;
+  z-index: 10; }
+  .overlay-portfolio p {
+    display: block;
+    font-size: 12px;
+    color: #4F4F4F;
+    text-align: center; }
+    .overlay-portfolio p.btn {
+      background-color: #F2F2F2;
+      border: 1px solid #333333; }
+      .overlay-portfolio p.btn:hover, .overlay-portfolio p.btn:active, .overlay-portfolio p.btn.active {
+        background-color: #ED1C24;
+        border-color: #ED1C24;
+        color: #fff; }
+  .overlay-portfolio span {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    height: 25px;
+    line-height: 28px; }
 
 .teaser {
   display: none;
@@ -2570,7 +2633,9 @@ footer {
     overflow: hidden;
     position: relative;
     top: -15px;
-    left: -20px; }
+    left: -20px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .maker-card .image-top .card-img-top {
       border-radius: 0; }
     .maker-card .image-top img {
@@ -2851,6 +2916,18 @@ footer {
     margin-right: -15px;
     background: url("../images/placeholder.png") center center;
     background-size: cover; }
+
+.edit-buttons {
+  width: 25px !important;
+  height: 25px !important;
+  float: right; }
+  .edit-buttons path {
+    fill: red; }
+
+.empty-projects-page {
+  text-align: center; }
+  .empty-projects-page h4 {
+    color: #333333; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -3263,7 +3340,9 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: 360px; }
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -3927,8 +4006,23 @@ header.showcase-project .next {
         border: none;
         min-height: 388px; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
-        color: #00AEEF;
-        text-decoration: underline; }
+        color: #00AEEF; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .go-previous {
+          margin-right: 10px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .go-next {
+          margin-left: 10px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle i {
+          font-size: 25px; }
+        .page-project .projectsingle-card .right-side .card-container .projects-circle .showcase-nav a {
+          font-family: "Messina Sans Regular" !important;
+          font-size: 0.95em !important;
+          font-weight: 400 !important;
+          text-transform: none !important;
+          line-height: 100% !important;
+          color: #828282;
+          color: #00AEEF;
+          font-size: 15px !important;
+          text-decoration: none; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
         font-size: 3em !important;
@@ -4137,6 +4231,15 @@ header.showcase-project .next {
   cursor: pointer;
   background-color: #DCDCDC;
   margin: 10px 0; }
+  .page-learn .learn-card .learn-type-bagde {
+    position: absolute;
+    top: 38px;
+    right: -40px;
+    transform: rotate(-90deg);
+    color: #4F4F4F;
+    padding: 0px 10px 0px 0px; }
+    .page-learn .learn-card .learn-type-bagde p {
+      margin: 0px; }
   .page-learn .learn-card .learn-item {
     padding: 10px; }
     .page-learn .learn-card .learn-item img {
@@ -4153,15 +4256,6 @@ header.showcase-project .next {
   .page-learn .learn-card .card-container {
     color: #fff;
     position: relative; }
-    .page-learn .learn-card .card-container .learn-type-bagde {
-      position: absolute;
-      top: 38px;
-      right: -50px;
-      transform: rotate(-90deg);
-      color: #4F4F4F;
-      padding: 0px 10px 0px 0px; }
-      .page-learn .learn-card .card-container .learn-type-bagde p {
-        margin: 0px; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
       font-size: 3em !important;
@@ -4315,7 +4409,8 @@ header.showcase-project .next {
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
-    color: #828282; }
+    color: #828282;
+    margin-right: 15px; }
   .front .learn-card .learn-item {
     padding: 10px; }
     .front .learn-card .learn-item img {
@@ -4325,8 +4420,10 @@ header.showcase-project .next {
   .front .learn-card .image-container {
     overflow: hidden;
     position: relative;
-    padding: 0 0 0 15px;
-    height: 360px; }
+    padding: 0;
+    height: 360px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4578,7 +4675,9 @@ header.showcase-project .next {
   width: 99%;
   height: 99%;
   position: absolute;
-  z-index: 5000; }
+  z-index: 5000;
+  top: 0;
+  left: -8px; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -5060,7 +5159,7 @@ img {
   .page-create-project-why .custom-footer {
     border-top: 1px solid #333333; }
   .page-create-project-why .your-story .projectName {
-    width: 60%; }
+    width: 100%; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
@@ -5651,7 +5750,11 @@ img {
     width: 100%; }
   .page-workshop-single .page-workshop-individual .related-books {
     background-color: white;
-    padding: 0px; }
+    padding: 10px 0px; }
+    .page-workshop-single .page-workshop-individual .related-books h5 {
+      padding-top: 10px; }
+    .page-workshop-single .page-workshop-individual .related-books ul {
+      padding: 0px; }
   .page-workshop-single .page-workshop-individual .top-content-wrapper {
     border-bottom: 1px solid #333333;
     margin-bottom: 10px;
@@ -5924,17 +6027,22 @@ img {
       background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
-.page-portfolio .nav-portfolio {
-  border-bottom: 1px solid #333333;
-  padding-top: 10px; }
-  .page-portfolio .nav-portfolio ul {
-    padding-left: 15px; }
-    .page-portfolio .nav-portfolio ul li {
-      float: left; }
-      .page-portfolio .nav-portfolio ul li .btn-grey-inverse {
-        padding: 7px 55px; }
-      .page-portfolio .nav-portfolio ul li:not(:first-child) {
-        margin-left: 5px; }
+.page-portfolio .nav-portfolio .nav .btn-white {
+  padding: 10px 10px;
+  min-width: 110px;
+  font-size: 13px;
+  height: 39px;
+  line-height: 23px; }
+.page-portfolio .nav-portfolio .display-style {
+  cursor: pointer;
+  padding-right: 10px; }
+  .page-portfolio .nav-portfolio .display-style p {
+    color: #828282;
+    font-size: 12px; }
+    .page-portfolio .nav-portfolio .display-style p.active {
+      opacity: 0.3; }
+  .page-portfolio .nav-portfolio .display-style img {
+    width: 30px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
   padding: 15px 0 0;
@@ -6777,7 +6885,7 @@ img {
         height: 58px; }
 
   .front .learn-card .image-container {
-    padding: 0 30px 0 15px;
+    margin: 0 30px 0 15px;
     max-height: 160px;
     max-width: 520px; }
   .front .learn-card .card-container .card-title {
@@ -6806,7 +6914,7 @@ img {
   .front .front-challenge-card {
     height: 420px; }
     .front .front-challenge-card .image-container {
-      padding: 0 30px 0 15px;
+      margin: 0 30px 0 15px;
       max-height: 160px;
       max-width: 520px;
       background: url("../images/placeholder.png") center center;

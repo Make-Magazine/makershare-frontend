@@ -24,6 +24,7 @@ export class IndividualWorkshopComponent implements OnInit {
     title : "Questions",
      placeholder: "Ask a question",
      ifempty: "There is no questions yet ..",
+     join:"to Add Your question"
   };
   //  title="Questions";
   objects;

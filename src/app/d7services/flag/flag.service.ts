@@ -16,13 +16,17 @@ export class FlagService {
     }   
     return this.mainService.post(globals.endpoint + '/flag/is_flagged', obj).map(response => response.json()).catch(err => Observable.throw(err));
   }
-  flag(nid: number,  uid: number, flag_name: string): Observable<any>{
+  flag(nid: number,  uid: number, flag_name: string, fields?: {}): Observable<any>{
     var obj = {
       "flag_name" : flag_name,
       "entity_id" : nid,
       "action" : "flag",
       "uid" : uid,
     }
+    if(fields){
+      Object.assign(obj, fields);
+    }
+    
     return this.mainService.post(globals.endpoint + '/flag/flag', obj).map(response => response.json()).catch(err => Observable.throw(err));
   }
   unflag(nid: number,  uid: number, flag_name: string): Observable<any>{

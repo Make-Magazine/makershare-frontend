@@ -1,13 +1,15 @@
 <div class="portfolio-public">
   <div class="portfolio-header">
-    <div class=" pull-right view">
-      <p *ngIf="DefaultView == 'grid'" (click)="ChangeDefaultView('showcase')" class="grid">Default View: Grid &nbsp; <i class="fa fa-lg fa-th"></i></p>
-      <p *ngIf="DefaultView == 'showcase'" (click)="ChangeDefaultView('grid')" class="showcase">Default View: Showcase &nbsp; <i class="fa fa-lg fa-square"></i></p>
-    </div>
+    
   </div>
   <!-- End portfolio-header -->
   <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
     <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects()" [ngClass]="{'col-md-6': DefaultView == 'grid','col-md-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
+  </div>
+  <div class="empty-projects-page" *ngIf="Projects.length == 0">
+    <h4 *ngIf="status == 370">There are no Public Projects</h4>
+    <h4 *ngIf="status == 371">There are no Private Projects</h4>
+    <h4 *ngIf="status == 1115">There are no Draft Projects</h4>
   </div>
   <!-- End project-grid -->
 </div>

@@ -35,10 +35,10 @@
       <div class="card-container">
         <div class="card">
           <div class="projects-circle">
-            <div class="projects-circle d-flex justify-content-between col-md-12" *ngIf="showcaseInfo">
-              <a *ngIf="showcaseInfo.index > 0" (click)="switchProject($event,'back')" class="go-previous"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-              <h3 class="m-auto" *ngIf="showcaseInfo.name"><a href="">{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>
-              <a *ngIf="showcaseInfo.totalNumber && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="switchProject($event,'next')" class="go-next"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+            <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="showcaseInfo">
+              <a *ngIf="showcaseInfo.index > 0" (click)="SwitchProjectFunc($event,'back')" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+              <h3 class=" showcase-nav" *ngIf="showcaseInfo.name"><a href="">{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>
+              <a *ngIf="showcaseInfo.totalNumber && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="SwitchProjectFunc($event,'next')" class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
           </div>
           <h3 class="card-title" innerHTML="{{project.title.value}}"></h3>
@@ -50,6 +50,11 @@
           </div>
           <div class="card-tags" *ngIf="project.field_tags">
             <span class="project-tag pr-2" *ngFor="let tag of tags">{{tag.tag_name}},</span>
+          </div>
+          <div class="card-tags" *ngIf="project.field_categories">
+            <span class="project-tag" *ngFor="let category of project.field_categories">
+              <span *ngIf="!category.is_parent">{{category.name}},</span>
+              </span>
           </div>
           <div class="project-card-footer d-flex mt-auto">
             <ul class="list-unstyled project-aside">
@@ -67,7 +72,6 @@
 
 
 <!--
-
 
 
 <div *ngIf="project">

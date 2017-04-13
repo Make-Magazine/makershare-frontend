@@ -61,8 +61,8 @@
         color: $white;
     }
     span {
-        margin-left: 20px;
-        font-size: 12px;
+        // margin-left: 20px;
+        // font-size: 12px;
     }
     .bookmark {
         li {
@@ -145,6 +145,7 @@
         font-size: 12px;
         margin-top: 20px;
         margin-bottom: 20px;
+        position: relative;
         li,
         p {
             font-size: 13px;
@@ -155,16 +156,34 @@
         i {
             width: 25px;
         }
+        .image-container {
+            position: relative;                    
+            background: url('../images/placeholder.png') center center;
+            background-size: cover;
+            width: 365px;
+            height: 280px; 
+            top: -110px;
+            left: -60px;
+            margin-bottom: -100px;   
+            overflow: hidden;   
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
         .profile-group {
+            position: relative;
+            .card-type {
+                font-size: 1.35em !important;
+                right: -32px;
+                top: -130px;
+            }
             .profile-pic {
-                position: relative;
+                position: relative; 
+                
                 img {
-                    height: auto;
+                    height: 100%;
                     width: 100%;
-                    position: relative;
-                    top: -110px;
-                    left: -40px;
-                    margin-bottom: -100px;
                 }
                 a {
                     z-index: 1;
@@ -381,16 +400,7 @@
 
 .profile-header {
     margin-top: 50px;
-    .display-style {
-        cursor: pointer;
-        .active {
-            opacity: 0.3;
-        }
-        padding-right: 10px;
-        img {
-            width: 30px;
-        }
-    }
+    
     .bookmark {
         li {
             padding: 0 10px;
@@ -718,6 +728,22 @@
             width: 100%;
         }
     }
+    .image-top-lg {
+        background-color: #bbb;
+        overflow: hidden;
+        background: url('../images/placeholder.png') center center;
+        background-size: cover;
+        position: relative;
+        top: -15px;
+        left: -20px;
+        .card-img-top {
+            border-radius: 0;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
     .card-block {
         padding: 0 10px;
         margin-top: -5px;
@@ -774,6 +800,7 @@
         -webkit-box-orient: vertical;
         margin: 0 5px;
         color: $main-grey;
+        height: 50px;
         &.project-text-grid {
             display: none;
         }
@@ -799,6 +826,7 @@
         padding: 2px;
         color: $light-grey;
         ul li {
+            width: 80px;
             @include desc-font-2();
             img {
                 margin-right: 6px;
@@ -858,6 +886,9 @@
             width: 80%;
         }
         .profiel-pic-container {
+            .title-name {
+                width: 80%;
+            }
             width: 60px;
             img {
                 width: 100%;
@@ -1141,6 +1172,41 @@
     opacity: 0.6;
     display: none;
     z-index: 10;
+}
+.overlay-portfolio {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(200,200,200,0.6);
+    // opacity: 0.6;
+    display: none;
+    z-index: 10;
+    p {
+        display: block;
+        font-size: 12px;
+        color: $text-color-1;
+        text-align: center;
+        &.btn {
+            background-color: $site-bg;
+            border: 1px solid $main-grey;
+            &:hover, &:active, &.active {
+                background-color: $btn-primary-2;
+                border-color: $btn-primary-2;
+                color: $white;
+            }
+        }
+    }
+    span {
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        height: 25px;
+        line-height: 28px;        
+    }
+    .edit-project {
+
+    }
+
 }
 
 .teaser {
@@ -1564,6 +1630,8 @@
         position: relative;
         top: -15px;
         left: -20px;
+        background: url('../images/placeholder.png') center center;
+        background-size: cover;
         .card-img-top {
             border-radius: 0;
         }
@@ -1859,4 +1927,18 @@
         }
     }
 
+}
+.edit-buttons{
+    width: 25px !important;
+    height: 25px !important;
+    float: right;
+    path {
+        fill:red;
+    }
+}
+.empty-projects-page {
+        text-align: center;        
+    h4 {
+        color: $main-grey;
+    }
 }
