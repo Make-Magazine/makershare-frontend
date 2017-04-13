@@ -1,9 +1,6 @@
 <div class="portfolio-public">
   <div class="portfolio-header">
-    <div class=" pull-right view">
-      <p *ngIf="DefaultView == 'grid'" (click)="ChangeDefaultView('showcase')" class="grid">Default View: Grid &nbsp; <i class="fa fa-lg fa-th"></i></p>
-      <p *ngIf="DefaultView == 'showcase'" (click)="ChangeDefaultView('grid')" class="showcase">Default View: Showcase &nbsp; <i class="fa fa-lg fa-square"></i></p>
-    </div>
+    
   </div>
   <!-- End portfolio-header -->
   <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
