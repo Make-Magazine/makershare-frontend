@@ -3,13 +3,13 @@
   <div class="card spotlight-item ">
     <div class="card-block user-card-small align-content-stretch content ">
       <div class="media d-flex align-items-stretch">
-        <div class="profile-pic-container flex-column align-self-start">
+        <div class="profile-pic-container flex-column align-self-start" (click)="userProfile(card.first_name,card.last_name)">
           <img *ngIf="!card.photo_lg" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
           <img *ngIf="card.photo_lg" src="{{card.photo_lg}}" alt="" class="img-responsive maker-photo">
         </div>
         <div class="media-body d-flex align-items-start flex-column">
           <div class="card-type">Maker</div>
-          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
           <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
           <div class="icons-side-user">
