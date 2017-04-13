@@ -38,6 +38,7 @@ export class FollowComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
+        this.ButtonFollow = 'Follow';
       } else {
         this.flagService.isFlagged(this.nodeNid, this.userId, 'follow').subscribe(data => {
           this.isFollowed = data[0];
