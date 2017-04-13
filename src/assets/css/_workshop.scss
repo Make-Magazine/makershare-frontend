@@ -297,7 +297,8 @@
         .card-type {
             top: 60px;
             right: -30px;
-            color: $text-color-2;	
+            color: $text-color-2;
+            margin-right: 15px; 	
         }
         position: relative;
         padding: 16px;
@@ -318,8 +319,10 @@
         .image-container {
             overflow: hidden;
             position: relative;
-            padding: 0 0 0 15px;
+            padding: 0;
             height: 360px;
+            background: url('../images/placeholder.png') center center;
+            background-size: cover;
             img {
                 width: 100%;
                 height: 100%;
