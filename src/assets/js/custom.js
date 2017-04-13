@@ -154,6 +154,8 @@ $(document).ready(function () {
 			$(this).find('.teaser').fadeIn('400');
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeIn('400');
+			$(this).find('.overlay-portfolio').stop();
+			$(this).find('.overlay-portfolio').fadeIn('400');
 		}
 	});
 	$(document).on('mouseleave', '.project', function () {
@@ -162,6 +164,8 @@ $(document).ready(function () {
 			$(this).find('.icons').fadeIn('400');
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
+			$(this).find('.overlay-portfolio').stop();
+			$(this).find('.overlay-portfolio').fadeOut('400');
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
 		}
