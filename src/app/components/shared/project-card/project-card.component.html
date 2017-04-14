@@ -24,7 +24,7 @@
             <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
+          <div class="d-flex flex-column title-name" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)">
               <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
