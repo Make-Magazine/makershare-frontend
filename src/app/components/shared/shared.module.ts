@@ -33,7 +33,8 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
+import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+import { ReportProjectComponent } from './report-project/report-project.component'
  
  let config = {
     breakPoints: {
@@ -93,6 +94,7 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ReportUserComponent,
+    ReportProjectComponent,
   ],
   exports: [
     CommentComponent,
@@ -122,6 +124,7 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ReportUserComponent,
+    ReportProjectComponent,
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -157,3 +160,4 @@ export { ChallengeSearchCardComponent };
 export { ShowcaeSearchCardComponent };
 export { LearnSearchCardComponent };
 export { ReportUserComponent };
+export { ReportProjectComponent };
