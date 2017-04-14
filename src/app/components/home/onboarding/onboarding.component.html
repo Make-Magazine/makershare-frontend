@@ -1,116 +1,113 @@
 <section class="banner">
-      <div id="homeBanner" class="text-center mx-auto">
-        <h2>Hello Makers</h2>
-        <h1>Head here to start your <br>project portfolio, <br>Challenge yourself with a mission, <br>or learn new skills.</h1>
-        <div class="button-container-main-1" *ngIf="!auth.authenticated()">
-          <a class="btn btn-main" (click)="auth.login()">Join / Login</a>
-        </div>
+  <div id="homeBanner" class="text-center mx-auto">
+    <h2>Hello Makers</h2>
+    <h1>Head here to start your <br>project portfolio, <br>Challenge yourself with a mission, <br>or learn new skills.</h1>
+    <div class="button-container-main-1" *ngIf="!auth.authenticated()">
+      <a class="btn btn-main" (click)="auth.login()">Join / Login</a>
+    </div>
+  </div>
+</section>
+
+<section class="carousel-slider">
+  <div class="carousel-slider-slick">
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+    <div>
+      <img class="img-fluid" src="http://placekitten.com/300/250" alt="Featured maker share project" />
+    </div>
+  </div>
+</section>
+
+<section class="what-is-ms">
+  <div class="container">
+    <h2 class="text-center">What is Maker Share?</h2>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-1 col-lg-5 offset-xl-2 col-xl-4">
+        <h3>CREATIVE COLLABORATORS</h3>
+        <p>In 2005, Make: introduced to the world a simple idea: We are all Makers.</p>
+        <p>Makers integrate science and technology with art to create a world that is more productive, creative and inclusive.
+          We unite around one idea: any ordinary object can be transformed into an innovation.</p>
+        <p>Intel is a technology giant whose products empower us to change the future. Intel asks simply: What will you make?</p>
+        <p>With Maker Share, Make: and Intel come together to support collaboration between Makers around the world.</p>
       </div>
-    </section>
-
-
-    <section class="carousel-slider">
-      <div class="carousel-slider-slick">
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/3ad3f9a002021033700d9b61ab4af99c.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/3381047684_033443a44e.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/droppedImage_2.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/fa4406e3c362b7341899a51c681df81b.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/images.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/lynxmotion-al5d-4dof-robotic-arm-ssc-32u-combo-kit-no-software-1-large.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/maxresdefault.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/mobile-robotic-arm.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/ROBOTIC_ROVER_7.jpg" alt="Featured maker share project" />
-        </div>
-        <div>
-          <img class="img-fluid" src="./assets/images/slider/Robotic-termites_dezeen_sq.jpg" alt="Featured maker share project" />
-        </div>
+      <div class="col-12 col-md-6 col-lg-6">
+        <img src="./assets/images/Make-Intel.svg" alt="Maker Share logo" class="img-fluid" />
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="what-is-ms">
+<div class="parallax-scroll">
+  <div class="parallax-red-line container">
+    <div class="parallax-red-line-left"></div>
+  </div>
+
+
+  <section class="info-w-parallax parallax-bg">
+    <img src="assets/images/Home-Page-Science-Drawing.jpg" alt="Science drawing background" />
+    <div class="parallax-container">
       <div class="container">
-        <h2 class="text-center">What is Maker Share?</h2>
         <div class="row">
-          <div class="col-12 col-md-6 offset-lg-1 col-lg-5 offset-xl-2 col-xl-4">
-            <h3>Creativity Collaborators</h3>
-            <p>In 2005, Make: introduced to the world a simple idea: We are all Makers.</p>
-            <p>Makers integrate science and technology with art to create a world that is more productive, creative and inclusive. We unite around one idea: any ordinary object can be transformed into an innovation.</p>
-            <p>Intel is a technology giant whose products empower us to change the future. Intel asks simply: What will you make?</p>
-            <p>In Maker Share, Make: and Intel come together to support collaboration between Makers around the world.</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6">
-            <img src="./assets/images/Make-Intel.svg" alt="Maker Share logo" class="img-fluid" />
+          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
+            <div class="info-card">
+              <h2>Portfolios</h2>
+              <h3>Start your project portfolio.</h3>
+              <p>A Maker Share portfolio lets you tell the story behind your projects. Makers already share their work; your
+                Maker Share portfolio organizes and documents your work whether you’re a weekend Maker or a professional.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
+        <div class="parallax-red-line">
+          <div class="parallax-red-line-right"></div>
+        </div>
 
-    <div class="parallax-red-line container">
-      <div class="parallax-red-line-left"></div>
-    </div>
-
-
-    <section class="info-w-parallax parallax-bg">
-      <img src="assets/images/Home-Page-Science-Drawing.jpg" alt="Science drawing background" />
-      <div class="parallax-container">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-              <div class="info-card">
-                <h2>Portfolios</h2>
-                <h3>Passion to Profession</h3>
-                <p>A Maker Share portfolio lets you tell the story behind your projects. Makers already share their work; your Maker Share portfolio organizes and documents your work whether you’re a weekend Maker or a professional.</p>
-              </div>
+        <div class="row">
+          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
+            <div class="info-card">
+              <h2>Missions</h2>
+              <h3>Participate in a mission.</h3>
+              <p>Maker Share brings makers together to build with a purpose. Here you find Missions to motivate you and connect
+                you with opportunities that focus your skills on making for social good.</p>
             </div>
           </div>
+        </div>
 
-          <div class="parallax-red-line">
-            <div class="parallax-red-line-right"></div>
-          </div>
-
-          <div class="row">
-            <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-              <div class="info-card">
-                <h2>Missions</h2>
-                <h3>Making That Matters</h3>
-                <p>Maker Share brings makers together to build with a purpose. Here you find Missions to motivate you and connect you with opportunities that focus your skills on making for social good.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-              <div class="info-card">
-                <h2>Learning Workshops</h2>
-                <h3>Push Your Progress</h3>
-                <p>Makers never stop learning. Make: and Intel are opening their skills development libraries and providing lessons from accomplished makers and educators from basic electronics to building a business.</p>
-              </div>
+        <div class="row">
+          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
+            <div class="info-card">
+              <h2>Learning Workshops</h2>
+              <h3>Learn new skills.</h3>
+              <p>Makers never stop learning. Make: and Intel are opening their skills development libraries and providing lessons
+                from accomplished makers and educators from basic electronics to building a business.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-
-    <div class="parallax-red-line container">
-      <div class="parallax-red-line-left"></div>
     </div>
+  </section>
 
+
+  <div class="parallax-red-line container">
+    <div class="parallax-red-line-left"></div>
+  </div>
+</div>

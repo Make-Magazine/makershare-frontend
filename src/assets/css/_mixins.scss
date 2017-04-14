@@ -19,12 +19,12 @@
 	color: $c ;
 }
 @mixin header-font (){
-	@include font-setting('Messina Modern Regular', 4.3em ,400 ,capitalize , 100%, $text-color-1 );
+	@include font-setting('Messina Modern Regular', 3.4em ,400 ,capitalize , 100%, $text-color-1 );
 	// 64 pt
 }
 
 @mixin card-header-font-lg (){
-	@include font-setting('Messina Modern Regular', 3em ,400 ,capitalize , 105%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 2.3em ,400 ,capitalize , 105%, $text-color-2 );
 	// 48 pt
 }
 @mixin card-header-font-md-2 (){
