@@ -33,11 +33,19 @@ body {
     background-color: $main-bg;
     // height: 55px;
     .navbar-brand {
-        width: 50px;
+        width: 120px;
         padding: 0px;
         padding-left: 5px;
+        position: relative;
         img {
-            width: 50px;
+            max-width: 100%;
+        }
+        span {
+            color: $blue;
+            font-size: 10px;
+            position: absolute;
+            bottom: -17px;
+            right: 15px;
         }
     }
     .color-text {
@@ -55,19 +63,54 @@ body {
                 width: 30px;
                 height: 30px;
             }
+            &.search-icon {
+                width: 20px;
+                margin-left: 25px;                
+                
+            }
+            &.hamburger-menu {
+               margin-left: 25px;                
+               a img {
+                    width: 40px;                
+
+                }
+                .nav-link {
+                    padding: 0;
+                }
+                .dropdown-item {
+                    padding: 7px 2.5rem;
+                    text-align: left;
+                }
+                .close-hamburger {
+                    display: block;
+                    text-align: right;
+                    margin: 20px 30px;
+                    img {
+                        width: 30px;
+                        height: auto;
+                    }
+                }
+                hr {
+                    margin: 0 2.5rem;
+                    background-color: $light-grey;
+                }
+                .beta-feedback {
+
+                }
+            }
             a.nav-linkdropdown-toggle.navbar-left{
                 padding-left: 0;
                 padding-right: 0;
             }
         }
-        .login-div {
-            background-color: #fff;
-            display: flex;
-            font-size: 10px;
-            text-align: center;
-            padding: 10px 5px;
-            border: 1px solid #000;
-        }
+        // .login-div {
+        //     background-color: transparent;
+        //     display: flex;
+        //     font-size: 10px;
+        //     text-align: center;
+        //     padding: 10px 5px;
+        //     border: 1px solid #000;
+        // }
     }
     .logged-in {
         margin-bottom: 0;
@@ -210,4 +253,7 @@ body {
   float: left;
   width: 33.3%;
 	
+}
+.page-node {
+    margin-top: 25px;
 }

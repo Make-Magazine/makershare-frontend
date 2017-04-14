@@ -6,12 +6,11 @@ header {
             background-color: $main-bg;
             position: relative;
             z-index: 1;
+            padding: 20px 15px;
         }
         .collapse.navbar-collapse {
-            // width: 65%;
             width: auto;
             ul.navbar-nav {
-                // width: 80%;
             }
         }
         #MainNav {
@@ -41,10 +40,16 @@ header {
             border-radius: 0;
             background-color: $white;
             border: none;
-            box-shadow: 2px 6px 12px 1px #333;
+            box-shadow: 2px 6px 12px 1px #ccc;
             right: 0;
             left: auto;
             z-index: 10000;
+        }
+        .hamburger-menu {
+            .dropdown-menu {
+                top: -10px;
+                position: fixed;
+            }
         }
     }
     .main-header {
