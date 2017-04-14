@@ -12,7 +12,7 @@
         <div class="card-partership" *ngIf="challenge.sponsored_by">
           <p>Sponsored by {{challenge.sponsored_by}}</p>
         </div>
-        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
@@ -66,7 +66,7 @@
         <div class="card-partership" *ngIf="challenge.sponsored_by">
           <p>Sponsored by {{challenge.sponsored_by}}</p>
         </div>
-        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
@@ -117,7 +117,7 @@
   <div class="">
     <div class="card-container">
       <div class="card">
-        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)">{{challenge?.title}}</h3>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
       </div>
     </div>
     <!--End card-container -->

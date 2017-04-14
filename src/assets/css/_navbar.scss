@@ -16,6 +16,15 @@ header {
         #MainNav {
             .nav-item {
                 margin-left: 15px;
+                a {
+                    font-size: 15px;
+                }
+                .btn {
+                    font-size: 12px;
+                }
+                &.button-container-main-1 {
+                    height: 34px;
+                }
             }
         }
         .navbar-toggler {

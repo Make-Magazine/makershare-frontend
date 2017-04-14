@@ -32,6 +32,7 @@ export interface UserProfile {
   total_likes?: number,
   pass?:string,
   newsletter_subscription?:number,
+  birthday_date?:string,
 }
 
 export class UserProfile implements UserProfile {
