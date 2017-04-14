@@ -227,15 +227,12 @@ makerShare = {
 				var window_bottom = $(window).scrollTop();
 				var $image = $('.parallax-bg img');
         var $redLines = $('.parallax-red-line');
-
-
 				 var oVal = ((window_bottom - parent_top) / 3);
         var oVal2 = ((window_bottom - parent_top) / 7);
         $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');
         $redLines.each(function() {
           $redLines.children().css('transform','translate3d(0px, ' + oVal2 + 'px, 0px)');  
         });    
-
 			}
 		});
 	}, 6)

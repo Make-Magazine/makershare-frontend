@@ -20,7 +20,8 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    padding: 20px 15px; }
   header nav .collapse.navbar-collapse {
     width: auto; }
   header nav #MainNav .nav-item {
@@ -42,10 +43,13 @@ header nav {
     border-radius: 0;
     background-color: #fff;
     border: none;
-    box-shadow: 2px 6px 12px 1px #333;
+    box-shadow: 2px 6px 12px 1px #ccc;
     right: 0;
     left: auto;
     z-index: 10000; }
+  header nav .hamburger-menu .dropdown-menu {
+    top: -10px;
+    position: fixed; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -583,11 +587,18 @@ body {
   width: 100%;
   background-color: #F2F2F2; }
   .main-header .navbar-brand {
-    width: 50px;
+    width: 120px;
     padding: 0px;
-    padding-left: 5px; }
+    padding-left: 5px;
+    position: relative; }
     .main-header .navbar-brand img {
-      width: 50px; }
+      max-width: 100%; }
+    .main-header .navbar-brand span {
+      color: #00AEEF;
+      font-size: 10px;
+      position: absolute;
+      bottom: -17px;
+      right: 15px; }
   .main-header .color-text {
     color: #ED1C24 !important; }
   .main-header .login-block {
@@ -600,16 +611,31 @@ body {
       .main-header .login-block li img {
         width: 30px;
         height: 30px; }
+      .main-header .login-block li.search-icon {
+        width: 20px;
+        margin-left: 25px; }
+      .main-header .login-block li.hamburger-menu {
+        margin-left: 25px; }
+        .main-header .login-block li.hamburger-menu a img {
+          width: 40px; }
+        .main-header .login-block li.hamburger-menu .nav-link {
+          padding: 0; }
+        .main-header .login-block li.hamburger-menu .dropdown-item {
+          padding: 7px 2.5rem;
+          text-align: left; }
+        .main-header .login-block li.hamburger-menu .close-hamburger {
+          display: block;
+          text-align: right;
+          margin: 20px 30px; }
+          .main-header .login-block li.hamburger-menu .close-hamburger img {
+            width: 30px;
+            height: auto; }
+        .main-header .login-block li.hamburger-menu hr {
+          margin: 0 2.5rem;
+          background-color: #BDBDBD; }
       .main-header .login-block li a.nav-linkdropdown-toggle.navbar-left {
         padding-left: 0;
         padding-right: 0; }
-    .main-header .login-block .login-div {
-      background-color: #fff;
-      display: flex;
-      font-size: 10px;
-      text-align: center;
-      padding: 10px 5px;
-      border: 1px solid #000; }
   .main-header .logged-in {
     margin-bottom: 0;
     margin-top: 5px; }
@@ -711,6 +737,9 @@ body {
   display: block;
   float: left;
   width: 33.3%; }
+
+.page-node {
+  margin-top: 25px; }
 
 .front {
   background-color: #F2F2F2; }
@@ -1049,7 +1078,7 @@ footer {
   min-height: 150px;
   max-height: 170px; }
   .slick-track img {
-    height: 170px; }
+    height: 234px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -1057,19 +1086,24 @@ footer {
   padding: 40px 0; }
   .banner #homeBanner {
     padding: 0 15px;
-    max-width: 700px; }
+    max-width: 500px;
+    text-transform: uppercase; }
     .banner #homeBanner h2 {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 1.1em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
-      color: #ED1C24;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
       font-weight: 300;
+      line-height: 1.3;
       margin-bottom: 40px; }
+      .banner #homeBanner h1 a {
+        transition: color 0.3s ease; }
+        .banner #homeBanner h1 a:hover {
+          transition: color 0.3s ease;
+          text-decoration: none; }
 
 .carousel-slider .slick-prev {
   left: 0;
@@ -1091,33 +1125,17 @@ footer {
 .what-is-ms {
   padding: 40px 0; }
   .what-is-ms h2 {
-    font-family: "Messina Sans Regular" !important;
-    font-size: 1.1em !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    line-height: 115% !important;
-    color: #828282;
-    color: #ED1C24;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #EC1F30;
+    font-weight: 300;
     margin-bottom: 20px; }
   .what-is-ms h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300; }
   .what-is-ms img {
     margin-top: 30px; }
-
-.add-animation {
-  transform: translate3D(0px, 150px, 0px);
-  -webkit-transform: translate3D(0px, 150px, 0px);
-  opacity: 0;
-  -webkit-transition: all 0.3s ease-out 0.6s;
-  -moz-transition: all 0.3s ease-out 0.6s;
-  -o-transition: all 0.3s ease-out 0.6s;
-  -ms-transition: all 0.3s ease-out 0.6s;
-  transition: all 0.3s ease-out 0.6s; }
-  .add-animation.animate {
-    transform: translate3D(0px, 0px, 0px);
-    -webkit-transform: translate3D(0px, 0px, 0px);
-    opacity: 1; }
 
 .info-w-parallax {
   height: 882px;
@@ -1138,15 +1156,13 @@ footer {
       .info-w-parallax .info-card {
         padding: 15px 15px 40px; } }
     .info-w-parallax .info-card h2 {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 1.1em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
-      color: #ED1C24;
-      margin-bottom: 20px;
-      text-align: center; }
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
+      margin-bottom: 20px; }
     .info-w-parallax .info-card h3 {
       text-align: center;
       font-size: 36px;
@@ -1231,6 +1247,10 @@ footer {
     @media screen and (max-width: 575px) {
       .parallax-red-line .parallax-red-line-right {
         display: none; } }
+
+.carousel-slider .carousel-slider-slick.slick-initialized.slick-slider {
+  height: 234px;
+  overflow: hidden; }
 
 .profile-page {
   position: relative;

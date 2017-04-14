@@ -1,190 +1,201 @@
 //index page static content for onboarding
+
 .banner {
-    padding: 40px 0;
-    #homeBanner {
-        padding: 0 15px;
-        max-width: 700px;
-        h2 {
-            @include body-font-2();
-            color: $text-color-5;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-weight: 300;
-            margin-bottom: 40px;
-        }
+  padding: 40px 0;
+  #homeBanner {
+    padding: 0 15px;
+    max-width: 500px;
+    text-transform: uppercase;
+    h2 {
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
+    h1 {
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 40px;
+      //text hover effect
+      a {
+        transition: color 0.3s ease;
+        &:hover {
+          transition: color 0.3s ease;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 
 .carousel-slider {
-    .slick-prev {
-        left: 0;
-        z-index: 20;
-        width: 50px;
-        height: 50px;
-    }
-    .slick-next {
-        right: 0;
-        z-index: 20;
-        width: 50px;
-        height: 50px;
-    }
-    .slick-prev.slick-disabled:before,
-    .slick-next.slick-disabled:before,
-    .slick-prev:before,
-    .slick-next:before {
-        opacity: 0.5;
-        font-size: 40px;
-    }
+  .slick-prev {
+    left: 0;
+    z-index: 20;
+    width: 50px;
+    height: 50px;
+  }
+  .slick-next {
+    right: 0;
+    z-index: 20;
+    width: 50px;
+    height: 50px;
+  }
+  .slick-prev.slick-disabled:before,
+  .slick-next.slick-disabled:before,
+  .slick-prev:before,
+  .slick-next:before {
+    opacity: 0.5;
+    font-size: 40px;
+  }
 }
 
 .what-is-ms {
-    padding: 40px 0;
-    h2 {
-        @include body-font-2();
-        color: $text-color-5;
-        margin-bottom: 20px;
-    }
-    h3 {
-        font-size: 1.5rem;
-        font-weight: 300;
-    }
-    img {
-        margin-top: 30px;
-    }
-}
-
-.add-animation {
-    transform: translate3D(0px, 150px, 0px);
-    -webkit-transform: translate3D(0px, 150px, 0px);
-    opacity: 0;
-    -webkit-transition: all 0.3s ease-out 0.6s;
-    -moz-transition: all 0.3s ease-out 0.6s;
-    -o-transition: all 0.3s ease-out 0.6s;
-    -ms-transition: all 0.3s ease-out 0.6s;
-    transition: all 0.3s ease-out 0.6s;
-    &.animate {
-        transform: translate3D(0px, 0px, 0px);
-        -webkit-transform: translate3D(0px, 0px, 0px);
-        opacity: 1;
-    }
+  padding: 40px 0;
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #EC1F30;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  img {
+    margin-top: 30px;
+  }
 }
 
 .info-w-parallax {
-    height: 882px;
-    position: relative;
+  height: 882px;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    height: auto;
+  }
+  .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .info-card {
+    background-color: #fff;
+    box-shadow: 2px 3px 5px rgba(0,0,0,.2);
+    padding: 20px 40px 60px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     @media screen and (max-width: 767px) {
-        height: auto;
+      padding: 15px 15px 40px;
     }
-    .container {
-        padding-top: 15px;
-        padding-bottom: 15px;
+    h2 {
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
-    .info-card {
-        background-color: #fff;
-        box-shadow: 2px 3px 5px rgba(0, 0, 0, .2);
-        padding: 20px 40px 60px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        @media screen and (max-width: 767px) {
-            padding: 15px 15px 40px;
-        }
-        h2 {
-            @include body-font-2();
-            color: $text-color-5;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        h3 {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 300;
-        }
+    h3 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 300;
     }
+  }
 }
 
 .parallax-bg {
-    width: 100%;
-    overflow: hidden;
-    display: block;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  > img {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     position: relative;
-    >img {
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        position: relative;
-        z-index: 1;
-        @media screen and (max-width: 767px) {
-            position: absolute;
-        }
+    z-index: 1;
+    @media screen and (max-width: 767px) {
+      position: absolute;
     }
-    .parallax-container {
-        z-index: 3;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: block;
-        top: 0;
-        @media screen and (max-width: 767px) {
-            position: relative;
-        }
+  }
+  .parallax-container {
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    @media screen and (max-width: 767px) {
+      position: relative;
     }
+  }
 }
 
+
 .parallax-red-line {
-    position: relative;
-    .parallax-red-line-left {
-        position: absolute;
-        z-index: 3;
-        height: 360px;
-        width: 25px;
-        background-color: transparent;
-        background: transparent;
-        border-top: 3px solid #EC1F30;
-        border-bottom: 3px solid #EC1F30;
-        border-left: 3px solid #EC1F30;
-        left: 60px;
-        top: -180px;
-        @media screen and (min-width: 992px) and (max-width: 1199px) {
-            left: 40px;
-        }
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            left: -30px;
-        }
-        @media screen and (min-width: 576px) and (max-width: 767px) {
-            left: -15px;
-        }
-        @media screen and (max-width: 575px) {
-            display: none;
-        }
+  position: relative;
+  .parallax-red-line-left {
+    position: absolute;
+    z-index: 3;
+    height: 360px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-left: 3px solid #EC1F30;
+    left: 60px;
+    top: -180px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      left: 40px;
     }
-    .parallax-red-line-right {
-        position: absolute;
-        z-index: 3;
-        height: 290px;
-        width: 25px;
-        background-color: transparent;
-        background: transparent;
-        border-top: 3px solid #EC1F30;
-        border-bottom: 3px solid #EC1F30;
-        border-right: 3px solid #EC1F30;
-        top: -130px;
-        right: 60px;
-        @media screen and (min-width: 992px) and (max-width: 1199px) {
-            right: 40px;
-            left: initial;
-        }
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            right: -30px;
-            left: initial;
-        }
-        @media screen and (min-width: 576px) and (max-width: 767px) {
-            right: -30px;
-            left: initial;
-        }
-        @media screen and (max-width: 575px) {
-            display: none;
-        }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      left: -30px;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      left: -15px;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+  .parallax-red-line-right {
+    position: absolute;
+    z-index: 3;
+    height: 290px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-right: 3px solid #EC1F30;
+    top: -130px;
+    right: 60px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      right: 40px;
+      left: initial;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+}
+.carousel-slider {
+    .carousel-slider-slick.slick-initialized.slick-slider {
+         height: 234px;
+         overflow: hidden;
     }
 }
