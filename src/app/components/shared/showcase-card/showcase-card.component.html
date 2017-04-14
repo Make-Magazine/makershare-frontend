@@ -1,6 +1,7 @@
        <div class="showcase-card row d-flex align-items-stretch">
           <div class="col-md-4 col-sm-12 col-xs-12 image-container">
             <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
+            <img *ngIf="!showcase.cover_photo" src="http://placehold.it/365x290" alt="">
           </div>
           <!--End image-container -->
           <div class="col-md-8 content-container h-100">
