@@ -2,7 +2,7 @@ import { field_URL } from '../../../../models/Drupal';
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
-import { FormGroup, FormBuilder, Validators, FormControl,FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { ProfileService } from '../../../../d7services/profile/profile.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -14,6 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Intrests } from '../../../../models/profile/intrests';
+import { Auth } from '../../../../auth0/auth.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation'
 
@@ -24,24 +25,23 @@ import { CustomValidators } from 'ng2-validation'
 export class ProfileComponent implements OnInit {
 
   CountriesList = [];
-  SearchMakerspace = (text$: Observable<string>) =>{
+  SearchMakerspace = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
       .do(() => this.searchFailed = false)
-      .switchMap((term) => 
-        {
-          if(term.length > 1){
-            return this.viewService.getView('api_makerspaces',[['search', term]])
+      .switchMap((term) => {
+        if (term.length > 1) {
+          return this.viewService.getView('api_makerspaces', [['search', term]])
             .map(result => {
-              if(result.length == 0){
+              if (result.length == 0) {
                 this.searchFailed = true;
               }
               return result;
             })
-          }
-          return [];
         }
+        return [];
+      }
       )
   };
 
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
   };
 
   searchFailed: boolean = false;
-  CurrentLoggedUserId:number;
+  CurrentLoggedUserId: number;
   ckEditorConfig: {} = {
     "toolbarGroups": [
       { "name": "document", "groups": ["mode", "document", "doctools"] },
@@ -176,7 +176,7 @@ export class ProfileComponent implements OnInit {
     bio: '',
     field_social_accounts: new ProfileSocial(),
     started_making: '',
-    field_add_your_makerspace_s_:[]
+    field_add_your_makerspace_s_: []
   };
   constructor(
     private profileService: ProfileService,
@@ -187,6 +187,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
+    private auth: Auth
+
   ) {
     this.ProfilecropperSettings = new CropperSettings();
     this.ProfilecropperSettings.width = 660;
@@ -270,7 +272,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  ReSetAddressValues(){
+  ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate) {
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.profile.address[administrative_area_label]) {
@@ -308,26 +310,26 @@ export class ProfileComponent implements OnInit {
       this.CountryFieldsAndDetails = data;
     });
   }
-  AddMakerspaceRow(makerspace?){
+  AddMakerspaceRow(makerspace?) {
     const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
-    let MakerspaceGroup:FormGroup = this.fb.group({
-      field_makerspace_name:[makerspace? makerspace.field_makerspace_name:'',Validators.required],
-      field_makerspace_url:[makerspace && makerspace.field_makerspace_url? makerspace.field_makerspace_url:'', CustomValidators.url],
-      id:[makerspace? makerspace.id:'',Validators.required]
+    let MakerspaceGroup: FormGroup = this.fb.group({
+      field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
+      field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', CustomValidators.url],
+      id: [makerspace ? makerspace.id : '', Validators.required]
     });
     control.push(MakerspaceGroup);
   }
-  BuildForm(){
+  BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
       started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
-      field_add_your_makerspace_s_:this.fb.array([]),
+      field_add_your_makerspace_s_: this.fb.array([]),
     });
-    if(this.ProfileInfo.field_add_your_makerspace_s_){
-      this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace,index) => {
+    if (this.ProfileInfo.field_add_your_makerspace_s_) {
+      this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace, index) => {
         this.AddMakerspaceRow(makerspace);
       });
-    } 
+    }
   }
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(
@@ -345,7 +347,7 @@ export class ProfileComponent implements OnInit {
       }
     )
   }
-  SelectMakerspace(index:number,event){
+  SelectMakerspace(index: number, event) {
     let makerspace = event.item;
     event.preventDefault();
     const field_add_your_makerspace_s_ = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];

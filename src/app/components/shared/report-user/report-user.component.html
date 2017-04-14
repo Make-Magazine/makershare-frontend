@@ -27,7 +27,7 @@
         <div class="enter-form-buttons d-flex">
           <div class="ml-auto">
             <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-            <button *ngIf="selectedReasonName" type="button" class="btn btn-primary" (click)="onSubmit($event)">Submit</button>
+            <button *ngIf="selectedReasonName" type="button" class="btn btn-primary" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
           </div>
 
         </div>

@@ -23,7 +23,7 @@ export class ReportUserComponent implements OnInit {
   reportForm: FormGroup;
   isReported = false;
   closeResult: string;
-    reasonReport;
+  reasonReport;
 
 
   constructor(private route: ActivatedRoute,
@@ -63,34 +63,36 @@ export class ReportUserComponent implements OnInit {
   updateSelectedReason(item: any) {
     this.selectedReasonName = item.target.value;
     console.log(this.selectedReasonName);
-}
- updateWrittingReason(itemnew: any) {
-   console.log(itemnew);
+  }
+  updateWrittingReason(itemnew: any) {
+    console.log(itemnew);
     //this.selectedReasonName = item.target.selectedOptions[0].text;
     //console.log(this.selectedReasonName);
 
   }
   /* function report user */
-  onSubmit(e: Event) {
+  onSubmit(e: Event,content) {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
         this.router.navigate(['/access-denied']);
       }
       e.preventDefault();
-      this.reasonReport=this.reportForm.value.field_appropriate_response;
+      this.reasonReport = this.reportForm.value.field_appropriate_response;
       if ((this.isReported == false)) {
-        var report={
-            field_reason_for_reporting: this.selectedReasonName,
-            field_appropriate_response: this.reasonReport,
+        var report = {
+          field_reason_for_reporting: this.selectedReasonName,
+          field_appropriate_response: this.reasonReport,
         }
-        
+
         this.flagService.flag(this.userReportId, this.userId, 'report', report).subscribe(response => {
           this.isReported = true;
+      
+
           this.notificationBarService.create({ message: 'User has been reported.', type: NotificationType.Success });
         }, err => {
         });
-        
+
       }
     });//end if check user login
   }
@@ -98,6 +100,7 @@ export class ReportUserComponent implements OnInit {
   open(content) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
+      
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
