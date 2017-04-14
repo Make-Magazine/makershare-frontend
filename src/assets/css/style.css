@@ -26,6 +26,12 @@ header nav {
     width: auto; }
   header nav #MainNav .nav-item {
     margin-left: 15px; }
+    header nav #MainNav .nav-item a {
+      font-size: 15px; }
+    header nav #MainNav .nav-item .btn {
+      font-size: 12px; }
+    header nav #MainNav .nav-item.button-container-main-1 {
+      height: 34px; }
   header nav .navbar-toggler {
     border: none;
     top: 5px;
