@@ -219,16 +219,23 @@ makerShare = {
 
 	checkScrollForParallax: debounce(function () {
 		no_of_elements = 0;
-		$('.parallax-bg').each(function () {
+    $('.parallax-scroll').each(function() {
 			var $elem = $(this);
 
 			if (isElementInViewport($elem)) {
 				var parent_top = $elem.offset().top;
 				var window_bottom = $(window).scrollTop();
-				var $image = $elem.children('img');
+				var $image = $('.parallax-bg img');
+        var $redLines = $('.parallax-red-line');
 
-				oVal = ((window_bottom - parent_top) / 3);
-				$image.css('transform', 'translate3d(0px, ' + oVal + 'px, 0px)');
+
+				 var oVal = ((window_bottom - parent_top) / 3);
+        var oVal2 = ((window_bottom - parent_top) / 7);
+        $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');
+        $redLines.each(function() {
+          $redLines.children().css('transform','translate3d(0px, ' + oVal2 + 'px, 0px)');  
+        });    
+
 			}
 		});
 	}, 6)

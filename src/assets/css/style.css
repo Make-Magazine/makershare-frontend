@@ -380,7 +380,7 @@ a:not([href]):not([tabindex]) {
     padding: 10px;
     position: relative;
     font-family: "Messina Modern Regular" !important;
-    font-size: 3em !important;
+    font-size: 2.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 105% !important;
@@ -779,7 +779,7 @@ body {
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -1829,7 +1829,8 @@ footer {
   padding: 0;
   margin: 0 auto 30px;
   top: 15px;
-  border: 1px solid #00AEEF; }
+  border: 1px solid #00AEEF;
+  box-shadow: 3px 6px 9px #BDBDBD; }
 .project .maker-name {
   color: #00AEEF; }
 .project .image-top {
@@ -2938,7 +2939,7 @@ footer {
     text-align: center; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -3074,7 +3075,7 @@ footer {
   text-align: center; }
   .challenge-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -3137,7 +3138,7 @@ footer {
         margin: 0px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -3229,7 +3230,7 @@ footer {
     height: 100%; }
     .page-search-content .challenge-card .card-container .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4024,7 +4025,7 @@ header.showcase-project .next {
           text-decoration: none; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -4201,7 +4202,7 @@ header.showcase-project .next {
   text-align: center; }
   .learn-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -4257,7 +4258,7 @@ header.showcase-project .next {
     position: relative; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4342,7 +4343,7 @@ header.showcase-project .next {
     height: 100%; }
     .page-search-content .learn-card .card-container .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4439,7 +4440,7 @@ header.showcase-project .next {
         margin: 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4493,7 +4494,7 @@ header.showcase-project .next {
     .page-showcase .showcase-header h3,
     .page-single-showcase .showcase-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -4580,7 +4581,7 @@ header.showcase-project .next {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -4791,7 +4792,7 @@ img {
           color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -5006,10 +5007,8 @@ img {
     background-color: #333333;
     color: #fff;
     padding-bottom: 10px; }
-    .page-create-profile .top-content-wrapper h3 {
+    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
       color: #fff; }
-    .page-create-profile .top-content-wrapper p {
-      width: 50%; }
   .page-create-profile .create-nav {
     background-color: #F2F2F2;
     overflow: hidden;
@@ -5657,7 +5656,7 @@ img {
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -5951,7 +5950,7 @@ img {
         margin: 0px; }
     .page-workshop-individual .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -6309,7 +6308,7 @@ img {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
