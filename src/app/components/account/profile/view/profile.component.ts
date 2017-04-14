@@ -15,6 +15,7 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 import { Intrests } from '../../../../models/profile/intrests';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation'
+import { Auth } from '../../../../auth0/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -199,6 +200,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
+    private auth: Auth,
+
   ) {
     this.ProfilecropperSettings = new CropperSettings();
     this.ProfilecropperSettings.width = 660;
