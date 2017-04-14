@@ -292,7 +292,7 @@ a:not([href]):not([tabindex]) {
         cursor: pointer;
     }
 }
-.btn-white,a:not([href]):not([tabindex]).btn-white {
+.btn-white-2,a:not([href]):not([tabindex]).btn-white-2 {
     color: $main-grey;
     background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
     border-radius: 0;
