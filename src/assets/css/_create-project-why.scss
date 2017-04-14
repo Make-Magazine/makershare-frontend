@@ -1,21 +1,29 @@
 .page-create-project-why {
+	label {
+		color: #4f4f4f;
+	}
+	.words-count {
+		font-size: 12px;
+		font-weight: bold;
+		color: #bdbdbd;
+	}
 	.ng2-imgcrop{
 		display:block;
 		canvas{
 				display:block;width:100%;
 			}
 	}
-	h1,h2,h3,h4,h5,h6 {font-weight: 700;}
-	color: $main-grey;
-	.form-group > input,textarea,#cke_how-to-make {max-width: 60%;}
+	h1,h2,h3,h4,h5,h6 {font-weight: 700; color: #4f4f4f;}
+	color: $text-color-1;
+	background-color: $site-bg;
+	.form-group > input,textarea,#cke_how-to-make {max-width: 100%;}
 	.add-controls {
-		background-color: $light-grey*1.05;
-		border-bottom: 1px solid $main-grey;
 		padding: 10px 0 5px;
 		overflow: hidden;
-		h3 {
-			@include card-header-font-md();
-			color: $text-color-1;
+		.container {
+		}
+		h1 {
+			@include header-font();
 		}
 		.contorls{
 			li {
@@ -37,6 +45,9 @@
 	}
 	.form-group {
 		margin-top: 40px;
+		br {
+			display: none;
+		}
 	}
 	input {border-radius:0px;}
 	#projectCategory {
@@ -45,50 +56,53 @@
 		select {width:75%;}
 	}
 	.nav-create {
-		border-bottom: 1px solid $main-grey;
 		padding-top: 10px;
+		.container {
+		}
 		ul {
-			padding-left: 15px;
 			overflow: hidden;
 			margin-bottom: 0;
+			border-bottom: 1px solid $main-grey;
 			li {
 				float: left;
 				.btn-grey-inverse {
 					padding: 7px 55px;
 				}
 				&:not(:first-child){
-					margin-left: 5px;
 				}
 			}
 		}
 
 	}
 	.guideline {
-		background-color: $light-grey;
 		color: $main-grey;
 		overflow: hidden;
 		margin-bottom: 20px;
 		padding: 10px 10px 10px 15px;
 	    .question-mark {
-	    	width: 20%;
+	    	padding-right: 20px;
 	    	i {
-	    		font-size: 50px;
-	    		margin-top: 10px;
+	    		font-size: 22px;
+	    		font-weight: 200;
 	    	}
 	    }
 	    .content {
 	    	width: 80%;
-	    	p{font-size: 12px;}
-	    	h4{font-size: 14px;font-weight: bold;}
+	    	p{font-size: 12px; color: #4f4f4f;}
+	    	h4{font-size: 18px;font-weight: bold; color: #4f4f4f;}
 	    }
 	}
 	
 	.custom-footer {
-		border-top: 1px solid $main-grey;
 	}
 	
 	.your-story {
-		.projectName {width: 100%;}
+		.projectName {
+			width: 100%;
+			label {
+				@include card-header-font-md();
+				}
+			}
 		.projectCategory {
 				width: 100%;
 				align-items:flex-start;
@@ -99,10 +113,10 @@
 					margin-bottom: 5px;
 					margin-left:5px;
 					width: auto;
+					padding-top: 9px;
 				}
 				.categories-group {
 					width: 100%;
-					margin-left: 15px;
 					#projectCategoryParent, 
 					#projectCategoryChildren {
 						width: 100% !important;
@@ -132,11 +146,10 @@
 			.image-preview {
 				width: 50%;
 				p {
-					width: 100%;
-					background-color: $light-grey*0.9;
-					color:$main-grey;
-					text-align: center;
-					padding: 10px;
+				width: 100%;
+				color: #bdbdbd;
+				padding: 10px 0px;
+				font-size: 14px;
 				}
 				img {
 					max-width: 100%;
@@ -154,7 +167,7 @@
 				padding: 0;
 			}
 			tag-input {
-				max-width: 60%;
+				max-width: 100%;
 				height: auto;
 				padding: 5px;
 			}
@@ -389,3 +402,74 @@
 	}
 }
 .tooltip-inner {max-width:400px!important}
+
+
+
+
+
+.project-create-buttons {
+    p {
+        display: block;
+        font-size: 12px;
+        color: $text-color-1;
+        text-align: center;
+        &.btn {
+            background-color: $site-bg;
+            border: 1px solid $main-grey;
+            &:hover, &:active, &.active {
+                background-color: $btn-primary-2;
+                border-color: $btn-primary-2;
+                color: $white;
+            }
+        }
+    }
+    span {
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        line-height: 28px;        
+    }
+		.btn-shadow {
+			min-width: 110px;
+			font-size: 13px;
+		}
+		.btn-shadow,a:not([href]):not([tabindex]).btn-shadow {
+			color: $main-grey;
+			background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
+			border-radius: 0;
+			font-size: 16px;
+			border: 1px solid #999;
+			&:focus {
+					color: #fff;
+					background: $btn-primary-2*1.3;
+					border-color:transparent;        
+			}
+
+			&:active, &:hover, &.active {
+					color: #fff;
+					background: $btn-primary-2;
+					border-color:transparent;
+					cursor: pointer;
+			}
+	}
+}
+
+.btn-create-tab,a:not([href]):not([tabindex]).btn-create-tab {
+    border-radius: 0;
+    font-size: 16px;
+		border: 1px solid #BDBDBD;
+    padding: 8px 30px 8px 30px;
+		color: #BDBDBD;
+		background-color: inherit;
+    &:focus {    
+			background-color: white;
+			color: #4f4f4f;
+			border: 1px solid #4f4f4f
+    }	
+    &:active, &:hover, &.active {
+				cursor: pointer;
+				background-color: white;
+				color: #4f4f4f;
+				border: 1px solid #4f4f4f;
+    }
+}

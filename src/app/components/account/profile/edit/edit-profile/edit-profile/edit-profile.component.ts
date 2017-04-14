@@ -5,6 +5,8 @@ import { ProfileService } from '../../../../../../d7services/profile/profile.ser
 import { FileService } from '../../../../../../d7services/file/file.service';
 import { NodeHelper } from '../../../../../../models';
 import { Router } from '@angular/router';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,11 +19,13 @@ export class EditProfileComponent implements OnInit {
   BasicInfoSaved;
   CurrentTabValidation:boolean;
   CoverImage;
+  errorMsg;
 
   constructor(
     private profileService: ProfileService,
     private fileService: FileService,
     private router: Router,
+    private notificationBarService: NotificationBarService,
   ) {}
 
   ngOnInit() {
@@ -41,7 +45,10 @@ export class EditProfileComponent implements OnInit {
 
   saveNext(NewTab:string) {
     if(!this.CurrentTabValidation){
+      this.errorMsg = '*There are some required fields need to be filled';
       //show error message for validation
+      this.notificationBarService.create({ message: '*There are some required fields need to be filled', type: NotificationType.Error});
+
       return;
     }
     if(this.BasicInfoSaved){

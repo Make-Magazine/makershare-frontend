@@ -5,9 +5,9 @@
           <div class="top-content-wrapper">
             <div class="container">
               <div class="col-md-12 create-cover">
-                <h3>Welcome to the Make: Community, Margot Jacobs!</h3>
+                <h3>Welcome to the Make: Community, <span *ngIf="userProfile">{{userProfile.full_name}}!</span></h3>
                 <p>You are now part of a worldwide community of makers eager to exchange ideas and projects with you. We are all Makers. But our interests are infinite.</p>
-                <p>What kind of maker are you?</p>
+                <h5>What kind of maker are you?</h5>
               </div>
             </div><!-- End container -->
           </div><!-- End top-content-wrapper -->
@@ -21,6 +21,10 @@
               <a *ngIf="!BasicInfoSaved" (click)="saveNext('optional')" class="btn btn-blue btn-sharp save-next">Save &amp; Next</a>
               <a *ngIf="BasicInfoSaved" (click)="SaveAndExit()" class="btn btn-blue btn-sharp save-next">Save and exit</a>
             </div>
+            <!--<p class="bg-danger text-white">
+              *There are some required fields need to be filled
+            </p>-->
+            <!--<notification-bar></notification-bar>-->
           </header>
           <div class="container">
             <div *ngIf="userProfile" class="region region-content col-sm-12">

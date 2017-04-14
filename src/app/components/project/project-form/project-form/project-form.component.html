@@ -3,35 +3,49 @@
     <div class="top-content-wrapper">
       <div class="add-controls">
         <div class="container d-flex flex-row align-content-end flex-wrap">
-          <h3 class="mr-auto">Add a new project to your portfolio</h3>
-          <ul class="list-unstyled d-flex flex-row contorls">
+          <h1 class="mr-auto">Add a New Project</h1>
+        </div>
+        <div class="container project-create-buttons d-flex">
+          
+          <ul class="list-unstyled d-flex flex-row contorls ml-auto">
             <li><a class="btn btn-soft-grey" (click)="GettingFieldsReady('1115',0)">Save as draft</a></li>
             <li><a class="btn btn-soft-grey" (click)="GettingFieldsReady('371',0)"><i class="fa fa-lg fa-eye-slash"></i>Save as private</a></li>
             <li><a class="btn btn-main" (click)="GettingFieldsReady('370',1)">Publish</a></li>
             <li><a [routerLink]="['/portfolio']" class="btn btn-transparent">Cancel</a></li>
           </ul>
+          <!--<div class="ml-auto d-flex flex-row">
+              <p class="btn btn-shadow edit-project" (click)="GettingFieldsReady('1115',0)"><span>Save Draft</span></p>
+              <p class="btn btn-shadow project-private" (click)="GettingFieldsReady('371',0)"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              <p class="btn btn-shadow project-public" (click)="GettingFieldsReady('370',1)"><i class="fa fa-lg fa-eye"></i><span>Publish</span></p>
+              <p class="btn btn-shadow project-delete" [routerLink]="['/portfolio']"><i class="fa fa-lg fa-times"></i> <span>DELETE</span></p>
+          </div>-->
         </div>
       </div>
       <div class="nav-create">
         <div class="container">
           <ul class="list-unstyled">
-            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-grey-inverse" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
-            <li><a (click)="current_active_tab = 'How To'" class="btn btn-grey-inverse" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
-            <li><a (click)="current_active_tab = 'Team'" class="btn btn-grey-inverse" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
+            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-create-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
+            <li><a (click)="current_active_tab = 'How To'" class="btn btn-create-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">How-To</a></li>
+            <li><a (click)="current_active_tab = 'Team'" class="btn btn-create-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Team</a></li>
           </ul>
         </div>
       </div>
-    </div><!-- End top-content-wrapper -->
+    </div>
+    <!-- End top-content-wrapper -->
     <div class="container">
       <div>
         <h1 *ngIf="created">Project Saved</h1>
         <div *ngIf="ProjectLoaded">
-          <app-project-form-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'Your Story'" class="row"></app-project-form-your-story>
-          <app-project-form-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project" *ngIf="current_active_tab == 'How To'" class="row"></app-project-form-how-to>
-          <app-project-form-team (emitter)="UpdateFields($event,'Team')" [FormPrintableValues]="FormPrintableValues" [project]="project"  *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
+          <app-project-form-your-story (emitter)="UpdateFields($event,'Your Story')" [FormPrintableValues]="FormPrintableValues" [project]="project"
+            *ngIf="current_active_tab == 'Your Story'" class="row"></app-project-form-your-story>
+          <app-project-form-how-to (emitter)="UpdateFields($event,'How To')" [FormPrintableValues]="FormPrintableValues" [project]="project"
+            *ngIf="current_active_tab == 'How To'" class="row"></app-project-form-how-to>
+          <app-project-form-team (emitter)="UpdateFields($event,'Team')" [FormPrintableValues]="FormPrintableValues" [project]="project"
+            *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
         </div>
       </div>
-    </div><!-- End container -->
+    </div>
+    <!-- End container -->
 
     <div class="custom-footer">
       <div class="add-controls">
@@ -45,6 +59,8 @@
           </ul>
         </div>
       </div>
-    </div><!-- End custom-footer -->
+    </div>
+    <!-- End custom-footer -->
   </section>
-</div><!-- End row -->
+</div>
+<!-- End row -->

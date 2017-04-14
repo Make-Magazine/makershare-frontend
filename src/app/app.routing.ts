@@ -12,6 +12,7 @@ import { MakezineComponent } from './components/pages/makezine/makezine.componen
 import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
 import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
 import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
+import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 
 const APP_ROUTES: Routes = [
@@ -36,6 +37,7 @@ const APP_ROUTES: Routes = [
     { path: 'maker-faire', component: MakerFaireComponent},
     { path: 'makers-intel', component: MakerIntelComponent},
     { path: 'maker-camp', component: MakerCampComponent},
+    { path: 'maker-shed', component: MakerShedComponent},
     { path: 'intel-innovation-programs', component: IntelInnovationComponent},
     // not found, should be the last routing
     { path: '**', component: Four04Component },
