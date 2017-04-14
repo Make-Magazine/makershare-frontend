@@ -6,6 +6,11 @@
   <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
     <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects()" [ngClass]="{'col-md-6': DefaultView == 'grid','col-md-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
   </div>
+  <div class="empty-projects-page" *ngIf="Projects.length == 0">
+    <h4 *ngIf="status == 370">There are no Public Projects</h4>
+    <h4 *ngIf="status == 371">There are no Private Projects</h4>
+    <h4 *ngIf="status == 1115">There are no Draft Projects</h4>
+  </div>
   <!-- End project-grid -->
 </div>
 <!-- End portfolio-public -->

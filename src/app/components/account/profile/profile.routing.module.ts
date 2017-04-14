@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditProfileComponent } from './edit/edit-profile/edit-profile.component';
-import { AllProfileComponent } from './edit/all-profile/all-profile.component';
+import { EditProfileComponent } from './edit/edit-profile/edit-profile/edit-profile.component';
 import { ProfileComponent } from './view/profile.component'
 import { ProfileComponent as profilecomponent} from './view/profile.component';
 import { AuthGuardService } from '../../../auth0/auth-guard.service';
@@ -9,7 +8,6 @@ import { BaseComponent } from './base/base.component';
 
 
 const ProfileRouts: Routes = [
-
   {
     path: '',
     children: [
