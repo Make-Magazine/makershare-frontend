@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { EditProfileComponent } from './edit-profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const EditProfileRouts: Routes = [
   {

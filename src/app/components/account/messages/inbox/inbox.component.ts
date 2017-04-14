@@ -6,7 +6,6 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Message } from '../../../../d7services/pm/message';
 import { ViewService } from '../../../../d7services/view/view.service';
-import { SelectModule } from 'ng2-select';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';

@@ -11,4 +11,25 @@ export interface ProfileSocial {
   field_instructables?: string,
   field_hackday?: string,
   field_preferred?: string
-  } 
+} 
+
+export class ProfileSocial implements ProfileSocial{
+  constructor(){
+    this.field_additional_site = '';
+    this.field_website_or_blog = '';
+    this.field_facebook = '';
+    this.field_instagram = '';
+    this.field_linkedin = '';
+    this.field_twitter = '';
+    this.field_pinterest = '';
+    this.field_youtube = '';
+    this.field_hackster_io = '';
+    this.field_instructables = '';
+    this.field_hackday = '';
+    this.field_preferred = '';
+  }
+
+  public SetFieldValue(FieldName:string,Value:string){
+    this[FieldName] = Value;
+  }
+}
