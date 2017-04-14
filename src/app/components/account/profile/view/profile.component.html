@@ -44,7 +44,7 @@
 								<div class="profile-pic">
 									<div class="card-type"><span>Maker</span></div>									
 									<!-- Start Profiel Pic -->
-									<div *ngIf="CurrentLoggedUserId && uid">
+									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
 										<div *ngIf="CurrentLoggedUserId==uid "> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									</div>
 									
