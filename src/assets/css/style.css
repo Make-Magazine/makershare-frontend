@@ -20,7 +20,8 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    padding: 20px 15px; }
   header nav .collapse.navbar-collapse {
     width: auto; }
   header nav #MainNav .nav-item {
@@ -42,10 +43,13 @@ header nav {
     border-radius: 0;
     background-color: #fff;
     border: none;
-    box-shadow: 2px 6px 12px 1px #333;
+    box-shadow: 2px 6px 12px 1px #ccc;
     right: 0;
     left: auto;
     z-index: 10000; }
+  header nav .hamburger-menu .dropdown-menu {
+    top: -10px;
+    position: fixed; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -343,17 +347,17 @@ a:not([href]):not([tabindex]) {
 .dropdown-item:hover {
   cursor: pointer; }
 
-.btn-white, a:not([href]):not([tabindex]).btn-white {
+.btn-white-2, a:not([href]):not([tabindex]).btn-white-2 {
   color: #333333;
   background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
   border-radius: 0;
   font-size: 16px;
   border: 1px solid #999; }
-  .btn-white:focus, a:not([href]):not([tabindex]).btn-white:focus {
+  .btn-white-2:focus, a:not([href]):not([tabindex]).btn-white-2:focus {
     color: #fff;
     background: #ff242f;
     border-color: transparent; }
-  .btn-white:active, .btn-white:hover, .btn-white.active, a:not([href]):not([tabindex]).btn-white:active, a:not([href]):not([tabindex]).btn-white:hover, a:not([href]):not([tabindex]).btn-white.active {
+  .btn-white-2:active, .btn-white-2:hover, .btn-white-2.active, a:not([href]):not([tabindex]).btn-white-2:active, a:not([href]):not([tabindex]).btn-white-2:hover, a:not([href]):not([tabindex]).btn-white-2.active {
     color: #fff;
     background: #ED1C24;
     border-color: transparent; }
@@ -380,7 +384,7 @@ a:not([href]):not([tabindex]) {
     padding: 10px;
     position: relative;
     font-family: "Messina Modern Regular" !important;
-    font-size: 3em !important;
+    font-size: 2.3em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 105% !important;
@@ -583,11 +587,18 @@ body {
   width: 100%;
   background-color: #F2F2F2; }
   .main-header .navbar-brand {
-    width: 50px;
+    width: 120px;
     padding: 0px;
-    padding-left: 5px; }
+    padding-left: 5px;
+    position: relative; }
     .main-header .navbar-brand img {
-      width: 50px; }
+      max-width: 100%; }
+    .main-header .navbar-brand span {
+      color: #00AEEF;
+      font-size: 10px;
+      position: absolute;
+      bottom: -17px;
+      right: 15px; }
   .main-header .color-text {
     color: #ED1C24 !important; }
   .main-header .login-block {
@@ -600,16 +611,31 @@ body {
       .main-header .login-block li img {
         width: 30px;
         height: 30px; }
+      .main-header .login-block li.search-icon {
+        width: 20px;
+        margin-left: 25px; }
+      .main-header .login-block li.hamburger-menu {
+        margin-left: 25px; }
+        .main-header .login-block li.hamburger-menu a img {
+          width: 40px; }
+        .main-header .login-block li.hamburger-menu .nav-link {
+          padding: 0; }
+        .main-header .login-block li.hamburger-menu .dropdown-item {
+          padding: 7px 2.5rem;
+          text-align: left; }
+        .main-header .login-block li.hamburger-menu .close-hamburger {
+          display: block;
+          text-align: right;
+          margin: 20px 30px; }
+          .main-header .login-block li.hamburger-menu .close-hamburger img {
+            width: 30px;
+            height: auto; }
+        .main-header .login-block li.hamburger-menu hr {
+          margin: 0 2.5rem;
+          background-color: #BDBDBD; }
       .main-header .login-block li a.nav-linkdropdown-toggle.navbar-left {
         padding-left: 0;
         padding-right: 0; }
-    .main-header .login-block .login-div {
-      background-color: #fff;
-      display: flex;
-      font-size: 10px;
-      text-align: center;
-      padding: 10px 5px;
-      border: 1px solid #000; }
   .main-header .logged-in {
     margin-bottom: 0;
     margin-top: 5px; }
@@ -712,6 +738,9 @@ body {
   float: left;
   width: 33.3%; }
 
+.page-node {
+  margin-top: 25px; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -779,7 +808,7 @@ body {
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -1049,7 +1078,7 @@ footer {
   min-height: 150px;
   max-height: 170px; }
   .slick-track img {
-    height: 170px; }
+    height: 234px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -1057,19 +1086,24 @@ footer {
   padding: 40px 0; }
   .banner #homeBanner {
     padding: 0 15px;
-    max-width: 700px; }
+    max-width: 500px;
+    text-transform: uppercase; }
     .banner #homeBanner h2 {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 1.1em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
-      color: #ED1C24;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
       font-weight: 300;
+      line-height: 1.3;
       margin-bottom: 40px; }
+      .banner #homeBanner h1 a {
+        transition: color 0.3s ease; }
+        .banner #homeBanner h1 a:hover {
+          transition: color 0.3s ease;
+          text-decoration: none; }
 
 .carousel-slider .slick-prev {
   left: 0;
@@ -1091,33 +1125,17 @@ footer {
 .what-is-ms {
   padding: 40px 0; }
   .what-is-ms h2 {
-    font-family: "Messina Sans Regular" !important;
-    font-size: 1.1em !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    line-height: 115% !important;
-    color: #828282;
-    color: #ED1C24;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #EC1F30;
+    font-weight: 300;
     margin-bottom: 20px; }
   .what-is-ms h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300; }
   .what-is-ms img {
     margin-top: 30px; }
-
-.add-animation {
-  transform: translate3D(0px, 150px, 0px);
-  -webkit-transform: translate3D(0px, 150px, 0px);
-  opacity: 0;
-  -webkit-transition: all 0.3s ease-out 0.6s;
-  -moz-transition: all 0.3s ease-out 0.6s;
-  -o-transition: all 0.3s ease-out 0.6s;
-  -ms-transition: all 0.3s ease-out 0.6s;
-  transition: all 0.3s ease-out 0.6s; }
-  .add-animation.animate {
-    transform: translate3D(0px, 0px, 0px);
-    -webkit-transform: translate3D(0px, 0px, 0px);
-    opacity: 1; }
 
 .info-w-parallax {
   height: 882px;
@@ -1138,15 +1156,13 @@ footer {
       .info-w-parallax .info-card {
         padding: 15px 15px 40px; } }
     .info-w-parallax .info-card h2 {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 1.1em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
-      color: #ED1C24;
-      margin-bottom: 20px;
-      text-align: center; }
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #EC1F30;
+      font-weight: 300;
+      margin-bottom: 20px; }
     .info-w-parallax .info-card h3 {
       text-align: center;
       font-size: 36px;
@@ -1231,6 +1247,10 @@ footer {
     @media screen and (max-width: 575px) {
       .parallax-red-line .parallax-red-line-right {
         display: none; } }
+
+.carousel-slider .carousel-slider-slick.slick-initialized.slick-slider {
+  height: 234px;
+  overflow: hidden; }
 
 .profile-page {
   position: relative;
@@ -1829,7 +1849,8 @@ footer {
   padding: 0;
   margin: 0 auto 30px;
   top: 15px;
-  border: 1px solid #00AEEF; }
+  border: 1px solid #00AEEF;
+  box-shadow: 3px 6px 9px #BDBDBD; }
 .project .maker-name {
   color: #00AEEF; }
 .project .image-top {
@@ -2938,7 +2959,7 @@ footer {
     text-align: center; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -3074,7 +3095,7 @@ footer {
   text-align: center; }
   .challenge-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -3131,13 +3152,13 @@ footer {
       color: #828282;
       position: absolute;
       top: 24px;
-      right: -50px;
+      right: -44px;
       transform: rotate(-90deg); }
       .page-challenge .challenge-card .card-container .challenge-type-badge p {
         margin: 0px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -3229,7 +3250,7 @@ footer {
     height: 100%; }
     .page-search-content .challenge-card .card-container .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4024,7 +4045,7 @@ header.showcase-project .next {
           text-decoration: none; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -4051,6 +4072,10 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .card-tags {
         color: #828282;
         font-size: 14px; }
+        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag .tags-comma {
+          padding-right: 2px; }
+        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag:last-child .tags-comma {
+          display: none; }
       .page-project .projectsingle-card .right-side .card-container .project-card-footer {
         margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
@@ -4201,7 +4226,7 @@ header.showcase-project .next {
   text-align: center; }
   .learn-header h3 {
     font-family: "Messina Modern Regular" !important;
-    font-size: 4.3em !important;
+    font-size: 3.4em !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
     line-height: 100% !important;
@@ -4257,7 +4282,7 @@ header.showcase-project .next {
     position: relative; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4342,7 +4367,7 @@ header.showcase-project .next {
     height: 100%; }
     .page-search-content .learn-card .card-container .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4439,7 +4464,7 @@ header.showcase-project .next {
         margin: 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -4493,7 +4518,7 @@ header.showcase-project .next {
     .page-showcase .showcase-header h3,
     .page-single-showcase .showcase-header h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
@@ -4580,7 +4605,7 @@ header.showcase-project .next {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -4791,7 +4816,7 @@ img {
           color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2.3em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 105% !important;
@@ -5006,10 +5031,8 @@ img {
     background-color: #333333;
     color: #fff;
     padding-bottom: 10px; }
-    .page-create-profile .top-content-wrapper h3 {
+    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
       color: #fff; }
-    .page-create-profile .top-content-wrapper p {
-      width: 50%; }
   .page-create-profile .create-nav {
     background-color: #F2F2F2;
     overflow: hidden;
@@ -5083,28 +5106,33 @@ img {
     overflow: hidden; }
 
 .page-create-project-why {
-  color: #333333; }
+  color: #4F4F4F;
+  background-color: #F2F2F2; }
+  .page-create-project-why label {
+    color: #4f4f4f; }
+  .page-create-project-why .words-count {
+    font-size: 12px;
+    font-weight: bold;
+    color: #bdbdbd; }
   .page-create-project-why .ng2-imgcrop {
     display: block; }
     .page-create-project-why .ng2-imgcrop canvas {
       display: block;
       width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
-    font-weight: 700; }
+    font-weight: 700;
+    color: #4f4f4f; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
-    max-width: 60%; }
+    max-width: 100%; }
   .page-create-project-why .add-controls {
-    background-color: #c6c6c6;
-    border-bottom: 1px solid #333333;
     padding: 10px 0 5px;
     overflow: hidden; }
-    .page-create-project-why .add-controls h3 {
-      font-family: "Messina Modern Bold" !important;
-      font-size: 1.5em !important;
+    .page-create-project-why .add-controls h1 {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
       color: #4F4F4F; }
     .page-create-project-why .add-controls .contorls li .btn-soft-grey {
       background-color: #fff;
@@ -5117,6 +5145,8 @@ img {
       font-size: 13px; }
   .page-create-project-why .form-group {
     margin-top: 40px; }
+    .page-create-project-why .form-group br {
+      display: none; }
   .page-create-project-why input {
     border-radius: 0px; }
   .page-create-project-why #projectCategory {
@@ -5125,40 +5155,43 @@ img {
     .page-create-project-why #projectCategory select {
       width: 75%; }
   .page-create-project-why .nav-create {
-    border-bottom: 1px solid #333333;
     padding-top: 10px; }
     .page-create-project-why .nav-create ul {
-      padding-left: 15px;
       overflow: hidden;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      border-bottom: 1px solid #333333; }
       .page-create-project-why .nav-create ul li {
         float: left; }
         .page-create-project-why .nav-create ul li .btn-grey-inverse {
           padding: 7px 55px; }
-        .page-create-project-why .nav-create ul li:not(:first-child) {
-          margin-left: 5px; }
   .page-create-project-why .guideline {
-    background-color: #BDBDBD;
     color: #333333;
     overflow: hidden;
     margin-bottom: 20px;
     padding: 10px 10px 10px 15px; }
     .page-create-project-why .guideline .question-mark {
-      width: 20%; }
+      padding-right: 20px; }
       .page-create-project-why .guideline .question-mark i {
-        font-size: 50px;
-        margin-top: 10px; }
+        font-size: 22px;
+        font-weight: 200; }
     .page-create-project-why .guideline .content {
       width: 80%; }
       .page-create-project-why .guideline .content p {
-        font-size: 12px; }
+        font-size: 12px;
+        color: #4f4f4f; }
       .page-create-project-why .guideline .content h4 {
-        font-size: 14px;
-        font-weight: bold; }
-  .page-create-project-why .custom-footer {
-    border-top: 1px solid #333333; }
+        font-size: 18px;
+        font-weight: bold;
+        color: #4f4f4f; }
   .page-create-project-why .your-story .projectName {
     width: 100%; }
+    .page-create-project-why .your-story .projectName label {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 115% !important;
+      color: #828282; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
@@ -5167,10 +5200,10 @@ img {
     .page-create-project-why .your-story .projectCategory .add-cate {
       margin-bottom: 5px;
       margin-left: 5px;
-      width: auto; }
+      width: auto;
+      padding-top: 9px; }
     .page-create-project-why .your-story .projectCategory .categories-group {
-      width: 100%;
-      margin-left: 15px; }
+      width: 100%; }
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
         width: 100% !important;
@@ -5191,10 +5224,9 @@ img {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
       width: 100%;
-      background-color: #aaaaaa;
-      color: #333333;
-      text-align: center;
-      padding: 10px; }
+      color: #bdbdbd;
+      padding: 10px 0px;
+      font-size: 14px; }
     .page-create-project-why .your-story .cover .image-preview img {
       max-width: 100%; }
   .page-create-project-why .your-story .cover input {
@@ -5205,7 +5237,7 @@ img {
     height: auto;
     padding: 0; }
   .page-create-project-why .your-story .projectTags tag-input {
-    max-width: 60%;
+    max-width: 100%;
     height: auto;
     padding: 5px; }
   .page-create-project-why .how-to form {
@@ -5373,6 +5405,59 @@ img {
 
 .tooltip-inner {
   max-width: 400px !important; }
+
+.project-create-buttons p {
+  display: block;
+  font-size: 12px;
+  color: #4F4F4F;
+  text-align: center; }
+  .project-create-buttons p.btn {
+    background-color: #F2F2F2;
+    border: 1px solid #333333; }
+    .project-create-buttons p.btn:hover, .project-create-buttons p.btn:active, .project-create-buttons p.btn.active {
+      background-color: #ED1C24;
+      border-color: #ED1C24;
+      color: #fff; }
+.project-create-buttons span {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  line-height: 28px; }
+.project-create-buttons .btn-shadow {
+  min-width: 110px;
+  font-size: 13px; }
+.project-create-buttons .btn-shadow, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow {
+  color: #333333;
+  background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #999; }
+  .project-create-buttons .btn-shadow:focus, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:focus {
+    color: #fff;
+    background: #ff242f;
+    border-color: transparent; }
+  .project-create-buttons .btn-shadow:active, .project-create-buttons .btn-shadow:hover, .project-create-buttons .btn-shadow.active, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:active, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:hover, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow.active {
+    color: #fff;
+    background: #ED1C24;
+    border-color: transparent;
+    cursor: pointer; }
+
+.btn-create-tab, a:not([href]):not([tabindex]).btn-create-tab {
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #BDBDBD;
+  padding: 8px 30px 8px 30px;
+  color: #BDBDBD;
+  background-color: inherit; }
+  .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
+    background-color: white;
+    color: #4f4f4f;
+    border: 1px solid #4f4f4f; }
+  .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
+    cursor: pointer;
+    background-color: white;
+    color: #4f4f4f;
+    border: 1px solid #4f4f4f; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -5657,7 +5742,7 @@ img {
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -5951,7 +6036,7 @@ img {
         margin: 0px; }
     .page-workshop-individual .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 105% !important;
@@ -6026,12 +6111,14 @@ img {
       background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
-.page-portfolio .nav-portfolio .nav .btn-white {
+.page-portfolio .nav-portfolio .nav .btn-white-2 {
   padding: 10px 10px;
   min-width: 110px;
   font-size: 13px;
   height: 39px;
   line-height: 23px; }
+.page-portfolio .nav-portfolio .nav p {
+  margin: 0px; }
 .page-portfolio .nav-portfolio .display-style {
   cursor: pointer;
   padding-right: 10px; }
@@ -6309,7 +6396,7 @@ img {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
       font-family: "Messina Modern Regular" !important;
-      font-size: 4.3em !important;
+      font-size: 3.4em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
