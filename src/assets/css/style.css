@@ -343,17 +343,17 @@ a:not([href]):not([tabindex]) {
 .dropdown-item:hover {
   cursor: pointer; }
 
-.btn-white, a:not([href]):not([tabindex]).btn-white {
+.btn-white-2, a:not([href]):not([tabindex]).btn-white-2 {
   color: #333333;
   background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
   border-radius: 0;
   font-size: 16px;
   border: 1px solid #999; }
-  .btn-white:focus, a:not([href]):not([tabindex]).btn-white:focus {
+  .btn-white-2:focus, a:not([href]):not([tabindex]).btn-white-2:focus {
     color: #fff;
     background: #ff242f;
     border-color: transparent; }
-  .btn-white:active, .btn-white:hover, .btn-white.active, a:not([href]):not([tabindex]).btn-white:active, a:not([href]):not([tabindex]).btn-white:hover, a:not([href]):not([tabindex]).btn-white.active {
+  .btn-white-2:active, .btn-white-2:hover, .btn-white-2.active, a:not([href]):not([tabindex]).btn-white-2:active, a:not([href]):not([tabindex]).btn-white-2:hover, a:not([href]):not([tabindex]).btn-white-2.active {
     color: #fff;
     background: #ED1C24;
     border-color: transparent; }
@@ -3131,7 +3131,7 @@ footer {
       color: #828282;
       position: absolute;
       top: 24px;
-      right: -50px;
+      right: -44px;
       transform: rotate(-90deg); }
       .page-challenge .challenge-card .card-container .challenge-type-badge p {
         margin: 0px; }
@@ -4051,6 +4051,10 @@ header.showcase-project .next {
       .page-project .projectsingle-card .right-side .card-container .card-tags {
         color: #828282;
         font-size: 14px; }
+        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag .tags-comma {
+          padding-right: 2px; }
+        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag:last-child .tags-comma {
+          display: none; }
       .page-project .projectsingle-card .right-side .card-container .project-card-footer {
         margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
@@ -5083,28 +5087,33 @@ img {
     overflow: hidden; }
 
 .page-create-project-why {
-  color: #333333; }
+  color: #4F4F4F;
+  background-color: #F2F2F2; }
+  .page-create-project-why label {
+    color: #4f4f4f; }
+  .page-create-project-why .words-count {
+    font-size: 12px;
+    font-weight: bold;
+    color: #bdbdbd; }
   .page-create-project-why .ng2-imgcrop {
     display: block; }
     .page-create-project-why .ng2-imgcrop canvas {
       display: block;
       width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
-    font-weight: 700; }
+    font-weight: 700;
+    color: #4f4f4f; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
-    max-width: 60%; }
+    max-width: 100%; }
   .page-create-project-why .add-controls {
-    background-color: #c6c6c6;
-    border-bottom: 1px solid #333333;
     padding: 10px 0 5px;
     overflow: hidden; }
-    .page-create-project-why .add-controls h3 {
-      font-family: "Messina Modern Bold" !important;
-      font-size: 1.5em !important;
+    .page-create-project-why .add-controls h1 {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 4.3em !important;
       font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282;
+      text-transform: capitalize !important;
+      line-height: 100% !important;
       color: #4F4F4F; }
     .page-create-project-why .add-controls .contorls li .btn-soft-grey {
       background-color: #fff;
@@ -5117,6 +5126,8 @@ img {
       font-size: 13px; }
   .page-create-project-why .form-group {
     margin-top: 40px; }
+    .page-create-project-why .form-group br {
+      display: none; }
   .page-create-project-why input {
     border-radius: 0px; }
   .page-create-project-why #projectCategory {
@@ -5125,40 +5136,43 @@ img {
     .page-create-project-why #projectCategory select {
       width: 75%; }
   .page-create-project-why .nav-create {
-    border-bottom: 1px solid #333333;
     padding-top: 10px; }
     .page-create-project-why .nav-create ul {
-      padding-left: 15px;
       overflow: hidden;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      border-bottom: 1px solid #333333; }
       .page-create-project-why .nav-create ul li {
         float: left; }
         .page-create-project-why .nav-create ul li .btn-grey-inverse {
           padding: 7px 55px; }
-        .page-create-project-why .nav-create ul li:not(:first-child) {
-          margin-left: 5px; }
   .page-create-project-why .guideline {
-    background-color: #BDBDBD;
     color: #333333;
     overflow: hidden;
     margin-bottom: 20px;
     padding: 10px 10px 10px 15px; }
     .page-create-project-why .guideline .question-mark {
-      width: 20%; }
+      padding-right: 20px; }
       .page-create-project-why .guideline .question-mark i {
-        font-size: 50px;
-        margin-top: 10px; }
+        font-size: 22px;
+        font-weight: 200; }
     .page-create-project-why .guideline .content {
       width: 80%; }
       .page-create-project-why .guideline .content p {
-        font-size: 12px; }
+        font-size: 12px;
+        color: #4f4f4f; }
       .page-create-project-why .guideline .content h4 {
-        font-size: 14px;
-        font-weight: bold; }
-  .page-create-project-why .custom-footer {
-    border-top: 1px solid #333333; }
+        font-size: 18px;
+        font-weight: bold;
+        color: #4f4f4f; }
   .page-create-project-why .your-story .projectName {
     width: 100%; }
+    .page-create-project-why .your-story .projectName label {
+      font-family: "Messina Modern Bold" !important;
+      font-size: 1.5em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 115% !important;
+      color: #828282; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
@@ -5167,10 +5181,10 @@ img {
     .page-create-project-why .your-story .projectCategory .add-cate {
       margin-bottom: 5px;
       margin-left: 5px;
-      width: auto; }
+      width: auto;
+      padding-top: 9px; }
     .page-create-project-why .your-story .projectCategory .categories-group {
-      width: 100%;
-      margin-left: 15px; }
+      width: 100%; }
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
         width: 100% !important;
@@ -5191,10 +5205,9 @@ img {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
       width: 100%;
-      background-color: #aaaaaa;
-      color: #333333;
-      text-align: center;
-      padding: 10px; }
+      color: #bdbdbd;
+      padding: 10px 0px;
+      font-size: 14px; }
     .page-create-project-why .your-story .cover .image-preview img {
       max-width: 100%; }
   .page-create-project-why .your-story .cover input {
@@ -5205,7 +5218,7 @@ img {
     height: auto;
     padding: 0; }
   .page-create-project-why .your-story .projectTags tag-input {
-    max-width: 60%;
+    max-width: 100%;
     height: auto;
     padding: 5px; }
   .page-create-project-why .how-to form {
@@ -5373,6 +5386,59 @@ img {
 
 .tooltip-inner {
   max-width: 400px !important; }
+
+.project-create-buttons p {
+  display: block;
+  font-size: 12px;
+  color: #4F4F4F;
+  text-align: center; }
+  .project-create-buttons p.btn {
+    background-color: #F2F2F2;
+    border: 1px solid #333333; }
+    .project-create-buttons p.btn:hover, .project-create-buttons p.btn:active, .project-create-buttons p.btn.active {
+      background-color: #ED1C24;
+      border-color: #ED1C24;
+      color: #fff; }
+.project-create-buttons span {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  line-height: 28px; }
+.project-create-buttons .btn-shadow {
+  min-width: 110px;
+  font-size: 13px; }
+.project-create-buttons .btn-shadow, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow {
+  color: #333333;
+  background: linear-gradient(to bottom, #999 0, #ffffff 7px, #ffffff 100%);
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #999; }
+  .project-create-buttons .btn-shadow:focus, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:focus {
+    color: #fff;
+    background: #ff242f;
+    border-color: transparent; }
+  .project-create-buttons .btn-shadow:active, .project-create-buttons .btn-shadow:hover, .project-create-buttons .btn-shadow.active, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:active, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow:hover, .project-create-buttons a:not([href]):not([tabindex]).btn-shadow.active {
+    color: #fff;
+    background: #ED1C24;
+    border-color: transparent;
+    cursor: pointer; }
+
+.btn-create-tab, a:not([href]):not([tabindex]).btn-create-tab {
+  border-radius: 0;
+  font-size: 16px;
+  border: 1px solid #BDBDBD;
+  padding: 8px 30px 8px 30px;
+  color: #BDBDBD;
+  background-color: inherit; }
+  .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
+    background-color: white;
+    color: #4f4f4f;
+    border: 1px solid #4f4f4f; }
+  .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
+    cursor: pointer;
+    background-color: white;
+    color: #4f4f4f;
+    border: 1px solid #4f4f4f; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -6026,12 +6092,14 @@ img {
       background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
-.page-portfolio .nav-portfolio .nav .btn-white {
+.page-portfolio .nav-portfolio .nav .btn-white-2 {
   padding: 10px 10px;
   min-width: 110px;
   font-size: 13px;
   height: 39px;
   line-height: 23px; }
+.page-portfolio .nav-portfolio .nav p {
+  margin: 0px; }
 .page-portfolio .nav-portfolio .display-style {
   cursor: pointer;
   padding-right: 10px; }
