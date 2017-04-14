@@ -10,7 +10,7 @@ import { FileEntity } from '../../../../models';
 import { field_file_reference } from '../../../../models';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { Router,Params,ActivatedRoute } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
 import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models';
 import { NodeHelper } from '../../../../models';
@@ -56,7 +56,8 @@ export class ProjectFormComponent implements OnInit {
     private userService:UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private mainService:MainService
+    private mainService:MainService,
+  
   ) {}
 
   ngOnInit(): void {
@@ -328,21 +329,26 @@ export class ProjectFormComponent implements OnInit {
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
-        this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
-        this.router.navigate(['/portfolio']);
+        
+        this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
+        //this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
+        //this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
     }else{
       this.nodeService.createNode(this.project).subscribe((project:ProjectView) => {
-        this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
-        this.router.navigate(['/portfolio']);
+        this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
+        //this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
+        //this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
     }
+
+    // display message
   }
 
   /**
@@ -457,6 +463,57 @@ export class ProjectFormComponent implements OnInit {
     }else{
       this.SaveProject();
     }
+  }
+
+  /**
+   * form update handler from all sub components
+   * @param action : the action (save/update)
+   * @param visibility : the tid of the visibility status
+   */
+  showSuccessMessage(action: string, visibility: number){
+    // update success messages
+    var tab: string = 'public';
+    if(action == 'update'){
+      
+      if(visibility == 1115){
+        // updates as draft
+        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning});
+        tab = 'draft';
+      }else if (visibility == 371){
+        // save as private
+        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success});
+        tab = 'private';
+      }else {
+        // save is public
+        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success});        
+        tab = 'public';
+      }
+      
+    }else if(action == 'create'){
+      if(visibility == 1115){
+        // updates as draft
+        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning});
+        tab = 'draft';
+
+      }else if (visibility == 371){
+        // save as private
+        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success});
+        tab = 'private';
+      }else {
+        // save is public
+        this.notificationBarService.create({ message: 'Your project has been created.', type: NotificationType.Success});        
+        tab = 'public';
+      }
+
+    }
+    // navigate to the portfolio with required tab
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'tab': tab },
+    };    
+    let userID =+ localStorage.getItem("user_id");
+    this.userService.getUrlFromId(userID).subscribe( res => {
+      this.router.navigate(['/portfolio/' + res.url], navigationExtras);    
+    });
   }
 
 }
