@@ -1,6 +1,6 @@
-<div *ngIf="userReportId != userId">
-  <a class="report" *ngIf="!isReported" (click)="open(content)">Report this user</a>
-  <p *ngIf="isReported"> User has been reported </p>
+<div >
+  <a class="report" *ngIf="!isReported" (click)="open(content)">Report this Project</a>
+  <p *ngIf="isReported"> Project has been reported </p>
 </div>
 <template id="model" #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-header">
@@ -11,18 +11,18 @@
   </div>
   <div class="modal-body">
     <div>
-      <p>Select an reason for reported portfolio.</p>
+      <p>Select an reason for reported porject.</p>
       <form [formGroup]="reportForm">
         <div class="form-group">
-          <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_for_reporting">
+          <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
                       <option [value]="none" disabled>Select a reason</option>
-                      <option value="annoying">This person is annoying me</option>
+                      <option value="annoying">This project is annoying me</option>
                       <option value="pretending">They're pretending to be me or someone </option>
-                      <option value="safe">This profile Isn't safe for work</option>
+                      <option value="safe">This project Isn't safe for work</option>
                      </select>
         </div>
         <div class="form-group">
-          <textarea placeholder="write a reason" cols="42" rows="6" formControlName="field_appropriate_response"></textarea>
+          <textarea placeholder="write a reason" cols="42" rows="6" formControlName="field_appropriate_for_response"></textarea>
         </div>
         <div class="enter-form-buttons d-flex">
           <div class="ml-auto">

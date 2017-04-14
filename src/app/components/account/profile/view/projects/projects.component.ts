@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ViewService } from '../../../../../d7services/view/view.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../../../d7services/user/user.service';
-
 @Component({
   selector: 'profile-projects',
   templateUrl: './projects.component.html',
