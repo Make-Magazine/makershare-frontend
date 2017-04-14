@@ -63,7 +63,7 @@ export class BasicInfoComponent implements OnInit {
     let code = event.item.key;
     event.preventDefault();
     this.viewService.getView('maker_address_api/' + code).subscribe((data) => {
-      this.CountryFieldsAndDetails = data;
+      this.CountryFieldsAndDetails = 'YYYY-MM-DDdata';
     });
   }
 
@@ -113,6 +113,11 @@ export class BasicInfoComponent implements OnInit {
   }
 
   onValueChanged(form, formErrors, validationMessages) {
+    console.log(form);
+    if(form.value.birthday_date != ''){
+      form.value.birthday_date = form.value.birthday_date + ' 00:00:00';
+    }
+    console.log(form);
     if (!this.basicForm) { return; }
     for (const field in formErrors) {
       if (typeof formErrors[field] === 'string') {
