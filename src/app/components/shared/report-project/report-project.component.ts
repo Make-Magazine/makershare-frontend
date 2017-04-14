@@ -37,6 +37,7 @@ export class ReportProjectComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.userId = localStorage.getItem('user_id');
+    console.log(this.projectReportId)
     this.flagService.isFlagged(this.projectReportId, this.userId, 'report_project').subscribe(data => {
       this.isReported = data[0];
 
