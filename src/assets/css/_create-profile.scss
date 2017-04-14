@@ -4,9 +4,9 @@
 	.top-content-wrapper {
 		background-color: $main-grey;
 		color: $white;
-		h3 {color: $white;}
-		p {width: 50%;}
-		padding-bottom: 10px;
+		padding-bottom: 10px;		
+		h3,h5  {color: $white;}
+		p {}
 	}
 	.create-nav {
 		background-color: $main-bg;
