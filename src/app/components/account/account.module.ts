@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountRountingModule } from './account-rounting.module';
-import { SelectModule } from 'ng2-select';
 import { IcDatepickerModule } from 'ic-datepicker';
 import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +17,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AccountRountingModule,
     FormsModule,
     ReactiveFormsModule,
-    SelectModule,
     TagInputModule,
     SharedModule,
     NgbModule,

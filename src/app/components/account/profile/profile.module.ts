@@ -4,9 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { ProfileRoutingModule } from './profile.routing.module';
-import { SelectModule } from 'ng2-select';
 import { IcDatepickerModule } from 'ic-datepicker';
-import { AllProfileComponent } from './edit/all-profile/all-profile.component';
 import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
@@ -26,7 +24,6 @@ import { DndModule } from 'ng2-dnd';
     ProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SelectModule,
     TagInputModule,
     SharedModule,
     NgbModule,
@@ -35,7 +32,6 @@ import { DndModule } from 'ng2-dnd';
     DndModule
   ],
   declarations: [
-    AllProfileComponent,
     ProfileComponent,
     ProjectsComponent,
     BaseComponent,

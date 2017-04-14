@@ -37,16 +37,17 @@
 				<div class="left-section col-lg-4 col-md-4">
 					<div class="profile-sidebar">
 						<div class=" profile-container">
+							<div class="image-container">
+								<img src="{{profile.user_photo_with_style}}" alt="" class="">									
+							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
 									<div class="card-type"><span>Maker</span></div>									
 									<!-- Start Profiel Pic -->
-									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
+									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									</div>
-									<div class="image-container">
-										<img src="{{profile.user_photo_with_style}}" alt="" class="">									
-									</div>
+									
 								</div>
 							</div>
 							<p class="global-title">Profile Completeness</p>
@@ -55,9 +56,9 @@
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div *ngIf="CurrentLoggedUserId && uid ">
-									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
-										<div (click)="OpenModal(editinfomodal,'edit-info-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></div>
+								<div *ngIf="CurrentLoggedUserId && uid">
+									<div *ngIf="CurrentLoggedUserId==uid">
+										<a (click)="OpenModal(editinfomodal,'edit-info-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
 									<div *ngIf="profile.nickname" class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
@@ -75,7 +76,7 @@
 								<!-- describe yourself-->
 								<ul *ngIf="ProfileInfo.describe_yourself != '' " class="list-unstyled post">
 									<div *ngIf="CurrentLoggedUserId && uid">
-										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()"> <a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
+										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(describeyourselfmodal,'add-description-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									</div>
 									<li class="profile-describe-yourself">"{{ProfileInfo.describe_yourself}}"</li>
 								</ul>
@@ -102,7 +103,7 @@
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div *ngIf="profile.bio" class="bio">
-									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
+									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(biomodal,'add-bio-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									</div>
 									<div class="bio" [innerHTML]="profile.bio"></div>
@@ -117,17 +118,17 @@
 								<hr>
 
 								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_">
-									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()"> <a (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
+									<div *ngIf="CurrentLoggedUserId==uid"> <a (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 										<div *ngIf="!makerspace.field_makerspace_url">  {{makerspace.field_makerspace_name}} </div>
 									</li>
 								</ul>
 								<ul *ngIf="profile.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
-									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid  && auth.authenticated()" class="btn btn-white add" (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" class="btn btn-white add" (click)="OpenModal(makerspacemodal,'add-makerspace-modal')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 								</ul>
 								<div *ngIf="profile.field_social_accounts">
-									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<div class="social-links">
 										<span class="global-title">Social</span><br>
 										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
@@ -199,7 +200,7 @@
 
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
-									<div *ngIf="CurrentLoggedUserId && uid  && auth.authenticated()">
+									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div>
 									</div>
 								</div>
@@ -225,7 +226,7 @@
 								</ul>
 
 								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length != 0">
-									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid  && auth.authenticated()" (click)="OpenModal(interestsmodal,'add-interests-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid" (click)="OpenModal(interestsmodal,'add-interests-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 								</ul>
 
 								<p class="global-title">Interests</p>
@@ -462,7 +463,7 @@
 						<input type="text" formControlName="field_website_or_blog" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog" [checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_website_or_blog.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_website_or_blog.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -470,7 +471,7 @@
 						<input type="text" formControlName="field_additional_site" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site" [checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_additional_site.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_additional_site.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -478,7 +479,7 @@
 						<input type="text" formControlName="field_facebook" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook" [checked]="profile.field_social_accounts.field_preferred == 'field_facebook'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_facebook.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_facebook.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -486,7 +487,7 @@
 						<input type="text" formControlName="field_instagram" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram" [checked]="profile.field_social_accounts.field_preferred == 'field_instagram'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_instagram.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_instagram.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -494,7 +495,7 @@
 						<input type="text" formControlName="field_linkedin" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin" [checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_linkedin.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_linkedin.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
@@ -502,14 +503,14 @@
 						<input type="text" formControlName="field_twitter" name="web-url">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter" [checked]="profile.field_social_accounts.field_preferred == 'field_twitter'">
 					</li>
-					<div *ngIf="!FormGroupSocial.field_twitter.valid" class="alert alert-danger error-msg">
+					<div *ngIf="!FormGroupSocial.controls.field_twitter.valid" class="alert alert-danger error-msg">
 						wrong url
 					</div>
 					<li class="form-group">
 						<label for="" class="control-label"><i class="fa fa-lg fa-pinterest"></i> Pinterest</label>
 						<input type="text" name="web-url" formControlName="field_pinterest">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest" [checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'">
-						<div *ngIf="!FormGroupSocial.field_pinterest.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -517,7 +518,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-youtube"></i> YouTube</label>
 						<input type="text" name="web-url" formControlName="field_youtube">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube" [checked]="profile.field_social_accounts.field_preferred == 'field_youtube'">
-						<div *ngIf="!FormGroupSocial.field_youtube.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_youtube.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -525,7 +526,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackster"></i> Hackster.io</label>
 						<input type="text" name="web-url" formControlName="field_hackster_io">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'">
-						<div *ngIf="!FormGroupSocial.field_hackster_io.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -533,7 +534,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-instructables"></i> Instructables</label>
 						<input type="text" name="web-url" formControlName="field_instructables">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables" [checked]="profile.field_social_accounts.field_preferred == 'field_instructables'">
-						<div *ngIf="!FormGroupSocial.field_instructables.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_instructables.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>
@@ -541,7 +542,7 @@
 						<label for="" class="control-label"><i class="fa fa-lg fa-hackaday"></i> Hackaday</label>
 						<input type="text" name="web-url" formControlName="field_hackday">
 						<input type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday" [checked]="profile.field_social_accounts.field_preferred == 'field_hackday'">
-						<div *ngIf="!FormGroupSocial.field_hackday.valid" class="alert alert-danger error-msg">
+						<div *ngIf="!FormGroupSocial.controls.field_hackday.valid" class="alert alert-danger error-msg">
 							wrong url
 						</div>
 					</li>

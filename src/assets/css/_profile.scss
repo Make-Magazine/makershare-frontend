@@ -145,6 +145,7 @@
         font-size: 12px;
         margin-top: 20px;
         margin-bottom: 20px;
+        position: relative;
         li,
         p {
             font-size: 13px;
@@ -155,23 +156,31 @@
         i {
             width: 25px;
         }
+        .image-container {
+            position: relative;                    
+            background: url('../images/placeholder.png') center center;
+            background-size: cover;
+            width: 365px;
+            height: 280px; 
+            top: -110px;
+            left: -60px;
+            margin-bottom: -100px;   
+            overflow: hidden;   
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
         .profile-group {
+            position: relative;
+            .card-type {
+                font-size: 1.35em !important;
+                right: -32px;
+                top: -130px;
+            }
             .profile-pic {
-                .card-type {
-                    font-size: 1.35em !important;
-                    right: -32px;
-                }
-                position: relative;
-                .image-container {
-                    position: relative;                    
-                    background: url('../images/placeholder.png') center center;
-                    background-size: cover;
-                    width: 370px;
-                    height: 280px;
-                    top: -110px;
-                    left: -60px;
-                    margin-bottom: -100px;        
-                }
+                position: relative; 
+                
                 img {
                     height: 100%;
                     width: 100%;
@@ -285,7 +294,6 @@
                 li {
                     display: inline-block;
                     text-align: center;
-                    width: 25px;
                     vertical-align: top;
                 }
                 i.fa-star {
@@ -817,7 +825,7 @@
         padding: 2px;
         color: $light-grey;
         ul li {
-            width: 50px;
+            width: 80px;
             @include desc-font-2();
             img {
                 margin-right: 6px;
@@ -877,6 +885,9 @@
             width: 80%;
         }
         .profiel-pic-container {
+            .title-name {
+                width: 80%;
+            }
             width: 60px;
             img {
                 width: 100%;
@@ -1922,5 +1933,11 @@
     float: right;
     path {
         fill:red;
+    }
+}
+.empty-projects-page {
+        text-align: center;        
+    h4 {
+        color: $main-grey;
     }
 }
