@@ -810,6 +810,14 @@ header.showcase-project {
 				.card-tags {
 					color: $text-color-2;
 					font-size: 14px;
+					.project-tag {
+						.tags-comma {
+							padding-right: 2px;
+						}
+						&:last-child .tags-comma {
+							display: none;
+						}
+					}
 				}
 				.project-card-footer {
 						margin: 14px 0px;
