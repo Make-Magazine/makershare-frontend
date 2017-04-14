@@ -45,6 +45,7 @@ import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.com
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 // GA
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
     MakerIntelComponent,
     MakerCampComponent,
     IntelInnovationComponent,
+    MakerShedComponent,
   ],
   imports: [
     BrowserModule,
