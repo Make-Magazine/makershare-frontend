@@ -16,7 +16,7 @@ import { EditPortfolioComponent } from './view/edit-portfolio/edit-portfolio/edi
 import { PortfolioTabComponent } from './view/edit-portfolio/portfolio-tab/portfolio-tab.component';
 import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-card-portfolio/project-card-portfolio.component';
 import { DndModule } from 'ng2-dnd';
-import { PipeModule } from '../../../pipes/custom-pipes.module';
+// import { PipeModule } from '../../../pipes/custom-pipes.module';
 @NgModule({
   imports: [
     IcDatepickerModule,
@@ -30,7 +30,7 @@ import { PipeModule } from '../../../pipes/custom-pipes.module';
     ImageCropperModule,
     CKEditorModule,
     DndModule,
-    PipeModule.forRoot(),
+    // PipeModule.forRoot(),
   ],
   declarations: [
     ProfileComponent,
