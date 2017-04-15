@@ -306,7 +306,8 @@ a:not([href]):not([tabindex]).btn-soft-grey {
   .button-container-main-2 .btn,
   .button-container-sec-2 .btn,
   .button-container-sec-3 .btn {
-    padding: 8px 16px; }
+    padding: 8px 16px;
+    width: 100%; }
 
 .button-container-main-1 {
   border: 2px solid #ED1C24; }
@@ -5906,8 +5907,6 @@ img {
     margin-bottom: 40px; }
   .page-workshop-single .page-workshop-individual .workshop-content .html-block {
     width: 74%; }
-  .page-workshop-single .page-workshop-individual .workshop-content .modal-block {
-    width: 68%; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
     box-shadow: 0px 7px 12px #888888; }
   .page-workshop-single .page-workshop-individual .workshop-content .lesson, .page-workshop-single .page-workshop-individual .workshop-content .fun-fact, .page-workshop-single .page-workshop-individual .workshop-content .other-lesson {

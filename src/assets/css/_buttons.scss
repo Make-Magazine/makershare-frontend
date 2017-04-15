@@ -235,6 +235,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
     .btn {
         @extend .displace;
             padding: 8px 16px;
+            width: 100%;
 
     }
 }
