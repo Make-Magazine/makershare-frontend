@@ -26,8 +26,12 @@ export class EditPortfolioComponent implements OnInit {
     // set default tab according to url parameter "tab"
     this.defaultTabObs = this.route.queryParams.map(params => params['tab'] || 'None');
     this.defaultTabObs.subscribe(tab => {
+      console.log(tab);
       if(tab != undefined || tab != ''){
           this.CurrentTab = tab;
+      }
+      if(tab == 'None'){
+        this.CurrentTab = 'public';
       }
     })
 
