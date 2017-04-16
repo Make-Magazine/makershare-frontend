@@ -28,8 +28,8 @@
           </header>
           <div class="container">
             <div *ngIf="userProfile" class="region region-content col-sm-12">
-              <app-basic-info *ngIf="currentTab == 'basic'" (emitter)="CurrentTabValidation = $event" [userProfile]="userProfile"></app-basic-info>
-              <app-optional-info *ngIf="currentTab == 'optional'" (CoverImage)="CoverImage = $event" (emitter)="CurrentTabValidation = $event" [userProfile]="userProfile"  ></app-optional-info>
+              <app-basic-info *ngIf="currentTab == 'basic'" (emitter)="EmmitHandler($event)" [userProfile]="userProfile"></app-basic-info>
+              <app-optional-info *ngIf="currentTab == 'optional'" (CoverImage)="CoverImage = $event" (emitter)="EmmitHandler($event)" [userProfile]="userProfile"  ></app-optional-info>
             </div><!-- End region-content -->
           </div>
         </section>

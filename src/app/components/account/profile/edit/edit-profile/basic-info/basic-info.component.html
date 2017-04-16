@@ -36,14 +36,17 @@
 		<div class="" formGroupName="address">
 			<div class="col-md-12" style="padding-right:2em">
 				<input type="text"  [ngModel]="userProfile.address.country" formControlName="country" class="form-control" id="country" placeholder="Start typing a name, then select"
-			 [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="userProfile.address.country = $event.item.value;GetCountryDetails($event)">
-			 <div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
+			 	[showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="userProfile.address.country = $event.item.value;GetCountryDetails($event,true)">
+			 	<div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
 					{{ formErrors.address.country }}
 				</div>
 			 	<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
-				<select formControlName="governorate" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas">
+				<select formControlName="governorate" *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas" id="administrative_areas">
 					<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value">{{area.value}}</option>
 				</select>
+				<div *ngIf="formErrors.address.governorate" class="alert alert-danger error-msg">
+					{{ formErrors.address.governorate }}
+				</div>
 			</div>
 			<div class="col-md-12">
 				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>

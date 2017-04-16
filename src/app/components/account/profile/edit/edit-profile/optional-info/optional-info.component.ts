@@ -86,16 +86,14 @@ export class OptionalInfoComponent implements OnInit {
       });
     }
     this.optionalForm.valueChanges.subscribe(values=>{
-      
-      if(!this.optionalForm.valid){
-        this.emitter.emit(false);
-      }else{
+      if(this.optionalForm.valid && this.optionalForm.dirty){
         this.userProfile.uid = +localStorage.getItem("user_id");
         this.userProfile = values;
-        this.emitter.emit(true);
+        this.emitter.emit(this.userProfile);
+      }else{
+        this.emitter.emit(false);
       }
     });
-    this.emitter.emit(true);
   }
 
   SelectMakerspace(index:number,event){
