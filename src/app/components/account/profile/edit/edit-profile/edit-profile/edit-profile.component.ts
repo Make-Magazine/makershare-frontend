@@ -39,23 +39,28 @@ export class EditProfileComponent implements OnInit {
 
   UpdateProfile(){
     this.profileService.getUser(this.uid).subscribe((profile: UserProfile) => {
+      profile.birthday_date = profile.birthday_date? profile.birthday_date.split(" ")[0]:'';
       this.userProfile = profile;
     });
   }
-
+  EmmitHandler(event){
+    if(event){
+      this.CurrentTabValidation = true;
+      this.userProfile = event;
+    }
+  }
   saveNext(NewTab:string) {
     if(!this.CurrentTabValidation){
       this.errorMsg = '*There are some required fields need to be filled';
       //show error message for validation
       this.notificationBarService.create({ message: '*There are some required fields need to be filled', type: NotificationType.Error});
-
       return;
     }
     if(this.BasicInfoSaved){
       this.SaveAndExit();
     }else{
       this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
-        this.userProfile = user;
+        this.UpdateProfile();
         this.currentTab = NewTab;
         this.BasicInfoSaved = true;
         this.CurrentTabValidation = false;
