@@ -326,5 +326,7 @@ a:not([href]):not([tabindex]).btn-vote {
         color: #FFF;
         background-color: $btn-primary-2;
         box-shadow: none;
+            border: 1px solid;
+
     }
 }
