@@ -153,9 +153,9 @@ export class ProjectFormComponent implements OnInit {
         }
       }
     }
-    if(this.project.GetField("field_visibility2") == 370){
+    if(this.project.GetField("field_visibility2").und[0] == 370){
       this.CurrentActiveVisibility = 'public';
-    }else if(this.project.GetField("field_visibility2") == 371){
+    }else if(this.project.GetField("field_visibility2").und[0] == 371){
       this.CurrentActiveVisibility = 'private';
     }else{
       this.CurrentActiveVisibility = 'draft';
@@ -374,7 +374,12 @@ export class ProjectFormComponent implements OnInit {
   }
   PublicPrivateSave(){
     let visibility = this.project.GetField("field_visibility2");
-    visibility == 370? this.GettingFieldsReady(1):this.GettingFieldsReady(0);
+    if(visibility.und[0] == 1115){
+      // display error message
+      
+      return;
+    }
+    visibility.und[0] == 370? this.GettingFieldsReady(1):this.GettingFieldsReady(0);
   }
 
   /**
