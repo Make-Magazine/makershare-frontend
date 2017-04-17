@@ -386,7 +386,8 @@ a:not([href]):not([tabindex]).btn-vote {
   a:not([href]):not([tabindex]).btn-vote.active {
     color: #FFF;
     background-color: #ED1C24;
-    box-shadow: none; }
+    box-shadow: none;
+    border: 1px solid; }
 
 .project {
   position: relative;
