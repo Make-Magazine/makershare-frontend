@@ -743,7 +743,7 @@
         position: relative;
         .content-side {
             padding-left: 5px;
-            width: 80%;
+            width: 90%;
         }
         .profiel-pic-container {
             width: 80px;
@@ -763,6 +763,7 @@
         position: relative;
         top: -18px;
         height: 40px;
+        z-index: 105;
         .project-icon {
             img {
                 width: auto;
@@ -1614,14 +1615,14 @@
 }
 
 .maker-card {
-    height: 375px;
+    height: 460px;
     &.card {
-        width: 95%;
         border-radius: 0;
         padding: 0;
         margin: 0 auto 30px;
-        top: 15px;
-        border: none
+        border: none;
+        box-shadow: 3px 6px 9px $light-grey;
+
     }
     .card-type {
         right: -22px;
@@ -1630,59 +1631,67 @@
         width: 100%;
         height: 275px;
         overflow: hidden;
-        // position: relative;
-        // top: -15px;
-        // left: -20px;
+        position: relative;
         background: url('../images/placeholder.png') center center;
         background-size: cover;
         .card-img-top {
             border-radius: 0;
         }
         img {
-            height: auto;
+            height: 100%;
             width: 100%;
         }
     }
     .card-block {
-        padding: 0 10px;
+        padding: 0 15px;
         height: 175px;
         position: relative;
         .content-side {
             padding-left: 5px;
-            width: 80%;
+            width: 90%;
         }
         p {
             margin-bottom: 0;
         }
         .maker-name {
-            @include card-header-font-md ()
+            @include card-header-font-sm ();
+            //  18 pt
+            color: $text-color-6;
         }
         .maker-nickname {
-            @include desc-font-1 ();
+            @include desc-font-5 ();
+            // 14 pt
             margin-bottom: 2px;
         }
         .maker-city {
             @include desc-font-3 ();
+            // 12 pt
             margin-bottom: 5px;
-            color: $city-color
+            margin-top: 5px;
+            font-size: 0.8em !important;
+            // color: $city-color
         }
         .maker-descripe {
             @include desc-font-5();
+            // 14 pt
             margin-top: 5px;
             font-weight: bold;
         }
         .card-stats {
             ul {
-                margin-bottom: 0;
             }
         }
     }
     .icons-side-project {
+        position: relative;
+        top: -18px;
+        height: 40px;
+        margin-bottom: -10px;
         .project-icon {
-            height: 45px;
             img {
                 width: auto;
                 height: 40px;
+                margin-right: 5px;
             }
         }
     }
