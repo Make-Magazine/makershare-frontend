@@ -55,7 +55,6 @@ export class LearnComponent implements OnInit {
   }
   loadMoreWorkshop() {
     this.pages++;
-    // console.log(this.pages);
     this.getWorkshop();
 
   }

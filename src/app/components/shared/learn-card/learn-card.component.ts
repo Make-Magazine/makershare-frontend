@@ -21,7 +21,6 @@ learn=[];
    getWorkshop(){
         this.viewService.getView('shared-learn-card',[['nid',this.workshopNid]]).subscribe(data => {
      this.learn = data[0];
-     console.log(this.learn);
   });
 }
   WorkshopDetails(nid) {
