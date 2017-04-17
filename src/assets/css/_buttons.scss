@@ -311,3 +311,19 @@ a:not([href]):not([tabindex]) {
         border-color:transparent;
     }
 }
+.btn-vote,
+a:not([href]):not([tabindex]).btn-vote {
+    color: $main-grey*0.8;
+    background: transparent;
+    border: 1px solid;
+        margin-left: 32px;
+        width: 75%;
+   // margin-left: 0px;
+    /* margin: 0 auto; */
+    text-align: center;
+    &:focus, &:active, &:hover {
+        color: #FFF;
+        background-color: $btn-primary-2;
+        box-shadow: none;
+    }
+}
