@@ -351,7 +351,6 @@
 }
 .front {
     .front-challenge-card {
-        margin-bottom: 10px;
         position: relative;
         padding: 0px;
         overflow: hidden;
@@ -486,7 +485,7 @@
     }
     .challenge-card-full.front-challenge-card {
         padding: 0 ;
-        margin-top: 20px ;
+        margin: 30px 0px 30px 0px;
         -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
         -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
