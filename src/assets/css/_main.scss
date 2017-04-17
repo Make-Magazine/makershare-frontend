@@ -353,7 +353,8 @@ body {
     z-index: 10000;
     top: 14px;
     left: -2px;
-    box-shadow: 3px 6px 9px $light-grey;
+    box-shadow: 0px 2px 6px $main-grey;
+    @include boxShadow(0px, 2px ,6px, $main-grey);
 
     p {
         margin: 0px;

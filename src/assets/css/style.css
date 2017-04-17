@@ -869,7 +869,10 @@ body {
   z-index: 10000;
   top: 14px;
   left: -2px;
-  box-shadow: 3px 6px 9px #BDBDBD; }
+  box-shadow: 0px 2px 6px #333333;
+  -moz-box-shadow: 0px 2px 6px #333333;
+  -webkit-box-shadow: 0px 2px 6px #333333;
+  box-shadow: 0px 2px 6px #333333; }
   .card-type-blue p,
   .card-type-grey p {
     margin: 0px; }
@@ -2017,7 +2020,9 @@ footer {
     padding: 0;
     margin: 0 auto 30px;
     border: 1px solid #00AEEF;
-    box-shadow: 3px 6px 9px #BDBDBD; }
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .project .maker-name {
     color: #00AEEF; }
   .project .image-top {
@@ -2686,7 +2691,9 @@ footer {
     padding: 0;
     margin: 0 auto 30px;
     border: none;
-    box-shadow: 3px 6px 9px #BDBDBD; }
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .maker-card .card-type {
     right: -22px; }
   .maker-card .image-top {
@@ -4762,9 +4769,9 @@ header.showcase-project .next {
   padding-right: 23px;
   padding-bottom: 9px;
   margin-bottom: 10px;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-single-showcase .showcase-card-backlayer:hover {
     background-color: #D4EFFC;
     transition: inherit; }
@@ -4820,9 +4827,9 @@ img {
 .showcase-card-backlayer-home {
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  -moz-box-shadow: 3px 6px 9px #BDBDBD;
-  -webkit-box-shadow: 3px 6px 9px #BDBDBD;
-  box-shadow: 3px 6px 9px #BDBDBD;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   height: 460px;
   margin-bottom: 20px; }
   .showcase-card-backlayer-home:hover {
@@ -4831,9 +4838,9 @@ img {
   .showcase-card-backlayer-home:hover .showcase-card-backlayer-home-2 {
     transition: background-color 0.8s ease;
     background-color: #D4EFFC;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .showcase-card-backlayer-home .showcase-card-backlayer-home-2 {
     background-color: #D4EFFC;
     transition: background-color 0.8s ease;
@@ -4850,9 +4857,9 @@ img {
     margin-right: 10px;
     cursor: pointer;
     background-color: white;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     height: 440px; }
     .showcase-card-backlayer-home .showcase-card .card {
       background-color: transparent;
