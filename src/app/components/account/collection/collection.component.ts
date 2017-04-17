@@ -49,6 +49,9 @@ export class CollectionComponent implements OnInit {
           break;
 
         }
+        if(this.checkTab !=true){
+          this.activeTab='bookmarked_projects';
+        }
       }
     }
      });
