@@ -153,9 +153,9 @@ export class ProjectFormComponent implements OnInit {
         }
       }
     }
-    if(this.project.GetField("field_visibility2").und[0] == 370){
+    if(data.field_visibility2.und[0].tid == 370){
       this.CurrentActiveVisibility = 'public';
-    }else if(this.project.GetField("field_visibility2").und[0] == 371){
+    }else if(data.field_visibility2.und[0].tid == 371){
       this.CurrentActiveVisibility = 'private';
     }else{
       this.CurrentActiveVisibility = 'draft';
@@ -376,7 +376,7 @@ export class ProjectFormComponent implements OnInit {
     let visibility = this.project.GetField("field_visibility2");
     if(visibility.und[0] == 1115){
       // display error message
-      
+      this.notificationBarService.create({ message: 'You must select private or public before publishing the project', type: NotificationType.Warning});
       return;
     }
     visibility.und[0] == 370? this.GettingFieldsReady(1):this.GettingFieldsReady(0);
