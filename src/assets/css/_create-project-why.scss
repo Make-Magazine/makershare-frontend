@@ -33,9 +33,14 @@
 						cursor: pointer;
 					}
 				}
+				button {
+					&:hover {
+						cursor: pointer;
+					}
+				}
 				.project-draft {
 					.btn {
-						padding: 12px 40px 12px 40px;
+						padding: 10px 40px 10px 40px;
 						font-size: 16px;
 					}
 				}
@@ -74,7 +79,7 @@
 				}
 				.project-publish {
 					.btn {
-						padding: 12px 40px 12px 40px;
+						padding: 10px 40px 10px 40px;
 						font-size: 16px;
 					}
 				}
@@ -152,6 +157,9 @@
 					margin-left:5px;
 					width: auto;
 					padding-top: 9px;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 				.categories-group {
 					width: 100%;
