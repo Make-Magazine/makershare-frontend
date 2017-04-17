@@ -2,7 +2,7 @@ export class NodeHelper{
   constructor(){}
 
   public static RemoveFileTypeFromBase64(filecontent:string):string{
-    let re = /^data:image\/[^;]+;base64,/g;
+    let re = /^data:[^]*;base64,/g;
     let newcontent = re[Symbol.replace](filecontent, '');  
     return newcontent;
   }
