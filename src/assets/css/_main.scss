@@ -316,3 +316,48 @@ body {
         padding: 7px 11px 7px 11px;
     }
 }
+
+.card-type-blue,
+.card-type-grey {
+    @include desc-font-1();
+    position: absolute;
+    z-index: 10000;
+    top: 14px;
+    left: -2px;
+    box-shadow: 3px 6px 9px $light-grey;
+
+    p {
+        margin: 0px;
+    }
+    &::after {
+        content: ' ';
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 14px solid transparent;
+        left: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    .type-layer-2 {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 7px 11px 7px 11px;
+        color: #fff;
+    }
+}
+
+.card-type-grey {
+    background-color: $main-grey;
+    &::after {
+        border-left: 10px solid $main-grey;
+    }
+}
+
+.card-type-blue {
+    background-color: $blue;
+    &::after {
+        border-left: 10px solid $blue;
+    }
+}
