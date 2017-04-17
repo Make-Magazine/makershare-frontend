@@ -34,7 +34,8 @@ import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
-import { ReportProjectComponent } from './report-project/report-project.component'
+import { ReportProjectComponent } from './report-project/report-project.component';
+import { ProjectVoteComponent } from './project-vote/project-vote.component'
  
  let config = {
     breakPoints: {
@@ -95,6 +96,7 @@ import { ReportProjectComponent } from './report-project/report-project.componen
     LearnSearchCardComponent,
     ReportUserComponent,
     ReportProjectComponent,
+    ProjectVoteComponent,
   ],
   exports: [
     CommentComponent,
@@ -125,6 +127,7 @@ import { ReportProjectComponent } from './report-project/report-project.componen
     LearnSearchCardComponent,
     ReportUserComponent,
     ReportProjectComponent,
+    ProjectVoteComponent,
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -161,3 +164,4 @@ export { ShowcaeSearchCardComponent };
 export { LearnSearchCardComponent };
 export { ReportUserComponent };
 export { ReportProjectComponent };
+export { ProjectVoteComponent };

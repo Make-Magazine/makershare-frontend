@@ -1,0 +1,6 @@
+  <div *ngIf="ButtonVoted == 'Vote'"><a><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
+  <span>{{ButtonVoted}}</span>
+  </div></a></div>
+    <div *ngIf="ButtonVoted == 'Voted'"><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
+  <i class="fa fa-check" aria-hidden="true"><span>{{ButtonVoted}}</span></i>
+  </div></div>

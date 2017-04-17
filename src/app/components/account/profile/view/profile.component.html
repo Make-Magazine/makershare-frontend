@@ -45,7 +45,7 @@
 									<div class="card-type"><span>Maker</span></div>									
 									<!-- Start Profiel Pic -->
 									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
-										<div *ngIf="CurrentLoggedUserId==uid "> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
+										<div *ngIf="CurrentLoggedUserId==uid "> <a (click)="OpenModal(profilpicmodal,'edit-cover-modal',true)"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a></div>
 									</div>
 									
 								</div>
@@ -288,8 +288,8 @@
 	</div>
 	<div class="modal-body">
 		<div ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-			<img *ngIf="!ProfilePicData.original" src="./assets/images/Drag_Drop.png" alt="">
-			<img-cropper [hidden]="!ProfilePicData.original" #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
+			<!--<img *ngIf="!ProfilePicData.original" src="./assets/images/Drag_Drop.png" alt="">-->
+			<img-cropper #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
 
 			<div *ngIf="!ProfilePicData.original">
 				<p>Drag a photo here</p>
