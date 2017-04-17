@@ -1,7 +1,11 @@
 <!--<div *ngIf="view == 'grid'">-->
 <div *ngIf="project">
   <div class="project card">
-    <p class="card-type">Project</p>
+    <div class="card-type-blue">
+      <div class="type-layer-2">
+        Project
+      </div>
+    </div>
     <div class="image-top" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
@@ -56,8 +60,8 @@
               <span>70</span>
             </li>
             <li>
-              <span *ngIf="project.maker_project_count > '1'" >{{project.maker_project_count}}  projects</span>
-              <span *ngIf="project.maker_project_count == '1'" >{{project.maker_project_count}}  project</span>
+              <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
+              <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
             </li>
           </ul>
         </div>
