@@ -45,9 +45,11 @@
     </div>
 
     <div class="license-report">
-      <a class="license"  target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">LICENSE: Creative Commons</a>
+      <a class="license" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">LICENSE: Creative Commons</a>
       <hr>
-        <app-report-project [projectReportId]="project.nid"></app-report-project>
+      <div *ngIf="project.nid && project.uid ">
+        <app-report-project [projectReportId]="project.nid" [projectAuthor]="project.uid"></app-report-project>
+      </div>
     </div>
 
   </aside>
