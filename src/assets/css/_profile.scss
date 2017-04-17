@@ -710,15 +710,12 @@
         color: $blue;
     }
     .image-top {
-        // width: 332px;
         height: 275px;
         background-color: #bbb;
         overflow: hidden;
         background: url('../images/placeholder.png') center center;
         background-size: cover;
-        // position: relative;
-        // top: -15px;
-        // left: -20px;
+        position: relative;
         .card-img-top {
             border-radius: 0;
         }
@@ -732,9 +729,7 @@
         overflow: hidden;
         background: url('../images/placeholder.png') center center;
         background-size: cover;
-        // position: relative;
-        // top: -15px;
-        // left: -20px;
+        position: relative;
         .card-img-top {
             border-radius: 0;
         }

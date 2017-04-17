@@ -1885,7 +1885,8 @@ footer {
     background-color: #bbb;
     overflow: hidden;
     background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    background-size: cover;
+    position: relative; }
     .project .image-top .card-img-top {
       border-radius: 0; }
     .project .image-top img {
@@ -1895,7 +1896,8 @@ footer {
     background-color: #bbb;
     overflow: hidden;
     background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    background-size: cover;
+    position: relative; }
     .project .image-top-lg .card-img-top {
       border-radius: 0; }
     .project .image-top-lg img {
