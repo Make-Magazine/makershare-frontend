@@ -1,3 +1,6 @@
-  <a><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
+  <div *ngIf="ButtonVoted == 'Vote'"><a><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
   <span>{{ButtonVoted}}</span>
-  </div></a>
+  </div></a></div>
+    <div *ngIf="ButtonVoted == 'Voteing'"><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
+  <span>{{ButtonVoted}}</span>
+  </div></div>
