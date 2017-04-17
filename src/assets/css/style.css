@@ -369,6 +369,23 @@ a:not([href]):not([tabindex]) {
     background: #ED1C24;
     border-color: transparent; }
 
+.btn-vote,
+a:not([href]):not([tabindex]).btn-vote {
+  color: #292929;
+  background: transparent;
+  border: 1px solid;
+  margin-left: 32px;
+  width: 75%;
+  /* margin: 0 auto; */
+  text-align: center; }
+  .btn-vote:focus, .btn-vote:active, .btn-vote:hover,
+  a:not([href]):not([tabindex]).btn-vote:focus,
+  a:not([href]):not([tabindex]).btn-vote:active,
+  a:not([href]):not([tabindex]).btn-vote:hover {
+    color: #FFF;
+    background-color: #ED1C24;
+    box-shadow: none; }
+
 .project {
   position: relative;
   margin-top: 10px;
