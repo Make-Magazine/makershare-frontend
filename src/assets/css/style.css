@@ -857,6 +857,7 @@ body {
     width: 100%;
     padding: 7px 11px 7px 11px; }
 
+.card-type-grey-2,
 .card-type-blue,
 .card-type-grey {
   font-family: "Messina Sans Regular" !important;
@@ -873,9 +874,11 @@ body {
   -moz-box-shadow: 0px 2px 6px #333333;
   -webkit-box-shadow: 0px 2px 6px #333333;
   box-shadow: 0px 2px 6px #333333; }
+  .card-type-grey-2 p,
   .card-type-blue p,
   .card-type-grey p {
     margin: 0px; }
+  .card-type-grey-2::after,
   .card-type-blue::after,
   .card-type-grey::after {
     content: ' ';
@@ -886,6 +889,7 @@ body {
     left: 100%;
     position: absolute;
     top: 0px; }
+  .card-type-grey-2 .type-layer-2,
   .card-type-blue .type-layer-2,
   .card-type-grey .type-layer-2 {
     position: relative;
@@ -903,6 +907,11 @@ body {
   background-color: #00AEEF; }
   .card-type-blue::after {
     border-left: 10px solid #00AEEF; }
+
+.card-type-grey-2 {
+  background-color: #4F4F4F; }
+  .card-type-grey-2::after {
+    border-left: 10px solid #4F4F4F; }
 
 .front {
   background-color: #F2F2F2; }
@@ -2076,7 +2085,7 @@ footer {
     position: absolute;
     color: white;
     top: -12px;
-    left: -10px;
+    right: -10px;
     font-size: 13px;
     padding: 20px; }
     .project .icons span {
@@ -3216,10 +3225,10 @@ footer {
       height: 100%; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 2.3em !important;
+      font-size: 2em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 105% !important;
+      line-height: 100% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3241,10 +3250,10 @@ footer {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular" !important;
-      font-size: 0.95em !important;
+      font-size: 1.1em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 100% !important;
+      line-height: 115% !important;
       color: #828282;
       height: 85px;
       color: white; }
@@ -3376,7 +3385,6 @@ footer {
 .front .front-challenge-card {
   position: relative;
   padding: 0px;
-  overflow: hidden;
   cursor: pointer;
   background-color: #333;
   height: 460px;
@@ -3414,8 +3422,6 @@ footer {
     .front .front-challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
   .front .front-challenge-card .image-container {
-    overflow: hidden;
-    position: relative;
     padding: 0;
     width: 100%;
     height: 430px;
@@ -3439,7 +3445,8 @@ footer {
     min-height: 16px;
     margin: 16px 0px 16px 0px; }
     .front .front-challenge-card .card-container .card-partership p {
-      margin-bottom: 0px; }
+      margin-bottom: 0px;
+      color: #828282; }
   .front .front-challenge-card .card-container .card-description h4 {
     font-weight: bold; }
   .front .front-challenge-card .card-container .card-description p {
@@ -3452,7 +3459,8 @@ footer {
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
-    overflow: hidden; }
+    overflow: hidden;
+    color: #fff; }
   .front .front-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -3463,11 +3471,13 @@ footer {
       .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
         padding: 15px 20px; }
     .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-      font-size: 12px; }
+      font-size: 12px;
+      color: #828282; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
         padding-left: 10px; }
     .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-      line-height: 16px; }
+      line-height: 16px;
+      color: #828282; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
         font-size: 12px;
         padding-right: 5px; }
@@ -3490,7 +3500,8 @@ footer {
     bottom: 18px;
     left: 0;
     width: 100%;
-    padding-left: 26px; }
+    padding-left: 26px;
+    z-index: 10; }
     .front .challenge-card-full.front-challenge-card .card-container .card {
       width: 65%; }
   .front .challenge-card-full.front-challenge-card .image-container {
@@ -3499,11 +3510,13 @@ footer {
     height: 460px;
     max-width: 100%;
     max-height: 100%; }
-.front .button-container-main-1 {
-  margin-right: 18px; }
-.front .challenge-card-count span {
-  padding-right: 10px;
-  border-right: 1px solid #fff; }
+  .front .challenge-card-full.front-challenge-card .challenge-card-count span {
+    padding-right: 10px;
+    border-right: 1px solid #fff; }
+  .front .challenge-card-full.front-challenge-card .button-container-main-1 {
+    margin-right: 18px; }
+    .front .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
+      padding: 15px 20px; }
 
 .page-project {
   color: #333333;
@@ -4357,7 +4370,6 @@ header.showcase-project .next {
     .page-learn .learn-card .learn-item .card-partership {
       color: #ED1C24; }
   .page-learn .learn-card .image-container {
-    overflow: hidden;
     position: relative;
     padding: 0px; }
     .page-learn .learn-card .image-container img {
@@ -4511,7 +4523,6 @@ header.showcase-project .next {
 .front .learn-card {
   position: relative;
   padding: 0px;
-  overflow: hidden;
   cursor: pointer;
   background-color: #DCDCDC;
   height: 460px;
@@ -4531,7 +4542,6 @@ header.showcase-project .next {
     .front .learn-card .learn-item .card-partership {
       color: #ED1C24; }
   .front .learn-card .image-container {
-    overflow: hidden;
     position: relative;
     padding: 0;
     height: 430px;

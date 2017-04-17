@@ -18,7 +18,7 @@
   <div class="col-md-4 image-container">
     <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
     <img *ngIf="!learn.cover_photo" src="http://placehold.it/365x290" alt="">
-    <div class="horizontal-type-badge-learn">
+    <div class="card-type-grey-2">
       <div class="type-layer-2">
         Learn
       </div>
@@ -64,7 +64,7 @@
     <div class="col-md-6 col-sm-12 image-container">
       <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
       <img *ngIf="!learn.cover_photo" src="http://placehold.it/365x290" alt="">
-      <div class="horizontal-type-badge-learn">
+      <div class="card-type-grey-2">
         <div class="type-layer-2">
           Learn
         </div>
