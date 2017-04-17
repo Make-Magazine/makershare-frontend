@@ -7,14 +7,14 @@
         </div>
         <div class="container project-create-buttons d-flex">
           <ul class="list-unstyled d-flex flex-row contorls ml-auto">
-            <li class="create-project-buttons project-draft mr-4"><span class="btn btn-soft-grey" (click)="project.SetField(1115,'field_visibility2');GettingFieldsReady(0)">Save Draft</span></li>
+            <li class="create-project-buttons project-draft mr-4"><button class="btn btn-soft-grey" (click)="project.SetField(1115,'field_visibility2');GettingFieldsReady(0)">Save Draft</button></li>
             <li class="create-project-buttons project-public"><span class="btn" (click)="project.SetField(370,'field_visibility2');CurrentActiveVisibility = 'public'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'public','btn-soft-grey':CurrentActiveVisibility != 'public'}"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></span>
             </li>
             <li class="create-project-buttons project-private"><span class="btn" (click)="project.SetField(371,'field_visibility2');CurrentActiveVisibility = 'private'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'private','btn-soft-grey':CurrentActiveVisibility != 'private'}"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></span>
             </li>
             <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><i class="fa fa-lg fa-times"></i><span>DELETE</span></span>
             </li>
-            <li class="create-project-buttons project-publish"><span (click)="PublicPrivateSave()" class="btn btn-main">Publish</span></li>
+            <li class="create-project-buttons project-publish"><button (click)="PublicPrivateSave()" class="btn btn-main" [disabled]="CurrentActiveVisibility == 'draft'">Publish</button></li>
           </ul>
         </div>
       </div>
@@ -49,16 +49,16 @@
         <div class="container d-flex flex-row align-content-end flex-wrap">
           <h3 class="mr-auto mt-2">Add a new project to your portfolio</h3>
           <div class="container project-create-buttons d-flex">
-            <ul class="list-unstyled d-flex flex-row contorls ml-auto">
-              <li class="create-project-buttons project-draft mr-4"><span class="btn btn-soft-grey" (click)="project.SetField(1115,'field_visibility2');GettingFieldsReady(0)">Save Draft</span></li>
-              <li class="create-project-buttons project-public"><span class="btn" (click)="project.SetField(370,'field_visibility2');CurrentActiveVisibility = 'public'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'public','btn-soft-grey':CurrentActiveVisibility != 'public'}"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></span>
-              </li>
-              <li class="create-project-buttons project-private"><span class="btn" (click)="project.SetField(371,'field_visibility2');CurrentActiveVisibility = 'private'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'private','btn-soft-grey':CurrentActiveVisibility != 'private'}"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></span>
-              </li>
-              <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><i class="fa fa-lg fa-times"></i><span>DELETE</span></span>
-              </li>
-              <li class="create-project-buttons project-publish"><span (click)="PublicPrivateSave()" class="btn btn-main">Publish</span></li>
-            </ul>
+          <ul class="list-unstyled d-flex flex-row contorls ml-auto">
+            <li class="create-project-buttons project-draft mr-4"><button class="btn btn-soft-grey" (click)="project.SetField(1115,'field_visibility2');GettingFieldsReady(0)">Save Draft</button></li>
+            <li class="create-project-buttons project-public"><span class="btn" (click)="project.SetField(370,'field_visibility2');CurrentActiveVisibility = 'public'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'public','btn-soft-grey':CurrentActiveVisibility != 'public'}"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></span>
+            </li>
+            <li class="create-project-buttons project-private"><span class="btn" (click)="project.SetField(371,'field_visibility2');CurrentActiveVisibility = 'private'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'private','btn-soft-grey':CurrentActiveVisibility != 'private'}"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></span>
+            </li>
+            <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><i class="fa fa-lg fa-times"></i><span>DELETE</span></span>
+            </li>
+            <li class="create-project-buttons project-publish"><button (click)="PublicPrivateSave()" class="btn btn-main" [disabled]="CurrentActiveVisibility == 'draft'">Publish</button></li>
+          </ul>
           </div>
         </div>
       </div>
