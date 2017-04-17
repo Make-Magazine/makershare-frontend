@@ -1,5 +1,5 @@
 import { field_URL } from '../../../../models/Drupal';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
@@ -16,13 +16,15 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 import { Intrests } from '../../../../models/profile/intrests';
 import { Auth } from '../../../../auth0/auth.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { CustomValidators } from 'ng2-validation'
+import { CustomValidators } from 'ng2-validation';
+import { ImageCropperComponent } from 'ng2-img-cropper';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild('cropper') cropper:ImageCropperComponent; 
 
   CountriesList = [];
   SearchMakerspace = (text$: Observable<string>) => {
@@ -153,6 +155,8 @@ export class ProfileComponent implements OnInit {
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
     });
   }
+  CurrentModalTab:string;
+  ImageFile:any;
   ProfilePicData: any = {};
   FileName: string = '';
   ProjectsCount: number;
@@ -202,6 +206,7 @@ export class ProfileComponent implements OnInit {
     this.ProfilecropperSettings.noFileInput = true;
   }
   ngOnInit() {
+    this.CurrentModalTab = 'personal info';
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
@@ -242,8 +247,13 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-  OpenModal(Template, CSSClass: string) {
+  OpenModal(Template, CSSClass: string,IsPhotoModal?) {
     this.modalService.open(Template, { windowClass: CSSClass });
+    if(IsPhotoModal){
+      setTimeout(()=>{
+        this.cropper.setImage(this.ImageFile);
+      });
+    }
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper)
@@ -355,8 +365,10 @@ export class ProfileComponent implements OnInit {
     field_add_your_makerspace_s_.controls[index]['controls'].field_makerspace_name.setValue(makerspace.title);
   }
   SetUser(user: UserProfile) {
-    console.log(user);
     this.profile = user;
+    this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
+    this.ImageFile = new Image();
+    this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
     this.ProfileInfo.address = user.address;
     this.ProfileInfo.describe_yourself = user.describe_yourself;
@@ -369,5 +381,4 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
   }
-
 }

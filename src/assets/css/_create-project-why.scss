@@ -24,21 +24,64 @@
 		}
 		h1 {
 			@include header-font();
+			
 		}
-		.contorls{
-			li {
-				// display: inline-block;
-				.btn-soft-grey{
-					background-color: $white;
-					color: $main-grey;
+		.project-create-buttons {
+			.contorls {
+				.create-project-buttons {
+					&:hover {
+						cursor: pointer;
+					}
 				}
-				.btn-transparent {
-					color: $main-grey;
-					padding: 5px 15px;
+				button {
+					&:hover {
+						cursor: pointer;
+					}
 				}
-				.btn {
-					padding: 5px 15px;
-					font-size: 13px
+				.project-draft {
+					.btn {
+						padding: 10px 40px 10px 40px;
+						font-size: 16px;
+					}
+				}
+				.project-private {
+					.btn {
+										background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										padding: 4px 6px 4px 6px;
+										}
+					.btn-main {
+						background:#ED1C24 !important;
+						background-color: #ED1C24;
+						border-color: #d51920;
+					}
+				}
+				.project-public {
+					.btn {
+										background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+										padding: 4px 6px 4px 6px;				
+										}
+					.btn-main {
+						background:#ED1C24 !important;
+						background-color: #ED1C24;
+						border-color: #d51920;
+					}
+				}
+				.project-delete {
+					.btn {
+						padding: 4px 6px 4px 6px;
+					}
+				}
+				.project-publish {
+					.btn {
+						padding: 10px 40px 10px 40px;
+						font-size: 16px;
+					}
 				}
 			}
 		}
@@ -114,6 +157,9 @@
 					margin-left:5px;
 					width: auto;
 					padding-top: 9px;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 				.categories-group {
 					width: 100%;
@@ -427,7 +473,7 @@
         display: block;
         text-align: center;
         font-size: 11px;
-        line-height: 28px;        
+        line-height: 16px !important;        
     }
 		.btn-shadow {
 			min-width: 110px;
@@ -458,7 +504,7 @@
     border-radius: 0;
     font-size: 16px;
 		border: 1px solid #BDBDBD;
-    padding: 8px 30px 8px 30px;
+    padding: 8px 50px 8px 50px;
 		color: #BDBDBD;
 		background-color: inherit;
     &:focus {    
