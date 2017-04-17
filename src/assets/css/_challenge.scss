@@ -118,7 +118,6 @@
     }
 }
 .challenges-container {
-	padding: 10px;
 }
 .page-challenge {
 .challenge-card {
@@ -127,6 +126,9 @@
     overflow: hidden;
     cursor:pointer;
     background-color: $challenge-bg;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     .single-challenge {
         padding: 10px;
         img {
@@ -356,6 +358,9 @@
         cursor: pointer;
         background-color: #333;
         height: 460px;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         span {
             color: white;
         }
@@ -373,7 +378,6 @@
                 @include card-header-font-md-2();
                 color: $white;
                 max-height: 145px;
-                overflow: hidden;
             }
             .card-type {
                 top: 25px;
@@ -405,6 +409,9 @@
                 height: 100%;
             }
         }
+        .content-container {
+            padding-bottom: 30px;
+        }
         .card-container {
             .card-partership {
                 @include desc-font-1();
@@ -423,6 +430,11 @@
                 }
 
                 p {
+                    @include body-font-2();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 7;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
             }
 
@@ -475,6 +487,9 @@
     .challenge-card-full.front-challenge-card {
         padding: 0 ;
         margin-top: 20px ;
+        -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         .card-type {
             z-index: 1000;
         }

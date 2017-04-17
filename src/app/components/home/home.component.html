@@ -16,14 +16,14 @@
         'lone-card' : i == 1
           }">
         <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge' && i == 0" class="challenge-page-data">
-          <div class=" challenges-container">
+        <div *ngIf="item.type == 'challenge' && i == 0" class="challenge-page-data container">
+          <div class="challenges-container">
             <app-challenge-card [challengeNid]="item.id" [front]=true [first]=true></app-challenge-card>
           </div>
         </div>
         <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge' && i != 0" class="challenge-page-data">
-          <div class=" challenges-container">
+        <div *ngIf="item.type == 'challenge' && i != 0" class="challenge-page-data container">
+          <div class="challenges-container">
             <app-challenge-card [challengeNid]="item.id" [front]=true></app-challenge-card>
           </div>
         </div>
