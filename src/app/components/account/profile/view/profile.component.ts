@@ -365,6 +365,7 @@ export class ProfileComponent implements OnInit {
     field_add_your_makerspace_s_.controls[index]['controls'].field_makerspace_name.setValue(makerspace.title);
   }
   SetUser(user: UserProfile) {
+    console.log(user);
     this.profile = user;
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
     this.ImageFile = new Image();
