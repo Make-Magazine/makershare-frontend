@@ -313,6 +313,11 @@ img {
         .card {
             background-color: transparent;
             border: none;
+            .showcase-type {
+                p {
+                    color: $blue;
+                }
+            }
         }
         .single-showcase {
             padding: 10px;
@@ -355,12 +360,13 @@ img {
             .card-title {
                 @include card-header-font-lg();
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                height: 190px;
+                max-height: 176px;
                 color: $font-grey;
                 margin-bottom: 20px;
+                line-height: 120% !important;
             }
             .card-status {
                 @include body-font-1();
@@ -374,13 +380,13 @@ img {
                     font-weight: bold;
                 }
                 p {
-                    @include desc-font-1();
+                    @include body-font-2();
                     display: -webkit-box;
-                    -webkit-line-clamp: 4;
+                    -webkit-line-clamp: 5;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     color: $font-grey;
-                    height: 71px;
+                    max-height: 102px;
                 }
             }
             .card-buttons {
