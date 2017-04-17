@@ -1,5 +1,17 @@
 <div *ngIf="fileCard">
   <img [src]="fileCard.url">
   <button *ngIf="type == 'browse'" (click)="SelectFile()"> select </button>
-  <button (click)="DeleteFile()"> delete </button>
+  <button (click)="CheckFileBeforeDelete(ConfirmDelete)"> delete </button>
 </div>
+
+<!-- Add Description Modal -->
+<template #ConfirmDelete let-c="close" let-d="dismiss" ngbModalContainer>
+	<div class="modal-body">
+    This file is used in the following projects and cannot be deleted "WIP": 
+    {{this.fileCard.usage|json}} 
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+		<!--<button type="button" class="btn btn-primary" (click)="DeleteFile(closebtn)">Save</button>-->
+	</div>
+</template>
