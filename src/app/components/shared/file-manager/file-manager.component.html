@@ -1,1 +1,4 @@
-<file-card></file-card>
+<div *ngIf="fileManageService">
+  <input type="file" (change)="UploadFile($event.target.files[0])">
+  <file-card *ngFor="let fileCard of fileManageService.files" [type]="type" [fileCard]="fileCard"></file-card>
+</div>

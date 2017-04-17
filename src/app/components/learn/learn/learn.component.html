@@ -30,7 +30,7 @@
     </div>
     <!-- End filters -->
     <div class="container learn-container">
-      <div *ngFor="let learn of learns" class="learn-card">
+      <div *ngFor="let learn of learns">
         <app-learn-card [workshopNid]="learn.nid"></app-learn-card>
          <!-- End col-md-6 -->
       </div>

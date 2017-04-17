@@ -132,7 +132,8 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
-    FileManagerComponent
+    FileManagerComponent,
+    FileCardComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
