@@ -36,7 +36,7 @@ checkUserLogin;
           if (this.isVoted == false) {/* start if  */
             this.ButtonVoted = 'Vote';
           } else {
-            this.ButtonVoted = 'Voteing';
+            this.ButtonVoted = 'Voted';
           }/* end else if  */
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
@@ -53,7 +53,7 @@ checkUserLogin;
    
         this.flagService.flag(this.nodeNid, this.userId, 'project_vote').subscribe(response => {
           this.isVoted = true;
-          this.ButtonVoted = 'Voteing';
+          this.ButtonVoted = 'Voted';
 
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
