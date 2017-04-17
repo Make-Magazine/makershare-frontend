@@ -15,7 +15,7 @@ export class BasicInfoComponent implements OnInit {
   @Input() userProfile: UserProfile;
   @Output() emitter = new EventEmitter();
 
-  basicForm: FormGroup;
+  basicForm;
   CountryFieldsAndDetails;
   CountriesList=[];
   datepickerOptions: IcDatepickerOptionsInterface;
@@ -59,14 +59,20 @@ export class BasicInfoComponent implements OnInit {
       this.buildForm();
     }
   }
-  GetCountryDetails(event){
+  GetCountryDetails(event,changed?){
     let code = event.item.key;
     event.preventDefault();
     this.viewService.getView('maker_address_api/' + code).subscribe((data) => {
-      this.CountryFieldsAndDetails = 'YYYY-MM-DDdata';
+      const control = this.basicForm.controls.address;
+      if(changed && data.administrative_areas){
+        control['controls'].governorate.patchValue(data.administrative_areas[0].value);
+      }else{
+        control['controls'].governorate.patchValue('');
+      }
+      this.CountryFieldsAndDetails = data;
     });
   }
-
+  
   MigrateCountryDetails(){
     if(this.CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1){
       if(this.userProfile.address.postal_code){
@@ -85,39 +91,39 @@ export class BasicInfoComponent implements OnInit {
 
   buildForm(): void {
     this.basicForm = this.fb.group({
-      'nickname': [this.userProfile.nickname],
-      'first_name': [this.userProfile.first_name, [Validators.required]],
-      'last_name': [this.userProfile.last_name, [Validators.required]],
-      'address_publish': [this.userProfile.address_publish == 1? true:false],
-      'describe_yourself': [this.userProfile.describe_yourself, [Validators.required, Validators.maxLength(60)]],
-      'birthday_date': ['', Validators.required],
-      'mail': [this.userProfile.mail, [Validators.required,CustomValidators.email]],
-      'newsletter_subscription': [true],
-      'address': this.fb.group({
-        'country': [this.userProfile.address.country, [Validators.required]],
-        'governorate': [this.userProfile.address.governorate],
-        'city': [this.userProfile.address.city],
-        'postal_code': [this.userProfile.address.zip_code, [Validators.minLength(5)]],
-      }),
+      nickname: [this.userProfile.nickname],
+      first_name: [this.userProfile.first_name, [Validators.required]],
+      last_name: [this.userProfile.last_name, [Validators.required]],
+      address_publish: [this.userProfile.address_publish == 1? true:false],
+      describe_yourself: [this.userProfile.describe_yourself, [Validators.required, Validators.maxLength(60)]],
+      birthday_date: [this.userProfile.birthday_date, Validators.required],
+      mail: [this.userProfile.mail, [Validators.required,CustomValidators.email]],
+      newsletter_subscription: [this.userProfile.newsletter_subscription == 1? true:false],
+      address: this.fb.group({
+        country: [this.userProfile.address.country, [Validators.required]],
+        governorate: [this.userProfile.address.governorate],
+        city: [this.userProfile.address.city],
+        postal_code: [this.userProfile.address.zip_code, [Validators.minLength(5)]],
+      },Validators.required),
     });
     this.basicForm.valueChanges.subscribe(values=>{
-      if(this.basicForm.valid){
+      if(this.basicForm.valid && this.basicForm.dirty){
         this.userProfile = values;
         this.userProfile.uid = +localStorage.getItem('user_id');
         values.address_publish? this.userProfile.address_publish = 1:this.userProfile.address_publish = 0;
         values.newsletter_subscription? this.userProfile.newsletter_subscription = 1:this.userProfile.newsletter_subscription = 0;
+        if(this.userProfile.birthday_date){
+          this.userProfile.birthday_date = this.userProfile.birthday_date + ' 00:00:00';
+        }
+        this.emitter.emit(this.userProfile);
+      }else{
+        this.emitter.emit(false);
       }
-      this.emitter.emit(this.basicForm.valid);
       this.onValueChanged(this.basicForm,this.formErrors,this.validationMessages);
     });
   }
 
   onValueChanged(form, formErrors, validationMessages) {
-    console.log(form);
-    if(form.value.birthday_date != ''){
-      form.value.birthday_date = form.value.birthday_date + ' 00:00:00';
-    }
-    console.log(form);
     if (!this.basicForm) { return; }
     for (const field in formErrors) {
       if (typeof formErrors[field] === 'string') {
@@ -150,7 +156,7 @@ export class BasicInfoComponent implements OnInit {
     'birthday_date': '',
     'mail': '',
     'address': {
-      'country': '',
+      'country': ''
     },
   };
 
