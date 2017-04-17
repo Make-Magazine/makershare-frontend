@@ -17,6 +17,7 @@ export class ProjectComponent implements OnInit {
   projects = [];
   deletedArr = [];
 
+
   userId
   type = 'project';
   checkState = false;
@@ -25,10 +26,7 @@ export class ProjectComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
-        private _location: Location,
-
-
-
+    private _location: Location,
   ) { }
   ngOnInit() {
     this.getProjectBookmark();
@@ -42,20 +40,16 @@ export class ProjectComponent implements OnInit {
     // get project Has Bookmark from a view
     this.viewService.getView('bookmark', args).subscribe(res => {
       this.projects = res;
+
     }, err => {
 
     });
   }
   deleteMessage(i) {
-
-
     this.flagService.unflag(this.projects[i]['nid'], this.userId, 'node_bookmark').subscribe(response => {
       this.getProjectBookmark();
     }, err => {
-      //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
     });
-    // console.log(this.projects[i]['nid']);
-
   }
   valueChanged(mid, event) {
     // add to deletedArr
@@ -75,23 +69,22 @@ export class ProjectComponent implements OnInit {
 * delete selected messages
 */
   deleteMessages() {
-    
+
     for (var i = 0; i < this.deletedArr.length; i++) {
       this.flagService.unflag(this.deletedArr[i], this.userId, 'node_bookmark').subscribe(response => {
         this.getProjectBookmark();
       }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       });
-}
+    }
   }
 
 
-    checkAll(ev) {
+  checkAll(ev) {
     this.projects.forEach(x => x.state = ev.target.checked)
     for (var _i = 0; _i < this.projects.length; _i++) {
       if (ev.target.checked === true) {
         this.deletedArr.push(this.projects[_i].nid);
-        
+
       } else {
         var index = this.deletedArr.indexOf(this.projects[_i].nid, 0);
         if (index > -1) {
