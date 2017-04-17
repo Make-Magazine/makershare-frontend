@@ -151,6 +151,7 @@ export class YourStoryComponent implements OnInit {
    */
   ImageUpdated(closebtn: HTMLButtonElement, SkipCropping: boolean) {
     closebtn.click();
+    delete this.cover_image.fid;
     this.cover_image.file = '';
     this.formErrors.field_cover_photo = '';
     if (!NodeHelper.isEmpty(this.imagedata)) {
