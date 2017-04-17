@@ -288,6 +288,35 @@ body {
     }
 }
 
+.horizontal-type-badge-learn {
+    @include desc-font-1();
+    position: absolute;
+    top: 14px;
+    left: 0px;
+    background-color: #4F4F4F;
+    p {
+        margin: 0px;
+    }
+    &::after {
+        content: ' ';
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-left: 10px solid #4F4F4F;
+        border-bottom: 14px solid transparent;
+        left: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    .type-layer-2 {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 7px 11px 7px 11px;
+        color: #fff;
+    }
+}
+
 .vertical-type-badge {
     @include desc-font-1();
     position: absolute;
