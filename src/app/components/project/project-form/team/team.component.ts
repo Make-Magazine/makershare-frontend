@@ -148,7 +148,6 @@ export class TeamComponent implements OnInit {
     this.SelectedUser = NewUsersDetails;
   }
   onValueChanged(form, formErrors, validationMessages) {
-    // console.log(this.TeamForm)
     for (const field in formErrors) {
       if(typeof formErrors[field] === 'string'){
         formErrors[field] = '';

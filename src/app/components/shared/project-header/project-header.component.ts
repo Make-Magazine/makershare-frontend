@@ -45,7 +45,6 @@ export class ProjectHeaderComponent implements OnInit {
       if(this.project.field_tags[tag] != "")
       this.tags.push(this.project.field_tags[tag]);
     }
-    console.log(this.showcaseInfo)
   }
   
   getcurrentuser(){
