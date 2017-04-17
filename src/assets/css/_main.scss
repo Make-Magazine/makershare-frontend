@@ -31,7 +31,8 @@ body {
     color: $main-grey;
     width: 100%;
     background-color: $main-bg;
-    // height: 55px;
+    position: relative;
+    z-index: 10;
     .navbar-brand {
         width: 120px;
         padding: 0px;

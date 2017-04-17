@@ -38,7 +38,6 @@ export class ReportProjectComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.userId = localStorage.getItem('user_id');
-    console.log(this.projectReportId)
     this.flagService.isFlagged(this.projectReportId, this.userId, 'report_project').subscribe(data => {
       this.isReported = data[0];
 
@@ -57,7 +56,6 @@ export class ReportProjectComponent implements OnInit {
   /* end function build form */
   updateSelectedReason(item: any) {
     this.selectedReasonName = item.target.value;
-    console.log(this.selectedReasonName);
   }
   open(content) {
     this.modalService.open(content).result.then((result) => {
@@ -81,7 +79,6 @@ export class ReportProjectComponent implements OnInit {
           field_reason_reporting: this.selectedReasonName,
           field_appropriate_for_response: this.reasonReport,
         }
-        console.log(report);
         this.flagService.flag(this.projectReportId, this.userId, 'report_project', report).subscribe(response => {
           this.isReported = true;
 

@@ -176,10 +176,8 @@ export class ChallengeProjectComponent implements OnInit {
         "field_entry_project": this.selectedProject,
         "field_entry_challenge": this.nid,
       };
-      console.log(body);
       this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
         this.router.navigate(['missions/', this.nid]);
-        console.log(res)
         this.loaderService.display(false);
 
         this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
@@ -198,7 +196,6 @@ export class ChallengeProjectComponent implements OnInit {
         }
         /* end follow  */
       }, err => {
-        console.log(err.statusText);
         this.loaderService.display(false);
 
         this.notificationBarService.create({ message: err._body, type: NotificationType.Error });
@@ -240,7 +237,6 @@ export class ChallengeProjectComponent implements OnInit {
   /* end function cheack user allowe to enter challenge */
   checkBoxValue(item: any) {
     this.error = '';
-    console.log(item.target);
     this.checked = item.target.checked;
     if (this.checked) {
       //this.onSubmit();
