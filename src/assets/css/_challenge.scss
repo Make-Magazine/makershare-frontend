@@ -118,7 +118,6 @@
     }
 }
 .challenges-container {
-	padding: 10px;
 }
 .page-challenge {
 .challenge-card {
@@ -127,6 +126,9 @@
     overflow: hidden;
     cursor:pointer;
     background-color: $challenge-bg;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
     .single-challenge {
         padding: 10px;
         img {
@@ -147,6 +149,33 @@
             height: 100%;
             max-width: 100%;
         }
+        .challenge-type-badge {
+            @include desc-font-1();
+            position: absolute;
+            top: 6px;
+            left: 0px;
+            background-color: #333333;
+            p {
+                margin: 0px;
+            }
+            &::after {
+                content: ' ';
+                width: 0;
+                height: 0;
+                border-top: 15px solid transparent;
+                border-left: 10px solid #333333;
+                border-bottom: 14px solid transparent;
+                right: -10px;
+                position: absolute;
+                top: 0px;
+            }
+            .type-layer-2 {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                padding: 7px 11px 7px 11px;
+            }
+        }
     }
     .card-container {
         color: $white;
@@ -155,16 +184,6 @@
         height: 100%;
         .card {
             height: 100%;
-        }
-        .challenge-type-badge {
-            @include desc-font-1();
-            position: absolute;
-            top: 24px;
-            right: -44px;
-            transform: rotate(-90deg);
-            p {
-                margin: 0px;
-            }
         }
         .card-title {
             @include card-header-font-lg();
@@ -332,14 +351,15 @@
 }
 .front {
     .front-challenge-card {
-        margin-bottom: 10px;
         position: relative;
-        padding: 16px;
+        padding: 0px;
         overflow: hidden;
         cursor: pointer;
         background-color: #333;
-        height: 390px;
-        top: -10px;
+        height: 460px;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         span {
             color: white;
         }
@@ -357,7 +377,6 @@
                 @include card-header-font-md-2();
                 color: $white;
                 max-height: 145px;
-                overflow: hidden;
             }
             .card-type {
                 top: 25px;
@@ -381,13 +400,16 @@
             position: relative;
             padding: 0;
             width: 100%;
-            height: 360px;
+            height: 430px;
             background: url('../images/placeholder.png') center center;
             background-size: cover;
             img {
                 width: 100%;
                 height: 100%;
             }
+        }
+        .content-container {
+            padding-bottom: 30px;
         }
         .card-container {
             .card-partership {
@@ -396,7 +418,7 @@
                 font-size: 14px;
                 display: inline-block; 
                 min-height: 16px;
-                margin-bottom: 10px;
+                margin: 16px 0px 16px 0px;
                 p {
                     margin-bottom: 0px;
                 }
@@ -407,6 +429,11 @@
                 }
 
                 p {
+                    @include body-font-2();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 7;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
             }
 
@@ -418,6 +445,11 @@
                     a.btn.btn-grey {
                         background-color: $light-grey;
                     }
+                .button-container-main-1 {
+                    .btn {
+                        padding: 15px 20px;
+                    }
+                }
                 }
                 .challenge-card-footer-2 {
                     .challenge-card-count {
@@ -426,11 +458,11 @@
                             padding-left: 10px;
                         }
                         .entries-count {
-                            padding-right: 10px;
-                            border-right: 1px solid white;
+
                         }
                     }
                     .challenge-card-status {
+                        line-height: 16px;
                         .open-status, .closed-status {
                             // font-weight: bold;
                             font-size: 12px;
@@ -453,22 +485,38 @@
     }
     .challenge-card-full.front-challenge-card {
         padding: 0 ;
-        height: 350px ;
-        margin-top: 20px ;
+        margin: 30px 0px 30px 0px;
+        -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         .card-type {
             z-index: 1000;
         }
         .card-container {
-            position: absolute ;
-            bottom: 15px ;
-            left: 15px ;
+            position: absolute;
+            bottom: 18px;
+            left: 0;
+            width: 100%;
+            padding-left: 26px;
+            .card {
+                width: 65%;
+            }
         }
         .image-container {
             padding: 0;
             width: 100%;
-            height: 360px;
+            height: 460px;
             max-width: 100%;
             max-height: 100%;
+        }
+    }
+    .button-container-main-1 {
+        margin-right: 18px;
+    }
+    .challenge-card-count {
+        span {
+            padding-right: 10px;
+            border-right: 1px solid #fff; 
         }
     }
 }

@@ -139,6 +139,14 @@ footer {
         }
         .first-logo-link {
             margin-right: 10px;
+            position: relative;
+            span {
+                color: #00AEEF;
+                font-size: 10px;
+                position: absolute;
+                bottom: -12px;
+                right: 6px;
+            }
         }
         .second-logo-link {
             padding-left: 10px;

@@ -119,6 +119,9 @@
         overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         margin: 10px 0;
         .learn-type-bagde {
             position: absolute;
@@ -143,7 +146,7 @@
         .image-container {
             overflow: hidden;
             position: relative;
-            padding: 0px 15px;
+            padding: 0px;
             img {
                 width: 100%;
                 height: 100%;
@@ -300,12 +303,15 @@
             margin-right: 15px; 	
         }
         position: relative;
-        padding: 16px;
+        padding: 0px;
         overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
-        height: 390px;
+        height: 460px;
         margin-bottom: 35px;
+        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
         .learn-item {
             padding: 10px;
             img {
@@ -319,13 +325,16 @@
             overflow: hidden;
             position: relative;
             padding: 0;
-            height: 360px;
+            height: 430px;
             background: url('../images/placeholder.png') center center;
             background-size: cover;
             img {
                 width: 100%;
                 height: 100%;
             }
+        }
+        .container-content {
+            margin-bottom: 30px;
         }
         .card-container {
             color: $white;
@@ -341,14 +350,11 @@
                     margin: 0px;
                 }
             }
+            .card-partership {
+                margin: 16px 0px 16px 0px;
+            }
             .card-title {
-                @include card-header-font-lg();
-                font-size: 38px;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                // min-height: 67px;
+                @include card-header-font-md-2();
                 color: #4F4F4F;
             }
             .card-status {
@@ -364,7 +370,7 @@
                 p {
                     @include body-font-2();
                     display: -webkit-box;
-                    -webkit-line-clamp: 3;
+                    -webkit-line-clamp: 7;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     color: #4F4F4F;
@@ -380,6 +386,13 @@
                     border-radius: 20px;
                     font-size: 13px;
                     margin-left: 10px;
+                }
+            }
+            .learn-card-footer-1 {
+                .button-container-main-1 {
+                    .btn {
+                        padding: 15px 20px;
+                    }
                 }
             }
         }

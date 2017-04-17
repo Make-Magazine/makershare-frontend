@@ -378,7 +378,7 @@
 			 type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
 
 			<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>
-			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postal_code && !profile.address.postcode && !profile.address.zip_code"
+			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && !profile.address.postcode && !profile.address.zip_code"
 			 [ngModel]="profile.address.postal_code" type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
 			<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
 			 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">

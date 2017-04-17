@@ -266,7 +266,7 @@ a:not([href]):not([tabindex]).message-btn {
   border: none;
   background: inherit;
   position: absolute;
-  bottom: 48px;
+  bottom: 15px;
   right: 10px; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
   a:not([href]):not([tabindex]).message-btn:hover,
@@ -577,7 +577,6 @@ a:not([href]):not([tabindex]).btn-vote {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Messina Modern Regular';
-  font-weight: bold;
   color: #333333; }
 
 body {
@@ -768,6 +767,143 @@ body {
 .page-node {
   margin-top: 25px; }
 
+.horizontal-type-badge-challenge {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  top: 14px;
+  left: 0px;
+  background-color: #333333; }
+  .horizontal-type-badge-challenge p {
+    margin: 0px; }
+  .horizontal-type-badge-challenge::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 10px solid #333333;
+    border-bottom: 14px solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px; }
+  .horizontal-type-badge-challenge .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px;
+    color: #fff; }
+
+.horizontal-type-badge-learn {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  top: 14px;
+  left: 0px;
+  background-color: #4F4F4F; }
+  .horizontal-type-badge-learn p {
+    margin: 0px; }
+  .horizontal-type-badge-learn::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 10px solid #4F4F4F;
+    border-bottom: 14px solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px; }
+  .horizontal-type-badge-learn .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px;
+    color: #fff; }
+
+.vertical-type-badge {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  background-color: #333333;
+  transform: rotate(-90deg); }
+  .vertical-type-badge span {
+    margin: 0px; }
+  .vertical-type-badge::before {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 10px solid #333333;
+    border-bottom: 14px solid transparent;
+    right: 100%;
+    position: absolute;
+    top: 0px; }
+  .vertical-type-badge .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px; }
+
+.card-type-blue,
+.card-type-grey {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  z-index: 10000;
+  top: 14px;
+  left: -2px;
+  box-shadow: 0px 2px 6px #333333;
+  -moz-box-shadow: 0px 2px 6px #333333;
+  -webkit-box-shadow: 0px 2px 6px #333333;
+  box-shadow: 0px 2px 6px #333333; }
+  .card-type-blue p,
+  .card-type-grey p {
+    margin: 0px; }
+  .card-type-blue::after,
+  .card-type-grey::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 14px solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px; }
+  .card-type-blue .type-layer-2,
+  .card-type-grey .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px;
+    color: #fff; }
+
+.card-type-grey {
+  background-color: #333333; }
+  .card-type-grey::after {
+    border-left: 10px solid #333333; }
+
+.card-type-blue {
+  background-color: #00AEEF; }
+  .card-type-blue::after {
+    border-left: 10px solid #00AEEF; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -883,7 +1019,14 @@ footer {
   footer .copy nav {
     height: 75px; }
   footer .copy .first-logo-link {
-    margin-right: 10px; }
+    margin-right: 10px;
+    position: relative; }
+    footer .copy .first-logo-link span {
+      color: #00AEEF;
+      font-size: 10px;
+      position: absolute;
+      bottom: -12px;
+      right: 6px; }
   footer .copy .second-logo-link {
     padding-left: 10px;
     border-left: 1px solid #4f4f4f; }
@@ -1870,252 +2013,136 @@ footer {
   right: 10px;
   top: 10px; }
 
-.project.card {
-  width: 95%;
-  border-radius: 0;
-  padding: 0;
-  margin: 0 auto 30px;
-  top: 15px;
-  border: 1px solid #00AEEF;
-  box-shadow: 3px 6px 9px #BDBDBD; }
-.project .maker-name {
-  color: #00AEEF; }
-.project .image-top {
-  width: 332px;
-  height: 265px;
-  background-color: #bbb;
-  overflow: hidden;
-  background: url("../images/placeholder.png") center center;
-  background-size: cover;
-  position: relative;
-  top: -15px;
-  left: -20px; }
-  .project .image-top .card-img-top {
-    border-radius: 0; }
-  .project .image-top img {
-    height: 100%;
-    width: 100%; }
-.project .image-top-lg {
-  background-color: #bbb;
-  overflow: hidden;
-  background: url("../images/placeholder.png") center center;
-  background-size: cover;
-  position: relative;
-  top: -15px;
-  left: -20px; }
-  .project .image-top-lg .card-img-top {
-    border-radius: 0; }
-  .project .image-top-lg img {
-    height: 100%;
-    width: 100%; }
-.project .card-block {
-  padding: 0 10px;
-  margin-top: -5px;
-  height: 175px;
-  position: relative; }
-  .project .card-block .content-side {
-    padding-left: 5px;
-    width: 80%; }
-.project .icons-side-project .project-icon {
-  height: 35px; }
-  .project .icons-side-project .project-icon img {
-    width: auto;
-    height: 30px; }
-.project .icons {
-  position: absolute;
-  color: white;
-  top: -12px;
-  left: -10px;
-  font-size: 13px;
-  padding: 20px; }
-  .project .icons span {
-    margin: 2px;
-    font-size: 13px; }
-    .project .icons span i {
-      margin-right: 4px;
-      font-size: 17px; }
-.project .card-title {
-  font-family: "Messina Modern Bold" !important;
-  font-size: 1.5em !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  line-height: 115% !important;
-  color: #828282;
-  color: #4F4F4F;
-  height: 55px;
-  padding: 0px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 30px;
-  text-align: left;
-  width: 100%;
-  margin: 0; }
-.project .card-text {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  margin: 0 5px;
-  color: #333333;
-  height: 50px; }
-  .project .card-text.project-text-grid {
-    display: none; }
-.project .categories {
-  display: none; }
-  .project .categories span {
-    margin-left: 3px;
-    color: #BDBDBD; }
-.project .card-role p {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  font-size: 15px;
-  color: #BDBDBD; }
-.project .card-stats {
-  padding: 2px;
-  color: #BDBDBD; }
-  .project .card-stats ul li {
-    width: 80px;
-    font-family: "Messina Sans Regular" !important;
-    font-size: 0.9em !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    line-height: 100% !important;
-    color: #828282; }
-    .project .card-stats ul li img {
-      margin-right: 6px; }
-      .project .card-stats ul li img.project-likes {
-        width: 12px; }
-      .project .card-stats ul li img.project-views {
-        width: 20px; }
-    .project .card-stats ul li span {
-      margin: 0px; }
-
-.project-home {
-  height: 375px; }
-  .project-home.card {
+.project {
+  height: 460px; }
+  .project.card {
     border-radius: 0;
     padding: 0;
-    margin: 0 auto;
-    top: 15px;
-    margin-bottom: 30px;
-    border: 1px solid #00AEEF; }
-  .project-home .image-top {
-    width: 345px;
-    height: 265px;
+    margin: 0 auto 30px;
+    border: 1px solid #00AEEF;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  .project .maker-name {
+    color: #00AEEF; }
+  .project .image-top {
+    height: 275px;
     background-color: #bbb;
     overflow: hidden;
     background: url("../images/placeholder.png") center center;
     background-size: cover;
-    overflow: hidden;
-    position: relative;
-    top: -15px;
-    left: -20px;
-    height: 240px; }
-    .project-home .image-top .card-img-top {
-      border-radius: 0; }
-    .project-home .image-top img {
-      height: auto;
-      width: 100%; }
-  .project-home .card-block {
-    padding: 0 5px;
-    margin-top: -5px;
-    height: 175px;
     position: relative; }
-    .project-home .card-block .content-side {
+    .project .image-top .card-img-top {
+      border-radius: 0; }
+    .project .image-top img {
+      height: 100%;
+      width: 100%; }
+  .project .image-top-lg {
+    background-color: #bbb;
+    overflow: hidden;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover;
+    position: relative; }
+    .project .image-top-lg .card-img-top {
+      border-radius: 0; }
+    .project .image-top-lg img {
+      height: 100%;
+      width: 100%; }
+  .project .card-block {
+    padding: 0 15px;
+    position: relative; }
+    .project .card-block .content-side {
       padding-left: 5px;
-      width: 80%; }
-    .project-home .card-block .profiel-pic-container {
-      width: 60px; }
-      .project-home .card-block .profiel-pic-container .title-name {
+      width: 90%; }
+    .project .card-block .profiel-pic-container {
+      width: 80px;
+      height: 80px; }
+      .project .card-block .profiel-pic-container .title-name {
         width: 80%; }
-      .project-home .card-block .profiel-pic-container img {
+      .project .card-block .profiel-pic-container img {
         width: 100%; }
-  .project-home .icons-side-project {
-    margin-top: 5px; }
-    .project-home .icons-side-project .project-icon img {
+    .project .card-block .maker-data-container {
+      width: 230px; }
+  .project .icons-side-project {
+    position: relative;
+    top: -18px;
+    height: 40px;
+    z-index: 105; }
+    .project .icons-side-project .project-icon img {
       width: auto;
-      height: 30px; }
-  .project-home .icons {
+      height: 40px;
+      margin-right: 5px; }
+  .project .icons {
     position: absolute;
     color: white;
     top: -12px;
     left: -10px;
     font-size: 13px;
     padding: 20px; }
-    .project-home .icons span {
+    .project .icons span {
       margin: 2px;
       font-size: 13px; }
-      .project-home .icons span i {
+      .project .icons span i {
         margin-right: 4px;
         font-size: 17px; }
-  .project-home .card-title {
+  .project .card-title {
     font-family: "Messina Modern Bold" !important;
-    font-size: 1.5em !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-    line-height: 115% !important;
-    color: #828282;
-    color: #4F4F4F;
-    height: 60px;
-    padding: 0px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 30px;
-    text-align: left;
-    width: 100%;
-    margin: 0; }
-  .project-home .maker-name {
-    font-family: "Messina Sans SemiBold" !important;
-    font-size: 0.9em !important;
+    font-size: 1.16em !important;
     font-weight: 400 !important;
     text-transform: none !important;
     line-height: 100% !important;
     color: #828282;
-    color: #00AEEF; }
-  .project-home .card-text {
+    color: #4F4F4F;
+    height: 44px;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 23px !important;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .project .card-text {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     margin: 0 5px;
-    color: #333333; }
-    .project-home .card-text.project-text-grid {
+    color: #333333;
+    height: 50px; }
+    .project .card-text.project-text-grid {
       display: none; }
-  .project-home .categories {
+  .project .categories {
     display: none; }
-    .project-home .categories span {
+    .project .categories span {
       margin-left: 3px;
       color: #BDBDBD; }
-  .project-home .card-role p {
+  .project .card-role p {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-size: 15px;
     color: #BDBDBD; }
-  .project-home .card-stats {
+  .project .card-stats {
     padding: 2px;
     color: #BDBDBD; }
-    .project-home .card-stats ul li {
+    .project .card-stats ul li {
+      width: 80px;
       font-family: "Messina Sans Regular" !important;
       font-size: 0.9em !important;
       font-weight: 400 !important;
       text-transform: none !important;
       line-height: 100% !important;
       color: #828282; }
-      .project-home .card-stats ul li img {
+      .project .card-stats ul li img {
         margin-right: 6px; }
-        .project-home .card-stats ul li img.project-likes {
+        .project .card-stats ul li img.project-likes {
           width: 12px; }
-        .project-home .card-stats ul li img.project-views {
+        .project .card-stats ul li img.project-views {
           width: 20px; }
-      .project-home .card-stats ul li span {
+      .project .card-stats ul li span {
         margin: 0px; }
 
 /* project card on search page */
@@ -2138,9 +2165,6 @@ footer {
         padding-left: 0;
         padding-top: 10px;
         padding-bottom: 0;
-        position: relative;
-        left: -20px;
-        top: -40px;
         margin-bottom: -20px;
         width: 150px;
         height: 125px;
@@ -2565,9 +2589,6 @@ footer {
         padding-left: 0;
         padding-top: 10px;
         padding-bottom: 0;
-        position: relative;
-        left: -20px;
-        top: -36px;
         margin-bottom: -20px;
         width: 172px;
         height: 215px; }
@@ -2664,49 +2685,48 @@ footer {
             width: 30px; }
 
 .maker-card {
-  height: 375px; }
+  height: 460px; }
   .maker-card.card {
-    width: 95%;
     border-radius: 0;
     padding: 0;
     margin: 0 auto 30px;
-    top: 15px;
-    border: none; }
+    border: none;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .maker-card .card-type {
     right: -22px; }
   .maker-card .image-top {
     width: 100%;
-    height: 250px;
+    height: 275px;
     overflow: hidden;
     position: relative;
-    top: -15px;
-    left: -20px;
     background: url("../images/placeholder.png") center center;
     background-size: cover; }
     .maker-card .image-top .card-img-top {
       border-radius: 0; }
     .maker-card .image-top img {
-      height: auto;
+      height: 100%;
       width: 100%; }
   .maker-card .card-block {
-    padding: 0 10px;
-    margin-top: -5px;
+    padding: 0 15px;
     height: 175px;
     position: relative; }
     .maker-card .card-block .content-side {
       padding-left: 5px;
-      width: 80%; }
+      width: 90%; }
     .maker-card .card-block p {
       margin-bottom: 0; }
     .maker-card .card-block .maker-name {
       font-family: "Messina Modern Bold" !important;
-      font-size: 1.5em !important;
+      font-size: 1.16em !important;
       font-weight: 400 !important;
       text-transform: none !important;
-      line-height: 115% !important;
-      color: #828282; }
+      line-height: 100% !important;
+      color: #828282;
+      color: #00AEEF; }
     .maker-card .card-block .maker-nickname {
-      font-family: "Messina Sans Regular" !important;
+      font-family: "Messina Modern Regular" !important;
       font-size: 0.95em !important;
       font-weight: 400 !important;
       text-transform: none !important;
@@ -2721,7 +2741,8 @@ footer {
       line-height: 100% !important;
       color: #828282;
       margin-bottom: 5px;
-      color: #00AEEF; }
+      margin-top: 5px;
+      font-size: 0.8em !important; }
     .maker-card .card-block .maker-descripe {
       font-family: "Messina Modern Regular" !important;
       font-size: 0.95em !important;
@@ -2731,13 +2752,15 @@ footer {
       color: #828282;
       margin-top: 5px;
       font-weight: bold; }
-    .maker-card .card-block .card-stats ul {
-      margin-bottom: 0; }
-  .maker-card .icons-side-project .project-icon {
-    height: 45px; }
+  .maker-card .icons-side-project {
+    position: relative;
+    top: -18px;
+    height: 40px;
+    margin-bottom: -10px; }
     .maker-card .icons-side-project .project-icon img {
       width: auto;
-      height: 40px; }
+      height: 40px;
+      margin-right: 5px; }
   .maker-card .icons {
     position: absolute;
     color: white;
@@ -2822,11 +2845,8 @@ footer {
     right: -15px; }
   .mobile-profile-container .maker-mobile-card .image-top {
     width: 100%;
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-    top: -15px;
-    left: -20px; }
+    height: 275px;
+    overflow: hidden; }
     .mobile-profile-container .maker-mobile-card .image-top .card-img-top {
       border-radius: 0; }
     .mobile-profile-container .maker-mobile-card .image-top img {
@@ -2834,7 +2854,6 @@ footer {
       width: 100%; }
   .mobile-profile-container .maker-mobile-card .card-block {
     padding: 15px 10px;
-    margin-top: -5px;
     position: relative; }
     .mobile-profile-container .maker-mobile-card .card-block .content-side {
       padding-left: 5px;
@@ -2956,9 +2975,6 @@ footer {
   .mobile-profile-container .maker-mobile-card .profile-pic-container {
     width: 150px;
     height: 120px;
-    position: relative;
-    top: -25px;
-    left: -25px;
     margin-bottom: -20px;
     margin-right: -15px;
     background: url("../images/placeholder.png") center center;
@@ -3139,15 +3155,15 @@ footer {
     line-height: 100% !important;
     color: #828282; }
 
-.challenges-container {
-  padding: 10px; }
-
 .page-challenge .challenge-card {
   position: relative;
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #333333; }
+  background-color: #333333;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-challenge .challenge-card .single-challenge {
     padding: 10px; }
     .page-challenge .challenge-card .single-challenge img {
@@ -3164,13 +3180,7 @@ footer {
       width: 100%;
       height: 100%;
       max-width: 100%; }
-  .page-challenge .challenge-card .card-container {
-    color: #fff;
-    position: relative;
-    height: 100%; }
-    .page-challenge .challenge-card .card-container .card {
-      height: 100%; }
-    .page-challenge .challenge-card .card-container .challenge-type-badge {
+    .page-challenge .challenge-card .image-container .challenge-type-badge {
       font-family: "Messina Sans Regular" !important;
       font-size: 0.95em !important;
       font-weight: 400 !important;
@@ -3178,11 +3188,32 @@ footer {
       line-height: 100% !important;
       color: #828282;
       position: absolute;
-      top: 24px;
-      right: -44px;
-      transform: rotate(-90deg); }
-      .page-challenge .challenge-card .card-container .challenge-type-badge p {
+      top: 6px;
+      left: 0px;
+      background-color: #333333; }
+      .page-challenge .challenge-card .image-container .challenge-type-badge p {
         margin: 0px; }
+      .page-challenge .challenge-card .image-container .challenge-type-badge::after {
+        content: ' ';
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-left: 10px solid #333333;
+        border-bottom: 14px solid transparent;
+        right: -10px;
+        position: absolute;
+        top: 0px; }
+      .page-challenge .challenge-card .image-container .challenge-type-badge .type-layer-2 {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 7px 11px 7px 11px; }
+  .page-challenge .challenge-card .card-container {
+    color: #fff;
+    position: relative;
+    height: 100%; }
+    .page-challenge .challenge-card .card-container .card {
+      height: 100%; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
       font-size: 2.3em !important;
@@ -3343,14 +3374,15 @@ footer {
       margin-left: 10px; }
 
 .front .front-challenge-card {
-  margin-bottom: 10px;
   position: relative;
-  padding: 16px;
+  padding: 0px;
   overflow: hidden;
   cursor: pointer;
   background-color: #333;
-  height: 390px;
-  top: -10px; }
+  height: 460px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .front .front-challenge-card span {
     color: white; }
   .front .front-challenge-card a {
@@ -3363,14 +3395,13 @@ footer {
     border: none; }
     .front .front-challenge-card .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 3em !important;
+      font-size: 2em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
       line-height: 100% !important;
       color: #828282;
       color: #fff;
-      max-height: 145px;
-      overflow: hidden; }
+      max-height: 145px; }
     .front .front-challenge-card .card .card-type {
       top: 25px;
       right: -45px; }
@@ -3387,12 +3418,14 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: 360px;
+    height: 430px;
     background: url("../images/placeholder.png") center center;
     background-size: cover; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
+  .front .front-challenge-card .content-container {
+    padding-bottom: 30px; }
   .front .front-challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular" !important;
     font-size: 0.95em !important;
@@ -3404,11 +3437,22 @@ footer {
     font-size: 14px;
     display: inline-block;
     min-height: 16px;
-    margin-bottom: 10px; }
+    margin: 16px 0px 16px 0px; }
     .front .front-challenge-card .card-container .card-partership p {
       margin-bottom: 0px; }
   .front .front-challenge-card .card-container .card-description h4 {
     font-weight: bold; }
+  .front .front-challenge-card .card-container .card-description p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.1em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 115% !important;
+    color: #828282;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
   .front .front-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -3416,38 +3460,50 @@ footer {
       align-self: end; }
       .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
         background-color: #BDBDBD; }
+      .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
+        padding: 15px 20px; }
     .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
       font-size: 12px; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
         padding-left: 10px; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-        padding-right: 10px;
-        border-right: 1px solid white; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-      font-size: 12px;
-      padding-right: 5px; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
-      color: white; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-      color: #00AEEF; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
-      font-size: 12px; }
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
+      line-height: 16px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+        font-size: 12px;
+        padding-right: 5px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+        color: white; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+        color: #00AEEF; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+        font-size: 12px; }
 .front .challenge-card-full.front-challenge-card {
   padding: 0;
-  height: 350px;
-  margin-top: 20px; }
+  margin: 30px 0px 30px 0px;
+  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .front .challenge-card-full.front-challenge-card .card-type {
     z-index: 1000; }
   .front .challenge-card-full.front-challenge-card .card-container {
     position: absolute;
-    bottom: 15px;
-    left: 15px; }
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    padding-left: 26px; }
+    .front .challenge-card-full.front-challenge-card .card-container .card {
+      width: 65%; }
   .front .challenge-card-full.front-challenge-card .image-container {
     padding: 0;
     width: 100%;
-    height: 360px;
+    height: 460px;
     max-width: 100%;
     max-height: 100%; }
+.front .button-container-main-1 {
+  margin-right: 18px; }
+.front .challenge-card-count span {
+  padding-right: 10px;
+  border-right: 1px solid #fff; }
 
 .page-project {
   color: #333333;
@@ -4281,6 +4337,9 @@ header.showcase-project .next {
   overflow: hidden;
   cursor: pointer;
   background-color: #DCDCDC;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   margin: 10px 0; }
   .page-learn .learn-card .learn-type-bagde {
     position: absolute;
@@ -4300,7 +4359,7 @@ header.showcase-project .next {
   .page-learn .learn-card .image-container {
     overflow: hidden;
     position: relative;
-    padding: 0px 15px; }
+    padding: 0px; }
     .page-learn .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4451,12 +4510,15 @@ header.showcase-project .next {
 
 .front .learn-card {
   position: relative;
-  padding: 16px;
+  padding: 0px;
   overflow: hidden;
   cursor: pointer;
   background-color: #DCDCDC;
-  height: 390px;
-  margin-bottom: 35px; }
+  height: 460px;
+  margin-bottom: 35px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
@@ -4472,12 +4534,14 @@ header.showcase-project .next {
     overflow: hidden;
     position: relative;
     padding: 0;
-    height: 360px;
+    height: 430px;
     background: url("../images/placeholder.png") center center;
     background-size: cover; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
+  .front .learn-card .container-content {
+    margin-bottom: 30px; }
   .front .learn-card .card-container {
     color: #fff;
     position: relative; }
@@ -4489,18 +4553,15 @@ header.showcase-project .next {
       color: #4F4F4F; }
       .front .learn-card .card-container .learn-type-bagde p {
         margin: 0px; }
+    .front .learn-card .card-container .card-partership {
+      margin: 16px 0px 16px 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 2.3em !important;
+      font-size: 2em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 105% !important;
+      line-height: 100% !important;
       color: #828282;
-      font-size: 38px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
       color: #4F4F4F; }
     .front .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular" !important;
@@ -4521,7 +4582,7 @@ header.showcase-project .next {
       line-height: 115% !important;
       color: #828282;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 7;
       -webkit-box-orient: vertical;
       overflow: hidden;
       color: #4F4F4F; }
@@ -4533,6 +4594,8 @@ header.showcase-project .next {
       border-radius: 20px;
       font-size: 13px;
       margin-left: 10px; }
+    .front .learn-card .card-container .learn-card-footer-1 .button-container-main-1 .btn {
+      padding: 15px 20px; }
 
 .page-showcase,
 .page-single-showcase {
@@ -4715,9 +4778,9 @@ header.showcase-project .next {
   padding-right: 23px;
   padding-bottom: 9px;
   margin-bottom: 10px;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-single-showcase .showcase-card-backlayer:hover {
     background-color: #D4EFFC;
     transition: inherit; }
@@ -4773,11 +4836,10 @@ img {
 .showcase-card-backlayer-home {
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  height: 363px;
-  margin-top: 25px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  height: 460px;
   margin-bottom: 20px; }
   .showcase-card-backlayer-home:hover {
     background-color: #00AEEF;
@@ -4785,33 +4847,34 @@ img {
   .showcase-card-backlayer-home:hover .showcase-card-backlayer-home-2 {
     transition: background-color 0.8s ease;
     background-color: #D4EFFC;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .showcase-card-backlayer-home .showcase-card-backlayer-home-2 {
     background-color: #D4EFFC;
     transition: background-color 0.8s ease;
     margin-bottom: 10px;
     position: relative;
-    top: -10px;
-    left: -9px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     background-color: transparent;
-    height: 363px;
-    margin-top: 9px !important; }
+    height: 450px; }
   .showcase-card-backlayer-home .showcase-card {
     position: relative;
-    top: -16px;
-    left: -9px;
     padding: 16px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     cursor: pointer;
     background-color: white;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    height: 363px; }
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    height: 440px; }
     .showcase-card-backlayer-home .showcase-card .card {
       background-color: transparent;
       border: none; }
+      .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
+        color: #00AEEF; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer-home .showcase-card .single-showcase img {
@@ -4849,12 +4912,13 @@ img {
         line-height: 105% !important;
         color: #828282;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 190px;
+        max-height: 176px;
         color: #333333;
-        margin-bottom: 20px; }
+        margin-bottom: 20px;
+        line-height: 120% !important; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.3em !important;
@@ -4868,17 +4932,17 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
-        font-size: 0.95em !important;
+        font-size: 1.1em !important;
         font-weight: 400 !important;
         text-transform: none !important;
-        line-height: 100% !important;
+        line-height: 115% !important;
         color: #828282;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
         color: #333333;
-        height: 71px; }
+        max-height: 102px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
@@ -4974,7 +5038,7 @@ img {
           color: #BDBDBD; }
       .page-search-content .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
-        font-size: 3em !important;
+        font-size: 2em !important;
         font-weight: 400 !important;
         text-transform: capitalize !important;
         line-height: 100% !important;
@@ -5762,7 +5826,10 @@ img {
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #333333; }
+  background-color: #333333;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-challenge-summary .challenge-card .left-side, .page-challenge-summary-closed .challenge-card .left-side, .page-enter-challenge .challenge-card .left-side {
     padding: 0px;
     overflow: hidden; }
@@ -7048,9 +7115,8 @@ img {
     height: 55px;
     color: #4F4F4F; }
   .front .front-challenge-card {
-    height: 420px; }
+    height: auto; }
     .front .front-challenge-card .image-container {
-      margin: 0 30px 0 15px;
       max-height: 160px;
       max-width: 520px;
       background: url("../images/placeholder.png") center center;
@@ -7094,16 +7160,10 @@ img {
   .front .lone-card {
     order: 5; }
 
-  .project .image-top {
-    width: 305px; }
+  .project .card .maker-data-container {
+    width: 180px; }
 
   .project-home .image-top {
     width: 325px; } }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .project .image-top {
-    width: 275px; }
-
-  .project-home .image-top {
-    width: 285px; } }
 
 /*# sourceMappingURL=style.css.map */

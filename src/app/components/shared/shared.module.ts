@@ -35,7 +35,9 @@ import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn
 import { ReportUserComponent } from './report-user/report-user.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
-import { ProjectVoteComponent } from './project-vote/project-vote.component'
+import { ProjectVoteComponent } from './project-vote/project-vote.component';
+import { FileManagerComponent } from './file-manager/file-manager.component';
+import { FileCardComponent } from './file-manager/file-card/file-card.component'
  
  let config = {
     breakPoints: {
@@ -97,6 +99,8 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component'
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
+    FileManagerComponent,
+    FileCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -128,6 +132,8 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component'
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
+    FileManagerComponent,
+    FileCardComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 

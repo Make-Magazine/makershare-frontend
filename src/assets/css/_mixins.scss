@@ -18,6 +18,13 @@
 	line-height: $lh !important;
 	color: $c ;
 }
+
+@mixin boxShadow($h, $v, $b, $c){
+		-moz-box-shadow:$h $v $b $c;
+		-webkit-box-shadow: $h $v $b $c;
+		box-shadow: $h $v $b $c;
+}
+
 @mixin header-font (){
 	@include font-setting('Messina Modern Regular', 3.4em ,400 ,capitalize , 100%, $text-color-1 );
 	// 64 pt
@@ -28,7 +35,7 @@
 	// 48 pt
 }
 @mixin card-header-font-md-2 (){
-	@include font-setting('Messina Modern Regular', 3em ,400 ,capitalize , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 2em ,400 ,capitalize , 100%, $text-color-2 );
 	// 48 pt
 }
 @mixin card-header-font-md (){

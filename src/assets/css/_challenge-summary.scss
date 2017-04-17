@@ -326,6 +326,9 @@
     overflow: hidden;
     cursor:pointer;
     background-color: $challenge-bg;
+		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		.left-side {
 			padding: 0px;
 			overflow: hidden;
