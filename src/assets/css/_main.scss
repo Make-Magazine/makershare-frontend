@@ -346,6 +346,7 @@ body {
     }
 }
 
+.card-type-grey-2,
 .card-type-blue,
 .card-type-grey {
     @include desc-font-1();
@@ -389,5 +390,12 @@ body {
     background-color: $blue;
     &::after {
         border-left: 10px solid $blue;
+    }
+}
+
+.card-type-grey-2 {
+    background-color: $text-color-1;
+    &::after {
+        border-left: 10px solid $text-color-1;
     }
 }

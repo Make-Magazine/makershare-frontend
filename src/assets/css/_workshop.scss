@@ -144,7 +144,6 @@
             }
         }
         .image-container {
-            overflow: hidden;
             position: relative;
             padding: 0px;
             img {
@@ -304,7 +303,6 @@
         }
         position: relative;
         padding: 0px;
-        overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
         height: 460px;
@@ -322,7 +320,6 @@
             }
         }
         .image-container {
-            overflow: hidden;
             position: relative;
             padding: 0;
             height: 430px;

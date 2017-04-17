@@ -2,7 +2,7 @@
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
     <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="!challenge.cover_image" src="http://placehold.it/365x290" alt="">
-    <div class="horizontal-type-badge-challenge">
+    <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
       </div>
@@ -67,7 +67,7 @@
   <div class="col-md-6 col-sm-12 image-container">
     <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="!challenge.challenge_home_photo" src="http://placehold.it/365x290" alt="">
-    <div class="horizontal-type-badge-challenge">
+    <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
       </div>
@@ -127,7 +127,7 @@
   <div class="image-container">
     <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="!challenge.challenge_home_photo" src="http://placehold.it/365x290" alt="">
-    <div class="horizontal-type-badge-challenge">
+    <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
       </div>
