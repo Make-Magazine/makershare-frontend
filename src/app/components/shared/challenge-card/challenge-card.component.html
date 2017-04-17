@@ -128,8 +128,7 @@
 <div class="front-challenge-card challenge-card-full row" *ngIf="challenge && front && first">
 
   <div class="image-container">
-    <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.challenge_home_photo" src="http://placehold.it/365x290" alt="">
+    <img *ngIf="challenge.hero_mission_cover" src="{{challenge.hero_mission_cover}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <div class="horizontal-type-badge-challenge">
       <div class="type-layer-2">
         Mission

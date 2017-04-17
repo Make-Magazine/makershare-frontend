@@ -22,7 +22,6 @@ countlessons;
         this.viewService.getView('shared-learn-card',[['nid',this.workshopNid]]).subscribe(data => {
       this.getCountlessons();
      this.learn = data[0];
-     console.log (this.learn);
   });
 }
   WorkshopDetails(nid) {
