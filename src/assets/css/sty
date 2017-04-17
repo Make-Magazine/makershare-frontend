@@ -5141,36 +5141,6 @@ img {
       text-transform: capitalize !important;
       line-height: 100% !important;
       color: #4F4F4F; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .create-project-buttons:hover {
-      cursor: pointer; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-draft .btn {
-      padding: 12px 40px 12px 40px;
-      font-size: 16px; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-private .btn {
-      background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      padding: 4px 6px 4px 6px; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-private .btn-main {
-      background: #ED1C24 !important;
-      background-color: #ED1C24;
-      border-color: #d51920; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-public .btn {
-      background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-      padding: 4px 6px 4px 6px; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-public .btn-main {
-      background: #ED1C24 !important;
-      background-color: #ED1C24;
-      border-color: #d51920; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-delete .btn {
-      padding: 4px 6px 4px 6px; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-publish .btn {
-      padding: 12px 40px 12px 40px;
-      font-size: 16px; }
   .page-create-project-why .form-group {
     margin-top: 40px; }
     .page-create-project-why .form-group br {
@@ -5474,7 +5444,7 @@ img {
   border-radius: 0;
   font-size: 16px;
   border: 1px solid #BDBDBD;
-  padding: 8px 50px 8px 50px;
+  padding: 8px 30px 8px 30px;
   color: #BDBDBD;
   background-color: inherit; }
   .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
@@ -7082,4 +7052,4 @@ img {
   .project-home .image-top {
     width: 285px; } }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=sty.map */
