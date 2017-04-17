@@ -31,7 +31,6 @@ export class FileManagerComponent implements OnInit {
   }
 
   UploadFile(file:File){
-    console.log(file);
     let AllowedFileTypes = ['jpeg','jpg','png','gif','pdf','epub','xls','ppt','pptx','sxls','doc','docx','txt'];
     if(!file || AllowedFileTypes.indexOf(file.name.split('.')[1]) == -1) return;
     const self = this;
@@ -42,7 +41,6 @@ export class FileManagerComponent implements OnInit {
         filename:file.name,
       };
       self.fileService.SendCreatedFile(fileEntity).subscribe((f)=>{
-        console.log(f);
         self.UpdateFiles();
       },err=>console.log(err));
     };

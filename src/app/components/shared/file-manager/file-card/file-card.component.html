@@ -1,5 +1,6 @@
 <div *ngIf="fileCard">
-  <img [src]="fileCard.url">
+  <img *ngIf="fileCard.type == 'image'" [src]="fileCard.url">
+  <div *ngIf="fileCard.type != 'image'">No Preview available</div>
   <button *ngIf="type == 'browse'" (click)="SelectFile()"> select </button>
   <button (click)="CheckFileBeforeDelete(ConfirmDelete)"> delete </button>
 </div>
