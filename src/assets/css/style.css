@@ -5143,8 +5143,10 @@ img {
       color: #4F4F4F; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .create-project-buttons:hover {
       cursor: pointer; }
+    .page-create-project-why .add-controls .project-create-buttons .contorls button:hover {
+      cursor: pointer; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-draft .btn {
-      padding: 12px 40px 12px 40px;
+      padding: 10px 40px 10px 40px;
       font-size: 16px; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-private .btn {
       background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
@@ -5169,7 +5171,7 @@ img {
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-delete .btn {
       padding: 4px 6px 4px 6px; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-publish .btn {
-      padding: 12px 40px 12px 40px;
+      padding: 10px 40px 10px 40px;
       font-size: 16px; }
   .page-create-project-why .form-group {
     margin-top: 40px; }
@@ -5230,6 +5232,8 @@ img {
       margin-left: 5px;
       width: auto;
       padding-top: 9px; }
+      .page-create-project-why .your-story .projectCategory .add-cate:hover {
+        cursor: pointer; }
     .page-create-project-why .your-story .projectCategory .categories-group {
       width: 100%; }
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
