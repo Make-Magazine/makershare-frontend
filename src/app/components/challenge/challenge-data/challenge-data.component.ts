@@ -99,10 +99,8 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_followers', [['nid', nid['nid']], ['page', this.pageNo]]))
       .subscribe(data => {
         if (follow_update) {
-          console.log(this.pageNumber)
           this.followers = this.followers.concat(data);
         } else {
-          console.log(this.pageNumber)
 
           this.followers = data;
         }
