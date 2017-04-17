@@ -82,7 +82,6 @@ challengeData=[];
         this.challenge.challenge_start_date.value = this.changeDateFormat(this.challenge.challenge_start_date.value);
         this.challenge.winners_announcement_date.value = this.changeDateFormat(this.challenge.winners_announcement_date.value);
   }, err => {
-      console.log(err);
   });
 }
   /* function to change data format */

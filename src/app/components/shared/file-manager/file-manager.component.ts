@@ -21,7 +21,6 @@ export class FileManagerComponent implements OnInit {
   UpdateFiles(){
     this.viewService.getView('maker_manage_file/'+localStorage.getItem("user_id")).subscribe((data:FileManageService)=>{
       this.fileManageService = data;
-      console.log(this.fileManageService);
     });
   }
 }

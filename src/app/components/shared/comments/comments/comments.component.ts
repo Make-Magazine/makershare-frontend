@@ -43,8 +43,6 @@ export class CommentsComponent implements OnInit {
   getcommentsByID(id) {
     this.viewService.getView('node-comments', [['nid', this.nodeId]]).subscribe(data => {
       this.comments.value = data;
-      console.log(data.length);
-      console.log(data);
     });
   }
   /* end function  get comments */

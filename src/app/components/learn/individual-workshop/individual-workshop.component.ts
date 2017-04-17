@@ -73,7 +73,6 @@ export class IndividualWorkshopComponent implements OnInit {
     this.viewService.getView('individual-workshop', [['nid', this.nid]])
       .subscribe(data => {
         this.workshop = data[0];
-        console.log(this.workshop)
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];
@@ -108,7 +107,6 @@ export class IndividualWorkshopComponent implements OnInit {
         for (let object in this.objects) {
           if (this.objects[object].video && this.objects[object].video !== '') {
             if (this.youtube_parser(this.objects[object].video)) {
-              //  console.log (this.youtube_parser(this.objects[object].video))
               this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.objects[object].video) + '"frameborder="0" style="width:100%; height:270px;"></iframe>';
               this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
               this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
