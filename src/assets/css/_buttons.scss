@@ -197,7 +197,7 @@ a:not([href]):not([tabindex]).message-btn {
     border: none;
     background: inherit;
     position: absolute;
-    bottom: 48px;
+    bottom: 15px;
     right: 10px;
     &:hover, &:focus, &:active {
         color: $main-grey;
@@ -316,14 +316,17 @@ a:not([href]):not([tabindex]).btn-vote {
     color: $main-grey*0.8;
     background: transparent;
     border: 1px solid;
-        margin-left: 32px;
-        width: 75%;
+        margin-left: 88px;
+        padding:5px;
+        width: 50%;
    // margin-left: 0px;
     /* margin: 0 auto; */
     text-align: center;
-    &:focus, &:active, &:hover {
+    &:focus, &:active, &:hover , &.active {
         color: #FFF;
         background-color: $btn-primary-2;
         box-shadow: none;
+            border: 1px solid;
+
     }
 }
