@@ -14,14 +14,17 @@
     </div>
   </div>
 </div>-->
-<div class="row" *ngIf="!front">
+<div class="row learn-card" *ngIf="!front">
   <div class="col-md-4 image-container">
     <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+    <img *ngIf="!learn.cover_photo" src="http://placehold.it/365x290" alt="">
+    <div class="horizontal-type-badge-learn">
+      <div class="type-layer-2">
+        Learn
+      </div>
+    </div>
   </div>
   <div class="col-md-8 container-content">
-    <div class="learn-type-bagde">
-          <p>WORKSHOP</p>
-        </div>
     <div class="card-container">
       <div class="card">
         <div class="card-partership">
@@ -51,13 +54,25 @@
     <!-- End card-container -->
   </div>
 </div>
+
+
+
+
+
 <div *ngIf="front">
   <div class="learn-card row">
-    <p class="card-type">WORKSHOP</p>
-    <div class="col-md-5 image-container">
+    <div class="col-md-6 col-sm-12 image-container">
       <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+      <img *ngIf="!learn.cover_photo" src="http://placehold.it/365x290" alt="">
+      <div class="horizontal-type-badge-learn">
+        <div class="type-layer-2">
+          Learn
+        </div>
+      </div>
+      <div class="horizontal-type-badge-learn">
+      </div>
     </div>
-    <div class="col-md-7 container-content">
+    <div class="col-md-6 col-sm-12 container-content">
       <div class="card-container h-100">
         <div class="card h-100">
           <div class="card-partership">
