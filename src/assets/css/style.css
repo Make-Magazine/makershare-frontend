@@ -378,10 +378,11 @@ a:not([href]):not([tabindex]).btn-vote {
   width: 75%;
   /* margin: 0 auto; */
   text-align: center; }
-  .btn-vote:focus, .btn-vote:active, .btn-vote:hover,
+  .btn-vote:focus, .btn-vote:active, .btn-vote:hover, .btn-vote.active,
   a:not([href]):not([tabindex]).btn-vote:focus,
   a:not([href]):not([tabindex]).btn-vote:active,
-  a:not([href]):not([tabindex]).btn-vote:hover {
+  a:not([href]):not([tabindex]).btn-vote:hover,
+  a:not([href]):not([tabindex]).btn-vote.active {
     color: #FFF;
     background-color: #ED1C24;
     box-shadow: none; }

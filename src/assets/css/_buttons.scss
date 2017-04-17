@@ -321,7 +321,7 @@ a:not([href]):not([tabindex]).btn-vote {
    // margin-left: 0px;
     /* margin: 0 auto; */
     text-align: center;
-    &:focus, &:active, &:hover {
+    &:focus, &:active, &:hover , &.active {
         color: #FFF;
         background-color: $btn-primary-2;
         box-shadow: none;
