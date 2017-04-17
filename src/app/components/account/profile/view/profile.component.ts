@@ -155,6 +155,7 @@ export class ProfileComponent implements OnInit {
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
     });
   }
+  CurrentModalTab:string;
   ImageFile:any;
   ProfilePicData: any = {};
   FileName: string = '';
@@ -205,6 +206,7 @@ export class ProfileComponent implements OnInit {
     this.ProfilecropperSettings.noFileInput = true;
   }
   ngOnInit() {
+    this.CurrentModalTab = 'personal info';
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {

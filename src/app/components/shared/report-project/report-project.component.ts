@@ -18,6 +18,7 @@ export class ReportProjectComponent implements OnInit {
   profileName;
   checkUserLogin = false;
   @Input() projectReportId;
+  @Input () projectAuthor;
   currentuser;
   isReported = false;
   closeResult: string;

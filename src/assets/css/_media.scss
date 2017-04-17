@@ -1,3 +1,4 @@
+
 @media (max-width: 414px) {
     .showcase-card-backlayer {
         .showcase-card {
@@ -289,7 +290,11 @@
     }
     .project {
         .image-top {
-            width: 305px;
+        }
+        .card {
+            .maker-data-container {
+                width: 180px;
+            }
         }
     }
     .project-home {
@@ -302,16 +307,6 @@
 @media only screen and (max-width: 991px) {}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .project {
-        .image-top {
-            width: 275px;
-        }
-    }
-    .project-home {
-        .image-top {
-            width: 285px;
-        }
-     }
 }
 
 @media only screen and (min-width: 1200px) {}

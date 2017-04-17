@@ -1,4 +1,4 @@
-<div >
+<div *ngIf="projectAuthor != userId" >
   <a class="report" *ngIf="!isReported" (click)="open(content)">Report this Project</a>
   <p *ngIf="isReported"> Project has been reported </p>
 </div>
