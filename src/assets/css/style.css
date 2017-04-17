@@ -3487,14 +3487,23 @@ footer {
     z-index: 1000; }
   .front .challenge-card-full.front-challenge-card .card-container {
     position: absolute;
-    bottom: 15px;
-    left: 15px; }
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    padding-left: 26px; }
+    .front .challenge-card-full.front-challenge-card .card-container .card {
+      width: 65%; }
   .front .challenge-card-full.front-challenge-card .image-container {
     padding: 0;
     width: 100%;
     height: 460px;
     max-width: 100%;
     max-height: 100%; }
+.front .button-container-main-1 {
+  margin-right: 18px; }
+.front .challenge-card-count span {
+  padding-right: 10px;
+  border-right: 1px solid #fff; }
 
 .page-project {
   color: #333333;
@@ -4864,6 +4873,8 @@ img {
     .showcase-card-backlayer-home .showcase-card .card {
       background-color: transparent;
       border: none; }
+      .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
+        color: #00AEEF; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer-home .showcase-card .single-showcase img {
@@ -4901,12 +4912,13 @@ img {
         line-height: 105% !important;
         color: #828282;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 190px;
+        max-height: 176px;
         color: #333333;
-        margin-bottom: 20px; }
+        margin-bottom: 20px;
+        line-height: 120% !important; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular" !important;
         font-size: 1.3em !important;
@@ -4920,17 +4932,17 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular" !important;
-        font-size: 0.95em !important;
+        font-size: 1.1em !important;
         font-weight: 400 !important;
         text-transform: none !important;
-        line-height: 100% !important;
+        line-height: 115% !important;
         color: #828282;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
         color: #333333;
-        height: 71px; }
+        max-height: 102px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
