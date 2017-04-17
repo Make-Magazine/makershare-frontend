@@ -827,6 +827,50 @@ body {
     width: 100%;
     padding: 7px 11px 7px 11px; }
 
+.card-type-blue,
+.card-type-grey {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  z-index: 10000;
+  top: 14px;
+  left: -2px;
+  box-shadow: 3px 6px 9px #BDBDBD; }
+  .card-type-blue p,
+  .card-type-grey p {
+    margin: 0px; }
+  .card-type-blue::after,
+  .card-type-grey::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 14px solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px; }
+  .card-type-blue .type-layer-2,
+  .card-type-grey .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px;
+    color: #fff; }
+
+.card-type-grey {
+  background-color: #333333; }
+  .card-type-grey::after {
+    border-left: 10px solid #333333; }
+
+.card-type-blue {
+  background-color: #00AEEF; }
+  .card-type-blue::after {
+    border-left: 10px solid #00AEEF; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
