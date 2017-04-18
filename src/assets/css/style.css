@@ -939,6 +939,44 @@ body {
   .card-type-grey-2::after {
     border-left: 10px solid #4F4F4F; }
 
+.card-type-user-small {
+  font-family: "Messina Sans Regular" !important;
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  line-height: 100% !important;
+  color: #828282;
+  position: absolute;
+  z-index: 10000;
+  top: 14px;
+  left: -2px;
+  box-shadow: 0px 2px 6px #333333;
+  -moz-box-shadow: 0px 2px 6px #333333;
+  -webkit-box-shadow: 0px 2px 6px #333333;
+  box-shadow: 0px 2px 6px #333333; }
+  .card-type-user-small p {
+    margin: 0px; }
+  .card-type-user-small::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 12.5px solid transparent;
+    border-bottom: 13px solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px; }
+  .card-type-user-small .type-layer-2 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 7px 11px 7px 11px;
+    color: #fff; }
+
+.card-type-user-small {
+  background-color: #4F4F4F; }
+  .card-type-user-small::after {
+    border-left: 10px solid #4F4F4F; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -1174,9 +1212,7 @@ footer {
   clear: both; }
 
 .user-card-small.card-block {
-  padding-top: 10px;
-  padding-bottom: 0;
-  padding-left: 0;
+  padding: 0px 8px 0px 0px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -1185,13 +1221,13 @@ footer {
   .user-card-small .icons-side-user .user-icon {
     float: left; }
     .user-card-small .icons-side-user .user-icon img {
-      width: 26px; }
+      width: 26px !important; }
 .user-card-small .card-type {
   top: 35px;
   right: -18px;
   font-size: 16px !important; }
 .user-card-small .count-list {
-  margin-top: 10px; }
+  margin: 6px 0px; }
 .user-card-small .card-stats {
   padding: 2px;
   color: #BDBDBD; }
@@ -1208,24 +1244,17 @@ footer {
     .user-card-small .card-stats ul li img {
       margin-right: 6px; }
       .user-card-small .card-stats ul li img.project-likes {
-        width: 12px; }
+        width: 10px; }
       .user-card-small .card-stats ul li img.project-views {
-        width: 20px; }
+        width: 18px; }
     .user-card-small .card-stats ul li span {
       margin: 0px; }
 .user-card-small .profile-pic-container {
-  padding-left: 0;
-  padding-top: 10px;
-  padding-bottom: 0;
-  position: relative;
-  left: -10px;
-  top: -30px;
-  margin-bottom: -20px; }
+  position: relative; }
   .user-card-small .profile-pic-container .maker-photo {
     display: block;
     width: 136px;
-    height: 160px;
-    margin-bottom: 4px; }
+    height: 160px; }
   .user-card-small .profile-pic-container a {
     width: 100%; }
   .user-card-small .profile-pic-container .message-btn {
@@ -1237,7 +1266,6 @@ footer {
   text-transform: none !important;
   line-height: 100% !important;
   color: #828282;
-  min-height: 24px;
   margin-bottom: 2px; }
   .user-card-small .user-name a {
     text-decoration: none;
@@ -3270,10 +3298,10 @@ footer {
       height: 100%; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 2em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3448,10 +3476,10 @@ footer {
     border: none; }
     .front .front-challenge-card .card .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 2em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       color: #fff;
       max-height: 145px; }
@@ -3549,6 +3577,8 @@ footer {
     z-index: 10; }
     .front .challenge-card-full.front-challenge-card .card-container .card {
       width: 65%; }
+  .front .challenge-card-full.front-challenge-card .card-partership p {
+    color: #fff !important; }
   .front .challenge-card-full.front-challenge-card .image-container {
     padding: 0;
     width: 100%;
@@ -3558,6 +3588,8 @@ footer {
   .front .challenge-card-full.front-challenge-card .challenge-card-count span {
     padding-right: 10px;
     border-right: 1px solid #fff; }
+  .front .challenge-card-full.front-challenge-card .challenge-card-count .entries-count {
+    border: none; }
   .front .challenge-card-full.front-challenge-card .button-container-main-1 {
     margin-right: 18px; }
     .front .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
@@ -4131,43 +4163,42 @@ header.showcase-project .next {
 .page-project .projectsingle-card {
   border: 1px solid #4ab0d8;
   position: relative;
-  padding: 16px;
   cursor: pointer;
   background-color: white;
-  padding: 12px 12px 0px 0px;
+  padding: 0px 16px 0px 0px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-project .projectsingle-card .left-side {
-    position: relative;
-    top: -26px;
-    left: -20px;
-    padding: 0px; }
-    .page-project .projectsingle-card .left-side .image-container {
-      overflow: hidden;
-      position: relative;
-      padding: 0;
+    padding-left: 0px; }
+    .page-project .projectsingle-card .left-side .image-container img {
       width: 100%;
-      height: auto; }
-      .page-project .projectsingle-card .left-side .image-container img {
-        width: 100%;
-        height: 400px;
-        max-width: 100%; }
-    .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges {
-      margin: 0px; }
-      .page-project .projectsingle-card .left-side .project-card-footer-3 .project-card-badges .project-badge {
+      height: 400px;
+      max-width: 100%; }
+    .page-project .projectsingle-card .left-side .project-card-badges {
+      margin: 0px;
+      position: absolute;
+      bottom: 12px;
+      padding-left: 14px;
+      z-index: 105; }
+      .page-project .projectsingle-card .left-side .project-card-badges .project-badge {
         width: 30px;
         height: auto;
-        padding-top: 2px; }
+        margin-right: 3px; }
+        .page-project .projectsingle-card .left-side .project-card-badges .project-badge img {
+          height: auto; }
+    .page-project .projectsingle-card .left-side .actions-button {
+      padding: 4px; }
   .page-project .projectsingle-card .right-side {
     padding: 0px; }
     .page-project .projectsingle-card .right-side .card-container {
       position: relative; }
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none;
-        min-height: 388px; }
+        min-height: 400px; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
-        color: #00AEEF; }
+        color: #00AEEF;
+        min-height: 38px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .go-previous {
           margin-right: 10px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .go-next {
@@ -4209,7 +4240,8 @@ header.showcase-project .next {
         margin-bottom: 10px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
-        font-size: 13px; }
+        font-size: 13px;
+        margin-bottom: 2px; }
       .page-project .projectsingle-card .right-side .card-container .card-tags {
         color: #828282;
         font-size: 14px; }
@@ -4612,10 +4644,10 @@ header.showcase-project .next {
       margin: 16px 0px 16px 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular" !important;
-      font-size: 2em !important;
+      font-size: 2.3em !important;
       font-weight: 400 !important;
       text-transform: capitalize !important;
-      line-height: 100% !important;
+      line-height: 105% !important;
       color: #828282;
       color: #4F4F4F; }
     .front .learn-card .card-container .card-status {
@@ -4692,9 +4724,6 @@ header.showcase-project .next {
   display: inline-block;
   font-size: 36px;
   color: #4F4F4F; }
-
-.projects-circle {
-  margin-bottom: 10px; }
 
 .showcase-card-backlayer {
   background-color: #D4EFFC;

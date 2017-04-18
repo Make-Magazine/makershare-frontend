@@ -3,14 +3,14 @@
     <div class="col-md-8 left-side">
       <div class="image-container">
         <img src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
-      </div>
-      <div class="project-card-footer-3 d-flex justify-content-end">
-        <ul class="project-card-badges d-flex mr-auto">
+        <ul class="project-card-badges d-flex">
           <li class="project-badge"><img src="./assets/images/badges/awards@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/challenge-winner@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/community-manager@2x.png.png" alt="" class="img-responsive"></li>
           <li class="project-badge"><img src="./assets/images/badges/productivity@2x.png.png" alt="" class="img-responsive"></li>
         </ul>
+      </div>
+      <div class="project-card-footer-3 d-flex justify-content-end">
         <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
           <li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>
           <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
@@ -38,7 +38,8 @@
             <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="showcaseInfo">
               <a *ngIf="showcaseInfo.index > 0" (click)="SwitchProjectFunc($event,'back')" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
               <h3 class=" showcase-nav" *ngIf="showcaseInfo.name"><a href="">{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>
-              <a *ngIf="showcaseInfo.totalNumber && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="SwitchProjectFunc($event,'next')" class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              <a *ngIf="showcaseInfo.totalNumber && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="SwitchProjectFunc($event,'next')"
+                class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
           </div>
           <h3 class="card-title" innerHTML="{{project.title.value}}"></h3>
@@ -49,12 +50,12 @@
             <span class="project-date pr-2">Created on: {{project.created}}</span><span class="project-date">Updated on: {{project.changed}}</span>
           </div>
           <div class="d-flex flex-row">
-          <div class="card-tags" *ngIf="project.field_tags || project.field_categories">
-            <span class="project-tag" *ngFor="let category of project.field_categories">
+            <div class="card-tags" *ngIf="project.field_tags || project.field_categories">
+              <span class="project-tag" *ngFor="let category of project.field_categories">
               <span *ngIf="!category.is_parent">{{category.name}}<span class="tags-comma">,</span></span>
-            </span>
-            <span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>
-          </div>
+              </span>
+              <span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>
+            </div>
           </div>
           <div class="project-card-footer d-flex mt-auto">
             <ul class="list-unstyled project-aside">
