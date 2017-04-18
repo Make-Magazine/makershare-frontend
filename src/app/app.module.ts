@@ -47,6 +47,7 @@ import { IntelInnovationComponent } from './components/pages/intel-innovation/in
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+import { MetaModule } from '@nglibs/meta';
 
  let config = {
     breakPoints: {
@@ -93,7 +94,8 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
     SharedModule,
     DndModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
-    ResponsiveModule
+    ResponsiveModule,
+    MetaModule.forRoot()
   ],
   entryComponents: [],
   providers: [

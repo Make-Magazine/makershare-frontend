@@ -37,7 +37,8 @@ import { ReportUserComponent } from './report-user/report-user.component';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
-import { FileCardComponent } from './file-manager/file-card/file-card.component'
+import { FileCardComponent } from './file-manager/file-card/file-card.component';
+// import { MetaModule } from '@nglibs/meta';
  
 //  let config = {
 //     breakPoints: {
@@ -64,8 +65,9 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
-    // ResponsiveModule
-//Ng2DeviceDetector,
+
+   // ResponsiveModule,
+
   ],
   declarations: [
     CommentComponent,
