@@ -51,6 +51,9 @@
         .card {
             background-color: transparent;
             border: none;
+            .user-card {
+                padding: 10px 0px;
+            }
         }
         .single-showcase {
             padding: 10px;
@@ -142,7 +145,7 @@
                 }
             }
             .showcase-card-footer-2 {
-                padding-top: 4px;
+                padding-top: 16px;
                 .showcase-card-count {
                     font-size: 14px;
                     div {
@@ -201,12 +204,11 @@
     .projects-grid {
         .showcase-wrapper {
             display: block;
-            width: 99%;
-            height: 99%;
+            width: 92%;
+            height: 100%;
             position: absolute;
             z-index: 5000;
-            top: 0;
-            left: -8px;
+            top: 0px;
         }
         .project.card {
             border: 1px solid #4ab0d8;
@@ -230,7 +232,6 @@
         -webkit-line-clamp: inherit !important;
         overflow: inherit !important;
         height: auto !important;
-        min-height: 70px;
     }
 }
 

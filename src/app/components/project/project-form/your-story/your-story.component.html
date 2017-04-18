@@ -89,7 +89,7 @@
 
     <div class="form-group uh-oh">
       <label for="uh-oh">{{TooltipText.uh_oh_moment.guide}} (optional)</label>
-      <input maxlength="350" type="text" class="form-control" id="uh-h" placeholder="Uh-oh! moment" formControlName='field_uh_oh_moment'
+      <input maxlength="350" type="text" class="form-control" id="uh-h" placeholder="Uh-oh! moment" formControlName='field_uh_oh_moment'>
       <span class="words-count">{{YourStoryForm.value.field_uh_oh_moment.length}}\350</span>
 
       <div *ngIf="formErrors.field_uh_oh_moment" class="alert alert-danger error-msg">

@@ -7,6 +7,11 @@
             <div class="image-container">
               <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
               <img *ngIf="!showcase.cover_photo" src="http://placehold.it/365x290" alt="">
+              <div class="card-type-blue">
+                <div class="type-layer-2">
+                  Showcase
+                </div>
+              </div>
             </div>
             <div class="showcase-card-footer-3">
               <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
@@ -15,9 +20,6 @@
           <div class="col-lg-8 col-md-6 col-sm-12 content-container">
             <div class="card-container">
               <div class="card">
-                <div class="showcase-type-badge">
-                  <p>Showcase</p>
-                </div>
                 <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
                 <div class="card-description">
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
@@ -69,9 +71,9 @@
           </div>
         </div>
       </div>
-      <div class="text-center">
-        <div *ngIf="!hideloadmore" class="button-container-main-2">
-          <a *ngIf="!hideloadmore" class="btn btn-main-2" (click)="loadmore()">Load more</a>
+      <div class="text-center pt-3 pb-5">
+        <div *ngIf="!hideloadmore">
+          <a *ngIf="!hideloadmore" class="btn btn-load-more" (click)="loadmore()">Load more</a>
         </div>
       </div>
     </div>

@@ -37,9 +37,9 @@
       </div>
       <!-- End challenge-card -->
     </div>
-    <div class="text-center">
-      <div class="button-container-main-2" *ngIf="!hideloadmoreworkshop">
-        <a class="btn btn-main-2" (click)="loadMoreWorkshop()">Load more</a>
+    <div class="text-center pt-3 pb-5">
+      <div *ngIf="!hideloadmoreworkshop">
+        <a class="btn btn-load-more" (click)="loadMoreWorkshop()">Load more</a>
       </div>
     </div>
   </div>
