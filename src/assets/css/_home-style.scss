@@ -264,10 +264,9 @@ footer {
     .profile-tag {
         @include card-header-font-sm();
         margin-bottom: 5px;
-        height: 38px;
         line-height: 17px;
         display: inline-block;
-        min-height: 50px;
+
     }
     .profile-tag, .user-city, .count {
         font-size: 14px;

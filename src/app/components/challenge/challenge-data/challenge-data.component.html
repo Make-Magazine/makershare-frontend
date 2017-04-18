@@ -91,7 +91,7 @@
                             </span></a></li>
               </ul>
             </div>
-            <div class="challenge-details col-md-9">
+            <div class="challenge-details col-md-9 pt-2">
               <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
               <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
               <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
