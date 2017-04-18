@@ -6031,6 +6031,8 @@ img {
     box-shadow: 2px 6px 22px #888888;
     width: 100%;
     margin-bottom: 40px; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .new-comment {
+      padding: 0px; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .feedback-label {
       font-weight: 700; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .join-link {

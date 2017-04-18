@@ -106,15 +106,18 @@
 		  width: 100%;
 			// height: 600px;
       margin-bottom: 40px;
+			.new-comment  {
+			    padding: 0px;
+			}
 	  	.feedback-label{
 				font-weight: 700;
 			}
 			.join-link{
 				color: $blue !important;
 			}
-			.pl-3
+				.pl-3
 			{
-				padding-left: 0rem!important;
+					padding-left: 0rem!important;
 			}
 		}
 		.html-block
