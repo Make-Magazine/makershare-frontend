@@ -4383,7 +4383,7 @@ header.showcase-project .next {
     text-transform: none !important;
     line-height: 115% !important;
     color: #828282;
-    width: 85%;
+    width: 100%;
     margin: auto; }
 
 .learn-container {
@@ -6072,6 +6072,12 @@ img {
     box-shadow: 2px 6px 22px #888888;
     width: 100%;
     margin-bottom: 40px; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .feedback-label {
+      font-weight: 700; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .join-link {
+      color: #00AEEF !important; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .pl-3 {
+      padding-left: 0rem !important; }
   .page-workshop-single .page-workshop-individual .workshop-content .html-block {
     width: 74%; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
