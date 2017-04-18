@@ -740,7 +740,7 @@ header.showcase-project {
 		.left-side {
 			padding-left: 0px;
 			  .image-container {
-
+						@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
         img {
             width: 100%;
             height: 400px;

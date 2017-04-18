@@ -291,7 +291,6 @@ a:not([href]):not([tabindex]).btn-dark-grey {
 .btn-soft-grey,
 a:not([href]):not([tabindex]).btn-soft-grey {
   color: #757575 !important;
-  background-color: white;
   border-radius: 0;
   font-size: 13px; }
   .btn-soft-grey:hover,
@@ -1605,7 +1604,10 @@ footer {
     font-size: 12px;
     margin-top: 20px;
     margin-bottom: 20px;
-    position: relative; }
+    position: relative;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -4181,10 +4183,14 @@ header.showcase-project .next {
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-project .projectsingle-card .left-side {
     padding-left: 0px; }
-    .page-project .projectsingle-card .left-side .image-container img {
-      width: 100%;
-      height: 400px;
-      max-width: 100%; }
+    .page-project .projectsingle-card .left-side .image-container {
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      .page-project .projectsingle-card .left-side .image-container img {
+        width: 100%;
+        height: 400px;
+        max-width: 100%; }
     .page-project .projectsingle-card .left-side .project-card-badges {
       margin: 0px;
       position: absolute;
@@ -4360,6 +4366,10 @@ header.showcase-project .next {
       width: 250px; }
     .learn-card .single-learn .card-partership {
       color: #ED1C24; }
+  .learn-card .image-container {
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .learn-card .container-content {
     position: relative; }
   .learn-card .card-container .card-partership {
@@ -4458,7 +4468,10 @@ header.showcase-project .next {
       color: #ED1C24; }
   .page-learn .learn-card .image-container {
     position: relative;
-    padding: 0px; }
+    padding: 0px;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
     .page-learn .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4633,7 +4646,10 @@ header.showcase-project .next {
     padding: 0;
     height: 430px;
     background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    background-size: cover;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -5736,16 +5752,18 @@ img {
       height: auto; }
   .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li {
     float: left; }
-    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active {
-      background-color: #333333;
-      color: #fff; }
+    .page-challenge-summary .top-content-wrapper .challenge-cover .challenge-actions li a.active i, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .challenge-actions li a.active i, .page-enter-challenge .top-content-wrapper .challenge-cover .challenge-actions li a.active i {
+      color: #009ad4; }
 .page-challenge-summary .region-content, .page-challenge-summary-closed .region-content, .page-enter-challenge .region-content {
   padding-right: 0px;
   padding-left: 0px;
   background-color: white;
   margin: 0px;
   padding: 10px;
-  min-height: 360px; }
+  min-height: 360px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
   .page-challenge-summary .region-content .tabs-buttons, .page-challenge-summary-closed .region-content .tabs-buttons, .page-enter-challenge .region-content .tabs-buttons {
     width: 100%;
     overflow: hidden; }
@@ -5815,7 +5833,10 @@ img {
     .page-challenge-summary .region-content .content-wrapper .entries .entry-container .image-container, .page-challenge-summary-closed .region-content .content-wrapper .entries .entry-container .image-container, .page-enter-challenge .region-content .content-wrapper .entries .entry-container .image-container {
       position: relative;
       overflow: hidden;
-      height: 180px; }
+      height: 180px;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
       .page-challenge-summary .region-content .content-wrapper .entries .entry-container .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .entries .entry-container .image-container img, .page-enter-challenge .region-content .content-wrapper .entries .entry-container .image-container img {
         position: absolute;
         z-index: -2; }
@@ -5911,7 +5932,10 @@ img {
     .page-challenge-summary .region-content .content-wrapper .challenge-award .image-container, .page-challenge-summary-closed .region-content .content-wrapper .challenge-award .image-container, .page-enter-challenge .region-content .content-wrapper .challenge-award .image-container {
       width: 220px;
       height: 180px;
-      overflow: hidden; }
+      overflow: hidden;
+      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
       .page-challenge-summary .region-content .content-wrapper .challenge-award .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .challenge-award .image-container img, .page-enter-challenge .region-content .content-wrapper .challenge-award .image-container img {
         max-width: 100%;
         height: auto; }
@@ -5933,15 +5957,19 @@ img {
       width: 250px; }
     .page-challenge-summary .challenge-card .single-challenge .card-partership, .page-challenge-summary-closed .challenge-card .single-challenge .card-partership, .page-enter-challenge .challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
-  .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
-    height: auto; }
-  .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    display: block;
-    top: 10px;
-    left: 10px; }
+  .page-challenge-summary .challenge-card .image-container, .page-challenge-summary-closed .challenge-card .image-container, .page-enter-challenge .challenge-card .image-container {
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
+      height: auto; }
+    .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      display: block;
+      top: 10px;
+      right: 10px; }
   .page-challenge-summary .challenge-card .challene-card-footer-3, .page-challenge-summary-closed .challenge-card .challene-card-footer-3, .page-enter-challenge .challenge-card .challene-card-footer-3 {
     margin-top: 10px;
     margin-bottom: 10px; }
