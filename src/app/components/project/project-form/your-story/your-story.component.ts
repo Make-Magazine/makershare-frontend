@@ -11,7 +11,7 @@ import { CropperSettings } from 'ng2-img-cropper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -61,6 +61,7 @@ export class YourStoryComponent implements OnInit {
     private modalService: NgbModal,
     private config: NgbTooltipConfig,
     private sanitizer: DomSanitizer,
+    private meta: MetaService
 
   ) {
     this.SetCropperSettings();
@@ -90,6 +91,10 @@ export class YourStoryComponent implements OnInit {
     });
     // this.sanitizethis = '<iframe src="https://drive.google.com/file/d/0B7kKuw_1dgfJMHd4Q0l1cmpNMFE/view?ts=58ecedcc ></iframe>';
     // this.show_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+
+    this.meta.setTitle(`Maker Share | Create Project`);
+    this.meta.setTag('og:image', '/assets/logo.png');
+    this.meta.setTag('og:description', ' Create Project Create Project Create Project Create Project Create Project Create Project ');
   }
 
   /**
@@ -313,7 +318,7 @@ export class YourStoryComponent implements OnInit {
     },
     'story': {
       'title': 'Creating a great story:',
-      'guide': `Tell us about your project. Some questions to think about - What does your project do? How did you get started? What was your process for working on it?What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the the project in different states of polish will help others visualize what's being referenced.`
+      'guide': `Tell us about your project. Some questions to think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the the project in different states of polish will help others visualize what's being referenced.`
     },
     'show_tell': {
       'title': 'Making a Show and Tell video:',

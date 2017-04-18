@@ -76,6 +76,7 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('award_block', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.awards = data;
+        console.log(data);
         this.no_of_awards = data.length;
       }, err => {
         // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -150,6 +151,7 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
+        console.log(data[0]);
         this.customTitle = this.challenge.title;
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
