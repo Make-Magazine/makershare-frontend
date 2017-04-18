@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-details',
@@ -36,6 +37,7 @@ export class ProjectDetailsComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService,
     private loaderService: LoaderService,
+    private readonly meta: MetaService,
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -76,6 +78,10 @@ export class ProjectDetailsComponent implements OnInit {
               i++
             }
           }
+          this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
+          this.meta.setTag('og:image', this.project.field_cover_photo.url);
+          this.meta.setTag('og:description', this.project.field_teaser.value);
+
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
           this.loaderService.display(false);

@@ -1,25 +1,31 @@
 <div class="page-portfolio">
   <div class="top-content-wrapper">
     <div class="nav-portfolio" style="overflow: hidden;">
-      <div class="container d-flex justify-content-center">
-        <div class="nav">
-          <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white-2" id="public">
-            <p>Portfolio</p>
-          </a>
-          <a (click)="CurrentTab = 'private'" [ngClass]="{'active': CurrentTab == 'private'}" class="nav-item btn btn-white-2" id="private">
-            <p>Private Projects</p>
-          </a>
-          <a (click)="CurrentTab = 'draft'" [ngClass]="{'active': CurrentTab == 'draft'}" class="nav-item btn btn-white-2" id="drafts">
-            <p>Drafts</p>
-          </a>
-          <a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="nav-item btn btn-white-2" id="photos">
-            <p>File manager</p>
-          </a>
+      <div class="d-flex justify-content-start">
+        <div class="d-flex flex-column">
+          <p class="titles">EDIT YOUR PORTFOLIO</p>
+          <div class="d-flex nav">
+            <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white-2" id="public">
+              <p>Portfolio</p>
+            </a>
+            <a (click)="CurrentTab = 'private'" [ngClass]="{'active': CurrentTab == 'private'}" class="nav-item btn btn-white-2" id="private">
+              <p>Private Projects</p>
+            </a>
+            <a (click)="CurrentTab = 'draft'" [ngClass]="{'active': CurrentTab == 'draft'}" class="nav-item btn btn-white-2" id="drafts">
+              <p>Drafts</p>
+            </a>
+            <a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="nav-item btn btn-white-2" id="photos">
+              <p>File manager</p>
+            </a>
+          </div>
         </div>
-        <div class="display-style d-flex ml-auto">
-          <p [ngClass]="{'active': ActiveView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-          <p [ngClass]="{'active': ActiveView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
-        </div>
+        <div class="d-flex flex-column ml-3">
+          <p class="titles">CHOOSE PUBLIC VIEW</p>
+          <div class="display-style d-flex ml-auto">
+            <p [ngClass]="{'active': ActiveView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+            <p [ngClass]="{'active': ActiveView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+          </div>
+        </div>  
       </div>
     </div>
   </div>

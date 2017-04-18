@@ -12,7 +12,13 @@
 		ul {
 			li {
 				display: inline-block;
-				
+				&.project-like,&.project-bookmakr {
+					a.active {
+						i {
+							color: $red;
+						}
+					}
+				}
 			}
 			&.project-tags {
 				-webkit-justify-content: flex-start; /* Safari */
@@ -40,7 +46,7 @@
 			text-align: right;
 			padding: 0px 12px;
 			img {
-				width: 12px;
+				width: 10px;
 				height: auto;
 			}
 			span {
@@ -53,7 +59,7 @@
 			text-align: right;
 			padding: 0px 12px;
 			img {
-				width: 21px;
+				width: 18px;
 				height: auto;
 			}
 			span {
@@ -725,39 +731,39 @@ header.showcase-project {
 .projectsingle-card {
 		border: 1px solid #4ab0d8;
     position: relative;
-    padding: 16px;
     cursor:pointer;
     background-color: white;
-		padding: 12px 12px 0px 0px;
+		padding: 0px 16px 0px 0px;
 		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		.left-side {
-			position: relative;
-			top: -26px;
-			left: -20px;
-			padding: 0px;
+			padding-left: 0px;
 			  .image-container {
-        overflow: hidden;
-        position: relative;
-        padding: 0;
-        width: 100%;
-        height: auto;
+
         img {
             width: 100%;
             height: 400px;
             max-width: 100%;
         	}
     		}
-				.project-card-footer-3 {
-					.project-card-badges {
-						margin: 0px;
-						.project-badge {
-							width: 30px;
+			.project-card-badges {
+				margin: 0px;
+				position: absolute;
+				bottom: 12px;
+				padding-left: 14px;
+				z-index: 105;
+					.project-badge {
+						width: 30px;
+						height: auto;
+						margin-right: 3px;
+						img {
 							height: auto;
-							padding-top: 2px;
 						}
 					}
+				}
+				.actions-button {
+					padding: 4px;
 				}
 		}
 		.right-side {
@@ -766,10 +772,11 @@ header.showcase-project {
         position: relative;
 				.card {
 					border: none;
-					min-height: 388px;
+					min-height: 400px;
 				}
 				.projects-circle {
 					color: $sec-button-1 ;
+					min-height: 38px;
 					.go-previous {
 						margin-right: 10px;
 					}
@@ -812,6 +819,7 @@ header.showcase-project {
 				.card-date {
 					color: $text-color-2;
 					font-size: 13px;
+					margin-bottom: 2px;
 				}
 				.card-tags {
 					color: $text-color-2;

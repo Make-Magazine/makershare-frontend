@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISorting } from '../../../../models/challenge/sorting';
 import { RouterModule, Router } from '@angular/router';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-summary',
@@ -23,10 +24,17 @@ export class SummaryComponent implements OnInit {
     sort_order: "",
     pageNo: 0
   };
-  constructor(private router: Router, ) { }
+  constructor(
+    private router: Router,
+    private meta: MetaService,
+     ) { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
+    console.log(this.challenge)
+    this.meta.setTitle(`Maker Share | ${this.challenge.title}`);
+    this.meta.setTag('og:image', this.challenge.cover_image);
+    this.meta.setTag('og:description', this.challenge.body);
 
     // console.log(this.projectsChallenge);
   }
