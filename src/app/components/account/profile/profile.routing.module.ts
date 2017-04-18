@@ -7,7 +7,7 @@ import { AuthGuardService } from '../../../auth0/auth-guard.service';
 import { BaseComponent } from './base/base.component';
 
 
-const ProfileRouts: Routes = [
+export const ProfileRouts: Routes = [
   {
     path: '',
     children: [
