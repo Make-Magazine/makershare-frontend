@@ -112,7 +112,7 @@
                         </div>-->
                     </div>
                     <div class="media-body col-lg-9">
-                      <h4>{{object.lesson_name}}</h4>
+                      <h4  [innerHTML]="object.lesson_name"></h4>
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
                   </div>
@@ -148,7 +148,7 @@
                   </div>
 
                   <div class="media-body col-sm-9">
-                    <h4>{{object.lesson_name}}</h4>
+                    <h4  [innerHTML]="object.lesson_name"></h4>
                     <div [innerHTML]="object.lesson_description"> </div>
                   </div>
                 </div>
@@ -179,7 +179,7 @@
                       </div>
                   </div>
                   <div class="media-body col-sm-9">
-                    <h4>{{object.lesson_name}}</h4>
+                     <h4  [innerHTML]="object.lesson_name"></h4>
                     <div [innerHTML]="object.lesson_description"></div>
                   </div>
                 </div>
@@ -207,7 +207,7 @@
                     </div>
                   </div>
                   <div class="media-body col-lg-9">
-                    <h4>{{object.lesson_name}}</h4>
+                    <h4  [innerHTML]="object.lesson_name"></h4>
                     <div [innerHTML]="object.lesson_description"> </div>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
           <ul class="list-unstyled content-list">
             Contents:
             <div *ngFor="let object of objects; let i=index;">
-              <li><a pageScroll href="#OB{{object.nid}}">{{object.lesson_name}}</a></li>
+              <li><a pageScroll href="#OB{{object.nid}}"><div [innerHTML]="object.lesson_name" ></div></a></li>
             </div>
 
             <div *ngFor="let lesson of lessons">
