@@ -11,7 +11,7 @@ import { CropperSettings } from 'ng2-img-cropper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -61,6 +61,7 @@ export class YourStoryComponent implements OnInit {
     private modalService: NgbModal,
     private config: NgbTooltipConfig,
     private sanitizer: DomSanitizer,
+    private meta: MetaService
 
   ) {
     this.SetCropperSettings();
@@ -90,6 +91,10 @@ export class YourStoryComponent implements OnInit {
     });
     // this.sanitizethis = '<iframe src="https://drive.google.com/file/d/0B7kKuw_1dgfJMHd4Q0l1cmpNMFE/view?ts=58ecedcc ></iframe>';
     // this.show_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+
+    this.meta.setTitle(`Maker Share | Create Project`);
+    this.meta.setTag('og:image', '/assets/logo.png');
+    this.meta.setTag('og:description', ' Create Project Create Project Create Project Create Project Create Project Create Project ');
   }
 
   /**

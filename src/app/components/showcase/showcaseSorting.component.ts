@@ -1,6 +1,8 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {ISorting} from '../../models/challenge/sorting';
 // import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { MetaService } from '@nglibs/meta';
+
 
 @Component({
   selector: 'showcase-sorting',
@@ -30,10 +32,14 @@ sort:ISorting={
   sort_order:"",
   pageNo:0
 };
-  constructor() { }
+  constructor(private meta: MetaService) { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
+
+    this.meta.setTitle(`Maker Share | Showcase}`);
+      this.meta.setTag('og:image', '/assets/logo.png');
+      this.meta.setTag('og:description', 'showcase showcase showcase showcase showcase');
     
   }
 

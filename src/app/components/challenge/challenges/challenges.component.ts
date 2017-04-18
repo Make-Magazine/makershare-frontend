@@ -5,6 +5,7 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-challenges',
@@ -25,7 +26,8 @@ export class ChallengesComponent implements OnInit {
     private router: Router,
     private flagService: FlagService,
     private loaderService: LoaderService,
-        private userService: UserService,
+    private userService: UserService,
+    private meta: MetaService
 
   ) { }
 
@@ -33,6 +35,9 @@ export class ChallengesComponent implements OnInit {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
+    this.meta.setTitle(`Maker Share | Missions`);
+    this.meta.setTag('og:image', '/assets/logo.png');
+    this.meta.setTag('og:description', 'Missions Missions Missions Missions Missions Missions Missions Missions Missions ');
 
   }
   /* function to get challenges and count followers  */
