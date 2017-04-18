@@ -10,6 +10,7 @@ import { AwardsComponent } from './awards/awards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MetaModule } from '@nglibs/meta';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    MetaModule.forRoot(),
     
   ],
   declarations: [
