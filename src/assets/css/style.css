@@ -1555,8 +1555,8 @@ footer {
   color: #242424;
   margin-top: -10px; }
   .profile-sidebar hr {
-    border-color: #333333;
-    margin: 10px 0 15px; }
+    border-color: #BDBDBD;
+    margin: 15px 0 10px; }
   .profile-sidebar h5 {
     color: #000;
     font-weight: bold;
@@ -1577,7 +1577,7 @@ footer {
     margin: 0px; }
   .profile-sidebar a.add {
     padding: 5px;
-    font-size: 13px;
+    font-size: 15px !important;
     width: 100%;
     text-align: right;
     margin: 5px 0;
@@ -1585,11 +1585,19 @@ footer {
     border: 1px solid #333333;
     color: #333333; }
     .profile-sidebar a.add i {
-      font-size: 12px;
+      font-size: 22px;
       padding-top: 4px;
       text-align: left;
       float: left;
       color: #333333; }
+  .profile-sidebar .ng2-tag-input.default {
+    border: none !important; }
+  .profile-sidebar .ng2-tags-container tag {
+    background-color: #fff !important;
+    border-radius: 0;
+    border: 1px solid #333333;
+    line-height: 29px;
+    font-size: 14px; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 15px;
@@ -1606,15 +1614,14 @@ footer {
         color: #00AEEF; }
     .profile-sidebar .profile-container i {
       width: 25px; }
+    .profile-sidebar .profile-container .global-title {
+      margin-bottom: 0px;
+      margin-top: 10px; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
       background: url("../images/placeholder.png") center center;
       background-size: cover;
-      width: 365px;
       height: 280px;
-      top: -110px;
-      left: -60px;
-      margin-bottom: -100px;
       overflow: hidden; }
       .profile-sidebar .profile-container .image-container img {
         width: 100%;
@@ -1632,12 +1639,11 @@ footer {
           width: 100%; }
         .profile-sidebar .profile-container .profile-group .profile-pic a {
           z-index: 1;
-          top: -100px;
           position: absolute;
-          background-color: rgba(200, 200, 200, 0.8);
           text-align: center;
           font-size: 15px;
-          right: 47px; }
+          right: 0;
+          bottom: 0; }
         .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
           position: absolute;
           bottom: 10px;
@@ -1656,28 +1662,33 @@ footer {
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Bold" !important;
-        font-size: 1.5em !important;
-        font-weight: 400 !important;
-        text-transform: none !important;
-        line-height: 115% !important;
-        color: #828282; }
-      .profile-sidebar .profile-container .profile-info .profile-nickname {
-        font-family: "Messina Sans Regular" !important;
-        font-size: 0.95em !important;
+        font-size: 1.16em !important;
         font-weight: 400 !important;
         text-transform: none !important;
         line-height: 100% !important;
-        color: #828282; }
-      .profile-sidebar .profile-container .profile-info .location {
-        font-family: "Messina Modern Bold" !important;
-        font-size: 1.5em !important;
+        color: #828282;
+        color: #333333; }
+      .profile-sidebar .profile-container .profile-info .profile-nickname {
+        font-family: "Messina Sans Regular" !important;
+        font-size: 0.9em !important;
         font-weight: 400 !important;
         text-transform: none !important;
-        line-height: 115% !important;
+        line-height: 100% !important;
         color: #828282;
-        color: #00AEEF; }
-      .profile-sidebar .profile-container .profile-info .profile-describe-yourself {
+        margin-top: 5px;
+        margin-bottom: 5px; }
+      .profile-sidebar .profile-container .profile-info .location {
         font-family: "Messina Sans Regular" !important;
+        font-size: 0.9em !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        line-height: 100% !important;
+        color: #828282;
+        color: #00AEEF;
+        margin-top: 5px;
+        margin-bottom: 5px; }
+      .profile-sidebar .profile-container .profile-info .profile-describe-yourself {
+        font-family: "Messina Modern Regular" !important;
         font-size: 0.95em !important;
         font-weight: 400 !important;
         text-transform: none !important;
@@ -1692,16 +1703,13 @@ footer {
         color: #828282;
         color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .bio {
-        font-family: "Messina Sans Regular" !important;
-        font-size: 1.3em !important;
+        font-family: "Messina Sans SemiBold" !important;
+        font-size: 1em !important;
         font-weight: 400 !important;
-        text-transform: none !important;
-        line-height: 110% !important;
-        color: #828282; }
-        .profile-sidebar .profile-container .profile-info .bio i {
-          font-size: 24px;
-          line-height: .75em;
-          vertical-align: -15% !important; }
+        text-transform: uppercase !important;
+        line-height: 100% !important;
+        color: #828282;
+        line-height: 120% !important; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -4605,7 +4613,7 @@ header.showcase-project .next {
   cursor: pointer;
   background-color: #DCDCDC;
   height: 460px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -6322,6 +6330,8 @@ img {
       background-color: #333333; }
     .page-portfolio .portfolio-controls .contorls li a.btn {
       padding: 4px 35px; }
+.page-portfolio .nav-portfolio .titles {
+  color: #333333; }
 .page-portfolio .nav-portfolio .nav .btn-white-2 {
   padding: 10px 10px;
   min-width: 110px;
