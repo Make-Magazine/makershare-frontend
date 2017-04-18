@@ -13,7 +13,13 @@
         }
     }
 }
-
+.profile-header  {
+    .profile-message {
+        .message-btn {
+            position: static;
+        }
+    }
+}
 .profile-cover {
     overflow: hidden;
     max-height: 220px;
@@ -91,7 +97,6 @@
 
 .profile-sidebar {
     color: $main-grey * 0.7;
-    margin-top: -10px;
     hr {
         border-color: $light-grey;
         margin: 15px 0 10px;
@@ -166,7 +171,6 @@
         padding: 15px;
         width: 100%;
         font-size: 12px;
-        margin-top: 20px;
         margin-bottom: 20px;
         position: relative;
         li,
@@ -261,10 +265,11 @@
             .badges {
                 @include desc-font-2 ();
                 color: $text-color-1;
+                font-size: 0.7em !important;
             }
             .bio {
-                @include desc-font-4 ();
-                line-height: 120% !important;
+                @include desc-font-1 ();
+                line-height: 150% !important;
                 // i {
                 //     font-size: 24px;
                 //     line-height: .75em;
@@ -345,9 +350,9 @@
     .report {
         font-size: 12px;
         text-decoration: none;
-        color: $title-color;
+        color: $blue !important;
         &:hover {
-            color: $title-color;
+            color: $blue !important;
         }
     }
 }
@@ -430,8 +435,6 @@
 }
 
 .profile-header {
-    margin-top: 50px;
-    
     .bookmark {
         li {
             padding: 0 10px;

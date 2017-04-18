@@ -893,7 +893,7 @@ body {
   line-height: 100% !important;
   color: #828282;
   position: absolute;
-  z-index: 10000;
+  z-index: 1000;
   top: 14px;
   left: -2px;
   box-shadow: 0px 2px 6px #333333;
@@ -1496,6 +1496,9 @@ footer {
     font-size: 20px;
     background-color: transparent; }
 
+.profile-header .profile-message .message-btn {
+  position: static; }
+
 .profile-cover {
   overflow: hidden;
   max-height: 220px;
@@ -1552,8 +1555,7 @@ footer {
         color: #ED1C24; }
 
 .profile-sidebar {
-  color: #242424;
-  margin-top: -10px; }
+  color: #242424; }
   .profile-sidebar hr {
     border-color: #BDBDBD;
     margin: 15px 0 10px; }
@@ -1603,7 +1605,6 @@ footer {
     padding: 15px;
     width: 100%;
     font-size: 12px;
-    margin-top: 20px;
     margin-bottom: 20px;
     position: relative; }
     .profile-sidebar .profile-container li,
@@ -1701,15 +1702,16 @@ footer {
         text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
-        color: #4F4F4F; }
+        color: #4F4F4F;
+        font-size: 0.7em !important; }
       .profile-sidebar .profile-container .profile-info .bio {
-        font-family: "Messina Sans SemiBold" !important;
-        font-size: 1em !important;
+        font-family: "Messina Sans Regular" !important;
+        font-size: 0.95em !important;
         font-weight: 400 !important;
-        text-transform: uppercase !important;
+        text-transform: none !important;
         line-height: 100% !important;
         color: #828282;
-        line-height: 120% !important; }
+        line-height: 150% !important; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -1761,9 +1763,9 @@ footer {
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
-    color: #00AEEF; }
+    color: #00AEEF !important; }
     .profile-sidebar .report:hover {
-      color: #00AEEF; }
+      color: #00AEEF !important; }
 
 /* End profile-sidebar */
 .profile-content a.btn {
@@ -1821,13 +1823,11 @@ footer {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-header {
-  margin-top: 50px; }
-  .profile-header .bookmark li {
-    padding: 0 10px;
-    height: 24px; }
-    .profile-header .bookmark li:not(:first-of-type) {
-      border-left: 3px solid #222; }
+.profile-header .bookmark li {
+  padding: 0 10px;
+  height: 24px; }
+  .profile-header .bookmark li:not(:first-of-type) {
+    border-left: 3px solid #222; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
