@@ -1,5 +1,6 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
+// import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-header',
@@ -14,6 +15,7 @@ export class ProjectHeaderComponent implements OnInit {
   
   constructor(
     private userService: UserService,
+    // private readonly meta: MetaService,
   ) {}
 
   userLogin;
@@ -37,6 +39,10 @@ export class ProjectHeaderComponent implements OnInit {
     if (this.project.field_cover_photo) {
       this.customImage = this.project.field_cover_photo.url;
     }
+    // this.meta.setTitle(this.project.title);
+    // this.meta.setTag('og:image', this.project.field_cover_photo);
+    // this.meta.setTag('og:description', this.project.field_teaser.value);
+
     if(this.showcaseInfo){
       
     }

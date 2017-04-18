@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 import { BookComponent } from '../book/book.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-individual-workshop',
@@ -63,6 +64,7 @@ export class IndividualWorkshopComponent implements OnInit {
     private http: Http,
     private modalService: NgbModal,
     private loaderService: LoaderService,
+    private meta: MetaService,
   ) { }
 
   ngOnInit() {
@@ -73,6 +75,11 @@ export class IndividualWorkshopComponent implements OnInit {
     this.viewService.getView('individual-workshop', [['nid', this.nid]])
       .subscribe(data => {
         this.workshop = data[0];
+
+        this.meta.setTitle(`Maker Share | ${this.workshop.workshop_title}`);
+        this.meta.setTag('og:image', this.workshop.cover_photo);
+        this.meta.setTag('og:description', this.workshop.brief_description);
+
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];
