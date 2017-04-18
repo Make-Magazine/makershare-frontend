@@ -1,7 +1,14 @@
 <app-header></app-header>
 <div class="main-container">
-  <router-outlet>
-    <span *ngIf="showLoader" class="loading"></span>
-  </router-outlet>
+  <router-outlet></router-outlet>
+
+  <!--Routing loader-->
+  <div *ngIf="showLoader">
+  <span  class="loading"></span>
+  </div>
+  <!--Components Loader-->
+  <div *ngIf="showLoaderComponent"> 
+    <span  class="loading-component"></span>
+  </div>
 </div>
 <app-footer></app-footer>
