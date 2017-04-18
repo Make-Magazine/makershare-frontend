@@ -6,6 +6,7 @@ import { ProjectDetailsComponent } from './project-details.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MetaModule } from '@nglibs/meta';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProjectDetailsRoutingModule,
     SharedModule,
     NgbModule,
+    MetaModule.forRoot()
   ],
   declarations: [ProjectDetailsComponent]
 })
