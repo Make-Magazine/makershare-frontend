@@ -15,6 +15,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Input() Visibility:number;
   @Output() emitter = new EventEmitter();
   project
+  badges
   constructor(
     private nodeService:NodeService,
     private viewService: ViewService,
@@ -45,5 +46,12 @@ export class ProjectCardPortfolioComponent implements OnInit {
   }
   ShowProjectDetails(nid) {
     this.router.navigate(['/project/view/', nid]);
+  }
+  getBadgesProject() {
+    this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {
+      for (let i = 0; i < data.length && i < 4; i++) {
+        this.badges.push(data[i]);
+      }
+    });
   }
 }

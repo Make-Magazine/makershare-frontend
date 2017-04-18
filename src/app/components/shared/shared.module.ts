@@ -33,28 +33,28 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+// import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component'
  
- let config = {
-    breakPoints: {
-        xs: {max: 575},
-        sm: {min: 576, max: 767},
-        md: {min: 768, max: 991},
-        lg: {min: 992, max: 1199},
-        xl: {min: 1200}
-    },
-    debounceTime: 100 // allow to debounce checking timer
-  };
+//  let config = {
+//     breakPoints: {
+//         xs: {max: 575},
+//         sm: {min: 576, max: 767},
+//         md: {min: 768, max: 991},
+//         lg: {min: 992, max: 1199},
+//         xl: {min: 1200}
+//     },
+//     debounceTime: 100 // allow to debounce checking timer
+//   };
 
 
 
-  export function ResponsiveDefinition(){ 
-          return new ResponsiveConfig(config);
-  };
+//   export function ResponsiveDefinition(){ 
+//           return new ResponsiveConfig(config);
+//   };
 
 
 @NgModule({
@@ -64,7 +64,7 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
-    ResponsiveModule
+    // ResponsiveModule
 //Ng2DeviceDetector,
   ],
   declarations: [
@@ -135,9 +135,9 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     FileManagerComponent,
     FileCardComponent
   ],
-  providers:[{
-     provide: ResponsiveConfig, 
-     useFactory: ResponsiveDefinition }]
+  // providers:[{
+  //    provide: ResponsiveConfig, 
+  //    useFactory: ResponsiveDefinition }]
 
   
 })
