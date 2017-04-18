@@ -12,7 +12,13 @@
 		ul {
 			li {
 				display: inline-block;
-				
+				&.project-like,&.project-bookmakr {
+					a.active {
+						i {
+							color: $red;
+						}
+					}
+				}
 			}
 			&.project-tags {
 				-webkit-justify-content: flex-start; /* Safari */
@@ -40,7 +46,7 @@
 			text-align: right;
 			padding: 0px 12px;
 			img {
-				width: 12px;
+				width: 10px;
 				height: auto;
 			}
 			span {
@@ -53,7 +59,7 @@
 			text-align: right;
 			padding: 0px 12px;
 			img {
-				width: 21px;
+				width: 18px;
 				height: auto;
 			}
 			span {
@@ -734,7 +740,7 @@ header.showcase-project {
 		.left-side {
 			padding-left: 0px;
 			  .image-container {
-
+						@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
         img {
             width: 100%;
             height: 400px;

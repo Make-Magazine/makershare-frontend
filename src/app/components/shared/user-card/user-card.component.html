@@ -13,7 +13,7 @@
           <button (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>
         </div>
         <div class="media-body">
-          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a href="#">{{card.first_name}} {{card.last_name}}</a></h4>
+          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
           <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
