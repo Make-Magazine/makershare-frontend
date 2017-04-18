@@ -6,6 +6,7 @@ import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 
+
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -35,6 +36,7 @@ export class ExploreComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.getProjects();
     this.getCountProject();
     this.getProjectCategories();
@@ -55,6 +57,14 @@ export class ExploreComponent implements OnInit {
     if (this.pages == 0) {
       this.projects = [];
     }
+    /* start obs*/
+    // const response$ : Observable<Response>=this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]); 
+    //   response$.subscribe(
+    //     res => console.log("sas"),
+    //     () =>{},
+    //     ()=>console.log("compleate")
+    //   );
+    /* end obs*/
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
       // hide spinner

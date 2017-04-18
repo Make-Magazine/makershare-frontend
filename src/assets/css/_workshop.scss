@@ -109,9 +109,6 @@
     }
 }
 
-.learn-container {
-    padding: 25px 0;
-}
 
 .page-learn {
     .learn-card {
@@ -120,10 +117,7 @@
         overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
-        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        margin: 10px 0;
+		@include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
         .learn-type-bagde {
             position: absolute;
             top: 38px;
@@ -173,7 +167,6 @@
                 display: inline-block;
                 text-transform: none;
             }
-            p.card-partnership {}
             .card-description {
                 h4 {
                     font-weight: bold;
@@ -215,9 +208,7 @@
         padding: 8px 8px 0px 8px;
         cursor: pointer;
         background-color: $shade-2;
-        -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-        -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-        box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
         .learn-type-badge {
             position: absolute;
             top: 26px;
@@ -310,9 +301,7 @@
         background-color: $learn-cards-bg;
         height: 460px;
         margin-bottom: 30px;
-        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
         .learn-item {
             padding: 10px;
             img {
@@ -363,7 +352,6 @@
                 display: inline-block;
                 text-transform: none;
             }
-            p.card-partnership {}
             .card-description {
                 h4 {
                     font-weight: bold;

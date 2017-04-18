@@ -125,8 +125,8 @@
 
 <div class="front-challenge-card challenge-card-full row" *ngIf="challenge && front && first">
   <div class="image-container">
-    <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.challenge_home_photo" src="http://placehold.it/365x290" alt="">
+    <img *ngIf="challenge.hero_mission_cover" src="{{challenge.hero_mission_cover}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+    <img *ngIf="!challenge.hero_mission_cover" src="http://placehold.it/365x290" alt="">
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
@@ -143,7 +143,7 @@
         <div class="card-partership mr-5" *ngIf="challenge.sponsored_by">
           <p>Sponsored by {{challenge.sponsored_by}}</p>
         </div>
-        <div class="mt-auto mb-auto ml-5 d-flex flex-md-column">
+        <div class="mt-auto mb-auto ml-5 d-flex flex-md-row flex-column">
           <div class="challenge-card-count">
             <span class="entries-count">{{countProjects}}
               <span *ngIf="countProjects>1">Entries</span>
