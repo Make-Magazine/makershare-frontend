@@ -6,13 +6,17 @@
         <div class="profile-pic-container flex-column align-self-start" (click)="userProfile(card.first_name,card.last_name)">
           <img *ngIf="!card.photo_lg" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
           <img *ngIf="card.photo_lg" src="{{card.photo_lg}}" alt="" class="img-responsive maker-photo">
+          <div class="card-type-user-small">
+            <div class="type-layer-2">
+              Maker
+            </div>
+          </div>
         </div>
-        <div class="media-body d-flex align-items-start flex-column">
-          <div class="card-type">Maker</div>
+        <div class="media-body d-flex align-items-start flex-column pt-2 pl-2">
           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
           <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
-          <div class="icons-side-user">
+          <div class="icons-side-user mt-auto">
             <div class="user-icon" *ngFor="let badge of badges;">
               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
@@ -39,7 +43,7 @@
 <div class=" profile-container" *ngIf="card.invited_user=='1'">
   <!-- start profile card If Invited-->
   <div class="card spotlight-item ">
-    <div class="card-block user-card-small  align-content-stretch content ">
+    <div class="card-block user-card-small align-content-stretch content">
       <div class="media">
         <div class="profile-pic-container flex-column align-self-start mr-3">
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
