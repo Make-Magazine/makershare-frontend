@@ -46,6 +46,18 @@ import { IntelInnovationComponent } from './components/pages/intel-innovation/in
 // GA
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
+import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+
+ let config = {
+    breakPoints: {
+        xs: {max: 575},
+        sm: {min: 576, max: 767},
+        md: {min: 768, max: 991},
+        lg: {min: 992, max: 1199},
+        xl: {min: 1200}
+    },
+    debounceTime: 100 // allow to debounce checking timer
+  };
 
 @NgModule({
   declarations: [
@@ -66,6 +78,7 @@ import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.com
     MakerCampComponent,
     IntelInnovationComponent,
     MakerShedComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -80,6 +93,7 @@ import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.com
     SharedModule,
     DndModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    ResponsiveModule
   ],
   entryComponents: [],
   providers: [
@@ -97,8 +111,13 @@ import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.com
     AuthGuardService,
     NotificationBarService,
     LoaderService,
-    
+    {
+     provide: ResponsiveConfig, 
+     useFactory: ResponsiveDefinition }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { };
+export function ResponsiveDefinition(){ 
+    return new ResponsiveConfig(config);
+};
