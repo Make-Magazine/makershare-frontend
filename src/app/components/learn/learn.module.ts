@@ -7,7 +7,7 @@ import { LearnRoutingModule }from './learn-routing.module';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MetaModule } from '@nglibs/meta';
+//import { MetaModule } from '@nglibs/meta';
 
 
 @NgModule({ 
@@ -17,7 +17,7 @@ import { MetaModule } from '@nglibs/meta';
     Ng2PageScrollModule.forRoot(),
     SharedModule,
     NgbModule,
-    MetaModule.forRoot()
+    //MetaModule.forRoot()
   ],
   declarations: [
     LearnComponent,
