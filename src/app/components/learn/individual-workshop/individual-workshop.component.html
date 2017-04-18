@@ -101,7 +101,7 @@
                         <div class="card-block">
                           <h4 class="card-title">{{object.learning_content_type}}</h4>
                           <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-                          <p class="card-text"> {{object.object_title}} </p>
+                          <p class="card-text" [innerHTML]= "object.object_title"> </p>
                         </div>
 
                         <div class="button-container-main-1  modal-block">
@@ -143,7 +143,7 @@
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-                        <p class="card-text"> {{object.object_title}} </p>
+                        <p class="card-text" [innerHTML]= "object.object_title"> </p>
                       </div>
                   </div>
 
@@ -169,7 +169,7 @@
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
                         <div class="card-text" *ngIf="object.chapter"> Number of Pages: {{object.chapter}} </div>
-                        <p class="card-text"> {{object.object_title}} </p>
+                        <p class="card-text"  [innerHTML]= "object.object_title"> </p>
                       </div>
                       <!--<div class="card-block modal-block">
                         <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</a>
@@ -196,7 +196,7 @@
                     <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap">
                     <div class="card-block">
                       <h4 class="card-title">{{object.learning_content_type}}</h4>
-                      <p class="card-text"> {{object.object_title}} </p>
+                      <p class="card-text" [innerHTML]= "object.object_title"> </p>
                     </div>
 
                     <!--<div class="button-container-main-1">
@@ -249,19 +249,17 @@
         <!-- End aside -->
         <div class="container">
           <div class="row">
-            <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3 col-md-6">
+            <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3 col-md-6  suggest-card">
               <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
-                <div *ngIf="lesson.book_cover" class="media suggest-card" id="lesson">
-                  <!--<div class= "block-card">-->
+                <div *ngIf="lesson.book_cover" class="media links-body" id="lesson">
                   <img class="d-flex align-self-start mr-3" src="{{lesson.book_cover}}" alt="Generic placeholder image">
-                  <div class="media-body col-md-8">
+                  <div class="media-body col-md-7">
                     <h5 class="mt-0">Getting started with:<br> {{lesson.book_title}}</h5>
                     <div class="card-block">
-                      <ul>
                         <p> <a href="{{lesson.o_reilly}}" class="card-link" target="_blank">{{lesson.o_reilly}}</a> </p>
                         <p> <a href="{{lesson.barnes_noble}}" class="card-link" target="_blank">{{lesson.barnes_noble}}</a> </p>
                         <p> <a href="{{lesson.amazon}}" class="card-link" target="_blank">{{lesson.amazon}}</a> </p>
-                      </ul>
+                     
                     </div>
                   </div>
                 </div>
