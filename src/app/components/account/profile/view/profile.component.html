@@ -6,9 +6,9 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
-				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-column">
-					<div class="d-flex flex-row switch justify-content-end align-items-center hidden-sm-down display-style">
-						<a class="profile-share mr-auto">
+				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
+					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-center hidden-sm-down display-style">
+						<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
 						</a>
 						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
