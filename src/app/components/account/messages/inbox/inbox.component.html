@@ -42,10 +42,10 @@
               </a>
             </div>
             <div class="media-body">
-              <p class="sender" *ngIf="message.sender"> you sent a message
-                <a href=""></a>
+              <p class="sender" *ngIf="message.sender">you sent a message
+                <a ></a>
               </p>
-              <p class="sender" *ngIf="message.reciver"><a href="">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
+              <p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
           </div>
