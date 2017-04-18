@@ -329,3 +329,20 @@ a:not([href]):not([tabindex]).btn-vote {
 
     }
 }
+
+.btn-load-more,
+a:not([href]):not([tabindex]).btn-load-more{
+    background-color:$site-bg;
+    border: 1px solid #828282;
+    // &:focus {
+    //     color: #fff;
+    //     background-color: $main-button-1*0.9;
+    //     border-color: $main-button-1*0.8;
+    // }
+
+    // &:active, &:hover {
+    //     color: #fff;
+    //     background-color: $main-button-1*0.9;
+    //     border-color: $main-button-1*0.8;
+    // }
+}
