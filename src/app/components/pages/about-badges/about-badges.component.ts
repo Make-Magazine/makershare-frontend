@@ -29,6 +29,11 @@ export class AboutBadgesComponent implements OnInit {
       this.title = data[0].title;
       this.body = data[0].body;
       this.loaderService.display(false);
+
+      this.meta.setTitle(`Maker Share | ${this.title}`);
+      this.meta.setTag('og:image', '/assets/logo.png');
+      this.meta.setTag('og:description', this.body);
+
     }, err => {
       console.log(err);
       this.loaderService.display(false);

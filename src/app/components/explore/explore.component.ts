@@ -4,7 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { ISorting } from '../../models/explore/sorting';
 import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
-
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-explore',
@@ -31,12 +31,17 @@ export class ExploreComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private meta: MetaService
   ) { }
 
   ngOnInit() {
     this.getProjects();
     this.getCountProject();
     this.getProjectCategories();
+
+    this.meta.setTitle(`Maker Share | Projects`);
+    this.meta.setTag('og:image', '/assets/logo.png');
+    this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
   }
 
   getProjects() {
