@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-about-badges',
@@ -20,7 +21,8 @@ export class MakerFaireComponent implements OnInit {
   body = ''
   constructor(
     private viewService: ViewService,
-    private loaderService: LoaderService,    
+    private loaderService: LoaderService,   
+    private meta: MetaService 
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class MakerFaireComponent implements OnInit {
     this.viewService.getView('pages', [['nid', 801]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
+
+      this.meta.setTitle(`Maker Share | ${this.title}`);
+      this.meta.setTag('og:image', '/assets/logo.png');
+      this.meta.setTag('og:description', this.body);
       this.loaderService.display(false);
     }, err => {
       console.log(err);

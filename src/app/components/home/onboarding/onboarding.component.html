@@ -1,9 +1,13 @@
 <section class="banner">
   <div id="homeBanner" class="text-center mx-auto">
     <h2>Hello Makers</h2>
-    <h1>Head here to start <a href="/portfolio">your project portfolio</a>, <a href="/missions">find a mission</a>, or <a href="/learning">learn new skills</a>.</h1>
-    <div class="button-container-main-1">
-      <a href="#" class="btn btn-main">Join Us</a>
+    <h1>Head here to start 
+      <a href="/portfolio">your project portfolio</a>, 
+      <a href="/missions">find a mission</a>, or 
+      <a href="/learning">learn new skills</a>.
+    </h1>
+    <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
+      <a class="btn btn-main">Join Us</a>
     </div>
   </div>
 </section>
