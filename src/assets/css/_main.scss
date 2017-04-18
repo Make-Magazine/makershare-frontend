@@ -96,12 +96,37 @@ body {
                     background-color: $light-grey;
                 }
                 .beta-feedback {
-
+                    color: $blue;
                 }
+                
             }
             a.nav-linkdropdown-toggle.navbar-left{
                 padding-left: 0;
                 padding-right: 0;
+            }
+            .notification-icon {
+                position: relative;
+                margin-right: 10px;
+                img {
+                    width: 32px;
+                    height: auto;
+                }
+                &::after {
+                    content: '123';
+                    text-align: center;
+                    font-size: 8px;
+                    line-height: 27px;
+                    font-weight: bold;
+                    color: $white;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    background-color: $main-grey;
+                    position: absolute;
+                    right: -6px;
+                    bottom: -12px;
+                }
+
             }
         }
         // .login-div {
