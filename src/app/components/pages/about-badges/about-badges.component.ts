@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-about-badges',
@@ -19,6 +20,7 @@ export class AboutBadgesComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private meta: MetaService
   ) { }
 
   ngOnInit() {
