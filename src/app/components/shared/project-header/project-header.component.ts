@@ -1,10 +1,13 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../../d7services/user/user.service';
+import { ViewService } from '../../../d7services/view/view.service';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 // import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-header',
   templateUrl: './project-header.component.html',
+  providers: [NgbTooltipConfig],
 })
 export class ProjectHeaderComponent implements OnInit {
   @Input('project') project;
@@ -12,11 +15,17 @@ export class ProjectHeaderComponent implements OnInit {
   @Input() showcaseInfo;
   @Output() SwitchTab = new EventEmitter();
   @Output() ProjectNewId = new EventEmitter();
+  badges = [];
   
   constructor(
     private userService: UserService,
+    private viewService: ViewService,
+    private config: NgbTooltipConfig,
     // private readonly meta: MetaService,
-  ) {}
+  ) {
+    config.placement = 'bottom';
+    config.triggers = 'hover';    
+  }
 
   userLogin;
   currentuser;
@@ -28,6 +37,7 @@ export class ProjectHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.getcurrentuser();
+    this.getBadgesProject();
     this.userId = localStorage.getItem('user_id');
     this.currentuser = Number(localStorage.getItem('user_id'));
     if (this.project.title) {
@@ -61,6 +71,14 @@ export class ProjectHeaderComponent implements OnInit {
 
   SwitchTabFunc(NewTab) {
     this.SwitchTab.emit(NewTab);
+  }
+
+  getBadgesProject() {
+    this.viewService.getView('api-project-badges', [['nid', this.project.nid]]).subscribe(data => {
+      for (let i = 0; i < data.length && i < 4; i++) {
+        this.badges.push(data[i]);
+      }
+    });
   }
 
   SwitchProjectFunc(e,action) {

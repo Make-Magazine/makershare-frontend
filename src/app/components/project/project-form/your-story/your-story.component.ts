@@ -313,7 +313,7 @@ export class YourStoryComponent implements OnInit {
     },
     'story': {
       'title': 'Creating a great story:',
-      'guide': `Tell us about your project. Some questions to think about - What does your project do? How did you get started? What was your process for working on it?What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the the project in different states of polish will help others visualize what's being referenced.`
+      'guide': `Tell us about your project. Some questions to think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the the project in different states of polish will help others visualize what's being referenced.`
     },
     'show_tell': {
       'title': 'Making a Show and Tell video:',

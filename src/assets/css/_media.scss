@@ -307,6 +307,23 @@
 @media only screen and (max-width: 991px) {}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .main-header {
+        .login-block {
+            li {
+                margin-left: 0px !important;
+            }
+        }
+    }
+    header {
+        nav {
+            padding: 20px 5px !important;  
+            #MainNav {
+                .nav-item {
+                    margin-left: 5px !important;
+                }
+            }
+        } 
+    } 
 }
 
 @media only screen and (min-width: 1200px) {}
