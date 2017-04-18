@@ -232,9 +232,9 @@
 			img {
 				
 				height: auto;
-			    position: relative;
-   			    left: -30px;
-				top: -25px;
+			  //   position: relative;
+   			//     left: -30px;
+				// top: -25px;
 			}
 		}
 		h4 {font-weight: normal;}
@@ -251,9 +251,23 @@
 		   border: 2px solid red;
            box-sizing: border-box;
 				img{
-	position: relative;
-    top: -9px;
-    left: -16px;
+       padding: 10px;
+			 width: 100%;
+		}
+		.card-block
+		{
+			a{
+				width: 100%;
+				word-wrap:break-word;
+			}
+			
+		}
+
+		.links-body
+		{
+		 margin-left: 6px;
+		 padding-top: 10px;
+		  // padding-left: 10px;
 		}
 	}
 }	

@@ -6150,10 +6150,7 @@ img {
       height: 160px;
       overflow: hidden; }
       .page-workshop-single .page-workshop-individual .suggested .image-container img {
-        height: auto;
-        position: relative;
-        left: -30px;
-        top: -25px; }
+        height: auto; }
     .page-workshop-single .page-workshop-individual .suggested h4 {
       font-weight: normal; }
     .page-workshop-single .page-workshop-individual .suggested li {
@@ -6162,9 +6159,14 @@ img {
     border: 2px solid red;
     box-sizing: border-box; }
     .page-workshop-single .page-workshop-individual .suggest-card img {
-      position: relative;
-      top: -9px;
-      left: -16px; }
+      padding: 10px;
+      width: 100%; }
+    .page-workshop-single .page-workshop-individual .suggest-card .card-block a {
+      width: 100%;
+      word-wrap: break-word; }
+    .page-workshop-single .page-workshop-individual .suggest-card .links-body {
+      margin-left: 6px;
+      padding-top: 10px; }
 
 .page-workshop-individual .learn-card {
   position: relative;
