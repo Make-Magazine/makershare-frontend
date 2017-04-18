@@ -32,6 +32,8 @@ import { AccessDeniedComponent } from './auth0/access-denied/access-denied.compo
 import { Four04Component } from './auth0/four04/four04.component';
 // loader service
 import { LoaderService } from './components/shared/loader/loader.service';
+import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
+
 // static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
 import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
@@ -113,6 +115,9 @@ import { MetaModule } from '@nglibs/meta';
     AuthGuardService,
     NotificationBarService,
     LoaderService,
+    LoaderComponentService,
+    
+
     {
      provide: ResponsiveConfig, 
      useFactory: ResponsiveDefinition }

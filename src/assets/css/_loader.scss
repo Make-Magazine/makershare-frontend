@@ -144,9 +144,24 @@
   flex: 1 1 auto;
 }
 
+
+
 /* Absolute Center Spinner */
 .loading {
   position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.loading-component {
+  position: absolute;
   z-index: 999;
   height: 2em;
   width: 2em;
@@ -170,7 +185,12 @@
   background-color: rgba(0,0,0,0.3);
 }
 
+.loading-component:before {
+  display: none;
+}
+
 /* :not(:required) hides these rules from IE9 and below */
+.loading-component:not(:required), 
 .loading:not(:required) {
   /* hide "loading..." text */
   font: 0/0 a;
@@ -180,6 +200,7 @@
   border: 0;
 }
 
+.loading-component:not(:required):after,
 .loading:not(:required):after {
   content: '';
   display: block;
