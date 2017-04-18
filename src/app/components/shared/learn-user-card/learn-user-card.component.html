@@ -6,7 +6,7 @@
     <img class="d-flex align-self-start mr-3" *ngIf="!card.photo[0]" src="{{card.default_profile_photo}}" alt="Generic placeholder image">
    
     <div class="media-body">
-      <h5 class="mt-0" *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</h5>
+      <h5 class="mt-0" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h5>
       {{card.nickname}}
       <div *ngIf="card.city">{{card.city.locality}} {{card.city.country}}</div>
     </div>

@@ -177,4 +177,9 @@ export class UserCardComponent implements OnInit {
     
   }
 
+    userProfile(fName, lName) {
+    var name = fName + '-' + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
+
 }

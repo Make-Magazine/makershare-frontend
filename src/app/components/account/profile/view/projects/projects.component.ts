@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ViewService } from '../../../../../d7services/view/view.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../../../d7services/user/user.service';
+import { MetaService } from '@nglibs/meta';
+
 @Component({
   selector: 'profile-projects',
   templateUrl: './projects.component.html',
@@ -13,7 +15,8 @@ export class ProjectsComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private viewService: ViewService
+    private viewService: ViewService,
+    private meta: MetaService
   ) { }
   view = 'grid';
   pages: number = 0;
@@ -59,6 +62,10 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
+
+      this.meta.setTitle(`Maker Share | Projects`);
+      this.meta.setTag('og:image', '/assets/logo.png');
+      this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects Projects ');
       this.loadMoreVisibilty();
 
     }, err => {

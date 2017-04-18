@@ -2,10 +2,11 @@
   <div class="region region-content page-learn">
     <header class="learn-header">
       <div class="container">
-        <h3>Workshops</h3>
-        <p>Push Your Progress</p>
-        <p>Make: and Intel have opened our libraries of skills development content to bring you these Making Workshops. We’ll be covering everything from electronics basics through design and business skills.<br>
-        <a href="mailto:help@makershare.com" target="top">Send us</a> suggestions for workshop topics. </p>
+        <h3>Learning</h3>
+        <p>Make: and Intel have opened our libraries of skills development content to bring you these Making Workshops. We’ll
+          be covering everything from electronics basics through design and business skills.
+          <a href="mailto:help@makershare.com"
+            target="top">Send us</a> suggestions for workshop topics.</p>
       </div>
     </header>
     <!--/header -->
@@ -13,8 +14,8 @@
       <div class="container">
         <div class="row justify-content-end align-items-center">
           <div class="workshop-count btn">
-          <p *ngIf="countWorkshop==1">{{countWorkshop}} Workshop</p>
-          <p *ngIf="countWorkshop>1">{{countWorkshop}} Workshops</p>
+            <p *ngIf="countWorkshop==1">{{countWorkshop}} learning workshop </p>
+            <p *ngIf="countWorkshop>1">{{countWorkshop}} learning workshops </p>
           </div>
           <!--<div ngbDropdown class="d-inline-block sorting-filter dropdown">
               <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{currentStatusName}} <i class="fa fa-lg fa-angle-down"></i></button>
@@ -32,7 +33,7 @@
     <div class="container learn-container">
       <div *ngFor="let learn of learns">
         <app-learn-card [workshopNid]="learn.nid"></app-learn-card>
-         <!-- End col-md-6 -->
+        <!-- End col-md-6 -->
       </div>
       <!-- End challenge-card -->
     </div>
