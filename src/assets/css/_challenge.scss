@@ -186,7 +186,7 @@
             height: 100%;
         }
         .card-title {
-            @include card-header-font-md-2();
+            @include card-header-font-lg();
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -373,7 +373,7 @@
             background-color: transparent;
             border: none;
             .card-title {
-                @include card-header-font-md-2();
+                @include card-header-font-lg();
                 color: $white;
                 max-height: 145px;
             }
@@ -504,6 +504,11 @@
                 width: 65%;
             }
         }
+        .card-partership {
+            p {
+                color: #fff !important;
+            }
+        }
         .image-container {
             padding: 0;
             width: 100%;
@@ -514,7 +519,10 @@
         .challenge-card-count {
             span {
                 padding-right: 10px;
-                border-right: 1px solid #fff; 
+                border-right: 1px solid #fff;
+            }
+            .entries-count {
+                border: none;
             }
         }
         .button-container-main-1 {
