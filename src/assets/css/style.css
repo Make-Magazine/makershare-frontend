@@ -2362,6 +2362,7 @@ footer {
   height: 100%;
   position: absolute;
   background-color: rgba(200, 200, 200, 0.6);
+  opacity: 0;
   display: none;
   z-index: 10; }
   .overlay-portfolio p {
@@ -2624,11 +2625,30 @@ footer {
   text-align: center; }
 
 .social-links a {
-  display: inline-block;
-  padding: 0.5em 0em;
-  color: #4F4F4F; }
-  .social-links a i.fa-inverse:before {
-    padding-left: 10px; }
+  position: relative;
+  text-align: center;
+  width: 0px;
+  height: 0px;
+  padding: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -moz-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px;
+  -khtml-border-radius: 20px 20px 20px 20px;
+  color: #FFFFFF; }
+  .social-links a i {
+    font-size: 15px;
+    position: absolute;
+    left: 3px;
+    top: 10px; }
+.social-links a.social {
+  float: left;
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  background: #333333;
+  color: #fff; }
 
 .mywebsite {
   color: #00AEEF;
@@ -4173,7 +4193,6 @@ header.showcase-project .next {
 .page-project .projectsingle-card {
   border: 1px solid #4ab0d8;
   position: relative;
-  cursor: pointer;
   background-color: white;
   padding: 0px 16px 0px 0px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -4224,7 +4243,8 @@ header.showcase-project .next {
           color: #828282;
           color: #00AEEF;
           font-size: 15px !important;
-          text-decoration: none; }
+          text-decoration: none;
+          cursor: auto; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular" !important;
         font-size: 2.3em !important;
@@ -5429,7 +5449,8 @@ img {
   .page-create-project-why .your-story .cover a {
     margin-top: 5px;
     width: 40%;
-    margin-right: 10%; }
+    margin-right: 10%;
+    font-size: 16px; }
   .page-create-project-why .your-story .cover .image-preview {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
@@ -5443,6 +5464,8 @@ img {
     display: inline-block; }
   .page-create-project-why .your-story .cover #cover-upload {
     display: none; }
+  .page-create-project-why .your-story .cover .file-upload {
+    font-size: 16px; }
   .page-create-project-why .your-story .projectTags input {
     height: auto;
     padding: 0; }

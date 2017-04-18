@@ -1232,6 +1232,7 @@
     position: absolute;
     background-color: rgba(200,200,200,0.6);
     // opacity: 0.6;
+    opacity: 0;
     display: none;
     z-index: 10;
     p {
@@ -1492,12 +1493,37 @@
 
 .social-links {
     a {
-        display: inline-block;
-        padding: 0.5em 0em;
-        color: $text-color-1;
-        i.fa-inverse:before {
-            padding-left: 10px;
+        position:relative;
+        text-align:center;
+        width:0px;
+        height:0px;
+        padding:15px;
+        border-top-right-radius: 	20px;
+        border-top-left-radius: 	20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 	20px; 
+        -moz-border-radius: 		20px 20px 20px 20px;
+        -webkit-border-radius: 		20px 20px 20px 20px;
+        -khtml-border-radius: 		20px 20px 20px 20px; 	
+        color:#FFFFFF;
+        i {
+            font-size:15px;
+            position:absolute;
+            left:3px;
+            top:10px;
         }
+    }
+   
+    a.social {
+        float: left;
+        margin:0 5px 0 0;
+        cursor:pointer;
+        background:$main-grey ;
+        color:#fff;
+	
+    }
+    a.social:hover {
+        
     }
 }
 

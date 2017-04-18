@@ -131,61 +131,35 @@
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(socialaccountsmodal,'add-social-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<div class="social-links">
 										<span class="global-title">Social</span><br>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social fb" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
+												<i class="fa fa-facebook fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social tw" target="_blank" *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}">
+												<i class="fa fa-twitter fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social in" target="_blank" *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}">
+												<i class="fa fa-instagram fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social ln" target="_blank" *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}">
+												<i class="fa fa-linkedin fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_pinterest != '' " href="{{profile.field_social_accounts.field_pinterest}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social pin" target="_blank" *ngIf="profile.field_social_accounts.field_pinterest != '' " href="{{profile.field_social_accounts.field_pinterest}}">
+												<i class="fa fa-pinterest fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_youtube != '' " href="{{profile.field_social_accounts.field_youtube}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social ut" target="_blank" *ngIf="profile.field_social_accounts.field_youtube != '' " href="{{profile.field_social_accounts.field_youtube}}">
+												<i class="fa fa-youtube fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_hackster_io != '' " href="{{profile.field_social_accounts.field_hackster_io}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_hackster_io != '' " href="{{profile.field_social_accounts.field_hackster_io}}">
+												<i class="fa fa-external-link fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_instructables != '' " href="{{profile.field_social_accounts.field_instructables}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_instructables != '' " href="{{profile.field_social_accounts.field_instructables}}">
+												<i class="fa fa-external-link fa-lg"></i>
 										</a>
-										<a class="nav-link" target="_blank" *ngIf="profile.field_social_accounts.field_hackday != '' " href="{{profile.field_social_accounts.field_hackday}}">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-external-link fa-stack-1x fa-inverse"></i>
-											</span>
+										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_hackday != '' " href="{{profile.field_social_accounts.field_hackday}}">
+												<i class="fa fa-external-link fa-lg"></i>
 										</a>
 									</div>
+									<div class="clearfix"></div>
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
 									<div *ngIf="CurrentLoggedUserId && uid">

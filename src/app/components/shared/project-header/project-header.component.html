@@ -37,7 +37,7 @@
           <div class="projects-circle">
             <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="showcaseInfo">
               <a *ngIf="showcaseInfo.index > 0" (click)="SwitchProjectFunc($event,'back')" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-              <h3 class=" showcase-nav" *ngIf="showcaseInfo.name"><a href="">{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>
+              <h3 class=" showcase-nav" *ngIf="showcaseInfo.name"><a>{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>
               <a *ngIf="showcaseInfo.totalNumber && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="SwitchProjectFunc($event,'next')"
                 class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
