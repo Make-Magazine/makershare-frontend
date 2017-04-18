@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 
@@ -32,5 +32,4 @@ export class MakezineComponent implements OnInit {
       this.loaderService.display(false);
     });
   }
-
 }
