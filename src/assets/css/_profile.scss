@@ -730,6 +730,7 @@
         background: url('../images/placeholder.png') center center;
         background-size: cover;
         position: relative;
+        height: 275px;
         .card-img-top {
             border-radius: 0;
         }
@@ -795,6 +796,20 @@
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 23px !important;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+    }
+    .card-title-showcase {
+        @include card-header-font-sm;
+        color: $text-color-1;
+        height: 25px;
+        padding: 0px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
         line-height: 23px !important;
