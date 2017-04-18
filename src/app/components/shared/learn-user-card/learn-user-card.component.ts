@@ -65,4 +65,10 @@ export class LearnUserCardComponent implements OnInit {
     });
   }
 
+      userProfile(fName, lName) {
+    var name = fName + '-' + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
+
+
 }
