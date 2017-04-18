@@ -3607,6 +3607,8 @@ footer {
       color: #333333; }
     .page-project .top-content-wrapper ul li {
       display: inline-block; }
+      .page-project .top-content-wrapper ul li.project-like a.active i, .page-project .top-content-wrapper ul li.project-bookmakr a.active i {
+        color: #ED1C24; }
     .page-project .top-content-wrapper ul.project-tags {
       -webkit-justify-content: flex-start;
       /* Safari */
@@ -3629,7 +3631,7 @@ footer {
       text-align: right;
       padding: 0px 12px; }
       .page-project .top-content-wrapper .project-likes img {
-        width: 12px;
+        width: 10px;
         height: auto; }
       .page-project .top-content-wrapper .project-likes span {
         font-size: 14px;
@@ -3639,7 +3641,7 @@ footer {
       text-align: right;
       padding: 0px 12px; }
       .page-project .top-content-wrapper .project-views img {
-        width: 21px;
+        width: 18px;
         height: auto; }
       .page-project .top-content-wrapper .project-views span {
         font-size: 14px;
