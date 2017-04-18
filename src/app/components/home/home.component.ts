@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('maker_homepage_api').subscribe(data =>{
       this.homeCards = data;
-      console.log(this.homeCards)
+
       this.meta.setTitle(`Maker Share`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share ');
