@@ -17,7 +17,7 @@ import { PortfolioTabComponent } from './view/edit-portfolio/portfolio-tab/portf
 import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-card-portfolio/project-card-portfolio.component';
 import { DndModule } from 'ng2-dnd';
 import { RouterModule } from '@angular/router';
-import { MetaModule } from '@nglibs/meta';
+//import { MetaModule } from '@nglibs/meta';
 // import { PipeModule } from '../../../pipes/custom-pipes.module';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { MetaModule } from '@nglibs/meta';
     ImageCropperModule,
     CKEditorModule,
     DndModule,
-    MetaModule.forRoot()
+    //MetaModule.forRoot()
     // PipeModule.forRoot(),
   ],
   declarations: [
