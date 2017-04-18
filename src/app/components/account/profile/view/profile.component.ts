@@ -18,6 +18,7 @@ import { Auth } from '../../../../auth0/auth.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { ImageCropperComponent } from 'ng2-img-cropper';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-profile',
@@ -155,6 +156,7 @@ export class ProfileComponent implements OnInit {
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
     });
   }
+  title;
   CurrentModalTab:string;
   ImageFile:any;
   ProfilePicData: any = {};
@@ -191,7 +193,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
-    private auth: Auth
+    private auth: Auth,
+    private readonly meta: MetaService
 
   ) {
     this.ProfilecropperSettings = new CropperSettings();
@@ -226,7 +229,6 @@ export class ProfileComponent implements OnInit {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
     }
-
   }
   GetUserDetails() {
     if (!this.uid) {
@@ -380,5 +382,8 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+    this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
+    this.meta.setTag('og:image', this.profile.user_photo);
+    this.meta.setTag('og:description', this.customDescription);
   }
 }

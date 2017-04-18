@@ -351,7 +351,7 @@
                 margin: 16px 0px 16px 0px;
             }
             .card-title {
-                @include card-header-font-md-2();
+                @include card-header-font-lg();
                 color: #4F4F4F;
             }
             .card-status {

@@ -15,6 +15,6 @@
 <div class="login-link" *ngIf="!auth.authenticated()">
   <label *ngIf="!titlecomment" class="feedback-label">Feedback</label>
     <label *ngIf="titlecomment" class="feedback-label">{{titlecomment.title}}</label>
-  <p *ngIf="titlecomment" >Please <a  class="join-link" (click)="auth.login()"> Join / Login </a>{{titlecomment.join}}</p>
+  <p *ngIf="titlecomment" class="not-join"> Please <a  class="join-link" (click)="auth.login()"> Join / Login </a> {{titlecomment.join}}</p>
   </div>
 
