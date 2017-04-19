@@ -63,9 +63,9 @@
         </div>
       </li>
     </ul>
-    <div class="text-center">
+    <div class="text-center" *ngIf="hideloadmore"> 
       <div class="button-container-sec-3">
-        <a class="btn btn-grey" *ngIf="hideloadmore" (click)="loadMore()">Load more</a>
+        <a class="btn btn-grey"  (click)="loadMore()">Load more</a>
       </div>
     </div>
   </div>
@@ -81,7 +81,7 @@
     </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
+      <form [formGroup]="messageForm" *ngIf="active"  (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
         id="createMsg" class="form-horizontal">
         <div *ngFor=" let user of SelectedUser" (ngSubmit)="resetForm($event)">
           <app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>
@@ -107,7 +107,7 @@
         </div>
         <ul class="list-unstyled actions">
           <li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>
-          <li><button type="submit" class="btn btn-blue btn-sharp">Send</button></li>
+          <li><button type="submit" class="btn btn-blue btn-sharp" (click)="c('Close click')" (click)= "onSubmit($event)" >Send</button></li>
         </ul>
         </form>
     </div>
