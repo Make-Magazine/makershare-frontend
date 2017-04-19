@@ -51,16 +51,16 @@ import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.com
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { MetaModule } from '@nglibs/meta';
 
- let config = {
-    breakPoints: {
-        xs: {max: 575},
-        sm: {min: 576, max: 767},
-        md: {min: 768, max: 991},
-        lg: {min: 992, max: 1199},
-        xl: {min: 1200}
-    },
-    debounceTime: 100 // allow to debounce checking timer
-  };
+let config = {
+  breakPoints: {
+    xs: { max: 575 },
+    sm: { min: 576, max: 767 },
+    md: { min: 768, max: 991 },
+    lg: { min: 992, max: 1199 },
+    xl: { min: 1200 }
+  },
+  debounceTime: 100 // allow to debounce checking timer
+};
 
 @NgModule({
   declarations: [
@@ -81,7 +81,7 @@ import { MetaModule } from '@nglibs/meta';
     MakerCampComponent,
     IntelInnovationComponent,
     MakerShedComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -95,7 +95,7 @@ import { MetaModule } from '@nglibs/meta';
     NotificationBarModule,
     SharedModule,
     DndModule.forRoot(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,
     MetaModule.forRoot()
   ],
@@ -116,15 +116,16 @@ import { MetaModule } from '@nglibs/meta';
     NotificationBarService,
     LoaderService,
     LoaderComponentService,
-    
+
 
     {
-     provide: ResponsiveConfig, 
-     useFactory: ResponsiveDefinition }
+      provide: ResponsiveConfig,
+      useFactory: ResponsiveDefinition
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { };
-export function ResponsiveDefinition(){ 
-    return new ResponsiveConfig(config);
+export function ResponsiveDefinition() {
+  return new ResponsiveConfig(config);
 };

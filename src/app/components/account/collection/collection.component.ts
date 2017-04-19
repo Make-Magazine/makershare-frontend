@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import * as globals from '../../../d7services/globals';
 import { MainService } from '../../../d7services/main/main.service';
@@ -11,6 +11,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
 export class CollectionComponent implements OnInit {
   activeTab;
   checkTab: boolean;
+  countProjectBookmark:number;
   checkArray = {};
   /* checkArray = {
      "project": "0",
@@ -26,7 +27,7 @@ export class CollectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loaderService.display(true);
+  //  this.loaderService.display(true);
     this.getCollectionCount();
 
   }
@@ -41,7 +42,9 @@ export class CollectionComponent implements OnInit {
     this.mainService.post(globals.endpoint + '/maker_count_api/collections/', {}).map(res => res.json()).subscribe(res => {
       //console.log(res.bookmarked_projects);
       this.checkArray = res;
-      console.log(this.checkArray)
+      this.countProjectBookmark=this.checkArray['bookmarked_projects']
+      console.log(this.countProjectBookmark)
+    console.log(this.checkArray)
       for (var key in this.checkArray) {
         if (this.checkArray.hasOwnProperty(key)) {
           if (this.checkArray[key] > 0) {
@@ -57,9 +60,9 @@ export class CollectionComponent implements OnInit {
           }
         }
       }
-      this.loaderService.display(false);
+    //  this.loaderService.display(false);
     }, err => {
-      this.loaderService.display(true);
+   //   this.loaderService.display(true);
     });
 
 

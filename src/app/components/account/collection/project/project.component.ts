@@ -14,8 +14,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './project.component.html',
 })
 export class ProjectComponent implements OnInit {
+  @Input() countProject;
   projects = [];
   deletedArr = [];
+  pages: number = 0;
+  //countProject :any;
+  hideloadmoreproject = false;
+  page_arg;
 
 
   userId
@@ -32,14 +37,26 @@ export class ProjectComponent implements OnInit {
     this.getProjectBookmark();
     this.userId = localStorage.getItem('user_id');
 
+
   }
   getProjectBookmark() {
-    var args = [
-      ['type', this.type],
-    ];
+    // get the projects
+    if (this.pages >= 0) {
+      this.page_arg =
+        ['page', this.pages]
+        ;
+    }
+    if (this.pages == 0) {
+      this.projects = [];
+    }
+    var args =
+      ['type', this.type];
+
     // get project Has Bookmark from a view
-    this.viewService.getView('bookmark', args).subscribe(res => {
-      this.projects = res;
+    this.viewService.getView('bookmark', [args, this.page_arg]).subscribe(res => {
+      //this.projects = res;
+      this.projects = this.projects.concat(res);
+      this.loadMoreVisibilty();
 
     }, err => {
 
@@ -56,7 +73,6 @@ export class ProjectComponent implements OnInit {
     if (event.target.checked === true) {
       this.deletedArr.push(mid);
 
-      // console.log(this.deletedArr)
     } else {
       // remove from deletedArr
       var index = this.deletedArr.indexOf(mid, 0);
@@ -97,4 +113,23 @@ export class ProjectComponent implements OnInit {
 
     return this.projects.every(_ => _.state);
   }
+  /* function load more  */
+  loadMoreProject() {
+    this.pages++;
+    this.getProjectBookmark();
+  }
+  /* end function load more  */
+  // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    console.log(this.projects.length)
+    if (this.countProject == this.projects.length) {
+
+      this.hideloadmoreproject = true;
+
+    } else if (this.countProject > this.projects.length) {
+      this.hideloadmoreproject = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 }
