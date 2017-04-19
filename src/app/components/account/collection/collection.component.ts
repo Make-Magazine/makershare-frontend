@@ -2,7 +2,7 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import * as globals from '../../../d7services/globals';
 import { MainService } from '../../../d7services/main/main.service';
-import { LoaderService } from '../../shared/loader/loader.service';
+//import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-collection',
@@ -24,7 +24,7 @@ export class CollectionComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private mainService: MainService,
-    private loaderService: LoaderService,
+  //  private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
