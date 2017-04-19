@@ -6,107 +6,108 @@
 </template>
 
 <section class="page-search-content">
-    <div class="top-content-wrapper">
-      <div class="container">
-          <div class="row d-flex justify-content-around">
-            <div class="col-lg-8">
-                <div id="imaginary_container">
-                  <div class="input-group stylish-input-group">
-                      <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
-                      <span class="input-group-addon">
+  <div class="top-content-wrapper">
+    <div class="container">
+      <div class="row d-flex justify-content-around">
+        <div class="col-lg-8">
+          <div id="imaginary_container">
+            <div class="input-group stylish-input-group">
+              <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..."
+                [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
+              <span class="input-group-addon">
                       <button type="button" (click)="searchQuery()" value="search">
                         <i class="fa fa-search"></i>
                       </button>  
                       </span>
-                  </div>
-                </div>
-            </div>
-            <div class="sort col-lg-4">
             </div>
           </div>
-      </div>
-      <!-- End container -->
-    </div>
-    <!-- End top-content-wrapper -->
-    <div class="container">
-      <div class="region region-content ">
-          <div class="search-term">
-            <h3 *ngIf="searchTerm">"{{searchTerm}}"</h3>
-            <p>Search Results</p>
-          </div>
-          <div class="row total-result">
-
-            <!-- Projects -->
-            <div *ngIf="projects.length > 0" class="col-md-12 project-result result-section">
-                
-                <div class="results-header d-flex justify-content-end">
-                  <div class="result-title mr-auto"><span>Projects</span></div>
-                  <div class="view-all-result">
-                    <span>{{projectsCount}} Results</span>
-                    <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | See all results</a></div>
-                </div>
-                <div class="row projects-result mt-5">
-                  <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4 mb-5"></app-project-search-card>
-                </div>
-            </div>
-  
-            <!-- Challenges -->
-            <div *ngIf="challenges.length > 0" class="col-md-12 challenge-result result-section">
-                
-                <div class="results-header d-flex justify-content-end">
-                  <div class="result-title mr-auto"><span>Challenges</span></div>
-                  <div class="view-all-result">
-                    <span>{{challengesCount}} Results</span>
-                    <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | See all results</a></div>
-                </div>
-                <div class="row projects-result mt-5">
-                  <app-challenge-search-card *ngFor="let challenge of challenges"  [challengeNid]="challenge.is_nid" class="col-md-6"></app-challenge-search-card>
-                </div>
-            </div>
-
-            <!-- Showcases -->
-            <div *ngIf="showcases.length > 0" class="col-md-12 showcase-result result-section">
-                
-                <div class="results-header d-flex justify-content-end">
-                  <div class="result-title mr-auto"><span>Showcases</span></div>
-                  <div class="view-all-result">
-                    <span>{{showcasesCount}} Results</span>
-                    <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | See all results</a></div>
-                </div>
-                <div class="row projects-result mt-5">
-                  <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-6 col-md-6 col-sm-12"></app-showcase-search-card>
-                </div>
-            </div>
-              
-            <!-- Learning -->
-            <div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
-                
-                <div class="results-header d-flex justify-content-end">
-                  <div class="result-title mr-auto"><span>Workshops</span></div>
-                  <div class="view-all-result">
-                    <span>{{workshopsCount}} Results</span>
-                    <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | See all results</a></div>
-                </div>
-                <div class="row projects-result mt-5">
-                  <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-md-6"></app-learn-search-card>
-                </div>
-            </div>
-
-            <!-- Users -->
-            <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">   
-                <div class="results-header d-flex justify-content-end">
-                  <div class="result-title mr-auto"><span>Makers</span></div>
-                  <div class="view-all-result">
-                    <span>{{usersCount}} Results</span>
-                    <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | See all results</a></div>
-                </div>
-                <div class="row projects-result mt-5">
-                  <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4 mb-5"></app-maker-search-card>
-                </div>
-            </div>
-
-
-          </div>
+        </div>
+        <div class="sort col-lg-4">
+        </div>
       </div>
     </div>
+    <!-- End container -->
+  </div>
+  <!-- End top-content-wrapper -->
+  <div class="container">
+    <div class="region region-content ">
+      <div class="search-term">
+        <h3 *ngIf="searchTerm">"{{searchTerm}}"</h3>
+        <p>Search Results</p>
+      </div>
+      <div class="row total-result">
+
+        <!-- Projects -->
+        <div *ngIf="projects.length > 0" class="col-md-12 project-result result-section">
+
+          <div class="results-header d-flex justify-content-end">
+            <div class="result-title mr-auto"><span>Projects</span></div>
+            <div class="view-all-result">
+              <span>{{projectsCount}} Results</span>
+              <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | See all results</a></div>
+          </div>
+          <div class="row projects-result">
+            <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4"></app-project-search-card>
+          </div>
+        </div>
+
+        <!-- Challenges -->
+        <div *ngIf="challenges.length > 0" class="col-md-12 challenge-result result-section">
+
+          <div class="results-header d-flex justify-content-end">
+            <div class="result-title mr-auto"><span>Challenges</span></div>
+            <div class="view-all-result">
+              <span>{{challengesCount}} Results</span>
+              <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | See all results</a></div>
+          </div>
+          <div class="row projects-result">
+            <app-challenge-search-card *ngFor="let challenge of challenges" [challengeNid]="challenge.is_nid" class="col-md-6"></app-challenge-search-card>
+          </div>
+        </div>
+
+        <!-- Showcases -->
+        <div *ngIf="showcases.length > 0" class="col-md-12 showcase-result result-section">
+
+          <div class="results-header d-flex justify-content-end">
+            <div class="result-title mr-auto"><span>Showcases</span></div>
+            <div class="view-all-result">
+              <span>{{showcasesCount}} Results</span>
+              <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | See all results</a></div>
+          </div>
+          <div class="row projects-result mt-5">
+            <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-4 col-md-6 col-sm-12"></app-showcase-search-card>
+          </div>
+        </div>
+
+        <!-- Learning -->
+        <div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
+
+          <div class="results-header d-flex justify-content-end">
+            <div class="result-title mr-auto"><span>Workshops</span></div>
+            <div class="view-all-result">
+              <span>{{workshopsCount}} Results</span>
+              <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | See all results</a></div>
+          </div>
+          <div class="row projects-result">
+            <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-md-6"></app-learn-search-card>
+          </div>
+        </div>
+
+        <!-- Users -->
+        <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">
+          <div class="results-header d-flex justify-content-end">
+            <div class="result-title mr-auto"><span>Makers</span></div>
+            <div class="view-all-result">
+              <span>{{usersCount}} Results</span>
+              <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | See all results</a></div>
+          </div>
+          <div class="row projects-result">
+            <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4"></app-maker-search-card>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
 </section>
