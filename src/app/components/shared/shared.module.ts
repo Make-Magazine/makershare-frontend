@@ -40,6 +40,7 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component';
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+import { ReportCommentComponent } from './report-comment/report-comment.component';
 
  
  let config = {
@@ -107,6 +108,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     FileCardComponent,
     // directives
     ValidateOnFocusoutDirective,
+    ReportCommentComponent,
   ],
   exports: [
     CommentComponent,
