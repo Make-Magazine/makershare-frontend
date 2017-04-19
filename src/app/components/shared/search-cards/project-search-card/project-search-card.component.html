@@ -1,33 +1,56 @@
-<div class="profile-container" *ngIf="project" (click)="ShowProjectDetails(project.nid)">
-  <!-- start profile card-->
-  <div class="project-search-card card">
-    <div class="card-block project-card-small align-content-stretch content ">
-      <div class="media d-flex align-items-stretch">
-        <div class="project-pic-container flex-column align-self-start">
-          <div class="overlay"></div>
-          <img *ngIf="project.cover_photo && view == 'grid'" class="card-img-top" src="{{project.cover_photo}}" alt="">
-          <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
-          <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
-        </div>
-        <div class="media-body d-flex align-items-start flex-column">
-          <div class="card-type">Project</div>
-          <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+<!--<div *ngIf="view == 'grid'">-->
+<div *ngIf="project">
+  <div *hideItBootstrap="['md','sm', 'xs']">
+    <div class="project card">
+      <div class="card-type-blue">
+        <div class="type-layer-2">
+          Project
         </div>
       </div>
-      <div class="maker-project-info d-flex align-items-stretch flex-row">
-        <div class="profile-pic-container mr-2">
-          <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
-          <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+      <div class="image-top" (click)="ShowProjectDetails(project.nid)">
+        <div class="overlay"></div>
+        <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
+        <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
+        <div class="teaser">
+          <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
+          <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
         </div>
-        <div class="d-flex flex-column w-75">
-          <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
-          <div class="card-stats mt-auto d-flex">
-            <div class="icons-side-user d-flex">
-              <div class="user-icon" *ngFor="let badge of badges;">
-                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
-              </div>
+        <div class="list-unstyled icons">
+          <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
+          <span><i class="fa fa-lg fa-trophy"></i>1</span>
+          <span><i class="fa fa-lg fa-clock-o"></i>1</span>
+        </div>
+      </div>
+      <div class="card-block d-flex flex-column justify-content-around">
+        <div class="d-flex flex-column">
+          <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
+            <div class="project-icon" *ngFor="let badge of badges;">
+              <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
-            <ul class="list-unstyled d-flex justify-content-between ml-auto mt-auto">
+          </div>
+          <div class="d-flex flex-row">
+            <div class="profiel-pic-container mr-2">
+              <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
+              <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+            </div>
+            <div class="d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
+              <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+              <a (click)="userProfile(project.first_name,project.last_name)">
+                <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+              </a>
+            </div>
+          </div>
+          <div *ngIf="project.uid  && project.uid != userId">
+            <app-message-modal [uid]="project.uid"></app-message-modal>
+          </div>
+        </div>
+        <div class="content-side col d-flex flex-column justify-content-start">
+          <!--<p class="card-text" innerHTML="{{project.teaser}}"></p>-->
+          <p class="categories">
+            <span *ngFor="let category of project.categories; let i = index" innerHTML="{{category}}"></span>
+          </p>
+          <div class="card-stats mt-auto">
+            <ul class="list-unstyled d-flex justify-content-between">
               <li>
                 <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                 <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
@@ -35,7 +58,11 @@
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>170</span>
+                <span>70</span>
+              </li>
+              <li>
+                <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
+                <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
               </li>
             </ul>
           </div>
@@ -43,51 +70,31 @@
       </div>
     </div>
   </div>
-  <!-- End profile card -->
-</div>
-
-
-
-
-
-
-<!--<div>
-  <div class="project card" *ngIf="project" (click)="ShowProjectDetails(project.nid)">
-    <div class="image-top">
-      <div class="overlay"></div>
-      <img *ngIf="project.cover_photo && view == 'grid'" class="card-img-top" src="{{project.cover_photo}}" alt="">
-      <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
-      <img *ngIf="!project.cover_photo" src="http://placehold.it/365x290" alt="">
-      <div class="teaser">
-        <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
-        <p class="overlay-text" *ngIf="project.challenge_name"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
+  <div *hideItBootstrap="['lg','xl']">
+    <div class="project-mobile-card">
+      <div class="card-type-blue">
+        <div class="type-layer-2">
+          Project
+        </div>
       </div>
-      <div class="list-unstyled icons">
-        <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
-        <span><i class="fa fa-lg fa-trophy"></i>1</span>
-        <span><i class="fa fa-lg fa-clock-o"></i>1</span>
+      <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
+        <div class="project-icon" *ngFor="let badge of badges;">
+          <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+        </div>
       </div>
-    </div>
-    <div class="card-block d-flex flex-column justify-content-around">
-      <p class="card-type">Project</p>
-      <div class="d-flex flex-column">
-        <div class="d-flex flex-row">
-          <div class="profiel-pic-container mr-2">
+      <div class="content-container d-flex flex-column">
+        <div class="d-flex">
+          <div class="profile-pic-container mr-2">
             <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>
-          <div class="d-flex flex-column">
+          <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+            <a (click)="userProfile(project.first_name,project.last_name)">
+              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+            </a>
           </div>
         </div>
-        <div class="icons-side-project d-flex flex-row" *ngIf="badges">
-          <div class="project-icon" *ngFor="let badge of badges;">
-            <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
-          </div>
-        </div>
-      </div>
-      <div class="content-side col d-flex flex-column justify-content-start">
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-between">
             <li>
@@ -100,11 +107,12 @@
               <span>70</span>
             </li>
             <li>
-              <span>{{project.maker_project_count}} projects</span>
+              <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
+              <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-</div>-->
+</div>
