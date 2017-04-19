@@ -85,6 +85,7 @@ export class IndividualWorkshopComponent implements OnInit {
             this.workshopLeader = data[0];
             // console.log(this.workshopLeader)
           });
+          //  console.log(this.workshopLeader)
         }
         this.customTitle = this.workshop.workshop_title;
         this.customDescription = this.workshop.brief_description;
