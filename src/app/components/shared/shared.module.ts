@@ -33,12 +33,13 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
-// import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component';
-// import { MetaModule } from '@nglibs/meta';
+// custom directives
+import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+
  
 //  let config = {
 //     breakPoints: {
@@ -103,6 +104,8 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     ProjectVoteComponent,
     FileManagerComponent,
     FileCardComponent,
+    // directives
+    ValidateOnFocusoutDirective,
   ],
   exports: [
     CommentComponent,

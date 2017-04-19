@@ -46,7 +46,6 @@ export class YourStoryComponent implements OnInit {
   current_child_category: number;
   child_categories: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
-  TitleFocused = false;
 
   //image cropper 
   cropperSettings: CropperSettings;
