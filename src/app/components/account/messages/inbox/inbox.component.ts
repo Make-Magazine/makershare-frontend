@@ -236,8 +236,8 @@ export class InboxComponent implements OnInit {
             if (this.userId === author[0].author) {
               //i am who sent the message
               this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
-                setTimeout(1000);
-                for (let i = 0; i < res.length; i++) {
+                console.log(res)
+                for (let i = 0; i<res.length; i++) {
                   if (res[i] != this.userId) {
                     this.user.getUser(res[i]).subscribe(res => {
                       this.messages[key].sender = true;
