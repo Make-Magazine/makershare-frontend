@@ -65,7 +65,8 @@ export class InboxComponent implements OnInit {
   hideTurnOn: boolean = false;
   status;
   blocked;
-  user_reciv;
+  usr_recv;
+  participints
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -87,7 +88,7 @@ export class InboxComponent implements OnInit {
     this.buildForm();
     this.CountMessages();
     this.getBlockedUsers();
-
+    this.userId = localStorage.getItem('user_id');    
 
   }
 
@@ -224,15 +225,22 @@ export class InboxComponent implements OnInit {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
             if (this.userId === author[0].author) {
-              this.user.getUser(this.userId).subscribe(res => {
-                this.messages[key].sender = true;
-                this.messages[key].user_photo = res.user_photo;
-                this.messages[key].first_name = res.first_name;
-                this.messages[key].last_name = res.last_name;
-
+              //i am who sent the message
+              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res=>{
+                for(let i=0; i<res.length; i++){
+                  if(res[i] != this.userId){
+                    this.user.getUser(res[i]).subscribe(res =>{
+                      this.messages[key].sender = true;
+                      this.messages[key].user_photo = res.user_photo;
+                      this.messages[key].first_name = res.first_name;
+                      this.messages[key].last_name = res.last_name;
+                    })
+                  }
+                }
               })
             } else {
-              this.user.getUser(author[0].author).subscribe(res => {
+              //another person send message to me
+                this.user.getUser(author[0].author).subscribe(res => {
                 this.messages[key].reciver = true;
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
@@ -241,6 +249,7 @@ export class InboxComponent implements OnInit {
             }
 
           })
+         
           msg_arr.push(this.messages[key]);
 
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
@@ -265,21 +274,25 @@ export class InboxComponent implements OnInit {
           }
           i++
         }
+      //   let base = this;
+      //   this.msg.forEach(function (msg) {
+      //   let arr = [];
+      //   for(let key in msg.participants){
+      //     if(msg.participants.hasOwnProperty(key)){
+      //       arr.push(msg.participants[key]);
+      //     }    
+      //   }  
+      //   arr.forEach(function (participant){
+      //     if(base.userId != participant.uid){
+      //       base.user.getUser(participant.uid).subscribe(usr=>{
+      //         msg_arr = usr;
+      //         console.log(msg_arr)
+      //       })
+      //     }
+      //   });
+      // });
       }
       this.msg = this.msg.concat(msg_arr);
-    
-      this.msg.forEach(function (msg) {
-        let arr = [];
-        for(let key in msg.participants){
-          if(msg.participants.hasOwnProperty(key)){
-            arr.push(msg.participants[key]);
-          }    
-        }   
-        arr.forEach(function (participant){
-          // this.userId = localStorage.getItem('user_id');
-          // console.log(participant.uid);
-        });
-      });
       this.loadMoreVisibilty();
     })
   }

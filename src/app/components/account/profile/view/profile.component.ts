@@ -19,6 +19,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { MetaService } from '@nglibs/meta';
+import { FileEntityManage } from '../../../../models';
 
 @Component({
   selector: 'app-profile',
@@ -50,8 +51,7 @@ export class ProfileComponent implements OnInit {
             })
         }
         return [];
-      }
-      )
+      });
   };
 
   SearchCountry = (text$: Observable<string>) => {
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
           this.searchFailed = true;
         }
         return [];
-      })
+      });
   };
 
   searchFailed: boolean = false;
@@ -125,7 +125,6 @@ export class ProfileComponent implements OnInit {
   formGroup: FormGroup;
   FormGroupSocial: FormGroup;
   buildFormSocial() {
-
     this.FormGroupSocial = this.fb.group({
       'field_website_or_blog': [this.profile.field_social_accounts.field_website_or_blog, [CustomValidators.url]],
       'field_additional_site': [this.profile.field_social_accounts.field_additional_site, [CustomValidators.url]],
@@ -141,7 +140,7 @@ export class ProfileComponent implements OnInit {
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
     });
   }
-  title;
+  PhotoModalTab:string;
   CurrentModalTab:string;
   ImageFile:any;
   ProfilePicData: any = {};
@@ -195,6 +194,7 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit() {
     this.CurrentModalTab = 'personal info';
+    this.PhotoModalTab = 'upload';
     this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
@@ -214,6 +214,14 @@ export class ProfileComponent implements OnInit {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
     }
+  }
+  SelectFileAndSave(closebtn:HTMLButtonElement, SelectedFile:FileEntityManage){
+    closebtn.click();
+    let user:UserProfile = {
+      uid:this.uid,
+      user_photo:SelectedFile.fid.toString(),
+    }
+    this.SaveUser(user);
   }
   GetUserDetails() {
     if (!this.uid) {
@@ -247,7 +255,7 @@ export class ProfileComponent implements OnInit {
     }
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
-    this.fileChangeListener(acceptedFile.file, cropper)
+    this.fileChangeListener(acceptedFile.file, cropper);
   }
   fileChangeListener(file: File, cropper) {
     if (!file) return;
