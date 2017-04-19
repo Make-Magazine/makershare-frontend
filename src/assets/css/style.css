@@ -1607,7 +1607,10 @@ footer {
     width: 100%;
     font-size: 12px;
     margin-bottom: 20px;
-    position: relative; }
+    position: relative;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -2238,77 +2241,27 @@ footer {
 
 /* project card on search page */
 .project-mobile-card {
-  margin: 0px;
-  border: none; }
-  .project-mobile-card .project-card-small {
-    padding-top: 10px;
-    padding-bottom: 0;
-    padding-left: 0;
-    border: 1px solid #4ab0d8;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
-    .project-mobile-card .project-card-small:hover {
-      cursor: pointer; }
-    .project-mobile-card .project-card-small .media {
-      margin-bottom: -25px; }
-      .project-mobile-card .project-card-small .media .project-pic-container {
-        padding-left: 0;
-        padding-top: 10px;
-        padding-bottom: 0;
-        margin-bottom: -20px;
-        width: 150px;
-        height: 125px;
-        background: url("../images/placeholder.png") center center;
-        background-size: cover; }
-        .project-mobile-card .project-card-small .media .project-pic-container .maker-photo {
-          display: block;
-          width: 136px;
-          height: 160px;
-          margin-bottom: 4px; }
-      .project-mobile-card .project-card-small .media .media-body .card-title {
-        margin-left: -8px; }
-      .project-mobile-card .project-card-small .media .media-body .card-type {
-        top: 40px;
-        right: -24px;
-        font-size: 16px !important; }
-    .project-mobile-card .project-card-small .maker-project-info {
-      padding: 2px 5px 5px 5px; }
-      .project-mobile-card .project-card-small .maker-project-info .profile-pic-container img {
-        width: 70px;
-        height: 70px; }
-      .project-mobile-card .project-card-small .maker-project-info .maker-name {
-        color: #00AEEF; }
-      .project-mobile-card .project-card-small .maker-project-info .card-stats {
-        padding: 2px;
-        color: #BDBDBD; }
-        .project-mobile-card .project-card-small .maker-project-info .card-stats ul {
-          margin-bottom: 6px; }
-          .project-mobile-card .project-card-small .maker-project-info .card-stats ul li {
-            font-family: "Messina Sans Regular" !important;
-            font-size: 0.9em !important;
-            font-weight: 400 !important;
-            text-transform: none !important;
-            line-height: 100% !important;
-            color: #828282;
-            font-weight: normal !important;
-            font-size: 13px !important;
-            color: #BDBDBD;
-            min-width: 60px;
-            margin: 0px 4px; }
-            .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img {
-              margin-right: 6px; }
-              .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img.project-likes {
-                width: 12px; }
-              .project-mobile-card .project-card-small .maker-project-info .card-stats ul li img.project-views {
-                width: 20px; }
-            .project-mobile-card .project-card-small .maker-project-info .card-stats ul li span {
-              margin: 0px; }
-      .project-mobile-card .project-card-small .maker-project-info .icons-side-user {
-        width: 140px;
-        overflow: hidden; }
-        .project-mobile-card .project-card-small .maker-project-info .icons-side-user .user-icon img {
-          width: 30px; }
+  position: relative;
+  margin: 15px 0;
+  border: none;
+  height: 180px;
+  padding: 15px;
+  background-color: #fff;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  border: 1px solid #4ab0d8; }
+  .project-mobile-card .icons-side-project {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .project-mobile-card .icons-side-project .project-icon img {
+      width: auto;
+      height: 30px;
+      margin-right: 5px; }
+  .project-mobile-card .profile-pic-container {
+    width: 85px;
+    height: 85px; }
 
 .profile-page {
   background-color: #F2F2F2;
