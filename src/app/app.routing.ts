@@ -14,6 +14,9 @@ import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.
 import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
+import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
+import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
+import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
@@ -29,8 +32,11 @@ const APP_ROUTES: Routes = [
     { path: 'access-denied', component:  AccessDeniedComponent},    
     // static pages
     { path: 'the-maker-movement', component: MakerMovementComponent},
-    { path: 'intel-make', component: IntelMakeComponent},
-    { path: 'about-badges', component: AboutBadgesComponent},
+    { path: 'make-intel', component: IntelMakeComponent},
+    { path: 'guidelines', component: GuidelinesComponent},
+    { path: 'why-portfolio', component: WhyPortfolioComponent},
+    { path: 'badges', component: AboutBadgesComponent},
+    { path: 'show-and-tell', component: ShowTellComponent},
     { path: 'terms-of-use', component: TermsComponent},
     { path: 'other-sites', component: OtherSitesComponent},
     { path: 'makezine', component: MakezineComponent},
