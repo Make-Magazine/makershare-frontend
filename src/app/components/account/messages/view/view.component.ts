@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Reply } from './reply';
 import { Location } from '@angular/common';
 import { ViewService } from '../../../../d7services/view/view.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class ViewComponent implements OnInit {
     private fb: FormBuilder,
     private _location: Location,
     private viewService: ViewService,
+    private loaderService: LoaderService,
 
   ) { }
 
@@ -55,6 +57,8 @@ export class ViewComponent implements OnInit {
     var thread_id;
     this.getCurrentUser();
     this.getBlockedUser();
+
+    this.loaderService.display(true);
   }
   getThreads() {
     this.route.params
@@ -96,6 +100,7 @@ export class ViewComponent implements OnInit {
           })
           i++
         }
+        this.loaderService.display(false);
       });
   }
 
@@ -106,6 +111,7 @@ export class ViewComponent implements OnInit {
     })
   }
   onSubmit(e) {
+    this.loaderService.display(true);
     e.preventDefault();
     this.getThreads();
     this.getCurrentUser();
@@ -212,9 +218,13 @@ export class ViewComponent implements OnInit {
     })
   }
   deleteReplay(i) {
+    this.loaderService.display(true);
     this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data=>{
+      this.loaderService.display(false);
     });
-    delete this.messages[i];
+    //delete this.messages[i];
+    this.messages =[];
+    this.getThreads();
   }
 
   userProfile(fName, lName) {

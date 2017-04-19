@@ -405,6 +405,8 @@ export class ProjectFormComponent implements OnInit {
       if(image.file){
         tasks.push(this.fileService.SendCreatedFile(image));
       }
+    }else{
+      this.project.field_cover_photo.und[0].fid = this.FormPrintableValues.cover_image['fid'];
     }
     if(this.FormPrintableValues.resources_files.length > 0){
       this.FormPrintableValues.resources_files.forEach((element:FileEntity,index:number)=>{
