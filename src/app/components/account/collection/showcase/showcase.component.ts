@@ -18,6 +18,11 @@ export class ShowcaseComponent implements OnInit {
   userId;
   showcases = [];
   deletedArr = [];
+  pages: number = 0;
+  hideloadmoreshowcase = false;
+  page_arg;
+  @Input() countShowcase;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -27,21 +32,28 @@ export class ShowcaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.loaderComponentService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.getShowcaseBookmark();
 
   }
   getShowcaseBookmark() {
-    var args = [
-      ['type', this.type],
-    ];
+    if (this.pages >= 0) {
+      this.page_arg =
+        ['page', this.pages];
+    }
+    if (this.pages == 0) {
+      this.showcases = [];
+    }
+    var args =
+      ['type', this.type];
     // get project Has Bookmark from a view
-    this.viewService.getView('bookmark', args).subscribe(res => {
-      this.showcases = res;
-    // this.loaderComponentService.display(false);
+    this.viewService.getView('bookmark', [args, this.page_arg]).subscribe(res => {
+      this.showcases = this.showcases.concat(res);
+          console.log(this.showcases.length)
+              console.log(this.countShowcase)
+
+      this.loadMoreVisibilty();
     }, err => {
-   //  this.loaderComponentService.display(false);
     });
   }
   deleteMessage(i) {
@@ -102,5 +114,22 @@ export class ShowcaseComponent implements OnInit {
 
     return this.showcases.every(_ => _.state);
   }
+  /* function load more  */
+  loadMoreshowcase() {
+    this.pages++;
+    this.getShowcaseBookmark();
+  }
+  /* end function load more  */
+  // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    if (this.countShowcase == this.showcases.length) {
 
+      this.hideloadmoreshowcase = true;
+
+    } else if (this.countShowcase > this.showcases.length) {
+      this.hideloadmoreshowcase = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 }

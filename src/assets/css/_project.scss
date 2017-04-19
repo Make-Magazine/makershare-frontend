@@ -730,7 +730,7 @@ header.showcase-project {
 .projectsingle-card {
 		border: 1px solid #4ab0d8;
     position: relative;
-    cursor:pointer;
+    // cursor:pointer;
     background-color: white;
 		padding: 0px 16px 0px 0px;
 		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -786,15 +786,14 @@ header.showcase-project {
 						font-size: 25px;					
 					}
 					.showcase-nav {
-						
 						a {
 							@include desc-font-1();
 							color: $sec-button-1 ;
 							font-size: 15px !important;
 							text-decoration: none;
+							cursor:auto;
 						}
 					}
-					// text-decoration: underline;
 				}
         .card-title {
             @include card-header-font-lg();
