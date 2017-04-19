@@ -376,6 +376,8 @@
                 @include card-header-font-lg();
                 color: $white;
                 max-height: 145px;
+                max-height: 133px;
+                overflow: hidden;
             }
             .card-type {
                 top: 25px;
