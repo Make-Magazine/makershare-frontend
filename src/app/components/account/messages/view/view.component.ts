@@ -217,5 +217,10 @@ export class ViewComponent implements OnInit {
     delete this.messages[i];
   }
 
+  userProfile(fName, lName) {
+    var name = fName + '-' + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
+
 }
 
