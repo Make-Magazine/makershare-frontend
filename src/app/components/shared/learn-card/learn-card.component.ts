@@ -8,6 +8,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 })
 export class LearnCardComponent implements OnInit {
 learn=[];
+countlessons;
 @Input() workshopNid; 
 @Input() front;
  constructor(private route: ActivatedRoute,
@@ -20,10 +21,19 @@ learn=[];
   }
    getWorkshop(){
         this.viewService.getView('shared-learn-card',[['nid',this.workshopNid]]).subscribe(data => {
+        this.getCountlessons();
      this.learn = data[0];
   });
 }
   WorkshopDetails(nid) {
     this.router.navigate(['/workshops', nid]);
   }
+
+    getCountlessons() {
+      this.viewService.getView('maker_count_lessons/' + this.workshopNid)
+      .subscribe(data => {
+      this.countlessons = data[0];
+    });
+  }
 }
+
