@@ -73,55 +73,6 @@ export class ProfileComponent implements OnInit {
 
   searchFailed: boolean = false;
   CurrentLoggedUserId: number;
-  regexp = new RegExp('/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/');
-  formErrors = {
-    field_website_or_blog: '',
-    field_additional_site: '',
-    field_facebook: '',
-    field_instagram: '',
-    field_linkedin: '',
-    field_twitter: '',
-    field_pinterest: '',
-    field_youtube: '',
-    field_hackster_io: '',
-    field_instructables: '',
-    field_hackday: '',
-  };
-  validationMessages = {
-    'field_website_or_blog': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_additional_site': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_facebook': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_instagram': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_linkedin': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_twitter': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_pinterest': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_youtube': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_hackster_io': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_instructables': {
-      'pattern': 'invalid Website URL'
-    },
-    'field_hackday': {
-      'pattern': 'invalid Website URL'
-    }
-  };
   formGroup: FormGroup;
   FormGroupSocial: FormGroup;
   buildFormSocial() {
@@ -141,7 +92,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   PhotoModalTab:string;
-  CurrentModalTab:string;
+  CurrentInfoTab:string;
   ImageFile:any;
   ProfilePicData: any = {};
   FileName: string = '';
@@ -151,7 +102,6 @@ export class ProfileComponent implements OnInit {
   uid: number;
   customDescription: string;
   badges: Array<any>;
-  Loading: boolean;
   profile: UserProfile;
   CountryFieldsAndDetails = {
     used_fields: [],
@@ -193,9 +143,8 @@ export class ProfileComponent implements OnInit {
     this.ProfilecropperSettings.noFileInput = true;
   }
   ngOnInit() {
-    this.CurrentModalTab = 'personal info';
+    this.CurrentInfoTab = 'Personal Info';
     this.PhotoModalTab = 'upload';
-    this.Loading = true;
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
       if (data.user.uid > 0) {
@@ -242,17 +191,22 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-  OpenModal(Template, CSSClass: string) {
-    this.modalService.open(Template, { windowClass: CSSClass });
-    if(CSSClass == 'add-makerspace-modal'){
-      const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
-      if(control.controls.length == 0)
-        this.AddMakerspaceRow();
-    }else if(CSSClass == 'edit-cover-modal'){
+  OpenModal(Template, ModalName: string) {
+    if(ModalName == 'edit-cover-modal'){
+      this.modalService.open(Template, { windowClass: ModalName });
       setTimeout(()=>{
         this.cropper.setImage(this.ImageFile);
       });
+    }else{
+      if(ModalName == 'MakerSpaces'){
+        const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
+        if(control.controls.length == 0)
+          this.AddMakerspaceRow();
+      }
+      this.CurrentInfoTab = ModalName;
+      this.modalService.open(Template, { size: 'lg' });
     }
+      
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper);
@@ -292,24 +246,21 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
+    if (this.FormGroupSocial.valid) {
+      this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;
+    }
     if (this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
-      this.SaveUser(this.ProfileInfo);
-      closebtn.click();
     }
+    this.SaveUser(this.ProfileInfo);
+    closebtn.click();
     this.ReSetAddressValues();
-    if (this.FormGroupSocial.valid) {
-      Object.assign(this.ProfileInfo.field_social_accounts, this.FormGroupSocial.value);
-      this.SaveUser(this.ProfileInfo);
-      closebtn.click();
-    }
+    
   }
   SaveUser(user: UserProfile) {
-    this.Loading = true;
     user.uid = this.uid;
-    //delete user.field_add_your_makerspace_s_;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
     });
@@ -352,7 +303,6 @@ export class ProfileComponent implements OnInit {
           localStorage.setItem('user_photo', this.profile.user_photo);
         this.BuildForm();
         this.buildFormSocial();
-        this.Loading = false;
       }
     )
   }
