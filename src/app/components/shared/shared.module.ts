@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentComponent } from './comments/comment.component';
@@ -38,6 +39,7 @@ import { ReportProjectComponent } from './report-project/report-project.componen
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component';
+import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -68,8 +70,8 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
-
-   ResponsiveModule,
+    RouterModule,
+    ResponsiveModule,
 
   ],
   declarations: [
@@ -104,8 +106,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
-    FileManagerComponent,
-    FileCardComponent,
+    FileBrowserComponent,
     // directives
     ValidateOnFocusoutDirective,
     ReportCommentComponent,
@@ -140,9 +141,13 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
+<<<<<<< HEAD
     FileManagerComponent,
     FileCardComponent,
     ReportCommentComponent
+=======
+    FileBrowserComponent,
+>>>>>>> bb18d689ae64709ecb6afce023aa49348cbcaaed
   ],
   providers:[{
      provide: ResponsiveConfig, 

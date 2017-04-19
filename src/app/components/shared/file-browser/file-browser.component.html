@@ -1,0 +1,10 @@
+<div *ngIf="fileManageService">
+  <div *ngFor="let file of files">
+    <div *ngIf="file.type == 'image'">
+      <img [src]="file.url">
+      <button (click)="emitter.emit(file)"> select </button>
+    </div>
+  </div>
+  <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
+  <button (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
+</div>
