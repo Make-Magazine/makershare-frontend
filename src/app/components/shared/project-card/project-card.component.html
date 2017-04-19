@@ -33,9 +33,9 @@
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>
           <div class="d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
-            <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
+            <h5 class="card-title" innerHTML="{{project.project_name}}"></h5>
             <a (click)="userProfile(project.first_name,project.last_name)">
-              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+              <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
             </a>
           </div>
         </div>
