@@ -3700,6 +3700,152 @@ footer {
     .front .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
       padding: 15px 20px; }
 
+.page-search-content .search-challenge-card {
+  position: relative;
+  padding: 0px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  background-color: #333;
+  height: 460px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  .page-search-content .search-challenge-card span {
+    color: white; }
+  .page-search-content .search-challenge-card a {
+    color: white; }
+  .page-search-content .search-challenge-card p,
+  .page-search-content .search-challenge-card h3 {
+    color: white; }
+  .page-search-content .search-challenge-card .card {
+    background-color: transparent;
+    border: none;
+    padding: 0px 12px; }
+    .page-search-content .search-challenge-card .card .tablet-type-sponser .card-type-grey {
+      background-color: #828282 !important; }
+      .page-search-content .search-challenge-card .card .tablet-type-sponser .card-type-grey::after {
+        border-left: 10px solid #828282; }
+    .page-search-content .search-challenge-card .card .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 2.3em !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 105% !important;
+      color: #828282;
+      color: #fff; }
+    .page-search-content .search-challenge-card .card .card-type {
+      top: 25px;
+      right: -45px; }
+      .page-search-content .search-challenge-card .card .card-type p {
+        margin-bottom: 0; }
+  .page-search-content .search-challenge-card .single-challenge {
+    padding: 10px; }
+    .page-search-content .search-challenge-card .single-challenge img {
+      width: 250px; }
+    .page-search-content .search-challenge-card .single-challenge .card-partership {
+      color: #ED1C24; }
+  .page-search-content .search-challenge-card .image-container {
+    padding: 0;
+    width: 100%;
+    height: 195px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
+    .page-search-content .search-challenge-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .page-search-content .search-challenge-card .content-container {
+    padding-bottom: 10px;
+    height: 265px; }
+  .page-search-content .search-challenge-card .card-container .card-partership {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 0.95em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 100% !important;
+    color: #828282;
+    text-transform: none;
+    font-size: 14px;
+    display: inline-block;
+    min-height: 16px;
+    margin: 12px 0px 12px 0px; }
+    .page-search-content .search-challenge-card .card-container .card-partership p {
+      margin-bottom: 0px;
+      color: #828282; }
+  .page-search-content .search-challenge-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .page-search-content .search-challenge-card .card-container .card-description p {
+    font-family: "Messina Sans Regular" !important;
+    font-size: 1.1em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 115% !important;
+    color: #828282;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #fff; }
+  .page-search-content .search-challenge-card .card-container .challene-card-footer {
+    margin-top: auto; }
+    .page-search-content .search-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
+        background-color: #BDBDBD; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
+        padding: 15px 20px; }
+    .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+      font-size: 12px;
+      color: #828282; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+        padding-left: 10px; }
+    .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
+      line-height: 16px;
+      color: #828282; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+        font-size: 12px;
+        padding-right: 5px; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
+        color: white; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+        color: #00AEEF; }
+      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
+        font-size: 12px; }
+.page-search-content .challenge-card-full.front-challenge-card {
+  padding: 0;
+  margin: 30px 0px 30px 0px;
+  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  .page-search-content .challenge-card-full.front-challenge-card .card-type {
+    z-index: 1000; }
+  .page-search-content .challenge-card-full.front-challenge-card .card-container {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    padding-left: 26px;
+    z-index: 10; }
+    .page-search-content .challenge-card-full.front-challenge-card .card-container .card {
+      width: 65%; }
+  .page-search-content .challenge-card-full.front-challenge-card .card-partership p {
+    color: #fff !important; }
+  .page-search-content .challenge-card-full.front-challenge-card .image-container {
+    padding: 0;
+    width: 100%;
+    height: 460px;
+    max-width: 100%;
+    max-height: 100%; }
+  .page-search-content .challenge-card-full.front-challenge-card .challenge-card-count span {
+    padding-right: 10px;
+    border-right: 1px solid #fff; }
+  .page-search-content .challenge-card-full.front-challenge-card .challenge-card-count .entries-count {
+    border: none; }
+  .page-search-content .challenge-card-full.front-challenge-card .button-container-main-1 {
+    margin-right: 18px; }
+    .page-search-content .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
+      padding: 15px 20px; }
+
 .page-project {
   color: #333333;
   background-color: #F2F2F2; }
@@ -4490,7 +4636,8 @@ header.showcase-project .next {
     .learn-card .card-container .learn-card-footer .learn-card-footer-1 a.btn.btn-grey {
       background-color: #BDBDBD; }
   .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count {
-    font-size: 14px; }
+    font-size: 14px;
+    color: #4F4F4F; }
     .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .follow-count {
       padding-left: 10px; }
     .learn-card .card-container .learn-card-footer .learn-card-footer-2 .learn-card-count .entries-count {
@@ -4620,96 +4767,6 @@ header.showcase-project .next {
 
 /* learn card on search page */
 /* challenge card on search page */
-.page-search-content .learn-card {
-  position: relative;
-  padding: 8px 8px 0px 8px;
-  cursor: pointer;
-  background-color: #DCDCDC;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
-  .page-search-content .learn-card .learn-type-badge {
-    position: absolute;
-    top: 26px;
-    right: -38px;
-    transform: rotate(-90deg); }
-    .page-search-content .learn-card .learn-type-badge p {
-      margin: 0px; }
-  .page-search-content .learn-card .image-container {
-    overflow: hidden;
-    position: relative;
-    padding: 0;
-    height: 215px;
-    width: 170px;
-    top: -22px;
-    left: -22px; }
-    .page-search-content .learn-card .image-container img {
-      width: 100%;
-      max-width: 100%;
-      height: 100%; }
-  .page-search-content .learn-card .content-container {
-    padding-left: 0px; }
-  .page-search-content .learn-card .card-container {
-    color: #fff;
-    position: relative;
-    height: 100%; }
-    .page-search-content .learn-card .card-container .card .card-title {
-      font-family: "Messina Modern Regular" !important;
-      font-size: 2.3em !important;
-      font-weight: 400 !important;
-      text-transform: capitalize !important;
-      line-height: 105% !important;
-      color: #828282;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      height: 92px;
-      color: #4F4F4F;
-      font-size: 3em !important;
-      margin-bottom: 54px; }
-    .page-search-content .learn-card .card-container .card .card-status {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 1.3em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 110% !important;
-      color: #828282;
-      display: inline-block;
-      text-transform: none; }
-    .page-search-content .learn-card .card-container .card .card-partership {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 0.9em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 100% !important;
-      color: #828282;
-      text-transform: none;
-      font-size: 14px;
-      display: inline-block;
-      min-height: 16px;
-      margin-bottom: 10px; }
-      .page-search-content .learn-card .card-container .card .card-partership h4 {
-        font-weight: bold; }
-      .page-search-content .learn-card .card-container .card .card-partership p {
-        font-family: "Messina Sans Regular" !important;
-        font-size: 0.9em !important;
-        font-weight: 400 !important;
-        text-transform: none !important;
-        line-height: 100% !important;
-        color: #828282; }
-    .page-search-content .learn-card .card-container .card .card-description p {
-      font-family: "Messina Sans Regular" !important;
-      font-size: 0.95em !important;
-      font-weight: 400 !important;
-      text-transform: none !important;
-      line-height: 100% !important;
-      color: #828282;
-      height: 85px;
-      color: white; }
-    .page-search-content .learn-card .card-container .workshop-count {
-      color: #828282; }
-
 .front .learn-card {
   position: relative;
   padding: 0px;
@@ -4799,6 +4856,100 @@ header.showcase-project .next {
       margin-left: 10px; }
     .front .learn-card .card-container .learn-card-footer-1 .button-container-main-1 .btn {
       padding: 15px 20px; }
+
+.search-learn-card .learn-card {
+  position: relative;
+  padding: 0px;
+  cursor: pointer;
+  background-color: #DCDCDC;
+  height: 460px;
+  margin-bottom: 30px;
+  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  .search-learn-card .learn-card .card-type {
+    top: 60px;
+    right: -30px;
+    color: #828282;
+    margin-right: 15px; }
+  .search-learn-card .learn-card .learn-item {
+    padding: 10px; }
+    .search-learn-card .learn-card .learn-item img {
+      width: 250px; }
+  .search-learn-card .learn-card .image-container {
+    padding: 0;
+    width: 100%;
+    height: 195px;
+    background: url("../images/placeholder.png") center center;
+    background-size: cover; }
+    .search-learn-card .learn-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .search-learn-card .learn-card .container-content {
+    padding-bottom: 10px;
+    height: 265px; }
+  .search-learn-card .learn-card .card-container {
+    color: #fff;
+    position: relative; }
+    .search-learn-card .learn-card .card-container .card {
+      padding: 0px 12px; }
+    .search-learn-card .learn-card .card-container .card-partership {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.95em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282;
+      text-transform: none;
+      font-size: 14px;
+      display: inline-block;
+      min-height: 16px;
+      margin: 12px 0px 12px 0px; }
+      .search-learn-card .learn-card .card-container .card-partership p {
+        margin-bottom: 0px; }
+    .search-learn-card .learn-card .card-container .card-title {
+      font-family: "Messina Modern Regular" !important;
+      font-size: 2.3em !important;
+      font-weight: 400 !important;
+      text-transform: capitalize !important;
+      line-height: 105% !important;
+      color: #828282;
+      color: #4F4F4F; }
+    .search-learn-card .learn-card .card-container .card-status {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.3em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 110% !important;
+      color: #828282;
+      display: inline-block;
+      text-transform: none; }
+    .search-learn-card .learn-card .card-container .card-description h4 {
+      font-weight: bold; }
+    .search-learn-card .learn-card .card-container .card-description p {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 1.1em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 115% !important;
+      color: #828282;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #4F4F4F; }
+    .search-learn-card .learn-card .card-container .card-buttons a.btn.btn-grey {
+      background-color: #BDBDBD; }
+    .search-learn-card .learn-card .card-container .card-buttons .follow-number {
+      background-color: #aaaaaa;
+      padding: 3px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-left: 10px; }
+    .search-learn-card .learn-card .card-container .learn-card-footer-1 .button-container-main-1 .btn {
+      padding: 15px 20px; }
+    .search-learn-card .learn-card .card-container .learn-card-footer-2 .learn-card-count {
+      color: #4F4F4F; }
 
 .page-showcase,
 .page-single-showcase {
@@ -5193,7 +5344,7 @@ img {
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   height: 460px;
-  margin-bottom: 20px; }
+  margin-bottom: 30px; }
   .page-search-content .showcase-card-backlayer-search:hover {
     background-color: #D4EFFC;
     transition: background-color 0.8s ease; }
@@ -6697,6 +6848,13 @@ img {
 
 .page-search-result {
   background-color: #F2F2F2; }
+  .page-search-result .page-title {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 3.4em !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F; }
   .page-search-result .top-content-wrapper {
     padding: 10px; }
     .page-search-result .top-content-wrapper .search-input {
@@ -6924,8 +7082,13 @@ img {
     color: #4F4F4F;
     font-size: 30px;
     font-weight: normal; }
+  .total-result .results-header .view-all-result span {
+    color: #4F4F4F;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold; }
   .total-result .results-header .view-all-result a {
-    color: #ED1C24;
+    color: #4F4F4F;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold; }
@@ -6940,8 +7103,7 @@ img {
     .total-result .showcase-item .like-view {
       margin-bottom: 0px; }
   .total-result .result-section {
-    margin-bottom: 40px;
-    margin-top: 10px; }
+    margin-bottom: 40px; }
   .total-result .learning-item {
     background-color: white;
     padding: 4px; }
@@ -6983,6 +7145,14 @@ img {
 /* new style */
 .page-search-content {
   background-color: #F2F2F2; }
+  .page-search-content .page-title {
+    font-family: "Messina Modern Regular" !important;
+    font-size: 3.4em !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    line-height: 100% !important;
+    color: #4F4F4F;
+    text-align: center; }
 
 .spinning-preloader-container {
   position: fixed;
@@ -7308,7 +7478,13 @@ img {
   .page-search-content .showcase-card-backlayer-search {
     height: 320px; }
     .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 {
-      padding: 0px !important; } }
+      padding: 0px !important; }
+
+  .page-search-content .search-challenge-card {
+    height: auto !important; }
+
+  .search-learn-card .learn-card {
+    height: auto !important; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
