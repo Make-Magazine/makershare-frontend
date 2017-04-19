@@ -38,9 +38,9 @@ import { ReportProjectComponent } from './report-project/report-project.componen
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component';
+import { ReportCommentComponent } from './report-comment/report-comment.component';
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
-import { ReportCommentComponent } from './report-comment/report-comment.component';
 
  
  let config = {
@@ -141,7 +141,8 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
     ReportProjectComponent,
     ProjectVoteComponent,
     FileManagerComponent,
-    FileCardComponent
+    FileCardComponent,
+    ReportCommentComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -179,3 +180,5 @@ export { LearnSearchCardComponent };
 export { ReportUserComponent };
 export { ReportProjectComponent };
 export { ProjectVoteComponent };
+export { ReportCommentComponent };
+
