@@ -195,10 +195,9 @@
   </div>
   <div class="modal-body">
     <div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-			<img *ngIf="!imagedata.original" src="./assets/images/Drag_Drop.png" alt="">
-			<img-cropper [hidden]="!imagedata.original" #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper><br>
-
-			<div *ngIf="!imagedata.original">
+			<!--<img *ngIf="!imagedata.original" src="./assets/images/Drag_Drop.png" alt="">-->
+			<img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper><br>
+			<div>
 				<p>Drag a photo here</p>
 				<p>or</p>
 			</div>
