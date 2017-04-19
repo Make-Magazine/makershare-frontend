@@ -459,7 +459,7 @@ img {
         transition: background-color 0.8s ease;
         @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
         height: 460px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         &:hover {
             background-color: $showcase-layer;
             transition: background-color 0.8s ease;

@@ -45,8 +45,8 @@
                   <span class="entries-count">{{challenge.entries_count}}
                        <span *ngIf="challenge.entries_count>1">Lessons</span>
                   <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                  </span>
-                  </div>-->
+                </span>
+              </div>-->
           </div>
         </div>
       </div>
@@ -88,13 +88,13 @@
                 <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)">Get Started</span>
               </div>
             </div>
-            <div class="learn-card-footer-2 ml-3">
-              <!--<div class="learn-card-count">
-                    <span class="entries-count">{{challenge.entries_count}}
-                        <span *ngIf="challenge.entries_count>1">Lessons</span>
-                    <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                    </span>
-                    </div>-->
+            <div class="learn-card-footer-2 ml-md-5 d-flex">
+              <div class="learn-card-count align-self-center">
+                <span class="entries-count">{{countlessons}}
+                <span *ngIf="countlessons != 1"> Lessons</span>
+                <span *ngIf="countlessons == 1">Lesson</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>

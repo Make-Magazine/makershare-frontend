@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { FlagService } from '../../../../d7services/flag/flag.service';
-import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
+//import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
 
 @Component({
   selector: 'app-challenge-follow',
@@ -15,7 +15,7 @@ export class ChallengeFollowComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-    private loaderComponentService: LoaderComponentService,
+  //  private loaderComponentService: LoaderComponentService,
 
   ) { }
   ngOnInit() {
