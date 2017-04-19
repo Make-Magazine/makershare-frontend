@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
-import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
+//import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 import { UserService } from './d7services/user/user.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   showLoaderComponent: boolean;
   constructor(
     private loaderService: LoaderService,
-    private loaderComponentService:LoaderComponentService,
+  //  private loaderComponentService:LoaderComponentService,
     private userService: UserService,
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
   ) { }
@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
       this.showLoader = val;
     });
     // loader for components
-    this.loaderComponentService.LoaderComponentstatus.subscribe((val: boolean) => {
-      this.showLoaderComponent = val;
-    });
+    // this.loaderComponentService.LoaderComponentstatus.subscribe((val: boolean) => {
+    //   this.showLoaderComponent = val;
+    // });
 
   }
 
