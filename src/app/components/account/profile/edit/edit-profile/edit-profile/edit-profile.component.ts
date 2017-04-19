@@ -6,7 +6,7 @@ import { FileService } from '../../../../../../d7services/file/file.service';
 import { NodeHelper } from '../../../../../../models';
 import { Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-
+import { LoaderService } from '../../../../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -26,9 +26,11 @@ export class EditProfileComponent implements OnInit {
     private fileService: FileService,
     private router: Router,
     private notificationBarService: NotificationBarService,
+    private loaderService: LoaderService,
   ) {}
 
   ngOnInit() {
+    this.loaderService.display(true);
     this.currentTab = "basic";
     this.BasicInfoSaved = false;
     this.CurrentTabValidation = false;
@@ -41,6 +43,9 @@ export class EditProfileComponent implements OnInit {
     this.profileService.getUser(this.uid).subscribe((profile: UserProfile) => {
       profile.birthday_date = profile.birthday_date? profile.birthday_date.split(" ")[0]:'';
       this.userProfile = profile;
+      this.loaderService.display(false);
+    }, err => {
+      this.loaderService.display(false);
     });
   }
   EmmitHandler(event){

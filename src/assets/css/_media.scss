@@ -148,6 +148,16 @@
             }
         }
     }
+    .page-search-content {
+        .search-challenge-card {
+            height: auto !important;
+        }
+    }
+    .search-learn-card {
+        .learn-card {
+            height: auto !important;
+        }
+    }
 }
 
 @media (min-width: 1200px) {
