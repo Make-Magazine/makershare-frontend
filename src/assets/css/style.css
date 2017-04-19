@@ -1607,7 +1607,10 @@ footer {
     width: 100%;
     font-size: 12px;
     margin-bottom: 20px;
-    position: relative; }
+    position: relative;
+    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -6369,6 +6372,11 @@ img {
 .modal-dialog .modal-content .modal-body iframe {
   width: 100%;
   max-width: 100%; }
+.modal-dialog .modal-content .ebup-body {
+  width: 930px; }
+
+.ebup-content {
+  width: 950px !important; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;
