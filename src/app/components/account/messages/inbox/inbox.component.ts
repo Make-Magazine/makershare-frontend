@@ -65,6 +65,7 @@ export class InboxComponent implements OnInit {
   hideTurnOn: boolean = false;
   status;
   blocked;
+  user_reciv;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -221,7 +222,6 @@ export class InboxComponent implements OnInit {
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
-
             this.userId = localStorage.getItem('user_id');
             if (this.userId === author[0].author) {
               this.user.getUser(this.userId).subscribe(res => {
@@ -267,6 +267,19 @@ export class InboxComponent implements OnInit {
         }
       }
       this.msg = this.msg.concat(msg_arr);
+    
+      this.msg.forEach(function (msg) {
+        let arr = [];
+        for(let key in msg.participants){
+          if(msg.participants.hasOwnProperty(key)){
+            arr.push(msg.participants[key]);
+          }    
+        }   
+        arr.forEach(function (participant){
+          // this.userId = localStorage.getItem('user_id');
+          // console.log(participant.uid);
+        });
+      });
       this.loadMoreVisibilty();
     })
   }
@@ -411,4 +424,11 @@ export class InboxComponent implements OnInit {
     var index = this.blocked.indexOf(uid, 0);
     this.blocked.splice(index, 1);
   }
+
+  userProfile(fName, lName) {
+    var name = fName + '-' + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
+
+
 }

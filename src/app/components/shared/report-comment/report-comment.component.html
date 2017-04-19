@@ -1,0 +1,4 @@
+<div >
+  <a class="report" *ngIf="!isReported" (click)="onSubmit($event)"><p>Report this Comment</p></a>
+  <h5 *ngIf="isReported"> Comment has been reported </h5>
+</div>

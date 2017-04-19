@@ -191,6 +191,7 @@
 				margin-top: 5px;
 				width: 40%;
 				margin-right: 10%;
+				font-size: 16px;
 			}
 			.image-preview {
 				width: 50%;
@@ -209,6 +210,9 @@
 				display: inline-block;
 			}
 			#cover-upload {display: none;}
+			.file-upload {
+				font-size: 16px;
+			}
 		}
 		.projectTags {
 			input {

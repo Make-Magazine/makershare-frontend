@@ -4,6 +4,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 import { UserCardComponent } from '../../shared/user-card/user-card.component'
 import { LoaderService } from '../../shared/loader/loader.service';
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-single-showcases',
@@ -30,6 +31,7 @@ export class SinglShowcaseComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private meta: MetaService
   ) { }
 
   ngOnInit() {
@@ -97,6 +99,10 @@ export class SinglShowcaseComponent implements OnInit {
       .subscribe(data => {
         this.showcase = data[0];
         //this.getProfile(this.showcase.uid);
+
+        this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
+        this.meta.setTag('og:image', this.showcase['cover_photo']);
+        this.meta.setTag('og:description', this.showcase['description']);
 
       });
   }
