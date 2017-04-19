@@ -740,7 +740,7 @@
         padding: 0;
         margin: 0 auto 30px;
         border: 1px solid $blue;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
     }
     .maker-name {
         color: $blue;
@@ -1057,7 +1057,7 @@
 //         padding-bottom: 0;
 //         padding-left: 0;
 //         border: 1px solid #4ab0d8;
-//         @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+//         @include boxShadow(2px, 2px ,8px, $shade-3);
         
 //         &:hover {
 //             cursor: pointer;
@@ -1152,11 +1152,11 @@
     height: 180px;
     padding: 55px 15px 15px;
     background-color: $white;
-    @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+    @include boxShadow(2px, 2px ,8px, $shade-3);
     border: 1px solid #4ab0d8;
     .icons-side-project {
         position: absolute;
-        top: -2px;
+        top: -1px;
         right: 0;
         .project-icon {
             img {
@@ -1633,7 +1633,7 @@
         padding-top: 10px;
         padding-bottom: 0;
         padding-left: 0;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
         
         min-height: 210px;
         &:hover {
@@ -1767,7 +1767,7 @@
         padding: 0;
         margin: 0 auto 30px;
         border: none;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));        
+        @include boxShadow(2px, 2px ,8px, $shade-3);        
     }
     .card-type {
         right: -22px;
@@ -1925,7 +1925,7 @@
     height: 180px;
     padding: 50px 15px 15px;
     background-color: $white;
-    @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+    @include boxShadow(2px, 2px ,8px, $shade-3);
     .icons-side-project {
         position: absolute;
         top: -2px;
