@@ -40,6 +40,7 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+import { ReportCommentComponent } from './report-comment/report-comment.component';
 
  
  let config = {
@@ -106,6 +107,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     FileBrowserComponent,
     // directives
     ValidateOnFocusoutDirective,
+    ReportCommentComponent,
   ],
   exports: [
     CommentComponent,
