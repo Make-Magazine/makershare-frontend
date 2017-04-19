@@ -21,7 +21,6 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 })
 
 export class YourStoryComponent implements OnInit {
-  @ViewChild('imagecropper') cropper:ImageCropperComponent; 
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
