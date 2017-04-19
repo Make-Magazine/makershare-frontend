@@ -2245,7 +2245,7 @@ footer {
   margin: 15px 0;
   border: none;
   height: 180px;
-  padding: 15px;
+  padding: 55px 15px 15px;
   background-color: #fff;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -2253,15 +2253,56 @@ footer {
   border: 1px solid #4ab0d8; }
   .project-mobile-card .icons-side-project {
     position: absolute;
-    top: 0;
+    top: -2px;
     right: 0; }
     .project-mobile-card .icons-side-project .project-icon img {
       width: auto;
-      height: 30px;
+      height: 35px;
       margin-right: 5px; }
   .project-mobile-card .profile-pic-container {
     width: 85px;
     height: 85px; }
+    .project-mobile-card .profile-pic-container img {
+      width: 100%;
+      height: 100%; }
+  .project-mobile-card .data-container .card-title {
+    font-family: "Messina Modern Bold" !important;
+    font-size: 1.5em !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    line-height: 115% !important;
+    color: #828282;
+    color: #4F4F4F;
+    height: 55px;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .project-mobile-card .data-container .maker-name {
+    color: #00AEEF; }
+  .project-mobile-card .card-stats {
+    padding: 2px;
+    color: #BDBDBD; }
+    .project-mobile-card .card-stats ul li {
+      font-family: "Messina Sans Regular" !important;
+      font-size: 0.9em !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      line-height: 100% !important;
+      color: #828282; }
+      .project-mobile-card .card-stats ul li img {
+        margin-right: 6px; }
+        .project-mobile-card .card-stats ul li img.project-likes {
+          width: 12px; }
+        .project-mobile-card .card-stats ul li img.project-views {
+          width: 20px; }
+      .project-mobile-card .card-stats ul li span {
+        margin: 0px; }
 
 .profile-page {
   background-color: #F2F2F2;
