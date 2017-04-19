@@ -236,7 +236,7 @@ export class ProfileComponent implements OnInit {
   }
   OpenModal(Template, CSSClass: string) {
     this.modalService.open(Template, { windowClass: CSSClass });
-    if('add-makerspace-modal'){
+    if(CSSClass == 'add-makerspace-modal'){
       const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
       if(control.controls.length == 0)
         this.AddMakerspaceRow();
