@@ -1,6 +1,6 @@
 <div class="col-md-12 project-cover">
   <div class="projectsingle-card row">
-    <div class="col-md-8 left-side">
+    <div class="col-lg-8 col-md-12 left-side">
       <div class="image-container">
         <img src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
         <ul class="project-card-badges d-flex" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <!-- End image-container -->
-    <div class="col-md-4 right-side">
+    <div class="col-lg-4 col-md-12 right-side">
       <div class="card-container">
         <div class="card">
           <div class="projects-circle">
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="project-card-footer d-flex mt-auto">
-            <ul class="list-unstyled project-aside">
+            <ul class="list-unstyled project-aside d-flex">
               <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Read Story</a></li>
               <li id="build-project"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">Build project</a></li>
             </ul>
