@@ -1046,103 +1046,132 @@
 
 /* project card on search page */
 
-.project-mobile-card {
-    margin: 0px;
-    border: none;
-    .project-card-small {
-        padding-top: 10px;
-        padding-bottom: 0;
-        padding-left: 0;
-        border: 1px solid #4ab0d8;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+// .project-mobile-card {
+//     margin: 15px 0;
+//     border: none;
+//     height: 180px;
+//     padding: 15px;
+//     background-color: $white;
+//     .project-card-small {
+//         padding-top: 10px;
+//         padding-bottom: 0;
+//         padding-left: 0;
+//         border: 1px solid #4ab0d8;
+//         @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
         
-        &:hover {
-            cursor: pointer;
-        }
-        .media {
-            margin-bottom: -25px;
-            .project-pic-container {
-                padding-left: 0;
-                padding-top: 10px;
-                padding-bottom: 0;
-                // position: relative;
-                // left: -20px;
-                // top: -40px;
-                margin-bottom: -20px;
-                width: 150px;
-                height: 125px;
-                background: url('../images/placeholder.png') center center;
-                background-size: cover;
-                .maker-photo {
-                    display: block;
-                    width: 136px;
-                    height: 160px;
-                    margin-bottom: 4px;
-                }
+//         &:hover {
+//             cursor: pointer;
+//         }
+//         .media {
+//             margin-bottom: -25px;
+//             .project-pic-container {
+//                 padding-left: 0;
+//                 padding-top: 10px;
+//                 padding-bottom: 0;
+//                 // position: relative;
+//                 // left: -20px;
+//                 // top: -40px;
+//                 margin-bottom: -20px;
+//                 width: 150px;
+//                 height: 125px;
+//                 background: url('../images/placeholder.png') center center;
+//                 background-size: cover;
+//                 .maker-photo {
+//                     display: block;
+//                     width: 136px;
+//                     height: 160px;
+//                     margin-bottom: 4px;
+//                 }
+//             }
+//             .media-body {
+//                 .card-title {
+//                     margin-left: -8px;
+//                 }
+//                 .card-type {
+//                     top: 40px;
+//                     right: -24px;
+//                     font-size: 16px !important;
+//                 }
+//             }
+//         }
+//         .maker-project-info {
+//             padding: 2px 5px 5px 5px;
+//             .profile-pic-container {
+//                 img {
+//                     width: 70px;
+//                     height: 70px;
+//                 }
+//             }
+//             .maker-name {
+//                 color: $text-color-6;
+//             }
+//             .card-stats {
+//                 padding: 2px;
+//                 color: $light-grey;
+//                 ul {
+//                     margin-bottom: 6px;
+//                     li {
+//                         @include desc-font-2();
+//                         font-weight: normal !important;
+//                         font-size: 13px !important;
+//                         color: $light-grey;
+//                         min-width: 60px;
+//                         margin: 0px 4px;
+//                         img {
+//                             margin-right: 6px;
+//                             &.project-likes {
+//                                 width: 12px;
+//                             }
+//                             &.project-views {
+//                                 width: 20px;
+//                             }
+//                         }
+//                         span {
+//                             margin: 0px;
+//                         }
+//                     }
+//                 }
+//             }
+//             .icons-side-user {
+//                     // width: 80px;
+//                     width: 140px;
+//                     overflow: hidden;
+//                     .user-icon {
+//                         img {
+//                             width: 30px;
+//                         }
+//                     }
+//                 }
+//         }
+//     }
+// }
+.project-mobile-card {
+    position: relative;    
+    margin: 15px 0;
+    border: none;
+    height: 180px;
+    padding: 15px;
+    background-color: $white;
+    @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+    border: 1px solid #4ab0d8;
+    .icons-side-project {
+        position: absolute;
+        top: 0;
+        right: 0;
+        .project-icon {
+            img {
+                width: auto;
+                height: 30px;
+                margin-right: 5px;
             }
-            .media-body {
-                .card-title {
-                    margin-left: -8px;
-                }
-                .card-type {
-                    top: 40px;
-                    right: -24px;
-                    font-size: 16px !important;
-                }
-            }
-        }
-        .maker-project-info {
-            padding: 2px 5px 5px 5px;
-            .profile-pic-container {
-                img {
-                    width: 70px;
-                    height: 70px;
-                }
-            }
-            .maker-name {
-                color: $text-color-6;
-            }
-            .card-stats {
-                padding: 2px;
-                color: $light-grey;
-                ul {
-                    margin-bottom: 6px;
-                    li {
-                        @include desc-font-2();
-                        font-weight: normal !important;
-                        font-size: 13px !important;
-                        color: $light-grey;
-                        min-width: 60px;
-                        margin: 0px 4px;
-                        img {
-                            margin-right: 6px;
-                            &.project-likes {
-                                width: 12px;
-                            }
-                            &.project-views {
-                                width: 20px;
-                            }
-                        }
-                        span {
-                            margin: 0px;
-                        }
-                    }
-                }
-            }
-            .icons-side-user {
-                    // width: 80px;
-                    width: 140px;
-                    overflow: hidden;
-                    .user-icon {
-                        img {
-                            width: 30px;
-                        }
-                    }
-                }
         }
     }
+    .profile-pic-container {
+        width: 85px;
+        height: 85px;
+    }
+    
 }
-
 .profile-page {
     background-color: $main-bg;
     margin: 0px;
