@@ -139,13 +139,8 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
-<<<<<<< HEAD
-    FileManagerComponent,
-    FileCardComponent,
-    ReportCommentComponent
-=======
+    ReportCommentComponent,
     FileBrowserComponent,
->>>>>>> bb18d689ae64709ecb6afce023aa49348cbcaaed
   ],
   providers:[{
      provide: ResponsiveConfig, 
