@@ -584,6 +584,57 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Messina Modern Regular';
   color: #333333; }
 
+h1 {
+  font-family: "Messina Modern";
+  font-size: 4em;
+  font-weight: 300;
+  line-height: 120%;
+  color: #4F4F4F; }
+
+h1.large {
+  font-family: "Messina Modern";
+  font-size: 5.35em;
+  font-weight: 300;
+  line-height: 130%;
+  color: #4F4F4F; }
+
+h2 {
+  font-family: "Messina Modern";
+  font-size: 2.6em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h3 {
+  font-family: "Messina Modern";
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h4 {
+  font-family: "Messina Modern";
+  font-size: 1.6em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h5 {
+  font-family: "Messina Modern";
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F;
+  text-transform: uppercase; }
+
+h6 {
+  font-family: "Messina Sans";
+  font-size: 1.3em;
+  font-weight: 500;
+  line-height: 100%;
+  color: #4F4F4F;
+  text-transform: uppercase; }
+
 body {
   font-family: 'Messina Sans Regular';
   padding-right: 0 !important;
@@ -1330,6 +1381,7 @@ footer {
       font-weight: 300;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
+      font-size: 2em;
       font-weight: 300;
       line-height: 1.3;
       margin-bottom: 40px; }
@@ -2253,7 +2305,7 @@ footer {
   border: 1px solid #4ab0d8; }
   .project-mobile-card .icons-side-project {
     position: absolute;
-    top: -2px;
+    top: -1px;
     right: 0; }
     .project-mobile-card .icons-side-project .project-icon img {
       width: auto;
