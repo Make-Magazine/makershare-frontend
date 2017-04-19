@@ -28,7 +28,7 @@ export class CollectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  //  this.loaderService.display(true);
+    this.loaderService.display(true);
     this.getCollectionCount();
 
   }
@@ -60,9 +60,9 @@ export class CollectionComponent implements OnInit {
           }
         }
       }
-    //  this.loaderService.display(false);
+     this.loaderService.display(false);
     }, err => {
-   //   this.loaderService.display(true);
+     this.loaderService.display(true);
     });
 
 
