@@ -140,6 +140,14 @@
             }
         }
     }
+    .page-search-content {
+        .showcase-card-backlayer-search {
+            height: 320px;
+            .showcase-card-backlayer-search-2 {
+                padding: 0px !important;
+            }
+        }
+    }
 }
 
 @media (min-width: 1200px) {

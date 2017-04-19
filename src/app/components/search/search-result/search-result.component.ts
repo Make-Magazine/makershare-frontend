@@ -31,7 +31,7 @@ export class SearchResultComponent implements OnInit {
   //Query Counts
   projectsCountQuery = 6;
   challengesCountQuery = 2;
-  showcasesCountQuery = 2;
+  showcasesCountQuery = 3;
   workshopsCountQuery = 2;
   usersCountQuery = 6;
 
