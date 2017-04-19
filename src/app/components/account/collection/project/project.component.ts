@@ -122,7 +122,6 @@ export class ProjectComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    console.log(this.projects.length)
     if (this.countProject == this.projects.length) {
 
       this.hideloadmoreproject = true;
