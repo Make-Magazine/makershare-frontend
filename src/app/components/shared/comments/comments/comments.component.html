@@ -18,6 +18,7 @@
     <div class="comment-body">
       <p>{{comment?.comment}}</p>
     </div>
+    <app-report-comment [commentReportId]="comment?.comment_nid"></app-report-comment>
   </div>
   </div>
   <div class="media content-section pl-3" *ngIf="comments.value?.length == 1 && comments.value[0].comment == ''">
