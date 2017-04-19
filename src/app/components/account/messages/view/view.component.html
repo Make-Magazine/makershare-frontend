@@ -13,10 +13,10 @@
       <li class="single-message" *ngFor="let message of messages;let i=index;">
         <div class="media message-info">
           <div class="media-left">
-              <img class="d-flex mr-3" src="{{message?.user_photo}}"> 
+             <a (click)="userProfile(message.first_name,message.last_name)"><img class="d-flex mr-3" src="{{message?.user_photo}}"> </a>
           </div>
           <div class="media-body">
-            <p class="sender"><a href="">{{message?.first_name}} {{message?.last_name}}</a> </p>
+            <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message?.first_name}} {{message?.last_name}}</a> </p>
             <p class="timestamp" >{{message?.timestamp}}</p>
           </div> 
           <div class="delete">

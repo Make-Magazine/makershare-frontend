@@ -49,7 +49,7 @@ header {
             border-radius: 0;
             background-color: $white;
             border: none;
-            @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));        
+            @include boxShadow(2px, 2px ,8px, $shade-3);        
             right: 0;
             left: auto;
             z-index: 10000;

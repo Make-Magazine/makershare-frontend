@@ -13,7 +13,11 @@ export class CommentsComponent implements OnInit {
   @Input("nodeId") nodeId;
   @Input("comments") comments;
   @Input() titlecomment;
-
+  pages: number = 0;
+  //countProject :any;
+  hideloadmorecomment = false;
+  page_arg;
+  commentCount :number;
   
 
 
@@ -42,10 +46,31 @@ export class CommentsComponent implements OnInit {
   /* function get comments */
   getcommentsByID(id) {
     this.viewService.getView('node-comments', [['nid', this.nodeId]]).subscribe(data => {
-      this.comments.value = data;
+      this.comments.value = this.comments.value.concat (data);
+      this.commentCount=this.comments.value[0].comment_count
+      this.loadMoreVisibilty();
+      
     });
   }
   /* end function  get comments */
+    /* function load more  */
+  loadMoreComments() {
+    this.pages++;
+this.getcommentsByID(this.nodeId);
+  }
+  /* end function load more  */
+   // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    if (this.commentCount == this.comments.value.length) {
+
+      this.hideloadmorecomment = true;
+
+    } else if (this.commentCount > this.comments.value.length) {
+      this.hideloadmorecomment = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 
 
 }

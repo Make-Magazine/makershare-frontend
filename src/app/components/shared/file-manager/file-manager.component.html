@@ -1,8 +1,0 @@
-<div *ngIf="fileManageService">
-  <input type="file" (change)="UploadFile($event.target.files[0])" accept=".jpeg,.jpg,.png,.gif,.pdf,.epub,.xls,.ppt,.pptx,.sxls,.doc,.docx,.txt">
-  <ngb-progressbar [value]="fileManageService.quota"><i>{{fileManageService.quota}}% Full</i></ngb-progressbar>
-  <file-card *ngFor="let fileCard of files" [type]="type" [fileCard]="fileCard" (emitter)="EmmitHandler($event)"></file-card>
-  <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
-  <button (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
-  {{files.length}} / {{fileManageService.files.length}}
-</div>

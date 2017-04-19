@@ -118,7 +118,7 @@
         overflow: hidden;
         cursor: pointer;
         background-color: $learn-cards-bg;
-		@include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+		@include boxShadow(2px, 2px ,8px, $shade-3);
         .learn-type-bagde {
             position: absolute;
             top: 38px;
@@ -321,7 +321,7 @@
         background-color: $learn-cards-bg;
         height: 460px;
         margin-bottom: 30px;
-		@include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+		@include boxShadow(2px, 2px ,8px, $shade-3);
         .learn-item {
             padding: 10px;
             img {
