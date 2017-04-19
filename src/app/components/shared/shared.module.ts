@@ -38,7 +38,9 @@ import { ReportProjectComponent } from './report-project/report-project.componen
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { FileCardComponent } from './file-manager/file-card/file-card.component';
-// import { MetaModule } from '@nglibs/meta';
+// custom directives
+import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+
  
  let config = {
     breakPoints: {
@@ -103,6 +105,8 @@ import { FileCardComponent } from './file-manager/file-card/file-card.component'
     ProjectVoteComponent,
     FileManagerComponent,
     FileCardComponent,
+    // directives
+    ValidateOnFocusoutDirective,
   ],
   exports: [
     CommentComponent,
