@@ -5,7 +5,6 @@ import { ProfileService } from '../../../../../../d7services/profile/profile.ser
 import { ViewService } from '../../../../../../d7services/view/view.service';
 import { Observable } from 'rxjs/Observable';
 import { CustomValidators } from 'ng2-validation';
-import { IcDatepickerOptionsInterface } from 'ic-datepicker';
 
 @Component({
   selector: 'app-basic-info',
@@ -18,7 +17,6 @@ export class BasicInfoComponent implements OnInit {
   basicForm;
   CountryFieldsAndDetails;
   CountriesList=[];
-  datepickerOptions: IcDatepickerOptionsInterface;
   
   SearchCountry = (text$: Observable<string>) => {
     return text$
@@ -41,11 +39,6 @@ export class BasicInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.datepickerOptions = {
-      modelType: 'string',
-      // adjust the correct form
-      stringModelFormat:'YYYY-MM-DD'
-    };
     this.viewService.getView('maker_address_api').subscribe(countries=>{
       this.CountriesList = countries;
     });
@@ -96,7 +89,6 @@ export class BasicInfoComponent implements OnInit {
       last_name: [this.userProfile.last_name, [Validators.required]],
       address_publish: [this.userProfile.address_publish == 1? true:false],
       describe_yourself: [this.userProfile.describe_yourself, [Validators.required, Validators.maxLength(60)]],
-      birthday_date: [this.userProfile.birthday_date, Validators.required],
       mail: [this.userProfile.mail, [Validators.required,CustomValidators.email]],
       newsletter_subscription: [this.userProfile.newsletter_subscription == 1? true:false],
       address: this.fb.group({
@@ -112,9 +104,6 @@ export class BasicInfoComponent implements OnInit {
         this.userProfile.uid = +localStorage.getItem('user_id');
         values.address_publish? this.userProfile.address_publish = 1:this.userProfile.address_publish = 0;
         values.newsletter_subscription? this.userProfile.newsletter_subscription = 1:this.userProfile.newsletter_subscription = 0;
-        if(this.userProfile.birthday_date){
-          this.userProfile.birthday_date = this.userProfile.birthday_date + ' 00:00:00';
-        }
         this.emitter.emit(this.userProfile);
       }else{
         this.emitter.emit(false);
@@ -153,7 +142,6 @@ export class BasicInfoComponent implements OnInit {
     'first_name': '',
     'last_name': '',
     'describe_yourself': '',
-    'birthday_date': '',
     'mail': '',
     'address': {
       'country': ''
@@ -178,9 +166,6 @@ export class BasicInfoComponent implements OnInit {
     'mail': {
       'required': 'Email is required.',
       'email': 'Email is not valid.'
-    },
-    'birthday_date':{
-      'required':'birthday_date is required'
     },
     'address': {
       'country': {

@@ -41,7 +41,6 @@ export class EditProfileComponent implements OnInit {
 
   UpdateProfile(){
     this.profileService.getUser(this.uid).subscribe((profile: UserProfile) => {
-      profile.birthday_date = profile.birthday_date? profile.birthday_date.split(" ")[0]:'';
       this.userProfile = profile;
       this.loaderService.display(false);
     }, err => {
