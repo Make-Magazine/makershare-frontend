@@ -195,7 +195,7 @@
         padding-right: 23px;
         padding-bottom: 9px;
         margin-bottom: 10px;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
         &:hover {
             background-color: $showcase-layer;
             transition: inherit;
@@ -212,7 +212,7 @@
         }
         .project.card {
             border: 1px solid #4ab0d8;
-            @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+            @include boxShadow(2px, 2px ,8px, $shade-3);
             
         }
     }
@@ -274,7 +274,7 @@ img {
 .showcase-card-backlayer-home {
     background-color: $showcase-layer;
     transition: background-color 0.8s ease;
-    @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+    @include boxShadow(2px, 2px ,8px, $shade-3);
 
     height: 460px;
     margin-bottom: 20px;
@@ -285,7 +285,7 @@ img {
     &:hover .showcase-card-backlayer-home-2 {
         transition: background-color 0.8s ease;
         background-color: $showcase-layer;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
 
     }
     .showcase-card-backlayer-home-2 {
@@ -305,7 +305,7 @@ img {
         margin-right: 10px;
         cursor: pointer;
         background-color: white;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
 
         height: 440px;
         .card {
