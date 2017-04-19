@@ -38,9 +38,9 @@ import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
+import { ReportCommentComponent } from './report-comment/report-comment.component';
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
-import { ReportCommentComponent } from './report-comment/report-comment.component';
 
  
  let config = {
@@ -139,6 +139,7 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
+    ReportCommentComponent,
     FileBrowserComponent,
   ],
   providers:[{
@@ -177,3 +178,5 @@ export { LearnSearchCardComponent };
 export { ReportUserComponent };
 export { ReportProjectComponent };
 export { ProjectVoteComponent };
+export { ReportCommentComponent };
+
