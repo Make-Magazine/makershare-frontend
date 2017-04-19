@@ -10,6 +10,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 
 @Component({
@@ -79,17 +80,19 @@ export class InboxComponent implements OnInit {
     private _location: Location,
     private modalService: NgbModal,
     private notificationBarService: NotificationBarService,
+    private loaderService: LoaderService,
 
   ) { }
   ngOnInit(): void {
     this.getStatus();
+    this.loaderService.display(true);
 
     this.getCurrentUser();
     this.getMessages();
     this.buildForm();
     this.CountMessages();
     this.getBlockedUsers();
-    this.userId = localStorage.getItem('user_id');    
+    this.userId = localStorage.getItem('user_id');
 
   }
 
@@ -131,6 +134,7 @@ export class InboxComponent implements OnInit {
     })
   }
   onSubmit(e) {
+    this.loaderService.display(true);
     e.preventDefault();
     if (this.messageForm.valid) {
       var str: string = '';
@@ -141,16 +145,18 @@ export class InboxComponent implements OnInit {
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        
-        var newMessage = {
-          user_photo: this.user['user_photo'],
-          sender: 'message has ben sent to ' + str,
-          subject: this.messageObj.subject,
-          last_updated: 'Now',
-        }
-        console.log(newMessage)
-        this.msg.unshift(newMessage);
-        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
+
+        // var newMessage = {
+        //   user_photo: this.user['user_photo'],
+        //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
+        //   subject: this.messageObj.subject,
+        //   last_updated: 'Now',
+        // }
+        // console.log(newMessage)
+        // this.msg.unshift(newMessage);
+        this.msg = [];
+        this.getMessages();
+        // this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
@@ -229,10 +235,11 @@ export class InboxComponent implements OnInit {
             this.userId = localStorage.getItem('user_id');
             if (this.userId === author[0].author) {
               //i am who sent the message
-              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res=>{
-                for(let i=0; i<res.length; i++){
-                  if(res[i] != this.userId){
-                    this.user.getUser(res[i]).subscribe(res =>{
+              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
+                setTimeout(1000);
+                for (let i = 0; i < res.length; i++) {
+                  if (res[i] != this.userId) {
+                    this.user.getUser(res[i]).subscribe(res => {
                       this.messages[key].sender = true;
                       this.messages[key].user_photo = res.user_photo;
                       this.messages[key].first_name = res.first_name;
@@ -243,7 +250,7 @@ export class InboxComponent implements OnInit {
               })
             } else {
               //another person send message to me
-                this.user.getUser(author[0].author).subscribe(res => {
+              this.user.getUser(author[0].author).subscribe(res => {
                 this.messages[key].reciver = true;
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
@@ -252,7 +259,7 @@ export class InboxComponent implements OnInit {
             }
 
           })
-         
+
           msg_arr.push(this.messages[key]);
 
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
@@ -277,24 +284,9 @@ export class InboxComponent implements OnInit {
           }
           i++
         }
-      //   let base = this;
-      //   this.msg.forEach(function (msg) {
-      //   let arr = [];
-      //   for(let key in msg.participants){
-      //     if(msg.participants.hasOwnProperty(key)){
-      //       arr.push(msg.participants[key]);
-      //     }    
-      //   }  
-      //   arr.forEach(function (participant){
-      //     if(base.userId != participant.uid){
-      //       base.user.getUser(participant.uid).subscribe(usr=>{
-      //         msg_arr = usr;
-      //       })
-      //     }
-      //   });
-      // });
       }
       this.msg = this.msg.concat(msg_arr);
+      this.loaderService.display(false);
       this.loadMoreVisibilty();
     })
   }
@@ -360,10 +352,12 @@ export class InboxComponent implements OnInit {
  * delete selected messages
  */
   deleteMessages() {
+    this.loaderService.display(true);
     for (var _i = 0; _i < this.msg.length; _i++) {
       this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
     }
-    this.msg.splice(this.deletedArr.length, 1)
+    this.msg = [];
+    this.getMessages();
   }
 
   viewMessage(thread_id) {
@@ -391,20 +385,24 @@ export class InboxComponent implements OnInit {
   * disable messages
    */
   turnOffMessages() {
+    this.loaderService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
       this.hideTurnOn = true;
       this.notificationBarService.create({ message: 'You have turned off messaging', type: NotificationType.Success });
+      this.loaderService.display(false);
     })
   }
   /**
    * enable messages
    */
   turnOnMessages() {
+    this.loaderService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
       this.hideTurnOn = false;
       this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
+      this.loaderService.display(false);
     })
   }
   /*
