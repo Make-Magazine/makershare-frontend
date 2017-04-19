@@ -67,6 +67,7 @@ export class InboxComponent implements OnInit {
   blocked;
   usr_recv;
   participints
+  senderData
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -140,12 +141,14 @@ export class InboxComponent implements OnInit {
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
+        
         var newMessage = {
           user_photo: this.user['user_photo'],
-          sender: 'you send a message',
+          sender: 'message has ben sent to ' + str,
           subject: this.messageObj.subject,
           last_updated: 'Now',
         }
+        console.log(newMessage)
         this.msg.unshift(newMessage);
         this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
@@ -286,7 +289,6 @@ export class InboxComponent implements OnInit {
       //     if(base.userId != participant.uid){
       //       base.user.getUser(participant.uid).subscribe(usr=>{
       //         msg_arr = usr;
-      //         console.log(msg_arr)
       //       })
       //     }
       //   });
