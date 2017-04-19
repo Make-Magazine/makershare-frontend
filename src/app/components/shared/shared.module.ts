@@ -37,8 +37,6 @@ import { ReportUserComponent } from './report-user/report-user.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
-import { FileManagerComponent } from './file-manager/file-manager.component';
-import { FileCardComponent } from './file-manager/file-card/file-card.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 // custom directives
