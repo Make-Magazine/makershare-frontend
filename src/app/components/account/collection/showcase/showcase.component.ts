@@ -27,7 +27,7 @@ export class ShowcaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.loaderComponentService.display(true);
+    this.loaderComponentService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.getShowcaseBookmark();
 
@@ -39,9 +39,9 @@ export class ShowcaseComponent implements OnInit {
     // get project Has Bookmark from a view
     this.viewService.getView('bookmark', args).subscribe(res => {
       this.showcases = res;
-    // this.loaderComponentService.display(false);
+    this.loaderComponentService.display(false);
     }, err => {
-   //  this.loaderComponentService.display(false);
+     this.loaderComponentService.display(false);
     });
   }
   deleteMessage(i) {
