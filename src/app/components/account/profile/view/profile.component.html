@@ -586,10 +586,16 @@
 	<div class="modal-body">
 		<div class="form-group" [formGroup]="formGroup">
 			<div *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index" formArrayName="field_add_your_makerspace_s_">
-				<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);"><span aria-hidden="true">&times;</span></div>
+				<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="pull-right"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
 				<div class="form-group" [formGroupName]="i">
-					<input type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms" (selectItem)="SelectMakerspace(i,$event)">
-					<input type="text" formControlName="field_makerspace_url">
+					<div class="form-group">
+						<label for="">Makerspace name: </label>
+						<input type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms" (selectItem)="SelectMakerspace(i,$event)">
+					</div>
+					<div class="form-group">
+						<label for="">Makerspace url: </label>												
+						<input type="text" formControlName="field_makerspace_url">
+					</div>
 					<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
 						Invalid URL, ex: http://example.com
 					</small>
