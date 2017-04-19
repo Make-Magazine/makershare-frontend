@@ -28,6 +28,12 @@ export class ProfileComponent implements OnInit {
   @ViewChild('cropper') cropper:ImageCropperComponent; 
 
   CountriesList = [];
+  formatter = (x) => {
+    if(x.value){
+      return x.value;
+    }
+    return x;
+  };
   SearchMakerspace = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
@@ -67,27 +73,6 @@ export class ProfileComponent implements OnInit {
 
   searchFailed: boolean = false;
   CurrentLoggedUserId: number;
-  ckEditorConfig: {} = {
-    "toolbarGroups": [
-      { "name": "document", "groups": ["mode", "document", "doctools"] },
-      { "name": 'clipboard', "groups": ['clipboard', 'undo'] },
-      { "name": "editing", "groups": ["find", "selection", "spellchecker", "editing"] },
-      { "name": "forms", "groups": ["forms"] },
-      { "name": 'paragraph', "groups": ['list', 'indent', 'blocks', 'align', 'bidi'] },
-      { "name": 'document', "groups": ['mode', 'document', 'doctools'] },
-      { "name": 'styles' }
-    ],
-    "removeButtons": "Source,Save,Templates,Find,Replace,Scayt,SelectAll",
-    "extraPlugins": 'wordcount',
-    "wordcount": {
-      "showParagraphs": false,
-      "showWordCount": false,
-      "showCharCount": true,
-      "countSpacesAsChars": true,
-      "countHTML": false,
-      "maxCharCount": '550',
-    },
-  };
   regexp = new RegExp('/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/');
   formErrors = {
     field_website_or_blog: '',
@@ -249,9 +234,13 @@ export class ProfileComponent implements OnInit {
       this.UpdateUser();
     });
   }
-  OpenModal(Template, CSSClass: string,IsPhotoModal?) {
+  OpenModal(Template, CSSClass: string) {
     this.modalService.open(Template, { windowClass: CSSClass });
-    if(IsPhotoModal){
+    if('add-makerspace-modal'){
+      const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
+      if(control.controls.length == 0)
+        this.AddMakerspaceRow();
+    }else if(CSSClass == 'edit-cover-modal'){
       setTimeout(()=>{
         this.cropper.setImage(this.ImageFile);
       });
