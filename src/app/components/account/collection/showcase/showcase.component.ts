@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
+//import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
 
 @Component({
   selector: 'app-showcase',
@@ -28,7 +28,7 @@ export class ShowcaseComponent implements OnInit {
     private viewService: ViewService,
     private flagService: FlagService,
     private _location: Location,
-    private loaderComponentService: LoaderComponentService,
+ //   private loaderComponentService: LoaderComponentService,
   ) { }
 
   ngOnInit() {
