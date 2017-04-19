@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../d7services/view/view.service';
 import { MetaService } from '@nglibs/meta';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +12,26 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private viewService: ViewService,
-    private meta: MetaService
-
-  ) { }
+    private meta: MetaService,
+    private loaderService: LoaderService,
+  ) { } 
 
   ngOnInit() {
+    this.loaderService.display(true);
     this.viewService.getView('maker_homepage_api').subscribe(data =>{
       this.homeCards = data;
 
       this.meta.setTitle(`Maker Share`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share ');
+      this.loaderService.display(false);
       // for (let r of data)
       // if(r.type=="project"){
       //   //console.log(r)
       // }
       //console.log(data)
+    }, err => {
+      this.loaderService.display(true);
     })
   }
 

@@ -51,17 +51,17 @@ export class Auth implements OnInit {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       
-       
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
           // console.log(error);
           return;
         }
-        // console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         if (profile['email_verified'] == true) {
+
+         
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
               // console.log(res);
@@ -69,9 +69,16 @@ export class Auth implements OnInit {
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
               localStorage.setItem('user_photo', res.user_photo);
+
+              if(profile.app_metadata.first_time){
+                this.router.navigate(['/account/editprofile']);  
+                  
+              }               
+
               if(authResult.state != ''){
              //   this.router.navigate([authResult.state]);
               }
+              
               
             } else {
               localStorage.setItem('user_photo', res.user_photo);
@@ -79,7 +86,11 @@ export class Auth implements OnInit {
             }
 
             this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
+            // if the first time, navigate to edit profile page
+            
+            
           });
+
         }
 
         //this.router.navigateByUrl('/user');

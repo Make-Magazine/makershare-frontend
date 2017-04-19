@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { ProfileRoutingModule } from './profile.routing.module';
-import { IcDatepickerModule } from 'ic-datepicker';
 import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
@@ -23,7 +22,6 @@ import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-ma
 
 @NgModule({
   imports: [
-    IcDatepickerModule,
     CommonModule,
     ProfileRoutingModule,
     FormsModule,
