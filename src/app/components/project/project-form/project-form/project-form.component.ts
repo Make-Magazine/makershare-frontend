@@ -160,6 +160,7 @@ export class ProjectFormComponent implements OnInit {
     }else{
       this.CurrentActiveVisibility = 'draft';
     }
+    this.project.field_visibility2.und[0] = +data.field_visibility2.und[0].tid;
     var subtasks = [];
     let source = Observable.forkJoin(tasks);
     source.subscribe(
