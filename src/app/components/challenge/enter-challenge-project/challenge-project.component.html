@@ -139,7 +139,7 @@
         
         <div class="ml-auto" *ngIf="button == true">
             <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-            <button  type="button" class="btn btn-primary" (click)="onSubmit($event)">Submit</button>
+            <button  type="button" class="btn btn-primary" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
           </div>
 
     </label>
