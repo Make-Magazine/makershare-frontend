@@ -11,6 +11,7 @@ import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnou
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './challenge-project.component.html',
 })
 export class ChallengeProjectComponent implements OnInit {
+  addProjectForm: FormGroup;
   countProjects = 0;
   button = false;
   projects: IChallengeProject[];
@@ -71,12 +73,15 @@ export class ChallengeProjectComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
+    private fb: FormBuilder,
+
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private modalService: NgbModal,
   ) { }
   ngOnInit() {
+    this.buildForm();
     this.cheackenter();
     this.nid = this.route.snapshot.params['nid'];
     this.userId = parseInt(localStorage.getItem('user_id'));
@@ -165,6 +170,8 @@ export class ChallengeProjectComponent implements OnInit {
   }
 
   onCancel(event: any) {
+    this.addProjectForm.reset();
+
     this.router.navigate(['/missions/' + this.nid]);
   }
   onSubmit() {
@@ -176,6 +183,7 @@ export class ChallengeProjectComponent implements OnInit {
         "field_entry_project": this.selectedProject,
         "field_entry_challenge": this.nid,
       };
+
       this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
         this.router.navigate(['missions/', this.nid]);
         this.loaderService.display(false);
@@ -197,9 +205,7 @@ export class ChallengeProjectComponent implements OnInit {
         /* end follow  */
       }, err => {
         this.loaderService.display(false);
-        setTimeout(1000);
-        this.notificationBarService.create({ message: err._body, type: NotificationType.Error });
-
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
         this.router.navigate(['/missions/' + this.nid]);
 
       });
@@ -219,7 +225,14 @@ export class ChallengeProjectComponent implements OnInit {
   setDayLeft() {
 
   }
+  /* function build form */
+  buildForm() {
+    this.addProjectForm = this.fb.group({
+      "field_agreement": ['', Validators.required],
+    });
 
+  }
+  /* end function build form */
   /* function cheack user allowe to enter challenge */
 
   cheackenter() {

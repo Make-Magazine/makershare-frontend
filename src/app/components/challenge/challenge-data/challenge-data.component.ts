@@ -326,6 +326,10 @@ export class ChallengeDataComponent implements OnInit {
     });
   }
   /* end function to navigate to enter challenge */
+  enterToChallengeProjectClosed(){
+     this.notificationBarService.create({ message: 'Sorry, the Challenge not Open for submissions.', type: NotificationType.Info ,allowClose:true,autoHide:false,hideOnHover:false});
+
+  }
   /* function cheack user allowe to enter challenge */
 
   cheackenter() {
