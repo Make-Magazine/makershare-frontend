@@ -21,6 +21,7 @@ export class IndividualWorkshopComponent implements OnInit {
   customDescription: string;
   customImage: string;
   workshop;
+  element;
   title={
     title : "Questions",
      placeholder: "Ask a question",
@@ -167,6 +168,9 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubLink = this.objects[i].book;
         this.popupPreview = null;
         this.epubFile = true;
+        this.element = document.getElementsByClassName("modal-content");
+        console.log(this.element)
+        // this.element.classList.add('epub-width');
       } else {
         var x = this.objects[i].book.split('.').pop();
         delete this.popupPreview;
@@ -223,5 +227,9 @@ export class IndividualWorkshopComponent implements OnInit {
       delete this.popupPreview;
       this.popupPreview = this.workshop.introductory_video;
        this.modalService.open(content);
+  }
+
+     objectDetails(nid) {
+    this.router.navigate(['/workshops/lessons', nid]);
   }
 }
