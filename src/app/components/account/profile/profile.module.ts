@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { ProfileRoutingModule } from './profile.routing.module';
-import { IcDatepickerModule } from 'ic-datepicker';
 import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
@@ -17,12 +16,12 @@ import { PortfolioTabComponent } from './view/edit-portfolio/portfolio-tab/portf
 import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-card-portfolio/project-card-portfolio.component';
 import { DndModule } from 'ng2-dnd';
 import { RouterModule } from '@angular/router';
+import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
 //import { MetaModule } from '@nglibs/meta';
 // import { PipeModule } from '../../../pipes/custom-pipes.module';
 
 @NgModule({
   imports: [
-    IcDatepickerModule,
     CommonModule,
     ProfileRoutingModule,
     FormsModule,
@@ -43,6 +42,7 @@ import { RouterModule } from '@angular/router';
     EditPortfolioComponent,
     PortfolioTabComponent,
     ProjectCardPortfolioComponent,
+    FileManagerComponent,
   ]
 })
 export class ProfileModule { }

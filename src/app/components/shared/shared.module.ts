@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentComponent } from './comments/comment.component';
@@ -36,11 +37,10 @@ import { ReportUserComponent } from './report-user/report-user.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
-import { FileManagerComponent } from './file-manager/file-manager.component';
-import { FileCardComponent } from './file-manager/file-card/file-card.component';
+import { FileBrowserComponent } from './file-browser/file-browser.component'
+import { ReportCommentComponent } from './report-comment/report-comment.component';
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
-import { ReportCommentComponent } from './report-comment/report-comment.component';
 
  
  let config = {
@@ -68,8 +68,8 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
     ReactiveFormsModule,
     NgbModule,
     ShareButtonsModule.forRoot(),
-
-   ResponsiveModule,
+    RouterModule,
+    ResponsiveModule,
 
   ],
   declarations: [
@@ -104,8 +104,7 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
-    FileManagerComponent,
-    FileCardComponent,
+    FileBrowserComponent,
     // directives
     ValidateOnFocusoutDirective,
     ReportCommentComponent,
@@ -140,8 +139,8 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
     ReportUserComponent,
     ReportProjectComponent,
     ProjectVoteComponent,
-    FileManagerComponent,
-    FileCardComponent
+    ReportCommentComponent,
+    FileBrowserComponent,
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -179,3 +178,5 @@ export { LearnSearchCardComponent };
 export { ReportUserComponent };
 export { ReportProjectComponent };
 export { ProjectVoteComponent };
+export { ReportCommentComponent };
+
