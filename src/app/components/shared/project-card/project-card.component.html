@@ -39,9 +39,6 @@
             </a>
           </div>
         </div>
-        <div *ngIf="project.uid  && project.uid != userId">
-          <app-message-modal [uid]="project.uid"></app-message-modal>
-        </div>
       </div>
       <div class="content-side col d-flex flex-column justify-content-start">
         <!--<p class="card-text" innerHTML="{{project.teaser}}"></p>-->
@@ -51,17 +48,14 @@
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-between">
             <li>
-              <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+              <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
               <span *ngIf="!project.number_of_likes">0</span>
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
               <span>70</span>
-            </li>
-            <li>
-              <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
-              <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
             </li>
           </ul>
         </div>

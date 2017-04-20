@@ -92,6 +92,13 @@
             }
         }
     }
+    .project { 
+        .card-stats {
+            ul {
+                width: 50%;
+            }
+        }
+    }
     .profile-container {
         .maker-card.project {
             margin-top: 20px;
@@ -197,7 +204,6 @@
     .main-header {
         .login-block {
             li {
-                margin-left: 0px !important;
             }
         }
     }
@@ -380,7 +386,6 @@
     .main-header {
         .login-block {
             li {
-                margin-left: 0px !important;
             }
         }
     }
