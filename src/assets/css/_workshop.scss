@@ -262,7 +262,7 @@
                 margin: 16px 0px 16px 0px;
             }
             .card-title {
-                @include card-header-font-lg();
+                @include card-header-font-md();
                 color: #4F4F4F;
             }
             .card-status {
@@ -361,7 +361,7 @@
                 }
             }
             .card-title {
-                @include card-header-font-lg();
+                @include card-header-font-md-2 ();
                 color: #4F4F4F;
             }
             .card-status {

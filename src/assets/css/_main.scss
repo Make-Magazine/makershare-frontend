@@ -96,7 +96,7 @@ body {
     width: 100%;
     background-color: $main-bg;
     position: relative;
-    z-index: 10;
+    z-index: 10000;
     .navbar-brand {
         width: 120px;
         padding: 0px;
@@ -130,11 +130,11 @@ body {
             }
             &.search-icon {
                 width: 20px;
-                margin-left: 25px;                
+                margin-left: 15px;                
                 
             }
             &.hamburger-menu {
-               margin-left: 25px;                
+               margin-left: 15px;                
                a img {
                     width: 40px;                
 
@@ -226,7 +226,7 @@ body {
                 }
             }
             &.min-user-img {
-                
+                margin-left: 10px;
                 img {
                     width: 27px;
                 }
@@ -443,9 +443,7 @@ body {
     position: absolute;
     z-index: 1000;
     top: 14px;
-    left: -2px;
-    box-shadow: 0px 2px 6px $main-grey;
-    @include boxShadow(0px, 2px ,6px, $main-grey);
+    left: 0;
 
     p {
         margin: 0px;
@@ -495,9 +493,8 @@ body {
     position: absolute;
     z-index: 10000;
     top: 14px;
-    left: -2px;
+    left: 0;
     box-shadow: 0px 2px 6px $main-grey;
-    @include boxShadow(0px, 2px ,6px, $main-grey);
 
     p {
         margin: 0px;
