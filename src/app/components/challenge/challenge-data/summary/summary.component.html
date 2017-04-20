@@ -6,7 +6,7 @@
           <!--start if -->
           <div class="filters">
             <div class="container">
-             
+
               <div class="row float-right">
                 <div class="entries-count btn">
                   <p *ngIf="projectsCount == 1">{{projectsCount}} Entry</p>
@@ -42,9 +42,9 @@
       <div class="entries-section" *ngIf="challenge.display_entries =='1'">
         <div *ngIf="projectsChallenge" class="projects-grid  row">
           <!-- Start Project Card -->
-          <div class="col-md-4" *ngFor="let project of projectsChallenge">
-          <app-project-card  [view]="view" [nid]="project.nid" ></app-project-card>
-       <app-project-vote [nodeNid]="project.nid" ></app-project-vote>
+          <div class="col-md-4 mb-3" *ngFor="let project of projectsChallenge">
+            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+            <app-project-vote [nodeNid]="project.nid"></app-project-vote>
           </div>
           <!-- End Project Card -->
         </div>
