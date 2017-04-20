@@ -1,8 +1,9 @@
 <div *ngIf="fileManageService">
   <input type="file" (change)="UploadFile($event.target.files[0])" accept=".jpeg,.jpg,.png,.gif,.pdf,.epub,.xls,.ppt,.pptx,.sxls,.doc,.docx,.txt">
   <ngb-progressbar [value]="fileManageService.quota"><i>{{fileManageService.quota}}% Full</i></ngb-progressbar>
-  <div *ngFor="let file of files">
-    <img [src]="file.url">
+  <div *ngFor="let file of files" class="col-md-3">
+    <img *ngIf="file.thumbnail" [src]="file.thumbnail">
+    <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
     <button (click)="CheckFileBeforeDelete(ConfirmDelete,file)"> delete </button>
   </div>
   <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
