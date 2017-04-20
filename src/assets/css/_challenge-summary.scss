@@ -377,11 +377,6 @@
         .card-title {
             @include card-header-font-lg();
             font-size: 38px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            min-height: 67px;
             color: white;
         }
         .card-status {

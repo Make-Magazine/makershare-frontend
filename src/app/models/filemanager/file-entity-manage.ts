@@ -1,4 +1,5 @@
 import { FileEntity } from '../Drupal';
+import { Node } from '../Drupal';
 
 export interface FileEntityManage extends FileEntity{
   url:URL;
@@ -6,8 +7,7 @@ export interface FileEntityManage extends FileEntity{
 }
 
 interface FileUsage {
-  node?:number[];
-  field_collection_item?:number[];
+  node?:Node[];
+  field_collection_item?:Node[];
   profile2?:number[];
-  user?:number[];
 }

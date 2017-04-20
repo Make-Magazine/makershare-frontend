@@ -18,9 +18,16 @@
     <div class="comment-body">
       <p>{{comment?.comment}}</p>
     </div>
+    <div *ngIf="comment?.comment_nid">
     <app-report-comment [commentReportId]="comment?.comment_nid"></app-report-comment>
+    </div>
   </div>
   </div>
   <div class="media content-section pl-3" *ngIf="comments.value?.length == 1 && comments.value[0].comment == ''">
     <p>{{titlecomment.ifempty}}</p>
+  </div>
+    <div class="text-center">
+    <div class="button-container-main-2" *ngIf="!hideloadmorecomment">
+      <a class="btn btn-main-2" (click)="loadMoreComments()">Load more</a>
+    </div>
   </div>

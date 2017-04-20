@@ -6,7 +6,6 @@ import { OptionalInfoComponent } from './optional-info/optional-info.component';
 import { EditProfileRoutingModule } from './edit-profile-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { IcDatepickerModule } from 'ic-datepicker';
 import { TagInputModule } from 'ng2-tag-input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -17,7 +16,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
     ReactiveFormsModule,
     FormsModule,
     EditProfileRoutingModule,
-    IcDatepickerModule,
     TagInputModule,
     NgbModule,
     CKEditorModule

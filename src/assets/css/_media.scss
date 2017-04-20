@@ -140,6 +140,76 @@
             }
         }
     }
+    .page-search-content {
+        .showcase-card-backlayer-search {
+            height: 320px;
+            .showcase-card-backlayer-search-2 {
+                padding: 0px !important;
+            }
+        }
+    }
+    .page-search-content {
+        .search-challenge-card {
+            height: auto !important;
+        }
+    }
+    .search-learn-card {
+        .learn-card {
+            height: auto !important;
+        }
+    }
+    .main-header {
+        .navbar-brand {
+            padding-left: 0px;
+        }
+    }
+    .page-project {
+        .projectsingle-card {
+            .left-side {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width:767px) {
+    header {
+        nav {
+        #MainNav {
+            .nav-item{
+                    margin-left: 8px;
+                    a {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        nav.navbar {
+            padding: 20px 0px;
+        }
+    }
+    .main-header {
+        .navbar-brand {
+            width: 100px;
+        }
+    }
+    .main-header {
+        .login-block {
+            li {
+                margin-left: 0px !important;
+            }
+        }
+    }
+    .main-header {
+        .login-block {
+            li {
+                .btn {
+                    padding: 0px;
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: 1200px) {

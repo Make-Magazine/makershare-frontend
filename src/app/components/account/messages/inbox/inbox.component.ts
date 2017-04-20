@@ -10,6 +10,7 @@ import { UserService } from '../../../../d7services/user/user.service';
 import { Location } from '@angular/common'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 
 @Component({
@@ -65,7 +66,9 @@ export class InboxComponent implements OnInit {
   hideTurnOn: boolean = false;
   status;
   blocked;
-  user_reciv;
+  usr_recv;
+  participints
+  senderData
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -77,17 +80,19 @@ export class InboxComponent implements OnInit {
     private _location: Location,
     private modalService: NgbModal,
     private notificationBarService: NotificationBarService,
+    private loaderService: LoaderService,
 
   ) { }
   ngOnInit(): void {
     this.getStatus();
+    this.loaderService.display(true);
 
     this.getCurrentUser();
     this.getMessages();
     this.buildForm();
     this.CountMessages();
     this.getBlockedUsers();
-
+    this.userId = localStorage.getItem('user_id');
 
   }
 
@@ -129,6 +134,7 @@ export class InboxComponent implements OnInit {
     })
   }
   onSubmit(e) {
+    this.loaderService.display(true);
     e.preventDefault();
     if (this.messageForm.valid) {
       var str: string = '';
@@ -139,14 +145,18 @@ export class InboxComponent implements OnInit {
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        var newMessage = {
-          user_photo: this.user['user_photo'],
-          sender: 'you send a message',
-          subject: this.messageObj.subject,
-          last_updated: 'Now',
-        }
-        this.msg.unshift(newMessage);
-        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
+
+        // var newMessage = {
+        //   user_photo: this.user['user_photo'],
+        //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
+        //   subject: this.messageObj.subject,
+        //   last_updated: 'Now',
+        // }
+        // console.log(newMessage)
+        // this.msg.unshift(newMessage);
+        this.msg = [];
+        this.getMessages();
+        // this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
@@ -224,14 +234,22 @@ export class InboxComponent implements OnInit {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
             if (this.userId === author[0].author) {
-              this.user.getUser(this.userId).subscribe(res => {
-                this.messages[key].sender = true;
-                this.messages[key].user_photo = res.user_photo;
-                this.messages[key].first_name = res.first_name;
-                this.messages[key].last_name = res.last_name;
-
+              //i am who sent the message
+              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
+                console.log(res)
+                for (let i = 0; i<res.length; i++) {
+                  if (res[i] != this.userId) {
+                    this.user.getUser(res[i]).subscribe(res => {
+                      this.messages[key].sender = true;
+                      this.messages[key].user_photo = res.user_photo;
+                      this.messages[key].first_name = res.first_name;
+                      this.messages[key].last_name = res.last_name;
+                    })
+                  }
+                }
               })
             } else {
+              //another person send message to me
               this.user.getUser(author[0].author).subscribe(res => {
                 this.messages[key].reciver = true;
                 this.messages[key].user_photo = res.user_photo;
@@ -241,6 +259,7 @@ export class InboxComponent implements OnInit {
             }
 
           })
+
           msg_arr.push(this.messages[key]);
 
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
@@ -267,19 +286,7 @@ export class InboxComponent implements OnInit {
         }
       }
       this.msg = this.msg.concat(msg_arr);
-    
-      this.msg.forEach(function (msg) {
-        let arr = [];
-        for(let key in msg.participants){
-          if(msg.participants.hasOwnProperty(key)){
-            arr.push(msg.participants[key]);
-          }    
-        }   
-        arr.forEach(function (participant){
-          // this.userId = localStorage.getItem('user_id');
-          // console.log(participant.uid);
-        });
-      });
+      this.loaderService.display(false);
       this.loadMoreVisibilty();
     })
   }
@@ -345,10 +352,12 @@ export class InboxComponent implements OnInit {
  * delete selected messages
  */
   deleteMessages() {
+    this.loaderService.display(true);
     for (var _i = 0; _i < this.msg.length; _i++) {
       this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
     }
-    this.msg.splice(this.deletedArr.length, 1)
+    this.msg = [];
+    this.getMessages();
   }
 
   viewMessage(thread_id) {
@@ -376,20 +385,24 @@ export class InboxComponent implements OnInit {
   * disable messages
    */
   turnOffMessages() {
+    this.loaderService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
       this.hideTurnOn = true;
       this.notificationBarService.create({ message: 'You have turned off messaging', type: NotificationType.Success });
+      this.loaderService.display(false);
     })
   }
   /**
    * enable messages
    */
   turnOnMessages() {
+    this.loaderService.display(true);
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
       this.hideTurnOn = false;
       this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
+      this.loaderService.display(false);
     })
   }
   /*

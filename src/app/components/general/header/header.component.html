@@ -40,14 +40,13 @@
             <hr *hideItBootstrap="['md','lg', 'xl']">
             <a [routerLink]="['project/create']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item add-project">Add a Project</a>
             <hr *hideItBootstrap="['md','lg', 'xl']">
-            <a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>
-            <a [routerLink]="['makezine']" class="dropdown-item">Makezine</a>
-            <a [routerLink]="['maker-faire']" class="dropdown-item">Maker Faire</a>
-            <a [routerLink]="['maker-shed']" class="dropdown-item">Maker Shed</a>
-            <a [routerLink]="['maker-camp']" class="dropdown-item">Maker Camp</a>
-            <a [routerLink]="['intel-make']" class="dropdown-item">Intel Innovation Programs</a>
-            <a [routerLink]="['about-badges']" class="dropdown-item">About Badges</a>
-            <hr>
+            <!--<a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>-->
+            <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
+            <a [routerLink]="['guidelines']" class="dropdown-item">Community Guidelines</a>
+            <a [routerLink]="['badges']" class="dropdown-item">About Badges</a>
+            <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
+            <a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>
+            <hr *ngIf="auth.authenticated()">
             <a class="dropdown-item beta-feedback" *ngIf="auth.authenticated()">
               <app-feedback></app-feedback>
             </a>

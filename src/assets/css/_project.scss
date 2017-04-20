@@ -732,7 +732,7 @@ header.showcase-project {
     position: relative;
     // cursor:pointer;
     background-color: white;
-		padding: 0px 16px 0px 0px;
+		padding: 0px;
 		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
 		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
@@ -772,6 +772,7 @@ header.showcase-project {
 				.card {
 					border: none;
 					min-height: 400px;
+					padding: 0px 8px;
 				}
 				.projects-circle {
 					color: $sec-button-1 ;

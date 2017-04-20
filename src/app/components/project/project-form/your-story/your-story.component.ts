@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { ViewService } from '../../../../d7services/view/view.service';
@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MetaService } from '@nglibs/meta';
+import { ImageCropperComponent } from 'ng2-img-cropper';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -33,6 +34,7 @@ export class YourStoryComponent implements OnInit {
   @Input('FormPrintableValues') FormPrintableValues;
   cover_image: FileEntity;
   tags: string[];
+  HtmlImg = new Image();
 
   /**
    * local variables to use only inside this component
@@ -46,12 +48,13 @@ export class YourStoryComponent implements OnInit {
   current_child_category: number;
   child_categories: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
+  PhotoModalTab:string;
 
   //image cropper 
   cropperSettings: CropperSettings;
   imagedata: any;
   sanitizethis;
-  show_video
+  show_video;
 
   constructor(
     private fb: FormBuilder,
@@ -68,6 +71,14 @@ export class YourStoryComponent implements OnInit {
     config.triggers = 'hover';
   }
 
+  SelectFileAndSave(closebtn:HTMLButtonElement,file:FileEntity){
+    this.imagedata = {};
+    this.PhotoModalTab = 'upload';
+    closebtn.click();
+    this.cover_image.file = file['url'];
+    this.cover_image.fid = file['fid'];
+  }
+
   /**
    * on loading the component we will assign the printable variables to the parent printable variables
    * also we will build our form
@@ -75,6 +86,7 @@ export class YourStoryComponent implements OnInit {
    * 
    */
   ngOnInit() {
+    this.PhotoModalTab = 'upload';
     this.cover_image = this.FormPrintableValues.cover_image;
     this.tags = this.FormPrintableValues.tags;
     this.buildForm();
@@ -166,7 +178,6 @@ export class YourStoryComponent implements OnInit {
           this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.validimagesize;
         } else {
           this.cover_image.file = this.imagedata.original.src;
-
         }
       } else {
         this.cover_image.file = this.imagedata.image;
