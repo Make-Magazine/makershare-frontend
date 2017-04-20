@@ -471,6 +471,7 @@ body {
 
 .card-type-grey {
     background-color: $main-grey;
+    z-index: 9;
     &::after {
         border-left: 10px solid $main-grey;
     }
@@ -478,6 +479,7 @@ body {
 
 .card-type-blue {
     background-color: $blue;
+    z-index: 9;
     &::after {
         border-left: 10px solid $blue;
     }
@@ -485,6 +487,7 @@ body {
 
 .card-type-grey-2 {
     background-color: $text-color-1;
+    z-index: 9;
     &::after {
         border-left: 10px solid $text-color-1;
     }
@@ -523,6 +526,7 @@ body {
 
 .card-type-user-small {
     background-color: $text-color-1;
+    z-index: 9;
     &::after {
         border-left: 10px solid $text-color-1;
     }

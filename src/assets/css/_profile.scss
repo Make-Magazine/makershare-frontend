@@ -802,7 +802,7 @@
         position: relative;
         top: -18px;
         height: 40px;
-        z-index: 105;
+        z-index: 9;
         .project-icon {
             img {
                 width: auto;
@@ -1116,142 +1116,125 @@
     }
 }
 
-#add-bio-modal,
-#add-interests-modal,
-#add-makerspace-modal,
-#add-social-modal,
-#add-description-modal,
-#add-maker-starting-modal {
-    h4 {
-        font-weight: normal;
-        color: #000;
-        font-size: 18px;
-    }
-    .modal-header,
-    .modal-footer {
-        border-color: $light-grey * 0.8;
-        border-width: 3px;
-    }
-    .modal-content {
-        border: 3px solid ($light-grey * 0.8);
-        li:first-of-type {
-            h4 {
-                margin-left: 82%;
-                font-size: 14px;
+/* modal edit profile forms */
+.modal-content  {
+    .profile-modal {
+        background-color: $site-bg;
+        .modal-header {
+            border-bottom: none !important;
+            padding: 8px;
+        }
+        .modal-body {
+            min-height: 460px;
+            input {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                }
+            }
+            #description-textarea-info {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 22px;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 22px;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 22px;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 22px;
+                }
+            }
+            #description-textarea-bio {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 80px;
+                }
+            }
+            #start-making-textarea {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 80px;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 80px;
+                }
+            }
+            #socaial {
+                .form-group {
+                    position: relative;
+                }
+                .radio-breferred {
+                    position: absolute;
+                    top: 13px;
+                    right: 8px;
+                }
+            }
+            #maker-spaces {
+                .makerspace-contene {
+                    position: relative;
+                }
+                .maker-space-remove {
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                }
+            }
+            #links {
+                .form-group {
+                    position: relative;
+                }
+                .radio-breferred {
+                    position: absolute;
+                    top: 13px;
+                    right: 21px;
+                }
+                .form-item {
+                    padding: 0px;
+                }
             }
         }
-        label {
-            width: 30%;
-            font-size: 15px;
-        }
-        input[type="checkbox"] {
-            margin-left: 30px;
-        }
-        input[type="text"] {
-            width: 50%;
-            margin: 0;
-            padding: 3px;
-            font-size: 15px;
-        }
-        i {
-            width: 25px;
-        }
-        p {
-            margin-top: 5px;
-            font-size: 15px;
-        }
-    }
-    .modal-footer {
-        text-align: center;
-        .btn-light-grey {
-            border-radius: 4px;
-        }
-    }
-    .modal-footer {
-        .close-btn {
-            border: 1px solid #444;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        .done-btn {
-            border: 1px solid #444;
-            &:hover {
-                cursor: pointer;
-            }
+        .modal-footer {
+            border-top: none !important;
         }
     }
 }
 
-#add-interests-modal {
-    .modal-content {
-        input[type="text"] {
-            width: 100% !important;
-            margin-top: 17px;
-            font-size: 15px;
-        }
-    }
-}
 
-#add-makerspace-modal {
-    .modal-content {
-        .makerspace {
-            width: 60%;
-            margin: auto;
-            label {
-                width: 100%;
-            }
-            a.btn-white {
-                padding: 5px;
-                margin-top: 10px;
-                font-size: 12px;
-                border-radius: 4px;
-            }
-            label {
-                margin-top: 5px;
-                width: 100%;
-            }
-            input[type="text"] {
-                width: 100%;
-                font-size: 15px;
-            }
-            .maker-group {
-                margin-bottom: 20px;
-            }
-            i {
-                font-size: 15px;
-            }
-        }
-    }
-}
-
-#add-bio-modal {
-    resize: none;
-    textarea {
-        width: 100%;
-        min-height: 170px;
-        overflow: visible;
-        font-size: 15px;
-    }
-}
-
-#edit-info-modal {
-    label {
-        display: block;
-    }
-    #edit-nickname {
-        width: 50%;
-    }
-    #edit-city {
-        width: 30%;
-        float: left;
-    }
-    #edit-state {
-        width: 10%;
-        margin-left: 5%;
-        float: left;
-    }
-}
 
 #edit-cover-modal {
     .modal-dialog {
