@@ -47,8 +47,9 @@ export class CommentsComponent implements OnInit {
   getcommentsByID(id) {
     this.viewService.getView('node-comments', [['nid', this.nodeId]]).subscribe(data => {
       this.comments.value = this.comments.value.concat (data);
+       this.loadMoreVisibilty();
       this.commentCount=this.comments.value[0].comment_count
-      this.loadMoreVisibilty();
+     
       
     });
   }
