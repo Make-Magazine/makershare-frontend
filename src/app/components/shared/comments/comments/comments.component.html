@@ -26,8 +26,8 @@
   <div class="media content-section pl-3" *ngIf="comments.value?.length == 1 && comments.value[0].comment == ''">
     <p>{{titlecomment.ifempty}}</p>
   </div>
-    <div class="text-center">
-    <div class="button-container-main-2" *ngIf="hideloadmorecomment">
+    <div class="text-center" *ngIf="hideloadmorecomment">
+    <div class="button-container-main-2" >
       <a class="btn btn-main-2" (click)="loadMoreComments()">Load more</a>
     </div>
   </div>
