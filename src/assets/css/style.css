@@ -929,17 +929,20 @@ body {
     color: #fff; }
 
 .card-type-grey {
-  background-color: #333333; }
+  background-color: #333333;
+  z-index: 9; }
   .card-type-grey::after {
     border-left: 10px solid #333333; }
 
 .card-type-blue {
-  background-color: #00AEEF; }
+  background-color: #00AEEF;
+  z-index: 9; }
   .card-type-blue::after {
     border-left: 10px solid #00AEEF; }
 
 .card-type-grey-2 {
-  background-color: #4F4F4F; }
+  background-color: #4F4F4F;
+  z-index: 9; }
   .card-type-grey-2::after {
     border-left: 10px solid #4F4F4F; }
 
@@ -977,7 +980,8 @@ body {
     color: #fff; }
 
 .card-type-user-small {
-  background-color: #4F4F4F; }
+  background-color: #4F4F4F;
+  z-index: 9; }
   .card-type-user-small::after {
     border-left: 10px solid #4F4F4F; }
 
@@ -2147,7 +2151,7 @@ footer {
     position: relative;
     top: -18px;
     height: 40px;
-    z-index: 105; }
+    z-index: 9; }
     .project .icons-side-project .project-icon img {
       width: auto;
       height: 40px;
@@ -2399,172 +2403,96 @@ footer {
     width: 80%;
     margin: 0 auto; }
 
-#add-bio-modal h4,
-#add-interests-modal h4,
-#add-makerspace-modal h4,
-#add-social-modal h4,
-#add-description-modal h4,
-#add-maker-starting-modal h4 {
-  font-weight: normal;
-  color: #000;
-  font-size: 18px; }
-#add-bio-modal .modal-header,
-#add-bio-modal .modal-footer,
-#add-interests-modal .modal-header,
-#add-interests-modal .modal-footer,
-#add-makerspace-modal .modal-header,
-#add-makerspace-modal .modal-footer,
-#add-social-modal .modal-header,
-#add-social-modal .modal-footer,
-#add-description-modal .modal-header,
-#add-description-modal .modal-footer,
-#add-maker-starting-modal .modal-header,
-#add-maker-starting-modal .modal-footer {
-  border-color: #979797;
-  border-width: 3px; }
-#add-bio-modal .modal-content,
-#add-interests-modal .modal-content,
-#add-makerspace-modal .modal-content,
-#add-social-modal .modal-content,
-#add-description-modal .modal-content,
-#add-maker-starting-modal .modal-content {
-  border: 3px solid #979797; }
-  #add-bio-modal .modal-content li:first-of-type h4,
-  #add-interests-modal .modal-content li:first-of-type h4,
-  #add-makerspace-modal .modal-content li:first-of-type h4,
-  #add-social-modal .modal-content li:first-of-type h4,
-  #add-description-modal .modal-content li:first-of-type h4,
-  #add-maker-starting-modal .modal-content li:first-of-type h4 {
-    margin-left: 82%;
-    font-size: 14px; }
-  #add-bio-modal .modal-content label,
-  #add-interests-modal .modal-content label,
-  #add-makerspace-modal .modal-content label,
-  #add-social-modal .modal-content label,
-  #add-description-modal .modal-content label,
-  #add-maker-starting-modal .modal-content label {
-    width: 30%;
-    font-size: 15px; }
-  #add-bio-modal .modal-content input[type="checkbox"],
-  #add-interests-modal .modal-content input[type="checkbox"],
-  #add-makerspace-modal .modal-content input[type="checkbox"],
-  #add-social-modal .modal-content input[type="checkbox"],
-  #add-description-modal .modal-content input[type="checkbox"],
-  #add-maker-starting-modal .modal-content input[type="checkbox"] {
-    margin-left: 30px; }
-  #add-bio-modal .modal-content input[type="text"],
-  #add-interests-modal .modal-content input[type="text"],
-  #add-makerspace-modal .modal-content input[type="text"],
-  #add-social-modal .modal-content input[type="text"],
-  #add-description-modal .modal-content input[type="text"],
-  #add-maker-starting-modal .modal-content input[type="text"] {
-    width: 50%;
-    margin: 0;
-    padding: 3px;
-    font-size: 15px; }
-  #add-bio-modal .modal-content i,
-  #add-interests-modal .modal-content i,
-  #add-makerspace-modal .modal-content i,
-  #add-social-modal .modal-content i,
-  #add-description-modal .modal-content i,
-  #add-maker-starting-modal .modal-content i {
-    width: 25px; }
-  #add-bio-modal .modal-content p,
-  #add-interests-modal .modal-content p,
-  #add-makerspace-modal .modal-content p,
-  #add-social-modal .modal-content p,
-  #add-description-modal .modal-content p,
-  #add-maker-starting-modal .modal-content p {
-    margin-top: 5px;
-    font-size: 15px; }
-#add-bio-modal .modal-footer,
-#add-interests-modal .modal-footer,
-#add-makerspace-modal .modal-footer,
-#add-social-modal .modal-footer,
-#add-description-modal .modal-footer,
-#add-maker-starting-modal .modal-footer {
-  text-align: center; }
-  #add-bio-modal .modal-footer .btn-light-grey,
-  #add-interests-modal .modal-footer .btn-light-grey,
-  #add-makerspace-modal .modal-footer .btn-light-grey,
-  #add-social-modal .modal-footer .btn-light-grey,
-  #add-description-modal .modal-footer .btn-light-grey,
-  #add-maker-starting-modal .modal-footer .btn-light-grey {
-    border-radius: 4px; }
-#add-bio-modal .modal-footer .close-btn,
-#add-interests-modal .modal-footer .close-btn,
-#add-makerspace-modal .modal-footer .close-btn,
-#add-social-modal .modal-footer .close-btn,
-#add-description-modal .modal-footer .close-btn,
-#add-maker-starting-modal .modal-footer .close-btn {
-  border: 1px solid #444; }
-  #add-bio-modal .modal-footer .close-btn:hover,
-  #add-interests-modal .modal-footer .close-btn:hover,
-  #add-makerspace-modal .modal-footer .close-btn:hover,
-  #add-social-modal .modal-footer .close-btn:hover,
-  #add-description-modal .modal-footer .close-btn:hover,
-  #add-maker-starting-modal .modal-footer .close-btn:hover {
-    cursor: pointer; }
-#add-bio-modal .modal-footer .done-btn,
-#add-interests-modal .modal-footer .done-btn,
-#add-makerspace-modal .modal-footer .done-btn,
-#add-social-modal .modal-footer .done-btn,
-#add-description-modal .modal-footer .done-btn,
-#add-maker-starting-modal .modal-footer .done-btn {
-  border: 1px solid #444; }
-  #add-bio-modal .modal-footer .done-btn:hover,
-  #add-interests-modal .modal-footer .done-btn:hover,
-  #add-makerspace-modal .modal-footer .done-btn:hover,
-  #add-social-modal .modal-footer .done-btn:hover,
-  #add-description-modal .modal-footer .done-btn:hover,
-  #add-maker-starting-modal .modal-footer .done-btn:hover {
-    cursor: pointer; }
-
-#add-interests-modal .modal-content input[type="text"] {
-  width: 100% !important;
-  margin-top: 17px;
-  font-size: 15px; }
-
-#add-makerspace-modal .modal-content .makerspace {
-  width: 60%;
-  margin: auto; }
-  #add-makerspace-modal .modal-content .makerspace label {
-    width: 100%; }
-  #add-makerspace-modal .modal-content .makerspace a.btn-white {
-    padding: 5px;
-    margin-top: 10px;
-    font-size: 12px;
-    border-radius: 4px; }
-  #add-makerspace-modal .modal-content .makerspace label {
-    margin-top: 5px;
-    width: 100%; }
-  #add-makerspace-modal .modal-content .makerspace input[type="text"] {
-    width: 100%;
-    font-size: 15px; }
-  #add-makerspace-modal .modal-content .makerspace .maker-group {
-    margin-bottom: 20px; }
-  #add-makerspace-modal .modal-content .makerspace i {
-    font-size: 15px; }
-
-#add-bio-modal {
-  resize: none; }
-  #add-bio-modal textarea {
-    width: 100%;
-    min-height: 170px;
-    overflow: visible;
-    font-size: 15px; }
-
-#edit-info-modal label {
-  display: block; }
-#edit-info-modal #edit-nickname {
-  width: 50%; }
-#edit-info-modal #edit-city {
-  width: 30%;
-  float: left; }
-#edit-info-modal #edit-state {
-  width: 10%;
-  margin-left: 5%;
-  float: left; }
+/* modal edit profile forms */
+.modal-content .profile-modal {
+  background-color: #F2F2F2; }
+  .modal-content .profile-modal .modal-header {
+    border-bottom: none !important;
+    padding: 8px; }
+  .modal-content .profile-modal .modal-body {
+    min-height: 460px; }
+    .modal-content .profile-modal .modal-body input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body #description-textarea-info::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #socaial .form-group {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #socaial .radio-breferred {
+      position: absolute;
+      top: 13px;
+      right: 8px; }
+    .modal-content .profile-modal .modal-body #maker-spaces .makerspace-contene {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #maker-spaces .maker-space-remove {
+      position: absolute;
+      right: 1px;
+      top: 1px; }
+    .modal-content .profile-modal .modal-body #links .form-group {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #links .radio-breferred {
+      position: absolute;
+      top: 13px;
+      right: 21px; }
+    .modal-content .profile-modal .modal-body #links .form-item {
+      padding: 0px; }
+  .modal-content .profile-modal .modal-footer {
+    border-top: none !important; }
 
 #edit-cover-modal .modal-dialog {
   width: 60%; }
@@ -3569,6 +3497,7 @@ footer {
   cursor: pointer;
   background-color: #333;
   height: 460px;
+  margin-bottom: 30px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -7528,7 +7457,6 @@ img {
         height: 58px; }
 
   .front .learn-card .image-container {
-    margin: 0 30px 0 15px;
     max-height: 160px;
     max-width: 520px; }
   .front .learn-card .card-container .card-title {
@@ -7605,6 +7533,9 @@ img {
 
   .project-home .image-top {
     width: 325px; } }
+@media only screen and (min-width: 992px) {
+  .modal-lg {
+    max-width: 1110px; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-header .login-block li {
     margin-left: 0px !important; }
