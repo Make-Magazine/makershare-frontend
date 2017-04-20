@@ -204,7 +204,7 @@ export class ChallengeProjectComponent implements OnInit {
         /* end follow  */
       }, err => {
         this.loaderService.display(false);
-        this.notificationBarService.create({ message: err._body, type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
+        this.notificationBarService.create({ message: err._body.toString(), type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
 
         this.router.navigate(['/missions/' + this.nid]);
 
