@@ -1,10 +1,10 @@
 <div id="search-box-layer">
   <i (click)="closeSearchBox()" class="fa fa-times close-search-layer" aria-hidden="true"></i>
-  <div class="text-center" id="search-box-form">
+  <div class="text-center" id="search-box-form" (click)="searchbox.focus()">
     <h3>Search Anything</h3>
     <div class="search-form-group">
       <form (keydown)="keyDownFunction($event)">
-        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" id="search-box-input"/>
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" #searchBox id="search-box-input"/>
         <i (click)="goSearch()" class="go-search" aria-hidden="true">></i>
       </form>
     </div>
