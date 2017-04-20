@@ -375,10 +375,9 @@ a:not([href]):not([tabindex]).btn-vote {
   color: #292929;
   background: transparent;
   border: 1px solid;
-  margin-left: 88px;
   padding: 5px;
   width: 50%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   text-align: center; }
   .btn-vote:focus, .btn-vote:active, .btn-vote:hover, .btn-vote.active,
   a:not([href]):not([tabindex]).btn-vote:focus,
@@ -4422,7 +4421,7 @@ header.showcase-project .next {
   border: 1px solid #4ab0d8;
   position: relative;
   background-color: white;
-  padding: 0px 16px 0px 0px;
+  padding: 0px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -4456,7 +4455,8 @@ header.showcase-project .next {
       position: relative; }
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none;
-        min-height: 400px; }
+        min-height: 400px;
+        padding: 0px 8px; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
         color: #00AEEF;
         min-height: 38px; }
@@ -5059,11 +5059,6 @@ header.showcase-project .next {
         text-transform: capitalize;
         line-height: 105%;
         color: #828282;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        max-height: 114px;
-        min-height: 70px;
         color: #333333;
         cursor: pointer; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
@@ -5084,10 +5079,6 @@ header.showcase-project .next {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
         color: #333333; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
@@ -6234,11 +6225,6 @@ img {
       line-height: 105%;
       color: #828282;
       font-size: 38px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      min-height: 67px;
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Regular";
@@ -7490,7 +7476,30 @@ img {
     height: auto !important; }
 
   .search-learn-card .learn-card {
-    height: auto !important; } }
+    height: auto !important; }
+
+  .main-header .navbar-brand {
+    padding-left: 0px; }
+
+  .page-project .projectsingle-card .left-side {
+    padding-left: 0px;
+    padding-right: 0px; } }
+@media only screen and (max-width: 991px) and (min-width: 767px) {
+  header nav #MainNav .nav-item {
+    margin-left: 8px; }
+    header nav #MainNav .nav-item a {
+      font-size: 14px; }
+  header nav.navbar {
+    padding: 20px 0px; }
+
+  .main-header .navbar-brand {
+    width: 100px; }
+
+  .main-header .login-block li {
+    margin-left: 0px !important; }
+
+  .main-header .login-block li .btn {
+    padding: 0px; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }

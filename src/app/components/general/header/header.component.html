@@ -46,7 +46,7 @@
             <a [routerLink]="['badges']" class="dropdown-item">About Badges</a>
             <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
             <a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>
-            <hr>
+            <hr *ngIf="auth.authenticated()">
             <a class="dropdown-item beta-feedback" *ngIf="auth.authenticated()">
               <app-feedback></app-feedback>
             </a>
