@@ -35,7 +35,6 @@
         .card-partership {
             @include desc-font-1();
             text-transform: none;
-            font-size: 14px;
             display: inline-block; 
             min-height: 16px;
             margin-bottom: 10px;
@@ -63,7 +62,6 @@
             }
             .challenge-card-footer-2 {
                 .challenge-card-count {
-                    font-size: 14px;
                     .follow-count {
                         padding-left: 10px;
                     }
@@ -75,7 +73,6 @@
                 .challenge-card-status {
                     .open-status, .closed-status {
                         font-weight: bold;
-                        font-size: 16px;
                         padding-right: 5px;
                     }
                     .open-status{
@@ -85,7 +82,6 @@
                         color: $text-color-6;
                     }
                     .challenge-end-date {
-                        font-size: 14px;
                     }
                 }
             }
@@ -222,7 +218,6 @@
                 background-color: $light-grey*0.9;
                 padding: 3px 15px;
                 border-radius: 20px;
-                font-size: 13px;
                 margin-left: 10px;
             }
         }
@@ -295,7 +290,6 @@
                 overflow: hidden;
                 height: 92px;
                 color: white;
-                font-size: 3em !important;
                 margin-bottom: 30px;
             }
             .card-status {
@@ -306,7 +300,6 @@
             .card-partership {
                 @include desc-font-2();
                 text-transform: none;
-                font-size: 14px;
                 display: inline-block; 
                 min-height: 16px;
                 margin-bottom: 10px;
@@ -342,7 +335,6 @@
                     background-color: $light-grey*0.9;
                     padding: 3px 15px;
                     border-radius: 20px;
-                    font-size: 13px;
                     margin-left: 10px;
                 }
             }
@@ -368,16 +360,15 @@
         }
         p,
         h3 {
-            color: white;
+            // color: white;
         }
         .card {
             background-color: transparent;
             border: none;
             .card-title {
-                @include card-header-font-lg();
+                @include card-header-font-md-2 ();
                 color: $white;
-                max-height: 145px;
-                max-height: 133px;
+                max-height: 95px;
                 overflow: hidden;
             }
             .card-type {
@@ -413,15 +404,15 @@
         }
         .card-container {
             .card-partership {
-                @include desc-font-1();
+                @include desc-font-3();
                 text-transform: none;
-                font-size: 14px;
                 display: inline-block; 
                 min-height: 16px;
                 margin: 16px 0px 16px 0px;
                 p {
+                    color: $shade-3;
                     margin-bottom: 0px;
-                    color: $text-color-2;
+                    // color: $text-color-2;
                 }
             }
             .card-description {
@@ -454,8 +445,8 @@
                 }
                 }
                 .challenge-card-footer-2 {
+                    @include desc-font-3();
                     .challenge-card-count {
-                        font-size: 12px;
                         color: $text-color-2;
                         .follow-count {
                             padding-left: 10px;
@@ -469,17 +460,15 @@
                         color: $text-color-2;
                         .open-status, .closed-status {
                             // font-weight: bold;
-                            font-size: 12px;
                             padding-right: 5px;
                         }
                         .open-status{
-                            color: white;
+                            // color: white;
                         } 
                         .closed-status {
                             color: $text-color-6;
                         }
                         .challenge-end-date {
-                            font-size: 12px;
                         }
                     }
                 }
@@ -610,7 +599,6 @@
             .card-partership {
                 @include desc-font-1();
                 text-transform: none;
-                font-size: 14px;
                 display: inline-block; 
                 min-height: 16px;
                 margin: 12px 0px 12px 0px;
@@ -649,7 +637,6 @@
                 }
                 .challenge-card-footer-2 {
                     .challenge-card-count {
-                        font-size: 12px;
                         color: $text-color-2;
                         .follow-count {
                             padding-left: 10px;
@@ -663,7 +650,6 @@
                         color: $text-color-2;
                         .open-status, .closed-status {
                             // font-weight: bold;
-                            font-size: 12px;
                             padding-right: 5px;
                         }
                         .open-status{
@@ -673,7 +659,6 @@
                             color: $text-color-6;
                         }
                         .challenge-end-date {
-                            font-size: 12px;
                         }
                     }
                 }

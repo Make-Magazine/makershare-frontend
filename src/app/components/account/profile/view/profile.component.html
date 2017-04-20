@@ -57,7 +57,7 @@
 
 								</div>
 							</div>
-							<p class="global-title">Profile Completeness</p>
+							<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
 							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
 								<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
 							</div>
