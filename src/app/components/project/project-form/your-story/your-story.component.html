@@ -3,8 +3,8 @@
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
       <input type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="What do you call your project?"
-        ngbTooltip="{{TooltipText.project_name.guide}}" (focusout)="TitleFocused = true">
-      <div *ngIf="formErrors.title && TitleFocused" class="alert alert-danger error-msg">
+        ngbTooltip="{{TooltipText.project_name.guide}}" validate-onfocusout>
+      <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>
     </div>
