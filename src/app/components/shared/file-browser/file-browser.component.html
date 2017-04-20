@@ -1,7 +1,8 @@
-<div *ngIf="fileManageService">
-  <div *ngFor="let file of files">
+<div *ngIf="fileManageService" class="row">
+  <div *ngFor="let file of files" class="col-md-3">
     <div *ngIf="file.type == 'image'">
-      <img [src]="file.url">
+      <img *ngIf="file.thumbnail" [src]="file.thumbnail">
+      <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
       <button (click)="emitter.emit(file)"> select </button>
     </div>
   </div>
