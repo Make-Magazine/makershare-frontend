@@ -183,6 +183,7 @@ export class ChallengeProjectComponent implements OnInit {
         "field_entry_project": this.selectedProject,
         "field_entry_challenge": this.nid,
       };
+
       this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
         this.router.navigate(['missions/', this.nid]);
         this.loaderService.display(false);
@@ -204,8 +205,7 @@ export class ChallengeProjectComponent implements OnInit {
         /* end follow  */
       }, err => {
         this.loaderService.display(false);
-        this.notificationBarService.create({ message: err._body.toString(), type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
-
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
         this.router.navigate(['/missions/' + this.nid]);
 
       });
