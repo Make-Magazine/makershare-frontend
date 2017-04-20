@@ -196,10 +196,10 @@ a:not([href]):not([tabindex]).btn-border {
   color: #333333;
   border: 1px solid #333333;
   font-family: "Messina Sans Regular";
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 400;
   text-transform: none;
-  line-height: 125%;
+  line-height: 130%;
   color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
@@ -622,7 +622,7 @@ body {
   width: 100%;
   background-color: #F2F2F2;
   position: relative;
-  z-index: 10; }
+  z-index: 10000; }
   .main-header .navbar-brand {
     width: 120px;
     padding: 0px;
@@ -3422,10 +3422,10 @@ footer {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       height: 85px;
       color: white; }
@@ -3616,10 +3616,10 @@ footer {
     font-weight: bold; }
   .front .front-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 7;
@@ -3762,10 +3762,10 @@ footer {
     font-weight: bold; }
   .page-search-content .search-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -4472,10 +4472,10 @@ header.showcase-project .next {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         margin-bottom: 10px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
@@ -4598,10 +4598,10 @@ header.showcase-project .next {
     position: relative; }
   .learn-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     text-transform: none;
     font-size: 14px;
@@ -4655,10 +4655,10 @@ header.showcase-project .next {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     width: 100%;
     margin: auto; }
@@ -4727,10 +4727,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .page-learn .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -4820,10 +4820,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .front .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 7;
@@ -4912,10 +4912,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .search-learn-card .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -4958,10 +4958,10 @@ header.showcase-project .next {
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       width: 85%;
       margin: auto; }
@@ -5257,10 +5257,10 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 5;
@@ -5383,10 +5383,10 @@ img {
           font-weight: bold; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-description p {
           font-family: "Messina Sans Regular";
-          font-size: 1em;
+          font-size: 0.9em;
           font-weight: 400;
           text-transform: none;
-          line-height: 125%;
+          line-height: 130%;
           color: #828282;
           display: -webkit-box;
           -webkit-line-clamp: 5;
@@ -6217,10 +6217,10 @@ img {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       min-height: 116px;
       color: white; }
@@ -6527,10 +6527,10 @@ img {
       font-weight: bold; }
     .page-workshop-individual .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -6879,10 +6879,10 @@ img {
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       text-align: center; }
 
@@ -6960,10 +6960,10 @@ img {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         color: #BDBDBD !important; }
         .total-result .challenge-item .content-bottom .content-side .sponser-name p {
