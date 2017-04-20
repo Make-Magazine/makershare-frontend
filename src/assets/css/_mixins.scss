@@ -39,11 +39,11 @@
 	// 48 pt
 }
 @mixin card-header-font-md (){
-	@include font-setting('Messina Modern Bold', 1.5em ,400 ,none , 115%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 1.5em ,400 ,none , 115%, $text-color-2 );
 	// 24pt
 }
 @mixin card-header-font-sm (){
-	@include font-setting('Messina Modern Bold', 1em ,400 ,capitalize , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 1.2em ,400 ,capitalize , 100%, $text-color-2 );
 	// 18pt -> 16pt
 }
 @mixin card-header-font-xs (){

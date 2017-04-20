@@ -887,20 +887,23 @@
     .card-stats {
         padding: 2px;
         color: $light-grey;
-        ul li {
-            width: 80px;
-            @include desc-font-2();
-            img {
-                margin-right: 6px;
-                &.project-likes {
-                    width: 12px;
+        ul {
+            width: 75%; 
+            li {
+                width: 80px;
+                @include desc-font-2();
+                img {
+                    margin-right: 6px;
+                    &.project-likes {
+                        width: 12px;
+                    }
+                    &.project-views {
+                        width: 20px;
+                    }
                 }
-                &.project-views {
-                    width: 20px;
+                span {
+                    margin: 0px;
                 }
-            }
-            span {
-                margin: 0px;
             }
         }
     }
@@ -1565,7 +1568,7 @@
             color: $text-color-6;
         }
         .maker-nickname {
-            @include desc-font-5 ();
+            @include desc-font-1 ();
             // 14 pt
             margin-bottom: 2px;
         }
