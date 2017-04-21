@@ -1,6 +1,6 @@
 export interface UserInvitations {
   uid:number,
-  project:number,
+  project:string,
   mails?:string[]
 }
 
