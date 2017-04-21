@@ -8,10 +8,13 @@ import { FlagService } from '../../../../d7services/flag/flag.service';
   templateUrl: './challenge-follow.component.html',
 })
 export class ChallengeFollowComponent implements OnInit {
+@Input()countFollow;
   deletedArr = [];
-
   challenges = [];
   userId;
+  pages: number = 0;
+  hideloadmorefollowchallenge = false;
+  page_arg;
   constructor(
     private viewService: ViewService,
     private flagService: FlagService,
@@ -26,12 +29,20 @@ export class ChallengeFollowComponent implements OnInit {
 
   }
   getChallengeFollow() {
+    if (this.pages >= 0) {
+      this.page_arg =
+        ['page', this.pages];
+    }
+    if (this.pages == 0) {
+      this.challenges = [];
+    }
 
 
     // get Challenge following from a view
-    this.viewService.getView('follow').subscribe(res => {
-      this.challenges = res;
-     // this.loaderComponentService.display(false);
+    this.viewService.getView('follow',[this.page_arg]).subscribe(res => {
+      this.challenges = this.challenges.concat(res);
+      this.loadMoreVisibilty();
+       // this.loaderComponentService.display(false);
     }, err => {
      // this.loaderComponentService.display(false);
     });
@@ -92,4 +103,23 @@ export class ChallengeFollowComponent implements OnInit {
 
     return this.challenges.every(_ => _.state);
   }
+    /* function load more  */
+  loadMoreFollowChallenge() {
+    this.pages++;
+    console.log( this.pages);
+    this.getChallengeFollow();
+  }
+  /* end function load more  */
+    // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    if (this.countFollow == this.challenges.length) {
+
+      this.hideloadmorefollowchallenge = true;
+
+    } else if (this.countFollow > this.challenges.length) {
+      this.hideloadmorefollowchallenge = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 }
