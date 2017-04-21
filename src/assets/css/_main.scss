@@ -528,3 +528,19 @@ body {
         border-left: 10px solid $text-color-1;
     }
 }
+#search-box-layer {
+    .close-search-layer {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    .close-search-layer,
+    .go-search {
+        position: absolute;
+        color: #fff;
+        font-size: 2em;
+        cursor:pointer;
+        top: 7px;
+        right: -40px;
+    }
+}
