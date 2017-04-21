@@ -318,8 +318,6 @@
 					.image-container {
                         max-height: 160px;
                         max-width: 520px;
-                        background: url('../images/placeholder.png') center center;
-                        background-size: cover;
 					}
 					.card-container {
                         .card-title {
@@ -402,6 +400,11 @@
             }
         } 
     } 
+    .project {
+        .maker-name {
+            margin-top: 5px;
+        }
+    }
 }
 
 @media only screen and (min-width: 1200px) {}
