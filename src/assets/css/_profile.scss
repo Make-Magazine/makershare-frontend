@@ -173,7 +173,7 @@
         font-size: 12px;
         margin-bottom: 20px;
         position: relative;
-        @include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+        @include boxShadow(2px, 2px ,8px, $shade-3);
         li,
         p {
             font-size: 13px;

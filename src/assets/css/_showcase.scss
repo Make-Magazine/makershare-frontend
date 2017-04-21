@@ -38,7 +38,7 @@
     padding-right: 23px;
     padding-bottom: 9px;
     margin-bottom: 10px;
-    @include boxShadow(2px, 2px ,5px, rgba(136, 136, 136, 0.5));
+    @include boxShadow(2px, 2px ,8px, $shade-3);
     &:hover {
         background-color: $valid-faire;
         transition: background-color 0.8s ease;
@@ -47,7 +47,7 @@
         position: relative;
         padding: 16px;
         background-color: white;
-        @include boxShadow(2px, 2px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(2px, 2px ,8px, $shade-3);
         .card {
             background-color: transparent;
             border: none;
@@ -295,13 +295,13 @@ img {
         cursor: pointer;
         background-color: white;
         @include boxShadow(2px, 2px ,8px, $shade-3);
-
         height: 440px;
         .card {
             background-color: transparent;
             border: none;
             .showcase-type {
                 p {
+                    font-size: 1em;
                     color: $blue;
                 }
             }
@@ -448,7 +448,7 @@ img {
         padding: 0px 10px 14px 0px;
         background-color: $showcase-layer;
         transition: background-color 0.8s ease;
-        @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+        @include boxShadow(3px, 3px ,5px, $shade-3);
         height: 460px;
         margin-bottom: 30px;
         &:hover {
@@ -458,7 +458,7 @@ img {
         &:hover .showcase-card-backlayer-search-2 {
             transition: background-color 0.8s ease;
             background-color: $blue;
-            @include boxShadow(3px, 3px ,5px, rgba(136, 136, 136, 0.5));
+            @include boxShadow(3px, 3px ,5px, $shade-3);
 
         }
         .showcase-card-backlayer-search-2 {
@@ -473,7 +473,7 @@ img {
                 cursor: pointer;
                 height: 100%;
                 background-color: white;
-                @include boxShadow(2px, 2px ,5px, rgba(136, 136, 136, 0.5));
+                @include boxShadow(2px, 2px ,8px, $shade-3);
                 .card {
                     background-color: transparent;
                     border: none;
@@ -496,7 +496,7 @@ img {
                         -webkit-line-clamp: 4;
                         -webkit-box-orient: vertical;
                         overflow: hidden;
-                        max-height: 176px;
+                        max-height: 200px;
                         color: $font-grey;
                         margin-bottom: 20px;
                         line-height: 120% !important;
