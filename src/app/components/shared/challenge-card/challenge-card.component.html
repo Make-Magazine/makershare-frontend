@@ -64,9 +64,16 @@
 
 
 <div class="front-challenge-card row" *ngIf="challenge && front && !first">
-  <div class="col-md-6 col-sm-12 image-container">
-    <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
+  <div class="col-md-6 col-sm-12">
+    <div *showItBootstrap="['sm','xs']">
+      <div class="card-partnership-mobile" *ngIf="challenge.sponsored_by">
+        <p>Sponsored by {{challenge.sponsored_by}}</p>
+      </div>
+    </div>
+    <div class="image-container">
+      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+      <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
+    </div>
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
@@ -77,14 +84,16 @@
   <div class="col-md-6 col-sm-12 content-container">
     <div class="card-container h-100">
       <div class="card h-100">
-        <div class="card-partership" *ngIf="challenge.sponsored_by">
-          <p>Sponsored by {{challenge.sponsored_by}}</p>
+        <div *hideItBootstrap="['sm','xs']">
+          <div class="card-partership" *ngIf="challenge.sponsored_by">
+            <p>Sponsored by {{challenge.sponsored_by}}</p>
+          </div>
         </div>
         <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
-        <div class="challene-card-footer d-flex flex-column flex-md-row mt-auto align-items-md-center">
+        <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">
             <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
               <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
