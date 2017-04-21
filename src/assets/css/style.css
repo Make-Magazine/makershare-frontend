@@ -622,7 +622,7 @@ body {
   width: 100%;
   background-color: #F2F2F2;
   position: relative;
-  z-index: 10000; }
+  z-index: 12; }
   .main-header .navbar-brand {
     width: 120px;
     padding: 0px;
@@ -937,7 +937,7 @@ body {
 
 .card-type-blue {
   background-color: #00AEEF;
-  z-index: 9; }
+  z-index: 11; }
   .card-type-blue::after {
     border-left: 10px solid #00AEEF; }
 
@@ -1174,10 +1174,10 @@ footer {
   padding: 0px; }
 .user-card .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   min-height: 24px;
   margin-bottom: 2px; }
@@ -1193,10 +1193,10 @@ footer {
     color: #BDBDBD; }
 .user-card .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   line-height: 17px;
@@ -1265,10 +1265,10 @@ footer {
     padding: 0px; }
 .user-card-small .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
   .user-card-small .user-name a {
@@ -1283,10 +1283,10 @@ footer {
     color: #BDBDBD; }
 .user-card-small .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   height: 38px;
@@ -1669,10 +1669,10 @@ footer {
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         color: #333333; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
@@ -2102,7 +2102,7 @@ footer {
   .project .maker-name {
     color: #00AEEF;
     margin-bottom: 0;
-    margin-top: 13px; }
+    margin-top: 10px; }
   .project .image-top {
     height: 275px;
     background-color: #bbb;
@@ -2130,13 +2130,12 @@ footer {
       padding-left: 5px;
       width: 90%; }
     .project .card-block .profiel-pic-container {
-      width: 80px;
-      height: 80px; }
-      .project .card-block .profiel-pic-container .title-name {
-        width: 80%; }
+      width: 82px;
+      height: 82px; }
       .project .card-block .profiel-pic-container img {
         width: 100%; }
-    .project .card-block .maker-data-container {
+    .project .card-block .maker-data-container,
+    .project .card-block .title-name {
       width: 230px; }
   .project .icons-side-project {
     position: relative;
@@ -2162,28 +2161,27 @@ footer {
         font-size: 17px; }
   .project .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #4F4F4F;
-    height: 44px;
+    height: 50px;
     padding: 0px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 23px !important;
     text-align: left;
     width: 100%;
     margin: 0; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #4F4F4F;
     height: 25px;
@@ -2192,7 +2190,6 @@ footer {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 23px !important;
     text-align: left;
     width: 100%;
     margin: 0; }
@@ -2350,7 +2347,7 @@ footer {
   background-color: #00AEEF;
   opacity: 0.6;
   display: none;
-  z-index: 10; }
+  z-index: 9; }
 
 .overlay-portfolio {
   width: 100%;
@@ -2636,10 +2633,10 @@ footer {
       height: 70px; }
     .page-search-content .user-card-search .user-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       min-height: 24px;
       margin-bottom: 2px; }
@@ -2655,10 +2652,10 @@ footer {
         color: #BDBDBD; }
     .page-search-content .user-card-search .profile-tag {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       margin-bottom: 5px;
       height: 38px;
@@ -2746,10 +2743,10 @@ footer {
       margin-bottom: 0; }
     .maker-card .card-block .maker-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       color: #00AEEF; }
     .maker-card .card-block .maker-nickname {
@@ -2887,10 +2884,10 @@ footer {
       height: 100%; }
   .maker-mobile-card .maker-data .maker-name {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #00AEEF; }
   .maker-mobile-card .maker-data .maker-nickname {
@@ -6821,10 +6818,10 @@ img {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         color: #4F4F4F;
         margin-bottom: 5px; }
@@ -6896,10 +6893,10 @@ img {
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         clear: both;
         color: white; }
@@ -6929,10 +6926,10 @@ img {
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       color: #4F4F4F;
       font-size: 19px;
@@ -7500,6 +7497,9 @@ img {
   header nav {
     padding: 20px 5px !important; }
     header nav #MainNav .nav-item {
-      margin-left: 5px !important; } }
+      margin-left: 5px !important; }
+
+  .project .maker-name {
+    margin-top: 5px; } }
 
 /*# sourceMappingURL=style.css.map */

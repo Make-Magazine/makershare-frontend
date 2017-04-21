@@ -96,7 +96,7 @@ body {
     width: 100%;
     background-color: $main-bg;
     position: relative;
-    z-index: 10000;
+    z-index: 12;
     .navbar-brand {
         width: 120px;
         padding: 0px;
@@ -477,7 +477,7 @@ body {
 
 .card-type-blue {
     background-color: $blue;
-    z-index: 9;
+    z-index: 11;
     &::after {
         border-left: 10px solid $blue;
     }
