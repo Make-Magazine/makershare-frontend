@@ -190,8 +190,6 @@
         }
         .image-container {
             position: relative;                    
-            background: url('../images/placeholder.png') center center;
-            background-size: cover;
             // width: 365px;
             height: 280px; 
             // top: -110px;
@@ -745,14 +743,12 @@
     .maker-name {
         color: $blue;
         margin-bottom: 0;
-        margin-top: 13px;
+        margin-top: 10px;
     }
     .image-top {
         height: 275px;
         background-color: #bbb;
         overflow: hidden;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         position: relative;
         .card-img-top {
             border-radius: 0;
@@ -765,8 +761,6 @@
     .image-top-lg {
         background-color: #bbb;
         overflow: hidden;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         position: relative;
         height: 275px;
         .card-img-top {
@@ -785,28 +779,28 @@
             width: 90%;
         }
         .profiel-pic-container {
-            width: 80px;
-            height: 80px;
-            .title-name {
-                width: 80%;
-            }
+            width: 82px;
+            height: 82px;
+            
             img {
                 width: 100%;
             }
         }
-        .maker-data-container {
+        .maker-data-container,
+        .title-name {
             width: 230px;
         }
     }
     .icons-side-project {
         position: relative;
-        top: -18px;
+        top: -13px;
         height: 40px;
         z-index: 9;
         .project-icon {
             img {
                 width: auto;
-                height: 40px;
+                height: 35px;
+                width: 30px;
                 margin-right: 5px;
             }
         }
@@ -830,13 +824,12 @@
     .card-title {
         @include card-header-font-sm;
         color: $text-color-1;
-        height: 44px;
+        height: 50px;
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        line-height: 23px !important;
         text-align: left;
         width: 100%;
         margin: 0;
@@ -850,7 +843,6 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        line-height: 23px !important;
         text-align: left;
         width: 100%;
         margin: 0;
@@ -1060,7 +1052,7 @@
     background-color: $blue;
     opacity: 0.6;
     display: none;
-    z-index: 10;
+    z-index: 9;
 }
 .overlay-portfolio {
     width: 100%;
@@ -1524,8 +1516,6 @@
         height: 275px;
         overflow: hidden;
         position: relative;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         .card-img-top {
             border-radius: 0;
         }
@@ -1906,8 +1896,6 @@
             // left: -25px;
             margin-bottom: -20px;
             margin-right: -15px;
-            background: url('../images/placeholder.png') center center;
-            background-size: cover;
         }
     }
 
