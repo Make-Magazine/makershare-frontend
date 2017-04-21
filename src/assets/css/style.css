@@ -993,6 +993,75 @@ body {
     .modal-share .modal-footer ul {
       margin: 0px; }
 
+.modal-report {
+  background-color: #F2F2F2; }
+  .modal-report .modal-header {
+    border-bottom: none !important; }
+  .modal-report .modal-body .modal-title {
+    color: #ED1C24; }
+  .modal-report .modal-body textarea::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    text-align: center;
+    color: #DCDCDC;
+    padding-top: 50px; }
+  .modal-report .modal-body textarea::-moz-placeholder {
+    /* Firefox 19+ */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-report .modal-body textarea:-ms-input-placeholder {
+    /* IE 10+ */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-report .modal-body textarea:-moz-placeholder {
+    /* Firefox 18- */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-report .modal-footer {
+    border-top: none !important; }
+    .modal-report .modal-footer ul {
+      margin: 0px; }
+    .modal-report .modal-footer .btn {
+      padding: 12px;
+      width: 140px;
+      background-color: #fff; }
+      .modal-report .modal-footer .btn:hover {
+        cursor: pointer; }
+
+/* feedback form */
+.modal-feedback {
+  background-color: #F2F2F2; }
+  .modal-feedback .modal-header {
+    border-bottom: none !important; }
+  .modal-feedback .modal-body .modal-title {
+    color: #ED1C24; }
+  .modal-feedback .modal-body textarea::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    text-align: center;
+    color: #DCDCDC;
+    padding-top: 50px; }
+  .modal-feedback .modal-body textarea::-moz-placeholder {
+    /* Firefox 19+ */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-feedback .modal-body textarea:-ms-input-placeholder {
+    /* IE 10+ */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-feedback .modal-body textarea:-moz-placeholder {
+    /* Firefox 18- */
+    text-align: center;
+    color: #DCDCDC; }
+  .modal-feedback .modal-footer {
+    border-top: none !important; }
+    .modal-feedback .modal-footer ul {
+      margin: 0px; }
+    .modal-feedback .modal-footer .btn {
+      padding: 12px;
+      width: 140px;
+      background-color: #fff; }
+      .modal-feedback .modal-footer .btn:hover {
+        cursor: pointer; }
+
 #search-box-layer .close-search-layer,
 #search-box-layer .go-search {
   position: absolute;
