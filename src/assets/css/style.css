@@ -27,11 +27,14 @@ header nav {
   header nav #MainNav .nav-item {
     margin-left: 15px; }
     header nav #MainNav .nav-item a {
-      font-size: 15px; }
+      font-size: 1.3em; }
     header nav #MainNav .nav-item .btn {
-      font-size: 12px; }
+      font-size: 1em;
+      padding: 5px 9px; }
     header nav #MainNav .nav-item.button-container-main-1 {
-      height: 34px; }
+      height: 30px;
+      margin-left: 20px;
+      margin-top: 10px; }
   header nav .navbar-toggler {
     border: none;
     top: 5px;
@@ -193,10 +196,10 @@ a:not([href]):not([tabindex]).btn-border {
   color: #333333;
   border: 1px solid #333333;
   font-family: "Messina Sans Regular";
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 400;
   text-transform: none;
-  line-height: 125%;
+  line-height: 130%;
   color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
   a:not([href]):not([tabindex]).btn-border:focus,
@@ -414,11 +417,11 @@ a:not([href]):not([tabindex]).btn-load-more {
     background-color: #fff;
     padding: 10px;
     position: relative;
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 2.6em;
     font-weight: 500;
     text-transform: capitalize;
-    line-height: 105%;
+    line-height: 120%;
     color: #828282;
     color: #4F4F4F;
     min-height: 38px; }
@@ -619,7 +622,7 @@ body {
   width: 100%;
   background-color: #F2F2F2;
   position: relative;
-  z-index: 10; }
+  z-index: 10000; }
   .main-header .navbar-brand {
     width: 120px;
     padding: 0px;
@@ -647,9 +650,9 @@ body {
         height: 30px; }
       .main-header .login-block li.search-icon {
         width: 20px;
-        margin-left: 25px; }
+        margin-left: 15px; }
       .main-header .login-block li.hamburger-menu {
-        margin-left: 25px; }
+        margin-left: 15px; }
         .main-header .login-block li.hamburger-menu a img {
           width: 40px; }
         .main-header .login-block li.hamburger-menu .nav-link {
@@ -707,8 +710,10 @@ body {
         width: 30px; }
       .main-header .logged-in li.search-icon img {
         width: 23px; }
-      .main-header .logged-in li.min-user-img img {
-        width: 27px; }
+      .main-header .logged-in li.min-user-img {
+        margin-left: 10px; }
+        .main-header .logged-in li.min-user-img img {
+          width: 27px; }
 
 .msg {
   background-color: #BDBDBD;
@@ -899,11 +904,7 @@ body {
   position: absolute;
   z-index: 1000;
   top: 14px;
-  left: -2px;
-  box-shadow: 0px 2px 6px #333333;
-  -moz-box-shadow: 0px 2px 6px #333333;
-  -webkit-box-shadow: 0px 2px 6px #333333;
-  box-shadow: 0px 2px 6px #333333; }
+  left: 0; }
   .card-type-grey-2 p,
   .card-type-blue p,
   .card-type-grey p {
@@ -929,17 +930,20 @@ body {
     color: #fff; }
 
 .card-type-grey {
-  background-color: #333333; }
+  background-color: #333333;
+  z-index: 9; }
   .card-type-grey::after {
     border-left: 10px solid #333333; }
 
 .card-type-blue {
-  background-color: #00AEEF; }
+  background-color: #00AEEF;
+  z-index: 9; }
   .card-type-blue::after {
     border-left: 10px solid #00AEEF; }
 
 .card-type-grey-2 {
-  background-color: #4F4F4F; }
+  background-color: #4F4F4F;
+  z-index: 9; }
   .card-type-grey-2::after {
     border-left: 10px solid #4F4F4F; }
 
@@ -953,10 +957,7 @@ body {
   position: absolute;
   z-index: 10000;
   top: 14px;
-  left: -2px;
-  box-shadow: 0px 2px 6px #333333;
-  -moz-box-shadow: 0px 2px 6px #333333;
-  -webkit-box-shadow: 0px 2px 6px #333333;
+  left: 0;
   box-shadow: 0px 2px 6px #333333; }
   .card-type-user-small p {
     margin: 0px; }
@@ -977,7 +978,8 @@ body {
     color: #fff; }
 
 .card-type-user-small {
-  background-color: #4F4F4F; }
+  background-color: #4F4F4F;
+  z-index: 9; }
   .card-type-user-small::after {
     border-left: 10px solid #4F4F4F; }
 
@@ -1171,8 +1173,8 @@ footer {
 .user-card .profile-pic-container .message-btn {
   padding: 0px; }
 .user-card .user-name {
-  font-family: "Messina Modern Bold";
-  font-size: 1.5em;
+  font-family: "Messina Modern Regular";
+  font-size: 1.2em;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 100%;
@@ -1190,8 +1192,8 @@ footer {
     text-decoration: none;
     color: #BDBDBD; }
 .user-card .profile-tag {
-  font-family: "Messina Modern Bold";
-  font-size: 1.5em;
+  font-family: "Messina Modern Regular";
+  font-size: 1.2em;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 100%;
@@ -1262,8 +1264,8 @@ footer {
   .user-card-small .profile-pic-container .message-btn {
     padding: 0px; }
 .user-card-small .user-name {
-  font-family: "Messina Modern Bold";
-  font-size: 1.5em;
+  font-family: "Messina Modern Regular";
+  font-size: 1.2em;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 100%;
@@ -1280,8 +1282,8 @@ footer {
     text-decoration: none;
     color: #BDBDBD; }
 .user-card-small .profile-tag {
-  font-family: "Messina Modern Bold";
-  font-size: 1.5em;
+  font-family: "Messina Modern Regular";
+  font-size: 1.2em;
   font-weight: 400;
   text-transform: capitalize;
   line-height: 100%;
@@ -1668,8 +1670,8 @@ footer {
       margin-top: 16px;
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
-        font-family: "Messina Modern Bold";
-        font-size: 1.5em;
+        font-family: "Messina Modern Regular";
+        font-size: 1.2em;
         font-weight: 400;
         text-transform: capitalize;
         line-height: 100%;
@@ -2096,7 +2098,6 @@ footer {
     border-radius: 0;
     padding: 0;
     margin: 0 auto 30px;
-    border: 1px solid #00AEEF;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
@@ -2147,7 +2148,7 @@ footer {
     position: relative;
     top: -18px;
     height: 40px;
-    z-index: 105; }
+    z-index: 9; }
     .project .icons-side-project .project-icon img {
       width: auto;
       height: 40px;
@@ -2166,8 +2167,8 @@ footer {
         margin-right: 4px;
         font-size: 17px; }
   .project .card-title {
-    font-family: "Messina Modern Bold";
-    font-size: 1.5em;
+    font-family: "Messina Modern Regular";
+    font-size: 1.2em;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -2184,8 +2185,8 @@ footer {
     width: 100%;
     margin: 0; }
   .project .card-title-showcase {
-    font-family: "Messina Modern Bold";
-    font-size: 1.5em;
+    font-family: "Messina Modern Regular";
+    font-size: 1.2em;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -2226,22 +2227,24 @@ footer {
   .project .card-stats {
     padding: 2px;
     color: #BDBDBD; }
-    .project .card-stats ul li {
-      width: 80px;
-      font-family: "Messina Sans Regular";
-      font-size: 0.9em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 100%;
-      color: #828282; }
-      .project .card-stats ul li img {
-        margin-right: 6px; }
-        .project .card-stats ul li img.project-likes {
-          width: 12px; }
-        .project .card-stats ul li img.project-views {
-          width: 20px; }
-      .project .card-stats ul li span {
-        margin: 0px; }
+    .project .card-stats ul {
+      width: 75%; }
+      .project .card-stats ul li {
+        width: 80px;
+        font-family: "Messina Sans Regular";
+        font-size: 0.9em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 100%;
+        color: #828282; }
+        .project .card-stats ul li img {
+          margin-right: 6px; }
+          .project .card-stats ul li img.project-likes {
+            width: 12px; }
+          .project .card-stats ul li img.project-views {
+            width: 20px; }
+        .project .card-stats ul li span {
+          margin: 0px; }
 
 .project-mobile-card {
   position: relative;
@@ -2269,7 +2272,7 @@ footer {
       width: 100%;
       height: 100%; }
   .project-mobile-card .data-container .card-title {
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 1.5em;
     font-weight: 400;
     text-transform: none;
@@ -2399,172 +2402,96 @@ footer {
     width: 80%;
     margin: 0 auto; }
 
-#add-bio-modal h4,
-#add-interests-modal h4,
-#add-makerspace-modal h4,
-#add-social-modal h4,
-#add-description-modal h4,
-#add-maker-starting-modal h4 {
-  font-weight: normal;
-  color: #000;
-  font-size: 18px; }
-#add-bio-modal .modal-header,
-#add-bio-modal .modal-footer,
-#add-interests-modal .modal-header,
-#add-interests-modal .modal-footer,
-#add-makerspace-modal .modal-header,
-#add-makerspace-modal .modal-footer,
-#add-social-modal .modal-header,
-#add-social-modal .modal-footer,
-#add-description-modal .modal-header,
-#add-description-modal .modal-footer,
-#add-maker-starting-modal .modal-header,
-#add-maker-starting-modal .modal-footer {
-  border-color: #979797;
-  border-width: 3px; }
-#add-bio-modal .modal-content,
-#add-interests-modal .modal-content,
-#add-makerspace-modal .modal-content,
-#add-social-modal .modal-content,
-#add-description-modal .modal-content,
-#add-maker-starting-modal .modal-content {
-  border: 3px solid #979797; }
-  #add-bio-modal .modal-content li:first-of-type h4,
-  #add-interests-modal .modal-content li:first-of-type h4,
-  #add-makerspace-modal .modal-content li:first-of-type h4,
-  #add-social-modal .modal-content li:first-of-type h4,
-  #add-description-modal .modal-content li:first-of-type h4,
-  #add-maker-starting-modal .modal-content li:first-of-type h4 {
-    margin-left: 82%;
-    font-size: 14px; }
-  #add-bio-modal .modal-content label,
-  #add-interests-modal .modal-content label,
-  #add-makerspace-modal .modal-content label,
-  #add-social-modal .modal-content label,
-  #add-description-modal .modal-content label,
-  #add-maker-starting-modal .modal-content label {
-    width: 30%;
-    font-size: 15px; }
-  #add-bio-modal .modal-content input[type="checkbox"],
-  #add-interests-modal .modal-content input[type="checkbox"],
-  #add-makerspace-modal .modal-content input[type="checkbox"],
-  #add-social-modal .modal-content input[type="checkbox"],
-  #add-description-modal .modal-content input[type="checkbox"],
-  #add-maker-starting-modal .modal-content input[type="checkbox"] {
-    margin-left: 30px; }
-  #add-bio-modal .modal-content input[type="text"],
-  #add-interests-modal .modal-content input[type="text"],
-  #add-makerspace-modal .modal-content input[type="text"],
-  #add-social-modal .modal-content input[type="text"],
-  #add-description-modal .modal-content input[type="text"],
-  #add-maker-starting-modal .modal-content input[type="text"] {
-    width: 50%;
-    margin: 0;
-    padding: 3px;
-    font-size: 15px; }
-  #add-bio-modal .modal-content i,
-  #add-interests-modal .modal-content i,
-  #add-makerspace-modal .modal-content i,
-  #add-social-modal .modal-content i,
-  #add-description-modal .modal-content i,
-  #add-maker-starting-modal .modal-content i {
-    width: 25px; }
-  #add-bio-modal .modal-content p,
-  #add-interests-modal .modal-content p,
-  #add-makerspace-modal .modal-content p,
-  #add-social-modal .modal-content p,
-  #add-description-modal .modal-content p,
-  #add-maker-starting-modal .modal-content p {
-    margin-top: 5px;
-    font-size: 15px; }
-#add-bio-modal .modal-footer,
-#add-interests-modal .modal-footer,
-#add-makerspace-modal .modal-footer,
-#add-social-modal .modal-footer,
-#add-description-modal .modal-footer,
-#add-maker-starting-modal .modal-footer {
-  text-align: center; }
-  #add-bio-modal .modal-footer .btn-light-grey,
-  #add-interests-modal .modal-footer .btn-light-grey,
-  #add-makerspace-modal .modal-footer .btn-light-grey,
-  #add-social-modal .modal-footer .btn-light-grey,
-  #add-description-modal .modal-footer .btn-light-grey,
-  #add-maker-starting-modal .modal-footer .btn-light-grey {
-    border-radius: 4px; }
-#add-bio-modal .modal-footer .close-btn,
-#add-interests-modal .modal-footer .close-btn,
-#add-makerspace-modal .modal-footer .close-btn,
-#add-social-modal .modal-footer .close-btn,
-#add-description-modal .modal-footer .close-btn,
-#add-maker-starting-modal .modal-footer .close-btn {
-  border: 1px solid #444; }
-  #add-bio-modal .modal-footer .close-btn:hover,
-  #add-interests-modal .modal-footer .close-btn:hover,
-  #add-makerspace-modal .modal-footer .close-btn:hover,
-  #add-social-modal .modal-footer .close-btn:hover,
-  #add-description-modal .modal-footer .close-btn:hover,
-  #add-maker-starting-modal .modal-footer .close-btn:hover {
-    cursor: pointer; }
-#add-bio-modal .modal-footer .done-btn,
-#add-interests-modal .modal-footer .done-btn,
-#add-makerspace-modal .modal-footer .done-btn,
-#add-social-modal .modal-footer .done-btn,
-#add-description-modal .modal-footer .done-btn,
-#add-maker-starting-modal .modal-footer .done-btn {
-  border: 1px solid #444; }
-  #add-bio-modal .modal-footer .done-btn:hover,
-  #add-interests-modal .modal-footer .done-btn:hover,
-  #add-makerspace-modal .modal-footer .done-btn:hover,
-  #add-social-modal .modal-footer .done-btn:hover,
-  #add-description-modal .modal-footer .done-btn:hover,
-  #add-maker-starting-modal .modal-footer .done-btn:hover {
-    cursor: pointer; }
-
-#add-interests-modal .modal-content input[type="text"] {
-  width: 100% !important;
-  margin-top: 17px;
-  font-size: 15px; }
-
-#add-makerspace-modal .modal-content .makerspace {
-  width: 60%;
-  margin: auto; }
-  #add-makerspace-modal .modal-content .makerspace label {
-    width: 100%; }
-  #add-makerspace-modal .modal-content .makerspace a.btn-white {
-    padding: 5px;
-    margin-top: 10px;
-    font-size: 12px;
-    border-radius: 4px; }
-  #add-makerspace-modal .modal-content .makerspace label {
-    margin-top: 5px;
-    width: 100%; }
-  #add-makerspace-modal .modal-content .makerspace input[type="text"] {
-    width: 100%;
-    font-size: 15px; }
-  #add-makerspace-modal .modal-content .makerspace .maker-group {
-    margin-bottom: 20px; }
-  #add-makerspace-modal .modal-content .makerspace i {
-    font-size: 15px; }
-
-#add-bio-modal {
-  resize: none; }
-  #add-bio-modal textarea {
-    width: 100%;
-    min-height: 170px;
-    overflow: visible;
-    font-size: 15px; }
-
-#edit-info-modal label {
-  display: block; }
-#edit-info-modal #edit-nickname {
-  width: 50%; }
-#edit-info-modal #edit-city {
-  width: 30%;
-  float: left; }
-#edit-info-modal #edit-state {
-  width: 10%;
-  margin-left: 5%;
-  float: left; }
+/* modal edit profile forms */
+.modal-content .profile-modal {
+  background-color: #F2F2F2; }
+  .modal-content .profile-modal .modal-header {
+    border-bottom: none !important;
+    padding: 8px; }
+  .modal-content .profile-modal .modal-body {
+    min-height: 460px; }
+    .modal-content .profile-modal .modal-body input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body input:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center; }
+    .modal-content .profile-modal .modal-body #description-textarea-info::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-info:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 22px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #description-textarea-bio:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #start-making-textarea:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      padding-top: 80px; }
+    .modal-content .profile-modal .modal-body #socaial .form-group {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #socaial .radio-breferred {
+      position: absolute;
+      top: 13px;
+      right: 8px; }
+    .modal-content .profile-modal .modal-body #maker-spaces .makerspace-contene {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #maker-spaces .maker-space-remove {
+      position: absolute;
+      right: 1px;
+      top: 1px; }
+    .modal-content .profile-modal .modal-body #links .form-group {
+      position: relative; }
+    .modal-content .profile-modal .modal-body #links .radio-breferred {
+      position: absolute;
+      top: 13px;
+      right: 21px; }
+    .modal-content .profile-modal .modal-body #links .form-item {
+      padding: 0px; }
+  .modal-content .profile-modal .modal-footer {
+    border-top: none !important; }
 
 #edit-cover-modal .modal-dialog {
   width: 60%; }
@@ -2714,8 +2641,8 @@ footer {
       width: 70px;
       height: 70px; }
     .page-search-content .user-card-search .user-name {
-      font-family: "Messina Modern Bold";
-      font-size: 1.5em;
+      font-family: "Messina Modern Regular";
+      font-size: 1.2em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -2733,8 +2660,8 @@ footer {
         text-decoration: none;
         color: #BDBDBD; }
     .page-search-content .user-card-search .profile-tag {
-      font-family: "Messina Modern Bold";
-      font-size: 1.5em;
+      font-family: "Messina Modern Regular";
+      font-size: 1.2em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -2826,15 +2753,15 @@ footer {
     .maker-card .card-block p {
       margin-bottom: 0; }
     .maker-card .card-block .maker-name {
-      font-family: "Messina Modern Bold";
-      font-size: 1.5em;
+      font-family: "Messina Modern Regular";
+      font-size: 1.2em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
       color: #828282;
       color: #00AEEF; }
     .maker-card .card-block .maker-nickname {
-      font-family: "Messina Modern Regular";
+      font-family: "Messina Sans Regular";
       font-size: 0.95em;
       font-weight: 400;
       text-transform: none;
@@ -2843,7 +2770,7 @@ footer {
       margin-bottom: 2px; }
     .maker-card .card-block .maker-city {
       font-family: "Messina Sans SemiBold";
-      font-size: 0.9em;
+      font-size: 0.8em;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -2883,7 +2810,7 @@ footer {
         margin-right: 4px;
         font-size: 17px; }
   .maker-card .card-title {
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 1.5em;
     font-weight: 400;
     text-transform: none;
@@ -2967,8 +2894,8 @@ footer {
       width: 100%;
       height: 100%; }
   .maker-mobile-card .maker-data .maker-name {
-    font-family: "Messina Modern Bold";
-    font-size: 1.5em;
+    font-family: "Messina Modern Regular";
+    font-size: 1.2em;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -2984,7 +2911,7 @@ footer {
     margin-bottom: 2px; }
   .maker-mobile-card .maker-data .maker-city {
     font-family: "Messina Sans SemiBold";
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -3051,7 +2978,7 @@ footer {
     .mobile-profile-container .maker-mobile-card .card-block p {
       margin-bottom: 0; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-name {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 1.5em;
       font-weight: 400;
       text-transform: none;
@@ -3067,7 +2994,7 @@ footer {
       margin-bottom: 2px; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
       font-family: "Messina Sans SemiBold";
-      font-size: 0.9em;
+      font-size: 0.8em;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3104,7 +3031,7 @@ footer {
         margin-right: 4px;
         font-size: 17px; }
   .mobile-profile-container .maker-mobile-card .card-title {
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 1.5em;
     font-weight: 400;
     text-transform: none;
@@ -3290,7 +3217,6 @@ footer {
     line-height: 100%;
     color: #828282;
     text-transform: none;
-    font-size: 14px;
     display: inline-block;
     min-height: 16px;
     margin-bottom: 10px; }
@@ -3305,23 +3231,18 @@ footer {
       align-self: end; }
       .challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
         background-color: #BDBDBD; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-      font-size: 14px; }
-      .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
-        padding-left: 10px; }
-      .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-        padding-right: 10px;
-        border-right: 1px solid white; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+      padding-left: 10px; }
+    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+      padding-right: 10px;
+      border-right: 1px solid white; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
       font-weight: bold;
-      font-size: 16px;
       padding-right: 5px; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
       color: white; }
     .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
       color: #00AEEF; }
-    .challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
-      font-size: 14px; }
 
 .challenge-header {
   margin-bottom: 25px;
@@ -3405,11 +3326,11 @@ footer {
     .page-challenge .challenge-card .card-container .card {
       height: 100%; }
     .page-challenge .challenge-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3431,10 +3352,10 @@ footer {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       height: 85px;
       color: white; }
@@ -3444,7 +3365,6 @@ footer {
       background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
-      font-size: 13px;
       margin-left: 10px; }
 
 .page-challenge-summary {
@@ -3497,11 +3417,11 @@ footer {
     position: relative;
     height: 100%; }
     .page-search-content .challenge-card .card-container .card .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -3509,7 +3429,6 @@ footer {
       overflow: hidden;
       height: 92px;
       color: white;
-      font-size: 3em !important;
       margin-bottom: 30px; }
     .page-search-content .challenge-card .card-container .card .card-status {
       font-family: "Messina Sans Regular";
@@ -3528,7 +3447,6 @@ footer {
       line-height: 100%;
       color: #828282;
       text-transform: none;
-      font-size: 14px;
       display: inline-block;
       min-height: 16px;
       margin-bottom: 10px; }
@@ -3560,7 +3478,6 @@ footer {
       background-color: #aaaaaa;
       padding: 3px 15px;
       border-radius: 20px;
-      font-size: 13px;
       margin-left: 10px; }
 
 .front .front-challenge-card {
@@ -3569,6 +3486,7 @@ footer {
   cursor: pointer;
   background-color: #333;
   height: 460px;
+  margin-bottom: 30px;
   -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
@@ -3576,22 +3494,18 @@ footer {
     color: white; }
   .front .front-challenge-card a {
     color: white; }
-  .front .front-challenge-card p,
-  .front .front-challenge-card h3 {
-    color: white; }
   .front .front-challenge-card .card {
     background-color: transparent;
     border: none; }
     .front .front-challenge-card .card .card-title {
-      font-family: "Messina Modern Bold";
-      font-size: 2.6em;
-      font-weight: 500;
+      font-family: "Messina Modern Regular";
+      font-size: 2em;
+      font-weight: 400;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 100%;
       color: #828282;
       color: #fff;
-      max-height: 145px;
-      max-height: 133px;
+      max-height: 95px;
       overflow: hidden; }
     .front .front-challenge-card .card .card-type {
       top: 25px;
@@ -3616,28 +3530,27 @@ footer {
   .front .front-challenge-card .content-container {
     padding-bottom: 30px; }
   .front .front-challenge-card .card-container .card-partership {
-    font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-family: "Messina Sans SemiBold";
+    font-size: 0.8em;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
-    font-size: 14px;
     display: inline-block;
     min-height: 16px;
     margin: 16px 0px 16px 0px; }
     .front .front-challenge-card .card-container .card-partership p {
-      margin-bottom: 0px;
-      color: #828282; }
+      color: #BDBDBD;
+      margin-bottom: 0px; }
   .front .front-challenge-card .card-container .card-description h4 {
     font-weight: bold; }
   .front .front-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 7;
@@ -3653,23 +3566,24 @@ footer {
         background-color: #BDBDBD; }
       .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
         padding: 15px 20px; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-      font-size: 12px;
+    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 {
+      font-family: "Messina Sans SemiBold";
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
       color: #828282; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
-        padding-left: 10px; }
-    .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-      line-height: 16px;
-      color: #828282; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-        font-size: 12px;
-        padding-right: 5px; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
-        color: white; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-        color: #00AEEF; }
-      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
-        font-size: 12px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
+        color: #828282; }
+        .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+          padding-left: 10px; }
+      .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
+        line-height: 16px;
+        color: #828282; }
+        .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+          padding-right: 5px; }
+        .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+          color: #00AEEF; }
 .front .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
@@ -3731,11 +3645,11 @@ footer {
       .page-search-content .search-challenge-card .card .tablet-type-sponser .card-type-grey::after {
         border-left: 10px solid #828282; }
     .page-search-content .search-challenge-card .card .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       color: #fff; }
     .page-search-content .search-challenge-card .card .card-type {
@@ -3769,7 +3683,6 @@ footer {
     line-height: 100%;
     color: #828282;
     text-transform: none;
-    font-size: 14px;
     display: inline-block;
     min-height: 16px;
     margin: 12px 0px 12px 0px; }
@@ -3780,10 +3693,10 @@ footer {
     font-weight: bold; }
   .page-search-content .search-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -3800,7 +3713,6 @@ footer {
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
         padding: 15px 20px; }
     .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
-      font-size: 12px;
       color: #828282; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
         padding-left: 10px; }
@@ -3808,14 +3720,11 @@ footer {
       line-height: 16px;
       color: #828282; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
-        font-size: 12px;
         padding-right: 5px; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status {
         color: white; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
         color: #00AEEF; }
-      .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .challenge-end-date {
-        font-size: 12px; }
 .page-search-content .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
@@ -4478,11 +4387,11 @@ header.showcase-project .next {
           text-decoration: none;
           cursor: auto; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
-        font-family: "Messina Modern Bold";
+        font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
         text-transform: capitalize;
-        line-height: 105%;
+        line-height: 120%;
         color: #828282;
         font-size: 38px;
         display: -webkit-box;
@@ -4494,10 +4403,10 @@ header.showcase-project .next {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         margin-bottom: 10px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
@@ -4620,10 +4529,10 @@ header.showcase-project .next {
     position: relative; }
   .learn-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     text-transform: none;
     font-size: 14px;
@@ -4677,10 +4586,10 @@ header.showcase-project .next {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular";
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 400;
     text-transform: none;
-    line-height: 125%;
+    line-height: 130%;
     color: #828282;
     width: 100%;
     margin: auto; }
@@ -4722,11 +4631,11 @@ header.showcase-project .next {
     color: #fff;
     position: relative; }
     .page-learn .learn-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -4749,10 +4658,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .page-learn .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -4822,11 +4731,11 @@ header.showcase-project .next {
     .front .learn-card .card-container .card-partership {
       margin: 16px 0px 16px 0px; }
     .front .learn-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
-      font-size: 2.6em;
-      font-weight: 500;
-      text-transform: capitalize;
-      line-height: 105%;
+      font-family: "Messina Modern Regular";
+      font-size: 1.5em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
     .front .learn-card .card-container .card-status {
@@ -4842,10 +4751,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .front .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 7;
@@ -4914,11 +4823,11 @@ header.showcase-project .next {
       .search-learn-card .learn-card .card-container .card-partership p {
         margin-bottom: 0px; }
     .search-learn-card .learn-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
-      font-size: 2.6em;
-      font-weight: 500;
+      font-family: "Messina Modern Regular";
+      font-size: 2em;
+      font-weight: 400;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 100%;
       color: #828282;
       color: #4F4F4F; }
     .search-learn-card .learn-card .card-container .card-status {
@@ -4934,10 +4843,10 @@ header.showcase-project .next {
       font-weight: bold; }
     .search-learn-card .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -4980,10 +4889,10 @@ header.showcase-project .next {
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       width: 85%;
       margin: auto; }
@@ -5053,11 +4962,11 @@ header.showcase-project .next {
           margin: 0px;
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
-        font-family: "Messina Modern Bold";
+        font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
         text-transform: capitalize;
-        line-height: 105%;
+        line-height: 120%;
         color: #828282;
         color: #333333;
         cursor: pointer; }
@@ -5252,17 +5161,17 @@ img {
           margin: 0px;
           color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
-        font-family: "Messina Modern Bold";
+        font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
         text-transform: capitalize;
-        line-height: 105%;
+        line-height: 120%;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        max-height: 176px;
+        max-height: 212px;
         color: #333333;
         margin-bottom: 20px;
         line-height: 120% !important; }
@@ -5279,10 +5188,10 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 5;
@@ -5378,11 +5287,11 @@ img {
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card {
           height: 100%; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-title {
-          font-family: "Messina Modern Bold";
+          font-family: "Messina Modern Regular";
           font-size: 2.6em;
           font-weight: 500;
           text-transform: capitalize;
-          line-height: 105%;
+          line-height: 120%;
           color: #828282;
           display: -webkit-box;
           -webkit-line-clamp: 4;
@@ -5405,10 +5314,10 @@ img {
           font-weight: bold; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-description p {
           font-family: "Messina Sans Regular";
-          font-size: 1em;
+          font-size: 0.9em;
           font-weight: 400;
           text-transform: none;
-          line-height: 125%;
+          line-height: 130%;
           color: #828282;
           display: -webkit-box;
           -webkit-line-clamp: 5;
@@ -5643,7 +5552,7 @@ img {
   .page-create-project-why .your-story .projectName {
     width: 100%; }
     .page-create-project-why .your-story .projectName label {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 1.5em;
       font-weight: 400;
       text-transform: none;
@@ -6218,11 +6127,11 @@ img {
       right: -49px;
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       font-size: 38px;
       color: white; }
@@ -6239,10 +6148,10 @@ img {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       min-height: 116px;
       color: white; }
@@ -6523,11 +6432,11 @@ img {
       .page-workshop-individual .learn-card .card-container .learn-type-bagde p {
         margin: 0px; }
     .page-workshop-individual .learn-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
       text-transform: capitalize;
-      line-height: 105%;
+      line-height: 120%;
       color: #828282;
       font-size: 38px;
       display: -webkit-box;
@@ -6549,10 +6458,10 @@ img {
       font-weight: bold; }
     .page-workshop-individual .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -6901,10 +6810,10 @@ img {
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular";
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
       text-transform: none;
-      line-height: 125%;
+      line-height: 130%;
       color: #828282;
       text-align: center; }
 
@@ -6929,8 +6838,8 @@ img {
       .total-result .project-result .projects-item .card-block {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
-        font-family: "Messina Modern Bold";
-        font-size: 1.5em;
+        font-family: "Messina Modern Regular";
+        font-size: 1.2em;
         font-weight: 400;
         text-transform: capitalize;
         line-height: 100%;
@@ -6982,10 +6891,10 @@ img {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
         font-family: "Messina Sans Regular";
-        font-size: 1em;
+        font-size: 0.9em;
         font-weight: 400;
         text-transform: none;
-        line-height: 125%;
+        line-height: 130%;
         color: #828282;
         color: #BDBDBD !important; }
         .total-result .challenge-item .content-bottom .content-side .sponser-name p {
@@ -7004,8 +6913,8 @@ img {
             height: 80%;
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
-        font-family: "Messina Modern Bold";
-        font-size: 1.5em;
+        font-family: "Messina Modern Regular";
+        font-size: 1.2em;
         font-weight: 400;
         text-transform: capitalize;
         line-height: 100%;
@@ -7037,8 +6946,8 @@ img {
       clear: both;
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
-      font-family: "Messina Modern Bold";
-      font-size: 1.5em;
+      font-family: "Messina Modern Regular";
+      font-size: 1.2em;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -7065,7 +6974,7 @@ img {
     .total-result .makers-item .content-bottom .like-view {
       margin-bottom: 0px; }
   .total-result .results-header .result-title span {
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 1.5em;
     font-weight: 400;
     text-transform: none;
@@ -7440,6 +7349,9 @@ img {
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
       display: none; }
 
+  .project .card-stats ul {
+    width: 50%; }
+
   .profile-container .maker-card.project {
     margin-top: 20px; }
     .profile-container .maker-card.project .card-block {
@@ -7495,9 +7407,6 @@ img {
   .main-header .navbar-brand {
     width: 100px; }
 
-  .main-header .login-block li {
-    margin-left: 0px !important; }
-
   .main-header .login-block li .btn {
     padding: 0px; } }
 @media only screen and (max-width: 767px) {
@@ -7515,7 +7424,7 @@ img {
     .showcase-card-backlayer-home .showcase-card {
       height: 250px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
-        font-family: "Messina Modern Bold";
+        font-family: "Messina Modern Regular";
         font-size: 1.5em;
         font-weight: 400;
         text-transform: none;
@@ -7528,11 +7437,10 @@ img {
         height: 58px; }
 
   .front .learn-card .image-container {
-    margin: 0 30px 0 15px;
     max-height: 160px;
     max-width: 520px; }
   .front .learn-card .card-container .card-title {
-    font-family: "Messina Modern Bold";
+    font-family: "Messina Modern Regular";
     font-size: 1.5em;
     font-weight: 400;
     text-transform: none;
@@ -7562,7 +7470,7 @@ img {
       background: url("../images/placeholder.png") center center;
       background-size: cover; }
     .front .front-challenge-card .card-container .card-title {
-      font-family: "Messina Modern Bold";
+      font-family: "Messina Modern Regular";
       font-size: 1.5em;
       font-weight: 400;
       text-transform: none;
@@ -7590,7 +7498,7 @@ img {
     .front .front-challenge-card .challenge-card-footer-2 {
       margin-bottom: 5px;
       font-family: "Messina Sans SemiBold";
-      font-size: 0.9em;
+      font-size: 0.8em;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -7605,10 +7513,10 @@ img {
 
   .project-home .image-top {
     width: 325px; } }
+@media only screen and (min-width: 992px) {
+  .modal-lg {
+    max-width: 1110px; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .main-header .login-block li {
-    margin-left: 0px !important; }
-
   header nav {
     padding: 20px 5px !important; }
     header nav #MainNav .nav-item {

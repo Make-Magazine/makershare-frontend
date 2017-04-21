@@ -92,6 +92,13 @@
             }
         }
     }
+    .project { 
+        .card-stats {
+            ul {
+                width: 50%;
+            }
+        }
+    }
     .profile-container {
         .maker-card.project {
             margin-top: 20px;
@@ -197,7 +204,6 @@
     .main-header {
         .login-block {
             li {
-                margin-left: 0px !important;
             }
         }
     }
@@ -284,7 +290,6 @@
 		.front {
 			.learn-card {
                 .image-container {
-                    margin:0 30px 0 15px;
                     max-height: 160px;
                     max-width: 520px;
                 }
@@ -374,13 +379,16 @@
      }
 }
 
-@media only screen and (max-width: 991px) {}
+@media only screen and (min-width: 992px) {
+    .modal-lg {
+        max-width: 1110px;
+    }
+}
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .main-header {
         .login-block {
             li {
-                margin-left: 0px !important;
             }
         }
     }
