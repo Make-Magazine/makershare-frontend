@@ -6,6 +6,10 @@ import { ViewService } from '../../../../d7services/view/view.service';
   templateUrl: './challenge-enter.component.html',
 })
 export class ChallengeEnterComponent implements OnInit {
+  @Input()countEntries;
+    pages: number = 0;
+hideloadmoreentries = false;
+  page_arg;
   challenges = [];
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -15,9 +19,17 @@ export class ChallengeEnterComponent implements OnInit {
     this.getChallengeEntered();
   }
   getChallengeEntered() {
+       if (this.pages >= 0) {
+      this.page_arg =
+        ['page', this.pages];
+    }
+    if (this.pages == 0) {
+      this.challenges = [];
+    }
     // get Maker Challenge entered  from a view
-    this.viewService.getView('maker-challenge-entered').subscribe(res => {
-      this.challenges = res;
+    this.viewService.getView('maker-challenge-entered',[this.page_arg]).subscribe(res => {
+      this.challenges = this.challenges.concat(res);
+      this.loadMoreVisibilty();
     }, err => {
 
     });
@@ -47,4 +59,22 @@ export class ChallengeEnterComponent implements OnInit {
     // });
 
   }
+   /* function load more  */
+  loadMoreEntries() {
+    this.pages++;
+    this.getChallengeEntered();
+  }
+  /* end function load more  */
+    // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    if (this.countEntries == this.challenges.length) {
+
+      this.hideloadmoreentries = true;
+
+    } else if (this.countEntries > this.challenges.length) {
+      this.hideloadmoreentries = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 }

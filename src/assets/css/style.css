@@ -622,7 +622,7 @@ body {
   width: 100%;
   background-color: #F2F2F2;
   position: relative;
-  z-index: 10000; }
+  z-index: 12; }
   .main-header .navbar-brand {
     width: 120px;
     padding: 0px;
@@ -937,7 +937,7 @@ body {
 
 .card-type-blue {
   background-color: #00AEEF;
-  z-index: 9; }
+  z-index: 11; }
   .card-type-blue::after {
     border-left: 10px solid #00AEEF; }
 
@@ -992,6 +992,19 @@ body {
     border-top: none !important; }
     .modal-share .modal-footer ul {
       margin: 0px; }
+
+#search-box-layer .close-search-layer,
+#search-box-layer .go-search {
+  position: absolute;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer; }
+#search-box-layer .close-search-layer {
+  right: 15px;
+  top: 15px; }
+#search-box-layer .go-search {
+  top: 7px;
+  right: -40px; }
 
 .front {
   background-color: #F2F2F2; }
@@ -1184,10 +1197,10 @@ footer {
   padding: 0px; }
 .user-card .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   min-height: 24px;
   margin-bottom: 2px; }
@@ -1203,10 +1216,10 @@ footer {
     color: #BDBDBD; }
 .user-card .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   line-height: 17px;
@@ -1275,10 +1288,10 @@ footer {
     padding: 0px; }
 .user-card-small .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
   .user-card-small .user-name a {
@@ -1293,10 +1306,10 @@ footer {
     color: #BDBDBD; }
 .user-card-small .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 500;
   text-transform: capitalize;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   height: 38px;
@@ -1622,9 +1635,9 @@ footer {
     font-size: 12px;
     margin-bottom: 20px;
     position: relative;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -1638,8 +1651,6 @@ footer {
       margin-top: 10px; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
-      background: url("../images/placeholder.png") center center;
-      background-size: cover;
       height: 280px;
       overflow: hidden; }
       .profile-sidebar .profile-container .image-container img {
@@ -1681,10 +1692,10 @@ footer {
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         color: #333333; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
@@ -2159,13 +2170,11 @@ footer {
   .project .maker-name {
     color: #00AEEF;
     margin-bottom: 0;
-    margin-top: 13px; }
+    margin-top: 10px; }
   .project .image-top {
     height: 275px;
     background-color: #bbb;
     overflow: hidden;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover;
     position: relative; }
     .project .image-top .card-img-top {
       border-radius: 0; }
@@ -2175,8 +2184,6 @@ footer {
   .project .image-top-lg {
     background-color: #bbb;
     overflow: hidden;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover;
     position: relative;
     height: 275px; }
     .project .image-top-lg .card-img-top {
@@ -2191,22 +2198,22 @@ footer {
       padding-left: 5px;
       width: 90%; }
     .project .card-block .profiel-pic-container {
-      width: 80px;
-      height: 80px; }
-      .project .card-block .profiel-pic-container .title-name {
-        width: 80%; }
+      width: 82px;
+      height: 82px; }
       .project .card-block .profiel-pic-container img {
         width: 100%; }
-    .project .card-block .maker-data-container {
+    .project .card-block .maker-data-container,
+    .project .card-block .title-name {
       width: 230px; }
   .project .icons-side-project {
     position: relative;
-    top: -18px;
+    top: -13px;
     height: 40px;
     z-index: 9; }
     .project .icons-side-project .project-icon img {
       width: auto;
-      height: 40px;
+      height: 35px;
+      width: 30px;
       margin-right: 5px; }
   .project .icons {
     position: absolute;
@@ -2223,28 +2230,27 @@ footer {
         font-size: 17px; }
   .project .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #4F4F4F;
-    height: 44px;
+    height: 50px;
     padding: 0px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 23px !important;
     text-align: left;
     width: 100%;
     margin: 0; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #4F4F4F;
     height: 25px;
@@ -2253,7 +2259,6 @@ footer {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 23px !important;
     text-align: left;
     width: 100%;
     margin: 0; }
@@ -2411,7 +2416,7 @@ footer {
   background-color: #00AEEF;
   opacity: 0.6;
   display: none;
-  z-index: 10; }
+  z-index: 9; }
 
 .overlay-portfolio {
   width: 100%;
@@ -2757,10 +2762,10 @@ footer {
       height: 70px; }
     .page-search-content .user-card-search .user-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       min-height: 24px;
       margin-bottom: 2px; }
@@ -2776,10 +2781,10 @@ footer {
         color: #BDBDBD; }
     .page-search-content .user-card-search .profile-tag {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       margin-bottom: 5px;
       height: 38px;
@@ -2850,9 +2855,7 @@ footer {
     width: 100%;
     height: 275px;
     overflow: hidden;
-    position: relative;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    position: relative; }
     .maker-card .image-top .card-img-top {
       border-radius: 0; }
     .maker-card .image-top img {
@@ -2869,10 +2872,10 @@ footer {
       margin-bottom: 0; }
     .maker-card .card-block .maker-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       color: #00AEEF; }
     .maker-card .card-block .maker-nickname {
@@ -3010,10 +3013,10 @@ footer {
       height: 100%; }
   .maker-mobile-card .maker-data .maker-name {
     font-family: "Messina Modern Regular";
-    font-size: 1.2em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     text-transform: capitalize;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     color: #00AEEF; }
   .maker-mobile-card .maker-data .maker-nickname {
@@ -3208,9 +3211,7 @@ footer {
     width: 150px;
     height: 120px;
     margin-bottom: -20px;
-    margin-right: -15px;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    margin-right: -15px; }
 
 .edit-buttons {
   width: 25px !important;
@@ -3387,9 +3388,9 @@ footer {
   overflow: hidden;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge .challenge-card .single-challenge {
     padding: 10px; }
     .page-challenge .challenge-card .single-challenge img {
@@ -3401,7 +3402,10 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: auto; }
+    height: auto;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-challenge .challenge-card .image-container img {
       width: 100%;
       height: 100%;
@@ -3491,9 +3495,9 @@ footer {
   padding: 8px 8px 0px 8px;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .challenge-card .single-challenge {
     padding: 10px; }
     .page-search-content .challenge-card .single-challenge img {
@@ -3520,7 +3524,10 @@ footer {
     height: 215px;
     width: 170px;
     top: -22px;
-    left: -22px; }
+    left: -22px;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-search-content .challenge-card .image-container img {
       width: 100%;
       max-width: 100%;
@@ -3602,9 +3609,9 @@ footer {
   background-color: #333;
   height: 460px;
   margin-bottom: 30px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .front-challenge-card span {
     color: white; }
   .front .front-challenge-card a {
@@ -3634,15 +3641,17 @@ footer {
     .front .front-challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
   .front .front-challenge-card .image-container {
-    padding: 0;
+    padding: 0 15px 0 0;
     width: 100%;
     height: 430px;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
   .front .front-challenge-card .content-container {
+    padding-top: 30px;
     padding-bottom: 30px; }
   .front .front-challenge-card .card-container .card-partership {
     font-family: "Messina Sans SemiBold";
@@ -3702,9 +3711,9 @@ footer {
 .front .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
-  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .challenge-card-full.front-challenge-card .card-type {
     z-index: 1000; }
   .front .challenge-card-full.front-challenge-card .card-container {
@@ -3723,7 +3732,10 @@ footer {
     width: 100%;
     height: 460px;
     max-width: 100%;
-    max-height: 100%; }
+    max-height: 100%;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .front .challenge-card-full.front-challenge-card .challenge-card-count span {
     padding-right: 10px;
     border-right: 1px solid #fff; }
@@ -3741,9 +3753,9 @@ footer {
   margin-bottom: 30px;
   background-color: #333;
   height: 460px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .search-challenge-card span {
     color: white; }
   .page-search-content .search-challenge-card a {
@@ -3782,8 +3794,9 @@ footer {
     padding: 0;
     width: 100%;
     height: 195px;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-search-content .search-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -3843,9 +3856,9 @@ footer {
 .page-search-content .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
-  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .challenge-card-full.front-challenge-card .card-type {
     z-index: 1000; }
   .page-search-content .challenge-card-full.front-challenge-card .card-container {
@@ -3864,7 +3877,10 @@ footer {
     width: 100%;
     height: 460px;
     max-width: 100%;
-    max-height: 100%; }
+    max-height: 100%;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
   .page-search-content .challenge-card-full.front-challenge-card .challenge-card-count span {
     padding-right: 10px;
     border-right: 1px solid #fff; }
@@ -4637,9 +4653,9 @@ header.showcase-project .next {
     .learn-card .single-learn .card-partership {
       color: #ED1C24; }
   .learn-card .image-container {
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .learn-card .container-content {
     position: relative; }
   .learn-card .card-container .card-partership {
@@ -4736,9 +4752,9 @@ header.showcase-project .next {
   .page-learn .learn-card .image-container {
     position: relative;
     padding: 0px;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .page-learn .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4804,9 +4820,9 @@ header.showcase-project .next {
   background-color: #DCDCDC;
   height: 460px;
   margin-bottom: 30px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
@@ -4822,11 +4838,9 @@ header.showcase-project .next {
     position: relative;
     padding: 0;
     height: 430px;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4909,9 +4923,7 @@ header.showcase-project .next {
   .search-learn-card .learn-card .image-container {
     padding: 0;
     width: 100%;
-    height: 195px;
-    background: url("../images/placeholder.png") center center;
-    background-size: cover; }
+    height: 195px; }
     .search-learn-card .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -5028,9 +5040,9 @@ header.showcase-project .next {
   padding-right: 23px;
   padding-bottom: 9px;
   margin-bottom: 10px;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .showcase-card-backlayer:hover {
     background-color: #00AEEF;
     transition: background-color 0.8s ease; }
@@ -5038,9 +5050,9 @@ header.showcase-project .next {
     position: relative;
     padding: 16px;
     background-color: white;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .showcase-card-backlayer .showcase-card .card {
       background-color: transparent;
       border: none; }
@@ -5245,6 +5257,7 @@ img {
       background-color: transparent;
       border: none; }
       .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
+        font-size: 1em;
         color: #00AEEF; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
@@ -5361,9 +5374,9 @@ img {
   padding: 0px 10px 14px 0px;
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -moz-box-shadow: 3px 3px 5px #BDBDBD;
+  -webkit-box-shadow: 3px 3px 5px #BDBDBD;
+  box-shadow: 3px 3px 5px #BDBDBD;
   height: 460px;
   margin-bottom: 30px; }
   .page-search-content .showcase-card-backlayer-search:hover {
@@ -5372,9 +5385,9 @@ img {
   .page-search-content .showcase-card-backlayer-search:hover .showcase-card-backlayer-search-2 {
     transition: background-color 0.8s ease;
     background-color: #00AEEF;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 3px 3px 5px #BDBDBD;
+    -webkit-box-shadow: 3px 3px 5px #BDBDBD;
+    box-shadow: 3px 3px 5px #BDBDBD; }
   .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 {
     transition: inherit;
     background-color: transparent;
@@ -5387,9 +5400,9 @@ img {
       cursor: pointer;
       height: 100%;
       background-color: white;
-      -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card {
         background-color: transparent;
         border: none; }
@@ -5412,7 +5425,7 @@ img {
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          max-height: 176px;
+          max-height: 200px;
           color: #333333;
           margin-bottom: 20px;
           line-height: 120% !important; }
@@ -6021,9 +6034,9 @@ img {
   margin: 0px;
   padding: 10px;
   min-height: 360px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge-summary .region-content .tabs-buttons, .page-challenge-summary-closed .region-content .tabs-buttons, .page-enter-challenge .region-content .tabs-buttons {
     width: 100%;
     overflow: hidden; }
@@ -6094,9 +6107,9 @@ img {
       position: relative;
       overflow: hidden;
       height: 180px;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #191919;
+      -webkit-box-shadow: 2px 2px 8px #191919;
+      box-shadow: 2px 2px 8px #191919; }
       .page-challenge-summary .region-content .content-wrapper .entries .entry-container .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .entries .entry-container .image-container img, .page-enter-challenge .region-content .content-wrapper .entries .entry-container .image-container img {
         position: absolute;
         z-index: -2; }
@@ -6193,9 +6206,9 @@ img {
       width: 220px;
       height: 180px;
       overflow: hidden;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-challenge-summary .region-content .content-wrapper .challenge-award .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .challenge-award .image-container img, .page-enter-challenge .region-content .content-wrapper .challenge-award .image-container img {
         max-width: 100%;
         height: auto; }
@@ -6205,9 +6218,9 @@ img {
   overflow: hidden;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge-summary .challenge-card .left-side, .page-challenge-summary-closed .challenge-card .left-side, .page-enter-challenge .challenge-card .left-side {
     padding: 0px;
     overflow: hidden; }
@@ -6218,9 +6231,9 @@ img {
     .page-challenge-summary .challenge-card .single-challenge .card-partership, .page-challenge-summary-closed .challenge-card .single-challenge .card-partership, .page-enter-challenge .challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
   .page-challenge-summary .challenge-card .image-container, .page-challenge-summary-closed .challenge-card .image-container, .page-enter-challenge .challenge-card .image-container {
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
       height: auto; }
     .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
@@ -6954,10 +6967,10 @@ img {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         color: #4F4F4F;
         margin-bottom: 5px; }
@@ -7029,10 +7042,10 @@ img {
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.2em;
-        font-weight: 400;
+        font-size: 1.3em;
+        font-weight: 500;
         text-transform: capitalize;
-        line-height: 100%;
+        line-height: 120%;
         color: #828282;
         clear: both;
         color: white; }
@@ -7062,10 +7075,10 @@ img {
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.2em;
-      font-weight: 400;
+      font-size: 1.3em;
+      font-weight: 500;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 120%;
       color: #828282;
       color: #4F4F4F;
       font-size: 19px;
@@ -7581,9 +7594,7 @@ img {
     height: auto; }
     .front .front-challenge-card .image-container {
       max-height: 160px;
-      max-width: 520px;
-      background: url("../images/placeholder.png") center center;
-      background-size: cover; }
+      max-width: 520px; }
     .front .front-challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
       font-size: 1.5em;
@@ -7635,6 +7646,9 @@ img {
   header nav {
     padding: 20px 5px !important; }
     header nav #MainNav .nav-item {
-      margin-left: 5px !important; } }
+      margin-left: 5px !important; }
+
+  .project .maker-name {
+    margin-top: 5px; } }
 
 /*# sourceMappingURL=style.css.map */

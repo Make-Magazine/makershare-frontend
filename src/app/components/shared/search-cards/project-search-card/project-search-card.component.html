@@ -9,7 +9,7 @@
       </div>
       <div class="image-top" (click)="ShowProjectDetails(project.nid)">
         <div class="overlay"></div>
-        <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
+        <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
         <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
         <div class="teaser">
           <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
