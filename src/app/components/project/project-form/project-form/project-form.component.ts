@@ -40,7 +40,7 @@ export class ProjectFormComponent implements OnInit {
     cover_image:{file:"",filename:""},
     tags:[],
     resources_files:[],
-    InvitationEmails:{uid:'',mails:[]}
+    InvitationEmails:{uid:'',project: '', mails:[]}
   }
 
   /**
@@ -338,7 +338,8 @@ export class ProjectFormComponent implements OnInit {
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
-        
+        this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
+        this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
         //this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
         //this.router.navigate(['/portfolio']);
@@ -348,6 +349,8 @@ export class ProjectFormComponent implements OnInit {
       });
     }else{
       this.nodeService.createNode(this.project).subscribe((project:ProjectView) => {
+        this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
+        this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);        
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
         //this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
         //this.router.navigate(['/portfolio']);
@@ -358,6 +361,14 @@ export class ProjectFormComponent implements OnInit {
     }
 
     // display message
+  }
+
+  sendInvitedEmails (emails) {
+    this.mainService.post('/api/team_service/send', emails).map(res => res.json()).subscribe(data => {
+      console.log(data); 
+    }, err =>{
+      console.log(err);
+    });
   }
 
   /**
@@ -466,6 +477,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   InviteTeam(){
+    
     if(this.FormPrintableValues.InvitationEmails.mails.length !== 0){
       this.mainService.post('/api/team_service/build',this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data=>{
         for(let email in data){
@@ -477,6 +489,7 @@ export class ProjectFormComponent implements OnInit {
             }
           });
         }
+      
         this.SaveProject();
       });
     }else{
