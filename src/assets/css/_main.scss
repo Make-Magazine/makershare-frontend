@@ -528,3 +528,20 @@ body {
         border-left: 10px solid $text-color-1;
     }
 }
+
+/* modal-share style */
+.modal-share {
+    background-color: $main-bg;
+    .modal-header {
+        border-bottom: none !important;
+    }
+    .modal-body {
+
+    }
+    .modal-footer {
+        border-top: none !important;
+        ul {
+            margin: 0px;
+        }
+    }
+}
