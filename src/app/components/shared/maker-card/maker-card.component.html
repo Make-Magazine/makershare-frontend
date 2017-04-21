@@ -7,7 +7,7 @@
   <div class="image-top">
     <div class="overlay"></div>
     <img *ngIf="card.photo_lg" class="card-img-top" src="{{card.photo_lg}}" alt="">
-    <img *ngIf="!card.photo_lg" src="http://placehold.it/365x290" alt="">
+    <img *ngIf="!card.photo_lg" src="./assets/images/placeholder.png" alt="">
   </div>
   <div class="card-block d-flex flex-column justify-content-around">
     <div class="icons-side-project d-flex flex-row" *ngIf="badges">
