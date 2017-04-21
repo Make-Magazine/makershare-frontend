@@ -529,17 +529,18 @@ body {
     }
 }
 #search-box-layer {
-    .close-search-layer {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-    }
     .close-search-layer,
     .go-search {
         position: absolute;
         color: #fff;
         font-size: 2em;
         cursor:pointer;
+    }
+    .close-search-layer {
+        right: 15px;
+        top: 15px;
+    }
+    .go-search {
         top: 7px;
         right: -40px;
     }
