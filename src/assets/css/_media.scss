@@ -288,70 +288,82 @@
 				}
 		}
 		.front {
-			.learn-card {
-                .image-container {
-                    max-height: 160px;
-                    max-width: 520px;
-                }
-                .card-container {
-                    .card-title {
-                        @include card-header-font-md();
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        height: 55px;
-                        color: #4F4F4F;
-                    }
-                    .card-description {
-                        p {
-                            @include desc-font-1();
-                            line-height: 125% !important;
-                            -webkit-line-clamp: 3;
-                            height: 55px;
-                            color: #4F4F4F;
-                        }
-                    }
-                }
-			}
-			.front-challenge-card {
-					height: auto;
-					.image-container {
-                        max-height: 160px;
-                        max-width: 520px;
-					}
-					.card-container {
-                        .card-title {
-                            @include card-header-font-md();
-                            display: -webkit-box;
-                            -webkit-line-clamp: 2;
-                            -webkit-box-orient: vertical;
-                            height: 55px;
-                            color: #fff;
-                        }
-                        .card-description {
-                            p {
-                                @include desc-font-1();
-                                line-height: 125% !important;
-                                -webkit-line-clamp: 3;
-                                height: 55px;
-                                color: #fff;
-                                overflow: hidden;
-                            }
-                        }
-					}
-					.challene-card-footer-1 {
-						order: 3
-					}
-					.challenge-card-footer-2 {
-						margin-bottom: 5px;
-						@include desc-font-3;
-						color: $text-color-2;
-					}
-			}
+			
+			
 	}
 }
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+    .front {
+        .front-challenge-card {
+            height: auto;
+            .image-container {
+                max-height: 195px;
+                max-width: 576px;
+                margin: 0 -15px;
+            }
+            .card-container {
+                .card-title {
+                    @include card-header-font-md();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    height: 55px;
+                    color: #fff;
+                }
+                .card-description {
+                    p {
+                        @include desc-font-1();
+                        line-height: 125% !important;
+                        -webkit-line-clamp: 3;
+                        height: 55px;
+                        color: #fff;
+                        overflow: hidden;
+                    }
+                }
+            }
+            .challene-card-footer-1 {
+                margin-right: 20px;
+            }
+            .challenge-card-footer-2 {
+                margin-bottom: 5px;
+                @include desc-font-3;
+                color: $text-color-2;
+            }
+        }
+        .learn-card {
+            .image-container {
+                max-height: 195px;
+                max-width: 576px;
+                margin: 0 -15px;
+            }
+            .card-container {
+                .card-title {
+                    @include card-header-font-md();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    height: 55px;
+                    color: #4F4F4F;
+                }
+                .card-description {
+                    p {
+                        @include desc-font-1();
+                        line-height: 125% !important;
+                        -webkit-line-clamp: 3;
+                        height: 55px;
+                        color: #4F4F4F;
+                    }
+                }
+            }
+        }
+    }
+    .project {
+        .icons-side-project {
+            top: -20px;
+        }      
+    }
+}
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {}
 
