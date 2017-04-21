@@ -15,8 +15,8 @@
         <app-project  *ngIf="activeTab == 'bookmarked_projects'" [countProject]="countProjectBookmark"> </app-project>
         <app-showcase *ngIf="activeTab == 'bookmarked_showcases'" [countShowcase]="countShowcaseBookmark"> </app-showcase>
         <app-maker *ngIf="activeTab == 'maker_bookmark'"> </app-maker>
-        <app-challenge-follow *ngIf="activeTab == 'followed_projects'"> </app-challenge-follow>
-        <app-challenge-enter *ngIf="activeTab == 'challenge_entries'"></app-challenge-enter>
+        <app-challenge-follow *ngIf="activeTab == 'followed_projects'" [countFollow]="countChallengeFollow"> </app-challenge-follow>
+        <app-challenge-enter *ngIf="activeTab == 'challenge_entries'" [countEntries]="countChallengeEntered"></app-challenge-enter>
       </div>
     </div>
   </div>
