@@ -793,13 +793,14 @@
     }
     .icons-side-project {
         position: relative;
-        top: -18px;
+        top: -13px;
         height: 40px;
         z-index: 9;
         .project-icon {
             img {
                 width: auto;
-                height: 40px;
+                height: 35px;
+                width: 30px;
                 margin-right: 5px;
             }
         }

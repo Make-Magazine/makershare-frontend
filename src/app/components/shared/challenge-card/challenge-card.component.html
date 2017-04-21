@@ -96,8 +96,8 @@
           <div class="challenge-card-footer-2 ml-md-3">
             <div class="challenge-card-count">
               <span class="entries-count">{{countProjects}}
-              <span *ngIf="countProjects>1">Entries</span>
-              <span *ngIf="countProjects <= 1">Entry</span>
+              <span *ngIf="countProjects != 1">Entries</span>
+              <span *ngIf="countProjects == 1">Entry</span>
               </span>
               <!--<span class="follow-count">{{challenge.followers}}
                       <span *ngIf="challenge.followers>1">Followers</span>
@@ -106,11 +106,11 @@
               </span>-->
             </div>
             <div class="challenge-card-status">
-              <span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
-              <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
+              <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>-->
+              <!--<span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>-->
               <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
-              <div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date.value}}</span>
+              <!--<div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>-->
+              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close: <br> {{challenge.challenge_end_date.value}}</span>
             </div>
           </div>
         </div>
