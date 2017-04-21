@@ -83,6 +83,7 @@ export class ChallengeProjectComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.cheackenter();
+    this.getCountProject();
     this.nid = this.route.snapshot.params['nid'];
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.userName = localStorage.getItem('user_name');
@@ -109,11 +110,13 @@ export class ChallengeProjectComponent implements OnInit {
     this.route.params
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
+                   console.log(data);
+
         if (data == null) {
           this.countProjects = 0
         } else {
           this.countProjects = data;
-          // console.log(data[0]);
+           console.log(data[0]);
         }
       }, err => {
         //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
