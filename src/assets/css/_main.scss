@@ -96,7 +96,7 @@ body {
     width: 100%;
     background-color: $main-bg;
     position: relative;
-    z-index: 10000;
+    z-index: 12;
     .navbar-brand {
         width: 120px;
         padding: 0px;
@@ -477,7 +477,7 @@ body {
 
 .card-type-blue {
     background-color: $blue;
-    z-index: 9;
+    z-index: 11;
     &::after {
         border-left: 10px solid $blue;
     }
@@ -528,3 +528,40 @@ body {
         border-left: 10px solid $text-color-1;
     }
 }
+
+
+/* modal-share style */
+.modal-share {
+    background-color: $main-bg;
+    .modal-header {
+        border-bottom: none !important;
+    }
+    .modal-body {
+
+    }
+    .modal-footer {
+        border-top: none !important;
+        ul {
+            margin: 0px;
+        }
+    }
+}
+
+#search-box-layer {
+    .close-search-layer,
+    .go-search {
+        position: absolute;
+        color: #fff;
+        font-size: 2em;
+        cursor:pointer;
+    }
+    .close-search-layer {
+        right: 15px;
+        top: 15px;
+    }
+    .go-search {
+        top: 7px;
+        right: -40px;
+    }
+}
+
