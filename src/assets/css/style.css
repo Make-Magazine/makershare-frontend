@@ -983,16 +983,16 @@ body {
   .card-type-user-small::after {
     border-left: 10px solid #4F4F4F; }
 
-#search-box-layer .close-search-layer {
-  position: absolute;
-  right: 15px;
-  top: 15px; }
 #search-box-layer .close-search-layer,
 #search-box-layer .go-search {
   position: absolute;
   color: #fff;
   font-size: 2em;
-  cursor: pointer;
+  cursor: pointer; }
+#search-box-layer .close-search-layer {
+  right: 15px;
+  top: 15px; }
+#search-box-layer .go-search {
   top: 7px;
   right: -40px; }
 
