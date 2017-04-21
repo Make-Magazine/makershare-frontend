@@ -109,7 +109,7 @@ export class Auth implements OnInit {
       // console.log(err);
       if(err.error == "unauthorized"){
         // console.log('it is true');
-        this.notificationBarService.create({ message: err.error_description, type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
+        this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
       }
     });
   }
