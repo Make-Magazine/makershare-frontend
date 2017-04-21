@@ -2278,9 +2278,9 @@ footer {
       height: 100%; }
   .project-mobile-card .data-container .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 400;
-    text-transform: none;
+    text-transform: capitalize;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -2814,9 +2814,9 @@ footer {
         font-size: 17px; }
   .maker-card .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 400;
-    text-transform: none;
+    text-transform: capitalize;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -2982,9 +2982,9 @@ footer {
       margin-bottom: 0; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: 400;
-      text-transform: none;
+      text-transform: capitalize;
       line-height: 115%;
       color: #828282; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
@@ -3035,9 +3035,9 @@ footer {
         font-size: 17px; }
   .mobile-profile-container .maker-mobile-card .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 400;
-    text-transform: none;
+    text-transform: capitalize;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -3494,11 +3494,10 @@ footer {
   background-color: #333;
   height: 460px;
   margin-bottom: 30px;
+  overflow: hidden;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
-  .front .front-challenge-card span {
-    color: white; }
   .front .front-challenge-card a {
     color: white; }
   .front .front-challenge-card .card {
@@ -3506,10 +3505,10 @@ footer {
     border: none; }
     .front .front-challenge-card .card .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2em;
+      font-size: 1.8em;
       font-weight: 400;
       text-transform: capitalize;
-      line-height: 100%;
+      line-height: 115%;
       color: #828282;
       color: #fff;
       max-height: 95px;
@@ -3525,10 +3524,17 @@ footer {
       width: 250px; }
     .front .front-challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
+  .front .front-challenge-card .card-partnership-mobile {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+    .front .front-challenge-card .card-partnership-mobile p {
+      color: #fff !important; }
   .front .front-challenge-card .image-container {
-    padding: 0 15px 0 0;
-    width: 100%;
+    padding: 0;
+    max-width: 350px;
     height: 430px;
+    margin-left: -15px;
     -moz-box-shadow: 2px 2px 8px #191919;
     -webkit-box-shadow: 2px 2px 8px #191919;
     box-shadow: 2px 2px 8px #191919; }
@@ -3546,9 +3552,9 @@ footer {
     line-height: 100%;
     color: #828282;
     text-transform: none;
-    display: inline-block;
     min-height: 16px;
-    margin: 16px 0px 16px 0px; }
+    margin: 0px 0px 16px 0px;
+    text-align: right; }
     .front .front-challenge-card .card-container .card-partership p {
       color: #BDBDBD;
       margin-bottom: 0px; }
@@ -3586,9 +3592,11 @@ footer {
         color: #828282; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
           padding-left: 10px; }
+        .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+          color: #BDBDBD; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
         line-height: 16px;
-        color: #828282; }
+        color: #BDBDBD; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
           padding-right: 5px; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
@@ -3618,14 +3626,18 @@ footer {
     height: 460px;
     max-width: 100%;
     max-height: 100%;
+    margin: 0;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
   .front .challenge-card-full.front-challenge-card .challenge-card-count span {
+    color: #fff;
     padding-right: 10px;
     border-right: 1px solid #fff; }
   .front .challenge-card-full.front-challenge-card .challenge-card-count .entries-count {
     border: none; }
+  .front .challenge-card-full.front-challenge-card .challenge-card-status {
+    color: #fff; }
   .front .challenge-card-full.front-challenge-card .button-container-main-1 {
     margin-right: 18px; }
     .front .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
@@ -3853,9 +3865,9 @@ footer {
     .page-project .project-story-tab .project-body-content {
       padding: 16px;
       background-color: white;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-story-tab .project-body-content p {
         font-family: "Messina Sans Regular";
         font-size: 0.95em;
@@ -3866,9 +3878,9 @@ footer {
         line-height: inherit !important; }
   .page-project .feedback-group {
     background-color: white;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .page-project .feedback-group .login-link {
       padding: 10px; }
       .page-project .feedback-group .login-link .feedback-label {
@@ -3905,9 +3917,9 @@ footer {
     .page-project .project-body .how-to-tab .project-body-content {
       padding: 16px;
       background-color: white;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-body .how-to-tab .project-body-content p {
         font-family: "Messina Sans Regular";
         font-size: 0.95em;
@@ -3920,9 +3932,9 @@ footer {
       background-color: white;
       padding: 18px 10px 34px 10px;
       text-align: center;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-body .how-to-sidebar .difficulty-duration p {
         color: #ED1C24 !important;
         text-align: center;
@@ -3944,9 +3956,9 @@ footer {
       background-color: white;
       margin-top: 26px;
       padding: 10px 10px 26px 10px;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-body .how-to-sidebar .tools-kits .tools, .page-project .project-body .how-to-sidebar .tools-kits .materials, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits {
         margin-bottom: 30px; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools p, .page-project .project-body .how-to-sidebar .tools-kits .materials p, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits p {
@@ -4107,9 +4119,9 @@ footer {
   .page-project .aha {
     margin-bottom: 20px;
     border: none;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .page-project .aha .card-heading {
       padding: 6px 8px 0px 8px; }
       .page-project .aha .card-heading p {
@@ -4135,9 +4147,9 @@ footer {
   .page-project .uh-oh {
     margin-bottom: 20px;
     border: none;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .page-project .uh-oh .card-heading {
       padding: 6px 8px 0px 8px; }
       .page-project .uh-oh .card-heading p {
@@ -4347,15 +4359,15 @@ header.showcase-project .next {
   position: relative;
   background-color: white;
   padding: 0px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-project .projectsingle-card .left-side {
     padding-left: 0px; }
     .page-project .projectsingle-card .left-side .image-container {
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .projectsingle-card .left-side .image-container img {
         width: 100%;
         height: 400px;
@@ -4456,9 +4468,9 @@ header.showcase-project .next {
     padding-bottom: 0;
     padding-left: 0;
     border: 1px solid #4ab0d8;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .project-search-card .project-card-small:hover {
       cursor: pointer; }
     .project-search-card .project-card-small .media {
@@ -4550,9 +4562,7 @@ header.showcase-project .next {
     text-transform: none;
     line-height: 130%;
     color: #828282;
-    text-transform: none;
-    font-size: 14px;
-    display: inline-block;
+    text-align: right;
     min-height: 16px;
     margin-bottom: 10px; }
     .learn-card .card-container .card-partership p {
@@ -4705,6 +4715,7 @@ header.showcase-project .next {
   background-color: #DCDCDC;
   height: 460px;
   margin-bottom: 30px;
+  overflow: hidden;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
@@ -4713,6 +4724,13 @@ header.showcase-project .next {
     right: -30px;
     color: #828282;
     margin-right: 15px; }
+  .front .learn-card .card-partnership-mobile {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    text-shadow: 1px 1px 5px #333333;
+    z-index: 1; }
   .front .learn-card .learn-item {
     padding: 10px; }
     .front .learn-card .learn-item img {
@@ -4723,9 +4741,11 @@ header.showcase-project .next {
     position: relative;
     padding: 0;
     height: 430px;
-    -moz-box-shadow: 2px 2px 8px #BDBDBD;
-    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-    box-shadow: 2px 2px 8px #BDBDBD; }
+    max-width: 350px;
+    margin-left: -15px;
+    -moz-box-shadow: 2px 2px 8px #474747;
+    -webkit-box-shadow: 2px 2px 8px #474747;
+    box-shadow: 2px 2px 8px #474747; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4746,9 +4766,9 @@ header.showcase-project .next {
       margin: 16px 0px 16px 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: 400;
-      text-transform: none;
+      text-transform: capitalize;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
@@ -5566,9 +5586,9 @@ img {
     width: 100%; }
     .page-create-project-why .your-story .projectName label {
       font-family: "Messina Modern Regular";
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: 400;
-      text-transform: none;
+      text-transform: capitalize;
       line-height: 115%;
       color: #828282; }
   .page-create-project-why .your-story .projectCategory {
@@ -6988,9 +7008,9 @@ img {
       margin-bottom: 0px; }
   .total-result .results-header .result-title span {
     font-family: "Messina Modern Regular";
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 400;
-    text-transform: none;
+    text-transform: capitalize;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -7438,53 +7458,28 @@ img {
       height: 250px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.5em;
+        font-size: 1.8em;
         font-weight: 400;
-        text-transform: none;
+        text-transform: capitalize;
         line-height: 115%;
         color: #828282;
         color: #333333;
         height: 55px;
         margin-bottom: 30px; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
-        height: 58px; }
-
-  .front .learn-card .image-container {
-    max-height: 160px;
-    max-width: 520px; }
-  .front .learn-card .card-container .card-title {
-    font-family: "Messina Modern Regular";
-    font-size: 1.5em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 115%;
-    color: #828282;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    height: 55px;
-    color: #4F4F4F; }
-  .front .learn-card .card-container .card-description p {
-    font-family: "Messina Sans Regular";
-    font-size: 0.95em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    line-height: 125% !important;
-    -webkit-line-clamp: 3;
-    height: 55px;
-    color: #4F4F4F; }
+        height: 58px; } }
+@media only screen and (max-width: 768px) {
   .front .front-challenge-card {
     height: auto; }
     .front .front-challenge-card .image-container {
-      max-height: 160px;
-      max-width: 520px; }
+      max-height: 195px;
+      max-width: 576px;
+      margin: 0 -15px; }
     .front .front-challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: 400;
-      text-transform: none;
+      text-transform: capitalize;
       line-height: 115%;
       color: #828282;
       display: -webkit-box;
@@ -7505,7 +7500,7 @@ img {
       color: #fff;
       overflow: hidden; }
     .front .front-challenge-card .challene-card-footer-1 {
-      order: 3; }
+      margin-right: 20px; }
     .front .front-challenge-card .challenge-card-footer-2 {
       margin-bottom: 5px;
       font-family: "Messina Sans SemiBold";
@@ -7514,7 +7509,37 @@ img {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      color: #828282; } }
+      color: #828282; }
+  .front .learn-card .image-container {
+    max-height: 195px;
+    max-width: 576px;
+    margin: 0 -15px; }
+  .front .learn-card .card-container .card-title {
+    font-family: "Messina Modern Regular";
+    font-size: 1.8em;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 115%;
+    color: #828282;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 55px;
+    color: #4F4F4F; }
+  .front .learn-card .card-container .card-description p {
+    font-family: "Messina Sans Regular";
+    font-size: 0.95em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 100%;
+    color: #828282;
+    line-height: 125% !important;
+    -webkit-line-clamp: 3;
+    height: 55px;
+    color: #4F4F4F; }
+
+  .project .icons-side-project {
+    top: -20px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }

@@ -61,9 +61,14 @@
 
 <div *ngIf="front">
   <div class="learn-card row">
-    <div class="col-md-6 col-sm-12 image-container">
-      <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
-      <img *ngIf="!learn.cover_photo" src="./assets/images/placeholder.png" alt="">
+    <div class="col-md-6 col-sm-12">
+      <div class="card-partnership-mobile" *showItBootstrap="['sm','xs']">
+        <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
+      </div>
+      <div class="image-container">
+        <img *ngIf="front" src="{{learn.learn_home_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
+        <img *ngIf="!learn.learn_home_photo" src="./assets/images/placeholder.png" alt="">
+      </div>
       <div class="card-type-grey-2">
         <div class="type-layer-2">
           Learn
@@ -75,7 +80,7 @@
     <div class="col-md-6 col-sm-12 container-content">
       <div class="card-container h-100">
         <div class="card h-100">
-          <div class="card-partership">
+          <div class="card-partership" *hideItBootstrap="['sm','xs']">
             <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
           </div>
           <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
@@ -88,7 +93,7 @@
                 <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)">Get Started</span>
               </div>
             </div>
-            <div class="learn-card-footer-2 ml-md-5 d-flex">
+            <div class="learn-card-footer-2 ml-5 d-flex">
               <div class="learn-card-count align-self-center">
                 <span class="entries-count">{{countlessons}}
                 <span *ngIf="countlessons != 1"> Lessons</span>
