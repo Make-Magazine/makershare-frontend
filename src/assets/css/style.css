@@ -1625,9 +1625,9 @@ footer {
     font-size: 12px;
     margin-bottom: 20px;
     position: relative;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -3273,9 +3273,9 @@ footer {
   overflow: hidden;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge .challenge-card .single-challenge {
     padding: 10px; }
     .page-challenge .challenge-card .single-challenge img {
@@ -3287,7 +3287,10 @@ footer {
     position: relative;
     padding: 0;
     width: 100%;
-    height: auto; }
+    height: auto;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-challenge .challenge-card .image-container img {
       width: 100%;
       height: 100%;
@@ -3377,9 +3380,9 @@ footer {
   padding: 8px 8px 0px 8px;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .challenge-card .single-challenge {
     padding: 10px; }
     .page-search-content .challenge-card .single-challenge img {
@@ -3406,7 +3409,10 @@ footer {
     height: 215px;
     width: 170px;
     top: -22px;
-    left: -22px; }
+    left: -22px;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-search-content .challenge-card .image-container img {
       width: 100%;
       max-width: 100%;
@@ -3488,9 +3494,9 @@ footer {
   background-color: #333;
   height: 460px;
   margin-bottom: 30px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .front-challenge-card span {
     color: white; }
   .front .front-challenge-card a {
@@ -3522,7 +3528,10 @@ footer {
   .front .front-challenge-card .image-container {
     padding: 0 15px 0 0;
     width: 100%;
-    height: 430px; }
+    height: 430px;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .front .front-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -3587,9 +3596,9 @@ footer {
 .front .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
-  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .challenge-card-full.front-challenge-card .card-type {
     z-index: 1000; }
   .front .challenge-card-full.front-challenge-card .card-container {
@@ -3608,7 +3617,10 @@ footer {
     width: 100%;
     height: 460px;
     max-width: 100%;
-    max-height: 100%; }
+    max-height: 100%;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .front .challenge-card-full.front-challenge-card .challenge-card-count span {
     padding-right: 10px;
     border-right: 1px solid #fff; }
@@ -3626,9 +3638,9 @@ footer {
   margin-bottom: 30px;
   background-color: #333;
   height: 460px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .search-challenge-card span {
     color: white; }
   .page-search-content .search-challenge-card a {
@@ -3666,7 +3678,10 @@ footer {
   .page-search-content .search-challenge-card .image-container {
     padding: 0;
     width: 100%;
-    height: 195px; }
+    height: 195px;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-search-content .search-challenge-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -3726,9 +3741,9 @@ footer {
 .page-search-content .challenge-card-full.front-challenge-card {
   padding: 0;
   margin: 30px 0px 30px 0px;
-  -moz-box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-search-content .challenge-card-full.front-challenge-card .card-type {
     z-index: 1000; }
   .page-search-content .challenge-card-full.front-challenge-card .card-container {
@@ -3747,7 +3762,10 @@ footer {
     width: 100%;
     height: 460px;
     max-width: 100%;
-    max-height: 100%; }
+    max-height: 100%;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
   .page-search-content .challenge-card-full.front-challenge-card .challenge-card-count span {
     padding-right: 10px;
     border-right: 1px solid #fff; }
@@ -4520,9 +4538,9 @@ header.showcase-project .next {
     .learn-card .single-learn .card-partership {
       color: #ED1C24; }
   .learn-card .image-container {
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .learn-card .container-content {
     position: relative; }
   .learn-card .card-container .card-partership {
@@ -4619,9 +4637,9 @@ header.showcase-project .next {
   .page-learn .learn-card .image-container {
     position: relative;
     padding: 0px;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .page-learn .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4687,9 +4705,9 @@ header.showcase-project .next {
   background-color: #DCDCDC;
   height: 460px;
   margin-bottom: 30px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .front .learn-card .card-type {
     top: 60px;
     right: -30px;
@@ -4705,9 +4723,9 @@ header.showcase-project .next {
     position: relative;
     padding: 0;
     height: 430px;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .front .learn-card .image-container img {
       width: 100%;
       height: 100%; }
@@ -4907,9 +4925,9 @@ header.showcase-project .next {
   padding-right: 23px;
   padding-bottom: 9px;
   margin-bottom: 10px;
-  -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .showcase-card-backlayer:hover {
     background-color: #00AEEF;
     transition: background-color 0.8s ease; }
@@ -4917,9 +4935,9 @@ header.showcase-project .next {
     position: relative;
     padding: 16px;
     background-color: white;
-    -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
     .showcase-card-backlayer .showcase-card .card {
       background-color: transparent;
       border: none; }
@@ -5124,6 +5142,7 @@ img {
       background-color: transparent;
       border: none; }
       .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
+        font-size: 1em;
         color: #00AEEF; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
@@ -5240,9 +5259,9 @@ img {
   padding: 0px 10px 14px 0px;
   background-color: #D4EFFC;
   transition: background-color 0.8s ease;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+  -moz-box-shadow: 3px 3px 5px #BDBDBD;
+  -webkit-box-shadow: 3px 3px 5px #BDBDBD;
+  box-shadow: 3px 3px 5px #BDBDBD;
   height: 460px;
   margin-bottom: 30px; }
   .page-search-content .showcase-card-backlayer-search:hover {
@@ -5251,9 +5270,9 @@ img {
   .page-search-content .showcase-card-backlayer-search:hover .showcase-card-backlayer-search-2 {
     transition: background-color 0.8s ease;
     background-color: #00AEEF;
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 3px 3px 5px #BDBDBD;
+    -webkit-box-shadow: 3px 3px 5px #BDBDBD;
+    box-shadow: 3px 3px 5px #BDBDBD; }
   .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 {
     transition: inherit;
     background-color: transparent;
@@ -5266,9 +5285,9 @@ img {
       cursor: pointer;
       height: 100%;
       background-color: white;
-      -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card {
         background-color: transparent;
         border: none; }
@@ -5291,7 +5310,7 @@ img {
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          max-height: 176px;
+          max-height: 200px;
           color: #333333;
           margin-bottom: 20px;
           line-height: 120% !important; }
@@ -5900,9 +5919,9 @@ img {
   margin: 0px;
   padding: 10px;
   min-height: 360px;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge-summary .region-content .tabs-buttons, .page-challenge-summary-closed .region-content .tabs-buttons, .page-enter-challenge .region-content .tabs-buttons {
     width: 100%;
     overflow: hidden; }
@@ -5973,9 +5992,9 @@ img {
       position: relative;
       overflow: hidden;
       height: 180px;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #191919;
+      -webkit-box-shadow: 2px 2px 8px #191919;
+      box-shadow: 2px 2px 8px #191919; }
       .page-challenge-summary .region-content .content-wrapper .entries .entry-container .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .entries .entry-container .image-container img, .page-enter-challenge .region-content .content-wrapper .entries .entry-container .image-container img {
         position: absolute;
         z-index: -2; }
@@ -6072,9 +6091,9 @@ img {
       width: 220px;
       height: 180px;
       overflow: hidden;
-      -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-      box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
       .page-challenge-summary .region-content .content-wrapper .challenge-award .image-container img, .page-challenge-summary-closed .region-content .content-wrapper .challenge-award .image-container img, .page-enter-challenge .region-content .content-wrapper .challenge-award .image-container img {
         max-width: 100%;
         height: auto; }
@@ -6084,9 +6103,9 @@ img {
   overflow: hidden;
   cursor: pointer;
   background-color: #333333;
-  -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-  box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
   .page-challenge-summary .challenge-card .left-side, .page-challenge-summary-closed .challenge-card .left-side, .page-enter-challenge .challenge-card .left-side {
     padding: 0px;
     overflow: hidden; }
@@ -6097,9 +6116,9 @@ img {
     .page-challenge-summary .challenge-card .single-challenge .card-partership, .page-challenge-summary-closed .challenge-card .single-challenge .card-partership, .page-enter-challenge .challenge-card .single-challenge .card-partership {
       color: #ED1C24; }
   .page-challenge-summary .challenge-card .image-container, .page-challenge-summary-closed .challenge-card .image-container, .page-enter-challenge .challenge-card .image-container {
-    -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-    box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5); }
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
     .page-challenge-summary .challenge-card .image-container img, .page-challenge-summary-closed .challenge-card .image-container img, .page-enter-challenge .challenge-card .image-container img {
       height: auto; }
     .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
