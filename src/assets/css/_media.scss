@@ -390,7 +390,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-    .modal-lg {
+    .modal-lg, .modal-dialog {
         max-width: 1110px;
     }
 }

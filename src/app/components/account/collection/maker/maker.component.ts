@@ -12,9 +12,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './maker.component.html',
 })
 export class MakerComponent implements OnInit {
+  @Input()countMaker;
   users = [];
   deletedArr = [];
-  userId
+  userId;
+  pages: number = 0;
+  hideloadmoremaker = false;
+  page_arg;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -26,10 +30,18 @@ export class MakerComponent implements OnInit {
     this.getUserBookmark();
   }
   getUserBookmark() {
+       if (this.pages >= 0) {
+      this.page_arg =
+        ['page', this.pages]
+        ;
+    }
+    if (this.pages == 0) {
+      this.users = [];
+    }
     // get users Has Bookmark from a view
-    this.viewService.getView('maker-bookmark').subscribe(res => {
-      this.users = res;
-      console.log(this.users)
+    this.viewService.getView('maker-bookmark',[this.page_arg]).subscribe(res => {
+      this.users = this.users.concat(res);
+      this.loadMoreVisibilty();
     }, err => {
     });
   }
@@ -84,4 +96,22 @@ export class MakerComponent implements OnInit {
   isAllChecked() {
     return this.users.every(_ => _.state);
   }
+    /* function load more  */
+  loadMoreMaker() {
+    this.pages++;
+    this.getUserBookmark();
+  }
+  /* end function load more  */
+  // Function to control load more button
+  loadMoreVisibilty() {
+    // get the challenges array count
+    if (this.countMaker == this.users.length) {
+
+      this.hideloadmoremaker = true;
+
+    } else if (this.countMaker > this.users.length) {
+      this.hideloadmoremaker = false;
+    }
+  }
+  /* END FUNCTION loadMoreVisibilty */
 }

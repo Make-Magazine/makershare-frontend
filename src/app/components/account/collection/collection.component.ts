@@ -15,6 +15,7 @@ export class CollectionComponent implements OnInit {
   countShowcaseBookmark:number;
   countChallengeFollow:number;
   countChallengeEntered:number;
+  countMakerBookmark:number;
 
   checkArray = {};
   /* checkArray = {
@@ -50,11 +51,12 @@ export class CollectionComponent implements OnInit {
       this.countShowcaseBookmark=this.checkArray['bookmarked_showcases']
       this.countChallengeFollow=this.checkArray['followed_projects']
       this.countChallengeEntered=this.checkArray['challenge_entries']
+      this.countMakerBookmark=this.checkArray['maker_bookmark']
     console.log(this.checkArray)
       for (var key in this.checkArray) {
         if (this.checkArray.hasOwnProperty(key)) {
           if (this.checkArray[key] > 0) {
-         //   console.log(this.checkArray[key])
+            console.log(this.checkArray[key])
             this.activeTab = key;
             this.checkTab = true;
             break;
