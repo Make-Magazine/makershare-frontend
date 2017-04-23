@@ -99,7 +99,7 @@ export class Auth implements OnInit {
         if (profile['email_verified'] == false) {
           this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
         } else {
-          this.notificationBarService.create({ message: 'Welcome, You are now logged in.', type: NotificationType.Success });
+          // this.notificationBarService.create({ message: 'Welcome, You are now logged in.', type: NotificationType.Success });
         }
 
 
