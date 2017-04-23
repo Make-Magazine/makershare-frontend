@@ -55,6 +55,7 @@ export class SingleObjectComponent implements OnInit {
       .subscribe(data => {
        
         this.singleObject = data[0];
+           console.log(this.singleObject);
         
 
         if (this.singleObject.video && this.singleObject.video !== '') {
@@ -81,21 +82,21 @@ export class SingleObjectComponent implements OnInit {
       this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.singleObject.pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
       this.pdflink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
     } 
-    // else if (this.singleObject.book && this.singleObject.book !== '') {
-    //   delete this.popupPreview;
-    //   if (this.singleObject.book.endsWith('.epub')) {
-    //     this.epubLink = this.singleObject.book;
-     
-    //   } else {
-    //      console.log(this.singleObject.book);
-    //     var x = this.singleObject.book.split('.').pop();
-    //     delete this.popupPreview;
-    //     this.epubFile = null;
-    //     this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.singleObject.book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
-    //     this.booklink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-    //     console.log(this.booklink);
-    //   }
-    // }
+    else if (this.singleObject.book && this.singleObject.book !== '') {
+      delete this.popupPreview;
+      if (this.singleObject.book.endsWith('.epub')) {
+        this.epubLink = this.singleObject.book;
+      console.log(this.epubLink);
+      } else {
+         console.log(this.singleObject.book);
+        var x = this.singleObject.book.split('.').pop();
+        delete this.popupPreview;
+        this.epubFile = null;
+        this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.singleObject.book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
+        this.booklink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+        console.log(this.booklink);
+      }
+    }
 
 
        });

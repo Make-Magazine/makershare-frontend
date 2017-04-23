@@ -4,20 +4,22 @@
       <div *ngIf="workshop" class="container learn-container">
         <div class="row learn-card d-flex flex-column flex-md-row ">
           <div class="col-md-4 individual-card-img">
-            <div class="image-container">
+            <div *ngIf="!workshop.introductory_video" class="image-container">
               <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
-              <img *ngIf="workshop.introductory_video" class="play-image" src="./assets/images/video-icon.png" alt="" style="width: 100px;"
-                (click)="introvideo(content)">
-                <div class="card-type-grey-2">
-                  <div class="type-layer-2">
-                    Learn
-                  </div>
+                   </div>
+                <div *ngIf="workshop.introductory_video" class="image-container"> 
+                <div [innerHTML]="workshop.introductory_video"></div>
+              </div>
+              <div class="card-type-grey-2">
+                <div class="type-layer-2">
+                  Learn
                 </div>
-            </div>
+              </div>
+       
 
             <div *ngIf="workshop.uid" class="default">
 
-              <app-user-card [uid]="workshop.uid" ></app-user-card>
+              <app-user-card [uid]="workshop.uid"></app-user-card>
             </div>
           </div>
           <!-- End image-container -->
@@ -39,7 +41,7 @@
                 <div class="card-description">
                   <p [innerHTML]="workshop.detailed_description"></p>
                 </div>
-                <div class= "learning-objective" *ngIf="workshop.learning_objectives"> 
+                <div class="learning-objective" *ngIf="workshop.learning_objectives">
                   <h3>In this workshop you will:</h3>
                   <br>
                   <p [innerHTML]="workshop.learning_objectives"></p>
@@ -92,11 +94,11 @@
                 <div class="row">
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
                     <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                     <h4 [innerHTML]="object.lesson_name"></h4>
+                      <h4 [innerHTML]="object.lesson_name"></h4>
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
                       <div class="card-block">
-                      <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-                    
+                        <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
+
                       </div>
 
                       <div class="button-container-main-1  modal-block">
@@ -107,9 +109,11 @@
                         </div>-->
                     </div>
                     <div class="media-body col-lg-9">
-                       
-                        <h4 class="card-title">{{object.learning_content_type}}:<p [innerHTML]="object.object_title"></p></h4>
-                          
+
+                      <h4 class="card-title">{{object.learning_content_type}}:
+                        <p [innerHTML]="object.object_title"></p>
+                      </h4>
+
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
                   </div>
@@ -123,7 +127,7 @@
                   <!---FOR Video CONTENT TYPE -->
 
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Video' ">
-                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}"  (click)="objectDetails(object.nid)">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}" (click)="objectDetails(object.nid)">
                       <div class="video-image">
                         <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap">
                       </div>
@@ -141,26 +145,26 @@
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
                         <p class="card-text" [innerHTML]="object.object_title"> </p>
                       </div>
+                    </div>
+
+                    <div class="media-body col-sm-9">
+                      <h4 [innerHTML]="object.lesson_name"></h4>
+                      <div [innerHTML]="object.lesson_description"> </div>
+                    </div>
                   </div>
 
-                  <div class="media-body col-sm-9">
-                    <h4 [innerHTML]="object.lesson_name"></h4>
-                    <div [innerHTML]="object.lesson_description"> </div>
-                  </div>
-                </div>
+                  <ul *ngIf="object.learning_content_type == 'Video'" class="list-unstyled recommended">
+                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                    <a href="" target="_blank">
+                      <div [innerHTML]="object.related_projects"> </div>
+                    </a>
+                  </ul>
 
-                <ul *ngIf="object.learning_content_type == 'Video'" class="list-unstyled recommended">
-                  <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                  <a href="" target="_blank">
-                    <div [innerHTML]="object.related_projects"> </div>
-                  </a>
-                </ul>
+                  <!---FOR Book CONTENT TYPE -->
 
-                <!---FOR Book CONTENT TYPE -->
-
-                <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Book' ">
-                  <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                    <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap"(click)="objectDetails(object.nid)">
+                  <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Book' ">
+                    <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
+                      <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
                         <div class="card-text" *ngIf="object.chapter"> Number of Pages: {{object.chapter}} </div>
@@ -172,84 +176,84 @@
                       <div class="button-container-main-1  modal-block">
                         <span class="btn btn-main" (click)="objectDetails(object.nid)">LAUNCH READER</span>
                       </div>
-                  </div>
-                  <div class="media-body col-sm-9">
-                    <h4 [innerHTML]="object.lesson_name"></h4>
-                    <div [innerHTML]="object.lesson_description"></div>
-                  </div>
-                </div>
-
-                <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'Book' ">
-                  <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                  <a href="" target="_blank">
-                    <div [innerHTML]="object.related_projects"> </div>
-                  </a>
-                </ul>
-                <!---FOR HTML CONTENT TYPE -->
-                <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'HTML' ">
-                  <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                    <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap">
-                    <div class="card-block">
-                      <h4 class="card-title">{{object.learning_content_type}}</h4>
-                      <p class="card-text" [innerHTML]="object.object_title"> </p>
                     </div>
+                    <div class="media-body col-sm-9">
+                      <h4 [innerHTML]="object.lesson_name"></h4>
+                      <div [innerHTML]="object.lesson_description"></div>
+                    </div>
+                  </div>
 
-                    <!--<div class="button-container-main-1">
+                  <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'Book' ">
+                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                    <a href="" target="_blank">
+                      <div [innerHTML]="object.related_projects"> </div>
+                    </a>
+                  </ul>
+                  <!---FOR HTML CONTENT TYPE -->
+                  <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'HTML' ">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
+                      <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap">
+                      <div class="card-block">
+                        <h4 class="card-title">{{object.learning_content_type}}</h4>
+                        <p class="card-text" [innerHTML]="object.object_title"> </p>
+                      </div>
+
+                      <!--<div class="button-container-main-1">
                           <span class="btn btn-main" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">Visit Original Sourcer</span>
                         </div>-->
-                    <div class="button-container-main-1  html-block">
-                      <a href="{{object.original_source}}" class="btn btn-main" target="_blank">Original Source</a>
+                      <div class="button-container-main-1  html-block">
+                        <a href="{{object.original_source}}" class="btn btn-main" target="_blank">Original Source</a>
+                      </div>
+                    </div>
+                    <div class="media-body col-lg-9">
+                      <h4 [innerHTML]="object.lesson_name"></h4>
+                      <div [innerHTML]="object.lesson_description"> </div>
                     </div>
                   </div>
-                  <div class="media-body col-lg-9">
-                    <h4 [innerHTML]="object.lesson_name"></h4>
-                    <div [innerHTML]="object.lesson_description"> </div>
-                  </div>
+
+                  <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'HTML' ">
+                    <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
+                    <a href="" target="_blank">
+                      <div [innerHTML]="object.related_projects"> </div>
+                    </a>
+                  </ul>
                 </div>
-
-                <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'HTML' ">
-                  <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
-                  <a href="" target="_blank">
-                    <div [innerHTML]="object.related_projects"> </div>
-                  </a>
-                </ul>
+              </div>
+              <div *ngIf="workshop" class="row">
+                <div *ngIf="workshop.nid" class=" learning-card">
+                  <app-comment [nid]="workshop.nid" [titleform]="title"></app-comment>
+                </div>
               </div>
             </div>
-            <div *ngIf="workshop" class="row">
-              <div *ngIf="workshop.nid" class=" learning-card">
-                <app-comment [nid]="workshop.nid" [titleform]="title"></app-comment>
-              </div>
-            </div>
+            <!-- End worksop-content -->
           </div>
-          <!-- End worksop-content -->
-        </div>
-        <!-- End region-content -->
+          <!-- End region-content -->
 
 
-        <aside class="col-md-2 list-position">
-          <!-- End Profile-container -->
-          <ul class="list-unstyled content-list">
-            Contents:
-            <div *ngFor="let object of objects; let i=index;">
-              <li>
-                <a pageScroll href="#OB{{object.nid}}">
-                  <div [innerHTML]="object.lesson_name"></div>
-                </a>
-              </li>
-            </div>
-
-            <div *ngFor="let lesson of lessons">
-              <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
-                <li><a pageScroll href="#lesson">Resources</a></li>
+          <aside class="col-md-2 list-position">
+            <!-- End Profile-container -->
+            <ul class="list-unstyled content-list">
+              Contents:
+              <div *ngFor="let object of objects; let i=index;">
+                <li>
+                  <a pageScroll href="#OB{{object.nid}}">
+                    <div [innerHTML]="object.lesson_name"></div>
+                  </a>
+                </li>
               </div>
-            </div>
-          </ul>
-        </aside>
-        <!-- End aside -->
-        <div class="container" *ngFor="let lesson of lessons">
-          <div class="row"  *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
-            <div  class="related-books mt-3 mb-3 col-md-6  suggest-card">
-          
+
+              <div *ngFor="let lesson of lessons">
+                <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+                  <li><a pageScroll href="#lesson">Resources</a></li>
+                </div>
+              </div>
+            </ul>
+          </aside>
+          <!-- End aside -->
+          <div class="container" *ngFor="let lesson of lessons">
+            <div class="row" *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+              <div class="related-books mt-3 mb-3 col-md-6  suggest-card">
+
                 <div *ngIf="lesson.book_cover" class="media links-body" id="lesson">
                   <img class="d-flex align-self-start mr-3" src="{{lesson.book_cover}}" alt="Generic placeholder image">
                   <div class="media-body col-md-7">
@@ -265,17 +269,17 @@
                   </div>
                 </div>
                 <!-- End suggested -->
-            
-              <!-- End of more lesson Checker -->
+
+                <!-- End of more lesson Checker -->
+              </div>
             </div>
+            <!-- End of Lesson ngFor -->
           </div>
-          <!-- End of Lesson ngFor -->
         </div>
       </div>
+      <!-- End of container -->
+    </section>
   </div>
-  <!-- End of container -->
-  </section>
-</div>
 </div>
 
 <!--<template #content let-c="close" let-d="dismiss" ngbModalContainer>

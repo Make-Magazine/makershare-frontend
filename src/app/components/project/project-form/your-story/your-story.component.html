@@ -2,15 +2,14 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="What do you call your project?"
-        ngbTooltip="{{TooltipText.project_name.guide}}" validate-onfocusout>
+      <input type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout>
       <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>
     </div>
     <div class="form-group">
       <label for="teaser">Teaser</label>
-      <textarea maxlength="250" class="form-control" rows="5" id="teaser" formControlName='field_teaser' ngbTooltip="{{TooltipText.teaser.guide}}"></textarea>
+      <textarea maxlength="250" class="form-control" rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
     </div>
     <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250</span>
     <div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
@@ -19,7 +18,7 @@
     <div class="form-group cover d-flex flex-column">
       <label class="control-label">Cover photo</label><br>
       <div class="align-items-start">
-        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp" ngbTooltip="{{TooltipText.cover_image.guide}}">Choose</a>
+        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
         <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
         <div class="image-preview">
           <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
@@ -41,7 +40,7 @@
         </div>
         <div class="col-md-4">
           <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
-            (change)="SelectTerm($event.target.value,'child')" ngbTooltip="{{TooltipText.category.guide}}">
+            (change)="SelectTerm($event.target.value,'child')">
             <option disabled selected value > -- select an option -- </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
             </select>
@@ -66,7 +65,7 @@
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story' ngbTooltip="{{TooltipText.story.guide}}"></ckeditor>
+      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story'></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
       </div>
@@ -99,8 +98,8 @@
 
     <div class="form-group projectTags">
       <label for="projectTags">Tags</label>
-      <tag-input type="text" class="form-control" id="projectTags" placeholder="Tags" formControlName='field_tags' [modelAsStrings]="true"
-        [(ngModel)]="tags" ngbTooltip="{{TooltipText.tags.guide}}"></tag-input>
+      <tag-input type="text" class="form-control" id="projectTags" formControlName='field_tags' [modelAsStrings]="true"
+        [(ngModel)]="tags" placeholder="{{TooltipText.tags.guide}}"></tag-input>
     </div>
   </div>
   <!-- End your-story -->

@@ -1,11 +1,13 @@
-<div *ngIf="fileManageService" class="row">
-  <div *ngFor="let file of files" class="col-md-3">
-    <div *ngIf="file.type == 'image'">
-      <img *ngIf="file.thumbnail" [src]="file.thumbnail">
-      <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
-      <button (click)="emitter.emit(file)"> select </button>
+<div class="conitaner upload-pic-container">
+  <div *ngIf="fileManageService" class="row">
+    <div *ngFor="let file of files" class="col-md-2">
+      <div class="image-container" *ngIf="file.type == 'image'">
+        <img *ngIf="file.thumbnail" [src]="file.thumbnail">
+        <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
+        <button class="upload-select" (click)="emitter.emit(file)"> select </button>
+      </div>
     </div>
+    <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
+    <button (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
   </div>
-  <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
-  <button (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
 </div>

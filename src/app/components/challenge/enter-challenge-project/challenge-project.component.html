@@ -87,21 +87,21 @@
           <div class="region region-content col-sm-12">
             <div class="content-wrapper row">
               <div class="challenge-enter col-md-4">
-                <div *ngIf="projects?.length > 0">
-                  <p>Select an existing project from your portfolio.</p>
+                <div *ngIf="projects?.length > 0 && enterStatus==true">
+                  <p *ngIf="enterStatus==true">Select an existing project from your portfolio.</p>
                   <form>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="enterStatus==true">
                       <select class="form-control" #item (change)="updateSelectedProject($event)">
                       <option [value]="none" disabled>Select a project</option>
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
                     </div>
-                    <div class="enter-form-buttons d-flex">
+                    <div class="enter-form-buttons d-flex" *ngIf="enterStatus==true">
                       <div class="button-container-sec-2 w-50">
                         <span class="btn btn-main-2 w-100" (click)="onCancel()">Cancel</span>
                       </div>
 
-                      <div class="button-container-main-1 w-50" *ngIf="enterStatus==true">
+                      <div class="button-container-main-1 w-50">
                         <span class="btn btn-main w-100" *ngIf="enterStatus==true" (click)="open(content)">Submit</span>
                       </div>
                     </div>
@@ -127,6 +127,7 @@
   <div class="modal-header">
   </div>
   <div class="modal-body">
+    <form [formGroup]="addProjectForm"> 
     <div>
       <p>
         I have read and agree to the challenge rules and eligibility requirements. I understand that my project may be disqualified
@@ -135,13 +136,13 @@
       </p>
       <div>
         <label class="md-check ">
-        <input type="checkbox"   (change)="checkBoxValue($event)" /> i agree<br>
+        <input type="checkbox"   (change)="checkBoxValue($event)" formControlName="field_agreement" />  I Agree<br>
         
         <div class="ml-auto">
             <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
         </div>
           <div class="ml-auto" *ngIf="button == true">
-            <button  type="button" class="btn btn-primary" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
+            <button  type="button" class="btn btn-primary" [disabled]="!addProjectForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
           </div>
 
     </label>
@@ -149,9 +150,8 @@
       <div *ngIf="error" class="alert alert-danger error-msg">
         {{error}}
       </div>
-
-
     </div>
+    </form>
   </div>
   <div class="modal-footer">
     <ul class="list-unstyled actions">

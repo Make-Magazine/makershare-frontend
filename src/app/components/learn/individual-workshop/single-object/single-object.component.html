@@ -1,20 +1,3 @@
-<!--<div [innerHTML]="popupPreview"> {{popupPreview}} </div>-->
-<!--<div [innerHTML]="utube"> {{utube}}  </div>-->
-
-<!--<div> {{objects.videolink}}</div>-->
-
-<!--<div  *ngIf= "singleObject.videolink[0]"> 
-   <div [innerHTML]="singleObject.video[0]"></div>
- </div>-->
-
-  <!--<div [innerHTML]="videolink"></div>
-
-
-
-<div >
-  {{myObject}}
-</div>-->
-
  <div  *ngIf= "videolink"> 
    <div [innerHTML]="videolink"></div>
  </div>
@@ -22,5 +5,14 @@
  <div  *ngIf= "pdflink"> 
    <div [innerHTML]="pdflink"></div>
  </div>
+
+  <div  *ngIf= "booklink"> 
+   <div [innerHTML]="booklink"></div>
+ </div>
+
+  <div *ngIf="epubLink"  >
+      <app-book [link]="epubLink"></app-book>
+    </div>
+
 
  

@@ -300,6 +300,10 @@
 		.image-container {
 			position: relative;
 			padding: 0px;
+				iframe {
+				width: 100%;
+				max-width: 100%;
+			}
 		
 			img {
 				width: 100%;

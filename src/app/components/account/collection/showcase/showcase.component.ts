@@ -49,8 +49,8 @@ export class ShowcaseComponent implements OnInit {
     // get project Has Bookmark from a view
     this.viewService.getView('bookmark', [args, this.page_arg]).subscribe(res => {
       this.showcases = this.showcases.concat(res);
-          console.log(this.showcases.length)
-              console.log(this.countShowcase)
+         // console.log(this.showcases.length)
+            //  console.log(this.countShowcase)
 
       this.loadMoreVisibilty();
     }, err => {

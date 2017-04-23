@@ -31,7 +31,7 @@
 }
 
 @mixin card-header-font-lg (){
-	@include font-setting('Messina Modern Bold', 2.6em ,500 ,capitalize , 105%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 2.6em ,500 ,capitalize , 120%, $text-color-2 );
 	// 48 pt
 }
 @mixin card-header-font-md-2 (){
@@ -39,12 +39,12 @@
 	// 48 pt
 }
 @mixin card-header-font-md (){
-	@include font-setting('Messina Modern Bold', 1.5em ,400 ,none , 115%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 1.8em ,400 ,capitalize , 115%, $text-color-2 );
 	// 24pt
 }
 @mixin card-header-font-sm (){
-	@include font-setting('Messina Modern Bold', 1.5em ,400 ,capitalize , 100%, $text-color-2 );
-	// 18pt
+	@include font-setting('Messina Modern Regular', 1.3em ,500 ,capitalize , 120%, $text-color-2 );
+	// 18pt -> 16pt
 }
 @mixin card-header-font-xs (){
 	@include font-setting('Messina Modern Bold', 0.95em ,400 ,none , 100%, $text-color-2 );
@@ -56,7 +56,7 @@
 	//18pt
 }
 @mixin body-font-2(){
-	@include font-setting('Messina Sans Regular', 1em ,400 ,none , 125%, $text-color-2 );
+	@include font-setting('Messina Sans Regular', 0.9em ,400 ,none , 130%, $text-color-2 );
 	//16pt
 }
 
@@ -69,7 +69,7 @@
 	//12 pt
 }
 @mixin desc-font-3 (){
-	@include font-setting('Messina Sans SemiBold', 0.9em ,400 ,none , 100% , $text-color-2);
+	@include font-setting('Messina Sans SemiBold', 0.8em ,400 ,none , 100% , $text-color-2);
 	//12 pt
 }
 

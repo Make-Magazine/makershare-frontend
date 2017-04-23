@@ -174,7 +174,9 @@ $(document).ready(function () {
 			$(this).find('.teaser').fadeOut('400');
 		}
 	});
-
+	$(document).on('click','#search-icon', function(){
+		$('#search-box-input').focus();
+	})
 	$(document).on('click', '.display-style p',function(){
 		if($(this).hasClass('active')) {
 			

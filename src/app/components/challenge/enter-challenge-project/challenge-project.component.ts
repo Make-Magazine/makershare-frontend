@@ -11,6 +11,7 @@ import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnou
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './challenge-project.component.html',
 })
 export class ChallengeProjectComponent implements OnInit {
+  addProjectForm: FormGroup;
   countProjects = 0;
   button = false;
   projects: IChallengeProject[];
@@ -71,13 +73,17 @@ export class ChallengeProjectComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
     private router: Router,
+    private fb: FormBuilder,
+
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private modalService: NgbModal,
   ) { }
   ngOnInit() {
+    this.buildForm();
     this.cheackenter();
+    this.getCountProject();
     this.nid = this.route.snapshot.params['nid'];
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.userName = localStorage.getItem('user_name');
@@ -104,11 +110,13 @@ export class ChallengeProjectComponent implements OnInit {
     this.route.params
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
+                   console.log(data);
+
         if (data == null) {
           this.countProjects = 0
         } else {
           this.countProjects = data;
-          // console.log(data[0]);
+           console.log(data[0]);
         }
       }, err => {
         //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -165,6 +173,8 @@ export class ChallengeProjectComponent implements OnInit {
   }
 
   onCancel(event: any) {
+    this.addProjectForm.reset();
+
     this.router.navigate(['/missions/' + this.nid]);
   }
   onSubmit() {
@@ -176,11 +186,12 @@ export class ChallengeProjectComponent implements OnInit {
         "field_entry_project": this.selectedProject,
         "field_entry_challenge": this.nid,
       };
+
       this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
         this.router.navigate(['missions/', this.nid]);
         this.loaderService.display(false);
 
-        this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success,allowClose:true,autoHide:false,hideOnHover:false });
         /* bookmark auto after submit project challenge */
         if (this.nid) {
           this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
@@ -197,9 +208,7 @@ export class ChallengeProjectComponent implements OnInit {
         /* end follow  */
       }, err => {
         this.loaderService.display(false);
-        setTimeout(1000);
-        this.notificationBarService.create({ message: err._body, type: NotificationType.Error });
-
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
         this.router.navigate(['/missions/' + this.nid]);
 
       });
@@ -219,7 +228,14 @@ export class ChallengeProjectComponent implements OnInit {
   setDayLeft() {
 
   }
+  /* function build form */
+  buildForm() {
+    this.addProjectForm = this.fb.group({
+      "field_agreement": ['', Validators.required],
+    });
 
+  }
+  /* end function build form */
   /* function cheack user allowe to enter challenge */
 
   cheackenter() {

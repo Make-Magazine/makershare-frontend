@@ -1,51 +1,52 @@
-<div *ngIf="projectAuthor != userId" >
+<div *ngIf="projectAuthor != userId">
   <a class="report" *ngIf="!isReported" (click)="open(content)">Report this Project</a>
   <p *ngIf="isReported"> Project has been reported </p>
 </div>
 <template id="model" #content let-c="close" let-d="dismiss" ngbModalContainer>
-  <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+  <div class="modal-report">
+    <div class="modal-header">
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
 			<span aria-hidden="true">&times;</span>
 		</button>
-
-  </div>
-  <div class="modal-body">
-    <div>
-      <p>Select an reason for reported porject.</p>
-      <form [formGroup]="reportForm">
-        <div class="form-group">
-          <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
-                      <option [value]="none" disabled>Select a reason</option>
-                      <option value="annoying">This project is annoying me</option>
-                      <option value="pretending">They're pretending to be me or someone </option>
-                      <option value="safe">This project Isn't safe for work</option>
-                     </select>
+    </div>
+    <div class="modal-body container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="modal-title">Select an reason for reported porject.</h4>
         </div>
-        <div class="form-group">
-          <textarea placeholder="write a reason" cols="42" rows="6" formControlName="field_appropriate_for_response"></textarea>
+        <div class="col-md-12">
+          <form class="row" [formGroup]="reportForm">
+            <div class="form-group col-md-6">
+              <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
+                <option [value]="none" selected disabled>Select a reason</option>
+                <option value="annoying">This project is annoying me</option>
+                <option value="pretending">They're pretending to be me or someone </option>
+                <option value="safe">This project Isn't safe for work</option>
+            </select>
+            </div>
+            <div class="form-group col-md-12">
+              <textarea class="w-100 p-2" placeholder="write a reason" cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
+            </div>
+          </form>
         </div>
-        <div class="enter-form-buttons d-flex">
-          <div class="ml-auto">
-            <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-            <button *ngIf="selectedReasonName" type="button" class="btn btn-primary" [disabled]="!reportForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
-          </div>
-
+        <div *ngIf="error" class="alert alert-danger error-msg">
+          {{error}}
         </div>
-      </form>
-
-      <div *ngIf="error" class="alert alert-danger error-msg">
-        {{error}}
       </div>
-
-
+    </div>
+    <div class="modal-footer">
+      <ul class="list-unstyled actions">
+        <li>
+          <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
+          <div class="enter-form-buttons d-flex">
+            <div class="ml-auto">
+              <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+              <button *ngIf="selectedReasonName" type="button" class="btn btn-load-more" [disabled]="!reportForm.valid" (click)="onSubmit($event)"
+                (click)="c('Close click')">Submit</button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="modal-footer">
-    <ul class="list-unstyled actions">
-      <li>
-        <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
-      </li>
-    </ul>
-  </div>
-
 </template>
