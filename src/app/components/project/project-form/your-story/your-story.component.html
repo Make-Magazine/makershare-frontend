@@ -2,14 +2,14 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout>
+      <input [ngClass]="{valError: formErrors.title}" type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout>
       <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>
     </div>
     <div class="form-group">
       <label for="teaser">Teaser</label>
-      <textarea maxlength="250" class="form-control" rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
+      <textarea [ngClass]="{valError: formErrors.field_teaser}" maxlength="250" class="form-control" rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
     </div>
     <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250</span>
     <div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
@@ -18,7 +18,7 @@
     <div class="form-group cover d-flex flex-column">
       <label class="control-label">Cover photo</label><br>
       <div class="align-items-start">
-        <a (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
+        <a [ngClass]="{valError: formErrors.field_cover_photo}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
         <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
         <div class="image-preview">
           <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
@@ -33,13 +33,13 @@
       <label for="projectCategory" class="">Categories</label>
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4">
-          <select #parentcategory class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+          <select #parentcategory [ngClass]="{valError: formErrors.field_categories}" class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
             <option disabled selected value="_none_" > -- select an option -- </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
           </select>
         </div>
         <div class="col-md-4">
-          <select *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
+          <select [ngClass]="{valError: formErrors.field_categories}" *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
             (change)="SelectTerm($event.target.value,'child')">
             <option disabled selected value > -- select an option -- </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
@@ -65,21 +65,21 @@
     </div>
     <div class="form-group project-story">
       <label for="project-story">Story</label>
-      <ckeditor rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story'></ckeditor>
+      <ckeditor [ngClass]="{valError: formErrors.field_story}" rows="5" id="project-story" [config]="{extraPlugins: 'divarea'}" formControlName='field_story'></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
       </div>
     </div>
     <div class="form-group show-tell">
       <label for="show-tell">{{TooltipText.show_tell.guide}} (Optional)</label>
-      <input type="text" class="form-control" id="show-tell" placeholder="Share a 'Show \& Tell' video." formControlName='field_show_tell_video'>
+      <input [ngClass]="{valError: formErrors.field_show_tell_video}" type="text" class="form-control" id="show-tell" placeholder="Share a 'Show \& Tell' video." formControlName='field_show_tell_video'>
       <div *ngIf="formErrors.field_show_tell_video" class="alert alert-danger error-msg">
         {{ formErrors.field_show_tell_video }}
       </div>
     </div>
     <div class="form-group aha">
       <label for="aha">{{TooltipText.aha_moment.guide}} (optional)</label>
-      <input maxlength="350" type="text" class="form-control" id="aha" placeholder="Aha! moment" formControlName='field_aha_moment'>
+      <input [ngClass]="{valError: formErrors.field_aha_moment}" maxlength="350" type="text" class="form-control" id="aha" placeholder="Aha! moment" formControlName='field_aha_moment'>
       <span class="words-count">{{YourStoryForm.value.field_aha_moment.length}}\350</span>
       <div *ngIf="formErrors.field_aha_moment" class="alert alert-danger error-msg">
         {{ formErrors.field_aha_moment }}
@@ -88,7 +88,7 @@
 
     <div class="form-group uh-oh">
       <label for="uh-oh">{{TooltipText.uh_oh_moment.guide}} (optional)</label>
-      <input maxlength="350" type="text" class="form-control" id="uh-h" placeholder="Uh-oh! moment" formControlName='field_uh_oh_moment'>
+      <input [ngClass]="{valError: formErrors.field_aha_moment}" maxlength="350" type="text" class="form-control" id="uh-h" placeholder="Uh-oh! moment" formControlName='field_uh_oh_moment'>
       <span class="words-count">{{YourStoryForm.value.field_uh_oh_moment.length}}\350</span>
 
       <div *ngIf="formErrors.field_uh_oh_moment" class="alert alert-danger error-msg">
