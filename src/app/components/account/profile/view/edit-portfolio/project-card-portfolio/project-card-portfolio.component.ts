@@ -25,6 +25,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('api-project-card', [['nid', this.Project.nid]]).subscribe(res => {
       this.project = res[0];
+      console.log(this.project);
   });
   }
 
