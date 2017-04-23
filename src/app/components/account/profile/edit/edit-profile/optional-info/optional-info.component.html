@@ -71,7 +71,7 @@
 						<p>Website or Blog</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="web-url" placeholder="enter your URL" formControlName="field_website_or_blog">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_website_or_blog.valid}" type="text" class="form-control" name="web-url" placeholder="enter your URL" formControlName="field_website_or_blog">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_website_or_blog.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -85,7 +85,7 @@
 						<p>Additional site</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="web-url-2" placeholder="enter your URL" formControlName="field_additional_site">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_additional_site.valid}" type="text" class="form-control" name="web-url-2" placeholder="enter your URL" formControlName="field_additional_site">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_additional_site.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -99,7 +99,7 @@
 						<p><i class="fa fa-lg fa-facebook"></i> Facebook</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="fb-url" placeholder="enter your URL" formControlName="field_facebook">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_facebook.valid}" type="text" class="form-control" name="fb-url" placeholder="enter your URL" formControlName="field_facebook">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_facebook.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -113,7 +113,7 @@
 						<p><i class="fa fa-lg fa-instagram"></i> Instagram</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="ig-url" placeholder="enter your URL" formControlName="field_instagram">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_instagram.valid}" type="text" class="form-control" name="ig-url" placeholder="enter your URL" formControlName="field_instagram">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_instagram.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -127,7 +127,7 @@
 						<p><i class="fa fa-lg fa-linkedin"></i> LinkedIn</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="ln-url" placeholder="enter your URL" formControlName="field_linkedin">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_linkedin.valid}" type="text" class="form-control" name="ln-url" placeholder="enter your URL" formControlName="field_linkedin">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_linkedin.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -141,7 +141,7 @@
 						<p><i class="fa fa-lg fa-twitter"></i> Twitter</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="tw-url" placeholder="enter your URL" formControlName="field_twitter">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_twitter.valid}" type="text" class="form-control" name="tw-url" placeholder="enter your URL" formControlName="field_twitter">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_twitter.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -155,7 +155,7 @@
 						<p><i class="fa fa-lg fa-pinterest"></i> Pinterest</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="pn-url" placeholder="enter your UR" formControlName="field_pinterest">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_pinterest.valid}" type="text" class="form-control" name="pn-url" placeholder="enter your UR" formControlName="field_pinterest">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_pinterest.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -169,7 +169,7 @@
 						<p><i class="fa fa-lg fa-youtube"></i> YouTube</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="yt-url" placeholder="enter your URL" formControlName="field_youtube">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_youtube.valid}" type="text" class="form-control" name="yt-url" placeholder="enter your URL" formControlName="field_youtube">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_youtube.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -183,7 +183,7 @@
 						<p><i class="fa fa-lg fa-hackster"></i> Hackster.io</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="hk-url" placeholder="enter your URL" formControlName="field_hackster_io">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_hackster_io.valid}" type="text" class="form-control" name="hk-url" placeholder="enter your URL" formControlName="field_hackster_io">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_hackster_io.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -197,7 +197,7 @@
 						<p><i class="fa fa-lg fa-instructables"></i> Instructables</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="in-url" placeholder="enter your URL" formControlName="field_instructables">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_instructables.valid}" type="text" class="form-control" name="in-url" placeholder="enter your URL" formControlName="field_instructables">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_instructables.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>
@@ -210,7 +210,7 @@
 						<p><i class="fa fa-lg fa-hackaday"></i> Hackaday</p>
 					</td>
 					<td>
-						<input type="text" class="form-control" name="hd-url" placeholder="enter your URL" formControlName="field_hackday">
+						<input [ngClass]="{valError: !optionalForm.controls.field_social_accounts['controls'].field_hackday.valid}" type="text" class="form-control" name="hd-url" placeholder="enter your URL" formControlName="field_hackday">
 						<div *ngIf="!optionalForm.controls.field_social_accounts['controls'].field_hackday.valid" class="alert alert-danger error-msg">
 							not valid url
 						</div>

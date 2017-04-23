@@ -224,7 +224,34 @@
         overflow: inherit !important;
         height: auto !important;
     }
+    .profile-container  {
+        .spotlight-item {
+            .user-card {
+                padding: 30px 10px 10px 10px;
+                .media {
+                    .profile-pic-container {
+                        .icons-side-user {
+                            width: auto;
+                            overflow: hidden;
+                            position: absolute;
+                            top: -13px;
+                            left: 10px;
+                            .user-icon {
+                                width: auto;
+                                img {
+                                    height: 35px;
+                                    width: 30px;
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
 
 img {
     max-width: 100%;

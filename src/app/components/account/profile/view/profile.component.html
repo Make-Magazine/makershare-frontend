@@ -339,7 +339,7 @@
 									<label for="edit-city">LOCATION</label>
 								</div>
 								<div class="col-md-4 col-xs-12">
-									<input [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Country" [inputFormatter]="formatter"
+									<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Country" [inputFormatter]="formatter"
 									 [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 									<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
@@ -382,8 +382,8 @@
 									<div [formGroup]="formGroup">
 										<label for="edit-bio">PERSONAL QUOTE</label>
 										<textarea rows="3" formControlName="describe_yourself" name="limitedtextfield" class="col-md-12" id="description-textarea-info"
-										 placeholder="120 characters that are words you live by." maxlength="120"></textarea><span class="char-left"> {{120 - formGroup.value.describe_yourself.length}}
-										char left </span>
+										 placeholder="120 characters that are words you live by." maxlength="120"></textarea>
+										 <span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 120}" class="char-left"> {{120 - formGroup.value.describe_yourself.length}} char left </span>
 										<!--<div *ngIf="!formGroup.valid">max length 120</div>-->
 									</div>
 								</div>
@@ -401,7 +401,7 @@
 								<div class="col-md-12">
 									<textarea rows="10" cols="50" class="col-md-12" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea-bio"
 									 placeholder="{{'What would you like people to know about you?\nYou basicaly have two paragraphs of space.'}}" maxlength="140"></textarea>
-									<span class="char-left">{{140 - formGroup.value.describe_yourself.length}} char left</span>
+									<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 140}" class="char-left">{{140 - formGroup.value.describe_yourself.length}} char left</span>
 								</div>
 								<!--<div class="col-md-12" *ngIf="!formGroup.valid">max length 140</div>-->
 							</div>
@@ -420,7 +420,7 @@
 										</li>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" formControlName="field_facebook" name="web-url" placeholder="Facebook">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_facebook.valid}" class="col-md-12 form-control" type="text" formControlName="field_facebook" name="web-url" placeholder="Facebook">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_facebook'" validate-onfocusout>-->
 											</li>
@@ -430,7 +430,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" formControlName="field_instagram" name="web-url" placeholder="Instagram">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_instagram.valid}" class="col-md-12 form-control" type="text" formControlName="field_instagram" name="web-url" placeholder="Instagram">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instagram'" validate-onfocusout>-->
 											</li>
@@ -440,7 +440,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_linkedin.valid}" class="col-md-12 form-control" type="text" formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'" validate-onfocusout>-->
 											</li>
@@ -450,7 +450,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" formControlName="field_twitter" name="web-url" placeholder="Twitter">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_twitter.valid}" class="col-md-12 form-control" type="text" formControlName="field_twitter" name="web-url" placeholder="Twitter">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitter'" validate-onfocusout>-->
 											</li>
@@ -460,7 +460,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_pinterest.valid}" class="col-md-12 form-control" type="text" name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'" validate-onfocusout>-->
 												<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid && FormGroupSocial.controls.field_pinterest.touched" class="alert alert-danger error-msg">
@@ -470,7 +470,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" name="web-url" formControlName="field_youtube" placeholder="YouTube">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_youtube.valid}" class="col-md-12 form-control" type="text" name="web-url" formControlName="field_youtube" placeholder="YouTube">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_youtube'" validate-onfocusout>-->
 												<div *ngIf="!FormGroupSocial.controls.field_youtube.valid && FormGroupSocial.controls.field_youtube.touched" class="alert alert-danger error-msg">
@@ -480,7 +480,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackster_io.valid}" class="col-md-12 form-control" type="text" name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
 												<!--<input class="radio-breferred" class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred"-->
 												<!--value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'" validate-onfocusout>-->
 												<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid && FormGroupSocial.controls.field_hackster_io.touched" class="alert alert-danger error-msg">
@@ -490,7 +490,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" name="web-url" formControlName="field_instructables" placeholder="Instructables">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_instructables.valid}" class="col-md-12 form-control" type="text" name="web-url" formControlName="field_instructables" placeholder="Instructables">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instructables'" validate-onfocusout>-->
 												<div *ngIf="!FormGroupSocial.controls.field_instructables.valid && FormGroupSocial.controls.field_instructables.touched"
@@ -501,7 +501,7 @@
 										</div>
 										<div class="col-md-6">
 											<li class="form-group">
-												<input class="col-md-12 form-control" type="text" name="web-url" formControlName="field_hackday" placeholder="Hackaday">
+												<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackday.valid}" class="col-md-12 form-control" type="text" name="web-url" formControlName="field_hackday" placeholder="Hackaday">
 												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday"-->
 												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_hackday'" validate-onfocusout>-->
 												<div *ngIf="!FormGroupSocial.controls.field_hackday.valid && FormGroupSocial.controls.field_hackday.touched" class="alert alert-danger error-msg">
@@ -535,7 +535,7 @@
 										<label for="">URL</label>
 									</div>
 									<div class="col-md-4">
-										<input class="form-control" type="text" formControlName="field_makerspace_url">
+										<input [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}" class="form-control" type="text" formControlName="field_makerspace_url">
 									</div>
 								</div>
 								<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
@@ -555,7 +555,7 @@
 								</li>
 								<div class="col-md-12">
 									<li class="form-group form-item col-md-4">
-										<input class="form-control" type="text" formControlName="field_website_or_blog" name="web-url" placeholder="Website or Blog">
+										<input [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text" formControlName="field_website_or_blog" name="web-url" placeholder="Website or Blog">
 										<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog"-->
 										<!--[checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'" validate-onfocusout>-->
 									</li>
@@ -566,7 +566,7 @@
 								</div>
 								<div class="col-md-12">
 									<li class="form-group form-item col-md-4">
-										<input class="form-control" type="text" formControlName="field_additional_site" name="web-url" placeholder="Additional site">
+										<input [ngClass]="{valError: !FormGroupSocial.controls.field_additional_site.valid}" class="form-control" type="text" formControlName="field_additional_site" name="web-url" placeholder="Additional site">
 										<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site"-->
 										<!--[checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'" validate-onfocusout>-->
 									</li>
@@ -590,7 +590,7 @@
 									<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
 									 placeholder="{{'What was the moment that making become a part of your life?\nYou have about two paragraphs of space.'}}"
 									 maxlength="300">
-								</textarea><span class="char-left">{{300 - formGroup.value.started_making.length}} char left</span>
+								</textarea><span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}" class="char-left">{{300 - formGroup.value.started_making.length}} char left</span>
 								</div>
 								<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
 								<div class="clearfix"></div>

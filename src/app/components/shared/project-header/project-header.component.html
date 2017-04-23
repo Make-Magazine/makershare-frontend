@@ -18,8 +18,9 @@
           <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
           <!--<li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>-->
           <li class="project-likes">
-            <img src="./assets/images/icons/light-not-selected.png" alt="">
+            <img *ngIf="project.count_flag.like" src="./assets/images/icons/light-selected.png" alt="">
             <span *ngIf="project.count_flag.like">{{project.count_flag.like}}</span>
+            <img *ngIf="!project.count_flag.like" src="./assets/images/icons/light-not-selected.png" alt="">
             <span *ngIf="!project.count_flag.like">0</span>
           </li>
           <li class="project-views">
@@ -45,13 +46,14 @@
           <div class="card-description">
             <p innerHTML="{{project.field_teaser?.value}}"></p>
           </div>
-          <div class="card-date">
+          <div class="card-date mt-auto">
             <span class="project-date pr-2">Created on: {{project.created}}</span>
             <br>
             <span class="project-date">Updated on: {{project.changed}}</span>
           </div>
-          <div class="d-flex flex-row">
-            <div class="card-tags" *ngIf="project.field_tags || project.field_categories">Topics:
+          <div class="d-flex flex-row mt-auto" >
+            <div class="card-tags" *ngIf="project.field_tags || project.field_categories">
+              <span *ngIf="project.tags || project.field_categories">Topics:</span>
               <span class="project-tag" *ngFor="let category of project.field_categories">
               <span *ngIf="!category.is_parent"> {{category.name}}<span class="tags-comma">,</span></span>
               </span>
