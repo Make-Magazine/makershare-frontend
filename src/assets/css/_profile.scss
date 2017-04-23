@@ -173,7 +173,7 @@
         font-size: 12px;
         margin-bottom: 20px;
         position: relative;
-        @include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+        @include boxShadow(2px, 2px ,8px, $shade-3);
         li,
         p {
             font-size: 13px;
@@ -190,8 +190,6 @@
         }
         .image-container {
             position: relative;                    
-            background: url('../images/placeholder.png') center center;
-            background-size: cover;
             // width: 365px;
             height: 280px; 
             // top: -110px;
@@ -647,12 +645,28 @@
 }
 
 .edit-cover-modal {
+    .modal-content {
+        background-color: $main-bg;
+    }
     .modal-dialog {
         width: 60%;
     }
     .modal-header {
-        position: relative;
-        padding-bottom: 0;
+        border-bottom: none !important;
+        padding: 8px;
+        .close-form  {
+            padding: 0px;
+        }
+    }
+    .modal-body {
+        min-height: 460px;
+    }
+    .modal-footer {
+    border-top: none !important;
+    padding: 32px;
+    button {
+        width: 120px;
+    }
     }
     .info {
         float: right;
@@ -663,9 +677,6 @@
         margin-bottom: 5px;
     }
     ul {
-        margin-bottom: 0;
-        position: absolute;
-        bottom: 0;
         li {
             display: inline-block;
         }
@@ -700,20 +711,68 @@
             }
         }
     }
+    .modal-footer {
+        text-align: center;
+        .buttons-section {
+            display: block;
+            margin: 0 auto;
+                button {
+                width: 160px;
+                padding: 12px;
+                background-color: #fff !important;
+            }       
+        }
+    }
     .upload-tab {
-        width: 300px;
+        width: 430px;
         margin: auto;
         text-align: center;
         font-size: 18px;
         font-weight: bold;
         color: $main-grey;
-        img {
-            width: 200px;
-            margin: auto;
+        canvas {
+            height: 200px;
+        }
+        .btn {
+            padding: 12px !important;
+            width: 140px;
+            background-color: #fff !important;
+        }
+        .drag-photo {
+            color: $text-color-6;
+        }
+        .drag-or {
+            color: $shade-3;
         }
     }
-    .modal-footer {
-        text-align: center;
+    .upload-pic-container {
+        .image-container {
+            position: relative;
+            @include boxShadow(2px, 2px ,5px, rgba(136, 136, 136, 0.5));
+            &:hover .upload-select {
+                display: block;
+                cursor: pointer;
+                background-color: rgba(0,0,0,0.2);    
+                transition: background-color 0.8s ease;
+            }
+            img {
+                width: 200px;
+                margin: auto;
+            }
+            .upload-select {
+                position: absolute;
+                top: 0px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                transition: background-color 0.8s ease;
+                background: rgba(0,0,0,0);    
+                border: none !important;
+                display: none;
+
+            }
+        }
     }
 }
 
@@ -739,20 +798,18 @@
         border-radius: 0;
         padding: 0;
         margin: 0 auto 30px;
-        border: 1px solid $blue;
+        // border: 1px solid $blue;
         @include boxShadow(2px, 2px ,8px, $shade-3);
     }
     .maker-name {
         color: $blue;
         margin-bottom: 0;
-        margin-top: 13px;
+        margin-top: 10px;
     }
     .image-top {
         height: 275px;
         background-color: #bbb;
         overflow: hidden;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         position: relative;
         .card-img-top {
             border-radius: 0;
@@ -765,8 +822,6 @@
     .image-top-lg {
         background-color: #bbb;
         overflow: hidden;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         position: relative;
         height: 275px;
         .card-img-top {
@@ -785,28 +840,28 @@
             width: 90%;
         }
         .profiel-pic-container {
-            width: 80px;
-            height: 80px;
-            .title-name {
-                width: 80%;
-            }
+            width: 82px;
+            height: 82px;
+            
             img {
                 width: 100%;
             }
         }
-        .maker-data-container {
+        .maker-data-container,
+        .title-name {
             width: 230px;
         }
     }
     .icons-side-project {
         position: relative;
-        top: -18px;
+        top: -13px;
         height: 40px;
-        z-index: 105;
+        z-index: 9;
         .project-icon {
             img {
                 width: auto;
-                height: 40px;
+                height: 35px;
+                width: 30px;
                 margin-right: 5px;
             }
         }
@@ -830,13 +885,12 @@
     .card-title {
         @include card-header-font-sm;
         color: $text-color-1;
-        height: 44px;
+        height: 50px;
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        line-height: 23px !important;
         text-align: left;
         width: 100%;
         margin: 0;
@@ -850,7 +904,6 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        line-height: 23px !important;
         text-align: left;
         width: 100%;
         margin: 0;
@@ -887,20 +940,23 @@
     .card-stats {
         padding: 2px;
         color: $light-grey;
-        ul li {
-            width: 80px;
-            @include desc-font-2();
-            img {
-                margin-right: 6px;
-                &.project-likes {
-                    width: 12px;
+        ul {
+            width: 75%; 
+            li {
+                width: 80px;
+                @include desc-font-2();
+                img {
+                    margin-right: 6px;
+                    &.project-likes {
+                        width: 12px;
+                    }
+                    &.project-views {
+                        width: 20px;
+                    }
                 }
-                &.project-views {
-                    width: 20px;
+                span {
+                    margin: 0px;
                 }
-            }
-            span {
-                margin: 0px;
             }
         }
     }
@@ -1057,7 +1113,7 @@
     background-color: $blue;
     opacity: 0.6;
     display: none;
-    z-index: 10;
+    z-index: 9;
 }
 .overlay-portfolio {
     width: 100%;
@@ -1116,142 +1172,196 @@
     }
 }
 
-#add-bio-modal,
-#add-interests-modal,
-#add-makerspace-modal,
-#add-social-modal,
-#add-description-modal,
-#add-maker-starting-modal {
-    h4 {
-        font-weight: normal;
-        color: #000;
-        font-size: 18px;
-    }
-    .modal-header,
-    .modal-footer {
-        border-color: $light-grey * 0.8;
-        border-width: 3px;
-    }
-    .modal-content {
-        border: 3px solid ($light-grey * 0.8);
-        li:first-of-type {
-            h4 {
-                margin-left: 82%;
-                font-size: 14px;
-            }
-        }
+/* modal edit profile forms */
+.modal-content  {
+    .profile-modal {
+        background-color: $site-bg;
         label {
-            width: 30%;
-            font-size: 15px;
+            color: $red;
+            margin: 0px;
         }
-        input[type="checkbox"] {
-            margin-left: 30px;
+        textarea {
+            border: 1px solid $shade-2;
+            color: $shade-4;
         }
-        input[type="text"] {
-            width: 50%;
-            margin: 0;
-            padding: 3px;
-            font-size: 15px;
-        }
-        i {
-            width: 25px;
-        }
-        p {
-            margin-top: 5px;
-            font-size: 15px;
-        }
-    }
-    .modal-footer {
-        text-align: center;
-        .btn-light-grey {
-            border-radius: 4px;
-        }
-    }
-    .modal-footer {
-        .close-btn {
-            border: 1px solid #444;
-            &:hover {
-                cursor: pointer;
+        input {
+            border: 1px solid $shade-2;
+            color: $shade-4;
+            padding: 12px;
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            text-align: center;
+            color: $shade-2;
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+            text-align: center;
+            color: $shade-2;
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+            text-align: center;
+            color: $shade-2;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+            text-align: center;
+            color: $shade-2;
             }
         }
-        .done-btn {
-            border: 1px solid #444;
-            &:hover {
-                cursor: pointer;
+        .modal-header {
+            border-bottom: none !important;
+            padding: 8px;
+            .close:focus, .close:hover {
+                outline: none !important;
+            }
+        }
+        .modal-body {
+            min-height: 460px;
+            input {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                color: $shade-2;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                color: $shade-2;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                color: $shade-2;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                color: $shade-2;
+                }
+            }
+            #description-textarea-info {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 22px;
+                color: $shade-2;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 22px;
+                color: $shade-2;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 22px;
+                color: $shade-2;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 22px;
+                color: $shade-2;
+                }
+            }
+            #description-textarea-bio {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+            }
+            #start-making-textarea {
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                text-align: center;
+                padding-top: 80px;
+                color: $shade-2;
+                }
+            }
+            .modal-menu {
+                a {
+                    color: $text-color-6;
+                    &.active {
+                        color: $shade-3;
+                    }
+                }
+            }
+            #socaial {
+                .form-group {
+                    position: relative;
+                }
+                .radio-breferred {
+                    position: absolute;
+                    top: 13px;
+                    right: 8px;
+                }
+            }
+            #maker-spaces {
+                .makerspace-contene {
+                    position: relative;
+                }
+                .maker-space-remove {
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                }
+            }
+            #links {
+                .form-group {
+                    position: relative;
+                }
+                .radio-breferred {
+                    position: absolute;
+                    top: 13px;
+                    right: 21px;
+                }
+                .form-item {
+                    padding: 0px;
+                }
+            }
+            .char-left {
+                color: $shade-3;
+            }
+            #administrative_areas {
+                background: #fff;
+                border: 1px solid $shade-2;
+                color: $shade-4;
+                height: 38px;
+            }
+        }
+        .modal-footer {
+            border-top: none !important;
+            padding: 32px;
+            button {
+                width: 120px;
+                padding: 12px;
+                background-color: #fff !important;
             }
         }
     }
 }
 
-#add-interests-modal {
-    .modal-content {
-        input[type="text"] {
-            width: 100% !important;
-            margin-top: 17px;
-            font-size: 15px;
-        }
-    }
-}
 
-#add-makerspace-modal {
-    .modal-content {
-        .makerspace {
-            width: 60%;
-            margin: auto;
-            label {
-                width: 100%;
-            }
-            a.btn-white {
-                padding: 5px;
-                margin-top: 10px;
-                font-size: 12px;
-                border-radius: 4px;
-            }
-            label {
-                margin-top: 5px;
-                width: 100%;
-            }
-            input[type="text"] {
-                width: 100%;
-                font-size: 15px;
-            }
-            .maker-group {
-                margin-bottom: 20px;
-            }
-            i {
-                font-size: 15px;
-            }
-        }
-    }
-}
-
-#add-bio-modal {
-    resize: none;
-    textarea {
-        width: 100%;
-        min-height: 170px;
-        overflow: visible;
-        font-size: 15px;
-    }
-}
-
-#edit-info-modal {
-    label {
-        display: block;
-    }
-    #edit-nickname {
-        width: 50%;
-    }
-    #edit-city {
-        width: 30%;
-        float: left;
-    }
-    #edit-state {
-        width: 10%;
-        margin-left: 5%;
-        float: left;
-    }
-}
 
 #edit-cover-modal {
     .modal-dialog {
@@ -1538,8 +1648,6 @@
         height: 275px;
         overflow: hidden;
         position: relative;
-        background: url('../images/placeholder.png') center center;
-        background-size: cover;
         .card-img-top {
             border-radius: 0;
         }
@@ -1565,7 +1673,7 @@
             color: $text-color-6;
         }
         .maker-nickname {
-            @include desc-font-5 ();
+            @include desc-font-1 ();
             // 14 pt
             margin-bottom: 2px;
         }
@@ -1920,8 +2028,6 @@
             // left: -25px;
             margin-bottom: -20px;
             margin-right: -15px;
-            background: url('../images/placeholder.png') center center;
-            background-size: cover;
         }
     }
 

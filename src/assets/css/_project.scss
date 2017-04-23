@@ -111,9 +111,7 @@
 		.project-body-content {
 			padding: 16px;
 			background-color: white;
-			-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+			@include boxShadow(2px, 2px ,8px, $shade-3);
 			p {
 				 @include desc-font-1();
 				 line-height: inherit !important;
@@ -122,9 +120,7 @@
 	}
 	.feedback-group {
 		background-color: white;
-		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.login-link {
 			padding: 10px;
 			.feedback-label {
@@ -179,9 +175,7 @@
 			.project-body-content {
 			padding: 16px;
 			background-color: white;
-			-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-			-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-			box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		 	@include boxShadow(2px, 2px ,8px, $shade-3);
 			p {
 				@include desc-font-1();
 				line-height: inherit !important;
@@ -193,9 +187,7 @@
 				background-color: white;
 				padding: 18px 10px 34px 10px;
 				text-align: center;
-				-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-				-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-				box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+				@include boxShadow(2px, 2px ,8px, $shade-3);
 				p {
 					color: $red !important;
 					text-align: center;
@@ -215,9 +207,7 @@
 				background-color: white;
 				margin-top: 26px;
 				padding: 10px 10px 26px 10px;
-				-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-				-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-				box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+				@include boxShadow(2px, 2px ,8px, $shade-3);
 				.tools, .materials, .boards-kits {
 					margin-bottom: 30px;
 					p {
@@ -412,9 +402,7 @@
 	.aha {
 		margin-bottom: 20px;
 		border: none;
-		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.card-heading {
 			padding: 6px 8px 0px 8px;
 			p {
@@ -435,9 +423,7 @@
 	.uh-oh {
 		margin-bottom: 20px;
 		border: none;
-		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.card-heading {
 			padding: 6px 8px 0px 8px;
 			p {
@@ -733,13 +719,11 @@ header.showcase-project {
     // cursor:pointer;
     background-color: white;
 		padding: 0px;
-		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.left-side {
 			padding-left: 0px;
 			  .image-container {
-						@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+						@include boxShadow(2px, 2px ,8px, $shade-3);
         img {
             width: 100%;
             height: 400px;
@@ -862,9 +846,7 @@ header.showcase-project {
         padding-bottom: 0;
         padding-left: 0;
 				border: 1px solid #4ab0d8;
-        -moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        -webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-        box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+        @include boxShadow(2px, 2px ,8px, $shade-3);
 				&:hover {
 					cursor: pointer;
 				}

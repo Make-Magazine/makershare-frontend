@@ -38,7 +38,7 @@ export class ProjectStoryComponent implements OnInit {
     // console.log(this.projectInfo);
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
-      // console.log(this.currentUser)
+       console.log(this.currentUser)
     })
     this.getComments();
     this.buildForm();
@@ -52,7 +52,7 @@ export class ProjectStoryComponent implements OnInit {
               // console.log(data)
               this.collabs[i] = {};
               this.collabs[i] = data[0];
-              // console.log(this.collabs[i])
+               console.log(this.collabs[i])
             })
             // )
             i++

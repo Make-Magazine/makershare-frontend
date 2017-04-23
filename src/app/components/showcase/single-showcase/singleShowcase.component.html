@@ -6,7 +6,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12 left-side">
             <div class="image-container">
               <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
-              <img *ngIf="!showcase.cover_photo" src="http://placehold.it/365x290" alt="">
+              <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
               <div class="card-type-blue">
                 <div class="type-layer-2">
                   Showcase

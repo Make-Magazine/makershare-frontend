@@ -93,7 +93,7 @@
 		margin: 0px;
 		padding: 10px;
 		min-height: 360px;
-		@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.tabs-buttons {
 			width: 100%;
 			overflow: hidden;
@@ -168,7 +168,6 @@
 				}
 			}
 			.filters {
-				// border: 1px solid $main-grey;
 				p {padding-left: 30px;}
 			}
 			.entries {
@@ -186,7 +185,7 @@
 						position: relative;
 						overflow: hidden;
 						height: 180px;
-						@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+						@include boxShadow(2px, 2px ,8px, #191919);
 						img {
 							position: absolute;
 							z-index: -2;
@@ -273,20 +272,15 @@
 				.value {font-size: 11px;padding-top: 10px;}
 			}
 			.followers {
-				//display: none;
 				width: 100%;
 				overflow: hidden;
 				margin: auto;
 				// .vote {
-				// 	position: static;
 				// }
 				.follower-card {
-					// height: 190px;
 					position: relative;
-					// padding-bottom: 30px;
 					margin-top: 25px;
 					margin-bottom: 20px;
-					// border: 1px solid $main-grey;
 					-webkit-box-sizing: border-box;
 					   -moz-box-sizing: border-box;
 					        box-sizing: border-box;
@@ -315,7 +309,7 @@
 					width: 220px;
 					height: 180px;
 					overflow: hidden;
-					@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+					@include boxShadow(2px, 2px ,8px, $shade-3);
 					img {
 						max-width: 100%;
 						height: auto;
@@ -330,9 +324,7 @@
     overflow: hidden;
     cursor:pointer;
     background-color: $challenge-bg;
-		-moz-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		-webkit-box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
-		box-shadow: 3px 3px 5px rgba(136, 136, 136, 0.5);
+		@include boxShadow(2px, 2px ,8px, $shade-3);
 		.left-side {
 			padding: 0px;
 			overflow: hidden;
@@ -347,7 +339,7 @@
         }
     }
     .image-container {
-					@include boxShadow(3px, 3px, 5px, rgba(136, 136, 136, 0.5) );
+				@include boxShadow(2px, 2px ,8px, #191919);
         img {
             height: auto;
         }

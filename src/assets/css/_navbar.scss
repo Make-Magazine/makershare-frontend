@@ -17,13 +17,16 @@ header {
             .nav-item {
                 margin-left: 15px;
                 a {
-                    font-size: 15px;
+                    font-size: 1.3em;
                 }
                 .btn {
-                    font-size: 12px;
+                    font-size: 1em;
+                    padding: 5px 9px;
                 }
                 &.button-container-main-1 {
-                    height: 34px;
+                    height: 30px;
+                    margin-left: 20px;
+                    margin-top: 10px;
                 }
             }
         }

@@ -1,7 +1,7 @@
 <div class="challenge-card row" *ngIf="challenge && !front">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
     <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.cover_image" src="http://placehold.it/365x290" alt="">
+    <img *ngIf="!challenge.cover_image" src="./assets/images/placeholder.png" alt="">
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
@@ -64,9 +64,16 @@
 
 
 <div class="front-challenge-card row" *ngIf="challenge && front && !first">
-  <div class="col-md-6 col-sm-12 image-container">
-    <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.challenge_home_photo" src="http://placehold.it/365x290" alt="">
+  <div class="col-md-6 col-sm-12">
+    <div *showItBootstrap="['sm','xs']">
+      <div class="card-partnership-mobile" *ngIf="challenge.sponsored_by">
+        <p>Sponsored by {{challenge.sponsored_by}}</p>
+      </div>
+    </div>
+    <div class="image-container">
+      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+      <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
+    </div>
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
@@ -77,14 +84,16 @@
   <div class="col-md-6 col-sm-12 content-container">
     <div class="card-container h-100">
       <div class="card h-100">
-        <div class="card-partership" *ngIf="challenge.sponsored_by">
-          <p>Sponsored by {{challenge.sponsored_by}}</p>
+        <div *hideItBootstrap="['sm','xs']">
+          <div class="card-partership" *ngIf="challenge.sponsored_by">
+            <p>Sponsored by {{challenge.sponsored_by}}</p>
+          </div>
         </div>
         <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
-        <div class="challene-card-footer d-flex flex-column flex-md-row mt-auto align-items-md-center">
+        <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">
             <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
               <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
@@ -96,8 +105,8 @@
           <div class="challenge-card-footer-2 ml-md-3">
             <div class="challenge-card-count">
               <span class="entries-count">{{countProjects}}
-              <span *ngIf="countProjects>1">Entries</span>
-              <span *ngIf="countProjects <= 1">Entry</span>
+              <span *ngIf="countProjects != 1">Entries</span>
+              <span *ngIf="countProjects == 1">Entry</span>
               </span>
               <!--<span class="follow-count">{{challenge.followers}}
                       <span *ngIf="challenge.followers>1">Followers</span>
@@ -106,11 +115,11 @@
               </span>-->
             </div>
             <div class="challenge-card-status">
-              <span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
-              <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
+              <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>-->
+              <!--<span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>-->
               <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
-              <div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date.value}}</span>
+              <!--<div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>-->
+              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close: <br> {{challenge.challenge_end_date.value}}</span>
             </div>
           </div>
         </div>
@@ -126,7 +135,7 @@
 <div class="front-challenge-card challenge-card-full row" *ngIf="challenge && front && first">
   <div class="image-container">
     <img *ngIf="challenge.hero_mission_cover" src="{{challenge.hero_mission_cover}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.hero_mission_cover" src="http://placehold.it/365x290" alt="">
+    <img *ngIf="!challenge.hero_mission_cover" src="./assets/images/placeholder.png" alt="">
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
