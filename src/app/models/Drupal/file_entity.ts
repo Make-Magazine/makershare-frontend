@@ -7,4 +7,7 @@ export interface FileEntity {
   filesize?:number;
   type?:string;
   status?:number;
+  uri_full?:URL;
+  uid?:number;
+  filepath?:string;
 }
