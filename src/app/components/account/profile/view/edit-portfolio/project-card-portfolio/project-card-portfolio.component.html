@@ -105,11 +105,12 @@
       <a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
         <p *ngIf="type == 'showcase'" class="maker-name">{{project.first_name}} {{project.last_name}}</p>
       </a>
-      <!--<div class="card-categories" *ngIf="project.project_categories">
-        <span class="project.categories" *ngFor="let category of project.project_categories">
-          <span>{{category.name}}<span class="tags-comma">,</span></span>
+      <div class="card-categories" *ngIf="project.project_categories">
+        
+        <span class="project-categories" *ngFor="let category of project.project_categories">
+          <span>{{category}}<span class="tags-comma">,</span></span>
         </span>
-      </div>-->
+      </div>
     </div>
     <div class="card-block container">
       <div class="row">
@@ -127,8 +128,9 @@
           <div class="card-stats mt-auto">
             <ul class="list-unstyled d-flex justify-content-start align-items-center">
               <li>
-                <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
                 <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+                <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                 <span *ngIf="!project.number_of_likes">0</span>
               </li>
               <li>

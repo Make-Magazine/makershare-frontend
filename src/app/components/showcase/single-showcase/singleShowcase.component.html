@@ -14,7 +14,7 @@
               </div>
             </div>
             <div class="showcase-card-footer-3">
-              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid"></app-user-card>
+              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid" [showMessage]="false"></app-user-card>
             </div>
           </div>
           <div class="col-lg-8 col-md-6 col-sm-12 content-container">
@@ -33,14 +33,14 @@
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                         <span class="views-count">1129</span>
                       </div>
-                      <div class="projects-count-div">
+                      <!--<div class="projects-count-div">
                         <span class="projects-count">{{projectsCount}}
                            <span *ngIf="projectsCount>1">projects</span>
                         <span *ngIf="projectsCount<=1">project</span>
                         </span>
-                      </div>
+                      </div>-->
                       <div class="showcase-date" *ngIf="showcase.last_updated">
-                        <span class="update-date">Last update: {{showcase.last_updated}}</span>
+                        <span class="update-date">Last updated: {{showcase.last_updated}}</span>
                       </div>
                     </div>
                   </div>
