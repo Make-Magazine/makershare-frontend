@@ -805,9 +805,12 @@ header.showcase-project {
 					margin-bottom: 2px;
 				}
 				.card-tags {
-					color: $text-color-2;
+					color: $red;
 					font-size: 14px;
+					font-weight: bold;
 					.project-tag {
+						color: $text-color-2;
+						font-weight: normal;
 						.tags-comma {
 							padding-right: 2px;
 						}

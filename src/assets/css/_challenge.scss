@@ -722,3 +722,24 @@
 
 
 }
+
+/*challenge enter modal popup */
+.challenge-enter-modal {
+    background-color: $site-bg;
+    .modal-header {
+        border-bottom: none !important;
+    }
+    .modal-body {
+        button {
+            width: 120px;
+            padding: 12px;
+            background-color: #fff !important;
+        }
+        .btn-load-more:hover {
+            cursor: pointer;
+        }
+    }
+    .modal-footer {
+        border-top: none !important;
+    }
+}
