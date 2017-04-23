@@ -6559,6 +6559,8 @@ img {
       min-height: 116px;
       color: #4F4F4F;
       line-height: 100% !important; }
+    .page-workshop-individual .learn-card .card-container .learning-objective {
+      color: black; }
     .page-workshop-individual .learn-card .card-container .learn-card-footer-2 {
       font-size: 14px;
       color: #4F4F4F; }
