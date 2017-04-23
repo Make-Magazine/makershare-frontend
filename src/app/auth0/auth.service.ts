@@ -64,7 +64,7 @@ export class Auth implements OnInit {
          
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
-              // console.log(res);
+               console.log(res);
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
@@ -143,13 +143,14 @@ export class Auth implements OnInit {
     // Remove token from localStorage
     this.userService.auth0_logout().subscribe(res => {
       this.mainService.removeCookies();
+      
       this.router.navigateByUrl('/');
     }, err => {
     });
       localStorage.removeItem('id_token');
       localStorage.removeItem('user_id');
       localStorage.removeItem('user_name');
-
+      localStorage.removeItem('user_photo');
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
   }
   

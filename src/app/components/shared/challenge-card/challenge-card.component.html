@@ -24,23 +24,27 @@
         </div>
         <div class="challene-card-footer d-flex">
           <div class="challene-card-footer-1">
-            <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
+            <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 376">
               <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
             </div>
             <div class="button-container-sec-2" *ngIf="challenge.status_id == 376">
               <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+            </div>-->
+            <div class="button-container-main-1" >
+              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
             </div>
           </div>
           <div class="challenge-card-footer-2 ml-3">
             <div class="challenge-card-count">
               <span class="entries-count">{{countProjects}}
-                       <span *ngIf="countProjects>1">Entries</span>
-              <span *ngIf="countProjects <= 1">Entry</span>
+                <span *ngIf="countProjects>1">Entries</span>
+                <span *ngIf="countProjects==1">Entry</span>
+                <span *ngIf="countProjects <= 1">Entries</span>
               </span>
               <span class="follow-count">{{challenge.followers}}
-                      <span *ngIf="challenge.followers>1">Followers</span>
-              <span *ngIf="challenge.followers==1">Follower</span>
-              <span *ngIf="!challenge.followers">0 Follower</span>
+                <span *ngIf="challenge.followers>1">Followers</span>
+                <span *ngIf="challenge.followers==1">Follower</span>
+                <span *ngIf="!challenge.followers">0 Followers</span>
               </span>
             </div>
             <div class="challenge-card-status">

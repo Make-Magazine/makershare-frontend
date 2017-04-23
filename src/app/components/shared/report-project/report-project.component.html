@@ -12,20 +12,22 @@
     <div class="modal-body container">
       <div class="row">
         <div class="col-md-12">
-          <h4 class="modal-title">Select an reason for reported porject.</h4>
+          <h4 class="modal-title">Select a reason for reporting this project.</h4>
         </div>
         <div class="col-md-12">
           <form class="row" [formGroup]="reportForm">
             <div class="form-group col-md-6">
               <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
                 <option [value]="none" selected disabled>Select a reason</option>
-                <option value="annoying">This project is annoying me</option>
-                <option value="pretending">They're pretending to be me or someone </option>
-                <option value="safe">This project Isn't safe for work</option>
+                <option value="not_safe">Not safe for work</option>
+                <option value="hate_language">Uses hate language</option>
+                <option value="copyright">Violates a copyright</option>
+                <option value="misleading">Includes misleading or unsafe project advice</option>
+                <option value="other">Other</option>
             </select>
             </div>
             <div class="form-group col-md-12">
-              <textarea class="w-100 p-2" placeholder="write a reason" cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
+              <textarea class="w-100 p-2" placeholder="Explain the problem in more detail" cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
             </div>
           </form>
         </div>
