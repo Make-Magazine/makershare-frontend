@@ -819,19 +819,6 @@
             width: 100%;
         }
     }
-    .image-top-lg {
-        background-color: #bbb;
-        overflow: hidden;
-        position: relative;
-        height: 275px;
-        .card-img-top {
-            border-radius: 0;
-        }
-        img {
-            height: 100%;
-            width: 100%;
-        }
-    }
     .card-block {
         padding: 0 15px;
         position: relative;
@@ -958,6 +945,72 @@
                     margin: 0px;
                 }
             }
+        }
+    }
+}
+
+.lg-card {
+    .icons-side-project {
+        position: absolute;
+        z-index: 11;
+        top: 14px;
+        right: 0;
+    }
+    .content-side {
+        padding: auto;
+        .card-stats {
+            ul {
+                width: 100%;
+                margin-bottom: 6px; 
+                span {
+                    color: $text-color-3;
+                }
+            }
+        }
+    }
+    .project-maker-lg {
+        position: absolute;
+        z-index: 11;
+        bottom: 6px;
+        left: 14px;
+    }
+    .card-categories {
+        position: absolute;
+        z-index: 11;
+        bottom: 6px;
+        right: 14px;
+        color: #fff;
+        .project-categories {
+            color: #fff;
+            font-size: 14px;
+            .tags-comma {
+                padding-right: 2px;
+            }
+            &:last-child .tags-comma {
+                display: none;
+            }
+        }
+    }
+    .card-title-project {
+        @include card-header-font-md();
+        color: $text-color-1;
+        margin: 0;
+        padding-top: 2px;
+    }
+    .card-block {
+        padding: 8px 15px;  
+    }
+    .image-top-lg {
+        background-color: #bbb;
+        overflow: hidden;
+        position: relative;
+        height: 405px;
+        .card-img-top {
+            border-radius: 0;
+        }
+        img {
+            height: 100%;
+            width: 100%;
         }
     }
 }
