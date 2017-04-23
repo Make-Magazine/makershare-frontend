@@ -17,7 +17,7 @@
 
             <div *ngIf="workshop.uid" class="default">
 
-              <app-learn-user-card [uid]="workshop.uid" [leader]="workshop.leader_name"></app-learn-user-card>
+              <app-user-card [uid]="workshop.uid" ></app-user-card>
             </div>
           </div>
           <!-- End image-container -->
@@ -41,6 +41,7 @@
                 </div>
                 <div class= "learning-objective" *ngIf="workshop.learning_objectives"> 
                   <h3>In this workshop you will:</h3>
+                  <br>
                   <p [innerHTML]="workshop.learning_objectives"></p>
                 </div>
 
@@ -91,22 +92,24 @@
                 <div class="row">
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
                     <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                      <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(nid)">
+                     <h4 [innerHTML]="object.lesson_name"></h4>
+                      <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
                       <div class="card-block">
-                        <h4 class="card-title">{{object.learning_content_type}}</h4>
-                        <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-                        <p class="card-text" [innerHTML]="object.object_title"> </p>
+                      <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
+                    
                       </div>
 
                       <div class="button-container-main-1  modal-block">
-                        <span class="btn btn-main" (click)="objectDetails(object.nid)">LAUNCH READER</span>
+                        <span class="btn btn-main" (click)="objectDetails(object.nid)">Read the PDF</span>
                       </div>
                       <!--<div class="card-block modal-block">
                           <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</a>
                         </div>-->
                     </div>
                     <div class="media-body col-lg-9">
-                      <h4 [innerHTML]="object.lesson_name"></h4>
+                       
+                        <h4 class="card-title">{{object.learning_content_type}}:<p [innerHTML]="object.object_title"></p></h4>
+                          
                       <div [innerHTML]="object.lesson_description"> </div>
                     </div>
                   </div>
@@ -120,8 +123,7 @@
                   <!---FOR Video CONTENT TYPE -->
 
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Video' ">
-                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}" (click)="open(content,i,'overlay')"
-                      data-toggle="modal" data-target="#previewer">
+                    <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}"  (click)="objectDetails(object.nid)">
                       <div class="video-image">
                         <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap">
                       </div>
@@ -158,8 +160,7 @@
 
                 <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'Book' ">
                   <div class="card  col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                    <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="open(content,i,'preview')"
-                      data-toggle="modal" data-target="#previewer">
+                    <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap"(click)="objectDetails(object.nid)">
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
                         <div class="card-text" *ngIf="object.chapter"> Number of Pages: {{object.chapter}} </div>
@@ -169,7 +170,7 @@
                         <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</a>
                       </div>-->
                       <div class="button-container-main-1  modal-block">
-                        <span class="btn btn-main" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</span>
+                        <span class="btn btn-main" (click)="objectDetails(object.nid)">LAUNCH READER</span>
                       </div>
                   </div>
                   <div class="media-body col-sm-9">
@@ -245,10 +246,10 @@
           </ul>
         </aside>
         <!-- End aside -->
-        <div class="container">
-          <div class="row">
-            <div *ngFor="let lesson of lessons" class="related-books mt-3 mb-3 col-md-6  suggest-card">
-              <div *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+        <div class="container" *ngFor="let lesson of lessons">
+          <div class="row"  *ngIf="lesson.o_reilly || lesson.barnes_noble || lesson.amazon">
+            <div  class="related-books mt-3 mb-3 col-md-6  suggest-card">
+          
                 <div *ngIf="lesson.book_cover" class="media links-body" id="lesson">
                   <img class="d-flex align-self-start mr-3" src="{{lesson.book_cover}}" alt="Generic placeholder image">
                   <div class="media-body col-md-7">
@@ -264,7 +265,7 @@
                   </div>
                 </div>
                 <!-- End suggested -->
-              </div>
+            
               <!-- End of more lesson Checker -->
             </div>
           </div>

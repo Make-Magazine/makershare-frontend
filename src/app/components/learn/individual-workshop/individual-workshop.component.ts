@@ -120,12 +120,7 @@ export class IndividualWorkshopComponent implements OnInit {
               this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
               this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
 
-              // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.youtube_parser(this.objects[object].video);
-              // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-              //   this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-              //   this.objects[object].videoImage = data.thumbnail_url_with_play_button;
-              // });
-            }
+                    }
             else if (this.vimeo_parser(this.objects[object].video)) {
               // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
               // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
