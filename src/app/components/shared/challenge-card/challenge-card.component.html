@@ -123,7 +123,7 @@
               <!--<span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>-->
               <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
               <!--<div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>-->
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close: <br> {{challenge.challenge_end_date.value | date:'dd/MM/yyyy'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close <br> {{challenge.challenge_end_date.value | date:'dd/MM/yyyy hh:mm'}}{{challenge.challenge_end_date.timezone}}</span>
             </div>
           </div>
         </div>

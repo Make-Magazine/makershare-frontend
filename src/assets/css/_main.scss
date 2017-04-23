@@ -657,3 +657,12 @@ body {
     }
 }
 
+/* forms valid-errors */
+.valError {
+    border: 1px solid $red !important;
+    color: $red !important;
+}
+
+.valErrorString {
+    color: $red !important;
+}
