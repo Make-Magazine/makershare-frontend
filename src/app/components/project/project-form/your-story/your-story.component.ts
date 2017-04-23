@@ -60,7 +60,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
 
           uploadButton.onClick = function(evt){
             console.log('fire in the hole', evt);
-          }
+          };
 
           uploadButton['filebrowser']['onSelect'] = function(fileUrl, errorMessage) {
             console.log('working');
