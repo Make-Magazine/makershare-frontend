@@ -943,6 +943,7 @@
                 }
                 span {
                     margin: 0px;
+                    color: $text-color-3;
                 }
             }
         }
@@ -973,6 +974,8 @@
         z-index: 11;
         bottom: 6px;
         left: 14px;
+        width: auto;
+        max-width: 35%;
     }
     .card-categories {
         position: absolute;
@@ -980,6 +983,8 @@
         bottom: 6px;
         right: 14px;
         color: #fff;
+        max-width: 65%;
+        width: auto;
         .project-categories {
             color: #fff;
             font-size: 14px;
@@ -1836,6 +1841,7 @@
             }
             span {
                 margin: 0px;
+                color: $text-color-3;
             }
         }
     }
