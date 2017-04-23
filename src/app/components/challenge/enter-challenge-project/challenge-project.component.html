@@ -44,7 +44,7 @@
                             <span class="closed-status" *ngIf="challangeData.diffDays<=1">{{challangeData.diffDays}} DAY</span>
                             <span class="closed-status" *ngIf="challangeData.status_id == 376">{{challangeData.challenge_status}}</span>
                             <span class="open-status" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_status}}</span>
-                            <span class="challenge-end-date" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_end_date.value}}</span>
+                            <span class="challenge-end-date" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_end_date.value | date:'d/M/y'}}</span>
                           </div>
                         </div>
                       </div>

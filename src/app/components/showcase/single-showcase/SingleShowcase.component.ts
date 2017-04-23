@@ -98,6 +98,7 @@ export class SinglShowcaseComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('showcase', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.showcase = data[0];
+        console.log(this.showcase['last_updated'])
         //this.getProfile(this.showcase.uid);
 
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
