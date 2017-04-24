@@ -37,7 +37,8 @@ export class ViewComponent implements OnInit {
     thread_id: 0,
     body: ''
   };
-  id
+  id;
+  participants = [];
   constructor(
     private route: ActivatedRoute,
     private pm: PmService,
@@ -51,27 +52,36 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //this.getBlockedUser();
     this.getStatus();
     this.buildForm();
     this.getThreads();
     var thread_id;
     this.getCurrentUser();
-    this.getBlockedUser();
-
     this.loaderService.display(true);
+    this.userId = parseInt(localStorage.getItem('user_id'));
   }
   getThreads() {
     this.route.params
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
-        this.pm.getBlocked(this.msg.messages[0].author).subscribe(data => {
-          if (data.author == this.msg.messages[0].author) {
-            this.block = true;
-          } else {
-            this.block = false;
+        for (var i = 0; i < this.msg.participants.length; i++) {
+          if (this.msg.participants[i] != this.userId) {
+            this.userService.getUser(this.msg.participants[i]).subscribe(res => {
+              this.participants = this.participants.concat(res);
+            })
           }
-        })
+          if (this.msg.participants[i] != this.userId) {
+            this.pm.getBlocked(this.msg.participants[i]).subscribe(data => {
+              if (data.author) {
+                  this.block = true;
+              } else {
+                  this.block = false;
+                }
+            })
+          }
+        }
         this.messages = this.msg.messages
         for (let message of this.messages) {
           let i = 0
@@ -120,16 +130,19 @@ export class ViewComponent implements OnInit {
       this.reply.thread_id = this.msg.pmtid;
       this.reply.body = this.messageForm.value.body;
       this.pm.sendMessage(this.reply).subscribe(res => {
-        var newComment = {
-          thread_id: this.reply.thread_id,
-          user_photo: this.user['user_photo'],
-          first_name: this.user['first_name'],
-          last_name: this.user['last_name'],
-          body: this.reply.body,
-          timestamp: 'Now'
+        // var newComment = {
+        //   thread_id: this.reply.thread_id,
+        //   user_photo: this.user['user_photo'],
+        //   first_name: this.user['first_name'],
+        //   last_name: this.user['last_name'],
+        //   body: this.reply.body,
+        //   timestamp: 'Now'
 
-        }
-        this.messages.push(newComment);
+        // }
+        // this.messages.push(newComment);
+        this.participants = [];
+        this.messages = [];
+        this.getThreads();
       }, err => { });
     }
     this.messageForm.reset();
@@ -180,27 +193,37 @@ export class ViewComponent implements OnInit {
       let i = 0
       this.pm.deleteMessage(mesg.mid).subscribe(data => {
         this.deleted = data;
-        //console.log(this.deleted);
         i++
       });
     }
   }
   blockUser() {
-      this.pm.blockUser(this.userId, this.msg.messages[0].author).subscribe(data => {
-        this.blockedUser = data;
-        this.block = true;
-      })
+    for (var i = 0; i < this.msg.participants.length; i++) {
+      if (this.msg.participants[i] != this.userId) {
+        this.pm.blockUser(this.userId, this.msg.participants[i]).subscribe(data => {
+          this.blockedUser = data;
+          this.block = true;
+        })
+      }
+    }
   }
   unBlockUser() {
-    this.pm.unBlockUser(this.msg.messages[0].author).subscribe(data => {
-      this.unBlockedUser = data;
-      this.block = false;
-    })
+    for (var i = 0; i < this.msg.participants.length; i++) {
+      if (this.msg.participants[i] != this.userId) {
+        this.pm.unBlockUser(this.msg.participants[i]).subscribe(data => {
+          this.unBlockedUser = data;
+          this.block = false;
+        })
+      }
+    }
   }
   getBlockedUser() {
-    // this.pm.getBlocked(this.msg.messages[0].author).subscribe(data=>{
-    //   console.log(data);
-    // })
+    // for (var i = 0; i < this.msg.participants.length; i++) {
+    //   if (this.msg.participants[i] != this.userId) {
+    //     this.pm.getBlocked(this.msg.participants[i]).subscribe(data => {
+    //     })
+    //   }
+    // }
   }
 
   /*
@@ -219,11 +242,11 @@ export class ViewComponent implements OnInit {
   }
   deleteReplay(i) {
     this.loaderService.display(true);
-    this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data=>{
+    this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data => {
       this.loaderService.display(false);
     });
     //delete this.messages[i];
-    this.messages =[];
+    this.messages = [];
     this.getThreads();
   }
 
