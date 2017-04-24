@@ -16,17 +16,24 @@ import { MetaService } from '@nglibs/meta';
   styleUrls: ['./individual-workshop.component.css']
 })
 export class IndividualWorkshopComponent implements OnInit {
-  
-   customTitle: string;
+
+  customTitle: string;
   customDescription: string;
   customImage: string;
   workshop;
   element;
-  title={
-    title : "Questions",
-     placeholder: "Ask a question",
-     ifempty: "There is no questions yet ..",
-     join:"to Add Your question"
+  title = {
+    title: "Questions",
+    placeholder: "Ask a question",
+    ifempty: "There is no questions yet ..",
+    join: "to Add Your question"
+  };
+
+  navigateObject = {
+    name: String,
+    totalNumber: Number,
+    index: Number,
+    length: Number
   };
   //  title="Questions";
   objects;
@@ -47,7 +54,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubFile = false;
   epubLink;
   utubelink;
-  introlink= false;
+  introlink = false;
   file;
   workshopLeader = null;
   countlessons;
@@ -93,7 +100,7 @@ export class IndividualWorkshopComponent implements OnInit {
         this.customImage = this.workshop.cover_photo;
         if (this.workshop.introductory_video) {
           if (this.youtube_parser(this.workshop.introductory_video)) {
-            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
+            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) + ' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
             this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
             // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
             // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
@@ -120,7 +127,7 @@ export class IndividualWorkshopComponent implements OnInit {
               this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
               this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
 
-                    }
+            }
             else if (this.vimeo_parser(this.objects[object].video)) {
               // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
               // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
@@ -177,7 +184,7 @@ export class IndividualWorkshopComponent implements OnInit {
   }
   overlay(object) {
     delete this.popupPreview;
-     this.introlink= false;
+    this.introlink = false;
     this.epubFile = null;
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
@@ -215,16 +222,14 @@ export class IndividualWorkshopComponent implements OnInit {
       });
   }
 
-  introvideo(content)
-  
-  { 
-      this.introlink= true;  
-      delete this.popupPreview;
-      this.popupPreview = this.workshop.introductory_video;
-       this.modalService.open(content);
+  introvideo(content) {
+    this.introlink = true;
+    delete this.popupPreview;
+    this.popupPreview = this.workshop.introductory_video;
+    this.modalService.open(content);
   }
 
-     objectDetails(nid) {
-    this.router.navigate(['/workshops/lessons', nid]);
+  objectDetails(nid) {
+    this.router.navigate(['/workshops/lessons', this.nid, nid]);
   }
 }

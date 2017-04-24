@@ -4,18 +4,28 @@
       <div *ngIf="workshop" class="container learn-container">
         <div class="row learn-card d-flex flex-column flex-md-row ">
           <div class="col-md-4 individual-card-img">
-            <div *ngIf="!workshop.introductory_video" class="image-container">
+            <!--<div *ngIf="!workshop.introductory_video" class="image-container">
               <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
                    </div>
                 <div *ngIf="workshop.introductory_video" class="image-container"> 
                 <div [innerHTML]="workshop.introductory_video"></div>
-              </div>
-              <div class="card-type-grey-2">
+              </div>-->
+            <!--<div class="card-type-grey-2">
                 <div class="type-layer-2">
                   Learn
                 </div>
-              </div>
-       
+              </div>-->
+            <div class="image-container">
+              <img src="{{workshop.cover_photo}}" alt="" class="img-responsive">
+              <img *ngIf="workshop.introductory_video" class="play-image" src="./assets/images/video-icon.png" alt="" style="width: 100px;"
+                (click)="introvideo(content)">
+                <div class="card-type-grey-2">
+                  <div class="type-layer-2">
+                    Learn
+                  </div>
+                </div>
+            </div>
+
 
             <div *ngIf="workshop.uid" class="default">
 
@@ -98,7 +108,6 @@
                       <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
                       <div class="card-block">
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
-
                       </div>
 
                       <div class="button-container-main-1  modal-block">
@@ -282,23 +291,21 @@
   </div>
 </div>
 
-<!--<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div [innerHTML]="popupPreview"></div>-->
-<!--<div *ngIf="workshop.introductory_video ">
-       <app-video-display [link]="workshop.introductory_video"></app-video-display>
+    <div [innerHTML]="popupPreview"></div>
+    <!--<div *ngIf="workshop.introductory_video ">
+      <app-video-display [link]="workshop.introductory_video"></app-video-display>
     </div>-->
-
-<!--<div class="ebup-body ebup-content">
-    <div *ngIf="epubFile"  >
-      <app-book [link]="epubLink"></app-book>
-    </div>
-    </div>
-
+    <!--<div class="ebup-body ebup-content">
+      <div *ngIf="epubFile">
+        <app-book [link]="epubLink"></app-book>
+      </div>
+    </div>-->
   </div>
-</template>-->
+</template>

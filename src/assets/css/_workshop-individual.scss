@@ -302,7 +302,7 @@
 			padding: 0px;
 				iframe {
 				width: 100%;
-				max-width: 100%;
+				// max-width: 100%;
 			}
 		
 			img {
@@ -339,7 +339,7 @@
 				width: 70px;
 				height: 70px;
 			}
-		}
+		} 
 	
 		.container-content {
         position: relative;
@@ -387,6 +387,7 @@
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					min-height: 116px;
+					font-size: 1em !important;
 					color: #4F4F4F;
 					line-height: 100% !important;
 				}
@@ -455,27 +456,14 @@
 
  }
 
-.modal-dialog {
-	.modal-content {
-		.modal-body {
-			iframe {
-				width: 100%;
-				max-width: 100%;
-			}
-		}
-	// 	.ebup-content
-	//  {
-	// 	 width:950px !important;
-	//  }
-		.ebup-body{
-  	width: 930px;
-   }
-	
-	
-	}
-}
-.epub-width {
-			width: 930px;
-}
-
+// .modal-dialog {
+// 	.modal-content {
+// 		.modal-body {
+// 			iframe {
+// 				width: 100%;
+// 				max-width: 100%;
+// 			}
+// 		}
+// 	}
+// }
 
