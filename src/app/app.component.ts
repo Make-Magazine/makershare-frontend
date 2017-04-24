@@ -12,10 +12,9 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 export class AppComponent implements OnInit {
   showLoader: boolean;
-  showLoaderComponent: boolean;
+
   constructor(
     private loaderService: LoaderService,
-  //  private loaderComponentService:LoaderComponentService,
     private userService: UserService,
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
   ) { }

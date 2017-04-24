@@ -40,6 +40,7 @@ export class SingleObjectComponent implements OnInit {
   }
 
   GetWorkshopObjects(){
+    
     this.viewService.getView('workshop-objects-list', [['nid', this.WorkshopNid]]).subscribe(data => {
       data.forEach((object,index)=>{
         if(object.nid == this.CurrentObjectNid){

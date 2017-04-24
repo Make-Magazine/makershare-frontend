@@ -157,12 +157,12 @@
     }
     .page-search-content {
         .search-challenge-card {
-            height: auto !important;
+            height: auto;
         }
     }
     .search-learn-card {
         .learn-card {
-            height: auto !important;
+            height: auto;
         }
     }
     .main-header {
@@ -178,6 +178,47 @@
             }
         }
     }
+     .search-learn-card {
+         .learn-card {
+             height: 175px;
+             max-width: 345px;
+             .container-content {
+                 height: 175px;
+             }
+             .card-container {
+                 .card-title {
+                     font-size: 1.6em;
+                 }
+             }
+             .learn-card-footer-1 {
+                 position: absolute;
+                 right: 15px;
+             }
+         }
+    }
+    .page-search-content {
+        .showcase-card-backlayer-search  {
+            height: 175px;
+            .showcase-card-backlayer-search-2 {
+                .showcase-card {
+                    .card-container {
+                        .card-title {
+                            font-size: 1.8em;
+                            margin-bottom: 0px;
+                            max-height: 70px;
+                        }
+                    }
+                    .card {
+                        .showcase-type {
+                            p {
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    } 
 }
 
 @media only screen and (max-width: 991px) and (min-width:767px) {
