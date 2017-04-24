@@ -5,8 +5,8 @@
   <div class="modal-feedback">
     <div class="modal-header">
       <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
+			  <span aria-hidden="true">&times;</span>
+		  </button>
     </div>
     <div class="modal-body">
       <div *ngIf="submitted == false">
@@ -15,10 +15,12 @@
         <p *ngIf="full_name">Your name: {{full_name}}
           <p>
             <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event,CurrentType)" novalidate>
+ 
               <div class="form-group">
                 <label>I want to submit:	</label>
-                <select class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
-                   <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
+                <select type="text" class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
+                   <option disabled selected value="_none_" > -- select an option -- </option>
+                   <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" [innerHTML]="feedback_type.name"></option>
                 </select>
               </div>
               <div *ngIf="formErrors.field_want_submit && !CurrentType" class="alert alert-danger error-msg">
@@ -137,7 +139,7 @@
                   </label>
                   </div>
                 </div>
-                <small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
+                <!--<small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>-->
               </div>
             </form>
       </div>
