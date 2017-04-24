@@ -141,6 +141,14 @@
                 </div>
                 <!--<small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>-->
               </div>
+               <div class="modal-footer">
+                  <ul class="list-unstyled actions">
+                    <li>
+                      <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
+                      <button type="submit" class="btn btn-load-more">Submit</button>
+                    </li>
+                  </ul>
+               </div>
             </form>
       </div>
       <div *ngIf="submitted == true">
@@ -150,13 +158,6 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <ul class="list-unstyled actions">
-        <li>
-          <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
-          <button type="submit" class="btn btn-load-more">Submit</button>
-        </li>
-      </ul>
-    </div>
+   
   </div>
 </template>

@@ -185,7 +185,7 @@ export class FeedbackComponent implements OnInit {
     //document.getElementById('field_bug_in_page').innerHTML=this.full_url
     this.feedbackForm = this.fb.group({
       // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
-      'field_want_submit': [this.feedback_types,Validators.required],
+      'field_want_submit': ['',Validators.required],
       'field_my_bug': '',
       'field_would_like': '',
       //url validation
