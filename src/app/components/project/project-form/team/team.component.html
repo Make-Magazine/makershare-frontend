@@ -22,7 +22,7 @@
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
               <label for="collab-name-{{i + 1}}">Name</label>
-              <input #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_team_member}" #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
               <div *ngIf="searchFailed">
                 User not registered <button type="button" class="btn btn-primary" (click)="InviteUser(username,i)">Invite</button>
               </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
               <label for="collab-role-{{i + 1}}">Role</label>
-              <input maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="What role did this person play on the project?" [formControl]="Member.controls.field_membership_role">
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_membership_role}" maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="What role did this person play on the project?" [formControl]="Member.controls.field_membership_role">
                {{Member.controls.field_membership_role.value.length}}/140
               <small *ngIf="formErrors.field_maker_memberships[i].field_membership_role" class="text-danger">
                 {{formErrors.field_maker_memberships[i].field_membership_role}}
@@ -43,7 +43,7 @@
             <div class="form-group sort d-flex flex-row flex-md-column align-items-center">
               <label for="collab-order-{{i + 1}}">Sort Order</label>
               <div class="d-flex flex-row">
-                <input type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
+                <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_sort_order}" type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
                 <div class="carets d-flex flex-column">
                   <i *ngIf="i > 1 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
                   <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && i != 0 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>

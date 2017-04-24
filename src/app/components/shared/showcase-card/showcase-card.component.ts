@@ -8,6 +8,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 })
 export class ShowcaseCardComponent implements OnInit {
   showcase = [];
+  userId;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -16,6 +17,7 @@ export class ShowcaseCardComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.getShowcases();
+    this.userId = localStorage.getItem('user_id');
   }
 
   getShowcases() {

@@ -3,6 +3,22 @@
     <header class="explore-header">
       <div class="container">
         <h3>Projects</h3>
+
+        <ul class="list-unstyled explore-tags">
+          <li *ngFor="let parent of categories_parents">
+            <a class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
+          </li>
+        </ul>
+        <div class="submenus">
+          <div *ngFor="let parent of categories_parents">
+            <ul class="list-unstyled parent_{{parent.tid}}">
+              <li *ngFor="let term of categories_childs">
+                <a *ngIf="term.parent_tid == parent.tid" (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}"
+                  [innerHTML]="term.name"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="filters">
           <div class="container">
             <div class="row justify-content-end align-items-center">
@@ -19,30 +35,15 @@
                   <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
                   <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
                   <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
-                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most Liked</a>
-                  <a class="dropdown-item" (click)="mostForked()" class="btn">Most Forked</a>
+                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most liked</a>
+                  <a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>
 
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- End filters -->
-        <ul class="list-unstyled explore-tags">
-          <li *ngFor="let parent of categories_parents">
-            <a class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
-          </li>
-        </ul>
-        <div class="submenus">
-          <div *ngFor="let parent of categories_parents">
-            <ul class="list-unstyled parent_{{parent.tid}}">
-              <li *ngFor="let term of categories_childs">
-                <a *ngIf="term.parent_tid == parent.tid" (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}"
-                  [innerHTML]="term.name"></a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!-- End filters -->        
       </div>
     </header>
     <!--/header -->
@@ -51,7 +52,7 @@
     </div>
     <div class="text-center pt-3 pb-5">
       <div *ngIf="!hideLoadMore">
-        <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
+        <a class="btn btn-load-more" *ngIf="projects.length != 0" (click)="loadMoreProject()">Load more</a>
       </div>
     </div>
   </div>
