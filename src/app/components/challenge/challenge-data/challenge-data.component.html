@@ -53,13 +53,14 @@
                         <div class="challenge-card-footer-2 ml-3">
                           <div class="challenge-card-count">
                             <span class="entries-count">{{countProjects}}
-                       <span *ngIf="countProjects>1">Entries</span>
-                            <span *ngIf="countProjects <= 1">Entry</span>
+                              <span *ngIf="countProjects>1">Entries</span>
+                       <span *ngIf="countProjects==0">Entries</span>
+                            <span *ngIf="countProjects == 1">Entry</span>
                             </span>
                             <span class="follow-count">{{no_of_followers}}
                             <span *ngIf="no_of_followers>1">Followers</span>
                             <span *ngIf="no_of_followers==1">Follower</span>
-                            <span *ngIf="!no_of_followers">Follower</span>
+                            <span *ngIf="!no_of_followers">Followers</span>
                             </span>
                           </div>
                           <div class="challenge-card-status">
@@ -68,7 +69,8 @@
                             <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.challenge_status}}</span>
                             <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.challenge_status}}</span>
                             <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> <br>Submissions close: {{challenge.challenge_end_date | date:'d/M/y'}}</span>
-                            <span class="challenge-end-date" *ngIf="challenge.status_id != 376"> <br>Submissions close: {{challenge.challenge_end_date | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> <br>In review. Winners to be announced: {{challenge.winners_announcement_date | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date | date:'d/M/y'}}</span>
 
                           </div>
                         </div>

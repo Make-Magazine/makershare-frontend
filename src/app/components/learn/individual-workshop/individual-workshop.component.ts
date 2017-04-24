@@ -16,16 +16,24 @@ import { MetaService } from '@nglibs/meta';
   styleUrls: ['./individual-workshop.component.css']
 })
 export class IndividualWorkshopComponent implements OnInit {
-  
-   customTitle: string;
+
+  customTitle: string;
   customDescription: string;
   customImage: string;
   workshop;
-  title={
-    title : "Questions",
-     placeholder: "Ask a question",
-     ifempty: "There is no questions yet ..",
-     join:"to Add Your question"
+  element;
+  title = {
+    title: "Questions",
+    placeholder: "Ask a question",
+    ifempty: "There is no questions yet ..",
+    join: "to Add Your question"
+  };
+
+  navigateObject = {
+    name: String,
+    totalNumber: Number,
+    index: Number,
+    length: Number
   };
   //  title="Questions";
   objects;
@@ -46,7 +54,7 @@ export class IndividualWorkshopComponent implements OnInit {
   epubFile = false;
   epubLink;
   utubelink;
-  introlink= false;
+  introlink = false;
   file;
   workshopLeader = null;
   countlessons;
@@ -85,13 +93,14 @@ export class IndividualWorkshopComponent implements OnInit {
             this.workshopLeader = data[0];
             // console.log(this.workshopLeader)
           });
+          //  console.log(this.workshopLeader)
         }
         this.customTitle = this.workshop.workshop_title;
         this.customDescription = this.workshop.brief_description;
         this.customImage = this.workshop.cover_photo;
         if (this.workshop.introductory_video) {
           if (this.youtube_parser(this.workshop.introductory_video)) {
-            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) +' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
+            this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) + ' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
             this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
             // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
             // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
@@ -118,11 +127,6 @@ export class IndividualWorkshopComponent implements OnInit {
               this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
               this.objects[object].videoPic = "https://img.youtube.com/vi/" + this.youtube_parser(this.objects[object].video) + "/hqdefault.jpg";
 
-              // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.youtube_parser(this.objects[object].video);
-              // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
-              //   this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
-              //   this.objects[object].videoImage = data.thumbnail_url_with_play_button;
-              // });
             }
             else if (this.vimeo_parser(this.objects[object].video)) {
               // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
@@ -166,6 +170,9 @@ export class IndividualWorkshopComponent implements OnInit {
         this.epubLink = this.objects[i].book;
         this.popupPreview = null;
         this.epubFile = true;
+        this.element = document.getElementsByClassName("modal-content");
+      //  console.log(this.element)
+        // this.element.classList.add('epub-width');
       } else {
         var x = this.objects[i].book.split('.').pop();
         delete this.popupPreview;
@@ -177,14 +184,12 @@ export class IndividualWorkshopComponent implements OnInit {
   }
   overlay(object) {
     delete this.popupPreview;
-     this.introlink= false;
+    this.introlink = false;
     this.epubFile = null;
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
     }
-    // else {
-    //   this.popupPreview = this.workshop.introductory_video;
-    // }
+  
   }
   youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -215,12 +220,14 @@ export class IndividualWorkshopComponent implements OnInit {
       });
   }
 
-  introvideo(content)
-  
-  { 
-      this.introlink= true;  
-      delete this.popupPreview;
-      this.popupPreview = this.workshop.introductory_video;
-       this.modalService.open(content);
+  introvideo(content) {
+    this.introlink = true;
+    delete this.popupPreview;
+    this.popupPreview = this.workshop.introductory_video;
+    this.modalService.open(content);
+  }
+
+  objectDetails(nid) {
+    this.router.navigate(['/workshops/lessons', this.nid, nid]);
   }
 }

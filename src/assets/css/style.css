@@ -4178,7 +4178,8 @@ footer {
       font-weight: 500;
       text-transform: capitalize;
       line-height: 120%;
-      color: #828282; }
+      color: #828282;
+      color: #333333; }
     .page-project .feedback-group .login-link {
       padding: 10px; }
       .page-project .feedback-group .login-link a {
@@ -4471,7 +4472,7 @@ footer {
     font-size: 14px;
     color: #828282; }
   .page-project .license-report .report {
-    font-size: 14px;
+    font-size: 10px;
     color: #00AEEF; }
   .page-project .panel {
     border-width: 3px;
@@ -4579,11 +4580,12 @@ header.showcase-project .next {
   .feedback-group .comment-body p {
     margin: 0px;
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 1.3em;
     font-weight: 400;
     text-transform: none;
-    line-height: 100%;
+    line-height: 110%;
     color: #828282;
+    color: #333333;
     line-height: inherit !important; }
   .feedback-group .new-comment {
     padding: 10px;
@@ -4603,10 +4605,10 @@ header.showcase-project .next {
         line-height: 100%;
         color: #828282;
         border: 1px solid #ccc;
-        color: #333333;
+        color: #4F4F4F;
         margin-top: 2px;
         position: relative;
-        padding: 0px 6px;
+        padding: 8px 10px;
         resize: none; }
         .feedback-group .new-comment .comment-body textarea .feedback-label {
           width: 100%;
@@ -4838,6 +4840,31 @@ header.showcase-project .next {
             float: left; }
             .project-search-card .project-card-small .maker-project-info .card-stats .icons-side-user .user-icon img {
               width: 30px; }
+
+.report {
+  color: #00AEEF;
+  font-size: 0.9em; }
+
+textarea {
+  border: 1px solid #DCDCDC;
+  color: #BDBDBD;
+  padding: 12px; }
+  textarea::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    text-align: left;
+    color: #BDBDBD; }
+  textarea::-moz-placeholder {
+    /* Firefox 19+ */
+    text-align: left;
+    color: #BDBDBD; }
+  textarea:-ms-input-placeholder {
+    /* IE 10+ */
+    text-align: center;
+    color: #BDBDBD; }
+  textarea:-moz-placeholder {
+    /* Firefox 18- */
+    text-align: center;
+    color: #BDBDBD; }
 
 .page-learn {
   background-color: white;
@@ -6755,6 +6782,8 @@ img {
   .page-workshop-individual .learn-card .image-container {
     position: relative;
     padding: 0px; }
+    .page-workshop-individual .learn-card .image-container iframe {
+      width: 100%; }
     .page-workshop-individual .learn-card .image-container img {
       width: 100%;
       height: auto; }
@@ -6820,8 +6849,11 @@ img {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       min-height: 116px;
+      font-size: 1em !important;
       color: #4F4F4F;
       line-height: 100% !important; }
+    .page-workshop-individual .learn-card .card-container .learning-objective {
+      color: black; }
     .page-workshop-individual .learn-card .card-container .learn-card-footer-2 {
       font-size: 14px;
       color: #4F4F4F; }
@@ -6842,10 +6874,6 @@ img {
   cursor: inherit !important; }
 .page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]).btn-border-tag:hover {
   cursor: inherit !important; }
-
-.modal-dialog .modal-content .modal-body iframe {
-  width: 100%;
-  max-width: 100%; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;

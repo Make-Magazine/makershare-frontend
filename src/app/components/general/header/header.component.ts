@@ -3,7 +3,8 @@ import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,49 +12,39 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+
   showSearchBox: boolean = false;
-  user_photo
+  user_photo: string;
   constructor(
     private userService: UserService,
     private router: Router,
     private auth: Auth,
-    private notificationBarService: NotificationBarService,
+    private profilePictureService: ProfilePictureService,
+  ) { }
 
-    ) {  }
 
   ngOnInit() {
-    this.userService.isLogedIn().subscribe(res => {
-      if(res == true){
-     this.user_photo = localStorage.getItem('user_photo');
-      }
-    });
-   // localStorage.setItem('redirectUrl', this.router.url);
-    this.user_photo = localStorage.getItem('user_photo');
-    
+    // this.userService.isLogedIn().subscribe(res => {
+    //   if (res == true) {
+    //     this.user_photo = localStorage.getItem('user_photo');
+    //   }
+    // });
+    // localStorage.setItem('redirectUrl', this.router.url);
+    // this.user_photo = localStorage.getItem('user_photo');
+    // this.profilePictureService.url.subscribe((val: URL) => {
+    //   this.user_photo = val;
+    // });
+    this.profilePictureService.url.subscribe((val: string) => {
+      this.user_photo = val;
+    })
+
   }
 
-  // Logout(event){
-  //   this.userService.logout().subscribe(res => {
-  //       this.isLoggedIn = false;
-  //       this.router.navigate(['']);
-  //   });
-  // }
-
-  
-
-  openSearchBox(){
+  openSearchBox() {
     this.showSearchBox = true;
-  } 
+  }
 
-  onNotify(event){
+  onNotify(event) {
     this.showSearchBox = false;
   }
-  note() {
-    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
-    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
-    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Success, autoHide: false, allowClose: true, hideOnHover: false });
-    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Info, autoHide: false, allowClose: true, hideOnHover: false });
-  }
-
 }

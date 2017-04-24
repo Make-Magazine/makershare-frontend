@@ -300,6 +300,10 @@
 		.image-container {
 			position: relative;
 			padding: 0px;
+				iframe {
+				width: 100%;
+				// max-width: 100%;
+			}
 		
 			img {
 				width: 100%;
@@ -335,7 +339,7 @@
 				width: 70px;
 				height: 70px;
 			}
-		}
+		} 
 	
 		.container-content {
         position: relative;
@@ -383,9 +387,13 @@
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					min-height: 116px;
+					font-size: 1em !important;
 					color: #4F4F4F;
 					line-height: 100% !important;
 				}
+			}
+			.learning-objective{
+				color: black;
 			}
 			.learn-card-footer-2 {
 				font-size: 14px;
@@ -448,13 +456,14 @@
 
  }
 
-.modal-dialog {
-	.modal-content {
-		.modal-body {
-			iframe {
-				width: 100%;
-				max-width: 100%;
-			}
-		}
-	}
-}
+// .modal-dialog {
+// 	.modal-content {
+// 		.modal-body {
+// 			iframe {
+// 				width: 100%;
+// 				max-width: 100%;
+// 			}
+// 		}
+// 	}
+// }
+
