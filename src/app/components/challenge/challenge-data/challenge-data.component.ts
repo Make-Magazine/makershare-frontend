@@ -150,7 +150,7 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
-        this.challenge = data[0
+        this.challenge = data[0];
         this.customTitle = this.challenge.title;
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
