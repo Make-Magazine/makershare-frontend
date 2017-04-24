@@ -1075,6 +1075,14 @@ body {
   top: 7px;
   right: -40px; }
 
+/* forms valid-errors */
+.valError {
+  border: 1px solid #ED1C24 !important;
+  color: #ED1C24 !important; }
+
+.valErrorString {
+  color: #ED1C24 !important; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -1271,7 +1279,6 @@ footer {
   text-transform: capitalize;
   line-height: 120%;
   color: #828282;
-  min-height: 24px;
   margin-bottom: 2px; }
   .user-card .user-name a {
     text-decoration: none;
@@ -1298,7 +1305,7 @@ footer {
 .user-card .user-city {
   color: #00AEEF;
   min-height: 21px;
-  margin-bottom: 4px; }
+  margin-bottom: 0px; }
   .user-card .user-city div {
     float: left;
     margin-right: 6px; }
@@ -2250,16 +2257,6 @@ footer {
     .project .image-top img {
       height: 100%;
       width: 100%; }
-  .project .image-top-lg {
-    background-color: #bbb;
-    overflow: hidden;
-    position: relative;
-    height: 275px; }
-    .project .image-top-lg .card-img-top {
-      border-radius: 0; }
-    .project .image-top-lg img {
-      height: 100%;
-      width: 100%; }
   .project .card-block {
     padding: 0 15px;
     position: relative; }
@@ -2373,7 +2370,65 @@ footer {
           .project .card-stats ul li img.project-views {
             width: 20px; }
         .project .card-stats ul li span {
-          margin: 0px; }
+          margin: 0px;
+          color: #BDBDBD; }
+
+.lg-card .icons-side-project {
+  position: absolute;
+  z-index: 11;
+  top: 14px;
+  right: 0; }
+.lg-card .content-side {
+  padding: auto; }
+  .lg-card .content-side .card-stats ul {
+    width: 100%;
+    margin-bottom: 6px; }
+    .lg-card .content-side .card-stats ul span {
+      color: #BDBDBD; }
+.lg-card .project-maker-lg {
+  position: absolute;
+  z-index: 11;
+  bottom: 6px;
+  left: 14px;
+  width: auto;
+  max-width: 35%; }
+.lg-card .card-categories {
+  position: absolute;
+  z-index: 11;
+  bottom: 6px;
+  right: 14px;
+  color: #fff;
+  max-width: 65%;
+  width: auto; }
+  .lg-card .card-categories .project-categories {
+    color: #fff;
+    font-size: 14px; }
+    .lg-card .card-categories .project-categories .tags-comma {
+      padding-right: 2px; }
+    .lg-card .card-categories .project-categories:last-child .tags-comma {
+      display: none; }
+.lg-card .card-title-project {
+  font-family: "Messina Modern Regular";
+  font-size: 1.8em;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 115%;
+  color: #828282;
+  color: #4F4F4F;
+  margin: 0;
+  padding-top: 2px; }
+.lg-card .card-block {
+  padding: 8px 15px; }
+.lg-card .image-top-lg {
+  background-color: #bbb;
+  overflow: hidden;
+  position: relative;
+  height: 405px; }
+  .lg-card .image-top-lg .card-img-top {
+    border-radius: 0; }
+  .lg-card .image-top-lg img {
+    height: 100%;
+    width: 100%; }
 
 .project-mobile-card {
   position: relative;
@@ -3052,7 +3107,8 @@ footer {
         .maker-card .card-stats ul li img.project-views {
           width: 20px; }
       .maker-card .card-stats ul li span {
-        margin: 0px; }
+        margin: 0px;
+        color: #BDBDBD; }
 
 .maker-mobile-card {
   position: relative;
@@ -3972,6 +4028,20 @@ footer {
     .page-search-content .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
       padding: 15px 20px; }
 
+/*challenge enter modal popup */
+.challenge-enter-modal {
+  background-color: #F2F2F2; }
+  .challenge-enter-modal .modal-header {
+    border-bottom: none !important; }
+  .challenge-enter-modal .modal-body button {
+    width: 120px;
+    padding: 12px;
+    background-color: #fff !important; }
+  .challenge-enter-modal .modal-body .btn-load-more:hover {
+    cursor: pointer; }
+  .challenge-enter-modal .modal-footer {
+    border-top: none !important; }
+
 .page-project {
   color: #333333;
   background-color: #F2F2F2; }
@@ -4626,12 +4696,16 @@ header.showcase-project .next {
         font-size: 13px;
         margin-bottom: 2px; }
       .page-project .projectsingle-card .right-side .card-container .card-tags {
-        color: #828282;
-        font-size: 14px; }
-        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag .tags-comma {
-          padding-right: 2px; }
-        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag:last-child .tags-comma {
-          display: none; }
+        color: #ED1C24;
+        font-size: 14px;
+        font-weight: bold; }
+        .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag {
+          color: #828282;
+          font-weight: normal; }
+          .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag .tags-comma {
+            padding-right: 2px; }
+          .page-project .projectsingle-card .right-side .card-container .card-tags .project-tag:last-child .tags-comma {
+            display: none; }
       .page-project .projectsingle-card .right-side .card-container .project-card-footer {
         margin: 14px 0px; }
         .page-project .projectsingle-card .right-side .card-container .project-card-footer ul {
@@ -5284,6 +5358,20 @@ header.showcase-project .next {
   -webkit-line-clamp: inherit !important;
   overflow: inherit !important;
   height: auto !important; }
+.page-single-showcase .profile-container .spotlight-item .user-card {
+  padding: 30px 10px 10px 10px; }
+  .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
+    width: auto;
+    overflow: hidden;
+    position: absolute;
+    top: -13px;
+    left: 10px; }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon {
+      width: auto; }
+      .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon img {
+        height: 35px;
+        width: 30px;
+        margin-right: 5px; }
 
 img {
   max-width: 100%; }

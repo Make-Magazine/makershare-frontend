@@ -30,7 +30,6 @@ export class SingleObjectComponent implements OnInit {
   utubelink;
   introlink = false;
   file;
-  workshopLeader = null;
   countlessons;
   objectId;
   myObject;
@@ -57,11 +56,7 @@ export class SingleObjectComponent implements OnInit {
     this.objectId = this.route.params['_value'].nid;
     this.workshopNid = this.route.params['_value'].workshopID;
     this.getObject(this.objectId);
-
-    
-    this.getCountlessons();
-  }
-
+      }
 
   getObject(id){
       this.viewService.getView('learning-object', [['nid', id]])
@@ -71,39 +66,47 @@ export class SingleObjectComponent implements OnInit {
         this.getNavigation();
         this.singleObject = {};
         this.singleObject = data[0];
-         console.log(this.singleObject);
+        //  console.log(this.singleObject);
 
 
         if (this.singleObject.video && this.singleObject.video !== '') {
           //  console.log(this.singleObject.video)
+             this.epubFile = null;
           if (this.youtube_parser(this.singleObject.video)) {
             this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.singleObject.video) + '"frameborder="0" style="width:100%; height:270px;"></iframe>';
             this.videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
-            // console.log(this.videolink)
+            // console.log(this.videolink).
+             this.epubFile = null;
 
           }
           else if (this.vimeo_parser(this.singleObject.video)) {
-            // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
-            // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
+             delete this.epubLink;
             this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.singleObject.video;
             this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
               this.videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
+               this.epubFile = null;
 
             });
           }
         }
         if (this.singleObject.pdf && this.singleObject.pdf !== '') {
-          console.log(this.singleObject.pdf)
+        //  console.log(this.singleObject.pdf)
+         this.pdflink = null;
+          this.epubFile = null;
           this.sanitizethis = '<iframe src="http://docs.google.com/gview?url=' + this.singleObject.pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
           this.pdflink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
         }
         else if (this.singleObject.book && this.singleObject.book !== '') {
-          delete this.popupPreview;
+          delete this.epubLink;
+           this.epubLink = null;
+           this.epubFile = null;
           if (this.singleObject.book.endsWith('.epub')) {
+             this.epubFile = true;
             this.epubLink = this.singleObject.book;
+            
             // console.log(this.epubLink);
           } else {
-            console.log(this.singleObject.book);
+            // console.log(this.singleObject.book);
             var x = this.singleObject.book.split('.').pop();
             delete this.popupPreview;
             this.epubFile = null;
@@ -129,34 +132,13 @@ export class SingleObjectComponent implements OnInit {
 
   }
 
-  SwitchTabFunc(NewTab) {
-    this.SwitchTab.emit(NewTab);
-  }
-  // SwitchProjectFunc(e,action) {
-  //     if (action == "back") {
-  //       this.showcaseInfo.index--;
-  //       this.ProjectNewId.emit(this.showcaseInfo.index);
-  //     } else if (action == "next") {
-  //       this.showcaseInfo.index++;
-  //       this.ProjectNewId.emit(this.showcaseInfo.index);
-  //     }
-  //   }
-
-  getCountlessons() {
-    // this.route.params
-    //   .switchMap((nid) => this.viewService.getView('maker_count_lessons/' + nid['nid']))
-    //   .subscribe(data => {
-    //     this.countlessons = data[0];
-    //   }, err => {
-
-    //   });
-  }
 
   getNavigation() {
     this.viewService.getView('workshop-objects-list', [['nid', this.workshopNid]]).subscribe(data => {
       this.totalIndex = data.length - 1;
       var objectId = this.objectId;
       var currentIndex = 0;
+     
       this.objectsList = data;
       this.objectsList.forEach(function (item, index) {
         if (objectId == item.nid) {
@@ -170,6 +152,10 @@ export class SingleObjectComponent implements OnInit {
   goPrev() {
     let nextObject = this.objectsList[this.currentIndex - 1];
     let nextNid = nextObject.nid;
+     this.epubLink = null;
+      this.booklink = null;
+       this.pdflink = null;
+        this.videolink = null;
     this.currentIndex--;
     this.router.navigate(['/workshops/lessons', this.workshopNid, nextNid]);
     this.getObject(nextNid);
@@ -177,6 +163,10 @@ export class SingleObjectComponent implements OnInit {
 
   goNext() {
     let nextObject = this.objectsList[this.currentIndex + 1];
+    this.epubLink = null;
+      this.booklink = null;
+       this.pdflink = null;
+        this.videolink = null;
     this.currentIndex++;
     let nextNid = nextObject.nid;
     this.router.navigate(['/workshops/lessons', this.workshopNid, nextNid]);

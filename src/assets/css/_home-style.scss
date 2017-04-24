@@ -245,7 +245,6 @@ footer {
     }
     .user-name {
         @include card-header-font-sm();
-                min-height: 24px;
                 margin-bottom: 2px;
         a {
             text-decoration: none;
@@ -275,7 +274,7 @@ footer {
     .user-city {
         color: $title-color;
         min-height: 21px;
-        margin-bottom: 4px;
+        margin-bottom: 0px;
         div {
             float: left;
             margin-right: 6px;
