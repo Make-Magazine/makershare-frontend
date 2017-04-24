@@ -5,6 +5,7 @@ import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
     private auth: Auth,
     private profilePictureService: ProfilePictureService,
   ) { }
+
 
   ngOnInit() {
     // this.userService.isLogedIn().subscribe(res => {
@@ -45,5 +47,4 @@ export class HeaderComponent implements OnInit {
   onNotify(event) {
     this.showSearchBox = false;
   }
-
 }

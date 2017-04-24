@@ -1,6 +1,6 @@
 <div *ngIf="CurrentObject">
   <div *ngIf="type == 'Video'">
-    <div *ngIf="IframeSantinizedHtml" [innerHTML]="IframeSantinizedHtml"></div>
+    <video-viewer [link]="CurrentObject.video"></video-viewer>
   </div>
   <div *ngIf="type == 'PDF'">
        <div *ngIf="PDFLink" [innerHTML]="PDFLink"></div>

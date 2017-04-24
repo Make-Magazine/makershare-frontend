@@ -75,6 +75,7 @@
 	}
 	.dropdown-toggle {
 		cursor: pointer;
+		z-index: 12;
 	}
 	.sorting-filter ,.projects-filter {
 		border-left: 2px solid $main-grey;

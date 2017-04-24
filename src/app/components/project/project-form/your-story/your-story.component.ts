@@ -351,6 +351,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     'title': {
       'required': 'Project Name is required.',
       'minlength': 'Project Name must be at least 4 characters long.',
+      'maxlength': 'Project Name maximum length is 50 characters.',
     },
     'field_categories': {
       'required': 'Categories is required.'
