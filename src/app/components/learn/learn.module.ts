@@ -7,6 +7,10 @@ import { LearnRoutingModule }from './learn-routing.module';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SingleObjectComponent } from './individual-workshop/single-object/single-object.component';
+import { ObjectViewComponent } from './individual-workshop/single-object/object-view/object-view.component';
+
+
 //import { MetaModule } from '@nglibs/meta';
 
 
@@ -23,6 +27,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LearnComponent,
     IndividualWorkshopComponent,
     BookComponent,
+    SingleObjectComponent,
+    ObjectViewComponent,
+
     
   ]
 })
