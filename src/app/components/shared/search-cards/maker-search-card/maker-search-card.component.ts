@@ -36,7 +36,7 @@ export class MakerSearchCardComponent implements OnInit {
   }
   
   getMakerBadges() {
-    this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
+    this.viewService.getView('api_user_badges_card', [['uid', this.uid]]).subscribe(data => {
       this.badges = data;
     });
   }

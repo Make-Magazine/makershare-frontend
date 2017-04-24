@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
+import {FlagService} from '../../../d7services/flag/flag.service';
 
 @Component({
   selector: 'app-showcase-card',
@@ -9,15 +10,18 @@ import { ViewService } from '../../../d7services/view/view.service';
 export class ShowcaseCardComponent implements OnInit {
   showcase = [];
   userId;
+  numLikes;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+    private flagService: FlagService,
 
   ) { }
   ngOnInit() {
     this.getShowcases();
     this.userId = localStorage.getItem('user_id');
+    this.countLikes();
   }
 
   getShowcases() {
@@ -27,6 +31,12 @@ export class ShowcaseCardComponent implements OnInit {
   }
   ShowSingleShowcase(nid) {
     this.router.navigate(['/showcases', nid]);
+  }
+
+  countLikes(){
+    this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+      this.numLikes = res;
+    })
   }
 
 

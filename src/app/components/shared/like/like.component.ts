@@ -16,6 +16,9 @@ export class LikeComponent implements OnInit {
   userId;
   currentuser;
   checkUserLogin = false;
+  countlikes = 0;
+  liked = false;
+  @Output() countNumber = new EventEmitter<number>();
 
   isLiked = false;
   constructor(private route: ActivatedRoute,
@@ -28,13 +31,13 @@ export class LikeComponent implements OnInit {
   ) { this.router = router; }
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
-
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) { } else {
         /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
+          console.log(this.isLiked)
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
           // console.log(err);
@@ -43,9 +46,17 @@ export class LikeComponent implements OnInit {
         /*like end*/
       }//end else 
     });//end userservice isLogedIn
-
-
+    // this.countLikes();
   }
+  // countLikes(){
+  //   this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
+  //     this.countlikes = response['count'];
+  //    // this.countNumber.emit(this.countlikes);
+  //    if(this.countlikes >= 1){
+  //      this.liked = true;
+  //    }
+  //   })
+  // }
 
   /* function like */
   likeThis(e: Event) {
