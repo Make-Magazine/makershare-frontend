@@ -1,25 +1,47 @@
-<div class="row">
+<div class="row" *ngIf="!IsLoading">
   <div class="container">
+    
+    <div *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)">
+      previous
+    </div>
+    <div *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)">
+      next
+    </div>
 
-    <div *ngIf="totalIndex > 1">
+    <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
+
+    <!--<div *ngIf="totalIndex > 1">
       <a *ngIf="currentIndex > 0" (click)="goPrev()">previous</a>
-      <div class="" [innerHTML]="objectsList[currentIndex].object_title"></div>
+      
       <a *ngIf="currentIndex < totalIndex " (click)="goNext()">Next</a>
     </div>
- 
+
  <div class ="video-object" *ngIf= "videolink"> 
    <div [innerHTML]="videolink"></div>
  </div>
- <div  *ngIf= "pdflink"> 
+ <div  *ngIf="pdflink"> 
    <div [innerHTML]="pdflink"></div>
  </div>
-  <div  *ngIf= "booklink"> 
+  <div  *ngIf="booklink"> 
    <div [innerHTML]="booklink"></div>
  </div>
   <div *ngIf="epubFile">
     <app-book [link]="epubLink"></app-book>
  </div>
 
+  <aside class="col-md-2 list-position">
+            
+            <ul class="list-unstyled content-list">
+              Contents:
+              <div *ngFor="let object of objectsList;">
+                <li>
+                  
+                    <div [innerHTML]="objectsList.object_title"></div>
+                  
+                </li>
+              </div>
+            </ul>
+          </aside>-->
 
 </div>
  </div>
