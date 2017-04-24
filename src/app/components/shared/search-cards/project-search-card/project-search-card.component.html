@@ -51,20 +51,17 @@
           </p>
           <div class="card-stats mt-auto">
             <ul class="list-unstyled d-flex justify-content-between">
-              <li>
-                <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-                <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
-                <span *ngIf="!project.number_of_likes">0</span>
-              </li>
-              <li>
-                <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
-              </li>
-              <li>
-                <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
-                <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
-              </li>
-            </ul>
+            <li>
+              <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
+              <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+              <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <span *ngIf="!project.number_of_likes">0</span>
+            </li>
+            <li>
+              <img src="./assets/images/icons/views.png" class="project-views" alt="">
+              <span>70</span>
+            </li>
+          </ul>
           </div>
         </div>
       </div>
@@ -85,30 +82,27 @@
       <div class="content-container d-flex flex-column">
         <div class="d-flex">
           <div class="profile-pic-container mr-2">
-            <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
-            <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+            <img *ngIf="!project.cover_photo_search_small" src="http://placehold.it/80x80" alt="">
+            <img *ngIf="project.cover_photo_search_small" src="{{project.cover_photo_search_small}}" alt="">
           </div>
           <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)">
-              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+              <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
             </a>
           </div>
         </div>
         <div class="card-stats mt-auto">
-          <ul class="list-unstyled d-flex justify-content-between">
-            <li>
-              <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+          <ul class="list-unstyled d-flex">
+            <li class="d-flex align-items-center">
+              <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+              <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
               <span *ngIf="!project.number_of_likes">0</span>
             </li>
-            <li>
+            <li class="d-flex align-items-center">
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
               <span>70</span>
-            </li>
-            <li>
-              <span *ngIf="project.maker_project_count > '1'">{{project.maker_project_count}}  projects</span>
-              <span *ngIf="project.maker_project_count == '1'">{{project.maker_project_count}}  project</span>
             </li>
           </ul>
         </div>

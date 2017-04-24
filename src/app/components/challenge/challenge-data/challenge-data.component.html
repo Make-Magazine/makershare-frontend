@@ -22,12 +22,12 @@
                     </div>
                   </div>
                   <div class="challene-card-footer-3 hidden-sm-down">
-                     <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
+                     <div class="button-container-main-1" *ngIf="challenge.status_id != 375">
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
                     </div>
-                    <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 376">
+                    <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
-                    </div>-->
+                    </div>
                     <app-follow  [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
                   </div>
                 </div>
@@ -67,7 +67,10 @@
                             <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
                             <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.challenge_status}}</span>
                             <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.challenge_status}}</span>
-                            <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> <br>Submissions close: {{challenge.challenge_end_date | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> <br>In review. Winners to be announced: {{challenge.winners_announcement_date | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date | date:'d/M/y'}}</span>
+
                           </div>
                         </div>
                       </div>

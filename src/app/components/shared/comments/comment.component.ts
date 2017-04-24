@@ -24,8 +24,8 @@ export class CommentComponent implements OnInit {
   // @Input() titleform: Object;
   @Input() titleform= {
       title : "Feedback",
-     placeholder: "What would you like to say?",
-     ifempty: "be the first to post a comment ..",
+     placeholder: "Share your thoughts",
+     ifempty: "",
      join:" to Add Your Comment",
   };
   
