@@ -20,6 +20,7 @@ import { CustomValidators } from 'ng2-validation';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { MetaService } from '@nglibs/meta';
 import { FileEntityManage } from '../../../../models';
+import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 
 @Component({
   selector: 'app-profile',
@@ -128,7 +129,8 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
     private auth: Auth,
-    private readonly meta: MetaService
+    private readonly meta: MetaService,
+    private profilePictureService: ProfilePictureService,
 
   ) {
     this.ProfilecropperSettings = new CropperSettings();
@@ -300,7 +302,8 @@ export class ProfileComponent implements OnInit {
         console.log(err);
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
-          localStorage.setItem('user_photo', this.profile.user_photo);
+          this.profilePictureService.update(this.profile.user_photo);
+          //localStorage.setItem('user_photo', this.profile.user_photo);
         this.BuildForm();
         this.buildFormSocial();
       }
