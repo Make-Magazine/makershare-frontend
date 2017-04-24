@@ -450,7 +450,7 @@
    		color: $text-color-2;
 		}
 		.report {
-			font-size: 14px;
+			font-size: 10px;
 			color: $text-color-6;
 		}
 	}
@@ -646,7 +646,7 @@ header.showcase-project {
 				textarea {
 					@include desc-font-1 ();
 					border: 1px solid #ccc;
-					color: $font-grey;
+					color: $text-color-1;
     			margin-top: 2px;
 					position: relative;
 			    padding: 8px 10px;
@@ -943,6 +943,7 @@ header.showcase-project {
 }
 .report{
 	color:$title-color;
+	font-size: 0.9em;
 }
 textarea {
             border: 1px solid $shade-2;
