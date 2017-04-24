@@ -112,4 +112,10 @@ export class UserService {
     return this.mainService.post(globals.endpoint + '/maker_profile_api/get_url', body).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  getProfilePicture(uid: number): Observable<any> {
+    let body = {
+      uid: uid,
+    }
+    return this.mainService.post(globals.endpoint + '/maker_profile_api/get_picture', body).map(res => res.json()).catch(err => Observable.throw(err));    
+  }
 }
