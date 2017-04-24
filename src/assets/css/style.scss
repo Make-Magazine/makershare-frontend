@@ -5341,7 +5341,7 @@ header.showcase-project .next {
   width: 92%;
   height: 100%;
   position: absolute;
-  z-index: 8;
+  z-index: 10;
   top: 0px; }
 .page-single-showcase .projects-grid .project.card {
   border: 1px solid #4ab0d8;
@@ -6970,9 +6970,7 @@ img {
             color: #00AEEF;
             text-decoration: none; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-          width: 30%; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
-          width: 20%; }
+          width: 50%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
           overflow: hidden;
           color: #333333;
@@ -7025,9 +7023,6 @@ img {
     float: right;
     color: #00AEEF;
     margin-top: 15px; }
-  .conversation-container .paricipent-img {
-    width: 60px;
-    height: 60px; }
   .conversation-container .conversation {
     margin-bottom: 20px;
     padding-bottom: 20px; }
@@ -7841,4 +7836,4 @@ img {
   .project .maker-name {
     margin-top: 5px; } }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.scss.map */
