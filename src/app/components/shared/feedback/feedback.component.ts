@@ -471,14 +471,14 @@ export class FeedbackComponent implements OnInit {
     var feedback = this.feedback;
     console.log(this.feedback)
     this.onValueChanged();
-    
+    if(this.fileArray.length != 0){
     for (let i = 0; i < this.fileArray.length; i++) {
       this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+    }
     }
     // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
     //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
     // }
-  console.log(this.formErrors);
     if (this.feedbackForm.valid && this.formErrors.field_upload_screenshots.length == 0 && this.formErrors.field_bug_not_in_page_ == '') {
 
       if (this.feedbackForm.value.field_upload_screenshots) {
