@@ -76,7 +76,7 @@ export class FeedbackComponent implements OnInit {
     type: 'feedback',
     title: '',
     field_want_submit: {
-      und: ''
+      und: this.feedback_types
     },
     field_browser: {
       und: [{
@@ -153,13 +153,13 @@ export class FeedbackComponent implements OnInit {
     this.full_url = this.document.location.href
   }
   ngOnInit() {
-      this.userId = localStorage.getItem('user_id');
-        this.userService.getUser(this.userId).subscribe(res => {
-        this.profile = res;
-       // console.log(this.profile.full_name);
-        this.full_name=res.full_name
+    this.userId = localStorage.getItem('user_id');
+    this.userService.getUser(this.userId).subscribe(res => {
+      this.profile = res;
+      // console.log(this.profile.full_name);
+      this.full_name=res.full_name
     }, err => {
-          console.log(err);
+      console.log(err);
     });
     this.deviceInfo();
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -185,7 +185,7 @@ export class FeedbackComponent implements OnInit {
     //document.getElementById('field_bug_in_page').innerHTML=this.full_url
     this.feedbackForm = this.fb.group({
       // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
-      'field_want_submit': ['', Validators.required],
+      'field_want_submit': [this.feedback_types,Validators.required],
       'field_my_bug': '',
       'field_would_like': '',
       //url validation
@@ -202,7 +202,7 @@ export class FeedbackComponent implements OnInit {
       'field_upload_screenshots': ''
     });
  
-    this.feedbackForm.reset();
+   // this.feedbackForm.reset();
 
   }
 
@@ -236,6 +236,7 @@ export class FeedbackComponent implements OnInit {
     this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
     this.feedbackForm.controls['field_os'].setValue(navigator.platform);
     this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+    this.feedbackForm.controls['field_want_submit'].setValue('--select an option --');
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
