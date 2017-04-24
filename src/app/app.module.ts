@@ -24,6 +24,7 @@ import { NotificationBarModule, NotificationBarService } from 'angular2-notifica
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
+
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
 import { AuthGuardService } from './auth0/auth-guard.service';
@@ -106,7 +107,7 @@ let config = {
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,
-    MetaModule.forRoot()
+    MetaModule.forRoot(),
   ],
   entryComponents: [],
   providers: [

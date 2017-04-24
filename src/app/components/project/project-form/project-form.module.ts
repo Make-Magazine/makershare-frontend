@@ -12,6 +12,7 @@ import { TeamComponent } from './team/team.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
+import { Ng2FileDropModule } from 'ng2-file-drop';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SharedModule } from '../../shared/shared.module';
     ProjectFormRoutingModule,
     NgbModule,
     ImageCropperModule,
-    SharedModule
+    SharedModule,
+    Ng2FileDropModule
   ],
   declarations: [
     YourStoryComponent,

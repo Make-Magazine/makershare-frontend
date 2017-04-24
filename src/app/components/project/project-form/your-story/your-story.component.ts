@@ -12,6 +12,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MetaService } from '@nglibs/meta';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { domain,endpoint } from '../../../../d7services/globals';
+import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 
 declare var CKEDITOR:any;
 @Component({
@@ -46,10 +47,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       event.stop();
     });
     CKEDITOR.on( 'dialogDefinition', function( ev ) {
-      console.log(ev);
       var dialogName = ev.data.name;
       var dialogDefinition = ev.data.definition;
-
       if (dialogName == 'image') {
         dialogDefinition.onLoad = function() {
           var dialog = CKEDITOR.dialog.getCurrent();
@@ -58,15 +57,14 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
           var uploadButton = uploadTab.get('uploadButton');
           console.log('uploadButton', uploadButton);
 
-          uploadButton.onClick = function(evt){
+          uploadButton.onClick = (evt)=>{
             console.log('fire in the hole', evt);
           };
 
-          uploadButton['filebrowser']['onSelect'] = function(fileUrl, errorMessage) {
+          uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
             console.log('working');
-          }
+          };
         };
-
       }
     });
     this.ckeditor.instance.on( 'fileUploadResponse', (event) => {
@@ -138,6 +136,10 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.SetCropperSettings();
     config.placement = 'right';
     config.triggers = 'hover';
+  }
+
+  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+    this.UploadBtn(acceptedFile.file,cropper);
   }
 
   SelectFileAndSave(closebtn:HTMLButtonElement,file:FileEntity){
@@ -349,6 +351,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     'title': {
       'required': 'Project Name is required.',
       'minlength': 'Project Name must be at least 4 characters long.',
+      'maxlength': 'Project Name maximum length is 50 characters.',
     },
     'field_categories': {
       'required': 'Categories is required.'
@@ -458,10 +461,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   OpenCoverImageModal(Template) {
     this.modalService.open(Template);
   }
-  UploadBtn($event, cropper) {
-    if ($event.target.files.length === 0) return;
+  UploadBtn(file, cropper) {
+    if (!file) return;
     var image: any = new Image();
-    var file: File = $event.target.files[0];
     this.cover_image.filename = file.name;
     var myReader: FileReader = new FileReader();
     myReader.onloadend = function (loadEvent: any) {
