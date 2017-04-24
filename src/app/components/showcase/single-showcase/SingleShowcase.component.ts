@@ -25,6 +25,7 @@ export class SinglShowcaseComponent implements OnInit {
   limit = 9;
   showcasenumber
   showcaseNid
+  userId
   // @Output() showcaseNid = new EventEmitter();
   constructor(
     private route: ActivatedRoute,
@@ -47,6 +48,7 @@ export class SinglShowcaseComponent implements OnInit {
     this.getshowCaseProjects();
     this.showcaseNid = this.route.params['value'].nid
     // console.log(this.showcasenumber)
+    this.userId = localStorage.getItem('user_id');
 
   }
   getshowCaseProjects() {
@@ -98,7 +100,6 @@ export class SinglShowcaseComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('showcase', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.showcase = data[0];
-        console.log(this.showcase['last_updated'])
         //this.getProfile(this.showcase.uid);
 
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);

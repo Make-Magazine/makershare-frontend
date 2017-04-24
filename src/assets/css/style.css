@@ -5322,6 +5322,8 @@ header.showcase-project .next {
         font-weight: bold;
         font-size: 16px;
         padding-right: 5px; }
+    .showcase-card-backlayer .showcase-card .showcase-likes {
+      color: #BDBDBD; }
 
 .page-single-showcase .showcase-card-backlayer {
   background-color: #D4EFFC;
