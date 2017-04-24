@@ -8,6 +8,7 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } f
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
+import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 
 @Component({
   selector: 'app-project-details',
@@ -38,6 +39,7 @@ export class ProjectDetailsComponent implements OnInit {
     private flagService: FlagService,
     private loaderService: LoaderService,
     private readonly meta: MetaService,
+    private statisticsService: StatisticsService,
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -85,11 +87,19 @@ export class ProjectDetailsComponent implements OnInit {
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
           this.loaderService.display(false);
+          // statistics
+          if(this.currentuser != this.project.uid){
+            this.statisticsService.view_record(this.project.nid, 'node').subscribe();
+          }
+
         }, err => {
           this.loaderService.display(false);
         });
 
       this.currentuser = Number(localStorage.getItem('user_id'));
+
+
+      
     });
   }// End ngOnInit
 

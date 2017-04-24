@@ -4,10 +4,9 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { ISorting } from '../../../models/challenge/sorting';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-
 import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
-
 import { LoaderService } from '../../shared/loader/loader.service';
 
 
@@ -59,7 +58,7 @@ export class ChallengeDataComponent implements OnInit {
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
-
+    private statisticsService: StatisticsService,
   ) { }
 
   ngOnInit() {
@@ -91,6 +90,8 @@ export class ChallengeDataComponent implements OnInit {
     }, err => {
       // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
+
+    
   }
 
   /* function get challenge followers */
@@ -178,6 +179,9 @@ export class ChallengeDataComponent implements OnInit {
         this.challenge.challenge_end_date = this.changeDateFormat(this.challenge.challenge_end_date.value);
         this.challenge.challenge_start_date = this.changeDateFormat(this.challenge.challenge_start_date.value);
         this.challenge.winners_announcement_date = this.changeDateFormat(this.challenge.winners_announcement_date.value);
+
+        // statistics
+        this.statisticsService.view_record(this.challenge.nid, 'node').subscribe();
       });
   }
   /* end function to get challenge data */

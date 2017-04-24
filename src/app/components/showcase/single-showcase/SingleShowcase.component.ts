@@ -6,7 +6,7 @@ import { UserCardComponent } from '../../shared/user-card/user-card.component'
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import {FlagService} from '../../../d7services/flag/flag.service';
-
+import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 @Component({
   selector: 'app-single-showcases',
   templateUrl: './singleShowcase.component.html',
@@ -36,6 +36,7 @@ export class SinglShowcaseComponent implements OnInit {
     private loaderService: LoaderService,
     private meta: MetaService,
     private flagService: FlagService,
+    private statisticsService: StatisticsService,
   ) { }
 
   ngOnInit() {
@@ -108,6 +109,12 @@ export class SinglShowcaseComponent implements OnInit {
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
         this.meta.setTag('og:image', this.showcase['cover_photo']);
         this.meta.setTag('og:description', this.showcase['description']);
+
+        // statistics
+        if(this.userId != this.showcase.uid){
+          let showcaseNid = data[0].nid;
+          this.statisticsService.view_record(showcaseNid, 'node').subscribe();
+        }
 
       });
   }
