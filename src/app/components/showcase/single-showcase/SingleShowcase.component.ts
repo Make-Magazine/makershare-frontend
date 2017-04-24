@@ -5,6 +5,7 @@ import { ISorting } from '../../../models/challenge/sorting';
 import { UserCardComponent } from '../../shared/user-card/user-card.component'
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
+import {FlagService} from '../../../d7services/flag/flag.service';
 
 @Component({
   selector: 'app-single-showcases',
@@ -26,19 +27,20 @@ export class SinglShowcaseComponent implements OnInit {
   showcasenumber
   showcaseNid
   userId
+  numLikes
   // @Output() showcaseNid = new EventEmitter();
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService
+    private meta: MetaService,
+    private flagService: FlagService,
   ) { }
 
   ngOnInit() {
     // show spinner
     this.loaderService.display(true);
-
     this.sort_order = "DESC";
     this.sort_by = "changed";
     this.getShowcase();
@@ -47,6 +49,7 @@ export class SinglShowcaseComponent implements OnInit {
     //load showcaseprojects data
     this.getshowCaseProjects();
     this.showcaseNid = this.route.params['value'].nid
+    this.countLikes();
     // console.log(this.showcasenumber)
     this.userId = localStorage.getItem('user_id');
 
@@ -128,6 +131,13 @@ export class SinglShowcaseComponent implements OnInit {
   ShowcasePojectNav(nid, snid) {
     this.router.navigate(['/showcases/project2/', snid,this.sort_by,this.sort_order, nid]);
     // this.showcaseNid.emit(this.route.params['value'].nid)
+  }
+
+  countLikes(){
+    this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+      this.numLikes = res;
+      console.log(this.numLikes)
+    })
   }
 
 }
