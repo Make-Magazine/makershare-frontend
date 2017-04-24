@@ -1,19 +1,4 @@
-<!--<div class="learning col-xs-12">
-  <div class="learning-item d-flex justify-content-around">
-    <div class="image-top">
-      <img class="card-img-top" src="{{learn.cover_photo}}">
-    </div>
-    <div class="content-bottom col d-flex">
-      <div class="content-side d-flex flex-column align-self-stretch">
-        <h4 class="card-title" [innerHTML]="learn.workshop_title"></h4>
-        <div class="card-description" [innerHTML]="learn.brief_description"></div>
-        <ul class="list-unstyled d-flex flex-wrap mt-auto workshop-tags">
-          <li><a *ngFor="let category of learn.categories" class="btn btn-soft-tag">{{category}}</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>-->
+
 <div class="row learn-card" *ngIf="!front">
   <div class="col-md-4 image-container">
     <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
@@ -41,12 +26,7 @@
             </div>
           </div>
           <div class="learn-card-footer-2 ml-3">
-            <!--<div class="learn-card-count">
-                  <span class="entries-count">{{challenge.entries_count}}
-                       <span *ngIf="challenge.entries_count>1">Lessons</span>
-                  <span *ngIf="challenge.entries_count <= 1">Lesson</span>
-                </span>
-              </div>-->
+   
           </div>
         </div>
       </div>
