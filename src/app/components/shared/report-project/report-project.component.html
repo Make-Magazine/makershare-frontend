@@ -28,7 +28,8 @@
             </div>
             <div class="form-group col-md-12 form-textarea">
               <textarea class="w-100 p-2" placeholder="Explain the problem in more details." cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
-              <button class="send-comment" type="submit">
+              <button class="send-comment" type="submit"  [disabled]="!reportForm.valid" (click)="onSubmit($event)"
+                (click)="c('Close click')">
                   <i class="lnr lnr-chevron-right" aria-hidden="true"></i>
               </button>
             </div>
@@ -40,17 +41,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <ul class="list-unstyled actions">
-        <li>
-          <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
-          <div class="enter-form-buttons d-flex">
-            <div class="ml-auto">
-              <button type="button" class="btn btn-load-more" [disabled]="!reportForm.valid" (click)="onSubmit($event)"
-                (click)="c('Close click')">Submit</button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      
     </div>
   </div>
 </template>
