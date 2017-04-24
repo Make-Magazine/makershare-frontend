@@ -459,7 +459,7 @@ export class FeedbackComponent implements OnInit {
   onSubmit(value, type) {
   
     var feedback = this.feedback;
-    
+    console.log(this.feedback)
     this.onValueChanged();
     
     for (let i = 0; i < this.fileArray.length; i++) {

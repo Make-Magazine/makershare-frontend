@@ -1024,20 +1024,20 @@
     position: relative;    
     margin: 15px 0;
     border: none;
+    max-width: 345px;
     height: 180px;
     padding: 55px 15px 15px;
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
-    border: 1px solid #4ab0d8;
     .icons-side-project {
         position: absolute;
-        top: -1px;
-        right: 0;
+        top: -2px;
+        right: -1px;
         .project-icon {
             img {
-                width: auto;
-                height: 35px;
-                margin-right: 5px;
+                width: 30px;
+                height: 36px;
+                margin-left: 5px;
             }
         }
     }
@@ -1071,15 +1071,17 @@
     .card-stats {
         padding: 2px;
         color: $light-grey;
+        font-size: 0.9em;
         ul li {
             @include desc-font-2();
+            width: 65px;
             img {
                 margin-right: 6px;
                 &.project-likes {
-                    width: 12px;
+                    width: 10px;
                 }
                 &.project-views {
-                    width: 20px;
+                    width: 22px;
                 }
             }
             span {
