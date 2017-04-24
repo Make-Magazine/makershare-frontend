@@ -21,6 +21,7 @@ export class ObjectViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     this.type = this.CurrentObject.learning_content_type;
     if(this.type == 'Video'){
       this.GetVideoIframeStructure();
