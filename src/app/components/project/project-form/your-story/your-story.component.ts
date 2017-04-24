@@ -12,6 +12,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MetaService } from '@nglibs/meta';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { domain,endpoint } from '../../../../d7services/globals';
+import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 
 declare var CKEDITOR:any;
 @Component({
@@ -135,6 +136,10 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.SetCropperSettings();
     config.placement = 'right';
     config.triggers = 'hover';
+  }
+
+  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+    this.UploadBtn(acceptedFile.file,cropper);
   }
 
   SelectFileAndSave(closebtn:HTMLButtonElement,file:FileEntity){
@@ -455,10 +460,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   OpenCoverImageModal(Template) {
     this.modalService.open(Template);
   }
-  UploadBtn($event, cropper) {
-    if ($event.target.files.length === 0) return;
+  UploadBtn(file, cropper) {
+    if (!file) return;
     var image: any = new Image();
-    var file: File = $event.target.files[0];
     this.cover_image.filename = file.name;
     var myReader: FileReader = new FileReader();
     myReader.onloadend = function (loadEvent: any) {

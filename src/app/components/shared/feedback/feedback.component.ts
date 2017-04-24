@@ -55,6 +55,8 @@ export class FeedbackComponent implements OnInit {
   closeResult: string;
   imagedata: string = 'test';
   CurrentType: number;
+  BugType:number;
+  FeatureType:number;
   fileArray = [
     {
       fid: '',
@@ -76,7 +78,7 @@ export class FeedbackComponent implements OnInit {
     type: 'feedback',
     title: '',
     field_want_submit: {
-      und: ''
+      und: this.feedback_types
     },
     field_browser: {
       und: [{
@@ -153,13 +155,13 @@ export class FeedbackComponent implements OnInit {
     this.full_url = this.document.location.href
   }
   ngOnInit() {
-      this.userId = localStorage.getItem('user_id');
-        this.userService.getUser(this.userId).subscribe(res => {
-        this.profile = res;
-       // console.log(this.profile.full_name);
-        this.full_name=res.full_name
+    this.userId = localStorage.getItem('user_id');
+    this.userService.getUser(this.userId).subscribe(res => {
+      this.profile = res;
+      // console.log(this.profile.full_name);
+      this.full_name=res.full_name
     }, err => {
-          console.log(err);
+      console.log(err);
     });
     this.deviceInfo();
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -185,7 +187,7 @@ export class FeedbackComponent implements OnInit {
     //document.getElementById('field_bug_in_page').innerHTML=this.full_url
     this.feedbackForm = this.fb.group({
       // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
-      'field_want_submit': ['', Validators.required],
+      'field_want_submit': ['',Validators.required],
       'field_my_bug': '',
       'field_would_like': '',
       //url validation
@@ -202,7 +204,7 @@ export class FeedbackComponent implements OnInit {
       'field_upload_screenshots': ''
     });
  
-    this.feedbackForm.reset();
+   // this.feedbackForm.reset();
 
   }
 
@@ -457,18 +459,26 @@ export class FeedbackComponent implements OnInit {
     });
   }
   onSubmit(value, type) {
-  
+  if(this.CurrentType){
+   this.feedbackForm.controls['field_want_submit'].setValue(this.CurrentType);
+  }
+  if(this.BugType){
+    this.feedbackForm.controls['field_my_bug'].setValue(this.BugType);
+  }
+  if(this.FeatureType){
+    this.feedbackForm.controls['field_would_like'].setValue(this.FeatureType)
+  }
     var feedback = this.feedback;
     console.log(this.feedback)
     this.onValueChanged();
-    
+    if(this.fileArray.length != 0){
     for (let i = 0; i < this.fileArray.length; i++) {
       this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+    }
     }
     // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
     //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
     // }
-  console.log(this.formErrors);
     if (this.feedbackForm.valid && this.formErrors.field_upload_screenshots.length == 0 && this.formErrors.field_bug_not_in_page_ == '') {
 
       if (this.feedbackForm.value.field_upload_screenshots) {
@@ -497,9 +507,9 @@ export class FeedbackComponent implements OnInit {
   }
 
   resetNID() {
+    this.feedbackForm.reset();
     this.submitted = false;
     delete(this.CurrentType);
-
   }
 
 

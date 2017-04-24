@@ -11,10 +11,10 @@
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
             <div class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
             <div class="d-flex flex-column w-75">
-              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
             <div class="d-flex flex-column">
               <p (click)="DeleteProject(Project.nid)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
@@ -79,10 +79,10 @@
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
             <div class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
             <div class="d-flex flex-column w-75">
-              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
             <div class="d-flex flex-column">
               <p (click)="DeleteProject(Project.nid)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>

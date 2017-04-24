@@ -121,12 +121,15 @@
 	.feedback-group {
 		background-color: white;
 		@include boxShadow(2px, 2px ,8px, $shade-3);
-		.login-link {
-			padding: 10px;
-			.feedback-label {
+		.feedback-label {
 				width: 100%;
 				font-weight: bold;
+				@include card-header-font-sm();
+				color:$font-grey;
 			}
+		.login-link {
+			padding: 10px;
+	
 			a {
 				color: $text-color-6;
 				text-decoration: underline;
@@ -447,7 +450,7 @@
    		color: $text-color-2;
 		}
 		.report {
-			font-size: 14px;
+			font-size: 10px;
 			color: $text-color-6;
 		}
 	}
@@ -616,7 +619,9 @@ header.showcase-project {
 		.comment-body {
 			p {
 				margin: 0px;
-				@include desc-font-1();
+				@include body-font-1 ();
+				color:$font-grey;
+				
 				line-height: inherit !important;
 			}
 		}
@@ -639,11 +644,13 @@ header.showcase-project {
 			.comment-body {
 				position: relative;
 				textarea {
+					@include desc-font-1 ();
 					border: 1px solid #ccc;
-					color: $font-grey;
+					color: $text-color-1;
     			margin-top: 2px;
 					position: relative;
-			    padding: 0px 6px;
+			    padding: 8px 10px;
+
 					resize: none;
 					.feedback-label {
 						width: 100%;
@@ -934,5 +941,29 @@ header.showcase-project {
 				}
 	}
 }
-
+.report{
+	color:$title-color;
+	font-size: 0.9em;
+}
+textarea {
+            border: 1px solid $shade-2;
+            color: $text-color-3;
+            padding: 12px;
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            text-align: left;
+            color:$text-color-3;
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+            text-align: left;
+            color: $text-color-3;
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+            text-align: center;
+            color: $text-color-3;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+            text-align: center;
+            color: $text-color-3;
+            }
+        }
 

@@ -341,8 +341,6 @@ export class ProjectFormComponent implements OnInit {
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
         this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
-        //this.notificationBarService.create({ message: 'Project Updated', type: NotificationType.Success});
-        //this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
@@ -350,10 +348,10 @@ export class ProjectFormComponent implements OnInit {
     }else{
       this.nodeService.createNode(this.project).subscribe((project:ProjectView) => {
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
-        this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);        
+        if(!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)){
+          this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);  
+        }
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
-        //this.notificationBarService.create({ message: 'Project Saved', type: NotificationType.Success});
-        //this.router.navigate(['/portfolio']);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
@@ -365,7 +363,7 @@ export class ProjectFormComponent implements OnInit {
 
   sendInvitedEmails (emails) {
     this.mainService.post('/api/team_service/send', emails).map(res => res.json()).subscribe(data => {
-      console.log(data); 
+      
     }, err =>{
       console.log(err);
     });
@@ -542,10 +540,12 @@ export class ProjectFormComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: { 'tab': tab },
     };    
-    let userID =+ localStorage.getItem("user_id");
-    this.userService.getUrlFromId(userID).subscribe( res => {
-      this.router.navigate(['/portfolio/' + res.url], navigationExtras);    
-    });
+    let userID = +localStorage.getItem("user_id");
+    if(visibility != 1115){
+      this.userService.getUrlFromId(userID).subscribe( res => {
+        this.router.navigate(['/portfolio/' + res.url], navigationExtras);    
+      });
+    }
   }
 
 }
