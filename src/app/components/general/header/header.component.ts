@@ -3,6 +3,7 @@ import { UserService } from '../../../d7services/user/user.service';
 import { Router } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private auth: Auth
+    private auth: Auth,
+    private notificationBarService: NotificationBarService,
+
     ) {  }
 
   ngOnInit() {
@@ -45,6 +48,12 @@ export class HeaderComponent implements OnInit {
 
   onNotify(event){
     this.showSearchBox = false;
+  }
+  note() {
+    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
+    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
+    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Success, autoHide: false, allowClose: true, hideOnHover: false });
+    this.notificationBarService.create({ message: 'For your security, confirm your email address. If you can’t find our Welcome email in your inbox, tell us your email address and we’ll resend.', type: NotificationType.Info, autoHide: false, allowClose: true, hideOnHover: false });
   }
 
 }

@@ -1104,6 +1104,13 @@ body {
 .valErrorString {
   color: #ED1C24 !important; }
 
+.notifications-container .notification .message {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff; }
+.notifications-container .notification.warning .message {
+  color: #333333; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -2564,7 +2571,10 @@ footer {
   background-color: #00AEEF;
   opacity: 0.6;
   display: none;
-  z-index: 9; }
+  z-index: 8; }
+
+.latest-project-image {
+  display: none; }
 
 .overlay-portfolio {
   width: 100%;
@@ -3057,7 +3067,8 @@ footer {
     position: relative;
     top: -18px;
     height: 40px;
-    margin-bottom: -10px; }
+    margin-bottom: -10px;
+    z-index: 9; }
     .maker-card .icons-side-project .project-icon img {
       width: auto;
       height: 40px;

@@ -8,7 +8,7 @@
     <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
       <ul class="list-unstyled login-block">
         <li *ngIf="!auth.authenticated()"><a (click)="auth.login()">Join / Log in</a></li>
-        <li *ngIf="auth.authenticated()"><a class="notification-icon"><img src="./assets/images/icons/notifications.png" alt=""></a></li>
+        <li *ngIf="auth.authenticated()"><a class="notification-icon" (click)="note()" ><img src="./assets/images/icons/notifications.png" alt=""></a></li>
         <li class="min-user-img" *ngIf="auth.authenticated()">
           <div ngbDropdown class="d-inline-block account-controls dropdown">
             <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
