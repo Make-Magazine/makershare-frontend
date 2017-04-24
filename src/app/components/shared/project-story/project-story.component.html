@@ -15,7 +15,7 @@
   <aside class="side-bar col-lg-4 col-md-4">
     <div class="sidebar-container">
       <div class="project-story-tab">
-        <div class="card aha" *ngIf="project.field_aha_moment">
+        <div class="card aha" *ngIf="project.field_aha_moment.value">
           <div class="card-heading">
             <p>AHA! Moment</p>
           </div>
@@ -23,7 +23,7 @@
             <p>{{project.field_aha_moment?.value}}</p>
           </div>
         </div>
-        <div class="card uh-oh" *ngIf="project.field_aha_moment">
+        <div class="card uh-oh" *ngIf="project.field_uh_oh_moment.value">
           <div class="card-heading">
             <p>UH-OH! Moment</p>
           </div>
