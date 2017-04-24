@@ -34,7 +34,6 @@ export class MakerCardComponent implements OnInit {
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      // console.log(this.card);
     });
   }
   
@@ -53,16 +52,10 @@ export class MakerCardComponent implements OnInit {
   }
   getLatestProject(){
     this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
-      console.log(data[0].latest_project_cover_photo);
-    this.latestPorjectImg = data[0].latest_project_cover_photo
+      if(data[0]){
+        this.latestPorjectImg = data[0].latest_project_cover_photo;    
+      }
     });
   }
-  // challengePage(nid) {
-  //   this.router.navigate(['challenges/', nid]);
-  // }
-  // ShowProjectDetails(nid) {
-  //   this.router.navigate(['/project/view', nid]
-  //   );
-  // }
 
 }

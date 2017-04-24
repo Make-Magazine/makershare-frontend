@@ -157,7 +157,7 @@ $(document).ready(function () {
 			$(this).find('.overlay-portfolio').stop();
 			$(this).find('.overlay-portfolio').addClass('d-flex');
 			$(this).find(".overlay-portfolio" ).animate({opacity: 1})
-			if($(this).find('.latest-project-image').val()){
+			if($(this).find('.latest-project-image').length > 0 ){
 				$(this).find('.latest-project-image').stop();			
 				$(this).find('.latest-project-image').fadeIn(800);
 				$(this).find('.maker-card-photo').stop();
@@ -178,7 +178,7 @@ $(document).ready(function () {
 			})			
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
-			if($(this).find('.latest-project-image').val()){			
+			if($(this).find('.latest-project-image').length > 0 ){			
 				$(this).find('.latest-project-image').stop();			
 				$(this).find('.latest-project-image').fadeOut(800);
 				$(this).find('.maker-card-photo').stop();
