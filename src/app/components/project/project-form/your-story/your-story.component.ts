@@ -233,23 +233,13 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    * its better if we used custom validator so we can remove the error check here "need works"
    * @param event the selected file object
    */
-  ImageUpdated(closebtn: HTMLButtonElement, SkipCropping: boolean) {
+  ImageUpdated(closebtn: HTMLButtonElement) {
     closebtn.click();
     delete this.cover_image.fid;
     this.cover_image.file = '';
     this.formErrors.field_cover_photo = '';
     if (!NodeHelper.isEmpty(this.imagedata)) {
-      if (SkipCropping) {
-        let img = new Image();
-        img.src = this.imagedata.original.src;
-        if (img.width < this.accepted_image_width || img.height < this.accepted_image_height) {
-          this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.validimagesize;
-        } else {
-          this.cover_image.file = this.imagedata.original.src;
-        }
-      } else {
-        this.cover_image.file = this.imagedata.image;
-      }
+      this.cover_image.file = this.imagedata.image;
       this.imagedata = {};
     }
     if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
