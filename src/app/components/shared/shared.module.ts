@@ -26,7 +26,6 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
-import { VideoDisplayComponent } from './video-display/video-display.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
@@ -39,10 +38,10 @@ import { ReportProjectComponent } from './report-project/report-project.componen
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
+import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
-
  
  let config = {
     breakPoints: {
@@ -95,7 +94,6 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
-    VideoDisplayComponent,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -109,6 +107,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     // directives
     ValidateOnFocusoutDirective,
     ReportCommentComponent,
+    VideoViewerComponent,
   ],
   exports: [
     CommentComponent,
@@ -129,7 +128,6 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     UserCardSmallComponent,
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
-    VideoDisplayComponent,
     MessageModalComponent,
     MakerCardComponent,
     MakerSearchCardComponent,
@@ -142,6 +140,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ProjectVoteComponent,
     ReportCommentComponent,
     FileBrowserComponent,
+    VideoViewerComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -169,7 +168,6 @@ export { UserCardSmallComponent };
 export { LearnUserCardComponent };
 export  { MessageModalComponent };
 export { ShowcaseGeneralCardComponent };
-export { VideoDisplayComponent };
 export { MakerCardComponent };
 export { MakerSearchCardComponent };
 export { ProjectSearchCardComponent };
