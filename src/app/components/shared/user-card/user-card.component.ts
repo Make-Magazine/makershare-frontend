@@ -33,6 +33,7 @@ export class UserCardComponent implements OnInit {
   };
   @Input() uid;
   @Input() name;
+  @Input() showMessage = true;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,

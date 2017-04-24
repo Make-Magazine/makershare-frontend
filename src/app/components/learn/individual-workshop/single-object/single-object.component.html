@@ -2,19 +2,10 @@
   <div class="container">
 
     <div *ngIf="totalIndex > 1">
-      <div *ngIf="currentIndex > 0" (click)="goPrev()">previous</div>
+      <a *ngIf="currentIndex > 0" (click)="goPrev()">previous</a>
       <div class="" [innerHTML]="objectsList[currentIndex].object_title"></div>
-      <div *ngIf="currentIndex < totalIndex " (click)="goNext()">Next</div>
+      <a *ngIf="currentIndex < totalIndex " (click)="goNext()">Next</a>
     </div>
-
-       <!--<div class="projects-circle">
-            <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="singleObject">
-              <a (click)="SwitchProjectFunc($event,'back')" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-              <h3 class=" showcase-nav" *ngIf="singleObject.object_title"><a>{{singleObject.object_title}}: Objects </a></h3>
-              <a *ngIf="countlessons && showcaseInfo.index != showcaseInfo.totalNumber.length-1" (click)="SwitchProjectFunc($event,'next')"
-                class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
-          </div>-->
  
  <div class ="video-object" *ngIf= "videolink"> 
    <div [innerHTML]="videolink"></div>
@@ -25,7 +16,7 @@
   <div  *ngIf= "booklink"> 
    <div [innerHTML]="booklink"></div>
  </div>
-  <div *ngIf="epubLink">
+  <div *ngIf="epubFile">
     <app-book [link]="epubLink"></app-book>
  </div>
 

@@ -152,11 +152,10 @@ export class InboxComponent implements OnInit {
         //   subject: this.messageObj.subject,
         //   last_updated: 'Now',
         // }
-        // console.log(newMessage)
         // this.msg.unshift(newMessage);
         this.msg = [];
         this.getMessages();
-        // this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
 
     }
@@ -236,7 +235,6 @@ export class InboxComponent implements OnInit {
             if (this.userId === author[0].author) {
               //i am who sent the message
               this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
-                console.log(res)
                 for (let i = 0; i<res.length; i++) {
                   if (res[i] != this.userId) {
                     this.user.getUser(res[i]).subscribe(res => {

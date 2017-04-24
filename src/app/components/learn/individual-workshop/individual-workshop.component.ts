@@ -171,7 +171,7 @@ export class IndividualWorkshopComponent implements OnInit {
         this.popupPreview = null;
         this.epubFile = true;
         this.element = document.getElementsByClassName("modal-content");
-        console.log(this.element)
+      //  console.log(this.element)
         // this.element.classList.add('epub-width');
       } else {
         var x = this.objects[i].book.split('.').pop();
@@ -189,9 +189,7 @@ export class IndividualWorkshopComponent implements OnInit {
     if (this.objects[object].videolink && this.objects[object].videolink !== '') {
       this.popupPreview = this.objects[object].videolink;
     }
-    // else {
-    //   this.popupPreview = this.workshop.introductory_video;
-    // }
+  
   }
   youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;

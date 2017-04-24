@@ -32,7 +32,7 @@
     "auth0-lock": "^10.12.2",
     "core-js": "^2.4.1",
     "install": "^0.8.8",
-    "ng2-ckeditor": "^1.1.5",
+    "ng2-ckeditor": "^1.1.6",
     "ng2-dnd": "^2.2.2",
     "ng2-file-drop": "^0.2.2",
     "ng2-img-cropper": "0.8.1",
