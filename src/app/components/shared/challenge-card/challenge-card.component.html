@@ -99,12 +99,10 @@
         </div>
         <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">
-            <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
-              <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+            <div class="button-container-main-1">
+             <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
             </div>
-            <div class="button-container-sec-2" *ngIf="challenge.status_id == 376">
-              <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
-            </div>
+
           </div>
           <div class="challenge-card-footer-2 ml-md-3">
             <div class="challenge-card-count">
@@ -173,8 +171,8 @@
         </div>
       </div>
       <div class="ml-auto">
-        <div class="button-container-main-1" *ngIf="challenge.status_id != 376">
-          <span class="btn btn-main" *ngIf="challenge.status_id != 376" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+        <div class="button-container-main-1">
+          <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
         </div>
       </div>
     </div>

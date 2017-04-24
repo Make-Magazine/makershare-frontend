@@ -1,13 +1,19 @@
 <div class="container conversation-container" *ngIf="msg">
   <i class="fa fa-lg fa-close close" (click)="previousUrl()"></i>
-  <div class="delete-actions" *ngIf="userId != msg.messages[0].author">
+  <div class="delete-actions">
     <a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>
     <a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>
   </div>
   <div class="delete-actions">
-    <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete</a>
+    <a class="btn btn-transparent" (click)="previousUrl()" (click)="deleteThread()">Delete this thread</a>
   </div>
-  <h3 class="message-subject">{{msg.subject}}</h3>
+        <div class="single-message d-flex flex-row">
+          <div class="single-msg-user" *ngFor="let participant of participants">
+             <a (click)="userProfile(participant.first_name,participant.last_name)"><img class="paricipent-img" src="{{participant?.user_photo}}"> </a>
+             <p class="sender"><a (click)="userProfile(participant.first_name,participant.last_name)">{{participant?.first_name}} {{participant?.last_name}}</a> </p>
+          </div>
+      </div>
+      <h3 class="message-subject">{{msg.subject}}</h3>
   <ul class="list-unstyled conversation">
     <div>
       <li class="single-message" *ngFor="let message of messages;let i=index;">

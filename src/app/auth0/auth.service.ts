@@ -5,6 +5,7 @@ import { MainService } from '../d7services/main/main.service';
 import { Observable } from 'rxjs/Observable';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
 import * as globals from '../d7services/globals';
 
 //import Auth0 from 'auth0-js';
@@ -47,6 +48,7 @@ export class Auth implements OnInit {
     private notificationBarService: NotificationBarService,
     private router: Router,
     private route: ActivatedRoute,
+    private profilePictureService: ProfilePictureService,
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
@@ -68,7 +70,8 @@ export class Auth implements OnInit {
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
-              localStorage.setItem('user_photo', res.user_photo);
+              this.profilePictureService.update(res.user_photo);
+              //localStorage.setItem('user_photo', res.user_photo);
 
               // first time - redirection to profile edit page
               // if(profile.app_metadata.first_time){
@@ -82,7 +85,7 @@ export class Auth implements OnInit {
               
               
             } else {
-              localStorage.setItem('user_photo', res.user_photo);
+              //localStorage.setItem('user_photo', res.user_photo);
               localStorage.setItem('user_id', '0');
             }
 

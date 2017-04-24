@@ -16,6 +16,7 @@ export class MakerCardComponent implements OnInit {
   project = {};
   card;
   projectsCount;
+  latestPorjectImg;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private viewService: ViewService,
@@ -27,12 +28,12 @@ export class MakerCardComponent implements OnInit {
   ngOnInit() {
     this.getMakerCard();
     this.getMakerBadges();
-    this.CountMakerProjects()
+    this.CountMakerProjects();
+    this.getLatestProject();
   }
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      // console.log(this.card);
     });
   }
   
@@ -49,12 +50,12 @@ export class MakerCardComponent implements OnInit {
         this.projectsCount = data[0]
       })
   }
-  // challengePage(nid) {
-  //   this.router.navigate(['challenges/', nid]);
-  // }
-  // ShowProjectDetails(nid) {
-  //   this.router.navigate(['/project/view', nid]
-  //   );
-  // }
+  getLatestProject(){
+    this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
+      if(data[0]){
+        this.latestPorjectImg = data[0].latest_project_cover_photo;    
+      }
+    });
+  }
 
 }
