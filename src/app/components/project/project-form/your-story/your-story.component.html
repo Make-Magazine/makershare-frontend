@@ -209,7 +209,6 @@
   </div>
   <div class="modal-footer">
     <button #closebtn type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-    <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-primary" (click)="ImageUpdated(closebtn,true)">Skip</button>
-    <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-primary" (click)="ImageUpdated(closebtn,false)">Save</button>
+    <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-primary" (click)="ImageUpdated(closebtn)">Save</button>
   </div>
 </template>
