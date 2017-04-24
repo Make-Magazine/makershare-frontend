@@ -13,7 +13,7 @@
         <h4 class="modal-title">Give us your feedback</h4>
         <!--<div class=text-right>{{date}}</div>-->
         <p *ngIf="full_name">Your name: {{full_name}}
-          <p>
+          </p>
             <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event,CurrentType)" novalidate>
               <div class="form-group">
                 <label>I want to submit:	</label>
