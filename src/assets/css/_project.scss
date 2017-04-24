@@ -121,12 +121,14 @@
 	.feedback-group {
 		background-color: white;
 		@include boxShadow(2px, 2px ,8px, $shade-3);
-		.login-link {
-			padding: 10px;
-			.feedback-label {
+		.feedback-label {
 				width: 100%;
 				font-weight: bold;
+				@include card-header-font-sm();
 			}
+		.login-link {
+			padding: 10px;
+	
 			a {
 				color: $text-color-6;
 				text-decoration: underline;
@@ -639,6 +641,7 @@ header.showcase-project {
 			.comment-body {
 				position: relative;
 				textarea {
+					@include desc-font-1 ();
 					border: 1px solid #ccc;
 					color: $font-grey;
     			margin-top: 2px;
