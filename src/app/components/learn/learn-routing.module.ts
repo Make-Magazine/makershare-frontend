@@ -15,7 +15,7 @@ const LearnRouts: Routes = [
     children: [
       { path: '', component:LearnComponent },
       { path: ':nid', component:IndividualWorkshopComponent },
-      { path: 'lessons/:nid', component:SingleObjectComponent },
+      { path: 'lessons/:workshopID/:nid',  component:SingleObjectComponent },
       
 
     ]

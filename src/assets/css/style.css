@@ -6619,8 +6619,7 @@ img {
     position: relative;
     padding: 0px; }
     .page-workshop-individual .learn-card .image-container iframe {
-      width: 100%;
-      max-width: 100%; }
+      width: 100%; }
     .page-workshop-individual .learn-card .image-container img {
       width: 100%;
       height: auto; }
@@ -6686,6 +6685,7 @@ img {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       min-height: 116px;
+      font-size: 1em !important;
       color: #4F4F4F;
       line-height: 100% !important; }
     .page-workshop-individual .learn-card .card-container .learning-objective {
@@ -6710,15 +6710,6 @@ img {
   cursor: inherit !important; }
 .page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]).btn-border-tag:hover {
   cursor: inherit !important; }
-
-.modal-dialog .modal-content .modal-body iframe {
-  width: 100%;
-  max-width: 100%; }
-.modal-dialog .modal-content .ebup-body {
-  width: 930px; }
-
-.epub-width {
-  width: 930px; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;
