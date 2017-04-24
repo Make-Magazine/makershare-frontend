@@ -55,6 +55,8 @@ export class FeedbackComponent implements OnInit {
   closeResult: string;
   imagedata: string = 'test';
   CurrentType: number;
+  BugType:number;
+  FeatureType:number;
   fileArray = [
     {
       fid: '',
@@ -236,7 +238,6 @@ export class FeedbackComponent implements OnInit {
     this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
     this.feedbackForm.controls['field_os'].setValue(navigator.platform);
     this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
-    this.feedbackForm.controls['field_want_submit'].setValue('--select an option --');
     this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
@@ -458,7 +459,15 @@ export class FeedbackComponent implements OnInit {
     });
   }
   onSubmit(value, type) {
-  
+  if(this.CurrentType){
+   this.feedbackForm.controls['field_want_submit'].setValue(this.CurrentType);
+  }
+  if(this.BugType){
+    this.feedbackForm.controls['field_my_bug'].setValue(this.BugType);
+  }
+  if(this.FeatureType){
+    this.feedbackForm.controls['field_would_like'].setValue(this.FeatureType)
+  }
     var feedback = this.feedback;
     console.log(this.feedback)
     this.onValueChanged();
@@ -498,9 +507,9 @@ export class FeedbackComponent implements OnInit {
   }
 
   resetNID() {
+    this.feedbackForm.reset();
     this.submitted = false;
     delete(this.CurrentType);
-
   }
 
 
