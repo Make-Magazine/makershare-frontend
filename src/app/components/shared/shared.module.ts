@@ -39,6 +39,7 @@ import { ReportProjectComponent } from './report-project/report-project.componen
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
+
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
 

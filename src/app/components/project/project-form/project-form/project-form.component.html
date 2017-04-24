@@ -13,7 +13,7 @@
             </li>
             <li class="create-project-buttons project-private"><span class="btn" (click)="project.SetField(371,'field_visibility2');CurrentActiveVisibility = 'private'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'private','btn-soft-grey':CurrentActiveVisibility != 'private'}"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></span>
             </li>
-            <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><i class="fa fa-lg fa-times"></i><span>DELETE</span></span>
+            <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><span>Cancel</span></span>
             </li>
             <li class="create-project-buttons project-publish"><button (click)="PublicPrivateSave()" class="btn btn-main" [disabled]="CurrentActiveVisibility == 'draft'">Publish</button></li>
           </ul>
@@ -56,7 +56,7 @@
             </li>
             <li class="create-project-buttons project-private"><span class="btn" (click)="project.SetField(371,'field_visibility2');CurrentActiveVisibility = 'private'" [ngClass]="{'btn-main':CurrentActiveVisibility == 'private','btn-soft-grey':CurrentActiveVisibility != 'private'}"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></span>
             </li>
-            <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><i class="fa fa-lg fa-times"></i><span>DELETE</span></span>
+            <li class="create-project-buttons project-delete mr-4 ml-4"><span [routerLink]="['/portfolio']" class="btn btn-soft-grey"><span>Cancel</span></span>
             </li>
             <li class="create-project-buttons project-publish"><button (click)="PublicPrivateSave()" class="btn btn-main" [disabled]="CurrentActiveVisibility == 'draft'">Publish</button></li>
           </ul>

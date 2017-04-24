@@ -23,6 +23,7 @@ import { NotificationBarModule, NotificationBarService } from 'angular2-notifica
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
+
 // import custom auth0 service
 import { Auth } from './auth0/auth.service';
 import { AuthGuardService } from './auth0/auth-guard.service';
@@ -32,6 +33,8 @@ import { AccessDeniedComponent } from './auth0/access-denied/access-denied.compo
 import { Four04Component } from './auth0/four04/four04.component';
 // loader service
 import { LoaderService } from './components/shared/loader/loader.service';
+// Profile Picture Service
+import { ProfilePictureService } from './components/shared/profile-picture/profile-picture.service';
 //import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 
 // static pages
@@ -103,7 +106,7 @@ let config = {
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,
-    MetaModule.forRoot()
+    MetaModule.forRoot(),
   ],
   entryComponents: [],
   providers: [
@@ -121,9 +124,7 @@ let config = {
     AuthGuardService,
     NotificationBarService,
     LoaderService,
-   // LoaderComponentService,
-
-
+    ProfilePictureService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition
