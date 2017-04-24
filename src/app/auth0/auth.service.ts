@@ -31,7 +31,7 @@ export class Auth implements OnInit {
         params: {state: this.state},
     },
     socialButtonStyle: 'small',
-    initialScreen: this.screen,
+    // initialScreen: this.screen,
     languageDictionary: {
       title: ""
     },
