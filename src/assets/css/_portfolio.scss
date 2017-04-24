@@ -42,10 +42,12 @@
 		.display-style {
         cursor: pointer;
 				p {
+					opacity: 1;
 					color: $text-color-2;
 					font-size: 12px;
-						&.active {
+						&.not_active {
 							opacity: 0.3;
+							
 					}
 				}
         

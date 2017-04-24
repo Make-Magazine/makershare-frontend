@@ -46,10 +46,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       event.stop();
     });
     CKEDITOR.on( 'dialogDefinition', function( ev ) {
-      console.log(ev);
       var dialogName = ev.data.name;
       var dialogDefinition = ev.data.definition;
-
       if (dialogName == 'image') {
         dialogDefinition.onLoad = function() {
           var dialog = CKEDITOR.dialog.getCurrent();
@@ -58,15 +56,14 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
           var uploadButton = uploadTab.get('uploadButton');
           console.log('uploadButton', uploadButton);
 
-          uploadButton.onClick = function(evt){
+          uploadButton.onClick = (evt)=>{
             console.log('fire in the hole', evt);
           };
 
-          uploadButton['filebrowser']['onSelect'] = function(fileUrl, errorMessage) {
+          uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
             console.log('working');
-          }
+          };
         };
-
       }
     });
     this.ckeditor.instance.on( 'fileUploadResponse', (event) => {
