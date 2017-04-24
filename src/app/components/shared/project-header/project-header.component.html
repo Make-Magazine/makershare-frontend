@@ -13,7 +13,7 @@
         <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
           <!--<li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>-->
           <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
-          <app-like [nodeNid]="project.nid" [user]="userId"></app-like>
+          <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
           <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
           <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
           <!--<li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>-->
@@ -62,8 +62,8 @@
           </div>
           <div class="project-card-footer d-flex mt-auto">
             <ul class="list-unstyled project-aside d-flex">
-              <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Read Story</a></li>
-              <li id="build-project"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">Build project</a></li>
+              <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Project Story</a></li>
+              <li id="build-project"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">How-to</a></li>
             </ul>
           </div>
         </div>
