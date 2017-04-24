@@ -30,7 +30,7 @@
                   <div class="showcase-card-footer-2">
                     <div class="showcase-card-count d-felx">
                       <div *ngIf="showcase.nid">
-                        <app-like [nodeNid]="showcase.nid" [user]="userId"></app-like>
+                        <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
                       </div>
                       <div class="showcase-likes">
                         <img  *ngIf="numLikes" src="./assets/images/icons/light-selected.png"  alt="">

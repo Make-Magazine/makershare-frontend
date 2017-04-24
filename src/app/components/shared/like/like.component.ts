@@ -13,6 +13,8 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class LikeComponent implements OnInit {
   @Input() nodeNid;
   @Input() user;
+  @Input() showcase = false;
+  @Input() project = false;
   userId;
   currentuser;
   checkUserLogin = false;

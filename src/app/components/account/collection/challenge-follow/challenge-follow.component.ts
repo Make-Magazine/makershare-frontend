@@ -106,7 +106,6 @@ export class ChallengeFollowComponent implements OnInit {
     /* function load more  */
   loadMoreFollowChallenge() {
     this.pages++;
-    console.log( this.pages);
     this.getChallengeFollow();
   }
   /* end function load more  */

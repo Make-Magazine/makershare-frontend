@@ -1219,19 +1219,18 @@
 .teaser {
     display: none;
     position: absolute;
-    top: 13%;
+    top: 70px;
     left: 0px;
     color: #fff;
     bottom: 0;
     right: 0px;
     margin: auto;
     z-index: 11;
-    height: 100px;
     p {
         line-height: 20px;
     }
     .overlay-text {
-        width: 80%;
+        width: 85%;
         margin: 0 auto;
     }
 }
@@ -1425,7 +1424,40 @@
     }
 }
 
+/* message  modal */
+.message-modal {
+    background-color: $site-bg;
+    label {
+        color: $red;
+        margin: 0px;
+    }
+    textarea {
+        border: 1px solid $shade-2;
+        color: $shade-4;
+    }
+    .modal-header {
+        border-bottom: none !important;
+        padding: 8px;
+        .close:focus, .close:hover {
+            outline: none !important;
+        }
+    }
+    .modal-body {
 
+    }
+    .modal-footer {
+        border-top: none !important;
+        padding: 32px;
+        button {
+            width: 120px;
+            padding: 12px;
+            background-color: #fff !important;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
 
 #edit-cover-modal {
     .modal-dialog {

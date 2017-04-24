@@ -14,6 +14,7 @@ import { UserService } from './d7services/user/user.service';
 import { ViewService } from './d7services/view/view.service';
 import { FlagService } from './d7services/flag/flag.service';
 import { ProfileService } from './d7services/profile/profile.service';
+import { StatisticsService } from './d7services/statistics/statistics.service';
 import { PmService } from './d7services/pm/pm.service';
 import { FileService } from './d7services/file/file.service';
 import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
@@ -125,6 +126,7 @@ let config = {
     NotificationBarService,
     LoaderService,
     ProfilePictureService,
+    StatisticsService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition

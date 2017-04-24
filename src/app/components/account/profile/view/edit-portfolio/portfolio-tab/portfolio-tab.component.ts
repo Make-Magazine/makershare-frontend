@@ -38,7 +38,6 @@ export class PortfolioTabComponent implements OnInit {
     this.mainService.post('/api/maker_sort_project_api/sort',this.Projects.map(project=>project.nid)).subscribe((data)=>{
       
     },err=>{
-      console.log(err);
     },()=>{
       this.UpdateProjects();
     });

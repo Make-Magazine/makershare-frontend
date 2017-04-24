@@ -202,6 +202,8 @@ a:not([href]):not([tabindex]).message-btn {
     &:hover, &:focus, &:active {
         color: $main-grey;
         cursor: pointer;
+        border: none;
+        outline: none;
     }
 }
 
