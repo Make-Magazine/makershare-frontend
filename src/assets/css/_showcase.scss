@@ -147,6 +147,23 @@
                     .projects-count-div {
                         margin-left: 20px;
                     }
+                    .project-like {
+                        min-width: 60px;
+                        text-align: right;
+                        padding: 0px 12px;
+                        img {
+                            width: 13px;
+                            height: auto;
+                        }
+                        span {
+                            font-size: 14px;
+                            color: $text-color-2;
+                            padding: 0px 4px;
+                        }
+                        a {
+                            padding-top: 3px;
+                        }
+                    }
                     .views-count {
                         color: $text-color-3;
                     }
