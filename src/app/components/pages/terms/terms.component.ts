@@ -34,7 +34,6 @@ export class TermsComponent implements OnInit {
       this.meta.setTag('og:description', this.body);
       this.loaderService.display(false);
     }, err => {
-      console.log(err);
       this.loaderService.display(false);
     });
   }

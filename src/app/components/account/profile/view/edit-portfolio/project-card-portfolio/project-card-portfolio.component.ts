@@ -29,7 +29,6 @@ export class ProjectCardPortfolioComponent implements OnInit {
       var categories_array = categories_string.split(', ');
       res[0].project_categories = categories_array;
       this.project = res[0];
-      console.log(this.project);
   });
   }
 

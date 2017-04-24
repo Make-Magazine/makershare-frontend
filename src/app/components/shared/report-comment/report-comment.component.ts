@@ -23,12 +23,10 @@ export class ReportCommentComponent implements OnInit {
     private notificationBarService: NotificationBarService, ) { }
 
   ngOnInit() {
-              console.log(this.commentReportId)
 
     this.userId = localStorage.getItem('user_id');
     this.flagService.isFlagged(this.commentReportId, this.userId, 'reportcomment').subscribe(data => {
       this.isReported = data[0];
-      console.log(this.isReported);
 
     });
   }
@@ -44,7 +42,6 @@ export class ReportCommentComponent implements OnInit {
 
         this.flagService.flag(this.commentReportId, this.userId, 'reportcomment').subscribe(response => {
           this.isReported = true;
-          console.log(this.commentReportId)
 
           this.notificationBarService.create({ message: 'Comment has been reported.', type: NotificationType.Success });
         }, err => {

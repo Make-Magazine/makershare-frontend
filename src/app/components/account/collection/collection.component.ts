@@ -52,11 +52,9 @@ export class CollectionComponent implements OnInit {
       this.countChallengeFollow=this.checkArray['followed_projects']
       this.countChallengeEntered=this.checkArray['challenge_entries']
       this.countMakerBookmark=this.checkArray['maker_bookmark']
-    console.log(this.checkArray)
       for (var key in this.checkArray) {
         if (this.checkArray.hasOwnProperty(key)) {
           if (this.checkArray[key] > 0) {
-            console.log(this.checkArray[key])
             this.activeTab = key;
             this.checkTab = true;
             break;
