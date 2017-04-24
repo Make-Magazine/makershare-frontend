@@ -397,6 +397,27 @@ a:not([href]):not([tabindex]).btn-load-more {
   background-color: #F2F2F2;
   border: 1px solid #828282; }
 
+.form-textarea {
+  position: relative; }
+  .form-textarea textarea {
+    resize: none; }
+
+.send-comment {
+  display: inline-table;
+  color: #333333;
+  border: none;
+  margin: 0;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background: none;
+  font-size: 1.2em;
+  cursor: pointer; }
+  .send-comment:hover {
+    color: #ED1C24; }
+  .send-comment:focus {
+    border: none; }
+
 .project {
   position: relative;
   margin-top: 10px;
