@@ -146,7 +146,7 @@ $(document).ready(function () {
 	// 	}
 	// });
 	// Show and hide project stats on project card
-	$(document).on('mouseenter', '.project', function () {
+	$(document).on('mouseenter', '.project , .maker-card', function () {
 		if (squareView) {
 			$(this).find('.icons').stop();
 			$(this).find('.icons').fadeOut('400');
@@ -156,22 +156,34 @@ $(document).ready(function () {
 			$(this).find('.overlay').fadeIn('400');
 			$(this).find('.overlay-portfolio').stop();
 			$(this).find('.overlay-portfolio').addClass('d-flex');
-			$(".overlay-portfolio" ).animate({opacity: 1})
+			$(this).find(".overlay-portfolio" ).animate({opacity: 1})
+			if($(this).find('.latest-project-image').val()){
+				$(this).find('.latest-project-image').stop();			
+				$(this).find('.latest-project-image').fadeIn(800);
+				$(this).find('.maker-card-photo').stop();
+				$(this).find('.maker-card-photo').fadeOut(800);
+			}
+			
 		}
 	});
-	$(document).on('mouseleave', '.project', function () {
+	$(document).on('mouseleave', '.project , .maker-card', function () {
 		if (squareView) {
 			$(this).find('.icons').stop();
 			$(this).find('.icons').fadeIn('400');
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
 			$(this).find('.overlay-portfolio').stop();
-			
 			$(".overlay-portfolio" ).animate({opacity: 0},400, function(){
 				$(this).find('.overlay-portfolio').removeClass('d-flex');
 			})			
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
+			if($(this).find('.latest-project-image').val()){			
+				$(this).find('.latest-project-image').stop();			
+				$(this).find('.latest-project-image').fadeOut(800);
+				$(this).find('.maker-card-photo').stop();
+				$(this).find('.maker-card-photo').fadeIn(800);			
+			}
 		}
 	});
 	$(document).on('click','#search-icon', function(){

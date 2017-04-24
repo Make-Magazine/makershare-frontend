@@ -5,9 +5,6 @@
 <template id="model" #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-report">
     <div class="modal-header">
-      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
     </div>
     <div class="modal-body container">
       <div class="row">
@@ -38,6 +35,15 @@
       </div>
     </div>
     <div class="modal-footer">
+      <ul class="list-unstyled actions">
+        <li>
+          <div class="enter-form-buttons d-flex">
+            <div class="ml-auto mr-1">
+              <a (click)="c('Close click')">Cancel</a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
