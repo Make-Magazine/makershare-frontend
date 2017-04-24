@@ -22,9 +22,9 @@
                     </div>
                   </div>
                   <div class="challene-card-footer-3 hidden-sm-down">
-                     <div class="button-container-main-1" *ngIf="challenge.status_id != 375">
+                     <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 375">
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
-                    </div>
+                    </div>-->
                     <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
