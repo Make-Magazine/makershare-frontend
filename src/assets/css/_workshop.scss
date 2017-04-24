@@ -366,7 +366,7 @@
                 }
             }
             .card-title {
-                @include card-header-font-md-2 ();
+                @include card-header-font-md ();
                 color: #4F4F4F;
             }
             .card-status {
