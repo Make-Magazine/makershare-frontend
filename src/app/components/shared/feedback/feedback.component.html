@@ -5,20 +5,21 @@
   <div class="modal-feedback">
     <div class="modal-header">
       <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
+			  <span aria-hidden="true">&times;</span>
+		  </button>
     </div>
     <div class="modal-body">
       <div *ngIf="submitted == false">
         <h4 class="modal-title">Give us your feedback</h4>
         <!--<div class=text-right>{{date}}</div>-->
         <p *ngIf="full_name">Your name: {{full_name}}
-          <p>
+          </p>
             <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event,CurrentType)" novalidate>
               <div class="form-group">
                 <label>I want to submit:	</label>
-                <select class="form-control" [formControl]="feedbackForm.controls['field_want_submit']" id="exampleSelect1" (change)="CurrentType = $event.target.value">
-                   <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" >{{feedback_type.name}}</option>
+                <select type="text" class="form-control"  (change)="CurrentType = $event.target.value">
+                   <option disabled selected value="_none_" > -- select an option -- </option>
+                   <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" [innerHTML]="feedback_type.name"></option>
                 </select>
               </div>
               <div *ngIf="formErrors.field_want_submit && !CurrentType" class="alert alert-danger error-msg">
@@ -68,7 +69,8 @@
               </div>
               <div class="form-group" *ngIf="CurrentType == 1185">
                 <label>My bug involves:	</label>
-                <select class="form-control" [formControl]="feedbackForm.controls['field_my_bug']" id="exampleSelect1">
+                <select type="text" class="form-control"(change)="BugType = $event.target.value">
+                  <option disabled selected value="_none_" > -- select an option -- </option>
                   <option *ngFor="let bug_type of bug_types; let i=index" value="{{bug_type.tid}}" >{{bug_type.name}}</option>
                 </select>
               </div>
@@ -91,7 +93,8 @@
               </div>
               <div class="form-group" *ngIf="CurrentType == 1186">
                 <label>I would like a</label>
-                <select class="form-control" [formControl]="feedbackForm.controls['field_would_like']" id="exampleSelect1">
+                <select class="form-control" type="text" (change)="FeatureType = $event.target.value">
+                  <option disabled selected value="_none_" > -- select an option -- </option>
                   <option *ngFor="let feature of features; let i=index" value="{{feature.tid}}" >{{feature.name}}</option>
                 </select>
               </div>
@@ -137,8 +140,16 @@
                   </label>
                   </div>
                 </div>
-                <small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>
+                <!--<small id="textHelp" class="form-text text-muted">1-5 with 5 being Extremely Likely and 1 being Not At All Likely.</small>-->
               </div>
+               <div class="modal-footer">
+                  <ul class="list-unstyled actions">
+                    <li>
+                      <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
+                      <button type="submit" class="btn btn-load-more">Submit</button>
+                    </li>
+                  </ul>
+               </div>
             </form>
       </div>
       <div *ngIf="submitted == true">
@@ -148,13 +159,6 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <ul class="list-unstyled actions">
-        <li>
-          <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
-          <button type="submit" class="btn btn-load-more">Submit</button>
-        </li>
-      </ul>
-    </div>
+   
   </div>
 </template>

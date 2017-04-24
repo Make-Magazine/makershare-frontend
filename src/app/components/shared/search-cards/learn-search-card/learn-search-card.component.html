@@ -31,7 +31,7 @@
       <img *ngIf="!learn.cover_photo" src="http://placehold.it/345x195" alt="">
       <div class="card-type-grey-2">
         <div class="type-layer-2">
-          Learn
+          Learning
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
           <div class="tablet-type-sponser d-flex hidden-lg-up">
             <div class="card-type-grey-2">
               <div class="type-layer-2">
-                Learn
+                Learning
               </div>
             </div>
             <div class="card-partership ml-auto pt-2" *ngIf="learn.brought_by">
@@ -52,7 +52,7 @@
             <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
           </div>
           <h3 class="card-title hidden-md-down" *ngIf="learn.workshop_title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
-          <h3 class="card-title pt-2 hidden-lg-up" *ngIf="learn.workshop_title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
+          <h4 class="card-title pt-2 hidden-lg-up" *ngIf="learn.workshop_title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h4>
           <div class="card-description  hidden-md-down">
             <p [innerHTML]="learn.brief_description"></p>
           </div>

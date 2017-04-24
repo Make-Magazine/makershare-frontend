@@ -1,0 +1,19 @@
+<div *ngIf="CurrentObject">
+  <div *ngIf="type == 'Video'">
+    <div *ngIf="IframeSantinizedHtml" [innerHTML]="IframeSantinizedHtml"></div>
+  </div>
+  <div *ngIf="type == 'PDF'">
+       <div *ngIf="PDFLink" [innerHTML]="PDFLink"></div>
+  </div>
+  <div *ngIf="type == 'Book'">
+    <div *ngIf="CurrentObject.book.endsWith('epub', CurrentObject.book.length);">
+      <app-book [link]="CurrentObject.book"></app-book>
+    </div>
+    <div *ngIf="!CurrentObject.book.endsWith('epub', CurrentObject.book.length);">
+       <div *ngIf="NotEpubLink" [innerHTML]="NotEpubLink"></div>
+    </div>
+  </div>
+   <div *ngIf="type == 'HTML'">
+    this is an HTML
+  </div>
+</div>
