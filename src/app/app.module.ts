@@ -32,6 +32,8 @@ import { AccessDeniedComponent } from './auth0/access-denied/access-denied.compo
 import { Four04Component } from './auth0/four04/four04.component';
 // loader service
 import { LoaderService } from './components/shared/loader/loader.service';
+// Profile Picture Service
+import { ProfilePictureService } from './components/shared/profile-picture/profile-picture.service';
 //import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 
 // static pages
@@ -121,9 +123,7 @@ let config = {
     AuthGuardService,
     NotificationBarService,
     LoaderService,
-   // LoaderComponentService,
-
-
+    ProfilePictureService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition
