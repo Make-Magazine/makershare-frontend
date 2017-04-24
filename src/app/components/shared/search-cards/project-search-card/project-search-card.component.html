@@ -87,12 +87,12 @@
           </div>
           <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <a (click)="userProfile(project.first_name,project.last_name)">
+            <a (click)="userProfile(project.first_name,project.last_name)" class="mt-auto">
               <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
             </a>
           </div>
         </div>
-        <div class="card-stats mt-auto">
+        <div class="card-stats mt-2">
           <ul class="list-unstyled d-flex">
             <li class="d-flex align-items-center">
               <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">

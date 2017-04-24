@@ -12,13 +12,13 @@
     <div class="modal-body container">
       <div class="row">
         <div class="col-md-12">
-          <h4 class="modal-title">Select a reason for reporting this project.</h4>
+          <h4 class="modal-title">Select a reason for reporting this project:</h4>
         </div>
         <div class="col-md-12">
           <form class="row" [formGroup]="reportForm">
             <div class="form-group col-md-6">
-              <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
-                <option [value]="none" selected disabled>Select a reason</option>
+              <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting" ng-value="none">
+                <option value="none" selected disabled>Select a reason</option>
                 <option value="not_safe">Not safe for work</option>
                 <option value="hate_language">Uses hate language</option>
                 <option value="copyright">Violates a copyright</option>
@@ -27,7 +27,7 @@
             </select>
             </div>
             <div class="form-group col-md-12">
-              <textarea class="w-100 p-2" placeholder="Explain the problem in more detail" cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
+              <textarea class="w-100 p-2" placeholder="Explain the problem in more details." cols="50" rows="6" formControlName="field_appropriate_for_response"></textarea>
             </div>
           </form>
         </div>
@@ -42,8 +42,7 @@
           <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
           <div class="enter-form-buttons d-flex">
             <div class="ml-auto">
-              <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
-              <button *ngIf="selectedReasonName" type="button" class="btn btn-load-more" [disabled]="!reportForm.valid" (click)="onSubmit($event)"
+              <button type="button" class="btn btn-load-more" [disabled]="!reportForm.valid" (click)="onSubmit($event)"
                 (click)="c('Close click')">Submit</button>
             </div>
           </div>

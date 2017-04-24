@@ -2474,7 +2474,8 @@ footer {
     width: 100%;
     margin: 0; }
   .project-mobile-card .data-container .maker-name {
-    color: #00AEEF; }
+    color: #00AEEF;
+    margin-bottom: 0; }
   .project-mobile-card .card-stats {
     padding: 2px;
     color: #BDBDBD;
