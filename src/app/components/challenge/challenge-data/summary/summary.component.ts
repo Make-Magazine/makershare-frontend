@@ -31,7 +31,6 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    console.log(this.challenge)
     this.meta.setTitle(`Maker Share | ${this.challenge.title}`);
     this.meta.setTag('og:image', this.challenge.cover_image);
     this.meta.setTag('og:description', this.challenge.body);

@@ -278,7 +278,9 @@ a:not([href]):not([tabindex]).message-btn {
   a:not([href]):not([tabindex]).message-btn:focus,
   a:not([href]):not([tabindex]).message-btn:active {
     color: #333333;
-    cursor: pointer; }
+    cursor: pointer;
+    border: none;
+    outline: none; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
@@ -2606,18 +2608,17 @@ footer {
 .teaser {
   display: none;
   position: absolute;
-  top: 13%;
+  top: 70px;
   left: 0px;
   color: #fff;
   bottom: 0;
   right: 0px;
   margin: auto;
-  z-index: 11;
-  height: 100px; }
+  z-index: 11; }
   .teaser p {
     line-height: 20px; }
   .teaser .overlay-text {
-    width: 80%;
+    width: 85%;
     margin: 0 auto; }
 
 /* modal edit profile forms */
@@ -2770,6 +2771,30 @@ footer {
       width: 120px;
       padding: 12px;
       background-color: #fff !important; }
+
+/* message  modal */
+.message-modal {
+  background-color: #F2F2F2; }
+  .message-modal label {
+    color: #ED1C24;
+    margin: 0px; }
+  .message-modal textarea {
+    border: 1px solid #DCDCDC;
+    color: #4F4F4F; }
+  .message-modal .modal-header {
+    border-bottom: none !important;
+    padding: 8px; }
+    .message-modal .modal-header .close:focus, .message-modal .modal-header .close:hover {
+      outline: none !important; }
+  .message-modal .modal-footer {
+    border-top: none !important;
+    padding: 32px; }
+    .message-modal .modal-footer button {
+      width: 120px;
+      padding: 12px;
+      background-color: #fff !important; }
+      .message-modal .modal-footer button:hover {
+        cursor: pointer; }
 
 #edit-cover-modal .modal-dialog {
   width: 60%; }
@@ -4109,6 +4134,19 @@ footer {
           background-color: #333333; }
       .page-project .top-content-wrapper ul.project-tags .btn:hover {
         cursor: default; }
+    .page-project .top-content-wrapper .project-like {
+      min-width: 60px;
+      text-align: right;
+      padding: 0px 12px; }
+      .page-project .top-content-wrapper .project-like img {
+        width: 13px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-like span {
+        font-size: 14px;
+        color: #828282;
+        padding: 0px 4px; }
+      .page-project .top-content-wrapper .project-like a {
+        padding-top: 3px; }
     .page-project .top-content-wrapper .project-likes {
       min-width: 60px;
       text-align: right;
@@ -4671,7 +4709,8 @@ header.showcase-project .next {
     .page-project .projectsingle-card .left-side .image-container {
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-      box-shadow: 2px 2px 8px #BDBDBD; }
+      box-shadow: 2px 2px 8px #BDBDBD;
+      position: relative; }
       .page-project .projectsingle-card .left-side .image-container img {
         width: 100%;
         height: 400px;
@@ -4679,15 +4718,15 @@ header.showcase-project .next {
     .page-project .projectsingle-card .left-side .project-card-badges {
       margin: 0px;
       position: absolute;
-      bottom: 12px;
+      bottom: -20px;
       padding-left: 14px;
       z-index: 105; }
       .page-project .projectsingle-card .left-side .project-card-badges .project-badge {
-        width: 30px;
-        height: auto;
-        margin-right: 3px; }
+        width: auto; }
         .page-project .projectsingle-card .left-side .project-card-badges .project-badge img {
-          height: auto; }
+          height: 35px;
+          width: 30px;
+          margin-right: 5px; }
     .page-project .projectsingle-card .left-side .actions-button {
       padding: 4px; }
   .page-project .projectsingle-card .right-side {
@@ -4765,7 +4804,9 @@ header.showcase-project .next {
             border: 1px solid rgba(130, 130, 130, 0.2);
             color: white; }
           .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
-            border: 1px solid rgba(130, 130, 130, 0.2); }
+            border: 1px solid rgba(130, 130, 130, 0.2);
+            padding: 14px 21px;
+            width: 140px; }
 
 /* project card on search page */
 .project-search-card {
@@ -5377,6 +5418,19 @@ textarea {
           min-width: 50px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
+        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like {
+          min-width: 60px;
+          text-align: right;
+          padding: 0px 12px; }
+          .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like img {
+            width: 13px;
+            height: auto; }
+          .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like span {
+            font-size: 14px;
+            color: #828282;
+            padding: 0px 4px; }
+          .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like a {
+            padding-top: 3px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
           color: #BDBDBD; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {

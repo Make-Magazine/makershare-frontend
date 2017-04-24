@@ -21,7 +21,7 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 import { MetaService } from '@nglibs/meta';
 import { FileEntityManage } from '../../../../models';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
-
+import { StatisticsService } from '../../../../d7services/statistics/statistics.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -131,6 +131,7 @@ export class ProfileComponent implements OnInit {
     private auth: Auth,
     private readonly meta: MetaService,
     private profilePictureService: ProfilePictureService,
+    private statisticsService: StatisticsService,
 
   ) {
     this.ProfilecropperSettings = new CropperSettings();
@@ -192,6 +193,11 @@ export class ProfileComponent implements OnInit {
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
     });
+    // statistics
+    if(this.uid != this.CurrentLoggedUserId){
+      this.statisticsService.view_record(this.uid, 'user').subscribe();
+    }
+    
   }
   OpenModal(Template, ModalName: string) {
     if(ModalName == 'edit-cover-modal'){
@@ -299,7 +305,7 @@ export class ProfileComponent implements OnInit {
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
       }, (err) => {
-        console.log(err);
+
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
           this.profilePictureService.update(this.profile.user_photo);
