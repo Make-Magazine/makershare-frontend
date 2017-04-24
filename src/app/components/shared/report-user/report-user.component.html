@@ -12,7 +12,7 @@
     <div class="modal-body container">
       <div class="row">
         <div class="col-md-12">
-        <h4 class="modal-title">Select an reason for reported portfolio.</h4>
+        <h4 class="modal-title">Select a reason for reporting this portfolio:</h4>
         </div>
         <div class="col-md-12">
         <form class="row" [formGroup]="reportForm">
@@ -25,7 +25,7 @@
             </select>
           </div>
           <div class="form-group col-md-12">
-            <textarea class="w-100 p-2" placeholder="write a reason" cols="42" rows="6" formControlName="field_appropriate_response"></textarea>
+            <textarea class="w-100 p-2" placeholder="Explain the problem in more details." cols="42" rows="6" formControlName="field_appropriate_response"></textarea>
           </div>
         </form>
         </div>
@@ -40,7 +40,6 @@
           <!--<a style="color: black" (click)="c('Close click')" >Cancel</a>-->
           <div class="enter-form-buttons d-flex">
             <div class="ml-auto">
-              <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
               <button *ngIf="selectedReasonName" type="button" class="btn btn-load-more" [disabled]="!reportForm.valid" (click)="onSubmit($event)"
                 (click)="c('Close click')">Submit</button>
             </div>
