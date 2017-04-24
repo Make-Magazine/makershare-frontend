@@ -6831,9 +6831,10 @@ img {
   cursor: pointer;
   padding-right: 10px; }
   .page-portfolio .nav-portfolio .display-style p {
+    opacity: 1;
     color: #828282;
     font-size: 12px; }
-    .page-portfolio .nav-portfolio .display-style p.active {
+    .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
     width: 30px; }

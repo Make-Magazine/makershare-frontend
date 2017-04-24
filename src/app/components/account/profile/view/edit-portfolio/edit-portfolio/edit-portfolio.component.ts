@@ -13,7 +13,6 @@ export class EditPortfolioComponent implements OnInit {
   defaultTab: string;
   CurrentTab:string;
   DefaultView:string;
-  ActiveView;
   
   constructor(
     private viewService:ViewService,
@@ -39,13 +38,11 @@ export class EditPortfolioComponent implements OnInit {
       this.DefaultView = "grid";
       if(userdata.projects_view){
         this.DefaultView = userdata.projects_view;
-        this.ActiveView =  userdata.projects_view;
       }
     });
   }
 
   ChangeDefaultView(NewView:string){
-    this.ActiveView = NewView;
     let user = {
       uid:localStorage.getItem("user_id"),
       field_project_view:{und:NewView},

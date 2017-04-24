@@ -177,14 +177,14 @@ $(document).ready(function () {
 	$(document).on('click','#search-icon', function(){
 		$('#search-box-input').focus();
 	})
-	$(document).on('click', '.display-style p',function(){
-		if($(this).hasClass('active')) {
+	// $(document).on('click', '.display-style p',function(){
+	// 	if($(this).hasClass('active')) {
 			
-		}else {
-			$(this).addClass('active');
-			$(this).siblings().removeClass('active');			
-		}
-	})
+	// 	}else {
+	// 		$(this).addClass('active');
+	// 		$(this).siblings().removeClass('active');			
+	// 	}
+	// })
 	//Index page parallax bg
 	window_width = $(window).width();
 	window_height = $(window).height();
