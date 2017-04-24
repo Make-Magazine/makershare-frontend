@@ -5,6 +5,7 @@ import { ISorting } from '../../models/explore/sorting';
 import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class ExploreComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService
+    private meta: MetaService,
+    private notificationBarService: NotificationBarService,
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,9 @@ export class ExploreComponent implements OnInit {
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
+      if(this.projects.length == 0){
+         this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
+    }
       // hide spinner
       this.loaderService.display(false);      
     }, err => {
