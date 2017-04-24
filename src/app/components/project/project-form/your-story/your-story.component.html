@@ -2,7 +2,7 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input [ngClass]="{valError: formErrors.title}" type="text" class="form-control" id="projectName" formControlName="title" novalidate placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout>
+      <input [ngClass]="{valError: formErrors.title}" type="text" class="form-control" id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
       <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>
@@ -193,7 +193,7 @@
 		</span>
   </div>
   <div class="modal-body">
-    <div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+    <div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab pull-left" (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
 			<!--<img *ngIf="!imagedata.original" src="./assets/images/Drag_Drop.png" alt="">-->
 			<img-cropper #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper><br>
 			<div>
@@ -202,7 +202,7 @@
 			</div>
 			<a class="btn btn-white" (click)="file.click()">
 				Select a photo from your computer
-				<input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event,imagecropper)">
+				<input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event.target.files[0],imagecropper)">
 			</a>
 		</div>
 		<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
