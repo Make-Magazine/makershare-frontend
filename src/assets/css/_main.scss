@@ -666,3 +666,19 @@ body {
 .valErrorString {
     color: $red !important;
 }
+
+
+.notifications-container {
+    .notification {
+        .message {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+        }
+        &.warning {
+            .message {
+                color: $shade-7;
+            }
+        }
+    }
+}

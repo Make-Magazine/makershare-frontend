@@ -87,7 +87,10 @@
 						}
 					}
 					.message-subject {
-						width: 50%;
+						width: 30%;
+					}
+					.message-arrow {
+						width: 20%;
 					}
 					.delete-message {
 						overflow: hidden;
@@ -178,6 +181,10 @@
 		float: right;
 		color: $blue;
 		margin-top: 15px;
+	}
+	.paricipent-img{
+		width: 60px;
+		height: 60px;
 	}
 	.conversation {
 		margin-bottom: 20px;

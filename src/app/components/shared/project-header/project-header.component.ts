@@ -26,7 +26,6 @@ export class ProjectHeaderComponent implements OnInit {
     config.placement = 'bottom';
     config.triggers = 'hover';    
   }
-
   userLogin;
   currentuser;
   userId;

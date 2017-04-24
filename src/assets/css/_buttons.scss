@@ -346,3 +346,27 @@ a:not([href]):not([tabindex]).btn-load-more{
     //     border-color: $main-button-1*0.8;
     // }
 }
+.form-textarea {
+    position: relative;
+    textarea {
+        resize: none;
+    }
+}
+.send-comment {
+    display: inline-table;
+    color: $shade-7;
+    border: none;
+    margin: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    &:hover {
+        color: $red;
+    }
+    &:focus {
+        border: none;
+    }
+}
