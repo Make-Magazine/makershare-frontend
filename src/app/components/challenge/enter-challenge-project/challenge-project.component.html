@@ -31,12 +31,13 @@
                           <div class="challenge-card-count">
                             <span class="entries-count">{{countProjects}}
                        <span *ngIf="countProjects>1">Entries</span>
+                       <span *ngIf="countProjects==0">Entries</span>
                             <span *ngIf="countProjects <= 1">Entry</span>
                             </span>
                             <span class="follow-count">{{challangeData.followers}}
                             <span *ngIf="challangeData.followers>1">Followers</span>
                             <span *ngIf="challangeData.followers==1">Follower</span>
-                            <span *ngIf="!challangeData.followers">0 Follower</span>
+                            <span *ngIf="!challangeData.followers">0 Followers</span>
                             </span>
                           </div>
                           <div class="challenge-card-status">
