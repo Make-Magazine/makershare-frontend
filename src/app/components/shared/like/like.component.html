@@ -1,1 +1,6 @@
-<li class="project-like"><a  class="btn btn-soft-grey btn-fit" (click)="likeThis($event)" [class.active]="isLiked"><i class="fa fa-lg fa-thumbs-o-up"></i></a></li>
+<li class="project-like">
+  <a class="btn btn-soft-grey btn-fit" (click)="likeThis($event)">
+    <img *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+    <img *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+  </a>
+</li>

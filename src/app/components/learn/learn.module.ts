@@ -8,6 +8,7 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SingleObjectComponent } from './individual-workshop/single-object/single-object.component';
+import { ObjectViewComponent } from './individual-workshop/single-object/object-view/object-view.component';
 
 
 //import { MetaModule } from '@nglibs/meta';
@@ -27,6 +28,7 @@ import { SingleObjectComponent } from './individual-workshop/single-object/singl
     IndividualWorkshopComponent,
     BookComponent,
     SingleObjectComponent,
+    ObjectViewComponent,
 
     
   ]
