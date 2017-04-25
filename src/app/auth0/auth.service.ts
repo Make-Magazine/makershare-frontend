@@ -57,7 +57,6 @@ export class Auth implements OnInit {
           // console.log(error);
           return;
         }
-        console.log(profile);
         var data = profile;
         data.idToken = authResult.idToken;
         if (profile['email_verified'] == true) {
@@ -65,7 +64,6 @@ export class Auth implements OnInit {
          
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
-              console.log(res);
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
@@ -154,16 +152,5 @@ export class Auth implements OnInit {
       localStorage.removeItem('user_name');
       localStorage.removeItem('user_photo');
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
-  }
-  
-  public getYears(){
-    var max = new Date().getFullYear();
-    var yearsArr = [];
-    for (var _i = 1; _i < 100; _i++) {
-      yearsArr.push({value: max - _i, label: max - _i});
-
-    }
-    this.yearsArr = yearsArr;
-    return yearsArr;
   }
 }
