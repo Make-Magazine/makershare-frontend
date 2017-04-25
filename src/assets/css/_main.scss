@@ -58,12 +58,7 @@ h1,h2,h3,h4,h5,h6 {font-family: 'Messina Modern Regular';color: $main-grey;}
 notification-bar {
     z-index: 99999;
 }
-p {
-    word-break: break-all;
-    -webkit-hyphens: auto;
-         -moz-hyphens: auto;
-            hyphens: auto;
-}
+
 body {
     // font-family: 'Messina Sans Regular';
     // color: $main-grey;
