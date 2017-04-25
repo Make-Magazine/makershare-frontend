@@ -23,23 +23,31 @@ export class Auth implements OnInit {
   yearsArr= [];
   state = '';
   
-  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
-    loginUrl: '/login',
-    auth: {
-        redirectUrl: globals.appURL,
-        responseType: 'token',
-        params: {state: this.state},
-    },
-    socialButtonStyle: 'small',
-    // initialScreen: this.screen,
-    languageDictionary: {
-      title: ""
-    },
-    theme: {
-      logo: globals.domain + '/sites/default/files/logo.png',
-      primaryColor: '#d41c2b'
-    }
-  });
+
+  options = {
+    allowSignUp: true,
+    signUpLink: 'http://asd.com/asd'
+  }
+
+  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', this.options //{
+    // loginUrl: '/login',
+    // auth: {
+    //     redirectUrl: globals.appURL,
+    //     responseType: 'token',
+    //     params: {state: this.state},
+    // },
+    // socialButtonStyle: 'small',
+    // // initialScreen: this.screen,
+    // // languageDictionary: {
+    // //   title: ""
+    // // },
+    // theme: {
+    //   logo: globals.domain + '/sites/default/files/logo.png',
+    //   primaryColor: '#d41c2b'
+    // }
+  //}
+  
+  );
 
 
   constructor(
