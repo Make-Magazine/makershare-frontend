@@ -50,7 +50,7 @@ export class SinglShowcaseComponent implements OnInit {
     //load showcaseprojects data
     this.getshowCaseProjects();
     this.showcaseNid = this.route.params['value'].nid
-    this.countLikes();
+    //this.countLikes();
     // console.log(this.showcasenumber)
     this.userId = localStorage.getItem('user_id');
 
@@ -140,11 +140,20 @@ export class SinglShowcaseComponent implements OnInit {
     // this.showcaseNid.emit(this.route.params['value'].nid)
   }
 
-  countLikes(){
-    this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
-      this.numLikes = res;
-      console.log(this.numLikes)
-    })
+  // countLikes(){
+  //   this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+  //     if(res['count']>0){
+  //     this.numLikes = res;
+  //     }else{
+  //        this.numLikes=0;
+  //     }
+
+  //   })
+  // }
+    likesCounter(count) {
+    this.numLikes = count;
+    console.log(this.numLikes)
+
   }
 
 }
