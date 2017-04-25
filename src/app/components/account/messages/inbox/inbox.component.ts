@@ -392,7 +392,7 @@ export class InboxComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
       this.hideTurnOn = true;
-      this.notificationBarService.create({ message: 'You have turned off messaging', type: NotificationType.Success });
+      this.notificationBarService.create({ message: 'You have turned off messaging; only community managers can message you. You can always turn it back on here.', type: NotificationType.Success });
       this.loaderService.display(false);
     })
   }

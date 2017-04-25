@@ -6,8 +6,9 @@
       </div>
     </div>
     <div class="image-top">
-      <div class="overlay-portfolio">
-        <div class="d-flex flex-column m-auto">
+      <div class="overlay-portfolio" [routerLink]="['/project/view',Project.nid]"></div>
+      <div class="profile-edit-buttons">
+        <div class="d-flex flex-column m-auto profile-edit-buttons">
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
             <div class="d-flex flex-column">
@@ -24,11 +25,6 @@
         </div>
       </div>
       <img class="card-img-top" *ngIf="projectCard.cover_photo" src="{{projectCard.cover_photo}}" alt="">
-      <div class="list-unstyled icons">
-        <span *ngIf="projectCard.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
-        <span><i class="fa fa-lg fa-trophy"></i>1</span>
-        <span><i class="fa fa-lg fa-clock-o"></i>1</span>
-      </div>
     </div>
     <div class="card-block d-flex flex-column justify-content-around">
       <div class="d-flex flex-column">
@@ -69,12 +65,12 @@
   </div>
 </div>
 
-
 <!--Project with larg view-->
-<div *ngIf="project && type == 'showcase'">
+<div *ngIf="projectCard && type == 'showcase'">
   <div class="project card lg-card">
     <div class="image-top-lg">
-      <div class="overlay-portfolio">
+      <div class="overlay-portfolio"></div>
+      <div class="profile-edit-buttons">
         <div class=" d-flex flex-column m-auto">
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
@@ -106,7 +102,7 @@
         <p *ngIf="type == 'showcase'" class="maker-name">{{projectCard.first_name}} {{projectCard.last_name}}</p>
       </a>
       <div class="card-categories" *ngIf="projectCard.project_categories">
-        
+
         <span class="project-categories" *ngFor="let category of projectCard.project_categories">
           <span>{{category}}<span class="tags-comma">,</span></span>
         </span>
@@ -152,8 +148,8 @@
     </div>
   </div>
   <div class="modal-footer">
-      <a [hidden]="true" #close class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
-      <button  class="btn btn-blue btn-sharp" (click)="DeleteProject(close)">Yes</button>
-      <button  class="btn btn-blue btn-sharp" (click)="UpdateProjectVisibility(1115,close)">Save as draft</button>
+    <a [hidden]="true" #close class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
+    <button class="btn btn-blue btn-sharp" (click)="DeleteProject(close)">Yes</button>
+    <button class="btn btn-blue btn-sharp" (click)="UpdateProjectVisibility(1115,close)">Save as draft</button>
   </div>
 </template>

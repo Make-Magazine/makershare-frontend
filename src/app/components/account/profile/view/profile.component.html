@@ -229,7 +229,7 @@
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid"></profile-projects>
+									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view"></profile-projects>
 									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid"></app-edit-portfolio>
 								</div>
 							</div>
