@@ -2,7 +2,7 @@
   <div class="your-story">
     <div class="form-group projectName">
       <label for="projectName">Project Name</label>
-      <input [ngClass]="{valError: formErrors.title}" type="text" class="form-control" id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
+      <input [ngClass]="{valError: formErrors.title && YourStoryForm.controls.title.touched}" type="text" class="form-control" id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
       <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>

@@ -1,31 +1,29 @@
 <div class="row" *ngIf="!IsLoading">
-  <div class="container">
-    
-    <div *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)">
-      previous
+  <div class="container  single-object-page ">
+   <div class="navigation col-lg-9 d-flex flex-row w-100">
+    <div class="pre-button mr-auto">
+      <button *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> Previous </button>
     </div>
-    <div *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)">
-      next
+    <div class="ml-auto">
+      <button *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> Next </button>
     </div>
+     </div>
 
     <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
 
-  <!--<aside class="col-md-2 list-position">-->
-            <!---->
-            <!--<ul class="list-unstyled content-list">-->
-              <!--Contents:-->
-              <!--<div *ngFor="let object of objectsList;">-->
-                <!--<li>-->
-                  <!---->
-                    <!--<div [innerHTML]="objectsList.object_title"></div>-->
-                  <!---->
-                <!--</li>-->
-              <!--</div>-->
-            <!--</ul>-->
-          <!--</aside>-->-->
+    <!--<aside class="col-md-2 list-position">-->
+    <!---->
+    <!--<ul class="list-unstyled content-list">-->
+    <!--Contents:-->
+    <!--<div *ngFor="let object of objectsList;">-->
+    <!--<li>-->
+    <!---->
+    <!--<div [innerHTML]="objectsList.object_title"></div>-->
+    <!---->
+    <!--</li>-->
+    <!--</div>-->
+    <!--</ul>-->
+    <!--</aside>-->
 
+  </div>
 </div>
- </div>
-
-
- 
