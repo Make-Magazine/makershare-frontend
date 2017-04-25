@@ -155,8 +155,12 @@ $(document).ready(function () {
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeIn('400');
 			$(this).find('.overlay-portfolio').stop();
-			$(this).find('.overlay-portfolio').addClass('d-flex');
-			$(this).find(".overlay-portfolio" ).animate({opacity: 1})
+			$(this).find('.overlay-portfolio').fadeIn(400);
+			// $(this).find('.overlay-portfolio').addClass('d-flex');
+			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
+			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
+			$(this).find('.profile-edit-buttons').stop();
+			$(this).find('.profile-edit-buttons').fadeIn(400);
 			if($(this).find('.latest-project-image').length > 0 ){
 				$(this).find('.latest-project-image').stop();			
 				$(this).find('.latest-project-image').fadeIn(800);
@@ -173,9 +177,12 @@ $(document).ready(function () {
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
 			$(this).find('.overlay-portfolio').stop();
-			$(".overlay-portfolio" ).animate({opacity: 0},400, function(){
-				$(this).find('.overlay-portfolio').removeClass('d-flex');
-			})			
+			$(this).find('.overlay-portfolio').fadeOut(400);			
+			$(this).find('.profile-edit-buttons').stop();
+			$(this).find('.profile-edit-buttons').fadeOut(400);
+			// $(".overlay-portfolio" ).animate({opacity: 0},400, function(){
+			// 	$(this).find('.overlay-portfolio').removeClass('d-flex');
+			// })			
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
 			if($(this).find('.latest-project-image').length > 0 ){			
