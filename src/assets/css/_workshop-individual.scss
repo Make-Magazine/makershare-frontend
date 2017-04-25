@@ -131,6 +131,13 @@
 					padding-left: 0rem!important;
 			}
 		}
+		.object-type {
+			    // padding-left: 665px;
+				color: #828282;
+				p {
+				color: #828282;
+				}
+		}
 		.html-block
 		{
 		width: 74%;
@@ -290,16 +297,21 @@
 		padding: 16px;
 		background-color: $learn-card-bg;
 		@include boxShadow(2px, 2px ,8px, $shade-3);
-
+ 		.partership {
+				p {
+				color: #828282;
+				}
+			}
 		.learn-item {
 			padding: 10px;
 			img {
 				width: 250px;
 			}
-			.card-partership {
+			.partership {
 				color: $main-button-1;
 			}
 		}
+	
 				.individual-card-img{
 				padding: 0px;
 				.play-image {
@@ -465,6 +477,14 @@
 		}
 	}
 
+ }
+
+ .single-object-page
+ {
+	 .navigation
+	 {
+   padding: 10px;
+	 }
  }
 
 // .modal-dialog {
