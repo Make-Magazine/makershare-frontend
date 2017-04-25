@@ -190,15 +190,10 @@
         }
         .image-container {
             position: relative;                    
-            // width: 365px;
-            height: 280px; 
-            // top: -110px;
-            // left: -60px;
-            // margin-bottom: -100px;   
             overflow: hidden;   
             img {
                 width: 100%;
-                height: 100%;
+                height: auto;
             }
         }
         .profile-group {
@@ -881,6 +876,7 @@
         text-align: left;
         width: 100%;
         margin: 0;
+        max-width: 230px;
     }
     .card-title-showcase {
         @include card-header-font-sm;

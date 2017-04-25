@@ -611,6 +611,12 @@ h1, h2, h3, h4, h5, h6 {
 notification-bar {
   z-index: 99999; }
 
+p {
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
 body {
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
@@ -1259,7 +1265,8 @@ footer {
   footer .copy .copyright {
     padding-top: 8px; }
   footer .copy .logo-title {
-    padding: 12px 0px 0px 4px; }
+    padding: 12px 0px 0px 4px;
+    text-align: left; }
   footer a.nav-link {
     color: #4F4F4F;
     padding: 0; }
@@ -1803,11 +1810,10 @@ footer {
       margin-top: 10px; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
-      height: 280px;
       overflow: hidden; }
       .profile-sidebar .profile-container .image-container img {
         width: 100%;
-        height: 100%; }
+        height: auto; }
     .profile-sidebar .profile-container .profile-group {
       position: relative; }
       .profile-sidebar .profile-container .profile-group .card-type {
@@ -2386,7 +2392,8 @@ footer {
     overflow: hidden;
     text-align: left;
     width: 100%;
-    margin: 0; }
+    margin: 0;
+    max-width: 230px; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -7966,6 +7973,9 @@ img {
 
   .main-header .login-block li .btn {
     padding: 0px; } }
+@media only screen and (min-width: 575px) and (max-width: 768px) {
+  .project .card-title {
+    max-width: 370px; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
