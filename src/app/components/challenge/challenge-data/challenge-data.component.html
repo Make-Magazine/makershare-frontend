@@ -25,7 +25,7 @@
                      <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 375">
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
                     </div>-->
-                    <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
+                    <div class="button-container-main-1" *ngIf="challenge.status_id == 375 && auth.authenticated()">
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
                     <app-follow  [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
