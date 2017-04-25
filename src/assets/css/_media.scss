@@ -1,140 +1,20 @@
-
-@media (max-width: 414px) {
-    .showcase-card-backlayer {
-        .showcase-card {
-            .content-container {
-                .showcase-card-footer {
-                    display: block !important;
-                    .showcase-card-footer-1 {
-                        width: 100%;
-                        div {
-                            width: 100%;
-                        }
-                        span {
-                            width: 100%;
-                        }
-                    }
-                    .showcase-card-footer-2 {
-                        margin-left: 0px;
-                        width: 100%;
-                        div {
-                            width: 100%;
-                        }
-                        span {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 575px) {
-    /* project card */
-    .project.card {
-        width: 100%;
-        .image-top {
-            position: inherit;
-            top: 0;
-            left: 0;
-        }
-        .card-block {
-            padding: 8px;
-            margin-top: 0px;
-            min-height: 175px;
-        }
-    }
-    /* showcase card */
-    .page-showcase {
-        .showcases-container {
-            padding: 20px 15px;
-        }
-    }
-    .showcase-card-backlayer {
-        .showcase-card {
-            .image-container {
-                width: auto;
-                img {
-                    width: 100%;
-                    width: auto;
-                }
-            }
-            .content-container {
-                .showcase-type-badge {
-                    p {}
-                }
-            }
-        }
-    }
-    footer {
-        .sitemap {
-            .sitemap-1,
-            .sitemap-2,
-            .socials {
-                padding-top: 8px;
-            }
-        }
-    }
-}
-
-@media (max-width: 767px) {
-    .showcase-card-backlayer {
-        .showcase-card {
-            .image-container {
-                img {}
-            }
-            .content-container {
-                padding-top: 12px;
-                .showcase-type-badge {
-                    display: none;
-                }
-            }
-        }
-    }
-    .project { 
-        .card-stats {
-            ul {
-                width: 50%;
-            }
-        }
-    }
-    .profile-container {
-        .maker-card.project {
-            margin-top: 20px;
-            .card-block {
-                height: auto;
-                .maker-name {
-                    margin-top: 10px;
-                }
-                .card-type {
-                    right: -10px;
-                }
-                .icons-side-user {
-                    margin-top: auto !important;
-                }
-            }
-        }
-    }
-}
-
 @media (max-width: 991px) {
     /* Footer */
     footer {
         padding-top: 30px;
         .container {
             .copy {
-                order: 4;
+                // order: 4;
                 margin: 0;
                 nav {
                     padding: 0px;
                 }
             }
             .socials-newsletter {
-                margin-top: 20px;
+                // margin-top: 20px;
             }
-            .sitemap {
-                margin: 0;
+            .sitemap-1 {
+                margin-bottom: 20px;
             }
         }
     }
@@ -220,6 +100,142 @@
         } 
     } 
 }
+
+@media (max-width: 767px) {
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                img {}
+            }
+            .content-container {
+                padding-top: 12px;
+                .showcase-type-badge {
+                    display: none;
+                }
+            }
+        }
+    }
+    .project { 
+        .card-stats {
+            ul {
+                width: 50%;
+            }
+        }
+    }
+    .profile-container {
+        .maker-card.project {
+            margin-top: 20px;
+            .card-block {
+                height: auto;
+                .maker-name {
+                    margin-top: 10px;
+                }
+                .card-type {
+                    right: -10px;
+                }
+                .icons-side-user {
+                    margin-top: auto !important;
+                }
+            }
+        }
+    }
+    footer {
+        .footer-copyright {
+            width: 90%;
+            margin: auto;
+        }
+    }
+}
+@media (max-width: 575px) {
+    /* project card */
+    .project.card {
+        width: 100%;
+        .image-top {
+            position: inherit;
+            top: 0;
+            left: 0;
+        }
+        .card-block {
+            padding: 8px;
+            margin-top: 0px;
+            min-height: 175px;
+        }
+    }
+    /* showcase card */
+    .page-showcase {
+        .showcases-container {
+            padding: 20px 15px;
+        }
+    }
+    .showcase-card-backlayer {
+        .showcase-card {
+            .image-container {
+                width: auto;
+                img {
+                    width: 100%;
+                    width: auto;
+                }
+            }
+            .content-container {
+                .showcase-type-badge {
+                    p {}
+                }
+            }
+        }
+    }
+    footer {
+        text-align: center;
+        .container {
+            .sitemap-1,
+            .sitemap-2,
+            .socials {
+                padding-top: 8px;
+            }
+            .copy nav {
+                padding: 0px;
+                margin: 0 auto 20px;
+                text-align: left;
+            }
+            .social-footer {
+                overflow: hidden;
+                width: 140px;
+                margin: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .showcase-card-backlayer {
+        .showcase-card {
+            .content-container {
+                .showcase-card-footer {
+                    display: block !important;
+                    .showcase-card-footer-1 {
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                    .showcase-card-footer-2 {
+                        margin-left: 0px;
+                        width: 100%;
+                        div {
+                            width: 100%;
+                        }
+                        span {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 @media only screen and (max-width: 991px) and (min-width:767px) {
     header {
