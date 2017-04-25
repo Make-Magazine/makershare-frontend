@@ -35,6 +35,10 @@ export class ProjectCardComponent implements OnInit {
       categories_string = categories_string.substring(0, categories_string.length - 2);
       var categories_array = categories_string.split(', ');
       res[0].project_categories = categories_array;
+      var membership_string = res[0].field_team_members;
+      membership_string =  membership_string.substring(0,  membership_string.length - 1);
+      var  membership_array =  membership_string.split(',');
+      res[0].field_team_members = membership_array;
       this.project = res[0];
       console.log(this.project);
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
