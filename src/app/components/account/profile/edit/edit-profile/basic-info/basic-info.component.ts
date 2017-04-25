@@ -5,6 +5,7 @@ import { ProfileService } from '../../../../../../d7services/profile/profile.ser
 import { ViewService } from '../../../../../../d7services/view/view.service';
 import { Observable } from 'rxjs/Observable';
 import { CustomValidators } from 'ng2-validation';
+import { inarray } from '../../../../../../validations/inarray.validation'
 
 @Component({
   selector: 'app-basic-info',
@@ -17,7 +18,12 @@ export class BasicInfoComponent implements OnInit {
   basicForm;
   CountryFieldsAndDetails;
   CountriesList=[];
-  
+  formatter = (x) => {
+    if(x.value){
+      return x.value;
+    }
+    return x;
+  };
   SearchCountry = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
@@ -41,23 +47,22 @@ export class BasicInfoComponent implements OnInit {
   ngOnInit() {
     this.viewService.getView('maker_address_api').subscribe(countries=>{
       this.CountriesList = countries;
-    });
-    if(this.userProfile.address.code){
-      this.viewService.getView('maker_address_api/' + this.userProfile.address.code).subscribe((data) => {
-        this.CountryFieldsAndDetails = data;
-        this.MigrateCountryDetails();
+      if(this.userProfile.address.code){
+        this.viewService.getView('maker_address_api/' + this.userProfile.address.code).subscribe((data) => {
+          this.CountryFieldsAndDetails = data;
+          this.MigrateCountryDetails();
+          this.buildForm();
+        });
+      }else{
         this.buildForm();
-      });
-    }else{
-      this.buildForm();
-    }
+      }
+    });
   }
-  GetCountryDetails(event,changed?){
-    let code = event.item.key;
-    event.preventDefault();
-    this.viewService.getView('maker_address_api/' + code).subscribe((data) => {
+  GetCountryDetails(item){
+    this.viewService.getView('maker_address_api/' + item.key).subscribe((data) => {
       const control = this.basicForm.controls.address;
-      if(changed && data.administrative_areas){
+      control['controls'].country.patchValue(item.value);
+      if(data.administrative_areas){
         control['controls'].governorate.patchValue(data.administrative_areas[0].value);
       }else{
         control['controls'].governorate.patchValue('');
@@ -92,7 +97,7 @@ export class BasicInfoComponent implements OnInit {
       mail: [this.userProfile.mail, [Validators.required,CustomValidators.email]],
       newsletter_subscription: [this.userProfile.newsletter_subscription == 1? true:false],
       address: this.fb.group({
-        country: [this.userProfile.address.country, [Validators.required]],
+        country: [this.userProfile.address.country, [Validators.required,inarray(this.CountriesList.map(country=>country.value))]],
         governorate: [this.userProfile.address.governorate],
         city: [this.userProfile.address.city],
         postal_code: [this.userProfile.address.zip_code, [Validators.minLength(5)]],

@@ -3,18 +3,18 @@ $(window).bind("load resize slid.bs.carousel", function () {
 	var imageHeight = $(".active .holder").height();
 	$(".controllers").height(imageHeight);
 });
-function myToggle(a, e, b) {
-	e.preventDefault();
-	a.addClass('active');
-	a.parent().siblings().children('a').removeClass('active');
-	id = a.attr('id');
-	$('.' + id).siblings().hide();
-	$('.' + id).show();
-	if (b) {
-		$('.' + id + b).siblings().hide();
-		$('.' + id + b).show();
-	}
-};
+// function myToggle(a, e, b) {
+// 	e.preventDefault();
+// 	a.addClass('active');
+// 	a.parent().siblings().children('a').removeClass('active');
+// 	id = a.attr('id');
+// 	$('.' + id).siblings().hide();
+// 	$('.' + id).show();
+// 	if (b) {
+// 		$('.' + id + b).siblings().hide();
+// 		$('.' + id + b).show();
+// 	}
+// };
 // addNewField ( $(this) , arrayOfFieldsIds,group to clone,conatiner to get length)
 function addNewField(a, b, g, c) {
 	d = c.length + 1;
@@ -78,15 +78,15 @@ $(document).ready(function () {
 		$('.submenus div ' + ul).show();
 
 	});
-	$(document).on('click', '.project-aside a', function (e) {
-		e.preventDefault();
-		id = $(this).parent().attr('id');
-		$('#' + id).addClass('active');
-		$('#' + id).siblings().removeClass('active');
-		$('.' + id).show();
-		$('.' + id).siblings().hide();
+	// $(document).on('click', '.project-aside a', function (e) {
+	// 	e.preventDefault();
+	// 	id = $(this).parent().attr('id');
+	// 	$('#' + id).addClass('active');
+	// 	$('#' + id).siblings().removeClass('active');
+	// 	$('.' + id).show();
+	// 	$('.' + id).siblings().hide();
 
-	})
+	// })
 
 	$(document).on('click', "#cover-upload-link", function (e) {
 		e.preventDefault();
@@ -108,9 +108,9 @@ $(document).ready(function () {
 	// navigating the create project page tabs
 
 	// navigating the create profile page tabs
-	$(document).on('click', '.create-nav li a', function (e) {
-		myToggle($(this), e);
-	});
+	// $(document).on('click', '.create-nav li a', function (e) {
+	// 	// myToggle($(this), e);
+	// });
 
 	// Toggle profile grid and square view
 	// $(document).on('click', '.square-view', function () {
