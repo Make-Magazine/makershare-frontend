@@ -142,8 +142,12 @@ export class SinglShowcaseComponent implements OnInit {
 
   countLikes(){
     this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+      if(res['count']>0){
       this.numLikes = res;
-      console.log(this.numLikes)
+      }else{
+         this.numLikes=0;
+      }
+
     })
   }
 
