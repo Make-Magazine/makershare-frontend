@@ -3,7 +3,6 @@
     <div class="project-story-tab">
       <div class="project-body-content">
         <video-viewer *ngIf="project.field_show_tell_video.value" [link]="project.field_show_tell_video.value"></video-viewer>
-        <p [innerHTML]="project.field_teaser?.value"></p>
         <p [innerHTML]="project.field_story?.value"></p>
       </div>
       <!-- End body -->
