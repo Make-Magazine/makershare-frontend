@@ -34,9 +34,9 @@
                       </div>
                       <div class="showcase-likes">
                         <img  *ngIf="numLikes" src="./assets/images/icons/light-selected.png"  alt="">
-                          <span *ngIf="numLikes">{{numLikes.count}}</span>
+                          <span *ngIf="numLikes">{{numLikes}}</span>
                           <img  *ngIf="!numLikes" src="./assets/images/icons/light-not-selected.png"  alt="">
-                          <span *ngIf="!numLikes">0</span>
+                          <span *ngIf="!numLikes">{{numLikes}}</span>
                       </div>
                       <div class="views-count-div">
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
