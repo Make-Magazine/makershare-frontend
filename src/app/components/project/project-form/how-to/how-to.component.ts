@@ -12,6 +12,7 @@ import { FileEntity } from '../../../../models';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { domain,endpoint } from '../../../../d7services/globals';
 
 @Component({
   selector: 'app-project-form-how-to',
@@ -491,6 +492,12 @@ export class HowToComponent implements OnInit {
       this.searchFailed[this.CurrentModal] = false;
       this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
     });
+  }
+  CKEditorConfig = {
+    extraPlugins: 'divarea,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser',
+    uploadUrl: domain+endpoint+'/maker_manage_file/create', 
+    imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
   }
   sidebarText = {
     'how_to': {

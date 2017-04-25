@@ -31,7 +31,7 @@ export class Auth implements OnInit {
         params: {state: this.state},
     },
     socialButtonStyle: 'small',
-    initialScreen: this.screen,
+    // initialScreen: this.screen,
     languageDictionary: {
       title: ""
     },
@@ -66,7 +66,6 @@ export class Auth implements OnInit {
          
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
-               console.log(res);
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
@@ -74,10 +73,10 @@ export class Auth implements OnInit {
               //localStorage.setItem('user_photo', res.user_photo);
 
               // first time - redirection to profile edit page
-              // if(profile.app_metadata.first_time){
-              //   this.router.navigate(['/account/editprofile']);  
+              if(profile.app_metadata.first_time){
+                this.router.navigate(['/account/editprofile']);  
                   
-              // }               
+              }               
 
               if(authResult.state != ''){
              //   this.router.navigate([authResult.state]);

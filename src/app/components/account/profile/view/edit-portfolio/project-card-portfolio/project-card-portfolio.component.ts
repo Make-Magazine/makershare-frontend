@@ -3,6 +3,7 @@ import { ProjectCardPortfolio } from '../../../../../../models';
 import { NodeService } from '../../../../../../d7services/node/node.service'
 import { ViewService } from '../../../../../../d7services/view/view.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'project-card-portfolio',
@@ -14,12 +15,13 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Input() Project:ProjectCardPortfolio;
   @Input() Visibility:number;
   @Output() emitter = new EventEmitter();
-  project
+  projectCard
   badges
   constructor(
     private nodeService:NodeService,
     private viewService: ViewService,
     private router: Router,
+    private modal:NgbModal
   ) { }
 
   ngOnInit() {
@@ -28,20 +30,27 @@ export class ProjectCardPortfolioComponent implements OnInit {
       categories_string = categories_string.substring(0, categories_string.length - 2);
       var categories_array = categories_string.split(', ');
       res[0].project_categories = categories_array;
-      this.project = res[0];
-      // console.log(this.project);
-  });
+      this.projectCard = res[0];
+    });
   }
 
-  DeleteProject(nid:number){
-    this.nodeService.DeleteNode(nid).subscribe(data=>{
+  OpenModal(template){
+    this.modal.open(template);
+  }
+
+  DeleteProject(closebtn){
+    closebtn.click();
+    this.nodeService.DeleteNode(this.Project.nid).subscribe(data=>{
       this.emitter.emit();
     });
   }
 
-  UpdateProjectVisibility(nid:number,NewVisibility:number){
+  UpdateProjectVisibility(NewVisibility:number,closebtn?){
+    if(closebtn){
+      closebtn.click();
+    }
     let project = {
-      nid:nid,
+      nid:this.Project.nid,
       field_visibility2:{und:[NewVisibility]},
     }
     

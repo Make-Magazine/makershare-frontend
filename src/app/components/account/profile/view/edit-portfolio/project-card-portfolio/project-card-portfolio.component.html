@@ -1,4 +1,4 @@
-<div *ngIf="project && type == 'grid'">
+<div *ngIf="projectCard && type == 'grid'">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -11,13 +11,13 @@
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
             <div class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
             <div class="d-flex flex-column w-75">
-              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
             <div class="d-flex flex-column">
-              <p (click)="DeleteProject(Project.nid)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
+              <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
             </div>
           </div>
           <p class="project-drag"><i class="fa fa-lg fa-arrows-alt"></i> Drag Project Tile To Reorder</p>
@@ -39,13 +39,13 @@
         </div>
         <div class="d-flex flex-row">
           <div class="profiel-pic-container mr-2">
-            <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
-            <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
+            <img *ngIf="!projectCard.maker_photo" src="http://placehold.it/80x80" alt="">
+            <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
           </div>
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
-            <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <a (click)="userProfile(project.first_name,project.last_name)">
-              <p *ngIf="type == 'grid'" class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.nid)">
+            <h4 class="card-title" innerHTML="{{projectCard.project_name}}"></h4>
+            <a (click)="userProfile(projectCard.first_name,projectCard.last_name)">
+              <p *ngIf="type == 'grid'" class="maker-name">By {{projectCard.first_name}} {{projectCard.last_name}}</p>
             </a>
           </div>
         </div>
@@ -55,8 +55,8 @@
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
             <li>
               <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-              <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
-              <span *ngIf="!project.number_of_likes">0</span>
+              <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
+              <span *ngIf="!projectCard.number_of_likes">0</span>
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
@@ -79,19 +79,19 @@
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span><i class="fa fa-lg fa-pencil"></i> Edit Project</span></p>
           <div class="d-flex">
             <div class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(Project.nid,371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
             <div class="d-flex flex-column w-75">
-              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(Project.nid,370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
             <div class="d-flex flex-column">
-              <p (click)="DeleteProject(Project.nid)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
+              <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
             </div>
           </div>
           <p class="project-drag"><i class="fa fa-lg fa-arrows-alt"></i> Drag Project Tile To Reorder</p>
         </div>
       </div>
-      <img class="card-img-top" *ngIf="project.cover_photo_lg" src="{{project.cover_photo_lg}}" alt="">
+      <img class="card-img-top" *ngIf="projectCard.cover_photo_lg" src="{{projectCard.cover_photo_lg}}" alt="">
       <div class="card-type-blue">
         <div class="type-layer-2">
           Project
@@ -102,12 +102,12 @@
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
       </div>
-      <a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
-        <p *ngIf="type == 'showcase'" class="maker-name">{{project.first_name}} {{project.last_name}}</p>
+      <a class="project-maker-lg" (click)="userProfile(projectCard.first_name,projectCard.last_name)">
+        <p *ngIf="type == 'showcase'" class="maker-name">{{projectCard.first_name}} {{projectCard.last_name}}</p>
       </a>
-      <div class="card-categories" *ngIf="project.project_categories">
+      <div class="card-categories" *ngIf="projectCard.project_categories">
         
-        <span class="project-categories" *ngFor="let category of project.project_categories">
+        <span class="project-categories" *ngFor="let category of projectCard.project_categories">
           <span>{{category}}<span class="tags-comma">,</span></span>
         </span>
       </div>
@@ -115,23 +115,18 @@
     <div class="card-block container">
       <div class="row">
         <div class="col-md-9">
-          <!--<div class="profiel-pic-container mr-2">
-            <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
-            <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
-          </div>-->
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
-            <h4 class="card-title-project" innerHTML="{{project.project_name}}"></h4>
-            <!--<p class="card-text" *ngIf="project.teaser && type == 'showcase'" innerHTML="{{project.teaser}}"></p>-->
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.nid)">
+            <h4 class="card-title-project" innerHTML="{{projectCard.project_name}}"></h4>
           </div>
         </div>
         <div class="content-side col-md-3 d-flex flex-column justify-content-start">
           <div class="card-stats mt-auto">
             <ul class="list-unstyled d-flex justify-content-start align-items-center">
               <li>
-                <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
-                <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
-                <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-                <span *ngIf="!project.number_of_likes">0</span>
+                <img *ngIf="projectCard.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
+                <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
+                <img *ngIf="!projectCard.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                <span *ngIf="!projectCard.number_of_likes">0</span>
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
@@ -144,3 +139,21 @@
     </div>
   </div>
 </div>
+
+<template #confirmdelete let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
+      <span aria-hidden="true" >&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <h5 class="control-label">Your project will be deleted. This cannot be undone.</h5>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <a [hidden]="true" #close class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
+      <button  class="btn btn-blue btn-sharp" (click)="DeleteProject(close)">Yes</button>
+      <button  class="btn btn-blue btn-sharp" (click)="UpdateProjectVisibility(1115,close)">Save as draft</button>
+  </div>
+</template>

@@ -35,7 +35,6 @@ export class AboutBadgesComponent implements OnInit {
       this.meta.setTag('og:description', this.body);
 
     }, err => {
-      console.log(err);
       this.loaderService.display(false);
     });
   }

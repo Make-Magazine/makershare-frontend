@@ -22,8 +22,8 @@
         <div class="d-flex flex-column ml-3">
           <p class="titles">CHOOSE PUBLIC VIEW</p>
           <div class="display-style d-flex ml-auto">
-            <p [ngClass]="{'active': ActiveView == 'showcase'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-            <p [ngClass]="{'active': ActiveView == 'grid'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+            <p [ngClass]="{'not_active': DefaultView != 'grid'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+            <p [ngClass]="{'not_active': DefaultView != 'showcase'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
           </div>
         </div>  
       </div>
