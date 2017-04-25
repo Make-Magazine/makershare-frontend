@@ -42,6 +42,7 @@ import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
  
  let config = {
     breakPoints: {
@@ -108,6 +109,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ValidateOnFocusoutDirective,
     ReportCommentComponent,
     VideoViewerComponent,
+    UserCardMsgsComponent,
   ],
   exports: [
     CommentComponent,
@@ -140,7 +142,8 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
     ProjectVoteComponent,
     ReportCommentComponent,
     FileBrowserComponent,
-    VideoViewerComponent
+    VideoViewerComponent,
+    UserCardMsgsComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -178,4 +181,6 @@ export { ReportUserComponent };
 export { ReportProjectComponent };
 export { ProjectVoteComponent };
 export { ReportCommentComponent };
+export { UserCardMsgsComponent };
+
 
