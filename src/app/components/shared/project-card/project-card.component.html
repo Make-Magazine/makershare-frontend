@@ -60,7 +60,7 @@
 
 
 
-<div *ngIf="project && view == 'grid'">
+<div *ngIf="project && view == 'grid' || front">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -70,7 +70,6 @@
     <div class="image-top" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
-      <!--<img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">-->
       <div class="teaser">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
@@ -91,7 +90,7 @@
           <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)">
-              <p *ngIf="type == 'grid'" class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
             </a>
           </div>
         </div>
@@ -117,7 +116,7 @@
 
 
 <!--Project with larg view-->
-<div *ngIf="project && view == 'showcase'">
+<div *ngIf="project && view != 'grid' && !front">
   <div class="project card lg-card">
     <div class="image-top-lg" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>
@@ -137,10 +136,9 @@
         </div>
       </div>
       <a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
-        <p *ngIf="type == 'showcase'" class="maker-name">{{project.first_name}} {{project.last_name}}</p>
+        <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
       </a>
       <div class="card-categories" *ngIf="project.project_categories">
-
         <span class="project-categories" *ngFor="let category of project.project_categories">
           <span>{{category}}<span class="tags-comma">,</span></span>
         </span>

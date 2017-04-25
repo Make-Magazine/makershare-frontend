@@ -1430,6 +1430,10 @@ footer {
     display: block;
     width: 136px;
     height: 160px; }
+  .user-card-small .profile-pic-container .maker-photo-msg {
+    display: block;
+    width: 50px;
+    height: 50px; }
   .user-card-small .profile-pic-container a {
     width: 100%; }
   .user-card-small .profile-pic-container .message-btn {
@@ -2449,7 +2453,7 @@ footer {
   position: absolute;
   z-index: 11;
   top: 14px;
-  right: 0; }
+  right: 8px; }
 .lg-card .content-side {
   padding: auto; }
   .lg-card .content-side .card-stats ul {
@@ -2632,8 +2636,11 @@ footer {
   display: none;
   position: absolute;
   top: 25%;
-  left: 14%;
-  z-index: 11; }
+  left: 0;
+  z-index: 11;
+  right: 0;
+  width: 300px;
+  margin: 0 auto; }
   .profile-edit-buttons p {
     font-size: 12px;
     color: #4F4F4F;
@@ -6792,6 +6799,10 @@ img {
       color: #00AEEF !important; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .pl-3 {
       padding-left: 0rem !important; }
+  .page-workshop-single .page-workshop-individual .workshop-content .object-type {
+    color: #828282; }
+    .page-workshop-single .page-workshop-individual .workshop-content .object-type p {
+      color: #828282; }
   .page-workshop-single .page-workshop-individual .workshop-content .html-block {
     width: 74%; }
   .page-workshop-single .page-workshop-individual .workshop-content .card-img-top {
@@ -6891,11 +6902,13 @@ img {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
+  .page-workshop-individual .learn-card .partership p {
+    color: #828282; }
   .page-workshop-individual .learn-card .learn-item {
     padding: 10px; }
     .page-workshop-individual .learn-card .learn-item img {
       width: 250px; }
-    .page-workshop-individual .learn-card .learn-item .card-partership {
+    .page-workshop-individual .learn-card .learn-item .partership {
       color: #ED1C24; }
   .page-workshop-individual .learn-card .individual-card-img {
     padding: 0px; }
@@ -6996,6 +7009,9 @@ img {
   cursor: inherit !important; }
 .page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]).btn-border-tag:hover {
   cursor: inherit !important; }
+
+.single-object-page .navigation {
+  padding: 10px; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;

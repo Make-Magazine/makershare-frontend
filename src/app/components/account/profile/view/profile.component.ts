@@ -274,6 +274,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   GetCountryDetails(CountryKey: string) {
+    if(!CountryKey) return;
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
     });
@@ -305,7 +306,6 @@ export class ProfileComponent implements OnInit {
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
       }, (err) => {
-
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
           this.profilePictureService.update(this.profile.user_photo);
