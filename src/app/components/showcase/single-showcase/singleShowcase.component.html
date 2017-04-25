@@ -30,13 +30,13 @@
                   <div class="showcase-card-footer-2">
                     <div class="showcase-card-count d-felx">
                       <div *ngIf="showcase.nid">
-                        <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
+                        <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" (countNumber)="likesCounter($event)"></app-like>
                       </div>
                       <div class="showcase-likes">
                         <img  *ngIf="numLikes" src="./assets/images/icons/light-selected.png"  alt="">
-                          <span *ngIf="numLikes">{{numLikes.count}}</span>
+                          <span *ngIf="numLikes">{{numLikes}}</span>
                           <img  *ngIf="!numLikes" src="./assets/images/icons/light-not-selected.png"  alt="">
-                          <span *ngIf="!numLikes">0</span>
+                          <span *ngIf="!numLikes">{{numLikes}}</span>
                       </div>
                       <div class="views-count-div">
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
