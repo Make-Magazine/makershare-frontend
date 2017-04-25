@@ -44,7 +44,8 @@
 									</div>-->
 									
 							<div class="image-container">
-								<img src="{{profile.user_photo_with_style}}" alt="" class="">
+								<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
+								<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
