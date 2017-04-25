@@ -30,9 +30,16 @@ export class FollowComponent implements OnInit {
   countFollowers = 0;
   ngOnInit() {
     this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
+      if(response['count'] >=1){
       this.countFollowers = response['count'];
       this.countNumber.emit(this.countFollowers);
+      }else{
+                this.countFollowers = 0;
+      this.countNumber.emit(this.countFollowers);
+      }
     }, err => {
+         
+
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.userId = localStorage.getItem('user_id');
