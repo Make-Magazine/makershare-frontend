@@ -60,7 +60,7 @@
 
 
 
-<div *ngIf="project && view == 'grid'">
+<div *ngIf="project && view == 'grid' || front">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -99,7 +99,8 @@
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
             <li>
-              <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="project.number_of_likes > 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
               <span *ngIf="!project.number_of_likes">0</span>
             </li>
@@ -116,7 +117,7 @@
 
 
 <!--Project with larg view-->
-<div *ngIf="project && view != 'grid'">
+<div *ngIf="project && view != 'grid' && !front">
   <div class="project card lg-card">
     <div class="image-top-lg" (click)="ShowProjectDetails(project.nid)">
       <div class="overlay"></div>

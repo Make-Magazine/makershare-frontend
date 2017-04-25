@@ -69,7 +69,7 @@
 										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
 									<div class="profile-fullname"><span>{{profile.first_name}} {{profile.last_name}}</span></div>
-									<div *ngIf="profile.nickname" class="profile-nickname"><span>{{profile.nickname}}</span></div>
+									<div *ngIf="profile.nickname" class="profile-nickname"><span>aka {{profile.nickname}}</span></div>
 									<ul *ngIf="CurrentLoggedUserId == uid || profile.address_publish" class="list-unstyled location">
 										<li *ngIf="profile.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="profile.address && CountryFieldsAndDetails.administrative_areas">{{profile.address.country}}, {{profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
@@ -145,7 +145,7 @@
 											<i class="fa fa-linkedin fa-lg"></i>
 										</a>
 										<a class="nav-link social pin" target="_blank" *ngIf="profile.field_social_accounts.field_pinterest != '' " href="{{profile.field_social_accounts.field_pinterest}}">
-											<i class="fa fa-pinterest fa-lg"></i>
+											<i class="fa fa-pinterest-p fa-lg"></i>
 										</a>
 										<a class="nav-link social ut" target="_blank" *ngIf="profile.field_social_accounts.field_youtube != '' " href="{{profile.field_social_accounts.field_youtube}}">
 											<i class="fa fa-youtube fa-lg"></i>
