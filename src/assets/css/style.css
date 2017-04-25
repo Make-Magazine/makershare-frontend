@@ -2407,7 +2407,7 @@ footer {
   position: absolute;
   z-index: 11;
   top: 14px;
-  right: 0; }
+  right: 8px; }
 .lg-card .content-side {
   padding: auto; }
   .lg-card .content-side .card-stats ul {
@@ -2590,8 +2590,11 @@ footer {
   display: none;
   position: absolute;
   top: 25%;
-  left: 14%;
-  z-index: 11; }
+  left: 0;
+  z-index: 11;
+  right: 0;
+  width: 300px;
+  margin: 0 auto; }
   .profile-edit-buttons p {
     font-size: 12px;
     color: #4F4F4F;
