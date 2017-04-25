@@ -127,6 +127,9 @@ export class InboxComponent implements OnInit {
       this.myInputVariable.nativeElement.value = "";
     });
   }
+  unSetMember(i) {
+    this.SelectedUser.splice(i, 1);
+  }
   getCurrentUser() {
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.user.getUser(this.userId).subscribe(res => {
@@ -154,6 +157,8 @@ export class InboxComponent implements OnInit {
         // }
         // this.msg.unshift(newMessage);
         this.msg = [];
+        this.messageForm.reset();
+        this.SelectedUser = [];
         this.getMessages();
         this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
       });
