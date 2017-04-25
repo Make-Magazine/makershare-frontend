@@ -9,7 +9,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view:string = 'grid';
+  @Input() view: string;
   @Input() front;
 
   badges = [];
@@ -31,7 +31,12 @@ export class ProjectCardComponent implements OnInit {
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
+      var categories_string = res[0].project_categories;
+      categories_string = categories_string.substring(0, categories_string.length - 2);
+      var categories_array = categories_string.split(', ');
+      res[0].project_categories = categories_array;
       this.project = res[0];
+      console.log(this.project);
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0];
       });
