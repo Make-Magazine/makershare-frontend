@@ -18,10 +18,10 @@ export class ProjectsComponent implements OnInit {
     private viewService: ViewService,
     private meta: MetaService
   ) { }
-  view = 'grid';
   pages: number = 0;
   userName;
-  @Input() uid;
+  @Input('uid') uid;
+  @Input('view') view;
   page_arg;
   countProject = 0;
   hideloadmoreproject = false;

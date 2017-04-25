@@ -24,11 +24,6 @@
         </div>
       </div>
       <img class="card-img-top" *ngIf="projectCard.cover_photo" src="{{projectCard.cover_photo}}" alt="">
-      <!--<div class="list-unstyled icons">
-        <span *ngIf="project.show_tell_video"><i class="fa fa-lg fa-video-camera"></i></span>
-        <span><i class="fa fa-lg fa-trophy"></i>1</span>
-        <span><i class="fa fa-lg fa-clock-o"></i>1</span>
-      </div>-->
     </div>
     <div class="card-block d-flex flex-column justify-content-around">
       <div class="d-flex flex-column">
@@ -69,9 +64,8 @@
   </div>
 </div>
 
-
 <!--Project with larg view-->
-<div *ngIf="project && type == 'showcase'">
+<div *ngIf="projectCard && type == 'showcase'">
   <div class="project card lg-card">
     <div class="image-top-lg">
       <div class="overlay-portfolio">
