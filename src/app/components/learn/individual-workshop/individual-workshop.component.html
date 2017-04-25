@@ -105,33 +105,41 @@
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
                     <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
 
-                      
-                      <div class="card-block">
+                      <div class="header-section">
+                        <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
+                      </div>
+
+                      <!--<div class="card-block">
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
                       </div>
 
                       <div class="button-container-main-1  modal-block">
                         <span class="btn btn-main" (click)="objectDetails(object.nid)">Read the PDF</span>
-                      </div>
+                      </div>-->
                       <!--<div class="card-block modal-block">
                           <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</a>
                         </div>-->
                     </div>
                     <div class="media-body col-lg-9">
+                      <div class="card-title">
+                        <h4 class="lesson-style" [innerHTML]="object.lesson_name"></h4>
+                      </div>
+                      <div class="object-title-style">
+                        <h2 [innerHTML]="object.object_title"></h2>
+                      </div>
 
                       <!--<h4 class="card-title">{{object.learning_content_type}}</h4>-->
-                      <div class="header-section">
-                                           <div class="card-title">
-                          <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
-                        <h4 class="lesson-style" [innerHTML]="object.lesson_name"></h4>
-                          </div>
-                          <div class="object-title-style">
-                        <h2 [innerHTML]="object.object_title"></h2>
-                       </div>
-                       </div>
+
 
                       <div [innerHTML]="object.lesson_description"></div>
+
+                      <div class="button-container-main-1  modal-block">
+                        <span class="btn btn-main" (click)="objectDetails(object.nid)">Read the PDF</span>
+                      </div> 
+                      
                     </div>
+
+                      
                   </div>
                   <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'PDF' ">
                     <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
