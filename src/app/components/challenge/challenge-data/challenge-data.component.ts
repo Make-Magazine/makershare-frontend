@@ -8,6 +8,7 @@ import { StatisticsService } from '../../../d7services/statistics/statistics.ser
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Auth } from '../../../auth0/auth.service';
 
 
 import 'rxjs/Rx';
@@ -59,7 +60,8 @@ export class ChallengeDataComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
-  ) { }
+    private auth: Auth,
+) { }
 
   ngOnInit() {
     // show spinner
