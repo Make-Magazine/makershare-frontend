@@ -305,7 +305,6 @@ export class ProfileComponent implements OnInit {
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
       }, (err) => {
-
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
           this.profilePictureService.update(this.profile.user_photo);
