@@ -6,6 +6,7 @@ import { ViewService } from '../../../../../../d7services/view/view.service';
 import { FileEntity } from '../../../../../../models';
 import { CustomValidators } from 'ng2-validation';
 import { Observable } from 'rxjs/Observable';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 @Component({
   selector: 'app-optional-info',
@@ -44,6 +45,7 @@ export class OptionalInfoComponent implements OnInit {
     private fb: FormBuilder,
     private profileService: ProfileService,
     private viewService:ViewService,
+    private notificationBarSer:NotificationBarService
   ) { }
 
   ngOnInit() {
@@ -115,21 +117,21 @@ export class OptionalInfoComponent implements OnInit {
   }
 
   onFileChange(event){
-    this.FileEntityObject = {file:'',filename:''};
-    this.CoverImage.emit(undefined);
     if(event.target.files.length == 0) return;
     let file = event.target.files[0];
     this.ConvertToBase64(file,this.FileEntityObject,this.CoverImage);
   }
 
   public ConvertToBase64(file,FileEntityObject,CoverImage){
+    let self = this;
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       let img = new Image();
       img.src = reader.result;
       if(img.width < 600 && img.height < 600){
-        // display error image size
+        //show error message for validation
+        self.notificationBarSer.create({ message: 'Image size is invalid.', type: NotificationType.Error});
         return;
       }
       FileEntityObject.filename = file.name;
