@@ -128,11 +128,23 @@
 }
 
 footer {
-    padding-top: 50px;
+    padding-top: 15px;
     padding-bottom: 25px;
     min-height: 35px;
     font-size: 14px;
     background: white;
+    border-top: 5px solid $blue;
+    .newsletter {
+        p {
+            font-size: 1em;
+            color: $text-color-2;
+            line-height: 25px;
+            margin-bottom: 0;
+        }
+    }
+    .footer-copyright {
+            color: $text-color-2;
+    }
     .copy {
         nav {
             height: 75px;
@@ -201,17 +213,78 @@ footer {
         }
     }
     .footer-subtitle {
-        color: $text-color-6;
-        font-size: 16px;
+        color: $dark-blue;
+        font-size: 1.3em;
         width: 100%;
         padding-bottom: 4px;
         margin: 0px;
     } 
     .sitemap-1, .sitemap-2 {
         a {
-            font-size: 16px;
+            font-size: 1.1em;
+            padding: 3px 0;
             color: $text-color-2;
             line-height: 25px;
+        }
+    }
+    .social-links {
+        // margin-bottom: 15px;
+        a {
+            position:relative;
+            text-align:center;
+            width:0px;
+            height:0px;
+            padding:15px;
+            border-top-right-radius: 	20px;
+            border-top-left-radius: 	20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 	20px; 
+            -moz-border-radius: 		20px 20px 20px 20px;
+            -webkit-border-radius: 		20px 20px 20px 20px;
+            -khtml-border-radius: 		20px 20px 20px 20px; 	
+            color:#FFFFFF;
+            i {
+                font-size:1.3em;
+                position:absolute;
+                left:8px;
+                top:10px;
+            }
+            &.fb {
+                i {
+                    left: 10px;
+                }
+            }
+        }
+    
+        a.social {
+            float: left;
+            margin:0 5px 0 0;
+            cursor:pointer;
+            background:$shade-2;
+            color:#fff;
+        
+        }
+        a.social:hover {
+            &.fb {
+                background-color: #014c8c;
+            }
+            &.tw {
+                background-color: #33ccff;
+            }
+            &.pin {
+                background-color: #cc2127;
+            }
+            &.in {
+                background-color:
+                radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+                radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+                radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+                radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+                radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+                radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+                radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+                linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+            }
         }
     }
 }
