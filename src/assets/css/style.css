@@ -3417,6 +3417,59 @@ footer {
   .empty-projects-page h4 {
     color: #333333; }
 
+/* file manager style */
+.file-manager .file-manager-header .upload-file {
+  color: #828282; }
+.file-manager .file-manager-header .storge-progressbar {
+  color: #828282; }
+  .file-manager .file-manager-header .storge-progressbar .progress {
+    background: #fff;
+    border-radius: 0px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
+    .file-manager .file-manager-header .storge-progressbar .progress .progress-bar {
+      background-color: #BDBDBD;
+      color: #4F4F4F; }
+.file-manager .file-manager-contnet .file-manager-title {
+  color: #4F4F4F;
+  padding: 8px 10px; }
+.file-manager .file-manager-contnet .file-item {
+  position: relative;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+  .file-manager .file-manager-contnet .file-item p {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    background-color: #fff;
+    color: #828282;
+    padding: 5px; }
+    .file-manager .file-manager-contnet .file-item p:hover {
+      cursor: pointer; }
+.file-manager .file-manager-footer {
+  text-align: center; }
+  .file-manager .file-manager-footer a {
+    color: #828282; }
+    .file-manager .file-manager-footer a:hover {
+      color: #828282; }
+
+button:hover {
+  cursor: pointer; }
+
+/* file-manager-modal */
+.file-manager-modal {
+  background-color: #F2F2F2; }
+  .file-manager-modal .modal-footer {
+    border-top: none !important;
+    padding: 32px; }
+    .file-manager-modal .modal-footer button {
+      width: 120px;
+      padding: 12px;
+      background-color: #fff !important; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
