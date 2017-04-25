@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
-import { CookieService } from 'angular2-cookie/core';
+import { CookieService, CookieOptionsArgs } from 'angular2-cookie/core';
 import * as globals from '../globals';
 
 
@@ -29,28 +29,33 @@ export class MainService {
 
   get(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.get(url,this.GetOptions()).timeout(10000);
+  	return this.http.get(url,this.GetOptions()).timeout(20000);
   }
 
   post(endpoint: string, body?: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(10000);
+  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(20000);
   }
 
   put(endpoint: string, body: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.put(url, body,this.GetOptions()).timeout(10000);
+  	return this.http.put(url, body,this.GetOptions()).timeout(20000);
   }
 
   delete(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.delete(url,this.GetOptions()).timeout(10000);
+  	return this.http.delete(url,this.GetOptions()).timeout(20000);
   }
 
   saveCookies(token: string, session_name: string, sessid: string){
-    this.cookieService.put('sessid', sessid);
-    this.cookieService.put('session_name', session_name);
-    this.cookieService.put('token', token);
+    var expires = new Date();
+    expires.setDate(expires.getDate() + 23);
+    var options: CookieOptionsArgs = {
+      expires: expires
+    };
+    this.cookieService.put('sessid', sessid, options);
+    this.cookieService.put('session_name', session_name, options);
+    this.cookieService.put('token', token, options);
   }
 
   removeCookies(){

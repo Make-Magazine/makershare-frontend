@@ -19,7 +19,6 @@ export class EditProfileComponent implements OnInit {
   BasicInfoSaved;
   CurrentTabValidation:boolean;
   CoverImage;
-  errorMsg;
 
   constructor(
     private profileService: ProfileService,
@@ -55,7 +54,6 @@ export class EditProfileComponent implements OnInit {
   }
   saveNext(NewTab:string) {
     if(!this.CurrentTabValidation){
-      this.errorMsg = '*There are some required fields need to be filled';
       //show error message for validation
       this.notificationBarService.create({ message: '*There are some required fields need to be filled', type: NotificationType.Error});
       return;

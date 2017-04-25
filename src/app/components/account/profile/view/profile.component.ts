@@ -27,7 +27,11 @@ import { StatisticsService } from '../../../../d7services/statistics/statistics.
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild('cropper') cropper:ImageCropperComponent; 
+  cropperref:ImageCropperComponent;
+  @ViewChild('cropper') set cropper(cropper:ImageCropperComponent) {
+      this.cropperref = cropper;
+      console.log(cropper);
+  }
 
   CountriesList = [];
   formatter = (x) => {
@@ -203,7 +207,7 @@ export class ProfileComponent implements OnInit {
     if(ModalName == 'edit-cover-modal'){
       this.modalService.open(Template, { windowClass: ModalName });
       setTimeout(()=>{
-        this.cropper.setImage(this.ImageFile);
+        // this.cropperref.setImage(this.ImageFile);
       });
     }else{
       if(ModalName == 'MakerSpaces'){
@@ -262,10 +266,9 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
-    this.SaveUser(this.ProfileInfo);
-    closebtn.click();
     this.ReSetAddressValues();
-    
+    this.SaveUser(this.ProfileInfo);
+    closebtn.click();    
   }
   SaveUser(user: UserProfile) {
     user.uid = this.uid;
