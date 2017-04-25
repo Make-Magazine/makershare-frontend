@@ -32,6 +32,7 @@ export class LikeComponent implements OnInit {
 
   ) { this.router = router; }
   ngOnInit() {
+     this.countLikes();
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
@@ -48,17 +49,20 @@ export class LikeComponent implements OnInit {
         /*like end*/
       }//end else 
     });//end userservice isLogedIn
-    // this.countLikes();
+    
   }
-  // countLikes(){
-  //   this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
-  //     this.countlikes = response['count'];
-  //    // this.countNumber.emit(this.countlikes);
-  //    if(this.countlikes >= 1){
-  //      this.liked = true;
-  //    }
-  //   })
-  // }
+  countLikes() {
+    this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
+      this.countlikes = response['count'];
+
+      if (this.countlikes >= 1) {
+        this.countNumber.emit(this.countlikes);
+      } else {
+        this.countlikes = 0;
+        this.countNumber.emit(this.countlikes);
+      }
+    })
+  }
 
   /* function like */
   likeThis(e: Event) {
@@ -72,6 +76,8 @@ export class LikeComponent implements OnInit {
       if (this.isLiked) {
         this.flagService.unflag(this.nodeNid, this.user, 'like').subscribe(response => {
           this.isLiked = false;
+          this.countlikes--;
+          this.countNumber.emit(this.countlikes);
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
           // console.log(err);
@@ -79,6 +85,8 @@ export class LikeComponent implements OnInit {
       } else {
         this.flagService.flag(this.nodeNid, this.user, 'like').subscribe(response => {
           this.isLiked = true;
+            this.countlikes++;
+          this.countNumber.emit(this.countlikes);
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
           // console.log(err);
