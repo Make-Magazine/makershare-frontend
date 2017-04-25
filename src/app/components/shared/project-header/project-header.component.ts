@@ -16,6 +16,7 @@ export class ProjectHeaderComponent implements OnInit {
   @Output() SwitchTab = new EventEmitter();
   @Output() ProjectNewId = new EventEmitter();
   badges = [];
+  numLikes;
   
   constructor(
     private userService: UserService,
@@ -88,6 +89,11 @@ export class ProjectHeaderComponent implements OnInit {
       this.showcaseInfo.index++;
       this.ProjectNewId.emit(this.showcaseInfo.index);
     }
+  }
+      likesCounter(count) {
+    this.numLikes = count;
+    console.log(this.numLikes)
+
   }
 
 }
