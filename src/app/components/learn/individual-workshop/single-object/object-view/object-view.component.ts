@@ -23,9 +23,7 @@ export class ObjectViewComponent implements OnInit {
   ngOnInit() {
     
     this.type = this.CurrentObject.learning_content_type;
-    if(this.type == 'Video'){
-      this.GetVideoIframeStructure();
-    }else if(this.type == 'Book' && !this.CurrentObject.book.endsWith('epub', this.CurrentObject.book.length)){
+    if(this.type == 'Book' && !this.CurrentObject.book.endsWith('epub', this.CurrentObject.book.length)){
       this.GetGoogleDocStructure();
     }
     else if (this.type == 'PDF') {
@@ -42,26 +40,5 @@ export class ObjectViewComponent implements OnInit {
      let pdfHtml =  '<iframe src="http://docs.google.com/gview?url=' + this.CurrentObject.pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
      this.PDFLink = this.sanitizer.bypassSecurityTrustHtml(pdfHtml);
    }
-    // this.IframeSantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(Html);
   }
-
-  GetVideoIframeStructure(){
-    if(this.CurrentObject.video.indexOf('youtube') != -1){
-      let VideoId = this.youtube_parser(this.CurrentObject.video);
-      let Html = '<iframe src="https://www.youtube.com/embed/' + VideoId + ' "frameborder="0" style="width:100%; height:270px;"></iframe>';
-      this.IframeSantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(Html);
-    }else{
-      let url = "https://vimeo.com/api/oembed.json?url=" + this.CurrentObject.video;
-      this.http.get(url).map(res => res.json()).subscribe(data => {
-        this.IframeSantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(data.html);
-      });
-    }
-  }
-
-  youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : '';
-  }
-
 }

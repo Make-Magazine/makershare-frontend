@@ -21,7 +21,7 @@
                 (click)="introvideo(content)">
                 <div class="card-type-grey-2">
                   <div class="type-layer-2">
-                    Learn
+                    Learning
                   </div>
                 </div>
             </div>
@@ -104,27 +104,42 @@
                 <div class="row">
                   <div class="media learning-card d-flex flex-column flex-lg-row" *ngIf="object.learning_content_type == 'PDF' ">
                     <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
-                      <h4 [innerHTML]="object.lesson_name"></h4>
-                      <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
-                      <div class="card-block">
+
+                      <div class="header-section">
+                        <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
+                      </div>
+
+                      <!--<div class="card-block">
                         <div class="card-text" *ngIf="object.pages"> Number of Pages: {{object.pages}} </div>
                       </div>
 
                       <div class="button-container-main-1  modal-block">
                         <span class="btn btn-main" (click)="objectDetails(object.nid)">Read the PDF</span>
-                      </div>
+                      </div>-->
                       <!--<div class="card-block modal-block">
                           <a href="#" class="card-link card-modal" (click)="open(content,i,'preview')" data-toggle="modal" data-target="#previewer">LAUNCH READER</a>
                         </div>-->
                     </div>
                     <div class="media-body col-lg-9">
+                      <div class="card-title">
+                        <h4 class="lesson-style" [innerHTML]="object.lesson_name"></h4>
+                      </div>
+                      <div class="object-title-style">
+                        <h2 [innerHTML]="object.object_title"></h2>
+                      </div>
 
-                      <h4 class="card-title">{{object.learning_content_type}}:
-                        <p [innerHTML]="object.object_title"></p>
-                      </h4>
+                      <!--<h4 class="card-title">{{object.learning_content_type}}</h4>-->
 
-                      <div [innerHTML]="object.lesson_description"> </div>
+
+                      <div [innerHTML]="object.lesson_description"></div>
+
+                      <div class="button-container-main-1  modal-block">
+                        <span class="btn btn-main" (click)="objectDetails(object.nid)">Read the PDF</span>
+                      </div> 
+                      
                     </div>
+
+                      
                   </div>
                   <ul class="list-unstyled recommended" *ngIf="object.learning_content_type == 'PDF' ">
                     <h5 *ngIf="object.related_projects"> Now try these projects: </h5>
@@ -144,10 +159,6 @@
                         <img [src]="object.videoPic" alt="" class="media-object">
                         <img class="play-image" src="./assets/images/video-icon.png" alt="">
                       </div>
-
-                      <!--<div *ngIf="object.video">
-                         <app-video-display [link]="object.video"></app-video-display>
-                      </div>-->
 
                       <div class="card-block">
                         <h4 class="card-title">{{object.learning_content_type}}</h4>
@@ -299,13 +310,5 @@
   </div>
   <div class="modal-body">
     <div [innerHTML]="popupPreview"></div>
-    <!--<div *ngIf="workshop.introductory_video ">
-      <app-video-display [link]="workshop.introductory_video"></app-video-display>
-    </div>-->
-    <!--<div class="ebup-body ebup-content">
-      <div *ngIf="epubFile">
-        <app-book [link]="epubLink"></app-book>
-      </div>
-    </div>-->
   </div>
 </template>

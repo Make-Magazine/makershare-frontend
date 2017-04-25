@@ -6719,6 +6719,13 @@ img {
     margin-bottom: 40px; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .new-comment {
       padding: 0px; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .lesson-style {
+      text-align: center;
+      color: red; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .object-title-style {
+      text-align: center; }
+      .page-workshop-single .page-workshop-individual .workshop-content .learning-card .object-title-style h2 {
+        color: deepskyblue !important; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .feedback-label {
       font-weight: 700; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .join-link {
@@ -6959,9 +6966,10 @@ img {
   cursor: pointer;
   padding-right: 10px; }
   .page-portfolio .nav-portfolio .display-style p {
+    opacity: 1;
     color: #828282;
     font-size: 12px; }
-    .page-portfolio .nav-portfolio .display-style p.active {
+    .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
     width: 30px; }

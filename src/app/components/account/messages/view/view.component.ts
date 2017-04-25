@@ -123,8 +123,8 @@ export class ViewComponent implements OnInit {
   onSubmit(e) {
     this.loaderService.display(true);
     e.preventDefault();
-    this.getThreads();
-    this.getCurrentUser();
+    // this.getThreads();
+    // this.getCurrentUser();
 
     if (this.messageForm.valid) {
       this.reply.thread_id = this.msg.pmtid;

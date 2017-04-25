@@ -8,6 +8,7 @@ import { StatisticsService } from '../../../d7services/statistics/statistics.ser
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Auth } from '../../../auth0/auth.service';
 
 
 import 'rxjs/Rx';
@@ -59,7 +60,8 @@ export class ChallengeDataComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
-  ) { }
+    private auth: Auth,
+) { }
 
   ngOnInit() {
     // show spinner
@@ -74,8 +76,7 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
       .switchMap((nid) => this.viewService.getView('award_block', [['nid', nid['nid']]]))
       .subscribe(data => {
-        this.awards = data;
-        console.log(data);
+        this.awards = data
         this.no_of_awards = data.length;
       }, err => {
         // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
@@ -152,7 +153,6 @@ export class ChallengeDataComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('challenge_data', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.challenge = data[0];
-        console.log(data[0]);
         this.customTitle = this.challenge.title;
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;

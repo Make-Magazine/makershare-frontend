@@ -62,12 +62,9 @@ export class ReportUserComponent implements OnInit {
 
   updateSelectedReason(item: any) {
     this.selectedReasonName = item.target.value;
-    console.log(this.selectedReasonName);
   }
   updateWrittingReason(itemnew: any) {
-    console.log(itemnew);
     //this.selectedReasonName = item.target.selectedOptions[0].text;
-    //console.log(this.selectedReasonName);
 
   }
   /* function report user */
