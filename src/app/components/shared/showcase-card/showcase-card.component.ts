@@ -35,7 +35,11 @@ export class ShowcaseCardComponent implements OnInit {
 
   countLikes(){
     this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+          if(res['count']>0){
       this.numLikes = res;
+      }else{
+         this.numLikes=0;
+      }
     })
   }
 

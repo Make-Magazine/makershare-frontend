@@ -25,12 +25,17 @@ export class ProjectCardPortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.GetProjectCard();
+  }
+
+  GetProjectCard(){
     this.viewService.getView('api-project-card', [['nid', this.Project.nid]]).subscribe(res => {
       var categories_string = res[0].project_categories;
       categories_string = categories_string.substring(0, categories_string.length - 2);
       var categories_array = categories_string.split(', ');
       res[0].project_categories = categories_array;
       this.projectCard = res[0];
+      console.log(this.projectCard);
     });
   }
 

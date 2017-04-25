@@ -1,11 +1,11 @@
-  <div class="page-create-profile">
+  <div class="page-create-profile" *ngIf="userProfile">
     <div class="main-container container-fluid">
       <div class="row">
         <section class="col-sm-12 width-fix">
           <div class="top-content-wrapper">
             <div class="container">
               <div class="col-md-12 create-cover">
-                <h3>Welcome to the Make: Community, <span *ngIf="userProfile">{{userProfile.full_name}}!</span></h3>
+                <h3>Welcome to the Make: Community, <span *ngIf="userProfile.full_name">{{userProfile.full_name}}!</span></h3>
                 <p>You are now part of a worldwide community of makers eager to exchange ideas and projects with you. We are all Makers. But our interests are infinite.</p>
                 <h5>What kind of maker are you?</h5>
               </div>
