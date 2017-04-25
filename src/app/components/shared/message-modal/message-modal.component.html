@@ -26,13 +26,14 @@
         <div *ngIf="formErrors.body" class="alert alert-danger">
           {{ formErrors.body }}
         </div>
-      </form>
+        <div class="modal-footer">
+          <ul class="list-unstyled actions">
+            <!--<li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>-->
+            <li><button type="submit" class="btn  btn-load-more" [disabled]="!messageForm.valid">Send</button></li>
+          </ul>
+        </div>
+        </form>
     </div>
-    <div class="modal-footer">
-      <ul class="list-unstyled actions">
-        <!--<li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>-->
-        <li><button type="submit" class="btn  btn-load-more" [disabled]="!messageForm.valid">Send</button></li>
-      </ul>
-    </div>
+
   </div>
 </template>
