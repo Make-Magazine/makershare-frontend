@@ -274,6 +274,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   GetCountryDetails(CountryKey: string) {
+    if(!CountryKey) return;
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
     });

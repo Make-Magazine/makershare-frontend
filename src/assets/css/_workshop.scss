@@ -249,7 +249,8 @@
             }
         }
         .container-content {
-            margin-bottom: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
         .card-container {
             color: $white;
@@ -266,7 +267,7 @@
                 }
             }
             .card-partership {
-                margin: 16px 0px 16px 0px;
+                margin: 0px 0px 16px 0px;
             }
             .card-title {
                 @include card-header-font-md();
