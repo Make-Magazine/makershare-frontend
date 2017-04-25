@@ -61,8 +61,7 @@ export class ProjectsComponent implements OnInit {
       ['page', this.pages],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
-      this.profile_projects = this.profile_projects.concat(res);
-
+      this.profile_projects = this.profile_projects.concat(res);  
       this.meta.setTitle(`Maker Share | Projects`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects Projects ');

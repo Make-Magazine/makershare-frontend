@@ -23,29 +23,19 @@ export class Auth implements OnInit {
   yearsArr= [];
   state = '';
   
-
-  options = {
-    allowSignUp: true,
-    signUpLink: 'http://asd.com/asd'
+  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
+    loginUrl: '/login',
+    auth: {
+        redirectUrl: globals.appURL,
+        responseType: 'token',
+        params: {state: this.state},
+    },
+    socialButtonStyle: 'small',
+    theme: {
+      logo: globals.domain + '/sites/default/files/logo.png',
+      primaryColor: '#d41c2b'
+    }
   }
-
-  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', this.options //{
-    // loginUrl: '/login',
-    // auth: {
-    //     redirectUrl: globals.appURL,
-    //     responseType: 'token',
-    //     params: {state: this.state},
-    // },
-    // socialButtonStyle: 'small',
-    // // initialScreen: this.screen,
-    // // languageDictionary: {
-    // //   title: ""
-    // // },
-    // theme: {
-    //   logo: globals.domain + '/sites/default/files/logo.png',
-    //   primaryColor: '#d41c2b'
-    // }
-  //}
   
   );
 
@@ -162,16 +152,5 @@ export class Auth implements OnInit {
       localStorage.removeItem('user_name');
       localStorage.removeItem('user_photo');
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
-  }
-  
-  public getYears(){
-    var max = new Date().getFullYear();
-    var yearsArr = [];
-    for (var _i = 1; _i < 100; _i++) {
-      yearsArr.push({value: max - _i, label: max - _i});
-
-    }
-    this.yearsArr = yearsArr;
-    return yearsArr;
   }
 }
