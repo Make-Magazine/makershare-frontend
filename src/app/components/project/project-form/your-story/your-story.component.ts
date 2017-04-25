@@ -443,7 +443,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.cropperSettings.height = 400;
     this.cropperSettings.minWidth = 600;
     this.cropperSettings.minHeight = 400;
-    this.cropperSettings.dynamicSizing = true;
+    this.cropperSettings.croppedWidth = 800;
+    this.cropperSettings.croppedHeight = 450;
     this.cropperSettings.noFileInput = true;
     this.imagedata = {};
   }
