@@ -1,21 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
-
+import { FlagService } from '../../../d7services/flag/flag.service';
 @Component({
   selector: 'app-showcase-gen-card',
   templateUrl: './showcase-general-card.component.html',
 })
 export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
+  numLikes;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
+    private flagService: FlagService,
+
 
   ) { }
   ngOnInit() {
     this.getShowcases();
+    this.countLikes();
   }
 
   getShowcases() {
@@ -27,5 +31,15 @@ export class ShowcaseGeneralCardComponent implements OnInit {
     this.router.navigate(['/showcases', nid]);
   }
 
+  countLikes() {
+    this.flagService.flagCount(this.showcaseNid, 'like').subscribe(res => {
+      if (res['count'] > 0) {
+        this.numLikes = res['count'];
+      } else {
+        this.numLikes = 0;
+      }
+      console.log(this.numLikes);
 
+    })
+  }
 }
