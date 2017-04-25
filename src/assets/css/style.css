@@ -611,12 +611,6 @@ h1, h2, h3, h4, h5, h6 {
 notification-bar {
   z-index: 99999; }
 
-p {
-  word-break: break-all;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto; }
-
 body {
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
@@ -1224,7 +1218,7 @@ body {
   font-size: 15px; }
 
 footer {
-  padding-top: 15px;
+  padding-top: 25px;
   padding-bottom: 25px;
   min-height: 35px;
   font-size: 14px;
@@ -4207,19 +4201,13 @@ footer {
           background-color: #333333; }
       .page-project .top-content-wrapper ul.project-tags .btn:hover {
         cursor: default; }
-    .page-project .top-content-wrapper .project-like {
-      min-width: 60px;
-      text-align: right;
-      padding: 0px 12px; }
-      .page-project .top-content-wrapper .project-like img {
-        width: 13px;
-        height: auto; }
-      .page-project .top-content-wrapper .project-like span {
-        font-size: 14px;
-        color: #828282;
-        padding: 0px 4px; }
-      .page-project .top-content-wrapper .project-like a {
-        padding-top: 3px; }
+    .page-project .top-content-wrapper .project-like img {
+      width: 11px;
+      height: auto; }
+    .page-project .top-content-wrapper .project-like span {
+      font-size: 14px;
+      color: #828282;
+      padding: 0px 4px; }
     .page-project .top-content-wrapper .project-likes {
       min-width: 60px;
       text-align: right;
@@ -4230,16 +4218,12 @@ footer {
       .page-project .top-content-wrapper .project-likes span {
         font-size: 14px;
         color: #828282; }
-    .page-project .top-content-wrapper .project-views {
-      min-width: 60px;
-      text-align: right;
-      padding: 0px 12px; }
-      .page-project .top-content-wrapper .project-views img {
-        width: 18px;
-        height: auto; }
-      .page-project .top-content-wrapper .project-views span {
-        font-size: 14px;
-        color: #828282; }
+    .page-project .top-content-wrapper .project-views img {
+      width: 18px;
+      height: auto; }
+    .page-project .top-content-wrapper .project-views span {
+      font-size: 14px;
+      color: #828282; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
@@ -4315,8 +4299,8 @@ footer {
         width: 25px;
         color: #333333; }
   .page-project .project-body {
-    margin-bottom: 20px;
-    margin-top: 30px; }
+    padding-bottom: 20px;
+    padding-top: 30px; }
     .page-project .project-body > p:first-of-type {
       font-weight: bold; }
     .page-project .project-body .how-to-tab img {
@@ -4770,7 +4754,6 @@ header.showcase-project .next {
           outline: none; }
 
 .page-project .projectsingle-card {
-  border: 1px solid #4ab0d8;
   position: relative;
   background-color: white;
   padding: 0px;
@@ -4852,7 +4835,8 @@ header.showcase-project .next {
         text-transform: none;
         line-height: 130%;
         color: #828282;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        word-break: break-all; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
         font-size: 13px;

@@ -1,4 +1,4 @@
-<div class="maker-card card" *ngIf="card">
+<div class="maker-card card" *ngIf="card" (click)="userProfile(card.first_name,card.last_name)">
   <div class="card-type-grey">
     <div class="type-layer-2">
       Maker
