@@ -37,7 +37,7 @@ export class ObjectViewComponent implements OnInit {
      this.NotEpubLink = this.sanitizer.bypassSecurityTrustHtml(bookHtml);
    }
    else if (this.type == 'PDF'){
-     let pdfHtml =  '<iframe src="http://docs.google.com/gview?url=' + this.CurrentObject.pdf + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';
+     let pdfHtml =  '<iframe src="http://docs.google.com/gview?url=' + this.CurrentObject.pdf + '&embedded=true" frameborder="0" style="width:760px; height:750px;"></iframe>';
      this.PDFLink = this.sanitizer.bypassSecurityTrustHtml(pdfHtml);
    }
   }
