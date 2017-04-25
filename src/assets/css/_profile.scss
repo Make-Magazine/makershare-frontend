@@ -800,6 +800,7 @@
         color: $blue;
         margin-bottom: 0;
         margin-top: 10px;
+        
     }
     .image-top {
         height: 275px;
@@ -2169,5 +2170,83 @@
         text-align: center;        
     h4 {
         color: $main-grey;
+    }
+}
+
+/* file manager style */
+.file-manager {
+    .file-manager-header {
+        .upload-file {
+            color: $text-color-2;
+        }
+        .storge-progressbar {
+            color: $text-color-2;
+            .progress {
+                background: #fff;
+                border-radius: 0px;
+                @include boxShadow(2px, 2px ,8px, $shade-3);  
+                .progress-bar {
+                    background-color: $text-color-3;
+                    color: $text-color-1;
+                }
+            }
+        }
+    }
+    .file-manager-contnet {
+        .file-manager-title {
+            color: $text-color-1;
+            padding: 8px 10px;
+        }
+        .file-item {
+                position: relative;
+                @include boxShadow(2px, 2px ,8px, $shade-3);  
+            img {
+
+            }
+            p {
+                position: absolute;
+                bottom: 0px;
+                right: 0px; 
+                display: block;
+                background-color: #fff;
+                color: $text-color-2;
+                padding: 5px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .file-manager-footer {
+        text-align: center;
+        a {
+            color: $text-color-2;
+            &:hover {
+                color: $text-color-2;
+            }
+        }
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/* file-manager-modal */
+.file-manager-modal {
+        background-color: $site-bg;
+    .modal-body {
+
+    }
+    .modal-footer {
+        border-top: none !important;
+        padding: 32px;
+        button {
+            width: 120px;
+            padding: 12px;
+            background-color: #fff !important;
+        }
     }
 }

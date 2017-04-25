@@ -136,13 +136,16 @@
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
       </div>
-      <a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
+      <!--<a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
         <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
-      </a>
+      </a>-->
       <div class="card-categories" *ngIf="project.project_categories">
         <span class="project-categories" *ngFor="let category of project.project_categories">
           <span>{{category}}<span class="tags-comma">,</span></span>
         </span>
+      </div>
+      <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
+        <span class="maker-name mt-0" *ngFor="let membership of project.field_team_members">{{membership}}</span>
       </div>
     </div>
     <div class="card-block container">

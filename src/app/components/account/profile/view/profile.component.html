@@ -42,8 +42,10 @@
 											Maker
 										</div>
 									</div>-->
+									
 							<div class="image-container">
-								<img src="{{profile.user_photo_with_style}}" alt="" class="">
+								<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
+								<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
@@ -163,7 +165,7 @@
 								</div>
 								<div *ngIf="!profile.field_social_accounts">
 									<div *ngIf="CurrentLoggedUserId && uid">
-										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add your website(s) and social links</a></div>
+										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 									</div>
 								</div>
 								<hr>
@@ -181,11 +183,19 @@
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" class="btn btn-white add" (click)="OpenModal(editinfomodal,'MakerSpaces')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 								</ul>
 								<hr>
-								<p class="global-title"> Links </p>
-								<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
-								<br>
+								<div *ngIf="profile.field_social_accounts.field_website_or_blog == '' && profile.field_social_accounts.field_additional_site == ''">
+									<div *ngIf="CurrentLoggedUserId && uid">
+										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Links')"><i class="fa fa-lg fa-plus"></i> Add your website(s)</a></div>
+									</div>
+								</div>
+								<div *ngIf="profile.field_social_accounts.field_website_or_blog != '' || profile.field_social_accounts.field_additional_site != ''">	
+									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+									<p class="global-title"> Links </p>
+									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
+									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
+									<br>
+								</div>
 								<hr>
-								<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
 								<div *ngIf="profile.started_making" class="how">
 									<!-- Start How -->
 									<p class="global-title">How I learned to be a maker</p>
