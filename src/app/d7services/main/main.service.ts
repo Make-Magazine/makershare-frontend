@@ -29,22 +29,22 @@ export class MainService {
 
   get(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.get(url,this.GetOptions()).timeout(10000);
+  	return this.http.get(url,this.GetOptions()).timeout(20000);
   }
 
   post(endpoint: string, body?: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(10000);
+  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(20000);
   }
 
   put(endpoint: string, body: any): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.put(url, body,this.GetOptions()).timeout(10000);
+  	return this.http.put(url, body,this.GetOptions()).timeout(20000);
   }
 
   delete(endpoint: string): Observable<Response>{
   	let url = this.getURL(endpoint);
-  	return this.http.delete(url,this.GetOptions()).timeout(10000);
+  	return this.http.delete(url,this.GetOptions()).timeout(20000);
   }
 
   saveCookies(token: string, session_name: string, sessid: string){
