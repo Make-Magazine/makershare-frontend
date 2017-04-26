@@ -1,3 +1,5 @@
+import { Auth } from './auth0/auth.service';
+import { AuthGuardService } from './auth0/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -26,8 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 
 // import custom auth0 service
-import { Auth } from './auth0/auth.service';
-import { AuthGuardService } from './auth0/auth-guard.service';
+
 import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
@@ -111,6 +112,9 @@ let config = {
   ],
   entryComponents: [],
   providers: [
+    Auth,
+    ProfilePictureService,
+    AuthGuardService,
     TaxonomyService,
     FileService,
     MainService,
@@ -121,11 +125,8 @@ let config = {
     FlagService,
     ProfileService,
     PmService,
-    Auth,
-    AuthGuardService,
     NotificationBarService,
     LoaderService,
-    ProfilePictureService,
     StatisticsService,
     {
       provide: ResponsiveConfig,
