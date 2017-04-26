@@ -99,14 +99,16 @@
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
             <li>
-              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png"
+                class="project-likes" alt="">
               <img *ngIf="project.number_of_likes > 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
               <span *ngIf="!project.number_of_likes">0</span>
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
-              <span>70</span>
+              <span *ngIf="project.profile_views">{{project.profile_views}}</span>
+              <span *ngIf="!project.profile_views">0</span>
             </li>
           </ul>
         </div>
@@ -119,8 +121,8 @@
 <!--Project with larg view-->
 <div *ngIf="project && view != 'grid' && !front">
   <div class="project card lg-card">
-    <div class="image-top-lg" (click)="ShowProjectDetails(project.nid)">
-      <div class="overlay"></div>
+    <div class="image-top-lg">
+      <div class="overlay" (click)="ShowProjectDetails(project.nid)"></div>
       <div class="teaser">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
@@ -145,7 +147,11 @@
         </span>
       </div>
       <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
-        <span class="maker-name mt-0" *ngFor="let membership of project.field_team_members">{{membership}}</span>
+        <div class="" *ngFor="let membership of project.field_team_members; let i = index">
+          <a>
+            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="maker-name mt-0">{{membership}}</span>
+          </a>  
+        </div>
       </div>
     </div>
     <div class="card-block container">
@@ -171,7 +177,8 @@
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
+                <span *ngIf="project.profile_views">{{project.profile_views}}</span>
+                <span *ngIf="!project.profile_views">0</span>
               </li>
             </ul>
           </div>

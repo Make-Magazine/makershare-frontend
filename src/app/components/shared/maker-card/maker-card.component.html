@@ -1,4 +1,4 @@
-<div class="maker-card card" *ngIf="card">
+<div class="maker-card card" *ngIf="card" (click)="goToProfile(card.profile_url)">
   <div class="card-type-grey">
     <div class="type-layer-2">
       Maker
@@ -31,7 +31,8 @@
           </li>
           <li>
             <img src="./assets/images/icons/views.png" class="project-views" alt="">
-            <span>70</span>
+            <span *ngIf="card.profile_views">{{card.profile_views}}</span>
+            <span *ngIf="!card.profile_views">0</span>
           </li>
           <li *ngIf="projectsCount">
             <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
