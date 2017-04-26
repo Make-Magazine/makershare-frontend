@@ -57,8 +57,8 @@ export class MakerCardComponent implements OnInit {
       }
     });
   }
-  userProfile(fName, lName) {
-    var name = fName + '-' + lName;
-    this.router.navigate(['/portfolio/', name]);
+  goToProfile(path: string) {
+    
+    this.router.navigate(['/portfolio/', path]);
   }
 }
