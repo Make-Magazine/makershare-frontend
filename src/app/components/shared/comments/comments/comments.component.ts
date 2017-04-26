@@ -49,7 +49,7 @@ export class CommentsComponent implements OnInit {
     if(this.pages>0){
 var page_arg=['page',this.pages]
     }
-    console.log(this.page_arg)
+    //console.log(this.page_arg)
     this.viewService.getView('node-comments', [['nid', this.nodeId],['page',this.pages]]).subscribe(data => {
 
       this.comments.value = this.comments.value.concat(data);
