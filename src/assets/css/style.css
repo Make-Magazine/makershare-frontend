@@ -2369,7 +2369,8 @@ footer {
       width: 90%; }
     .project .card-block .profiel-pic-container {
       width: 82px;
-      height: 82px; }
+      height: 82px;
+      cursor: pointer; }
       .project .card-block .profiel-pic-container img {
         width: 100%; }
     .project .card-block .maker-data-container,
@@ -2415,7 +2416,8 @@ footer {
     text-align: left;
     width: 100%;
     margin: 0;
-    max-width: 230px; }
+    max-width: 230px;
+    cursor: pointer; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -2700,7 +2702,8 @@ footer {
   bottom: 0;
   right: 0px;
   margin: auto;
-  z-index: 11; }
+  z-index: 11;
+  cursor: pointer; }
   .teaser p {
     line-height: 20px; }
   .teaser .overlay-text {
@@ -2738,7 +2741,7 @@ footer {
       color: #DCDCDC; }
   .modal-content .profile-modal .modal-header {
     border-bottom: none !important;
-    padding: 8px; }
+    padding: 14px; }
     .modal-content .profile-modal .modal-header .close:focus, .modal-content .profile-modal .modal-header .close:hover {
       outline: none !important; }
   .modal-content .profile-modal .modal-body {
@@ -3134,7 +3137,8 @@ footer {
     border: none;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-    box-shadow: 2px 2px 8px #BDBDBD; }
+    box-shadow: 2px 2px 8px #BDBDBD;
+    cursor: pointer; }
   .maker-card .card-type {
     right: -22px; }
   .maker-card .image-top {
@@ -4766,10 +4770,10 @@ header.showcase-project .next {
   .feedback-group .comment-body p {
     margin: 0px;
     font-family: "Messina Sans Regular";
-    font-size: 1.3em;
+    font-size: 0.95em;
     font-weight: 400;
     text-transform: none;
-    line-height: 110%;
+    line-height: 100%;
     color: #828282;
     color: #333333;
     line-height: inherit !important; }
@@ -5805,13 +5809,18 @@ img {
           float: left;
           margin-right: 8px;
           min-width: 50px; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .likes-count-div .showcase-likes {
+          width: 12px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .likes-count-div .likes-count {
+          color: #BDBDBD; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
+          width: 20px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
+          color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
-        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
-          color: #BDBDBD; }
-        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
-          width: 22px;
-          height: auto; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
           padding-right: 10px;
           color: #BDBDBD; }

@@ -140,7 +140,7 @@
 								<div *ngIf="ProfileInfo.field_social_accounts">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<div class="social-links">
-										<p class="global-title">Social</p>									
+										<p class="global-title">Social</p>
 										<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 											<i class="fa fa-facebook fa-lg"></i>
 										</a>
@@ -209,13 +209,21 @@
 								<hr>
 								<div class="how">
 									<!-- Start How -->
+<<<<<<< HEAD
+									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+=======
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+>>>>>>> da11a25cef973aeab447892af7357a6ecca0e86d
 									<p class="global-title">How I learned to be a maker</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr>
+<<<<<<< HEAD
+								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+=======
 								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+>>>>>>> da11a25cef973aeab447892af7357a6ecca0e86d
 								<p class="global-title">Interests</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text">{{PlaceholderText.interests}}</p>
@@ -264,22 +272,17 @@
 <!-- Add Edit Info Modal -->
 <template #editinfomodal let-c="close" let-d="dismiss" ngbModalContainer>
 	<div class="profile-modal">
-		<div class="modal-header">
-			<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<span class="info your-photo-tab" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-				<p>DID YOU KNOW?</p>
-				<p>You can also add images from your phone</p>
-			</span>
-		</div>
-		<div class="modal-tabs" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-			<ul class="list-unstyled">
-				<li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">Upload</a></li>
-				<li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">Your Photos</a></li>
-			</ul>
-		</div>
-		<div class="modal-body row">
+	<div class="modal-header">
+		<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+							<span aria-hidden="true">&times;</span>
+						</button>
+		<!--<span class="info your-photo-tab" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+							<p>DID YOU KNOW?</p>
+							<p>You can also add images from your phone</p>
+						</span>-->
+	</div>
+	<div class="modal-body container">
+		<div class="row">
 			<div class="modal-menu col-md-2">
 				<a (click)="CurrentInfoTab = 'Portfolio Photo'" [ngClass]="{'active': CurrentInfoTab == 'Portfolio Photo'}">Portfolio Photo</a><br>
 				<a (click)="CurrentInfoTab = 'Personal Info'" [ngClass]="{'active': CurrentInfoTab == 'Personal Info'}">Personal Info</a><br>
@@ -294,22 +297,31 @@
 				<a (click)="CurrentInfoTab = 'Interests'" [ngClass]="{'active': CurrentInfoTab == 'Interests'}">Interests</a>
 			</div>
 			<div class="col-md-10">
-				<div id="portfolio-photo" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-					<div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-						<!--<img *ngIf="!ProfilePicData.original" src="./assets/images/Drag_Drop.png" alt="">-->
-						<img-cropper #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
-
-						<div *ngIf="!ProfilePicData.original">
-							<p class="drag-photo">Drag a Photo Here</p>
-							<p class="drag-or">or</p>
-						</div>
-						<a class="btn btn-load-more" (click)="fileinput.click()">
+				<div id="profile-cover" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+					<div class="modal-tabs" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+						<ul class="list-unstyled">
+							<li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">Upload</a></li>
+							<li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">Your Photos</a></li>
+						</ul>
+					</div>
+					<div class="modal-body row">
+						<div id="portfolio-photo" class="w-100" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+							<div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+								<!--<img *ngIf="!ProfilePicData.original" src="./assets/images/Drag_Drop.png" alt="">-->
+								<img-cropper #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
+								<div *ngIf="!ProfilePicData.original">
+									<p class="drag-photo">Drag a Photo Here</p>
+									<p class="drag-or">or</p>
+								</div>
+								<a class="btn btn-load-more" (click)="fileinput.click()">
 							Upload
 							<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 						</a>
-						<p class="drag-or mt-4 mb-0">For best results image should be at minimum 300px in height or width.</p>
+								<p class="drag-or mt-4 mb-0">For best results image should be at minimum 300px in height or width.</p>
+							</div>
+							<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
+						</div>
 					</div>
-					<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
 				</div>
 				<div id="personal-info" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Personal Info'">
 					<div class="form-group">
@@ -330,8 +342,7 @@
 								</div>
 								<div class="col-md-4 col-xs-12">
 									<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
-									 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt"
-									 (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+									 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 									<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
 							</small>
@@ -618,13 +629,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="modal-footer">
+					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
+					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
+					<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
+					 (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
+				</div>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-			<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
-			<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'" (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
-		</div>
+	</div>
 	</div>
 </template>
 
