@@ -5594,12 +5594,6 @@ textarea {
   height: auto !important;
   -webkit-line-clamp: inherit !important;
   min-height: 168px; }
-.page-single-showcase .card-title {
-  display: block !important;
-  -webkit-box-orient: inherit !important;
-  -webkit-line-clamp: inherit !important;
-  overflow: inherit !important;
-  height: auto !important; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -6376,6 +6370,10 @@ img {
     background-color: white;
     color: #4f4f4f;
     border: 1px solid #4f4f4f; }
+
+.form-group.required label::after {
+  content: " *";
+  color: red; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -8130,6 +8128,8 @@ img {
       margin-left: 5px !important; }
 
   .project .maker-name {
-    margin-top: 5px; } }
+    margin-top: 5px; }
+  .project .card-title {
+    width: 190px; } }
 
 /*# sourceMappingURL=style.css.map */

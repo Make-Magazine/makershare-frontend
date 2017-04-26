@@ -526,3 +526,9 @@
 				border: 1px solid #4f4f4f;
     }
 }
+.form-group.required {
+	label::after {
+		content: " *";
+		color: red;
+	}
+}
