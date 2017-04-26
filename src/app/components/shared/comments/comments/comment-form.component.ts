@@ -75,7 +75,9 @@ export class CommentFormComponent implements OnInit {
           nickname: this.currentuser.nickname,
           comment: this.commentData.comment_body.und[0].value,
         }
-        this.comments.value.unshift(newComment);
+        console.log(newComment)
+      //  this.comments.value.unshift(newComment);
+      this.getcomments();
       }, err => { });
     }
     this.commentForm.reset();
