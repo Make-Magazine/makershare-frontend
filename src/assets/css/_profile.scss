@@ -768,6 +768,15 @@
 
             }
         }
+        .upload-pic-footer {
+            text-align: center;
+                a {
+                color: $text-color-2;
+                &:hover {
+                    color: $text-color-2;
+                }
+            }
+        }
     }
 }
 
@@ -1383,13 +1392,20 @@
                 }
             }
             #maker-spaces {
-                .makerspace-contene {
+                .makerspace-content {
                     position: relative;
                 }
                 .maker-space-remove {
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 10px;
+                    top: 10px;
+                }
+                .form-main {
+                    background-color: $shade-2;
+                    padding: 12px;
+                }
+                .add-other {
+                    background-color: #fff !important;
                 }
             }
             #links {
