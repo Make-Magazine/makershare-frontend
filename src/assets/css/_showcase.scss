@@ -466,15 +466,26 @@ img {
                         margin-right: 8px;
                         min-width: 50px;
                     }
+                    .likes-count-div {
+                        .showcase-likes {
+                            width: 12px;
+                            height: auto;
+                        }
+                        .likes-count {
+                            color: $text-color-3;
+                        }
+                    }
+                    .views-count-div {
+                        .showcase-views {
+                            width: 20 px;
+                            height: auto;
+                        }
+                        .views-count {
+                            color: $text-color-3;
+                        }
+                    }
                     .projects-count-div {
                         margin-left: 20px;
-                    }
-                    .views-count {
-                        color: $text-color-3;
-                    }
-                    .showcase-views {
-                        width: 22px;
-                        height: auto;
                     }
                     .update-date {
                         padding-right: 10px;
