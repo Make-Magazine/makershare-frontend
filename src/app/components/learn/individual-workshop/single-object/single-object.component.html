@@ -1,29 +1,47 @@
-<div class="row" *ngIf="!IsLoading">
-  <div class="container  single-object-page ">
-   <div class="navigation col-lg-9 d-flex flex-row w-100">
-    <div class="pre-button mr-auto">
-      <button *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> Previous </button>
+<div class="container" *ngIf="!IsLoading">
+  <div class="row  single-object-page ">
+    <div class="col-md-9">
+      <div class="navigation  d-flex flex-row w-100">
+        <div class="mr-auto ">
+          <button class="button-pre" style="vertical-align:middle" *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> <span> Previous </span> </button>
+        </div>
+        <!--<div *ngFor="let title of ObjectsList">
+          <div *ngIf="CurrentObject.object_title == title.object_title">
+            <a [innerHTML]="CurrentObject.object_title"></a>
+          </div>
+        </div>-->
+        <div class="ml-auto">
+          <button class="button" style="vertical-align:middle" *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> <span> Next </span> </button>
+        </div>
+      </div>
+      <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
     </div>
-    <div class="ml-auto">
-      <button *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> Next </button>
-    </div>
-     </div>
+    <aside class="col-md-3 object-title-list ml-auto">
+      <div *ngFor="let object of ObjectsList">
+        <div *ngIf="object.lesson_name">
+          <ul class="list-unstyled content-list">
+            <li>
+              <a [innerHTML]="object.lesson_name"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
 
-    <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
-
-    <!--<aside class="col-md-2 list-position">-->
-    <!---->
-    <!--<ul class="list-unstyled content-list">-->
-    <!--Contents:-->
-    <!--<div *ngFor="let object of objectsList;">-->
-    <!--<li>-->
-    <!---->
-    <!--<div [innerHTML]="objectsList.object_title"></div>-->
-    <!---->
-    <!--</li>-->
-    <!--</div>-->
-    <!--</ul>-->
-    <!--</aside>-->
+       <!--<aside class="col-md-3 object-title-list ml-auto">
+      <div *ngFor="let object of ObjectsList">
+        <div *ngIf="object.object_title">
+          <ul class="list-unstyled content-list">
+            <li *ngIf="object.object_title != CurrentObject.object_title">
+              <a [innerHTML]="object.object_title"></a>
+            </li>
+            <li *ngIf="CurrentObject.object_title == object.object_title">
+             <mark [innerHTML]="CurrentObject.object_title"> </mark>
+           </li>
+          </ul>
+         </div>
+      </div>
+    </aside>-->
 
   </div>
 </div>

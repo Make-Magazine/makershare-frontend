@@ -39,9 +39,17 @@ export class ProjectCardComponent implements OnInit {
       membership_string =  membership_string.substring(0,  membership_string.length - 1);
       var  membership_array =  membership_string.split(',');
       res[0].field_team_members = membership_array;
+
+      var membership_uid_string = res[0].field_maker_memberships_uid;
+      membership_uid_string =  membership_uid_string.substring(0,  membership_uid_string.length - 1);
+      var  membership_uid_array =   membership_uid_string.split(',');
+      res[0].field_maker_memberships_uid = membership_uid_array;
+
+
       this.project = res[0];
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
-        this.project['maker_project_count'] = data[0];
+      this.project['maker_project_count'] = data[0];
+      console.log(this.project);
       });
     });
   }
@@ -62,5 +70,9 @@ export class ProjectCardComponent implements OnInit {
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
+  }
+
+  goToProfile(path: string) {
+    this.router.navigate(['portfolio/', path]);
   }
 }
