@@ -38,9 +38,14 @@ export class EditProfileComponent implements OnInit {
     this.UpdateProfile();
   }
 
-  UpdateProfile(){
+  UpdateProfile(NewTab?){
     this.profileService.getUser(this.uid).subscribe((profile: UserProfile) => {
       this.userProfile = profile;
+      if(NewTab){
+        this.currentTab = NewTab;
+        this.BasicInfoSaved = true;
+        this.CurrentTabValidation = false;
+      }
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
@@ -61,28 +66,29 @@ export class EditProfileComponent implements OnInit {
     if(this.BasicInfoSaved){
       this.SaveAndExit();
     }else{
-      this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
-        this.UpdateProfile();
-        this.currentTab = NewTab;
-        this.BasicInfoSaved = true;
-        this.CurrentTabValidation = false;
-      });
+      if(this.CoverImage){
+        let image ={
+          file:NodeHelper.RemoveFileTypeFromBase64(this.CoverImage.file),
+          filename:this.CoverImage.filename,
+        }
+        this.fileService.SendCreatedFile(image).subscribe(file=>{
+          this.userProfile.user_photo = file.fid;
+          this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
+            this.UpdateProfile(NewTab);
+          });
+        });
+      }else{
+        this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
+          this.UpdateProfile(NewTab);
+        });
+      }
     }
   }
 
   SaveAndExit(){
-    if(this.CoverImage){
-      this.CoverImage.file = NodeHelper.RemoveFileTypeFromBase64(this.CoverImage.file);
-      this.fileService.SendCreatedFile(this.CoverImage).subscribe(file=>{
-        this.userProfile.user_photo = file.fid;
-        this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
-          this.router.navigate(['/portfolio']);
-        });
-      });
-    }else{
-      this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
-        this.router.navigate(['/portfolio']);
-      });
-    }
+    this.userProfile.uid = this.uid;
+    this.profileService.updateProfile(this.uid,this.userProfile).subscribe(user=>{
+      this.router.navigate(['/portfolio']);
+    },err=>console.log(err));
   }
 }

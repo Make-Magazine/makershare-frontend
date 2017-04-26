@@ -4,6 +4,43 @@
 	</div>
 </template>
 <div *ngIf="basicForm" class="basic-info" [formGroup]="basicForm" (ngSubmit)="compeleteProfile($event)">
+	<div class="form-group photo">
+		<label class="control-label">Add a Profile photo</label>
+		<div class="row">
+			<div class="col-md-6">
+				<a for="upload" class="btn btn-white btn-sharp">Choose photo</a>
+				<input id="profile-photo-upload" (change)="onFileChange($event)" type="file" class="file" placeholder="Choose photo">
+				<div class="guide">
+					<p>
+						choose a photo that is at least 600 x 600 px
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="image-preview">
+					<img *ngIf="FileEntityObject.file" [src]="FileEntityObject.file" alt="" class="img-responsive">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group how-started">
+		<label for="how-started">How'd you get started making?</label>
+		<input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="started_making">
+	</div>
+	<div class="form-group interesets">
+		<label for="interesets">What are your interests as a Maker?</label>
+		<tag-input formControlName="maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
+		 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
+		 [separatorKeys]="[4, 5]">
+			<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
+			 inputId="tid">
+			</tag-input-dropdown>
+		</tag-input>
+		<div class="form-group bio">
+			<label for="bio">Bio</label>
+			<textarea class="form-control" id="bio" placeholder="Enter text" formControlName="bio"></textarea>
+		</div>
+	</div>
 	<div class="form-group userName">
 		<label for="userName">Tell us your name</label>
 		<div class="guide">

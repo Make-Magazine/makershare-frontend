@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { NodeService } from '../../../../d7services/node/node.service';
 import { FileService } from '../../../../d7services/file/file.service';
@@ -13,6 +13,7 @@ import { FileEntity,ProjectForm, ProjectView,field_file_reference,NodeHelper,Use
   field_number,field_collection_item_member,field_collection_item_tool,field_collection_item_material,
   field_collection_item_part,field_collection_item_resource } 
 from '../../../../models';
+import {ComponentCanDeactivate} from '../pending-changes.guard';
 
 @Component({
   selector: 'app-project-form',
@@ -24,7 +25,23 @@ from '../../../../models';
  * this component is used to managing the project like editing or creating new projects
  * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :)
  */
-export class ProjectFormComponent implements OnInit {
+export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
+  CanNavigate:boolean = true;
+  // @HostListener allows us to also guard against browser refresh, close, etc.
+    canDeactivate(): Observable<boolean> | boolean {
+    // insert logic to check if there are pending changes here;
+    // returning true will navigate without confirmation
+    // returning false will show a confirm alert before navigating away
+    return this.CanNavigate;
+  }
+
+  // @HostListener allows us to also guard against browser refresh, close, etc.
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (!this.canDeactivate()) {
+        $event.returnValue = "You have unsaved changes, are you sure you want to leave this page?";
+    }
+  }
   /**
    * this variables are used to navigating or static project fields
    * also contain the values what will be printed in the form 
@@ -343,6 +360,7 @@ export class ProjectFormComponent implements OnInit {
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
       this.nodeService.UpdateNode(this.project).subscribe((project:ProjectView) =>{
+        this.CanNavigate = true;
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
         this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
@@ -353,6 +371,7 @@ export class ProjectFormComponent implements OnInit {
       });
     }else{
       this.nodeService.createNode(this.project).subscribe((project:ProjectView) => {
+        this.CanNavigate = true;
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
         if(!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)){
           this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);  
