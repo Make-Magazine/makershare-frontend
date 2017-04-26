@@ -13,7 +13,7 @@
     <div class="card-container h-100">
       <div class="card h-100">
         <div class="card-partership">
-          <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
+          <p *ngIf="learn.brought_by"> Sponsored by {{learn.brought_by}} </p>
         </div>
         <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.nid)"></h3>
         <div class="card-description">

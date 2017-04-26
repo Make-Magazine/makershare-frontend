@@ -99,7 +99,8 @@
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
             <li>
-              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png"
+                class="project-likes" alt="">
               <img *ngIf="project.number_of_likes > 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
               <span *ngIf="!project.number_of_likes">0</span>
@@ -119,8 +120,8 @@
 <!--Project with larg view-->
 <div *ngIf="project && view != 'grid' && !front">
   <div class="project card lg-card">
-    <div class="image-top-lg" (click)="ShowProjectDetails(project.nid)">
-      <div class="overlay"></div>
+    <div class="image-top-lg">
+      <div class="overlay" (click)="ShowProjectDetails(project.nid)"></div>
       <div class="teaser">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
@@ -136,13 +137,20 @@
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
       </div>
-      <a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
+      <!--<a class="project-maker-lg" (click)="userProfile(project.first_name,project.last_name)">
         <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
-      </a>
+      </a>-->
       <div class="card-categories" *ngIf="project.project_categories">
         <span class="project-categories" *ngFor="let category of project.project_categories">
           <span>{{category}}<span class="tags-comma">,</span></span>
         </span>
+      </div>
+      <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
+        <div class="" *ngFor="let membership of project.field_team_members; let i = index">
+          <a>
+            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="maker-name mt-0">{{membership}}</span>
+          </a>  
+        </div>
       </div>
     </div>
     <div class="card-block container">

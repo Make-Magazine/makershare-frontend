@@ -47,6 +47,7 @@
         position: relative;
         padding: 16px;
         background-color: white;
+        cursor:pointer;
         @include boxShadow(2px, 2px ,8px, $shade-3);
         .card {
             background-color: transparent;
@@ -201,6 +202,19 @@
 
 .page-single-showcase {
     .showcase-card-backlayer {
+        .showcase-card {
+            cursor : auto;        
+            .image-container {
+                cursor : auto;        
+            }
+            .card-container {
+                .card-title {
+                    cursor : auto;                        
+                }
+            }
+        }
+    }
+    .showcase-card-backlayer {
         background-color: $showcase-layer;
         transition: inherit;
         padding-right: 23px;
@@ -238,11 +252,11 @@
         }
     }
     .card-title {
-        display: block !important;
-        -webkit-box-orient: inherit !important;
-        -webkit-line-clamp: inherit !important;
-        overflow: inherit !important;
-        height: auto !important;
+        // display: block !important;
+        // -webkit-box-orient: inherit !important;
+        // -webkit-line-clamp: inherit !important;
+        // overflow: inherit !important;
+        // height: auto !important;
     }
     .profile-container  {
         .spotlight-item {
