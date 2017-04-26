@@ -27,10 +27,10 @@ import { StatisticsService } from '../../../../d7services/statistics/statistics.
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  cropperref:ImageCropperComponent;
   @ViewChild('cropper') set cropper(cropper:ImageCropperComponent) {
-      this.cropperref = cropper;
+    setTimeout(()=>{
       console.log(cropper);
+    },1000);
   }
 
   CountriesList = [];
@@ -213,11 +213,9 @@ export class ProfileComponent implements OnInit {
     
   }
   OpenModal(Template, ModalName: string) {
-    if(ModalName == 'edit-cover-modal'){
-      this.modalService.open(Template, { windowClass: ModalName });
-      setTimeout(()=>{
-        // this.cropperref.setImage(this.ImageFile);
-      });
+    if(ModalName == 'Portfolio Photo'){
+      this.modalService.open(Template, { windowClass: 'edit-cover-modal' ,size:'lg'});
+      this.CurrentInfoTab = ModalName;
     }else{
       if(ModalName == 'MakerSpaces'){
         const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
@@ -272,6 +270,7 @@ export class ProfileComponent implements OnInit {
     }
     if (this.formGroup.valid) {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
+      this.ProfileInfo.bio = this.formGroup.value.bio;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
@@ -303,6 +302,7 @@ export class ProfileComponent implements OnInit {
   BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
+      bio: [this.ProfileInfo.bio, Validators.maxLength(140)],
       started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
       field_add_your_makerspace_s_: this.fb.array([]),
     });
@@ -321,9 +321,6 @@ export class ProfileComponent implements OnInit {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
           this.profilePictureService.update(this.profile.user_photo);
-          //localStorage.setItem('user_photo', this.profile.user_photo);
-        this.BuildForm();
-        this.buildFormSocial();
       }
     )
   }
@@ -353,5 +350,7 @@ export class ProfileComponent implements OnInit {
     this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
     this.meta.setTag('og:image', this.profile.user_photo);
     this.meta.setTag('og:description', this.customDescription);
+    this.BuildForm();
+    this.buildFormSocial();
   }
 }
