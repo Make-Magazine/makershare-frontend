@@ -15,6 +15,7 @@ import { UserInvitations } from '../../../../models';
 })
 export class TeamComponent implements OnInit {
   @Output() emitter = new EventEmitter();
+  @Output() CanNavigate = new EventEmitter();
   @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
 
@@ -73,6 +74,9 @@ export class TeamComponent implements OnInit {
       }
     });
     this.TeamForm.valueChanges.subscribe(data => {
+      if(this.TeamForm.dirty && this.TeamForm.touched){
+        this.CanNavigate.emit(false);
+      }
       this.onValueChanged(this.TeamForm, this.formErrors,this.validationMessages);
       this.emitter.emit(this.InvitationEmails);
     });

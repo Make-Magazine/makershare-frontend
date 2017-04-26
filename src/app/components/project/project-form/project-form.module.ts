@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
 import { Ng2FileDropModule } from 'ng2-file-drop';
+import { PendingChangesGuard } from './pending-changes.guard';
 
 @NgModule({
   imports: [
@@ -32,8 +33,8 @@ import { Ng2FileDropModule } from 'ng2-file-drop';
     HowToComponent,
     TeamComponent,
     ProjectFormComponent
-  ]
-  
+  ],
+  providers:[PendingChangesGuard]
 })
 
 export class ProjectFormModule { };

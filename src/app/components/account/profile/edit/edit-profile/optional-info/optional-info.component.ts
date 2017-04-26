@@ -3,10 +3,9 @@ import { Validators, FormGroup, FormControl, FormBuilder, FormArray } from '@ang
 import { UserProfile } from "../../../../../../models/profile/userprofile";
 import { ProfileService } from '../../../../../../d7services/profile/profile.service';
 import { ViewService } from '../../../../../../d7services/view/view.service';
-import { FileEntity } from '../../../../../../models';
 import { CustomValidators } from 'ng2-validation';
 import { Observable } from 'rxjs/Observable';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+
 
 @Component({
   selector: 'app-optional-info',
@@ -15,12 +14,9 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class OptionalInfoComponent implements OnInit {
 
   @Output() emitter = new EventEmitter();
-  @Output() CoverImage = new EventEmitter();
   @Input() userProfile: UserProfile;
 
   optionalForm:FormGroup;
-  FileEntityObject:FileEntity;
-  allIntersets: Array<any>;
 
   SearchMakerspace = (text$: Observable<string>) =>{
     return text$
@@ -45,27 +41,16 @@ export class OptionalInfoComponent implements OnInit {
     private fb: FormBuilder,
     private profileService: ProfileService,
     private viewService:ViewService,
-    private notificationBarSer:NotificationBarService
   ) { }
 
   ngOnInit() {
-    this.FileEntityObject = {
-      filename:'',
-      file:'',
-    }
-    this.profileService.getAllInterests().subscribe(Interests=>{
-      this.allIntersets = Interests;
-      this.BuildForm();
-    });
-    
+    this.BuildForm();
   }
 
   BuildForm(){
-    this.FileEntityObject.file = this.userProfile.user_photo;
+    console.log(this.userProfile);
     this.optionalForm = this.fb.group({
-      maker_interests:[this.userProfile.maker_interests? this.userProfile.maker_interests:[],],
-      bio:this.userProfile.bio,
-      started_making:this.userProfile.started_making,
+      field_add_your_makerspace_s_:this.fb.array([]),
       field_social_accounts:this.fb.group({
         field_website_or_blog:[this.userProfile.field_social_accounts.field_website_or_blog,CustomValidators.url],
         field_additional_site:[this.userProfile.field_social_accounts.field_additional_site,CustomValidators.url],
@@ -79,8 +64,7 @@ export class OptionalInfoComponent implements OnInit {
         field_instructables:[this.userProfile.field_social_accounts.field_instructables,CustomValidators.url],
         field_hackday:[this.userProfile.field_social_accounts.field_hackday,CustomValidators.url],
         field_preferred:[this.userProfile.field_social_accounts.field_preferred],
-      }),
-      field_add_your_makerspace_s_:this.fb.array([]),
+      })
     });
     if(this.userProfile.field_add_your_makerspace_s_){
       this.userProfile.field_add_your_makerspace_s_.forEach((makerspace,index) => {
@@ -115,30 +99,6 @@ export class OptionalInfoComponent implements OnInit {
     });
     control.push(MakerspaceGroup);
   }
-
-  onFileChange(event){
-    if(event.target.files.length == 0) return;
-    let file = event.target.files[0];
-    this.ConvertToBase64(file,this.FileEntityObject,this.CoverImage);
-  }
-
-  public ConvertToBase64(file,FileEntityObject,CoverImage){
-    let self = this;
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      let img = new Image();
-      img.src = reader.result;
-      if(img.width < 600 && img.height < 600){
-        //show error message for validation
-        self.notificationBarSer.create({ message: 'Image size is invalid.', type: NotificationType.Error});
-        return;
-      }
-      FileEntityObject.filename = file.name;
-      FileEntityObject.file = reader.result;
-      CoverImage.emit(FileEntityObject);
-    };    
-   }
 
 }
 

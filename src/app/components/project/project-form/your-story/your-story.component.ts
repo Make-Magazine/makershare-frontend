@@ -96,6 +96,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    */
   @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
+  @Output() CanNavigate = new EventEmitter();
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
@@ -194,6 +195,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
+      if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
+        this.CanNavigate.emit(false);
+      }
       this.onValueChanged(data);
       this.emitter.emit(this.tags);
     });

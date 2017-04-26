@@ -88,6 +88,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
    */
   @Output() emitter = new EventEmitter();
+  @Output() CanNavigate = new EventEmitter();
 
   /**
    * Output will return the value to the parent component
@@ -266,6 +267,9 @@ export class HowToComponent implements OnInit,AfterViewInit {
       });
     });
     this.HowToForm.valueChanges.subscribe(data => {
+      if(this.HowToForm.dirty && this.HowToForm.touched){
+        this.CanNavigate.emit(false);
+      }
       this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
       this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
       this.project.field_duration.und = this.HowToForm.controls['field_duration'].value;
