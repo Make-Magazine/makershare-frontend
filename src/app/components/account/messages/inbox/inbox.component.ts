@@ -19,7 +19,16 @@ import { LoaderService } from '../../../shared/loader/loader.service';
   templateUrl: './inbox.component.html'
 })
 export class InboxComponent implements OnInit {
+
+  formatter = (x) => {
+    if(x.value){
+      return x.value;
+    }
+    return x;
+  };
+
   @ViewChild('myInput')
+  count
   myInputVariable: any;
   searchValue: string = '';
   closeResult: string;
@@ -285,10 +294,14 @@ export class InboxComponent implements OnInit {
           } else if (msg_arr[i].last_updated > 10080) {
             msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
           }
+        //  if(Object.keys(msg_arr[i].participants).length > 2){
+            msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
+          //}
           i++
         }
       }
-      this.msg = this.msg.concat(msg_arr);
+      
+      this.msg = this.msg.concat(msg_arr);      
       this.loaderService.display(false);
       this.loadMoreVisibilty();
     })
