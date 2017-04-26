@@ -16,7 +16,6 @@ export class ProjectHeaderComponent implements OnInit {
   @Output() SwitchTab = new EventEmitter();
   @Output() ProjectNewId = new EventEmitter();
   badges = [];
-  numLikes;
   
   constructor(
     private userService: UserService,
@@ -34,6 +33,11 @@ export class ProjectHeaderComponent implements OnInit {
   customTitle: string = '';
   customDescription: string = '';
   customImage: string = '';
+  toolTips = {
+    'like':'Like this idea',
+    'bookmark':'Bookmark this project',
+    'share':'Share this project',
+  }
 
   ngOnInit() {
     this.getcurrentuser();
@@ -90,10 +94,4 @@ export class ProjectHeaderComponent implements OnInit {
       this.ProjectNewId.emit(this.showcaseInfo.index);
     }
   }
-      likesCounter(count) {
-    this.numLikes = count;
-    console.log(this.numLikes)
-
-  }
-
 }

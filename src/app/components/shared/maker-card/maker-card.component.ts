@@ -11,7 +11,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MakerCardComponent implements OnInit {
 
- @Input() uid;
+  @Input() uid;
   badges = [];
   project = {};
   card;
@@ -36,10 +36,10 @@ export class MakerCardComponent implements OnInit {
       this.card = data[0];
     });
   }
-  
+
   getMakerBadges() {
     this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
-      for(let i=0; i<data.length && i<2; i++){
+      for (let i = 0; i < data.length && i < 2; i++) {
         this.badges.push(data[i])
       }
     });
@@ -47,15 +47,18 @@ export class MakerCardComponent implements OnInit {
 
   CountMakerProjects() {
     this.viewService.getView('maker_count_all_projects/' + this.uid).subscribe(data => {
-        this.projectsCount = data[0]
-      })
+      this.projectsCount = data[0]
+    })
   }
-  getLatestProject(){
+  getLatestProject() {
     this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
-      if(data[0]){
-        this.latestPorjectImg = data[0].latest_project_cover_photo;    
+      if (data[0]) {
+        this.latestPorjectImg = data[0].latest_project_cover_photo;
       }
     });
   }
-
+  userProfile(fName, lName) {
+    var name = fName + '-' + lName;
+    this.router.navigate(['/portfolio/', name]);
+  }
 }
