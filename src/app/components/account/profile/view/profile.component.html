@@ -6,13 +6,21 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
+				<div class="col-12 d-flex flex-column page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+					<div class="nav-portfolio ml-auto">
+						<div class="display-style d-flex">
+							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+							<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+						</div>
+					</div>
+				</div>
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
 					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-center hidden-sm-down display-style">
 						<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
 						</a>
 						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
-							<app-message-modal [uid]="uid"></app-message-modal>
+							<app-message-modal [uid]="uid"></app-message-modal> MESSAGE THIS MAKER
 						</a>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
@@ -132,7 +140,7 @@
 								<div *ngIf="profile.field_social_accounts">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<div class="social-links">
-										<p class="global-title">Social</p>									
+										<p class="global-title">Social</p>
 										<a class="nav-link social fb" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
 											<i class="fa fa-facebook fa-lg"></i>
 										</a>
@@ -192,28 +200,31 @@
 									</div>
 									<div *ngIf="profile.field_social_accounts.field_website_or_blog == '' && profile.field_social_accounts.field_additional_site == ''">
 										<div *ngIf="CurrentLoggedUserId && uid">
-											<div *ngIf="CurrentLoggedUserId==uid"> <p class="placeholder-text">{{PlaceholderText.websites}}</p></div>
+											<div *ngIf="CurrentLoggedUserId==uid">
+												<p class="placeholder-text">{{PlaceholderText.websites}}</p>
+											</div>
 										</div>
 									</div>
 								</div>
 								<hr>
 								<div class="how">
 									<!-- Start How -->
-									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>																	
+									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">How I learned to be a maker</p>
 									<p *ngIf="profile.started_making" class="started_making">{{profile.started_making}}</p>
 									<p *ngIf="!profile.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr>
-								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>								
+								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 								<p class="global-title">Interests</p>
-								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && profile.maker_interests.length == 0" class="placeholder-text">{{PlaceholderText.interests}}</p>
+								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && profile.maker_interests.length == 0"
+								 class="placeholder-text">{{PlaceholderText.interests}}</p>
 								<tag-input [(ngModel)]="profile.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
 								</tag-input>
 								<!--<a class="report">Report this user</a>-->
 								<div *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
-								<hr>
+									<hr>
 									<app-report-user [userReportId]="uid"></app-report-user>
 								</div>
 								<!-- End How -->
