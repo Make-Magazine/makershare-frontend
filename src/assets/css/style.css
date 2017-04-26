@@ -2296,6 +2296,12 @@ footer {
     background: transparent;
     border: none !important;
     display: none; }
+.edit-cover-modal .upload-pic-container .upload-pic-footer {
+  text-align: center; }
+  .edit-cover-modal .upload-pic-container .upload-pic-footer a {
+    color: #828282; }
+    .edit-cover-modal .upload-pic-container .upload-pic-footer a:hover {
+      color: #828282; }
 
 .profile-cover p,
 .profile-sidebar p {
@@ -2797,12 +2803,17 @@ footer {
       position: absolute;
       top: 13px;
       right: 8px; }
-    .modal-content .profile-modal .modal-body #maker-spaces .makerspace-contene {
+    .modal-content .profile-modal .modal-body #maker-spaces .makerspace-content {
       position: relative; }
     .modal-content .profile-modal .modal-body #maker-spaces .maker-space-remove {
       position: absolute;
-      right: 1px;
-      top: 1px; }
+      right: 10px;
+      top: 10px; }
+    .modal-content .profile-modal .modal-body #maker-spaces .form-main {
+      background-color: #DCDCDC;
+      padding: 12px; }
+    .modal-content .profile-modal .modal-body #maker-spaces .add-other {
+      background-color: #fff !important; }
     .modal-content .profile-modal .modal-body #links .form-group {
       position: relative; }
     .modal-content .profile-modal .modal-body #links .radio-breferred {
