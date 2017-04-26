@@ -1818,7 +1818,11 @@ footer {
       width: 25px; }
     .profile-sidebar .profile-container .global-title {
       margin-bottom: 10px;
-      margin-top: 10px; }
+      margin-top: 10px;
+      font-size: 1em;
+      text-transform: capitalize; }
+    .profile-sidebar .profile-container .placeholder-text {
+      color: #BDBDBD; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
       overflow: hidden; }
@@ -1901,7 +1905,8 @@ footer {
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
-        font-size: 0.7em !important; }
+        font-size: 0.7em !important;
+        margin-left: 5px; }
       .profile-sidebar .profile-container .profile-info .bio {
         font-family: "Messina Sans Regular";
         font-size: 0.95em;
@@ -2657,12 +2662,14 @@ footer {
   left: 0;
   z-index: 11;
   right: 0;
-  width: 300px;
+  width: 240px;
   margin: 0 auto; }
   .profile-edit-buttons p {
     font-size: 12px;
     color: #4F4F4F;
     text-align: center; }
+    .profile-edit-buttons p i {
+      display: block; }
     .profile-edit-buttons p.btn {
       background-color: #F2F2F2;
       border: 1px solid #333333; }
@@ -2670,6 +2677,8 @@ footer {
         background-color: #ED1C24;
         border-color: #ED1C24;
         color: #fff; }
+    .profile-edit-buttons p.project-drag i {
+      display: inline-block; }
   .profile-edit-buttons span {
     text-align: center;
     font-size: 11px;
@@ -5457,6 +5466,7 @@ textarea {
     position: relative;
     padding: 16px;
     background-color: white;
+    cursor: pointer;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
@@ -5580,6 +5590,12 @@ textarea {
     .showcase-card-backlayer .showcase-card .showcase-likes {
       color: #BDBDBD; }
 
+.page-single-showcase .showcase-card-backlayer .showcase-card {
+  cursor: auto; }
+  .page-single-showcase .showcase-card-backlayer .showcase-card .image-container {
+    cursor: auto; }
+  .page-single-showcase .showcase-card-backlayer .showcase-card .card-container .card-title {
+    cursor: auto; }
 .page-single-showcase .showcase-card-backlayer {
   background-color: #D4EFFC;
   transition: inherit;
