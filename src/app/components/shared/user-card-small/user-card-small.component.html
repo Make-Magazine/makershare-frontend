@@ -25,7 +25,8 @@
             <ul class="list-unstyled d-flex flex-row justify-content-between align-items-center count-list">
               <li>
                 <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-                <span>1234</span>
+                <span *ngIf="card.profile_likes">{{card.profile_likes}}</span>
+                <span *ngIf="!card.profile_likes">0</span>
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">

@@ -30,10 +30,12 @@ export class MakerCardComponent implements OnInit {
     this.getMakerBadges();
     this.CountMakerProjects();
     this.getLatestProject();
+    // this.ProfileLikes();
   }
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
+      console.log(this.card)
     });
   }
 
@@ -61,4 +63,9 @@ export class MakerCardComponent implements OnInit {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
   }
+  // ProfileLikes(){
+  //   this.viewService.getView('/maker_count_api/' + this.uid).subscribe(data=>{
+  //     console.log(data);
+  //   })
+  // }
 }
