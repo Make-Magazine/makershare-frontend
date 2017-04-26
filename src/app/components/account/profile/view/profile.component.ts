@@ -131,7 +131,8 @@ export class ProfileComponent implements OnInit {
     maker_space: 'What are you makerspaces?',
     websites:'What are your websites?',
     interests: 'Add your interests',
-  }
+  };
+  DefaultView :string = "grid"
   constructor(
     private profileService: ProfileService,
     private userService: UserService,

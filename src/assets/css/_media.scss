@@ -456,6 +456,11 @@
     .modal-lg, .modal-dialog {
         max-width: 1110px;
     }
+    .profile-sidebar {
+        .profile-container {
+            top: -85px;
+        }
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
