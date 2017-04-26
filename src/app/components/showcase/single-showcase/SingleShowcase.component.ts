@@ -7,9 +7,12 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import {FlagService} from '../../../d7services/flag/flag.service';
 import { StatisticsService } from '../../../d7services/statistics/statistics.service';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-single-showcases',
   templateUrl: './singleShowcase.component.html',
+  providers: [NgbTooltipConfig],
 })
 export class SinglShowcaseComponent implements OnInit {
 
@@ -24,10 +27,16 @@ export class SinglShowcaseComponent implements OnInit {
   sort_order: string;
   sort_by: string;
   limit = 9;
-  showcasenumber
-  showcaseNid
-  userId
-  numLikes
+  showcasenumber;
+  showcaseNid;
+  userId;
+  numLikes;
+  toolTips = {
+    'like': 'Like these ideas',
+    'bookmark': 'Bookmark this project',
+    'share': 'Share this project',
+  }
+  
   // @Output() showcaseNid = new EventEmitter();
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +46,12 @@ export class SinglShowcaseComponent implements OnInit {
     private meta: MetaService,
     private flagService: FlagService,
     private statisticsService: StatisticsService,
-  ) { }
+    private config: NgbTooltipConfig,
+
+  ) { 
+    config.placement = 'bottom';
+    config.triggers = 'hover';   
+  }
 
   ngOnInit() {
     // show spinner
@@ -57,7 +71,7 @@ export class SinglShowcaseComponent implements OnInit {
   }
   getshowCaseProjects() {
     if (this.loadFlag) {
-      this.limit += 3;
+      this.limit += 9;
     }
 
     this.route.params

@@ -99,7 +99,8 @@
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
             <li>
-              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+              <img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png"
+                class="project-likes" alt="">
               <img *ngIf="project.number_of_likes > 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
               <span *ngIf="!project.number_of_likes">0</span>
@@ -145,7 +146,9 @@
         </span>
       </div>
       <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
-        <span class="maker-name mt-0" *ngFor="let membership of project.field_team_members">{{membership}}</span>
+        <div class="" *ngFor="let membership of project.field_team_members">
+          <span class="maker-name mt-0">{{membership}}</span>
+        </div>
       </div>
     </div>
     <div class="card-block container">
