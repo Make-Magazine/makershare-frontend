@@ -42,11 +42,11 @@
 			}
 		}
 		.project-like {
-			min-width: 60px;
-			text-align: right;
-			padding: 0px 12px;
+			// min-width: 60px;
+			// text-align: right;
+			// padding: 0px 12px;
 			img {
-				width: 13px;
+				width: 11px;
 				height: auto;
 			}
 			span {
@@ -55,7 +55,7 @@
 				padding: 0px 4px;
 			}
 			a {
-				padding-top: 3px;
+				// padding-top: 3px;
 			}
 		}
 		.project-likes { 
@@ -72,9 +72,9 @@
 			}
 		}
 		.project-views {
-			min-width: 60px;
-			text-align: right;
-			padding: 0px 12px;
+			// min-width: 60px;
+			// text-align: right;
+			// padding: 0px 12px;
 			img {
 				width: 18px;
 				height: auto;
@@ -180,8 +180,8 @@
 	}
 	
 	.project-body {
-		margin-bottom: 20px;
-		margin-top: 30px;
+		padding-bottom: 20px;
+		padding-top: 30px;
 		p{
 		}
 		&>p:first-of-type {
@@ -738,9 +738,7 @@ header.showcase-project {
 
 .page-project {
 .projectsingle-card {
-		border: 1px solid #4ab0d8;
     position: relative;
-    // cursor:pointer;
     background-color: white;
 		padding: 0px;
 		@include boxShadow(2px, 2px ,8px, $shade-3);
@@ -822,6 +820,7 @@ header.showcase-project {
             p {
                 @include body-font-2();
 								margin-bottom: 10px;
+						    word-break: break-all;
             }
         }
 				.card-date {
