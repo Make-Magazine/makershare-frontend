@@ -36,7 +36,7 @@
 		<div class="" formGroupName="address">
 			<div class="col-md-12" style="padding-right:2em">
 				<input [ngClass]="{valError: formErrors.address.country}" type="text" [inputFormatter]="formatter" formControlName="country" class="form-control" id="country" placeholder="Country"
-			 	[showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="GetCountryDetails($event.item)">
+			 	[ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="GetCountryDetails($event.item)">
 			 	<div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
 					{{ formErrors.address.country }}
 				</div>

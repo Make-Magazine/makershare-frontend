@@ -5,16 +5,14 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { MainService } from '../../../../d7services/main/main.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service';
-import { ProjectForm, ProjectView } from '../../../../models';
-import { FileEntity } from '../../../../models';
-import { field_file_reference } from '../../../../models';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Router, NavigationExtras, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../../d7services/user/user.service';
-import { field_collection_item_member,field_collection_item_tool,field_collection_item_material,field_collection_item_part,field_collection_item_resource } from '../../../../models';
-import { NodeHelper } from '../../../../models';
-import { UserInvitations } from '../../../../models';
+import { FileEntity,ProjectForm, ProjectView,field_file_reference,NodeHelper,UserInvitations,
+  field_number,field_collection_item_member,field_collection_item_tool,field_collection_item_material,
+  field_collection_item_part,field_collection_item_resource } 
+from '../../../../models';
 
 @Component({
   selector: 'app-project-form',
@@ -68,13 +66,17 @@ export class ProjectFormComponent implements OnInit {
       nid = params["nid"];
     });
     if(nid){
-      this.nodeService.getNode(nid).subscribe((project:ProjectView) => {
-        this.ConvertProjectToCreateForm(project);
-      });
+      this.GetProject(nid);
     }else{
       this.SetProjectOwner();
     }
     this.current_active_tab = 'Your Story';
+  }
+
+  GetProject(nid:number){
+    this.nodeService.getNode(nid).subscribe((project:ProjectView) => {
+      this.ConvertProjectToCreateForm(project);
+    });
   }
 
   ConvertProjectToCreateForm(data:ProjectView){
@@ -311,7 +313,7 @@ export class ProjectFormComponent implements OnInit {
       if(!this.project[index] || NodeHelper.isEmpty(this.project[index])){
         this.project[index] = newproject[index];
       }
-    }    
+    }  
   }
 
   SetProjectOwner(){
@@ -334,6 +336,9 @@ export class ProjectFormComponent implements OnInit {
     if(this.project.GetField("field_visibility2").und[0] == 370){
       this.project.CheckIfReadyToPublic();
     }
+    if(this.project.field_show_tell_video_as_default.und[0].value == 0){
+      delete this.project.field_show_tell_video_as_default.und;
+    } 
     if(this.project.GetField("nid")){
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
@@ -341,6 +346,7 @@ export class ProjectFormComponent implements OnInit {
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
         this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
+        this.GetProject(project.nid);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
@@ -352,13 +358,12 @@ export class ProjectFormComponent implements OnInit {
           this.sendInvitedEmails (this.FormPrintableValues.InvitationEmails);  
         }
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
+        this.GetProject(project.nid);
       }, err =>{
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error});
       });
     }
-
-    // display message
   }
 
   sendInvitedEmails (emails) {

@@ -52,8 +52,8 @@
 
 									<!-- Start Profiel Pic -->
 									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
-										<div *ngIf="CurrentLoggedUserId==uid ">
-											<a (click)="OpenModal(profilpicmodal,'edit-cover-modal')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+										<div *ngIf="CurrentLoggedUserId==uid">
+											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
 
@@ -113,15 +113,15 @@
 								<hr>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div *ngIf="profile.bio" class="bio">
+								<div *ngIf="ProfileInfo.bio" class="bio">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
-									<div class="bio" [innerHTML]="profile.bio"></div>
+									<div class="bio">{{ProfileInfo.bio}}</div>
 								</div>
-								<div *ngIf="!profile.bio && CurrentLoggedUserId == uid && auth.authenticated()" class="bio">
+								<div *ngIf="!ProfileInfo.bio && CurrentLoggedUserId == uid && auth.authenticated()" class="bio">
 									<a (click)="OpenModal(editinfomodal,'Bio')" class="btn btn-white add">
 										<i class="fa fa-lg fa-plus"></i>
 										<p class="global-title">Add your bio</p>
@@ -129,79 +129,79 @@
 								</div>
 								<!-- End Bio -->
 								<hr>
-								<div *ngIf="profile.field_social_accounts">
+								<div *ngIf="ProfileInfo.field_social_accounts">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<div class="social-links">
 										<span class="global-title">Social</span><br>
-										<a class="nav-link social fb" target="_blank" *ngIf="profile.field_social_accounts.field_facebook != '' " href="{{profile.field_social_accounts.field_facebook}}">
+										<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 											<i class="fa fa-facebook fa-lg"></i>
 										</a>
-										<a class="nav-link social tw" target="_blank" *ngIf="profile.field_social_accounts.field_twitter != '' " href="{{profile.field_social_accounts.field_twitter}}">
+										<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
 											<i class="fa fa-twitter fa-lg"></i>
 										</a>
-										<a class="nav-link social in" target="_blank" *ngIf="profile.field_social_accounts.field_instagram != '' " href="{{profile.field_social_accounts.field_instagram}}">
+										<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
 											<i class="fa fa-instagram fa-lg"></i>
 										</a>
-										<a class="nav-link social ln" target="_blank" *ngIf="profile.field_social_accounts.field_linkedin != '' " href="{{profile.field_social_accounts.field_linkedin}}">
+										<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
 											<i class="fa fa-linkedin fa-lg"></i>
 										</a>
-										<a class="nav-link social pin" target="_blank" *ngIf="profile.field_social_accounts.field_pinterest != '' " href="{{profile.field_social_accounts.field_pinterest}}">
+										<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
 											<i class="fa fa-pinterest-p fa-lg"></i>
 										</a>
-										<a class="nav-link social ut" target="_blank" *ngIf="profile.field_social_accounts.field_youtube != '' " href="{{profile.field_social_accounts.field_youtube}}">
+										<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
 											<i class="fa fa-youtube fa-lg"></i>
 										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_hackster_io != '' " href="{{profile.field_social_accounts.field_hackster_io}}">
+										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
 											<i class="fa fa-external-link fa-lg"></i>
 										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_instructables != '' " href="{{profile.field_social_accounts.field_instructables}}">
+										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
 											<i class="fa fa-external-link fa-lg"></i>
 										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="profile.field_social_accounts.field_hackday != '' " href="{{profile.field_social_accounts.field_hackday}}">
+										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
 											<i class="fa fa-external-link fa-lg"></i>
 										</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div *ngIf="!profile.field_social_accounts">
+								<div *ngIf="!ProfileInfo.field_social_accounts">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 									</div>
 								</div>
 								<hr>
-								<ul class="list-unstyled makerspaces" *ngIf="profile.field_add_your_makerspace_s_">
+								<ul class="list-unstyled makerspaces" *ngIf="ProfileInfo.field_add_your_makerspace_s_">
 									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
 									<h4>Makersapces</h4>
-									<li *ngFor="let makerspace of profile.field_add_your_makerspace_s_">
+									<li *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 										<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 									</li>
 								</ul>
-								<ul *ngIf="profile.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" class="btn btn-white add" (click)="OpenModal(editinfomodal,'MakerSpaces')"><i class="fa fa-lg fa-plus"></i> Add your Makerspace(s)</a>
 								</ul>
 								<hr>
-								<div *ngIf="profile.field_social_accounts.field_website_or_blog == '' && profile.field_social_accounts.field_additional_site == ''">
+								<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog == '' && ProfileInfo.field_social_accounts.field_additional_site == ''">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Links')"><i class="fa fa-lg fa-plus"></i> Add your website(s)</a></div>
 									</div>
 								</div>
-								<div *ngIf="profile.field_social_accounts.field_website_or_blog != '' || profile.field_social_accounts.field_additional_site != ''">	
+								<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">	
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title"> Links </p>
-									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_website_or_blog != '' " href="{{profile.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
-									<a class="mywebsite" target="_blank" *ngIf="profile.field_social_accounts.field_additional_site != '' " href="{{profile.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
+									<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' " href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
+									<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' " href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
 									<br>
 								</div>
 								<hr>
-								<div *ngIf="profile.started_making" class="how">
+								<div *ngIf="ProfileInfo.started_making" class="how">
 									<!-- Start How -->
 									<p class="global-title">How I learned to be a maker</p>
-									<p class="started_making">{{profile.started_making}}</p>
+									<p class="started_making">{{ProfileInfo.started_making}}</p>
 								</div>
-								<div *ngIf="!profile.started_making" class="how">
+								<div *ngIf="!ProfileInfo.started_making" class="how">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid">
 											<a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Maker Moment')">
@@ -211,14 +211,14 @@
 									</div>
 									<hr>
 								</div>
-								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length == 0">
+								<ul class="list-unstyled interests" *ngIf="ProfileInfo.maker_interests.length == 0">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" class="btn btn-white add" (click)="OpenModal(editinfomodal,'Interests')"><i class="fa fa-lg fa-plus"></i> Add your interests</a>
 								</ul>
-								<ul class="list-unstyled interests" *ngIf="profile.maker_interests.length != 0">
+								<ul class="list-unstyled interests" *ngIf="ProfileInfo.maker_interests.length != 0">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 								</ul>
 								<p class="global-title">Interests</p>
-								<tag-input [(ngModel)]="profile.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
+								<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
 								</tag-input>
 								<hr>
@@ -319,6 +319,7 @@
 		</div>
 		<div class="modal-body row">
 			<div class="modal-menu col-md-2">
+				<a (click)="CurrentInfoTab = 'Portfolio Photo'" [ngClass]="{'active': CurrentInfoTab == 'Portfolio Photo'}">Portfolio Photo</a><br>
 				<a (click)="CurrentInfoTab = 'Personal Info'" [ngClass]="{'active': CurrentInfoTab == 'Personal Info'}">Personal Info</a><br>
 				<a (click)="CurrentInfoTab = 'Bio'" [ngClass]="{'active': CurrentInfoTab == 'Bio'}">Bio</a><br>
 				<a (click)="CurrentInfoTab = 'Social'" [ngClass]="{'active': CurrentInfoTab == 'Social'}">Social</a><br>
@@ -350,7 +351,7 @@
 								</div>
 								<div class="col-md-4 col-xs-12">
 									<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country" placeholder="Country" [inputFormatter]="formatter"
-									 [showHint]="true" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+									 [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 									<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
 							</small>
@@ -409,11 +410,10 @@
 									<label for="edit-bio">YOUR BIO</label>
 								</div>
 								<div class="col-md-12">
-									<textarea rows="10" cols="50" class="col-md-12" formControlName="describe_yourself" name="limitedtextfield" id="description-textarea-bio"
+									<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 									 placeholder="{{'What would you like people to know about you?\nYou basicaly have two paragraphs of space.'}}" maxlength="140"></textarea>
-									<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 140}" class="char-left">{{140 - formGroup.value.describe_yourself.length}} char left</span>
+									<span [ngClass]="{valErrorString: formGroup.value.bio.length == 140}" class="char-left">{{140 - formGroup.value.bio.length}} char left</span>
 								</div>
-								<!--<div class="col-md-12" *ngIf="!formGroup.valid">max length 140</div>-->
 							</div>
 						</div>
 					</div>
