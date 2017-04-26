@@ -2966,7 +2966,7 @@ footer {
   float: left;
   margin: 0 5px 0 0;
   cursor: pointer;
-  background: #BDBDBD;
+  background: #333333;
   color: #fff; }
 .social-links a.social:hover.fb {
   background-color: #014c8c; }
@@ -8231,7 +8231,7 @@ img {
     max-width: 1110px; }
 
   .profile-sidebar .profile-container {
-    top: -85px; } }
+    top: -40px; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   header nav {
     padding: 20px 5px !important; }
