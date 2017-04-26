@@ -104,10 +104,10 @@
                 <div class="row">
                   <div class="learning-card" *ngIf="object.learning_content_type == 'PDF' ">
                     <div class="media d-flex flex-column flex-lg-row">
-                      <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
+                      <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}" (click)="objectDetails(object.nid)">
 
                         <div class="header-section">
-                          <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap" (click)="objectDetails(object.nid)">
+                          <img class="card-img-top d-flex mr-1" src="{{object.object_image}}" alt="Card image cap">
                         </div>
                       </div>
                       <div class="media-body col-lg-9">
@@ -148,12 +148,12 @@
                     <div class="media d-flex flex-column flex-lg-row">
                       <div class="card col-lg-3 d-flex flex-sm-row flex-colum flex-lg-column border-style" id="OB{{object?.nid}}">
 
-                        <div class="header-section ">
+                        <div class="header-section" (click)="objectDetails(object.nid)">
                           <div class="video-image" >
-                            <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap" (click)="objectDetails(object.nid)">
+                            <img *ngIf="object.videoImage" class="card-img-top d-flex mr-1" [src]="object.videoImage" alt="Card image cap" >
                           </div>
                           <div *ngIf="object.videoPic" class="youtube-pic">
-                            <img [src]="object.videoPic" alt="" class="media-object" (click)="objectDetails(object.nid)">
+                            <img [src]="object.videoPic" alt="" class="media-object" >
                             <img class="play-image" src="./assets/images/video-icon.png" alt="">
                           </div>
                         </div>
@@ -299,8 +299,6 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
           </aside>
           <!-- End aside -->

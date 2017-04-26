@@ -6843,6 +6843,8 @@ img {
       color: #00AEEF !important; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .pl-3 {
       padding-left: 0rem !important; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .header-section img {
+      cursor: pointer; }
   .page-workshop-single .page-workshop-individual .workshop-content .object-type {
     color: #828282; }
     .page-workshop-single .page-workshop-individual .workshop-content .object-type p {
@@ -6894,6 +6896,8 @@ img {
       bottom: 10px; }
   .page-workshop-single .page-workshop-individual .list-position {
     padding-top: 32px; }
+    .page-workshop-single .page-workshop-individual .list-position a {
+      word-wrap: break-word; }
   .page-workshop-single .page-workshop-individual .content-list {
     padding: 10px 20px;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -7000,7 +7004,6 @@ img {
       text-transform: capitalize;
       line-height: 120%;
       color: #828282;
-      font-size: 38px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -7056,6 +7059,68 @@ img {
 
 .single-object-page .navigation {
   padding: 10px; }
+.single-object-page .object-title-list {
+  padding-top: 25px; }
+  .single-object-page .object-title-list a:hover {
+    color: deepskyblue; }
+  .single-object-page .object-title-list a:active {
+    color: grey; }
+.single-object-page .button {
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px; }
+.single-object-page .button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+.single-object-page .button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s; }
+.single-object-page .button:hover span {
+  padding-right: 25px; }
+.single-object-page .button:hover span:after {
+  opacity: 1;
+  right: 0; }
+.single-object-page .button-pre {
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px; }
+.single-object-page .button-pre span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+.single-object-page .button-pre span:before {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -65px;
+  transition: 0.5s; }
+.single-object-page .button-pre:hover span {
+  padding-left: 25px; }
+.single-object-page .button-pre:hover span:before {
+  opacity: 1;
+  left: 0; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;
