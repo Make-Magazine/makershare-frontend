@@ -527,12 +527,12 @@
 				</div>
 				<div id="maker-spaces" class="profile-edit-tab container" *ngIf="CurrentInfoTab == 'MakerSpaces'">
 					<div class="form-group" [formGroup]="formGroup">
-						<div class="makerspace-contene" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
+						<div class="makerspace-content" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
 						 formArrayName="field_add_your_makerspace_s_">
 							<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
-							<div class="form-group" [formGroupName]="i">
+							<div class="form-group form-main" [formGroupName]="i">
 								<div class="form-group row">
-									<div class="col-md-12">
+									<div class="col-md-11">
 										<label for="">MAKER SPACE</label>
 									</div>
 									<div class="col-md-4">
@@ -555,7 +555,7 @@
 							</div>
 						</div>
 					</div>
-					<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn btn-white btn-sharp" (click)="AddMakerspaceRow()"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
+					<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn btn-load-more add-other" (click)="AddMakerspaceRow()"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
 				</div>
 				<div id="links" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Links'">
 					<div class="form-group" [formGroup]="FormGroupSocial">
