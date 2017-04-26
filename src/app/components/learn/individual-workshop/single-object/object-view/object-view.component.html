@@ -2,10 +2,10 @@
   <div class="row">
     <div class="container">
 
-      <div class= "col-lg-7" *ngIf="type == 'Video'">
+      <div *ngIf="type == 'Video'">
         <video-viewer [link]="CurrentObject.video"></video-viewer>
       </div>
-      <div  *ngIf="type == 'PDF'">
+      <div *ngIf="type == 'PDF'">
         <div *ngIf="PDFLink" [innerHTML]="PDFLink"></div>
       </div>
       <div *ngIf="type == 'Book'">
@@ -19,7 +19,6 @@
       <div *ngIf="type == 'HTML'">
         <a href="{{CurrentObject.original_source}}" class="btn btn-main" target="_blank">Visit The Original Source of HTML Object</a>
       </div>
-
     </div>
   </div>
 </div>

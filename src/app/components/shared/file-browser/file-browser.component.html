@@ -1,6 +1,6 @@
 <div class="conitaner upload-pic-container">
   <div *ngIf="fileManageService" class="row">
-    <div *ngFor="let file of files" class="col-md-2">
+    <div *ngFor="let file of files" class="col-md-2 mb-4">
       <div class="image-container" *ngIf="file.type == 'image'">
         <img *ngIf="file.thumbnail" [src]="file.thumbnail">
         <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
@@ -8,6 +8,8 @@
       </div>
     </div>
     <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
-    <button (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
+  </div>
+  <div class="upload-pic-footer">
+    <button class="btn btn-load-more m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
   </div>
 </div>
