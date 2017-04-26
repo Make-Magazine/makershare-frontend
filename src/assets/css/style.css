@@ -1111,6 +1111,23 @@ body {
 .notifications-container .notification.warning .message {
   color: #333333; }
 
+ngb-typeahead-window.dropdown-menu {
+  width: 90%; }
+
+.typeahead-image-container {
+  width: 50px;
+  margin-right: 5px; }
+
+.typeahead-data-container .fullname, .typeahead-data-container .nickname {
+  margin-bottom: 0; }
+.typeahead-data-container .fullname {
+  height: 30px;
+  font-size: 1.2em;
+  font-weight: bold; }
+.typeahead-data-container .nickname {
+  height: 20px;
+  font-size: 0.8em; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -6251,7 +6268,6 @@ img {
     .page-create-project-why .team .add-collaborate {
       position: relative;
       background-color: #BDBDBD;
-      overflow: hidden;
       margin: 20px 0;
       padding: 0 15px; }
     .page-create-project-why .team .remove {

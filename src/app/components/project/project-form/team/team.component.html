@@ -1,11 +1,13 @@
 <template #rt let-r="result" let-t="term">
-  <div class="user-image-container">
-    <img *ngIf="r.photo" src="{{r.photo}}">
-    <img *ngIf="!r.photo" src="http://placehold.it/140x140">
-  </div>
-  <div class="data-container">
-    <p>{{r.first_name}} {{r.last_name}}</p>
-    <p>{{r.nickname}}</p> 
+  <div class="d-flex">
+    <div class="typeahead-image-container">
+      <img *ngIf="r.profile_pic_typeahead" src="{{r.profile_pic_typeahead}}">
+      <img *ngIf="!r.profile_pic_typeahead" src="http://placehold.it/50x50">
+    </div>
+    <div class="typeahead-data-container">
+      <p class="fullname">{{r.first_name}} {{r.last_name}}</p>
+      <p class="nickname">{{r.nickname}}</p> 
+    </div>
   </div>
 </template>
 <div class="region region-content col-sm-8" [formGroup]="TeamForm">
