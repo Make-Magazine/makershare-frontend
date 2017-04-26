@@ -2369,7 +2369,8 @@ footer {
       width: 90%; }
     .project .card-block .profiel-pic-container {
       width: 82px;
-      height: 82px; }
+      height: 82px;
+      cursor: pointer; }
       .project .card-block .profiel-pic-container img {
         width: 100%; }
     .project .card-block .maker-data-container,
@@ -2415,7 +2416,8 @@ footer {
     text-align: left;
     width: 100%;
     margin: 0;
-    max-width: 230px; }
+    max-width: 230px;
+    cursor: pointer; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -2700,7 +2702,8 @@ footer {
   bottom: 0;
   right: 0px;
   margin: auto;
-  z-index: 11; }
+  z-index: 11;
+  cursor: pointer; }
   .teaser p {
     line-height: 20px; }
   .teaser .overlay-text {
@@ -3134,7 +3137,8 @@ footer {
     border: none;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-    box-shadow: 2px 2px 8px #BDBDBD; }
+    box-shadow: 2px 2px 8px #BDBDBD;
+    cursor: pointer; }
   .maker-card .card-type {
     right: -22px; }
   .maker-card .image-top {
