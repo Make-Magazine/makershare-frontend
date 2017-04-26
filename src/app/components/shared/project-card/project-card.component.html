@@ -107,7 +107,8 @@
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
-              <span>70</span>
+              <span *ngIf="project.profile_views">{{project.profile_views}}</span>
+              <span *ngIf="!project.profile_views">0</span>
             </li>
           </ul>
         </div>
@@ -176,7 +177,8 @@
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
+                <span *ngIf="project.profile_views">{{project.profile_views}}</span>
+                <span *ngIf="!project.profile_views">0</span>
               </li>
             </ul>
           </div>

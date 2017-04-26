@@ -2,7 +2,14 @@
   <div class="projectsingle-card row">
     <div class="col-lg-8 col-md-12 left-side">
       <div class="image-container">
-        <img src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
+        <div *ngIf="!project.field_show_tell_video.value || project.field_show_tell_video_as_default.value == 0">
+          <img *ngIf="project.field_cover_photo.styled_url" src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
+          <img *ngIf="!project.field_cover_photo.styled_url" src="http://placehold.it/800x450" alt="" class="img-responsive">
+        </div>
+        <div *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1">
+          <video-viewer [link]="project.field_show_tell_video.value"></video-viewer>
+        </div>
+
         <ul class="project-card-badges d-flex" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
           <li class="project-badge" *ngFor="let badge of badges;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
@@ -58,7 +65,7 @@
               <span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>
             </div>
           </div>
-          <div class="project-card-footer d-flex mt-auto">
+          <div class="project-card-footer d-flex mt-auto"  *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_credit_your_inspiration.value || project.field_how_to.value">
             <ul class="list-unstyled project-aside d-flex">
               <li id="read-story" class="active"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Project Story</a></li>
               <li id="build-project"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">How-to</a></li>
