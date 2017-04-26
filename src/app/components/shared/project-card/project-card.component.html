@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="d-flex flex-row">
-          <div class="profiel-pic-container mr-2">
+          <div class="profiel-pic-container mr-2" (click)="userProfile(project.first_name,project.last_name)">
             <img *ngIf="!project.maker_photo" src="http://placehold.it/80x80" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>

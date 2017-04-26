@@ -636,7 +636,7 @@ header.showcase-project {
 		.comment-body {
 			p {
 				margin: 0px;
-				@include body-font-1 ();
+				@include desc-font-1();
 				color:$font-grey;
 				
 				line-height: inherit !important;
