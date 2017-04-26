@@ -1,11 +1,11 @@
-<div class="showcase-card" *ngIf="showcase">
+<div class="showcase-card" *ngIf="showcase" (click)="ShowSingleShowcase(showcase.nid)">
   <div class="content-container h-100">
     <div class="card-container">
       <div class="card">
         <div class="showcase-type">
           <p>Showcase</p>
         </div>
-        <h2 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h2>
+        <h2 class="card-title">{{showcase.showcase_name}}</h2>
         <div class="card-description" *ngIf="showcase.description_trim">
           <p [innerHTML]="showcase.description_trim"></p>
         </div>

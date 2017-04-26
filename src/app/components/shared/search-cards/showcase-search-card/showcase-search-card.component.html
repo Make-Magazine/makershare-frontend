@@ -1,4 +1,4 @@
-<div class="showcase-card-backlayer-search">
+<div class="showcase-card-backlayer-search" (click)="ShowSingleShowcase(showcase.nid)">
   <div class="showcase-card-backlayer-search-2 ">
     <div class="showcase-card" *ngIf="showcase">
       <div class="content-container h-100">
@@ -7,7 +7,7 @@
             <div class="showcase-type">
               <p>Showcase</p>
             </div>
-            <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
+            <h3 class="card-title">{{showcase.showcase_name}}</h3>
             <div class="card-description hidden-md-down" *ngIf="showcase.description_trim">
               <p [innerHTML]="showcase.description_trim"></p>
             </div>
