@@ -47,7 +47,7 @@
             <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
             <a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>
             <hr *ngIf="auth.authenticated()">
-            <a class="dropdown-item beta-feedback" *ngIf="auth.authenticated()">
+            <a class="dropdown-item beta-feedback">
               <app-feedback></app-feedback>
             </a>
           </div>

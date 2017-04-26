@@ -1,5 +1,5 @@
 <li>
-  <a (click)="open(content)" class="">Beta Feedback</a>
+  <a (click)="open(content,$event)"  class="">Beta Feedback</a>
 </li>
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="modal-feedback">
@@ -12,7 +12,7 @@
       <div *ngIf="submitted == false">
         <h4 class="modal-title">Give us your feedback</h4>
         <!--<div class=text-right>{{date}}</div>-->
-        <p *ngIf="full_name">Your name: {{full_name}}
+        <p *ngIf="userId && full_name">Your name: {{full_name}}
           </p>
             <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit($event,CurrentType)" novalidate>
               <div class="form-group">
