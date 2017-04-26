@@ -1,10 +1,10 @@
 
 #prev {
-  left: -40px;
+  left: -10px;
 }
 
 #next {
-  right: -40px;
+  right: -10px;
 }
 .arrow{
     position: absolute;
@@ -15,7 +15,4 @@
     font-family: arial,sans-serif; 
     font-weight: bold;
     cursor: pointer;
-}
-#myModalLabel .modal-content{
-  width: 60%;
 }

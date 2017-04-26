@@ -1111,6 +1111,23 @@ body {
 .notifications-container .notification.warning .message {
   color: #333333; }
 
+ngb-typeahead-window.dropdown-menu {
+  width: 90%; }
+
+.typeahead-image-container {
+  width: 50px;
+  margin-right: 5px; }
+
+.typeahead-data-container .fullname, .typeahead-data-container .nickname {
+  margin-bottom: 0; }
+.typeahead-data-container .fullname {
+  height: 30px;
+  font-size: 1.2em;
+  font-weight: bold; }
+.typeahead-data-container .nickname {
+  height: 20px;
+  font-size: 0.8em; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -5605,12 +5622,6 @@ textarea {
   height: auto !important;
   -webkit-line-clamp: inherit !important;
   min-height: 168px; }
-.page-single-showcase .card-title {
-  display: block !important;
-  -webkit-box-orient: inherit !important;
-  -webkit-line-clamp: inherit !important;
-  overflow: inherit !important;
-  height: auto !important; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -6268,7 +6279,6 @@ img {
     .page-create-project-why .team .add-collaborate {
       position: relative;
       background-color: #BDBDBD;
-      overflow: hidden;
       margin: 20px 0;
       padding: 0 15px; }
     .page-create-project-why .team .remove {
@@ -6387,6 +6397,10 @@ img {
     background-color: white;
     color: #4f4f4f;
     border: 1px solid #4f4f4f; }
+
+.form-group.required label::after {
+  content: " *";
+  color: red; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -6854,6 +6868,8 @@ img {
       color: #00AEEF !important; }
     .page-workshop-single .page-workshop-individual .workshop-content .learning-card .pl-3 {
       padding-left: 0rem !important; }
+    .page-workshop-single .page-workshop-individual .workshop-content .learning-card .header-section img {
+      cursor: pointer; }
   .page-workshop-single .page-workshop-individual .workshop-content .object-type {
     color: #828282; }
     .page-workshop-single .page-workshop-individual .workshop-content .object-type p {
@@ -6905,6 +6921,8 @@ img {
       bottom: 10px; }
   .page-workshop-single .page-workshop-individual .list-position {
     padding-top: 32px; }
+    .page-workshop-single .page-workshop-individual .list-position a {
+      word-wrap: break-word; }
   .page-workshop-single .page-workshop-individual .content-list {
     padding: 10px 20px;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -7011,7 +7029,6 @@ img {
       text-transform: capitalize;
       line-height: 120%;
       color: #828282;
-      font-size: 38px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -7067,6 +7084,68 @@ img {
 
 .single-object-page .navigation {
   padding: 10px; }
+.single-object-page .object-title-list {
+  padding-top: 25px; }
+  .single-object-page .object-title-list a:hover {
+    color: deepskyblue; }
+  .single-object-page .object-title-list a:active {
+    color: grey; }
+.single-object-page .button {
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px; }
+.single-object-page .button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+.single-object-page .button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s; }
+.single-object-page .button:hover span {
+  padding-right: 25px; }
+.single-object-page .button:hover span:after {
+  opacity: 1;
+  right: 0; }
+.single-object-page .button-pre {
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px; }
+.single-object-page .button-pre span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+.single-object-page .button-pre span:before {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -65px;
+  transition: 0.5s; }
+.single-object-page .button-pre:hover span {
+  padding-left: 25px; }
+.single-object-page .button-pre:hover span:before {
+  opacity: 1;
+  left: 0; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;
@@ -8141,6 +8220,8 @@ img {
       margin-left: 5px !important; }
 
   .project .maker-name {
-    margin-top: 5px; } }
+    margin-top: 5px; }
+  .project .card-title {
+    width: 190px; } }
 
 /*# sourceMappingURL=style.css.map */
