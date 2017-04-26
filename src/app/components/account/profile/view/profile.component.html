@@ -6,13 +6,21 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
+				<div class="col-12 d-flex flex-column page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+					<div class="nav-portfolio ml-auto">
+						<div class="display-style d-flex">
+							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+							<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+						</div>
+					</div>
+				</div>
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
 					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-center hidden-sm-down display-style">
 						<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
 						</a>
 						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
-							<app-message-modal [uid]="uid"></app-message-modal>
+							<app-message-modal [uid]="uid"></app-message-modal> MESSAGE THIS MAKER
 						</a>
 					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
@@ -114,18 +122,18 @@
 								</div>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div *ngIf="ProfileInfo.bio" class="bio">
+								<div class="bio">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
 									<!--<p class="global-title">Bio</p>-->
-									<div *ngIf="ProfileInfo.bio && CurrentLoggedUserId==uid && auth.authenticated()" class="bio">{{ProfileInfo.bio}}</div>
+									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
 									<div *ngIf="!ProfileInfo.bio && CurrentLoggedUserId == uid && auth.authenticated()" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
-									<hr *ngIf="CurrentLoggedUserId==uid  && auth.authenticated() || ProfileInfo.bio !='' ">
+									<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.bio !='' ">
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
@@ -201,13 +209,21 @@
 								<hr>
 								<div class="how">
 									<!-- Start How -->
+<<<<<<< HEAD
 									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+=======
+									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+>>>>>>> da11a25cef973aeab447892af7357a6ecca0e86d
 									<p class="global-title">How I learned to be a maker</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr>
+<<<<<<< HEAD
 								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+=======
+								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+>>>>>>> da11a25cef973aeab447892af7357a6ecca0e86d
 								<p class="global-title">Interests</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text">{{PlaceholderText.interests}}</p>

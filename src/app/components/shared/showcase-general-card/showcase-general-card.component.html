@@ -22,10 +22,20 @@
                 <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                 <span class="views-count">1129</span>
               </div>
+<<<<<<< HEAD
+=======
+
+              <div class="likes-count-div">
+                <img *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
+                <span class="views-count" *ngIf="numLikes >0">{{numLikes}} </span>
+                <img *ngIf="numLikes == 0" src="./assets/images/icons/light-not-selected.png" alt="">
+                <span class="views-count" *ngIf="numLikes == 0">{{numLikes}}</span>
+              </div>
+>>>>>>> da11a25cef973aeab447892af7357a6ecca0e86d
               <div class="projects-count-div" *ngIf="showcase.number_of_project">
                 <span class="projects-count">{{showcase.number_of_project}}
-                           <span *ngIf="showcase.number_of_project>1">projects</span>
-                <span *ngIf="showcase.number_of_project<=1">project</span>
+                  <span *ngIf="showcase.number_of_project>1">projects</span>
+                  <span *ngIf="showcase.number_of_project<=1">project</span>
                 </span>
               </div>
             </div>
