@@ -681,3 +681,26 @@ body {
         }
     }
 }
+ngb-typeahead-window {
+    &.dropdown-menu {
+        width: 90%;
+    }
+}
+.typeahead-image-container {
+    width: 50px;
+    margin-right: 5px;
+}
+.typeahead-data-container {
+    .fullname, .nickname {
+        margin-bottom: 0;
+    }
+    .fullname {
+        height: 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .nickname {
+        height: 20px;
+        font-size: 0.8em;
+    }
+}
