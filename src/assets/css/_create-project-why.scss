@@ -367,7 +367,7 @@
 		.add-collaborate {
 			position: relative;
 			background-color: $light-grey;
-			overflow: hidden;
+			// overflow: hidden;
 			margin: 20px 0;
 			padding: 0 15px;
 		}
@@ -525,4 +525,10 @@
 				color: #4f4f4f;
 				border: 1px solid #4f4f4f;
     }
+}
+.form-group.required {
+	label::after {
+		content: " *";
+		color: red;
+	}
 }
