@@ -1,6 +1,6 @@
 <div class="region region-content col-sm-8" [formGroup]="YourStoryForm">
   <div class="your-story">
-    <div class="form-group projectName">
+    <div class="form-group required projectName">
       <label for="projectName">Project Name</label>
       <input [ngClass]="{valError: formErrors.title && YourStoryForm.controls.title.touched}" type="text" class="form-control" id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
       <div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
@@ -15,7 +15,7 @@
     <div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
       {{ formErrors.field_teaser }}
     </div>
-    <div class="form-group cover d-flex flex-column">
+    <div class="form-group required cover d-flex flex-column">
       <label class="control-label">Cover photo</label><br>
       <div class="align-items-start">
         <a [ngClass]="{valError: formErrors.field_cover_photo}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
@@ -29,7 +29,7 @@
         {{ formErrors.field_cover_photo }}
       </div>
     </div>
-    <div class="form-group projectCategory d-flex flex-column">
+    <div class="form-group required projectCategory d-flex flex-column">
       <label for="projectCategory" class="">Categories</label>
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4">
@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group project-story">
+    <div class="form-group required project-story">
       <label for="project-story">Story</label>
       <ckeditor #ckeditor [ngClass]="{valError: formErrors.field_story}" rows="5" id="project-story" [config]="CKEditorConfig" formControlName='field_story'></ckeditor>
       <div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">

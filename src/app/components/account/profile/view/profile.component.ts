@@ -123,6 +123,15 @@ export class ProfileComponent implements OnInit {
     started_making: '',
     field_add_your_makerspace_s_: []
   };
+  PlaceholderText = {
+    bio: 'Add your bio',
+    describe_yourself: 'How do you descripe yourself as a maker?',
+    field_social_accounts: 'Where do you create community?',
+    started_making: 'You know .. that one moment that or amazing mentor who guided you along',
+    maker_space: 'What are you makerspaces?',
+    websites:'What are your websites?',
+    interests: 'Add your interests',
+  }
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -205,7 +214,8 @@ export class ProfileComponent implements OnInit {
   }
   OpenModal(Template, ModalName: string) {
     if(ModalName == 'Portfolio Photo'){
-      this.modalService.open(Template, { windowClass: 'edit-cover-modal' });
+      this.modalService.open(Template, { windowClass: 'edit-cover-modal' ,size:'lg'});
+      this.CurrentInfoTab = ModalName;
     }else{
       if(ModalName == 'MakerSpaces'){
         const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];

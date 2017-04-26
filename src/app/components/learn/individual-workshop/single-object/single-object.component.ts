@@ -42,6 +42,8 @@ export class SingleObjectComponent implements OnInit {
         }
       });
       this.ObjectsList = data;
+      console.log(this.ObjectsList);
+
     },err=>{console.log(err)
     },()=>{
       this.GetObjectDetailsById();

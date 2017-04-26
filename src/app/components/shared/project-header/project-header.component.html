@@ -18,17 +18,15 @@
       </div>
       <div class="project-card-footer-3 d-flex justify-content-end">
         <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
-          <!--<li class="project-report"><a href="#" class="btn btn-soft-grey btn-transparent btn-fit">Report this</a></li>-->
           <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
-          <app-like [nodeNid]="project.nid" [user]="userId" [project]="true" (countNumber)="likesCounter($event)"></app-like>
-          <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
-          <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
-          <!--<li><a class="btn btn-soft-grey btn-fit" href="/project/edit/{{project.nid}}">Edit project</a></li>-->
-          <li class="project-likes">
-            <img *ngIf="numLikes" src="./assets/images/icons/light-selected.png" alt="">
-            <span *ngIf="numLikes">{{numLikes}}</span>
-            <img *ngIf="!numLikes" src="./assets/images/icons/light-not-selected.png" alt="">
-            <span *ngIf="!numLikes">{{numLikes}}</span>
+          <li ngbTooltip="{{toolTips.bookmark}}"> 
+            <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-bookmark>
+          </li>
+          <li ngbTooltip="{{toolTips.share}}"> 
+            <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
+          </li>
+          <li ngbTooltip="{{toolTips.like}}"> 
+            <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
           </li>
           <li class="project-views">
             <img src="./assets/images/icons/views.png" alt="">

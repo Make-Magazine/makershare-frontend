@@ -1,15 +1,8 @@
-<li class="project-like" *ngIf="project">
+<li class="project-like" *ngIf="project || showcase">
   <a class="btn btn-soft-grey btn-fit" (click)="likeThis($event)">
-    <span>Like This Idea</span>
     <img *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
     <img *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
-  </a>
-</li>
-
-<li class="project-like" *ngIf="showcase">
-  <a class="btn btn-soft-grey btn-fit" (click)="likeThis($event)">
-    <span>Like This</span>
-    <img *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
-    <img *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+    <span *ngIf="countlikes">{{countlikes}}</span>
+    <span *ngIf="!countlikes">0</span>
   </a>
 </li>

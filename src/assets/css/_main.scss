@@ -58,12 +58,7 @@ h1,h2,h3,h4,h5,h6 {font-family: 'Messina Modern Regular';color: $main-grey;}
 notification-bar {
     z-index: 99999;
 }
-p {
-    word-break: break-all;
-    -webkit-hyphens: auto;
-         -moz-hyphens: auto;
-            hyphens: auto;
-}
+
 body {
     // font-family: 'Messina Sans Regular';
     // color: $main-grey;
@@ -684,5 +679,28 @@ body {
                 color: $shade-7;
             }
         }
+    }
+}
+ngb-typeahead-window {
+    &.dropdown-menu {
+        width: 90%;
+    }
+}
+.typeahead-image-container {
+    width: 50px;
+    margin-right: 5px;
+}
+.typeahead-data-container {
+    .fullname, .nickname {
+        margin-bottom: 0;
+    }
+    .fullname {
+        height: 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .nickname {
+        height: 20px;
+        font-size: 0.8em;
     }
 }
