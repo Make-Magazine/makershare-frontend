@@ -151,18 +151,21 @@ export class FeedbackComponent implements OnInit {
     private router: Router,
     @Inject(DOCUMENT) private document: any,
     private fileService: FileService,
+
   ) {
     this.full_url = this.document.location.href
   }
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
-    this.userService.getUser(this.userId).subscribe(res => {
-      this.profile = res;
-      // console.log(this.profile.full_name);
-      this.full_name=res.full_name
-    }, err => {
-      console.log(err);
-    });
+    if(this.userId){
+      this.userService.getUser(this.userId).subscribe(res => {
+        this.profile = res;
+        // console.log(this.profile.full_name);
+        this.full_name=res.full_name
+      }, err => {
+        console.log(err);
+      });
+    }
     this.deviceInfo();
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     var todayDate = new Date();
@@ -229,7 +232,8 @@ export class FeedbackComponent implements OnInit {
     }
   }
   //open modal
-  open(content) {
+  open(content,e:Event) {
+    if(this.userId){
     this.CurrentType=null;
     this.feedbackForm.reset();
     this.router.events.subscribe((event) => {
@@ -243,6 +247,11 @@ export class FeedbackComponent implements OnInit {
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
+    }else{
+      e.preventDefault();
+      this.router.navigate(['/access-denied']);
+
+    }
   }
   //close modal
   private getDismissReason(reason: any): string {
@@ -472,9 +481,9 @@ export class FeedbackComponent implements OnInit {
     console.log(this.feedback)
     this.onValueChanged();
     if(this.fileArray.length != 0){
-    for (let i = 0; i < this.fileArray.length; i++) {
-      this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
-    }
+      for (let i = 0; i < this.fileArray.length; i++) {
+        this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+      }
     }
     // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
     //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
