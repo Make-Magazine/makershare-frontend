@@ -2738,7 +2738,7 @@ footer {
       color: #DCDCDC; }
   .modal-content .profile-modal .modal-header {
     border-bottom: none !important;
-    padding: 8px; }
+    padding: 14px; }
     .modal-content .profile-modal .modal-header .close:focus, .modal-content .profile-modal .modal-header .close:hover {
       outline: none !important; }
   .modal-content .profile-modal .modal-body {
@@ -4766,10 +4766,10 @@ header.showcase-project .next {
   .feedback-group .comment-body p {
     margin: 0px;
     font-family: "Messina Sans Regular";
-    font-size: 1.3em;
+    font-size: 0.95em;
     font-weight: 400;
     text-transform: none;
-    line-height: 110%;
+    line-height: 100%;
     color: #828282;
     color: #333333;
     line-height: inherit !important; }
@@ -5805,13 +5805,18 @@ img {
           float: left;
           margin-right: 8px;
           min-width: 50px; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .likes-count-div .showcase-likes {
+          width: 12px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .likes-count-div .likes-count {
+          color: #BDBDBD; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
+          width: 20px;
+          height: auto; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
+          color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
-        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {
-          color: #BDBDBD; }
-        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
-          width: 22px;
-          height: auto; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
           padding-right: 10px;
           color: #BDBDBD; }
