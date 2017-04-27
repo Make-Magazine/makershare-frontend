@@ -75,10 +75,7 @@
           </div>
 
         </div>
-        <!-- End col-md-6 -->
-        <!--<div *ngIf="workshop.nid" class="feedback-group">
-          <app-comment [nid]="workshop.nid" [titleform]="title"></app-comment>
-        </div>-->
+      
       </div>
       <!-- End workshop-card -->
     </div>
@@ -91,15 +88,6 @@
         <div class="row">
           <div class="region region-content col-md-10">
             <div class="workshop-content">
-              <!--<div *ngIf="workshop">
-              <div class="intro" id="intro">
-                <h4>Introduction</h4>
-                <div [innerHTML]="workshop?.brief_description"> </div>
-                <div [innerHTML]="workshop?.introductory_video"></div>
-              </div>
-             </div>-->
-              <!-- End of workshop ngIf -->
-
               <div *ngFor="let object of objects; let i=index">
                 <div class="row">
                   <div class="learning-card" *ngIf="object.learning_content_type == 'PDF' ">

@@ -91,7 +91,7 @@
       <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
         id="createMsg" class="form-horizontal">
         <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
-          {{user[0].username}}
+          {{user[0].first_name}} {{user[0].last_name}}
           <i (click)="unSetMember(i)" class="fa fa-lg fa-close close"></i>
           <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
         </div>

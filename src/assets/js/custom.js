@@ -219,6 +219,17 @@ $(window).on('load', function () {
 	//after the content is loaded we reinitialize all the waypoints for the animations
 	makerShare.initAnimationsCheck();
 });
+$(window).scroll(function(){
+  var sticky = $('header'),
+      scroll = $(window).scrollTop();
+
+  if (scroll >= 100) {
+		sticky.addClass('shrink');
+	} 
+  else {
+		sticky.removeClass('shrink');
+	}
+});
 
 $(window).on('scroll', function () {
 	if (window_width > 992) {
