@@ -42,7 +42,7 @@ export class SingleObjectComponent implements OnInit {
         }
       });
       this.ObjectsList = data;
-      console.log(this.ObjectsList);
+      // console.log(this.ObjectsList);
 
     },err=>{console.log(err)
     },()=>{
@@ -53,7 +53,7 @@ export class SingleObjectComponent implements OnInit {
   GetObjectDetailsById(){
     this.viewService.getView('learning-object', [['nid', this.CurrentObjectNid]]).subscribe((LearningObject)=>{
       this.CurrentObject = LearningObject[0];
-       console.log(this.CurrentObject);
+      //  console.log(this.CurrentObject);
     },err=>{console.log(err)
     },()=>{
       this.IsLoading = false;

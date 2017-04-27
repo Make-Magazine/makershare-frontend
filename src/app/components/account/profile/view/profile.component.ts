@@ -316,7 +316,6 @@ export class ProfileComponent implements OnInit {
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(
       (profile: UserProfile) => {
-        console.log(profile)
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
       }, (err) => {
