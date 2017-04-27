@@ -359,6 +359,7 @@
 		}
     .card-container {
         color: $white;
+				height: 100%;
         // font-weight: bold;
         position: relative;
         .challenge-type-bagde {
@@ -487,6 +488,9 @@
 	 .entries {
 		 clear: both;
 	 }  
+	 .challenge-card-status{
+	    line-height: 1em;
+}
 }
 .title-tab{
 	color: $text-color-5;
