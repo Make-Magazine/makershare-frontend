@@ -133,8 +133,8 @@ header.main-header {
     padding: 10px 15px 20px; }
     header.main-header.shrink nav.navbar #MainNav .nav-item a {
       font-size: 1.2em; }
-    header.main-header.shrink nav.navbar #MainNav .nav-item.button-container-main-1 {
-      height: 33px; }
+    header.main-header.shrink nav.navbar #MainNav .nav-item .btn {
+      font-size: 1em; }
 header nav {
   font-size: 14px;
   color: #333333; }
@@ -5136,6 +5136,9 @@ textarea {
     text-align: center;
     color: #BDBDBD; }
 
+.license-report {
+  font-size: 0.8em; }
+
 .page-learn {
   background-color: white;
   padding-bottom: 40px; }
@@ -6124,6 +6127,14 @@ img {
   background-color: #F2F2F2; }
   .page-create-project-why label {
     color: #4f4f4f; }
+  .page-create-project-why .form-control::-webkit-input-placeholder {
+    color: #BDBDBD; }
+  .page-create-project-why .form-control::-moz-input-placeholder {
+    color: #BDBDBD; }
+  .page-create-project-why .form-control::-ms-input-placeholder {
+    color: #BDBDBD; }
+  .page-create-project-why .form-control::-moz-input-placeholder {
+    color: #BDBDBD; }
   .page-create-project-why .words-count {
     font-size: 12px;
     font-weight: bold;
@@ -6134,7 +6145,6 @@ img {
       display: block;
       width: 100%; }
   .page-create-project-why h1, .page-create-project-why h2, .page-create-project-why h3, .page-create-project-why h4, .page-create-project-why h5, .page-create-project-why h6 {
-    font-weight: 700;
     color: #4f4f4f; }
   .page-create-project-why .form-group > input, .page-create-project-why textarea, .page-create-project-why #cke_how-to-make {
     max-width: 100%; }
@@ -6197,7 +6207,7 @@ img {
     .page-create-project-why .nav-create ul {
       overflow: hidden;
       margin-bottom: 0;
-      border-bottom: 1px solid #333333; }
+      border-bottom: 1px solid #BDBDBD; }
       .page-create-project-why .nav-create ul li {
         float: left; }
         .page-create-project-why .nav-create ul li .btn-grey-inverse {
@@ -6215,21 +6225,34 @@ img {
     .page-create-project-why .guideline .content {
       width: 80%; }
       .page-create-project-why .guideline .content p {
-        font-size: 12px;
+        font-family: "Messina Sans SemiBold";
+        font-size: 0.8em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 100%;
+        color: #828282;
+        line-height: 1.4em;
         color: #4f4f4f; }
       .page-create-project-why .guideline .content h4 {
         font-size: 18px;
         font-weight: bold;
         color: #4f4f4f; }
+  .page-create-project-why .small-text {
+    font-size: 0.9em;
+    display: inline-block;
+    margin-top: 3px;
+    margin-left: 5px; }
+  .page-create-project-why .your-story label {
+    font-family: "Messina Modern Regular";
+    font-size: 1.3em;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 120%;
+    color: #828282; }
+  .page-create-project-why .your-story .cover label {
+    display: inline-block; }
   .page-create-project-why .your-story .projectName {
     width: 100%; }
-    .page-create-project-why .your-story .projectName label {
-      font-family: "Messina Modern Regular";
-      font-size: 1.8em;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 115%;
-      color: #828282; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
@@ -6248,7 +6271,12 @@ img {
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
         width: 100% !important;
         margin-bottom: 5px;
-        padding: 5px 10px; }
+        padding: 5px 10px;
+        border: none;
+        border-radius: 0;
+        -moz-box-shadow: 2px 2px 8px #BDBDBD;
+        -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+        box-shadow: 2px 2px 8px #BDBDBD; }
     .page-create-project-why .your-story .projectCategory p.cate-name {
       margin: 3px 0;
       margin-left: 15px; }
@@ -6256,11 +6284,6 @@ img {
       width: 50%; }
   .page-create-project-why .your-story .cate-list {
     padding: 0 30px; }
-  .page-create-project-why .your-story .cover a {
-    margin-top: 5px;
-    width: 40%;
-    margin-right: 10%;
-    font-size: 16px; }
   .page-create-project-why .your-story .cover .image-preview {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
@@ -6452,7 +6475,7 @@ img {
   display: block;
   font-size: 1em;
   font-weight: bold;
-  color: #BDBDBD;
+  color: #828282;
   text-align: center;
   margin-bottom: 0;
   margin-right: 5px;
@@ -6491,23 +6514,26 @@ img {
 .btn-create-tab, a:not([href]):not([tabindex]).btn-create-tab {
   border-radius: 0;
   font-size: 16px;
-  border: 1px solid #BDBDBD;
-  padding: 9px 50px 8px 50px;
+  padding: 9px 30px 8px 30px;
   color: #BDBDBD;
   background-color: inherit; }
   .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
-    background-color: white;
     color: #4f4f4f;
     border: 1px solid #4f4f4f; }
   .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
     cursor: pointer;
-    background-color: white;
     color: #4f4f4f;
-    border: 1px solid #4f4f4f; }
+    border-bottom: 5px solid #00AEEF; }
 
 .form-group.required label::after {
   content: " *";
   color: red; }
+
+.cke_button.cke_button__maximize.cke_button_off {
+  position: absolute;
+  right: 20px; }
+  .cke_button.cke_button__maximize.cke_button_off::after {
+    display: none; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
