@@ -125,7 +125,7 @@ export class ViewComponent implements OnInit {
     })
   }
   onSubmit(e) {
-    this.loaderService.display(true);
+     this.loaderService.display(true);
     e.preventDefault();
     // this.getThreads();
     // this.getCurrentUser();
@@ -145,7 +145,7 @@ export class ViewComponent implements OnInit {
         // }
         // this.messages.push(newComment);
         this.participants = [];
-        this.messages = [];
+        // this.messages = [];
         this.getThreads();
       }, err => { });
     }
@@ -250,7 +250,8 @@ export class ViewComponent implements OnInit {
       this.loaderService.display(false);
     });
     //delete this.messages[i];
-    this.messages = [];
+    // this.messages = [];
+    this.participants = [];
     this.getThreads();
   }
 
