@@ -12,7 +12,6 @@ import { InboxNotificationsComponent } from './inbox-notifications/inbox-notific
 
 const MessagesRouts: Routes = [
   { path : 'inbox-notifications',component: InboxNotificationsComponent,  canActivate: [AuthGuardService]},
-
   // { path: 'inbox',  component:  InboxComponent,  canActivate: [AuthGuardService]},
   { path: 'view/:thread_id', component:  ViewComponent,  canActivate: [AuthGuardService]},
   { path: 'blocked', component:  BlockedUsersComponent,  canActivate: [AuthGuardService]}
