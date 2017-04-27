@@ -7115,6 +7115,16 @@ img {
     color: deepskyblue; }
   .single-object-page .object-title-list a.highlight {
     background-color: #F2F2F2; }
+.single-object-page .hamburger-menu img {
+  width: 50px; }
+.single-object-page .hamburger-menu a.dropdown-toggle::after {
+  content: none; }
+.single-object-page .hamburger-menu a {
+  color: deepskyblue; }
+.single-object-page .hamburger-menu a.highlight {
+  color: #4F4F4F; }
+.single-object-page .nav-title {
+  padding: 20px; }
 .single-object-page .button {
   display: inline-block;
   border-radius: 4px;
