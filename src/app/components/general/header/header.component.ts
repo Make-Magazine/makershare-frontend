@@ -47,4 +47,5 @@ export class HeaderComponent implements OnInit {
   onNotify(event) {
     this.showSearchBox = false;
   }
+
 }
