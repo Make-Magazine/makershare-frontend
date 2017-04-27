@@ -14,6 +14,125 @@
 @font-face {
   font-family: "Messina Modern Bold";
   src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"), url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"), url("../fonts/MessinaModernWeb-Bold.woff") format("woff"), url("../fonts/MessinaModern-Bold.otf") format("opentype"); }
+header.main-header {
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #333333;
+  width: 100%;
+  background-color: #F2F2F2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12; }
+  header.main-header .navbar-brand {
+    width: 120px;
+    padding: 0px;
+    padding-left: 5px;
+    position: relative;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
+    header.main-header .navbar-brand img {
+      max-width: 100%; }
+    header.main-header .navbar-brand span {
+      color: #00AEEF;
+      font-size: 10px;
+      position: absolute;
+      bottom: -17px;
+      right: 15px; }
+  header.main-header .color-text {
+    color: #ED1C24 !important; }
+  header.main-header .login-block {
+    margin-bottom: 0;
+    margin-top: 3px; }
+    header.main-header .login-block li {
+      display: inline-block; }
+      header.main-header .login-block li .btn {
+        padding: 0 10px; }
+      header.main-header .login-block li img {
+        width: 30px;
+        height: 30px; }
+      header.main-header .login-block li.search-icon {
+        width: 20px;
+        margin-left: 15px; }
+      header.main-header .login-block li.hamburger-menu {
+        margin-left: 15px; }
+        header.main-header .login-block li.hamburger-menu a img {
+          width: 40px; }
+        header.main-header .login-block li.hamburger-menu .nav-link {
+          padding: 0; }
+        header.main-header .login-block li.hamburger-menu .dropdown-item {
+          padding: 7px 2.5rem;
+          text-align: left; }
+        header.main-header .login-block li.hamburger-menu .close-hamburger {
+          display: block;
+          text-align: right;
+          margin: 20px 30px; }
+          header.main-header .login-block li.hamburger-menu .close-hamburger img {
+            width: 30px;
+            height: auto; }
+        header.main-header .login-block li.hamburger-menu hr {
+          margin: 0 2.5rem;
+          background-color: #BDBDBD; }
+        header.main-header .login-block li.hamburger-menu .beta-feedback {
+          color: #00AEEF; }
+      header.main-header .login-block li a.nav-linkdropdown-toggle.navbar-left {
+        padding-left: 0;
+        padding-right: 0; }
+      header.main-header .login-block li .notification-icon {
+        position: relative;
+        margin-right: 10px; }
+        header.main-header .login-block li .notification-icon img {
+          width: 32px;
+          height: auto; }
+        header.main-header .login-block li .notification-icon::after {
+          content: '123';
+          text-align: center;
+          font-size: 8px;
+          line-height: 27px;
+          font-weight: bold;
+          color: #fff;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background-color: #333333;
+          position: absolute;
+          right: -6px;
+          bottom: -12px; }
+  header.main-header .logged-in {
+    margin-bottom: 0;
+    margin-top: 5px; }
+    header.main-header .logged-in li {
+      min-width: 36px;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle; }
+      header.main-header .logged-in li a.btn {
+        font-size: 10px;
+        padding: 5px 10px; }
+      header.main-header .logged-in li.mail-icon img {
+        width: 30px; }
+      header.main-header .logged-in li.search-icon img {
+        width: 23px; }
+      header.main-header .logged-in li.min-user-img {
+        margin-left: 10px; }
+        header.main-header .logged-in li.min-user-img img {
+          width: 27px; }
+  header.main-header.shrink .navbar-brand {
+    width: 75px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
+    header.main-header.shrink .navbar-brand span {
+      right: 0; }
+  header.main-header.shrink nav.navbar {
+    padding: 10px 15px 20px; }
+    header.main-header.shrink nav.navbar #MainNav .nav-item a {
+      font-size: 1.2em; }
 header nav {
   font-size: 14px;
   color: #333333; }
@@ -612,6 +731,7 @@ notification-bar {
 
 body {
   margin-top: 113px;
+  min-height: 500px;
   background-color: #F2F2F2;
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
@@ -637,106 +757,6 @@ body {
     margin: 0; }
   .default-header p {
     padding: 0 0 0 95px; }
-
-.main-header {
-  padding: 0 !important;
-  margin: 0 !important;
-  color: #333333;
-  width: 100%;
-  background-color: #F2F2F2;
-  position: relative;
-  z-index: 12; }
-  .main-header .navbar-brand {
-    width: 120px;
-    padding: 0px;
-    padding-left: 5px;
-    position: relative; }
-    .main-header .navbar-brand img {
-      max-width: 100%; }
-    .main-header .navbar-brand span {
-      color: #00AEEF;
-      font-size: 10px;
-      position: absolute;
-      bottom: -17px;
-      right: 15px; }
-  .main-header .color-text {
-    color: #ED1C24 !important; }
-  .main-header .login-block {
-    margin-bottom: 0;
-    margin-top: 3px; }
-    .main-header .login-block li {
-      display: inline-block; }
-      .main-header .login-block li .btn {
-        padding: 0 10px; }
-      .main-header .login-block li img {
-        width: 30px;
-        height: 30px; }
-      .main-header .login-block li.search-icon {
-        width: 20px;
-        margin-left: 15px; }
-      .main-header .login-block li.hamburger-menu {
-        margin-left: 15px; }
-        .main-header .login-block li.hamburger-menu a img {
-          width: 40px; }
-        .main-header .login-block li.hamburger-menu .nav-link {
-          padding: 0; }
-        .main-header .login-block li.hamburger-menu .dropdown-item {
-          padding: 7px 2.5rem;
-          text-align: left; }
-        .main-header .login-block li.hamburger-menu .close-hamburger {
-          display: block;
-          text-align: right;
-          margin: 20px 30px; }
-          .main-header .login-block li.hamburger-menu .close-hamburger img {
-            width: 30px;
-            height: auto; }
-        .main-header .login-block li.hamburger-menu hr {
-          margin: 0 2.5rem;
-          background-color: #BDBDBD; }
-        .main-header .login-block li.hamburger-menu .beta-feedback {
-          color: #00AEEF; }
-      .main-header .login-block li a.nav-linkdropdown-toggle.navbar-left {
-        padding-left: 0;
-        padding-right: 0; }
-      .main-header .login-block li .notification-icon {
-        position: relative;
-        margin-right: 10px; }
-        .main-header .login-block li .notification-icon img {
-          width: 32px;
-          height: auto; }
-        .main-header .login-block li .notification-icon::after {
-          content: '123';
-          text-align: center;
-          font-size: 8px;
-          line-height: 27px;
-          font-weight: bold;
-          color: #fff;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          background-color: #333333;
-          position: absolute;
-          right: -6px;
-          bottom: -12px; }
-  .main-header .logged-in {
-    margin-bottom: 0;
-    margin-top: 5px; }
-    .main-header .logged-in li {
-      min-width: 36px;
-      text-align: center;
-      display: inline-block;
-      vertical-align: middle; }
-      .main-header .logged-in li a.btn {
-        font-size: 10px;
-        padding: 5px 10px; }
-      .main-header .logged-in li.mail-icon img {
-        width: 30px; }
-      .main-header .logged-in li.search-icon img {
-        width: 23px; }
-      .main-header .logged-in li.min-user-img {
-        margin-left: 10px; }
-        .main-header .logged-in li.min-user-img img {
-          width: 27px; }
 
 .msg {
   background-color: #BDBDBD;
@@ -1128,6 +1148,11 @@ ngb-typeahead-window.dropdown-menu {
 .typeahead-data-container .nickname {
   height: 20px;
   font-size: 0.8em; }
+
+.access-denied {
+  background-color: #fff;
+  padding: 60px 0;
+  margin: 0; }
 
 .front {
   background-color: #F2F2F2; }
@@ -3704,7 +3729,8 @@ button:hover {
   margin-bottom: 10px; }
   .challenge-card .card {
     background-color: transparent;
-    border: none; }
+    border: none;
+    height: 100%; }
   .challenge-card .single-challenge {
     padding: 10px; }
     .challenge-card .single-challenge img {
@@ -6763,6 +6789,7 @@ img {
     margin-bottom: 10px; }
   .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
     color: #fff;
+    height: 100%;
     position: relative; }
     .page-challenge-summary .challenge-card .card-container .challenge-type-bagde, .page-challenge-summary-closed .challenge-card .card-container .challenge-type-bagde, .page-enter-challenge .challenge-card .card-container .challenge-type-bagde {
       position: absolute;
@@ -6851,6 +6878,8 @@ img {
   margin-bottom: 16px; }
 .page-challenge-summary .entries {
   clear: both; }
+.page-challenge-summary .challenge-card-status {
+  line-height: 1em; }
 
 .title-tab {
   color: #ED1C24; }
