@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 import { SharedModule } from '../../shared/shared.module';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { InboxNotificationsComponent } from './inbox-notifications/inbox-notifications.component';
 
 
  
@@ -26,10 +28,13 @@ import { DeleteModalComponent } from './delete-modal/delete-modal.component';
     ViewComponent,
     BlockedUsersComponent,
     DeleteModalComponent,
+    NotificationsComponent,
+    InboxNotificationsComponent
 
     ]
 })
 export class MessagesModule { }
 export  {
   InboxComponent,
+  InboxNotificationsComponent
 };

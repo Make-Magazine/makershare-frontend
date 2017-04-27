@@ -1,0 +1,14 @@
+  <div class="page-inbox">
+  <header class="inbox-header container">
+    <ul class="list-unstyled d-flex flex-row align-content-lg-center ">
+      <li><a  (click)="current_active_tab = 'messages'" class="btn btn-grey"  [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
+      <li><a  (click)="current_active_tab = 'notifications'" class="btn btn-grey"  [ngClass]="{'active': current_active_tab == 'notifications' }">Notificatoins</a></li>
+    </ul>
+  </header>
+  <div class="nav-create">
+    <div class="container">
+      <app-inbox *ngIf="current_active_tab == 'messages'" class="row"></app-inbox>
+      <app-notifications *ngIf="current_active_tab == 'notifications'" class="row"></app-notifications>
+    </div>
+  </div>
+  </div>
