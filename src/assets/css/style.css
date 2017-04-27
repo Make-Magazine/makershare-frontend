@@ -6079,22 +6079,17 @@ img {
     .page-create-profile .basic-info input, .page-create-profile .optional-info input {
       margin-top: 10px;
       margin-bottom: 10px; }
-    .page-create-profile .basic-info #userName, .page-create-profile .optional-info #userName, .page-create-profile .basic-info #describe, .page-create-profile .optional-info #describe, .page-create-profile .basic-info #birthday, .page-create-profile .optional-info #birthday, .page-create-profile .basic-info #email, .page-create-profile .optional-info #email {
-      width: 50%;
-      font-size: 15px; }
     .page-create-profile .basic-info #country, .page-create-profile .optional-info #country {
       width: 30%; }
     .page-create-profile .basic-info #state, .page-create-profile .optional-info #state {
       width: 20%; }
-  .page-create-profile .optional-info a.btn {
-    display: inline-block;
-    text-align: center;
-    padding: 6px;
-    background-color: #4f4f4f;
-    color: white;
-    border: 1px solid #444;
-    min-width: 144px;
-    font-size: 16px; }
+  .page-create-profile .optional-info i {
+    font-size: 30px; }
+  .page-create-profile .optional-info span {
+    padding-left: 8px;
+    font-size: 1.2em;
+    position: relative;
+    top: -2px; }
   .page-create-profile .optional-info .social-links li:first-of-type h4 {
     margin-left: 82%;
     font-size: 14px; }
@@ -6121,6 +6116,10 @@ img {
   .page-create-profile .create-cover {
     padding: 14px;
     overflow: hidden; }
+
+.page-create-profile .basic-info .form-group .image-preview, .page-create-profile .optional-info .form-group .image-preview {
+  width: 160px;
+  height: auto; }
 
 .page-create-project-why {
   color: #4F4F4F;

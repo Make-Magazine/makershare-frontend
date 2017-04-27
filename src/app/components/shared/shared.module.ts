@@ -39,12 +39,13 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
+import { MessagesModule } from '../account/messages/messages.module';
+import { SingleNotificationComponent } from './single-notification/single-notification.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
- 
  let config = {
     breakPoints: {
         xs: {max: 575},
@@ -76,6 +77,7 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
   ],
   declarations: [
     CommentComponent,
+    SingleNotificationComponent,
     CommentsComponent,
     CommentFormComponent,
     FollowComponent,
@@ -146,7 +148,8 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
     FileBrowserComponent,
     VideoViewerComponent,
     UserCardMsgsComponent,
-    NotificationPanelComponent
+    NotificationPanelComponent,
+    SingleNotificationComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
