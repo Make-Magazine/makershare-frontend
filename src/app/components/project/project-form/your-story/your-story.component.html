@@ -41,13 +41,13 @@
         </div>
         <div class="col-md-4">
           <select [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
-            (change)="SelectTerm($event.target.value,'child')">
+            (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
             <option disabled selected value > Select Topic </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
             </select>
         </div>
         <br>
-        <div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate col-md-2">add</div>
+        <!--<div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate col-md-2">add</div>-->
       </div>
     </div>
     <div class="d-flex flex-column cate-list row">
