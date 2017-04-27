@@ -10,6 +10,7 @@ export class SharedButtonsComponent implements OnInit {
   @Input() PageTitle;
   @Input() PageDescription;
   @Input() PageImage;
+  CancelTitle = 'Cancel';
 
   constructor(
     private modalService: NgbModal,
@@ -21,6 +22,7 @@ export class SharedButtonsComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content).result.then((result) => {
+      this.CancelTitle = 'Cancel';
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
