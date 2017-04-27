@@ -5,9 +5,30 @@
         <div class="mr-auto ">
           <button class="button-pre" style="vertical-align:middle" *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> <span> Previous </span> </button>
         </div>
-        <div *ngIf="CurrentObject">
-          {{CurrentObject.object_title}}
+
+        <ul class="nav-item dropdown hamburger-menu">
+          <a href="#" class="nav-link dropdown-toggle navbar-left flex-column" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="./assets/images/icons/hamburger.png" alt="">
+            </a>
+            <div class="dropdown-menu " id="makerMenu" aria-labelledby="makerMenu">
+              <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>
+              <div *ngFor="let object of ObjectsList;let i = index">
+                <div *ngIf="object.lesson_name">
+                  <ul class="list-unstyled content-list">
+                    <li class="dropdown-item">
+                      <a (click)="GoToIndex(i)" [ngClass]="{'highlight':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </ul>
+
+        <div *ngIf="CurrentObject" class="nav-title">
+          <div [innerHTML]="CurrentObject.object_title"> </div>
         </div>
+
         <div class="ml-auto">
           <button class="button" style="vertical-align:middle" *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> <span> Next </span> </button>
         </div>
@@ -15,15 +36,7 @@
       <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
     </div>
     <aside class="col-md-3 object-title-list ml-auto">
-      <div *ngFor="let object of ObjectsList;let i = index">
-        <div *ngIf="object.lesson_name">
-          <ul class="list-unstyled content-list">
-            <li>
-              <a (click)="GoToIndex(i)" [ngClass]="{'active':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
-            </li>
-          </ul>
-        </div>
-      </div>
+
     </aside>
   </div>
 </div>

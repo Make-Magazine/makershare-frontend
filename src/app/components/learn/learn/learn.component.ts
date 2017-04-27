@@ -80,3 +80,4 @@ export class LearnComponent implements OnInit {
   /* END FUNCTION loadMoreVisibilty */
 
 }
+
