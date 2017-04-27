@@ -1510,6 +1510,32 @@ footer {
   .slick-track img {
     height: 234px; }
 
+/* User card msg on inbox msg component */
+.user-card-msg .profile-pic-container {
+  position: relative; }
+  .user-card-msg .profile-pic-container .maker-photo {
+    display: block;
+    width: 136px;
+    height: 160px; }
+  .user-card-msg .profile-pic-container .maker-photo-msg {
+    display: block;
+    width: 50px;
+    height: 50px; }
+  .user-card-msg .profile-pic-container a {
+    width: 100%; }
+  .user-card-msg .profile-pic-container .message-btn {
+    padding: 0px; }
+.user-card-msg .media-body p {
+  margin-bottom: 0px; }
+
+/* Notification menue in header */
+.dropdown-notification {
+  width: 330px;
+  height: 360px;
+  overflow-y: auto;
+  max-width: 350px;
+  max-height: 360px; }
+
 /*  Start Styling Homepage   */
 /* End of Showcase */
 .banner {
