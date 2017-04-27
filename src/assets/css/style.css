@@ -3704,7 +3704,8 @@ button:hover {
   margin-bottom: 10px; }
   .challenge-card .card {
     background-color: transparent;
-    border: none; }
+    border: none;
+    height: 100%; }
   .challenge-card .single-challenge {
     padding: 10px; }
     .challenge-card .single-challenge img {
@@ -6763,6 +6764,7 @@ img {
     margin-bottom: 10px; }
   .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
     color: #fff;
+    height: 100%;
     position: relative; }
     .page-challenge-summary .challenge-card .card-container .challenge-type-bagde, .page-challenge-summary-closed .challenge-card .card-container .challenge-type-bagde, .page-enter-challenge .challenge-card .card-container .challenge-type-bagde {
       position: absolute;
@@ -6851,6 +6853,8 @@ img {
   margin-bottom: 16px; }
 .page-challenge-summary .entries {
   clear: both; }
+.page-challenge-summary .challenge-card-status {
+  line-height: 1em; }
 
 .title-tab {
   color: #ED1C24; }
