@@ -1,7 +1,7 @@
 <div *ngIf="checkUserLogin==true">
 <form class="new-comment" [formGroup]="commentForm" (ngSubmit)="onSubmit($event)" id="postComment">
   <label *ngIf="!titlecomment" class="feedback-label">Feedback</label>
-    <label *ngIf="titlecomment" class="feedback-label">{{titlecomment.title}}</label>
+    <label *ngIf="titlecomment" class="feedback-label title-tab">{{titlecomment.title}}</label>
   <div class="comment-body d-flex justify-content-around">
     <textarea name="new-feedback" placeholder="{{titlecomment.placeholder}}" cols="100" rows="6" class="col" formControlName="comment_body"></textarea>
     <button class="send-comment" type="submit">
