@@ -483,4 +483,38 @@ footer {
 
 
 
-
+/* User card msg on inbox msg component */
+  .user-card-msg {
+    .profile-pic-container {
+        position: relative;
+        .maker-photo {
+            display: block;
+            width: 136px;
+            height: 160px;
+        }
+        .maker-photo-msg {
+            display: block;
+            width: 50px;
+            height: 50px;
+        }
+        a {
+            width: 100%;
+        }
+        .message-btn {
+            padding: 0px;
+        }
+    }
+    .media-body {
+        p {
+            margin-bottom: 0px;
+        }
+    }
+  }
+/* Notification menue in header */
+.dropdown-notification{
+    width: 330px;
+    height: 360px;
+    overflow-y: auto;
+    max-width: 350px;
+    max-height: 360px;
+}

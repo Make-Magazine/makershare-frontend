@@ -215,7 +215,7 @@ export class ProfileComponent implements OnInit {
   }
   OpenModal(Template, ModalName: string) {
     if(ModalName == 'Portfolio Photo'){
-      this.modalService.open(Template, { windowClass: 'edit-cover-modal' ,size:'lg'});
+      this.modalService.open(Template, {size:'lg'});
       this.CurrentInfoTab = ModalName;
     }else{
       if(ModalName == 'MakerSpaces'){
@@ -316,7 +316,6 @@ export class ProfileComponent implements OnInit {
   UpdateUser() {
     this.userService.getUser(this.uid).subscribe(
       (profile: UserProfile) => {
-        console.log(profile)
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
       }, (err) => {

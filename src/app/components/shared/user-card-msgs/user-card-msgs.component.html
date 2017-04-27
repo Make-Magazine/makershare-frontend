@@ -1,17 +1,19 @@
-<div class=" profile-container mb-1" *ngIf="card">
-  <!--<div class="card spotlight-item">-->
+<div class="user-card-msg">
+  <div class="profile-container mb-1" *ngIf="card">
+    <!--<div class="card spotlight-item">-->
     <!--<div class="card-block user-card-small align-content-stretch content">-->
-      <div class="media d-flex align-items-stretch">
-        <div class="profile-pic-container flex-column align-self-start">
-          <img *ngIf="!card.photo" src="{{card.default_profile_photo}}" class="img-responsive maker-photo-msg">
-          <img *ngIf="card.photo" src="{{card.photo}}"  class="img-responsive maker-photo-msg">
-        </div>
-        <div class="media-body d-flex align-items-start flex-column pt-2 pl-2">
-          <h5 class="user-name" *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</h5>
-          <h5 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)">{{card.name}}</h5>
-          <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
-        </div>
+    <div class="media d-flex align-items-stretch">
+      <div class="profile-pic-container flex-column align-self-start">
+        <img class="maker-photo-msg" *ngIf="!card.photo" src="{{card.default_profile_photo}}">
+        <img class="maker-photo-msg" *ngIf="card.photo" src="{{card.photo}}">
       </div>
+      <div class="media-body d-flex align-items-start flex-column pl-2">
+        <h5 class="user-name" *ngIf="(card.first_name) && (card.last_name)">{{card.first_name}} {{card.last_name}}</h5>
+        <h5 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)">{{card.name}}</h5>
+        <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
+      </div>
+    </div>
     <!--</div>-->
-  <!--</div>-->
+    <!--</div>-->
+  </div>
 </div>
