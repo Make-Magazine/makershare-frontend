@@ -1,0 +1,36 @@
+<div class="page-inbox">
+  <div class="container inbox-container">
+    <ul class="list-unstyled messages-list">
+      <li class="message-item" *ngFor="let single of notifications">
+        <div *ngIf="single">
+          
+          <div class="wrapper d-flex d-row">
+            <app-single [CurrentObject]="single"></app-single>
+
+            <!--           
+          <div class="message-subject">
+            <a (click)="viewMessage(message.thread_id)">
+              <h4>{{message.subject}}</h4>
+            </a>
+          </div>-->
+            <!--<div class="message-arrow">
+            <i *ngIf="message.reciver" class="fa fa-inbox" aria-hidden="true"></i>
+            <i *ngIf="message.sender" class="fa fa-paper-plane" aria-hidden="true"></i>
+          </div>-->
+            <div class="delete">
+              <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+            </div>
+            <!--<div *ngFor="let block of blocked">
+            <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
+          </div>-->
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngFor="let single-object of notifications">
+  <div *ngIf="single-object">
+    <p *ngIf="single-object.message_id">{{single-object.message_id}}</p>
+  </div>
+</div>

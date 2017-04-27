@@ -94,7 +94,7 @@ export class InboxComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.getStatus();
-    this.loaderService.display(true);
+    // this.loaderService.display(true);
 
     this.getCurrentUser();
     this.getMessages();

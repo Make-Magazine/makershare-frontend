@@ -15,7 +15,9 @@ profile;
   constructor(
     private viewService: ViewService,
     private userService: UserService,
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit() {
     this.userService.isLogedIn().subscribe(data => {
@@ -31,7 +33,7 @@ profile;
       }
         // this.router.events.subscribe((event) => {
         // });
-      });//end else 
+      });
      this.userId = localStorage.getItem('user_id');
      this.viewService.getView('web_notifications', [['uid', this.userId]]).subscribe(data => {
       console.log(data);
