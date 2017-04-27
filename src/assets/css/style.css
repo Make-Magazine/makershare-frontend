@@ -5718,7 +5718,7 @@ textarea {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
     width: auto;
-    overflow: hidden;
+    overflow: initial;
     position: absolute;
     top: -13px;
     left: 10px; }
@@ -8402,5 +8402,9 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+ckeditor #cke_23 {
+  float: right; }
+  ckeditor #cke_23 #cke_24_description::after {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map */
