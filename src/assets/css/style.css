@@ -7156,8 +7156,18 @@ img {
 .page-workshop-individual .workshop-tags ul .btn-border-tag a:not([href]):not([tabindex]).btn-border-tag:hover {
   cursor: inherit !important; }
 
+.single-object-page .object-view-container {
+  min-height: 700px; }
+.single-object-page #bookReader {
+  padding: 8px; }
 .single-object-page .navigation {
-  padding: 10px; }
+  padding: 4px;
+  background-color: #fff;
+  margin-bottom: 24px;
+  min-height: 72px;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
 .single-object-page .object-title-list {
   padding-top: 25px; }
   .single-object-page .object-title-list a {
@@ -7165,23 +7175,40 @@ img {
   .single-object-page .object-title-list a.highlight {
     background-color: #F2F2F2; }
 .single-object-page .hamburger-menu {
+  padding: 0px;
   margin-bottom: 0px; }
   .single-object-page .hamburger-menu img {
     width: 50px; }
   .single-object-page .hamburger-menu a.dropdown-toggle::after {
     content: none; }
   .single-object-page .hamburger-menu a {
-    color: deepskyblue; }
+    color: #00AEEF; }
+    .single-object-page .hamburger-menu a:hover {
+      color: #00AEEF !important; }
   .single-object-page .hamburger-menu a.highlight {
     color: #4F4F4F; }
   .single-object-page .hamburger-menu li {
-    padding-top: 10px 1.5rem; }
+    padding: 12px 22px; }
+  .single-object-page .hamburger-menu .dropdown-menu {
+    margin-top: 12px;
+    border-radius: 0px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
 .single-object-page .nav-item a {
   padding: 0px; }
 .single-object-page .close-hamburger {
   float: right; }
 .single-object-page .nav-title {
-  padding: 20px; }
+  padding: 20px;
+  font-family: "Messina Modern Regular";
+  font-size: 1.3em;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 120%;
+  color: #828282;
+  text-align: center;
+  color: #4F4F4F; }
 .single-object-page .button {
   display: inline-block;
   border-radius: 4px;
@@ -7190,9 +7217,17 @@ img {
   text-align: center;
   font-size: 18px;
   padding: 10px;
+  width: 140px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px; }
+  .single-object-page .button:hover, .single-object-page .button .active, .single-object-page .button :focus {
+    border: none !important;
+    outline: inherit !important; }
+  .single-object-page .button:focus {
+    outline: 0px auto #ED1C24 !important; }
+.single-object-page #sidebar #prev, .single-object-page #sidebar #next {
+  color: #4F4F4F; }
 .single-object-page .button span {
   cursor: pointer;
   display: inline-block;
@@ -7204,12 +7239,19 @@ img {
   opacity: 0;
   top: 0;
   right: -20px;
-  transition: 0.5s; }
+  transition: 0.5s;
+  border: none !important;
+  outline: inherit !important; }
 .single-object-page .button:hover span {
   padding-right: 25px; }
 .single-object-page .button:hover span:after {
   opacity: 1;
-  right: 0; }
+  right: 0;
+  border: none !important;
+  outline: inherit !important; }
+.single-object-page .button span:after:hover, .single-object-page .button span:after .active, .single-object-page .button span:after :focus {
+  border: none !important;
+  outline: inherit !important; }
 .single-object-page .button-pre {
   display: inline-block;
   border-radius: 4px;
@@ -7218,9 +7260,15 @@ img {
   text-align: center;
   font-size: 18px;
   padding: 10px;
+  width: 140px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px; }
+  .single-object-page .button-pre:hover, .single-object-page .button-pre .active, .single-object-page .button-pre :focus {
+    border: none !important;
+    outline: inherit !important; }
+  .single-object-page .button-pre:focus {
+    outline: 0px auto #ED1C24 !important; }
 .single-object-page .button-pre span {
   cursor: pointer;
   display: inline-block;
@@ -7231,13 +7279,20 @@ img {
   position: absolute;
   opacity: 0;
   top: 0;
-  left: -65px;
-  transition: 0.5s; }
+  left: -20px;
+  transition: 0.5s;
+  border: none !important;
+  outline: inherit !important; }
 .single-object-page .button-pre:hover span {
   padding-left: 25px; }
 .single-object-page .button-pre:hover span:before {
   opacity: 1;
-  left: 0; }
+  left: 0;
+  border: none !important;
+  outline: inherit !important; }
+.single-object-page .button-pre span:before:hover, .single-object-page .button-pre span:before .active, .single-object-page .button-pre span:before :focus {
+  border: none !important;
+  outline: inherit !important; }
 
 .page-portfolio .portfolio-controls {
   background-color: cyan;
