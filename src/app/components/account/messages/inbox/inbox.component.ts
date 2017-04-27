@@ -141,18 +141,19 @@ export class InboxComponent implements OnInit {
     })
   }
   onSubmit(e) {
-    this.loaderService.display(true);
     e.preventDefault();
     if (this.messageForm.valid) {
       var str: string = '';
+      var full_name :string = '';
       for (let selectedUsers of this.SelectedUser) {
         str += selectedUsers[0].username + ', ';
+        full_name += selectedUsers[0].first_name + ' ' + selectedUsers[0].last_name + ', ';
       }
       this.messageObj.recipients = str;
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-
+        this.loaderService.display(true);
         // var newMessage = {
         //   user_photo: this.user['user_photo'],
         //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
@@ -165,7 +166,10 @@ export class InboxComponent implements OnInit {
         this.SelectedUser = [];
         this.getMessages();
         this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
-      });
+      }, err => {
+        this.loaderService.display(false);
+        this.notificationBarService.create({ message: 'Your message cannot be delivered ' + full_name + 'is not accepting messages from your account' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });
+  });
 
     }
   }
