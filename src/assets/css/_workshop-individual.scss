@@ -466,9 +466,21 @@
 
  .single-object-page
  {
+	 .object-view-container{
+		 min-height: 700px;
+	 }
+	 #bookReader {
+		 padding: 8px;
+	 }
 	 .navigation
 	 {
-   padding: 10px;
+			padding: 4px;
+			background-color: #fff;
+			margin-bottom: 24px;
+			min-height: 72px;
+			-moz-box-shadow: 2px 2px 8px #BDBDBD;
+			-webkit-box-shadow: 2px 2px 8px #BDBDBD;
+			box-shadow: 2px 2px 8px #BDBDBD;
 	 }
    .object-title-list
 	 		{
@@ -489,7 +501,7 @@
 			 }
 
 			 .hamburger-menu{
-
+					padding: 0px;
 				   margin-bottom: 0px;
 
 				 img{
@@ -499,13 +511,21 @@
                       content: none;
 				 }
 				 	a {
-						color: deepskyblue;
+						color: $text-color-6;
+							&:hover {
+							color: $text-color-6 !important;
+						}
 					}
 				 	a.highlight{
 						color: #4F4F4F;
 					}
 					li {
-						padding-top: 10px 1.5rem;
+						padding: 12px 22px;
+					}
+					.dropdown-menu  {
+						margin-top: 12px;
+						border-radius: 0px;
+						@include boxShadow(2px, 2px ,8px, $shade-3);  
 					}
 	          }
 
@@ -521,23 +541,38 @@
 				  float: right;
 			  }
 			 	 .nav-title
-				 {
-			        padding: 20px;
-				 }
+					{
+						padding: 20px;
+						@include card-header-font-sm ();
+						text-align: center;
+						color: $text-color-1;
+					}
 
 	.button {
   display: inline-block;
   border-radius: 4px;
-  // background-color: #f4511e;
   border: none;
   color: black;
   text-align: center;
   font-size: 18px;
   padding: 10px;
-  // width: 200px;
+	width: 140px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+	&:hover,.active,:focus {
+		border: none !important;
+		outline: inherit !important;
+	}
+		&:focus {
+		outline: 0px auto $red !important;
+	}
+}
+
+#sidebar {
+	#prev, #next {
+			color: $text-color-1;
+	}
 }
 
 .button span {
@@ -554,6 +589,8 @@
   top: 0;
   right: -20px;
   transition: 0.5s;
+	border: none !important;
+	outline: inherit !important;
 }
 
 .button:hover span {
@@ -563,6 +600,15 @@
 .button:hover span:after {
   opacity: 1;
   right: 0;
+	border: none !important;
+	outline: inherit !important;
+}
+
+.button span:after {
+		&:hover,.active,:focus {
+		border: none !important;
+		outline: inherit !important;
+	}
 }
 
 //pre button
@@ -570,16 +616,22 @@
 	.button-pre {
   display: inline-block;
   border-radius: 4px;
-  // background-color: #f4511e;
   border: none;
   color: black;
   text-align: center;
   font-size: 18px;
   padding: 10px;
-  // width: 200px;
+  width: 140px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+		&:hover,.active,:focus {
+		border: none !important;
+		outline: inherit !important;
+	}
+	&:focus {
+		outline: 0px auto $red !important;
+	}
 }
 
 .button-pre span {
@@ -595,8 +647,10 @@
   position: absolute;
   opacity: 0;
   top: 0;
-  left: -65px;
+  left: -20px;
   transition: 0.5s;
+	border: none !important;
+	outline: inherit !important;
 }
 
 .button-pre:hover span {
@@ -607,6 +661,14 @@
 .button-pre:hover span:before {
   opacity: 1;
   left: 0;
+	border: none !important;
+	outline: inherit !important;
+}
+.button-pre span:before {
+		&:hover,.active,:focus {
+		border: none !important;
+		outline: inherit !important;
+	}
 }
 
  }

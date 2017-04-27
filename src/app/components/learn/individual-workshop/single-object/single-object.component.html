@@ -12,7 +12,7 @@
             <img src="./assets/images/icons/hamburger.png" alt="">
           </a>
           <div class="dropdown-menu " id="makerMenu" aria-labelledby="makerMenu">
-            <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>
+            <!--<a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>-->
             <ul class="list-unstyled content-list">
               <li class="dropdown-item" *ngFor="let object of ObjectsList;let i = index" (click)="GoToIndex(i)">
                 <a *ngIf="object.lesson_name" [ngClass]="{'highlight':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
@@ -29,7 +29,9 @@
           <button class="button" style="vertical-align:middle" *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> <span> Next </span> </button>
         </div>
       </div>
+      <div class="object-view-container">
       <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
+      </div>
     </div>
     <aside class="col-md-3 object-title-list ml-auto">
 
