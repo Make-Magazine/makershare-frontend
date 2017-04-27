@@ -96,7 +96,7 @@
           <div class="region region-content col-sm-12 row">
             <div class="tabs-buttons col-md-4">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
                     (click)="changeChallangeTab('discussion',$event)">Questions</a></li>
