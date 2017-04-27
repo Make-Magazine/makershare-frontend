@@ -118,8 +118,8 @@
 						margin-top: 2px;
 					}
 					.active {
-					///	color: $light-grey;
-					    color: $text-color-5;
+						color: $light-grey;
+					//    color: $text-color-5;
 						.badge {
 							background-color: $white;
 							color: $main-grey;
@@ -359,6 +359,7 @@
 		}
     .card-container {
         color: $white;
+				height: 100%;
         // font-weight: bold;
         position: relative;
         .challenge-type-bagde {
@@ -487,4 +488,10 @@
 	 .entries {
 		 clear: both;
 	 }  
+	 .challenge-card-status{
+	    line-height: 1em;
+}
+}
+.title-tab{
+	color: $text-color-5;
 }
