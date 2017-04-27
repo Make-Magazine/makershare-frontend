@@ -5,11 +5,9 @@
         <div class="mr-auto ">
           <button class="button-pre" style="vertical-align:middle" *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> <span> Previous </span> </button>
         </div>
-        <!--<div *ngFor="let title of ObjectsList">
-          <div *ngIf="CurrentObject.object_title == title.object_title">
-            <a [innerHTML]="CurrentObject.object_title"></a>
-          </div>
-        </div>-->
+        <div *ngIf="CurrentObject">
+          {{CurrentObject.object_title}}
+        </div>
         <div class="ml-auto">
           <button class="button" style="vertical-align:middle" *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> <span> Next </span> </button>
         </div>
@@ -17,31 +15,15 @@
       <app-object-view *ngIf="CurrentObject" [CurrentObject]="CurrentObject"></app-object-view>
     </div>
     <aside class="col-md-3 object-title-list ml-auto">
-      <div *ngFor="let object of ObjectsList">
+      <div *ngFor="let object of ObjectsList;let i = index">
         <div *ngIf="object.lesson_name">
           <ul class="list-unstyled content-list">
             <li>
-              <a [innerHTML]="object.lesson_name"></a>
+              <a (click)="GoToIndex(i)" [ngClass]="{'active':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
             </li>
           </ul>
         </div>
       </div>
     </aside>
-
-       <!--<aside class="col-md-3 object-title-list ml-auto">
-      <div *ngFor="let object of ObjectsList">
-        <div *ngIf="object.object_title">
-          <ul class="list-unstyled content-list">
-            <li *ngIf="object.object_title != CurrentObject.object_title">
-              <a [innerHTML]="object.object_title"></a>
-            </li>
-            <li *ngIf="CurrentObject.object_title == object.object_title">
-             <mark [innerHTML]="CurrentObject.object_title"> </mark>
-           </li>
-          </ul>
-         </div>
-      </div>
-    </aside>-->
-
   </div>
 </div>
