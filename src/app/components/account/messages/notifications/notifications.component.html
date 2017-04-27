@@ -5,6 +5,7 @@
         <div *ngIf="single">
           
           <div class="wrapper d-flex d-row">
+            <input type="checkbox" value="{{single.message_id}}"/>
             <app-single [CurrentObject]="single"></app-single>
 
             <!--           

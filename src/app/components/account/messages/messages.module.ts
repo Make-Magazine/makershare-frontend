@@ -10,7 +10,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { InboxNotificationsComponent } from './inbox-notifications/inbox-notifications.component';
-import { SingleNotificationComponent } from './notifications/single-notification/single-notification.component';
 
 
  
@@ -30,13 +29,12 @@ import { SingleNotificationComponent } from './notifications/single-notification
     BlockedUsersComponent,
     DeleteModalComponent,
     NotificationsComponent,
-    InboxNotificationsComponent,
-    SingleNotificationComponent,
+    InboxNotificationsComponent
 
     ]
 })
 export class MessagesModule { }
 export  {
   InboxComponent,
-  InboxNotificationsComponent,
+  InboxNotificationsComponent
 };

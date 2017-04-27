@@ -1,4 +1,4 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { UserService } from '../../../../d7services/user/user.service';
 @Component({
@@ -14,7 +14,9 @@ notifications;
   constructor(
     private viewService: ViewService,
     private userService: UserService,
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit() {
     this.getNotifications();
@@ -23,7 +25,7 @@ notifications;
    this.userService.isLogedIn().subscribe(data => {
       if (data ){
          this.userId = localStorage.getItem('user_id');
-         this.viewService.getView('web_notifications', [['uid', this.userId]]).subscribe(data => {
+         this.viewService.getView('view_all_notifications', [['uid', this.userId]]).subscribe(data => {
             this.notifications=data;
             console.log(this.notifications);
           }, err => {
