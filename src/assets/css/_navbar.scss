@@ -1,10 +1,178 @@
 header {
+    &.main-header {
+        padding: 0 !important;
+        margin: 0!important;
+        color: $main-grey;
+        width: 100%;
+        background-color: $main-bg;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 12;
+        .navbar-brand {
+            width: 120px;
+            padding: 0px;
+            padding-left: 5px;
+            position: relative;
+            @include transition(0.5s);
+            img {
+                max-width: 100%;
+            }
+            span {
+                color: $blue;
+                font-size: 10px;
+                position: absolute;
+                bottom: -17px;
+                right: 15px;
+            }
+        }
+        .color-text {
+            color: $main-button-1 !important;
+        }
+        .login-block {
+            margin-bottom: 0;
+            margin-top: 3px;
+            li {
+                display: inline-block;
+                .btn {
+                    padding:0 10px;
+                }
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+                &.search-icon {
+                    width: 20px;
+                    margin-left: 15px;                
+                    
+                }
+                &.hamburger-menu {
+                margin-left: 15px;                
+                a img {
+                        width: 40px;                
+
+                    }
+                    .nav-link {
+                        padding: 0;
+                    }
+                    .dropdown-item {
+                        padding: 7px 2.5rem;
+                        text-align: left;
+                    }
+                    .close-hamburger {
+                        display: block;
+                        text-align: right;
+                        margin: 20px 30px;
+                        img {
+                            width: 30px;
+                            height: auto;
+                        }
+                    }
+                    hr {
+                        margin: 0 2.5rem;
+                        background-color: $light-grey;
+                    }
+                    .beta-feedback {
+                        color: $blue;
+                    }
+                    
+                }
+                a.nav-linkdropdown-toggle.navbar-left{
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                .notification-icon {
+                    position: relative;
+                    margin-right: 10px;
+                    img {
+                        width: 32px;
+                        height: auto;
+                    }
+                    &::after {
+                        content: '123';
+                        text-align: center;
+                        font-size: 8px;
+                        line-height: 27px;
+                        font-weight: bold;
+                        color: $white;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        background-color: $main-grey;
+                        position: absolute;
+                        right: -6px;
+                        bottom: -12px;
+                    }
+
+                }
+            }
+            // .login-div {
+            //     background-color: transparent;
+            //     display: flex;
+            //     font-size: 10px;
+            //     text-align: center;
+            //     padding: 10px 5px;
+            //     border: 1px solid #000;
+            // }
+        }
+        .logged-in {
+            margin-bottom: 0;
+            margin-top: 5px;
+            li {
+                min-width: 36px;
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+                a.btn {
+                    font-size: 10px;
+                    padding: 5px 10px;
+                    
+                }
+                &.mail-icon {
+                    img {
+                        width: 30px;
+                    }
+                }
+                &.search-icon {
+                    img {
+                        width: 23px;
+                    }
+                }
+                &.min-user-img {
+                    margin-left: 10px;
+                    img {
+                        width: 27px;
+                    }
+                }
+            }
+        }
+        
+        &.shrink {
+            .navbar-brand {
+                width: 75px;
+                @include transition(0.5s);
+                span {
+                    right: 0;
+                }
+            }
+            nav.navbar {
+                padding: 10px 15px 20px;
+                #MainNav {
+                    .nav-item {
+                        a {
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
     nav {  
         font-size: 14px;
         color: $main-grey;
         &.navbar {
             background-color: $main-bg;
-            position: relative;
+            // position: relative;
             z-index: 1;
             padding: 20px 15px;
         }
@@ -90,3 +258,4 @@ header {
     
     }
 }
+

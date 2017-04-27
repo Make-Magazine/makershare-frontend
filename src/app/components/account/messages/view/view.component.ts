@@ -87,12 +87,6 @@ export class ViewComponent implements OnInit {
           var date = new Date(message.timestamp*1000);
           var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
           var period = date.getHours() >= 12 ? 'PM' : 'AM';
-
-          // var date = new Date(message.timestamp*1000);
-          // var hours = date.getHours();
-          // var minutes = "0" + date.getMinutes();
-          // var formattedTime = hours + ':' + minutes.substr(-2);
-          // console.log(formattedTime);
           let i = 0
           this.userService.getUser(message.author).subscribe(res => {
             Object.assign(message, res);
@@ -114,7 +108,8 @@ export class ViewComponent implements OnInit {
             } else if (message.timestamp > 2880 && message.timestamp < 10080) {
               message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'days ago';
             } else if (message.timestamp > 10080) {
-              message.timestamp = this.dateObj.toLocaleDateString();
+              //message.timestamp = this.dateObj.toLocaleDateString();
+              message.timestamp = message.date_format;
             }
           })
           i++
@@ -130,7 +125,7 @@ export class ViewComponent implements OnInit {
     })
   }
   onSubmit(e) {
-    this.loaderService.display(true);
+     this.loaderService.display(true);
     e.preventDefault();
     // this.getThreads();
     // this.getCurrentUser();
@@ -150,7 +145,7 @@ export class ViewComponent implements OnInit {
         // }
         // this.messages.push(newComment);
         this.participants = [];
-        this.messages = [];
+        // this.messages = [];
         this.getThreads();
       }, err => { });
     }
@@ -255,7 +250,8 @@ export class ViewComponent implements OnInit {
       this.loaderService.display(false);
     });
     //delete this.messages[i];
-    this.messages = [];
+    // this.messages = [];
+    this.participants = [];
     this.getThreads();
   }
 
