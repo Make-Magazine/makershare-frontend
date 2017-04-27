@@ -133,6 +133,8 @@ header.main-header {
     padding: 10px 15px 20px; }
     header.main-header.shrink nav.navbar #MainNav .nav-item a {
       font-size: 1.2em; }
+    header.main-header.shrink nav.navbar #MainNav .nav-item.button-container-main-1 {
+      height: 33px; }
 header nav {
   font-size: 14px;
   color: #333333; }
@@ -1561,6 +1563,9 @@ footer {
   overflow-y: auto;
   max-width: 350px;
   max-height: 360px; }
+
+.bookmark-page .content-wrapper {
+  min-height: 250px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
