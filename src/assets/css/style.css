@@ -7111,10 +7111,10 @@ img {
   padding: 10px; }
 .single-object-page .object-title-list {
   padding-top: 25px; }
-  .single-object-page .object-title-list a:hover {
+  .single-object-page .object-title-list a {
     color: deepskyblue; }
-  .single-object-page .object-title-list a:active {
-    color: grey; }
+  .single-object-page .object-title-list a.highlight {
+    background-color: #F2F2F2; }
 .single-object-page .button {
   display: inline-block;
   border-radius: 4px;

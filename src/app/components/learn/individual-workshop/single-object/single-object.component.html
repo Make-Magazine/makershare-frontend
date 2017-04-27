@@ -6,7 +6,7 @@
           <button class="button-pre" style="vertical-align:middle" *ngIf="CurrentObjectIndex != 0" (click)="GoToIndex(CurrentObjectIndex-1)"> <span> Previous </span> </button>
         </div>
         <div *ngIf="CurrentObject">
-          {{CurrentObject.object_title}}
+          <div [innerHTML] = "CurrentObject.object_title"> </div>
         </div>
         <div class="ml-auto">
           <button class="button" style="vertical-align:middle" *ngIf="CurrentObjectIndex != ObjectsList.length-1" (click)="GoToIndex(CurrentObjectIndex+1)"> <span> Next </span> </button>
@@ -19,7 +19,7 @@
         <div *ngIf="object.lesson_name">
           <ul class="list-unstyled content-list">
             <li>
-              <a (click)="GoToIndex(i)" [ngClass]="{'active':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
+              <a (click)="GoToIndex(i)" [ngClass]="{'highlight':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
             </li>
           </ul>
         </div>
