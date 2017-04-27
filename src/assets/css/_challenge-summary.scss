@@ -118,7 +118,8 @@
 						margin-top: 2px;
 					}
 					.active {
-						color: $light-grey;
+					///	color: $light-grey;
+					    color: $text-color-5;
 						.badge {
 							background-color: $white;
 							color: $main-grey;
