@@ -8251,5 +8251,9 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+ckeditor #cke_23 {
+  float: right; }
+  ckeditor #cke_23 #cke_24_description::after {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map */
