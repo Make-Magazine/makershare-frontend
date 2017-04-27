@@ -1,3 +1,5 @@
+  <p *ngIf="awards" class="title-tab"> Awards &amp; Prizes</p>
+
 <div *ngFor="let award of awards;let i = index;">
   <div class="col-lg-10 challenge-award" *ngIf="award">
     <div class="media">
@@ -6,10 +8,11 @@
         <img class="" *ngIf="!award.photo" src="http://placehold.it/120x120" alt="{{award.award_name}}">
       </div>
       <div class="media-body">
-        <h5 class="mt-0 name" *ngIf="award.award_name">{{award.award_name}}</h5>
+        <h5 class="mt-0 name" *ngIf="award.award_name && award.number_winners">{{award.award_name}} ({{award.number_winners}})</h5>
         <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
         <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>    
       </div>
     </div>
   </div>
+  <hr>
 </div>
