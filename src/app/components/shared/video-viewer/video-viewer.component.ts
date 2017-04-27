@@ -24,7 +24,7 @@ export class VideoViewerComponent implements OnInit {
     if(this.link.indexOf('youtube') != -1){
       this.type = 'youtube';
       this.VideoId = this.youtube_parser(this.link);
-      let html = '<iframe src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" style="width:100%; height:270px;"></iframe>';
+      let html = '<iframe src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" style="width:100%; height:auto;"></iframe>';
       this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(html);
     }else if(this.link.indexOf('vimeo') != -1){
       this.type = 'vimeo';
