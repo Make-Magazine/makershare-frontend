@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.userService.getAnonymousToken().subscribe(data => {});
     // loader for routing
     this.loaderService.status.subscribe((val: boolean) => {
