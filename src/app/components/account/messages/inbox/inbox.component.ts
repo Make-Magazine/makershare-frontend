@@ -273,7 +273,6 @@ export class InboxComponent implements OnInit {
           })
 
           msg_arr.push(this.messages[key]);
-
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
           msg_arr[i].last_updated = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
@@ -292,7 +291,8 @@ export class InboxComponent implements OnInit {
           } else if (msg_arr[i].last_updated > 2880 && msg_arr[i].last_updated < 10080) {
             msg_arr[i].last_updated = Math.floor(msg_arr[i].last_updated / (24 * 60)) + ' ' + 'days ago';
           } else if (msg_arr[i].last_updated > 10080) {
-            msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
+            // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
+            msg_arr[i].last_updated = msg_arr[i].date_format;
           }
         //  if(Object.keys(msg_arr[i].participants).length > 2){
             msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
@@ -301,7 +301,7 @@ export class InboxComponent implements OnInit {
         }
       }
       
-      this.msg = this.msg.concat(msg_arr);      
+      this.msg = this.msg.concat(msg_arr);     
       this.loaderService.display(false);
       this.loadMoreVisibilty();
     })
