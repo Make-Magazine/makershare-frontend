@@ -33,6 +33,7 @@ export class FeedbackComponent implements OnInit {
   field_upload_screenshots: FileEntity
   NID = false;
   full_name;
+  checkUserLogin;
   formErrors = {
     'field_want_submit': '',
     'field_bug_not_in_page_': '',
@@ -140,7 +141,6 @@ export class FeedbackComponent implements OnInit {
     }
 
     // field_browser:und[0].value
-
   }
   constructor(
     private modalService: NgbModal,
@@ -233,25 +233,30 @@ export class FeedbackComponent implements OnInit {
   }
   //open modal
   open(content,e:Event) {
-    if(this.userId){
-    this.CurrentType=null;
-    this.feedbackForm.reset();
-    this.router.events.subscribe((event) => {
-      this.full_url = this.document.location.href;
-    });
-    this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
-    this.feedbackForm.controls['field_os'].setValue(navigator.platform);
-    this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
+
+      this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) { 
+          e.preventDefault();
+          this.router.navigate(['/access-denied']);
+      } else {
+        this.CurrentType=null;
+        this.feedbackForm.reset();
+        this.router.events.subscribe((event) => {
+          this.full_url = this.document.location.href;
+        });
+      this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
+      this.feedbackForm.controls['field_os'].setValue(navigator.platform);
+      this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
-    }else{
-      e.preventDefault();
-      this.router.navigate(['/access-denied']);
-
-    }
+      
+      }//end else 
+    });//end userservice isLogedIn
+   
   }
   //close modal
   private getDismissReason(reason: any): string {
