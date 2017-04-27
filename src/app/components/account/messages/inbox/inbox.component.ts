@@ -21,15 +21,11 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 export class InboxComponent implements OnInit {
 
   formatter = (x) => {
-    if(x.value){
-      return x.value;
-    }
-    return x;
+    return '';
   };
 
   @ViewChild('myInput')
-  count
-  myInputVariable: any;
+  count; 
   searchValue: string = '';
   closeResult: string;
   currentuser;
@@ -129,11 +125,10 @@ export class InboxComponent implements OnInit {
   * selct users to send message
   */
   SetMember(uid, i) {
-    //this.hideUser = false;
+    // this.hideUser = false;
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
-      this.SelectedUser.push(data);
-      this.messageForm.reset();
-      this.myInputVariable.nativeElement.value = "";
+       this.SelectedUser.push(data);
+       this.messageForm.reset();
     });
   }
   unSetMember(i) {
