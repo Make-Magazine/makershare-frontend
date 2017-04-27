@@ -30,7 +30,7 @@ export class FileBrowserComponent implements OnInit {
   }
 
   LoadMore(){
-    let files = this.fileManageService.files.slice(this.files.length, this.files.length+10);
+    let files = this.fileManageService.files.slice(this.files.length, this.files.length+24);
     this.files = this.files.concat(files);
   }
 }
