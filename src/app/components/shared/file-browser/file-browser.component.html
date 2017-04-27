@@ -1,15 +1,17 @@
-<div *ngIf="fileManageService" class="conitaner upload-pic-container">
-  <div *ngIf="fileManageService.files" class="row">
-    <div *ngFor="let file of files" class="col-md-2 mb-4">
-      <div class="image-container" *ngIf="file.type == 'image'">
-        <img *ngIf="file.thumbnail" [src]="file.thumbnail">
-        <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
-        <button class="upload-select" (click)="emitter.emit(file)"> select </button>
+<div class=" edit-cover-modal">
+  <div *ngIf="fileManageService" class="container upload-pic-container">
+    <div *ngIf="fileManageService.files" class="row  scroll-container">
+      <div *ngFor="let file of files" class="col-md-3 mb-4">
+        <div class="image-container" *ngIf="file.type == 'image'">
+          <img *ngIf="file.thumbnail" [src]="file.thumbnail">
+          <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
+          <button class="upload-select" (click)="emitter.emit(file)"> select </button>
+        </div>
+      </div>
+      <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
+      <div class="upload-pic-footer col-md-12 col-sx-12" *ngIf="fileManageService.files">
+        <button class="btn btn-load-more m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
       </div>
     </div>
-    <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
-  </div>
-  <div class="upload-pic-footer" *ngIf="fileManageService.files">
-    <button class="btn btn-load-more m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
   </div>
 </div>
