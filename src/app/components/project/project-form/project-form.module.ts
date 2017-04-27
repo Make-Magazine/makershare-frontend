@@ -14,6 +14,7 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
 import { Ng2FileDropModule } from 'ng2-file-drop';
 import { PendingChangesGuard } from './pending-changes.guard';
+import { EntityReferenceNoNid } from '../../../pipes/EntityReferenceWithoutNid';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PendingChangesGuard } from './pending-changes.guard';
     YourStoryComponent,
     HowToComponent,
     TeamComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    EntityReferenceNoNid
   ],
   providers:[PendingChangesGuard]
 })
