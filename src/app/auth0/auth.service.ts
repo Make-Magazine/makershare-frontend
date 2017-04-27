@@ -71,9 +71,10 @@ export class Auth implements OnInit {
               //localStorage.setItem('user_photo', res.user_photo);
 
               // first time - redirection to profile edit page
-              if(profile.app_metadata.first_time){
+              
+              if(res.first_time == true){
+                
                 this.router.navigate(['/account/editprofile']);  
-                  
               }               
 
               if(authResult.state != ''){

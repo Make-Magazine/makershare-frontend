@@ -38,7 +38,6 @@ export class ShowcaseGeneralCardComponent implements OnInit {
       } else {
         this.numLikes = 0;
       }
-      console.log(this.numLikes);
 
     })
   }

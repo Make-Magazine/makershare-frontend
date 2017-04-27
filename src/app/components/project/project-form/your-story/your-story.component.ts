@@ -21,7 +21,6 @@ declare var CKEDITOR:any;
   providers: [NgbTooltipConfig],
 })
 export class YourStoryComponent implements OnInit,AfterViewInit {
-  FileUploadObserver;
   @ViewChild('ckeditor') ckeditor:any;
   ngAfterViewInit() {
     this.ckeditor.instance.on('fileUploadRequest', (event) => {
@@ -81,7 +80,6 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     });
   }
   CKEditorConfig = {
-    extraPlugins: 'divarea,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser',
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
     imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
     filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
@@ -98,6 +96,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    */
   @Input('project') project: ProjectForm;
   @Input('FormPrintableValues') FormPrintableValues;
+  @Output() CanNavigate = new EventEmitter();
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
@@ -188,6 +187,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_teaser': [this.project.field_teaser.und[0].value, Validators.maxLength(250)],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
+      'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
       'field_uh_oh_moment': [this.project.field_uh_oh_moment.und[0].value, []],
       'field_story': [this.project.field_story.und[0].value, [Validators.required]],
@@ -195,6 +195,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
+      if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
+        this.CanNavigate.emit(false);
+      }
       this.onValueChanged(data);
       this.emitter.emit(this.tags);
     });
@@ -202,7 +205,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     for (let index in this.YourStoryForm.controls) {
       const control = this.YourStoryForm.controls[index];
       control.valueChanges.subscribe(value => {
-        if (NodeHelper.isEmpty(value) || !control.valid) {
+        if (value != 0 && value != 1 && (NodeHelper.isEmpty(value) || !control.valid)) {
           this.SetControlValue('', index);
         } else {
           this.SetControlValue(value, index);
