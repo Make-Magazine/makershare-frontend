@@ -19,7 +19,6 @@ header nav {
   color: #333333; }
   header nav.navbar {
     background-color: #F2F2F2;
-    position: relative;
     z-index: 1;
     padding: 20px 15px; }
   header nav .collapse.navbar-collapse {
@@ -612,6 +611,8 @@ notification-bar {
   z-index: 99999; }
 
 body {
+  margin-top: 113px;
+  background-color: #F2F2F2;
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
   -moz-transition: all 1.25s ease-in-out;
