@@ -21,15 +21,11 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 export class InboxComponent implements OnInit {
 
   formatter = (x) => {
-    if(x.value){
-      return x.value;
-    }
-    return x;
+    return '';
   };
 
   @ViewChild('myInput')
-  count
-  myInputVariable: any;
+  count; 
   searchValue: string = '';
   closeResult: string;
   currentuser;
@@ -129,11 +125,10 @@ export class InboxComponent implements OnInit {
   * selct users to send message
   */
   SetMember(uid, i) {
-    //this.hideUser = false;
+    // this.hideUser = false;
     this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
-      this.SelectedUser.push(data);
-      this.messageForm.reset();
-      this.myInputVariable.nativeElement.value = "";
+       this.SelectedUser.push(data);
+       this.messageForm.reset();
     });
   }
   unSetMember(i) {
@@ -146,18 +141,19 @@ export class InboxComponent implements OnInit {
     })
   }
   onSubmit(e) {
-    this.loaderService.display(true);
     e.preventDefault();
     if (this.messageForm.valid) {
       var str: string = '';
+      var full_name :string = '';
       for (let selectedUsers of this.SelectedUser) {
         str += selectedUsers[0].username + ', ';
+        full_name += selectedUsers[0].first_name + ' ' + selectedUsers[0].last_name + ', ';
       }
       this.messageObj.recipients = str;
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-
+        this.loaderService.display(true);
         // var newMessage = {
         //   user_photo: this.user['user_photo'],
         //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
@@ -170,7 +166,10 @@ export class InboxComponent implements OnInit {
         this.SelectedUser = [];
         this.getMessages();
         this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
-      });
+      }, err => {
+        this.loaderService.display(false);
+        this.notificationBarService.create({ message: 'Your message cannot be delivered ' + full_name + 'is not accepting messages from your account' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });
+  });
 
     }
   }

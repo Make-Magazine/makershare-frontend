@@ -5,8 +5,7 @@ import { UserService } from '../../../d7services/user/user.service';
 
 @Component({
   selector: 'app-notification-panel',
-  templateUrl: './notification-panel.component.html',
-  styleUrls: ['./notification-panel.component.css']
+  templateUrl: './notification-panel.component.html'
 })
 export class NotificationPanelComponent implements OnInit {
 Notifications;
@@ -36,7 +35,7 @@ profile;
       });
      this.userId = localStorage.getItem('user_id');
      this.viewService.getView('web_notifications', [['uid', this.userId]]).subscribe(data => {
-      console.log(data);
+      //console.log(data);
     }, err => {
       console.log(err);
     });

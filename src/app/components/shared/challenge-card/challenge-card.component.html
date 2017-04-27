@@ -48,11 +48,15 @@
               </span>
             </div>
             <div class="challenge-card-status">
-              <span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
+              <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
               <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
               <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
-              <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date.value | date:'MM/dd/yyyy'}}  </span>
+              <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>-->
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> <br>Submissions close: {{challenge.challenge_end_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> <br>In review. Winners to be announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 376"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+               
             </div>
           </div>
         </div>
@@ -119,9 +123,14 @@
             <div class="challenge-card-status">
               <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>-->
               <!--<span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>-->
-              <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
+              <!--<span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>-->
               <!--<div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>-->
-              <span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close <br> {{challenge.challenge_end_date.value | date:'MM/dd/yyyy'}}</span>
+              <!--<span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close <br> {{challenge.challenge_end_date.value | date:'MM/dd/yyyy'}}</span>-->
+                <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> <br>Submissions close: {{challenge.challenge_end_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> <br>In review. Winners to be announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 376"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+               
             </div>
           </div>
         </div>
@@ -162,11 +171,17 @@
             </span>
           </div>
           <div class="challenge-card-status">
-            <span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
+            <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>
             <span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>
             <span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>
             <span class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</span>
             <span class="challenge-end-date" *ngIf="challenge.status_id != 376">{{challenge.challenge_end_date.value | date:'MM/dd/yyyy'}}  </span>
+        -->
+            <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> <br>Submissions close: {{challenge.challenge_end_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> <br>In review. Winners to be announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 376"> <br>Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</span>
+               
           </div>
         </div>
       </div>

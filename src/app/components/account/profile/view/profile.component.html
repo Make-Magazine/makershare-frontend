@@ -67,17 +67,19 @@
 
 								</div>
 							</div>
+							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()" >
 							<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
 							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
 								<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
 							</div>
+							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div *ngIf="CurrentLoggedUserId && uid">
+								<div>
 									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<div class="profile-fullname"><span>{{ProfileInfo.first_name}} {{ProfileInfo.last_name}}</span></div>
+									<div class="profile-fullname"><span>{{profile.full_name}}</span></div>
 									<div *ngIf="ProfileInfo.nickname" class="profile-nickname"><span>aka {{ProfileInfo.nickname}}</span></div>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
@@ -178,19 +180,19 @@
 								</div>
 								<hr>
 								<ul class="list-unstyled makerspaces">
-									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
+									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<p class="global-title">Makersapces</p>
+									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="global-title">Makersapces</p>
 									<li *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 										<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 									</li>
 								</ul>
 								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
-									<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" class="placeholder-text">{{PlaceholderText.maker_space}}</p>
+									<p *ngIf="CurrentLoggedUserId == uid" class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
-								<hr>
+								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''">
 								<div>
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title"> Links </p>
@@ -209,14 +211,12 @@
 								<hr>
 								<div class="how">
 									<!-- Start How -->
-									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">How I learned to be a maker</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr>
-								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 								<p class="global-title">Interests</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
@@ -266,372 +266,373 @@
 <!-- Add Edit Info Modal -->
 <template #editinfomodal let-c="close" let-d="dismiss" ngbModalContainer>
 	<div class="profile-modal">
-	<div class="modal-header">
-		<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+		<div class="modal-header">
+			<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
 							<span aria-hidden="true">&times;</span>
 						</button>
-		<!--<span class="info your-photo-tab" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+			<!--<span class="info your-photo-tab" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
 							<p>DID YOU KNOW?</p>
 							<p>You can also add images from your phone</p>
 						</span>-->
-	</div>
-	<div class="modal-body container">
-		<div class="row">
-			<div class="modal-menu col-md-2">
-				<a (click)="CurrentInfoTab = 'Portfolio Photo'" [ngClass]="{'active': CurrentInfoTab == 'Portfolio Photo'}">Portfolio Photo</a><br>
-				<a (click)="CurrentInfoTab = 'Personal Info'" [ngClass]="{'active': CurrentInfoTab == 'Personal Info'}">Personal Info</a><br>
-				<a (click)="CurrentInfoTab = 'Bio'" [ngClass]="{'active': CurrentInfoTab == 'Bio'}">Bio</a><br>
-				<a (click)="CurrentInfoTab = 'Social'" [ngClass]="{'active': CurrentInfoTab == 'Social'}">Social</a><br>
-				<a *ngIf="formGroup.controls['field_add_your_makerspace_s_'].controls.length == 0" (click)="AddMakerspaceRow();CurrentInfoTab = 'MakerSpaces'"
-				 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">MakerSpaces</a>
-				<a *ngIf="formGroup.controls['field_add_your_makerspace_s_'].controls.length != 0" (click)="CurrentInfoTab = 'MakerSpaces'"
-				 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">MakerSpaces</a><br>
-				<a (click)="CurrentInfoTab = 'Links'" [ngClass]="{'active': CurrentInfoTab == 'Links'}">Links</a><br>
-				<a (click)="CurrentInfoTab = 'Maker Moment'" [ngClass]="{'active': CurrentInfoTab == 'Maker Moment'}">Maker Moment</a><br>
-				<a (click)="CurrentInfoTab = 'Interests'" [ngClass]="{'active': CurrentInfoTab == 'Interests'}">Interests</a>
-			</div>
-			<div class="col-md-10">
-				<div id="profile-cover" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-					<div class="modal-tabs" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-						<ul class="list-unstyled">
-							<li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">Upload</a></li>
-							<li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">Your Photos</a></li>
-						</ul>
-					</div>
-					<div class="modal-body row">
-						<div id="portfolio-photo" class="w-100" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
-							<div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-								<!--<img *ngIf="!ProfilePicData.original" src="./assets/images/Drag_Drop.png" alt="">-->
-								<img-cropper #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
-								<div *ngIf="!ProfilePicData.original">
-									<p class="drag-photo">Drag a Photo Here</p>
-									<p class="drag-or">or</p>
-								</div>
-								<a class="btn btn-load-more" (click)="fileinput.click()">
-							Upload
-							<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
-						</a>
-								<p class="drag-or mt-4 mb-0">For best results image should be at minimum 300px in height or width.</p>
-							</div>
-							<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
-						</div>
-					</div>
+		</div>
+		<div class="modal-body container">
+			<div class="row">
+				<div class="modal-menu col-md-2">
+					<a (click)="CurrentInfoTab = 'Portfolio Photo'" [ngClass]="{'active': CurrentInfoTab == 'Portfolio Photo'}">Portfolio photo</a><br>
+					<a (click)="CurrentInfoTab = 'Personal Info'" [ngClass]="{'active': CurrentInfoTab == 'Personal Info'}">Personal info</a><br>
+					<a (click)="CurrentInfoTab = 'Bio'" [ngClass]="{'active': CurrentInfoTab == 'Bio'}">Bio</a><br>
+					<a (click)="CurrentInfoTab = 'Social'" [ngClass]="{'active': CurrentInfoTab == 'Social'}">Social accounts</a><br>
+					<a *ngIf="formGroup.controls['field_add_your_makerspace_s_'].controls.length == 0" (click)="AddMakerspaceRow();CurrentInfoTab = 'MakerSpaces'"
+					 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">Makerspaces</a>
+					<a *ngIf="formGroup.controls['field_add_your_makerspace_s_'].controls.length != 0" (click)="CurrentInfoTab = 'MakerSpaces'"
+					 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">Makerspaces</a><br>
+					<a (click)="CurrentInfoTab = 'Links'" [ngClass]="{'active': CurrentInfoTab == 'Links'}">Personal blog</a><br>
+					<a (click)="CurrentInfoTab = 'Maker Moment'" [ngClass]="{'active': CurrentInfoTab == 'Maker Moment'}">Maker moment</a><br>
+					<a (click)="CurrentInfoTab = 'Interests'" [ngClass]="{'active': CurrentInfoTab == 'Interests'}">Topics</a>
 				</div>
-				<div id="personal-info" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Personal Info'">
-					<div class="form-group">
-						<div class="form-subgroup container">
-							<div class="row">
-								<div class="col-lg-4 col-md-6">
-									<label for="edit-nickname">NICKNAME</label>
-									<input placeholder="What do you friends call you?" [(ngModel)]="ProfileInfo.nickname" type="text" class="form-control" id="edit-nickname">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="form-subgroup container">
-							<div class="row">
-								<div class="col-md-12 col-xs-12">
-									<label for="edit-city">LOCATION</label>
-								</div>
-								<div class="col-md-4 col-xs-12">
-									<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
-									 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
-									<small *ngIf="searchFailed" class="text-danger">
-						Country not found.
-							</small>
-								</div>
-								<div class="col-md-4 col-xs-12">
-									<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
-									<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="{{CountryFieldsAndDetails.locality_label}}"
-									 [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control"
-									 id="city" (change)="ProfileInfo.address.city = $event.target.value">
-								</div>
-
-								<div class="col-md-4 col-xs-12">
-									<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>-->
-									<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && !profile.address.postcode && !profile.address.zip_code"
-									 placeholder="{{CountryFieldsAndDetails.postal_code_label}}" [ngModel]="profile.address.postal_code" type="text"
-									 class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-									<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
-									 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-									<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode"
-									 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-								</div>
-							</div>
-						</div>
-						<div class="form-subgroup container pt-3">
-							<div class="row">
-								<div class="col-md-12">
-									<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
-								</div>
-								<div class="col-md-4">
-									<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
-										<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="form-subgroup container mt-3">
-							<div class="row">
-								<div class="col-md-12">
-									<div [formGroup]="formGroup">
-										<label for="edit-bio">PERSONAL QUOTE</label>
-										<textarea rows="3" formControlName="describe_yourself" name="limitedtextfield" class="col-md-12" id="description-textarea-info"
-										 placeholder="120 characters that are words you live by." maxlength="120"></textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 120}" class="char-left"> {{120 - formGroup.value.describe_yourself.length}} char left </span>
-										<!--<div *ngIf="!formGroup.valid">max length 120</div>-->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="bio" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Bio'">
-					<div class="form-group" [formGroup]="formGroup">
-						<div class="form-subgroup container">
-							<div class="row">
-								<div class="col-md-12">
-									<label for="edit-bio">YOUR BIO</label>
-								</div>
-								<div class="col-md-12">
-									<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
-									 placeholder="{{'What would you like people to know about you?\nYou basicaly have two paragraphs of space.'}}" maxlength="140"></textarea>
-									<span [ngClass]="{valErrorString: formGroup.value.bio.length == 140}" class="char-left">{{140 - formGroup.value.bio.length}} char left</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div id="socaial" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Social'">
-					<div class="form-group" [formGroup]="FormGroupSocial">
-						<div class="form-group socials container">
-							<div class="list-unstyled social-links row">
-								<div class="col-md-8">
-									<div class="row">
-										<li class="col-md-12">
-											<label>WHERE ARE YOU SOCIAL?</label>
-										</li>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_facebook.valid}" class="col-md-12 form-control" type="text"
-												 formControlName="field_facebook" name="web-url" placeholder="Facebook">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_facebook'" validate-onfocusout>-->
-											</li>
-											<div *ngIf="!FormGroupSocial.controls.field_facebook.valid && FormGroupSocial.controls.field_facebook.touched" class="alert alert-danger error-msg">
-												Invalid URL, ex: http://example.com
-											</div>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_instagram.valid}" class="col-md-12 form-control" type="text"
-												 formControlName="field_instagram" name="web-url" placeholder="Instagram">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instagram'" validate-onfocusout>-->
-											</li>
-											<div *ngIf="!FormGroupSocial.controls.field_instagram.valid && FormGroupSocial.controls.field_instagram.touched" class="alert alert-danger error-msg">
-												Invalid URL, ex: http://example.com
-											</div>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_linkedin.valid}" class="col-md-12 form-control" type="text"
-												 formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'" validate-onfocusout>-->
-											</li>
-											<div *ngIf="!FormGroupSocial.controls.field_linkedin.valid && FormGroupSocial.controls.field_linkedin.touched" class="alert alert-danger error-msg">
-												Invalid URL, ex: http://example.com
-											</div>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_twitter.valid}" class="col-md-12 form-control" type="text" formControlName="field_twitter"
-												 name="web-url" placeholder="Twitter">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitter'" validate-onfocusout>-->
-											</li>
-											<div *ngIf="!FormGroupSocial.controls.field_twitter.valid && FormGroupSocial.controls.field_twitter.touched" class="alert alert-danger error-msg">
-												Invalid URL, ex: http://example.com
-											</div>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_pinterest.valid}" class="col-md-12 form-control" type="text"
-												 name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'" validate-onfocusout>-->
-												<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid && FormGroupSocial.controls.field_pinterest.touched" class="alert alert-danger error-msg">
-													Invalid URL, ex: http://example.com
-												</div>
-											</li>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_youtube.valid}" class="col-md-12 form-control" type="text" name="web-url"
-												 formControlName="field_youtube" placeholder="YouTube">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_youtube'" validate-onfocusout>-->
-												<div *ngIf="!FormGroupSocial.controls.field_youtube.valid && FormGroupSocial.controls.field_youtube.touched" class="alert alert-danger error-msg">
-													Invalid URL, ex: http://example.com
-												</div>
-											</li>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackster_io.valid}" class="col-md-12 form-control" type="text"
-												 name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
-												<!--<input class="radio-breferred" class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred"-->
-												<!--value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'" validate-onfocusout>-->
-												<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid && FormGroupSocial.controls.field_hackster_io.touched" class="alert alert-danger error-msg">
-													Invalid URL, ex: http://example.com
-												</div>
-											</li>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_instructables.valid}" class="col-md-12 form-control" type="text"
-												 name="web-url" formControlName="field_instructables" placeholder="Instructables">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instructables'" validate-onfocusout>-->
-												<div *ngIf="!FormGroupSocial.controls.field_instructables.valid && FormGroupSocial.controls.field_instructables.touched"
-												 class="alert alert-danger error-msg">
-													Invalid URL, ex: http://example.com
-												</div>
-											</li>
-										</div>
-										<div class="col-md-6">
-											<li class="form-group">
-												<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackday.valid}" class="col-md-12 form-control" type="text" name="web-url"
-												 formControlName="field_hackday" placeholder="Hackaday">
-												<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday"-->
-												<!--[checked]="profile.field_social_accounts.field_preferred == 'field_hackday'" validate-onfocusout>-->
-												<div *ngIf="!FormGroupSocial.controls.field_hackday.valid && FormGroupSocial.controls.field_hackday.touched" class="alert alert-danger error-msg">
-													Invalid URL, ex: http://example.com
-												</div>
-											</li>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="maker-spaces" class="profile-edit-tab container" *ngIf="CurrentInfoTab == 'MakerSpaces'">
-					<div class="form-group" [formGroup]="formGroup">
-						<div class="makerspace-content" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
-						 formArrayName="field_add_your_makerspace_s_">
-							<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
-							<div class="form-group form-main" [formGroupName]="i">
-								<div class="form-group row">
-									<div class="col-md-11">
-										<label for="">MAKER SPACE</label>
-									</div>
-									<div class="col-md-4">
-										<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
-										 (selectItem)="SelectMakerspace(i,$event)" placeholder="What do you create?">
-									</div>
-								</div>
-								<div class="form-group row">
-									<div class="col-md-12">
-										<label for="">URL</label>
-									</div>
-									<div class="col-md-4">
-										<input [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}"
-										 class="form-control" type="text" formControlName="field_makerspace_url">
-									</div>
-								</div>
-								<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
-								Invalid URL, ex: http://example.com
-							</small>
-							</div>
-						</div>
-					</div>
-					<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn btn-load-more add-other" (click)="AddMakerspaceRow()"><i class="fa fa-lg fa-plus"></i> Add another Makerspace</a>
-				</div>
-				<div id="links" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Links'">
-					<div class="form-group" [formGroup]="FormGroupSocial">
-						<div class="form-group socials container">
-							<ul class="list-unstyled social-links row">
-								<li class="col-md-12">
-									<label>PREFERED?</label>
-								</li>
-								<div class="col-md-12">
-									<li class="form-group form-item col-md-4">
-										<input [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text" formControlName="field_website_or_blog"
-										 name="web-url" placeholder="Website or Blog">
-										<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog"-->
-										<!--[checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'" validate-onfocusout>-->
-									</li>
-									<div *ngIf="!FormGroupSocial.controls.field_website_or_blog.valid && FormGroupSocial.controls.field_website_or_blog.touched"
-									 class="alert alert-danger error-msg">
-										Invalid URL, ex: http://example.com
-									</div>
-								</div>
-								<div class="col-md-12">
-									<li class="form-group form-item col-md-4">
-										<input [ngClass]="{valError: !FormGroupSocial.controls.field_additional_site.valid}" class="form-control" type="text" formControlName="field_additional_site"
-										 name="web-url" placeholder="Additional site">
-										<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site"-->
-										<!--[checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'" validate-onfocusout>-->
-									</li>
-									<div *ngIf="!FormGroupSocial.controls.field_additional_site.valid && FormGroupSocial.controls.field_additional_site.touched"
-									 class="alert alert-danger error-msg">
-										Invalid URL, ex: http://example.com
-									</div>
-								</div>
+				<div class="modal-contents col-md-10 d-flex flex-column">
+					<div id="profile-cover" class="edit-cover-modal" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+						<div class="modal-tabs" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+							<ul class="list-unstyled">
+								<li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">UPLOAD</a></li>
+								<li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">YOUR PHOTOS</a></li>
 							</ul>
 						</div>
-					</div>
-				</div>
-				<div id="maker-moment" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Maker Moment'">
-					<div class="form-group" [formGroup]="formGroup">
-						<div class="form-subgroup container">
-							<div class="row">
-								<div class="col-md-12">
-									<label for="">YOUR MAKER MOMENT</label>
+						<div class="modal-body row">
+							<div id="portfolio-photo" class="w-100 container" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
+								<div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab row" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
+									<div class="drop-section col-md-5">
+										<img *ngIf="!ProfilePicData.original" class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
+										<img-cropper [hidden]="!ProfilePicData.original" #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
+										<div *ngIf="!ProfilePicData.original">
+											<p class="drag-photo">Drag a Photo Here</p>
+											<p class="drag-or">or</p>
+										</div>
+										<a class="btn btn-load-more" (click)="fileinput.click()">
+											Upload
+											<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
+										</a>
+									</div>
+									<div class="recommended-section col-md-5">
+										<p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 600 pixels</p>
+									</div>
 								</div>
-								<div class="col-md-12">
-									<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
-									 placeholder="{{'What was the moment that making become a part of your life?\nYou have about two paragraphs of space.'}}"
-									 maxlength="300">
+								<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
+							</div>
+						</div>
+					</div>
+					<div id="personal-info" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Personal Info'">
+						<div class="form-group">
+							<div class="form-subgroup container">
+								<div class="row">
+									<div class="col-md-12 col-xs-12">
+										<label for="edit-city">LOCATION</label>
+									</div>
+									<div class="col-md-4 col-xs-12">
+										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
+										 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+										<small *ngIf="searchFailed" class="text-danger">
+						Country not found.
+							</small>
+									</div>
+									<div class="col-md-4 col-xs-12">
+										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="{{CountryFieldsAndDetails.locality_label}}"
+										 [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control"
+										 id="city" (change)="ProfileInfo.address.city = $event.target.value">
+									</div>
+
+									<div class="col-md-4 col-xs-12">
+										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>-->
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && !profile.address.postcode && !profile.address.zip_code"
+										 placeholder="{{CountryFieldsAndDetails.postal_code_label}}" [ngModel]="profile.address.postal_code" type="text"
+										 class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
+										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode"
+										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
+									</div>
+								</div>
+							</div>
+							<div class="form-subgroup container pt-3">
+								<div class="row">
+									<div class="col-md-12">
+										<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
+									</div>
+									<div class="col-md-4">
+										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
+										<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
+									</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-subgroup pt-3">
+								<div class="form-subgroup container">
+									<div class="row">
+										<div class="col-lg-4 col-md-6">
+											<label for="edit-nickname">NICKNAME</label>
+											<input placeholder="What do you friends call you?" [(ngModel)]="ProfileInfo.nickname" type="text" class="form-control" id="edit-nickname">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-subgroup container mt-3">
+								<div class="row">
+									<div class="col-md-12">
+										<div [formGroup]="formGroup">
+											<label for="edit-bio">MAKER MOTTO</label>
+											<textarea rows="2" formControlName="describe_yourself" name="limitedtextfield" class="col-md-12" id="description-textarea-info"
+											 maxlength="60"></textarea>
+											<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 60}" class="char-left"> {{60 - formGroup.value.describe_yourself.length}} char left </span>
+											<!--<div *ngIf="!formGroup.valid">max length 120</div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="bio" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Bio'">
+						<div class="form-group" [formGroup]="formGroup">
+							<div class="form-subgroup container">
+								<div class="row">
+									<div class="col-md-12">
+										<label for="edit-bio">BIO</label>
+									</div>
+									<div class="col-md-12">
+										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
+										 maxlength="400"></textarea>
+										<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}" class="char-left">{{400 - formGroup.value.bio.length}} char left</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div id="social" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Social'">
+						<div class="form-group" [formGroup]="FormGroupSocial">
+							<div class="form-group socials container">
+								<div class="list-unstyled social-links row">
+									<div class="col-md-8">
+										<div class="row">
+											<li class="col-md-12">
+												<label>SOCIAL WEBSITES</label>
+											</li>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_facebook.valid}" class="col-md-12 form-control" type="text"
+													 formControlName="field_facebook" name="web-url" placeholder="Facebook">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_facebook'" validate-onfocusout>-->
+												</li>
+												<div *ngIf="!FormGroupSocial.controls.field_facebook.valid && FormGroupSocial.controls.field_facebook.touched" class="alert alert-danger error-msg">
+													Invalid URL, ex: http://example.com
+												</div>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_instagram.valid}" class="col-md-12 form-control" type="text"
+													 formControlName="field_instagram" name="web-url" placeholder="Instagram">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instagram'" validate-onfocusout>-->
+												</li>
+												<div *ngIf="!FormGroupSocial.controls.field_instagram.valid && FormGroupSocial.controls.field_instagram.touched" class="alert alert-danger error-msg">
+													Invalid URL, ex: http://example.com
+												</div>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_linkedin.valid}" class="col-md-12 form-control" type="text"
+													 formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'" validate-onfocusout>-->
+												</li>
+												<div *ngIf="!FormGroupSocial.controls.field_linkedin.valid && FormGroupSocial.controls.field_linkedin.touched" class="alert alert-danger error-msg">
+													Invalid URL, ex: http://example.com
+												</div>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_twitter.valid}" class="col-md-12 form-control" type="text" formControlName="field_twitter"
+													 name="web-url" placeholder="Twitter">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitter'" validate-onfocusout>-->
+												</li>
+												<div *ngIf="!FormGroupSocial.controls.field_twitter.valid && FormGroupSocial.controls.field_twitter.touched" class="alert alert-danger error-msg">
+													Invalid URL, ex: http://example.com
+												</div>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_pinterest.valid}" class="col-md-12 form-control" type="text"
+													 name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid && FormGroupSocial.controls.field_pinterest.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_youtube.valid}" class="col-md-12 form-control" type="text" name="web-url"
+													 formControlName="field_youtube" placeholder="YouTube">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_youtube'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_youtube.valid && FormGroupSocial.controls.field_youtube.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackster_io.valid}" class="col-md-12 form-control" type="text"
+													 name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
+													<!--<input class="radio-breferred" class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred"-->
+													<!--value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid && FormGroupSocial.controls.field_hackster_io.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_instructables.valid}" class="col-md-12 form-control" type="text"
+													 name="web-url" formControlName="field_instructables" placeholder="Instructables">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instructables'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_instructables.valid && FormGroupSocial.controls.field_instructables.touched"
+													 class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-md-6">
+												<li class="form-group">
+													<input [ngClass]="{valError: !FormGroupSocial.controls.field_hackday.valid}" class="col-md-12 form-control" type="text" name="web-url"
+													 formControlName="field_hackday" placeholder="Hackaday">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_hackday'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_hackday.valid && FormGroupSocial.controls.field_hackday.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="maker-spaces" class="profile-edit-tab container" *ngIf="CurrentInfoTab == 'MakerSpaces'">
+						<div class="form-group" [formGroup]="formGroup">
+							<div class="makerspace-content" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
+							 formArrayName="field_add_your_makerspace_s_">
+
+								<div class="form-group form-main" [formGroupName]="i">
+									<div class="form-group row">
+										<div class="row col-md-12">
+											<label class="col-md-12">ADD A MAKERSPACES</label>
+											<div class="col-md-4">
+												<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
+												 (selectItem)="SelectMakerspace(i,$event)" placeholder="What do you create?">
+											</div>
+											<div class="col-md-4">
+												<input [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}"
+												 class="form-control" type="text" formControlName="field_makerspace_url">
+											</div>
+											<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
+													Invalid URL, ex: http://example.com
+											</small>
+												<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
+										</div>
+									</div>
+									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div id="links" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Links'">
+						<div class="form-group" [formGroup]="FormGroupSocial">
+							<div class="form-group socials container">
+								<ul class="list-unstyled social-links row">
+									<li class="col-md-12">
+										<label>PREFERED?</label>
+									</li>
+									<div class="col-md-12">
+										<li class="form-group form-item col-md-4">
+											<input [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text" formControlName="field_website_or_blog"
+											 name="web-url" placeholder="Website or Blog">
+											<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog"-->
+											<!--[checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'" validate-onfocusout>-->
+										</li>
+										<div *ngIf="!FormGroupSocial.controls.field_website_or_blog.valid && FormGroupSocial.controls.field_website_or_blog.touched"
+										 class="alert alert-danger error-msg">
+											Invalid URL, ex: http://example.com
+										</div>
+									</div>
+									<div class="col-md-12">
+										<li class="form-group form-item col-md-4">
+											<input [ngClass]="{valError: !FormGroupSocial.controls.field_additional_site.valid}" class="form-control" type="text" formControlName="field_additional_site"
+											 name="web-url" placeholder="Additional site">
+											<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site"-->
+											<!--[checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'" validate-onfocusout>-->
+										</li>
+										<div *ngIf="!FormGroupSocial.controls.field_additional_site.valid && FormGroupSocial.controls.field_additional_site.touched"
+										 class="alert alert-danger error-msg">
+											Invalid URL, ex: http://example.com
+										</div>
+									</div>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="maker-moment" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Maker Moment'">
+						<div class="form-group" [formGroup]="formGroup">
+							<div class="form-subgroup container">
+								<div class="row">
+									<div class="col-md-12">
+										<label for="">HOW YOU BECOME A MAKER</label>
+									</div>
+									<div class="col-md-12">
+										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
+										 placeholder="{{'What was the moment that making become a part of your life?\nYou have about two paragraphs of space.'}}"
+										 maxlength="300">
 								</textarea><span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}" class="char-left">{{300 - formGroup.value.started_making.length}} char left</span>
+									</div>
+									<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
+									<div class="clearfix"></div>
 								</div>
-								<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
-								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div id="interests" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Interests'">
-					<div class="form-group">
-						<div class="form-subgroup container">
-							<div class="row">
-								<div class="col-md-12">
-									<label for="">WHAT INTERESTS YOU?</label>
+					<div id="interests" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Interests'">
+						<div class="form-group">
+							<div class="form-subgroup container">
+								<div class="row">
+									<div class="col-md-12">
+										<label for="">WHAT INTERESTS YOU?</label>
+									</div>
+									<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
+									 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
+									 [separatorKeys]="[4, 5]">
+										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
+										 inputId="tid">
+										</tag-input-dropdown>
+									</tag-input>
 								</div>
-								<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
-								 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
-								 [separatorKeys]="[4, 5]">
-									<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
-									 inputId="tid">
-									</tag-input-dropdown>
-								</tag-input>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
-					<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
-					 (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
+					<div class="modal-footer mt-auto">
+						<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
+						<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
+						<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
+						 (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </template>
 
