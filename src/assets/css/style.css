@@ -6450,9 +6450,13 @@ img {
 
 .project-create-buttons p {
   display: block;
-  font-size: 12px;
-  color: #4F4F4F;
-  text-align: center; }
+  font-size: 1em;
+  font-weight: bold;
+  color: #BDBDBD;
+  text-align: center;
+  margin-bottom: 0;
+  margin-right: 5px;
+  padding: 10px 0; }
   .project-create-buttons p.btn {
     background-color: #F2F2F2;
     border: 1px solid #333333; }
