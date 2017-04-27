@@ -33,6 +33,7 @@ export class FeedbackComponent implements OnInit {
   field_upload_screenshots: FileEntity
   NID = false;
   full_name;
+  checkUserLogin;
   formErrors = {
     'field_want_submit': '',
     'field_bug_not_in_page_': '',
@@ -140,7 +141,6 @@ export class FeedbackComponent implements OnInit {
     }
 
     // field_browser:und[0].value
-
   }
   constructor(
     private modalService: NgbModal,
@@ -151,18 +151,21 @@ export class FeedbackComponent implements OnInit {
     private router: Router,
     @Inject(DOCUMENT) private document: any,
     private fileService: FileService,
+
   ) {
     this.full_url = this.document.location.href
   }
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
-    this.userService.getUser(this.userId).subscribe(res => {
-      this.profile = res;
-      // console.log(this.profile.full_name);
-      this.full_name=res.full_name
-    }, err => {
-      console.log(err);
-    });
+    if(this.userId){
+      this.userService.getUser(this.userId).subscribe(res => {
+        this.profile = res;
+        // console.log(this.profile.full_name);
+        this.full_name=res.full_name
+      }, err => {
+        console.log(err);
+      });
+    }
     this.deviceInfo();
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     var todayDate = new Date();
@@ -229,20 +232,31 @@ export class FeedbackComponent implements OnInit {
     }
   }
   //open modal
-  open(content) {
-    this.CurrentType=null;
-    this.feedbackForm.reset();
-    this.router.events.subscribe((event) => {
-      this.full_url = this.document.location.href;
-    });
-    this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
-    this.feedbackForm.controls['field_os'].setValue(navigator.platform);
-    this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
+  open(content,e:Event) {
+
+      this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) { 
+          e.preventDefault();
+          this.router.navigate(['/access-denied']);
+      } else {
+        this.CurrentType=null;
+        this.feedbackForm.reset();
+        this.router.events.subscribe((event) => {
+          this.full_url = this.document.location.href;
+        });
+      this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
+      this.feedbackForm.controls['field_os'].setValue(navigator.platform);
+      this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
+      
+      }//end else 
+    });//end userservice isLogedIn
+   
   }
   //close modal
   private getDismissReason(reason: any): string {
@@ -472,9 +486,9 @@ export class FeedbackComponent implements OnInit {
     console.log(this.feedback)
     this.onValueChanged();
     if(this.fileArray.length != 0){
-    for (let i = 0; i < this.fileArray.length; i++) {
-      this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
-    }
+      for (let i = 0; i < this.fileArray.length; i++) {
+        this.fileArray[i].file = NodeHelper.RemoveFileTypeFromBase64(this.fileArray[i].file)
+      }
     }
     // if (!this.feedbackForm.value.field_bug_not_in_page_ && !this.full_url) {
     //   this.formErrors.field_bug_not_in_page_ = this.validationMessages.field_bug_not_in_page_.validateRequired;
