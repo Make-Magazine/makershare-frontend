@@ -118,8 +118,8 @@
 						margin-top: 2px;
 					}
 					.active {
-					///	color: $light-grey;
-					    color: $text-color-5;
+						color: $light-grey;
+					//    color: $text-color-5;
 						.badge {
 							background-color: $white;
 							color: $main-grey;
@@ -487,4 +487,7 @@
 	 .entries {
 		 clear: both;
 	 }  
+}
+.title-tab{
+	color: $text-color-5;
 }
