@@ -84,6 +84,15 @@ export class ViewComponent implements OnInit {
         }
         this.messages = this.msg.messages
         for (let message of this.messages) {
+          var date = new Date(message.timestamp*1000);
+          var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
+          var period = date.getHours() >= 12 ? 'PM' : 'AM';
+
+          // var date = new Date(message.timestamp*1000);
+          // var hours = date.getHours();
+          // var minutes = "0" + date.getMinutes();
+          // var formattedTime = hours + ':' + minutes.substr(-2);
+          // console.log(formattedTime);
           let i = 0
           this.userService.getUser(message.author).subscribe(res => {
             Object.assign(message, res);
@@ -253,6 +262,11 @@ export class ViewComponent implements OnInit {
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
+  }
+//capitalize First Letter
+ toTitleCase(str)
+  {
+      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 
 }

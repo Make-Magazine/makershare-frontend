@@ -187,6 +187,11 @@
         .global-title {
             margin-bottom: 10px;
             margin-top: 10px;
+            font-size: 1em;
+            text-transform: capitalize;
+        }
+        .placeholder-text {
+            color: $light-grey;
         }
         .image-container {
             position: relative;                    
@@ -260,6 +265,7 @@
                 @include desc-font-2 ();
                 color: $text-color-1;
                 font-size: 0.7em !important;
+                margin-left: 5px;
             }
             .bio {
                 @include desc-font-1 ();
@@ -768,6 +774,15 @@
 
             }
         }
+        .upload-pic-footer {
+            text-align: center;
+                a {
+                color: $text-color-2;
+                &:hover {
+                    color: $text-color-2;
+                }
+            }
+        }
     }
 }
 
@@ -825,7 +840,7 @@
         .profiel-pic-container {
             width: 82px;
             height: 82px;
-            
+            cursor:pointer;            
             img {
                 width: 100%;
             }
@@ -878,6 +893,7 @@
         width: 100%;
         margin: 0;
         max-width: 230px;
+        cursor:pointer;
     }
     .card-title-showcase {
         @include card-header-font-sm;
@@ -1192,12 +1208,15 @@
     left: 0;
     z-index: 11;
     right: 0;
-    width: 300px;
+    width: 240px;
     margin: 0 auto;
     p {
         font-size: 12px;
         color: $text-color-1;
         text-align: center;
+        i {
+            display: block;
+        }
         &.btn {
             background-color: $site-bg;
             border: 1px solid $main-grey;
@@ -1205,6 +1224,11 @@
                 background-color: $btn-primary-2;
                 border-color: $btn-primary-2;
                 color: $white;
+            }
+        }
+        &.project-drag {
+            i {
+                display: inline-block;
             }
         }
     }
@@ -1229,6 +1253,7 @@
     right: 0px;
     margin: auto;
     z-index: 11;
+    cursor:pointer;
     p {
         line-height: 20px;
     }
@@ -1273,7 +1298,7 @@
         }
         .modal-header {
             border-bottom: none !important;
-            padding: 8px;
+            padding: 14px;
             .close:focus, .close:hover {
                 outline: none !important;
             }
@@ -1383,13 +1408,20 @@
                 }
             }
             #maker-spaces {
-                .makerspace-contene {
+                .makerspace-content {
                     position: relative;
                 }
                 .maker-space-remove {
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 10px;
+                    top: 10px;
+                }
+                .form-main {
+                    background-color: $shade-2;
+                    padding: 12px;
+                }
+                .add-other {
+                    background-color: #fff !important;
                 }
             }
             #links {
@@ -1560,7 +1592,7 @@
         float: left;
         margin:0 5px 0 0;
         cursor:pointer;
-        background:$shade-2;
+        background:$shade-7;
         color:#fff;
 	
     }
@@ -1763,6 +1795,7 @@
         margin: 0 auto 30px;
         border: none;
         @include boxShadow(2px, 2px ,8px, $shade-3);        
+        cursor:pointer;
     }
     .card-type {
         right: -22px;

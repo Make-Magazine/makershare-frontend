@@ -6,6 +6,8 @@ import { ViewService } from '../../../../../../d7services/view/view.service';
 import { Observable } from 'rxjs/Observable';
 import { CustomValidators } from 'ng2-validation';
 import { inarray } from '../../../../../../validations/inarray.validation'
+import { FileEntity } from '../../../../../../models';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 @Component({
   selector: 'app-basic-info',
@@ -13,8 +15,11 @@ import { inarray } from '../../../../../../validations/inarray.validation'
 })
 export class BasicInfoComponent implements OnInit {
   @Input() userProfile: UserProfile;
+  @Output() CoverImage = new EventEmitter();
   @Output() emitter = new EventEmitter();
 
+  allIntersets: Array<any>;
+  FileEntityObject:FileEntity;
   basicForm;
   CountryFieldsAndDetails;
   CountriesList=[];
@@ -42,20 +47,28 @@ export class BasicInfoComponent implements OnInit {
     private profileService: ProfileService,
     private viewService:ViewService,
     private fb: FormBuilder,
+    private notificationBarSer:NotificationBarService
   ) {}
 
   ngOnInit() {
-    this.viewService.getView('maker_address_api').subscribe(countries=>{
-      this.CountriesList = countries;
-      if(this.userProfile.address.code){
-        this.viewService.getView('maker_address_api/' + this.userProfile.address.code).subscribe((data) => {
-          this.CountryFieldsAndDetails = data;
-          this.MigrateCountryDetails();
+    this.FileEntityObject = {
+      filename:'',
+      file:'',
+    }
+    this.profileService.getAllInterests().subscribe(Interests=>{
+      this.allIntersets = Interests;
+      this.viewService.getView('maker_address_api').subscribe(countries=>{
+        this.CountriesList = countries;
+        if(this.userProfile.address.code){
+          this.viewService.getView('maker_address_api/' + this.userProfile.address.code).subscribe((data) => {
+            this.CountryFieldsAndDetails = data;
+            this.MigrateCountryDetails();
+            this.buildForm();
+          });
+        }else{
           this.buildForm();
-        });
-      }else{
-        this.buildForm();
-      }
+        }
+      });
     });
   }
   GetCountryDetails(item){
@@ -87,8 +100,36 @@ export class BasicInfoComponent implements OnInit {
     }
   }
 
+  public ConvertToBase64(file,FileEntityObject,CoverImage){
+    let self = this;
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      let img = new Image();
+      img.src = reader.result;
+      if(img.width < 600 && img.height < 600){
+        //show error message for validation
+        self.notificationBarSer.create({ message: 'Image size is invalid.', type: NotificationType.Error});
+        return;
+      }
+      FileEntityObject.filename = file.name;
+      FileEntityObject.file = reader.result;
+      CoverImage.emit(FileEntityObject);
+    };    
+   }
+
+  onFileChange(event){
+    if(event.target.files.length == 0) return;
+    let file = event.target.files[0];
+    this.ConvertToBase64(file,this.FileEntityObject,this.CoverImage);
+  }
+
   buildForm(): void {
+    this.FileEntityObject.file = this.userProfile.user_photo;
     this.basicForm = this.fb.group({
+      started_making:this.userProfile.started_making,
+      bio:this.userProfile.bio,
+      maker_interests:[this.userProfile.maker_interests? this.userProfile.maker_interests:[],],
       nickname: [this.userProfile.nickname],
       first_name: [this.userProfile.first_name, [Validators.required]],
       last_name: [this.userProfile.last_name, [Validators.required]],

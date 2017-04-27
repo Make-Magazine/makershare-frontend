@@ -7,8 +7,6 @@ import { field_term_reference } from '../../';
 import { field_entity_reference } from '../../';
 import { field_number } from '../../';
 
-import { Observable } from "rxjs";
-
 export interface ProjectForm extends Node{
 	field_story:{und:field_text[]};
 	field_aha_moment?:{und:field_text[]};
@@ -21,6 +19,7 @@ export interface ProjectForm extends Node{
 	field_duration?:{und:number};
 	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
+	field_show_tell_video_as_default:{und:field_number[]};
 	field_tags?:{und:string};
 	field_resources?:{und:field_collection_item.field_collection_item_resource[]};
 	field_collaborators?:{und:field_entity_reference[]};
@@ -50,6 +49,7 @@ export interface ProjectView extends Node{
 	field_duration:{und:field_term_reference[]};
 	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
+	field_show_tell_video_as_default:{und:field_number[]};
 	field_tags?:{und:field_term_reference[]};
 	field_collaborators?:{und:field_entity_reference[]};
 	field_sort_order?:{und:field_number[]};
@@ -102,10 +102,11 @@ export class ProjectForm extends Node implements ProjectForm{
     this.field_categories = {und:[]};
     this.field_tags = {und:''};
     this.field_show_tell_video = {und:[new field_URL()]};
+		this.field_show_tell_video_as_default = {und:[new field_number()]};
     this.field_aha_moment = {und:[new field_text(null)]};
     this.field_uh_oh_moment = {und:[new field_text(null)]};
 		this.field_credit_your_inspiration = {und:[new field_text(null)]};
-		this.field_sort_order = {und:[{value:0}]}
+		this.field_sort_order = {und:[{value:0}]};
 	}
 
 	public SetField(value:any,FieldName:string):void{

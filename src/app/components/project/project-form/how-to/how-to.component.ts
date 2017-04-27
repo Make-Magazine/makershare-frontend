@@ -1,7 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input,ViewChild,AfterViewInit } from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
-import { ViewService } from '../../../../d7services/view/view.service'
 import { NodeService } from '../../../../d7services/node/node.service'
 import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
 import { ProjectForm } from '../../../../models';
@@ -11,9 +10,12 @@ import { field_collection_item_tool, field_collection_item_part, field_collectio
 import { FileEntity } from '../../../../models';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models';
+import { ViewService } from '../../../../d7services/view/view.service';
+import { FileService } from '../../../../d7services/file/file.service';
+import { MainService } from '../../../../d7services/main/main.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
-
+declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
@@ -22,13 +24,71 @@ import { domain,endpoint } from '../../../../d7services/globals';
   ]
 })
 
-export class HowToComponent implements OnInit {
+export class HowToComponent implements OnInit,AfterViewInit {
+@ViewChild('ckeditor') ckeditor:any;
+  ngAfterViewInit() {
+    this.ckeditor.instance.on('fileUploadRequest', (event) => {
+      var fileLoader = event.data.fileLoader;
+      var xhr = fileLoader.xhr;
+      xhr.setRequestHeader( 'X-CSRF-Token', this.mainService.getToken());
+      xhr.setRequestHeader( 'Accept', 'application/json' );
+      xhr.setRequestHeader( 'Content-Type', 'application/json');
+      xhr.withCredentials = true;
+      var myReader: FileReader = new FileReader();
+      let self = this;
+      myReader.onloadend = function (loadEvent: any) {
+        let fileEntity:FileEntity = {
+          file:NodeHelper.RemoveFileTypeFromBase64(loadEvent.target.result),
+          filename:fileLoader.file.name,
+          filepath:'public://ckeditor/'+localStorage.getItem("user_id")+fileLoader.file.name,
+        };
+        self.fileService.SendCreatedFile(fileEntity).subscribe(data=>{
+          xhr.send(JSON.stringify({fid:data.fid,uid:+localStorage.getItem("user_id")}));
+        });
+      };
+      myReader.readAsDataURL(fileLoader.file);
+      event.stop();
+    });
+    CKEDITOR.on( 'dialogDefinition', function( ev ) {
+      var dialogName = ev.data.name;
+      var dialogDefinition = ev.data.definition;
+      if (dialogName == 'image') {
+        dialogDefinition.onLoad = function() {
+          var dialog = CKEDITOR.dialog.getCurrent();
 
+          var uploadTab = dialogDefinition.getContents('Upload');
+          var uploadButton = uploadTab.get('uploadButton');
+          console.log('uploadButton', uploadButton);
+
+          uploadButton.onClick = (evt)=>{
+            console.log('fire in the hole', evt);
+          };
+
+          uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
+            console.log('working');
+          };
+        };
+      }
+    });
+    this.ckeditor.instance.on( 'fileUploadResponse', (event) => {
+      event.stop();
+      var data = event.data;
+      var xhr = data.fileLoader.xhr;
+      let response = JSON.parse(xhr.responseText);
+      if(!response[0]){
+        data.message = 'Error';
+        event.cancel();
+      }else{
+        data.url = response[0];
+      }
+    });
+  }
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
    */
   @Output() emitter = new EventEmitter();
+  @Output() CanNavigate = new EventEmitter();
 
   /**
    * Output will return the value to the parent component
@@ -72,10 +132,12 @@ export class HowToComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private viewService: ViewService,
     private taxonomyService: TaxonomyService,
     private nodeService: NodeService,
     private modalService: NgbModal,
+    private fileService: FileService,
+    private mainService: MainService,
+    private viewService: ViewService
   ) { }
 
   ngOnInit() {
@@ -205,6 +267,9 @@ export class HowToComponent implements OnInit {
       });
     });
     this.HowToForm.valueChanges.subscribe(data => {
+      if(this.HowToForm.dirty && this.HowToForm.touched){
+        this.CanNavigate.emit(false);
+      }
       this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
       this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
       this.project.field_duration.und = this.HowToForm.controls['field_duration'].value;
@@ -494,7 +559,6 @@ export class HowToComponent implements OnInit {
     });
   }
   CKEditorConfig = {
-    extraPlugins: 'divarea,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser',
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
     imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
     filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
