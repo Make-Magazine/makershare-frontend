@@ -6153,8 +6153,9 @@ img {
     .page-create-project-why .add-controls .project-create-buttons .contorls button:hover {
       cursor: pointer; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-draft .btn {
-      padding: 10px 40px 10px 40px;
-      font-size: 16px; }
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 5px; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-private .btn {
       background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
       background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
