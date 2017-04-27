@@ -109,7 +109,7 @@
             <div class="challenge-details col-md-8 pt-2">
               <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
               <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
-              <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
+              <app-followers  [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
                 (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
               <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
             </div>
