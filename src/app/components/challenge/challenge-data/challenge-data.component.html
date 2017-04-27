@@ -96,7 +96,7 @@
           <div class="region region-content col-sm-12 row">
             <div class="tabs-buttons col-md-4">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers -->{{no_of_awards}}</span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
                     (click)="changeChallangeTab('discussion',$event)">Questions</a></li>
@@ -109,7 +109,7 @@
             <div class="challenge-details col-md-8 pt-2">
               <app-rules [projects]="projectsData" [challenge]="challenge" *ngIf="activeTab =='rules'"></app-rules>
               <app-discussion *ngIf="activeTab =='discussion'" [challenge]="challenge"></app-discussion>
-              <app-followers class="container" [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
+              <app-followers  [hideloadmorefollower]="hideloadmorefollower" [currentUser]="currentuser.user" (sortType)="getSortType($event)"
                 (pageNumber)="getPageNumberFollowers($event)" *ngIf="activeTab =='followers'" [challenge]="challenge" [followers]="followers"></app-followers>
               <app-awards *ngIf="activeTab =='awards'" [awards]="awards"></app-awards>
             </div>
