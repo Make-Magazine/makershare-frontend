@@ -474,13 +474,40 @@
 	 		{
 				  // background-color:$main-bg;
           padding-top: 25px;
-					a:hover{
-              color: deepskyblue;
+					// a:hover{
+                    //   color: deepskyblue;
+					// }
+					// a:active{
+					// 	background-color: grey;
+					// }
+					a {
+						color: deepskyblue;
 					}
-					a:active{
-						color: grey;
+					a.highlight{
+						background-color: $main-bg;
 					}
 			 }
+
+			 .hamburger-menu{
+
+				 img{
+					 width: 50px;
+				    }
+				 a.dropdown-toggle::after{
+                      content: none;
+				 }
+				 	a {
+						color: deepskyblue;
+					}
+				 	a.highlight{
+						color: #4F4F4F;
+					}
+
+	          }
+			 	 .nav-title
+				 {
+			        padding: 20px;
+				 }
 
 	.button {
   display: inline-block;

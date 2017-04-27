@@ -2276,7 +2276,9 @@ footer {
   .edit-cover-modal .your-photos a {
     font-size: 18px;
     color: #333333;
-    border-radius: 0; }
+    border-radius: 0;
+    padding: 5px 10px 5px 4px !important;
+    color: #ED1C24 !important; }
     .edit-cover-modal .upload a.active,
     .edit-cover-modal .your-photos a.active {
       border-bottom: 1px solid #00AEEF; }
@@ -2304,46 +2306,50 @@ footer {
       padding: 12px;
       background-color: #fff !important; }
 .edit-cover-modal .upload-tab {
-  width: 430px;
   margin: auto;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  color: #333333; }
+  color: #333333;
+  padding: 14px;
+  background-color: #F2F2F2 !important; }
   .edit-cover-modal .upload-tab canvas {
-    height: 200px; }
+    height: auto;
+    width: 326px;
+    background-color: #F2F2F2; }
   .edit-cover-modal .upload-tab .btn {
     padding: 12px !important;
     width: 140px;
-    background-color: #fff !important; }
+    background-color: #fff !important;
+    color: #4F4F4F !important; }
   .edit-cover-modal .upload-tab .drag-photo {
-    color: #00AEEF; }
+    color: #4F4F4F; }
   .edit-cover-modal .upload-tab .drag-or {
-    color: #BDBDBD; }
+    color: #4F4F4F; }
+  .edit-cover-modal .upload-tab .drag-text {
+    color: #BDBDBD;
+    text-align: left;
+    padding-top: 100px; }
+  .edit-cover-modal .upload-tab .image-background {
+    width: 100%;
+    height: auto; }
 .edit-cover-modal .upload-pic-container .image-container {
   position: relative;
   -moz-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   -webkit-box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5);
   box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.5); }
-  .edit-cover-modal .upload-pic-container .image-container:hover .upload-select {
-    display: block;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.2);
-    transition: background-color 0.8s ease; }
   .edit-cover-modal .upload-pic-container .image-container img {
     width: 200px;
     margin: auto; }
   .edit-cover-modal .upload-pic-container .image-container .upload-select {
     position: absolute;
-    top: 0px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    transition: background-color 0.8s ease;
-    background: transparent;
-    border: none !important;
-    display: none; }
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    background-color: #fff;
+    color: #828282;
+    padding: 5px;
+    border: none; }
 .edit-cover-modal .upload-pic-container .upload-pic-footer {
   text-align: center; }
   .edit-cover-modal .upload-pic-container .upload-pic-footer a {
@@ -2744,7 +2750,8 @@ footer {
     margin: 0px; }
   .modal-content .profile-modal textarea {
     border: 1px solid #DCDCDC;
-    color: #4F4F4F; }
+    color: #4F4F4F;
+    resize: inherit; }
   .modal-content .profile-modal input {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
@@ -2771,7 +2778,15 @@ footer {
     .modal-content .profile-modal .modal-header .close:focus, .modal-content .profile-modal .modal-header .close:hover {
       outline: none !important; }
   .modal-content .profile-modal .modal-body {
-    min-height: 460px; }
+    padding-top: 0px; }
+    .modal-content .profile-modal .modal-body .scroll-container {
+      overflow-y: auto;
+      width: 100%;
+      height: 480px;
+      max-width: 100%;
+      max-height: 100%;
+      padding: 8px 0px;
+      background-color: #f3f3f3; }
     .modal-content .profile-modal .modal-body input::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
@@ -2852,23 +2867,27 @@ footer {
       color: #00AEEF; }
       .modal-content .profile-modal .modal-body .modal-menu a.active {
         color: #BDBDBD; }
-    .modal-content .profile-modal .modal-body #socaial .form-group {
+    .modal-content .profile-modal .modal-body .modal-contents {
+      min-height: 460px; }
+    .modal-content .profile-modal .modal-body #social .form-group {
       position: relative; }
-    .modal-content .profile-modal .modal-body #socaial .radio-breferred {
+    .modal-content .profile-modal .modal-body #social .radio-breferred {
       position: absolute;
       top: 13px;
       right: 8px; }
-    .modal-content .profile-modal .modal-body #maker-spaces .makerspace-content {
-      position: relative; }
     .modal-content .profile-modal .modal-body #maker-spaces .maker-space-remove {
-      position: absolute;
-      right: 10px;
-      top: 10px; }
-    .modal-content .profile-modal .modal-body #maker-spaces .form-main {
-      background-color: #DCDCDC;
-      padding: 12px; }
+      margin-top: 10px; }
+      .modal-content .profile-modal .modal-body #maker-spaces .maker-space-remove:hover {
+        cursor: pointer; }
     .modal-content .profile-modal .modal-body #maker-spaces .add-other {
-      background-color: #fff !important; }
+      padding: 0px; }
+      .modal-content .profile-modal .modal-body #maker-spaces .add-other i {
+        font-size: 40px; }
+      .modal-content .profile-modal .modal-body #maker-spaces .add-other span {
+        padding-left: 8px;
+        font-size: 1.2em;
+        position: relative;
+        top: -8px; }
     .modal-content .profile-modal .modal-body #links .form-group {
       position: relative; }
     .modal-content .profile-modal .modal-body #links .radio-breferred {
@@ -6551,7 +6570,7 @@ img {
         margin-right: 2px;
         margin-top: 2px; }
       .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active {
-        color: #BDBDBD; }
+        color: #ED1C24; }
         .page-challenge-summary .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-challenge-summary-closed .region-content .tabs-buttons .challenge-submenu li .active .badge, .page-enter-challenge .region-content .tabs-buttons .challenge-submenu li .active .badge {
           background-color: #fff;
           color: #333333; }
@@ -7137,10 +7156,20 @@ img {
   padding: 10px; }
 .single-object-page .object-title-list {
   padding-top: 25px; }
-  .single-object-page .object-title-list a:hover {
+  .single-object-page .object-title-list a {
     color: deepskyblue; }
-  .single-object-page .object-title-list a:active {
-    color: grey; }
+  .single-object-page .object-title-list a.highlight {
+    background-color: #F2F2F2; }
+.single-object-page .hamburger-menu img {
+  width: 50px; }
+.single-object-page .hamburger-menu a.dropdown-toggle::after {
+  content: none; }
+.single-object-page .hamburger-menu a {
+  color: deepskyblue; }
+.single-object-page .hamburger-menu a.highlight {
+  color: #4F4F4F; }
+.single-object-page .nav-title {
+  padding: 20px; }
 .single-object-page .button {
   display: inline-block;
   border-radius: 4px;
