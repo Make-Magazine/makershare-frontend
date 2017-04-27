@@ -95,8 +95,10 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    * @input to recieve the project object and printable values "tags and cover image"
    */
   @Input('project') project: ProjectForm;
+  @Input('TryToSubmitPrivatePublic') TryToSubmitPrivatePublic:boolean;
   @Input('FormPrintableValues') FormPrintableValues;
   @Output() CanNavigate = new EventEmitter();
+  @Output() StoryFormValid = new EventEmitter();
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
@@ -183,8 +185,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    */
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
-      'title': [this.project.title, [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-      'field_teaser': [this.project.field_teaser.und[0].value, Validators.maxLength(250)],
+      'title': [this.project.title, [Validators.required, Validators.minLength(4), Validators.maxLength(50),CustomValidators.notEqual('Untitled'),CustomValidators.notEqual('untitled')]],
+      'field_teaser': [this.project.field_teaser.und[0].value, [Validators.required,Validators.maxLength(250)]],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
       'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
@@ -195,6 +197,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
+      this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
+      && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
+      && this.YourStoryForm['controls']['field_story'].valid);
       if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
         this.CanNavigate.emit(false);
       }
@@ -361,6 +366,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'required': 'Story is required.'
     },
     'field_teaser': {
+      'required': 'Teaser is required.',
       'maxlength': 'Max number of characters is 250'
     },
     'field_aha_moment': {
@@ -427,13 +433,13 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'guide': 'Tell us about your project and how it came to be.'
     },
     'show_tell':{
-      'guide' : 'Add a YouTube or Vimeo URL.'
+      'guide' : 'Add Video: Show & Tell'
     },
     'aha_moment':{
       'guide' : 'Your biggest insight during the build.'
     },
     'uh_oh_moment':{
-      'guide' : 'Your biggest surprise or stress during the build.'
+      'guide' : 'Uh-oh! Moment'
     },
     'tags': {
       'guide': 'Indicate types of tools, materials and skills you used on the build.'
