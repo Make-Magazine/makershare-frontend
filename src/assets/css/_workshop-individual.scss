@@ -490,6 +490,8 @@
 
 			 .hamburger-menu{
 
+				   margin-bottom: 0px;
+
 				 img{
 					 width: 50px;
 				    }
@@ -502,8 +504,22 @@
 				 	a.highlight{
 						color: #4F4F4F;
 					}
-
+					li {
+						padding-top: 10px 1.5rem;
+					}
 	          }
+
+			  .nav-item
+			  {
+				  
+				  a {
+					  padding: 0px;
+				  }
+			  }
+
+			  .close-hamburger{
+				  float: right;
+			  }
 			 	 .nav-title
 				 {
 			        padding: 20px;
