@@ -4,17 +4,12 @@
 	</div>
 </template>
 <div *ngIf="basicForm" class="basic-info" [formGroup]="basicForm" (ngSubmit)="compeleteProfile($event)">
-	<div class="form-group photo">
-		<label class="control-label">Add a Profile photo</label>
+	<div class="form-group photo mb-5">
 		<div class="row">
 			<div class="col-md-6">
-				<a for="upload" class="btn btn-white btn-sharp">Choose photo</a>
+				<label class="control-label">ADD A PROFILE PHOTO</label>
+				<!--<a for="upload" class="btn btn-white btn-sharp">Choose photo</a>-->
 				<input id="profile-photo-upload" (change)="onFileChange($event)" type="file" class="file" placeholder="Choose photo">
-				<div class="guide">
-					<p>
-						choose a photo that is at least 600 x 600 px
-					</p>
-				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="image-preview">
@@ -23,12 +18,80 @@
 			</div>
 		</div>
 	</div>
-	<div class="form-group how-started">
-		<label for="how-started">How'd you get started making?</label>
-		<input type="text" class="form-control" id="how-started" placeholder="Enter text" formControlName="started_making">
+
+
+	<div class="form-group userCity mb-5">
+		<label for="userCity">LOCATION</label>
+		<div class="address_publish">
+			<input type="checkbox" formControlName="address_publish" name="publish"> Publish this info
+		</div>
+		<div class="" formGroupName="address">
+			<div class="col-md-12" style="padding-right:2em">
+				<input [ngClass]="{valError: formErrors.address.country}" type="text" [inputFormatter]="formatter" formControlName="country"
+				 class="form-control" id="country" placeholder="Country" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="GetCountryDetails($event.item)">
+				<div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
+					{{ formErrors.address.country }}
+				</div>
+				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
+				<select [ngClass]="{valError: formErrors.address.governorate}" formControlName="governorate" *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas"
+				 id="administrative_areas">
+					<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value">{{area.value}}</option>
+				</select>
+				<div *ngIf="formErrors.address.governorate" class="alert alert-danger error-msg">
+					{{ formErrors.address.governorate }}
+				</div>
+			</div>
+			<!--<div class="col-md-12">
+				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>
+				<input *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" type="text" class="form-control" id="city" formControlName="city">
+				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>
+				<input formControlName="postal_code" *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" type="text" class="form-control" id="postal_code">
+			</div>-->
+			<!--<div class="row col-md-12" style="padding-left:3em">
+				<div *ngIf="zipCode" class="col-md-6">
+					<input formControlName="zip_code" type="text" placeholder="Zip Code">
+				</div>
+				<div *ngIf="postalCode" class="col-md-6">
+					<input formControlName="postal_code" blockNonNumber type="text" placeholder="Postal Code">
+				</div>
+			</div>-->
+		</div>
 	</div>
-	<div class="form-group interesets">
-		<label for="interesets">What are your interests as a Maker?</label>
+
+	<div class="form-group userName mb-5">
+		<label for="userName">NICKNAME</label>
+		<div class="guide">
+			<p>Your portfolio will use yore real name, but if you're known by any another, you can add it to your profile.</p>
+		</div>
+		<input type="text" formControlName="nickname" class="form-control" id="userName" placeholder="nickname">
+	</div>
+
+	<!--<div class="form-group userName">
+		<label for="userName">Tell us your firstName</label>
+		<div class="guide">
+			<p>You may add your searchable firstName Name if you are known by another name in the Maker community.</p>
+		</div>
+		<input [ngClass]="{valError: formErrors.first_name}" type="text" formControlName="first_name" class="form-control" id="firstName"
+		 placeholder="Type your firstName ">
+		<div *ngIf="formErrors.first_name" class="alert alert-danger error-msg">
+			{{ formErrors.first_name }}
+		</div>
+	</div>-->
+
+	<!--<div class="form-group userName">
+		<label for="userName">Tell us your First name</label>
+		<div class="guide">
+			<p>You may add your searchable last Name if you are known by another name in the Maker community.</p>
+		</div>
+		<input [ngClass]="{valError: formErrors.last_name}" type="text" formControlName="last_name" class="form-control" id="lastName"
+		 placeholder="Type your lastName ">
+		<div *ngIf="formErrors.last_name" class="alert alert-danger error-msg">
+			{{ formErrors.last_name }}
+		</div>
+	</div>-->
+
+	<div class="form-group interesets mb-5">
+		<label for="interesets">FAVORITE MAKER TOPICS</label>
 		<tag-input formControlName="maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
 		 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
 		 [separatorKeys]="[4, 5]">
@@ -36,94 +99,28 @@
 			 inputId="tid">
 			</tag-input-dropdown>
 		</tag-input>
-		<div class="form-group bio">
+		<div class="form-group bio mb-5">
 			<label for="bio">Bio</label>
-			<textarea class="form-control" id="bio" placeholder="Enter text" formControlName="bio"></textarea>
-		</div>
-	</div>
-	<div class="form-group userName">
-		<label for="userName">Tell us your name</label>
-		<div class="guide">
-			<p>You may add your searchable “nickname” if you are known by another name in the Maker community.</p>
-		</div>
-		<input type="text" formControlName="nickname" class="form-control" id="userName" placeholder="Type your nickname (optional)">
-	</div>
-	<div class="form-group userName">
-		<label for="userName">Tell us your firstName</label>
-		<div class="guide">
-			<p>You may add your searchable firstName Name if you are known by another name in the Maker community.</p>
-		</div>
-		<input [ngClass]="{valError: formErrors.first_name}" type="text" formControlName="first_name" class="form-control" id="firstName" placeholder="Type your firstName ">
-		<div *ngIf="formErrors.first_name" class="alert alert-danger error-msg">
-			{{ formErrors.first_name }}
-		</div>
-	</div>
-	<div class="form-group userName">
-		<label for="userName">Tell us your First name</label>
-		<div class="guide">
-			<p>You may add your searchable last Name if you are known by another name in the Maker community.</p>
-		</div>
-		<input [ngClass]="{valError: formErrors.last_name}" type="text" formControlName="last_name" class="form-control" id="lastName" placeholder="Type your lastName ">
-		<div *ngIf="formErrors.last_name" class="alert alert-danger error-msg">
-			{{ formErrors.last_name }}
-		</div>
-	</div>
-	<div class="form-group userCity">
-		<label for="userCity">Where do you live?</label>
-		<div class="" formGroupName="address">
-			<div class="col-md-12" style="padding-right:2em">
-				<input [ngClass]="{valError: formErrors.address.country}" type="text" [inputFormatter]="formatter" formControlName="country" class="form-control" id="country" placeholder="Country"
-			 	[ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="GetCountryDetails($event.item)">
-			 	<div *ngIf="formErrors.address.country" class="alert alert-danger error-msg">
-					{{ formErrors.address.country }}
-				</div>
-			 	<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
-				<select [ngClass]="{valError: formErrors.address.governorate}" formControlName="governorate" *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.administrative_areas" id="administrative_areas">
-					<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value">{{area.value}}</option>
-				</select>
-				<div *ngIf="formErrors.address.governorate" class="alert alert-danger error-msg">
-					{{ formErrors.address.governorate }}
-				</div>
-			</div>
-			<div class="col-md-12">
-				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>
-				<input *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" type="text" class="form-control" id="city" formControlName="city">
-				<label *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>
-				<input formControlName="postal_code" *ngIf="CountryFieldsAndDetails && CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" type="text" class="form-control" id="postal_code">
-			</div>
-			<div class="row col-md-12" style="padding-left:3em">
-				<div *ngIf="zipCode" class="col-md-6">
-					<input formControlName="zip_code" type="text" placeholder="Zip Code">
-				</div>
-				<div *ngIf="postalCode" class="col-md-6">
-					<input formControlName="postal_code" blockNonNumber type="text" placeholder="Postal Code">
-				</div>
-				</div>
+			<textarea class="form-control" id="bio" formControlName="bio" rows="5"></textarea>
 		</div>
 	</div>
 
-	<div class="form-group describe">
-		<input type="checkbox" formControlName="address_publish" name="publish">
-		Publish this info
-		<div class="guide">
-			<p>If you allow, only the city, State, and country will show on your profile; we ask for this so we can on Maker demographics.</p>
+	<div class="form-group how-started mb-5">
+		<label for="how-started">MAKER MOTTO</label>
+		<input type="text" class="form-control" id="how-started" formControlName="started_making">
+	</div>
+
+	<div class="form-group describe mb-3">
+		<label for="describe">HOW YOU BECOME A MAKER</label>
+		<textarea [ngClass]="{valError: formErrors.describe_yourself}" type="text" formControlName="describe_yourself" class="form-control"
+		 name="describe" id="describe" maxlength="60" cols="50" rows="5"></textarea>
+		<div *ngIf="formErrors.describe_yourself" class="alert alert-danger error-msg">
+			{{ formErrors.describe_yourself }}
 		</div>
 	</div>
-	<div class="form-group describe">
-		<label for="describe">How do you describe yourself as a Maker?</label>
-		<div class="guide">
-			<p>How do you introduce yourself to other makers? For example, I am a welder. I am an artist. I am a newbie. I am a professional
-				fabricator. I am an educator. Etcetera!</p>
-		</div>
-		<textarea [ngClass]="{valError: formErrors.describe_yourself}" type="text" formControlName="describe_yourself" class="form-control" name="describe" id="describe" placeholder="Enter up to 60 characters"
-			maxlength="60"></textarea>
-					<div *ngIf="formErrors.describe_yourself" class="alert alert-danger error-msg">
-					{{ formErrors.describe_yourself }}
-				</div>
-	</div>
-	
-<div class="form-group email">
-	<!--<label for="email">Enter your email address</label>
+
+	<div class="form-group email mb-5">
+		<!--<label for="email">Enter your email address</label>
 	<input [ngClass]="{valError: formErrors.mail}" type="email" class="form-control" name="email" id="email" formControlName="mail" placeholder="email@example.com">
 	<div *ngIf="formErrors.mail" class="alert alert-danger error-msg">
 		{{ formErrors.mail }}
@@ -132,7 +129,7 @@
 		<p>This does not change the address you use to login; this is where we will send administrative emails and forward messages
 			from other Makers. It can match your login email or not; you can change it at any time.</p>
 	</div>-->
-	<input type="checkbox" formControlName="newsletter_subscription" name="subscribe" checked="true">Subscribe to the Make:
-	weekly newsletter
-</div>
+		<input type="checkbox" formControlName="newsletter_subscription" name="subscribe" checked="true"> Subscribe to Make: Community
+		newsletter
+	</div>
 </div>

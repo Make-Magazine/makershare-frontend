@@ -38,21 +38,23 @@
 		margin-top: 20px;
 		color: $main-grey;
 		input{margin-top: 10px; margin-bottom: 10px;}
-		#userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}
+		// #userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}
 		#country {width: 30%;}
 		#state {width: 20%;}
 	}
 	.optional-info {
 		@extend .basic-info;
 		a.btn {
-		    display: inline-block;
-		    text-align: center;
-		    padding: 6px;
-		    background-color: #4f4f4f;
-		    color: white;
-		    border: 1px solid #444;
-		    min-width: 144px;
-		    font-size: 16px;
+
+		}
+		i {
+			font-size: 30px;
+		}
+		span {
+			    padding-left: 8px;
+    font-size: 1.2em;
+    position: relative;
+    top: -2px;
 		}
 		
 		.social-links {
@@ -88,5 +90,17 @@
 	.create-cover {
 		padding: 14px;
 		overflow: hidden;
+	}
+}
+
+
+.page-create-profile {
+	.basic-info  {
+		.form-group {
+			.image-preview {
+				width: 160px;
+				height: auto;
+			}
+		}
 	}
 }
