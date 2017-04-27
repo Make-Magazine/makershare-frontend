@@ -19,7 +19,7 @@ export class ProjectComponent implements OnInit {
   deletedArr = [];
   pages: number = 0;
   //countProject :any;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
   page_arg;
 
 

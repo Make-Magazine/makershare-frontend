@@ -13,7 +13,7 @@ export class ChallengeFollowComponent implements OnInit {
   challenges = [];
   userId;
   pages: number = 0;
-  hideloadmorefollowchallenge = false;
+  hideloadmorefollowchallenge = true;
   page_arg;
   constructor(
     private viewService: ViewService,
