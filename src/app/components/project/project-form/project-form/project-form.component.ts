@@ -48,9 +48,10 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
    * because the values what drupal returns are just a references to the entity
    * so we need a separated variables to store the display values
    */
-  CurrentActiveVisibility = 'draft';
-  ProjectLoaded = true;
+  ProjectLoaded:boolean;
+  StoryFormValid:boolean = false;
   current_active_tab: string;
+  TryToSubmitPrivatePublic:boolean = false;
   FormPrintableValues = {
     cover_image:{file:"",filename:""},
     tags:[],
@@ -98,7 +99,7 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
 
   ConvertProjectToCreateForm(data:ProjectView){
     var tasks = [];
-    let NotReadyFields = ["field_categories","field_difficulty","field_duration","field_tags","field_tools","field_materials","field_parts","field_resources","field_maker_memberships"];
+    let NotReadyFields = ["field_visibility2","field_categories","field_difficulty","field_duration","field_tags","field_tools","field_materials","field_parts","field_resources","field_maker_memberships"];
     for(let index in data){
       let field = data[index];
       if(NotReadyFields.indexOf(index) == -1){
@@ -165,6 +166,11 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
             });
             break;
           }
+          case "field_visibility2":
+          {
+            this.project.field_visibility2.und[0] = field.und[0].tid;
+            break;
+          }
           default:
           {
             break;
@@ -172,14 +178,6 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
         }
       }
     }
-    if(data.field_visibility2.und[0].tid == 370){
-      this.CurrentActiveVisibility = 'public';
-    }else if(data.field_visibility2.und[0].tid == 371){
-      this.CurrentActiveVisibility = 'private';
-    }else{
-      this.CurrentActiveVisibility = 'draft';
-    }
-    this.project.field_visibility2.und[0] = +data.field_visibility2.und[0].tid;
     var subtasks = [];
     let source = Observable.forkJoin(tasks);
     source.subscribe(
@@ -347,15 +345,9 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
-    if(!this.project.title){
-      this.project.SetField("Untitled","title");
-    }
-    if(this.project.GetField("field_visibility2").und[0] == 370){
+    if(this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371){
       this.project.CheckIfReadyToPublic();
     }
-    if(this.project.field_show_tell_video_as_default.und[0].value == 0){
-      delete this.project.field_show_tell_video_as_default.und;
-    } 
     if(this.project.GetField("nid")){
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
@@ -406,23 +398,26 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
       this.FormPrintableValues.resources_files = event;
     }
   }
-  PublicPrivateSave(){
-    let visibility = this.project.GetField("field_visibility2");
-    if(visibility.und[0] == 1115){
-      // display error message
-      this.notificationBarService.create({ message: 'You must select private or public before publishing the project', type: NotificationType.Warning});
-      return;
-    }
-    visibility.und[0] == 370? this.GettingFieldsReady(1):this.GettingFieldsReady(0);
-  }
 
   /**
    * form saving function for all types of the project
    * @param Visibility : the field value witch has 3 types "public ,private and draft"
    * @param Status : the status of the project dependent on visibility type
    */
-  GettingFieldsReady(Status:number){
+  GettingFieldsReady(Status:number,Visibility:number){
+    if(Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115){
+      this.notificationBarService.create({ message: 'Ah snap! Looks Like we need a little more info from you.', type: NotificationType.Error});
+      this.TryToSubmitPrivatePublic = true;
+      return;
+    }
+    this.project.SetField(Visibility,'field_visibility2');
     this.project.SetField(Status,"status");
+    if(!this.project.title){
+      this.project.SetField("Untitled","title");
+    }
+    if(this.project.field_show_tell_video_as_default.und[0].value == 0){
+      delete this.project.field_show_tell_video_as_default.und;
+    } 
     this.SetPrjectValues();
   }
 
@@ -569,7 +564,7 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
       this.userService.getUrlFromId(userID).subscribe( res => {
         this.router.navigate(['/portfolio/' + res.url], navigationExtras);    
       });
-    }
+     }
   }
 
 }
