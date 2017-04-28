@@ -1,19 +1,19 @@
 .page-inbox {
-	background-color: $light-grey;
+	// background-color: $light-grey;
 	.inbox-header {
 		position: relative;
 		display: flex;
 		align-content:center;
 		margin-top: 10px;
 		& > ul {
-			overflow: hidden;
-			width: 210px;
+			// overflow: hidden;
+			// width: 210px;
 			margin: auto;
 			position: relative;
 			bottom: 0;
 			li {
 				margin: 0;
-				float: left;
+				// float: left;
 				vertical-align: bottom;
 				.btn {
 					border-bottom: 0;
@@ -28,14 +28,19 @@
 			line-height: 1em;
 			color: $main-grey;
 		}
+		
 	}
+	.inbox-title{
+			padding-top: 20px;
+    	padding-bottom: 40px;
+			width: 200px;
+		}
 	.inbox-container ,.notification-container{
 		background-color: #fff;
 		padding: 20px 0;
 		margin-bottom: 10px;
 		.inbox-controls {
 			padding: 5px 10px;
-			overflow: hidden;
 			margin: 0;
 			.selectall {
 				display: inline-block;
@@ -58,9 +63,17 @@
 		}
 	}
 	.inbox-container {
+		.dropdown {
+			.dropdown-menu {
+				left: inherit !important;
+				right: 0 !important;
+			}
+		}
 		.messages-list {
-			padding: 0;
-			margin: 0 0 15px;
+		padding: 0;
+    margin: 0 0 15px;
+    clear: both;
+    padding-top: 20px;
 			.message-item {
 				display: flex;
 				align-items:center;
@@ -73,7 +86,7 @@
 					display: flex;
 					align-items:center;
 					border: 1px solid $main-grey;					
-					width: 95%;
+					width: 100%;
 					overflow: hidden;
 					padding: 5px 10px;
 					.message-info {
