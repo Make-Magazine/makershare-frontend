@@ -8,7 +8,11 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
         <div class="dropdown-notification"> 
         <ul class="list-group">
-          <li class="p-2"><a [routerLink]="['/inbox-notifications']" >View All</a><i class="fa fa-cog float-right pt-1" aria-hidden="true"></i></li>
+          <li class="d-flex justify-content-end">
+            <a class="mr-auto p-2" [routerLink]="['/inbox-notifications']" >View All</a>
+            <i class="fa fa-cog float-right p-2" aria-hidden="true"></i>
+            <a><i class="fa fa-times float-right p-2" aria-hidden="true"></i></a>
+          </li>
           <li class="list-group-item" *ngFor="let notification of notifications">
             <app-single *ngIf="notification" [CurrentObject]="notification"></app-single>
           </li>

@@ -26,7 +26,7 @@ export class BookmarkComponent implements OnInit {
     checkUserLogin = false;
 
   currentuser;
-  isBookmarked
+  isBookmarked=false;
 
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
@@ -37,6 +37,7 @@ export class BookmarkComponent implements OnInit {
       /*bookmark start */
       this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
         this.isBookmarked = data[0];
+        console.log(this.isBookmarked);
       }, err => {
         //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
       })
