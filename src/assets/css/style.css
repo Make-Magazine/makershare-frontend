@@ -1591,8 +1591,13 @@ footer {
   border: none !important;
   outline: none !important; }
 .bookmark-page .content-wrapper {
-  min-height: 250px;
-  padding: 15px; }
+  min-height: 530px;
+  padding: 15px;
+  margin-bottom: 20px; }
+  .bookmark-page .content-wrapper td {
+    border-top: 1px solid #dcdcdc; }
+  .bookmark-page .content-wrapper th {
+    border-top: 1px solid #dcdcdc; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -3775,6 +3780,14 @@ button:hover {
     padding: 0;
     width: 100%;
     height: auto; }
+    .challenge-card .image-container .sponsor_bar {
+      position: absolute;
+      width: 60px !important;
+      height: 60px !important;
+      max-width: 60px !important;
+      display: block;
+      top: 10px;
+      right: 10px; }
   .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
     font-size: 0.95em;
@@ -6866,8 +6879,8 @@ img {
       height: auto; }
     .page-challenge-summary .challenge-card .image-container .sponsor_bar, .page-challenge-summary-closed .challenge-card .image-container .sponsor_bar, .page-enter-challenge .challenge-card .image-container .sponsor_bar {
       position: absolute;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       display: block;
       top: 10px;
       right: 10px; }
