@@ -1648,8 +1648,13 @@ footer {
   max-width: 350px;
   max-height: 360px; }
 
+/* Bookmark */
+.bookmark-page .bookmark-menu ul li .btn-create-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-create-tab:focus {
+  border: none !important;
+  outline: none !important; }
 .bookmark-page .content-wrapper {
-  min-height: 250px; }
+  min-height: 250px;
+  padding: 15px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -6126,6 +6131,10 @@ img {
             height: auto; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
             color: #BDBDBD; }
+          .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes-div .showcase-likes {
+            width: 12px; }
+          .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes-div span {
+            color: #BDBDBD; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
           font-weight: bold;
@@ -6540,8 +6549,7 @@ img {
   color: #BDBDBD;
   background-color: inherit; }
   .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
-    color: #4f4f4f;
-    border: 1px solid #4f4f4f; }
+    color: #4f4f4f; }
   .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
     cursor: pointer;
     color: #4f4f4f;
@@ -7492,123 +7500,126 @@ img {
 .page-portfolio .portfolio-photos, .page-portfolio .portfolio-private {
   display: none; }
 
-.page-inbox {
-  background-color: #BDBDBD; }
-  .page-inbox .inbox-header {
+.page-inbox .inbox-header {
+  position: relative;
+  display: flex;
+  align-content: center;
+  margin-top: 10px; }
+  .page-inbox .inbox-header > ul {
+    margin: auto;
     position: relative;
+    bottom: 0; }
+    .page-inbox .inbox-header > ul li {
+      margin: 0;
+      vertical-align: bottom; }
+      .page-inbox .inbox-header > ul li .btn {
+        border-bottom: 0; }
+      .page-inbox .inbox-header > ul li .active {
+        background-color: #fff;
+        color: #333333; }
+  .page-inbox .inbox-header span {
+    line-height: 1em;
+    color: #333333; }
+.page-inbox .inbox-title {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 200px; }
+.page-inbox .inbox-container, .page-inbox .notification-container {
+  background-color: #fff;
+  padding: 20px 0;
+  margin-bottom: 10px; }
+  .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
+    padding: 5px 10px;
+    margin: 0; }
+    .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
+      display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
+      display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
+      float: right;
+      margin-right: 23px; }
+      .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
+        padding-right: 10px; }
+  .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
+    width: 150px;
+    margin: 20px auto;
+    font-size: 10px; }
+.page-inbox .inbox-container .dropdown .dropdown-menu {
+  left: inherit !important;
+  right: 0 !important; }
+.page-inbox .inbox-container .messages-list {
+  padding: 0;
+  margin: 0 0 15px;
+  clear: both;
+  padding-top: 20px; }
+  .page-inbox .inbox-container .messages-list .message-item {
     display: flex;
-    align-content: center;
-    margin-top: 10px; }
-    .page-inbox .inbox-header > ul {
-      overflow: hidden;
-      width: 210px;
-      margin: auto;
-      position: relative;
-      bottom: 0; }
-      .page-inbox .inbox-header > ul li {
-        margin: 0;
-        float: left;
-        vertical-align: bottom; }
-        .page-inbox .inbox-header > ul li .btn {
-          border-bottom: 0; }
-        .page-inbox .inbox-header > ul li .active {
-          background-color: #fff;
-          color: #333333; }
-    .page-inbox .inbox-header span {
-      line-height: 1em;
-      color: #333333; }
-  .page-inbox .inbox-container, .page-inbox .notification-container {
-    background-color: #fff;
-    padding: 20px 0;
-    margin-bottom: 10px; }
-    .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
-      padding: 5px 10px;
-      overflow: hidden;
-      margin: 0; }
-      .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
-        display: inline-block; }
-      .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
-        display: inline-block; }
-      .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
-        float: right;
-        margin-right: 23px; }
-        .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
-          padding-right: 10px; }
-    .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
-      width: 150px;
-      margin: 20px auto;
-      font-size: 10px; }
-  .page-inbox .inbox-container .messages-list {
-    padding: 0;
-    margin: 0 0 15px; }
-    .page-inbox .inbox-container .messages-list .message-item {
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px; }
+    .page-inbox .inbox-container .messages-list .message-item .select {
+      width: 3%; }
+    .page-inbox .inbox-container .messages-list .message-item .wrapper {
       display: flex;
       align-items: center;
-      margin: 0 5px;
-      padding: 0 5px; }
-      .page-inbox .inbox-container .messages-list .message-item .select {
-        width: 3%; }
-      .page-inbox .inbox-container .messages-list .message-item .wrapper {
-        display: flex;
-        align-items: center;
-        border: 1px solid #333333;
-        width: 95%;
+      border: 1px solid #333333;
+      width: 100%;
+      overflow: hidden;
+      padding: 5px 10px; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
+        width: 40%; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
+          width: 60px; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
+          color: #00AEEF;
+          text-decoration: none; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
+        width: 30%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
+        width: 20%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
-        padding: 5px 10px; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
-          width: 40%; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
-            width: 60px; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
-            color: #00AEEF;
-            text-decoration: none; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-          width: 30%; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
-          width: 20%; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
-          overflow: hidden;
-          color: #333333;
-          position: relative; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
-            float: right; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
-          background-color: #BDBDBD; }
-      .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
-        border-top: 0; }
-      .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
-        background-color: #aaaaaa; }
-  .page-inbox .notification-container .notification-list {
-    padding: 0 0 20px;
-    margin: 0 0 10px; }
-    .page-inbox .notification-container .notification-list .notification-item {
-      display: flex;
-      align-items: center;
-      margin: 0 5px;
-      padding: 0 5px; }
-      .page-inbox .notification-container .notification-list .notification-item .select {
-        width: 3%; }
-      .page-inbox .notification-container .notification-list .notification-item .wrapper {
-        border: 1px solid #333333;
-        width: 95%;
+        color: #333333;
+        position: relative; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
+          float: right; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
+        background-color: #BDBDBD; }
+    .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
+      border-top: 0; }
+    .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
+      background-color: #aaaaaa; }
+.page-inbox .notification-container .notification-list {
+  padding: 0 0 20px;
+  margin: 0 0 10px; }
+  .page-inbox .notification-container .notification-list .notification-item {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px; }
+    .page-inbox .notification-container .notification-list .notification-item .select {
+      width: 3%; }
+    .page-inbox .notification-container .notification-list .notification-item .wrapper {
+      border: 1px solid #333333;
+      width: 95%;
+      overflow: hidden;
+      padding: 5px 10px; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
+        width: 85%; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
+          width: 60px; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
         overflow: hidden;
-        padding: 5px 10px; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
-          width: 85%; }
-          .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
-            width: 60px; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
-          overflow: hidden;
-          color: #333333;
-          position: relative; }
-          .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
-            float: right; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
-          background-color: #BDBDBD; }
-      .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
-        border-top: 0; }
-      .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
-        background-color: #aaaaaa; }
+        color: #333333;
+        position: relative; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
+          float: right; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
+        background-color: #BDBDBD; }
+    .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
+      border-top: 0; }
+    .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
+      background-color: #aaaaaa; }
 
 .conversation-container {
   background-color: #fff;
