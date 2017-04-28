@@ -6,7 +6,6 @@ notification-bar {
 
 body {
     margin-top: 113px;
-    min-height: 500px;
     background-color: $site-bg;
     padding-right: 0 !important; 
     -webkit-transition: all 1.25s ease-in-out;
@@ -14,6 +13,9 @@ body {
         -ms-transition: all 1.25s ease-in-out;
          -o-transition: all 1.25s ease-in-out;
             transition: all 1.25s ease-in-out;
+}
+.main-container {
+    min-height: 400px;
 }
 .default-header {
     background-color: $light-grey;
