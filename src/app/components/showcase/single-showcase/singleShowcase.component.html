@@ -39,6 +39,9 @@
                       <div class="views-count-div">
                         <app-bookmark [nodeNid]="showcase.nid"></app-bookmark>
                       </div>
+                      <a class="profile-share">
+                        <app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="showcase.cover_photo"></app-shared-buttons>
+                      </a>
                       <!--<div class="projects-count-div">
                         <span class="projects-count">{{projectsCount}}
                            <span *ngIf="projectsCount>1">projects</span>
