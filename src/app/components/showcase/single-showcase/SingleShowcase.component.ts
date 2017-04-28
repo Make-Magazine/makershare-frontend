@@ -15,7 +15,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbTooltipConfig],
 })
 export class SinglShowcaseComponent implements OnInit {
-
+customDescription:string
   showcase = { uid: "" };
   view = 'grid';
   profile = {};
@@ -118,7 +118,10 @@ export class SinglShowcaseComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('showcase', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.showcase = data[0];
+        console.log(this.showcase)
         //this.getProfile(this.showcase.uid);
+        this.customDescription=this.showcase['description']
+        console.log(this.customDescription)
 
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
         this.meta.setTag('og:image', this.showcase['cover_photo']);
