@@ -17,7 +17,7 @@ export class MakerComponent implements OnInit {
   deletedArr = [];
   userId;
   pages: number = 0;
-  hideloadmoremaker = false;
+  hideloadmoremaker = true;
   page_arg;
   constructor(private route: ActivatedRoute,
     private router: Router,

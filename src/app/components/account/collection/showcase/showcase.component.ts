@@ -19,7 +19,7 @@ export class ShowcaseComponent implements OnInit {
   showcases = [];
   deletedArr = [];
   pages: number = 0;
-  hideloadmoreshowcase = false;
+  hideloadmoreshowcase = true;
   page_arg;
   @Input() countShowcase;
 
