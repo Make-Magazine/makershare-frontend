@@ -4472,8 +4472,8 @@ button:hover {
     .page-project .feedback-group .login-link {
       padding: 10px; }
       .page-project .feedback-group .login-link a {
-        color: #00AEEF;
-        text-decoration: underline; }
+        text-decoration: none;
+        color: #fff; }
   .page-project .actions-button {
     -webkit-justify-content: flex-end;
     /* Safari */
@@ -4830,6 +4830,7 @@ header.showcase-project .next {
   .feedback-group .feedback-card {
     padding: 10px;
     background: white;
+    word-break: break-all;
     margin-bottom: 4px; }
     .feedback-group .feedback-card .user-info {
       padding: 4px 0px 0px 0px; }
