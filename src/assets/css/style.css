@@ -733,7 +733,6 @@ notification-bar {
 
 body {
   margin-top: 113px;
-  min-height: 500px;
   background-color: #F2F2F2;
   padding-right: 0 !important;
   -webkit-transition: all 1.25s ease-in-out;
@@ -741,6 +740,9 @@ body {
   -ms-transition: all 1.25s ease-in-out;
   -o-transition: all 1.25s ease-in-out;
   transition: all 1.25s ease-in-out; }
+
+.main-container {
+  min-height: 400px; }
 
 .default-header {
   background-color: #BDBDBD;
@@ -6238,9 +6240,9 @@ img {
         font-weight: bold;
         color: #4f4f4f; }
   .page-create-project-why .small-text {
-    font-size: 0.9em;
+    font-size: 0.75em;
     display: inline-block;
-    margin-top: 3px;
+    margin-bottom: 0;
     margin-left: 5px; }
   .page-create-project-why .your-story label {
     font-family: "Messina Modern Regular";
@@ -6249,6 +6251,8 @@ img {
     text-transform: capitalize;
     line-height: 120%;
     color: #828282; }
+    .page-create-project-why .your-story label.selected-topic {
+      font-size: 1.1em; }
   .page-create-project-why .your-story .cover label {
     display: inline-block; }
   .page-create-project-why .your-story .projectName {
@@ -6267,6 +6271,11 @@ img {
         cursor: pointer; }
     .page-create-project-why .your-story .projectCategory .categories-group {
       width: 100%; }
+      .page-create-project-why .your-story .projectCategory .categories-group .dropdownIcon {
+        position: absolute;
+        right: 26px;
+        top: 14px;
+        pointer-events: none; }
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
       .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
         width: 100% !important;
@@ -6274,16 +6283,27 @@ img {
         padding: 5px 10px;
         border: none;
         border-radius: 0;
+        font-size: 1em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         -moz-box-shadow: 2px 2px 8px #BDBDBD;
         -webkit-box-shadow: 2px 2px 8px #BDBDBD;
         box-shadow: 2px 2px 8px #BDBDBD; }
-    .page-create-project-why .your-story .projectCategory p.cate-name {
-      margin: 3px 0;
-      margin-left: 15px; }
     .page-create-project-why .your-story .projectCategory .list-group-item {
       width: 50%; }
   .page-create-project-why .your-story .cate-list {
     padding: 0 30px; }
+    .page-create-project-why .your-story .cate-list .remove-cate {
+      font-size: 1.5em; }
+    .page-create-project-why .your-story .cate-list p.cate-name {
+      margin: 3px 0;
+      margin-left: 15px;
+      border-radius: 0;
+      font-size: 0.9em;
+      padding: 8px 1rem;
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD; }
   .page-create-project-why .your-story .cover .image-preview {
     width: 50%; }
     .page-create-project-why .your-story .cover .image-preview p {
