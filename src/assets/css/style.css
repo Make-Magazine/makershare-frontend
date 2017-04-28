@@ -215,6 +215,92 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
+.page-create-profile {
+  background-color: #F2F2F2;
+  margin: 0px; }
+  .page-create-profile .top-content-wrapper {
+    background-color: #333333;
+    color: #fff;
+    padding-bottom: 10px; }
+    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
+      color: #fff; }
+  .page-create-profile .create-nav {
+    background-color: #F2F2F2;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 0;
+    vertical-align: bottom; }
+    .page-create-profile .create-nav ul {
+      float: left;
+      margin-bottom: 0; }
+      .page-create-profile .create-nav ul li {
+        float: left; }
+        .page-create-profile .create-nav ul li .active {
+          background-color: #fff;
+          border-bottom: #fff; }
+    .page-create-profile .create-nav .save-next, .page-create-profile .create-nav .skip {
+      float: right;
+      position: relative;
+      bottom: 10px; }
+    .page-create-profile .create-nav .skip {
+      padding: 7px 35px;
+      display: none; }
+  .page-create-profile .save-next, .page-create-profile .skip {
+    background-color: #fff; }
+  .page-create-profile .basic-info, .page-create-profile .optional-info {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    color: #333333; }
+    .page-create-profile .basic-info input, .page-create-profile .optional-info input {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    .page-create-profile .basic-info #profile-photo-upload, .page-create-profile .optional-info #profile-photo-upload {
+      display: none; }
+    .page-create-profile .basic-info .custom-control.custom-checkbox, .page-create-profile .optional-info .custom-control.custom-checkbox {
+      margin-right: 0; }
+    .page-create-profile .basic-info #userName, .page-create-profile .optional-info #userName {
+      width: 40%; }
+    .page-create-profile .basic-info .ng2-tags-container, .page-create-profile .optional-info .ng2-tags-container {
+      align-items: center; }
+  .page-create-profile .optional-info i {
+    font-size: 30px; }
+  .page-create-profile .optional-info span {
+    padding-left: 8px;
+    font-size: 1.2em;
+    position: relative;
+    top: -2px; }
+  .page-create-profile .optional-info .social-links li:first-of-type h4 {
+    margin-left: 82%;
+    font-size: 14px; }
+  .page-create-profile .optional-info .social-links label {
+    width: 30%;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="checkbox"] {
+    margin-left: 30px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="text"] {
+    width: 50%;
+    margin: 0;
+    padding: 3px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links i {
+    width: 25px; }
+  .page-create-profile .optional-info .social-links p {
+    margin-top: 5px;
+    font-size: 15px; }
+  .page-create-profile .guide {
+    background-color: #BDBDBD;
+    padding: 15px;
+    margin: 15px 0; }
+  .page-create-profile .create-cover {
+    padding: 14px;
+    overflow: hidden; }
+
+.page-create-profile .basic-info .form-group .image-preview, .page-create-profile .optional-info .form-group .image-preview {
+  width: 160px;
+  height: auto; }
+
 .displace, .button-container-main-1 .btn,
 .button-container-main-2 .btn,
 .button-container-sec-2 .btn,
@@ -575,30 +661,6 @@ a:not([href]):not([tabindex]).btn-load-more {
     height: 100%;
     position: absolute;
     z-index: 10000; }
-  .project .card-title {
-    background-color: #fff;
-    padding: 10px;
-    position: relative;
-    font-family: "Messina Modern Regular";
-    font-size: 2.6em;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 120%;
-    color: #828282;
-    color: #4F4F4F;
-    min-height: 38px; }
-    .project .card-title .winner {
-      display: none;
-      position: absolute;
-      bottom: -10px;
-      right: 10px;
-      color: #00AEEF; }
-      .project .card-title .winner li {
-        display: inline-block; }
-        .project .card-title .winner li i {
-          width: 20px;
-          font-size: 16px;
-          bottom: 0; }
   .project .project-image {
     background-color: #BDBDBD;
     height: auto;
@@ -2512,7 +2574,8 @@ footer {
     width: 100%;
     margin: 0;
     max-width: 230px;
-    cursor: pointer; }
+    cursor: pointer;
+    text-transform: none; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -3411,41 +3474,46 @@ footer {
     .maker-mobile-card .maker-pic-container img {
       width: 100%;
       height: 100%; }
-  .maker-mobile-card .maker-data .maker-name {
-    font-family: "Messina Modern Regular";
-    font-size: 1.3em;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 120%;
-    color: #828282;
-    color: #00AEEF; }
-  .maker-mobile-card .maker-data .maker-nickname {
-    font-family: "Messina Modern Regular";
-    font-size: 0.95em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-bottom: 2px; }
-  .maker-mobile-card .maker-data .maker-city {
-    font-family: "Messina Sans SemiBold";
-    font-size: 0.8em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    font-size: 0.8em !important; }
-  .maker-mobile-card .maker-data .maker-descripe {
-    font-family: "Messina Modern Regular";
-    font-size: 0.95em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-top: 5px;
-    font-weight: bold; }
+  .maker-mobile-card .maker-data {
+    max-width: 230px;
+    word-break: break-all;
+    overflow: hidden; }
+    .maker-mobile-card .maker-data .maker-name {
+      line-height: 150%;
+      font-family: "Messina Modern Regular";
+      font-size: 1.3em;
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 120%;
+      color: #828282;
+      color: #00AEEF; }
+    .maker-mobile-card .maker-data .maker-nickname {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 2px; }
+    .maker-mobile-card .maker-data .maker-city {
+      font-family: "Messina Sans SemiBold";
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-size: 0.8em !important; }
+    .maker-mobile-card .maker-data .maker-descripe {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-top: 5px;
+      font-weight: bold; }
   .maker-mobile-card .card-stats {
     padding: 2px;
     color: #BDBDBD; }
@@ -6086,86 +6154,6 @@ img {
           font-size: 16px;
           padding-right: 5px; }
 
-.page-create-profile {
-  background-color: #F2F2F2;
-  margin: 0px; }
-  .page-create-profile .top-content-wrapper {
-    background-color: #333333;
-    color: #fff;
-    padding-bottom: 10px; }
-    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
-      color: #fff; }
-  .page-create-profile .create-nav {
-    background-color: #F2F2F2;
-    overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 0;
-    vertical-align: bottom; }
-    .page-create-profile .create-nav ul {
-      float: left;
-      margin-bottom: 0; }
-      .page-create-profile .create-nav ul li {
-        float: left; }
-        .page-create-profile .create-nav ul li .active {
-          background-color: #fff;
-          border-bottom: #fff; }
-    .page-create-profile .create-nav .save-next, .page-create-profile .create-nav .skip {
-      float: right;
-      position: relative;
-      bottom: 10px; }
-    .page-create-profile .create-nav .skip {
-      padding: 7px 35px;
-      display: none; }
-  .page-create-profile .basic-info, .page-create-profile .optional-info {
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
-    color: #333333; }
-    .page-create-profile .basic-info input, .page-create-profile .optional-info input {
-      margin-top: 10px;
-      margin-bottom: 10px; }
-    .page-create-profile .basic-info #country, .page-create-profile .optional-info #country {
-      width: 30%; }
-    .page-create-profile .basic-info #state, .page-create-profile .optional-info #state {
-      width: 20%; }
-  .page-create-profile .optional-info i {
-    font-size: 30px; }
-  .page-create-profile .optional-info span {
-    padding-left: 8px;
-    font-size: 1.2em;
-    position: relative;
-    top: -2px; }
-  .page-create-profile .optional-info .social-links li:first-of-type h4 {
-    margin-left: 82%;
-    font-size: 14px; }
-  .page-create-profile .optional-info .social-links label {
-    width: 30%;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links input[type="checkbox"] {
-    margin-left: 30px;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links input[type="text"] {
-    width: 50%;
-    margin: 0;
-    padding: 3px;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links i {
-    width: 25px; }
-  .page-create-profile .optional-info .social-links p {
-    margin-top: 5px;
-    font-size: 15px; }
-  .page-create-profile .guide {
-    background-color: #BDBDBD;
-    padding: 15px;
-    margin: 15px 0; }
-  .page-create-profile .create-cover {
-    padding: 14px;
-    overflow: hidden; }
-
-.page-create-profile .basic-info .form-group .image-preview, .page-create-profile .optional-info .form-group .image-preview {
-  width: 160px;
-  height: auto; }
-
 .page-create-project-why {
   color: #4F4F4F;
   background-color: #F2F2F2; }
@@ -6433,6 +6421,9 @@ img {
     margin-top: 15px; }
   .page-create-project-why .team {
     padding-top: 20px; }
+    .page-create-project-why .team .maker-mobile-card {
+      padding: 15px 15px 5px;
+      height: 145px; }
     .page-create-project-why .team form {
       padding-bottom: 30px; }
     .page-create-project-why .team input {
@@ -7522,123 +7513,126 @@ img {
 .page-portfolio .portfolio-photos, .page-portfolio .portfolio-private {
   display: none; }
 
-.page-inbox {
-  background-color: #BDBDBD; }
-  .page-inbox .inbox-header {
+.page-inbox .inbox-header {
+  position: relative;
+  display: flex;
+  align-content: center;
+  margin-top: 10px; }
+  .page-inbox .inbox-header > ul {
+    margin: auto;
     position: relative;
+    bottom: 0; }
+    .page-inbox .inbox-header > ul li {
+      margin: 0;
+      vertical-align: bottom; }
+      .page-inbox .inbox-header > ul li .btn {
+        border-bottom: 0; }
+      .page-inbox .inbox-header > ul li .active {
+        background-color: #fff;
+        color: #333333; }
+  .page-inbox .inbox-header span {
+    line-height: 1em;
+    color: #333333; }
+.page-inbox .inbox-title {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 200px; }
+.page-inbox .inbox-container, .page-inbox .notification-container {
+  background-color: #fff;
+  padding: 20px 0;
+  margin-bottom: 10px; }
+  .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
+    padding: 5px 10px;
+    margin: 0; }
+    .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
+      display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
+      display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
+      float: right;
+      margin-right: 23px; }
+      .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
+        padding-right: 10px; }
+  .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
+    width: 150px;
+    margin: 20px auto;
+    font-size: 10px; }
+.page-inbox .inbox-container .dropdown .dropdown-menu {
+  left: inherit !important;
+  right: 0 !important; }
+.page-inbox .inbox-container .messages-list {
+  padding: 0;
+  margin: 0 0 15px;
+  clear: both;
+  padding-top: 20px; }
+  .page-inbox .inbox-container .messages-list .message-item {
     display: flex;
-    align-content: center;
-    margin-top: 10px; }
-    .page-inbox .inbox-header > ul {
-      overflow: hidden;
-      width: 210px;
-      margin: auto;
-      position: relative;
-      bottom: 0; }
-      .page-inbox .inbox-header > ul li {
-        margin: 0;
-        float: left;
-        vertical-align: bottom; }
-        .page-inbox .inbox-header > ul li .btn {
-          border-bottom: 0; }
-        .page-inbox .inbox-header > ul li .active {
-          background-color: #fff;
-          color: #333333; }
-    .page-inbox .inbox-header span {
-      line-height: 1em;
-      color: #333333; }
-  .page-inbox .inbox-container, .page-inbox .notification-container {
-    background-color: #fff;
-    padding: 20px 0;
-    margin-bottom: 10px; }
-    .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
-      padding: 5px 10px;
-      overflow: hidden;
-      margin: 0; }
-      .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
-        display: inline-block; }
-      .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
-        display: inline-block; }
-      .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
-        float: right;
-        margin-right: 23px; }
-        .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
-          padding-right: 10px; }
-    .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
-      width: 150px;
-      margin: 20px auto;
-      font-size: 10px; }
-  .page-inbox .inbox-container .messages-list {
-    padding: 0;
-    margin: 0 0 15px; }
-    .page-inbox .inbox-container .messages-list .message-item {
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px; }
+    .page-inbox .inbox-container .messages-list .message-item .select {
+      width: 3%; }
+    .page-inbox .inbox-container .messages-list .message-item .wrapper {
       display: flex;
       align-items: center;
-      margin: 0 5px;
-      padding: 0 5px; }
-      .page-inbox .inbox-container .messages-list .message-item .select {
-        width: 3%; }
-      .page-inbox .inbox-container .messages-list .message-item .wrapper {
-        display: flex;
-        align-items: center;
-        border: 1px solid #333333;
-        width: 95%;
+      border: 1px solid #333333;
+      width: 100%;
+      overflow: hidden;
+      padding: 5px 10px; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
+        width: 40%; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
+          width: 60px; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
+          color: #00AEEF;
+          text-decoration: none; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
+        width: 30%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
+        width: 20%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
-        padding: 5px 10px; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
-          width: 40%; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
-            width: 60px; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
-            color: #00AEEF;
-            text-decoration: none; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-          width: 30%; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
-          width: 20%; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
-          overflow: hidden;
-          color: #333333;
-          position: relative; }
-          .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
-            float: right; }
-        .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
-          background-color: #BDBDBD; }
-      .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
-        border-top: 0; }
-      .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
-        background-color: #aaaaaa; }
-  .page-inbox .notification-container .notification-list {
-    padding: 0 0 20px;
-    margin: 0 0 10px; }
-    .page-inbox .notification-container .notification-list .notification-item {
-      display: flex;
-      align-items: center;
-      margin: 0 5px;
-      padding: 0 5px; }
-      .page-inbox .notification-container .notification-list .notification-item .select {
-        width: 3%; }
-      .page-inbox .notification-container .notification-list .notification-item .wrapper {
-        border: 1px solid #333333;
-        width: 95%;
+        color: #333333;
+        position: relative; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
+          float: right; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
+        background-color: #BDBDBD; }
+    .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
+      border-top: 0; }
+    .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
+      background-color: #aaaaaa; }
+.page-inbox .notification-container .notification-list {
+  padding: 0 0 20px;
+  margin: 0 0 10px; }
+  .page-inbox .notification-container .notification-list .notification-item {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px; }
+    .page-inbox .notification-container .notification-list .notification-item .select {
+      width: 3%; }
+    .page-inbox .notification-container .notification-list .notification-item .wrapper {
+      border: 1px solid #333333;
+      width: 95%;
+      overflow: hidden;
+      padding: 5px 10px; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
+        width: 85%; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
+          width: 60px; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
         overflow: hidden;
-        padding: 5px 10px; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
-          width: 85%; }
-          .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
-            width: 60px; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
-          overflow: hidden;
-          color: #333333;
-          position: relative; }
-          .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
-            float: right; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
-          background-color: #BDBDBD; }
-      .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
-        border-top: 0; }
-      .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
-        background-color: #aaaaaa; }
+        color: #333333;
+        position: relative; }
+        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
+          float: right; }
+      .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
+        background-color: #BDBDBD; }
+    .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
+      border-top: 0; }
+    .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
+      background-color: #aaaaaa; }
 
 .conversation-container {
   background-color: #fff;

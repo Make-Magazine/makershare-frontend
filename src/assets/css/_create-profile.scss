@@ -28,19 +28,39 @@
 		.save-next,.skip {
 			float: right;
 			position: relative;
-    		bottom: 10px;
+			bottom: 10px;
+
 		}
 		.skip {padding: 7px 35px;display: none;}
 	}
+	.save-next,.skip {
+					background-color: #fff;
+					
+		}
+		// .skip {padding: 7px 35px;display: none;}
 	.basic-info {
 		width: 60%;
 		margin: auto;
 		margin-top: 20px;
 		color: $main-grey;
-		input{margin-top: 10px; margin-bottom: 10px;}
-		// #userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}
-		#country {width: 30%;}
-		#state {width: 20%;}
+		input{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		#profile-photo-upload {
+			display: none;
+		}
+		.custom-control.custom-checkbox {
+			margin-right: 0;
+		}
+		// #userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}, #country {},#state {}
+		#userName {
+			width: 40%;
+		}
+		.ng2-tags-container {
+			align-items: center;
+		}
+
 	}
 	.optional-info {
 		@extend .basic-info;
