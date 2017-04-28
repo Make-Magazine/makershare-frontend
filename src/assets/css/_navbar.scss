@@ -24,6 +24,7 @@ header {
                 position: absolute;
                 bottom: -17px;
                 right: 15px;
+                @include transition(0.5s);                
             }
         }
         .color-text {
@@ -153,10 +154,12 @@ header {
                 @include transition(0.5s);
                 span {
                     right: 0;
+                @include transition(0.5s);  
                 }
             }
             nav.navbar {
                 padding: 10px 15px 20px;
+                @include transition(0.5s);                
                 #MainNav {
                     .nav-item {
                         a {
@@ -178,6 +181,8 @@ header {
             // position: relative;
             z-index: 1;
             padding: 20px 15px;
+            @include transition(0.5s);
+            
         }
         .collapse.navbar-collapse {
             width: auto;

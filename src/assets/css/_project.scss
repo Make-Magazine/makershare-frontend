@@ -148,8 +148,9 @@
 			padding: 10px;
 	
 			a {
-				color: $text-color-6;
-				text-decoration: underline;
+			//	color: $text-color-6;
+			text-decoration: none;
+					color: $text-color-4;
 			}
 		}
 	}
@@ -576,6 +577,7 @@ header.showcase-project {
 		.feedback-card {
 			padding: 10px;
 			background: white;
+			word-break: break-all;                                  
 			margin-bottom: 4px;
 			.user-info {
 					padding: 4px 0px 0px 0px;

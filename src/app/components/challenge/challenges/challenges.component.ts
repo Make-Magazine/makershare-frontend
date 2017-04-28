@@ -119,6 +119,7 @@ export class ChallengesComponent implements OnInit {
     }
     this.currentStatusName = event.target.name;
     this.currentStatusId = event.target.id;
+    this.challenges=[];
     this.pageNumber = 0;
     this.getChallenges();
   }
@@ -128,7 +129,7 @@ export class ChallengesComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     var ch_arr_count = this.challenges.length;
-    if (this.statusesCount[this.currentStatusId] > ch_arr_count) {
+    if (this.statusesCount[this.currentStatusId] == ch_arr_count) {
       this.hideloadmore = true;
     } else {
       this.hideloadmore = false;
