@@ -644,6 +644,14 @@ img {
                             .projects-count {
                                 color: $text-color-3;
                             }
+                            .showcase-likes-div {
+                                .showcase-likes {
+                                    width: 12px;
+                                }
+                                span {
+                                    color: $text-color-3;
+                                }
+                            }
                         }
                         .showcase-card-status {
                             .open-status,
