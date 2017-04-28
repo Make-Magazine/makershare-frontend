@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FlagService } from '../../../../d7services/flag/flag.service';
+import { UserService } from '../../../../d7services/user/user.service';
+
 @Component({
   selector: 'app-project-search-card',
   templateUrl: './project-search-card.component.html',
@@ -12,11 +15,17 @@ export class ProjectSearchCardComponent implements OnInit {
   @Input() view = 'grid';
   badges = [];
   project = {};
+  isLiked = false;
+  userId;
+  currentuser;
+  checkUserLogin = false;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
+    private userService: UserService,
+    private flagService: FlagService,
   ) {
     config.placement = 'bottom';
     config.triggers = 'hover';
@@ -24,6 +33,22 @@ export class ProjectSearchCardComponent implements OnInit {
   ngOnInit() {
     this.getProjectCard();
     this.getBadgesProject();
+     this.userId = localStorage.getItem('user_id');
+    this.userService.isLogedIn().subscribe(data => {
+      this.checkUserLogin = data;
+      if (data == false) { } else {
+        /*like start */
+        this.flagService.isFlagged(this.nid, this.userId, 'like').subscribe(data => {
+          this.isLiked = data[0];
+          // console.log(this.isLiked)
+        }, err => {
+          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+          // console.log(err);
+        })
+
+        /*like end*/
+      }//end else 
+    });//end userservice isLogedIn
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
