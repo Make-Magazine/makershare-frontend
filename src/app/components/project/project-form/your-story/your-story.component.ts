@@ -383,7 +383,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'guide': 'If you already have a name for your project, perfect! Put that here. If you do not, try to think of a title that is both a little descriptive, and would catch your eye if you saw it on a website.'
     },
     'teaser': {
-      'title': 'What\'s\ a Teaser?:',
+      'title': 'What\'s\ a Teaser?',
       'guide': 'Your teaser will appear with your Cover Photo on a title card, introducing people to your project. Try to clearly explain your whole project in a sentence or two.'
     },
     'cover_image': {

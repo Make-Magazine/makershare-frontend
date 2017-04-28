@@ -2,6 +2,20 @@
 	label {
 		color: #4f4f4f;
 	}
+	
+		.form-control::-webkit-input-placeholder{
+			color: $light-grey;
+		}
+		
+		.form-control::-moz-input-placeholder{
+			color: $light-grey;
+		}
+		.form-control::-ms-input-placeholder{
+			color: $light-grey;
+		}
+		.form-control::-moz-input-placeholder {
+			color: $light-grey;
+		}
 	.words-count {
 		font-size: 12px;
 		font-weight: bold;
@@ -13,7 +27,7 @@
 				display:block;width:100%;
 			}
 	}
-	h1,h2,h3,h4,h5,h6 {font-weight: 700; color: #4f4f4f;}
+	h1,h2,h3,h4,h5,h6 {color: #4f4f4f;}
 	color: $text-color-1;
 	background-color: $site-bg;
 	.form-group > input,textarea,#cke_how-to-make {max-width: 100%;}
@@ -40,18 +54,19 @@
 				}
 				.project-draft {
 					.btn {
-						padding: 10px 40px 10px 40px;
+						padding: 10px;
 						font-size: 16px;
+						margin-right: 5px;
 					}
 				}
 				.project-private {
 					.btn {
-										background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										padding: 4px 6px 4px 6px;
-										}
+							background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							padding: 4px 6px 4px 6px;
+						}
 					.btn-main {
 						background:#ED1C24 !important;
 						background-color: #ED1C24;
@@ -60,12 +75,12 @@
 				}
 				.project-public {
 					.btn {
-										background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
-										padding: 4px 6px 4px 6px;				
-										}
+							background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
+							padding: 4px 6px 4px 6px;				
+						}
 					.btn-main {
 						background:#ED1C24 !important;
 						background-color: #ED1C24;
@@ -105,7 +120,7 @@
 		ul {
 			overflow: hidden;
 			margin-bottom: 0;
-			border-bottom: 1px solid $main-grey;
+			border-bottom: 1px solid $shade-3;
 			li {
 				float: left;
 				.btn-grey-inverse {
@@ -131,20 +146,36 @@
 	    }
 	    .content {
 	    	width: 80%;
-	    	p{font-size: 12px; color: #4f4f4f;}
+	    	p{
+					@include desc-font-3 ();
+					line-height: 1.4em;
+					color: #4f4f4f;					
+					}
 	    	h4{font-size: 18px;font-weight: bold; color: #4f4f4f;}
 	    }
 	}
 	
 	.custom-footer {
 	}
-	
+	.small-text {
+			font-size: 0.9em;
+			display: inline-block;
+			margin-top: 3px;
+			margin-left: 5px;
+		}
 	.your-story {
+			label {
+				@include card-header-font-sm();
+			}
+			
+			.cover {
+				label {
+					display: inline-block;
+				}
+			}
 		.projectName {
 			width: 100%;
-			label {
-				@include card-header-font-md();
-				}
+			
 			}
 		.projectCategory {
 				width: 100%;
@@ -168,6 +199,9 @@
 						width: 100% !important;
 						margin-bottom: 5px;
 						padding: 5px 10px;
+						border: none;
+						border-radius:0;
+						@include boxShadow(2px, 2px, 8px,$light-grey);
 					}
 				}
 				
@@ -188,10 +222,6 @@
 				}
 		.cover {
 			a {
-				margin-top: 5px;
-				width: 40%;
-				margin-right: 10%;
-				font-size: 16px;
 			}
 			.image-preview {
 				width: 50%;
@@ -463,9 +493,13 @@
 .project-create-buttons {
     p {
         display: block;
-        font-size: 12px;
-        color: $text-color-1;
+        font-size: 1em;
+				font-weight: bold;
+        color: $shade-5;
         text-align: center;
+				margin-bottom: 0;
+				margin-right: 5px;
+				padding: 10px 0;
         &.btn {
             background-color: $site-bg;
             border: 1px solid $main-grey;
@@ -510,20 +544,20 @@
 .btn-create-tab,a:not([href]):not([tabindex]).btn-create-tab {
     border-radius: 0;
     font-size: 16px;
-		border: 1px solid #BDBDBD;
-    padding: 9px 50px 8px 50px;
+		// border: 1px solid #BDBDBD;
+    padding: 9px 30px 8px 30px;
 		color: #BDBDBD;
 		background-color: inherit;
     &:focus {    
-			background-color: white;
+			// background-color: white;
 			color: #4f4f4f;
 			border: 1px solid #4f4f4f
     }	
     &:active, &:hover, &.active {
 				cursor: pointer;
-				background-color: white;
+				// background-color: white;
 				color: #4f4f4f;
-				border: 1px solid #4f4f4f;
+				border-bottom: 5px solid $blue;
     }
 }
 .form-group.required {
@@ -531,4 +565,12 @@
 		content: " *";
 		color: red;
 	}
+}
+
+.cke_button.cke_button__maximize.cke_button_off {
+		position: absolute;
+    right: 20px;
+		&::after {
+			display: none;
+		}
 }

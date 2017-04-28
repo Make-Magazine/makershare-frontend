@@ -16,12 +16,14 @@
       {{ formErrors.field_teaser }}
     </div>-->
     <div class="form-group required cover d-flex flex-column">
-      <label class="control-label">Cover photo</label><br>
+      <div class="d-flex">
+        <label class="control-label">Cover photo </label>
+        <p class="small-text">choose a photo that is at least 600 x 400 px</p>
+      </div>
       <div class="align-items-start">
-        <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-white btn-sharp">Choose</a>
-        <!--<input id="cover-upload" type="file" class="file" placeholder="Cover" (change)="ImageUpdated($event)" >-->
+        <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-load-more">CHOOSE FILE</a>
         <div class="image-preview">
-          <p *ngIf="!YourStoryForm.value.field_cover_photo.file">choose a photo that is at least 600 x 400 px</p>
+          
           <img *ngIf="YourStoryForm.value.field_cover_photo.file" [src]="YourStoryForm.value.field_cover_photo.file" class="img-responsive">
         </div>
       </div>
@@ -30,14 +32,17 @@
       </div>-->
     </div>
     <div class="form-group required projectCategory d-flex flex-column">
-      <label for="projectCategory" class="">Topics</label>
+      <div class="d-flex">
+        <label for="projectCategory" class="">Topics</label>
+        <p class="small-text">Choose as many topics as your project relates to.</p>
+      </div>
+      
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4">
           <select #parentcategory [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
             <option disabled selected value="_none_" > Select Category </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
           </select>
-          <span>Choose as many topics as your project relates to.</span>
         </div>
         <div class="col-md-4">
           <select [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category" class="form-control" type="text" class="form-control" id="projectCategoryChildren"
@@ -54,7 +59,6 @@
       <!--<div *ngIf="formErrors.field_categories" class="alert alert-danger error-msg col-md-12">
         {{ formErrors.field_categories }}
       </div>-->
-      <span>Selected topics</span>
       <div *ngIf="project.field_categories.und" class="cate-list">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
           <div *ngFor="let cate of all_categories" class="">
@@ -118,42 +122,36 @@
     <h2>Helpful Hints</h2>
     <br>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.projectName.title}}</h4>
         <p>{{sidebarText.projectName.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.teaser.title}}</h4>
         <p>{{sidebarText.teaser.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.cover_image.title}}</h4>
         <p>{{sidebarText.cover_image.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.category.title}}</h4>
         <p>{{sidebarText.category.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.story.title}}</h4>
         <p>{{sidebarText.story.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.show_tell.title}}</h4>
         <video width="250" height="150" controls>
@@ -162,21 +160,18 @@
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.aha.title}}</h4>
         <p>{{sidebarText.aha.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.uh.title}}</h4>
         <p>{{sidebarText.uh.guide}}</p>
       </div>
     </div>
     <div class="guideline">
-      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
         <h4>{{sidebarText.tags.title}}</h4>
         <p>{{sidebarText.tags.guide}}</p>
