@@ -29,8 +29,8 @@
             </div><!-- End region-content -->
             <div class="w-100 d-flex mb-3">
               <a *ngIf="BasicInfoSaved" [routerLink]="['/portfolio']" class="btn btn-blue btn-sharp save-next ml-auto">skip</a>
-              <a *ngIf="!BasicInfoSaved" (click)="saveNext('optional')" class="btn btn-blue btn-sharp save-next ml-auto">Save &amp; Next</a>
-              <a *ngIf="BasicInfoSaved" (click)="SaveAndExit()" class="btn btn-blue btn-sharp save-next ml-auto">Save and exit</a>
+              <a *ngIf="!BasicInfoSaved" (click)="saveNext('optional')" class="btn btn-blue btn-sharp save-next ml-auto">Save &amp; Continue</a>
+              <a *ngIf="BasicInfoSaved" (click)="SaveAndExit()" class="btn btn-blue btn-sharp save-next ml-auto">Save &amp; Continue</a>
             </div>
           </div>
         </section>

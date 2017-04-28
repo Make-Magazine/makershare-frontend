@@ -215,6 +215,92 @@ header .main-header .maker-sites li:nth-child(-n+4) {
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 
+.page-create-profile {
+  background-color: #F2F2F2;
+  margin: 0px; }
+  .page-create-profile .top-content-wrapper {
+    background-color: #333333;
+    color: #fff;
+    padding-bottom: 10px; }
+    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
+      color: #fff; }
+  .page-create-profile .create-nav {
+    background-color: #F2F2F2;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 0;
+    vertical-align: bottom; }
+    .page-create-profile .create-nav ul {
+      float: left;
+      margin-bottom: 0; }
+      .page-create-profile .create-nav ul li {
+        float: left; }
+        .page-create-profile .create-nav ul li .active {
+          background-color: #fff;
+          border-bottom: #fff; }
+    .page-create-profile .create-nav .save-next, .page-create-profile .create-nav .skip {
+      float: right;
+      position: relative;
+      bottom: 10px; }
+    .page-create-profile .create-nav .skip {
+      padding: 7px 35px;
+      display: none; }
+  .page-create-profile .save-next, .page-create-profile .skip {
+    background-color: #fff; }
+  .page-create-profile .basic-info, .page-create-profile .optional-info {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    color: #333333; }
+    .page-create-profile .basic-info input, .page-create-profile .optional-info input {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    .page-create-profile .basic-info #profile-photo-upload, .page-create-profile .optional-info #profile-photo-upload {
+      display: none; }
+    .page-create-profile .basic-info .custom-control.custom-checkbox, .page-create-profile .optional-info .custom-control.custom-checkbox {
+      margin-right: 0; }
+    .page-create-profile .basic-info #userName, .page-create-profile .optional-info #userName {
+      width: 40%; }
+    .page-create-profile .basic-info .ng2-tags-container, .page-create-profile .optional-info .ng2-tags-container {
+      align-items: center; }
+  .page-create-profile .optional-info i {
+    font-size: 30px; }
+  .page-create-profile .optional-info span {
+    padding-left: 8px;
+    font-size: 1.2em;
+    position: relative;
+    top: -2px; }
+  .page-create-profile .optional-info .social-links li:first-of-type h4 {
+    margin-left: 82%;
+    font-size: 14px; }
+  .page-create-profile .optional-info .social-links label {
+    width: 30%;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="checkbox"] {
+    margin-left: 30px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links input[type="text"] {
+    width: 50%;
+    margin: 0;
+    padding: 3px;
+    font-size: 15px; }
+  .page-create-profile .optional-info .social-links i {
+    width: 25px; }
+  .page-create-profile .optional-info .social-links p {
+    margin-top: 5px;
+    font-size: 15px; }
+  .page-create-profile .guide {
+    background-color: #BDBDBD;
+    padding: 15px;
+    margin: 15px 0; }
+  .page-create-profile .create-cover {
+    padding: 14px;
+    overflow: hidden; }
+
+.page-create-profile .basic-info .form-group .image-preview, .page-create-profile .optional-info .form-group .image-preview {
+  width: 160px;
+  height: auto; }
+
 .displace, .button-container-main-1 .btn,
 .button-container-main-2 .btn,
 .button-container-sec-2 .btn,
@@ -575,30 +661,6 @@ a:not([href]):not([tabindex]).btn-load-more {
     height: 100%;
     position: absolute;
     z-index: 10000; }
-  .project .card-title {
-    background-color: #fff;
-    padding: 10px;
-    position: relative;
-    font-family: "Messina Modern Regular";
-    font-size: 2.6em;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 120%;
-    color: #828282;
-    color: #4F4F4F;
-    min-height: 38px; }
-    .project .card-title .winner {
-      display: none;
-      position: absolute;
-      bottom: -10px;
-      right: 10px;
-      color: #00AEEF; }
-      .project .card-title .winner li {
-        display: inline-block; }
-        .project .card-title .winner li i {
-          width: 20px;
-          font-size: 16px;
-          bottom: 0; }
   .project .project-image {
     background-color: #BDBDBD;
     height: auto;
@@ -2502,7 +2564,8 @@ footer {
     width: 100%;
     margin: 0;
     max-width: 230px;
-    cursor: pointer; }
+    cursor: pointer;
+    text-transform: none; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -3401,41 +3464,46 @@ footer {
     .maker-mobile-card .maker-pic-container img {
       width: 100%;
       height: 100%; }
-  .maker-mobile-card .maker-data .maker-name {
-    font-family: "Messina Modern Regular";
-    font-size: 1.3em;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 120%;
-    color: #828282;
-    color: #00AEEF; }
-  .maker-mobile-card .maker-data .maker-nickname {
-    font-family: "Messina Modern Regular";
-    font-size: 0.95em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-bottom: 2px; }
-  .maker-mobile-card .maker-data .maker-city {
-    font-family: "Messina Sans SemiBold";
-    font-size: 0.8em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    font-size: 0.8em !important; }
-  .maker-mobile-card .maker-data .maker-descripe {
-    font-family: "Messina Modern Regular";
-    font-size: 0.95em;
-    font-weight: 400;
-    text-transform: none;
-    line-height: 100%;
-    color: #828282;
-    margin-top: 5px;
-    font-weight: bold; }
+  .maker-mobile-card .maker-data {
+    max-width: 230px;
+    word-break: break-all;
+    overflow: hidden; }
+    .maker-mobile-card .maker-data .maker-name {
+      line-height: 150%;
+      font-family: "Messina Modern Regular";
+      font-size: 1.3em;
+      font-weight: 500;
+      text-transform: capitalize;
+      line-height: 120%;
+      color: #828282;
+      color: #00AEEF; }
+    .maker-mobile-card .maker-data .maker-nickname {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 2px; }
+    .maker-mobile-card .maker-data .maker-city {
+      font-family: "Messina Sans SemiBold";
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-size: 0.8em !important; }
+    .maker-mobile-card .maker-data .maker-descripe {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      margin-top: 5px;
+      font-weight: bold; }
   .maker-mobile-card .card-stats {
     padding: 2px;
     color: #BDBDBD; }
@@ -6064,90 +6132,6 @@ img {
           font-size: 16px;
           padding-right: 5px; }
 
-.page-create-profile {
-  background-color: #F2F2F2;
-  margin: 0px; }
-  .page-create-profile .top-content-wrapper {
-    background-color: #333333;
-    color: #fff;
-    padding-bottom: 10px; }
-    .page-create-profile .top-content-wrapper h3, .page-create-profile .top-content-wrapper h5 {
-      color: #fff; }
-  .page-create-profile .create-nav {
-    background-color: #F2F2F2;
-    overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 0;
-    vertical-align: bottom; }
-    .page-create-profile .create-nav ul {
-      float: left;
-      margin-bottom: 0; }
-      .page-create-profile .create-nav ul li {
-        float: left; }
-        .page-create-profile .create-nav ul li .active {
-          background-color: #fff;
-          border-bottom: #fff; }
-    .page-create-profile .create-nav .save-next, .page-create-profile .create-nav .skip {
-      float: right;
-      position: relative;
-      bottom: 10px; }
-    .page-create-profile .create-nav .skip {
-      padding: 7px 35px;
-      display: none; }
-  .page-create-profile .basic-info, .page-create-profile .optional-info {
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
-    color: #333333; }
-    .page-create-profile .basic-info input, .page-create-profile .optional-info input {
-      margin-top: 10px;
-      margin-bottom: 10px; }
-    .page-create-profile .basic-info #profile-photo-upload, .page-create-profile .optional-info #profile-photo-upload {
-      display: none; }
-    .page-create-profile .basic-info .custom-control.custom-checkbox, .page-create-profile .optional-info .custom-control.custom-checkbox {
-      margin-right: 0; }
-    .page-create-profile .basic-info #userName, .page-create-profile .optional-info #userName {
-      width: 40%; }
-    .page-create-profile .basic-info .ng2-tags-container, .page-create-profile .optional-info .ng2-tags-container {
-      align-items: center; }
-  .page-create-profile .optional-info i {
-    font-size: 30px; }
-  .page-create-profile .optional-info span {
-    padding-left: 8px;
-    font-size: 1.2em;
-    position: relative;
-    top: -2px; }
-  .page-create-profile .optional-info .social-links li:first-of-type h4 {
-    margin-left: 82%;
-    font-size: 14px; }
-  .page-create-profile .optional-info .social-links label {
-    width: 30%;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links input[type="checkbox"] {
-    margin-left: 30px;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links input[type="text"] {
-    width: 50%;
-    margin: 0;
-    padding: 3px;
-    font-size: 15px; }
-  .page-create-profile .optional-info .social-links i {
-    width: 25px; }
-  .page-create-profile .optional-info .social-links p {
-    margin-top: 5px;
-    font-size: 15px; }
-  .page-create-profile .guide {
-    background-color: #BDBDBD;
-    padding: 15px;
-    margin: 15px 0; }
-  .page-create-profile .create-cover {
-    padding: 14px;
-    overflow: hidden; }
-
-.page-create-profile .basic-info .form-group .image-preview, .page-create-profile .optional-info .form-group .image-preview {
-  width: 160px;
-  height: auto; }
-
 .page-create-project-why {
   color: #4F4F4F;
   background-color: #F2F2F2; }
@@ -6415,6 +6399,9 @@ img {
     margin-top: 15px; }
   .page-create-project-why .team {
     padding-top: 20px; }
+    .page-create-project-why .team .maker-mobile-card {
+      padding: 15px 15px 5px;
+      height: 145px; }
     .page-create-project-why .team form {
       padding-bottom: 30px; }
     .page-create-project-why .team input {
