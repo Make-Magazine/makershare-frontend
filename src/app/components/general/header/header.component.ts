@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
-
+import { NotificationComponent } from '../../notification/notification.component';
 
 @Component({
   selector: 'app-header',
