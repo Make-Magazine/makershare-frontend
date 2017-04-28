@@ -36,6 +36,9 @@
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                         <span class="views-count">{{showcase.views_count}}</span>
                       </div>
+                      <div class="views-count-div">
+                        <app-bookmark [nodeNid]="showcase.nid"></app-bookmark>
+                      </div>
                       <!--<div class="projects-count-div">
                         <span class="projects-count">{{projectsCount}}
                            <span *ngIf="projectsCount>1">projects</span>
