@@ -8,14 +8,17 @@ import { ViewService } from '../../../../d7services/view/view.service';
 export class ChallengeEnterComponent implements OnInit {
   @Input()countEntries;
     pages: number = 0;
-hideloadmoreentries = true;
-  page_arg;
-  challenges = [];
+    hideloadmoreentries = true;
+    page_arg;
+    userId;
+    challenges = [];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
   ) { }
   ngOnInit() {
+        this.userId = localStorage.getItem('user_id');
+
     this.getChallengeEntered();
   }
   getChallengeEntered() {
@@ -27,7 +30,7 @@ hideloadmoreentries = true;
       this.challenges = [];
     }
     // get Maker Challenge entered  from a view
-    this.viewService.getView('maker-challenge-entered',[this.page_arg]).subscribe(res => {
+    this.viewService.getView('maker-challenge-entered',[['uid',this.userId],this.page_arg]).subscribe(res => {
       this.challenges = this.challenges.concat(res);
       this.loadMoreVisibilty();
     }, err => {
