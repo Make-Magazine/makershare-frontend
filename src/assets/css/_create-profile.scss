@@ -28,10 +28,16 @@
 		.save-next,.skip {
 			float: right;
 			position: relative;
-    		bottom: 10px;
+			bottom: 10px;
+
 		}
 		.skip {padding: 7px 35px;display: none;}
 	}
+	.save-next,.skip {
+					background-color: #fff;
+					
+		}
+		// .skip {padding: 7px 35px;display: none;}
 	.basic-info {
 		width: 60%;
 		margin: auto;
