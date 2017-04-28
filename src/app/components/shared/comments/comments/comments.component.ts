@@ -53,14 +53,15 @@ var page_arg=['page',this.pages]
     this.viewService.getView('node-comments', [['nid', this.nodeId],['page',this.pages]]).subscribe(data => {
 
       this.comments.value = this.comments.value.concat(data);
+     // this.loadMoreVisibilty();
       console.log(this.comments.value.length == 1)
        if (this.comments.value.length ==1) {
-              this.hideloadmorecomment = false;
+              this.hideloadmorecomment = true;
       }else{
         this.loadMoreVisibilty();
 
       }
-      this.commentCount = this.comments.value[0].comment_count
+      console.log(this.commentCount)
      
     });
   }
@@ -73,14 +74,21 @@ var page_arg=['page',this.pages]
   /* end function load more  */
   // Function to control load more button
   loadMoreVisibilty() {
+          this.commentCount = this.comments.value[0].comment_count
+
+     console.log(this.commentCount);
+      console.log(this.comments.value.length)
     // get the challenges array count
     if (this.commentCount == this.comments.value.length) {
-      console.log(this.commentCount);
-      console.log(this.comments.value.length)
-      this.hideloadmorecomment = false;
-
-    } else if (this.commentCount > this.comments.value.length) {
+    // this.comments.value=[];
       this.hideloadmorecomment = true;
+
+    } 
+    // else if (this.commentCount > this.comments.value.length) {
+    //   this.hideloadmorecomment = true;
+    // }
+    else {
+      this.hideloadmorecomment = false;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
