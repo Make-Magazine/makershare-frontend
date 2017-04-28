@@ -40,7 +40,7 @@ export class LikeComponent implements OnInit {
         /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
-          console.log(this.isLiked)
+          // console.log(this.isLiked)
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
           // console.log(err);
