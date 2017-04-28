@@ -1586,8 +1586,13 @@ footer {
   max-width: 350px;
   max-height: 360px; }
 
+/* Bookmark */
+.bookmark-page .bookmark-menu ul li .btn-create-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-create-tab:focus {
+  border: none !important;
+  outline: none !important; }
 .bookmark-page .content-wrapper {
-  min-height: 250px; }
+  min-height: 250px;
+  padding: 15px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -6058,6 +6063,10 @@ img {
             height: auto; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
             color: #BDBDBD; }
+          .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes-div .showcase-likes {
+            width: 12px; }
+          .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes-div span {
+            color: #BDBDBD; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
           font-weight: bold;
@@ -6549,8 +6558,7 @@ img {
   color: #BDBDBD;
   background-color: inherit; }
   .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
-    color: #4f4f4f;
-    border: 1px solid #4f4f4f; }
+    color: #4f4f4f; }
   .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
     cursor: pointer;
     color: #4f4f4f;
