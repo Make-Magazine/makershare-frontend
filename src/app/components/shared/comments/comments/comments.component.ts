@@ -55,7 +55,7 @@ var page_arg=['page',this.pages]
       this.comments.value = this.comments.value.concat(data);
       console.log(this.comments.value.length == 1)
        if (this.comments.value.length ==1) {
-              this.hideloadmorecomment = false;
+              this.hideloadmorecomment = true;
       }else{
         this.loadMoreVisibilty();
 
@@ -77,10 +77,14 @@ var page_arg=['page',this.pages]
     if (this.commentCount == this.comments.value.length) {
       console.log(this.commentCount);
       console.log(this.comments.value.length)
-      this.hideloadmorecomment = false;
-
-    } else if (this.commentCount > this.comments.value.length) {
       this.hideloadmorecomment = true;
+
+    } 
+    // else if (this.commentCount > this.comments.value.length) {
+    //   this.hideloadmorecomment = true;
+    // }
+    else {
+      this.hideloadmorecomment = false;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
