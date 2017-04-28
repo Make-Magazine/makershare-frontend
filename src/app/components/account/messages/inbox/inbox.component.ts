@@ -74,6 +74,7 @@ export class InboxComponent implements OnInit {
   usr_recv;
   participints
   senderData
+  noMessage= false;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -162,6 +163,9 @@ export class InboxComponent implements OnInit {
         // }
         // this.msg.unshift(newMessage);
         this.msg = [];
+        if(this.msg.length == 0){
+        this.noMessage = false;
+      }
         this.messageForm.reset();
         this.SelectedUser = [];
         this.getMessages();
@@ -300,7 +304,11 @@ export class InboxComponent implements OnInit {
         }
       }
       
-      this.msg = this.msg.concat(msg_arr);     
+      this.msg = this.msg.concat(msg_arr);    
+      //show if user have 0 msg 
+      if(this.msg.length == 0){
+        this.noMessage = true;
+      }
       this.loaderService.display(false);
       this.loadMoreVisibilty();
     })
