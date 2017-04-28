@@ -41,7 +41,12 @@ header.main-header {
       font-size: 10px;
       position: absolute;
       bottom: -17px;
-      right: 15px; }
+      right: 15px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
   header.main-header .color-text {
     color: #ED1C24 !important; }
   header.main-header .login-block {
@@ -128,9 +133,19 @@ header.main-header {
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out; }
     header.main-header.shrink .navbar-brand span {
-      right: 0; }
+      right: 0;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
   header.main-header.shrink nav.navbar {
-    padding: 10px 15px 20px; }
+    padding: 10px 15px 20px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
     header.main-header.shrink nav.navbar #MainNav .nav-item a {
       font-size: 1.2em; }
     header.main-header.shrink nav.navbar #MainNav .nav-item .btn {
@@ -141,7 +156,12 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     z-index: 1;
-    padding: 20px 15px; }
+    padding: 20px 15px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
   header nav .collapse.navbar-collapse {
     width: auto; }
   header nav #MainNav .nav-item {
@@ -6243,15 +6263,6 @@ img {
     display: inline-block;
     margin-bottom: 0;
     margin-left: 5px; }
-  .page-create-project-why .your-story label {
-    font-family: "Messina Modern Regular";
-    font-size: 1.3em;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 120%;
-    color: #828282; }
-    .page-create-project-why .your-story label.selected-topic {
-      font-size: 1.1em; }
   .page-create-project-why .your-story .cover label {
     display: inline-block; }
   .page-create-project-why .your-story .projectName {
@@ -6553,6 +6564,18 @@ img {
   right: 20px; }
   .cke_button.cke_button__maximize.cke_button_off::after {
     display: none; }
+
+.your-story label,
+.how-to label {
+  font-family: "Messina Modern Regular";
+  font-size: 1.3em;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 120%;
+  color: #828282; }
+  .your-story label.selected-topic,
+  .how-to label.selected-topic {
+    font-size: 1.1em; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
