@@ -14,14 +14,21 @@
             <div class="showcase-card-footer mt-auto d-flex">
               <div class="showcase-card-footer-2">
                 <div class="showcase-card-count d-felx">
+                  <div class="showcase-likes-div">
+                    <img class="showcase-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+                    <img class="showcase-likes" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+                    <span *ngIf="showcase.like_counter">{{showcase.like_counter}}</span>
+                    <span *ngIf="!showcase.like_counter">0</span>
+                  </div>
                   <div class="views-count-div">
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                     <span class="views-count">1129</span>
                   </div>
                   <div class="projects-count-div" *ngIf="showcase.number_of_project">
                     <span class="projects-count">{{showcase.number_of_project}}
-                           <span *ngIf="showcase.number_of_project>1">projects</span>
+                      <span *ngIf="showcase.number_of_project>1">projects</span>
                     <span *ngIf="showcase.number_of_project<=1">project</span>
+                    <span *ngIf="!showcase.number_of_project">0 projects</span>
                     </span>
                   </div>
                 </div>

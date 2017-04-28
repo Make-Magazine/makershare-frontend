@@ -1,30 +1,31 @@
 <div *ngIf="showcases.length==0">
-  <p>No bookmarked Showcases yet</p>
+  <h5>There doesn't seem to be any bookmarks here yet.</h5><br>
+  <p>Look for the icon on a Showcase page you're interested in.<br> Click it and the <a [routerLink]="['/showcases']">Showcase</a>    will appear here.</p>
 </div>
 <div *ngIf="showcases.length>0">
-  <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-  <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
+  <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
+  <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
   <table class="table">
     <thead>
-      <tr>
+      <!--<tr>
         <th></th>
         <th>showcase Name</th>
         <th>showcase Image</th>
         <th>Delete</th>
 
-      </tr>
+      </tr>-->
     </thead>
     <tbody>
 
       <tr *ngFor="let showcase of showcases let i=index;">
         <div class="select" *ngIf="showcase">
-          <input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">
+          <!--<input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">-->
         </div>
-        <td *ngIf="showcase">{{showcase.project_name}}</td>
-        <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive">
-          <td class="delete">
-            <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-          </td>
+        <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td>
+          <td *ngIf="showcase">{{showcase.project_name}}</td>
+          <!--<td class="delete">-->
+          <!--<a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>-->
+          <!--</td>-->
 
       </tr>
     </tbody>

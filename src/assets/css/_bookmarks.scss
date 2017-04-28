@@ -2,7 +2,30 @@
   .tabs-buttons {
 
   }
-  .content-wrapper {
-      min-height: 250px;
+
+}
+
+/* Bookmark */
+.bookmark-page {
+    .bookmark-menu {
+        ul {
+            li {
+                .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
+                    border: none !important;
+                    outline: none !important;
+                }
+            }
+        }
+    }
+    .content-wrapper {
+      min-height: 530px;
+      padding: 15px;
+      margin-bottom: 20px;
+      td {
+        border-top: 1px solid #dcdcdc;
+      }
+      th {
+        border-top: 1px solid #dcdcdc;
+      }
   }
 }

@@ -906,6 +906,7 @@
         margin: 0;
         max-width: 230px;
         cursor:pointer;
+        text-transform: none;
     }
     .card-title-showcase {
         @include card-header-font-sm;
@@ -2010,7 +2011,11 @@
         }
     }
     .maker-data {
+        max-width: 230px;
+        word-break: break-all;
+        overflow: hidden;
         .maker-name {
+            line-height: 150%;
             @include card-header-font-sm ();
             //  18 pt
             color: $text-color-6;
