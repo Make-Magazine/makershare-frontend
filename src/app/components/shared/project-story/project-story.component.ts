@@ -49,7 +49,6 @@ export class ProjectStoryComponent implements OnInit {
               // console.log(data)
               this.collabs[i] = {};
               this.collabs[i] = data[0];
-               console.log(this.collabs[i])
             })
             // )
             i++

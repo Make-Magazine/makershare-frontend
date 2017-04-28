@@ -1,25 +1,25 @@
-<div class="row page-create-project-why">
-  <section class="col-sm-12 width-fix">
+<div class="page-create-project-why">
+  <section class="container">
     <div class="top-content-wrapper">
-      <div class="add-controls">
-        <div class="container d-flex flex-row align-content-end flex-wrap">
-          <h1 class="mr-auto">Project Editor</h1>
+      <div class="add-controls row">
+        <div class="container d-flex flex-column align-content-center flex-wrap">
+          <h1 class="text-center">Project Editor</h1>
         </div>
-        <div class="container project-create-buttons d-flex">
-          <ul class="list-unstyled d-flex flex-row contorls ml-auto">
-            <span>PUBLISH AS</span>
-            <li class="create-project-buttons project-draft mr-4"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,370)">Public</button></li>
-            <li class="create-project-buttons project-draft mr-4"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,371)">Private</button></li>
-            <li class="create-project-buttons project-draft mr-4"><button class="btn btn-soft-grey" (click)="GettingFieldsReady(0,1115)">Draft</button></li>
-          </ul>
+        <div class="nav-create col-md-8">
+          <div class="container">
+            <ul class="list-unstyled">
+              <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-create-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
+              <li><a (click)="current_active_tab = 'How To'" class="btn btn-create-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">Share a How-To</a></li>
+              <li><a (click)="current_active_tab = 'Team'" class="btn btn-create-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Add your Team Members</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="nav-create">
-        <div class="container">
-          <ul class="list-unstyled">
-            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-create-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
-            <li><a (click)="current_active_tab = 'How To'" class="btn btn-create-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">Share a How-To</a></li>
-            <li><a (click)="current_active_tab = 'Team'" class="btn btn-create-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Add your Team Members</a></li>
+        <div class="col-md-4 project-create-buttons d-flex">
+          <ul class="list-unstyled d-flex flex-row align-items-center contorls ml-auto">
+            <p>PUBLISH AS</p>
+            <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" (click)="GettingFieldsReady(0,1115)">Draft</button></li>
           </ul>
         </div>
       </div>
@@ -35,6 +35,25 @@
           <app-project-form-team (CanNavigate)="CanNavigate = $event" (emitter)="UpdateFields($event,'Team')" [FormPrintableValues]="FormPrintableValues" [project]="project"
             *ngIf="current_active_tab == 'Team'" class="row"></app-project-form-team>
         </div>
+      </div>
+    </div>
+    <div class="add-controls row">
+      <div class="nav-create col-md-8">
+        <div class="container">
+          <ul class="list-unstyled">
+            <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-create-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
+            <li><a (click)="current_active_tab = 'How To'" class="btn btn-create-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">Share a How-To</a></li>
+            <li><a (click)="current_active_tab = 'Team'" class="btn btn-create-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Add your Team Members</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 project-create-buttons d-flex">
+        <ul class="list-unstyled d-flex flex-row align-items-center contorls ml-auto">
+          <p>PUBLISH AS</p>
+          <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-soft-grey" (click)="GettingFieldsReady(0,1115)">Draft</button></li>
+        </ul>
       </div>
     </div>
     <!-- End container -->
