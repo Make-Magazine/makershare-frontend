@@ -1,38 +1,40 @@
 <div *ngIf="projects.length==0">
-  <p>No bookmarked Projects yet</p>
-  </div>
+  <h5>There doesn't seem to be any bookmarks here yet.</h5><br>
+  <p>Look for the icon on a Project page you're interested in.<br> Click it and the <a [routerLink]="['/projects']">Project</a>    will appear here.</p>
+</div>
 
 <div *ngIf="projects.length>0">
-<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Project Name</th>
-      <th>Project Image</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
+  <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
+  <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
+  <table class="table">
+    <thead>
+      <!--<tr>
+        <th></th>
+        <th>Project Name</th>
+        <th>Project Image</th>
+        <th>Delete</th>
+      </tr>-->
+    </thead>
+    <tbody>
 
-    <tr *ngFor="let project of projects let i=index;">
-      <div class="select" *ngIf="project">
-        <input type="checkbox" value="{{project.nid}}"  [(ngModel)]="project.state"  (change)="valueChanged(project.nid,$event)">
-      </div>
-      <td *ngIf="project">{{project.project_name}}</td>
-      <td *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive">               
-      </td>
-      <td class="delete">        <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-</td>
+      <tr *ngFor="let project of projects let i=index;">
+        <div class="select" *ngIf="project">
+          <!--<input type="checkbox" value="{{project.nid}}" [(ngModel)]="project.state" (change)="valueChanged(project.nid,$event)">-->
+        </div>
+        <td *ngIf="project">{{project.project_name}}</td>
+        <td *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive">
+        </td>
+        <!--<td class="delete">
+          <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+        </td>-->
 
-      
-    </tr>
-  </tbody>
-</table>
+
+      </tr>
+    </tbody>
+  </table>
 </div>
-  <div class="text-center">
-    <div class="button-container-main-2" *ngIf="!hideloadmoreproject">
-      <a class="btn btn-main-2" (click)="loadMoreProject()">Load more</a>
-    </div>
+<div class="text-center">
+  <div class="button-container-main-2" *ngIf="!hideloadmoreproject">
+    <a class="btn btn-load-more mb-3" (click)="loadMoreProject()">Load more</a>
   </div>
+</div>
