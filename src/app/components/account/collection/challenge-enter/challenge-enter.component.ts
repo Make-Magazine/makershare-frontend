@@ -8,7 +8,7 @@ import { ViewService } from '../../../../d7services/view/view.service';
 export class ChallengeEnterComponent implements OnInit {
   @Input()countEntries;
     pages: number = 0;
-hideloadmoreentries = false;
+hideloadmoreentries = true;
   page_arg;
   challenges = [];
   constructor(private route: ActivatedRoute,
