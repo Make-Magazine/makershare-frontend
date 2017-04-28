@@ -163,14 +163,7 @@
 			margin-bottom: 0;
 			margin-left: 5px;
 		}
-	.your-story {
-			label {
-				@include card-header-font-sm();
-				&.selected-topic {
-					font-size: 1.1em;
-				}
-			}
-			
+	.your-story {	
 			.cover {
 				label {
 					display: inline-block;
@@ -590,3 +583,14 @@
 			display: none;
 		}
 }
+
+.your-story,
+.how-to {
+	label {
+		@include card-header-font-sm();
+		&.selected-topic {
+			font-size: 1.1em;
+		}
+	}
+}
+	
