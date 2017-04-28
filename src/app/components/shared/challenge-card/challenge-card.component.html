@@ -2,6 +2,7 @@
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
     <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="!challenge.cover_image" src="./assets/images/placeholder.png" alt="">
+    <img src="{{challenge.sponsor_bar}}" alt="" *ngIf="challenge.sponsor_bar" class="sponsor_bar img-responsive">
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission
