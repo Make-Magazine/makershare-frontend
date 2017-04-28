@@ -37,8 +37,8 @@
         <!-- End challenge-card -->
       </div>
       <div class="text-center pt-3 pb-5">
-        <div *ngIf="hideloadmore">
-          <a *ngIf="hideloadmore" (click)="loadmore()" class="btn btn-load-more">Load more</a>
+        <div *ngIf="!hideloadmore">
+          <a *ngIf="!hideloadmore" (click)="loadmore()" class="btn btn-load-more">Load more</a>
         </div>
       </div>
     </div>
