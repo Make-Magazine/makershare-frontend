@@ -1,0 +1,6 @@
+<div *ngIf="NotificationsCount && Notifications">
+  <p>
+    notificatons Count = {{NotificationsCount}}
+  </p>
+  <notification-tpl [notification]="notification" *ngFor="let notification of Notifications"></notification-tpl>
+</div>
