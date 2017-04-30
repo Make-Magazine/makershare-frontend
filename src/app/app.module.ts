@@ -58,8 +58,6 @@ import { MetaModule } from '@nglibs/meta';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
-import { NotificationComponent } from './components/notification/notification.component';
-import { NotificationTemplateComponent } from './components/notification/notification-template/notification-template.component';
 
 let config = {
   breakPoints: {
@@ -94,8 +92,6 @@ let config = {
     GuidelinesComponent,
     WhyPortfolioComponent,
     ShowTellComponent,
-    NotificationComponent,
-    NotificationTemplateComponent,
 
   ],
   imports: [
