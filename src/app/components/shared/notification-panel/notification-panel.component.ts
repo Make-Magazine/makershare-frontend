@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { UserService } from '../../../d7services/user/user.service';
-// import { SingleNotificationComponent } from '../../account/messages/notifications/single-notification/single-notification.component';
 @Component({
   selector: 'app-notification-panel',
   templateUrl: './notification-panel.component.html'
@@ -19,10 +18,13 @@ profile;
 
   ngOnInit() {
     this.userService.isLogedIn().subscribe(data => {
+  console.log('ghada');
+console.log(data);
       if (data ){
            this.userId = localStorage.getItem('user_id');
            this.viewService.getView('web_notifications', [['uid', this.userId]]).subscribe(data => {
            this.notifications=data;
+           console.log(this.notifications);
     }, err => {
       console.log(err);
     });

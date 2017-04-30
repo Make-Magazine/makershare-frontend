@@ -2,7 +2,7 @@
   <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
     aria-expanded="false">
     <li>
-      <a class="notification-icon" ><img src="./assets/images/icons/notifications.png" alt=""></a>
+      <a class="notification-icon" [ngClass]="{'active': current_active_tab == 'default-settings' }" [routerLink]="['/account/settings/notifications']" ><img src="./assets/images/icons/notifications.png" alt=""></a>
     </li>
     </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">

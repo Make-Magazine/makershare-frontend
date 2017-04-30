@@ -6,6 +6,7 @@ import {ParentSettingsComponent} from './parent-settings/parent-settings.compone
 const  DefaultSettingsRoutes: Routes = [
 
       { path: 'notifications', component: ParentSettingsComponent },
+
 ];
 @NgModule({
   imports: [
