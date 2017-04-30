@@ -21,6 +21,7 @@ profile;
     this.userService.isLogedIn().subscribe(data => {
       if (data ){
         this.userId = localStorage.getItem('user_id');
+        console.log(this.userId);
         this.getNotifications();
         this.getNotificationsCount();
 

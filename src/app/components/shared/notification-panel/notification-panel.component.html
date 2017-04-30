@@ -3,7 +3,7 @@
     aria-expanded="false">
     <li>
      <div class ="noti-number"> {{countNotifications}} </div>
-      <a class="notification-icon" [ngClass]="{'active': current_active_tab == 'default-settings' }" [routerLink]="['/account/settings/notifications']" > <img src="./assets/images/icons/notifications.png" alt=""></a>
+      <a class="notification-icon"> <img src="./assets/images/icons/notifications.png" alt=""></a>
     </li>
     </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -11,8 +11,8 @@
       <ul class="list-group">
         <li class="d-flex justify-content-end">
           <a class="mr-auto p-2" [routerLink]="['/inbox-notifications']">View All</a>
-          <i class="fa fa-cog float-right p-2" aria-hidden="true"></i>
-          <a><i class="fa fa-times float-right p-2" aria-hidden="true"></i></a>
+          <a [routerLink]="['/account/settings/notifications']"><i class="fa fa-cog float-right p-2" aria-hidden="true"></i></a>
+          <a (click)="c('Close click')"><i class="fa fa-times float-right p-2" aria-hidden="true"></i></a>
         </li>
         <li class="list-group-item" *ngFor="let notification of notifications">
           <app-single *ngIf="notification" [CurrentObject]="notification"></app-single>
