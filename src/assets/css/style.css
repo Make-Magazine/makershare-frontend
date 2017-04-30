@@ -214,6 +214,14 @@ header .main-header .maker-sites li:nth-child(-n+4) {
   border-left: 1px solid #333333; }
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
+header .noti-number {
+  position: absolute !important;
+  left: 30px;
+  color: white;
+  font-size: 12px;
+  bottom: 2px;
+  font-weight: bold;
+  z-index: 1; }
 
 .page-create-profile {
   background-color: #F2F2F2;

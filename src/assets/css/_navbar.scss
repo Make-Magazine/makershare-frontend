@@ -265,5 +265,16 @@ header {
         }
     
     }
+
+    .noti-number{
+    position: absolute !important;
+    left: 30px;
+    color: white;
+    font-size: 12px;
+    bottom: 2px;
+    font-weight: bold;
+    z-index: 1;
+  }
 }
+
 
