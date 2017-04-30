@@ -31,11 +31,11 @@ notifications;
           }, err => {
             console.log(err);
           });
-
         }
         // this.router.events.subscribe((event) => {
         // });
       });
   }
+  
 
 }
