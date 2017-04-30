@@ -93,7 +93,7 @@ header.main-header {
           width: 32px;
           height: auto; }
         header.main-header .login-block li .notification-icon::after {
-          content: '';
+          content: '123';
           text-align: center;
           font-size: 8px;
           line-height: 27px;
@@ -2447,8 +2447,9 @@ footer {
   padding: 14px;
   background-color: #F2F2F2 !important; }
   .edit-cover-modal .upload-tab canvas {
-    height: auto;
-    width: 326px;
+    /*height: auto;
+    width: 326px;*/
+    cursor: pointer;
     background-color: #F2F2F2; }
   .edit-cover-modal .upload-tab .btn {
     padding: 12px !important;
