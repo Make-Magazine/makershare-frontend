@@ -216,7 +216,7 @@ header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
 header .noti-number {
   position: absolute !important;
-  left: 30px;
+  width: 80%;
   color: white;
   font-size: 12px;
   bottom: 2px;
