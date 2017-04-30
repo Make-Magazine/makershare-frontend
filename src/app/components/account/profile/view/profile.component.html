@@ -301,7 +301,7 @@
 						<div class="modal-body row">
 							<div id="portfolio-photo" class="w-100 container" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
 								<div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab row" (ng2FileDropFileAccepted)="dragFileAccepted($event,cropper)">
-									<div class="drop-section col-md-5">
+									<div class="drop-section col-md-7">
 										<img *ngIf="!ProfilePicData.original" class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
 										<img-cropper [hidden]="!ProfilePicData.original" #cropper [image]="ProfilePicData" [settings]="ProfilecropperSettings"></img-cropper><br>
 										<div *ngIf="!ProfilePicData.original">
@@ -313,7 +313,7 @@
 											<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 										</a>
 									</div>
-									<div class="recommended-section col-md-5">
+									<div class="recommended-section col-md-3">
 										<p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 600 pixels</p>
 									</div>
 								</div>
