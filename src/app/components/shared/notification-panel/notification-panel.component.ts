@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
 import { UserService } from '../../../d7services/user/user.service';
+
 @Component({
   selector: 'app-notification-panel',
   templateUrl: './notification-panel.component.html'
