@@ -516,9 +516,8 @@
 
  /* acount setting component */
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    .custom-safari {
-        text-align: left !important;
-        padding: 0 !important;
-    }
+_::-webkit-full-page-media, _:future, :root .custom-safari {
+
+text-align: left !important;
+
 }
