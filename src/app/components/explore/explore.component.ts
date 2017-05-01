@@ -19,6 +19,7 @@ export class ExploreComponent implements OnInit {
   pages: number = 0;
   countProject = 0;
   hideloadmoreproject = false;
+  CurrentActiveParentIndex = -1;
   page_arg;
   sort: ISorting = {
     sort_by: "created_2",
@@ -46,6 +47,14 @@ export class ExploreComponent implements OnInit {
     this.meta.setTitle(`Maker Share | Projects`);
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
+  }
+
+  ChangeClassActive(index,event){
+    if(event.type == 'mouseover' || event.type == 'click'){
+      this.CurrentActiveParentIndex = index;
+    }else{
+      this.CurrentActiveParentIndex = -1;
+    }
   }
 
   getProjects() {
