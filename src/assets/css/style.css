@@ -223,6 +223,9 @@ header .noti-number {
   font-weight: bold;
   z-index: 1; }
 
+header.main-header .login-block li .notification-icon::after {
+  content: '' !important; }
+
 .page-create-profile {
   background-color: #F2F2F2;
   margin: 0px; }
@@ -2457,9 +2460,8 @@ footer {
   padding: 14px;
   background-color: #F2F2F2 !important; }
   .edit-cover-modal .upload-tab canvas {
-    height: auto;
-    width: 326px;
-    background-color: #F2F2F2; }
+    background-color: #F2F2F2;
+    cursor: pointer; }
   .edit-cover-modal .upload-tab .btn {
     padding: 12px !important;
     width: 140px;

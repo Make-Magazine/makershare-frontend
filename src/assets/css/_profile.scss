@@ -735,9 +735,8 @@
         padding: 14px;
         background-color: $site-bg !important;
         canvas {
-            height: auto;
-            width: 326px;
             background-color: $site-bg;
+            cursor: pointer;
         }
         .btn {
             padding: 12px !important;
