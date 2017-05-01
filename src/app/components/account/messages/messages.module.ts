@@ -29,6 +29,19 @@ import { NotificationsListComponent } from './notifications/notifications-list.c
     DeleteModalComponent,
     InboxNotificationsComponent,
     NotificationsListComponent
+  ],
+  exports: [
+    InboxComponent,
+    ViewComponent,
+    BlockedUsersComponent,
+    InboxNotificationsComponent,
+    NotificationsListComponent
   ]
 })
-export class MessagesModule { }
+export class MessagesModule { };
+export { ViewComponent };
+export { InboxComponent };
+export { BlockedUsersComponent };
+export { InboxNotificationsComponent };
+export { NotificationsListComponent };
+
