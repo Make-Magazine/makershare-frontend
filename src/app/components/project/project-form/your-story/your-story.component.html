@@ -19,7 +19,7 @@
     <div class="form-group required cover d-flex flex-column">
       <div class="d-flex align-items-center">
         <label class="control-label" [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover photo </label>
-        <p class="small-text">choose a photo that is at least 600 x 400 px</p>
+        <p class="small-text">Choose a photo that is at least 600 x 400 px</p>
       </div>
       <div class="align-items-start">
         <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-load-more">CHOOSE FILE</a>
@@ -128,37 +128,37 @@
     <br>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.projectName.title}}</h4>
+        <h5>{{sidebarText.projectName.title}}</h5>
         <p>{{sidebarText.projectName.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.teaser.title}}</h4>
+        <h5>{{sidebarText.teaser.title}}</h5>
         <p>{{sidebarText.teaser.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.cover_image.title}}</h4>
+        <h5>{{sidebarText.cover_image.title}}</h5>
         <p>{{sidebarText.cover_image.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.category.title}}</h4>
+        <h5>{{sidebarText.category.title}}</h5>
         <p>{{sidebarText.category.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.story.title}}</h4>
+        <h5>{{sidebarText.story.title}}</h5>
         <p>{{sidebarText.story.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.show_tell.title}}</h4>
+        <h5>{{sidebarText.show_tell.title}}</h5>
         <video width="250" height="150" controls>
           <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
         </video>
@@ -166,19 +166,19 @@
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.aha.title}}</h4>
+        <h5>{{sidebarText.aha.title}}</h5>
         <p>{{sidebarText.aha.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.uh.title}}</h4>
+        <h5>{{sidebarText.uh.title}}</h5>
         <p>{{sidebarText.uh.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.tags.title}}</h4>
+        <h5>{{sidebarText.tags.title}}</h5>
         <p>{{sidebarText.tags.guide}}</p>
       </div>
     </div>
