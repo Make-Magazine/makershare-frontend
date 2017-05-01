@@ -26,6 +26,7 @@ export class NotificationTemplateComponent implements OnInit {
   }
 
   MarkAsSeen(seen){
+    
     this.ChangeNotificationStatus(seen).subscribe(data=>{
       this.notification.seen = seen;
     });
@@ -42,6 +43,7 @@ export class NotificationTemplateComponent implements OnInit {
 
   OpenNotification(ShowcaseUserID?:number){
     this.ChangeNotificationStatus(1).subscribe(data=>{},err=>console.log(err),()=>{
+      // open user profile
       if(ShowcaseUserID){
         if(this.notification.type == 'project_added_to_showcase'){
           this.router.navigate(["/showcases",this.notification.showcase_nid]);
@@ -51,9 +53,12 @@ export class NotificationTemplateComponent implements OnInit {
             this.router.navigateByUrl("/portfolio/"+url);
           });
         }
-      }else{
+      // open entity page
+      }else {
         if(this.notification.type == 'challenge_follow_deadline' || this.notification.type == 'challenge_follow_deadline'){
           this.router.navigate(["/missions",this.notification.nid]);
+        }else if(this.notification.type == "new_message_sent"){
+          this.router.navigate(["/account/inbox/view",this.notification.pm_mid]);
         }else{
           this.router.navigate(["/project/view",this.notification.nid]);
         }
