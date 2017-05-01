@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-  config.extraPlugins = 'videoembed,wordcount,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser';
+  config.extraPlugins = 'videoembed,wordcount,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser,codesnippet';
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
@@ -16,18 +16,18 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
-		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'document', groups: [ 'document', 'doctools' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
 		{ name: 'others', groups: [ 'others' ] },
 		'/',
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-		{ name: 'styles', groups: [ 'styles' ] },
+	 	{ name: 'styles', groups: [ 'styles' ] },
 		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'Cut,Copy,Paste,PasteText,PasteFromWord,Anchor,Table,SpecialChar,Format,Styles,About';
+	config.removeButtons = 'Cut,Copy,Paste,PasteText,PasteFromWord,Anchor,Table,SpecialChar,Styles,About';
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
