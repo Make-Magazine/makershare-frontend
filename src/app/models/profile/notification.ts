@@ -7,6 +7,7 @@ export interface Notification{
   nid?:number;
   title?:string;
   mid:number;
+  pm_mid:number;
   showcase_nid?:number;
   showcase_title?:string;
 }

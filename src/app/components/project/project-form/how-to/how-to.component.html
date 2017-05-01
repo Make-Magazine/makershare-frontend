@@ -198,7 +198,7 @@
     <div class="form-group col-xs-12 credit-your-inspiration">
       <label for="credit-your-inspiration">Credit Your Inspiration</label>
       <input [ngClass]="{valError: formErrors.field_credit_your_inspiration}" maxlength="140" type="text" class="form-control" id="credit-your-inspiration" formControlName="field_credit_your_inspiration" [(ngModel)]="project.field_credit_your_inspiration.und[0].value" novalidate placeholder="Credit Your Inspiration" ngbTooltip="{{TooltipText.inspiration.guide}}">
-      {{HowToForm.value.field_credit_your_inspiration.length}}\140
+      {{HowToForm.value.field_credit_your_inspiration.length}}\140 chars
     </div>
     <div *ngIf="formErrors.field_credit_your_inspiration" class="alert alert-danger error-msg">
       {{ formErrors.field_credit_your_inspiration }}

@@ -9,28 +9,45 @@ import { Notification } from '../../../../models';
 })
 export class NotificationsListComponent implements OnInit {
 
-  Notifications:Notification[];
-  NotificationsCount:number;
-
+  notifications:Notification[] = [];
+  notificationsCount:number = 0;
+  notificationsCountTotal: number = 0;
+  hideLoadMore = false;
+  pageNumber: number = 0;
+  CurrentUserID = localStorage.getItem("user_id");
   constructor(
     private viewService: ViewService,
   ) { }
 
   ngOnInit() {
     this.GetNotificationsList();
+    this.GetNotificationsCountTotal();
     this.GetNotificationsCount();
   }
 
   GetNotificationsList(){
-    this.viewService.getView('web_notifications', [['uid', localStorage.getItem("user_id")]]).subscribe((notifications:Notification[]) => {
-      console.log(notifications)
-      this.Notifications = notifications;
+    this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
+      this.notifications = this.notifications.concat(notifications);
+
     });
   }
 
   GetNotificationsCount(){
-    this.viewService.getView('notifications_count_api', [['uid', localStorage.getItem("user_id")]]).subscribe(data => {
-      this.NotificationsCount = data[0].count;
+    this.viewService.getView('notifications_count_api', [['uid', this.CurrentUserID]]).subscribe(data => {
+      this.notificationsCount = data[0].count;
     });
   }
+
+  GetNotificationsCountTotal(){
+    this.viewService.getView('views/api_notifications', [['display_id', 'services_2'],['uid', this.CurrentUserID]]).subscribe(data => {
+      this.notificationsCountTotal = data[0].total;
+    });
+  }  
+
+  loadMore() {
+    this.pageNumber++;
+    this.GetNotificationsList();
+  }
+
+  
 }
