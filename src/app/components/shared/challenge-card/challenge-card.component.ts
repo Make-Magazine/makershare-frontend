@@ -12,6 +12,7 @@ import { UserService } from '../../../d7services/user/user.service';
   templateUrl: './challenge-card.component.html',
 })
 export class ChallengeCardComponent implements OnInit {
+  announce_date;
   countProjects=0;
   challenge: IChallengeData = {
     title: "",
@@ -69,13 +70,20 @@ export class ChallengeCardComponent implements OnInit {
   getChallenges() {
     this.viewService.getView('shared-challenge-card', [['nid', this.challengeNid]]).subscribe(data => {
       this.challenge = data[0];
-      // console.log(data[0]);
       //calculate days difference
       if (this.challenge) {
         var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
         var todayDate = new Date();
-        var endDate = new Date(this.challenge.challenge_end_date.value);
+        let dateArray = this.challenge.challenge_end_date.value.split(" ");
+        let YearDayMonth = dateArray[0].split("-");
+        var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
         var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
+        let winnerdate = this.challenge.winners_announcement_date.value.split(" ");
+        let winnerdateArray = winnerdate[0].split("-");
+        var announceDate = new Date(+winnerdateArray[0],+winnerdateArray[1],+winnerdateArray[2]);
+        var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
+        this.announce_date = announce;
+
         if (diffDays >= 0) {
           this.challenge.opened = true;
           this.challenge.diffDays = diffDays
@@ -108,15 +116,19 @@ export class ChallengeCardComponent implements OnInit {
   /* function to change data format */
   changeDateFormat(date) {
     var d;
-    d = new Date(date);
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-    var month = monthNames[d.getMonth()];
-    var fullYear = d.getFullYear();
-    var day = d.getDate();
-    var datestring = month + " " + day + "," + " " + fullYear;
-    return datestring;
+    if(!date)
+      return '';
+    date = date.split(" ")[0];
+    // d = new Date(date);
+    // var monthNames = ["January", "February", "March", "April", "May", "June",
+    //   "July", "August", "September", "October", "November", "December"
+    // ];
+    // var month = monthNames[d.getMonth()];
+    // var fullYear = d.getFullYear();
+    // var day = d.getDate();
+    // var datestring = month + " " + day + "," + " " + fullYear;
+    date = date.split("-");
+    return date[1]+'/'+date[2]+'/'+date[0];
   }
   /* end function to change data format */
   /* function to navigate to challenge summary page */

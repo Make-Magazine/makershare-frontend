@@ -168,8 +168,8 @@ export class FeedbackComponent implements OnInit {
     }
     this.deviceInfo();
     //var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    var todayDate = new Date();
-    this.date = this.changeDateFormat(todayDate);
+    this.date = new Date();
+    // this.date = this.changeDateFormat(todayDate);
     //feedback types
     this.taxonomyService.getVocalbularyTerms(27).subscribe((data: TaxonomyTerm[]) => {
       this.feedback_types = data;
@@ -271,22 +271,40 @@ export class FeedbackComponent implements OnInit {
 
   changeDateFormat(date) {
     var d;
-    d = new Date(date);
-    var fullYear = d.getFullYear();
-    var day = d.getDate();
-    var hours = d.getHours();
-    var minutes = d.getMinutes();
-    var prefix;
-    if (hours >= 12) {
-      hours = hours - 12;
-      prefix = 'PM';
-    } else {
-      prefix = 'AM';
-    }
-    var formatter = new Intl.DateTimeFormat("en", { month: "short" }),
-      month1 = formatter.format(new Date(date))
-    var datestring = hours + ":" + minutes + " " + prefix + " " + month1 + " " + day + " " + fullYear;
-    return datestring;
+    if(!date)
+      return '';
+    date = date.split(" ")[0];
+    // d = new Date(date);
+    // var monthNames = ["January", "February", "March", "April", "May", "June",
+    //   "July", "August", "September", "October", "November", "December"
+    // ];
+    // var month = monthNames[d.getMonth()];
+    // var fullYear = d.getFullYear();
+    // var day = d.getDate();
+    // var datestring = month + " " + day + "," + " " + fullYear;
+    date = date.split("-");
+    return date[1]+'/'+date[2]+'/'+date[0];
+    // var d;
+    // console.log(date);
+    // if(!date)
+    //   return '';
+    // date = date.split(" ")[0];
+    // d = new Date(date);
+    // var fullYear = d.getFullYear();
+    // var day = d.getDate();
+    // var hours = d.getHours();
+    // var minutes = d.getMinutes();
+    // var prefix;
+    // if (hours >= 12) {
+    //   hours = hours - 12;
+    //   prefix = 'PM';
+    // } else {
+    //   prefix = 'AM';
+    // }
+    // var formatter = new Intl.DateTimeFormat("en", { month: "short" }),
+    //   month1 = formatter.format(new Date(date))
+    // var datestring = hours + ":" + minutes + " " + prefix + " " + month1 + " " + day + " " + fullYear;
+    // return datestring;
   }
   checkFeedbackType(feedback) {
  

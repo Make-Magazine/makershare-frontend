@@ -9,7 +9,7 @@
       </div>
       <div class="media-body">
         <h5 class="mt-0 name" *ngIf="award.award_name && award.number_winners">{{award.award_name}} ({{award.number_winners}})</h5>
-        <p class="description" *ngIf="award.prize_description">{{award.prize_description}}</p>
+        <p class="description" *ngIf="award.prize_description" [innerHTML]="award.prize_description"></p>
         <p class="value" *ngIf="award.cash[0] && no_of_awards">{{no_of_awards}} available;Cash value: {{award.cash[0]['Amount']['#markup']}}{{award.cash[0]['Currency']['#markup']}}</p>    
       </div>
     </div>
