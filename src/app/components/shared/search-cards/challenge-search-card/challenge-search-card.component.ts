@@ -69,7 +69,9 @@ export class ChallengeSearchCardComponent implements OnInit {
       if (this.challenge) {
         var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
         var todayDate = new Date();
-        var endDate = new Date(this.challenge.challenge_end_date.value);
+        let dateArray = this.challenge.challenge_end_date.value.split(" ");
+        let YearDayMonth = dateArray[0].split("-");
+        var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
         var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
         if (diffDays >= 0) {
           this.challenge.opened = true;
