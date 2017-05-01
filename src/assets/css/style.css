@@ -221,7 +221,9 @@ header .noti-number {
   font-size: 12px;
   bottom: 2px;
   font-weight: bold;
-  z-index: 1;
+  z-index: 1; }
+
+header.main-header .login-block li .notification-icon::after {
   content: '' !important; }
 
 .page-create-profile {
