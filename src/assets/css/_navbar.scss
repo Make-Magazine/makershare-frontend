@@ -90,7 +90,7 @@ header {
                         height: auto;
                     }
                     &::after {
-                        content: '123';
+                        content: '';
                         text-align: center;
                         font-size: 8px;
                         line-height: 27px;
@@ -279,7 +279,5 @@ header {
   }
 
   }
- header.main-header .login-block li .notification-icon::after {
-          content: '' !important;
- }
+
 

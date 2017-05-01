@@ -1202,7 +1202,7 @@
     z-index: 8;
 }
 .latest-project-image {
-    display: none;
+    // display: none;
 }
 .overlay-portfolio {
     width: 100%;
@@ -1843,6 +1843,14 @@
         img {
             height: 100%;
             width: 100%;
+        }
+        .step{
+            opacity: 0;
+            position: absolute;
+            transition: .5s ease-in-out all;
+        }
+        .show{
+            opacity: 1 !important;
         }
     }
     .card-block {
