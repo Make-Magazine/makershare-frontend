@@ -12,6 +12,7 @@ import { UserService } from '../../../d7services/user/user.service';
   templateUrl: './challenge-card.component.html',
 })
 export class ChallengeCardComponent implements OnInit {
+  announce_date;
   countProjects=0;
   challenge: IChallengeData = {
     title: "",
@@ -75,6 +76,11 @@ export class ChallengeCardComponent implements OnInit {
         var todayDate = new Date();
         var endDate = new Date(this.challenge.challenge_end_date.value);
         var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
+
+        var announceDate = new Date(this.challenge.winners_announcement_date.value);
+        var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
+        this.announce_date = announce;
+
         if (diffDays >= 0) {
           this.challenge.opened = true;
           this.challenge.diffDays = diffDays
