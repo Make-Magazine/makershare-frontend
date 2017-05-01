@@ -515,14 +515,9 @@
 
 
  /* acount setting component */
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-/* Safari and Chrome */
-.custom-safari {
- text-align:center;
-}
 
-/* Safari only override */
-::i-block-chrome,.custom-safari {
-text-align: left;
-}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .custom-safari {
+        text-align: left !important;
+    }
 }
