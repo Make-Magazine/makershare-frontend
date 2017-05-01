@@ -71,8 +71,9 @@
                             <p class="challenge-end-date" *ngIf="challenge.status_id == 375"> Submissions close: {{challenge.challenge_end_date | date:'M/d/y'}}</p>
                             <p class="challenge-end-date" *ngIf="challenge.status_id == 1107"> In review. Winners to be announced: {{challenge.winners_announcement_date | date:'M/d/y'}}</p>
                             <p class="challenge-end-date" *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date | date:'M/d/y'}}</p>
-                            <p class="challenge-end-date" *ngIf="challenge.status_id == 376"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value | date:'M/d/y'}}</p>
-
+                            <p class="challenge-end-date" *ngIf="challenge.status_id == 376 && challengeDate < 0" > Closed for submissions. Winners announced: {{challenge.winners_announcement_date | date:'M/d/y'}}</p>
+                            <p class="challenge-end-date" *ngIf="challenge.status_id == 376 && challengeDate >= 0" > Closed for submissions. Winners to be  announced: {{challenge.winners_announcement_date | date:'M/d/y'}}</p>
+                            
                           </div>
                         </div>
                       </div>

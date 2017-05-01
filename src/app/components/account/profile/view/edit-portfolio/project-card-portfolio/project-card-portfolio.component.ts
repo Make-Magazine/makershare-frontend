@@ -43,7 +43,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   }
 
   OpenModal(template) {
-    this.modal.open(template);
+    this.modal.open(template,{size:'lg',windowClass:'delete-promodal'});
   }
 
   DeleteProject(closebtn) {

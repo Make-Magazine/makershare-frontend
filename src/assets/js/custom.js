@@ -78,16 +78,7 @@ $(document).ready(function () {
 		$('.submenus div ' + ul).show();
 
 	});
-	// $(document).on('click', '.project-aside a', function (e) {
-	// 	e.preventDefault();
-	// 	id = $(this).parent().attr('id');
-	// 	$('#' + id).addClass('active');
-	// 	$('#' + id).siblings().removeClass('active');
-	// 	$('.' + id).show();
-	// 	$('.' + id).siblings().hide();
-
-	// })
-
+	
 	$(document).on('click', "#cover-upload-link", function (e) {
 		e.preventDefault();
 		$("#cover-upload:hidden").trigger('click');
@@ -105,46 +96,6 @@ $(document).ready(function () {
 		addNewField($(this), spaceArray, $('.maker-group'), $('.makerspace div.maker-group'));
 	});
 
-	// navigating the create project page tabs
-
-	// navigating the create profile page tabs
-	// $(document).on('click', '.create-nav li a', function (e) {
-	// 	// myToggle($(this), e);
-	// });
-
-	// Toggle profile grid and square view
-	// $(document).on('click', '.square-view', function () {
-	// 	// $(this).children().toggle();
-	// 	if (squareView) {
-	// 		$('.projects-grid .project-item ').removeClass('col-lg-6');
-	// 		$('.projects-grid .project-item ').addClass('col-lg-12');
-	// 		$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'block' });
-	// 		$('.projects-grid .project-stats').css({
-	// 			display: 'block',
-	// 			bottom: '120px'
-	// 		});
-	// 		$('.projects-grid .categories').css({
-	// 			display: 'block',
-	// 		});
-	// 		squareView = false;
-	// 	} 
-	// });
-	// $(document).on('click', '.grid-view', function () {
-	// 	// $(this).children().toggle();
-	// 	if (!squareView) {
-	// 		$('.projects-grid .project-item').removeClass('col-lg-12');
-	// 		$('.projects-grid .project-item').addClass('col-lg-6');
-	// 		$('.projects-grid .project-item .content-side p.project-text-grid').css({ display: 'none' });
-	// 		$('.projects-grid .project-stats').css({
-	// 			display: 'none',
-	// 			bottom: '120px'
-	// 		});
-	// 		$('.projects-grid .categories').css({
-	// 			display: 'none',
-	// 		});
-	// 		squareView = true;
-	// 	}
-	// });
 	// Show and hide project stats on project card
 	$(document).on('mouseenter', '.project , .maker-card', function () {
 		if (squareView) {
@@ -160,14 +111,7 @@ $(document).ready(function () {
 			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
 			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
 			$(this).find('.profile-edit-buttons').stop();
-			$(this).find('.profile-edit-buttons').fadeIn(400);
-			if($(this).find('.latest-project-image').length > 0 ){
-				$(this).find('.latest-project-image').stop();			
-				$(this).find('.latest-project-image').fadeIn(800);
-				$(this).find('.maker-card-photo').stop();
-				$(this).find('.maker-card-photo').fadeOut(800);
-			}
-			
+			$(this).find('.profile-edit-buttons').fadeIn(400);			
 		}
 	});
 	$(document).on('mouseleave', '.project , .maker-card', function () {
@@ -185,25 +129,12 @@ $(document).ready(function () {
 			// })			
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
-			if($(this).find('.latest-project-image').length > 0 ){			
-				$(this).find('.latest-project-image').stop();			
-				$(this).find('.latest-project-image').fadeOut(800);
-				$(this).find('.maker-card-photo').stop();
-				$(this).find('.maker-card-photo').fadeIn(800);			
-			}
 		}
 	});
 	$(document).on('click','#search-icon', function(){
 		$('#search-box-input').focus();
 	})
-	// $(document).on('click', '.display-style p',function(){
-	// 	if($(this).hasClass('active')) {
-			
-	// 	}else {
-	// 		$(this).addClass('active');
-	// 		$(this).siblings().removeClass('active');			
-	// 	}
-	// })
+	
 	//Index page parallax bg
 	window_width = $(window).width();
 	window_height = $(window).height();

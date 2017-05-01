@@ -39,19 +39,19 @@
 }
 
 @mixin card-header-font-lg (){
-	@include font-setting('Messina Modern Regular', 2.6em ,500 ,capitalize , 120%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 2.6em ,500 ,none , 120%, $text-color-2 );
 	// 48 pt
 }
 @mixin card-header-font-md-2 (){
-	@include font-setting('Messina Modern Regular', 2em ,400 ,capitalize , 100%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 2em ,400 ,none , 100%, $text-color-2 );
 	// 48 pt
 }
 @mixin card-header-font-md (){
-	@include font-setting('Messina Modern Regular', 1.8em ,400 ,capitalize , 115%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 1.8em ,400 ,none , 115%, $text-color-2 );
 	// 24pt
 }
 @mixin card-header-font-sm (){
-	@include font-setting('Messina Modern Regular', 1.3em ,500 ,capitalize , 120%, $text-color-2 );
+	@include font-setting('Messina Modern Regular', 1.3em ,500 ,none , 120%, $text-color-2 );
 	// 18pt -> 16pt
 }
 @mixin card-header-font-xs (){
