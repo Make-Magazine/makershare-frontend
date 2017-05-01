@@ -90,7 +90,7 @@ header {
                         height: auto;
                     }
                     &::after {
-                        content: '123';
+                        content: '';
                         text-align: center;
                         font-size: 8px;
                         line-height: 27px;
@@ -265,5 +265,19 @@ header {
         }
     
     }
-}
+
+    .noti-number{
+    position: absolute !important;
+    // left: 30px;
+    width: 80%;
+    color: white;
+    font-size: 12px;
+    bottom: 2px;
+    font-weight: bold;
+    z-index: 1;
+    
+  }
+
+  }
+
 
