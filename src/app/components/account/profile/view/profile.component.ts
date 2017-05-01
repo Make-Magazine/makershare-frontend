@@ -29,7 +29,7 @@ import { StatisticsService } from '../../../../d7services/statistics/statistics.
 export class ProfileComponent implements OnInit {
   @ViewChild('cropper') set cropper(cropper:ImageCropperComponent) {
     setTimeout(()=>{
-      console.log(cropper);
+      // console.log(cropper);
     },1000);
   }
 

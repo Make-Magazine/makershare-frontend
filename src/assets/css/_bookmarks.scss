@@ -18,7 +18,14 @@
         }
     }
     .content-wrapper {
-      min-height: 250px;
+      min-height: 530px;
       padding: 15px;
+      margin-bottom: 20px;
+      td {
+        border-top: 1px solid #dcdcdc;
+      }
+      th {
+        border-top: 1px solid #dcdcdc;
+      }
   }
 }
