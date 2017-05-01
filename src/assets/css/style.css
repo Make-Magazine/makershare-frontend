@@ -2827,9 +2827,6 @@ footer {
   display: none;
   z-index: 8; }
 
-.latest-project-image {
-  display: none; }
-
 .overlay-portfolio {
   width: 100%;
   height: 100%;
@@ -3339,6 +3336,12 @@ footer {
     .maker-card .image-top img {
       height: 100%;
       width: 100%; }
+    .maker-card .image-top .step {
+      opacity: 0;
+      position: absolute;
+      transition: .5s ease-in-out all; }
+    .maker-card .image-top .show {
+      opacity: 1 !important; }
   .maker-card .card-block {
     padding: 0 15px;
     height: 175px;
