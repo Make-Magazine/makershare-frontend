@@ -555,25 +555,7 @@
 	}
 }
 
-.btn-create-tab,a:not([href]):not([tabindex]).btn-create-tab {
-    border-radius: 0;
-    font-size: 16px;
-		// border: 1px solid #BDBDBD;
-    padding: 9px 30px 8px 30px;
-		color: #BDBDBD;
-		background-color: inherit;
-    &:focus {    
-			// background-color: white;
-			color: #4f4f4f;
-			// border: 1px solid #4f4f4f
-    }	
-    &:active, &:hover, &.active {
-				cursor: pointer;
-				// background-color: white;
-				color: #4f4f4f;
-				border-bottom: 5px solid $blue;
-    }
-}
+
 .form-group.required {
 	label::after {
 		content: " *";
