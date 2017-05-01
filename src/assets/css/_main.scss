@@ -1,4 +1,58 @@
 h1,h2,h3,h4,h5,h6 {font-family: 'Messina Modern Regular';color: $main-grey;}
+
+h1 {
+    font-family: "Messina Modern Regular";
+    font-size : 4em;
+    line-height: 120%;
+    color: $text-color-1;
+}
+h1.large {
+    font-family: "Messina Modern Regular";
+    font-size : 5.35em;
+    line-height: 130%;
+    color: $text-color-1;
+}
+h2 {
+    font-family: "Messina Modern Regular";
+    font-size : 2.6em;
+    font-weight : 500;
+    line-height: 110%;
+    color: $text-color-1;
+}
+
+h3 {
+    font-family: "Messina Modern Regular";
+    font-size : 2em;
+    font-weight : 500;
+    line-height: 110%;
+    color: $text-color-1;
+}
+
+h4 {
+    font-family: "Messina Modern Regular";
+    font-size : 1.6em;
+    font-weight : 500;
+    line-height: 110%;
+    color: $text-color-1;
+}
+
+h5 {
+    font-family: "Messina Modern Regular";
+    font-size : 1.5em;
+    font-weight : 500;
+    line-height: 110%;
+    color: $text-color-1;
+}
+
+h6 {
+    font-family: "Messina Sans Regular";
+    font-size : 1.3em;
+    font-weight : 500;
+    line-height: 100%;
+    color: $text-color-1;
+}
+
+
 span.link{
     cursor:pointer;
     position:relative;
@@ -18,6 +72,11 @@ body {
     margin-top: 113px;
     background-color: $site-bg;
     padding-right: 0 !important; 
+    font-family: 'Messina Sans Regular';
+    color: $main-grey;
+    font-size: 0.9em;
+    font-weight: 500;
+    line-height: 1.5em;
     -webkit-transition: all 1.25s ease-in-out;
        -moz-transition: all 1.25s ease-in-out;
         -ms-transition: all 1.25s ease-in-out;

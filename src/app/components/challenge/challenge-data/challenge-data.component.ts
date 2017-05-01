@@ -47,6 +47,7 @@ export class ChallengeDataComponent implements OnInit {
   enterStatus = true;
   page_arg = [];
   projectdata;
+  challengeDate;
   @Input() countFoll;
   @Input() sortType: ISorting;
   @Input() pageNo: number;
@@ -169,6 +170,10 @@ export class ChallengeDataComponent implements OnInit {
           var todayDate = new Date();
           var endDate = new Date(this.challenge.challenge_end_date.value);
           var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
+
+          var announceDate = new Date(this.challenge.winners_announcement_date.value);
+          var days_for_announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
+          this.challengeDate = days_for_announce;
           if (diffDays >= 0) {
             this.challenge.opened = true;
             this.challenge.diffDays = diffDays
