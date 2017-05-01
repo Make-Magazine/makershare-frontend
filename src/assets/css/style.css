@@ -670,6 +670,20 @@ a:not([href]):not([tabindex]).btn-load-more {
     text-align: center;
     margin-left: -7px; }
 
+.btn-tab, a:not([href]):not([tabindex]).btn-tab {
+  border-radius: 0;
+  font-size: 1.2em;
+  padding: 9px 30px 8px 30px;
+  height: 35px;
+  color: #BDBDBD;
+  background-color: inherit; }
+  .btn-tab:focus, a:not([href]):not([tabindex]).btn-tab:focus {
+    color: #4f4f4f; }
+  .btn-tab:active, .btn-tab:hover, .btn-tab.active, a:not([href]):not([tabindex]).btn-tab:active, a:not([href]):not([tabindex]).btn-tab:hover, a:not([href]):not([tabindex]).btn-tab.active {
+    cursor: pointer;
+    color: #4f4f4f;
+    border-bottom: 5px solid #00AEEF; }
+
 .form-textarea {
   position: relative; }
   .form-textarea textarea {
@@ -1793,7 +1807,7 @@ footer {
   max-height: 360px; }
 
 /* Bookmark */
-.bookmark-page .bookmark-menu ul li .btn-create-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-create-tab:focus {
+.bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;
   outline: none !important; }
 .bookmark-page .content-wrapper {
@@ -6426,10 +6440,6 @@ img {
         color: #828282;
         line-height: 1.4em;
         color: #4f4f4f; }
-      .page-create-project-why .guideline .content h4 {
-        font-size: 18px;
-        font-weight: bold;
-        color: #4f4f4f; }
   .page-create-project-why .small-text {
     font-size: 0.75em;
     display: inline-block;
@@ -6683,7 +6693,6 @@ img {
   font-size: 1em;
   font-weight: bold;
   color: #828282;
-  text-align: center;
   margin-bottom: 0;
   margin-right: 5px;
   padding: 10px 0; }
@@ -6717,19 +6726,6 @@ img {
     background: #ED1C24;
     border-color: transparent;
     cursor: pointer; }
-
-.btn-create-tab, a:not([href]):not([tabindex]).btn-create-tab {
-  border-radius: 0;
-  font-size: 16px;
-  padding: 9px 30px 8px 30px;
-  color: #BDBDBD;
-  background-color: inherit; }
-  .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
-    color: #4f4f4f; }
-  .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
-    cursor: pointer;
-    color: #4f4f4f;
-    border-bottom: 5px solid #00AEEF; }
 
 .form-group.required label::after {
   content: " *";
@@ -8655,6 +8651,10 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+/* acount setting component */
+_::-webkit-full-page-media, _:future, :root .custom-safari {
+  text-align: left !important; }
+
 ckeditor #cke_23 {
   float: right; }
   ckeditor #cke_23 #cke_24_description::after {
