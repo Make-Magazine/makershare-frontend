@@ -89,33 +89,37 @@ a:not([href]):not([tabindex]).btn-main{
     border-color: $main-button-1*0.9;
     &:focus {
         color: #fff;
-        background-color: $main-button-1*0.9;
+        background-color: $main-button-1*0.8;
         border-color: $main-button-1*0.8;
     }
 
     &:active, &:hover {
         color: #fff;
-        background-color: $main-button-1*0.9;
+        background-color: $main-button-1*0.8;
         border-color: $main-button-1*0.8;
     }
+    &:active .button-container-main-1, &:hover .button-container-main-1 {
+        border-color: $main-button-1*0.8 !important;
+    }
 }
+
 
 .btn-main-2,
 a:not([href]):not([tabindex]).btn-main-2 {
     color: #fff !important;
-    background-color: $main-button-2;
-    border-color: $main-button-2*0.9;
+    background-color: $btn-secondary-1;
+    border-color: $btn-secondary-1*0.9;
 
     &:focus {
         color: #fff;
-        background-color: $main-button-2*0.9;
-        border-color: $main-button-2*0.8;
+        background-color: $btn-secondary-1*0.8;
+        border-color: $btn-secondary-1*0.8;
     }
 
     &:active, &:hover {
         color: #fff;
-        background-color: $main-button-2*0.9;
-        border-color: $main-button-2*0.8;
+        background-color: $btn-secondary-1*0.8;
+        border-color: $btn-secondary-1*0.8;
     }
 }
 .btn-border,
@@ -230,23 +234,32 @@ a:not([href]):not([tabindex]).btn-soft-grey {
  {
     margin-left: 3px;
     display: inline-block;
+    width: 144px;
     .btn {
         @extend .displace;
-            padding: 8px 16px;
-            width: 100%;
+        padding: 15px 0px;
+        width: 140px;
 
     }
 }
 .button-container-main-1 {
     border: 2px solid $main-button-1;
+    &:hover {
+        // border-color: $main-button-1*0.8 !important;
+        border: 2px solid $main-button-1*0.8 !important;
+    }
 }
 .button-container-main-2 {
-    border: 2px solid $main-button-2;
+    border: 2px solid $btn-secondary-1;
     margin-bottom: 30px;
     margin-top: 20px;
 }
 .button-container-sec-2 {
     border: 2px solid $sec-button-2;
+        &:hover {
+        // border-color: $main-button-1*0.8 !important;
+        border: 2px solid $btn-secondary-1*0.8 !important;
+    }
 }
 .button-container-sec-3 {
     border: 2px solid $sec-button-3;
@@ -311,18 +324,20 @@ a:not([href]):not([tabindex]) {
 }
 .btn-vote,
 a:not([href]):not([tabindex]).btn-vote {
-    color: $main-grey*0.8;
-    background: transparent;
-    border: 1px solid;
-        padding:5px;
-        width: 50%;
+    @include card-header-font-sm ();
+    color: $text-color-1;
+    background: #fff;
+    border: 0.5px solid $text-color-1;
+    padding: 15px 0px;
+    width: 180px;
     margin: 0 auto;
     text-align: center;
+    transition: background-color 0.5s ease;
     &:focus, &:active, &:hover , &.active {
         color: #FFF;
         background-color: $btn-primary-2;
         box-shadow: none;
-            border: 1px solid;
+        border: 1px solid;
 
     }
 }
