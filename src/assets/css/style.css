@@ -8595,6 +8595,15 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+/* acount setting component */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Safari and Chrome */
+  .custom-safari {
+    text-align: center; }
+
+  /* Safari only override */
+  ::i-block-chrome, .custom-safari {
+    text-align: left; } }
 ckeditor #cke_23 {
   float: right; }
   ckeditor #cke_23 #cke_24_description::after {
