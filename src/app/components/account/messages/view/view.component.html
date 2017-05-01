@@ -24,7 +24,7 @@
       <!--<a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>-->
     </div>
   </div>
-  <h3 class="message-subject">{{msg.subject}}</h3>
+  <h4 class="message-subject">{{msg.subject}}</h4>
   <ul class="list-unstyled conversation">
     <div>
       <li class="single-message" *ngFor="let message of messages;let i=index;">
@@ -49,7 +49,7 @@
   <form [formGroup]="messageForm" (ngSubmit)="onSubmit($event)">
     <div class="reply-area" [hidden]="block" *ngIf="!hideTurnOn">
       <p class="reply">Reply</p>
-      <div>
+      <div class="replay-textarea">
         <textarea [hidden]="block" name="body" id="" cols="30" rows="5" formControlName="body"></textarea>
       </div>
       <div *ngIf="formErrors.body" class="alert alert-danger">
