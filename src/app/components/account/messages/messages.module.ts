@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { InboxNotificationsComponent } from './inbox-notifications/inbox-notifications.component';
 import { NotificationsListComponent } from './notifications/notifications-list.component';
+import { SentComponent } from './sent/sent.component';
 
  
 @NgModule({
@@ -28,14 +29,16 @@ import { NotificationsListComponent } from './notifications/notifications-list.c
     BlockedUsersComponent,
     DeleteModalComponent,
     InboxNotificationsComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    SentComponent
   ],
   exports: [
     InboxComponent,
     ViewComponent,
     BlockedUsersComponent,
     InboxNotificationsComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    SentComponent
   ]
 })
 export class MessagesModule { };
@@ -44,4 +47,6 @@ export { InboxComponent };
 export { BlockedUsersComponent };
 export { InboxNotificationsComponent };
 export { NotificationsListComponent };
+export { SentComponent };
+
 

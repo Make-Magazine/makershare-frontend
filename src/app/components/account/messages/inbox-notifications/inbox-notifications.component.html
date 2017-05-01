@@ -1,17 +1,20 @@
   <div class="page-inbox">
     <div class="inbox-title mx-auto" >
-     <h1>Inbox</h1>
+     <h1>Messages</h1>
     </div>
   <header class="inbox-header container d-flex justify-content-center">
    
     <ul class="list-unstyled d-flex flex-row aling-self-center align-content-lg-center">
-      <li><a  (click)="current_active_tab = 'messages'" class="btn btn-tab"  [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
+      <li><a  (click)="current_active_tab = 'messages'" class="btn btn-tab"  [ngClass]="{'active': current_active_tab == 'messages' }">Inbox</a></li>
       <li><a  (click)="current_active_tab = 'notifications'" class="btn btn-tab"  [ngClass]="{'active': current_active_tab == 'notifications' }">Notificatoins</a></li>
+      <li><a  (click)="current_active_tab = 'sent'" class="btn btn-tab"  [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>
+      
     </ul>
   </header>
   <div class="nav-create">
     <div class="container">
       <app-inbox *ngIf="current_active_tab == 'messages'" class="row"></app-inbox>
+      <app-sent *ngIf="current_active_tab == 'sent'" class="row"></app-sent>
       <notifications-list *ngIf="current_active_tab == 'notifications'" class="row"></notifications-list>
     </div>
   </div>
