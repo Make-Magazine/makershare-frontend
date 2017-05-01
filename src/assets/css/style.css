@@ -3956,7 +3956,7 @@ button:hover {
       padding: 8.5px 8px;
       border-radius: 0px;
       font-size: 0.9em;
-      margin: 10px;
+      margin: 0px 10px 10px 10px;
       border: 0.5px solid #6f6f6f;
       color: #6f6f6f; }
     .page-explore .submenus li .active {
@@ -3999,12 +3999,22 @@ button:hover {
     .filters .sorting-filter button::after, .filters .projects-filter button::after {
       display: none; }
     .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
+      -moz-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+      -webkit-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+      box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
       background-color: white;
-      color: #BDBDBD;
+      color: #676767;
       border-radius: 0;
       z-index: 10;
       right: 0;
       left: auto; }
+      .filters .sorting-filter .dropdown-menu a, .filters .projects-filter .dropdown-menu a {
+        width: 100%;
+        text-align: left;
+        font-size: 0.9em; }
+        .filters .sorting-filter .dropdown-menu a:hover, .filters .projects-filter .dropdown-menu a:hover {
+          color: #4F4F4F;
+          background-color: #F2F2F2; }
 
 .page-challenge {
   background-color: #F2F2F2;
