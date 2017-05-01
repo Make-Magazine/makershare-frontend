@@ -868,8 +868,7 @@
         z-index: 9;
         .project-icon {
             img {
-                width: auto;
-                height: 35px;
+                height: 36px;
                 width: 30px;
                 margin-right: 5px;
             }
@@ -894,7 +893,6 @@
     .card-title {
         @include card-header-font-sm;
         color: $text-color-1;
-        height: 50px;
         padding: 0px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -1895,14 +1893,14 @@
     }
     .icons-side-project {
         position: relative;
-        top: -18px;
+        top: -13px;
         height: 40px;
         margin-bottom: -10px;
         z-index: 9;
         .project-icon {
             img {
-                width: auto;
-                height: 40px;
+                width: 30px;
+                height: 36px;
                 margin-right: 5px;
             }
         }
