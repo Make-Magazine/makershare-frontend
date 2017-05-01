@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-inbox-notifications',
-  templateUrl: './inbox-notifications.component.html',
-  styleUrls: ['./inbox-notifications.component.css']
+  templateUrl: './inbox-notifications.component.html'
 })
 export class InboxNotificationsComponent implements OnInit {
 current_active_tab;

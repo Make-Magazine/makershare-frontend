@@ -818,6 +818,16 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Messina Modern Regular';
   color: #333333; }
 
+span.link {
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+  color: #0275d8;
+  text-decoration: none; }
+  span.link:hover {
+    color: #014c8c !important;
+    text-decoration: underline !important; }
+
 notification-bar {
   z-index: 99999; }
 
