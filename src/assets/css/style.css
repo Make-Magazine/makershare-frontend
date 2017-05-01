@@ -221,7 +221,8 @@ header .noti-number {
   font-size: 12px;
   bottom: 2px;
   font-weight: bold;
-  z-index: 1; }
+  z-index: 1;
+  content: '' !important; }
 
 .page-create-profile {
   background-color: #F2F2F2;
@@ -2457,9 +2458,8 @@ footer {
   padding: 14px;
   background-color: #F2F2F2 !important; }
   .edit-cover-modal .upload-tab canvas {
-    height: auto;
-    width: 326px;
-    background-color: #F2F2F2; }
+    background-color: #F2F2F2;
+    cursor: pointer; }
   .edit-cover-modal .upload-tab .btn {
     padding: 12px !important;
     width: 140px;
