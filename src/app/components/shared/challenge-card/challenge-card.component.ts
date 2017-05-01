@@ -68,8 +68,8 @@ export class ChallengeCardComponent implements OnInit {
 
   getChallenges() {
     this.viewService.getView('shared-challenge-card', [['nid', this.challengeNid]]).subscribe(data => {
+      console.log(data[0]);
       this.challenge = data[0];
-      // console.log(data[0]);
       //calculate days difference
       if (this.challenge) {
         var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -108,6 +108,7 @@ export class ChallengeCardComponent implements OnInit {
   /* function to change data format */
   changeDateFormat(date) {
     var d;
+    date = date.split(' ')[0];
     d = new Date(date);
     var monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
