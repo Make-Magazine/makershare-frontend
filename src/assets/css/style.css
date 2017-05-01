@@ -6353,10 +6353,6 @@ img {
         color: #828282;
         line-height: 1.4em;
         color: #4f4f4f; }
-      .page-create-project-why .guideline .content h4 {
-        font-size: 18px;
-        font-weight: bold;
-        color: #4f4f4f; }
   .page-create-project-why .small-text {
     font-size: 0.75em;
     display: inline-block;
@@ -6610,7 +6606,6 @@ img {
   font-size: 1em;
   font-weight: bold;
   color: #828282;
-  text-align: center;
   margin-bottom: 0;
   margin-right: 5px;
   padding: 10px 0; }
