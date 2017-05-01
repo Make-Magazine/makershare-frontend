@@ -78,6 +78,7 @@ $(document).ready(function () {
 		$('.submenus div ' + ul).show();
 
 	});
+
 	
 	$(document).on('click', "#cover-upload-link", function (e) {
 		e.preventDefault();

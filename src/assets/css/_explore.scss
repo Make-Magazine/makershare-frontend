@@ -14,13 +14,27 @@
 			padding-bottom: 30px;
 		}
 		.explore-tags {
-			margin: 20px auto;
+			margin: 18px auto;
 			li{
 				display: inline-block;
-				margin: 5px;
+				margin: 0px 15px;
 				a.btn {
-					padding: 5px 15px;
-					border-radius: 3px;
+					border-radius: 0px;
+					min-width: 180px;
+					padding: 15px 10px;
+					@include card-header-font-sm();
+					color: $text-color-1*1.4;
+					font-size: 1em !important;
+					text-align: center;
+					border: 0.5px solid $text-color-1*1.4;
+					&:hover, &:active {
+						color: $text-color-1;
+						border: 0.5px solid $text-color-1 !important;
+					}
+				}
+				a.active {
+					color: $text-color-1;
+					// border: 0.5px solid $text-color-1 !important;
 				}
 			}
 		}
@@ -28,11 +42,18 @@
 	.submenus {
 		li{
 			display: inline-block;
-			margin-bottom: 7px;
 			a.btn {
-				padding: 5px 15px;
-				border-radius: 3px;
-				margin: 0 3px;
+				min-width: 100px;
+				text-align: center;
+				padding: 8.5px 8px;
+				border-radius: 0px;
+				font-size: 0.9em;
+				margin: 10px;
+				border: 0.5px solid $text-color-1*1.4;
+				color: $text-color-1*1.4;
+			}
+			.active {
+				border: 0.5px solid $red !important;
 			}
 		}
 		.arts-sub,
