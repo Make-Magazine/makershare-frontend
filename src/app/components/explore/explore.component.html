@@ -46,7 +46,11 @@
         <!-- End filters -->        
       </div>
     </header>
-    <!--/header -->
+    <!--/    <div class="text-center pt-3 pb-5">
+      <div *ngIf="!hideLoadMore">
+        <a class="btn btn-load-more" *ngIf="projects.length != 0" (click)="loadMoreProject()">Load more</a>
+      </div>
+    </div>header -->
     <div class="projects-grid row" *ngIf="projects.length > 0">
       <app-project-card *ngFor="let project of projects" [view]="view" [nid]="project.nid" class="col-md-6 col-lg-4"></app-project-card>
     </div>
