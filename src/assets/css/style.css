@@ -7676,7 +7676,8 @@ img {
           color: #00AEEF;
           text-decoration: none; }
         .conversation-container .conversation .single-message .message-info img {
-          width: 60px; }
+          width: 50px;
+          height: 50px; }
       .conversation-container .conversation .single-message .message-body {
         margin-bottom: 20px; }
   .conversation-container .reply-area .reply {
@@ -7685,7 +7686,8 @@ img {
     margin-bottom: 15px; }
   .conversation-container .reply-area textarea {
     width: 100%;
-    resize: none; }
+    resize: none;
+    color: black; }
   .conversation-container .reply-area .send-actions {
     text-align: right;
     margin-top: 15px; }
@@ -8505,7 +8507,10 @@ img {
     max-width: 1110px; }
 
   .profile-sidebar .profile-container {
-    top: -40px; } }
+    top: -40px; }
+
+  .delete-promodal .modal-dialog {
+    max-width: 700px !important; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   header nav {
     padding: 20px 5px !important; }
