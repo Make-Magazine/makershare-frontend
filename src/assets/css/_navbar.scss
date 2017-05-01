@@ -275,7 +275,11 @@ header {
     bottom: 2px;
     font-weight: bold;
     z-index: 1;
+    
   }
-}
 
+  }
+ header.main-header .login-block li .notification-icon::after {
+          content: '' !important;
+ }
 
