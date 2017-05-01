@@ -54,9 +54,9 @@
 				}
 				.project-draft {
 					.btn {
-						padding: 10px;
-						font-size: 16px;
-						margin-right: 5px;
+						// padding: 10px;
+						// font-size: 16px;
+						// margin-right: 5px;
 					}
 				}
 				.project-private {
@@ -102,7 +102,7 @@
 		}
 	}
 	.form-group {
-		margin-top: 40px;
+		margin-top: 20px;
 		br {
 			display: none;
 		}
@@ -114,7 +114,7 @@
 		select {width:75%;}
 	}
 	.nav-create {
-		padding-top: 10px;
+		// padding-top: 10px;
 		.container {
 		}
 		ul {
@@ -171,7 +171,10 @@
 			}
 		.projectName {
 			width: 100%;
-			
+			}
+			.red-text {
+				  font-size: 0.9em;
+    			color: $red;
 			}
 		.projectCategory {
 				width: 100%;
@@ -222,7 +225,6 @@
 					}
 					p.cate-name {
 						margin: 3px 0;					
-						margin-left: 15px;
 						border-radius:0;
 						font-size: 0.9em;
 						padding: 8px 1rem;
@@ -591,7 +593,8 @@
 .your-story,
 .how-to {
 	label {
-		@include card-header-font-sm();
+		@include card-header-font-md();
+		color: $shade-4;
 		&.selected-topic {
 			font-size: 1.1em;
 		}

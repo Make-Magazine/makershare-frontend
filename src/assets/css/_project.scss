@@ -807,7 +807,6 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
-            font-size: 38px;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
@@ -990,4 +989,5 @@ textarea {
 
 .license-report {
 	font-size: 0.8em;
+	text-align: center;
 }

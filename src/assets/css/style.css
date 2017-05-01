@@ -338,20 +338,6 @@ header.main-header .login-block li .notification-icon::after {
 .btn.active, .btn:active, a:not([href]):not([tabindex]).btn.active, a:not([href]):not([tabindex]).btn:active {
   box-shadow: none !important; }
 
-.btn-grey, a:not([href]):not([tabindex]).btn-grey {
-  color: #fff !important;
-  background-color: #333333;
-  border-color: #2e2e2e;
-  border-radius: 0; }
-  .btn-grey:focus, a:not([href]):not([tabindex]).btn-grey:focus {
-    color: #fff;
-    background-color: #1f1f1f;
-    border-color: #1f1f1f; }
-  .btn-grey:active, .btn-grey:hover, a:not([href]):not([tabindex]).btn-grey:active, a:not([href]):not([tabindex]).btn-grey:hover {
-    color: #fff;
-    background-color: #2e2e2e;
-    border-color: #292929; }
-
 .btn-grey-inverse, a:not([href]):not([tabindex]).btn-grey-inverse {
   color: #333333;
   background-color: #aaaaaa;
@@ -635,6 +621,42 @@ a:not([href]):not([tabindex]).btn-load-more {
   background-color: #F2F2F2;
   border: 1px solid #828282; }
 
+.btn-grey, a:not([href]):not([tabindex]).btn-grey {
+  color: #4F4F4F;
+  background-color: #DCDCDC;
+  border-color: #c6c6c6;
+  border-radius: 0;
+  font-size: 1.2em;
+  padding: 10px 15px;
+  margin-left: 5px; }
+  .btn-grey:focus, .btn-grey:active, .btn-grey:hover, a:not([href]):not([tabindex]).btn-grey:focus, a:not([href]):not([tabindex]).btn-grey:active, a:not([href]):not([tabindex]).btn-grey:hover {
+    color: #fff;
+    background-color: #474747;
+    border-color: #3f3f3f; }
+  .btn-grey.disabled, a:not([href]):not([tabindex]).btn-grey.disabled {
+    color: #DCDCDC;
+    border: 0.5px solid #DCDCDC;
+    background-color: #fff; }
+
+.btn-advance, a:not([href]):not([tabindex]).btn-advance {
+  color: #4F4F4F;
+  background-color: none;
+  border-color: #c6c6c6;
+  border-radius: 0;
+  font-size: 2.4em;
+  border: 0.5px solid #4F4F4F;
+  width: 50px;
+  height: 50px;
+  margin-left: 5px; }
+  .btn-advance:hover, a:not([href]):not([tabindex]).btn-advance:hover {
+    background-color: #fff;
+    border-color: #3f3f3f; }
+  .btn-advance.disabled, a:not([href]):not([tabindex]).btn-advance.disabled {
+    opacity: 0.5; }
+  .btn-advance i, a:not([href]):not([tabindex]).btn-advance i {
+    text-align: center;
+    margin-left: -7px; }
+
 .form-textarea {
   position: relative; }
   .form-textarea textarea {
@@ -821,6 +843,53 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Messina Modern Regular';
   color: #333333; }
 
+h1 {
+  font-family: "Messina Modern Regular";
+  font-size: 4em;
+  line-height: 120%;
+  color: #4F4F4F; }
+
+h1.large {
+  font-family: "Messina Modern Regular";
+  font-size: 5.35em;
+  line-height: 130%;
+  color: #4F4F4F; }
+
+h2 {
+  font-family: "Messina Modern Regular";
+  font-size: 2.6em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h3 {
+  font-family: "Messina Modern Regular";
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h4 {
+  font-family: "Messina Modern Regular";
+  font-size: 1.6em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h5 {
+  font-family: "Messina Modern Regular";
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 110%;
+  color: #4F4F4F; }
+
+h6 {
+  font-family: "Messina Sans Regular";
+  font-size: 1.3em;
+  font-weight: 500;
+  line-height: 100%;
+  color: #4F4F4F; }
+
 span.link {
   cursor: pointer;
   position: relative;
@@ -838,6 +907,11 @@ body {
   margin-top: 113px;
   background-color: #F2F2F2;
   padding-right: 0 !important;
+  font-family: 'Messina Sans Regular';
+  color: #333333;
+  font-size: 0.9em;
+  font-weight: 500;
+  line-height: 1.5em;
   -webkit-transition: all 1.25s ease-in-out;
   -moz-transition: all 1.25s ease-in-out;
   -ms-transition: all 1.25s ease-in-out;
@@ -1499,7 +1573,7 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3em;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -1517,7 +1591,7 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3em;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
@@ -1593,7 +1667,7 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3em;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -1611,7 +1685,7 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3em;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
@@ -1695,11 +1769,11 @@ footer {
       text-transform: uppercase;
       font-size: 18px;
       color: #EC1F30;
-      font-weight: 300;
+      font-weight: 500;
       margin-bottom: 20px; }
     .banner #homeBanner h1 {
       font-size: 2em;
-      font-weight: 300;
+      font-weight: 500;
       line-height: 1.3;
       margin-bottom: 40px; }
       .banner #homeBanner h1 a {
@@ -1732,11 +1806,11 @@ footer {
     text-transform: uppercase;
     font-size: 18px;
     color: #EC1F30;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 20px; }
   .what-is-ms h3 {
     font-size: 1.4rem;
-    font-weight: 300; }
+    font-weight: 500; }
   .what-is-ms img {
     margin-top: 30px; }
 
@@ -1764,12 +1838,12 @@ footer {
       text-transform: uppercase;
       font-size: 18px;
       color: #EC1F30;
-      font-weight: 300;
+      font-weight: 500;
       margin-bottom: 20px; }
     .info-w-parallax .info-card h3 {
       text-align: center;
       font-size: 36px;
-      font-weight: 300; }
+      font-weight: 500; }
 
 .parallax-bg {
   width: 100%;
@@ -2039,7 +2113,7 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #333333; }
@@ -2580,7 +2654,7 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -2600,7 +2674,7 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -2696,7 +2770,7 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.8em;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
@@ -2744,7 +2818,7 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8em;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -3241,7 +3315,7 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       min-height: 24px;
@@ -3260,7 +3334,7 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       margin-bottom: 5px;
@@ -3358,7 +3432,7 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -3416,7 +3490,7 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8em;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -3506,7 +3580,7 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -3590,7 +3664,7 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.8em;
       font-weight: 400;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 115%;
       color: #828282; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
@@ -3643,7 +3717,7 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8em;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -4003,7 +4077,7 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -4097,7 +4171,7 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -4177,7 +4251,7 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.8em;
       font-weight: 400;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #fff;
@@ -4342,7 +4416,7 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #fff; }
@@ -4574,7 +4648,7 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #333333; }
@@ -5120,10 +5194,9 @@ header.showcase-project .next {
         font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
-        font-size: 38px;
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
@@ -5269,7 +5342,8 @@ textarea {
     color: #BDBDBD; }
 
 .license-report {
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  text-align: center; }
 
 .page-learn {
   background-color: white;
@@ -5397,7 +5471,7 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -5506,7 +5580,7 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8em;
       font-weight: 400;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
@@ -5596,7 +5670,7 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8em;
       font-weight: 400;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
@@ -5736,7 +5810,7 @@ textarea {
         font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #333333;
@@ -5965,7 +6039,7 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 2.6em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
         display: -webkit-box;
@@ -6096,7 +6170,7 @@ img {
           font-family: "Messina Modern Regular";
           font-size: 2.6em;
           font-weight: 500;
-          text-transform: capitalize;
+          text-transform: none;
           line-height: 120%;
           color: #828282;
           display: -webkit-box;
@@ -6217,10 +6291,6 @@ img {
       cursor: pointer; }
     .page-create-project-why .add-controls .project-create-buttons .contorls button:hover {
       cursor: pointer; }
-    .page-create-project-why .add-controls .project-create-buttons .contorls .project-draft .btn {
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 5px; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .project-private .btn {
       background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
       background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, #ffffff 5px, #ffffff 100%);
@@ -6247,7 +6317,7 @@ img {
       padding: 10px 40px 10px 40px;
       font-size: 16px; }
   .page-create-project-why .form-group {
-    margin-top: 40px; }
+    margin-top: 20px; }
     .page-create-project-why .form-group br {
       display: none; }
   .page-create-project-why input {
@@ -6257,16 +6327,14 @@ img {
     padding: 0; }
     .page-create-project-why #projectCategory select {
       width: 75%; }
-  .page-create-project-why .nav-create {
-    padding-top: 10px; }
-    .page-create-project-why .nav-create ul {
-      overflow: hidden;
-      margin-bottom: 0;
-      border-bottom: 1px solid #BDBDBD; }
-      .page-create-project-why .nav-create ul li {
-        float: left; }
-        .page-create-project-why .nav-create ul li .btn-grey-inverse {
-          padding: 7px 55px; }
+  .page-create-project-why .nav-create ul {
+    overflow: hidden;
+    margin-bottom: 0;
+    border-bottom: 1px solid #BDBDBD; }
+    .page-create-project-why .nav-create ul li {
+      float: left; }
+      .page-create-project-why .nav-create ul li .btn-grey-inverse {
+        padding: 7px 55px; }
   .page-create-project-why .guideline {
     color: #333333;
     overflow: hidden;
@@ -6301,6 +6369,9 @@ img {
     display: inline-block; }
   .page-create-project-why .your-story .projectName {
     width: 100%; }
+  .page-create-project-why .your-story .red-text {
+    font-size: 0.9em;
+    color: #ED1C24; }
   .page-create-project-why .your-story .projectCategory {
     width: 100%;
     align-items: flex-start; }
@@ -6341,7 +6412,6 @@ img {
       font-size: 1.5em; }
     .page-create-project-why .your-story .cate-list p.cate-name {
       margin: 3px 0;
-      margin-left: 15px;
       border-radius: 0;
       font-size: 0.9em;
       padding: 8px 1rem;
@@ -6604,11 +6674,12 @@ img {
 .your-story label,
 .how-to label {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
-  font-weight: 500;
-  text-transform: capitalize;
-  line-height: 120%;
-  color: #828282; }
+  font-size: 1.8em;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 115%;
+  color: #828282;
+  color: #4F4F4F; }
   .your-story label.selected-topic,
   .how-to label.selected-topic {
     font-size: 1.1em; }
@@ -6914,7 +6985,7 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -7243,7 +7314,7 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -7347,7 +7418,7 @@ img {
   font-family: "Messina Modern Regular";
   font-size: 1.3em;
   font-weight: 500;
-  text-transform: capitalize;
+  text-transform: none;
   line-height: 120%;
   color: #828282;
   text-align: center;
@@ -7794,7 +7865,7 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -7869,7 +7940,7 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3em;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 120%;
         color: #828282;
         clear: both;
@@ -7902,7 +7973,7 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 1.3em;
       font-weight: 500;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #4F4F4F;
@@ -7930,7 +8001,7 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8em;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -8414,7 +8485,7 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.8em;
         font-weight: 400;
-        text-transform: capitalize;
+        text-transform: none;
         line-height: 115%;
         color: #828282;
         color: #333333;
@@ -8433,7 +8504,7 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 1.8em;
       font-weight: 400;
-      text-transform: capitalize;
+      text-transform: none;
       line-height: 115%;
       color: #828282;
       display: -webkit-box;
@@ -8472,7 +8543,7 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8em;
     font-weight: 400;
-    text-transform: capitalize;
+    text-transform: none;
     line-height: 115%;
     color: #828282;
     display: -webkit-box;
