@@ -194,15 +194,19 @@ export class ChallengeDataComponent implements OnInit {
   /* function to change data format */
   changeDateFormat(date) {
     var d;
-    d = new Date(date);
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-    var month = monthNames[d.getMonth()];
-    var fullYear = d.getFullYear();
-    var day = d.getDate();
-    var datestring = month + " " + day + "," + " " + fullYear;
-    return datestring;
+    if(!date)
+      return '';
+    date = date.split(" ")[0];
+    // d = new Date(date);
+    // var monthNames = ["January", "February", "March", "April", "May", "June",
+    //   "July", "August", "September", "October", "November", "December"
+    // ];
+    // var month = monthNames[d.getMonth()];
+    // var fullYear = d.getFullYear();
+    // var day = d.getDate();
+    // var datestring = month + " " + day + "," + " " + fullYear;
+    date = date.split("-");
+    return date[1]+'/'+date[2]+'/'+date[0];
   }
   /* end function to change data format */
 
