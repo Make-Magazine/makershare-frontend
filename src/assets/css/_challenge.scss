@@ -31,6 +31,15 @@
         padding: 0;
         width: 100%;
         height: auto;
+        .sponsor_bar {
+            position: absolute;
+            width: 60px !important;
+            height: 60px !important;
+            max-width: 60px !important; 
+            display: block;
+            top: 10px;
+            right: 10px;
+        }
     }
     .card-container {
         .card-partership {

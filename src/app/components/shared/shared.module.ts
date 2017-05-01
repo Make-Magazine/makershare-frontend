@@ -40,7 +40,7 @@ import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { MessagesModule } from '../account/messages/messages.module';
-import { SingleNotificationComponent } from './single-notification/single-notification.component';
+import { NotificationTemplateComponent } from './notification-template/notification-template.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -77,7 +77,6 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
   ],
   declarations: [
     CommentComponent,
-    SingleNotificationComponent,
     CommentsComponent,
     CommentFormComponent,
     FollowComponent,
@@ -114,6 +113,7 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
     VideoViewerComponent,
     UserCardMsgsComponent,
     NotificationPanelComponent,
+    NotificationTemplateComponent
   ],
   exports: [
     CommentComponent,
@@ -149,7 +149,7 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
     VideoViewerComponent,
     UserCardMsgsComponent,
     NotificationPanelComponent,
-    SingleNotificationComponent
+    NotificationTemplateComponent,
   ],
   providers:[{
      provide: ResponsiveConfig, 

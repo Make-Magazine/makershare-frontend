@@ -34,7 +34,11 @@ export class Auth implements OnInit {
     theme: {
       logo: globals.domain + '/sites/default/files/logo.png',
       primaryColor: '#d41c2b'
-    }
+    },
+    languageDictionary: {
+      //emailInputPlaceholder: "something@youremail.com",
+      title: ""
+    },    
   }
   
   );
@@ -72,10 +76,10 @@ export class Auth implements OnInit {
 
               // first time - redirection to profile edit page
               
-              if(res.first_time == true){
+              // if(res.first_time == true){
                 
-                this.router.navigate(['/account/editprofile']);  
-              }               
+              //   this.router.navigate(['/account/editprofile']);  
+              // }               
 
               if(authResult.state != ''){
              //   this.router.navigate([authResult.state]);
