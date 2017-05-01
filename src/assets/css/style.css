@@ -670,6 +670,20 @@ a:not([href]):not([tabindex]).btn-load-more {
     text-align: center;
     margin-left: -7px; }
 
+.btn-tab, a:not([href]):not([tabindex]).btn-tab {
+  border-radius: 0;
+  font-size: 1.2em;
+  padding: 9px 30px 8px 30px;
+  height: 35px;
+  color: #BDBDBD;
+  background-color: inherit; }
+  .btn-tab:focus, a:not([href]):not([tabindex]).btn-tab:focus {
+    color: #4f4f4f; }
+  .btn-tab:active, .btn-tab:hover, .btn-tab.active, a:not([href]):not([tabindex]).btn-tab:active, a:not([href]):not([tabindex]).btn-tab:hover, a:not([href]):not([tabindex]).btn-tab.active {
+    cursor: pointer;
+    color: #4f4f4f;
+    border-bottom: 5px solid #00AEEF; }
+
 .form-textarea {
   position: relative; }
   .form-textarea textarea {
@@ -1757,7 +1771,7 @@ footer {
   max-height: 360px; }
 
 /* Bookmark */
-.bookmark-page .bookmark-menu ul li .btn-create-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-create-tab:focus {
+.bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;
   outline: none !important; }
 .bookmark-page .content-wrapper {
@@ -6656,19 +6670,6 @@ img {
     background: #ED1C24;
     border-color: transparent;
     cursor: pointer; }
-
-.btn-create-tab, a:not([href]):not([tabindex]).btn-create-tab {
-  border-radius: 0;
-  font-size: 16px;
-  padding: 9px 30px 8px 30px;
-  color: #BDBDBD;
-  background-color: inherit; }
-  .btn-create-tab:focus, a:not([href]):not([tabindex]).btn-create-tab:focus {
-    color: #4f4f4f; }
-  .btn-create-tab:active, .btn-create-tab:hover, .btn-create-tab.active, a:not([href]):not([tabindex]).btn-create-tab:active, a:not([href]):not([tabindex]).btn-create-tab:hover, a:not([href]):not([tabindex]).btn-create-tab.active {
-    cursor: pointer;
-    color: #4f4f4f;
-    border-bottom: 5px solid #00AEEF; }
 
 .form-group.required label::after {
   content: " *";
