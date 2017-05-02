@@ -25,7 +25,7 @@ export class NotificationsListComponent implements OnInit {
     this.GetNotificationsList();
     this.GetNotificationsCountTotal();
     this.GetNotificationsCount();
-    this.loaderService.display(true);
+    // this.loaderService.display(true);
   }
 
   GetNotificationsList(){
