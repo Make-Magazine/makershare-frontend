@@ -1,32 +1,32 @@
-<div (click)="MarkAsSeen(0)" *ngIf="notification.seen && notification.seen == 1">
+<!--<div class="mark-unseen" (click)="MarkAsSeen(0)" *ngIf="notification.seen && notification.seen == 1">
     Mark as unseen
 </div>
-<div (click)="MarkAsSeen(1)" *ngIf="!notification.seen || notification.seen != 1">
+<div class="mark-seen" (click)="MarkAsSeen(1)" *ngIf="!notification.seen || notification.seen != 1">
     Mark as seen
-</div>
-<div *ngIf="notification" (click)="OpenNotification()">
-    <div *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
-        <div>We featured your project <span class="link">{{notification.title}}</span> on the home page.</div>
+</div>-->
+<div class="notification-container" *ngIf="notification" (click)="OpenNotification()">
+    <div class="notification-item" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
+        <div class="inner-text">We featured your project <span class="link">{{notification.title}}</span> on the home page.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
-    <div *ngIf="notification.type == 'new_project_likes'">
-        <div><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> added a lightbulb to <span class="link">{{notification.title}}</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'new_project_likes'">
+        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> added a lightbulb to <span class="link">{{notification.title}}</span>.</div>
     </div>
-    <div *ngIf="notification.type == 'new_comment_project'">
-        <div><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> gave you some feedback on <span class="link">{{notification.title}}</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'new_comment_project'">
+        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> gave you some feedback on <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
-    <div *ngIf="notification.type == 'project_added_to_showcase'">
-        <div>We featured your <span class="link">{{notification.title}}</span> in <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}"SHOWCASE -WIP"</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'project_added_to_showcase'">
+        <div class="inner-text">We featured your <span class="link">{{notification.title}}</span> in <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
-    <div *ngIf="notification.type == 'challenge_follow_deadline'">
-        <div><span class="link">{{notification.title}}</span> will close in 5 days."WIP"</div>
+    <div class="notification-item" *ngIf="notification.type == 'challenge_follow_deadline'">
+        <div class="inner-text"><span class="link">{{notification.title}}</span> will close in 5 days.</div>
     </div> 
-    <div *ngIf="notification.type == 'project_collaborator_added'">
-        <div><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>&nbsp;added you as a collaborator on <span class="link">{{notification.title}}</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'project_collaborator_added'">
+        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>&nbsp;added you as a collaborator on <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
-    <div *ngIf="notification.type == 'new_entry_challenge_follow'">
-        <div><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> just entered a project in <span class="link">{{notification.title}}</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'new_entry_challenge_follow'">
+        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> just entered a project in <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
-    <div *ngIf="notification.type == 'new_message_sent'">
-        <div><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> sent you a <span class="link">message</span>.</div>
+    <div class="notification-item" *ngIf="notification.type == 'new_message_sent'">
+        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> sent you a <span class="link">message</span>.<br><span class="notf-date">{{notification.date}}</span></div>
     </div> 
 </div>

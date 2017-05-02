@@ -624,5 +624,107 @@ ngb-typeahead-window {
         }
     }
 }
+.project-bookmakr {
+    .fa-bookmark-o {
+        &:hover {
+            color: $blue;
+            // @include transition(0.5s)
+        }
+    }
+}
+.fa-share:hover {
+    color: $blue;
+}
 
+/* notification dropdown-menu */
+.menutool-notification {
+    position: relative;
+    li {    
+    padding: 8px 12px;
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
+        .view-all {
+            padding: .4rem 0rem;
+            color: $blue;
+            &:hover {
+                text-decoration: none !important;
+            }
+        }
+        .notf-gear {
+            i {
+                font-size: 19px;
+            }
+        }
+        .notf-Cancel {
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+}
 
+.dropdown-notification {
+    ul {
+        position: relative;
+        padding-top: 52px;
+        li {    
+        padding: 8px 12px;
+        position: absolute;
+        display: block;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+            .view-all {
+                padding: .4rem 0rem;
+                color: $blue;
+            }
+            .notf-gear {
+                i {
+                    font-size: 19px;
+                }
+            }
+            .notf-Cancel {
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+        .notification-container {
+            padding: 0px 12px;
+            .notification-item {
+                border-bottom: 0.5px solid $text-color-2;
+                @include desc-font-1 ();
+                    padding: 5px 0px;
+                    font-size: 0.96em !important;
+                .link {
+                    color: $blue;
+                    &:hover {
+                        text-decoration: none !important;
+                        color: $blue !important;
+                    }
+                }
+                .notf-date {
+                    color: $text-color-2;
+                    @include desc-font-2 ();
+                    font-size: 0.83em !important;
+                }
+            }
+            .inner-text {
+                color: $text-color-1;
+                padding: 2px 0px;
+                line-height: 17px;
+            }
+        }
+        .not-seen {
+            .notification-container {
+                background-color: rgba(241, 241, 241, 0.53);
+            }
+        }
+    }
+}

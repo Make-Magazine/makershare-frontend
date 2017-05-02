@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../../d7services/view/view.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Notification } from '../../../../models';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'notifications-list',
@@ -17,17 +18,20 @@ export class NotificationsListComponent implements OnInit {
   CurrentUserID = localStorage.getItem("user_id");
   constructor(
     private viewService: ViewService,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
     this.GetNotificationsList();
     this.GetNotificationsCountTotal();
     this.GetNotificationsCount();
+    // this.loaderService.display(true);
   }
 
   GetNotificationsList(){
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
       this.notifications = this.notifications.concat(notifications);
+      this.loaderService.display(false);
 
     });
   }

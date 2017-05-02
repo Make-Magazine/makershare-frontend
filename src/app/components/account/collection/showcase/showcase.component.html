@@ -1,6 +1,6 @@
-<div *ngIf="showcases.length==0">
-  <h5>There doesn't seem to be any bookmarks here yet.</h5><br>
-  <p>Look for the icon on a Showcase page you're interested in.<br> Click it and the <a [routerLink]="['/showcases']">Showcase</a>    will appear here.</p>
+<div class="msg-bookmarks" *ngIf="showcases.length==0">
+  <h3>There doesn't seem to be any bookmarks here yet.</h3><br>
+  <p>Look for the <i class="lnr lnr-bookmark"></i> icon on a Showcase page you're interested in.<br> Click it and the <a [routerLink]="['/showcases']">Showcase</a>    will appear here.</p>
 </div>
 <div *ngIf="showcases.length>0">
   <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
@@ -21,8 +21,8 @@
         <div class="select" *ngIf="showcase">
           <!--<input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">-->
         </div>
-        <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td>
-          <td *ngIf="showcase">{{showcase.project_name}}</td>
+       <a [routerLink]="['/showcases/',showcase.nid]" > <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td></a>
+         <a [routerLink]="['/showcases/',showcase.nid]" > <td *ngIf="showcase">{{showcase.project_name}}</td></a>
           <!--<td class="delete">-->
           <!--<a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>-->
           <!--</td>-->

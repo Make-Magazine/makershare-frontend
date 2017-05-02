@@ -89,9 +89,11 @@
       </div>-->
     </div>
     <div class="form-group show-tell-as-default" *ngIf="!formErrors.field_show_tell_video && YourStoryForm.controls.field_show_tell_video.value">
-      <div class="checkbox">
-        <input id="show-tell-as-default" type="checkbox" formControlName="field_show_tell_video_as_default" (change)="$event.target.checked? (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(1)) : (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(0))"><label for="show-tell-as-default">Show & Tell video as default</label>
-      </div>
+      <label class="custom-control custom-checkbox" for="show-tell-as-default">
+        <input type="checkbox" class="custom-control-input" id="show-tell-as-default" formControlName="field_show_tell_video_as_default" (change)="$event.target.checked? (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(1)) : (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(0))">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Show & Tell video as default</span>
+      </label>
     </div>
     <div class="form-group aha">
       <label for="aha">Ah-Ha! Moment</label>
