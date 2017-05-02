@@ -462,11 +462,6 @@
     .modal-lg, .modal-dialog {
         max-width: 1110px;
     }
-    .profile-sidebar {
-        .profile-container {
-            top: -40px;
-        }
-    }
     .delete-promodal {
         .modal-dialog{
             max-width: 700px !important;
@@ -500,7 +495,16 @@
         }
     }
 }
-
+@media only screen and (min-width: 768px) {
+    .profile-sidebar {
+        .profile-container {
+            top: -85px;
+            &.myprofile {
+                top: -40px;
+            }
+        }
+    }
+}
 @media only screen and (min-width: 1200px) {}
 
 

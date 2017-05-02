@@ -86,7 +86,7 @@ export class ReportUserComponent implements OnInit {
           this.isReported = true;
       
 
-          this.notificationBarService.create({ message: 'User has been reported.', type: NotificationType.Success });
+          this.notificationBarService.create({ message: 'User has been reported.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false });
         }, err => {
         });
 

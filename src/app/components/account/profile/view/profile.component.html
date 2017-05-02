@@ -6,7 +6,12 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
-				<div class="col-12 d-flex flex-column page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+				<div class="col-12 col-md-8 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
+						<!--<a class="profile-share">
+							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+						</a>-->
+					</div>
 					<div class="nav-portfolio ml-auto">
 						<div class="display-style d-flex">
 							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
@@ -15,14 +20,6 @@
 					</div>
 				</div>
 				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
-					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-center hidden-sm-down display-style">
-						<a class="profile-share">
-							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-						</a>
-						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
-							<app-message-modal [uid]="uid"></app-message-modal> MESSAGE THIS MAKER
-						</a>
-					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -44,16 +41,15 @@
 			<div class="row body-content">
 				<div class="left-section col-lg-4 col-md-4">
 					<div class="profile-sidebar">
-						<div class=" profile-container">
-							<!--<div class="card-type-blue">
-										<div class="type-layer-2">
-											Maker
-										</div>
-									</div>-->
-
-							<div class="image-container">
-								<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
-								<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
+						<div class=" profile-container" [class.myprofile]="CurrentLoggedUserId == uid">
+							<div class="container-override">
+								<div class="image-container">
+									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
+									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
+								</div>
+								<div *ngIf="CurrentLoggedUserId != uid" class="profile-message">
+									<app-message-modal [uid]="uid"></app-message-modal>
+								</div>
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
@@ -67,11 +63,11 @@
 
 								</div>
 							</div>
-							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()" >
-							<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
-							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
-								<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
-							</div>
+							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
+								<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
+								<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
+									<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
+								</div>
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
@@ -531,24 +527,24 @@
 								<div class="form-group form-main" [formGroupName]="i">
 									<div class="form-group row">
 										<div class="row col-md-12">
-											<label class="col-md-12">ADD A MAKERSPACES</label>
+											<label class="col-md-12">ADD A MAKERSPACE</label>
 											<div class="col-md-4">
 												<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
-												 (selectItem)="SelectMakerspace(i,$event)" placeholder="What do you create?">
+												 (selectItem)="SelectMakerspace(i,$event)" placeholder="Makerspace Name">
 											</div>
 											<div class="col-md-4">
 												<input [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}"
-												 class="form-control" type="text" formControlName="field_makerspace_url">
-											</div>
-											<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
+												 class="form-control" type="text" formControlName="field_makerspace_url" placeholder="Makerspace URL">
+												<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
 													Invalid URL, ex: http://example.com
 											</small>
-												<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
+											</div>
+											<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
 										</div>
 									</div>
-									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 								</div>
 							</div>
+							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 						</div>
 
 					</div>
