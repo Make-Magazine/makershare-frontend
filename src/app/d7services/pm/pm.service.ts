@@ -73,4 +73,8 @@ export class PmService {
     return this.mainService.get(globals.endpoint + '/maker_get_pm_participent/' + mid).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  getInboxCount(uid: number){
+    return this.mainService.get(globals.endpoint + '/maker_get_pm_author/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
 }
