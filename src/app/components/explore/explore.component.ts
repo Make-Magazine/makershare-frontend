@@ -19,13 +19,14 @@ export class ExploreComponent implements OnInit {
   pages: number = 0;
   countProject = 0;
   hideloadmoreproject = true;
+  CurrentActiveParentIndex = -1;
   page_arg;
   sort: ISorting = {
     sort_by: "created_2",
     sort_order: "DESC",
     pageNo: 0
   };
-  ActionName = "Most Recent";
+  ActionName = "Most recent";
   categories_parents: ProjectCategory[] = [];
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
@@ -46,6 +47,14 @@ export class ExploreComponent implements OnInit {
     this.meta.setTitle(`Maker Share | Projects`);
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
+  }
+
+  ChangeClassActive(index,event){
+    if(event.type == 'mouseover' || event.type == 'click'){
+      this.CurrentActiveParentIndex = index;
+    }else{
+      this.CurrentActiveParentIndex = -1;
+    }
   }
 
   getProjects() {
@@ -133,7 +142,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0;
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
-    this.ActionName = "Title A-z"
+    this.ActionName = "Title A-Z"
 
     this.getProjects();
   }
@@ -156,7 +165,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC"
     this.sort.sort_by = "created_2"
-    this.ActionName = "Most Recent"
+    this.ActionName = "Most recent"
 
     this.getProjects();
 
@@ -180,7 +189,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
-    this.ActionName = "Most Liked"
+    this.ActionName = "Most liked"
 
     this.getProjects();
 
@@ -193,7 +202,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
-    this.ActionName = "Most Forked"
+    this.ActionName = "Most forked"
 
     this.getProjects();
 

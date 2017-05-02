@@ -579,5 +579,50 @@ ngb-typeahead-window {
     margin: 0;
 }
 
+/* notification Bar */
+.notifications-container {
+    .success {
+        background-color: $blue !important;
+        border-bottom: 1px solid $blue !important;
+        height: 45px !important;
+        text-align: center !important;
+        font-size: 1em !important;
+        padding-top: 10px !important;
+        .message {
+            margin-top: 10px;
+        }
+        .close-click {
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            font-size: 2em !important;
+            color: $white*0.8 !important;
+            &:hover {
+                color: $white !important;
+            }
+        }
+    }
+    .error {
+        background-color: $shade-4 !important;
+        border-bottom: 1px solid $shade-4 !important;
+        height: 45px !important;
+        text-align: center !important;
+        font-size: 1em !important; 
+        padding-top: 10px !important;
+        .message {
+            margin-top: 10px;
+        }  
+        .close-click {
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            font-size: 2em !important;
+            color: $white*0.8;
+            &:hover {
+                color: $white !important;
+            }
+        }
+    }
+}
 
 

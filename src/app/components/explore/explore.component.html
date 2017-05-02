@@ -5,15 +5,15 @@
         <h3>Projects</h3>
 
         <ul class="list-unstyled explore-tags">
-          <li *ngFor="let parent of categories_parents">
-            <a class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
+          <li *ngFor="let parent of categories_parents;let i = index">
+            <a (mouseover)="ChangeClassActive(i,$event)" [ngClass]="{'active':CurrentActiveParentIndex == i}" class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
           </li>
         </ul>
         <div class="submenus">
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
-              <li *ngFor="let term of categories_childs">
-                <a *ngIf="term.parent_tid == parent.tid" (click)="projectsById($event)" class="btn btn-border" data-id="{{term.tid}}"
+              <li *ngFor="let term of categories_childs;let i = index">
+                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="projectsById($event);ChangeClassActive(i,$event)" class="btn btn-border" data-id="{{term.tid}}"
                   [innerHTML]="term.name"></a>
               </li>
             </ul>
@@ -36,7 +36,7 @@
                   <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
                   <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
                   <a class="dropdown-item" (click)="mostLiked()" class="btn">Most liked</a>
-                  <a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>
+                  <!--<a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>-->
 
                 </div>
               </div>
@@ -46,7 +46,11 @@
         <!-- End filters -->        
       </div>
     </header>
-    <!--/header -->
+    <!--/    <div class="text-center pt-3 pb-5">
+      <div *ngIf="!hideLoadMore">
+        <a class="btn btn-load-more" *ngIf="projects.length != 0" (click)="loadMoreProject()">Load more</a>
+      </div>
+    </div>header -->
     <div class="projects-grid row" *ngIf="projects.length > 0">
       <app-project-card *ngFor="let project of projects" [view]="view" [nid]="project.nid" class="col-md-6 col-lg-4"></app-project-card>
     </div>

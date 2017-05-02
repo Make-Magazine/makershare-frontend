@@ -13,6 +13,7 @@ export class ProjectHeaderComponent implements OnInit {
   @Input('project') project;
   @Input() projectInfo;
   @Input() showcaseInfo;
+  @Input('ActiveTab') ActiveTab:string = "project-story";$white
   @Output() SwitchTab = new EventEmitter();
   @Output() ProjectNewId = new EventEmitter();
   badges = [];
