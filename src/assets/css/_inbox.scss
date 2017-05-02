@@ -33,26 +33,45 @@
 	.inbox-title{
 			padding-top: 20px;
     	padding-bottom: 40px;
-			width: 200px;
+			//width: 200px;
 		}
 	.inbox-container ,.notification-container{
-		background-color: #fff;
 		padding: 20px 0;
 		margin-bottom: 10px;
 		.inbox-controls {
 			padding: 5px 10px;
 			margin: 0;
+			.dropdown-toggle {
+				&::after {
+					display: none;
+				}
+				i {
+					font-size: 1.5em;
+				}
+			}
 			.selectall {
 				display: inline-block;
 			}
 			.delete {
 				display: inline-block;
 			}
+			.blocked-users {
+					font-size: 1em;
+					height: 35px;
+					color: $shade-4;
+			}
 			.new-message {
-				float: right;
 				margin-right: 23px;
+				color:$blue;
+				font-size: 1.3em;
+				padding-bottom: 7px;
 				i {
 					padding-right: 10px;
+					font-size: 1.6em;
+				}
+				p {
+					display: inline-block;
+					margin-bottom: 0;
 				}
 			}
 		}
@@ -84,11 +103,25 @@
 				}
 				.wrapper {
 					display: flex;
-					align-items:center;
-					border: 1px solid $main-grey;					
+					align-items:center;							
 					width: 100%;
 					overflow: hidden;
-					padding: 5px 10px;
+					padding: 10px;
+					@include boxShadow(2px, 2px, 8px,$light-grey);
+    			background-color: white;
+					margin: 10px 0;
+					.media-left {
+							width: 80px;
+							height: 80px;
+							margin-right: 10px;
+							img {
+								width: 100%;
+								height: auto;
+							}
+					}
+					.sender {
+						margin-bottom: 0;
+					}
 					.message-info {
 						width: 40%;
 						img {
@@ -100,15 +133,20 @@
 						}
 					}
 					.message-subject {
-						width: 30%;
+						cursor:pointer;
 					}
 					.message-arrow {
 						width: 20%;
+					}
+					.delete {
+						  margin-left: auto;
+    					margin-right: 25px;
 					}
 					.delete-message {
 						overflow: hidden;
 						color: $main-grey;
 						position: relative;
+						font-size: 2.2em;
 						i {
 							float: right;
 						}
