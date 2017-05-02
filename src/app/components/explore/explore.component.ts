@@ -18,7 +18,7 @@ export class ExploreComponent implements OnInit {
   view = 'grid';
   pages: number = 0;
   countProject = 0;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
   CurrentActiveParentIndex = -1;
   page_arg;
   sort: ISorting = {
@@ -26,7 +26,7 @@ export class ExploreComponent implements OnInit {
     sort_order: "DESC",
     pageNo: 0
   };
-  ActionName = "Most Recent";
+  ActionName = "Most recent";
   categories_parents: ProjectCategory[] = [];
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
@@ -78,6 +78,7 @@ export class ExploreComponent implements OnInit {
     /* end obs*/
     this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
+      this.loadMoreVisibilty();
       // hide spinner
       this.loaderService.display(false);
 
@@ -92,12 +93,16 @@ export class ExploreComponent implements OnInit {
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
-      this.projects = data;
-      if(this.projects.length == 0){
-         this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
-    }
+     // this.projects = data;
+      this.projects = this.projects.concat(data);
+            this.loadMoreVisibilty();
+
+
+      if (this.projects.length == 0) {
+        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
+      }
       // hide spinner
-      this.loaderService.display(false);      
+      this.loaderService.display(false);
     }, err => {
 
     });
@@ -126,7 +131,7 @@ export class ExploreComponent implements OnInit {
       this.hideloadmoreproject = true;
 
     } else if (this.countProject > this.projects.length) {
-      setTimeout(10000);
+      //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
   }
@@ -137,7 +142,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0;
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
-    this.ActionName = "Title A-z"
+    this.ActionName = "Title A-Z"
 
     this.getProjects();
   }
@@ -160,7 +165,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC"
     this.sort.sort_by = "created_2"
-    this.ActionName = "Most Recent"
+    this.ActionName = "Most recent"
 
     this.getProjects();
 
@@ -184,7 +189,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
-    this.ActionName = "Most Liked"
+    this.ActionName = "Most liked"
 
     this.getProjects();
 
@@ -197,7 +202,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
-    this.ActionName = "Most Forked"
+    this.ActionName = "Most forked"
 
     this.getProjects();
 
@@ -211,7 +216,7 @@ export class ExploreComponent implements OnInit {
       categories.forEach((element, index) => {
         if (element.parent_tid) {
           this.categories_childs.push(element);
-        }else{
+        } else {
           this.categories_parents.push(element);
         }
       });
