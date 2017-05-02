@@ -401,7 +401,7 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}" class="char-left">{{400 - formGroup.value.bio.length}} char left</span>
+										<span [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio.length}} char left</span>
 									</div>
 								</div>
 							</div>
