@@ -1,3 +1,67 @@
-<p>
-  sent works!
-</p>
+<template #rt let-r="result" let-t="term">
+  <div class="user-image-container">
+    <app-user-card-msgs [uid]="r.uid"></app-user-card-msgs>
+  </div>
+</template>
+
+<div class="page-inbox">
+  <!--<header class="inbox-header container">
+    <ul class="list-unstyled d-flex flex-row align-content-lg-center ">
+      <li><a href="" class="btn btn-grey">Messages</a></li>
+      <li><a href="" class="btn btn-grey active">Notificatoins</a></li>
+    </ul>
+  </header>-->
+  <!--/header -->
+  <div class="container inbox-container">
+    <ul class="list-unstyled messages-list">
+      <li class="message-item" *ngFor="let message of msg; let i=index;">
+        <!--<div class="select" *ngIf="message">
+          <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)">
+        </div>-->
+        <div class="wrapper d-flex d-row" *ngIf="message.sender">
+          <div class="media message-info">
+            <div class="media-left">
+              <a (click)="userProfile(message.first_name,message.last_name)">
+                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+              </a>
+            </div>
+            <div class="media-body" *ngIf="message.count>2">
+              <p class="sender" >You sent a message to
+                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
+              </p>
+              <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
+              <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
+            </div>
+            <div class="media-body" *ngIf="message.count<=2">
+              <p class="sender" >You sent a message to
+                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>
+              </p>
+              <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
+              <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
+            </div>
+          </div>
+          <div class="message-subject">
+            <a (click)="viewMessage(message.thread_id)">
+              <h4>{{message.subject}}</h4>
+            </a>
+          </div>
+          <div class="message-arrow">
+            <i  class="fa fa-paper-plane" aria-hidden="true"></i>
+          </div>
+
+          <div class="delete">
+            <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+          </div>
+          <div *ngFor="let block of blocked">
+            <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="text-center" *ngIf="hideloadmore">
+      <div class="button-container-sec-3">
+        <a class="btn btn-grey" (click)="loadMore()">Load more</a>
+      </div>
+    </div>
+  </div>
+</div>
