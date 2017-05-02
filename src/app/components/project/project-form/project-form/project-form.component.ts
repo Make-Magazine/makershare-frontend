@@ -530,11 +530,11 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
         tab = 'draft';
       }else if (visibility == 371){
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success});
+        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});
         tab = 'private';
       }else {
         // save is public
-        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success});        
+        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});        
         tab = 'public';
       }
       
@@ -546,7 +546,7 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
 
       }else if (visibility == 371){
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success});
+        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});
         tab = 'private';
       }else {
         // save is public
