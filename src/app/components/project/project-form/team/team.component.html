@@ -41,21 +41,6 @@
               </small>
             </div>	
           </div>
-          <div class="col-md-3">
-            <div class="form-group sort d-flex flex-row flex-md-column align-items-center">
-              <label for="collab-order-{{i + 1}}">Sort Order</label>
-              <div class="d-flex flex-row">
-                <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_sort_order}" type="text" id="collab-order-{{i + 1}}" placeholder="{{i + 1}}" value='{{i + 1}}' class="form-control sort" [formControl]="Member.controls.field_sort_order" readonly />
-                <div class="carets d-flex flex-column">
-                  <i *ngIf="i > 1 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-up sort-up mb-auto" (click)="ChangeOrder(i,i-1,'field_maker_memberships')"></i>
-                  <i *ngIf="(i < TeamForm.controls.field_maker_memberships.controls.length - 1) && i != 0 && TeamForm.controls.field_maker_memberships.valid" class="fa fa-3x fa-caret-down sort-down mt-auto" (click)="ChangeOrder(i,i+1,'field_maker_memberships')"></i>
-                </div>
-                <small *ngIf="formErrors.field_maker_memberships[i].field_sort_order" class="text-danger">
-                  {{formErrors.field_maker_memberships[i].field_sort_order}}
-                </small>
-              </div>
-            </div>
-          </div>
           <div *ngIf="i==0" class="col-md-2 admin d-flex flex-column">
               <label>Admin</label>
               <i class="fa fa-check-square" aria-hidden="true"></i>

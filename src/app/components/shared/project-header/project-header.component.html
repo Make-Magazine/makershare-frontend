@@ -65,7 +65,7 @@
               <!--<span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>-->
             </div>
           </div>
-          <div class="project-card-footer d-flex mt-auto"  *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_credit_your_inspiration.value || project.field_how_to.value">
+          <div class="project-card-footer d-flex mt-auto"  *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_how_to.value">
             <ul class="list-unstyled project-aside d-flex">
               <li id="read-story" [ngClass]="{'active': ActiveTab == 'project-story'}"><a class="btn btn-tabs read-story" (click)="SwitchTabFunc('project-story')">Project Story</a></li>
               <li id="build-project" [ngClass]="{'active': ActiveTab == 'project-how-to'}"><a class="btn btn-tabs build-project" (click)="SwitchTabFunc('project-how-to')">How-to</a></li>
