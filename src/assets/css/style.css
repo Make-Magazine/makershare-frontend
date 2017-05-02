@@ -7705,24 +7705,36 @@ img {
     color: #333333; }
 .page-inbox .inbox-title {
   padding-top: 20px;
-  padding-bottom: 40px;
-  width: 200px; }
+  padding-bottom: 40px; }
 .page-inbox .inbox-container, .page-inbox .notification-container {
-  background-color: #fff;
   padding: 20px 0;
   margin-bottom: 10px; }
   .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
     padding: 5px 10px;
     margin: 0; }
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle::after, .page-inbox .notification-container .inbox-controls .dropdown-toggle::after {
+      display: none; }
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle i, .page-inbox .notification-container .inbox-controls .dropdown-toggle i {
+      font-size: 1.5em; }
     .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
       display: inline-block; }
     .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
       display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .blocked-users, .page-inbox .notification-container .inbox-controls .blocked-users {
+      font-size: 1em;
+      height: 35px;
+      color: #4F4F4F; }
     .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
-      float: right;
-      margin-right: 23px; }
+      margin-right: 23px;
+      color: #00AEEF;
+      font-size: 1.3em;
+      padding-bottom: 7px; }
       .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
-        padding-right: 10px; }
+        padding-right: 10px;
+        font-size: 1.6em; }
+      .page-inbox .inbox-container .inbox-controls .new-message p, .page-inbox .notification-container .inbox-controls .new-message p {
+        display: inline-block;
+        margin-bottom: 0; }
   .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
     width: 150px;
     margin: 20px auto;
@@ -7745,10 +7757,23 @@ img {
     .page-inbox .inbox-container .messages-list .message-item .wrapper {
       display: flex;
       align-items: center;
-      border: 1px solid #333333;
       width: 100%;
       overflow: hidden;
-      padding: 5px 10px; }
+      padding: 10px;
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD;
+      background-color: white;
+      margin: 10px 0; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left img {
+          width: 100%;
+          height: auto; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .sender {
+        margin-bottom: 0; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
         width: 40%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
@@ -7757,13 +7782,17 @@ img {
           color: #00AEEF;
           text-decoration: none; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-        width: 30%; }
+        cursor: pointer; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
         width: 20%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .delete {
+        margin-left: auto;
+        margin-right: 25px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
         color: #333333;
-        position: relative; }
+        position: relative;
+        font-size: 2.2em; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
           float: right; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
