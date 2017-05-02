@@ -1896,6 +1896,8 @@ footer {
   margin-bottom: 20px; }
   .bookmark-page .content-wrapper td {
     border-top: 1px solid #dcdcdc; }
+    .bookmark-page .content-wrapper td img:hover, .bookmark-page .content-wrapper td span:hover {
+      cursor: pointer; }
   .bookmark-page .content-wrapper th {
     border-top: 1px solid #dcdcdc; }
   .bookmark-page .content-wrapper .msgs-bookamrk {

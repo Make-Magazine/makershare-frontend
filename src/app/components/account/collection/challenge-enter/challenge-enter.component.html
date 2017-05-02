@@ -14,9 +14,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let challenge of challenges">
-       <a [routerLink]="['/project/view/',challenge.project_nid]" >  <td *ngIf="challenge.project_name">{{challenge.project_name}}</td></a>
-        <a [routerLink]="['/missions/',challenge.challenge_nid]" > <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td></a>
-
+        <td [routerLink]="['/project/view/',challenge.project_nid]" *ngIf="challenge.project_name"><span>{{challenge.project_name}}</span></td>
+        <td [routerLink]="['/missions/',challenge.challenge_nid]" *ngIf="challenge.challenge_name"><span>{{challenge.challenge_name}}</span></td>
       </tr>
     </tbody>
   </table>
