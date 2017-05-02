@@ -20,8 +20,8 @@ export interface field_collection_item_material
 
 export interface field_collection_item_resource
 {
-  field_resource_file:{und:[field_file_reference]};
-  field_repository_link:{und:[field_collection_item_reference_url]};
+  field_resource_file?:{und:[field_file_reference]};
+  field_repository_link?:{und:[field_collection_item_reference_url]};
   field_label:{und:[field_collection_item_reference_text]};
 }
 

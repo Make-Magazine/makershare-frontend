@@ -295,7 +295,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
       case 'field_resources':
         {
           return this.fb.group({
-            'field_resources_filename': [data ? data.field_resource_file && data.field_resource_file.und[0].filename : '', Validators.required],
+            'field_resources_filename': [data ? data.field_resource_file && data.field_resource_file.und[0].filename : ''],
             'field_repository_link': [data && data.field_repository_link && data.field_repository_link.und ? data.field_repository_link.und[0].url : '', CustomValidators.url],
             'field_label': [data && data.field_label? data.field_label.und[0].value : '',],
           });
@@ -353,33 +353,34 @@ export class HowToComponent implements OnInit,AfterViewInit {
     return '';
   }
 
-  FileUpdated(event, index) {
+  FileUpdated(SelectedFile, index) {
     const control = this.HowToForm.controls['field_resources']['controls'][index];
-    let files = event.srcElement.files;
-    if (files.length == 1 && files[0]) {
-      control.controls.field_resources_filename.setValue(files[0].name);
+    if (SelectedFile) {
+      control.controls.field_resources_filename.setValue(SelectedFile.name);
       var file: FileEntity = {
         file: '',
-        filename: files[0].name
+        filename: SelectedFile.name
       };
-      NodeHelper.ConvertToBase64(files[0], file);
+      NodeHelper.ConvertToBase64(SelectedFile, file);
       if (this.resources_files[index]) {
         this.resources_files[index] = file;
       } else {
         this.resources_files.push(file);
-        var url: URL;
-        if (control.controls.field_repository_link.valid) {
-          url = control.value.field_repository_link;
-        }
         let field_resource: field_collection_item_resource = {
           field_label: { und: [{value:control.value.field_label}] },
-          field_repository_link: { und: [{ url: url }] },
           field_resource_file: { und: [{ filename: file.filename, fid: 0 }] }
         };
         this.project.field_resources.und.push(field_resource);
+        this.AddRow('field_resources');
       }
     }
     this.emitter.emit(this.resources_files);
+  }
+
+  SetResourceByRepoLink(Values,index){
+    this.AddRow('field_resources');
+    const control = this.HowToForm.controls['field_resources']['controls'][index];
+    control.patchValue(Values);
   }
 
   /**
