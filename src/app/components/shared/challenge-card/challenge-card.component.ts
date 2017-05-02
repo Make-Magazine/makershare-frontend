@@ -74,10 +74,13 @@ export class ChallengeCardComponent implements OnInit {
       if (this.challenge) {
         var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
         var todayDate = new Date();
-        var endDate = new Date(this.challenge.challenge_end_date.value);
+        let dateArray = this.challenge.challenge_end_date.value.split(" ");
+        let YearDayMonth = dateArray[0].split("-");
+        var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
         var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
-
-        var announceDate = new Date(this.challenge.winners_announcement_date.value);
+        let winnerdate = this.challenge.winners_announcement_date.value.split(" ");
+        let winnerdateArray = winnerdate[0].split("-");
+        var announceDate = new Date(+winnerdateArray[0],+winnerdateArray[1],+winnerdateArray[2]);
         var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
         this.announce_date = announce;
 
