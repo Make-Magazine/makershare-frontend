@@ -43,7 +43,6 @@ profile;
  getNotificationsCount(){
     this.viewService.getView('maker_notification_api/'+this.userId).subscribe(data => {
     this.countNotifications = data[0];
-    $("header.main-header .login-block li .notification-icon::after" ).css( "content",'10');
 
     }, err => {
       console.log(err)
