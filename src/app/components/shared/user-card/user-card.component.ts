@@ -93,7 +93,7 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false });
       });
     }
   }
