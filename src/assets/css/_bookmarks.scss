@@ -23,6 +23,11 @@
       margin-bottom: 20px;
       td {
         border-top: 1px solid #dcdcdc;
+        img,span {
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
       th {
         border-top: 1px solid #dcdcdc;
