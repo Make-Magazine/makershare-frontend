@@ -61,7 +61,7 @@
         id="createMsg" class="form-horizontal">
         <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
           {{user[0].first_name}} {{user[0].last_name}}
-          <i (click)="unSetMember(i)" class="lnr lnr-cog close"></i>
+          <i (click)="unSetMember(i)" class="fa fa-times"></i>
           <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
         </div>
         <div class="form-group">

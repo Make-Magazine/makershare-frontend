@@ -90,134 +90,14 @@ export class SentComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.getStatus();
-    // this.loaderService.display(true);
-
-    this.getCurrentUser();
     this.getMessages();
-    this.buildForm();
     this.CountMessages();
     this.getBlockedUsers();
     this.userId = localStorage.getItem('user_id');
 
   }
 
-  search = (text$: Observable<string>) => {
-    return text$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(() => this.searchFailed = false)
-      .switchMap((term) => {
-        if (term.length > 1) {
-          return this.viewService.getView('maker_profile_search_data', [['email', term]])
-            .map(result => {
-              if (result.length == 0) {
-                this.searchFailed = true;
-              }
-              return result;
-            })
-        }
-        return [];
-      }
-      )
-  };
-
-  /**
-  * selct users to send message
-  */
-  SetMember(uid, i) {
-    // this.hideUser = false;
-    this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
-       this.SelectedUser.push(data);
-       this.messageForm.reset();
-    });
-  }
-  unSetMember(i) {
-    this.SelectedUser.splice(i, 1);
-  }
-  getCurrentUser() {
-    this.userId = parseInt(localStorage.getItem('user_id'));
-    this.user.getUser(this.userId).subscribe(res => {
-      Object.assign(this.user, res);
-    })
-  }
-  onSubmit(e) {
-    e.preventDefault();
-    if (this.messageForm.valid) {
-      var str: string = '';
-      var full_name :string = '';
-      for (let selectedUsers of this.SelectedUser) {
-        str += selectedUsers[0].username + ', ';
-        full_name += selectedUsers[0].first_name + ' ' + selectedUsers[0].last_name + ', ';
-      }
-      this.messageObj.recipients = str;
-      this.messageObj.subject = this.messageForm.value.subject;
-      this.messageObj.body = this.messageForm.value.body;
-      this.pm.sendMessage(this.messageObj).subscribe(res => {
-        this.loaderService.display(true);
-        // var newMessage = {
-        //   user_photo: this.user['user_photo'],
-        //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
-        //   subject: this.messageObj.subject,
-        //   last_updated: 'Now',
-        // }
-        // this.msg.unshift(newMessage);
-        this.msg = [];
-        if(this.msg.length == 0){
-        this.noMessage = false;
-      }
-        this.messageForm.reset();
-        this.SelectedUser = [];
-        this.getMessages();
-        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
-      }, err => {
-        this.loaderService.display(false);
-        this.notificationBarService.create({ message: 'Your message cannot be delivered ' + full_name + 'is not accepting messages from your account' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });
-  });
-
-    }
-  }
-
-  buildForm(): void {
-    this.messageForm = this.fb.group({
-      'recipients': [''],
-      'subject': ['', Validators.required],
-      'body': ['', Validators.required]
-    });
-    this.messageForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-    this.onValueChanged(); // (re)set validation messages now
-  }
-
-  onValueChanged(data?: any) {
-    if (!this.messageForm) { return; }
-    const form = this.messageForm;
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
-
-  formErrors = {
-    'subject': '',
-    'body': ''
-  };
-
-  validationMessages = {
-    'subject': {
-      'required': 'Subject is required.',
-    },
-    'body': {
-      'required': 'Message Body is required.',
-    },
-  };
-
+ 
   resetForm(e) {
     e.preventDefault();
     this.messageForm.reset();
@@ -326,9 +206,11 @@ export class SentComponent implements OnInit {
       this.hideloadmore = false;
     }
   }
-  deleteMessage(i) {
+   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    delete this.msg[i];
+    this.msg=[];
+    this.getMessages();
+    this.loaderService.display(true);
   }
 
   valueChanged(mid, event) {
