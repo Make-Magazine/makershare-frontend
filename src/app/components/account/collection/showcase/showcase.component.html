@@ -21,8 +21,8 @@
         <div class="select" *ngIf="showcase">
           <!--<input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">-->
         </div>
-        <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td>
-          <td *ngIf="showcase">{{showcase.project_name}}</td>
+       <a [routerLink]="['/showcases/',showcase.nid]" > <td *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td></a>
+         <a [routerLink]="['/showcases/',showcase.nid]" > <td *ngIf="showcase">{{showcase.project_name}}</td></a>
           <!--<td class="delete">-->
           <!--<a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>-->
           <!--</td>-->
