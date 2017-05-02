@@ -154,6 +154,7 @@
             border: 1px solid $main-grey;
             line-height: 29px;
             font-size: 14px;
+            width: 100%;
        }
     }
    .how {
@@ -904,6 +905,8 @@
         max-width: 230px;
         cursor:pointer;
         text-transform: none;
+        height: 50px;
+        margin-bottom: 5px;
     }
     .card-title-showcase {
         @include card-header-font-sm;

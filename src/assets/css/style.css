@@ -1398,6 +1398,12 @@ ngb-typeahead-window.dropdown-menu {
     .notifications-container .error .close-click:hover {
       color: #fff !important; }
 
+.project-bookmakr .fa-bookmark-o:hover {
+  color: #00AEEF; }
+
+.fa-share:hover {
+  color: #00AEEF; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -2106,7 +2112,8 @@ footer {
     border-radius: 0;
     border: 1px solid #333333;
     line-height: 29px;
-    font-size: 14px; }
+    font-size: 14px;
+    width: 100%; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 15px;
@@ -2730,7 +2737,9 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    text-transform: none; }
+    text-transform: none;
+    height: 50px;
+    margin-bottom: 5px; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -5951,6 +5960,8 @@ textarea {
           float: left;
           margin-right: 8px;
           min-width: 50px; }
+        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes img {
+          width: 12px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like {
