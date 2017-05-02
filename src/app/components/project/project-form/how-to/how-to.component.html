@@ -143,7 +143,6 @@
       <div formArrayName="field_resources">
         <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card">
           <div class="card-header">
-            <span>Resource {{i + 1}}</span>
             <span class="fa fa-lg fa-times pull-right" *ngIf="HowToForm.controls.field_resources.controls.length > 0" (click)="RemoveRow(i,'field_resources')"></span>
           </div>
           <div class="card-block" [formGroupName]="i">
