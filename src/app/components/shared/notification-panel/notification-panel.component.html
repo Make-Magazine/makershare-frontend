@@ -14,7 +14,7 @@
           <a><i class="fa fa-cog float-right p-2" [routerLink]="['/account/settings/notifications']"  aria-hidden="true"></i></a>
           <a><i class="fa fa-times float-right p-2" aria-hidden="true"></i></a>
         </li>  
-        <notification-tpl [ngClass]="{'not-seen': notification.seen == 1 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
+        <notification-tpl [ngClass]="{'not-seen': notification.seen == 1,'seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
       </ul>
     </div>
   </div>
