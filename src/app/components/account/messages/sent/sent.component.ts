@@ -24,7 +24,7 @@ export class SentComponent implements OnInit {
   };
 
   @ViewChild('myInput')
-  count; 
+  count;
   searchValue: string = '';
   closeResult: string;
   currentuser;
@@ -35,6 +35,7 @@ export class SentComponent implements OnInit {
   message;
   msg = [];
   num: any;
+  sent_count
   num2: any;
   num3: any;
   anothUser: any;
@@ -70,10 +71,13 @@ export class SentComponent implements OnInit {
   hideTurnOn: boolean = false;
   status;
   blocked;
+  inboxCount
+  messageRecieved = [];
   usr_recv;
   participints
   senderData
-  noMessage= false;
+  noMessage = false;
+  inbox_arr = [];
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -97,7 +101,7 @@ export class SentComponent implements OnInit {
 
   }
 
- 
+
   resetForm(e) {
     e.preventDefault();
     this.messageForm.reset();
@@ -125,24 +129,33 @@ export class SentComponent implements OnInit {
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
+        let j = 0;
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
             if (this.userId === author[0].author) {
               //i am who sent the message
               this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
-                for (let i = 0; i<res.length; i++) {
+                for (let i = 0; i < res.length; i++) {
                   if (res[i] != this.userId) {
                     this.user.getUser(res[i]).subscribe(res => {
                       this.messages[key].sender = true;
                       this.messages[key].user_photo = res.user_photo;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
+
+                      this.inbox_arr.push(this.messageRecieved[j]);
+                      if (this.sent_count > this.inbox_arr.length) {
+                        this.hideloadmore = true;
+                      } else if (this.sent_count < this.inbox_arr.length) {
+                        this.hideloadmore = false;
+                      }
+                      j++;
                     })
                   }
                 }
               })
-            } 
+            }
           })
 
           msg_arr.push(this.messages[key]);
@@ -167,48 +180,57 @@ export class SentComponent implements OnInit {
             // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
             msg_arr[i].last_updated = msg_arr[i].date_format;
           }
-        //  if(Object.keys(msg_arr[i].participants).length > 2){
-            msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
+          //  if(Object.keys(msg_arr[i].participants).length > 2){
+          msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
           //}
           i++
         }
       }
-      
-      this.msg = this.msg.concat(msg_arr);    
+
+      this.msg = this.msg.concat(msg_arr);
       //show if user have 0 msg 
-      if(this.msg.length == 0){
+      if (this.msg.length == 0) {
         this.noMessage = true;
       }
       this.loaderService.display(false);
-      this.loadMoreVisibilty();
+      //  this.loadMoreVisibilty();
     })
   }
 
   CountMessages() {
     this.userId = localStorage.getItem('user_id');
     this.route.params
-      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
+      .switchMap(() => this.pm.getInboxCount(this.userId))
       .subscribe(data => {
-        this.countMsg = data;
-      });
-  }
+        this.inboxCount = data[0];
 
+
+        this.route.params
+          .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
+          .subscribe(data => {
+            this.countMsg = data;
+            this.sent_count = this.countMsg - this.inboxCount;
+          });
+      });
+
+
+  }
   loadMore() {
     this.pageNumber++;
     this.getMessages();
   }
-  loadMoreVisibilty() {
-    // get the challenges array count
-    var arr_count = this.msg.length;
-    if (this.countMsg > arr_count) {
-      this.hideloadmore = true;
-    } else {
-      this.hideloadmore = false;
-    }
-  }
-   deleteMessage(i) {
+  // loadMoreVisibilty() {
+  //   // get the challenges array count
+  //   var arr_count = this.msg.length;
+  //   if (this.countMsg > arr_count) {
+  //     this.hideloadmore = true;
+  //   } else {
+  //     this.hideloadmore = false;
+  //   }
+  // }
+  deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    this.msg=[];
+    this.msg = [];
     this.getMessages();
     this.loaderService.display(true);
   }
