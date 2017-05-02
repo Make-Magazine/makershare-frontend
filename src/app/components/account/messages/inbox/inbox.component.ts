@@ -75,6 +75,7 @@ export class InboxComponent implements OnInit {
   participints
   senderData
   noMessage= false;
+  messageRecieved = [];
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -246,33 +247,21 @@ export class InboxComponent implements OnInit {
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
+        let j = 0;
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
-            if (this.userId === author[0].author) {
-              //i am who sent the message
-              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
-                for (let i = 0; i<res.length; i++) {
-                  if (res[i] != this.userId) {
-                    this.user.getUser(res[i]).subscribe(res => {
-                      this.messages[key].sender = true;
-                      this.messages[key].user_photo = res.user_photo;
-                      this.messages[key].first_name = res.first_name;
-                      this.messages[key].last_name = res.last_name;
-                    })
-                  }
-                }
-              })
-            } else {
-              //another person send message to me
+            if (this.userId != author[0].author) {
               this.user.getUser(author[0].author).subscribe(res => {
-                this.messages[key].reciver = true;
+                 this.messages[key].reciver = true;
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
+                this.messageRecieved[j] = this.messages[key];
+                j++;
+               // console.log(this.messageRecieved);
               })
-            }
-
+            } 
           })
 
           msg_arr.push(this.messages[key]);
@@ -374,14 +363,14 @@ export class InboxComponent implements OnInit {
   /**
  * delete selected messages
  */
-  deleteMessages() {
-    this.loaderService.display(true);
-    for (var _i = 0; _i < this.msg.length; _i++) {
-      this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
-    }
-    this.msg = [];
-    this.getMessages();
-  }
+  // deleteMessages() {
+  //   this.loaderService.display(true);
+  //   for (var _i = 0; _i < this.msg.length; _i++) {
+  //     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+  //   }
+  //   this.msg = [];
+  //   this.getMessages();
+  // }
 
   viewMessage(thread_id) {
     this.router.navigate(['/account/inbox/view', thread_id]);
