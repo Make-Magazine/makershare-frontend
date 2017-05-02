@@ -175,20 +175,22 @@ a:not([href]):not([tabindex]).btn-sharp {
 
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
-    color: $light-grey;
-    width: 40px;
-    font-size: 20px;
+    color: $white;
+    font-size: 1.2em;
     margin: auto;
     border: none;
-    background: inherit;
-    position: absolute;
-    bottom: 15px;
-    right: 10px;
+    background: $blue;
+    margin-top: -1em;
     &:hover, &:focus, &:active {
-        color: $main-grey;
+        color: $white*0.9;
         cursor: pointer;
         border: none;
         outline: none;
+    }
+    .message-icon {
+        font-size: 1.7em;
+        position: relative;
+        bottom: -3px;
     }
 }
 
@@ -395,7 +397,7 @@ a:not([href]):not([tabindex]).btn-load-more{
 .btn-tab,a:not([href]):not([tabindex]).btn-tab {
     border-radius: 0;
     font-size: 1.2em;
-    padding: 9px 30px 8px 30px;
+    padding: 9px 30px 25px 30px;
     // width: 115px;
     height: 35px;
     color: #BDBDBD;

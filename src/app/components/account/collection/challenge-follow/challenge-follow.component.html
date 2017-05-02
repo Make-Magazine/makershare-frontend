@@ -1,6 +1,6 @@
 <div *ngIf="challenges.length==0">
-  <h5>You haven't followed any missions yet.</h5><br>
-  <p>Head over to any mission page you want to keep track of and click the Follow button.<br> Once you do,you can easily find
+  <h3>You haven't followed any missions yet.</h3><br>
+  <p>Head over to any mission page you want to keep track of and click the Follow button.<br> Once you do, you can easily find
     the mission again from this page.</p>
 </div>
 <div *ngIf="challenges.length>0">
@@ -20,8 +20,8 @@
         <div class="select" *ngIf="challenge">
           <!--<input type="checkbox" value="{{challenge.nid}}"  [(ngModel)]="challenge.state"  (change)="valueChanged(challenge.nid,$event)">-->
         </div>
-        <td *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive"></td>
-        <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
+       <a [routerLink]="['/missions/',challenge.nid]" > <td *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive"></td></a>
+        <a [routerLink]="['/missions/',challenge.nid]" > <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td></a>
         <!--<td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>-->
 
       </tr>

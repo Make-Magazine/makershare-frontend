@@ -170,11 +170,10 @@ header nav {
       font-size: 1.3em; }
     header nav #MainNav .nav-item .btn {
       font-size: 1em;
-      padding: 5px 9px; }
+      padding: 16px 9px; }
     header nav #MainNav .nav-item.button-container-main-1 {
-      height: 30px;
-      margin-left: 20px;
-      margin-top: 10px; }
+      height: 53px;
+      margin-left: 20px; }
   header nav .navbar-toggler {
     border: none;
     top: 5px;
@@ -487,23 +486,25 @@ a:not([href]):not([tabindex]).btn-sharp {
 
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
-  color: #BDBDBD;
-  width: 40px;
-  font-size: 20px;
+  color: #fff;
+  font-size: 1.2em;
   margin: auto;
   border: none;
-  background: inherit;
-  position: absolute;
-  bottom: 15px;
-  right: 10px; }
+  background: #00AEEF;
+  margin-top: -1em; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
   a:not([href]):not([tabindex]).message-btn:hover,
   a:not([href]):not([tabindex]).message-btn:focus,
   a:not([href]):not([tabindex]).message-btn:active {
-    color: #333333;
+    color: #e6e6e6;
     cursor: pointer;
     border: none;
     outline: none; }
+  .message-btn .message-icon,
+  a:not([href]):not([tabindex]).message-btn .message-icon {
+    font-size: 1.7em;
+    position: relative;
+    bottom: -3px; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
@@ -673,7 +674,7 @@ a:not([href]):not([tabindex]).btn-load-more {
 .btn-tab, a:not([href]):not([tabindex]).btn-tab {
   border-radius: 0;
   font-size: 1.2em;
-  padding: 9px 30px 8px 30px;
+  padding: 9px 30px 25px 30px;
   height: 35px;
   color: #BDBDBD;
   background-color: inherit; }
@@ -1398,6 +1399,85 @@ ngb-typeahead-window.dropdown-menu {
     .notifications-container .error .close-click:hover {
       color: #fff !important; }
 
+.project-bookmakr .fa-bookmark-o:hover {
+  color: #00AEEF; }
+
+.fa-share:hover {
+  color: #00AEEF; }
+
+/* notification dropdown-menu */
+.menutool-notification {
+  position: relative; }
+  .menutool-notification li {
+    padding: 8px 12px;
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 11; }
+    .menutool-notification li .view-all {
+      padding: .4rem 0rem;
+      color: #00AEEF; }
+      .menutool-notification li .view-all:hover {
+        text-decoration: none !important; }
+    .menutool-notification li .notf-gear i {
+      font-size: 19px; }
+    .menutool-notification li .notf-Cancel i {
+      font-size: 20px; }
+
+.dropdown-notification ul {
+  position: relative;
+  padding-top: 52px; }
+  .dropdown-notification ul li {
+    padding: 8px 12px;
+    position: absolute;
+    display: block;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    right: 0; }
+    .dropdown-notification ul li .view-all {
+      padding: .4rem 0rem;
+      color: #00AEEF; }
+    .dropdown-notification ul li .notf-gear i {
+      font-size: 19px; }
+    .dropdown-notification ul li .notf-Cancel i {
+      font-size: 20px; }
+  .dropdown-notification ul .notification-container {
+    padding: 0px 12px; }
+    .dropdown-notification ul .notification-container .notification-item {
+      border-bottom: 0.5px solid #828282;
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      padding: 5px 0px;
+      font-size: 0.96em !important; }
+      .dropdown-notification ul .notification-container .notification-item .link {
+        color: #00AEEF; }
+        .dropdown-notification ul .notification-container .notification-item .link:hover {
+          text-decoration: none !important;
+          color: #00AEEF !important; }
+      .dropdown-notification ul .notification-container .notification-item .notf-date {
+        color: #828282;
+        font-family: "Messina Sans Regular";
+        font-size: 0.9em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 100%;
+        color: #828282;
+        font-size: 0.83em !important; }
+    .dropdown-notification ul .notification-container .inner-text {
+      color: #4F4F4F;
+      padding: 2px 0px;
+      line-height: 17px; }
+  .dropdown-notification ul .not-seen .notification-container {
+    background-color: rgba(241, 241, 241, 0.53); }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -1801,10 +1881,10 @@ footer {
 /* Notification menue in header */
 .dropdown-notification {
   width: 330px;
-  height: 360px;
+  height: 380px;
   overflow-y: auto;
   max-width: 350px;
-  max-height: 360px; }
+  max-height: 380px; }
 
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
@@ -1818,6 +1898,9 @@ footer {
     border-top: 1px solid #dcdcdc; }
   .bookmark-page .content-wrapper th {
     border-top: 1px solid #dcdcdc; }
+  .bookmark-page .content-wrapper .msgs-bookamrk {
+    margin-top: 20px;
+    padding-left: 20px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -2003,9 +2086,6 @@ footer {
     font-size: 20px;
     background-color: transparent; }
 
-.profile-header .profile-message .message-btn {
-  position: static; }
-
 .profile-cover {
   overflow: hidden;
   max-height: 220px;
@@ -2101,15 +2181,17 @@ footer {
       color: #333333; }
   .profile-sidebar .ng2-tag-input.default {
     border: none !important; }
-  .profile-sidebar .ng2-tags-container tag {
-    background-color: #fff !important;
-    border-radius: 0;
-    border: 1px solid #333333;
-    line-height: 29px;
-    font-size: 14px; }
+  .profile-sidebar .ng2-tags-container {
+    width: 100%; }
+    .profile-sidebar .ng2-tags-container tag {
+      background-color: #fff !important;
+      border-radius: 0;
+      border: 1px solid #333333;
+      line-height: 29px;
+      font-size: 14px; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
-    padding: 15px;
+    padding: 0 15px 15px;
     width: 100%;
     font-size: 12px;
     margin-bottom: 20px;
@@ -2117,6 +2199,14 @@ footer {
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
+    .profile-sidebar .profile-container .container-override {
+      margin-left: -15px;
+      margin-right: -15px; }
+      .profile-sidebar .profile-container .container-override .profile-message {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -2339,7 +2429,7 @@ footer {
   padding: 0 10px;
   height: 24px; }
   .profile-header .bookmark li:not(:first-of-type) {
-    border-left: 3px solid #222; }
+    border-left: 2px solid #222; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -2730,7 +2820,9 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    text-transform: none; }
+    text-transform: none;
+    height: 50px;
+    margin-bottom: 5px; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3em;
@@ -2934,7 +3026,8 @@ footer {
       display: block; }
   .profile-page .profile-message {
     padding: 0px;
-    color: #00AEEF !important;
+    background-color: #00AEEF !important;
+    color: #fff !important;
     text-transform: uppercase; }
     .profile-page .profile-message img {
       width: 40px;
@@ -3956,7 +4049,7 @@ button:hover {
       padding: 8.5px 8px;
       border-radius: 0px;
       font-size: 0.9em;
-      margin: 10px;
+      margin: 0px 10px 10px 10px;
       border: 0.5px solid #6f6f6f;
       color: #6f6f6f; }
     .page-explore .submenus li .active {
@@ -3999,12 +4092,22 @@ button:hover {
     .filters .sorting-filter button::after, .filters .projects-filter button::after {
       display: none; }
     .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
+      -moz-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+      -webkit-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+      box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
       background-color: white;
-      color: #BDBDBD;
+      color: #676767;
       border-radius: 0;
       z-index: 10;
       right: 0;
       left: auto; }
+      .filters .sorting-filter .dropdown-menu a, .filters .projects-filter .dropdown-menu a {
+        width: 100%;
+        text-align: left;
+        font-size: 0.9em; }
+        .filters .sorting-filter .dropdown-menu a:hover, .filters .projects-filter .dropdown-menu a:hover {
+          color: #4F4F4F;
+          background-color: #F2F2F2; }
 
 .page-challenge {
   background-color: #F2F2F2;
@@ -5248,11 +5351,13 @@ header.showcase-project .next {
   .page-project .projectsingle-card .right-side {
     padding: 0px; }
     .page-project .projectsingle-card .right-side .card-container {
-      position: relative; }
+      position: relative;
+      height: 95%; }
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none;
         min-height: 400px;
-        padding: 0px 8px; }
+        padding: 0px 8px;
+        height: 100%; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
         color: #00AEEF;
         min-height: 38px; }
@@ -5939,6 +6044,8 @@ textarea {
           float: left;
           margin-right: 8px;
           min-width: 50px; }
+        .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-likes img {
+          width: 12px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
           margin-left: 20px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like {
@@ -6749,6 +6856,13 @@ img {
   .your-story label.selected-topic,
   .how-to label.selected-topic {
     font-size: 1.1em; }
+
+.show-tell-as-default label {
+  font-size: 1em; }
+.show-tell-as-default input {
+  margin-right: 10px; }
+.show-tell-as-default .custom-control-description {
+  line-height: 25px; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
@@ -7695,24 +7809,36 @@ img {
     color: #333333; }
 .page-inbox .inbox-title {
   padding-top: 20px;
-  padding-bottom: 40px;
-  width: 200px; }
+  padding-bottom: 40px; }
 .page-inbox .inbox-container, .page-inbox .notification-container {
-  background-color: #fff;
   padding: 20px 0;
   margin-bottom: 10px; }
   .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
     padding: 5px 10px;
     margin: 0; }
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle::after, .page-inbox .notification-container .inbox-controls .dropdown-toggle::after {
+      display: none; }
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle i, .page-inbox .notification-container .inbox-controls .dropdown-toggle i {
+      font-size: 1.5em; }
     .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
       display: inline-block; }
     .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
       display: inline-block; }
+    .page-inbox .inbox-container .inbox-controls .blocked-users, .page-inbox .notification-container .inbox-controls .blocked-users {
+      font-size: 1em;
+      height: 35px;
+      color: #4F4F4F; }
     .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
-      float: right;
-      margin-right: 23px; }
+      margin-right: 23px;
+      color: #00AEEF;
+      font-size: 1.3em;
+      padding-bottom: 7px; }
       .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
-        padding-right: 10px; }
+        padding-right: 10px;
+        font-size: 1.6em; }
+      .page-inbox .inbox-container .inbox-controls .new-message p, .page-inbox .notification-container .inbox-controls .new-message p {
+        display: inline-block;
+        margin-bottom: 0; }
   .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
     width: 150px;
     margin: 20px auto;
@@ -7735,10 +7861,23 @@ img {
     .page-inbox .inbox-container .messages-list .message-item .wrapper {
       display: flex;
       align-items: center;
-      border: 1px solid #333333;
       width: 100%;
       overflow: hidden;
-      padding: 5px 10px; }
+      padding: 10px;
+      -moz-box-shadow: 2px 2px 8px #BDBDBD;
+      -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+      box-shadow: 2px 2px 8px #BDBDBD;
+      background-color: white;
+      margin: 10px 0; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left img {
+          width: 100%;
+          height: auto; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .sender {
+        margin-bottom: 0; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
         width: 40%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
@@ -7747,13 +7886,17 @@ img {
           color: #00AEEF;
           text-decoration: none; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-        width: 30%; }
+        cursor: pointer; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
         width: 20%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .delete {
+        margin-left: auto;
+        margin-right: 25px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
         color: #333333;
-        position: relative; }
+        position: relative;
+        font-size: 2.2em; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
           float: right; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
@@ -8636,9 +8779,6 @@ img {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
 
-  .profile-sidebar .profile-container {
-    top: -40px; }
-
   .delete-promodal .modal-dialog {
     max-width: 700px !important; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -8651,6 +8791,11 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+@media only screen and (min-width: 768px) {
+  .profile-sidebar .profile-container {
+    top: -85px; }
+    .profile-sidebar .profile-container.myprofile {
+      top: -40px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

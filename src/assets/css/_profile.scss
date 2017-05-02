@@ -13,13 +13,6 @@
         }
     }
 }
-.profile-header  {
-    .profile-message {
-        .message-btn {
-            position: static;
-        }
-    }
-}
 .profile-cover {
     overflow: hidden;
     max-height: 220px;
@@ -147,7 +140,7 @@
         border: none !important;
     }
     .ng2-tags-container {
-        
+        width: 100%;
         tag {
             background-color:#fff !important;
             border-radius: 0;
@@ -168,12 +161,22 @@
     }
     .profile-container {
         background-color: #ffffff;
-        padding: 15px;
+        padding: 0 15px 15px;
         width: 100%;
         font-size: 12px;
         margin-bottom: 20px;
         position: relative;
         @include boxShadow(2px, 2px ,8px, $shade-3);
+        .container-override {
+            margin-left: -15px;
+            margin-right: -15px;
+            .profile-message {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                font-size: 1.2em;
+            }
+        }
         li,
         p {
             font-size: 13px;
@@ -440,7 +443,7 @@
             padding: 0 10px;
             height: 24px;
             &:not(:first-of-type) {
-                border-left: 3px solid #222;
+                border-left: 2px solid #222;
             }
         }
     }
@@ -904,6 +907,8 @@
         max-width: 230px;
         cursor:pointer;
         text-transform: none;
+        height: 50px;
+        margin-bottom: 5px;
     }
     .card-title-showcase {
         @include card-header-font-sm;
@@ -1139,7 +1144,8 @@
     }
     .profile-message {
         padding: 0px;
-        color: $blue !important;
+        background-color: $blue !important;
+        color: $white !important;
         text-transform: uppercase;
         img {
             width: 40px;
