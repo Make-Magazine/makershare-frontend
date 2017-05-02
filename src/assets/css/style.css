@@ -673,7 +673,7 @@ a:not([href]):not([tabindex]).btn-load-more {
 .btn-tab, a:not([href]):not([tabindex]).btn-tab {
   border-radius: 0;
   font-size: 1.2em;
-  padding: 9px 30px 8px 30px;
+  padding: 9px 30px 25px 30px;
   height: 35px;
   color: #BDBDBD;
   background-color: inherit; }
@@ -1824,6 +1824,9 @@ footer {
     border-top: 1px solid #dcdcdc; }
   .bookmark-page .content-wrapper th {
     border-top: 1px solid #dcdcdc; }
+  .bookmark-page .content-wrapper .msgs-bookamrk {
+    margin-top: 20px;
+    padding-left: 20px; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
