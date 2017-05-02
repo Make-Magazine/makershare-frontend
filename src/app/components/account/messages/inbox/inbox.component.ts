@@ -25,7 +25,7 @@ export class InboxComponent implements OnInit {
   };
 
   @ViewChild('myInput')
-  count; 
+  count;
   searchValue: string = '';
   closeResult: string;
   currentuser;
@@ -63,6 +63,7 @@ export class InboxComponent implements OnInit {
     body: '',
   };
   selected = [];
+  count_num: number;
   profile;
   pm_disabed = true;
   disabled;
@@ -74,10 +75,11 @@ export class InboxComponent implements OnInit {
   usr_recv;
   participints
   senderData
-  noMessage= false;
+  noMessage = false;
   messageRecieved = [];
-  count_inbox = [];
   //hideUser= true;
+  inboxCount
+  inbox_arr = [];
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -92,17 +94,17 @@ export class InboxComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    this.getStatus();
- //   this.getCurrentUser();
-    this.getMessages();
-   // this.buildForm();
+    //   this.getCurrentUser();
     this.CountMessages();
+    this.getMessages();
+    this.getStatus();
+    // this.buildForm();
     this.getBlockedUsers();
     this.userId = localStorage.getItem('user_id');
 
   }
 
-  
+
   resetForm(e) {
     e.preventDefault();
     this.messageForm.reset();
@@ -128,6 +130,7 @@ export class InboxComponent implements OnInit {
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
+      var count;
       var i = 0
       for (let key in this.messages) {
         let j = 0;
@@ -142,19 +145,17 @@ export class InboxComponent implements OnInit {
                 this.messages[key].last_name = res.last_name;
                 this.messageRecieved[j] = this.messages[key];
 
-                let arr_count = [this.messageRecieved[j]]
-                this.count_inbox.push(arr_count)
-                // if (this.countMsg > arr_count) {
-                //   this.hideloadmore = true;
-                // } else {
-                //   this.hideloadmore = false;
-                // }
+                this.inbox_arr.push(this.messageRecieved[j]);
+                if ( this.inboxCount > this.inbox_arr.length) {
+                  this.hideloadmore = true;
+                } else if ( this.inboxCount < this.inbox_arr.length) {
+                  this.hideloadmore = false;
+                }
                 j++;
-               // console.log(this.messageRecieved);
               })
-            } 
+            }
           })
-
+  
           msg_arr.push(this.messages[key]);
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
@@ -177,29 +178,29 @@ export class InboxComponent implements OnInit {
             // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
             msg_arr[i].last_updated = msg_arr[i].date_format;
           }
-        //  if(Object.keys(msg_arr[i].participants).length > 2){
-            msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
+          //  if(Object.keys(msg_arr[i].participants).length > 2){
+           msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
           //}
           i++
         }
       }
       
-      this.msg = this.msg.concat(msg_arr);    
+      this.msg = this.msg.concat(msg_arr);
       //show if user have 0 msg 
-      if(this.msg.length == 0){
+      if (this.msg.length == 0) {
         this.noMessage = true;
       }
       this.loaderService.display(false);
-      // this.loadMoreVisibilty();
+      //  this.loadMoreVisibilty();
     })
   }
 
   CountMessages() {
     this.userId = localStorage.getItem('user_id');
     this.route.params
-      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
+      .switchMap(() => this.pm.getInboxCount(this.userId))
       .subscribe(data => {
-        this.countMsg = data;
+        this.inboxCount = data[0];
       });
   }
 
@@ -208,17 +209,16 @@ export class InboxComponent implements OnInit {
     this.getMessages();
   }
   // loadMoreVisibilty() {
-  //   var arr_count = this.msg.length;
-  //   console.log(this.messageRecieved)
-  //   if (this.countMsg > arr_count) {
-  //     this.hideloadmore = true;
-  //   } else {
-  //     this.hideloadmore = false;
-  //   }
+
+  //   if ( this.inboxCount > this.msg.length) {
+  //       this.hideloadmore = true;
+  //     } else {
+  //       this.hideloadmore = false;
+  //     }
   // }
   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    this.msg=[];
+    this.msg = [];
     this.getMessages();
     this.loaderService.display(true);
   }
