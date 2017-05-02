@@ -1,6 +1,6 @@
-<div *ngIf="projects.length==0">
+<div class="msg-bookmarks" *ngIf="projects.length==0">
   <h5>There doesn't seem to be any bookmarks here yet.</h5><br>
-  <p>Look for the icon on a Project page you're interested in.<br> Click it and the <a [routerLink]="['/projects']">Project</a>    will appear here.</p>
+  <p>Look for the <i class="fa fa-bookmark-o fa-lg"></i> icon on a Project page you're interested in.<br> Click it and the <a [routerLink]="['/projects']">Project</a>    will appear here.</p>
 </div>
 
 <div *ngIf="projects.length>0">
