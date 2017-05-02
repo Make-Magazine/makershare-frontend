@@ -487,23 +487,25 @@ a:not([href]):not([tabindex]).btn-sharp {
 
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
-  color: #BDBDBD;
-  width: 40px;
-  font-size: 20px;
+  color: #fff;
+  font-size: 1.2em;
   margin: auto;
   border: none;
-  background: inherit;
-  position: absolute;
-  bottom: 15px;
-  right: 10px; }
+  background: #00AEEF;
+  margin-top: -1em; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
   a:not([href]):not([tabindex]).message-btn:hover,
   a:not([href]):not([tabindex]).message-btn:focus,
   a:not([href]):not([tabindex]).message-btn:active {
-    color: #333333;
+    color: #e6e6e6;
     cursor: pointer;
     border: none;
     outline: none; }
+  .message-btn .message-icon,
+  a:not([href]):not([tabindex]).message-btn .message-icon {
+    font-size: 1.7em;
+    position: relative;
+    bottom: -3px; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
@@ -2012,9 +2014,6 @@ footer {
     font-size: 20px;
     background-color: transparent; }
 
-.profile-header .profile-message .message-btn {
-  position: static; }
-
 .profile-cover {
   overflow: hidden;
   max-height: 220px;
@@ -2110,16 +2109,17 @@ footer {
       color: #333333; }
   .profile-sidebar .ng2-tag-input.default {
     border: none !important; }
-  .profile-sidebar .ng2-tags-container tag {
-    background-color: #fff !important;
-    border-radius: 0;
-    border: 1px solid #333333;
-    line-height: 29px;
-    font-size: 14px;
+  .profile-sidebar .ng2-tags-container {
     width: 100%; }
+    .profile-sidebar .ng2-tags-container tag {
+      background-color: #fff !important;
+      border-radius: 0;
+      border: 1px solid #333333;
+      line-height: 29px;
+      font-size: 14px; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
-    padding: 15px;
+    padding: 0 15px 15px;
     width: 100%;
     font-size: 12px;
     margin-bottom: 20px;
@@ -2127,6 +2127,14 @@ footer {
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
+    .profile-sidebar .profile-container .container-override {
+      margin-left: -15px;
+      margin-right: -15px; }
+      .profile-sidebar .profile-container .container-override .profile-message {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
       font-size: 13px; }
@@ -2349,7 +2357,7 @@ footer {
   padding: 0 10px;
   height: 24px; }
   .profile-header .bookmark li:not(:first-of-type) {
-    border-left: 3px solid #222; }
+    border-left: 2px solid #222; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -2946,7 +2954,8 @@ footer {
       display: block; }
   .profile-page .profile-message {
     padding: 0px;
-    color: #00AEEF !important;
+    background-color: #00AEEF !important;
+    color: #fff !important;
     text-transform: uppercase; }
     .profile-page .profile-message img {
       width: 40px;
@@ -6776,6 +6785,13 @@ img {
   .how-to label.selected-topic {
     font-size: 1.1em; }
 
+.show-tell-as-default label {
+  font-size: 1em; }
+.show-tell-as-default input {
+  margin-right: 10px; }
+.show-tell-as-default .custom-control-description {
+  line-height: 25px; }
+
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
   .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor {
@@ -8691,9 +8707,6 @@ img {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
 
-  .profile-sidebar .profile-container {
-    top: -40px; }
-
   .delete-promodal .modal-dialog {
     max-width: 700px !important; } }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -8706,6 +8719,11 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
+@media only screen and (min-width: 768px) {
+  .profile-sidebar .profile-container {
+    top: -85px; }
+    .profile-sidebar .profile-container.myprofile {
+      top: -40px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

@@ -353,5 +353,6 @@ export class ProfileComponent implements OnInit {
     this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();
     this.buildFormSocial();
+    console.log(this.ProfileInfo)
   }
 }
