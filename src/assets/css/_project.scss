@@ -778,10 +778,12 @@ header.showcase-project {
 			    padding: 0px;
     	.card-container {
         position: relative;
+				height: 95%;				
 				.card {
 					border: none;
 					min-height: 400px;
 					padding: 0px 8px;
+					height: 100%;
 				}
 				.projects-circle {
 					color: $sec-button-1 ;
