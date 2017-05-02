@@ -5258,11 +5258,13 @@ header.showcase-project .next {
   .page-project .projectsingle-card .right-side {
     padding: 0px; }
     .page-project .projectsingle-card .right-side .card-container {
-      position: relative; }
+      position: relative;
+      height: 95%; }
       .page-project .projectsingle-card .right-side .card-container .card {
         border: none;
         min-height: 400px;
-        padding: 0px 8px; }
+        padding: 0px 8px;
+        height: 100%; }
       .page-project .projectsingle-card .right-side .card-container .projects-circle {
         color: #00AEEF;
         min-height: 38px; }
