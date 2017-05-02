@@ -13,24 +13,6 @@
   </header>-->
   <!--/header -->
   <div class="container inbox-container">
-    <!--<section class="inbox-controls d-flex justify-content-end align-items-center">-->
-      <!--<div class="selectall">
-        <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-      </div>-->
-      <!--<app-delete-modal>Delete</app-delete-modal>-->
-      <!--<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-      <!--<span class="new-message d-flex align-items-end" *ngIf="!hideTurnOn" (click)="open(content)"><i class="lnr lnr-envelope"></i> <p> NEW MESSAGE</p></span>      
-      <button [routerLink]="['/account/inbox/blocked']" class="btn btn-load-more blocked-user">Blocked users</button>      
-      <div class="dropdown">
-        <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="lnr lnr-cog" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
-          <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
-        </div>
-      </div>
-    </section>-->
     <div *ngIf="noMessage" class="mx-auto" style="width: 38%">
       <h3>You did not have any messages</h3>
     </div>

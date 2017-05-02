@@ -13,27 +13,6 @@
   </header>-->
   <!--/header -->
   <div class="container inbox-container">
-    <section class="inbox-controls">
-      <!--<div class="selectall">
-        <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-      </div>-->
-      <!--<app-delete-modal>Delete</app-delete-modal>-->
-      <!--<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-      <div *ngIf="noMessage" class="mx-auto" style="width: 38%">
-        <h3>You did not have any messages</h3>
-      </div>
-      <div class="dropdown float-right">
-        <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
-          <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
-        </div>
-      </div>
-      <a class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
-      <button [routerLink]="['/account/inbox/blocked']" class="btn btn-secondary btn-lg active new-message">Blocked users</button>
-    </section>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg; let i=index;">
         <!--<div class="select" *ngIf="message">
@@ -85,49 +64,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class="modal-message">
-  <!-- Trigger the modal with a button -->
-  <!-- Modal -->
-
-  <template #content let-c="close" let-d="dismiss" ngbModalContainer>
-    <div class="modal-header">
-      <button type="button" class="close" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
-      <span aria-hidden="true" >&times;</span>
-    </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
-        id="createMsg" class="form-horizontal">
-        <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
-          {{user[0].first_name}} {{user[0].last_name}}
-          <i (click)="unSetMember(i)" class="fa fa-lg fa-close close"></i>
-          <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
-        </div>
-        <div class="form-group">
-          <label class="control-label">To:</label>
-          <input #myInput type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name to send" [ngbTypeahead]="search"
-            [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
-        </div>
-        <div class="form-group subject">
-          <label class="control-label">Subject</label>
-          <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
-        </div>
-        <div *ngIf="formErrors.subject" class="alert alert-danger">
-          {{ formErrors.subject }}
-        </div>
-        <div class="form-group message-text">
-          <label class="control-label">Message</label>
-          <textarea name="body" id="body" cols="110" rows="10" formControlName="body"></textarea>
-        </div>
-        <div *ngIf="formErrors.body" class="alert alert-danger">
-          {{ formErrors.body }}
-        </div>
-        <ul class="list-unstyled actions">
-          <li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>
-          <li><button type="submit" class="btn btn-blue btn-sharp" (click)="c('Close click')" (click)="onSubmit($event)">Send</button></li>
-        </ul>
-        </form>
-    </div>
-  </template>
 </div>
