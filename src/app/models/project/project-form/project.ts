@@ -15,9 +15,8 @@ export interface ProjectForm extends Node{
 	field_tools?:{und:field_collection_item.field_collection_item_tool[]};
 	field_materials?:{und:field_collection_item.field_collection_item_material[]};
 	field_parts?:{und:field_collection_item.field_collection_item_part[]};
-	field_difficulty?:{und:number};
-	field_duration?:{und:number};
-	field_credit_your_inspiration?:{und:field_text[]};
+	field_difficulty?:{und:number|'_none'};
+	field_duration?:{und:number|'_none'};
 	field_show_tell_video?:{und:field_URL[]};
 	field_show_tell_video_as_default:{und:field_number[]};
 	field_tags?:{und:string};
@@ -47,7 +46,6 @@ export interface ProjectView extends Node{
 	field_maker_memberships?:{und:field_collection_item.field_collection_item_reference_row[]};
 	field_difficulty:{und:field_term_reference[]};
 	field_duration:{und:field_term_reference[]};
-	field_credit_your_inspiration?:{und:field_text[]};
 	field_show_tell_video?:{und:field_URL[]};
 	field_show_tell_video_as_default:{und:field_number[]};
 	field_tags?:{und:field_term_reference[]};
@@ -91,8 +89,8 @@ export class ProjectForm extends Node implements ProjectForm{
     this.field_tools = {und:[]};
     this.field_parts = {und:[]};
     this.field_materials = {und:[]};
-    this.field_difficulty = {und:5};
-    this.field_duration = {und:8};
+    this.field_difficulty = {und:'_none'};
+    this.field_duration = {und:'_none'};
     this.field_resources = {und:[]};
     this.field_maker_memberships = {und:[]};
     this.field_visibility2 = {und:[1115]};
@@ -105,7 +103,6 @@ export class ProjectForm extends Node implements ProjectForm{
 		this.field_show_tell_video_as_default = {und:[new field_number()]};
     this.field_aha_moment = {und:[new field_text(null)]};
     this.field_uh_oh_moment = {und:[new field_text(null)]};
-		this.field_credit_your_inspiration = {und:[new field_text(null)]};
 		this.field_sort_order = {und:[{value:0}]};
 	}
 
