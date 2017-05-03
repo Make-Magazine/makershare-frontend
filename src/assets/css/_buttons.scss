@@ -179,18 +179,23 @@ a:not([href]):not([tabindex]).message-btn {
     font-size: 1.2em;
     margin: auto;
     border: none;
-    background: $blue;
-    margin-top: -1em;
+    background-color: $blue;
+    text-align: left;
+    padding: 0 15px 10px;
+    width: 100%;
+    display: block;
     &:hover, &:focus, &:active {
-        color: $white*0.9;
+        background-color: $blue*0.8;    
         cursor: pointer;
         border: none;
         outline: none;
+        text-align: left;
     }
     .message-icon {
         font-size: 1.7em;
         position: relative;
         bottom: -3px;
+        text-align: left;        
     }
 }
 

@@ -25,7 +25,7 @@ header.main-header {
   left: 0;
   z-index: 12; }
   header.main-header .navbar-brand {
-    width: 120px;
+    width: 100px;
     padding: 0px;
     padding-left: 5px;
     position: relative;
@@ -40,8 +40,8 @@ header.main-header {
       color: #00AEEF;
       font-size: 10px;
       position: absolute;
-      bottom: -17px;
-      right: 15px;
+      bottom: -14px;
+      right: 5px;
       -webkit-transition: all 0.5s ease-in-out;
       -moz-transition: all 0.5s ease-in-out;
       -ms-transition: all 0.5s ease-in-out;
@@ -133,12 +133,13 @@ header.main-header {
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out; }
     header.main-header.shrink .navbar-brand span {
-      right: 0;
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      -ms-transition: all 0.5s ease-in-out;
-      -o-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out; }
+      right: 3px;
+      font-size: 8px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
   header.main-header.shrink nav.navbar {
     padding: 10px 15px 20px;
     -webkit-transition: all 0.5s ease-in-out;
@@ -149,7 +150,8 @@ header.main-header {
     header.main-header.shrink nav.navbar #MainNav .nav-item a {
       font-size: 1.2em; }
     header.main-header.shrink nav.navbar #MainNav .nav-item .btn {
-      font-size: 1em; }
+      font-size: 1em;
+      height: 50px; }
 header nav {
   font-size: 14px;
   color: #333333; }
@@ -490,21 +492,26 @@ a:not([href]):not([tabindex]).message-btn {
   font-size: 1.2em;
   margin: auto;
   border: none;
-  background: #00AEEF;
-  margin-top: -1em; }
+  background-color: #00AEEF;
+  text-align: left;
+  padding: 0 15px 10px;
+  width: 100%;
+  display: block; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
   a:not([href]):not([tabindex]).message-btn:hover,
   a:not([href]):not([tabindex]).message-btn:focus,
   a:not([href]):not([tabindex]).message-btn:active {
-    color: #e6e6e6;
+    background-color: #008bbf;
     cursor: pointer;
     border: none;
-    outline: none; }
+    outline: none;
+    text-align: left; }
   .message-btn .message-icon,
   a:not([href]):not([tabindex]).message-btn .message-icon {
     font-size: 1.7em;
     position: relative;
-    bottom: -3px; }
+    bottom: -3px;
+    text-align: left; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
@@ -2197,13 +2204,17 @@ footer {
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
+    .profile-sidebar .profile-container.indexProfile {
+      z-index: 9999;
+      -moz-box-shadow: 0 0 0 #BDBDBD;
+      -webkit-box-shadow: 0 0 0 #BDBDBD;
+      box-shadow: 0 0 0 #BDBDBD; }
     .profile-sidebar .profile-container .container-override {
       margin-left: -15px;
       margin-right: -15px; }
       .profile-sidebar .profile-container .container-override .profile-message {
         display: block;
         width: 100%;
-        padding: 10px;
         font-size: 1.2em; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
@@ -2260,6 +2271,8 @@ footer {
     .profile-sidebar .profile-container .profile-info {
       margin-top: 16px;
       font-size: 18px; }
+      .profile-sidebar .profile-container .profile-info .userInfo {
+        position: relative; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Regular";
         font-size: 1.3em;
@@ -4001,6 +4014,40 @@ button:hover {
       width: 120px;
       padding: 12px;
       background-color: #fff !important; }
+
+.profile-overlay {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(25, 25, 25, 0.9);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: none; }
+
+.hideData {
+  display: block; }
+
+.showData {
+  display: block !important; }
+
+.toggleProfile {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #00AEEF;
+  display: none; }
+  .toggleProfile i {
+    padding: 7px;
+    color: #00AEEF;
+    font-size: 1.2em;
+    width: auto !important; }
+    .toggleProfile i.close {
+      display: none; }
+    .toggleProfile i.open {
+      display: block; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -8770,7 +8817,13 @@ img {
     -webkit-box-orient: vertical; }
 
   .project .icons-side-project {
-    top: -20px; } }
+    top: -20px; }
+
+  .toggleProfile {
+    display: block; }
+
+  .hideData {
+    display: none; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }

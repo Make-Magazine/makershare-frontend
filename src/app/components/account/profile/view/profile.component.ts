@@ -132,7 +132,8 @@ export class ProfileComponent implements OnInit {
     websites:'What are your websites?',
     interests: 'Add your interests',
   };
-  DefaultView :string = "grid"
+  DefaultView :string = "grid";
+  mobileToggle :boolean =false;
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -179,6 +180,17 @@ export class ProfileComponent implements OnInit {
     } else {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
+    }
+    if (window.innerWidth < 768){
+      this.mobileToggle = true;
+    }
+    
+    window.onresize = (e) => {
+        if (window.innerWidth < 768){
+          this.mobileToggle = true;
+        } else {
+          this.mobileToggle = false;          
+        }
     }
   }
   SelectFileAndSave(closebtn:HTMLButtonElement, SelectedFile:FileEntityManage){
@@ -355,5 +367,8 @@ export class ProfileComponent implements OnInit {
     this.BuildForm();
     this.buildFormSocial();
     console.log(this.ProfileInfo)
+  }
+  ToggleProfile() {
+    this.mobileToggle = !this.mobileToggle;
   }
 }

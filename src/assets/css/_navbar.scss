@@ -10,7 +10,7 @@ header {
         left: 0;
         z-index: 12;
         .navbar-brand {
-            width: 120px;
+            width: 100px;
             padding: 0px;
             padding-left: 5px;
             position: relative;
@@ -22,8 +22,8 @@ header {
                 color: $blue;
                 font-size: 10px;
                 position: absolute;
-                bottom: -17px;
-                right: 15px;
+                bottom: -14px;
+                right: 5px;
                 @include transition(0.5s);                
             }
         }
@@ -153,8 +153,9 @@ header {
                 width: 75px;
                 @include transition(0.5s);
                 span {
-                    right: 0;
-                @include transition(0.5s);  
+                    right: 3px;
+                    font-size: 8px;
+                    @include transition(0.3s);  
                 }
             }
             nav.navbar {
@@ -167,6 +168,7 @@ header {
                         }
                         .btn {
                             font-size: 1em;
+                            height: 50px;
                         }
                     }
                 }
