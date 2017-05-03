@@ -95,9 +95,9 @@
         margin: 15px 0 10px;
     }
     h5 {
-        color: #000;
-        font-weight: bold;
-        font-size: 14px;
+        // color: #000;
+        // font-weight: bold;
+        // font-size: 14px;
     }
     .progress {
         margin-bottom: 10px;
@@ -179,7 +179,7 @@
         }
         li,
         p {
-            font-size: 13px;
+            font-size: 0.8em;
             a {
                 color: $title-color;
             }
@@ -248,26 +248,30 @@
             font-size: 18px;
             .profile-fullname {
                 @include card-header-font-sm ();
-                color:$main-grey;
+                color:$blue;
             }
             .profile-nickname {
                 @include desc-font-2 ();
+                color: $shade-3;
                 margin-top: 5px;
-                margin-bottom: 5px;
+                margin-bottom: 0px;
             }
             .location {
                 @include desc-font-2 ();
-                color: $title-color;
+                color: $shade-4;
                 margin-top: 5px;
                 margin-bottom: 5px;
             }
             .profile-describe-yourself {
                 @include desc-font-5 ();
+                color: $shade-4;
+                font-size: 1.2em;
             }
             .badges {
                 @include desc-font-2 ();
                 color: $text-color-1;
-                font-size: 0.7em !important;
+                font-size: 0.7em;
+                line-height: 130%;
                 margin-left: 5px;
             }
             .bio {
@@ -331,6 +335,9 @@
             }
             .social-links {
                 margin-top: 15px;
+                .social-container {
+                    width: 20%;
+                }
                 li {
                     display: inline-block;
                     text-align: center;
@@ -349,6 +356,9 @@
                 }
             }
         }
+    }
+    .topic-tags {
+        color: $shade-5;
     }
     .report {
         font-size: 12px;
@@ -1605,9 +1615,10 @@
     a {
         position:relative;
         text-align:center;
-        width:0px;
-        height:0px;
         padding:15px;
+        width: 35px;
+        height: 35px;
+        color:#FFFFFF;
         border-top-right-radius: 	20px;
         border-top-left-radius: 	20px;
         border-bottom-right-radius: 20px;
@@ -1615,20 +1626,18 @@
         -moz-border-radius: 		20px 20px 20px 20px;
         -webkit-border-radius: 		20px 20px 20px 20px;
         -khtml-border-radius: 		20px 20px 20px 20px; 	
-        color:#FFFFFF;
         i {
-            font-size:15px;
+            font-size:1.1em;
             position:absolute;
-            left:3px;
-            top:10px;
+            left:5px;
+            top:12px;
         }
     }
    
     a.social {
-        float: left;
-        margin:0 5px 0 0;
+        margin: 5px 0;
         cursor:pointer;
-        background:$shade-7;
+        background:$shade-4;
         color:#fff;
 	
     }
