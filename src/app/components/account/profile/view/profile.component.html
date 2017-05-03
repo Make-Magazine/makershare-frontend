@@ -6,7 +6,7 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
-				<div class="col-12 col-md-8 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+				<div class="col-12 col-md-6 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
 					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
 						<!--<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
@@ -19,7 +19,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
+				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex flex-row">
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			<div class="row body-content">
-				<div class="left-section col-lg-4 col-md-4">
+				<div class="left-section col-lg-4 col-md-6">
 					<div class="profile-sidebar">
 						<div class=" profile-container" [class.myprofile]="CurrentLoggedUserId == uid">
 							<div class="container-override">
@@ -75,8 +75,8 @@
 									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<div class="profile-fullname"><span>{{profile.full_name}}</span></div>
-									<div *ngIf="ProfileInfo.nickname" class="profile-nickname"><span>aka {{ProfileInfo.nickname}}</span></div>
+									<h4 class="profile-fullname">{{profile.full_name}}</h4>
+									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
@@ -112,7 +112,7 @@
 								<!-- start Badges-->
 								<div class="icons" *ngIf="badges !=''">
 									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
+									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
 										<p class="badges">{{badge?.title}}</p><br>
 									</div>
@@ -137,35 +137,53 @@
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
 								<div *ngIf="ProfileInfo.field_social_accounts">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<div class="social-links">
-										<p class="global-title">Social</p>
-										<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
-											<i class="fa fa-facebook fa-lg"></i>
-										</a>
-										<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
-											<i class="fa fa-twitter fa-lg"></i>
-										</a>
-										<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
-											<i class="fa fa-instagram fa-lg"></i>
-										</a>
-										<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
-											<i class="fa fa-linkedin fa-lg"></i>
-										</a>
-										<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
-											<i class="fa fa-pinterest-p fa-lg"></i>
-										</a>
-										<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
-											<i class="fa fa-youtube fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
+									<p class="global-title">Social</p>
+									<div class="social-links d-flex flex-wrap">
+										<div class="social-container">
+											<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
+												<i class="fa fa-facebook fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
+												<i class="fa fa-twitter fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
+												<i class="fa fa-instagram fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
+												<i class="fa fa-linkedin fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
+												<i class="fa fa-pinterest-p fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
+												<i class="fa fa-youtube fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -191,7 +209,7 @@
 								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''">
 								<div>
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title"> Links </p>
+									<p class="global-title"> Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' " href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' " href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
@@ -208,18 +226,23 @@
 								<div class="how">
 									<!-- Start How -->
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title">How I learned to be a maker</p>
+									<p class="global-title">My Maker Moment</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr>
 								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-								<p class="global-title">Interests</p>
+								<p class="global-title">Favorite Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text">{{PlaceholderText.interests}}</p>
-								<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
+								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
-								</tag-input>
+								</tag-input>-->
+								<p class="topic-tags">
+									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
+										<i *ngIf="i-1 > -1">,</i> {{interest.name}}
+									</span>
+								</p>
 								<!--<a class="report">Report this user</a>-->
 								<div *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<hr>
