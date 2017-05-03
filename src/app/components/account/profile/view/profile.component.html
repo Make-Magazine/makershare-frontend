@@ -346,6 +346,7 @@
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
+										<option value="choose" [disabled]="butDisabled">Choose</option>
 										<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
 									</select>
 									</div>
