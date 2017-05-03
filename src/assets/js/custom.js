@@ -79,12 +79,15 @@ $(document).ready(function () {
 
 	});
 
-	
 	$(document).on('click', "#cover-upload-link", function (e) {
 		e.preventDefault();
 		$("#cover-upload:hidden").trigger('click');
 	});
 
+	$(document).on('click', "a[href='#rules']", function (e) {
+		e.preventDefault();
+		$("#rules-route").trigger('click');
+	});
 	$(document).on('click', ".resource-file", function (e) {
 		e.preventDefault();
 		$(this).parent().find(".file").trigger('click');
