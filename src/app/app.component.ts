@@ -3,6 +3,7 @@ import { LoaderService } from './components/shared/loader/loader.service';
 //import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 import { UserService } from './d7services/user/user.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,16 @@ export class AppComponent implements OnInit {
   constructor(
     private loaderService: LoaderService,
     private userService: UserService,
+    private router: Router,
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
-  ) { }
+  ) {
+    router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        window.scroll(0, 0);
+      });
+
+   }
 
   ngOnInit() {
     this.userService.getAnonymousToken().subscribe(data => {});
