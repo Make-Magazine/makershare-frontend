@@ -53,7 +53,7 @@ export class InboxNotificationsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.current_active_tab = 'notifications';
+      this.current_active_tab = 'messages';
       this.buildForm();
       this.getCurrentUser();
       this.getStatus();
