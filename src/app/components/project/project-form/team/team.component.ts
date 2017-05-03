@@ -110,46 +110,28 @@ export class TeamComponent implements OnInit {
 }
 
   SetValueChangeSubscriber(index,control,data?){
-    control['controls'].field_sort_order.setValue(index+1);
     let member:field_collection_item_member = {
       field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
-      field_sort_order:{und:[{value:index+1}]},
       field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]}
     };
     if(!this.project.field_maker_memberships.und[index]){
       this.project.field_maker_memberships.und.push(member);
     }
-    control.valueChanges.subscribe(values => {
-      if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
-        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
-      }else{
-        this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
-      }
-      this.project.field_maker_memberships.und[values.field_sort_order - 1].field_sort_order.und[0].value = values.field_sort_order;
-    });
+    // control.valueChanges.subscribe(values => {
+    //   if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
+    //     this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
+    //   }else{
+    //     this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
+    //   }
+    // });
   }
   InitRow(ControlName,index,data?) {
     return this.fb.group({
-      'field_sort_order':[index,[CustomValidators.number, Validators.required, CustomValidators.min(1)]],
       'field_team_member': ['', Validators.required],
       'field_membership_role': [data && data.field_membership_role && data.field_membership_role.und? data.field_membership_role.und[0].value:'',
       Validators.maxLength(140)],
       'uid': [, Validators.required],
     });
-  }
-  
-  SortElements(ControlName){
-    const control = <FormArray>this.TeamForm.controls[ControlName];
-    var NewUsersDetails = [];
-    var NewProjectFieldTeam = [];
-    control.controls.forEach((element, index) => {
-      NewUsersDetails[index] = this.SelectedUser[index];
-      this.project.field_maker_memberships.und[index].field_sort_order.und[0].value = index + 1;
-      NewProjectFieldTeam.push(this.project.field_maker_memberships.und[index]);
-      element['controls']['field_sort_order'].patchValue(index + 1);
-    });
-    this.project.field_maker_memberships.und = NewProjectFieldTeam;
-    this.SelectedUser = NewUsersDetails;
   }
   onValueChanged(form, formErrors, validationMessages) {
     for (const field in formErrors) {
@@ -169,27 +151,6 @@ export class TeamComponent implements OnInit {
       }
     }
   }
-  ChangeOrder(CurrentIndex, NewIndex, ControlName){
-    let temp = this.SelectedUser[CurrentIndex];
-    this.SelectedUser[CurrentIndex] = this.SelectedUser[NewIndex];
-    this.SelectedUser[NewIndex]= temp;
-    const control = <FormArray>this.TeamForm.controls[ControlName];
-    let currentrow = control.at(CurrentIndex);
-    let newrow = control.at(NewIndex);
-    if(NodeHelper.IsEmail(control.value[CurrentIndex].field_team_member) && NodeHelper.IsEmail(control.value[NewIndex].field_team_member)){
-      let CurrentEmailIndex = this.InvitationEmails.mails.indexOf(control.value[CurrentIndex].field_team_member);
-      let NewEmailIndex = this.InvitationEmails.mails.indexOf(control.value[NewIndex].field_team_member);
-      this.InvitationEmails.mails[CurrentEmailIndex] = control.value[NewIndex].field_team_member;
-      this.InvitationEmails.mails[NewEmailIndex] = control.value[CurrentIndex].field_team_member;
-    }
-    control.setControl(CurrentIndex,newrow);
-    control.setControl(NewIndex,currentrow); 
-    let currentmember = this.project.field_maker_memberships.und[CurrentIndex];
-    let newmember = this.project.field_maker_memberships.und[NewIndex];
-    this.project.field_maker_memberships.und[CurrentIndex] = newmember;
-    this.project.field_maker_memberships.und[NewIndex] = currentmember;
-    this.SortElements(ControlName);
-  }
   RemoveRow(i: number,ControlName) {
     const control = <FormArray>this.TeamForm.controls[ControlName];
     let email = control.value[i].field_team_member;
@@ -200,10 +161,9 @@ export class TeamComponent implements OnInit {
     this.formErrors[ControlName].splice(i, 1);
     this.project[ControlName].und.splice(i, 1);
     this.SelectedUser.splice(i,1);
-    this.SortElements(ControlName);
   }
   GetErrorStructure(ControlName?) : Object {
-    return {'field_sort_order':'', 'field_team_member': '','uid': '','field_membership_role':''};
+    return {'field_team_member': '','uid': '','field_membership_role':''};
   }
   formErrors = {
     'field_maker_memberships': [],
@@ -215,11 +175,6 @@ export class TeamComponent implements OnInit {
     */
   validationMessages = {
     'field_maker_memberships': {
-      'field_sort_order':{
-        'number':'Sort order must be a number.',
-        'required':'Sort order is required',
-        'min':'Sort order must be at least 1.',
-      },
       'field_team_member':{
         'required':'Name is required',
         'email':'Email address is not valid',
