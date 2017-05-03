@@ -32,8 +32,8 @@
             <i class="lnr lnr-cog" aria-hidden="true"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
-            <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
+            <button class="btn btn-main btn-sharp new-message-switch" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
+            <button class="btn btn-main btn-sharp new-message-switch" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
           </div>
         </div>
       </section>
@@ -42,9 +42,9 @@
   </div>
   <div class="nav-create">
     <div class="container">
-      <app-inbox *ngIf="current_active_tab == 'messages'" class="row"></app-inbox>
-      <app-sent *ngIf="current_active_tab == 'sent'" class="row"></app-sent>
-      <notifications-list *ngIf="current_active_tab == 'notifications'" class="row"></notifications-list>
+      <app-inbox *ngIf="current_active_tab == 'messages'" ></app-inbox>
+      <app-sent *ngIf="current_active_tab == 'sent'" ></app-sent>
+      <notifications-list *ngIf="current_active_tab == 'notifications'"></notifications-list>
     </div>
   </div>
 </div>

@@ -26,18 +26,18 @@
               </a>
             </div>
             <div class="media-body" *ngIf="message.count>2">
-              <p class="sender" >You sent 
-                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more adirect message: 
-                <a (click)="viewMessage(message.thread_id)"> <h5>{{message.subject}}</h5></a>
-              </p>
+              <span class="sender">You sent 
+                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
+              </span>
+              <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
             </div>
             <div class="media-body" *ngIf="message.count<=2">
-              <p class="sender" >You sent 
+              <span class="sender">You sent 
                 <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
-                <a (click)="viewMessage(message.thread_id)"> <h5>{{message.subject}}</h5></a>
-              </p>
+              </span>
+              <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
             </div>
