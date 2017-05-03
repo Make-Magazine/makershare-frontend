@@ -216,8 +216,8 @@ export class ChallengeProjectComponent implements OnInit {
 
         this.tab = 'rules';
 
-        var rules = '<a (click)="changeTab()" >' + "Rules & Instructions" + '</a>';
-        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check " + rules + " for details", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+        var rules = '<a id="rules-id" data-nodeId='+this.nid+'>Rules & Instructions </a>';
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
         this.router.navigate(['/missions/' + this.nid]);
         this.tab = 'rules';
       });
