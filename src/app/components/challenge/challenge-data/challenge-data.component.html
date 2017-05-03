@@ -95,6 +95,7 @@
         <!-- End top-content-wrapper -->
         <div class="container">
           <div class="region region-content col-sm-12 row">
+            <div id="rules-route" hidden  (click)="changeChallangeTab('rules',$event)"></div>
             <div class="tabs-buttons col-md-4">
               <ul class="list-unstyled challenge-submenu">
                 <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
@@ -102,9 +103,7 @@
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
                     (click)="changeChallangeTab('discussion',$event)">Questions</a></li>
                 <li *ngIf="no_of_followers>0"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}"
-                    (click)="changeChallangeTab('followers',$event)">Followers  <span class="badge">{{no_of_followers}}
-                   
-                            </span></a></li>
+                    (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>
             <div class="challenge-details col-md-8 pt-2">
