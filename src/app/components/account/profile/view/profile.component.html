@@ -326,7 +326,7 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
-										 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 										<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
 							</small>
@@ -336,17 +336,6 @@
 										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="{{CountryFieldsAndDetails.locality_label}}"
 										 [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control"
 										 id="city" (change)="ProfileInfo.address.city = $event.target.value">
-									</div>
-
-									<div class="col-md-4 col-xs-12">
-										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>-->
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && !profile.address.postcode && !profile.address.zip_code"
-										 placeholder="{{CountryFieldsAndDetails.postal_code_label}}" [ngModel]="profile.address.postal_code" type="text"
-										 class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
-										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode"
-										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
 									</div>
 								</div>
 							</div>
@@ -397,7 +386,7 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}" class="char-left">{{400 - formGroup.value.bio.length}} char left</span>
+										<span [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio.length}} char left</span>
 									</div>
 								</div>
 							</div>
@@ -544,7 +533,7 @@
 									</div>
 								</div>
 							</div>
-							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
+									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 						</div>
 
 					</div>
