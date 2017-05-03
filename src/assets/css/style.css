@@ -7807,7 +7807,6 @@ img {
       .page-inbox .inbox-header > ul li .btn {
         border-bottom: 0; }
       .page-inbox .inbox-header > ul li .active {
-        background-color: #fff;
         color: #333333; }
   .page-inbox .inbox-header span {
     line-height: 1em;
@@ -7816,8 +7815,7 @@ img {
   padding-top: 20px;
   padding-bottom: 40px; }
 .page-inbox .inbox-container, .page-inbox .notification-container {
-  padding: 20px 0;
-  margin-bottom: 10px; }
+  padding: 10px 0; }
   .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
     padding: 5px 10px;
     margin: 0; }
@@ -7838,6 +7836,8 @@ img {
       color: #00AEEF;
       font-size: 1.3em;
       padding-bottom: 7px; }
+      .page-inbox .inbox-container .inbox-controls .new-message:hover, .page-inbox .notification-container .inbox-controls .new-message:hover {
+        cursor: pointer; }
       .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
         padding-right: 10px;
         font-size: 1.6em; }
