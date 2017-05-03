@@ -6,20 +6,20 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
-				<div class="col-12 col-md-6 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+				<div class="col-12 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
 					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
-						<!--<a class="profile-share">
+						<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-						</a>-->
+						</a>
 					</div>
-					<div class="nav-portfolio ml-auto">
+					<div class="nav-portfolio ml-auto hidden-sm-down">
 						<div class="display-style d-flex">
 							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
 							<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex flex-row">
+				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -39,28 +39,25 @@
 				</div>
 			</div>
 			<div class="row body-content">
+				<div class="profile-overlay"></div>
 				<div class="left-section col-lg-4 col-md-6">
 					<div class="profile-sidebar">
-						<div class=" profile-container" [class.myprofile]="CurrentLoggedUserId == uid">
+						<div class="profile-container" [class.myprofile]="CurrentLoggedUserId == uid">
 							<div class="container-override">
 								<div class="image-container">
 									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
 									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
 								</div>
-								<div *ngIf="CurrentLoggedUserId != uid" class="profile-message">
-									<app-message-modal [uid]="uid"></app-message-modal>
-								</div>
+									<app-message-modal *ngIf="CurrentLoggedUserId != uid" class="profile-message" [uid]="uid"></app-message-modal>
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
-
 									<!-- Start Profiel Pic -->
 									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
 										<div *ngIf="CurrentLoggedUserId==uid">
 											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
-
 								</div>
 							</div>
 							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
@@ -71,7 +68,7 @@
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div>
+								<div class="userInfo">
 									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
@@ -86,10 +83,14 @@
 										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 1">Unpublish</div>
 										<div (click)="ProfileInfo.address_publish = 1;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 0">Publish</div>
 									</div>
+									<span class="toggleProfile" (click)="ToggleProfile()">
+										<i class="lnr lnr lnr-chevron-down open"></i>
+										<i class="lnr lnr lnr-cross close"></i>
+									</span>
 								</div>
-								<hr>
+								<hr class="hideData">
 								<!-- describe yourself-->
-								<ul class="list-unstyled post">
+								<ul class="list-unstyled post hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
@@ -98,7 +99,7 @@
 									<li *ngIf="ProfileInfo.describe_yourself != '' " class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
 									<li *ngIf="ProfileInfo.describe_yourself == '' " class="profile-describe-yourself" class="placeholder-text">{{PlaceholderText.describe_yourself}}</li>
 								</ul>
-								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post">
+								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Personal Info')" class="btn btn-white add ">
@@ -108,9 +109,9 @@
 									</div>
 								</ul>
 								<!-- describe yourself-->
-								<hr>
+								<hr class="hideData">
 								<!-- start Badges-->
-								<div class="icons" *ngIf="badges !=''">
+								<div class="icons hideData" *ngIf="badges !=''">
 									<!--<p class="global-title">Badges</p>-->
 									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
@@ -120,7 +121,7 @@
 								</div>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div class="bio">
+								<div class="bio hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
@@ -135,7 +136,7 @@
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
-								<div *ngIf="ProfileInfo.field_social_accounts">
+								<div *ngIf="ProfileInfo.field_social_accounts" class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">Social</p>
 									<div class="social-links d-flex flex-wrap">
@@ -187,27 +188,29 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div *ngIf="!ProfileInfo.field_social_accounts">
+								<div *ngIf="!ProfileInfo.field_social_accounts" class="hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 									</div>
 								</div>
-								<hr>
-								<ul class="list-unstyled makerspaces">
+								<hr class="hideData">
+								<ul class="list-unstyled makerspaces hideData">
 									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="global-title">Makersapces</p>
-									<li *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
-										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
-										<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
-									</li>
+									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makersapces</p>
+									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
+										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
+											<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
+											<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
+										</div>
+									</span>
 								</ul>
-								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces hideData">
 									<p *ngIf="CurrentLoggedUserId == uid" class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
-								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''">
-								<div>
+								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
+								<div class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title"> Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
@@ -222,29 +225,29 @@
 										</div>
 									</div>
 								</div>
-								<hr>
-								<div class="how">
+								<hr class="hideData">
+								<div class="how hideData">
 									<!-- Start How -->
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">My Maker Moment</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
-								<hr>
-								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-								<p class="global-title">Favorite Topics</p>
+								<hr class="hideData">
+								<a  *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
+								<p class="hideData global-title">Favorite Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
-								 class="placeholder-text">{{PlaceholderText.interests}}</p>
+								 class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
 								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
 								</tag-input>-->
-								<p class="topic-tags">
+								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
 										<i *ngIf="i-1 > -1">,</i> {{interest.name}}
 									</span>
 								</p>
 								<!--<a class="report">Report this user</a>-->
-								<div *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
+								<div class="hideData" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<hr>
 									<app-report-user [userReportId]="uid"></app-report-user>
 								</div>
@@ -255,8 +258,27 @@
 						<!-- End sidebar-left -->
 					</div>
 				</div>
-				<div class="right-section col-lg-8 col-md-8">
+				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
+
+				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-md-up">
+					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+						<li *ngIf="ProjectsCount">
+							<p><span class="number">{{ProjectsCount}}</span> projects</p>
+						</li>
+						<li *ngIf="profile.total_likes != 0">
+							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
+						</li>
+						<li>
+							<p><span class="number">{{profile.views_count}}</span> views</p>
+						</li>
+						<!-- Start Bookmsrk-section -->
+						<!--<li>
+							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
+						</li>-->
+					</ul>
+					<!-- End Bookmark-section -->
+				</div>
 					<div class="profile-name profile-stats">
 						<div class="profile-content">
 							<div class="row">
@@ -409,7 +431,9 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<span [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio.length}} char left</span>
+										 <div *ngIf="this.ProfileInfo.bio">
+											<span *ngIf="this.ProfileInfo.bio.length > -1" [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio?.length}} char left</span>
+										 </div>
 									</div>
 								</div>
 							</div>

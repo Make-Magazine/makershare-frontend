@@ -167,13 +167,16 @@
         margin-bottom: 20px;
         position: relative;
         @include boxShadow(2px, 2px ,8px, $shade-3);
+        &.indexProfile {
+            z-index: 9999;
+            @include boxShadow(0, 0 ,0, $shade-3);        
+        }
         .container-override {
             margin-left: -15px;
             margin-right: -15px;
             .profile-message {
                 display: block;
                 width: 100%;
-                padding: 10px;
                 font-size: 1.2em;
             }
         }
@@ -246,6 +249,9 @@
         .profile-info {
             margin-top: 16px;
             font-size: 18px;
+            .userInfo {
+                position: relative;
+            }
             .profile-fullname {
                 @include card-header-font-sm ();
                 color:$blue;
@@ -2337,6 +2343,43 @@ button {
             width: 120px;
             padding: 12px;
             background-color: #fff !important;
+        }
+    }
+}
+.profile-overlay {
+    position: fixed;
+    z-index: 1000;
+    background: rgba(25,25,25,0.9);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.hideData {
+    display: block;
+}
+.showData {
+    display: block !important;    
+}
+.toggleProfile {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid $blue;
+    display: none;
+    i {
+        padding: 7px;
+        color: $blue;
+        font-size: 1.2em;
+        width: auto !important;
+        &.close {
+            display: none;
+        }
+        &.open {
+            display: block;
         }
     }
 }

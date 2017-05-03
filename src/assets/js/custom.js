@@ -139,6 +139,17 @@ $(document).ready(function () {
 		$('#search-box-input').focus();
 	})
 	
+	// Toggle profile sidebar view
+	$(document).on('click','.toggleProfile', function(){
+		$(this).children().toggle();
+		$('.hideData').toggle();
+		$('.profile-overlay').toggle();
+		if($('.profile-container').hasClass('indexProfile')){
+				$('.profile-container').removeClass('indexProfile')
+		} else {
+				$('.profile-container').addClass('indexProfile')
+		}
+	})
 	//Index page parallax bg
 	window_width = $(window).width();
 	window_height = $(window).height();

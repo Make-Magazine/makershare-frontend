@@ -60,7 +60,7 @@
 
 
 
-<div *ngIf="project && view == 'grid' || front">
+<div *ngIf="project && (view == 'grid' || front || smallWindow < 992)">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -119,7 +119,7 @@
 
 
 <!--Project with larg view-->
-<div *ngIf="project && view != 'grid' && !front">
+<div *ngIf="project && view != 'grid' && !front && smallWindow > 992">
   <div class="project card lg-card">
     <div class="image-top-lg">
       <div class="overlay" (click)="ShowProjectDetails(project.nid)"></div>
