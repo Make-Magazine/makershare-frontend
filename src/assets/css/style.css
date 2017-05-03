@@ -1620,12 +1620,11 @@ footer {
     padding-left: 10px;
     border-left: 1px solid #4f4f4f; }
   footer .copy .first-logo {
-    width: 100px;
-    height: 75px;
-    max-width: 100px; }
+    width: 80px;
+    max-width: 80px; }
   footer .copy .second-logo {
-    width: 170px;
-    max-width: 170px; }
+    width: 140px;
+    max-width: 140px; }
   footer .copy p {
     margin: 0;
     font-size: 12px;
