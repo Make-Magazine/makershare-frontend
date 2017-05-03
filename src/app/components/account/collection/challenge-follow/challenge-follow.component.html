@@ -22,7 +22,7 @@
         <!--</div>-->
         <td [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive"></td>
         <td [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge.challenge_name"><span>{{challenge.challenge_name}}</span></td>
-        <!--<td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>-->
+        <td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>
       </tr>
     </tbody>
   </table>
