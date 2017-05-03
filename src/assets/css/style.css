@@ -1902,14 +1902,87 @@ footer {
   padding: 15px;
   margin-bottom: 20px; }
   .bookmark-page .content-wrapper td {
-    border-top: 1px solid #dcdcdc; }
+    border-top: none !important;
+    width: 50%;
+    font-family: "Messina Modern Regular";
+    font-size: 1.3em;
+    font-weight: 500;
+    text-transform: none;
+    line-height: 120%;
+    color: #828282; }
     .bookmark-page .content-wrapper td img:hover, .bookmark-page .content-wrapper td span:hover {
       cursor: pointer; }
   .bookmark-page .content-wrapper th {
-    border-top: 1px solid #dcdcdc; }
+    border-top: none !important;
+    border-bottom: none !important;
+    width: 50%;
+    font-family: "Messina Modern Regular";
+    font-size: 1.3em;
+    font-weight: 500;
+    text-transform: none;
+    line-height: 120%;
+    color: #828282;
+    color: #333333 !important; }
+  .bookmark-page .content-wrapper tr {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD;
+    background-color: white;
+    margin: 10px 0; }
+    .bookmark-page .content-wrapper tr:hover {
+      -moz-box-shadow: 2px 2px 8px #aaaaaa;
+      -webkit-box-shadow: 2px 2px 8px #aaaaaa;
+      box-shadow: 2px 2px 8px #aaaaaa; }
   .bookmark-page .content-wrapper .msgs-bookamrk {
     margin-top: 20px;
     padding-left: 20px; }
+  .bookmark-page .content-wrapper .bookmark-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD;
+    background-color: white;
+    margin: 10px 0; }
+    .bookmark-page .content-wrapper .bookmark-item:hover {
+      -moz-box-shadow: 2px 2px 8px #aaaaaa;
+      -webkit-box-shadow: 2px 2px 8px #aaaaaa;
+      box-shadow: 2px 2px 8px #aaaaaa; }
+    .bookmark-page .content-wrapper .bookmark-item .media-left {
+      width: 80px;
+      height: 80px;
+      margin-right: 10px; }
+      .bookmark-page .content-wrapper .bookmark-item .media-left img {
+        width: 100%;
+        height: auto; }
+        .bookmark-page .content-wrapper .bookmark-item .media-left img:hover {
+          cursor: pointer; }
+    .bookmark-page .content-wrapper .bookmark-item .media-body {
+      padding: 6px; }
+      .bookmark-page .content-wrapper .bookmark-item .media-body .title {
+        font-family: "Messina Modern Regular";
+        font-size: 1.3em;
+        font-weight: 500;
+        text-transform: none;
+        line-height: 120%;
+        color: #828282; }
+        .bookmark-page .content-wrapper .bookmark-item .media-body .title:hover {
+          cursor: pointer; }
+    .bookmark-page .content-wrapper .bookmark-item .media-right .delete {
+      padding: 10px; }
+      .bookmark-page .content-wrapper .bookmark-item .media-right .delete a {
+        overflow: hidden;
+        color: #333333;
+        position: relative;
+        font-size: 1.5em; }
 
 /*  Start Styling Homepage   */
 /* End of Showcase */
@@ -4845,7 +4918,6 @@ button:hover {
         background-color: #333333;
         color: #fff; }
     .page-project .top-content-wrapper .project-aside {
-      overflow: hidden;
       margin-bottom: -1px; }
       .page-project .top-content-wrapper .project-aside li {
         float: left; }
@@ -5109,6 +5181,8 @@ button:hover {
         margin: 0px; }
   .page-project .project-collaborates .card {
     border: none; }
+    .page-project .project-collaborates .card:hover {
+      cursor: pointer; }
     .page-project .project-collaborates .card .user-card {
       padding: 8px; }
   .page-project .project-awards {
@@ -5251,7 +5325,7 @@ header.showcase-project .next {
   .feedback-group .feedback-card {
     padding: 10px;
     background: white;
-    word-break: break-all;
+    word-wrap: break-word;
     margin-bottom: 4px; }
     .feedback-group .feedback-card .user-info {
       padding: 4px 0px 0px 0px; }
@@ -5436,12 +5510,7 @@ header.showcase-project .next {
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
-        color: #828282;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-height: 197px; }
+        color: #828282; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -5452,11 +5521,14 @@ header.showcase-project .next {
         line-height: 130%;
         color: #828282;
         margin-bottom: 10px;
-        word-break: break-all; }
+        word-wrap: break-word; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
         font-size: 13px;
         margin-bottom: 2px; }
+      .page-project .projectsingle-card .right-side .card-container .topics {
+        height: 100%;
+        padding-bottom: 18px; }
       .page-project .projectsingle-card .right-side .card-container .card-tags {
         color: #ED1C24;
         font-size: 14px;
@@ -7861,37 +7933,37 @@ img {
 .page-inbox .inbox-title {
   padding-top: 20px;
   padding-bottom: 40px; }
-.page-inbox .inbox-container, .page-inbox .notification-container {
+.page-inbox .inbox-container {
   padding: 10px 0; }
-  .page-inbox .inbox-container .inbox-controls, .page-inbox .notification-container .inbox-controls {
+  .page-inbox .inbox-container .inbox-controls {
     padding: 5px 10px;
     margin: 0; }
-    .page-inbox .inbox-container .inbox-controls .dropdown-toggle::after, .page-inbox .notification-container .inbox-controls .dropdown-toggle::after {
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle::after {
       display: none; }
-    .page-inbox .inbox-container .inbox-controls .dropdown-toggle i, .page-inbox .notification-container .inbox-controls .dropdown-toggle i {
+    .page-inbox .inbox-container .inbox-controls .dropdown-toggle i {
       font-size: 1.5em; }
-    .page-inbox .inbox-container .inbox-controls .selectall, .page-inbox .notification-container .inbox-controls .selectall {
+    .page-inbox .inbox-container .inbox-controls .selectall {
       display: inline-block; }
-    .page-inbox .inbox-container .inbox-controls .delete, .page-inbox .notification-container .inbox-controls .delete {
+    .page-inbox .inbox-container .inbox-controls .delete {
       display: inline-block; }
-    .page-inbox .inbox-container .inbox-controls .blocked-users, .page-inbox .notification-container .inbox-controls .blocked-users {
+    .page-inbox .inbox-container .inbox-controls .blocked-users {
       font-size: 1em;
       height: 35px;
       color: #4F4F4F; }
-    .page-inbox .inbox-container .inbox-controls .new-message, .page-inbox .notification-container .inbox-controls .new-message {
+    .page-inbox .inbox-container .inbox-controls .new-message {
       margin-right: 23px;
       color: #00AEEF;
       font-size: 1.3em;
       padding-bottom: 7px; }
-      .page-inbox .inbox-container .inbox-controls .new-message:hover, .page-inbox .notification-container .inbox-controls .new-message:hover {
+      .page-inbox .inbox-container .inbox-controls .new-message:hover {
         cursor: pointer; }
-      .page-inbox .inbox-container .inbox-controls .new-message i, .page-inbox .notification-container .inbox-controls .new-message i {
+      .page-inbox .inbox-container .inbox-controls .new-message i {
         padding-right: 10px;
         font-size: 1.6em; }
-      .page-inbox .inbox-container .inbox-controls .new-message p, .page-inbox .notification-container .inbox-controls .new-message p {
+      .page-inbox .inbox-container .inbox-controls .new-message p {
         display: inline-block;
         margin-bottom: 0; }
-  .page-inbox .inbox-container .load-more, .page-inbox .notification-container .load-more {
+  .page-inbox .inbox-container .load-more {
     width: 150px;
     margin: 20px auto;
     font-size: 10px; }
@@ -7930,17 +8002,32 @@ img {
           height: auto; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .sender {
         margin-bottom: 0; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .sender a {
+          color: #00AEEF; }
+          .page-inbox .inbox-container .messages-list .message-item .wrapper .sender a:hover {
+            text-decoration: none !important; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
-        width: 40%; }
+        width: 92%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
-          width: 60px; }
+          width: 80px;
+          height: auto; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a {
-          color: #00AEEF;
-          text-decoration: none; }
+          text-decoration: none;
+          color: #00AEEF; }
+          .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info a:hover {
+            text-decoration: none !important; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
-        cursor: pointer; }
+        cursor: pointer;
+        font-family: "Messina Modern Regular";
+        font-size: 1.3em;
+        font-weight: 500;
+        text-transform: none;
+        line-height: 120%;
+        color: #828282; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
         width: 20%; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper p {
+        margin: 0px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete {
         margin-left: auto;
         margin-right: 25px; }
@@ -7948,45 +8035,12 @@ img {
         overflow: hidden;
         color: #333333;
         position: relative;
-        font-size: 2.2em; }
+        font-size: 1.5em; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
           float: right; }
-      .page-inbox .inbox-container .messages-list .message-item .wrapper:hover {
-        background-color: #BDBDBD; }
     .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
       border-top: 0; }
     .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
-      background-color: #aaaaaa; }
-.page-inbox .notification-container .notification-list {
-  padding: 0 0 20px;
-  margin: 0 0 10px; }
-  .page-inbox .notification-container .notification-list .notification-item {
-    display: flex;
-    align-items: center;
-    margin: 0 5px;
-    padding: 0 5px; }
-    .page-inbox .notification-container .notification-list .notification-item .select {
-      width: 3%; }
-    .page-inbox .notification-container .notification-list .notification-item .wrapper {
-      border: 1px solid #333333;
-      width: 95%;
-      overflow: hidden;
-      padding: 5px 10px; }
-      .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info {
-        width: 85%; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .notification-info img {
-          width: 60px; }
-      .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification {
-        overflow: hidden;
-        color: #333333;
-        position: relative; }
-        .page-inbox .notification-container .notification-list .notification-item .wrapper .delete-notification i {
-          float: right; }
-      .page-inbox .notification-container .notification-list .notification-item .wrapper:hover {
-        background-color: #BDBDBD; }
-    .page-inbox .notification-container .notification-list .notification-item:not(:first-of-type) .wrapper {
-      border-top: 0; }
-    .page-inbox .notification-container .notification-list .notification-item.read .wrapper {
       background-color: #aaaaaa; }
 
 .conversation-container {
@@ -8028,6 +8082,77 @@ img {
     margin-top: 15px; }
     .conversation-container .reply-area .send-actions li {
       display: inline-block; }
+
+/* notification page */
+.notifications-list-page .notification-container .notification-item {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  padding: 0 5px; }
+  .notifications-list-page .notification-container .notification-item .inner-text {
+    overflow: hidden;
+    padding: 10px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD;
+    background-color: white;
+    margin: 10px 0;
+    width: 100%; }
+    .notifications-list-page .notification-container .notification-item .inner-text .link {
+      color: #00AEEF; }
+      .notifications-list-page .notification-container .notification-item .inner-text .link:hover {
+        color: #00AEEF !important;
+        text-decoration: none !important; }
+    .notifications-list-page .notification-container .notification-item .inner-text .notf-date {
+      font-family: "Messina Sans Regular";
+      font-size: 0.9em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282; }
+
+/* create new message */
+.create-newmsg {
+  background-color: #F2F2F2; }
+  .create-newmsg label {
+    color: #ED1C24;
+    margin: 0px; }
+  .create-newmsg textarea {
+    border: 1px solid #DCDCDC;
+    color: #4F4F4F;
+    resize: inherit; }
+  .create-newmsg input {
+    border: 1px solid #DCDCDC;
+    color: #4F4F4F;
+    padding: 12px; }
+    .create-newmsg input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-newmsg input::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-newmsg input:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-newmsg input:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      color: #DCDCDC; }
+  .create-newmsg .modal-header {
+    border-bottom: none !important;
+    padding: 14px; }
+    .create-newmsg .modal-header .close:focus, .create-newmsg .modal-header .close:hover {
+      outline: none !important; }
+  .create-newmsg .modal-footer {
+    border-top: none !important;
+    padding: 32px; }
+    .create-newmsg .modal-footer button {
+      width: 120px;
+      padding: 12px;
+      background-color: #fff !important; }
 
 .challenge-entered {
   margin: 10px;
