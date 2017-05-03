@@ -19,7 +19,6 @@
 					border-bottom: 0;
 				}
 				.active {
-					background-color: #fff;
 					color: $main-grey;
 				}
 			}
@@ -36,8 +35,7 @@
 			//width: 200px;
 		}
 	.inbox-container ,.notification-container{
-		padding: 20px 0;
-		margin-bottom: 10px;
+		padding: 10px 0;
 		.inbox-controls {
 			padding: 5px 10px;
 			margin: 0;
@@ -65,6 +63,9 @@
 				color:$blue;
 				font-size: 1.3em;
 				padding-bottom: 7px;
+				&:hover {
+					cursor: pointer;
+				}
 				i {
 					padding-right: 10px;
 					font-size: 1.6em;
