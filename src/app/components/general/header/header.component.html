@@ -8,8 +8,9 @@
     <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
       <ul class="list-unstyled login-block">
         <li *ngIf="!auth.authenticated()"><a (click)="auth.login()">Join / Log in</a></li>
-        <li *ngIf="auth.authenticated()"><app-notification-panel></app-notification-panel>
-          </li>
+        <li *ngIf="auth.authenticated()">
+          <app-notification-panel></app-notification-panel>
+        </li>
         <li class="min-user-img" *ngIf="auth.authenticated()">
           <div ngbDropdown class="d-inline-block account-controls dropdown">
             <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
@@ -76,8 +77,13 @@
         <li class="nav-item hidden-md-up">
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
         </li>
-        <li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
+        <!--<li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>-->
       </ul>
+    </div>
+    <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
+      <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']">
+        <i class="fa fa-lg fa-plus"></i> Add a Project
+      </a>
     </div>
   </nav>
 

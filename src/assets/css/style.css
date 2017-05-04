@@ -202,6 +202,8 @@ header nav {
   header nav .hamburger-menu .dropdown-menu {
     top: -10px;
     position: fixed; }
+  header nav .project-button {
+    margin-left: 10px; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -640,7 +642,9 @@ a:not([href]):not([tabindex]).btn-vote {
 .btn-load-more,
 a:not([href]):not([tabindex]).btn-load-more {
   background-color: #F2F2F2;
-  border: 1px solid #828282; }
+  border: 1px solid #828282;
+  color: #4F4F4F;
+  margin-bottom: 30px; }
 
 .btn-grey, a:not([href]):not([tabindex]).btn-grey {
   color: #4F4F4F;
@@ -1614,8 +1618,8 @@ footer {
       color: #00AEEF;
       font-size: 10px;
       position: absolute;
-      bottom: -12px;
-      right: 6px; }
+      bottom: 0px;
+      right: 4px; }
   footer .copy .second-logo-link {
     padding-left: 10px;
     border-left: 1px solid #4f4f4f; }
@@ -2451,6 +2455,8 @@ footer {
           margin-top: 5px; }
       .profile-sidebar .profile-container .profile-info .how p {
         margin-top: 20px; }
+    .profile-sidebar .profile-container .report-div .report {
+      line-height: 40px; }
   .profile-sidebar .topic-tags {
     color: #828282; }
   .profile-sidebar .report {
