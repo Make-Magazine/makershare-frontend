@@ -7,11 +7,6 @@
 			<!-- Start sidebar-left -->
 			<div class="row">
 				<div class="col-12 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
-					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
-						<a class="profile-share">
-							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-						</a>
-					</div>
 					<div class="nav-portfolio ml-auto hidden-sm-down">
 						<div class="display-style d-flex">
 							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
@@ -19,7 +14,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
+				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
+					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
+						<a class="profile-share">
+							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+						</a>
+					</div>
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
