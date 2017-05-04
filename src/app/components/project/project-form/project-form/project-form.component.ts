@@ -564,7 +564,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         tab = 'private';
       } else {
         // save is public
-        this.notificationBarService.create({ message: 'Your project has been created.', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your project has been created.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
         if (this.missionRedirection.includes("/missions/enter-mission/")) {
           let navigationExtras: NavigationExtras = {
             queryParams: { 'projectId': "newproject" },
