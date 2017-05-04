@@ -407,11 +407,11 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       // 'video': this.show_video
     },
     'aha': {
-      'title': 'AHA Moment:',
+      'title': 'AHA! Moment:',
       'guide': 'A moment of epiphany that really stands out to you.'
     },
     'uh': {
-      'title': 'OH-OH Moment:',
+      'title': 'Uh-Oh! Moment:',
       'guide': 'Where there any moments that caught you off gaurd, or caused you to mutter about the unfairness of it all?'
     },
     'tags': {
