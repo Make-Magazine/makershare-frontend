@@ -124,8 +124,9 @@
       <div class="row">
         <div *ngIf="Difficulties" class="form-group difficulties col-md-6">
           <label for="">Difficulty</label>
-          <select *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="form-control col-md-6" title="Select one" formControlName='field_difficulty'>
-            <option value="_none">Choose one</option>
+          <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_difficulty.value == '_none'"></i>
+          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="form-control col-lg-8" title="Select one" formControlName='field_difficulty'>
+            <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Difficulty of Difficulties; let i=index" value="{{Difficulty.tid}}" >{{Difficulty.name}}</option>
           </select>
           <div *ngIf="HowToForm.controls.field_difficulty.value != '_none'">
@@ -139,8 +140,9 @@
         </div>
         <div *ngIf="Durations" class="form-group durations col-md-6">
           <label for="">Duration</label>
-          <select *ngIf="HowToForm.controls.field_duration.value == '_none'" class="form-control col-md-6" title="Select one" formControlName='field_duration'>
-            <option value="_none">Choose one</option>
+          <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_duration.value == '_none'"></i>
+          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="form-control col-lg-8" title="Select one" formControlName='field_duration'>
+            <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Duration of Durations; let i=index" value="{{Duration.tid}}" >{{Duration.name}}</option>
           </select>
           <div *ngIf="HowToForm.controls.field_duration.value != '_none'">

@@ -389,6 +389,31 @@
 			margin-right: 5%;display: inline-block;
 		}
 		.duration {width: 45%;display: inline-block;}
+		.difficulties ,
+		.durations	{
+			i.dropdownIcon {
+							position: absolute;
+							bottom: 15px;
+							z-index: 6;
+							right: 40%;
+							pointer-events: none;
+					}
+		}
+		#difficulty ,
+		#duration {
+					
+					position: relative;	
+					width: 100% !important;
+					margin-bottom: 5px;
+					padding: 5px 10px;
+					border: none;
+					border-radius:0;
+					font-size: 1em;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					@include boxShadow(2px, 2px, 8px,$light-grey);
+
+		}
 		.resources {
 			input[type="file"] {display: none;}
 			select {width: 40%;}

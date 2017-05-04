@@ -99,6 +99,16 @@
             }
         } 
     } 
+    .page-create-project-why {
+        .how-to {
+            .difficulties ,
+            .durations  {
+                i.dropdownIcon {
+                    right: 30px;
+                }
+            }
+        } 
+    }
 }
 
 @media (max-width: 767px) {
@@ -474,6 +484,25 @@
               }
               .btn {
                   padding: 0 5px;
+              }
+          }
+          &.shrink {
+            nav.navbar {
+                #MainNav {
+                    .nav-item 
+                    a {
+                        font-size: 1.1em;
+                    }
+                }
+            }
+          }
+     }
+     header.main-header.shrink 
+     .navbar-toggleable-sm {
+          .navbar-nav {
+              .nav-link {
+                    padding-right: 0.2rem;
+                    padding-left: 0.2rem;
               }
           }
      }
