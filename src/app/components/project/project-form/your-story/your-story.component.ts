@@ -175,6 +175,9 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.meta.setTitle(`Maker Share | Create Project`);
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', ' Create Project Create Project Create Project Create Project Create Project Create Project ');
+    setTimeout(function(){
+       $("html,body").animate({scrollTop: 0}, "slow");
+    }, 0);
   }
 
   /**
