@@ -61,7 +61,7 @@ export class LearnUserCardComponent implements OnInit {
 
     }, err => {
       // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
     });
   }
 

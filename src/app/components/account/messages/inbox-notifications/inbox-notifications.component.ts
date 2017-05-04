@@ -120,7 +120,7 @@ export class InboxNotificationsComponent implements OnInit {
       }
         this.messageForm.reset();
         this.SelectedUser = [];
-        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
+        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       }, err => {
         this.loaderService.display(false);
         this.notificationBarService.create({ message: 'Your message cannot be delivered ' + full_name + 'is not accepting messages from your account' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });
@@ -218,7 +218,7 @@ export class InboxNotificationsComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
       this.hideTurnOn = true;
-      this.notificationBarService.create({ message: 'You have turned off messaging; only community managers can message you. You can always turn it back on here.', type: NotificationType.Success });
+      this.notificationBarService.create({ message: 'You have turned off messaging; only community managers can message you. You can always turn it back on here.', type: NotificationType.Success , allowClose: true, autoHide: false, hideOnHover: false});
       this.loaderService.display(false);
     })
   }
@@ -230,7 +230,7 @@ export class InboxNotificationsComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
       this.hideTurnOn = false;
-      this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
+      this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       this.loaderService.display(false);
     })
   }

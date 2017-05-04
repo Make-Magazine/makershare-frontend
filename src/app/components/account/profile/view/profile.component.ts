@@ -358,7 +358,6 @@ export class ProfileComponent implements OnInit {
     }
     this.ProfileInfo.field_add_your_makerspace_s_ = user.field_add_your_makerspace_s_;
     this.ProfileInfo.maker_interests = user.maker_interests;
-    console.log(this.ProfileInfo.maker_interests)
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
     this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
@@ -366,7 +365,6 @@ export class ProfileComponent implements OnInit {
     this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();
     this.buildFormSocial();
-    console.log(this.ProfileInfo)
   }
   ToggleProfile() {
     this.mobileToggle = !this.mobileToggle;

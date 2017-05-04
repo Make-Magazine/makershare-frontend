@@ -590,6 +590,7 @@ ngb-typeahead-window {
         padding-top: 10px !important;
         .message {
             margin-top: 10px;
+            color: #fff !important;
         }
         .close-click {
             position: absolute;
@@ -602,7 +603,7 @@ ngb-typeahead-window {
             }
         }
     }
-    .error {
+    .error ,.warning{
         background-color: $shade-4 !important;
         border-bottom: 1px solid $shade-4 !important;
         height: 45px !important;
@@ -611,6 +612,7 @@ ngb-typeahead-window {
         padding-top: 10px !important;
         .message {
             margin-top: 10px;
+            color: #fff !important;
         }  
         .close-click {
             position: absolute;

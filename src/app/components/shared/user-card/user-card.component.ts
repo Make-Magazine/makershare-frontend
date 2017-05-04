@@ -65,7 +65,7 @@ export class UserCardComponent implements OnInit {
       this.isCurrentUser();
     }, err => {
       // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
     });
   }
   getBadges() {
@@ -74,7 +74,7 @@ export class UserCardComponent implements OnInit {
       this.badges = data;
     }, err => {
       // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
     });
   }
   getProjectCountByUser() {
@@ -83,7 +83,7 @@ export class UserCardComponent implements OnInit {
       this.projectCount = data[0];
     }, err => {
       // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
     });
   }
   onSubmit(e) {
