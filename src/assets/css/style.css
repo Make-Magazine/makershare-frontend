@@ -5343,7 +5343,13 @@ header.showcase-project .next {
           font-size: 4px;
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .user-nickname {
-          font-weight: bold; }
+          font-family: "Messina Sans Regular";
+          font-size: 0.9em;
+          font-weight: 400;
+          text-transform: none;
+          line-height: 130%;
+          color: #828282;
+          color: #4F4F4F; }
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
