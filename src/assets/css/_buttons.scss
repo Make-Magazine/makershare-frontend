@@ -75,6 +75,7 @@ a:not([href]):not([tabindex]).btn-main{
         color: #fff;
         background-color: $main-button-1*0.8;
         border-color: $main-button-1*0.8;
+        box-shadow: none !important;
     }
 
     &:active, &:hover {
