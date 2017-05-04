@@ -94,8 +94,12 @@
                   <p *ngIf="enterStatus==true">Select an existing project from your portfolio.</p>
                   <form>
                     <div class="form-group" *ngIf="enterStatus==true">
-                      <select class="form-control" #item (change)="updateSelectedProject($event)">
-                      <option [value]="none" disabled>Select a project</option>
+                      <select *ngIf="createProject=='newproject'" class="form-control" #item (change)="updateSelectedProject($event)">
+                    
+                      <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
+                     </select>
+                       <select *ngIf="createProject === 'undefined'" class="form-control" #item (change)="updateSelectedProject($event)">
+                    <option   [value]="none" disabled>Select a project</option>
                       <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
                      </select>
                     </div>
