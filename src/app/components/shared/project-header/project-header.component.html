@@ -25,7 +25,7 @@
           <li ngbTooltip="{{toolTips.share}}"> 
             <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
           </li>
-          <li ngbTooltip="{{toolTips.like}}"> 
+          <li> 
             <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
           </li>
           <li class="project-views">

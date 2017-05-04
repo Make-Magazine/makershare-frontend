@@ -733,4 +733,17 @@ ngb-typeahead-window {
         }
     }
 }
-
+.disabled {
+    color: rgba(0,0,0,.3);
+}
+.coming-soon {
+    position: relative;
+    .coming-soon-text {
+        position: absolute;
+        font-size: 0.5em;
+        color: $red;
+        right: 0;
+        bottom: -8px;
+        text-transform: uppercase;
+    }
+}

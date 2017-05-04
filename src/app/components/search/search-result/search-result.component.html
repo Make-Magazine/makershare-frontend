@@ -26,7 +26,7 @@
             </div>
           </div>
         </div>
-        <div class="checkboxe-filters col-md-8">
+        <div class="checkbox-filters col-md-8">
           <label class="pull-left p-2 m-1">Filter:</label>
           <div class="filter pull-left p-2 m-1">
             <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Projects</span>
@@ -37,8 +37,8 @@
           <div class="filter pull-left p-2 m-1">
             <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Missions</span>
           </div>
-          <div class="filter pull-left p-2 m-1">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Learning</span>
+          <div class="filter pull-left p-2 m-1 disabled">
+            <input class="mr-2" type="checkbox" name="vehicle" value="Bike" disabled><span>Learning</span>
           </div>
           <div class="filter pull-left p-2 m-1">
             <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Makers</span>
@@ -97,7 +97,7 @@
         </div>
 
         <!-- Learning -->
-        <div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
+        <!--<div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
 
           <div class="results-header d-flex justify-content-end  mb-3">
             <div class="result-title mr-auto"><span>Workshops</span></div>
@@ -108,7 +108,7 @@
           <div class="row projects-result">
             <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-4 col-md-6 col-sm-12"></app-learn-search-card>
           </div>
-        </div>
+        </div>-->
 
         <!-- Users -->
         <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">

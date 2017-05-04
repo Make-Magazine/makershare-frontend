@@ -1494,6 +1494,19 @@ ngb-typeahead-window.dropdown-menu {
     .dropdown-notification ul .not-seen .notification-container:hover {
       cursor: pointer; }
 
+.disabled {
+  color: rgba(0, 0, 0, 0.3); }
+
+.coming-soon {
+  position: relative; }
+  .coming-soon .coming-soon-text {
+    position: absolute;
+    font-size: 0.5em;
+    color: #ED1C24;
+    right: 0;
+    bottom: -8px;
+    text-transform: uppercase; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -2892,7 +2905,7 @@ footer {
     .project .image-top .card-img-top {
       border-radius: 0; }
     .project .image-top img {
-      height: 100%;
+      height: auto;
       width: 100%; }
   .project .card-block {
     padding: 0 15px;
@@ -6945,6 +6958,27 @@ img {
   .page-create-project-why .how-to .duration {
     width: 45%;
     display: inline-block; }
+  .page-create-project-why .how-to .difficulties i.dropdownIcon,
+  .page-create-project-why .how-to .durations i.dropdownIcon {
+    position: absolute;
+    bottom: 15px;
+    z-index: 6;
+    right: 40%;
+    pointer-events: none; }
+  .page-create-project-why .how-to #difficulty,
+  .page-create-project-why .how-to #duration {
+    position: relative;
+    width: 100% !important;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .page-create-project-why .how-to .resources input[type="file"] {
     display: none; }
   .page-create-project-why .how-to .resources select {
@@ -8902,7 +8936,11 @@ img {
       margin-bottom: 0px;
       max-height: 70px; }
     .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card .showcase-type p {
-      margin-bottom: 5px; } }
+      margin-bottom: 5px; }
+
+  .page-create-project-why .how-to .difficulties i.dropdownIcon,
+  .page-create-project-why .how-to .durations i.dropdownIcon {
+    right: 30px; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
@@ -9105,7 +9143,15 @@ img {
   header.main-header .login-block li.search-icon, header.main-header .login-block li.hamburger-menu {
     margin-left: 10px; }
   header.main-header .login-block li .btn {
-    padding: 0 5px; } }
+    padding: 0 5px; }
+  header.main-header.shrink nav.navbar #MainNav .nav-item
+  a {
+    font-size: 1.1em; }
+
+  header.main-header.shrink
+  .navbar-toggleable-sm .navbar-nav .nav-link {
+    padding-right: 0.2rem;
+    padding-left: 0.2rem; } }
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
