@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        window.scroll(0, 0);
+        setTimeout(function(){
+            window.scrollTo(0, 1);
+        }, 0);
       });
 
    }
