@@ -4144,6 +4144,53 @@ button:hover {
     .toggleProfile i.open {
       display: block; }
 
+/* create new item on prokect creation */
+.create-item-modal {
+  background-color: #F2F2F2; }
+  .create-item-modal label {
+    color: #ED1C24;
+    margin: 0px; }
+  .create-item-modal textarea {
+    border: 1px solid #DCDCDC;
+    color: #4F4F4F;
+    resize: inherit; }
+  .create-item-modal input {
+    border: 1px solid #DCDCDC;
+    color: #4F4F4F;
+    padding: 12px;
+    background-color: #fff; }
+    .create-item-modal input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-item-modal input::-moz-placeholder {
+      /* Firefox 19+ */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-item-modal input:-ms-input-placeholder {
+      /* IE 10+ */
+      text-align: center;
+      color: #DCDCDC; }
+    .create-item-modal input:-moz-placeholder {
+      /* Firefox 18- */
+      text-align: center;
+      color: #DCDCDC; }
+  .create-item-modal .modal-header {
+    border-bottom: none !important;
+    padding: 14px; }
+    .create-item-modal .modal-header .close:focus, .create-item-modal .modal-header .close:hover {
+      outline: none !important; }
+  .create-item-modal .modal-footer {
+    border-top: none !important;
+    padding: 32px; }
+    .create-item-modal .modal-footer button {
+      width: 120px;
+      padding: 12px;
+      background-color: #fff !important;
+      margin-bottom: 0px !important; }
+  .create-item-modal .field-label {
+    font-size: 1em !important; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
@@ -6893,6 +6940,11 @@ img {
     margin-top: 15px; }
   .page-create-project-why .team {
     padding-top: 20px; }
+    .page-create-project-why .team .add-teammember {
+      font-size: 1.3em;
+      display: block; }
+      .page-create-project-why .team .add-teammember:hover {
+        cursor: pointer; }
     .page-create-project-why .team .maker-mobile-card {
       padding: 15px 15px 5px;
       height: 145px; }
@@ -6905,7 +6957,6 @@ img {
     .page-create-project-why .team .form-group {
       margin-top: 0px; }
     .page-create-project-why .team .add-collaborate {
-      border: 1px solid #333333;
       border-radius: 0; }
     .page-create-project-why .team .sort label {
       display: block; }
@@ -6922,7 +6973,7 @@ img {
         font-size: 20px; }
     .page-create-project-why .team .add-collaborate {
       position: relative;
-      background-color: #BDBDBD;
+      background-color: #DCDCDC;
       margin: 20px 0;
       padding: 0 15px; }
     .page-create-project-why .team .remove {

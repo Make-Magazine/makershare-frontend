@@ -2391,3 +2391,59 @@ button {
         }
     }
 }
+
+/* create new item on prokect creation */
+.create-item-modal {
+    background-color: $site-bg;
+    label {
+        color: $red;
+        margin: 0px;
+    }
+    textarea {
+        border: 1px solid $shade-2;
+        color: $shade-4;
+        resize: inherit;
+    }
+    input {
+        border: 1px solid $shade-2;
+        color: $shade-4;
+        padding: 12px;
+        background-color: #fff;
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        text-align: center;
+        color: $shade-2;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+        text-align: center;
+        color: $shade-2;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+        text-align: center;
+        color: $shade-2;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+        text-align: center;
+        color: $shade-2;
+        }
+    }
+    .modal-header {
+        border-bottom: none !important;
+        padding: 14px;
+        .close:focus, .close:hover {
+            outline: none !important;
+        }
+    }
+    .modal-footer {
+        border-top: none !important;
+        padding: 32px;
+        button {
+            width: 120px;
+            padding: 12px;
+            background-color: #fff !important;
+            margin-bottom: 0px !important;
+        }
+    }
+    .field-label {
+        font-size: 1em !important;
+    }
+}

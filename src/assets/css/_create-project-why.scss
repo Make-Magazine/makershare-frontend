@@ -406,6 +406,13 @@
 
 	}
 	.team {
+		.add-teammember {
+			font-size: 1.3em;
+			display: block;
+			&:hover {
+				cursor: pointer;
+			}
+		}
 		padding-top: 20px;
 		.maker-mobile-card {
 			    padding: 15px 15px 5px;
@@ -422,7 +429,6 @@
 			margin-top: 0px;
 		}
 		.add-collaborate {
-			border: 1px solid $main-grey;
 			border-radius:0 ;
 		}
 		.sort {
@@ -444,7 +450,7 @@
 		}
 		.add-collaborate {
 			position: relative;
-			background-color: $light-grey;
+			background-color: $shade-2;
 			// overflow: hidden;
 			margin: 20px 0;
 			padding: 0 15px;
