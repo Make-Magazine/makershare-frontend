@@ -314,11 +314,27 @@
 			input {max-width: 100%;}
 			.form-group {margin-top: 10px;}
 			.panel-body {padding: 0;}
+			.result,.how-to-select, {
+				@include card-header-font-xs;
+				font-size: 1.1em !important;
+				padding-left: 0px !important;
+			}
+			.tool-list {
+				@include card-header-font-xs;
+				font-size: 1.2em !important;
+				padding-left: .25rem !important;
+			}
 			a {
-				font-size: 14px;
-				padding: 5px;
+				font-size: 16px;
+				padding: 4px;
+				display: block;
+				width: 70px;
+				text-align: center;
+				margin-left: 10px;
 				i {
 					line-height: 10px;
+					font-size: 19px;
+    			padding-right: 6px;
 					&.sort-up{
 						position: absolute;
 						top: -10px;
@@ -334,6 +350,20 @@
 					}
 				}
 
+			}
+			.btn-load-more {
+					font-size: 14px;
+					padding: 4px;
+					display: block;
+					width: 100px;
+					text-align: center;
+					margin: 0px;
+					background-color: #fff;
+					border-color: $shade-3;
+					color: $text-color-1;
+			}
+			span {
+					padding: 4px 4px 0px 0px;
 			}
 			.panel-heading {
 				cursor: move;
