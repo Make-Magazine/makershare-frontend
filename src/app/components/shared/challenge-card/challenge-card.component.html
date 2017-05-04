@@ -40,7 +40,7 @@
               <span class="entries-count">{{countProjects}}
                 <span *ngIf="countProjects>1">Entries</span>
                 <span *ngIf="countProjects==1">Entry</span>
-                <span *ngIf="countProjects <= 1">Entries</span>
+                <span *ngIf="countProjects < 1">Entries</span>
               </span>
               <span class="follow-count">{{challenge.followers}}
                 <span *ngIf="challenge.followers>1">Followers</span>
