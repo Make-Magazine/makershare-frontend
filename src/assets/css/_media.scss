@@ -305,7 +305,11 @@
     }
 }
 
-@media only screen and (max-width: 525px) {}
+@media only screen and (max-width: 525px) {
+    .project-button {
+        display: none;
+    }
+}
 
 @media only screen and (max-width: 623px) {}
 
@@ -461,6 +465,17 @@
         .image-top {
             width: 325px;
         }
+     }
+     header.main-header {
+          .login-block li{
+              &.search-icon, 
+              &.hamburger-menu {
+                  margin-left: 10px;
+              }
+              .btn {
+                  padding: 0 5px;
+              }
+          }
      }
 }
 
