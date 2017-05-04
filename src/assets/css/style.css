@@ -5335,7 +5335,8 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details .user-fullname {
           font-size: 16px;
           margin-right: 10px;
-          color: #00AEEF; }
+          color: #00AEEF;
+          cursor: pointer; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp p {
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp i {
@@ -5349,7 +5350,8 @@ header.showcase-project .next {
           text-transform: none;
           line-height: 130%;
           color: #828282;
-          color: #4F4F4F; }
+          color: #4F4F4F;
+          cursor: pointer; }
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
@@ -5361,7 +5363,8 @@ header.showcase-project .next {
     .feedback-group .feedback-card .content-section .user-pic img {
       width: 50px;
       height: 50px;
-      margin: 0 auto; }
+      margin: 0 auto;
+      cursor: pointer; }
     .feedback-group .feedback-card .content-section .media-body {
       padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {

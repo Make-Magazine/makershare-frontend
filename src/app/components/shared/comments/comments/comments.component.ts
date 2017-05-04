@@ -3,6 +3,8 @@ import { CommentService } from '../../../../d7services/comment/comment.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ViewService } from '../../../../d7services/view/view.service'
 import { IComment } from '../../../../models/challenge/comment';
+import { Router} from '@angular/router';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -24,6 +26,8 @@ export class CommentsComponent implements OnInit {
   // @Output() comments = new EventEmitter<any>();
   constructor(
     private viewService: ViewService,
+        private router: Router,
+
   ) { }
   newcomment;
   challengeNid;
@@ -46,23 +50,23 @@ export class CommentsComponent implements OnInit {
 
   /* function get comments */
   getcommentsByID(id) {
-    if(this.pages>0){
-var page_arg=['page',this.pages]
+    if (this.pages > 0) {
+      var page_arg = ['page', this.pages]
     }
     //console.log(this.page_arg)
-    this.viewService.getView('node-comments', [['nid', this.nodeId],['page',this.pages]]).subscribe(data => {
+    this.viewService.getView('node-comments', [['nid', this.nodeId], ['page', this.pages]]).subscribe(data => {
 
       this.comments.value = this.comments.value.concat(data);
-     // this.loadMoreVisibilty();
+      // this.loadMoreVisibilty();
       console.log(this.comments.value.length == 1)
-       if (this.comments.value.length ==1) {
-              this.hideloadmorecomment = true;
-      }else{
+      if (this.comments.value.length == 1) {
+        this.hideloadmorecomment = true;
+      } else {
         this.loadMoreVisibilty();
 
       }
       console.log(this.commentCount)
-     
+
     });
   }
   /* end function  get comments */
@@ -74,16 +78,16 @@ var page_arg=['page',this.pages]
   /* end function load more  */
   // Function to control load more button
   loadMoreVisibilty() {
-          this.commentCount = this.comments.value[0].comment_count
+    this.commentCount = this.comments.value[0].comment_count
 
-     console.log(this.commentCount);
-      console.log(this.comments.value.length)
+    console.log(this.commentCount);
+    console.log(this.comments.value.length)
     // get the challenges array count
     if (this.commentCount == this.comments.value.length) {
-    // this.comments.value=[];
+      // this.comments.value=[];
       this.hideloadmorecomment = true;
 
-    } 
+    }
     // else if (this.commentCount > this.comments.value.length) {
     //   this.hideloadmorecomment = true;
     // }
@@ -92,6 +96,12 @@ var page_arg=['page',this.pages]
     }
   }
   /* END FUNCTION loadMoreVisibilty */
+  /* function go To profile */
+  goToPortfolio(fName,lName) {
+    var fName,lName;
+    var FullName=(fName+"-"+lName).toLowerCase();
+     this.router.navigate(['/portfolio/' +FullName]);
 
+  }
 
 }
