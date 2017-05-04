@@ -1498,7 +1498,7 @@ ngb-typeahead-window.dropdown-menu {
   position: relative; }
   .coming-soon .coming-soon-text {
     position: absolute;
-    font-size: 0.6em;
+    font-size: 0.5em;
     color: #ED1C24;
     right: 0;
     bottom: -8px;
@@ -6928,6 +6928,27 @@ img {
   .page-create-project-why .how-to .duration {
     width: 45%;
     display: inline-block; }
+  .page-create-project-why .how-to .difficulties i.dropdownIcon,
+  .page-create-project-why .how-to .durations i.dropdownIcon {
+    position: absolute;
+    bottom: 15px;
+    z-index: 6;
+    right: 40%;
+    pointer-events: none; }
+  .page-create-project-why .how-to #difficulty,
+  .page-create-project-why .how-to #duration {
+    position: relative;
+    width: 100% !important;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
   .page-create-project-why .how-to .resources input[type="file"] {
     display: none; }
   .page-create-project-why .how-to .resources select {
@@ -8883,7 +8904,11 @@ img {
       margin-bottom: 0px;
       max-height: 70px; }
     .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card .showcase-type p {
-      margin-bottom: 5px; } }
+      margin-bottom: 5px; }
+
+  .page-create-project-why .how-to .difficulties i.dropdownIcon,
+  .page-create-project-why .how-to .durations i.dropdownIcon {
+    right: 30px; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
