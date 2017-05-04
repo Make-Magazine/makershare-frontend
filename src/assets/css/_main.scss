@@ -726,6 +726,9 @@ ngb-typeahead-window {
         .not-seen {
             .notification-container {
                 background-color: rgba(241, 241, 241, 0.53);
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }

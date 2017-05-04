@@ -10,22 +10,34 @@
       font-family: 'Open Sans', sans-serif;
       text-transform: uppercase;
       font-size: 18px;
-      color: #EC1F30;
+      color: #ed1c24;
       font-weight: 500;
       margin-bottom: 20px;
     }
     h1 {
-      font-size: 2em;
+      font-size: 2.6em;
       font-weight: 500;
       line-height: 1.3;
       margin-bottom: 40px;
+      text-transform: none;
+      color: #4f4f4f;
       //text hover effect
       a {
         transition: color 0.3s ease;
+        color: $blue;
         &:hover {
           transition: color 0.3s ease;
           text-decoration: none;
+          color: $blue*0.8;
         }
+      }
+    }
+    .button-container-main-1 {
+      .btn-main {
+        padding: 15px 0px;
+        width: 140px;
+        @include card-header-font-sm ();
+        color: #fff !important;
       }
     }
   }
@@ -59,13 +71,20 @@
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     font-size: 18px;
-    color: #EC1F30;
+    color: #ed1c24;
     font-weight: 500;
     margin-bottom: 20px;
   }
   h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 500;
+    color: $text-color-1;
+  }
+  p {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 100%;
+    color: $text-color-1;
   }
   img {
     margin-top: 30px;
@@ -96,7 +115,7 @@
       font-family: 'Open Sans', sans-serif;
       text-transform: uppercase;
       font-size: 18px;
-      color: #EC1F30;
+      color: #ed1c24;
       font-weight: 500;
       margin-bottom: 20px;
     }
@@ -104,6 +123,14 @@
       text-align: center;
       font-size: 36px;
       font-weight: 500;
+      font-size: 2.6em;
+      line-height: 110%;
+      color: $text-color-1;
+      font-family: 'Messina Modern Regular';
+    }
+    p {
+      color: $text-color-1;
+      font-weight: 300;
     }
   }
 }
