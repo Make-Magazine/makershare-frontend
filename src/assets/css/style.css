@@ -5526,7 +5526,8 @@ header.showcase-project .next {
         line-height: 130%;
         color: #828282;
         margin-bottom: 10px;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        height: 141px; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
         font-size: 13px;
