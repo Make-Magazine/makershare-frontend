@@ -278,21 +278,21 @@ export class HowToComponent implements OnInit,AfterViewInit {
         {
           return this.fb.group({
             'field_tool_name': [data && data.field_tool_name && data.field_tool_name.und ? data.field_tool_name.und[0].target_id : '', Validators.required],
-            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : 1],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : null],
           });
         }
       case 'field_parts':
         {
           return this.fb.group({
             'field_part_name': [data ? data.field_part_name.und[0].target_id : '', Validators.required],
-            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : 1],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : null],
           });
         }
       case 'field_materials':
         {
           return this.fb.group({
             'field_material_name': [data ? data.field_material_name.und[0].target_id : '', Validators.required],
-            'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und ? data.field_material_quantity.und[0].value : 1],
+            'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und ? data.field_material_quantity.und[0].value : null],
           });
         }
       case 'field_resources':
