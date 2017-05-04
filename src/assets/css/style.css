@@ -3380,6 +3380,8 @@ footer {
       width: 120px;
       padding: 12px;
       background-color: #fff !important; }
+.modal-content #maker-moment .char-left {
+  color: #4F4F4F; }
 
 /* message  modal */
 .message-modal {
@@ -6881,6 +6883,8 @@ img {
     .page-create-project-why .team .maker-mobile-card {
       padding: 15px 15px 5px;
       height: 145px; }
+      .page-create-project-why .team .maker-mobile-card .card-type-grey {
+        display: none; }
     .page-create-project-why .team form {
       padding-bottom: 30px; }
     .page-create-project-why .team input {
@@ -8908,6 +8912,9 @@ img {
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }
+@media only screen and (max-width: 525px) {
+  .project-button {
+    display: none; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
@@ -9010,7 +9017,12 @@ img {
     width: 180px; }
 
   .project-home .image-top {
-    width: 325px; } }
+    width: 325px; }
+
+  header.main-header .login-block li.search-icon, header.main-header .login-block li.hamburger-menu {
+    margin-left: 10px; }
+  header.main-header .login-block li .btn {
+    padding: 0 5px; } }
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }

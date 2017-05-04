@@ -48,7 +48,7 @@
 									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
 									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
 								</div>
-									<app-message-modal *ngIf="CurrentLoggedUserId != uid" class="profile-message" [uid]="uid"></app-message-modal>
+								<app-message-modal *ngIf="CurrentLoggedUserId != uid" class="profile-message" [uid]="uid"></app-message-modal>
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
@@ -234,7 +234,7 @@
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr class="hideData">
-								<a  *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
+								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
 								<p class="hideData global-title">Favorite Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
@@ -265,29 +265,29 @@
 				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
 
-				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-md-up">
-					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
-						<li *ngIf="ProjectsCount">
-							<p><span class="number">{{ProjectsCount}}</span> projects</p>
-						</li>
-						<li *ngIf="profile.total_likes != 0">
-							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
-						</li>
-						<li>
-							<p><span class="number">{{profile.views_count}}</span> views</p>
-						</li>
-						<!-- Start Bookmsrk-section -->
-						<!--<li>
+					<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-md-up">
+						<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+							<li *ngIf="ProjectsCount">
+								<p><span class="number">{{ProjectsCount}}</span> projects</p>
+							</li>
+							<li *ngIf="profile.total_likes != 0">
+								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
+							</li>
+							<li>
+								<p><span class="number">{{profile.views_count}}</span> views</p>
+							</li>
+							<!-- Start Bookmsrk-section -->
+							<!--<li>
 							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
 						</li>-->
-					</ul>
-					<!-- End Bookmark-section -->
-				</div>
+						</ul>
+						<!-- End Bookmark-section -->
+					</div>
 					<div class="profile-name profile-stats">
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view"></profile-projects>
+									<profile-projects [uid]="uid" [view]="profile.projects_view"></profile-projects>
 									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid"></app-edit-portfolio>
 								</div>
 							</div>
@@ -375,7 +375,8 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
-										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt"
+										 (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 										<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
 							</small>
@@ -436,9 +437,9 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										 <div *ngIf="this.ProfileInfo.bio">
+										<div *ngIf="this.ProfileInfo.bio">
 											<span *ngIf="this.ProfileInfo.bio.length > -1" [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio?.length}} char left</span>
-										 </div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -585,7 +586,7 @@
 									</div>
 								</div>
 							</div>
-									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
+							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 						</div>
 
 					</div>
@@ -629,13 +630,13 @@
 							<div class="form-subgroup container">
 								<div class="row">
 									<div class="col-md-12">
-										<label for="">HOW YOU BECOME A MAKER</label>
+										<label for="">HOW YOU BECAME A MAKER</label>
 									</div>
 									<div class="col-md-12">
 										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
-										 placeholder="{{'What was the moment that making become a part of your life?\nYou have about two paragraphs of space.'}}"
-										 maxlength="300">
-								</textarea><span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}" class="char-left">{{300 - formGroup.value.started_making.length}} char left</span>
+										 placeholder="{{'What was the moment that making become a part of your life?'}}" maxlength="300">
+										</textarea>
+										<span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}" class="char-left">{{formGroup.value.started_making.length}}/{{300 - formGroup.value.started_making.length}} Chars</span>
 									</div>
 									<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
 									<div class="clearfix"></div>

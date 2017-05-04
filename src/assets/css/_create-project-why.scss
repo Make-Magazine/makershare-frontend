@@ -410,6 +410,9 @@
 		.maker-mobile-card {
 			    padding: 15px 15px 5px;
 					height: 145px;
+					.card-type-grey {
+						display: none;
+					}
 		}
 		form {padding-bottom: 30px;}
 		input {
