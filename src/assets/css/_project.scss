@@ -764,7 +764,7 @@ header.showcase-project {
 					.project-badge {
 						width: auto;
 						img {
-							height: 35px;
+							height: 36px;
 							width: 30px;
 							margin-right: 5px;
 						}
@@ -807,7 +807,6 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
-            font-size: 38px;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
@@ -990,4 +989,5 @@ textarea {
 
 .license-report {
 	font-size: 0.8em;
+	text-align: center;
 }

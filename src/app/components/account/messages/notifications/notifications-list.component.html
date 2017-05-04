@@ -1,6 +1,10 @@
-<div *ngIf="NotificationsCount && Notifications">
-  <p>
-    notificatons Count = {{NotificationsCount}}
-  </p>
-  <notification-tpl [notification]="notification" *ngFor="let notification of Notifications"></notification-tpl>
-</div>
+<div *ngIf="notificationsCount && notifications">
+  <notification-tpl [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
+</div>  
+
+
+  <div class="text-center pt-3 pb-5">
+    <div *ngIf="!hideLoadMore">
+      <a class="btn btn-load-more" *ngIf="notifications.length < notificationsCountTotal" (click)="loadMore()">Load more</a>
+    </div>
+  </div>
