@@ -6795,11 +6795,35 @@ img {
     margin-top: 10px; }
   .page-create-project-why .how-to .tools .panel-body, .page-create-project-why .how-to .materials .panel-body, .page-create-project-why .how-to .parts .panel-body, .page-create-project-why .how-to .resources .panel-body {
     padding: 0; }
+  .page-create-project-why .how-to .tools .result, .page-create-project-why .how-to .tools .how-to-select, .page-create-project-why .how-to .materials .result, .page-create-project-why .how-to .materials .how-to-select, .page-create-project-why .how-to .parts .result, .page-create-project-why .how-to .parts .how-to-select, .page-create-project-why .how-to .resources .result, .page-create-project-why .how-to .resources .how-to-select {
+    font-family: "Messina Modern Bold";
+    font-size: 0.95em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 100%;
+    color: #828282;
+    font-size: 1.1em !important;
+    padding-left: 0px !important; }
+  .page-create-project-why .how-to .tools .tool-list, .page-create-project-why .how-to .materials .tool-list, .page-create-project-why .how-to .parts .tool-list, .page-create-project-why .how-to .resources .tool-list {
+    font-family: "Messina Modern Bold";
+    font-size: 0.95em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 100%;
+    color: #828282;
+    font-size: 1.2em !important;
+    padding-left: .25rem !important; }
   .page-create-project-why .how-to .tools a, .page-create-project-why .how-to .materials a, .page-create-project-why .how-to .parts a, .page-create-project-why .how-to .resources a {
-    font-size: 14px;
-    padding: 5px; }
+    font-size: 16px;
+    padding: 4px;
+    display: block;
+    width: 70px;
+    text-align: center;
+    margin-left: 10px; }
     .page-create-project-why .how-to .tools a i, .page-create-project-why .how-to .materials a i, .page-create-project-why .how-to .parts a i, .page-create-project-why .how-to .resources a i {
-      line-height: 10px; }
+      line-height: 10px;
+      font-size: 19px;
+      padding-right: 6px; }
       .page-create-project-why .how-to .tools a i.sort-up, .page-create-project-why .how-to .materials a i.sort-up, .page-create-project-why .how-to .parts a i.sort-up, .page-create-project-why .how-to .resources a i.sort-up {
         position: absolute;
         top: -10px;
@@ -6810,6 +6834,18 @@ img {
         left: 0; }
       .page-create-project-why .how-to .tools a i::before, .page-create-project-why .how-to .materials a i::before, .page-create-project-why .how-to .parts a i::before, .page-create-project-why .how-to .resources a i::before {
         float: left; }
+  .page-create-project-why .how-to .tools .btn-load-more, .page-create-project-why .how-to .materials .btn-load-more, .page-create-project-why .how-to .parts .btn-load-more, .page-create-project-why .how-to .resources .btn-load-more {
+    font-size: 14px;
+    padding: 4px;
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin: 0px;
+    background-color: #fff;
+    border-color: #BDBDBD;
+    color: #4F4F4F; }
+  .page-create-project-why .how-to .tools span, .page-create-project-why .how-to .materials span, .page-create-project-why .how-to .parts span, .page-create-project-why .how-to .resources span {
+    padding: 4px 4px 0px 0px; }
   .page-create-project-why .how-to .tools .panel-heading, .page-create-project-why .how-to .materials .panel-heading, .page-create-project-why .how-to .parts .panel-heading, .page-create-project-why .how-to .resources .panel-heading {
     cursor: move; }
   .page-create-project-why .how-to .tools .inputs-container, .page-create-project-why .how-to .materials .inputs-container, .page-create-project-why .how-to .parts .inputs-container, .page-create-project-why .how-to .resources .inputs-container {
