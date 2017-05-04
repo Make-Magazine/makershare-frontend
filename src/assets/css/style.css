@@ -1383,7 +1383,8 @@ ngb-typeahead-window.dropdown-menu {
   font-size: 1em !important;
   padding-top: 10px !important; }
   .notifications-container .success .message {
-    margin-top: 10px; }
+    margin-top: 10px;
+    color: #fff !important; }
   .notifications-container .success .close-click {
     position: absolute;
     right: 10px;
@@ -1392,22 +1393,23 @@ ngb-typeahead-window.dropdown-menu {
     color: #cccccc !important; }
     .notifications-container .success .close-click:hover {
       color: #fff !important; }
-.notifications-container .error {
+.notifications-container .error, .notifications-container .warning {
   background-color: #4F4F4F !important;
   border-bottom: 1px solid #4F4F4F !important;
   height: 45px !important;
   text-align: center !important;
   font-size: 1em !important;
   padding-top: 10px !important; }
-  .notifications-container .error .message {
-    margin-top: 10px; }
-  .notifications-container .error .close-click {
+  .notifications-container .error .message, .notifications-container .warning .message {
+    margin-top: 10px;
+    color: #fff !important; }
+  .notifications-container .error .close-click, .notifications-container .warning .close-click {
     position: absolute;
     right: 10px;
     top: 0px;
     font-size: 2em !important;
     color: #cccccc; }
-    .notifications-container .error .close-click:hover {
+    .notifications-container .error .close-click:hover, .notifications-container .warning .close-click:hover {
       color: #fff !important; }
 
 .project-bookmakr .fa-bookmark-o:hover {
@@ -5341,7 +5343,8 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details .user-fullname {
           font-size: 16px;
           margin-right: 10px;
-          color: #00AEEF; }
+          color: #00AEEF;
+          cursor: pointer; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp p {
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .feed-timestamp i {
@@ -5349,7 +5352,14 @@ header.showcase-project .next {
           font-size: 4px;
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .user-nickname {
-          font-weight: bold; }
+          font-family: "Messina Sans Regular";
+          font-size: 0.9em;
+          font-weight: 400;
+          text-transform: none;
+          line-height: 130%;
+          color: #828282;
+          color: #4F4F4F;
+          cursor: pointer; }
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
@@ -5361,7 +5371,8 @@ header.showcase-project .next {
     .feedback-group .feedback-card .content-section .user-pic img {
       width: 50px;
       height: 50px;
-      margin: 0 auto; }
+      margin: 0 auto;
+      cursor: pointer; }
     .feedback-group .feedback-card .content-section .media-body {
       padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {
