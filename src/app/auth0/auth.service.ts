@@ -76,10 +76,10 @@ export class Auth implements OnInit {
 
               // first time - redirection to profile edit page
               
-              // if(res.first_time == true){
+              if(res.first_time == true){
                 
-              //   this.router.navigate(['/account/editprofile']);  
-              // }               
+                this.router.navigate(['/portfolio']);  
+              }               
 
               if(authResult.state != ''){
              //   this.router.navigate([authResult.state]);
