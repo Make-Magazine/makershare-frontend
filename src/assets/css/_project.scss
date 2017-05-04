@@ -592,6 +592,7 @@ header.showcase-project {
 					    font-size: 16px;
     					margin-right: 10px;
     					color: $title-color;
+							cursor: pointer;
 					}
 					.feed-timestamp {
 						p {
@@ -607,6 +608,7 @@ header.showcase-project {
 					.user-nickname {
 						@include body-font-2();
 						color:$text-color-1 ;
+						cursor: pointer;
 					}
 					p {
 						font-size: 14px;
@@ -627,6 +629,7 @@ header.showcase-project {
 					    width: 50px;
 					    height: 50px;
 					    margin: 0 auto;
+								cursor: pointer;
 					}
 				}
 				.media-body {
@@ -822,6 +825,7 @@ header.showcase-project {
                 @include body-font-2();
 								margin-bottom: 10px;
 								word-wrap: break-word;
+								height: 141px;
             }
         }
 				.card-date {
