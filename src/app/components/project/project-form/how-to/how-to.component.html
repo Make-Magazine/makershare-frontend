@@ -183,15 +183,15 @@
         <a *ngIf="TempSelectedToolMaterialPart['resource']" (click)="FileUpdated(TempSelectedToolMaterialPart['resource'],HowToForm.controls.field_resources.controls.length-1);TempSelectedToolMaterialPart['resource'] = ''" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i>Add</a>
         <a *ngIf="HowToForm.value.field_resources[HowToForm.controls.field_resources.controls.length-1].field_repository_link && HowToForm.controls.field_resources.controls[HowToForm.controls.field_resources.controls.length-1].valid" (click)="SetResourceByRepoLink(HowToForm.value.field_resources[HowToForm.controls.field_resources.controls.length-1],HowToForm.controls.field_resources.controls.length-1)" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i>Add</a>
       </div>-->
-  <label for="resource">Resources</label><br>
-  <span class="mb-2">--FIELD RESOURCES IN PROGRESS--</span>
-  <div class="form-group projectSteps">
-    <div class="form-group project-steps">
-      <label for="how-to-make">Steps</label>
-      <ckeditor #ckeditor id="how-to-make" rows="5" [config]="CKEditorConfig" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+    <label for="resource">Resources</label><br>
+    <span class="mb-2">--FIELD RESOURCES IN PROGRESS--</span>
+    <div class="form-group projectSteps">
+      <div class="form-group project-steps">
+        <label for="how-to-make">Steps</label>
+        <ckeditor #ckeditor id="how-to-make" rows="5" [config]="CKEditorConfig" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+      </div>
     </div>
   </div>
-    </div>
   <!-- End how-to -->
 </div>
 <aside class="col-md-4">
@@ -212,18 +212,20 @@
 
 <!-- Add Modal -->
 <template #addmodal let-c="close" let-d="dismiss" ngbModalContainer>
-  <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+  <div class="create-item-modal">
+    <div class="modal-header">
+      <h4 class="modal-title">Add new {{CurrentModal}}</h4>
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h4 class="modal-title">Add new {{CurrentModal}}</h4>
-  </div>
-  <div class="modal-body">
-    <label for="name">{{CurrentModal}} name:</label>
-    <input #Name type="text" class="form-control" id="name">
-  </div>
-  <div class="modal-footer">
-    <button #CloseButton type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-    <button type="button" class="btn btn-primary" (click)="AddNewToolMaterialPart(CloseButton,Name)">Save</button>
+    </div>
+    <div class="modal-body">
+      <label class="field-label" for="name">{{CurrentModal}} name</label>
+      <input #Name type="text" class="form-control" id="name">
+    </div>
+    <div class="modal-footer">
+      <button #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+      <button type="button" class="btn btn-load-more" (click)="AddNewToolMaterialPart(CloseButton,Name)">Save</button>
+    </div>
   </div>
 </template>
