@@ -17,9 +17,7 @@
   </div>
   <!-- End project grid -->
   <div class="text-center">
-    <div class="button-container-main-2" *ngIf="!hideloadmoreproject && profile_projects[0]">
-      <a class="btn btn-main-2"  (click)="loadMoreProject()">Load more</a>
-    </div>
+    <a class="btn btn-load-more" *ngIf="!hideloadmoreproject && profile_projects[0]" (click)="loadMoreProject()">Load more</a>
   </div>
 </div>
 <!-- End profile content -->

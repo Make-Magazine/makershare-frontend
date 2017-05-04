@@ -247,9 +247,13 @@
 									</span>
 								</p>
 								<!--<a class="report">Report this user</a>-->
-								<div class="hideData" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
+								<div class="hideData report-div" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<hr>
 									<app-report-user [userReportId]="uid"></app-report-user>
+									<span class="toggleProfile" (click)="ToggleProfile()">
+										<i class="lnr lnr lnr-chevron-down open"></i>
+										<i class="lnr lnr lnr-cross close"></i>
+									</span>
 								</div>
 								<!-- End How -->
 							</div>
