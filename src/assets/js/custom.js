@@ -141,7 +141,7 @@ $(document).ready(function () {
 	
 	// Toggle profile sidebar view
 	$(document).on('click','.toggleProfile', function(){
-		$(this).children().toggle();
+		$('.toggleProfile').children().toggle();
 		$('.hideData').toggle();
 		$('.profile-overlay').toggle();
 		if($('.profile-container').hasClass('indexProfile')){
