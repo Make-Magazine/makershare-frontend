@@ -540,7 +540,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning, type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false  });
+        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning, allowClose: true, autoHide: false, hideOnHover: false  });
         tab = 'draft';
       } else if (visibility == 371) {
         // save as private
@@ -555,7 +555,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     } else if (action == 'create') {
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning });
+        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning , allowClose: true, autoHide: false, hideOnHover: false });
         tab = 'draft';
 
       } else if (visibility == 371) {
