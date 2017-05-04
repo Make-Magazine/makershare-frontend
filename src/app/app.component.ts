@@ -40,7 +40,9 @@ export class AppComponent implements OnInit {
     // this.loaderComponentService.LoaderComponentstatus.subscribe((val: boolean) => {
     //   this.showLoaderComponent = val;
     // });
-
+    setTimeout(function(){
+            window.scrollTo(0, 1);
+        }, 0);
   }
 
 }
