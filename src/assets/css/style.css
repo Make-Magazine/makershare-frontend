@@ -2875,7 +2875,7 @@ footer {
     .project .image-top .card-img-top {
       border-radius: 0; }
     .project .image-top img {
-      height: 100%;
+      height: auto;
       width: 100%; }
   .project .card-block {
     padding: 0 15px;
