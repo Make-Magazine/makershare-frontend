@@ -6,8 +6,8 @@
     </div>
     <div class="media-body mt-auto">
       <div class="user-info">
-        <div class="user-details col-sm-12 d-flex">
-          <p *ngIf="!comment?.nickname" href="#" class="user-fullname">{{comment?.first_name}} {{comment?.last_name}}</p>
+        <div class="user-details col-sm-12 ">
+          <p *ngIf="comment?.first_name" href="#" class="user-fullname">{{comment?.first_name}} {{comment?.last_name}}</p>
           <p *ngIf="comment?.nickname" class="user-nickname">{{comment?.nickname}}</p>
         </div>
       </div>
