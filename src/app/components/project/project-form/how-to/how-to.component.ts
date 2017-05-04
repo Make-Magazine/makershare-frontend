@@ -82,6 +82,9 @@ export class HowToComponent implements OnInit,AfterViewInit {
         data.url = response[0];
       }
     });
+    setTimeout(function(){
+       $("html,body").animate({scrollTop: 0}, "slow");
+    }, 0);
   }
   /**
    * @output will emit the new values to the parent Component
