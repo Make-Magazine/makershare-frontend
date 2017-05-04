@@ -79,7 +79,7 @@
           <a class="nav-link" [routerLink]="['missions']">Missions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Learning</a>
+          <a class="nav-link disabled coming-soon">Learning<span class="coming-soon-text">Coming soon</span></a>
         </li>
         <li class="nav-item hidden-md-up">
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
