@@ -17,6 +17,7 @@ export class MakerCardComponent implements OnInit {
   card;
   projectsCount;
   latestPorjectImg;
+  swtichImage:boolean = false;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private viewService: ViewService,
@@ -67,4 +68,12 @@ export class MakerCardComponent implements OnInit {
   //     console.log(data);
   //   })
   // }
+  over() {
+    if(this.latestPorjectImg)
+    this.swtichImage=true;
+  }
+  leave() {
+    if(this.latestPorjectImg)    
+    this.swtichImage=false;  
+  }
 }

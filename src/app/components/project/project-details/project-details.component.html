@@ -5,7 +5,7 @@
           <div class="top-content-wrapper">
             <div class="container">
               <div class="project-full-card">
-                <app-project-header [project]="projectDetails" [projectInfo]="projectdata" (SwitchTab)="changeProjectTab($event)"></app-project-header>
+                <app-project-header [ActiveTab]="current_active_tab" [project]="projectDetails" [projectInfo]="projectdata" (SwitchTab)="changeProjectTab($event)"></app-project-header>
               </div>
             </div>
             <!-- End container -->

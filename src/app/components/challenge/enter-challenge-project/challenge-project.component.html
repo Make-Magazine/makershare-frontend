@@ -10,15 +10,17 @@
                   <div class="image-container">
                     <img src="{{challangeData.cover_image}}" alt="" *ngIf="challangeData.cover_image" class="img-responsive">
                     <img src="{{challangeData.sponsor_bar}}" alt="" *ngIf="challangeData.sponsor_bar" class="sponsor_bar img-responsive">
+                    <div class="card-type-grey">
+                      <div class="type-layer-2">
+                        Mission
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- End image-container -->
                 <div class="col-md-8">
                   <div class="card-container">
                     <div class="card">
-                      <div class="challenge-type-bagde">
-                        <p>Mission</p>
-                      </div>
                       <div class="card-partership">
                         <p *ngIf="challangeData.sponsored_by">Sponsored by {{challangeData.sponsored_by}}</p>
                       </div>
@@ -31,7 +33,7 @@
                           <div class="challenge-card-count">
                             <span class="entries-count">{{countProjects}}
                        <span *ngIf="countProjects>1">Entries</span>
-                       <span *ngIf="countProjects==0">Entries</span>
+                            <span *ngIf="countProjects==0">Entries</span>
                             <span *ngIf="countProjects == 1">Entry</span>
                             </span>
                             <span class="follow-count">{{challangeData.followers}}
@@ -45,7 +47,7 @@
                             <span class="closed-status" *ngIf="challangeData.diffDays<=1">{{challangeData.diffDays}} DAY</span>
                             <span class="closed-status" *ngIf="challangeData.status_id == 376">{{challangeData.challenge_status}}</span>
                             <span class="open-status" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_status}}</span>
-                            <span class="challenge-end-date" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_end_date.value | date:'d/M/y'}}</span>
+                            <span class="challenge-end-date" *ngIf="challangeData.status_id != 376">{{challangeData.challenge_end_date.value}}</span>
                           </div>
                         </div>
                       </div>
@@ -127,7 +129,7 @@
 <template #content let-c="close" let-d="dismiss" ngbModalContainer>
   <div class="challenge-enter-modal">
     <div class="modal-header">
-        <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
     </div>
@@ -152,12 +154,12 @@
     </div>
     <div class="modal-footer">
       <div class="list-unstyled actions d-flex flex-row">
-          <div class="ml-2">
-            <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
-          </div>
-          <div class="ml-2" *ngIf="button == true">
-            <button type="button" class="btn btn-load-more" [disabled]="!addProjectForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
-          </div>
+        <div class="ml-2">
+          <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+        </div>
+        <div class="ml-2" *ngIf="button == true">
+          <button type="button" class="btn btn-load-more" [disabled]="!addProjectForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">Submit</button>
+        </div>
       </div>
     </div>
   </div>

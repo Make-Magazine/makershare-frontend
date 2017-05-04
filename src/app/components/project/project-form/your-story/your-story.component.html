@@ -1,5 +1,6 @@
 <div class="region region-content col-sm-8" [formGroup]="YourStoryForm">
   <div class="your-story">
+    <p class="red-text">* Fileds required to publish</p>
     <div class="form-group required projectName">
       <label for="projectName" [ngClass]="{valErrorString: !YourStoryForm.controls.title.valid && TryToSubmitPrivatePublic}">Project Name</label>
       <input [ngClass]="{valError: !YourStoryForm.controls.title.valid && TryToSubmitPrivatePublic}" type="text" class="form-control" id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
@@ -11,14 +12,14 @@
       <label for="teaser" [ngClass]="{valErrorString:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}">Teaser</label>
       <textarea [ngClass]="{valError:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}" maxlength="250" class="form-control" rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
     </div>
-    <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250</span>
+    <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
     <!--<div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
       {{ formErrors.field_teaser }}
     </div>-->
     <div class="form-group required cover d-flex flex-column">
       <div class="d-flex align-items-center">
         <label class="control-label" [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover photo </label>
-        <p class="small-text">choose a photo that is at least 600 x 400 px</p>
+        <p class="small-text">Choose a photo that is at least 600 x 400 px</p>
       </div>
       <div class="align-items-start">
         <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link" class="btn btn-load-more">CHOOSE FILE</a>
@@ -81,7 +82,7 @@
       </div>-->
     </div>
     <div class="form-group show-tell">
-      <label for="show-tell">{{TooltipText.show_tell.guide}}</label>
+      <label for="show-tell">Add Video: Show &amp; Tell</label>
       <input [ngClass]="{valError: formErrors.field_show_tell_video}" type="text" class="form-control" id="show-tell" placeholder="Add a YoutTube or Vimeo URL" formControlName='field_show_tell_video'>
       <!--<div *ngIf="formErrors.field_show_tell_video" class="alert alert-danger error-msg">
         {{ formErrors.field_show_tell_video }}
@@ -93,18 +94,19 @@
       </div>
     </div>
     <div class="form-group aha">
-      <label for="aha">{{TooltipText.aha_moment.guide}}</label>
+      <label for="aha">Ah-Ha! Moment</label>
       <textarea  rows="5" [ngClass]="{valError: formErrors.field_aha_moment}" maxlength="350" type="text" class="form-control" id="aha" placeholder="What was your biggest insight during the buid?" formControlName='field_aha_moment'></textarea>
-      <span class="words-count">{{YourStoryForm.value.field_aha_moment.length}}\350</span>
+      <span class="words-count">{{YourStoryForm.value.field_aha_moment.length}}\350 chars</span>
       <!--<div *ngIf="formErrors.field_aha_moment" class="alert alert-danger error-msg">
         {{ formErrors.field_aha_moment }}
       </div>-->
     </div>
 
     <div class="form-group uh-oh">
-      <label for="uh-oh">{{TooltipText.uh_oh_moment.guide}}</label>
+      <label for="uh-oh">Uh-Oh! Moment</label>
       <textarea  rows="5" [ngClass]="{valError: formErrors.field_uh_oh_moment}" maxlength="350" type="text" class="form-control" id="uh-h" placeholder="What was your biggest surprise or stress during the build?" formControlName='field_uh_oh_moment'></textarea>
-      <span class="words-count">{{YourStoryForm.value.field_uh_oh_moment.length}}\350</span>
+      <span class="words-count">{{YourStoryForm.value.field_uh_oh_moment.length}}\
+        350 chars</span>
 
       <!--<div *ngIf="formErrors.field_uh_oh_moment" class="alert alert-danger error-msg">
         {{ formErrors.field_uh_oh_moment }}
@@ -126,37 +128,37 @@
     <br>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.projectName.title}}</h4>
+        <h5>{{sidebarText.projectName.title}}</h5>
         <p>{{sidebarText.projectName.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.teaser.title}}</h4>
+        <h5>{{sidebarText.teaser.title}}</h5>
         <p>{{sidebarText.teaser.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.cover_image.title}}</h4>
+        <h5>{{sidebarText.cover_image.title}}</h5>
         <p>{{sidebarText.cover_image.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.category.title}}</h4>
+        <h5>{{sidebarText.category.title}}</h5>
         <p>{{sidebarText.category.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.story.title}}</h4>
+        <h5>{{sidebarText.story.title}}</h5>
         <p>{{sidebarText.story.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.show_tell.title}}</h4>
+        <h5>{{sidebarText.show_tell.title}}</h5>
         <video width="250" height="150" controls>
           <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
         </video>
@@ -164,19 +166,19 @@
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.aha.title}}</h4>
+        <h5>{{sidebarText.aha.title}}</h5>
         <p>{{sidebarText.aha.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.uh.title}}</h4>
+        <h5>{{sidebarText.uh.title}}</h5>
         <p>{{sidebarText.uh.guide}}</p>
       </div>
     </div>
     <div class="guideline">
       <div class="pull-left content">
-        <h4>{{sidebarText.tags.title}}</h4>
+        <h5>{{sidebarText.tags.title}}</h5>
         <p>{{sidebarText.tags.guide}}</p>
       </div>
     </div>

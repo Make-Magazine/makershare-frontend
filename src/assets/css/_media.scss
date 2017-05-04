@@ -344,7 +344,7 @@
 								}
 								.card-description {
 										p {
-											height: 58px;
+
 										}
 								}
 						}
@@ -366,14 +366,7 @@
                 margin: 0 -15px;
             }
             .card-container {
-                .card-title {
-                    @include card-header-font-md();
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    height: 55px;
-                    color: #fff;
-                }
+
                 .card-description {
                     p {
                         @include desc-font-1();
@@ -420,6 +413,19 @@
                 }
             }
         }
+        .showcase-card-backlayer-home {
+            .showcase-card {
+                .card-container {
+                    .card-description {
+                        p {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        }
+                    }
+                }
+            }
+        }
     }
     .project {
         .icons-side-project {
@@ -459,6 +465,11 @@
     .profile-sidebar {
         .profile-container {
             top: -40px;
+        }
+    }
+    .delete-promodal {
+        .modal-dialog{
+            max-width: 700px !important;
         }
     }
 }
@@ -501,3 +512,12 @@
 //         margin: 0 auto;
 //     }
 // }
+
+
+ /* acount setting component */
+
+_::-webkit-full-page-media, _:future, :root .custom-safari {
+
+text-align: left !important;
+
+}
