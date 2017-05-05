@@ -220,6 +220,7 @@
                 img {
                     height: 100%;
                     width: 100%;
+                    background-color: rgba(25,25,25,0.6);
                 }
                 a {
                     z-index: 1;
@@ -228,6 +229,15 @@
                     font-size: 15px;
                     right: 0;
                     bottom: 0;
+                }
+                .first-photo-upload a{
+                    left: 0;
+                    bottom: 165px;
+                    background: #fff;
+                    width: 170px;
+                    margin: auto;
+                    padding: 15px;
+                    border: 1px solid #4f4f4f;
                 }
                 .profile-type {
                     position: absolute;
@@ -251,6 +261,9 @@
             font-size: 18px;
             .userInfo {
                 position: relative;
+                .placeholder-text {
+                    margin-bottom: 0;
+                }
             }
             .profile-fullname {
                 @include card-header-font-sm ();
@@ -386,7 +399,7 @@
 
 .profile-content {
     a.btn {
-        padding: 2px;
+        // padding: 2px;
     }
     .empty-content {
         text-align: center;
@@ -397,6 +410,13 @@
         margin: 20px 0px 20px 0px;
         p {
             padding: 10px 0;
+        }
+        .empty-profile {
+            margin-top: 50px;
+        }
+        .text-red {
+            color: $red;
+            font-size: 1em;
         }
         a {
             display: inline-block;
@@ -465,6 +485,16 @@
             height: 24px;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
+            }
+        }
+    }
+    .profile-share {
+        .btn-soft-grey, a:not([href]):not([tabindex]).btn-soft-grey {
+            border: 1px solid $shade-4;
+            padding: 5px;
+            &:hover {
+                border-color: $blue;
+                color: $blue;
             }
         }
     }
@@ -1236,7 +1266,23 @@
     background-color: rgba(200,200,200,0.6);
     // opacity: 0.6;
     display: none;
-    z-index: 10;
+    z-index: 9;
+}
+.page-portfolio {
+    .empty-profile {
+        margin-top: 50px;
+        .text-red {
+            color:$red;
+            font-size: 1.3em;
+        }
+        .empty-text {
+            color: $shade-4;
+            margin-bottom: 0;
+        }
+        .project-button {
+            margin-top: 40px;
+        }
+    }
 }
 .profile-edit-buttons {
     display: none;

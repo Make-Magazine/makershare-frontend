@@ -283,6 +283,11 @@
             }
         }
     }
+    .project {
+        .image-top {
+            height: 260px;
+        }
+    }
 }
 
 @media (min-width: 1200px) {
@@ -537,6 +542,9 @@
         } 
     } 
     .project {
+        .image-top {
+            height: 228px;
+        }
         .maker-name {
             margin-top: 5px;
         }

@@ -53,9 +53,14 @@
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
+									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated() && profile.user_photo_with_style">
 										<div *ngIf="CurrentLoggedUserId==uid">
 											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
+										</div>
+									</div>
+									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated() && !profile.user_photo_with_style">
+										<div class="first-photo-upload" *ngIf="CurrentLoggedUserId==uid">
+											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')">Upload Photo</a>
 										</div>
 									</div>
 								</div>
@@ -74,10 +79,11 @@
 									</div>
 									<h4 class="profile-fullname">{{profile.full_name}}</h4>
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
+									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>									
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
-										<li *ngIf="!ProfileInfo.address"><i class="fa fa-lg fa-map-marker"></i></li>
+										<li class="placeholder-text" *ngIf="!ProfileInfo.address && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
 									</ul>
 									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
 										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 1">Unpublish</div>
@@ -97,19 +103,10 @@
 										</div>
 									</div>
 									<li *ngIf="ProfileInfo.describe_yourself != '' " class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
-									<li *ngIf="ProfileInfo.describe_yourself == '' " class="profile-describe-yourself" class="placeholder-text">{{PlaceholderText.describe_yourself}}</li>
-								</ul>
-								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post hideData">
-									<div *ngIf="CurrentLoggedUserId && uid">
-										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
-											<a (click)="OpenModal(editinfomodal,'Personal Info')" class="btn btn-white add ">
-												<i class="fa fa-lg fa-plus"></i> Describe your self ?
-											</a>
-										</div>
-									</div>
+									<li *ngIf="ProfileInfo.describe_yourself == '' && CurrentLoggedUserId == uid" class="motto-placeholder placeholder-text">{{PlaceholderText.describe_yourself}}</li>
 								</ul>
 								<!-- describe yourself-->
-								<hr class="hideData">
+								<hr class="hideData" *ngIf="ProfileInfo.describe_yourself != '' || CurrentLoggedUserId == uid">
 								<!-- start Badges-->
 								<div class="icons hideData" *ngIf="badges !=''">
 									<!--<p class="global-title">Badges</p>-->
@@ -127,61 +124,62 @@
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
-									<!--<p class="global-title">Bio</p>-->
+									<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
 									<div *ngIf="!ProfileInfo.bio && CurrentLoggedUserId == uid && auth.authenticated()" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
-									<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.bio !='' ">
+									<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.bio">
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
 								<div *ngIf="ProfileInfo.field_social_accounts" class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title">Social</p>
+									<p class="global-title" *ngIf="!emptySocial || CurrentLoggedUserId==uid">Social</p>
+									<p class="placeholder-text" *ngIf="!emptySocial || CurrentLoggedUserId==uid">{{PlaceholderText.social}}</p>									
 									<div class="social-links d-flex flex-wrap">
-										<div class="social-container">
-											<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
+											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 												<i class="fa fa-facebook fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' ">
+											<a class="nav-link social tw" target="_blank" href="{{ProfileInfo.field_social_accounts.field_twitter}}">
 												<i class="fa fa-twitter fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' ">
+											<a class="nav-link social in" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instagram}}">
 												<i class="fa fa-instagram fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' ">
+											<a class="nav-link social ln" target="_blank" href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
 												<i class="fa fa-linkedin fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' ">
+											<a class="nav-link social pin" target="_blank" href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
 												<i class="fa fa-pinterest-p fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' ">
+											<a class="nav-link social ut" target="_blank" href="{{ProfileInfo.field_social_accounts.field_youtube}}">
 												<i class="fa fa-youtube fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
+											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
 												<i class="fa fa-external-link fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
+											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
 												<i class="fa fa-external-link fa-lg"></i>
 											</a>
 										</div>
-										<div class="social-container">
-											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
+											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
 												<i class="fa fa-external-link fa-lg"></i>
 											</a>
 										</div>
@@ -193,12 +191,12 @@
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 									</div>
 								</div>
-								<hr class="hideData">
+								<hr class="hideData" *ngIf="!emptySocial || CurrentLoggedUserId==uid">
 								<ul class="list-unstyled makerspaces hideData">
 									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makersapces</p>
+									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
@@ -212,7 +210,7 @@
 								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
 								<div class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title"> Websites </p>
+									<p class="global-title" *ngIf="(ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '') || CurrentLoggedUserId == uid"> Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' " href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' " href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
@@ -225,17 +223,17 @@
 										</div>
 									</div>
 								</div>
-								<hr class="hideData">
+								<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '' || CurrentLoggedUserId == uid">
 								<div class="how hideData">
 									<!-- Start How -->
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title">My Maker Moment</p>
+									<p class="global-title" *ngIf="ProfileInfo.started_making || CurrentLoggedUserId==uid">My Maker Moment</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
-									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
+									<p *ngIf="!ProfileInfo.started_making && CurrentLoggedUserId==uid" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
-								<hr class="hideData">
+								<hr class="hideData" *ngIf="ProfileInfo.started_making || CurrentLoggedUserId==uid">
 								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
-								<p class="hideData global-title">Favorite Topics</p>
+								<p class="hideData global-title" *ngIf="ProfileInfo.maker_interests.length != 0 || CurrentLoggedUserId==uid">Favorite Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
 								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
@@ -283,12 +281,12 @@
 						</ul>
 						<!-- End Bookmark-section -->
 					</div>
-					<div class="profile-name profile-stats">
+					<div class="profile-stats">
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
-									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view"></profile-projects>
-									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid"></app-edit-portfolio>
+									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
+									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCount]="ProjectsCount"></app-edit-portfolio>
 								</div>
 							</div>
 							<!-- End project grid -->
@@ -377,9 +375,7 @@
 										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
 										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt"
 										 (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
-										<small *ngIf="searchFailed" class="text-danger">
-						Country not found.
-							</small>
+										<!--<small *ngIf="searchFailed" class="text-danger">Country not found.</small>-->
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
