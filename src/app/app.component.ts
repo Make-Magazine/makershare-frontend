@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
 //import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 import { UserService } from './d7services/user/user.service';
+import { MainService } from './d7services/main/main.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     private loaderService: LoaderService,
     private userService: UserService,
+    private mainService: MainService,
     private router: Router,
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
   ) {
@@ -31,7 +33,26 @@ export class AppComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userService.getAnonymousToken().subscribe(data => {});
+    // check if the user is logged in at the back-end or not, if not, logged the user out too from the front-end
+    this.userService.getStatus().subscribe(status => {
+      if(status.user.uid == 0){
+        this.mainService.removeCookies();
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('user_photo');              
+        this.userService.getAnonymousToken().subscribe(data => {});
+      }
+    }, err => {
+      console.log(err);
+      this.mainService.removeCookies();
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('user_name');
+      localStorage.removeItem('user_photo');      
+    })
+        
+    
     // loader for routing
     this.loaderService.status.subscribe((val: boolean) => {
       this.showLoader = val;

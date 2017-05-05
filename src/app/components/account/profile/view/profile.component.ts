@@ -131,7 +131,7 @@ export class ProfileComponent implements OnInit {
     social:'What social accounts do you use?',
     maker_space: 'Do you belong to any makerspaces?',
     websites:'Include your other websites',
-    started_making: 'Descripe how you became a Maker',
+    started_making: 'Describe how you became a Maker',
     interests: 'Favorite making topics?',
   };
   DefaultView :string = "grid";
