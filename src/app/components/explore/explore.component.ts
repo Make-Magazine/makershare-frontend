@@ -195,6 +195,18 @@ export class ExploreComponent implements OnInit {
 
   }
   /* end function to sort challenge MostLiked */
+    /* function to sort challenge mostViewed */
+  mostViewed() {
+    this.projects = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php"
+    this.ActionName = "Most viewed"
+
+    this.getProjects();
+
+  }
+  /* end function to sort challenge mostViewed */
 
   /* function to sort challenge MostForked */
   mostForked() {
