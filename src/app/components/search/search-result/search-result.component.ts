@@ -35,8 +35,18 @@ export class SearchResultComponent implements OnInit {
   workshopsCountQuery = 3;
   usersCountQuery = 6;
 
-
   project_view = 'grid';
+
+  // Filter
+  filter = {
+    projects: false,
+    showcases: false,
+    challenges: false,
+    learning: false,
+    makers: false,
+  }
+  selectedAll = true;
+
   constructor(
     private solrService: SolrService,
     private router: Router,
@@ -56,9 +66,17 @@ export class SearchResultComponent implements OnInit {
           if(query.length > 1){
             return this.solrService.autocomplete(query)
             .map(result => {
+              var newResult = [];
+              result.response.docs.forEach(element => {
+                if(element.tm_title && element.tm_title.length > 0){
+                  newResult.push(element.tm_title[0]);
+                }else if (element.tm_name && element.tm_name.length > 0){
+                  newResult.push(element.tm_name[0]);
+                }
+                
+              });
               
-              
-              return result.response.docs;
+              return newResult;
             })
           }
           return [];
@@ -67,10 +85,10 @@ export class SearchResultComponent implements OnInit {
   };
 
   ngOnInit() {
-
-    this.urlQuery = this.route.queryParams.map(params => params['query'] || 'None');
+    this.query = '';
+    this.urlQuery = this.route.queryParams.map(params => params['query'] || null);
     this.urlQuery.subscribe(query => {
-      if(query.length > 0){
+      if(query && query.length > 0){
         this.query = decodeURIComponent(query);
         this.searchQuery();
       }
@@ -81,11 +99,16 @@ export class SearchResultComponent implements OnInit {
   }
 
   itemSelected(item) {
-    
-    this.router.navigate(['/project/view/', item.ss_item_entity_id]);
+    this.searchQuery();
+    //this.router.navigate(['/project/view/', item.ss_item_entity_id]);
   }
 
   searchQuery(){
+
+    if(this.query.length < 4){
+      return;
+    }
+
     this.loaderService.display(true);
     if(this.query.length == 0) {
       return;
@@ -94,51 +117,103 @@ export class SearchResultComponent implements OnInit {
     this.searchTerm = this.query;
 
     // projects
-    this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
-      this.projects = [];
-      this.projects = result.response.docs;
-      this.projectsCount = result.response.numFound;
-    }, err => {
-      console.log(err);
-    });
-
+    if(this.filter.projects || this.selectedAll == true){
+      console.log('projects request');
+      this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
+        this.projects = [];
+        this.projects = result.response.docs;
+        this.projectsCount = result.response.numFound;
+        this.loaderService.display(false);
+      }, err => {
+        console.log(err);
+      });
+    }
+    
     // challenges
-    this.solrService.selectChallenges(this.query, this.challengesCountQuery).subscribe(result => {
-      this.challenges = [];
-      this.challenges = result.response.docs;
-      this.challengesCount = result.response.numFound;
-    }, err => {
-      console.log(err);
-    });  
+    if(this.filter.challenges || this.selectedAll == true){
+      console.log('challenge request');
+      this.solrService.selectChallenges(this.query, this.challengesCountQuery).subscribe(result => {
+        this.challenges = [];
+        this.challenges = result.response.docs;
+        this.challengesCount = result.response.numFound;
+        this.loaderService.display(false);
+      }, err => {
+        console.log(err);
+      });  
+    }
 
     // showcases
-    this.solrService.selectShowcases(this.query, this.showcasesCountQuery).subscribe(result => {
-      this.showcases = [];
-      this.showcases = result.response.docs;
-      this.showcasesCount = result.response.numFound;
-    }, err => {
-      console.log(err);
-    });    
+    if(this.filter.showcases || this.selectedAll == true){
+      console.log('showcases request');
+      this.solrService.selectShowcases(this.query, this.showcasesCountQuery).subscribe(result => {
+        this.showcases = [];
+        this.showcases = result.response.docs;
+        this.showcasesCount = result.response.numFound;
+        this.loaderService.display(false);
+      }, err => {
+        console.log(err);
+      });    
+    }
 
     // workshops
-    this.solrService.selectworkshops(this.query, this.workshopsCountQuery).subscribe(result => {
-      this.workshops = [];
-      this.workshops = result.response.docs;
-      this.workshopsCount = result.response.numFound;
-    }, err => {
-      console.log(err);
-    });        
-
+    if(this.filter.learning || this.selectedAll == true){
+      console.log('learning request');
+      this.solrService.selectworkshops(this.query, this.workshopsCountQuery).subscribe(result => {
+        this.workshops = [];
+        this.workshops = result.response.docs;
+        this.workshopsCount = result.response.numFound;
+        this.loaderService.display(false);
+      }, err => {
+        console.log(err);
+      });        
+    }
+    
     // users
-    this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(result => {
-      this.users = [];
-      this.users = result.response.docs;
-      this.usersCount = result.response.numFound;
-      this.loaderService.display(false);
-    }, err => {
-      console.log(err);
-      this.loaderService.display(false);
-    });      
+    if(this.filter.makers || this.selectedAll == true){
+      console.log('makers request');
+      this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(result => {
+        this.users = [];
+        this.users = result.response.docs;
+        this.usersCount = result.response.numFound;
+        this.loaderService.display(false);
+      }, err => {
+        console.log(err);
+      });      
+    }
+    
+  }
+
+  CheckFilter(event){
+    console.log('check');
+    console.log(this.filter);
+
+    if(this.filter.projects == true){
+      this.selectedAll = false;
+    }
+    if(this.filter.showcases == true){
+      this.selectedAll = false;
+    }
+    if(this.filter.challenges == true){
+      this.selectedAll = false;
+    }
+    if(this.filter.learning == true){
+      this.selectedAll = false;
+    }
+    if(this.filter.makers == true){
+      this.selectedAll = false;
+    }
+
+    if(!this.filter.projects && !this.filter.showcases && !this.filter.learning && !this.filter.challenges && !this.filter.makers){
+      this.selectedAll = true;
+    }
+    if(this.query.length > 0){
+      this.loaderService.display(true);
+      this.clearResults();
+      this.searchQuery();
+      
+
+    }
+    
   }
 
   searchTypeNavigate(type: string){
@@ -147,5 +222,25 @@ export class SearchResultComponent implements OnInit {
       // fragment: 'anchor'
     };    
      this.router.navigate(['/search', type], navigationExtras);
+  }
+
+  clearResults() {
+    this.projects = [];
+    this.challenges = [];
+    this.showcases = [];
+    this.workshops = [];
+    this.users = [];
+  }
+
+  ShowEmptyResult() {
+    if(this.projects.length == 0 &&
+      this.showcases.length == 0 &&
+      this.challenges.length == 0 &&
+      this.workshops.length == 0 &&
+      this.users.length == 0){
+        return true;
+    }else{
+      return false;
+    }
   }
 }
