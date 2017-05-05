@@ -780,7 +780,7 @@
              padding-top: 100px;
         }
         .image-background {
-            width: 100%;
+            width: 300px;
             height: auto;
         }
     }
@@ -928,7 +928,7 @@
         max-width: 230px;
         cursor:pointer;
         text-transform: none;
-        height: 50px;
+        height: 46px;
         margin-bottom: 5px;
     }
     .card-title-showcase {
@@ -1050,6 +1050,7 @@
         color: $text-color-1;
         margin: 0;
         padding-top: 2px;
+        word-wrap: break-word;
     }
     .card-block {
         padding: 8px 15px;  
@@ -1349,8 +1350,14 @@
                 height: 480px;
                 max-width: 100%;
                 max-height: 100%;
-                padding: 8px 0px;
+                padding: 14px 0px;
                 background-color: #f3f3f3;
+                -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+				-moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+                .file-browser-btn {
+                    background-color: #fff;
+                }
             }
             input {
                 &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -1506,7 +1513,7 @@
         }
         .modal-footer {
             border-top: none !important;
-            padding: 32px;
+            padding: 0px 32px;
             button {
                 width: 120px;
                 padding: 12px;
