@@ -784,7 +784,7 @@ header.showcase-project {
 			    padding: 0px;
     	.card-container {
         position: relative;
-				height: 95%;				
+				height: 100%;				
 				.card {
 					border: none;
 					min-height: 400px;
@@ -815,6 +815,7 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
+						word-wrap: break-word;
         }
         .card-description {
             h4 {
@@ -825,7 +826,6 @@ header.showcase-project {
                 @include body-font-2();
 								margin-bottom: 10px;
 								word-wrap: break-word;
-								height: 141px;
             }
         }
 				.card-date {
@@ -834,7 +834,7 @@ header.showcase-project {
 					margin-bottom: 2px;
 				}
 				.topics {
-						height: 100%;
+						height: auto;
     				padding-bottom: 18px;
 				}
 				.card-tags {
@@ -854,6 +854,8 @@ header.showcase-project {
 				}
 				.project-card-footer {
 						margin: 14px 0px;
+						overflow: hidden;
+						height: 73px;
 						ul {
 							margin: 0 auto;
 							li {

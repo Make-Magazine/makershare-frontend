@@ -355,7 +355,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'maxlength': 'Project Name maximum length is 50 characters.',
     },
     'field_categories': {
-      'required': 'Categories is required.'
+      'required': 'Topics is required.'
     },
     'field_cover_photo': {
       'required': 'Cover photo is required.',
@@ -394,8 +394,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'guide': `This image will represent your project anywhere it appears on the website. Try to frame the project well, ensure there's good lighting, check the background for distractions, and make sure the final image isn't blurry. Images should be at least 600 x 400 px, and can be either jpg, gif, or png`
     },
     'category': {
-      'title': 'Categories will help other Makers find your project:',
-      'guide': 'Select as many categories and sub-categories as you feel apply to your project. The more specific you are, the easier it will be for others to find your project.'
+      'title': 'Topics will help other Makers find your project:',
+      'guide': 'Select as many Topics and sub-Topics as you feel apply to your project. The more specific you are, the easier it will be for others to find your project.'
     },
     'story': {
       'title': 'Creating a great story:',
