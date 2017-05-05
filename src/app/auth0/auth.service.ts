@@ -20,15 +20,15 @@ export class Auth implements OnInit {
   // redirectURLObs: Observable<string>;
   // redirectURL: string;
   screen = 'login';
-  yearsArr= [];
+  yearsArr = [];
   state = '';
-  
+
   lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
     loginUrl: '/login',
     auth: {
-        redirectUrl: globals.appURL,
-        responseType: 'token',
-        params: {state: this.state},
+      redirectUrl: globals.appURL,
+      responseType: 'token',
+      params: { state: this.state },
     },
     socialButtonStyle: 'small',
     theme: {
@@ -38,9 +38,9 @@ export class Auth implements OnInit {
     languageDictionary: {
       //emailInputPlaceholder: "something@youremail.com",
       title: ""
-    },    
+    },
   }
-  
+
   );
 
 
@@ -54,7 +54,7 @@ export class Auth implements OnInit {
   ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      
+
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
@@ -65,7 +65,7 @@ export class Auth implements OnInit {
         data.idToken = authResult.idToken;
         if (profile['email_verified'] == true) {
 
-         
+
           this.userService.auth0_authenticate(data).subscribe(res => {
             if (res.user.uid != 0) {
               localStorage.setItem('id_token', authResult.idToken);
@@ -75,17 +75,17 @@ export class Auth implements OnInit {
               //localStorage.setItem('user_photo', res.user_photo);
 
               // first time - redirection to profile edit page
-              
-              if(res.first_time == true){
-                
-                this.router.navigate(['/portfolio']);  
-              }               
 
-              if(authResult.state != ''){
-             //   this.router.navigate([authResult.state]);
+              if (res.first_time == true) {
+
+                this.router.navigate(['/portfolio']);
               }
-              
-              
+
+              if (authResult.state != '') {
+                //   this.router.navigate([authResult.state]);
+              }
+
+
             } else {
               //localStorage.setItem('user_photo', res.user_photo);
               localStorage.setItem('user_id', '0');
@@ -93,8 +93,8 @@ export class Auth implements OnInit {
 
             this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
             // if the first time, navigate to edit profile page
-            
-            
+
+
           });
 
         }
@@ -113,16 +113,16 @@ export class Auth implements OnInit {
 
     this.lock.on("authorization_error", (err) => {
       // console.log(err);
-      if(err.error == "unauthorized"){
+      if (err.error == "unauthorized") {
         // console.log('it is true');
         this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
       }
     });
   }
 
-    ngOnInit() {
-   
-    }
+  ngOnInit() {
+
+  }
 
 
 
@@ -148,14 +148,14 @@ export class Auth implements OnInit {
     // Remove token from localStorage
     this.userService.auth0_logout().subscribe(res => {
       this.mainService.removeCookies();
-      
+
       this.router.navigateByUrl('/');
     }, err => {
     });
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('user_id');
-      localStorage.removeItem('user_name');
-      localStorage.removeItem('user_photo');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_photo');
     //this.notificationBarService.create({ message: 'Come back soon.', type: NotificationType.Success});
   }
 }
