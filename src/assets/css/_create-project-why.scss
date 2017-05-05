@@ -314,11 +314,27 @@
 			input {max-width: 100%;}
 			.form-group {margin-top: 10px;}
 			.panel-body {padding: 0;}
+			.result,.how-to-select, {
+				@include card-header-font-xs;
+				font-size: 1.1em !important;
+				padding-left: 0px !important;
+			}
+			.tool-list {
+				@include card-header-font-xs;
+				font-size: 1.2em !important;
+				padding-left: .25rem !important;
+			}
 			a {
-				font-size: 14px;
-				padding: 5px;
+				font-size: 16px;
+				padding: 4px;
+				display: block;
+				width: 70px;
+				text-align: center;
+				margin-left: 10px;
 				i {
 					line-height: 10px;
+					font-size: 19px;
+    			padding-right: 6px;
 					&.sort-up{
 						position: absolute;
 						top: -10px;
@@ -334,6 +350,20 @@
 					}
 				}
 
+			}
+			.btn-load-more {
+					font-size: 14px;
+					padding: 4px;
+					display: block;
+					width: 100px;
+					text-align: center;
+					margin: 0px;
+					background-color: #fff;
+					border-color: $shade-3;
+					color: $text-color-1;
+			}
+			span {
+					padding: 4px 4px 0px 0px;
 			}
 			.panel-heading {
 				cursor: move;
@@ -359,6 +389,31 @@
 			margin-right: 5%;display: inline-block;
 		}
 		.duration {width: 45%;display: inline-block;}
+		.difficulties ,
+		.durations	{
+			i.dropdownIcon {
+							position: absolute;
+							bottom: 15px;
+							z-index: 6;
+							right: 40%;
+							pointer-events: none;
+					}
+		}
+		#difficulty ,
+		#duration {
+					
+					position: relative;	
+					width: 100% !important;
+					margin-bottom: 5px;
+					padding: 5px 10px;
+					border: none;
+					border-radius:0;
+					font-size: 1em;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					@include boxShadow(2px, 2px, 8px,$light-grey);
+
+		}
 		.resources {
 			input[type="file"] {display: none;}
 			select {width: 40%;}
@@ -376,10 +431,20 @@
 
 	}
 	.team {
+		.add-teammember {
+			font-size: 1.3em;
+			display: block;
+			&:hover {
+				cursor: pointer;
+			}
+		}
 		padding-top: 20px;
 		.maker-mobile-card {
 			    padding: 15px 15px 5px;
 					height: 145px;
+					.card-type-grey {
+						display: none;
+					}
 		}
 		form {padding-bottom: 30px;}
 		input {
@@ -389,7 +454,6 @@
 			margin-top: 0px;
 		}
 		.add-collaborate {
-			border: 1px solid $main-grey;
 			border-radius:0 ;
 		}
 		.sort {
@@ -411,7 +475,7 @@
 		}
 		.add-collaborate {
 			position: relative;
-			background-color: $light-grey;
+			background-color: $shade-2;
 			// overflow: hidden;
 			margin: 20px 0;
 			padding: 0 15px;

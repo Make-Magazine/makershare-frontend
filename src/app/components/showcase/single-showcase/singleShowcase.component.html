@@ -29,7 +29,7 @@
                   </div>
                   <div class="showcase-card-footer-2">
                     <div class="showcase-card-count d-felx">
-                      <div *ngIf="showcase.nid" ngbTooltip="{{toolTips.like}}">
+                      <div *ngIf="showcase.nid">
                         <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" (countNumber)="likesCounter($event)"></app-like>
                       </div>
                       <div class="views-count-div">
