@@ -469,7 +469,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
     },
     'tools': {
       'title': 'Tools // Boards & Kits // Materials:',
-      'guide': `We've devised three categories to represent the different elements that might have been used to create this project.
+      'guide': `We've devised three Topics to represent the different elements that might have been used to create this project.
 
 Tools: The items you use to affect your materials (crochet hooks, screwdrivers, laser cutters, etc)
 
