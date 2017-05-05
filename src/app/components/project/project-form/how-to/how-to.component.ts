@@ -468,19 +468,12 @@ export class HowToComponent implements OnInit,AfterViewInit {
       'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
     },
     'tools': {
-      'title': 'Tools // Boards & Kits // Materials:',
-      'guide': `We've devised three Topics to represent the different elements that might have been used to create this project.
-
-Tools: The items you use to affect your materials (crochet hooks, screwdrivers, laser cutters, etc)
-
-Boards: Any pre-made electronic board (Edison, Arduino, Raspberry Pi, etc)
-& Kits: Any purchased kit containing combinations of tools, boards, and/or materials.
-
-Materials: Anything that your final project is made from, not including Boards & Kits (cloth, thread, nails, monitor, wood, etc)`
+      'title': 'Tools/Boards & Kits/Parts & Materials:',
+      'guide': `Use these fields to detail all of the tools, boards, kits, parts, and materials you used to create your project. Be as accurate as possible, in both name and quantities, to help others see exactly what's required.`
     },
     'difficulties_duration': {
       'title': 'Difficulty & Duration:',
-      'guide': 'How difficult would it be for the average person to recrate this? How long would it take them?'
+      'guide': 'Assuming the person reading these directions had only a cursory knowledge of the subject, how difficult would it be for them to accomplish the build? How long would it take them?'
     },
 
     'resources': {
@@ -488,8 +481,8 @@ Materials: Anything that your final project is made from, not including Boards &
       'guide': `Are there any important files associated with your project that you'd like to share? This is the place for those. From vector to 3D files, patterns to code, please uploaded any files associated with your poject here.`
     },
     'credit_your_inspiration': {
-      'title': 'How to:',
-      'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
+      'title': 'Steps:',
+      'guide': 'Use this field to describe the process of creating this project. Include any images, video, or text that will allow others to best remake your project.'
     },
   }
 

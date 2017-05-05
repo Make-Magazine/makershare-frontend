@@ -54,7 +54,7 @@
                 <!--<label>Name</label>-->
                 <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name}"
                   *ngIf="!HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value"
-                  type="text" id="part-name-{{HowToForm.controls.field_parts.controls.length-1 + 1}}" placeholder="Boards and Kits recommended"
+                  type="text" id="part-name-{{HowToForm.controls.field_parts.controls.length-1 + 1}}" placeholder="Boards and Kits used"
                   class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['part'] = $event.item">
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value && searchFailed['part']">
                   <span>Part not found</span><a class="btn btn-load-more edit" (click)="OpenAddModal(addmodal,'part')">Create New</a>
@@ -92,7 +92,7 @@
                 <!--<label>Name</label>-->
                 <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name}"
                   *ngIf="!HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value"
-                  type="text" id="material-name-{{HowToForm.controls.field_materials.controls.length-1 + 1}}" placeholder="Parts and Material recommended"
+                  type="text" id="material-name-{{HowToForm.controls.field_materials.controls.length-1 + 1}}" placeholder="Parts and Material used"
                   class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['material'] = $event.item">
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value && searchFailed['material']">
                   <span>Material not found</span><a class="btn btn-load-more edit" (click)="OpenAddModal(addmodal,'material')">Create New</a>
@@ -199,12 +199,27 @@
 <aside class="col-md-4">
   <div class="how-to-guide">
     <h2 class="col-12">Helpful Hints</h2>
+    <p class="col-12">This tab isn't required to publish your project.</p>
     <br>
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
-        <h4>{{sidebarText.how_to.title}}</h4>
-        <p>{{sidebarText.how_to.guide}}</p>
+        <h4>{{sidebarText.tools.title}}</h4>
+        <p>{{sidebarText.tools.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>{{sidebarText.difficulties_duration.title}}</h4>
+        <p>{{sidebarText.difficulties_duration.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
+        <h4>{{sidebarText.credit_your_inspiration.title}}</h4>
+        <p>{{sidebarText.credit_your_inspiration.guide}}</p>
       </div>
     </div>
   </div>
