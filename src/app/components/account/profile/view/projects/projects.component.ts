@@ -22,6 +22,7 @@ export class ProjectsComponent implements OnInit {
   userName;
   @Input('uid') uid;
   @Input('view') view;
+  @Input('userFullName') userFullName;
   page_arg;
   countProject = 0;
   hideloadmoreproject = false;
@@ -38,6 +39,7 @@ export class ProjectsComponent implements OnInit {
           this.userName = params['user_name'];
         });
         this.userService.getIdFromUrl(this.userName).subscribe(data => {
+          console.log(this.userName)
           this.uid = data.uid;
           this.getProjects();
           this.getCountProject();
