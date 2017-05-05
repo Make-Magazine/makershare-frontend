@@ -352,3 +352,7 @@
 		 text-align: center;
 	}
 }
+
+#search-input::-ms-expand {
+    display: none;
+}

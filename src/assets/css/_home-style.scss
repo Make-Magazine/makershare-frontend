@@ -477,8 +477,13 @@ footer {
     min-height: 150px;
     max-height: 170px;
     img {
-       height: 234px;
+       height: auto !important;;
+       width: 100% !important;
     }
+}
+.carousel-img-container {
+    width: 263px !important;
+    height: 210px !important;
 }
 
 
