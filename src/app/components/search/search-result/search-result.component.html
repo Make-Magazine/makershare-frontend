@@ -1,7 +1,6 @@
 <template #rt let-r="result" let-t="term">
   <div class="data-container">
-    <div *ngIf="r.tm_title">{{r.tm_title[0]}}</div>
-    <div *ngIf="r.tm_name">{{r.tm_name[0]}}</div>
+    <div *ngIf="r">{{r}}</div>
   </div>
 </template>
 
@@ -14,7 +13,7 @@
           <div id="imaginary_container">
             <div class="input-group stylish-input-group">
               <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..."
-                [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
+                [ngbTypeahead]="search"  [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
               <span class="input-group-addon">
                 <button type="button" (click)="searchQuery()" value="search">
                   <i class="fa fa-search"></i>
@@ -29,19 +28,19 @@
         <div class="checkbox-filters col-md-8">
           <label class="pull-left p-2 m-1">Filter:</label>
           <div class="filter pull-left p-2 m-1">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Projects</span>
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.projects" class="mr-2" type="checkbox" name="projects-filter" value="Bike">Projects</label>
           </div>
           <div class="filter pull-left p-2 m-1">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Showcases</span>
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.showcases" class="mr-2" type="checkbox" name="showcases-filter" value="Bike">Showcases</label>
           </div>
           <div class="filter pull-left p-2 m-1">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Missions</span>
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.challenges" class="mr-2" type="checkbox" name="challenges-filter" value="Bike">Missions</label>
           </div>
           <div class="filter pull-left p-2 m-1 disabled">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike" disabled><span>Learning</span>
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.learning" class="mr-2" type="checkbox" name="learning-filter" value="Bike" disabled>Learning</label>
           </div>
           <div class="filter pull-left p-2 m-1">
-            <input class="mr-2" type="checkbox" name="vehicle" value="Bike"><span>Makers</span>
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.makers" class="mr-2" type="checkbox" name="makers-filter" value="Bike">Makers</label>
           </div>
         </div>
         <!--<div class="sort col-lg-4">
@@ -123,6 +122,10 @@
           </div>
         </div>
 
+
+        <div *ngIf="ShowEmptyResult()" class="col-md-12 maker-result result-section" style="margin-top: 70px;">
+          <h4 class="text-center">No Results.</h4>
+        </div>
 
       </div>
     </div>

@@ -2368,7 +2368,8 @@ footer {
         position: relative; }
         .profile-sidebar .profile-container .profile-group .profile-pic img {
           height: 100%;
-          width: 100%; }
+          width: 100%;
+          background-color: rgba(25, 25, 25, 0.6); }
         .profile-sidebar .profile-container .profile-group .profile-pic a {
           z-index: 1;
           position: absolute;
@@ -2376,6 +2377,14 @@ footer {
           font-size: 15px;
           right: 0;
           bottom: 0; }
+        .profile-sidebar .profile-container .profile-group .profile-pic .first-photo-upload a {
+          left: 0;
+          bottom: 165px;
+          background: #fff;
+          width: 170px;
+          margin: auto;
+          padding: 15px;
+          border: 1px solid #4f4f4f; }
         .profile-sidebar .profile-container .profile-group .profile-pic .profile-type {
           position: absolute;
           bottom: 10px;
@@ -2394,6 +2403,8 @@ footer {
       font-size: 18px; }
       .profile-sidebar .profile-container .profile-info .userInfo {
         position: relative; }
+        .profile-sidebar .profile-container .profile-info .userInfo .placeholder-text {
+          margin-bottom: 0; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Regular";
         font-size: 1.3em;
@@ -2512,8 +2523,6 @@ footer {
       color: #00AEEF !important; }
 
 /* End profile-sidebar */
-.profile-content a.btn {
-  padding: 2px; }
 .profile-content .empty-content {
   text-align: center;
   color: #333333;
@@ -2523,6 +2532,11 @@ footer {
   margin: 20px 0px 20px 0px; }
   .profile-content .empty-content p {
     padding: 10px 0; }
+  .profile-content .empty-content .empty-profile {
+    margin-top: 50px; }
+  .profile-content .empty-content .text-red {
+    color: #ED1C24;
+    font-size: 1em; }
   .profile-content .empty-content a {
     display: inline-block;
     text-align: center;
@@ -2572,6 +2586,12 @@ footer {
   height: 24px; }
   .profile-header .bookmark li:not(:first-of-type) {
     border-left: 2px solid #222; }
+.profile-header .profile-share .btn-soft-grey, .profile-header .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
+  border: 1px solid #4F4F4F;
+  padding: 5px; }
+  .profile-header .profile-share .btn-soft-grey:hover, .profile-header .profile-share a:not([href]):not([tabindex]).btn-soft-grey:hover {
+    border-color: #00AEEF;
+    color: #00AEEF; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -3207,7 +3227,18 @@ footer {
   position: absolute;
   background-color: rgba(200, 200, 200, 0.6);
   display: none;
-  z-index: 10; }
+  z-index: 9; }
+
+.page-portfolio .empty-profile {
+  margin-top: 50px; }
+  .page-portfolio .empty-profile .text-red {
+    color: #ED1C24;
+    font-size: 1.3em; }
+  .page-portfolio .empty-profile .empty-text {
+    color: #4F4F4F;
+    margin-bottom: 0; }
+  .page-portfolio .empty-profile .project-button {
+    margin-top: 40px; }
 
 .profile-edit-buttons {
   display: none;
@@ -5579,7 +5610,7 @@ header.showcase-project .next {
       position: absolute;
       bottom: -20px;
       padding-left: 14px;
-      z-index: 105; }
+      z-index: 10; }
       .page-project .projectsingle-card .left-side .project-card-badges .project-badge {
         width: auto; }
         .page-project .projectsingle-card .left-side .project-card-badges .project-badge img {
@@ -9172,7 +9203,10 @@ img {
     width: 100px; }
 
   .main-header .login-block li .btn {
-    padding: 0px; } }
+    padding: 0px; }
+
+  .project .image-top {
+    height: 260px; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }
@@ -9307,6 +9341,8 @@ img {
     header nav #MainNav .nav-item {
       margin-left: 5px !important; }
 
+  .project .image-top {
+    height: 228px; }
   .project .maker-name {
     margin-top: 5px; }
   .project .card-title {
