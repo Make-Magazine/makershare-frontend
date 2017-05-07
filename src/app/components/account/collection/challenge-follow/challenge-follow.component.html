@@ -5,27 +5,23 @@
 </div>
 <div *ngIf="challenges.length>0">
   <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-  <table class="table">
-    <thead>
-      <tr>
-        <!--<th></th>
-        <th>Challenge Name</th>
-        <th>Challenge Image</th>
-        <th>Delete</th>-->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let challenge of challenges let i=index;">
-        <!--<div class="select" *ngIf="challenge">-->
-        <!--<input type="checkbox" value="{{challenge.nid}}"  [(ngModel)]="challenge.state"  (change)="valueChanged(challenge.nid,$event)">-->
-        <!--</div>-->
-        <td [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive"></td>
-        <td [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge.challenge_name"><span>{{challenge.challenge_name}}</span></td>
-        <!--<td class="delete"><a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a></td>-->
-      </tr>
-    </tbody>
-  </table>
+  <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
+  <div class="media bookmark-item bookmark-challenge" *ngFor="let challenge of challenges let i=index;">
+    <div class="media-left">
+      <div class="book-img" [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge"><img class="d-flex mr-3" src="{{challenge.image}}" alt="" class="img-responsive"></div>
+    </div>
+    <div class="media-body">
+      <!--<div class="select" *ngIf="challenge">-->
+      <!--<input type="checkbox" value="{{challenge.nid}}"  [(ngModel)]="challenge.state"  (change)="valueChanged(challenge.nid,$event)">-->
+      <!--</div>-->
+      <div class="title" [routerLink]="['/missions/',challenge.nid]" *ngIf="challenge.challenge_name"><span>{{challenge.challenge_name}}</span></div>
+    </div>
+    <div class="media-right">
+      <div class="delete">
+        <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="text-center">
   <div class="button-container-main-2" *ngIf="!hideloadmorefollowchallenge">

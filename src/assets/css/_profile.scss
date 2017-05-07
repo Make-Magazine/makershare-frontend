@@ -95,9 +95,9 @@
         margin: 15px 0 10px;
     }
     h5 {
-        color: #000;
-        font-weight: bold;
-        font-size: 14px;
+        // color: #000;
+        // font-weight: bold;
+        // font-size: 14px;
     }
     .progress {
         margin-bottom: 10px;
@@ -167,19 +167,22 @@
         margin-bottom: 20px;
         position: relative;
         @include boxShadow(2px, 2px ,8px, $shade-3);
+        &.indexProfile {
+            z-index: 9999;
+            @include boxShadow(0, 0 ,0, $shade-3);        
+        }
         .container-override {
             margin-left: -15px;
             margin-right: -15px;
             .profile-message {
                 display: block;
                 width: 100%;
-                padding: 10px;
                 font-size: 1.2em;
             }
         }
         li,
         p {
-            font-size: 13px;
+            font-size: 0.8em;
             a {
                 color: $title-color;
             }
@@ -217,6 +220,7 @@
                 img {
                     height: 100%;
                     width: 100%;
+                    background-color: rgba(25,25,25,0.6);
                 }
                 a {
                     z-index: 1;
@@ -225,6 +229,15 @@
                     font-size: 15px;
                     right: 0;
                     bottom: 0;
+                }
+                .first-photo-upload a{
+                    left: 0;
+                    bottom: 165px;
+                    background: #fff;
+                    width: 170px;
+                    margin: auto;
+                    padding: 15px;
+                    border: 1px solid #4f4f4f;
                 }
                 .profile-type {
                     position: absolute;
@@ -246,28 +259,38 @@
         .profile-info {
             margin-top: 16px;
             font-size: 18px;
+            .userInfo {
+                position: relative;
+                .placeholder-text {
+                    margin-bottom: 0;
+                }
+            }
             .profile-fullname {
                 @include card-header-font-sm ();
-                color:$main-grey;
+                color:$blue;
             }
             .profile-nickname {
                 @include desc-font-2 ();
+                color: $shade-3;
                 margin-top: 5px;
-                margin-bottom: 5px;
+                margin-bottom: 0px;
             }
             .location {
                 @include desc-font-2 ();
-                color: $title-color;
+                color: $shade-4;
                 margin-top: 5px;
                 margin-bottom: 5px;
             }
             .profile-describe-yourself {
                 @include desc-font-5 ();
+                color: $shade-4;
+                font-size: 1.2em;
             }
             .badges {
                 @include desc-font-2 ();
                 color: $text-color-1;
-                font-size: 0.7em !important;
+                font-size: 0.7em;
+                line-height: 130%;
                 margin-left: 5px;
             }
             .bio {
@@ -331,6 +354,9 @@
             }
             .social-links {
                 margin-top: 15px;
+                .social-container {
+                    width: 20%;
+                }
                 li {
                     display: inline-block;
                     text-align: center;
@@ -349,6 +375,14 @@
                 }
             }
         }
+        .report-div {
+            .report {
+                line-height: 40px;
+            }
+        }
+    }
+    .topic-tags {
+        color: $shade-5;
     }
     .report {
         font-size: 12px;
@@ -365,7 +399,7 @@
 
 .profile-content {
     a.btn {
-        padding: 2px;
+        // padding: 2px;
     }
     .empty-content {
         text-align: center;
@@ -376,6 +410,13 @@
         margin: 20px 0px 20px 0px;
         p {
             padding: 10px 0;
+        }
+        .empty-profile {
+            margin-top: 50px;
+        }
+        .text-red {
+            color: $red;
+            font-size: 1em;
         }
         a {
             display: inline-block;
@@ -444,6 +485,16 @@
             height: 24px;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
+            }
+        }
+    }
+    .profile-share {
+        .btn-soft-grey, a:not([href]):not([tabindex]).btn-soft-grey {
+            border: 1px solid $shade-4;
+            padding: 5px;
+            &:hover {
+                border-color: $blue;
+                color: $blue;
             }
         }
     }
@@ -759,7 +810,7 @@
              padding-top: 100px;
         }
         .image-background {
-            width: 100%;
+            width: 300px;
             height: auto;
         }
     }
@@ -840,7 +891,7 @@
             border-radius: 0;
         }
         img {
-            height: 100%;
+            height: auto;
             width: 100%;
         }
     }
@@ -907,7 +958,7 @@
         max-width: 230px;
         cursor:pointer;
         text-transform: none;
-        height: 50px;
+        height: 46px;
         margin-bottom: 5px;
     }
     .card-title-showcase {
@@ -1029,6 +1080,7 @@
         color: $text-color-1;
         margin: 0;
         padding-top: 2px;
+        word-wrap: break-word;
     }
     .card-block {
         padding: 8px 15px;  
@@ -1215,7 +1267,23 @@
     background-color: rgba(200,200,200,0.6);
     // opacity: 0.6;
     display: none;
-    z-index: 10;
+    z-index: 9;
+}
+.page-portfolio {
+    .empty-profile {
+        margin-top: 50px;
+        .text-red {
+            color:$red;
+            font-size: 1.3em;
+        }
+        .empty-text {
+            color: $shade-4;
+            margin-bottom: 0;
+        }
+        .project-button {
+            margin-top: 40px;
+        }
+    }
 }
 .profile-edit-buttons {
     display: none;
@@ -1283,6 +1351,7 @@
 .modal-content  {
     .profile-modal {
         background-color: $site-bg;
+        text-align: left !important;
         label {
             color: $red;
             margin: 0px;
@@ -1328,8 +1397,14 @@
                 height: 480px;
                 max-width: 100%;
                 max-height: 100%;
-                padding: 8px 0px;
+                padding: 14px 0px;
                 background-color: #f3f3f3;
+                -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+				-moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+                .file-browser-btn {
+                    background-color: #fff;
+                }
             }
             input {
                 &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -1485,13 +1560,16 @@
         }
         .modal-footer {
             border-top: none !important;
-            padding: 32px;
+            padding: 0px 32px;
             button {
                 width: 120px;
                 padding: 12px;
                 background-color: #fff !important;
             }
         }
+    }
+    #maker-moment .char-left{
+        color: $shade-4;
     }
 }
 
@@ -1605,9 +1683,10 @@
     a {
         position:relative;
         text-align:center;
-        width:0px;
-        height:0px;
         padding:15px;
+        width: 35px;
+        height: 35px;
+        color:#FFFFFF;
         border-top-right-radius: 	20px;
         border-top-left-radius: 	20px;
         border-bottom-right-radius: 20px;
@@ -1615,20 +1694,18 @@
         -moz-border-radius: 		20px 20px 20px 20px;
         -webkit-border-radius: 		20px 20px 20px 20px;
         -khtml-border-radius: 		20px 20px 20px 20px; 	
-        color:#FFFFFF;
         i {
-            font-size:15px;
+            font-size:1.1em;
             position:absolute;
-            left:3px;
-            top:10px;
+            left:5px;
+            top:12px;
         }
     }
    
     a.social {
-        float: left;
-        margin:0 5px 0 0;
+        margin: 5px 0;
         cursor:pointer;
-        background:$shade-7;
+        background:$shade-4;
         color:#fff;
 	
     }
@@ -1994,10 +2071,10 @@
     position: relative;    
     margin: 15px 0;
     border: none;
-    height: 180px;
     padding: 50px 15px 15px;
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
+    min-height: 188px;
     .icons-side-project {
         position: absolute;
         top: -2px;
@@ -2023,8 +2100,7 @@
     }
     .maker-data {
         max-width: 230px;
-        word-break: break-all;
-        overflow: hidden;
+        word-wrap: break-word;
         .maker-name {
             line-height: 150%;
             @include card-header-font-sm ();
@@ -2329,5 +2405,98 @@ button {
             padding: 12px;
             background-color: #fff !important;
         }
+    }
+}
+.profile-overlay {
+    position: fixed;
+    z-index: 1000;
+    background: rgba(25,25,25,0.9);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.hideData {
+    display: block;
+}
+.showData {
+    display: block !important;    
+}
+.toggleProfile {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid $blue;
+    display: none;
+    i {
+        padding: 7px;
+        color: $blue;
+        font-size: 1.2em;
+        width: auto !important;
+        &.close {
+            display: none;
+        }
+        &.open {
+            display: block;
+        }
+    }
+}
+
+/* create new item on prokect creation */
+.create-item-modal {
+    background-color: $site-bg;
+    label {
+        color: $red;
+        margin: 0px;
+    }
+    textarea {
+        border: 1px solid $shade-2;
+        color: $shade-4;
+        resize: inherit;
+    }
+    input {
+        border: 1px solid $shade-2;
+        color: $shade-4;
+        padding: 12px;
+        background-color: #fff;
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        text-align: center;
+        color: $shade-2;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+        text-align: center;
+        color: $shade-2;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+        text-align: center;
+        color: $shade-2;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+        text-align: center;
+        color: $shade-2;
+        }
+    }
+    .modal-header {
+        border-bottom: none !important;
+        padding: 14px;
+        .close:focus, .close:hover {
+            outline: none !important;
+        }
+    }
+    .modal-footer {
+        border-top: none !important;
+        padding: 32px;
+        button {
+            width: 120px;
+            padding: 12px;
+            background-color: #fff !important;
+            margin-bottom: 0px !important;
+        }
+    }
+    .field-label {
+        font-size: 1em !important;
     }
 }

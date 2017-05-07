@@ -3,7 +3,7 @@ import { ViewService } from '../../../d7services/view/view.service';
 import { RouterModule, Router, NavigationExtras } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, NavigationStart, NavigationEnd } from '@angular/router';
 import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import { MainService } from '../../../d7services/main/main.service';
 import * as globals from '../../../d7services/globals';
@@ -12,6 +12,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Observable } from "rxjs";
 
 
 @Component({
@@ -27,6 +28,9 @@ export class ChallengeProjectComponent implements OnInit {
   selectedProject: number;
   hiddenAfterSubmit: boolean = false;
   userId: number;
+  defaultTabObs: Observable<string>;
+  missionRedirection: string;
+  createProject: string='noProject';
   userName: string;
   nid: number;
   enterStatus = true;
@@ -70,6 +74,8 @@ export class ChallengeProjectComponent implements OnInit {
   checked: false;
   error: string;
   closeResult: string;
+  previousUrl: string;
+
 
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
@@ -81,6 +87,7 @@ export class ChallengeProjectComponent implements OnInit {
     private loaderService: LoaderService,
     private modalService: NgbModal,
   ) { }
+
   ngOnInit() {
     this.buildForm();
     this.cheackenter();
@@ -90,6 +97,17 @@ export class ChallengeProjectComponent implements OnInit {
     this.userName = localStorage.getItem('user_name');
     this.getAllProject();
     this.getChallangeData();
+    this.createProject='test'
+    // set default tab according to url parameter "tab"
+    this.defaultTabObs = this.route.queryParams.map(params => params['projectId']);
+    this.defaultTabObs.subscribe(tab => {
+      if (tab != undefined || tab != '') {
+        
+        this.createProject = decodeURIComponent(tab);
+        
+      }
+      console.log(this.createProject)
+    });
 
   }
 
@@ -216,28 +234,28 @@ export class ChallengeProjectComponent implements OnInit {
 
         this.tab = 'rules';
 
-        var rules = '<a (click)="changeTab()" >' + "Rules & Instructions" + '</a>';
-        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check " + rules + " for details", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+        var rules = '<a id="rules-id" data-nodeId=' + this.nid + '>Rules & Instructions </a>';
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
         this.router.navigate(['/missions/' + this.nid]);
         this.tab = 'rules';
       });
     } else {
       this.error = 'You must agree to challenge rules and eligibility requirements before entering.'
     }
-    // navigate to the misstion with required tab
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'tab': this.tab },
-    };
+
   }
 
   onMyEntries() {
 
   }
-changeTab(){
-console.log("asdsa")
-}
+  changeTab() {
+    console.log("asdsa")
+  }
   createNewProjectForChallenge() {
-    this.router.navigate(['/project/create']);
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'redirectTo': encodeURIComponent('/missions/enter-mission/' + this.nid) },
+    };
+    this.router.navigate(['/project/create'], navigationExtras);
   }
 
   setDayLeft() {

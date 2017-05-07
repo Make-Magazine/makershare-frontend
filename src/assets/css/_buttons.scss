@@ -75,6 +75,7 @@ a:not([href]):not([tabindex]).btn-main{
         color: #fff;
         background-color: $main-button-1*0.8;
         border-color: $main-button-1*0.8;
+        box-shadow: none !important;
     }
 
     &:active, &:hover {
@@ -179,18 +180,23 @@ a:not([href]):not([tabindex]).message-btn {
     font-size: 1.2em;
     margin: auto;
     border: none;
-    background: $blue;
-    margin-top: -1em;
+    background-color: $blue;
+    text-align: left;
+    padding: 0 15px 10px;
+    width: 100%;
+    display: block;
     &:hover, &:focus, &:active {
-        color: $white*0.9;
+        background-color: $blue*0.8;    
         cursor: pointer;
         border: none;
         outline: none;
+        text-align: left;
     }
     .message-icon {
         font-size: 1.7em;
         position: relative;
         bottom: -3px;
+        text-align: left;        
     }
 }
 
@@ -332,6 +338,8 @@ a:not([href]):not([tabindex]).btn-vote {
 a:not([href]):not([tabindex]).btn-load-more{
     background-color:$site-bg;
     border: 1px solid #828282;
+    color: $shade-4;
+    margin-bottom: 30px;
     // &:focus {
     //     color: #fff;
     //     background-color: $main-button-1*0.9;

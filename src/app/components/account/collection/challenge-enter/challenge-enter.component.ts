@@ -71,7 +71,7 @@ export class ChallengeEnterComponent implements OnInit {
     // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    if (this.countEntries == this.challenges.length) {
+    if (this.countEntries >= this.challenges.length) {
 
       this.hideloadmoreentries = true;
 

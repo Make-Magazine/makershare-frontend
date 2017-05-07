@@ -76,6 +76,6 @@ export class defaultSettingsComponent implements OnInit {
     e.preventDefault();
     this.userId = localStorage.getItem('user_id');
     this.mainService.put(globals.endpoint + '/maker_notification_settings_api/' + this.userId, { 'field_email_notifications': this.email_notifications, 'field_web_notifications': this.web_notifications }).subscribe()
-    this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success });
+    this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
   }
 }

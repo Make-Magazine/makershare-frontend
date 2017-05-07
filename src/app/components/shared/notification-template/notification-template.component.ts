@@ -78,4 +78,5 @@ export class NotificationTemplateComponent implements OnInit {
     // when you have the type, you can get the correct path, then route.
   }
 
+
 }

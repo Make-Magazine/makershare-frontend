@@ -26,42 +26,41 @@
               </a>
             </div>
             <div class="media-body" *ngIf="message.count>2">
-              <p class="sender" >You sent a message to
-                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
-              </p>
+              <span class="sender">You sent 
+                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
+              </span>
+              <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
             </div>
             <div class="media-body" *ngIf="message.count<=2">
-              <p class="sender" >You sent a message to
-                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>
-              </p>
+              <span class="sender">You sent 
+                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
+              </span>
+              <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <!--<p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>-->
             </div>
           </div>
-          <div class="message-subject">
+          <!--<div class="message-subject">
             <a (click)="viewMessage(message.thread_id)">
               <h4>{{message.subject}}</h4>
             </a>
-          </div>
-          <div class="message-arrow">
-            <i  class="fa fa-paper-plane" aria-hidden="true"></i>
-          </div>
+          </div>-->
 
-          <div class="delete">
+          <!--<div class="delete">
             <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-          </div>
+          </div>-->
           <div *ngFor="let block of blocked">
             <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
           </div>
         </div>
       </li>
     </ul>
-    <div class="text-center" *ngIf="hideloadmore">
+    <!--<div class="text-center" *ngIf="hideloadmore">
       <div class="button-container-sec-3">
         <a class="btn btn-grey" (click)="loadMore()">Load more</a>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
