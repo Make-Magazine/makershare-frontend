@@ -9,12 +9,13 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view:string;
+  @Input() view: string;
   @Input() front;
 
   badges = [];
   project = {};
   userId;
+  smallWindow: number;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -28,6 +29,11 @@ export class ProjectCardComponent implements OnInit {
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = parseInt(localStorage.getItem('user_id'));
+    this.smallWindow = window.innerWidth;
+    
+    window.onresize = (e) => {
+        this.smallWindow = window.innerWidth;
+    }
   }
   getProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.nid]]).subscribe(res => {
@@ -36,19 +42,19 @@ export class ProjectCardComponent implements OnInit {
       var categories_array = categories_string.split(', ');
       res[0].project_categories = categories_array;
       var membership_string = res[0].field_team_members;
-      membership_string =  membership_string.substring(0,  membership_string.length - 1);
-      var  membership_array =  membership_string.split(',');
+      membership_string = membership_string.substring(0, membership_string.length - 1);
+      var membership_array = membership_string.split(',');
       res[0].field_team_members = membership_array;
 
       var membership_uid_string = res[0].field_maker_memberships_uid;
-      membership_uid_string =  membership_uid_string.substring(0,  membership_uid_string.length - 1);
-      var  membership_uid_array =   membership_uid_string.split(',');
+      membership_uid_string = membership_uid_string.substring(0, membership_uid_string.length - 1);
+      var membership_uid_array = membership_uid_string.split(',');
       res[0].field_maker_memberships_uid = membership_uid_array;
 
 
       this.project = res[0];
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
-      this.project['maker_project_count'] = data[0];
+        this.project['maker_project_count'] = data[0];
       });
     });
   }

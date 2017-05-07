@@ -11,13 +11,13 @@
         <div class="d-flex flex-column m-auto profile-edit-buttons">
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
-            <div class="d-flex flex-column">
+            <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
-            <div class="d-flex flex-column">
+            <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
-            <div class="d-flex flex-column ml-auto">
+            <div [ngClass]="{'ml-auto': Visibility != 1115,'m-auto': Visibility == 1115}" class="d-flex flex-column ml-auto">
               <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
             </div>
           </div>
@@ -56,7 +56,8 @@
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
-              <span>70</span>
+              <span *ngIf="projectCard.profile_views">{{projectCard.profile_views}}</span>
+              <span *ngIf="!projectCard.profile_views">0</span>
             </li>
           </ul>
         </div>
@@ -74,10 +75,10 @@
         <div class=" d-flex flex-column m-auto">
           <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
-            <div class="d-flex flex-column">
+            <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
             </div>
-            <div class="d-flex flex-column">
+            <div  *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
             </div>
             <div class="d-flex flex-column ml-auto">
@@ -128,7 +129,8 @@
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
+                <span *ngIf="projectCard.profile_views">{{projectCard.profile_views}}</span>
+                <span *ngIf="!projectCard.profile_views">0</span>
               </li>
             </ul>
           </div>

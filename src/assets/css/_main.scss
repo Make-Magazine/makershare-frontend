@@ -322,8 +322,8 @@ body {
         content: ' ';
         width: 0;
         height: 0;
-        border-top: 15px solid transparent;
-        border-bottom: 14px solid transparent;
+        border-top: 14px solid transparent;
+        border-bottom: 13px solid transparent;
         left: 100%;
         position: absolute;
         top: 0px;
@@ -590,6 +590,7 @@ ngb-typeahead-window {
         padding-top: 10px !important;
         .message {
             margin-top: 10px;
+            color: #fff !important;
         }
         .close-click {
             position: absolute;
@@ -602,7 +603,7 @@ ngb-typeahead-window {
             }
         }
     }
-    .error {
+    .error ,.warning{
         background-color: $shade-4 !important;
         border-bottom: 1px solid $shade-4 !important;
         height: 45px !important;
@@ -611,6 +612,7 @@ ngb-typeahead-window {
         padding-top: 10px !important;
         .message {
             margin-top: 10px;
+            color: #fff !important;
         }  
         .close-click {
             position: absolute;
@@ -724,7 +726,24 @@ ngb-typeahead-window {
         .not-seen {
             .notification-container {
                 background-color: rgba(241, 241, 241, 0.53);
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
+    }
+}
+.disabled {
+    color: rgba(0,0,0,.3);
+}
+.coming-soon {
+    position: relative;
+    .coming-soon-text {
+        position: absolute;
+        font-size: 0.5em;
+        color: $red;
+        right: 0;
+        bottom: -8px;
+        text-transform: uppercase;
     }
 }

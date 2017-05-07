@@ -7,7 +7,7 @@ import { Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent implements OnInit {
-  searchQuery: string;
+  searchQuery: string = '';
   constructor(
     private router: Router,
   ) { }
@@ -32,8 +32,10 @@ export class SearchBoxComponent implements OnInit {
   }
 
   keyDownFunction(event) {
-    if(event.keyCode == 13) {
+    if(event.keyCode == 13 && this.searchQuery.length > 0) {
       this.goSearch();
+    }else if(event.keyCode == 13 && this.searchQuery.length == 0){
+      this.closeSearchBox();
     }
   }
 

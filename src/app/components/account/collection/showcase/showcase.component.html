@@ -5,28 +5,22 @@
 <div *ngIf="showcases.length>0">
   <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
   <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-  <table class="table">
-    <thead>
-      <!--<tr>
-        <th></th>
-        <th>showcase Name</th>
-        <th>showcase Image</th>
-        <th>Delete</th>
-      </tr>-->
-    </thead>
-    <tbody>
-      <tr *ngFor="let showcase of showcases let i=index;">
-        <!--<div class="select" *ngIf="showcase">-->
-        <!--<input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">-->
-        <!--</div>-->
-        <td [routerLink]="['/showcases/',showcase.nid]" *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></td>
-        <td [routerLink]="['/showcases/',showcase.nid]" *ngIf="showcase"><span>{{showcase.project_name}}</span></td>
-        <!--<td class="delete">-->
-        <!--<a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>-->
-        <!--</td>-->
-      </tr>
-    </tbody>
-  </table>
+  <div class="media bookmark-item bookmark-showcase" *ngFor="let showcase of showcases let i=index;">
+    <div class="media-left">
+      <div class="book-img" [routerLink]="['/showcases/',showcase.nid]" *ngIf="showcase"><img class="d-flex mr-3" src="{{showcase.showcase_cover_photo}}" alt="" class="img-responsive"></div>
+    </div>
+    <div class="media-body">
+      <!--<div class="select" *ngIf="showcase">-->
+      <!--<input type="checkbox" value="{{showcase.nid}}" [(ngModel)]="showcase.state" (change)="valueChanged(showcase.nid,$event)">-->
+      <!--</div>-->
+      <div class="title" [routerLink]="['/showcases/',showcase.nid]" *ngIf="showcase"><span>{{showcase.project_name}}</span></div>
+    </div>
+    <div class="media-right">
+      <div class="delete">
+        <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="text-center">
   <div class="button-container-main-2" *ngIf="!hideloadmoreshowcase">

@@ -22,6 +22,7 @@ export class ProjectsComponent implements OnInit {
   userName;
   @Input('uid') uid;
   @Input('view') view;
+  @Input('userFullName') userFullName;
   page_arg;
   countProject = 0;
   hideloadmoreproject = false;
@@ -38,6 +39,7 @@ export class ProjectsComponent implements OnInit {
           this.userName = params['user_name'];
         });
         this.userService.getIdFromUrl(this.userName).subscribe(data => {
+          console.log(this.userName)
           this.uid = data.uid;
           this.getProjects();
           this.getCountProject();
@@ -45,6 +47,9 @@ export class ProjectsComponent implements OnInit {
         }, err => {
 
         });
+      } else {
+        this.getProjects();
+        this.getCountProject();
       }
     }, err => {
     });
@@ -62,6 +67,7 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);  
+      console.log(this.profile_projects);
       this.meta.setTitle(`Maker Share | Projects`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects Projects ');

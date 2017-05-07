@@ -156,8 +156,8 @@ footer {
                 color: #00AEEF;
                 font-size: 10px;
                 position: absolute;
-                bottom: -12px;
-                right: 6px;
+                bottom: 0px;
+                right: 4px;
             }
         }
         .second-logo-link {
@@ -165,13 +165,13 @@ footer {
             border-left: 1px solid #4f4f4f;
         }
         .first-logo {
-            width: 100px;
-            height: 75px;
-            max-width: 100px;
+            width: 80px;
+            // height: 75px;
+            max-width: 80px;
         }
         .second-logo {
-            width: 170px;
-            max-width: 170px;
+            width: 140px;
+            max-width: 140px;
         }
         p {
             margin: 0;
@@ -477,8 +477,13 @@ footer {
     min-height: 150px;
     max-height: 170px;
     img {
-       height: 234px;
+       height: auto !important;;
+       width: 100% !important;
     }
+}
+.carousel-img-container {
+    width: 263px !important;
+    height: 210px !important;
 }
 
 
