@@ -58,6 +58,9 @@ export class TeamComponent implements OnInit {
     this.buildForm();
     let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(this.project.field_maker_memberships.und[0].field_team_member.und[0].target_id);
     this.InvitationEmails = new UserInvitations(uid, this.project.nid);
+    setTimeout(function(){
+       $("html,body").animate({scrollTop: 0}, "slow");
+    }, 0);
   }
   
   buildForm(): void {
@@ -214,7 +217,7 @@ export class TeamComponent implements OnInit {
     sidebarText = {
     'team': {
       'title': 'Your Team:',
-      'guide': 'If you worked on this project with other members of the community, this is the place to let everyone know. By putting their information here, this project will be shared across all of your portfolios. What to take ownership of your portion of the project, add that information to the Story of the project.'
+      'guide': 'Enter any members of the community who worked on this project with you. This project will also appear in their portfolios. Everyone’s roles on the project can be detailed as much as desired. The Admin is the only team member allowed to add additional members to the team.'
       }
     }
-}
+}     

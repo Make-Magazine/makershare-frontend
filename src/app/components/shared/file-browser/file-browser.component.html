@@ -10,7 +10,7 @@
       </div>
       <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
       <div class="upload-pic-footer col-md-12 col-sx-12" *ngIf="fileManageService.files">
-        <button class="btn btn-load-more m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
+        <button class="btn btn-load-more file-browser-btn m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load more</button>
       </div>
     </div>
   </div>

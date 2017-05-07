@@ -15,6 +15,7 @@ import { MetaService } from '@nglibs/meta';
             <button class="dropdown-item" (click)="sortAsc($event)">Title A-Z</button>
             <button class="dropdown-item" (click)="sortDesc($event)">Title Z-A</button>
             <button class="dropdown-item" (click)="mostLiked($event)">Most liked</button>
+            <button class="dropdown-item" (click)="mostViewed($event)">Most viewed</button>
            
           </div>
         </div>
@@ -79,6 +80,12 @@ export class ShowcaseSortingComponent implements OnInit {
     this.sort.sort_by = "count"
     this.sortType.emit(this.sort);
     this.ActionName = "Most liked"
+  }
+    mostViewed(sort: string) {
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php"
+    this.sortType.emit(this.sort);
+    this.ActionName = "Most Viewed"
   }
   // mostViewed(sort: string) {
   //   this.sort.sort_order = "DESC";

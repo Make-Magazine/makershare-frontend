@@ -60,7 +60,7 @@ export class EditProfileComponent implements OnInit {
   saveNext(NewTab:string) {
     if(!this.CurrentTabValidation){
       //show error message for validation
-      this.notificationBarService.create({ message: '*There are some required fields need to be filled', type: NotificationType.Error});
+      this.notificationBarService.create({ message: '*There are some required fields need to be filled', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false});
       return;
     }
     if(this.BasicInfoSaved){

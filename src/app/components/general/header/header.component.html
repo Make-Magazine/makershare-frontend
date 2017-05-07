@@ -1,15 +1,23 @@
 <header class="main-header">
-  <nav class="container-fluid navbar navbar-toggleable-md navbar-light bg-faded justify-content-md-start navbar-toggleable-sm flex-row">
+  <nav class="container-fluid 
+              navbar 
+              navbar-toggleable-md 
+              navbar-light bg-faded 
+              justify-content-md-start 
+              align-items-center
+              navbar-toggleable-sm 
+              flex-row">
     <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#MainNav" aria-controls="MainNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>-->
-    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/Maker-Share-Logo.svg" alt=""><span>BETA</span></a>
+    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logos/Maker-Share-Logo.svg" alt=""><span>BETA</span></a>
     <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
       <ul class="list-unstyled login-block">
         <li *ngIf="!auth.authenticated()"><a (click)="auth.login()">Join / Log in</a></li>
-        <li *ngIf="auth.authenticated()"><app-notification-panel></app-notification-panel>
-          </li>
+        <li *ngIf="auth.authenticated()">
+          <app-notification-panel></app-notification-panel>
+        </li>
         <li class="min-user-img" *ngIf="auth.authenticated()">
           <div ngbDropdown class="d-inline-block account-controls dropdown">
             <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>
@@ -39,9 +47,9 @@
             <a [routerLink]="['showcases']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Showcases</a>
             <a [routerLink]="['missions']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Missions</a>
             <a [routerLink]="['workshops']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Workshops</a>
-            <hr *hideItBootstrap="['md','lg', 'xl']">
-            <a [routerLink]="['project/create']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item add-project">Add a Project</a>
-            <hr *hideItBootstrap="['md','lg', 'xl']">
+            <hr *hideItBootstrap="['sm','md','lg', 'xl']">
+            <a [routerLink]="['project/create']" *hideItBootstrap="['sm','md','lg', 'xl']" class="dropdown-item add-project">Add a Project</a>
+            <hr *hideItBootstrap="['sm','md','lg', 'xl']">
             <!--<a [routerLink]="['the-maker-movement']" class="dropdown-item">The Maker Movement</a>-->
             <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
             <a [routerLink]="['guidelines']" class="dropdown-item">Community Guidelines</a>
@@ -71,13 +79,18 @@
           <a class="nav-link" [routerLink]="['missions']">Missions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Learning</a>
+          <a class="nav-link disabled coming-soon">Learning<span class="coming-soon-text">Coming soon</span></a>
         </li>
         <li class="nav-item hidden-md-up">
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
         </li>
-        <li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>
+        <!--<li class="nav-item button-container-main-1" *ngIf="auth.authenticated()"><a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"><i class="fa fa-lg fa-plus"></i> <span>Add a</span> Project</a></li>-->
       </ul>
+    </div>
+    <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
+      <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']">
+        <i class="fa fa-lg fa-plus"></i> Add a Project
+      </a>
     </div>
   </nav>
 
