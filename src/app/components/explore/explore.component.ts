@@ -93,8 +93,8 @@ export class ExploreComponent implements OnInit {
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
-     // this.projects = data;
-      this.projects = this.projects.concat(data);
+      this.projects = data;
+      //= this.projects.concat(data);
             this.loadMoreVisibilty();
 
 
@@ -195,6 +195,18 @@ export class ExploreComponent implements OnInit {
 
   }
   /* end function to sort challenge MostLiked */
+    /* function to sort challenge mostViewed */
+  mostViewed() {
+    this.projects = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php"
+    this.ActionName = "Most viewed"
+
+    this.getProjects();
+
+  }
+  /* end function to sort challenge mostViewed */
 
   /* function to sort challenge MostForked */
   mostForked() {

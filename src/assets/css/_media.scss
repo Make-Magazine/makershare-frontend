@@ -99,6 +99,16 @@
             }
         } 
     } 
+    .page-create-project-why {
+        .how-to {
+            .difficulties ,
+            .durations  {
+                i.dropdownIcon {
+                    right: 30px;
+                }
+            }
+        } 
+    }
 }
 
 @media (max-width: 767px) {
@@ -273,6 +283,11 @@
             }
         }
     }
+    .project {
+        .image-top {
+            height: 260px;
+        }
+    }
 }
 
 @media (min-width: 1200px) {
@@ -305,7 +320,11 @@
     }
 }
 
-@media only screen and (max-width: 525px) {}
+@media only screen and (max-width: 525px) {
+    .project-button {
+        display: none;
+    }
+}
 
 @media only screen and (max-width: 623px) {}
 
@@ -462,6 +481,36 @@
             width: 325px;
         }
      }
+     header.main-header {
+          .login-block li{
+              &.search-icon, 
+              &.hamburger-menu {
+                  margin-left: 10px;
+              }
+              .btn {
+                  padding: 0 5px;
+              }
+          }
+          &.shrink {
+            nav.navbar {
+                #MainNav {
+                    .nav-item 
+                    a {
+                        font-size: 1.1em;
+                    }
+                }
+            }
+          }
+     }
+     header.main-header.shrink 
+     .navbar-toggleable-sm {
+          .navbar-nav {
+              .nav-link {
+                    padding-right: 0.2rem;
+                    padding-left: 0.2rem;
+              }
+          }
+     }
 }
 
 @media only screen and (min-width: 992px) {
@@ -493,6 +542,9 @@
         } 
     } 
     .project {
+        .image-top {
+            height: 228px;
+        }
         .maker-name {
             margin-top: 5px;
         }

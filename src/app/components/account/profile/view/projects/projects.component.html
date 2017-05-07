@@ -7,19 +7,21 @@
                       class="project-item" 
                       [view]="view">
     </app-project-card>
-    <div *ngIf="!profile_projects[0]">
+    <div *ngIf="profile_projects.length == 0" class="col-12">
       <div class="empty-content row">
         <div class="col-lg-12 col-md-12">
-          <h3>This Maker hasn't created any projects yet</h3>
+          <div  class="empty-profile text-center mx-auto">
+            <p class="text-red">PROJECTS IN PROGRESS</p>
+            <h2>Check back soon</h2>
+            <p class="empty-text">to see what {{userFullName}} has been making</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <!-- End project grid -->
   <div class="text-center">
-    <div class="button-container-main-2" *ngIf="!hideloadmoreproject && profile_projects[0]">
-      <a class="btn btn-main-2"  (click)="loadMoreProject()">Load more</a>
-    </div>
+    <a class="btn btn-load-more" *ngIf="!hideloadmoreproject && profile_projects[0]" (click)="loadMoreProject()">Load more</a>
   </div>
 </div>
 <!-- End profile content -->

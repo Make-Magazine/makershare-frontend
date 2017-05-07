@@ -592,6 +592,7 @@ header.showcase-project {
 					    font-size: 16px;
     					margin-right: 10px;
     					color: $title-color;
+							cursor: pointer;
 					}
 					.feed-timestamp {
 						p {
@@ -605,7 +606,9 @@ header.showcase-project {
 						
 					}
 					.user-nickname {
-						font-weight: bold
+						@include body-font-2();
+						color:$text-color-1 ;
+						cursor: pointer;
 					}
 					p {
 						font-size: 14px;
@@ -626,6 +629,7 @@ header.showcase-project {
 					    width: 50px;
 					    height: 50px;
 					    margin: 0 auto;
+								cursor: pointer;
 					}
 				}
 				.media-body {
@@ -762,7 +766,7 @@ header.showcase-project {
 				position: absolute;
 				bottom: -20px;
 				padding-left: 14px;
-				z-index: 105;
+				z-index: 10;
 					.project-badge {
 						width: auto;
 						img {
@@ -780,7 +784,7 @@ header.showcase-project {
 			    padding: 0px;
     	.card-container {
         position: relative;
-				height: 95%;				
+				height: 100%;				
 				.card {
 					border: none;
 					min-height: 400px;
@@ -811,6 +815,7 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
+						word-wrap: break-word;
         }
         .card-description {
             h4 {
@@ -829,7 +834,7 @@ header.showcase-project {
 					margin-bottom: 2px;
 				}
 				.topics {
-						height: 100%;
+						height: auto;
     				padding-bottom: 18px;
 				}
 				.card-tags {
@@ -849,6 +854,8 @@ header.showcase-project {
 				}
 				.project-card-footer {
 						margin: 14px 0px;
+						overflow: hidden;
+						height: 73px;
 						ul {
 							margin: 0 auto;
 							li {
