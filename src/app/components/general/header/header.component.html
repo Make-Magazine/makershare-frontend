@@ -4,7 +4,7 @@
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>-->
-    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/logo.png" alt=""><span>BETA</span></a>
+    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/images/Maker-Share-Logo.svg" alt=""><span>BETA</span></a>
     <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
       <ul class="list-unstyled login-block">
         <li *ngIf="!auth.authenticated()"><a (click)="auth.login()">Join / Log in</a></li>
@@ -71,7 +71,7 @@
           <a class="nav-link" [routerLink]="['missions']">Missions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['workshops']">Learning</a>
+          <a class="nav-link disabled">Learning</a>
         </li>
         <li class="nav-item hidden-md-up">
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>

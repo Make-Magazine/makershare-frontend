@@ -22,10 +22,83 @@
       padding: 15px;
       margin-bottom: 20px;
       td {
-        border-top: 1px solid #dcdcdc;
+        border-top: none !important;
+        width: 50%;
+        @include card-header-font-sm ();
+        img,span {
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
       th {
-        border-top: 1px solid #dcdcdc;
+        border-top: none !important;
+        border-bottom: none !important;
+        width: 50%;
+        @include card-header-font-sm ();
+        color: $shade-7 !important;
+      }
+      tr {
+        display: flex;
+        align-items:center;							
+        width: 100%;
+        overflow: hidden;
+        padding: 10px;
+        @include boxShadow(2px, 2px, 8px,$light-grey);
+        background-color: white;
+        margin: 10px 0;
+        &:hover {
+          @include boxShadow(2px, 2px, 8px,#aaaaaa);
+        }
+      }
+      .msgs-bookamrk {
+        margin-top: 20px;
+        padding-left: 20px;
+      }
+      .bookmark-item  {
+        display: flex;
+        align-items:center;							
+        width: 100%;
+        overflow: hidden;
+        padding: 10px;
+        @include boxShadow(2px, 2px, 8px,$light-grey);
+        background-color: white;
+        margin: 10px 0;
+        &:hover {
+          @include boxShadow(2px, 2px, 8px,#aaaaaa);
+        }
+          .media-left {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+            img {
+              width: 100%;
+              height: auto;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+					}
+          .media-body {
+            padding: 6px;
+            .title {
+              @include card-header-font-sm ();
+              &:hover {
+                cursor:  pointer;
+              }
+            }
+          }
+          .media-right {
+            .delete {
+              padding: 10px;
+              a {
+                overflow: hidden;
+                color: #333333;
+                position: relative;
+                font-size: 1.5em;
+              }
+            }
+          }
       }
   }
 }

@@ -13,33 +13,15 @@
   </header>-->
   <!--/header -->
   <div class="container inbox-container">
-    <section class="inbox-controls">
-      <!--<div class="selectall">
-        <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
-      </div>-->
-      <!--<app-delete-modal>Delete</app-delete-modal>-->
-      <!--<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-      <div *ngIf="noMessage" class="mx-auto" style="width: 38%">
-        <h3>You did not have any messages</h3>
-      </div>
-      <div class="dropdown float-right">
-        <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
-          <button class="btn btn-main btn-sharp new-message" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
-        </div>
-      </div>
-      <a class="btn btn-main btn-sharp new-message" *ngIf="!hideTurnOn" (click)="open(content)"><i class="fa fa-lg fa-plus" ></i>New Message</a>
-      <button [routerLink]="['/account/inbox/blocked']" class="btn btn-secondary btn-lg active new-message">Blocked users</button>
-    </section>
+    <div *ngIf="noMessage" class="mx-auto" style="width: 38%">
+      <h3>You did not have any messages</h3>
+    </div>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg; let i=index;">
         <!--<div class="select" *ngIf="message">
           <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)">
         </div>-->
-        <div class="wrapper d-flex d-row" *ngIf="message">
+        <div class="wrapper d-flex d-row" *ngIf="message.reciver">
           <div class="media message-info">
             <div class="media-left">
               <a (click)="userProfile(message.first_name,message.last_name)">
@@ -47,32 +29,24 @@
               </a>
             </div>
             <div class="media-body" *ngIf="message.count>2">
-              <p class="sender" *ngIf="message.sender">You sent a message to
+              <!--<p class="sender" *ngIf="message.sender">You sent a message to
                 <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
-              </p>
-              <p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
+              </p>-->
+              <p class="sender" ><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
+              <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
             <div class="media-body" *ngIf="message.count<=2">
-              <p class="sender" *ngIf="message.sender">You sent a message to
+              <!--<p class="sender" *ngIf="message.sender">You sent a message to
                 <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>
-              </p>
-              <p class="sender" *ngIf="message.reciver"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>sent you a message</p>
+              </p>-->
+              <p class="sender" ><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
+              <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>              
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
           </div>
-          <div class="message-subject">
-            <a (click)="viewMessage(message.thread_id)">
-              <h4>{{message.subject}}</h4>
-            </a>
-          </div>
-          <div class="message-arrow">
-            <i *ngIf="message.reciver" class="fa fa-inbox" aria-hidden="true"></i>
-            <i *ngIf="message.sender" class="fa fa-paper-plane" aria-hidden="true"></i>
-          </div>
-
           <div class="delete">
-            <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
+            <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
           </div>
           <div *ngFor="let block of blocked">
             <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
@@ -80,55 +54,11 @@
         </div>
       </li>
     </ul>
-    <div class="text-center" *ngIf="hideloadmore">
+    <!--<div class="text-center" *ngIf="hideloadmore">
       <div class="button-container-sec-3">
         <a class="btn btn-grey" (click)="loadMore()">Load more</a>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
-<div class="modal-message">
-  <!-- Trigger the modal with a button -->
-  <!-- Modal -->
 
-  <template #content let-c="close" let-d="dismiss" ngbModalContainer>
-    <div class="modal-header">
-      <button type="button" class="close" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
-      <span aria-hidden="true" >&times;</span>
-    </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
-        id="createMsg" class="form-horizontal">
-        <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
-          {{user[0].first_name}} {{user[0].last_name}}
-          <i (click)="unSetMember(i)" class="fa fa-lg fa-close close"></i>
-          <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
-        </div>
-        <div class="form-group">
-          <label class="control-label">To:</label>
-          <input #myInput type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name to send" [ngbTypeahead]="search"
-            [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
-        </div>
-        <div class="form-group subject">
-          <label class="control-label">Subject</label>
-          <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
-        </div>
-        <div *ngIf="formErrors.subject" class="alert alert-danger">
-          {{ formErrors.subject }}
-        </div>
-        <div class="form-group message-text">
-          <label class="control-label">Message</label>
-          <textarea name="body" id="body" cols="110" rows="10" formControlName="body"></textarea>
-        </div>
-        <div *ngIf="formErrors.body" class="alert alert-danger">
-          {{ formErrors.body }}
-        </div>
-        <ul class="list-unstyled actions">
-          <li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>
-          <li><button type="submit" class="btn btn-blue btn-sharp" (click)="c('Close click')" (click)="onSubmit($event)">Send</button></li>
-        </ul>
-        </form>
-    </div>
-  </template>
-</div>

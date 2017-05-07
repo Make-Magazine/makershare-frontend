@@ -85,7 +85,7 @@ export class ProjectComponent implements OnInit {
 * delete selected messages
 */
   deleteMessages() {
-
+this.countProject--;
     for (var i = 0; i < this.deletedArr.length; i++) {
       this.flagService.unflag(this.deletedArr[i], this.userId, 'node_bookmark').subscribe(response => {
         this.getProjectBookmark();
@@ -122,7 +122,7 @@ export class ProjectComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    if (this.countProject == this.projects.length) {
+    if (this.countProject >= this.projects.length) {
 
       this.hideloadmoreproject = true;
 

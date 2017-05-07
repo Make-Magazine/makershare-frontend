@@ -432,6 +432,12 @@
             top: -20px;
         }      
     }
+    .toggleProfile {
+        display: block;
+    }
+    .hideData {
+        display: none ;
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {}
@@ -461,11 +467,6 @@
 @media only screen and (min-width: 992px) {
     .modal-lg, .modal-dialog {
         max-width: 1110px;
-    }
-    .profile-sidebar {
-        .profile-container {
-            top: -40px;
-        }
     }
     .delete-promodal {
         .modal-dialog{
@@ -500,7 +501,16 @@
         }
     }
 }
-
+@media only screen and (min-width: 768px) {
+    .profile-sidebar {
+        .profile-container {
+            top: -85px;
+            &.myprofile {
+                top: -40px;
+            }
+        }
+    }
+}
 @media only screen and (min-width: 1200px) {}
 
 

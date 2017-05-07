@@ -1,20 +1,98 @@
-  <div class="page-inbox">
-    <div class="inbox-title mx-auto" >
-     <h1>Messages</h1>
+<template #rt let-r="result" let-t="term">
+  <div class="user-image-container">
+    <app-user-card-msgs [uid]="r.uid"></app-user-card-msgs>
+  </div>
+</template>
+<div class="page-inbox">
+  <div class="text-center p-3">
+    <h1 *ngIf="current_active_tab == 'messages'">Messages</h1>
+    <h1 *ngIf="current_active_tab == 'notifications'">Notificatoins</h1>
+    <h1 *ngIf="current_active_tab == 'sent'">Sent Messages</h1>
+  </div>
+  <div class="container header-contaner d-flex flex-row">
+    <header class="inbox-header mr-auto">
+      <ul class="list-unstyled d-flex flex-row aling-self-center align-content-lg-center">
+        <li><a (click)="current_active_tab = 'messages'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
+        <li><a (click)="current_active_tab = 'notifications'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'notifications' }">Notificatoins</a></li>
+        <li><a (click)="current_active_tab = 'sent'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>
+      </ul>
+    </header>
+    <div class="inbox-container ml-auto">
+      <section class="inbox-controls d-flex justify-content-end align-items-center">
+        <!--<div class="selectall">
+          <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
+        </div>-->
+        <!--<app-delete-modal>Delete</app-delete-modal>-->
+        <!--<a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
+        <span class="new-message d-flex align-items-end" *ngIf="!hideTurnOn" (click)="open(content)"><i class="lnr lnr-envelope"></i> <p>NEW MESSAGE</p></span>
+        <button [routerLink]="['/account/inbox/blocked']" class="btn btn-load-more blocked-user">Blocked users</button>
+        <div class="dropdown">
+          <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="lnr lnr-cog" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="btn btn-main btn-sharp new-message-switch" *ngIf="!hideTurnOn" (click)="turnOffMessages()">Turn Off Messages</button>
+            <button class="btn btn-main btn-sharp new-message-switch" *ngIf="hideTurnOn" (click)="turnOnMessages()">Turn on Messages</button>
+          </div>
+        </div>
+      </section>
     </div>
-  <header class="inbox-header container d-flex justify-content-center">
-   
-    <ul class="list-unstyled d-flex flex-row aling-self-center align-content-lg-center">
-      <li><a  (click)="current_active_tab = 'notifications'" class="btn btn-create-tab"  [ngClass]="{'active': current_active_tab == 'notifications' }">Notificatoins</a></li>
-      <li><a  (click)="current_active_tab = 'messages'" class="btn btn-create-tab"  [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
-      <li><a  (click)="current_active_tab = 'sent'" class="btn btn-tab"  [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>
-    </ul>
-  </header>
+
+  </div>
   <div class="nav-create">
     <div class="container">
-      <app-inbox *ngIf="current_active_tab == 'messages'" class="row"></app-inbox>
-      <app-sent *ngIf="current_active_tab == 'sent'" class="row"></app-sent>
-      <notifications-list *ngIf="current_active_tab == 'notifications'" class="row"></notifications-list>
+      <app-inbox *ngIf="current_active_tab == 'messages'"></app-inbox>
+      <app-sent *ngIf="current_active_tab == 'sent'"></app-sent>
+      <notifications-list *ngIf="current_active_tab == 'notifications'"></notifications-list>
     </div>
   </div>
-  </div>
+</div>
+
+<div class="modal-message">
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+
+  <template #content let-c="close" let-d="dismiss" ngbModalContainer>
+    <div class="create-newmsg">
+      <div class="modal-header">
+        <button type="button" class="close ml-auto" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
+          <span aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
+          id="createMsg" class="form-horizontal">
+          <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
+            {{user[0].first_name}} {{user[0].last_name}}
+            <i (click)="unSetMember(i)" class="fa fa-times"></i>
+            <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
+          </div>
+          <div class="form-group">
+            <label class="control-label">To:</label>
+            <input #myInput type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name to send" [ngbTypeahead]="search"
+              [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
+          </div>
+          <div class="form-group subject">
+            <label class="control-label">Subject</label>
+            <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
+          </div>
+          <div *ngIf="formErrors.subject" class="alert alert-danger">
+            {{ formErrors.subject }}
+          </div>
+          <div class="form-group message-text">
+            <label class="control-label">Message</label>
+            <textarea name="body" id="body" cols="129" rows="10" formControlName="body"></textarea>
+          </div>
+          <div *ngIf="formErrors.body" class="alert alert-danger">
+            {{ formErrors.body }}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer mt-auto">
+        <button href="" class="btn btn-load-more" (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
+        <button type="submit" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
+      </div>
+    </div>
+  </template>
+</div>

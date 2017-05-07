@@ -8,7 +8,7 @@ import { StatisticsService } from '../../../d7services/statistics/statistics.ser
   templateUrl: './notification-panel.component.html'
 })
 export class NotificationPanelComponent implements OnInit {
-  notifications;
+  notifications = [];
   userId;
   countNotifications;
   newCount: number = 0;
@@ -26,7 +26,10 @@ export class NotificationPanelComponent implements OnInit {
         this.getNotifications();
         this.getNewCont();
         this.getNotificationsCount();
-
+        let self = this;
+        var timer = setInterval(function(){
+          self.reload();
+        }, 120000);
       }
     }, err => {
       console.log('user not logged in');
@@ -34,9 +37,8 @@ export class NotificationPanelComponent implements OnInit {
   }
   getNotifications() {
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.userId]]).subscribe(data => {
-      console.log(data);
       this.notifications = data;
-      this.lastSeen();
+
     }, err => {
       console.log(err);
     });
@@ -70,5 +72,11 @@ export class NotificationPanelComponent implements OnInit {
         this.statisticsService.notificationSetLastSeen(data.user.uid, this.notifications[0].mid).subscribe();
       }
     });
+  }
+
+  reload() {
+    this.getNotifications();
+    this.getNewCont();
+    this.getNotificationsCount();
   }
 }

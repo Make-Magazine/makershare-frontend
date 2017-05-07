@@ -228,9 +228,6 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
           for(let i=0; i < data.field_resources.und.length ; i++){
             let resource = x[index];
             if(resource['field_resource_file'].und){
-              let value = resource['field_label'].und[0].tid;
-              delete resource['field_label'].und;
-              resource['field_label'].und = value;
               this.project.field_resources.und.push(resource as field_collection_item_resource);
               this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
             }
@@ -335,7 +332,6 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
     let owner:field_collection_item_member = {
       field_team_member:{und:[{target_id:localStorage.getItem("user_name")+' ('+localStorage.getItem("user_id")+')'}]},
       field_membership_role:{und:[{value:'admin'}]},
-      field_sort_order:{und:[{value:1}]},
     }
     this.project.SetField(owner,'field_maker_memberships');
     this.ProjectLoaded = true;
@@ -345,6 +341,7 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject(){
+    this.current_active_tab = 'Your Story';
     if(this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371){
       this.project.CheckIfReadyToPublic();
     }
@@ -530,11 +527,11 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
         tab = 'draft';
       }else if (visibility == 371){
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success});
+        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});
         tab = 'private';
       }else {
         // save is public
-        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success});        
+        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});        
         tab = 'public';
       }
       
@@ -546,7 +543,7 @@ export class ProjectFormComponent implements OnInit,ComponentCanDeactivate {
 
       }else if (visibility == 371){
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success});
+        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false});
         tab = 'private';
       }else {
         // save is public

@@ -112,7 +112,7 @@ export class ChallengeFollowComponent implements OnInit {
     // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    if (this.countFollow == this.challenges.length) {
+    if (this.countFollow >= this.challenges.length) {
 
       this.hideloadmorefollowchallenge = true;
 

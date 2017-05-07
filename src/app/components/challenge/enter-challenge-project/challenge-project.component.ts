@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services/view/view.service';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router, NavigationExtras } from '@angular/router';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -20,6 +20,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 })
 export class ChallengeProjectComponent implements OnInit {
   addProjectForm: FormGroup;
+  tab: string
   countProjects = 0;
   button = false;
   projects: IChallengeProject[];
@@ -134,7 +135,7 @@ export class ChallengeProjectComponent implements OnInit {
           var todayDate = new Date();
           let dateArray = this.challangeData.challenge_end_date.value.split(" ");
           let YearDayMonth = dateArray[0].split("-");
-          var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
+          var endDate = new Date(+YearDayMonth[0], +YearDayMonth[1], +YearDayMonth[2]);
           var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
 
           if (diffDays >= 0) {
@@ -155,7 +156,7 @@ export class ChallengeProjectComponent implements OnInit {
   /* function to change data format */
   changeDateFormat(date) {
     var d;
-    if(!date)
+    if (!date)
       return '';
     date = date.split(" ")[0];
     // d = new Date(date);
@@ -167,7 +168,7 @@ export class ChallengeProjectComponent implements OnInit {
     // var day = d.getDate();
     // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
-    return date[1]+'/'+date[2]+'/'+date[0];
+    return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
   updateSelectedProject(item: any) {
@@ -195,7 +196,7 @@ export class ChallengeProjectComponent implements OnInit {
         this.router.navigate(['missions/', this.nid]);
         this.loaderService.display(false);
 
-        this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success,allowClose:true,autoHide:false,hideOnHover:false });
+        this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
         /* bookmark auto after submit project challenge */
         if (this.nid) {
           this.flagService.flag(this.nid, this.userId, 'node_bookmark').subscribe(response => {
@@ -212,19 +213,29 @@ export class ChallengeProjectComponent implements OnInit {
         /* end follow  */
       }, err => {
         this.loaderService.display(false);
-        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements", type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false});
-        this.router.navigate(['/missions/' + this.nid]);
 
+        this.tab = 'rules';
+
+        var rules = '<a id="rules-id" data-nodeId='+this.nid+'>Rules & Instructions </a>';
+        this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+        this.router.navigate(['/missions/' + this.nid]);
+        this.tab = 'rules';
       });
     } else {
       this.error = 'You must agree to challenge rules and eligibility requirements before entering.'
     }
+    // navigate to the misstion with required tab
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'tab': this.tab },
+    };
   }
 
   onMyEntries() {
 
   }
-
+changeTab(){
+console.log("asdsa")
+}
   createNewProjectForChallenge() {
     this.router.navigate(['/project/create']);
   }
