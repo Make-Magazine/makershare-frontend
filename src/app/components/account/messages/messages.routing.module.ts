@@ -11,20 +11,13 @@ import { SentComponent } from './sent/sent.component';
 
 const MessagesRouts: Routes = [
 
-      { path: 'inbox-notifications', component: InboxNotificationsComponent },
-      { path: 'inbox', component: InboxComponent },
-      { path: 'view/:thread_id', component: ViewComponent },
-      { path: 'blocked', component: BlockedUsersComponent },
-      { path: 'sent', component: SentComponent },
+      { path: 'inbox-notifications', component: InboxNotificationsComponent,  canActivate: [AuthGuardService]},
+      { path: 'inbox', component: InboxComponent,  canActivate: [AuthGuardService]},
+      { path: 'view/:thread_id', component: ViewComponent,  canActivate: [AuthGuardService]},
+      { path: 'blocked', component: BlockedUsersComponent,  canActivate: [AuthGuardService]},
+      { path: 'sent', component: SentComponent,  canActivate: [AuthGuardService]},
       
 ];
-
-// const MessagesRouts: Routes = [
-//   { path : 'inbox-notifications',component: InboxNotificationsComponent,  canActivate: [AuthGuardService]},
-//   // { path: 'inbox',  component:  InboxComponent,  canActivate: [AuthGuardService]},
-//   { path: 'view/:thread_id', component:  ViewComponent,  canActivate: [AuthGuardService]},
-//   { path: 'blocked', component:  BlockedUsersComponent,  canActivate: [AuthGuardService]}
-// ];
 
 @NgModule({
   imports: [

@@ -43,7 +43,7 @@ export class ReportCommentComponent implements OnInit {
         this.flagService.flag(this.commentReportId, this.userId, 'reportcomment').subscribe(response => {
           this.isReported = true;
 
-          this.notificationBarService.create({ message: 'Comment has been reported.', type: NotificationType.Success });
+          this.notificationBarService.create({ message: 'Comment has been reported.', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false });
         }, err => {
         });
 

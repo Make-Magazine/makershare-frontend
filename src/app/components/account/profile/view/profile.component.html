@@ -6,23 +6,20 @@
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row">
-				<div class="col-12 d-flex flex-column page-portfolio" *ngIf="CurrentLoggedUserId != uid">
-					<div class="nav-portfolio ml-auto">
+				<div class="col-12 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
+					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
+						<a class="profile-share">
+							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+						</a>
+					</div>
+					<div class="nav-portfolio ml-auto hidden-sm-down">
 						<div class="display-style d-flex">
 							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
 							<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-md-8 col-sm-12 ml-auto justify-content-end d-flex flex-row">
-					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-center hidden-sm-down display-style">
-						<a class="profile-share">
-							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-						</a>
-						<a *ngIf="CurrentLoggedUserId != uid" class="profile-message">
-							<app-message-modal [uid]="uid"></app-message-modal> MESSAGE THIS MAKER
-						</a>
-					</div>
+				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
 					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -42,45 +39,41 @@
 				</div>
 			</div>
 			<div class="row body-content">
-				<div class="left-section col-lg-4 col-md-4">
+				<div class="profile-overlay"></div>
+				<div class="left-section col-lg-4 col-md-6">
 					<div class="profile-sidebar">
-						<div class=" profile-container">
-							<!--<div class="card-type-blue">
-										<div class="type-layer-2">
-											Maker
-										</div>
-									</div>-->
-
-							<div class="image-container">
-								<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
-								<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
+						<div class="profile-container" [class.myprofile]="CurrentLoggedUserId == uid">
+							<div class="container-override">
+								<div class="image-container">
+									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
+									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
+								</div>
+									<app-message-modal *ngIf="CurrentLoggedUserId != uid" class="profile-message" [uid]="uid"></app-message-modal>
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
-
 									<!-- Start Profiel Pic -->
 									<div *ngIf="CurrentLoggedUserId && uid && auth.authenticated()">
 										<div *ngIf="CurrentLoggedUserId==uid">
 											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
-
 								</div>
 							</div>
-							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()" >
-							<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
-							<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
-								<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
-							</div>
+							<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
+								<p *ngIf="profile.profile_completion != 100" class="global-title">Profile Completeness</p>
+								<div class="completeness pt-2" *ngIf="profile.profile_completion != 100">
+									<ngb-progressbar [value]="profile.profile_completion"><i>{{profile.profile_completion+'%'}}</i></ngb-progressbar>
+								</div>
 							</div>
 							<!-- End profile-group -->
 							<div class="profile-info">
-								<div>
+								<div class="userInfo">
 									<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<div class="profile-fullname"><span>{{profile.full_name}}</span></div>
-									<div *ngIf="ProfileInfo.nickname" class="profile-nickname"><span>aka {{ProfileInfo.nickname}}</span></div>
+									<h4 class="profile-fullname">{{profile.full_name}}</h4>
+									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
@@ -90,10 +83,14 @@
 										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 1">Unpublish</div>
 										<div (click)="ProfileInfo.address_publish = 1;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 0">Publish</div>
 									</div>
+									<span class="toggleProfile" (click)="ToggleProfile()">
+										<i class="lnr lnr lnr-chevron-down open"></i>
+										<i class="lnr lnr lnr-cross close"></i>
+									</span>
 								</div>
-								<hr>
+								<hr class="hideData">
 								<!-- describe yourself-->
-								<ul class="list-unstyled post">
+								<ul class="list-unstyled post hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
@@ -102,7 +99,7 @@
 									<li *ngIf="ProfileInfo.describe_yourself != '' " class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
 									<li *ngIf="ProfileInfo.describe_yourself == '' " class="profile-describe-yourself" class="placeholder-text">{{PlaceholderText.describe_yourself}}</li>
 								</ul>
-								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post">
+								<ul *ngIf="ProfileInfo.describe_yourself == '' " class="list-unstyled post hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Personal Info')" class="btn btn-white add ">
@@ -112,11 +109,11 @@
 									</div>
 								</ul>
 								<!-- describe yourself-->
-								<hr>
+								<hr class="hideData">
 								<!-- start Badges-->
-								<div class="icons" *ngIf="badges !=''">
+								<div class="icons hideData" *ngIf="badges !=''">
 									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row justify-content-start" *ngFor="let badge of badges;">
+									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
 										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
 										<p class="badges">{{badge?.title}}</p><br>
 									</div>
@@ -124,7 +121,7 @@
 								</div>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div class="bio">
+								<div class="bio hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
@@ -139,63 +136,83 @@
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
-								<div *ngIf="ProfileInfo.field_social_accounts">
+								<div *ngIf="ProfileInfo.field_social_accounts" class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<div class="social-links">
-										<p class="global-title">Social</p>
-										<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
-											<i class="fa fa-facebook fa-lg"></i>
-										</a>
-										<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
-											<i class="fa fa-twitter fa-lg"></i>
-										</a>
-										<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
-											<i class="fa fa-instagram fa-lg"></i>
-										</a>
-										<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
-											<i class="fa fa-linkedin fa-lg"></i>
-										</a>
-										<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
-											<i class="fa fa-pinterest-p fa-lg"></i>
-										</a>
-										<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
-											<i class="fa fa-youtube fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
-										<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-											<i class="fa fa-external-link fa-lg"></i>
-										</a>
+									<p class="global-title">Social</p>
+									<div class="social-links d-flex flex-wrap">
+										<div class="social-container">
+											<a class="nav-link social fb" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' " href="{{ProfileInfo.field_social_accounts.field_facebook}}">
+												<i class="fa fa-facebook fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social tw" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_twitter != '' " href="{{ProfileInfo.field_social_accounts.field_twitter}}">
+												<i class="fa fa-twitter fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social in" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instagram != '' " href="{{ProfileInfo.field_social_accounts.field_instagram}}">
+												<i class="fa fa-instagram fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ln" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_linkedin != '' " href="{{ProfileInfo.field_social_accounts.field_linkedin}}">
+												<i class="fa fa-linkedin fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social pin" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_pinterest != '' " href="{{ProfileInfo.field_social_accounts.field_pinterest}}">
+												<i class="fa fa-pinterest-p fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ut" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_youtube != '' " href="{{ProfileInfo.field_social_accounts.field_youtube}}">
+												<i class="fa fa-youtube fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' " href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' " href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
+										<div class="social-container">
+											<a class="nav-link social ext" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' " href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<i class="fa fa-external-link fa-lg"></i>
+											</a>
+										</div>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div *ngIf="!ProfileInfo.field_social_accounts">
+								<div *ngIf="!ProfileInfo.field_social_accounts" class="hideData">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid"> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 									</div>
 								</div>
-								<hr>
-								<ul class="list-unstyled makerspaces">
+								<hr class="hideData">
+								<ul class="list-unstyled makerspaces hideData">
 									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
 										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									</div>
-									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="global-title">Makersapces</p>
-									<li *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
-										<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
-										<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
-									</li>
+									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makersapces</p>
+									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
+										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
+											<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
+											<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
+										</div>
+									</span>
 								</ul>
-								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces hideData">
 									<p *ngIf="CurrentLoggedUserId == uid" class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
-								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''">
-								<div>
+								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
+								<div class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title"> Links </p>
+									<p class="global-title"> Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' " href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' " href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
@@ -208,24 +225,29 @@
 										</div>
 									</div>
 								</div>
-								<hr>
-								<div class="how">
+								<hr class="hideData">
+								<div class="how hideData">
 									<!-- Start How -->
 									<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title">How I learned to be a maker</p>
+									<p class="global-title">My Maker Moment</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
-								<hr>
-								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-								<p class="global-title">Interests</p>
+								<hr class="hideData">
+								<a  *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
+								<p class="hideData global-title">Favorite Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
-								 class="placeholder-text">{{PlaceholderText.interests}}</p>
-								<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
+								 class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
+								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
-								</tag-input>
+								</tag-input>-->
+								<p class="hideData topic-tags">
+									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
+										<i *ngIf="i-1 > -1">,</i> {{interest.name}}
+									</span>
+								</p>
 								<!--<a class="report">Report this user</a>-->
-								<div *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
+								<div class="hideData" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<hr>
 									<app-report-user [userReportId]="uid"></app-report-user>
 								</div>
@@ -236,8 +258,27 @@
 						<!-- End sidebar-left -->
 					</div>
 				</div>
-				<div class="right-section col-lg-8 col-md-8">
+				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
+
+				<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-md-up">
+					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+						<li *ngIf="ProjectsCount">
+							<p><span class="number">{{ProjectsCount}}</span> projects</p>
+						</li>
+						<li *ngIf="profile.total_likes != 0">
+							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
+						</li>
+						<li>
+							<p><span class="number">{{profile.views_count}}</span> views</p>
+						</li>
+						<!-- Start Bookmsrk-section -->
+						<!--<li>
+							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
+						</li>-->
+					</ul>
+					<!-- End Bookmark-section -->
+				</div>
 					<div class="profile-name profile-stats">
 						<div class="profile-content">
 							<div class="row">
@@ -330,7 +371,7 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
-										 placeholder="Country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
+										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt" (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 										<small *ngIf="searchFailed" class="text-danger">
 						Country not found.
 							</small>
@@ -341,17 +382,6 @@
 										 [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control"
 										 id="city" (change)="ProfileInfo.address.city = $event.target.value">
 									</div>
-
-									<div class="col-md-4 col-xs-12">
-										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1" for="postal_code">{{CountryFieldsAndDetails.postal_code_label}}</label>-->
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && !profile.address.postcode && !profile.address.zip_code"
-										 placeholder="{{CountryFieldsAndDetails.postal_code_label}}" [ngModel]="profile.address.postal_code" type="text"
-										 class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.zip_code" [ngModel]="profile.address.zip_code"
-										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('postal_code') != -1 && profile.address.postcode" [ngModel]="profile.address.postcode"
-										 type="text" class="form-control" id="postal_code" (change)="ProfileInfo.address.postal_code = $event.target.value">
-									</div>
 								</div>
 							</div>
 							<div class="form-subgroup container pt-3">
@@ -361,6 +391,7 @@
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
+										<option value="choose" [disabled]="butDisabled">Choose</option>
 										<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
 									</select>
 									</div>
@@ -401,7 +432,9 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}" class="char-left">{{400 - formGroup.value.bio.length}} char left</span>
+										 <div *ngIf="this.ProfileInfo.bio">
+											<span *ngIf="this.ProfileInfo.bio.length > -1" [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio?.length}} char left</span>
+										 </div>
 									</div>
 								</div>
 							</div>
@@ -415,7 +448,7 @@
 									<div class="col-md-8">
 										<div class="row">
 											<li class="col-md-12">
-												<label>SOCIAL WEBSITES</label>
+												<label>SOCIAL ACCOUNTS</label>
 											</li>
 											<div class="col-md-6">
 												<li class="form-group">
@@ -531,24 +564,24 @@
 								<div class="form-group form-main" [formGroupName]="i">
 									<div class="form-group row">
 										<div class="row col-md-12">
-											<label class="col-md-12">ADD A MAKERSPACES</label>
+											<label class="col-md-12">ADD YOUR MAKERSPACE(S)</label>
 											<div class="col-md-4">
 												<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
-												 (selectItem)="SelectMakerspace(i,$event)" placeholder="What do you create?">
+												 (selectItem)="SelectMakerspace(i,$event)" placeholder="Makerspace Name">
 											</div>
 											<div class="col-md-4">
 												<input [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}"
-												 class="form-control" type="text" formControlName="field_makerspace_url">
-											</div>
-											<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
+												 class="form-control" type="text" formControlName="field_makerspace_url" placeholder="Makerspace URL">
+												<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
 													Invalid URL, ex: http://example.com
 											</small>
-												<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
+											</div>
+											<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="fa fa-lg fa-times" aria-hidden="true"></i></div>
 										</div>
 									</div>
-									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 								</div>
 							</div>
+									<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid" class="btn add-other" (click)="AddMakerspaceRow()"><i class="fa fa-plus-square" aria-hidden="true"></i><span>Add another</span></a>
 						</div>
 
 					</div>

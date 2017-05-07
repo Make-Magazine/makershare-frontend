@@ -123,7 +123,7 @@ export class ShowcaseComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    if (this.countShowcase == this.showcases.length) {
+    if (this.countShowcase >= this.showcases.length) {
 
       this.hideloadmoreshowcase = true;
 

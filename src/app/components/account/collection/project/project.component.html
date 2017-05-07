@@ -1,36 +1,27 @@
-<div *ngIf="projects.length==0">
-  <h5>There doesn't seem to be any bookmarks here yet.</h5><br>
-  <p>Look for the icon on a Project page you're interested in.<br> Click it and the <a [routerLink]="['/projects']">Project</a>    will appear here.</p>
+<div class="msg-bookmarks" *ngIf="projects.length==0">
+  <h3>There doesn't seem to be any bookmarks here yet.</h3><br>
+  <p>Look for the <i class="lnr lnr-bookmark"></i> icon on a Project page you're interested in.<br> Click it and the <a [routerLink]="['/projects']">Project</a>    will appear here.</p>
 </div>
 
 <div *ngIf="projects.length>0">
   <!--<input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all
   <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
-  <table class="table">
-    <thead>
-      <!--<tr>
-        <th></th>
-        <th>Project Name</th>
-        <th>Project Image</th>
-        <th>Delete</th>
-      </tr>-->
-    </thead>
-    <tbody>
-
-      <tr *ngFor="let project of projects let i=index;">
-        <!--<div class="select" *ngIf="project">-->
-        <!--<input type="checkbox" value="{{project.nid}}" [(ngModel)]="project.state" (change)="valueChanged(project.nid,$event)">-->
-        <!--</div>-->
-        <td *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive"></td>
-        <td *ngIf="project">{{project.project_name}}</td>
-        <!--<td class="delete">
-          <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
-        </td>-->
-
-
-      </tr>
-    </tbody>
-  </table>
+  <div class="media bookmark-item bookmark-project" *ngFor="let project of projects let i=index;">
+    <div class="media-left">
+      <div class="book-img" [routerLink]="['/project/view/',project.nid]" *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive"></div>
+    </div>
+    <div class="media-body">
+      <!--<div class="select" *ngIf="project">-->
+      <!--<input type="checkbox" value="{{project.nid}}" [(ngModel)]="project.state" (change)="valueChanged(project.nid,$event)">-->
+      <!--</div>-->
+      <div class="title" [routerLink]="['/project/view/',project.nid]" *ngIf="project"><span>{{project.project_name}}</span></div>
+    </div>
+    <div class="media-right">
+      <div class="delete">
+        <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="text-center" *ngIf="!hideloadmoreproject">
   <a class="btn btn-load-more mb-3" (click)="loadMoreProject()">Load more</a>

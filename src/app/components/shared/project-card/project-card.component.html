@@ -60,7 +60,7 @@
 
 
 
-<div *ngIf="project && view == 'grid' || front">
+<div *ngIf="project && (view == 'grid' || front || smallWindow < 992)">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -119,11 +119,11 @@
 
 
 <!--Project with larg view-->
-<div *ngIf="project && view != 'grid' && !front">
+<div *ngIf="project && view != 'grid' && !front && smallWindow > 992">
   <div class="project card lg-card">
     <div class="image-top-lg">
       <div class="overlay" (click)="ShowProjectDetails(project.nid)"></div>
-      <div class="teaser">
+      <div class="teaser" (click)="ShowProjectDetails(project.nid)">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </div>

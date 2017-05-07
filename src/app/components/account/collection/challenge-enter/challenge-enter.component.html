@@ -1,7 +1,7 @@
 <div *ngIf="challenges.length==0">
-  <h5>You haven't entered any missions yet.</h5><br>
-  <p>Head over to <a [routerLink]="['/missions']">the missions</a> page,and see if you find anything of interest.,br> as soon
-    as you enter any missions,they will show up here</p>
+  <h3>You haven't entered any missions yet.</h3><br>
+  <p>Head over to <a [routerLink]="['/missions']">the missions page</a>, and see if you find anything of interest.<br> As soon
+    as you enter any missions, they will show up here.</p>
 </div>
 <div *ngIf="challenges.length>0">
 
@@ -14,9 +14,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let challenge of challenges">
-        <td *ngIf="challenge.project_name">{{challenge.project_name}}</td>
-        <td *ngIf="challenge.challenge_name">{{challenge.challenge_name}}</td>
-
+        <td [routerLink]="['/project/view/',challenge.project_nid]" *ngIf="challenge.project_name"><span>{{challenge.project_name}}</span></td>
+        <td [routerLink]="['/missions/',challenge.challenge_nid]" *ngIf="challenge.challenge_name"><span>{{challenge.challenge_name}}</span></td>
       </tr>
     </tbody>
   </table>

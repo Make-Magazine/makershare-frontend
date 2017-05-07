@@ -25,7 +25,7 @@ export class InboxComponent implements OnInit {
   };
 
   @ViewChild('myInput')
-  count; 
+  count;
   searchValue: string = '';
   closeResult: string;
   currentuser;
@@ -63,6 +63,7 @@ export class InboxComponent implements OnInit {
     body: '',
   };
   selected = [];
+  count_num: number;
   profile;
   pm_disabed = true;
   disabled;
@@ -74,8 +75,11 @@ export class InboxComponent implements OnInit {
   usr_recv;
   participints
   senderData
-  noMessage= false;
+  noMessage = false;
+  messageRecieved = [];
   //hideUser= true;
+  inboxCount
+  inbox_arr = [];
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -90,134 +94,16 @@ export class InboxComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    this.getStatus();
-    // this.loaderService.display(true);
-
-    this.getCurrentUser();
-    this.getMessages();
-    this.buildForm();
+    //   this.getCurrentUser();
     this.CountMessages();
+    this.getMessages();
+    this.getStatus();
+    // this.buildForm();
     this.getBlockedUsers();
     this.userId = localStorage.getItem('user_id');
 
   }
 
-  search = (text$: Observable<string>) => {
-    return text$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(() => this.searchFailed = false)
-      .switchMap((term) => {
-        if (term.length > 1) {
-          return this.viewService.getView('maker_profile_search_data', [['email', term]])
-            .map(result => {
-              if (result.length == 0) {
-                this.searchFailed = true;
-              }
-              return result;
-            })
-        }
-        return [];
-      }
-      )
-  };
-
-  /**
-  * selct users to send message
-  */
-  SetMember(uid, i) {
-    // this.hideUser = false;
-    this.viewService.getView('maker_profile_card_data', [['uid', uid]]).subscribe(data => {
-       this.SelectedUser.push(data);
-       this.messageForm.reset();
-    });
-  }
-  unSetMember(i) {
-    this.SelectedUser.splice(i, 1);
-  }
-  getCurrentUser() {
-    this.userId = parseInt(localStorage.getItem('user_id'));
-    this.user.getUser(this.userId).subscribe(res => {
-      Object.assign(this.user, res);
-    })
-  }
-  onSubmit(e) {
-    e.preventDefault();
-    if (this.messageForm.valid) {
-      var str: string = '';
-      var full_name :string = '';
-      for (let selectedUsers of this.SelectedUser) {
-        str += selectedUsers[0].username + ', ';
-        full_name += selectedUsers[0].first_name + ' ' + selectedUsers[0].last_name + ', ';
-      }
-      this.messageObj.recipients = str;
-      this.messageObj.subject = this.messageForm.value.subject;
-      this.messageObj.body = this.messageForm.value.body;
-      this.pm.sendMessage(this.messageObj).subscribe(res => {
-        this.loaderService.display(true);
-        // var newMessage = {
-        //   user_photo: this.user['user_photo'],
-        //   sender: 'message has ben sent to ' + ' ' + this.msg[0].first_name + ' ' + this.msg[0].last_name,
-        //   subject: this.messageObj.subject,
-        //   last_updated: 'Now',
-        // }
-        // this.msg.unshift(newMessage);
-        this.msg = [];
-        if(this.msg.length == 0){
-        this.noMessage = false;
-      }
-        this.messageForm.reset();
-        this.SelectedUser = [];
-        this.getMessages();
-        this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success });
-      }, err => {
-        this.loaderService.display(false);
-        this.notificationBarService.create({ message: 'Your message cannot be delivered ' + full_name + 'is not accepting messages from your account' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });
-  });
-
-    }
-  }
-
-  buildForm(): void {
-    this.messageForm = this.fb.group({
-      'recipients': [''],
-      'subject': ['', Validators.required],
-      'body': ['', Validators.required]
-    });
-    this.messageForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-    this.onValueChanged(); // (re)set validation messages now
-  }
-
-  onValueChanged(data?: any) {
-    if (!this.messageForm) { return; }
-    const form = this.messageForm;
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
-
-  formErrors = {
-    'subject': '',
-    'body': ''
-  };
-
-  validationMessages = {
-    'subject': {
-      'required': 'Subject is required.',
-    },
-    'body': {
-      'required': 'Message Body is required.',
-    },
-  };
 
   resetForm(e) {
     e.preventDefault();
@@ -244,37 +130,32 @@ export class InboxComponent implements OnInit {
     this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
+      var count;
       var i = 0
       for (let key in this.messages) {
+        let j = 0;
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
-            if (this.userId === author[0].author) {
-              //i am who sent the message
-              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
-                for (let i = 0; i<res.length; i++) {
-                  if (res[i] != this.userId) {
-                    this.user.getUser(res[i]).subscribe(res => {
-                      this.messages[key].sender = true;
-                      this.messages[key].user_photo = res.user_photo;
-                      this.messages[key].first_name = res.first_name;
-                      this.messages[key].last_name = res.last_name;
-                    })
-                  }
-                }
-              })
-            } else {
-              //another person send message to me
+            if (this.userId != author[0].author) {
               this.user.getUser(author[0].author).subscribe(res => {
                 this.messages[key].reciver = true;
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
+                this.messageRecieved[j] = this.messages[key];
+
+                this.inbox_arr.push(this.messageRecieved[j]);
+                if ( this.inboxCount > this.inbox_arr.length) {
+                  this.hideloadmore = true;
+                } else if ( this.inboxCount < this.inbox_arr.length) {
+                  this.hideloadmore = false;
+                }
+                j++;
               })
             }
-
           })
-
+  
           msg_arr.push(this.messages[key]);
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
@@ -297,29 +178,29 @@ export class InboxComponent implements OnInit {
             // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
             msg_arr[i].last_updated = msg_arr[i].date_format;
           }
-        //  if(Object.keys(msg_arr[i].participants).length > 2){
-            msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
+          //  if(Object.keys(msg_arr[i].participants).length > 2){
+           msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
           //}
           i++
         }
       }
       
-      this.msg = this.msg.concat(msg_arr);    
+      this.msg = this.msg.concat(msg_arr);
       //show if user have 0 msg 
-      if(this.msg.length == 0){
+      if (this.msg.length == 0) {
         this.noMessage = true;
       }
       this.loaderService.display(false);
-      this.loadMoreVisibilty();
+      //  this.loadMoreVisibilty();
     })
   }
 
   CountMessages() {
     this.userId = localStorage.getItem('user_id');
     this.route.params
-      .switchMap(() => this.pm.postView('maker_get_pm_author/retrieve_count/', this.userId))
+      .switchMap(() => this.pm.getInboxCount(this.userId))
       .subscribe(data => {
-        this.countMsg = data;
+        this.inboxCount = data[0];
       });
   }
 
@@ -327,61 +208,62 @@ export class InboxComponent implements OnInit {
     this.pageNumber++;
     this.getMessages();
   }
-  loadMoreVisibilty() {
-    // get the challenges array count
-    var arr_count = this.msg.length;
-    if (this.countMsg > arr_count) {
-      this.hideloadmore = true;
-    } else {
-      this.hideloadmore = false;
-    }
-  }
+  // loadMoreVisibilty() {
+
+  //   if ( this.inboxCount > this.msg.length) {
+  //       this.hideloadmore = true;
+  //     } else {
+  //       this.hideloadmore = false;
+  //     }
+  // }
   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    delete this.msg[i];
+    this.msg = [];
+    this.getMessages();
+    this.loaderService.display(true);
   }
 
-  valueChanged(mid, event) {
-    // add to deletedArr
-    if (event.target.checked === true) {
-      this.deletedArr.push(mid);
-    } else {
-      // remove from deletedArr
-      var index = this.deletedArr.indexOf(mid, 0);
-      if (index > -1) {
-        this.deletedArr.splice(index, 1);
-      }
-    }
-  }
+  // valueChanged(mid, event) {
+  //   // add to deletedArr
+  //   if (event.target.checked === true) {
+  //     this.deletedArr.push(mid);
+  //   } else {
+  //     // remove from deletedArr
+  //     var index = this.deletedArr.indexOf(mid, 0);
+  //     if (index > -1) {
+  //       this.deletedArr.splice(index, 1);
+  //     }
+  //   }
+  // }
 
-  checkAll(ev) {
-    this.msg.forEach(x => x.state = ev.target.checked)
-    for (var _i = 0; _i < this.msg.length; _i++) {
-      if (ev.target.checked === true) {
-        this.deletedArr.push(this.msg[_i].thread_id);
-      } else {
-        var index = this.deletedArr.indexOf(this.msg[_i].thread_id, 0);
-        if (index > -1) {
-          this.deletedArr.splice(index, 1);
-        }
-      }
-    }
-  }
+  // checkAll(ev) {
+  //   this.msg.forEach(x => x.state = ev.target.checked)
+  //   for (var _i = 0; _i < this.msg.length; _i++) {
+  //     if (ev.target.checked === true) {
+  //       this.deletedArr.push(this.msg[_i].thread_id);
+  //     } else {
+  //       var index = this.deletedArr.indexOf(this.msg[_i].thread_id, 0);
+  //       if (index > -1) {
+  //         this.deletedArr.splice(index, 1);
+  //       }
+  //     }
+  //   }
+  // }
 
-  isAllChecked(mid) {
-    return this.msg.every(_ => _.state);
-  }
+  // isAllChecked(mid) {
+  //   return this.msg.every(_ => _.state);
+  // }
   /**
  * delete selected messages
  */
-  deleteMessages() {
-    this.loaderService.display(true);
-    for (var _i = 0; _i < this.msg.length; _i++) {
-      this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
-    }
-    this.msg = [];
-    this.getMessages();
-  }
+  // deleteMessages() {
+  //   this.loaderService.display(true);
+  //   for (var _i = 0; _i < this.msg.length; _i++) {
+  //     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+  //   }
+  //   this.msg = [];
+  //   this.getMessages();
+  // }
 
   viewMessage(thread_id) {
     this.router.navigate(['/account/inbox/view', thread_id]);
@@ -407,27 +289,27 @@ export class InboxComponent implements OnInit {
   /*
   * disable messages
    */
-  turnOffMessages() {
-    this.loaderService.display(true);
-    this.userId = localStorage.getItem('user_id');
-    this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
-      this.hideTurnOn = true;
-      this.notificationBarService.create({ message: 'You have turned off messaging; only community managers can message you. You can always turn it back on here.', type: NotificationType.Success });
-      this.loaderService.display(false);
-    })
-  }
+  // turnOffMessages() {
+  //   this.loaderService.display(true);
+  //   this.userId = localStorage.getItem('user_id');
+  //   this.pm.updateSettings(this.userId, { 'pm_disabled': true }).subscribe(data => {
+  //     this.hideTurnOn = true;
+  //     this.notificationBarService.create({ message: 'You have turned off messaging; only community managers can message you. You can always turn it back on here.', type: NotificationType.Success });
+  //     this.loaderService.display(false);
+  //   })
+  // }
   /**
    * enable messages
    */
-  turnOnMessages() {
-    this.loaderService.display(true);
-    this.userId = localStorage.getItem('user_id');
-    this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
-      this.hideTurnOn = false;
-      this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
-      this.loaderService.display(false);
-    })
-  }
+  // turnOnMessages() {
+  //   this.loaderService.display(true);
+  //   this.userId = localStorage.getItem('user_id');
+  //   this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
+  //     this.hideTurnOn = false;
+  //     this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
+  //     this.loaderService.display(false);
+  //   })
+  // }
   /*
   *if message turned off the data[0]=disabled
   */

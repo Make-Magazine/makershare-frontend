@@ -83,7 +83,7 @@ export class ReportProjectComponent implements OnInit {
           this.isReported = true;
 
 
-          this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success });
+          this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success ,allowClose: true, autoHide: false, hideOnHover: false});
         }, err => {
         });
 
