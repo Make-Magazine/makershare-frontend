@@ -333,7 +333,6 @@ export class ProfileComponent implements OnInit {
       (profile: UserProfile) => {
         this.SetUser(profile);
         this.GetCountryDetails(profile.address.code);
-        console.log(profile)
       }, (err) => {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
@@ -357,6 +356,7 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.address = user.address;
     this.ProfileInfo.describe_yourself = user.describe_yourself;
     this.ProfileInfo.bio = user.bio;
+    this.ProfileInfo.address_publish = user.address_publish;
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
     }

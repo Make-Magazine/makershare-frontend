@@ -1886,7 +1886,12 @@ footer {
   min-height: 150px;
   max-height: 170px; }
   .slick-track img {
-    height: 234px; }
+    height: auto !important;
+    width: 100% !important; }
+
+.carousel-img-container {
+  width: 263px !important;
+  height: 210px !important; }
 
 /* User card msg on inbox msg component */
 .user-card-msg .profile-pic-container {
@@ -3298,7 +3303,8 @@ footer {
 
 /* modal edit profile forms */
 .modal-content .profile-modal {
-  background-color: #F2F2F2; }
+  background-color: #F2F2F2;
+  text-align: left !important; }
   .modal-content .profile-modal label {
     color: #ED1C24;
     margin: 0px; }
@@ -3892,12 +3898,12 @@ footer {
   position: relative;
   margin: 15px 0;
   border: none;
-  height: 180px;
   padding: 50px 15px 15px;
   background-color: #fff;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-  box-shadow: 2px 2px 8px #BDBDBD; }
+  box-shadow: 2px 2px 8px #BDBDBD;
+  min-height: 188px; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;
@@ -3916,8 +3922,7 @@ footer {
       height: 100%; }
   .maker-mobile-card .maker-data {
     max-width: 230px;
-    word-break: break-all;
-    overflow: hidden; }
+    word-wrap: break-word; }
     .maker-mobile-card .maker-data .maker-name {
       line-height: 150%;
       font-family: "Messina Modern Regular";
@@ -4291,7 +4296,7 @@ button:hover {
       margin: 18px auto; }
       .page-explore .explore-header .explore-tags li {
         display: inline-block;
-        margin: 0px 15px; }
+        margin: 10px 15px; }
         .page-explore .explore-header .explore-tags li a.btn {
           border-radius: 0px;
           min-width: 180px;
@@ -8823,6 +8828,9 @@ img {
     line-height: 100%;
     color: #4F4F4F;
     text-align: center; }
+
+#search-input::-ms-expand {
+  display: none; }
 
 .spinning-preloader-container {
   position: fixed;
