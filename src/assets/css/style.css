@@ -3608,12 +3608,12 @@ footer {
     .modal-content .profile-modal .modal-body #maker-spaces .add-other {
       padding: 0px; }
       .modal-content .profile-modal .modal-body #maker-spaces .add-other i {
-        font-size: 40px; }
+        font-size: 20px; }
       .modal-content .profile-modal .modal-body #maker-spaces .add-other span {
         padding-left: 8px;
         font-size: 1.2em;
         position: relative;
-        top: -8px; }
+        top: -2px; }
     .modal-content .profile-modal .modal-body #links .form-group {
       position: relative; }
     .modal-content .profile-modal .modal-body #links .radio-breferred {
