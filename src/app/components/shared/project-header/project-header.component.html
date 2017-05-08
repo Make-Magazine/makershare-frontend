@@ -19,7 +19,7 @@
       <div class="project-card-footer-3 d-flex justify-content-end">
         <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
           <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
-          <li ngbTooltip="{{toolTips.bookmark}}"> 
+          <li> 
             <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user" [nodeType]="'project'"></app-bookmark>
           </li>
           <li ngbTooltip="{{toolTips.share}}"> 

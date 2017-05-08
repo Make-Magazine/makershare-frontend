@@ -9,7 +9,7 @@
     </div>
   </div>
 </template>
-<div class="region region-content col-sm-8" [formGroup]="TeamForm">
+<div class="region region-content col-md-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div>

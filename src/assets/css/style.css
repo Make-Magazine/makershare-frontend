@@ -1529,6 +1529,18 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
 _::-webkit-full-page-media, _:future, :root .check-label {
   margin-left: 5px; }
 
+::-webkit-input-placeholder {
+  font-family: 'Arial'; }
+
+:-moz-placeholder {
+  font-family: 'Arial'; }
+
+::-moz-placeholder {
+  font-family: 'Arial'; }
+
+:-ms-input-placeholder {
+  font-family: 'Arial'; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -3330,6 +3342,8 @@ footer {
   .modal-content .profile-modal label {
     color: #ED1C24;
     margin: 0px 0px 2px 0px; }
+    .modal-content .profile-modal label .custom-control-indicator {
+      top: .15em; }
   .modal-content .profile-modal textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
@@ -3774,6 +3788,8 @@ footer {
 .page-search-content {
   margin: 0px;
   border: none; }
+  .page-search-content #search-input::-ms-clear {
+    display: none; }
   .page-search-content .user-card-search {
     background-color: white;
     padding-top: 10px;
@@ -9432,8 +9448,6 @@ img {
     .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 {
       margin-left: 0px;
       width: 100%; }
-      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 div {
-        width: 100%; }
       .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 span {
         width: 100%; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
