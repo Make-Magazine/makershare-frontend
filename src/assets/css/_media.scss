@@ -213,6 +213,15 @@
             }
         }
     }
+    .page-showcase {
+        .showcase-card-backlayer  {
+            .showcase-card {
+                .showcase-card-footer-2 {
+                    margin-left: 0px !important;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 414px) {
