@@ -9433,7 +9433,10 @@ img {
     footer .container .social-footer {
       overflow: hidden;
       width: 140px;
-      margin: auto; } }
+      margin: auto; }
+
+  .page-showcase .showcase-card-backlayer .showcase-card .showcase-card-footer-2 {
+    margin-left: 0px !important; } }
 @media (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
