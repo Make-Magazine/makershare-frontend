@@ -207,10 +207,12 @@
 								<div class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title" *ngIf="(ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '') || CurrentLoggedUserId == uid">
-									Websites </p>
+										Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' && profile.field_social_accounts.field_website_title" href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}</a>
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' && profile.field_social_accounts.field_blog_title" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' && profile.field_social_accounts.field_website_title"
+										 href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' && profile.field_social_accounts.field_blog_title"
+										 href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}</a>
 									</div>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_title == '' && ProfileInfo.field_social_accounts.field_blog_title == ''">
 										<div *ngIf="CurrentLoggedUserId && uid">
@@ -456,8 +458,8 @@
 											</li>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_facebook.valid}" class="col-md-12 form-control" type="text"
-													 formControlName="field_facebook" name="web-url" placeholder="Facebook">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_facebook.valid}" class="col-md-12 form-control"
+													 type="text" formControlName="field_facebook" name="web-url" placeholder="Facebook">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_facebook"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_facebook'" validate-onfocusout>-->
 												</li>
@@ -467,8 +469,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_instagram.valid}" class="col-md-12 form-control" type="text"
-													 formControlName="field_instagram" name="web-url" placeholder="Instagram">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_instagram.valid}" class="col-md-12 form-control"
+													 type="text" formControlName="field_instagram" name="web-url" placeholder="Instagram">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instagram"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instagram'" validate-onfocusout>-->
 												</li>
@@ -478,8 +480,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_linkedin.valid}" class="col-md-12 form-control" type="text"
-													 formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_linkedin.valid}" class="col-md-12 form-control"
+													 type="text" formControlName="field_linkedin" name="web-url" placeholder="LinkedIn">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_linkedin"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_linkedin'" validate-onfocusout>-->
 												</li>
@@ -489,8 +491,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitter.valid}" class="col-md-12 form-control" type="text" formControlName="field_twitter"
-													 name="web-url" placeholder="Twitter">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitter.valid}" class="col-md-12 form-control"
+													 type="text" formControlName="field_twitter" name="web-url" placeholder="Twitter">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitter"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitter'" validate-onfocusout>-->
 												</li>
@@ -500,8 +502,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_pinterest.valid}" class="col-md-12 form-control" type="text"
-													 name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_pinterest.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_pinterest" placeholder="Pinterest">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_pinterest"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_pinterest'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_pinterest.valid && FormGroupSocial.controls.field_pinterest.touched" class="alert alert-danger error-msg">
@@ -511,8 +513,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_youtube.valid}" class="col-md-12 form-control" type="text" name="web-url"
-													 formControlName="field_youtube" placeholder="YouTube">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_youtube.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_youtube" placeholder="YouTube">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_youtube"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_youtube'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_youtube.valid && FormGroupSocial.controls.field_youtube.touched" class="alert alert-danger error-msg">
@@ -522,8 +524,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_hackster_io.valid}" class="col-md-12 form-control" type="text"
-													 name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_hackster_io.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_hackster_io" placeholder="Hackster.io">
 													<!--<input class="radio-breferred" class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred"-->
 													<!--value="field_hackster_io" [checked]="profile.field_social_accounts.field_preferred == 'field_hackster_io'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_hackster_io.valid && FormGroupSocial.controls.field_hackster_io.touched" class="alert alert-danger error-msg">
@@ -533,8 +535,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_instructables.valid}" class="col-md-12 form-control" type="text"
-													 name="web-url" formControlName="field_instructables" placeholder="Instructables">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_instructables.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_instructables" placeholder="Instructables">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_instructables"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_instructables'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_instructables.valid && FormGroupSocial.controls.field_instructables.touched"
@@ -545,8 +547,8 @@
 											</div>
 											<div class="col-md-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_hackday.valid}" class="col-md-12 form-control" type="text" name="web-url"
-													 formControlName="field_hackday" placeholder="Hackaday">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_hackday.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_hackday" placeholder="Hackaday">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_hackday"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_hackday'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_hackday.valid && FormGroupSocial.controls.field_hackday.touched" class="alert alert-danger error-msg">
@@ -597,10 +599,14 @@
 								<ul class="list-unstyled social-links row">
 
 									<div class="col-md-12">
-										<li class="form-group form-item col-md-4">
-											<input type="text" placeholder="title" formControlName="field_website_title">
-											<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text" formControlName="field_website_or_blog"
-											 name="web-url" placeholder="Website or Blog">
+										<li class="row form-group form-item">
+											<div class="col-md-4">
+												<input class="form-control" type="text" placeholder="title" formControlName="field_website_title">
+											</div>
+											<div class="col-md-4">
+												<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text"
+												 formControlName="field_website_or_blog" name="web-url" placeholder="Website or Blog">
+											</div>
 											<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_website_or_blog"-->
 											<!--[checked]="profile.field_social_accounts.field_preferred == 'field_website_or_blog'" validate-onfocusout>-->
 										</li>
@@ -609,11 +615,17 @@
 											Invalid URL, ex: http://example.com
 										</div>
 									</div>
+
+
 									<div class="col-md-12">
-										<li class="form-group form-item col-md-4">
-											<input type="text" placeholder="title" formControlName="field_blog_title">
-											<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_additional_site.valid}" class="form-control" type="text" formControlName="field_additional_site"
-											 name="web-url" placeholder="Additional site">
+										<li class="row form-group form-item">
+											<div class="col-md-4">
+												<input class="form-control" type="text" placeholder="title" formControlName="field_blog_title">
+											</div>
+											<div class="col-md-4">
+												<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_additional_site.valid}" class="form-control" type="text"
+												 formControlName="field_additional_site" name="web-url" placeholder="Additional site">
+											</div>
 											<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_additional_site"-->
 											<!--[checked]="profile.field_social_accounts.field_preferred == 'field_additional_site'" validate-onfocusout>-->
 										</li>
@@ -628,7 +640,7 @@
 					</div>
 					<div id="maker-moment" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Maker Moment'">
 						<!--<div class="col-md-12">-->
-							<!--<label>WEBSITES</label>-->
+						<!--<label>WEBSITES</label>-->
 						<!--</div>-->
 						<div class="form-group" [formGroup]="formGroup">
 							<div class="form-subgroup container">

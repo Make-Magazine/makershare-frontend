@@ -8597,6 +8597,7 @@ img {
         margin: 0px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete {
         margin-left: auto;
+        padding-top: 5px;
         margin-right: 25px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
@@ -8733,6 +8734,31 @@ img {
       width: 120px;
       padding: 12px;
       background-color: #fff !important; }
+
+/* blocked users main page */
+.blocked-users-page .block-user {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD;
+  background-color: white;
+  margin: 5px 0; }
+  .blocked-users-page .block-user .media .media-left {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px; }
+    .blocked-users-page .block-user .media .media-left img {
+      width: 100%;
+      height: auto;
+      max-width: 100%; }
+  .blocked-users-page .block-user .media .media-body {
+    padding-top: 14px; }
+    .blocked-users-page .block-user .media .media-body button {
+      margin-bottom: 0px; }
 
 .challenge-entered {
   margin: 10px;
