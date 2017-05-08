@@ -203,7 +203,7 @@ header nav {
     top: -10px;
     position: fixed; }
   header nav .project-button {
-    margin-left: 15px; }
+    margin-left: 37px; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -5139,6 +5139,9 @@ button:hover {
     margin-right: 18px; }
     .page-search-content .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
       padding: 15px 20px; }
+
+.check-entered {
+  color: #00AEEF; }
 
 /*challenge enter modal popup */
 .challenge-enter-modal {
