@@ -158,6 +158,7 @@
 					}
 					.delete {
 						  margin-left: auto;
+							padding-top: 5px;
     					margin-right: 25px;
 					}
 					.delete-message {
@@ -397,4 +398,38 @@
 						background-color: #fff !important;
 				}
 		}
+}
+
+/* blocked users main page */
+.blocked-users-page {
+	.block-user {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			overflow: hidden;
+			padding: 10px;
+			-moz-box-shadow: 2px 2px 8px #BDBDBD;
+			-webkit-box-shadow: 2px 2px 8px #BDBDBD;
+			box-shadow: 2px 2px 8px #BDBDBD;
+			background-color: white;
+			margin: 5px 0;
+		.media {
+			.media-left {
+				width: 60px;
+				height: 60px;
+				margin-right: 10px;
+				img {
+					width: 100%;
+					height: auto;
+					max-width: 100%;
+				}
+			}
+			.media-body {
+				padding-top: 14px;
+				button {
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
 }
