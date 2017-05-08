@@ -1,4 +1,4 @@
-<div *ngIf="card" [routerLink]="['/portfolio', card.profile_url]">
+<div *ngIf="card && uid" [routerLink]="['/portfolio', card.profile_url]">
   <div class="maker-mobile-card card">
     <div class="card-type-grey">
       <div class="type-layer-2">
@@ -43,4 +43,19 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="anonymosname">
+  <div class="maker-mobile-card card">
+    <div class="content-container d-flex flex-column">
+      <div class="d-flex">
+        <div class="maker-pic-container mr-2">
+          <img  src="./assets/images/profile-default.png" alt="">
+        </div>
+        <div class="maker-data d-flex flex-column">
+          <h4 class="maker-name">{{anonymosname}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

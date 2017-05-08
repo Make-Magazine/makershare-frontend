@@ -21,7 +21,7 @@ export class ChallengeDataComponent implements OnInit {
   customTitle: string;
   customDescription: string;
   customImage: string;
-
+  submittedBefore: boolean;
   challenge;
   dates;
   str;
@@ -62,10 +62,12 @@ export class ChallengeDataComponent implements OnInit {
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
     private auth: Auth,
-) { }
+  ) { }
 
   ngOnInit() {
     // show spinner
+    this.userId = localStorage.getItem('user_id');
+    this.userEnteredProject();
     this.loaderService.display(true);
 
     this.getCountProject();
@@ -93,7 +95,7 @@ export class ChallengeDataComponent implements OnInit {
       // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
     });
 
-    
+
   }
 
   /* function get challenge followers */
@@ -170,11 +172,11 @@ export class ChallengeDataComponent implements OnInit {
           var todayDate = new Date();
           let dateArray = this.challenge.challenge_end_date.value.split(" ");
           let YearDayMonth = dateArray[0].split("-");
-          var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
+          var endDate = new Date(+YearDayMonth[0], +YearDayMonth[1], +YearDayMonth[2]);
           var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
           let winnerdate = this.challenge.winners_announcement_date.value.split(" ");
           let winnerdateArray = winnerdate[0].split("-");
-          var announceDate = new Date(+winnerdateArray[0],+winnerdateArray[1],+winnerdateArray[2]);
+          var announceDate = new Date(+winnerdateArray[0], +winnerdateArray[1], +winnerdateArray[2]);
           var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
           this.challengeDate = announce;
 
@@ -198,7 +200,7 @@ export class ChallengeDataComponent implements OnInit {
   /* function to change data format */
   changeDateFormat(date) {
     var d;
-    if(!date)
+    if (!date)
       return '';
     date = date.split(" ")[0];
     // d = new Date(date);
@@ -210,7 +212,7 @@ export class ChallengeDataComponent implements OnInit {
     // var day = d.getDate();
     // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
-    return date[1]+'/'+date[2]+'/'+date[0];
+    return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
 
@@ -343,8 +345,8 @@ export class ChallengeDataComponent implements OnInit {
     });
   }
   /* end function to navigate to enter challenge */
-  enterToChallengeProjectClosed(){
-     this.notificationBarService.create({ message: 'Sorry, the Challenge not Open for submissions.', type: NotificationType.Info ,allowClose:true,autoHide:false,hideOnHover:false});
+  enterToChallengeProjectClosed() {
+    this.notificationBarService.create({ message: 'Sorry, the Challenge not Open for submissions.', type: NotificationType.Info, allowClose: true, autoHide: false, hideOnHover: false });
 
   }
   /* function cheack user allowe to enter challenge */
@@ -364,6 +366,32 @@ export class ChallengeDataComponent implements OnInit {
 
   /* end function my Enteries */
   /* end function cheack user allowe to enter challenge */
+  /* function print text if user enter before in this challenge */
+  userEnteredProject() {
+    this.viewService.getView('user-entered-project', [['uid', this.userId]]).subscribe(data => {
+      //  console.log(data);
+      for (var key in data) {
+        // skip loop if the property is from prototype
+        if (!data.hasOwnProperty(key)) continue;
+
+        var obj = data[key];
+        for (var prop in obj) {
+          // skip loop if the property is from prototype
+          if (!obj.hasOwnProperty(prop)) continue;
+
+          var nid = this.route.snapshot.params['nid'];
+
+          if (nid == obj[prop]) {
+            //console.log(prop + " = " + obj[prop]);
+            this.submittedBefore = true;
+          }
+        }
+      }
+    }, err => {
+      //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+    });
+  }
+  /* end function */
 
 
   /* service to get challenge name if project enter in it */

@@ -203,7 +203,7 @@ header nav {
     top: -10px;
     position: fixed; }
   header nav .project-button {
-    margin-left: 15px; }
+    margin-left: 37px; }
 header .main-header .intel-sites, header .main-header .maker-sites {
   float: left !important;
   width: 50%; }
@@ -5156,6 +5156,9 @@ button:hover {
     .page-search-content .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
       padding: 15px 20px; }
 
+.check-entered {
+  color: #00AEEF; }
+
 /*challenge enter modal popup */
 .challenge-enter-modal {
   background-color: #F2F2F2; }
@@ -7329,8 +7332,6 @@ img {
         margin-top: 10px; }
       .page-create-project-why .team .result:hover {
         background-color: #BDBDBD; }
-  .page-create-project-why .team-guide {
-    padding-top: 70px; }
 
 .borderedless td,
 .borderedless th {
