@@ -24,6 +24,7 @@ export class TeamComponent implements OnInit {
   SelectedUser = [];
   searchFailed = false;
   EmailValid = true;
+  ValidEmailAddress:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -50,8 +51,12 @@ export class TeamComponent implements OnInit {
             .map(result => {
               if(result.length == 0){
                 this.searchFailed = true;
+                if(NodeHelper.IsEmail(term)){
+                  this.ValidEmailAddress = true;
+                }else{
+                  false;
+                }
               }
-              console.log(result);
               return result;
             })
           }
@@ -76,11 +81,15 @@ export class TeamComponent implements OnInit {
     });
     this.project.field_maker_memberships.und.forEach((member,index)=>{
       this.AddRow('field_maker_memberships',member);
-      if(!NodeHelper.IsEmail(member.field_team_member.und[0].target_id)){
-        let id = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
-        this.SetMember(id,index);
+      if(member.field_anonymous_member_name && member.field_anonymous_member_name.und && member.field_anonymous_member_name.und[0].value){
+        this.SetAnonymous(member.field_anonymous_member_name.und[0].value,index);
       }else{
-        this.SetMember(0,index,member.field_team_member.und[0].target_id);
+        if(!NodeHelper.IsEmail(member.field_team_member.und[0].target_id)){
+          let id = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(member.field_team_member.und[0].target_id);
+          this.SetMember(id,index);
+        }else{
+          this.SetMember(0,index,member.field_team_member.und[0].target_id);
+        }
       }
     });
     this.TeamForm.valueChanges.subscribe(data => {
@@ -119,28 +128,35 @@ export class TeamComponent implements OnInit {
   }
 }
 
+  SetAnonymous(name,index){
+    const control = this.TeamForm.controls['field_maker_memberships']['controls'][index];
+    this.SelectedUser[index] = {anonymous:true,name:name};
+    control['controls'].uid.setValue(0);
+    control['controls'].field_anonymous_member_name.setValue(name);
+    this.SetValueChangeSubscriber(index,control);
+    this.searchFailed = false;
+  }
+
   SetValueChangeSubscriber(index,control,data?){
-    let member:field_collection_item_member = {
-      field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
-      field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]}
-    };
     if(!this.project.field_maker_memberships.und[index]){
+      let member:field_collection_item_member = {
+        field_anonymous_member_name:{und:[{value:control['controls'].field_anonymous_member_name.value}]},
+        field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
+        field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
+      };
       this.project.field_maker_memberships.und.push(member);
+      control.valueChanges.subscribe(values=>{
+        member.field_membership_role.und[0] = {value:values.field_membership_role};
+      });
     }
-    // control.valueChanges.subscribe(values => {
-    //   if(this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und){
-    //     this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role.und[0].value = values.field_membership_role;
-    //   }else{
-    //     this.project.field_maker_memberships.und[values.field_sort_order - 1].field_membership_role = {und:[{value:''}]};
-    //   }
-    // });
   }
   InitRow(ControlName,index,data?) {
     return this.fb.group({
+      'field_anonymous_member_name':[''],
       'field_team_member': ['', Validators.required],
       'field_membership_role': [data && data.field_membership_role && data.field_membership_role.und? data.field_membership_role.und[0].value:'',
       Validators.maxLength(140)],
-      'uid': [, Validators.required],
+      'uid': [],
     });
   }
   onValueChanged(form, formErrors, validationMessages) {
