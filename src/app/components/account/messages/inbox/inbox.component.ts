@@ -65,6 +65,7 @@ export class InboxComponent implements OnInit {
 
   //get all messages
   getMessages() {
+    this.loaderService.display(true);
     var status_arg = [];
     var page_arg = [];
     if (this.currentStatusId != 0) {
@@ -125,11 +126,12 @@ export class InboxComponent implements OnInit {
       }
       
       this.msg = this.msg.concat(msg_arr);   
+       this.loaderService.display(false);
       //show if user have 0 msg 
       if(this.msg.length == 0){
         this.noMessage = true;
       }
-      this.loaderService.display(false);
+      
       this.loadMoreVisibilty();
     })
   }

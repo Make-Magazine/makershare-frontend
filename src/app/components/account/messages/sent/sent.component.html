@@ -18,7 +18,7 @@
         <!--<div class="select" *ngIf="message">
           <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)">
         </div>-->
-        <div class="wrapper d-flex d-row" *ngIf="message">
+        <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
           <div class="media message-info">
             <div class="media-left">
               <a (click)="userProfile(message.first_name,message.last_name)">
@@ -36,7 +36,7 @@
               <span class="sender">You sent 
                 <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
               </span>
-              <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
+              <h4 message-subject>{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
           </div>
