@@ -142,7 +142,7 @@ export class TeamComponent implements OnInit {
       let member:field_collection_item_member = {
         field_anonymous_member_name:{und:[{value:control['controls'].field_anonymous_member_name.value}]},
         field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
-        field_team_member:{und:[{target_id:control['controls'].field_anonymous_member_name.value}]},
+        field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
       };
       this.project.field_maker_memberships.und.push(member);
       control.valueChanges.subscribe(values=>{
