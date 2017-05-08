@@ -136,7 +136,7 @@ export class SentComponent implements OnInit {
       if(this.msg.length == 0){
         this.noMessage = true;
       }
-      this.loaderService.display(false);
+      // this.loaderService.display(false);
       // this.loadMoreVisibilty();
     })
   }
