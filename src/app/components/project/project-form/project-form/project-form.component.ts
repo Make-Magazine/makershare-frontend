@@ -99,7 +99,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.defaultTabObs.subscribe(tab => {
       if (tab != undefined || tab != '') {
         this.missionRedirection = decodeURIComponent(tab);
-        console.log(this.missionRedirection)
       }
       else if(tab =undefined){
         console.log("asdsadsadsadsa");
@@ -108,6 +107,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   GetProject(nid: number) {
+    this.project = new ProjectForm();
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
       this.ConvertProjectToCreateForm(project);
     });
@@ -255,8 +255,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             let member = x[index];
             if (member['field_team_member'].und) {
               subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
-              this.project.field_maker_memberships.und.push(member as field_collection_item_member);
             }
+            this.project.field_maker_memberships.und.push(member as field_collection_item_member);
             index++;
           }
         } else {
@@ -308,9 +308,13 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             for (let i = 0; i < data.field_maker_memberships.und.length; i++) {
               let member = subx[subindex];
               if (member && member['name']) {
-                let id = this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id;
-                this.project.field_maker_memberships.und[i].field_team_member.und[0].target_id = member['name'] + ' (' + id + ')';
-                subindex++;
+                this.project.field_maker_memberships.und.forEach((element,ind)=>{
+                  if(element.field_team_member.und){
+                    let id = this.project.field_maker_memberships.und[ind].field_team_member.und[0].target_id;
+                    this.project.field_maker_memberships.und[ind].field_team_member.und[0].target_id = member['name'] + ' (' + id + ')';
+                    subindex++;
+                  }
+                });
               }
             }
           },
@@ -510,19 +514,17 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   InviteTeam() {
-
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
       this.mainService.post('/api/team_service/build', this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data => {
         for (let email in data) {
           let user = data[email];
           this.project.field_maker_memberships.und.forEach((row: field_collection_item_member, index: number) => {
-            if (row.field_team_member.und[0].target_id === email) {
+            if (row.field_team_member.und && row.field_team_member.und[0].target_id === email) {
               row.field_team_member.und[0].target_id = user.name + ' (' + user.uid + ')';
               return;
             }
           });
-        }
-
+        } 
         this.SaveProject();
       });
     } else {

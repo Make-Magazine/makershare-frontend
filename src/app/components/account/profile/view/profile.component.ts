@@ -22,6 +22,7 @@ import { MetaService } from '@nglibs/meta';
 import { FileEntityManage } from '../../../../models';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { StatisticsService } from '../../../../d7services/statistics/statistics.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
