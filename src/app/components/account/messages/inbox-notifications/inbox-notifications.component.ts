@@ -111,7 +111,7 @@ export class InboxNotificationsComponent implements OnInit {
       this.messageObj.recipients = str;
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
-      this.pm.sendMessage(this.messageObj).subscribe(res => {
+      this.pm.sendMessage(this.messageObj).subscribe(res => { 
         this.current_active_tab = 'sent';        
         this.loaderService.display(false);
         this.msg = [];

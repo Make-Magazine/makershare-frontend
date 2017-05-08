@@ -93,8 +93,8 @@ export class ExploreComponent implements OnInit {
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
-     // this.projects = data;
-      this.projects = this.projects.concat(data);
+      this.projects = data;
+      //= this.projects.concat(data);
             this.loadMoreVisibilty();
 
 

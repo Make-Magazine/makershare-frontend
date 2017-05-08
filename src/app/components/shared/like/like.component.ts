@@ -23,7 +23,7 @@ export class LikeComponent implements OnInit {
   countlikes = 0;
   liked = false;
   @Output() countNumber = new EventEmitter<number>();
-  like :string;
+  like: string;
   isLiked = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -33,10 +33,10 @@ export class LikeComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private config: NgbTooltipConfig,
 
-  ) { 
-    this.router = router; 
+  ) {
+    this.router = router;
     config.placement = 'bottom';
-    config.triggers = 'hover'; 
+    config.triggers = 'hover';
   }
   ngOnInit() {
     this.countLikes();
@@ -47,8 +47,8 @@ export class LikeComponent implements OnInit {
         /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
-          if(this.isLiked) {this.like = "Unlike this idea";}
-          else {this.like = "Like this idea";}
+          if (this.isLiked) { this.like = "Unlike this idea"; }
+          else { this.like = "Like this idea"; }
           // console.log(this.isLiked)
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});

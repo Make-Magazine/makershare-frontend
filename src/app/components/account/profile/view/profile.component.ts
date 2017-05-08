@@ -124,16 +124,19 @@ export class ProfileComponent implements OnInit {
     field_add_your_makerspace_s_: []
   };
   PlaceholderText = {
-    bio: 'Add your bio',
-    describe_yourself: 'How do you descripe yourself as a maker?',
-    field_social_accounts: 'Where do you create community?',
-    started_making: 'You know .. that one moment that or amazing mentor who guided you along',
-    maker_space: 'What are you makerspaces?',
-    websites:'What are your websites?',
-    interests: 'Add your interests',
+    nickname: 'Do you use a nickname?',
+    address: 'Where do you live',
+    bio: 'Share something about your background',
+    describe_yourself: 'What is your motto as a Maker',
+    social:'What social accounts do you use?',
+    maker_space: 'Do you belong to any makerspaces?',
+    websites:'Include your other websites',
+    started_making: 'Describe how you became a Maker',
+    interests: 'Favorite making topics?',
   };
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
+  emptySocial :boolean = true;
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -353,6 +356,7 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.address = user.address;
     this.ProfileInfo.describe_yourself = user.describe_yourself;
     this.ProfileInfo.bio = user.bio;
+    this.ProfileInfo.address_publish = user.address_publish;
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
     }
@@ -365,6 +369,11 @@ export class ProfileComponent implements OnInit {
     this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();
     this.buildFormSocial();
+    for (let social in this.ProfileInfo.field_social_accounts) {
+      if ((social != 'field_website_or_blog' || social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
+        this.emptySocial = false;
+      }
+    }
   }
   ToggleProfile() {
     this.mobileToggle = !this.mobileToggle;
