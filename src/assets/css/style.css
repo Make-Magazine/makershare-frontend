@@ -1953,6 +1953,10 @@ footer {
   max-width: 350px;
   max-height: 408px; }
 
+.home-body-logo {
+  margin-top: 85px !important;
+  width: 360px; }
+
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;
