@@ -18,10 +18,10 @@ closeResult: string;
   user;
   hideMessage = false;
   
-  @Input() name;
+  @Input('anonymosname') anonymosname;
 
 
-  @Input() uid;
+  @Input('uid') uid;
   badges = [];
   project = {};
   card;
@@ -35,6 +35,9 @@ closeResult: string;
     config.triggers = 'hover';
   }
   ngOnInit() {
+    if(this.anonymosname){
+      return;
+    }
      this.getMakerCard();
     this.getMakerBadges();
     this.CountMakerProjects()
@@ -43,6 +46,7 @@ closeResult: string;
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
+      // console.log(this.card)
     });
   }
 
