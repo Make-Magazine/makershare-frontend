@@ -99,7 +99,7 @@ export class ExploreComponent implements OnInit {
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
-      //= this.projects.concat(data);
+      //this.projects= this.projects.concat(data);
             this.loadMoreVisibilty();
 
 
@@ -132,10 +132,11 @@ export class ExploreComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     // this.getCountProject();
-    if (this.countProject >= this.projects.length) {
-      this.hideloadmoreproject = false;
+    console.log(this.countProject)
+    if (this.countProject == this.projects.length) {
+      this.hideloadmoreproject = true;
 
-    } else if (this.countProject < this.projects.length) {
+    } else if (this.countProject > this.projects.length) {
       //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
