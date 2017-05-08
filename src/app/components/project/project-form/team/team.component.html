@@ -5,8 +5,8 @@
       <img *ngIf="!r.profile_pic_typeahead" src="http://placehold.it/50x50">
     </div>
     <div class="typeahead-data-container">
-      <p class="fullname">{{r.first_name}} {{r.last_name}}</p>
-      <p class="nickname">{{r.nickname}}</p> 
+      <!--<p class="fullname">{{r.first_name}} {{r.last_name}}</p>-->
+      <p class="nickname">{{r.username}}</p> 
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@
             <div class="clearfix"></div>
             <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
               <label for="collab-name-{{i + 1}}">Name</label>
-              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_team_member}" #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_team_member}" #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
               <div *ngIf="searchFailed">
                 User not registered <button type="button" class="btn btn-primary" (click)="InviteUser(username,i)">Invite</button>
               </div>

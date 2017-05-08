@@ -77,4 +77,15 @@ export class PmService {
     return this.mainService.get(globals.endpoint + '/maker_get_pm_author/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  getInboxOrSent(name: string, args?: (string | any)[][]): Observable<any> {
+    var string_args = '';
+    if (args && args.length > 0) {
+      var string_args = '?';
+      args.forEach((item, index) => {
+        string_args += item[0] + '=' + item[1] + '&';
+      });
+    }
+    return this.mainService.post(globals.endpoint + '/' + name + string_args).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
 }

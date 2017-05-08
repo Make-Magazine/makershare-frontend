@@ -79,16 +79,12 @@
 									</div>
 									<h4 class="profile-fullname">{{profile.full_name}}</h4>
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
-									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>									
+									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
 										<li class="placeholder-text" *ngIf="!ProfileInfo.address && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
 									</ul>
-									<div *ngIf="CurrentLoggedUserId == uid && auth.authenticated()">
-										<div (click)="ProfileInfo.address_publish = 0;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 1">Unpublish</div>
-										<div (click)="ProfileInfo.address_publish = 1;ReSetAddressValues();SaveUser(ProfileInfo)" *ngIf="ProfileInfo.address_publish == 0">Publish</div>
-									</div>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
 										<i class="lnr lnr lnr-cross close"></i>
@@ -136,7 +132,7 @@
 								<div *ngIf="ProfileInfo.field_social_accounts" class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title" *ngIf="!emptySocial || CurrentLoggedUserId==uid">Social</p>
-									<p class="placeholder-text" *ngIf="!emptySocial || CurrentLoggedUserId==uid">{{PlaceholderText.social}}</p>									
+									<p class="placeholder-text" *ngIf="!emptySocial || CurrentLoggedUserId==uid">{{PlaceholderText.social}}</p>
 									<div class="social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
@@ -210,7 +206,8 @@
 								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
 								<div class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title" *ngIf="(ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '') || CurrentLoggedUserId == uid"> Websites </p>
+									<p class="global-title" *ngIf="(ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '') || CurrentLoggedUserId == uid">
+									Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' " href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_or_blog}}</a>
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' " href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_additional_site}}</a>
@@ -233,7 +230,7 @@
 								</div>
 								<hr class="hideData" *ngIf="ProfileInfo.started_making || CurrentLoggedUserId==uid">
 								<a *ngIf="CurrentLoggedUserId==uid" (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
-								<p class="hideData global-title" *ngIf="ProfileInfo.maker_interests.length != 0 || CurrentLoggedUserId==uid">Favorite Topics</p>
+								<p class="hideData global-title" *ngIf="ProfileInfo.maker_interests.length != 0 || CurrentLoggedUserId==uid">Favorite Maker Topics</p>
 								<p *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated() && ProfileInfo.maker_interests.length == 0"
 								 class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
 								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
@@ -329,9 +326,9 @@
 					 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">Makerspaces</a>
 					<a *ngIf="formGroup.controls['field_add_your_makerspace_s_'].controls.length != 0" (click)="CurrentInfoTab = 'MakerSpaces'"
 					 [ngClass]="{'active': CurrentInfoTab == 'MakerSpaces'}">Makerspaces</a><br>
-					<a (click)="CurrentInfoTab = 'Links'" [ngClass]="{'active': CurrentInfoTab == 'Links'}">Personal blog</a><br>
+					<a (click)="CurrentInfoTab = 'Links'" [ngClass]="{'active': CurrentInfoTab == 'Links'}">Websites</a><br>
 					<a (click)="CurrentInfoTab = 'Maker Moment'" [ngClass]="{'active': CurrentInfoTab == 'Maker Moment'}">Maker moment</a><br>
-					<a (click)="CurrentInfoTab = 'Interests'" [ngClass]="{'active': CurrentInfoTab == 'Interests'}">Topics</a>
+					<a (click)="CurrentInfoTab = 'Interests'" [ngClass]="{'active': CurrentInfoTab == 'Interests'}">Favorite Maker Topics</a>
 				</div>
 				<div class="modal-contents col-md-10 d-flex flex-column">
 					<div id="profile-cover" class="edit-cover-modal" *ngIf="CurrentInfoTab == 'Portfolio Photo'">
@@ -379,9 +376,8 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="{{CountryFieldsAndDetails.locality_label}}"
-										 [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]" type="text" class="form-control"
-										 id="city" (change)="ProfileInfo.address.city = $event.target.value">
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="State/Province" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
+										 type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
 									</div>
 								</div>
 							</div>
@@ -389,12 +385,15 @@
 								<div class="row">
 									<div class="col-md-12">
 										<label *ngIf="CountryFieldsAndDetails.administrative_areas" for="administrative_areas">{{CountryFieldsAndDetails.administrative_area_label}}</label>
+										<input type="checkbox" [checked]="ProfileInfo.address_publish == 1" (change)="$event.target.checked?ProfileInfo.address_publish = 1:ProfileInfo.address_publish = 0">										include lucation in public profile
+									</div>
+									<div>
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
-										<option value="choose" [disabled]="butDisabled">Choose</option>
-										<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
-									</select>
+											<option value="choose" [disabled]="butDisabled">Choose</option>
+											<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -415,7 +414,7 @@
 											<label for="edit-bio">MAKER MOTTO</label>
 											<textarea rows="2" formControlName="describe_yourself" name="limitedtextfield" class="col-md-12" id="description-textarea-info"
 											 maxlength="60"></textarea>
-											<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 60}" class="char-left"> {{60 - formGroup.value.describe_yourself.length}} char left </span>
+											<span [ngClass]="{valErrorString: formGroup.value.describe_yourself.length == 60}"> {{formGroup.value.describe_yourself.length}}/60 char left </span>
 											<!--<div *ngIf="!formGroup.valid">max length 120</div>-->
 										</div>
 									</div>
@@ -434,7 +433,7 @@
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
 										<div *ngIf="this.ProfileInfo.bio">
-											<span *ngIf="this.ProfileInfo.bio.length > -1" [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}" class="char-left">{{400 - this.ProfileInfo.bio?.length}} char left</span>
+											<span *ngIf="this.ProfileInfo.bio.length > -1" [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}">{{this.ProfileInfo.bio?.length}}/400 Chars</span>
 										</div>
 									</div>
 								</div>
@@ -558,14 +557,13 @@
 						</div>
 					</div>
 					<div id="maker-spaces" class="profile-edit-tab container" *ngIf="CurrentInfoTab == 'MakerSpaces'">
+						<label class="col-md-12">ADD YOUR MAKERSPACE(S)</label>
 						<div class="form-group" [formGroup]="formGroup">
 							<div class="makerspace-content" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
 							 formArrayName="field_add_your_makerspace_s_">
-
 								<div class="form-group form-main" [formGroupName]="i">
 									<div class="form-group row">
 										<div class="row col-md-12">
-											<label class="col-md-12">ADD YOUR MAKERSPACE(S)</label>
 											<div class="col-md-4">
 												<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
 												 (selectItem)="SelectMakerspace(i,$event)" placeholder="Makerspace Name">
@@ -587,12 +585,13 @@
 
 					</div>
 					<div id="links" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Links'">
+						<div class="col-md-12">
+							<label>WEBSITES</label>
+						</div>
 						<div class="form-group" [formGroup]="FormGroupSocial">
 							<div class="form-group socials container">
 								<ul class="list-unstyled social-links row">
-									<li class="col-md-12">
-										<label>PREFERED?</label>
-									</li>
+
 									<div class="col-md-12">
 										<li class="form-group form-item col-md-4">
 											<input [ngClass]="{valError: !FormGroupSocial.controls.field_website_or_blog.valid}" class="form-control" type="text" formControlName="field_website_or_blog"
@@ -622,6 +621,9 @@
 						</div>
 					</div>
 					<div id="maker-moment" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Maker Moment'">
+						<div class="col-md-12">
+							<label>WEBSITES</label>
+						</div>
 						<div class="form-group" [formGroup]="formGroup">
 							<div class="form-subgroup container">
 								<div class="row">
@@ -632,7 +634,7 @@
 										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
 										 placeholder="{{'What was the moment that making become a part of your life?'}}" maxlength="300">
 										</textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}" class="char-left">{{formGroup.value.started_making.length}}/{{300 - formGroup.value.started_making.length}} Chars</span>
+										<span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}">{{formGroup.value.started_making.length}}/{{formGroup.value.started_making.length}}/300 Chars</span>
 									</div>
 									<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
 									<div class="clearfix"></div>
@@ -641,12 +643,12 @@
 						</div>
 					</div>
 					<div id="interests" class="profile-edit-teb" *ngIf="CurrentInfoTab == 'Interests'">
+						<div class="col-md-12">
+							<label>FAVORITE MAKER TOPICS</label>
+						</div>
 						<div class="form-group">
-							<div class="form-subgroup container">
+							<div class="form-subgroup container ProfileInfo.maker_interests">
 								<div class="row">
-									<div class="col-md-12">
-										<label for="">WHAT INTERESTS YOU?</label>
-									</div>
 									<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
 									 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
 									 [separatorKeys]="[4, 5]">

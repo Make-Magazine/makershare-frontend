@@ -11,14 +11,13 @@
           <div class="row" [formGroupName]="HowToForm.controls.field_tools.controls.length-1">
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
-                <!--<label>Name</label>-->
                 <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name}"
-                  *ngIf="!HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_tool_name.value"
-                  type="text" id="tool-name-{{HowToForm.controls.field_tools.controls.length-1 + 1}}" placeholder="Tools used to create this project."
+                  *ngIf="!AddingValues && !HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_tool_name.value"
+                  type="text" id="tool-name-{{HowToForm.controls.field_tools.controls.length}}" placeholder="Tools used to create this project."
                   class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['tool'] = $event.item"
                   ngbTooltip="{{TooltipText.tool_name.guide}}">
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_tool_name.value && searchFailed['tool']">
-                  <span>Tool not found</span><a class="btn btn-load-more edit" (click)="OpenAddModal(addmodal,'tool')">Create New</a>
+                  <span>Tool not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'tool')">Create New</a>
                 </div>
                 <small *ngIf="formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name" class="text-danger">
                   {{formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name}}
@@ -28,7 +27,7 @@
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Quantity</label>-->
-                <input id="tool-quantity-{{HowToForm.controls.field_tools.controls.length-1 + 1}}" min="1" type="number" placeholder="Quantity"
+                <input id="tool-quantity-{{HowToForm.controls.field_tools.controls.length}}" min="1" type="number" placeholder="Quantity"
                   class="form-control" [formControl]="HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_quantity">
               </div>
             </div>
@@ -53,11 +52,11 @@
               <div class="form-group w-100">
                 <!--<label>Name</label>-->
                 <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name}"
-                  *ngIf="!HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value"
+                  *ngIf="!AddingValues && !HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value"
                   type="text" id="part-name-{{HowToForm.controls.field_parts.controls.length-1 + 1}}" placeholder="Boards and Kits used"
                   class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['part'] = $event.item">
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value && searchFailed['part']">
-                  <span>Part not found</span><a class="btn btn-load-more edit" (click)="OpenAddModal(addmodal,'part')">Create New</a>
+                  <span>Part not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'part')">Create New</a>
                 </div>
                 <small *ngIf="formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name" class="text-danger">
                   {{formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name}}
@@ -91,11 +90,11 @@
               <div class="form-group w-100">
                 <!--<label>Name</label>-->
                 <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name}"
-                  *ngIf="!HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value"
+                  *ngIf="!AddingValues && !HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value"
                   type="text" id="material-name-{{HowToForm.controls.field_materials.controls.length-1 + 1}}" placeholder="Parts and Material used"
                   class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['material'] = $event.item">
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value && searchFailed['material']">
-                  <span>Material not found</span><a class="btn btn-load-more edit" (click)="OpenAddModal(addmodal,'material')">Create New</a>
+                  <span>Material not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'material')">Create New</a>
                 </div>
                 <small *ngIf="formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name" class="text-danger">
                   {{formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name}}
@@ -156,24 +155,27 @@
         </div>
       </div>
     </div>
-
-    <!--<div class="form-group resources-row">
+    <div class="form-group resources-row">
       <label>Resources</label>
       <div formArrayName="field_resources">
         <div>
           <div class="card-block" [formGroupName]="HowToForm.controls.field_resources.controls.length-1">
-            <div class="form-group col-xs-12">
-              <input type="text" class="form-control" formControlName="field_label">
-						</div>
-            <div class="form-group col-xs-12">
-              <input type="file" (change)="TempSelectedToolMaterialPart['resource'] = $event.target.files[0]">
+            <div class="col-md-12 inputs-container flex-column flex-md-row">
+              <div class="form-group col-xs-12 col-md-6">
+                <input *ngIf="!AddingValues" type="text" class="form-control" formControlName="field_label" placeholder="Name of resource.">
+                <small *ngIf="formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label" class="text-danger">
+                  {{formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label}}
+                </small>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" (click)="OpenModal(resourcefile)" class="btn btn-load-more">Choose a file</button>
+                <span *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="btn btn-primary" (click)="OpenModal(linkreop)">URL Link</span>
+                <div *ngIf="ResourceFileSelected">{{ResourceFileSelected.filename}}</div>
+                <div *ngIf="ResourceRepoLinkSelected">{{ResourceRepoLinkSelected}}</div>
+                <a *ngIf="ResourceFileSelected" (click)="SetResourceFile()"><i class="fa fa-plus-square"></i>Add</a>
+                <a *ngIf="ResourceRepoLinkSelected" (click)="SetResourceByRepoLink()"><i class="fa fa-plus-square"></i>Add</a>
+              </div>
             </div>
-						<div class="form-group col-xs-10">
-              <input [ngClass]="{valError: formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_repository_link}" type="text" class="form-control" placeholder="Enter a repository in" formControlName="field_repository_link">
-              <small *ngIf="formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_repository_link" class="text-danger">
-                {{formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_repository_link}}
-              </small>
-						</div>
           </div>
         </div>
         <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card">
@@ -182,15 +184,12 @@
             <span class="fa fa-lg fa-times pull-right"(click)="RemoveRow(i,'field_resources')"></span>
           </div>
         </div>
-        <a *ngIf="TempSelectedToolMaterialPart['resource']" (click)="FileUpdated(TempSelectedToolMaterialPart['resource'],HowToForm.controls.field_resources.controls.length-1);TempSelectedToolMaterialPart['resource'] = ''" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i>Add</a>
-        <a *ngIf="HowToForm.value.field_resources[HowToForm.controls.field_resources.controls.length-1].field_repository_link && HowToForm.controls.field_resources.controls[HowToForm.controls.field_resources.controls.length-1].valid" (click)="SetResourceByRepoLink(HowToForm.value.field_resources[HowToForm.controls.field_resources.controls.length-1],HowToForm.controls.field_resources.controls.length-1)" class="btn btn-white btn-sharp"><i class="fa fa-lg fa-plus"></i>Add</a>
-      </div>-->
-    <label for="resource">Resources</label><br>
-    <span class="mb-2">--FIELD RESOURCES IN PROGRESS--</span>
-    <div class="form-group projectSteps">
-      <div class="form-group project-steps">
-        <label for="how-to-make">Steps</label>
-        <ckeditor #ckeditor id="how-to-make" rows="5" [config]="CKEditorConfig" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+      </div>
+      <div class="form-group projectSteps">
+        <div class="form-group project-steps">
+          <label for="how-to-make">Steps</label>
+          <ckeditor #ckeditor id="how-to-make" rows="5" [config]="CKEditorConfig" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+        </div>
       </div>
     </div>
   </div>
@@ -244,5 +243,47 @@
       <button #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
       <button type="button" class="btn btn-load-more" (click)="AddNewToolMaterialPart(CloseButton,Name)">Save</button>
     </div>
+  </div>
+</template>
+
+<template #resourcefile let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <h4 class="modal-title">Choose resource file</h4>
+    <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,CloseButton)">
+    <img class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
+    <div>
+      <p class="drag-photo">Drag a File Here</p>
+      <p class="drag-or">or</p>
+    </div>
+    <a class="btn btn-load-more" (click)="fileinput.click()">
+      Upload
+      <input #fileinput type="file" (change)="ResourceFileUploaded($event.target.files[0],CloseButton)" id="upload" style="display:none;" />
+    </a>
+  </div>
+  <div class="modal-footer">
+    <button [hidden]="true" #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+  </div>
+</template>
+
+<template #linkreop let-c="close" let-d="dismiss" ngbModalContainer>
+  <div class="modal-header">
+    <h4 class="modal-title">Enter the repository link</h4>
+    <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input name="urllink" type="text" url required #urllink="ngModel" [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
+    <small *ngIf="urllink.errors && urllink.dirty" class="text-danger">
+      URL not valid, please enter a valid url:http://example.com.
+    </small>
+  </div>
+  <div class="modal-footer">
+    <button [hidden]="true" #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" [disabled]="!urllink.valid" (click)="SaveRepoLink(urllink,CloseButton)">Save</button>
   </div>
 </template>
