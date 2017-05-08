@@ -107,7 +107,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   GetProject(nid: number) {
-    this.project = new ProjectForm();
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
       this.ConvertProjectToCreateForm(project);
     });
@@ -373,6 +372,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
         this.GetProject(project.nid);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
+        this.project = new ProjectForm();
       }, err => {
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
@@ -386,6 +386,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }
         this.GetProject(project.nid);
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
+        this.project = new ProjectForm();
       }, err => {
         console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
