@@ -542,7 +542,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
 .button-container-sec-3 {
   margin-left: 3px;
   display: inline-block;
-  width: 144px; }
+  width: 143px; }
   .button-container-main-1 .btn,
   .button-container-main-2 .btn,
   .button-container-sec-2 .btn,
@@ -7552,6 +7552,23 @@ img {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.5); }
     .upload-cover-modal .scroll-container .file-browser-btn {
       background-color: #fff; }
+
+.account-settings .form-check,
+.account-settings .check-label {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important; }
+.account-settings .custom-control {
+  margin: auto;
+  position: absolute;
+  left: 40%; }
+.account-settings .add-controls {
+  overflow: hidden; }
 
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
