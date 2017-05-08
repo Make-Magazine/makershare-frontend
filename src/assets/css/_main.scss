@@ -778,3 +778,16 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
   _::-webkit-full-page-media, _:future, :root .check-label {
     margin-left: 5px;
   }
+
+  ::-webkit-input-placeholder {
+    font-family: 'Arial';
+}
+:-moz-placeholder {
+    font-family: 'Arial';
+}
+::-moz-placeholder {
+    font-family: 'Arial';
+}
+:-ms-input-placeholder {
+    font-family: 'Arial';
+}
