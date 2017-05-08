@@ -1356,6 +1356,7 @@
 .modal-content  {
     .profile-modal {
         background-color: $site-bg;
+        text-align: left !important;
         label {
             color: $red;
             margin: 0px;
@@ -2075,10 +2076,10 @@
     position: relative;    
     margin: 15px 0;
     border: none;
-    height: 180px;
     padding: 50px 15px 15px;
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
+    min-height: 188px;
     .icons-side-project {
         position: absolute;
         top: -2px;
@@ -2104,8 +2105,7 @@
     }
     .maker-data {
         max-width: 230px;
-        word-break: break-all;
-        overflow: hidden;
+        word-wrap: break-word;
         .maker-name {
             line-height: 150%;
             @include card-header-font-sm ();

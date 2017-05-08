@@ -242,8 +242,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         if (data.field_resources.und) {
           for (let i = 0; i < data.field_resources.und.length; i++) {
             let resource = x[index];
+            this.project.field_resources.und.push(resource as field_collection_item_resource);
             if (resource['field_resource_file'].und) {
-              this.project.field_resources.und.push(resource as field_collection_item_resource);
               this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
             }
             index++;
@@ -356,7 +356,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
   SaveProject() {
-    this.current_active_tab = 'Your Story';
+    this.ProjectLoaded = false;
     if (this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371) {
       this.project.CheckIfReadyToPublic();
     }
@@ -417,6 +417,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * @param Status : the status of the project dependent on visibility type
    */
   GettingFieldsReady(Status: number, Visibility: number) {
+    this.current_active_tab = 'Your Story';
     if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
       this.notificationBarService.create({ message: 'Ah snap! Looks Like we need a little more info from you.', type: NotificationType.Error });
       this.TryToSubmitPrivatePublic = true;
@@ -465,12 +466,15 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           this.project.SetField(x[0] as field_file_reference, 'field_cover_photo');
           index++;
         }
-        for (let i = 0; i < this.FormPrintableValues.resources_files.length; i++) {
-          if (!this.FormPrintableValues.resources_files[i].fid && this.project.field_resources.und[i]) {
-            this.project.field_resources.und[i].field_resource_file.und[0] = x[index] as field_file_reference;
-            index++;
+        this.project.field_resources.und.forEach((item,resourcesindex)=>{
+          for (let i = 0; i < this.FormPrintableValues.resources_files.length; i++) {
+            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file == this.FormPrintableValues.resources_files[i].filename) {
+              this.project.field_resources.und[resourcesindex].field_resource_file.und[0] = x[index] as field_file_reference;
+              index++;
+              return;
+            }
           }
-        }
+        });
       },
       (err) => {
         console.log('Error: %s', err);
@@ -532,8 +536,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * @param visibility : the tid of the visibility status
    */
   showSuccessMessage(action: string, visibility: number) {
-
-
     // update success messages
     var tab: string = 'public';
     if (action == 'update') {
@@ -551,7 +553,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
         tab = 'public';
       }
-
     } else if (action == 'create') {
       if (visibility == 1115) {
         // updates as draft
@@ -569,30 +570,20 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           let navigationExtras: NavigationExtras = {
             queryParams: { 'projectId': "newproject" },
           };
-          console.log(this.project.nid)
-           console.log(this.missionRedirection)
           this.router.navigate([this.missionRedirection], navigationExtras);
-          
         }
         tab = 'public';
-         
       }
-
     }
-
-      // navigate to the portfolio with required tab
-      let navigationExtras: NavigationExtras = {
-        queryParams: { 'tab': tab },
-      };
-      let userID = +localStorage.getItem("user_id");
-      if (visibility != 1115 && this.missionRedirection == 'undefined') {
-        console.log("sadasd")
-        this.userService.getUrlFromId(userID).subscribe(res => {
-          this.router.navigate(['/portfolio/' + res.url], navigationExtras);
-        });
-      }
-
-    
-
+    // navigate to the portfolio with required tab
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'tab': tab },
+    };
+    let userID = +localStorage.getItem("user_id");
+    if (visibility != 1115 && this.missionRedirection == 'undefined') {
+      this.userService.getUrlFromId(userID).subscribe(res => {
+        this.router.navigate(['/portfolio/' + res.url], navigationExtras);
+      });
+    }
   }
 }
