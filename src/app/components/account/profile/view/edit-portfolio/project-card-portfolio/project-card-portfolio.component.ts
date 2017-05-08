@@ -40,6 +40,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       res[0].field_team_members = membership_array;
       this.projectCard = res[0];
       console.log(this.projectCard)
+      console.log(this.Project);
     });
   }
 

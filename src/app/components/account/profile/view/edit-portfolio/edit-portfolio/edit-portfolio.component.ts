@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, Input } from '@angular/core';
 import { UserService } from '../../../../../../d7services/user/user.service';
 import { ViewService } from '../../../../../../d7services/view/view.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,12 +13,12 @@ export class EditPortfolioComponent implements OnInit {
   defaultTab: string;
   CurrentTab:string;
   DefaultView:string;
-  
   constructor(
     private viewService:ViewService,
     private userService:UserService,
     private route: ActivatedRoute,
   ) { }
+  @Input('projectsCount') projectsCount;
 
   ngOnInit() {
     this.CurrentTab = 'public';

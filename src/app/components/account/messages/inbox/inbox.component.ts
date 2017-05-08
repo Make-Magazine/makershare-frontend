@@ -20,66 +20,23 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 })
 export class InboxComponent implements OnInit {
 
-  formatter = (x) => {
-    return '';
-  };
-
-  @ViewChild('myInput')
-  count;
-  searchValue: string = '';
-  closeResult: string;
-  currentuser;
-  active = true;
-  searchFailed = false;
-  messageForm: FormGroup;
   messages = [];
   message;
   msg = [];
-  num: any;
-  num2: any;
-  num3: any;
-  anothUser: any;
-  author;
   dateObj;
   currentDate;
-  curr;
   countMsg;
   currentStatusId = 0;
   currentCount = 0;
   statusesCount = {};
   pageNumber = 0;
   hideloadmore = true;
-  sender = null;
-  reciver = null;
-  reciverUser = [];
-  SelectedUser = [];
-  submitted = false;
-  deletedArr = [];
-  deleted;
   userId;
-  messageObj: Message = {
-    recipients: '',
-    subject: '',
-    body: '',
-  };
-  selected = [];
-  count_num: number;
-  profile;
-  pm_disabed = true;
-  disabled;
-  onemMg = [];
-  allChecked
   hideTurnOn: boolean = false;
   status;
   blocked;
-  usr_recv;
-  participints
-  senderData
-  noMessage = false;
-  messageRecieved = [];
+  noMessage= false;
   //hideUser= true;
-  inboxCount
-  inbox_arr = [];
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private pm: PmService,
@@ -94,20 +51,12 @@ export class InboxComponent implements OnInit {
 
   ) { }
   ngOnInit(): void {
-    //   this.getCurrentUser();
+    this.getStatus();
     this.CountMessages();
     this.getMessages();
-    this.getStatus();
-    // this.buildForm();
     this.getBlockedUsers();
     this.userId = localStorage.getItem('user_id');
 
-  }
-
-
-  resetForm(e) {
-    e.preventDefault();
-    this.messageForm.reset();
   }
 
   hidepopup() {
@@ -127,35 +76,25 @@ export class InboxComponent implements OnInit {
     if (this.pageNumber >= 0) {
       page_arg = ['page', this.pageNumber];
     }
-    this.pm.getMessages('privatemsg', [status_arg, page_arg]).subscribe(data => {
+    this.pm.getInboxOrSent('maker_get_pm_author/retrieve_inbox_msgs', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
       var msg_arr = [];
-      var count;
       var i = 0
       for (let key in this.messages) {
-        let j = 0;
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.pm.postView('maker_get_pm_author/retrieve_author/', this.messages[key].thread_id).subscribe(author => {
             this.userId = localStorage.getItem('user_id');
-            if (this.userId != author[0].author) {
-              this.user.getUser(author[0].author).subscribe(res => {
-                this.messages[key].reciver = true;
-                this.messages[key].user_photo = res.user_photo;
-                this.messages[key].first_name = res.first_name;
-                this.messages[key].last_name = res.last_name;
-                this.messageRecieved[j] = this.messages[key];
 
-                this.inbox_arr.push(this.messageRecieved[j]);
-                if ( this.inboxCount > this.inbox_arr.length) {
-                  this.hideloadmore = true;
-                } else if ( this.inboxCount < this.inbox_arr.length) {
-                  this.hideloadmore = false;
-                }
-                j++;
+                  this.user.getUser(author[0].author).subscribe(res => {
+                  
+                  this.messages[key].user_photo = res.user_photo;
+                  this.messages[key].first_name = res.first_name;
+                  this.messages[key].last_name = res.last_name;
               })
-            }
+                
+
           })
-  
+
           msg_arr.push(this.messages[key]);
           this.dateObj = new Date(msg_arr[i].last_updated * 1000);
           this.currentDate = new Date();
@@ -178,49 +117,45 @@ export class InboxComponent implements OnInit {
             // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
             msg_arr[i].last_updated = msg_arr[i].date_format;
           }
-          //  if(Object.keys(msg_arr[i].participants).length > 2){
-           msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
+        //  if(Object.keys(msg_arr[i].participants).length > 2){
+            msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
           //}
           i++
         }
       }
       
-      this.msg = this.msg.concat(msg_arr);
+      this.msg = this.msg.concat(msg_arr);   
       //show if user have 0 msg 
-      if (this.msg.length == 0) {
+      if(this.msg.length == 0){
         this.noMessage = true;
       }
       this.loaderService.display(false);
-      //  this.loadMoreVisibilty();
+      this.loadMoreVisibilty();
     })
   }
 
   CountMessages() {
     this.userId = localStorage.getItem('user_id');
-    this.route.params
-      .switchMap(() => this.pm.getInboxCount(this.userId))
-      .subscribe(data => {
-        this.inboxCount = data[0];
-      });
+    this.viewService.getView('maker_get_pm_author/'+ [[this.userId]]).subscribe(data=>{
+      this.countMsg = data;
+    })
   }
 
   loadMore() {
     this.pageNumber++;
     this.getMessages();
   }
-  // loadMoreVisibilty() {
-
-  //   if ( this.inboxCount > this.msg.length) {
-  //       this.hideloadmore = true;
-  //     } else {
-  //       this.hideloadmore = false;
-  //     }
-  // }
+  loadMoreVisibilty() {
+    var arr_count = this.msg.length;
+    if (this.countMsg > arr_count) {
+      this.hideloadmore = true;
+    } else {
+      this.hideloadmore = false;
+    }
+  }
   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    this.msg = [];
-    this.getMessages();
-    this.loaderService.display(true);
+    delete this.msg[i];
   }
 
   // valueChanged(mid, event) {
@@ -250,42 +185,25 @@ export class InboxComponent implements OnInit {
   //   }
   // }
 
-  // isAllChecked(mid) {
-  //   return this.msg.every(_ => _.state);
-  // }
-  /**
- * delete selected messages
- */
-  // deleteMessages() {
-  //   this.loaderService.display(true);
-  //   for (var _i = 0; _i < this.msg.length; _i++) {
-  //     this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
-  //   }
-  //   this.msg = [];
-  //   this.getMessages();
-  // }
+//   isAllChecked(mid) {
+//     return this.msg.every(_ => _.state);
+//   }
+//   /**
+//  * delete selected messages
+//  */
+//   deleteMessages() {
+//     this.loaderService.display(true);
+//     for (var _i = 0; _i < this.msg.length; _i++) {
+//       this.pm.deleteMessage(this.deletedArr[_i]).subscribe();
+//     }
+//     this.msg = [];
+//     this.getMessages();
+//   }
 
   viewMessage(thread_id) {
-    this.router.navigate(['/account/inbox/view', thread_id]);
+    this.router.navigate(['/view', thread_id]);
   }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
   /*
   * disable messages
    */
@@ -309,7 +227,7 @@ export class InboxComponent implements OnInit {
   //     this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success });
   //     this.loaderService.display(false);
   //   })
-  // }
+ // }
   /*
   *if message turned off the data[0]=disabled
   */

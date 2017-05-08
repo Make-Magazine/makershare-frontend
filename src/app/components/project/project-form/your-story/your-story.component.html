@@ -13,8 +13,9 @@
       <label for="teaser" [ngClass]="{valErrorString:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}">Teaser</label>
       <textarea [ngClass]="{valError:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}" maxlength="250" class="form-control"
         rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
+      <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
     </div>
-    <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
+
     <!--<div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
       {{ formErrors.field_teaser }}
     </div>-->
@@ -88,7 +89,7 @@
     </div>
     <div class="form-group show-tell">
       <label for="show-tell">Add Video: Show &amp; Tell</label>
-      <input [ngClass]="{valError: formErrors.field_show_tell_video}" type="text" class="form-control" id="show-tell" placeholder="Add a YoutTube or Vimeo URL"
+      <input [ngClass]="{valError: formErrors.field_show_tell_video}" type="text" class="form-control" id="show-tell" placeholder="Add a YouTube or Vimeo URL"
         formControlName='field_show_tell_video'>
       <!--<div *ngIf="formErrors.field_show_tell_video" class="alert alert-danger error-msg">
         {{ formErrors.field_show_tell_video }}
@@ -104,7 +105,7 @@
     <div class="form-group aha">
       <label for="aha">AHA! Moment</label>
       <textarea rows="5" [ngClass]="{valError: formErrors.field_aha_moment}" maxlength="350" type="text" class="form-control" id="aha"
-        placeholder="What was your biggest insight during the buid?" formControlName='field_aha_moment'></textarea>
+        placeholder="What was your biggest insight during the build?" formControlName='field_aha_moment'></textarea>
       <span class="words-count">{{YourStoryForm.value.field_aha_moment.length}}\350 chars</span>
     </div>
 
@@ -156,12 +157,15 @@
     <div class="guideline">
       <div class="pull-left content">
         <h5>{{sidebarText.show_tell.title}}</h5>
-        <video width="250" height="150" controls>
+        <!--<video width="250" height="150" controls>
           <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
-        </video>
+        </video>-->
+        <div class="embed-responsive">
+          <video-viewer [link]="showAndTellLink"></video-viewer>
+        </div>
       </div>
     </div>
-    <div class="guideline">
+    <!--<div class="guideline">
       <div class="pull-left content">
         <h5>{{sidebarText.aha.title}}</h5>
         <p>{{sidebarText.aha.guide}}</p>
@@ -172,8 +176,9 @@
         <h5>{{sidebarText.uh.title}}</h5>
         <p>{{sidebarText.uh.guide}}</p>
       </div>
+  </div>-->
+      
     </div>
-  </div>
 </aside>
 
 <!--Cover image modal-->

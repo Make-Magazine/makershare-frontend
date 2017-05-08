@@ -15,6 +15,8 @@ import { FileService } from '../../../../d7services/file/file.service';
 import { MainService } from '../../../../d7services/main/main.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
+import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+
 declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-how-to',
@@ -116,6 +118,9 @@ export class HowToComponent implements OnInit,AfterViewInit {
     material: false
   };
   CurrentModal: string;
+  ResourceFileSelected:FileEntity;
+  ResourceRepoLinkSelected:URL;
+  AddingValues:boolean = false;
 
   search = (text$: Observable<string>) => {
     let control = text$['source']['sourceObj'].classList[0];
@@ -167,12 +172,18 @@ export class HowToComponent implements OnInit,AfterViewInit {
     const control = this.HowToForm.controls[ControlName]['controls'][index];
     control.controls['field_' + arrayelementname + '_name'].setValue(name_with_id);
     var field_quantity = "";
-    if (control.controls.field_material_quantity) {
+    if (control.controls.field_material_quantity && control.controls.field_material_quantity.value) {
       field_quantity = control.controls.field_material_quantity.value;
-    } else {
+    } else if(control.controls.field_quantity && control.controls.field_quantity.value){
       field_quantity = control.controls.field_quantity.value;
+    }else{
+      field_quantity = "1";      
     }
-
+    if(control.controls.field_quantity){
+      control.controls.field_quantity.patchValue(field_quantity);
+    }else{
+      control.controls.field_material_quantity.patchValue(field_quantity);
+    }
     let allvalues = {
       field_tool_name: name_with_id,
       field_part_name: name_with_id,
@@ -184,6 +195,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
     this.project[ControlName].und.push(Row);
     this.TempSelectedToolMaterialPart[arrayelementname] = '';
     this.AddRow(ControlName);
+    this.ResetInputFields();
   }
 
   GetRowWithValues(values, arrayelementname): any {
@@ -278,29 +290,29 @@ export class HowToComponent implements OnInit,AfterViewInit {
         {
           return this.fb.group({
             'field_tool_name': [data && data.field_tool_name && data.field_tool_name.und ? data.field_tool_name.und[0].target_id : '', Validators.required],
-            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : null],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : ''],
           });
         }
       case 'field_parts':
         {
           return this.fb.group({
             'field_part_name': [data ? data.field_part_name.und[0].target_id : '', Validators.required],
-            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : null],
+            'field_quantity': [data && data.field_quantity && data.field_quantity.und ? data.field_quantity.und[0].value : ''],
           });
         }
       case 'field_materials':
         {
           return this.fb.group({
             'field_material_name': [data ? data.field_material_name.und[0].target_id : '', Validators.required],
-            'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und ? data.field_material_quantity.und[0].value : null],
+            'field_material_quantity': [data && data.field_material_quantity && data.field_material_quantity.und ? data.field_material_quantity.und[0].value : ''],
           });
         }
       case 'field_resources':
         {
           return this.fb.group({
-            'field_resources_filename': [data ? data.field_resource_file && data.field_resource_file.und[0].filename : ''],
+            'field_resources_filename': [data ? data.field_resource_file.und && data.field_resource_file.und[0].filename : ''],
             'field_repository_link': [data && data.field_repository_link && data.field_repository_link.und ? data.field_repository_link.und[0].url : '', CustomValidators.url],
-            'field_label': [data && data.field_label? data.field_label.und[0].value : '',],
+            'field_label': [data && data.field_label? data.field_label.und[0].value : '',Validators.required],
           });
         }
     }
@@ -350,40 +362,10 @@ export class HowToComponent implements OnInit,AfterViewInit {
         }
       case 'field_resources':
         {
-          return { 'field_resources_filename': '', 'field_repository_link': '' };
+          return { 'field_label': '', 'field_repository_link': '' };
         }
     }
     return '';
-  }
-
-  FileUpdated(SelectedFile, index) {
-    const control = this.HowToForm.controls['field_resources']['controls'][index];
-    if (SelectedFile) {
-      control.controls.field_resources_filename.setValue(SelectedFile.name);
-      var file: FileEntity = {
-        file: '',
-        filename: SelectedFile.name
-      };
-      NodeHelper.ConvertToBase64(SelectedFile, file);
-      if (this.resources_files[index]) {
-        this.resources_files[index] = file;
-      } else {
-        this.resources_files.push(file);
-        let field_resource: field_collection_item_resource = {
-          field_label: { und: [{value:control.value.field_label}] },
-          field_resource_file: { und: [{ filename: file.filename, fid: 0 }] }
-        };
-        this.project.field_resources.und.push(field_resource);
-        this.AddRow('field_resources');
-      }
-    }
-    this.emitter.emit(this.resources_files);
-  }
-
-  SetResourceByRepoLink(Values,index){
-    this.AddRow('field_resources');
-    const control = this.HowToForm.controls['field_resources']['controls'][index];
-    control.patchValue(Values);
   }
 
   /**
@@ -421,8 +403,8 @@ export class HowToComponent implements OnInit,AfterViewInit {
       },
     },
     'field_resources': {
-      'field_resources_filename': {
-        'required': 'file is required',
+      'field_label': {
+        'required': 'Resource name is required',
       },
       'field_repository_link': {
         'url': 'Please enter a valid url, ex: http://example.com.',
@@ -431,9 +413,86 @@ export class HowToComponent implements OnInit,AfterViewInit {
 
   };
 
-  OpenAddModal(Template, Control) {
-    this.CurrentModal = Control;
+  OpenModal(Template, Control?) {
     this.modalService.open(Template);
+    if(Control){
+      this.CurrentModal = Control;
+    }    
+  }
+
+  ResourceFileUploaded(file:File,CloseBtn:HTMLButtonElement){
+    if(!file){
+      return;
+    }
+    CloseBtn.click();
+    const control = this.HowToForm.controls['field_resources']['controls'][this.HowToForm.controls['field_resources']['controls'].length-1];
+    var fileEntity: FileEntity = {
+      file: '',
+      filename: file.name
+    };
+    this.ResourceFileSelected = fileEntity;
+    NodeHelper.ConvertToBase64(file, this.ResourceFileSelected);
+    control.controls.field_resources_filename.setValue(fileEntity.filename);
+    if(!control.controls.field_label.value){
+      control.controls.field_label.setValue(fileEntity.filename);
+    }
+  }
+
+  SetResourceFile(){
+    const control = this.HowToForm.controls['field_resources']['controls'][this.HowToForm.controls['field_resources']['controls'].length-1];
+    if(!control.valid){
+      return;
+    }
+    let newfile:FileEntity = {
+      file:this.ResourceFileSelected.file,
+      filename:this.ResourceFileSelected.filename,
+    };
+    this.resources_files.push(newfile);
+    let field_resource: field_collection_item_resource = {
+      field_label: { und: [{value:control.value.field_label}] },
+      field_resource_file: { und: [{ filename: newfile.filename, fid: 0 }] }
+    };
+    this.project.field_resources.und.push(field_resource);
+    this.AddRow('field_resources');
+    this.emitter.emit(this.resources_files);
+    delete this.ResourceFileSelected;
+    this.ResetInputFields();
+  }
+
+  ResetInputFields(){
+    let self = this;
+    self.AddingValues = true;
+    setTimeout(function(){
+      self.AddingValues = false;
+    });
+  }
+
+  SaveRepoLink(Input,CloseBtn:HTMLButtonElement){
+    if(!Input.valid){
+      return;
+    }
+    CloseBtn.click();
+    const control = this.HowToForm.controls['field_resources']['controls'][this.HowToForm.controls['field_resources']['controls'].length-1];
+    if(!control.controls.field_label.value){
+      control.controls.field_label.patchValue(Input.value);
+    }
+    this.ResourceRepoLinkSelected = Input.value;
+    this.TempSelectedToolMaterialPart['link'] = '';
+  }
+
+  SetResourceByRepoLink(){
+    const control = this.HowToForm.controls['field_resources']['controls'][this.HowToForm.controls['field_resources']['controls'].length-1];
+    if(!control.valid){
+      return;
+    }
+    control.controls.field_repository_link.patchValue(this.ResourceRepoLinkSelected);
+    delete this.ResourceRepoLinkSelected;
+    this.AddRow('field_resources');
+    this.ResetInputFields();
+  }
+
+  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,CloseBtn:HTMLButtonElement) {
+    this.ResourceFileUploaded(acceptedFile.file,CloseBtn);
   }
 
   /**
@@ -468,19 +527,12 @@ export class HowToComponent implements OnInit,AfterViewInit {
       'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
     },
     'tools': {
-      'title': 'Tools // Boards & Kits // Materials:',
-      'guide': `We've devised three Topics to represent the different elements that might have been used to create this project.
-
-Tools: The items you use to affect your materials (crochet hooks, screwdrivers, laser cutters, etc)
-
-Boards: Any pre-made electronic board (Edison, Arduino, Raspberry Pi, etc)
-& Kits: Any purchased kit containing combinations of tools, boards, and/or materials.
-
-Materials: Anything that your final project is made from, not including Boards & Kits (cloth, thread, nails, monitor, wood, etc)`
+      'title': 'Tools/Boards & Kits/Parts & Materials:',
+      'guide': `Use these fields to detail all of the tools, boards, kits, parts, and materials you used to create your project. Be as accurate as possible, in both name and quantities, to help others see exactly what's required.`
     },
     'difficulties_duration': {
       'title': 'Difficulty & Duration:',
-      'guide': 'How difficult would it be for the average person to recrate this? How long would it take them?'
+      'guide': 'Assuming the person reading these directions had only a cursory knowledge of the subject, how difficult would it be for them to accomplish the build? How long would it take them?'
     },
 
     'resources': {
@@ -488,8 +540,8 @@ Materials: Anything that your final project is made from, not including Boards &
       'guide': `Are there any important files associated with your project that you'd like to share? This is the place for those. From vector to 3D files, patterns to code, please uploaded any files associated with your poject here.`
     },
     'credit_your_inspiration': {
-      'title': 'How to:',
-      'guide': 'Use this field to describe your process in creating this project?Include any images, video, or text you feel will allow others to best remake your project.'
+      'title': 'Steps:',
+      'guide': 'Use this field to describe the process of creating this project. Include any images, video, or text that will allow others to best remake your project.'
     },
   }
 

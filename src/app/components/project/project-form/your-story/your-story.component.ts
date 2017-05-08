@@ -102,7 +102,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
-
+  showAndTellLink ="https://www.youtube.com/watch?v=ExqaSOy_b-k";
   /**
    * local variables to use only inside this component
    */
@@ -200,14 +200,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
-      this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
-      && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
-      && this.YourStoryForm['controls']['field_story'].valid);
-      if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
-        this.CanNavigate.emit(false);
-      }
+      this.EmitValues();
       this.onValueChanged(data);
-      this.emitter.emit(this.tags);
     });
     this.onValueChanged(this.YourStoryForm.value);
     for (let index in this.YourStoryForm.controls) {
@@ -220,6 +214,17 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
         }
       });
     }
+  }
+
+  EmitValues(){
+    this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
+    && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
+    && this.YourStoryForm['controls']['field_story'].valid);
+    if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
+      this.CanNavigate.emit(false);
+    }
+    
+    this.emitter.emit(this.tags);
   }
 
   /**
@@ -252,6 +257,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     if (!NodeHelper.isEmpty(this.imagedata)) {
       this.cover_image.file = this.imagedata.image;
       this.imagedata = {};
+      this.EmitValues();
     }
     if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
       this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;
@@ -382,27 +388,27 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
 
   sidebarText = {
     'projectName': {
-      'title': 'Naming your Project:',
-      'guide': 'If you already have a name for your project, perfect! Put that here. If you do not, try to think of a title that is both a little descriptive, and would catch your eye if you saw it on a website.'
+      'title': 'Project Name:',
+      'guide': 'Think of a title that is both a little descriptive, and would catch your eye if you saw it on a website.'
     },
     'teaser': {
-      'title': 'What\'s\ a Teaser?',
-      'guide': 'Your teaser will appear with your Cover Photo on a title card, introducing people to your project. Try to clearly explain your whole project in a sentence or two.'
+      'title': 'Teaser:',
+      'guide': 'Teasers will introduce people, along with a Cover Photo, to this project. Try to clearly explain the whole project in a sentence or two.'
     },
     'cover_image': {
-      'title': 'Crafting an Engaging Cover Photo:',
-      'guide': `This image will represent your project anywhere it appears on the website. Try to frame the project well, ensure there's good lighting, check the background for distractions, and make sure the final image isn't blurry. Images should be at least 600 x 400 px, and can be either jpg, gif, or png`
+      'title': 'Cover Photo:',
+      'guide': `This image will represent the project anywhere it appears on the website. Try to articulate the project as clearly as possible. Images should be at least 600 by 400 pixels, and can be jpg, gif, or png.`
     },
     'category': {
-      'title': 'Topics will help other Makers find your project:',
-      'guide': 'Select as many Topics and sub-Topics as you feel apply to your project. The more specific you are, the easier it will be for others to find your project.'
+      'title': 'Topics:',
+      'guide': 'Topics help organize projects on the site into categories. Using accurate categories will make it easier for others to find this project.'
     },
     'story': {
-      'title': 'Creating a great story:',
-      'guide': `Tell us about your project. Some questions to think about: What does your project do? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the the project in different states of polish will help others visualize what's being referenced.`
+      'title': 'The Story:',
+      'guide': `Elaborate about the project. Some questions to think about: What does your project do? Why is it important to you? How did you get started? What was your process for working on it? What did you learn by making it? How do people react to your project? If the project didn't turn out the way you planned, what changed and why? Including video and photos of the project in different states of polish will help others visualize what's being referenced.`
     },
     'show_tell': {
-      'title': 'Making a Show and Tell video:',
+      'title': 'Show & Tell Video:',
       // 'guide': 'embed video:  ',
       // 'video': this.show_video
     },
