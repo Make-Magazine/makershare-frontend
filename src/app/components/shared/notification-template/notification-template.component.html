@@ -18,14 +18,11 @@
                 <span> on the home page.</span><br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_project_likes'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -38,16 +35,11 @@
                 <span> added a lightbulb to </span>
                 <span class="link">{{notification.title}}</span>.
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
-
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_comment_project'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -61,15 +53,11 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_added_to_showcase'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -84,13 +72,11 @@
                 <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'challenge_follow_deadline'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -102,13 +88,11 @@
                 <span class="link">{{notification.title}}</span>
                 <span> will close in 5 days.</span>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_collaborator_added'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -122,13 +106,11 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_entry_challenge_follow'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -142,12 +124,11 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_message_sent'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -161,11 +142,9 @@
                 <span class="link">message</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <div class="delete">
+            <!--<div class="delete">
                 <a class="lnr lnr-trash delete-message"></a>
-            </div>
+            </div>-->
         </div>
     </div>
-
-
 </div>
