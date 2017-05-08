@@ -32,7 +32,7 @@ export class NotificationsListComponent implements OnInit {
     //  this.loaderService.display(true);
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
       this.notifications = this.notifications.concat(notifications);
-      // console.log( this.notifications);
+       console.log( this.notifications);
       // this.loaderService.display(false);
 
     });
