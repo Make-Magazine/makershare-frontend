@@ -2357,6 +2357,15 @@ footer {
       text-transform: capitalize; }
     .profile-sidebar .profile-container .placeholder-text {
       color: #BDBDBD; }
+      .profile-sidebar .profile-container .placeholder-text.motto-placeholder {
+        font-family: "Messina Modern Regular";
+        font-size: 1.3em;
+        font-weight: 500;
+        text-transform: none;
+        line-height: 120%;
+        color: #828282;
+        color: #BDBDBD;
+        font-size: 1em; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
       overflow: hidden; }

@@ -2,7 +2,7 @@
   <div class="projectsingle-card row">
     <div class="col-lg-8 col-md-12 left-side">
       <div class="image-container">
-        <div *ngIf="!project.field_show_tell_video.value || project.field_show_tell_video_as_default.value == 0">
+        <div *ngIf="!(project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1)">
           <img *ngIf="project.field_cover_photo.styled_url" src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
           <img *ngIf="!project.field_cover_photo.styled_url" src="http://placehold.it/800x450" alt="" class="img-responsive">
         </div>
