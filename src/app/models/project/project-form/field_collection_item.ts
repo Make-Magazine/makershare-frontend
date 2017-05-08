@@ -27,8 +27,9 @@ export interface field_collection_item_resource
 
 export interface field_collection_item_member
 {
-  field_team_member:{und:[field_collection_item_reference_entity]};
+  field_team_member?:{und:[field_collection_item_reference_entity]};
   field_membership_role:{und:[field_collection_item_reference_text]};
+  field_anonymous_member_name?:{und:[field_collection_item_reference_text]};
 }
 
 export interface field_collection_item_reference_row{
@@ -80,6 +81,7 @@ export class field_collection_item_member implements field_collection_item_membe
   constructor(){
     this.field_team_member = {und:[new field_collection_item_reference_entity()]};
     this.field_membership_role = {und:[new field_collection_item_reference_text()]};
+    this.field_anonymous_member_name = {und:[new field_collection_item_reference_text()]};
   }
 }
 
