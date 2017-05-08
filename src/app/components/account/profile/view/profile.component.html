@@ -557,7 +557,7 @@
 						</div>
 					</div>
 					<div id="maker-spaces" class="profile-edit-tab container" *ngIf="CurrentInfoTab == 'MakerSpaces'">
-						<label class="col-md-12">ADD YOUR MAKERSPACE(S)</label>
+						<label class="col-md-12 p-0">ADD YOUR MAKERSPACE(S)</label>
 						<div class="form-group" [formGroup]="formGroup">
 							<div class="makerspace-content" *ngFor="let makerspacecontrol of formGroup.controls.field_add_your_makerspace_s_['controls'];let i = index"
 							 formArrayName="field_add_your_makerspace_s_">
@@ -621,9 +621,9 @@
 						</div>
 					</div>
 					<div id="maker-moment" class="profile-edit-tab" *ngIf="CurrentInfoTab == 'Maker Moment'">
-						<div class="col-md-12">
-							<label>WEBSITES</label>
-						</div>
+						<!--<div class="col-md-12">-->
+							<!--<label>WEBSITES</label>-->
+						<!--</div>-->
 						<div class="form-group" [formGroup]="formGroup">
 							<div class="form-subgroup container">
 								<div class="row">
