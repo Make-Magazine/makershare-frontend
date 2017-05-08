@@ -896,3 +896,29 @@
         }
     }
 }
+
+.account-settings {
+    .form-check,
+    .check-label {
+        display: -webkit-box!important;
+        display: -webkit-flex!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -webkit-box-pack: center!important;
+        -webkit-justify-content: center!important;
+        -ms-flex-pack: center!important;
+        justify-content: center!important;
+    }
+    .check-label {
+
+    }
+    .custom-control {
+        margin: auto;
+        position: absolute;
+        left: 40%;
+        // padding: 0;
+    }
+    .add-controls {
+        overflow: hidden;
+    }
+}
