@@ -2,7 +2,7 @@
   {{ r.name}}
 </template>
 
-<div class="region region-content col-sm-8" [formGroup]="HowToForm">
+<div class="region region-content col-md-8" [formGroup]="HowToForm">
   <div class="how-to">
     <div class="form-group tools">
       <label>Tools</label>
@@ -279,7 +279,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <input name="urllink" type="text" url required #urllink="ngModel" [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
+    <input name="urllink" type="text" url required #urllink="ngModel" add-protocol [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
     <small *ngIf="urllink.errors && urllink.dirty" class="text-danger">
       URL not valid, please enter a valid url:http://example.com.
     </small>

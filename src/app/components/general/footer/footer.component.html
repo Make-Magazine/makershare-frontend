@@ -49,16 +49,28 @@
 					</div>
 				</div>
 				<div class="newsletter">
-					<form>
+			
 						<div class="form-group">
 							<label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
 							<p>Stay inspired with the Make: community newsletter</p>
-							<div class="input-group">
-								<input type="email" class="form-control" id="newsletter" aria-describedby="emailHelp" placeholder="Enter Address">
-								<button type="submit" class="input-group-addon">Go</button>
-							</div>
+ 							<form ngNoForm class="whatcounts-signup" action="http://whatcounts.com/bin/listctrl" method="POST" target="_blank">
+                <label for="newsletter">Stay inspired with the Make: community newsletter</label>
+                <input type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
+                <input type="hidden" name="multiadd" value="1" />
+                <input type="hidden" name="cmd" value="subscribe" />
+                <input type="hidden" name="custom_source" value="Maker Share footer" />
+                <input type="hidden" name="custom_incentive" value="none" />
+                <input type="hidden" name="custom_url" value="http://preview.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
+                <input type="hidden" id="format_mime" name="format" value="mime" />
+                <input type="hidden" name="goto" value="" />
+                <input type="hidden" name="custom_host" value="http://preview.makershare.com/" />
+                <div class="mz-form-horizontal">
+                  <input id="wc-email" name="email" placeholder="Enter your Email" required type="text">
+                  <input value="GO" class="btn-cyan" type="submit">
+                </div>
+              </form>
 						</div>
-					</form>
+	
 				</div>
 			</div>
 		</div>
