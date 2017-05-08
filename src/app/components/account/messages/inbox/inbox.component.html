@@ -13,7 +13,7 @@
   </header>-->
   <!--/header -->
   <div class="container inbox-container">
-    <div *ngIf="noMessage" class="mx-auto" style="width: 38%">
+    <div *ngIf="noMessage" class="text-center pt-5">
       <h3>You did not have any messages</h3>
     </div>
     <ul class="list-unstyled messages-list">
@@ -32,7 +32,7 @@
               <!--<p class="sender" *ngIf="message.sender">You sent a message to
                 <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
               </p>-->
-              <p class="sender" ><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
+              <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
               <h4 class="message-subject">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
@@ -40,23 +40,22 @@
               <!--<p class="sender" *ngIf="message.sender">You sent a message to
                 <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>
               </p>-->
-              <p class="sender" ><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a> sent you a message</p>
-              <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>              
+              <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
+              <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
           </div>
+          <div *ngFor="let block of blocked">
+            <button class="btn btn-load-more m-0 mr-2" *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
+          </div>
           <div class="delete">
             <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
-          </div>
-          <div *ngFor="let block of blocked">
-            <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
           </div>
         </div>
       </li>
     </ul>
     <div class="text-center" *ngIf="hideloadmore">
-        <a class="btn btn-load-more" (click)="loadMore()">Load more</a>
+      <a class="btn btn-load-more" (click)="loadMore()">Load more</a>
     </div>
   </div>
 </div>
-
