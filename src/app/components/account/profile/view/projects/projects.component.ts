@@ -62,7 +62,7 @@ export class ProjectsComponent implements OnInit {
   getProjects() {
     var args = [
       ['uid', this.uid],
-
+      ['member_id', this.uid],
       ['page', this.pages],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
