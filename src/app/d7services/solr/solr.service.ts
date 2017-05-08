@@ -23,7 +23,7 @@ export class SolrService {
 
   // select general query
   selectContent(query: string,count: number = 10, skip:number, type:string): Observable<any> {
-     return this.http.get(globals.solrPath + 'select?fq=ss_type:'+type+'&f='+query+'&rows='+count+'&start='+skip+'&indent=on&wt=json&fl=is_nid&fq=is_status:1').map(res => res.json()).timeout(10000);
+     return this.http.get(globals.solrPath + 'select?fq=ss_type:'+type+'&f='+query+'&rows='+count+'&start='+skip+'&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
   }
 
   // select projects query

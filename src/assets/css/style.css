@@ -9460,6 +9460,9 @@ img {
       width: 140px;
       margin: auto; }
 
+  .page-showcase .showcase-card-backlayer .showcase-card .showcase-card-footer-2 {
+    margin-left: 0px !important; }
+
   .page-create-project-why .nav-create ul li {
     float: none; } }
 @media (max-width: 414px) {
