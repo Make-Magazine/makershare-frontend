@@ -15,6 +15,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { Ng2FileDropModule } from 'ng2-file-drop';
 import { PendingChangesGuard } from './pending-changes.guard';
 import { EntityReferenceNoNid } from '../../../pipes/EntityReferenceWithoutNid';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { EntityReferenceNoNid } from '../../../pipes/EntityReferenceWithoutNid';
     NgbModule,
     ImageCropperModule,
     SharedModule,
-    Ng2FileDropModule
+    Ng2FileDropModule,
+    CustomFormsModule,
   ],
   declarations: [
     YourStoryComponent,

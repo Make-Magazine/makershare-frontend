@@ -30,7 +30,13 @@ export class TeamComponent implements OnInit {
     private viewService:ViewService,
     private userService:UserService,
   ) {}
-
+  
+  formatter = (x) => {
+    if(x.name){
+      return x.username;
+    }
+    return x;
+  };
 
   search = (text$: Observable<string>) =>{
     return text$
@@ -45,6 +51,7 @@ export class TeamComponent implements OnInit {
               if(result.length == 0){
                 this.searchFailed = true;
               }
+              console.log(result);
               return result;
             })
           }

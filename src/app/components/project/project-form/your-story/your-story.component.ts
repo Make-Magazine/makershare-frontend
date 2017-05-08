@@ -200,14 +200,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
-      this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
-      && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
-      && this.YourStoryForm['controls']['field_story'].valid);
-      if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
-        this.CanNavigate.emit(false);
-      }
+      this.EmitValues();
       this.onValueChanged(data);
-      this.emitter.emit(this.tags);
     });
     this.onValueChanged(this.YourStoryForm.value);
     for (let index in this.YourStoryForm.controls) {
@@ -220,6 +214,17 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
         }
       });
     }
+  }
+
+  EmitValues(){
+    this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
+    && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
+    && this.YourStoryForm['controls']['field_story'].valid);
+    if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
+      this.CanNavigate.emit(false);
+    }
+    
+    this.emitter.emit(this.tags);
   }
 
   /**
@@ -252,6 +257,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     if (!NodeHelper.isEmpty(this.imagedata)) {
       this.cover_image.file = this.imagedata.image;
       this.imagedata = {};
+      this.EmitValues();
     }
     if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
       this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;

@@ -4287,7 +4287,7 @@ button:hover {
       margin: 18px auto; }
       .page-explore .explore-header .explore-tags li {
         display: inline-block;
-        margin: 0px 15px; }
+        margin: 10px 15px; }
         .page-explore .explore-header .explore-tags li a.btn {
           border-radius: 0px;
           min-width: 180px;
