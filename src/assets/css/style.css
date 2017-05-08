@@ -3307,30 +3307,59 @@ footer {
   text-align: left !important; }
   .modal-content .profile-modal label {
     color: #ED1C24;
-    margin: 0px; }
+    margin: 0px 0px 2px 0px; }
   .modal-content .profile-modal textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
     resize: inherit; }
   .modal-content .profile-modal input {
     border: 1px solid #DCDCDC;
-    color: #4F4F4F;
-    padding: 12px; }
+    padding: 12px;
+    font-family: "Messina Sans Regular";
+    font-size: 0.95em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 100%;
+    color: #828282;
+    color: #4F4F4F; }
     .modal-content .profile-modal input::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
       color: #DCDCDC; }
     .modal-content .profile-modal input::-moz-placeholder {
       /* Firefox 19+ */
       text-align: center;
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
       color: #DCDCDC; }
     .modal-content .profile-modal input:-ms-input-placeholder {
       /* IE 10+ */
-      text-align: center;
-      color: #DCDCDC; }
+      color: #DCDCDC;
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282; }
     .modal-content .profile-modal input:-moz-placeholder {
       /* Firefox 18- */
       text-align: center;
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
       color: #DCDCDC; }
   .modal-content .profile-modal .modal-header {
     border-bottom: none !important;
@@ -3355,79 +3384,175 @@ footer {
     .modal-content .profile-modal .modal-body input::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body input::-moz-placeholder {
       /* Firefox 19+ */
       text-align: center;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body input:-ms-input-placeholder {
       /* IE 10+ */
       text-align: center;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body input:-moz-placeholder {
       /* Firefox 18- */
       text-align: center;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
       padding-top: 22px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-moz-placeholder {
       /* Firefox 19+ */
       text-align: center;
       padding-top: 22px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-ms-input-placeholder {
       /* IE 10+ */
       text-align: center;
       padding-top: 22px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-moz-placeholder {
       /* Firefox 18- */
       text-align: center;
       padding-top: 22px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-moz-placeholder {
       /* Firefox 19+ */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-ms-input-placeholder {
       /* IE 10+ */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-moz-placeholder {
       /* Firefox 18- */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-moz-placeholder {
       /* Firefox 19+ */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-ms-input-placeholder {
       /* IE 10+ */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-moz-placeholder {
       /* Firefox 18- */
       text-align: center;
       padding-top: 80px;
-      color: #DCDCDC; }
+      color: #DCDCDC !important;
+      font-family: "Messina Modern Bold";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282; }
     .modal-content .profile-modal .modal-body .modal-menu a {
       color: #00AEEF; }
       .modal-content .profile-modal .modal-body .modal-menu a.active {
@@ -3616,7 +3741,7 @@ footer {
   font-size: 0.95em;
   font-weight: 400;
   text-transform: none;
-  line-height: 100%;
+  line-height: 120%;
   color: #828282;
   color: #4F4F4F; }
 
@@ -6943,7 +7068,7 @@ img {
     font-size: 0.95em;
     font-weight: 400;
     text-transform: none;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     font-size: 1.1em !important;
     padding-left: 0px !important; }
@@ -6952,7 +7077,7 @@ img {
     font-size: 0.95em;
     font-weight: 400;
     text-transform: none;
-    line-height: 100%;
+    line-height: 120%;
     color: #828282;
     font-size: 1.2em !important;
     padding-left: .25rem !important; }
