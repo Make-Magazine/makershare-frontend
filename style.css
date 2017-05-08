@@ -8653,7 +8653,9 @@ img {
     width: 190px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
-  text-align: left !important; }
+  text-align: left !important; 
+  color: red;
+  }
 
 ckeditor #cke_23 {
   float: right; }
