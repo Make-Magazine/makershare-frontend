@@ -1,4 +1,4 @@
-@media (max-width: 991px) {
+@media (max-width: 992px) {
     /* Footer */
     footer {
         padding-top: 30px;
@@ -108,6 +108,19 @@
                 }
             }
         } 
+        .add-controls {
+            .btn-tab, a:not([href]):not([tabindex]).btn-tab {
+                padding: 9px 10px 25px;   
+            }
+        }
+        .project-create-buttons {
+            p {
+                padding: 10px;
+            }
+            .controls {
+                padding: 0 10px;
+            }
+        }
     }
 }
 
@@ -213,6 +226,15 @@
             }
         }
     }
+    .page-create-project-why {
+        .nav-create {
+            ul {
+                li {
+                    float: none;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 414px) {
@@ -244,6 +266,7 @@
             }
         }
     }
+    
 }
 
 

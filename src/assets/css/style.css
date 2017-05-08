@@ -6922,8 +6922,7 @@ img {
   .page-create-project-why #cke_how-to-make {
     max-width: 100%; }
   .page-create-project-why .add-controls {
-    padding: 10px 0 5px;
-    overflow: hidden; }
+    padding: 10px 0 5px; }
     .page-create-project-why .add-controls h1 {
       font-family: "Messina Modern Regular";
       font-size: 3.4em;
@@ -9321,7 +9320,7 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
-@media (max-width: 991px) {
+@media (max-width: 992px) {
   /* Footer */
   footer {
     padding-top: 30px; }
@@ -9375,7 +9374,13 @@ img {
 
   .page-create-project-why .how-to .difficulties i.dropdownIcon,
   .page-create-project-why .how-to .durations i.dropdownIcon {
-    right: 30px; } }
+    right: 30px; }
+  .page-create-project-why .add-controls .btn-tab, .page-create-project-why .add-controls a:not([href]):not([tabindex]).btn-tab {
+    padding: 9px 10px 25px; }
+  .page-create-project-why .project-create-buttons p {
+    padding: 10px; }
+  .page-create-project-why .project-create-buttons .controls {
+    padding: 0 10px; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding-top: 12px; }
@@ -9435,7 +9440,10 @@ img {
     footer .container .social-footer {
       overflow: hidden;
       width: 140px;
-      margin: auto; } }
+      margin: auto; }
+
+  .page-create-project-why .nav-create ul li {
+    float: none; } }
 @media (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }

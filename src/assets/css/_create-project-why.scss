@@ -43,7 +43,7 @@
     }
     .add-controls {
         padding: 10px 0 5px;
-        overflow: hidden;
+        // overflow: hidden;
         .container {}
         h1 {
             @include header-font();
