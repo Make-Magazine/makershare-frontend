@@ -10,7 +10,9 @@ export interface ProfileSocial {
   field_hackster_io?: string,
   field_instructables?: string,
   field_hackday?: string,
-  field_preferred?: string
+  field_preferred?: string,
+  field_blog_title:string,
+  field_website_title:string,
 } 
 
 export class ProfileSocial implements ProfileSocial{
@@ -27,6 +29,8 @@ export class ProfileSocial implements ProfileSocial{
     this.field_instructables = '';
     this.field_hackday = '';
     this.field_preferred = '';
+    this.field_blog_title = '';
+    this.field_website_title = '';
   }
 
   public SetFieldValue(FieldName:string,Value:string){
