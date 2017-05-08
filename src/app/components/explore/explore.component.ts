@@ -131,11 +131,11 @@ export class ExploreComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    this.getCountProject();
+    // this.getCountProject();
     if (this.countProject >= this.projects.length) {
-      this.hideloadmoreproject = true;
+      this.hideloadmoreproject = false;
 
-    } else if (this.countProject > this.projects.length) {
+    } else if (this.countProject < this.projects.length) {
       //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
@@ -244,8 +244,8 @@ export class ExploreComponent implements OnInit {
   idCategory(id){
     console.log(id);
        this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
-          var countProjectsCtegory=res['_body'].replace(']', '').replace('[', '')
-          console.log(countProjectsCtegory)
+           this.countProject=res['_body'].replace(']', '').replace('[', '')
+          console.log(this.countProject)
       }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
       });
