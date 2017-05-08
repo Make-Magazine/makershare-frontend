@@ -7,7 +7,7 @@
 # dependencies
 /node_modules
 
-/src/assets/css/*.map.css
+/src/assets/css/*.css.map
 
 # IDEs and editors
 /.idea
