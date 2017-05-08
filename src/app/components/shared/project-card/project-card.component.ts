@@ -53,7 +53,7 @@ export class ProjectCardComponent implements OnInit {
 
 
       this.project = res[0];
-      console.log(this.project);
+      // console.log(this.project);
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0];
       });
