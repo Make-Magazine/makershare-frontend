@@ -5,37 +5,146 @@
     Mark as seen
 </div>-->
 <div class="notification-container" *ngIf="notification" (click)="OpenNotification()">
-    <div class="notification-item" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
-        <div class="inner-text">We featured your project <span class="link">{{notification.title}}</span> on the home page.<br><span class="notf-date">{{notification.date}}</span></div>
-    </div>
-    <div class="notification-item" *ngIf="notification.type == 'new_project_likes'">
-        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> added a lightbulb
-            to <span class="link">{{notification.title}}</span>.</div>
-    </div>
-    <div class="notification-item" *ngIf="notification.type == 'new_comment_project'">
-        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> gave you some feedback
-            on <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
-    </div>
-    <div class="notification-item" *ngIf="notification.type == 'project_added_to_showcase'">
-        <div class="inner-text">We featured your <span class="link">{{notification.title}}</span> in <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}</span>.<br>
-            <span
-                class="notf-date">{{notification.date}}</span>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span>We featured your project </span>
+                <span class="link">{{notification.title}}</span>
+                <span> on the home page.</span><br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
         </div>
     </div>
-    <div class="notification-item" *ngIf="notification.type == 'challenge_follow_deadline'">
-        <div class="inner-text"><span class="link">{{notification.title}}</span> will close in 5 days.</div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_project_likes'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>
+                <span> added a lightbulb to </span>
+                <span class="link">{{notification.title}}</span>.
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
     </div>
-    <div class="notification-item" *ngIf="notification.type == 'project_collaborator_added'">
-        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>&nbsp;added you as
-            a collaborator on <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_comment_project'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>
+                <span> you some feedback on </span>
+                <span class="link">{{notification.title}}</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
     </div>
-    <div class="notification-item" *ngIf="notification.type == 'new_entry_challenge_follow'">
-        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> just entered a project
-            in <span class="link">{{notification.title}}</span>.<br><span class="notf-date">{{notification.date}}</span></div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_added_to_showcase'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span> We featured your</span>
+                <span class="link">{{notification.title}}</span>
+                <span> in</span>
+                <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
     </div>
-    <div class="notification-item" *ngIf="notification.type == 'new_message_sent'">
-        <div class="inner-text"><span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span> sent you a
-            <span
-                class="link">message</span>.<br><span class="notf-date">{{notification.date}}</span></div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'challenge_follow_deadline'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link">{{notification.title}}</span>
+                <span> will close in 5 days.</span>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
+    </div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_collaborator_added'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>
+                <span>&nbsp;added you as a collaborator on </span>
+                <span class="link">{{notification.title}}</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
+    </div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_entry_challenge_follow'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>
+                <span>just entered a project in </span>
+                <span class="link">{{notification.title}}</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
+    </div>
+    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_message_sent'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="media-body">
+                <span class="link" (click)="OpenNotification(notification.uid)">{{notification.username}}</span>
+                <span> sent you a </span>
+                <span class="link">message</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <!--<div class="delete">
+                <a class="lnr lnr-trash delete-message"></a>
+            </div>-->
+        </div>
     </div>
 </div>
