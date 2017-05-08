@@ -198,6 +198,11 @@
         }
         .placeholder-text {
             color: $light-grey;
+            &.motto-placeholder {
+                @include card-header-font-sm();
+                color: $light-grey;
+                font-size: 1em;
+            }
         }
         .image-container {
             position: relative;                    
