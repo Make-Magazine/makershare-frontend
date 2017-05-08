@@ -277,7 +277,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <input name="urllink" type="text" url required #urllink="ngModel" [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
+    <input name="urllink" type="text" url required #urllink="ngModel" add-protocol [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
     <small *ngIf="urllink.errors && urllink.dirty" class="text-danger">
       URL not valid, please enter a valid url:http://example.com.
     </small>
