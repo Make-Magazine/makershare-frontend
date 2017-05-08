@@ -1,11 +1,20 @@
-<button type="button" class="btn btn-danger float-right" (click)="previousUrl()">Back
-  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-  </button>
-<ul class="list-group" *ngFor="let user of blocked;let i = index">
-  <li class="list-group-item justify-content-between">
-    {{user.firstname}}  {{user.lastname}} 
-    <span>
-      <button type="button" class="btn btn-secondary" (click)="unBlockUsers(user.uid, i)" >UnBlock</button>
-    </span>
-  </li>
-</ul>
+<div class="blocked-users-page">
+  <div class="container">
+    <div class="page-header w-100 d-flex">
+      <button type="button" class="btn btn-danger ml-auto" (click)="previousUrl()">Back
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="page-content pt-5">
+      <h3 class="pt-5 text-center" *ngIf="this.blocked.length == 0">There is no blocked users</h3>
+      <ul class="list-group" *ngFor="let user of blocked;let i = index">
+        <li class="list-group-item justify-content-between">
+          {{user.firstname}} {{user.lastname}}
+          <span>
+            <button type="button" class="btn btn-secondary" (click)="unBlockUsers(user.uid, i)" >UnBlock</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
