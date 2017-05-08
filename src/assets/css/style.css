@@ -1471,6 +1471,22 @@ ngb-typeahead-window.dropdown-menu {
       color: #828282;
       padding: 5px 0px;
       font-size: 0.96em !important; }
+      .dropdown-notification ul .notification-container .notification-item .media-left {
+        width: 40px;
+        height: auto;
+        margin-right: 6px; }
+        .dropdown-notification ul .notification-container .notification-item .media-left img {
+          width: 100%;
+          height: auto;
+          max-width: 100%; }
+      .dropdown-notification ul .notification-container .notification-item .media-body {
+        padding: 0px 2px; }
+        .dropdown-notification ul .notification-container .notification-item .media-body span {
+          margin-bottom: 1px; }
+        .dropdown-notification ul .notification-container .notification-item .media-body p {
+          margin: 2px 0px 0px 0px; }
+      .dropdown-notification ul .notification-container .notification-item .delete {
+        padding-top: 14px; }
       .dropdown-notification ul .notification-container .notification-item .link {
         color: #00AEEF; }
         .dropdown-notification ul .notification-container .notification-item .link:hover {
@@ -1920,10 +1936,10 @@ footer {
 /* Notification menue in header */
 .dropdown-notification {
   width: 330px;
-  height: 380px;
+  height: 408px;
   overflow-y: auto;
   max-width: 350px;
-  max-height: 380px; }
+  max-height: 408px; }
 
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
@@ -8485,7 +8501,7 @@ img {
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
       box-shadow: 2px 2px 8px #BDBDBD;
       background-color: white;
-      margin: 10px 0; }
+      margin: 5px 0; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left {
         width: 80px;
         height: 80px;
@@ -8577,32 +8593,45 @@ img {
       display: inline-block; }
 
 /* notification page */
-.notifications-list-page .notification-container .notification-item {
-  display: flex;
-  align-items: center;
-  margin: 0 5px;
-  padding: 0 5px; }
-  .notifications-list-page .notification-container .notification-item .inner-text {
+.notifications-list-page {
+  padding: 0;
+  margin: 0 0 15px;
+  clear: both;
+  padding-top: 20px; }
+  .notifications-list-page .notification-container .notification-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
     overflow: hidden;
     padding: 10px;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD;
     background-color: white;
-    margin: 10px 0;
-    width: 100%; }
-    .notifications-list-page .notification-container .notification-item .inner-text .link {
-      color: #00AEEF; }
-      .notifications-list-page .notification-container .notification-item .inner-text .link:hover {
-        color: #00AEEF !important;
-        text-decoration: none !important; }
-    .notifications-list-page .notification-container .notification-item .inner-text .notf-date {
-      font-family: "Messina Sans Regular";
-      font-size: 0.9em;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 100%;
-      color: #828282; }
+    margin: 10px 0; }
+    .notifications-list-page .notification-container .notification-item .media-left {
+      width: 80px;
+      height: 80px;
+      margin-right: 10px; }
+    .notifications-list-page .notification-container .notification-item .media-body {
+      padding-top: 22px; }
+      .notifications-list-page .notification-container .notification-item .media-body .link {
+        margin-bottom: 0;
+        color: #00AEEF; }
+        .notifications-list-page .notification-container .notification-item .media-body .link:hover {
+          text-decoration: none !important;
+          color: #00AEEF !important; }
+      .notifications-list-page .notification-container .notification-item .media-body .notf-date {
+        margin: 0px; }
+    .notifications-list-page .notification-container .notification-item .delete {
+      margin-left: auto;
+      margin-right: 25px;
+      padding-top: 30px; }
+      .notifications-list-page .notification-container .notification-item .delete .delete-message {
+        overflow: hidden;
+        color: #333333;
+        position: relative;
+        font-size: 1.5em; }
 
 /* create new message */
 .create-newmsg {
