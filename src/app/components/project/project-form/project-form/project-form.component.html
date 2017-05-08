@@ -1,4 +1,4 @@
-<div class="page-create-project-why">
+<div class="page-create-project-why" *ngIf="ProjectLoaded">
   <section class="container">
     <div class="top-content-wrapper">
       <div class="add-controls row">
@@ -29,7 +29,7 @@
     <!-- End top-content-wrapper -->
     <div class="container">
       <div>
-        <div *ngIf="ProjectLoaded">
+        <div>
           <app-project-form-your-story [TryToSubmitPrivatePublic]="TryToSubmitPrivatePublic" (CanNavigate)="CanNavigate = $event" (emitter)="UpdateFields($event,'Your Story')"
             [FormPrintableValues]="FormPrintableValues" (StoryFormValid)="StoryFormValid = $event" [project]="project" *ngIf="current_active_tab == 'Your Story'"
             class="row"></app-project-form-your-story>
