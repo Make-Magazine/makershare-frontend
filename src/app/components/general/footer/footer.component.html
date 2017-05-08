@@ -52,9 +52,8 @@
 			
 						<div class="form-group">
 							<label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
-							<p>Stay inspired with the Make: community newsletter</p>
  							<form ngNoForm class="whatcounts-signup" action="http://whatcounts.com/bin/listctrl" method="POST" target="_blank">
-                <label for="newsletter">Stay inspired with the Make: community newsletter</label>
+                <p for="newsletter" class="footer-subtitle mt-2">Stay inspired with the Make: community newsletter</p>
                 <input type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
                 <input type="hidden" name="multiadd" value="1" />
                 <input type="hidden" name="cmd" value="subscribe" />
@@ -64,9 +63,9 @@
                 <input type="hidden" id="format_mime" name="format" value="mime" />
                 <input type="hidden" name="goto" value="" />
                 <input type="hidden" name="custom_host" value="http://preview.makershare.com/" />
-                <div class="mz-form-horizontal">
-                  <input id="wc-email" name="email" placeholder="Enter your Email" required type="text">
-                  <input value="GO" class="btn-cyan" type="submit">
+                <div class="mz-form-horizontal input-group">
+                  <input id="wc-email" class="form-control" name="email" placeholder="Enter your Email" required type="text">
+                  <button class="input-group-addon" type="submit">GO</button>
                 </div>
               </form>
 						</div>
