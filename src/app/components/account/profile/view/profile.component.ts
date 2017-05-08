@@ -95,6 +95,8 @@ export class ProfileComponent implements OnInit {
       'field_instructables': [this.profile.field_social_accounts.field_instructables, [CustomValidators.url]],
       'field_hackday': [this.profile.field_social_accounts.field_hackday, [CustomValidators.url]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
+      'field_website_title':[this.profile.field_social_accounts.field_website_title],
+      'field_blog_title':[this.profile.field_social_accounts.field_blog_title]
     });
   }
   PhotoModalTab:string;

@@ -1529,6 +1529,18 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
 _::-webkit-full-page-media, _:future, :root .check-label {
   margin-left: 5px; }
 
+::-webkit-input-placeholder {
+  font-family: 'Arial'; }
+
+:-moz-placeholder {
+  font-family: 'Arial'; }
+
+::-moz-placeholder {
+  font-family: 'Arial'; }
+
+:-ms-input-placeholder {
+  font-family: 'Arial'; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -3330,6 +3342,8 @@ footer {
   .modal-content .profile-modal label {
     color: #ED1C24;
     margin: 0px 0px 2px 0px; }
+    .modal-content .profile-modal label .custom-control-indicator {
+      top: .15em; }
   .modal-content .profile-modal textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
@@ -3774,6 +3788,8 @@ footer {
 .page-search-content {
   margin: 0px;
   border: none; }
+  .page-search-content #search-input::-ms-clear {
+    display: none; }
   .page-search-content .user-card-search {
     background-color: white;
     padding-top: 10px;
@@ -7317,8 +7333,6 @@ img {
         margin-top: 10px; }
       .page-create-project-why .team .result:hover {
         background-color: #BDBDBD; }
-  .page-create-project-why .team-guide {
-    padding-top: 70px; }
 
 .borderedless td,
 .borderedless th {
@@ -8584,6 +8598,7 @@ img {
         margin: 0px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete {
         margin-left: auto;
+        padding-top: 5px;
         margin-right: 25px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message {
         overflow: hidden;
@@ -8720,6 +8735,31 @@ img {
       width: 120px;
       padding: 12px;
       background-color: #fff !important; }
+
+/* blocked users main page */
+.blocked-users-page .block-user {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD;
+  background-color: white;
+  margin: 5px 0; }
+  .blocked-users-page .block-user .media .media-left {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px; }
+    .blocked-users-page .block-user .media .media-left img {
+      width: 100%;
+      height: auto;
+      max-width: 100%; }
+  .blocked-users-page .block-user .media .media-body {
+    padding-top: 14px; }
+    .blocked-users-page .block-user .media .media-body button {
+      margin-bottom: 0px; }
 
 .challenge-entered {
   margin: 10px;
@@ -9409,8 +9449,6 @@ img {
     .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 {
       margin-left: 0px;
       width: 100%; }
-      .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 div {
-        width: 100%; }
       .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-2 span {
         width: 100%; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {

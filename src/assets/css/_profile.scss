@@ -1360,6 +1360,9 @@
         label {
             color: $red;
             margin: 0px 0px 2px 0px;
+            .custom-control-indicator {
+                top: .15em;
+            }
         }
         textarea {
             border: 1px solid $shade-2;
@@ -1793,6 +1796,9 @@
 .page-search-content {
     margin: 0px;
     border: none;
+    #search-input::-ms-clear {
+        display: none;
+    }
     .user-card-search {
         background-color: white;
         padding-top: 10px;
