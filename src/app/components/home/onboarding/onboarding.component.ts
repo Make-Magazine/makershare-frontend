@@ -48,6 +48,7 @@ images= [
 			adaptiveHeight: true,
 			slidesToShow: 5,
 			slidesToScroll: 1,
+			draggable: true,
 			responsive: [
 				{
 					breakpoint: 1024,
