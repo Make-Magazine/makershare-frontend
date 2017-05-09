@@ -712,7 +712,9 @@
         }
     }
     .modal-body {
-        min-height: 460px;
+        min-height: 400px;
+        max-height: 400px;
+        overflow-y: auto;
     }
     .modal-footer {
         border-top: none !important;

@@ -7517,7 +7517,9 @@ img {
     .upload-cover-modal .modal-header .close-form {
       padding: 0px; }
   .upload-cover-modal .modal-body {
-    min-height: 460px; }
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto; }
   .upload-cover-modal .modal-footer {
     border-top: none !important;
     padding: 32px; }
