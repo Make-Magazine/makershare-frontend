@@ -336,7 +336,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
     // this.ReSetAddressValues();
-    if(this.ProfilePicData){
+    if(this.ProfilePicData.image){
       this.SaveImage();
     }else{
       this.SaveUser(this.ProfileInfo);
@@ -407,7 +407,9 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.address = user.address;
     }    
     this.ProfileInfo.describe_yourself = user.describe_yourself;
-    this.ProfileInfo.bio = user.bio;
+    if(user.bio){
+      this.ProfileInfo.bio = user.bio;
+    }
     this.ProfileInfo.address_publish = user.address_publish;
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
