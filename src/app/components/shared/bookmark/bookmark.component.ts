@@ -34,22 +34,22 @@ export class BookmarkComponent implements OnInit {
   checkUserLogin = false;
 
   currentuser;
-  isBookmarked = false;
+  isBookmarked;
   bookmark: string;
 
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
-    this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
-      if (data == false) { } else {
+      if (data == false) { } else if (this.nodeNid) {
         /*bookmark start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
           this.isBookmarked = data[0];
-          if (this.isBookmarked) {this.bookmark = "Unbookmark this " + this.nodeType;}
-          else { this.bookmark = "Bookmark this " + this.nodeType;}
+
+          if (this.isBookmarked) { this.bookmark = "Unbookmark this " + this.nodeType; }
+          else { this.bookmark = "Bookmark this " + this.nodeType; }
         }, err => {
-          this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+          this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
         })
       }//end else
     });//end userservice isLogedIn
@@ -68,6 +68,7 @@ export class BookmarkComponent implements OnInit {
       if (this.isBookmarked) {
         this.flagService.unflag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
           this.isBookmarked = false;
+          //   console.log(this.isBookmarked)
           this.bookmark = "Bookmark this " + this.nodeType;
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
@@ -75,6 +76,7 @@ export class BookmarkComponent implements OnInit {
       } else {
         this.flagService.flag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
           this.isBookmarked = true;
+          //  console.log(this.isBookmarked)
           this.bookmark = "Unbookmark this " + this.nodeType;
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
