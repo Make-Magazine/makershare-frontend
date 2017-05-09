@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild, Output, EventEmitter } from '@angular/core';
 import { PmService } from '../../../../d7services/pm/pm.service'
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -136,7 +136,7 @@ export class SentComponent implements OnInit {
       if(this.msg.length == 0){
         this.noMessage = true;
       }
-      this.loaderService.display(false);
+      // this.loaderService.display(false);
       // this.loadMoreVisibilty();
     })
   }

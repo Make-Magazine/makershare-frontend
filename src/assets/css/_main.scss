@@ -704,6 +704,29 @@ ngb-typeahead-window {
                 @include desc-font-1 ();
                     padding: 5px 0px;
                     font-size: 0.96em !important;
+                .media-left {
+                    width: 40px;
+                    height: auto;
+                    margin-right: 6px;
+                    img {
+                        width: 100%;
+                        height: auto;
+                        max-width: 100%;
+                    }
+                }
+                .media-body {
+                    padding: 0px 2px;
+                    span {
+                        margin-bottom: 1px;
+                    }
+                    p {
+                        margin: 2px 0px 0px 0px;
+                        
+                    }
+                }
+                .delete {
+                    padding-top: 14px;
+                }
                 .link {
                     color: $blue;
                     &:hover {
@@ -746,4 +769,25 @@ ngb-typeahead-window {
         bottom: -8px;
         text-transform: uppercase;
     }
+}
+
+_::-webkit-full-page-media, _:future, :root .custom-safari {
+  text-align: left !important; 
+  }
+
+  _::-webkit-full-page-media, _:future, :root .check-label {
+    margin-left: 5px;
+  }
+
+  ::-webkit-input-placeholder {
+    font-family: 'Arial';
+}
+:-moz-placeholder {
+    font-family: 'Arial';
+}
+::-moz-placeholder {
+    font-family: 'Arial';
+}
+:-ms-input-placeholder {
+    font-family: 'Arial';
 }

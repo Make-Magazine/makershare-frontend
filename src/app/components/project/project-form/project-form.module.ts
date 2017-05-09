@@ -36,7 +36,7 @@ import { CustomFormsModule } from 'ng2-validation';
     HowToComponent,
     TeamComponent,
     ProjectFormComponent,
-    EntityReferenceNoNid
+    EntityReferenceNoNid,
   ],
   providers:[PendingChangesGuard]
 })

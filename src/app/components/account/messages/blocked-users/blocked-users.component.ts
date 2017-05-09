@@ -6,8 +6,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-blocked-users',
-  templateUrl: './blocked-users.component.html',
-  styleUrls: ['./blocked-users.component.css']
+  templateUrl: './blocked-users.component.html'
 })
 export class BlockedUsersComponent implements OnInit {
   blocked = [];
@@ -26,9 +25,9 @@ export class BlockedUsersComponent implements OnInit {
   getBlockedUsers() {
     this.pm.getAllBlocked().subscribe(data => {
       this.blocked = data;
-      if(this.blocked.length == 0){
-      this.notificationBarService.create({ message: 'There is no blocked users' , type: NotificationType.Error,allowClose:true,autoHide:false,hideOnHover:false });        
-      }
+      console.log(this.blocked)
+      // if(this.blocked.length == 0){        
+      // }
       this.loaderService.display(false);
     })
   }

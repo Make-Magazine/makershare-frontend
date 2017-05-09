@@ -518,8 +518,13 @@ footer {
 /* Notification menue in header */
 .dropdown-notification{
     width: 330px;
-    height: 380px;
+    height: 408px;
     overflow-y: auto;
     max-width: 350px;
-    max-height: 380px;
+    max-height: 408px;
+}
+
+.home-body-logo {
+    margin-top: 85px !important;
+    width: 360px;
 }
