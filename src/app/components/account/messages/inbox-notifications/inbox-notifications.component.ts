@@ -32,7 +32,7 @@ export class InboxNotificationsComponent implements OnInit {
     body: '',
   };
   msg = [];
-    closeResult: string;
+  closeResult: string;
   noMessage= false;
   hideTurnOn: boolean = false;
   status;

@@ -1,6 +1,6 @@
 <div class="col-md-12 notifications-list-page">
   <div *ngIf="notificationsCount && notifications">
-    <notification-tpl [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
+    <notification-tpl [notification]="notification" *ngFor="let notification of notifications; let i=index;"></notification-tpl>
   </div>
 
 
