@@ -441,8 +441,11 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<div>
+										<div *ngIf="formGroup.value.bio">
 											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}">{{formGroup.value.bio.length}}/400 Chars</span>
+										</div>
+										<div *ngIf="!formGroup.value.bio">
+											<span>0/400 Chars</span>
 										</div>
 									</div>
 								</div>
