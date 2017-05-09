@@ -18,7 +18,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class UserCardComponent implements OnInit {
   closeResult: string;
   card = {};
-  projectCount = {};
+  projectCount={};
   projectCount2 = {};
   badges = [];
   active = true;
@@ -49,10 +49,11 @@ export class UserCardComponent implements OnInit {
     config.triggers = 'hover';
   }
   ngOnInit() {
+        this.getProjectCountByUser();
+
     this.getcard();
     this.getBadges();
     this.buildForm();
-    this.getProjectCountByUser();
     this.checkUserLogin()
   }
 
