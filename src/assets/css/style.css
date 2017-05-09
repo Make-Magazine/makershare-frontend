@@ -1537,7 +1537,8 @@ ngb-typeahead-window.dropdown-menu {
         .dropdown-notification ul .notification-container .notification-item .media-body p {
           margin: 2px 0px 0px 0px; }
       .dropdown-notification ul .notification-container .notification-item .delete {
-        padding-top: 14px; }
+        padding-top: 14px;
+        display: none; }
       .dropdown-notification ul .notification-container .notification-item .link {
         color: #00AEEF; }
         .dropdown-notification ul .notification-container .notification-item .link:hover {
@@ -8789,6 +8790,8 @@ img {
     box-shadow: 2px 2px 8px #BDBDBD;
     background-color: white;
     margin: 10px 0; }
+    .notifications-list-page .notification-container .notification-item:hover {
+      cursor: pointer; }
     .notifications-list-page .notification-container .notification-item .media-left {
       width: 80px;
       height: 80px;
@@ -8809,7 +8812,7 @@ img {
       padding-top: 30px;
       position: absolute;
       right: 1px;
-      z-index: 100; }
+      z-index: 1; }
       .notifications-list-page .notification-container .notification-item .delete .delete-message {
         overflow: hidden;
         color: #333333;

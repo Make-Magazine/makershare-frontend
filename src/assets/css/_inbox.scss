@@ -314,6 +314,9 @@
     box-shadow: 2px 2px 8px #BDBDBD;
     background-color: white;
     margin: 10px 0;
+		&:hover {
+			cursor: pointer;
+		}
 		.media-left {
 			    width: 80px;
     height: 80px;
@@ -339,7 +342,7 @@
 			padding-top: 30px;
 			position: absolute;
     	right: 1px;
-			z-index: 100;
+			z-index: 1;
 			.delete-message {
 				overflow: hidden;
 				color: #333333;
