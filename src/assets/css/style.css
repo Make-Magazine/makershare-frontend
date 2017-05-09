@@ -1543,6 +1543,25 @@ _::-webkit-full-page-media, _:future, :root .check-label {
 :-ms-input-placeholder {
   font-family: 'Arial'; }
 
+select.shadowed {
+  width: 100% !important;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0;
+  font-size: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+
+i.dropdownIcon {
+  position: absolute;
+  right: 26px;
+  top: 14px;
+  pointer-events: none; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -7047,19 +7066,6 @@ img {
         right: 26px;
         top: 14px;
         pointer-events: none; }
-      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryParent,
-      .page-create-project-why .your-story .projectCategory .categories-group #projectCategoryChildren {
-        width: 100% !important;
-        margin-bottom: 5px;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 0;
-        font-size: 1em;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -moz-box-shadow: 2px 2px 8px #BDBDBD;
-        -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-        box-shadow: 2px 2px 8px #BDBDBD; }
     .page-create-project-why .your-story .projectCategory .list-group-item {
       width: 50%; }
   .page-create-project-why .your-story .cate-list {
@@ -7224,24 +7230,13 @@ img {
   .page-create-project-why .how-to .difficulties i.dropdownIcon,
   .page-create-project-why .how-to .durations i.dropdownIcon {
     position: absolute;
-    bottom: 15px;
+    top: 50px;
     z-index: 6;
     right: 40%;
     pointer-events: none; }
   .page-create-project-why .how-to #difficulty,
   .page-create-project-why .how-to #duration {
-    position: relative;
-    width: 100% !important;
-    margin-bottom: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 0;
-    font-size: 1em;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -moz-box-shadow: 2px 2px 8px #BDBDBD;
-    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-    box-shadow: 2px 2px 8px #BDBDBD; }
+    position: relative; }
   .page-create-project-why .how-to .resources input[type="file"] {
     display: none; }
   .page-create-project-why .how-to .resources select {
