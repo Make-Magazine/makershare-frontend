@@ -195,8 +195,8 @@
 									<p *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
-											<a *ngIf="makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
-											<div *ngIf="!makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
+											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
+											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
 									</span>
 								</ul>
@@ -240,7 +240,8 @@
 								</tag-input>-->
 								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
-										<i *ngIf="i-1 > -1">,</i> {{interest.name}}
+										<i *ngIf="i != ProfileInfo.maker_interests.length-1">{{interest.name}}, </i>
+										<i *ngIf="i == ProfileInfo.maker_interests.length-1">{{interest.name}}</i>
 									</span>
 								</p>
 								<!--<a class="report">Report this user</a>-->
@@ -667,13 +668,33 @@
 						<div class="form-group">
 							<div class="form-subgroup container ProfileInfo.maker_interests">
 								<div class="row">
-									<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
+									<select #parentinterest (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
+										<option value="_none" disabled>Choose</option>
+										<option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid" [selected]="SelectedParentInterest == parentInterest.tid"><span [innerHTML]="parentInterest.name"></span></option>
+									</select>
+									<select *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value">
+										<option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
+										<option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid" [selected]="SelectedChildInterest == childInterest.tid"><span [innerHTML]="childInterest.name"></span></option>
+									</select>
+									<button *ngIf="SelectedChildInterest" (click)="SetInterest(parentinterest)">Add</button>
+									<div *ngIf="ProfileInfo.maker_interests" class="cate-list">
+										<div *ngFor="let selected_interest of ProfileInfo.maker_interests; let i=index">
+											<label for="" class="selected-topic" *ngIf="i == 0">Selected Topic</label>
+											<div *ngFor="let interest of allIntersets" class="">
+												<p *ngIf="interest.parent_tid && selected_interest.tid == interest.tid" class="cate-name list-group-item">
+													<span [innerHTML]="interest.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="selected_interest.name"></span>
+													<i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(selected_interest.tid,interest.parent_tid)" aria-hidden="true"></i>
+												</p>
+											</div>
+										</div>
+									</div>
+									<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
 									 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
 									 [separatorKeys]="[4, 5]">
 										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
 										 inputId="tid">
 										</tag-input-dropdown>
-									</tag-input>
+									</tag-input>-->
 								</div>
 							</div>
 						</div>
