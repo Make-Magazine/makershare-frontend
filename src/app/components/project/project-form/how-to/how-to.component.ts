@@ -518,8 +518,8 @@ export class HowToComponent implements OnInit,AfterViewInit {
   }
   CKEditorConfig = {
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
-    imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
-    filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
   }
   sidebarText = {
     'how_to': {

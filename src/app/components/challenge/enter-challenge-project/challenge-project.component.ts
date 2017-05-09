@@ -22,6 +22,7 @@ import { Observable } from "rxjs";
 export class ChallengeProjectComponent implements OnInit {
   addProjectForm: FormGroup;
   tab: string
+  submittedBefore: boolean;
   countProjects = 0;
   button = false;
   projects: IChallengeProject[];
@@ -30,7 +31,7 @@ export class ChallengeProjectComponent implements OnInit {
   userId: number;
   defaultTabObs: Observable<string>;
   missionRedirection: string;
-  createProject: string='noProject';
+  createProject: string = 'noProject';
   userName: string;
   nid: number;
   enterStatus = true;
@@ -75,7 +76,7 @@ export class ChallengeProjectComponent implements OnInit {
   error: string;
   closeResult: string;
   previousUrl: string;
-
+  projectsList;
 
   constructor(private route: ActivatedRoute,
     private viewService: ViewService,
@@ -97,14 +98,15 @@ export class ChallengeProjectComponent implements OnInit {
     this.userName = localStorage.getItem('user_name');
     this.getAllProject();
     this.getChallangeData();
-    this.createProject='test'
+    this.getProjectsInMission();
+    this.createProject = 'test'
     // set default tab according to url parameter "tab"
     this.defaultTabObs = this.route.queryParams.map(params => params['projectId']);
     this.defaultTabObs.subscribe(tab => {
       if (tab != undefined || tab != '') {
-        
+
         this.createProject = decodeURIComponent(tab);
-        
+
       }
       console.log(this.createProject)
     });
@@ -117,7 +119,7 @@ export class ChallengeProjectComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('enter-challenge-projects-list', [['uid', this.userId], ['uid1', this.userName]]))
       .subscribe(data => {
         this.projects = data;
-        //  console.log(this.projects);
+        console.log(this.projects);
 
       });
   }
@@ -189,11 +191,26 @@ export class ChallengeProjectComponent implements OnInit {
     return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
+  getProjectsInMission(){
+    this.viewService.getView('user-entered-project', [['uid', this.userId]]).subscribe(data => {
+      this.projectsList = data
+    });
+  }
   updateSelectedProject(item: any) {
     this.selectedProjectName = item.target.selectedOptions[0].text;
     this.selectedProject = item.target.value;
+    // console.log(item.target.value)
+        this.submittedBefore = false;    
+    for (let element of this.projectsList) {
+      // console.log(element.project_nid)
+      if (element.project_nid == item.target.value) {
+        this.submittedBefore = true;
+      }
+    }
 
-  }
+    }
+    /*end check project entered */
+
 
   onCancel(event: any) {
     this.addProjectForm.reset();
@@ -297,10 +314,15 @@ export class ChallengeProjectComponent implements OnInit {
     }
   }
   open(content) {
-    this.modalService.open(content).result.then((result) => {
+    if(!this.submittedBefore){
+      this.modalService.open(content).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
+    } else {
+        this.notificationBarService.create({ message: "You have submitted this project to a mission before .", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    }
+    
   }
 }
