@@ -554,6 +554,9 @@ body {
 ngb-typeahead-window {
     &.dropdown-menu {
         width: 90%;
+        .dropdown-item {
+            font-size: .9em;
+        }
     }
 }
 .typeahead-image-container {
