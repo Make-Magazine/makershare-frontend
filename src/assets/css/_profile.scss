@@ -1527,7 +1527,9 @@
                 }
             }
             .modal-contents {
-                min-height: 460px;
+                min-height: 370px;
+                max-height: 370px;
+                overflow-y: auto;
             }
             #social {
                 .form-group {
@@ -2534,5 +2536,37 @@ button {
 #personal-info {
     label.custom-control {
         color: $shade-4;
+    }
+}
+#interests {
+    select {
+        height: 40px;
+    }
+    button {
+        height: 40px;
+        padding: 0 15px;
+        min-width: auto;
+        margin-left: 0;
+    }
+    .selected-topic {
+        @include card-header-font-md();
+        color: $shade-4;
+        font-size: 1.1em;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    .cate-list {
+        padding: 0 30px;
+        .remove-cate {
+            font-size: 1.5em;
+        }
+        p.cate-name {
+            margin: 3px 0;
+            border-radius: 0;
+            font-size: 0.9em;
+            padding: 8px 1rem;
+            width: 60%;
+            @include boxShadow(2px, 2px, 8px, $light-grey);
+        }
     }
 }

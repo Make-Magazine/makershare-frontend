@@ -806,6 +806,7 @@ select.shadowed {
     font-size: 1em;
     -webkit-appearance: none;
     -moz-appearance: none;
+    background-color: #fff;
     @include boxShadow(2px, 2px, 8px, $light-grey);
 }
 i.dropdownIcon {

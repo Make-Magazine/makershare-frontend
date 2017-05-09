@@ -240,8 +240,8 @@
 								</tag-input>-->
 								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
-										<i *ngIf="i != ProfileInfo.maker_interests.length-1">{{interest.name}}, </i>
-										<i *ngIf="i == ProfileInfo.maker_interests.length-1">{{interest.name}}</i>
+										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
+										<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
 									</span>
 								</p>
 								<!--<a class="report">Report this user</a>-->
@@ -441,8 +441,11 @@
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
 										 maxlength="400"></textarea>
-										<div>
-											<span [ngClass]="{valErrorString: this.ProfileInfo.bio.length == 400}">{{formGroup.value.bio.length}}/400 Chars</span>
+										<div *ngIf="formGroup.value.bio">
+											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}">{{formGroup.value.bio.length}}/400 Chars</span>
+										</div>
+										<div *ngIf="!formGroup.value.bio">
+											<span>0/400 Chars</span>
 										</div>
 									</div>
 								</div>
@@ -670,16 +673,22 @@
 						<div class="form-group">
 							<div class="form-subgroup container ProfileInfo.maker_interests">
 								<div class="row">
-									<select #parentinterest (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
-										<option value="_none" disabled>Choose</option>
-										<option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid" [selected]="SelectedParentInterest == parentInterest.tid"><span [innerHTML]="parentInterest.name"></span></option>
-									</select>
-									<select *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value">
-										<option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
-										<option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid" [selected]="SelectedChildInterest == childInterest.tid"><span [innerHTML]="childInterest.name"></span></option>
-									</select>
-									<button *ngIf="SelectedChildInterest" (click)="SetInterest(parentinterest)">Add</button>
-									<div *ngIf="ProfileInfo.maker_interests" class="cate-list">
+									<div class="col-sm-4">
+										<i class="dropdownIcon lnr lnr-chevron-down"></i>
+										<select class="shadowed" #parentinterest (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
+											<option value="_none" disabled>Choose</option>
+											<option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid" [selected]="SelectedParentInterest == parentInterest.tid"><span [innerHTML]="parentInterest.name"></span></option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest" ></i>									
+										<select class="shadowed" *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value">
+											<option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
+											<option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid" [selected]="SelectedChildInterest == childInterest.tid"><span [innerHTML]="childInterest.name"></span></option>
+										</select>
+									</div>
+									<button class="col-sm-2 btn-save" *ngIf="SelectedChildInterest" (click)="SetInterest(parentinterest)">Add</button>
+									<div *ngIf="ProfileInfo.maker_interests" class="col-12 cate-list">
 										<div *ngFor="let selected_interest of ProfileInfo.maker_interests; let i=index">
 											<label for="" class="selected-topic" *ngIf="i == 0">Selected Topic</label>
 											<div *ngFor="let interest of allIntersets" class="">
@@ -701,12 +710,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer mt-auto">
-						<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-						<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
-						<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
-						 (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
-					</div>
+				</div>
+				<div class="modal-footer mt-auto ml-auto">
+					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
+					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
+					<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
+						(click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
 				</div>
 			</div>
 		</div>
