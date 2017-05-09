@@ -236,6 +236,7 @@ export class ProfileComponent implements OnInit {
     
   }
   AssignParentChildInterests(){
+    this.ParentIntersets = [];
     this.allIntersets.forEach((interest,index)=>{
       if(!interest.parent_tid){
         this.ParentIntersets.push(interest);
@@ -303,22 +304,21 @@ export class ProfileComponent implements OnInit {
     };
     myReader.readAsDataURL(file);
   }
-  SaveImage(closebtn: HTMLButtonElement, DataObject, ImageType) {
-    closebtn.click();
-    let image: FileEntity = { file: NodeHelper.RemoveFileTypeFromBase64(DataObject.image), filename: this.FileName };
+  SaveImage() {
+    let image: FileEntity = { file: NodeHelper.RemoveFileTypeFromBase64(this.ProfilePicData.image), filename: this.FileName };
     this.fileService.SendCreatedFile(image).subscribe((data) => {
-      var user: UserProfile;
-      user = { uid: this.uid, user_photo: data.fid };
+      this.ProfileInfo.uid = this.uid;
+      this.ProfileInfo.user_photo = data.fid;
       this.ProfilePicData = {};
       this.FileName = '';
-      this.SaveUser(user);
+      this.SaveUser(this.ProfileInfo);
     });
   }
 
   ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas']) {
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
-      if (!this.profile.address[administrative_area_label]) {
+      if (!this.ProfileInfo.address[administrative_area_label]) {
         this.ProfileInfo.address.governorate = '_none';
       } else {
         this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
@@ -336,7 +336,11 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
     // this.ReSetAddressValues();
-    this.SaveUser(this.ProfileInfo);
+    if(this.ProfilePicData.image){
+      this.SaveImage();
+    }else{
+      this.SaveUser(this.ProfileInfo);
+    }
     closebtn.click();    
   }
   SaveUser(user: UserProfile) {
@@ -394,15 +398,18 @@ export class ProfileComponent implements OnInit {
     field_add_your_makerspace_s_.controls[index]['controls'].field_makerspace_name.setValue(makerspace.title);
   }
   SetUser(user: UserProfile) {
-    console.log(user);
     this.profile = user;
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
-    this.ProfileInfo.address = user.address;
+    if(user.address){
+      this.ProfileInfo.address = user.address;
+    }    
     this.ProfileInfo.describe_yourself = user.describe_yourself;
-    this.ProfileInfo.bio = user.bio;
+    if(user.bio){
+      this.ProfileInfo.bio = user.bio;
+    }
     this.ProfileInfo.address_publish = user.address_publish;
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;

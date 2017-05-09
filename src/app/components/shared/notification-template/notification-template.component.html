@@ -18,9 +18,9 @@
                 <span> on the home page.</span><br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_project_likes'">
@@ -35,9 +35,9 @@
                 <span> added a lightbulb to </span>
                 <span class="link">{{notification.title}}</span>.
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_comment_project'">
@@ -53,9 +53,9 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_added_to_showcase'">
@@ -72,9 +72,9 @@
                 <span class="link" (click)="OpenNotification(notification.showcase_nid)"> {{notification.showcase_title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'challenge_follow_deadline'">
@@ -88,9 +88,9 @@
                 <span class="link">{{notification.title}}</span>
                 <span> will close in 5 days.</span>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_collaborator_added'">
@@ -106,9 +106,9 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_entry_challenge_follow'">
@@ -124,9 +124,9 @@
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_message_sent'">
@@ -142,9 +142,9 @@
                 <span class="link">message</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
-            <!--<div class="delete">
-                <a class="lnr lnr-trash delete-message"></a>
-            </div>-->
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
         </div>
     </div>
 </div>

@@ -131,7 +131,7 @@
                 img {}
             }
             .content-container {
-                padding-top: 12px;
+                padding: 12px 0px 0px 0px;
                 .showcase-type-badge {
                     display: none;
                 }
@@ -168,7 +168,38 @@
             margin: auto;
         }
     }
+    .showcase-card-backlayer {
+        .showcase-card {
+            .showcase-card-footer {
+                .showcase-card-footer-2 {
+                    .showcase-date  {
+                        padding-left: 0px;
+                    }
+                    .update-date {
+                        padding-right: 0px
+                    }
+                }
+            }
+        }
+    }
+    .page-challenge-summary {
+        .challenge-card {
+            .challene-card-footer-3 {
+                .button-container-sec-2 {
+                    width: 100%;
+                    .btn-main-2 {
+                        width: 100%;
+                    }
+                }
+            }
+            .right-side {
+                padding: 0px;
+            }
+        }
+    }
 }
+
+
 @media (max-width: 575px) {
     /* project card */
     .project.card {
@@ -187,7 +218,7 @@
     /* showcase card */
     .page-showcase {
         .showcases-container {
-            padding: 20px 15px;
+            padding: 0px 15px 0px 15px;
         }
     }
     .showcase-card-backlayer {
@@ -275,7 +306,22 @@
             }
         }
     }
-    
+    .page-single-showcase {
+        .profile-container {
+            .spotlight-item {
+                .user-card {
+                    padding: 30px 0px 6px 0px !important;
+                }
+            }
+        }
+    }
+    .user-card {
+        .profile-pic-container {
+            .maker-photo {
+                height: auto !important;
+            }
+        }
+    }
 }
 
 
@@ -388,10 +434,6 @@
 						height: $showcase-height;
 						.card-container {
 								.card-title {
-									@include card-header-font-md();
-									color: $font-grey;
-									height: 55px;
-    							margin-bottom: 30px;
 								}
 								.card-description {
 										p {
@@ -417,13 +459,12 @@
                 margin: 0 -15px;
             }
             .card-container {
-
                 .card-description {
                     p {
                         @include desc-font-1();
                         line-height: 125% !important;
                         -webkit-line-clamp: 3;
-                        height: 55px;
+                        height: 52px;
                         color: #fff;
                         overflow: hidden;
                     }
@@ -458,7 +499,7 @@
                         @include desc-font-1();
                         line-height: 125% !important;
                         -webkit-line-clamp: 3;
-                        height: 55px;
+                        height: 52px;
                         color: #4F4F4F;
                     }
                 }
@@ -488,6 +529,19 @@
     }
     .hideData {
         display: none ;
+    }
+    .showcase-card,.challenge-card {
+        .card-title {
+            font-size: 2em !important;
+        }
+    }
+
+    .challenge-card {
+        .card-container {
+            .card-partership {
+                padding-top: 10px;
+            }
+        }
     }
 }
 
