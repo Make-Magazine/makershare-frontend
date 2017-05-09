@@ -314,6 +314,51 @@ a:not([href]):not([tabindex]) {
         border-color:transparent;
     }
 }
+.btn-load-more,
+a:not([href]):not([tabindex]).btn-load-more{
+    background-color:$site-bg;
+    border: 1px solid #828282;
+    color: $shade-4;
+    margin-bottom: 30px;
+    // &:focus {
+    //     color: #fff;
+    //     background-color: $main-button-1*0.9;
+    //     border-color: $main-button-1*0.8;
+    // }
+
+    // &:active, &:hover {
+    //     color: #fff;
+    //     background-color: $main-button-1*0.9;
+    //     border-color: $main-button-1*0.8;
+    // }
+}
+
+.form-textarea {
+    position: relative;
+    textarea {
+        resize: none;
+    }
+}
+.send-comment {
+    display: inline-table;
+    color: $shade-7;
+    border: none;
+    margin: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    &:hover {
+        color: $red;
+    }
+    &:focus {
+        border: none;
+    }
+}
+
+// Save and Vote Button
 .btn-vote,
 a:not([href]):not([tabindex]).btn-vote {
     @include card-header-font-sm ();
@@ -334,50 +379,26 @@ a:not([href]):not([tabindex]).btn-vote {
     }
 }
 
-.btn-load-more,
-a:not([href]):not([tabindex]).btn-load-more{
-    background-color:$site-bg;
-    border: 1px solid #828282;
-    color: $shade-4;
-    margin-bottom: 30px;
-    // &:focus {
-    //     color: #fff;
-    //     background-color: $main-button-1*0.9;
-    //     border-color: $main-button-1*0.8;
-    // }
-
-    // &:active, &:hover {
-    //     color: #fff;
-    //     background-color: $main-button-1*0.9;
-    //     border-color: $main-button-1*0.8;
-    // }
-}
-
-.btn-grey,a:not([href]):not([tabindex]).btn-grey{
-    color: $shade-4;
-    background-color: $button-light-grey;
-    border-color: $button-light-grey*0.9;
+// Tabs switching blue bottom border button
+.btn-tab,a:not([href]):not([tabindex]).btn-tab {
     border-radius: 0;
     font-size: 1.2em;
-    padding: 10px 15px;
-    margin-left: 5px;
-    &:focus ,&:active, &:hover {
-        color: $white;
-        background-color: $button-dark-grey*0.9;
-        border-color: $button-dark-grey*0.8;
+    padding: 9px 30px 25px 30px;
+    // width: 115px;
+    height: 35px;
+    color: #BDBDBD;
+    background-color: inherit;
+    &:focus {    
+        color: #4f4f4f;
+    }	
+    &:active, &:hover, &.active {
+        cursor: pointer;
+        color: #4f4f4f;
+        border-bottom: 5px solid $blue;
     }
-    &.disabled {
-        color: $shade-2;
-        border: 0.5px solid $shade-2;
-        background-color: $white;        
-    }
-    // {
-    //     color: #fff;
-    //     background-color: $main-grey*0.6;
-    //     border-color: $main-grey*0.6;
-    // }
 }
 
+// Prev and Next button
 .btn-advance,a:not([href]):not([tabindex]).btn-advance{
     color: $shade-4;
     background-color: none;
@@ -402,45 +423,55 @@ a:not([href]):not([tabindex]).btn-load-more{
     }
 }
 
-.btn-tab,a:not([href]):not([tabindex]).btn-tab {
+// Grey Button
+.btn-grey,a:not([href]):not([tabindex]).btn-grey{
+    color: $shade-4;
+    background-color: $button-light-grey;
+    border-color: $button-light-grey*0.9;
     border-radius: 0;
     font-size: 1.2em;
-    padding: 9px 30px 25px 30px;
-    // width: 115px;
-    height: 35px;
-    color: #BDBDBD;
-    background-color: inherit;
-    &:focus {    
-        color: #4f4f4f;
-    }	
-    &:active, &:hover, &.active {
-        cursor: pointer;
-        color: #4f4f4f;
-        border-bottom: 5px solid $blue;
+    padding: 10px 15px;
+    margin-left: 5px;
+    &:focus ,&:active, &:hover {
+        color: $white;
+        background-color: $button-dark-grey*0.9;
+        border-color: $button-dark-grey*0.8;
+    }
+    &.disabled {
+        color: $shade-2;
+        border: 0.5px solid $shade-2;
+        background-color: $white;        
     }
 }
 
-.form-textarea {
-    position: relative;
-    textarea {
-        resize: none;
+// Simple Button Small 
+.btn-simple-small,a:not([href]):not([tabindex]).btn-simple-small{
+    height: 35px;
+    min-width: 100px;
+    font-size: 1em;
+    color: $shade-4;
+    text-align: center;
+    border: 0.2px solid $shade-4;
+    background-color: $white;    
+    &:hover,&.active,&:active,&:focus {
+        color: $white;
+        background-color: $shade-4;
+        border: none;
     }
 }
-.send-comment {
-    display: inline-table;
-    color: $shade-7;
-    border: none;
-    margin: 0;
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    background: none;
-    font-size: 1.2em;
-    cursor: pointer;
-    &:hover {
-        color: $red;
-    }
-    &:focus {
+
+// Simple Button Large 
+.btn-simple-large,a:not([href]):not([tabindex]).btn-simple-large{
+    height: 35px;
+    min-width: 180px;
+    font-size: 1.3em;
+    color: $shade-4;
+    text-align: center;
+    border: 0.2px solid $shade-4;
+    background-color: $white;    
+    &:hover,&.active,&:active,&:focus {
+        color: $white;
+        background-color: $shade-4;
         border: none;
     }
 }
