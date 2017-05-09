@@ -197,6 +197,11 @@
             }
         }
     }
+    .page-explore {
+        .explore-header {
+            padding-bottom: 0px; 
+        }
+    }
 }
 
 
@@ -326,6 +331,24 @@
         .notification {
             .message {
                 font-size: 0.8em !important;
+            }
+        }
+    }
+    .page-project {
+        .projectsingle-card {
+            .right-side {
+                .card-container {
+                    .project-card-footer {
+                        ul {
+                            li{
+                                 a {
+                                    padding: 13px 2px;
+                                    width: 115px;
+                                 }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
