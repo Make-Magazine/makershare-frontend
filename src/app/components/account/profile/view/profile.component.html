@@ -81,8 +81,8 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'">{{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}, {{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'">{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}, {{ProfileInfo.address.governorate}}, {{ProfileInfo.address.country}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}, {{ProfileInfo.address.country}}</li>
 										<li class="placeholder-text" *ngIf="!ProfileInfo.address && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
