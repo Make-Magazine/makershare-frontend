@@ -252,9 +252,9 @@ export class ProfileComponent implements OnInit {
   }
   SetInterest(ParentInterestElement:HTMLSelectElement){
     this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedChildInterest)]);
-    if(this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(this.SelectedParentInterest) == -1){
-      this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedParentInterest)]);
-    }
+    // if(this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(this.SelectedParentInterest) == -1){
+    //   this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedParentInterest)]);
+    // }
     ParentInterestElement.value = '_none';
     delete this.SelectedChildInterest;
     delete this.SelectedParentInterest;
