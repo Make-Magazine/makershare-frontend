@@ -45,8 +45,6 @@ export class ProjectHeaderComponent implements OnInit {
     this.getBadgesProject();
     this.userId = localStorage.getItem('user_id');
     this.currentuser = Number(localStorage.getItem('user_id'));
-    console.log (this.project);
-    
     if (this.project.title) {
       this.customTitle = this.project.title.value;
     }
@@ -55,7 +53,6 @@ export class ProjectHeaderComponent implements OnInit {
     }
     if (this.project.field_cover_photo) {
       this.customImage = this.project.field_cover_photo.url;
-      console.log(this.customImage);
     }
     // this.meta.setTitle(this.project.title);
     // this.meta.setTag('og:image', this.project.field_cover_photo);
