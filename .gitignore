@@ -8,6 +8,8 @@
 /node_modules
 
 /src/assets/css/*.css.map
+!/src/assets/css/bootstrap.min.css.map
+
 
 # IDEs and editors
 /.idea

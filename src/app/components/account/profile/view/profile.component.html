@@ -370,11 +370,13 @@
 								<div class="row">
 									<div class="col-md-12 col-xs-12">
 										<label for="edit-city">LOCATION</label>
-										<span class="custom-control custom-checkbox mb-2 mr-sm-2 ml-3 mb-sm-0">
-											<input type="checkbox" class="custom-control-input" [checked]="ProfileInfo.address_publish == 1" (change)="$event.target.checked?ProfileInfo.address_publish = 1:ProfileInfo.address_publish = 0">
-											<span class="custom-control-indicator"></span>
-											<span class="custom-control-description">include location in public profile</span>
-										</span>
+										<label class="custom-control custom-checkbox">
+											<span class="custom-control custom-checkbox mb-2 mr-sm-2 ml-3 mb-sm-0">
+												<input type="checkbox" class="custom-control-input" [checked]="ProfileInfo.address_publish == 1" (change)="$event.target.checked?ProfileInfo.address_publish = 1:ProfileInfo.address_publish = 0">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description">include location in public profile</span>
+											</span>
+										</label>
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
