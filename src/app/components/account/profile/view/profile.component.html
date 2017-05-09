@@ -379,7 +379,7 @@
 										</label>
 									</div>
 									<div class="col-md-4 col-xs-12">
-										<input [ngClass]="{valError: searchFailed}" [ngModel]="profile.address.country" type="text" class="form-control" id="country"
+										<input [ngClass]="{valError: searchFailed}" [ngModel]="ProfileInfo.address.country" type="text" class="form-control" id="country"
 										 placeholder="Click to select country" [inputFormatter]="formatter" [ngbTypeahead]="SearchCountry" [resultTemplate]="rt"
 										 (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">
 										<!--<small *ngIf="searchFailed" class="text-danger">Country not found.</small>-->
@@ -682,12 +682,11 @@
 									</div>
 									<div class="col-sm-4">
 										<i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest" ></i>									
-										<select class="shadowed" *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value">
+										<select class="shadowed" *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value;SetInterest(parentinterest)">
 											<option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
 											<option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid" [selected]="SelectedChildInterest == childInterest.tid"><span [innerHTML]="childInterest.name"></span></option>
 										</select>
 									</div>
-									<button class="col-sm-2 btn-save" *ngIf="SelectedChildInterest" (click)="SetInterest(parentinterest)">Add</button>
 									<div *ngIf="ProfileInfo.maker_interests" class="col-12 cate-list">
 										<div *ngFor="let selected_interest of ProfileInfo.maker_interests; let i=index">
 											<label for="" class="selected-topic" *ngIf="i == 0">Selected Topic</label>
@@ -713,9 +712,7 @@
 				</div>
 				<div class="modal-footer mt-auto ml-auto">
 					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
-					<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
-						(click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
+					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)">Save</button>
 				</div>
 			</div>
 		</div>
