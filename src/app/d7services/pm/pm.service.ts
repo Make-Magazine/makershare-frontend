@@ -88,4 +88,12 @@ export class PmService {
     return this.mainService.post(globals.endpoint + '/' + name + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  deleteAcount(uid: number): Observable<any> {
+    return this.mainService.delete(globals.endpoint + '/maker_profile_api/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+  deleteNotification(mid: number): Observable<any> {
+    return this.mainService.delete(globals.endpoint + '/maker_notification_api/' + mid).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
 }
