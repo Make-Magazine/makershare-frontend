@@ -4,13 +4,13 @@
       <div class="container">
         <h3>Projects</h3>
 
-        <ul class="list-unstyled explore-tags">
+        <ul class="list-unstyled explore-tags hidden-sm-down">
           <li *ngFor="let parent of categories_parents;let i = index">
             <a (mouseover)="ChangeClassActive(i,$event)" [ngClass]="{'active':CurrentActiveParentIndex == i}" class="btn btn-border"
               id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
           </li>
         </ul>
-        <div class="submenus">
+        <div class="submenus hidden-sm-down">
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
@@ -24,17 +24,17 @@
 
 
 
-        <div class="navbar">
+        <div class="navbar hidden-md-up">
           <div class="navbar-inner">
             <div class="container">
               <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                 <span class="icon-bar">Filters</span>
               </a>
               <div class="nav-collapse collapse navbar-responsive-collapse">
-                <ul class="nav">
-                  <li class="dropdown men"><a href="http://google.de" class="dropdown-toggle" data-toggle="dropdown">Parent<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-submenu men "><a href="http://maps.google.de/" class="dropdown-toggle" data-toggle="dropdown">Child</a></li>
+                <ul class="list-unstyled">
+                  <li class="dropdown men" *ngFor="let parent of categories_parents;let i = index" ><span [ngClass]="{'active':CurrentActiveParentIndex == i}" class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
+                    <ul class="dropdown-menu" >
+                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="projectsById($event);ChangeClassActive(i,$event)" data-id="{{term.tid}}" (click)="idCategory(term.tid)" class="child-item" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
                     </ul>
                   </li>
                 </ul>
