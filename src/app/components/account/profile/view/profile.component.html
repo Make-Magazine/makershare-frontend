@@ -710,12 +710,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer mt-auto">
-						<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-						<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
-						<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
-						 (click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
-					</div>
+				</div>
+				<div class="modal-footer mt-auto ml-auto">
+					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
+					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)" *ngIf="CurrentInfoTab != 'Portfolio Photo'">Save</button>
+					<button type="button" class="btn btn-load-more" *ngIf="PhotoModalTab == 'upload' && CurrentInfoTab == 'Portfolio Photo'"
+						(click)="SaveImage(closebtn,ProfilePicData,'profile')">Save</button>
 				</div>
 			</div>
 		</div>
