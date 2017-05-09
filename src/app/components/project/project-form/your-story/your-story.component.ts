@@ -82,8 +82,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   }
   CKEditorConfig = {
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
-    imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
-    filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
   }
   
   /**
