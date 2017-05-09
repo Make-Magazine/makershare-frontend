@@ -46,16 +46,16 @@
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down"></i>
           <select #parentcategory [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}"
-            class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
-            <option disabled selected value="_none_" > Select Topics </option>
+            class="form-control" type="text" class="shadowed form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+            <option disabled selected value="_none_"> Select Topics </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
           </select>
         </div>
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="current_parent_category"></i>
           <select [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category"
-            class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
-            <option disabled selected value > Select Topic </option>
+            class="form-control" type="text" class="shadowed form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
+            <option disabled selected value> Select Topic </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
             </select>
         </div>
