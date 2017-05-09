@@ -15,7 +15,7 @@
       margin-bottom: 20px;
     }
     h1 {
-      font-size: 2.6em;
+      font-size: 2em;
       font-weight: 500;
       line-height: 1.3;
       margin-bottom: 40px;
@@ -67,6 +67,7 @@
 
 .what-is-ms {
   padding: 40px 0;
+  text-align: center;
   h2 {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
@@ -83,16 +84,40 @@
   p {
     font-size: 1em;
     font-weight: 300;
-    line-height: 100%;
+    line-height: 1.5em;
+    text-align: left;
+    width: 650px;
+    margin: auto;
     color: $text-color-1;
   }
-  img {
-    margin-top: 30px;
+  // img {
+  //   margin-top: 30px;
+  // }
+
+  .home-body-logos {
+      margin-top: 10px !important;
+      margin-bottom: 20px;
+      // width: 180px;
+      .intel {
+        width: 140px;
+      }
+      .maker {
+        width: 160px;
+      }
+  }
+  .border {
+    width: 3px;
+    height: 60px;
+    display: inline-block;
+    background-color: $shade-5;
+    margin-left: 20px;
+    margin-right: 20px;
+    // margin-bottom: 10px;
   }
 }
 
 .info-w-parallax {
-  height: 882px;
+  height: 740px;
   position: relative;
   @media screen and (max-width: 767px) {
     height: auto;
@@ -104,7 +129,7 @@
   .info-card {
     background-color: #fff;
     box-shadow: 2px 3px 5px rgba(0,0,0,.2);
-    padding: 20px 40px 60px;
+    padding: 20px 40px 30px;
     margin-top: 15px;
     margin-bottom: 15px;
     @media screen and (max-width: 767px) {
