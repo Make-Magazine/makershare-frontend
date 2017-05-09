@@ -255,6 +255,27 @@
       </div>
     </div>
     <br>
+
     <button type="submit" class="btn btn-soft-grey pull-right mt-5" (click)="updateNotificationSettings($event)">Save changes</button>
+    <br>
+    <hr>
+
   </fieldset>
 </form>
+<button (click)="deleteMyAcount()" class="btn-vote">Delete My Account</button>
+
+<!--<button (click)="open(content)" class="btn-vote">Delete My Account</button>
+<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+      <div class="modal-header">
+        <button type="button" class="close ml-auto" (click)="d('Cross click')" aria-label="Close">
+          <span aria-hidden="true" >&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Test body</h4>
+      </div>
+      <div class="modal-footer mt-auto">
+        <button href="" class="btn btn-load-more"  (click)="c('Close click')" >Cancel</button>
+        <button type="submit" class="btn btn-load-more" (click)="c('Close click')">Send</button>
+      </div>
+</template>-->
