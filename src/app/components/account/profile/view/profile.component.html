@@ -383,7 +383,7 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="State/Province" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="City" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
 										 type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
 									</div>
 								</div>
