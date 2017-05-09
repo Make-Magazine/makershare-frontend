@@ -1984,20 +1984,6 @@ footer {
   color: #BDBDBD;
   clear: both; }
 
-.slick-slide {
-  width: auto !important; }
-
-.slick-track {
-  min-height: 150px;
-  max-height: 170px; }
-  .slick-track img {
-    height: auto !important;
-    width: 100% !important; }
-
-.carousel-img-container {
-  width: 263px !important;
-  height: 210px !important; }
-
 /* User card msg on inbox msg component */
 .user-card-msg .profile-pic-container {
   position: relative; }
@@ -2121,7 +2107,7 @@ footer {
   padding: 40px 0; }
   .banner #homeBanner {
     padding: 0 15px;
-    max-width: 500px;
+    max-width: 600px;
     text-transform: uppercase; }
     .banner #homeBanner h2 {
       font-family: 'Open Sans', sans-serif;
@@ -2326,10 +2312,6 @@ footer {
     @media screen and (max-width: 575px) {
       .parallax-red-line .parallax-red-line-right {
         display: none; } }
-
-.carousel-slider .carousel-slider-slick.slick-initialized.slick-slider {
-  height: 234px;
-  overflow: hidden; }
 
 .profile-page {
   position: relative;

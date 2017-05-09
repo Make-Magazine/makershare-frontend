@@ -1,22 +1,64 @@
-<section class="banner">
-  <div *ngIf="sliders">
-    <ngb-carousel>
-      <template ngbSlide *ngFor="let slider of sliders">
-        <img *ngIf="slider.cover_photo" class="first-slide" src="{{slider.cover_photo}}" alt="First slide">
-        <img *ngIf="slider.promo_image" class="first-slide" src="{{slider.promo_image}}" alt="First slide">
-        <div class="card-container">
-          <div class="carousel-caption d-none d-md-block card">
-            <h2 *ngIf="slider.title" [innerHTML]="slider.title"></h2>
-            <h2 *ngIf="slider.promo_headline">{{slider.promo_headline}}</h2>
-            <p *ngIf="slider.promo_description">{{slider.promo_description}}</p>
-            <div class="card-buttons button-container-main-1">
-              <a class="btn btn-main" (click)="loadMoreData(slider.nid,slider.type)">Read more </a>
-
-            </div>
-          </div>
-        </div>
-      </template>
-    </ngb-carousel>
+<section class="carousel-slider">
+  <div class="carousel-slider-slick">
+    <div class="carousel-img-container" *ngFor="let image of images">
+      <img class="img-fluid" src="{{image.src}}" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-2.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-3.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-4.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-7.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-8.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-9.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-10.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-13.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-16.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-18.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-19.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-20.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-21.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-22.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-25.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-26.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-30.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-31.jpg" alt="" />
+    </div>
+    <div class="carousel-img-container">
+      <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-35.jpg" alt="" />
+    </div>
   </div>
 </section>
-
