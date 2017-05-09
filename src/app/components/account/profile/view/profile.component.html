@@ -272,7 +272,8 @@
 								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 							</li>
 							<li>
-								<p><span class="number">{{profile.views_count}}</span> views</p>
+								<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
+								<p *ngIf="profile.views_count == 1"><span class="number">{{profile.views_count}}</span> view</p>
 							</li>
 							<!-- Start Bookmsrk-section -->
 							<!--<li>
