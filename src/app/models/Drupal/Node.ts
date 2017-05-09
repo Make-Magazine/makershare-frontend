@@ -48,6 +48,7 @@ export abstract class Node implements Node{
     this.status = 0;
     this.promote = 0;
     this.sticky = 0;
+    this.comment = 2;
     this.type = Type;
   }
 }

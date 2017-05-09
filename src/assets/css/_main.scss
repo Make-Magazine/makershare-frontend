@@ -75,6 +75,7 @@ body {
     font-family: 'Messina Sans Regular';
     color: $main-grey;
     font-size: 0.9em;
+    word-wrap: break-word;
     font-weight: 500;
     line-height: 1.5em;
     -webkit-transition: all 1.25s ease-in-out;
@@ -553,6 +554,9 @@ body {
 ngb-typeahead-window {
     &.dropdown-menu {
         width: 90%;
+        .dropdown-item {
+            font-size: .9em;
+        }
     }
 }
 .typeahead-image-container {
@@ -790,4 +794,24 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
 }
 :-ms-input-placeholder {
     font-family: 'Arial';
+}
+
+
+select.shadowed {
+    width: 100% !important;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    @include boxShadow(2px, 2px, 8px, $light-grey);
+}
+i.dropdownIcon {
+    position: absolute;
+    right: 26px;
+    top: 14px;
+    pointer-events: none;
 }
