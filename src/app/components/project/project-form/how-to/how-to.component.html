@@ -229,7 +229,7 @@
 <!-- MODALS -->
 
 <!-- Add Modal -->
-<template #addmodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #addmodal let-c="close" let-d="dismiss">
   <div class="create-item-modal">
     <div class="modal-header">
       <h4 class="modal-title">Add new {{CurrentModal}}</h4>
@@ -248,7 +248,7 @@
   </div>
 </template>
 
-<template #resourcefile let-c="close" let-d="dismiss" ngbModalContainer>
+<template #resourcefile let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Choose resource file</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -271,7 +271,7 @@
   </div>
 </template>
 
-<template #linkreop let-c="close" let-d="dismiss" ngbModalContainer>
+<template #linkreop let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Enter the repository link</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
