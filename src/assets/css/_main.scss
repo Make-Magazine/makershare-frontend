@@ -794,3 +794,22 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
 :-ms-input-placeholder {
     font-family: 'Arial';
 }
+
+
+select.shadowed {
+    width: 100% !important;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    @include boxShadow(2px, 2px, 8px, $light-grey);
+}
+i.dropdownIcon {
+    position: absolute;
+    right: 26px;
+    top: 14px;
+    pointer-events: none;
+}
