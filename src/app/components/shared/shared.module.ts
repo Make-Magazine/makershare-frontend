@@ -46,6 +46,8 @@ import { NotificationTemplateComponent } from './notification-template/notificat
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
+import { AddProtocolDirective } from '../../directives/add-protocol.directive';
+
  let config = {
     breakPoints: {
         xs: {max: 575},
@@ -107,13 +109,14 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
     ReportProjectComponent,
     ProjectVoteComponent,
     FileBrowserComponent,
-    // directives
-    ValidateOnFocusoutDirective,
     ReportCommentComponent,
     VideoViewerComponent,
     UserCardMsgsComponent,
     NotificationPanelComponent,
-    NotificationTemplateComponent
+    NotificationTemplateComponent,
+    // directives
+    ValidateOnFocusoutDirective,
+    AddProtocolDirective,
   ],
   exports: [
     CommentComponent,
@@ -150,6 +153,8 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
     UserCardMsgsComponent,
     NotificationPanelComponent,
     NotificationTemplateComponent,
+    AddProtocolDirective,
+    ValidateOnFocusoutDirective
   ],
   providers:[{
      provide: ResponsiveConfig, 

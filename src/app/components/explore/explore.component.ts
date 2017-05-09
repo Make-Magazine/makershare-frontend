@@ -6,6 +6,9 @@ import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import * as globals from '../../d7services/globals';
+import { MainService } from '../../d7services/main/main.service';
+
 
 
 @Component({
@@ -35,6 +38,7 @@ export class ExploreComponent implements OnInit {
     private viewService: ViewService,
     private loaderService: LoaderService,
     private meta: MetaService,
+    private mainService: MainService,
     private notificationBarService: NotificationBarService,
   ) { }
 
@@ -90,11 +94,12 @@ export class ExploreComponent implements OnInit {
   }
   projectsById(event) {
     // show spinner
+    console.log(event);
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
-      //= this.projects.concat(data);
+      //this.projects= this.projects.concat(data);
             this.loadMoreVisibilty();
 
 
@@ -126,7 +131,8 @@ export class ExploreComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    this.getCountProject();
+    // this.getCountProject();
+    console.log(this.countProject)
     if (this.countProject == this.projects.length) {
       this.hideloadmoreproject = true;
 
@@ -232,9 +238,19 @@ export class ExploreComponent implements OnInit {
           this.categories_parents.push(element);
         }
       });
-      // console.log(this.categories_childs);
+     //  console.log(this.categories_childs);
       // console.log(this.categories_parents);          
     });
   }
+  idCategory(id){
+    console.log(id);
+       this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
+           this.countProject=res['_body'].replace(']', '').replace('[', '')
+          console.log(this.countProject)
+      }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+      });
+
+  }//end function
 
 }

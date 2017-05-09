@@ -9,7 +9,7 @@
     </div>
   </div>
 </template>
-<div class="region region-content col-sm-8" [formGroup]="TeamForm">
+<div class="region region-content col-md-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls.field_maker_memberships.controls; let i=index;" class="card add-collaborate">
       <div>
@@ -54,12 +54,12 @@
         <a *ngIf="(i > 0)" (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
     </div>   
-    <a class="add-teammember" *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && (TeamForm.controls.field_maker_memberships.valid || TeamForm.value.field_maker_memberships[TeamForm.controls.field_maker_memberships.controls.length-1].field_anonymous_member_name)" (click)="AddRow('field_maker_memberships')"><i class="fa fa-plus-square"></i> Add more</a>
+    <a class="add-teammember" *ngIf="TeamForm.controls.field_maker_memberships.controls.length < 7 && (TeamForm.controls.field_maker_memberships.controls[TeamForm.controls.field_maker_memberships.controls.length-1].controls.field_team_member.valid || TeamForm.value.field_maker_memberships[TeamForm.controls.field_maker_memberships.controls.length-1].field_anonymous_member_name)" (click)="AddRow('field_maker_memberships')"><i class="fa fa-plus-square"></i> Add more</a>
   </div>
 </div>
 <!--side bar guide-->
 <aside class="col-md-4">
-  <div class="team-guide">
+  <div class="team-guide hidden-sm-down">
     <h2 class="col-12">Helpful Hints</h2>
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>

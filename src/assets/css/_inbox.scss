@@ -113,7 +113,7 @@
 					padding: 10px;
 					@include boxShadow(2px, 2px, 8px,$light-grey);
     			background-color: white;
-					margin: 10px 0;
+    			margin: 5px 0;
 					.media-left {
 							width: 80px;
 							height: 80px;
@@ -158,6 +158,7 @@
 					}
 					.delete {
 						  margin-left: auto;
+							padding-top: 5px;
     					margin-right: 25px;
 					}
 					.delete-message {
@@ -297,32 +298,53 @@
 
 /* notification page */
 .notifications-list-page {
+		padding: 0;
+    margin: 0 0 15px;
+    clear: both;
+    padding-top: 20px;
 	.notification-container {
 		.notification-item {
-			display: flex;
-			align-items: center;
-			margin: 0 5px;
-			padding: 0 5px;
-			.inner-text {
-				overflow: hidden;
-    		padding: 10px;
-				-moz-box-shadow: 2px 2px 8px #BDBDBD;
-				-webkit-box-shadow: 2px 2px 8px #BDBDBD;
-				box-shadow: 2px 2px 8px #BDBDBD;
-				background-color: white;
-				margin: 10px 0;
-				width: 100%;
-				.link {
-					color: $blue;
-					&:hover {
-						color: $blue !important;
-						text-decoration: none !important;
-					}
-				}
-				.notf-date {
-					@include desc-font-2 ();
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD;
+    background-color: white;
+    margin: 10px 0;
+		.media-left {
+			    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+		}
+		.media-body {
+			padding-top: 22px;
+			.link {
+				margin-bottom: 0;
+				color: $blue;
+				&:hover {
+					text-decoration: none !important;
+					color: $blue !important;
 				}
 			}
+			.notf-date {
+				margin: 0px;
+			}
+		}
+		.delete {
+			margin-left: auto;
+    	margin-right: 25px;
+			padding-top: 30px;
+			.delete-message {
+				overflow: hidden;
+				color: #333333;
+				position: relative;
+				font-size: 1.5em;
+			}
+		}
+
 		}
 	}
 }
@@ -376,4 +398,38 @@
 						background-color: #fff !important;
 				}
 		}
+}
+
+/* blocked users main page */
+.blocked-users-page {
+	.block-user {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			overflow: hidden;
+			padding: 10px;
+			-moz-box-shadow: 2px 2px 8px #BDBDBD;
+			-webkit-box-shadow: 2px 2px 8px #BDBDBD;
+			box-shadow: 2px 2px 8px #BDBDBD;
+			background-color: white;
+			margin: 5px 0;
+		.media {
+			.media-left {
+				width: 60px;
+				height: 60px;
+				margin-right: 10px;
+				img {
+					width: 100%;
+					height: auto;
+					max-width: 100%;
+				}
+			}
+			.media-body {
+				padding-top: 14px;
+				button {
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
 }

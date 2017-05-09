@@ -29,7 +29,8 @@ export class PortfolioTabComponent implements OnInit {
   }
 
   UpdateProjects(){
-    this.viewService.getView('portfolio-projects',[['status',this.status]]).subscribe((projects:ProjectCardPortfolio[])=>{
+    let uid = localStorage.getItem('user_id');
+    this.viewService.getView('portfolio-projects',[['status',this.status], ['uid',uid], ['member_id',uid]]).subscribe((projects:ProjectCardPortfolio[])=>{
       this.Projects = projects;
     });
   }
