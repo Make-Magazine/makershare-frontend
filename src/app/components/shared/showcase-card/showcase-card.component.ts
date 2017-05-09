@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
-import {FlagService} from '../../../d7services/flag/flag.service';
+import { FlagService } from '../../../d7services/flag/flag.service';
 
 @Component({
   selector: 'app-showcase-card',
@@ -10,6 +10,7 @@ import {FlagService} from '../../../d7services/flag/flag.service';
 export class ShowcaseCardComponent implements OnInit {
   showcase = [];
   userId;
+  projectsCount;
   numLikes;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
@@ -22,23 +23,33 @@ export class ShowcaseCardComponent implements OnInit {
     this.getShowcases();
     this.userId = localStorage.getItem('user_id');
     this.countLikes();
+    this.getProjectsCount();
   }
 
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
+      console.log(this.showcaseNid)
       this.showcase = data[0];
     });
+  }
+  getProjectsCount() {
+    this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
+
+      this.projectsCount = data.length;
+      console.log(data.length);
+    });
+
   }
   ShowSingleShowcase(nid) {
     this.router.navigate(['/showcases', nid]);
   }
 
-  countLikes(){
-    this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
-          if(res['count']>0){
-      this.numLikes = res;
-      }else{
-         this.numLikes=0;
+  countLikes() {
+    this.flagService.flagCount(this.showcaseNid, 'like').subscribe(res => {
+      if (res['count'] > 0) {
+        this.numLikes = res;
+      } else {
+        this.numLikes = 0;
       }
     })
   }

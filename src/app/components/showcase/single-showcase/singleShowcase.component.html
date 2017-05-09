@@ -60,12 +60,15 @@
       <div class="container">
         <div class="filters">
           <div class="container">
-            <div class="row d-flex justify-content-end align-items-center">
+            <div class="row d-flex justify-content-end align-items-center" *ngIf="projectsCount>=1">
               <div class="entries-count btn">
                 <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
                 <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
               </div>
               <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
+            </div>
+            <div class="container text-center" *ngIf="!projectsCount">
+              <p>No project yet</p>
             </div>
           </div>
         </div>
