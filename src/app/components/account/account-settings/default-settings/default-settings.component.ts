@@ -36,11 +36,7 @@ export class defaultSettingsComponent implements OnInit {
   }
 
  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService.open(content);
   }
 
   private getDismissReason(reason: any): string {
@@ -106,8 +102,8 @@ export class defaultSettingsComponent implements OnInit {
 
   deleteMyAcount(){
     this.userId = localStorage.getItem('user_id');
-   // this.pm.deleteAcount(this.userId).subscribe(data=>{
+   this.pm.deleteAcount(this.userId).subscribe(data=>{
       this.router.navigate(['/']);
-  //  })
+   })
   }
 }
