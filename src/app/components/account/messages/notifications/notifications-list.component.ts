@@ -3,7 +3,6 @@ import { ViewService } from '../../../../d7services/view/view.service';
 import { UserService } from '../../../../d7services/user/user.service';
 import { Notification } from '../../../../models';
 import { LoaderService } from '../../../shared/loader/loader.service';
-import { PmService } from '../../../../d7services/pm/pm.service';
 
 @Component({
   selector: 'notifications-list',
@@ -19,8 +18,7 @@ export class NotificationsListComponent implements OnInit {
   CurrentUserID = localStorage.getItem("user_id");
   constructor(
     private viewService: ViewService,
-    private loaderService: LoaderService,
-    private pm: PmService,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
@@ -34,7 +32,7 @@ export class NotificationsListComponent implements OnInit {
     //  this.loaderService.display(true);
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
       this.notifications = this.notifications.concat(notifications);
-      //  console.log(this.notifications);
+       console.log( this.notifications);
       // this.loaderService.display(false);
 
     });
@@ -55,13 +53,6 @@ export class NotificationsListComponent implements OnInit {
   loadMore() {
     this.pageNumber++;
     this.GetNotificationsList();
-  }
-
-  deleteNotifications(i){
-    this.pm.deleteNotification(this.notifications[i].mid).subscribe(data=>{
-      delete this.notifications[i];
-      console.log(data);
-    })
   }
 
   
