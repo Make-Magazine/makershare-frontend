@@ -358,7 +358,7 @@ a:not([href]):not([tabindex]).btn-load-more{
     }
 }
 
-// Save and Vote Button
+// Vote Button
 .btn-vote,
 a:not([href]):not([tabindex]).btn-vote {
     @include card-header-font-sm ();
@@ -473,5 +473,23 @@ a:not([href]):not([tabindex]).btn-vote {
         color: $white;
         background-color: $shade-4;
         border: none;
+    }
+}
+
+
+// Save Button
+.btn-save,
+a:not([href]):not([tabindex]).btn-save {
+    @include card-header-font-sm ();
+    color: #fff;
+    background-color: $btn-primary-2;
+    // border: 0.5px solid $text-color-1;
+    padding: 15px 0px;
+    min-width: 180px;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    &:focus, &:active, &:hover , &.active {
+        background-color:$btn-primary-2*0.8
     }
 }
