@@ -243,8 +243,7 @@ export class ProfileComponent implements OnInit {
       }
       this.CurrentInfoTab = ModalName;
       this.modalService.open(Template, { size: 'lg' });
-    }
-      
+    } 
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper);
@@ -274,10 +273,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ReSetAddressValues() {
-    if (this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate) {
+    if (this.CountryFieldsAndDetails['administrative_areas']) {
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.profile.address[administrative_area_label]) {
-        this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
+        this.ProfileInfo.address.governorate = '_none';
       } else {
         this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
       }
@@ -293,7 +292,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
-    this.ReSetAddressValues();
+    // this.ReSetAddressValues();
     this.SaveUser(this.ProfileInfo);
     closebtn.click();    
   }
@@ -307,6 +306,7 @@ export class ProfileComponent implements OnInit {
     if(!CountryKey) return;
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
+      this.ReSetAddressValues();
     });
   }
   AddMakerspaceRow(makerspace?) {
