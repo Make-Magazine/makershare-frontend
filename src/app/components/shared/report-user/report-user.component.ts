@@ -40,7 +40,7 @@ export class ReportUserComponent implements OnInit {
     this.buildForm();
     this.userId = localStorage.getItem('user_id');
     if (this.userId && this.userReportId) {
-      this.flagService.isFlagged(this.userReportId, this.userId, 'report').subscribe(data => {
+      this.flagService.isFlagged(this.userReportId, this.userId, 'report_user').subscribe(data => {
         this.isReported = data[0];
 
       });
@@ -82,7 +82,7 @@ export class ReportUserComponent implements OnInit {
           field_appropriate_response: this.reasonReport,
         }
 
-        this.flagService.flag(this.userReportId, this.userId, 'report', report).subscribe(response => {
+        this.flagService.flag(this.userReportId, this.userId, 'report_user', report).subscribe(response => {
           this.isReported = true;
       
 

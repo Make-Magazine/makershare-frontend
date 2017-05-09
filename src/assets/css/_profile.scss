@@ -2531,3 +2531,8 @@ button {
         font-size: 1em !important;
     }
 }
+#personal-info {
+    label.custom-control {
+        color: $shade-4;
+    }
+}
