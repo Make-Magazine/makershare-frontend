@@ -148,7 +148,7 @@ customDescription:string
       .switchMap((nid) => this.viewService.getView('showcase_projects_nid', [['nid', nid['nid']]]))
       .subscribe(data => {
         this.projectsCount = data.length;
-        // console.log(data.length);
+         console.log(data.length);
       });
 
   }

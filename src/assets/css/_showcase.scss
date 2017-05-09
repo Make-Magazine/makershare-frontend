@@ -19,7 +19,7 @@
         }
     }
     .showcases-container {
-        padding: 25px 0;
+        padding: 25px 15px 0px 15px;
     }
 }
 
@@ -141,9 +141,8 @@
                 .showcase-card-count {
                     font-size: 14px;
                     div {
-                        float: left;
-                        margin-right: 8px;
-                        min-width: 50px;
+                        min-width: 60px;
+                        text-align: center;
                     }
                     .showcase-likes {
                         img {
@@ -154,9 +153,6 @@
                         margin-left: 20px;
                     }
                     .project-like {
-                        min-width: 60px;
-                        text-align: right;
-                        padding: 0px 12px;
                         img {
                             width: 13px;
                             height: auto;
@@ -167,7 +163,7 @@
                             padding: 0px 4px;
                         }
                         a {
-                            padding-top: 3px;
+                            padding: 0px;
                         }
                     }
                     .views-count {
@@ -177,7 +173,11 @@
                         width: 22px;
                         height: auto;
                     }
-                    .update-date {
+                    .projects-count {
+                        color: $text-color-3;
+                    }
+                }
+                .update-date {
                         padding-right: 10px;
                         color: $text-color-3;
                     }
@@ -185,10 +185,6 @@
                         padding-left: 16px;
                         height: auto;
                     }
-                    .projects-count {
-                        color: $text-color-3;
-                    }
-                }
                 .showcase-card-status {
                     .open-status,
                     .closed-status {
@@ -410,11 +406,6 @@ img {
             }
             .card-title {
                 @include card-header-font-lg();
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                max-height: 212px;
                 color: $font-grey;
                 margin-bottom: 20px;
                 line-height: 120% !important;
