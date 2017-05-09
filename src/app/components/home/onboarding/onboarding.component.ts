@@ -16,10 +16,10 @@ export class OnboardingComponent implements OnInit {
 	ngOnInit() {
 		jQuery('.carousel-slider-slick').slick({
 			arrows: false,
-			// infinite: true,
-			// speed: 1000,
-			// autoplay: true,
-			// autoplaySpeed: 500,
+			infinite: true,
+			speed: 3000,
+			autoplay: true,
+			autoplaySpeed: 500,
 			adaptiveHeight: true,
 			slidesToShow: 5,
 			slidesToScroll: 1,
@@ -41,13 +41,13 @@ export class OnboardingComponent implements OnInit {
 	}
 	AfterViewInit() {
 		jQuery('.carousel-slider-slick').slick({
-			infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            autoplay:true,
-            autoplaySpeed: 5000,
-            cssEase: 'linear'
+			// infinite: true,
+            // slidesToShow: 1,
+            // slidesToScroll: 1,
+            // arrows: true,
+            // autoplay:true,
+            // autoplaySpeed: 5000,
+            // cssEase: 'linear'
 		});
 	}
 

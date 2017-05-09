@@ -9580,7 +9580,10 @@ img {
     padding: 30px 0px 6px 0px !important; }
 
   .user-card .profile-pic-container .maker-photo {
-    height: auto !important; } }
+    height: auto !important; }
+
+  .notifications-container .notification .message {
+    font-size: 0.8em !important; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
     margin-left: 8px; }
