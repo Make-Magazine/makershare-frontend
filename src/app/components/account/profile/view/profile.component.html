@@ -82,7 +82,7 @@
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
-										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()]}}</li>
+										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address.governorate}}</li>
 										<li class="placeholder-text" *ngIf="!ProfileInfo.address && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
@@ -383,7 +383,7 @@
 									</div>
 									<div class="col-md-4 col-xs-12">
 										<!--<label *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" for="city">{{CountryFieldsAndDetails.locality_label}}</label>-->
-										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="State/Province" [ngModel]="profile.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
+										<input *ngIf="CountryFieldsAndDetails.used_fields.indexOf('locality') != -1" placeholder="State/Province" [ngModel]="ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]"
 										 type="text" class="form-control" id="city" (change)="ProfileInfo.address.city = $event.target.value">
 									</div>
 								</div>
@@ -397,8 +397,8 @@
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
-											<option value="choose" [disabled]="butDisabled">Choose</option>
-											<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="profile.address[CountryFieldsAndDetails.administrative_area_label.toLowerCase()] == area.value">{{area.value}}</option>
+											<option [disabled]="true" [selected]="ProfileInfo.address.governorate == '_none'">Choose</option>
+											<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="ProfileInfo.address.governorate == area.value">{{area.value}}</option>
 										</select>
 									</div>
 								</div>
