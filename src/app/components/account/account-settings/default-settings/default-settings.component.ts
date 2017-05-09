@@ -4,6 +4,9 @@ import { ViewService } from '../../../../d7services/view/view.service';
 import { MainService } from '../../../../d7services/main/main.service';
 import * as globals from '../../../../d7services/globals';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { PmService } from '../../../../d7services/pm/pm.service';
+
 
 @Component({
   selector: 'app-default-settings',
@@ -17,17 +20,39 @@ export class defaultSettingsComponent implements OnInit {
   selected;
   userId;
   checked = [];
+  closeResult: string;
   constructor(
     private viewservice: ViewService,
     private mainService: MainService,
     private router: Router,
     private notificationBarService: NotificationBarService,
+    private modalService: NgbModal,
+    private pm: PmService,
 
   ) { }
 
   ngOnInit() {
     this.getNotificationSettings();
   }
+
+ open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   getNotificationSettings() {
     this.viewservice.getView('maker_notification_settings_api').subscribe(data => {
       this.notifications = data;
@@ -77,5 +102,12 @@ export class defaultSettingsComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.mainService.put(globals.endpoint + '/maker_notification_settings_api/' + this.userId, { 'field_email_notifications': this.email_notifications, 'field_web_notifications': this.web_notifications }).subscribe()
     this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+  }
+
+  deleteMyAcount(){
+    this.userId = localStorage.getItem('user_id');
+   // this.pm.deleteAcount(this.userId).subscribe(data=>{
+      this.router.navigate(['/']);
+  //  })
   }
 }
