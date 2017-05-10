@@ -1375,7 +1375,8 @@ body {
         cursor: pointer; }
 
 #search-box-layer .close-search-layer,
-#search-box-layer .go-search {
+#search-box-layer .go-search,
+#search-box-layer .clear-search {
   position: absolute;
   color: #fff;
   font-size: 2em;
@@ -1386,6 +1387,10 @@ body {
 #search-box-layer .go-search {
   top: 7px;
   right: -40px; }
+#search-box-layer .clear-search {
+  top: 13px;
+  right: 5px;
+  font-size: 1em; }
 
 /* forms valid-errors */
 .valError {
@@ -2455,9 +2460,16 @@ footer {
     .profile-sidebar .profile-container i {
       width: 25px; }
     .profile-sidebar .profile-container .global-title {
+      font-family: "Messina Modern Regular";
+      font-size: 1.3em;
+      font-weight: 500;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282;
       margin-bottom: 10px;
       margin-top: 10px;
-      font-size: 1em;
+      font-size: 1.4em;
+      color: #4F4F4F;
       text-transform: capitalize; }
     .profile-sidebar .profile-container .placeholder-text {
       color: #BDBDBD; }
@@ -2530,7 +2542,7 @@ footer {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #00AEEF; }
+        color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
         font-family: "Messina Sans Regular";
         font-size: 0.9em;
@@ -2559,7 +2571,7 @@ footer {
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
-        font-size: 1.2em; }
+        font-size: 1.5em; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9em;
@@ -2578,7 +2590,13 @@ footer {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        line-height: 150% !important; }
+        line-height: 150% !important;
+        font-size: 0.9em;
+        color: #4F4F4F; }
+      .profile-sidebar .profile-container .profile-info .makerspaces a,
+      .profile-sidebar .profile-container .profile-info .websites a {
+        color: #00AEEF;
+        font-size: 1.2em; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -2629,10 +2647,11 @@ footer {
           margin-top: 5px; }
       .profile-sidebar .profile-container .profile-info .how p {
         margin-top: 20px; }
+      .profile-sidebar .profile-container .profile-info .topic-tags {
+        color: #828282;
+        font-size: 1.2em; }
     .profile-sidebar .profile-container .report-div .report {
       line-height: 40px; }
-  .profile-sidebar .topic-tags {
-    color: #828282; }
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
@@ -2699,10 +2718,12 @@ footer {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-header .bookmark li {
+.profile-header .stats li {
   padding: 0 10px;
-  height: 24px; }
-  .profile-header .bookmark li:not(:first-of-type) {
+  height: 24px;
+  font-size: 1.1em;
+  color: #4F4F4F; }
+  .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
 .profile-header .profile-share .btn-soft-grey, .profile-header .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
   border: 1px solid #4F4F4F;
@@ -8687,8 +8708,8 @@ img {
   padding-right: 10px; }
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
-    color: #828282;
-    font-size: 12px; }
+    color: #4F4F4F;
+    font-size: 1em; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
@@ -9357,6 +9378,11 @@ img {
     line-height: 100%;
     color: #4F4F4F;
     text-align: center; }
+  .page-search-content .clear-search {
+    position: absolute;
+    top: 10px;
+    z-index: 3;
+    right: 60px; }
 
 #search-input::-ms-expand {
   display: none; }

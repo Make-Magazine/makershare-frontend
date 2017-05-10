@@ -18,6 +18,7 @@ import { MainService } from '../../d7services/main/main.service';
 export class ExploreComponent implements OnInit {
   projects = [];
   categories = null;
+  nameCat;
   view = 'grid';
   pages: number = 0;
   countProject = 0;
@@ -53,6 +54,18 @@ export class ExploreComponent implements OnInit {
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
   }
+<<<<<<< HEAD
+=======
+
+  ChangeClassActive(index, event) {
+    if (event.type == 'mouseover' || event.type == 'click') {
+      this.CurrentActiveParentIndex = index;
+    } else {
+      this.CurrentActiveParentIndex = -1;
+    }
+  }
+
+>>>>>>> 4ed5fb54208a7f16abd55716814a2d9bdccc9620
   getProjects() {
     // show spinner
     this.loaderService.display(true);
@@ -92,7 +105,7 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
       //this.projects= this.projects.concat(data);
-            this.loadMoreVisibilty();
+      this.loadMoreVisibilty();
 
 
       if (this.projects.length == 0) {
@@ -141,6 +154,7 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
     this.ActionName = "Title A-Z"
+    this.getCountProject();
 
     this.getProjects();
   }
@@ -152,6 +166,7 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "title_1"
     this.ActionName = "Title Z-A"
+    this.getCountProject();
 
     this.getProjects();
 
@@ -164,6 +179,7 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "DESC"
     this.sort.sort_by = "created_2"
     this.ActionName = "Most recent"
+    this.getCountProject();
 
     this.getProjects();
 
@@ -175,6 +191,7 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "created_1"
     this.ActionName = "Oldest"
+    this.getCountProject();
 
     this.getProjects();
 
@@ -188,18 +205,20 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
     this.ActionName = "Most liked"
+    this.getCountProject();
 
     this.getProjects();
 
   }
   /* end function to sort challenge MostLiked */
-    /* function to sort challenge mostViewed */
+  /* function to sort challenge mostViewed */
   mostViewed() {
     this.projects = [];
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "php"
     this.ActionName = "Most viewed"
+    this.getCountProject();
 
     this.getProjects();
 
@@ -213,11 +232,21 @@ export class ExploreComponent implements OnInit {
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_total_forks_value";
     this.ActionName = "Most forked"
+    this.getCountProject();
 
     this.getProjects();
 
   }
   /* end function to sort challenge MostLiked */
+  allProject() {
+    this.projects = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC"
+    this.sort.sort_by = "created_2"
+    this.ActionName = "Most recent"
+    this.getCountProject();
+    this.getProjects();
+  }
 
   getProjectCategories() {
     this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
@@ -230,18 +259,18 @@ export class ExploreComponent implements OnInit {
           this.categories_parents.push(element);
         }
       });
-     //  console.log(this.categories_childs);
+      //  console.log(this.categories_childs);
       // console.log(this.categories_parents);          
     });
   }
-  idCategory(id){
-    console.log(id);
-       this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
-           this.countProject=res['_body'].replace(']', '').replace('[', '')
-          console.log(this.countProject)
-      }, err => {
+  idCategory(id,name) {
+    this.nameCat=name;
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
+      this.countProject = res['_body'].replace(']', '').replace('[', '')
+      console.log(this.countProject)
+    }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
-      });
+    });
 
   }//end function
 

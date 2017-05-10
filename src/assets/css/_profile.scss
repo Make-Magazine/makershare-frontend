@@ -191,9 +191,11 @@
             width: 25px;
         }
         .global-title {
+            @include card-header-font-sm();
             margin-bottom: 10px;
             margin-top: 10px;
-            font-size: 1em;
+            font-size: 1.4em;
+            color: $shade-4;
             text-transform: capitalize;
         }
         .placeholder-text {
@@ -272,7 +274,7 @@
             }
             .profile-fullname {
                 @include card-header-font-sm ();
-                color:$blue;
+                color:$shade-4;
             }
             .profile-nickname {
                 @include desc-font-2 ();
@@ -289,7 +291,7 @@
             .profile-describe-yourself {
                 @include desc-font-5 ();
                 color: $shade-4;
-                font-size: 1.2em;
+                font-size: 1.5em;
             }
             .badges {
                 @include desc-font-2 ();
@@ -301,11 +303,20 @@
             .bio {
                 @include desc-font-1 ();
                 line-height: 150% !important;
+                font-size: 0.9em;
+                color: $shade-4;
                 // i {
                 //     font-size: 24px;
                 //     line-height: .75em;
                 //     vertical-align: -15% !important;
                 // }
+            }
+            .makerspaces,
+            .websites {
+                a {
+                    color: $blue;
+                    font-size: 1.2em;
+                }
             }
             .post {}
             .awards {
@@ -379,15 +390,16 @@
                     margin-top: 20px;
                 }
             }
+            .topic-tags {
+                color: $shade-5;
+                font-size: 1.2em;
+            }
         }
         .report-div {
             .report {
                 line-height: 40px;
             }
         }
-    }
-    .topic-tags {
-        color: $shade-5;
     }
     .report {
         font-size: 12px;
@@ -456,6 +468,7 @@
     // overflow: hidden;
     .bookmark {
         ul {
+            
             padding-right: 0;
             margin-bottom: 0px;
             li {
@@ -484,10 +497,12 @@
 }
 
 .profile-header {
-    .bookmark {
+    .stats {
         li {
             padding: 0 10px;
             height: 24px;
+            font-size: 1.1em;
+            color: $shade-4;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
             }
