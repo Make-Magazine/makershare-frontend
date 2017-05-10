@@ -16,11 +16,6 @@
     </ul>
     <div class="dropdown-notification">
       <ul class="list-group">
-        <!--<li class="d-flex justify-content-end">
-          <a class="view-all mr-auto" [routerLink]="['/inbox-notifications']">View All</a>
-          <a class="notf-gear"><i class="lnr lnr-cog float-right p-2" [routerLink]="['/account/settings/notifications']"  aria-hidden="true"></i></a>
-          <a class="notf-Cancel"><i class="lnr lnr-cross float-right p-2" aria-hidden="true"></i></a>
-        </li>  -->
         <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
       </ul>
     </div>
