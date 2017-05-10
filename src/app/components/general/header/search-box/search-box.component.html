@@ -6,6 +6,7 @@
       <form (keydown)="keyDownFunction($event)">
         <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" #searchBox id="search-box-input"/>
         <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
+        <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search" aria-hidden="true"></span>
       </form>
     </div>
   </div>
