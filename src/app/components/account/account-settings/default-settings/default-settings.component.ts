@@ -8,6 +8,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { PmService } from '../../../../d7services/pm/pm.service';
 
 
+
 @Component({
   selector: 'app-default-settings',
   templateUrl: './default-settings.component.html',
@@ -103,7 +104,12 @@ export class defaultSettingsComponent implements OnInit {
   deleteMyAcount(){
     this.userId = localStorage.getItem('user_id');
    this.pm.deleteAcount(this.userId).subscribe(data=>{
-      this.router.navigate(['/']);
+     this.mainService.removeCookies();
+     localStorage.removeItem('id_token');
+     localStorage.removeItem('user_id');
+     localStorage.removeItem('user_name');
+     localStorage.removeItem('user_photo');
+     this.router.navigate(['/']);
    })
   }
 }

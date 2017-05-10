@@ -8937,6 +8937,8 @@ img {
           color: #00AEEF; }
           .page-inbox .inbox-container .messages-list .message-item .wrapper .sender a:hover {
             text-decoration: none !important; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .deleted-user {
+        color: gray !important; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
         width: 92%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
