@@ -18,6 +18,7 @@ import { MainService } from '../../d7services/main/main.service';
 export class ExploreComponent implements OnInit {
   projects = [];
   categories = null;
+  nameCat;
   view = 'grid';
   pages: number = 0;
   countProject = 0;
@@ -238,7 +239,7 @@ export class ExploreComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC"
     this.sort.sort_by = "created_2"
-    this.ActionName = "All Project"
+    this.ActionName = "Most recent"
     this.getCountProject();
     this.getProjects();
   }
@@ -258,8 +259,8 @@ export class ExploreComponent implements OnInit {
       // console.log(this.categories_parents);          
     });
   }
-  idCategory(id) {
-    console.log(id);
+  idCategory(id,name) {
+    this.nameCat=name;
     this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(this.countProject)
