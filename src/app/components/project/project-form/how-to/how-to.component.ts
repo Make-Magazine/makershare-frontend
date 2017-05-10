@@ -16,6 +16,7 @@ import { MainService } from '../../../../d7services/main/main.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 
 declare var CKEDITOR:any;
 @Component({
@@ -311,7 +312,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
         {
           return this.fb.group({
             'field_resources_filename': [data ? data.field_resource_file.und && data.field_resource_file.und[0].filename : ''],
-            'field_repository_link': [data && data.field_repository_link && data.field_repository_link.und ? data.field_repository_link.und[0].url : '', CustomValidators.url],
+            'field_repository_link': [data && data.field_repository_link && data.field_repository_link.und ? data.field_repository_link.und[0].url : '', URLNoProtocol()],
             'field_label': [data && data.field_label? data.field_label.und[0].value : '',Validators.required],
           });
         }
@@ -407,7 +408,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
         'required': 'Resource name is required',
       },
       'field_repository_link': {
-        'url': 'Please enter a valid url, ex: http://example.com.',
+        'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
       },
     }
 
