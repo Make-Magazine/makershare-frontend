@@ -93,7 +93,7 @@
       <h4>There are no projects to show</h4>
     </div>
     <div class="text-center pt-3 pb-5">
-      <div *ngIf="!hideloadmoreproject">
+      <div *ngIf="!hideloadmoreproject && projects.length > 0 ">
         <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
       </div>
     </div>

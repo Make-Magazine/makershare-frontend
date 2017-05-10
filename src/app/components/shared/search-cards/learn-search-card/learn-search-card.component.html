@@ -2,7 +2,7 @@
   <div class="learn-card">
     <div class="image-container hidden-md-down">
       <img *ngIf="learn.cover_photo" src="{{learn.search_image}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
-      <img *ngIf="!learn.cover_photo" src="http://placehold.it/345x195" alt="">
+      <img *ngIf="!learn.cover_photo" src="./assets/images/placeholder.png" alt="">
       <div class="card-type-grey-2">
         <div class="type-layer-2">
           Learning
