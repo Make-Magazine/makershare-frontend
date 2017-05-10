@@ -81,7 +81,7 @@ export class ExploreComponent implements OnInit {
     //     ()=>console.log("compleate")
     //   );
     /* end obs*/
-    this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
+    this.viewService.getView('browse_projects', [['page', this.pages],['sort_by',this.sort.sort_by],['sort_order',this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
       this.loadMoreVisibilty();
       // hide spinner
@@ -101,7 +101,7 @@ export class ExploreComponent implements OnInit {
     this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
       this.projects = data;
       //this.projects= this.projects.concat(data);
-      this.loadMoreVisibilty();
+    //  this.loadMoreVisibilty();
 
 
       if (this.projects.length == 0) {
@@ -134,8 +134,11 @@ export class ExploreComponent implements OnInit {
     // get the challenges array count
     // this.getCountProject();
     console.log(this.countProject)
+    console.log(this.projects.length)
     if (this.countProject == this.projects.length) {
       this.hideloadmoreproject = true;
+      
+      
 
     } else if (this.countProject > this.projects.length) {
       //  setTimeout(10000);
