@@ -23,6 +23,7 @@ export class ExploreComponent implements OnInit {
   countProject = 0;
   hideloadmoreproject = true;
   CurrentActiveParentIndex = -1;
+  CurrentActiveChildIndex = -1;
   page_arg;
   sort: ISorting = {
     sort_by: "created_2",
@@ -52,15 +53,6 @@ export class ExploreComponent implements OnInit {
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
   }
-
-  ChangeClassActive(index,event){
-    if(event.type == 'mouseover' || event.type == 'click'){
-      this.CurrentActiveParentIndex = index;
-    }else{
-      this.CurrentActiveParentIndex = -1;
-    }
-  }
-
   getProjects() {
     // show spinner
     this.loaderService.display(true);
