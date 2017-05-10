@@ -31,4 +31,22 @@ export class NodeService {
   DeleteNode(nid): Observable<any>{
   	return this.mainService.delete(globals.endpoint + '/node/' + nid).map(res => res.json()).catch(err => Observable.throw(err));
   }
+
+  getIdFromUrl(url: string, type: string): Observable<any>{
+    let body = {
+      url: url,
+      type: type,
+    }
+    return this.mainService.post(globals.endpoint + '/maker_urls/get_id', body).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+  getUrlFromId(nid: number, type: string): Observable<any>{
+    let body = {
+      nid: nid,
+      type: type,
+    }
+    return this.mainService.post(globals.endpoint + '/maker_urls/get_url', body).map(res => res.json()).catch(err => Observable.throw(err));
+  }
+
+
 }
