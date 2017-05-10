@@ -351,6 +351,12 @@
 		 @include header-font();
 		 text-align: center;
 	}
+	.clear-search {
+		position: absolute;
+    top: 10px;
+    z-index: 3;
+    right: 60px;
+	}
 }
 
 #search-input::-ms-expand {
