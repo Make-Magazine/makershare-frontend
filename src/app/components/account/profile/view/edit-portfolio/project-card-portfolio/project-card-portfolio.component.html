@@ -35,7 +35,7 @@
         </div>
         <div class="d-flex flex-row">
           <div class="profiel-pic-container mr-2">
-            <img *ngIf="!projectCard.maker_photo" src="http://placehold.it/80x80" alt="">
+            <img *ngIf="!projectCard.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
           </div>
           <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.nid)">

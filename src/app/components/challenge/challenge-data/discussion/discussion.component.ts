@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommentComponent } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-discussion',
