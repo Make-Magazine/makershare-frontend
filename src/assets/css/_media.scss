@@ -558,29 +558,26 @@
             }
         }
     }
-		$showcase-height:250px;
-		.showcase-card-backlayer-home {
-				height: $showcase-height;
-				.showcase-card-backlayer-home-2 {
-						height: $showcase-height;
-				}
-				.showcase-card {
-						height: $showcase-height;
-						.card-container {
-								.card-title {
-								}
-								.card-description {
-										p {
+    $showcase-height:250px;
+    .showcase-card-backlayer-home, .showcase-card-backlayer-mobile {
+            min-height: 350px;
+                margin-bottom: 26px;
+            .showcase-card-backlayer-home-2, .showcase-card-backlayer-mobile-2 {
+                    min-height: 350px;
+            }
+            .showcase-card {
+                    min-height: 350px;
+                    .card-container {
+                            .card-title {
+                            }
+                            .card-description {
+                                    p {
 
-										}
-								}
-						}
-				}
-		}
-		.front {
-			
-			
-	}
+                                    }
+                            }
+                    }
+            }
+    }
 }
 
 @media only screen and (max-width: 768px) {
