@@ -451,7 +451,7 @@ export class ProfileComponent implements OnInit {
     this.buildFormSocial();
     this.AssignParentChildInterests();
     for (let social in this.ProfileInfo.field_social_accounts) {
-      if ((social != 'field_website_or_blog' || social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
+      if ((social != 'field_website_or_blog' && social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
         this.emptySocial = false;
       }
     }
