@@ -327,6 +327,7 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
+    closebtn.click(); 
     if (this.FormGroupSocial.valid) {
       this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;
     }
@@ -335,14 +336,28 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.bio = this.formGroup.value.bio;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
-    }
-    // this.ReSetAddressValues();
-    if(this.ProfilePicData.image){
-      this.SaveImage();
+      this.viewService.getView("api_makerspaces").subscribe(makerspaces=>{
+        this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace,index)=>{
+          let foundindex:number = makerspaces.map(element=>element.title).indexOf(makerspace.field_makerspace_name);
+          if(foundindex != -1){
+            this.ProfileInfo.field_add_your_makerspace_s_[index].id = makerspaces[foundindex].id;
+          }else{
+            this.ProfileInfo.field_add_your_makerspace_s_[index].id = 0;
+          }
+        });
+        if(this.ProfilePicData.image){
+          this.SaveImage();
+        }else{
+          this.SaveUser(this.ProfileInfo);
+        }
+      });
     }else{
-      this.SaveUser(this.ProfileInfo);
-    }
-    closebtn.click();    
+      if(this.ProfilePicData.image){
+        this.SaveImage();
+      }else{
+        this.SaveUser(this.ProfileInfo);
+      }
+    }   
   }
   SaveUser(user: UserProfile) {
     user.uid = this.uid;
@@ -362,15 +377,15 @@ export class ProfileComponent implements OnInit {
     let MakerspaceGroup: FormGroup = this.fb.group({
       field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
       field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', URLNoProtocol()],
-      id: [makerspace ? makerspace.id : '', Validators.required]
+      id: [makerspace ? makerspace.id : 0, Validators.required]
     });
     control.push(MakerspaceGroup);
   }
   BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-      bio: [this.ProfileInfo.bio, Validators.maxLength(140)],
-      started_making: [this.ProfileInfo.started_making, Validators.maxLength(300)],
+      bio: [this.ProfileInfo.bio, Validators.maxLength(300)],
+      started_making: [this.ProfileInfo.started_making, Validators.maxLength(140)],
       field_add_your_makerspace_s_: this.fb.array([]),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
