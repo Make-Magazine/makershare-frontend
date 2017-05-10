@@ -127,7 +127,7 @@ export class ExploreComponent implements OnInit {
     // this.getCountProject();
     console.log(this.countProject)
     console.log(this.projects.length)
-    if (this.countProject == this.projects.length) {
+    if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
       
       
