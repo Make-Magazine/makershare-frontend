@@ -133,9 +133,9 @@ export class ProfileComponent implements OnInit {
   };
   PlaceholderText = {
     nickname: 'Do you use a nickname?',
-    address: 'Where do you live',
+    address: 'Where do you live?',
     bio: 'Share something about your background',
-    describe_yourself: 'What is your motto as a Maker',
+    describe_yourself: 'What is your motto as a Maker?',
     social:'What social accounts do you use?',
     maker_space: 'Do you belong to any makerspaces?',
     websites:'Include your other websites',
