@@ -54,18 +54,6 @@ export class ExploreComponent implements OnInit {
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
   }
-<<<<<<< HEAD
-=======
-
-  ChangeClassActive(index, event) {
-    if (event.type == 'mouseover' || event.type == 'click') {
-      this.CurrentActiveParentIndex = index;
-    } else {
-      this.CurrentActiveParentIndex = -1;
-    }
-  }
-
->>>>>>> 4ed5fb54208a7f16abd55716814a2d9bdccc9620
   getProjects() {
     // show spinner
     this.loaderService.display(true);
