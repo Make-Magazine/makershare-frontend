@@ -2076,6 +2076,9 @@ footer {
   max-width: 350px;
   max-height: 408px; }
 
+.deleted-user {
+  color: gray !important; }
+
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;

@@ -1,5 +1,5 @@
 <div class="profile-page profile-empty-edit">
-	<div *ngIf="profile">
+	<div *ngIf="profile && profile.status == 'active'">
 		<section class="container-fluid cover-region">
 		</section>
 
@@ -126,7 +126,7 @@
 								<div  class="hideData">
 									<a (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">Social</p>
-									<p class="placeholder-text" *ngIf="!emptySocial">{{PlaceholderText.social}}</p>
+									<p class="placeholder-text" *ngIf="emptySocial">{{PlaceholderText.social}}</p>
 									<div class="social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
