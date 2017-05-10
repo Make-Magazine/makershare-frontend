@@ -5,7 +5,7 @@
     <div class="media hidden-sm-down">
       <div class="image-container d-flex mr-3">
         <img class="" *ngIf="award.photo" src="{{award.photo}}" alt="{{award.award_name}}">
-        <img class="" *ngIf="!award.photo" src="http://placehold.it/120x120" alt="{{award.award_name}}">
+        <img class="" *ngIf="!award.photo" src="./assets/images/placeholder.png" alt="{{award.award_name}}">
       </div>
       <div class="media-body">
         <h5 class="mt-0 name" *ngIf="award.award_name && award.number_winners">{{award.award_name}} ({{award.number_winners}})</h5>
@@ -17,7 +17,7 @@
     <div class="hidden-md-up row">
       <div class="image-container col-sm-12 p-0">
         <img class="" *ngIf="award.photo" src="{{award.photo}}" alt="{{award.award_name}}">
-        <img class="" *ngIf="!award.photo" src="http://placehold.it/120x120" alt="{{award.award_name}}">
+        <img class="" *ngIf="!award.photo" src="./assets/images/placeholder.png" alt="{{award.award_name}}">
       </div>
       <div class="image-container col-sm-12 p-0 mt-2">
         <h5 class="mt-0 name" *ngIf="award.award_name && award.number_winners">{{award.award_name}} ({{award.number_winners}})</h5>

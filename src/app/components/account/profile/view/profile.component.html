@@ -701,8 +701,7 @@
 									<div class="form-group row">
 										<div class="row col-md-12">
 											<div class="col-md-4">
-												<input class="form-control" type="text" formControlName="field_makerspace_name" [ngbTypeahead]="SearchMakerspace" [resultTemplate]="ms"
-												 (selectItem)="SelectMakerspace(i,$event)" placeholder="Makerspace Name">
+												<input class="form-control" type="text" formControlName="field_makerspace_name" placeholder="Makerspace Name">
 											</div>
 											<div class="col-md-4">
 												<input add-protocol [ngClass]="{valError: !formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid}"
@@ -840,11 +839,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</template>
-
-<template #ms let-r="result" let-t="term">
-	<div class="data-container-makerspace">
-		{{r.title}}
 	</div>
 </template>
