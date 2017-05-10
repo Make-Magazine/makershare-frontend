@@ -408,7 +408,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
         'required': 'Resource name is required',
       },
       'field_repository_link': {
-        'url': 'Please enter a valid url, ex: http://example.com.',
+        'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
       },
     }
 

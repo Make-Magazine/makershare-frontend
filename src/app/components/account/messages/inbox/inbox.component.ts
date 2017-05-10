@@ -79,7 +79,7 @@ export class InboxComponent implements OnInit {
     }
     this.pm.getInboxOrSent('maker_get_pm_author/retrieve_inbox_msgs', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
-      // console.log(data);
+      console.log(data);
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
@@ -119,9 +119,9 @@ export class InboxComponent implements OnInit {
             // msg_arr[i].last_updated = this.dateObj.toLocaleDateString();
             msg_arr[i].last_updated = msg_arr[i].date_format;
           }
-        //  if(Object.keys(msg_arr[i].participants).length > 2){
+         if(Object.keys(msg_arr[i].participants).length > 2){
             msg_arr[i].count = Object.keys(msg_arr[i].participants).length;
-          //}
+          }
           i++
         }
       }
