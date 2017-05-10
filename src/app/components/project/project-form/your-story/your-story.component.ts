@@ -13,6 +13,7 @@ import { MetaService } from '@nglibs/meta';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 
 declare var CKEDITOR:any;
 @Component({
@@ -81,8 +82,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   }
   CKEditorConfig = {
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
-    imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
-    filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
+    // filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
   }
   
   /**
@@ -191,7 +192,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'title': [this.project.title, [Validators.required, Validators.minLength(4), Validators.maxLength(50),CustomValidators.notEqual('Untitled'),CustomValidators.notEqual('untitled')]],
       'field_teaser': [this.project.field_teaser.und[0].value, [Validators.required,Validators.maxLength(250)]],
       'field_cover_photo': [this.cover_image, [Validators.required]],
-      'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url]],
+      'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [CustomValidators.url,YoutubeOrVimeoLink()]],
       'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
       'field_uh_oh_moment': [this.project.field_uh_oh_moment.und[0].value, []],
@@ -370,6 +371,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     },
     'field_show_tell_video': {
       'url': 'Please enter a valid url, ex: http://example.com.',
+      'youtubeorvimeolink': 'Only Youtube and Vimeo are supported.'
     },
     'field_story': {
       'required': 'Story is required.'

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild, EventEmitter, Output } from '@angular/core';
 import { PmService } from '../../../../d7services/pm/pm.service'
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +17,7 @@ import { LoaderService } from '../../../shared/loader/loader.service';
   templateUrl: './inbox-notifications.component.html'
 })
 export class InboxNotificationsComponent implements OnInit {
-
+  //  @Output() myEvent = new EventEmitter();
   formatter = (x) => {
     return '';
   };
@@ -32,7 +32,7 @@ export class InboxNotificationsComponent implements OnInit {
     body: '',
   };
   msg = [];
-    closeResult: string;
+  closeResult: string;
   noMessage= false;
   hideTurnOn: boolean = false;
   status;
@@ -100,6 +100,7 @@ export class InboxNotificationsComponent implements OnInit {
   }
   onSubmit(e) {
     e.preventDefault();
+    this.current_active_tab = 'message';  
     this.loaderService.display(true);
     if (this.messageForm.valid) {
       var str: string = '';
@@ -112,11 +113,12 @@ export class InboxNotificationsComponent implements OnInit {
       this.messageObj.subject = this.messageForm.value.subject;
       this.messageObj.body = this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => { 
-        this.current_active_tab = 'sent';        
+              
         this.loaderService.display(false);
         this.msg = [];
         if(this.msg.length == 0){
         this.noMessage = false;
+        this.current_active_tab = 'sent';  
       }
         this.messageForm.reset();
         this.SelectedUser = [];

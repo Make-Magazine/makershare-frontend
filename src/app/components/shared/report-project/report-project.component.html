@@ -2,7 +2,7 @@
   <a class="report" *ngIf="!isReported" (click)="open(content)">Report this Project</a>
   <p *ngIf="isReported"> Project has been reported </p>
 </div>
-<template id="model" #content let-c="close" let-d="dismiss" ngbModalContainer>
+<template id="model" #content let-c="close" let-d="dismiss">
   <div class="modal-report">
     <div class="modal-header">
     </div>

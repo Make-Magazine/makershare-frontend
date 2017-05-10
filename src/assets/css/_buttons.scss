@@ -226,7 +226,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
  {
     margin-left: 3px;
     display: inline-block;
-    width: 144px;
+    width: 143px;
     .btn {
         @extend .displace;
         padding: 15px 0px;
@@ -314,26 +314,6 @@ a:not([href]):not([tabindex]) {
         border-color:transparent;
     }
 }
-.btn-vote,
-a:not([href]):not([tabindex]).btn-vote {
-    @include card-header-font-sm ();
-    color: $text-color-1;
-    background: #fff;
-    border: 0.5px solid $text-color-1;
-    padding: 15px 0px;
-    width: 180px;
-    margin: 0 auto;
-    text-align: center;
-    transition: background-color 0.5s ease;
-    &:focus, &:active, &:hover , &.active {
-        color: #FFF;
-        background-color: $btn-primary-2;
-        box-shadow: none;
-        border: 1px solid;
-
-    }
-}
-
 .btn-load-more,
 a:not([href]):not([tabindex]).btn-load-more{
     background-color:$site-bg;
@@ -351,73 +331,6 @@ a:not([href]):not([tabindex]).btn-load-more{
     //     background-color: $main-button-1*0.9;
     //     border-color: $main-button-1*0.8;
     // }
-}
-
-.btn-grey,a:not([href]):not([tabindex]).btn-grey{
-    color: $shade-4;
-    background-color: $button-light-grey;
-    border-color: $button-light-grey*0.9;
-    border-radius: 0;
-    font-size: 1.2em;
-    padding: 10px 15px;
-    margin-left: 5px;
-    &:focus ,&:active, &:hover {
-        color: $white;
-        background-color: $button-dark-grey*0.9;
-        border-color: $button-dark-grey*0.8;
-    }
-    &.disabled {
-        color: $shade-2;
-        border: 0.5px solid $shade-2;
-        background-color: $white;        
-    }
-    // {
-    //     color: #fff;
-    //     background-color: $main-grey*0.6;
-    //     border-color: $main-grey*0.6;
-    // }
-}
-
-.btn-advance,a:not([href]):not([tabindex]).btn-advance{
-    color: $shade-4;
-    background-color: none;
-    border-color: $button-light-grey*0.9;
-    border-radius: 0;
-    font-size: 2.4em;
-    border: 0.5px solid $shade-4;    
-    // padding: 15px;
-    width: 50px;
-    height: 50px;
-    margin-left: 5px;
-    &:hover {
-        background-color:$white;
-        border-color: $button-dark-grey*0.8;
-    }
-    &.disabled {
-        opacity: 0.5;
-    }
-    i {
-        text-align: center;
-        margin-left: -7px;
-    }
-}
-
-.btn-tab,a:not([href]):not([tabindex]).btn-tab {
-    border-radius: 0;
-    font-size: 1.2em;
-    padding: 9px 30px 25px 30px;
-    // width: 115px;
-    height: 35px;
-    color: #BDBDBD;
-    background-color: inherit;
-    &:focus {    
-        color: #4f4f4f;
-    }	
-    &:active, &:hover, &.active {
-        cursor: pointer;
-        color: #4f4f4f;
-        border-bottom: 5px solid $blue;
-    }
 }
 
 .form-textarea {
@@ -442,5 +355,141 @@ a:not([href]):not([tabindex]).btn-load-more{
     }
     &:focus {
         border: none;
+    }
+}
+
+// Vote Button
+.btn-vote,
+a:not([href]):not([tabindex]).btn-vote {
+    @include card-header-font-sm ();
+    color: $text-color-1;
+    background: #fff;
+    border: 0.5px solid $text-color-1;
+    padding: 15px 0px;
+    width: 180px;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    &:focus, &:active, &:hover , &.active {
+        color: #FFF;
+        background-color: $btn-primary-2;
+        box-shadow: none;
+        border: 1px solid;
+
+    }
+}
+
+// Tabs switching blue bottom border button
+.btn-tab,a:not([href]):not([tabindex]).btn-tab {
+    border-radius: 0;
+    font-size: 1.2em;
+    padding: 9px 30px 25px 30px;
+    // width: 115px;
+    height: 35px;
+    color: #BDBDBD;
+    background-color: inherit;
+    &:focus {    
+        color: #4f4f4f;
+    }	
+    &:active, &:hover, &.active {
+        cursor: pointer;
+        color: #4f4f4f;
+        border-bottom: 5px solid $blue;
+    }
+}
+
+// Prev and Next button
+.btn-advance,a:not([href]):not([tabindex]).btn-advance{
+    color: $shade-4;
+    background-color: none;
+    border-color: $button-light-grey*0.9;
+    border-radius: 0;
+    font-size: 2.4em;
+    border: 0.5px solid $shade-4;    
+    // padding: 15px;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    &:hover {
+        background-color:$white;
+        border-color: $button-dark-grey*0.8;
+    }
+    &.disabled {
+        opacity: 0.5;
+    }
+    i {
+        text-align: center;
+        margin-left: -7px;
+    }
+}
+
+// Grey Button
+.btn-grey,a:not([href]):not([tabindex]).btn-grey{
+    color: $shade-4;
+    background-color: $button-light-grey;
+    border-color: $button-light-grey*0.9;
+    border-radius: 0;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    margin-left: 5px;
+    &:focus ,&:active, &:hover {
+        color: $white;
+        background-color: $button-dark-grey*0.9;
+        border-color: $button-dark-grey*0.8;
+    }
+    &.disabled {
+        color: $shade-2;
+        border: 0.5px solid $shade-2;
+        background-color: $white;        
+    }
+}
+
+// Simple Button Small 
+.btn-simple-small,a:not([href]):not([tabindex]).btn-simple-small{
+    height: 35px;
+    min-width: 100px;
+    font-size: 1em;
+    color: $shade-4;
+    text-align: center;
+    border: 0.2px solid $shade-4;
+    background-color: $white;    
+    &:hover,&.active,&:active,&:focus {
+        color: $white;
+        background-color: $shade-4;
+        border: none;
+    }
+}
+
+// Simple Button Large 
+.btn-simple-large,a:not([href]):not([tabindex]).btn-simple-large{
+    height: 35px;
+    min-width: 180px;
+    font-size: 1.3em;
+    color: $shade-4;
+    text-align: center;
+    border: 0.2px solid $shade-4;
+    background-color: $white;    
+    &:hover,&.active,&:active,&:focus {
+        color: $white;
+        background-color: $shade-4;
+        border: none;
+    }
+}
+
+
+// Save Button
+.btn-save,
+a:not([href]):not([tabindex]).btn-save {
+    @include card-header-font-sm ();
+    color: #fff;
+    background-color: $btn-primary-2;
+    // border: 0.5px solid $text-color-1;
+    padding: 15px 0px;
+    min-width: 180px;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    &:focus, &:active, &:hover , &.active {
+        background-color:$btn-primary-2*0.8
     }
 }

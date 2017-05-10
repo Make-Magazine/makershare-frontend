@@ -59,7 +59,8 @@
           <div class="results-header d-flex justify-content-end  mb-3">
             <div class="result-title mr-auto"><span>Projects</span></div>
             <div class="view-all-result">
-              <span>{{projectsCount}} Results</span>
+              <span *ngIf="projectsCount > 1">{{projectsCount}} Results</span>
+              <span *ngIf="projectsCount == 1">{{projectsCount}} Result</span>                
               <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | View All</a></div>
           </div>
           <div class="row projects-result">
@@ -73,7 +74,8 @@
           <div class="results-header d-flex justify-content-end  mb-3">
             <div class="result-title mr-auto"><span>Showcases</span></div>
             <div class="view-all-result">
-              <span>{{showcasesCount}} Results</span>
+              <span *ngIf="showcasesCount > 1">{{showcasesCount}} Results</span>
+              <span *ngIf="showcasesCount == 1">{{showcasesCount}} Result</span>              
               <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | View All</a></div>
           </div>
           <div class="row projects-result">
@@ -87,7 +89,8 @@
           <div class="results-header d-flex justify-content-end  mb-3">
             <div class="result-title mr-auto"><span>Challenges</span></div>
             <div class="view-all-result">
-              <span>{{challengesCount}} Results</span>
+              <span *ngIf="challengesCount > 1">{{challengesCount}} Results</span>
+              <span *ngIf="challengesCount == 1">{{challengesCount}} Result</span>
               <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | View All</a></div>
           </div>
           <div class="row projects-result">
@@ -101,7 +104,8 @@
           <div class="results-header d-flex justify-content-end  mb-3">
             <div class="result-title mr-auto"><span>Workshops</span></div>
             <div class="view-all-result">
-              <span>{{workshopsCount}} Results</span>
+              <span *ngIf="workshopsCount > 1">{{workshopsCount}} Results</span>
+              <span *ngIf="workshopsCount == 1">{{workshopsCount}} Result</span>               
               <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | View All</a></div>
           </div>
           <div class="row projects-result">
@@ -114,7 +118,8 @@
           <div class="results-header d-flex justify-content-end mb-3">
             <div class="result-title mr-auto"><span>Makers</span></div>
             <div class="view-all-result">
-              <span>{{usersCount}} Results</span>
+              <span *ngIf="usersCount > 1">{{usersCount}} Results</span>
+              <span *ngIf="usersCount == 1">{{usersCount}} Result</span>
               <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | View All</a></div>
           </div>
           <div class="row projects-result">

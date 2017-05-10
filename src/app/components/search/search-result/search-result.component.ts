@@ -116,9 +116,9 @@ export class SearchResultComponent implements OnInit {
 
     this.searchTerm = this.query;
 
-    // projects
+    // projectsis_status:1
     if(this.filter.projects || this.selectedAll == true){
-      console.log('projects request');
+      
       this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
         this.projects = [];
         this.projects = result.response.docs;
@@ -131,7 +131,7 @@ export class SearchResultComponent implements OnInit {
     
     // challenges
     if(this.filter.challenges || this.selectedAll == true){
-      console.log('challenge request');
+      
       this.solrService.selectChallenges(this.query, this.challengesCountQuery).subscribe(result => {
         this.challenges = [];
         this.challenges = result.response.docs;
@@ -144,7 +144,7 @@ export class SearchResultComponent implements OnInit {
 
     // showcases
     if(this.filter.showcases || this.selectedAll == true){
-      console.log('showcases request');
+  
       this.solrService.selectShowcases(this.query, this.showcasesCountQuery).subscribe(result => {
         this.showcases = [];
         this.showcases = result.response.docs;
@@ -157,7 +157,7 @@ export class SearchResultComponent implements OnInit {
 
     // workshops
     if(this.filter.learning || this.selectedAll == true){
-      console.log('learning request');
+     
       this.solrService.selectworkshops(this.query, this.workshopsCountQuery).subscribe(result => {
         this.workshops = [];
         this.workshops = result.response.docs;
@@ -170,7 +170,7 @@ export class SearchResultComponent implements OnInit {
     
     // users
     if(this.filter.makers || this.selectedAll == true){
-      console.log('makers request');
+
       this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(result => {
         this.users = [];
         this.users = result.response.docs;
@@ -184,8 +184,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   CheckFilter(event){
-    console.log('check');
-    console.log(this.filter);
 
     if(this.filter.projects == true){
       this.selectedAll = false;

@@ -471,19 +471,19 @@ footer {
     }
 }
 .slick-slide {
-    width: auto !important;
+    // width: auto !important;
 }
 .slick-track {
-    min-height: 150px;
-    max-height: 170px;
+    // min-height: 150px;
+    // max-height: 170px;
     img {
-       height: auto !important;;
-       width: 100% !important;
+    //    height: auto !important;;
+    //    width: 100% !important;
     }
 }
 .carousel-img-container {
-    width: 263px !important;
-    height: 210px !important;
+    // width: 281px !important;
+    // height: 225px !important;
 }
 
 
@@ -518,8 +518,8 @@ footer {
 /* Notification menue in header */
 .dropdown-notification{
     width: 330px;
-    height: 380px;
+    height: 408px;
     overflow-y: auto;
     max-width: 350px;
-    max-height: 380px;
+    max-height: 408px;
 }

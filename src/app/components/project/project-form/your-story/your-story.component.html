@@ -1,4 +1,4 @@
-<div class="region region-content col-sm-8" [formGroup]="YourStoryForm">
+<div class="region region-content col-md-8" [formGroup]="YourStoryForm">
   <div class="your-story">
     <p class="red-text">* Fileds required to publish</p>
     <div class="form-group required projectName">
@@ -46,16 +46,16 @@
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down"></i>
           <select #parentcategory [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}"
-            class="form-control" type="text" class="form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
-            <option disabled selected value="_none_" > Select Topics </option>
+            class="form-control" type="text" class="shadowed form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
+            <option disabled selected value="_none_"> Select Topics </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
           </select>
         </div>
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="current_parent_category"></i>
           <select [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category"
-            class="form-control" type="text" class="form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
-            <option disabled selected value > Select Topic </option>
+            class="form-control" type="text" class="shadowed form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
+            <option disabled selected value> Select Topic </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
             </select>
         </div>
@@ -90,10 +90,10 @@
     <div class="form-group show-tell">
       <label for="show-tell">Add Video: Show &amp; Tell</label>
       <input [ngClass]="{valError: formErrors.field_show_tell_video}" type="text" class="form-control" id="show-tell" placeholder="Add a YouTube or Vimeo URL"
-        formControlName='field_show_tell_video'>
-      <!--<div *ngIf="formErrors.field_show_tell_video" class="alert alert-danger error-msg">
+        formControlName='field_show_tell_video' add-protocol>
+      <div *ngIf="formErrors.field_show_tell_video" class="alert alert-danger error-msg">
         {{ formErrors.field_show_tell_video }}
-      </div>-->
+      </div>
     </div>
     <div class="form-group show-tell-as-default" *ngIf="!formErrors.field_show_tell_video && YourStoryForm.controls.field_show_tell_video.value">
       <label class="custom-control custom-checkbox" for="show-tell-as-default">
@@ -121,7 +121,7 @@
 </div>
 <!--side bar help text-->
 <aside class="col-md-4">
-  <div class="your-story-guide">
+  <div class="your-story-guide hidden-sm-down">
     <h2 class="col-12">Helpful Hints</h2>
     <br>
     <div class="guideline">
@@ -163,6 +163,7 @@
         <div class="embed-responsive">
           <video-viewer [link]="showAndTellLink"></video-viewer>
         </div>
+        <span class="pt-2">--links coming soon-</span>
       </div>
     </div>
     <!--<div class="guideline">
@@ -182,7 +183,7 @@
 </aside>
 
 <!--Cover image modal-->
-<template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #coverimagemodal let-c="close" let-d="dismiss">
   <div class="upload-cover-modal">
 
 

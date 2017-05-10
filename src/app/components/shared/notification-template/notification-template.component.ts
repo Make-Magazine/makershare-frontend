@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Notification } from '../../../models';
 import { MainService } from '../../../d7services/main/main.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { PmService } from '../../../d7services/pm/pm.service';
 
 @Component({
   selector: 'notification-tpl',
@@ -18,11 +19,11 @@ export class NotificationTemplateComponent implements OnInit {
   constructor(
     private router: Router,
     private mainService:MainService,
-    private userService:UserService
+    private userService:UserService,
+    private pm: PmService,
   ) { }
 
   ngOnInit() {
-    
   }
 
   MarkAsSeen(seen){
@@ -78,5 +79,9 @@ export class NotificationTemplateComponent implements OnInit {
     // when you have the type, you can get the correct path, then route.
   }
 
-
+  deleteNotifications(){
+   this.pm.deleteNotification(this.notification.mid).subscribe(data=>{
+      delete this.notification;
+   })
+  }
 }

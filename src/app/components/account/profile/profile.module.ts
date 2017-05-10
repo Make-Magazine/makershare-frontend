@@ -18,6 +18,7 @@ import { DndModule } from 'ng2-dnd';
 import { RouterModule } from '@angular/router';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
 import { Ng2FileDropModule } from 'ng2-file-drop';
+
 //import { MetaModule } from '@nglibs/meta';
 // import { PipeModule } from '../../../pipes/custom-pipes.module';
 

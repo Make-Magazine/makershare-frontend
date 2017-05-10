@@ -24,7 +24,7 @@ export class VideoViewerComponent implements OnInit {
     if(this.link.indexOf('youtube') != -1){
       this.type = 'youtube';
       this.VideoId = this.youtube_parser(this.link);
-      let html = '<iframe src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" class="embed-responsive-item"></iframe>';
+      let html = '<iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" class="embed-responsive-item"></iframe>';
       this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(html);
     }else if(this.link.indexOf('vimeo') != -1){
       this.type = 'vimeo';

@@ -96,7 +96,7 @@
                     <div class="form-group" *ngIf="enterStatus==true">
                       <select *ngIf="createProject=='newproject'" class="form-control" #item (change)="updateSelectedProject($event)">
                     
-                      <option *ngFor="let p of projects" [value]="p.nid">{{p.project_name}}</option>
+                      <option *ngFor="let p of projects" [value]="p.nid" [class.hidden]="submittedBefore">{{p.project_name}}</option>
                      </select>
                        <select *ngIf="createProject === 'undefined'" class="form-control" #item (change)="updateSelectedProject($event)">
                     <option   [value]="none" disabled>Select a project</option>
@@ -108,8 +108,8 @@
                         <span class="btn btn-main-2 w-100" (click)="onCancel()">Cancel</span>
                       </div>
 
-                      <div class="button-container-main-1 w-50">
-                        <span class="btn btn-main w-100" *ngIf="enterStatus==true" (click)="open(content)">Submit</span>
+                      <div class="button-container-main-1 w-50" *ngIf="enterStatus==true">
+                        <span class="btn btn-main w-100"  (click)="open(content)" [attr.disabled]="submittedBefore">Submit</span>
                       </div>
                     </div>
                   </form>
@@ -130,7 +130,7 @@
   </div>
   <!-- End row -->
 </div>
-<template #content let-c="close" let-d="dismiss" ngbModalContainer>
+<template #content let-c="close" let-d="dismiss">
   <div class="challenge-enter-modal">
     <div class="modal-header">
       <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">

@@ -53,7 +53,7 @@
   <!-- Trigger the modal with a button -->
   <!-- Modal -->
 
-  <template #content let-c="close" let-d="dismiss" ngbModalContainer>
+  <template #content let-c="close" let-d="dismiss">
     <div class="create-newmsg">
       <div class="modal-header">
         <button type="button" class="close ml-auto" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
@@ -90,9 +90,10 @@
         </form>
       </div>
       <div class="modal-footer mt-auto">
-        <button href="" class="btn btn-load-more" (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
+        <button href="" class="btn btn-load-more"  (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
         <button type="submit" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
       </div>
     </div>
   </template>
 </div>
+
