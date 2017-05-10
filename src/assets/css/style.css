@@ -1375,7 +1375,8 @@ body {
         cursor: pointer; }
 
 #search-box-layer .close-search-layer,
-#search-box-layer .go-search {
+#search-box-layer .go-search,
+#search-box-layer .clear-search {
   position: absolute;
   color: #fff;
   font-size: 2em;
@@ -1386,6 +1387,10 @@ body {
 #search-box-layer .go-search {
   top: 7px;
   right: -40px; }
+#search-box-layer .clear-search {
+  top: 13px;
+  right: 5px;
+  font-size: 1em; }
 
 /* forms valid-errors */
 .valError {
@@ -1537,7 +1542,8 @@ ngb-typeahead-window.dropdown-menu {
         .dropdown-notification ul .notification-container .notification-item .media-body p {
           margin: 2px 0px 0px 0px; }
       .dropdown-notification ul .notification-container .notification-item .delete {
-        padding-top: 14px; }
+        padding-top: 14px;
+        display: none; }
       .dropdown-notification ul .notification-container .notification-item .link {
         color: #00AEEF; }
         .dropdown-notification ul .notification-container .notification-item .link:hover {
@@ -1611,6 +1617,66 @@ i.dropdownIcon {
   right: 26px;
   top: 14px;
   pointer-events: none; }
+
+.registration-page .name-section {
+  font-weight: bold;
+  color: red;
+  font-size: 16px; }
+.registration-page .search-form-group {
+  padding-top: 100px; }
+  .registration-page .search-form-group .header-title {
+    text-align: center;
+    width: 700px;
+    margin: 90px auto 0; }
+    .registration-page .search-form-group .header-title h2 {
+      font-family: "Messina Modern Regular";
+      font-size: 3.4em;
+      font-weight: 400;
+      text-transform: capitalize;
+      line-height: 100%;
+      color: #4F4F4F;
+      text-transform: none;
+      color: white; }
+    .registration-page .search-form-group .header-title p {
+      font-family: "Messina Sans Regular";
+      font-size: 1.3em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 110%;
+      color: #828282;
+      color: #fff; }
+  .registration-page .search-form-group form {
+    width: 650px;
+    margin: auto; }
+    .registration-page .search-form-group form input {
+      width: 48%;
+      font-style: italic; }
+      .registration-page .search-form-group form input.save-button {
+        width: 180px;
+        height: 40px;
+        margin-top: auto;
+        background: transparent;
+        color: white;
+        border: 2px solid grey;
+        font-style: normal; }
+.registration-page .form-design {
+  display: block;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center; }
+.registration-page #search-box-layer {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(25, 25, 25, 0.9);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
 
 .front {
   background-color: #F2F2F2; }
@@ -1984,20 +2050,6 @@ footer {
   color: #BDBDBD;
   clear: both; }
 
-.slick-slide {
-  width: auto !important; }
-
-.slick-track {
-  min-height: 150px;
-  max-height: 170px; }
-  .slick-track img {
-    height: auto !important;
-    width: 100% !important; }
-
-.carousel-img-container {
-  width: 263px !important;
-  height: 210px !important; }
-
 /* User card msg on inbox msg component */
 .user-card-msg .profile-pic-container {
   position: relative; }
@@ -2121,7 +2173,7 @@ footer {
   padding: 40px 0; }
   .banner #homeBanner {
     padding: 0 15px;
-    max-width: 500px;
+    max-width: 600px;
     text-transform: uppercase; }
     .banner #homeBanner h2 {
       font-family: 'Open Sans', sans-serif;
@@ -2327,10 +2379,6 @@ footer {
       .parallax-red-line .parallax-red-line-right {
         display: none; } }
 
-.carousel-slider .carousel-slider-slick.slick-initialized.slick-slider {
-  height: 234px;
-  overflow: hidden; }
-
 .profile-page {
   position: relative;
   margin-top: 14px; }
@@ -2472,9 +2520,16 @@ footer {
     .profile-sidebar .profile-container i {
       width: 25px; }
     .profile-sidebar .profile-container .global-title {
+      font-family: "Messina Modern Regular";
+      font-size: 1.3em;
+      font-weight: 500;
+      text-transform: none;
+      line-height: 120%;
+      color: #828282;
       margin-bottom: 10px;
       margin-top: 10px;
-      font-size: 1em;
+      font-size: 1.4em;
+      color: #4F4F4F;
       text-transform: capitalize; }
     .profile-sidebar .profile-container .placeholder-text {
       color: #BDBDBD; }
@@ -2547,7 +2602,7 @@ footer {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #00AEEF; }
+        color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
         font-family: "Messina Sans Regular";
         font-size: 0.9em;
@@ -2576,7 +2631,7 @@ footer {
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
-        font-size: 1.2em; }
+        font-size: 1.5em; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9em;
@@ -2595,7 +2650,13 @@ footer {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        line-height: 150% !important; }
+        line-height: 150% !important;
+        font-size: 0.9em;
+        color: #4F4F4F; }
+      .profile-sidebar .profile-container .profile-info .makerspaces a,
+      .profile-sidebar .profile-container .profile-info .websites a {
+        color: #00AEEF;
+        font-size: 1.2em; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -2646,10 +2707,11 @@ footer {
           margin-top: 5px; }
       .profile-sidebar .profile-container .profile-info .how p {
         margin-top: 20px; }
+      .profile-sidebar .profile-container .profile-info .topic-tags {
+        color: #828282;
+        font-size: 1.2em; }
     .profile-sidebar .profile-container .report-div .report {
       line-height: 40px; }
-  .profile-sidebar .topic-tags {
-    color: #828282; }
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
@@ -2716,10 +2778,12 @@ footer {
       font-size: 9px;
       margin: 0 auto; }
 
-.profile-header .bookmark li {
+.profile-header .stats li {
   padding: 0 10px;
-  height: 24px; }
-  .profile-header .bookmark li:not(:first-of-type) {
+  height: 24px;
+  font-size: 1.1em;
+  color: #4F4F4F; }
+  .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
 .profile-header .profile-share .btn-soft-grey, .profile-header .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
   border: 1px solid #4F4F4F;
@@ -4579,6 +4643,15 @@ button:hover {
       padding-top: 40px;
       color: #333333;
       padding-bottom: 30px; }
+    .page-explore .explore-header h6 {
+      font-family: "Messina Sans Regular";
+      font-size: 1.3em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 110%;
+      color: #828282;
+      text-transform: uppercase;
+      color: #ED1C24; }
     .page-explore .explore-header .explore-tags {
       margin: 18px auto; }
       .page-explore .explore-header .explore-tags li {
@@ -4586,8 +4659,9 @@ button:hover {
         margin: 10px 15px; }
         .page-explore .explore-header .explore-tags li a.btn {
           border-radius: 0px;
-          min-width: 180px;
-          padding: 15px 10px;
+          text-transform: lowercase !important;
+          max-width: 150px;
+          padding: 13px 10px;
           font-family: "Messina Modern Regular";
           font-size: 1.3em;
           font-weight: 500;
@@ -4598,11 +4672,16 @@ button:hover {
           font-size: 1em !important;
           text-align: center;
           border: 0.5px solid #6f6f6f; }
+          .page-explore .explore-header .explore-tags li a.btn:first-letter {
+            text-transform: uppercase !important; }
           .page-explore .explore-header .explore-tags li a.btn:hover, .page-explore .explore-header .explore-tags li a.btn:active {
             color: #4F4F4F;
-            border: 0.5px solid #4F4F4F !important; }
+            border: 0.5px solid #4F4F4F !important;
+            background-color: transparent !important; }
         .page-explore .explore-header .explore-tags li a.active {
-          color: #4F4F4F; }
+          color: #4F4F4F;
+          background-color: #fff !important;
+          border: 1px solid #ED1C24 !important; }
   .page-explore .submenus li {
     display: inline-block; }
     .page-explore .submenus li a.btn {
@@ -4615,7 +4694,8 @@ button:hover {
       border: 0.5px solid #6f6f6f;
       color: #6f6f6f; }
     .page-explore .submenus li .active {
-      border: 0.5px solid #ED1C24 !important; }
+      border: 0.5px solid #ED1C24 !important;
+      background-color: #fff; }
   .page-explore .submenus .arts-sub,
   .page-explore .submenus .technology-sub,
   .page-explore .submenus .workshop-sub,
@@ -4670,6 +4750,27 @@ button:hover {
         .filters .sorting-filter .dropdown-menu a:hover, .filters .projects-filter .dropdown-menu a:hover {
           color: #4F4F4F;
           background-color: #F2F2F2; }
+
+/* filter mobile menu  */
+.filter-mobile-menu .container .filter-mainmenu .list-unstyled .parent-item {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  position: relative; }
+  .filter-mobile-menu .container .filter-mainmenu .list-unstyled .parent-item::after {
+    position: absolute;
+    right: 0;
+    top: 8px; }
+.filter-mobile-menu .container .filter-mainmenu .filter-submenu {
+  width: 101%;
+  left: -2px !important;
+  border: none;
+  background-color: #f2f2f2;
+  text-align: center;
+  border-radius: 0px;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
 
 .page-challenge {
   background-color: #F2F2F2;
@@ -4820,7 +4921,7 @@ button:hover {
     position: relative;
     height: 100%; }
     .page-challenge .challenge-card .card-container .card {
-      height: 100%; }
+      height: 287px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
       font-size: 2.6em;
@@ -5128,6 +5229,164 @@ button:hover {
     .front .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
       padding: 15px 23.5px; }
 
+.tablet-challenge-card {
+  position: relative;
+  padding: 0px;
+  cursor: pointer;
+  background-color: #333;
+  height: 460px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+  .tablet-challenge-card a {
+    color: white; }
+  .tablet-challenge-card .card {
+    background-color: transparent;
+    border: none; }
+    .tablet-challenge-card .card .card-title {
+      font-family: "Messina Modern Regular";
+      font-size: 1.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 115%;
+      color: #828282;
+      color: #fff;
+      overflow: hidden; }
+    .tablet-challenge-card .card .card-type {
+      top: 25px;
+      right: -45px; }
+      .tablet-challenge-card .card .card-type p {
+        margin-bottom: 0; }
+  .tablet-challenge-card .single-challenge {
+    padding: 10px; }
+    .tablet-challenge-card .single-challenge img {
+      width: 250px; }
+    .tablet-challenge-card .single-challenge .card-partership {
+      color: #ED1C24; }
+  .tablet-challenge-card .card-partnership-mobile {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+    .tablet-challenge-card .card-partnership-mobile p {
+      color: #fff !important; }
+  .tablet-challenge-card .image-container {
+    padding: 0;
+    max-width: 350px;
+    height: 430px;
+    margin-left: -15px;
+    -moz-box-shadow: 2px 2px 8px #191919;
+    -webkit-box-shadow: 2px 2px 8px #191919;
+    box-shadow: 2px 2px 8px #191919; }
+    .tablet-challenge-card .image-container img {
+      width: 100%;
+      height: 100%; }
+  .tablet-challenge-card .content-container {
+    padding-top: 30px;
+    padding-bottom: 30px; }
+  .tablet-challenge-card .card-container .card-partership {
+    font-family: "Messina Sans SemiBold";
+    font-size: 0.8em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 100%;
+    color: #828282;
+    text-transform: none;
+    min-height: 16px;
+    margin: 0px 0px 16px 0px;
+    text-align: right; }
+    .tablet-challenge-card .card-container .card-partership p {
+      color: #BDBDBD;
+      margin-bottom: 0px; }
+  .tablet-challenge-card .card-container .card-description h4 {
+    font-weight: bold; }
+  .tablet-challenge-card .card-container .card-description p {
+    font-family: "Messina Sans Regular";
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 130%;
+    color: #828282;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #fff; }
+  .tablet-challenge-card .card-container .challene-card-footer {
+    margin-top: auto; }
+    .tablet-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
+      bottom: 5px;
+      align-self: end; }
+      .tablet-challenge-card .card-container .challene-card-footer .challene-card-footer-1 a.btn.btn-grey {
+        background-color: #BDBDBD; }
+      .tablet-challenge-card .card-container .challene-card-footer .challene-card-footer-1 .button-container-main-1 .btn {
+        width: 140px;
+        padding: 15px 0px; }
+    .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 {
+      font-family: "Messina Sans SemiBold";
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282; }
+      .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
+        padding-left: 10px;
+        color: #fff; }
+      .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
+        padding-right: 10px;
+        color: #fff;
+        border-right: 1px solid white; }
+      .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
+        line-height: 16px;
+        color: #fff; }
+        .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+          padding-right: 5px; }
+        .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
+          color: #00AEEF; }
+
+.challenge-card-full.front-challenge-card {
+  padding: 0;
+  margin: 30px 0px 30px 0px;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+  .challenge-card-full.front-challenge-card .card-type {
+    z-index: 1000; }
+  .challenge-card-full.front-challenge-card .card-container {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    padding-left: 26px;
+    z-index: 10; }
+    .challenge-card-full.front-challenge-card .card-container .card {
+      width: 65%; }
+  .challenge-card-full.front-challenge-card .card-partership p {
+    color: #fff !important; }
+  .challenge-card-full.front-challenge-card .image-container {
+    padding: 0;
+    width: 100%;
+    height: 460px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD; }
+  .challenge-card-full.front-challenge-card .challenge-card-count span {
+    color: #fff;
+    padding-right: 10px;
+    border-right: 1px solid #fff; }
+  .challenge-card-full.front-challenge-card .challenge-card-count .entries-count {
+    border: none; }
+  .challenge-card-full.front-challenge-card .challenge-card-status {
+    color: #fff; }
+  .challenge-card-full.front-challenge-card .button-container-main-1 {
+    margin-right: 18px; }
+    .challenge-card-full.front-challenge-card .button-container-main-1 .btn {
+      padding: 15px 23.5px; }
+
 .page-search-content .search-challenge-card {
   position: relative;
   padding: 0px;
@@ -5379,7 +5638,8 @@ button:hover {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        line-height: inherit !important; }
+        line-height: inherit !important;
+        padding-top: 4px; }
   .page-project .feedback-group {
     background-color: white;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -5915,7 +6175,7 @@ header.showcase-project .next {
           width: 30px;
           margin-right: 5px; }
     .page-project .projectsingle-card .left-side .actions-button {
-      padding: 4px; }
+      padding: 4px 10px; }
   .page-project .projectsingle-card .right-side {
     padding: 0px; }
     .page-project .projectsingle-card .right-side .card-container {
@@ -8508,8 +8768,8 @@ img {
   padding-right: 10px; }
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
-    color: #828282;
-    font-size: 12px; }
+    color: #4F4F4F;
+    font-size: 1em; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
@@ -8769,6 +9029,8 @@ img {
     box-shadow: 2px 2px 8px #BDBDBD;
     background-color: white;
     margin: 10px 0; }
+    .notifications-list-page .notification-container .notification-item:hover {
+      cursor: pointer; }
     .notifications-list-page .notification-container .notification-item .media-left {
       width: 80px;
       height: 80px;
@@ -8786,7 +9048,10 @@ img {
     .notifications-list-page .notification-container .notification-item .delete {
       margin-left: auto;
       margin-right: 25px;
-      padding-top: 30px; }
+      padding-top: 30px;
+      position: absolute;
+      right: 1px;
+      z-index: 1; }
       .notifications-list-page .notification-container .notification-item .delete .delete-message {
         overflow: hidden;
         color: #333333;
@@ -9173,6 +9438,11 @@ img {
     line-height: 100%;
     color: #4F4F4F;
     text-align: center; }
+  .page-search-content .clear-search {
+    position: absolute;
+    top: 10px;
+    z-index: 3;
+    right: 60px; }
 
 #search-input::-ms-expand {
   display: none; }
@@ -9517,7 +9787,40 @@ img {
     .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn-main-2 {
       width: 100%; }
   .page-challenge-summary .challenge-card .right-side {
-    padding: 0px; } }
+    padding: 0px; }
+
+  .page-explore .explore-header {
+    padding-bottom: 0px; }
+
+  .tablet-challenge-card {
+    height: auto; }
+    .tablet-challenge-card .image-container {
+      max-height: 195px;
+      max-width: 576px;
+      margin: 0 -15px; }
+    .tablet-challenge-card .card-container .card-description p {
+      font-family: "Messina Sans Regular";
+      font-size: 0.95em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      line-height: 125% !important;
+      -webkit-line-clamp: 3;
+      height: 52px;
+      color: #fff;
+      overflow: hidden; }
+    .tablet-challenge-card .challene-card-footer-1 {
+      margin-right: 20px; }
+    .tablet-challenge-card .challenge-card-footer-2 {
+      margin-bottom: 5px;
+      font-family: "Messina Sans SemiBold";
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 100%;
+      color: #828282;
+      color: #828282; } }
 @media (max-width: 575px) {
   /* project card */
   .project.card {
@@ -9580,7 +9883,14 @@ img {
     padding: 30px 0px 6px 0px !important; }
 
   .user-card .profile-pic-container .maker-photo {
-    height: auto !important; } }
+    height: auto !important; }
+
+  .notifications-container .notification .message {
+    font-size: 0.8em !important; }
+
+  .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
+    padding: 13px 2px;
+    width: 115px; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
     margin-left: 8px; }

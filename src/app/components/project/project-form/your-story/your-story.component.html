@@ -68,7 +68,7 @@
         {{ formErrors.field_categories }}
       </div>-->
       <div *ngIf="project.field_categories.und" class="cate-list">
-        <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
+        <div *ngFor="let selected_cate of project.field_categories.und; let i=index" [@SlideToRight]>
           <label for="" class="selected-topic" *ngIf="i == 1">Selected Topic</label>
           <div *ngFor="let cate of all_categories" class="">
             <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item">
@@ -183,7 +183,7 @@
 </aside>
 
 <!--Cover image modal-->
-<template #coverimagemodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #coverimagemodal let-c="close" let-d="dismiss">
   <div class="upload-cover-modal">
 
 
