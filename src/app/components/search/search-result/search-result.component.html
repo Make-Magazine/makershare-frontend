@@ -14,9 +14,12 @@
             <div class="input-group stylish-input-group">
               <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..."
                 [ngbTypeahead]="search"  [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
-              <span class="input-group-addon">
+              <span class="clear-search" [hidden]="query == ''" (click)="clearQuery()" value="clear">
+                <i class="lnr lnr-cross"></i>
+             </span>
+             <span class="input-group-addon">
                 <button type="button" (click)="searchQuery()" value="search">
-                  <i class="fa fa-search"></i>
+                  <i class="lnr lnr-magnifier"></i>
                 </button>  
              </span>
               <!--<div class="search-term">
