@@ -61,6 +61,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       nid: this.Project.nid,
       field_visibility2: { und: [NewVisibility] },
       field_sort_order:{und:[{value:0}]},
+      status:1,
     }
 
     this.nodeService.UpdateNode(project).subscribe(data => {
