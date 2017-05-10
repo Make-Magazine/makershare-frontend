@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   showSearchBox: boolean = false;
   user_photo: string;
-  displayRegistration:boolean =true;
+  displayRegistration:boolean = false;
   constructor(
     private userService: UserService,
     private router: Router,
