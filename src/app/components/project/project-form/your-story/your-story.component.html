@@ -70,7 +70,7 @@
       <div *ngIf="project.field_categories.und" class="cate-list">
         <div *ngFor="let selected_cate of project.field_categories.und; let i=index" [@SlideToRight]>
           <label for="" class="selected-topic" *ngIf="i == 1">Selected Topic</label>
-          <div *ngFor="let cate of all_categories" class="">
+          <div *ngFor="let cate of all_categories" class="category-container">
             <p *ngIf="cate.parent_tid && selected_cate == cate.tid" class="cate-name list-group-item">
               <span [innerHTML]="cate.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="cate.name"></span>
               <i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveCategory(cate.tid,cate.parent_tid)" aria-hidden="true"></i>
