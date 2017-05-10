@@ -1,4 +1,4 @@
-<div class="showcase-card row" (click)="ShowSingleShowcase(showcase.nid)">
+<div class="showcase-card row hidden-xs-down" (click)="ShowSingleShowcase(showcase.nid)">
   <div class="col-md-4 col-sm-12 col-xs-12 image-container">
     <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
     <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
@@ -32,23 +32,63 @@
                   <span *ngIf="!numLikes">0</span>
                 </div>
                 <div class="views-count">
-                <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
-                <span class="views-count">{{showcase.views_count}}</span>
-              </div>
-              <div class="projects-count-div">
-                <span class="projects-count" >{{projectsCount}}
+                  <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
+                  <span class="views-count">{{showcase.views_count}}</span>
+                </div>
+                <div class="projects-count-div">
+                  <span class="projects-count">{{projectsCount}}
                            <span *ngIf="projectsCount>1">projects</span>
-                           <span *ngIf="projectsCount==0">projects</span>
-                <span *ngIf="projectsCount==1">project</span>
-                </span>
-
+                  <span *ngIf="projectsCount==0">projects</span>
+                  <span *ngIf="projectsCount==1">project</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+          <div class="showcase-card-footer-1 hidden-sm-up mt-3">
+            <div class="button-container-main-1 w-100">
+              <span class="btn btn-main w-100" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>
+            </div>
+          </div>
         </div>
-        <div class="showcase-card-footer-1 hidden-sm-up mt-3">
-          <div class="button-container-main-1 w-100">
-            <span class="btn btn-main w-100" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>
+      </div>
+      <!--End card-container -->
+    </div>
+  </div>
+
+
+<!--showcase card for mobile-->
+  <div class="showcase-card hidden-sm-up" *ngIf="showcase" (click)="ShowSingleShowcase(showcase.nid)">
+  <div class="content-container h-100">
+    <div class="card-container">
+      <div class="card">
+        <div class="showcase-type">
+          <p>Showcase</p>
+        </div>
+        <h2 class="card-title">{{showcase.showcase_name}}</h2>
+        <div class="card-description" *ngIf="showcase.description_trim">
+          <p [innerHTML]="showcase.description_trim"></p>
+        </div>
+        <div class="showcase-card-footer mt-auto mb-3 d-flex">
+          <div class="showcase-card-footer-2">
+            <div class="showcase-card-count d-felx">
+              <div class="likes-count-div">
+                <img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
+                <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
+                <img class="showcase-likes" *ngIf="numLikes == 0" src="./assets/images/icons/light-not-selected.png" alt="">
+                <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>
+              </div>
+              <div class="views-count-div">
+                <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
+                <span class="views-count">{{showcase.views_count}}</span>
+              </div>
+              <div class="projects-count-div" *ngIf="showcase.number_of_project">
+                <span class="projects-count">{{showcase.number_of_project}}
+                  <span *ngIf="showcase.number_of_project>1">projects</span>
+                  <span *ngIf="showcase.number_of_project<=1">project</span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
