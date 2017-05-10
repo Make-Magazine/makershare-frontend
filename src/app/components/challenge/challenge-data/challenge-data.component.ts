@@ -6,7 +6,6 @@ import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
 import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 
