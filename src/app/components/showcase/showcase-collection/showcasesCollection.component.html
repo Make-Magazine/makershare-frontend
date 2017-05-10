@@ -26,6 +26,9 @@
       <div class="showcase-card-backlayer container" *ngFor="let showcase of showcases">
       <app-showcase-card [showcaseNid]="showcase.nid"></app-showcase-card>
       </div>
+      <div *ngIf="showcases.length == 0">
+        <h4>There are no showcases to show</h4>
+      </div>
       <!-- End col-md-6 -->
     </div>
   </div>

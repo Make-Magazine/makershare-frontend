@@ -4,6 +4,7 @@
 <div class="mark-seen" (click)="MarkAsSeen(1)" *ngIf="!notification.seen || notification.seen != 1">
     Mark as seen
 </div>-->
+<!--(click)="OpenNotification()"-->
 <div class="notification-container" *ngIf="notification" (click)="OpenNotification()">
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
         <div class="media wrapper d-flex d-row message-info w-100">

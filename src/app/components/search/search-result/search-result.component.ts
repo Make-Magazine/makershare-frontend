@@ -241,4 +241,7 @@ export class SearchResultComponent implements OnInit {
       return false;
     }
   }
+  clearQuery() {
+    this.query = '';
+  }
 }

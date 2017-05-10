@@ -34,6 +34,9 @@
          <app-challenge-card [challengeNid]="challenge.nid" ></app-challenge-card>
          <!-- End Shared  Challenge Card-->
         </div>
+        <div *ngIf="challenges.length == 0">
+          <h4>There are no missions to show</h4>
+        </div>
         <!-- End challenge-card -->
       </div>
       <div class="text-center pt-3 pb-5">
