@@ -43,7 +43,7 @@
 <div class="search-challenge-card" *ngIf="challenge">
   <div class="image-container hidden-md-down">
     <img *ngIf="challenge.search_image" src="{{challenge.search_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-    <img *ngIf="!challenge.search_image" src="http://placehold.it/345x195" alt="">
+    <img *ngIf="!challenge.search_image" src="./assets/images/placeholder.png" alt="">
     <div class="card-type-grey">
       <div class="type-layer-2">
         Mission

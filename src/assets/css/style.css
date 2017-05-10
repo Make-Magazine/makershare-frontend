@@ -7411,6 +7411,9 @@ img {
     padding: 0 30px; }
     .page-create-project-why .your-story .cate-list .remove-cate {
       font-size: 1.5em; }
+    .page-create-project-why .your-story .cate-list .category-container {
+      position: relative;
+      z-index: 1; }
     .page-create-project-why .your-story .cate-list p.cate-name {
       margin: 3px 0;
       border-radius: 0;
