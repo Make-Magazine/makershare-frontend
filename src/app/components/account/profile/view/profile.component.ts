@@ -145,6 +145,16 @@ export class ProfileComponent implements OnInit {
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
   emptySocial :boolean = true;
+  emptySection = {
+      motto: true,
+      bio: true,
+      social: true,
+      badges: true,
+      makerspace:true,
+      websites:true,
+      topics: true,
+      started_making:true,
+    }
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -444,6 +454,16 @@ export class ProfileComponent implements OnInit {
       if ((social != 'field_website_or_blog' || social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
         this.emptySocial = false;
       }
+    }
+
+  }
+  CheckFields(){
+    if(this.uid == this.CurrentLoggedUserId){
+      for(let element in this.emptySection) {
+        this.emptySection[element] = false;
+      }
+    } else {
+     
     }
   }
   ToggleProfile() {
