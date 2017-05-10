@@ -34,7 +34,7 @@ declare var CKEDITOR:any;
       transition(':leave', [
         animate('0.2s ease', style({
           'transform': 'translate(0px,-40px)',
-          'z-index': 0,
+          'z-index': -1,
           'opacity':0,
         })),
       ])

@@ -1,5 +1,5 @@
 <div class="media workshop-creator" *ngIf="card">
-  <!--<img class="d-flex align-self-start mr-3" *ngIf="!card.photo" src="http://placehold.it/70x70" alt="Generic placeholder image">-->
+  <!--<img class="d-flex align-self-start mr-3" *ngIf="!card.photo" src="./assets/images/Gears-Grey.svg" alt="Generic placeholder image">-->
 
   <div class="media-body d-flex" *ngIf="(card.first_name) && (card.last_name) && card.photo ">
     <img class="d-flex align-self-start mr-3" *ngIf="card.photo[0]" src="{{card.photo}}" alt="Generic placeholder image">
@@ -12,7 +12,7 @@
     </div>
   </div>
   <!--<div class="media-body d-flex" *ngIf="(!card.first_name) && (!card.last_name) && !card.photo ">
-    <img class="d-flex align-self-start mr-3" src="http://placehold.it/70x70" alt="Generic placeholder image">
+    <img class="d-flex align-self-start mr-3" src="./assets/images/Gears-Grey.svg" alt="Generic placeholder image">
     <h5 class="mt-0" *ngIf="leader">{{leader}}</h5>
   </div>-->
 </div>
