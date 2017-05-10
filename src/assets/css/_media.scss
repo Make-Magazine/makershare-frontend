@@ -202,6 +202,36 @@
             padding-bottom: 0px; 
         }
     }
+
+.tablet-challenge-card {
+    height: auto;
+    .image-container {
+        max-height: 195px;
+        max-width: 576px;
+        margin: 0 -15px;
+    }
+    .card-container {
+        .card-description {
+            p {
+                @include desc-font-1();
+                line-height: 125% !important;
+                -webkit-line-clamp: 3;
+                height: 52px;
+                color: #fff;
+                overflow: hidden;
+            }
+        }
+    }
+    .challene-card-footer-1 {
+        margin-right: 20px;
+    }
+    .challenge-card-footer-2 {
+        margin-bottom: 5px;
+        @include desc-font-3;
+        color: $text-color-2;
+    }
+}
+
 }
 
 
@@ -549,6 +579,12 @@
             }
         }
     }
+
+
+
+
+
+
     .project {
         .icons-side-project {
             top: -20px;
