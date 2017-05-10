@@ -46,6 +46,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
 import { AddProtocolDirective } from '../../directives/add-protocol.directive';
+import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 
 //providers
 import { NodeService } from '../../d7services/node/node.service';
@@ -129,7 +130,7 @@ export function ResponsiveDefinition() {
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
-    
+    RegistrationCollectComponent,
   ],
   exports: [
     CommentComponent,
@@ -167,10 +168,12 @@ export function ResponsiveDefinition() {
     NotificationTemplateComponent,
     SharedButtonsComponent,
     AddProtocolDirective,
-    ValidateOnFocusoutDirective
+    ValidateOnFocusoutDirective,
+    RegistrationCollectComponent
   ],
   providers: []
 })
+<<<<<<< HEAD
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
@@ -198,4 +201,40 @@ export class SharedModule {
     };
   }
 }
+=======
+export class SharedModule { }
+export {CommentComponent};
+export {FollowComponent};
+export {BookmarkComponent};
+export {LikeComponent};
+export {ForkComponent};
+export {UserCardComponent};
+export {ProjectCardComponent};
+export {SharedButtonsComponent};
+export {FeedbackComponent};
+export { ChallengeCardComponent };
+export { ProjectHeaderComponent };
+export { ProjectStoryComponent };
+export { ProjectHowToComponent };
+export { ShowcaseCardComponent };
+export { LearnCardComponent }; 
+export { UserCardSmallComponent };
+export { LearnUserCardComponent };
+export  { MessageModalComponent };
+export { ShowcaseGeneralCardComponent };
+export { MakerCardComponent };
+export { MakerSearchCardComponent };
+export { ProjectSearchCardComponent };
+export { ChallengeSearchCardComponent };
+export { ShowcaeSearchCardComponent };
+export { LearnSearchCardComponent };
+export { ReportUserComponent };
+export { ReportProjectComponent };
+export { ProjectVoteComponent };
+export { ReportCommentComponent };
+export { UserCardMsgsComponent };
+export { NotificationPanelComponent };
+export { RegistrationCollectComponent };
+
+>>>>>>> 40e75fdfb382398c155c62451bf416344941e9fa
 
