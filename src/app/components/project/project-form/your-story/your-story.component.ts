@@ -15,12 +15,31 @@ import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
+import { trigger, style, transition, animate, group } from '@angular/core';
 
 declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
   providers: [NgbTooltipConfig],
+  animations: [
+    trigger('SlideToRight', [
+      transition(':enter', [
+        style({transform: 'translateX(-100%)'}),
+        animate(350)
+      ]),
+      transition(':leave', [
+        group([
+          animate('0.2s ease', style({
+            transform: 'translate(150px,25px)'
+          })),
+          animate('0.5s 0.2s ease', style({
+            opacity: 0
+          }))
+        ])
+      ])
+    ])
+  ]
 })
 export class YourStoryComponent implements OnInit,AfterViewInit {
   @ViewChild('ckeditor') ckeditor:any;
@@ -371,7 +390,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'validimagesize': 'choose a photo that is at least 600 x 400 px.',
     },
     'field_show_tell_video': {
-      'url': 'Please enter a valid url, ex: http://example.com.',
+      'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
       'youtubeorvimeolink': 'Only Youtube and Vimeo are supported.'
     },
     'field_story': {
