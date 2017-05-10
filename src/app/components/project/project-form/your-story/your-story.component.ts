@@ -371,7 +371,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'validimagesize': 'choose a photo that is at least 600 x 400 px.',
     },
     'field_show_tell_video': {
-      'url': 'Please enter a valid url, ex: http://example.com.',
+      'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
       'youtubeorvimeolink': 'Only Youtube and Vimeo are supported.'
     },
     'field_story': {
