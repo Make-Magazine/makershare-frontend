@@ -15,7 +15,7 @@
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
                 <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="projectsById($event);ChangeClassActive(i,$event)"
-                  class="btn btn-border" data-id="{{term.tid}}" (click)="idCategory(term.tid)" [innerHTML]="term.name"></a>
+                  class="btn btn-border" data-id="{{term.tid}}" (click)="idCategory(term.tid,term.name)" [innerHTML]="term.name"></a>
               </li>
             </ul>
           </div>
@@ -46,19 +46,17 @@
 
 
 
-
-
-
-
-
-
-
-
         <div class="filters">
           <div class="container">
             <div class="row justify-content-end align-items-center">
               <div class="entries-count btn">
                 <p>{{countProject}} Projects</p>
+              </div>
+              <div class="entries-count btn">
+               <p *ngIf="nameCat">{{nameCat}}</p>
+              </div>
+                <div class="entries-count btn">
+                  <a (click)="allProject()" class="btn">All Project</a>
               </div>
               <div class="sorting-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
