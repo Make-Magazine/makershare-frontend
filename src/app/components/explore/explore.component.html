@@ -6,7 +6,7 @@
         <h6>FILTER BY TOPIC:</h6>
         <ul class="list-unstyled explore-tags hidden-sm-down">
           <li *ngFor="let parent of categories_parents;let i = index">
-            <a (mouseover)="ChangeClassActive(i,$event)" [ngClass]="{'active':CurrentActiveParentIndex == i}" class="btn btn-border"
+            <a (click)="CurrentActiveParentIndex = i;CurrentActiveChildIndex = -1" [ngClass]="{'active':CurrentActiveParentIndex == i}" class="btn btn-border"
               id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
           </li>
         </ul>
@@ -14,8 +14,8 @@
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
-                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="projectsById($event);ChangeClassActive(i,$event)"
-                  class="btn btn-border" data-id="{{term.tid}}" (click)="idCategory(term.tid,term.name)" [innerHTML]="term.name"></a>
+                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term.tid,term.name);projectsById($event);"
+                  class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
               </li>
             </ul>
           </div>
@@ -33,9 +33,9 @@
               </a>
               <div class="nav-collapse collapse navbar-responsive-collapse filter-mainmenu">
                 <ul class="list-unstyled">
-                  <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index" ><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (mouseover)="ChangeClassActive(i,$event)" class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
+                  <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index" ><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="CurrentActiveParentIndex=i;CurrentActiveChildIndex=-1" class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
                     <ul class="dropdown-menu filter-submenu">
-                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="projectsById($event);ChangeClassActive(i,$event)" data-id="{{term.tid}}" (click)="idCategory(term.tid)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
+                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event);ChangeClassActive(i,$event)" data-id="{{term.tid}}" (click)="idCategory(term.tid)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
                     </ul>
                   </li>
                 </ul>
