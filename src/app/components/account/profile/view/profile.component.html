@@ -92,7 +92,7 @@
 								</div>
 								<hr class="hideData">
 								<!-- describe yourself-->
-								<ul class="list-unstyled post hideData">
+								<ul class="list-unstyled post hideData" *ngIf="ProfileInfo.describe_yourself != '' || CurrentLoggedUserId != uid">
 									<div *ngIf="CurrentLoggedUserId && uid">
 										<div *ngIf="CurrentLoggedUserId==uid && auth.authenticated()">
 											<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
