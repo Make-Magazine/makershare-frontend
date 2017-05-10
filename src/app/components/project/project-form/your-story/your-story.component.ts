@@ -25,18 +25,18 @@ declare var CKEDITOR:any;
   animations: [
     trigger('SlideToRight', [
       transition(':enter', [
-        style({transform: 'translateX(-100%)'}),
+        style({
+          'transform': 'translateY(-100%)',
+          'z-index': 0,
+        }),
         animate(350)
       ]),
       transition(':leave', [
-        group([
-          animate('0.2s ease', style({
-            transform: 'translate(150px,25px)'
-          })),
-          animate('0.5s 0.2s ease', style({
-            opacity: 0
-          }))
-        ])
+        animate('0.2s ease', style({
+          'transform': 'translate(0px,-40px)',
+          'z-index': 0,
+          'opacity':0,
+        })),
       ])
     ])
   ]
