@@ -38,5 +38,8 @@ export class SearchBoxComponent implements OnInit {
       this.closeSearchBox();
     }
   }
+  clearSearch() {
+    this.searchQuery = '';
+  }
 
 }

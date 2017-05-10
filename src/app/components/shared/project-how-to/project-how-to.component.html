@@ -3,7 +3,7 @@
     <div class="how-to-tab">
       <div class="project-body-content">
         <p [innerHTML]="project.field_how_to?.value" *ngIf="project.field_how_to?.value"></p>
-        <p [innerHTML]="project.field_how_to?.value" *ngIf="!project.field_how_to?.value">There is no content available!</p>
+        <p class="text-center" *ngIf="!project.field_how_to?.value">There is no content available!</p>
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
           <p>Difficulty + Duration</p>
           <span>{{project.field_difficulty}} - {{project.field_duration}}</span>
         </div>
-        <div class="tools-kits" *ngIf="project.field_tools || project.field_parts || project.field_materials || project.field_resources">
+        <div class="tools-kits" *ngIf="project.field_tools || project.field_parts || project.field_materials || project.field_resources.length != 0">
           <ul class="list-group tools" *ngIf="project.field_tools">
             <p>Tools</p>
             <li class="list-group-item" *ngFor="let tool of project.field_tools; let i=index">
@@ -44,8 +44,8 @@
               <span class="item"> {{material.material_id}}</span>
             </li>
           </ul>
-          <hr *ngIf="project.field_resources">
-          <ul *ngIf="project.field_resources" class="list-group resources">
+          <hr *ngIf="project.field_resources.length != 0">
+          <ul *ngIf="project.field_resources.length != 0" class="list-group resources">
             <p>Resources</p>
             <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
               <a href="{{resource.resource_file}}">{{resource.term_name}} - {{resource.extension}} - {{resource.filesize}}</a>

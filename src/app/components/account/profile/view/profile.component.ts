@@ -22,6 +22,7 @@ import { MetaService } from '@nglibs/meta';
 import { FileEntityManage } from '../../../../models';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { StatisticsService } from '../../../../d7services/statistics/statistics.service';
+import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 
 @Component({
   selector: 'app-profile',
@@ -83,17 +84,17 @@ export class ProfileComponent implements OnInit {
   FormGroupSocial: FormGroup;
   buildFormSocial() {
     this.FormGroupSocial = this.fb.group({
-      'field_website_or_blog': [this.profile.field_social_accounts.field_website_or_blog, [CustomValidators.url]],
-      'field_additional_site': [this.profile.field_social_accounts.field_additional_site, [CustomValidators.url]],
-      'field_facebook': [this.profile.field_social_accounts.field_facebook, [CustomValidators.url]],
-      'field_instagram': [this.profile.field_social_accounts.field_instagram, [CustomValidators.url]],
-      'field_linkedin': [this.profile.field_social_accounts.field_linkedin, [CustomValidators.url]],
-      'field_twitter': [this.profile.field_social_accounts.field_twitter, [CustomValidators.url]],
-      'field_pinterest': [this.profile.field_social_accounts.field_pinterest, [CustomValidators.url]],
-      'field_youtube': [this.profile.field_social_accounts.field_youtube, [CustomValidators.url]],
-      'field_hackster_io': [this.profile.field_social_accounts.field_hackster_io, [CustomValidators.url]],
-      'field_instructables': [this.profile.field_social_accounts.field_instructables, [CustomValidators.url]],
-      'field_hackday': [this.profile.field_social_accounts.field_hackday, [CustomValidators.url]],
+      'field_website_or_blog': [this.profile.field_social_accounts.field_website_or_blog, [URLNoProtocol()]],
+      'field_additional_site': [this.profile.field_social_accounts.field_additional_site, [URLNoProtocol()]],
+      'field_facebook': [this.profile.field_social_accounts.field_facebook, [URLNoProtocol()]],
+      'field_instagram': [this.profile.field_social_accounts.field_instagram, [URLNoProtocol()]],
+      'field_linkedin': [this.profile.field_social_accounts.field_linkedin, [URLNoProtocol()]],
+      'field_twitter': [this.profile.field_social_accounts.field_twitter, [URLNoProtocol()]],
+      'field_pinterest': [this.profile.field_social_accounts.field_pinterest, [URLNoProtocol()]],
+      'field_youtube': [this.profile.field_social_accounts.field_youtube, [URLNoProtocol()]],
+      'field_hackster_io': [this.profile.field_social_accounts.field_hackster_io, [URLNoProtocol()]],
+      'field_instructables': [this.profile.field_social_accounts.field_instructables, [URLNoProtocol()]],
+      'field_hackday': [this.profile.field_social_accounts.field_hackday, [URLNoProtocol()]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
       'field_website_title':[this.profile.field_social_accounts.field_website_title],
       'field_blog_title':[this.profile.field_social_accounts.field_blog_title]
@@ -360,7 +361,7 @@ export class ProfileComponent implements OnInit {
     const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
     let MakerspaceGroup: FormGroup = this.fb.group({
       field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
-      field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', CustomValidators.url],
+      field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', URLNoProtocol()],
       id: [makerspace ? makerspace.id : '', Validators.required]
     });
     control.push(MakerspaceGroup);
