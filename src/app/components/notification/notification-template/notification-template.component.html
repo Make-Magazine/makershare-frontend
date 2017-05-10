@@ -1,0 +1,9 @@
+<li *ngIf="notification.type == 'new_comment_project'">
+    <a (click)="goToProfile(notification.user_path)">{{notification.username}}sss</a> commented on your project <a (click)="GoToNode(notification.nid, notification.type)">{{notification.title}}</a>
+</li> 
+
+<li *ngIf="notification.type == 'new_project_likes'">
+    <a (click)="goToProfile(notification.user_path)">{{notification.username}}</a> liked your project <a>{{notification.title}}</a>
+</li> 
+<li>
+</li>    

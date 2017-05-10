@@ -190,7 +190,7 @@
         position: relative;
         height: 100%;
         .card {
-            height: 100%;
+            height: 287px;
         }
         .card-title {
             @include card-header-font-lg();
@@ -536,6 +536,203 @@
             .btn {
                 padding: 15px 23.5px;
             }
+        }
+    }
+}
+
+
+.tablet-challenge-card {
+    position: relative;
+    padding: 0px;
+    cursor: pointer;
+    background-color: #333;
+    height: 460px;
+    margin-bottom: 30px;   
+    overflow: hidden;
+    @include boxShadow(2px, 2px ,8px, $shade-3);
+    span {
+    }
+    a {
+        color: white;
+    }
+    p,
+    h3 {
+        // color: white;
+    }
+    .card {
+        background-color: transparent;
+        border: none;
+        .card-title {
+            @include card-header-font-md ();
+            color: $white;
+            overflow: hidden;
+        }
+        .card-type {
+            top: 25px;
+            right: -45px;
+            p {
+                margin-bottom: 0;                
+            }
+        }
+    }
+    .single-challenge {
+        padding: 10px;
+        img {
+            width: 250px;
+        }
+        .card-partership {
+            color: $main-button-1;
+        }
+    }
+    .card-partnership-mobile {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        p {
+            color: #fff !important;
+        }
+    }
+    .image-container {
+        padding: 0;
+        max-width: 350px;
+        height: 430px;
+        margin-left: -15px;
+        @include boxShadow(2px, 2px ,8px, #191919);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .content-container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .card-container {
+        .card-partership {
+            @include desc-font-3();
+            text-transform: none;
+            min-height: 16px;
+            margin: 0px 0px 16px 0px;
+            text-align: right;
+            p {
+                color: $shade-3;
+                margin-bottom: 0px;
+            }
+        }
+        .card-description {
+            h4 {
+                font-weight: bold;
+            }
+
+            p {
+                @include body-font-2();
+                display: -webkit-box;
+                -webkit-line-clamp: 8;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                color: #fff;
+            }
+        }
+
+        .challene-card-footer {
+            margin-top: auto;
+            .challene-card-footer-1 {
+                bottom: 5px;
+                align-self: end;
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+            .button-container-main-1 {
+                .btn {
+                    width: 140px;
+                    padding: 15px 0px;
+                }
+            }
+            }
+            .challenge-card-footer-2 {
+                @include desc-font-3();
+                .challenge-card-count {
+                    .follow-count {
+                        padding-left: 10px;
+                        color: #fff;
+                    }
+                    .entries-count {
+                        padding-right: 10px;
+                        color: #fff;
+                        border-right: 1px solid white;
+                    }
+                }
+                .challenge-card-status {
+                    line-height: 16px;
+                    color: #fff;
+                    .open-status, .closed-status {
+                        // font-weight: bold;
+                        padding-right: 5px;
+                    }
+                    .open-status{
+                        // color: white;
+                    } 
+                    .closed-status {
+                        color: $text-color-6;
+                    }
+                    .challenge-end-date {
+                    }
+                }
+            }
+        }
+
+    }
+}
+.challenge-card-full.front-challenge-card {
+    padding: 0 ;
+    margin: 30px 0px 30px 0px;
+    @include boxShadow(2px, 2px ,8px, $shade-3);    
+    .card-type {
+        z-index: 1000;
+    }
+    .card-container {
+        position: absolute;
+        bottom: 18px;
+        left: 0;
+        width: 100%;
+        padding-left: 26px;
+        z-index: 10;
+        .card {
+            width: 65%;
+        }
+    }
+    .card-partership {
+        p {
+            color: #fff !important;
+        }
+    }
+    .image-container {
+        padding: 0;
+        width: 100%;
+        height: 460px;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        @include boxShadow(2px, 2px ,8px, $shade-3);
+    }
+    .challenge-card-count {
+        span {
+            color: #fff;
+            padding-right: 10px;
+            border-right: 1px solid #fff;
+        }
+        .entries-count {
+            border: none;
+        }
+    }
+    .challenge-card-status {
+            color: #fff;
+        
+    }
+    .button-container-main-1 {
+        margin-right: 18px;
+        .btn {
+            padding: 15px 23.5px;
         }
     }
 }

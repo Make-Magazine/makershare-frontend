@@ -95,6 +95,10 @@
   </nav>
 
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
+  
+
+  <app-registration-collect (click)="showRegistration()" *ngIf="displayRegistration"  (hideReg)="hideRegisteration($event)"></app-registration-collect>
+  
 
 </header>
 <notification-bar></notification-bar>

@@ -14,13 +14,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
-					<div class="d-flex flex-row mr-auto switch justify-content-end align-items-start hidden-sm-down display-style">
+				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-between d-flex hidden-sm-down">
+					<div class="d-flex flex-row switch justify-content-end align-items-start hidden-sm-down display-style">
 						<a class="profile-share">
 							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
 						</a>
 					</div>
-					<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+					<ul class="list-unstyled stats d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
 						</li>
@@ -81,9 +81,9 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname && CurrentLoggedUserId == uid">{{PlaceholderText.nickname}}</p>
 									<ul *ngIf="CurrentLoggedUserId == uid || ProfileInfo.address_publish" class="list-unstyled location">
-										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.locality_label && !CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address[CountryFieldsAndDetails.locality_label.toLowerCase()]}}</li>
-										<li *ngIf="ProfileInfo.address && CountryFieldsAndDetails.administrative_areas">{{ProfileInfo.address.country}}, {{ProfileInfo.address.governorate}}</li>
-										<li class="placeholder-text" *ngIf="!ProfileInfo.address && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}, {{ProfileInfo.address.country}}</li>
+										<li class="placeholder-text" *ngIf="(!ProfileInfo.address || ProfileInfo.address == '' ) && CurrentLoggedUserId == uid">{{PlaceholderText.address}}</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
@@ -120,19 +120,19 @@
 											<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 										</div>
 									</div>
-									<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>
+									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
 									<div *ngIf="!ProfileInfo.bio && CurrentLoggedUserId == uid && auth.authenticated()" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
-									<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.bio">
+									<hr *ngIf="CurrentLoggedUserId && uid || ProfileInfo.bio">
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
 								<div *ngIf="ProfileInfo.field_social_accounts" class="hideData">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									<p class="global-title" *ngIf="!emptySocial || CurrentLoggedUserId==uid">Social</p>
-									<p class="placeholder-text" *ngIf="!emptySocial || CurrentLoggedUserId==uid">{{PlaceholderText.social}}</p>
+									<p class="global-title" *ngIf="!emptySocial">Social</p>
+									<p class="placeholder-text" *ngIf="!emptySocial && CurrentLoggedUserId==uid">{{PlaceholderText.social}}</p>
 									<div class="social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
@@ -204,7 +204,7 @@
 									<p *ngIf="CurrentLoggedUserId == uid" class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
 								<hr *ngIf="CurrentLoggedUserId == uid || ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
-								<div class="hideData">
+								<div class="hideData websites">
 									<a *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId==uid && auth.authenticated()" (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title" *ngIf="(ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != '') || CurrentLoggedUserId == uid">
 										Websites </p>
@@ -272,7 +272,8 @@
 								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 							</li>
 							<li>
-								<p><span class="number">{{profile.views_count}}</span> views</p>
+								<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
+								<p *ngIf="profile.views_count == 1"><span class="number">{{profile.views_count}}</span> view</p>
 							</li>
 							<!-- Start Bookmsrk-section -->
 							<!--<li>
@@ -307,7 +308,7 @@
 </template>
 
 <!-- Add Edit Info Modal -->
-<template #editinfomodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #editinfomodal let-c="close" let-d="dismiss">
 	<div class="profile-modal">
 		<div class="modal-header">
 			<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -587,7 +588,7 @@
 													Invalid URL, ex: http://example.com
 											</small>
 											</div>
-											<div (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>
+											<div *ngIf="formGroup.controls.field_add_your_makerspace_s_['controls'].length != 1" (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>
 										</div>
 									</div>
 								</div>
@@ -656,11 +657,11 @@
 									</div>
 									<div class="col-md-12">
 										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
-										 placeholder="{{'What was the moment that making become a part of your life?'}}" maxlength="300">
+										 placeholder="What was the moment that making became part of your life?" maxlength="140">
 										</textarea>
-										<span [ngClass]="{valErrorString: formGroup.value.started_making.length == 300}">{{formGroup.value.started_making.length}}/300 Chars</span>
+										<span *ngIf="formGroup.value.started_making" [ngClass]="{valErrorString: formGroup.value.started_making.length == 140}">{{formGroup.value.started_making.length}}/140 Chars</span>
+										<span *ngIf="!formGroup.value.started_making">0/140 Chars</span>
 									</div>
-									<!--<div *ngIf="!formGroup.valid">max length 300</div>-->
 									<div class="clearfix"></div>
 								</div>
 							</div>
