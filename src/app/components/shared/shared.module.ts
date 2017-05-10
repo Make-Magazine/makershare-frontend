@@ -47,6 +47,7 @@ import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
 import { AddProtocolDirective } from '../../directives/add-protocol.directive';
+import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 
  let config = {
     breakPoints: {
@@ -117,6 +118,7 @@ import { AddProtocolDirective } from '../../directives/add-protocol.directive';
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
+    RegistrationCollectComponent,
   ],
   exports: [
     CommentComponent,
@@ -154,7 +156,8 @@ import { AddProtocolDirective } from '../../directives/add-protocol.directive';
     NotificationPanelComponent,
     NotificationTemplateComponent,
     AddProtocolDirective,
-    ValidateOnFocusoutDirective
+    ValidateOnFocusoutDirective,
+    RegistrationCollectComponent
   ],
   providers:[{
      provide: ResponsiveConfig, 
@@ -194,5 +197,6 @@ export { ProjectVoteComponent };
 export { ReportCommentComponent };
 export { UserCardMsgsComponent };
 export { NotificationPanelComponent };
+export { RegistrationCollectComponent };
 
 
