@@ -1,4 +1,4 @@
-<div class="challenge-card row" *ngIf="challenge && !front">
+<div class="challenge-card row hidden-md-down" *ngIf="challenge && !front">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
     <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
     <img *ngIf="!challenge.cover_image" src="./assets/images/placeholder.png" alt="">
@@ -57,7 +57,6 @@
             <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
             <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date < 0"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
             <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date > 0"> Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
-
           </div>
         </div>
         <div class="challenge-card-footer-2 hidden-sm-up">
@@ -83,7 +82,6 @@
             <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
             <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date < 0"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
             <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date > 0"> Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
-
           </div>
         </div>
       </div>
@@ -104,8 +102,83 @@
 </div>
 <!-- End col-md-6 -->
 
-
-
+<!--Challenge card for tablets and ipad-->
+<div class="tablet-challenge-card row hidden-lg-up" *ngIf="challenge && !front">
+  <div class="col-md-6 col-sm-12">
+    <div *showItBootstrap="['sm','xs']">
+      <div class="card-partnership-mobile" *ngIf="challenge.sponsored_by">
+        <p>Sponsored by {{challenge.sponsored_by}}</p>
+      </div>
+    </div>
+    <div class="image-container">
+      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+      <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
+    </div>
+    <div class="card-type-grey">
+      <div class="type-layer-2">
+        Mission
+      </div>
+    </div>
+  </div>
+  <!--End image-container -->
+  <div class="col-md-6 col-sm-12 content-container">
+    <div class="card-container h-100">
+      <div class="card h-100">
+        <div *hideItBootstrap="['sm','xs']">
+          <div class="card-partership" *ngIf="challenge.sponsored_by">
+            <p>Sponsored by {{challenge.sponsored_by}}</p>
+          </div>
+        </div>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
+        <div class="card-description" *ngIf="challenge.summary_trim">
+          <p [innerHTML]="challenge.summary_trim"></p>
+        </div>
+        <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
+          <div class="challene-card-footer-1" *ngIf="challenge.nid">
+            <div class="button-container-main-1">
+              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+            </div>
+          </div>
+          <div class="challenge-card-footer-2 ml-md-3">
+            <div class="challenge-card-count hidden-xs-down">
+              <span class="entries-count">{{countProjects}}
+                <span *ngIf="countProjects>1">Entries</span>
+              <span *ngIf="countProjects==1">Entry</span>
+              <span *ngIf="countProjects < 1">Entries</span>
+              </span>
+              <span class="follow-count">{{challenge.followers}}
+                <span *ngIf="challenge.followers>1">Followers</span>
+              <span *ngIf="challenge.followers==1">Follower</span>
+              <span *ngIf="!challenge.followers">0 Followers</span>
+              </span>
+            </div>
+            <div class="challenge-card-count hidden-sm-up">
+              <span class="entries-count" style="border: none !important;">{{countProjects}}
+                <span *ngIf="countProjects>1">Entries</span>
+              <span *ngIf="countProjects==1">Entry</span>
+              <span *ngIf="countProjects < 1">Entries</span>
+              </span>
+            </div>
+            <div class="challenge-card-status">
+              <!--<span class="closed-status" *ngIf="challenge.diffDays>1">{{challenge.diffDays}} DAYS</span>-->
+              <!--<span class="closed-status" *ngIf="challenge.diffDays<=1">{{challenge.diffDays}} DAY</span>-->
+              <!--<span class="closed-status" *ngIf="challenge.status_id == 376">{{challenge.status}}</span>-->
+              <!--<div class="open-status" *ngIf="challenge.status_id != 376">{{challenge.status}}</div>-->
+              <!--<span class="challenge-end-date" *ngIf="challenge.status_id != 376">Submission Close <br> {{challenge.challenge_end_date.value | date:'MM/dd/yyyy'}}</span>-->
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 375">Submissions close: {{challenge.challenge_end_date.value}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1107">In review. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 1108">Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date < 0">Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
+              <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date > 0">Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End card-container -->
+  </div>
+</div>
+<!-- End col-md-6 -->
 
 
 <div class="front-challenge-card row" *ngIf="challenge && front && !first">
