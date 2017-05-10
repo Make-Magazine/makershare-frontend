@@ -58,14 +58,14 @@ export class CommentsComponent implements OnInit {
 
       this.comments.value = this.comments.value.concat(data);
       // this.loadMoreVisibilty();
-      console.log(this.comments.value.length == 1)
+     // console.log(this.comments.value.length == 1)
       if (this.comments.value.length == 1) {
         this.hideloadmorecomment = true;
       } else {
         this.loadMoreVisibilty();
 
       }
-      console.log(this.commentCount)
+     // console.log(this.commentCount)
 
     });
   }
@@ -80,8 +80,8 @@ export class CommentsComponent implements OnInit {
   loadMoreVisibilty() {
     this.commentCount = this.comments.value[0].comment_count
 
-    console.log(this.commentCount);
-    console.log(this.comments.value.length)
+    //console.log(this.commentCount);
+   // console.log(this.comments.value.length)
     // get the challenges array count
     if (this.commentCount == this.comments.value.length) {
       // this.comments.value=[];

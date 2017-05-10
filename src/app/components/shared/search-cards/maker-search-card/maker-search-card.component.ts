@@ -16,6 +16,8 @@ export class MakerSearchCardComponent implements OnInit {
   project = {};
   card;
   projectsCount;
+  latestPorjectImg;
+  swtichImage:boolean = false;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private viewService: ViewService,
@@ -28,6 +30,7 @@ export class MakerSearchCardComponent implements OnInit {
     this.getMakerCard();
     this.getMakerBadges();
     this.CountMakerProjects()
+    this.getLatestProject();
   }
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
@@ -48,5 +51,23 @@ export class MakerSearchCardComponent implements OnInit {
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
+  }
+  goToProfile(path: string) {
+    this.router.navigate(['/portfolio/', path]);
+  }
+  getLatestProject() {
+    this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
+      if (data[0]) {
+        this.latestPorjectImg = data[0].latest_project_cover_photo;
+      }
+    });
+  }
+  over() {
+    if(this.latestPorjectImg)
+    this.swtichImage=true;
+  }
+  leave() {
+    if(this.latestPorjectImg)    
+    this.swtichImage=false;  
   }
 }

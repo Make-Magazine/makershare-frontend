@@ -25,11 +25,9 @@
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
                 <div class="showcase-card-footer d-flex mt-auto">
-                  <div class="showcase-card-footer-1">
-                  </div>
                   <div class="showcase-card-footer-2">
-                    <div class="showcase-card-count d-felx">
-                      <div *ngIf="showcase.nid">
+                    <div class="showcase-card-count  d-flex flex-row">
+                      <div class="showcase-like" *ngIf="showcase.nid">
                         <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" (countNumber)="likesCounter($event)"></app-like>
                       </div>
                       <div class="views-count-div">
@@ -39,18 +37,18 @@
                       <div class="views-count-div">
                         <app-bookmark [nodeNid]="showcase.nid" [nodeType]="'showcase'"></app-bookmark>
                       </div>
-                      <a class="profile-share">
+                      <div class="profile-share">
                         <app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="showcase.cover_photo"></app-shared-buttons>
-                      </a>
+                      </div>
                       <!--<div class="projects-count-div">
                         <span class="projects-count">{{projectsCount}}
                            <span *ngIf="projectsCount>1">projects</span>
                         <span *ngIf="projectsCount<=1">project</span>
                         </span>
                       </div>-->
-                      <div class="showcase-date" *ngIf="showcase.last_updated">
-                        <span class="update-date">Last updated: {{showcase.last_updated}}</span>
-                      </div>
+                    </div>
+                    <div class="showcase-date w-100" *ngIf="showcase.last_updated">
+                      <span class="update-date">Last updated: {{showcase.last_updated}}</span>
                     </div>
                   </div>
                 </div>
@@ -62,12 +60,15 @@
       <div class="container">
         <div class="filters">
           <div class="container">
-            <div class="row d-flex justify-content-end align-items-center">
+            <div class="row d-flex justify-content-end align-items-center" *ngIf="projectsCount>=1">
               <div class="entries-count btn">
                 <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
                 <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
               </div>
               <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
+            </div>
+            <div class="container text-center" *ngIf="!projectsCount">
+              <p>No project yet</p>
             </div>
           </div>
         </div>

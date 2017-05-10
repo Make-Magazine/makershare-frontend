@@ -1,6 +1,6 @@
 
   <section class="challenge-page-data">
-    <div class="region region-content page-challenge">
+    <div class="container region region-content page-challenge">
       <header class="challenge-header">
         <div class="container">
           <h3>Missions</h3>
@@ -33,6 +33,9 @@
           <!-- Start Shared Challenge Card -->
          <app-challenge-card [challengeNid]="challenge.nid" ></app-challenge-card>
          <!-- End Shared  Challenge Card-->
+        </div>
+        <div *ngIf="challenges.length == 0">
+          <h4>There are no missions to show</h4>
         </div>
         <!-- End challenge-card -->
       </div>

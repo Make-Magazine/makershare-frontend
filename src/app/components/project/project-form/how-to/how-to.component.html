@@ -2,7 +2,7 @@
   {{ r.name}}
 </template>
 
-<div class="region region-content col-sm-8" [formGroup]="HowToForm">
+<div class="region region-content col-md-8" [formGroup]="HowToForm">
   <div class="how-to">
     <div class="form-group tools">
       <label>Tools</label>
@@ -31,12 +31,12 @@
                   class="form-control" [formControl]="HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_quantity">
               </div>
             </div>
-            <a *ngIf="TempSelectedToolMaterialPart['tool']" (click)="SetToolMaterialPart('tool','field_tools',TempSelectedToolMaterialPart['tool'],HowToForm.controls.field_tools.controls.length-1);"><i class="fa fa-plus-square"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['tool']" (click)="SetToolMaterialPart('tool','field_tools',TempSelectedToolMaterialPart['tool'],HowToForm.controls.field_tools.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
-        <span *ngIf="HowToForm.controls.field_tools.controls.length > 1" class="p-2 tool-list">PROJECT SUPPLY LIST:</span>
+        <span *ngIf="HowToForm.controls.field_tools.controls.length > 1" class="tool-list">PROJECT SUPPLY LIST:</span>
         <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row p-1" *ngIf="i != HowToForm.controls.field_tools.controls.length-1">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_tools.controls.length-1">
             <div>{{Tool.value.field_tool_name|EntityReferenceNoNid}}, Quantity: {{Tool.value.field_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_tools')"></i>
           </div>
@@ -70,11 +70,11 @@
                   class="form-control" [formControl]="HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_quantity">
               </div>
             </div>
-            <a *ngIf="TempSelectedToolMaterialPart['part']" (click)="SetToolMaterialPart('part','field_parts',TempSelectedToolMaterialPart['part'],HowToForm.controls.field_parts.controls.length-1);"><i class="fa fa-plus-square"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['part']" (click)="SetToolMaterialPart('part','field_parts',TempSelectedToolMaterialPart['part'],HowToForm.controls.field_parts.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
         <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row p-1" *ngIf="i != HowToForm.controls.field_parts.controls.length-1">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_parts.controls.length-1">
             <div>{{Part.value.field_part_name|EntityReferenceNoNid}},Quantity:{{Part.value.field_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_parts')"></i>
           </div>
@@ -108,11 +108,11 @@
                   class="form-control" [formControl]="HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_quantity">
               </div>
             </div>
-            <a *ngIf="TempSelectedToolMaterialPart['material']" (click)="SetToolMaterialPart('material','field_materials',TempSelectedToolMaterialPart['material'],HowToForm.controls.field_materials.controls.length-1);"><i class="fa fa-plus-square"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['material']" (click)="SetToolMaterialPart('material','field_materials',TempSelectedToolMaterialPart['material'],HowToForm.controls.field_materials.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
         <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row p-1" *ngIf="i != HowToForm.controls.field_materials.controls.length-1">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_materials.controls.length-1">
             <div>{{Material.value.field_material_name|EntityReferenceNoNid}},Quantity:{{Material.value.field_material_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_materials')"></i>
           </div>
@@ -124,7 +124,7 @@
         <div *ngIf="Difficulties" class="form-group difficulties col-md-6">
           <label for="">Difficulty</label>
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_difficulty.value == '_none'"></i>
-          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="form-control col-lg-8" title="Select one" formControlName='field_difficulty'>
+          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="shadowed form-control col-lg-8" title="Select one" formControlName='field_difficulty'>
             <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Difficulty of Difficulties; let i=index" value="{{Difficulty.tid}}" >{{Difficulty.name}}</option>
           </select>
@@ -140,7 +140,7 @@
         <div *ngIf="Durations" class="form-group durations col-md-6">
           <label for="">Duration</label>
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_duration.value == '_none'"></i>
-          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="form-control col-lg-8" title="Select one" formControlName='field_duration'>
+          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="shadowed form-control col-lg-8" title="Select one" formControlName='field_duration'>
             <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Duration of Durations; let i=index" value="{{Duration.tid}}" >{{Duration.name}}</option>
           </select>
@@ -159,29 +159,31 @@
       <label>Resources</label>
       <div formArrayName="field_resources">
         <div>
-          <div class="card-block" [formGroupName]="HowToForm.controls.field_resources.controls.length-1">
-            <div class="col-md-12 inputs-container flex-column flex-md-row">
+          <div class="" [formGroupName]="HowToForm.controls.field_resources.controls.length-1">
+            <div class="inputs-container row flex-column flex-md-row">
               <div class="form-group col-xs-12 col-md-6">
                 <input *ngIf="!AddingValues" type="text" class="form-control" formControlName="field_label" placeholder="Name of resource.">
                 <small *ngIf="formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label" class="text-danger">
                   {{formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label}}
                 </small>
               </div>
-              <div class="col-md-6 col-xs-12">
+              <div class="col-md-6 d-flex col-xs-12 resources-button">
+                <p class="resource-float-text">Upload files or save URL links.</p>
                 <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" (click)="OpenModal(resourcefile)" class="btn btn-load-more">Choose a file</button>
-                <span *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="btn btn-primary" (click)="OpenModal(linkreop)">URL Link</span>
-                <div *ngIf="ResourceFileSelected">{{ResourceFileSelected.filename}}</div>
-                <div *ngIf="ResourceRepoLinkSelected">{{ResourceRepoLinkSelected}}</div>
-                <a *ngIf="ResourceFileSelected" (click)="SetResourceFile()"><i class="fa fa-plus-square"></i>Add</a>
-                <a *ngIf="ResourceRepoLinkSelected" (click)="SetResourceByRepoLink()"><i class="fa fa-plus-square"></i>Add</a>
+                <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="btn btn-load-more fake-btn" (click)="OpenModal(linkreop)">URL Link <i class="lnr lnr-plus-circle"></i></button>
+                <div class="selected" *ngIf="ResourceFileSelected">{{ResourceFileSelected.filename}}</div>
+                <div class="selected" *ngIf="ResourceRepoLinkSelected">{{ResourceRepoLinkSelected}}</div>
+                <a class="add-button" class="selected" *ngIf="ResourceFileSelected" (click)="SetResourceFile()"><i class="lnr lnr-plus-circle"></i>Add</a>
+                <a class="add-button" class="selected" *ngIf="ResourceRepoLinkSelected" (click)="SetResourceByRepoLink()"><i class="lnr lnr-plus-circle"></i>Add</a>
               </div>
             </div>
           </div>
         </div>
-        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="card">
-          <div *ngIf="i != HowToForm.controls.field_resources.controls.length-1">
+        <span *ngIf="HowToForm.controls.field_resources.controls.length > 1" class="tool-list">RESOURCES:</span>
+        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="result col-md-6">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_resources.controls.length-1">
             <div>{{Resource.value.field_label}}</div>
-            <span class="fa fa-lg fa-times pull-right"(click)="RemoveRow(i,'field_resources')"></span>
+            <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_resources')"></i>
           </div>
         </div>
       </div>
@@ -196,7 +198,7 @@
   <!-- End how-to -->
 </div>
 <aside class="col-md-4">
-  <div class="how-to-guide">
+  <div class="how-to-guide hidden-sm-down">
     <h2 class="col-12">Helpful Hints</h2>
     <p class="col-12">This tab isn't required to publish your project.</p>
     <br>
@@ -227,7 +229,7 @@
 <!-- MODALS -->
 
 <!-- Add Modal -->
-<template #addmodal let-c="close" let-d="dismiss" ngbModalContainer>
+<template #addmodal let-c="close" let-d="dismiss">
   <div class="create-item-modal">
     <div class="modal-header">
       <h4 class="modal-title">Add new {{CurrentModal}}</h4>
@@ -246,7 +248,7 @@
   </div>
 </template>
 
-<template #resourcefile let-c="close" let-d="dismiss" ngbModalContainer>
+<template #resourcefile let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Choose resource file</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -269,7 +271,7 @@
   </div>
 </template>
 
-<template #linkreop let-c="close" let-d="dismiss" ngbModalContainer>
+<template #linkreop let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Enter the repository link</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -277,7 +279,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <input name="urllink" type="text" url required #urllink="ngModel" [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
+    <input name="urllink" type="text" url required #urllink="ngModel" add-protocol [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
     <small *ngIf="urllink.errors && urllink.dirty" class="text-danger">
       URL not valid, please enter a valid url:http://example.com.
     </small>

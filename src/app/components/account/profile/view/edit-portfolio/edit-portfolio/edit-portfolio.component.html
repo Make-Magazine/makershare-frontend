@@ -1,8 +1,15 @@
 <div class="page-portfolio">
   <div class="top-content-wrapper">
     <div class="nav-portfolio" style="overflow: hidden;">
+      <div class="d-flex flex-row w-100 hidden-xl-up">
+        <p class="titles  m-0 pt-2" *ngIf="projectsCount > 0">CHOOSE PUBLIC VIEW</p>
+        <div class="display-style d-flex ml-auto">
+          <p [ngClass]="{'not_active': DefaultView != 'grid'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+          <p [ngClass]="{'not_active': DefaultView != 'showcase'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+        </div>
+      </div>
       <div class="d-flex justify-content-start">
-        <div class="d-flex flex-column" *ngIf="projectsCount > 0">
+        <div class="d-flex flex-column w-100" *ngIf="projectsCount > 0">
           <p class="titles">EDIT YOUR PORTFOLIO</p>
           <div class="d-flex nav">
             <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white-2" id="public">
@@ -19,13 +26,13 @@
             </a>
           </div>
         </div>
-        <div class="d-flex flex-column ml-3 w-100">
+        <div class="d-flex flex-column ml-3 w-100 hidden-lg-down">
           <p class="titles" *ngIf="projectsCount > 0">CHOOSE PUBLIC VIEW</p>
-          <div class="display-style d-flex ml-auto">
+          <div class="display-style d-flex">
             <p [ngClass]="{'not_active': DefaultView != 'grid'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
             <p [ngClass]="{'not_active': DefaultView != 'showcase'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </div>

@@ -22,6 +22,7 @@ import { MetaService } from '@nglibs/meta';
 import { FileEntityManage } from '../../../../models';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { StatisticsService } from '../../../../d7services/statistics/statistics.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -94,6 +95,8 @@ export class ProfileComponent implements OnInit {
       'field_instructables': [this.profile.field_social_accounts.field_instructables, [CustomValidators.url]],
       'field_hackday': [this.profile.field_social_accounts.field_hackday, [CustomValidators.url]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
+      'field_website_title':[this.profile.field_social_accounts.field_website_title],
+      'field_blog_title':[this.profile.field_social_accounts.field_blog_title]
     });
   }
   PhotoModalTab:string;
@@ -104,6 +107,10 @@ export class ProfileComponent implements OnInit {
   ProjectsCount: number;
   ProfilecropperSettings: CropperSettings;
   allIntersets: Array<any>;
+  ParentIntersets: Array<any> = [];
+  ChildrenIntersets: Array<any> = [];
+  SelectedParentInterest;
+  SelectedChildInterest;
   uid: number;
   customDescription: string;
   badges: Array<any>;
@@ -211,7 +218,7 @@ export class ProfileComponent implements OnInit {
     }
     var tasks = [];
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
-    tasks.push(this.profileService.getAllInterests());
+    tasks.push(this.viewService.getView('projects_categories'));
     tasks.push(this.viewService.getView('maker_count_all_projects/' + this.uid));
     tasks.push(this.viewService.getView('maker_address_api'));
     let source = Observable.forkJoin(tasks).subscribe((data) => {
@@ -228,6 +235,46 @@ export class ProfileComponent implements OnInit {
     }
     
   }
+  AssignParentChildInterests(){
+    this.ParentIntersets = [];
+    this.allIntersets.forEach((interest,index)=>{
+      if(!interest.parent_tid){
+        this.ParentIntersets.push(interest);
+      }
+    });
+  }
+  GetInterestsForParent(){
+    this.ChildrenIntersets = [];
+    this.allIntersets.forEach((interest,index)=>{
+      if(interest.parent_tid && interest.parent_tid == this.SelectedParentInterest && this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(interest.tid) == -1){
+        this.ChildrenIntersets.push(interest);
+      }
+    });
+  }
+  SetInterest(ParentInterestElement:HTMLSelectElement){
+    this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedChildInterest)]);
+    // if(this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(this.SelectedParentInterest) == -1){
+    //   this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedParentInterest)]);
+    // }
+    ParentInterestElement.value = '_none';
+    delete this.SelectedChildInterest;
+    delete this.SelectedParentInterest;
+    this.AssignParentChildInterests();
+  }
+  RemoveInterest(InterestId:number,InterestParentId:number):void{
+    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestId),1);
+    var flag = false;
+    this.ProfileInfo.maker_interests.forEach((category,index)=>{
+      let catIndex = this.allIntersets.map(element => element.tid).indexOf(category.tid);
+      if(this.allIntersets[catIndex].parent_tid == InterestParentId){
+        flag = true;
+        return;
+      }
+    });
+    if(!flag){
+      this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestParentId),1);
+    }
+  }
   OpenModal(Template, ModalName: string) {
     if(ModalName == 'Portfolio Photo'){
       this.modalService.open(Template, {size:'lg'});
@@ -240,8 +287,7 @@ export class ProfileComponent implements OnInit {
       }
       this.CurrentInfoTab = ModalName;
       this.modalService.open(Template, { size: 'lg' });
-    }
-      
+    } 
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper);
@@ -258,23 +304,22 @@ export class ProfileComponent implements OnInit {
     };
     myReader.readAsDataURL(file);
   }
-  SaveImage(closebtn: HTMLButtonElement, DataObject, ImageType) {
-    closebtn.click();
-    let image: FileEntity = { file: NodeHelper.RemoveFileTypeFromBase64(DataObject.image), filename: this.FileName };
+  SaveImage() {
+    let image: FileEntity = { file: NodeHelper.RemoveFileTypeFromBase64(this.ProfilePicData.image), filename: this.FileName };
     this.fileService.SendCreatedFile(image).subscribe((data) => {
-      var user: UserProfile;
-      user = { uid: this.uid, user_photo: data.fid };
+      this.ProfileInfo.uid = this.uid;
+      this.ProfileInfo.user_photo = data.fid;
       this.ProfilePicData = {};
       this.FileName = '';
-      this.SaveUser(user);
+      this.SaveUser(this.ProfileInfo);
     });
   }
 
   ReSetAddressValues() {
-    if (this.CountryFieldsAndDetails['administrative_areas'] && !this.ProfileInfo.address.governorate) {
+    if (this.CountryFieldsAndDetails['administrative_areas']) {
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
-      if (!this.profile.address[administrative_area_label]) {
-        this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
+      if (!this.ProfileInfo.address[administrative_area_label]) {
+        this.ProfileInfo.address.governorate = '_none';
       } else {
         this.ProfileInfo.address.governorate = this.profile.address[administrative_area_label];
       }
@@ -290,8 +335,12 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
-    this.ReSetAddressValues();
-    this.SaveUser(this.ProfileInfo);
+    // this.ReSetAddressValues();
+    if(this.ProfilePicData.image){
+      this.SaveImage();
+    }else{
+      this.SaveUser(this.ProfileInfo);
+    }
     closebtn.click();    
   }
   SaveUser(user: UserProfile) {
@@ -304,6 +353,7 @@ export class ProfileComponent implements OnInit {
     if(!CountryKey) return;
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
+      this.ReSetAddressValues();
     });
   }
   AddMakerspaceRow(makerspace?) {
@@ -353,9 +403,13 @@ export class ProfileComponent implements OnInit {
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
-    this.ProfileInfo.address = user.address;
+    if(user.address){
+      this.ProfileInfo.address = user.address;
+    }    
     this.ProfileInfo.describe_yourself = user.describe_yourself;
-    this.ProfileInfo.bio = user.bio;
+    if(user.bio){
+      this.ProfileInfo.bio = user.bio;
+    }
     this.ProfileInfo.address_publish = user.address_publish;
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
@@ -369,6 +423,7 @@ export class ProfileComponent implements OnInit {
     this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();
     this.buildFormSocial();
+    this.AssignParentChildInterests();
     for (let social in this.ProfileInfo.field_social_accounts) {
       if ((social != 'field_website_or_blog' || social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
         this.emptySocial = false;

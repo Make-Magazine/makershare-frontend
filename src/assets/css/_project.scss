@@ -131,6 +131,7 @@
 			p {
 				 @include desc-font-1();
 				 line-height: inherit !important;
+				 padding-top: 4px;
 			}
 		}
 	}
@@ -777,7 +778,7 @@ header.showcase-project {
 					}
 				}
 				.actions-button {
-					padding: 4px;
+					padding: 4px 10px;
 				}
 		}
 		.right-side {
