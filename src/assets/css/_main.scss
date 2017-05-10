@@ -510,7 +510,8 @@ body {
 
 #search-box-layer {
     .close-search-layer,
-    .go-search {
+    .go-search,
+    .clear-search {
         position: absolute;
         color: #fff;
         font-size: 2em;
@@ -523,6 +524,11 @@ body {
     .go-search {
         top: 7px;
         right: -40px;
+    }
+    .clear-search {
+        top: 13px;
+        right: 5px;
+        font-size: 1em;
     }
 }
 
