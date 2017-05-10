@@ -14,7 +14,7 @@
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
-                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term.tid);projectsById($event);"
+                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term.tid,term.name);projectsById($event);"
                   class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
               </li>
             </ul>
