@@ -15,12 +15,31 @@ import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
+import { trigger, style, transition, animate, group } from '@angular/core';
 
 declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
   providers: [NgbTooltipConfig],
+  animations: [
+    trigger('SlideToRight', [
+      transition(':enter', [
+        style({
+          'transform': 'translateY(-100%)',
+          'z-index': 0,
+        }),
+        animate(350)
+      ]),
+      transition(':leave', [
+        animate('0.2s ease', style({
+          'transform': 'translate(0px,-40px)',
+          'z-index': 0,
+          'opacity':0,
+        })),
+      ])
+    ])
+  ]
 })
 export class YourStoryComponent implements OnInit,AfterViewInit {
   @ViewChild('ckeditor') ckeditor:any;
