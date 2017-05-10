@@ -506,6 +506,193 @@ img {
     }
 }
 
+/* showcase for mobile */
+.showcase-card-backlayer-mobile {
+    background-color: $showcase-layer;
+    transition: background-color 0.8s ease;
+    @include boxShadow(2px, 2px ,8px, $shade-3);
+
+    height: 460px;
+    margin-bottom: 20px;
+    &:hover {
+        background-color: $showcase-layer;
+        transition: background-color 0.8s ease;
+    }
+    &:hover .showcase-card-backlayer-mobile-2 {
+        transition: background-color 0.8s ease;
+        @include boxShadow(2px, 2px ,8px, $shade-3);
+        background-color: $blue;
+    }
+    .showcase-card-backlayer-mobile-2 {
+        margin-bottom: 10px;
+        position: relative;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        background-color: transparent;
+        transition: background-color 0.8s ease;
+        height: 450px;
+    }
+    .showcase-card {
+        position: relative;
+        padding: 16px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        background-color: white;
+        @include boxShadow(2px, 2px ,8px, $shade-3);
+        height: 440px;
+        .card {
+            background-color: transparent;
+            border: none;
+            .showcase-type {
+                p {
+                    font-size: 1em;
+                    color: $blue;
+                }
+            }
+        }
+        .single-showcase {
+            padding: 10px;
+            img {
+                width: 250px;
+            }
+            .card-partership {
+                color: $main-button-1;
+            }
+        }
+        .left-side {
+            padding: 0px;
+        }
+        .image-container {
+            position: relative;
+            padding: 0;
+            height: auto;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .card-container {
+            color: $white;
+            height: 100%;
+            position: relative;
+            .card {
+                height: 100%;
+            }
+            .showcase-type-badge {
+                position: absolute;
+                top: 24px;
+                right: -40px;
+                transform: rotate(-90deg);
+                p {
+                    margin: 0px;
+                    color: $text-color-3;
+                }
+            }
+            .card-title {
+                @include card-header-font-lg();
+                color: $font-grey;
+                margin-bottom: 20px;
+                line-height: 120% !important;
+            }
+            .card-status {
+                @include body-font-1();
+                display: inline-block;
+                text-transform: none;
+            }
+            .card-description {
+                // margin-bottom: 60px;
+                h4 {
+                    font-weight: bold;
+                }
+                p {
+                    @include body-font-2();
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    color: $font-grey;
+                    max-height: 102px;
+                }
+            }
+            .card-buttons {
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+                .follow-number {
+                    background-color: $light-grey*0.9;
+                    padding: 3px 15px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .showcase-card-footer {
+            .showcase-card-footer-1 {
+                bottom: 5px;
+                align-self: end;
+                a.btn.btn-grey {
+                    background-color: $light-grey;
+                }
+            }
+            .showcase-card-footer-2 {
+                padding-top: 4px;
+                .showcase-card-count {
+                    font-size: 14px;
+                    div {
+                        float: left;
+                        margin-right: 8px;
+                        min-width: 50px;
+                    }
+                    .likes-count-div {
+                        .showcase-likes {
+                            width: 12px;
+                            height: auto;
+                        }
+                        .likes-count {
+                            color: $text-color-3;
+                        }
+                    }
+                    .views-count-div {
+                        .showcase-views {
+                            width: 20px;
+                            height: auto;
+                        }
+                        .views-count {
+                            color: $text-color-3;
+                        }
+                    }
+                    .projects-count-div {
+                        margin-left: 20px;
+                    }
+                    .update-date {
+                        padding-right: 10px;
+                        color: $text-color-3;
+                    }
+                    .showcase-date {
+                        padding-left: 16px;
+                        height: auto;
+                    }
+                    .projects-count {
+                        color: $text-color-3;
+                    }
+                }
+                .showcase-card-status {
+                    .open-status,
+                    .closed-status {
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 /* showcase card on search page */
 
