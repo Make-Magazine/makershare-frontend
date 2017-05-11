@@ -94,6 +94,7 @@ export class SentComponent implements OnInit {
                       this.messages[key].user_photo = res.user_photo;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
+                      this.messages[key].status = res.status;
                     })
                   }
                 }

@@ -42,25 +42,6 @@ export class ProfileComponent implements OnInit {
     }
     return x;
   };
-  SearchMakerspace = (text$: Observable<string>) => {
-    return text$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(() => this.searchFailed = false)
-      .switchMap((term) => {
-        if (term.length > 1) {
-          return this.viewService.getView('api_makerspaces', [['search', term]])
-            .map(result => {
-              if (result.length == 0) {
-                this.searchFailed = true;
-              }
-              return result;
-            })
-        }
-        return [];
-      });
-  };
-
   SearchCountry = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
@@ -145,6 +126,16 @@ export class ProfileComponent implements OnInit {
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
   emptySocial :boolean = true;
+  emptySection = {
+      motto: true,
+      bio: true,
+      social: true,
+      badges: true,
+      makerspace:true,
+      websites:true,
+      topics: true,
+      started_making:true,
+    }
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -336,28 +327,12 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.bio = this.formGroup.value.bio;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
       this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
-      this.viewService.getView("api_makerspaces").subscribe(makerspaces=>{
-        this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace,index)=>{
-          let foundindex:number = makerspaces.map(element=>element.title).indexOf(makerspace.field_makerspace_name);
-          if(foundindex != -1){
-            this.ProfileInfo.field_add_your_makerspace_s_[index].id = makerspaces[foundindex].id;
-          }else{
-            this.ProfileInfo.field_add_your_makerspace_s_[index].id = 0;
-          }
-        });
-        if(this.ProfilePicData.image){
-          this.SaveImage();
-        }else{
-          this.SaveUser(this.ProfileInfo);
-        }
-      });
+    }
+    if(this.ProfilePicData.image){
+      this.SaveImage();
     }else{
-      if(this.ProfilePicData.image){
-        this.SaveImage();
-      }else{
-        this.SaveUser(this.ProfileInfo);
-      }
-    }   
+      this.SaveUser(this.ProfileInfo);
+    } 
   }
   SaveUser(user: UserProfile) {
     user.uid = this.uid;
@@ -377,7 +352,6 @@ export class ProfileComponent implements OnInit {
     let MakerspaceGroup: FormGroup = this.fb.group({
       field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
       field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', URLNoProtocol()],
-      id: [makerspace ? makerspace.id : 0, Validators.required]
     });
     control.push(MakerspaceGroup);
   }
@@ -405,13 +379,6 @@ export class ProfileComponent implements OnInit {
           this.profilePictureService.update(this.profile.user_photo);
       }
     )
-  }
-  SelectMakerspace(index: number, event) {
-    let makerspace = event.item;
-    event.preventDefault();
-    const field_add_your_makerspace_s_ = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
-    field_add_your_makerspace_s_.controls[index]['controls'].id.setValue(makerspace.id);
-    field_add_your_makerspace_s_.controls[index]['controls'].field_makerspace_name.setValue(makerspace.title);
   }
   SetUser(user: UserProfile) {
     this.profile = user;
@@ -441,9 +408,19 @@ export class ProfileComponent implements OnInit {
     this.buildFormSocial();
     this.AssignParentChildInterests();
     for (let social in this.ProfileInfo.field_social_accounts) {
-      if ((social != 'field_website_or_blog' || social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
+      if ((social != 'field_website_or_blog' && social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
         this.emptySocial = false;
       }
+    }
+
+  }
+  CheckFields(){
+    if(this.uid == this.CurrentLoggedUserId){
+      for(let element in this.emptySection) {
+        this.emptySection[element] = false;
+      }
+    } else {
+     
     }
   }
   ToggleProfile() {

@@ -131,6 +131,10 @@
 								text-decoration: none !important;
 							}
 						}
+						
+					}
+					.deleted-user {
+							color: gray !important;
 					}
 					.message-info {
 							width: 92%;
@@ -145,6 +149,7 @@
 								text-decoration: none !important;
 							}
 						}
+						
 					}
 					.message-subject {
 						cursor:pointer;
@@ -335,6 +340,7 @@
 			.notf-date {
 				margin: 0px;
 			}
+			
 		}
 		.delete {
 			margin-left: auto;
