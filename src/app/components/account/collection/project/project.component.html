@@ -8,13 +8,13 @@
   <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
   <div class="media bookmark-item bookmark-project" *ngFor="let project of projects let i=index;">
     <div class="media-left">
-      <div class="book-img" [routerLink]="['/project/view/',project.nid]" *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive"></div>
+      <div class="book-img" [routerLink]="['/projects',project.nid]" *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive"></div>
     </div>
     <div class="media-body">
       <!--<div class="select" *ngIf="project">-->
       <!--<input type="checkbox" value="{{project.nid}}" [(ngModel)]="project.state" (change)="valueChanged(project.nid,$event)">-->
       <!--</div>-->
-      <div class="title" [routerLink]="['/project/view/',project.nid]" *ngIf="project"><span>{{project.project_name}}</span></div>
+      <div class="title" [routerLink]="['/projects',project.nid]" *ngIf="project"><span>{{project.project_name}}</span></div>
     </div>
     <div class="media-right">
       <div class="delete">
