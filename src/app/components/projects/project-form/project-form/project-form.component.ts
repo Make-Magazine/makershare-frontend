@@ -83,13 +83,15 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   ) { }
 
   ngOnInit(): void {
-    var title;
+    var path;
     this.ProjectLoaded = false;
     this.route.params.subscribe(params => {
-      title = params["title"];
+      path = params["path"];
     });
-    this.nodeService.getIdFromUrl(title,'project').subscribe(ids=>{
-      let nid = ids[0];  
+    this.nodeService.getIdFromUrl(path,'project').subscribe(ids=>{
+      var nid = ids[0];  
+      if(path && !ids[0])
+        nid = path;
       if (nid) {
         this.GetProject(nid);
       } else {

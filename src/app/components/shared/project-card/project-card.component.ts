@@ -71,7 +71,7 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view/', nid]);
+    this.router.navigate(['/projects', nid]);
   }
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
