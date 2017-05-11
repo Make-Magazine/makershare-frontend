@@ -21,20 +21,29 @@
         <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
           <div class="media message-info">
             <div class="media-left">
-              <a (click)="userProfile(message.first_name,message.last_name)">
+              <a *ngIf="message.status == 'active'" (click)="userProfile(message.first_name,message.last_name)">
+                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+              </a>
+              <a *ngIf="message.status == 'blocked'">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
             </div>
             <div class="media-body" *ngIf="message.count>2">
-              <span class="sender">You sent 
+              <span *ngIf="message.status == 'active'" class="sender">You sent 
                 <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
               </span>
+              <span *ngIf="message.status == 'blocked'" class="sender">You sent 
+                <a class="blocked-user" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
+              </span>
               <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
-               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
+              <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
             <div class="media-body" *ngIf="message.count<=2">
-              <span class="sender">You sent 
+              <span  *ngIf="message.status == 'active'" class="sender">You sent 
                 <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
+              </span>
+              <span  *ngIf="message.status == 'blocked'" class="sender">You sent 
+                <a class="blocked-user" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
               </span>
               <h4 message-subject>{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
@@ -56,7 +65,7 @@
       </li>
     </ul>
     <div class="text-center" *ngIf="hideloadmore">
-        <a class="btn btn-load-more" (click)="loadMore()">Load more</a>
+      <a class="btn btn-load-more" (click)="loadMore()">Load more</a>
     </div>
   </div>
 </div>

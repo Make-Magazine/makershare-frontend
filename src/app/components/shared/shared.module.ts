@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -12,10 +12,8 @@ import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ShareButtonsModule } from "ng2-sharebuttons";
-import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-//import { Ng2DeviceDetector} from 'ng2-device-detector';
+import { ShareButtonsModule } from "ng2-sharebuttons";
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';
@@ -41,6 +39,7 @@ import { ReportCommentComponent } from './report-comment/report-comment.componen
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { MessagesModule } from '../account/messages/messages.module';
 import { NotificationTemplateComponent } from './notification-template/notification-template.component';
+import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -49,22 +48,36 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
 import { AddProtocolDirective } from '../../directives/add-protocol.directive';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 
- let config = {
-    breakPoints: {
-        xs: {max: 575},
-        sm: {min: 576, max: 767},
-        md: {min: 768, max: 991},
-        lg: {min: 992, max: 1199},
-        xl: {min: 1200}
-    },
-    debounceTime: 100 // allow to debounce checking timer
-  };
+//providers
+import { NodeService } from '../../d7services/node/node.service';
+import { MainService } from '../../d7services/main/main.service';
+import { UserService } from '../../d7services/user/user.service';
+import { ViewService } from '../../d7services/view/view.service';
+import { FlagService } from '../../d7services/flag/flag.service';
+import { ProfileService } from '../../d7services/profile/profile.service';
+import { PmService } from '../../d7services/pm/pm.service';
+import { FileService } from '../../d7services/file/file.service';
+import { TaxonomyService } from '../../d7services/taxonomy/taxonomy.service';
+import { NotificationBarService } from 'angular2-notification-bar/release';
+import { AuthGuardService } from '../../auth0/auth-guard.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
+let config = {
+  breakPoints: {
+    xs: { max: 575 },
+    sm: { min: 576, max: 767 },
+    md: { min: 768, max: 991 },
+    lg: { min: 992, max: 1199 },
+    xl: { min: 1200 }
+  },
+  debounceTime: 100 // allow to debounce checking timer
+};
 
 
 
-  export function ResponsiveDefinition(){ 
-          return new ResponsiveConfig(config);
-  };
+export function ResponsiveDefinition() {
+  return new ResponsiveConfig(config);
+};
 
 
 @NgModule({
@@ -73,10 +86,9 @@ import { RegistrationCollectComponent } from './registration-collect/registratio
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ShareButtonsModule.forRoot(),
     RouterModule,
     ResponsiveModule,
-
+    ShareButtonsModule
   ],
   declarations: [
     CommentComponent,
@@ -88,7 +100,6 @@ import { RegistrationCollectComponent } from './registration-collect/registratio
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    SharedButtonsComponent,
     FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
@@ -115,6 +126,7 @@ import { RegistrationCollectComponent } from './registration-collect/registratio
     UserCardMsgsComponent,
     NotificationPanelComponent,
     NotificationTemplateComponent,
+    SharedButtonsComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -128,7 +140,6 @@ import { RegistrationCollectComponent } from './registration-collect/registratio
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
-    SharedButtonsComponent,
     FeedbackComponent,
     ChallengeCardComponent,
     ProjectHeaderComponent,
@@ -155,48 +166,37 @@ import { RegistrationCollectComponent } from './registration-collect/registratio
     UserCardMsgsComponent,
     NotificationPanelComponent,
     NotificationTemplateComponent,
+    SharedButtonsComponent,
     AddProtocolDirective,
     ValidateOnFocusoutDirective,
     RegistrationCollectComponent
   ],
-  providers:[{
-     provide: ResponsiveConfig, 
-     useFactory: ResponsiveDefinition }]
-
-  
+  providers: []
 })
-export class SharedModule { }
-export {CommentComponent};
-export {FollowComponent};
-export {BookmarkComponent};
-export {LikeComponent};
-export {ForkComponent};
-export {UserCardComponent};
-export {ProjectCardComponent};
-export {SharedButtonsComponent};
-export {FeedbackComponent};
-export { ChallengeCardComponent };
-export { ProjectHeaderComponent };
-export { ProjectStoryComponent };
-export { ProjectHowToComponent };
-export { ShowcaseCardComponent };
-export { LearnCardComponent }; 
-export { UserCardSmallComponent };
-export { LearnUserCardComponent };
-export  { MessageModalComponent };
-export { ShowcaseGeneralCardComponent };
-export { MakerCardComponent };
-export { MakerSearchCardComponent };
-export { ProjectSearchCardComponent };
-export { ChallengeSearchCardComponent };
-export { ShowcaeSearchCardComponent };
-export { LearnSearchCardComponent };
-export { ReportUserComponent };
-export { ReportProjectComponent };
-export { ProjectVoteComponent };
-export { ReportCommentComponent };
-export { UserCardMsgsComponent };
-export { NotificationPanelComponent };
-export { RegistrationCollectComponent };
-
-
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        TaxonomyService,
+        FileService,
+        MainService,
+        UserService,
+        NodeService,
+        ViewService,
+        FlagService,
+        ProfileService,
+        PmService,
+        NotificationBarService,
+        AuthGuardService,
+        {provide: ResponsiveConfig,useFactory: ResponsiveDefinition},
+        CookieService,
+      ]
+    };
+  }
+  static forChild(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+    };
+  }
+}
