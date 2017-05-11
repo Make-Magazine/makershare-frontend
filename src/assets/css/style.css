@@ -2081,6 +2081,14 @@ footer {
 .deleted-user {
   color: gray !important; }
 
+.delete-account {
+  display: block;
+  background-color: #ED1C24;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+  font-size: 1em; }
+
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;
