@@ -4662,8 +4662,8 @@ button:hover {
         margin: 10px 15px; }
         .page-explore .explore-header .explore-tags li a.btn {
           border-radius: 0px;
-          text-transform: lowercase !important;
-          max-width: 150px;
+          text-transform: uppercase !important;
+          min-width: 150px;
           padding: 13px 10px;
           font-family: "Messina Modern Regular";
           font-size: 1.3em;
@@ -4672,7 +4672,7 @@ button:hover {
           line-height: 120%;
           color: #828282;
           color: #6f6f6f;
-          font-size: 1em !important;
+          font-size: 1.1em !important;
           text-align: center;
           border: 0.5px solid #6f6f6f; }
           .page-explore .explore-header .explore-tags li a.btn:first-letter {
@@ -4723,9 +4723,12 @@ button:hover {
   color: #333333; }
   .filters .entries-count {
     font-size: 18px;
-    padding: 5px 15px; }
+    padding: 5px 10px; }
     .filters .entries-count p {
       margin: 0; }
+  .filters .all-project {
+    border-left: 2px solid #333333;
+    padding: 5px 15px; }
   .filters .btn {
     font-size: 15px;
     color: #333333; }
