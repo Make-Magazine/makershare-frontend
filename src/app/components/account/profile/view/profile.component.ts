@@ -136,6 +136,9 @@ export class ProfileComponent implements OnInit {
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
   emptySocial :boolean = true;
+  hackster:boolean =true;
+  hackaday:boolean = true;
+  instructables:boolean = true;
   emptySection = {
       motto: true,
       bio: true,
@@ -421,7 +424,7 @@ export class ProfileComponent implements OnInit {
     this.buildFormSocial();
     this.AssignParentChildInterests();
     for (let social in this.ProfileInfo.field_social_accounts) {
-      if ((social != 'field_website_or_blog' && social != 'field_additional_site') && this.ProfileInfo.field_social_accounts[social]) {
+      if ((social != 'field_website_or_blog' && social != 'field_additional_site' && social != 'field_website_title' && social != 'field_blog_title') && this.ProfileInfo.field_social_accounts[social]) {
         this.emptySocial = false;
       }
     }
