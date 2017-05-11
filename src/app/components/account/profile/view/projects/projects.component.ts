@@ -57,7 +57,7 @@ export class ProjectsComponent implements OnInit {
   }
   addProject(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/project/create']);
+    this.router.navigate(['/projects/create']);
   }
   getProjects() {
     var args = [

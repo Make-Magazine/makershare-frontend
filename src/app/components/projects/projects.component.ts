@@ -12,10 +12,10 @@ import { MainService } from '../../d7services/main/main.service';
 
 
 @Component({
-  selector: 'app-explore',
-  templateUrl: './explore.component.html',
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
 })
-export class ExploreComponent implements OnInit {
+export class ProjectsComponent implements OnInit {
   projects = [];
   categories = null;
   nameCat;
