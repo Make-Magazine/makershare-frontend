@@ -69,7 +69,7 @@ export class ViewComponent implements OnInit {
         for (var i = 0; i < this.msg.participants.length; i++) {
           if (this.msg.participants[i] != this.userId) {
             this.userService.getUser(this.msg.participants[i]).subscribe(res => {
-              this.participants = this.participants.concat(res);
+              this.participants = this.participants.concat(res);           
             })
           }
           if (this.msg.participants[i] != this.userId) {

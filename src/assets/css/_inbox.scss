@@ -131,11 +131,12 @@
 								text-decoration: none !important;
 							}
 						}
-						
-					}
-					.deleted-user {
+						.blocked-user {
 							color: gray !important;
 					}
+						
+					}
+					
 					.message-info {
 							width: 92%;
 						img {
@@ -273,6 +274,9 @@
 					width: 50px;
 					height: 50px
 				}
+				.blocked-user {
+							color: gray !important;
+					}
 		}
 			.message-body {
 				margin-bottom: 20px;

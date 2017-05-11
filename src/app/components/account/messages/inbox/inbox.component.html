@@ -24,7 +24,10 @@
         <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
           <div class="media message-info">
             <div class="media-left">
-              <a (click)="userProfile(message.first_name,message.last_name)">
+              <a *ngIf="message.status == 'active'" (click)="userProfile(message.first_name,message.last_name)">
+                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+              </a>
+              <a *ngIf="message.status == 'blocked'">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
             </div>
@@ -32,7 +35,8 @@
               <!--<p class="sender" *ngIf="message.sender">You sent a message to
                 <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
               </p>-->
-              <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
+              <p class="sender" *ngIf="message.status == 'active'"><a  (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
+              <p class="sender" *ngIf="message.status == 'blocked'"><a class="blocked-user">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
               <h4 class="message-subject">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>

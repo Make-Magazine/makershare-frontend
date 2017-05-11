@@ -13,6 +13,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
+import { NodeService } from '../../../d7services/node/node.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ import { Observable } from "rxjs";
 export class ChallengeProjectComponent implements OnInit {
   addProjectForm: FormGroup;
   tab: string
+  path: string;
   submittedBefore: boolean;
   countProjects = 0;
   button = false;
@@ -82,6 +84,7 @@ export class ChallengeProjectComponent implements OnInit {
     private viewService: ViewService,
     private router: Router,
     private fb: FormBuilder,
+    private nodeService: NodeService,
 
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
@@ -93,6 +96,7 @@ export class ChallengeProjectComponent implements OnInit {
     this.buildForm();
     this.cheackenter();
     this.getCountProject();
+    this.geturlformid();
     this.nid = this.route.snapshot.params['nid'];
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.userName = localStorage.getItem('user_name');
@@ -108,7 +112,6 @@ export class ChallengeProjectComponent implements OnInit {
         this.createProject = decodeURIComponent(tab);
 
       }
-      console.log(this.createProject)
     });
 
   }
@@ -119,7 +122,6 @@ export class ChallengeProjectComponent implements OnInit {
       .switchMap((nid) => this.viewService.getView('enter-challenge-projects-list', [['uid', this.userId], ['uid1', this.userName]]))
       .subscribe(data => {
         this.projects = data;
-        console.log(this.projects);
 
       });
   }
@@ -191,7 +193,7 @@ export class ChallengeProjectComponent implements OnInit {
     return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
-  getProjectsInMission(){
+  getProjectsInMission() {
     this.viewService.getView('user-entered-project', [['uid', this.userId]]).subscribe(data => {
       this.projectsList = data
     });
@@ -200,7 +202,7 @@ export class ChallengeProjectComponent implements OnInit {
     this.selectedProjectName = item.target.selectedOptions[0].text;
     this.selectedProject = item.target.value;
     // console.log(item.target.value)
-        this.submittedBefore = false;    
+    this.submittedBefore = false;
     for (let element of this.projectsList) {
       // console.log(element.project_nid)
       if (element.project_nid == item.target.value) {
@@ -208,14 +210,14 @@ export class ChallengeProjectComponent implements OnInit {
       }
     }
 
-    }
-    /*end check project entered */
+  }
+  /*end check project entered */
 
 
   onCancel(event: any) {
     this.addProjectForm.reset();
-
-    this.router.navigate(['/missions/' + this.nid]);
+    this.geturlformid();
+    this.router.navigate(['/missions/' + this.path]);
   }
   onSubmit() {
     if (this.checked) {
@@ -228,7 +230,7 @@ export class ChallengeProjectComponent implements OnInit {
       };
 
       this.mainService.post(globals.endpoint + '/maker_challenge_entry_api', body).subscribe(res => {
-        this.router.navigate(['missions/', this.nid]);
+        this.router.navigate(['missions/', this.path]);
         this.loaderService.display(false);
 
         this.notificationBarService.create({ message: 'You have submitted Your Project ' + this.selectedProjectName + ' in the Challenge ' + this.challangeData.title, type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
@@ -253,7 +255,7 @@ export class ChallengeProjectComponent implements OnInit {
 
         var rules = '<a id="rules-id" data-nodeId=' + this.nid + '>Rules & Instructions </a>';
         this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
-        this.router.navigate(['/missions/' + this.nid]);
+        this.router.navigate(['/missions/' + this.path]);
         this.tab = 'rules';
       });
     } else {
@@ -314,15 +316,22 @@ export class ChallengeProjectComponent implements OnInit {
     }
   }
   open(content) {
-    if(!this.submittedBefore){
+    if (!this.submittedBefore) {
       this.modalService.open(content).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
-    });
+        this.closeResult = 'Closed with: ${result}';
+      }, (reason) => {
+        this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+      });
     } else {
-        this.notificationBarService.create({ message: "You have submitted this project to a mission before .", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+      this.notificationBarService.create({ message: "You have submitted this project to a mission before .", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     }
-    
+
+  }
+  geturlformid() {
+    var nid = this.route.snapshot.params['nid'];
+
+    this.nodeService.getUrlFromId(nid, 'challenge').subscribe(data => {
+      this.path = data[0];
+    });
   }
 }

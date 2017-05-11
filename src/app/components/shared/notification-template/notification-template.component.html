@@ -5,7 +5,7 @@
     Mark as seen
 </div>-->
 <!--(click)="OpenNotification()"-->
-<div class="notification-container" *ngIf="notification" (click)="OpenNotification()">
+<div class="notification-container" *ngIf="notification && notification.status == 'Active'" (click)="OpenNotification()">
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
