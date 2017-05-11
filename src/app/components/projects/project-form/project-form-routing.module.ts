@@ -8,7 +8,7 @@ import {PendingChangesGuard} from './pending-changes.guard';
 
 export const ProjectFormRoutes:Routes = [
   { path:'',component:ProjectFormComponent,canActivate: [AuthGuardService],canDeactivate: [PendingChangesGuard]},
-  { path:':nid',component:ProjectFormComponent,canActivate: [AuthGuardService],canDeactivate: [PendingChangesGuard]}
+  { path:':path/edit',component:ProjectFormComponent,canActivate: [AuthGuardService],canDeactivate: [PendingChangesGuard]}
 ]
 
 @NgModule({
@@ -19,5 +19,4 @@ export const ProjectFormRoutes:Routes = [
     RouterModule,
   ],
 })
-
-export class ProjectFormRoutingModule { }
+export class ProjectFormRoutingModule {}

@@ -30,7 +30,7 @@ uid;
        this.userService.isLogedIn().subscribe(data => {
       if (data ){
           this.uid = localStorage.getItem('user_id');
-          this.pm.postAction('maker_notification_settings_api/get_settings/',13).subscribe(out => {
+          this.pm.postAction('maker_notification_settings_api/get_settings/',this.uid).subscribe(out => {
           this.notifications = out;
           this.email_notifications = this.notifications.email_notifications;
           this.web_notifications = this.notifications.web_notifications;                

@@ -136,7 +136,6 @@ export class BasicInfoComponent implements OnInit {
       address_publish: [this.userProfile.address_publish == 1? true:false],
       describe_yourself: [this.userProfile.describe_yourself, [Validators.required, Validators.maxLength(60)]],
       mail: [this.userProfile.mail, [Validators.required,CustomValidators.email]],
-      newsletter_subscription: [this.userProfile.newsletter_subscription == 1? true:false],
       address: this.fb.group({
         country: [this.userProfile.address.country, [Validators.required,inarray(this.CountriesList.map(country=>country.value))]],
         governorate: [this.userProfile.address.governorate],
@@ -149,7 +148,6 @@ export class BasicInfoComponent implements OnInit {
         this.userProfile = values;
         this.userProfile.uid = +localStorage.getItem('user_id');
         values.address_publish? this.userProfile.address_publish = 1:this.userProfile.address_publish = 0;
-        values.newsletter_subscription? this.userProfile.newsletter_subscription = 1:this.userProfile.newsletter_subscription = 0;
         this.emitter.emit(this.userProfile);
       }else{
         this.emitter.emit(false);

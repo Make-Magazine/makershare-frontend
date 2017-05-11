@@ -3922,7 +3922,7 @@ footer {
 #edit-cover-modal .modal-footer {
   text-align: center; }
 
-.social-links a {
+.social-links a.social {
   position: relative;
   text-align: center;
   padding: 15px;
@@ -3936,7 +3936,7 @@ footer {
   -moz-border-radius: 20px 20px 20px 20px;
   -webkit-border-radius: 20px 20px 20px 20px;
   -khtml-border-radius: 20px 20px 20px 20px; }
-  .social-links a i {
+  .social-links a.social i {
     font-size: 1.1em;
     position: absolute;
     left: 5px;
@@ -3946,6 +3946,8 @@ footer {
   cursor: pointer;
   background: #4F4F4F;
   color: #fff; }
+  .social-links a.social.ext {
+    padding: 5px; }
 .social-links a.social:hover.fb {
   background-color: #014c8c; }
 .social-links a.social:hover.tw {
@@ -3958,10 +3960,14 @@ footer {
   background-color: #014c8c; }
 .social-links a.social:hover.in {
   background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+.social-links a.social:hover.ext {
+  background-color: #fff;
+  border: 0.5px solid #4F4F4F; }
 
 .mywebsite {
   color: #00AEEF;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  display: block; }
 
 .edit-icon {
   float: right;
