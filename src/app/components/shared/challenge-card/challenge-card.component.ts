@@ -132,8 +132,9 @@ export class ChallengeCardComponent implements OnInit {
   }
   /* end function to change data format */
   /* function to navigate to challenge summary page */
-  ShowChallengeDetails(nid) {
-    this.router.navigate(['/missions', nid]);
+  ShowChallengeDetails(path) {
+    console.log(path);
+    this.router.navigate(['/missions', path]);
   }
 
   enterToChallengeProject(nid) {

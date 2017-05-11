@@ -1,6 +1,6 @@
 <div class="challenge-card row hidden-md-down" *ngIf="challenge && !front">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 image-container">
-    <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+    <img *ngIf="challenge.cover_image" src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.path)">
     <img *ngIf="!challenge.cover_image" src="./assets/images/placeholder.png" alt="">
     <img src="{{challenge.sponsor_bar}}" alt="" *ngIf="challenge.sponsor_bar" class="sponsor_bar img-responsive">
     <div class="card-type-grey">
@@ -18,7 +18,7 @@
       <div class="card-partership" *ngIf="challenge.sponsored_by">
         <p>Sponsored by {{challenge.sponsored_by}}</p>
       </div>
-      <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
+      <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
       <div class="card-description" *ngIf="challenge.summary_trim">
         <p [innerHTML]="challenge.summary_trim"></p>
       </div>
@@ -31,7 +31,7 @@
               <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
             </div>-->
           <div class="button-container-main-1">
-            <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+            <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
           </div>
         </div>
         <div class="challenge-card-footer-2 ml-3 hidden-xs-down">
@@ -93,7 +93,7 @@
               <span class="btn btn-main-2" *ngIf="challenge.status_id == 376" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
             </div>-->
         <div class="button-container-main-1 button-container-main-1 w-100 mt-2">
-          <span class="btn btn-main w-100" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+          <span class="btn btn-main w-100" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="image-container">
-      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.path)">
       <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
     </div>
     <div class="card-type-grey">
@@ -129,14 +129,14 @@
             <p>Sponsored by {{challenge.sponsored_by}}</p>
           </div>
         </div>
-        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">
             <div class="button-container-main-1">
-              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
             </div>
           </div>
           <div class="challenge-card-footer-2 ml-md-3">
@@ -189,7 +189,7 @@
       </div>
     </div>
     <div class="image-container">
-      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+      <img *ngIf="challenge.challenge_home_photo" src="{{challenge.challenge_home_photo}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.path)">
       <img *ngIf="!challenge.challenge_home_photo" src="./assets/images/placeholder.png" alt="">
     </div>
     <div class="card-type-grey">
@@ -207,14 +207,14 @@
             <p>Sponsored by {{challenge.sponsored_by}}</p>
           </div>
         </div>
-        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
+        <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description" *ngIf="challenge.summary_trim">
           <p [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex flex-row mt-auto align-items-center">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">
             <div class="button-container-main-1">
-              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+              <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
             </div>
 
           </div>
@@ -256,7 +256,7 @@
 <!-- Hero challenge desktop and tablet -->
 <div class="front-challenge-card challenge-card-full row" *ngIf="challenge && front && first">
   <div class="image-container">
-    <img *ngIf="challenge.hero_mission_cover" src="{{challenge.hero_mission_cover}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
+    <img *ngIf="challenge.hero_mission_cover" src="{{challenge.hero_mission_cover}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.path)">
     <img *ngIf="!challenge.hero_mission_cover" src="./assets/images/placeholder.png" alt="">
     <div class="card-type-grey">
       <div class="type-layer-2">
@@ -267,7 +267,7 @@
   <!--End image-container -->
   <div class="card-container">
     <div class="card">
-      <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.nid)" innerHTML="{{challenge.title}}"></h3>
+      <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
     </div>
     <div class="d-flex flex-md-row flex-column">
       <div class="challenge-card-footer-2 d-flex hidden-xs-down">
@@ -370,13 +370,13 @@
       </div>
       <div class="ml-auto hidden-sm-down">
         <div class="button-container-main-1">
-          <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+          <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
         </div>
       </div>
     </div>
     <div class="ml-auto hidden-md-up">
       <div class="button-container-main-1">
-        <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.nid)">View Mission</span>
+        <span class="btn btn-main" (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
       </div>
     </div>
   </div>
