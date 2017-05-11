@@ -123,6 +123,16 @@ export class ProfileComponent implements OnInit {
     started_making: 'Describe how you became a Maker',
     interests: 'Favorite making topics?',
   };
+  ModalTabs = [
+    'Portfolio Photo',
+    'Personal Info',
+    'Bio',
+    'Social',
+    'MakerSpaces',
+    'Links',
+    'Maker Moment',
+    'Interests'
+  ]
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
   emptySocial :boolean = true;
@@ -318,7 +328,10 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
-    closebtn.click(); 
+    // closebtn.click(); 
+    if(this.ProfileInfo.address.governorate == '_none') {
+     this.ProfileInfo.address.governorate == this.CountryFieldsAndDetails['administrative_areas'][0].value;
+    }
     if (this.FormGroupSocial.valid) {
       this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;
     }
@@ -413,7 +426,6 @@ export class ProfileComponent implements OnInit {
         this.emptySocial = false;
       }
     }
-
   }
   CheckFields(){
     if(this.uid == this.CurrentLoggedUserId){
@@ -426,5 +438,8 @@ export class ProfileComponent implements OnInit {
   }
   ToggleProfile() {
     this.mobileToggle = !this.mobileToggle;
+  }
+  nextTab(){
+    this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab)+1]
   }
 }

@@ -233,7 +233,6 @@ export class FeedbackComponent implements OnInit {
   }
   //open modal
   open(content,e:Event) {
-
       this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) { 
