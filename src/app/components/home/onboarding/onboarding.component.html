@@ -1,15 +1,15 @@
-<section class="banner">
+<section class="banner pb-3">
   <div id="homeBanner" class="text-center mx-auto">
-    <h2>Hello Makers</h2>
-    <h1>Head here to start your project portfolio, find a mission, or learn new skills.
-    </h1>
+    <h2>Welcome to Maker Share</h2>
+    <h1>A community of makers sharing what they can do.</h1>
+    <img src="./assets/images/fpo-maker-pics.png" alt="" class="img-fluid" />
     <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
       <a class="btn btn-main">Join Us</a>
     </div>
   </div>
 </section>
 
-<section class="carousel-slider">
+<!--<section class="carousel-slider">
   <div class="carousel-slider-slick">
     <div class="carousel-img-container">
       <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-1.jpg" alt="" />
@@ -71,28 +71,13 @@
     <div class="carousel-img-container">
       <img class="img-fluid" src="./assets/images/slider/Maker-Share-Intro-35.jpg" alt="" />
     </div>
-  </div>
-</section>
+  </div>-->
+<!--</section>-->
+<!--<section class="image-home-section">
+  <div class="container text-center">
 
-<section class="what-is-ms">
-  <div class="container">
-    <h2 class="text-center">WHAT IS MAKERSHARE?</h2>
-    <div class="row">
-      <div class="col-12 home-body-logos d-flex align-items-center justify-content-center">
-        <a href="http://www.makezine.com" target="_blank"><img src="./assets/images/icons/Make-Logo-2x.png" alt="Maker Share Logo" class="img-fluid home-body-logo maker"/></a>
-        <span class="border"></span>
-        <a href="http://www.intel.com" target="_blank"><img src="./assets/images/icons/Intel-Logo-2x.png" alt="Intel logo" class="img-fluid home-body-logo intel"/></a>
-      </div>
-      <div class="col-12">
-        <p>In 2005, Make: introduced to the world a simple idea: We are all Makers.
-        Makers integrate science and technology with art to create a world that is more productive, creative and inclusive.
-        We unite around one idea: any ordinary object can be transformed into an innovation.
-        Intel is a technology giant whose products empower us to change the future. Intel asks simply: What will you make?
-        With Maker Share, Make: and Intel come together to support collaboration between Makers around the world.</p>
-      </div>
-    </div>
   </div>
-</section>
+</section>-->
 
 <div class="parallax-scroll">
   <section class="info-w-parallax parallax-bg">
@@ -103,8 +88,10 @@
           <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
             <div class="info-card">
               <h2>Portfolios</h2>
-              <h3>Start your project portfolio.</h3>
-              <p>Makers already share their work; your Maker Share portfolio organizes and documents your work, whether you’re a weekend Maker or a professional, to help you tell the story behind your projects.</p>
+              <h3>From Passion to Profession</h3>
+              <p>Your Maker Portfolio organizes and documents your work, whether you’re a weekend Maker or a professional. Tell
+                the story behind each project: what it is, how you made it and why. What inspired you, who helped you, what
+                went right, what went wrong, what have you learned?</p>
             </div>
           </div>
         </div>
@@ -113,9 +100,9 @@
           <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
             <div class="info-card">
               <h2>Missions</h2>
-              <h3>Participate in a mission.</h3>
-              <p>Maker Share brings makers together to build with a purpose. Here you find Missions to motivate you and connect
-                you with opportunities that focus your skills on making for social good.</p>
+              <h3>Making that Matters</h3>
+              <p>Participating in a mission means using your skills to positively impact people’s lives. On Maker Share, you
+                find missions that allow you to join others and focus your projects on an objective.</p>
             </div>
           </div>
         </div>
@@ -124,8 +111,30 @@
           <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
             <div class="info-card">
               <h2>Learning Workshops</h2>
-              <h3>Learn new skills.</h3>
-              <p>Makers never stop learning. On Maker Share, Make: and Intel deliver lessons from accomplished makers and educators on topics from basic electronics to building a business.</p>
+              <h3>Push Your Progress</h3>
+              <p>Learn new skills and acquire new capabilities as a maker. Maker Share workshops guide you through learning
+                paths on topics like electronics, robotics, Internet of Things and more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
+            <div class="info-card">
+              <h2>Get Started</h2>
+              <h3>Create Your Maker Portfolio</h3>
+              <div class="button-container-onboarding">
+                <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
+                  <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']">
+                    <i class="fa fa-lg fa-plus"></i> Add a Project
+                  </a>
+                </div>
+                <div class="project-button button-container-main-1" *ngIf="!auth.authenticated()">
+                  <a class="btn btn-main btn-sharp" (click)="auth.login()">
+                    <i class="fa fa-lg fa-plus"></i> Add a Project
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -134,3 +143,29 @@
   </section>
 
 </div>
+
+
+<section class="what-is-ms">
+  <div class="container">
+    <h2 class="text-center">A Project By:</h2>
+    <div class="row">
+      <div class="col-12 home-body-logos d-flex align-items-center justify-content-center">
+        <a href="http://www.makezine.com" target="_blank"><img src="./assets/images/icons/Make-Logo-2x.png" alt="Maker Share Logo" class="img-fluid home-body-logo maker" /></a>
+        <span class="border"></span>
+        <a href="http://www.intel.com" target="_blank"><img src="./assets/images/icons/Intel-Logo-2x.png" alt="Intel logo" class="img-fluid home-body-logo intel" /></a>
+      </div>
+      <div class="col-12">
+        <h5>Make: and Intel</h5>
+        <h5>supporting innovation and collaboration among Makers around the world.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what-is-ms p-0 mt-4">
+  <div class="container">
+    <div class="explore-maker-share">
+      <h1 class="text-center">Explore Maker Share</h1>
+    </div>
+  </div>
+</section>
