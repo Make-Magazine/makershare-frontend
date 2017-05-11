@@ -9093,8 +9093,8 @@ img {
           color: #00AEEF; }
           .page-inbox .inbox-container .messages-list .message-item .wrapper .sender a:hover {
             text-decoration: none !important; }
-      .page-inbox .inbox-container .messages-list .message-item .wrapper .deleted-user {
-        color: gray !important; }
+        .page-inbox .inbox-container .messages-list .message-item .wrapper .sender .blocked-user {
+          color: gray !important; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info {
         width: 92%; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .message-info img {
@@ -9157,6 +9157,8 @@ img {
         .conversation-container .conversation .single-message .message-info img {
           width: 50px;
           height: 50px; }
+        .conversation-container .conversation .single-message .message-info .blocked-user {
+          color: gray !important; }
       .conversation-container .conversation .single-message .message-body {
         margin-bottom: 20px; }
   .conversation-container .reply-area .reply {
