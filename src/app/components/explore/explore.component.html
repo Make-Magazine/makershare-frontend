@@ -6,23 +6,20 @@
         <h6>FILTER BY TOPIC:</h6>
         <ul class="list-unstyled explore-tags hidden-sm-down">
           <li *ngFor="let parent of categories_parents;let i = index">
-            <a (click)="CurrentActiveParentIndex = i;CurrentActiveChildIndex = -1" [ngClass]="{'active':CurrentActiveParentIndex == i}" class="btn btn-border"
-              id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
+            <a (click)="CurrentActiveParentIndex = i;CurrentActiveChildIndex = -1" [ngClass]="{'active':CurrentActiveParentIndex == i}"
+              class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
           </li>
         </ul>
         <div class="submenus hidden-sm-down">
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
-                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term.tid,term.name);projectsById($event);"
+                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
                   class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
               </li>
             </ul>
           </div>
         </div>
-
-
-
 
         <div class="navbar hidden-md-up filter-mobile-menu">
           <div class="navbar-inner">
@@ -33,9 +30,11 @@
               </a>
               <div class="nav-collapse collapse navbar-responsive-collapse filter-mainmenu">
                 <ul class="list-unstyled">
-                  <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index" ><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="CurrentActiveParentIndex=i;CurrentActiveChildIndex=-1" class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
+                  <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index"><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="CurrentActiveParentIndex=i;CurrentActiveChildIndex=-1"
+                      class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
                     <ul class="dropdown-menu filter-submenu">
-                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event);ChangeClassActive(i,$event)" data-id="{{term.tid}}" (click)="idCategory(term.tid)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
+                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event);ChangeClassActive(i,$event)"
+                          data-id="{{term.tid}}" (click)="idCategory(term)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
                     </ul>
                   </li>
                 </ul>
@@ -44,19 +43,22 @@
           </div>
         </div>
 
-
-
         <div class="filters">
           <div class="container">
             <div class="row justify-content-end align-items-center">
-              <div class="entries-count btn">
-                <p>{{countProject}} Projects</p>
+              <div class="entries-count btn" *ngIf="!nameCat">
+                <p *ngIf="countProject > 1">{{countProject}} Projects</p>
+                <p *ngIf="countProject < 2">{{countProject}} Project</p>                
               </div>
-              <div class="entries-count btn">
-               <p *ngIf="nameCat">{{nameCat}}</p>
+              <div class="entries-count btn pr-1" *ngIf="nameCat">
+                <p *ngIf="countProject > 1">{{countProject}} Projects:</p>
+                <p *ngIf="countProject < 2">{{countProject}} Project:</p>
               </div>
-                <div class="entries-count btn">
-                  <a (click)="allProject()" class="btn">All Project</a>
+              <div class="entries-count btn name-cate pl-1">
+                <p *ngIf="nameCat" [innerHTML]="nameCat"></p>
+              </div>
+              <div class="entries-count btn all-project">
+                <a (click)="allProject()">All Projects</a>
               </div>
               <div class="sorting-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
