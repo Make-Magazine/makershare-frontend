@@ -66,7 +66,7 @@
         Project
       </div>
     </div>
-    <div class="image-top" (click)="ShowProjectDetails(project.nid)">
+    <div class="image-top" (click)="ShowProjectDetails(project.path)">
       <div class="overlay"></div>
       <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
       <div class="teaser">
@@ -86,7 +86,7 @@
             <img *ngIf="!project.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)">
               <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
@@ -121,8 +121,8 @@
 <div *ngIf="project && view != 'grid' && !front && smallWindow > 992">
   <div class="project card lg-card">
     <div class="image-top-lg">
-      <div class="overlay" (click)="ShowProjectDetails(project.nid)"></div>
-      <div class="teaser" (click)="ShowProjectDetails(project.nid)">
+      <div class="overlay" (click)="ShowProjectDetails(project.path)"></div>
+      <div class="teaser" (click)="ShowProjectDetails(project.path)">
         <p class="overlay-text" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="overlay-text" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </div>
@@ -160,7 +160,7 @@
             <img *ngIf="!project.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
           </div>-->
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.nid)">
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title-project" innerHTML="{{project.project_name}}"></h4>
             <!--<p class="card-text" *ngIf="project.teaser && type == 'showcase'" innerHTML="{{project.teaser}}"></p>-->
           </div>
