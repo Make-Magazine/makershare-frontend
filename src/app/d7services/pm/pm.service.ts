@@ -89,7 +89,7 @@ export class PmService {
   }
 
   deleteAcount(uid: number): Observable<any> {
-    return this.mainService.delete(globals.endpoint + '/maker_profile_api/' + uid).map(res => res.json()).catch(err => Observable.throw(err));
+    return this.mainService.post(globals.endpoint + '/maker_profile_api/delete_user', uid).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
   deleteNotification(mid: number): Observable<any> {
