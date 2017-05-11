@@ -7,7 +7,6 @@ const ProjectRouts: Routes = [
   {
     path: '', component:ProjectDetailsComponent
   },
-  // { path: '/view/:nid', component: ProjectDetailsComponent }
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 <div class="showcase-card-backlayer hidden-xs-down">
-  <div class="showcase-card row " (click)="ShowSingleShowcase(showcase.nid)">
+  <div class="showcase-card row " (click)="ShowSingleShowcase(showcase.path)">
     <div class="col-md-4 col-sm-12 col-xs-12 image-container">
-      <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
+      <img *ngIf="showcase.cover_photo" src="{{showcase.cover_photo}}"  alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.path)">
       <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
       <div class="card-type-blue">
         <div class="type-layer-2">
@@ -20,7 +20,7 @@
           <div class="showcase-card-footer mt-auto d-flex">
             <div class="showcase-card-footer-1 hidden-xs-down">
               <div class="button-container-main-1">
-                <span class="btn btn-main" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>
+                <span class="btn btn-main" (click)="ShowSingleShowcase(showcase.path)">See Showcase</span>
               </div>
             </div>
             <div class="showcase-card-footer-2 ml-4">
@@ -48,7 +48,7 @@
             </div>
             <div class="showcase-card-footer-1 hidden-sm-up mt-3">
               <div class="button-container-main-1 w-100">
-                <span class="btn btn-main w-100" (click)="ShowSingleShowcase(showcase.nid)">See Showcase</span>
+                <span class="btn btn-main w-100" (click)="ShowSingleShowcase(showcase.path)">See Showcase</span>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@
 <!--showcase card for mobile-->
 <div class="showcase-card-backlayer-mobile hidden-sm-up">
   <div class="showcase-card-backlayer-mobile-2">
-    <div class="showcase-card " *ngIf="showcase" (click)="ShowSingleShowcase(showcase.nid)">
+    <div class="showcase-card " *ngIf="showcase" (click)="ShowSingleShowcase(showcase.path)">
       <div class="content-container h-100">
         <div class="card-container">
           <div class="card">

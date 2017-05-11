@@ -72,7 +72,7 @@ export class ProjectSearchCardComponent implements OnInit {
     this.router.navigate(['challenges/', nid]);
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]
+    this.router.navigate(['/projects', nid]
     );
   }
 }

@@ -369,6 +369,9 @@
             .card-title {
                 @include card-header-font-md ();
                 color: $white;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
                 overflow: hidden;
             }
             .card-type {
@@ -391,7 +394,7 @@
         .card-partnership-mobile {
             position: absolute;
             top: 15px;
-            right: 15px;
+            right: 24px;
             p {
                 color: #fff !important;
             }

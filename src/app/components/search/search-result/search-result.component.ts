@@ -99,7 +99,6 @@ export class SearchResultComponent implements OnInit {
 
   itemSelected(item) {
     this.searchQuery();
-    //this.router.navigate(['/project/view/', item.ss_item_entity_id]);
   }
 
   searchQuery(){

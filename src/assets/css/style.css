@@ -3146,7 +3146,11 @@ footer {
   .project .maker-name {
     color: #00AEEF;
     margin-bottom: 0;
-    margin-top: 10px; }
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
   .project .image-top {
     height: 275px;
     background-color: #bbb;
@@ -3166,6 +3170,7 @@ footer {
     .project .card-block .profiel-pic-container {
       width: 82px;
       height: 82px;
+      min-width: 82px;
       cursor: pointer; }
       .project .card-block .profiel-pic-container img {
         width: 100%; }
@@ -3903,7 +3908,7 @@ footer {
 #edit-cover-modal .modal-footer {
   text-align: center; }
 
-.social-links a {
+.social-links a.social {
   position: relative;
   text-align: center;
   padding: 15px;
@@ -3917,7 +3922,7 @@ footer {
   -moz-border-radius: 20px 20px 20px 20px;
   -webkit-border-radius: 20px 20px 20px 20px;
   -khtml-border-radius: 20px 20px 20px 20px; }
-  .social-links a i {
+  .social-links a.social i {
     font-size: 1.1em;
     position: absolute;
     left: 5px;
@@ -3927,6 +3932,8 @@ footer {
   cursor: pointer;
   background: #4F4F4F;
   color: #fff; }
+  .social-links a.social.ext {
+    padding: 5px; }
 .social-links a.social:hover.fb {
   background-color: #014c8c; }
 .social-links a.social:hover.tw {
@@ -3939,10 +3946,14 @@ footer {
   background-color: #014c8c; }
 .social-links a.social:hover.in {
   background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+.social-links a.social:hover.ext {
+  background-color: #fff;
+  border: 0.5px solid #4F4F4F; }
 
 .mywebsite {
   color: #00AEEF;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+  display: block; }
 
 .edit-icon {
   float: right;
@@ -4158,7 +4169,12 @@ footer {
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
-      font-weight: bold; }
+      font-weight: bold;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 110% !important; }
   .maker-card .icons-side-project {
     position: relative;
     top: -13px;
@@ -5131,6 +5147,9 @@ button:hover {
       line-height: 115%;
       color: #828282;
       color: #fff;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
       overflow: hidden; }
     .front .front-challenge-card .card .card-type {
       top: 25px;
@@ -5146,7 +5165,7 @@ button:hover {
   .front .front-challenge-card .card-partnership-mobile {
     position: absolute;
     top: 15px;
-    right: 15px; }
+    right: 24px; }
     .front .front-challenge-card .card-partnership-mobile p {
       color: #fff !important; }
   .front .front-challenge-card .image-container {
@@ -6589,7 +6608,7 @@ textarea {
   .front .learn-card .card-partnership-mobile {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 24px;
     color: #fff;
     text-shadow: 1px 1px 5px #333333;
     z-index: 1; }
@@ -6634,7 +6653,11 @@ textarea {
       text-transform: none;
       line-height: 115%;
       color: #828282;
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden; }
     .front .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular";
       font-size: 1.3em;
@@ -7093,7 +7116,11 @@ img {
         color: #828282;
         color: #333333;
         margin-bottom: 20px;
-        line-height: 120% !important; }
+        line-height: 120% !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
         font-size: 1.3em;
@@ -10017,7 +10044,7 @@ img {
       color: #828282; }
 
   .front .front-challenge-card {
-    height: auto; }
+    min-height: 460px; }
     .front .front-challenge-card .image-container {
       max-height: 195px;
       max-width: 576px;
@@ -10150,7 +10177,24 @@ img {
 
   .page-project .projectsingle-card .right-side .card-container .project-card-footer ul li a {
     padding: 13px 2px;
-    width: 115px; } }
+    width: 115px; }
+
+  .front .front-challenge-card .content-container {
+    padding: 10px 0px !important; }
+  .front .front-challenge-card .card-partnership-mobile {
+    right: 10px;
+    width: 190px; }
+  .front .learn-card .container-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; }
+  .front .learn-card .card-container {
+    padding: 10px 0px !important; }
+  .front .learn-card .card-partnership-mobile {
+    right: 10px;
+    width: 190px; }
+
+  header.main-header.shrink nav.navbar {
+    padding: 6px 3px 6px !important; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
     margin-left: 8px; }
