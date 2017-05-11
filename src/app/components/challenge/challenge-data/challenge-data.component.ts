@@ -8,7 +8,6 @@ import { NodeService } from '../../../d7services/node/node.service';
 
 import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { SharedButtonsComponent } from '../../shared/shared-buttons/shared-buttons.component';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 

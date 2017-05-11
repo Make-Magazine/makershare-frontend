@@ -79,7 +79,6 @@ export class InboxComponent implements OnInit {
     }
     this.pm.getInboxOrSent('maker_get_pm_author/retrieve_inbox_msgs', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
-      console.log(data);
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
@@ -92,6 +91,7 @@ export class InboxComponent implements OnInit {
                   this.messages[key].user_photo = res.user_photo;
                   this.messages[key].first_name = res.first_name;
                   this.messages[key].last_name = res.last_name;
+                  this.messages[key].status = res.status;
               })
                 
 
@@ -204,7 +204,7 @@ export class InboxComponent implements OnInit {
 //   }
 
   viewMessage(thread_id) {
-    this.router.navigate(['/view', thread_id]);
+    this.router.navigate(['/account/inbox/view', thread_id]);
   }
 
   /*

@@ -1,5 +1,4 @@
 import { Auth } from './auth0/auth.service';
-import { AuthGuardService } from './auth0/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -9,23 +8,15 @@ import { routing } from "./app.routing";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
-import { NodeService } from './d7services/node/node.service';
-import { MainService } from './d7services/main/main.service';
-import { UserService } from './d7services/user/user.service';
-import { ViewService } from './d7services/view/view.service';
-import { FlagService } from './d7services/flag/flag.service';
-import { ProfileService } from './d7services/profile/profile.service';
 import { StatisticsService } from './d7services/statistics/statistics.service';
-import { PmService } from './d7services/pm/pm.service';
-import { FileService } from './d7services/file/file.service';
-import { TaxonomyService } from './d7services/taxonomy/taxonomy.service';
+
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule, NotificationBarService } from 'angular2-notification-bar/release';
+import { NotificationBarModule } from 'angular2-notification-bar/release';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
+import { ShareButtonsModule } from "ng2-sharebuttons";
 
 // import custom auth0 service
 
@@ -104,28 +95,17 @@ let config = {
     routing,
     MessagesModule,
     NotificationBarModule,
-    SharedModule,
+    SharedModule.forRoot(),
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,
     MetaModule.forRoot(),
+    ShareButtonsModule.forRoot(),
   ],
   entryComponents: [],
   providers: [
     Auth,
     ProfilePictureService,
-    AuthGuardService,
-    TaxonomyService,
-    FileService,
-    MainService,
-    UserService,
-    NodeService,
-    CookieService,
-    ViewService,
-    FlagService,
-    ProfileService,
-    PmService,
-    NotificationBarService,
     LoaderService,
     StatisticsService,
     {
