@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService } from '../../../d7services';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 declare var jQuery: any;

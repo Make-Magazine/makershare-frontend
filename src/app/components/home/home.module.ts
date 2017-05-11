@@ -15,7 +15,7 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
   ],
   declarations: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../d7services/user/user.service';
+import { UserService } from '../../../d7services';
 import { Router } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';

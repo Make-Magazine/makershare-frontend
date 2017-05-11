@@ -27,7 +27,7 @@ import { CustomFormsModule } from 'ng2-validation';
     ProjectFormRoutingModule,
     NgbModule,
     ImageCropperModule,
-    SharedModule,
+    SharedModule.forChild(),
     Ng2FileDropModule,
     CustomFormsModule,
   ],

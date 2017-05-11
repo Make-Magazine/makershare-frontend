@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,FlagService,MainService,NodeService } from '../../../d7services';
 import { RouterModule, Router, NavigationExtras } from '@angular/router';
-import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { ActivatedRoute, Params, NavigationStart, NavigationEnd } from '@angular/router';
 import { IChallengeProject } from '../../../models/challenge/challengeProjects';
-import { MainService } from '../../../d7services/main/main.service';
 import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
@@ -13,7 +11,6 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
-import { NodeService } from '../../../d7services/node/node.service';
 
 
 @Component({

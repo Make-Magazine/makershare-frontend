@@ -1,15 +1,11 @@
-import { field_URL } from '../../../../models/Drupal';
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
-import { ProfileService } from '../../../../d7services/profile/profile.service';
-import { UserService } from '../../../../d7services/user/user.service';
+import { ProfileService,UserService,ViewService,FileService,StatisticsService } from '../../../../d7services';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { FileEntity, NodeHelper } from '../../../../models';
-import { FileService } from '../../../../d7services/file/file.service';
+import { FileEntity, NodeHelper,FileEntityManage,field_URL } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { LoaderService } from '../../../shared/loader/loader.service';
@@ -19,9 +15,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { MetaService } from '@nglibs/meta';
-import { FileEntityManage } from '../../../../models';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
-import { StatisticsService } from '../../../../d7services/statistics/statistics.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 
 @Component({
@@ -407,6 +401,9 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.bio = user.bio;
     }
     this.ProfileInfo.address_publish = user.address_publish;
+    if(!this.ProfileInfo.address_publish){
+      this.ProfileInfo.address_publish = 1;
+    }
     if (user.field_social_accounts) {
       this.ProfileInfo.field_social_accounts = user.field_social_accounts;
     }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { FlagService } from '../../../../d7services/flag/flag.service';
+import { FlagService,ViewService } from '../../../../d7services';
 //import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
 
 @Component({

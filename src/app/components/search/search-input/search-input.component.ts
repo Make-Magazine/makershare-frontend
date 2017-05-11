@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService } from '../../../d7services';
 
 @Component({
   selector: 'app-search-input',

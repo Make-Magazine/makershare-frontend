@@ -1,12 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,FlagService,StatisticsService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
-import { UserCardComponent } from '../../shared/user-card/user-card.component'
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
-import {FlagService} from '../../../d7services/flag/flag.service';
-import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

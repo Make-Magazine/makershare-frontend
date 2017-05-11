@@ -18,7 +18,7 @@ import { ShowcaseProjectComponent } from './showcase-project/showcase-project.co
   imports: [
     CommonModule,
     ShowcaseRoutingModule,
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
     ShowcaseProjectModule,
 

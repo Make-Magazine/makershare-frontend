@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../d7services/view/view.service';
+import { ViewService,MainService } from '../../d7services';
 import { RouterModule, Router } from '@angular/router';
 import { ISorting } from '../../models/explore/sorting';
 import { ProjectCategory } from '../../models';
@@ -7,7 +7,6 @@ import { LoaderService } from '../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { MainService } from '../../d7services/main/main.service';
 
 
 

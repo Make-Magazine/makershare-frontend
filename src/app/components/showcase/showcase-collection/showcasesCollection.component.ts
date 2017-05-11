@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { ViewService } from './../../../d7services/view/view.service';
+import { ViewService } from './../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 

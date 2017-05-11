@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../d7services/user/user.service';
+import { UserService } from '../../../d7services';
 
 @Component({
   selector: 'app-single',

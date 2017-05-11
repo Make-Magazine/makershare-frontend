@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
-//import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
-import { UserService } from './d7services/user/user.service';
-import { MainService } from './d7services/main/main.service';
+import { UserService,MainService } from './d7services';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { Router, NavigationEnd } from '@angular/router';
 

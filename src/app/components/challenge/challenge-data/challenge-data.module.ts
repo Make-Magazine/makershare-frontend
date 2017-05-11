@@ -18,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChallengeDataRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
     // MetaModule.forRoot(),
     
