@@ -2715,7 +2715,8 @@ footer {
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2em; }
+        font-size: 1.2em;
+        margin-bottom: 5px; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -2844,6 +2845,8 @@ footer {
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
+  .profile-header .stats li:first-of-type {
+    padding-left: 0; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -4595,7 +4598,7 @@ button:hover {
 .toggleProfile {
   position: absolute;
   right: 15px;
-  bottom: 15px;
+  bottom: 0;
   width: 35px;
   height: 35px;
   border: 1px solid #00AEEF;
@@ -9008,11 +9011,13 @@ img {
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
     color: #4F4F4F;
-    font-size: 1em; }
+    font-size: 1em;
+    margin-right: 38px; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
-    width: 30px; }
+    width: 30px;
+    margin-right: 10px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
   padding: 15px 0 0;
@@ -10005,6 +10010,9 @@ img {
   .project .card-stats ul {
     width: 50%; }
 
+  .page-portfolio .nav-portfolio .nav .btn-white-2 {
+    width: 100%; }
+
   .profile-container .maker-card.project {
     margin-top: 20px; }
     .profile-container .maker-card.project .card-block {
@@ -10290,7 +10298,10 @@ img {
   header.main-header.shrink
   .navbar-toggleable-sm .navbar-nav .nav-link {
     padding-right: 0.2rem;
-    padding-left: 0.2rem; } }
+    padding-left: 0.2rem; }
+
+  .page-portfolio .nav-portfolio .nav .btn-white-2 {
+    width: 50%; } }
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
@@ -10309,11 +10320,6 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
-@media only screen and (min-width: 768px) {
-  .profile-sidebar .profile-container {
-    top: -85px; }
-    .profile-sidebar .profile-container.myprofile {
-      top: -40px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

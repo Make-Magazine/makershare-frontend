@@ -347,6 +347,7 @@
                 a {
                     color: $blue;
                     font-size: 1.2em;
+                    margin-bottom: 5px;
                 }
             }
             .post {}
@@ -536,6 +537,9 @@
             color: $shade-4;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
+            }
+            &:first-of-type {
+                padding-left: 0;
             }
         }
     }
@@ -2510,7 +2514,7 @@ button {
 .toggleProfile {
     position: absolute;
     right: 15px;
-    bottom: 15px;
+    bottom: 0;
     width: 35px;
     height: 35px;
     border: 1px solid $blue;
