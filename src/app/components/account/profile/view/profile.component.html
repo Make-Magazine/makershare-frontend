@@ -15,11 +15,6 @@
 					</div>
 				</div>
 				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-between d-flex hidden-sm-down">
-					<div class="d-flex flex-row switch justify-content-end align-items-start hidden-sm-down display-style">
-						<a class="profile-share">
-							<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-						</a>
-					</div>
 					<ul class="list-unstyled stats d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -48,14 +43,11 @@
 									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
 									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
 								</div>
-								<app-message-modal *ngIf="CurrentLoggedUserId != uid" class="profile-message" [uid]="uid"></app-message-modal>
+								<a class="edit-your-profile" (click)="OpenModal(editinfomodal,'Portfolio Photo')"><i class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
 							</div>
 							<div class="profile-group">
 								<div class="profile-pic">
 									<!-- Start Profiel Pic -->
-									<div *ngIf="profile.user_photo_with_style">
-										<a (click)="OpenModal(editinfomodal,'Portfolio Photo')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									</div>
 									<div *ngIf="!profile.user_photo_with_style">
 										<div class="first-photo-upload">
 											<a (click)="OpenModal(editinfomodal,'Portfolio Photo')">Upload Photo</a>
@@ -72,9 +64,6 @@
 							<!-- End profile-group -->
 							<div class="profile-info">
 								<div class="userInfo">
-									<div>
-										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									</div>
 									<h4 class="profile-fullname">{{profile.full_name}}</h4>
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
@@ -87,13 +76,13 @@
 										<i class="lnr lnr lnr-chevron-down open"></i>
 										<i class="lnr lnr lnr-cross close"></i>
 									</span>
+									<a class="profile-share">
+										<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+									</a>
 								</div>
 								<hr class="hideData">
 								<!-- describe yourself-->
 								<ul class="list-unstyled post hideData">
-									<div>
-										<a (click)="OpenModal(editinfomodal,'Personal Info')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									</div>
 									<li *ngIf="ProfileInfo.describe_yourself != '' " class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
 									<li *ngIf="ProfileInfo.describe_yourself == ''" class="motto-placeholder placeholder-text">{{PlaceholderText.describe_yourself}}</li>
 								</ul>
@@ -111,9 +100,6 @@
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div class="bio hideData">
-									<div>
-										<a (click)="OpenModal(editinfomodal,'Bio')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									</div>
 									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
@@ -124,7 +110,6 @@
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
 								<div  class="hideData">
-									<a (click)="OpenModal(editinfomodal,'Social')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">Social</p>
 									<p class="placeholder-text" *ngIf="emptySocial">{{PlaceholderText.social}}</p>
 									<div class="social-links d-flex flex-wrap">
@@ -181,9 +166,6 @@
 								</div>
 								<hr class="hideData">
 								<ul class="list-unstyled makerspaces hideData">
-									<div>
-										<a (click)="OpenModal(editinfomodal,'MakerSpaces')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
-									</div>
 									<p class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
@@ -192,12 +174,11 @@
 										</div>
 									</span>
 								</ul>
-								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_  == ''" class="list-unstyled makerspaces hideData">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || ProfileInfo.field_add_your_makerspace_s_ == ''" class="list-unstyled makerspaces hideData">
 									<p class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
 								<hr class="hideData">
 								<div class="hideData websites">
-									<a (click)="OpenModal(editinfomodal,'Links')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">Websites</p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' && profile.field_social_accounts.field_website_title"
@@ -212,13 +193,11 @@
 								<hr class="hideData">
 								<div class="how hideData">
 									<!-- Start How -->
-									<a (click)="OpenModal(editinfomodal,'Maker Moment')"><img src="./assets/images/icons/edit.svg" class="edit-buttons" alt=""></a>
 									<p class="global-title">My Maker Moment</p>
 									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr class="hideData">
-								<a (click)="OpenModal(editinfomodal,'Interests')"><img src="./assets/images/icons/edit.svg" class="edit-buttons hideData" alt=""></a>
 								<p class="hideData global-title">Favorite Maker Topics</p>
 								<p *ngIf="ProfileInfo.maker_interests.length == 0" class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
 								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
@@ -524,7 +503,7 @@
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
-											<option [disabled]="true" [selected]="ProfileInfo.address.governorate == '_none'">Choose</option>
+											<!--<option [disabled]="true" [selected]="ProfileInfo.address.governorate == '_none'">Choose</option>-->
 											<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="ProfileInfo.address.governorate == area.value">{{area.value}}</option>
 										</select>
 									</div>
@@ -834,8 +813,8 @@
 					</div>
 				</div>
 				<div class="modal-footer mt-auto ml-auto">
-					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')" [hidden]="true">Close</button>
-					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn)">Save</button>
+					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click');SaveInfo(closebtn)">Save &amp;Close</button>
+					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next</button>
 				</div>
 			</div>
 		</div>
