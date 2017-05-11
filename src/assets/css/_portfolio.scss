@@ -41,18 +41,19 @@
 		}
 		.display-style {
         cursor: pointer;
+        padding-right: 10px;
 				p {
 					opacity: 1;
 					color: $shade-4;
 					font-size: 1em;
-						&.not_active {
+					margin-right: 38px;
+					&.not_active {
 							opacity: 0.3;
 					}
 				}
-        
-        padding-right: 10px;
         img {
             width: 30px;
+						margin-right: 10px;
         }
     }
 	}

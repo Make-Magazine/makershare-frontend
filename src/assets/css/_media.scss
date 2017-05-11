@@ -145,6 +145,9 @@
             }
         }
     }
+    .page-portfolio .nav-portfolio .nav .btn-white-2 {
+         width: 100%;
+     }
     .profile-container {
         .maker-card.project {
             margin-top: 20px;
@@ -693,6 +696,9 @@
               }
           }
      }
+     .page-portfolio .nav-portfolio .nav .btn-white-2 {
+         width: 50%;
+     }
 }
 
 @media only screen and (min-width: 992px) {
@@ -736,14 +742,14 @@
     }
 }
 @media only screen and (min-width: 768px) {
-    .profile-sidebar {
-        .profile-container {
-            top: -85px;
-            &.myprofile {
-                top: -40px;
-            }
-        }
-    }
+    // .profile-sidebar {
+    //     .profile-container {
+    //         // top: -85px;
+    //         &.myprofile {
+    //             top: -40px;
+    //         }
+    //     }
+    // }
 }
 @media only screen and (min-width: 1200px) {}
 
