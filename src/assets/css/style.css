@@ -2328,7 +2328,7 @@ footer {
     .info-w-parallax .info-card .button-container-onboarding {
       text-align: center;
       margin-top: 24px; }
-      .info-w-parallax .info-card .button-container-onboarding .project-button {
+      .info-w-parallax .info-card .button-container-onboarding .project-add {
         width: 170px !important; }
       .info-w-parallax .info-card .button-container-onboarding .btn-main {
         width: 167px !important;
@@ -10238,7 +10238,10 @@ img {
     max-width: 370px; } }
 @media only screen and (max-width: 525px) {
   .project-button {
-    display: none; } }
+    display: none; }
+
+  .info-w-parallax .info-card {
+    height: auto !important; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
