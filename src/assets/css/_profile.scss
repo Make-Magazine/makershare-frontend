@@ -103,6 +103,17 @@
         margin-bottom: 10px;
         .profile-progress {}
     }
+    a:not([href]):not([tabindex]).edit-your-profile {
+        display: block;
+        background-color: $red;
+        padding: 10px;
+        text-align: center;
+        color: #FFF;
+        font-size: 1em;
+        i {
+            margin-right: 10px;
+        }
+    }
     .single-icon {
         width: 100%;
         img {
@@ -270,6 +281,26 @@
                 position: relative;
                 .placeholder-text {
                     margin-bottom: 0;
+                }
+            }
+            .profile-share {
+                position: absolute;
+                right: 0;
+                top: 5px;
+                i{
+                    color: $blue;
+                    &:hover {
+                        color: $blue*0.8;
+                    }
+                }
+                .btn-soft-grey, a:not([href]):not([tabindex]).btn-soft-grey {
+                    border: 1px solid $blue;
+                    color: $blue;
+                    padding: 5px;
+                    &:hover {
+                        border-color: $blue*0.8;
+                        color: $blue*0.8;
+                    }
                 }
             }
             .profile-fullname {
@@ -505,16 +536,6 @@
             color: $shade-4;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
-            }
-        }
-    }
-    .profile-share {
-        .btn-soft-grey, a:not([href]):not([tabindex]).btn-soft-grey {
-            border: 1px solid $shade-4;
-            padding: 5px;
-            &:hover {
-                border-color: $blue;
-                color: $blue;
             }
         }
     }
@@ -1548,7 +1569,7 @@
             }
             .modal-contents {
                 min-height: 370px;
-                max-height: 370px;
+                max-height: 550px;
                 overflow-y: auto;
             }
             #social {

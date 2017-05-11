@@ -13,6 +13,9 @@
   </header>-->
   <!--/header -->
   <div class="container inbox-container">
+    <div *ngIf="noMessage" class="text-center pt-5">
+      <h3>You do not have any messages</h3>
+    </div>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg; let i=index;">
         <!--<div class="select" *ngIf="message">

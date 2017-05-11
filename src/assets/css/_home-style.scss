@@ -522,6 +522,9 @@ footer {
     overflow-y: auto;
     max-width: 350px;
     max-height: 408px;
+    .no-notfy{  
+        padding-top: 70px;
+    }
 }
 .deleted-user{
     color: gray !important;
