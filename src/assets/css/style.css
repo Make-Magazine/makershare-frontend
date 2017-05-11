@@ -2075,6 +2075,8 @@ footer {
   overflow-y: auto;
   max-width: 350px;
   max-height: 408px; }
+  .dropdown-notification .no-notfy {
+    padding-top: 70px; }
 
 .deleted-user {
   color: gray !important; }
