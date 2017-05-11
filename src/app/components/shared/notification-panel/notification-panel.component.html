@@ -15,6 +15,9 @@
       </li>
     </ul>
     <div class="dropdown-notification">
+      <div *ngIf="noNotification" class="text-center pt-5">
+        <p class="no-notfy">You do not have any notifications</p>
+      </div>
       <ul class="list-group">
         <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
       </ul>

@@ -32,12 +32,12 @@
       <div *ngIf="fileCard.usage.profile2">* Your profile picture</div>
       <div *ngIf="fileCard.usage.node">* The following projects cover image:
         <div *ngFor="let node of fileCard.usage.node; let i = index;">
-          <a [routerLink]="['/project/edit',node.nid]">{{i+1}}-{{node.title}}</a>
+          <a [routerLink]="['/projects',node.nid,'edit']">{{i+1}}-{{node.title}}</a>
         </div>
       </div>
       <div *ngIf="fileCard.usage.field_collection_item">* The following projects as a resource file:
         <div *ngFor="let node of fileCard.usage.field_collection_item; let i = index;">
-          <a [routerLink]="['/project/edit',node.nid]">{{i+1}}-{{node.title}}</a>
+          <a [routerLink]="['/projects',node.nid,'edit']">{{i+1}}-{{node.title}}</a>
         </div>
       </div>
     </div>

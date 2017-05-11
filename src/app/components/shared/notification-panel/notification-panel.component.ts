@@ -12,6 +12,7 @@ export class NotificationPanelComponent implements OnInit {
   userId;
   countNotifications;
   newCount: number = 0;
+  noNotification = false;
   constructor(
     private viewService: ViewService,
     private userService: UserService,
@@ -22,7 +23,6 @@ export class NotificationPanelComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       if (data) {
         this.userId = localStorage.getItem('user_id');
-        console.log(this.userId);
         this.getNotifications();
         this.getNewCont();
         this.getNotificationsCount();
@@ -38,6 +38,9 @@ export class NotificationPanelComponent implements OnInit {
   getNotifications() {
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.userId]]).subscribe(data => {
       this.notifications = data;
+      if(this.notifications.length ==0){
+        this.noNotification = true;
+      }
 
     }, err => {
       console.log(err);
