@@ -19,10 +19,11 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
-    { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
+    // { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
     { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
-    { path: 'projects', loadChildren: 'app/components/explore/explore.module#ExploreModule' },
-    { path: 'workshops', loadChildren: 'app/components/learn/learn.module#LearnModule' },
+
+    { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
+    // { path: 'workshops', loadChildren: 'app/components/learn/learn.module#LearnModule' },
     { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'portfolio/:name', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },

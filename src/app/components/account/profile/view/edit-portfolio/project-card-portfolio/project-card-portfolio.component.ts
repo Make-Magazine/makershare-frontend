@@ -69,7 +69,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
     });
   }
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view/', nid]);
+    this.router.navigate(['/projects', nid]);
   }
   getBadgesProject() {
     this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {

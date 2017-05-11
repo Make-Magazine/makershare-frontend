@@ -12,10 +12,10 @@ import { MainService } from '../../d7services/main/main.service';
 
 
 @Component({
-  selector: 'app-explore',
-  templateUrl: './explore.component.html',
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
 })
-export class ExploreComponent implements OnInit {
+export class ProjectsComponent implements OnInit {
   projects = [];
   categories = null;
   nameCat;
@@ -254,9 +254,10 @@ export class ExploreComponent implements OnInit {
       // console.log(this.categories_parents);          
     });
   }
-  idCategory(id,name) {
-    this.nameCat=name;
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', id).subscribe(res => {
+  idCategory(term) {
+    this.CurrentActiveParentIndex = this.categories_parents.map(element=>element.tid).indexOf(term.parent_tid);
+    this.nameCat=term.name;
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', term.tid).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(this.countProject)
     }, err => {
