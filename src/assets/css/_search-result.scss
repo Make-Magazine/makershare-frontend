@@ -341,6 +341,10 @@
 .stylish-input-group button{
     border:0;
     background:transparent;
+		&:active,&:focus {
+			border: none !important;
+			outline: none !important;
+		}
 }
 
 
@@ -356,6 +360,14 @@
     top: 10px;
     z-index: 3;
     right: 60px;
+	}
+	.searsh-field {
+		.dropdown-menu {
+			overflow: hidden;
+			.dropdown-item {
+				padding: 0.5em .5em !important;
+			}
+		}
 	}
 }
 

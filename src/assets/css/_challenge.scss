@@ -230,6 +230,13 @@
 }
 .page-challenge-summary {
     background-color: #F2F2F2;
+    .challenge-award {
+        img {
+            width: 100px;
+            height: 100px;
+            max-width: 100%;
+        }
+    }
 }
 
 
