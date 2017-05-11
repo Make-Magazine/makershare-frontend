@@ -90,10 +90,11 @@ export class ProjectsComponent implements OnInit {
     console.log(event);
     this.loaderService.display(true);
     var id = event.target.id;
-    this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
+    this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
       this.projects = data;
+      console.log(data.length)
       //this.projects= this.projects.concat(data);
-    //  this.loadMoreVisibilty();
+      this.loadMoreVisibilty();
 
 
       if (this.projects.length == 0) {
@@ -129,9 +130,6 @@ export class ProjectsComponent implements OnInit {
     console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
-      
-      
-
     } else if (this.countProject > this.projects.length) {
       //  setTimeout(10000);
       this.hideloadmoreproject = false;
