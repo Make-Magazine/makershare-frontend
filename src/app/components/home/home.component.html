@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!homeCards">
+    <div *ngIf="!homeCards || homeCards.length == 0">
       <h4>There are no Results to show</h4>
     </div>
   </div>
