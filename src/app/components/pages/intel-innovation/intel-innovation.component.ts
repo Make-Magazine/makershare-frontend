@@ -26,7 +26,7 @@ export class IntelInnovationComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 804]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 1543]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
 

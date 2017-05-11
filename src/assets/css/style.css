@@ -2087,7 +2087,8 @@ footer {
   padding: 10px;
   text-align: center;
   color: #FFF;
-  font-size: 1em; }
+  font-size: 1em;
+  border: none; }
 
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
