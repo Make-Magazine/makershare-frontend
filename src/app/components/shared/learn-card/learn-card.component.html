@@ -1,11 +1,10 @@
-
 <div class="row learn-card" *ngIf="!front">
   <div class="col-md-4 image-container">
     <img src="{{learn.cover_photo}}" alt="" class="img-responsive" (click)="WorkshopDetails(learn.nid)">
     <img *ngIf="!learn.cover_photo" src="./assets/images/placeholder.png" alt="">
     <div class="card-type-grey-2">
       <div class="type-layer-2">
-       Learning
+        Learning
       </div>
     </div>
   </div>
@@ -26,7 +25,7 @@
             </div>
           </div>
           <div class="learn-card-footer-2 ml-3">
-   
+
           </div>
         </div>
       </div>
@@ -51,7 +50,7 @@
       </div>
       <div class="card-type-grey-2">
         <div class="type-layer-2">
-         Learning
+          Learning
         </div>
       </div>
       <div class="horizontal-type-badge-learn">
@@ -73,7 +72,15 @@
                 <span class="btn btn-main" (click)="WorkshopDetails(learn.nid)">Get Started</span>
               </div>
             </div>
-            <div class="learn-card-footer-2 ml-5 d-flex">
+            <div class="learn-card-footer-2 ml-5 d-flex hidden-xs-down">
+              <div class="learn-card-count align-self-center">
+                <span class="entries-count">{{countlessons}}
+                <span *ngIf="countlessons != 1"> Lessons</span>
+                <span *ngIf="countlessons == 1">Lesson</span>
+                </span>
+              </div>
+            </div>
+            <div class="learn-card-footer-2 ml-3 d-flex hidden-sm-up">
               <div class="learn-card-count align-self-center">
                 <span class="entries-count">{{countlessons}}
                 <span *ngIf="countlessons != 1"> Lessons</span>

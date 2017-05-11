@@ -36,7 +36,7 @@ export class SentComponent implements OnInit {
   blocked;
   noMessage= false;
   countSent;
-  countInbox
+  countInbox;
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
