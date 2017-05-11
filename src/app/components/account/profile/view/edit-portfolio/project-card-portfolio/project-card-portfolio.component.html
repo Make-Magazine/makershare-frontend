@@ -1,4 +1,4 @@
-<div *ngIf="projectCard && type == 'grid'">
+<div *ngIf="projectCard && type == 'grid' && projectCard.path">
   <div class="project card">
     <div class="card-type-blue">
       <div class="type-layer-2">
@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="image-top">
-      <div class="overlay-portfolio" [routerLink]="['/projects/',Project.nid]"></div>
+      <div class="overlay-portfolio" [routerLink]="['/projects/',projectCard.path]"></div>
       <div class="profile-edit-buttons">
         <div class="d-flex flex-column m-auto profile-edit-buttons">
-          <p [routerLink]="['/projects',Project.nid,'edit']" class="btn edit-project"><span>Edit Project</span></p>
+          <p [routerLink]="['/projects/',projectCard.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
             <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
@@ -38,7 +38,7 @@
             <img *ngIf="!projectCard.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
           </div>
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.nid)">
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.path)">
             <h4 class="card-title" innerHTML="{{projectCard.project_name}}"></h4>
             <a (click)="userProfile(projectCard.first_name,projectCard.last_name)">
               <p *ngIf="type == 'grid'" class="maker-name">By {{projectCard.first_name}} {{projectCard.last_name}}</p>
@@ -73,7 +73,7 @@
       <div class="overlay-portfolio" (click)="ShowProjectDetails(Project.nid)"></div>
       <div class="profile-edit-buttons">
         <div class=" d-flex flex-column m-auto">
-          <p [routerLink]="['/project',Project.nid,'edit']" class="btn edit-project"><span>Edit Project</span></p>
+          <p [routerLink]="['/project/',Project.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
             <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
@@ -114,7 +114,7 @@
     <div class="card-block container">
       <div class="row">
         <div class="col-md-9">
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.nid)">
+          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.path)">
             <h4 class="card-title-project" innerHTML="{{projectCard.project_name}}"></h4>
           </div>
         </div>
