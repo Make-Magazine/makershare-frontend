@@ -563,6 +563,11 @@
     .project-button {
         display: none;
     }
+    .info-w-parallax {
+        .info-card {
+            height: auto !important;
+        }
+    }
 }
 
 @media only screen and (max-width: 623px) {}
