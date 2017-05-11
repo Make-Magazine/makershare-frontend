@@ -257,7 +257,11 @@ export class ProjectsComponent implements OnInit {
   idCategory(term) {
     this.CurrentActiveParentIndex = this.categories_parents.map(element=>element.tid).indexOf(term.parent_tid);
     this.nameCat=term.name;
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category/', term.tid).subscribe(res => {
+      let body = {
+        "tid": term.tid,
+        
+      };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category',body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(res)
     }, err => {
