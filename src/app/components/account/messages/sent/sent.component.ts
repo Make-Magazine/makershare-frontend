@@ -223,7 +223,7 @@ export class SentComponent implements OnInit {
 //   }
 
   viewMessage(thread_id) {
-    this.router.navigate(['/view', thread_id]);
+    this.router.navigate(['/account/inbox/view', thread_id]);
   }
 
   /*
