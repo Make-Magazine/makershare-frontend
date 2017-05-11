@@ -95,5 +95,11 @@ export class PmService {
   deleteNotification(mid: number): Observable<any> {
     return this.mainService.delete(globals.endpoint + '/maker_notification_api/' + mid).map(res => res.json()).catch(err => Observable.throw(err));
   }
-
-}
+  
+  postAction(viewName: string,uid:any){
+    return this.mainService.post(globals.endpoint + '/' + viewName, uid).map(res => res.json());
+  }
+  updateAction(viewName: string,uid: any){
+    return this.mainService.post(globals.endpoint + '/' + viewName, uid).map(res => res.json());
+  }
+ }
