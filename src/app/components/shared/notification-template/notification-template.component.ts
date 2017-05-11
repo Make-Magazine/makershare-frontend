@@ -23,7 +23,7 @@ export class NotificationTemplateComponent implements OnInit {
     private pm: PmService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {   
   }
 
   MarkAsSeen(seen){
