@@ -1375,8 +1375,7 @@ body {
         cursor: pointer; }
 
 #search-box-layer .close-search-layer,
-#search-box-layer .go-search,
-#search-box-layer .clear-search {
+#search-box-layer .go-search {
   position: absolute;
   color: #fff;
   font-size: 2em;
@@ -1387,10 +1386,6 @@ body {
 #search-box-layer .go-search {
   top: 7px;
   right: -40px; }
-#search-box-layer .clear-search {
-  top: 13px;
-  right: 5px;
-  font-size: 1em; }
 
 /* forms valid-errors */
 .valError {
