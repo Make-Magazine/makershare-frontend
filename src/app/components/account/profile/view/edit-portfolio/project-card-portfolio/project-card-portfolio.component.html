@@ -9,7 +9,7 @@
       <div class="overlay-portfolio" [routerLink]="['/project/view',Project.nid]"></div>
       <div class="profile-edit-buttons">
         <div class="d-flex flex-column m-auto profile-edit-buttons">
-          <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span>Edit Project</span></p>
+          <p [routerLink]="['/projects',Project.nid,'edit']" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
             <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
@@ -73,7 +73,7 @@
       <div class="overlay-portfolio" (click)="ShowProjectDetails(Project.nid)"></div>
       <div class="profile-edit-buttons">
         <div class=" d-flex flex-column m-auto">
-          <p [routerLink]="['/project/edit',Project.nid]" class="btn edit-project"><span>Edit Project</span></p>
+          <p [routerLink]="['/project',Project.nid,'edit']" class="btn edit-project"><span>Edit Project</span></p>
           <div class="d-flex">
             <div *ngIf="Visibility != 1115" class="d-flex flex-column">
               <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>

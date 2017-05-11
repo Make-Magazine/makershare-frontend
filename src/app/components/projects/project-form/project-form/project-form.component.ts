@@ -83,26 +83,29 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   ) { }
 
   ngOnInit(): void {
-    var nid;
+    var title;
     this.ProjectLoaded = false;
     this.route.params.subscribe(params => {
-      nid = params["nid"];
+      title = params["title"];
     });
-    if (nid) {
-      this.GetProject(nid);
-    } else {
-      this.SetProjectOwner();
-    }
-    this.current_active_tab = 'Your Story';
-    // set default tab according to url parameter "tab"
-    this.defaultTabObs = this.route.queryParams.map(params => params['redirectTo']);
-    this.defaultTabObs.subscribe(tab => {
-      if (tab != undefined || tab != '') {
-        this.missionRedirection = decodeURIComponent(tab);
+    this.nodeService.getIdFromUrl(title,'project').subscribe(ids=>{
+      let nid = ids[0];  
+      if (nid) {
+        this.GetProject(nid);
+      } else {
+        this.SetProjectOwner();
       }
-      else if(tab =undefined){
-        console.log("asdsadsadsadsa");
-      }
+      this.current_active_tab = 'Your Story';
+      // set default tab according to url parameter "tab"
+      this.defaultTabObs = this.route.queryParams.map(params => params['redirectTo']);
+      this.defaultTabObs.subscribe(tab => {
+        if (tab != undefined || tab != '') {
+          this.missionRedirection = decodeURIComponent(tab);
+        }
+        else if(tab =undefined){
+          console.log("asdsadsadsadsa");
+        }
+      });
     });
   }
 

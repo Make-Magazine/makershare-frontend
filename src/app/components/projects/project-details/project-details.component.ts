@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
 import { ViewService } from '../../../d7services/view/view.service';
 import { FlagService } from '../../../d7services/flag/flag.service';
 import { UserService } from '../../../d7services/user/user.service';
+import { NodeService } from '../../../d7services/node/node.service';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -36,6 +37,7 @@ export class ProjectDetailsComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
+    private nodeService: NodeService,
     private flagService: FlagService,
     private loaderService: LoaderService,
     private readonly meta: MetaService,
@@ -57,15 +59,15 @@ export class ProjectDetailsComponent implements OnInit {
     this.loaderService.display(true);
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['nid']; // (+) converts string 'id' to a number
-      /* service to get challenge name if project enter in it */
-      // get challenge name and nid for challenge if found from a view
-      this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
-        
+      let title = params['title'];
+      this.nodeService.getIdFromUrl(title,'project').subscribe(ids=>{
+        this.id = ids[0];
+        if(!ids[0])
+          return;
+        this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         this.projectdata = data[0];
       }, err => {});
       /* end service */
-
       // dispatch action to load the details here-solve no load issue.
       this.route.params
         // (+) converts string 'id' to a number
@@ -83,7 +85,6 @@ export class ProjectDetailsComponent implements OnInit {
           this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
           this.meta.setTag('og:image', this.project.field_cover_photo.url);
           this.meta.setTag('og:description', this.project.field_teaser.value);
-
           this.projectDetails = this.project;
           this.projectDetails.nid = this.id;
           this.loaderService.display(false);
@@ -91,15 +92,13 @@ export class ProjectDetailsComponent implements OnInit {
           if(this.currentuser != this.project.uid){
             this.statisticsService.view_record(this.project.nid, 'node').subscribe();
           }
-
         }, err => {
           this.loaderService.display(false);
         });
-
-      this.currentuser = Number(localStorage.getItem('user_id'));
-
-
-      
+        this.currentuser = Number(localStorage.getItem('user_id'));
+      });
+      /* service to get challenge name if project enter in it */
+      // get challenge name and nid for challenge if found from a view      
     });
   }// End ngOnInit
 
