@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 import { StatisticsService } from './d7services/statistics/statistics.service';
+import { SolrService } from './d7services/solr/solr.service';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
@@ -108,6 +109,7 @@ let config = {
     ProfilePictureService,
     LoaderService,
     StatisticsService,
+    SolrService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition
