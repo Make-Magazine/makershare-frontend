@@ -26,7 +26,7 @@ export class WhyPortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 1228]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 1546]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
 

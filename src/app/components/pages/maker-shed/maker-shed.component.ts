@@ -26,10 +26,9 @@ export class MakerShedComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 1206]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 1544]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
-
       this.meta.setTitle(`Maker Share | ${this.title}`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', this.body);

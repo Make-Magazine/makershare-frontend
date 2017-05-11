@@ -26,7 +26,7 @@ export class MakerIntelComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 802]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 1536]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
 
