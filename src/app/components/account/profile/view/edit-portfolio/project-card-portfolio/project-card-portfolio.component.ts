@@ -38,6 +38,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       var membership_array = membership_string.split(',');
       res[0].field_team_members = membership_array;
       this.projectCard = res[0];
+      console.log(this.projectCard)
     });
   }
 
@@ -67,8 +68,8 @@ export class ProjectCardPortfolioComponent implements OnInit {
       this.emitter.emit();
     });
   }
-  ShowProjectDetails(nid) {
-    this.router.navigate(['/projects', nid]);
+  ShowProjectDetails(path) {
+    this.router.navigate(['/projects/', path]);
   }
   getBadgesProject() {
     this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {

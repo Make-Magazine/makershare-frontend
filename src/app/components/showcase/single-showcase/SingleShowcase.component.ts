@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService,FlagService,StatisticsService } from '../../../d7services';
+import { ViewService,FlagService,StatisticsService,NodeService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
@@ -12,9 +12,11 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbTooltipConfig],
 })
 export class SinglShowcaseComponent implements OnInit {
-customDescription:string
+  customDescription: string
   showcase = { uid: "" };
   view = 'grid';
+  idFromUrl:number;
+  path: string;
   profile = {};
   projects = [];
   hideloadmore = false;
@@ -33,7 +35,7 @@ customDescription:string
     'bookmark': 'Bookmark this project',
     'share': 'Share this project',
   }
-  
+
   // @Output() showcaseNid = new EventEmitter();
   constructor(
     private route: ActivatedRoute,
@@ -44,27 +46,42 @@ customDescription:string
     private flagService: FlagService,
     private statisticsService: StatisticsService,
     private config: NgbTooltipConfig,
+    private nodeService: NodeService,
 
-  ) { 
+
+  ) {
     config.placement = 'bottom';
-    config.triggers = 'hover';   
+    config.triggers = 'hover';
   }
 
   ngOnInit() {
     // show spinner
     this.loaderService.display(true);
-    this.sort_order = "DESC";
-    this.sort_by = "changed";
-    this.getShowcase();
-    //load showcase projects count
-    this.getProjectsCount();
-    //load showcaseprojects data
-    this.getshowCaseProjects();
-    this.showcaseNid = this.route.params['value'].nid
-    //this.countLikes();
-    // console.log(this.showcasenumber)
-    this.userId = localStorage.getItem('user_id');
+        this.route.params
 
+    this.path = this.route.snapshot.params['path'];
+    console.log(this.path)
+    if (this.path) {
+      this.nodeService.getIdFromUrl(this.path,'showcase').subscribe(data => {
+        this.idFromUrl = data[0];
+        console.log(this.idFromUrl)
+          this.getShowcase();
+      
+
+    
+     this.sort_order = "DESC";
+     this.sort_by = "changed";
+   
+     //load showcase projects count
+     this.getProjectsCount();
+     //load showcaseprojects data
+    this.getshowCaseProjects();
+   //  this.showcaseNid = this.route.params['value'].nid
+    //  this.countLikes();
+     // console.log(this.showcasenumber)
+    this.userId = localStorage.getItem('user_id');
+  });  
+  }
   }
   getshowCaseProjects() {
     if (this.loadFlag) {
@@ -72,7 +89,7 @@ customDescription:string
     }
 
     this.route.params
-      .switchMap((nid) => this.viewService.getView('views/showcase_projects', [['nid', nid['nid']], ['display_id', 'services_1'], ['limit', this.limit], ['sort_by', this.sort_by], ['sort_order', this.sort_order]]))
+      this.viewService.getView('views/showcase_projects', [['nid', this.idFromUrl], ['display_id', 'services_1'], ['limit', this.limit], ['sort_by', this.sort_by], ['sort_order', this.sort_order]])
       .subscribe(data => {
         this.projects = data;
         this.loadMoreVisibilty();
@@ -112,12 +129,12 @@ customDescription:string
   getShowcase() {
     // load the showcase data
     this.route.params
-      .switchMap((nid) => this.viewService.getView('showcase', [['nid', nid['nid']]]))
+      this.viewService.getView('showcase', [['nid',this.idFromUrl]])
       .subscribe(data => {
         this.showcase = data[0];
         console.log(this.showcase)
         //this.getProfile(this.showcase.uid);
-        this.customDescription=this.showcase['description']
+        this.customDescription = this.showcase['description']
         console.log(this.customDescription)
 
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
@@ -125,7 +142,7 @@ customDescription:string
         this.meta.setTag('og:description', this.showcase['description']);
 
         // statistics
-        if(this.userId != this.showcase.uid){
+        if (this.userId != this.showcase.uid) {
           let showcaseNid = data[0].nid;
           this.statisticsService.view_record(showcaseNid, 'node').subscribe();
         }
@@ -142,15 +159,15 @@ customDescription:string
 
   getProjectsCount() {
     this.route.params
-      .switchMap((nid) => this.viewService.getView('showcase_projects_nid', [['nid', nid['nid']]]))
+      this.viewService.getView('showcase_projects_nid', [['nid', this.idFromUrl]])
       .subscribe(data => {
         this.projectsCount = data.length;
-         console.log(data.length);
+        console.log(data.length);
       });
 
   }
   ShowcasePojectNav(nid, snid) {
-    this.router.navigate(['/showcases/project2/', snid,this.sort_by,this.sort_order, nid]);
+    this.router.navigate(['/showcases/project2/', snid, this.sort_by, this.sort_order, nid]);
     // this.showcaseNid.emit(this.route.params['value'].nid)
   }
 
@@ -164,7 +181,7 @@ customDescription:string
 
   //   })
   // }
-    likesCounter(count) {
+  likesCounter(count) {
     this.numLikes = count;
     console.log(this.numLikes)
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { SolrService } from '../../../../d7services/solr/solr.service';
 
 @Component({
   selector: 'app-search-box',
@@ -10,6 +11,7 @@ export class SearchBoxComponent implements OnInit {
   searchQuery: string = '';
   constructor(
     private router: Router,
+    private solrService: SolrService,
   ) { }
   @Input() boxStatus: boolean;
   @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -22,13 +24,23 @@ export class SearchBoxComponent implements OnInit {
   }
 
   goSearch() {
-    this.boxStatus = false;
-    this.notify.emit();
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'query': encodeURIComponent(this.searchQuery) },
-      // fragment: 'anchor'
-    };
-    this.router.navigate(['/search'], navigationExtras);
+    this.solrService.autocomplete(this.searchQuery).subscribe(res=>{
+      if(res.response.numFound == 0){
+        // this.router.navigate(['/']);
+        this.boxStatus = false;
+        this.closeSearchBox();
+        return;
+      }else {
+          this.boxStatus = false;
+          this.notify.emit();
+          let navigationExtras: NavigationExtras = {
+            queryParams: { 'query': encodeURIComponent(this.searchQuery) },
+            // fragment: 'anchor'
+          };
+          this.router.navigate(['/search'], navigationExtras);
+      }
+    })
+    
   }
 
   keyDownFunction(event) {
