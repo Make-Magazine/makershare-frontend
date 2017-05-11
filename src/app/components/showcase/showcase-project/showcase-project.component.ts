@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
-import { FlagService } from '../../../d7services/flag/flag.service';
-import { UserService } from '../../../d7services/user/user.service';
+import { ViewService,FlagService,UserService } from '../../../d7services';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

@@ -1,8 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { UserProfile } from "../../../../../../models/profile/userprofile";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ProfileService } from '../../../../../../d7services/profile/profile.service';
-import { ViewService } from '../../../../../../d7services/view/view.service';
+import { ViewService,ProfileService } from '../../../../../../d7services';
 import { Observable } from 'rxjs/Observable';
 import { CustomValidators } from 'ng2-validation';
 import { inarray } from '../../../../../../validations/inarray.validation'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { UserService } from '../../../d7services/user/user.service';
+import { UserService } from '../../../d7services';
 
 @Injectable()
 export class ProfilePictureService {

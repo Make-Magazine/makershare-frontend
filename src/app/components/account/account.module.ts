@@ -16,7 +16,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     FormsModule,
     ReactiveFormsModule,
     TagInputModule,
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
     ImageCropperModule,
     CKEditorModule

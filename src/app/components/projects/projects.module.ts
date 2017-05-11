@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    SharedModule,
+    SharedModule.forChild(),
     FormsModule,
     ReactiveFormsModule,
     NgbModule

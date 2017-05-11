@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../../d7services/view/view.service';
+import { ViewService } from '../../../../d7services';
+
 @Component({
   selector: 'app-challenge-enter',
   templateUrl: './challenge-enter.component.html',

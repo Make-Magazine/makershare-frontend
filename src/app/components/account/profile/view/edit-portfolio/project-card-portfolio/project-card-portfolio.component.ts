@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectCardPortfolio } from '../../../../../../models';
-import { NodeService } from '../../../../../../d7services/node/node.service'
-import { ViewService } from '../../../../../../d7services/view/view.service';
+import { NodeService,ViewService } from '../../../../../../d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 

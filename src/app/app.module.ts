@@ -1,4 +1,3 @@
-import { Auth } from './auth0/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -8,7 +7,6 @@ import { routing } from "./app.routing";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
-import { StatisticsService } from './d7services/statistics/statistics.service';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
@@ -24,10 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
-// loader service
-import { LoaderService } from './components/shared/loader/loader.service';
-// Profile Picture Service
-import { ProfilePictureService } from './components/shared/profile-picture/profile-picture.service';
+
 //import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 
 // static pages
@@ -83,7 +78,6 @@ let config = {
     GuidelinesComponent,
     WhyPortfolioComponent,
     ShowTellComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -104,10 +98,6 @@ let config = {
   ],
   entryComponents: [],
   providers: [
-    Auth,
-    ProfilePictureService,
-    LoaderService,
-    StatisticsService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition

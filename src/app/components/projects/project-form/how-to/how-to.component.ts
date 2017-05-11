@@ -1,8 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input,ViewChild,AfterViewInit } from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
-import { NodeService } from '../../../../d7services/node/node.service'
-import { TaxonomyService } from '../../../../d7services/taxonomy/taxonomy.service'
+import { NodeService,ViewService,FileService,MainService,TaxonomyService } from '../../../../d7services'
 import { ProjectForm } from '../../../../models';
 import { ToolMaterialPart } from '../../../../models';
 import { TaxonomyTerm } from '../../../../models';
@@ -10,9 +9,6 @@ import { field_collection_item_tool, field_collection_item_part, field_collectio
 import { FileEntity } from '../../../../models';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { FileService } from '../../../../d7services/file/file.service';
-import { MainService } from '../../../../d7services/main/main.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';

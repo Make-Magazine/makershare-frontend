@@ -29,7 +29,7 @@ import { Ng2FileDropModule } from 'ng2-file-drop';
     FormsModule,
     ReactiveFormsModule,
     TagInputModule,
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
     ImageCropperModule,
     CKEditorModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ViewService } from '../../../../../d7services/view/view.service';
+import { ViewService } from '../../../../../d7services';
 import { Http } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
-import { SolrService } from '../../../d7services/solr/solr.service';
+import { SolrService } from '../../../d7services';
 import { SearchInputComponent } from './../search-input/search-input.component';
 import { LoaderService } from '../../shared/loader/loader.service';
 

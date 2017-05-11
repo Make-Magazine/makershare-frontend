@@ -1,13 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { FlagService } from '../../../../d7services/flag/flag.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input, Output, EventEmitter,NgModule } from '@angular/core';
 import { Location } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { ViewService,FlagService } from '../../../../d7services';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project',

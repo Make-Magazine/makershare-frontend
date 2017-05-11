@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../../d7services/view/view.service';
+import { ViewService,FlagService,UserService } from '../../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { FlagService } from '../../../../d7services/flag/flag.service';
-import { UserService } from '../../../../d7services/user/user.service';
 
 @Component({
   selector: 'app-project-search-card',

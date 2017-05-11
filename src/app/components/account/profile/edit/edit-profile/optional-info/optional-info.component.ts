@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { UserProfile } from "../../../../../../models/profile/userprofile";
-import { ProfileService } from '../../../../../../d7services/profile/profile.service';
-import { ViewService } from '../../../../../../d7services/view/view.service';
+import { ViewService,ProfileService } from '../../../../../../d7services';
 import { CustomValidators } from 'ng2-validation';
 import { Observable } from 'rxjs/Observable';
 import { URLNoProtocol } from '../../../../../../validations/url-no-protocol.validation';

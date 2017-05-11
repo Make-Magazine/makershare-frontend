@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation'
-import { ViewService } from '../../../../d7services/view/view.service'
-import { UserService } from '../../../../d7services/user/user.service'
+import { ViewService,UserService } from '../../../../d7services'
 import { ProjectForm } from '../../../../models';
 import { field_collection_item_member }  from '../../../../models';
 import { Observable } from 'rxjs/Observable';

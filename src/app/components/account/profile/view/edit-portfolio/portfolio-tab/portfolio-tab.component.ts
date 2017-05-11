@@ -1,8 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ViewService } from '../../../../../../d7services/view/view.service';
+import { ViewService,UserService,MainService } from '../../../../../../d7services';
 import { ProjectCardPortfolio } from '../../../../../../models';
-import { UserService } from '../../../../../../d7services/user/user.service';
-import { MainService } from '../../../../../../d7services/main/main.service';
 import { Observable } from "rxjs";
 import { Router } from '@angular/router';
 

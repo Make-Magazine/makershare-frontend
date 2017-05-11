@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../../../models/profile/ProfileSocial";
-import { ProfileService } from '../../../../../../d7services/profile/profile.service';
-import { FileService } from '../../../../../../d7services/file/file.service';
+import { FileService,ProfileService } from '../../../../../../d7services';
 import { NodeHelper } from '../../../../../../models';
 import { Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
