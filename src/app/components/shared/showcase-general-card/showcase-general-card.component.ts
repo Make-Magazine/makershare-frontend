@@ -27,8 +27,8 @@ export class ShowcaseGeneralCardComponent implements OnInit {
       this.showcase = data[0];
     });
   }
-  ShowSingleShowcase(nid) {
-    this.router.navigate(['/showcases', nid]);
+  ShowSingleShowcase(path) {
+    this.router.navigate(['/showcases/', path]);
   }
 
   countLikes() {
