@@ -1746,7 +1746,7 @@
 }
 
 .social-links {
-    a {
+    a.social {
         position:relative;
         text-align:center;
         padding:15px;
@@ -1773,6 +1773,9 @@
         cursor:pointer;
         background:$shade-4;
         color:#fff;
+        &.ext {
+            padding: 5px;
+        }
 	
     }
     a.social:hover {
@@ -1802,12 +1805,17 @@
             radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
             linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
         }
+        &.ext {
+            background-color: #fff;
+            border: 0.5px solid $shade-4;
+        }
     }
 }
 
 .mywebsite {
     color: $text-color-6;
     text-decoration: none !important;
+    display: block;
 }
 
 .edit-icon {
