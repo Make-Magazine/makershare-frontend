@@ -14,7 +14,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-between d-flex hidden-sm-down">
+				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
 					<ul class="list-unstyled stats d-flex flex-row justify-content-end">
 						<li *ngIf="ProjectsCount">
 							<p><span class="number">{{ProjectsCount}}</span> projects</p>
@@ -144,18 +144,21 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social ext" target="_blank" (mouseover)="hackster = false" (mouseleave)="hackster = true" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+												<img src="./assets/images/icons/hackster_white.svg" *ngIf="hackster" alt="">
+												<img src="./assets/images/icons/hackster_black.svg" *ngIf="!hackster" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social ext" target="_blank" (mouseover)="instructables = false" (mouseleave)="instructables = true" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+												<img src="./assets/images/icons/instructables_white.svg" *ngIf="instructables" alt="">
+												<img src="./assets/images/icons/instructables_black.svg" *ngIf="!instructables" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social ext" target="_blank" (mouseover)="hackaday = false" (mouseleave)="hackaday = true" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
 											</a>
 										</div>
 									</div>
@@ -181,10 +184,8 @@
 								<div class="hideData websites">
 									<p class="global-title">Websites</p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' && profile.field_social_accounts.field_website_title"
-										 href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}</a>
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' && profile.field_social_accounts.field_blog_title"
-										 href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''" href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}1</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}2</a>
 									</div>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_title == '' && ProfileInfo.field_social_accounts.field_blog_title == ''">
 										<p class="placeholder-text">{{PlaceholderText.websites}}</p>
@@ -291,8 +292,8 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social-img ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+												<img src="./assets/images/icons/hackster_white.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
@@ -323,10 +324,10 @@
 									<p class="global-title" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' && profile.field_social_accounts.field_website_title"
-										 href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}</a>
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != '' && profile.field_social_accounts.field_blog_title"
-										 href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''"
+										 href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{ProfileInfo.field_social_accounts.field_website_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''"
+										 href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{ProfileInfo.field_social_accounts.field_blog_title}}</a>
 									</div>
 								</div>
 								<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
