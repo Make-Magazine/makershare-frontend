@@ -409,6 +409,10 @@ img {
                 color: $font-grey;
                 margin-bottom: 20px;
                 line-height: 120% !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             .card-status {
                 @include body-font-1();
