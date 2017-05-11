@@ -5035,6 +5035,10 @@ button:hover {
 
 .page-challenge-summary {
   background-color: #F2F2F2; }
+  .page-challenge-summary .challenge-award img {
+    width: 100px;
+    height: 100px;
+    max-width: 100%; }
 
 /* challenge card on search page */
 .page-search-content .challenge-card {
@@ -9675,6 +9679,9 @@ img {
 .stylish-input-group button {
   border: 0;
   background: transparent; }
+  .stylish-input-group button:active, .stylish-input-group button:focus {
+    border: none !important;
+    outline: none !important; }
 
 /* new style */
 .page-search-content {
@@ -9692,6 +9699,10 @@ img {
     top: 10px;
     z-index: 3;
     right: 60px; }
+  .page-search-content .searsh-field .dropdown-menu {
+    overflow: hidden; }
+    .page-search-content .searsh-field .dropdown-menu .dropdown-item {
+      padding: 0.5em .5em !important; }
 
 #search-input::-ms-expand {
   display: none; }

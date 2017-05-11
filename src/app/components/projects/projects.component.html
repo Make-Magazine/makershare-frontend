@@ -92,7 +92,7 @@
       <app-project-card *ngFor="let project of projects" [view]="view" [nid]="project.nid" class="col-md-6 col-lg-4"></app-project-card>
     </div>
     <div *ngIf="projects.length == 0">
-      <h4>There are no projects to show</h4>
+      <h4 class="text-center w-100 pt-5">There are no projects to show</h4>
     </div>
     <div class="text-center pt-3 pb-5">
       <div *ngIf="!hideloadmoreproject && projects.length > 0 ">
