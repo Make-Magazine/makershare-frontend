@@ -120,6 +120,7 @@ export class SearchResultComponent implements OnInit {
       
       this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
         this.projects = [];
+        console.log(this.projects)
         this.projects = result.response.docs;
         this.projectsCount = result.response.numFound;
         this.loaderService.display(false);
