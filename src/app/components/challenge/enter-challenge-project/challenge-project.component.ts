@@ -13,6 +13,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
+import { NodeService } from '../../../d7services/node/node.service';
 
 
 @Component({
@@ -82,6 +83,7 @@ export class ChallengeProjectComponent implements OnInit {
     private viewService: ViewService,
     private router: Router,
     private fb: FormBuilder,
+    private nodeService: NodeService,
 
     private flagService: FlagService, private mainService: MainService,
     private notificationBarService: NotificationBarService,
@@ -191,7 +193,7 @@ export class ChallengeProjectComponent implements OnInit {
     return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
-  getProjectsInMission(){
+  getProjectsInMission() {
     this.viewService.getView('user-entered-project', [['uid', this.userId]]).subscribe(data => {
       this.projectsList = data
     });
@@ -200,7 +202,7 @@ export class ChallengeProjectComponent implements OnInit {
     this.selectedProjectName = item.target.selectedOptions[0].text;
     this.selectedProject = item.target.value;
     // console.log(item.target.value)
-        this.submittedBefore = false;    
+    this.submittedBefore = false;
     for (let element of this.projectsList) {
       // console.log(element.project_nid)
       if (element.project_nid == item.target.value) {
@@ -208,8 +210,8 @@ export class ChallengeProjectComponent implements OnInit {
       }
     }
 
-    }
-    /*end check project entered */
+  }
+  /*end check project entered */
 
 
   onCancel(event: any) {
@@ -314,15 +316,20 @@ export class ChallengeProjectComponent implements OnInit {
     }
   }
   open(content) {
-    if(!this.submittedBefore){
+    if (!this.submittedBefore) {
       this.modalService.open(content).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
-    });
+        this.closeResult = 'Closed with: ${result}';
+      }, (reason) => {
+        this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+      });
     } else {
-        this.notificationBarService.create({ message: "You have submitted this project to a mission before .", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+      this.notificationBarService.create({ message: "You have submitted this project to a mission before .", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     }
-    
+
+  }
+  geturlformid() {
+    // this.nodeService.getIdFromUrl(this.path, 'challenge').subscribe(data => {
+    //   console.log(data[0]);
+    // });
   }
 }
