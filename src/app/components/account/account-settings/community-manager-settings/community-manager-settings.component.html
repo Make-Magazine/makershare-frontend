@@ -1,3 +1,85 @@
-<p>
-  community-manager-settings works!
-</p>
+<form>
+  <fieldset class="form-group container">
+    <div>
+      <br>
+      <div class="form-check row">
+        <label class="form-check-label col-9">
+            <h5>Send me a notification when:</h5>
+          </label>
+        <label class="form-check-label custom-safari text-center p-0 col-1">Email
+          </label>
+        <label class="form-check-label custom-safari text-center p-0 col-1">Web </label>
+      </div>
+      <div class="form-check row">
+        <label class="form-check-label col-9">
+             someone reports a project
+        </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_project_email"  id="report_project_email" value="option" [checked]= "email_notifications.indexOf('1') !== -1" (change)="checkedEmail('1',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_project_web" id="report_project_web" value="option"[checked]= "web_notifications.indexOf('1') !== -1" (change)="checkedWeb('1',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-check row">
+        <label class="form-check-label col-9">
+            someone reports a profile
+          </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_profile_email" id="report_profile_email" value="option" [checked]= "email_notifications.indexOf('2') !== -1" (change)="checkedEmail('2',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_profile_web" id="report_profile_web" value="option" [checked]= "web_notifications.indexOf('2') !== -1" (change)="checkedWeb('2',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-check row">
+        <label class="form-check-label col-9">
+            someone reports a comment
+          </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_comment_email" id="report_comment_email" value="option" [checked]= "email_notifications.indexOf('3') !== -1" (change)="checkedEmail('3',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="report_comment_web" id="report_comment_web" value="option" [checked]= "web_notifications.indexOf('3') !== -1" (change)="checkedWeb('3',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-check row">
+        <label class="form-check-label col-9">
+            someone blocks another user from private messaging
+          </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="block_pm_email" id="block_pm_email" value="option" [checked]= "email_notifications.indexOf('4') !== -1" (change)="checkedEmail('4',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="block_pm_web" id="block_pm_web" value="option" [checked]= "web_notifications.indexOf('4') !== -1" (change)="checkedWeb('4',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-soft-grey pull-right mt-5" (click)="updateNotificationSettings($event)">Save changes</button>
+  </fieldset>
+</form>
+

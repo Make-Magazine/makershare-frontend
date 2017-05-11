@@ -5,7 +5,8 @@
       <div class="single-msg-user" *ngFor="let participant of participants;  let i=index;">
         <!--<a (click)="userProfile(participant.first_name,participant.last_name)"><img class="paricipent-img" src="{{participant?.user_photo}}"> </a>-->
         <p class="sender">
-          <a (click)="userProfile(participant.first_name,participant.last_name)">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
+          <a *ngIf="participant.status == 'active'" (click)="userProfile(participant.first_name,participant.last_name)">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
+          <a *ngIf="participant.status == 'blocked'">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
         </p>
       </div>
     </div>
@@ -30,10 +31,12 @@
       <li class="single-message" *ngFor="let message of messages;let i=index;">
         <div class="media message-info">
           <div class="media-left">
-            <a (click)="userProfile(message.first_name,message.last_name)"><img class="d-flex mr-3" src="{{message?.user_photo}}"> </a>
+            <a *ngIf="message.status == 'active'" (click)="userProfile(message.first_name,message.last_name)"><img class="d-flex mr-3" src="{{message?.user_photo}}"> </a>
+            <a *ngIf="message.status == 'blocked'" ><img class="d-flex mr-3" src="{{message?.user_photo}}"> </a>
           </div>
           <div class="media-body">
-            <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message?.first_name}} {{message?.last_name}}</a>              </p>
+            <p class="sender" *ngIf="message.status == 'active'"><a (click)="userProfile(message.first_name,message.last_name)">{{message?.first_name}} {{message?.last_name}}</a>              </p>
+            <p class="sender" *ngIf="message.status == 'blocked'"><a class="blocked-user">{{message?.first_name}} {{message?.last_name}}</a>              </p>
             <p class="timestamp">{{message?.timestamp}}</p>
           </div>
           <div class="delete">
