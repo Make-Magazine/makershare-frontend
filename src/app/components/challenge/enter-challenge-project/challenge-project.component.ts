@@ -274,7 +274,7 @@ export class ChallengeProjectComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: { 'redirectTo': encodeURIComponent('/missions/enter-mission/' + this.nid) },
     };
-    this.router.navigate(['/project/create'], navigationExtras);
+    this.router.navigate(['/projects/create'], navigationExtras);
   }
 
   setDayLeft() {

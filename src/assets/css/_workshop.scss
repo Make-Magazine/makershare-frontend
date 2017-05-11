@@ -222,7 +222,7 @@
         .card-partnership-mobile {
             position: absolute;
             top: 15px;
-            right: 15px;
+            right: 24px;
             color: #fff;
 		    text-shadow: 1px 1px 5px $shade-7;
             z-index: 1;
@@ -272,6 +272,10 @@
             .card-title {
                 @include card-header-font-md();
                 color: #4F4F4F;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             .card-status {
                 @include body-font-1();

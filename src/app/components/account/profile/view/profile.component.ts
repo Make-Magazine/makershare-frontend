@@ -123,6 +123,16 @@ export class ProfileComponent implements OnInit {
     started_making: 'Describe how you became a Maker',
     interests: 'Favorite making topics?',
   };
+  ModalTabs = [
+    'Portfolio Photo',
+    'Personal Info',
+    'Bio',
+    'Social',
+    'MakerSpaces',
+    'Links',
+    'Maker Moment',
+    'Interests'
+  ]
   DefaultView :string = "grid";
   mobileToggle :boolean =false;
   emptySocial :boolean = true;
@@ -318,7 +328,10 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
-    closebtn.click(); 
+    // closebtn.click(); 
+    if(this.ProfileInfo.address.governorate == '_none') {
+     this.ProfileInfo.address.governorate == this.CountryFieldsAndDetails['administrative_areas'][0].value;
+    }
     if (this.FormGroupSocial.valid) {
       this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;
     }
@@ -326,8 +339,8 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.bio = this.formGroup.value.bio;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
-      this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
+    this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     if(this.ProfilePicData.image){
       this.SaveImage();
     }else{
@@ -401,6 +414,7 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+    console.log(this.ProfileInfo);
     this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
     this.meta.setTag('og:image', this.profile.user_photo);
     this.meta.setTag('og:description', this.customDescription);
@@ -412,7 +426,6 @@ export class ProfileComponent implements OnInit {
         this.emptySocial = false;
       }
     }
-
   }
   CheckFields(){
     if(this.uid == this.CurrentLoggedUserId){
@@ -425,5 +438,8 @@ export class ProfileComponent implements OnInit {
   }
   ToggleProfile() {
     this.mobileToggle = !this.mobileToggle;
+  }
+  nextTab(){
+    this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab)+1]
   }
 }

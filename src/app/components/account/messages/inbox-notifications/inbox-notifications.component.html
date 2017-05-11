@@ -6,14 +6,14 @@
 <div class="page-inbox">
   <div class="text-center p-3">
     <h1 *ngIf="current_active_tab == 'messages'">Messages</h1>
-    <h1 *ngIf="current_active_tab == 'notifications'">Notificatoins</h1>
+    <h1 *ngIf="current_active_tab == 'notifications'">Notifications</h1>
     <h1 *ngIf="current_active_tab == 'sent'">Sent Messages</h1>
   </div>
   <div class="container header-contaner d-flex flex-row">
     <header class="inbox-header mr-auto">
       <ul class="list-unstyled d-flex flex-row aling-self-center align-content-lg-center">
         <li><a (click)="current_active_tab = 'messages'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
-        <li><a (click)="current_active_tab = 'notifications'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'notifications' }">Notificatoins</a></li>
+        <li><a (click)="current_active_tab = 'notifications'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'notifications' }">Notifications</a></li>
         <li><a (click)="current_active_tab = 'sent'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>
       </ul>
     </header>

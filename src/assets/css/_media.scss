@@ -233,7 +233,7 @@
 }
     .front {
         .front-challenge-card {
-            height: auto;
+                min-height: 460px;
             .image-container {
                 max-height: 195px;
                 max-width: 576px;
@@ -455,6 +455,33 @@
                 }
             }
         }
+    }
+    .front {
+        .front-challenge-card {
+            .content-container {
+                padding: 10px 0px !important;
+            }
+            .card-partnership-mobile {
+                right: 10px;
+                width: 190px;
+            }
+        }
+        .learn-card {
+            .container-content {
+                padding-top: 0px !important;
+                padding-bottom: 0px !important;
+            }
+            .card-container {
+                padding: 10px 0px !important;
+            }
+            .card-partnership-mobile {
+                right: 10px;
+                width: 190px;
+            }
+        }
+    }
+    header.main-header.shrink nav.navbar {
+        padding: 6px 3px 6px !important;
     }
 }
 

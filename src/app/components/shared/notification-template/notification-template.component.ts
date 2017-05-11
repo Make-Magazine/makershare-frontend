@@ -61,7 +61,7 @@ export class NotificationTemplateComponent implements OnInit {
         }else if(this.notification.type == "new_message_sent"){
           this.router.navigate(["/account/inbox/view",this.notification.pm_mid]);
         }else{
-          this.router.navigate(["/project/view",this.notification.nid]);
+          this.router.navigate(["/projects",this.notification.nid]);
         }
       }
     });
