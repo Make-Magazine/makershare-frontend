@@ -10137,7 +10137,8 @@ img {
     .project.card .image-top {
       position: inherit;
       top: 0;
-      left: 0; }
+      left: 0;
+      height: auto; }
     .project.card .card-block {
       padding: 8px;
       margin-top: 0px;
