@@ -19,7 +19,6 @@ export interface UserProfile {
   started_making?: string,
   field_social_accounts?: ProfileSocial, // should covert from array to object
   nickname?: string,
-  contact_email?: string,
   address?: Address,
   address_publish?: number,
   maker_interests?: Intrests[], // should replace in the back-end to be an array
@@ -31,8 +30,6 @@ export interface UserProfile {
   total_projects?: number,
   total_likes?: number,
   pass?:string,
-  newsletter_subscription?:number,
-  birthday_date?:string,
 }
 
 export class UserProfile implements UserProfile {

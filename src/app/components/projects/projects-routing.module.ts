@@ -6,8 +6,8 @@ import { AuthGuardService } from '../../auth0/auth-guard.service';
 const ProjectsRouts: Routes = [
   { path: '', component:ProjectsComponent },
   { path: 'create', loadChildren: 'app/components/projects/project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
-  { path: ':title/edit', loadChildren: 'app/components/projects/project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
-  { path: ':title', loadChildren: 'app/components/projects/project-details/project-details.module#ProjectDetailsModule' },
+  { path: ':path/edit', loadChildren: 'app/components/projects/project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
+  { path: ':path', loadChildren: 'app/components/projects/project-details/project-details.module#ProjectDetailsModule' },
 ];
 
 @NgModule({

@@ -59,11 +59,11 @@ export class ProjectDetailsComponent implements OnInit {
     this.loaderService.display(true);
 
     this.sub = this.route.params.subscribe(params => {
-      let title = params['title'];
-      this.nodeService.getIdFromUrl(title,'project').subscribe(ids=>{
+      let path = params['path'];
+      this.nodeService.getIdFromUrl(path,'project').subscribe(ids=>{
         this.id = ids[0];
         if(!ids[0])
-          return;
+          this.id = path;
         this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         this.projectdata = data[0];
       }, err => {});
@@ -117,7 +117,7 @@ export class ProjectDetailsComponent implements OnInit {
         "projects": JSON.stringify(this.projects)
       }
     }
-    this.router.navigate(['project/view/', this.projects[this.projectIndex].nid], navigationExtras);
+    this.router.navigate(['projects', this.projects[this.projectIndex].nid], navigationExtras);
     this.ngOnInit();
   }
   

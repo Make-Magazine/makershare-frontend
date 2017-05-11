@@ -113,7 +113,7 @@ export class SummaryComponent implements OnInit {
 
   /* function to navigate to project details */
   ShowProjectDetails(nid) {
-    this.router.navigate(['/project/view', nid]);
+    this.router.navigate(['/projects', nid]);
   }
   /* end function to navigate to project details */
 
