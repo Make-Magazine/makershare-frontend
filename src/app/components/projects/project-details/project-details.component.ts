@@ -71,7 +71,7 @@ export class ProjectDetailsComponent implements OnInit {
       // dispatch action to load the details here-solve no load issue.
       this.route.params
         // (+) converts string 'id' to a number
-        .switchMap((nid) => this.viewService.getView('maker_project_api/' + nid['nid']))
+        this.viewService.getView('maker_project_api/' + this.id)
         .subscribe(data => {
           this.project = data;
           var i = 0;
