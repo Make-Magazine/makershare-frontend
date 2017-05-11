@@ -326,8 +326,8 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.describe_yourself = this.formGroup.value.describe_yourself;
       this.ProfileInfo.bio = this.formGroup.value.bio;
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
-      this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     }
+    this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
     if(this.ProfilePicData.image){
       this.SaveImage();
     }else{
@@ -401,6 +401,7 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+    console.log(this.ProfileInfo);
     this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
     this.meta.setTag('og:image', this.profile.user_photo);
     this.meta.setTag('og:description', this.customDescription);
