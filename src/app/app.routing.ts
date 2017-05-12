@@ -20,7 +20,7 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
     // { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
-    { path: 'makers', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
+    { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
 
     { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
     // { path: 'workshops', loadChildren: 'app/components/learn/learn.module#LearnModule' },
