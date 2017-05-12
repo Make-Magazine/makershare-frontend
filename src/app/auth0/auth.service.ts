@@ -24,6 +24,7 @@ export class Auth implements OnInit {
   state = '';
 
   lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
+    allowedConnections: ['Username-Password-Authentication'],
     loginUrl: '/login',
     auth: {
       redirectUrl: globals.appURL,
