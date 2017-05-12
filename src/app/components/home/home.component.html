@@ -2,6 +2,13 @@
   <app-onboarding *ngIf="!auth.authenticated()"></app-onboarding>
   <div class="container">
     <div class="row" *ngIf="homeCards">
+      <section class="what-is-ms p-0 mt-2" *ngIf="auth.authenticated()">
+        <div class="container">
+          <div class="explore-maker-share">
+            <h1 class="text-center">Explore Maker Share</h1>
+          </div>
+        </div>
+      </section>
       <!--<div *ngFor="let item of homeCards;let i = index" [ngClass]="{
         'col-md-4 col-lg-4'   : item.type == 'project' ,
         'col-md-4'            : item.type == 'maker' ,
@@ -9,7 +16,7 @@
         'col-md-8'            : item.type == 'challenge' ,
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
-         <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
+      <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
         'col-md-6 col-lg-4'   : item.type == 'project' || item.type == 'showcase' || item.type == 'maker' ,
         'col-md-12 col-lg-8'  : item.type == 'challenge' || item.type == 'learning_sequence'        
           }">
@@ -35,7 +42,7 @@
 
         <!-- Maker Cards -->
         <div *ngIf="item.type == 'maker'">
-            <app-maker-card [uid]="item.id"></app-maker-card>
+          <app-maker-card [uid]="item.id"></app-maker-card>
         </div>
 
         <!-- Project Cards -->
@@ -48,7 +55,7 @@
       </div>
     </div>
     <div *ngIf="!homeCards || homeCards.length == 0">
-      <h4>There are no Results to show</h4>
+      <h4 class="text-center mt-5 mb-5">There are no Results to show</h4>
     </div>
   </div>
   <section class="modal-section">
