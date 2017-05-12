@@ -64,11 +64,9 @@ export class SinglShowcaseComponent implements OnInit {
         this.route.params
 
     this.path = this.route.snapshot.params['path'];
-    console.log(this.path)
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path,'showcase').subscribe(data => {
         this.idFromUrl = data[0];
-        console.log(this.idFromUrl)
           this.getShowcase();
       
 
