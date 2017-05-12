@@ -32,14 +32,14 @@
       }
     }
     img {
-      margin-bottom: 20px;
+        padding: 30px 0px;
     }
     .button-container-main-1 {
       width: 170px;
       .btn-main {
         padding: 15px 0px;
         width: 167px;
-        @include card-header-font-sm ();
+        @include body-font-1 ();
         color: #fff !important;
       }
     }
@@ -75,6 +75,7 @@
     font-size: 4em;
     color: #4f4f4f;
     font-family: 'Messina Modern Regular';
+    padding-bottom: 30px;
   }
   h2 {
     font-family: 'Open Sans', sans-serif;
@@ -182,6 +183,8 @@
       .btn-main {
         width: 167px !important;
         padding: 15px 0px;
+        @include body-font-1 ();
+        color: #fff !important;
       }
     }
   }

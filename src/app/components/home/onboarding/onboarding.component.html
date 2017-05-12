@@ -2,7 +2,7 @@
   <div id="homeBanner" class="text-center mx-auto">
     <h2>Welcome to Maker Share</h2>
     <h1>A community of makers sharing what they can do.</h1>
-    <img src="./assets/images/fpo-maker-pics.png" alt="" class="img-fluid" />
+    <img src="./assets/images/Makers-min.png" alt="" class="img-fluid" />
     <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
       <a class="btn btn-main">Join Us</a>
     </div>
@@ -51,13 +51,11 @@
               <h3>Create Your Maker Portfolio</h3>
               <div class="button-container-onboarding">
                 <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']">
-                    <i class="fa fa-lg fa-plus"></i> Add a Project
+                  <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"> + Add a Project
                   </a>
                 </div>
                 <div class="project-add button-container-main-1" *ngIf="!auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" (click)="auth.login()">
-                    <i class="fa fa-lg fa-plus"></i> Add a Project
+                  <a class="btn btn-main btn-sharp" (click)="auth.login()"> + Add a Project
                   </a>
                 </div>
               </div>
@@ -84,7 +82,7 @@
     </div>
   </div>
 </section>
-<section class="what-is-ms p-0 mt-4">
+<section class="what-is-ms p-0 mt-4" *ngIf="!auth.authenticated()">
   <div class="container">
     <div class="explore-maker-share">
       <h1 class="text-center">Explore Maker Share</h1>
