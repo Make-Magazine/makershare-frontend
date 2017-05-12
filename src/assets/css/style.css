@@ -2210,17 +2210,17 @@ footer {
           text-decoration: none;
           color: #008bbf; }
     .banner #homeBanner img {
-      margin-bottom: 20px; }
+      padding: 30px 0px; }
     .banner #homeBanner .button-container-main-1 {
       width: 170px; }
       .banner #homeBanner .button-container-main-1 .btn-main {
         padding: 15px 0px;
         width: 167px;
-        font-family: "Messina Modern Regular";
+        font-family: "Messina Sans Regular";
         font-size: 1.3em;
-        font-weight: 500;
+        font-weight: 400;
         text-transform: none;
-        line-height: 120%;
+        line-height: 110%;
         color: #828282;
         color: #fff !important; }
 
@@ -2247,7 +2247,8 @@ footer {
   .what-is-ms h1 {
     font-size: 4em;
     color: #4f4f4f;
-    font-family: 'Messina Modern Regular'; }
+    font-family: 'Messina Modern Regular';
+    padding-bottom: 30px; }
   .what-is-ms h2 {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
@@ -2333,7 +2334,14 @@ footer {
         width: 170px !important; }
       .info-w-parallax .info-card .button-container-onboarding .btn-main {
         width: 167px !important;
-        padding: 15px 0px; }
+        padding: 15px 0px;
+        font-family: "Messina Sans Regular";
+        font-size: 1.3em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 110%;
+        color: #828282;
+        color: #fff !important; }
 
 .parallax-bg {
   width: 100%;
@@ -3951,7 +3959,7 @@ footer {
   .social-links a.social i {
     font-size: 1.1em;
     position: absolute;
-    left: 5px;
+    left: 11px;
     top: 12px; }
 .social-links a.social {
   margin: 5px 0;
@@ -10186,7 +10194,7 @@ img {
       text-align: left; }
     footer .container .social-footer {
       overflow: hidden;
-      width: 140px;
+      width: 160px;
       margin: auto; }
 
   .page-showcase .showcase-card-backlayer .showcase-card .showcase-card-footer-2 {
