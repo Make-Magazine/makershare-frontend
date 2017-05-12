@@ -358,14 +358,16 @@
 						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
 							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
 								<li *ngIf="ProjectsCount">
-									<p><span class="number">{{ProjectsCount}}</span> projects</p>
+									<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
+									<p *ngIf="ProjectsCount == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCount}}</span> project</p>
 								</li>
 								<li *ngIf="profile.total_likes != 0">
 									<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 								</li>
 								<li>
+
 									<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
-									<p *ngIf="profile.views_count == 1"><span class="number">{{profile.views_count}}</span> view</p>
+									<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
 								</li>
 								<!-- Start Bookmsrk-section -->
 								<!--<li>
@@ -375,17 +377,19 @@
 							<!-- End Bookmark-section -->
 						</div>
 					</div>
+					<!--This is for small devices-->
 					<div class="profile-header ml-auto d-flex hidden-md-up">
 						<ul class="list-unstyled stats d-flex flex-row">
 							<li *ngIf="ProjectsCount">
-								<p><span class="number">{{ProjectsCount}}</span> projects</p>
+								<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
+								<p *ngIf="ProjectsCount == 1 || ProjectsCount == 0"><span class="number">{{ProjectsCount}}</span> project</p>
 							</li>
 							<li *ngIf="profile.total_likes != 0">
 								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 							</li>
 							<li>
 								<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
-								<p *ngIf="profile.views_count == 1"><span class="number">{{profile.views_count}}</span> view</p>
+								<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
 							</li>
 							<!-- Start Bookmsrk-section -->
 							<!--<li>
