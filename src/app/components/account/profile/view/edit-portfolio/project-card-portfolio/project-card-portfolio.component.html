@@ -70,7 +70,7 @@
 <div *ngIf="projectCard && type == 'showcase'">
   <div class="project card lg-card">
     <div class="image-top-lg">
-      <div class="overlay-portfolio" (click)="ShowProjectDetails(Project.nid)"></div>
+      <div class="overlay-portfolio" [routerLink]="['/projects/',projectCard.path]"></div>
       <div class="profile-edit-buttons">
         <div class=" d-flex flex-column m-auto">
           <p [routerLink]="['/project/',Project.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>

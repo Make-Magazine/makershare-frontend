@@ -98,7 +98,7 @@ export class ProjectsComponent implements OnInit {
 
 
       if (this.projects.length == 0) {
-        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
       }
       // hide spinner
       this.loaderService.display(false);

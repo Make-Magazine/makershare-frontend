@@ -248,6 +248,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
 }
 .button-container-sec-2 {
     border: 2px solid $sec-button-2;
+    margin-left: 20px;
         &:hover {
         // border-color: $main-button-1*0.8 !important;
         border: 2px solid $btn-secondary-1*0.8 !important;
