@@ -57,14 +57,14 @@ export class HowToComponent implements OnInit,AfterViewInit {
 
           var uploadTab = dialogDefinition.getContents('Upload');
           var uploadButton = uploadTab.get('uploadButton');
-          console.log('uploadButton', uploadButton);
+          //console.log('uploadButton', uploadButton);
 
           uploadButton.onClick = (evt)=>{
-            console.log('fire in the hole', evt);
+           // console.log('fire in the hole', evt);
           };
 
           uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
-            console.log('working');
+          //  console.log('working');
           };
         };
       }

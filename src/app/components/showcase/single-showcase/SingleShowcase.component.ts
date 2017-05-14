@@ -130,10 +130,10 @@ export class SinglShowcaseComponent implements OnInit {
       this.viewService.getView('showcase', [['nid',this.idFromUrl]])
       .subscribe(data => {
         this.showcase = data[0];
-        console.log(this.showcase)
+       // console.log(this.showcase)
         //this.getProfile(this.showcase.uid);
         this.customDescription = this.showcase['description']
-        console.log(this.customDescription)
+        //console.log(this.customDescription)
 
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
         this.meta.setTag('og:image', this.showcase['cover_photo']);
@@ -160,7 +160,7 @@ export class SinglShowcaseComponent implements OnInit {
       this.viewService.getView('showcase_projects_nid', [['nid', this.idFromUrl]])
       .subscribe(data => {
         this.projectsCount = data.length;
-        console.log(data.length);
+      //  console.log(data.length);
       });
 
   }
@@ -181,7 +181,7 @@ export class SinglShowcaseComponent implements OnInit {
   // }
   likesCounter(count) {
     this.numLikes = count;
-    console.log(this.numLikes)
+    //console.log(this.numLikes)
 
   }
 

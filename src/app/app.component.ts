@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
         this.userService.getAnonymousToken().subscribe(data => {});
       }
     }, err => {
-      console.log(err);
+     // console.log(err);
       this.mainService.removeCookies();
       localStorage.removeItem('id_token');
       localStorage.removeItem('user_id');

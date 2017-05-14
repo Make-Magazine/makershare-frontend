@@ -265,7 +265,7 @@ export class ChallengeProjectComponent implements OnInit {
 
   }
   changeTab() {
-    console.log("asdsa")
+   // console.log("asdsa")
   }
   createNewProjectForChallenge() {
     let navigationExtras: NavigationExtras = {
