@@ -93,7 +93,7 @@ export class ChallengeCardComponent implements OnInit {
       this.challenge.challenge_start_date.value = this.changeDateFormat(this.challenge.challenge_start_date.value);
       this.challenge.winners_announcement_date.value = this.changeDateFormat(this.challenge.winners_announcement_date.value);
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
   }
    /* function to get count projects in challenge */
@@ -131,7 +131,7 @@ export class ChallengeCardComponent implements OnInit {
   /* end function to change data format */
   /* function to navigate to challenge summary page */
   ShowChallengeDetails(path) {
-    console.log(path);
+    //console.log(path);
     this.router.navigate(['/missions', path]);
   }
 
