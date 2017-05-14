@@ -70,7 +70,6 @@ export class ChallengeDataComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'challenge').subscribe(data => {
-        console.log(data[0]);
         this.idFromUrl = data[0];
         if (this.idFromUrl) {
           this.userEnteredProject();
