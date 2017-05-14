@@ -2090,6 +2090,88 @@ footer {
   font-size: 1em;
   border: none; }
 
+#page-404 {
+  position: relative;
+  overflow: hidden;
+  text-align: center; }
+  #page-404 img {
+    width: 100%; }
+  #page-404 .text-block {
+    position: absolute;
+    bottom: 70px;
+    right: 240px; }
+    #page-404 .text-block h4, #page-404 .text-block p {
+      color: #fff;
+      font-family: "Messina Sans Regular";
+      font-weight: 500; }
+    #page-404 .text-block h4 {
+      font-size: 2em; }
+    #page-404 .text-block p {
+      margin-bottom: 0;
+      font-size: 1.2em; }
+    #page-404 .text-block ul {
+      margin-top: 15px; }
+      #page-404 .text-block ul li {
+        display: inline-block; }
+        #page-404 .text-block ul li:not(:first-of-type) a {
+          padding-left: 10px;
+          border-left: 3px solid #fff; }
+        #page-404 .text-block ul li a {
+          color: #00AEEF;
+          padding-right: 10px;
+          font-size: 1.4em; }
+          #page-404 .text-block ul li a:hover {
+            text-decoration: none; }
+    #page-404 .text-block input::-webkit-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #page-404 .text-block input:-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #page-404 .text-block input::-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #page-404 .text-block input:-ms-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+  #page-404 .search-form-group {
+    position: relative; }
+    #page-404 .search-form-group h3 {
+      color: white;
+      font-size: 38px; }
+    #page-404 .search-form-group #search-box-input-404 {
+      width: 100%;
+      color: white;
+      background: transparent;
+      border: 0 none;
+      border-bottom: 1px solid white;
+      padding: 10px; }
+    #page-404 .search-form-group .search-form-group {
+      position: relative;
+      max-width: 100%;
+      margin-top: 20px;
+      width: 400px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto; }
+    #page-404 .search-form-group .go-search {
+      color: #fff;
+      font-size: 1.3em;
+      position: absolute;
+      bottom: 10px;
+      right: 0px;
+      cursor: pointer; }
+    #page-404 .search-form-group .clear-search {
+      color: #fff;
+      bottom: 13px;
+      position: absolute;
+      right: 25px;
+      font-size: 1em; }
+
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
   border: none !important;
@@ -10261,7 +10343,12 @@ img {
     padding: 0px; }
 
   .project .image-top {
-    height: 260px; } }
+    height: 260px; }
+
+  #page-404 .text-block {
+    left: 0;
+    width: 320px;
+    margin: auto; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }

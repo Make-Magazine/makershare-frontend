@@ -206,34 +206,34 @@
         }
     }
 
-.tablet-challenge-card {
-    height: auto;
-    .image-container {
-        max-height: 195px;
-        max-width: 576px;
-        margin: 0 -15px;
-    }
-    .card-container {
-        .card-description {
-            p {
-                @include desc-font-1();
-                line-height: 125% !important;
-                -webkit-line-clamp: 3;
-                height: 52px;
-                color: #fff;
-                overflow: hidden;
+    .tablet-challenge-card {
+        height: auto;
+        .image-container {
+            max-height: 195px;
+            max-width: 576px;
+            margin: 0 -15px;
+        }
+        .card-container {
+            .card-description {
+                p {
+                    @include desc-font-1();
+                    line-height: 125% !important;
+                    -webkit-line-clamp: 3;
+                    height: 52px;
+                    color: #fff;
+                    overflow: hidden;
+                }
             }
         }
+        .challene-card-footer-1 {
+            margin-right: 20px;
+        }
+        .challenge-card-footer-2 {
+            margin-bottom: 5px;
+            @include desc-font-3;
+            color: $text-color-2;
+        }
     }
-    .challene-card-footer-1 {
-        margin-right: 20px;
-    }
-    .challenge-card-footer-2 {
-        margin-bottom: 5px;
-        @include desc-font-3;
-        color: $text-color-2;
-    }
-}
     .front {
         .front-challenge-card {
                 min-height: 460px;
@@ -268,7 +268,7 @@
             }
         }
     }
-.front {
+    .front {
         .learn-card {
             .image-container {
                 max-height: 195px;
@@ -530,6 +530,11 @@
         .image-top {
             height: 260px;
         }
+    }
+    #page-404 .text-block {
+        left: 0;
+        width: 320px;
+        margin: auto;
     }
 }
 
