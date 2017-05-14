@@ -543,13 +543,16 @@ footer {
     position: relative;
     overflow: hidden;
     text-align: center;
-    img {
-        width: 100%;
+    .image-container {
+        img {
+            width: 100%;
+            display: block;
+        }
     }
     .text-block {
         position: absolute;
-        bottom: 70px;
-        right: 240px;
+        bottom: 10px;
+        right: 90px;
         h4, p {
             color: #fff;
             font-family: "Messina Sans Regular";
