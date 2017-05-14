@@ -18,10 +18,11 @@ export class VideoViewerComponent implements OnInit {
 
   ngOnInit() {
     this.SetVideoUrl();
+    
   }
 
   SetVideoUrl(){
-    if(this.link.indexOf('youtube') != -1){
+    if(this.link.indexOf('youtube') != -1 || this.link.indexOf('youtu.be') != -1){
       this.type = 'youtube';
       this.VideoId = this.youtube_parser(this.link);
       let html = '<iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" class="embed-responsive-item"></iframe>';
@@ -32,7 +33,8 @@ export class VideoViewerComponent implements OnInit {
       this.http.get(url).map(res => res.json()).subscribe(data => {
         this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(data.html);
       });
-    }else{
+    }
+    else{
       this.SantinizedHtml = "Video Url is not supported.";
     }
   }
@@ -41,7 +43,8 @@ export class VideoViewerComponent implements OnInit {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     return (match && match[7].length == 11) ? match[7] : '';
+   
   }
-
+  
 
 }

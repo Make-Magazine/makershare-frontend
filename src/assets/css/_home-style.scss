@@ -228,7 +228,7 @@ footer {
             line-height: 25px;
         }
     }
-    .social-links {
+    .footer-social-links {
         // margin-bottom: 15px;
         a {
             position:relative;
@@ -245,14 +245,21 @@ footer {
             -khtml-border-radius: 		20px 20px 20px 20px; 	
             color:#FFFFFF;
             i {
-                font-size:1.3em;
-                position:absolute;
-                left:8px;
-                top:10px;
+              font-size:1.1em;
+              position:absolute;
+              left: 10px;
+              top: 11px;
             }
             &.fb {
                 i {
                     left: 10px;
+                }
+            }
+
+            &.in {
+                i{
+                  left: 10px;
+                  top: 10px;
                 }
             }
         }
@@ -275,17 +282,17 @@ footer {
             &.pin {
                 background-color: #cc2127;
             }
-            &.in {
-                background-color:
-                radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
-                radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
-                radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
-                radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
-                radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
-                radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
-                radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
-                linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
-            }
+           &.in {
+            background:
+            radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+            radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+            linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+        }
         }
     }
 }
@@ -538,6 +545,7 @@ footer {
     font-size: 1em;
     border: none;
 }
+<<<<<<< HEAD
 .delete-account-popup{
     background-color: #ED1C24;
     border: 1px solid #828282;
@@ -546,3 +554,116 @@ footer {
     font-size: 1em;
     height: 31px;
 }
+=======
+
+#page-404 {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    .image-container {
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+    .text-block {
+        position: absolute;
+        bottom: 10px;
+        right: 90px;
+        h4, p {
+            color: #fff;
+            font-family: "Messina Sans Regular";
+            font-weight: 500;
+        }
+        h4 {
+            font-size: 2em;
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 1.2em;
+        }
+        ul {
+            margin-top: 15px;
+            li {
+                display: inline-block;
+                &:not(:first-of-type){
+                }
+                &:not(:first-of-type) a{
+                    padding-left: 10px;
+                    border-left: 3px solid #fff; 
+                }
+                a {
+                    color: $blue;                
+                    padding-right: 10px;
+                    font-size: 1.4em;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        input {
+            &::-webkit-input-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &:-moz-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &::-moz-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &:-ms-input-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+        }
+    }
+    .search-form-group {
+        position: relative;
+        h3{
+            color: white;
+            font-size: 38px; 
+        }
+        #search-box-input-404 {
+            width: 100%;
+            color: white;
+            background: transparent;
+            border: 0 none;
+            border-bottom: 1px solid white;
+            padding: 10px;
+        }
+
+        .search-form-group {
+            position: relative;
+            max-width: 100%;
+            margin-top: 20px;
+            width: 400px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .go-search {
+            color: #fff;
+            font-size: 1.3em;
+            position: absolute;
+            bottom: 10px;
+            right: 0px;
+            cursor: pointer;
+        }
+        .clear-search {
+            color: #fff;
+            bottom: 13px;
+            position: absolute;
+            right: 25px;
+            font-size: 1em;
+        }
+    }
+}
+>>>>>>> 334177044d4a40b11c077596ecb7f0d7687753be

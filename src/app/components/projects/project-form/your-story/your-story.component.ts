@@ -129,7 +129,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    */
   YourStoryForm: FormGroup;
   accepted_image_width = 600;
-  accepted_image_height = 400;
+  accepted_image_height = 600;
   project_categories_parents: ProjectCategory[] = [];
   project_categories_childs: ProjectCategory[] = [];
   current_parent_category: number;
@@ -387,7 +387,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     'field_cover_photo': {
       'required': 'Cover photo is required.',
       'notvalidformat': 'Please choose an image file.',
-      'validimagesize': 'choose a photo that is at least 600 x 400 px.',
+      'validimagesize': 'choose a photo that is at least 600 x 600 px.',
     },
     'field_show_tell_video': {
       'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
