@@ -247,22 +247,13 @@ footer {
             i {
               font-size:1.1em;
               position:absolute;
-              left: 10px;
+              left: 0px;
+              right:0px;
               top: 11px;
-            }
-            &.fb {
-                i {
-                    left: 10px;
-                }
-            }
+             
 
-            &.in {
-                i{
-                  left: 10px;
-                  top: 10px;
-                }
             }
-        }
+          }
     
         a.social {
             float: left;
