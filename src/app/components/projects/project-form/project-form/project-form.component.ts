@@ -99,7 +99,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           this.missionRedirection = decodeURIComponent(tab);
         }
         else if(tab =undefined){
-          console.log("asdsadsadsadsa");
+        //  console.log("asdsadsadsadsa");
         }
       });
     });
@@ -262,7 +262,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }
       },
       (err) => {
-        console.log('Error: %s', err);
+       // console.log('Error: %s', err);
       },
       () => {
         let subsource = Observable.forkJoin(subtasks);
@@ -317,7 +317,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             }
           },
           (err) => {
-            console.log('Error: %s', err);
+            //console.log('Error: %s', err);
           },
           () => {
             if (this.project.field_cover_photo.und) {
@@ -373,7 +373,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
-        console.log(err);
+       // console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
       });
     } else {
@@ -387,7 +387,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
-        console.log(err);
+       // console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
       });
     }
@@ -397,7 +397,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.mainService.post('/api/team_service/send', emails).map(res => res.json()).subscribe(data => {
 
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
   }
 
@@ -481,7 +481,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         });
       },
       (err) => {
-        console.log('Error: %s', err);
+       // console.log('Error: %s', err);
       },
       () => {
         this.ResetFieldCollectionEmptyRows();
