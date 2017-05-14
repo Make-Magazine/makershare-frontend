@@ -1036,3 +1036,72 @@ font-size: 16px;
         }
     }
 }
+
+#splash {
+    position: relative;
+    .text-block {
+        max-width: 320px;
+        margin: auto;
+        text-align: center;
+        bottom: 30px;
+        position: absolute;
+        color: #fff;
+        right: 0;
+        left: 0;
+    }
+     .signup-form-group {
+        position: relative;
+        h3{
+            color: white;
+            font-size: 1.8em; 
+        }
+        #search-box-input-404 {
+            width: 100%;
+            color: white;
+            background: transparent;
+            border: 0 none;
+            border-bottom: 1px solid white;
+            padding: 10px;
+        }
+
+        .search-form-group {
+            position: relative;
+            max-width: 100%;
+            margin-top: 20px;
+            width: 400px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .go-search {
+            color: #fff;
+            font-size: 1.7em;
+            position: absolute;
+            bottom: 10px;
+            right: 0px;
+            cursor: pointer;
+        }
+        input {
+            &::-webkit-input-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &:-moz-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &::-moz-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+            &:-ms-input-placeholder {
+                color: #fff;
+                font-size: 1.5em;
+                font-family: "Messina Sans Modern"
+            }
+        }
+    }
+}

@@ -1783,6 +1783,61 @@ i.dropdownIcon {
       margin-bottom: 5px;
       font-size: 1.2em; }
 
+#splash {
+  position: relative; }
+  #splash .text-block {
+    max-width: 320px;
+    margin: auto;
+    text-align: center;
+    bottom: 30px;
+    position: absolute;
+    color: #fff;
+    right: 0;
+    left: 0; }
+  #splash .signup-form-group {
+    position: relative; }
+    #splash .signup-form-group h3 {
+      color: white;
+      font-size: 1.8em; }
+    #splash .signup-form-group #search-box-input-404 {
+      width: 100%;
+      color: white;
+      background: transparent;
+      border: 0 none;
+      border-bottom: 1px solid white;
+      padding: 10px; }
+    #splash .signup-form-group .search-form-group {
+      position: relative;
+      max-width: 100%;
+      margin-top: 20px;
+      width: 400px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto; }
+    #splash .signup-form-group .go-search {
+      color: #fff;
+      font-size: 1.7em;
+      position: absolute;
+      bottom: 10px;
+      right: 0px;
+      cursor: pointer; }
+    #splash .signup-form-group input::-webkit-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input:-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input::-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input:-ms-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -10128,7 +10183,8 @@ img {
     margin: auto;
     bottom: 10%; }
 
-  #site-down .text-block {
+  #site-down .text-block,
+  #splash .text-block {
     bottom: 25%; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
