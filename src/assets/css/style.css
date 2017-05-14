@@ -1679,6 +1679,18 @@ i.dropdownIcon {
   left: 0;
   top: 0; }
 
+#site-down {
+  position: relative; }
+  #site-down .text-block {
+    width: 320px;
+    margin: auto;
+    text-align: center;
+    bottom: 30px;
+    position: absolute;
+    color: #fff;
+    right: 0;
+    left: 0; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
