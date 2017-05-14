@@ -13,7 +13,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SinglShowcaseComponent implements OnInit {
   customDescription: string
-  showcase = { uid: "" };
+  showcase = { uid: "",nid:'' };
   view = 'grid';
   idFromUrl:number;
   path: string;

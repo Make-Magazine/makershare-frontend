@@ -7,7 +7,7 @@ import { ViewService } from '../../../../d7services';
   templateUrl: './learn-search-card.component.html',
 })
 export class LearnSearchCardComponent implements OnInit {
-learn=[];
+learn;
 countlessons;
 @Input() workshopNid; 
  constructor(private route: ActivatedRoute,
