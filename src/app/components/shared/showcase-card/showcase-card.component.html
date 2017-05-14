@@ -1,4 +1,4 @@
-<div class="showcase-card-backlayer hidden-xs-down">
+<div class="showcase-card-backlayer hidden-xs-down" *ngIf="showcase">
   <div class="showcase-card row " (click)="ShowSingleShowcase(showcase.path)">
     <div class="col-md-4 col-sm-12 col-xs-12 image-container">
       <img *ngIf="showcase.cover_photo" src="{{showcase.cover_photo}}"  alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.path)">
