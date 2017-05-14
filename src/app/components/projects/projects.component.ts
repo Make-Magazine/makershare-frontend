@@ -260,7 +260,7 @@ export class ProjectsComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
-      console.log(res)
+    //  console.log(res)
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });

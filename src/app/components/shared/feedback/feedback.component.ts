@@ -309,7 +309,7 @@ export class FeedbackComponent implements OnInit {
     this.formErrors.field_upload_screenshots=[];
     const control = this.feedbackForm.controls['field_upload_screenshots'];
     //selected files ftom event
-    console.log(event);
+    //console.log(event);
     if (event.srcElement) {
       let files = event.srcElement.files;
       for (var i = 0; i < files.length; i++) {
@@ -393,7 +393,7 @@ export class FeedbackComponent implements OnInit {
   SaveNode() {
     var now = Date.now();
     var feedback = this.feedback;
-    console.log(feedback);
+    //console.log(feedback);
     if(this.full_name){
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
     }else{
@@ -413,7 +413,7 @@ export class FeedbackComponent implements OnInit {
       }
       if (this.feedbackForm.value.field_bug_not_in_page_) {
             feedback.field_bug_not_in_page_.und[0].url = this.feedbackForm.value.field_bug_not_in_page_;
-        console.log(this.feedbackForm.value.field_bug_not_in_page_)
+       // console.log(this.feedbackForm.value.field_bug_not_in_page_)
         delete (feedback.field_bug_in_page);
       } else {
        feedback.field_bug_in_page.und[0].url = this.full_url;
@@ -474,15 +474,15 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_upload_screenshots);
       delete (feedback.field_describe_bug);
     }
-    console.log(this.feedbackForm);
+   // console.log(this.feedbackForm);
     console.log(feedback);
     this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
-      console.log(NewNode.nid);
+     // console.log(NewNode.nid);
       this.NID = NewNode.nid;
       this.submitted=true
 
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
   }
   onSubmit(value, type) {
@@ -496,7 +496,7 @@ export class FeedbackComponent implements OnInit {
     this.feedbackForm.controls['field_would_like'].setValue(this.FeatureType)
   }
     var feedback = this.feedback;
-    console.log(this.feedback)
+   // console.log(this.feedback)
     this.onValueChanged();
     if(this.fileArray.length != 0){
       for (let i = 0; i < this.fileArray.length; i++) {
@@ -521,7 +521,7 @@ export class FeedbackComponent implements OnInit {
               this.feedback.field_upload_screenshots.und.push({ fid: file.fid });
             });
           }, (err) => {
-            console.log(err);
+          //  console.log(err);
           }, () => {
             this.SaveNode();
           });
