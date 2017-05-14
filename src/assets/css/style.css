@@ -2094,12 +2094,13 @@ footer {
   position: relative;
   overflow: hidden;
   text-align: center; }
-  #page-404 img {
-    width: 100%; }
+  #page-404 .image-container img {
+    width: 100%;
+    display: block; }
   #page-404 .text-block {
     position: absolute;
-    bottom: 70px;
-    right: 240px; }
+    bottom: 10px;
+    right: 90px; }
     #page-404 .text-block h4, #page-404 .text-block p {
       color: #fff;
       font-family: "Messina Sans Regular";
@@ -10102,7 +10103,14 @@ img {
   .page-create-project-why .project-create-buttons p {
     padding: 10px; }
   .page-create-project-why .project-create-buttons .controls {
-    padding: 0 10px; } }
+    padding: 0 10px; }
+
+  #page-404 .text-block {
+    left: 0;
+    right: 0;
+    width: 320px;
+    margin: auto;
+    bottom: 10%; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding: 12px 0px 0px 0px; }
@@ -10343,12 +10351,11 @@ img {
     padding: 0px; }
 
   .project .image-top {
-    height: 260px; }
-
+    height: 260px; } }
+@media (min-width: 1200px) {
   #page-404 .text-block {
-    left: 0;
-    width: 320px;
-    margin: auto; } }
+    bottom: 50px;
+    right: 160px; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }

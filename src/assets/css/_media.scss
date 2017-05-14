@@ -122,6 +122,13 @@
             }
         }
     }
+    #page-404 .text-block {
+        left: 0;
+        right: 0;
+        width: 320px;
+        margin: auto;
+        bottom: 10%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -531,15 +538,13 @@
             height: 260px;
         }
     }
-    #page-404 .text-block {
-        left: 0;
-        width: 320px;
-        margin: auto;
-    }
 }
 
 @media (min-width: 1200px) {
-
+    #page-404 .text-block { 
+        bottom: 50px;
+        right: 160px;
+    }
 }
 
 @media only screen and (max-width: 767px) {}
