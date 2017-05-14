@@ -2,10 +2,10 @@
   <div class="region region-content">
     <header class="showcase-header">
       <div class="container">
-        <h3 class="page-header">Showcases</h3>
+        <h3 class="page-header">Makers</h3>
         <p>Sharing by Topic</p>
         <p>
-          Showcases are simply collections of projects curated by our Community Managers.  <a href="mailto:help@makershare.com" target="top">Send us</a> your suggestions for Showcase topics.<br>
+          Maker Showcases are collections of projects and makers curated by our Community Managers.
         </p>        
       </div>
     </header>
@@ -27,7 +27,7 @@
       <app-showcase-card [showcaseNid]="showcase.nid"></app-showcase-card>
       </div>
       <div *ngIf="showcases.length == 0">
-        <h4>There are no showcases to show</h4>
+        <h4  class="text-center mt-5 mb-5">There are no showcases to show</h4>
       </div>
       <!-- End col-md-6 -->
     </div>

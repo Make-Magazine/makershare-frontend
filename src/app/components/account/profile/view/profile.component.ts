@@ -392,6 +392,8 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
+    console.log(user);
+    console.log(this.profile.views_count);
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;

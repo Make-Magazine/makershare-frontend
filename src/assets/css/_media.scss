@@ -145,6 +145,9 @@
             }
         }
     }
+    .page-portfolio .nav-portfolio .nav .btn-white-2 {
+         width: 100%;
+     }
     .profile-container {
         .maker-card.project {
             margin-top: 20px;
@@ -317,6 +320,7 @@
             position: inherit;
             top: 0;
             left: 0;
+            height: auto;
         }
         .card-block {
             padding: 8px;
@@ -361,7 +365,7 @@
             }
             .social-footer {
                 overflow: hidden;
-                width: 140px;
+                width: 160px;
                 margin: auto;
             }
         }
@@ -563,6 +567,11 @@
     .project-button {
         display: none;
     }
+    .info-w-parallax {
+        .info-card {
+            height: auto !important;
+        }
+    }
 }
 
 @media only screen and (max-width: 623px) {}
@@ -687,6 +696,9 @@
               }
           }
      }
+     .page-portfolio .nav-portfolio .nav .btn-white-2 {
+         width: 50%;
+     }
 }
 
 @media only screen and (min-width: 992px) {
@@ -730,14 +742,14 @@
     }
 }
 @media only screen and (min-width: 768px) {
-    .profile-sidebar {
-        .profile-container {
-            top: -85px;
-            &.myprofile {
-                top: -40px;
-            }
-        }
-    }
+    // .profile-sidebar {
+    //     .profile-container {
+    //         // top: -85px;
+    //         &.myprofile {
+    //             top: -40px;
+    //         }
+    //     }
+    // }
 }
 @media only screen and (min-width: 1200px) {}
 

@@ -29,6 +29,7 @@ export interface UserProfile {
   profile_completion?: number,
   total_projects?: number,
   total_likes?: number,
+  views_count?: number,
   pass?:string,
 }
 
@@ -40,5 +41,7 @@ export class UserProfile implements UserProfile {
     this.started_making = '';
     this.field_social_accounts = new ProfileSocial();
     this.address = '';
+    this.total_likes = 0;
+    this.views_count = 0;
   }
 }

@@ -254,7 +254,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-soft-grey pull-right mt-5" (click)="updateNotificationSettings($event)">Save changes</button>
+    <button type="submit" class="btn btn-simple-small pull-right mt-5 mr-3" (click)="updateNotificationSettings($event)">Save changes</button>
   </fieldset>
 </form>
 <hr class="w-100">
@@ -270,10 +270,10 @@
   </div>
   <div class="modal-body">
     <p>This will delete your profile and all your individual projects as well as team projects for which you are the project
-      admin. This action cannot be undone. If you have questions about managing your projects, please contact community management.</p>
+      admin. This action cannot be undone. If you have questions about managing your projects, please contact <a href="mailto:help@makershare.com">community management</a>.</p>
   </div>
   <div class="modal-footer mt-auto">
     <button href="" class="btn btn-load-more" (click)="c('Close click')">Cancel</button>
-    <button type="submit" class="btn btn-load-more" (click)="deleteMyAcount()" (click)="c('Close click')">Delete</button>
+    <button type="submit" class="btn btn-load-more" (click)="deleteMyAcount()" (click)="c('Close click')">Still Delete</button>
   </div>
 </template>

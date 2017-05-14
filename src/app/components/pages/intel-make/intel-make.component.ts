@@ -25,7 +25,7 @@ export class IntelMakeComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('pages', [['nid', 796]]).subscribe(data => {
+    this.viewService.getView('pages', [['nid', 1535]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
 

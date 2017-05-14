@@ -89,10 +89,11 @@ export class ProjectsComponent implements OnInit {
     console.log(event);
     this.loaderService.display(true);
     var id = event.target.id;
-    this.viewService.getView('browse_projects', [['category', id],]).subscribe(data => {
+    this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
       this.projects = data;
+      console.log(data.length)
       //this.projects= this.projects.concat(data);
-    //  this.loadMoreVisibilty();
+      this.loadMoreVisibilty();
 
 
       if (this.projects.length == 0) {
@@ -128,9 +129,6 @@ export class ProjectsComponent implements OnInit {
     console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
-      
-      
-
     } else if (this.countProject > this.projects.length) {
       //  setTimeout(10000);
       this.hideloadmoreproject = false;
@@ -256,7 +254,11 @@ export class ProjectsComponent implements OnInit {
   idCategory(term) {
     this.CurrentActiveParentIndex = this.categories_parents.map(element=>element.tid).indexOf(term.parent_tid);
     this.nameCat=term.name;
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category/', term.tid).subscribe(res => {
+      let body = {
+        "tid": term.tid,
+        
+      };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category',body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(res)
     }, err => {

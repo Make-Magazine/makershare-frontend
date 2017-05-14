@@ -5,34 +5,6 @@
 
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
-			<div class="row">
-				<div class="col-12 ml-auto d-flex flex-row page-portfolio" *ngIf="CurrentLoggedUserId != uid">
-					<div class="nav-portfolio ml-auto hidden-sm-down">
-						<div class="display-style d-flex">
-							<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-							<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
-						</div>
-					</div>
-				</div>
-				<div class="profile-header col-lg-8 col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-sm-down">
-					<ul class="list-unstyled stats d-flex flex-row justify-content-end">
-						<li *ngIf="ProjectsCount">
-							<p><span class="number">{{ProjectsCount}}</span> projects</p>
-						</li>
-						<li *ngIf="profile.total_likes != 0">
-							<p><span class="number">{{profile.total_likes}}</span> project likes</p>
-						</li>
-						<li>
-							<p><span class="number">{{profile.views_count}}</span> views</p>
-						</li>
-						<!-- Start Bookmsrk-section -->
-						<!--<li>
-							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
-						</li>-->
-					</ul>
-					<!-- End Bookmark-section -->
-				</div>
-			</div>
 			<div class="row body-content">
 				<div class="profile-overlay"></div>
 				<div class="left-section col-lg-4 col-md-6">
@@ -69,7 +41,9 @@
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
 									<ul class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}, {{ProfileInfo.address.country}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
+											{{ProfileInfo.address.country}}
+										</li>
 										<li class="placeholder-text" *ngIf="!ProfileInfo.address || ProfileInfo.address == ''">{{PlaceholderText.address}}</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
@@ -105,11 +79,11 @@
 									<div *ngIf="!ProfileInfo.bio" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
-									<hr>
+									<hr class="hideData">
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
-								<div  class="hideData">
+								<div class="hideData" *ngIf="emptySocial">
 									<p class="global-title">Social</p>
 									<p class="placeholder-text" *ngIf="emptySocial">{{PlaceholderText.social}}</p>
 									<div class="social-links d-flex flex-wrap">
@@ -184,8 +158,8 @@
 								<div class="hideData websites">
 									<p class="global-title">Websites</p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''" href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}1</a>
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}2</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''" href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{profile.field_social_accounts.field_website_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{profile.field_social_accounts.field_blog_title}}</a>
 									</div>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_title == '' && ProfileInfo.field_social_accounts.field_blog_title == ''">
 										<p class="placeholder-text">{{PlaceholderText.websites}}</p>
@@ -207,7 +181,7 @@
 								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
 										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
-										<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
+									<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
 									</span>
 								</p>
 								<!-- End How -->
@@ -228,20 +202,25 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}, {{ProfileInfo.address.country}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
+											{{ProfileInfo.address.country}}
+										</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
 										<i class="lnr lnr lnr-cross close"></i>
 									</span>
+									<a class="profile-share">
+										<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+									</a>
 								</div>
-								<hr class="hideData">
+								<hr class="hideData 3">
 								<!-- describe yourself-->
 								<ul class="list-unstyled post hideData" *ngIf="ProfileInfo.describe_yourself != ''">
 									<li class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
 								</ul>
 								<!-- describe yourself-->
-								<hr class="hideData" *ngIf="ProfileInfo.describe_yourself != ''">
+								<hr class="hideData 2" *ngIf="ProfileInfo.describe_yourself">
 								<!-- start Badges-->
 								<div class="icons hideData" *ngIf="badges !=''">
 									<!--<p class="global-title">Badges</p>-->
@@ -253,12 +232,12 @@
 								</div>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div class="bio hideData">
+								<div class="bio hideData" *ngIf="ProfileInfo.bio">
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
-									<hr *ngIf="ProfileInfo.bio">
+									<!--<hr *ngIf="ProfileInfo.bio">-->
 								</div>
 								<!-- End Bio -->
-								<div  class="hideData">
+								<div class="hideData 1" *ngIf="emptySocial">
 									<p class="global-title" *ngIf="!emptySocial">Social</p>
 									<div class="social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
@@ -292,24 +271,27 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
-											<a class="nav-link social-img ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
-												<img src="./assets/images/icons/hackster_white.svg" alt="">
+											<a class="nav-link social ext" target="_blank" (mouseover)="hackster = false" (mouseleave)="hackster = true" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+												<img src="./assets/images/icons/hackster_white.svg" *ngIf="hackster" alt="">
+												<img src="./assets/images/icons/hackster_black.svg" *ngIf="!hackster" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social ext" target="_blank" (mouseover)="instructables = false" (mouseleave)="instructables = true" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+												<img src="./assets/images/icons/instructables_white.svg" *ngIf="instructables" alt="">
+												<img src="./assets/images/icons/instructables_black.svg" *ngIf="!instructables" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
-											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-												<i class="fa fa-external-link fa-lg"></i>
+											<a class="nav-link social ext" target="_blank" (mouseover)="hackaday = false" (mouseleave)="hackaday = true" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
 											</a>
 										</div>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<hr class="hideData" *ngIf="!emptySocial">
+								<hr class="hideData" *ngIf="field_social_accounts">
 								<ul class="list-unstyled makerspaces hideData">
 									<p *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
@@ -317,20 +299,19 @@
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
+										<hr class="hideData">
 									</span>
 								</ul>
-								<hr *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''" class="hideData">
 								<div class="hideData websites">
+									<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 									<p class="global-title" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''"
-										 href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{ProfileInfo.field_social_accounts.field_website_title}}</a>
-										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''"
-										 href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{ProfileInfo.field_social_accounts.field_blog_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != ''" href="{{ProfileInfo.field_social_accounts.field_website_or_blog}}">{{ProfileInfo.field_social_accounts.field_website_title}}</a>
+										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{ProfileInfo.field_social_accounts.field_blog_title}}</a>
 									</div>
 								</div>
-								<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
+								<hr class="hideData" *ngIf="ProfileInfo.started_making">
 								<div class="how hideData">
 									<!-- Start How -->
 									<p class="global-title" *ngIf="ProfileInfo.started_making">My Maker Moment</p>
@@ -341,10 +322,10 @@
 								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
 								 [inputId]="tid">
 								</tag-input>-->
-								<p class="hideData topic-tags">
+								<p class="hideData topic-tags" *ngIf="ProfileInfo.maker_interests">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
 										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
-										<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
+									<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
 									</span>
 								</p>
 								<!--<a class="report">Report this user</a>-->
@@ -365,18 +346,50 @@
 				</div>
 				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
+					<div class="d-flex justify-content-between" *ngIf="CurrentLoggedUserId != uid">
+						<div class="d-flex flex-row page-portfolio hidden-md-down">
+							<div class="nav-portfolio ml-auto">
+								<div class="display-style d-flex">
+									<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
+									<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+								</div>
+							</div>
+						</div>
+						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
+							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
+								<li *ngIf="ProjectsCount">
+									<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
+									<p *ngIf="ProjectsCount == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCount}}</span> project</p>
+								</li>
+								<li *ngIf="profile.total_likes != 0">
+									<p><span class="number">{{profile.total_likes}}</span> project likes</p>
+								</li>
+								<li>
 
-					<div class="profile-header col-md-6 col-sm-12 ml-auto justify-content-end d-flex hidden-md-up">
-						<ul class="list-unstyled bookmark d-flex flex-row justify-content-end">
+									<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
+									<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
+								</li>
+								<!-- Start Bookmsrk-section -->
+								<!--<li>
+									<a><i class="fa fa-lg fa-bookmark-o"></i></a>
+								</li>-->
+							</ul>
+							<!-- End Bookmark-section -->
+						</div>
+					</div>
+					<!--This is for small devices-->
+					<div class="profile-header ml-auto d-flex hidden-md-up">
+						<ul class="list-unstyled stats d-flex flex-row">
 							<li *ngIf="ProjectsCount">
-								<p><span class="number">{{ProjectsCount}}</span> projects</p>
+								<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
+								<p *ngIf="ProjectsCount == 1 || ProjectsCount == 0"><span class="number">{{ProjectsCount}}</span> project</p>
 							</li>
 							<li *ngIf="profile.total_likes != 0">
 								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
 							</li>
 							<li>
 								<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
-								<p *ngIf="profile.views_count == 1"><span class="number">{{profile.views_count}}</span> view</p>
+								<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
 							</li>
 							<!-- Start Bookmsrk-section -->
 							<!--<li>
@@ -390,7 +403,8 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
-									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCount]="ProjectsCount"></app-edit-portfolio>
+									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCount]="ProjectsCount" [LikesCount]="profile.total_likes"
+									 [ViewsCount]="profile.views_count"></app-edit-portfolio>
 								</div>
 							</div>
 							<!-- End project grid -->
@@ -690,7 +704,8 @@
 													Invalid URL, ex: http://example.com
 											</small>
 											</div>
-											<div *ngIf="formGroup.controls.field_add_your_makerspace_s_['controls'].length != 1" (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);" class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>
+											<div *ngIf="formGroup.controls.field_add_your_makerspace_s_['controls'].length != 1" (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);"
+											 class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>
 										</div>
 									</div>
 								</div>
@@ -784,7 +799,7 @@
 										</select>
 									</div>
 									<div class="col-sm-4">
-										<i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest" ></i>									
+										<i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest"></i>
 										<select class="shadowed" *ngIf="SelectedParentInterest" (change)="SelectedChildInterest = $event.target.value;SetInterest(parentinterest)">
 											<option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
 											<option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid" [selected]="SelectedChildInterest == childInterest.tid"><span [innerHTML]="childInterest.name"></span></option>
