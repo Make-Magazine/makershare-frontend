@@ -87,12 +87,12 @@ export class ProjectsComponent implements OnInit {
   }
   projectsById(event) {
     // show spinner
-    console.log(event);
+    // console.log(event);
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
       this.projects = data;
-      console.log(data.length)
+      // console.log(data.length)
       //this.projects= this.projects.concat(data);
       this.loadMoreVisibilty();
 
@@ -126,8 +126,8 @@ export class ProjectsComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     // this.getCountProject();
-    console.log(this.countProject)
-    console.log(this.projects.length)
+    // console.log(this.countProject)
+    // console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.projects.length) {
