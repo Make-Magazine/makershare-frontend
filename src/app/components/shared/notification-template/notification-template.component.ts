@@ -44,7 +44,7 @@ export class NotificationTemplateComponent implements OnInit {
       // open user profile
       if(ShowcaseUserID){
         if(this.notification.type == 'project_added_to_showcase'){
-          this.router.navigate(["/showcases",this.notification.showcase_nid]);
+          this.router.navigate(["/makers",this.notification.showcase_nid]);
         }else{
           this.userService.getUrlFromId(ShowcaseUserID).subscribe( data => {
             let url = data.url;

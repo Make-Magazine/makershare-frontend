@@ -17,9 +17,9 @@
         <div class="col-md-4 project-create-buttons">
           <p>PUBLISH AS</p>
           <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
-            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}"
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
                 (click)="GettingFieldsReady(0,370)">Public</button></li>
-            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}"
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
                 (click)="GettingFieldsReady(0,371)">Private</button></li>
             <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
           </ul>
@@ -52,9 +52,9 @@
       <div class="col-md-4 project-create-buttons">
         <p>PUBLISH AS</p>
         <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
-          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}"
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
               (click)="GettingFieldsReady(0,370)">Public</button></li>
-          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid && project.field_visibility2['und'][0] == 1115}"
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
               (click)="GettingFieldsReady(0,371)">Private</button></li>
           <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
         </ul>

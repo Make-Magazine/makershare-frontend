@@ -22,7 +22,7 @@ export class ShowcasesComponent implements OnInit {
     });
   }
   ShowSingleShowcase(nid){
-     this.router.navigate(['/showcases', nid]);
+     this.router.navigate(['/makers', nid]);
   }
 
 }

@@ -211,7 +211,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_teaser': [this.project.field_teaser.und[0].value, [Validators.required,Validators.maxLength(250)]],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [URLNoProtocol(),YoutubeOrVimeoLink()]],
-      'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
+      'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und && this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
       'field_uh_oh_moment': [this.project.field_uh_oh_moment.und[0].value, []],
       'field_story': [this.project.field_story.und[0].value, [Validators.required]],
