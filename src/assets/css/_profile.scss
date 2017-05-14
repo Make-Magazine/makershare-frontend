@@ -109,7 +109,7 @@
         padding: 10px;
         text-align: center;
         color: #FFF;
-        font-size: 1em;
+        font-size: 1rem;
         i {
             margin-right: 10px;
         }
@@ -175,12 +175,12 @@
             .profile-message {
                 display: block;
                 width: 100%;
-                font-size: 1.2em;
+                font-size: 1.2rem;
             }
         }
         li,
         p {
-            font-size: 0.8em;
+            font-size: 0.9rem;
             a {
                 color: $title-color;
             }
@@ -192,7 +192,7 @@
             @include card-header-font-sm();
             margin-bottom: 10px;
             margin-top: 10px;
-            font-size: 1.4em;
+            font-size: 1.4rem;
             color: $shade-4;
             text-transform: capitalize;
         }
@@ -201,7 +201,7 @@
             &.motto-placeholder {
                 @include card-header-font-sm();
                 color: $light-grey;
-                font-size: 1em;
+                font-size: 1rem;
             }
         }
         .image-container {
@@ -263,7 +263,7 @@
         }
         .profile-info {
             margin-top: 16px;
-            font-size: 18px;
+            font-size: 16px;
             .userInfo {
                 position: relative;
                 .placeholder-text {
@@ -292,7 +292,7 @@
             }
             .profile-fullname {
                 @include card-header-font-sm ();
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 color:$shade-4;
             }
             .profile-nickname {
@@ -310,23 +310,23 @@
             .profile-describe-yourself {
                 @include desc-font-5 ();
                 color: $shade-4;
-                font-size: 1.5em;
+                font-size: 1.5rem;
             }
             .badges {
                 @include desc-font-2 ();
                 color: $text-color-1;
-                font-size: 0.7em;
+                font-size: 0.7rem;
                 line-height: 130%;
                 margin-left: 5px;
             }
             .bio {
                 @include desc-font-1 ();
                 line-height: 150% !important;
-                font-size: 0.9em;
+                font-size: 0.9rem;
                 color: $shade-4;
                 // i {
                 //     font-size: 24px;
-                //     line-height: .75em;
+                //     line-height: .75rem;
                 //     vertical-align: -15% !important;
                 // }
             }
@@ -334,7 +334,7 @@
             .websites {
                 a {
                     color: $blue;
-                    font-size: 1.2em;
+                    font-size: 1.2rem;
                     margin-bottom: 5px;
                 }
             }
@@ -412,7 +412,7 @@
             }
             .topic-tags {
                 color: $shade-5;
-                font-size: 1.2em;
+                font-size: 1.2rem;
             }
         }
         .report-div {
@@ -453,7 +453,7 @@
         }
         .text-red {
             color: $red;
-            font-size: 1em;
+            font-size: 1rem;
         }
         a {
             display: inline-block;
@@ -521,7 +521,7 @@
         li {
             padding: 0 10px;
             height: 24px;
-            font-size: 1.1em;
+            font-size: 1.1rem;
             color: $shade-4;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
@@ -1190,7 +1190,7 @@
     .card-stats {
         padding: 2px;
         color: $light-grey;
-        font-size: 0.9em;
+        font-size: 0.9rem;
         ul li {
             @include desc-font-2();
             width: 65px;
@@ -1312,7 +1312,7 @@
         margin-top: 50px;
         .text-red {
             color:$red;
-            font-size: 1.3em;
+            font-size: 1.3rem;
         }
         .empty-text {
             color: $shade-4;
@@ -1394,7 +1394,7 @@
             color: $red;
             margin: 0px 0px 2px 0px;
             .custom-control-indicator {
-                top: .15em;
+                top: .15rem;
             }
         }
         textarea {
@@ -1592,7 +1592,7 @@
                     }
                     span {
                         padding-left: 8px;
-                        font-size: 1.2em;
+                        font-size: 1.2rem;
                         position: relative;
                         top: -2px;
                     }
@@ -1758,7 +1758,7 @@
         -webkit-border-radius: 		20px 20px 20px 20px;
         -khtml-border-radius: 		20px 20px 20px 20px; 	
         i {
-            font-size:1.1em;
+            font-size:1.1rem;
             position:absolute;
             left:5px;
             top:11px;
@@ -2510,7 +2510,7 @@ button {
     i {
         padding: 7px;
         color: $blue;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         width: auto !important;
         &.close {
             display: none;
@@ -2594,20 +2594,20 @@ button {
     .selected-topic {
         @include card-header-font-md();
         color: $shade-4;
-        font-size: 1.1em;
+        font-size: 1.1rem;
         margin-top: 15px;
         margin-bottom: 5px;
     }
     .cate-list {
         padding: 0 30px;
         .remove-cate {
-            font-size: 1.5em;
+            font-size: 1.5rem;
         }
         p.cate-name {
             margin: 3px 0;
             border-radius: 0;
-            font-size: 0.9em;
-            padding: 8px 1rem;
+            font-size: 0.9rem;
+            padding: 8px 1rrem;
             width: 60%;
             @include boxShadow(2px, 2px, 8px, $light-grey);
         }
