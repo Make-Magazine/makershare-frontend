@@ -7,7 +7,7 @@
           Project
         </div>
       </div>
-      <div class="image-top" (click)="ShowProjectDetails(project.nid)">
+      <div class="image-top" (click)="ShowProjectDetails(project.path)">
         <div class="overlay"></div>
         <img *ngIf="project.cover_photo" class="card-img-top" src="{{project.cover_photo}}" alt="">
         <img *ngIf="project.cover_photo_lg && view == 'extended'" class="card-img-top" src="{{project.cover_photo_lg}}" alt="">
@@ -18,7 +18,7 @@
       </div>
       <div class="card-block d-flex flex-column justify-content-around">
         <div class="d-flex flex-column">
-          <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
+          <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.path)">
             <div class="project-icon" *ngFor="let badge of badges;">
               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
             </div>
@@ -28,7 +28,7 @@
               <img *ngIf="!project.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
               <img *ngIf="project.maker_photo" src="{{project.maker_photo}}" alt="">
             </div>
-            <div class="d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
+            <div class="d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.path)">
               <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
               <a (click)="userProfile(project.first_name,project.last_name)">
                 <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
@@ -69,7 +69,7 @@
           Project
         </div>
       </div>
-      <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
+      <div class="icons-side-project d-flex flex-row" *ngIf="badges" (click)="ShowProjectDetails(project.path)">
         <div class="project-icon" *ngFor="let badge of badges;">
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
@@ -80,7 +80,7 @@
             <img *ngIf="!project.cover_photo_search_small" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="project.cover_photo_search_small" src="{{project.cover_photo_search_small}}" alt="">
           </div>
-          <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.nid)">
+          <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)" class="mt-auto">
               <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
