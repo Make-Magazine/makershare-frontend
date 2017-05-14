@@ -1856,7 +1856,7 @@ footer {
     padding: 3px 0;
     color: #828282;
     line-height: 25px; }
-  footer .social-links a {
+  footer .footer-social-links a {
     position: relative;
     text-align: center;
     width: 0px;
@@ -1870,27 +1870,27 @@ footer {
     -webkit-border-radius: 20px 20px 20px 20px;
     -khtml-border-radius: 20px 20px 20px 20px;
     color: #FFFFFF; }
-    footer .social-links a i {
-      font-size: 1.3em;
+    footer .footer-social-links a i {
+      font-size: 1.1em;
       position: absolute;
-      left: 8px;
-      top: 10px; }
-    footer .social-links a.fb i {
+      left: 10px;
+      top: 11px; }
+    footer .footer-social-links a.fb i {
       left: 10px; }
-  footer .social-links a.social {
+  footer .footer-social-links a.social {
     float: left;
     margin: 0 5px 0 0;
     cursor: pointer;
     background: #DCDCDC;
     color: #fff; }
-  footer .social-links a.social:hover.fb {
+  footer .footer-social-links a.social:hover.fb {
     background-color: #014c8c; }
-  footer .social-links a.social:hover.tw {
+  footer .footer-social-links a.social:hover.tw {
     background-color: #33ccff; }
-  footer .social-links a.social:hover.pin {
+  footer .footer-social-links a.social:hover.pin {
     background-color: #cc2127; }
-  footer .social-links a.social:hover.in {
-    background-color: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+  footer .footer-social-links a.social:hover.in {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
 
 .width-fix {
   padding: 0; }
@@ -4041,8 +4041,8 @@ footer {
   .social-links a.social i {
     font-size: 1.1em;
     position: absolute;
-    left: 11px;
-    top: 12px; }
+    left: 5px;
+    top: 11px; }
 .social-links a.social {
   margin: 5px 0;
   cursor: pointer;
