@@ -385,7 +385,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     'field_cover_photo': {
       'required': 'Cover photo is required.',
       'notvalidformat': 'Please choose an image file.',
-      'validimagesize': 'choose a photo that is at least 600 x 600 px.',
+      'validimagesize': 'choose a photo that is at least 600 x 400 px.',
     },
     'field_show_tell_video': {
       'urlnoprotocol': 'Please enter a valid url, ex: http://example.com.',
