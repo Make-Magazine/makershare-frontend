@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services/view/view.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../../../d7services/user/user.service';
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -21,18 +23,21 @@ export class ProjectCardComponent implements OnInit {
     private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
+    private userService: UserService,
+
   ) {
     config.placement = 'bottom';
     config.triggers = 'hover';
   }
   ngOnInit() {
+
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = parseInt(localStorage.getItem('user_id'));
     this.smallWindow = window.innerWidth;
-    
+
     window.onresize = (e) => {
-        this.smallWindow = window.innerWidth;
+      this.smallWindow = window.innerWidth;
     }
   }
   getProjectCard() {
@@ -57,6 +62,7 @@ export class ProjectCardComponent implements OnInit {
       this.viewService.getView('maker_count_all_projects/' + this.project['uid']).subscribe(data => {
         this.project['maker_project_count'] = data[0];
       });
+
     });
   }
 
@@ -80,5 +86,12 @@ export class ProjectCardComponent implements OnInit {
 
   goToProfile(path: string) {
     this.router.navigate(['portfolio/', path]);
+  }
+  getProfile() {
+    if (this.project['uid']) {
+      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
+        this.router.navigate(['/portfolio/' + res.url]);
+      });
+    }
   }
 }

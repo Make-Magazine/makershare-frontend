@@ -83,10 +83,10 @@
 								</div>
 								<!-- End Bio -->
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
-								<div class="hideData" *ngIf="emptySocial">
+								<div class="hideData">
 									<p class="global-title">Social</p>
 									<p class="placeholder-text" *ngIf="emptySocial">{{PlaceholderText.social}}</p>
-									<div class="social-links d-flex flex-wrap">
+									<div class="profile-social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 												<i class="fa fa-facebook fa-lg"></i>

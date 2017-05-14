@@ -73,7 +73,7 @@ export class ProjectsComponent implements OnInit {
     //     ()=>console.log("compleate")
     //   );
     /* end obs*/
-    this.viewService.getView('browse_projects', [['page', this.pages],['sort_by',this.sort.sort_by],['sort_order',this.sort.sort_order]]).subscribe(data => {
+    this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
       this.loadMoreVisibilty();
       // hide spinner
@@ -253,13 +253,13 @@ export class ProjectsComponent implements OnInit {
     });
   }
   idCategory(term) {
-    this.CurrentActiveParentIndex = this.categories_parents.map(element=>element.tid).indexOf(term.parent_tid);
-    this.nameCat=term.name;
-      let body = {
-        "tid": term.tid,
-        
-      };
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category',body).subscribe(res => {
+    this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
+    this.nameCat = term.name;
+    let body = {
+      "tid": term.tid,
+
+    };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(res)
     }, err => {
