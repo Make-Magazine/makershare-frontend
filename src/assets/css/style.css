@@ -1886,13 +1886,9 @@ footer {
     footer .footer-social-links a i {
       font-size: 1.1em;
       position: absolute;
-      left: 10px;
+      left: 0px;
+      right: 0px;
       top: 11px; }
-    footer .footer-social-links a.fb i {
-      left: 10px; }
-    footer .footer-social-links a.in i {
-      left: 10px;
-      top: 10px; }
   footer .footer-social-links a.social {
     float: left;
     margin: 0 5px 0 0;
