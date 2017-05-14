@@ -4758,6 +4758,9 @@ button:hover {
 
 .hideData {
   display: block; }
+  .hideData span {
+    font-size: 0.8em;
+    color: #4F4F4F; }
 
 .showData {
   display: block !important; }
