@@ -2,7 +2,7 @@
   <a class="report" *ngIf="!isReported" (click)="open(content)">Report this user</a>
   <p *ngIf="isReported"> User has been reported </p>
 </div>
-<template id="model" #content let-c="close" let-d="dismiss">
+<ng-template id="model" #content let-c="close" let-d="dismiss">
   <div class="modal-report">
     <div class="modal-header">
     </div>
@@ -46,4 +46,4 @@
       </ul>
     </div>
   </div>
-</template>
+</ng-template>

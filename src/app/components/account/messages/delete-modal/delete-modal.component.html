@@ -1,5 +1,5 @@
 <a (click)="open(content)">Delete</a>
-<template #content let-c="close" let-d="dismiss">
+<ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
       <span aria-hidden="true" >&times;</span>
@@ -16,4 +16,4 @@
         <button  class="btn btn-blue btn-sharp">Yes</button>
     </div>
   </form>
-</template>
+</ng-template>

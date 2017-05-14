@@ -1,4 +1,4 @@
-<template #rt let-r="result" let-t="term">
+<ng-template #rt let-r="result" let-t="term">
   <div class="d-flex">
     <div class="typeahead-image-container">
       <img *ngIf="r.profile_pic_typeahead" src="{{r.profile_pic_typeahead}}">
@@ -8,7 +8,7 @@
       <p class="nickname">{{r.username}}</p>
     </div>
   </div>
-</template>
+</ng-template>
 <div class="region region-content col-md-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships">
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls['field_maker_memberships']['controls']; let i=index;" class="card add-collaborate">

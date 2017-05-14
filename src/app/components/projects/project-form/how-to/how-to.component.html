@@ -1,6 +1,6 @@
-<template #rt let-r="result" let-t="term">
+<ng-template #rt let-r="result" let-t="term">
   {{ r.name}}
-</template>
+</ng-template>
 
 <div class="region region-content col-md-8" [formGroup]="HowToForm">
   <div class="how-to">
@@ -229,7 +229,7 @@
 <!-- MODALS -->
 
 <!-- Add Modal -->
-<template #addmodal let-c="close" let-d="dismiss">
+<ng-template #addmodal let-c="close" let-d="dismiss">
   <div class="create-item-modal">
     <div class="modal-header">
       <h4 class="modal-title">Add new {{CurrentModal}}</h4>
@@ -246,9 +246,9 @@
       <button type="button" class="btn btn-load-more" (click)="AddNewToolMaterialPart(CloseButton,Name)">Save</button>
     </div>
   </div>
-</template>
+</ng-template>
 
-<template #resourcefile let-c="close" let-d="dismiss">
+<ng-template #resourcefile let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Choose resource file</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -269,9 +269,9 @@
   <div class="modal-footer">
     <button [hidden]="true" #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
   </div>
-</template>
+</ng-template>
 
-<template #linkreop let-c="close" let-d="dismiss">
+<ng-template #linkreop let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Enter the repository link</h4>
     <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -288,4 +288,4 @@
     <button [hidden]="true" #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
     <button type="button" class="btn btn-primary" [disabled]="!urllink.valid" (click)="SaveRepoLink(urllink,CloseButton)">Save</button>
   </div>
-</template>
+</ng-template>

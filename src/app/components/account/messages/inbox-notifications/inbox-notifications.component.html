@@ -1,8 +1,8 @@
-<template #rt let-r="result" let-t="term">
+<ng-template #rt let-r="result" let-t="term">
   <div class="user-image-container">
     <app-user-card-msgs [uid]="r.uid"></app-user-card-msgs>
   </div>
-</template>
+</ng-template>
 <div class="page-inbox">
   <div class="text-center p-3">
     <h1 *ngIf="current_active_tab == 'messages'">Messages</h1>
@@ -53,7 +53,7 @@
   <!-- Trigger the modal with a button -->
   <!-- Modal -->
 
-  <template #content let-c="close" let-d="dismiss">
+  <ng-template #content let-c="close" let-d="dismiss">
     <div class="create-newmsg">
       <div class="modal-header">
         <button type="button" class="close ml-auto" (click)="d('Cross click')" (click)="resetForm($event)" aria-label="Close">
@@ -94,6 +94,6 @@
         <button type="submit" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
       </div>
     </div>
-  </template>
+  </ng-template>
 </div>
 
