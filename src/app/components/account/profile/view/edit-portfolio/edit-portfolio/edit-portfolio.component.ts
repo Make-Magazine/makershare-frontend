@@ -18,6 +18,8 @@ export class EditPortfolioComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
   @Input('projectsCount') projectsCount;
+  @Input('LikesCount') LikesCount:number = 0;
+  @Input('ViewsCount') ViewsCount: number = 0;
 
   ngOnInit() {
     this.CurrentTab = 'public';

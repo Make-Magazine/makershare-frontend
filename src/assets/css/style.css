@@ -2087,7 +2087,8 @@ footer {
   padding: 10px;
   text-align: center;
   color: #FFF;
-  font-size: 1em; }
+  font-size: 1em;
+  border: none; }
 
 /* Bookmark */
 .bookmark-page .bookmark-menu ul li .btn-tab:focus, .bookmark-page .bookmark-menu ul li a:not([href]):not([tabindex]).btn-tab:focus {
@@ -2209,17 +2210,17 @@ footer {
           text-decoration: none;
           color: #008bbf; }
     .banner #homeBanner img {
-      margin-bottom: 20px; }
+      padding: 30px 0px; }
     .banner #homeBanner .button-container-main-1 {
       width: 170px; }
       .banner #homeBanner .button-container-main-1 .btn-main {
         padding: 15px 0px;
         width: 167px;
-        font-family: "Messina Modern Regular";
+        font-family: "Messina Sans Regular";
         font-size: 1.3em;
-        font-weight: 500;
+        font-weight: 400;
         text-transform: none;
-        line-height: 120%;
+        line-height: 110%;
         color: #828282;
         color: #fff !important; }
 
@@ -2246,7 +2247,8 @@ footer {
   .what-is-ms h1 {
     font-size: 4em;
     color: #4f4f4f;
-    font-family: 'Messina Modern Regular'; }
+    font-family: 'Messina Modern Regular';
+    padding-bottom: 30px; }
   .what-is-ms h2 {
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
@@ -2328,11 +2330,18 @@ footer {
     .info-w-parallax .info-card .button-container-onboarding {
       text-align: center;
       margin-top: 24px; }
-      .info-w-parallax .info-card .button-container-onboarding .project-button {
+      .info-w-parallax .info-card .button-container-onboarding .project-add {
         width: 170px !important; }
       .info-w-parallax .info-card .button-container-onboarding .btn-main {
         width: 167px !important;
-        padding: 15px 0px; }
+        padding: 15px 0px;
+        font-family: "Messina Sans Regular";
+        font-size: 1.3em;
+        font-weight: 400;
+        text-transform: none;
+        line-height: 110%;
+        color: #828282;
+        color: #fff !important; }
 
 .parallax-bg {
   width: 100%;
@@ -2715,7 +2724,8 @@ footer {
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2em; }
+        font-size: 1.2em;
+        margin-bottom: 5px; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -2844,6 +2854,8 @@ footer {
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
+  .profile-header .stats li:first-of-type {
+    padding-left: 0; }
 
 .profile-empty-edit .cover-region .bookmark .message {
   margin-top: 4px; }
@@ -3947,7 +3959,7 @@ footer {
   .social-links a.social i {
     font-size: 1.1em;
     position: absolute;
-    left: 5px;
+    left: 11px;
     top: 12px; }
 .social-links a.social {
   margin: 5px 0;
@@ -4595,7 +4607,7 @@ button:hover {
 .toggleProfile {
   position: absolute;
   right: 15px;
-  bottom: 15px;
+  bottom: 0;
   width: 35px;
   height: 35px;
   border: 1px solid #00AEEF;
@@ -5031,6 +5043,10 @@ button:hover {
 
 .page-challenge-summary {
   background-color: #F2F2F2; }
+  .page-challenge-summary .challenge-award img {
+    width: 100px;
+    height: 100px;
+    max-width: 100%; }
 
 /* challenge card on search page */
 .page-search-content .challenge-card {
@@ -9008,11 +9024,13 @@ img {
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
     color: #4F4F4F;
-    font-size: 1em; }
+    font-size: 1em;
+    margin-right: 38px; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
-    width: 30px; }
+    width: 30px;
+    margin-right: 10px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
   padding: 15px 0 0;
@@ -9669,6 +9687,9 @@ img {
 .stylish-input-group button {
   border: 0;
   background: transparent; }
+  .stylish-input-group button:active, .stylish-input-group button:focus {
+    border: none !important;
+    outline: none !important; }
 
 /* new style */
 .page-search-content {
@@ -9686,6 +9707,10 @@ img {
     top: 10px;
     z-index: 3;
     right: 60px; }
+  .page-search-content .searsh-field .dropdown-menu {
+    overflow: hidden; }
+    .page-search-content .searsh-field .dropdown-menu .dropdown-item {
+      padding: 0.5em .5em !important; }
 
 #search-input::-ms-expand {
   display: none; }
@@ -10005,6 +10030,9 @@ img {
   .project .card-stats ul {
     width: 50%; }
 
+  .page-portfolio .nav-portfolio .nav .btn-white-2 {
+    width: 100%; }
+
   .profile-container .maker-card.project {
     margin-top: 20px; }
     .profile-container .maker-card.project .card-block {
@@ -10137,7 +10165,8 @@ img {
     .project.card .image-top {
       position: inherit;
       top: 0;
-      left: 0; }
+      left: 0;
+      height: auto; }
     .project.card .card-block {
       padding: 8px;
       margin-top: 0px;
@@ -10165,7 +10194,7 @@ img {
       text-align: left; }
     footer .container .social-footer {
       overflow: hidden;
-      width: 140px;
+      width: 160px;
       margin: auto; }
 
   .page-showcase .showcase-card-backlayer .showcase-card .showcase-card-footer-2 {
@@ -10238,7 +10267,10 @@ img {
     max-width: 370px; } }
 @media only screen and (max-width: 525px) {
   .project-button {
-    display: none; } }
+    display: none; }
+
+  .info-w-parallax .info-card {
+    height: auto !important; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
@@ -10290,7 +10322,10 @@ img {
   header.main-header.shrink
   .navbar-toggleable-sm .navbar-nav .nav-link {
     padding-right: 0.2rem;
-    padding-left: 0.2rem; } }
+    padding-left: 0.2rem; }
+
+  .page-portfolio .nav-portfolio .nav .btn-white-2 {
+    width: 50%; } }
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
@@ -10309,11 +10344,6 @@ img {
     margin-top: 5px; }
   .project .card-title {
     width: 190px; } }
-@media only screen and (min-width: 768px) {
-  .profile-sidebar .profile-container {
-    top: -85px; }
-    .profile-sidebar .profile-container.myprofile {
-      top: -40px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }
