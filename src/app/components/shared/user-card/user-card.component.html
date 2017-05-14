@@ -1,3 +1,4 @@
+<div *ngIf="card">
 <div class=" profile-container h-100" *ngIf="card.invited_user=='0' || card.invited_user==''">
   <!-- start profile card-->
   <div class="card spotlight-item h-100">
@@ -27,8 +28,10 @@
       </div>
     </div>
   </div>
+  </div>
   <!-- End profile card -->
 </div>
+<div *ngIf="card">
 <div class=" profile-container" *ngIf="card.invited_user=='1'">
   <!-- start profile card If Invited-->
   <div class="card spotlight-item ">
@@ -45,7 +48,7 @@
   </div>
   <!-- End profile card Invited-->
 </div>
-
+</div>
 <!-- End Profile-container -->
 <!--<template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
