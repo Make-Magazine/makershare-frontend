@@ -1,4 +1,3 @@
-import { Auth } from './auth0/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -8,8 +7,6 @@ import { routing } from "./app.routing";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
-import { StatisticsService } from './d7services/statistics/statistics.service';
-import { SolrService } from './d7services/solr/solr.service';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
@@ -25,11 +22,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
-// loader service
-import { LoaderService } from './components/shared/loader/loader.service';
-// Profile Picture Service
-import { ProfilePictureService } from './components/shared/profile-picture/profile-picture.service';
-//import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
 
 // static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
@@ -50,6 +42,7 @@ import { MetaModule } from '@nglibs/meta';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
+import { CookieModule } from 'ngx-cookie';
 
 let config = {
   breakPoints: {
@@ -84,10 +77,11 @@ let config = {
     GuidelinesComponent,
     WhyPortfolioComponent,
     ShowTellComponent,
-
   ],
   imports: [
     BrowserModule,
+    CookieModule.forRoot(),
+    SharedModule.forRoot(),
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
@@ -96,7 +90,6 @@ let config = {
     routing,
     MessagesModule,
     NotificationBarModule,
-    SharedModule.forRoot(),
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,
@@ -105,11 +98,6 @@ let config = {
   ],
   entryComponents: [],
   providers: [
-    Auth,
-    ProfilePictureService,
-    LoaderService,
-    StatisticsService,
-    SolrService,
     {
       provide: ResponsiveConfig,
       useFactory: ResponsiveDefinition

@@ -33,10 +33,4 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class CollectionModule { }
-export { ProjectComponent };
-export { ShowcaseComponent };
-export { MakerComponent };
-export { ChallengeFollowComponent };
-export { ChallengeEnterComponent };
-export { CollectionComponent };
 

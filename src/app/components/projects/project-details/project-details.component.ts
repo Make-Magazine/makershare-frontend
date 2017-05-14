@@ -1,15 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
-import { FlagService } from '../../../d7services/flag/flag.service';
-import { UserService } from '../../../d7services/user/user.service';
-import { NodeService } from '../../../d7services/node/node.service';
+import { ViewService,FlagService,UserService,NodeService,StatisticsService } from '../../../d7services';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
-import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 
 @Component({
   selector: 'app-project-details',

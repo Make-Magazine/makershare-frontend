@@ -1,14 +1,10 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { TaxonomyService } from '../../../d7services/taxonomy/taxonomy.service'
+import { TaxonomyService,UserService,NodeService,FileService } from '../../../d7services';
 import { TaxonomyTerm } from '../../../models/Drupal/taxonomy-term';
-import { UserService } from '../../../d7services/user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
-//import {Device} from 'ng2-device-detector';
-import { NodeService } from '../../../d7services/node/node.service'
-import { FileService } from '../../../d7services/file/file.service';
 import { FileEntity } from '../../../models';
 import { NodeHelper } from '../../../models';
 import { Observable } from "rxjs";

@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Notification } from '../../../models';
-import { MainService } from '../../../d7services/main/main.service';
-import { UserService } from '../../../d7services/user/user.service';
-import { PmService } from '../../../d7services/pm/pm.service';
+import { MainService,UserService,PmService } from '../../../d7services';
 
 @Component({
   selector: 'notification-tpl',
@@ -14,7 +11,7 @@ import { PmService } from '../../../d7services/pm/pm.service';
 export class NotificationTemplateComponent implements OnInit {
 
 
-  @Input() notification:Notification;
+  @Input() notification;
 
   constructor(
     private router: Router,

@@ -19,18 +19,14 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
-    // { path: 'project', loadChildren: 'app/components/project/project.module#ProjectModule' },
     { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
-
     { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
-    // { path: 'workshops', loadChildren: 'app/components/learn/learn.module#LearnModule' },
     { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'portfolio/:name', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: 'app/components/account/account.module#AccountModule' },
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},    
-    // static pages
     { path: 'the-maker-movement', component: MakerMovementComponent},
     { path: 'make-intel', component: IntelMakeComponent},
     { path: 'guidelines', component: GuidelinesComponent},
@@ -45,9 +41,7 @@ const APP_ROUTES: Routes = [
     { path: 'maker-camp', component: MakerCampComponent},
     { path: 'maker-shed', component: MakerShedComponent},
     { path: 'intel-innovation-programs', component: IntelInnovationComponent},
-    // not found, should be the last routing
     { path: '**', component: Four04Component },
-
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

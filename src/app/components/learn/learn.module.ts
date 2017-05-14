@@ -19,7 +19,7 @@ import { ObjectViewComponent } from './individual-workshop/single-object/object-
     CommonModule,
     LearnRoutingModule,
     Ng2PageScrollModule.forRoot(),
-    SharedModule,
+    SharedModule.forChild(),
     NgbModule,
     //MetaModule.forRoot()
   ],

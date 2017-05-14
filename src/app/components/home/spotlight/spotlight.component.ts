@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from './../../../d7services/view/view.service';
-import { UserCardComponent } from '../../shared/user-card/user-card.component';
+import { ViewService } from './../../../d7services';
 
 @Component({
   selector: 'app-spotlight',

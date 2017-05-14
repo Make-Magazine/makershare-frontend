@@ -1,11 +1,8 @@
 import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,FlagService,UserService } from '../../../d7services';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FlagService } from '../../../d7services/flag/flag.service';
-import { UserService } from '../../../d7services/user/user.service';
 import { Http } from '@angular/http';
-import { BookComponent } from '../book/book.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';

@@ -1,6 +1,6 @@
 declare var ePub: any;
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService } from '../../../d7services';
 
 @Component({
   selector: 'app-book',

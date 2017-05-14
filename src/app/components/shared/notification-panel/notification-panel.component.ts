@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../d7services/view/view.service';
-import { UserService } from '../../../d7services/user/user.service';
-import { StatisticsService } from '../../../d7services/statistics/statistics.service';
+import { ViewService,UserService,StatisticsService } from '../../../d7services';
 
 @Component({
   selector: 'app-notification-panel',

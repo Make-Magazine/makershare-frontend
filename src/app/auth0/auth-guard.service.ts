@@ -3,7 +3,7 @@ import { Router,ActivatedRouteSnapshot,RouterStateSnapshot,NavigationExtras } fr
 import { Observable } from "rxjs";
 import { CanActivate, CanDeactivate, CanLoad } from '@angular/router';
 import { Auth } from './auth.service';
-import { UserService } from './../d7services/user/user.service';
+import { UserService } from './../d7services';
 
 @Injectable()
 export class AuthGuardService implements CanActivate, CanLoad{

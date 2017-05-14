@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,UserService } from '../../../d7services';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
 import { IChallenge } from '../../../models/challenge/challenge';
-
-import { UserService } from '../../../d7services/user/user.service';
 
 
 @Component({

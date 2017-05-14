@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
-import { PmService } from '../../../../d7services/pm/pm.service';
-import { UserService } from '../../../../d7services/user/user.service';
+import { PmService,UserService,ViewService } from '../../../../d7services';
 import { Observable } from 'rxjs/Observable'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
 import { Location } from '@angular/common';
-import { ViewService } from '../../../../d7services/view/view.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 
 

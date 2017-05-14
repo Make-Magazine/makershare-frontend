@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../../../d7services/view/view.service';
+import { ViewService,UserService } from '../../../../../d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from '../../../../../d7services/user/user.service';
 import { MetaService } from '@nglibs/meta';
 
 @Component({

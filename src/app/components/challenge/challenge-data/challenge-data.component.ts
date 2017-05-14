@@ -1,12 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,FlagService,UserService,NodeService,StatisticsService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
-import { FlagService } from '../../../d7services/flag/flag.service';
-import { UserService } from '../../../d7services/user/user.service';
-import { NodeService } from '../../../d7services/node/node.service';
-
-import { StatisticsService } from '../../../d7services/statistics/statistics.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
@@ -66,7 +61,7 @@ export class ChallengeDataComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
-    private auth: Auth,
+    public auth: Auth,
   ) { }
 
   ngOnInit() {

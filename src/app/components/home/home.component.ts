@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from './../../d7services/view/view.service';
+import { ViewService } from './../../d7services';
 import { MetaService } from '@nglibs/meta';
 import { LoaderService } from '../shared/loader/loader.service';
 import { Auth } from '../../auth0/auth.service';
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     private viewService: ViewService,
     private meta: MetaService,
     private loaderService: LoaderService,
-    private auth: Auth,
+    public auth: Auth,
   ) { } 
 
   ngOnInit() {
