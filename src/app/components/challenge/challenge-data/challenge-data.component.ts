@@ -61,7 +61,7 @@ export class ChallengeDataComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
-    private auth: Auth,
+    public auth: Auth,
   ) { }
 
   ngOnInit() {

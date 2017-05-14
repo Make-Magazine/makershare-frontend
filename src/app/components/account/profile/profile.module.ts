@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { ProfileRoutingModule } from './profile.routing.module';
-import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +27,6 @@ import { Ng2FileDropModule } from 'ng2-file-drop';
     ProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    TagInputModule,
     SharedModule.forChild(),
     NgbModule,
     ImageCropperModule,

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { SolrService } from '../../../d7services';
-import { SearchInputComponent } from './../search-input/search-input.component';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
@@ -182,7 +181,7 @@ export class SearchResultComponent implements OnInit {
     
   }
 
-  CheckFilter(event){
+  CheckFilter(){
 
     if(this.filter.projects == true){
       this.selectedAll = false;
@@ -199,7 +198,6 @@ export class SearchResultComponent implements OnInit {
     if(this.filter.makers == true){
       this.selectedAll = false;
     }
-
     if(!this.filter.projects && !this.filter.showcases && !this.filter.learning && !this.filter.challenges && !this.filter.makers){
       this.selectedAll = true;
     }

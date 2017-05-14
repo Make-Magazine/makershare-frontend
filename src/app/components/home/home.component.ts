@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     private viewService: ViewService,
     private meta: MetaService,
     private loaderService: LoaderService,
-    private auth: Auth,
+    public auth: Auth,
   ) { } 
 
   ngOnInit() {

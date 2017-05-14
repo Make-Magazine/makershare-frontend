@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountRountingModule } from './account-rounting.module';
-import { TagInputModule } from 'ng2-tag-input';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -15,7 +14,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AccountRountingModule,
     FormsModule,
     ReactiveFormsModule,
-    TagInputModule,
     SharedModule.forChild(),
     NgbModule,
     ImageCropperModule,
