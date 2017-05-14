@@ -1,3 +1,24 @@
-<p>
-  sorry, Page not found 404
-</p>
+<div id="page-404">
+  <div class="image-container">
+    <img src="./assets/images/background/404-Error-Page-Desktop.jpg" alt="" *showItBootstrap="['xl','lg']">
+    <img src="./assets/images/background/404-Error-Tablet.jpg" alt="" *showItBootstrap="['md']">
+    <img src="./assets/images/background/404-Error-Mobile.jpg" alt="" *showItBootstrap="['sm','xs']">
+  </div>
+  <div class="text-block">
+    <h4>error code: 404</h4>
+    <p>Looks like we can't find this page.</p>
+    <p>But we've for sure got these pages:</p>
+    <ul class="list-unstyled">
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['projects']">Projects</a></li>
+      <li><a [routerLink]="['showcases']">Makers</a></li>
+    </ul>
+    <div class="search-form-group">
+      <form (keydown)="keyDownFunction($event)">
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" placeholder="Or... you can search here" #searchBox id="search-box-input-404"/>
+        <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
+        <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search" aria-hidden="true"></span>
+      </form>
+    </div>
+  </div>
+</div>
