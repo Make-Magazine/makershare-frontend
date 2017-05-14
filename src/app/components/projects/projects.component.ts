@@ -72,7 +72,7 @@ export class ProjectsComponent implements OnInit {
     //     ()=>console.log("compleate")
     //   );
     /* end obs*/
-    this.viewService.getView('browse_projects', [['page', this.pages],['sort_by',this.sort.sort_by],['sort_order',this.sort.sort_order]]).subscribe(data => {
+    this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
       this.loadMoreVisibilty();
       // hide spinner
@@ -86,18 +86,18 @@ export class ProjectsComponent implements OnInit {
   }
   projectsById(event) {
     // show spinner
-    console.log(event);
+    // console.log(event);
     this.loaderService.display(true);
     var id = event.target.id;
     this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
       this.projects = data;
-      console.log(data.length)
+      // console.log(data.length)
       //this.projects= this.projects.concat(data);
       this.loadMoreVisibilty();
 
 
       if (this.projects.length == 0) {
-        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
       }
       // hide spinner
       this.loaderService.display(false);
@@ -125,8 +125,8 @@ export class ProjectsComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     // this.getCountProject();
-    console.log(this.countProject)
-    console.log(this.projects.length)
+    // console.log(this.countProject)
+    // console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.projects.length) {
@@ -252,13 +252,13 @@ export class ProjectsComponent implements OnInit {
     });
   }
   idCategory(term) {
-    this.CurrentActiveParentIndex = this.categories_parents.map(element=>element.tid).indexOf(term.parent_tid);
-    this.nameCat=term.name;
-      let body = {
-        "tid": term.tid,
-        
-      };
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category',body).subscribe(res => {
+    this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
+    this.nameCat = term.name;
+    let body = {
+      "tid": term.tid,
+
+    };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
       console.log(res)
     }, err => {
