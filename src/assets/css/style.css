@@ -8027,8 +8027,8 @@ img {
     .upload-cover-modal .modal-header .close-form {
       padding: 0px; }
   .upload-cover-modal .modal-body {
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 510px;
+    max-height: 540px;
     overflow-y: auto; }
   .upload-cover-modal .modal-footer {
     border-top: none !important;
