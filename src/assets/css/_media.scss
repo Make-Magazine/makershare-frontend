@@ -129,6 +129,12 @@
         margin: auto;
         bottom: 10%;
     }
+    #site-down,
+    #splash {
+        .text-block {
+            bottom: 25%;
+        }
+    } 
 }
 
 @media (max-width: 767px) {
