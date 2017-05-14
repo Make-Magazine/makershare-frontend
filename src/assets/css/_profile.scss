@@ -305,6 +305,7 @@
             }
             .profile-fullname {
                 @include card-header-font-sm ();
+                font-size: 1.5em;
                 color:$shade-4;
             }
             .profile-nickname {
