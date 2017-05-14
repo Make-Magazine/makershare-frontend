@@ -292,6 +292,7 @@
             }
             .profile-fullname {
                 @include card-header-font-sm ();
+                font-size: 1.5em;
                 color:$shade-4;
             }
             .profile-nickname {
@@ -387,7 +388,7 @@
                     }
                 }
             }
-            .social-links {
+            .profile-social-links {
                 margin-top: 15px;
                 .social-container {
                     width: 20%;
@@ -1741,7 +1742,7 @@
     }
 }
 
-.social-links {
+.profile-social-links {
     a.social {
         position:relative;
         text-align:center;
@@ -1759,8 +1760,8 @@
         i {
             font-size:1.1em;
             position:absolute;
-            left:11px;
-            top:12px;
+            left:5px;
+            top:11px;
         }
     }
    
