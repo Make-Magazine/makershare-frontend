@@ -34,7 +34,7 @@ export class CommentFormComponent implements OnInit {
     private commentService: CommentService,
     private viewService: ViewService,
     private userService: UserService,    
-        private auth: Auth
+        public auth: Auth
 
   ) { }
 

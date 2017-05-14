@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Notification } from '../../../models';
 import { MainService,UserService,PmService } from '../../../d7services';
 
 @Component({
@@ -12,7 +11,7 @@ import { MainService,UserService,PmService } from '../../../d7services';
 export class NotificationTemplateComponent implements OnInit {
 
 
-  @Input() notification:Notification;
+  @Input() notification;
 
   constructor(
     private router: Router,

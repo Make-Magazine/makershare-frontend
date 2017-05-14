@@ -7,7 +7,7 @@ import { ViewService,FlagService,UserService } from '../../../../d7services';
   templateUrl: './showcase-search-card.component.html',
 })
 export class ShowcaeSearchCardComponent implements OnInit {
-  showcase = [];
+  showcase = {};
   isLiked = false;
   userId;
   currentuser;

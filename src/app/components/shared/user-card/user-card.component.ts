@@ -12,7 +12,7 @@ import { NgbModal, ModalDismissReasons,NgbTooltipConfig } from '@ng-bootstrap/ng
 })
 export class UserCardComponent implements OnInit {
   closeResult: string;
-  card = {};
+  card;
   projectCount={};
   projectCount2 = {};
   badges = [];

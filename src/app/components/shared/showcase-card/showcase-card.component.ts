@@ -7,7 +7,7 @@ import { ViewService,FlagService } from '../../../d7services';
   templateUrl: './showcase-card.component.html',
 })
 export class ShowcaseCardComponent implements OnInit {
-  showcase = [];
+  showcase;
   userId;
   projectsCount;
   numLikes;
