@@ -291,19 +291,18 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<hr class="hideData" *ngIf="field_social_accounts">
-								<ul class="list-unstyled makerspaces hideData">
-									<p *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0" class="global-title">Makerspaces</p>
+								<hr class="hideData" *ngIf="emptySocial">
+								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
+									<p  class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
-										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
+										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_ != ''">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
-										<hr class="hideData">
+										<hr class="hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_  != ''">
 									</span>
 								</ul>
 								<div class="hideData websites">
-									<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 									<p class="global-title" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 										Websites </p>
 									<div *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
@@ -311,7 +310,7 @@
 										<a class="mywebsite" target="_blank" *ngIf="ProfileInfo.field_social_accounts.field_additional_site != ''" href="{{ProfileInfo.field_social_accounts.field_additional_site}}">{{ProfileInfo.field_social_accounts.field_blog_title}}</a>
 									</div>
 								</div>
-								<hr class="hideData" *ngIf="ProfileInfo.started_making">
+								<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
 								<div class="how hideData">
 									<!-- Start How -->
 									<p class="global-title" *ngIf="ProfileInfo.started_making">My Maker Moment</p>
@@ -330,7 +329,7 @@
 								</p>
 								<!--<a class="report">Report this user</a>-->
 								<div class="hideData report-div" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
-									<hr>
+									<!--<hr>-->
 									<app-report-user [userReportId]="uid"></app-report-user>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
