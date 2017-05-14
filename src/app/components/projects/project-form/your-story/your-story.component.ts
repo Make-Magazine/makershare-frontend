@@ -13,7 +13,7 @@ import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
-import { trigger, style, transition, animate, group } from '@angular/core';
+import { trigger, style, transition,animate, group } from '@angular/core';
 
 declare var CKEDITOR:any;
 @Component({

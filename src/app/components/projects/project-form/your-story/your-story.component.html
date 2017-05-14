@@ -183,7 +183,7 @@
 </aside>
 
 <!--Cover image modal-->
-<template #coverimagemodal let-c="close" let-d="dismiss">
+<ng-template #coverimagemodal let-c="close" let-d="dismiss">
   <div class="upload-cover-modal">
 
 
@@ -237,4 +237,4 @@
       <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-load-more" (click)="ImageUpdated(closebtn)">Save</button>
     </div>
   </div>
-</template>
+</ng-template>

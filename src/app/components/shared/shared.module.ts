@@ -13,7 +13,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { ShareButtonsModule } from "ng2-sharebuttons";
+import { ShareButtonsModule } from "ngx-sharebuttons";
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { ProjectStoryComponent } from './project-story/project-story.component';

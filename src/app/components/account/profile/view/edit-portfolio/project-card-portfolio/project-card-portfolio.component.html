@@ -140,7 +140,7 @@
   </div>
 </div>
 
-<template #confirmdelete let-c="close" let-d="dismiss">
+<ng-template #confirmdelete let-c="close" let-d="dismiss">
   <div class="modal-header">
     <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
       <span aria-hidden="true" >&times;</span>
@@ -156,4 +156,4 @@
     <button class="btn btn-blue btn-sharp" (click)="DeleteProject(close)">Ok</button>
     <button class="btn btn-blue btn-sharp" (click)="UpdateProjectVisibility(1115,close)">Save as draft</button>
   </div>
-</template>
+</ng-template>

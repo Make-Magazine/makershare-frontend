@@ -411,14 +411,14 @@
 	</div>
 </div>
 
-<template #rt let-r="result" let-t="term">
+<ng-template #rt let-r="result" let-t="term">
 	<div class="data-container">
 		{{r.value}}
 	</div>
-</template>
+</ng-template>
 
 <!-- Add Edit Info Modal -->
-<template #editinfomodal let-c="close" let-d="dismiss">
+<ng-template #editinfomodal let-c="close" let-d="dismiss">
 	<div class="profile-modal">
 		<div class="modal-header">
 			<button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
@@ -821,4 +821,4 @@
 			</div>
 		</div>
 	</div>
-</template>
+</ng-template>

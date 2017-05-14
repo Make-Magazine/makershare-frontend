@@ -14,8 +14,8 @@ import { NotificationBarModule } from 'angular2-notification-bar/release';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
-import { ShareButtonsModule } from "ng2-sharebuttons";
-
+import { ShareButtonsModule } from "ngx-sharebuttons";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import custom auth0 service
 
 import { FormsModule } from '@angular/forms';
@@ -80,6 +80,7 @@ let config = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CookieModule.forRoot(),
     SharedModule.forRoot(),
     HttpModule,
