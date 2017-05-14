@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
-import { CookieService, CookieOptionsArgs } from 'angular2-cookie/core';
+import { CookieService } from 'ngx-cookie';
 import * as globals from '../globals';
 
 
@@ -50,7 +50,7 @@ export class MainService {
   saveCookies(token: string, session_name: string, sessid: string){
     var expires = new Date();
     expires.setDate(expires.getDate() + 23);
-    var options: CookieOptionsArgs = {
+    var options = {
       expires: expires
     };
     this.cookieService.put('sessid', sessid, options);

@@ -2,16 +2,16 @@
   <div class="your-story">
     <p class="red-text">* Fileds required to publish</p>
     <div class="form-group required projectName">
-      <label for="projectName" [ngClass]="{valErrorString: !YourStoryForm.controls.title.valid && TryToSubmitPrivatePublic}">Project Name</label>
-      <input [ngClass]="{valError: !YourStoryForm.controls.title.valid && TryToSubmitPrivatePublic}" type="text" class="form-control"
+      <label for="projectName" [ngClass]="{valErrorString: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}">Project Name</label>
+      <input [ngClass]="{valError: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}" type="text" class="form-control"
         id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}" validate-onfocusout maxlength="50">
-      <!--<div *ngIf="formErrors.title && YourStoryForm.controls.title.touched" class="alert alert-danger error-msg">
+      <!--<div *ngIf="formErrors.title && YourStoryForm.controls['title'].touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>-->
     </div>
     <div class="form-group required">
-      <label for="teaser" [ngClass]="{valErrorString:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}">Teaser</label>
-      <textarea [ngClass]="{valError:  !YourStoryForm.controls.field_teaser.valid&&TryToSubmitPrivatePublic}" maxlength="250" class="form-control"
+      <label for="teaser" [ngClass]="{valErrorString:  !YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}">Teaser</label>
+      <textarea [ngClass]="{valError:  !YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}" maxlength="250" class="form-control"
         rows="5" id="teaser" formControlName='field_teaser' placeholder="{{TooltipText.teaser.guide}}"></textarea>
       <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
     </div>
@@ -38,14 +38,14 @@
     </div>
     <div class="form-group required projectCategory d-flex flex-column">
       <div class="d-flex align-items-center">
-        <label for="projectCategory" class="" [ngClass]="{valErrorString: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}">Topics</label>
+        <label for="projectCategory" class="" [ngClass]="{valErrorString: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}">Topics</label>
         <p class="small-text">Choose as many topics as your project relates to.</p>
       </div>
 
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down"></i>
-          <select #parentcategory [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}"
+          <select #parentcategory [ngClass]="{valError: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}"
             class="form-control" type="text" class="shadowed form-control" id="projectCategoryParent" (change)="SelectTerm($event.target.value,'parent')">
             <option disabled selected value="_none_"> Select Topics </option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index" value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-4">
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="current_parent_category"></i>
-          <select [ngClass]="{valError: !YourStoryForm.controls.field_categories.valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category"
+          <select [ngClass]="{valError: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}" *ngIf="current_parent_category"
             class="form-control" type="text" class="shadowed form-control" id="projectCategoryChildren" (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
             <option disabled selected value> Select Topic </option>
             <option *ngFor="let child_category of child_categories; let i=index" value="{{child_category.tid}}" [innerHTML]="child_category.name"></option>
@@ -80,8 +80,8 @@
       </div>
     </div>
     <div class="form-group required project-story">
-      <label for="project-story" [ngClass]="{valErrorString: !YourStoryForm.controls.field_story.valid&&TryToSubmitPrivatePublic}">The Story</label>
-      <ckeditor #ckeditor [ngClass]="{valError: !YourStoryForm.controls.field_story.valid&&TryToSubmitPrivatePublic}" rows="5"
+      <label for="project-story" [ngClass]="{valErrorString: !YourStoryForm.controls['field_story'].valid&&TryToSubmitPrivatePublic}">The Story</label>
+      <ckeditor #ckeditor [ngClass]="{valError: !YourStoryForm.controls['field_story'].valid&&TryToSubmitPrivatePublic}" rows="5"
         id="project-story" [config]="CKEditorConfig" formControlName='field_story'></ckeditor>
       <!--<div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
         {{ formErrors.field_story }}
@@ -95,9 +95,9 @@
         {{ formErrors.field_show_tell_video }}
       </div>
     </div>
-    <div class="form-group show-tell-as-default" *ngIf="!formErrors.field_show_tell_video && YourStoryForm.controls.field_show_tell_video.value">
+    <div class="form-group show-tell-as-default" *ngIf="!formErrors.field_show_tell_video && YourStoryForm.controls['field_show_tell_video'].value">
       <label class="custom-control custom-checkbox" for="show-tell-as-default">
-        <input type="checkbox" class="custom-control-input" id="show-tell-as-default" formControlName="field_show_tell_video_as_default" (change)="$event.target.checked? (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(1)) : (YourStoryForm.controls.field_show_tell_video_as_default.patchValue(0))">
+        <input type="checkbox" class="custom-control-input" id="show-tell-as-default" formControlName="field_show_tell_video_as_default" (change)="$event.target.checked? (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(1)) : (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(0))">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Show & Tell video as default</span>
       </label>

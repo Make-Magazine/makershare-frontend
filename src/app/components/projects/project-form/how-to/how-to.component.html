@@ -8,35 +8,35 @@
       <label>Tools</label>
       <div formArrayName="field_tools">
         <div class="container p-0">
-          <div class="row" [formGroupName]="HowToForm.controls.field_tools.controls.length-1">
+          <div class="row" [formGroupName]="HowToForm.controls['field_tools']['controls'].length-1">
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
-                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name}"
-                  *ngIf="!AddingValues && !HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_tool_name.value"
-                  type="text" id="tool-name-{{HowToForm.controls.field_tools.controls.length}}" placeholder="Tools used to create this project."
+                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_tools[HowToForm.controls['field_tools']['controls'].length-1].field_tool_name}"
+                  *ngIf="!AddingValues && !HowToForm.controls['field_tools']['controls'][HowToForm.controls['field_tools']['controls'].length-1]['controls'].field_tool_name.value"
+                  type="text" id="tool-name-{{HowToForm.controls['field_tools']['controls'].length}}" placeholder="Tools used to create this project."
                   class="tool form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['tool'] = $event.item"
                   ngbTooltip="{{TooltipText.tool_name.guide}}">
-                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_tool_name.value && searchFailed['tool']">
+                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls['field_tools']['controls'][HowToForm.controls['field_tools']['controls'].length-1]['controls'].field_tool_name.value && searchFailed['tool']">
                   <span>Tool not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'tool')">Create New</a>
                 </div>
-                <small *ngIf="formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name" class="text-danger">
-                  {{formErrors.field_tools[HowToForm.controls.field_tools.controls.length-1].field_tool_name}}
+                <small *ngIf="formErrors.field_tools[HowToForm.controls['field_tools']['controls'].length-1].field_tool_name" class="text-danger">
+                  {{formErrors.field_tools[HowToForm.controls['field_tools']['controls'].length-1].field_tool_name}}
                 </small>
               </div>
             </div>
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Quantity</label>-->
-                <input id="tool-quantity-{{HowToForm.controls.field_tools.controls.length}}" min="1" type="number" placeholder="Quantity"
-                  class="form-control" [formControl]="HowToForm.controls.field_tools.controls[HowToForm.controls.field_tools.controls.length-1]['controls'].field_quantity">
+                <input id="tool-quantity-{{HowToForm.controls['field_tools']['controls'].length}}" min="1" type="number" placeholder="Quantity"
+                  class="form-control" [formControl]="HowToForm.controls['field_tools']['controls'][HowToForm.controls['field_tools']['controls'].length-1]['controls'].field_quantity">
               </div>
             </div>
-            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['tool']" (click)="SetToolMaterialPart('tool','field_tools',TempSelectedToolMaterialPart['tool'],HowToForm.controls.field_tools.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['tool']" (click)="SetToolMaterialPart('tool','field_tools',TempSelectedToolMaterialPart['tool'],HowToForm.controls['field_tools']['controls'].length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
-        <span *ngIf="HowToForm.controls.field_tools.controls.length > 1" class="tool-list">PROJECT SUPPLY LIST:</span>
-        <div *ngFor="let Tool of HowToForm.controls.field_tools.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_tools.controls.length-1">
+        <span *ngIf="HowToForm.controls['field_tools']['controls'].length > 1" class="tool-list">PROJECT SUPPLY LIST:</span>
+        <div *ngFor="let Tool of HowToForm.controls['field_tools']['controls']; let i=index" class="result col-md-6">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls['field_tools']['controls'].length-1">
             <div>{{Tool.value.field_tool_name|EntityReferenceNoNid}}, Quantity: {{Tool.value.field_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_tools')"></i>
           </div>
@@ -47,34 +47,34 @@
       <label>Boards and Kits</label>
       <div formArrayName="field_parts">
         <div class="container p-0">
-          <div class="row" [formGroupName]="HowToForm.controls.field_parts.controls.length-1">
+          <div class="row" [formGroupName]="HowToForm.controls['field_parts']['controls'].length-1">
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Name</label>-->
-                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name}"
-                  *ngIf="!AddingValues && !HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value"
-                  type="text" id="part-name-{{HowToForm.controls.field_parts.controls.length-1 + 1}}" placeholder="Boards and Kits used"
+                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_parts[HowToForm.controls['field_parts']['controls'].length-1].field_part_name}"
+                  *ngIf="!AddingValues && !HowToForm.controls['field_parts']['controls'][HowToForm.controls['field_parts']['controls'].length-1]['controls'].field_part_name.value"
+                  type="text" id="part-name-{{HowToForm.controls['field_parts']['controls'].length-1 + 1}}" placeholder="Boards and Kits used"
                   class="part form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['part'] = $event.item">
-                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_part_name.value && searchFailed['part']">
+                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls['field_parts']['controls'][HowToForm.controls['field_parts']['controls'].length-1]['controls'].field_part_name.value && searchFailed['part']">
                   <span>Part not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'part')">Create New</a>
                 </div>
-                <small *ngIf="formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name" class="text-danger">
-                  {{formErrors.field_parts[HowToForm.controls.field_parts.controls.length-1].field_part_name}}
+                <small *ngIf="formErrors.field_parts[HowToForm.controls['field_parts']['controls'].length-1].field_part_name" class="text-danger">
+                  {{formErrors.field_parts[HowToForm.controls['field_parts']['controls'].length-1].field_part_name}}
                 </small>
               </div>
             </div>
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Quantity</label>-->
-                <input id="part-quantity-{{HowToForm.controls.field_parts.controls.length-1 + 1}}" min="1" type="number" placeholder="Quantity"
-                  class="form-control" [formControl]="HowToForm.controls.field_parts.controls[HowToForm.controls.field_parts.controls.length-1]['controls'].field_quantity">
+                <input id="part-quantity-{{HowToForm.controls['field_parts']['controls'].length-1 + 1}}" min="1" type="number" placeholder="Quantity"
+                  class="form-control" [formControl]="HowToForm.controls['field_parts']['controls'][HowToForm.controls['field_parts']['controls'].length-1]['controls'].field_quantity">
               </div>
             </div>
-            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['part']" (click)="SetToolMaterialPart('part','field_parts',TempSelectedToolMaterialPart['part'],HowToForm.controls.field_parts.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['part']" (click)="SetToolMaterialPart('part','field_parts',TempSelectedToolMaterialPart['part'],HowToForm.controls['field_parts']['controls'].length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
-        <div *ngFor="let Part of HowToForm.controls.field_parts.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_parts.controls.length-1">
+        <div *ngFor="let Part of HowToForm.controls['field_parts']['controls']; let i=index" class="result col-md-6">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls['field_parts']['controls'].length-1">
             <div>{{Part.value.field_part_name|EntityReferenceNoNid}},Quantity:{{Part.value.field_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_parts')"></i>
           </div>
@@ -85,34 +85,34 @@
       <label>Parts and Materials</label>
       <div formArrayName="field_materials">
         <div class="container p-0">
-          <div class="row" [formGroupName]="HowToForm.controls.field_materials.controls.length-1">
+          <div class="row" [formGroupName]="HowToForm.controls['field_materials']['controls'].length-1">
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Name</label>-->
-                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name}"
-                  *ngIf="!AddingValues && !HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value"
-                  type="text" id="material-name-{{HowToForm.controls.field_materials.controls.length-1 + 1}}" placeholder="Parts and Material used"
+                <input [inputFormatter]="formatter" [ngClass]="{valError: formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name}"
+                  *ngIf="!AddingValues && !HowToForm.controls['field_materials']['controls'][HowToForm.controls['field_materials']['controls'].length-1]['controls'].field_material_name.value"
+                  type="text" id="material-name-{{HowToForm.controls['field_materials']['controls'].length-1 + 1}}" placeholder="Parts and Material used"
                   class="material form-control" [resultTemplate]="rt" [ngbTypeahead]="search" (selectItem)="TempSelectedToolMaterialPart['material'] = $event.item">
-                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_name.value && searchFailed['material']">
+                <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls['field_materials']['controls'][HowToForm.controls['field_materials']['controls'].length-1]['controls'].field_material_name.value && searchFailed['material']">
                   <span>Material not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'material')">Create New</a>
                 </div>
-                <small *ngIf="formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name" class="text-danger">
-                  {{formErrors.field_materials[HowToForm.controls.field_materials.controls.length-1].field_material_name}}
+                <small *ngIf="formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name" class="text-danger">
+                  {{formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name}}
                 </small>
               </div>
             </div>
             <div class="col-md-6 inputs-container flex-column flex-md-row">
               <div class="form-group w-100">
                 <!--<label>Quantity</label>-->
-                <input id="material-quantity-{{HowToForm.controls.field_materials.controls.length-1 + 1}}" min="1" type="number" placeholder="Quantity or Amount"
-                  class="form-control" [formControl]="HowToForm.controls.field_materials.controls[HowToForm.controls.field_materials.controls.length-1]['controls'].field_material_quantity">
+                <input id="material-quantity-{{HowToForm.controls['field_materials']['controls'].length-1 + 1}}" min="1" type="number" placeholder="Quantity or Amount"
+                  class="form-control" [formControl]="HowToForm.controls['field_materials']['controls'][HowToForm.controls['field_materials']['controls'].length-1]['controls'].field_material_quantity">
               </div>
             </div>
-            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['material']" (click)="SetToolMaterialPart('material','field_materials',TempSelectedToolMaterialPart['material'],HowToForm.controls.field_materials.controls.length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
+            <a class="add-button" *ngIf="TempSelectedToolMaterialPart['material']" (click)="SetToolMaterialPart('material','field_materials',TempSelectedToolMaterialPart['material'],HowToForm.controls['field_materials']['controls'].length-1);"><i class="lnr lnr-plus-circle"></i>Add</a>
           </div>
         </div>
-        <div *ngFor="let Material of HowToForm.controls.field_materials.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_materials.controls.length-1">
+        <div *ngFor="let Material of HowToForm.controls['field_materials']['controls']; let i=index" class="result col-md-6">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls['field_materials']['controls'].length-1">
             <div>{{Material.value.field_material_name|EntityReferenceNoNid}},Quantity:{{Material.value.field_material_quantity}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_materials')"></i>
           </div>
@@ -159,12 +159,12 @@
       <label>Resources</label>
       <div formArrayName="field_resources">
         <div>
-          <div class="" [formGroupName]="HowToForm.controls.field_resources.controls.length-1">
+          <div class="" [formGroupName]="HowToForm.controls['field_resources']['controls'].length-1">
             <div class="inputs-container row flex-column flex-md-row">
               <div class="form-group col-xs-12 col-md-6">
                 <input *ngIf="!AddingValues" type="text" class="form-control" formControlName="field_label" placeholder="Name of resource.">
-                <small *ngIf="formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label" class="text-danger">
-                  {{formErrors.field_resources[HowToForm.controls.field_resources.controls.length-1].field_label}}
+                <small *ngIf="formErrors.field_resources[HowToForm.controls['field_resources']['controls'].length-1].field_label" class="text-danger">
+                  {{formErrors.field_resources[HowToForm.controls['field_resources']['controls'].length-1].field_label}}
                 </small>
               </div>
               <div class="col-md-6 d-flex col-xs-12 resources-button">
@@ -179,9 +179,9 @@
             </div>
           </div>
         </div>
-        <span *ngIf="HowToForm.controls.field_resources.controls.length > 1" class="tool-list">RESOURCES:</span>
-        <div *ngFor="let Resource of HowToForm.controls.field_resources.controls; let i=index" class="result col-md-6">
-          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls.field_resources.controls.length-1">
+        <span *ngIf="HowToForm.controls['field_resources']['controls'].length > 1" class="tool-list">RESOURCES:</span>
+        <div *ngFor="let Resource of HowToForm.controls['field_resources']['controls']; let i=index" class="result col-md-6">
+          <div class="d-flex flex-row" *ngIf="i != HowToForm.controls['field_resources']['controls'].length-1">
             <div>{{Resource.value.field_label}}</div>
             <i class="lnr lnr-cross-circle ml-auto pt-1" (click)="RemoveRow(i,'field_resources')"></i>
           </div>

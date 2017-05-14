@@ -23,8 +23,6 @@ import { SearchBoxComponent } from './components/general/header/search-box/searc
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
 
-//import { LoaderComponentService } from './components/shared/loader-component/loader-component.service';
-
 // static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
 import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
@@ -44,6 +42,7 @@ import { MetaModule } from '@nglibs/meta';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
+import { CookieModule } from 'ngx-cookie';
 
 let config = {
   breakPoints: {
@@ -81,6 +80,8 @@ let config = {
   ],
   imports: [
     BrowserModule,
+    CookieModule.forRoot(),
+    SharedModule.forRoot(),
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
@@ -89,7 +90,6 @@ let config = {
     routing,
     MessagesModule,
     NotificationBarModule,
-    SharedModule.forRoot(),
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ResponsiveModule,

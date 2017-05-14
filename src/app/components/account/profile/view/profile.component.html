@@ -175,9 +175,6 @@
 								<hr class="hideData">
 								<p class="hideData global-title">Favorite Maker Topics</p>
 								<p *ngIf="ProfileInfo.maker_interests.length == 0" class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
-								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
-								 [inputId]="tid">
-								</tag-input>-->
 								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
 										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
@@ -319,9 +316,6 @@
 								</div>
 								<hr class="hideData" *ngIf="ProfileInfo.started_making">
 								<p class="hideData global-title" *ngIf="ProfileInfo.maker_interests.length != 0">Favorite Maker Topics</p>
-								<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [readonly]="true" [identifyBy]="'tid'" display="name" [displayBy]="'name'"
-								 [inputId]="tid">
-								</tag-input>-->
 								<p class="hideData topic-tags" *ngIf="ProfileInfo.maker_interests">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
 										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
@@ -816,13 +810,6 @@
 											</div>
 										</div>
 									</div>
-									<!--<tag-input [(ngModel)]="ProfileInfo.maker_interests" [identifyBy]="'tid'" display="name" [displayBy]="'name'" [onlyFromAutocomplete]="true"
-									 value="tid" [inputId]="tid" [placeholder]="'+ interest'" [secondaryPlaceholder]="'Enter a new interest'" [maxItems]="20"
-									 [separatorKeys]="[4, 5]">
-										<tag-input-dropdown [identifyBy]="'tid'" [displayBy]="'name'" [autocompleteItems]="allIntersets" value="tid" display="name"
-										 inputId="tid">
-										</tag-input-dropdown>
-									</tag-input>-->
 								</div>
 							</div>
 						</div>

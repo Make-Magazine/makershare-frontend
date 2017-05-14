@@ -4,7 +4,6 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectFormRoutingModule } from './project-form-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TagInputModule } from 'ng2-tag-input';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { YourStoryComponent } from './your-story/your-story.component';
 import { HowToComponent } from './how-to/how-to.component';
@@ -21,7 +20,6 @@ import { CustomFormsModule } from 'ng2-validation';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TagInputModule,
     CKEditorModule,
     FormsModule,
     ProjectFormRoutingModule,

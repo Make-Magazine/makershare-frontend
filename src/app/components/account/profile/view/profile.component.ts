@@ -152,7 +152,7 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
-    private auth: Auth,
+    public auth: Auth,
     private readonly meta: MetaService,
     private profilePictureService: ProfilePictureService,
     private statisticsService: StatisticsService,

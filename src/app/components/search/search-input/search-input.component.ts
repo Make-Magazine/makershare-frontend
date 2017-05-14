@@ -4,8 +4,7 @@ import { ViewService } from '../../../d7services';
 
 @Component({
   selector: 'app-search-input',
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.css']
+  templateUrl: './search-input.component.html'
 })
 export class SearchInputComponent implements OnInit {
   searchFailed = false;
