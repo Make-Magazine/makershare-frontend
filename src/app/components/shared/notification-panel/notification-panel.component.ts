@@ -30,7 +30,7 @@ export class NotificationPanelComponent implements OnInit {
         }, 120000);
       }
     }, err => {
-      console.log('user not logged in');
+     // console.log('user not logged in');
     });
   }
   getNotifications() {
@@ -41,7 +41,7 @@ export class NotificationPanelComponent implements OnInit {
       }
 
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
 // <<<<<<< HEAD
 //  }
