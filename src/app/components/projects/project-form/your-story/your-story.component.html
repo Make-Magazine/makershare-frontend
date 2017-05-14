@@ -22,7 +22,7 @@
     <div class="form-group required cover d-flex flex-column">
       <div class="d-flex align-items-center">
         <label class="control-label" [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover photo </label>
-        <p class="small-text">Choose a photo that is at least 600 x 600 px</p>
+        <p class="small-text">Choose a photo that is at least 600 x 400 px</p>
       </div>
       <div class="align-items-start">
         <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}" (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link"
@@ -223,7 +223,7 @@
 			      </a>
           </div>
           <div class="recommended-section col-md-4">
-            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 600 pixels</p>
+            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 400 pixels</p>
           </div>
         </div>
         <app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
