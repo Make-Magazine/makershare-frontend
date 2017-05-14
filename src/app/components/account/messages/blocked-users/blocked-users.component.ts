@@ -25,7 +25,7 @@ export class BlockedUsersComponent implements OnInit {
   getBlockedUsers() {
     this.pm.getAllBlocked().subscribe(data => {
       this.blocked = data;
-      console.log(this.blocked)
+     // console.log(this.blocked)
       // if(this.blocked.length == 0){        
       // }
       this.loaderService.display(false);
