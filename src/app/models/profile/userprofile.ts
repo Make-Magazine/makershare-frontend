@@ -31,6 +31,7 @@ export interface UserProfile {
   total_likes?: number,
   views_count?: number,
   pass?:string,
+  status?:string
 }
 
 export class UserProfile implements UserProfile {

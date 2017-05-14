@@ -1,4 +1,4 @@
-<div class="showcase-card-backlayer-search" (click)="ShowSingleShowcase(showcase.nid)">
+<div *ngIf="showcase" class="showcase-card-backlayer-search" (click)="ShowSingleShowcase(showcase.nid)">
   <div class="showcase-card-backlayer-search-2 ">
     <div class="showcase-card" *ngIf="showcase">
       <div class="content-container h-100">

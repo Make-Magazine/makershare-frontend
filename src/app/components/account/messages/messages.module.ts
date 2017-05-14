@@ -20,7 +20,7 @@ import { SentComponent } from './sent/sent.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    SharedModule,
+    SharedModule.forChild(),
 
   ],
   declarations: [

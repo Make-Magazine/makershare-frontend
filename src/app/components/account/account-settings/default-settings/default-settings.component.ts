@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { MainService } from '../../../../d7services/main/main.service';
+import { ViewService,MainService,PmService } from '../../../../d7services';
 import * as globals from '../../../../d7services/globals';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { PmService } from '../../../../d7services/pm/pm.service';
-
-
 
 @Component({
   selector: 'app-default-settings',

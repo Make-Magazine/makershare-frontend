@@ -1,33 +1,6 @@
 <section class="browse-projects">
   <div class="container">
     <div class="challenges-container">
-      <!--<div (click)="ShowChallengeDetails(challenge.nid)" class="challenge-card row">
-        <div class="col-md-4 image-container">
-          <img src="{{challenge.cover_image}}" alt="" class="img-responsive" (click)="ShowChallengeDetails(challenge.nid)">
-        </div>
-        <div class="col-md-8">
-          <div class="card-container">
-            <div class="card">
-              <div class="flex-row">
-                <p class="card-status">
-                  <span class="open-status">{{challenge.end_date}}</span>
-                </p>
-                <p class="card-partership" *ngIf="challenge.sponsored_by">Sponsored by {{challenge.sponsoredBy}}</p>
-              </div>
-              <h3 class="card-title">{{challenge.title}}</h3>
-              <div class="card-description">
-                <p [innerHTML]="challenge.body"></p>
-              </div>
-              <div class="card-buttons">
-                <div class="button-container-sec-3">
-                  <span class="btn btn-grey-follow" *ngIf="challenge.followers>0">Follow  <span class="follow-number" *ngIf="challenge.followers>0">{{challenge.followers}}</span></span>
-                  <span class="btn btn-grey-follow" *ngIf="!challenge.followers">Follow   <span class="follow-number" *ngIf="!challenge.followers">0</span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
       <div class="page-challenge">
         <app-challenge-card [challengeNid]="752"></app-challenge-card>
       </div>

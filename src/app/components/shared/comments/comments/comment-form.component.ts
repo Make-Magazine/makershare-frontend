@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { CommentService } from '../../../../d7services/comment/comment.service';
-import { ViewService } from '../../../../d7services/view/view.service'
-import { UserService } from '../../../../d7services/user/user.service'
+import { CommentService,ViewService,UserService } from '../../../../d7services';
 import { IComment } from '../../../../models/challenge/comment';
 import { Auth } from '../../../../auth0/auth.service';
 
@@ -36,7 +34,7 @@ export class CommentFormComponent implements OnInit {
     private commentService: CommentService,
     private viewService: ViewService,
     private userService: UserService,    
-        private auth: Auth
+        public auth: Auth
 
   ) { }
 

@@ -1,12 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services/view/view.service';
-import { FlagService } from '../../../d7services/flag/flag.service';
-import { UserService } from '../../../d7services/user/user.service';
+import { ViewService,FlagService,UserService,PmService } from '../../../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Message } from '../../../d7services/pm/message';
-import { PmService } from '../../../d7services/pm/pm.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,7 +22,7 @@ export class LearnUserCardComponent implements OnInit {
   user;
   hideMessage = false;
   messageForm: FormGroup;
-  messageObj: Message = {
+  messageObj = {
     recipients: '',
     subject: '',
     body: '',

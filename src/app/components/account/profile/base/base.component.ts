@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../../d7services/user/user.service';
+import { UserService } from '../../../../d7services';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Router } from '@angular/router';
 

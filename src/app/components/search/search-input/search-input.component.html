@@ -1,1 +1,6 @@
-<input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)">
+<input #query type="text" class="form-control" id="search-input" placeholder="Start typing..." [ngbTypeahead]="search" [resultTemplate]="rte">
+<template #rte let-r="result" let-t="term">
+  <div class="data-container">
+    <div *ngIf="r">{{r}}</div>
+  </div>
+</template>

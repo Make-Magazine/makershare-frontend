@@ -8,7 +8,7 @@ import { AllResultComponent } from './all-result/all-result.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 // Services
-import { SolrService } from '../../d7services/solr/solr.service';
+import { SolrService } from '../../d7services';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { SolrService } from '../../d7services/solr/solr.service';
     SearchRoutingModule,
     NgbModule,
     FormsModule,
-    SharedModule,
+    SharedModule.forChild(),
   ],
   declarations: [SearchInputComponent, SearchResultComponent, AllResultComponent],
   providers: [SolrService]

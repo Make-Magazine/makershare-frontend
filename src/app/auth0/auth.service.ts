@@ -1,12 +1,11 @@
 import { Injectable, OnInit } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
-import { UserService } from '../d7services/user/user.service';
-import { MainService } from '../d7services/main/main.service';
+import { UserService,MainService } from '../d7services';
+import * as globals from '../d7services/globals';
 import { Observable } from 'rxjs/Observable';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
-import * as globals from '../d7services/globals';
 
 //import Auth0 from 'auth0-js';
 

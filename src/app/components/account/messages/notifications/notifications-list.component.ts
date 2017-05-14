@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { UserService } from '../../../../d7services/user/user.service';
+import { ViewService,UserService } from '../../../../d7services';
 import { Notification } from '../../../../models';
 import { LoaderService } from '../../../shared/loader/loader.service';
 

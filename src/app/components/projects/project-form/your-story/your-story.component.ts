@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { ViewService } from '../../../../d7services/view/view.service';
-import { FileService } from '../../../../d7services/file/file.service';
-import { MainService } from '../../../../d7services/main/main.service';
+import { ViewService,FileService,MainService } from '../../../../d7services';
 import { ProjectCategory,NodeHelper,ProjectForm,FileEntity } from '../../../../models';
 import { CropperSettings } from 'ng2-img-cropper';
 import { DomSanitizer } from '@angular/platform-browser';

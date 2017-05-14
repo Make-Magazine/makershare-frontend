@@ -8,7 +8,7 @@ import { Auth } from '../../auth0/auth.service';
 export class AccessDeniedComponent implements OnInit {
 
   constructor(
-    private auth: Auth
+    public auth: Auth
   ) { }
 
   ngOnInit() {   

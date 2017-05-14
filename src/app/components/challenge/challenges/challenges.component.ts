@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../d7services/view/view.service';
+import { ViewService,FlagService,UserService } from '../../../d7services';
 import { RouterModule, Router } from '@angular/router';
-import { FlagService } from '../../../d7services/flag/flag.service';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { UserService } from '../../../d7services/user/user.service';
 import { MetaService } from '@nglibs/meta';
 
 @Component({

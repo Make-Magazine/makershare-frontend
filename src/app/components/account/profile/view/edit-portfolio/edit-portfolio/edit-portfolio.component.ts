@@ -1,6 +1,5 @@
 import { Component, OnInit,ViewChild, Input } from '@angular/core';
-import { UserService } from '../../../../../../d7services/user/user.service';
-import { ViewService } from '../../../../../../d7services/view/view.service';
+import { UserService,ViewService } from '../../../../../../d7services';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 

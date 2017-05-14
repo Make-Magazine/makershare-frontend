@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../../d7services/view/view.service';
+import { ViewService } from '../../../../d7services';
 
 @Component({
   selector: 'app-learn-search-card',
   templateUrl: './learn-search-card.component.html',
 })
 export class LearnSearchCardComponent implements OnInit {
-learn=[];
+learn;
 countlessons;
 @Input() workshopNid; 
  constructor(private route: ActivatedRoute,
