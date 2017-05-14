@@ -2635,16 +2635,6 @@ footer {
       text-align: left;
       float: left;
       color: #333333; }
-  .profile-sidebar .ng2-tag-input.default {
-    border: none !important; }
-  .profile-sidebar .ng2-tags-container {
-    width: 100%; }
-    .profile-sidebar .ng2-tags-container tag {
-      background-color: #fff !important;
-      border-radius: 0;
-      border: 1px solid #333333;
-      line-height: 29px;
-      font-size: 14px; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 0 15px 15px;
@@ -4704,6 +4694,9 @@ button:hover {
 
 .hideData {
   display: block; }
+  .hideData span {
+    font-size: 0.8em;
+    color: #4F4F4F; }
 
 .showData {
   display: block !important; }
@@ -7796,10 +7789,6 @@ img {
   .page-create-project-why .your-story .projectTags input {
     height: auto;
     padding: 0; }
-  .page-create-project-why .your-story .projectTags tag-input {
-    max-width: 100%;
-    height: auto;
-    padding: 5px; }
   .page-create-project-why .how-to form {
     padding-bottom: 130px; }
   .page-create-project-why .how-to .sort {

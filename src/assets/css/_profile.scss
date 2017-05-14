@@ -195,6 +195,7 @@
             font-size: 1.4em;
             color: $shade-4;
             text-transform: capitalize;
+            
         }
         .placeholder-text {
             color: $light-grey;
@@ -219,7 +220,7 @@
                 right: -32px;
                 top: -130px;
             }
-            .profile-pic {
+            .profile-pic { 
                 position: relative; 
                 
                 img {
@@ -2495,6 +2496,10 @@ button {
 }
 .hideData {
     display: block;
+    span{
+        font-size: 0.8em;
+        color: #4F4F4F;
+    }
 }
 .showData {
     display: block !important;    
