@@ -255,6 +255,13 @@ footer {
                     left: 10px;
                 }
             }
+
+            &.in {
+                i{
+                  left: 10px;
+                  top: 10px;
+                }
+            }
         }
     
         a.social {
@@ -539,6 +546,16 @@ footer {
     border: none;
 }
 
+.delete-account-popup{
+    background-color: #ED1C24;
+    border: 1px solid #828282;
+    color: #FFF;
+    margin-bottom: 30px;
+    font-size: 1em;
+    height: 31px;
+}
+
+
 #page-404 {
     position: relative;
     overflow: hidden;
@@ -649,3 +666,4 @@ footer {
         }
     }
 }
+

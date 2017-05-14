@@ -561,7 +561,8 @@ a:not([href]):not([tabindex]).btn-soft-grey {
   margin-top: 20px; }
 
 .button-container-sec-2 {
-  border: 2px solid #828282; }
+  border: 2px solid #828282;
+  margin-left: 20px; }
   .button-container-sec-2:hover {
     border: 2px solid #686868 !important; }
 
@@ -1856,7 +1857,7 @@ footer {
     padding: 3px 0;
     color: #828282;
     line-height: 25px; }
-  footer .social-links a {
+  footer .footer-social-links a {
     position: relative;
     text-align: center;
     width: 0px;
@@ -1870,27 +1871,30 @@ footer {
     -webkit-border-radius: 20px 20px 20px 20px;
     -khtml-border-radius: 20px 20px 20px 20px;
     color: #FFFFFF; }
-    footer .social-links a i {
-      font-size: 1.3em;
+    footer .footer-social-links a i {
+      font-size: 1.1em;
       position: absolute;
-      left: 8px;
-      top: 10px; }
-    footer .social-links a.fb i {
+      left: 10px;
+      top: 11px; }
+    footer .footer-social-links a.fb i {
       left: 10px; }
-  footer .social-links a.social {
+    footer .footer-social-links a.in i {
+      left: 10px;
+      top: 10px; }
+  footer .footer-social-links a.social {
     float: left;
     margin: 0 5px 0 0;
     cursor: pointer;
     background: #DCDCDC;
     color: #fff; }
-  footer .social-links a.social:hover.fb {
+  footer .footer-social-links a.social:hover.fb {
     background-color: #014c8c; }
-  footer .social-links a.social:hover.tw {
+  footer .footer-social-links a.social:hover.tw {
     background-color: #33ccff; }
-  footer .social-links a.social:hover.pin {
+  footer .footer-social-links a.social:hover.pin {
     background-color: #cc2127; }
-  footer .social-links a.social:hover.in {
-    background-color: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+  footer .footer-social-links a.social:hover.in {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
 
 .width-fix {
   padding: 0; }
@@ -2089,6 +2093,14 @@ footer {
   color: #FFF;
   font-size: 1em;
   border: none; }
+
+.delete-account-popup {
+  background-color: #ED1C24;
+  border: 1px solid #828282;
+  color: #FFF;
+  margin-bottom: 30px;
+  font-size: 1em;
+  height: 31px; }
 
 #page-404 {
   position: relative;
@@ -2753,6 +2765,7 @@ footer {
         text-transform: none;
         line-height: 120%;
         color: #828282;
+        font-size: 1.5em;
         color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
         font-family: "Messina Sans Regular";
@@ -2844,15 +2857,15 @@ footer {
         .profile-sidebar .profile-container .profile-info .my-web li i {
           width: 18px;
           font-size: 17px; }
-      .profile-sidebar .profile-container .profile-info .social-links {
+      .profile-sidebar .profile-container .profile-info .profile-social-links {
         margin-top: 15px; }
-        .profile-sidebar .profile-container .profile-info .social-links .social-container {
+        .profile-sidebar .profile-container .profile-info .profile-social-links .social-container {
           width: 20%; }
-        .profile-sidebar .profile-container .profile-info .social-links li {
+        .profile-sidebar .profile-container .profile-info .profile-social-links li {
           display: inline-block;
           text-align: center;
           vertical-align: top; }
-        .profile-sidebar .profile-container .profile-info .social-links i.fa-star {
+        .profile-sidebar .profile-container .profile-info .profile-social-links i.fa-star {
           font-size: 12px;
           color: #00AEEF;
           display: none;
@@ -4025,7 +4038,7 @@ footer {
 #edit-cover-modal .modal-footer {
   text-align: center; }
 
-.social-links a.social {
+.profile-social-links a.social {
   position: relative;
   text-align: center;
   padding: 15px;
@@ -4039,31 +4052,31 @@ footer {
   -moz-border-radius: 20px 20px 20px 20px;
   -webkit-border-radius: 20px 20px 20px 20px;
   -khtml-border-radius: 20px 20px 20px 20px; }
-  .social-links a.social i {
+  .profile-social-links a.social i {
     font-size: 1.1em;
     position: absolute;
-    left: 11px;
-    top: 12px; }
-.social-links a.social {
+    left: 5px;
+    top: 11px; }
+.profile-social-links a.social {
   margin: 5px 0;
   cursor: pointer;
   background: #4F4F4F;
   color: #fff; }
-  .social-links a.social.ext {
+  .profile-social-links a.social.ext {
     padding: 5px; }
-.social-links a.social:hover.fb {
+.profile-social-links a.social:hover.fb {
   background-color: #014c8c; }
-.social-links a.social:hover.tw {
+.profile-social-links a.social:hover.tw {
   background-color: #33ccff; }
-.social-links a.social:hover.pin {
+.profile-social-links a.social:hover.pin {
   background-color: #cc2127; }
-.social-links a.social:hover.ut {
+.profile-social-links a.social:hover.ut {
   background-color: #cc2127; }
-.social-links a.social:hover.ln {
+.profile-social-links a.social:hover.ln {
   background-color: #014c8c; }
-.social-links a.social:hover.in {
+.profile-social-links a.social:hover.in {
   background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
-.social-links a.social:hover.ext {
+.profile-social-links a.social:hover.ext {
   background-color: #fff;
   border: 0.5px solid #4F4F4F; }
 
