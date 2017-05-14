@@ -35,7 +35,7 @@ export class ShowcasesCollectionComponent implements OnInit {
   }
 
   ShowSingleShowcase(nid) {
-    this.router.navigate(['/showcases', nid]);
+    this.router.navigate(['/makers', nid]);
   }
 
   getShowCases() {

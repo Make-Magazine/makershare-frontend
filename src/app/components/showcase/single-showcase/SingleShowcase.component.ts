@@ -165,7 +165,7 @@ export class SinglShowcaseComponent implements OnInit {
 
   }
   ShowcasePojectNav(nid, snid) {
-    this.router.navigate(['/showcases/project2/', snid, this.sort_by, this.sort_order, nid]);
+    this.router.navigate(['/makers/project2/', snid, this.sort_by, this.sort_order, nid]);
     // this.showcaseNid.emit(this.route.params['value'].nid)
   }
 

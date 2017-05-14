@@ -182,6 +182,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           case "field_visibility2":
             {
               this.project.field_visibility2.und[0] = field.und[0].tid;
+              if(this.project.field_visibility2.und[0] != 1115){
+                this.StoryFormValid = true;
+              }
               break;
             }
           default:
@@ -422,7 +425,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   GettingFieldsReady(Status: number, Visibility: number) {
     this.current_active_tab = 'Your Story';
-    if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'] && this.project.field_visibility2['und'][0] == 1115) {
+    if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
       this.notificationBarService.create({ message: 'Ah snap! Looks Like we need a little more info from you.', type: NotificationType.Error });
       this.TryToSubmitPrivatePublic = true;
       return;
