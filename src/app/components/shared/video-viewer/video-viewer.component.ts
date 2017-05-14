@@ -22,27 +22,17 @@ export class VideoViewerComponent implements OnInit {
   }
 
   SetVideoUrl(){
-    if(this.link.indexOf('youtube') != -1){
+    if(this.link.indexOf('youtube') != -1 || this.link.indexOf('youtu.be') != -1){
       this.type = 'youtube';
       this.VideoId = this.youtube_parser(this.link);
-      console.log(this.VideoId);
       let html = '<iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" class="embed-responsive-item"></iframe>';
       this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(html);
-       console.log( this.SantinizedHtml);
     }else if(this.link.indexOf('vimeo') != -1){
       this.type = 'vimeo';
       let url = "https://vimeo.com/api/oembed.json?url=" + this.link;
       this.http.get(url).map(res => res.json()).subscribe(data => {
         this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(data.html);
       });
-    }
-    else if (this.link.indexOf('youtu.be') != -1)
-    {
-      this.type = 'youtube';
-      this.VideoId = this.youtube_parser(this.link);
-      console.log(this.VideoId);
-      let html = '<iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" src="https://www.youtube.com/embed/'+this.VideoId+'" frameborder="0" class="embed-responsive-item"></iframe>';
-      this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(html);
     }
     else{
       this.SantinizedHtml = "Video Url is not supported.";
