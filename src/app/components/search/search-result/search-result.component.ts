@@ -15,7 +15,7 @@ export class SearchResultComponent implements OnInit {
   searchTerm : string;
   projects = [];
   challenges = [];
-  showcases = [];
+  showcases = []; 
   workshops = [];
   users = [];
 
@@ -240,5 +240,10 @@ export class SearchResultComponent implements OnInit {
   }
   clearQuery() {
     this.query = '';
+  }
+  keyDownFunction(event) {
+    if(event.keyCode == 13 && this.searchQuery.length > 0) {
+      this.searchQuery();
+    }
   }
 }
