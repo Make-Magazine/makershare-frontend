@@ -484,6 +484,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.cropperSettings.croppedWidth = 800;
     this.cropperSettings.croppedHeight = 450;
     this.cropperSettings.noFileInput = true;
+    this.cropperSettings.canvasWidth = 300;
+    this.cropperSettings.canvasHeight = 200;
     this.imagedata = {};
   }
 
