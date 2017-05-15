@@ -100,6 +100,17 @@ $(document).ready(function () {
 		addNewField($(this), spaceArray, $('.maker-group'), $('.makerspace div.maker-group'));
 	});
 
+	// Splash SignUp
+	$(document).on('click', '#trigger-click', function(e){
+		$('#splash-signup').click();
+	})
+
+	// 404 Search
+	$(document).on('click','#static-search-term', function(){
+		let searchVal = $('#search-box-input-404').val();
+		window.location.replace("http://preview.makershare.com/search?query=" + searchVal);		
+	})
+
 	// Show and hide project stats on project card
 	$(document).on('mouseenter', '.project , .maker-card', function () {
 		if (squareView) {
@@ -135,6 +146,7 @@ $(document).ready(function () {
 			$(this).find('.teaser').fadeOut('400');
 		}
 	});
+
 	$(document).on('click','#search-icon', function(){
 		$('#search-box-input').focus();
 	})
