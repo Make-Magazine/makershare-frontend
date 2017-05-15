@@ -1,5 +1,5 @@
-import { Component, OnInit,ViewChild, Input } from '@angular/core';
-import { UserService,ViewService } from '../../../../../../d7services';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { UserService, ViewService } from '../../../../../../d7services';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,15 +10,17 @@ import { Observable } from 'rxjs/Observable';
 export class EditPortfolioComponent implements OnInit {
   defaultTabObs: Observable<string>;
   defaultTab: string;
-  CurrentTab:string;
-  DefaultView:string;
+  CurrentTab: string;
+  DefaultView: string;
   constructor(
-    private viewService:ViewService,
-    private userService:UserService,
+    private viewService: ViewService,
+    private userService: UserService,
     private route: ActivatedRoute,
   ) { }
-  @Input('projectsCount') projectsCount;
-  @Input('LikesCount') LikesCount:number = 0;
+  @Input('projectsCountPublic') projectsCountPublic;
+  @Input('projectsCountDraft') projectsCountDraft;
+  @Input('projectsCountPrivate') projectsCountPrivate;
+  @Input('LikesCount') LikesCount: number = 0;
   @Input('ViewsCount') ViewsCount: number = 0;
 
   ngOnInit() {
@@ -26,29 +28,29 @@ export class EditPortfolioComponent implements OnInit {
     // set default tab according to url parameter "tab"
     this.defaultTabObs = this.route.queryParams.map(params => params['tab'] || 'None');
     this.defaultTabObs.subscribe(tab => {
-      if(tab != undefined || tab != ''){
-          this.CurrentTab = tab;
+      if (tab != undefined || tab != '') {
+        this.CurrentTab = tab;
       }
-      if(tab == 'None'){
+      if (tab == 'None') {
         this.CurrentTab = 'public';
       }
     });
 
-    
-    this.userService.getUser(localStorage.getItem("user_id")).subscribe(userdata=>{
+
+    this.userService.getUser(localStorage.getItem("user_id")).subscribe(userdata => {
       this.DefaultView = "grid";
-      if(userdata.projects_view){
+      if (userdata.projects_view) {
         this.DefaultView = userdata.projects_view;
       }
     });
   }
 
-  ChangeDefaultView(NewView:string){
+  ChangeDefaultView(NewView: string) {
     let user = {
-      uid:localStorage.getItem("user_id"),
-      field_project_view:{und:NewView},
+      uid: localStorage.getItem("user_id"),
+      field_project_view: { und: NewView },
     };
-    this.userService.updateUser(user).subscribe(data=>{
+    this.userService.updateUser(user).subscribe(data => {
       this.DefaultView = NewView;
     });
   }
