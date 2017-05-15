@@ -16,6 +16,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Output() emitter = new EventEmitter();
   projectCard
   badges
+  pages: number = 0;
   constructor(
     private nodeService: NodeService,
     private viewService: ViewService,
@@ -38,6 +39,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       var membership_array = membership_string.split(',');
       res[0].field_team_members = membership_array;
       this.projectCard = res[0];
+      
     });
   }
 
@@ -77,4 +79,10 @@ export class ProjectCardPortfolioComponent implements OnInit {
       }
     });
   }
+   /* function load more  */
+  loadMoreProject() {
+    this.pages++;
+    this.GetProjectCard();
+  }
+  /* end function load more  */
 }
