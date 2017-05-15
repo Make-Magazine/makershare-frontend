@@ -111,7 +111,7 @@ export class ProfileComponent implements OnInit {
     address: 'Where do you live?',
     bio: 'Share something about your background',
     describe_yourself: 'What is your motto as a Maker?',
-    social:'What social accounts do you use?',
+    social:'Add your social accounts',
     maker_space: 'Do you belong to any makerspaces?',
     websites:'Include your other websites',
     started_making: 'Describe how you became a Maker',
@@ -392,8 +392,8 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
-    console.log(user);
-    console.log(this.profile.views_count);
+    //console.log(user);
+   // console.log(this.profile.views_count);
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;

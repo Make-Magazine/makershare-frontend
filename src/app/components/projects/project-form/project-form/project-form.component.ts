@@ -99,7 +99,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           this.missionRedirection = decodeURIComponent(tab);
         }
         else if(tab =undefined){
-          console.log("asdsadsadsadsa");
+        //  console.log("asdsadsadsadsa");
         }
       });
     });
@@ -182,6 +182,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           case "field_visibility2":
             {
               this.project.field_visibility2.und[0] = field.und[0].tid;
+              if(this.project.field_visibility2.und[0] != 1115){
+                this.StoryFormValid = true;
+              }
               break;
             }
           default:
@@ -262,7 +265,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }
       },
       (err) => {
-        console.log('Error: %s', err);
+       // console.log('Error: %s', err);
       },
       () => {
         let subsource = Observable.forkJoin(subtasks);
@@ -317,7 +320,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             }
           },
           (err) => {
-            console.log('Error: %s', err);
+            //console.log('Error: %s', err);
           },
           () => {
             if (this.project.field_cover_photo.und) {
@@ -373,7 +376,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
-        console.log(err);
+       // console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
       });
     } else {
@@ -387,7 +390,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
-        console.log(err);
+       // console.log(err);
         this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
       });
     }
@@ -397,7 +400,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.mainService.post('/api/team_service/send', emails).map(res => res.json()).subscribe(data => {
 
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
   }
 
@@ -422,7 +425,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   GettingFieldsReady(Status: number, Visibility: number) {
     this.current_active_tab = 'Your Story';
-    if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'] && this.project.field_visibility2['und'][0] == 1115) {
+    if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
       this.notificationBarService.create({ message: 'Ah snap! Looks Like we need a little more info from you.', type: NotificationType.Error });
       this.TryToSubmitPrivatePublic = true;
       return;
@@ -481,7 +484,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         });
       },
       (err) => {
-        console.log('Error: %s', err);
+       // console.log('Error: %s', err);
       },
       () => {
         this.ResetFieldCollectionEmptyRows();

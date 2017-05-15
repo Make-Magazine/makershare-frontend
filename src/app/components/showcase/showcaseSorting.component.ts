@@ -38,7 +38,7 @@ export class ShowcaseSortingComponent implements OnInit {
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    this.meta.setTitle(`Maker Share | Showcase}`);
+    this.meta.setTitle(`Maker Share | Makers}`);
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', 'showcase showcase showcase showcase showcase');
 
