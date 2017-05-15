@@ -316,6 +316,7 @@ export class ProfileComponent implements OnInit {
 
   ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas']) {
+      console.log(this.CountryFieldsAndDetails);
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.ProfileInfo.address[administrative_area_label]) {
         this.ProfileInfo.address.governorate = '_none';
@@ -382,7 +383,9 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(this.uid).subscribe(
       (profile: UserProfile) => {
         this.SetUser(profile);
+        
         this.GetCountryDetails(profile.address.code);
+        console.log(this.ProfileInfo);
       }, (err) => {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
