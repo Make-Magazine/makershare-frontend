@@ -73,4 +73,11 @@ export class ProjectSearchCardComponent implements OnInit {
     this.router.navigate(['/projects', path]
     );
   }
+    getProfile() {
+    if (this.project['uid']) {
+      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
+        this.router.navigate(['/portfolio/' + res.url]);
+      });
+    }
+  }
 }

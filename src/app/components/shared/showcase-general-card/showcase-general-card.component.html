@@ -22,10 +22,10 @@
                 <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                 <span class="views-count">{{showcase.views_count}}</span>
               </div>
-              <div class="projects-count-div" *ngIf="showcase.number_of_project">
-                <span class="projects-count">{{showcase.number_of_project}}
-                  <span *ngIf="showcase.number_of_project>1">projects</span>
-                  <span *ngIf="showcase.number_of_project<=1">project</span>
+              <div class="projects-count-div" *ngIf="projectsCount">
+                <span class="projects-count">{{projectsCount}}
+                  <span *ngIf="projectsCount>1">projects</span>
+                  <span *ngIf="projectsCount<=1">project</span>
                 </span>
               </div>
             </div>
