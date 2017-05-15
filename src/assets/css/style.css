@@ -423,7 +423,7 @@ a:not([href]):not([tabindex]).btn-border {
   color: #333333;
   border: 1px solid #333333;
   font-family: "Messina Sans Regular";
-  font-size: 0.9em;
+  font-size: 0.9rem;
   font-weight: 400;
   text-transform: none;
   line-height: 130%;
@@ -646,7 +646,7 @@ a:not([href]):not([tabindex]).btn-load-more {
 .btn-vote,
 a:not([href]):not([tabindex]).btn-vote {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -748,7 +748,7 @@ a:not([href]):not([tabindex]).btn-vote {
 .btn-save,
 a:not([href]):not([tabindex]).btn-save {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -1070,7 +1070,7 @@ body {
 
 .card-type {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1118,7 +1118,7 @@ body {
 
 .horizontal-type-badge-challenge {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1148,7 +1148,7 @@ body {
 
 .horizontal-type-badge-learn {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1178,7 +1178,7 @@ body {
 
 .vertical-type-badge {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1210,7 +1210,7 @@ body {
 .card-type-blue,
 .card-type-grey {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1263,7 +1263,7 @@ body {
 
 .card-type-user-small {
   font-family: "Messina Sans Regular";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 100%;
@@ -1521,7 +1521,7 @@ ngb-typeahead-window.dropdown-menu {
     .dropdown-notification ul .notification-container .notification-item {
       border-bottom: 0.5px solid #828282;
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -1553,7 +1553,7 @@ ngb-typeahead-window.dropdown-menu {
       .dropdown-notification ul .notification-container .notification-item .notf-date {
         color: #828282;
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -1631,7 +1631,7 @@ i.dropdownIcon {
     margin: 90px auto 0; }
     .registration-page .search-form-group .header-title h2 {
       font-family: "Messina Modern Regular";
-      font-size: 3.4em;
+      font-size: 3.4rem;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -1640,7 +1640,7 @@ i.dropdownIcon {
       color: white; }
     .registration-page .search-form-group .header-title p {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -1905,7 +1905,7 @@ i.dropdownIcon {
   padding-bottom: 50px; }
   .maker-spotlight header h3 {
     font-family: "Messina Modern Regular";
-    font-size: 3.4em;
+    font-size: 3.4rem;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -2072,7 +2072,7 @@ footer {
   padding: 0px; }
 .user-card .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -2090,7 +2090,7 @@ footer {
     color: #BDBDBD; }
 .user-card .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -2134,7 +2134,7 @@ footer {
   color: #BDBDBD; }
   .user-card-small .card-stats ul li {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -2166,7 +2166,7 @@ footer {
     padding: 0px; }
 .user-card-small .user-name {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -2184,7 +2184,7 @@ footer {
     color: #BDBDBD; }
 .user-card-small .profile-tag {
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -2269,7 +2269,7 @@ footer {
     border-top: none !important;
     width: 50%;
     font-family: "Messina Modern Regular";
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 500;
     text-transform: none;
     line-height: 120%;
@@ -2281,7 +2281,7 @@ footer {
     border-bottom: none !important;
     width: 50%;
     font-family: "Messina Modern Regular";
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 500;
     text-transform: none;
     line-height: 120%;
@@ -2333,7 +2333,7 @@ footer {
       padding: 6px; }
       .bookmark-page .content-wrapper .bookmark-item .media-body .title {
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -2384,7 +2384,7 @@ footer {
         padding: 15px 0px;
         width: 167px;
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -2503,7 +2503,7 @@ footer {
         width: 167px !important;
         padding: 15px 0px;
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -2731,7 +2731,7 @@ footer {
       width: 25px; }
     .profile-sidebar .profile-container .global-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -2745,7 +2745,7 @@ footer {
       color: #BDBDBD; }
       .profile-sidebar .profile-container .placeholder-text.motto-placeholder {
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -2822,7 +2822,7 @@ footer {
             color: #008bbf; }
       .profile-sidebar .profile-container .profile-info .profile-fullname {
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -2831,7 +2831,7 @@ footer {
         color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -2841,7 +2841,7 @@ footer {
         margin-bottom: 0px; }
       .profile-sidebar .profile-container .profile-info .location {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -2851,7 +2851,7 @@ footer {
         margin-bottom: 5px; }
       .profile-sidebar .profile-container .profile-info .profile-describe-yourself {
         font-family: "Messina Modern Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -2860,7 +2860,7 @@ footer {
         font-size: 1.5rem; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -2871,7 +2871,7 @@ footer {
         margin-left: 5px; }
       .profile-sidebar .profile-container .profile-info .bio {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -3393,7 +3393,7 @@ footer {
         font-size: 17px; }
   .project .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 500;
     text-transform: none;
     line-height: 120%;
@@ -3410,11 +3410,11 @@ footer {
     max-width: 230px;
     cursor: pointer;
     text-transform: none;
-    height: 46px;
+    height: 50px;
     margin-bottom: 5px; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 500;
     text-transform: none;
     line-height: 120%;
@@ -3459,7 +3459,7 @@ footer {
       .project .card-stats ul li {
         width: 80px;
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -3510,7 +3510,7 @@ footer {
       display: none; }
 .lg-card .card-title-project {
   font-family: "Messina Modern Regular";
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 400;
   text-transform: none;
   line-height: 115%;
@@ -3559,7 +3559,7 @@ footer {
       height: 100%; }
   .project-mobile-card .data-container .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 115%;
@@ -3584,7 +3584,7 @@ footer {
     font-size: 0.9rem; }
     .project-mobile-card .card-stats ul li {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3731,7 +3731,7 @@ footer {
     border: 1px solid #DCDCDC;
     padding: 12px;
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -3741,7 +3741,7 @@ footer {
       /* Chrome/Opera/Safari */
       text-align: center;
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3751,7 +3751,7 @@ footer {
       /* Firefox 19+ */
       text-align: center;
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3761,7 +3761,7 @@ footer {
       /* IE 10+ */
       color: #DCDCDC;
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3770,7 +3770,7 @@ footer {
       /* Firefox 18- */
       text-align: center;
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -3801,7 +3801,7 @@ footer {
       text-align: center;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3811,7 +3811,7 @@ footer {
       text-align: center;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3821,7 +3821,7 @@ footer {
       text-align: center;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3831,7 +3831,7 @@ footer {
       text-align: center;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3842,7 +3842,7 @@ footer {
       padding-top: 22px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3853,7 +3853,7 @@ footer {
       padding-top: 22px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3864,7 +3864,7 @@ footer {
       padding-top: 22px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3875,7 +3875,7 @@ footer {
       padding-top: 22px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3886,7 +3886,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3897,7 +3897,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3908,7 +3908,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3919,7 +3919,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3930,7 +3930,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3941,7 +3941,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3952,7 +3952,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -3963,7 +3963,7 @@ footer {
       padding-top: 80px;
       color: #DCDCDC !important;
       font-family: "Messina Modern Bold";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 120%;
@@ -4153,7 +4153,7 @@ footer {
 
 .started_making {
   font-family: "Messina Sans Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 400;
   text-transform: none;
   line-height: 110%;
@@ -4161,7 +4161,7 @@ footer {
 
 .global-title {
   font-family: "Messina Modern Bold";
-  font-size: 0.95em;
+  font-size: 0.95rem;
   font-weight: 400;
   text-transform: none;
   line-height: 120%;
@@ -4212,7 +4212,7 @@ footer {
       height: 70px; }
     .page-search-content .user-card-search .user-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -4231,7 +4231,7 @@ footer {
         color: #BDBDBD; }
     .page-search-content .user-card-search .profile-tag {
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -4263,7 +4263,7 @@ footer {
         margin-bottom: 6px; }
         .page-search-content .user-card-search .card-stats ul li {
           font-family: "Messina Sans Regular";
-          font-size: 0.9em;
+          font-size: 0.9rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -4329,7 +4329,7 @@ footer {
       margin-bottom: 0; }
     .maker-card .card-block .maker-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -4337,15 +4337,15 @@ footer {
       color: #00AEEF; }
     .maker-card .card-block .maker-nickname {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 2px; }
     .maker-card .card-block .maker-city {
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4355,7 +4355,7 @@ footer {
       font-size: 0.8em !important; }
     .maker-card .card-block .maker-descripe {
       font-family: "Messina Modern Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4392,7 +4392,7 @@ footer {
         font-size: 17px; }
   .maker-card .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 115%;
@@ -4434,7 +4434,7 @@ footer {
     color: #BDBDBD; }
     .maker-card .card-stats ul li {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4458,7 +4458,7 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 188px; }
+  min-height: 140px; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;
@@ -4481,7 +4481,7 @@ footer {
     .maker-mobile-card .maker-data .maker-name {
       line-height: 150%;
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -4489,15 +4489,15 @@ footer {
       color: #00AEEF; }
     .maker-mobile-card .maker-data .maker-nickname {
       font-family: "Messina Modern Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 2px; }
     .maker-mobile-card .maker-data .maker-city {
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4507,7 +4507,7 @@ footer {
       font-size: 0.8em !important; }
     .maker-mobile-card .maker-data .maker-descripe {
       font-family: "Messina Modern Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4521,7 +4521,7 @@ footer {
       margin-bottom: 0; }
       .maker-mobile-card .card-stats ul li {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.8rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -4529,7 +4529,7 @@ footer {
         .maker-mobile-card .card-stats ul li img {
           margin-right: 6px; }
           .maker-mobile-card .card-stats ul li img.project-likes {
-            width: 12px; }
+            width: 10px; }
           .maker-mobile-card .card-stats ul li img.project-views {
             width: 20px; }
         .maker-mobile-card .card-stats ul li span {
@@ -4565,22 +4565,22 @@ footer {
       margin-bottom: 0; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-name {
       font-family: "Messina Modern Regular";
-      font-size: 1.8em;
+      font-size: 1.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 115%;
       color: #828282; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 2px; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4589,7 +4589,7 @@ footer {
       color: #00AEEF; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-descripe {
       font-family: "Messina Modern Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4618,7 +4618,7 @@ footer {
         font-size: 17px; }
   .mobile-profile-container .maker-mobile-card .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 115%;
@@ -4661,7 +4661,7 @@ footer {
     width: 230px; }
     .mobile-profile-container .maker-mobile-card .card-stats ul li {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -4842,7 +4842,7 @@ button:hover {
   margin-left: 0; }
 #interests .selected-topic {
   font-family: "Messina Modern Regular";
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 400;
   text-transform: none;
   line-height: 115%;
@@ -4875,7 +4875,7 @@ button:hover {
     text-align: center; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular";
-      font-size: 3.4em;
+      font-size: 3.4rem;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -4887,7 +4887,7 @@ button:hover {
       padding-bottom: 30px; }
     .page-explore .explore-header h6 {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -4905,7 +4905,7 @@ button:hover {
           min-width: 150px;
           padding: 13px 10px;
           font-family: "Messina Modern Regular";
-          font-size: 1.3em;
+          font-size: 1.3rem;
           font-weight: 500;
           text-transform: none;
           line-height: 120%;
@@ -5049,7 +5049,7 @@ button:hover {
       right: 10px; }
   .challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5088,7 +5088,7 @@ button:hover {
   text-align: center; }
   .challenge-header h3 {
     font-family: "Messina Modern Regular";
-    font-size: 3.4em;
+    font-size: 3.4rem;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -5099,7 +5099,7 @@ button:hover {
     font-weight: normal; }
   .challenge-header p {
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5135,7 +5135,7 @@ button:hover {
       max-width: 100%; }
     .page-challenge .challenge-card .image-container .challenge-type-badge {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -5169,7 +5169,7 @@ button:hover {
       height: 287px; }
     .page-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -5177,7 +5177,7 @@ button:hover {
       color: white; }
     .page-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -5188,7 +5188,7 @@ button:hover {
       font-weight: bold; }
     .page-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -5226,7 +5226,7 @@ button:hover {
       color: #00AEEF; }
   .page-search-content .challenge-card .challenge-type-badge {
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5260,7 +5260,7 @@ button:hover {
     height: 100%; }
     .page-search-content .challenge-card .card-container .card .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -5274,7 +5274,7 @@ button:hover {
       margin-bottom: 30px; }
     .page-search-content .challenge-card .card-container .card .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -5283,7 +5283,7 @@ button:hover {
       text-transform: none; }
     .page-search-content .challenge-card .card-container .card .card-partership {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -5296,14 +5296,14 @@ button:hover {
         font-weight: bold; }
       .page-search-content .challenge-card .card-container .card .card-partership p {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
         color: #828282; }
     .page-search-content .challenge-card .card-container .card .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -5340,7 +5340,7 @@ button:hover {
     border: none; }
     .front .front-challenge-card .card .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.8em;
+      font-size: 1.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 115%;
@@ -5382,8 +5382,8 @@ button:hover {
     padding-top: 30px;
     padding-bottom: 30px; }
   .front .front-challenge-card .card-container .card-partership {
-    font-family: "Messina Sans SemiBold";
-    font-size: 0.8em;
+    font-family: "Messina Sans Regular";
+    font-size: 0.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5399,7 +5399,7 @@ button:hover {
     font-weight: bold; }
   .front .front-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 130%;
@@ -5420,8 +5420,8 @@ button:hover {
         width: 140px;
         padding: 15px 0px; }
     .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 {
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -5499,7 +5499,7 @@ button:hover {
     border: none; }
     .tablet-challenge-card .card .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.8em;
+      font-size: 1.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 115%;
@@ -5538,8 +5538,8 @@ button:hover {
     padding-top: 30px;
     padding-bottom: 30px; }
   .tablet-challenge-card .card-container .card-partership {
-    font-family: "Messina Sans SemiBold";
-    font-size: 0.8em;
+    font-family: "Messina Sans Regular";
+    font-size: 0.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5555,7 +5555,7 @@ button:hover {
     font-weight: bold; }
   .tablet-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 130%;
@@ -5576,8 +5576,8 @@ button:hover {
         width: 140px;
         padding: 15px 0px; }
     .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 {
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -5666,7 +5666,7 @@ button:hover {
         border-left: 10px solid #828282; }
     .page-search-content .search-challenge-card .card .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -5698,7 +5698,7 @@ button:hover {
     height: 265px; }
   .page-search-content .search-challenge-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -5714,7 +5714,7 @@ button:hover {
     font-weight: bold; }
   .page-search-content .search-challenge-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 130%;
@@ -5885,7 +5885,7 @@ button:hover {
       box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-story-tab .project-body-content p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -5901,7 +5901,7 @@ button:hover {
       width: 100%;
       font-weight: bold;
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -5945,7 +5945,7 @@ button:hover {
       box-shadow: 2px 2px 8px #BDBDBD; }
       .page-project .project-body .how-to-tab .project-body-content p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -5964,7 +5964,7 @@ button:hover {
         font-size: 18px;
         font-weight: bold;
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -5990,7 +5990,7 @@ button:hover {
           margin-top: 10px;
           font-size: 18px;
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6000,7 +6000,7 @@ button:hover {
           border: none;
           padding: 0px 6px;
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6010,7 +6010,7 @@ button:hover {
           min-width: 38px;
           color: #333333;
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6019,7 +6019,7 @@ button:hover {
         .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
           color: #333333;
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6035,7 +6035,7 @@ button:hover {
         margin-top: 10px;
         font-size: 18px;
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6048,7 +6048,7 @@ button:hover {
           text-decoration: underline;
           color: #00AEEF !important;
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6153,7 +6153,7 @@ button:hover {
         text-align: center;
         color: #ED1C24 !important;
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6163,7 +6163,7 @@ button:hover {
       padding: 0px 14px; }
       .page-project .aha .card-block p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6181,7 +6181,7 @@ button:hover {
         text-align: center;
         color: #ED1C24 !important;
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6191,7 +6191,7 @@ button:hover {
       padding: 0px 14px; }
       .page-project .uh-oh .card-block p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6201,7 +6201,7 @@ button:hover {
     font-size: 14px;
     color: #828282; }
   .page-project .license-report .report {
-    font-size: 10px;
+    font-size: 0.8rem;
     color: #00AEEF; }
   .page-project .panel {
     border-width: 3px;
@@ -6291,7 +6291,7 @@ header.showcase-project .next {
           color: #bebebe; }
         .feedback-group .feedback-card .user-info .user-details .user-nickname {
           font-family: "Messina Sans Regular";
-          font-size: 0.9em;
+          font-size: 0.9rem;
           font-weight: 400;
           text-transform: none;
           line-height: 130%;
@@ -6319,7 +6319,7 @@ header.showcase-project .next {
   .feedback-group .comment-body p {
     margin: 0px;
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -6338,7 +6338,7 @@ header.showcase-project .next {
       position: relative; }
       .feedback-group .new-comment .comment-body textarea {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -6449,7 +6449,7 @@ header.showcase-project .next {
           font-size: 25px; }
         .page-project .projectsingle-card .right-side .card-container .projects-circle .showcase-nav a {
           font-family: "Messina Sans Regular";
-          font-size: 0.95em;
+          font-size: 0.95rem;
           font-weight: 400;
           text-transform: none;
           line-height: 100%;
@@ -6460,7 +6460,7 @@ header.showcase-project .next {
           cursor: auto; }
       .page-project .projectsingle-card .right-side .card-container .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 2.6em;
+        font-size: 2.6rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -6470,7 +6470,7 @@ header.showcase-project .next {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 130%;
@@ -6559,7 +6559,7 @@ header.showcase-project .next {
           margin-bottom: 6px; }
           .project-search-card .project-card-small .maker-project-info .card-stats ul li {
             font-family: "Messina Sans Regular";
-            font-size: 0.9em;
+            font-size: 0.9rem;
             font-weight: 400;
             text-transform: none;
             line-height: 100%;
@@ -6637,7 +6637,7 @@ textarea {
     position: relative; }
   .learn-card .card-container .card-partership {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 130%;
@@ -6681,7 +6681,7 @@ textarea {
   text-align: center; }
   .learn-header h3 {
     font-family: "Messina Modern Regular";
-    font-size: 3.4em;
+    font-size: 3.4rem;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -6692,7 +6692,7 @@ textarea {
     font-weight: normal; }
   .learn-header p {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 130%;
@@ -6738,7 +6738,7 @@ textarea {
     position: relative; }
     .page-learn .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -6753,7 +6753,7 @@ textarea {
       padding: 0px 10px 0px 0px; }
     .page-learn .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -6764,7 +6764,7 @@ textarea {
       font-weight: bold; }
     .page-learn .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -6847,7 +6847,7 @@ textarea {
       margin: 0px 0px 16px 0px; }
     .front .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.8em;
+      font-size: 1.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 115%;
@@ -6859,7 +6859,7 @@ textarea {
       overflow: hidden; }
     .front .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -6870,7 +6870,7 @@ textarea {
       font-weight: bold; }
     .front .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -6928,7 +6928,7 @@ textarea {
       padding: 0px 12px; }
     .search-learn-card .learn-card .card-container .card-partership {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -6942,7 +6942,7 @@ textarea {
         margin-bottom: 0px; }
     .search-learn-card .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.8em;
+      font-size: 1.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 115%;
@@ -6950,7 +6950,7 @@ textarea {
       color: #4F4F4F; }
     .search-learn-card .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -6961,7 +6961,7 @@ textarea {
       font-weight: bold; }
     .search-learn-card .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -6995,7 +6995,7 @@ textarea {
     .page-showcase .showcase-header h3,
     .page-single-showcase .showcase-header h3 {
       font-family: "Messina Modern Regular";
-      font-size: 3.4em;
+      font-size: 3.4rem;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -7007,7 +7007,7 @@ textarea {
     .page-showcase .showcase-header p,
     .page-single-showcase .showcase-header p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -7082,7 +7082,7 @@ textarea {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 2.6em;
+        font-size: 2.6rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -7091,7 +7091,7 @@ textarea {
         cursor: pointer; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -7102,7 +7102,7 @@ textarea {
         font-weight: bold; }
       .showcase-card-backlayer .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -7308,7 +7308,7 @@ img {
           color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 2.6em;
+        font-size: 2.6rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -7322,7 +7322,7 @@ img {
         overflow: hidden; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -7333,7 +7333,7 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 130%;
@@ -7465,7 +7465,7 @@ img {
           color: #BDBDBD; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 2.6em;
+        font-size: 2.6rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -7475,7 +7475,7 @@ img {
         line-height: 120% !important; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -7486,7 +7486,7 @@ img {
         font-weight: bold; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 130%;
@@ -7591,7 +7591,7 @@ img {
           height: 100%; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-title {
           font-family: "Messina Modern Regular";
-          font-size: 2.6em;
+          font-size: 2.6rem;
           font-weight: 500;
           text-transform: none;
           line-height: 120%;
@@ -7606,7 +7606,7 @@ img {
           line-height: 120% !important; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-status {
           font-family: "Messina Sans Regular";
-          font-size: 1.3em;
+          font-size: 1.3rem;
           font-weight: 400;
           text-transform: none;
           line-height: 110%;
@@ -7617,7 +7617,7 @@ img {
           font-weight: bold; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-description p {
           font-family: "Messina Sans Regular";
-          font-size: 0.9em;
+          font-size: 0.9rem;
           font-weight: 400;
           text-transform: none;
           line-height: 130%;
@@ -7708,7 +7708,7 @@ img {
     padding: 10px 0 5px; }
     .page-create-project-why .add-controls h1 {
       font-family: "Messina Modern Regular";
-      font-size: 3.4em;
+      font-size: 3.4rem;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -7774,8 +7774,8 @@ img {
     .page-create-project-why .guideline .content {
       width: 80%; }
       .page-create-project-why .guideline .content p {
-        font-family: "Messina Sans SemiBold";
-        font-size: 0.8em;
+        font-family: "Messina Sans Regular";
+        font-size: 0.8rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -7886,8 +7886,8 @@ img {
   .page-create-project-why .how-to .materials .tool-list,
   .page-create-project-why .how-to .parts .tool-list,
   .page-create-project-why .how-to .resources-row .tool-list {
-    font-family: "Messina Sans SemiBold";
-    font-size: 1em;
+    font-family: "Messina Sans Regular";
+    font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
     line-height: 100%;
@@ -7903,7 +7903,7 @@ img {
   .page-create-project-why .how-to .resources-row .result,
   .page-create-project-why .how-to .resources-row .how-to-select {
     font-family: "Messina Sans Regular";
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
@@ -8007,7 +8007,8 @@ img {
         cursor: pointer; }
     .page-create-project-why .team .maker-mobile-card {
       padding: 15px 15px 5px;
-      height: 145px; }
+      height: 145px;
+      width: 370px; }
       .page-create-project-why .team .maker-mobile-card .card-type-grey {
         display: none; }
     .page-create-project-why .team form {
@@ -8156,7 +8157,7 @@ img {
 .your-story label,
 .how-to label {
   font-family: "Messina Modern Regular";
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 400;
   text-transform: none;
   line-height: 115%;
@@ -8625,7 +8626,7 @@ img {
       transform: rotate(-90deg); }
     .page-challenge-summary .challenge-card .card-container .card-title, .page-challenge-summary-closed .challenge-card .card-container .card-title, .page-enter-challenge .challenge-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -8634,7 +8635,7 @@ img {
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-status, .page-challenge-summary-closed .challenge-card .card-container .card-status, .page-enter-challenge .challenge-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -8645,7 +8646,7 @@ img {
       font-weight: bold; }
     .page-challenge-summary .challenge-card .card-container .card-description p, .page-challenge-summary-closed .challenge-card .card-container .card-description p, .page-enter-challenge .challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -8954,7 +8955,7 @@ img {
         margin: 0px; }
     .page-workshop-individual .learn-card .card-container .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 2.6em;
+      font-size: 2.6rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -8967,7 +8968,7 @@ img {
       color: #4F4F4F; }
     .page-workshop-individual .learn-card .card-container .card-status {
       font-family: "Messina Sans Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 400;
       text-transform: none;
       line-height: 110%;
@@ -8978,7 +8979,7 @@ img {
       font-weight: bold; }
     .page-workshop-individual .learn-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -9058,7 +9059,7 @@ img {
 .single-object-page .nav-title {
   padding: 20px;
   font-family: "Messina Modern Regular";
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: none;
   line-height: 120%;
@@ -9363,7 +9364,7 @@ img {
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-subject {
         cursor: pointer;
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -9553,7 +9554,7 @@ img {
   background-color: #F2F2F2; }
   .page-search-result .page-title {
     font-family: "Messina Modern Regular";
-    font-size: 3.4em;
+    font-size: 3.4rem;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -9604,7 +9605,7 @@ img {
     margin: 40px 0; }
     .page-search-result .search-term h3 {
       font-family: "Messina Modern Regular";
-      font-size: 3.4em;
+      font-size: 3.4rem;
       font-weight: 400;
       text-transform: capitalize;
       line-height: 100%;
@@ -9612,7 +9613,7 @@ img {
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular";
-      font-size: 0.9em;
+      font-size: 0.9rem;
       font-weight: 400;
       text-transform: none;
       line-height: 130%;
@@ -9641,7 +9642,7 @@ img {
         padding: 2px; }
       .total-result .project-result .projects-item .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -9650,7 +9651,7 @@ img {
         margin-bottom: 5px; }
       .total-result .project-result .projects-item .card-text {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -9682,7 +9683,7 @@ img {
       padding-top: 24px; }
       .total-result .challenge-item .content-bottom .content-side .challenge-close, .total-result .challenge-item .content-bottom .content-side .challenge-open {
         font-family: "Messina Sans Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 400;
         text-transform: none;
         line-height: 110%;
@@ -9693,7 +9694,7 @@ img {
         color: white; }
       .total-result .challenge-item .content-bottom .content-side .sponser-name {
         font-family: "Messina Sans Regular";
-        font-size: 0.9em;
+        font-size: 0.9rem;
         font-weight: 400;
         text-transform: none;
         line-height: 130%;
@@ -9716,7 +9717,7 @@ img {
             width: 1px; }
       .total-result .challenge-item .content-bottom .content-side .card-title {
         font-family: "Messina Modern Regular";
-        font-size: 1.3em;
+        font-size: 1.3rem;
         font-weight: 500;
         text-transform: none;
         line-height: 120%;
@@ -9749,7 +9750,7 @@ img {
       margin-bottom: 0px; }
     .total-result .makers-item .content-bottom .content-side .card-title {
       font-family: "Messina Modern Regular";
-      font-size: 1.3em;
+      font-size: 1.3rem;
       font-weight: 500;
       text-transform: none;
       line-height: 120%;
@@ -9759,7 +9760,7 @@ img {
       margin-bottom: 5px; }
     .total-result .makers-item .content-bottom .content-side .user-city, .total-result .makers-item .content-bottom .content-side .count {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -9777,7 +9778,7 @@ img {
       margin-bottom: 0px; }
   .total-result .results-header .result-title span {
     font-family: "Messina Modern Regular";
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 115%;
@@ -9853,7 +9854,7 @@ img {
   background-color: #F2F2F2; }
   .page-search-content .page-title {
     font-family: "Messina Modern Regular";
-    font-size: 3.4em;
+    font-size: 3.4rem;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 100%;
@@ -10239,7 +10240,7 @@ img {
       margin: 0 -15px; }
     .tablet-challenge-card .card-container .card-description p {
       font-family: "Messina Sans Regular";
-      font-size: 0.95em;
+      font-size: 0.95rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -10253,8 +10254,8 @@ img {
       margin-right: 20px; }
     .tablet-challenge-card .challenge-card-footer-2 {
       margin-bottom: 5px;
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -10273,7 +10274,7 @@ img {
         width: 100% !important; }
       .front .front-challenge-card .card-container .card-description p {
         font-family: "Messina Sans Regular";
-        font-size: 0.95em;
+        font-size: 0.95rem;
         font-weight: 400;
         text-transform: none;
         line-height: 100%;
@@ -10287,8 +10288,8 @@ img {
       margin-right: 20px; }
     .front .front-challenge-card .challenge-card-footer-2 {
       margin-bottom: 5px;
-      font-family: "Messina Sans SemiBold";
-      font-size: 0.8em;
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
       font-weight: 400;
       text-transform: none;
       line-height: 100%;
@@ -10301,7 +10302,7 @@ img {
     margin: 0 -15px; }
   .front .learn-card .card-container .card-title {
     font-family: "Messina Modern Regular";
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
     line-height: 115%;
@@ -10313,7 +10314,7 @@ img {
     color: #4F4F4F; }
   .front .learn-card .card-container .card-description p {
     font-family: "Messina Sans Regular";
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: 400;
     text-transform: none;
     line-height: 100%;
