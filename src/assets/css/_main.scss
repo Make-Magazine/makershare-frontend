@@ -2,13 +2,13 @@ h1,h2,h3,h4,h5,h6 {font-family: 'Messina Modern Regular';color: $main-grey;}
 
 h1 {
     font-family: "Messina Modern Regular";
-    font-size : 4em;
+    font-size : 4rem;
     line-height: 120%;
     color: $text-color-1;
 }
 h1.large {
     font-family: "Messina Modern Regular";
-    font-size : 5.35em;
+    font-size : 5.35rem;
     line-height: 130%;
     color: $text-color-1;
 }
@@ -22,7 +22,7 @@ h2 {
 
 h3 {
     font-family: "Messina Modern Regular";
-    font-size : 2em;
+    font-size : 2rem;
     font-weight : 500;
     line-height: 110%;
     color: $text-color-1;
@@ -30,7 +30,7 @@ h3 {
 
 h4 {
     font-family: "Messina Modern Regular";
-    font-size : 1.6em;
+    font-size : 1.6rem;
     font-weight : 500;
     line-height: 110%;
     color: $text-color-1;
@@ -38,7 +38,7 @@ h4 {
 
 h5 {
     font-family: "Messina Modern Regular";
-    font-size : 1.5em;
+    font-size : 1.5rem;
     font-weight : 500;
     line-height: 110%;
     color: $text-color-1;
@@ -46,7 +46,7 @@ h5 {
 
 h6 {
     font-family: "Messina Sans Regular";
-    font-size : 1.3em;
+    font-size : 1.3rem;
     font-weight : 500;
     line-height: 100%;
     color: $text-color-1;
@@ -74,10 +74,10 @@ body {
     padding-right: 0 !important; 
     font-family: 'Messina Sans Regular';
     color: $main-grey;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     word-wrap: break-word;
     font-weight: 500;
-    line-height: 1.5em;
+    line-height: 1.5rem;
     -webkit-transition: all 1.25s ease-in-out;
        -moz-transition: all 1.25s ease-in-out;
         -ms-transition: all 1.25s ease-in-out;
@@ -183,7 +183,7 @@ body {
 .dropdown-menu {
     padding: 0;
     button {
-        padding: 0.5em 1em;
+        padding: 0.5em 1rem;
     }
 }
 
@@ -514,7 +514,7 @@ body {
     .clear-search {
         position: absolute;
         color: #fff;
-        font-size: 2em;
+        font-size: 2rem;
         cursor:pointer;
     }
     .close-search-layer {
@@ -528,7 +528,7 @@ body {
     .clear-search {
         top: 13px;
         right: 5px;
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 
@@ -546,7 +546,7 @@ body {
 .notifications-container {
     .notification {
         .message {
-            font-size: 1.2em;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #fff;
         }
@@ -561,7 +561,7 @@ ngb-typeahead-window {
     &.dropdown-menu {
         width: 100%;
         .dropdown-item {
-            font-size: .9em;
+            font-size: .9rem;
         }
     }
 }
@@ -575,12 +575,12 @@ ngb-typeahead-window {
     }
     .fullname {
         height: 30px;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         font-weight: bold;
     }
     .nickname {
         height: 20px;
-        font-size: 0.8em;
+        font-size: 0.8rem;
     }
 }
 .access-denied {
@@ -774,7 +774,7 @@ ngb-typeahead-window {
     position: relative;
     .coming-soon-text {
         position: absolute;
-        font-size: 0.5em;
+        font-size: 0.5rem;
         color: $red;
         right: 0;
         bottom: -8px;
@@ -810,7 +810,7 @@ select.shadowed {
     padding: 5px 10px;
     border: none;
     border-radius: 0;
-    font-size: 1em;
+    font-size: 1rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-color: #fff;
@@ -845,7 +845,7 @@ font-size: 16px;
         }
         p{
             @include body-font-1();
-        //    font-size: 1em;
+        //    font-size: 1rem;
            color: #fff;
         }
     }
@@ -919,11 +919,11 @@ font-size: 16px;
             font-weight: 500;
         }
         h4 {
-            font-size: 2em;
+            font-size: 2rem;
         }
         p {
             margin-bottom: 0;
-            font-size: 1.2em;
+            font-size: 1.2rem;
         }
         ul {
             margin-top: 15px;
@@ -938,7 +938,7 @@ font-size: 16px;
                 a {
                     color: $blue;                
                     padding-right: 10px;
-                    font-size: 1.4em;
+                    font-size: 1.4rem;
                     &:hover {
                         text-decoration: none;
                     }
@@ -948,22 +948,22 @@ font-size: 16px;
         input {
             &::-webkit-input-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &:-moz-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &::-moz-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &:-ms-input-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
         }
@@ -972,7 +972,7 @@ font-size: 16px;
         position: relative;
         h3{
             color: white;
-            font-size: 1.8em; 
+            font-size: 1.8rem; 
         }
         #search-box-input-404 {
             width: 100%;
@@ -994,7 +994,7 @@ font-size: 16px;
         }
         .go-search {
             color: #fff;
-            font-size: 1.3em;
+            font-size: 1.3rem;
             position: absolute;
             bottom: 10px;
             right: 0px;
@@ -1005,7 +1005,7 @@ font-size: 16px;
             bottom: 13px;
             position: absolute;
             right: 25px;
-            font-size: 1em;
+            font-size: 1rem;
         }
     }
 }
@@ -1028,11 +1028,11 @@ font-size: 16px;
             font-weight: 500;
         }
         h4 {
-            font-size: 1.6em;
+            font-size: 1.6rem;
         }
         p {
             margin-bottom: 5px;
-            font-size: 1.2em;
+            font-size: 1.2rem;
         }
     }
 }
@@ -1053,7 +1053,7 @@ font-size: 16px;
         position: relative;
         h3{
             color: white;
-            font-size: 1.8em; 
+            font-size: 1.8rem; 
         }
         #search-box-input-404 {
             width: 100%;
@@ -1075,7 +1075,7 @@ font-size: 16px;
         }
         .go-search {
             color: #fff;
-            font-size: 1.7em;
+            font-size: 1.7rem;
             position: absolute;
             bottom: 10px;
             right: 0px;
@@ -1084,22 +1084,22 @@ font-size: 16px;
         input {
             &::-webkit-input-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &:-moz-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &::-moz-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
             &:-ms-input-placeholder {
                 color: #fff;
-                font-size: 1.5em;
+                font-size: 1.5rem;
                 font-family: "Messina Sans Modern"
             }
         }
