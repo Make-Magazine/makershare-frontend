@@ -192,6 +192,8 @@ export class ProfileComponent implements OnInit {
       this.userService.getIdFromUrl(userName).subscribe(res => {
         this.uid = res.uid;
         this.GetUserDetails();
+      }, err => {
+         this.router.navigate(['**']);
       });
     } else {
       this.uid = +localStorage.getItem('user_id');
@@ -223,8 +225,6 @@ export class ProfileComponent implements OnInit {
       return;
     }
     var tasks = [];
-    if(this.uid){
-    console.log(this.uid)}
     let body = { "data": this.uid  };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.viewService.getView('projects_categories'));
