@@ -41,8 +41,7 @@
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
 									<ul class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
 										<li *ngIf="!ProfileInfo.address || ProfileInfo.address == ''"><p class="placeholder-text">{{PlaceholderText.address}}</p></li>
 									</ul>
@@ -199,8 +198,7 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
