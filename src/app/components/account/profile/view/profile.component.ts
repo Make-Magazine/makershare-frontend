@@ -223,7 +223,9 @@ export class ProfileComponent implements OnInit {
       return;
     }
     var tasks = [];
-    let body = { "data": this.uid };
+    if(this.uid){
+    console.log(this.uid)}
+    let body = { "data": this.uid  };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.viewService.getView('projects_categories'));
     tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body));
