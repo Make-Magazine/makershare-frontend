@@ -177,7 +177,7 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
     color: $white;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     margin: auto;
     border: none;
     background-color: $blue;
@@ -193,7 +193,7 @@ a:not([href]):not([tabindex]).message-btn {
         text-align: left;
     }
     .message-icon {
-        font-size: 1.7em;
+        font-size: 1.7rem;
         position: relative;
         bottom: -3px;
         text-align: left;        
@@ -349,7 +349,7 @@ a:not([href]):not([tabindex]).btn-load-more{
     bottom: 10px;
     right: 15px;
     background: none;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     cursor: pointer;
     &:hover {
         color: $red;
@@ -383,7 +383,7 @@ a:not([href]):not([tabindex]).btn-vote {
 // Tabs switching blue bottom border button
 .btn-tab,a:not([href]):not([tabindex]).btn-tab {
     border-radius: 0;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     padding: 9px 30px 25px 30px;
     // width: 115px;
     height: 35px;
@@ -405,7 +405,7 @@ a:not([href]):not([tabindex]).btn-vote {
     background-color: none;
     border-color: $button-light-grey*0.9;
     border-radius: 0;
-    font-size: 2.4em;
+    font-size: 2.4rem;
     border: 0.5px solid $shade-4;    
     // padding: 15px;
     width: 50px;
@@ -430,7 +430,7 @@ a:not([href]):not([tabindex]).btn-vote {
     background-color: $button-light-grey;
     border-color: $button-light-grey*0.9;
     border-radius: 0;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     padding: 10px 15px;
     margin-left: 5px;
     &:focus ,&:active, &:hover {
@@ -449,7 +449,7 @@ a:not([href]):not([tabindex]).btn-vote {
 .btn-simple-small,a:not([href]):not([tabindex]).btn-simple-small{
     height: 35px;
     min-width: 100px;
-    font-size: 1em;
+    font-size: 1rem;
     color: $shade-4;
     text-align: center;
     border: 0.2px solid $shade-4;
@@ -465,7 +465,7 @@ a:not([href]):not([tabindex]).btn-vote {
 .btn-simple-large,a:not([href]):not([tabindex]).btn-simple-large{
     height: 35px;
     min-width: 180px;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     color: $shade-4;
     text-align: center;
     border: 0.2px solid $shade-4;
