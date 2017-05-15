@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService } from '../../../d7services';
+import { ViewService, FlagService } from '../../../d7services';
 @Component({
   selector: 'app-showcase-gen-card',
   templateUrl: './showcase-general-card.component.html',
@@ -9,6 +9,7 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
   numLikes;
   @Input() showcaseNid;
+  projectsCount;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -18,6 +19,7 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.getShowcases();
+    this.getProjectsCount();
     this.countLikes();
   }
 
@@ -25,6 +27,13 @@ export class ShowcaseGeneralCardComponent implements OnInit {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
       this.showcase = data[0];
     });
+  }
+  getProjectsCount() {
+    this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
+
+      this.projectsCount = data.length;
+    });
+
   }
   ShowSingleShowcase(path) {
     this.router.navigate(['/makers/', path]);
