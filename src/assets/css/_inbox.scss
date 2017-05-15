@@ -24,7 +24,7 @@
 			}
 		}
 		span {
-			line-height: 1em;
+			line-height: 1rem;
 			color: $main-grey;
 		}
 		
@@ -44,7 +44,7 @@
 					display: none;
 				}
 				i {
-					font-size: 1.5em;
+					font-size: 1.5rem;
 				}
 			}
 			.selectall {
@@ -54,21 +54,21 @@
 				display: inline-block;
 			}
 			.blocked-users {
-					font-size: 1em;
+					font-size: 1rem;
 					height: 35px;
 					color: $shade-4;
 			}
 			.new-message {
 				margin-right: 23px;
 				color:$blue;
-				font-size: 1.3em;
+				font-size: 1.3rem;
 				padding-bottom: 7px;
 				&:hover {
 					cursor: pointer;
 				}
 				i {
 					padding-right: 10px;
-					font-size: 1.6em;
+					font-size: 1.6rem;
 				}
 				p {
 					display: inline-block;
@@ -171,7 +171,7 @@
 						overflow: hidden;
 						color: $main-grey;
 						position: relative;
-						font-size: 1.5em;
+						font-size: 1.5rem;
 						i {
 							float: right;
 						}
@@ -357,7 +357,7 @@
 				overflow: hidden;
 				color: #333333;
 				position: relative;
-				font-size: 1.5em;
+				font-size: 1.5rem;
 			}
 		}
 
