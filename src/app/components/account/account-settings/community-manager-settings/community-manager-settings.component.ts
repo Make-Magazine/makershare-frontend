@@ -81,8 +81,6 @@ uid;
         field_email_notifications:this.notifications.email_notifications,
         field_web_notifications:this.notifications.web_notifications
       }];
-      this.pm.postAction('maker_notification_settings_api/update_settings/',data).subscribe(data => {
-        this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
-    })
+      this.pm.postAction('maker_notification_settings_api/update_settings',data).subscribe()
   }
 }
