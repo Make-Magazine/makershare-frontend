@@ -137,17 +137,16 @@ export class TeamComponent implements OnInit {
   }
 
   SetValueChangeSubscriber(index,control,data?){
-    if(!this.project.field_maker_memberships.und[index]){
-      let member:field_collection_item_member = {
-        field_anonymous_member_name:{und:[{value:control['controls'].field_anonymous_member_name.value}]},
-        field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
-        field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
-      };
+    let member:field_collection_item_member = {
+      field_anonymous_member_name:{und:[{value:control['controls'].field_anonymous_member_name.value}]},
+      field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
+      field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
+    };
+    if(!this.project.field_maker_memberships.und[index])
       this.project.field_maker_memberships.und.push(member);
-      control.valueChanges.subscribe(values=>{
-        member.field_membership_role.und[0] = {value:values.field_membership_role};
-      });
-    }
+    control.valueChanges.subscribe(values=>{
+      this.project.field_maker_memberships.und[index].field_membership_role.und[0] = {value:values.field_membership_role};
+    });
   }
   InitRow(ControlName,index,data?) {
     return this.fb.group({

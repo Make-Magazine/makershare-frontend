@@ -1,4 +1,4 @@
-<!--<div id="page-404">
+<div id="page-404">
   <div class="image-container">
     <img src="./assets/images/background/404-Error-Page-Desktop.jpg" alt="" *showItBootstrap="['xl','lg']">
     <img src="./assets/images/background/404-Error-Tablet.jpg" alt="" *showItBootstrap="['md']">
@@ -11,7 +11,7 @@
     <ul class="list-unstyled">
       <li><a [routerLink]="['']">Home</a></li>
       <li><a [routerLink]="['projects']">Projects</a></li>
-      <li><a [routerLink]="['showcases']">Makers</a></li>
+      <li><a [routerLink]="['makers']">Makers</a></li>
     </ul>
     <div class="search-form-group">
       <form (keydown)="keyDownFunction($event)">
@@ -21,8 +21,8 @@
       </form>
     </div>
   </div>
-</div>-->
-
+</div>
+<!--
 <div id="site-down">
   <div class="image-container">
     <img src="./assets/images/background/Site-Down-Desktop.jpg" alt="" *showItBootstrap="['xl','lg']">
@@ -34,9 +34,9 @@
     <p>Somewhere out there right this second,</p>
     <p>an engineer is working hard to fix Maker Share.</p>
   </div>
-</div>
+</div>-->
 
-
+<!--
 <div id="splash">
   <div class="image-container">
     <img src="./assets/images/background/Splash-Desktop.jpg" alt="" *showItBootstrap="['xl','lg']">
@@ -44,8 +44,11 @@
     <img src="./assets/images/background/Splash-Mobile.jpg" alt=""*showItBootstrap="['sm','xs']">
   </div>
   <div class="text-block">
-    <h4>We are having technical difficulties.</h4>
-    <p>Somewhere out there right this second,</p>
-    <p>an engineer is working hard to fix Maker Share.</p>
+    <div class="signup-form-group">
+      <form (keydown)="keyDownFunction($event)">
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" placeholder="Sign-up for an invitation to join" #searchBox id="search-box-input-404"/>
+        <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
+      </form>
+    </div>
   </div>
-</div>
+</div>-->

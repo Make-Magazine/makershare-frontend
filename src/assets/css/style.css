@@ -1783,6 +1783,61 @@ i.dropdownIcon {
       margin-bottom: 5px;
       font-size: 1.2em; }
 
+#splash {
+  position: relative; }
+  #splash .text-block {
+    max-width: 320px;
+    margin: auto;
+    text-align: center;
+    bottom: 30px;
+    position: absolute;
+    color: #fff;
+    right: 0;
+    left: 0; }
+  #splash .signup-form-group {
+    position: relative; }
+    #splash .signup-form-group h3 {
+      color: white;
+      font-size: 1.8em; }
+    #splash .signup-form-group #search-box-input-404 {
+      width: 100%;
+      color: white;
+      background: transparent;
+      border: 0 none;
+      border-bottom: 1px solid white;
+      padding: 10px; }
+    #splash .signup-form-group .search-form-group {
+      position: relative;
+      max-width: 100%;
+      margin-top: 20px;
+      width: 400px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto; }
+    #splash .signup-form-group .go-search {
+      color: #fff;
+      font-size: 1.7em;
+      position: absolute;
+      bottom: 10px;
+      right: 0px;
+      cursor: pointer; }
+    #splash .signup-form-group input::-webkit-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input:-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input::-moz-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+    #splash .signup-form-group input:-ms-input-placeholder {
+      color: #fff;
+      font-size: 1.5em;
+      font-family: "Messina Sans Modern"; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -2614,7 +2669,7 @@ footer {
     padding: 10px;
     text-align: center;
     color: #FFF;
-    font-size: 1em; }
+    font-size: 1rem; }
     .profile-sidebar a:not([href]):not([tabindex]).edit-your-profile i {
       margin-right: 10px; }
   .profile-sidebar .single-icon {
@@ -2665,10 +2720,10 @@ footer {
       .profile-sidebar .profile-container .container-override .profile-message {
         display: block;
         width: 100%;
-        font-size: 1.2em; }
+        font-size: 1.2rem; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
-      font-size: 0.8em; }
+      font-size: 0.9rem; }
       .profile-sidebar .profile-container li a,
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
@@ -2683,7 +2738,7 @@ footer {
       color: #828282;
       margin-bottom: 10px;
       margin-top: 10px;
-      font-size: 1.4em;
+      font-size: 1.4rem;
       color: #4F4F4F;
       text-transform: capitalize; }
     .profile-sidebar .profile-container .placeholder-text {
@@ -2696,7 +2751,7 @@ footer {
         line-height: 120%;
         color: #828282;
         color: #BDBDBD;
-        font-size: 1em; }
+        font-size: 1rem; }
     .profile-sidebar .profile-container .image-container {
       position: relative;
       overflow: hidden; }
@@ -2745,7 +2800,7 @@ footer {
         margin: 0; }
     .profile-sidebar .profile-container .profile-info {
       margin-top: 16px;
-      font-size: 18px; }
+      font-size: 16px; }
       .profile-sidebar .profile-container .profile-info .userInfo {
         position: relative; }
         .profile-sidebar .profile-container .profile-info .userInfo .placeholder-text {
@@ -2772,7 +2827,7 @@ footer {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .profile-nickname {
         font-family: "Messina Sans Regular";
@@ -2802,7 +2857,7 @@ footer {
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
-        font-size: 1.5em; }
+        font-size: 1.5rem; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9em;
@@ -2811,7 +2866,7 @@ footer {
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
-        font-size: 0.7em;
+        font-size: 0.7rem;
         line-height: 130%;
         margin-left: 5px; }
       .profile-sidebar .profile-container .profile-info .bio {
@@ -2822,12 +2877,12 @@ footer {
         line-height: 100%;
         color: #828282;
         line-height: 150% !important;
-        font-size: 0.9em;
+        font-size: 0.9rem;
         color: #4F4F4F; }
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         margin-bottom: 5px; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
@@ -2881,7 +2936,7 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2em; }
+        font-size: 1.2rem; }
     .profile-sidebar .profile-container .report-div .report {
       line-height: 40px; }
   .profile-sidebar .report {
@@ -2905,7 +2960,7 @@ footer {
     margin-top: 50px; }
   .profile-content .empty-content .text-red {
     color: #ED1C24;
-    font-size: 1em; }
+    font-size: 1rem; }
   .profile-content .empty-content a {
     display: inline-block;
     text-align: center;
@@ -2953,7 +3008,7 @@ footer {
 .profile-header .stats li {
   padding: 0 10px;
   height: 24px;
-  font-size: 1.1em;
+  font-size: 1.1rem;
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
@@ -3526,7 +3581,7 @@ footer {
   .project-mobile-card .card-stats {
     padding: 2px;
     color: #BDBDBD;
-    font-size: 0.9em; }
+    font-size: 0.9rem; }
     .project-mobile-card .card-stats ul li {
       font-family: "Messina Sans Regular";
       font-size: 0.9em;
@@ -3605,7 +3660,7 @@ footer {
   margin-top: 50px; }
   .page-portfolio .empty-profile .text-red {
     color: #ED1C24;
-    font-size: 1.3em; }
+    font-size: 1.3rem; }
   .page-portfolio .empty-profile .empty-text {
     color: #4F4F4F;
     margin-bottom: 0; }
@@ -3667,7 +3722,7 @@ footer {
     color: #ED1C24;
     margin: 0px 0px 2px 0px; }
     .modal-content .profile-modal label .custom-control-indicator {
-      top: .15em; }
+      top: .15rem; }
   .modal-content .profile-modal textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
@@ -3937,7 +3992,7 @@ footer {
         font-size: 20px; }
       .modal-content .profile-modal .modal-body #maker-spaces .add-other span {
         padding-left: 8px;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         position: relative;
         top: -2px; }
     .modal-content .profile-modal .modal-body #links .form-group {
@@ -4060,7 +4115,7 @@ footer {
   -webkit-border-radius: 20px 20px 20px 20px;
   -khtml-border-radius: 20px 20px 20px 20px; }
   .profile-social-links a.social i {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     position: absolute;
     left: 5px;
     top: 11px; }
@@ -4703,6 +4758,9 @@ button:hover {
 
 .hideData {
   display: block; }
+  .hideData span {
+    font-size: 0.8em;
+    color: #4F4F4F; }
 
 .showData {
   display: block !important; }
@@ -4718,7 +4776,7 @@ button:hover {
   .toggleProfile i {
     padding: 7px;
     color: #00AEEF;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     width: auto !important; }
     .toggleProfile i.close {
       display: none; }
@@ -4790,18 +4848,18 @@ button:hover {
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
-  font-size: 1.1em;
+  font-size: 1.1rem;
   margin-top: 15px;
   margin-bottom: 5px; }
 #interests .cate-list {
   padding: 0 30px; }
   #interests .cate-list .remove-cate {
-    font-size: 1.5em; }
+    font-size: 1.5rem; }
   #interests .cate-list p.cate-name {
     margin: 3px 0;
     border-radius: 0;
-    font-size: 0.9em;
-    padding: 8px 1rem;
+    font-size: 0.9rem;
+    padding: 8px 1rrem;
     width: 60%;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
@@ -6529,7 +6587,7 @@ header.showcase-project .next {
 
 .report {
   color: #00AEEF;
-  font-size: 0.9em; }
+  font-size: 0.9rem; }
 
 textarea {
   border: 1px solid #DCDCDC;
@@ -6553,7 +6611,7 @@ textarea {
     color: #BDBDBD; }
 
 .license-report {
-  font-size: 0.8em;
+  font-size: 0.8rem;
   text-align: center; }
 
 .page-learn {
@@ -10128,7 +10186,8 @@ img {
     margin: auto;
     bottom: 10%; }
 
-  #site-down .text-block {
+  #site-down .text-block,
+  #splash .text-block {
     bottom: 25%; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
