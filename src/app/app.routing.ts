@@ -41,7 +41,8 @@ const APP_ROUTES: Routes = [
     { path: 'maker-camp', component: MakerCampComponent},
     { path: 'maker-shed', component: MakerShedComponent},
     { path: 'intel-innovation-programs', component: IntelInnovationComponent},
-    { path: '**', component: Four04Component },
+    { path: '404', component: Four04Component },
+    { path: '**', redirectTo:'/404' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

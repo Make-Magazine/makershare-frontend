@@ -282,6 +282,40 @@ header {
     
   }
 
-  }
+}
 
+header.with-404 {
+    position: relative;
+    z-index: 101;
+    margin-top: -113px !important;
+    nav {
+        &.navbar {
+            background-color: transparent;
+        }
+        .collapse.navbar-collapse {
+            display: none !important;
+        }
+    }
+    &.main-header {
+        background-color: transparent;
+        .login-block li {
+            color:#fff;
+            img {
+                filter: brightness(0) invert(1);
+                &:hover {
+                    filter: brightness(2) invert(1); 
+                }
+            }
+            &.min-user-img {
+                img,img:hover {
+                    filter: none;
+
+                }
+            }
+        } 
+    }
+}
+#page-404 {
+    margin-top: -113px;
+}
 

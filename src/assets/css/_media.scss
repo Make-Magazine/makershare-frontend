@@ -110,7 +110,8 @@
         } 
         .add-controls {
             .btn-tab, a:not([href]):not([tabindex]).btn-tab {
-                padding: 9px 10px 25px;   
+                padding: 9px 10px 25px;
+                font-size: 1.1rem;   
             }
         }
         .project-create-buttons {

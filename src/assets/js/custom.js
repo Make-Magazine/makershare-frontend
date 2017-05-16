@@ -169,7 +169,7 @@ $(document).ready(function () {
 	makerShare.initAnimationsCheck();
 	makerShare.checkScrollForParallax();
 
-
+	
 });
 
 
@@ -185,6 +185,7 @@ $(window).scroll(function(){
 
   if (scroll >= 100 && !sticky.hasClass('shrink')) {
 		sticky.addClass('shrink');
+		$('html,body').animate().stop();
 	} 
   if (scroll < 100 && sticky.hasClass('shrink')) {
 		sticky.removeClass('shrink');
