@@ -381,7 +381,11 @@ a:not([href]):not([tabindex]).btn-fit {
 a:not([href]):not([tabindex]).btn-main {
   color: #fff;
   background-color: #00AEEF;
-  border-color: #009dd7; }
+  border-color: #009dd7;
+  font-size: 1rem; }
+  .btn-main i,
+  a:not([href]):not([tabindex]).btn-main i {
+    font-size: 1rem; }
   .btn-main:focus,
   a:not([href]):not([tabindex]).btn-main:focus {
     color: #fff;
@@ -2390,7 +2394,10 @@ footer {
         text-transform: none;
         line-height: 110%;
         color: #828282;
+        font-size: 1rem;
         color: #fff !important; }
+        .banner #homeBanner .button-container-main-1 .btn-main i {
+          font-size: 1rem; }
 
 .carousel-slider .slick-prev {
   left: 0;
@@ -2509,7 +2516,10 @@ footer {
         text-transform: none;
         line-height: 110%;
         color: #828282;
+        font-size: 1rem;
         color: #fff !important; }
+        .info-w-parallax .info-card .button-container-onboarding .btn-main i {
+          font-size: 1rem; }
 
 .parallax-bg {
   width: 100%;

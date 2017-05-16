@@ -71,6 +71,10 @@ a:not([href]):not([tabindex]).btn-main{
     color: #fff;
     background-color: $main-button-1;
     border-color: $main-button-1*0.9;
+    font-size: 1rem;
+    i {
+        font-size: 1rem;    
+    }
     &:focus {
         color: #fff;
         background-color: $main-button-1*0.8;

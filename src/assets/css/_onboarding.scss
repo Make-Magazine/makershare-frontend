@@ -41,7 +41,11 @@
         padding: 15px 0px;
         width: 167px;
         @include body-font-1 ();
+        font-size: 1rem;
         color: #fff !important;
+        i {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -185,7 +189,11 @@
         width: 167px !important;
         padding: 15px 0px;
         @include body-font-1 ();
+        font-size: 1rem;
         color: #fff !important;
+        i {
+          font-size: 1rem;        
+        }
       }
     }
   }
