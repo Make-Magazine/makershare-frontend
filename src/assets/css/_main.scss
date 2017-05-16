@@ -1014,6 +1014,12 @@ font-size: 16px;
 
 #site-down {
     position: relative;
+     .image-container {
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
     .text-block  {
         max-width: 500px;
         margin: auto;
@@ -1040,6 +1046,12 @@ font-size: 16px;
 
 #splash {
     position: relative;
+     .image-container {
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
     .text-block {
         max-width: 320px;
         margin: auto;
