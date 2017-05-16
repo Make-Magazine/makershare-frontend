@@ -10,7 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 export class AppComponent implements OnInit {
   showLoader: boolean;
-
+public location = '' ;
   constructor(
     private loaderService: LoaderService,
     private userService: UserService,
@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 1);
         }, 0);
       });
-
    }
 
   ngOnInit() {

@@ -226,6 +226,28 @@ header .noti-number {
   font-weight: bold;
   z-index: 1; }
 
+header.with-404 {
+  position: relative;
+  z-index: 101;
+  margin-top: -113px !important; }
+  header.with-404 nav.navbar {
+    background-color: transparent; }
+  header.with-404 nav .collapse.navbar-collapse {
+    display: none !important; }
+  header.with-404.main-header {
+    background-color: transparent; }
+    header.with-404.main-header .login-block li {
+      color: #fff; }
+      header.with-404.main-header .login-block li img {
+        filter: brightness(0) invert(1); }
+        header.with-404.main-header .login-block li img:hover {
+          filter: brightness(2) invert(1); }
+      header.with-404.main-header .login-block li.min-user-img img, header.with-404.main-header .login-block li.min-user-img img:hover {
+        filter: none; }
+
+#page-404 {
+  margin-top: -113px; }
+
 .page-create-profile {
   background-color: #F2F2F2;
   margin: 0px; }
@@ -2396,8 +2418,12 @@ footer {
         color: #828282;
         font-size: 1rem;
         color: #fff !important; }
-        .banner #homeBanner .button-container-main-1 .btn-main i {
-          font-size: 1rem; }
+        .banner #homeBanner .button-container-main-1 .btn-main::before {
+          content: "+";
+          font-size: 2rem;
+          position: relative;
+          top: 4px;
+          right: 6px; }
 
 .carousel-slider .slick-prev {
   left: 0;
@@ -2518,8 +2544,12 @@ footer {
         color: #828282;
         font-size: 1rem;
         color: #fff !important; }
-        .info-w-parallax .info-card .button-container-onboarding .btn-main i {
-          font-size: 1rem; }
+        .info-w-parallax .info-card .button-container-onboarding .btn-main::before {
+          content: "+";
+          font-size: 2rem;
+          position: relative;
+          top: 4px;
+          right: 6px; }
 
 .parallax-bg {
   width: 100%;
@@ -2680,7 +2710,7 @@ footer {
     padding: 10px;
     text-align: center;
     color: #FFF;
-    font-size: 1.2rem; }
+    font-size: 1.1rem; }
     .profile-sidebar a:not([href]):not([tabindex]).edit-your-profile i {
       margin-right: 10px; }
   .profile-sidebar .single-icon {
@@ -2896,6 +2926,9 @@ footer {
         margin-bottom: 5px;
         cursor: pointer;
         text-decoration: none; }
+      .profile-sidebar .profile-container .profile-info .makerspaces div,
+      .profile-sidebar .profile-container .profile-info .websites div {
+        font-size: 1.2rem; }
       .profile-sidebar .profile-container .profile-info .awards {
         margin-top: 20px;
         margin-bottom: 12px; }
@@ -10191,7 +10224,8 @@ img {
   .page-create-project-why .how-to .durations i.dropdownIcon {
     right: 30px; }
   .page-create-project-why .add-controls .btn-tab, .page-create-project-why .add-controls a:not([href]):not([tabindex]).btn-tab {
-    padding: 9px 10px 25px; }
+    padding: 9px 10px 25px;
+    font-size: 1.1rem; }
   .page-create-project-why .project-create-buttons p {
     padding: 10px; }
   .page-create-project-why .project-create-buttons .controls {

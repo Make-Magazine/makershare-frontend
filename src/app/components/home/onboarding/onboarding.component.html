@@ -4,7 +4,7 @@
     <h1>A community of makers sharing what they can do.</h1>
     <img src="./assets/images/makers_intro.png" alt="" class="img-fluid" />
     <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
-      <a class="btn btn-main btn-sharp" (click)="auth.login()"> <i class="fa fa-lg fa-plus"></i> Add a Project</a>
+      <a class="btn btn-main btn-sharp" (click)="auth.login()">Add a Project</a>
     </div>
   </div>
 </section>
@@ -18,9 +18,7 @@
             <div class="info-card">
               <h2>Portfolios</h2>
               <h3>From Passion to Profession</h3>
-              <p>Your Maker Portfolio organizes and documents your work, whether you’re a weekend Maker or a professional. Tell
-                the story behind each project: what it is, how you made it and why. What inspired you, who helped you, what
-                went right, what went wrong, what have you learned?</p>
+              <p>Your Maker Portfolio organizes and documents your work, whether you’re a weekend Maker or a professional. Tell the story behind each project: what inspired you, what went right or wrong, what will you make next?</p>
             </div>
           </div>
         </div>
@@ -51,8 +49,7 @@
               <h3>Create Your Maker Portfolio</h3>
               <div class="button-container-onboarding">
                 <div class="project-add button-container-main-1" *ngIf="!auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" (click)="auth.login()"> <i class="fa fa-lg fa-plus"></i> Add a Project
-                  </a>
+                  <a class="btn btn-main btn-sharp" (click)="auth.login()">Add a Project</a>
                 </div>
               </div>
             </div>
