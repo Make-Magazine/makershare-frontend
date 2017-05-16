@@ -242,6 +242,7 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
+      console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
