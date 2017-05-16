@@ -43,8 +43,12 @@
         @include body-font-1 ();
         font-size: 1rem;
         color: #fff !important;
-        i {
-          font-size: 1rem;
+        &::before {
+            content: "+";
+            font-size: 2rem;
+            position: relative;
+            top: 4px;
+            right: 6px;
         }
       }
     }
@@ -191,8 +195,12 @@
         @include body-font-1 ();
         font-size: 1rem;
         color: #fff !important;
-        i {
-          font-size: 1rem;        
+        &::before {
+            content: "+";
+            font-size: 2rem;
+            position: relative;
+            top: 4px;
+            right: 6px;
         }
       }
     }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { SolrService } from '../../d7services/solr/solr.service';
+import { UserService } from '../../d7services';
+import { Auth } from '../auth.service';
+import { SearchBoxComponent } from '../../components/general/header/search-box/search-box.component';
+import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 
 @Component({
   selector: 'app-four04',
@@ -8,11 +12,16 @@ import { SolrService } from '../../d7services/solr/solr.service';
 })
 export class Four04Component implements OnInit {
   searchQuery: string = '';
+  showSearchBox: boolean = false;
+  user_photo: string;
+  displayRegistration:boolean = false;
   constructor(
     private router: Router,
     private solrService: SolrService,
+    private userService: UserService,
+    public auth: Auth,
+    private profilePictureService: ProfilePictureService,
   ) { }
-
   ngOnInit() {
 
   }
@@ -46,5 +55,17 @@ export class Four04Component implements OnInit {
   clearSearch() {
     this.searchQuery = '';
   }
+  openSearchBox() {
+    this.showSearchBox = true;
+  }
 
+  onNotify(event) {
+    this.showSearchBox = false;
+  }
+  showRegistration(){
+    this.displayRegistration = true;
+  }
+  hideRegisteration(event){
+    this.displayRegistration = false;   
+  }
 }
