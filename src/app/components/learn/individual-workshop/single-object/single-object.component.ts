@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ViewService } from '../../../../d7services';
 
 @Component({
@@ -20,6 +20,7 @@ export class SingleObjectComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private viewService:ViewService,
+    private router: Router,
   ){
 
   }
@@ -43,6 +44,9 @@ export class SingleObjectComponent implements OnInit {
       });
       this.ObjectsList = data;
       // console.log(this.ObjectsList);
+      if(data.length == 0) {
+         this.router.navigate(['**']);
+      }
 
     },err=>{console.log(err)
     },()=>{
