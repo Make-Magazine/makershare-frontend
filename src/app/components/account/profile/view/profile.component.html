@@ -40,10 +40,9 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
 									<ul class="list-unstyled location">
-										<!--<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
-										</li>-->
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
+										</li>
 										<li *ngIf="!ProfileInfo.address || ProfileInfo.address == ''"><p class="placeholder-text">{{PlaceholderText.address}}</p></li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
@@ -199,8 +198,7 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
@@ -231,7 +229,7 @@
 								<!-- Start Bio -->
 								<div class="bio hideData" *ngIf="ProfileInfo.bio">
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
-									<!--<hr *ngIf="ProfileInfo.bio">-->
+									<hr *ngIf="ProfileInfo.bio">
 								</div>
 								<!-- End Bio -->
 								<div class="hideData 1" *ngIf="emptySocial">
@@ -292,7 +290,7 @@
 								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
 									<p  class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
-										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_ != ''">
+										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
@@ -350,9 +348,9 @@
 						</div>
 						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
 							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
-								<li *ngIf="ProjectsCount">
-									<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
-									<p *ngIf="ProjectsCount == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCount}}</span> project</p>
+								<li *ngIf="ProjectsCountPublic">
+									<p *ngIf="ProjectsCountPublic > 1"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
+									<p *ngIf="ProjectsCountPublic == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCountPublic}}</span> project</p>
 								</li>
 								<li *ngIf="profile.total_likes != 0">
 									<p><span class="number">{{profile.total_likes}}</span> project likes</p>
@@ -396,7 +394,7 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
-									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCount]="ProjectsCount" [LikesCount]="profile.total_likes"
+									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic" [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
 									 [ViewsCount]="profile.views_count"></app-edit-portfolio>
 								</div>
 							</div>

@@ -100,6 +100,9 @@ export class ChallengeDataComponent implements OnInit {
             // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
           });
         }//end if idFromUrl
+        else {
+          this.router.navigate(['**']);
+        }
       });//end nodeService
     }
 

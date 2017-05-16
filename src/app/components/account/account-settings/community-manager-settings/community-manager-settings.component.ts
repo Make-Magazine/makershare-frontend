@@ -39,8 +39,7 @@ uid;
    
   }
   checkedEmail(num, event) {
-    console.log(num);
-    console.log(event);
+
     // add to checkedArr
     if (event.target.checked === true) {
       if (this.email_notifications.length === 0) {
@@ -88,6 +87,7 @@ uid;
       this.pm.postAction('maker_notification_settings_api/update_settings/',data).subscribe(data => {
         this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
     })
+
   }
   deleteNotificationSettings(e){
         e.preventDefault();
