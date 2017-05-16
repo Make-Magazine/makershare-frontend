@@ -68,7 +68,7 @@ export class ChallengeCardComponent implements OnInit {
   getChallenges() {
     this.viewService.getView('shared-challenge-card', [['nid', this.challengeNid]]).subscribe(data => {
       this.challenge = data[0];
-      console.log(this.challenge)
+      // console.log(this.challenge)
       //calculate days difference
       if (this.challenge) {
         var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds

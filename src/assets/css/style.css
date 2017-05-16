@@ -10191,7 +10191,8 @@ img {
   .page-create-project-why .how-to .durations i.dropdownIcon {
     right: 30px; }
   .page-create-project-why .add-controls .btn-tab, .page-create-project-why .add-controls a:not([href]):not([tabindex]).btn-tab {
-    padding: 9px 10px 25px; }
+    padding: 9px 10px 25px;
+    font-size: 1.1rem; }
   .page-create-project-why .project-create-buttons p {
     padding: 10px; }
   .page-create-project-why .project-create-buttons .controls {
