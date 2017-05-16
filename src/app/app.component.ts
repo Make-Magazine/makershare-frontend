@@ -15,7 +15,7 @@ public location = '' ;
     private loaderService: LoaderService,
     private userService: UserService,
     private mainService: MainService,
-    private router: Router,
+    public router: Router,
   ) {
     router.events
       .filter(event => event instanceof NavigationEnd)
