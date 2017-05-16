@@ -1222,7 +1222,8 @@ body {
   position: absolute;
   z-index: 1000;
   top: 14px;
-  left: 0; }
+  left: 0;
+  font-size: 0.79rem !important; }
   .card-type-grey-2 p,
   .card-type-blue p,
   .card-type-grey p {
