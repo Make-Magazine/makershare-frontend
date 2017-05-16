@@ -587,8 +587,7 @@ a:not([href]):not([tabindex]).btn-soft-grey {
   margin-top: 20px; }
 
 .button-container-sec-2 {
-  border: 2px solid #828282;
-  margin-left: 20px; }
+  border: 2px solid #828282; }
   .button-container-sec-2:hover {
     border: 2px solid #686868 !important; }
 
@@ -5857,7 +5856,6 @@ button:hover {
   color: #333333;
   background-color: #F2F2F2; }
   .page-project .top-content-wrapper {
-    padding-top: 20px;
     margin-bottom: 10px; }
     .page-project .top-content-wrapper h2 {
       font-size: 35px;
@@ -5901,12 +5899,14 @@ button:hover {
       .page-project .top-content-wrapper .project-likes span {
         font-size: 14px;
         color: #828282; }
-    .page-project .top-content-wrapper .project-views img {
-      width: 18px;
-      height: auto; }
-    .page-project .top-content-wrapper .project-views span {
-      font-size: 14px;
-      color: #828282; }
+    .page-project .top-content-wrapper .project-views {
+      padding-top: .1rem; }
+      .page-project .top-content-wrapper .project-views img {
+        width: 18px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-views span {
+        font-size: 14px;
+        color: #828282; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
@@ -7066,9 +7066,6 @@ textarea {
       color: #828282;
       width: 85%;
       margin: auto; }
-  .page-showcase .showcases-container,
-  .page-single-showcase .showcases-container {
-    padding: 25px 15px 0px 15px; }
 
 .go-back,
 .go-previous,
@@ -8667,6 +8664,8 @@ img {
   .page-challenge-summary .challenge-card .challene-card-footer-3, .page-challenge-summary-closed .challenge-card .challene-card-footer-3, .page-enter-challenge .challenge-card .challene-card-footer-3 {
     margin-top: 10px;
     margin-bottom: 10px; }
+    .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-sec-2 {
+      margin-left: 10px; }
   .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
     color: #fff;
     height: 100%;
@@ -8703,7 +8702,6 @@ img {
       text-transform: none;
       line-height: 130%;
       color: #828282;
-      min-height: 116px;
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-challenge-summary-closed .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-enter-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
@@ -10226,7 +10224,8 @@ img {
   .page-create-project-why .how-to .durations i.dropdownIcon {
     right: 30px; }
   .page-create-project-why .add-controls .btn-tab, .page-create-project-why .add-controls a:not([href]):not([tabindex]).btn-tab {
-    padding: 9px 10px 25px; }
+    padding: 9px 10px 25px;
+    font-size: 1.1rem; }
   .page-create-project-why .project-create-buttons p {
     padding: 10px; }
   .page-create-project-why .project-create-buttons .controls {
@@ -10241,15 +10240,53 @@ img {
 
   #site-down .text-block,
   #splash .text-block {
-    bottom: 25%; } }
+    bottom: 25%; }
+
+  /* home page reorder items */
+  .front .container .row .item-0 {
+    order: 2; }
+  .front .container .row .item-1 {
+    order: 1; }
+  .front .container .row .item-2 {
+    order: 3; }
+  .front .container .row .item-3 {
+    order: 4; }
+  .front .container .row .item-4 {
+    order: 5; }
+  .front .container .row .item-5 {
+    order: 6; }
+  .front .container .row .item-6 {
+    order: 7; }
+  .front .container .row .item-7 {
+    order: 8; }
+  .front .container .row .item-8 {
+    order: 9; }
+  .front .container .row .item-9 {
+    order: 10; }
+  .front .container .row .item-10 {
+    order: 12; }
+  .front .container .row .item-11 {
+    order: 11; }
+  .front .container .row .item-12 {
+    order: 13; }
+  .front .container .row .item-13 {
+    order: 14; }
+  .front .container .row .item-14 {
+    order: 15; }
+  .front .container .row .item-15 {
+    order: 16; }
+  .front .container .row .item-16 {
+    order: 17; }
+  .front .container .row .item-17 {
+    order: 18; }
+
+  .page-challenge-summary .challenge-cover .challenge-card .left-side .button-container-sec-2 {
+    margin-left: 0px; } }
 @media (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding: 12px 0px 0px 0px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
       display: none; }
-
-  .project .card-stats ul {
-    width: 50%; }
 
   .page-portfolio .nav-portfolio .nav .btn-white-2 {
     width: 100%; }
@@ -10275,7 +10312,8 @@ img {
     padding-right: 0px; }
 
   .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2 {
-    width: 100%; }
+    width: 100%;
+    margin-left: 0px; }
     .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn-main-2 {
       width: 100%; }
   .page-challenge-summary .challenge-card .right-side {
@@ -10387,6 +10425,7 @@ img {
       position: inherit;
       top: 0;
       left: 0;
+      min-height: 265px;
       height: auto; }
     .project.card .card-block {
       padding: 8px;
@@ -10415,7 +10454,7 @@ img {
       text-align: left; }
     footer .container .social-footer {
       overflow: hidden;
-      width: 160px;
+      width: 140px;
       margin: auto; }
 
   .page-showcase .showcase-card-backlayer .showcase-card .showcase-card-footer-2 {
@@ -10455,7 +10494,7 @@ img {
     padding: 10px 0px !important; }
   .front .front-challenge-card .card-partnership-mobile {
     right: 10px;
-    width: 190px; }
+    max-width: 190px; }
   .front .learn-card .container-content {
     padding-top: 0px !important;
     padding-bottom: 0px !important; }
@@ -10466,7 +10505,19 @@ img {
     width: 190px; }
 
   header.main-header.shrink nav.navbar {
-    padding: 6px 3px 6px !important; } }
+    padding: 6px 3px 6px !important; }
+
+  .filters {
+    margin-bottom: 8px; }
+
+  .page-explore .filters div {
+    border-left: none !important; }
+
+  .p-414 {
+    padding: 0px !important; }
+
+  .challenge-header h3 {
+    padding-top: 10px; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
     margin-left: 8px; }

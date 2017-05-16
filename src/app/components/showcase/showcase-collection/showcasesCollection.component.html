@@ -21,7 +21,7 @@
       </div>
     </div>
     <!-- End filters -->
-    <div class="container showcases-container">
+    <div class="container showcases-container p-414">
       <div class="container" *ngFor="let showcase of showcases">
       <app-showcase-card [showcaseNid]="showcase.nid"></app-showcase-card>
       </div>
@@ -31,7 +31,7 @@
       <!-- End col-md-6 -->
     </div>
   </div>
-  <div class="text-center pt-3 pb-5">
+  <div class="text-center pt-3 pb-5" *ngIf="!hideloadmore">
     <div *ngIf="!hideloadmore">
       <a *ngIf="!hideloadmore" class="btn btn-load-more" (click)="loadmore()">Load more</a>
     </div>

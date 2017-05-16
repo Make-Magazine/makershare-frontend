@@ -28,7 +28,7 @@
           <li> 
             <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
           </li>
-          <li class="project-views pt-1">
+          <li class="project-views">
             <img src="./assets/images/icons/views.png" alt="">
             <span>{{project.views_count}}</span>
           </li>
@@ -39,7 +39,7 @@
     <div class="col-lg-4 col-md-12 right-side">
       <div class="card-container">
         <div class="card">
-          <div class="projects-circle">
+          <div class="projects-circle" *ngIf="showcaseInfo">
             <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="showcaseInfo">
               <a *ngIf="showcaseInfo.index > 0" (click)="SwitchProjectFunc($event,'back')" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
               <h3 class=" showcase-nav" *ngIf="showcaseInfo.name"><a>{{showcaseInfo.name}}: project {{showcaseInfo.index+1}} of {{showcaseInfo.length}}</a></h3>

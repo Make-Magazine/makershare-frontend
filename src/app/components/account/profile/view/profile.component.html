@@ -349,6 +349,7 @@
 						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
 							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
 								<li *ngIf="ProjectsCountPublic">
+									<p *ngIf="ProjectsCountPublic == 0"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
 									<p *ngIf="ProjectsCountPublic > 1"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
 									<p *ngIf="ProjectsCountPublic == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCountPublic}}</span> project</p>
 								</li>
