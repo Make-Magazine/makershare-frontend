@@ -176,16 +176,20 @@ $(document).ready(function () {
 $(window).on('load', function () {
 	//after the content is loaded we reinitialize all the waypoints for the animations
 	makerShare.initAnimationsCheck();
+		$('html,body').animate({ scrollTop: 0 }, 'slow');
+	
 });
 $(window).scroll(function(){
   var sticky = $('header'),
       scroll = $(window).scrollTop();
 
-  if (scroll >= 100) {
+  if (scroll >= 100 && !sticky.hasClass('shrink')) {
 		sticky.addClass('shrink');
 	} 
-  else {
+  if (scroll < 100 && sticky.hasClass('shrink')) {
 		sticky.removeClass('shrink');
+		$('html,body').animate({ scrollTop: 0 }, 'slow');
+		
 	}
 });
 
