@@ -2,7 +2,7 @@
 		color: $main-grey;
 		background-color: $main-bg;
 	.top-content-wrapper {
-		padding-top: 20px;
+		// padding-top: 20px;
 		margin-bottom: 10px;
 		h2 {
 			font-size: 35px;
@@ -75,6 +75,7 @@
 			// min-width: 60px;
 			// text-align: right;
 			// padding: 0px 12px;
+			padding-top: .1rem;
 			img {
 				width: 18px;
 				height: auto;
