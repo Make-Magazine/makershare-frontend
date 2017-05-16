@@ -45,7 +45,7 @@ export class AllResultComponent implements OnInit {
 
   getResultContent() {
     this.loaderService.display(true);
-    this.solrService.selectContent(this.term, 6, this.rowsNumber, this.type).subscribe(result => {
+    this.solrService.selectContent(this.term, 12, this.rowsNumber, this.type).subscribe(result => {
       //this.result = result.response.docs;
       this.result = this.result.concat(result.response.docs);
       this.resultCount = result.response.numFound;
@@ -57,7 +57,7 @@ export class AllResultComponent implements OnInit {
 
   getResultMaker() {
     this.loaderService.display(true);
-    this.solrService.selectUsers(this.term, 6, this.rowsNumber).subscribe(result => {
+    this.solrService.selectUsers(this.term, 12, this.rowsNumber).subscribe(result => {
       this.result = this.result.concat(result.response.docs);
       this.resultCount = result.response.numFound;
       this.loaderService.display(false);

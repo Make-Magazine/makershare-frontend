@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService,UserService } from '../../../../../d7services';
+import { ViewService, UserService, MainService } from '../../../../../d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MetaService } from '@nglibs/meta';
-
+import * as globals from '../../../../../d7services/globals';
 @Component({
   selector: 'profile-projects',
   templateUrl: './projects.component.html',
@@ -15,7 +15,9 @@ export class ProjectsComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private viewService: ViewService,
-    private meta: MetaService
+    private meta: MetaService,
+    private mainService: MainService,
+
   ) { }
   pages: number = 0;
   userName;
@@ -38,7 +40,7 @@ export class ProjectsComponent implements OnInit {
           this.userName = params['user_name'];
         });
         this.userService.getIdFromUrl(this.userName).subscribe(data => {
-          // console.log(this.userName)
+           console.log(this.userName)
           this.uid = data.uid;
           this.getProjects();
           this.getCountProject();
@@ -65,8 +67,7 @@ export class ProjectsComponent implements OnInit {
       ['page', this.pages],
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
-      this.profile_projects = this.profile_projects.concat(res);  
-      // console.log(this.profile_projects);
+      this.profile_projects = this.profile_projects.concat(res);
       this.meta.setTitle(`Maker Share | Projects`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects Projects ');
@@ -78,11 +79,11 @@ export class ProjectsComponent implements OnInit {
   }
   /* function to get count projects */
   getCountProject() {
-    this.viewService.getView('maker_count_all_projects/' + this.uid).subscribe(data => {
-      this.countProject = data[0];
-    }, err => {
-
-    });
+    let body = { "data": this.uid};
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
+      this.countProject = res['_body'].replace(']', '').replace('[', '')
+        console.log("sadsadsad")
+    }, err => { });
   }
   /* end count function */
   loadMoreProject() {
