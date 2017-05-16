@@ -21,11 +21,23 @@
                       </div>
                     </div>
                   </div>
-                  <div class="challene-card-footer-3 hidden-sm-down d-flex flex-column flex-lg-row">
+                  <div class="challene-card-footer-3 hidden-md-down d-flex flex-column flex-lg-row">
                     <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 375">
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
                     </div>-->
                     <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+                    </div>
+                    <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
+                    <div class="ml-auto hidden-lg-down">
+                      <app-shared-buttons *ngIf="challenge.title" [PageTitle]="challenge.title" [PageDescription]="challenge.body" [PageImage]="challenge.cover_image"></app-shared-buttons>
+                    </div>
+                  </div>
+                  <div class="challene-card-footer-3 hidden-lg-up hidden-sm-down d-flex flex-column flex-lg-row">
+                    <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 375">
+                      <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
+                    </div>-->
+                    <div class="button-container-main-1 m-0 mb-2" *ngIf="challenge.status_id == 375">
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
                     <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
@@ -82,7 +94,7 @@
                         </div>
                       </div>
                       <div class="challene-card-footer-3 hidden-md-up">
-                        <div class="button-container-main-1 w-100 mb-2" *ngIf="challenge.status_id != 376">
+                        <div class="button-container-main-1 w-100 mb-2 ml-0" *ngIf="challenge.status_id != 376">
                           <span class="btn btn-main w-100" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                         </div>
                         <app-follow class="w-100" *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
