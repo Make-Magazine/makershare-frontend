@@ -181,11 +181,13 @@ $(window).scroll(function(){
   var sticky = $('header'),
       scroll = $(window).scrollTop();
 
-  if (scroll >= 100) {
+  if (scroll >= 100 && !sticky.hasClass('shrink')) {
 		sticky.addClass('shrink');
 	} 
-  else {
+  if (scroll < 100 && sticky.hasClass('shrink')) {
 		sticky.removeClass('shrink');
+		$('html').animate({ scrollTop: 0 }, 'slow');
+		
 	}
 });
 
