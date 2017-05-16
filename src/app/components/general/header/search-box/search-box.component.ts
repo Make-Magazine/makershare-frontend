@@ -25,19 +25,34 @@ export class SearchBoxComponent implements OnInit {
 
   goSearch() {
     this.solrService.autocomplete(this.searchQuery).subscribe(res=>{
-      if(res.response.numFound == 0){
-        // this.router.navigate(['/']);
-        this.boxStatus = false;
-        this.closeSearchBox();
-        return;
-      }else {
+
+
+      if( this.router.url.indexOf('/search') >= 0){
+        // in search page
           this.boxStatus = false;
           this.notify.emit();
           let navigationExtras: NavigationExtras = {
             queryParams: { 'query': encodeURIComponent(this.searchQuery) },
             // fragment: 'anchor'
           };
-          this.router.navigate(['/search'], navigationExtras);
+          this.router.navigate(['/search'], navigationExtras);        
+      }else {
+
+        if(res.response.numFound == 0){
+          // this.router.navigate(['/']);
+          this.boxStatus = false;
+          this.closeSearchBox();
+          return;
+        }else {
+            this.boxStatus = false;
+            this.notify.emit();
+            let navigationExtras: NavigationExtras = {
+              queryParams: { 'query': encodeURIComponent(this.searchQuery) },
+              // fragment: 'anchor'
+            };
+            this.router.navigate(['/search'], navigationExtras);
+        }
+
       }
     })
     
