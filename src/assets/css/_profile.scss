@@ -109,7 +109,7 @@
         padding: 10px;
         text-align: center;
         color: #FFF;
-        font-size: 1rem;
+        font-size: 1.2rem;
         i {
             margin-right: 10px;
         }
@@ -180,7 +180,7 @@
         }
         li,
         p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             a {
                 color: $title-color;
             }
@@ -316,7 +316,6 @@
             .badges {
                 @include desc-font-2 ();
                 color: $text-color-1;
-                font-size: 0.7rem;
                 line-height: 130%;
                 margin-left: 5px;
             }
@@ -337,6 +336,8 @@
                     color: $blue;
                     font-size: 1.2rem;
                     margin-bottom: 5px;
+                    cursor:pointer;
+                    text-decoration: none;
                 }
             }
             .post {}
@@ -419,6 +420,7 @@
         .report-div {
             .report {
                 line-height: 40px;
+                font-size: 1.2rem;
             }
         }
     }
@@ -997,7 +999,7 @@
         max-width: 230px;
         cursor:pointer;
         text-transform: none;
-        height: 46px;
+        height: 50px;
         margin-bottom: 5px;
     }
     .card-title-showcase {
@@ -1046,9 +1048,11 @@
         padding: 2px;
         color: $light-grey;
         ul {
-            width: 75%; 
+            // width: 75%; 
             li {
-                width: 80px;
+                display: inline;
+                margin-right: 25px;
+                // width: 80px;
                 @include desc-font-2();
                 img {
                     margin-right: 6px;
@@ -2033,7 +2037,7 @@
             // 12 pt
             margin-bottom: 5px;
             margin-top: 5px;
-            font-size: 0.8em !important;
+            font-size: 0.8rem !important;
             // color: $city-color
         }
         .maker-descripe {
@@ -2128,6 +2132,8 @@
         color: $light-grey;
         ul li {
             @include desc-font-2();
+            display: inline-block;
+            margin-right: 25px;
             img {
                 margin-right: 6px;
                 &.project-likes {
@@ -2151,7 +2157,7 @@
     padding: 50px 15px 15px;
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
-    min-height: 188px;
+    min-height: 140px;
     .icons-side-project {
         position: absolute;
         top: -2px;
@@ -2210,11 +2216,13 @@
         ul {
             margin-bottom: 0;
             li {
-                @include desc-font-2();
+                @include desc-font-3();
+                display: inline;
+                margin-right: 25px;
                 img {
                     margin-right: 6px;
                     &.project-likes {
-                        width: 12px;
+                        width: 10px;
                     }
                     &.project-views {
                         width: 20px;
@@ -2497,8 +2505,14 @@ button {
 .hideData {
     display: block;
     span{
-        font-size: 0.8em;
+        font-size: 0.8rem;
         color: #4F4F4F;
+    }
+    &.topic-tags {
+        span {
+            font-size: 1.2rem;
+
+        }
     }
 }
 .showData {
