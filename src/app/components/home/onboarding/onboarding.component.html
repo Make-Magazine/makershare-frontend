@@ -4,7 +4,7 @@
     <h1>A community of makers sharing what they can do.</h1>
     <img src="./assets/images/makers_intro.png" alt="" class="img-fluid" />
     <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
-      <a class="btn btn-main">Add a Project</a>
+      <a class="btn btn-main btn-sharp" (click)="auth.login()"> <i class="fa fa-lg fa-plus"></i> Add a Project</a>
     </div>
   </div>
 </section>
@@ -50,12 +50,8 @@
               <h2>Get Started</h2>
               <h3>Create Your Maker Portfolio</h3>
               <div class="button-container-onboarding">
-                <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" [routerLink]="['/project/create']"> + Add a Project
-                  </a>
-                </div>
                 <div class="project-add button-container-main-1" *ngIf="!auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" (click)="auth.login()"> + Add a Project
+                  <a class="btn btn-main btn-sharp" (click)="auth.login()"> <i class="fa fa-lg fa-plus"></i> Add a Project
                   </a>
                 </div>
               </div>
