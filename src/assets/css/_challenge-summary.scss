@@ -355,6 +355,9 @@
 		.challene-card-footer-3 {
 			margin-top: 10px;
 			margin-bottom: 10px;
+			.button-container-sec-2 {
+				margin-left: 10px;
+			}
 		}
     .card-container {
         color: $white;
@@ -387,7 +390,7 @@
 
             p {
                 @include body-font-2();
-                min-height: 116px;
+                // min-height: 116px;
                 color: white;
             }
         }

@@ -1,5 +1,5 @@
 <div class="row project-body">
-  <div class="region region-content col-lg-8 col-md-8">
+  <div class="region region-content col-lg-8 col-md-12">
     <div class="how-to-tab">
       <div class="project-body-content">
         <p [innerHTML]="project.field_how_to?.value" *ngIf="project.field_how_to?.value"></p>
@@ -7,7 +7,7 @@
       </div>
     </div>
   </div>
-  <aside class="side-bar col-lg-4 col-md-4">
+  <aside class="side-bar col-lg-4 col-md-12">
     <div class="sidebar-container">
       <div class="how-to-sidebar">
         <div class="difficulty-duration" *ngIf="project.field_difficulty || project.field_duration">
