@@ -1,5 +1,5 @@
 <div class="row project-body" *ngIf="project">
-  <div class="region region-content col-lg-8 col-md-8 pb-4">
+  <div class="region region-content col-lg-8 col-md-12 pb-4">
     <div class="project-story-tab">
       <div class="project-body-content">
         <video-viewer *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 0" [link]="project.field_show_tell_video.value"></video-viewer>
@@ -11,7 +11,7 @@
       <app-comment [nid]="project.nid"></app-comment>
     </div>
   </div>
-  <aside class="side-bar col-lg-4 col-md-4">
+  <aside class="side-bar col-lg-4 col-md-12">
     <div class="sidebar-container">
       <div class="project-story-tab">
         <div class="card aha" *ngIf="project.field_aha_moment.value">

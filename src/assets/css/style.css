@@ -5823,7 +5823,6 @@ button:hover {
   color: #333333;
   background-color: #F2F2F2; }
   .page-project .top-content-wrapper {
-    padding-top: 20px;
     margin-bottom: 10px; }
     .page-project .top-content-wrapper h2 {
       font-size: 35px;
@@ -5867,12 +5866,14 @@ button:hover {
       .page-project .top-content-wrapper .project-likes span {
         font-size: 14px;
         color: #828282; }
-    .page-project .top-content-wrapper .project-views img {
-      width: 18px;
-      height: auto; }
-    .page-project .top-content-wrapper .project-views span {
-      font-size: 14px;
-      color: #828282; }
+    .page-project .top-content-wrapper .project-views {
+      padding-top: .1rem; }
+      .page-project .top-content-wrapper .project-views img {
+        width: 18px;
+        height: auto; }
+      .page-project .top-content-wrapper .project-views span {
+        font-size: 14px;
+        color: #828282; }
     .page-project .top-content-wrapper .project-actions li {
       display: block;
       float: left; }
@@ -7032,9 +7033,6 @@ textarea {
       color: #828282;
       width: 85%;
       margin: auto; }
-  .page-showcase .showcases-container,
-  .page-single-showcase .showcases-container {
-    padding: 25px 15px 0px 15px; }
 
 .go-back,
 .go-previous,
@@ -10473,7 +10471,19 @@ img {
     width: 190px; }
 
   header.main-header.shrink nav.navbar {
-    padding: 6px 3px 6px !important; } }
+    padding: 6px 3px 6px !important; }
+
+  .filters {
+    margin-bottom: 8px; }
+
+  .page-explore .filters div {
+    border-left: none !important; }
+
+  .p-414 {
+    padding: 0px !important; }
+
+  .challenge-header h3 {
+    padding-top: 10px; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
     margin-left: 8px; }

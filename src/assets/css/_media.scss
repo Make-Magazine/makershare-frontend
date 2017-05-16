@@ -567,6 +567,25 @@
     header.main-header.shrink nav.navbar {
         padding: 6px 3px 6px !important;
     }
+    .filters {
+        margin-bottom: 8px;
+    }
+    .page-explore {
+        .filters {
+            div {
+                border-left: none !important;
+            }
+        }
+    }
+    // gen class to padding zero smaller than 414
+    .p-414 {
+        padding: 0px !important;
+    }
+    .challenge-header {
+        h3 {
+            padding-top: 10px;
+        }
+    }
 }
 
 
