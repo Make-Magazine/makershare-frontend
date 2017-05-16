@@ -4,7 +4,7 @@
 
 <div class="registration-page">
 <div id="search-box-layer">
-  <span (click)="closeReg()" class="lnr lnr-cross close-search-layer" aria-hidden="true"></span>
+  <!--<span (click)="closeReg()" class="lnr lnr-cross close-search-layer" aria-hidden="true"></span>-->
   <div class="container">
     <div class="row">
       <div class="col-md-12 search-form-group">
@@ -13,7 +13,7 @@
           <p> Maker needs to be 13 or older to use Maker Share. <br> to continue, please provide us with your legal name and
             birthdate.</p>
         </div>
-        <form>
+        <form action="https://makermedia.auth0.com/continue?state=" method="post">
           <div class="body-input">
             <div class="form-group name-section">
               <label for="firstname"> NAME </label>

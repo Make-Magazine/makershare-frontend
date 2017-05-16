@@ -109,7 +109,7 @@
         padding: 10px;
         text-align: center;
         color: #FFF;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         i {
             margin-right: 10px;
         }
@@ -338,6 +338,9 @@
                     margin-bottom: 5px;
                     cursor:pointer;
                     text-decoration: none;
+                }
+                div {
+                    font-size: 1.2rem;
                 }
             }
             .post {}

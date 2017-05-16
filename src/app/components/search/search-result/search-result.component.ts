@@ -97,7 +97,19 @@ export class SearchResultComponent implements OnInit {
   }
 
   itemSelected(item) {
-    this.searchQuery();
+    this.searchURL(item);
+  }
+
+
+  searchURL(item){ 
+    if(item.length > 0){
+      this.query = item;
+    }     
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'query': encodeURIComponent(this.query) },
+      // fragment: 'anchor'
+    };
+    this.router.navigate(['/search'], navigationExtras);    
   }
 
   searchQuery(){
@@ -243,7 +255,7 @@ export class SearchResultComponent implements OnInit {
   }
   keyDownFunction(event) {
     if(event.keyCode == 13 && this.searchQuery.length > 0) {
-      this.searchQuery();
+      this.searchURL('');
     }
   }
 }
