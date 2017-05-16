@@ -1790,6 +1790,9 @@ i.dropdownIcon {
 
 #site-down {
   position: relative; }
+  #site-down .image-container img {
+    width: 100%;
+    display: block; }
   #site-down .text-block {
     max-width: 500px;
     margin: auto;
@@ -1811,6 +1814,9 @@ i.dropdownIcon {
 
 #splash {
   position: relative; }
+  #splash .image-container img {
+    width: 100%;
+    display: block; }
   #splash .text-block {
     max-width: 320px;
     margin: auto;

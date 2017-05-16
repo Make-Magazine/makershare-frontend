@@ -6,13 +6,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="./../images/icons/m-favicon.ico">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/slick.css">
-    <link rel="stylesheet" href="../css/slick-theme.css" />
-    <link rel="stylesheet" href="../jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="../jquery-ui/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="../css/linear-style.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+      #page-404 {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      #page-404 .image-container img {
+        width: 100%;
+        display: block;
+      }
+      #page-404 .text-block {
+        position: absolute;
+        bottom: 10px;
+        right: 90px;
+      }
+      #page-404 .text-block h4, #page-404 .text-block p {
+        color: #fff;
+        font-family: "Messina Sans Regular";
+        font-weight: 500;
+      }
+      #page-404 .text-block h4 {
+        font-size: 2rem;
+      }
+      #page-404 .text-block p {
+        margin-bottom: 0;
+        font-size: 1.2rem;
+      }
+      #page-404 .text-block ul {
+        margin-top: 15px;
+      }
+      #page-404 .text-block ul li {
+        display: inline-block;
+      }
+      #page-404 .text-block ul li:not(:first-of-type) a {
+        padding-left: 10px;
+        border-left: 3px solid #fff;
+      }
+      #page-404 .text-block ul li a {
+        color: #00AEEF;
+        padding-right: 10px;
+        font-size: 1.4rem;
+      }
+      #page-404 .text-block ul li a:hover {
+        text-decoration: none;
+      }
+      #page-404 .text-block input::-webkit-input-placeholder {
+        color: #fff;
+        font-size: 1.5rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input:-moz-placeholder {
+        color: #fff;
+        font-size: 1.5rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input::-moz-placeholder {
+        color: #fff;
+        font-size: 1.5rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input:-ms-input-placeholder {
+        color: #fff;
+        font-size: 1.5rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .search-form-group {
+        position: relative;
+      }
+      #page-404 .search-form-group h3 {
+        color: white;
+        font-size: 1.8rem;
+      }
+      #page-404 .search-form-group #search-box-input-404 {
+        width: 100%;
+        color: white;
+        background: transparent;
+        border: 0 none;
+        border-bottom: 1px solid white;
+        padding: 10px;
+      }
+      #page-404 .search-form-group .search-form-group {
+        position: relative;
+        max-width: 100%;
+        margin-top: 20px;
+        width: 400px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      #page-404 .search-form-group .go-search {
+        color: #fff;
+        font-size: 1.3rem;
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+        cursor: pointer;
+      }
+      #page-404 .search-form-group .clear-search {
+        color: #fff;
+        bottom: 13px;
+        position: absolute;
+        right: 25px;
+        font-size: 1rem;
+      }
+      @media (max-width: 992px) {
+        #page-404 .text-block {
+            left: 0;
+            right: 0;
+            width: 320px;
+            margin: auto;
+            bottom: 10%;
+        }
+      }
+      @media (min-width: 1200px) {
+          #page-404 .text-block { 
+              bottom: 50px;
+              right: 160px;
+          }
+      }
+
+    </style>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,17 +161,8 @@
       </div>
     </div>
     <script src="../js/jquery-3.1.1.min.js"></script>
-    <!--<script src="../jquery-ui/jquery-ui.min.js"></script>-->
     <script src="../js/tether.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/slick.js"></script>
-    <script src="../ckeditor/ckeditor.js"></script>
-    <script src="../js/jquery.waypoints.min.js"></script>
-    <script src="../js/epubjs/build/epub.min.js"></script>
-    <script src="../js/epubjs/build/libs/zip.min.js"></script>
-    <!--<script src="../js/epubjs/reader/js/hooks.min.js"></script>-->
-    <script src="../js/epubjs/reader/js/reader.min.js"></script>
-    <!--<script src="../js/epubjs/reader/js/libs/screenfull.min.js"></script>-->
     <script src="../js/custom.js"></script>
   </body>
 </html>
