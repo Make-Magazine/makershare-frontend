@@ -1,5 +1,149 @@
-<div *ngIf="projectCard && type == 'grid' && projectCard.path">
-  <div class="project card" *hideItBootstrap="['sm','md','lg', 'xl']">
+<div *showItBootstrap="['md','lg', 'xl']">
+  <div *ngIf="projectCard && type == 'grid' && projectCard.path">
+    <div class="project card">
+      <div class="card-type-blue">
+        <div class="type-layer-2">
+          Project
+        </div>
+      </div>
+      <div class="image-top">
+        <div class="overlay-portfolio" [routerLink]="['/projects/',projectCard.path]"></div>
+        <div class="profile-edit-buttons">
+          <div class="d-flex flex-column m-auto profile-edit-buttons">
+            <p [routerLink]="['/projects/',projectCard.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>
+            <div class="d-flex">
+              <div *ngIf="Visibility != 1115" class="d-flex flex-column">
+                <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              </div>
+              <div *ngIf="Visibility != 1115" class="d-flex flex-column">
+                <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              </div>
+              <div [ngClass]="{'ml-auto': Visibility != 1115,'m-auto': Visibility == 1115}" class="d-flex flex-column ml-auto">
+                <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
+              </div>
+            </div>
+            <p class="project-drag"><i class="fa fa-lg fa-arrows-alt"></i> Drag Project Tile To Reorder</p>
+          </div>
+        </div>
+        <img class="card-img-top" *ngIf="projectCard.cover_photo" src="{{projectCard.cover_photo}}" alt="">
+      </div>
+      <div class="card-block d-flex flex-column justify-content-around">
+        <div class="d-flex flex-column">
+          <div class="icons-side-project d-flex flex-row">
+            <div class="project-icon" *ngFor="let badge of badges;">
+              <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+            </div>
+          </div>
+          <div class="d-flex flex-row">
+            <div class="profiel-pic-container mr-2">
+              <img *ngIf="!projectCard.maker_photo" src="./assets/images/Gears-Grey.svg" alt="">
+              <img *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
+            </div>
+            <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.path)">
+              <h4 class="card-title" innerHTML="{{projectCard.project_name}}"></h4>
+              <a (click)="userProfile(projectCard.first_name,projectCard.last_name)">
+                <p *ngIf="type == 'grid'" class="maker-name">By {{projectCard.first_name}} {{projectCard.last_name}}</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="content-side col d-flex flex-column justify-content-start">
+          <div class="card-stats mt-auto">
+            <ul class="list-unstyled d-flex justify-content-start align-items-center">
+              <li>
+                <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
+                <span *ngIf="!projectCard.number_of_likes">0</span>
+              </li>
+              <li>
+                <img src="./assets/images/icons/views.png" class="project-views" alt="">
+                <span *ngIf="projectCard.profile_views">{{projectCard.number_of_views}}</span>
+                <span *ngIf="!projectCard.profile_views">0</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Project with larg view-->
+  <div *ngIf="projectCard && type == 'showcase'">
+    <div class="project card lg-card">
+      <div class="image-top-lg">
+        <div class="overlay-portfolio" [routerLink]="['/projects/',projectCard.path]"></div>
+        <div class="profile-edit-buttons">
+          <div class=" d-flex flex-column m-auto">
+            <p [routerLink]="['/project/',Project.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>
+            <div class="d-flex">
+              <div *ngIf="Visibility != 1115" class="d-flex flex-column">
+                <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
+              </div>
+              <div  *ngIf="Visibility != 1115" class="d-flex flex-column">
+                <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
+              </div>
+              <div class="d-flex flex-column ml-auto">
+                <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
+              </div>
+            </div>
+            <p class="project-drag"><i class="fa fa-lg fa-arrows-alt"></i> Drag Project Tile To Reorder</p>
+          </div>
+        </div>
+        <img class="card-img-top" *ngIf="projectCard.cover_photo_lg" src="{{projectCard.cover_photo_lg}}" alt="">
+        <div class="card-type-blue">
+          <div class="type-layer-2">
+            Project
+          </div>
+        </div>
+        <div class="icons-side-project d-flex flex-row">
+          <div class="project-icon" *ngFor="let badge of badges;">
+            <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+          </div>
+        </div>
+        <!--<a class="project-maker-lg" (click)="userProfile(projectCard.first_name,projectCard.last_name)">
+          <p *ngIf="type == 'showcase'" class="maker-name">{{projectCard.first_name}} {{projectCard.last_name}}</p>
+        </a>-->
+        <div class="project-maker-lg d-flex flex-column" *ngIf="projectCard.field_team_members">
+          <span class="maker-name mt-0" *ngFor="let membership of projectCard.field_team_members">{{membership}}</span>
+        </div>
+        <div class="card-categories" *ngIf="projectCard.project_categories">
+          <span class="project-categories" *ngFor="let category of projectCard.project_categories">
+            <span>{{category}}<span class="tags-comma">,</span></span>
+          </span>
+        </div>
+      </div>
+      <div class="card-block container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.path)">
+              <h4 class="card-title-project" innerHTML="{{projectCard.project_name}}"></h4>
+            </div>
+          </div>
+          <div class="content-side col-md-3 d-flex flex-column justify-content-start">
+            <div class="card-stats mt-auto">
+              <ul class="list-unstyled d-flex justify-content-start align-items-center">
+                <li>
+                  <img *ngIf="projectCard.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
+                  <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
+                  <img *ngIf="!projectCard.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+                  <span *ngIf="!projectCard.number_of_likes">0</span>
+                </li>
+                <li>
+                  <img src="./assets/images/icons/views.png" class="project-views" alt="">
+                  <span *ngIf="projectCard.profile_views">{{projectCard.number_of_views}}</span>
+                  <span *ngIf="!projectCard.profile_views">0</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *hideItBootstrap="['lg', 'xl','md']">
+  <div class="project card" *ngIf="projectCard">
     <div class="card-type-blue">
       <div class="type-layer-2">
         Project
@@ -60,80 +204,6 @@
               <span *ngIf="!projectCard.profile_views">0</span>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Project with larg view-->
-<div *ngIf="projectCard && type == 'showcase'">
-  <div class="project card lg-card">
-    <div class="image-top-lg">
-      <div class="overlay-portfolio" [routerLink]="['/projects/',projectCard.path]"></div>
-      <div class="profile-edit-buttons">
-        <div class=" d-flex flex-column m-auto">
-          <p [routerLink]="['/project/',Project.path,'edit']" class="btn edit-project"><span>Edit Project</span></p>
-          <div class="d-flex">
-            <div *ngIf="Visibility != 1115" class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 371}" (click)="UpdateProjectVisibility(371)" class="btn project-private"><i class="fa fa-lg fa-eye-slash"></i><span>PRIVATE</span></p>
-            </div>
-            <div  *ngIf="Visibility != 1115" class="d-flex flex-column">
-              <p [ngClass]="{'active' : Visibility == 370}" (click)="UpdateProjectVisibility(370)" class="btn project-public"><i class="fa fa-lg fa-eye"></i><span>PUBLIC</span></p>
-            </div>
-            <div class="d-flex flex-column ml-auto">
-              <p (click)="OpenModal(confirmdelete)" class="btn ml-auto project-delete"><i class="fa fa-lg fa-times"></i> <span>DELETE </span></p>
-            </div>
-          </div>
-          <p class="project-drag"><i class="fa fa-lg fa-arrows-alt"></i> Drag Project Tile To Reorder</p>
-        </div>
-      </div>
-      <img class="card-img-top" *ngIf="projectCard.cover_photo_lg" src="{{projectCard.cover_photo_lg}}" alt="">
-      <div class="card-type-blue">
-        <div class="type-layer-2">
-          Project
-        </div>
-      </div>
-      <div class="icons-side-project d-flex flex-row">
-        <div class="project-icon" *ngFor="let badge of badges;">
-          <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
-        </div>
-      </div>
-      <!--<a class="project-maker-lg" (click)="userProfile(projectCard.first_name,projectCard.last_name)">
-        <p *ngIf="type == 'showcase'" class="maker-name">{{projectCard.first_name}} {{projectCard.last_name}}</p>
-      </a>-->
-      <div class="project-maker-lg d-flex flex-column" *ngIf="projectCard.field_team_members">
-        <span class="maker-name mt-0" *ngFor="let membership of projectCard.field_team_members">{{membership}}</span>
-      </div>
-      <div class="card-categories" *ngIf="projectCard.project_categories">
-        <span class="project-categories" *ngFor="let category of projectCard.project_categories">
-          <span>{{category}}<span class="tags-comma">,</span></span>
-        </span>
-      </div>
-    </div>
-    <div class="card-block container">
-      <div class="row">
-        <div class="col-md-9">
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(Project.path)">
-            <h4 class="card-title-project" innerHTML="{{projectCard.project_name}}"></h4>
-          </div>
-        </div>
-        <div class="content-side col-md-3 d-flex flex-column justify-content-start">
-          <div class="card-stats mt-auto">
-            <ul class="list-unstyled d-flex justify-content-start align-items-center">
-              <li>
-                <img *ngIf="projectCard.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
-                <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
-                <img *ngIf="!projectCard.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-                <span *ngIf="!projectCard.number_of_likes">0</span>
-              </li>
-              <li>
-                <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span *ngIf="projectCard.profile_views">{{projectCard.number_of_views}}</span>
-                <span *ngIf="!projectCard.profile_views">0</span>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
