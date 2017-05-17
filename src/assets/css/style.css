@@ -4940,7 +4940,7 @@ button:hover {
       margin: auto;
       text-align: center;
       padding-top: 40px;
-      color: #333333;
+      color: #4F4F4F;
       padding-bottom: 30px; }
     .page-explore .explore-header h6 {
       font-family: "Messina Sans Regular";
@@ -6524,7 +6524,8 @@ header.showcase-project .next {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        color: #4F4F4F; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -7143,7 +7144,7 @@ textarea {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
+        color: #4F4F4F;
         cursor: pointer; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
