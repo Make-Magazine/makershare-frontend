@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-  config.extraPlugins = 'videoembed,wordcount,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser';
+  config.extraPlugins = 'iframe,videoembed,wordcount,uploadimage,uploadwidget,widget,lineutils,filetools,notificationaggregator,widgetselection,filebrowser';
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [

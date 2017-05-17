@@ -3,7 +3,7 @@
   </div>
   <!-- End portfolio-header -->
   <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
-    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects(0)" [ngClass]="{'col-lg-6': DefaultView == 'grid','col-lg-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
+    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects(0);emitter.emit()" [ngClass]="{'col-lg-6': DefaultView == 'grid','col-lg-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
   </div>
      <div class="text-center pt-3 pb-5">
       <div *ngIf="!hideloadmoreproject && Projects.length > 0 ">
