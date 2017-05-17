@@ -9,7 +9,7 @@ import { field_number } from '../../';
 
 export interface ProjectForm extends Node{
 	field_story:{und:field_text[]};
-	field_aha_moment?:{und:field_text[]|[""]};
+	field_aha_moment?:{und:field_text[]};
 	field_uh_oh_moment?:{und:field_text[]};
 	field_teaser:{und:field_text[]};
 	field_tools?:{und:field_collection_item.field_collection_item_tool[]};
@@ -31,7 +31,7 @@ export interface ProjectForm extends Node{
 	field_mfba17_project_id?:{und:field_text[]};
 	field_cover_photo:{und:field_file_reference[]};
 	field_how_to?:{und:field_text[]};
-	field_categories:{und:number[]};
+	field_categories:{und:any[]};
 }
 
 export interface ProjectView extends Node{

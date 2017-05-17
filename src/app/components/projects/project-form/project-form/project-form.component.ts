@@ -366,7 +366,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.project.CheckIfReadyToPublic();
     }
     if(this.project.field_categories.und.length == 0){
-      this.project.field_aha_moment.und = [""];
+      this.project.field_categories.und = [""];
     }
     if (this.project.GetField("nid")) {
       delete this.project.field_original_team_members;
