@@ -4967,7 +4967,7 @@ button:hover {
       margin: auto;
       text-align: center;
       padding-top: 40px;
-      color: #333333;
+      color: #4F4F4F;
       padding-bottom: 30px; }
     .page-explore .explore-header h6 {
       font-family: "Messina Sans Regular";
@@ -5003,7 +5003,8 @@ button:hover {
           .page-explore .explore-header .explore-tags li a.btn:hover, .page-explore .explore-header .explore-tags li a.btn:active {
             color: #4F4F4F;
             border: 0.5px solid #4F4F4F !important;
-            background-color: transparent !important; }
+            background-color: transparent !important;
+            border: 1px solid #ED1C24 !important; }
         .page-explore .explore-header .explore-tags li a.active {
           color: #4F4F4F;
           background-color: #fff !important;
@@ -6550,7 +6551,8 @@ header.showcase-project .next {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        color: #4F4F4F; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -7169,7 +7171,7 @@ textarea {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
+        color: #4F4F4F;
         cursor: pointer; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
