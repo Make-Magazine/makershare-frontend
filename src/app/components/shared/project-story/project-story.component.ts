@@ -3,7 +3,7 @@ import { CommentService,UserService,ViewService } from '../../../d7services';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
 import { IComment } from '../../../models/challenge/comment';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-story',
@@ -18,8 +18,8 @@ export class ProjectStoryComponent implements OnInit {
     private commentService: CommentService,
     private fb: FormBuilder,
     private viewService: ViewService,
-    private userService: UserService
-
+    private userService: UserService,
+    private sanitizer:DomSanitizer,
   ) { }
   currentUser;
   CommenterNid;
@@ -32,6 +32,9 @@ export class ProjectStoryComponent implements OnInit {
     nid: 0,
   };
   ngOnInit() {
+    if(this.project.field_story){
+      this.project.field_story.value = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
+    }
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
     })

@@ -3,11 +3,11 @@
     <div class="top-content-wrapper">
       <div class="add-controls">
         <div class="container d-flex flex-row align-content-end flex-wrap">
-          <ul class="list-unstyled d-flex flex-row contorls">
+          <ul class="list-unstyled d-flex flex-row contorls" >
             <li><a (click)="current_active_tab = 'default-settings'" class="btn btn-tab" id="default-settings" [ngClass]="{'active': current_active_tab == 'default-settings' }">Account & Notification Settings</a></li>
-            <li><a (click)="current_active_tab = 'site-admin-settings'" class="btn btn-tab" id="site-admin-settings" [ngClass]="{'active': current_active_tab == 'site-admin-settings' }">Site Admin Settings</a></li>
-            <li><a (click)="current_active_tab = 'challenge-admin-settings'" class="btn btn-tab" id="challenge-admin-settings" [ngClass]="{'active': current_active_tab == 'challenge-admin-settings' }">Challenge Admin Settings</a></li>
-            <li><a (click)="current_active_tab = 'community-manager-settings'" class="btn btn-tab" id="community-manager-settings" [ngClass]="{'active': current_active_tab == 'community-manager-settings' }">Community Mgr Settings</a></li>
+            <li *ngIf="user_role == '3'"><a (click)="current_active_tab = 'site-admin-settings'" class="btn btn-tab" id="site-admin-settings" [ngClass]="{'active': current_active_tab == 'site-admin-settings' }">Site Admin Settings</a></li>
+            <li *ngIf="user_role == '6'"><a (click)="current_active_tab = 'challenge-admin-settings'" class="btn btn-tab" id="challenge-admin-settings" [ngClass]="{'active': current_active_tab == 'challenge-admin-settings' }">Challenge Admin Settings</a></li>
+            <li *ngIf="user_role == '4'"><a (click)="current_active_tab = 'community-manager-settings'" class="btn btn-tab" id="community-manager-settings" [ngClass]="{'active': current_active_tab == 'community-manager-settings' }">Community Mgr Settings</a></li>
           </ul>
         </div>
       </div>
