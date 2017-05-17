@@ -30,24 +30,18 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.UpdateProjects()
-    this.getProjects();
+    this.UpdateProjects(1)
   }
 
-  UpdateProjects() {
+  UpdateProjects(PageIndex:number) {
     let uid = localStorage.getItem('user_id');
-    this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid]]).subscribe((projects: ProjectCardPortfolio[]) => {
-      this.Projects = projects;
-
-    });
-  }
-
-  getProjects() {
-    let uid = localStorage.getItem('user_id');
-    this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid]]).subscribe((projects: ProjectCardPortfolio[]) => {
-      this.Projects = this.Projects.concat(projects);
-      
-      this. loadMoreVisibilty();
+    this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid],["page",PageIndex]]).subscribe((projects: ProjectCardPortfolio[]) => {
+      if(PageIndex == 1){
+        this.Projects = projects;
+      }else{
+        this.Projects = this.Projects.concat(projects);
+      }
+      this.loadMoreVisibilty();
     });
   }
 
@@ -56,13 +50,13 @@ export class PortfolioTabComponent implements OnInit {
 
     }, err => {
     }, () => {
-      this.UpdateProjects();
+      this.UpdateProjects(1);
     });
   }
   /* function load more  */
   loadMoreProject() {
     this.pages++;
-    this.UpdateProjects();
+    this.UpdateProjects(this.pages);
   }
   /* end function load more  */
   // Function to control load more button
