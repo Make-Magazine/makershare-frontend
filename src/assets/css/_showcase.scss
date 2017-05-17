@@ -97,7 +97,7 @@
             }
             .card-title {
                 @include card-header-font-lg();
-                color: $font-grey;
+                color: $shade-4;
                 cursor: pointer;        
             }
             .card-status {
