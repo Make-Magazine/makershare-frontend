@@ -74,29 +74,26 @@
 
 </header>
 <div id="page-404">
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Page-Desktop.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-down">
-        <!--<img src="./static-assets/images/background/404-Error-Page-Desktop.jpg" alt="">-->
-      </div>
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-sm-down hidden-lg-up">
-        <!--<img src="./static-assets/images/background/404-Error-Tablet.jpg" alt="">-->
-      </div>
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Mobile.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-up">
-        <!--<img src="./static-assets/images/background/404-Error-Mobile.jpg" alt="">-->
-      </div>
-      <div class="text-block">
-        <h4>error code: 404</h4>
-        <p>Looks like we can't find this page.</p>
-        <p>But we've for sure got these pages:</p>
-        <ul class="list-unstyled">
-          <li><a href="http://preview.makershare.com">Home</a></li>
-          <li><a href="http://preview.makershare.com/projects">Projects</a></li>
-          <li><a href="http://preview.makershare.com/makers">Makers</a></li>
-        </ul>
-        <div class="search-form-group">
-          <form>
-            <input type="text" name="searchQuery" placeholder="Or... you can search here" id="search-box-input-404"/>
-            <span class="lnr lnr-chevron-right go-search" aria-hidden="true" id="static-search-term"></span>
-          </form>
-        </div>
-      </div>
+  <div class="image-container">
+    <img src="./assets/images/background/404-Error-Page-Desktop.jpg" alt="" *showItBootstrap="['xl','lg']">
+    <img src="./assets/images/background/404-Error-Tablet.jpg" alt="" *showItBootstrap="['md']">
+    <img src="./assets/images/background/404-Error-Mobile.jpg" alt="" *showItBootstrap="['sm','xs']">
+  </div>
+  <div class="text-block">
+    <h4>error code: 404</h4>
+    <p>Looks like we can't find this page.</p>
+    <p>But we've for sure got these pages:</p>
+    <ul class="list-unstyled">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/projects']">Projects</a></li>
+      <li><a [routerLink]="['/makers']">Makers</a></li>
+    </ul>
+    <div class="search-form-group">
+      <form (keydown)="keyDownFunction($event)">
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" placeholder="Or... you can search here" #searchBox id="search-box-input-404"/>
+        <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
+        <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search" aria-hidden="true"></span>
+      </form>
     </div>
+  </div>
+</div>
