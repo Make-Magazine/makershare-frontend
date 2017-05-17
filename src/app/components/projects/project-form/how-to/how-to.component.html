@@ -96,7 +96,8 @@
                 <div class="item-notfound item-notfound d-flex flex-row pt-2" *ngIf="!HowToForm.controls['field_materials']['controls'][HowToForm.controls['field_materials']['controls'].length-1]['controls'].field_material_name.value && searchFailed['material']">
                   <span>Material not found</span><a class="btn btn-load-more edit" (click)="OpenModal(addmodal,'material')">Create New</a>
                 </div>
-                <small *ngIf="formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name" class="text-danger">
+                <small *ngIf="formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name"
+                  class="text-danger">
                   {{formErrors.field_materials[HowToForm.controls['field_materials']['controls'].length-1].field_material_name}}
                 </small>
               </div>
@@ -124,7 +125,8 @@
         <div *ngIf="Difficulties" class="form-group difficulties col-md-6">
           <label for="">Difficulty</label>
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_difficulty.value == '_none'"></i>
-          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="shadowed form-control col-lg-8" title="Select one" formControlName='field_difficulty'>
+          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="shadowed form-control col-lg-8"
+            title="Select one" formControlName='field_difficulty'>
             <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Difficulty of Difficulties; let i=index" value="{{Difficulty.tid}}" >{{Difficulty.name}}</option>
           </select>
@@ -140,7 +142,8 @@
         <div *ngIf="Durations" class="form-group durations col-md-6">
           <label for="">Duration</label>
           <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_duration.value == '_none'"></i>
-          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="shadowed form-control col-lg-8" title="Select one" formControlName='field_duration'>
+          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="shadowed form-control col-lg-8" title="Select one"
+            formControlName='field_duration'>
             <option value="_none" disabled>Choose one</option>
             <option *ngFor="let Duration of Durations; let i=index" value="{{Duration.tid}}" >{{Duration.name}}</option>
           </select>
@@ -228,25 +231,36 @@
 
 <!-- MODALS -->
 <template #resourcefile let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Choose resource file</h4>
-    <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+  <div class="upload-cover-modal">
+    <div class="modal-header">
+      <h4 class="modal-title">Choose resource file</h4>
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="modal-body" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,CloseButton)">
-    <img class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
-    <div>
-      <p class="drag-photo">Drag a File Here</p>
-      <p class="drag-or">or</p>
     </div>
-    <a class="btn btn-load-more" (click)="fileinput.click()">
+    <div class="modal-body" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,CloseButton)">
+      <div id="portfolio-photo" class="w-100 container">
+        <div class="upload-tab row">
+        <div class="drop-section col-md-7">
+          <img class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
+          <div>
+            <p class="drag-photo">Drag a File Here</p>
+            <p class="drag-or">or</p>
+          </div>
+          <a class="btn btn-load-more" (click)="fileinput.click()">
       Upload
       <input #fileinput type="file" (change)="ResourceFileUploaded($event.target.files[0],CloseButton)" id="upload" style="display:none;" />
     </a>
-  </div>
-  <div class="modal-footer">
-    <button [hidden]="true" #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+        </div>
+        <div class="recommended-section col-md-4">
+          <p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 400 pixels</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button #CloseButton type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
+    </div>
   </div>
 </template>
 
@@ -258,7 +272,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <input name="urllink" type="text" url required #urllink="ngModel" add-protocol [(ngModel)]="TempSelectedToolMaterialPart['link']" class="form-control" placeholder="URL Link"/>
+    <input name="urllink" type="text" url required #urllink="ngModel" add-protocol [(ngModel)]="TempSelectedToolMaterialPart['link']"
+      class="form-control" placeholder="URL Link" />
     <small *ngIf="urllink.errors && urllink.dirty" class="text-danger">
       URL not valid, please enter a valid url:http://example.com.
     </small>
