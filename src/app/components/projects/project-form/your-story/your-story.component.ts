@@ -237,7 +237,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
 
   EmitValues(){
     this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
-    && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
+    && this.cover_image.file && this.project.field_categories.und.length>0
     && this.YourStoryForm['controls']['field_story'].valid);
     if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
       this.CanNavigate.emit(false);
@@ -317,6 +317,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     if(!flag){
       this.project.field_categories.und.splice(this.project.field_categories.und.indexOf(CategoryParentId),1);
     }
+    this.EmitValues();
   }
 
   /**
