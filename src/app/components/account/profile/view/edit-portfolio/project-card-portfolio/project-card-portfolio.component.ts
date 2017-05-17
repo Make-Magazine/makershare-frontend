@@ -58,11 +58,16 @@ export class ProjectCardPortfolioComponent implements OnInit {
     if (closebtn) {
       closebtn.click();
     }
+
+    var status = 0;
+    if(NewVisibility == 370){
+      status = 1;
+    }
     let project = {
       nid: this.Project.nid,
       field_visibility2: { und: [NewVisibility] },
       field_sort_order:{und:[{value:0}]},
-      status:1,
+      status:status,
     }
 
     this.nodeService.UpdateNode(project).subscribe(data => {
