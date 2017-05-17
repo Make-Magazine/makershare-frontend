@@ -1796,7 +1796,8 @@ i.dropdownIcon {
 
 #page-404 .search-form-group h3 {
   color: white;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  padding: 15px; }
 
 #page-404 .search-form-group #search-box-input-404 {
   width: 100%;
