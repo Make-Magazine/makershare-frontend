@@ -17,7 +17,7 @@ export class PortfolioTabComponent implements OnInit {
 
   //grid/showcase
   Projects: ProjectCardPortfolio[] = [];
-  pages: number = 0;
+  pages: number = 1;
   hideloadmoreproject = true;
   countProject:number;
 
@@ -30,16 +30,18 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.UpdateProjects(1)
+    this.UpdateProjects(0)
   }
 
   UpdateProjects(PageIndex:number) {
     let uid = localStorage.getItem('user_id');
     this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid],["page",PageIndex]]).subscribe((projects: ProjectCardPortfolio[]) => {
-      if(PageIndex == 1){
+      if(PageIndex == 0){
         this.Projects = projects;
+        this.pages = 0;
       }else{
         this.Projects = this.Projects.concat(projects);
+        this.pages++;
       }
       this.loadMoreVisibilty();
     });
