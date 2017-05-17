@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../../d7services';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
@@ -19,10 +20,13 @@ export class HeaderComponent implements OnInit {
   Manager:boolean = false;
   showSearchBox: boolean = false;
   user_photo: string;
-  displayRegistration:boolean = false;
+  registrationFormStatusObs: Observable<any>;
+  registrationFormStatus = false;
+  registrationFormState: string;
   constructor(
     private userService: UserService,
     private router: Router,
+    private route: ActivatedRoute,
     public auth: Auth,
     private profilePictureService: ProfilePictureService,
   ) { }
@@ -41,6 +45,24 @@ export class HeaderComponent implements OnInit {
       this.user_photo = val;
     })
 
+    // handle the registration form to collect the firstname, lastname and age for the new created user
+    this.registrationFormStatusObs = this.route.queryParams.map(params => params || null);
+    this.registrationFormStatusObs.subscribe(params => {
+      var arr = Object.keys(params).map(function (key) { return params[key]; });
+      console.log(arr);
+      if(arr[0] == "registration" && arr[1] == "makermedia.auth0.com"){
+        if(arr[2]){
+          console.log('true');
+          this.registrationFormStatus = true;
+          this.registrationFormState = arr[2];
+        }
+        
+        
+      }
+      
+    });    
+
+
   }
 
   openSearchBox() {
@@ -50,10 +72,5 @@ export class HeaderComponent implements OnInit {
   onNotify(event) {
     this.showSearchBox = false;
   }
-  showRegistration(){
-    this.displayRegistration = true;
-  }
-  hideRegisteration(event){
-    this.displayRegistration = false;   
-  }
+
 }
