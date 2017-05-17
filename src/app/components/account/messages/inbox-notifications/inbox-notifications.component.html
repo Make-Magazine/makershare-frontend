@@ -91,7 +91,8 @@
       </div>
       <div class="modal-footer mt-auto">
         <button href="" class="btn btn-load-more"  (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
-        <button type="submit" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
+        <button type="submit" *ngIf="messageForm.valid" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
+        <button type="submit" *ngIf="!messageForm.valid" class="btn btn-load-more" (click)="clickedError()">Send</button>
       </div>
     </div>
   </template>

@@ -818,6 +818,7 @@ header.showcase-project {
         .card-title {
             @include card-header-font-lg();
 						word-wrap: break-word;
+						color: $shade-4;
         }
         .card-description {
             h4 {
