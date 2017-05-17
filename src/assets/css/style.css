@@ -4976,7 +4976,8 @@ button:hover {
           .page-explore .explore-header .explore-tags li a.btn:hover, .page-explore .explore-header .explore-tags li a.btn:active {
             color: #4F4F4F;
             border: 0.5px solid #4F4F4F !important;
-            background-color: transparent !important; }
+            background-color: transparent !important;
+            border: 1px solid #ED1C24 !important; }
         .page-explore .explore-header .explore-tags li a.active {
           color: #4F4F4F;
           background-color: #fff !important;
