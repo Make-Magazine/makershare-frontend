@@ -26,9 +26,9 @@
       <div class="card-stats mt-auto">
         <ul class="list-unstyled">
           <li>
-            <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+            <img *ngIf="card.profile_likes == 0" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+            <img *ngIf="card.profile_likes != 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
             <span *ngIf="card.profile_likes">{{card.profile_likes}}</span>
-            <span *ngIf="!card.profile_likes">0</span>
           </li>
           <li class="pt-1">
             <img src="./assets/images/icons/views.png" class="project-views" alt="">

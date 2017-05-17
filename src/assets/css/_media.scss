@@ -843,6 +843,15 @@
             width: 190px;
         }
     }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .profile-share {
+                    top: 35px;
+                }
+            }
+        }
+    }
 }
 @media only screen and (min-width: 768px) {
     // .profile-sidebar {
