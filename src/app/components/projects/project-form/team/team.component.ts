@@ -32,7 +32,7 @@ export class TeamComponent implements OnInit {
   ) {}
   
   formatter = (x) => {
-    if(x.name){
+    if(x.username){
       return x.username;
     }
     return x;
