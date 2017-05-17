@@ -760,6 +760,22 @@
             }
         }
     }
+    .registration-page {
+        .search-form-group {
+            .header-title {
+                margin-top: 20px;
+            }
+            form {
+                input {
+                    margin-top: 5px;
+                }
+                .save-btn-container {
+                    text-align: center;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {}
