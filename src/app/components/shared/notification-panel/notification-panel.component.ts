@@ -52,7 +52,11 @@ export class NotificationPanelComponent implements OnInit {
   }
   getNotificationsCount() {
     this.viewService.getView('maker_notification_api/' + this.userId).subscribe(data => {
-      this.countNotifications = data[0];
+      if(data[0] == 0 ){
+        this.countNotifications = 0;
+      }else{
+        this.countNotifications = data[0];
+      }
       $("header.main-header .login-block li .notification-icon::after").css("content", '10');
 
     }, err => {
@@ -62,8 +66,11 @@ export class NotificationPanelComponent implements OnInit {
 
   getNewCont() {
     this.statisticsService.notificationGetNewCount(this.userId).subscribe(count => {
-      // console.log(count);
+     if(count == 0 ){
+        this.countNotifications = 0;
+      }else{
       this.newCount = count;
+      }
     });
   }
 
