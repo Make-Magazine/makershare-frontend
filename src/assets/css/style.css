@@ -2876,7 +2876,8 @@ footer {
       margin-top: 16px;
       font-size: 16px; }
       .profile-sidebar .profile-container .profile-info .userInfo {
-        position: relative; }
+        position: relative;
+        min-height: 70px; }
         .profile-sidebar .profile-container .profile-info .userInfo .placeholder-text {
           margin-bottom: 0; }
       .profile-sidebar .profile-container .profile-info .profile-share {
@@ -3014,10 +3015,13 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2rem; }
-    .profile-sidebar .profile-container .report-div .report {
-      line-height: 40px;
-      font-size: 0.9rem; }
+        font-size: 1.2rem;
+        position: relative; }
+    .profile-sidebar .profile-container .report-div {
+      position: relative; }
+      .profile-sidebar .profile-container .report-div .report {
+        line-height: 40px;
+        font-size: 0.9rem; }
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
@@ -10614,7 +10618,10 @@ img {
     font-size: 2em !important; }
 
   .challenge-card .card-container .card-partership {
-    padding-top: 10px; } }
+    padding-top: 10px; }
+
+  .profile-sidebar .profile-container .profile-info .userInfo {
+    min-height: 70px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
@@ -10657,7 +10664,10 @@ img {
   .project .maker-name {
     margin-top: 5px; }
   .project .card-title {
-    width: 190px; } }
+    width: 190px; }
+
+  .profile-sidebar .profile-container .profile-info .profile-share {
+    top: 35px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

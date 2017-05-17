@@ -745,6 +745,15 @@
             }
         }
     }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .userInfo {
+                    min-height: 70px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {}
@@ -841,6 +850,15 @@
         }
         .card-title {
             width: 190px;
+        }
+    }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .profile-share {
+                    top: 35px;
+                }
+            }
         }
     }
 }
