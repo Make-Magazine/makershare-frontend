@@ -38,12 +38,12 @@ export class SearchBoxComponent implements OnInit {
           this.router.navigate(['/search'], navigationExtras);        
       }else {
 
-        if(res.response.numFound == 0){
-          // this.router.navigate(['/']);
-          this.boxStatus = false;
-          this.closeSearchBox();
-          return;
-        }else {
+        // if(res.response.numFound == 0){
+        //   // this.router.navigate(['/']);
+        //   this.boxStatus = false;
+        //   this.closeSearchBox();
+        //   return;
+        // }else {
             this.boxStatus = false;
             this.notify.emit();
             let navigationExtras: NavigationExtras = {
@@ -51,7 +51,7 @@ export class SearchBoxComponent implements OnInit {
               // fragment: 'anchor'
             };
             this.router.navigate(['/search'], navigationExtras);
-        }
+        // }
 
       }
     })
