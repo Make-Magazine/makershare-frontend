@@ -365,6 +365,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     if (this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371) {
       this.project.CheckIfReadyToPublic();
     }
+    if(this.project.field_categories.und.length == 0){
+      this.project.field_aha_moment.und = [""];
+    }
     if (this.project.GetField("nid")) {
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
