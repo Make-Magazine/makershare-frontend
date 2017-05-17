@@ -478,7 +478,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }
         this.project.field_resources.und.forEach((item,resourcesindex)=>{
           for (let i = 0; i < this.FormPrintableValues.resources_files.length; i++) {
-            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file == this.FormPrintableValues.resources_files[i].filename) {
+            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file.und[0].filename == this.FormPrintableValues.resources_files[i].filename) {
               this.project.field_resources.und[resourcesindex].field_resource_file.und[0] = x[index] as field_file_reference;
               index++;
               return;
