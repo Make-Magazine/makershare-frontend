@@ -10596,11 +10596,65 @@ img {
   .project .card-title {
     max-width: 370px; } }
 @media only screen and (max-width: 525px) {
+  body {
+    padding-top: 78px; }
+    body .what-is-ms h1 {
+      font-size: 3rem; }
+    body h3.page-header {
+      padding-top: 10px !important; }
+    body .page-explore .explore-header h3 {
+      padding-top: 10px !important; }
+
   .project-button {
     display: none; }
 
   .info-w-parallax .info-card {
-    height: auto !important; } }
+    height: auto !important; }
+
+  .page-create-project-why .team {
+    padding-top: 0px; }
+  .page-create-project-why .region-content {
+    padding: 0px; }
+  .page-create-project-why .add-collaborate .inputs-container {
+    padding: 8px; }
+    .page-create-project-why .add-collaborate .inputs-container .col-md-9 {
+      padding: 6px; }
+      .page-create-project-why .add-collaborate .inputs-container .col-md-9 .maker-mobile-card {
+        max-width: 100%;
+        height: auto; }
+
+  .upload-cover-modal .upload-tab .drag-text {
+    padding-top: 0px !important; }
+
+  header.main-header {
+    height: 74px; }
+    header.main-header .navbar-brand {
+      width: 75px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header .navbar-brand span {
+        right: 3px;
+        font-size: 8px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
+    header.main-header nav.navbar {
+      padding: 6px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header nav.navbar #MainNav .nav-item a {
+        font-size: 1.2rem; }
+      header.main-header nav.navbar #MainNav .nav-item .btn {
+        font-size: 1rem;
+        height: 50px; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
@@ -10641,7 +10695,22 @@ img {
     margin-top: 5px; }
   .registration-page .search-form-group form .save-btn-container {
     text-align: center;
-    margin-top: 15px; } }
+    margin-top: 15px; }
+
+  .page-create-project-why h2 {
+    padding: 0px; }
+  .page-create-project-why p {
+    padding: 0px; }
+  .page-create-project-why .your-story-guide .content {
+    width: 100% !important; }
+  .page-create-project-why .guideline {
+    padding: 6px; }
+    .page-create-project-why .guideline .content {
+      width: 100% !important; }
+  .page-create-project-why .content {
+    width: 100% !important; }
+  .page-create-project-why .question-mark i {
+    display: none; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
