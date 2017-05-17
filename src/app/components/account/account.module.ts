@@ -17,7 +17,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     SharedModule.forChild(),
     NgbModule,
     ImageCropperModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   declarations: [],
   exports: []
