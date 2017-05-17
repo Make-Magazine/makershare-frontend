@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<div *hideItBootstrap="['sm','md','lg', 'xl']">
+<div *showItBootstrap="['lg', 'xl']">
   <div *ngIf="projectCard && type == 'grid' && projectCard.path">
     <div class="project card">
       <div class="card-type-blue">
@@ -143,12 +142,8 @@
   </div>
 </div>
 
-<div *hideItBootstrap="['sm','md','lg', 'xl']">
+<div *hideItBootstrap="['lg', 'xl']">
   <div class="project card" *ngIf="projectCard">
-=======
-<div *ngIf="projectCard && type == 'grid' && projectCard.path">
-  <div class="project card" *hideItBootstrap="['sm','md','lg', 'xl']">
->>>>>>> 9113d76442ee9d0531cb488aa33c1b85350cdfbc
     <div class="card-type-blue">
       <div class="type-layer-2">
         Project
