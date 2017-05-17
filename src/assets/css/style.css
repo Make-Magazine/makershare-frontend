@@ -2426,9 +2426,9 @@ footer {
         color: #fff !important; }
         .banner #homeBanner .button-container-main-1 .btn-main::before {
           content: "+";
-          font-size: 2rem;
+          font-size: 1rem;
           position: relative;
-          top: 4px;
+          top: -1px;
           right: 6px; }
 
 .carousel-slider .slick-prev {
@@ -2552,9 +2552,9 @@ footer {
         color: #fff !important; }
         .info-w-parallax .info-card .button-container-onboarding .btn-main::before {
           content: "+";
-          font-size: 2rem;
+          font-size: 1rem;
           position: relative;
-          top: 4px;
+          top: -1px;
           right: 6px; }
 
 .parallax-bg {
@@ -2990,7 +2990,7 @@ footer {
         font-size: 1.2rem; }
     .profile-sidebar .profile-container .report-div .report {
       line-height: 40px;
-      font-size: 1.2rem; }
+      font-size: 0.9rem; }
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
