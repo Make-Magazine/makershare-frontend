@@ -10562,7 +10562,7 @@ img {
     padding-top: 10px; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
-    margin-left: 8px; }
+    margin-left: 4px; }
     header nav #MainNav .nav-item a {
       font-size: 14px; }
   header nav.navbar {
@@ -10575,7 +10575,12 @@ img {
     padding: 0px; }
 
   .project .image-top {
-    height: 260px; } }
+    height: 260px; }
+
+  header nav.navbar {
+    padding: 10px 0px 20px !important; }
+    header nav.navbar .project-button {
+      margin-left: 20px; } }
 @media (min-width: 1200px) {
   #page-404 .text-block {
     bottom: 50px;
