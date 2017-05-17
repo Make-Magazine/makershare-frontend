@@ -1712,6 +1712,15 @@ i.dropdownIcon {
   #page-404 .image-container img {
     width: 100%;
     display: block; }
+  #page-404 .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #page-404 .text-block {
     position: absolute;
     bottom: 10px;
@@ -1793,6 +1802,15 @@ i.dropdownIcon {
   #site-down .image-container img {
     width: 100%;
     display: block; }
+  #site-down .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #site-down .text-block {
     max-width: 500px;
     margin: auto;
@@ -1817,6 +1835,15 @@ i.dropdownIcon {
   #splash .image-container img {
     width: 100%;
     display: block; }
+  #splash .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #splash .text-block {
     max-width: 320px;
     margin: auto;
@@ -4940,7 +4967,7 @@ button:hover {
       margin: auto;
       text-align: center;
       padding-top: 40px;
-      color: #333333;
+      color: #4F4F4F;
       padding-bottom: 30px; }
     .page-explore .explore-header h6 {
       font-family: "Messina Sans Regular";
@@ -6524,7 +6551,8 @@ header.showcase-project .next {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        color: #4F4F4F; }
       .page-project .projectsingle-card .right-side .card-container .card-description h4 {
         font-weight: bold; }
       .page-project .projectsingle-card .right-side .card-container .card-description p {
@@ -7143,7 +7171,7 @@ textarea {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
+        color: #4F4F4F;
         cursor: pointer; }
       .showcase-card-backlayer .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";

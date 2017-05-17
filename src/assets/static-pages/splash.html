@@ -16,6 +16,41 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <style>
+    @font-face {
+        font-family: "Messina Sans SemiBold";
+        src: url("../fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
+          url("../fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
+          url("../fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
+          url("../fonts/MessinaSans-SemiBold.otf") format('opentype')
+      }
+      @font-face {
+        font-family: "Messina Sans Regular";
+        src: url("../fonts/MessinaSansWeb-Regular.eot") format("eot"),
+          url("../fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
+          url("../fonts/MessinaSansWeb-Regular.woff") format("woff"),
+          url("../fonts/MessinaSans-Regular.otf") format('opentype')
+      }
+      @font-face {
+        font-family: "Messina Sans Bold";
+        src: url("../fonts/MessinaSansWeb-Bold.eot") format("eot"),
+          url("../fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
+          url("../fonts/MessinaSansWeb-Bold.woff") format("woff"),
+          url("../fonts/MessinaSans-Bold.otf") format('opentype')
+      }
+      @font-face {
+        font-family: "Messina Modern Regular";
+        src: url("../fonts/MessinaModernWeb-Regular.eot") format("eot"),
+          url("../fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
+          url("../fonts/MessinaModernWeb-Regular.woff") format("woff"),
+          url("../fonts/MessinaModern-Regular.otf") format('opentype')
+      }
+      @font-face {
+        font-family: "Messina Modern Bold";
+        src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"),
+          url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
+          url("../fonts/MessinaModernWeb-Bold.woff") format("woff"),
+          url("../fonts/MessinaModern-Bold.otf") format('opentype')
+      }
     #splash {
       position: relative;
     }
@@ -23,8 +58,18 @@
       width: 100%;
       display: block;
     }
+    #splash .image-container::before {
+      content: '';
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: url(./static-assets/images/background/background-pattern.png);
+    }
     #splash .text-block {
-      max-width: 320px;
+      max-width: 350px;
       margin: auto;
       text-align: center;
       bottom: 30px;
@@ -88,6 +133,7 @@
       @media (max-width: 992px) {
         #splash .text-block {
             bottom: 25%;
+            max-width: 320px;
         }
         #splash .signup-form-group input::-webkit-input-placeholder {
           font-size: 1.3rem;
