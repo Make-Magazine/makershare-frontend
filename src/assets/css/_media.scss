@@ -745,6 +745,15 @@
             }
         }
     }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .userInfo {
+                    min-height: 70px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 991px) {}
