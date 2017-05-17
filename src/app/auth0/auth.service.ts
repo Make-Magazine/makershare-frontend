@@ -71,6 +71,7 @@ export class Auth implements OnInit {
               localStorage.setItem('id_token', authResult.idToken);
               localStorage.setItem('user_id', res.user.uid);
               localStorage.setItem('user_name', res.user.name);
+              localStorage.setItem('roles',JSON.stringify(res.user.roles));
               this.profilePictureService.update(res.user_photo);
               //localStorage.setItem('user_photo', res.user_photo);
 
