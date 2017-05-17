@@ -98,7 +98,7 @@
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
   
 
-  <app-registration-collect (click)="showRegistration()" *ngIf="displayRegistration"  (hideReg)="hideRegisteration($event)"></app-registration-collect>
+  <app-registration-collect *ngIf="registrationFormStatus" [registrationFormState]="registrationFormState"></app-registration-collect>
   
 
 </header>

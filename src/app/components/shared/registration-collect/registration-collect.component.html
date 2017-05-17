@@ -1,40 +1,36 @@
-<!--<li>
-  <a (click)="open(content)" class="">Registration Page</a>
-</li>-->
 
-<div class="registration-page">
-<div id="search-box-layer">
-  <!--<span (click)="closeReg()" class="lnr lnr-cross close-search-layer" aria-hidden="true"></span>-->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 search-form-group">
-        <div class="header-title">
-          <h2> We have to ask... </h2>
-          <p> Maker needs to be 13 or older to use Maker Share. <br> to continue, please provide us with your legal name and
-            birthdate.</p>
-        </div>
-        <form action="https://makermedia.auth0.com/continue?state=" method="post">
-          <div class="body-input">
-            <div class="form-group name-section">
-              <label for="firstname"> NAME </label>
-              <div class="inputs-box d-flex justify-content-between">
-                <input placeholder="First Name" type="text" id="firstname" name="firstname" value="" class="form-design firstname" required>
-                <input placeholder="Last Name" type="text" id="lastname" name="lastname" value="" class="form-design lastname" required>
+<div class="registration-page" *ngIf="showForm">
+  <div id="search-box-layer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 search-form-group">
+          <div class="header-title">
+            <h2> We have to ask... </h2>
+            <p> Maker needs to be 13 or older to use Maker Share. <br> to continue, please provide us with your legal name and
+              birthdate.</p>
+          </div>
+          <form ngNoForm action="https://makermedia.auth0.com/continue?state={{registrationFormState}}" method="post">
+            <div class="body-input">
+              <div class="form-group name-section">
+                <label for="firstname"> NAME </label>
+                <div class="inputs-box d-flex justify-content-between">
+                  <input placeholder="First Name" type="text" id="firstname" name="firstname" value="" class="form-design firstname" required>
+                  <input placeholder="Last Name" type="text" id="lastname" name="lastname" value="" class="form-design lastname" required>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group name-section">
-            <label for="birthdate"> BIRTHDATE </label>
-            <div class="d-flex justify-content-between">
-              <input placeholder="dd/mm/yy" type="text" id="birthdate" name="birthdate" value="" class="form-design" required>
-              <input type="submit" class="btn btn-md save-button " value="Save">
+            <div class="form-group name-section">
+              <label for="birthdate"> BIRTHDATE </label>
+              <div class="d-flex justify-content-between">
+                <input placeholder="mm/dd/yy" type="text" id="birthdate" name="birthdate" value="" class="form-design" required>
+                <input type="submit" class="btn btn-md save-button " value="Save">
+              </div>
+
             </div>
 
-          </div>
-
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
