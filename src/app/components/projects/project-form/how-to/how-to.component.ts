@@ -497,21 +497,23 @@ export class HowToComponent implements OnInit,AfterViewInit {
    * @param CloseButton the button element to close after successful submitting
    * @param NameInput the input element to get the value of the field name
    */
-  AddNewToolMaterialPart(CloseButton: HTMLButtonElement, NameInput: HTMLInputElement) {
-    if (!NameInput.value) {
-      CloseButton.click();
-      return;
-    }
-    let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
-    let FieldName = 'field_' + this.CurrentModal + 's';
-    NewToolMaterialPart.SetField(NameInput.value, "title");
-    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
-      NewNode.name = NameInput.value;
-      CloseButton.click();
-      NameInput.value = '';
-      this.searchFailed[this.CurrentModal] = false;
-      this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
-    });
+  AddNewToolMaterialPart(NameInput,ControlName:string) {
+    console.log(NameInput);
+    return;
+    // if (!NameInput.value) {
+    //   CloseButton.click();
+    //   return;
+    // }
+    // let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
+    // let FieldName = 'field_' + this.CurrentModal + 's';
+    // NewToolMaterialPart.SetField(NameInput.value, "title");
+    // this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
+    //   NewNode.name = NameInput.value;
+    //   CloseButton.click();
+    //   NameInput.value = '';
+    //   this.searchFailed[this.CurrentModal] = false;
+    //   this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
+    // });
   }
   CKEditorConfig = {
     uploadUrl: domain+endpoint+'/maker_manage_file/create', 
