@@ -30,10 +30,20 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.UpdateProjects()
+   this.UpdateProjects()
+   // this.getProjects();
   }
 
   UpdateProjects() {
+    let uid = localStorage.getItem('user_id');
+    this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid]]).subscribe((projects: ProjectCardPortfolio[]) => {
+      this.Projects = projects;
+     // this.getProjects();
+
+    });
+  }
+
+  getProjects() {
     let uid = localStorage.getItem('user_id');
     this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid]]).subscribe((projects: ProjectCardPortfolio[]) => {
       this.Projects = this.Projects.concat(projects);
