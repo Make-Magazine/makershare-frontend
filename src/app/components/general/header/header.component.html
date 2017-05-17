@@ -25,6 +25,7 @@
               <img *ngIf="!user_photo" src="./assets/images/icons/no-profile-pic.png" alt="" class="img-responsive">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <a target="_blank" *ngIf="Manager" href="{{Back_End_Domain}}" class="dropdown-item" >Manage</a>
               <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
               <button class="dropdown-item" [routerLink]="['/inbox-notifications']">Inbox</button>
               <button class="dropdown-item" [routerLink]="['/account/collection/bookmark']">Bookmarks</button>
