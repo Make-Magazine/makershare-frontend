@@ -232,9 +232,9 @@
 									<hr *ngIf="ProfileInfo.bio">
 								</div>
 								<!-- End Bio -->
-								<div class="hideData 1" *ngIf="emptySocial">
+								<div class="hideData 1" *ngIf="!emptySocial">
 									<p class="global-title" *ngIf="!emptySocial">Social</p>
-									<div class="social-links d-flex flex-wrap">
+									<div class="profile-social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 												<i class="fa fa-facebook fa-lg"></i>
@@ -815,7 +815,7 @@
 				</div>
 				<div class="modal-footer mt-auto ml-auto">
 					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click');SaveInfo(closebtn)">Save &amp;Close</button>
-					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next</button>
+					<button *ngIf="ModalTabs.indexOf(CurrentInfoTab) != ModalTabs.length-1" type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next</button>
 				</div>
 			</div>
 		</div>

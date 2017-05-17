@@ -342,7 +342,6 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
-    // closebtn.click(); 
     if (this.ProfileInfo.address.governorate == '_none') {
       this.ProfileInfo.address.governorate == this.CountryFieldsAndDetails['administrative_areas'][0].value;
     }
@@ -377,7 +376,7 @@ export class ProfileComponent implements OnInit {
   AddMakerspaceRow(makerspace?) {
     const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
     let MakerspaceGroup: FormGroup = this.fb.group({
-      field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
+      field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : ''],
       field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', URLNoProtocol()],
     });
     control.push(MakerspaceGroup);
