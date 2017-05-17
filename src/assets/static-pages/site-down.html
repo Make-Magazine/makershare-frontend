@@ -51,12 +51,17 @@
           url("../fonts/MessinaModern-Bold.otf") format('opentype')
       }
     #site-down {
-      position: relative;
+      position: fixed;
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      height: 100%;
     }
     #site-down .image-container img {
       width: 100%;
       display: block;
     }
+    
     #site-down .image-container::before {
       content: '';
       display: block;
@@ -76,6 +81,7 @@
       color: #fff;
       right: 0;
       left: 0;
+      background-color: rgba(50,50,50,0.7);
     }
     #site-down .text-block h4, #site-down .text-block p {
       color: #fff;
@@ -91,7 +97,7 @@
     }
     @media (max-width: 992px) {
         #site-down .text-block {
-            bottom: 20%;
+            
         }
       }
 
@@ -99,10 +105,11 @@
   </head>
   <body class="mt-0">
     <div id="site-down">
-      <div class="image-container">
-        <img src="./static-assets/images/background/Site-Down-Desktop.jpg" alt="" class="hidden-md-down">
-        <img src="./static-assets/images/background/Site-Down-Tablet.jpg" alt="" class="hidden-sm-down hidden-lg-up">
-        <img src="./static-assets/images/background/Site-Down-Mobile.jpg" alt="" class="hidden-md-up">
+      <div class="image-container" style="background-image: url('./static-assets/images/background/Site-Down-Desktop.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-down">
+      </div>
+      <div class="image-container" style="background-image: url('./static-assets/images/background/Site-Down-Tablet.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-sm-down hidden-lg-up">
+      </div>
+      <div class="image-container" style="background-image: url('./static-assets/images/background/Site-Down-Mobile.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-up">
       </div>
       <div class="text-block">
         <h4>We are having technical difficulties.</h4>
