@@ -78,11 +78,21 @@
           </label>
         </div>
       </div>
+     
+    <div class="form-check row">
+      <div class="form-check-label col-6">
+        <small class="text-muted ">Email notifications are sent as a summary once per day</small>
+      </div>
+    </div>
+    <div class="form-check row">
+      <div class="form-check-label col-6">
+        <button type="button" class="btn btn-simple-large" (click)="deleteNotificationSettings($event)">Turn off all community notifications</button>
+      </div>
+    </div>
     </div>
   <button type="submit" class="btn btn-simple-small pull-right mt-5 mr-3" (click)="updateNotificationSettings($event)">Save changes</button>
-  <div class="col-1" style="margin-left:40px"> 
-  <button type="button" class="btn btn-simple-large pull-left  mt-5 mr-3" (click)="deleteNotificationSettings($event)">Turn off all community notifications</button>
-  </div>
+
+ 
   </fieldset>
 </form>
 

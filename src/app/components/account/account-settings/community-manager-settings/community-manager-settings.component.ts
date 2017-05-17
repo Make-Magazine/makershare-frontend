@@ -12,7 +12,6 @@ email_notifications:Array<Object> = [];
 web_notifications:Array<Object> = [];
 uid;
 
-
   constructor(
     private viewservice: ViewService,
     private notificationBarService: NotificationBarService,
@@ -76,8 +75,7 @@ uid;
       }
     }
   }
-   updateNotificationSettings(e) {
-
+updateNotificationSettings(e) {
     e.preventDefault();
     let data={
         uid:this.uid,
@@ -87,7 +85,6 @@ uid;
       this.pm.postAction('maker_notification_settings_api/update_settings/',data).subscribe(data => {
         this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
     })
-
   }
   deleteNotificationSettings(e){
         e.preventDefault();
