@@ -8383,6 +8383,9 @@ img {
 .account-settings .add-controls {
   overflow: hidden; }
 
+.commuinty-manager-page small {
+  font-size: 90%; }
+
 .page-challenge-summary .top-content-wrapper, .page-challenge-summary-closed .top-content-wrapper, .page-enter-challenge .top-content-wrapper {
   overflow: hidden; }
   .page-challenge-summary .top-content-wrapper .challenge-cover .sponsor, .page-challenge-summary-closed .top-content-wrapper .challenge-cover .sponsor, .page-enter-challenge .top-content-wrapper .challenge-cover .sponsor {
