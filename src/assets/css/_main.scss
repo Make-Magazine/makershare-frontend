@@ -69,7 +69,7 @@ notification-bar {
 }
 
 body {
-    margin-top: 113px;
+    padding-top: 113px;
     background-color: $site-bg;
     padding-right: 0 !important; 
     font-family: 'Messina Sans Regular';
@@ -826,48 +826,53 @@ i.dropdownIcon {
 
 
 .registration-page{
- .name-section
- {
-font-weight: bold;
-color: red;
-font-size: 16px;
-}
-.search-form-group
-{
-    padding-top: 100px;
-    .header-title{
-        text-align: center;
-        width: 700px;
-        margin:  90px auto 0;
-        h2 {
-            @include header-font();
-            text-transform: none;
-            color:white;
-        }
-        p{
-            @include body-font-1();
-        //    font-size: 1rem;
-           color: #fff;
-        }
+    .name-section {
+        font-weight: bold;
+        color: red;
+        font-size: 16px;
     }
-    form {
-        width: 650px;
-        margin: auto;
-        input {
-            width: 48%;
-            font-style: italic;
-            &.save-button {
+    .search-form-group {
+        // padding-top: 100px;
+        .header-title{
+            text-align: center;
+            max-width: 700px;
+            margin:  90px auto 0;
+            h2 {
+                @include header-font();
+                text-transform: none;
+                color:white;
+            }
+            p{
+                @include body-font-1();
+            //    font-size: 1rem;
+                color: #fff;
+            }
+        }
+        form {
+            max-width: 650px;
+            margin: auto;
+            input {
+                // width: 48%;
+                font-style: italic;
+            }
+            .save-btn-container {
+                margin-right: -15px;
+                text-align: right;
+            }
+            #reg-save {
                 width: 180px;
                 height: 40px;
                 margin-top: auto;
                 background: transparent;
-                color: white;
-                border: 2px solid grey;
+                color: #fff;
+                border: 0.5px solid #fff;
                 font-style: normal;
-
+                &:hover,&:active,&:focus {
+                    background-color: $red;
+                    border-color:$red;
+                }
             }
         }
-    }
 
     
 }
@@ -895,6 +900,8 @@ font-size: 16px;
     height: 100%;
     left: 0;
     top: 0;
+    overflow-y:scroll;
+    overflow-x:hidden;
     }
 
 }
