@@ -1,7 +1,5 @@
-<div class="user-card-msg">
-  <div class="profile-container mb-1" *ngIf="card">
-    <!--<div class="card spotlight-item">-->
-    <!--<div class="card-block user-card-small align-content-stretch content">-->
+<div class="user-card-msg" *ngIf="card">
+  <div class="profile-container mb-1" >
     <div class="media d-flex align-items-stretch">
       <div class="profile-pic-container flex-column align-self-start">
         <img class="maker-photo-msg" *ngIf="!card.photo" src="{{card.default_profile_photo}}">
@@ -13,7 +11,6 @@
         <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
       </div>
     </div>
-    <!--</div>-->
-    <!--</div>-->
   </div>
 </div>
+
