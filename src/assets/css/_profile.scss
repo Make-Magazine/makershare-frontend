@@ -267,6 +267,7 @@
             font-size: 16px;
             .userInfo {
                 position: relative;
+                min-height: 70px;
                 .placeholder-text {
                     margin-bottom: 0;
                 }
@@ -418,9 +419,11 @@
             .topic-tags {
                 color: $shade-5;
                 font-size: 1.2rem;
+                position: relative;
             }
         }
         .report-div {
+            position: relative;
             .report {
                 line-height: 40px;
                 font-size: 0.9rem;
