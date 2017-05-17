@@ -23,7 +23,8 @@ header.main-header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 12; }
+  z-index: 12;
+  height: 110px; }
   header.main-header .navbar-brand {
     width: 90px;
     padding: 0px;
@@ -1018,7 +1019,7 @@ notification-bar {
   z-index: 99999; }
 
 body {
-  margin-top: 113px;
+  padding-top: 113px;
   background-color: #F2F2F2;
   padding-right: 0 !important;
   font-family: 'Messina Sans Regular';
@@ -1649,43 +1650,46 @@ i.dropdownIcon {
   font-weight: bold;
   color: red;
   font-size: 16px; }
-.registration-page .search-form-group {
-  padding-top: 100px; }
-  .registration-page .search-form-group .header-title {
-    text-align: center;
-    width: 700px;
-    margin: 90px auto 0; }
-    .registration-page .search-form-group .header-title h2 {
-      font-family: "Messina Modern Regular";
-      font-size: 3.4rem;
-      font-weight: 400;
-      text-transform: capitalize;
-      line-height: 100%;
-      color: #4F4F4F;
-      text-transform: none;
-      color: white; }
-    .registration-page .search-form-group .header-title p {
-      font-family: "Messina Sans Regular";
-      font-size: 1.3rem;
-      font-weight: 400;
-      text-transform: none;
-      line-height: 110%;
-      color: #828282;
-      color: #fff; }
-  .registration-page .search-form-group form {
-    width: 650px;
-    margin: auto; }
-    .registration-page .search-form-group form input {
-      width: 48%;
-      font-style: italic; }
-      .registration-page .search-form-group form input.save-button {
-        width: 180px;
-        height: 40px;
-        margin-top: auto;
-        background: transparent;
-        color: white;
-        border: 2px solid grey;
-        font-style: normal; }
+.registration-page .search-form-group .header-title {
+  text-align: center;
+  max-width: 700px;
+  margin: 90px auto 0; }
+  .registration-page .search-form-group .header-title h2 {
+    font-family: "Messina Modern Regular";
+    font-size: 3.4rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 100%;
+    color: #4F4F4F;
+    text-transform: none;
+    color: white; }
+  .registration-page .search-form-group .header-title p {
+    font-family: "Messina Sans Regular";
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 110%;
+    color: #828282;
+    color: #fff; }
+.registration-page .search-form-group form {
+  max-width: 650px;
+  margin: auto; }
+  .registration-page .search-form-group form input {
+    font-style: italic; }
+  .registration-page .search-form-group form .save-btn-container {
+    margin-right: -15px;
+    text-align: right; }
+  .registration-page .search-form-group form #reg-save {
+    width: 180px;
+    height: 40px;
+    margin-top: auto;
+    background: transparent;
+    color: #fff;
+    border: 0.5px solid #fff;
+    font-style: normal; }
+    .registration-page .search-form-group form #reg-save:hover, .registration-page .search-form-group form #reg-save:active, .registration-page .search-form-group form #reg-save:focus {
+      background-color: #ED1C24;
+      border-color: #ED1C24; }
 .registration-page .form-design {
   display: block;
   padding: .5rem .75rem;
@@ -1703,7 +1707,9 @@ i.dropdownIcon {
   width: 100%;
   height: 100%;
   left: 0;
-  top: 0; }
+  top: 0;
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 #page-404 {
   position: relative;
@@ -1712,6 +1718,15 @@ i.dropdownIcon {
   #page-404 .image-container img {
     width: 100%;
     display: block; }
+  #page-404 .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #page-404 .text-block {
     position: absolute;
     bottom: 10px;
@@ -1793,6 +1808,15 @@ i.dropdownIcon {
   #site-down .image-container img {
     width: 100%;
     display: block; }
+  #site-down .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #site-down .text-block {
     max-width: 500px;
     margin: auto;
@@ -1817,6 +1841,15 @@ i.dropdownIcon {
   #splash .image-container img {
     width: 100%;
     display: block; }
+  #splash .image-container::before {
+    content: '';
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/background/background-pattern.png); }
   #splash .text-block {
     max-width: 320px;
     margin: auto;
@@ -2849,7 +2882,8 @@ footer {
       margin-top: 16px;
       font-size: 16px; }
       .profile-sidebar .profile-container .profile-info .userInfo {
-        position: relative; }
+        position: relative;
+        min-height: 70px; }
         .profile-sidebar .profile-container .profile-info .userInfo .placeholder-text {
           margin-bottom: 0; }
       .profile-sidebar .profile-container .profile-info .profile-share {
@@ -2987,10 +3021,13 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2rem; }
-    .profile-sidebar .profile-container .report-div .report {
-      line-height: 40px;
-      font-size: 0.9rem; }
+        font-size: 1.2rem;
+        position: relative; }
+    .profile-sidebar .profile-container .report-div {
+      position: relative; }
+      .profile-sidebar .profile-container .report-div .report {
+        line-height: 40px;
+        font-size: 0.9rem; }
   .profile-sidebar .report {
     font-size: 12px;
     text-decoration: none;
@@ -4950,7 +4987,8 @@ button:hover {
       line-height: 110%;
       color: #828282;
       text-transform: uppercase;
-      color: #ED1C24; }
+      color: #ED1C24;
+      font-size: 1.125rem; }
     .page-explore .explore-header .explore-tags {
       margin: 18px auto; }
       .page-explore .explore-header .explore-tags li {
@@ -10531,7 +10569,7 @@ img {
     padding-top: 10px; } }
 @media only screen and (max-width: 991px) and (min-width: 767px) {
   header nav #MainNav .nav-item {
-    margin-left: 8px; }
+    margin-left: 4px; }
     header nav #MainNav .nav-item a {
       font-size: 14px; }
   header nav.navbar {
@@ -10544,7 +10582,12 @@ img {
     padding: 0px; }
 
   .project .image-top {
-    height: 260px; } }
+    height: 260px; }
+
+  header nav.navbar {
+    padding: 10px 0px 20px !important; }
+    header nav.navbar .project-button {
+      margin-left: 20px; } }
 @media (min-width: 1200px) {
   #page-404 .text-block {
     bottom: 50px;
@@ -10587,7 +10630,18 @@ img {
     font-size: 2em !important; }
 
   .challenge-card .card-container .card-partership {
-    padding-top: 10px; } }
+    padding-top: 10px; }
+
+  .profile-sidebar .profile-container .profile-info .userInfo {
+    min-height: 70px; }
+
+  .registration-page .search-form-group .header-title {
+    margin-top: 20px; }
+  .registration-page .search-form-group form input {
+    margin-top: 5px; }
+  .registration-page .search-form-group form .save-btn-container {
+    text-align: center;
+    margin-top: 15px; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
@@ -10630,7 +10684,10 @@ img {
   .project .maker-name {
     margin-top: 5px; }
   .project .card-title {
-    width: 190px; } }
+    width: 190px; }
+
+  .profile-sidebar .profile-container .profile-info .profile-share {
+    top: 35px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

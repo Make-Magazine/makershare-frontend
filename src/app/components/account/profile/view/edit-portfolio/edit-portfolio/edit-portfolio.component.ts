@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input,EventEmitter,Output } from '@angular/core';
 import { UserService, ViewService } from '../../../../../../d7services';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -22,6 +22,7 @@ export class EditPortfolioComponent implements OnInit {
   @Input('projectsCountPrivate') projectsCountPrivate;
   @Input('LikesCount') LikesCount: number = 0;
   @Input('ViewsCount') ViewsCount: number = 0;
+  @Output() emitter = new EventEmitter();
 
   ngOnInit() {
     this.CurrentTab = 'public';

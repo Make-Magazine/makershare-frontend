@@ -109,6 +109,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
   Difficulties: TaxonomyTerm[];
   resources_files: FileEntity[] = [];
   TempSelectedToolMaterialPart = [];
+  InputToolMaterialPart = [];
   searchFailed = {
     tool: false,
     part: false,
@@ -126,6 +127,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
       .distinctUntilChanged()
       .do(() => this.searchFailed[control] = false)
       .switchMap((term) => {
+        this.InputToolMaterialPart[control] = term;
         if (term.length > 1) {
           return this.viewService.getView('api-project-tools-materials-parts-list', [['type', control], ['name', term]])
             .map(result => {
@@ -136,8 +138,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
             })
         }
         return [];
-      }
-      )
+      })
   };
 
   constructor(
@@ -497,20 +498,15 @@ export class HowToComponent implements OnInit,AfterViewInit {
    * @param CloseButton the button element to close after successful submitting
    * @param NameInput the input element to get the value of the field name
    */
-  AddNewToolMaterialPart(CloseButton: HTMLButtonElement, NameInput: HTMLInputElement) {
-    if (!NameInput.value) {
-      CloseButton.click();
-      return;
-    }
-    let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(this.CurrentModal);
-    let FieldName = 'field_' + this.CurrentModal + 's';
-    NewToolMaterialPart.SetField(NameInput.value, "title");
+  AddNewToolMaterialPart(ControlName:string) {
+    let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(ControlName);
+    let FieldName = 'field_' + ControlName + 's';
+    NewToolMaterialPart.SetField(this.InputToolMaterialPart[ControlName], "title");
     this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
-      NewNode.name = NameInput.value;
-      CloseButton.click();
-      NameInput.value = '';
-      this.searchFailed[this.CurrentModal] = false;
-      this.SetToolMaterialPart(this.CurrentModal, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
+      NewNode.name = this.InputToolMaterialPart[ControlName];
+      this.InputToolMaterialPart[ControlName] = '';
+      this.searchFailed[ControlName] = false;
+      this.SetToolMaterialPart(ControlName, FieldName, NewNode, this.HowToForm.controls[FieldName]['controls'].length - 1);
     });
   }
   CKEditorConfig = {
