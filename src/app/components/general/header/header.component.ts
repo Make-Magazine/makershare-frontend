@@ -6,7 +6,7 @@ import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
 import { domain } from '../../../d7services/globals';
-
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 
 @Component({
@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute,
     public auth: Auth,
     private profilePictureService: ProfilePictureService,
+    private notificationBarService: NotificationBarService,
   ) { }
 
 
@@ -58,6 +59,10 @@ export class HeaderComponent implements OnInit {
         }
         
         
+      }
+
+      if(arr[0] == "subscription"){
+        this.notificationBarService.create({ message: 'Thank you for subscribing!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       }
       
     });    
