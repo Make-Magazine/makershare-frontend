@@ -365,6 +365,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     if (this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371) {
       this.project.CheckIfReadyToPublic();
     }
+    if(this.project.field_categories.und.length == 0){
+      this.project.field_categories.und = [""];
+    }
     if (this.project.GetField("nid")) {
       delete this.project.field_original_team_members;
       delete this.project.field_forks;
@@ -475,7 +478,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }
         this.project.field_resources.und.forEach((item,resourcesindex)=>{
           for (let i = 0; i < this.FormPrintableValues.resources_files.length; i++) {
-            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file == this.FormPrintableValues.resources_files[i].filename) {
+            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file.und[0].filename == this.FormPrintableValues.resources_files[i].filename) {
               this.project.field_resources.und[resourcesindex].field_resource_file.und[0] = x[index] as field_file_reference;
               index++;
               return;

@@ -82,6 +82,7 @@ let config = {
     BrowserModule,
     CookieModule.forRoot(),
     SharedModule.forRoot(),
+    ResponsiveModule,
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
@@ -92,17 +93,10 @@ let config = {
     NotificationBarModule,
     DndModule.forRoot(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    ResponsiveModule,
     MetaModule.forRoot(),
     ShareButtonsModule.forRoot(),
   ],
   entryComponents: [],
-  providers: [
-    {
-      provide: ResponsiveConfig,
-      useFactory: ResponsiveDefinition
-    }
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { };
