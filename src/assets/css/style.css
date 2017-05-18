@@ -5991,7 +5991,8 @@ button:hover {
         line-height: 100%;
         color: #828282;
         line-height: inherit !important;
-        padding-top: 4px; }
+        padding-top: 4px;
+        color: #4F4F4F; }
   .page-project .feedback-group {
     background-color: white;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -6048,7 +6049,8 @@ button:hover {
         font-weight: 400;
         line-height: 100%;
         color: #828282;
-        line-height: inherit !important; }
+        line-height: inherit !important;
+        color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .difficulty-duration {
       background-color: white;
       padding: 18px 10px 34px 10px;
