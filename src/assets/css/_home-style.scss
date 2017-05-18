@@ -89,6 +89,7 @@
     padding-bottom: 50px;
     header h3{
         @include header-font();
+        text-transform: capitalize;
         text-align: center;
         margin: 25px 0;
     }
