@@ -123,19 +123,6 @@
             }
         }
     }
-    #page-404 .text-block {
-        left: 0;
-        right: 0;
-        width: 320px;
-        margin: auto;
-        bottom: 10%;
-    }
-    #site-down,
-    #splash {
-        .text-block {
-            bottom: 25%;
-        }
-    } 
     /* home page reorder items */
     .front {
         .container {
@@ -595,7 +582,7 @@
         nav {
         #MainNav {
             .nav-item{
-                    margin-left: 8px;
+                    margin-left: 4px;
                     a {
                         font-size: 14px;
                     }
@@ -629,6 +616,12 @@
     .project {
         .image-top {
             height: 260px;
+        }
+    }
+    header nav.navbar {
+        padding: 10px 0px 20px !important;
+        .project-button {
+            margin-left: 20px;
         }
     }
 }
@@ -667,12 +660,78 @@
 }
 
 @media only screen and (max-width: 525px) {
+    body {
+        padding-top: 78px;
+        .what-is-ms h1 {
+            font-size: 3rem;
+        }
+        h3.page-header {
+            padding-top: 10px !important;
+        }
+        .page-explore {
+            .explore-header {
+                h3 {
+                    padding-top: 10px !important;
+                }
+            }
+        }
+    }
     .project-button {
         display: none;
     }
     .info-w-parallax {
         .info-card {
             height: auto !important;
+        }
+    }
+     .page-create-project-why {
+         .team {
+             padding-top: 0px;
+         }
+         .region-content {
+            padding: 0px;
+         }
+         .add-collaborate {
+             .inputs-container {
+                 padding: 8px;
+                 .col-md-9 {
+                     padding: 6px;
+                     .maker-mobile-card {
+                         max-width: 100%;
+                         height: auto;
+                     }
+                 }
+             }
+         }
+     }
+    .upload-cover-modal .upload-tab .drag-text {
+        padding-top: 0px !important;
+    }
+    header.main-header {
+        height: 74px;
+        .navbar-brand {
+            width: 75px;
+            @include transition(0.5s);
+            span {
+                right: 3px;
+                font-size: 8px;
+                @include transition(0.3s);  
+            }
+        }
+        nav.navbar {
+            padding: 6px;
+            @include transition(0.5s);                
+            #MainNav {
+                .nav-item {
+                    a {
+                        font-size: 1.2rem;
+                    }
+                    .btn {
+                        font-size: 1rem;
+                        height: 50px;
+                    }
+                }
+            }
         }
     }
 }
@@ -742,6 +801,58 @@
         .card-container {
             .card-partership {
                 padding-top: 10px;
+            }
+        }
+    }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .userInfo {
+                    min-height: 70px;
+                }
+            }
+        }
+    }
+    .registration-page {
+        .search-form-group {
+            .header-title {
+                margin-top: 20px;
+            }
+            form {
+                input {
+                    margin-top: 5px;
+                }
+                .save-btn-container {
+                    text-align: center;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+    .page-create-project-why {
+        h2 {
+            padding: 0px;
+        }
+        p {
+            padding: 0px;
+        }
+        .your-story-guide  {
+            .content {
+                width: 100% !important;
+            }
+        }
+        .guideline {
+            padding: 6px;
+            .content {
+                width: 100% !important;
+            }
+        }
+        .content {
+            width: 100% !important;
+        }
+        .question-mark {
+            i {
+                display: none;
             }
         }
     }
@@ -841,6 +952,15 @@
         }
         .card-title {
             width: 190px;
+        }
+    }
+    .profile-sidebar {
+        .profile-container {
+            .profile-info {
+                .profile-share {
+                    top: 35px;
+                }
+            }
         }
     }
 }
