@@ -4519,7 +4519,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
@@ -4543,6 +4545,9 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #828282;
       line-height: 110% !important; }
   .maker-card .icons-side-project {
     position: relative;
@@ -4674,7 +4679,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-mobile-card .maker-data .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
@@ -4760,7 +4767,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
