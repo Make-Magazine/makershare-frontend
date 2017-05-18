@@ -1,4 +1,9 @@
 @media (max-width: 992px) {
+    .page-inbox .inbox-header
+        {
+           order: 2;
+           text-align: center;
+        }
     /* Footer */
     footer {
         padding-top: 30px;
