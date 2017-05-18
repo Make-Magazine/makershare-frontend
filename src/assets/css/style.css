@@ -6663,7 +6663,8 @@ header.showcase-project .next {
         line-height: 130%;
         color: #828282;
         margin-bottom: 10px;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        color: #4F4F4F; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
         font-size: 13px;
@@ -10307,6 +10308,10 @@ img {
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 @media (max-width: 992px) {
+  .page-inbox .inbox-header {
+    order: 2;
+    text-align: center; }
+
   /* Footer */
   footer {
     padding-top: 30px; }
