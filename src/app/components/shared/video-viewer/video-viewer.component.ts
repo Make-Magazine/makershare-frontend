@@ -35,7 +35,7 @@ export class VideoViewerComponent implements OnInit {
       });
     }
     else{
-      this.SantinizedHtml = "Video Url is not supported.";
+     // this.SantinizedHtml = "Video Url is not supported.";
     }
   }
 
