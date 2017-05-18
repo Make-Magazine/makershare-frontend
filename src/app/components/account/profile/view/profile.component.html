@@ -290,7 +290,7 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<hr class="hideData" *ngIf="emptySocial">
+								<hr class="hideData" *ngIf="!emptySocial">
 								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
 									<p  class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">

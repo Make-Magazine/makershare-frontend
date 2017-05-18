@@ -519,12 +519,12 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: auto;
   border: none;
   background-color: #00AEEF;
   text-align: left;
-  padding: 0 15px 10px;
+  padding: 5px 15px 10px;
   width: 100%;
   display: block; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
@@ -538,10 +538,13 @@ a:not([href]):not([tabindex]).message-btn {
     text-align: left; }
   .message-btn .message-icon,
   a:not([href]):not([tabindex]).message-btn .message-icon {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     position: relative;
-    bottom: -3px;
+    bottom: -2px;
     text-align: left; }
+  .message-btn .message-text,
+  a:not([href]):not([tabindex]).message-btn .message-text {
+    font-size: 1rem; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
@@ -2883,7 +2886,8 @@ footer {
         font-size: 1.2rem; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
-      font-size: 0.8rem; }
+      font-size: 0.9rem;
+      line-height: 1.5rem; }
       .profile-sidebar .profile-container li a,
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
@@ -2977,7 +2981,7 @@ footer {
         .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
           border: 1px solid #00AEEF;
           color: #00AEEF;
-          padding: 5px; }
+          padding: 8px 10px; }
           .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey:hover, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey:hover {
             border-color: #008bbf;
             color: #008bbf; }
@@ -3017,8 +3021,9 @@ footer {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        color: #4F4F4F;
-        font-size: 1.5rem; }
+        color: #BDBDBD;
+        font-size: 1.4rem;
+        font-weight: normal; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
@@ -3042,7 +3047,7 @@ footer {
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 5px;
         cursor: pointer;
         text-decoration: none; }
@@ -3101,8 +3106,9 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2rem;
-        position: relative; }
+        font-size: 1rem;
+        position: relative;
+        font-style: normal; }
     .profile-sidebar .profile-container .report-div {
       position: relative; }
       .profile-sidebar .profile-container .report-div .report {
@@ -3124,7 +3130,8 @@ footer {
   margin-top: 20px;
   margin: 20px 0px 20px 0px; }
   .profile-content .empty-content p {
-    padding: 10px 0; }
+    padding: 10px 0;
+    color: #4F4F4F; }
   .profile-content .empty-content .empty-profile {
     margin-top: 50px; }
   .profile-content .empty-content .text-red {
@@ -3177,7 +3184,7 @@ footer {
 .profile-header .stats li {
   padding: 0 10px;
   height: 24px;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
@@ -3578,7 +3585,6 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    text-transform: none;
     height: 50px;
     margin-bottom: 5px; }
   .project .card-title-showcase {
@@ -4934,7 +4940,10 @@ button:hover {
     font-size: 0.8rem;
     color: #4F4F4F; }
   .hideData.topic-tags span {
-    font-size: 1.2rem; }
+    color: #828282;
+    font-size: 1rem;
+    position: relative;
+    font-style: normal; }
 
 .showData {
   display: block !important; }
@@ -9361,12 +9370,12 @@ img {
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
     color: #4F4F4F;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-right: 38px; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
-    width: 30px;
+    width: 20px;
     margin-right: 10px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
