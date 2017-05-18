@@ -519,12 +519,12 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: auto;
   border: none;
   background-color: #00AEEF;
   text-align: left;
-  padding: 0 15px 10px;
+  padding: 5px 15px 10px;
   width: 100%;
   display: block; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
@@ -538,16 +538,19 @@ a:not([href]):not([tabindex]).message-btn {
     text-align: left; }
   .message-btn .message-icon,
   a:not([href]):not([tabindex]).message-btn .message-icon {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     position: relative;
-    bottom: -3px;
+    bottom: -2px;
     text-align: left; }
+  .message-btn .message-text,
+  a:not([href]):not([tabindex]).message-btn .message-text {
+    font-size: 1rem; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
   background-color: #333333;
   color: #fff;
-  border: 1px solid #333333; }
+  border: 1px solid #4F4F4F; }
   .btn-dark-grey:hover, .btn-dark-grey:focus, .btn-dark-grey:active,
   a:not([href]):not([tabindex]).btn-dark-grey:hover,
   a:not([href]):not([tabindex]).btn-dark-grey:focus,
@@ -1039,7 +1042,7 @@ body {
 
 .default-header {
   background-color: #BDBDBD;
-  color: #333333;
+  color: #4F4F4F;
   text-align: left;
   overflow: hidden;
   vertical-align: middle;
@@ -2851,14 +2854,14 @@ footer {
     text-align: right;
     margin: 5px 0;
     white-space: normal;
-    border: 1px solid #333333;
-    color: #333333; }
+    border: 1px solid #4F4F4F;
+    color: #4F4F4F; }
     .profile-sidebar a.add i {
       font-size: 22px;
       padding-top: 4px;
       text-align: left;
       float: left;
-      color: #333333; }
+      color: #4F4F4F; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 0 15px 15px;
@@ -2883,7 +2886,8 @@ footer {
         font-size: 1.2rem; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
-      font-size: 0.8rem; }
+      font-size: 0.9rem;
+      line-height: 1.5rem; }
       .profile-sidebar .profile-container li a,
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
@@ -2977,7 +2981,7 @@ footer {
         .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
           border: 1px solid #00AEEF;
           color: #00AEEF;
-          padding: 5px; }
+          padding: 8px 10px; }
           .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey:hover, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey:hover {
             border-color: #008bbf;
             color: #008bbf; }
@@ -3017,8 +3021,9 @@ footer {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        color: #4F4F4F;
-        font-size: 1.5rem; }
+        color: #BDBDBD;
+        font-size: 1.4rem;
+        font-weight: normal; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
@@ -3042,7 +3047,7 @@ footer {
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 5px;
         cursor: pointer;
         text-decoration: none; }
@@ -3101,8 +3106,9 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2rem;
-        position: relative; }
+        font-size: 1rem;
+        position: relative;
+        font-style: normal; }
     .profile-sidebar .profile-container .report-div {
       position: relative; }
       .profile-sidebar .profile-container .report-div .report {
@@ -3118,13 +3124,14 @@ footer {
 /* End profile-sidebar */
 .profile-content .empty-content {
   text-align: center;
-  color: #333333;
+  color: #4F4F4F;
   font-size: 18px;
   padding: 14px;
   margin-top: 20px;
   margin: 20px 0px 20px 0px; }
   .profile-content .empty-content p {
-    padding: 10px 0; }
+    padding: 10px 0;
+    color: #4F4F4F; }
   .profile-content .empty-content .empty-profile {
     margin-top: 50px; }
   .profile-content .empty-content .text-red {
@@ -3137,7 +3144,7 @@ footer {
     padding: 7px;
     background-color: #333333;
     color: white;
-    border: 1px solid #333333;
+    border: 1px solid #4F4F4F;
     margin: 0px 6px 0px 6px;
     min-width: 144px; }
     .profile-content .empty-content a i {
@@ -3177,7 +3184,7 @@ footer {
 .profile-header .stats li {
   padding: 0 10px;
   height: 24px;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
@@ -3507,7 +3514,6 @@ footer {
   .project .maker-name {
     color: #00AEEF;
     margin-bottom: 0;
-    margin-top: 10px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -3578,9 +3584,9 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    text-transform: none;
-    height: 50px;
-    margin-bottom: 5px; }
+    height: 60px;
+    margin-bottom: 5px;
+    font-size: 1.6rem; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
@@ -3637,7 +3643,8 @@ footer {
         .project .card-stats ul li img.project-likes {
           width: 12px; }
         .project .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .project .card-stats ul li span {
         margin: 0px;
         color: #BDBDBD; }
@@ -3763,7 +3770,8 @@ footer {
         .project-mobile-card .card-stats ul li img.project-likes {
           width: 10px; }
         .project-mobile-card .card-stats ul li img.project-views {
-          width: 22px; }
+          width: 22px;
+          padding-bottom: 3px; }
       .project-mobile-card .card-stats ul li span {
         margin: 0px; }
 
@@ -4446,7 +4454,8 @@ footer {
             .page-search-content .user-card-search .card-stats ul li img.project-likes {
               width: 12px; }
             .page-search-content .user-card-search .card-stats ul li img.project-views {
-              width: 20px; }
+              width: 20px;
+              padding-bottom: 3px; }
           .page-search-content .user-card-search .card-stats ul li span {
             margin: 0px; }
       .page-search-content .user-card-search .card-stats .icons-side-user {
@@ -4510,7 +4519,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
@@ -4534,6 +4545,9 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #828282;
       line-height: 110% !important; }
   .maker-card .icons-side-project {
     position: relative;
@@ -4614,7 +4628,8 @@ footer {
         .maker-card .card-stats ul li img.project-likes {
           width: 12px; }
         .maker-card .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .maker-card .card-stats ul li span {
         margin: 0px;
         color: #BDBDBD; }
@@ -4664,7 +4679,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-mobile-card .maker-data .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
@@ -4703,7 +4720,8 @@ footer {
           .maker-mobile-card .card-stats ul li img.project-likes {
             width: 10px; }
           .maker-mobile-card .card-stats ul li img.project-views {
-            width: 20px; }
+            width: 20px;
+            padding-bottom: 3px; }
         .maker-mobile-card .card-stats ul li span {
           margin: 0px; }
 
@@ -4749,7 +4767,9 @@ footer {
       text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
@@ -4844,7 +4864,8 @@ footer {
         .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-likes {
           width: 12px; }
         .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .mobile-profile-container .maker-mobile-card .card-stats ul li span {
         margin: 0px; }
   .mobile-profile-container .maker-mobile-card .profile-pic-container {
@@ -4934,7 +4955,10 @@ button:hover {
     font-size: 0.8rem;
     color: #4F4F4F; }
   .hideData.topic-tags span {
-    font-size: 1.2rem; }
+    color: #828282;
+    font-size: 1rem;
+    position: relative;
+    font-style: normal; }
 
 .showData {
   display: block !important; }
@@ -5369,7 +5393,9 @@ button:hover {
       text-transform: none;
       line-height: 130%;
       color: #828282;
-      color: white; }
+      color: white;
+      font-weight: normal;
+      line-height: 1.5rem; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
     .page-challenge .challenge-card .card-container .card-buttons .follow-number {
@@ -5584,7 +5610,8 @@ button:hover {
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #fff; }
+    color: #fff;
+    line-height: 1.5rem; }
   .front .front-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -5607,9 +5634,10 @@ button:hover {
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
           padding-left: 10px; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-          color: #BDBDBD; }
+          color: #BDBDBD;
+          line-height: 1.25rem; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-        line-height: 16px;
+        line-height: 1.25rem;
         color: #BDBDBD; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
           padding-right: 5px; }
@@ -5740,7 +5768,9 @@ button:hover {
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #fff; }
+    color: #fff;
+    font-weight: normal;
+    line-height: 1.5rem; }
   .tablet-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .tablet-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -5766,7 +5796,7 @@ button:hover {
         color: #fff;
         border-right: 1px solid white; }
       .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-        line-height: 16px;
+        line-height: 1.25rem;
         color: #fff; }
         .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
           padding-right: 5px; }
@@ -5821,7 +5851,7 @@ button:hover {
   cursor: pointer;
   margin-bottom: 30px;
   background-color: #333;
-  height: 460px;
+  height: 480px;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
@@ -5914,7 +5944,7 @@ button:hover {
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
         padding-left: 10px; }
     .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-      line-height: 16px;
+      line-height: 1.25rem;
       color: #828282; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
         padding-right: 5px; }
@@ -6083,7 +6113,7 @@ button:hover {
       text-transform: none;
       line-height: 120%;
       color: #828282;
-      color: #333333; }
+      color: #4F4F4F; }
     .page-project .feedback-group .login-link {
       padding: 10px; }
       .page-project .feedback-group .login-link a {
@@ -6151,7 +6181,7 @@ button:hover {
         text-align: center;
         font-size: 20px;
         font-weight: bold;
-        color: #333333; }
+        color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .tools-kits {
       background-color: white;
       margin-top: 26px;
@@ -6185,7 +6215,7 @@ button:hover {
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .count, .page-project .project-body .how-to-sidebar .tools-kits .materials .count, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .count {
           min-width: 38px;
-          color: #333333;
+          color: #4F4F4F;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
@@ -6194,7 +6224,7 @@ button:hover {
           color: #828282;
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
-          color: #333333;
+          color: #4F4F4F;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
@@ -6478,7 +6508,7 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
-          color: #333333; }
+          color: #4F4F4F; }
     .feedback-group .feedback-card .feed-timestamp {
       margin: 0px;
       color: #bebebe;
@@ -6491,7 +6521,7 @@ header.showcase-project .next {
     .feedback-group .feedback-card .content-section .media-body {
       padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {
-        color: #333333;
+        color: #4F4F4F;
         margin: 0px; }
   .feedback-group .comment-body p {
     margin: 0px;
@@ -6501,7 +6531,7 @@ header.showcase-project .next {
     text-transform: none;
     line-height: 100%;
     color: #828282;
-    color: #333333;
+    color: #4F4F4F;
     line-height: inherit !important; }
   .feedback-group .new-comment {
     padding: 10px;
@@ -7283,7 +7313,9 @@ textarea {
         text-transform: none;
         line-height: 100%;
         color: #828282;
-        color: #333333; }
+        color: #4F4F4F;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons .follow-number {
@@ -7321,7 +7353,8 @@ textarea {
           color: #BDBDBD; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
           width: 22px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .update-date {
@@ -7374,7 +7407,9 @@ textarea {
   overflow: inherit !important;
   height: auto !important;
   -webkit-line-clamp: inherit !important;
-  min-height: 168px; }
+  min-height: 168px;
+  font-weight: normal;
+  line-height: 1.5rem; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -7408,7 +7443,7 @@ img {
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 88px;
-    color: #333333;
+    color: #4F4F4F;
     line-height: 140%; }
 
 .showcase-card-backlayer-home {
@@ -7452,7 +7487,8 @@ img {
       border: none; }
       .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
         font-size: 1rem;
-        color: #00AEEF; }
+        color: #00AEEF;
+        margin-bottom: 0.5rem; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer-home .showcase-card .single-showcase img {
@@ -7489,8 +7525,8 @@ img {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
-        margin-bottom: 20px;
+        color: #4F4F4F;
+        margin-bottom: 10px;
         line-height: 120% !important;
         display: -webkit-box;
         -webkit-line-clamp: 5;
@@ -7518,8 +7554,10 @@ img {
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: #333333;
-        max-height: 102px; }
+        color: #4F4F4F;
+        max-height: 117px;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
@@ -7548,7 +7586,8 @@ img {
           color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
           width: 20px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
           color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
@@ -7646,8 +7685,8 @@ img {
         text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
-        margin-bottom: 20px;
+        color: #4F4F4F;
+        margin-bottom: 10px;
         line-height: 120% !important; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
@@ -7671,8 +7710,10 @@ img {
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: #333333;
-        max-height: 102px; }
+        color: #4F4F4F;
+        max-height: 117px;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-buttons .follow-number {
@@ -7701,7 +7742,8 @@ img {
           color: #BDBDBD; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
           width: 20px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
           color: #BDBDBD; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
@@ -7777,8 +7819,8 @@ img {
           -webkit-box-orient: vertical;
           overflow: hidden;
           max-height: 200px;
-          color: #333333;
-          margin-bottom: 20px;
+          color: #4F4F4F;
+          margin-bottom: 10px;
           line-height: 120% !important; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-status {
           font-family: "Messina Sans Regular";
@@ -7802,8 +7844,10 @@ img {
           -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          color: #333333;
-          max-height: 102px; }
+          color: #4F4F4F;
+          max-height: 117px;
+          font-weight: normal;
+          line-height: 1.5rem; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-buttons a.btn.btn-grey {
           background-color: #BDBDBD; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-buttons .follow-number {
@@ -7831,7 +7875,8 @@ img {
             color: #BDBDBD; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
             width: 22px;
-            height: auto; }
+            height: auto;
+            padding-bottom: 3px; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
             padding-right: 10px;
             color: #BDBDBD; }
@@ -9362,12 +9407,12 @@ img {
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
     color: #4F4F4F;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-right: 38px; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
-    width: 30px;
+    width: 20px;
     margin-right: 10px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
@@ -10830,7 +10875,15 @@ img {
     width: 190px; }
 
   .profile-sidebar .profile-container .profile-info .profile-share {
-    top: 35px; } }
+    top: 35px; }
+
+  .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+    -webkit-line-clamp: 4;
+    max-height: 92px; }
+
+  .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-description p {
+    -webkit-line-clamp: 4;
+    max-height: 92px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

@@ -18,38 +18,38 @@
   <style>
     @font-face {
         font-family: "Messina Sans SemiBold";
-        src: url("../fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
-          url("../fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
-          url("../fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
-          url("../fonts/MessinaSans-SemiBold.otf") format('opentype')
+        src: url("./static-assets/fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
+          url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
+          url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
+          url("./static-assets/fonts/MessinaSans-SemiBold.otf") format('opentype')
       }
       @font-face {
         font-family: "Messina Sans Regular";
-        src: url("../fonts/MessinaSansWeb-Regular.eot") format("eot"),
-          url("../fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
-          url("../fonts/MessinaSansWeb-Regular.woff") format("woff"),
-          url("../fonts/MessinaSans-Regular.otf") format('opentype')
+        src: url("./static-assets/fonts/MessinaSansWeb-Regular.eot") format("eot"),
+          url("./static-assets/fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
+          url("./static-assets/fonts/MessinaSansWeb-Regular.woff") format("woff"),
+          url("./static-assets/fonts/MessinaSans-Regular.otf") format('opentype')
       }
       @font-face {
         font-family: "Messina Sans Bold";
-        src: url("../fonts/MessinaSansWeb-Bold.eot") format("eot"),
-          url("../fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
-          url("../fonts/MessinaSansWeb-Bold.woff") format("woff"),
-          url("../fonts/MessinaSans-Bold.otf") format('opentype')
+        src: url("./static-assets/fonts/MessinaSansWeb-Bold.eot") format("eot"),
+          url("./static-assets/fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
+          url("./static-assets/fonts/MessinaSansWeb-Bold.woff") format("woff"),
+          url("./static-assets/fonts/MessinaSans-Bold.otf") format('opentype')
       }
       @font-face {
         font-family: "Messina Modern Regular";
-        src: url("../fonts/MessinaModernWeb-Regular.eot") format("eot"),
-          url("../fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
-          url("../fonts/MessinaModernWeb-Regular.woff") format("woff"),
-          url("../fonts/MessinaModern-Regular.otf") format('opentype')
+        src: url("./static-assets/fonts/MessinaModernWeb-Regular.eot") format("eot"),
+          url("./static-assets/fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
+          url("./static-assets/fonts/MessinaModernWeb-Regular.woff") format("woff"),
+          url("./static-assets/fonts/MessinaModern-Regular.otf") format('opentype')
       }
       @font-face {
         font-family: "Messina Modern Bold";
-        src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"),
-          url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
-          url("../fonts/MessinaModernWeb-Bold.woff") format("woff"),
-          url("../fonts/MessinaModern-Bold.otf") format('opentype')
+        src: url("./static-assets/fonts/MessinaModernWeb-Bold.eot") format("eot"),
+          url("./static-assets/fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
+          url("./static-assets/fonts/MessinaModernWeb-Bold.woff") format("woff"),
+          url("./static-assets/fonts/MessinaModern-Bold.otf") format('opentype')
       }
     #splash {
       position: fixed;
@@ -57,6 +57,15 @@
       text-align: center;
       width: 100%;
       height: 100vh;
+    }
+    #splash .subscribe-success {
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      padding: .75rem 1.25rem 0;
+    }
+    #splash .subscribe-success strong {
+      font-size: 1.4rem;
     }
     #splash .image-container img {
       width: 100%;
@@ -83,7 +92,7 @@
       right: 0;
       left: 0;
       padding: 15px;
-      background-color: rgba(50,50,50,0.7);
+      background-color: rgba(0,0,0,0.7);
     }
     #splash .signup-form-group {
       position: relative;
@@ -111,7 +120,7 @@
     }
     #splash .signup-form-group .go-search {
       color: #fff;
-      font-size: 1.7rem;
+      font-size: 1.3rem;
       position: absolute;
       bottom: 10px;
       right: 0px;
@@ -119,39 +128,43 @@
     }
     #splash .signup-form-group input::-webkit-input-placeholder {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.1rm;
       font-family: "Messina Sans Modern";
     }
     #splash .signup-form-group input:-moz-placeholder {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-family: "Messina Sans Modern";
     }
     #splash .signup-form-group input::-moz-placeholder {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-family: "Messina Sans Modern";
     }
     #splash .signup-form-group input:-ms-input-placeholder {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-family: "Messina Sans Modern";
     }
+    #splash .signup-form-group input:focus::-webkit-input-placeholder { color:transparent; }
+    #splash .signup-form-group input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+    #splash .signup-form-group input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+    #splash .signup-form-group input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
       @media (max-width: 992px) {
         #splash .text-block {
             max-width: 320px;
         }
         #splash .signup-form-group input::-webkit-input-placeholder {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
         #splash .signup-form-group input:-moz-placeholder {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
         #splash .signup-form-group input::-moz-placeholder {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
         #splash .signup-form-group input:-ms-input-placeholder {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
       }
   </style>
@@ -159,25 +172,31 @@
 
 <body class="mt-0">
   <div id="splash">
-    <div class="image-container" style="background-image: url('./static-assets/images/background/Splash-Desktop.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-down">
+      <div class="alert alert-success alert-dismissible fade subscribe-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Thank you for subscribing.</strong>
     </div>
-    <div class="image-container" style="background-image: url('./static-assets/images/background/Splash-Tablet.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-sm-down hidden-lg-up">
+    <div class="image-container hidden-md-down" style="background: url('./static-assets/images/background/Splash-Desktop.jpg') 80% 28%;width: 100%;height: 100%;background-size: cover;">
     </div>
-    <div class="image-container" style="background-image: url('./static-assets/images/background/Splash-Mobile.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-up">
+    <div class="image-container hidden-sm-down hidden-lg-up" style="background: url('./static-assets/images/background/Splash-Tablet.jpg') 10% 31%;width: 100%;height: 100%;background-size: cover;">
+    </div>
+    <div class="image-container hidden-md-up" style="background: url('./static-assets/images/background/Splash-Mobile.jpg') 100% 20%;width: 100%;height: 100%;background-size: cover;">
     </div>
     <div class="text-block">
       <div class="signup-form-group">
-        <form class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST" target="_blank">
-          <input type="text" name="searchQuery" placeholder="Sign-up for an invitation to join" id="search-box-input-404"/>
+        <form class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
+          <input type="text" name="email" pattern='[^@]+@[^@]+\.[a-zA-Z]{2,}' placeholder="Sign up for an invitation to join" id="search-box-input-404"/>
           <input required id="wc-email" type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
           <input type="hidden" name="multiadd" value="1" />
           <input type="hidden" name="cmd" value="subscribe" />
-          <input type="hidden" name="custom_source" value="Maker Share footer" />
+          <input type="hidden" name="custom_source" value="Maker Share Splash" />
           <input type="hidden" name="custom_incentive" value="none" />
-          <input type="hidden" name="custom_url" value="http://preview.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
+          <input type="hidden" name="custom_url" value="http://makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
           <input type="hidden" id="format_mime" name="format" value="mime" />
-          <input type="hidden" name="goto" value="" />
-          <input type="hidden" name="custom_host" value="http://preview.makershare.com/" />
+          <input type="hidden" name="goto" value="https://makershare.com/?status=subscription" />
+          <input type="hidden" name="custom_host" value="http://makershare.com/" />
           <span class="lnr lnr-chevron-right go-search" aria-hidden="true" id="trigger-click"></span>
           <button class="input-group-addon" type="submit" id="splash-signup" hidden>GO</button>
         </form>
