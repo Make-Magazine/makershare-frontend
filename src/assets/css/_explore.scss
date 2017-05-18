@@ -7,6 +7,7 @@
 		text-align: center;
 		h3 {
 			@include header-font();
+			text-transform: capitalize;
 			margin: auto;
 			text-align: center;
 			padding-top: 40px;
