@@ -52,17 +52,17 @@
 			
 						<div class="form-group">
 							<label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
- 							<form ngNoForm class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST" target="_blank">
+ 							<form ngNoForm class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
                 <p for="newsletter" class="footer-subtitle mt-2">Stay inspired with the Make: community newsletter</p>
                 <input type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
                 <input type="hidden" name="multiadd" value="1" />
                 <input type="hidden" name="cmd" value="subscribe" />
                 <input type="hidden" name="custom_source" value="Maker Share footer" />
                 <input type="hidden" name="custom_incentive" value="none" />
-                <input type="hidden" name="custom_url" value="http://beta.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
+                <input type="hidden" name="custom_url" value="https://beta.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
                 <input type="hidden" id="format_mime" name="format" value="mime" />
-                <input type="hidden" name="goto" value="" />
-                <input type="hidden" name="custom_host" value="http://beta.makershare.com/" />
+                <input type="hidden" name="goto" value="https://beta.makershare.com/?status=subscription" />
+                <input type="hidden" name="custom_host" value="https://beta.makershare.com/" />
                 <div class="mz-form-horizontal input-group">
                   <input id="wc-email" class="form-control" name="email" placeholder="Enter your Email" #subscribeEmail required type="email">
                   <button class="input-group-addon" type="submit" (click)="validateEmail(subscribeEmail.value)">GO</button>
