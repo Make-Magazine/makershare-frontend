@@ -26,7 +26,6 @@ import * as globals from '../../../../d7services/globals';
 export class ProfileComponent implements OnInit {
   @ViewChild('cropper') set cropper(cropper: ImageCropperComponent) {
     setTimeout(() => {
-      // console.log(cropper);
     }, 1000);
   }
 
@@ -242,7 +241,6 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
-      // console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
@@ -332,7 +330,6 @@ export class ProfileComponent implements OnInit {
 
   ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas']) {
-      // console.log(this.CountryFieldsAndDetails);
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.ProfileInfo.address[administrative_area_label]) {
         this.ProfileInfo.address.governorate = '_none';
@@ -400,7 +397,6 @@ export class ProfileComponent implements OnInit {
         this.SetUser(profile);
         
         this.GetCountryDetails(profile.address.code);
-        // console.log(this.ProfileInfo);
       }, (err) => {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
@@ -410,8 +406,6 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
-    //console.log(user);
-    // console.log(this.profile.views_count);
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/') + 1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
