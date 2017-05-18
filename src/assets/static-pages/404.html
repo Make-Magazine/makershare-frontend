@@ -10,38 +10,38 @@
     <style>
     @font-face {
       font-family: "Messina Sans SemiBold";
-      src: url("../fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
-         url("../fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
-         url("../fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
-         url("../fonts/MessinaSans-SemiBold.otf") format('opentype')
+      src: url("./static-assets/fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-SemiBold.otf") format('opentype')
     }
     @font-face {
       font-family: "Messina Sans Regular";
-      src: url("../fonts/MessinaSansWeb-Regular.eot") format("eot"),
-         url("../fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
-         url("../fonts/MessinaSansWeb-Regular.woff") format("woff"),
-         url("../fonts/MessinaSans-Regular.otf") format('opentype')
+      src: url("./static-assets/fonts/MessinaSansWeb-Regular.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-Regular.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-Regular.otf") format('opentype')
     }
     @font-face {
       font-family: "Messina Sans Bold";
-      src: url("../fonts/MessinaSansWeb-Bold.eot") format("eot"),
-         url("../fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
-         url("../fonts/MessinaSansWeb-Bold.woff") format("woff"),
-         url("../fonts/MessinaSans-Bold.otf") format('opentype')
+      src: url("./static-assets/fonts/MessinaSansWeb-Bold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-Bold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-Bold.otf") format('opentype')
     }
     @font-face {
       font-family: "Messina Modern Regular";
-      src: url("../fonts/MessinaModernWeb-Regular.eot") format("eot"),
-         url("../fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
-         url("../fonts/MessinaModernWeb-Regular.woff") format("woff"),
-         url("../fonts/MessinaModern-Regular.otf") format('opentype')
+      src: url("./static-assets/fonts/MessinaModernWeb-Regular.eot") format("eot"),
+         url("./static-assets/fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaModernWeb-Regular.woff") format("woff"),
+         url("./static-assets/fonts/MessinaModern-Regular.otf") format('opentype')
     }
     @font-face {
       font-family: "Messina Modern Bold";
-      src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"),
-         url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
-         url("../fonts/MessinaModernWeb-Bold.woff") format("woff"),
-         url("../fonts/MessinaModern-Bold.otf") format('opentype')
+      src: url("./static-assets/fonts/MessinaModernWeb-Bold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaModernWeb-Bold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaModern-Bold.otf") format('opentype')
     }
       #page-404 {
           position: fixed;
@@ -72,7 +72,7 @@
         bottom: 20px;
         right: 90px;
         padding: 15px;
-        background-color: rgba(50,50,50,0.7);
+        background-color: rgba(0,0,0,0.7);
       }
       #page-404 .text-block h4, #page-404 .text-block p {
         color: #fff;
@@ -80,11 +80,11 @@
         font-weight: 500;
       }
       #page-404 .text-block h4 {
-        font-size: 2rem;
+        font-size: 1.4rem;
       }
       #page-404 .text-block p {
         margin-bottom: 0;
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
       #page-404 .text-block ul {
         margin-top: 15px;
@@ -99,31 +99,35 @@
       #page-404 .text-block ul li a {
         color: #00AEEF;
         padding-right: 10px;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
       #page-404 .text-block ul li a:hover {
         text-decoration: none;
       }
       #page-404 .text-block input::-webkit-input-placeholder {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-family: "Messina Sans Modern";
       }
       #page-404 .text-block input:-moz-placeholder {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-family: "Messina Sans Modern";
       }
       #page-404 .text-block input::-moz-placeholder {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-family: "Messina Sans Modern";
       }
       #page-404 .text-block input:-ms-input-placeholder {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-family: "Messina Sans Modern";
       }
+      #page-404 .text-block input:focus::-webkit-input-placeholder { color:transparent; }
+      #page-404 .text-block input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+      #page-404 .text-block input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+      #page-404 .text-block input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
       #page-404 .search-form-group {
         position: relative;
       }
@@ -189,13 +193,13 @@
   </head>
   <body class="mt-0">
     <div id="page-404">
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Page-Desktop.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-down">
+      <div class="image-container hidden-md-down" style="background-image: url('./static-assets/images/background/404-Error-Page-Desktop.jpg');width: 100%;height: 100%;background-size: cover;">
         <!--<img src="./static-assets/images/background/404-Error-Page-Desktop.jpg" alt="">-->
       </div>
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-sm-down hidden-lg-up">
+      <div class="image-container hidden-sm-down hidden-lg-up" style="background-image: url('./static-assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;">
         <!--<img src="./static-assets/images/background/404-Error-Tablet.jpg" alt="">-->
       </div>
-      <div class="image-container" style="background-image: url('./static-assets/images/background/404-Error-Mobile.jpg');width: 100%;height: 100%;background-size: cover;" class="hidden-md-up">
+      <div class="image-container hidden-md-up" style="background: url('./static-assets/images/background/404-Error-Mobile.jpg') 50% 0%;width: 100%;height: 100%;background-size: cover;">
         <!--<img src="./static-assets/images/background/404-Error-Mobile.jpg" alt="">-->
       </div>
       <div class="text-block">
