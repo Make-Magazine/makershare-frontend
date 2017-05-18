@@ -242,7 +242,7 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
-      console.log(this.ProfileInfo)
+      // console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
@@ -332,7 +332,7 @@ export class ProfileComponent implements OnInit {
 
   ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas']) {
-      console.log(this.CountryFieldsAndDetails);
+      // console.log(this.CountryFieldsAndDetails);
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.ProfileInfo.address[administrative_area_label]) {
         this.ProfileInfo.address.governorate = '_none';
@@ -400,7 +400,7 @@ export class ProfileComponent implements OnInit {
         this.SetUser(profile);
         
         this.GetCountryDetails(profile.address.code);
-        console.log(this.ProfileInfo);
+        // console.log(this.ProfileInfo);
       }, (err) => {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)

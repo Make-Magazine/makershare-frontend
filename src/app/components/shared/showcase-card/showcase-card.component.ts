@@ -27,7 +27,7 @@ export class ShowcaseCardComponent implements OnInit {
 
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
-     console.log(data[0])
+    //  console.log(data[0])
       this.showcase = data[0];
     });
   }
