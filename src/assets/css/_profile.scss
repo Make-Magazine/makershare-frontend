@@ -180,7 +180,8 @@
         }
         li,
         p {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.5rem;
             a {
                 color: $title-color;
             }
@@ -285,7 +286,7 @@
                 .btn-soft-grey, a:not([href]):not([tabindex]).btn-soft-grey {
                     border: 1px solid $blue;
                     color: $blue;
-                    padding: 5px;
+                    padding: 8px 10px;
                     &:hover {
                         border-color: $blue*0.8;
                         color: $blue*0.8;
@@ -311,8 +312,9 @@
             }
             .profile-describe-yourself {
                 @include desc-font-5 ();
-                color: $shade-4;
-                font-size: 1.5rem;
+                color: $shade-3;
+                font-size: 1.4rem;
+                font-weight: normal;
             }
             .badges {
                 @include desc-font-2 ();
@@ -335,7 +337,7 @@
             .websites {
                 a {
                     color: $blue;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     margin-bottom: 5px;
                     cursor:pointer;
                     text-decoration: none;
@@ -418,8 +420,9 @@
             }
             .topic-tags {
                 color: $shade-5;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 position: relative;
+                font-style: normal;
             }
         }
         .report-div {
@@ -456,6 +459,7 @@
         margin: 20px 0px 20px 0px;
         p {
             padding: 10px 0;
+            color: $shade-4;
         }
         .empty-profile {
             margin-top: 50px;
@@ -530,7 +534,7 @@
         li {
             padding: 0 10px;
             height: 24px;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             color: $shade-4;
             &:not(:first-of-type) {
                 border-left: 2px solid #222;
@@ -921,7 +925,7 @@
     .maker-name {
         color: $blue;
         margin-bottom: 0;
-        margin-top: 10px;
+        // margin-top: 10px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -1004,9 +1008,9 @@
         margin: 0;
         max-width: 230px;
         cursor:pointer;
-        text-transform: none;
-        height: 50px;
+        height: 60px;
         margin-bottom: 5px;
+        font-size: 1.6rem;
     }
     .card-title-showcase {
         @include card-header-font-sm;
@@ -1067,6 +1071,7 @@
                     }
                     &.project-views {
                         width: 20px;
+                        padding-bottom: 3px;
                     }
                 }
                 span {
@@ -1212,6 +1217,7 @@
                 }
                 &.project-views {
                     width: 22px;
+                    padding-bottom: 3px;
                 }
             }
             span {
@@ -1964,6 +1970,7 @@
                         }
                         &.project-views {
                             width: 20px;
+                            padding-bottom: 3px;
                         }
                     }
                     span {
@@ -2147,6 +2154,7 @@
                 }
                 &.project-views {
                     width: 20px;
+                    padding-bottom: 3px;
                 }
             }
             span {
@@ -2232,6 +2240,7 @@
                     }
                     &.project-views {
                         width: 20px;
+                        padding-bottom: 3px;
                     }
                 }
                 span {
@@ -2387,6 +2396,7 @@
                     }
                     &.project-views {
                         width: 20px;
+                        padding-bottom: 3px;
                     }
                 }
                 span {
@@ -2516,7 +2526,10 @@ button {
     }
     &.topic-tags {
         span {
-            font-size: 1.2rem;
+            color: $shade-5;
+            font-size: 1rem;
+            position: relative;
+            font-style: normal;
 
         }
     }
