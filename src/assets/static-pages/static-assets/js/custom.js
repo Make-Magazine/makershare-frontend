@@ -58,8 +58,34 @@ function addCollab() {
 var squareView = true;
 var window_width;
 var window_height;
+
+
+
+// Splash page url params
+	function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            console.log(sParameterName[1])
+	            if (sParameterName[1] == 'subscription'){
+	            	$('.subscribe-success').addClass('show');
+	            }
+	            // return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+
+
 /*var */
 $(document).ready(function () {
+
+	var subscriptionParam = getUrlParameter('status');
 
 	$('.navbar-header button,#navbar').hover(function () {
 		$('#navbar').show();

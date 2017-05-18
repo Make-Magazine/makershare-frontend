@@ -114,9 +114,9 @@ export class SearchResultComponent implements OnInit {
 
   searchQuery(){
 
-    if(this.query.length < 4){
-      return;
-    }
+    // if(this.query.length < 4){
+    //   return;
+    // }
 
     this.loaderService.display(true);
     if(this.query.length == 0) {

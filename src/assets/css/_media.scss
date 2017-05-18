@@ -968,6 +968,32 @@
             }
         }
     }
+    .showcase-card-backlayer-home {
+        .showcase-card {
+            .card-container {
+                .card-description {
+                    p {
+                        -webkit-line-clamp: 4;
+                        max-height: 92px;
+                    }
+                }
+            }
+        }
+    }
+    .page-search-content {
+        .showcase-card-backlayer-search {
+            .showcase-card-backlayer-search-2 {
+                .showcase-card {
+                    .card-container {
+                        .card-description p {
+                            -webkit-line-clamp: 4;
+                            max-height: 92px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @media only screen and (min-width: 768px) {
     // .profile-sidebar {
