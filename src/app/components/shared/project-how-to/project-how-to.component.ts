@@ -8,14 +8,17 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProjectHowToComponent implements OnInit {
   @Input() project;
   @Input() projectInfo;
+  howto = false;
+  trustedLink;
   constructor(
     private sanitizer:DomSanitizer,
   ) { }
 
   ngOnInit() {
-    // console.log(this.project.field_how_to);
     if(this.project.field_how_to){
-      this.project.field_how_to.value = this.project.field_story.value = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
+      this.howto = true;
+      let link = this.project.field_how_to.value
+      this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
     }
   }
 
