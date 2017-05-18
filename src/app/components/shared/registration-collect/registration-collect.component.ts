@@ -16,7 +16,7 @@ export class RegistrationCollectComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.registrationFormState);
+    // console.log(this.registrationFormState);
     if(this.registrationFormState && this.registrationFormState.length > 0){
       this.showForm = true;
     }

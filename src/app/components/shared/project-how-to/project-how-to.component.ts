@@ -13,7 +13,7 @@ export class ProjectHowToComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.project.field_how_to);
+    // console.log(this.project.field_how_to);
     if(this.project.field_how_to){
       this.project.field_how_to.value = this.project.field_story.value = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
     }
