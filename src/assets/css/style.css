@@ -1971,6 +1971,7 @@ i.dropdownIcon {
 @media (max-width: 992px) {
   #splash .text-block {
     max-width: 320px; }
+<<<<<<< HEAD
 
   #splash .signup-form-group input::-webkit-input-placeholder {
     font-size: 1.3rem; }
@@ -1978,6 +1979,15 @@ i.dropdownIcon {
   #splash .signup-form-group input:-moz-placeholder {
     font-size: 1.3rem; }
 
+=======
+
+  #splash .signup-form-group input::-webkit-input-placeholder {
+    font-size: 1.3rem; }
+
+  #splash .signup-form-group input:-moz-placeholder {
+    font-size: 1.3rem; }
+
+>>>>>>> ba98eef93a8db6b2c75fce076fcb0a4b9fac1e93
   #splash .signup-form-group input::-moz-placeholder {
     font-size: 1.3rem; }
 
