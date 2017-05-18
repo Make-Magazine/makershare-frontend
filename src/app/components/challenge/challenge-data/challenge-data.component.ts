@@ -116,7 +116,7 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
     this.viewService.getView('challenge_followers', [['nid', this.idFromUrl], ['page', this.pageNo]])
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         if (follow_update) {
           this.followers = this.followers.concat(data);
         } else {
