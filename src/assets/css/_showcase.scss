@@ -270,6 +270,7 @@
                 padding: 30px 10px 10px 10px;
                 .media {
                     .profile-pic-container {
+                        width: 80px;
                         .icons-side-user {
                             width: auto;
                             overflow: initial;
@@ -285,6 +286,9 @@
                                 }
                             }
                         }
+                    }
+                    .media-body {
+                        width: calc(100% - 80px);
                     }
                 }
             }

@@ -63,6 +63,14 @@
       width: 100%;
       z-index: 2;
       padding: .75rem 1.25rem 0;
+      background-color: #00aeff;
+      color: #fff;
+      border: none;
+      border-radius: 0;
+    }
+    #splash .subscribe-success button {
+      opacity: 1;
+      top: -0.4rem;
     }
     #splash .subscribe-success strong {
       font-size: 1.4rem;
@@ -187,7 +195,7 @@
     <div class="text-block">
       <div class="signup-form-group">
         <form class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
-          <input type="text" name="email" pattern='[^@]+@[^@]+\.[a-zA-Z]{2,}' placeholder="Sign up for an invitation to join" id="search-box-input-404"/>
+          <input type="text" name="email" pattern='[^@]+@[^@]+\.[a-zA-Z]{2,}' placeholder="Sign up for an invitation to join" required id="search-box-input-404"/>
           <input required id="wc-email" type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
           <input type="hidden" name="multiadd" value="1" />
           <input type="hidden" name="cmd" value="subscribe" />
