@@ -185,8 +185,8 @@
             <img   *ngIf="projectCard.maker_photo" src="{{projectCard.maker_photo}}" alt="">
           </div>
 
-          <div class="d-flex flex-column" (click)="ShowProjectDetails(projectCard.path)">
-            <h4 class="card-title" innerHTML="{{projectCard.project_name}}"></h4>
+          <div class="d-flex flex-column" >
+            <h4 (click)="ShowProjectDetails(projectCard.path)" class="card-title" innerHTML="{{projectCard.project_name}}"></h4>
             <a (click)="getProfile()">
               <p *ngIf="type == 'grid'" class="maker-name">By {{projectCard.first_name}} {{projectCard.last_name}}</p>
             </a>
