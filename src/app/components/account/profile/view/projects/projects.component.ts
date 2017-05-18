@@ -40,7 +40,7 @@ export class ProjectsComponent implements OnInit {
           this.userName = params['user_name'];
         });
         this.userService.getIdFromUrl(this.userName).subscribe(data => {
-           console.log(this.userName)
+          //  console.log(this.userName)
           this.uid = data.uid;
           this.getProjects();
           this.getCountProject();
@@ -82,7 +82,7 @@ export class ProjectsComponent implements OnInit {
     let body = { "data": this.uid};
     this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
-        console.log("sadsadsad")
+        // console.log("sadsadsad")
     }, err => { });
   }
   /* end count function */
