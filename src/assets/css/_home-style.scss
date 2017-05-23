@@ -89,6 +89,7 @@
     padding-bottom: 50px;
     header h3{
         @include header-font();
+        text-transform: capitalize;
         text-align: center;
         margin: 25px 0;
     }
@@ -337,6 +338,7 @@ footer {
         margin-bottom: 5px;
         line-height: 17px;
         display: inline-block;
+        word-break: break-word;
 
     }
     .profile-tag, .user-city, .count {

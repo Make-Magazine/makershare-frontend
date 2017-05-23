@@ -1,4 +1,9 @@
 @media (max-width: 992px) {
+    .page-inbox .inbox-header
+        {
+           order: 2;
+           text-align: center;
+        }
     /* Footer */
     footer {
         padding-top: 30px;
@@ -959,6 +964,32 @@
             .profile-info {
                 .profile-share {
                     top: 35px;
+                }
+            }
+        }
+    }
+    .showcase-card-backlayer-home {
+        .showcase-card {
+            .card-container {
+                .card-description {
+                    p {
+                        -webkit-line-clamp: 4;
+                        max-height: 92px;
+                    }
+                }
+            }
+        }
+    }
+    .page-search-content {
+        .showcase-card-backlayer-search {
+            .showcase-card-backlayer-search-2 {
+                .showcase-card {
+                    .card-container {
+                        .card-description p {
+                            -webkit-line-clamp: 4;
+                            max-height: 92px;
+                        }
+                    }
                 }
             }
         }

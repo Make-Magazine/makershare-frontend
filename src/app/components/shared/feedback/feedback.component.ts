@@ -475,7 +475,7 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_describe_bug);
     }
    // console.log(this.feedbackForm);
-    console.log(feedback);
+    // console.log(feedback);
     this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
      // console.log(NewNode.nid);
       this.NID = NewNode.nid;
