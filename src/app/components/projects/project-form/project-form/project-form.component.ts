@@ -429,7 +429,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   GettingFieldsReady(Status: number, Visibility: number) {
     this.current_active_tab = 'Your Story';
     if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
-      this.notificationBarService.create({ message: 'Ah snap! Looks Like we need a little more info from you.', type: NotificationType.Error });
+      this.notificationBarService.create({ message: "You're missing some required fields before you can publish.", type: NotificationType.Error });
       this.TryToSubmitPrivatePublic = true;
       return;
     }
@@ -550,7 +550,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning, allowClose: true, autoHide: false, hideOnHover: false  });
+        this.notificationBarService.create({ message: 'Your project is saved as a Draft. Publish to make it public.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false  });
         tab = 'draft';
       } else if (visibility == 371) {
         // save as private
@@ -564,7 +564,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     } else if (action == 'create') {
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is missing some fields, so we added it to your Drafts', type: NotificationType.Warning , allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({ message: 'Your project is saved as a Draft. Publish to make it public.', type: NotificationType.Success , allowClose: true, autoHide: false, hideOnHover: false });
         tab = 'draft';
 
       } else if (visibility == 371) {

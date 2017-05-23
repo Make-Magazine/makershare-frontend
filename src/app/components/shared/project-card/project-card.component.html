@@ -89,7 +89,7 @@
           <div class="d-flex flex-column" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="getProfile()">
-              <p class="maker-name">By {{project.first_name}} {{project.last_name}}</p>
+              <p class="maker-name" innerHTML="By {{project.first_name}} {{project.last_name}}"></p>
             </a>
           </div>
         </div>
