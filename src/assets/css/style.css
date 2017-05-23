@@ -5901,6 +5901,9 @@ button:hover {
   .challenge-enter-modal .modal-footer {
     border-top: none !important; }
 
+.text-red {
+  color: #ED1C24; }
+
 .page-project {
   color: #333333;
   background-color: #F2F2F2; }
