@@ -533,7 +533,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
       'guide': `Are there any important files associated with your project that you'd like to share? This is the place for those. From vector to 3D files, patterns to code, please uploaded any files associated with your poject here.`
     },
     'credit_your_inspiration': {
-      'title': 'Steps:',
+      'title': 'Describe Your Build:',
       'guide': 'Use this field to describe the process of creating this project. Include any images, video, or text that will allow others to best remake your project.'
     },
   }
