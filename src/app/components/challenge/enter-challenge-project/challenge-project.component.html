@@ -90,6 +90,9 @@
           <div class="region region-content col-sm-12 mb-5">
             <div class="content-wrapper row pt-5">
               <div class="challenge-enter col-md-5">
+                 
+                   <p *ngIf="projects?.length == 0 && enterStatus==true" class="text-center text-red"> You Don't have any Public Project</p>
+                   
                 <div *ngIf="projects?.length > 0 && enterStatus==true">
                   <p *ngIf="enterStatus==true">Select an existing project from your portfolio.</p>
                   <form>
