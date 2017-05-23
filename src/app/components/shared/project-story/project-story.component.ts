@@ -31,9 +31,12 @@ export class ProjectStoryComponent implements OnInit {
     comment_body: { und: [{ value: '' }] },
     nid: 0,
   };
+  story = false;
+  storyHTML;
   ngOnInit() {
     if(this.project.field_story){
-      this.project.field_story.value = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
+      this.story = true;
+      this.storyHTML = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
     }
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];

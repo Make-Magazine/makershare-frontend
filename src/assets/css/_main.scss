@@ -839,7 +839,6 @@ i.dropdownIcon {
             margin:  90px auto 0;
             h2 {
                 @include header-font();
-                text-transform: none;
                 color:white;
             }
             p{

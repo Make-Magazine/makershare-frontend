@@ -2044,6 +2044,8 @@
         .maker-nickname {
             @include desc-font-1 ();
             margin-bottom: 2px;
+            font-weight: normal;
+            color: $shade-4;
         }
         .maker-city {
             @include desc-font-3 ();
@@ -2061,6 +2063,9 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: $shade-5;
             line-height: 110% !important;
         }
         .card-stats {
@@ -2208,6 +2213,8 @@
             @include desc-font-5 ();
             // 14 pt
             margin-bottom: 2px;
+            font-weight: normal;
+            color: $shade-4;
         }
         .maker-city {
             @include desc-font-3 ();
@@ -2298,6 +2305,8 @@
             .maker-nickname {
                 @include desc-font-1 ();
                 margin-bottom: 2px;
+                font-weight: normal;
+                color: $shade-4;
             }
             .maker-city {
                 @include desc-font-3 ();

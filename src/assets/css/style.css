@@ -452,7 +452,6 @@ a:not([href]):not([tabindex]).btn-border {
   font-family: "Messina Sans Regular";
   font-size: 0.9rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 130%;
   color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
@@ -677,7 +676,6 @@ a:not([href]):not([tabindex]).btn-vote {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #4F4F4F;
@@ -779,7 +777,6 @@ a:not([href]):not([tabindex]).btn-save {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #fff;
@@ -1101,7 +1098,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1149,7 +1145,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1179,7 +1174,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1209,7 +1203,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1241,7 +1234,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1295,7 +1287,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1553,7 +1544,6 @@ ngb-typeahead-window.dropdown-menu {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       padding: 5px 0px;
@@ -1585,7 +1575,6 @@ ngb-typeahead-window.dropdown-menu {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         font-size: 0.83em !important; }
@@ -1661,16 +1650,13 @@ i.dropdownIcon {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
-    text-transform: none;
     color: white; }
   .registration-page .search-form-group .header-title p {
     font-family: "Messina Sans Regular";
     font-size: 1.3rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 110%;
     color: #828282;
     color: #fff; }
@@ -2055,9 +2041,9 @@ i.dropdownIcon {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     text-align: center;
     margin: 25px 0; }
   .maker-spotlight .spotlight-item {
@@ -2222,7 +2208,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -2240,12 +2225,12 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   line-height: 17px;
-  display: inline-block; }
+  display: inline-block;
+  word-break: break-word; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
 .user-card .user-city {
@@ -2284,7 +2269,6 @@ footer {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     font-weight: normal !important;
@@ -2316,7 +2300,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -2334,7 +2317,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
@@ -2419,7 +2401,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282; }
     .bookmark-page .content-wrapper td img:hover, .bookmark-page .content-wrapper td span:hover {
@@ -2431,7 +2412,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #333333 !important; }
@@ -2483,7 +2463,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282; }
         .bookmark-page .content-wrapper .bookmark-item .media-body .title:hover {
@@ -2535,7 +2514,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         font-size: 1rem;
@@ -2661,7 +2639,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         font-size: 1rem;
@@ -2897,7 +2874,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       margin-bottom: 10px;
@@ -2911,7 +2887,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #BDBDBD;
@@ -2989,7 +2964,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         font-size: 1.5rem;
@@ -2998,7 +2972,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #BDBDBD;
@@ -3008,7 +2981,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
@@ -3018,7 +2990,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #BDBDBD;
@@ -3028,7 +2999,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
@@ -3038,7 +3008,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 150% !important;
@@ -3570,7 +3539,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -3591,7 +3559,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -3635,7 +3602,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .project .card-stats ul li img {
@@ -3687,7 +3653,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
@@ -3736,7 +3701,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -3761,7 +3725,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       width: 65px; }
@@ -3909,7 +3872,6 @@ footer {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     color: #4F4F4F; }
@@ -3919,7 +3881,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3929,7 +3890,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3939,7 +3899,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
     .modal-content .profile-modal input:-moz-placeholder {
@@ -3948,7 +3907,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3979,7 +3937,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input::-moz-placeholder {
@@ -3989,7 +3946,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input:-ms-input-placeholder {
@@ -3999,7 +3955,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input:-moz-placeholder {
@@ -4009,7 +3964,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-webkit-input-placeholder {
@@ -4020,7 +3974,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-moz-placeholder {
@@ -4031,7 +3984,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-ms-input-placeholder {
@@ -4042,7 +3994,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-moz-placeholder {
@@ -4053,7 +4004,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-webkit-input-placeholder {
@@ -4064,7 +4014,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-moz-placeholder {
@@ -4075,7 +4024,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-ms-input-placeholder {
@@ -4086,7 +4034,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-moz-placeholder {
@@ -4097,7 +4044,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-webkit-input-placeholder {
@@ -4108,7 +4054,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-moz-placeholder {
@@ -4119,7 +4064,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-ms-input-placeholder {
@@ -4130,7 +4074,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-moz-placeholder {
@@ -4141,7 +4084,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body .modal-menu a {
@@ -4331,7 +4273,6 @@ footer {
   font-family: "Messina Sans Regular";
   font-size: 1.3rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 110%;
   color: #828282; }
 
@@ -4339,7 +4280,6 @@ footer {
   font-family: "Messina Modern Bold";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #4F4F4F; }
@@ -4390,7 +4330,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       min-height: 24px;
@@ -4409,7 +4348,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       margin-bottom: 5px;
@@ -4441,7 +4379,6 @@ footer {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           font-weight: normal !important;
@@ -4508,7 +4445,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -4516,15 +4452,15 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4534,7 +4470,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4543,6 +4478,9 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #828282;
       line-height: 110% !important; }
   .maker-card .icons-side-project {
     position: relative;
@@ -4571,7 +4509,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -4613,7 +4550,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       display: inline-block;
@@ -4663,7 +4599,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -4671,15 +4606,15 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-mobile-card .maker-data .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4689,7 +4624,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4703,7 +4637,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.8rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         display: inline;
@@ -4750,22 +4683,21 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4774,7 +4706,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4803,7 +4734,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -4846,7 +4776,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       width: 70px; }
@@ -5033,7 +4962,6 @@ button:hover {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
@@ -5066,9 +4994,9 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       margin: auto;
       text-align: center;
       padding-top: 40px;
@@ -5078,7 +5006,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       text-transform: uppercase;
@@ -5097,7 +5024,6 @@ button:hover {
           font-family: "Messina Modern Regular";
           font-size: 1.3rem;
           font-weight: 500;
-          text-transform: none;
           line-height: 120%;
           color: #828282;
           color: #6f6f6f;
@@ -5242,7 +5168,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5281,9 +5206,9 @@ button:hover {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     margin: auto;
     padding-top: 45px;
     padding-bottom: 10px;
@@ -5292,7 +5217,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282; }
 
@@ -5328,7 +5252,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       position: absolute;
@@ -5362,7 +5285,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: white; }
@@ -5370,7 +5292,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -5381,7 +5302,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       color: white;
@@ -5421,7 +5341,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     position: absolute;
@@ -5455,7 +5374,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -5469,7 +5387,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -5478,7 +5395,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       text-transform: none;
@@ -5491,14 +5407,12 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282; }
     .page-search-content .challenge-card .card-container .card .card-description p {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       height: 85px;
@@ -5535,7 +5449,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #fff;
@@ -5578,7 +5491,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5594,7 +5506,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
@@ -5617,7 +5528,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
@@ -5696,7 +5606,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #fff;
@@ -5736,7 +5645,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5752,7 +5660,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
@@ -5776,7 +5683,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
@@ -5865,7 +5771,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #fff; }
@@ -5897,7 +5802,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5913,7 +5817,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
@@ -6085,11 +5988,11 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important;
-        padding-top: 4px; }
+        padding-top: 4px;
+        color: #4F4F4F; }
   .page-project .feedback-group {
     background-color: white;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -6101,7 +6004,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #4F4F4F; }
@@ -6145,10 +6047,10 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
-        line-height: inherit !important; }
+        line-height: inherit !important;
+        color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .difficulty-duration {
       background-color: white;
       padding: 18px 10px 34px 10px;
@@ -6164,7 +6066,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6190,7 +6091,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6200,7 +6100,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6210,7 +6109,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6219,7 +6117,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6235,7 +6132,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6248,7 +6144,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6353,7 +6248,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6363,7 +6257,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6381,7 +6274,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6391,7 +6283,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6491,7 +6382,6 @@ header.showcase-project .next {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 130%;
           color: #828282;
           color: #4F4F4F;
@@ -6519,7 +6409,6 @@ header.showcase-project .next {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     color: #4F4F4F;
@@ -6538,7 +6427,6 @@ header.showcase-project .next {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         border: 1px solid #ccc;
@@ -6649,7 +6537,6 @@ header.showcase-project .next {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           color: #00AEEF;
@@ -6660,7 +6547,6 @@ header.showcase-project .next {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         word-wrap: break-word;
@@ -6671,7 +6557,6 @@ header.showcase-project .next {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         margin-bottom: 10px;
@@ -6761,7 +6646,6 @@ header.showcase-project .next {
             font-family: "Messina Sans Regular";
             font-size: 0.9rem;
             font-weight: 400;
-            text-transform: none;
             line-height: 100%;
             color: #828282;
             font-weight: normal !important;
@@ -6839,7 +6723,6 @@ textarea {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     text-align: right;
@@ -6883,9 +6766,9 @@ textarea {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     margin: auto;
     padding-top: 45px;
     padding-bottom: 10px;
@@ -6894,7 +6777,6 @@ textarea {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     width: 100%;
@@ -6940,7 +6822,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -6955,7 +6836,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -6966,7 +6846,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -7049,7 +6928,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F;
@@ -7061,7 +6939,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -7072,7 +6949,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -7130,7 +7006,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       text-transform: none;
@@ -7144,7 +7019,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
@@ -7152,7 +7026,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -7163,7 +7036,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -7197,9 +7069,9 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       margin: auto;
       padding-top: 45px;
       padding-bottom: 10px;
@@ -7209,7 +7081,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       width: 85%;
@@ -7281,7 +7152,6 @@ textarea {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -7290,7 +7160,6 @@ textarea {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7301,7 +7170,6 @@ textarea {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
@@ -7403,18 +7271,22 @@ textarea {
   line-height: 1.5rem; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
-  .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
-    width: auto;
-    overflow: initial;
-    position: absolute;
-    top: -13px;
-    left: 10px; }
-    .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon {
-      width: auto; }
-      .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon img {
-        height: 35px;
-        width: 30px;
-        margin-right: 5px; }
+  .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
+    width: 80px; }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
+      width: auto;
+      overflow: initial;
+      position: absolute;
+      top: -13px;
+      left: 10px; }
+      .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon {
+        width: auto; }
+        .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon img {
+          height: 35px;
+          width: 30px;
+          margin-right: 5px; }
+  .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body {
+    width: calc(100% - 80px); }
 
 img {
   max-width: 100%; }
@@ -7513,7 +7385,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -7527,7 +7398,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7538,7 +7408,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         display: -webkit-box;
@@ -7673,7 +7542,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -7683,7 +7551,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7694,7 +7561,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         display: -webkit-box;
@@ -7802,7 +7668,6 @@ img {
           font-family: "Messina Modern Regular";
           font-size: 2.6rem;
           font-weight: 500;
-          text-transform: none;
           line-height: 120%;
           color: #828282;
           display: -webkit-box;
@@ -7817,7 +7682,6 @@ img {
           font-family: "Messina Sans Regular";
           font-size: 1.3rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 110%;
           color: #828282;
           display: inline-block;
@@ -7828,7 +7692,6 @@ img {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 130%;
           color: #828282;
           display: -webkit-box;
@@ -7922,9 +7785,9 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      text-transform: capitalize; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .create-project-buttons:hover {
       cursor: pointer; }
     .page-create-project-why .add-controls .project-create-buttons .contorls button:hover {
@@ -7989,7 +7852,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.8rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 1.4em;
@@ -8101,11 +7963,11 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 1rem;
     font-weight: 400;
-    text-transform: uppercase;
     line-height: 100%;
     color: #828282;
     font-size: 1.2em;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    text-transform: uppercase; }
   .page-create-project-why .how-to .tools .result,
   .page-create-project-why .how-to .tools .how-to-select,
   .page-create-project-why .how-to .materials .result,
@@ -8117,7 +7979,6 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     font-size: 1.1em;
@@ -8371,7 +8232,6 @@ img {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F; }
@@ -8845,7 +8705,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -8854,7 +8713,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -8865,7 +8723,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       color: white; }
@@ -9173,7 +9030,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -9186,7 +9042,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -9197,7 +9052,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -9277,7 +9131,6 @@ img {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   text-align: center;
@@ -9582,7 +9435,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
@@ -9772,9 +9624,9 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
-    color: #4F4F4F; }
+    color: #4F4F4F;
+    text-transform: capitalize; }
   .page-search-result .top-content-wrapper {
     padding: 10px; }
     .page-search-result .top-content-wrapper .search-input {
@@ -9823,15 +9675,14 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       text-align: center; }
@@ -9860,7 +9711,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -9869,7 +9719,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282; }
       .total-result .project-result .projects-item .card-title, .total-result .project-result .projects-item .card-text {
@@ -9901,7 +9750,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282; }
       .total-result .challenge-item .content-bottom .content-side .challenge-open {
@@ -9912,7 +9760,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         color: #BDBDBD !important; }
@@ -9935,7 +9782,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         clear: both;
@@ -9968,7 +9814,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #4F4F4F;
@@ -9978,7 +9823,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px; }
@@ -9996,7 +9840,6 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -10072,9 +9915,9 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     text-align: center; }
   .page-search-content .clear-search {
     position: absolute;
@@ -10491,7 +10334,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       line-height: 125% !important;
@@ -10506,7 +10348,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #828282; }
@@ -10525,7 +10366,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 125% !important;
@@ -10540,7 +10380,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #828282; }
@@ -10553,7 +10392,6 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     display: -webkit-box;
@@ -10565,7 +10403,6 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     line-height: 125% !important;

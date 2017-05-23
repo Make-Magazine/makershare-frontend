@@ -97,7 +97,7 @@ export class Auth implements OnInit {
                 this.router.navigate(['/portfolio']);
                 
               }else {
-                console.log(localStorage.getItem('currentURL'));
+                // console.log(localStorage.getItem('currentURL'));
                 this.router.navigate([localStorage.getItem('currentURL')]);
               }
             
