@@ -844,6 +844,12 @@
     .profile-sidebar {
         .profile-container {
             .profile-info {
+                padding-bottom: 30px;
+                .hideData {
+                    .toggleProfile, &.toggleProfile {
+                        bottom: 15px;
+                    }
+                }
                 .userInfo {
                     min-height: 70px;
                 }

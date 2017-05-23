@@ -10649,8 +10649,12 @@ img {
   .challenge-card .card-container .card-partership {
     padding-top: 10px; }
 
-  .profile-sidebar .profile-container .profile-info .userInfo {
-    min-height: 70px; }
+  .profile-sidebar .profile-container .profile-info {
+    padding-bottom: 30px; }
+    .profile-sidebar .profile-container .profile-info .hideData .toggleProfile, .profile-sidebar .profile-container .profile-info .hideData.toggleProfile {
+      bottom: 15px; }
+    .profile-sidebar .profile-container .profile-info .userInfo {
+      min-height: 70px; }
 
   .registration-page .search-form-group .header-title {
     margin-top: 20px; }
