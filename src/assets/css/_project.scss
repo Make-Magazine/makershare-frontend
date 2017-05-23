@@ -133,6 +133,7 @@
 				 @include desc-font-1();
 				 line-height: inherit !important;
 				 padding-top: 4px;
+				 color: $shade-4;
 			}
 		}
 	}
@@ -201,6 +202,7 @@
 			p {
 				@include desc-font-1();
 				line-height: inherit !important;
+				color: $shade-4;
 			}
 			}
 		}

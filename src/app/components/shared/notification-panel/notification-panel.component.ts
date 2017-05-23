@@ -66,7 +66,7 @@ export class NotificationPanelComponent implements OnInit {
 
   getNewCont() {
     this.statisticsService.notificationGetNewCount(this.userId).subscribe(count => {
-      console.log(count[0]);
+      // console.log(count[0]);
      if(count[0] == 0 || count[0] == false){
         this.newCount  = 0;
       }else{

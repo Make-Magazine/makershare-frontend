@@ -2,8 +2,8 @@
   <div class="region region-content col-lg-8 col-md-12">
     <div class="how-to-tab">
       <div class="project-body-content">
-        <p *ngIf="project.field_how_to?.value" [innerHTML]="project.field_how_to?.value" ></p>
-        <p *ngIf="!project.field_how_to?.value" class="text-center" >There is no content available!</p>
+        <p *ngIf="howto" [innerHTML]="trustedLink" ></p>
+        <p *ngIf="!howto" class="text-center" >There is no content available!</p>
       </div>
     </div>
   </div>
