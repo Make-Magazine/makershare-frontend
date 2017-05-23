@@ -44,7 +44,7 @@ uid;
       if (this.email_notifications.length === 0) {
         this.email_notifications = [];
         this.email_notifications.push(num);
-        console.log(this.email_notifications);
+        // console.log(this.email_notifications);
       } else {
         this.email_notifications.push(num);
       }

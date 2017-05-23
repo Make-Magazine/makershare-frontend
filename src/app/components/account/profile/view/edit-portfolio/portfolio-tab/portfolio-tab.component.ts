@@ -41,12 +41,12 @@ export class PortfolioTabComponent implements OnInit {
     this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid], ["page", PageIndex]]).subscribe((projects: ProjectCardPortfolio[]) => {
       if (PageIndex == 0) {
         this.Projects = projects;
-        console.log( this.Projects)
+        // console.log( this.Projects)
         this.pages = 0;
 
       } else {
         this.Projects = this.Projects.concat(projects);
-        console.log( this.Projects)
+        // console.log( this.Projects)
         this.pages++;
       }
       this.loadMoreVisibilty();
@@ -78,8 +78,8 @@ export class PortfolioTabComponent implements OnInit {
 
     if (this.status == 371) { this.countProject = this.projectsCountPrivate }
     if (this.status == 1115) { this.countProject = this.projectsCountDraft }
-    console.log(this.countProject)
-    console.log(this.Projects.length)
+    // console.log(this.countProject)
+    // console.log(this.Projects.length)
     if (this.countProject <= this.Projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.Projects.length) {
