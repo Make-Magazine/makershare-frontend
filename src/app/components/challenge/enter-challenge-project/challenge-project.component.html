@@ -88,6 +88,7 @@
         </div>-->
         <div class="container">
           <div class="region region-content col-sm-12 mb-5">
+            <i class="lnr lnr-cross close-submit"  (click)="onCancel()"></i>
             <div class="content-wrapper row pt-5">
               <div class="challenge-enter col-md-5">
                  
@@ -107,11 +108,11 @@
                      </select>
                     </div>
                     <div class="enter-form-buttons d-flex" *ngIf="enterStatus==true">
-                      <div class="button-container-sec-2 w-50">
+                      <!--<div class="button-container-sec-2 w-50">
                         <span class="btn btn-main-2 w-100" (click)="onCancel()">Cancel</span>
-                      </div>
+                      </div>-->
 
-                      <div class="button-container-main-1 w-50" *ngIf="enterStatus==true">
+                      <div class="button-container-main-1 m-auto w-50" *ngIf="enterStatus==true">
                         <span class="btn btn-main w-100"  (click)="open(content)" [attr.disabled]="submittedBefore">Submit</span>
                       </div>
                     </div>

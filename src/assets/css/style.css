@@ -5905,6 +5905,13 @@ button:hover {
 .text-red {
   color: #ED1C24; }
 
+.close-submit {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 10px;
+  right: 10px;
+  cursor: pointer; }
+
 .page-project {
   color: #333333;
   background-color: #F2F2F2; }
