@@ -3605,7 +3605,8 @@ footer {
       line-height: 100%;
       color: #828282; }
       .project .card-stats ul li img {
-        margin-right: 6px; }
+        margin-right: 6px;
+        width: 12px; }
         .project .card-stats ul li img.project-likes {
           width: 12px; }
         .project .card-stats ul li img.project-views {
@@ -5305,7 +5306,7 @@ button:hover {
       line-height: 130%;
       color: #828282;
       color: white;
-      font-weight: normal;
+      font-weight: 900;
       line-height: 1.5rem; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
@@ -5667,7 +5668,7 @@ button:hover {
     -webkit-box-orient: vertical;
     overflow: hidden;
     color: #fff;
-    font-weight: normal;
+    font-weight: 900;
     line-height: 1.5rem; }
   .tablet-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
@@ -5904,6 +5905,13 @@ button:hover {
 .text-red {
   color: #ED1C24; }
 
+.close-submit {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 10px;
+  right: 10px;
+  cursor: pointer; }
+
 .page-project {
   color: #333333;
   background-color: #F2F2F2; }
@@ -5987,6 +5995,8 @@ button:hover {
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
       box-shadow: 2px 2px 8px #BDBDBD; }
+      .page-project .project-story-tab .project-body-content .story-video {
+        margin-top: -15px; }
       .page-project .project-story-tab .project-body-content p {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
@@ -7463,6 +7473,13 @@ img {
           height: auto; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
+        .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like {
+          color: #828282; }
+          .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like .btn {
+            padding: 0; }
+          .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like img {
+            width: 12px;
+            margin-bottom: 3px; }
       .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
       .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
         font-weight: bold;
@@ -8695,6 +8712,11 @@ img {
     margin-bottom: 10px; }
     .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-sec-2 {
       margin-left: 10px; }
+    .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn, .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn, .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn {
+      position: static; }
   .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
     color: #fff;
     height: 100%;
@@ -10342,9 +10364,10 @@ img {
       color: #828282;
       line-height: 125% !important;
       -webkit-line-clamp: 3;
-      height: 52px;
+      height: 55px;
       color: #fff;
-      overflow: hidden; }
+      overflow: hidden;
+      font-weight: 900; }
     .tablet-challenge-card .challene-card-footer-1 {
       margin-right: 20px; }
     .tablet-challenge-card .challenge-card-footer-2 {

@@ -8,6 +8,7 @@ import { ViewService, FlagService } from '../../../d7services';
 export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
   numLikes;
+  userId;
   @Input() showcaseNid;
   projectsCount;
   constructor(private route: ActivatedRoute,
@@ -18,6 +19,8 @@ export class ShowcaseGeneralCardComponent implements OnInit {
 
   ) { }
   ngOnInit() {
+    this.userId = localStorage.getItem('user_id');
+
     this.getShowcases();
     this.getProjectsCount();
     this.countLikes();
