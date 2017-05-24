@@ -358,6 +358,12 @@
 			.button-container-sec-2 {
 				margin-left: 10px;
 			}
+			.button-container-main-1,
+			.button-container-sec-2 {
+				.btn {
+					position: static;
+				}
+			}
 		}
     .card-container {
         color: $white;

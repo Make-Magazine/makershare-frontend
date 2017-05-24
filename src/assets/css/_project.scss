@@ -128,6 +128,9 @@
 		.project-body-content {
 			padding: 16px;
 			background-color: white;
+			.story-video {
+				margin-top: -15px;
+			}
 			@include boxShadow(2px, 2px ,8px, $shade-3);
 			p {
 				 @include desc-font-1();
