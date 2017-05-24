@@ -218,7 +218,7 @@ header .main-header .maker-sites li:nth-child(-n+4) {
   border-left: 1px solid #333333; }
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
-header .noti-number {
+header .notification-count {
   position: absolute !important;
   width: 80%;
   color: white;
@@ -4804,7 +4804,7 @@ footer {
 .empty-projects-page {
   text-align: center; }
   .empty-projects-page h4 {
-    color: #333333; }
+    color: #4F4F4F; }
 
 /* file manager style */
 .file-manager .file-manager-header .upload-file {
@@ -5900,6 +5900,9 @@ button:hover {
     cursor: pointer; }
   .challenge-enter-modal .modal-footer {
     border-top: none !important; }
+
+.text-red {
+  color: #ED1C24; }
 
 .page-project {
   color: #333333;
@@ -9369,7 +9372,8 @@ img {
         cursor: pointer; }
       .page-inbox .inbox-container .inbox-controls .new-message i {
         padding-right: 10px;
-        font-size: 1.6rem; }
+        font-size: 1.6rem;
+        padding-bottom: 3px; }
       .page-inbox .inbox-container .inbox-controls .new-message p {
         display: inline-block;
         margin-bottom: 0; }
@@ -10177,7 +10181,7 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {
     order: 2;
     text-align: center; }
@@ -10284,7 +10288,7 @@ img {
 
   .page-challenge-summary .challenge-cover .challenge-card .left-side .button-container-sec-2 {
     margin-left: 0px; } }
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding: 12px 0px 0px 0px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
@@ -10413,7 +10417,7 @@ img {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical; } }
-@media (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   /* project card */
   .project.card {
     width: 100%; }
@@ -10458,7 +10462,7 @@ img {
 
   .page-create-project-why .nav-create ul li {
     float: none; } }
-@media (max-width: 414px) {
+@media only screen and (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 {
@@ -10535,7 +10539,7 @@ img {
     padding: 10px 0px 20px !important; }
     header nav.navbar .project-button {
       margin-left: 20px; } }
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   #page-404 .text-block {
     bottom: 50px;
     right: 160px; } }
@@ -10601,7 +10605,19 @@ img {
         font-size: 1.2rem; }
       header.main-header nav.navbar #MainNav .nav-item .btn {
         font-size: 1rem;
-        height: 50px; } }
+        height: 50px; }
+    header.main-header app-notification-panel .dropdown-menu {
+      right: -250%;
+      width: 300px; }
+
+  .page-inbox h1 {
+    font-size: 2.4rem; }
+  .page-inbox .inbox-header ul li {
+    width: 100%; }
+  .page-inbox .inbox-container .inbox-controls .new-message p {
+    display: none; }
+  .page-inbox .inbox-container .inbox-controls .new-message i {
+    font-size: 2rem; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
@@ -10633,8 +10649,12 @@ img {
   .challenge-card .card-container .card-partership {
     padding-top: 10px; }
 
-  .profile-sidebar .profile-container .profile-info .userInfo {
-    min-height: 70px; }
+  .profile-sidebar .profile-container .profile-info {
+    padding-bottom: 30px; }
+    .profile-sidebar .profile-container .profile-info .hideData .toggleProfile, .profile-sidebar .profile-container .profile-info .hideData.toggleProfile {
+      bottom: 15px; }
+    .profile-sidebar .profile-container .profile-info .userInfo {
+      min-height: 70px; }
 
   .registration-page .search-form-group .header-title {
     margin-top: 20px; }

@@ -34,6 +34,7 @@ header {
         .login-block {
             margin-bottom: 0;
             margin-top: 3px;
+            
             li {
                 display: inline-block;
                 .btn {
@@ -271,7 +272,7 @@ header {
     
     }
 
-    .noti-number{
+    .notification-count{
     position: absolute !important;
     // left: 30px;
     width: 80%;
