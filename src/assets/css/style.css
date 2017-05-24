@@ -218,7 +218,7 @@ header .main-header .maker-sites li:nth-child(-n+4) {
   border-left: 1px solid #333333; }
 header .main-header .maker-sites li {
   padding: 0 0 0 15px; }
-header .noti-number {
+header .notification-count {
   position: absolute !important;
   width: 80%;
   color: white;
@@ -452,7 +452,6 @@ a:not([href]):not([tabindex]).btn-border {
   font-family: "Messina Sans Regular";
   font-size: 0.9rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 130%;
   color: #828282; }
   .btn-border:focus, .btn-border:active, .btn-border:hover,
@@ -519,12 +518,12 @@ a:not([href]):not([tabindex]).btn-sharp {
 .message-btn,
 a:not([href]):not([tabindex]).message-btn {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: auto;
   border: none;
   background-color: #00AEEF;
   text-align: left;
-  padding: 0 15px 10px;
+  padding: 5px 15px 10px;
   width: 100%;
   display: block; }
   .message-btn:hover, .message-btn:focus, .message-btn:active,
@@ -538,16 +537,19 @@ a:not([href]):not([tabindex]).message-btn {
     text-align: left; }
   .message-btn .message-icon,
   a:not([href]):not([tabindex]).message-btn .message-icon {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     position: relative;
-    bottom: -3px;
+    bottom: -2px;
     text-align: left; }
+  .message-btn .message-text,
+  a:not([href]):not([tabindex]).message-btn .message-text {
+    font-size: 1rem; }
 
 .btn-dark-grey,
 a:not([href]):not([tabindex]).btn-dark-grey {
   background-color: #333333;
   color: #fff;
-  border: 1px solid #333333; }
+  border: 1px solid #4F4F4F; }
   .btn-dark-grey:hover, .btn-dark-grey:focus, .btn-dark-grey:active,
   a:not([href]):not([tabindex]).btn-dark-grey:hover,
   a:not([href]):not([tabindex]).btn-dark-grey:focus,
@@ -674,7 +676,6 @@ a:not([href]):not([tabindex]).btn-vote {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #4F4F4F;
@@ -776,7 +777,6 @@ a:not([href]):not([tabindex]).btn-save {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #fff;
@@ -1039,7 +1039,7 @@ body {
 
 .default-header {
   background-color: #BDBDBD;
-  color: #333333;
+  color: #4F4F4F;
   text-align: left;
   overflow: hidden;
   vertical-align: middle;
@@ -1098,7 +1098,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1146,7 +1145,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1176,7 +1174,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1206,7 +1203,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1238,7 +1234,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1292,7 +1287,6 @@ body {
   font-family: "Messina Sans Regular";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 100%;
   color: #828282;
   position: absolute;
@@ -1550,7 +1544,6 @@ ngb-typeahead-window.dropdown-menu {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       padding: 5px 0px;
@@ -1582,7 +1575,6 @@ ngb-typeahead-window.dropdown-menu {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         font-size: 0.83em !important; }
@@ -1658,16 +1650,13 @@ i.dropdownIcon {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
-    text-transform: none;
     color: white; }
   .registration-page .search-form-group .header-title p {
     font-family: "Messina Sans Regular";
     font-size: 1.3rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 110%;
     color: #828282;
     color: #fff; }
@@ -1712,197 +1701,277 @@ i.dropdownIcon {
   overflow-x: hidden; }
 
 #page-404 {
-  position: relative;
+  position: fixed;
   overflow: hidden;
-  text-align: center; }
-  #page-404 .image-container img {
-    width: 100%;
-    display: block; }
-  #page-404 .image-container::before {
-    content: '';
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: url(../images/background/background-pattern.png); }
-  #page-404 .text-block {
-    position: absolute;
-    bottom: 10px;
-    right: 90px; }
-    #page-404 .text-block h4, #page-404 .text-block p {
-      color: #fff;
-      font-family: "Messina Sans Regular";
-      font-weight: 500; }
-    #page-404 .text-block h4 {
-      font-size: 2rem; }
-    #page-404 .text-block p {
-      margin-bottom: 0;
-      font-size: 1.2rem; }
-    #page-404 .text-block ul {
-      margin-top: 15px; }
-      #page-404 .text-block ul li {
-        display: inline-block; }
-        #page-404 .text-block ul li:not(:first-of-type) a {
-          padding-left: 10px;
-          border-left: 3px solid #fff; }
-        #page-404 .text-block ul li a {
-          color: #00AEEF;
-          padding-right: 10px;
-          font-size: 1.4rem; }
-          #page-404 .text-block ul li a:hover {
-            text-decoration: none; }
-    #page-404 .text-block input::-webkit-input-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #page-404 .text-block input:-moz-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #page-404 .text-block input::-moz-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #page-404 .text-block input:-ms-input-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-  #page-404 .search-form-group {
-    position: relative; }
-    #page-404 .search-form-group h3 {
-      color: white;
-      font-size: 1.8rem; }
-    #page-404 .search-form-group #search-box-input-404 {
-      width: 100%;
-      color: white;
-      background: transparent;
-      border: 0 none;
-      border-bottom: 1px solid white;
-      padding: 10px; }
-    #page-404 .search-form-group .search-form-group {
-      position: relative;
-      max-width: 100%;
-      margin-top: 20px;
-      width: 400px;
-      display: block;
-      margin-right: auto;
-      margin-left: auto; }
-    #page-404 .search-form-group .go-search {
-      color: #fff;
-      font-size: 1.3rem;
-      position: absolute;
-      bottom: 10px;
-      right: 0px;
-      cursor: pointer; }
-    #page-404 .search-form-group .clear-search {
-      color: #fff;
-      bottom: 13px;
-      position: absolute;
-      right: 25px;
-      font-size: 1rem; }
+  text-align: center;
+  width: 100%;
+  height: 100%; }
 
-#site-down {
+#page-404 .image-container img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  background-size: cover; }
+
+#page-404 .image-container::before {
+  content: '';
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.65;
+  background: url(./static-assets/images/background/background-pattern.png) 90%; }
+
+#page-404 .text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 90px;
+  background-color: rgba(50, 50, 50, 0.7); }
+
+#page-404 .text-block h4, #page-404 .text-block p {
+  color: #fff;
+  font-family: "Messina Sans Regular";
+  font-weight: 500; }
+
+#page-404 .text-block h4 {
+  font-size: 2rem; }
+
+#page-404 .text-block p {
+  margin-bottom: 0;
+  font-size: 1.2rem; }
+
+#page-404 .text-block ul {
+  margin-top: 15px; }
+
+#page-404 .text-block ul li {
+  display: inline-block; }
+
+#page-404 .text-block ul li:not(:first-of-type) a {
+  padding-left: 10px;
+  border-left: 3px solid #fff; }
+
+#page-404 .text-block ul li a {
+  color: #00AEEF;
+  padding-right: 10px;
+  font-size: 1.4rem; }
+
+#page-404 .text-block ul li a:hover {
+  text-decoration: none; }
+
+#page-404 .text-block input::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#page-404 .text-block input:-moz-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#page-404 .text-block input::-moz-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#page-404 .text-block input:-ms-input-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#page-404 .search-form-group {
   position: relative; }
-  #site-down .image-container img {
-    width: 100%;
-    display: block; }
-  #site-down .image-container::before {
-    content: '';
-    display: block;
-    position: fixed;
+
+#page-404 .search-form-group h3 {
+  color: white;
+  font-size: 1.8rem;
+  padding: 15px; }
+
+#page-404 .search-form-group #search-box-input-404 {
+  width: 100%;
+  color: white;
+  background: transparent;
+  border: 0 none;
+  border-bottom: 1px solid white;
+  padding: 10px; }
+
+#page-404 .search-form-group .search-form-group {
+  position: relative;
+  max-width: 100%;
+  margin-top: 20px;
+  width: 400px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto; }
+
+#page-404 .search-form-group .go-search {
+  color: #fff;
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  cursor: pointer; }
+
+#page-404 .search-form-group .clear-search {
+  color: #fff;
+  bottom: 13px;
+  position: absolute;
+  right: 25px;
+  font-size: 1rem; }
+
+@media (max-width: 992px) {
+  #page-404 .text-block {
     left: 0;
-    top: 0;
     right: 0;
-    bottom: 0;
-    background: url(../images/background/background-pattern.png); }
-  #site-down .text-block {
-    max-width: 500px;
+    width: 320px;
     margin: auto;
-    text-align: center;
-    bottom: 30px;
-    position: absolute;
-    color: #fff;
-    right: 0;
-    left: 0; }
-    #site-down .text-block h4, #site-down .text-block p {
-      color: #fff;
-      font-family: "Messina Sans Regular";
-      font-weight: 500; }
-    #site-down .text-block h4 {
-      font-size: 1.6rem; }
-    #site-down .text-block p {
-      margin-bottom: 5px;
-      font-size: 1.2rem; }
+    bottom: 10%; } }
+#site-down {
+  position: fixed;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 100%; }
+
+#site-down .image-container img {
+  width: 100%;
+  display: block; }
+
+#site-down .image-container::before {
+  content: '';
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.65;
+  background: url(./static-assets/images/background/background-pattern.png) 90%; }
+
+#site-down .text-block {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  bottom: 30px;
+  position: absolute;
+  color: #fff;
+  right: 0;
+  left: 0;
+  background-color: rgba(50, 50, 50, 0.7); }
+
+#site-down .text-block h4, #site-down .text-block p {
+  color: #fff;
+  font-family: "Messina Sans Regular";
+  font-weight: 500; }
+
+#site-down .text-block h4 {
+  font-size: 1.6rem; }
+
+#site-down .text-block p {
+  margin-bottom: 5px;
+  font-size: 1.2rem; }
 
 #splash {
-  position: relative; }
-  #splash .image-container img {
-    width: 100%;
-    display: block; }
-  #splash .image-container::before {
-    content: '';
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: url(../images/background/background-pattern.png); }
-  #splash .text-block {
-    max-width: 320px;
-    margin: auto;
-    text-align: center;
-    bottom: 30px;
-    position: absolute;
-    color: #fff;
-    right: 0;
-    left: 0; }
-  #splash .signup-form-group {
-    position: relative; }
-    #splash .signup-form-group h3 {
-      color: white;
-      font-size: 1.8rem; }
-    #splash .signup-form-group #search-box-input-404 {
-      width: 100%;
-      color: white;
-      background: transparent;
-      border: 0 none;
-      border-bottom: 1px solid white;
-      padding: 10px; }
-    #splash .signup-form-group .search-form-group {
-      position: relative;
-      max-width: 100%;
-      margin-top: 20px;
-      width: 400px;
-      display: block;
-      margin-right: auto;
-      margin-left: auto; }
-    #splash .signup-form-group .go-search {
-      color: #fff;
-      font-size: 1.7rem;
-      position: absolute;
-      bottom: 10px;
-      right: 0px;
-      cursor: pointer; }
-    #splash .signup-form-group input::-webkit-input-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #splash .signup-form-group input:-moz-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #splash .signup-form-group input::-moz-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
-    #splash .signup-form-group input:-ms-input-placeholder {
-      color: #fff;
-      font-size: 1.5rem;
-      font-family: "Messina Sans Modern"; }
+  position: fixed;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 100%; }
 
+#splash .image-container img {
+  width: 100%;
+  display: block; }
+
+#splash .image-container::before {
+  content: '';
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.65;
+  background: url(./static-assets/images/background/background-pattern.png) 90%; }
+
+#splash .text-block {
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  bottom: 30px;
+  position: absolute;
+  color: #fff;
+  right: 0;
+  left: 0;
+  background-color: rgba(50, 50, 50, 0.7); }
+
+#splash .signup-form-group {
+  position: relative; }
+
+#splash .signup-form-group h3 {
+  color: white;
+  font-size: 1.8rem; }
+
+#splash .signup-form-group #search-box-input-404 {
+  width: 100%;
+  color: white;
+  background: transparent;
+  border: 0 none;
+  border-bottom: 1px solid white;
+  padding: 10px; }
+
+#splash .signup-form-group .search-form-group {
+  position: relative;
+  max-width: 100%;
+  margin-top: 20px;
+  width: 400px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto; }
+
+#splash .signup-form-group .go-search {
+  color: #fff;
+  font-size: 1.7rem;
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  cursor: pointer; }
+
+#splash .signup-form-group input::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#splash .signup-form-group input:-moz-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#splash .signup-form-group input::-moz-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+#splash .signup-form-group input:-ms-input-placeholder {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Messina Sans Modern"; }
+
+@media (max-width: 992px) {
+  #splash .text-block {
+    max-width: 320px; }
+
+  #splash .signup-form-group input::-webkit-input-placeholder {
+    font-size: 1.3rem; }
+
+  #splash .signup-form-group input:-moz-placeholder {
+    font-size: 1.3rem; }
+
+  #splash .signup-form-group input::-moz-placeholder {
+    font-size: 1.3rem; }
+
+  #splash .signup-form-group input:-ms-input-placeholder {
+    font-size: 1.3rem; } }
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -1972,9 +2041,9 @@ i.dropdownIcon {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     text-align: center;
     margin: 25px 0; }
   .maker-spotlight .spotlight-item {
@@ -2139,7 +2208,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -2157,12 +2225,12 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
   line-height: 17px;
-  display: inline-block; }
+  display: inline-block;
+  word-break: break-word; }
 .user-card .profile-tag, .user-card .user-city, .user-card .count {
   font-size: 14px; }
 .user-card .user-city {
@@ -2201,7 +2269,6 @@ footer {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     font-weight: normal !important;
@@ -2233,7 +2300,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 2px; }
@@ -2251,7 +2317,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   margin-bottom: 5px;
@@ -2336,7 +2401,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282; }
     .bookmark-page .content-wrapper td img:hover, .bookmark-page .content-wrapper td span:hover {
@@ -2348,7 +2412,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #333333 !important; }
@@ -2400,7 +2463,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282; }
         .bookmark-page .content-wrapper .bookmark-item .media-body .title:hover {
@@ -2452,7 +2514,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         font-size: 1rem;
@@ -2578,7 +2639,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         font-size: 1rem;
@@ -2771,14 +2831,14 @@ footer {
     text-align: right;
     margin: 5px 0;
     white-space: normal;
-    border: 1px solid #333333;
-    color: #333333; }
+    border: 1px solid #4F4F4F;
+    color: #4F4F4F; }
     .profile-sidebar a.add i {
       font-size: 22px;
       padding-top: 4px;
       text-align: left;
       float: left;
-      color: #333333; }
+      color: #4F4F4F; }
   .profile-sidebar .profile-container {
     background-color: #ffffff;
     padding: 0 15px 15px;
@@ -2803,7 +2863,8 @@ footer {
         font-size: 1.2rem; }
     .profile-sidebar .profile-container li,
     .profile-sidebar .profile-container p {
-      font-size: 0.8rem; }
+      font-size: 0.9rem;
+      line-height: 1.5rem; }
       .profile-sidebar .profile-container li a,
       .profile-sidebar .profile-container p a {
         color: #00AEEF; }
@@ -2813,7 +2874,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       margin-bottom: 10px;
@@ -2827,7 +2887,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #BDBDBD;
@@ -2897,7 +2956,7 @@ footer {
         .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey {
           border: 1px solid #00AEEF;
           color: #00AEEF;
-          padding: 5px; }
+          padding: 8px 10px; }
           .profile-sidebar .profile-container .profile-info .profile-share .btn-soft-grey:hover, .profile-sidebar .profile-container .profile-info .profile-share a:not([href]):not([tabindex]).btn-soft-grey:hover {
             border-color: #008bbf;
             color: #008bbf; }
@@ -2905,7 +2964,6 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         font-size: 1.5rem;
@@ -2914,7 +2972,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #BDBDBD;
@@ -2924,7 +2981,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
@@ -2934,16 +2990,15 @@ footer {
         font-family: "Messina Modern Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
-        color: #4F4F4F;
-        font-size: 1.5rem; }
+        color: #BDBDBD;
+        font-size: 1.4rem;
+        font-weight: normal; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         color: #4F4F4F;
@@ -2953,7 +3008,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 150% !important;
@@ -2962,7 +3016,7 @@ footer {
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 5px;
         cursor: pointer;
         text-decoration: none; }
@@ -3021,8 +3075,9 @@ footer {
         margin-top: 20px; }
       .profile-sidebar .profile-container .profile-info .topic-tags {
         color: #828282;
-        font-size: 1.2rem;
-        position: relative; }
+        font-size: 1rem;
+        position: relative;
+        font-style: normal; }
     .profile-sidebar .profile-container .report-div {
       position: relative; }
       .profile-sidebar .profile-container .report-div .report {
@@ -3038,13 +3093,14 @@ footer {
 /* End profile-sidebar */
 .profile-content .empty-content {
   text-align: center;
-  color: #333333;
+  color: #4F4F4F;
   font-size: 18px;
   padding: 14px;
   margin-top: 20px;
   margin: 20px 0px 20px 0px; }
   .profile-content .empty-content p {
-    padding: 10px 0; }
+    padding: 10px 0;
+    color: #4F4F4F; }
   .profile-content .empty-content .empty-profile {
     margin-top: 50px; }
   .profile-content .empty-content .text-red {
@@ -3057,7 +3113,7 @@ footer {
     padding: 7px;
     background-color: #333333;
     color: white;
-    border: 1px solid #333333;
+    border: 1px solid #4F4F4F;
     margin: 0px 6px 0px 6px;
     min-width: 144px; }
     .profile-content .empty-content a i {
@@ -3097,7 +3153,7 @@ footer {
 .profile-header .stats li {
   padding: 0 10px;
   height: 24px;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #4F4F4F; }
   .profile-header .stats li:not(:first-of-type) {
     border-left: 2px solid #222; }
@@ -3427,7 +3483,6 @@ footer {
   .project .maker-name {
     color: #00AEEF;
     margin-bottom: 0;
-    margin-top: 10px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -3484,7 +3539,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -3498,14 +3552,13 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    text-transform: none;
-    height: 50px;
-    margin-bottom: 5px; }
+    height: 60px;
+    margin-bottom: 5px;
+    font-size: 1.6rem; }
   .project .card-title-showcase {
     font-family: "Messina Modern Regular";
     font-size: 1.3rem;
     font-weight: 500;
-    text-transform: none;
     line-height: 120%;
     color: #828282;
     color: #4F4F4F;
@@ -3549,7 +3602,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .project .card-stats ul li img {
@@ -3557,7 +3609,8 @@ footer {
         .project .card-stats ul li img.project-likes {
           width: 12px; }
         .project .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .project .card-stats ul li span {
         margin: 0px;
         color: #BDBDBD; }
@@ -3600,7 +3653,6 @@ footer {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
@@ -3649,7 +3701,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -3674,7 +3725,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       width: 65px; }
@@ -3683,7 +3733,8 @@ footer {
         .project-mobile-card .card-stats ul li img.project-likes {
           width: 10px; }
         .project-mobile-card .card-stats ul li img.project-views {
-          width: 22px; }
+          width: 22px;
+          padding-bottom: 3px; }
       .project-mobile-card .card-stats ul li span {
         margin: 0px; }
 
@@ -3821,7 +3872,6 @@ footer {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     color: #4F4F4F; }
@@ -3831,7 +3881,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3841,7 +3890,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3851,7 +3899,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
     .modal-content .profile-modal input:-moz-placeholder {
@@ -3860,7 +3907,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #DCDCDC; }
@@ -3891,7 +3937,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input::-moz-placeholder {
@@ -3901,7 +3946,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input:-ms-input-placeholder {
@@ -3911,7 +3955,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body input:-moz-placeholder {
@@ -3921,7 +3964,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-webkit-input-placeholder {
@@ -3932,7 +3974,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info::-moz-placeholder {
@@ -3943,7 +3984,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-ms-input-placeholder {
@@ -3954,7 +3994,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-info:-moz-placeholder {
@@ -3965,7 +4004,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-webkit-input-placeholder {
@@ -3976,7 +4014,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio::-moz-placeholder {
@@ -3987,7 +4024,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-ms-input-placeholder {
@@ -3998,7 +4034,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #description-textarea-bio:-moz-placeholder {
@@ -4009,7 +4044,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-webkit-input-placeholder {
@@ -4020,7 +4054,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea::-moz-placeholder {
@@ -4031,7 +4064,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-ms-input-placeholder {
@@ -4042,7 +4074,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body #start-making-textarea:-moz-placeholder {
@@ -4053,7 +4084,6 @@ footer {
       font-family: "Messina Modern Bold";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 120%;
       color: #828282; }
     .modal-content .profile-modal .modal-body .modal-menu a {
@@ -4243,7 +4273,6 @@ footer {
   font-family: "Messina Sans Regular";
   font-size: 1.3rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 110%;
   color: #828282; }
 
@@ -4251,7 +4280,6 @@ footer {
   font-family: "Messina Modern Bold";
   font-size: 0.95rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   color: #4F4F4F; }
@@ -4302,7 +4330,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       min-height: 24px;
@@ -4321,7 +4348,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       margin-bottom: 5px;
@@ -4353,7 +4379,6 @@ footer {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           font-weight: normal !important;
@@ -4366,7 +4391,8 @@ footer {
             .page-search-content .user-card-search .card-stats ul li img.project-likes {
               width: 12px; }
             .page-search-content .user-card-search .card-stats ul li img.project-views {
-              width: 20px; }
+              width: 20px;
+              padding-bottom: 3px; }
           .page-search-content .user-card-search .card-stats ul li span {
             margin: 0px; }
       .page-search-content .user-card-search .card-stats .icons-side-user {
@@ -4419,7 +4445,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -4427,15 +4452,15 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4445,7 +4470,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4454,6 +4478,9 @@ footer {
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #828282;
       line-height: 110% !important; }
   .maker-card .icons-side-project {
     position: relative;
@@ -4482,7 +4509,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -4524,7 +4550,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       display: inline-block;
@@ -4534,7 +4559,8 @@ footer {
         .maker-card .card-stats ul li img.project-likes {
           width: 12px; }
         .maker-card .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .maker-card .card-stats ul li span {
         margin: 0px;
         color: #BDBDBD; }
@@ -4573,7 +4599,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #00AEEF; }
@@ -4581,15 +4606,15 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .maker-mobile-card .maker-data .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4599,7 +4624,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4613,7 +4637,6 @@ footer {
         font-family: "Messina Sans Regular";
         font-size: 0.8rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         display: inline;
@@ -4623,7 +4646,8 @@ footer {
           .maker-mobile-card .card-stats ul li img.project-likes {
             width: 10px; }
           .maker-mobile-card .card-stats ul li img.project-views {
-            width: 20px; }
+            width: 20px;
+            padding-bottom: 3px; }
         .maker-mobile-card .card-stats ul li span {
           margin: 0px; }
 
@@ -4659,22 +4683,21 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-nickname {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-city {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
@@ -4683,7 +4706,6 @@ footer {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-top: 5px;
@@ -4712,7 +4734,6 @@ footer {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -4755,7 +4776,6 @@ footer {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       width: 70px; }
@@ -4764,7 +4784,8 @@ footer {
         .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-likes {
           width: 12px; }
         .mobile-profile-container .maker-mobile-card .card-stats ul li img.project-views {
-          width: 20px; }
+          width: 20px;
+          padding-bottom: 3px; }
       .mobile-profile-container .maker-mobile-card .card-stats ul li span {
         margin: 0px; }
   .mobile-profile-container .maker-mobile-card .profile-pic-container {
@@ -4783,7 +4804,7 @@ footer {
 .empty-projects-page {
   text-align: center; }
   .empty-projects-page h4 {
-    color: #333333; }
+    color: #4F4F4F; }
 
 /* file manager style */
 .file-manager .file-manager-header .upload-file {
@@ -4854,7 +4875,10 @@ button:hover {
     font-size: 0.8rem;
     color: #4F4F4F; }
   .hideData.topic-tags span {
-    font-size: 1.2rem; }
+    color: #828282;
+    font-size: 1rem;
+    position: relative;
+    font-style: normal; }
 
 .showData {
   display: block !important; }
@@ -4938,7 +4962,6 @@ button:hover {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F;
@@ -4971,9 +4994,9 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       margin: auto;
       text-align: center;
       padding-top: 40px;
@@ -4983,7 +5006,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       text-transform: uppercase;
@@ -5002,7 +5024,6 @@ button:hover {
           font-family: "Messina Modern Regular";
           font-size: 1.3rem;
           font-weight: 500;
-          text-transform: none;
           line-height: 120%;
           color: #828282;
           color: #6f6f6f;
@@ -5147,7 +5168,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5186,9 +5206,9 @@ button:hover {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     margin: auto;
     padding-top: 45px;
     padding-bottom: 10px;
@@ -5197,7 +5217,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282; }
 
@@ -5233,7 +5252,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       position: absolute;
@@ -5267,7 +5285,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: white; }
@@ -5275,7 +5292,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -5286,10 +5302,11 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
-      color: white; }
+      color: white;
+      font-weight: normal;
+      line-height: 1.5rem; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
     .page-challenge .challenge-card .card-container .card-buttons .follow-number {
@@ -5324,7 +5341,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     position: absolute;
@@ -5358,7 +5374,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -5372,7 +5387,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -5381,7 +5395,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       text-transform: none;
@@ -5394,14 +5407,12 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282; }
     .page-search-content .challenge-card .card-container .card .card-description p {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       height: 85px;
@@ -5438,7 +5449,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #fff;
@@ -5481,7 +5491,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5497,14 +5506,14 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #fff; }
+    color: #fff;
+    line-height: 1.5rem; }
   .front .front-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .front .front-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -5519,7 +5528,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count {
@@ -5527,9 +5535,10 @@ button:hover {
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
           padding-left: 10px; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .entries-count {
-          color: #BDBDBD; }
+          color: #BDBDBD;
+          line-height: 1.25rem; }
       .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-        line-height: 16px;
+        line-height: 1.25rem;
         color: #BDBDBD; }
         .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .front .front-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
           padding-right: 5px; }
@@ -5597,7 +5606,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #fff;
@@ -5637,7 +5645,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5653,14 +5660,15 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #fff; }
+    color: #fff;
+    font-weight: normal;
+    line-height: 1.5rem; }
   .tablet-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
     .tablet-challenge-card .card-container .challene-card-footer .challene-card-footer-1 {
@@ -5675,7 +5683,6 @@ button:hover {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282; }
       .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
@@ -5686,7 +5693,7 @@ button:hover {
         color: #fff;
         border-right: 1px solid white; }
       .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-        line-height: 16px;
+        line-height: 1.25rem;
         color: #fff; }
         .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .tablet-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
           padding-right: 5px; }
@@ -5741,7 +5748,7 @@ button:hover {
   cursor: pointer;
   margin-bottom: 30px;
   background-color: #333;
-  height: 460px;
+  height: 480px;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
@@ -5764,7 +5771,6 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #fff; }
@@ -5796,7 +5802,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     text-transform: none;
@@ -5812,7 +5817,6 @@ button:hover {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     display: -webkit-box;
@@ -5834,7 +5838,7 @@ button:hover {
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-count .follow-count {
         padding-left: 10px; }
     .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status {
-      line-height: 16px;
+      line-height: 1.25rem;
       color: #828282; }
       .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .open-status, .page-search-content .search-challenge-card .card-container .challene-card-footer .challenge-card-footer-2 .challenge-card-status .closed-status {
         padding-right: 5px; }
@@ -5896,6 +5900,9 @@ button:hover {
     cursor: pointer; }
   .challenge-enter-modal .modal-footer {
     border-top: none !important; }
+
+.text-red {
+  color: #ED1C24; }
 
 .page-project {
   color: #333333;
@@ -5984,11 +5991,11 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important;
-        padding-top: 4px; }
+        padding-top: 4px;
+        color: #4F4F4F; }
   .page-project .feedback-group {
     background-color: white;
     -moz-box-shadow: 2px 2px 8px #BDBDBD;
@@ -6000,10 +6007,9 @@ button:hover {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
-      color: #333333; }
+      color: #4F4F4F; }
     .page-project .feedback-group .login-link {
       padding: 10px; }
       .page-project .feedback-group .login-link a {
@@ -6044,10 +6050,10 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
-        line-height: inherit !important; }
+        line-height: inherit !important;
+        color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .difficulty-duration {
       background-color: white;
       padding: 18px 10px 34px 10px;
@@ -6063,7 +6069,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6071,7 +6076,7 @@ button:hover {
         text-align: center;
         font-size: 20px;
         font-weight: bold;
-        color: #333333; }
+        color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .tools-kits {
       background-color: white;
       margin-top: 26px;
@@ -6089,7 +6094,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6099,26 +6103,23 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .count, .page-project .project-body .how-to-sidebar .tools-kits .materials .count, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .count {
           min-width: 38px;
-          color: #333333;
+          color: #4F4F4F;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
         .page-project .project-body .how-to-sidebar .tools-kits .tools .item, .page-project .project-body .how-to-sidebar .tools-kits .materials .item, .page-project .project-body .how-to-sidebar .tools-kits .boards-kits .item {
-          color: #333333;
+          color: #4F4F4F;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6134,7 +6135,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6147,7 +6147,6 @@ button:hover {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
@@ -6252,7 +6251,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6262,7 +6260,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6280,7 +6277,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6290,7 +6286,6 @@ button:hover {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: inherit !important; }
@@ -6390,7 +6385,6 @@ header.showcase-project .next {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 130%;
           color: #828282;
           color: #4F4F4F;
@@ -6398,7 +6392,7 @@ header.showcase-project .next {
         .feedback-group .feedback-card .user-info .user-details p {
           font-size: 14px;
           padding-top: 2px;
-          color: #333333; }
+          color: #4F4F4F; }
     .feedback-group .feedback-card .feed-timestamp {
       margin: 0px;
       color: #bebebe;
@@ -6411,17 +6405,16 @@ header.showcase-project .next {
     .feedback-group .feedback-card .content-section .media-body {
       padding: 0px 4px 0px 4px; }
       .feedback-group .feedback-card .content-section .media-body p {
-        color: #333333;
+        color: #4F4F4F;
         margin: 0px; }
   .feedback-group .comment-body p {
     margin: 0px;
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
-    color: #333333;
+    color: #4F4F4F;
     line-height: inherit !important; }
   .feedback-group .new-comment {
     padding: 10px;
@@ -6437,7 +6430,6 @@ header.showcase-project .next {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         border: 1px solid #ccc;
@@ -6548,7 +6540,6 @@ header.showcase-project .next {
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 100%;
           color: #828282;
           color: #00AEEF;
@@ -6559,7 +6550,6 @@ header.showcase-project .next {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         word-wrap: break-word;
@@ -6570,11 +6560,11 @@ header.showcase-project .next {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         margin-bottom: 10px;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        color: #4F4F4F; }
       .page-project .projectsingle-card .right-side .card-container .card-date {
         color: #828282;
         font-size: 13px;
@@ -6659,7 +6649,6 @@ header.showcase-project .next {
             font-family: "Messina Sans Regular";
             font-size: 0.9rem;
             font-weight: 400;
-            text-transform: none;
             line-height: 100%;
             color: #828282;
             font-weight: normal !important;
@@ -6737,7 +6726,6 @@ textarea {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     text-align: right;
@@ -6781,9 +6769,9 @@ textarea {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     margin: auto;
     padding-top: 45px;
     padding-bottom: 10px;
@@ -6792,7 +6780,6 @@ textarea {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 130%;
     color: #828282;
     width: 100%;
@@ -6838,7 +6825,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -6853,7 +6839,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -6864,7 +6849,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -6947,7 +6931,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F;
@@ -6959,7 +6942,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -6970,7 +6952,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -7028,7 +7009,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       text-transform: none;
@@ -7042,7 +7022,6 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 1.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 115%;
       color: #828282;
       color: #4F4F4F; }
@@ -7050,7 +7029,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -7061,7 +7039,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -7095,9 +7072,9 @@ textarea {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       margin: auto;
       padding-top: 45px;
       padding-bottom: 10px;
@@ -7107,7 +7084,6 @@ textarea {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       width: 85%;
@@ -7179,7 +7155,6 @@ textarea {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -7188,7 +7163,6 @@ textarea {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7199,10 +7173,11 @@ textarea {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
-        color: #333333; }
+        color: #4F4F4F;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .card-container .card-buttons .follow-number {
@@ -7240,7 +7215,8 @@ textarea {
           color: #BDBDBD; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
           width: 22px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count {
           color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .update-date {
@@ -7293,21 +7269,27 @@ textarea {
   overflow: inherit !important;
   height: auto !important;
   -webkit-line-clamp: inherit !important;
-  min-height: 168px; }
+  min-height: 168px;
+  font-weight: normal;
+  line-height: 1.5rem; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
-  .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
-    width: auto;
-    overflow: initial;
-    position: absolute;
-    top: -13px;
-    left: 10px; }
-    .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon {
-      width: auto; }
-      .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon img {
-        height: 35px;
-        width: 30px;
-        margin-right: 5px; }
+  .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
+    width: 80px; }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
+      width: auto;
+      overflow: initial;
+      position: absolute;
+      top: -13px;
+      left: 10px; }
+      .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon {
+        width: auto; }
+        .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user .user-icon img {
+          height: 35px;
+          width: 30px;
+          margin-right: 5px; }
+  .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body {
+    width: calc(100% - 80px); }
 
 img {
   max-width: 100%; }
@@ -7327,7 +7309,7 @@ img {
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 88px;
-    color: #333333;
+    color: #4F4F4F;
     line-height: 140%; }
 
 .showcase-card-backlayer-home {
@@ -7371,7 +7353,8 @@ img {
       border: none; }
       .showcase-card-backlayer-home .showcase-card .card .showcase-type p {
         font-size: 1rem;
-        color: #00AEEF; }
+        color: #00AEEF;
+        margin-bottom: 0.5rem; }
     .showcase-card-backlayer-home .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer-home .showcase-card .single-showcase img {
@@ -7405,11 +7388,10 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
-        margin-bottom: 20px;
+        color: #4F4F4F;
+        margin-bottom: 10px;
         line-height: 120% !important;
         display: -webkit-box;
         -webkit-line-clamp: 5;
@@ -7419,7 +7401,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7430,15 +7411,16 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: #333333;
-        max-height: 102px; }
+        color: #4F4F4F;
+        max-height: 117px;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-home .showcase-card .card-container .card-buttons .follow-number {
@@ -7467,7 +7449,8 @@ img {
           color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
           width: 20px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
           color: #BDBDBD; }
         .showcase-card-backlayer-home .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
@@ -7562,17 +7545,15 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 2.6rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
-        color: #333333;
-        margin-bottom: 20px;
+        color: #4F4F4F;
+        margin-bottom: 10px;
         line-height: 120% !important; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-status {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282;
         display: inline-block;
@@ -7583,15 +7564,16 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         display: -webkit-box;
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        color: #333333;
-        max-height: 102px; }
+        color: #4F4F4F;
+        max-height: 117px;
+        font-weight: normal;
+        line-height: 1.5rem; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-buttons a.btn.btn-grey {
         background-color: #BDBDBD; }
       .showcase-card-backlayer-mobile .showcase-card .card-container .card-buttons .follow-number {
@@ -7620,7 +7602,8 @@ img {
           color: #BDBDBD; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .showcase-views {
           width: 20px;
-          height: auto; }
+          height: auto;
+          padding-bottom: 3px; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count-div .views-count {
           color: #BDBDBD; }
         .showcase-card-backlayer-mobile .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
@@ -7688,7 +7671,6 @@ img {
           font-family: "Messina Modern Regular";
           font-size: 2.6rem;
           font-weight: 500;
-          text-transform: none;
           line-height: 120%;
           color: #828282;
           display: -webkit-box;
@@ -7696,14 +7678,13 @@ img {
           -webkit-box-orient: vertical;
           overflow: hidden;
           max-height: 200px;
-          color: #333333;
-          margin-bottom: 20px;
+          color: #4F4F4F;
+          margin-bottom: 10px;
           line-height: 120% !important; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-status {
           font-family: "Messina Sans Regular";
           font-size: 1.3rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 110%;
           color: #828282;
           display: inline-block;
@@ -7714,15 +7695,16 @@ img {
           font-family: "Messina Sans Regular";
           font-size: 0.9rem;
           font-weight: 400;
-          text-transform: none;
           line-height: 130%;
           color: #828282;
           display: -webkit-box;
           -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          color: #333333;
-          max-height: 102px; }
+          color: #4F4F4F;
+          max-height: 117px;
+          font-weight: normal;
+          line-height: 1.5rem; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-buttons a.btn.btn-grey {
           background-color: #BDBDBD; }
         .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-buttons .follow-number {
@@ -7750,7 +7732,8 @@ img {
             color: #BDBDBD; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .showcase-views {
             width: 22px;
-            height: auto; }
+            height: auto;
+            padding-bottom: 3px; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .update-date {
             padding-right: 10px;
             color: #BDBDBD; }
@@ -7805,9 +7788,9 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
-      color: #4F4F4F; }
+      color: #4F4F4F;
+      text-transform: capitalize; }
     .page-create-project-why .add-controls .project-create-buttons .contorls .create-project-buttons:hover {
       cursor: pointer; }
     .page-create-project-why .add-controls .project-create-buttons .contorls button:hover {
@@ -7872,7 +7855,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.8rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 1.4em;
@@ -7984,11 +7966,11 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 1rem;
     font-weight: 400;
-    text-transform: uppercase;
     line-height: 100%;
     color: #828282;
     font-size: 1.2em;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    text-transform: uppercase; }
   .page-create-project-why .how-to .tools .result,
   .page-create-project-why .how-to .tools .how-to-select,
   .page-create-project-why .how-to .materials .result,
@@ -8000,7 +7982,6 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 0.9rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     font-size: 1.1em;
@@ -8254,7 +8235,6 @@ img {
   font-family: "Messina Modern Regular";
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: none;
   line-height: 115%;
   color: #828282;
   color: #4F4F4F; }
@@ -8728,7 +8708,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       font-size: 38px;
@@ -8737,7 +8716,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -8748,7 +8726,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       color: white; }
@@ -9056,7 +9033,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 2.6rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       display: -webkit-box;
@@ -9069,7 +9045,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 1.3rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 110%;
       color: #828282;
       display: inline-block;
@@ -9080,7 +9055,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       display: -webkit-box;
@@ -9160,7 +9134,6 @@ img {
   font-family: "Messina Modern Regular";
   font-size: 1.3rem;
   font-weight: 500;
-  text-transform: none;
   line-height: 120%;
   color: #828282;
   text-align: center;
@@ -9281,12 +9254,12 @@ img {
   .page-portfolio .nav-portfolio .display-style p {
     opacity: 1;
     color: #4F4F4F;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-right: 38px; }
     .page-portfolio .nav-portfolio .display-style p.not_active {
       opacity: 0.3; }
   .page-portfolio .nav-portfolio .display-style img {
-    width: 30px;
+    width: 20px;
     margin-right: 10px; }
 .page-portfolio .portfolio-header {
   overflow: hidden;
@@ -9399,7 +9372,8 @@ img {
         cursor: pointer; }
       .page-inbox .inbox-container .inbox-controls .new-message i {
         padding-right: 10px;
-        font-size: 1.6rem; }
+        font-size: 1.6rem;
+        padding-bottom: 3px; }
       .page-inbox .inbox-container .inbox-controls .new-message p {
         display: inline-block;
         margin-bottom: 0; }
@@ -9465,7 +9439,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .message-arrow {
@@ -9655,9 +9628,9 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
-    color: #4F4F4F; }
+    color: #4F4F4F;
+    text-transform: capitalize; }
   .page-search-result .top-content-wrapper {
     padding: 10px; }
     .page-search-result .top-content-wrapper .search-input {
@@ -9706,15 +9679,14 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
       font-weight: 400;
-      text-transform: capitalize;
       line-height: 100%;
       color: #4F4F4F;
+      text-transform: capitalize;
       text-align: center; }
     .page-search-result .search-term p {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 130%;
       color: #828282;
       text-align: center; }
@@ -9743,7 +9715,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         color: #4F4F4F;
@@ -9752,7 +9723,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282; }
       .total-result .project-result .projects-item .card-title, .total-result .project-result .projects-item .card-text {
@@ -9784,7 +9754,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 1.3rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 110%;
         color: #828282; }
       .total-result .challenge-item .content-bottom .content-side .challenge-open {
@@ -9795,7 +9764,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 130%;
         color: #828282;
         color: #BDBDBD !important; }
@@ -9818,7 +9786,6 @@ img {
         font-family: "Messina Modern Regular";
         font-size: 1.3rem;
         font-weight: 500;
-        text-transform: none;
         line-height: 120%;
         color: #828282;
         clear: both;
@@ -9851,7 +9818,6 @@ img {
       font-family: "Messina Modern Regular";
       font-size: 1.3rem;
       font-weight: 500;
-      text-transform: none;
       line-height: 120%;
       color: #828282;
       color: #4F4F4F;
@@ -9861,7 +9827,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px; }
@@ -9879,7 +9844,6 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     color: #4F4F4F;
@@ -9955,9 +9919,9 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 3.4rem;
     font-weight: 400;
-    text-transform: capitalize;
     line-height: 100%;
     color: #4F4F4F;
+    text-transform: capitalize;
     text-align: center; }
   .page-search-content .clear-search {
     position: absolute;
@@ -10217,7 +10181,11 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
+  .page-inbox .inbox-header {
+    order: 2;
+    text-align: center; }
+
   /* Footer */
   footer {
     padding-top: 30px; }
@@ -10280,17 +10248,6 @@ img {
   .page-create-project-why .project-create-buttons .controls {
     padding: 0 10px; }
 
-  #page-404 .text-block {
-    left: 0;
-    right: 0;
-    width: 320px;
-    margin: auto;
-    bottom: 10%; }
-
-  #site-down .text-block,
-  #splash .text-block {
-    bottom: 25%; }
-
   /* home page reorder items */
   .front .container .row .item-0 {
     order: 2; }
@@ -10331,7 +10288,7 @@ img {
 
   .page-challenge-summary .challenge-cover .challenge-card .left-side .button-container-sec-2 {
     margin-left: 0px; } }
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .showcase-card-backlayer .showcase-card .content-container {
     padding: 12px 0px 0px 0px; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-type-badge {
@@ -10381,7 +10338,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.95rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       line-height: 125% !important;
@@ -10396,7 +10352,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #828282; }
@@ -10415,7 +10370,6 @@ img {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
         font-weight: 400;
-        text-transform: none;
         line-height: 100%;
         color: #828282;
         line-height: 125% !important;
@@ -10430,7 +10384,6 @@ img {
       font-family: "Messina Sans Regular";
       font-size: 0.8rem;
       font-weight: 400;
-      text-transform: none;
       line-height: 100%;
       color: #828282;
       color: #828282; }
@@ -10443,7 +10396,6 @@ img {
     font-family: "Messina Modern Regular";
     font-size: 1.8rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 115%;
     color: #828282;
     display: -webkit-box;
@@ -10455,7 +10407,6 @@ img {
     font-family: "Messina Sans Regular";
     font-size: 0.95rem;
     font-weight: 400;
-    text-transform: none;
     line-height: 100%;
     color: #828282;
     line-height: 125% !important;
@@ -10466,7 +10417,7 @@ img {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical; } }
-@media (max-width: 575px) {
+@media only screen and (max-width: 575px) {
   /* project card */
   .project.card {
     width: 100%; }
@@ -10511,7 +10462,7 @@ img {
 
   .page-create-project-why .nav-create ul li {
     float: none; } }
-@media (max-width: 414px) {
+@media only screen and (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
     .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer .showcase-card-footer-1 {
@@ -10588,7 +10539,7 @@ img {
     padding: 10px 0px 20px !important; }
     header nav.navbar .project-button {
       margin-left: 20px; } }
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   #page-404 .text-block {
     bottom: 50px;
     right: 160px; } }
@@ -10596,11 +10547,77 @@ img {
   .project .card-title {
     max-width: 370px; } }
 @media only screen and (max-width: 525px) {
+  body {
+    padding-top: 78px; }
+    body .what-is-ms h1 {
+      font-size: 3rem; }
+    body h3.page-header {
+      padding-top: 10px !important; }
+    body .page-explore .explore-header h3 {
+      padding-top: 10px !important; }
+
   .project-button {
     display: none; }
 
   .info-w-parallax .info-card {
-    height: auto !important; } }
+    height: auto !important; }
+
+  .page-create-project-why .team {
+    padding-top: 0px; }
+  .page-create-project-why .region-content {
+    padding: 0px; }
+  .page-create-project-why .add-collaborate .inputs-container {
+    padding: 8px; }
+    .page-create-project-why .add-collaborate .inputs-container .col-md-9 {
+      padding: 6px; }
+      .page-create-project-why .add-collaborate .inputs-container .col-md-9 .maker-mobile-card {
+        max-width: 100%;
+        height: auto; }
+
+  .upload-cover-modal .upload-tab .drag-text {
+    padding-top: 0px !important; }
+
+  header.main-header {
+    height: 74px; }
+    header.main-header .navbar-brand {
+      width: 75px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header .navbar-brand span {
+        right: 3px;
+        font-size: 8px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
+    header.main-header nav.navbar {
+      padding: 6px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header nav.navbar #MainNav .nav-item a {
+        font-size: 1.2rem; }
+      header.main-header nav.navbar #MainNav .nav-item .btn {
+        font-size: 1rem;
+        height: 50px; }
+    header.main-header app-notification-panel .dropdown-menu {
+      right: -250%;
+      width: 300px; }
+
+  .page-inbox h1 {
+    font-size: 2.4rem; }
+  .page-inbox .inbox-header ul li {
+    width: 100%; }
+  .page-inbox .inbox-container .inbox-controls .new-message p {
+    display: none; }
+  .page-inbox .inbox-container .inbox-controls .new-message i {
+    font-size: 2rem; } }
 @media only screen and (max-width: 767px) {
   .project-mobile-card .project-card-small .media {
     margin-bottom: -15px; }
@@ -10632,8 +10649,12 @@ img {
   .challenge-card .card-container .card-partership {
     padding-top: 10px; }
 
-  .profile-sidebar .profile-container .profile-info .userInfo {
-    min-height: 70px; }
+  .profile-sidebar .profile-container .profile-info {
+    padding-bottom: 30px; }
+    .profile-sidebar .profile-container .profile-info .hideData .toggleProfile, .profile-sidebar .profile-container .profile-info .hideData.toggleProfile {
+      bottom: 15px; }
+    .profile-sidebar .profile-container .profile-info .userInfo {
+      min-height: 70px; }
 
   .registration-page .search-form-group .header-title {
     margin-top: 20px; }
@@ -10641,7 +10662,22 @@ img {
     margin-top: 5px; }
   .registration-page .search-form-group form .save-btn-container {
     text-align: center;
-    margin-top: 15px; } }
+    margin-top: 15px; }
+
+  .page-create-project-why h2 {
+    padding: 0px; }
+  .page-create-project-why p {
+    padding: 0px; }
+  .page-create-project-why .your-story-guide .content {
+    width: 100% !important; }
+  .page-create-project-why .guideline {
+    padding: 6px; }
+    .page-create-project-why .guideline .content {
+      width: 100% !important; }
+  .page-create-project-why .content {
+    width: 100% !important; }
+  .page-create-project-why .question-mark i {
+    display: none; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
@@ -10687,7 +10723,15 @@ img {
     width: 190px; }
 
   .profile-sidebar .profile-container .profile-info .profile-share {
-    top: 35px; } }
+    top: 35px; }
+
+  .showcase-card-backlayer-home .showcase-card .card-container .card-description p {
+    -webkit-line-clamp: 4;
+    max-height: 92px; }
+
+  .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .card-container .card-description p {
+    -webkit-line-clamp: 4;
+    max-height: 92px; } }
 /* acount setting component */
 _::-webkit-full-page-media, _:future, :root .custom-safari {
   text-align: left !important; }

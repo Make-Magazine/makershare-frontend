@@ -133,6 +133,7 @@
 				 @include desc-font-1();
 				 line-height: inherit !important;
 				 padding-top: 4px;
+				 color: $shade-4;
 			}
 		}
 	}
@@ -201,6 +202,7 @@
 			p {
 				@include desc-font-1();
 				line-height: inherit !important;
+				color: $shade-4;
 			}
 			}
 		}
@@ -829,6 +831,7 @@ header.showcase-project {
                 @include body-font-2();
 								margin-bottom: 10px;
 								word-wrap: break-word;
+								color:$shade-4;
             }
         }
 				.card-date {

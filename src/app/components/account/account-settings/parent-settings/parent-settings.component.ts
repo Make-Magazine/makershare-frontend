@@ -14,7 +14,7 @@ user_role;
 
   ngOnInit() {
     this.roles = JSON.parse(localStorage.getItem('roles'));
-    console.log(this.roles);
+    // console.log(this.roles);
     if ('4' in this.roles){
       this.user_role=4;
     }else if('3' in this.roles){

@@ -47,6 +47,7 @@
         .container {}
         h1 {
             @include header-font();
+            text-transform: capitalize;
         }
         .project-create-buttons {
             .contorls {
@@ -330,7 +331,8 @@
             .tool-list {
                 @include desc-font-4 ();
                 font-size: 1.2em;
-								margin-bottom: 5px;
+                margin-bottom: 5px;
+                text-transform: uppercase;
             }
             .result,
             .how-to-select,

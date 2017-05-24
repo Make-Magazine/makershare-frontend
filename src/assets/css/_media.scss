@@ -1,4 +1,9 @@
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
+    .page-inbox .inbox-header
+        {
+           order: 2;
+           text-align: center;
+        }
     /* Footer */
     footer {
         padding-top: 30px;
@@ -123,19 +128,6 @@
             }
         }
     }
-    #page-404 .text-block {
-        left: 0;
-        right: 0;
-        width: 320px;
-        margin: auto;
-        bottom: 10%;
-    }
-    #site-down,
-    #splash {
-        .text-block {
-            bottom: 25%;
-        }
-    } 
     /* home page reorder items */
     .front {
         .container {
@@ -210,7 +202,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .showcase-card-backlayer {
         .showcase-card {
             .image-container {
@@ -392,7 +384,7 @@
 }
 
 
-@media (max-width: 575px) {
+@media only screen and (max-width: 575px) {
     /* project card */
     .project.card {
         width: 100%;
@@ -471,7 +463,7 @@
     }
 }
 
-@media (max-width: 414px) {
+@media only screen and (max-width: 414px) {
     .showcase-card-backlayer {
         .showcase-card {
             .content-container {
@@ -588,7 +580,9 @@
         }
     }
 }
+@media only screen and (max-width: 425px) {
 
+}
 
 @media only screen and (max-width: 991px) and (min-width:767px) {
     header {
@@ -639,16 +633,16 @@
     }
 }
 
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     #page-404 .text-block { 
         bottom: 50px;
         right: 160px;
     }
 }
 
-@media only screen and (max-width: 767px) {}
-
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 768px) {
+    
+}
 
 @media only screen and (max-width: 320px) {}
 
@@ -673,6 +667,22 @@
 }
 
 @media only screen and (max-width: 525px) {
+    body {
+        padding-top: 78px;
+        .what-is-ms h1 {
+            font-size: 3rem;
+        }
+        h3.page-header {
+            padding-top: 10px !important;
+        }
+        .page-explore {
+            .explore-header {
+                h3 {
+                    padding-top: 10px !important;
+                }
+            }
+        }
+    }
     .project-button {
         display: none;
     }
@@ -680,6 +690,86 @@
         .info-card {
             height: auto !important;
         }
+    }
+     .page-create-project-why {
+         .team {
+             padding-top: 0px;
+         }
+         .region-content {
+            padding: 0px;
+         }
+         .add-collaborate {
+             .inputs-container {
+                 padding: 8px;
+                 .col-md-9 {
+                     padding: 6px;
+                     .maker-mobile-card {
+                         max-width: 100%;
+                         height: auto;
+                     }
+                 }
+             }
+         }
+     }
+    .upload-cover-modal .upload-tab .drag-text {
+        padding-top: 0px !important;
+    }
+    header.main-header {
+        height: 74px;
+        .navbar-brand {
+            width: 75px;
+            @include transition(0.5s);
+            span {
+                right: 3px;
+                font-size: 8px;
+                @include transition(0.3s);  
+            }
+        }
+        nav.navbar {
+            padding: 6px;
+            @include transition(0.5s);                
+            #MainNav {
+                .nav-item {
+                    a {
+                        font-size: 1.2rem;
+                    }
+                    .btn {
+                        font-size: 1rem;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+        app-notification-panel {
+            .dropdown-menu {
+                right: -250%;
+                width: 300px;
+            }
+        }
+    }
+    .page-inbox { 
+        h1 {
+            font-size: 2.4rem;
+        }
+        .inbox-header {
+            ul {
+                li {
+                    width: 100%;
+                }
+            }
+        }
+         .inbox-container {
+             .inbox-controls {
+                 .new-message {
+                     p {
+                         display: none;
+                     }
+                     i {
+                         font-size: 2rem;
+                     }
+                }
+             }
+         }
     }
 }
 
@@ -754,6 +844,12 @@
     .profile-sidebar {
         .profile-container {
             .profile-info {
+                padding-bottom: 30px;
+                .hideData {
+                    .toggleProfile, &.toggleProfile {
+                        bottom: 15px;
+                    }
+                }
                 .userInfo {
                     min-height: 70px;
                 }
@@ -773,6 +869,33 @@
                     text-align: center;
                     margin-top: 15px;
                 }
+            }
+        }
+    }
+    .page-create-project-why {
+        h2 {
+            padding: 0px;
+        }
+        p {
+            padding: 0px;
+        }
+        .your-story-guide  {
+            .content {
+                width: 100% !important;
+            }
+        }
+        .guideline {
+            padding: 6px;
+            .content {
+                width: 100% !important;
+            }
+        }
+        .content {
+            width: 100% !important;
+        }
+        .question-mark {
+            i {
+                display: none;
             }
         }
     }
@@ -879,6 +1002,32 @@
             .profile-info {
                 .profile-share {
                     top: 35px;
+                }
+            }
+        }
+    }
+    .showcase-card-backlayer-home {
+        .showcase-card {
+            .card-container {
+                .card-description {
+                    p {
+                        -webkit-line-clamp: 4;
+                        max-height: 92px;
+                    }
+                }
+            }
+        }
+    }
+    .page-search-content {
+        .showcase-card-backlayer-search {
+            .showcase-card-backlayer-search-2 {
+                .showcase-card {
+                    .card-container {
+                        .card-description p {
+                            -webkit-line-clamp: 4;
+                            max-height: 92px;
+                        }
+                    }
                 }
             }
         }

@@ -2,8 +2,8 @@
   <div class="region region-content col-lg-8 col-md-12">
     <div class="how-to-tab">
       <div class="project-body-content">
-        <p [innerHTML]="project.field_how_to?.value" *ngIf="project.field_how_to?.value"></p>
-        <p class="text-center" *ngIf="!project.field_how_to?.value">There is no content available!</p>
+        <p *ngIf="howto" [innerHTML]="trustedLink" ></p>
+        <p *ngIf="!howto" class="text-center" >There is no content available!</p>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
           <ul *ngIf="project.field_resources.length != 0" class="list-group resources">
             <p>Resources</p>
             <li class="list-group-item" *ngFor="let resource of project.field_resources; let i=index">
-              <a href="{{resource.resource_file}}">{{resource.term_name}} - {{resource.extension}} - {{resource.filesize}}</a>
+              <a href="{{resource.resource_file}}">{{resource.resource_label}} - {{resource.extension}} - {{resource.filesize}}</a>
             </li>
           </ul>
         </div>

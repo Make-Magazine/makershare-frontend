@@ -1,7 +1,8 @@
 <div class="page-create-project-why" *ngIf="ProjectLoaded">
   <section class="container">
     <div class="top-content-wrapper">
-      <div class="add-controls row">
+      <!--hidden under 769px width-->
+      <div class="add-controls row hidden-md-down">
         <div class="container">
           <h1 class="text-center">Project Editor</h1>
         </div>
@@ -17,11 +18,55 @@
         <div class="col-md-4 project-create-buttons">
           <p>PUBLISH AS</p>
           <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
-            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
-                (click)="GettingFieldsReady(0,370)">Public</button></li>
-            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
-                (click)="GettingFieldsReady(0,371)">Private</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
             <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
+          </ul>
+        </div>
+      </div>
+      <!--show under 768px width-->
+      <div class="add-controls row d-flex flex-column hidden-lg-up hidden-xs-down">
+        <div class="container w-100">
+          <h1 class="text-center">Project Editor</h1>
+        </div>
+        <div class="nav-create col-md-12 mt-auto mb-2">
+          <div class="container">
+            <ul class="list-unstyled">
+              <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
+              <li><a (click)="current_active_tab = 'How To'" class="btn btn-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">Add a How-To</a></li>
+              <li><a (click)="current_active_tab = 'Team'" class="btn btn-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Add Team Members</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-12 project-create-buttons mb-2 d-flex flex-row">
+          <p class="mr-2 ml-auto">PUBLISH AS</p>
+          <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
+          </ul>
+        </div>
+      </div>
+      <!--show under 525px width-->
+      <div class="add-controls row d-flex flex-column hidden-sm-up">
+        <div class="container w-100">
+          <h1 class="text-center" style="font-size: 2.5rem">Project Editor</h1>
+        </div>
+        <div class="nav-create col-md-12 mt-auto mb-2">
+          <div class="container p-0">
+            <ul class="list-unstyled">
+              <li><a (click)="current_active_tab = 'Your Story'" class="btn btn-tab" id="your-story" [ngClass]="{'active': current_active_tab == 'Your Story' }">Story</a></li>
+              <li><a (click)="current_active_tab = 'How To'" class="btn btn-tab" id="how-to" [ngClass]="{'active': current_active_tab == 'How To' }">Add a How-To</a></li>
+              <li><a (click)="current_active_tab = 'Team'" class="btn btn-tab" id="team" [ngClass]="{'active': current_active_tab == 'Team' }">Add Team Members</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-12 project-create-buttons mb-2 d-flex flex-column">
+          <p class="mr-auto p-1">PUBLISH AS</p>
+          <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+            <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
           </ul>
         </div>
       </div>
@@ -40,7 +85,8 @@
         </div>
       </div>
     </div>
-    <div class="add-controls row">
+    <!--hidden under 769px width-->
+    <div class="add-controls row hidden-md-down">
       <div class="nav-create col-md-8 mt-auto">
         <div class="container d-flex">
           <div class="back mr-auto" *ngIf="current_active_tab == 'How To'" (click)="current_active_tab = 'Your Story'"><span class="btn btn-advance"><i class="lnr lnr-chevron-left"></i></span> Go To Your Story</div>
@@ -52,11 +98,47 @@
       <div class="col-md-4 project-create-buttons">
         <p>PUBLISH AS</p>
         <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
-          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
-              (click)="GettingFieldsReady(0,370)">Public</button></li>
-          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
-              (click)="GettingFieldsReady(0,371)">Private</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
           <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
+        </ul>
+      </div>
+    </div>
+    <!--show under 768px width-->
+    <div class="add-controls row hidden-lg-up d-flex flex-column hidden-xs-down">
+      <div class="nav-create col-md-12 mt-auto mb-3">
+        <div class="d-flex">
+          <div class="back mr-auto" *ngIf="current_active_tab == 'How To'" (click)="current_active_tab = 'Your Story'"><span class="btn btn-advance"><i class="lnr lnr-chevron-left"></i></span> Go To Your Story</div>
+          <div class="back mr-auto" *ngIf="current_active_tab == 'Team'" (click)="current_active_tab = 'How To'"><span class="btn btn-advance"><i class="lnr lnr-chevron-left"></i></span> Go To How-To</div>
+          <div class="next ml-auto" *ngIf="current_active_tab == 'Your Story'" (click)="current_active_tab = 'How To'">Go To How-To <span class="btn btn-advance"><i class="lnr lnr-chevron-right"></i></span></div>
+          <div class="next ml-auto" *ngIf="current_active_tab == 'How To'" (click)="current_active_tab = 'Team'">Go To Add Your Team <span class="btn btn-advance"><i class="lnr lnr-chevron-right"></i></span></div>
+        </div>
+      </div>
+      <div class="col-md-12 project-create-buttons mb-3 d-flex flex-row">
+        <p class="mr-2 ml-auto">PUBLISH AS</p>
+        <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
+        </ul>
+      </div>
+    </div>
+    <!--show under 525px width-->
+    <div class="add-controls row hidden-lg-up d-flex flex-column hidden-sm-up">
+      <div class="nav-create col-md-12 mt-auto mb-3">
+        <div class="d-flex">
+          <div class="back mr-auto" *ngIf="current_active_tab == 'How To'" (click)="current_active_tab = 'Your Story'"><span class="btn btn-advance m-0"><i class="lnr lnr-chevron-left"></i></span></div>
+          <div class="back mr-auto" *ngIf="current_active_tab == 'Team'" (click)="current_active_tab = 'How To'"><span class="btn btn-advance m-0"><i class="lnr lnr-chevron-left"></i></span></div>
+          <div class="next ml-auto" *ngIf="current_active_tab == 'Your Story'" (click)="current_active_tab = 'How To'"><span class="btn btn-advance m-0"><i class="lnr lnr-chevron-right"></i></span></div>
+          <div class="next ml-auto" *ngIf="current_active_tab == 'How To'" (click)="current_active_tab = 'Team'"><span class="btn btn-advance m-0"><i class="lnr lnr-chevron-right"></i></span></div>
+        </div>
+      </div>
+      <div class="col-md-12 project-create-buttons mb-2 d-flex flex-column">
+        <p class="mr-auto p-1">PUBLISH AS</p>
+        <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">Public</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">Private</button></li>
+          <li class="create-project-buttons project-draft"><button class="btn btn-grey p-2" (click)="GettingFieldsReady(0,1115)">Save Draft</button></li>
         </ul>
       </div>
     </div>

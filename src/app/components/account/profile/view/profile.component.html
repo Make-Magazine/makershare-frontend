@@ -197,11 +197,11 @@
 										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
 									<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
 									</span>
-								<span class="toggleProfile" (click)="ToggleProfile()">
+								</p>
+								<span class="hideData toggleProfile" (click)="ToggleProfile()">
 									<i class="lnr lnr lnr-chevron-down open"></i>
 									<i class="lnr lnr lnr-cross close"></i>
 								</span>
-								</p>
 								<!-- End How -->
 							</div>
 							<!-- End col-md-3 -->
@@ -308,7 +308,7 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<hr class="hideData" *ngIf="emptySocial">
+								<hr class="hideData" *ngIf="!emptySocial">
 								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
 									<p  class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
@@ -417,7 +417,7 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
-									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic" [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
+									<app-edit-portfolio (emitter)="GetUserDetails()" *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic" [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
 									 [ViewsCount]="profile.views_count"></app-edit-portfolio>
 								</div>
 							</div>
