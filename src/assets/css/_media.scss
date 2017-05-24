@@ -291,9 +291,10 @@
                     @include desc-font-1();
                     line-height: 125% !important;
                     -webkit-line-clamp: 3;
-                    height: 52px;
+                    height: 55px;
                     color: #fff;
                     overflow: hidden;
+                    font-weight: 900;
                 }
             }
         }
