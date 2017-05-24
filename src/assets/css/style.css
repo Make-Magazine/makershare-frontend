@@ -3605,7 +3605,8 @@ footer {
       line-height: 100%;
       color: #828282; }
       .project .card-stats ul li img {
-        margin-right: 6px; }
+        margin-right: 6px;
+        width: 12px; }
         .project .card-stats ul li img.project-likes {
           width: 12px; }
         .project .card-stats ul li img.project-views {
