@@ -1,4 +1,4 @@
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
     .page-inbox .inbox-header
         {
            order: 2;
@@ -202,7 +202,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .showcase-card-backlayer {
         .showcase-card {
             .image-container {
@@ -384,7 +384,7 @@
 }
 
 
-@media (max-width: 575px) {
+@media only screen and (max-width: 575px) {
     /* project card */
     .project.card {
         width: 100%;
@@ -463,7 +463,7 @@
     }
 }
 
-@media (max-width: 414px) {
+@media only screen and (max-width: 414px) {
     .showcase-card-backlayer {
         .showcase-card {
             .content-container {
@@ -580,7 +580,9 @@
         }
     }
 }
+@media only screen and (max-width: 425px) {
 
+}
 
 @media only screen and (max-width: 991px) and (min-width:767px) {
     header {
@@ -631,16 +633,16 @@
     }
 }
 
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     #page-404 .text-block { 
         bottom: 50px;
         right: 160px;
     }
 }
 
-@media only screen and (max-width: 767px) {}
-
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 768px) {
+    
+}
 
 @media only screen and (max-width: 320px) {}
 
@@ -738,6 +740,36 @@
                 }
             }
         }
+        app-notification-panel {
+            .dropdown-menu {
+                right: -250%;
+                width: 300px;
+            }
+        }
+    }
+    .page-inbox { 
+        h1 {
+            font-size: 2.4rem;
+        }
+        .inbox-header {
+            ul {
+                li {
+                    width: 100%;
+                }
+            }
+        }
+         .inbox-container {
+             .inbox-controls {
+                 .new-message {
+                     p {
+                         display: none;
+                     }
+                     i {
+                         font-size: 2rem;
+                     }
+                }
+             }
+         }
     }
 }
 
@@ -812,6 +844,12 @@
     .profile-sidebar {
         .profile-container {
             .profile-info {
+                padding-bottom: 30px;
+                .hideData {
+                    .toggleProfile, &.toggleProfile {
+                        bottom: 15px;
+                    }
+                }
                 .userInfo {
                     min-height: 70px;
                 }
