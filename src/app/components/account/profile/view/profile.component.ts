@@ -84,6 +84,10 @@ export class ProfileComponent implements OnInit {
   ProjectsCountPublic: number;
   ProjectsCountPrivate: number;
   ProjectsCountDraft: number;
+  ReadMoreFields = {
+    bio:false,
+    started_making:false,
+  }
 
   ProfilecropperSettings: CropperSettings;
   allIntersets: Array<any>;
@@ -381,8 +385,8 @@ export class ProfileComponent implements OnInit {
   BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-      bio: [this.ProfileInfo.bio, Validators.maxLength(300)],
-      started_making: [this.ProfileInfo.started_making, Validators.maxLength(140)],
+      bio: [this.ProfileInfo.bio, Validators.maxLength(800)],
+      started_making: [this.ProfileInfo.started_making, Validators.maxLength(800)],
       field_add_your_makerspace_s_: this.fb.array([]),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
@@ -395,7 +399,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(this.uid).subscribe(
       (profile: UserProfile) => {
         this.SetUser(profile);
-        
         this.GetCountryDetails(profile.address.code);
       }, (err) => {
       }, () => {
