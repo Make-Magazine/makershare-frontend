@@ -85,6 +85,10 @@ export class ProfileComponent implements OnInit {
   ProjectsCountPublic: number;
   ProjectsCountPrivate: number;
   ProjectsCountDraft: number;
+  ReadMoreFields = {
+    bio:false,
+    started_making:false,
+  }
 
   ProfilecropperSettings: CropperSettings;
   allIntersets: Array<any>;
@@ -242,7 +246,6 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
-      console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
@@ -332,7 +335,6 @@ export class ProfileComponent implements OnInit {
 
   ReSetAddressValues() {
     if (this.CountryFieldsAndDetails['administrative_areas']) {
-      console.log(this.CountryFieldsAndDetails);
       let administrative_area_label = this.CountryFieldsAndDetails.administrative_area_label.toLowerCase();
       if (!this.ProfileInfo.address[administrative_area_label]) {
         this.ProfileInfo.address.governorate = '_none';
@@ -384,8 +386,8 @@ export class ProfileComponent implements OnInit {
   BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-      bio: [this.ProfileInfo.bio, Validators.maxLength(300)],
-      started_making: [this.ProfileInfo.started_making, Validators.maxLength(140)],
+      bio: [this.ProfileInfo.bio, Validators.maxLength(800)],
+      started_making: [this.ProfileInfo.started_making, Validators.maxLength(800)],
       field_add_your_makerspace_s_: this.fb.array([]),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
@@ -398,9 +400,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(this.uid).subscribe(
       (profile: UserProfile) => {
         this.SetUser(profile);
-        
         this.GetCountryDetails(profile.address.code);
-        console.log(this.ProfileInfo);
       }, (err) => {
       }, () => {
         if (this.CurrentLoggedUserId == this.uid)
@@ -410,8 +410,6 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
-    //console.log(user);
-    // console.log(this.profile.views_count);
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/') + 1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
