@@ -64,12 +64,12 @@ export class SearchResultComponent implements OnInit {
           if(query.length > 1){
             return this.solrService.autocomplete(query)
             .map(result => {
-              var newResult = [];
+              var newResult = []; 
               result.response.docs.forEach(element => {
                 if(element.tm_title && element.tm_title.length > 0){
                   newResult.push(element.tm_title[0]);
                 }else if (element.tm_name && element.tm_name.length > 0){
-                  newResult.push(element.tm_name[0]);
+                  newResult.push(element.tm_field_first_name[0] + " " + element.tm_field_last_name[0]);
                 }
                 
               });
@@ -114,9 +114,9 @@ export class SearchResultComponent implements OnInit {
 
   searchQuery(){
 
-    if(this.query.length < 4){
-      return;
-    }
+    // if(this.query.length < 4){
+    //   return;
+    // }
 
     this.loaderService.display(true);
     if(this.query.length == 0) {

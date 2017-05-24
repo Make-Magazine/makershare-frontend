@@ -4,7 +4,7 @@ import { UserService,MainService } from '../d7services';
 import * as globals from '../d7services/globals';
 import { Observable } from 'rxjs/Observable';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
 
 //import Auth0 from 'auth0-js';
@@ -20,15 +20,37 @@ export class Auth implements OnInit {
   // redirectURL: string;
   screen = 'login';
   yearsArr = [];
-  state = '';
+  stateValue: string;
+  lock;
 
-  lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
+
+
+  constructor(
+    private userService: UserService,
+    private mainService: MainService,
+    private notificationBarService: NotificationBarService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private profilePictureService: ProfilePictureService,
+  ) {
+    //router.events.subscribe((url:any) => {this.state = url.url});
+  router.events
+    .filter(event => event instanceof NavigationStart)
+    .subscribe((event:NavigationStart) => {
+      this.stateValue = event.url;
+      // localStorage.setItem('currentURL', event.url);
+      // console.log(localStorage.getItem('currentURL'));
+    });
+    
+  this.lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
     allowedConnections: ['Username-Password-Authentication'],
     loginUrl: '/login',
     auth: {
       redirectUrl: globals.appURL,
       responseType: 'token',
-      params: { state: this.state },
+      // params: {
+      //   state: 'makers',
+      // },
     },
     socialButtonStyle: 'small',
     theme: {
@@ -44,21 +66,13 @@ export class Auth implements OnInit {
   );
 
 
-  constructor(
-    private userService: UserService,
-    private mainService: MainService,
-    private notificationBarService: NotificationBarService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private profilePictureService: ProfilePictureService,
-  ) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-
+    
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
-          // console.log(error);
+           console.log(error);
           return;
         }
         var data = profile;
@@ -81,11 +95,19 @@ export class Auth implements OnInit {
               if (res.first_time == true) {
 
                 this.router.navigate(['/portfolio']);
+                
+              }else {
+                // console.log(localStorage.getItem('currentURL'));
+                this.router.navigate([localStorage.getItem('currentURL')]);
               }
-
-              if (authResult.state != '') {
-                //   this.router.navigate([authResult.state]);
-              }
+            
+              // if (authResult.state != '') {
+                  
+              //     console.log(decodeURI(authResult.state));
+              //     console.log(decodeURIComponent(authResult.state));
+              //     console.log(JSON.parse(authResult.state));
+              //     // this.router.navigate(authResult.state);
+              // }
 
 
             } else {
@@ -131,6 +153,7 @@ export class Auth implements OnInit {
   public login() {
     // Call the show method to display the widget.
     this.screen = 'login';
+    localStorage.setItem('currentURL', this.stateValue);
     this.lock.show();
   }
 

@@ -116,6 +116,7 @@
 	text-align: center;
     h3 {
         @include header-font();
+        text-transform: capitalize;
         margin: auto;
         padding-top: 45px;
 		padding-bottom: 10px;
@@ -212,6 +213,8 @@
             p {
                 @include body-font-2();     
                 color: white;
+                font-weight: normal;
+                line-height: 1.5rem;
             }
         }
         .card-buttons {
@@ -445,6 +448,7 @@
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     color: #fff;
+                    line-height: 1.5rem;
                 }
             }
 
@@ -472,10 +476,11 @@
                         }
                         .entries-count {
                             color: $shade-3;
+                            line-height: 1.25rem;
                         }
                     }
                     .challenge-card-status {
-                        line-height: 16px;
+                        line-height: 1.25rem;
                         color: $shade-3;
                         .open-status, .closed-status {
                             // font-weight: bold;
@@ -641,6 +646,8 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 color: #fff;
+                font-weight: normal;
+                line-height: 1.5rem;
             }
         }
 
@@ -673,7 +680,7 @@
                     }
                 }
                 .challenge-card-status {
-                    line-height: 16px;
+                    line-height: 1.25rem;
                     color: #fff;
                     .open-status, .closed-status {
                         // font-weight: bold;
@@ -754,7 +761,7 @@
         cursor: pointer;
         margin-bottom: 30px;
         background-color: #333;
-        height: 460px;
+        height: 480px;
          @include boxShadow(2px, 2px ,8px, $shade-3);
         span {
             color: white;
@@ -864,7 +871,7 @@
                         }
                     }
                     .challenge-card-status {
-                        line-height: 16px;
+                        line-height: 1.25rem;
                         color: $text-color-2;
                         .open-status, .closed-status {
                             // font-weight: bold;
@@ -957,4 +964,7 @@
     .modal-footer {
         border-top: none !important;
     }
+}
+.text-red{
+    color: $text-color-5;
 }

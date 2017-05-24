@@ -96,6 +96,7 @@
     text-align: center;
     h3 {
         @include header-font();
+        text-transform: capitalize;
         margin: auto;
         padding-top: 45px;
         padding-bottom: 10px;

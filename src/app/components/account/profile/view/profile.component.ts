@@ -26,7 +26,6 @@ import * as globals from '../../../../d7services/globals';
 export class ProfileComponent implements OnInit {
   @ViewChild('cropper') set cropper(cropper: ImageCropperComponent) {
     setTimeout(() => {
-      // console.log(cropper);
     }, 1000);
   }
 
