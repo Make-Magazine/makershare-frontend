@@ -213,7 +213,7 @@
             p {
                 @include body-font-2();     
                 color: white;
-                font-weight: normal;
+                font-weight: 900;
                 line-height: 1.5rem;
             }
         }
@@ -646,7 +646,7 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 color: #fff;
-                font-weight: normal;
+                font-weight: 900;
                 line-height: 1.5rem;
             }
         }
@@ -967,4 +967,11 @@
 }
 .text-red{
     color: $text-color-5;
+}
+.close-submit{
+    position: absolute;
+    font-size: 1.8rem;
+    top:10px;
+    right:10px;
+    cursor:pointer;
 }

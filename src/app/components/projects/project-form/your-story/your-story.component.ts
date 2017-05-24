@@ -219,7 +219,6 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
-      this.EmitValues();
       this.onValueChanged(data);
     });
     this.onValueChanged(this.YourStoryForm.value);
@@ -290,6 +289,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    * this data will be helpfull if we need to make any change to the value before setting the error
    */
   onValueChanged(data?: any) {
+    this.EmitValues();
     if (!this.YourStoryForm) { return; }
     const form = this.YourStoryForm;
     for (const field in this.formErrors) {

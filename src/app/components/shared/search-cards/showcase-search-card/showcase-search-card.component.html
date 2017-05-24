@@ -1,34 +1,36 @@
-<div *ngIf="showcase" class="showcase-card-backlayer-search" (click)="ShowSingleShowcase(showcase.path)">
+<div *ngIf="showcase" class="showcase-card-backlayer-search">
   <div class="showcase-card-backlayer-search-2 ">
     <div class="showcase-card" *ngIf="showcase">
       <div class="content-container h-100">
         <div class="card-container">
           <div class="card">
-            <div class="showcase-type">
+            <div class="showcase-type"  (click)="ShowSingleShowcase(showcase.path)">
               <p>Showcase</p>
             </div>
-            <h3 class="card-title">{{showcase.showcase_name}}</h3>
-            <div class="card-description hidden-md-down" *ngIf="showcase.description_trim">
+            <h3 class="card-title"  (click)="ShowSingleShowcase(showcase.path)">{{showcase.showcase_name}}</h3>
+            <div class="card-description hidden-md-down" *ngIf="showcase.description_trim"  (click)="ShowSingleShowcase(showcase.path)">
               <p [innerHTML]="showcase.description_trim"></p>
             </div>
             <div class="showcase-card-footer mt-auto d-flex">
               <div class="showcase-card-footer-2">
                 <div class="showcase-card-count d-felx">
-                  <div class="showcase-likes-div">
-                    <img class="showcase-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+                  <div class="showcase-likes-div" *ngIf="showcase.nid && userId ">
+                    <!--<img class="showcase-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
                     <img class="showcase-likes" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
                     <span *ngIf="showcase.like_counter">{{showcase.like_counter}}</span>
-                    <span *ngIf="!showcase.like_counter">0</span>
+                    <span *ngIf="!showcase.like_counter">0</span>-->
+                    <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
+
                   </div>
                   <div class="views-count-div">
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
-                    <span class="views-count">1129</span>
+                    <span class="views-count" *ngIf="showcase.views_count">{{showcase.views_count}}</span>
                   </div>
-                  <div class="projects-count-div" *ngIf="showcase.number_of_project">
-                    <span class="projects-count">{{showcase.number_of_project}}
-                      <span *ngIf="showcase.number_of_project>1">projects</span>
-                    <span *ngIf="showcase.number_of_project<=1">project</span>
-                    <span *ngIf="!showcase.number_of_project">0 projects</span>
+                  <div class="projects-count-div">
+                    <span class="projects-count" *ngIf="projectsCount">{{projectsCount}}
+                      <span *ngIf="projectsCount>1">{{projectsCount}}projects</span>
+                    <span *ngIf="projectsCount==1">{{projectsCount}}project</span>
+                    <span *ngIf="!projectsCount || projectsCount==0">0 projects</span>
                     </span>
                   </div>
                 </div>
