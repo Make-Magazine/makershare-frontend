@@ -12,7 +12,6 @@ import { domain } from '../../../d7services/globals';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
   Back_End_Domain;
@@ -49,10 +48,8 @@ export class HeaderComponent implements OnInit {
     this.registrationFormStatusObs = this.route.queryParams.map(params => params || null);
     this.registrationFormStatusObs.subscribe(params => {
       var arr = Object.keys(params).map(function (key) { return params[key]; });
-      console.log(arr);
       if(arr[0] == "registration" && arr[1] == "makermedia.auth0.com"){
         if(arr[2]){
-          console.log('true');
           this.registrationFormStatus = true;
           this.registrationFormState = arr[2];
         }
