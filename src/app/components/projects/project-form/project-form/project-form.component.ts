@@ -242,10 +242,12 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         // field resources
         if (data.field_resources.und) {
           for (let i = 0; i < data.field_resources.und.length; i++) {
-            let resource = x[index];
-            this.project.field_resources.und.push(resource as field_collection_item_resource);
-            if (resource['field_resource_file'].und) {
-              this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
+            let resource = x[index] as field_collection_item_resource;
+            if(resource.field_label.und){
+                this.project.field_resources.und.push(resource);
+              if (resource['field_resource_file'].und) {
+                this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
+              }
             }
             index++;
           }

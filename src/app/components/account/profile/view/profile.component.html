@@ -305,6 +305,30 @@
 												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
 											</a>
 										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_github != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="github = false" (mouseleave)="github = true" href="{{ProfileInfo.field_social_accounts.field_github}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitch != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="twitch = false" (mouseleave)="twitch = true" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_gitlabs != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="gitlabs = false" (mouseleave)="gitlabs = true" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="gitlabs" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!gitlabs" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_thingyverse != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="thingyverse = false" (mouseleave)="thingyverse = true" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -694,6 +718,50 @@
 													</div>
 												</li>
 											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_github.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_github" placeholder="Github">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_github"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_github'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_github.valid && FormGroupSocial.controls.field_github.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitch.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_twitch" placeholder="Twitch">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitch"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitch'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_twitch.valid && FormGroupSocial.controls.field_twitch.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_gitlabs.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_gitlabs" placeholder="Gitlabs">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_gitlabs"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_gitlabs'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_gitlabs.valid && FormGroupSocial.controls.field_gitlabs.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_thingyverse.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_thingyverse" placeholder="Thingyverse">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_thingyverse"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_thingyverse'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_thingyverse.valid && FormGroupSocial.controls.field_thingyverse.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>	
+											</div>												
 										</div>
 									</div>
 								</div>
