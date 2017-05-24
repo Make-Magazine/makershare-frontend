@@ -46,15 +46,17 @@
           </p>
           <div class="card-stats mt-auto">
             <ul class="list-unstyled d-flex justify-content-between">
-              <li>
-                <img class="project-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+              <li *ngIf="project.nid && userId ">
+                <!--<img class="project-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
                 <img class="project-likes" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
                 <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
-                <span *ngIf="!project.number_of_likes">0</span>
+                <span *ngIf="!project.number_of_likes">0</span>-->
+               <span> <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like></span>
+
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
+                <span *ngIf="project.number_of_views">{{project.number_of_views}}</span>
               </li>
             </ul>
           </div>
