@@ -161,10 +161,10 @@ export class SinglShowcaseComponent implements OnInit {
       });
 
   }
-  ShowcasePojectNav(nid, snid) {
-    this.router.navigate(['/makers/project2/', snid, this.sort_by, this.sort_order, nid]);
-    // this.showcaseNid.emit(this.route.params['value'].nid)
-  }
+  // ShowcasePojectNav(nid, snid) {
+  //   this.router.navigate(['/makers/project2/', snid, this.sort_by, this.sort_order, nid]);
+  //   // this.showcaseNid.emit(this.route.params['value'].nid)
+  // }
 
   // countLikes(){
   //   this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
