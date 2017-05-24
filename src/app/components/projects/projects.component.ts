@@ -213,6 +213,16 @@ export class ProjectsComponent implements OnInit {
   }
   /* end function to sort challenge mostViewed */
 
+  mostFeatured(){
+    this.projects = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "field_projects_target_id"
+    this.ActionName = "Featured"
+    this.getCountProject();
+
+    this.getProjects();
+  }
   /* function to sort challenge MostForked */
   mostForked() {
     this.projects = [];

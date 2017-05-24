@@ -74,7 +74,16 @@
 								<!-- Start Bio -->
 								<div class="bio hideData">
 									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
-									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
+									<div *ngIf="ProfileInfo.bio" class="bio">
+										<div *ngIf="ReadMoreFields.bio">
+											<div>{{ProfileInfo.bio}}</div>
+											<span (click)="ReadMoreFields.bio = false">Read Less</span>
+										</div>
+										<div *ngIf="!ReadMoreFields.bio">
+											<div>{{ProfileInfo.bio | truncate : 160}}</div>
+											<span *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
+										</div>
+									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
@@ -168,7 +177,16 @@
 								<div class="how hideData">
 									<!-- Start How -->
 									<p class="global-title">My Maker Moment</p>
-									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
+									<div *ngIf="ProfileInfo.started_making" class="started_making">
+										<div *ngIf="ReadMoreFields.started_making">
+											<div>{{ProfileInfo.started_making}}</div>
+											<span (click)="ReadMoreFields.started_making = false">Read Less</span>
+										</div>
+										<div *ngIf="!ReadMoreFields.started_making">
+											<div>{{ProfileInfo.started_making | truncate : 85}}</div>
+											<span *ngIf="ProfileInfo.started_making.length > 85" (click)="ReadMoreFields.started_making = true">Read More</span>
+										</div>
+									</div>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr class="hideData">
@@ -283,6 +301,30 @@
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
 											<a class="nav-link social ext" target="_blank" (mouseover)="hackaday = false" (mouseleave)="hackaday = true" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_github != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="github = false" (mouseleave)="github = true" href="{{ProfileInfo.field_social_accounts.field_github}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitch != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="twitch = false" (mouseleave)="twitch = true" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_gitlabs != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="gitlabs = false" (mouseleave)="gitlabs = true" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="gitlabs" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!gitlabs" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_thingyverse != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="thingyverse = false" (mouseleave)="thingyverse = true" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
 												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
 												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
 											</a>
@@ -554,12 +596,12 @@
 									</div>
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
-										 maxlength="400"></textarea>
+										 maxlength="800"></textarea>
 										<div *ngIf="formGroup.value.bio">
-											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}">{{formGroup.value.bio.length}}/400 Chars</span>
+											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 800}">{{formGroup.value.bio.length}}/800 Chars</span>
 										</div>
 										<div *ngIf="!formGroup.value.bio">
-											<span>0/400 Chars</span>
+											<span>0/800 Chars</span>
 										</div>
 									</div>
 								</div>
@@ -676,6 +718,50 @@
 													</div>
 												</li>
 											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_github.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_github" placeholder="Github">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_github"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_github'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_github.valid && FormGroupSocial.controls.field_github.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitch.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_twitch" placeholder="Twitch">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitch"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitch'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_twitch.valid && FormGroupSocial.controls.field_twitch.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_gitlabs.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_gitlabs" placeholder="Gitlabs">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_gitlabs"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_gitlabs'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_gitlabs.valid && FormGroupSocial.controls.field_gitlabs.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_thingyverse.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_thingyverse" placeholder="Thingyverse">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_thingyverse"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_thingyverse'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_thingyverse.valid && FormGroupSocial.controls.field_thingyverse.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>	
+											</div>												
 										</div>
 									</div>
 								</div>
@@ -770,10 +856,10 @@
 									</div>
 									<div class="col-md-12">
 										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
-										 placeholder="What was the moment that making became part of your life?" maxlength="140">
+										 placeholder="What was the moment that making became part of your life?" maxlength="800">
 										</textarea>
-										<span *ngIf="formGroup.value.started_making" [ngClass]="{valErrorString: formGroup.value.started_making.length == 140}">{{formGroup.value.started_making.length}}/140 Chars</span>
-										<span *ngIf="!formGroup.value.started_making">0/140 Chars</span>
+										<span *ngIf="formGroup.value.started_making" [ngClass]="{valErrorString: formGroup.value.started_making.length == 800}">{{formGroup.value.started_making.length}}/800 Chars</span>
+										<span *ngIf="!formGroup.value.started_making">0/800 Chars</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>
