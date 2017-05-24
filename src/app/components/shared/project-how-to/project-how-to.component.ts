@@ -17,7 +17,7 @@ export class ProjectHowToComponent implements OnInit {
   ngOnInit() {
     if(this.project.field_how_to){
       this.howto = true;
-      let link = this.project.field_how_to.value
+      let link = this.project.field_how_to.value;
       this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
     }
   }
