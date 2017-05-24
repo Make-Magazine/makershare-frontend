@@ -50,7 +50,6 @@ export class ShowcaeSearchCardComponent implements OnInit {
     this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
 
       this.projectsCount = data.length;
-      console.log(this.projectsCount)
     });
 
   }
