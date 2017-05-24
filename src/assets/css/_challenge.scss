@@ -968,3 +968,10 @@
 .text-red{
     color: $text-color-5;
 }
+.close-submit{
+    position: absolute;
+    font-size: 1.8rem;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+}
