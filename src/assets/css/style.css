@@ -5305,7 +5305,7 @@ button:hover {
       line-height: 130%;
       color: #828282;
       color: white;
-      font-weight: normal;
+      font-weight: 900;
       line-height: 1.5rem; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
@@ -5667,7 +5667,7 @@ button:hover {
     -webkit-box-orient: vertical;
     overflow: hidden;
     color: #fff;
-    font-weight: normal;
+    font-weight: 900;
     line-height: 1.5rem; }
   .tablet-challenge-card .card-container .challene-card-footer {
     margin-top: auto; }
@@ -5987,6 +5987,8 @@ button:hover {
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
       box-shadow: 2px 2px 8px #BDBDBD; }
+      .page-project .project-story-tab .project-body-content .story-video {
+        margin-top: -15px; }
       .page-project .project-story-tab .project-body-content p {
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
@@ -8695,6 +8697,11 @@ img {
     margin-bottom: 10px; }
     .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-sec-2, .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-sec-2 {
       margin-left: 10px; }
+    .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-challenge-summary .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn, .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-challenge-summary-closed .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn, .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-main-1 .btn,
+    .page-enter-challenge .challenge-card .challene-card-footer-3 .button-container-sec-2 .btn {
+      position: static; }
   .page-challenge-summary .challenge-card .card-container, .page-challenge-summary-closed .challenge-card .card-container, .page-enter-challenge .challenge-card .card-container {
     color: #fff;
     height: 100%;
@@ -10342,9 +10349,10 @@ img {
       color: #828282;
       line-height: 125% !important;
       -webkit-line-clamp: 3;
-      height: 52px;
+      height: 55px;
       color: #fff;
-      overflow: hidden; }
+      overflow: hidden;
+      font-weight: 900; }
     .tablet-challenge-card .challene-card-footer-1 {
       margin-right: 20px; }
     .tablet-challenge-card .challenge-card-footer-2 {
