@@ -3,7 +3,7 @@
     <div class="col-lg-4 upload-file pt-2">
       <a class="btn btn-simple-large" (click)="fileManageUpload.click()">
         Upload
-        <input #fileManageUpload type="file" class="hidden-xs-up" (change)="UploadFile($event.target.files[0])" accept=".jpeg,.jpg,.png,.gif,.pdf,.epub,.xls,.ppt,.pptx,.sxls,.doc,.docx,.txt">
+        <input #fileManageUpload multiple type="file" class="hidden-xs-up" (change)="FileChanged($event.target.files)" accept=".jpeg,.jpg,.png,.gif,.pdf,.epub,.xls,.ppt,.pptx,.sxls,.doc,.docx,.txt">
       </a>
     </div>
     <div class="col-lg-8 storge-progressbar pt-2 pt-lg-0">
