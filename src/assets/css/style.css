@@ -126,33 +126,40 @@ header.main-header {
         margin-left: 10px; }
         header.main-header .logged-in li.min-user-img img {
           width: 27px; }
-  header.main-header.shrink .navbar-brand {
-    width: 75px;
+  header.main-header.shrink {
+    height: 80px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out; }
-    header.main-header.shrink .navbar-brand span {
-      right: 3px;
-      font-size: 8px;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -ms-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-  header.main-header.shrink nav.navbar {
-    padding: 10px 15px 20px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out; }
-    header.main-header.shrink nav.navbar #MainNav .nav-item a {
-      font-size: 1.2rem; }
-    header.main-header.shrink nav.navbar #MainNav .nav-item .btn {
-      font-size: 1rem;
-      height: 50px; }
+    header.main-header.shrink .navbar-brand {
+      width: 75px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header.shrink .navbar-brand span {
+        right: 3px;
+        font-size: 8px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
+    header.main-header.shrink nav.navbar {
+      padding: 10px 15px 0px;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      header.main-header.shrink nav.navbar #MainNav .nav-item a {
+        font-size: 1.2rem; }
+      header.main-header.shrink nav.navbar #MainNav .nav-item .btn {
+        font-size: 1rem;
+        height: 50px; }
 header nav {
   font-size: 14px;
   color: #333333; }
@@ -6074,7 +6081,9 @@ button:hover {
       .page-project .project-body .how-to-sidebar .difficulty-duration p {
         color: #ED1C24 !important;
         text-align: center;
-        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
         font-weight: bold;
         font-family: "Messina Sans Regular";
         font-size: 0.95rem;
@@ -6100,7 +6109,9 @@ button:hover {
           color: #ED1C24 !important;
           text-align: center;
           margin-top: 10px;
-          font-size: 18px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: 0.8rem;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
           font-weight: 400;
