@@ -10,11 +10,13 @@
         <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
       </div>
     </div>
-  <div class="empty-projects-page" *ngIf="Projects.length == 0">
-    <h4 *ngIf="status == 370">There are no Public Projects.</h4>
-    <h4 *ngIf="status == 371">There are no Private Projects.</h4>
-    <h4 *ngIf="status == 1115">There are no Draft Projects.</h4>
-  </div>
+    <div *ngIf="isLoaded">
+      <div class="empty-projects-page" *ngIf="Projects.length == 0">
+        <h4 *ngIf="status == 370">There are no Public Projects.</h4>
+        <h4 *ngIf="status == 371">There are no Private Projects.</h4>
+        <h4 *ngIf="status == 1115">There are no Draft Projects.</h4>
+      </div>
+    </div>
   <!-- End project-grid -->
 </div>
 <!-- End portfolio-public -->
