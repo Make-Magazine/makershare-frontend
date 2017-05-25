@@ -10,4 +10,5 @@ export interface Notification{
   pm_mid:number;
   showcase_nid?:number;
   showcase_title?:string;
+  date:string;
 }
