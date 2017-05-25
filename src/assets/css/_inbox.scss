@@ -112,9 +112,17 @@
 					width: 100%;
 					overflow: hidden;
 					padding: 10px;
+					position: relative;
+					z-index: 1;
 					@include boxShadow(2px, 2px, 8px,$light-grey);
     			background-color: white;
     			margin: 5px 0;
+					.unblock-button {
+						position: absolute;
+						right: 25px;
+						z-index: 10;
+						top: 36px;
+					}
 					.media-left {
 							width: 80px;
 							height: 80px;
@@ -188,7 +196,9 @@
 						background-color: $light-grey *0.9;
 					}
 				}
-
+				&:hover {
+					cursor: pointer;
+				}
 				
 			}
 		}
@@ -449,4 +459,18 @@
 			}
 		}
 	}
+}
+.back-inbox{
+	height: 35px;
+    min-width: 100px;
+    font-size: 1rem;
+    color: $shade-4;
+    text-align: center;
+    border: 0.2px solid $shade-4;
+    background-color: $white;    
+    &:hover,&.active,&:active,&:focus {
+        color: $white;
+        background-color: $shade-4;
+        border: none;
+		}
 }
