@@ -20,7 +20,8 @@ export class NotificationTemplateComponent implements OnInit {
     private pm: PmService,
   ) { }
 
-  ngOnInit() {   
+  ngOnInit() { 
+  
   }
 
   MarkAsSeen(seen){
@@ -40,7 +41,6 @@ export class NotificationTemplateComponent implements OnInit {
   }
 
   OpenNotification(ShowcaseUserID?:number){
-    this.notification.fullname=this.notification.first_name+' '+this.notification.full_name;
     this.ChangeNotificationStatus(1).subscribe(data=>{},err=>console.log(err),()=>{
       // open user profile
       if(ShowcaseUserID){
@@ -82,4 +82,5 @@ export class NotificationTemplateComponent implements OnInit {
       delete this.notification;
    })
   }
+  
 }
