@@ -45,9 +45,9 @@ export abstract class Node implements Node{
   
   protected Init(Type?:string,Values?:any):void{
     this.title = "";
-    this.status = 0;
-    this.promote = 0;
-    this.sticky = 0;
+    this.status = null;
+    this.promote = null;
+    this.sticky = null;
     this.comment = 2;
     this.type = Type;
   }
