@@ -30,10 +30,10 @@ export class ProjectCardComponent implements OnInit {
     config.triggers = 'hover';
   }
   ngOnInit() {
+    this.userId = parseInt(localStorage.getItem('user_id'));
 
     this.getProjectCard();
     this.getBadgesProject();
-    this.userId = parseInt(localStorage.getItem('user_id'));
     this.smallWindow = window.innerWidth;
 
     window.onresize = (e) => {
