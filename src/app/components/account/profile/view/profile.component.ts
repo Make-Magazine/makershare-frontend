@@ -70,6 +70,10 @@ export class ProfileComponent implements OnInit {
       'field_hackster_io': [this.profile.field_social_accounts.field_hackster_io, [URLNoProtocol()]],
       'field_instructables': [this.profile.field_social_accounts.field_instructables, [URLNoProtocol()]],
       'field_hackday': [this.profile.field_social_accounts.field_hackday, [URLNoProtocol()]],
+      'field_github': [this.profile.field_social_accounts.field_github, [URLNoProtocol()]],
+      'field_twitch': [this.profile.field_social_accounts.field_twitch, [URLNoProtocol()]],
+      'field_gitlabs': [this.profile.field_social_accounts.field_gitlabs, [URLNoProtocol()]],
+      'field_thingyverse': [this.profile.field_social_accounts.field_thingyverse, [URLNoProtocol()]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
       'field_website_title': [this.profile.field_social_accounts.field_website_title],
       'field_blog_title': [this.profile.field_social_accounts.field_blog_title]

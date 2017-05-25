@@ -4,14 +4,14 @@ import { ViewService } from '../../../d7services';
 
 @Component({
   selector: 'app-search-input',
-  templateUrl: './search-input.component.html'
+  templateUrl: './search-input.component.html',
 })
 export class SearchInputComponent implements OnInit {
   searchFailed = false;
 
   constructor(
     private viewService: ViewService,
-  ) { }
+  ) {}
 
   search = (text$: Observable<string>) =>{
     return text$
