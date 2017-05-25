@@ -63,10 +63,11 @@
       <div class="modal-body">
         <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" (ngSubmit)="resetForm($event)"
           id="createMsg" class="form-horizontal">
-          <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
-            {{user[0].first_name}} {{user[0].last_name}}
-            <i (click)="unSetMember(i)" class="fa fa-times"></i>
-            <!--<app-user-card-small *ngIf="SelectedUser" [uid]="user[0].uid"></app-user-card-small>-->
+          <div class="d-flex flex-row flex-wrap w-80">
+            <div *ngFor=" let user of SelectedUser,let i=index" (ngSubmit)="resetForm($event)">
+              {{user[0].first_name}} {{user[0].last_name}}
+              <i (click)="unSetMember(i)" class="fa fa-times"></i>{{'&nbsp;&nbsp;&nbsp;&nbsp;'}}
+            </div>
           </div>
           <div class="form-group">
             <label class="control-label">To:</label>
@@ -90,11 +91,10 @@
         </form>
       </div>
       <div class="modal-footer mt-auto">
-        <button href="" class="btn btn-load-more"  (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
+        <button href="" class="btn btn-load-more" (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
         <button type="submit" *ngIf="messageForm.valid" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
         <button type="submit" *ngIf="!messageForm.valid" class="btn btn-load-more" (click)="clickedError()">Send</button>
       </div>
     </div>
   </template>
 </div>
-
