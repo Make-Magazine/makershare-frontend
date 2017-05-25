@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
-import { PmService,UserService,ViewService } from '../../../../d7services';
+import { PmService, UserService, ViewService } from '../../../../d7services';
 import { Observable } from 'rxjs/Observable'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
 import { Location } from '@angular/common';
 import { LoaderService } from '../../../shared/loader/loader.service';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html'
+  templateUrl: './view.component.html',
+  providers: [NgbTooltipConfig],
+
 })
 export class ViewComponent implements OnInit {
   msg;
@@ -36,7 +39,10 @@ export class ViewComponent implements OnInit {
     body: ''
   };
   id;
+  hover;
+  show;
   participants = [];
+  hideDeleteReply;
   constructor(
     private route: ActivatedRoute,
     private pm: PmService,
@@ -46,6 +52,7 @@ export class ViewComponent implements OnInit {
     private _location: Location,
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private config: NgbTooltipConfig,
 
   ) { }
 
@@ -64,25 +71,30 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
+        /*hide delete replay if only one replay*/
+        if (this.msg.messages.length > 1) {
+          this.hideDeleteReply = true
+        }
+        /*end of hide delete replay if only one replay*/
         for (var i = 0; i < this.msg.participants.length; i++) {
           if (this.msg.participants[i] != this.userId) {
             this.userService.getUser(this.msg.participants[i]).subscribe(res => {
-              this.participants = this.participants.concat(res);           
+              this.participants = this.participants.concat(res);
             })
           }
           if (this.msg.participants[i] != this.userId) {
             this.pm.getBlocked(this.msg.participants[i]).subscribe(data => {
               if (data.author) {
-                  this.block = true;
+                this.block = true;
               } else {
-                  this.block = false;
-                }
+                this.block = false;
+              }
             })
           }
         }
         this.messages = this.msg.messages
         for (let message of this.messages) {
-          var date = new Date(message.timestamp*1000);
+          var date = new Date(message.timestamp * 1000);
           var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
           var period = date.getHours() >= 12 ? 'PM' : 'AM';
           let i = 0
@@ -123,7 +135,7 @@ export class ViewComponent implements OnInit {
     })
   }
   onSubmit(e) {
-     this.loaderService.display(true);
+    this.loaderService.display(true);
     e.preventDefault();
     // this.getThreads();
     // this.getCurrentUser();
@@ -245,22 +257,24 @@ export class ViewComponent implements OnInit {
   deleteReplay(i) {
     this.loaderService.display(true);
     this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data => {
+      this.participants = [];
+      this.msg = []
+      this.getThreads();
       this.loaderService.display(false);
     });
-    //delete this.messages[i];
-    // this.messages = [];
-    this.participants = [];
-    this.getThreads();
+
   }
 
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
   }
-//capitalize First Letter
- toTitleCase(str)
-  {
-      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  //capitalize First Letter
+  toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  }
+  over() {
+    this.show = "Delete this reply";
   }
 
 }

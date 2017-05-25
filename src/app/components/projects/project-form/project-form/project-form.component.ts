@@ -359,6 +359,13 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.ProjectLoaded = true;
   }
 
+  RemoveStaticFields(){
+    delete this.project.field_original_team_members;
+    delete this.project.field_forks;
+    this.project.sticky = null;
+    this.project.promote = null;
+  }
+
   /**
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
@@ -371,8 +378,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.project.field_categories.und = [""];
     }
     if (this.project.GetField("nid")) {
-      delete this.project.field_original_team_members;
-      delete this.project.field_forks;
+      this.RemoveStaticFields();
       this.nodeService.UpdateNode(this.project).subscribe((project: ProjectView) => {
         this.CanNavigate = true;
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
