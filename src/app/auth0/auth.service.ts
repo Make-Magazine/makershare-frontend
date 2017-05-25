@@ -34,13 +34,13 @@ export class Auth implements OnInit {
     private profilePictureService: ProfilePictureService,
   ) {
     //router.events.subscribe((url:any) => {this.state = url.url});
-  router.events
-    .filter(event => event instanceof NavigationStart)
-    .subscribe((event:NavigationStart) => {
-      this.stateValue = event.url;
+  // router.events
+  //   .filter(event => event instanceof NavigationStart)
+  //   .subscribe((event:NavigationStart) => {
+  //     this.stateValue = event.url;
       // localStorage.setItem('currentURL', event.url);
       // console.log(localStorage.getItem('currentURL'));
-    });
+    // });
     
   this.lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
     allowedConnections: ['Username-Password-Authentication'],
@@ -68,7 +68,7 @@ export class Auth implements OnInit {
 
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-    
+      console.log(authResult);
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
@@ -98,7 +98,9 @@ export class Auth implements OnInit {
                 
               }else {
                 // console.log(localStorage.getItem('currentURL'));
-                this.router.navigate([localStorage.getItem('currentURL')]);
+                console.log(localStorage.getItem('currentURL'));
+
+                //this.router.navigate([localStorage.getItem('currentURL')]);
               }
             
               // if (authResult.state != '') {
@@ -136,10 +138,11 @@ export class Auth implements OnInit {
     });
 
     this.lock.on("authorization_error", (err) => {
-      // console.log(err);
-      if (err.error == "unauthorized") {
-        // console.log('it is true');
-        this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
+      console.log(err);
+      if (err.error_description == "Sorry, we are not able to process your request.") {
+         console.log('it is true');
+         this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
+         console.log('end......');
       }
     });
   }
