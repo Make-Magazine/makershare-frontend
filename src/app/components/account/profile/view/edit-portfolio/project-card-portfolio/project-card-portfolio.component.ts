@@ -62,7 +62,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       closebtn.click();
     }
 
-    var status = 0;
+    var status = null;
     if (NewVisibility == 370) {
       status = 1;
     }
