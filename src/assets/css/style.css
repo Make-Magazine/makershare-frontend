@@ -7743,6 +7743,13 @@ img {
             float: left;
             margin-right: 8px;
             min-width: 50px; }
+          .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like {
+            color: #828282; }
+            .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like .btn {
+              padding: 0; }
+            .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .project-like img {
+              width: 12px;
+              margin-bottom: 3px; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .projects-count-div {
             margin-left: 20px; }
           .page-search-content .showcase-card-backlayer-search .showcase-card-backlayer-search-2 .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-count .views-count {

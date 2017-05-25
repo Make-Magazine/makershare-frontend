@@ -837,6 +837,16 @@ img {
                                 margin-right: 8px;
                                 min-width: 50px;
                             }
+                            .project-like {
+                        color: $shade-5;
+                        .btn {
+                            padding: 0;
+                        }
+                        img {
+                            width: 12px;
+                            margin-bottom: 3px;
+                        }
+                    }
                             .projects-count-div {
                                 margin-left: 20px;
                             }

@@ -13,6 +13,10 @@ export interface ProfileSocial {
   field_preferred?: string,
   field_blog_title:string,
   field_website_title:string,
+  field_thingyverse?: string,
+  field_gitlabs?: string,
+  field_twitch?: string,
+  field_github?: string,
 } 
 
 export class ProfileSocial implements ProfileSocial{
@@ -31,6 +35,10 @@ export class ProfileSocial implements ProfileSocial{
     this.field_preferred = '';
     this.field_blog_title = '';
     this.field_website_title = '';
+    this.field_thingyverse = '';
+    this.field_gitlabs = '';
+    this.field_twitch = '';
+    this.field_github = '';
   }
 
   public SetFieldValue(FieldName:string,Value:string){
