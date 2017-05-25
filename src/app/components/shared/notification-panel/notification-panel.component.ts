@@ -102,6 +102,6 @@ export class NotificationPanelComponent implements OnInit {
   date=date+' hours';
 
   }
-    return date;
+    return date +' ago';
   }
 }
