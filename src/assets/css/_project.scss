@@ -218,7 +218,9 @@
 				p {
 					color: $red !important;
 					text-align: center;
-					font-size: 18px;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					font-size: 0.8rem;
 					font-weight: bold;
 					@include desc-font-1();
 				 	line-height: inherit !important;
@@ -241,7 +243,9 @@
 					color: $red !important;
 					text-align: center;
 					margin-top: 10px;
-					font-size: 18px;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					font-size: 0.8rem;
 					@include desc-font-1();
 				 	line-height: inherit !important;
 					}

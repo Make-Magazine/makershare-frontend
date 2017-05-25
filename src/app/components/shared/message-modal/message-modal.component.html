@@ -13,14 +13,14 @@
       <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg"
         class="form-horizontal">
         <div class="form-group subject">
-          <label class="control-label w-100">Subject</label>
+          <label class="control-label w-100">SUBJECT</label>
           <input [ngClass]="{valError: formErrors.subject}" type="text" class="form-control w-100" name="subject" id="subject" formControlName="subject">
         </div>
         <div *ngIf="formErrors.subject" class="alert alert-danger">
           {{ formErrors.subject }}
         </div>
         <div class="form-group message-text">
-          <label class="control-label w-100">Message</label>
+          <label class="control-label w-100">MESSAGE</label>
           <textarea [ngClass]="{valError: formErrors.body}" class="w-100" name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
         </div>
         <div *ngIf="formErrors.body" class="alert alert-danger">
