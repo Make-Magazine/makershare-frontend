@@ -36,6 +36,9 @@ export class NotificationPanelComponent implements OnInit {
   getNotifications() {
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.userId]]).subscribe(data => {
       this.notifications = data;
+       for(var i=0;i<this.notifications.length;i++){
+        this.notifications[i].date=this.timeago(this.notifications[i].date);
+      }
       if(this.notifications.length ==0){
         this.noNotification = true;
       }
@@ -87,5 +90,18 @@ export class NotificationPanelComponent implements OnInit {
     this.getNotifications();
     this.getNewCont();
     this.getNotificationsCount();
+  }
+      timeago(date){
+    var n = date.includes("min") || date.includes('sec');
+    var current;
+    if(n){
+      date = date.substring(0, date.indexOf("hours"));
+      if(!date){
+      date=date+'0';
+  }
+  date=date+' hours';
+
+  }
+    return date;
   }
 }
