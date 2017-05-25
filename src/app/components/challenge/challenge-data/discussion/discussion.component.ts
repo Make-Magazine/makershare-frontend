@@ -9,7 +9,7 @@ export class DiscussionComponent implements OnInit {
  title = {
     title: "Questions",
     placeholder: "Ask a question",
-    ifempty: "There is no questions yet ..",
+    ifempty: "Be the first to ask a question.",
     join: "to Add Your question"
   };
   @Input() challenge;

@@ -62,6 +62,9 @@ export class ProjectDetailsComponent implements OnInit {
           this.id = path;
         this.viewService.getView('project_data', [['nid', this.id]]).subscribe(data => {
         this.projectdata = data[0];
+        if(data.length == 0) {
+          this.router.navigate(['**']);
+        }
       }, err => {});
       /* end service */
       // dispatch action to load the details here-solve no load issue.

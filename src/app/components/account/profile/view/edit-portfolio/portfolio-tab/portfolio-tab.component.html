@@ -3,13 +3,20 @@
   </div>
   <!-- End portfolio-header -->
   <div *ngIf="Projects" class="projects-grid row" dnd-sortable-container [sortableData]="Projects">
-    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects()" [ngClass]="{'col-lg-6': DefaultView == 'grid','col-lg-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
+    <project-card-portfolio *ngFor="let project of Projects;let i = index" [type]="DefaultView" [Project]="project" [Visibility]="status" (emitter)="UpdateProjects(0);emitter.emit()" [ngClass]="{'col-lg-6': DefaultView == 'grid','col-lg-12': DefaultView == 'showcase' }" dnd-sortable (onDropSuccess)="SaveProjectsOrder()" [sortableIndex]="i"></project-card-portfolio>
   </div>
-  <div class="empty-projects-page" *ngIf="Projects.length == 0">
-    <h4 *ngIf="status == 370">There are no Public Projects</h4>
-    <h4 *ngIf="status == 371">There are no Private Projects</h4>
-    <h4 *ngIf="status == 1115">There are no Draft Projects</h4>
-  </div>
+     <div class="text-center pt-3 pb-5">
+      <div *ngIf="!hideloadmoreproject && Projects.length > 0 ">
+        <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
+      </div>
+    </div>
+    <div *ngIf="isLoaded">
+      <div class="empty-projects-page" *ngIf="Projects.length == 0">
+        <h4 *ngIf="status == 370">You don't have any public projects. Make some!.</h4>
+        <h4 *ngIf="status == 371">There are no Private Projects.</h4>
+        <h4 *ngIf="status == 1115">There are no Draft Projects.</h4>
+      </div>
+    </div>
   <!-- End project-grid -->
 </div>
 <!-- End portfolio-public -->

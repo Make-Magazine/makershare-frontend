@@ -1,11 +1,11 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
-import { ProfileService,UserService,ViewService,FileService,StatisticsService } from '../../../../d7services';
+import { ProfileService, UserService, ViewService, FileService, StatisticsService, MainService } from '../../../../d7services';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-import { FileEntity, NodeHelper,FileEntityManage,field_URL } from '../../../../models';
+import { FileEntity, NodeHelper, FileEntityManage, field_URL } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { LoaderService } from '../../../shared/loader/loader.service';
@@ -17,21 +17,21 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 import { MetaService } from '@nglibs/meta';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
+import * as globals from '../../../../d7services/globals';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild('cropper') set cropper(cropper:ImageCropperComponent) {
-    setTimeout(()=>{
-      // console.log(cropper);
-    },1000);
+  @ViewChild('cropper') set cropper(cropper: ImageCropperComponent) {
+    setTimeout(() => {
+    }, 1000);
   }
 
   CountriesList = [];
   formatter = (x) => {
-    if(x.value){
+    if (x.value) {
       return x.value;
     }
     return x;
@@ -70,17 +70,29 @@ export class ProfileComponent implements OnInit {
       'field_hackster_io': [this.profile.field_social_accounts.field_hackster_io, [URLNoProtocol()]],
       'field_instructables': [this.profile.field_social_accounts.field_instructables, [URLNoProtocol()]],
       'field_hackday': [this.profile.field_social_accounts.field_hackday, [URLNoProtocol()]],
+      'field_github': [this.profile.field_social_accounts.field_github, [URLNoProtocol()]],
+      'field_twitch': [this.profile.field_social_accounts.field_twitch, [URLNoProtocol()]],
+      'field_gitlabs': [this.profile.field_social_accounts.field_gitlabs, [URLNoProtocol()]],
+      'field_thingyverse': [this.profile.field_social_accounts.field_thingyverse, [URLNoProtocol()]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
-      'field_website_title':[this.profile.field_social_accounts.field_website_title],
-      'field_blog_title':[this.profile.field_social_accounts.field_blog_title]
+      'field_website_title': [this.profile.field_social_accounts.field_website_title],
+      'field_blog_title': [this.profile.field_social_accounts.field_blog_title]
     });
   }
-  PhotoModalTab:string;
-  CurrentInfoTab:string;
-  ImageFile:any;
+  PhotoModalTab: string;
+  countProject: number;
+  CurrentInfoTab: string;
+  ImageFile: any;
   ProfilePicData: any = {};
   FileName: string = '';
-  ProjectsCount: number;
+  ProjectsCountPublic: number;
+  ProjectsCountPrivate: number;
+  ProjectsCountDraft: number;
+  ReadMoreFields = {
+    bio:false,
+    started_making:false,
+  }
+
   ProfilecropperSettings: CropperSettings;
   allIntersets: Array<any>;
   ParentIntersets: Array<any> = [];
@@ -111,9 +123,9 @@ export class ProfileComponent implements OnInit {
     address: 'Where do you live?',
     bio: 'Share something about your background',
     describe_yourself: 'What is your motto as a Maker?',
-    social:'What social accounts do you use?',
+    social: 'Add your social accounts',
     maker_space: 'Do you belong to any makerspaces?',
-    websites:'Include your other websites',
+    websites: 'Include your other websites',
     started_making: 'Describe how you became a Maker',
     interests: 'Favorite making topics?',
   };
@@ -127,22 +139,22 @@ export class ProfileComponent implements OnInit {
     'Maker Moment',
     'Interests'
   ]
-  DefaultView :string = "grid";
-  mobileToggle :boolean =false;
-  emptySocial :boolean = true;
-  hackster:boolean =true;
-  hackaday:boolean = true;
-  instructables:boolean = true;
+  DefaultView: string = "grid";
+  mobileToggle: boolean = false;
+  emptySocial: boolean = true;
+  hackster: boolean = true;
+  hackaday: boolean = true;
+  instructables: boolean = true;
   emptySection = {
-      motto: true,
-      bio: true,
-      social: true,
-      badges: true,
-      makerspace:true,
-      websites:true,
-      topics: true,
-      started_making:true,
-    }
+    motto: true,
+    bio: true,
+    social: true,
+    badges: true,
+    makerspace: true,
+    websites: true,
+    topics: true,
+    started_making: true,
+  }
   constructor(
     private profileService: ProfileService,
     private userService: UserService,
@@ -153,6 +165,8 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute, private router: Router,
     private loaderService: LoaderService,
     public auth: Auth,
+    private mainService: MainService,
+
     private readonly meta: MetaService,
     private profilePictureService: ProfilePictureService,
     private statisticsService: StatisticsService,
@@ -185,28 +199,30 @@ export class ProfileComponent implements OnInit {
       this.userService.getIdFromUrl(userName).subscribe(res => {
         this.uid = res.uid;
         this.GetUserDetails();
+      }, err => {
+         this.router.navigate(['**']);
       });
     } else {
       this.uid = +localStorage.getItem('user_id');
       this.GetUserDetails();
     }
-    if (window.innerWidth < 768){
+    if (window.innerWidth < 768) {
       this.mobileToggle = true;
     }
-    
+
     window.onresize = (e) => {
-        if (window.innerWidth < 768){
-          this.mobileToggle = true;
-        } else {
-          this.mobileToggle = false;          
-        }
+      if (window.innerWidth < 768) {
+        this.mobileToggle = true;
+      } else {
+        this.mobileToggle = false;
+      }
     }
   }
-  SelectFileAndSave(closebtn:HTMLButtonElement, SelectedFile:FileEntityManage){
+  SelectFileAndSave(closebtn: HTMLButtonElement, SelectedFile: FileEntityManage) {
     closebtn.click();
-    let user:UserProfile = {
-      uid:this.uid,
-      user_photo:SelectedFile.fid.toString(),
+    let user: UserProfile = {
+      uid: this.uid,
+      user_photo: SelectedFile.fid.toString(),
     }
     this.SaveUser(user);
   }
@@ -216,42 +232,48 @@ export class ProfileComponent implements OnInit {
       return;
     }
     var tasks = [];
+    let body = { "data": this.uid  };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.viewService.getView('projects_categories'));
-    tasks.push(this.viewService.getView('maker_count_all_projects/' + this.uid));
+    tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body));
+    tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_private', body));
+    tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_draft', body));
+
     tasks.push(this.viewService.getView('maker_address_api'));
     let source = Observable.forkJoin(tasks).subscribe((data) => {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-      this.ProjectsCount = data[index++] as number;
+      this.ProjectsCountPublic = data[index++]['_body'].replace(']', '').replace('[', '') as number;
+      this.ProjectsCountPrivate = data[index++]['_body'].replace(']', '').replace('[', '') as number;
+      this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
     });
     // statistics
-    if(this.uid != this.CurrentLoggedUserId){
+    if (this.uid != this.CurrentLoggedUserId) {
       this.statisticsService.view_record(this.uid, 'user').subscribe();
     }
-    
+
   }
-  AssignParentChildInterests(){
+  AssignParentChildInterests() {
     this.ParentIntersets = [];
-    this.allIntersets.forEach((interest,index)=>{
-      if(!interest.parent_tid){
+    this.allIntersets.forEach((interest, index) => {
+      if (!interest.parent_tid) {
         this.ParentIntersets.push(interest);
       }
     });
   }
-  GetInterestsForParent(){
+  GetInterestsForParent() {
     this.ChildrenIntersets = [];
-    this.allIntersets.forEach((interest,index)=>{
-      if(interest.parent_tid && interest.parent_tid == this.SelectedParentInterest && this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(interest.tid) == -1){
+    this.allIntersets.forEach((interest, index) => {
+      if (interest.parent_tid && interest.parent_tid == this.SelectedParentInterest && this.ProfileInfo.maker_interests.map(element => element.tid).indexOf(interest.tid) == -1) {
         this.ChildrenIntersets.push(interest);
       }
     });
   }
-  SetInterest(ParentInterestElement:HTMLSelectElement){
-    this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedChildInterest)]);
+  SetInterest(ParentInterestElement: HTMLSelectElement) {
+    this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element => element.tid).indexOf(this.SelectedChildInterest)]);
     // if(this.ProfileInfo.maker_interests.map(element=>element.tid).indexOf(this.SelectedParentInterest) == -1){
     //   this.ProfileInfo.maker_interests.push(this.allIntersets[this.allIntersets.map(element=>element.tid).indexOf(this.SelectedParentInterest)]);
     // }
@@ -260,33 +282,33 @@ export class ProfileComponent implements OnInit {
     delete this.SelectedParentInterest;
     this.AssignParentChildInterests();
   }
-  RemoveInterest(InterestId:number,InterestParentId:number):void{
-    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestId),1);
+  RemoveInterest(InterestId: number, InterestParentId: number): void {
+    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestId), 1);
     var flag = false;
-    this.ProfileInfo.maker_interests.forEach((category,index)=>{
+    this.ProfileInfo.maker_interests.forEach((category, index) => {
       let catIndex = this.allIntersets.map(element => element.tid).indexOf(category.tid);
-      if(this.allIntersets[catIndex].parent_tid == InterestParentId){
+      if (this.allIntersets[catIndex].parent_tid == InterestParentId) {
         flag = true;
         return;
       }
     });
-    if(!flag){
-      this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestParentId),1);
+    if (!flag) {
+      this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestParentId), 1);
     }
   }
   OpenModal(Template, ModalName: string) {
-    if(ModalName == 'Portfolio Photo'){
-      this.modalService.open(Template, {size:'lg'});
+    if (ModalName == 'Portfolio Photo') {
+      this.modalService.open(Template, { size: 'lg' });
       this.CurrentInfoTab = ModalName;
-    }else{
-      if(ModalName == 'MakerSpaces'){
+    } else {
+      if (ModalName == 'MakerSpaces') {
         const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
-        if(control.controls.length == 0)
+        if (control.controls.length == 0)
           this.AddMakerspaceRow();
       }
       this.CurrentInfoTab = ModalName;
       this.modalService.open(Template, { size: 'lg' });
-    } 
+    }
   }
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper);
@@ -325,9 +347,8 @@ export class ProfileComponent implements OnInit {
     }
   }
   SaveInfo(closebtn: HTMLButtonElement) {
-    // closebtn.click(); 
-    if(this.ProfileInfo.address.governorate == '_none') {
-     this.ProfileInfo.address.governorate == this.CountryFieldsAndDetails['administrative_areas'][0].value;
+    if (this.ProfileInfo.address.governorate == '_none') {
+      this.ProfileInfo.address.governorate == this.CountryFieldsAndDetails['administrative_areas'][0].value;
     }
     if (this.FormGroupSocial.valid) {
       this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;
@@ -338,11 +359,11 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making = this.formGroup.value.started_making;
     }
     this.ProfileInfo.field_add_your_makerspace_s_ = this.formGroup.value.field_add_your_makerspace_s_;
-    if(this.ProfilePicData.image){
+    if (this.ProfilePicData.image) {
       this.SaveImage();
-    }else{
+    } else {
       this.SaveUser(this.ProfileInfo);
-    } 
+    }
   }
   SaveUser(user: UserProfile) {
     user.uid = this.uid;
@@ -351,7 +372,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   GetCountryDetails(CountryKey: string) {
-    if(!CountryKey) return;
+    if (!CountryKey) return;
     this.viewService.getView('maker_address_api/' + CountryKey).subscribe((data) => {
       this.CountryFieldsAndDetails = data;
       this.ReSetAddressValues();
@@ -360,7 +381,7 @@ export class ProfileComponent implements OnInit {
   AddMakerspaceRow(makerspace?) {
     const control = <FormArray>this.formGroup.controls['field_add_your_makerspace_s_'];
     let MakerspaceGroup: FormGroup = this.fb.group({
-      field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : '', Validators.required],
+      field_makerspace_name: [makerspace ? makerspace.field_makerspace_name : ''],
       field_makerspace_url: [makerspace && makerspace.field_makerspace_url ? makerspace.field_makerspace_url : '', URLNoProtocol()],
     });
     control.push(MakerspaceGroup);
@@ -368,9 +389,9 @@ export class ProfileComponent implements OnInit {
   BuildForm() {
     this.formGroup = this.fb.group({
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
-      bio: [this.ProfileInfo.bio, Validators.maxLength(300)],
-      started_making: [this.ProfileInfo.started_making, Validators.maxLength(140)],
-      field_add_your_makerspace_s_: this.fb.array([]),
+      bio: [this.ProfileInfo.bio, Validators.maxLength(800)],
+      started_making: [this.ProfileInfo.started_making, Validators.maxLength(800)],
+      field_add_your_makerspace_s_: this.fb.array([],Validators.maxLength(10)),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
       this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace, index) => {
@@ -392,21 +413,19 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
-    console.log(user);
-    console.log(this.profile.views_count);
-    this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/')+1);
+    this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/') + 1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
-    if(user.address){
+    if (user.address) {
       this.ProfileInfo.address = user.address;
-    }    
+    }
     this.ProfileInfo.describe_yourself = user.describe_yourself;
-    if(user.bio){
+    if (user.bio) {
       this.ProfileInfo.bio = user.bio;
     }
     this.ProfileInfo.address_publish = user.address_publish;
-    if(!this.ProfileInfo.address_publish){
+    if (!this.ProfileInfo.address_publish) {
       this.ProfileInfo.address_publish = 1;
     }
     if (user.field_social_accounts) {
@@ -428,19 +447,19 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
-  CheckFields(){
-    if(this.uid == this.CurrentLoggedUserId){
-      for(let element in this.emptySection) {
+  CheckFields() {
+    if (this.uid == this.CurrentLoggedUserId) {
+      for (let element in this.emptySection) {
         this.emptySection[element] = false;
       }
     } else {
-     
+
     }
   }
   ToggleProfile() {
     this.mobileToggle = !this.mobileToggle;
   }
-  nextTab(){
-    this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab)+1]
+  nextTab() {
+    this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab) + 1]
   }
 }

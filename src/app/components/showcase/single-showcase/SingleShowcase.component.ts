@@ -75,8 +75,6 @@ export class SinglShowcaseComponent implements OnInit {
      //load showcaseprojects data
     this.getshowCaseProjects();
    //  this.showcaseNid = this.route.params['value'].nid
-    //  this.countLikes();
-     // console.log(this.showcasenumber)
     this.userId = localStorage.getItem('user_id');
   });  
   }
@@ -130,11 +128,10 @@ export class SinglShowcaseComponent implements OnInit {
       this.viewService.getView('showcase', [['nid',this.idFromUrl]])
       .subscribe(data => {
         this.showcase = data[0];
-        console.log(this.showcase)
-        //this.getProfile(this.showcase.uid);
+        if(data.length == 0) {
+          this.router.navigate(['**']);
+        }
         this.customDescription = this.showcase['description']
-        console.log(this.customDescription)
-
         this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
         this.meta.setTag('og:image', this.showcase['cover_photo']);
         this.meta.setTag('og:description', this.showcase['description']);
@@ -160,14 +157,14 @@ export class SinglShowcaseComponent implements OnInit {
       this.viewService.getView('showcase_projects_nid', [['nid', this.idFromUrl]])
       .subscribe(data => {
         this.projectsCount = data.length;
-        console.log(data.length);
+      //  console.log(data.length);
       });
 
   }
-  ShowcasePojectNav(nid, snid) {
-    this.router.navigate(['/showcases/project2/', snid, this.sort_by, this.sort_order, nid]);
-    // this.showcaseNid.emit(this.route.params['value'].nid)
-  }
+  // ShowcasePojectNav(nid, snid) {
+  //   this.router.navigate(['/makers/project2/', snid, this.sort_by, this.sort_order, nid]);
+  //   // this.showcaseNid.emit(this.route.params['value'].nid)
+  // }
 
   // countLikes(){
   //   this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
@@ -181,7 +178,7 @@ export class SinglShowcaseComponent implements OnInit {
   // }
   likesCounter(count) {
     this.numLikes = count;
-    console.log(this.numLikes)
+    //console.log(this.numLikes)
 
   }
 

@@ -30,7 +30,7 @@ export class NotificationPanelComponent implements OnInit {
         }, 120000);
       }
     }, err => {
-      console.log('user not logged in');
+     // console.log('user not logged in');
     });
   }
   getNotifications() {
@@ -41,7 +41,7 @@ export class NotificationPanelComponent implements OnInit {
       }
 
     }, err => {
-      console.log(err);
+    //  console.log(err);
     });
 // <<<<<<< HEAD
 //  }
@@ -52,7 +52,11 @@ export class NotificationPanelComponent implements OnInit {
   }
   getNotificationsCount() {
     this.viewService.getView('maker_notification_api/' + this.userId).subscribe(data => {
-      this.countNotifications = data[0];
+      if(data[0] == 0 || data[0] == false){
+        this.countNotifications = 0;
+      }else{
+        this.countNotifications = data[0];
+      }
       $("header.main-header .login-block li .notification-icon::after").css("content", '10');
 
     }, err => {
@@ -62,8 +66,12 @@ export class NotificationPanelComponent implements OnInit {
 
   getNewCont() {
     this.statisticsService.notificationGetNewCount(this.userId).subscribe(count => {
-      // console.log(count);
+      // console.log(count[0]);
+     if(count[0] == 0 || count[0] == false){
+        this.newCount  = 0;
+      }else{
       this.newCount = count;
+      }
     });
   }
 

@@ -1,31 +1,33 @@
-<div class="showcase-card" *ngIf="showcase" (click)="ShowSingleShowcase(showcase.path)">
+<div class="showcase-card" *ngIf="showcase"  >
   <div class="content-container h-100">
     <div class="card-container">
       <div class="card">
-        <div class="showcase-type">
+        <div class="showcase-type" (click)="ShowSingleShowcase(showcase.path)">
           <p>Showcase</p>
         </div>
-        <h2 class="card-title">{{showcase.showcase_name}}</h2>
-        <div class="card-description" *ngIf="showcase.description_trim">
+        <h2 (click)="ShowSingleShowcase(showcase.path)" class="card-title">{{showcase.showcase_name}}</h2>
+        <div class="card-description" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)">
           <p [innerHTML]="showcase.description_trim"></p>
         </div>
         <div class="showcase-card-footer mt-auto mb-3 d-flex">
           <div class="showcase-card-footer-2">
             <div class="showcase-card-count d-felx">
-              <div class="likes-count-div">
-                <img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
+              <div class="likes-count-div" *ngIf="showcase.nid && userId">
+                <!--<img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
                 <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
                 <img class="showcase-likes" *ngIf="numLikes == 0" src="./assets/images/icons/light-not-selected.png" alt="">
-                <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>
+                <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>-->
+                 <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" ></app-like>
+
               </div>
               <div class="views-count-div">
                 <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                 <span class="views-count">{{showcase.views_count}}</span>
               </div>
-              <div class="projects-count-div" *ngIf="showcase.number_of_project">
-                <span class="projects-count">{{showcase.number_of_project}}
-                  <span *ngIf="showcase.number_of_project>1">projects</span>
-                  <span *ngIf="showcase.number_of_project<=1">project</span>
+              <div class="projects-count-div" *ngIf="projectsCount">
+                <span class="projects-count">{{projectsCount}}
+                  <span *ngIf="projectsCount>1">projects</span>
+                <span *ngIf="projectsCount<=1">project</span>
                 </span>
               </div>
             </div>

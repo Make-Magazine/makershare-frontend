@@ -73,14 +73,14 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
 
           var uploadTab = dialogDefinition.getContents('Upload');
           var uploadButton = uploadTab.get('uploadButton');
-          console.log('uploadButton', uploadButton);
+         // console.log('uploadButton', uploadButton);
 
           uploadButton.onClick = (evt)=>{
-            console.log('fire in the hole', evt);
+//console.log('fire in the hole', evt);
           };
 
           uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
-            console.log('working');
+//console.log('working');
           };
         };
       }
@@ -211,7 +211,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_teaser': [this.project.field_teaser.und[0].value, [Validators.required,Validators.maxLength(250)]],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [URLNoProtocol(),YoutubeOrVimeoLink()]],
-      'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
+      'field_show_tell_video_as_default': [this.project.field_show_tell_video_as_default.und && this.project.field_show_tell_video_as_default.und[0].value == 1?1:null],
       'field_aha_moment': [this.project.field_aha_moment.und[0].value, []],
       'field_uh_oh_moment': [this.project.field_uh_oh_moment.und[0].value, []],
       'field_story': [this.project.field_story.und[0].value, [Validators.required]],
@@ -219,7 +219,6 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
       'field_categories': [this.project.field_categories.und, [Validators.required]],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
-      this.EmitValues();
       this.onValueChanged(data);
     });
     this.onValueChanged(this.YourStoryForm.value);
@@ -237,7 +236,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
 
   EmitValues(){
     this.StoryFormValid.emit(this.YourStoryForm['controls']['title'].valid && this.YourStoryForm['controls']['field_teaser'].valid 
-    && this.cover_image.file && this.YourStoryForm['controls']['field_categories'].valid
+    && this.cover_image.file && this.project.field_categories.und.length>0
     && this.YourStoryForm['controls']['field_story'].valid);
     if(this.YourStoryForm.dirty && this.YourStoryForm.touched){
       this.CanNavigate.emit(false);
@@ -289,6 +288,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
    * this data will be helpfull if we need to make any change to the value before setting the error
    */
   onValueChanged(data?: any) {
+    this.EmitValues();
     if (!this.YourStoryForm) { return; }
     const form = this.YourStoryForm;
     for (const field in this.formErrors) {
@@ -317,6 +317,7 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     if(!flag){
       this.project.field_categories.und.splice(this.project.field_categories.und.indexOf(CategoryParentId),1);
     }
+    this.EmitValues();
   }
 
   /**
@@ -484,6 +485,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
     this.cropperSettings.croppedWidth = 800;
     this.cropperSettings.croppedHeight = 450;
     this.cropperSettings.noFileInput = true;
+    this.cropperSettings.canvasWidth = 300;
+    this.cropperSettings.canvasHeight = 200;
     this.imagedata = {};
   }
 

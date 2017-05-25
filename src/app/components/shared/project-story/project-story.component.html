@@ -1,9 +1,9 @@
 <div class="row project-body" *ngIf="project">
-  <div class="region region-content col-lg-8 col-md-8 pb-4">
+  <div class="region region-content col-lg-8 col-md-12 pb-4">
     <div class="project-story-tab">
       <div class="project-body-content">
-        <video-viewer *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 0" [link]="project.field_show_tell_video.value"></video-viewer>
-        <p [innerHTML]="project.field_story?.value"></p>
+        <video-viewer class="row story-video" *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 0" [link]="project.field_show_tell_video.value"></video-viewer>
+        <p [innerHTML]="storyHTML"></p>
       </div>
       <!-- End body -->
     </div>
@@ -11,9 +11,19 @@
       <app-comment [nid]="project.nid"></app-comment>
     </div>
   </div>
-  <aside class="side-bar col-lg-4 col-md-4">
+  <aside class="side-bar col-lg-4 col-md-12">
     <div class="sidebar-container">
       <div class="project-story-tab">
+        <div class="project-collaborates" *ngIf="project.field_maker_memberships">
+          <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
+            <app-user-card-small [uid]="collaborator.membership_team" [anonymosname]="collaborator.anonymous_member_name"></app-user-card-small>            
+            <div class="collaborate-role">
+              <p>ROLE IN PROJECT</p>
+              <p>{{collaborator.membership_role}}</p>
+            </div>
+          </div>
+          <!-- End Collaborate -->
+        </div>
         <div class="card aha" *ngIf="project.field_aha_moment.value">
           <div class="card-heading">
             <p>AHA! Moment</p>
@@ -29,16 +39,6 @@
           <div class="card-block">
             <p>{{project.field_uh_oh_moment?.value}}</p>
           </div>
-        </div>
-        <div class="project-collaborates" *ngIf="project.field_maker_memberships">
-          <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
-            <app-user-card-small [uid]="collaborator.membership_team" [anonymosname]="collaborator.anonymous_member_name"></app-user-card-small>            
-            <div class="collaborate-role">
-              <p>ROLE IN PROJECT</p>
-              <p>{{collaborator.membership_role}}</p>
-            </div>
-          </div>
-          <!-- End Collaborate -->
         </div>
         <!-- End project-collaborates -->
       </div>

@@ -2,6 +2,7 @@
 	background-color: $main-bg;
 	.page-title {
 		 @include header-font();
+		 text-transform: capitalize;
 	}
 	.top-content-wrapper {
 		padding: 10px;
@@ -68,6 +69,7 @@
 		margin: 40px 0;
 		h3 {
 			@include header-font();
+			text-transform: capitalize;
 			text-align: center;
 		}
 		p {
@@ -353,6 +355,7 @@
 	background-color: $main-bg;
 		.page-title {
 		 @include header-font();
+		 text-transform: capitalize;
 		 text-align: center;
 	}
 	.clear-search {

@@ -8,10 +8,9 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 })
 export class CommunityManagerSettingsComponent implements OnInit {
 notifications;
-email_notifications:Array<string> = [];
-web_notifications:Array<string> = [];
+email_notifications:Array<Object> = [];
+web_notifications:Array<Object> = [];
 uid;
-
 
   constructor(
     private viewservice: ViewService,
@@ -39,11 +38,13 @@ uid;
    
   }
   checkedEmail(num, event) {
+
     // add to checkedArr
     if (event.target.checked === true) {
       if (this.email_notifications.length === 0) {
         this.email_notifications = [];
         this.email_notifications.push(num);
+        // console.log(this.email_notifications);
       } else {
         this.email_notifications.push(num);
       }
@@ -74,15 +75,29 @@ uid;
       }
     }
   }
-   updateNotificationSettings(e) {
+updateNotificationSettings(e) {
     e.preventDefault();
-    let data=[{
+    let data={
         uid:this.uid,
-        field_email_notifications:this.notifications.email_notifications,
-        field_web_notifications:this.notifications.web_notifications
-      }];
+        field_email_notifications:this.email_notifications,
+        field_web_notifications:this.web_notifications
+      };
       this.pm.postAction('maker_notification_settings_api/update_settings/',data).subscribe(data => {
         this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
     })
+  }
+  deleteNotificationSettings(e){
+        e.preventDefault();
+        this.pm.postAction('maker_notification_settings_api/delete_settings/',this.uid).subscribe(data => {
+          if(!data.field_email_notifications){
+            this.email_notifications=[];
+          }
+          if(!data.field_web_notifications){
+            this.web_notifications=[];
+          }
+        this.notificationBarService.create({ message: ' All settings deleted successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+    })
+
+
   }
 }

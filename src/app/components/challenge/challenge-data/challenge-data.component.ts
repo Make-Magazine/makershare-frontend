@@ -70,7 +70,6 @@ export class ChallengeDataComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'challenge').subscribe(data => {
-        console.log(data[0]);
         this.idFromUrl = data[0];
         if (this.idFromUrl) {
           this.userEnteredProject();
@@ -101,6 +100,9 @@ export class ChallengeDataComponent implements OnInit {
             // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
           });
         }//end if idFromUrl
+        else {
+          this.router.navigate(['**']);
+        }
       });//end nodeService
     }
 
@@ -114,7 +116,7 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
     this.viewService.getView('challenge_followers', [['nid', this.idFromUrl], ['page', this.pageNo]])
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         if (follow_update) {
           this.followers = this.followers.concat(data);
         } else {
@@ -166,6 +168,7 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
     this.viewService.getView('challenge_data', [['nid', this.idFromUrl]]).subscribe(data => {
       this.challenge = data[0];
+      console.log(this.challenge);
       // this.customTitle = this.challenge.title;
       this.customDescription = this.challenge.body;
       this.customImage = this.challenge.cover_image;

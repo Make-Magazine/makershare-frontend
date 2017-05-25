@@ -13,12 +13,12 @@
           <div id="imaginary_container">
             <div class="input-group stylish-input-group">
               <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..."
-                [ngbTypeahead]="search"  [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
+                [ngbTypeahead]="search" [focusFirst]="false" (keyup.enter)="searchQuery()" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
               <span class="clear-search" [hidden]="query == ''" (click)="clearQuery()" value="clear">
                 <i class="lnr lnr-cross"></i>
              </span>
              <span class="input-group-addon">
-                <button type="button" (click)="searchQuery()" value="search">
+                <button type="button" (click)="searchURL('')" value="search">
                   <i class="lnr lnr-magnifier"></i>
                 </button>  
              </span>
@@ -59,7 +59,7 @@
         <!-- Projects -->
         <div *ngIf="projects.length > 0" class="col-md-12 project-result result-section">
 
-          <div class="results-header d-flex justify-content-end  mb-3">
+          <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Projects</span></div>
             <div class="view-all-result">
               <span *ngIf="projectsCount > 1">{{projectsCount}} Results</span>
@@ -67,14 +67,14 @@
               <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4"></app-project-search-card>
+            <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4 pull-left"></app-project-search-card>
           </div>
         </div>
 
         <!-- Showcases -->
         <div *ngIf="showcases.length > 0" class="col-md-12 showcase-result result-section">
 
-          <div class="results-header d-flex justify-content-end  mb-3">
+          <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Showcases</span></div>
             <div class="view-all-result">
               <span *ngIf="showcasesCount > 1">{{showcasesCount}} Results</span>
@@ -82,14 +82,14 @@
               <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-4 col-md-6 col-sm-12"></app-showcase-search-card>
+            <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-showcase-search-card>
           </div>
         </div>
 
         <!-- Challenges -->
         <div *ngIf="challenges.length > 0" class="col-md-12 challenge-result result-section">
 
-          <div class="results-header d-flex justify-content-end  mb-3">
+          <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Missions</span></div>
             <div class="view-all-result">
               <span *ngIf="challengesCount > 1">{{challengesCount}} Results</span>
@@ -97,14 +97,14 @@
               <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-challenge-search-card *ngFor="let challenge of challenges" [challengeNid]="challenge.is_nid" class="col-lg-4 col-md-6 col-sm-12"></app-challenge-search-card>
+            <app-challenge-search-card *ngFor="let challenge of challenges" [challengeNid]="challenge.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-challenge-search-card>
           </div>
         </div>
 
         <!-- Learning -->
         <!--<div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
 
-          <div class="results-header d-flex justify-content-end  mb-3">
+          <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Workshops</span></div>
             <div class="view-all-result">
               <span *ngIf="workshopsCount > 1">{{workshopsCount}} Results</span>
@@ -112,13 +112,13 @@
               <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-4 col-md-6 col-sm-12"></app-learn-search-card>
+            <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-learn-search-card>
           </div>
         </div>-->
 
         <!-- Users -->
         <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">
-          <div class="results-header d-flex justify-content-end mb-3">
+          <div class="results-header d-flex justify-content-start mb-3">
             <div class="result-title mr-auto"><span>Makers</span></div>
             <div class="view-all-result">
               <span *ngIf="usersCount > 1">{{usersCount}} Results</span>
@@ -126,7 +126,7 @@
               <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4"></app-maker-search-card>
+            <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4 pull-left"></app-maker-search-card>
           </div>
         </div>
 

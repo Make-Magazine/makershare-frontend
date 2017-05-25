@@ -41,10 +41,9 @@
 									<p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
 									<ul class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
-										<li class="placeholder-text" *ngIf="!ProfileInfo.address || ProfileInfo.address == ''">{{PlaceholderText.address}}</li>
+										<li *ngIf="!ProfileInfo.address || ProfileInfo.address == '' || ProfileInfo.address.country == '' "><p class="placeholder-text">{{PlaceholderText.address}}</p></li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
@@ -75,7 +74,16 @@
 								<!-- Start Bio -->
 								<div class="bio hideData">
 									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
-									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
+									<div *ngIf="ProfileInfo.bio" class="bio">
+										<div *ngIf="ReadMoreFields.bio">
+											<div>{{ProfileInfo.bio}}</div>
+											<span (click)="ReadMoreFields.bio = false">Read Less</span>
+										</div>
+										<div *ngIf="!ReadMoreFields.bio">
+											<div>{{ProfileInfo.bio | truncate : 160}}</div>
+											<span *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
+										</div>
+									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
 										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
 									</div>
@@ -169,7 +177,16 @@
 								<div class="how hideData">
 									<!-- Start How -->
 									<p class="global-title">My Maker Moment</p>
-									<p *ngIf="ProfileInfo.started_making" class="started_making">{{ProfileInfo.started_making}}</p>
+									<div *ngIf="ProfileInfo.started_making" class="started_making">
+										<div *ngIf="ReadMoreFields.started_making">
+											<div>{{ProfileInfo.started_making}}</div>
+											<span (click)="ReadMoreFields.started_making = false">Read Less</span>
+										</div>
+										<div *ngIf="!ReadMoreFields.started_making">
+											<div>{{ProfileInfo.started_making | truncate : 85}}</div>
+											<span *ngIf="ProfileInfo.started_making.length > 85" (click)="ReadMoreFields.started_making = true">Read More</span>
+										</div>
+									</div>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
 								<hr class="hideData">
@@ -181,6 +198,10 @@
 									<i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
 									</span>
 								</p>
+								<span class="hideData toggleProfile" (click)="ToggleProfile()">
+									<i class="lnr lnr lnr-chevron-down open"></i>
+									<i class="lnr lnr lnr-cross close"></i>
+								</span>
 								<!-- End How -->
 							</div>
 							<!-- End col-md-3 -->
@@ -199,8 +220,7 @@
 									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
 									<ul *ngIf="ProfileInfo.address_publish" class="list-unstyled location">
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}},
-											{{ProfileInfo.address.country}}
+										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
@@ -231,12 +251,12 @@
 								<!-- Start Bio -->
 								<div class="bio hideData" *ngIf="ProfileInfo.bio">
 									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
-									<!--<hr *ngIf="ProfileInfo.bio">-->
+									<hr *ngIf="ProfileInfo.bio">
 								</div>
 								<!-- End Bio -->
-								<div class="hideData 1" *ngIf="emptySocial">
+								<div class="hideData 1" *ngIf="!emptySocial">
 									<p class="global-title" *ngIf="!emptySocial">Social</p>
-									<div class="social-links d-flex flex-wrap">
+									<div class="profile-social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
 												<i class="fa fa-facebook fa-lg"></i>
@@ -285,14 +305,38 @@
 												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
 											</a>
 										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_github != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="github = false" (mouseleave)="github = true" href="{{ProfileInfo.field_social_accounts.field_github}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitch != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="twitch = false" (mouseleave)="twitch = true" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_gitlabs != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="gitlabs = false" (mouseleave)="gitlabs = true" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="gitlabs" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!gitlabs" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_thingyverse != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="thingyverse = false" (mouseleave)="thingyverse = true" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="hackaday" alt="">
+												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="!hackaday" alt="">
+											</a>
+										</div>
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<hr class="hideData" *ngIf="emptySocial">
+								<hr class="hideData" *ngIf="!emptySocial">
 								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
 									<p  class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
-										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_ != ''">
+										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
@@ -350,9 +394,10 @@
 						</div>
 						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
 							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
-								<li *ngIf="ProjectsCount">
-									<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
-									<p *ngIf="ProjectsCount == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCount}}</span> project</p>
+								<li *ngIf="ProjectsCountPublic">
+									<p *ngIf="ProjectsCountPublic == 0"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
+									<p *ngIf="ProjectsCountPublic > 1"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
+									<p *ngIf="ProjectsCountPublic == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCountPublic}}</span> project</p>
 								</li>
 								<li *ngIf="profile.total_likes != 0">
 									<p><span class="number">{{profile.total_likes}}</span> project likes</p>
@@ -396,7 +441,7 @@
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
-									<app-edit-portfolio *ngIf="CurrentLoggedUserId == uid" [projectsCount]="ProjectsCount" [LikesCount]="profile.total_likes"
+									<app-edit-portfolio (emitter)="GetUserDetails()" *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic" [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
 									 [ViewsCount]="profile.views_count"></app-edit-portfolio>
 								</div>
 							</div>
@@ -468,7 +513,7 @@
 										</a>
 									</div>
 									<div class="recommended-section col-md-4">
-										<p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 400 pixels</p>
+										<p class="drag-text mt-4 mb-0">Recommended minimum resolution 350 by 350 pixels</p>
 									</div>
 								</div>
 								<app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
@@ -551,12 +596,12 @@
 									</div>
 									<div class="col-md-12">
 										<textarea rows="10" cols="50" class="col-md-12" formControlName="bio" name="limitedtextfield" id="description-textarea-bio"
-										 maxlength="400"></textarea>
+										 maxlength="800"></textarea>
 										<div *ngIf="formGroup.value.bio">
-											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 400}">{{formGroup.value.bio.length}}/400 Chars</span>
+											<span [ngClass]="{valErrorString: formGroup.value.bio.length == 800}">{{formGroup.value.bio.length}}/800 Chars</span>
 										</div>
 										<div *ngIf="!formGroup.value.bio">
-											<span>0/400 Chars</span>
+											<span>0/800 Chars</span>
 										</div>
 									</div>
 								</div>
@@ -673,6 +718,50 @@
 													</div>
 												</li>
 											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_github.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_github" placeholder="Github">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_github"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_github'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_github.valid && FormGroupSocial.controls.field_github.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitch.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_twitch" placeholder="Twitch">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitch"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitch'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_twitch.valid && FormGroupSocial.controls.field_twitch.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_gitlabs.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_gitlabs" placeholder="Gitlabs">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_gitlabs"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_gitlabs'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_gitlabs.valid && FormGroupSocial.controls.field_gitlabs.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>
+											</div>
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_thingyverse.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_thingyverse" placeholder="Thingyverse">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_thingyverse"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_thingyverse'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_thingyverse.valid && FormGroupSocial.controls.field_thingyverse.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>	
+											</div>												
 										</div>
 									</div>
 								</div>
@@ -767,10 +856,10 @@
 									</div>
 									<div class="col-md-12">
 										<textarea formControlName="started_making" rows="10" cols="50" class="col-md-12" name="limitedtextfield" id="start-making-textarea"
-										 placeholder="What was the moment that making became part of your life?" maxlength="140">
+										 placeholder="What was the moment that making became part of your life?" maxlength="800">
 										</textarea>
-										<span *ngIf="formGroup.value.started_making" [ngClass]="{valErrorString: formGroup.value.started_making.length == 140}">{{formGroup.value.started_making.length}}/140 Chars</span>
-										<span *ngIf="!formGroup.value.started_making">0/140 Chars</span>
+										<span *ngIf="formGroup.value.started_making" [ngClass]="{valErrorString: formGroup.value.started_making.length == 800}">{{formGroup.value.started_making.length}}/800 Chars</span>
+										<span *ngIf="!formGroup.value.started_making">0/800 Chars</span>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -816,7 +905,7 @@
 				</div>
 				<div class="modal-footer mt-auto ml-auto">
 					<button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click');SaveInfo(closebtn)">Save &amp;Close</button>
-					<button type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next</button>
+					<button *ngIf="ModalTabs.indexOf(CurrentInfoTab) != ModalTabs.length-1" type="button" class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next</button>
 				</div>
 			</div>
 		</div>
