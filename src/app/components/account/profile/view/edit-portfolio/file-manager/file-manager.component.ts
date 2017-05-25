@@ -31,9 +31,15 @@ export class FileManagerComponent implements OnInit {
     });
   }
 
+  FileChanged(files:FileList){
+    Array.from(files).forEach(file => {
+      this.UploadFile(file);
+    });
+  }
+
   UploadFile(file:File){
     let AllowedFileTypes = ['jpeg','jpg','png','gif','pdf','epub','xls','ppt','pptx','sxls','doc','docx','txt'];
-    if(!file || AllowedFileTypes.indexOf(file.name.split('.')[1]) == -1) return;
+    if(AllowedFileTypes.indexOf(file.name.split('.')[1]) == -1) return;
     const self = this;
     var myReader: FileReader = new FileReader();
     myReader.onloadend = function (loadEvent: any) {
