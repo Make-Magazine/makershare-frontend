@@ -244,7 +244,7 @@ export class InboxNotificationsComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.pm.updateSettings(this.userId, { 'pm_disabled': false }).subscribe(data => {
       this.hideTurnOn = false;
-      this.notificationBarService.create({ message: 'You have enabled Privatemsg', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+      this.notificationBarService.create({ message: 'You have turned on messaging. Everyone except blocked users can message you.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       this.loaderService.display(false);
     })
   }
