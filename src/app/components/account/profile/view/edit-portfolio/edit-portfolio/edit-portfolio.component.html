@@ -17,13 +17,22 @@
         <div class="profile-header justify-content-end d-flex">
           <ul class="list-unstyled stats d-flex flex-row justify-content-end">
             <li *ngIf="projectsCountPublic && CurrentTab == 'public'">
-              <p><span class="number" >{{projectsCountPublic}}</span> projects</p>
+              <p *ngIf="projectsCountPublic == 0"><span class="number" >{{projectsCountPublic}} projects</span> </p>
+              <p *ngIf="projectsCountPublic == 1"><span class="number" >{{projectsCountPublic}} project</span> </p>
+              <p *ngIf="projectsCountPublic > 1"><span class="number" >{{projectsCountPublic}} projects</span> </p>
+
             </li>
-             <li *ngIf="projectsCountPrivate && CurrentTab == 'private'">
-              <p><span class="number" >{{projectsCountPrivate}}</span> projects</p>
+            <li *ngIf="projectsCountPrivate && CurrentTab == 'private'">
+              <p *ngIf="projectsCountPrivate == 0"><span class="number" >{{projectsCountPrivate}}</span> projects</p>
+              <p *ngIf="projectsCountPrivate == 1"><span class="number" >{{projectsCountPrivate}}</span> project</p>
+              <p *ngIf="projectsCountPrivate > 1"><span class="number" >{{projectsCountPrivate}}</span> projects</p>
+
             </li>
-              <li *ngIf="projectsCountDraft && CurrentTab == 'draft'">
-              <p><span class="number" >{{projectsCountDraft}}</span> projects</p>
+            <li *ngIf="projectsCountDraft && CurrentTab == 'draft'">
+              <p *ngIf="projectsCountDraft == 0"><span class="number" >{{projectsCountDraft}}</span> projects</p>
+              <p *ngIf="projectsCountDraft == 1"><span class="number" >{{projectsCountDraft}}</span> project</p>
+              <p *ngIf="projectsCountDraft > 1"><span class="number" >{{projectsCountDraft}}</span> projects</p>
+
             </li>
             <!--<li *ngIf="LikesCount != 0">
               <p><span class="number">{{LikesCount}}</span> project likes</p>
@@ -40,7 +49,7 @@
           <!-- End Bookmark-section -->
         </div>
       </div>
-      <div class="d-flex flex-column" >
+      <div class="d-flex flex-column">
         <p class="titles">EDIT YOUR PORTFOLIO</p>
         <div class="d-flex flex-wrap nav">
           <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white-2" id="public">
@@ -61,9 +70,9 @@
   </div>
   <!-- End top-content-wrapper -->
   <div class="region region-content">
-    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'public'" [status]="370" [DefaultView]="DefaultView"  [projectsCountPublic]="projectsCountPublic"></portfolio-tab>
+    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'public'" [status]="370" [DefaultView]="DefaultView" [projectsCountPublic]="projectsCountPublic"></portfolio-tab>
     <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'private'" [status]="371" [DefaultView]="DefaultView" [projectsCountPrivate]="projectsCountPrivate"></portfolio-tab>
-    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'draft'" [status]="1115" [DefaultView]="DefaultView"  [projectsCountDraft]="projectsCountDraft"></portfolio-tab>
+    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'draft'" [status]="1115" [DefaultView]="DefaultView" [projectsCountDraft]="projectsCountDraft"></portfolio-tab>
     <app-file-manager *ngIf="CurrentTab === 'file'"></app-file-manager>
   </div>
   <div *ngIf="projectsCountPublic == 0 && CurrentTab === 'public'" class="empty-profile text-center mx-auto">
