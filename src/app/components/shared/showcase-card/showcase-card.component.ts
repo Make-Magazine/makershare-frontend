@@ -27,7 +27,7 @@ export class ShowcaseCardComponent implements OnInit {
 
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
-     console.log(data[0])
+
       this.showcase = data[0];
     });
   }
@@ -40,7 +40,7 @@ export class ShowcaseCardComponent implements OnInit {
 
   }
   ShowSingleShowcase(path) {
-    this.router.navigate(['/showcases/', path]);
+    this.router.navigate(['/makers/', path]);
   }
 
   countLikes() {

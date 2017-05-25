@@ -12,7 +12,8 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class MakerSearchCardComponent implements OnInit {
 
   @Input() uid;
-  badges = [];
+  badgesLarge = [];
+  badgesSmall = [];
   project = {};
   card;
   projectsCount;
@@ -35,15 +36,19 @@ export class MakerSearchCardComponent implements OnInit {
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      console.log(this.card);
+
     });
   }
 
   getMakerBadges() {
-    this.viewService.getView('api_user_badges_card', [['uid', this.uid]]).subscribe(data => {
-      this.badges = data;
+    this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
+      this.badgesLarge= data;
+      for (let i = 0; i < data.length && i < 3; i++) {
+        this.badgesSmall.push(data[i])
+      }
     });
   }
+
   CountMakerProjects() {
     this.viewService.getView('maker_count_all_projects/' + this.uid).subscribe(data => {
       this.projectsCount = data[0]

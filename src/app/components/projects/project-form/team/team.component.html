@@ -14,7 +14,7 @@
     <div class="add-sortable" *ngFor="let Member of TeamForm.controls['field_maker_memberships']['controls']; let i=index;" class="card add-collaborate">
       <div>
         <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
-          <div class="col-md-7">
+          <div class="col-md-9">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <label>Name</label>
               <app-user-card-small *ngIf="!SelectedUser[i].invitation" [uid]="SelectedUser[i].uid"></app-user-card-small>
@@ -46,7 +46,7 @@
               </small>
             </div>	
           </div>
-          <div *ngIf="i==0" class="col-md-2 admin d-flex flex-column">
+          <div *ngIf="i==0" class="col-md-3 admin d-flex flex-column">
               <label>Admin</label>
               <i class="fa fa-check-square" aria-hidden="true"></i>
           </div>

@@ -19,7 +19,7 @@
       <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
         'col-md-6 col-lg-4'   : item.type == 'project' || item.type == 'showcase' || item.type == 'maker' ,
         'col-md-12 col-lg-8'  : item.type == 'challenge' || item.type == 'learning_sequence'        
-          }">
+          }" class="item-{{i}}">
         <!-- Challenge Cards -->
         <!--<div *ngIf="item.type == 'challenge'" class="challenge-page-data container p-0">
           <div class="challenges-container">

@@ -15,7 +15,7 @@ export class SearchResultComponent implements OnInit {
   searchTerm : string;
   projects = [];
   challenges = [];
-  showcases = [];
+  showcases = []; 
   workshops = [];
   users = [];
 
@@ -64,12 +64,12 @@ export class SearchResultComponent implements OnInit {
           if(query.length > 1){
             return this.solrService.autocomplete(query)
             .map(result => {
-              var newResult = [];
+              var newResult = []; 
               result.response.docs.forEach(element => {
                 if(element.tm_title && element.tm_title.length > 0){
                   newResult.push(element.tm_title[0]);
                 }else if (element.tm_name && element.tm_name.length > 0){
-                  newResult.push(element.tm_name[0]);
+                  newResult.push(element.tm_field_first_name[0] + " " + element.tm_field_last_name[0]);
                 }
                 
               });
@@ -97,14 +97,26 @@ export class SearchResultComponent implements OnInit {
   }
 
   itemSelected(item) {
-    this.searchQuery();
+    this.searchURL(item);
+  }
+
+
+  searchURL(item){ 
+    if(item.length > 0){
+      this.query = item;
+    }     
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'query': encodeURIComponent(this.query) },
+      // fragment: 'anchor'
+    };
+    this.router.navigate(['/search'], navigationExtras);    
   }
 
   searchQuery(){
 
-    if(this.query.length < 4){
-      return;
-    }
+    // if(this.query.length < 4){
+    //   return;
+    // }
 
     this.loaderService.display(true);
     if(this.query.length == 0) {
@@ -118,12 +130,12 @@ export class SearchResultComponent implements OnInit {
       
       this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
         this.projects = [];
-        console.log(this.projects)
+       // console.log(this.projects)
         this.projects = result.response.docs;
         this.projectsCount = result.response.numFound;
         this.loaderService.display(false);
       }, err => {
-        console.log(err);
+       // console.log(err);
       });
     }
     
@@ -136,7 +148,7 @@ export class SearchResultComponent implements OnInit {
         this.challengesCount = result.response.numFound;
         this.loaderService.display(false);
       }, err => {
-        console.log(err);
+       // console.log(err);
       });  
     }
 
@@ -149,7 +161,7 @@ export class SearchResultComponent implements OnInit {
         this.showcasesCount = result.response.numFound;
         this.loaderService.display(false);
       }, err => {
-        console.log(err);
+      //  console.log(err);
       });    
     }
 
@@ -162,7 +174,7 @@ export class SearchResultComponent implements OnInit {
         this.workshopsCount = result.response.numFound;
         this.loaderService.display(false);
       }, err => {
-        console.log(err);
+       // console.log(err);
       });        
     }
     
@@ -175,7 +187,7 @@ export class SearchResultComponent implements OnInit {
         this.usersCount = result.response.numFound;
         this.loaderService.display(false);
       }, err => {
-        console.log(err);
+       // console.log(err);
       });      
     }
     
@@ -240,5 +252,10 @@ export class SearchResultComponent implements OnInit {
   }
   clearQuery() {
     this.query = '';
+  }
+  keyDownFunction(event) {
+    if(event.keyCode == 13 && this.searchQuery.length > 0) {
+      this.searchURL('');
+    }
   }
 }

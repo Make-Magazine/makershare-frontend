@@ -22,7 +22,7 @@ export class IndividualWorkshopComponent implements OnInit {
   title = {
     title: "Questions",
     placeholder: "Ask a question",
-    ifempty: "There is no questions yet ..",
+    ifempty: "Be the first to ask a question.",
     join: "to Add Your question"
   };
 
@@ -88,9 +88,14 @@ export class IndividualWorkshopComponent implements OnInit {
         if (this.workshop.uid) {
           this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
             this.workshopLeader = data[0];
+            if(data.length == 0) {
+               this.router.navigate(['**']);
+            }
             // console.log(this.workshopLeader)
           });
           //  console.log(this.workshopLeader)
+        } else {
+           this.router.navigate(['**']);
         }
         this.customTitle = this.workshop.workshop_title;
         this.customDescription = this.workshop.brief_description;

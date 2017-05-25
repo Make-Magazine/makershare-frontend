@@ -9,6 +9,7 @@ header {
         top: 0;
         left: 0;
         z-index: 12;
+        height: 110px;
         .navbar-brand {
             width: 90px;
             padding: 0px;
@@ -33,6 +34,7 @@ header {
         .login-block {
             margin-bottom: 0;
             margin-top: 3px;
+            
             li {
                 display: inline-block;
                 .btn {
@@ -164,10 +166,10 @@ header {
                 #MainNav {
                     .nav-item {
                         a {
-                            font-size: 1.2em;
+                            font-size: 1.2rem;
                         }
                         .btn {
-                            font-size: 1em;
+                            font-size: 1rem;
                             height: 50px;
                         }
                     }
@@ -195,10 +197,10 @@ header {
             .nav-item {
                 margin-left: 15px;
                 a {
-                    font-size: 1.3em;
+                    font-size: 1.3rem;
                 }
                 .btn {
-                font-size: 1em;
+                font-size: 1rem;
                 padding: 16px 9px;
                 }
                 &.button-container-main-1 {
@@ -270,7 +272,7 @@ header {
     
     }
 
-    .noti-number{
+    .notification-count{
     position: absolute !important;
     // left: 30px;
     width: 80%;
@@ -282,6 +284,40 @@ header {
     
   }
 
-  }
+}
 
+header.with-404 {
+    position: relative;
+    z-index: 101;
+    margin-top: -113px !important;
+    nav {
+        &.navbar {
+            background-color: transparent;
+        }
+        .collapse.navbar-collapse {
+            display: none !important;
+        }
+    }
+    &.main-header {
+        background-color: transparent;
+        .login-block li {
+            color:#fff;
+            img {
+                filter: brightness(0) invert(1);
+                &:hover {
+                    filter: brightness(2) invert(1); 
+                }
+            }
+            &.min-user-img {
+                img,img:hover {
+                    filter: none;
+
+                }
+            }
+        } 
+    }
+}
+#page-404 {
+    margin-top: -113px;
+}
 

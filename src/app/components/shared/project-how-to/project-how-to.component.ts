@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-how-to',
@@ -7,10 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProjectHowToComponent implements OnInit {
   @Input() project;
   @Input() projectInfo;
-  constructor() { }
+  howto = false;
+  trustedLink;
+  constructor(
+    private sanitizer:DomSanitizer,
+  ) { }
 
   ngOnInit() {
-    //console.log(this.project.field_resources[0].resource_file)
+    if(this.project.field_how_to){
+      this.howto = true;
+      let link = this.project.field_how_to.value;
+      this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
+    }
   }
 
 }

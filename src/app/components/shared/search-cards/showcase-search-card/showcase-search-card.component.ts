@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService,UserService } from '../../../../d7services';
+import { ViewService, FlagService, UserService } from '../../../../d7services';
 
 @Component({
   selector: 'app-showcase-search-card',
@@ -11,6 +11,7 @@ export class ShowcaeSearchCardComponent implements OnInit {
   isLiked = false;
   userId;
   currentuser;
+  projectsCount;
   checkUserLogin = false;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class ShowcaeSearchCardComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.getShowcases();
+    this.getProjectsCount();
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
@@ -44,8 +46,15 @@ export class ShowcaeSearchCardComponent implements OnInit {
       this.showcase = data[0];
     });
   }
-  ShowSingleShowcase(nid) {
-    this.router.navigate(['/showcases', nid]);
+  getProjectsCount() {
+    this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
+
+      this.projectsCount = data.length;
+    });
+
+  }
+  ShowSingleShowcase(path) {
+    this.router.navigate(['/makers', path]);
   }
 
 

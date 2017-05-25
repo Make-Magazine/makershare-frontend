@@ -6,8 +6,10 @@
   </div>
   <div class="image-top">
     <div class="overlay"></div>
-    <img *ngIf="card.photo_lg" [class.show]="!swtichImage" class="card-img-top maker-card-photo step" src="{{card.photo_lg}}" alt="">
-    <img *ngIf="latestPorjectImg" [class.show]="swtichImage"  class="card-img-top latest-project-image step" src="{{latestPorjectImg}}" alt="">        
+    <img *ngIf="card.photo_lg" [class.show]="!swtichImage" class="card-img-top maker-card-photo step" src="{{card.photo_lg}}"
+      alt="">
+    <img *ngIf="latestPorjectImg" [class.show]="swtichImage" class="card-img-top latest-project-image step" src="{{latestPorjectImg}}"
+      alt="">
     <img *ngIf="!card.photo_lg" [class.show]="!swtichImage" class="step" src="./assets/images/placeholder.png" alt="">
   </div>
   <div class="card-block d-flex flex-column justify-content-around">
@@ -19,26 +21,27 @@
     <h4 class="maker-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h4>
     <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
     <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country == 'United States'">{{card.location_locality}} , {{card.city}}</p>          
-    <p class="maker-city" *ngIf="card.city && card.country && card.country != 'United States'">{{card.city}} , {{card.country}}</p>
+    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country == 'United States'">{{card.location_locality}} , {{card.city}}</p>
+    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">{{card.location_locality}} , {{card.country}}</p>
     <p class="maker-descripe" *ngIf="card.descripe_yourself" innerHTML="{{card.descripe_yourself}}"></p>
     <div class="content-side col d-flex flex-column justify-content-start">
       <div class="card-stats mt-auto">
-        <ul class="list-unstyled d-flex justify-content-between">
+        <ul class="list-unstyled">
+          <li *ngIf="projectsCount">
+            <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
+            <span *ngIf="projectsCount != 1">{{projectsCount}} projects</span>
+          </li>
           <li>
-            <img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+            <img *ngIf="card.profile_likes == 0" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
+            <img *ngIf="card.profile_likes != 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
             <span *ngIf="card.profile_likes">{{card.profile_likes}}</span>
-            <span *ngIf="!card.profile_likes">0</span>
           </li>
           <li class="pt-1">
             <img src="./assets/images/icons/views.png" class="project-views" alt="">
             <span *ngIf="card.profile_views">{{card.profile_views}}</span>
             <span *ngIf="!card.profile_views">0</span>
           </li>
-          <li *ngIf="projectsCount">
-            <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
-            <span *ngIf="projectsCount != 1">{{projectsCount}} projects</span>
-          </li>
+
         </ul>
       </div>
     </div>

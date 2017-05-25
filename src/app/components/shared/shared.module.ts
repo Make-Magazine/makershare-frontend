@@ -85,8 +85,8 @@ export function ResponsiveDefinition() {
     ReactiveFormsModule,
     NgbModule,
     RouterModule,
-    ResponsiveModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    ResponsiveModule
   ],
   declarations: [
     CommentComponent,

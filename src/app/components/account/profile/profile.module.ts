@@ -17,6 +17,8 @@ import { DndModule } from 'ng2-dnd';
 import { RouterModule } from '@angular/router';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
 import { Ng2FileDropModule } from 'ng2-file-drop';
+import { ResponsiveModule } from 'ng2-responsive';
+import { TruncatePipe } from '../../../pipes/truncate';
 
 //import { MetaModule } from '@nglibs/meta';
 // import { PipeModule } from '../../../pipes/custom-pipes.module';
@@ -32,7 +34,8 @@ import { Ng2FileDropModule } from 'ng2-file-drop';
     ImageCropperModule,
     CKEditorModule,
     DndModule,
-    Ng2FileDropModule
+    Ng2FileDropModule,
+    ResponsiveModule
     //MetaModule.forRoot()
     // PipeModule.forRoot(),
   ],
@@ -44,6 +47,7 @@ import { Ng2FileDropModule } from 'ng2-file-drop';
     PortfolioTabComponent,
     ProjectCardPortfolioComponent,
     FileManagerComponent,
+    TruncatePipe
   ]
 })
 export class ProfileModule { }

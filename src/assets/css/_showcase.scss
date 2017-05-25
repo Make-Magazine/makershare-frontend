@@ -7,6 +7,7 @@
         text-align: center;
         h3 {
             @include header-font();
+            text-transform: capitalize;
             margin: auto;
             padding-top: 45px;
             padding-bottom: 10px;
@@ -18,9 +19,9 @@
             margin: auto;
         }
     }
-    .showcases-container {
-        padding: 25px 15px 0px 15px;
-    }
+    // .showcases-container {
+    //     padding: 25px 15px 0px 15px;
+    // }
 }
 
 .go-back,
@@ -97,7 +98,7 @@
             }
             .card-title {
                 @include card-header-font-lg();
-                color: $font-grey;
+                color: $shade-4;
                 cursor: pointer;        
             }
             .card-status {
@@ -113,6 +114,8 @@
                 p {
                     @include desc-font-1();
                     color: $font-grey;
+                    font-weight: normal; 
+                    line-height: 1.5rem;                   
                 }
             }
             .card-buttons {
@@ -172,6 +175,7 @@
                     .showcase-views {
                         width: 22px;
                         height: auto;
+                        padding-bottom: 3px;    
                     }
                     .projects-count {
                         color: $text-color-3;
@@ -250,6 +254,8 @@
             height: auto !important;
             -webkit-line-clamp: inherit !important;
             min-height: 168px;
+            font-weight: normal;  
+            line-height: 1.5rem;          
         }
     }
     .card-title {
@@ -265,6 +271,7 @@
                 padding: 30px 10px 10px 10px;
                 .media {
                     .profile-pic-container {
+                        width: 80px;
                         .icons-side-user {
                             width: auto;
                             overflow: initial;
@@ -280,6 +287,9 @@
                                 }
                             }
                         }
+                    }
+                    .media-body {
+                        width: calc(100% - 80px);
                     }
                 }
             }
@@ -361,8 +371,9 @@ img {
             border: none;
             .showcase-type {
                 p {
-                    font-size: 1em;
+                    font-size: 1rem;
                     color: $blue;
+                    margin-bottom: 0.5rem;
                 }
             }
         }
@@ -407,7 +418,7 @@ img {
             .card-title {
                 @include card-header-font-lg();
                 color: $font-grey;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 line-height: 120% !important;
                 display: -webkit-box;
                 -webkit-line-clamp: 5;
@@ -431,7 +442,9 @@ img {
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     color: $font-grey;
-                    max-height: 102px;
+                    max-height: 117px;
+                    font-weight: normal;
+                    line-height: 1.5rem;
                 }
             }
             .card-buttons {
@@ -477,6 +490,7 @@ img {
                         .showcase-views {
                             width: 20px;
                             height: auto;
+                            padding-bottom: 3px;
                         }
                         .views-count {
                             color: $text-color-3;
@@ -495,6 +509,16 @@ img {
                     }
                     .projects-count {
                         color: $text-color-3;
+                    }
+                    .project-like {
+                        color: $shade-5;
+                        .btn {
+                            padding: 0;
+                        }
+                        img {
+                            width: 12px;
+                            margin-bottom: 3px;
+                        }
                     }
                 }
                 .showcase-card-status {
@@ -550,7 +574,7 @@ img {
             border: none;
             .showcase-type {
                 p {
-                    font-size: 1em;
+                    font-size: 1rem;
                     color: $blue;
                 }
             }
@@ -596,7 +620,7 @@ img {
             .card-title {
                 @include card-header-font-lg();
                 color: $font-grey;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 line-height: 120% !important;
             }
             .card-status {
@@ -616,7 +640,9 @@ img {
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     color: $font-grey;
-                    max-height: 102px;
+                    max-height: 117px;
+                    font-weight: normal;
+                    line-height: 1.5rem;
                 }
             }
             .card-buttons {
@@ -662,6 +688,7 @@ img {
                         .showcase-views {
                             width: 20px;
                             height: auto;
+                            padding-bottom: 3px;
                         }
                         .views-count {
                             color: $text-color-3;
@@ -755,7 +782,7 @@ img {
                         overflow: hidden;
                         max-height: 200px;
                         color: $font-grey;
-                        margin-bottom: 20px;
+                        margin-bottom: 10px;
                         line-height: 120% !important;
                     }
                     .card-status {
@@ -775,7 +802,9 @@ img {
                             -webkit-box-orient: vertical;
                             overflow: hidden;
                             color: $font-grey;
-                            max-height: 102px;
+                            max-height: 117px;
+                            font-weight: normal;
+                            line-height: 1.5rem;
                         }
                     }
                     .card-buttons {
@@ -808,6 +837,16 @@ img {
                                 margin-right: 8px;
                                 min-width: 50px;
                             }
+                            .project-like {
+                        color: $shade-5;
+                        .btn {
+                            padding: 0;
+                        }
+                        img {
+                            width: 12px;
+                            margin-bottom: 3px;
+                        }
+                    }
                             .projects-count-div {
                                 margin-left: 20px;
                             }
@@ -817,6 +856,7 @@ img {
                             .showcase-views {
                                 width: 22px;
                                 height: auto;
+                                padding-bottom: 3px;
                             }
                             .update-date {
                                 padding-right: 10px;

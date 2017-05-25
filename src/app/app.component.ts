@@ -10,12 +10,12 @@ import { Router, NavigationEnd } from '@angular/router';
 
 export class AppComponent implements OnInit {
   showLoader: boolean;
-
+public location = '' ;
   constructor(
     private loaderService: LoaderService,
     private userService: UserService,
     private mainService: MainService,
-    private router: Router,
+    public router: Router,
   ) {
     router.events
       .filter(event => event instanceof NavigationEnd)
@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
             window.scrollTo(0, 1);
         }, 0);
       });
-
    }
 
   ngOnInit() {
@@ -39,7 +38,7 @@ export class AppComponent implements OnInit {
         this.userService.getAnonymousToken().subscribe(data => {});
       }
     }, err => {
-      console.log(err);
+     // console.log(err);
       this.mainService.removeCookies();
       localStorage.removeItem('id_token');
       localStorage.removeItem('user_id');

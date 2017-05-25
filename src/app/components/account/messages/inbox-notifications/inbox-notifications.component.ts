@@ -63,7 +63,7 @@ export class InboxNotificationsComponent implements OnInit {
       .do(() => this.searchFailed = false)
       .switchMap((term) => {
         if (term.length > 1) {
-          return this.viewService.getView('maker_profile_search_data', [['email', term]])
+          return this.viewService.getView('maker_profile_search_data', [['combine', term]])
             .map(result => {
               if (result.length == 0) {
                 this.searchFailed = true;
@@ -98,8 +98,8 @@ export class InboxNotificationsComponent implements OnInit {
   onSubmit(e) {
     e.preventDefault();
     this.current_active_tab = 'message';  
-    this.loaderService.display(true);
     if (this.messageForm.valid) {
+      this.loaderService.display(true);
       var str: string = '';
       var full_name :string = '';
       for (let selectedUsers of this.SelectedUser) {
@@ -147,6 +147,21 @@ export class InboxNotificationsComponent implements OnInit {
       this.formErrors[field] = '';
       const control = form.get(field);
       if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  clickedError(){
+    const form = this.messageForm;
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && !control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';

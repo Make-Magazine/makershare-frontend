@@ -355,6 +355,15 @@
 		.challene-card-footer-3 {
 			margin-top: 10px;
 			margin-bottom: 10px;
+			.button-container-sec-2 {
+				margin-left: 10px;
+			}
+			.button-container-main-1,
+			.button-container-sec-2 {
+				.btn {
+					position: static;
+				}
+			}
 		}
     .card-container {
         color: $white;
@@ -387,7 +396,7 @@
 
             p {
                 @include body-font-2();
-                min-height: 116px;
+                // min-height: 116px;
                 color: white;
             }
         }
@@ -488,7 +497,7 @@
 		 clear: both;
 	 }  
 	 .challenge-card-status{
-	    line-height: 1em;
+	    line-height: 1rem;
 }
 }
 .title-tab{

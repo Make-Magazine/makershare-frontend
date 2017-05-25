@@ -211,7 +211,7 @@ export class ChallengeProjectComponent implements OnInit {
   /*end check project entered */
 
 
-  onCancel(event: any) {
+  onCancel() {
     this.addProjectForm.reset();
     this.geturlformid();
     this.router.navigate(['/missions/' + this.path]);
@@ -265,7 +265,7 @@ export class ChallengeProjectComponent implements OnInit {
 
   }
   changeTab() {
-    console.log("asdsa")
+   // console.log("asdsa")
   }
   createNewProjectForChallenge() {
     let navigationExtras: NavigationExtras = {

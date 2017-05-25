@@ -15,15 +15,15 @@
         <img *ngIf="!card.photo_lg" [class.show]="!swtichImage" class="step" src="./assets/images/placeholder.png" alt="">
       </div>
       <div class="card-block d-flex flex-column justify-content-around">
-        <div class="icons-side-project d-flex flex-row" *ngIf="badges">
-          <div class="project-icon" *ngFor="let badge of badges;">
+        <div class="icons-side-project d-flex flex-row" *ngIf="badgesLarge">
+          <div class="project-icon" *ngFor="let badge of badgesLarge;">
             <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
           </div>
         </div>
         <h4 class="maker-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h4>
         <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
         <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-        <p class="maker-city" *ngIf="card.city && card.country && card.country != 'United States'">{{card.city}} , {{card.country}}</p>
+        <p class="maker-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">{{card.location_locality}} , {{card.country}}</p>
         <p class="maker-city" *ngIf="card.city && card.country && card.country == 'United States'">{{card.location_locality}}, {{card.city}}</p>
         <p class="maker-descripe" *ngIf="card.descripe_yourself" innerHTML="{{card.descripe_yourself}}"></p>
         <div class="content-side col d-flex flex-column justify-content-start">
@@ -36,7 +36,7 @@
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
-                <span>70</span>
+                <span *ngIf="card.profile_views">{{card.profile_views}}</span>
               </li>
               <li *ngIf="projectsCount">
                 <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
@@ -55,8 +55,8 @@
           Maker
         </div>
       </div>
-      <div class="icons-side-project d-flex flex-row" *ngIf="badges">
-        <div class="project-icon" *ngFor="let badge of badges;">
+      <div class="icons-side-project d-flex flex-row" *ngIf="badgesSmall">
+        <div class="project-icon" *ngFor="let badge of badgesSmall;">
           <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
         </div>
       </div>
@@ -70,7 +70,8 @@
             <h4 class="maker-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h4>
             <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
             <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-            <p class="maker-city" *ngIf="card.city && card.country">{{card.city}} , {{card.country}}</p>
+            <p class="maker-city" *ngIf="card.city && card.country && card.country != 'United States'">{{card.location_locality}} , {{card.country}}</p>
+            <p class="maker-city" *ngIf="card.city && card.country && card.country == 'United States'">{{card.location_locality}}, {{card.city}}</p>
             <p class="maker-descripe" *ngIf="card.descripe_yourself" innerHTML="{{card.descripe_yourself}}"></p>
           </div>
         </div>

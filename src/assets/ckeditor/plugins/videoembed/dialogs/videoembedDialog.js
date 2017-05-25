@@ -91,7 +91,7 @@ function detect(url) {
         // if this is a playlist (jukebox)
         if (url.indexOf('/playlist/') > 0) {
            id = url.substring(url.lastIndexOf('/playlist/') + 10, url.indexOf("/1#video="));
-           console.log(id);
+         //  console.log(id);
             return embed_url = 'https://www.dailymotion.com/widget/jukebox?list[]=%2Fplaylist%2F' + id + '%2F1&&autoplay=0&mute=0';
         } else {
             id = getId(url);

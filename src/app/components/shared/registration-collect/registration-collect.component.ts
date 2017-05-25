@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter   } from '@angular/core';
+import { Component, OnInit, Input,EventEmitter   } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,8 +7,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./registration-collect.component.css']
 })
 export class RegistrationCollectComponent implements OnInit {
-  closeResult: string;
-  @Output() hideReg: EventEmitter<boolean> = new EventEmitter<boolean>();
+  showForm: boolean = false;
+  @Input() registrationFormState: string;
   constructor(
     private modalService: NgbModal
   ) {
@@ -16,19 +16,11 @@ export class RegistrationCollectComponent implements OnInit {
    }
 
   ngOnInit() {
+    // console.log(this.registrationFormState);
+    if(this.registrationFormState && this.registrationFormState.length > 0){
+      this.showForm = true;
+    }
+    
   }
-
-  open(content){
-
-    this.modalService.open(content).result.then((result) => {
-        this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
-    });
-
-  }
-  closeReg() {
-    this.hideReg.emit();
-  }
-
+  
 }

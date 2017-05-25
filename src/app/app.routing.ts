@@ -19,7 +19,7 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
-    { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
+    { path: 'makers', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
     { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
     { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
@@ -41,7 +41,8 @@ const APP_ROUTES: Routes = [
     { path: 'maker-camp', component: MakerCampComponent},
     { path: 'maker-shed', component: MakerShedComponent},
     { path: 'intel-innovation-programs', component: IntelInnovationComponent},
-    { path: '**', component: Four04Component },
+    { path: '404', component: Four04Component },
+    { path: '**', redirectTo:'/404' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

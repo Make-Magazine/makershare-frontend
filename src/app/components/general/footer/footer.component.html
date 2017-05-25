@@ -3,7 +3,7 @@
 		<div class="row d-flex flex-row">
 			<div class="row col-lg-4 col-sm-6 copy">
 				<nav class="nav flex-row">
-					<a class="nav-link first-logo-link" [routerLink]="['/']"><img src="./assets/images/icons/Maker-Share-Logo-BETA.svg" alt="" class="img-responsive first-logo"></a>
+					<a class="nav-link first-logo-link" [routerLink]="['/']"><img src="./assets/images/logos/Maker-Share-Logo-ALPHA.svg" alt="" class="img-responsive first-logo"></a>
 					<a class="nav-link second-logo-link" [routerLink]="['/make-intel']">
 						<p class="nav-link logo-title">a project by</p>
 						<img src="./assets/images/icons/Make-Intel-Grey-Lockup.svg" alt="" class="img-responsive second-logo">
@@ -52,20 +52,20 @@
 			
 						<div class="form-group">
 							<label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
- 							<form ngNoForm class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST" target="_blank">
+ 							<form ngNoForm class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
                 <p for="newsletter" class="footer-subtitle mt-2">Stay inspired with the Make: community newsletter</p>
                 <input type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" /><!-- Make Share -->
                 <input type="hidden" name="multiadd" value="1" />
                 <input type="hidden" name="cmd" value="subscribe" />
                 <input type="hidden" name="custom_source" value="Maker Share footer" />
                 <input type="hidden" name="custom_incentive" value="none" />
-                <input type="hidden" name="custom_url" value="http://preview.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
+                <input type="hidden" name="custom_url" value="https://beta.makershare.com/" /><!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
                 <input type="hidden" id="format_mime" name="format" value="mime" />
-                <input type="hidden" name="goto" value="" />
-                <input type="hidden" name="custom_host" value="http://preview.makershare.com/" />
+                <input type="hidden" name="goto" value="https://beta.makershare.com/?status=subscription" />
+                <input type="hidden" name="custom_host" value="https://beta.makershare.com/" />
                 <div class="mz-form-horizontal input-group">
-                  <input id="wc-email" class="form-control" name="email" placeholder="Enter your Email" required type="text">
-                  <button class="input-group-addon" type="submit">GO</button>
+                  <input id="wc-email" class="form-control" name="email" placeholder="Enter your Email" #subscribeEmail required type="email">
+                  <button class="input-group-addon" type="submit" (click)="validateEmail(subscribeEmail.value)">GO</button>
                 </div>
               </form>
 						</div>

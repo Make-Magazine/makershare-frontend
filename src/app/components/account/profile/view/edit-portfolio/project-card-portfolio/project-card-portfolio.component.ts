@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectCardPortfolio } from '../../../../../../models';
-import { NodeService,ViewService } from '../../../../../../d7services';
+import { NodeService, ViewService } from '../../../../../../d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { UserService } from '../../../../../../d7services/user/user.service';
 
 @Component({
   selector: 'project-card-portfolio',
@@ -16,11 +17,14 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Output() emitter = new EventEmitter();
   projectCard
   badges
+  pages: number = 0;
   constructor(
     private nodeService: NodeService,
     private viewService: ViewService,
     private router: Router,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private userService: UserService,
+
   ) { }
 
   ngOnInit() {
@@ -38,11 +42,12 @@ export class ProjectCardPortfolioComponent implements OnInit {
       var membership_array = membership_string.split(',');
       res[0].field_team_members = membership_array;
       this.projectCard = res[0];
+
     });
   }
 
   OpenModal(template) {
-    this.modal.open(template,{size:'lg',windowClass:'delete-promodal'});
+    this.modal.open(template, { size: 'lg', windowClass: 'delete-promodal' });
   }
 
   DeleteProject(closebtn) {
@@ -56,11 +61,16 @@ export class ProjectCardPortfolioComponent implements OnInit {
     if (closebtn) {
       closebtn.click();
     }
+
+    var status = null;
+    if (NewVisibility == 370) {
+      status = 1;
+    }
     let project = {
       nid: this.Project.nid,
       field_visibility2: { und: [NewVisibility] },
-      field_sort_order:{und:[{value:0}]},
-      status:1,
+      field_sort_order: { und: [{ value: 0 }] },
+      status: status,
     }
 
     this.nodeService.UpdateNode(project).subscribe(data => {
@@ -76,5 +86,22 @@ export class ProjectCardPortfolioComponent implements OnInit {
         this.badges.push(data[i]);
       }
     });
+  }
+  /* function load more  */
+  loadMoreProject() {
+    this.pages++;
+    this.GetProjectCard();
+  }
+  /* end function load more  */
+  getProfile() {
+    if (this.projectCard['uid']) {
+      this.userService.getUrlFromId(this.projectCard['uid']).subscribe(res => {
+        this.router.navigate(['/portfolio/' + res.url]);
+      //  console.log(res.url)
+      });
+      
+    }
+          //console.log("fsafasf")
+
   }
 }
