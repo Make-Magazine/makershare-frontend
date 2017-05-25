@@ -391,7 +391,7 @@ export class ProfileComponent implements OnInit {
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
       bio: [this.ProfileInfo.bio, Validators.maxLength(800)],
       started_making: [this.ProfileInfo.started_making, Validators.maxLength(800)],
-      field_add_your_makerspace_s_: this.fb.array([]),
+      field_add_your_makerspace_s_: this.fb.array([],Validators.maxLength(10)),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
       this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace, index) => {

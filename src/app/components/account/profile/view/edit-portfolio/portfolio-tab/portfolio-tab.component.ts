@@ -21,6 +21,7 @@ export class PortfolioTabComponent implements OnInit {
   pages: number = 1;
   hideloadmoreproject = true;
   countProject: number;
+  isLoaded = false;
 
 
   constructor(
@@ -41,6 +42,7 @@ export class PortfolioTabComponent implements OnInit {
     this.viewService.getView('portfolio-projects', [['status', this.status], ['uid', uid], ['member_id', uid], ["page", PageIndex]]).subscribe((projects: ProjectCardPortfolio[]) => {
       if (PageIndex == 0) {
         this.Projects = projects;
+        this.isLoaded = true;
         // console.log( this.Projects)
         this.pages = 0;
 

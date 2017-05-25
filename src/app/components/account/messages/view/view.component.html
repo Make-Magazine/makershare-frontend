@@ -11,16 +11,16 @@
       </div>
     </div>
     <div class="delete-actions">
-      <button type="button" *ngIf="!block" class="btn btn-danger" (click)="blockUser()">Block this user
+      <button type="button" *ngIf="!block" class="btn btn-danger" (click)="blockUser()">Block user(s)
       <i class="fa fa-ban" aria-hidden="true"></i>
     </button>
-      <button type="button" *ngIf="block" class="btn btn-danger" (click)="unBlockUser()">UnBlock this user</button>
+      <button type="button" *ngIf="block" class="btn btn-danger" (click)="unBlockUser()">Unblock user(s)</button>
       <button type="button" class="btn btn-danger" (click)="previousUrl()" (click)="deleteThread()">Delete this thread
       <i class="fa fa-trash-o" aria-hidden="true"></i>
     </button>
-      <button type="button" class="btn btn-danger" (click)="previousUrl()">Back
+      <!--<button type="button" class="btn btn-danger">Back
       <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </button>
+      </button>-->
       <!--<a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>-->
       <!--<a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>-->
     </div>
@@ -39,8 +39,8 @@
             <p class="sender" *ngIf="message.status == 'blocked'"><a class="blocked-user">{{message?.first_name}} {{message?.last_name}}</a>              </p>
             <p class="timestamp">{{message?.timestamp}}</p>
           </div>
-          <div class="delete">
-            <a class="fa fa-2x fa-trash delete-message" (click)="deleteReplay(i)"></a>
+          <div class="delete" *ngIf="hideDeleteReply">
+            <a class="fa fa-2x fa-trash delete-message"  on-mouseover='over()' ngbTooltip="{{show}}" (click)="deleteReplay(i)"></a>
           </div>
         </div>
         <div class="message-body">
@@ -59,7 +59,7 @@
         {{ formErrors.body }}
       </div>
       <ul class="list-unstyled send-actions">
-        <li><button type="button" class="btn btn-transparent" (click)="cancel()">Cancel</button></li>
+        <li><button type="button" class="btn btn-transparent" (click)="previousUrl()" (click)="cancel()">Cancel</button></li>
         <li><button type="submit" class="btn btn-blue btn-sharp">Send</button></li>
       </ul>
     </div>
