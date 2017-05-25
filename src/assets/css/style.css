@@ -9598,7 +9598,8 @@ img {
   .create-newmsg textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
-    resize: inherit; }
+    resize: inherit;
+    width: 100%; }
   .create-newmsg input {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
