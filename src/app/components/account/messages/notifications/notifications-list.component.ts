@@ -68,7 +68,7 @@ export class NotificationsListComponent implements OnInit {
   date=date+' hours';
 
   }
-    return date;
+    return date+' ago';
   }
  }
   // timeago(timeStamp) {
