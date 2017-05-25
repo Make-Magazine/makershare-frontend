@@ -151,6 +151,8 @@ header {
         }
         
         &.shrink {
+            height: 80px;
+            @include transition(0.5s);            
             .navbar-brand {
                 width: 75px;
                 @include transition(0.5s);
@@ -161,7 +163,7 @@ header {
                 }
             }
             nav.navbar {
-                padding: 10px 15px 20px;
+                padding: 10px 15px 0px;
                 @include transition(0.5s);                
                 #MainNav {
                     .nav-item {
