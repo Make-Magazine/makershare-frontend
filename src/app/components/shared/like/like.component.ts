@@ -41,7 +41,9 @@ export class LikeComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
-      if (data == false) { } else {
+      if (data == false) {
+
+       } else {
         /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
@@ -80,7 +82,7 @@ export class LikeComponent implements OnInit {
         this.router.navigate(['/access-denied']);
       }
       e.preventDefault();
-      if (this.isLiked) {
+      if (this.isLiked && data == true) {
         this.flagService.unflag(this.nodeNid, this.user, 'like').subscribe(response => {
           this.isLiked = false;
           this.countlikes--;
@@ -90,7 +92,7 @@ export class LikeComponent implements OnInit {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
           // console.log(err);
         });
-      } else {
+      } else if(!this.isLiked && data == true) {
         this.flagService.flag(this.nodeNid, this.user, 'like').subscribe(response => {
           this.isLiked = true;
           this.countlikes++;

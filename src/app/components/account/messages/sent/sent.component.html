@@ -21,8 +21,8 @@
         <!--<div class="select" *ngIf="message">
           <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)">
         </div>-->
-        <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
-          <div class="media message-info">
+        <div class="wrapper d-flex d-row" *ngIf="message" >
+          <div class="media message-info" (click)="viewMessage(message.thread_id)">
             <div class="media-left">
               <a *ngIf="message.status == 'active'" (click)="userProfile(message.first_name,message.last_name)">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
@@ -30,23 +30,32 @@
               <a *ngIf="message.status == 'blocked'">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
+              <a *ngIf="message.loginUser" (click)="userProfile(currentUser.first_name,currentUser.last_name)">
+                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+              </a>
             </div>
             <div class="media-body" *ngIf="message.count>2">
               <span *ngIf="message.status == 'active'" class="sender">You sent 
-                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
+                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more messages: 
               </span>
               <span *ngIf="message.status == 'blocked'" class="sender">You sent 
-                <a class="blocked-user" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more adirect message: 
+                <a class="blocked-user" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more messages: 
+              </span>
+              <span *ngIf="message.loginUser" class="sender">You sent 
+                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a>  ..... {{message.count-2}} more a reply: 
               </span>
               <h4 message-subject (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
             <div class="media-body" *ngIf="message.count<=2">
               <span  *ngIf="message.status == 'active'" class="sender">You sent 
-                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
+                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>  a message. 
               </span>
               <span  *ngIf="message.status == 'blocked'" class="sender">You sent 
-                <a class="blocked-user" >{{message.first_name}} {{message.last_name}}</a> a direct message: 
+                <a class="blocked-user" >{{message.first_name}} {{message.last_name}}</a> a message. 
+              </span>
+               <span *ngIf="message.loginUser" class="sender">You sent 
+                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a> a reply: 
               </span>
               <h4 message-subject>{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
@@ -61,8 +70,10 @@
           <!--<div class="delete">
             <a class="fa fa-2x fa-trash delete-message" (click)="deleteMessage(i)"></a>
           </div>-->
-          <div *ngFor="let block of blocked">
-            <button *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
+          <div *ngIf="message.first_name && message.last_name">
+            <div class="unblock-button" *ngFor="let block of blocked">
+              <a class="btn btn-load-more" *ngIf="block.firstname == message.first_name && block.lastname == message.last_name" (click)="unBlockUsers(block.uid, i)">Unblock</a>
+            </div>
           </div>
         </div>
       </li>
