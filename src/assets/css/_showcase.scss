@@ -265,10 +265,18 @@
         // overflow: inherit !important;
         // height: auto !important;
     }
+
+    .entries-count{
+        color: $shade-4;
+    }
     .profile-container  {
         .spotlight-item {
             .user-card {
                 padding: 30px 10px 10px 10px;
+                // .count {
+                //     color: #fff;
+                // }
+            
                 .media {
                     .profile-pic-container {
                         width: 80px;
@@ -290,6 +298,7 @@
                     }
                     .media-body {
                         width: calc(100% - 80px);
+                      
                     }
                 }
             }
