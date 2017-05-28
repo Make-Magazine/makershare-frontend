@@ -7293,6 +7293,8 @@ textarea {
   min-height: 168px;
   font-weight: normal;
   line-height: 1.5rem; }
+.page-single-showcase .entries-count {
+  color: #4F4F4F; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
