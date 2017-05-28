@@ -8,11 +8,13 @@ import { Location } from '@angular/common'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../../shared/loader/loader.service';
+import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   moduleId: module.id,
   selector: 'app-inbox',
-  templateUrl: './inbox.component.html'
+  templateUrl: './inbox.component.html',
+  providers: [NgbTooltipConfig],
 })
 export class InboxComponent implements OnInit {
 
@@ -32,6 +34,7 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
   noMessage= false;
+  deleteMsgTip="Delete this message";
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -44,8 +47,12 @@ export class InboxComponent implements OnInit {
     private modalService: NgbModal,
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
+    private config: NgbTooltipConfig,
 
-  ) { }
+  ) { 
+    config.placement = 'bottom';
+    config.triggers = 'hover'; 
+   }
   ngOnInit(): void {
     this.getStatus();
     this.CountMessages();
