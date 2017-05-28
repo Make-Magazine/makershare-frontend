@@ -39,7 +39,7 @@ import { ProfilePictureService } from '../../components/shared/profile-picture/p
         bottom: 20px;
         right: 90px;
         padding: 15px;
-        background-color: rgba(0,0,0,0.7);
+        background-color: transparent;
       }
       #page-404 .text-block h4, #page-404 .text-block p {
         color: #fff;
