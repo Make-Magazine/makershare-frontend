@@ -34,6 +34,9 @@ export class SentComponent implements OnInit {
   noMessage= false;
   countSent;
   countInbox;
+  currentUser;
+  loginUser = false
+
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -53,8 +56,11 @@ export class SentComponent implements OnInit {
     this.getStatus();
     this.getMessages();
     this.getBlockedUsers();
-    this.userId = localStorage.getItem('user_id');
 
+    this.user.getUser(this.userId).subscribe(res => {
+      this.currentUser =  res;
+      console.log(this.currentUser)
+    })
   }
 
   hidepopup() {
@@ -92,6 +98,22 @@ export class SentComponent implements OnInit {
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
                       this.messages[key].status = res.status;
+                    })
+                  }
+                }
+              })
+            }else{
+              this.user.getUser(this.userId).subscribe(res => {
+                 this.messages[key].loginUser = true;
+                 this.messages[key].user_photo = res.user_photo;
+              })
+              this.pm.getParticipents(this.messages[key].thread_id).subscribe(res => {
+                for (let i = 0; i < res.length; i++) {
+                  if (res[i] != this.userId) {
+                    this.user.getUser(res[i]).subscribe(res => {
+                      this.messages[key].loginUser = true;
+                      this.messages[key].first_name = res.first_name;
+                      this.messages[key].last_name = res.last_name;
                     })
                   }
                 }

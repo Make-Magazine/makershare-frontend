@@ -4,21 +4,25 @@
       <div class="content-container h-100">
         <div class="card-container">
           <div class="card">
-            <div class="showcase-type"  (click)="ShowSingleShowcase(showcase.path)">
+            <div class="showcase-type" (click)="ShowSingleShowcase(showcase.path)">
               <p>Showcase</p>
             </div>
-            <h3 class="card-title"  (click)="ShowSingleShowcase(showcase.path)">{{showcase.showcase_name}}</h3>
-            <div class="card-description hidden-md-down" *ngIf="showcase.description_trim"  (click)="ShowSingleShowcase(showcase.path)">
+            <h3 class="card-title" (click)="ShowSingleShowcase(showcase.path)">{{showcase.showcase_name}}</h3>
+            <div class="card-description hidden-md-down" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)">
               <p [innerHTML]="showcase.description_trim"></p>
             </div>
             <div class="showcase-card-footer mt-auto d-flex">
               <div class="showcase-card-footer-2">
                 <div class="showcase-card-count d-felx">
-                  <div class="showcase-likes-div" *ngIf="showcase.nid && userId ">
+                  <div class="showcase-likes-div" *ngIf="showcase.nid && !userId ">
                     <!--<img class="showcase-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
                     <img class="showcase-likes" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
                     <span *ngIf="showcase.like_counter">{{showcase.like_counter}}</span>
                     <span *ngIf="!showcase.like_counter">0</span>-->
+                    <app-like [nodeNid]="showcase.nid" [showcase]="true"></app-like>
+
+                  </div>
+                  <div class="showcase-likes-div" *ngIf="showcase.nid && userId ">
                     <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
 
                   </div>
