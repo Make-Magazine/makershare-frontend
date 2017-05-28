@@ -258,7 +258,10 @@ export class ViewComponent implements OnInit {
     this.loaderService.display(true);
     this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data => {
       this.participants = [];
-      this.msg = []
+      this.msg.messages.length = this.msg.messages.length - 1;
+      if(this.msg.messages.length <= 1){
+        this.hideDeleteReply = false;
+      }
       this.getThreads();
       this.loaderService.display(false);
     });

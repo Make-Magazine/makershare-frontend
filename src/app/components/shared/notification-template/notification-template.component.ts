@@ -20,7 +20,8 @@ export class NotificationTemplateComponent implements OnInit {
     private pm: PmService,
   ) { }
 
-  ngOnInit() {   
+  ngOnInit() { 
+  
   }
 
   MarkAsSeen(seen){
@@ -81,4 +82,5 @@ export class NotificationTemplateComponent implements OnInit {
       delete this.notification;
    })
   }
+  
 }
