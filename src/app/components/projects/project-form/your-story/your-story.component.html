@@ -189,7 +189,7 @@
 
 
     <div class="modal-header">
-      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <button type="button" class="close ml-auto" #closebtn aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -233,7 +233,6 @@
 
 
     <div class="modal-footer">
-      <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
       <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-load-more" (click)="ImageUpdated(closebtn)">Save</button>
     </div>
   </div>

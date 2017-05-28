@@ -152,7 +152,7 @@
       <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
         <div class="" *ngFor="let membership of project.field_team_members; let i = index">
           <a>
-            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="maker-name mt-0">{{membership}}</span>
+            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="mt-0">{{membership}}</span>
           </a>
         </div>
       </div>
