@@ -70,19 +70,19 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label">To:</label>
+            <label class="control-label">TO:</label>
             <input #myInput type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Start typing a name to send" [ngbTypeahead]="search"
               [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
           </div>
           <div class="form-group subject">
-            <label class="control-label">Subject</label>
+            <label class="control-label">SUBJECT</label>
             <input type="text" class="form-control" name="subject" id="subject" formControlName="subject">
           </div>
           <div *ngIf="formErrors.subject" class="alert alert-danger">
             {{ formErrors.subject }}
           </div>
           <div class="form-group message-text">
-            <label class="control-label">Message</label>
+            <label class="control-label">MESSAGE</label>
             <textarea name="body" id="body" cols="129" rows="10" formControlName="body"></textarea>
           </div>
           <div *ngIf="formErrors.body" class="alert alert-danger">
@@ -91,7 +91,7 @@
         </form>
       </div>
       <div class="modal-footer mt-auto">
-        <button href="" class="btn btn-load-more" (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>
+        <!--<button href="" class="btn btn-load-more" (click)="c('Close click')" (click)="resetForm($event)">Cancel</button>-->
         <button type="submit" *ngIf="messageForm.valid" class="btn btn-load-more" (click)="c('Close click')" (click)="onSubmit($event)">Send</button>
         <button type="submit" *ngIf="!messageForm.valid" class="btn btn-load-more" (click)="clickedError()">Send</button>
       </div>
