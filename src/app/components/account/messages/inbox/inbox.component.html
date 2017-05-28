@@ -53,7 +53,7 @@
             <button class="btn btn-simple-small m-0 mr-2" *ngIf="block.firstname == message.first_name" (click)="unBlockUsers(block.uid, i)">Unblock</button>
           </div>
           <div class="delete">
-            <a class="lnr lnr-trash delete-message" (click)="deleteMessage(i)"></a>
+            <a class="lnr lnr-trash delete-message" ngbTooltip="{{deleteMsgTip}}" (click)="deleteMessage(i)"></a>
           </div>
         </div>
       </li>
