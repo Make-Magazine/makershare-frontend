@@ -68,6 +68,7 @@ export class ViewComponent implements OnInit {
     this.getCurrentUser();
     this.loaderService.display(true);
     this.userId = parseInt(localStorage.getItem('user_id'));
+    this.participants = [];
   }
   getThreads() {
     this.route.params
