@@ -93,7 +93,7 @@ export class MakersComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "php_2"
-    this.ActionName = "Most liked"
+    this.ActionName = "Most likes"
     this.getMakers();
 
   }
@@ -102,7 +102,7 @@ export class MakersComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "php"
-    this.ActionName = "Most viewed"
+    this.ActionName = "Most viewes"
     this.getMakers();
 
   }
@@ -111,7 +111,7 @@ export class MakersComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "php_1"
-    this.ActionName = "Most viewed"
+    this.ActionName = "Most projects"
     this.getMakers();
 
   }
