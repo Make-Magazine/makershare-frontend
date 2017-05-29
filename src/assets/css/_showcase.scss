@@ -55,6 +55,13 @@
             border: none;
             .user-card {
                 padding: 10px 0px;
+                .count 
+                {
+                    display: none;
+                }
+                .profile-tag {
+                    display: none;
+                }
             }
         }
         .single-showcase {
