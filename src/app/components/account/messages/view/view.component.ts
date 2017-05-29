@@ -75,8 +75,7 @@ export class ViewComponent implements OnInit {
       .subscribe(data => {
         this.msg = data;
         if(window.location.href){
-          this.participants = [];
-          console.log(this.participants)
+          this.participants = []; 
         }
         /*hide delete replay if only one replay*/
         if (this.msg.messages.length > 1) {
