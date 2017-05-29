@@ -59,7 +59,7 @@ import { AuthGuardService } from '../../auth0/auth-guard.service';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
-import { CommuintyManagerUserCardComponent } from './commuinty-manager-user-card/commuinty-manager-user-card.component';
+
 
 let config = {
   breakPoints: {
@@ -130,7 +130,7 @@ export function ResponsiveDefinition() {
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
     RegistrationCollectComponent,
-    CommuintyManagerUserCardComponent,
+
   ],
   exports: [
     CommentComponent,
