@@ -110,7 +110,7 @@
 					display: flex;
 					align-items:center;							
 					width: 100%;
-					overflow: hidden;
+					// overflow: hidden;
 					padding: 10px;
 					position: relative;
 					z-index: 1;
@@ -184,6 +184,10 @@
 						i {
 							float: right;
 						}
+					}
+					ngb-tooltip-window {
+						width: 150px;
+						left: 938px;
 					}
 				}
 				&:not(:first-of-type) {
@@ -387,6 +391,7 @@
 				border: 1px solid $shade-2;
 				color: $shade-4;
 				resize: inherit;
+				width: 100%;
 		}
 		input {
 				border: 1px solid $shade-2;

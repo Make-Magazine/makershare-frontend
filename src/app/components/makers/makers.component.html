@@ -1,0 +1,60 @@
+<div class="page-explore">
+  <div class="container">
+    <header class="explore-header">
+      <div class="container">
+        <h3>Makers</h3>
+      </div>
+    </header>
+    <div class="filters">
+      <div class="container">
+        <!--hide in mobiles screens-->
+        <div class="row justify-content-end align-items-center hidden-xs-down">
+          <div *ngIf="makersCount" class="entries-count btn">
+            <p>{{makersCount}} Makers</p>
+          </div>
+          <div class="sorting-filter dropdown">
+            <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
+                  </button>
+            <div class="dropdown-menu" aria-labelledby="filter-projects">
+              <a class="dropdown-item" (click)="mostRecent()" class="btn">Newest</a>
+              <a class="dropdown-item" (click)="sortAsc()" class="btn">Name A-Z</a>
+              <a class="dropdown-item" (click)="sortDesc()" class="btn">Name Z-A</a>
+              <a class="dropdown-item" (click)="mostLiked()" class="btn">Most likes</a>
+              <a class="dropdown-item" (click)="mostViewed()" class="btn">Most viewes</a>
+              <a class="dropdown-item" (click)="mostProjects()" class="btn">Most projects</a>
+            </div>
+          </div>
+        </div>
+
+        <!--show on mobile screens-->
+        <div class="row hidden-sm-up d-flex flex-column">
+          <div class="entries-count btn">
+            <p *ngIf="countProject > 1">350 Makers</p>
+          </div>
+          <div class="sorting-filter dropdown">
+            <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
+                  </button>
+            <div class="dropdown-menu" aria-labelledby="filter-projects">
+              <a class="dropdown-item" (click)="mostRecent()" class="btn">Newest</a>
+              <a class="dropdown-item" (click)="sortAsc()" class="btn">Name A-Z</a>
+              <a class="dropdown-item" (click)="sortDesc()" class="btn">Name Z-A</a>
+              <a class="dropdown-item" (click)="mostLiked()" class="btn">Most likes</a>
+              <a class="dropdown-item" (click)="mostViewed()" class="btn">Most viewes</a>
+              <a class="dropdown-item" (click)="mostLiked()" class="btn">Most projects</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="projects-grid row">
+      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+    </div>
+  </div>
+  <div class="text-center">
+    <a class="btn btn-load-more" (click)="loadMoreMakers()">Load more</a>
+  </div>
+</div>
