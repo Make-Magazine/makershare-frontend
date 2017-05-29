@@ -40,7 +40,7 @@
             <p class="timestamp">{{message?.timestamp}}</p>
           </div>
           <div class="delete" *ngIf="hideDeleteReply">
-            <a class="fa fa-2x fa-trash delete-message"  on-mouseover='over()' ngbTooltip="{{show}}" (click)="deleteReplay(i)"></a>
+            <a class="fa fa-2x fa-trash delete-message" ngbTooltip="{{deleteReplyTip}}" (click)="deleteReplay(i)"></a>
           </div>
         </div>
         <div class="message-body">

@@ -1,4 +1,4 @@
-<div class="profile-content">
+<div class="profile-content" *ngIf="profileContent">
   <div class="projects-grid row">
     <app-project-card *ngFor="let project of profile_projects" 
                       [nid]="project.nid" 
