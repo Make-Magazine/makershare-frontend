@@ -74,6 +74,10 @@ export class ViewComponent implements OnInit {
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
         this.msg = data;
+        if(window.location.href){
+          this.participants = [];
+          console.log(this.participants)
+        }
         /*hide delete replay if only one replay*/
         if (this.msg.messages.length > 1) {
           this.hideDeleteReply = true
