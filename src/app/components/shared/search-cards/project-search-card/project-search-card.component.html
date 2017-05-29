@@ -86,7 +86,7 @@
             <img *ngIf="!project.cover_photo_search_small" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="project.cover_photo_search_small" src="{{project.cover_photo_search_small}}" alt="">
           </div>
-          <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.path)">
+          <div class="data-container d-flex flex-column title-name" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)" class="mt-auto">
               <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>

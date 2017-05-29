@@ -162,9 +162,9 @@
     </div>
     <div class="modal-footer">
       <div class="list-unstyled actions d-flex flex-row">
-        <div class="ml-2">
+        <!--<div class="ml-2">
           <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click')">Close</button>
-        </div>
+        </div>-->
         <div class="ml-2" *ngIf="button == true">
           <button type="button" class="btn btn-load-more" [disabled]="!addProjectForm.valid" (click)="onSubmit()" (click)="c('Close click')">Submit</button>
         </div>

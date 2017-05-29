@@ -40,7 +40,7 @@ export class ViewComponent implements OnInit {
   };
   id;
   hover;
-  show;
+  deleteReplyTip = "Delete this reply";
   participants = [];
   hideDeleteReply;
   constructor(
@@ -54,7 +54,10 @@ export class ViewComponent implements OnInit {
     private loaderService: LoaderService,
     private config: NgbTooltipConfig,
 
-  ) { }
+  ) {
+    config.placement = 'bottom';
+    config.triggers = 'hover'; 
+  }
 
   ngOnInit() {
     //this.getBlockedUser();
@@ -276,9 +279,5 @@ export class ViewComponent implements OnInit {
   toTitleCase(str) {
     return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
   }
-  over() {
-    this.show = "Delete this reply";
-  }
-
 }
 
