@@ -19,7 +19,6 @@ export class SolrService {
     query = encodeURIComponent(query);
     //return this.http.get(globals.solrPath + 'select?fq=tm_item_label:'+query+'&indent=on&rows=10&wt=json&fl=tm_item_label,ss_item_bundle,ss_item_entity_id,ss_item_type').map(res => res.json()).timeout(10000);
     return this.http.get(globals.solrPath + 'select?fq=tm_title:(' + query + ') OR tm_field_first_name:(' + query + ') OR tm_field_last_name:(' + query + ') OR tm_name:(' + query + ')&spellcheck=true&wt=json&fl=tm_title,tm_name,tm_field_first_name,tm_field_last_name,tm_name').map(res => res.json()).timeout(10000);
-
   }
 
   // select general query
@@ -60,7 +59,6 @@ export class SolrService {
   selectUsers(query: string, count: number = 10, skip: number = 0): Observable<any> {
     // query = encodeURIComponent(query);
     //return this.http.get(globals.solrPath + 'select?fq=index_id:user_index&fq=spell:'+query+'&rows='+count+'&indent=on&wt=json&fl=is_uid&fq=is_status:1').map(res => res.json()).timeout(10000);
-    return this.http.get(globals.solrPath + 'select?fq=index_id:user_index&fq=tm_field_first_name:(' + query + ') OR tm_field_last_name:(' + query + ')&indent=on&fl=is_uid&wt=json&rows=' + count).map(res => res.json()).timeout(10000);
-
+    return this.http.get(globals.solrPath + 'select?fq=index_id:user_index&fq=tm_field_first_name:(' + query + ') OR tm_field_last_name:(' + query + ') OR tm_profile_maker$field_address$country:("'+ query +'") OR tm_profile_maker$field_address$administrative_area:("'+query+'") OR tm_profile_maker$field_address$locality:("'+query+'")&indent=on&fl=is_uid&wt=json&rows=' + count).map(res => res.json()).timeout(10000);
   }
 }

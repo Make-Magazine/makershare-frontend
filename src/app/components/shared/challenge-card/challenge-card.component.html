@@ -21,8 +21,7 @@
         <p>Sponsored by {{challenge.sponsored_by}}</p>
       </div>
       <h3 class="card-title" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
-      <div class="card-description" *ngIf="challenge.summary_trim">
-        <p [innerHTML]="challenge.summary_trim"></p>
+      <div class="card-description" *ngIf="challenge.summary_trim"  [innerHTML]="challenge.summary_trim">
       </div>
       <div class="challene-card-footer d-flex">
         <div class="challene-card-footer-1 hidden-xs-down">
