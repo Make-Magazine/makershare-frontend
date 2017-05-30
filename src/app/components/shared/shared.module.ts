@@ -60,6 +60,7 @@ import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 
+
 let config = {
   breakPoints: {
     xs: { max: 575 },
@@ -129,6 +130,7 @@ export function ResponsiveDefinition() {
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
     RegistrationCollectComponent,
+
   ],
   exports: [
     CommentComponent,

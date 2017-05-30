@@ -29,6 +29,9 @@ export class UserCardComponent implements OnInit {
   @Input() uid;
   @Input() name;
   @Input() showMessage = true;
+  @Input() communityManager = false;
+
+  
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -44,8 +47,7 @@ export class UserCardComponent implements OnInit {
     config.triggers = 'hover';
   }
   ngOnInit() {
-        this.getProjectCountByUser();
-
+    this.getProjectCountByUser();
     this.getcard();
     this.getBadges();
     this.buildForm();
@@ -57,7 +59,8 @@ export class UserCardComponent implements OnInit {
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-       //console.log(this.card)
+      
+      
       this.isCurrentUser();
     }, err => {
       // notification error  in service 
@@ -67,7 +70,17 @@ export class UserCardComponent implements OnInit {
   getBadges() {
     // service to get profile card Badges
     this.viewService.getView('api_user_badges_card', [['uid', this.uid]]).subscribe(data => {
-      this.badges = data;
+      this.badges = data;      
+      if(this.communityManager){
+        for (let badge of data){
+          if(badge.title == "Community Manager"){
+            // this.badges = [];
+            this.badges = [badge];         
+          }
+        }
+      } 
+      //console.log(data);
+    
     }, err => {
       // notification error  in service 
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });

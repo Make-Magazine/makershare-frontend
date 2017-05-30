@@ -19,13 +19,14 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
-    { path: 'makers', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
+    { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
     { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
     { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'portfolio/:name', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: 'app/components/account/account.module#AccountModule' },
     { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
+    { path: 'makers', loadChildren: 'app/components/makers/makers.module#MakersModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},    
     { path: 'the-maker-movement', component: MakerMovementComponent},
     { path: 'make-intel', component: IntelMakeComponent},
