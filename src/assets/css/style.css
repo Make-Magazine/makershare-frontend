@@ -7144,6 +7144,10 @@ textarea {
       border: none; }
       .showcase-card-backlayer .showcase-card .card .user-card {
         padding: 10px 0px; }
+        .showcase-card-backlayer .showcase-card .card .user-card .count {
+          display: none; }
+        .showcase-card-backlayer .showcase-card .card .user-card .profile-tag {
+          display: none; }
     .showcase-card-backlayer .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer .showcase-card .single-showcase img {
