@@ -15,12 +15,12 @@
       <i class="fa fa-ban" aria-hidden="true"></i>
     </button>
       <button type="button" *ngIf="block" class="btn btn-danger" (click)="unBlockUser()">Unblock user(s)</button>
-      <!--<button type="button" class="btn btn-danger" (click)="previousUrl()" (click)="deleteThread()">Delete this thread
+      <button type="button" class="btn btn-danger" (click)="previousUrl()" (click)="deleteThread()">Delete this thread
       <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </button>-->
-      <!--<button type="button" class="btn btn-danger">Back
-      <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </button>-->
+    </button>
+      <button *ngIf="block" type="button" class="back-inbox btn btn-danger ml-auto" [routerLink]="['/inbox-notifications']">
+        <i class="lnr lnr-arrow-left" aria-hidden="true"></i>&nbsp; Inbox
+      </button>
       <!--<a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>-->
       <!--<a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>-->
     </div>

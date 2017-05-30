@@ -30,6 +30,7 @@ export class ProjectsComponent implements OnInit {
 
   userPic = false;
   profile_projects = [];
+  profileContent = false;
   ngOnInit() {
     // check if user is logged in or not
     //  this.loaderService.display(true);
@@ -72,6 +73,7 @@ export class ProjectsComponent implements OnInit {
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects Projects ');
       this.loadMoreVisibilty();
+      this.profileContent = true;
 
     }, err => {
 
