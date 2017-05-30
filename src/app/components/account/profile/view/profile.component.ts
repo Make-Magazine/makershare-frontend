@@ -142,9 +142,7 @@ export class ProfileComponent implements OnInit {
   DefaultView: string = "grid";
   mobileToggle: boolean = false;
   emptySocial: boolean = true;
-  hackster: boolean = true;
-  hackaday: boolean = true;
-  instructables: boolean = true;
+  currentHover: string;
   emptySection = {
     motto: true,
     bio: true,
@@ -185,6 +183,7 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit() {
     this.CurrentInfoTab = 'Personal Info';
+    this.currentHover = '';
     this.PhotoModalTab = 'upload';
     let userName = this.route.snapshot.params['user_name'];
     this.userService.getStatus().subscribe(data => {
@@ -249,6 +248,7 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
+      console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
@@ -461,5 +461,11 @@ export class ProfileComponent implements OnInit {
   }
   nextTab() {
     this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab) + 1]
+  }
+  over(socialActive:string){
+    this.currentHover = socialActive;
+  }
+  leave(){
+    this.currentHover = '';    
   }
 }
