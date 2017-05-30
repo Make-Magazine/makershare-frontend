@@ -30,8 +30,8 @@
 
         <!--show on mobile screens-->
         <div class="row hidden-sm-up d-flex flex-column">
-          <div class="entries-count btn">
-            <p *ngIf="countProject > 1">350 Makers</p>
+          <div *ngIf="makersCount" class="entries-count btn">
+            <p>{{makersCount}} Makers</p>
           </div>
           <div class="sorting-filter dropdown">
             <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
