@@ -371,9 +371,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   SaveProject() {
     this.ProjectLoaded = false;
-    if (this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371) {
       this.project.CheckIfReadyToPublic();
-    }
+    
     if(this.project.field_categories.und.length == 0){
       this.project.field_categories.und = [""];
     }
@@ -435,9 +434,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * @param Status : the status of the project dependent on visibility type
    */
   GettingFieldsReady(Status: number, Visibility: number) {
-    if (Status == 0){
-      Status=null;
-    }
     this.current_active_tab = 'Your Story';
     if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
       this.notificationBarService.create({ message: "You're missing some required fields before you can publish.", type: NotificationType.Error });
@@ -446,7 +442,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }
     this.project.SetField(Visibility, 'field_visibility2');
     this.project.SetField(Status, "status");
-    console.log(this.project);
     if (!this.project.title) {
       this.project.SetField("Untitled", "title");
     }
@@ -505,7 +500,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.ResetFieldCollectionEmptyRows();
       }
     );
-    console.log(this.project);
   }
 
   ResetFieldCollectionEmptyRows() {
