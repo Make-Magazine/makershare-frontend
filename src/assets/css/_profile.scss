@@ -1111,6 +1111,10 @@
         width: auto;
         max-width: 35%;
     }
+    .members-name-lg {
+        font-size: 1rem;
+        color: $members-name-lg;
+    }
     .card-categories {
         position: absolute;
         z-index: 11;
