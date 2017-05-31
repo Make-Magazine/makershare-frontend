@@ -17,15 +17,24 @@ import { GuidelinesComponent } from './components/pages/guidelines/guidelines.co
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 
+//modules
+import { HomeModule } from './components/home/home.module';
+import { ShowcaseModule } from './components/showcase/showcase.module';
+import { ProjectsModule } from './components/projects/projects.module';
+import { ChallengeModule } from './components/challenge/challenge.module';
+import { ProfileModule } from './components/account/profile/profile.module';
+import { AccountModule } from './components/account/account.module';
+import { SearchModule } from './components/search/search.module';
+
 const APP_ROUTES: Routes = [
-    { path: '', loadChildren: 'app/components/home/home.module#HomeModule' },
-    { path: 'makers', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
-    { path: 'projects', loadChildren: 'app/components/projects/projects.module#ProjectsModule' },
-    { path: 'missions', loadChildren: 'app/components/challenge/challenge.module#ChallengeModule' },
-    { path: 'portfolio', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
-    { path: 'portfolio/:name', loadChildren: 'app/components/account/profile/profile.module#ProfileModule' },
-    { path: 'account', loadChildren: 'app/components/account/account.module#AccountModule' },
-    { path: 'search', loadChildren: 'app/components/search/search.module#SearchModule' },
+    { path: '', loadChildren: './components/home/home.module#HomeModule' },
+    { path: 'makers', loadChildren: './components/showcase/showcase.module#ShowcaseModule' },
+    { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
+    { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
+    { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
+    { path: 'portfolio/:name', loadChildren: './components/account/profile/profile.module#ProfileModule' },
+    { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
+    { path: 'search', loadChildren: './components/search/search.module#SearchModule' },
     { path: 'access-denied', component:  AccessDeniedComponent},    
     { path: 'the-maker-movement', component: MakerMovementComponent},
     { path: 'make-intel', component: IntelMakeComponent},
