@@ -3642,6 +3642,9 @@ footer {
   left: 14px;
   width: auto;
   max-width: 35%; }
+.lg-card .members-name-lg {
+  font-size: 1rem;
+  color: #D50000; }
 .lg-card .card-categories {
   position: absolute;
   z-index: 11;
