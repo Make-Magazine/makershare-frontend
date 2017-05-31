@@ -29,7 +29,7 @@ export class ProjectsComponent implements OnInit {
   CurrentActiveChildIndex = -1;
   page_arg;
   sort: ISorting = {
-    sort_by: "changed",
+    sort_by: "created",
     sort_order: "DESC",
     pageNo: 0
   };
