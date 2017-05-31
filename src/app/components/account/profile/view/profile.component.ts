@@ -284,7 +284,6 @@ export class ProfileComponent implements OnInit {
   }
   RemoveInterest(InterestId: number, InterestParentId: number): void {
     this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestId), 1);
-      console.log(this.ProfileInfo.maker_interests)    
     var flag = false;
     this.ProfileInfo.maker_interests.forEach((category, index) => {
       let catIndex = this.allIntersets.map(element => element.tid).indexOf(category.tid);
