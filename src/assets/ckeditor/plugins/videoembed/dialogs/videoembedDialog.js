@@ -27,12 +27,12 @@ CKEDITOR.dialog.add('videoembedDialog', function (editor) {
                         id: 'url_video',
                         label: 'URL (ex: https://www.youtube.com/watch?v=EOIvnRUa3ik)',
                         validate: CKEDITOR.dialog.validate.notEmpty(editor.lang.videoembed.validatetxt)
-                    },
-                    {
-                        type: 'text',
-                        id: 'css_class',
-                        label: editor.lang.videoembed.input_css
                     }
+                   // {
+                        //type: 'text',
+                        //id: 'css_class',
+                        //label: editor.lang.videoembed.input_css
+                    //}
                 ]
             }
         ],
@@ -42,9 +42,9 @@ CKEDITOR.dialog.add('videoembedDialog', function (editor) {
                     div_container = new CKEDITOR.dom.element('div'),
                     css = 'videoEmbed';
             // Set custom css class name
-            if (dialog.getValueOf('tab-basic', 'css_class').length > 0) {
-                css = dialog.getValueOf('tab-basic', 'css_class');
-            }
+            // if (dialog.getValueOf('tab-basic').length > 0) {
+            //     css = dialog.getValueOf('tab-basic');
+            // }
             div_container.setAttribute('class', css);
 
             // Auto-detect if youtube, vimeo or dailymotion url
