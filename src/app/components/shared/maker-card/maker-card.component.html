@@ -21,8 +21,8 @@
     <h4 class="maker-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h4>
     <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
     <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country == 'United States'">{{card.location_locality}} , {{card.city}}</p>
-    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">{{card.location_locality}} , {{card.country}}</p>
+    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country == 'United States'">{{card.location_locality}}, {{card.city}}</p>
+    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">{{card.location_locality}}, {{card.country}}</p>
     <p class="maker-descripe" *ngIf="card.descripe_yourself" innerHTML="{{card.descripe_yourself}}"></p>
     <div class="content-side col d-flex flex-column justify-content-start">
       <div class="card-stats mt-auto">
@@ -31,7 +31,7 @@
             <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
             <span *ngIf="projectsCount != 1">{{projectsCount}} projects</span>
           </li>
-          <li>
+          <!--<li>
             <img *ngIf="card.profile_likes == 0" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
             <img *ngIf="card.profile_likes != 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
             <span *ngIf="card.profile_likes">{{card.profile_likes}}</span>
@@ -40,7 +40,7 @@
             <img src="./assets/images/icons/views.png" class="project-views" alt="">
             <span *ngIf="card.profile_views">{{card.profile_views}}</span>
             <span *ngIf="!card.profile_views">0</span>
-          </li>
+          </li>-->
 
         </ul>
       </div>

@@ -1,4 +1,4 @@
-<div class="showcase-card" *ngIf="showcase"  >
+<div class="showcase-card" *ngIf="showcase">
   <div class="content-container h-100">
     <div class="card-container">
       <div class="card">
@@ -12,14 +12,19 @@
         <div class="showcase-card-footer mt-auto mb-3 d-flex">
           <div class="showcase-card-footer-2">
             <div class="showcase-card-count d-felx">
-              <div class="likes-count-div" *ngIf="showcase.nid && userId">
+              <div class="likes-count-div" *ngIf="showcase.nid && !userId">
                 <!--<img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
                 <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
                 <img class="showcase-likes" *ngIf="numLikes == 0" src="./assets/images/icons/light-not-selected.png" alt="">
                 <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>-->
-                 <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" ></app-like>
+                <app-like [nodeNid]="showcase.nid" [showcase]="true"></app-like>
 
               </div>
+              <div class="likes-count-div" *ngIf="showcase.nid && userId">
+
+                <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
+              </div>
+
               <div class="views-count-div">
                 <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                 <span class="views-count">{{showcase.views_count}}</span>
