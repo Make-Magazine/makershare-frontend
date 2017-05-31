@@ -56,7 +56,7 @@ export class ViewComponent implements OnInit {
 
   ) {
     config.placement = 'bottom';
-    config.triggers = 'hover'; 
+    config.triggers = 'hover';
   }
 
   ngOnInit() {
@@ -73,64 +73,76 @@ export class ViewComponent implements OnInit {
     this.route.params
       .switchMap((thread_id) => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
-        this.msg = data;
-        if(window.location.href){
-          this.participants = []; 
-        }
-        /*hide delete replay if only one replay*/
-        if (this.msg.messages.length > 1) {
-          this.hideDeleteReply = true
-        }
-        /*end of hide delete replay if only one replay*/
-        for (var i = 0; i < this.msg.participants.length; i++) {
-          if (this.msg.participants[i] != this.userId) {
-            this.userService.getUser(this.msg.participants[i]).subscribe(res => {
-              this.participants = this.participants.concat(res);
-            })
-          }
-          if (this.msg.participants[i] != this.userId) {
-            this.pm.getBlocked(this.msg.participants[i]).subscribe(data => {
-              if (data.author) {
-                this.block = true;
-              } else {
-                this.block = false;
-              }
-            })
+        let check = false;
+        /*check if this user participent of this message or not*/
+        for (let i = 0; i < data.participants.length; i++) {
+          if (data.participants[i] == this.userId) {
+            check = true;
           }
         }
-        this.messages = this.msg.messages
-        for (let message of this.messages) {
-          var date = new Date(message.timestamp * 1000);
-          var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
-          var period = date.getHours() >= 12 ? 'PM' : 'AM';
-          let i = 0
-          this.userService.getUser(message.author).subscribe(res => {
-            Object.assign(message, res);
-            this.dateObj = new Date(message.timestamp * 1000);
-            this.currentDate = new Date();
-            message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
-            if (message.timestamp < 1) {
-              message.timestamp = 'Now';
-            } else if (message.timestamp === 1) {
-              message.timestamp = 'minute ago';
-            } else if (message.timestamp > 1 && message.timestamp < 60) {
-              message.timestamp = message.timestamp + ' ' + 'minutes ago';
-            } else if (message.timestamp >= 60 && message.timestamp < 120) {
-              message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hour ago';
-            } else if (message.timestamp >= 120 && message.timestamp < 1440) {
-              message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hours ago';
-            } else if (message.timestamp >= 1440 && message.timestamp < 2880) {
-              message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'day ago';
-            } else if (message.timestamp > 2880 && message.timestamp < 10080) {
-              message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'days ago';
-            } else if (message.timestamp > 10080) {
-              //message.timestamp = this.dateObj.toLocaleDateString();
-              message.timestamp = message.date_format;
+        if (check) {
+          this.msg = data;
+          if (window.location.href) {
+            this.participants = [];
+            /*hide delete replay if only one replay*/
+            if (this.msg.messages.length > 1) {
+              this.hideDeleteReply = true
             }
-          })
-          i++
+            /*end of hide delete replay if only one replay*/
+            for (var i = 0; i < this.msg.participants.length; i++) {
+              if (this.msg.participants[i] != this.userId) {
+                this.userService.getUser(this.msg.participants[i]).subscribe(res => {
+                  this.participants = this.participants.concat(res);
+                })
+              }
+              if (this.msg.participants[i] != this.userId) {
+                this.pm.getBlocked(this.msg.participants[i]).subscribe(data => {
+                  if (data.author) {
+                    this.block = true;
+                  } else {
+                    this.block = false;
+                  }
+                })
+              }
+            }
+            this.messages = this.msg.messages
+            for (let message of this.messages) {
+              var date = new Date(message.timestamp * 1000);
+              var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
+              var period = date.getHours() >= 12 ? 'PM' : 'AM';
+              let i = 0
+              this.userService.getUser(message.author).subscribe(res => {
+                Object.assign(message, res);
+                this.dateObj = new Date(message.timestamp * 1000);
+                this.currentDate = new Date();
+                message.timestamp = Math.floor(Math.abs(this.dateObj - this.currentDate) / (60 * 1000));
+                if (message.timestamp < 1) {
+                  message.timestamp = 'Now';
+                } else if (message.timestamp === 1) {
+                  message.timestamp = 'minute ago';
+                } else if (message.timestamp > 1 && message.timestamp < 60) {
+                  message.timestamp = message.timestamp + ' ' + 'minutes ago';
+                } else if (message.timestamp >= 60 && message.timestamp < 120) {
+                  message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hour ago';
+                } else if (message.timestamp >= 120 && message.timestamp < 1440) {
+                  message.timestamp = Math.floor(message.timestamp / 60) + ' ' + 'hours ago';
+                } else if (message.timestamp >= 1440 && message.timestamp < 2880) {
+                  message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'day ago';
+                } else if (message.timestamp > 2880 && message.timestamp < 10080) {
+                  message.timestamp = Math.floor(message.timestamp / (24 * 60)) + ' ' + 'days ago';
+                } else if (message.timestamp > 10080) {
+                  //message.timestamp = this.dateObj.toLocaleDateString();
+                  message.timestamp = message.date_format;
+                }
+              })
+              i++
+            }
+            this.loaderService.display(false);
+          }
+        } else {
+          this.router.navigate(['/inbox-notifications']);
+          this.loaderService.display(false);
         }
-        this.loaderService.display(false);
       });
   }
 
@@ -265,7 +277,7 @@ export class ViewComponent implements OnInit {
     this.pm.deleteReplay(this.msg.messages[i].mid).subscribe(data => {
       this.participants = [];
       this.msg.messages.length = this.msg.messages.length - 1;
-      if(this.msg.messages.length <= 1){
+      if (this.msg.messages.length <= 1) {
         this.hideDeleteReply = false;
       }
       this.getThreads();
