@@ -40,7 +40,7 @@ export class ShowcaseCardComponent implements OnInit {
 
   }
   ShowSingleShowcase(path) {
-    this.router.navigate(['/makers/', path]);
+    this.router.navigate(['/showcases/', path]);
   }
 
   countLikes() {

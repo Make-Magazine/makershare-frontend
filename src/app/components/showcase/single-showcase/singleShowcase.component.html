@@ -13,9 +13,11 @@
                 </div>
               </div>
             </div>
-            <div class="showcase-card-footer-3">
-              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid" [showMessage]="false"></app-user-card>
-            </div>
+            <div class="showcase-card-footer-3 ">
+              
+              <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid" [showMessage]="false" [communityManager]="true"></app-user-card>
+
+              </div>
           </div>
           <div class="col-lg-8 col-md-6 col-sm-12 content-container">
             <div class="card-container">
@@ -24,8 +26,16 @@
                 <div class="card-description">
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
+
+                 <div class="entries-count d-flex btn">
+                <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
+                <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
+              </div> 
                 <div class="showcase-card-footer d-flex mt-auto">
-                  <div class="showcase-card-footer-2">
+                  <div class="showcase-card-footer-2 d-flex justify-content-end w-100">
+                    <div class="showcase-date w-100" *ngIf="showcase.last_updated">
+                      <span class="update-date">Last updated: {{showcase.last_updated}}</span>
+                    </div>
                     <div class="showcase-card-count  d-flex flex-row">
                       <div class="showcase-like" *ngIf="showcase.nid">
                         <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" (countNumber)="likesCounter($event)"></app-like>
@@ -47,9 +57,7 @@
                         </span>
                       </div>-->
                     </div>
-                    <div class="showcase-date w-100" *ngIf="showcase.last_updated">
-                      <span class="update-date">Last updated: {{showcase.last_updated}}</span>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

@@ -1,12 +1,12 @@
 <div class="blocked-users-page">
   <div class="container">
     <div class="page-header w-100 d-flex">
-      <button type="button" class="btn btn-danger ml-auto" (click)="previousUrl()">
-        <i class="lnr lnr-arrow-left" aria-hidden="true"></i>&nbsp; Back
+      <button type="button" class="back-inbox btn btn-danger ml-auto" (click)="previousUrl()">
+        <i class="lnr lnr-arrow-left" aria-hidden="true"></i>&nbsp; Inbox
       </button>
     </div>
     <div class="page-content pt-5">
-      <h3 class="pt-5 text-center" *ngIf="this.blocked.length == 0">You haven't blocked anyone</h3>
+      <h3 class="pt-5 text-center" *ngIf="this.blocked.length == 0">You haven't blocked anyone.</h3>
       <!--<ul class="list-group" *ngFor="let user of blocked;let i = index">
         <li class="list-group-item justify-content-between">
           {{user.firstname}} {{user.lastname}}
@@ -22,7 +22,7 @@
           </div>
           <div class="media-body d-flex">
             <span>{{user.firstname}} {{user.lastname}}</span>
-            <button type="button" class="btn btn-load-more ml-auto" (click)="unBlockUsers(user.uid, i)">UnBlock</button>
+            <button type="button" class="btn btn-load-more ml-auto" (click)="unBlockUsers(user.uid, i)">Unblock</button>
           </div>
         </div>
       </div>

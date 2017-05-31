@@ -1111,6 +1111,10 @@
         width: auto;
         max-width: 35%;
     }
+    .members-name-lg {
+        font-size: 1rem;
+        color: $members-name-lg;
+    }
     .card-categories {
         position: absolute;
         z-index: 11;
@@ -1181,14 +1185,15 @@
         height: 85px;
         img {
             width: 100%;
-            height: 100%;
+            height: auto;
         }
     }
     .data-container {
+        width: calc(100% - 83px);
         .card-title {
             @include card-header-font-md;
             color: $text-color-1;
-            height: 55px;
+            height: 63px;
             padding: 0px;
             display: -webkit-box;
             -webkit-line-clamp: 2;

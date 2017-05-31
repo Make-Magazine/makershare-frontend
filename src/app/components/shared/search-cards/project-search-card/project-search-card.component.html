@@ -46,13 +46,17 @@
           </p>
           <div class="card-stats mt-auto">
             <ul class="list-unstyled d-flex justify-content-between">
-              <li *ngIf="project.nid && userId ">
+              <li *ngIf="project.nid && !userId ">
                 <!--<img class="project-likes" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
                 <img class="project-likes" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
                 <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
                 <span *ngIf="!project.number_of_likes">0</span>-->
-               <span> <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like></span>
+                <span> <app-like [nodeNid]="project.nid" [project]="true"></app-like></span>
 
+              </li>
+              <li *ngIf="project.nid && userId ">
+
+                <span> <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like></span>
               </li>
               <li>
                 <img src="./assets/images/icons/views.png" class="project-views" alt="">
@@ -82,7 +86,7 @@
             <img *ngIf="!project.cover_photo_search_small" src="./assets/images/Gears-Grey.svg" alt="">
             <img *ngIf="project.cover_photo_search_small" src="{{project.cover_photo_search_small}}" alt="">
           </div>
-          <div class="data-container d-flex flex-column title-name w-75" (click)="ShowProjectDetails(project.path)">
+          <div class="data-container d-flex flex-column title-name" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
             <a (click)="userProfile(project.first_name,project.last_name)" class="mt-auto">
               <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>

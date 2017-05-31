@@ -69,7 +69,12 @@ export class SearchResultComponent implements OnInit {
                 if(element.tm_title && element.tm_title.length > 0){
                   newResult.push(element.tm_title[0]);
                 }else if (element.tm_name && element.tm_name.length > 0){
-                  newResult.push(element.tm_field_first_name[0] + " " + element.tm_field_last_name[0]);
+                  if(element.tm_field_first_name){
+                    newResult.push(element.tm_field_first_name[0] + " " + element.tm_field_last_name[0]);
+                  }else {
+                    newResult.push(element.tm_name[0]);
+                  }
+                  
                 }
                 
               });

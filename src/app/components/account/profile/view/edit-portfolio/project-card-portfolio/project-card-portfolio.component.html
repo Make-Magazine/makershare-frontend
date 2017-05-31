@@ -106,7 +106,7 @@
           <p *ngIf="type == 'showcase'" class="maker-name">{{projectCard.first_name}} {{projectCard.last_name}}</p>
         </a>-->
         <div class="project-maker-lg d-flex flex-column" *ngIf="projectCard.field_team_members">
-          <span  class="maker-name mt-0" *ngFor="let membership of projectCard.field_team_members">{{membership}}</span>
+          <span  class="members-name-lg mt-0" *ngFor="let membership of projectCard.field_team_members">{{membership}}</span>
         </div>
         <div class="card-categories" *ngIf="projectCard.project_categories">
           <span class="project-categories" *ngFor="let category of projectCard.project_categories">
