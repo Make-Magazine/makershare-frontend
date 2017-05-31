@@ -29,9 +29,6 @@
                       <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
                     <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)" (HideLoadMore)="hideloadmorefollower = false"></app-follow>
-                    <div class="ml-auto hidden-lg-down">
-                      <app-shared-buttons *ngIf="challenge.title" [PageTitle]="challenge.title" [PageDescription]="challenge.body" [PageImage]="challenge.cover_image"></app-shared-buttons>
-                    </div>
                   </div>
                   <div class="challene-card-footer-3 hidden-lg-up hidden-sm-down d-flex flex-column flex-lg-row">
                     <!--<div class="button-container-main-1" *ngIf="challenge.status_id != 375">
@@ -91,6 +88,9 @@
                             <p class="challenge-end-date" *ngIf="challenge.status_id == 376 && challengeDate < 0"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date}}</p>
                             <p class="challenge-end-date" *ngIf="challenge.status_id == 376 && challengeDate >= 0"> Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date}}</p>
                           </div>
+                        </div>
+                        <div class="ml-auto align-self-center hidden-lg-down">
+                          <app-shared-buttons *ngIf="challenge.title" [PageTitle]="challenge.title" [PageDescription]="challenge.body" [PageImage]="challenge.cover_image"></app-shared-buttons>
                         </div>
                       </div>
                       <div class="challene-card-footer-3 hidden-md-up">
