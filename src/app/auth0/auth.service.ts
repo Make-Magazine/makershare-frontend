@@ -33,14 +33,6 @@ export class Auth implements OnInit {
     private route: ActivatedRoute,
     private profilePictureService: ProfilePictureService,
   ) {
-    //router.events.subscribe((url:any) => {this.state = url.url});
-  // router.events
-  //   .filter(event => event instanceof NavigationStart)
-  //   .subscribe((event:NavigationStart) => {
-  //     this.stateValue = event.url;
-      // localStorage.setItem('currentURL', event.url);
-      // console.log(localStorage.getItem('currentURL'));
-    // });
     
   this.lock = new Auth0Lock('yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU', 'makermedia.auth0.com', {
     allowedConnections: ['Username-Password-Authentication'],
@@ -48,9 +40,6 @@ export class Auth implements OnInit {
     auth: {
       redirectUrl: globals.appURL,
       responseType: 'token',
-      // params: {
-      //   state: 'makers',
-      // },
     },
     socialButtonStyle: 'small',
     theme: {
@@ -68,11 +57,9 @@ export class Auth implements OnInit {
 
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
-      console.log(authResult);
       // get the user profile
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
-           console.log(error);
           return;
         }
         var data = profile;
@@ -97,19 +84,8 @@ export class Auth implements OnInit {
                 this.router.navigate(['/portfolio']);
                 
               }else {
-                // console.log(localStorage.getItem('currentURL'));
-                console.log(localStorage.getItem('currentURL'));
 
-                //this.router.navigate([localStorage.getItem('currentURL')]);
               }
-            
-              // if (authResult.state != '') {
-                  
-              //     console.log(decodeURI(authResult.state));
-              //     console.log(decodeURIComponent(authResult.state));
-              //     console.log(JSON.parse(authResult.state));
-              //     // this.router.navigate(authResult.state);
-              // }
 
 
             } else {
@@ -138,17 +114,20 @@ export class Auth implements OnInit {
     });
 
     this.lock.on("authorization_error", (err) => {
-      console.log(err);
-      if (err.error_description == "Sorry, we are not able to process your request.") {
-         console.log('it is true');
-         this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
-         console.log('end......');
+      if (err.error == "unauthorized") {
+         localStorage.setItem('under_age', 'true');
+         this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });      
       }
     });
   }
 
   ngOnInit() {
-
+    let age_status = localStorage.getItem('under_age');
+    if(age_status == 'true'){
+      this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });      
+      localStorage.setItem('under_age', 'false');
+    }
+      
   }
 
 
