@@ -1,5 +1,5 @@
 <div *ngIf="users.length==0">
-  <p>There Don't seem to be any bookmarks here yet.</p>
+  <p>There don't seem to be any bookmarks here yet.</p>
   </div>
 <div *ngIf="users.length>0">
   <input type="checkbox" name="all" [checked]="isAllChecked()" (change)="checkAll($event)"> Select all

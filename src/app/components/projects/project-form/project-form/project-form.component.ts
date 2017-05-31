@@ -371,9 +371,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   SaveProject() {
     this.ProjectLoaded = false;
-    if (this.project.GetField("field_visibility2").und[0] == 370 || this.project.GetField("field_visibility2").und[0] == 371) {
       this.project.CheckIfReadyToPublic();
-    }
+    
     if(this.project.field_categories.und.length == 0){
       this.project.field_categories.und = [""];
     }

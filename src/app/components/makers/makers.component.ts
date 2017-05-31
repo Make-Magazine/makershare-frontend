@@ -14,7 +14,7 @@ export class MakersComponent implements OnInit {
   makers=[];
   pages: number = 0;
   page_arg
-  ActionName = "Newest";
+  ActionName = "Most projects";
   sort: ISorting = {
     sort_by: "created",
     sort_order: "DESC",
@@ -60,6 +60,16 @@ export class MakersComponent implements OnInit {
     }
   }
 
+    mostProjects() {
+    this.makers = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php_1"
+    this.ActionName = "Most projects"
+    this.getMakers();
+
+  }
+
   mostRecent() {
     this.makers = [];
     this.pages = 0
@@ -102,18 +112,10 @@ export class MakersComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "php"
-    this.ActionName = "Most viewes"
+    this.ActionName = "Most views"
     this.getMakers();
 
   }
-  mostProjects() {
-    this.makers = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php_1"
-    this.ActionName = "Most projects"
-    this.getMakers();
 
-  }
 
 }
