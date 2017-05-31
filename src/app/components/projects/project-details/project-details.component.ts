@@ -73,6 +73,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.viewService.getView('maker_project_api/' + this.id)
         .subscribe(data => {
           this.project = data;
+          console.log(this.project)
           var i = 0;
           if (this.project.field_resources) {
             for (let resource of this.project.field_resources) {
