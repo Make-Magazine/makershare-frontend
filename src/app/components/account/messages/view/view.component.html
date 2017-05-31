@@ -18,9 +18,9 @@
       <button type="button" class="btn btn-danger" (click)="previousUrl()" (click)="deleteThread()">Delete this thread
       <i class="fa fa-trash-o" aria-hidden="true"></i>
     </button>
-      <!--<button type="button" class="btn btn-danger">Back
-      <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </button>-->
+      <button *ngIf="block" type="button" class="back-inbox btn btn-danger ml-auto" [routerLink]="['/inbox-notifications']">
+        <i class="lnr lnr-arrow-left" aria-hidden="true"></i>&nbsp; Inbox
+      </button>
       <!--<a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>-->
       <!--<a class="btn btn-transparent" *ngIf="block" (click)="unBlockUser()">UnBlock</a>-->
     </div>
@@ -40,7 +40,7 @@
             <p class="timestamp">{{message?.timestamp}}</p>
           </div>
           <div class="delete" *ngIf="hideDeleteReply">
-            <a class="fa fa-2x fa-trash delete-message"  on-mouseover='over()' ngbTooltip="{{show}}" (click)="deleteReplay(i)"></a>
+            <a class="fa fa-2x fa-trash delete-message" ngbTooltip="{{deleteReplyTip}}" (click)="deleteReplay(i)"></a>
           </div>
         </div>
         <div class="message-body">

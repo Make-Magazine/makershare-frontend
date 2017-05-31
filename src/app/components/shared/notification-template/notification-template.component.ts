@@ -10,7 +10,7 @@ import { MainService,UserService,PmService } from '../../../d7services';
 
 export class NotificationTemplateComponent implements OnInit {
 
-
+delete=false;
   @Input() notification;
 
   constructor(
@@ -20,7 +20,8 @@ export class NotificationTemplateComponent implements OnInit {
     private pm: PmService,
   ) { }
 
-  ngOnInit() {   
+  ngOnInit() { 
+  
   }
 
   MarkAsSeen(seen){
@@ -40,6 +41,7 @@ export class NotificationTemplateComponent implements OnInit {
   }
 
   OpenNotification(ShowcaseUserID?:number){
+    if(!this.delete){
     this.ChangeNotificationStatus(1).subscribe(data=>{},err=>console.log(err),()=>{
       // open user profile
       if(ShowcaseUserID){
@@ -53,7 +55,7 @@ export class NotificationTemplateComponent implements OnInit {
         }
       // open entity page
       }else {
-        if(this.notification.type == 'challenge_follow_deadline' || this.notification.type == 'challenge_follow_deadline'){
+        if(this.notification.type == 'challenge_follow_deadline' || this.notification.type == 'new_entry_challenge'){
           this.router.navigate(["/missions",this.notification.nid]);
         }else if(this.notification.type == "new_message_sent"){
           this.router.navigate(["/account/inbox/view",this.notification.pm_mid]);
@@ -62,6 +64,7 @@ export class NotificationTemplateComponent implements OnInit {
         }
       }
     });
+    }
   }
 
 
@@ -77,8 +80,12 @@ export class NotificationTemplateComponent implements OnInit {
   }
 
   deleteNotifications(){
+   this.delete=true;
+
    this.pm.deleteNotification(this.notification.mid).subscribe(data=>{
       delete this.notification;
+      this.delete=false;
    })
   }
+  
 }

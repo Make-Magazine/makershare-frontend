@@ -3642,6 +3642,9 @@ footer {
   left: 14px;
   width: auto;
   max-width: 35%; }
+.lg-card .members-name-lg {
+  font-size: 1rem;
+  color: #D50000; }
 .lg-card .card-categories {
   position: absolute;
   z-index: 11;
@@ -3704,27 +3707,29 @@ footer {
     height: 85px; }
     .project-mobile-card .profile-pic-container img {
       width: 100%;
-      height: 100%; }
-  .project-mobile-card .data-container .card-title {
-    font-family: "Messina Modern Regular";
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 115%;
-    color: #828282;
-    color: #4F4F4F;
-    height: 55px;
-    padding: 0px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 30px;
-    text-align: left;
-    width: 100%;
-    margin: 0; }
-  .project-mobile-card .data-container .maker-name {
-    color: #00AEEF;
-    margin-bottom: 0; }
+      height: auto; }
+  .project-mobile-card .data-container {
+    width: calc(100% - 83px); }
+    .project-mobile-card .data-container .card-title {
+      font-family: "Messina Modern Regular";
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 115%;
+      color: #828282;
+      color: #4F4F4F;
+      height: 63px;
+      padding: 0px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 30px;
+      text-align: left;
+      width: 100%;
+      margin: 0; }
+    .project-mobile-card .data-container .maker-name {
+      color: #00AEEF;
+      margin-bottom: 0; }
   .project-mobile-card .card-stats {
     padding: 2px;
     color: #BDBDBD;
@@ -7142,6 +7147,10 @@ textarea {
       border: none; }
       .showcase-card-backlayer .showcase-card .card .user-card {
         padding: 10px 0px; }
+        .showcase-card-backlayer .showcase-card .card .user-card .count {
+          display: none; }
+        .showcase-card-backlayer .showcase-card .card .user-card .profile-tag {
+          display: none; }
     .showcase-card-backlayer .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer .showcase-card .single-showcase img {
@@ -7293,6 +7302,8 @@ textarea {
   min-height: 168px;
   font-weight: normal;
   line-height: 1.5rem; }
+.page-single-showcase .entries-count {
+  color: #4F4F4F; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 10px 10px 10px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
@@ -9442,13 +9453,19 @@ img {
       display: flex;
       align-items: center;
       width: 100%;
-      overflow: hidden;
       padding: 10px;
+      position: relative;
+      z-index: 1;
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
       box-shadow: 2px 2px 8px #BDBDBD;
       background-color: white;
       margin: 5px 0; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper .unblock-button {
+        position: absolute;
+        right: 25px;
+        z-index: 10;
+        top: 36px; }
       .page-inbox .inbox-container .messages-list .message-item .wrapper .media-left {
         width: 80px;
         height: 80px;
@@ -9496,10 +9513,15 @@ img {
         font-size: 1.5rem; }
         .page-inbox .inbox-container .messages-list .message-item .wrapper .delete-message i {
           float: right; }
+      .page-inbox .inbox-container .messages-list .message-item .wrapper ngb-tooltip-window {
+        width: 150px;
+        left: 938px; }
     .page-inbox .inbox-container .messages-list .message-item:not(:first-of-type) .wrapper {
       border-top: 0; }
     .page-inbox .inbox-container .messages-list .message-item.read .wrapper {
       background-color: #aaaaaa; }
+    .page-inbox .inbox-container .messages-list .message-item:hover {
+      cursor: pointer; }
 
 .conversation-container {
   background-color: #fff;
@@ -9598,7 +9620,8 @@ img {
   .create-newmsg textarea {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
-    resize: inherit; }
+    resize: inherit;
+    width: 100%; }
   .create-newmsg input {
     border: 1px solid #DCDCDC;
     color: #4F4F4F;
@@ -9656,6 +9679,19 @@ img {
     padding-top: 14px; }
     .blocked-users-page .block-user .media .media-body button {
       margin-bottom: 0px; }
+
+.back-inbox {
+  height: 35px;
+  min-width: 100px;
+  font-size: 1rem;
+  color: #4F4F4F;
+  text-align: center;
+  border: 0.2px solid #4F4F4F;
+  background-color: #fff; }
+  .back-inbox:hover, .back-inbox.active, .back-inbox:active, .back-inbox:focus {
+    color: #fff;
+    background-color: #4F4F4F;
+    border: none; }
 
 .challenge-entered {
   margin: 10px;

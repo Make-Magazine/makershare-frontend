@@ -97,14 +97,16 @@
       <div class="content-side col d-flex flex-column justify-content-start">
         <div class="card-stats mt-auto">
           <ul class="list-unstyled d-flex justify-content-start align-items-center">
-            <li *ngIf="project.nid" class="project-likes">
+            <li *ngIf="project.nid && !userId" class="project-likes">
               <!--<img *ngIf="!project.number_of_likes || project.number_of_likes == 0 " src="./assets/images/icons/light-not-selected.png"
                 class="project-likes" alt="">
               <img *ngIf="project.number_of_likes > 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
               <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
               <span *ngIf="!project.number_of_likes">0</span>-->
+              <app-like [nodeNid]="project.nid"  [project]="true"></app-like>
+            </li>
+            <li *ngIf="project.nid && userId" class="project-likes">
               <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
-
             </li>
             <li>
               <img src="./assets/images/icons/views.png" class="project-views" alt="">
@@ -150,7 +152,7 @@
       <div class="project-maker-lg d-flex flex-column" *ngIf="project.field_team_members">
         <div class="" *ngFor="let membership of project.field_team_members; let i = index">
           <a>
-            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="maker-name mt-0">{{membership}}</span>
+            <span (click)="goToProfile(project.field_maker_memberships_uid[i])" class="members-name-lg mt-0">{{membership}}</span>
           </a>
         </div>
       </div>
