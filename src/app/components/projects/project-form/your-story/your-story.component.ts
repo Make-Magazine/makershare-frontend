@@ -121,7 +121,8 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
-  showAndTellLink ="https://www.youtube.com/watch?v=ExqaSOy_b-k";
+  showAndTellLink ="https://www.youtube.com/watch?v=56i0M49rhtU";
+ 
   /**
    * local variables to use only inside this component
    */
