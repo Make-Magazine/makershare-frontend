@@ -3440,6 +3440,8 @@ footer {
     width: 140px;
     background-color: #fff !important;
     color: #4F4F4F !important; }
+    .edit-cover-modal .upload-tab .btn.big {
+      width: 220px; }
   .edit-cover-modal .upload-tab .drag-photo {
     color: #4F4F4F; }
   .edit-cover-modal .upload-tab .drag-or {
@@ -7160,6 +7162,10 @@ textarea {
           display: none; }
         .showcase-card-backlayer .showcase-card .card .user-card .profile-tag {
           display: none; }
+        .showcase-card-backlayer .showcase-card .card .user-card .user-nickname a {
+          color: #4F4F4F; }
+        .showcase-card-backlayer .showcase-card .card .user-card .user-city {
+          color: #828282; }
     .showcase-card-backlayer .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer .showcase-card .single-showcase img {
@@ -7308,7 +7314,6 @@ textarea {
   overflow: inherit !important;
   height: auto !important;
   -webkit-line-clamp: inherit !important;
-  min-height: 168px;
   font-weight: normal;
   line-height: 1.5rem; }
 .page-single-showcase .entries-count {
@@ -8387,6 +8392,8 @@ img {
       width: 140px;
       background-color: #fff !important;
       color: #4F4F4F !important; }
+      .upload-cover-modal .upload-tab .btn.big {
+        width: 220px !important; }
       .upload-cover-modal .upload-tab .btn.btn-load-more {
         margin-bottom: 0; }
     .upload-cover-modal .upload-tab .drag-photo {

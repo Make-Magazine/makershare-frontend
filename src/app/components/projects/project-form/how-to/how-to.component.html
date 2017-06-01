@@ -222,6 +222,13 @@
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">
+        <h4>{{sidebarText.resources.title}}</h4>
+        <p>{{sidebarText.resources.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
+      <div class="pull-left content">
         <h4>{{sidebarText.credit_your_inspiration.title}}</h4>
         <p>{{sidebarText.credit_your_inspiration.guide}}</p>
       </div>
@@ -249,7 +256,9 @@
           </div>
           <a class="btn btn-load-more" (click)="fileinput.click()">
       Upload
-      <input #fileinput type="file" (change)="ResourceFileUploaded($event.target.files[0],CloseButton)" id="upload" style="display:none;" />
+      <input #fileinput type="file" 
+      accept=".doc, .docx, .odt, .txt, .wpd, .wps, .csv, .pps, .ppt, .pptx, .xml, .3gp, .avi, .flv, .mov, .mp4, .mpg, .swf, .max, .3ds, .gif, .bmp, .jpeg, .jpg, .png, .psd, .tif, .svg, .pdf, .xlsx, .xls, .db, .html, .zip, .rar, .7z, .tar"
+      (change)="ResourceFileUploaded($event.target.files[0],CloseButton)" id="upload" style="display:none;" />
     </a>
         </div>
         <div class="recommended-section col-md-4">

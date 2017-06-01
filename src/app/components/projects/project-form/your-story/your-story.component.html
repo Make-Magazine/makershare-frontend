@@ -99,7 +99,7 @@
       <label class="custom-control custom-checkbox" for="show-tell-as-default">
         <input type="checkbox" class="custom-control-input" id="show-tell-as-default" formControlName="field_show_tell_video_as_default" (change)="$event.target.checked? (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(1)) : (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(0))">
         <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Show & Tell video as default</span>
+        <span class="custom-control-description">Display Show & Tell video in place of Cover Photo</span>
       </label>
     </div>
     <div class="form-group aha">
@@ -196,7 +196,7 @@
 
     <div class="modal-tabs">
       <ul class="list-unstyled">
-        <li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">UPLOAD</a></li>
+        <li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">Upload</a></li>
         <li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">YOUR PHOTOS</a></li>
       </ul>
     </div>
@@ -217,8 +217,9 @@
               <p>Drag a photo here</p>
               <p>or</p>
             </div>
-            <a class="btn btn-load-more" (click)="file.click()">
-				      Upload
+            <a class="btn btn-load-more" [ngClass]="{big:imagedata.original}" (click)="file.click()">
+				      <span *ngIf="!imagedata.original;else differentphoto">Choose</span>
+              <ng-template #differentphoto>Choose a Different Photo</ng-template>
 				      <input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event.target.files[0],imagecropper)">
 			      </a>
           </div>

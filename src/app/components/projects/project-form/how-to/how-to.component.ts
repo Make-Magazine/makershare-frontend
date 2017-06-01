@@ -417,9 +417,9 @@ export class HowToComponent implements OnInit,AfterViewInit {
       this.CurrentModal = Control;
     }    
   }
-
   ResourceFileUploaded(file:File,CloseBtn:HTMLButtonElement){
-    if(!file){
+    let AllowedFileTypes = ["doc","docx","odt","txt","wpd","wps","csv","pps","ppt","pptx","xml","3gp","avi","flv","mov","mp4","mpg","swf","max","3ds","gif","bmp","jpeg","jpg","png","psd","tif","svg","pdf","xlsx","xls","db","html","zip","rar","7z","tar"]
+    if(!file || AllowedFileTypes.indexOf(file.name.split('.')[1]) == -1){
       return;
     }
     CloseBtn.click();
@@ -530,7 +530,7 @@ export class HowToComponent implements OnInit,AfterViewInit {
 
     'resources': {
       'title': 'Resources:',
-      'guide': `Are there any important files associated with your project that you'd like to share? This is the place for those. From vector to 3D files, patterns to code, please uploaded any files associated with your poject here.`
+      'guide': `Add or link to any resources that would assist the person reading this how-to in recreating your project.`
     },
     'credit_your_inspiration': {
       'title': 'Describe Your Build:',
