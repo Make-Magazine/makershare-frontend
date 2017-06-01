@@ -12,7 +12,8 @@
     "build:aot": "webpack --config webpack.config.aot.js",
     "serve:aot": "lite-server -c=bs-config.aot.js",
     "build:uni": "webpack --config webpack.config.uni.js",
-    "serve:uni": "node src/dist/server.js"
+    "serve:uni": "node src/dist/server.js",
+    "build:aot:uni": "webpack --config webpack.config.aot.js && webpack --config webpack.config.uni.js"
   },
   "private": true,
   "dependencies": {
