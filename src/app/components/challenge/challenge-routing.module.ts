@@ -7,12 +7,15 @@ import { AuthGuardService } from '../../auth0/auth-guard.service';
 import { AccessDeniedComponent } from '../../auth0/access-denied/access-denied.component';
 import { Four04Component } from '../../auth0/four04/four04.component'
 
+//modules
+import { ChallengeDataModule } from './challenge-data/challenge-data.module';
+
 const ChallengeRouts: Routes = [
   {
     path: '',
     children: [
       { path: '', component: ChallengesComponent },
-      { path: ':path', loadChildren: 'app/components/challenge/challenge-data/challenge-data.module#ChallengeDataModule' },
+      { path: ':path', loadChildren: './challenge-data/challenge-data.module#ChallengeDataModule' },
       { path: 'enter-mission', component: ChallengeProjectComponent,  canActivate: [AuthGuardService] },
       { path: 'enter-mission/:nid', component: ChallengeProjectComponent , canActivate: [AuthGuardService] },
     ]
