@@ -8,22 +8,30 @@
           <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
           
           
-          <div class="icons-side-user"  *ngIf="badges">
+          <!--<div class="icons-side-user"  *ngIf="badges">
             <div class="user-icon" *ngFor="let badge of badges;">
                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
              
             </div>
-           </div>
+           </div>-->
           
              <!--<button *ngIf="showMessage" (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>-->
         </div>
         <div class="media-body">
-          <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
+          <div class="name-badge d-flex justify-content-between">  
+           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
+
+          <div class="icons-side-user d-flex justify-content-end"  *ngIf="badges">
+            <div class="user-icon" *ngFor="let badge of badges;">
+               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+            </div>
+           </div>
+          </div>
           <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
           <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
           <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
           <div class="d-flex flex-row">
-            <p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>
+            <!--<p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>-->
             <p class="user-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">
               {{card.location_locality}} , {{card.country}}</p>
             <p class="user-city" *ngIf="card.city && card.country && card.country == 'United States'">{{card.location_locality}}, 

@@ -803,9 +803,13 @@
             width: 140px;
             background-color: #fff !important;
             color: $text-color-1 !important;
+            &.big{
+                width:220px !important;
+            }
             &.btn-load-more {
                 margin-bottom: 0;
             }
+            
         }
         .drag-photo {
             color: $text-color-1;
