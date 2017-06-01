@@ -92,6 +92,7 @@ export class ProjectDetailsComponent implements OnInit {
             this.statisticsService.view_record(this.project.nid, 'node').subscribe();
           }
         }, err => {
+          this.router.navigate(['/projects']);
           this.loaderService.display(false);
         });
         this.currentuser = Number(localStorage.getItem('user_id'));
