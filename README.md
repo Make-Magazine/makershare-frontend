@@ -37,3 +37,18 @@ npm uninstall -g angular-cli @angular/cli
 npm cache clean
 npm install -g @angular/cli@latest
 ```
+------------------------------
+### Build AoT
+npm run build:aot
+
+### Serve AoT
+npm run serve:aot
+
+### Build Universal
+npm run build:uni
+
+### Serve Universal
+npm run serve:uni
+
+### Build Both AoT & Universal
+npm run build:aot:uni
