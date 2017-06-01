@@ -332,6 +332,19 @@
                 //     line-height: .75rem;
                 //     vertical-align: -15% !important;
                 // }
+
+                .read-less{
+                    display: block;
+                    font-size: 1rem;
+                    text-align: right;
+                    cursor: pointer;
+                    color: #00AEEF;
+                }
+                .read-more{
+                     color: #00AEEF;
+                     font-family: "Messina Sans Bold";
+                    cursor: pointer;
+                }
             }
             .makerspaces,
             .websites {
@@ -2537,7 +2550,7 @@ button {
     display: block;
     span{
         font-size: 0.8rem;
-        color: #4F4F4F;
+       
     }
     &.topic-tags {
         span {
