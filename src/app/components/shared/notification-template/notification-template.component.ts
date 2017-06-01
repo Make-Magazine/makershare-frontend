@@ -21,7 +21,9 @@ delete=false;
   ) { }
 
   ngOnInit() { 
-  
+    this.notification.fullname=this.notification.first_name+' '+this.notification.last_name;
+    this.notification.date=this.timeago(this.notification.date);
+
   }
 
   MarkAsSeen(seen){
@@ -87,5 +89,19 @@ delete=false;
       this.delete=false;
    })
   }
+     timeago(date){
+    var n = date.includes("min") || date.includes('sec');
+    var current;
+    if(n){
+      date = date.substring(0, date.indexOf("hours"));
+      if(!date){
+      date=date+'0';
+  }
+  date=date+' hours';
+
+  }
+    return date+' ago';
+  }
+ 
   
 }
