@@ -62,6 +62,14 @@
                 .profile-tag {
                     display: none;
                 }
+                .user-nickname{
+                        a{
+                            color: $shade-4;
+                        }
+                } 
+              .user-city {
+                  color: #828282;
+              }
             }
         }
         .single-showcase {
@@ -260,7 +268,7 @@
             overflow: inherit !important;
             height: auto !important;
             -webkit-line-clamp: inherit !important;
-            min-height: 168px;
+           // min-height: 168px;
             font-weight: normal;  
             line-height: 1.5rem;          
         }
