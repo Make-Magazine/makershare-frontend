@@ -31,7 +31,7 @@ export class SolrService {
   selectProjects(query: string, count: number = 10): Observable<any> {
     query = encodeURIComponent(query);
     let category = query.charAt(0).toUpperCase() + query.slice(1);
-    return this.http.get(globals.solrPath + 'select?fq=ss_type:project&fq=tm_title:"' + query + '" OR sm_field_categories$name:("'+ category + '")&rows=' + count + '&indent=on&wt=json&fl=is_nid').map(res => res.json()).timeout(10000);
+    return this.http.get(globals.solrPath + 'select?fq=ss_type:project&fq=tm_title:"' + query + '" OR sm_field_categories$name:("'+ category + '")&rows=' + count + '&indent=on&wt=json&fl=is_nid&fq=is_field_visibility2:370').map(res => res.json()).timeout(10000);
   }
 
   // select challenges query
