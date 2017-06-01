@@ -17,7 +17,7 @@ export interface ProfileSocial {
   field_gitlabs?: string,
   field_twitch?: string,
   field_github?: string,
-  field_stackoverflow?: string
+  field_stackoverflow?: string,
 } 
 
 export class ProfileSocial implements ProfileSocial{
