@@ -29,4 +29,3 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
   
 })
 export class HomeModule { }
-export {HomeComponent};
