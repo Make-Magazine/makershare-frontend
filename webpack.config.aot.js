@@ -15,9 +15,6 @@ module.exports = {
         filename: 'build.js'
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            Reflect: 'core-js/es7/reflect'
-        }),
         new ngtools.AotPlugin({
             tsConfigPath: './tsconfig-aot.json'
         }),
