@@ -36,8 +36,7 @@ testem.log
 /typings
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+/e2e/
 
 #System Files
 .DS_Store
@@ -47,3 +46,5 @@ Thumbs.db
 /src/app/d7services/globals.ts
 /src/assets/css/style.css.map
 /src/dist/
+/src/*.ngfactory.ts
+/src/*.ngsummary.ts
