@@ -76,12 +76,11 @@
 									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
 									<div *ngIf="ProfileInfo.bio" class="bio">
 										<div *ngIf="ReadMoreFields.bio">
+											<span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
 											<div>{{ProfileInfo.bio}}</div>
-											<span (click)="ReadMoreFields.bio = false">Read Less</span>
 										</div>
 										<div *ngIf="!ReadMoreFields.bio">
-											<div>{{ProfileInfo.bio | truncate : 160}}</div>
-											<span *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
+											<div>{{ProfileInfo.bio | truncate : 160}} <span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span></div>
 										</div>
 									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
@@ -165,6 +164,12 @@
 											<a class="nav-link social ext" target="_blank" (mouseover)="over('thingyverse')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
 												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'thingyverse'" alt="">
 												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'thingyverse'" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow	 != '' ">
+											<a class="nav-link social ext" target="_blank" (mouseover)="over('stackoverflow')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
+												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'stackoverflow'" alt="">
+												<img src="./assets/images/icons/stackoverflow .svg" *ngIf="currentHover == 'stackoverflow'" alt="">
 											</a>
 										</div>
 									</div>
@@ -273,10 +278,24 @@
 								</div>
 								<!--End Badges -->
 								<!-- Start Bio -->
-								<div class="bio hideData" *ngIf="ProfileInfo.bio">
-									<div *ngIf="ProfileInfo.bio" class="bio" innerHTML="{{ProfileInfo.bio}}"></div>
-									<hr *ngIf="ProfileInfo.bio">
+
+									<div class="bio hideData">
+									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
+									<div *ngIf="ProfileInfo.bio" class="bio">
+										<div *ngIf="ReadMoreFields.bio">
+											<span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
+											<div>{{ProfileInfo.bio}}</div>
+										</div>
+										<div *ngIf="!ReadMoreFields.bio">
+											<div>{{ProfileInfo.bio | truncate : 160}} <span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span></div>
+										</div>
+									</div>
+									<div *ngIf="!ProfileInfo.bio" class="bio">
+										<p class="placeholder-text">{{PlaceholderText.bio}}</p>
+									</div>
+									<hr class="hideData">
 								</div>
+											
 								<!-- End Bio -->
 								<div class="hideData 1" *ngIf="!emptySocial">
 									<p class="global-title" *ngIf="!emptySocial">Social</p>
@@ -785,7 +804,18 @@
 														Invalid URL, ex: http://example.com
 													</div>
 												</li>	
-											</div>												
+											</div>	
+											<div class="col-lg-6">
+												<li class="form-group">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_stackoverflow.valid}" class="col-md-12 form-control"
+													 type="text" name="web-url" formControlName="field_stackoverflow" placeholder="stackoverflow">
+													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_thingyverse"-->
+													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_thingyverse'" validate-onfocusout>-->
+													<div *ngIf="!FormGroupSocial.controls.field_stackoverflow.valid && FormGroupSocial.controls.field_stackoverflow.touched" class="alert alert-danger error-msg">
+														Invalid URL, ex: http://example.com
+													</div>
+												</li>	
+											</div>											
 										</div>
 									</div>
 								</div>
