@@ -17,6 +17,7 @@ export interface ProfileSocial {
   field_gitlabs?: string,
   field_twitch?: string,
   field_github?: string,
+  field_stackoverflow?: string
 } 
 
 export class ProfileSocial implements ProfileSocial{
@@ -39,6 +40,7 @@ export class ProfileSocial implements ProfileSocial{
     this.field_gitlabs = '';
     this.field_twitch = '';
     this.field_github = '';
+    this.field_stackoverflow ='';
   }
 
   public SetFieldValue(FieldName:string,Value:string){
