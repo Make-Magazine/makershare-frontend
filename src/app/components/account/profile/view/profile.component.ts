@@ -74,11 +74,10 @@ export class ProfileComponent implements OnInit {
       'field_twitch': [this.profile.field_social_accounts.field_twitch, [URLNoProtocol()]],
       'field_gitlabs': [this.profile.field_social_accounts.field_gitlabs, [URLNoProtocol()]],
       'field_thingyverse': [this.profile.field_social_accounts.field_thingyverse, [URLNoProtocol()]],
-      'field_stackoverflow':[this.profile.field_social_accounts.field_thingyverse, [URLNoProtocol()]],
+      'field_stackoverflow':[this.profile.field_social_accounts.field_stackoverflow, [URLNoProtocol()]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
       'field_website_title': [this.profile.field_social_accounts.field_website_title],
       'field_blog_title': [this.profile.field_social_accounts.field_blog_title]
-      
     });
   }
   PhotoModalTab: string;
@@ -250,7 +249,6 @@ export class ProfileComponent implements OnInit {
       this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
-      console.log(this.ProfileInfo)
     });
     // statistics
     if (this.uid != this.CurrentLoggedUserId) {
