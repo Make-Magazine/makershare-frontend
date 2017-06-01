@@ -28,6 +28,7 @@ export class LearnComponent implements OnInit {
 
   ngOnInit() {
     this.getWorkshop();
+    this.getCountWorkshop();
 
     this.meta.setTitle(`Maker Share | Learning`);
       this.meta.setTag('og:image', '/assets/logo.png');
@@ -68,6 +69,7 @@ export class LearnComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountWorkshop();
+    console.log(this.countWorkshop)
     if (this.countWorkshop == this.learns.length) {
       this.hideloadmoreworkshop = true;
 
