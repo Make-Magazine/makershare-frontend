@@ -92,7 +92,7 @@
 								<!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
 								<div class="hideData">
 									<p class="global-title">Social</p>
-									<p class="placeholder-text" *ngIf="emptySocial">{{PlaceholderText.social}}</p>
+									<p class="placeholder-text" *ngIf="isEmpty(ProfileInfo.field_social_accounts)">{{PlaceholderText.social}}</p>
 									<div class="profile-social-links d-flex flex-wrap">
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
 											<a class="nav-link social fb" target="_blank" href="{{ProfileInfo.field_social_accounts.field_facebook}}">
@@ -175,20 +175,20 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div *ngIf="!ProfileInfo.field_social_accounts" class="hideData">
+								<div *ngIf="isEmpty(ProfileInfo.field_social_accounts)" class="hideData">
 									<div> <a class="btn btn-white add" (click)="OpenModal(editinfomodal,'Social')"><i class="fa fa-lg fa-plus"></i> Add social links</a></div>
 								</div>
 								<hr class="hideData">
 								<ul class="list-unstyled makerspaces hideData">
 									<p class="global-title">Makerspaces</p>
-									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
+									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0 && !isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])">
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}" target="_blank">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
 									</span>
 								</ul>
-								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || ProfileInfo.field_add_your_makerspace_s_ == ''" class="list-unstyled makerspaces hideData">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])" class="list-unstyled makerspaces hideData">
 									<p class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
 								<hr class="hideData">
@@ -947,7 +947,7 @@
 											<div *ngFor="let interest of allIntersets" class="">
 												<p *ngIf="interest.parent_tid && selected_interest.tid == interest.tid" class="cate-name list-group-item">
 													<span [innerHTML]="interest.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="selected_interest.name"></span>
-													<i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(interest.tid,interest.parent_tid)" aria-hidden="true"></i>
+													<i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(selected_interest.tid)" aria-hidden="true"></i>
 												</p>
 											</div>
 										</div>
