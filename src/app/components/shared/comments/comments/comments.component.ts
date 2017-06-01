@@ -54,7 +54,7 @@ export class CommentsComponent implements OnInit {
     }
     //console.log(this.page_arg)
     this.viewService.getView('node-comments', [['nid', this.nodeId], ['page', this.pages]]).subscribe(data => {
-
+      console.log(data)
       this.comments.value = this.comments.value.concat(data);
       // this.loadMoreVisibilty();
      // console.log(this.comments.value.length == 1)
