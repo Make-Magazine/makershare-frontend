@@ -77,7 +77,7 @@ export class IndividualWorkshopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.path = this.route.snapshot.params['nid'];
+    this.path = this.route.snapshot.params['path'];
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'learning_sequence').subscribe(data => {
         this.idFromUrl = data[0];
