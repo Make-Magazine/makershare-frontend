@@ -48,3 +48,4 @@ Thumbs.db
 /src/dist/
 /src/*.ngfactory.ts
 /src/*.ngsummary.ts
+/.vscode/
