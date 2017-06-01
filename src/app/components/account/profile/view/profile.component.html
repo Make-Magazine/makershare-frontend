@@ -550,8 +550,9 @@
 											<p class="drag-photo">Drag a Photo Here</p>
 											<p class="drag-or">or</p>
 										</div>
-										<a class="btn btn-load-more" (click)="fileinput.click()">
-											Upload
+										<a class="btn btn-load-more" [ngClass]="{big:ProfilePicData.original}" (click)="fileinput.click()">
+											<span *ngIf="!ProfilePicData.original;else differentphoto">Choose</span>
+											<ng-template #differentphoto>Choose a Different Photo</ng-template>
 											<input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)" id="upload" style="display:none;" />
 										</a>
 									</div>
@@ -599,7 +600,6 @@
 									</div>
 									<div class="col-md-4">
 										<select class="col-md-12" *ngIf="CountryFieldsAndDetails.administrative_areas" id="administrative_areas" (change)="ProfileInfo.address.governorate = $event.target.value">
-											<!--<option [disabled]="true" [selected]="ProfileInfo.address.governorate == '_none'">Choose</option>-->
 											<option *ngFor="let area of CountryFieldsAndDetails.administrative_areas" [value]="area.value" [selected]="ProfileInfo.address.governorate == area.value">{{area.value}}</option>
 										</select>
 									</div>
@@ -947,7 +947,7 @@
 											<div *ngFor="let interest of allIntersets" class="">
 												<p *ngIf="interest.parent_tid && selected_interest.tid == interest.tid" class="cate-name list-group-item">
 													<span [innerHTML]="interest.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="selected_interest.name"></span>
-													<i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(selected_interest.tid,interest.parent_tid)" aria-hidden="true"></i>
+													<i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(interest.tid,interest.parent_tid)" aria-hidden="true"></i>
 												</p>
 											</div>
 										</div>

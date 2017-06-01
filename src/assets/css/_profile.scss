@@ -856,6 +856,9 @@
             width: 140px;
             background-color: #fff !important;
             color: $text-color-1 !important;
+            &.big{
+                width:220px;
+            }
         }
         .drag-photo {
             color: $text-color-1;
@@ -1689,9 +1692,6 @@
         .close:focus, .close:hover {
             outline: none !important;
         }
-    }
-    .modal-body {
-
     }
     .modal-footer {
         border-top: none !important;
