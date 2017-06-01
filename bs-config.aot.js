@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3100,
+  port: 4200,
   server: {
     baseDir: "src",
     routes: {
