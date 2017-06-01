@@ -25,8 +25,8 @@ countlessons;
      this.learn = data[0];
   });
 }
-  WorkshopDetails(nid) {
-    this.router.navigate(['/workshops', nid]);
+  WorkshopDetails(path) {
+    this.router.navigate(['/learning', path]);
   }
 
     getCountlessons() {
