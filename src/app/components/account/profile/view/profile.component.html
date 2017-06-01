@@ -76,12 +76,11 @@
 									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
 									<div *ngIf="ProfileInfo.bio" class="bio">
 										<div *ngIf="ReadMoreFields.bio">
+											<span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
 											<div>{{ProfileInfo.bio}}</div>
-											<span (click)="ReadMoreFields.bio = false">Read Less</span>
 										</div>
 										<div *ngIf="!ReadMoreFields.bio">
-											<div>{{ProfileInfo.bio | truncate : 160}}</div>
-											<span *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
+											<div>{{ProfileInfo.bio | truncate : 160}} <span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span></div>
 										</div>
 									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
