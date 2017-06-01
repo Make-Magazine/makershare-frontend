@@ -3020,6 +3020,16 @@ footer {
         line-height: 150% !important;
         font-size: 0.9rem;
         color: #4F4F4F; }
+        .profile-sidebar .profile-container .profile-info .bio .read-less {
+          display: block;
+          font-size: 1rem;
+          text-align: right;
+          cursor: pointer;
+          color: #00AEEF; }
+        .profile-sidebar .profile-container .profile-info .bio .read-more {
+          color: #00AEEF;
+          font-family: "Messina Sans Bold";
+          cursor: pointer; }
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
@@ -4885,8 +4895,7 @@ button:hover {
 .hideData {
   display: block; }
   .hideData span {
-    font-size: 0.8rem;
-    color: #4F4F4F; }
+    font-size: 0.8rem; }
   .hideData.topic-tags span {
     color: #828282;
     font-size: 1rem;
