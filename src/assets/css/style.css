@@ -3020,6 +3020,16 @@ footer {
         line-height: 150% !important;
         font-size: 0.9rem;
         color: #4F4F4F; }
+        .profile-sidebar .profile-container .profile-info .bio .read-less {
+          display: block;
+          font-size: 1rem;
+          text-align: right;
+          cursor: pointer;
+          color: #00AEEF; }
+        .profile-sidebar .profile-container .profile-info .bio .read-more {
+          color: #00AEEF;
+          font-family: "Messina Sans Bold";
+          cursor: pointer; }
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
@@ -4885,8 +4895,7 @@ button:hover {
 .hideData {
   display: block; }
   .hideData span {
-    font-size: 0.8rem;
-    color: #4F4F4F; }
+    font-size: 0.8rem; }
   .hideData.topic-tags span {
     color: #828282;
     font-size: 1rem;
@@ -8306,12 +8315,13 @@ img {
     .upload-cover-modal .modal-header .close-form {
       padding: 0px; }
   .upload-cover-modal .modal-body {
-    min-height: 510px;
+    min-height: 440px;
     max-height: 540px;
-    overflow-y: auto; }
+    overflow-y: auto;
+    padding: 0 15px; }
   .upload-cover-modal .modal-footer {
     border-top: none !important;
-    padding: 32px; }
+    padding: 0  32px; }
     .upload-cover-modal .modal-footer button {
       width: 120px; }
   .upload-cover-modal .info {
@@ -8377,6 +8387,8 @@ img {
       width: 140px;
       background-color: #fff !important;
       color: #4F4F4F !important; }
+      .upload-cover-modal .upload-tab .btn.btn-load-more {
+        margin-bottom: 0; }
     .upload-cover-modal .upload-tab .drag-photo {
       color: #4F4F4F; }
     .upload-cover-modal .upload-tab .drag-or {
@@ -8779,6 +8791,7 @@ img {
       font-weight: 400;
       line-height: 130%;
       color: #828282;
+      font-family: 'Messina Sans Bold';
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-challenge-summary-closed .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-enter-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }

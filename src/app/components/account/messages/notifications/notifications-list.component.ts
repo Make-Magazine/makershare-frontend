@@ -32,9 +32,7 @@ export class NotificationsListComponent implements OnInit {
     //  this.loaderService.display(true);
     this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
       this.notifications = this.notifications.concat(notifications);
-      for(var i=0;i<this.notifications.length;i++){
-        this.notifications[i].date=this.timeago(this.notifications[i].date);
-      }
+ 
 
       // this.loaderService.display(false);
 
@@ -57,20 +55,7 @@ export class NotificationsListComponent implements OnInit {
     this.pageNumber++;
     this.GetNotificationsList();
   }
-    timeago(date){
-    var n = date.includes("min") || date.includes('sec');
-    var current;
-    if(n){
-      date = date.substring(0, date.indexOf("hours"));
-      if(!date){
-      date=date+'0';
-  }
-  date=date+' hours';
-
-  }
-    return date+' ago';
-  }
- }
+}
   // timeago(timeStamp) {
   //   var secs = ((new Date()).getTime() / 1000) - timeStamp;
   //   Math.floor(secs);
