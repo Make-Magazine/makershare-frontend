@@ -7160,6 +7160,10 @@ textarea {
           display: none; }
         .showcase-card-backlayer .showcase-card .card .user-card .profile-tag {
           display: none; }
+        .showcase-card-backlayer .showcase-card .card .user-card .user-nickname a {
+          color: #4F4F4F; }
+        .showcase-card-backlayer .showcase-card .card .user-card .user-city {
+          color: #828282; }
     .showcase-card-backlayer .showcase-card .single-showcase {
       padding: 10px; }
       .showcase-card-backlayer .showcase-card .single-showcase img {
@@ -7308,7 +7312,6 @@ textarea {
   overflow: inherit !important;
   height: auto !important;
   -webkit-line-clamp: inherit !important;
-  min-height: 168px;
   font-weight: normal;
   line-height: 1.5rem; }
 .page-single-showcase .entries-count {
