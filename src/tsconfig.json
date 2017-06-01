@@ -15,5 +15,10 @@
     "typeRoots": [
       "../node_modules/@types"
     ]
-  }
+  },
+  "exclude": [
+      "main-aot.ts",
+      "uni/server-aot.ts",
+      "**/*.ngfactory.ts"
+  ]
 }

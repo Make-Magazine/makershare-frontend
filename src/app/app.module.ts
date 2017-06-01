@@ -15,7 +15,6 @@ import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 import { ShareButtonsModule } from "ngx-sharebuttons";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import custom auth0 service
 
 import { FormsModule } from '@angular/forms';
@@ -79,8 +78,9 @@ let config = {
     ShowTellComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+    BrowserModule.withServerTransition({
+      appId: 'maker'
+    }),
     CookieModule.forRoot(),
     SharedModule.forRoot(),
     ResponsiveModule,
@@ -98,9 +98,10 @@ let config = {
     ShareButtonsModule.forRoot(),
   ],
   entryComponents: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { };
 export function ResponsiveDefinition() {
   return new ResponsiveConfig(config);
 };
+export { AppComponent };
