@@ -5006,6 +5006,9 @@ button:hover {
     -webkit-box-shadow: 2px 2px 8px #BDBDBD;
     box-shadow: 2px 2px 8px #BDBDBD; }
 
+.page-explore .card-type-grey {
+  display: none; }
+
 .page-explore {
   background-color: #F2F2F2; }
   .page-explore .width-fix {
@@ -5161,6 +5164,8 @@ button:hover {
 .page-challenge {
   background-color: #F2F2F2;
   padding-bottom: 40px; }
+  .page-challenge .type-layer-2 {
+    display: none; }
 
 .challenge-card {
   margin-bottom: 10px; }
@@ -6737,6 +6742,9 @@ textarea {
 .license-report {
   font-size: 0.8rem;
   text-align: center; }
+
+.page-explore .card-type-blue {
+  display: none; }
 
 .page-learn {
   background-color: white;

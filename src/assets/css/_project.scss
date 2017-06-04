@@ -1,6 +1,7 @@
 .page-project {
 		color: $main-grey;
 		background-color: $main-bg;
+
 	.top-content-wrapper {
 		// padding-top: 20px;
 		margin-bottom: 10px;
@@ -1013,4 +1014,11 @@ textarea {
 .license-report {
 	font-size: 0.8rem;
 	text-align: center;
+}
+
+.page-explore{
+	.card-type-blue{
+		display:none;
+	}
+
 }
