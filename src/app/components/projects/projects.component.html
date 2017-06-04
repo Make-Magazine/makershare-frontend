@@ -14,7 +14,7 @@
           <div *ngFor="let parent of categories_parents">
             <ul class="list-unstyled parent_{{parent.tid}}">
               <li *ngFor="let term of categories_childs;let i = index">
-                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event.target.id);"
+                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
                   class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
               </li>
             </ul>
@@ -32,7 +32,7 @@
                   <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index"><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="CurrentActiveParentIndex=i;CurrentActiveChildIndex=-1"
                       class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
                     <ul class="dropdown-menu filter-submenu">
-                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event.target.id);idCategory(term);ChangeClassActive(i,$event)"
+                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event);idCategory(term);ChangeClassActive(i,$event)"
                           data-id="{{term.tid}}" (click)="idCategory(term)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
                     </ul>
                   </li>
@@ -47,7 +47,7 @@
             <div class="row justify-content-end align-items-center hidden-xs-down">
               <div class="entries-count btn" *ngIf="!nameCat">
                 <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project</p>
+                <p *ngIf="countProject < 2">{{countProject}} Project</p>                
               </div>
               <div class="entries-count btn pr-1" *ngIf="nameCat">
                 <p *ngIf="countProject > 1">{{countProject}} Projects:</p>
@@ -81,7 +81,7 @@
             <div class="row hidden-sm-up d-flex flex-column">
               <div class="entries-count btn" *ngIf="!nameCat">
                 <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project</p>
+                <p *ngIf="countProject < 2">{{countProject}} Project</p>                
               </div>
               <div class="entries-count btn pr-1" *ngIf="nameCat">
                 <p *ngIf="countProject > 1">{{countProject}} Projects:</p>
@@ -91,7 +91,7 @@
                 <p *ngIf="nameCat" [innerHTML]="nameCat"></p>
               </div>
               <div class="entries-count btn all-project">
-                <a (click)="allProject()">All Projects & Showcases</a>
+                <a (click)="allProject()">All Projects</a>
               </div>
               <div class="sorting-filter dropdown">
                 <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
@@ -120,34 +120,16 @@
       </div>
     </div>header -->
     <div class="projects-grid row" *ngIf="projects.length > 0">
-      <div *ngFor="let project of projects" class="col-md-6 col-lg-4 pull-left">
-        <app-project-card *ngIf="project.type=='Project'" [view]="view" [nid]="project.nid"></app-project-card>
-        <div class="showcase-card-backlayer-home" *ngIf="project.type=='Showcase'">
-          <div class="showcase-card-backlayer-home-2">
-            <app-showcase-gen-card *ngIf="project.type=='Showcase'" [showcaseNid]="project.nid"></app-showcase-gen-card>
-          </div>
-        </div>
-      </div>
+      <app-project-card *ngFor="let project of projects" [view]="view" [nid]="project.nid" class="col-md-6 col-lg-4 pull-left"></app-project-card>
     </div>
     <!--<div *ngIf="projects.length == 0">
       <h4 class="text-center w-100 pt-5">There are no projects to show</h4>
     </div>-->
-    <div class="text-center pt-3 pb-5" *ngIf="!hideloadmoreproject && projects.length > 0  && idcat==-1 ">
+    <div class="text-center pt-3 pb-5" *ngIf="!hideloadmoreproject && projects.length > 0 ">
       <div *ngIf="!hideloadmoreproject && projects.length > 0 ">
         <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
       </div>
     </div>
-      <!--<div class="text-center pt-3 pb-5" *ngIf="!hideloadmoreproject && idcat==-1">
-      <div>
-        <a class="btn btn-load-more" (click)="loadMoreProject()">Load more All PROJECT</a>
-      </div>
-    </div>-->
-    <div class="text-center pt-3 pb-5" *ngIf="!hideloadmoreprojectbycategory && projects.length > 0 && idcat && CurrentActiveChildIndex!=-1 ">
-      <div *ngIf="!hideloadmoreprojectbycategory && projects.length > 0 ">
-        <a class="btn btn-load-more" (click)="loadMoreProjectBycategory()">Load more</a>
-      </div>
-    </div>
-
   </div>
 </div>
 <!-- End region-content -->
