@@ -6746,6 +6746,9 @@ textarea {
 .page-explore .card-type-blue {
   display: none; }
 
+.capitalize {
+  text-transform: capitalize; }
+
 .page-learn {
   background-color: white;
   padding-bottom: 40px; }
