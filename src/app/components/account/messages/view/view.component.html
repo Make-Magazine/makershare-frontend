@@ -18,7 +18,7 @@
       <button type="button" class="btn btn-danger" (click)="previousUrl()" (click)="deleteThread()">Delete this thread
       <i class="fa fa-trash-o" aria-hidden="true"></i>
     </button>
-      <button *ngIf="block" type="button" class="back-inbox btn btn-danger ml-auto" [routerLink]="['/inbox-notifications']">
+      <button type="button" class="back-inbox btn btn-danger ml-auto" [routerLink]="['/inbox-notifications']">
         <i class="lnr lnr-arrow-left" aria-hidden="true"></i>&nbsp; Inbox
       </button>
       <!--<a class="btn btn-transparent" *ngIf="!block" (click)="blockUser()">Block</a>-->
