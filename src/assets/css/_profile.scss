@@ -1816,7 +1816,7 @@
         &.twitch {
             padding: 5px;   
             img {
-                filter: invert(1);
+                @include filter(invert, 1);
             }
         }
         &.twitch {
@@ -1867,7 +1867,7 @@
             background-color: #fff;
             border: 0.5px solid $shade-4;  
             img {
-                filter: invert(0);
+                @include filter(invert, 0);
             }
         }
         &.hackster,
@@ -1877,7 +1877,7 @@
             background-color: #fff;
             border: 0.5px solid $shade-4;  
             img {
-                filter: invert(1);
+                @include filter(invert, 1);
             }
         }
     }

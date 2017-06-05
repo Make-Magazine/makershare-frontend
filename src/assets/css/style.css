@@ -4272,7 +4272,9 @@ footer {
   .profile-social-links a.social.github, .profile-social-links a.social.gitlab, .profile-social-links a.social.twitch {
     padding: 5px; }
     .profile-social-links a.social.github img, .profile-social-links a.social.gitlab img, .profile-social-links a.social.twitch img {
-      filter: invert(1); }
+      -webkit-filter: invert 1;
+      /* Safari */
+      filter: invert 1; }
   .profile-social-links a.social.twitch img {
     width: 80%;
     padding-top: 3px; }
@@ -4297,12 +4299,16 @@ footer {
   background-color: #fff;
   border: 0.5px solid #4F4F4F; }
   .profile-social-links a.social:hover.github img, .profile-social-links a.social:hover.gitlab img, .profile-social-links a.social:hover.twitch img {
-    filter: invert(0); }
+    -webkit-filter: invert 0;
+    /* Safari */
+    filter: invert 0; }
 .profile-social-links a.social:hover.hackster, .profile-social-links a.social:hover.instruct, .profile-social-links a.social:hover.hackday, .profile-social-links a.social:hover.thingy {
   background-color: #fff;
   border: 0.5px solid #4F4F4F; }
   .profile-social-links a.social:hover.hackster img, .profile-social-links a.social:hover.instruct img, .profile-social-links a.social:hover.hackday img, .profile-social-links a.social:hover.thingy img {
-    filter: invert(1); }
+    -webkit-filter: invert 1;
+    /* Safari */
+    filter: invert 1; }
 
 .mywebsite {
   color: #00AEEF;
