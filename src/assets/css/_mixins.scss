@@ -32,8 +32,8 @@
             transition: all $t ease-in-out;
 }
 @mixin filter($type,$val) {
-    -webkit-filter: $type($val); /* Safari */
-    filter: $type($val);
+    -webkit-filter: $type ($val); /* Safari */
+    filter: $type ($val);
 }
 
 @mixin header-font (){
