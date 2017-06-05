@@ -37,6 +37,7 @@ export class ProjectStoryComponent implements OnInit {
     if(this.project.field_story){
       this.story = true;
       this.storyHTML = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
+      console.log(this.storyHTML);
     }
     this.viewService.getView('maker_profile_card_data', [['uid', localStorage.getItem('user_id')],]).subscribe(data => {
       this.currentUser = data[0];
