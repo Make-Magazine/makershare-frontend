@@ -12,6 +12,10 @@ export class NotificationTemplateComponent implements OnInit {
 
 delete=false;
   @Input() notification;
+  // @Input() notificationId;
+  // @Input() msgDeleted;
+
+
 
   constructor(
     private router: Router,
@@ -21,9 +25,15 @@ delete=false;
   ) { }
 
   ngOnInit() { 
-    this.notification.fullname=this.notification.first_name+' '+this.notification.last_name;
-    this.notification.date=this.timeago(this.notification.date);
-
+    if(this.notification ){
+      this.notification.fullname=this.notification.first_name+' '+this.notification.last_name;
+      this.notification.date=this.timeago(this.notification.date);
+    //   if(this.notification.nid == this.notificationId && this.msgDeleted){
+    //   delete this.notification;
+    // }
+    }
+   
+    
   }
 
   MarkAsSeen(seen){
