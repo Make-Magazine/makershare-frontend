@@ -1,5 +1,5 @@
 import {CanDeactivate,ActivatedRouteSnapshot,RouterStateSnapshot} from '@angular/router';
-import {Injectable} from '@angular/core';
+import {Injectable,} from '@angular/core';
 import {Observable} from 'rxjs';
 
 declare var swal:any;
@@ -8,7 +8,10 @@ export interface ComponentCanDeactivate {
 }
 @Injectable()
 export class PendingChangesGuard implements CanDeactivate<ComponentCanDeactivate> {
-  canDeactivate(component: ComponentCanDeactivate,route: ActivatedRouteSnapshot, state:RouterStateSnapshot): boolean | Observable<boolean> {
+  canDeactivate(component: ComponentCanDeactivate,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState: RouterStateSnapshot): boolean | Observable<boolean> {
     // if there are no pending changes, just allow deactivation; else confirm first
     return component.canDeactivate() ?
       true :
@@ -21,13 +24,13 @@ export class PendingChangesGuard implements CanDeactivate<ComponentCanDeactivate
         text: "You have unsaved changes, are you sure you want to leave this page?",
         type: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
+        confirmButtonColor: "#4F4F4F",
         confirmButtonText: "Yes, discard changes!",
         closeOnConfirm: false
       },
       (confirm)=>{
         if(confirm)
-          window.location.href = state.url;
+          window.location.href = nextState.url;
       });
   }
   
