@@ -18,8 +18,8 @@
           <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
             <app-user-card-small [uid]="collaborator.membership_team" [anonymosname]="collaborator.anonymous_member_name"></app-user-card-small>            
             <div class="collaborate-role">
-              <p>ROLE IN PROJECT</p>
-              <p>{{collaborator.membership_role}}</p>
+              <p>ROLE ON THE PROJECT</p>
+              <p class="capitalize">{{collaborator.membership_role}}</p>
             </div>
           </div>
           <!-- End Collaborate -->
