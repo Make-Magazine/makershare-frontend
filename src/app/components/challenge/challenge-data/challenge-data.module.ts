@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChallengeDataComponent } from './challenge-data.component';
 import { ChallengeDataRoutingModule } from './challenge-data-routing.module'
 import { RulesComponent } from './rules/rules.component'
+import { BriefComponent } from './brief/brief.component'
 import { DiscussionComponent } from './discussion/discussion.component';
 import { FollowersComponent } from './followers/followers.component';
 import { SummaryComponent } from './summary/summary.component';
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     FollowersComponent,
     RulesComponent,
+    BriefComponent,
     DiscussionComponent,
     SummaryComponent,
     AwardsComponent,

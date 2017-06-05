@@ -76,7 +76,7 @@ export class ChallengeDataComponent implements OnInit {
           this.loaderService.display(true);
 
           this.getCountProject();
-          this.activeTab = 'awards';
+          this.activeTab = 'brief';
           this.getChallengeData();
           this.sort_order = "DESC";
           this.sort_by = "created";
