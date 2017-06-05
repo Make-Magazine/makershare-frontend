@@ -1813,7 +1813,9 @@
         }
         &.github,
         &.gitlab,
-        &.twitch {
+        &.twitch,
+        &.stack
+         {
             padding: 5px;   
             img {
                 -webkit-filter: invert(1);
@@ -1864,7 +1866,8 @@
         }
         &.github,
         &.gitlab,
-        &.twitch {
+        &.twitch,
+        &.stack {
             background-color: #fff;
             border: 0.5px solid $shade-4;  
             img {
