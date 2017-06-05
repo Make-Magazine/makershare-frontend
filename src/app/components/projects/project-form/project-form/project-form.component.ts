@@ -19,11 +19,10 @@ import { ComponentCanDeactivate } from '../pending-changes.guard';
 /**
  * Hello and welcome to project create and edit component
  * this component is used to managing the project like editing or creating new projects
- * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :)
+ * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :) - Breaker "Wasim Nabil"
  */
 export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   CanNavigate: boolean = true;
-  // @HostListener allows us to also guard against browser refresh, close, etc.
   canDeactivate(): Observable<boolean> | boolean {
     // insert logic to check if there are pending changes here;
     // returning true will navigate without confirmation
@@ -31,13 +30,13 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     return this.CanNavigate;
   }
 
-  // @HostListener allows us to also guard against browser refresh, close, etc.
-  @HostListener('window:beforeunload', ['$event'])
-  unloadNotification($event: any) {
-    if (!this.canDeactivate()) {
-      $event.returnValue = "You have unsaved changes, are you sure you want to leave this page?";
-    }
-  }
+  // // @HostListener allows us to also guard against browser refresh, close, etc.
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadNotification($event: any) {
+  //   if (!this.canDeactivate()) {
+  //     $event.returnValue = "You have unsaved changes, are you sure you want to leave this page?";
+  //   }
+  // }
   /**
    * this variables are used to navigating or static project fields
    * also contain the values what will be printed in the form 
