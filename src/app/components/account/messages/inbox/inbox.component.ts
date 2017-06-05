@@ -34,7 +34,7 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
   noMessage= false;
-  deleteMsgTip="Delete this message";
+  deleteMsgTip="Delete this thread";
   notificationIds;
   msgDeleted=false;  
   //hideUser= true;
