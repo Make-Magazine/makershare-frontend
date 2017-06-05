@@ -31,6 +31,10 @@
          -o-transition: all $t ease-in-out;
             transition: all $t ease-in-out;
 }
+@mixin filter($type,$val) {
+    -webkit-filter: $type($val); /* Safari */
+    filter: $type($val);
+}
 
 @mixin header-font (){
 	@include font-setting('Messina Modern Regular', 3.4rem ,400  , 100%, $text-color-1 );
