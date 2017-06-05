@@ -125,51 +125,43 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('hackster')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+											<a class="nav-link social hackster" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
 												<img src="./assets/images/icons/hackster_white.svg" *ngIf="currentHover != 'hackster'" alt="">
-												<img src="./assets/images/icons/hackster_black.svg" *ngIf="currentHover == 'hackster'" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('instructables')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+											<a class="nav-link social instruct" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
 												<img src="./assets/images/icons/instructables_white.svg" *ngIf="currentHover != 'instructables'" alt="">
-												<img src="./assets/images/icons/instructables_black.svg" *ngIf="currentHover == 'instructables'" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('hackaday')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'hackaday'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'hackaday'" alt="">
+											<a class="nav-link social hackday" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<img src="./assets/images/icons/hackaday_white.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_github != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('github')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_github}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'github'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'github'" alt="">
+											<a class="nav-link social github" target="_blank" href="{{ProfileInfo.field_social_accounts.field_github}}">
+												<img src="./assets/images/icons/github.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitch != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('twitch')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'twitch'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'twitch'" alt="">
+											<a class="nav-link social twitch" target="_blank" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
+												<img src="./assets/images/icons/twitch.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_gitlabs != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('gitlabs')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'gitlabs'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'gitlabs'" alt="">
+											<a class="nav-link social gitlab" target="_blank" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
+												<img src="./assets/images/icons/gitlab.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_thingyverse != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('thingyverse')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'thingyverse'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'thingyverse'" alt="">
+											<a class="nav-link social thingy" target="_blank" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
+												<img src="./assets/images/icons/thingiverse.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow	 != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('stackoverflow')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'stackoverflow'" alt="">
-												<img src="./assets/images/icons/stackoverflow .svg" *ngIf="currentHover == 'stackoverflow'" alt="">
+											<a class="nav-link social stack" target="_blank" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
+												<img src="./assets/images/icons/stackoverflow.svg" alt="">
 											</a>
 										</div>
 									</div>
@@ -331,45 +323,43 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackster_io != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('hackster')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
+											<a class="nav-link social hackster" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackster_io}}">
 												<img src="./assets/images/icons/hackster_white.svg" *ngIf="currentHover != 'hackster'" alt="">
-												<img src="./assets/images/icons/hackster_black.svg" *ngIf="currentHover == 'hackster'" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_instructables != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('instructables')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
+											<a class="nav-link social instruct" target="_blank" href="{{ProfileInfo.field_social_accounts.field_instructables}}">
 												<img src="./assets/images/icons/instructables_white.svg" *ngIf="currentHover != 'instructables'" alt="">
-												<img src="./assets/images/icons/instructables_black.svg" *ngIf="currentHover == 'instructables'" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_hackday != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('hackaday')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'hackaday'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'hackaday'" alt="">
+											<a class="nav-link social hackday" target="_blank" href="{{ProfileInfo.field_social_accounts.field_hackday}}">
+												<img src="./assets/images/icons/hackaday_white.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_github != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('github')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_github}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'github'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'github'" alt="">
+											<a class="nav-link social github" target="_blank" href="{{ProfileInfo.field_social_accounts.field_github}}">
+												<img src="./assets/images/icons/github.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_twitch != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('twitch')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'twitch'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'twitch'" alt="">
+											<a class="nav-link social twitch" target="_blank" href="{{ProfileInfo.field_social_accounts.field_twitch}}">
+												<img src="./assets/images/icons/twitch.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_gitlabs != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('gitlabs')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'gitlabs'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'gitlabs'" alt="">
+											<a class="nav-link social gitlab" target="_blank" href="{{ProfileInfo.field_social_accounts.field_gitlabs}}">
+												<img src="./assets/images/icons/gitlab.svg" alt="">
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_thingyverse != '' ">
-											<a class="nav-link social ext" target="_blank" (mouseover)="over('thingyverse')" (mouseout)="leave()" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
-												<img src="./assets/images/icons/hackaday_white.svg" *ngIf="currentHover != 'thingyverse'" alt="">
-												<img src="./assets/images/icons/hackaday_black.svg" *ngIf="currentHover == 'thingyverse'" alt="">
+											<a class="nav-link social thingy" target="_blank" href="{{ProfileInfo.field_social_accounts.field_thingyverse}}">
+												<img src="./assets/images/icons/thingiverse.svg" alt="">
+											</a>
+										</div>
+										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow	 != '' ">
+											<a class="nav-link social stack" target="_blank" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
+												<img src="./assets/images/icons/stackoverflow.svg" alt="">
 											</a>
 										</div>
 									</div>
