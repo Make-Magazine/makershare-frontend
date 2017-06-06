@@ -342,8 +342,9 @@
                 }
                 .read-more{
                      color: #00AEEF;
-                     font-family: "Messina Sans Bold";
+                     font-family: "Messina Sans regular";
                     cursor: pointer;
+                    font-size: 0.9rem;
                 }
             }
             .makerspaces,
@@ -1902,6 +1903,8 @@
 
 .started_making {
     @include body-font-1 ();
+    font-size: 1.2rem;
+    color: #bdbdbd;
 }
 
 .global-title {
@@ -2115,8 +2118,8 @@
             // 12 pt
             margin-bottom: 5px;
             margin-top: 5px;
-            font-size: 0.8rem !important;
-            // color: $city-color
+            font-size: 1.2rem !important;
+            color: $text-color-3;
         }
         .maker-descripe {
             @include desc-font-5();
@@ -2258,6 +2261,7 @@
     .maker-pic-container {
         width: 85px;
         height: 85px;
+        min-width: 85px;
         img {
             width: 100%;
             height: 100%;
@@ -2284,8 +2288,8 @@
             // 12 pt
             margin-bottom: 5px;
             margin-top: 5px;
-            font-size: 0.8em !important;
-            // color: $city-color
+            font-size: 1em !important;
+            color: $text-color-3;
         }
         .maker-descripe {
             @include desc-font-5();
@@ -2374,7 +2378,8 @@
             .maker-city {
                 @include desc-font-3 ();
                 margin-bottom: 5px;
-                color: $city-color
+                color: $text-color-3 !important;
+                font-size: 1rem !important;
             }
             .maker-descripe {
                 @include desc-font-5();

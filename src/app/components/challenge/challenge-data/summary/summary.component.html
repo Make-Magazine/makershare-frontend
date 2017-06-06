@@ -42,7 +42,7 @@
       <div class="entries-section" *ngIf="challenge.display_entries =='1'">
         <div *ngIf="projectsChallenge" class="projects-grid  row">
           <!-- Start Project Card -->
-          <div class="col-md-4 mb-3" *ngFor="let project of projectsChallenge">
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let project of projectsChallenge">
             <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
             <app-project-vote [nodeNid]="project.nid"></app-project-vote>
           </div>
