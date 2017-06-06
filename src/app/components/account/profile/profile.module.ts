@@ -7,7 +7,6 @@ import { ProfileRoutingModule } from './profile.routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule }  from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ImageCropperModule } from 'ng2-img-cropper';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BaseComponent } from './base/base.component';
 import { EditPortfolioComponent } from './view/edit-portfolio/edit-portfolio/edit-portfolio.component';
@@ -16,7 +15,6 @@ import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-car
 import { DndModule } from 'ng2-dnd';
 import { RouterModule } from '@angular/router';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
-import { Ng2FileDropModule } from 'ng2-file-drop';
 import { ResponsiveModule } from 'ng2-responsive';
 import { TruncatePipe } from '../../../pipes/truncate';
 
@@ -31,10 +29,8 @@ import { TruncatePipe } from '../../../pipes/truncate';
     ReactiveFormsModule,
     SharedModule.forChild(),
     NgbModule,
-    ImageCropperModule,
     CKEditorModule,
     DndModule,
-    Ng2FileDropModule,
     ResponsiveModule
     //MetaModule.forRoot()
     // PipeModule.forRoot(),
