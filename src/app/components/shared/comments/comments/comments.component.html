@@ -1,8 +1,8 @@
 <div class="feedback-card" *ngFor="let comment of comments.value; let i=index">
   <div class="media content-section" *ngIf="comment?.comment">
     <div class="user-pic">
-      <img *ngIf="comment?.photo" class="d-flex" src="{{comment?.photo}}" (click)="goToPortfolio(comment?.first_name,comment?.last_name)" alt="">
-      <img *ngIf="!comment?.photo" class="d-flex" src="./assets/images/defaultprofile.png" (click)="goToPortfolio(comment?.first_name,comment?.last_name)" alt="">
+      <img *ngIf="comment?.default_profile_photo" class="d-flex" src="{{comment?.default_profile_photo}}" (click)="goToPortfolio(comment?.first_name,comment?.last_name)" alt="">
+      <img *ngIf="!comment?.default_profile_photo" class="d-flex" src="./assets/images/defaultprofile.png" (click)="goToPortfolio(comment?.first_name,comment?.last_name)" alt="">
     </div>
     <div class="media-body mt-auto">
       <div class="user-info">

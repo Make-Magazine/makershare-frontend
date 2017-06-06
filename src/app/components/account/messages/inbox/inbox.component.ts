@@ -34,7 +34,9 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
   noMessage= false;
-  deleteMsgTip="Delete this message";
+  deleteMsgTip="Delete this thread";
+  notificationIds;
+  msgDeleted=false;  
   //hideUser= true;
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -160,8 +162,13 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(i) {
-    this.pm.deleteMessage(this.msg[i].thread_id).subscribe();
-    delete this.msg[i];
+    this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data=>{
+    this.notificationIds = data;
+    this.msgDeleted=true;
+    console.log(this.notificationIds)
+    
+    //console.log(this.notificationIds[0]);
+    delete this.msg[i]})
   }
 
   // valueChanged(mid, event) {

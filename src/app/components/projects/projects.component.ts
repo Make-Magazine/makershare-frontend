@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService,MainService } from '../../d7services';
 import { RouterModule, Router } from '@angular/router';
 import { ISorting } from '../../models/explore/sorting';
 import { ProjectCategory } from '../../models';
@@ -18,18 +18,15 @@ export class ProjectsComponent implements OnInit {
   projects = [];
   categories = null;
   nameCat;
-  idcat = -1;
   view = 'grid';
   pages: number = 0;
-  pagescategory: number = 0;
   countProject = 0;
   hideloadmoreproject = true;
-  hideloadmoreprojectbycategory = true;
   CurrentActiveParentIndex = -1;
   CurrentActiveChildIndex = -1;
   page_arg;
   sort: ISorting = {
-    sort_by: "created",
+    sort_by: "created_2",
     sort_order: "DESC",
     pageNo: 0
   };
@@ -59,31 +56,46 @@ export class ProjectsComponent implements OnInit {
   getProjects() {
     // show spinner
     this.loaderService.display(true);
-    this.viewService.getView('project_showcase', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
+
+    // get the projects
+    if (this.pages >= 0) {
+      this.page_arg = ['page', this.pages];
+    }
+    if (this.pages == 0) {
+      this.projects = [];
+    }
+    /* start obs*/
+    // const response$ : Observable<Response>=this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]); 
+    //   response$.subscribe(
+    //     res => console.log("sas"),
+    //     () =>{},
+    //     ()=>console.log("compleate")
+    //   );
+    /* end obs*/
+    this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
       this.projects = this.projects.concat(data);
       this.loadMoreVisibilty();
       // hide spinner
       this.loaderService.display(false);
+
     }, err => {
       // hide spinner
       this.loaderService.display(false);
     });
-  }
 
-  projectsById(e: number) {
-    if (this.pagescategory >= 0) {
-      this.page_arg = ['page', this.pagescategory];
-    }
-    if (this.pagescategory == 0) {
-      this.page_arg = ['page', this.pagescategory];
-      this.projects = [];
-    }
+  }
+  projectsById(event) {
     // show spinner
+    // console.log(event);
     this.loaderService.display(true);
-    this.idcat = e;
-    this.viewService.getView('project_showcase', [this.page_arg, ['category', this.idcat]]).subscribe(data => {
-      this.projects = this.projects.concat(data);
-      this.loadMoreVisibiltyBycategory();
+    var id = event.target.id;
+    this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
+      this.projects = data;
+      // console.log(data.length)
+      //this.projects= this.projects.concat(data);
+      this.loadMoreVisibilty();
+
+
       if (this.projects.length == 0) {
         this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
       }
@@ -93,145 +105,124 @@ export class ProjectsComponent implements OnInit {
 
     });
   }
-
   /* function to get count projects */
   getCountProject() {
     this.viewService.getView('maker_count_all_projects').subscribe(data => {
       this.countProject = data[0];
+      // console.log(this.countProject);
     }, err => {
 
     });
   }
   /* end count function */
-
   /* function load more  */
   loadMoreProject() {
     this.pages++;
     this.getProjects();
   }
   /* end function load more  */
-
-  /* function load more by category  */
-  loadMoreProjectBycategory() {
-    this.pagescategory++;
-    this.projectsById(this.idcat);
-  }
-  /* end function load more  */
-
-  // Function to control load more button
-  loadMoreVisibiltyBycategory() {
-    if (this.countProject <= this.projects.length) {
-      this.hideloadmoreprojectbycategory = true;
-    } else if (this.countProject > this.projects.length) {
-      this.hideloadmoreprojectbycategory = false;
-    }
-  }
-  /* END FUNCTION loadMoreVisibilty */
-
   // Function to control load more button
   loadMoreVisibilty() {
+    // get the challenges array count
+    // this.getCountProject();
+    // console.log(this.countProject)
+    // console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.projects.length) {
+      //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
   }
   /* END FUNCTION loadMoreVisibilty */
-
   /* function to sort challenge Title A-z */
   sortAsc() {
     this.projects = [];
     this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title";
     this.ActionName = "Title A-Z"
     this.getCountProject();
+
     this.getProjects();
   }
   /* end function to sort challenge Title A-z */
-
   /* function to sort challenge Title Z-A */
   sortDesc() {
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "DESC";
-    this.sort.sort_by = "title"
+    this.sort.sort_by = "title_1"
     this.ActionName = "Title Z-A"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* end function to sort challenge Title Z-A */
-
   /* function to sort challenge Recently */
   mostRecent() {
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "DESC"
-    this.sort.sort_by = "created"
+    this.sort.sort_by = "created_2"
     this.ActionName = "Most recent"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* function to sort challenge Oldest */
   oldest() {
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "ASC";
-    this.sort.sort_by = "created"
+    this.sort.sort_by = "created_1"
     this.ActionName = "Oldest"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* end function to sort challenge Oldest */
 
   /* function to sort challenge MostLiked */
   mostLiked() {
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "count"
     this.ActionName = "Most liked"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* end function to sort challenge MostLiked */
-
   /* function to sort challenge mostViewed */
   mostViewed() {
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php";
-    this.ActionName = "Most viewed";
+    this.sort.sort_by = "php"
+    this.ActionName = "Most viewed"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* end function to sort challenge mostViewed */
 
-  mostFeatured() {
+  mostFeatured(){
     this.projects = [];
-    this.pages = 0;
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
     this.sort.sort_order = "DESC";
     this.sort.sort_by = "field_projects_target_id"
     this.ActionName = "Featured"
     this.getCountProject();
+
     this.getProjects();
   }
-
   /* function to sort challenge MostForked */
   mostForked() {
     this.projects = [];
@@ -240,20 +231,17 @@ export class ProjectsComponent implements OnInit {
     this.sort.sort_by = "field_total_forks_value";
     this.ActionName = "Most forked"
     this.getCountProject();
+
     this.getProjects();
+
   }
   /* end function to sort challenge MostLiked */
-
   allProject() {
-    this.pages = 0
-    this.idcat = -1;
     this.projects = [];
-    this.hideloadmoreproject = true;
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "created";
-    this.ActionName = "Most recent";
-    this.CurrentActiveParentIndex = -1;
-    this.CurrentActiveChildIndex = -1;
+    this.pages = 0
+    this.sort.sort_order = "DESC"
+    this.sort.sort_by = "created_2"
+    this.ActionName = "Most recent"
     this.getCountProject();
     this.getProjects();
   }
@@ -269,19 +257,22 @@ export class ProjectsComponent implements OnInit {
           this.categories_parents.push(element);
         }
       });
+      //  console.log(this.categories_childs);
+      // console.log(this.categories_parents);          
     });
   }
-
-  /* function get count by category */
   idCategory(term) {
     this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
     this.nameCat = term.name;
     let body = {
       "tid": term.tid,
+
     };
     this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
+    //  console.log(res)
     }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
 
   }//end function
