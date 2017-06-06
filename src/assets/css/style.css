@@ -10310,6 +10310,15 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.about-badges .page-title,
+.about-badges .page-description {
+  text-align: center; }
+.about-badges .badges-group-title {
+  text-align: center;
+  color: #ED1C24; }
+.about-badges .badge-group .image-container {
+  width: 20%; }
+
 @media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {
     order: 2;
