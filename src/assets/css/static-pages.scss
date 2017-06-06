@@ -3,11 +3,24 @@
   .page-description {
     text-align: center;
   }
-  .page-title {font-weight: 700;}
-  .page-description {}
+  .page-title {
+  
+     font-size: 3.4rem;
+     line-height: 100%;
+     color: $shade-4;
+  
+  }
+    .page-description { 
+          font-size: 0.95rem;
+          line-height: 1.5rem;
+          color: #828282;
+         
+          }
   .badges-group-title {
     text-align: center;
-    color: $red;
+    text-transform: uppercase;
+    color: #ED1C24;
+    font-size: 1.125rem;
     
   }
   .badge-group {
@@ -20,6 +33,15 @@
            }
        }
     .badge-data {
+      h3 {
+        font-size: 1.6rem;
+        line-height: 1.75rem;
+      }
+      p{
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+        text-align: left;
+      }
         width: 75%;
         margin-left: 2%;
         background-color: white;
