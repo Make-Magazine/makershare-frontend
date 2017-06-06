@@ -76,7 +76,7 @@ export class ChallengeDataComponent implements OnInit {
           this.loaderService.display(true);
 
           this.getCountProject();
-          this.activeTab = 'awards';
+          this.activeTab = 'brief';
           this.getChallengeData();
           this.sort_order = "DESC";
           this.sort_by = "created";
@@ -168,7 +168,6 @@ export class ChallengeDataComponent implements OnInit {
     this.route.params
     this.viewService.getView('challenge_data', [['nid', this.idFromUrl]]).subscribe(data => {
       this.challenge = data[0];
-      console.log(this.challenge);
       // this.customTitle = this.challenge.title;
       this.customDescription = this.challenge.body;
       this.customImage = this.challenge.cover_image;
