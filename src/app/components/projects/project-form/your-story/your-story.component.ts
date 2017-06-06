@@ -9,13 +9,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { MetaService } from '@nglibs/meta';
 import { ImageCropperComponent } from 'ng2-img-cropper';
-import { domain,endpoint } from '../../../../d7services/globals';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 import { trigger, style, transition,animate, group } from '@angular/core';
 
-declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-your-story',
   templateUrl: './your-story.component.html',
@@ -39,71 +37,7 @@ declare var CKEDITOR:any;
     ])
   ]
 })
-export class YourStoryComponent implements OnInit,AfterViewInit {
-  @ViewChild('ckeditor') ckeditor:any;
-  ngAfterViewInit() {
-    this.ckeditor.instance.on('fileUploadRequest', (event) => {
-      var fileLoader = event.data.fileLoader;
-      var xhr = fileLoader.xhr;
-      xhr.setRequestHeader( 'X-CSRF-Token', this.mainService.getToken());
-      xhr.setRequestHeader( 'Accept', 'application/json' );
-      xhr.setRequestHeader( 'Content-Type', 'application/json');
-      xhr.withCredentials = true;
-      var myReader: FileReader = new FileReader();
-      let self = this;
-      myReader.onloadend = function (loadEvent: any) {
-        let fileEntity:FileEntity = {
-          file:NodeHelper.RemoveFileTypeFromBase64(loadEvent.target.result),
-          filename:fileLoader.file.name,
-          filepath:'public://ckeditor/'+localStorage.getItem("user_id")+fileLoader.file.name,
-        };
-        self.fileService.SendCreatedFile(fileEntity).subscribe(data=>{
-          xhr.send(JSON.stringify({fid:data.fid,uid:+localStorage.getItem("user_id")}));
-        });
-      };
-      myReader.readAsDataURL(fileLoader.file);
-      event.stop();
-    });
-    CKEDITOR.on( 'dialogDefinition', function( ev ) {
-      var dialogName = ev.data.name;
-      var dialogDefinition = ev.data.definition;
-      if (dialogName == 'image') {
-        dialogDefinition.onLoad = function() {
-          var dialog = CKEDITOR.dialog.getCurrent();
-
-          var uploadTab = dialogDefinition.getContents('Upload');
-          var uploadButton = uploadTab.get('uploadButton');
-         // console.log('uploadButton', uploadButton);
-
-          uploadButton.onClick = (evt)=>{
-//console.log('fire in the hole', evt);
-          };
-
-          uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
-//console.log('working');
-          };
-        };
-      }
-    });
-    this.ckeditor.instance.on( 'fileUploadResponse', (event) => {
-      event.stop();
-      var data = event.data;
-      var xhr = data.fileLoader.xhr;
-      let response = JSON.parse(xhr.responseText);
-      if(!response[0]){
-        data.message = 'Error';
-        event.cancel();
-      }else{
-        data.url = response[0];
-      }
-    });
-  }
-  CKEditorConfig = {
-    uploadUrl: domain+endpoint+'/maker_manage_file/create', 
-    // imageUploadUrl: domain+endpoint+'/maker_manage_file/create',
-    // filebrowserUploadUrl: domain+endpoint+'/maker_manage_file/create',
-  }
-  
+export class YourStoryComponent implements OnInit {  
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference
@@ -121,7 +55,6 @@ export class YourStoryComponent implements OnInit,AfterViewInit {
   cover_image: FileEntity;
   tags: string[];
   HtmlImg = new Image();
-  showAndTellLink ="https://www.youtube.com/watch?v=56i0M49rhtU";
  
   /**
    * local variables to use only inside this component
