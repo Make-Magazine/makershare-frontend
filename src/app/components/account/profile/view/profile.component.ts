@@ -218,6 +218,14 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
+  isEmpty(variable:any):boolean {
+    var empty = Object.keys(variable).every(function(key) {
+      if(key == 'field_website_title' || key == 'field_blog_title' || key == 'field_preferred' || key == 'field_website_or_blog' || key == 'field_additional_site')
+        return true;
+      return variable[key]== '' || variable[key]== null;
+    });
+    return empty;
+  }
   SelectFileAndSave(closebtn: HTMLButtonElement, SelectedFile: FileEntityManage) {
     closebtn.click();
     let user: UserProfile = {
@@ -282,19 +290,8 @@ export class ProfileComponent implements OnInit {
     delete this.SelectedParentInterest;
     this.AssignParentChildInterests();
   }
-  RemoveInterest(InterestId: number, InterestParentId: number): void {
-    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestId), 1);
-    var flag = false;
-    this.ProfileInfo.maker_interests.forEach((category, index) => {
-      let catIndex = this.allIntersets.map(element => element.tid).indexOf(category.tid);
-      if (this.allIntersets[catIndex].parent_tid == InterestParentId) {
-        flag = true;
-        return;
-      }
-    });
-    if (!flag) {
-      this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.indexOf(InterestParentId), 1);
-    }
+  RemoveInterest(InterestId: number): void {
+    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.map(term=>term.tid).indexOf(InterestId), 1);
   }
   OpenModal(Template, ModalName: string) {
     if (ModalName == 'Portfolio Photo') {

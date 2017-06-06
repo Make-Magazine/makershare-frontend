@@ -856,6 +856,9 @@
             width: 140px;
             background-color: #fff !important;
             color: $text-color-1 !important;
+            &.big{
+                width:220px;
+            }
         }
         .drag-photo {
             color: $text-color-1;
@@ -1597,7 +1600,7 @@
             }
             .modal-contents {
                 min-height: 370px;
-                max-height: 550px;
+                max-height: 650px;
                 overflow-y: auto;
             }
             #social {
@@ -1689,9 +1692,6 @@
         .close:focus, .close:hover {
             outline: none !important;
         }
-    }
-    .modal-body {
-
     }
     .modal-footer {
         border-top: none !important;
@@ -1806,7 +1806,29 @@
         cursor:pointer;
         background:$shade-4;
         color:#fff;
-        &.ext {
+        &.hackster,
+        &.instruct,
+        &.hackday {
+            padding: 5px;
+        }
+        &.github,
+        &.gitlab,
+        &.twitch,
+        &.stack
+         {
+            padding: 5px;   
+            img {
+                -webkit-filter: invert(1);
+                filter: invert(1);
+            }
+        }
+        &.twitch {
+            img {
+                width: 80%;
+                padding-top: 3px;
+            }
+        }
+        &.thingy {
             padding: 5px;
         }
 	
@@ -1841,6 +1863,28 @@
         &.ext {
             background-color: #fff;
             border: 0.5px solid $shade-4;
+        }
+        &.github,
+        &.gitlab,
+        &.twitch,
+        &.stack {
+            background-color: #fff;
+            border: 0.5px solid $shade-4;  
+            img {
+                -webkit-filter: invert(0);
+                filter: invert(0);
+            }
+        }
+        &.hackster,
+        &.instruct,
+        &.hackday,
+        &.thingy {
+            background-color: #fff;
+            border: 0.5px solid $shade-4;  
+            img {
+                -webkit-filter: invert(1);
+                filter: invert(1);
+            }
         }
     }
 }
@@ -2678,4 +2722,11 @@ button {
             @include boxShadow(2px, 2px, 8px, $light-grey);
         }
     }
+}
+
+.page-explore{
+	.card-type-grey{
+		display:none;
+	}
+
 }
