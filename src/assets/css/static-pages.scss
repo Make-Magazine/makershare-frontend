@@ -1,0 +1,58 @@
+.about-badges {
+  .page-title,
+  .page-description {
+    text-align: center;
+  }
+  .page-title {
+  
+     font-size: 3.4rem;
+     line-height: 100%;
+     color: $shade-4;
+  
+  }
+    .page-description { 
+          font-size: 0.95rem;
+          line-height: 1.5rem;
+          color: #828282;
+         
+          }
+  .badges-group-title {
+    text-align: center;
+    text-transform: uppercase;
+    color: #ED1C24;
+    font-size: 1.125rem;
+    
+  }
+  .badge-group {
+    .image-container {
+      width: 20%;
+      img{
+        width: 220px;
+        height: auto;
+        margin-top: -5px;
+        padding: 3px 7px 10px 0px;
+      }
+    }
+    .badge-data {
+      height: 155px;
+      width: 75%;
+      margin-left: 2%;
+      background-color: white;
+      padding: 10px;
+      margin-bottom: 6%;
+      @include boxShadow(2px, 2px ,8px, $shade-3);
+      h3 {
+        font-size: 1.6rem;
+        line-height: 1.75rem;
+      }
+      p{
+        font-size: 0.85rem;
+        line-height: 1.3rem;
+        text-align: left;
+      }
+    }
+
+  }
+
+
+}
