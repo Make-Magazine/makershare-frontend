@@ -10313,11 +10313,24 @@ img {
 .about-badges .page-title,
 .about-badges .page-description {
   text-align: center; }
+.about-badges .page-title {
+  font-weight: 700; }
 .about-badges .badges-group-title {
   text-align: center;
   color: #ED1C24; }
 .about-badges .badge-group .image-container {
   width: 20%; }
+  .about-badges .badge-group .image-container img {
+    width: 220px;
+    height: auto;
+    padding: 3px 7px 10px 0px; }
+.about-badges .badge-group .badge-data {
+  width: 75%;
+  margin-left: 2%;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 6%;
+  box-shadow: 3px 3px 3px 7px #BDBDBD; }
 
 @media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {

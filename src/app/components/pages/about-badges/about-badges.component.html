@@ -7,10 +7,8 @@
     <div class="col-md-6">
       <p class="badges-group-title">PROJECT BADGES</p>
       <div class="badge-group" *ngFor="let badge of makerBadge;">
-        <div class="image-container">
-          <img src="{{badge.image}}" alt="">
-        </div>
-        <div class="badge-data">
+        <div class="image-container pull-left" [innerHTML]="badge.image"></div>
+        <div class="badge-data pull-left">
           <h3>{{badge.subtitle}}</h3>
           <p>{{badge.description}}</p>
         </div>
@@ -18,10 +16,8 @@
     </div>
     <div class="col-md-6">
       <p class="badges-group-title">MAKER BADGES</p>
-      <div class="badge-group" *ngFor="let badge of projectBadge;">
-        <div class="image-container">
-          <img src="{{badge.image}}" alt="">
-        </div>
+      <div class="badge-group d-flex" *ngFor="let badge of projectBadge;">
+        <div class="image-container" [innerHTML]="badge.image"></div>
         <div class="badge-data">
           <h3>{{badge.subtitle}}</h3>
           <p>{{badge.description}}</p>
