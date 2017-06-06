@@ -63,7 +63,7 @@ export class InboxNotificationsComponent implements OnInit {
       .do(() => this.searchFailed = false)
       .switchMap((term) => {
         if (term.length > 1) {
-          return this.viewService.getView('maker_profile_search_data', [['combine', term]])
+          return this.viewService.getView('maker_profile_search_data', [['combine', term], ['mail', term],['field_last_name_value',term],['field_full_name_value', term]])
             .map(result => {
               if (result.length == 0) {
                 this.searchFailed = true;
@@ -115,7 +115,7 @@ export class InboxNotificationsComponent implements OnInit {
         this.msg = [];
         if(this.msg.length == 0){
         this.noMessage = false;
-        this.current_active_tab = 'sent';  
+        this.current_active_tab = 'messages';  
       }
         this.messageForm.reset();
         this.SelectedUser = [];
