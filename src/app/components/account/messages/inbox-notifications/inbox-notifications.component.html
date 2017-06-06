@@ -7,14 +7,14 @@
   <div class="text-center p-3">
     <h1 *ngIf="current_active_tab == 'messages'">Messages</h1>
     <h1 *ngIf="current_active_tab == 'notifications'">Notifications</h1>
-    <h1 *ngIf="current_active_tab == 'sent'">Sent Messages</h1>
+    <!--<h1 *ngIf="current_active_tab == 'sent'">Sent Messages</h1>-->
   </div>
   <div class="row header-contaner d-flex flex-row">
     <header class="inbox-header mr-auto col-lg-6">
       <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center">
         <li><a (click)="current_active_tab = 'messages'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'messages' }">Messages</a></li>
         <li><a (click)="current_active_tab = 'notifications'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'notifications' }">Notifications</a></li>
-        <li><a (click)="current_active_tab = 'sent'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>
+        <!--<li><a (click)="current_active_tab = 'sent'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'sent' }">Sent</a></li>-->
       </ul>
     </header>
     <div class="inbox-container col-lg-6 ml-auto">
@@ -43,7 +43,7 @@
   <div class="nav-create">
     <div class="container">
       <app-inbox *ngIf="current_active_tab == 'messages'"></app-inbox>
-      <app-sent *ngIf="current_active_tab == 'sent'"></app-sent>
+      <!--<app-sent *ngIf="current_active_tab == 'sent'"></app-sent>-->
       <notifications-list *ngIf="current_active_tab == 'notifications'"></notifications-list>
     </div>
   </div>
