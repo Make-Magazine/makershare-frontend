@@ -16,7 +16,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Input() Visibility: number;
   @Output() emitter = new EventEmitter();
   projectCard
-  badges
+  badges=[];
   pages: number = 0;
   constructor(
     private nodeService: NodeService,
@@ -29,6 +29,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.GetProjectCard();
+    this. getBadgesProject();
   }
 
   GetProjectCard() {
@@ -81,11 +82,17 @@ export class ProjectCardPortfolioComponent implements OnInit {
     this.router.navigate(['/projects/', path]);
   }
   getBadgesProject() {
+    if(this.Project.nid){
     this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {
       for (let i = 0; i < data.length && i < 4; i++) {
         this.badges.push(data[i]);
       }
+      // for (let i = 0; i < data.length; i++) {
+      //   //this.badges.push(data[i]);
+      //   console.log(data[i])
+      // }
     });
+    }
   }
   /* function load more  */
   loadMoreProject() {
