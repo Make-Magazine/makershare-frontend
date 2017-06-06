@@ -3,18 +3,32 @@
   .page-description {
     text-align: center;
   }
-  .page-title {}
+  .page-title {font-weight: 700;}
   .page-description {}
   .badges-group-title {
     text-align: center;
     color: $red;
+    
   }
   .badge-group {
     .image-container {
       width: 20%;
-    }
+            img{
+             width: 220px;
+            height: auto;
+            padding: 3px 7px 10px 0px;
+           }
+       }
     .badge-data {
-      
+        width: 75%;
+        margin-left: 2%;
+        background-color: white;
+        padding: 10px;
+        margin-bottom: 6%;
+        box-shadow: 3px 3px 3px 7px $shade-3;
     }
+
   }
+
+
 }
