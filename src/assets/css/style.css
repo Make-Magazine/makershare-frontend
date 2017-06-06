@@ -10310,6 +10310,47 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.about-badges .page-title,
+.about-badges .page-description {
+  text-align: center; }
+.about-badges .page-title {
+  font-size: 3.4rem;
+  line-height: 100%;
+  color: #4F4F4F; }
+.about-badges .page-description {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  color: #828282; }
+.about-badges .badges-group-title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #ED1C24;
+  font-size: 1.125rem; }
+.about-badges .badge-group .image-container {
+  width: 20%; }
+  .about-badges .badge-group .image-container img {
+    width: 220px;
+    height: auto;
+    margin-top: -5px;
+    padding: 3px 7px 10px 0px; }
+.about-badges .badge-group .badge-data {
+  height: 155px;
+  width: 75%;
+  margin-left: 2%;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 6%;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+  .about-badges .badge-group .badge-data h3 {
+    font-size: 1.6rem;
+    line-height: 1.75rem; }
+  .about-badges .badge-group .badge-data p {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+    text-align: left; }
+
 @media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {
     order: 2;
@@ -10591,7 +10632,11 @@ img {
     margin-left: 0px !important; }
 
   .page-create-project-why .nav-create ul li {
-    float: none; } }
+    float: none; }
+
+  .about-badges .badge-group .badge-data {
+    min-height: 155px;
+    height: auto; } }
 @media only screen and (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }
