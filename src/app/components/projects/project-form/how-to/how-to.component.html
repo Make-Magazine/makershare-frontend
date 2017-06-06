@@ -193,7 +193,7 @@
       <div class="form-group projectSteps">
         <div class="form-group project-steps">
           <label for="how-to-make">Describe Your Build</label>
-          <ckeditor #ckeditor id="how-to-make" rows="5" [config]="CKEditorConfig" formControlName='field_how_to' [(ngModel)]="project.field_how_to.und[0].value"></ckeditor>
+          <maker-ckeditor [id]="'how-to-make'" [error]="!HowToForm.controls['field_how_to'].valid" formControlName='field_how_to' ngDefaultControl></maker-ckeditor>
         </div>
       </div>
     </div>
