@@ -3028,8 +3028,9 @@ footer {
           color: #00AEEF; }
         .profile-sidebar .profile-container .profile-info .bio .read-more {
           color: #00AEEF;
-          font-family: "Messina Sans Bold";
-          cursor: pointer; }
+          font-family: "Messina Sans regular";
+          cursor: pointer;
+          font-size: 0.9rem; }
       .profile-sidebar .profile-container .profile-info .makerspaces a,
       .profile-sidebar .profile-container .profile-info .websites a {
         color: #00AEEF;
@@ -4117,7 +4118,7 @@ footer {
         color: #BDBDBD; }
     .modal-content .profile-modal .modal-body .modal-contents {
       min-height: 370px;
-      max-height: 550px;
+      max-height: 650px;
       overflow-y: auto; }
     .modal-content .profile-modal .modal-body #social .form-group {
       position: relative; }
@@ -4267,7 +4268,17 @@ footer {
   cursor: pointer;
   background: #4F4F4F;
   color: #fff; }
-  .profile-social-links a.social.ext {
+  .profile-social-links a.social.hackster, .profile-social-links a.social.instruct, .profile-social-links a.social.hackday {
+    padding: 5px; }
+  .profile-social-links a.social.github, .profile-social-links a.social.gitlab, .profile-social-links a.social.twitch, .profile-social-links a.social.stack {
+    padding: 5px; }
+    .profile-social-links a.social.github img, .profile-social-links a.social.gitlab img, .profile-social-links a.social.twitch img, .profile-social-links a.social.stack img {
+      -webkit-filter: invert(1);
+      filter: invert(1); }
+  .profile-social-links a.social.twitch img {
+    width: 80%;
+    padding-top: 3px; }
+  .profile-social-links a.social.thingy {
     padding: 5px; }
 .profile-social-links a.social:hover.fb {
   background-color: #014c8c; }
@@ -4284,6 +4295,18 @@ footer {
 .profile-social-links a.social:hover.ext {
   background-color: #fff;
   border: 0.5px solid #4F4F4F; }
+.profile-social-links a.social:hover.github, .profile-social-links a.social:hover.gitlab, .profile-social-links a.social:hover.twitch, .profile-social-links a.social:hover.stack {
+  background-color: #fff;
+  border: 0.5px solid #4F4F4F; }
+  .profile-social-links a.social:hover.github img, .profile-social-links a.social:hover.gitlab img, .profile-social-links a.social:hover.twitch img, .profile-social-links a.social:hover.stack img {
+    -webkit-filter: invert(0);
+    filter: invert(0); }
+.profile-social-links a.social:hover.hackster, .profile-social-links a.social:hover.instruct, .profile-social-links a.social:hover.hackday, .profile-social-links a.social:hover.thingy {
+  background-color: #fff;
+  border: 0.5px solid #4F4F4F; }
+  .profile-social-links a.social:hover.hackster img, .profile-social-links a.social:hover.instruct img, .profile-social-links a.social:hover.hackday img, .profile-social-links a.social:hover.thingy img {
+    -webkit-filter: invert(1);
+    filter: invert(1); }
 
 .mywebsite {
   color: #00AEEF;
@@ -4299,7 +4322,9 @@ footer {
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 110%;
-  color: #828282; }
+  color: #828282;
+  font-size: 1.2rem;
+  color: #bdbdbd; }
 
 .global-title {
   font-family: "Messina Modern Bold";
@@ -4490,7 +4515,8 @@ footer {
       color: #828282;
       margin-bottom: 5px;
       margin-top: 5px;
-      font-size: 0.8rem !important; }
+      font-size: 1.2rem !important;
+      color: #BDBDBD; }
     .maker-card .card-block .maker-descripe {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
@@ -4612,7 +4638,8 @@ footer {
     height: 100%; }
   .maker-mobile-card .maker-pic-container {
     width: 85px;
-    height: 85px; }
+    height: 85px;
+    min-width: 85px; }
     .maker-mobile-card .maker-pic-container img {
       width: 100%;
       height: 100%; }
@@ -4644,7 +4671,8 @@ footer {
       color: #828282;
       margin-bottom: 5px;
       margin-top: 5px;
-      font-size: 0.8em !important; }
+      font-size: 1em !important;
+      color: #BDBDBD; }
     .maker-mobile-card .maker-data .maker-descripe {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
@@ -4726,7 +4754,8 @@ footer {
       line-height: 100%;
       color: #828282;
       margin-bottom: 5px;
-      color: #00AEEF; }
+      color: #BDBDBD !important;
+      font-size: 1rem !important; }
     .mobile-profile-container .maker-mobile-card .card-block .maker-descripe {
       font-family: "Messina Modern Regular";
       font-size: 0.95rem;
@@ -10288,6 +10317,47 @@ img {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+.about-badges .page-title,
+.about-badges .page-description {
+  text-align: center; }
+.about-badges .page-title {
+  font-size: 3.4rem;
+  line-height: 100%;
+  color: #4F4F4F; }
+.about-badges .page-description {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  color: #828282; }
+.about-badges .badges-group-title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #ED1C24;
+  font-size: 1.125rem; }
+.about-badges .badge-group .image-container {
+  width: 20%; }
+  .about-badges .badge-group .image-container img {
+    width: 220px;
+    height: auto;
+    margin-top: -5px;
+    padding: 3px 7px 10px 0px; }
+.about-badges .badge-group .badge-data {
+  height: 155px;
+  width: 75%;
+  margin-left: 2%;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 6%;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD; }
+  .about-badges .badge-group .badge-data h3 {
+    font-size: 1.6rem;
+    line-height: 1.75rem; }
+  .about-badges .badge-group .badge-data p {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+    text-align: left; }
+
 @media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {
     order: 2;
@@ -10569,7 +10639,11 @@ img {
     margin-left: 0px !important; }
 
   .page-create-project-why .nav-create ul li {
-    float: none; } }
+    float: none; }
+
+  .about-badges .badge-group .badge-data {
+    min-height: 155px;
+    height: auto; } }
 @media only screen and (max-width: 414px) {
   .showcase-card-backlayer .showcase-card .content-container .showcase-card-footer {
     display: block !important; }

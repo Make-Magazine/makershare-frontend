@@ -44,12 +44,7 @@ export class NotificationPanelComponent implements OnInit {
     }, err => {
     //  console.log(err);
     });
-// <<<<<<< HEAD
-//  }
-//  getNotificationsCount(){
-//     this.viewService.getView('maker_notification_api/'+this.userId).subscribe(data => {
-//     this.countNotifications = data[0];
-// =======
+
   }
   getNotificationsCount() {
     this.viewService.getView('maker_notification_api/' + this.userId).subscribe(data => {
@@ -58,7 +53,6 @@ export class NotificationPanelComponent implements OnInit {
       }else{
         this.countNotifications = data[0];
       }
-      $("header.main-header .login-block li .notification-icon::after").css("content", '10');
 
     }, err => {
       console.log(err)
@@ -82,6 +76,8 @@ export class NotificationPanelComponent implements OnInit {
         this.statisticsService.notificationSetLastSeen(data.user.uid, this.notifications[0].mid).subscribe();
       }
     });
+    this.getNotifications();
+    
   }
 
   reload() {
