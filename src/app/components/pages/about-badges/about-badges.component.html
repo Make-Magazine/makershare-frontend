@@ -1,0 +1,32 @@
+<div class="container about-badges">
+  <h2 class="text-center page-title">BADGES</h2>
+  <p class="text-center page-description">A way to showcase your involvement with this website and the community. There are currently 9 total
+  badges, 3 of which are specific to projects. As a quick overview, you can read about them below, or hover
+  over one the next time you see it on the site.</p>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="badges-group-title">PROJECT BADGES</p>
+      <div class="badge-group" *ngFor="let badge of makerBadge;">
+        <div class="image-container">
+          <img src="{{badge.image}}" alt="">
+        </div>
+        <div class="badge-data">
+          <h3>{{badge.subtitle}}</h3>
+          <p>{{badge.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p class="badges-group-title">MAKER BADGES</p>
+      <div class="badge-group" *ngFor="let badge of projectBadge;">
+        <div class="image-container">
+          <img src="{{badge.image}}" alt="">
+        </div>
+        <div class="badge-data">
+          <h3>{{badge.subtitle}}</h3>
+          <p>{{badge.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

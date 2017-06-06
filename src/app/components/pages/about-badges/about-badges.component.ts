@@ -5,18 +5,14 @@ import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-about-badges',
-  template: `
-      <section class="page-node">
-        <div class="container">
-          <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
-          <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
-        </div>
-      </section>  
-  `,
+  templateUrl: './about-badges.component.html',
 })
 export class AboutBadgesComponent implements OnInit {
   title = '';
   body = ''
+ 
+  makerBadge = [];
+  projectBadge = [];
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
@@ -35,6 +31,20 @@ export class AboutBadgesComponent implements OnInit {
 
     }, err => {
       this.loaderService.display(false);
+    });
+    this.viewService.getView('api_all_badges_data').subscribe(data => {
+          // this.makerBadge = data;
+          // this.projectBadge = data;
+      
+      for(let badge of data){
+        if(badge.category == "Maker Badge"){
+          this.makerBadge.push(badge);
+          console.log(this.makerBadge)
+        }else {
+          this.projectBadge.push(badge)
+          console.log(this.projectBadge)          
+        }
+      }
     });
   }
 
