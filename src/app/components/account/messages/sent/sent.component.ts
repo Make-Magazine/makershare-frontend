@@ -59,7 +59,7 @@ export class SentComponent implements OnInit {
 
     this.user.getUser(this.userId).subscribe(res => {
       this.currentUser =  res;
-      console.log(this.currentUser)
+
     })
   }
 
