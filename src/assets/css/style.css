@@ -10314,10 +10314,18 @@ img {
 .about-badges .page-description {
   text-align: center; }
 .about-badges .page-title {
-  font-weight: 700; }
+  font-size: 3.4rem;
+  line-height: 100%;
+  color: #4F4F4F; }
+.about-badges .page-description {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  color: #828282; }
 .about-badges .badges-group-title {
   text-align: center;
-  color: #ED1C24; }
+  text-transform: uppercase;
+  color: #ED1C24;
+  font-size: 1.125rem; }
 .about-badges .badge-group .image-container {
   width: 20%; }
   .about-badges .badge-group .image-container img {
@@ -10331,6 +10339,13 @@ img {
   padding: 10px;
   margin-bottom: 6%;
   box-shadow: 3px 3px 3px 7px #BDBDBD; }
+  .about-badges .badge-group .badge-data h3 {
+    font-size: 1.6rem;
+    line-height: 1.75rem; }
+  .about-badges .badge-group .badge-data p {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+    text-align: left; }
 
 @media only screen and (max-width: 992px) {
   .page-inbox .inbox-header {
