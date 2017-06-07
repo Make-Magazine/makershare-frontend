@@ -67,8 +67,8 @@ export class SinglShowcaseComponent implements OnInit {
       
 
     
-     this.sort_order = "DESC";
-     this.sort_by = "changed";
+     this.sort_order = "ASC";
+     this.sort_by = "delta";
    
      //load showcase projects count
      this.getProjectsCount();
