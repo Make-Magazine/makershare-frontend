@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input,ViewChild,AfterViewInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input,ViewChild } from '@angular/core';
 import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
 import { CustomValidators } from 'ng2-validation'
 import { NodeService,ViewService,FileService,MainService,TaxonomyService } from '../../../../d7services'
@@ -23,68 +23,8 @@ declare var CKEDITOR:any;
   ]
 })
 
-export class HowToComponent implements OnInit,AfterViewInit {
-@ViewChild('ckeditor') ckeditor:any;
-  ngAfterViewInit() {
-    this.ckeditor.instance.on('fileUploadRequest', (event) => {
-      var fileLoader = event.data.fileLoader;
-      var xhr = fileLoader.xhr;
-      xhr.setRequestHeader( 'X-CSRF-Token', this.mainService.getToken());
-      xhr.setRequestHeader( 'Accept', 'application/json' );
-      xhr.setRequestHeader( 'Content-Type', 'application/json');
-      xhr.withCredentials = true;
-      var myReader: FileReader = new FileReader();
-      let self = this;
-      myReader.onloadend = function (loadEvent: any) {
-        let fileEntity:FileEntity = {
-          file:NodeHelper.RemoveFileTypeFromBase64(loadEvent.target.result),
-          filename:fileLoader.file.name,
-          filepath:'public://ckeditor/'+localStorage.getItem("user_id")+fileLoader.file.name,
-        };
-        self.fileService.SendCreatedFile(fileEntity).subscribe(data=>{
-          xhr.send(JSON.stringify({fid:data.fid,uid:+localStorage.getItem("user_id")}));
-        });
-      };
-      myReader.readAsDataURL(fileLoader.file);
-      event.stop();
-    });
-    CKEDITOR.on( 'dialogDefinition', function( ev ) {
-      var dialogName = ev.data.name;
-      var dialogDefinition = ev.data.definition;
-      if (dialogName == 'image') {
-        dialogDefinition.onLoad = function() {
-          var dialog = CKEDITOR.dialog.getCurrent();
+export class HowToComponent implements OnInit {
 
-          var uploadTab = dialogDefinition.getContents('Upload');
-          var uploadButton = uploadTab.get('uploadButton');
-          //console.log('uploadButton', uploadButton);
-
-          uploadButton.onClick = (evt)=>{
-           // console.log('fire in the hole', evt);
-          };
-
-          uploadButton.filebrowser['onSelect'] = (fileUrl, errorMessage)=>{
-          //  console.log('working');
-          };
-        };
-      }
-    });
-    this.ckeditor.instance.on( 'fileUploadResponse', (event) => {
-      event.stop();
-      var data = event.data;
-      var xhr = data.fileLoader.xhr;
-      let response = JSON.parse(xhr.responseText);
-      if(!response[0]){
-        data.message = 'Error';
-        event.cancel();
-      }else{
-        data.url = response[0];
-      }
-    });
-    setTimeout(function(){
-       $("html,body").animate({scrollTop: 0}, "slow");
-    }, 0);
-  }
   /**
    * @output will emit the new values to the parent Component
    * this mainly used for tags object because its an string array so we cannot pass it as a reference

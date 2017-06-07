@@ -1,0 +1,52 @@
+<ckeditor #ckeditor [ngClass]="{valError: error}" rows="5" [(ngModel)]="Content" (change)="propagateChange(Content)" [id]="id">
+  <ckbutton [name]="'saveButton'"
+    [command]="'add_photo'"
+    (click)="Add_Photo($event,ckeditorphoto)"
+    [icon]="'/assets/images/icons/ckeditorimage.png'"
+    [label]="'Add New Photo'"
+    [toolbar]="'insert,1'">
+  </ckbutton>  
+</ckeditor>
+
+
+<ng-template #ckeditorphoto let-c="close" let-d="dismiss">
+  <div class="upload-cover-modal">
+    <div class="modal-header">
+      <button type="button" class="close ml-auto" #closebtn aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-tabs">
+      <ul class="list-unstyled">
+        <li class="upload" (click)="PhotoModalTab = 'upload'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'upload'}">Upload</a></li>
+        <li class="your-photos" (click)="PhotoModalTab = 'filemanager'"><a class="btn btn-transparent" [ngClass]="{'active':PhotoModalTab == 'filemanager'}">YOUR PHOTOS</a></li>
+      </ul>
+    </div>
+    <div class="modal-body">
+      <div id="portfolio-photo" class="w-100 container">
+        <div [hidden]="PhotoModalTab != 'upload'" ng2FileDrop class="upload-tab row" (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+          <div class="drop-section col-md-7">
+            <img *ngIf="!imagedata.original" class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
+            <img-cropper [hidden]="!imagedata.original" #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper><br>
+            <div>
+              <p>Drag a photo here</p>
+              <p>or</p>
+            </div>
+            <a class="btn btn-load-more" [ngClass]="{big:imagedata.original}" (click)="file.click()">
+				      <span *ngIf="!imagedata.original;else differentphoto">Choose</span>
+              <ng-template #differentphoto>Choose a Different Photo</ng-template>
+				      <input id="custom-upload" class="hidden-xs-up" type="file" #file (change)="UploadBtn($event.target.files[0],imagecropper)">
+			      </a>
+          </div>
+          <div class="recommended-section col-md-4">
+            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 600 by 400 pixels</p>
+          </div>
+        </div>
+        <app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-load-more" (click)="ImageUpdated(closebtn)">Save</button>
+    </div>
+  </div>
+</ng-template>
