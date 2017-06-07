@@ -20,6 +20,9 @@
               <a *ngIf="message.status == 'blocked'">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
+              <a *ngIf="message.recivers.length > 0">
+                <img class="d-flex mr-3" src="{{message.recivers[0].user_photo}}" alt="" class="img-responsive">
+              </a>
             </div>
 
             <div class="media-body" *ngIf="message.recipentCount == 2">
@@ -36,6 +39,12 @@
             <div class="media-body" *ngIf="message.recipentCount > 2">
               <p class="sender" *ngIf="message.status == 'active'&& message.sender_msg"> You sent <a (click)="userProfile(message.first_name,message.last_name)"> {{message.first_name}} {{message.last_name}}</a>                a new message</p>
               <p class="sender" *ngIf="message.status == 'blocked' && message.sender_msg"> You sent <a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> a new message</p>
+           
+              <p class="sender" *ngIf="message.recivers.length > 0 && message.recivers[0].status == 'active'&& message.recivers[0].send_group_msg && message.recivers.length <= 3"> You sent <a  *ngFor="let group_msg of message.recivers" (click)="userProfile(group_msg.first_name,group_msg.last_name)"> {{group_msg?.first_name}} {{group_msg?.last_name}}{{i===message.recivers.length -1 ? ' ' : ',&nbsp;'}}</a>                a new message</p>
+              <p class="sender" *ngIf="message.recivers.length > 0 && message.recivers[0].status == 'blocked'&& message.recivers[0].send_group_msg && message.recivers.length <= 3"> You sent <a *ngFor="let group_msg of message.recivers" class="blocked-user">{{group_msg.first_name}} {{group_msg.last_name}}{{i===message.recivers.length -1 ? ' ' : ',&nbsp;'}}</a> a new message</p>
+              <p class="sender" *ngIf="message.recivers.length > 0 && message.recivers[0].status == 'active'&& message.recivers[0].send_group_msg && message.recivers.length > 3"> You sent <a  (click)="userProfile(message.recivers[0].first_name,message.recivers[0].last_name)"> {{message.recivers[0].first_name}} {{message.recivers[0].last_name}}, {{message.recivers[1].first_name}} {{message.recivers[1].last_name}}, {{message.recivers[2].first_name}} {{message.recivers[2].last_name}}</a>              .....  a new message</p>
+              <p class="sender" *ngIf="message.recivers.length > 0 && message.recivers[0].status == 'blocked'&& message.recivers[0].send_group_msg && message.recivers.length > 3"> You sent <a class="blocked-user"> {{message.recivers[0].first_name}} {{message.recivers[0].last_name}}, {{message.recivers[1].first_name}} {{message.recivers[1].last_name}}, {{message.recivers[2].first_name}} {{message.recivers[2].last_name}}</a> a new message</p>
+
               <p class="sender" *ngIf="message.status == 'active' && message.reciver_msg"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a new group message</p>
               <p class="sender" *ngIf="message.status == 'blocked' && message.reciver_msg"><a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> sent you a new group message</p>
               <p class="sender" *ngIf="message.i_am_replyed"> You replied to this message </p>
