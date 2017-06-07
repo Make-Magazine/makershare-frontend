@@ -1,67 +1,68 @@
 <div *ngIf="card">
-<div class=" profile-container h-100" *ngIf="card.invited_user=='0' || card.invited_user==''">
-  <!-- start profile card-->
-  <div class="card spotlight-item h-100">
-    <div class="card-block user-card align-content-stretch content ">
-      <div class="media">
-        <div class="profile-pic-container flex-column align-self-start mr-3">
-          <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-          
-          
-          <!--<div class="icons-side-user"  *ngIf="badges">
+  <div class=" profile-container h-100" *ngIf="card.invited_user=='0' || card.invited_user==''">
+    <!-- start profile card-->
+    <div class="card spotlight-item h-100">
+      <div class="card-block user-card align-content-stretch content ">
+        <div class="media">
+          <div class="profile-pic-container flex-column align-self-start">
+            <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
+
+
+            <!--<div class="icons-side-user"  *ngIf="badges">
             <div class="user-icon" *ngFor="let badge of badges;">
                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
              
             </div>
            </div>-->
-          
-             <!--<button *ngIf="showMessage" (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>-->
-        </div>
-        <div class="media-body">
-          <div class="name-badge d-flex justify-content-between">  
-           <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
 
-          <div class="icons-side-user d-flex justify-content-end"  *ngIf="badges">
-            <div class="user-icon" *ngFor="let badge of badges;">
-               <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
-            </div>
-           </div>
+            <!--<button *ngIf="showMessage" (click)="open(content)" class="message-btn"><i class="fa fa-lg fa-envelope-o" ngbTooltip="Send Message"></i></button>-->
           </div>
-          <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
-          <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
-          <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
-          <div class="d-flex flex-row">
-            <!--<p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>-->
-            <p class="user-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">
-              {{card.location_locality}} , {{card.country}}</p>
-            <p class="user-city" *ngIf="card.city && card.country && card.country == 'United States'">{{card.location_locality}}, 
-              {{card.city}}</p>
-            <p *ngIf="projectCount" class="count align-self-end ml-auto pr-4">{{projectCount.projects_count}} projects</p>
+          <div class="media-body d-flex">
+            <div class="icons-side-user d-flex" *ngIf="badges">
+              <div class="user-icon" *ngFor="let badge of badges;">
+                <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+              </div>
+            </div>
+            <div class="maker-info">
+              <div class="name-badge d-flex justify-content-between">
+                <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
+              </div>
+              <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
+              <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
+              <p class="profile-tag" *ngIf="(card.tags)" [innerHTML]="card.tags"></p>
+              <div class="d-flex flex-row">
+                <!--<p class="user-city" *ngIf="(card.city.country)" [innerHTML]="card.city.country"></p>-->
+                <p class="user-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">
+                  {{card.location_locality}} , {{card.country}}</p>
+                <p class="user-city" *ngIf="card.city && card.country && card.country == 'United States'">{{card.location_locality}}, {{card.city}}
+                </p>
+                <p *ngIf="projectCount" class="count align-self-end ml-auto pr-4">{{projectCount.projects_count}} projects</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <!-- End profile card -->
 </div>
 <div *ngIf="card">
-<div class=" profile-container" *ngIf="card.invited_user=='1'">
-  <!-- start profile card If Invited-->
-  <div class="card spotlight-item ">
-    <div class="card-block user-card align-content-stretch content ">
-      <div class="media">
-        <div class="profile-pic-container flex-column align-self-start mr-3">
-          <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
-        </div>
-        <div class="media-body">
-          <h4 class="user-name">Invited User </h4>
+  <div class=" profile-container" *ngIf="card.invited_user=='1'">
+    <!-- start profile card If Invited-->
+    <div class="card spotlight-item ">
+      <div class="card-block user-card align-content-stretch content ">
+        <div class="media">
+          <div class="profile-pic-container flex-column align-self-start mr-3">
+            <img *ngIf="card.default_profile_photo" src="{{card.default_profile_photo}}" alt="" class="img-responsive maker-photo">
+          </div>
+          <div class="media-body">
+            <h4 class="user-name">Invited User </h4>
+          </div>
         </div>
       </div>
     </div>
+    <!-- End profile card Invited-->
   </div>
-  <!-- End profile card Invited-->
-</div>
 </div>
 <!-- End Profile-container -->
 <!--<ng-template #content let-c="close" let-d="dismiss">
