@@ -81,11 +81,7 @@
     </div>
     <div class="form-group required project-story">
       <label for="project-story" [ngClass]="{valErrorString: !YourStoryForm.controls['field_story'].valid&&TryToSubmitPrivatePublic}">The Story</label>
-      <ckeditor #ckeditor [ngClass]="{valError: !YourStoryForm.controls['field_story'].valid && TryToSubmitPrivatePublic}" rows="5"
-        id="project-story" [config]="CKEditorConfig" formControlName='field_story'></ckeditor>
-      <!--<div *ngIf="formErrors.field_story" class="alert alert-danger error-msg">
-        {{ formErrors.field_story }}
-      </div>-->
+      <maker-ckeditor [id]="'project-story'" [error]="!YourStoryForm.controls['field_story'].valid && TryToSubmitPrivatePublic" formControlName='field_story' ngDefaultControl></maker-ckeditor>    
     </div>
     <div class="form-group show-tell">
       <label for="show-tell">Add Video: Show &amp; Tell</label>
@@ -161,7 +157,7 @@
           <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
         </video>-->
         <div class="embed-responsive">
-          <video-viewer [link]="showAndTellLink"></video-viewer>
+          <video-viewer [link]="'https://www.youtube.com/watch?v=56i0M49rhtU'"></video-viewer>
         </div>
         <span class="pt-2">--links coming soon-</span>
       </div>
@@ -230,9 +226,6 @@
         <app-file-browser *ngIf="PhotoModalTab == 'filemanager'" (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
       </div>
     </div>
-
-
-
     <div class="modal-footer">
       <button *ngIf="PhotoModalTab == 'upload'" type="button" class="btn btn-load-more" (click)="ImageUpdated(closebtn)">Save</button>
     </div>
