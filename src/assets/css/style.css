@@ -7362,7 +7362,7 @@ textarea {
 .page-single-showcase .entries-count {
   color: #4F4F4F; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
-  padding: 30px 10px 10px 10px; }
+  padding: 30px 11px 8px 0px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
     width: 80px; }
     .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -7379,6 +7379,8 @@ textarea {
           margin-right: 5px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body {
     width: calc(100% - 80px); }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body .user-icon {
+      margin: 0 10px; }
 
 img {
   max-width: 100%; }

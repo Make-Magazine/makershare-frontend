@@ -287,7 +287,7 @@
     .profile-container  {
         .spotlight-item {
             .user-card {
-                padding: 30px 10px 10px 10px;
+                padding: 30px 11px 8px 0px;
                 // .count {
                 //     color: #fff;
                 // }
@@ -313,6 +313,9 @@
                     }
                     .media-body {
                         width: calc(100% - 80px);
+                        .user-icon {
+                            margin: 0 10px;
+                        }
                       
                     }
                 }
