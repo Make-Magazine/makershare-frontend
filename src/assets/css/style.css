@@ -4625,7 +4625,8 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 140px; }
+  min-height: 140px;
+  border-radius: 0rem; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;

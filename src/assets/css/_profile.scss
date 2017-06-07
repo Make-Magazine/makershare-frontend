@@ -2243,6 +2243,7 @@
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
     min-height: 140px;
+    border-radius: 0rem;
     .icons-side-project {
         position: absolute;
         top: -2px;
