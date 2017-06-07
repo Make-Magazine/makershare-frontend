@@ -7,14 +7,14 @@
       </a>
     </div>
     <div class="col-lg-8 storge-progressbar pt-2 pt-lg-0">
-      YOUR STORGE
+      YOUR STORAGE
       <ngb-progressbar [value]="fileManageService.quota"><i>{{fileManageService.quota}}% Full</i></ngb-progressbar>
     </div>
   </div>
   <div class="row file-manager-contnet">
     <h2 class="col-md-12 file-manager-title">Manage Your Files</h2>
     <div *ngFor="let file of files" class="col-md-4 mb-4">
-      <div class="file-item">
+      <div *ngIf="(file.usage.node && file.usage.node[0].type == 'project') || (!file.usage.node)" class="file-item">
         <img *ngIf="file.thumbnail" [src]="file.thumbnail">
         <img *ngIf="!file.thumbnail" src="/assets/images/no-image-available.png">
         <p class="btn mb-0 d-flex flex-column" (click)="CheckFileBeforeDelete(ConfirmDelete,file)"><i class="fa fa-lg fa-times"></i><span>Delete</span></p>
