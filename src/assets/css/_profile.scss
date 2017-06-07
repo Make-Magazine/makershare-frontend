@@ -2132,7 +2132,7 @@
             font-size: 1.2rem;
             font-weight: 500;
             color: $shade-5;
-            line-height: 110% !important;
+            line-height: 110%;
         }
         .card-stats {
             ul {
@@ -2733,5 +2733,8 @@ button {
 	.card-type-grey{
 		display:none;
 	}
+    .maker-descripe {
+       line-height: 1.8rem !important;
+    }
 
 }
