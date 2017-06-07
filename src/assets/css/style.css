@@ -4532,7 +4532,7 @@ footer {
       font-size: 1.2rem;
       font-weight: 500;
       color: #828282;
-      line-height: 110% !important; }
+      line-height: 110%; }
   .maker-card .icons-side-project {
     position: relative;
     top: -13px;
@@ -4625,7 +4625,8 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 140px; }
+  min-height: 140px;
+  border-radius: 0rem; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;
@@ -5037,6 +5038,8 @@ button:hover {
 
 .page-explore .card-type-grey {
   display: none; }
+.page-explore .maker-descripe {
+  line-height: 1.8rem !important; }
 
 .page-explore {
   background-color: #F2F2F2; }
