@@ -5,22 +5,12 @@
 </ng-template>
 
 <div class="page-inbox">
-  <!--<header class="inbox-header container">
-    <ul class="list-unstyled d-flex flex-row align-content-lg-center ">
-      <li><a href="" class="btn btn-grey">Messages</a></li>
-      <li><a href="" class="btn btn-grey active">Notificatoins</a></li>
-    </ul>
-  </header>-->
-  <!--/header -->
   <div class="container inbox-container">
     <div *ngIf="noMessage" class="text-center pt-5">
       <h3>You do not have any messages</h3>
     </div>
     <ul class="list-unstyled messages-list">
       <li class="message-item" *ngFor="let message of msg; let i=index;">
-        <!--<div class="select" *ngIf="message">
-          <input type="checkbox" value="{{message.thread_id}}" [(ngModel)]="message.state" (change)="valueChanged(message.thread_id,$event)">
-        </div>-->
         <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
           <div class="media message-info">
             <div class="media-left">
@@ -31,20 +21,25 @@
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
             </div>
-            <div class="media-body" *ngIf="message.count>2">
-              <!--<p class="sender" *ngIf="message.sender">You sent a message to
-                <a (click)="userProfile(message.first_name,message.last_name)" *ngIf="message.count>2">{{message.first_name}} {{message.last_name}}</a> & ..... {{message.count-2}} more
-              </p>-->
-              <p class="sender" *ngIf="message.status == 'active'"><a  (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
-              <p class="sender" *ngIf="message.status == 'blocked'"><a class="blocked-user">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
-              <h4 class="message-subject">{{message.subject}}</h4>
+
+            <div class="media-body" *ngIf="message.recipentCount == 2">
+              <p class="sender" *ngIf="message.status == 'active'&& message.sender_msg"> You sent <a (click)="userProfile(message.first_name,message.last_name)"> {{message.first_name}} {{message.last_name}}</a>                a new message</p>
+              <p class="sender" *ngIf="message.status == 'blocked' && message.sender_msg"> You sent <a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> a new message</p>
+              <p class="sender" *ngIf="message.status == 'active' && message.reciver_msg"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a new message</p>
+              <p class="sender" *ngIf="message.status == 'blocked' && message.reciver_msg"><a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> sent you a new message</p>
+              <p class="sender" *ngIf="message.i_am_replyed"> You replied to this message </p>
+              <p class="sender" *ngIf="message.status == 'active' && message.another_user_reply"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                replied to this message</p>
+              <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
-            <div class="media-body" *ngIf="message.count<=2">
-              <!--<p class="sender" *ngIf="message.sender">You sent a message to
-                <a (click)="userProfile(message.first_name,message.last_name)" >{{message.first_name}} {{message.last_name}}</a>
-              </p>-->
-              <p class="sender"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a message</p>
+
+            <div class="media-body" *ngIf="message.recipentCount > 2">
+              <p class="sender" *ngIf="message.status == 'active'&& message.sender_msg"> You sent <a (click)="userProfile(message.first_name,message.last_name)"> {{message.first_name}} {{message.last_name}}</a>                a new message</p>
+              <p class="sender" *ngIf="message.status == 'blocked' && message.sender_msg"> You sent <a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> a new message</p>
+              <p class="sender" *ngIf="message.status == 'active' && message.reciver_msg"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                sent you a new group message</p>
+              <p class="sender" *ngIf="message.status == 'blocked' && message.reciver_msg"><a class="blocked-user">{{message.first_name}} {{message.last_name}}</a> sent you a new group message</p>
+              <p class="sender" *ngIf="message.i_am_replyed"> You replied to this message </p>
+              <p class="sender" *ngIf="message.status == 'active' && message.another_user_reply"><a (click)="userProfile(message.first_name,message.last_name)">{{message.first_name}} {{message.last_name}}</a>                replied to this message</p>
               <h4 class="message-subject" (click)="viewMessage(message.thread_id)">{{message.subject}}</h4>
               <p class="timestamp" *ngIf="message.last_updated">{{message.last_updated}} </p>
             </div>
