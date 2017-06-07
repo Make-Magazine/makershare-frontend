@@ -34,7 +34,7 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
   noMessage= false;
-  deleteMsgTip="Delete this thread";
+  deleteMsgTip="Delete this message";
   notificationIds;
   msgDeleted=false;  
   //hideUser= true;
@@ -164,8 +164,8 @@ export class InboxComponent implements OnInit {
   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data=>{
     this.notificationIds = data;
-    this.msgDeleted=true;
-    console.log(this.notificationIds)
+    // this.msgDeleted=true;
+    // console.log(this.notificationIds)
     
     //console.log(this.notificationIds[0]);
     delete this.msg[i]})
