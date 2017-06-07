@@ -11,3 +11,10 @@ export interface FileEntity {
   uid?:number;
   filepath?:string;
 }
+
+export class FileEntity implements FileEntity{
+  constructor(){
+    this.file = '';
+    this.filename = '';
+  }
+}

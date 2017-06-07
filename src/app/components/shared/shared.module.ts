@@ -40,6 +40,9 @@ import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { MessagesModule } from '../account/messages/messages.module';
 import { NotificationTemplateComponent } from './notification-template/notification-template.component';
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
+import { Ng2FileDropModule } from 'ng2-file-drop';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -59,6 +62,7 @@ import { AuthGuardService } from '../../auth0/auth-guard.service';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
+import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 
 
 let config = {
@@ -87,7 +91,10 @@ export function ResponsiveDefinition() {
     NgbModule,
     RouterModule,
     ShareButtonsModule,
-    ResponsiveModule
+    ResponsiveModule,
+    CKEditorModule,
+    ImageCropperModule,
+    Ng2FileDropModule
   ],
   declarations: [
     CommentComponent,
@@ -130,6 +137,7 @@ export function ResponsiveDefinition() {
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
     RegistrationCollectComponent,
+    MakerCkeditorComponent,
 
   ],
   exports: [
@@ -169,7 +177,9 @@ export function ResponsiveDefinition() {
     SharedButtonsComponent,
     AddProtocolDirective,
     ValidateOnFocusoutDirective,
-    RegistrationCollectComponent
+    RegistrationCollectComponent,
+    MakerCkeditorComponent,
+    ImageCropperComponent
   ],
 })
 export class SharedModule {
