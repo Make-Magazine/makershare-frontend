@@ -2132,7 +2132,7 @@
             font-size: 1.2rem;
             font-weight: 500;
             color: $shade-5;
-            line-height: 110% !important;
+            line-height: 110%;
         }
         .card-stats {
             ul {
@@ -2243,6 +2243,7 @@
     background-color: $white;
     @include boxShadow(2px, 2px ,8px, $shade-3);
     min-height: 140px;
+    border-radius: 0rem;
     .icons-side-project {
         position: absolute;
         top: -2px;
@@ -2733,5 +2734,8 @@ button {
 	.card-type-grey{
 		display:none;
 	}
+    .maker-descripe {
+       line-height: 1.8rem !important;
+    }
 
 }
