@@ -34,6 +34,7 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
 
+
   noMessage = false;
   deleteMsgTip = "Delete this message";
   sender_msg = false;
@@ -242,11 +243,8 @@ export class InboxComponent implements OnInit {
   deleteMessage(i) {
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data => {
       this.notificationIds = data;
-      this.msgDeleted = true;
-
-
-      //console.log(this.notificationIds[0]);
       delete this.msg[i]
+      this.msgDeleted = true;
     })
   }
 
