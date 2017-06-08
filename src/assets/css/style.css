@@ -4883,7 +4883,7 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
-  .file-manager .file-manager-contnet .file-item p {
+  .file-manager .file-manager-contnet .file-item .btn {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -4891,7 +4891,7 @@ footer {
     background-color: #fff;
     color: #828282;
     padding: 5px; }
-    .file-manager .file-manager-contnet .file-item p:hover {
+    .file-manager .file-manager-contnet .file-item .btn:hover {
       cursor: pointer; }
 .file-manager .file-manager-footer {
   text-align: center; }
@@ -9339,6 +9339,9 @@ img {
   border: none !important;
   outline: inherit !important; }
 
+.page-portfolio .download-btn {
+  right: auto !important;
+  left: 0; }
 .page-portfolio .portfolio-controls {
   background-color: cyan;
   padding: 10px 0 5px;
