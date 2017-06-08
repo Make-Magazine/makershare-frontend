@@ -413,15 +413,15 @@ export class YourStoryComponent implements OnInit {
 
   SetCropperSettings(): void {
     this.cropperSettings = new CropperSettings();
-    this.cropperSettings.width = 600;
-    this.cropperSettings.height = 400;
-    this.cropperSettings.minWidth = 600;
-    this.cropperSettings.minHeight = 400;
+    this.cropperSettings.width = 800;
+    this.cropperSettings.height = 450;
+    this.cropperSettings.minWidth = 800;
+    this.cropperSettings.minHeight = 450;
     this.cropperSettings.croppedWidth = 800;
     this.cropperSettings.croppedHeight = 450;
     this.cropperSettings.noFileInput = true;
-    this.cropperSettings.canvasWidth = 300;
-    this.cropperSettings.canvasHeight = 200;
+    this.cropperSettings.canvasWidth = 400;
+    this.cropperSettings.canvasHeight = 225;
     this.imagedata = {};
   }
 
