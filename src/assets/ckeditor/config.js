@@ -7,6 +7,7 @@ CKEDITOR.editorConfig = function (config) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+	config.allowedContent = true;
 	config.extraPlugins = 'videoembed,wordcount';
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
@@ -27,7 +28,7 @@ CKEDITOR.editorConfig = function (config) {
 		{ name: 'about', groups: ['about'] }
 	];
 
-	config.removeButtons = 'Cut,Copy,Paste,PasteText,PasteFromWord,Anchor,Table,SpecialChar,Styles,About';
+	config.removeButtons = 'Image,Cut,Copy,Paste,PasteText,PasteFromWord,Anchor,Table,SpecialChar,Styles,About';
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
