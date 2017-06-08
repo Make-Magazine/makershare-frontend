@@ -1,11 +1,39 @@
-<div class="project-like" *ngIf="project || showcase" ngbTooltip="{{like}}">
+<!--<div *ngIf="whoLike">
+  <div class="hero dropdown" *ngFor="let liker of whoLike ">
+    {{liker?.first_name}} {{liker?.last_name}} + {{LoadCount}}
+    <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">Load More
+    </button>
+
+<div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+  <ul class="list-group menutool-notification">
+    <li class="d-flex justify-content-end">
+      <a class="notf-Cancel"><i class="lnr lnr-cross float-right p-2" aria-hidden="true"></i></a>
+    </li>
+  </ul>
+  <div class="dropdown-notification">
+    <ul class="list-group">
+    </ul>
+  </div>
+</div>
+</div>
+</div>-->
+
+<div class="project-like  new-tooltip" *ngIf="project || showcase">
   <a class="btn btn-soft-grey btn-fit" (click)="likeThis($event)">
-    <img  *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
-    <img *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
-    <span *ngIf="countlikes">{{countlikes}}</span>
-    <span *ngIf="!countlikes">0</span>
-    
+    <img ngbTooltip="{{like}}" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+    <img ngbTooltip="{{like}}" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+    <span *ngIf="countlikes">{{countlikes}}      <span class="new-tooltiptext" *ngFor="let liker of whoLike; let i = index; "> {{liker[i]?.first_name}} {{liker[i]?.last_name}} + {{LoadCount}}</span>
+</span>
+    <span *ngIf="!countlikes">
+      0
+      <span class="new-tooltiptext" *ngFor="let liker of whoLike; let i = index; "> {{liker[i]?.first_name}} {{i}} {{liker[i]?.last_name}} + {{LoadCount}}</span>
+      </span>
+
   </a>
 </div>
-<!--<div class="arrow_box"></div>-->
-<!--<div class="hero"></div>-->
+<!--<div class="arrow_box">sgsregderge</div>-->
+
+<!--<div class="new-tooltip">
+  <span class="new-tooltiptext" *ngFor="let liker of whoLike "> {{liker?.first_name}} {{liker?.last_name}} + {{LoadCount}}</span>
+</div>-->
