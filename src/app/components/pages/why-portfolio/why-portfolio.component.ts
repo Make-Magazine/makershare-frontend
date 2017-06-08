@@ -5,14 +5,7 @@ import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-why-portfolio',
-  template: `
-    <section class="page-node">
-      <div class="container">
-        <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
-        <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
-      </div>
-    </section>  
-`,
+  templateUrl: './why-portfolio.component.html',
 })
 export class WhyPortfolioComponent implements OnInit {
 

@@ -4620,7 +4620,7 @@ footer {
       font-size: 1.2rem;
       font-weight: 500;
       color: #828282;
-      line-height: 110% !important; }
+      line-height: 110%; }
   .maker-card .icons-side-project {
     position: relative;
     top: -13px;
@@ -4713,7 +4713,8 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 140px; }
+  min-height: 140px;
+  border-radius: 0rem; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;
@@ -5125,6 +5126,8 @@ button:hover {
 
 .page-explore .card-type-grey {
   display: none; }
+.page-explore .maker-descripe {
+  line-height: 1.8rem !important; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -7447,7 +7450,7 @@ textarea {
 .page-single-showcase .entries-count {
   color: #4F4F4F; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
-  padding: 30px 10px 10px 10px; }
+  padding: 30px 11px 8px 0px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
     width: 80px; }
     .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -7464,6 +7467,8 @@ textarea {
           margin-right: 5px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body {
     width: calc(100% - 80px); }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body .user-icon {
+      margin: 0 10px; }
 
 img {
   max-width: 100%; }
