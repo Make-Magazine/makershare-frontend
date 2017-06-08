@@ -6781,6 +6781,10 @@ textarea {
 .capitalize {
   text-transform: capitalize; }
 
+.upload-cover-modal .modal-title {
+  padding: 5px 10px 5px 4px !important;
+  color: #ED1C24 !important; }
+
 .page-learn {
   background-color: white;
   padding-bottom: 40px; }
