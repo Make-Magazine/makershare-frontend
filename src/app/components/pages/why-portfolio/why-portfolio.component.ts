@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-why-portfolio',
@@ -14,7 +15,8 @@ export class WhyPortfolioComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService
+    private meta: MetaService,
+    public auth: Auth,
   ) { }
 
   ngOnInit() {

@@ -147,6 +147,34 @@ $(document).ready(function () {
 		}
 	});
 
+	// set height to parent div on why-portfolio-page
+	$(window).on("load", function(){
+		 	var div1height = $('#div1height').height();
+			var div2height = $('#div2height').height();
+			var div3height = $('#div3height').height();
+			var div4height = $('#div4height').height();
+			var divparent  = $('#parallax-bg-div').height();
+			var divsheight = div1height + div2height + div3height + div4height;
+			$('.why-portfolio-page #parallax-bg-div').css({"height": divsheight + 40});
+			$('.community-guidelines-page #parallax-bg-div').css({"height": div3height + 40});
+
+			
+	});
+
+	$(window).scroll(function(){
+		 	var div1height = $('#div1height').height();
+			var div2height = $('#div2height').height();
+			var div3height = $('#div3height').height();
+			var div4height = $('#div4height').height();
+			var divparent  = $('#parallax-bg-div').height();
+			var divsheight = div1height + div2height + div3height + div4height;
+			$('.why-portfolio-page #parallax-bg-div').css({"height": divsheight + 40});
+			$('.community-guidelines-page #parallax-bg-div').css({"height": div3height + 40});
+
+			
+	});
+
+
 	$(document).on('click','#search-icon', function(){
 		$('#search-box-input').focus();
 	})
