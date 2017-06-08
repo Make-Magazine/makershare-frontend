@@ -358,7 +358,7 @@ export class HowToComponent implements OnInit {
     }    
   }
   ResourceFileUploaded(file:File,CloseBtn:HTMLButtonElement){
-    let AllowedFileTypes = ["doc","docx","odt","txt","wpd","wps","csv","pps","ppt","pptx","xml","3gp","avi","flv","mov","mp4","mpg","swf","max","3ds","gif","bmp","jpeg","jpg","png","psd","tif","svg","pdf","xlsx","xls","db","html","zip","rar","7z","tar"]
+    let AllowedFileTypes = ["doc","docx","odt","txt","wpd","wps","csv","pps","ppt","pptx","xml","3gp","avi","flv","mov","mp4","mpg","swf","max","3ds","gif","bmp","jpeg","jpg","png","psd","tif","svg","pdf","xlsx","xls","db","html","zip","rar","7z","tar","ai","cdr"]
     if(!file || AllowedFileTypes.indexOf(file.name.split('.')[1]) == -1){
       return;
     }

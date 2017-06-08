@@ -4533,7 +4533,7 @@ footer {
       font-size: 1.2rem;
       font-weight: 500;
       color: #828282;
-      line-height: 110% !important; }
+      line-height: 110%; }
   .maker-card .icons-side-project {
     position: relative;
     top: -13px;
@@ -4626,7 +4626,8 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 140px; }
+  min-height: 140px;
+  border-radius: 0rem; }
   .maker-mobile-card .icons-side-project {
     position: absolute;
     top: -2px;
@@ -4883,7 +4884,7 @@ footer {
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
   box-shadow: 2px 2px 8px #BDBDBD; }
-  .file-manager .file-manager-contnet .file-item p {
+  .file-manager .file-manager-contnet .file-item .btn {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -4891,7 +4892,7 @@ footer {
     background-color: #fff;
     color: #828282;
     padding: 5px; }
-    .file-manager .file-manager-contnet .file-item p:hover {
+    .file-manager .file-manager-contnet .file-item .btn:hover {
       cursor: pointer; }
 .file-manager .file-manager-footer {
   text-align: center; }
@@ -5038,6 +5039,8 @@ button:hover {
 
 .page-explore .card-type-grey {
   display: none; }
+.page-explore .maker-descripe {
+  line-height: 1.8rem !important; }
 
 .page-explore {
   background-color: #F2F2F2; }
@@ -6779,6 +6782,10 @@ textarea {
 .capitalize {
   text-transform: capitalize; }
 
+.upload-cover-modal .modal-title {
+  padding: 5px 10px 5px 4px !important;
+  color: #ED1C24 !important; }
+
 .page-learn {
   background-color: white;
   padding-bottom: 40px; }
@@ -7360,7 +7367,7 @@ textarea {
 .page-single-showcase .entries-count {
   color: #4F4F4F; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
-  padding: 30px 10px 10px 10px; }
+  padding: 30px 11px 8px 0px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
     width: 80px; }
     .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container .icons-side-user {
@@ -7377,6 +7384,8 @@ textarea {
           margin-right: 5px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body {
     width: calc(100% - 80px); }
+    .page-single-showcase .profile-container .spotlight-item .user-card .media .media-body .user-icon {
+      margin: 0 10px; }
 
 img {
   max-width: 100%; }
@@ -9335,6 +9344,9 @@ img {
   border: none !important;
   outline: inherit !important; }
 
+.page-portfolio .download-btn {
+  right: auto !important;
+  left: 0; }
 .page-portfolio .portfolio-controls {
   background-color: cyan;
   padding: 10px 0 5px;
