@@ -34,6 +34,7 @@ export class InboxComponent implements OnInit {
   status;
   blocked;
 
+
   noMessage = false;
   deleteMsgTip = "Delete this message";
   sender_msg = false;
@@ -42,9 +43,9 @@ export class InboxComponent implements OnInit {
   i_am_replyed = false;
   recipentCount;
   reply_author;
-
   notificationIds;
-  msgDeleted=false;  
+  msgDeleted = false;
+  send_group_msg = false;
 
   //hideUser= true;
   constructor(private route: ActivatedRoute,
@@ -92,25 +93,38 @@ export class InboxComponent implements OnInit {
       page_arg = ['page', this.pageNumber];
     }
     this.pm.getInboxOrSent('maker_get_pm_author/retrieve_all_msgs', [status_arg, page_arg]).subscribe(data => {
-      this.messages = data;   
+      this.messages = data;
+      //console.log(this.messages);
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
         if (typeof (this.messages[key]) == 'object' && this.messages.hasOwnProperty(key)) {
           this.userId = localStorage.getItem('user_id');
-          this.messages[key].recipentCount = this.messages[key].recipient.length;   
+          this.messages[key].recipentCount = this.messages[key].recipient.length;
+          this.messages[key].recivers = [];
           //message dont have any reply
           if (this.messages[key].reply_author.length == 0) {
             // i am the sender
             if (this.messages[key].sender == this.userId) {
               for (let i = 0; i < this.messages[key].recipient.length; i++) {
                 if (this.messages[key].recipient[i].recipient != this.userId) {
+                  //console.log(this.messages[key].recipient[i].recipient);
                   this.user.getUser(this.messages[key].recipient[i].recipient).subscribe(res => {
-                    this.messages[key].sender_msg = true;
-                    this.messages[key].user_photo = res.user_photo;
-                    this.messages[key].first_name = res.first_name;
-                    this.messages[key].last_name = res.last_name;
-                    this.messages[key].status = res.status;
+                    if (this.messages[key].recipient.length > 2) {
+                      var temp_user = {};
+                      temp_user['send_group_msg'] = true;
+                      temp_user['user_photo'] = res.user_photo;
+                      temp_user['first_name'] = res.first_name;
+                      temp_user['last_name'] = res.last_name;
+                      temp_user['status'] = res.status;
+                      this.messages[key].recivers.push(temp_user);
+                    } else {
+                      this.messages[key].sender_msg = true;
+                      this.messages[key].user_photo = res.user_photo;
+                      this.messages[key].first_name = res.first_name;
+                      this.messages[key].last_name = res.last_name;
+                      this.messages[key].status = res.status;
+                    }
                   })
                 }
               }
@@ -192,6 +206,7 @@ export class InboxComponent implements OnInit {
       }
 
       this.msg = this.msg.concat(msg_arr);
+      // console.log(this.msg)
       //two participent or more
       for (let i = 0; i < this.msg.length; i++) {
         // this.recipentCount = (this.msg[i].recipient.length) -1;
@@ -226,13 +241,11 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(i) {
-    this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data=>{
-    this.notificationIds = data;
-    this.msgDeleted=true;
-    console.log(this.notificationIds)
-    
-    //console.log(this.notificationIds[0]);
-    delete this.msg[i]})
+    this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data => {
+      this.notificationIds = data;
+      delete this.msg[i]
+      this.msgDeleted = true;
+    })
   }
 
   // valueChanged(mid, event) {
