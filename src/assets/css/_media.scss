@@ -589,6 +589,30 @@
 
 }
 
+@media only screen and (max-width: 768px) and (min-width:768px) {
+    .why-portfolio-page {
+        .page-header  {
+            .part-3 {
+                -webkit-box-flex: 0 !important;
+                -webkit-flex: 0 0 50% !important;
+                -ms-flex: 0 0 50% !important;
+                flex: 0 0 50% !important;
+                max-width: 50% !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width:768px) {
+    .why-portfolio-page {
+        .page-header  {
+            .part-3 {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 991px) and (min-width:767px) {
     header {
         nav {
@@ -787,36 +811,36 @@
     .project-mobile-card {
         .project-card-small {
             .media {
-							margin-bottom: -15px;
+                margin-bottom: -15px;
                 .media-body {
                     .card-title{
-												height: 80px;
-												overflow: hidden;
-												line-height: 27px;
-										}
+                    height: 80px;
+                    overflow: hidden;
+                    line-height: 27px;
+					}
                 }
             }
         }
     }
     $showcase-height:250px;
-    .showcase-card-backlayer-home, .showcase-card-backlayer-mobile {
+    .showcase-card-backlayer-home,
+    .showcase-card-backlayer-mobile {
+        min-height: 350px;
+        margin-bottom: 26px;
+        .showcase-card-backlayer-home-2,
+        .showcase-card-backlayer-mobile-2 {
             min-height: 350px;
-                margin-bottom: 26px;
-            .showcase-card-backlayer-home-2, .showcase-card-backlayer-mobile-2 {
-                    min-height: 350px;
+        }
+        .showcase-card {
+            min-height: 350px;
+        }
+    }
+    .why-portfolio-page {
+        .page-header  {
+            .part-3 {
+                margin-top: 20px;
             }
-            .showcase-card {
-                    min-height: 350px;
-                    .card-container {
-                            .card-title {
-                            }
-                            .card-description {
-                                    p {
-
-                                    }
-                            }
-                    }
-            }
+        }
     }
 }
 
@@ -900,6 +924,13 @@
         }
         .question-mark {
             i {
+                display: none;
+            }
+        }
+    }
+    .why-portfolio-page {
+        .page-header {
+            .part-1 {
                 display: none;
             }
         }
