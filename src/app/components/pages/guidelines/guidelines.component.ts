@@ -5,14 +5,7 @@ import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-guidelines',
-  template: `
-    <section class="page-node">
-      <div class="container">
-        <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
-        <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
-      </div>
-    </section>  
-`,
+  templateUrl: './guidelines.component.html',
 })
 export class GuidelinesComponent implements OnInit {
 

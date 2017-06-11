@@ -215,8 +215,8 @@
 								<p *ngIf="ProfileInfo.maker_interests.length == 0" class="placeholder-text hideData">{{PlaceholderText.interests}}</p>
 								<p class="hideData topic-tags">
 									<span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
-										<i *ngIf="i != ProfileInfo.maker_interests.length-1 && interest.name"><span [innerHTML]="interest.name"></span>,</i>
-									<i *ngIf="i == ProfileInfo.maker_interests.length-1 && interest.name"><span [innerHTML]="interest.name"></span></i>
+										<i *ngIf="i != ProfileInfo.maker_interests.length-1 &&interest.name && interest.tid "><span [innerHTML]="interest.name"></span>,</i>
+									<i *ngIf="i == ProfileInfo.maker_interests.length-1 && interest.name && interest.tid "><span [innerHTML]="interest.name"></span></i>
 									</span>
 								</p>
 								<span class="hideData toggleProfile" (click)="ToggleProfile()">

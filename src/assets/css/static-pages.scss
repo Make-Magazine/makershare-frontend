@@ -56,3 +56,447 @@
 
 
 }
+.why-portfolio-page {
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .header-info-card {
+    h2 {
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+        color: #ed1c24;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      h3 {
+        text-align: left;
+        font-size: 36px;
+        font-weight: 500;
+        font-size: 2.1rem;
+        line-height: 110%;
+        color: $text-color-1;
+        font-family: 'Messina Modern Regular';
+        margin-bottom: 14px;
+      }
+      p {
+      font-family: “Messina Sans Regular”;
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+      color: #828282;
+      text-align: left;
+      }
+  }
+.info-w-parallax {
+  height: auto;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    height: auto;
+  }
+  .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .info-card {
+    background-color: #fff;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    padding: 17px 20px 17px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+    @media screen and (max-width: 767px) {
+      padding: 15px 15px 40px;
+    }
+    h2 {
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.125rem;
+      color: #ed1c24;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    h3 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 500;
+      font-size: 2.1rem;
+      line-height: 110%;
+      color: $text-color-1;
+      font-family: 'Messina Modern Regular';
+    }
+    p {
+      font-family: “Messina Sans Regular”;
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+      text-align: left;
+      color: #4f4f4f;
+    }
+    .button-container-onboarding {
+      text-align: center;
+      margin-top: 24px;
+      .project-add  {
+        width: 170px !important;
+      }
+      .btn-main {
+        width: 167px !important;
+        padding: 15px 0px;
+        @include body-font-1 ();
+        font-size: 1rem;
+        color: #fff !important;
+        &::before {
+            content: "+";
+            font-size: 1rem;
+            position: relative;
+            top: -1px;
+            right: 6px;
+        }
+      }
+    }
+  }
+}
+
+
+.parallax-bg {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  > img {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    @media screen and (max-width: 767px) {
+      position: absolute;
+    }
+  }
+  .parallax-container {
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    @media screen and (max-width: 767px) {
+      position: relative;
+    }
+  }
+}
+
+
+.parallax-red-line {
+  position: relative;
+  .parallax-red-line-left {
+    position: absolute;
+    z-index: 3;
+    height: 360px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-left: 3px solid #EC1F30;
+    left: 60px;
+    top: -180px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      left: 40px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      left: -30px;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      left: -15px;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+  .parallax-red-line-right {
+    position: absolute;
+    z-index: 3;
+    height: 290px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-right: 3px solid #EC1F30;
+    top: -130px;
+    right: 60px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      right: 40px;
+      left: initial;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+}
+}
+
+
+.community-guidelines-page {
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .header-info-card {
+    h2 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+        color: #ed1c24;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      h3 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 3.4rem;
+        line-height: 100%;
+        color: $text-color-1;
+        font-family: 'Messina Modern Regular';
+        margin-bottom: 14px;
+      }
+      p {
+        font-family: “Messina Sans Regular”;
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+        color: #828282;
+        text-align: center;
+      }
+  }
+  .icons-section {
+    .icons-container {
+        background-color: #fff;
+        padding: 0px 18px;
+        .icon-item {
+          width: 90px;
+          height: 60px;
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 14px;
+        }
+        h4 {
+          font-family: "Messina Modern Bold";
+          font-size: 1.6rem;
+          line-height: 1.75rem;
+          color: #4f4f4f;
+          text-align: center;
+        }
+        p {
+          font-family: "Messina Sans Regular";
+          font-size: 0.95rem;
+          line-height: 1.5rem;
+          text-align: left;
+          color: #4f4f4f;
+          text-align: left;
+        }
+        .left-side {
+        position: relative;
+        padding: 36px 70px;
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          border-right: 1px solid #4f4f4f;
+          top: 40px;
+          bottom: 40px;
+          }
+          .left-item {
+            margin-bottom: 40px;
+          }
+        }
+        .right-side {
+          padding: 36px 70px;
+          .right-item {
+            margin-bottom: 40px;
+          }
+        }
+    }
+  }
+  .info-w-parallax {
+  height: auto;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    height: auto;
+  }
+  .container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .info-card {
+    background-color: #fff;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    padding: 17px 20px 17px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+    @media screen and (max-width: 767px) {
+      padding: 15px 15px 40px;
+    }
+    h2 {
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.125rem;
+      color: #ed1c24;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    h3 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 500;
+      font-size: 2.1rem;
+      line-height: 110%;
+      color: $text-color-1;
+      font-family: 'Messina Modern Regular';
+    }
+    p {
+      font-family: “Messina Sans Regular”;
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+      text-align: left;
+      color: #4f4f4f;
+    }
+    button {
+      background-color: #fff !important;
+      padding: 10px 20px;
+    }
+    .button-container-onboarding {
+      text-align: center;
+      margin-top: 24px;
+      .project-add  {
+        width: 170px !important;
+      }
+      .btn-main {
+        width: 167px !important;
+        padding: 15px 0px;
+        @include body-font-1 ();
+        font-size: 1rem;
+        color: #fff !important;
+        &::before {
+            content: "+";
+            font-size: 1rem;
+            position: relative;
+            top: -1px;
+            right: 6px;
+        }
+      }
+    }
+  }
+}
+
+
+.parallax-bg {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  > img {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    @media screen and (max-width: 767px) {
+      position: absolute;
+    }
+  }
+  .parallax-container {
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    @media screen and (max-width: 767px) {
+      position: relative;
+    }
+  }
+}
+
+
+.parallax-red-line {
+  position: relative;
+  .parallax-red-line-left {
+    position: absolute;
+    z-index: 3;
+    height: 360px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-left: 3px solid #EC1F30;
+    left: 60px;
+    top: -180px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      left: 40px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      left: -30px;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      left: -15px;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+  .parallax-red-line-right {
+    position: absolute;
+    z-index: 3;
+    height: 290px;
+    width: 25px;
+    background-color: transparent;
+    background: transparent;
+    border-top: 3px solid #EC1F30;
+    border-bottom: 3px solid #EC1F30;
+    border-right: 3px solid #EC1F30;
+    top: -130px;
+    right: 60px;
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      right: 40px;
+      left: initial;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      right: -30px;
+      left: initial;
+    }
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+}
+
+
+}
+
