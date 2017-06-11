@@ -25,7 +25,7 @@ export class Auth {
       }
     },
     theme: {
-      logo: globals.domain + '/sites/default/files/logo.png',
+      logo: globals.domain + '/sites/default/files/make-logo.png',
       primaryColor: '#d41c2b'
     },
     languageDictionary: {

@@ -1980,6 +1980,44 @@ i.dropdownIcon {
 
   #splash .signup-form-group input:-ms-input-placeholder {
     font-size: 1.3rem; } }
+/* Custom tooltip */
+.new-tooltip {
+  position: relative;
+  display: inline-block; }
+  .new-tooltip .new-tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s; }
+    .new-tooltip .new-tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent; }
+  .new-tooltip:hover .new-tooltiptext {
+    visibility: visible;
+    opacity: 1; }
+
+.like-photo {
+  padding: 10px; }
+
+.modal-sm {
+  width: 500px; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -3634,7 +3672,6 @@ footer {
           width: 20px;
           padding-bottom: 3px; }
       .project .card-stats ul li span {
-        margin: 0px;
         color: #BDBDBD; }
 
 .lg-card .icons-side-project {
