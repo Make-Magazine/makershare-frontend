@@ -1193,68 +1193,6 @@ i.dropdownIcon {
         }
       }
       //who liked
-   .arrow_box {
-    top:40px;
-    position: relative;
-    background: #ffffff;
-    // border: 1px solid #719ECE; /*set border colour here*/
-    width: 200px;
-    height: 200px;
-    border-radius: 3px;
-    @include boxShadow(0 ,1px ,10px, $shade-3);
-}
-.arrow_box:after, 
-.arrow_box:before {
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-
-.arrow_box:after {
-    border-color: rgba(255, 255, 255, 0);
-    border-top-color: #ffffff;
-    border-width: 19px;
-    left: 50%;
-    margin-left: -19px;
-    bottom: -38px;
-   // @include boxShadow(0 ,1px ,10px, $shade-3);
-    
-}
-.arrow_box:before {
-    border-color: rgba(113, 158, 206, 0);
-    // border-top-color: #719ECE;
-    border-width: 20px;
-    left: 50%;
-    margin-left: -20px;
-    bottom: -39px;
-    @include boxShadow(0 ,1px ,10px, $shade-3);
-    
-}
-.hero {
-    position:relative;
-    //opacity: 0.5;
-    background-color:$text-color-2;
-    height:77px !important;
-    width:100% !important;
-}
-
-.hero:after {
-    content:'';
-    position: absolute;
-    top: 55%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 0;
-    height: 0;
-    border-top: solid 50px $text-color-2;
-    border-left: solid 50px transparent;
-    border-right: solid 50px transparent;
-}
-
 /* Custom tooltip */
 .new-tooltip {
     position: relative;
@@ -1290,6 +1228,10 @@ i.dropdownIcon {
             opacity: 1;
     }
 }
+
+    .like-photo {
+    padding: 10px;
+    }
 
 
 
