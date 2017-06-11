@@ -7174,6 +7174,12 @@ textarea {
       width: 85%;
       margin: auto; }
 
+.aha {
+  border-radius: 0; }
+
+.uh-oh {
+  border-radius: 0; }
+
 .go-back,
 .go-previous,
 .go-next {
