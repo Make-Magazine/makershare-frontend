@@ -249,7 +249,7 @@
       <div id="portfolio-photo" class="w-100 container">
         <div class="upload-tab row">
         <div class="drop-section col-md-7">
-          <img class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
+          <img class="image-background" src="./assets/images/icons/Files Icon.png" alt="">
           <div>
             <p class="drag-photo">Drag a File Here</p>
             <p class="drag-or">or</p>
@@ -257,12 +257,15 @@
           <a class="btn btn-load-more" (click)="fileinput.click()">
       Upload
       <input #fileinput type="file" 
-      accept=".doc, .docx, .odt, .txt, .wpd, .wps, .csv, .pps, .ppt, .pptx, .xml, .3gp, .avi, .flv, .mov, .mp4, .mpg, .swf, .max, .3ds, .gif, .bmp, .jpeg, .jpg, .png, .psd, .tif, .svg, .pdf, .xlsx, .xls, .db, .html, .zip, .rar, .7z, .tar"
+      accept=".doc, .docx, .odt, .txt, .wpd, .wps, .csv, .pps, .ppt, .pptx, .xml, .3gp, .avi, .flv, .mov, .mp4, .mpg, .swf, .max, .3ds, .gif, .bmp, .jpeg, .jpg, .png, .psd, .tif, .svg, .pdf, .xlsx, .xls, .db, .html, .zip, .rar, .7z, .tar, .ai, .cdr"
       (change)="ResourceFileUploaded($event.target.files[0],CloseButton)" id="upload" style="display:none;" />
     </a>
         </div>
         <div class="recommended-section col-md-4">
-          <p class="drag-text mt-4 mb-0">Recommended minimum resolution 800 by 450 pixels</p>
+          <p class="drag-text mt-4 mb-0">
+            Maximum file size: 8MB<br>
+            File types allowed: doc, docx, odt, txt, wpd, wps, csv, pps, ppt, pptx, xml, 3gp, avi, flv, mov, mp4, mpg, swf, max, 3ds, gif, bmp, jpg, png, psd, tif, svg, pdf, xlsx, xls, db, html, zip, rar, 7z, tar, ai, cdr
+          </p>
         </div>
       </div>
       </div>
