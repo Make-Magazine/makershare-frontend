@@ -187,10 +187,14 @@ body {
     }
 }
 
+
+ .auth0-lock-widget-container input[name=birthdate] {
+    display: none; /* Does not work */
+  }
 /* Auth0 Forms */
 .auth0-lock-widget-container .auth0-lock-input-location{
-  width: 33.3%;
-  float: left;
+//   width: 33.3%;
+//   float: left;
 
 }
 .auth0-lock-widget-container .auth0-lock-input-lastName:after {
