@@ -2015,6 +2015,9 @@ i.dropdownIcon {
 .like-photo {
   padding: 10px; }
 
+.modal-sm {
+  width: 500px; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
