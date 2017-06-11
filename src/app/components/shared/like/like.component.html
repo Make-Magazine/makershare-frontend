@@ -1,39 +1,43 @@
-<!--<div *ngIf="whoLike">
-  <div class="hero dropdown" *ngFor="let liker of whoLike ">
-    {{liker?.first_name}} {{liker?.last_name}} + {{LoadCount}}
-    <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-      aria-expanded="false">Load More
-    </button>
-
-<div class="dropdown-menu" aria-labelledby="dropdownMenu3">
-  <ul class="list-group menutool-notification">
-    <li class="d-flex justify-content-end">
-      <a class="notf-Cancel"><i class="lnr lnr-cross float-right p-2" aria-hidden="true"></i></a>
-    </li>
-  </ul>
-  <div class="dropdown-notification">
-    <ul class="list-group">
-    </ul>
-  </div>
-</div>
-</div>
-</div>-->
-
-<div class="project-like  new-tooltip" *ngIf="project || showcase">
-  <a class="btn btn-soft-grey btn-fit" (click)="likeThis($event)">
-    <img ngbTooltip="{{like}}" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
-    <img ngbTooltip="{{like}}" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
-    <span *ngIf="countlikes">{{countlikes}}      <span class="new-tooltiptext" *ngFor="let liker of whoLike; let i = index; "> {{liker[i]?.first_name}} {{liker[i]?.last_name}} + {{LoadCount}}</span>
-</span>
+<div class="project-like " *ngIf="project || showcase">
+  <a class="btn btn-soft-grey btn-fit">
+    <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
+    <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+    <span *ngIf="countlikes &&  whoLike " class="new-tooltip">{{countlikes}}
+      <span class="new-tooltiptext"> 
+       <span *ngFor="let liker of whoLike;"> {{liker?.first_name}} {{liker?.last_name}}<br>
+    </span>
+    <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}}</span>
+    </span>
+    </span>
     <span *ngIf="!countlikes">
       0
       <span class="new-tooltiptext" *ngFor="let liker of whoLike; let i = index; "> {{liker[i]?.first_name}} {{i}} {{liker[i]?.last_name}} + {{LoadCount}}</span>
-      </span>
+    </span>
 
   </a>
-</div>
-<!--<div class="arrow_box">sgsregderge</div>-->
 
-<!--<div class="new-tooltip">
-  <span class="new-tooltiptext" *ngFor="let liker of whoLike "> {{liker?.first_name}} {{liker?.last_name}} + {{LoadCount}}</span>
-</div>-->
+
+  <!-- Model Who Like -->
+
+  <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+    <div class="model-likes">
+      <div class="modal-header">
+        <span>Likes</span>
+        <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      </div>
+      <div class="modal-body">
+        <div class="model-likes">
+          <span *ngFor="let liker2 of whoLike2; "> 
+       <img class="like-photo" src="{{liker2?.portfolio_photo}}"><span class="new-tooltiptext"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="list-unstyled actions d-flex flex-row">
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
