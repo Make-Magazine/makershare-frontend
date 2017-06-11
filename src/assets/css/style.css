@@ -7316,7 +7316,6 @@ textarea {
         padding-right: 10px;
         color: #BDBDBD; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-date {
-        padding-left: 16px;
         height: auto; }
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .open-status,
       .showcase-card-backlayer .showcase-card .showcase-card-footer .showcase-card-footer-2 .showcase-card-status .closed-status {
@@ -7365,7 +7364,8 @@ textarea {
   font-weight: normal;
   line-height: 1.5rem; }
 .page-single-showcase .entries-count {
-  color: #4F4F4F; }
+  color: #4F4F4F;
+  padding: 0; }
 .page-single-showcase .profile-container .spotlight-item .user-card {
   padding: 30px 11px 8px 0px; }
   .page-single-showcase .profile-container .spotlight-item .user-card .media .profile-pic-container {
