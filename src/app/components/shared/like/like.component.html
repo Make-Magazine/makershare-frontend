@@ -6,7 +6,7 @@
       <span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"> {{liker?.first_name}} {{liker?.last_name}}<br>
     </span>
-    <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}}</span>
+    <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
     </span>
     </span>
     <span *ngIf="!countlikes">
@@ -22,17 +22,22 @@
   <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
     <div class="model-likes">
       <div class="modal-header">
-        <span>Likes</span>
+        <span *ngIf="countLikers">{{countLikers}} Likes</span>
         <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="whoLike2">
         <div class="model-likes">
           <span *ngFor="let liker2 of whoLike2; "> 
        <img class="like-photo" src="{{liker2?.portfolio_photo}}"><span class="new-tooltiptext"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
           </span>
         </div>
+        <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike && whoLike2.length > 0 ">
+      <div *ngIf="!hideloadmoreproject && whoLike2.length > 0 ">
+        <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
+      </div>
+    </div>
       </div>
       <div class="modal-footer">
         <div class="list-unstyled actions d-flex flex-row">
