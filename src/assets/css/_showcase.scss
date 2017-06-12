@@ -19,11 +19,18 @@
             margin: auto;
         }
     }
+
+  
     // .showcases-container {
     //     padding: 25px 15px 0px 15px;
     // }
 }
-
+  .aha {
+       border-radius: 0;
+    }
+    .uh-oh {
+         border-radius: 0;
+    }
 .go-back,
 .go-previous,
 .go-next {
@@ -201,7 +208,7 @@
                         color: $text-color-3;
                     }
                     .showcase-date {
-                        padding-left: 16px;
+                        // padding-left: 16px;
                         height: auto;
                     }
                 .showcase-card-status {
@@ -283,6 +290,7 @@
 
     .entries-count{
         color: $shade-4;
+        padding: 0;
     }
     .profile-container  {
         .spotlight-item {
@@ -324,7 +332,8 @@
     }
 }
 img {
-    max-width: 100%;
+     max-width: 100%;
+    height: auto;
 }
 
 
