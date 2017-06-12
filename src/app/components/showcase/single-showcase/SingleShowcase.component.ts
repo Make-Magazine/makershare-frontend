@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService,FlagService,StatisticsService,NodeService } from '../../../d7services';
+import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
@@ -15,13 +15,13 @@ export class SinglShowcaseComponent implements OnInit {
   customDescription: string
   showcase;
   view = 'grid';
-  idFromUrl:number;
+  idFromUrl: number;
   path: string;
   profile = {};
-  projects = [];
+  makers = [];
   hideloadmore = false;
-  loadFlag = false;
-  projectsCount = 0;
+  // loadFlag = false;
+  makersCount = 0;
   sortData: ISorting;
   sort_order: string;
   sort_by: string;
@@ -32,9 +32,18 @@ export class SinglShowcaseComponent implements OnInit {
   numLikes;
   toolTips = {
     'like': 'Like these ideas',
-    'bookmark': 'Bookmark this project',
-    'share': 'Share this project',
-  }
+    'bookmark': 'Bookmark this maker',
+    'share': 'Share this maker',
+  };
+  pages: number = 0;
+  page_arg;
+
+  ActionName = "Mix 'Em Up";
+  sort: ISorting = {
+    sort_by: "random",
+    sort_order: "ASC",
+    pageNo: 0
+  };
 
   // @Output() showcaseNid = new EventEmitter();
   constructor(
@@ -57,59 +66,125 @@ export class SinglShowcaseComponent implements OnInit {
   ngOnInit() {
     // show spinner
     this.loaderService.display(true);
-        this.route.params
+    this.route.params
 
     this.path = this.route.snapshot.params['path'];
     if (this.path) {
-      this.nodeService.getIdFromUrl(this.path,'showcase').subscribe(data => {
+      this.nodeService.getIdFromUrl(this.path, 'showcase').subscribe(data => {
         this.idFromUrl = data[0];
-          this.getShowcase();
-      
+        this.getShowcase();
 
-    
-     this.sort_order = "ASC";
-     this.sort_by = "delta";
-   
-     //load showcase projects count
-     this.getProjectsCount();
-     //load showcaseprojects data
-    this.getshowCaseProjects();
-   //  this.showcaseNid = this.route.params['value'].nid
-    this.userId = localStorage.getItem('user_id');
-  });  
+        //load showcase projects count
+        this.getMakersCount();
+        //load showcaseprojects data
+        this.getshowCaseMakers();
+        //  this.showcaseNid = this.route.params['value'].nid
+        this.userId = localStorage.getItem('user_id');
+      });
+    }
   }
-  }
-  getshowCaseProjects() {
-    if (this.loadFlag) {
-      this.limit += 9;
+  getshowCaseMakers() {
+    // if (this.loadFlag) {
+    //   this.limit += 9;
+    // }
+
+    if (this.pages >= 0) {
+      this.page_arg = ['page', this.pages];
     }
 
     this.route.params
-      this.viewService.getView('views/showcase_projects', [['nid', this.idFromUrl], ['display_id', 'services_1'], ['limit', this.limit], ['sort_by', this.sort_by], ['sort_order', this.sort_order]])
+    this.viewService.getView('showcase_makers', [['page', this.pages],['nid', this.idFromUrl], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
       .subscribe(data => {
-        this.projects = data;
+        this.makers = this.makers.concat(data);
         this.loadMoreVisibilty();
         // hide spinner
         this.loaderService.display(false);
       });
-    this.loadFlag = false;
+    // this.loadFlag = false;
   }
   // get more click
   loadmore() {
-    this.loadFlag = true;
-    this.getshowCaseProjects();
+    this.pages++;
+    this.getshowCaseMakers();
   }
 
   // control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    if (this.projects.length >= this.projectsCount) {
+    if (this.makers.length >= this.makersCount) {
 
       this.hideloadmore = true;
 
     } else {
       this.hideloadmore = false;
     }
+
+  }
+
+  randomized() {
+    this.makers = [];
+    this.pages = 0
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "random"
+    this.ActionName = "Mix 'Em Up"
+    this.getshowCaseMakers();
+
+  }
+
+  mostProjects() {
+    this.makers = [];
+    this.pages = 0
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php_1"
+    this.ActionName = "Most projects"
+    this.getshowCaseMakers();
+
+  }
+
+  mostRecent() {
+    this.makers = [];
+    this.pages = 0;
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "created";
+    this.ActionName = "Newest";
+    // this.getCountProject();
+    this.getshowCaseMakers();
+
+  }
+
+  sortAsc() {
+    this.makers = [];
+    this.pages = 0;
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "field_first_name_value_1";
+    this.ActionName = "Title A-Z";
+    this.getshowCaseMakers();
+  }
+  sortDesc() {
+    this.makers = [];
+    this.pages = 0;
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "field_first_name_value";
+    this.ActionName = "Title Z-A";
+    this.getshowCaseMakers();
+
+  }
+  mostLiked() {
+    this.makers = [];
+    this.pages = 0;
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php_2";
+    this.ActionName = "Most likes";
+    this.getshowCaseMakers();
+
+  }
+  mostViewed() {
+    this.makers = [];
+    this.pages = 0;
+    this.sort.sort_order = "DESC";
+    this.sort.sort_by = "php";
+    this.ActionName = "Most views";
+    this.getshowCaseMakers();
 
   }
 
@@ -125,10 +200,10 @@ export class SinglShowcaseComponent implements OnInit {
   getShowcase() {
     // load the showcase data
     this.route.params
-      this.viewService.getView('showcase', [['nid',this.idFromUrl]])
+    this.viewService.getView('showcase', [['nid', this.idFromUrl]])
       .subscribe(data => {
         this.showcase = data[0];
-        if(data.length == 0) {
+        if (data.length == 0) {
           this.router.navigate(['**']);
         }
         this.customDescription = this.showcase['description']
@@ -145,19 +220,18 @@ export class SinglShowcaseComponent implements OnInit {
       });
   }
 
-  getSortType(event: any) {
-    this.sortData = event;
-    this.sort_by = this.sortData.sort_by;
-    this.sort_order = this.sortData.sort_order;
-    this.getshowCaseProjects();
-  }
+  // getSortType(event: any) {
+  //   this.sortData = event;
+  //   this.sort_by = this.sortData.sort_by;
+  //   this.sort_order = this.sortData.sort_order;
+  //   this.getshowCaseMakers();
+  // }
 
-  getProjectsCount() {
+  getMakersCount() {
     this.route.params
-      this.viewService.getView('showcase_projects_nid', [['nid', this.idFromUrl]])
+    this.viewService.getView('maker_count_showcases/' + this.idFromUrl)
       .subscribe(data => {
-        this.projectsCount = data.length;
-      //  console.log(data.length);
+        this.makersCount = data;
       });
 
   }
@@ -178,8 +252,6 @@ export class SinglShowcaseComponent implements OnInit {
   // }
   likesCounter(count) {
     this.numLikes = count;
-    //console.log(this.numLikes)
-
   }
 
 }
