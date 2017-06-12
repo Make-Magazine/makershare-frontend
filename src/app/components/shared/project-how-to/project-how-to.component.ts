@@ -7,7 +7,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProjectHowToComponent implements OnInit {
   @Input() project;
-  @Input() projectInfo;
   howto = false;
   trustedLink;
   constructor(

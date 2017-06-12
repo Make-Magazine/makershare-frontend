@@ -39,10 +39,10 @@ export class AboutBadgesComponent implements OnInit {
       for(let badge of data){
         if(badge.category == "Maker Badge"){
           this.makerBadge.push(badge);
-          console.log(this.makerBadge)
+        
         }else {
           this.projectBadge.push(badge)
-          console.log(this.projectBadge)          
+                
         }
       }
     });
