@@ -1246,7 +1246,57 @@ i.dropdownIcon {
     width: 500px;
 }
 
+/* Access Restricted Page */
+.access-restricted {
+    padding-top: 90px;
+    margin-bottom: 90px;
+    section {
+        margin-bottom: 12px;
+        padding: 12px;
+    }
+    .page-header-area {
+        p {
+            color: $red;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+    }
+    .page-content-area {
+        h2 {
 
+        }
+        span {
+            font-family: "Messina Modern Regular";
+            font-size: 1rem;
+            line-height: 110%;
+            color: $text-color-1;
+        }
+        i {
+            color: $red;
+            font-size: 62px;
+            padding-top: 26px;
+        }
+    }
+    .page-footer-area {
+        p {
+            text-transform: uppercase;
+            color: $text-color-1;
+            font-size: 1rem;
+        }
+        .link-cool-stuff {
+            font-size: 1rem;
+            line-height: 110%;
+            color: $blue;
+            margin-bottom: 12px;
+            .stuff-bold {
+                font-family: "Messina Modern bold";
+            }
+            .stuff-normal {
+                 font-family: "Messina Modern regular";
+            }
+        }
+    }
+}
 
 
 
