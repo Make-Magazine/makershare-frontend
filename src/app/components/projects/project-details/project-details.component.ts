@@ -59,45 +59,47 @@ export class ProjectDetailsComponent implements OnInit {
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
         this.currentuser = Number(localStorage.getItem('user_id'));
-        console.log(this.id);
         if(!this.id){
           this.router.navigateByUrl('**');
           this.loaderService.display(false);
         }
 
+        
+
         this.viewService.getView('views/project_visibility', [['nid', this.id]]).subscribe(data => {
-          console.log(data[0]);
-          if(data[0].status == 0 && this.currentuser != data[0].uid){
+          if(data[0].status == 0){
+
+            // check if the current user is one of the team
+            this.viewService.getView('views/project_team_members', [['nid', this.id]]).subscribe(list => {
+              let members = list[0].members.split(", ");
+              console.log(members);
+              if(members.lenght == 1 && this.currentuser == data[0].uid){
+                // there is only one team mebmer, and the current user is the author
+                this.loadProject();
+              }else {
+                console.log('case 2');
+                console.log(this.currentuser);
+                // check if the user is one of a team
+                if (members.indexOf(this.currentuser.toString()) > -1) {
+                  console.log(this.currentuser);
+                  console.log('case 2 - yes');
+                  console.log(members.indexOf(this.currentuser) > -1);
+                  this.loadProject();
+                }else {
+                  console.log('case 2 - no');
+                  this.router.navigateByUrl('access-restricted');
+                  this.loaderService.display(false);
+                }
+
+              }
+              
+            });
+
             this.router.navigateByUrl('access-restricted');
             this.loaderService.display(false);
           }else {
-            this.viewService.getView('maker_project_api/' + this.id)
-              .subscribe(data => {
-                console.log(data);
-                this.project = data;
-                var i = 0;
-                if (this.project.field_resources) {
-                  for (let resource of this.project.field_resources) {
-                    var resourceExt = resource.resource_file.split('.').pop();
-                    this.project.field_resources[i]['extension'] = resourceExt;
-                    i++
-                  }
-                }
-                this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
-                this.meta.setTag('og:image', this.project.field_cover_photo.url);
-                this.meta.setTag('og:description', this.project.field_teaser.value);
-                this.projectDetails = this.project;
-                this.projectDetails.nid = this.id;
-                this.loaderService.display(false);
-                // statistics
-                if (this.currentuser != this.project.uid) {
-                  this.statisticsService.view_record(this.project.nid, 'node').subscribe();
-                }
-              }, err => {
-                this.router.navigate(['/projects']);
-                this.loaderService.display(false);
-              });
 
+            this.loadProject();
           }
 
             
@@ -109,6 +111,36 @@ export class ProjectDetailsComponent implements OnInit {
       // get challenge name and nid for challenge if found from a view      
     });
   }// End ngOnInit
+
+
+  loadProject () {
+    this.viewService.getView('maker_project_api/' + this.id)
+      .subscribe(data => {
+        this.project = data;
+        var i = 0;
+        if (this.project.field_resources) {
+          for (let resource of this.project.field_resources) {
+            var resourceExt = resource.resource_file.split('.').pop();
+            this.project.field_resources[i]['extension'] = resourceExt;
+            i++
+          }
+        }
+        this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
+        this.meta.setTag('og:image', this.project.field_cover_photo.url);
+        this.meta.setTag('og:description', this.project.field_teaser.value);
+        this.projectDetails = this.project;
+        this.projectDetails.nid = this.id;
+        this.loaderService.display(false);
+        // statistics
+        if (this.currentuser != this.project.uid) {
+          this.statisticsService.view_record(this.project.nid, 'node').subscribe();
+        }
+      }, err => {
+        this.router.navigate(['/projects']);
+        this.loaderService.display(false);
+      });    
+  }
+
 
   getProject(event: Event, action: any) {
     event.preventDefault();
