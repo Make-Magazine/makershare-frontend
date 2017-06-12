@@ -174,7 +174,7 @@
             <ul class="list-unstyled d-flex justify-content-start align-items-center">
               <li>
                 <img *ngIf="project.number_of_likes" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
-                <span *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
+                <span class="projects-count" *ngIf="project.number_of_likes">{{project.number_of_likes}}</span>
                 <img *ngIf="!project.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                 <span *ngIf="!project.number_of_likes">0</span>
               </li>

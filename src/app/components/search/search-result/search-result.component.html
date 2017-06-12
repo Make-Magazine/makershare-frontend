@@ -12,12 +12,12 @@
         <div class="searsh-field col-lg-4">
           <div id="imaginary_container">
             <div class="input-group stylish-input-group">
-              <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Start typing..."
+              <input [(ngModel)]="query" type="text" (input)="query = $event.target.value" class="form-control" id="search-input" placeholder="Type to Search..."
                 [ngbTypeahead]="search" [focusFirst]="false" (keyup.enter)="searchQuery()" [resultTemplate]="rt" (selectItem)="itemSelected($event.item)">
               <span class="clear-search" [hidden]="query == ''" (click)="clearQuery()" value="clear">
                 <i class="lnr lnr-cross"></i>
              </span>
-             <span class="input-group-addon">
+              <span class="input-group-addon">
                 <button type="button" (click)="searchURL('')" value="search">
                   <i class="lnr lnr-magnifier"></i>
                 </button>  
@@ -28,23 +28,55 @@
             </div>
           </div>
         </div>
-        <div class="checkbox-filters col-md-8">
-          <label class="pull-left p-2 m-1">Filter:</label>
+        <div class="checkbox-filters col-md-8 flex-row pt-2">
+          <label class="pull-left pr-3">Filter:</label>
+          <label class="custom-control custom-checkbox">
+            <input (change)="CheckFilter()" [(ngModel)]="filter.projects" type="checkbox" class="custom-control-input" name="projects-filter" value="Bike">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Projects ({{projectsCount}})</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input (change)="CheckFilter()" [(ngModel)]="filter.showcases" type="checkbox" class="custom-control-input" name="showcases-filter">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Showcases ({{showcasesCount}})</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input (change)="CheckFilter()" [(ngModel)]="filter.challenges"  type="checkbox" class="custom-control-input" name="challenges-filter">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Missions ({{challengesCount}})</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input (change)="CheckFilter()" [(ngModel)]="filter.learning" type="checkbox" class="custom-control-input" name="learning-filter" disabled>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Learning</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input (change)="CheckFilter()" [(ngModel)]="filter.makers" type="checkbox" class="custom-control-input" name="makers-filter">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Makers ({{usersCount}})</span>
+          </label>
+
+          <!--<div class="filter pull-left p-2 m-1 form-check">
+            <label class="form-check-label"></label>
+            <label class="check-label">
+              <input (change)="CheckFilter()" [(ngModel)]="filter.projects" class="custom-control-input" type="checkbox" name="projects-filter" value="Bike">
+              <span class="custom-control-indicator"></span>
+            </label>
+          </div>-->
+
+          <!--
           <div class="filter pull-left p-2 m-1">
-            <label><input (change)="CheckFilter()" [(ngModel)]="filter.projects" class="mr-2" type="checkbox" name="projects-filter" value="Bike">Projects ({{projectsCount}})</label>
-          </div>
-          <div class="filter pull-left p-2 m-1">
-            <label><input (change)="CheckFilter()" [(ngModel)]="filter.showcases" class="mr-2" type="checkbox" name="showcases-filter" value="Bike">Showcases ({{showcasesCount}})</label>
-          </div>
-          <div class="filter pull-left p-2 m-1">
+            <label><input (change)="CheckFilter()" [(ngModel)]="filter.showcases" class="mr-2" type="checkbox" name="showcases-filter" value="Bike"></label>
+          </div>-->
+          <!--<div class="filter pull-left p-2 m-1">
             <label><input (change)="CheckFilter()" [(ngModel)]="filter.challenges" class="mr-2" type="checkbox" name="challenges-filter" value="Bike">Missions ({{challengesCount}})</label>
-          </div>
-          <div class="filter pull-left p-2 m-1 disabled">
+          </div>-->
+          <!--<div class="filter pull-left p-2 m-1 disabled">
             <label><input (change)="CheckFilter()" [(ngModel)]="filter.learning" class="mr-2" type="checkbox" name="learning-filter" value="Bike" disabled>Learning</label>
-          </div>
-          <div class="filter pull-left p-2 m-1">
+          </div>-->
+          <!--<div class="filter pull-left p-2 m-1">
             <label><input (change)="CheckFilter()" [(ngModel)]="filter.makers" class="mr-2" type="checkbox" name="makers-filter" value="Bike">Makers ({{usersCount}})</label>
-          </div>
+          </div>-->
         </div>
         <!--<div class="sort col-lg-4">
         </div>-->
@@ -63,7 +95,7 @@
             <div class="result-title mr-auto"><span>Projects</span></div>
             <div class="view-all-result">
               <span *ngIf="projectsCount > 1">{{projectsCount}} Results</span>
-              <span *ngIf="projectsCount == 1">{{projectsCount}} Result</span>                
+              <span *ngIf="projectsCount == 1">{{projectsCount}} Result</span>
               <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | View All</a></div>
           </div>
           <div class="row projects-result">
@@ -78,7 +110,7 @@
             <div class="result-title mr-auto"><span>Showcases</span></div>
             <div class="view-all-result">
               <span *ngIf="showcasesCount > 1">{{showcasesCount}} Results</span>
-              <span *ngIf="showcasesCount == 1">{{showcasesCount}} Result</span>              
+              <span *ngIf="showcasesCount == 1">{{showcasesCount}} Result</span>
               <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | View All</a></div>
           </div>
           <div class="row projects-result">

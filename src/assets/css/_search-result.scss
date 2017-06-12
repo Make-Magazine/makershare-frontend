@@ -333,7 +333,12 @@
 }
 
 .stylish-input-group .input-group-addon{
-    background: white !important; 
+		background: #00aeef;
+    color: #fff;
+    font-size: 1.125rem;
+		button {
+				color: #fff;
+		}
 }
 .stylish-input-group .form-control{
 	border-right:0; 
@@ -359,18 +364,78 @@
 		 text-align: center;
 	}
 	.clear-search {
-		position: absolute;
-    top: 10px;
+    position: absolute;
+    top: 7px;
     z-index: 3;
-    right: 60px;
+    right: 40px;
+    font-size: 1rem;
+		color: $text-color-1;
 	}
 	.searsh-field {
 		.dropdown-menu {
 			overflow: hidden;
+			box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
+			z-index: 12 !important;
 			.dropdown-item {
-				padding: 0.5em .5em !important;
+				padding: 0.4em .4em !important;
+				font-family: "Messina sans Regular";
+				font-size: 1.125rem;
+				color: $text-color-3;
+				&.active {
+					background-color: $blue !important;
+					color: #fff !important;
+				}
 			}
 		}
+	}
+	#imaginary_container {
+		box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
+		.input-group  {
+			input {
+				height: 35px;
+				padding: 10px;
+				border-radius: 0px;
+				font-family: "Messina sans Regular";
+				font-size: 1rem;
+				color: $text-color-1;
+				position: relative;
+				&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+								color: $text-color-3;
+				}
+				&::-moz-placeholder { /* Firefox 19+ */
+				color: $text-color-3;
+				}
+				&:-ms-input-placeholder { /* IE 10+ */
+				color: $text-color-3;
+				}
+				&:-moz-placeholder { /* Firefox 18- */
+				color: $text-color-3;
+				}
+			}
+			.input-group-addon {
+				height: 35px;
+				width: 35px;
+				padding: 4px 0px 0px 0px;
+				border-radius: 0px;
+				&:hover {
+					background: $blue*0.8;
+				}
+				&:focus {
+					background: $blue*0.8;
+					border: none !important;
+					outline: none !important;
+				}
+			}
+		}
+	}
+	.custom-control-input:checked~.custom-control-indicator {
+		background-color: $blue !important;
+		&:focus {
+    outline: $blue auto 5px !important;
+		}
+	}
+	.custom-control:focus {
+		outline: none !important;
 	}
 }
 
