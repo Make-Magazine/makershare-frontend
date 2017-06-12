@@ -74,7 +74,6 @@ export class LikeComponent implements OnInit {
   getWhoLike() {
     this.viewService.getView('who-liked', [['nid', this.nodeNid]]).subscribe(data => {
       this.whoLike = data;
-      console.log(this.whoLike)
       if (this.whoLike.length > 7) {
         this.LoadCount = this.whoLike.length - 7;
       }
@@ -113,7 +112,10 @@ export class LikeComponent implements OnInit {
       }
     })
   }
-
+  goToProfile(path: string) {
+    
+    this.router.navigate(['/portfolio/', path]);
+  }
   /* function like */
   likeThis(e: Event) {
     this.userService.isLogedIn().subscribe(data => {
