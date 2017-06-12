@@ -2028,6 +2028,40 @@ i.dropdownIcon {
 .modal-sm {
   width: 500px; }
 
+/* Access Restricted Page */
+.access-restricted {
+  padding-top: 90px;
+  margin-bottom: 90px; }
+  .access-restricted section {
+    margin-bottom: 12px;
+    padding: 12px; }
+  .access-restricted .page-header-area p {
+    color: #ED1C24;
+    text-transform: uppercase;
+    font-size: 1rem; }
+  .access-restricted .page-content-area span {
+    font-family: "Messina Modern Regular";
+    font-size: 1rem;
+    line-height: 110%;
+    color: #4F4F4F; }
+  .access-restricted .page-content-area i {
+    color: #ED1C24;
+    font-size: 62px;
+    padding-top: 26px; }
+  .access-restricted .page-footer-area p {
+    text-transform: uppercase;
+    color: #4F4F4F;
+    font-size: 1rem; }
+  .access-restricted .page-footer-area .link-cool-stuff {
+    font-size: 1rem;
+    line-height: 110%;
+    color: #00AEEF;
+    margin-bottom: 12px; }
+    .access-restricted .page-footer-area .link-cool-stuff .stuff-bold {
+      font-family: "Messina Modern bold"; }
+    .access-restricted .page-footer-area .link-cool-stuff .stuff-normal {
+      font-family: "Messina Modern regular"; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
