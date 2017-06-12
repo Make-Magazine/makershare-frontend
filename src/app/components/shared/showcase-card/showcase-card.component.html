@@ -27,10 +27,10 @@
               <div class="showcase-card-count">
                 <div class=" d-flex flex-row">
                    <div class="projects-count-div">
-                    <span class="projects-count">{{projectsCount}}
-                           <span *ngIf="projectsCount>1">projects</span>
-                    <span *ngIf="projectsCount==0">projects</span>
-                    <span *ngIf="projectsCount==1">project</span>
+                    <span class="projects-count">{{makersCount}}
+                           <span *ngIf="makersCount>1">Makers</span>
+                    <span *ngIf="makersCount==0">Makers</span>
+                    <span *ngIf="makersCount==1">Maker</span>
                     </span>
                   </div>
                   <div class="showcase-likes">
@@ -79,8 +79,8 @@
                 <div class="showcase-card-count d-felx">
                   <div class="projects-count-div" *ngIf="showcase.number_of_project">
                     <span class="projects-count">{{showcase.number_of_project}}
-                  <span *ngIf="showcase.number_of_project>1">projects</span>
-                    <span *ngIf="showcase.number_of_project<=1">project</span>
+                  <span *ngIf="showcase.number_of_project>1">Maker</span>
+                    <span *ngIf="showcase.number_of_project<=1">Makers</span>
                     </span>
                   </div>
                   <div class="likes-count-div">
