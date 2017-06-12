@@ -20,6 +20,15 @@ h2 {
     font-weight : 500;
     line-height: 110%;
     color: $text-color-1;
+    &.sub-header.red {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #ed1c24;
+        font-weight: 500;
+        margin-bottom: 1.75rem;
+    }
 }
 
 h3 {
