@@ -1265,18 +1265,23 @@ i.dropdownIcon {
     }
     .page-content-area {
         h2 {
-
+            width: 100%;
+            text-align: center
         }
         span {
             font-family: "Messina Modern Regular";
             font-size: 1rem;
             line-height: 110%;
             color: $text-color-1;
+            text-align: center;
+            width: 100%;
         }
         i {
             color: $red;
             font-size: 62px;
             padding-top: 26px;
+            display: block;
+            margin: 0 auto;
         }
     }
     .page-footer-area {
@@ -1284,17 +1289,23 @@ i.dropdownIcon {
             text-transform: uppercase;
             color: $text-color-1;
             font-size: 1rem;
+            width: 100%;
         }
         .link-cool-stuff {
             font-size: 1rem;
             line-height: 110%;
             color: $blue;
-            margin-bottom: 12px;
+            margin: 0 auto;
+            padding: 7px 10px;
             .stuff-bold {
                 font-family: "Messina Modern bold";
             }
             .stuff-normal {
                  font-family: "Messina Modern regular";
+            }
+            &:hover {
+                color: $blue*0.8;
+                text-decoration: none;
             }
         }
     }
