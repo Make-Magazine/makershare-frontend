@@ -1,14 +1,14 @@
 <div class="maker-card card" *ngIf="card" (click)="goToProfile(card.profile_url)" (mouseover)='over()' (mouseleave)='leave()'>
-  <div class="card-type-grey">
+  <!--<div class="card-type-grey">
     <div class="type-layer-2">
       Maker
     </div>
-  </div>
+  </div>-->
   <div class="image-top">
     <div class="overlay"></div>
-    <img *ngIf="card.photo_lg" [class.show]="!swtichImage" class="card-img-top maker-card-photo step" src="{{card.photo_lg}}"
+    <img *ngIf="card.photo_lg" [class.show]="!swtichImage" class="maker-card-photo step" src="{{card.photo_lg}}"
       alt="">
-    <img *ngIf="latestPorjectImg" [class.show]="swtichImage" class="card-img-top latest-project-image step" src="{{latestPorjectImg}}"
+    <img *ngIf="latestPorjectImg" [class.show]="swtichImage" class="latest-project-image step" src="{{latestPorjectImg}}"
       alt="">
     <img *ngIf="!card.photo_lg" [class.show]="!swtichImage" class="step" src="./assets/images/placeholder.png" alt="">
   </div>
