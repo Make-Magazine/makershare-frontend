@@ -7,10 +7,10 @@ import { Router, NavigationExtras, ActivatedRoute, Params, NavigationEnd } from 
 import {
   FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper, UserInvitations,
   field_number, field_collection_item_member, field_collection_item_tool, field_collection_item_material,
-  field_collection_item_part, field_collection_item_resource
+  field_collection_item_part, field_collection_item_resource,ProjectHold
 }from '../../../../models';
 import { ComponentCanDeactivate } from '../pending-changes.guard';
-
+declare var swal:any;
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
@@ -46,6 +46,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   defaultTabObs: Observable<string>;
   missionRedirection: string='no';
 
+  Holder:ProjectHold;
   ProjectLoaded: boolean;
   StoryFormValid: boolean = false;
   current_active_tab: string;
@@ -104,9 +105,59 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     });
   }
 
+  UpdateHolder(){
+    let self = this;
+    setInterval(function(){
+      let projectHold = new ProjectHold(self.project.title+' ('+self.project.nid+')');
+      projectHold.title = self.project.title;
+      projectHold.nid = self.Holder.nid;
+      if(self.Holder.field_users_wants_edit)
+        projectHold.field_users_wants_edit = self.Holder.field_users_wants_edit;
+      self.nodeService.UpdateNode(projectHold).subscribe();
+    },180000)
+  }
+
   GetProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
-      this.ConvertProjectToCreateForm(project);
+      this.viewService.getView('api_project_hold',[["nid", project.nid]]).subscribe((hold)=>{
+        if(hold.length == 0 || hold[0].uid == +localStorage.getItem("user_id")){
+          let projectHold = new ProjectHold(project.title+' ('+nid+')');
+          projectHold.title = project.title;
+          if(hold.length == 0){
+            this.nodeService.createNode(projectHold).subscribe(node=>{
+              this.Holder = node;
+              this.ConvertProjectToCreateForm(project);
+            });
+          }else{
+            projectHold.nid = hold[0].nid;
+            delete projectHold.field_project_to_edit;
+            this.nodeService.UpdateNode(projectHold).subscribe(node=>{
+              this.Holder = hold[0];
+              this.ConvertProjectToCreateForm(project);
+            });
+          }
+        this.UpdateHolder();
+        }else{
+          swal({
+            title: "Wait!",
+            text: hold[0].name+" Is editing this project, Dot you want to be notified when he finishes?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#4F4F4F",
+            confirmButtonText: "Yes, notify me!",
+            closeOnConfirm: true
+          },
+          (confirm)=>{
+            if(confirm){
+              console.log("adding to queue "+localStorage.getItem("user_id"));
+            }else{
+              this.router.navigate(['/portfolio']);
+            }
+          });
+          return;
+        }
+      });
+      
     });
   }
 
