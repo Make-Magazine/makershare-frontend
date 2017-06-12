@@ -2,7 +2,7 @@
   <a class="btn btn-soft-grey btn-fit">
     <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
     <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
-    <span *ngIf="countlikes &&  whoLike " class="new-tooltip">{{countlikes}}
+    <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip">{{countlikes}}
       <span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"> {{liker?.first_name}} {{liker?.last_name}}<br>
     </span>
@@ -11,7 +11,6 @@
     </span>
     <span *ngIf="!countlikes">
       0
-      <span class="new-tooltiptext" *ngFor="let liker of whoLike; let i = index; "> {{liker[i]?.first_name}} {{i}} {{liker[i]?.last_name}} + {{LoadCount}}</span>
     </span>
 
   </a>
@@ -30,14 +29,18 @@
       <div class="modal-body" *ngIf="whoLike2">
         <div class="model-likes">
           <span *ngFor="let liker2 of whoLike2; "> 
-       <img class="like-photo" src="{{liker2?.portfolio_photo}}"><span class="new-tooltiptext"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+       <img *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="{{liker2?.portfolio_photo}}" (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')"><span *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+          <img *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker2.profile_url)"
+            (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+
+
           </span>
         </div>
         <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike && whoLike2.length > 0 ">
-      <div *ngIf="!hideloadmoreproject && whoLike2.length > 0 ">
-        <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
-      </div>
-    </div>
+          <div *ngIf="!hideloadmoreproject && whoLike2.length > 0 ">
+            <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <div class="list-unstyled actions d-flex flex-row">
