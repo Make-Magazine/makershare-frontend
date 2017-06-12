@@ -63,6 +63,7 @@ import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
+import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
 
 
 let config = {
@@ -138,6 +139,7 @@ export function ResponsiveDefinition() {
     AddProtocolDirective,
     RegistrationCollectComponent,
     MakerCkeditorComponent,
+    AccessRestrictedComponent,
 
   ],
   exports: [
