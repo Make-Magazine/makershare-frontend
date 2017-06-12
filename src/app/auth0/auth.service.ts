@@ -52,7 +52,7 @@ export class Auth {
         //language: language,
         languageDictionary: this.languageDictionary,        
         theme: {
-          logo: globals.domain + '/sites/default/files/make-logo1.png',
+          logo: globals.domain + '/sites/default/files/make-logo.png',
           displayName: "...", 
           primaryColor:    '#00597E'
         },
