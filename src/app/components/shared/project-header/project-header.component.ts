@@ -10,7 +10,6 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProjectHeaderComponent implements OnInit {
   @Input('project') project;
-  @Input() projectInfo;
   @Input() showcaseInfo;
   @Input('ActiveTab') ActiveTab:string = "project-story";$white
   @Output() SwitchTab = new EventEmitter();
