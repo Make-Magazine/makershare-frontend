@@ -25,7 +25,7 @@ export class Auth {
   //     }
   //   },
   //   theme: {
-  //     logo: globals.domain + '/sites/default/files/make-logo.png',
+  //     logo: globals.domain + '/sites/default/files/make-logo1.png',
   //     primaryColor: '#d41c2b'
   //   },
   //   languageDictionary: {
@@ -52,7 +52,7 @@ export class Auth {
         //language: language,
         languageDictionary: this.languageDictionary,        
         theme: {
-          logo:            '//yydxg3i41b1482qi9hidybgs.wpengine.netdna-cdn.com/wp-content/uploads/2017/06/2@2x.png',
+          logo: globals.domain + '/sites/default/files/make-logo1.png',
           displayName: "...", 
           primaryColor:    '#00597E'
         },
