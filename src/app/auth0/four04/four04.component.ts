@@ -23,6 +23,12 @@ import { ProfilePictureService } from '../../components/shared/profile-picture/p
         height: 100%;
         background-size: cover;
       }
+      #page-404 .image-container {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #0d1311;
+      }
       #page-404 .image-container::before {
         content: '';
         display: block;
@@ -37,7 +43,8 @@ import { ProfilePictureService } from '../../components/shared/profile-picture/p
       #page-404 .text-block {
         position: absolute;
         bottom: 20px;
-        right: 90px;
+        right: auto;
+        left: 190px;
         padding: 15px;
         background-color: transparent;
       }
