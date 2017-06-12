@@ -42,7 +42,7 @@ import { NotificationTemplateComponent } from './notification-template/notificat
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
-import { Ng2FileDropModule } from 'ng2-file-drop';
+import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -179,7 +179,8 @@ export function ResponsiveDefinition() {
     ValidateOnFocusoutDirective,
     RegistrationCollectComponent,
     MakerCkeditorComponent,
-    ImageCropperComponent
+    ImageCropperComponent,
+    Ng2FileDropDirective,
   ],
 })
 export class SharedModule {

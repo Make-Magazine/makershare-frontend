@@ -14,10 +14,10 @@ export class MakersComponent implements OnInit {
   makers=[];
   pages: number = 0;
   page_arg
-  ActionName = "Most projects";
+  ActionName = "Mix 'Em Up";
   sort: ISorting = {
-    sort_by: "created",
-    sort_order: "DESC",
+    sort_by: "random",
+    sort_order: "ASC",
     pageNo: 0
   };
   makersCount;
@@ -58,6 +58,16 @@ export class MakersComponent implements OnInit {
     } else if (this.makersCount < this.makers.length) {
       this.hideloadmore = true;
     }
+  }
+
+    randomized() {
+    this.makers = [];
+    this.pages = 0
+    this.sort.sort_order = "ASC";
+    this.sort.sort_by = "random"
+    this.ActionName = "Mix 'Em Up"
+    this.getMakers();
+
   }
 
     mostProjects() {
