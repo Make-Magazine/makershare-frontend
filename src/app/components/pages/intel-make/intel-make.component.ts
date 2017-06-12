@@ -5,17 +5,7 @@ import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-about-badges',
-  template: `
-      <section id="intelMake" class="page-node">
-        <div class="container">
-          <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
-          <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
-        </div>
-      </section>  
-  `,
-  styles: [`
-    
-  `]
+  templateUrl: './intel-make.component.html'
 })
 export class IntelMakeComponent implements OnInit {
   title = '';
