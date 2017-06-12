@@ -1201,7 +1201,7 @@ i.dropdownIcon {
         visibility: hidden;
         width: 120px;
         background-color: #555;
-        color: #fff;
+        color: #fff !important;
         text-align: center;
         border-radius: 6px;
         padding: 5px 0;
@@ -1231,10 +1231,17 @@ i.dropdownIcon {
 
     .like-photo {
     padding: 10px;
+    width: 120px;
+    height: 120px;
+    }
+    .like-name{
+        font-size: 1.3rem;
+        color : $text-color-6; 
     }
     .modal-sm{
     width: 500px;
 }
+
 
 
 
