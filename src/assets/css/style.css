@@ -966,6 +966,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Messina Modern Regular';
   color: #333333; }
 
+b, strong {
+  font-family: "Messina Modern Bold"; }
+
 h1 {
   font-family: "Messina Modern Regular";
   font-size: 4rem;
@@ -5408,7 +5411,6 @@ button:hover {
       line-height: 130%;
       color: #828282;
       color: white;
-      font-weight: 900;
       line-height: 1.5rem; }
     .page-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
@@ -8896,7 +8898,6 @@ img {
       font-weight: 400;
       line-height: 130%;
       color: #828282;
-      font-family: 'Messina Sans Bold';
       color: white; }
     .page-challenge-summary .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-challenge-summary-closed .challenge-card .card-container .card-buttons a.btn.btn-grey, .page-enter-challenge .challenge-card .card-container .card-buttons a.btn.btn-grey {
       background-color: #BDBDBD; }
