@@ -274,11 +274,11 @@ export class Auth {
   public handleAuthentication(): void {
     this.lock.on('authenticated', (authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.lock
+        
         this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
           if (error) {
             return;
-          }
+          } 
           var data = profile;
           data.idToken = authResult.idToken;
           data.user_id = profile.sub;
@@ -328,7 +328,6 @@ export class Auth {
     });
     this.lock.on('authorization_error', (err) => {
       //this.router.navigate(['/']);
-      //console.log(err);
     });
   }
 
@@ -344,7 +343,6 @@ export class Auth {
         this.lock.resumeAuth(window.location.hash, (err, authResult) => {
           if (err) {
             this.router.navigate(['/']);
-            console.log(err);
             return;
           }
           this.setSession(authResult);
