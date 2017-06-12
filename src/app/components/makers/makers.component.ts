@@ -7,7 +7,10 @@ import * as globals from '../../d7services/globals';
 
 @Component({
   selector: 'app-makers',
-  templateUrl: './makers.component.html'
+  templateUrl: './makers.component.html',
+  styles: [`
+  
+  `]
 })
 export class MakersComponent implements OnInit {
 
