@@ -9,7 +9,7 @@ import { ViewService,FlagService } from '../../../d7services';
 export class ShowcaseCardComponent implements OnInit {
   showcase;
   userId;
-  projectsCount;
+  makersCount;
   numLikes;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
@@ -22,7 +22,7 @@ export class ShowcaseCardComponent implements OnInit {
     this.getShowcases();
     this.userId = localStorage.getItem('user_id');
     this.countLikes();
-    this.getProjectsCount();
+    this.getMakersCount();
   }
 
   getShowcases() {
@@ -31,11 +31,10 @@ export class ShowcaseCardComponent implements OnInit {
       this.showcase = data[0];
     });
   }
-  getProjectsCount() {
-    this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
+  getMakersCount() {
+    this.viewService.getView('maker_count_showcases/' + this.showcaseNid).subscribe(data => {
 
-      this.projectsCount = data.length;
-    //  console.log(data.length);
+      this.makersCount = data;
     });
 
   }
