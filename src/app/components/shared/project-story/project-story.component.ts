@@ -13,7 +13,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProjectStoryComponent implements OnInit {
 
   @Input() project;
-  @Input() projectInfo; 
   constructor(
     private commentService: CommentService,
     private fb: FormBuilder,

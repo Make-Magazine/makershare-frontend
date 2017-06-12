@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
+import { AccessRestrictedComponent } from './components/shared/access-restricted/access-restricted.component';
 // static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
 import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
@@ -16,6 +17,7 @@ import { IntelInnovationComponent } from './components/pages/intel-innovation/in
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
+
 
 //modules
 import { HomeModule } from './components/home/home.module';
@@ -54,6 +56,7 @@ const APP_ROUTES: Routes = [
     { path: 'maker-shed', component: MakerShedComponent },
     { path: 'intel-innovation-programs', component: IntelInnovationComponent },
     { path: '404', component: Four04Component },
+    { path: 'access-restricted', component: AccessRestrictedComponent },
     { path: '**', redirectTo: '/404' },
 ];
 
