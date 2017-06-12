@@ -14,10 +14,10 @@
               </div>
             </div>
             <div class="showcase-card-footer-3 ">
-              
+
               <app-user-card *ngIf="showcase.uid" [uid]="showcase.uid" [showMessage]="false" [communityManager]="true"></app-user-card>
 
-              </div>
+            </div>
           </div>
           <div class="col-lg-8 col-md-6 col-sm-12 content-container">
             <div class="card-container">
@@ -27,10 +27,10 @@
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
 
-                 <div class="entries-count d-flex btn">
-                <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
-                <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
-              </div> 
+                <div class="entries-count d-flex btn">
+                  <p *ngIf="makersCount==1">{{makersCount}} Maker</p>
+                  <p *ngIf="makersCount>1">{{makersCount}} Makers</p>
+                </div>
                 <div class="showcase-card-footer d-flex mt-auto">
                   <div class="showcase-card-footer-2 d-flex justify-content-end w-100">
                     <div class="showcase-date w-100" *ngIf="showcase.last_updated">
@@ -51,13 +51,13 @@
                         <app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="showcase.cover_photo"></app-shared-buttons>
                       </div>
                       <!--<div class="projects-count-div">
-                        <span class="projects-count">{{projectsCount}}
-                           <span *ngIf="projectsCount>1">projects</span>
-                        <span *ngIf="projectsCount<=1">project</span>
+                        <span class="projects-count">{{makersCount}}
+                           <span *ngIf="makersCount>1">projects</span>
+                        <span *ngIf="makersCount<=1">project</span>
                         </span>
                       </div>-->
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
@@ -68,23 +68,40 @@
       <div class="container">
         <div class="filters">
           <div class="container">
-            <div class="row d-flex justify-content-end align-items-center" *ngIf="projectsCount>=1">
-              <div class="entries-count btn">
-                <p *ngIf="projectsCount==1">{{projectsCount}} Project</p>
-                <p *ngIf="projectsCount>1">{{projectsCount}} Projects</p>
+            <!--hide in mobiles screens-->
+            <div class="row justify-content-end align-items-center hidden-xs-down">
+              <div *ngIf="makersCount" class="entries-count btn">
+                <p *ngIf="makersCount==1">{{makersCount}} Maker &nbsp;</p>
+                <p *ngIf="makersCount>1">{{makersCount}} Makers &nbsp;</p>
               </div>
-              <showcase-sorting (sortType)="getSortType($event)"> </showcase-sorting>
-            </div>
-            <div class="container text-center" *ngIf="!projectsCount">
-              <p>No project yet</p>
+              <div class="container text-center" *ngIf="makersCount == 0">
+                <p>No Makers yet</p>
+              </div>
+              <div class="sorting-filter dropdown" *ngIf="makersCount > 0">
+                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
+                  </button>
+                <div class="dropdown-menu" aria-labelledby="filter-projects">
+                  <a class="dropdown-item" (click)="randomized()" class="btn">Mix 'Em Up</a>
+                  <a class="dropdown-item" (click)="mostProjects()" class="btn">Most projects</a>
+                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Newest</a>
+                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Name A-Z</a>
+                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Name Z-A</a>
+                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most likes</a>
+                  <a class="dropdown-item" (click)="mostViewed()" class="btn">Most views</a>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="container">
         <div class="projects-grid row">
-          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of projects; let i = index;">
-            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of makers; let i = index;">
+            <!--<app-project-card [view]="view" [nid]="project.nid"></app-project-card>-->
+            <app-maker-card [uid]="maker.uid"></app-maker-card>
             <!--<div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>-->
           </div>
         </div>
