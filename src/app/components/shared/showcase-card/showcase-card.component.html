@@ -3,11 +3,11 @@
     <div class="col-md-4 col-sm-12 col-xs-12 image-container">
       <img *ngIf="showcase.cover_photo" src="{{showcase.cover_photo}}" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.path)">
       <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
-      <div class="card-type-blue">
+     <!--  <div class="card-type-blue">
         <div class="type-layer-2">
           Showcase
         </div>
-      </div>
+      </div> -->
     </div>
     <!--End image-container -->
     <div class="col-md-8 content-container">
@@ -16,6 +16,13 @@
           <h3 class="card-title">{{showcase.showcase_name}}</h3>
           <div class="card-description">
             <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
+          </div>
+           <div class="projects-count-div" style="color: #4f4f4f;">
+            <span class="projects-count">{{makersCount}}
+                   <span *ngIf="makersCount>1">Makers</span>
+            <span *ngIf="makersCount==0">Makers</span>
+            <span *ngIf="makersCount==1">Maker</span>
+            </span>
           </div>
           <div class="showcase-card-footer mt-auto d-flex">
             <div class="showcase-card-footer-1 hidden-xs-down">
@@ -26,13 +33,6 @@
             <div class="showcase-card-footer-2 ml-4">
               <div class="showcase-card-count">
                 <div class=" d-flex flex-row">
-                   <div class="projects-count-div">
-                    <span class="projects-count">{{makersCount}}
-                           <span *ngIf="makersCount>1">Makers</span>
-                    <span *ngIf="makersCount==0">Makers</span>
-                    <span *ngIf="makersCount==1">Maker</span>
-                    </span>
-                  </div>
                   <div class="showcase-likes">
                     <img *ngIf="numLikes" src="./assets/images/icons/light-selected.png" alt="">
                     <span *ngIf="numLikes">{{numLikes.count}}</span>
