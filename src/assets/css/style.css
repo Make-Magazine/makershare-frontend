@@ -808,16 +808,21 @@ a:not([href]):not([tabindex]).btn-save {
 a:not([href]):not([tabindex]).btn-category {
   color: #fff;
   background-color: #00AEEF;
-  padding: 15px 0px;
-  min-width: 180px;
+  padding: 15px;
   margin: 0 auto;
   text-align: center;
   transition: background-color 0.5s ease;
   border: 1px solid transparent;
   border-radius: 12px;
   font-size: 1rem;
-  min-width: 224px;
-  margin: 10px; }
+  margin: 10px;
+  position: relative; }
+  .btn-category:after,
+  a:not([href]):not([tabindex]).btn-category:after {
+    display: none;
+    position: absolute;
+    right: 7px;
+    top: 0px; }
   .btn-category:hover,
   a:not([href]):not([tabindex]).btn-category:hover {
     background-color: #008bbf; }
@@ -828,6 +833,12 @@ a:not([href]):not([tabindex]).btn-category {
     background-color: #fff;
     color: #00AEEF;
     border-color: #00AEEF; }
+    .btn-category:focus:after, .btn-category:active:after, .btn-category.active:after,
+    a:not([href]):not([tabindex]).btn-category:focus:after,
+    a:not([href]):not([tabindex]).btn-category:active:after,
+    a:not([href]):not([tabindex]).btn-category.active:after {
+      content: 'x';
+      display: block; }
 
 .project {
   position: relative;
@@ -11567,5 +11578,15 @@ ckeditor #cke_23 {
   float: right; }
   ckeditor #cke_23 #cke_24_description::after {
     display: none; }
+
+.cat-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 80%;
+  margin: auto; }
+  .cat-filters .cat-filter-item {
+    display: flex;
+    align-self: center; }
 
 /*# sourceMappingURL=style.css.map */
