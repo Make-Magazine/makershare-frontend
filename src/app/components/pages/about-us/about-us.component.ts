@@ -14,7 +14,9 @@ import { ISorting } from '../../../models/makers/sorting';
 export class AboutUsComponent implements OnInit {
   title = '';
   body = '';
-  makers = [];
+  communityManagers = [];
+  makeIntel = [];
+  partners = [];
   pages: number = 0;
   sort: ISorting = {
     sort_by: "random",
@@ -36,10 +38,21 @@ export class AboutUsComponent implements OnInit {
     //   this.page_arg = ['page', this.pages];
     // }
     this.loaderService.display(true);
-    this.viewService.getView('makers', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data=>{
-      this.makers = this.makers.concat(data);
+
+    // get community managers
+    this.viewService.getView('about-comunnity-managers').subscribe( users => {
+      this.communityManagers = users;
+    });
+
+    this.viewService.getView('about-make-intel').subscribe( users => {
+      this.makeIntel = users;
       this.loaderService.display(false);
-    })
+    });
+
+    this.viewService.getView('about-partners').subscribe( users => {
+      this.partners = users;
+    });
+
   }
 
 }

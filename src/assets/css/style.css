@@ -825,7 +825,7 @@ a:not([href]):not([tabindex]).btn-category {
   a:not([href]):not([tabindex]).btn-category:focus,
   a:not([href]):not([tabindex]).btn-category:active,
   a:not([href]):not([tabindex]).btn-category.active {
-    background-color: #fff;
+    background-color: #F2F2F2;
     color: #00AEEF;
     border-color: #00AEEF; }
 
@@ -5186,6 +5186,8 @@ button:hover {
     padding-bottom: 25px;
     background-color: #F2F2F2;
     text-align: center; }
+    .page-explore .explore-header .filters-group {
+      margin-bottom: 10px; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
