@@ -990,6 +990,14 @@ h2 {
   font-weight: 500;
   line-height: 110%;
   color: #4F4F4F; }
+  h2.sub-header.red {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #ed1c24;
+    font-weight: 500;
+    margin-bottom: 1.75rem; }
 
 h3 {
   font-family: "Messina Modern Regular";
@@ -3103,7 +3111,8 @@ footer {
         color: #828282;
         color: #BDBDBD;
         font-size: 1.2rem;
-        line-height: 1.8rem; }
+        line-height: 1.8rem;
+        font-weight: normal; }
       .profile-sidebar .profile-container .profile-info .badges {
         font-family: "Messina Sans Regular";
         font-size: 0.9rem;
@@ -10501,9 +10510,6 @@ iframe {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
-.about-badges .page-title,
-.about-badges .page-description {
-  text-align: center; }
 .about-badges .page-title {
   font-size: 3.4rem;
   line-height: 100%;
@@ -10511,12 +10517,16 @@ iframe {
 .about-badges .page-description {
   font-size: 0.95rem;
   line-height: 1.5rem;
-  color: #828282; }
+  color: #828282;
+  width: 720px;
+  padding-bottom: 50px;
+  margin: auto; }
 .about-badges .badges-group-title {
   text-align: center;
   text-transform: uppercase;
   color: #ED1C24;
-  font-size: 1.125rem; }
+  font-size: 1.125rem;
+  padding-bottom: 30px; }
 .about-badges .badge-group .image-container {
   width: 20%; }
   .about-badges .badge-group .image-container img {
@@ -10525,15 +10535,10 @@ iframe {
     margin-top: -5px;
     padding: 3px 7px 10px 0px; }
 .about-badges .badge-group .badge-data {
-  height: 155px;
   width: 75%;
   margin-left: 2%;
-  background-color: white;
   padding: 10px;
-  margin-bottom: 6%;
-  -moz-box-shadow: 2px 2px 8px #BDBDBD;
-  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-  box-shadow: 2px 2px 8px #BDBDBD; }
+  margin-bottom: 6%; }
   .about-badges .badge-group .badge-data h3 {
     font-size: 1.6rem;
     line-height: 1.75rem; }
