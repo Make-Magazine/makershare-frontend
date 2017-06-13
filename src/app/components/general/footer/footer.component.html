@@ -4,11 +4,12 @@
 			<div class="row col-lg-3 col-sm-6 copy">
 				<nav class="nav flex-md-column">
 					<a class="nav-link first-logo-link" [routerLink]="['/']"><img src="./assets/images/logos/Maker-Share-Logo-ALPHA.svg" alt="" class="img-responsive first-logo"></a>
-					<a class="nav-link second-logo-link" [routerLink]="['/make-intel']">
+					<a class="nav-link second-logo-link">
 						<p class="nav-link logo-title">a project by</p>
 						<div class="d-flex flex-row">
-						<img src="./assets/images/logos/make_logo_grey.svg" alt="" class="img-responsive second-logo second-logo-make">
-						<img src="./assets/images/logos/intel_logo_grey_1.svg" alt="" class="img-responsive second-logo second-logo-intel">						
+						<a href="http://makermedia.com" target="_blank"><img src="./assets/images/logos/make_logo_grey.svg" alt="" class="img-responsive second-logo second-logo-make"></a>
+						<div class="vertical-line"></div>
+						<a href="https://www.intel.com/content/www/us/en/homepage.html" target="_blank"><img src="./assets/images/logos/intel_logo_grey_1.svg" alt="" class="img-responsive second-logo second-logo-intel"></a>
 						</div>
 					</a>
 				</nav>
@@ -64,7 +65,7 @@
 					<div class="form-group">
 						<label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
 						<form ngNoForm class="whatcounts-signup" action="https://secure.whatcounts.com/bin/listctrl" method="POST">
-							<p for="newsletter" class="footer-subtitle mt-2">Stay inspired with the Make: community newsletter</p>
+							<p for="newsletter" class="footer-subtitle">Stay inspired with the Make: community newsletter</p>
 							<input type="hidden" name="slid_1" value="6B5869DC547D3D46072290AE725EC932" />
 							<!-- Make Share -->
 							<input type="hidden" name="multiadd" value="1" />

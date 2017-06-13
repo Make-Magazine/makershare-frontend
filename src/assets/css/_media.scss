@@ -381,8 +381,20 @@
             }
         }
     }
+    .community-guidelines-page {
+        .icons-section {
+            .icons-container {
+                .left-side::after {
+                    display: none;
+                }
+                .right-side,
+                .left-side {
+                    padding: 27px 0px;
+                }
+            }
+        }
+    }
 }
-
 
 @media only screen and (max-width: 575px) {
     /* project card */
@@ -933,6 +945,19 @@
         .page-header {
             .part-1 {
                 display: none;
+            }
+        }
+    }
+    .community-guidelines-page {
+        .page-header {
+            padding: 0px !important;
+        }
+        .icons-section {
+            .icons-container {
+                .right-side,
+                .left-side {
+                    padding: 27px 20px;
+                }
             }
         }
     }
