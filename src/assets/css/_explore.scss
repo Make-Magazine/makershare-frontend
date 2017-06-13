@@ -5,6 +5,9 @@
 		padding-bottom: 25px;
 		background-color: $main-bg;
 		text-align: center;
+		.filters-group {
+			  margin-bottom: 10px;
+		}
 		h3 {
 			@include header-font();
 			text-transform: capitalize;
@@ -21,7 +24,10 @@
 			font-size: 1.125rem;
 		}
 		.explore-tags {
-			margin: 18px auto;
+			margin-bottom: 5px;
+			// width: 180px;
+			width: 224px !important;
+			// height: 35px;
 			li{
 				display: inline-block;
 				margin: 10px 15px;
@@ -59,20 +65,6 @@
 	.submenus {
 		li{
 			display: inline-block;
-			a.btn {
-				min-width: 100px;
-				text-align: center;
-				padding: 8.5px 8px;
-				border-radius: 0px;
-				font-size: 0.9rem;
-				margin: 0px 10px 10px 10px;
-				border: 0.5px solid $text-color-1*1.4;
-				color: $text-color-1*1.4;
-			}
-			.active {
-				border: 0.5px solid $red !important;
-				background-color: #fff;
-			}
 		}
 		.arts-sub,
 		.technology-sub,
@@ -93,24 +85,47 @@
 			}
 		}
 	}
+	.dropdown-group {
+		position: relative;
+		display: inline-block;
+		i.dropdownIcon {
+			right: 10px;
+			top: 15px;
+			font-size: 1rem;
+		}
+		select.shadowed {
+			background: #ffffff;
+			padding: 10px;
+			@include boxShadow(2px, 3px, 5px, rgba(0, 0, 0, 0.2));
+			font-family: "Messina Sans Regular";
+			font-size: 1.125rem;
+			color: #4f4f4f;
+		}
+	}
 }
 .filters {
 	min-height: 35px;
 	color: $main-grey;
+  display: inline-block;
+	&.projects-counter {
+		position: absolute;
+		right: 0;
+	}
+	.dropdown-group {
+		margin-left: 30px;
+	}
 	.entries-count {
-		
-		font-size: 18px;
+		padding: 15px 0;
+		font-size: 0.9rem;
 		p {
 			margin: 0;
 		}
-		padding: 5px 10px;
 	}
 	.all-project {
 		border-left: 2px solid $main-grey;
 		padding: 5px 15px;
 	}
 	.btn {
-		font-size: 15px;
 		color: $main-grey;
 	}
 	.dropdown-toggle {
@@ -118,7 +133,7 @@
 		z-index: 12;
 	}
 	.sorting-filter ,.projects-filter {
-		border-left: 2px solid $main-grey;
+		// border-left: 2px solid $main-grey;
 		button::after {
 			display: none;
 		}

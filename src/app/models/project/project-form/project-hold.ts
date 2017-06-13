@@ -4,7 +4,7 @@ export interface ProjectHold extends Node{
   field_project_to_edit:{und:field_entity_reference[]},
   field_users_wants_edit?:{und:field_entity_reference[]},
   field_editing_date:{und:field_date[]},
-  expired:number,
+  expire:{date:string},
 }
 
 export class ProjectHold extends Node implements ProjectHold{
@@ -18,7 +18,7 @@ export class ProjectHold extends Node implements ProjectHold{
     this.status = 1;
     this.field_project_to_edit = {und:[{target_id:Project_title_id}]};
     this.field_editing_date = {und:[new field_date(date_with_time)]}
-    this.expired = 0;
+    this.expire = {date:this.field_editing_date.und[0].value.date};
   }
 
 }
