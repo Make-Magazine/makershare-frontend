@@ -967,8 +967,13 @@
         padding: 0 15px;
         position: relative;
         .content-side {
-            padding-left: 5px;
-            width: 90%;
+           width: 100%;
+           padding: 0;
+           .card-stats {
+                .btn-fit {
+                    padding: 0px !important;
+                }
+           }
         }
         .profiel-pic-container {
             width: 82px;
@@ -1026,7 +1031,7 @@
         margin: 0;
         max-width: 230px;
         cursor:pointer;
-        height: 60px;
+        // height: 60px;
         margin-bottom: 5px;
         font-size: 1.6rem;
     }
@@ -1227,9 +1232,12 @@
         }
     }
     .card-stats {
-        padding: 2px;
+        padding: 0px;
         color: $light-grey;
         font-size: 0.9rem;
+        .btn-fit {
+            padding: 0px;
+        }
         ul li {
             @include desc-font-2();
             width: 65px;
@@ -2058,276 +2066,7 @@
     }
 }
 
-.maker-card {
-    height: 460px;
-    &.card {
-        border-radius: 0;
-        padding: 0;
-        margin: 0 auto 30px;
-        border: none;
-        @include boxShadow(2px, 2px ,8px, $shade-3);        
-        cursor:pointer;
-    }
-    .card-type {
-        right: -22px;
-    }
-    .image-top {
-        width: 100%;
-        height: 275px;
-        overflow: hidden;
-        position: relative;
-        .card-img-top {
-            border-radius: 0;
-        }
-        img {
-            height: 100%;
-            width: 100%;
-        }
-        .step{
-            opacity: 0;
-            position: absolute;
-            transition: .5s ease-in-out all;
-        }
-        .show{
-            opacity: 1 !important;
-        }
-    }
-    .card-block {
-        padding: 0 15px;
-        height: 175px;
-        position: relative;
-        .content-side {
-            padding-left: 5px;
-            width: 90%;
-        }
-        p {
-            margin-bottom: 0;
-        }
-        .maker-name {
-            @include card-header-font-sm ();
-            color: $text-color-6;
-        }
-        .maker-nickname {
-            @include desc-font-1 ();
-            margin-bottom: 2px;
-            font-weight: normal;
-            color: $shade-4;
-        }
-        .maker-city {
-            @include desc-font-3 ();
-            // 12 pt
-            margin-bottom: 5px;
-            margin-top: 5px;
-            font-size: 1.2rem !important;
-            color: $text-color-3;
-        }
-        .maker-descripe {
-            @include desc-font-5();
-            margin-top: 5px;
-            font-weight: bold;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: $shade-5;
-            line-height: 110%;
-        }
-        .card-stats {
-            ul {
-            }
-        }
-    }
-    .icons-side-project {
-        position: relative;
-        top: -13px;
-        height: 40px;
-        margin-bottom: -10px;
-        z-index: 9;
-        .project-icon {
-            img {
-                width: 30px;
-                height: 36px;
-                margin-right: 5px;
-            }
-        }
-    }
-    .icons {
-        position: absolute;
-        color: white;
-        top: -12px;
-        left: -10px;
-        font-size: 13px;
-        padding: 20px;
-        span {
-            margin: 2px;
-            font-size: 13px;
-            i {
-                margin-right: 4px;
-                font-size: 17px;
-            }
-        }
-    }
-    .card-title {
-        @include card-header-font-md;
-        color: $text-color-1;
-        height: auto;
-        padding: 0px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        line-height: 30px;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-    }
-    .card-text {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        margin: 0 5px;
-        color: $main-grey;
-        &.project-text-grid {
-            display: none;
-        }
-    }
-    .categories {
-        display: none;
-        span {
-            margin-left: 3px;
-            color: $light-grey;
-        }
-    }
-    .card-role {
-        p {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            font-size: 15px;
-            color: $light-grey;
-        }
-    }
-    .card-stats {
-        padding: 2px;
-        color: $light-grey;
-        ul li {
-            @include desc-font-2();
-            display: inline-block;
-            margin-right: 25px;
-            img {
-                margin-right: 6px;
-                &.project-likes {
-                    width: 12px;
-                }
-                &.project-views {
-                    width: 20px;
-                    padding-bottom: 3px;
-                }
-            }
-            span {
-                margin: 0px;
-                color: $text-color-3;
-            }
-        }
-    }
-}
-.maker-mobile-card {
-    position: relative;    
-    margin: 15px 0;
-    border: none;
-    padding: 50px 15px 15px;
-    background-color: $white;
-    @include boxShadow(2px, 2px ,8px, $shade-3);
-    min-height: 140px;
-    border-radius: 0rem;
-    .icons-side-project {
-        position: absolute;
-        top: -2px;
-        right: 0;
-        .project-icon {
-            img {
-                width: auto;
-                height: 35px;
-                margin-right: 5px;
-            }
-        }
-    }
-    .content-container {
-        height: 100%;
-    }
-    .maker-pic-container {
-        width: 85px;
-        height: 85px;
-        min-width: 85px;
-        border-radius: 0px !important;
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 0px !important;
-        }
-    }
-    .maker-data {
-        max-width: 230px;
-        word-wrap: break-word;
-        .maker-name {
-            line-height: 150%;
-            @include card-header-font-sm ();
-            //  18 pt
-            color: $text-color-6;
-        }
-        .maker-nickname {
-            @include desc-font-5 ();
-            // 14 pt
-            margin-bottom: 2px;
-            font-weight: normal;
-            color: $shade-4;
-        }
-        .maker-city {
-            @include desc-font-3 ();
-            // 12 pt
-            margin-bottom: 5px;
-            margin-top: 5px;
-            font-size: 1em !important;
-            color: $text-color-3;
-        }
-        .maker-descripe {
-            @include desc-font-5();
-            // 14 pt
-            margin-top: 5px;
-            font-weight: bold;
-        }
-    }
-    .card-stats {
-        padding: 2px;
-        color: $light-grey;
-        ul {
-            margin-bottom: 0;
-            li {
-                @include desc-font-3();
-                display: inline;
-                margin-right: 25px;
-                img {
-                    margin-right: 6px;
-                    &.project-likes {
-                        width: 10px;
-                    }
-                    &.project-views {
-                        width: 20px;
-                        padding-bottom: 3px;
-                    }
-                }
-                span {
-                    margin: 0px;
-                }
-            } 
-        }
-    }
 
-}
 
 .mobile-profile-container {
     margin: 10px -15px;
