@@ -28,6 +28,7 @@ export class FileManagerComponent implements OnInit {
       this.fileManageService = data;
       this.files = [];
       this.LoadMore();
+      console.log(this.fileManageService);
     });
   }
 

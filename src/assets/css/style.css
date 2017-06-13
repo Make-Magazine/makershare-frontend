@@ -168,6 +168,7 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     z-index: 13;
+    height: 110px;
     padding: 20px 15px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -824,7 +825,7 @@ a:not([href]):not([tabindex]).btn-category {
   a:not([href]):not([tabindex]).btn-category:focus,
   a:not([href]):not([tabindex]).btn-category:active,
   a:not([href]):not([tabindex]).btn-category.active {
-    background-color: #fff;
+    background-color: #F2F2F2;
     color: #00AEEF;
     border-color: #00AEEF; }
 
@@ -994,7 +995,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333333; }
 
 b, strong {
-  font-family: "Messina Modern Bold"; }
+  font-family: "Messina Sans Bold"; }
 
 h1 {
   font-family: "Messina Modern Regular";
@@ -5185,6 +5186,8 @@ button:hover {
     padding-bottom: 25px;
     background-color: #F2F2F2;
     text-align: center; }
+    .page-explore .explore-header .filters-group {
+      margin-bottom: 10px; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
