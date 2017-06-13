@@ -811,7 +811,8 @@ _::-webkit-full-page-media, _:future, :root .custom-safari {
 }
 
 
-select.shadowed {
+select.shadowed,
+.shadowed button {
     width: 100% !important;
     margin-bottom: 5px;
     padding: 5px 10px;
@@ -827,6 +828,7 @@ i.dropdownIcon {
     position: absolute;
     right: 26px;
     top: 14px;
+    z-index: 1;
     pointer-events: none;
 }
 

@@ -805,6 +805,31 @@ a:not([href]):not([tabindex]).btn-save {
   a:not([href]):not([tabindex]).btn-save.active {
     background-color: #be161d; }
 
+.btn-category,
+a:not([href]):not([tabindex]).btn-category {
+  color: #fff;
+  background-color: #00AEEF;
+  padding: 15px 0px;
+  min-width: 180px;
+  margin: 0 auto;
+  text-align: center;
+  transition: background-color 0.5s ease;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  min-width: 224px;
+  margin: 10px; }
+  .btn-category:hover,
+  a:not([href]):not([tabindex]).btn-category:hover {
+    background-color: #008bbf; }
+  .btn-category:focus, .btn-category:active, .btn-category.active,
+  a:not([href]):not([tabindex]).btn-category:focus,
+  a:not([href]):not([tabindex]).btn-category:active,
+  a:not([href]):not([tabindex]).btn-category.active {
+    background-color: #fff;
+    color: #00AEEF;
+    border-color: #00AEEF; }
+
 .project {
   position: relative;
   margin-top: 10px;
@@ -1633,7 +1658,8 @@ _::-webkit-full-page-media, _:future, :root .check-label {
 :-ms-input-placeholder {
   font-family: 'Arial'; }
 
-select.shadowed {
+select.shadowed,
+.shadowed button {
   width: 100% !important;
   margin-bottom: 5px;
   padding: 5px 10px;
@@ -1651,6 +1677,7 @@ i.dropdownIcon {
   position: absolute;
   right: 26px;
   top: 14px;
+  z-index: 1;
   pointer-events: none; }
 
 .registration-page .name-section {
@@ -5122,7 +5149,8 @@ button:hover {
       color: #ED1C24;
       font-size: 1.125rem; }
     .page-explore .explore-header .explore-tags {
-      margin: 18px auto; }
+      margin-bottom: 5px;
+      width: 224px !important; }
       .page-explore .explore-header .explore-tags li {
         display: inline-block;
         margin: 10px 15px; }
@@ -5153,18 +5181,6 @@ button:hover {
           border: 1px solid #ED1C24 !important; }
   .page-explore .submenus li {
     display: inline-block; }
-    .page-explore .submenus li a.btn {
-      min-width: 100px;
-      text-align: center;
-      padding: 8.5px 8px;
-      border-radius: 0px;
-      font-size: 0.9rem;
-      margin: 0px 10px 10px 10px;
-      border: 0.5px solid #6f6f6f;
-      color: #6f6f6f; }
-    .page-explore .submenus li .active {
-      border: 0.5px solid #ED1C24 !important;
-      background-color: #fff; }
   .page-explore .submenus .arts-sub,
   .page-explore .submenus .technology-sub,
   .page-explore .submenus .workshop-sub,
@@ -5183,45 +5199,64 @@ button:hover {
     .page-explore .submenus .parent_410 li,
     .page-explore .submenus .parent_416 li {
       margin: 3px 0; }
+  .page-explore .dropdown-group {
+    position: relative;
+    display: inline-block; }
+    .page-explore .dropdown-group i.dropdownIcon {
+      right: 10px;
+      top: 15px;
+      font-size: 1rem; }
+    .page-explore .dropdown-group select.shadowed {
+      background: #ffffff;
+      padding: 10px;
+      -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+      font-family: "Messina Sans Regular";
+      font-size: 1.125rem;
+      color: #4f4f4f; }
 
 .filters {
   min-height: 35px;
-  color: #333333; }
+  color: #333333;
+  display: inline-block; }
+  .filters.projects-counter {
+    position: absolute;
+    right: 0; }
+  .filters .dropdown-group {
+    margin-left: 30px; }
   .filters .entries-count {
-    font-size: 18px;
-    padding: 5px 10px; }
+    padding: 15px 0;
+    font-size: 0.9rem; }
     .filters .entries-count p {
       margin: 0; }
   .filters .all-project {
     border-left: 2px solid #333333;
     padding: 5px 15px; }
   .filters .btn {
-    font-size: 15px;
     color: #333333; }
   .filters .dropdown-toggle {
     cursor: pointer;
     z-index: 12; }
-  .filters .sorting-filter, .filters .projects-filter {
-    border-left: 2px solid #333333; }
-    .filters .sorting-filter button::after, .filters .projects-filter button::after {
-      display: none; }
-    .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
-      -moz-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
-      -webkit-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
-      box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
-      background-color: white;
-      color: #676767;
-      border-radius: 0;
-      z-index: 10;
-      right: 0;
-      left: auto; }
-      .filters .sorting-filter .dropdown-menu a, .filters .projects-filter .dropdown-menu a {
-        width: 100%;
-        text-align: left;
-        font-size: 0.9rem; }
-        .filters .sorting-filter .dropdown-menu a:hover, .filters .projects-filter .dropdown-menu a:hover {
-          color: #4F4F4F;
-          background-color: #F2F2F2; }
+  .filters .sorting-filter button::after, .filters .projects-filter button::after {
+    display: none; }
+  .filters .sorting-filter .dropdown-menu, .filters .projects-filter .dropdown-menu {
+    -moz-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+    -webkit-box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+    box-shadow: 2px 2px 8px rgba(25, 25, 25, 0.34);
+    background-color: white;
+    color: #676767;
+    border-radius: 0;
+    z-index: 10;
+    right: 0;
+    left: auto; }
+    .filters .sorting-filter .dropdown-menu a, .filters .projects-filter .dropdown-menu a {
+      width: 100%;
+      text-align: left;
+      font-size: 0.9rem; }
+      .filters .sorting-filter .dropdown-menu a:hover, .filters .projects-filter .dropdown-menu a:hover {
+        color: #4F4F4F;
+        background-color: #F2F2F2; }
 
 /* filter mobile menu  */
 .filter-mobile-menu .container .filter-mainmenu .list-unstyled .parent-item {

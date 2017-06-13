@@ -500,3 +500,28 @@ a:not([href]):not([tabindex]).btn-save {
         background-color:$btn-primary-2*0.8
     }
 }
+
+.btn-category,
+a:not([href]):not([tabindex]).btn-category {
+    // @include card-header-font-sm ();
+    color: #fff;
+    background-color: $blue;
+    padding: 15px 0px;
+    min-width: 180px;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    min-width: 224px;
+    margin: 10px;
+    &:hover {
+        background-color: $blue*0.8;
+    }
+    &:focus, &:active, &.active {
+        background-color:$white;
+        color: $blue;
+        border-color: $blue;
+    }
+}
