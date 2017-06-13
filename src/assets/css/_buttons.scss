@@ -516,12 +516,12 @@ a:not([href]):not([tabindex]).btn-category {
     margin: 10px;
     position: relative;
 
-    &:after {
-        display: none;
-        position: absolute;
-        right: 7px;
-        top: 0px;
-    }
+    // &:after {
+    //     display: none;
+    //     position: absolute;
+    //     right: 7px;
+    //     top: 0px;
+    // }
     &:hover {
         background-color: $blue*0.8;
     }
@@ -529,9 +529,9 @@ a:not([href]):not([tabindex]).btn-category {
         background-color:$white;
         color: $blue;
         border-color: $blue;
-        &:after {
-            content: 'x';
-            display: block;
-        }
+        // &:after {
+        //     content: 'x';
+        //     display: block;
+        // }
     }
 }
