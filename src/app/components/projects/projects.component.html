@@ -3,24 +3,47 @@
     <header class="explore-header">
       <div class="container">
         <h3>Projects</h3>
-        <h6>FILTER BY TOPIC:</h6>
-        <ul class="list-unstyled explore-tags hidden-sm-down">
-          <li *ngFor="let parent of categories_parents;let i = index">
-            <a (click)="CurrentActiveParentIndex = i;CurrentActiveChildIndex = -1" [ngClass]="{'active':CurrentActiveParentIndex == i}"
-              class="btn btn-border" id="parent_{{parent.tid}}" [innerHTML]="parent.name"></a>
-          </li>
-        </ul>
-        <div class="submenus hidden-sm-down">
-          <div *ngFor="let parent of categories_parents">
-            <ul class="list-unstyled parent_{{parent.tid}}">
-              <li *ngFor="let term of categories_childs;let i = index">
-                <a *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
-                  class="btn btn-border" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
-              </li>
-            </ul>
+        <div class="filters-group">
+          <div class="dropdown-group">
+            <i class="dropdownIcon lnr lnr-chevron-down"></i>
+            <select class="shadowed explore-tags" (change)="selectParent($event.target.value)">
+              <option value="0">All Projects</option>
+              <option *ngFor="let parent of categories_parents;let i = index" value="{{parent.tid}}" [innerHTML]="parent.name">
+              </option>
+            </select>
           </div>
+          <div class="filters">
+            <div class="dropdown-group">
+              <i class="dropdownIcon lnr lnr-chevron-down"></i>
+              <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortProjects($event.target.value)">
+                <!--<option value="0">{{ActionName}}</option>-->
+                <option value="0" class="btn">Most recent</option>
+                <option value="1" class="btn">Oldest</option>
+                <option value="2" class="btn">Title A-Z</option>
+                <option value="3" class="btn">Title Z-A</option>
+                <option value="4" class="btn">Most liked</option>
+                <option value="5" class="btn">Most viewed</option>
+                <!--<a class="dropdown-item" (click)="mostFeatured()" class="btn">Featured</a>-->
+                <!--<a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>-->
+              </select>
+            </div>
+          </div>
+          <div class="filters projects-counter">
+            <div class="entries-count btn" *ngIf="!nameCat">
+              <p *ngIf="countProject > 1">{{countProject}} Projects</p>
+              <p *ngIf="countProject < 2">{{countProject}} Project</p>                
+            </div>
+          </div><!-- End filters -->
         </div>
-        <div class="navbar hidden-md-up filter-mobile-menu">
+        <div class="submenus" *ngIf="childCategory.length>0">
+          <ul class="list-unstyled">
+            <li *ngFor="let term of childCategory;let i = index">
+              <a [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
+                class="btn btn-category" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar hidden-xs-up filter-mobile-menu">
           <div class="navbar-inner">
             <div class="container">
               <a class="btn btn-navbar btn-load-more btn mb-3" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -41,77 +64,6 @@
             </div>
           </div>
         </div>
-        <div class="filters">
-          <div class="container">
-            <!--hide in mobiles screens-->
-            <div class="row justify-content-end align-items-center hidden-xs-down">
-              <div class="entries-count btn" *ngIf="!nameCat">
-                <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project</p>                
-              </div>
-              <div class="entries-count btn pr-1" *ngIf="nameCat">
-                <p *ngIf="countProject > 1">{{countProject}} Projects:</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project:</p>
-              </div>
-              <div class="entries-count btn name-cate pl-1" *ngIf="nameCat">
-                <p *ngIf="nameCat" [innerHTML]="nameCat"></p>
-              </div>
-              <div class="entries-count btn all-project">
-                <a (click)="allProject()">All Projects</a>
-              </div>
-              <div class="sorting-filter dropdown">
-                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
-                  </button>
-                <div class="dropdown-menu" aria-labelledby="filter-projects">
-                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Most recent</a>
-                  <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
-                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
-                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
-                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most liked</a>
-                  <a class="dropdown-item" (click)="mostViewed()" class="btn">Most viewed</a>
-                  <!--<a class="dropdown-item" (click)="mostFeatured()" class="btn">Featured</a>-->
-                  <!--<a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>-->
-                </div>
-              </div>
-            </div>
-
-            <!--show on mobile screens-->
-            <div class="row hidden-sm-up d-flex flex-column">
-              <div class="entries-count btn" *ngIf="!nameCat">
-                <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project</p>                
-              </div>
-              <div class="entries-count btn pr-1" *ngIf="nameCat">
-                <p *ngIf="countProject > 1">{{countProject}} Projects:</p>
-                <p *ngIf="countProject < 2">{{countProject}} Project:</p>
-              </div>
-              <div class="entries-count btn name-cate pl-1" *ngIf="nameCat">
-                <p *ngIf="nameCat" [innerHTML]="nameCat"></p>
-              </div>
-              <div class="entries-count btn all-project">
-                <a (click)="allProject()">All Projects</a>
-              </div>
-              <div class="sorting-filter dropdown">
-                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
-                  </button>
-                <div class="dropdown-menu" aria-labelledby="filter-projects">
-                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Most recent</a>
-                  <a class="dropdown-item" (click)="oldest()" class="btn">Oldest</a>
-                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Title A-Z</a>
-                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Title Z-A</a>
-                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most liked</a>
-                  <a class="dropdown-item" (click)="mostViewed()" class="btn">Most viewed</a>
-                  <!--<a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>-->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End filters -->
       </div>
     </header>
     <!--/    <div class="text-center pt-3 pb-5">

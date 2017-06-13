@@ -34,6 +34,17 @@ export class ProjectsComponent implements OnInit {
   categories_parents: ProjectCategory[] = [];
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
+  childCategory = [];
+  sort_functions = [
+    'mostRecent',   
+    'oldest',   
+    'sortAsc',
+    'sortDesc',
+    'mostLiked',   
+    'mostViewed',   
+    'mostFeatured',   
+    'mostForked',   
+    ]
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -114,13 +125,53 @@ export class ProjectsComponent implements OnInit {
 
     });
   }
+   getProjectCategories() {
+    this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
+      this.all_categories = categories;
+      // console.log(this.all_categories)
+      categories.forEach((element, index) => {
+        if (element.parent_tid) {
+          this.categories_childs.push(element);
+        } else {
+          this.categories_parents.push(element);
+        }
+      });
+      //  console.log(this.categories_childs);
+      // console.log(this.categories_parents);          
+    });
+  }
+  idCategory(term) {
+    this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
+    this.nameCat = term.name;
+    let body = {
+      "tid": term.tid,
+    };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
+      this.countProject = res['_body'].replace(']', '').replace('[', '')
+    //  console.log(res)
+    }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    });
+
+  }//end function
+  selectParent(value){
+    this.childCategory = []; 
+    if(value == 0) {
+      this.allProject();
+    } else {
+      for (let cate of this.categories_childs) {
+        if (cate.parent_tid == value){
+          this.childCategory.push(cate);
+        }
+      }
+    }
+  }
   /* end count function */
   /* function load more  */
   loadMoreProject() {
     this.pages++;
     this.getProjects();
-  }
-  /* end function load more  */
+  }/* end function load more  */
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
@@ -133,8 +184,7 @@ export class ProjectsComponent implements OnInit {
       //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
-  }
-  /* END FUNCTION loadMoreVisibilty */
+  }/* END FUNCTION loadMoreVisibilty */
   /* function to sort challenge Title A-z */
   sortAsc() {
     this.projects = [];
@@ -145,8 +195,7 @@ export class ProjectsComponent implements OnInit {
     this.getCountProject();
 
     this.getProjects();
-  }
-  /* end function to sort challenge Title A-z */
+  }/* end function to sort challenge Title A-z */
   /* function to sort challenge Title Z-A */
   sortDesc() {
     this.projects = [];
@@ -158,8 +207,7 @@ export class ProjectsComponent implements OnInit {
 
     this.getProjects();
 
-  }
-  /* end function to sort challenge Title Z-A */
+  }/* end function to sort challenge Title Z-A */
   /* function to sort challenge Recently */
   mostRecent() {
     this.projects = [];
@@ -183,8 +231,7 @@ export class ProjectsComponent implements OnInit {
 
     this.getProjects();
 
-  }
-  /* end function to sort challenge Oldest */
+  }/* end function to sort challenge Oldest */
 
   /* function to sort challenge MostLiked */
   mostLiked() {
@@ -197,8 +244,7 @@ export class ProjectsComponent implements OnInit {
 
     this.getProjects();
 
-  }
-  /* end function to sort challenge MostLiked */
+  }/* end function to sort challenge MostLiked */
   /* function to sort challenge mostViewed */
   mostViewed() {
     this.projects = [];
@@ -210,8 +256,7 @@ export class ProjectsComponent implements OnInit {
 
     this.getProjects();
 
-  }
-  /* end function to sort challenge mostViewed */
+  }/* end function to sort challenge mostViewed */
 
   mostFeatured(){
     this.projects = [];
@@ -222,8 +267,7 @@ export class ProjectsComponent implements OnInit {
     this.getCountProject();
 
     this.getProjects();
-  }
-  /* function to sort challenge MostForked */
+  }/* function to sort challenge MostForked */
   mostForked() {
     this.projects = [];
     this.pages = 0
@@ -245,36 +289,7 @@ export class ProjectsComponent implements OnInit {
     this.getCountProject();
     this.getProjects();
   }
-
-  getProjectCategories() {
-    this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
-      this.all_categories = categories;
-      // console.log(this.all_categories)
-      categories.forEach((element, index) => {
-        if (element.parent_tid) {
-          this.categories_childs.push(element);
-        } else {
-          this.categories_parents.push(element);
-        }
-      });
-      //  console.log(this.categories_childs);
-      // console.log(this.categories_parents);          
-    });
+  sortProjects(sort){
+    this[this.sort_functions[sort]]();
   }
-  idCategory(term) {
-    this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
-    this.nameCat = term.name;
-    let body = {
-      "tid": term.tid,
-
-    };
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
-      this.countProject = res['_body'].replace(']', '').replace('[', '')
-    //  console.log(res)
-    }, err => {
-      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
-    });
-
-  }//end function
-
 }
