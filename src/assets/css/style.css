@@ -817,12 +817,6 @@ a:not([href]):not([tabindex]).btn-category {
   font-size: 1rem;
   margin: 10px;
   position: relative; }
-  .btn-category:after,
-  a:not([href]):not([tabindex]).btn-category:after {
-    display: none;
-    position: absolute;
-    right: 7px;
-    top: 0px; }
   .btn-category:hover,
   a:not([href]):not([tabindex]).btn-category:hover {
     background-color: #008bbf; }
@@ -833,12 +827,6 @@ a:not([href]):not([tabindex]).btn-category {
     background-color: #fff;
     color: #00AEEF;
     border-color: #00AEEF; }
-    .btn-category:focus:after, .btn-category:active:after, .btn-category.active:after,
-    a:not([href]):not([tabindex]).btn-category:focus:after,
-    a:not([href]):not([tabindex]).btn-category:active:after,
-    a:not([href]):not([tabindex]).btn-category.active:after {
-      content: 'x';
-      display: block; }
 
 .project {
   position: relative;

@@ -9,7 +9,8 @@ import { MetaService } from '@nglibs/meta';
 })
 export class IntelMakeComponent implements OnInit {
   title = '';
-  body = ''
+  body = '';
+  video = '';
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
@@ -21,6 +22,7 @@ export class IntelMakeComponent implements OnInit {
     this.viewService.getView('pages', [['nid', 1535]]).subscribe(data => {
       this.title = data[0].title;
       this.body = data[0].body;
+      this.video = data[0].field_introductory_video;
 
       this.meta.setTitle(`Maker Share | ${this.title}`);
       this.meta.setTag('og:image', '/assets/logo.png');
