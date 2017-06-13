@@ -140,7 +140,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }else{
           swal({
             title: "Wait!",
-            text: hold[0].name+" Is editing this project, Dot you want to be notified when he finishes?",
+            text: hold[0].name+" Is editing this project, Do you want to be notified when he finishes?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#4F4F4F",
@@ -149,7 +149,14 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           },
           (confirm)=>{
             if(confirm){
-              console.log("adding to queue "+localStorage.getItem("user_id"));
+              let hoder = {
+                nid:hold[0].nid,
+                uid:localStorage.getItem("user_id")
+              };
+              this.mainService.post('/api/maker_project_api/hold_queue',hoder).subscribe((data)=>{
+                this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
+                this.router.navigate(['/portfolio']);
+              });
             }else{
               this.router.navigate(['/portfolio']);
             }

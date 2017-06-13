@@ -20,6 +20,15 @@ h2 {
     font-weight : 500;
     line-height: 110%;
     color: $text-color-1;
+    &.sub-header.red {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #ed1c24;
+        font-weight: 500;
+        margin-bottom: 1.75rem;
+    }
 }
 
 h3 {
@@ -1207,7 +1216,7 @@ i.dropdownIcon {
     display: inline-block;
     .new-tooltiptext {
         visibility: hidden;
-        width: 120px;
+        width: auto;
         background-color: #555;
         color: #fff !important;
         text-align: center;
@@ -1250,7 +1259,68 @@ i.dropdownIcon {
     width: 500px;
 }
 
-
+/* Access Restricted Page */
+.access-restricted {
+    padding-top: 90px;
+    margin-bottom: 90px;
+    section {
+        margin-bottom: 12px;
+        padding: 12px;
+    }
+    .page-header-area {
+        p {
+            color: $red;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+    }
+    .page-content-area {
+        h2 {
+            width: 100%;
+            text-align: center
+        }
+        span {
+            font-family: "Messina Modern Regular";
+            font-size: 1rem;
+            line-height: 110%;
+            color: $text-color-1;
+            text-align: center;
+            width: 100%;
+        }
+        i {
+            color: $red;
+            font-size: 62px;
+            padding-top: 26px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .page-footer-area {
+        p {
+            text-transform: uppercase;
+            color: $text-color-1;
+            font-size: 1rem;
+            width: 100%;
+        }
+        .link-cool-stuff {
+            font-size: 1rem;
+            line-height: 110%;
+            color: $blue;
+            margin: 0 auto;
+            padding: 7px 10px;
+            .stuff-bold {
+                font-family: "Messina Modern bold";
+            }
+            .stuff-normal {
+                 font-family: "Messina Modern regular";
+            }
+            &:hover {
+                color: $blue*0.8;
+                text-decoration: none;
+            }
+        }
+    }
+}
 
 
 
