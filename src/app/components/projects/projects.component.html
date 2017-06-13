@@ -36,8 +36,8 @@
           </div><!-- End filters -->
         </div>
         <div class="submenus" *ngIf="childCategory.length>0">
-          <ul class="list-unstyled">
-            <li *ngFor="let term of childCategory;let i = index">
+          <ul class="list-unstyled cat-filters">
+            <li class="cat-filter-item" *ngFor="let term of childCategory;let i = index">
               <a [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
                 class="btn btn-category" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
             </li>
