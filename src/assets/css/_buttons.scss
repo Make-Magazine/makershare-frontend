@@ -526,7 +526,7 @@ a:not([href]):not([tabindex]).btn-category {
         background-color: $blue*0.8;
     }
     &:focus, &:active, &.active {
-        background-color:$white;
+        background-color:$site-bg;
         color: $blue;
         border-color: $blue;
         // &:after {
