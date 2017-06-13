@@ -168,6 +168,7 @@ header nav {
   header nav.navbar {
     background-color: #F2F2F2;
     z-index: 13;
+    height: 110px;
     padding: 20px 15px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -970,7 +971,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333333; }
 
 b, strong {
-  font-family: "Messina Modern Bold"; }
+  font-family: "Messina Sans Bold"; }
 
 h1 {
   font-family: "Messina Modern Regular";
