@@ -315,6 +315,7 @@
                 color: $shade-3;
                 font-size: 1.2rem;
                 line-height: 1.8rem;
+                font-weight: normal;
             }
             .badges {
                 @include desc-font-2 ();

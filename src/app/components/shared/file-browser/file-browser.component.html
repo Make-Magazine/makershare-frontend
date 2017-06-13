@@ -1,7 +1,7 @@
 <div class=" edit-cover-modal">
   <div *ngIf="fileManageService" class="container upload-pic-container">
     <div *ngIf="fileManageService.files" class="row  scroll-container">
-        <ng-container *ngFor="let file of files">
+        <ng-container *ngFor="let file of files | reverse">
           <div *ngIf="file.type == 'image'" class="col-md-3 mb-4">
             <div class="image-container">
               <img *ngIf="file.thumbnail" [src]="file.thumbnail">
