@@ -1,9 +1,6 @@
 .about-badges {
-  .page-title,
-  .page-description {
-    text-align: center;
-  }
-  .page-title {
+  
+   .page-title {
   
      font-size: 3.4rem;
      line-height: 100%;
@@ -14,6 +11,9 @@
           font-size: 0.95rem;
           line-height: 1.5rem;
           color: #828282;
+          width: 720px;
+          padding-bottom: 50px;
+          margin: auto;
          
           }
   .badges-group-title {
@@ -21,6 +21,7 @@
     text-transform: uppercase;
     color: #ED1C24;
     font-size: 1.125rem;
+    padding-bottom: 30px;
     
   }
   .badge-group {
@@ -34,13 +35,13 @@
       }
     }
     .badge-data {
-      height: 155px;
+      //height: 155px;
       width: 75%;
       margin-left: 2%;
-      background-color: white;
+     // background-color: white;
       padding: 10px;
       margin-bottom: 6%;
-      @include boxShadow(2px, 2px ,8px, $shade-3);
+      //@include boxShadow(2px, 2px ,8px, $shade-3);
       h3 {
         font-size: 1.6rem;
         line-height: 1.75rem;
