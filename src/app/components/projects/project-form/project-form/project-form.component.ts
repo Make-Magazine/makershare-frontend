@@ -149,11 +149,15 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           },
           (confirm)=>{
             if(confirm){
-              console.log("adding to queue "+localStorage.getItem("user_id"));
-              // this.mainService.put('api/UPDATE_RESOURCE',{uid:localStorage.getItem("user_id")}).subscribe((data)=>{
+              let hoder = {
+                nid:hold[0].nid,
+                uid:localStorage.getItem("user_id")
+              };
+              this.mainService.post('/api/maker_project_api/hold_queue',hoder).subscribe((data)=>{
+                console.log(data);
                 this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
                 this.router.navigate(['/portfolio']);
-              // });
+              });
             }else{
               this.router.navigate(['/portfolio']);
             }
