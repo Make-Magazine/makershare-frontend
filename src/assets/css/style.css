@@ -14,6 +14,23 @@
 @font-face {
   font-family: "Messina Modern Bold";
   src: url("../fonts/MessinaModernWeb-Bold.eot") format("eot"), url("../fonts/MessinaModernWeb-Bold.woff2") format("woff2"), url("../fonts/MessinaModernWeb-Bold.woff") format("woff"), url("../fonts/MessinaModern-Bold.otf") format("opentype"); }
+.center-icon {
+  display: block;
+  text-align: center;
+  margin: 1rem auto; }
+
+.red {
+  color: #ED1C24; }
+
+.ico-lrg {
+  font-size: 4rem; }
+
+.ico-med {
+  font-size: 2rem; }
+
+.ico-sm {
+  font-size: 1rem; }
+
 header.main-header {
   padding: 0 !important;
   margin: 0 !important;
@@ -3659,8 +3676,10 @@ footer {
     padding: 0 15px;
     position: relative; }
     .project .card-block .content-side {
-      padding-left: 5px;
-      width: 90%; }
+      width: 100%;
+      padding: 0; }
+      .project .card-block .content-side .card-stats .btn-fit {
+        padding: 0px !important; }
     .project .card-block .profiel-pic-container {
       width: 82px;
       height: 82px;
@@ -3710,7 +3729,6 @@ footer {
     margin: 0;
     max-width: 230px;
     cursor: pointer;
-    height: 60px;
     margin-bottom: 5px;
     font-size: 1.6rem; }
   .project .card-title-showcase {
@@ -3879,9 +3897,11 @@ footer {
       color: #00AEEF;
       margin-bottom: 0; }
   .project-mobile-card .card-stats {
-    padding: 2px;
+    padding: 0px;
     color: #BDBDBD;
     font-size: 0.9rem; }
+    .project-mobile-card .card-stats .btn-fit {
+      padding: 0px; }
     .project-mobile-card .card-stats ul li {
       font-family: "Messina Sans Regular";
       font-size: 0.9rem;
@@ -4587,260 +4607,6 @@ footer {
           float: left; }
           .page-search-content .user-card-search .card-stats .icons-side-user .user-icon img {
             width: 30px; }
-
-.maker-card {
-  height: 460px; }
-  .maker-card.card {
-    border-radius: 0;
-    padding: 0;
-    margin: 0 auto 30px;
-    border: none;
-    -moz-box-shadow: 2px 2px 8px #BDBDBD;
-    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-    box-shadow: 2px 2px 8px #BDBDBD;
-    cursor: pointer; }
-  .maker-card .card-type {
-    right: -22px; }
-  .maker-card .image-top {
-    width: 100%;
-    height: 275px;
-    overflow: hidden;
-    position: relative; }
-    .maker-card .image-top .card-img-top {
-      border-radius: 0; }
-    .maker-card .image-top img {
-      height: 100%;
-      width: 100%; }
-    .maker-card .image-top .step {
-      opacity: 0;
-      position: absolute;
-      transition: .5s ease-in-out all; }
-    .maker-card .image-top .show {
-      opacity: 1 !important; }
-  .maker-card .card-block {
-    padding: 0 15px;
-    height: 175px;
-    position: relative; }
-    .maker-card .card-block .content-side {
-      padding-left: 5px;
-      width: 90%; }
-    .maker-card .card-block p {
-      margin-bottom: 0; }
-    .maker-card .card-block .maker-name {
-      font-family: "Messina Modern Regular";
-      font-size: 1.3rem;
-      font-weight: 500;
-      line-height: 120%;
-      color: #828282;
-      color: #00AEEF; }
-    .maker-card .card-block .maker-nickname {
-      font-family: "Messina Sans Regular";
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-bottom: 2px;
-      font-weight: normal;
-      color: #4F4F4F; }
-    .maker-card .card-block .maker-city {
-      font-family: "Messina Sans Regular";
-      font-size: 0.8rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      font-size: 1.2rem !important;
-      color: #BDBDBD; }
-    .maker-card .card-block .maker-descripe {
-      font-family: "Messina Modern Regular";
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-top: 5px;
-      font-weight: bold;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #828282;
-      line-height: 110%; }
-  .maker-card .icons-side-project {
-    position: relative;
-    top: -13px;
-    height: 40px;
-    margin-bottom: -10px;
-    z-index: 9; }
-    .maker-card .icons-side-project .project-icon img {
-      width: 30px;
-      height: 36px;
-      margin-right: 5px; }
-  .maker-card .icons {
-    position: absolute;
-    color: white;
-    top: -12px;
-    left: -10px;
-    font-size: 13px;
-    padding: 20px; }
-    .maker-card .icons span {
-      margin: 2px;
-      font-size: 13px; }
-      .maker-card .icons span i {
-        margin-right: 4px;
-        font-size: 17px; }
-  .maker-card .card-title {
-    font-family: "Messina Modern Regular";
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 115%;
-    color: #828282;
-    color: #4F4F4F;
-    height: auto;
-    padding: 0px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    line-height: 30px;
-    text-align: left;
-    width: 100%;
-    margin: 0; }
-  .maker-card .card-text {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    margin: 0 5px;
-    color: #333333; }
-    .maker-card .card-text.project-text-grid {
-      display: none; }
-  .maker-card .categories {
-    display: none; }
-    .maker-card .categories span {
-      margin-left: 3px;
-      color: #BDBDBD; }
-  .maker-card .card-role p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    font-size: 15px;
-    color: #BDBDBD; }
-  .maker-card .card-stats {
-    padding: 2px;
-    color: #BDBDBD; }
-    .maker-card .card-stats ul li {
-      font-family: "Messina Sans Regular";
-      font-size: 0.9rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      display: inline-block;
-      margin-right: 25px; }
-      .maker-card .card-stats ul li img {
-        margin-right: 6px; }
-        .maker-card .card-stats ul li img.project-likes {
-          width: 12px; }
-        .maker-card .card-stats ul li img.project-views {
-          width: 20px;
-          padding-bottom: 3px; }
-      .maker-card .card-stats ul li span {
-        margin: 0px;
-        color: #BDBDBD; }
-
-.maker-mobile-card {
-  position: relative;
-  margin: 15px 0;
-  border: none;
-  padding: 50px 15px 15px;
-  background-color: #fff;
-  -moz-box-shadow: 2px 2px 8px #BDBDBD;
-  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
-  box-shadow: 2px 2px 8px #BDBDBD;
-  min-height: 140px;
-  border-radius: 0rem; }
-  .maker-mobile-card .icons-side-project {
-    position: absolute;
-    top: -2px;
-    right: 0; }
-    .maker-mobile-card .icons-side-project .project-icon img {
-      width: auto;
-      height: 35px;
-      margin-right: 5px; }
-  .maker-mobile-card .content-container {
-    height: 100%; }
-  .maker-mobile-card .maker-pic-container {
-    width: 85px;
-    height: 85px;
-    min-width: 85px;
-    border-radius: 0px !important; }
-    .maker-mobile-card .maker-pic-container img {
-      width: 100%;
-      height: 100%;
-      border-radius: 0px !important; }
-  .maker-mobile-card .maker-data {
-    max-width: 230px;
-    word-wrap: break-word; }
-    .maker-mobile-card .maker-data .maker-name {
-      line-height: 150%;
-      font-family: "Messina Modern Regular";
-      font-size: 1.3rem;
-      font-weight: 500;
-      line-height: 120%;
-      color: #828282;
-      color: #00AEEF; }
-    .maker-mobile-card .maker-data .maker-nickname {
-      font-family: "Messina Modern Regular";
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-bottom: 2px;
-      font-weight: normal;
-      color: #4F4F4F; }
-    .maker-mobile-card .maker-data .maker-city {
-      font-family: "Messina Sans Regular";
-      font-size: 0.8rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      font-size: 1em !important;
-      color: #BDBDBD; }
-    .maker-mobile-card .maker-data .maker-descripe {
-      font-family: "Messina Modern Regular";
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 100%;
-      color: #828282;
-      margin-top: 5px;
-      font-weight: bold; }
-  .maker-mobile-card .card-stats {
-    padding: 2px;
-    color: #BDBDBD; }
-    .maker-mobile-card .card-stats ul {
-      margin-bottom: 0; }
-      .maker-mobile-card .card-stats ul li {
-        font-family: "Messina Sans Regular";
-        font-size: 0.8rem;
-        font-weight: 400;
-        line-height: 100%;
-        color: #828282;
-        display: inline;
-        margin-right: 25px; }
-        .maker-mobile-card .card-stats ul li img {
-          margin-right: 6px; }
-          .maker-mobile-card .card-stats ul li img.project-likes {
-            width: 10px; }
-          .maker-mobile-card .card-stats ul li img.project-views {
-            width: 20px;
-            padding-bottom: 3px; }
-        .maker-mobile-card .card-stats ul li span {
-          margin: 0px; }
 
 .mobile-profile-container {
   margin: 10px -15px; }
@@ -11579,5 +11345,291 @@ ckeditor #cke_23 {
   .cat-filters .cat-filter-item {
     display: flex;
     align-self: center; }
+
+.maker-card {
+  height: 460px; }
+  .maker-card.card {
+    border-radius: 0;
+    padding: 0;
+    margin: 0 auto 30px;
+    border: none;
+    -moz-box-shadow: 2px 2px 8px #BDBDBD;
+    -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+    box-shadow: 2px 2px 8px #BDBDBD;
+    cursor: pointer; }
+  .maker-card .card-type {
+    right: -22px; }
+  .maker-card .image-top {
+    width: 100%;
+    height: 275px;
+    overflow: hidden;
+    position: relative; }
+    .maker-card .image-top .card-img-top {
+      border-radius: 0; }
+    .maker-card .image-top img {
+      height: 100%;
+      width: 100%; }
+    .maker-card .image-top .step {
+      opacity: 0;
+      position: absolute;
+      transition: .5s ease-in-out all; }
+    .maker-card .image-top .show {
+      opacity: 1 !important; }
+  .maker-card .card-block {
+    padding: 0 15px;
+    height: 175px;
+    position: relative; }
+    .maker-card .card-block .content-side {
+      padding-left: 0;
+      width: 100%; }
+    .maker-card .card-block p {
+      margin-bottom: 0; }
+    .maker-card .card-block .maker-name {
+      font-size: 1.4em;
+      color: #00AEEF;
+      margin-bottom: 0.2em; }
+    .maker-card .card-block .maker-nickname {
+      font-size: .8em;
+      line-height: 0.9em;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #BDBDBD;
+      display: inline; }
+    .maker-card .card-block .maker-city {
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-size: 0.8rem;
+      color: #4F4F4F;
+      display: inline; }
+    .maker-card .card-block .maker-card-ico {
+      font-size: 0.7em;
+      position: relative; }
+      .maker-card .card-block .maker-card-ico.lnr-map-marker {
+        left: -1px; }
+    .maker-card .card-block .maker-descripe {
+      font-weight: bold;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 1em;
+      font-weight: 500;
+      color: #474747;
+      line-height: 1.2em !important; }
+    .maker-card .card-block .descripe-container {
+      margin-top: .2em; }
+    .maker-card .card-block .card-maker-meta-row {
+      overflow: hidden; }
+      .maker-card .card-block .card-maker-meta-row-icon, .maker-card .card-block .card-maker-meta-row p {
+        float: left;
+        margin-bottom: 5px;
+        margin-top: 5px; }
+      .maker-card .card-block .card-maker-meta-row-icon {
+        width: 10px;
+        margin-right: 7px; }
+        .maker-card .card-block .card-maker-meta-row-icon.lnr-bullhorn {
+          margin-top: 0.9em; }
+      .maker-card .card-block .card-maker-meta-row p {
+        width: calc(100% - 17px); }
+    .maker-card .card-block .card-stats ul li span {
+      font-size: .8em; }
+  .maker-card .icons-side-project {
+    position: relative;
+    top: -13px;
+    height: 40px;
+    margin-bottom: -10px;
+    z-index: 9; }
+    .maker-card .icons-side-project .project-icon img {
+      width: 30px;
+      height: 36px;
+      margin-right: 5px; }
+  .maker-card .icons {
+    position: absolute;
+    color: white;
+    top: -12px;
+    left: -10px;
+    font-size: 13px;
+    padding: 20px; }
+    .maker-card .icons span {
+      margin: 2px;
+      font-size: 13px; }
+      .maker-card .icons span i {
+        margin-right: 4px;
+        font-size: 17px; }
+  .maker-card .card-title {
+    font-family: "Messina Modern Regular";
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 115%;
+    color: #828282;
+    color: #4F4F4F;
+    height: auto;
+    padding: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+    margin: 0; }
+  .maker-card .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0 5px;
+    color: #333333; }
+    .maker-card .card-text.project-text-grid {
+      display: none; }
+  .maker-card .categories {
+    display: none; }
+    .maker-card .categories span {
+      margin-left: 3px;
+      color: #BDBDBD; }
+  .maker-card .card-role p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 15px;
+    color: #BDBDBD; }
+  .maker-card .card-stats {
+    padding: 2px;
+    color: #BDBDBD; }
+    .maker-card .card-stats ul li {
+      font-family: "Messina Sans Regular";
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 100%;
+      color: #828282;
+      display: inline-block;
+      margin-right: 25px; }
+      .maker-card .card-stats ul li img {
+        margin-right: 6px; }
+        .maker-card .card-stats ul li img.project-likes {
+          width: 12px; }
+        .maker-card .card-stats ul li img.project-views {
+          width: 20px;
+          padding-bottom: 3px; }
+      .maker-card .card-stats ul li span {
+        margin: 0px;
+        color: #BDBDBD; }
+
+.maker-mobile-card {
+  position: relative;
+  margin: 15px 0;
+  border: none;
+  padding: 50px 15px 15px;
+  background-color: #fff;
+  -moz-box-shadow: 2px 2px 8px #BDBDBD;
+  -webkit-box-shadow: 2px 2px 8px #BDBDBD;
+  box-shadow: 2px 2px 8px #BDBDBD;
+  min-height: 140px;
+  border-radius: 0rem; }
+  .maker-mobile-card .icons-side-project {
+    position: absolute;
+    top: -2px;
+    right: 0; }
+    .maker-mobile-card .icons-side-project .project-icon img {
+      width: auto;
+      height: 35px;
+      margin-right: 5px; }
+  .maker-mobile-card .content-container {
+    height: 100%; }
+  .maker-mobile-card .maker-pic-container {
+    width: 85px;
+    height: 85px;
+    min-width: 85px;
+    border-radius: 0px !important; }
+    .maker-mobile-card .maker-pic-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 0px !important; }
+  .maker-mobile-card .maker-data {
+    max-width: 230px;
+    word-wrap: break-word; }
+    .maker-mobile-card .maker-data .maker-name {
+      line-height: 150%;
+      font-family: "Messina Modern Regular";
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 120%;
+      color: #828282;
+      color: #00AEEF; }
+    .maker-mobile-card .maker-data .maker-nickname {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 2px;
+      font-weight: normal;
+      color: #4F4F4F; }
+    .maker-mobile-card .maker-data .maker-city {
+      font-family: "Messina Sans Regular";
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 100%;
+      color: #828282;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-size: 1em !important;
+      color: #BDBDBD; }
+    .maker-mobile-card .maker-data .maker-descripe {
+      font-family: "Messina Modern Regular";
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 100%;
+      color: #828282;
+      margin-top: 5px;
+      font-weight: bold; }
+  .maker-mobile-card .card-stats {
+    padding: 2px;
+    color: #BDBDBD; }
+    .maker-mobile-card .card-stats ul {
+      margin-bottom: 0; }
+      .maker-mobile-card .card-stats ul li {
+        font-family: "Messina Sans Regular";
+        font-size: 0.8rem;
+        font-weight: 400;
+        line-height: 100%;
+        color: #828282;
+        display: inline;
+        margin-right: 25px; }
+        .maker-mobile-card .card-stats ul li img {
+          margin-right: 6px; }
+          .maker-mobile-card .card-stats ul li img.project-likes {
+            width: 10px; }
+          .maker-mobile-card .card-stats ul li img.project-views {
+            width: 20px;
+            padding-bottom: 3px; }
+        .maker-mobile-card .card-stats ul li span {
+          margin: 0px; }
+
+.quote-area {
+  border-top: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem; }
+  .quote-area blockquote, .quote-area .attribute {
+    color: #00AEEF; }
+  .quote-area blockquote {
+    font-family: "Messina Sans Regular";
+    font-size: 2em;
+    line-height: 1.3em; }
+  .quote-area .attribute {
+    text-align: right;
+    width: 100%;
+    display: block;
+    font-family: "Messina Sans bold"; }
 
 /*# sourceMappingURL=style.css.map */
