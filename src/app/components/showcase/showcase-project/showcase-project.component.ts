@@ -91,7 +91,7 @@ export class ShowcaseProjectComponent implements OnInit {
     this.viewService.getView('maker_project_api/' + this.projectNid).subscribe(data => {
       this.project = data;
       this.projectDetails = this.project;
-      console.log(this.project);
+      // console.log(this.project);
       this.projectDetails.nid = this.projectNid;
       //hide spinner
       this.loaderService.display(false);
