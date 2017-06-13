@@ -53,9 +53,12 @@ export class MainService {
     var options = {
       expires: expires
     };
+    var someText = token.replace(/(\r\n|\n|\r)/gm,"");
+    var tokenFinal = someText.split(' ').join('')
+
     this.cookieService.put('sessid', sessid, options);
     this.cookieService.put('session_name', session_name, options);
-    this.cookieService.put('token', token, options);
+    this.cookieService.put('token', tokenFinal, options);
   }
 
   removeCookies(){

@@ -5,6 +5,9 @@
 		padding-bottom: 25px;
 		background-color: $main-bg;
 		text-align: center;
+		.filters-group {
+			  margin-bottom: 10px;
+		}
 		h3 {
 			@include header-font();
 			text-transform: capitalize;
