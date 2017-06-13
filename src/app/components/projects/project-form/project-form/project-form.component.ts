@@ -46,7 +46,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   defaultTabObs: Observable<string>;
   missionRedirection: string='no';
 
-  Holder:ProjectHold;
+  Holder;
   ProjectLoaded: boolean;
   StoryFormValid: boolean = false;
   current_active_tab: string;
@@ -124,7 +124,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           let projectHold = new ProjectHold(project.title+' ('+nid+')');
           projectHold.title = project.title;
           if(hold.length == 0){
-            this.nodeService.createNode(projectHold).subscribe(node=>{
+            this.mainService.post('/api/api_project_hold/create_holde/', projectHold).subscribe(node=>{
               this.Holder = node;
               this.ConvertProjectToCreateForm(project);
             });
