@@ -154,7 +154,6 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
                 uid:localStorage.getItem("user_id")
               };
               this.mainService.post('/api/maker_project_api/hold_queue',hoder).subscribe((data)=>{
-                console.log(data);
                 this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
                 this.router.navigate(['/portfolio']);
               });
