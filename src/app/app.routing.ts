@@ -16,6 +16,7 @@ import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.com
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
+import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 
 
@@ -45,6 +46,7 @@ const APP_ROUTES: Routes = [
     { path: 'make-intel', component: IntelMakeComponent },
     { path: 'guidelines', component: GuidelinesComponent },
     { path: 'why-portfolio', component: WhyPortfolioComponent },
+    { path: 'about-us', component: AboutUsComponent },
     { path: 'badges', component: AboutBadgesComponent },
     { path: 'show-and-tell', component: ShowTellComponent },
     { path: 'terms-of-use', component: TermsComponent },

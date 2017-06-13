@@ -1,0 +1,35 @@
+<div class="page-explore">
+  <div class="container">
+    <header class="explore-header">
+      <div class="container">
+        <h3>The Maker Share Team</h3>
+        <p style="width: 59%; margin:auto;">Our Community Managers curate Makers and Projects and are your contacts for questions and concerns about the site. Maker Share is a project from Make: and Intel.</p>
+      </div>
+    </header>
+    
+    <!-- community managers -->
+    <h2 class="sub-header red">COMMUNITY MANAGERS</h2>
+    <div class="projects-grid row">
+      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+    </div>
+
+    <!-- make: + intel -->
+    <div style="margin-top: 4rem;">
+      <h2 class="sub-header red">MAKE: + INTEL</h2>
+      <div class="projects-grid row">
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+      </div>
+    </div>
+
+    <!-- partners -->
+    <div style="margin-top: 4rem;">
+      <h2 class="sub-header red">PARTNERS</h2>
+      <div class="projects-grid row">
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+      </div>
+    </div>
+  </div>
+ <!--  <div class="text-center">
+    <a class="btn btn-load-more" (click)="loadMoreMakers()">Load more</a>
+  </div> -->
+</div>

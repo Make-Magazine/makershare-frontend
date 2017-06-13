@@ -6,15 +6,15 @@
           <div class="top-content-wrapper">
             <div class="container">
               <div class="project-full-card">
-                <app-project-header [project]="projectDetails" [projectInfo]="projectdata" [showcaseInfo]="navigateShowcase" (SwitchTab)="changeProjectTab($event)" (ProjectNewId)="switchProject($event)"></app-project-header>
+                <app-project-header [project]="projectDetails"  [showcaseInfo]="navigateShowcase" (SwitchTab)="changeProjectTab($event)" (ProjectNewId)="switchProject($event)"></app-project-header>
               </div>
             </div>
             <!-- End container-->
           </div>
           <!-- End top-content-wrapper -->
           <div class="container">
-            <app-project-story [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-story'"></app-project-story>
-            <app-project-how-to [project]="projectDetails" [projectInfo]="projectdata" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+            <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+            <app-project-how-to [project]="projectDetails" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
           </div>
         </section>
       </div>

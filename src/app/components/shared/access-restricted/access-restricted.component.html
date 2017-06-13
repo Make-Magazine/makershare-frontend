@@ -1,3 +1,21 @@
-<p>
-  access-restricted works!
-</p>
+<div class="access-restricted container">
+  <section class="page-header-area row text-center">
+    <p class="m-auto">access restricted</p>
+  </section>
+  <section class="page-content-area row text-center">
+    <h2>Do Not Disturb</h2>
+    <span>The Maker has marked this project as Private or Draft.</span>
+    <i aria-hidden="true" class="lnr lnr-cog"></i>
+  </section>
+  <section class="page-footer-area row text-center d-flex flex-column">
+    <p>other cool stuff:</p>
+    <a [routerLink]="['/makers']" class="link-cool-stuff">
+      <strong class="stuff-bold">Makers:</strong>
+      <span class="stuff-normal">Find Makers by Interest or Location</span>
+    </a>
+    <a [routerLink]="['/projects']" class="link-cool-stuff">
+      <strong class="stuff-bold">Projects:</strong>
+      <span class="stuff-normal">Find Projects by Topic</span>
+    </a>
+  </section>
+</div>
