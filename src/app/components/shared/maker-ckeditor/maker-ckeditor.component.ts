@@ -49,14 +49,14 @@ export class MakerCkeditorComponent implements ControlValueAccessor {
   SetCropperSettings(): void {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 800;
-    this.cropperSettings.height = 450;
+    this.cropperSettings.height = 600;
     this.cropperSettings.minWidth = 800;
-    this.cropperSettings.minHeight = 450;
+    this.cropperSettings.minHeight = 600;
     this.cropperSettings.croppedWidth = 800;
-    this.cropperSettings.croppedHeight = 450;
+    this.cropperSettings.croppedHeight = 600;
     this.cropperSettings.noFileInput = true;
     this.cropperSettings.canvasWidth = 400;
-    this.cropperSettings.canvasHeight = 225;
+    this.cropperSettings.canvasHeight = 300;
     this.imagedata = {};
   }
 
