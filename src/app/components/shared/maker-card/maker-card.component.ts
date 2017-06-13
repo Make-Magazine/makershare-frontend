@@ -39,16 +39,16 @@ export class MakerCardComponent implements OnInit {
       this.card = data[0];
 
       //testing
-      if(!this.card.nickname.length){
-        this.card.nickname = 'Ally Gator'
-      }
-      if(!this.card.descripe_yourself.length){
-        if(this.uid % 2 == 0) {
-          this.card.descripe_yourself = "ectodermal incliner perinephritis catholicon warner tarpauli";
-        } else {
-          this.card.descripe_yourself = 'Just a real fungi';
-        }
-      }
+      // if(!this.card.nickname.length){
+      //   this.card.nickname = 'Ally Gator'
+      // }
+      // if(!this.card.descripe_yourself.length){
+      //   if(this.uid % 2 == 0) {
+      //     this.card.descripe_yourself = "ectodermal incliner perinephritis catholicon warner tarpauli";
+      //   } else {
+      //     this.card.descripe_yourself = 'Just a real fungi';
+      //   }
+      // }
     });
   }
 
