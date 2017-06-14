@@ -115,6 +115,7 @@ export class ProfileComponent implements OnInit {
     nickname: '',
     describe_yourself: '',
     bio: '',
+    bioShort: '',
     field_social_accounts: new ProfileSocial(),
     started_making: '',
     field_add_your_makerspace_s_: []
@@ -238,6 +239,12 @@ export class ProfileComponent implements OnInit {
     if (!this.uid) {
       this.router.navigate(['**']);
       return;
+    }
+
+    if(this.ProfileInfo.bio.length > 160) {
+      this.ProfileInfo.bioShort = this.ProfileInfo.bio.substring(0,160);
+    } else {
+      this.ProfileInfo.bioShort = this.ProfileInfo.bio;
     }
     var tasks = [];
     let body = { "data": this.uid  };
