@@ -681,7 +681,18 @@
 }
 
 @media only screen and (max-width: 768px) {
-    
+    .navbar-toggleable-sm {
+        #main-nav {
+            display: none !important;
+        }
+    }
+    header {
+        nav.navbar {
+            .project-button {
+                display: none !important;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 320px) {}
@@ -957,6 +968,18 @@
                 .right-side,
                 .left-side {
                     padding: 27px 20px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    header.main-header {
+        .login-block {
+            li.hamburger-menu {
+                .mobile-menu-item {
+                    display: none !important;
                 }
             }
         }
