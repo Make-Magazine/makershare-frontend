@@ -189,6 +189,7 @@ header {
             background-color: $main-bg;
             // position: relative;
             z-index: 13;
+            height: 110px;
             padding: 20px 15px;
             @include transition(0.5s);
             

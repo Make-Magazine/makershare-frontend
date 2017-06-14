@@ -7,11 +7,11 @@
             <div class="image-container">
               <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
               <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
-              <div class="card-type-blue">
+            <!--   <div class="card-type-blue">
                 <div class="type-layer-2">
                   Showcase
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="showcase-card-footer-3 ">
 
@@ -65,9 +65,9 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="filters">
-          <div class="container">
+      <div class="container clearfix">
+        <div class="filters" style="float: right;">
+          <!-- <div class="container"> -->
             <!--hide in mobiles screens-->
             <div class="row justify-content-end align-items-center hidden-xs-down">
               <div *ngIf="makersCount" class="entries-count btn">
@@ -115,7 +115,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
       <div class="container">
