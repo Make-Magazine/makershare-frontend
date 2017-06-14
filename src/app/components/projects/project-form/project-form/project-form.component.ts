@@ -124,7 +124,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           let projectHold = new ProjectHold(project.title+' ('+nid+')');
           projectHold.title = project.title;
           if(hold.length == 0){
-            this.mainService.post('/api/api_project_hold/create_holde/', projectHold).subscribe(node=>{
+            this.nodeService.createNode(projectHold).subscribe(node=>{
               this.Holder = node;
               this.ConvertProjectToCreateForm(project);
             });
@@ -140,7 +140,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }else{
           swal({
             title: "Wait!",
-            text: hold[0].name+" Is editing this project, Do you want to be notified when he finishes?",
+            text: hold[0].name+" is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#4F4F4F",
@@ -439,7 +439,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.CanNavigate = true;
         this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
         this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
-        this.GetProject(project.nid);
+        if(this.project.field_visibility2.und[0] == 1115)
+          this.GetProject(project.nid);
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
@@ -453,7 +454,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         if (!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)) {
           this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
         }
-        this.GetProject(project.nid);
+        if(this.project.field_visibility2.und[0] == 1115)
+          this.GetProject(project.nid);
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
