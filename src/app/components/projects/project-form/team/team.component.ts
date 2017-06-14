@@ -46,7 +46,7 @@ export class TeamComponent implements OnInit {
       .switchMap((term) => 
         {
           if(term.length > 1){
-            return this.viewService.getView('maker_profile_search_data',[['combine', term]])
+            return this.viewService.getView('maker_profile_search_data',[['combine', term], ['mail', term],['field_last_name_value',term],['field_full_name_value', term]])
             .map(result => {
               if(result.length == 0){
                 this.searchFailed = true;
