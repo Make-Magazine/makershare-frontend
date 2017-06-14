@@ -38,7 +38,7 @@ export class SinglShowcaseComponent implements OnInit {
   pages: number = 0;
   page_arg;
 
-  ActionName = "Mix 'Em Up";
+  ActionName = "Sort";
   sort: ISorting = {
     sort_by: "random",
     sort_order: "ASC",
@@ -92,10 +92,13 @@ export class SinglShowcaseComponent implements OnInit {
       this.page_arg = ['page', this.pages];
     }
 
+    console.log(this.makers)
+
     this.route.params
     this.viewService.getView('showcase_makers', [['page', this.pages],['nid', this.idFromUrl], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
       .subscribe(data => {
         this.makers = this.makers.concat(data);
+        console.log(this.makers);
         this.loadMoreVisibilty();
         // hide spinner
         this.loaderService.display(false);

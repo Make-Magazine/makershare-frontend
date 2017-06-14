@@ -1,9 +1,6 @@
 .about-badges {
-  .page-title,
-  .page-description {
-    text-align: center;
-  }
-  .page-title {
+  
+   .page-title {
   
      font-size: 3.4rem;
      line-height: 100%;
@@ -14,6 +11,9 @@
           font-size: 0.95rem;
           line-height: 1.5rem;
           color: #828282;
+          width: 720px;
+          padding-bottom: 50px;
+          margin: auto;
          
           }
   .badges-group-title {
@@ -21,6 +21,7 @@
     text-transform: uppercase;
     color: #ED1C24;
     font-size: 1.125rem;
+    padding-bottom: 30px;
     
   }
   .badge-group {
@@ -34,13 +35,13 @@
       }
     }
     .badge-data {
-      height: 155px;
+      //height: 155px;
       width: 75%;
       margin-left: 2%;
-      background-color: white;
+     // background-color: white;
       padding: 10px;
       margin-bottom: 6%;
-      @include boxShadow(2px, 2px ,8px, $shade-3);
+      //@include boxShadow(2px, 2px ,8px, $shade-3);
       h3 {
         font-size: 1.6rem;
         line-height: 1.75rem;
@@ -83,7 +84,7 @@
         margin-bottom: 14px;
       }
       p {
-      font-family: “Messina Sans Regular”;
+      font-family: 'Messina Sans Regular';
       font-size: 0.95rem;
       line-height: 1.5rem;
       color: #828282;
@@ -106,7 +107,8 @@
     padding: 17px 20px 17px;
     margin-top: 15px !important;
     margin-bottom: 15px !important;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     margin: 0 auto;
     @media screen and (max-width: 767px) {
@@ -131,11 +133,14 @@
       font-family: 'Messina Modern Regular';
     }
     p {
-      font-family: “Messina Sans Regular”;
+      font-family: 'Messina Sans Regular';
       font-size: 0.95rem;
       line-height: 1.5rem;
       text-align: left;
       color: #4f4f4f;
+    }
+    strong {
+      color: $blue;
     }
     .button-container-onboarding {
       text-align: center;
@@ -155,8 +160,16 @@
             position: relative;
             top: -1px;
             right: 6px;
+            display: none;
         }
       }
+    }
+    .vedio-caption  {
+      font-style: italic;
+      font-family: 'Messina Sans Regular';
+      font-size: 0.8rem;
+      color: $text-color-2;
+      text-align: center;
     }
   }
 }
@@ -277,7 +290,7 @@
         margin-bottom: 14px;
       }
       p {
-        font-family: “Messina Sans Regular”;
+        font-family: 'Messina Sans Regular';
         font-size: 0.95rem;
         line-height: 1.5rem;
         color: #828282;
@@ -289,7 +302,7 @@
         background-color: #fff;
         padding: 0px 18px;
         .icon-item {
-          width: 90px;
+          width: 50px;
           height: 60px;
           text-align: center;
           display: block;
@@ -298,7 +311,7 @@
         }
         h4 {
           font-family: "Messina Modern Bold";
-          font-size: 1.6rem;
+          font-size: 1.25rem;
           line-height: 1.75rem;
           color: #4f4f4f;
           text-align: center;
@@ -318,7 +331,7 @@
           content: '';
           position: absolute;
           right: 0;
-          border-right: 1px solid #4f4f4f;
+          border-right: 1px solid $text-color-3;
           top: 40px;
           bottom: 40px;
           }
@@ -375,7 +388,7 @@
       font-family: 'Messina Modern Regular';
     }
     p {
-      font-family: “Messina Sans Regular”;
+      font-family: 'Messina Sans Regular';
       font-size: 0.95rem;
       line-height: 1.5rem;
       text-align: left;

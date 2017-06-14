@@ -1,5 +1,6 @@
 @import "vars";
 @import "mixins";
+@import "utils";
 @import "navbar";
 @import "create-profile";
 @import "buttons";
@@ -30,3 +31,6 @@
 @import "static-pages";
 @import "media";
 @import "ckeditor";
+@import "cat-filters";
+@import "maker-card";
+@import "quote-area";

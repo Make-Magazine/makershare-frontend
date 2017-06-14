@@ -17,7 +17,7 @@ export class MakersComponent implements OnInit {
   makers=[];
   pages: number = 0;
   page_arg
-  ActionName = "Mix 'Em Up";
+  ActionName = "Sort";
   sort: ISorting = {
     sort_by: "random",
     sort_order: "ASC",
@@ -68,7 +68,7 @@ export class MakersComponent implements OnInit {
     this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "random"
-    this.ActionName = "Mix 'Em Up"
+    this.ActionName = "Sort"
     this.getMakers();
 
   }
