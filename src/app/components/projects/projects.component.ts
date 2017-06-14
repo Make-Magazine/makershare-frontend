@@ -188,6 +188,7 @@ export class ProjectsComponent implements OnInit {
 
   }//end function
   selectParent(value){
+    this.CurrentActiveChildIndex = -1;
     this.childCategory = []; 
     if(value == 1) {
       this.categoryId = null;

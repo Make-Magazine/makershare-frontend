@@ -1,6 +1,6 @@
 <div class="region region-content col-md-8" [formGroup]="YourStoryForm">
   <div class="your-story">
-    <p class="red-text">* Fileds required to publish</p>
+    <p class="red-text">* Fields required to publish</p>
     <div class="form-group required projectName">
       <label for="projectName" [ngClass]="{valErrorString: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}">Project Name</label>
       <input [ngClass]="{valError: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}" type="text" class="form-control"
