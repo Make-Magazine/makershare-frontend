@@ -418,7 +418,7 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.nickname = user.nickname;
 
     if(user.bio.length > 160) {
-      this.ProfileInfo.bioShort = user.bio.substring(0,160);
+      this.ProfileInfo.bioShort = user.bio.substring(0,160) + '...';
     } else {
       this.ProfileInfo.bioShort = user.bio;
     }
