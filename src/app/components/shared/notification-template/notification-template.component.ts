@@ -33,7 +33,7 @@ export class NotificationTemplateComponent implements OnInit {
       //   delete this.notification;
       // }
     }
-    // this.messageNotifications();
+    this.messageNotifications();
 
   }
 
@@ -113,16 +113,17 @@ export class NotificationTemplateComponent implements OnInit {
     }
     return date + ' ago';
   }
-  // messageNotifications() {
-  //   if (this.notification.type == 'new_message_sent') {
-  //     let mid = { "data": this.notification.pm_mid };
-  //     this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details',mid['data']).subscribe(res => {
-  //       this.messageDetails = res['_body'].replace(']', '').replace('[', '')  
-  //        console.log(this.messageDetails)
-  //     }, err => { 
-  //       // console.log(err)
-  //     });
-  //   }
-  // }
+  messageNotifications() {
+    if (this.notification.type == 'new_message_sent') {
+      // console.log(this.notification)
+      // let mid = { "data": this.notification.pm_mid };
+      // this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details',mid['data']).subscribe(res => {
+      //   this.messageDetails = res['_body'].replace(']', '').replace('[', '')  
+      //    console.log(this.messageDetails)
+      // }, err => { 
+      //   // console.log(err)
+      // });
+    }
+  }
 
 }
