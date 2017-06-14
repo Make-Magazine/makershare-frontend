@@ -35,6 +35,7 @@ export class AboutBadgesComponent implements OnInit {
     this.viewService.getView('api_all_badges_data').subscribe(data => {
           // this.makerBadge = data;
           // this.projectBadge = data;
+          console.log(data);
       
       for(let badge of data){
         if(badge.category == "Maker Badge"){
