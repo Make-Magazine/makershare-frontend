@@ -133,8 +133,11 @@
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_message_sent'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
-                <a>
-                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                <a *ngIf="notification.profile_photo">
+                 <img  class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+                <a *ngIf="!notification.profile_photo">
+                 <img  class="d-flex mr-3" src="./assets/images/Gears-Grey.png" alt="" class="img-responsive">
                 </a>
             </div>
             <div class="media-body">
