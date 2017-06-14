@@ -2044,20 +2044,20 @@ i.dropdownIcon {
   position: relative;
   display: inline-block; }
   .new-tooltip .new-tooltiptext {
-    visibility: hidden;
     width: auto;
-    background-color: #555;
+    background-color: #000;
     color: #fff !important;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 7px;
     position: absolute;
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 1s; }
+    margin-left: -50px;
+    display: none;
+    transition: opacity 1s;
+    line-height: 23px; }
     .new-tooltip .new-tooltiptext::after {
       content: "";
       position: absolute;
@@ -2067,21 +2067,20 @@ i.dropdownIcon {
       border-width: 5px;
       border-style: solid;
       border-color: #555 transparent transparent transparent; }
-  .new-tooltip:hover .new-tooltiptext {
-    visibility: visible;
-    opacity: 1; }
 
 .like-photo {
   padding: 10px;
   width: 120px;
-  height: 120px; }
+  height: 120px;
+  cursor: pointer; }
 
 .like-name {
   font-size: 1.3rem;
-  color: #00AEEF; }
+  color: #00AEEF;
+  cursor: pointer; }
 
 .modal-sm {
-  width: 500px; }
+  margin: auto; }
 
 /* Access Restricted Page */
 .access-restricted {
@@ -11311,6 +11310,9 @@ iframe {
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
+
+  .modal-sm {
+    width: 29%; }
 
   .delete-promodal .modal-dialog {
     max-width: 700px !important; } }
