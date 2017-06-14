@@ -137,7 +137,7 @@ footer {
     border-top: 5px solid $blue;
     .newsletter {
         p {
-            font-size: 1em;
+            font-size: 0.65rem;
             color: $text-color-2;
             line-height: 25px;
             margin-bottom: 0;
@@ -170,6 +170,12 @@ footer {
             width: 70px;
             max-width: 70px;
             height: 40px;
+        }
+        .vertical-line {
+            height: 17px;
+            width: 1px;
+            background-color: #828282;
+            margin: 12px 5px 10px 7px;
         }
         p {
             margin: 0;

@@ -13,7 +13,7 @@
   </div>
   <div class="row file-manager-contnet">
     <h2 class="col-md-12 file-manager-title">Manage Your Files</h2>
-    <ng-container *ngFor="let file of files">
+    <ng-container *ngFor="let file of files | reverse">
       <div *ngIf="(!file.usage || !file.usage.node) || (file.usage.node && file.usage.node[0].type == 'project')" class="col-md-4 mb-4">
         <div class="file-item">
           <img *ngIf="file.thumbnail" [src]="file.thumbnail">

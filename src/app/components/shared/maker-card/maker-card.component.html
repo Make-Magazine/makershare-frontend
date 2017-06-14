@@ -18,18 +18,36 @@
         <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
       </div>
     </div>
-    <h4 class="maker-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h4>
+    <h4 class="maker-name" *ngIf="card.first_name && card.last_name" innerHTML="{{card.first_name}} {{card.last_name}}"></h4>
     <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
-    <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country == 'United States'">{{card.location_locality}}, {{card.city}}</p>
-    <p class="maker-city" *ngIf="card.location_locality && card.country && card.country != 'United States'">{{card.location_locality}}, {{card.country}}</p>
-    <p class="maker-descripe" *ngIf="card.descripe_yourself" innerHTML="{{card.descripe_yourself}}"></p>
+    
+    <div class="card-maker-meta-row" *ngIf="card.nickname">
+      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-user"></span>
+      <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
+    </div>
+    
+    <div class="card-maker-meta-row" *ngIf="card.location_locality && card.country && card.country == 'United States'">
+      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-map-marker"></span>
+      <p class="maker-city">{{card.location_locality}}, {{card.city}}</p>
+    </div>
+
+    <div class="card-maker-meta-row" *ngIf="card.location_locality && card.country && card.country != 'United States'">
+      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-map-marker"></span>
+      <p class="maker-city" >{{card.location_locality}}, {{card.country}}</p>
+    </div>
+
+    <div class="card-maker-meta-row descripe-container" *ngIf="card.descripe_yourself">
+      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-bullhorn"></span>
+      <p class="maker-descripe" >{{card.descripe_yourself}}</p>
+    </div>
+
+
     <div class="content-side col d-flex flex-column justify-content-start">
       <div class="card-stats mt-auto">
         <ul class="list-unstyled">
           <li *ngIf="projectsCount">
-            <span *ngIf="projectsCount == 1">{{projectsCount}} project</span>
-            <span *ngIf="projectsCount != 1">{{projectsCount}} projects</span>
+            <span *ngIf="projectsCount == 1"><b>{{projectsCount}}</b> project</span>
+            <span *ngIf="projectsCount != 1"><b>{{projectsCount}}</b> projects</span>
           </li>
           <!--<li>
             <img *ngIf="card.profile_likes == 0" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">

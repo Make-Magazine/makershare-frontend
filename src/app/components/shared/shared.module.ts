@@ -51,6 +51,9 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
 import { AddProtocolDirective } from '../../directives/add-protocol.directive';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 
+//pipes
+import { ReverseArray } from '../../pipes/reverse-array';
+
 /**
  * Providers
  */
@@ -140,7 +143,8 @@ export function ResponsiveDefinition() {
     RegistrationCollectComponent,
     MakerCkeditorComponent,
     AccessRestrictedComponent,
-
+    //pipes
+    ReverseArray,
   ],
   exports: [
     CommentComponent,
@@ -183,6 +187,7 @@ export function ResponsiveDefinition() {
     MakerCkeditorComponent,
     ImageCropperComponent,
     Ng2FileDropDirective,
+    ReverseArray
   ],
 })
 export class SharedModule {

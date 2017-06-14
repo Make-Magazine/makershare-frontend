@@ -46,7 +46,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   defaultTabObs: Observable<string>;
   missionRedirection: string='no';
 
-  Holder:ProjectHold;
+  Holder;
   ProjectLoaded: boolean;
   StoryFormValid: boolean = false;
   current_active_tab: string;
@@ -124,7 +124,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           let projectHold = new ProjectHold(project.title+' ('+nid+')');
           projectHold.title = project.title;
           if(hold.length == 0){
-            this.nodeService.createNode(projectHold).subscribe(node=>{
+            this.mainService.post('/api/api_project_hold/create_holde/', projectHold).subscribe(node=>{
               this.Holder = node;
               this.ConvertProjectToCreateForm(project);
             });
@@ -140,7 +140,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }else{
           swal({
             title: "Wait!",
-            text: hold[0].name+" Is editing this project, Dot you want to be notified when he finishes?",
+            text: hold[0].name+" Is editing this project, Do you want to be notified when he finishes?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#4F4F4F",
@@ -149,7 +149,14 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           },
           (confirm)=>{
             if(confirm){
-              console.log("adding to queue "+localStorage.getItem("user_id"));
+              let hoder = {
+                nid:hold[0].nid,
+                uid:localStorage.getItem("user_id")
+              };
+              this.mainService.post('/api/maker_project_api/hold_queue',hoder).subscribe((data)=>{
+                this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
+                this.router.navigate(['/portfolio']);
+              });
             }else{
               this.router.navigate(['/portfolio']);
             }
