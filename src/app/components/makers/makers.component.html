@@ -16,6 +16,7 @@
             <div class="dropdown-group">
               <i class="dropdownIcon lnr lnr-chevron-down"></i>
               <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortMakers($event.target.value)">
+                <option value="-1" disabled class="btn">Sort</option>
                 <option value="0" class="btn">Mix 'Em Up</option>
                 <option value="1" class="btn">Most projects</option>
                 <option value="2" class="btn">Newest</option>
