@@ -241,6 +241,8 @@ export class InboxComponent implements OnInit {
     }
   }
   deleteMessage(i) {
+    console.log(this.msg[i]);
+    console.log(this.msg[i].thread_id);
     this.pm.deleteMessage(this.msg[i].thread_id).subscribe(data => {
       this.notificationIds = data;
       delete this.msg[i]
