@@ -1084,6 +1084,27 @@ span.link {
 notification-bar {
   z-index: 99999; }
 
+.paragraph-style-sheesh {
+  font-family: "Messina Sans Regular";
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 100%;
+  color: #828282;
+  line-height: 150% !important;
+  font-size: 0.9rem;
+  color: #4F4F4F; }
+  .paragraph-style-sheesh .read-less {
+    display: block;
+    font-size: 1rem;
+    text-align: right;
+    cursor: pointer;
+    color: #00AEEF; }
+  .paragraph-style-sheesh .read-more {
+    color: #00AEEF;
+    font-family: "Messina Sans regular";
+    cursor: pointer;
+    font-size: 0.9rem; }
+
 body {
   padding-top: 113px;
   background-color: #F2F2F2;
