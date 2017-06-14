@@ -140,7 +140,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         }else{
           swal({
             title: "Wait!",
-            text: hold[0].name+" Is editing this project, Do you want to be notified when he finishes?",
+            text: hold[0].name+" is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#4F4F4F",
