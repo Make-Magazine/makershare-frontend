@@ -109,7 +109,6 @@ export class NotificationTemplateComponent implements OnInit {
         date = date + '0';
       }
       date = date + ' hours';
-
     }
     return date + ' ago';
   }
