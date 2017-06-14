@@ -198,7 +198,8 @@
 								<div class="how hideData">
 									<!-- Start How -->
 									<p class="global-title">My Maker Moment</p>
-									<div *ngIf="ProfileInfo.started_making" class="started_making">
+									<div class="paragraph-style-sheesh">
+									<div  *ngIf="ProfileInfo.started_making" class="started_making">
 										<div *ngIf="ReadMoreFields.started_making">
 										<span class="read-less" (click)="ReadMoreFields.started_making = false"><i class="lnr lnr-cross"></i></span>
 											<div [innerHTML]="ProfileInfo.started_making"></div>
@@ -210,6 +211,7 @@
 											<div>{{ProfileInfo.started_making | truncate : 85}}</div>
 											<span *ngIf="ProfileInfo.started_making.length > 85" (click)="ReadMoreFields.started_making = true">Read More</span>
 										</div> -->
+									</div>
 									</div>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
