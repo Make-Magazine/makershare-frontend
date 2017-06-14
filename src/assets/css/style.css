@@ -99,7 +99,8 @@ header.main-header {
             width: 30px;
             height: auto; }
         header.main-header .login-block li.hamburger-menu hr {
-          margin: 0 2.5rem;
+          margin: 3px 0px 3px 0px;
+          width: 85%;
           background-color: #BDBDBD; }
         header.main-header .login-block li.hamburger-menu .beta-feedback {
           color: #00AEEF; }
@@ -11135,7 +11136,10 @@ iframe {
     display: none !important; }
 
   header nav.navbar .project-button {
-    display: none !important; } }
+    display: none !important; }
+
+  header.main-header .login-block li.hamburger-menu .line-mobile {
+    display: block !important; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }
@@ -11290,6 +11294,8 @@ iframe {
     padding: 27px 20px; } }
 @media only screen and (min-width: 769px) {
   header.main-header .login-block li.hamburger-menu .mobile-menu-item {
+    display: none !important; }
+  header.main-header .login-block li.hamburger-menu .line-mobile {
     display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
