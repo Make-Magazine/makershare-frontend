@@ -7,7 +7,8 @@
           <div class="dropdown-group">
             <i class="dropdownIcon lnr lnr-chevron-down"></i>
             <select class="shadowed explore-tags" (change)="selectParent($event.target.value)">
-              <option value="0">All Projects</option>
+              <option value="0" disabled>Filter By</option>
+              <option value="1">All Projects</option>
               <option *ngFor="let parent of categories_parents;let i = index" value="{{parent.tid}}" [innerHTML]="parent.name">
               </option>
             </select>
@@ -16,15 +17,13 @@
             <div class="dropdown-group">
               <i class="dropdownIcon lnr lnr-chevron-down"></i>
               <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortProjects($event.target.value)">
-                <!--<option value="0">{{ActionName}}</option>-->
-                <option value="0" class="btn">Most recent</option>
-                <option value="1" class="btn">Oldest</option>
-                <option value="2" class="btn">Title A-Z</option>
-                <option value="3" class="btn">Title Z-A</option>
-                <option value="4" class="btn">Most liked</option>
-                <option value="5" class="btn">Most viewed</option>
-                <!--<a class="dropdown-item" (click)="mostFeatured()" class="btn">Featured</a>-->
-                <!--<a class="dropdown-item" (click)="mostForked()" class="btn">Most forked</a>-->
+                <option value="0" class="btn" disabled>Sort By</option>
+                <option value="1" class="btn">Most recent</option>
+                <option value="2" class="btn">Oldest</option>
+                <option value="3" class="btn">Title A-Z</option>
+                <option value="4" class="btn">Title Z-A</option>
+                <option value="5" class="btn">Most liked</option>
+                <option value="6" class="btn">Most viewed</option>
               </select>
             </div>
           </div>
@@ -43,40 +42,11 @@
             </li>
           </ul>
         </div>
-        <div class="navbar hidden-xs-up filter-mobile-menu">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar btn-load-more btn mb-3" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar">Filters</span>
-                <i class="fa fa-lg fa-angle-down"></i>
-              </a>
-              <div class="nav-collapse collapse navbar-responsive-collapse filter-mainmenu">
-                <ul class="list-unstyled">
-                  <li class="dropdown men parent-item btn btn-load-more mb-2" *ngFor="let parent of categories_parents;let i = index"><span [ngClass]="{'active':CurrentActiveParentIndex == i}" (click)="CurrentActiveParentIndex=i;CurrentActiveChildIndex=-1"
-                      class="dropdown-toggle parent-item" data-toggle="dropdown" [innerHTML]="parent.name"><b class="caret"></b></span>
-                    <ul class="dropdown-menu filter-submenu">
-                      <li class="dropdown-submenu men" *ngFor="let term of categories_childs;let i = index"><span *ngIf="term.parent_tid == parent.tid" [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex=i;projectsById($event);idCategory(term);ChangeClassActive(i,$event)"
-                          data-id="{{term.tid}}" (click)="idCategory(term)" class="child-item btn" data-toggle="dropdown" [innerHTML]="term.name"></span></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </header>
-    <!--/    <div class="text-center pt-3 pb-5">
-      <div *ngIf="!hideLoadMore">
-        <a class="btn btn-load-more" *ngIf="projects.length != 0" (click)="loadMoreProject()">Load more</a>
-      </div>
-    </div>header -->
     <div class="projects-grid row" *ngIf="projects.length > 0">
       <app-project-card *ngFor="let project of projects" [view]="view" [nid]="project.nid" class="col-md-6 col-lg-4 pull-left"></app-project-card>
     </div>
-    <!--<div *ngIf="projects.length == 0">
-      <h4 class="text-center w-100 pt-5">There are no projects to show</h4>
-    </div>-->
     <div class="text-center pt-3 pb-5" *ngIf="!hideloadmoreproject && projects.length > 0 ">
       <div *ngIf="!hideloadmoreproject && projects.length > 0 ">
         <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>

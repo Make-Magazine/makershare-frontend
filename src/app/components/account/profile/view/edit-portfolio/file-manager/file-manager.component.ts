@@ -26,15 +26,20 @@ export class FileManagerComponent implements OnInit {
   UpdateFiles() {
     this.viewService.getView('maker_manage_file/' + localStorage.getItem("user_id")).subscribe((data: FileManageService) => {
       this.fileManageService = data;
-      this.fileManageService.files.forEach(function (file, index) {
-        let fileType = file.filename.split('.');
-        let sourceType = fileType[1];
-        // console.log(sourceType);
 
-      });
+      // this.fileManageService.files.forEach(function (file, index) {
+      //   let fileType = file.filename.split('.');
+      //   let sourceType = fileType[1];
+      //   // console.log(sourceType);
+
+      // });
+      // this.files = [];
+      // this.LoadMore();
+      // console.log(this.fileManageService);
+      this.fileManageService.files = this.fileManageService.files.reverse();
       this.files = [];
       this.LoadMore();
-      // console.log(this.fileManageService);
+
     });
   }
 
