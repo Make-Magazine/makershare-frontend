@@ -44,12 +44,12 @@
           </a>
           <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
             <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>
-            <a [routerLink]="['projects/create']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item add-project">Add a Project</a>
-            <a [routerLink]="['makers']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Makers</a>
-            <a [routerLink]="['projects']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Projects</a>
-            <a [routerLink]="['showcases']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Showcases</a>
-            <a [routerLink]="['missions']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Missions</a>
-            <!--<a [routerLink]="['workshops']" *hideItBootstrap="['md','lg', 'xl']" class="dropdown-item">Workshops</a>-->
+            <a [routerLink]="['projects/create']" class="dropdown-item add-project mobile-menu-item">Add a Project</a>
+            <a [routerLink]="['makers']" class="dropdown-item mobile-menu-item">Makers</a>
+            <a [routerLink]="['projects']" class="dropdown-item mobile-menu-item">Projects</a>
+            <a [routerLink]="['showcases']" class="dropdown-item mobile-menu-item">Showcases</a>
+            <a [routerLink]="['missions']" class="dropdown-item mobile-menu-item">Missions</a>
+            <!--<a [routerLink]="['workshops']"  class="dropdown-item mobile-menu-item">Workshops</a>-->
             <!--<hr class="3" *hideItBootstrap="['sm','md','lg', 'xl']">-->
             <!--<hr class="2" *hideItBootstrap="['sm','md','lg', 'xl']">-->
             <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
@@ -67,7 +67,7 @@
       </ul>
     </div>
     <div class="collapse navbar-collapse justify-content-md-start" id="MainNav">
-      <ul class="navbar-nav justify-content-md-between">
+      <ul id="main-nav" class="navbar-nav justify-content-md-between">
         <li class="nav-item hidden-md-up">
           <a [routerLink]="['projects/create']" class="nav-link color-text"><i class="fa fa-lg fa-plus"></i> Add a Project</a>
         </li>
