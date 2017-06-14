@@ -25,7 +25,7 @@
               <img *ngIf="!user_photo" src="./assets/images/icons/no-profile-pic.png" alt="" class="img-responsive">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <a target="_blank" *ngIf="Manager" href="{{Back_End_Domain}}" class="dropdown-item" >Manage</a>
+              <a target="_blank" *ngIf="Manager" href="{{Back_End_Domain}}" class="dropdown-item">Manage</a>
               <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
               <button class="dropdown-item" [routerLink]="['/inbox-notifications']">Inbox</button>
               <button class="dropdown-item" [routerLink]="['/account/collection/bookmark']">Bookmarks</button>
@@ -45,20 +45,20 @@
           <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
             <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>
             <a [routerLink]="['projects/create']" class="dropdown-item add-project mobile-menu-item">Add a Project</a>
+            <hr class="line-mobile">
             <a [routerLink]="['makers']" class="dropdown-item mobile-menu-item">Makers</a>
             <a [routerLink]="['projects']" class="dropdown-item mobile-menu-item">Projects</a>
             <a [routerLink]="['showcases']" class="dropdown-item mobile-menu-item">Showcases</a>
             <a [routerLink]="['missions']" class="dropdown-item mobile-menu-item">Missions</a>
             <!--<a [routerLink]="['workshops']"  class="dropdown-item mobile-menu-item">Workshops</a>-->
-            <!--<hr class="3" *hideItBootstrap="['sm','md','lg', 'xl']">-->
-            <!--<hr class="2" *hideItBootstrap="['sm','md','lg', 'xl']">-->
+            <hr class="line-mobile">
             <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
             <a [routerLink]="['guidelines']" class="dropdown-item">Community Guidelines</a>
             <a [routerLink]="['badges']" class="dropdown-item">About Badges</a>
             <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
             <a [routerLink]="['about-us']" class="dropdown-item">About Us</a>
             <!--<a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>-->
-            <!--<hr class="1" *ngIf="auth.authenticated()">-->
+            <hr class="line-mobile">
             <a class="dropdown-item beta-feedback">
               <app-feedback></app-feedback>
             </a>
@@ -73,13 +73,13 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['makers']">Makers</a>
-        </li>        
+        </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['projects']">Projects</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
-        </li>        
+        </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['missions']">Missions</a>
         </li>
@@ -99,10 +99,10 @@
   </nav>
 
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
-  
+
 
   <app-registration-collect *ngIf="registrationFormStatus" [registrationFormState]="registrationFormState"></app-registration-collect>
-  
+
 
 </header>
 <notification-bar></notification-bar>

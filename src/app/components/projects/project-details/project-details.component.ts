@@ -72,21 +72,21 @@ export class ProjectDetailsComponent implements OnInit {
             // check if the current user is one of the team
             this.viewService.getView('views/project_team_members', [['nid', this.id]]).subscribe(list => {
               let members = list[0].members.split(", ");
-              console.log(members);
+              // console.log(members);
               if(members.lenght == 1 && this.currentuser == data[0].uid){
                 // there is only one team mebmer, and the current user is the author
                 this.loadProject();
               }else {
-                console.log('case 2');
-                console.log(this.currentuser);
+                // console.log('case 2');
+                // console.log(this.currentuser);
                 // check if the user is one of a team
                 if (members.indexOf(this.currentuser.toString()) > -1) {
-                  console.log(this.currentuser);
-                  console.log('case 2 - yes');
-                  console.log(members.indexOf(this.currentuser) > -1);
+                  // console.log(this.currentuser);
+                  // console.log('case 2 - yes');
+                  // console.log(members.indexOf(this.currentuser) > -1);
                   this.loadProject();
                 }else {
-                  console.log('case 2 - no');
+                  // console.log('case 2 - no');
                   this.router.navigateByUrl('access-restricted');
                   this.loaderService.display(false);
                 }
