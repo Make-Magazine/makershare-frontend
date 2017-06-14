@@ -18,6 +18,7 @@ export interface UserProfile {
   last_name?: string,
   describe_yourself?: string,
   started_making?: string,
+  started_making_short?: string,
   field_social_accounts?: ProfileSocial, // should covert from array to object
   nickname?: string,
   address?: Address,
@@ -42,6 +43,7 @@ export class UserProfile implements UserProfile {
     this.bio = '';
     this.bioShort = '';
     this.started_making = '';
+    this.started_making_short = '';
     this.field_social_accounts = new ProfileSocial();
     this.address = '';
     this.total_likes = 0;
