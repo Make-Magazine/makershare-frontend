@@ -8,7 +8,7 @@
       <div class="media-body d-flex align-items-start flex-column pl-2">
         <h5 class="user-name" *ngIf="card.first_name && card.last_name">{{card.first_name}} {{card.last_name}}</h5>
         <h5 class="user-name" *ngIf="!card.first_name && !card.last_name">{{card.name}}</h5>
-        <!--<p class="user-city" *ngIf="card.city.country" [innerHTML]="card.city.country"></p>-->
+        <p class="user-city" *ngIf="card.city" ><span *ngIf="card.city.country">{{card.city.country}}</span></p>
       </div>
     </div>
   </div>
