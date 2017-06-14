@@ -169,6 +169,7 @@ header.main-header {
         transition: all 0.3s ease-in-out; }
     header.main-header.shrink nav.navbar {
       padding: 10px 15px 0px;
+      height: 80px;
       -webkit-transition: all 0.5s ease-in-out;
       -moz-transition: all 0.5s ease-in-out;
       -ms-transition: all 0.5s ease-in-out;
@@ -2043,20 +2044,20 @@ i.dropdownIcon {
   position: relative;
   display: inline-block; }
   .new-tooltip .new-tooltiptext {
-    visibility: hidden;
     width: auto;
-    background-color: #555;
+    background-color: #000;
     color: #fff !important;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 7px;
     position: absolute;
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 1s; }
+    margin-left: -50px;
+    display: none;
+    transition: opacity 1s;
+    line-height: 23px; }
     .new-tooltip .new-tooltiptext::after {
       content: "";
       position: absolute;
@@ -2066,21 +2067,20 @@ i.dropdownIcon {
       border-width: 5px;
       border-style: solid;
       border-color: #555 transparent transparent transparent; }
-  .new-tooltip:hover .new-tooltiptext {
-    visibility: visible;
-    opacity: 1; }
 
 .like-photo {
   padding: 10px;
   width: 120px;
-  height: 120px; }
+  height: 120px;
+  cursor: pointer; }
 
 .like-name {
   font-size: 1.3rem;
-  color: #00AEEF; }
+  color: #00AEEF;
+  cursor: pointer; }
 
 .modal-sm {
-  width: 500px; }
+  margin: auto; }
 
 /* Access Restricted Page */
 .access-restricted {
@@ -4952,8 +4952,6 @@ button:hover {
     padding-bottom: 25px;
     background-color: #F2F2F2;
     text-align: center; }
-    .page-explore .explore-header .filters-group {
-      margin-bottom: 10px; }
     .page-explore .explore-header h3 {
       font-family: "Messina Modern Regular";
       font-size: 3.4rem;
@@ -5026,22 +5024,26 @@ button:hover {
     .page-explore .submenus .parent_410 li,
     .page-explore .submenus .parent_416 li {
       margin: 3px 0; }
-  .page-explore .dropdown-group {
-    position: relative;
-    display: inline-block; }
-    .page-explore .dropdown-group i.dropdownIcon {
-      right: 10px;
-      top: 15px;
-      font-size: 1rem; }
-    .page-explore .dropdown-group select.shadowed {
-      background: #ffffff;
-      padding: 10px;
-      -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
-      -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
-      box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
-      font-family: "Messina Sans Regular";
-      font-size: 1.125rem;
-      color: #4f4f4f; }
+
+.dropdown-group {
+  position: relative;
+  display: inline-block; }
+  .dropdown-group i.dropdownIcon {
+    right: 10px;
+    top: 15px;
+    font-size: 1rem; }
+  .dropdown-group select.shadowed {
+    background: #ffffff;
+    padding: 10px;
+    -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Messina Sans Regular";
+    font-size: 1.125rem;
+    color: #4f4f4f; }
+
+.filters-group {
+  margin-bottom: 10px; }
 
 .filters {
   min-height: 35px;
@@ -10981,7 +10983,13 @@ iframe {
     display: none; }
   .community-guidelines-page .icons-section .icons-container .right-side,
   .community-guidelines-page .icons-section .icons-container .left-side {
-    padding: 27px 0px; } }
+    padding: 27px 0px; }
+
+  .filters .dropdown-group {
+    margin-left: 0; }
+
+  .filters.projects-counter {
+    position: static; } }
 @media only screen and (max-width: 575px) {
   /* project card */
   .project.card {
@@ -11122,6 +11130,12 @@ iframe {
   #page-404 .text-block {
     bottom: 50px;
     right: 160px; } }
+@media only screen and (max-width: 768px) {
+  .navbar-toggleable-sm #main-nav {
+    display: none !important; }
+
+  header nav.navbar .project-button {
+    display: none !important; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }
@@ -11274,6 +11288,9 @@ iframe {
   .community-guidelines-page .icons-section .icons-container .right-side,
   .community-guidelines-page .icons-section .icons-container .left-side {
     padding: 27px 20px; } }
+@media only screen and (min-width: 769px) {
+  header.main-header .login-block li.hamburger-menu .mobile-menu-item {
+    display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
@@ -11302,6 +11319,9 @@ iframe {
 @media only screen and (min-width: 992px) {
   .modal-lg, .modal-dialog {
     max-width: 1110px; }
+
+  .modal-sm {
+    width: 29%; }
 
   .delete-promodal .modal-dialog {
     max-width: 700px !important; } }
