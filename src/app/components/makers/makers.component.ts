@@ -77,6 +77,7 @@ export class MakersComponent implements OnInit {
     'mostViewed',   
     ];
   CurrentActiveParentIndex;
+  CurrentActiveChildIndex;
   nameCat;
   countProject;
   childCategory = [];
@@ -127,14 +128,15 @@ export class MakersComponent implements OnInit {
     this.viewService.getView('projects_categories').subscribe((categories) => {
       this.all_categories = categories;
       for (let element of this.all_categories) {
+        console.log(element)
         if (element.parent_tid) {
-          this.categories_childs.push(element);
-        } else {
-          this.viewService.getView('makers', [['category', this.categoryId]]).subscribe(data => {
+          this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
             if (data.length > 0){
-              this.categories_parents.push(element);
+                this.categories_childs.push(element);        
             }
         });
+        } else {
+              this.categories_parents.push(element);
         }
       }
     });
