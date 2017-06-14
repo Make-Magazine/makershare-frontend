@@ -1215,20 +1215,22 @@ i.dropdownIcon {
     position: relative;
     display: inline-block;
     .new-tooltiptext {
-        visibility: hidden;
+       // visibility: hidden;
         width: auto;
-        background-color: #555;
+        background-color: #000;
         color: #fff !important;
         text-align: center;
         border-radius: 6px;
-        padding: 5px 0;
+        padding: 7px;
         position: absolute;
         z-index: 1;
         bottom: 125%;
         left: 50%;
-        margin-left: -60px;
-        opacity: 0;
+        margin-left: -50px;
+        // opacity: 0;
+        display: none;
         transition: opacity 1s;
+        line-height: 23px;
         &::after {
             content: "";
             position: absolute;
@@ -1240,23 +1242,27 @@ i.dropdownIcon {
             border-color: #555 transparent transparent transparent;
         }
     }
-    &:hover .new-tooltiptext {
-            visibility: visible;
-            opacity: 1;
-    }
+    // &:hover .new-tooltiptext {
+    //         visibility: visible;
+    //         opacity: 1;
+    // }
 }
 
     .like-photo {
     padding: 10px;
     width: 120px;
     height: 120px;
+    cursor:pointer;
     }
     .like-name{
         font-size: 1.3rem;
         color : $text-color-6; 
+        cursor:pointer;
+
     }
     .modal-sm{
-    width: 500px;
+   // width: 80%;
+    margin: auto;
 }
 
 /* Access Restricted Page */
