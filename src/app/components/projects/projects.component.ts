@@ -38,6 +38,7 @@ export class ProjectsComponent implements OnInit {
   childCategory = [];
   categoryId;
   sort_functions = [
+    'dummy',
     'mostRecent',   
     'oldest',   
     'sortAsc',
@@ -188,7 +189,7 @@ export class ProjectsComponent implements OnInit {
   }//end function
   selectParent(value){
     this.childCategory = []; 
-    if(value == 0) {
+    if(value == 1) {
       this.categoryId = null;
       this.pages = 0;
       this.getProjects();
