@@ -79,27 +79,29 @@ notification-bar {
     z-index: 99999;
 }
 
-.paragraph-style-sheesh {
-    font-family: "Messina Sans Regular";
-    font-size: 0.95rem;
-    font-weight: 400;
-    line-height: 100%;
-    color: #828282;
-    line-height: 150% !important;
-    font-size: 0.9rem;
-    color: #4F4F4F;
+.paragraph-style-sheesh, .started_making div {
+    div {
+        font-family: "Messina Sans Regular";
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 100%;
+        color: #828282;
+        line-height: 150% !important;
+        font-size: 0.9rem;
+        color: #4F4F4F;
+    }
     .read-less {
-            display: block;
-    font-size: 1rem;
-    text-align: right;
-    cursor: pointer;
-    color: #00AEEF;
+        display: block;
+        font-size: 1rem;
+        text-align: right;
+        cursor: pointer;
+        color: #00AEEF;
     }
     .read-more {
-            color: #00AEEF;
-    font-family: "Messina Sans regular";
-    cursor: pointer;
-    font-size: 0.9rem;
+        color: #00AEEF;
+        font-family: "Messina Sans regular";
+        cursor: pointer;
+        font-size: 0.9rem;
     }
 }
 
