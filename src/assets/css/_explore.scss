@@ -5,9 +5,6 @@
 		padding-bottom: 25px;
 		background-color: $main-bg;
 		text-align: center;
-		.filters-group {
-			  margin-bottom: 10px;
-		}
 		h3 {
 			@include header-font();
 			text-transform: capitalize;
@@ -85,23 +82,26 @@
 			}
 		}
 	}
-	.dropdown-group {
-		position: relative;
-		display: inline-block;
-		i.dropdownIcon {
-			right: 10px;
-			top: 15px;
-			font-size: 1rem;
-		}
-		select.shadowed {
-			background: #ffffff;
-			padding: 10px;
-			@include boxShadow(2px, 3px, 5px, rgba(0, 0, 0, 0.2));
-			font-family: "Messina Sans Regular";
-			font-size: 1.125rem;
-			color: #4f4f4f;
-		}
+}
+.dropdown-group {
+	position: relative;
+	display: inline-block;
+	i.dropdownIcon {
+		right: 10px;
+		top: 15px;
+		font-size: 1rem;
 	}
+	select.shadowed {
+		background: #ffffff;
+		padding: 10px;
+		@include boxShadow(2px, 3px, 5px, rgba(0, 0, 0, 0.2));
+		font-family: "Messina Sans Regular";
+		font-size: 1.125rem;
+		color: #4f4f4f;
+	}
+}
+.filters-group {
+		margin-bottom: 10px;
 }
 .filters {
 	min-height: 35px;

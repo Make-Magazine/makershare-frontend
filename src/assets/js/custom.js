@@ -190,6 +190,22 @@ $(document).ready(function () {
 				$('.profile-container').addClass('indexProfile')
 		}
 	})
+		$(document).on('mouseover','.projects-count', function(){
+
+		 $(this).find('.new-tooltiptext').show();
+
+	})
+		$(document).on('mouseleave','.projects-count', function(){
+				 a = $(this).find('.new-tooltiptext')		
+
+			setTimeout(function(){
+				a.hide();
+			},500);
+
+	})
+	// 		$(document).on('mouseleave','.new-tooltip', function(){
+	// 	$('.new-tooltiptext').delay(8000);
+	// })
 	//Index page parallax bg
 	window_width = $(window).width();
 	window_height = $(window).height();
