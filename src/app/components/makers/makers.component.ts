@@ -128,7 +128,6 @@ export class MakersComponent implements OnInit {
     this.viewService.getView('projects_categories').subscribe((categories) => {
       this.all_categories = categories;
       for (let element of this.all_categories) {
-        console.log(element)
         if (element.parent_tid) {
           this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
             if (data.length > 0){
