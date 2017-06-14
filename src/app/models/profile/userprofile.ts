@@ -12,6 +12,7 @@ export interface UserProfile {
   uid?: number,
   changed?: number,
   bio?: string,
+  bioShort?: string,
   field_add_your_makerspace_s_?:MakerSpace[];
   first_name?: string,
   last_name?: string,
@@ -39,6 +40,7 @@ export class UserProfile implements UserProfile {
     this.name =  '';
     this.user_photo = '';
     this.bio = '';
+    this.bioShort = '';
     this.started_making = '';
     this.field_social_accounts = new ProfileSocial();
     this.address = '';
