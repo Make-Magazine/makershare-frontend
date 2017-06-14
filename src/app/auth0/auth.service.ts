@@ -48,7 +48,7 @@ export class Auth {
         auto_login: false,
         //assetsUrl:  config.assetsUrl,
         allowedConnections: ['Username-Password-Authentication'],
-        rememberLastLogin: true,
+        rememberLastLogin: false,
         //language: language,
         languageDictionary: this.languageDictionary,        
         theme: {
