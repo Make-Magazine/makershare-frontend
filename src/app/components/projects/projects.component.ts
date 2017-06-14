@@ -16,6 +16,7 @@ import * as globals from '../../d7services/globals';
 })
 export class ProjectsComponent implements OnInit {
   projects = [];
+  hasContent = false;
   categories = null;
   nameCat;
   view = 'grid';
@@ -30,7 +31,7 @@ export class ProjectsComponent implements OnInit {
     sort_order: "DESC",
     pageNo: 0
   };
-  ActionName = "Most recent";
+  ActionName = "Sort";
   categories_parents: ProjectCategory[] = [];
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
@@ -131,7 +132,11 @@ export class ProjectsComponent implements OnInit {
       // console.log(this.all_categories)
       categories.forEach((element, index) => {
         if (element.parent_tid) {
-          this.categories_childs.push(element);
+          this.viewService.getView('browse_projects', [['category', element.tid]]).subscribe(data => {
+            if(data.length > 0) {
+              this.categories_childs.push(element);
+            }
+          });
         } else {
           this.categories_parents.push(element);
         }

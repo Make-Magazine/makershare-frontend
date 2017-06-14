@@ -38,7 +38,7 @@ export class SinglShowcaseComponent implements OnInit {
   pages: number = 0;
   page_arg;
 
-  ActionName = "Mix 'Em Up";
+  ActionName = "Sort";
   sort: ISorting = {
     sort_by: "random",
     sort_order: "ASC",
