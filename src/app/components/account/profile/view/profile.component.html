@@ -80,7 +80,7 @@
 											<div [innerHTML]="ProfileInfo.bio"></div>
 										</div>
 										<div *ngIf="!ReadMoreFields.bio">
-											<div [innerHTML]="ProfileInfo.bioShort"><span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span></div>
+											<div [innerHTML]="ProfileInfo.bioShort"><span class="read-more" *ngIf="ProfileInfo.bioShort.length != ProfileInfo.bio.length" (click)="ReadMoreFields.bio = true">Read More</span></div>
 										</div>
 									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
@@ -279,7 +279,7 @@
 											<div [innerHTML]="ProfileInfo.bio"></div>
 										</div>
 										<div *ngIf="!ReadMoreFields.bio">
-											<div [innerHTML]="ProfileInfo.bioShort"><span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span></div>
+											<div [innerHTML]="ProfileInfo.bioShort"><span class="read-more" *ngIf="ProfileInfo.bioShort.length != ProfileInfo.bio.length" (click)="ReadMoreFields.bio = true">Read More</span></div>
 										</div>
 									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">

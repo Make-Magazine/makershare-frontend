@@ -241,11 +241,6 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    if(this.ProfileInfo.bio.length > 160) {
-      this.ProfileInfo.bioShort = this.ProfileInfo.bio.substring(0,160);
-    } else {
-      this.ProfileInfo.bioShort = this.ProfileInfo.bio;
-    }
     var tasks = [];
     let body = { "data": this.uid  };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
@@ -421,6 +416,15 @@ export class ProfileComponent implements OnInit {
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
+
+    if(user.bio.length > 160) {
+      this.ProfileInfo.bioShort = user.bio.substring(0,160);
+    } else {
+      this.ProfileInfo.bioShort = user.bio;
+    }
+
+
+
     if (user.address) {
       this.ProfileInfo.address = user.address;
     }
