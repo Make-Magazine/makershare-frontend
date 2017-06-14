@@ -23,6 +23,7 @@ export class FileBrowserComponent implements OnInit {
   UpdateFiles(){
     this.viewService.getView('maker_manage_file/'+localStorage.getItem("user_id")).subscribe((data:FileManageService)=>{
       this.fileManageService = data;
+      this.fileManageService.files = this.fileManageService.files.reverse();
       this.files = [];
       this.LoadMore();
     });
