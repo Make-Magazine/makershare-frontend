@@ -118,6 +118,7 @@ export class ProfileComponent implements OnInit {
     bioShort: '',
     field_social_accounts: new ProfileSocial(),
     started_making: '',
+    started_making_short: '',
     field_add_your_makerspace_s_: []
   };
   PlaceholderText = {
@@ -425,6 +426,8 @@ export class ProfileComponent implements OnInit {
 
 
 
+
+
     if (user.address) {
       this.ProfileInfo.address = user.address;
     }
@@ -442,6 +445,11 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.field_add_your_makerspace_s_ = user.field_add_your_makerspace_s_;
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
+    if(user.started_making.length > 160) {
+      this.ProfileInfo.started_making_short = user.started_making.substring(0,160) + '...';
+    } else {
+      this.ProfileInfo.started_making_short = user.started_making;
+    }
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
     this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
     this.meta.setTag('og:image', this.profile.user_photo);
