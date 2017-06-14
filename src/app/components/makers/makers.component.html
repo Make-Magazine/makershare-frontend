@@ -28,7 +28,8 @@
           </div>
           <div class="filters projects-counter">
             <div *ngIf="makersCount" class="entries-count btn">
-              <p>{{makersCount}} Makers</p>
+              <p *ngIf="makersCount != 1">{{makersCount}} Makers</p>
+              <p *ngIf="makersCount == 1">{{makersCount}} Maker</p>
             </div>
           </div><!-- End filters -->
         </div>
@@ -46,7 +47,7 @@
       <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
     </div>
   </div>
-  <div class="text-center">
+  <div class="text-center" *ngIf="hideloadmore">
     <a class="btn btn-load-more" (click)="loadMoreMakers()">Load more</a>
   </div>
 </div>

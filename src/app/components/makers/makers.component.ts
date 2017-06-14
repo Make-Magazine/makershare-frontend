@@ -103,7 +103,6 @@ export class MakersComponent implements OnInit {
       this.makers = [];
     }
     if (this.categoryId) {
-      console.log(this.categoryId);
       this.viewService.getView('makers', [['page', this.pages],
       ['sort_by', this.sort.sort_by],
       ['sort_order', this.sort.sort_order],
@@ -115,7 +114,6 @@ export class MakersComponent implements OnInit {
         }
       })
     } else {
-      console.log(this.categoryId);
       this.viewService.getView('makers', [['page', this.pages],
       ['sort_by', this.sort.sort_by],
       ['sort_order', this.sort.sort_order]]).subscribe(data => {
@@ -134,10 +132,6 @@ export class MakersComponent implements OnInit {
           this.categories_parents.push(element);
         }
       }
-
-      // console.log(this.all_categories)
-      // console.log(this.categories_childs);
-      // console.log(this.categories_parents);          
     });
   }
   countCategory(term) {
@@ -146,9 +140,8 @@ export class MakersComponent implements OnInit {
     let body = {
       "tid": term.tid,
     };
-    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
-      this.countProject = res['_body'].replace(']', '').replace('[', '')
-      //  console.log(res)
+    this.mainService.post(globals.endpoint + '/maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
+      this.makersCount = res['_body'].replace(']', '').replace('[', '')
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
@@ -157,6 +150,8 @@ export class MakersComponent implements OnInit {
   selectParent(value) {
     this.childCategory = [];
     if (value == 0) {
+      this.pages == 0;
+      this.categoryId = null;
       this.getMakers();
     } else {
       for (let cate of this.categories_childs) {
@@ -168,7 +163,6 @@ export class MakersComponent implements OnInit {
   }
   selectCategory(event,term) {
     // show spinner
-    console.log(event.target.id);
     this.loaderService.display(true);
     this.categoryId = event.target.id;
     this.countCategory(term)
