@@ -202,6 +202,23 @@
           </label>
         </div>
       </div>
+         <div class="form-check row">
+        <label class="form-check-label col-9">
+            someone finished project you want to edit
+          </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="collaborator_email" clas id="collaborator_email" value="option" [checked]= "email_notifications.indexOf('16') !== -1" (change)="checkedEmail('12',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="collaborator_web" id="collaborator_web" value="option" [checked]= "web_notifications.indexOf('15') !== -1" (change)="checkedWeb('10',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
       <!--<div class="form-check row">
           <label class="form-check-label col-9">
             Someone has credited me in a project
