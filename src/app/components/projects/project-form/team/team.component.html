@@ -5,7 +5,8 @@
       <img *ngIf="!r.profile_pic_typeahead" src="./assets/images/Gears-Grey.svg">
     </div>
     <div class="typeahead-data-container">
-      <p class="nickname">{{r.first_name}} {{r.last_name}} </p>
+      <p class="nickname" *ngIf="r.first_name && r.last_name">{{r.first_name}} {{r.last_name}} </p>
+      <p class="nickname" *ngIf="!r.first_name && !r.last_name">{{r.name}} </p>
     </div>
   </div>
 </ng-template>
