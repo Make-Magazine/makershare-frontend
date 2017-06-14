@@ -7,7 +7,8 @@
           <div class="dropdown-group">
             <i class="dropdownIcon lnr lnr-chevron-down"></i>
             <select class="shadowed explore-tags" (change)="selectParent($event.target.value)">
-              <option value="0">All Projects</option>
+              <option value="0" disabled>Filter By</option>
+              <option value="1">All Projects</option>
               <option *ngFor="let parent of categories_parents;let i = index" value="{{parent.tid}}" [innerHTML]="parent.name">
               </option>
             </select>
@@ -16,12 +17,13 @@
             <div class="dropdown-group">
               <i class="dropdownIcon lnr lnr-chevron-down"></i>
               <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortProjects($event.target.value)">
-                <option value="0" class="btn">Most recent</option>
-                <option value="1" class="btn">Oldest</option>
-                <option value="2" class="btn">Title A-Z</option>
-                <option value="3" class="btn">Title Z-A</option>
-                <option value="4" class="btn">Most liked</option>
-                <option value="5" class="btn">Most viewed</option>
+                <option value="0" class="btn" disabled>Sort By</option>
+                <option value="1" class="btn">Most recent</option>
+                <option value="2" class="btn">Oldest</option>
+                <option value="3" class="btn">Title A-Z</option>
+                <option value="4" class="btn">Title Z-A</option>
+                <option value="5" class="btn">Most liked</option>
+                <option value="6" class="btn">Most viewed</option>
               </select>
             </div>
           </div>
