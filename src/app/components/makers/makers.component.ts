@@ -67,6 +67,7 @@ export class MakersComponent implements OnInit {
     },
   };
   sort_functions = [
+    'dummy',
     'randomized',   
     'mostProjects',   
     'mostRecent',
@@ -129,7 +130,11 @@ export class MakersComponent implements OnInit {
         if (element.parent_tid) {
           this.categories_childs.push(element);
         } else {
-          this.categories_parents.push(element);
+          this.viewService.getView('makers', [['category', this.categoryId]]).subscribe(data => {
+            if (data.length > 0){
+              this.categories_parents.push(element);
+            }
+        });
         }
       }
     });
@@ -149,7 +154,7 @@ export class MakersComponent implements OnInit {
   }//end function
   selectParent(value) {
     this.childCategory = [];
-    if (value == 0) {
+    if (value == 1) {
       this.pages == 0;
       this.categoryId = null;
       this.getMakers();
