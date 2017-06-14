@@ -11121,6 +11121,12 @@ iframe {
   #page-404 .text-block {
     bottom: 50px;
     right: 160px; } }
+@media only screen and (max-width: 768px) {
+  .navbar-toggleable-sm #main-nav {
+    display: none !important; }
+
+  header nav.navbar .project-button {
+    display: none !important; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }
@@ -11273,6 +11279,9 @@ iframe {
   .community-guidelines-page .icons-section .icons-container .right-side,
   .community-guidelines-page .icons-section .icons-container .left-side {
     padding: 27px 20px; } }
+@media only screen and (min-width: 769px) {
+  header.main-header .login-block li.hamburger-menu .mobile-menu-item {
+    display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
     order: 5; }
