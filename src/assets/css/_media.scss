@@ -699,6 +699,15 @@
             }
         }
     }
+    header.main-header {
+        .login-block {
+            li.hamburger-menu {
+                .line-mobile {
+                    display: block !important;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 320px) {}
@@ -985,6 +994,9 @@
         .login-block {
             li.hamburger-menu {
                 .mobile-menu-item {
+                    display: none !important;
+                }
+                .line-mobile {
                     display: none !important;
                 }
             }

@@ -36,7 +36,9 @@ export class ProjectsComponent implements OnInit {
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
   childCategory = [];
+  categoryId;
   sort_functions = [
+    'dummy',
     'mostRecent',   
     'oldest',   
     'sortAsc',
@@ -46,6 +48,53 @@ export class ProjectsComponent implements OnInit {
     'mostFeatured',   
     'mostForked',   
     ]
+  sortingSet = {
+    'mostRecent': {
+      'sort_order': "DESC",
+      'sort_by': "created_2",
+      'ActionName': "Most recent",
+    },
+    'oldest': {
+      'sort_order': "ASC",
+      'sort_by': "created_1",
+      'ActionName': "Oldest",
+    },
+    'sortAsc': {
+      'sort_order': "ASC",
+      'sort_by': "title",
+      'ActionName': "Title A-Z",
+    },
+    'sortDesc': {
+      'sort_order': "DESC",
+      'sort_by': "title_1",
+      'ActionName': "Title Z-A",
+    },
+    'mostLiked': {
+      'sort_order': "DESC",
+      'sort_by': "count",
+      'ActionName': "Most liked",
+    },
+    'mostViewed': {
+      'sort_order': "DESC",
+      'sort_by': "php",
+      'ActionName': "Most viewed",
+    },
+    'mostFeatured': {
+      'sort_order': "DESC",
+      'sort_by': "field_projects_target_id",
+      'ActionName': "Featured",
+    },
+    'mostForked': {
+      'sort_order': "DESC",
+      'sort_by': "field_total_forks_value",
+      'ActionName': "Most forked",
+    },
+    'allProject': {
+      'sort_order': "DESC",
+      'sort_by': "created_2",
+      'ActionName': "Most recent",
+    },
+  };
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -68,60 +117,43 @@ export class ProjectsComponent implements OnInit {
   getProjects() {
     // show spinner
     this.loaderService.display(true);
-
-    // get the projects
-    if (this.pages >= 0) {
-      this.page_arg = ['page', this.pages];
-    }
     if (this.pages == 0) {
       this.projects = [];
     }
-    /* start obs*/
-    // const response$ : Observable<Response>=this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]); 
-    //   response$.subscribe(
-    //     res => console.log("sas"),
-    //     () =>{},
-    //     ()=>console.log("compleate")
-    //   );
-    /* end obs*/
-    this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
-      this.projects = this.projects.concat(data);
-      this.loadMoreVisibilty();
-      // hide spinner
-      this.loaderService.display(false);
+    if (this.categoryId) {
+      this.viewService.getView('browse_projects',[['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order], ['category', this.categoryId]]).subscribe(data => {
+        this.projects = this.projects.concat(data);
+        this.loadMoreVisibilty();
+        if (this.projects.length == 0) {
+          this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
+        }
+        // hide spinner
+        this.loaderService.display(false);
+      }, err => {
 
-    }, err => {
-      // hide spinner
-      this.loaderService.display(false);
-    });
+      });
+    } else {
+      this.viewService.getView('browse_projects', [['page', this.pages], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]]).subscribe(data => {
+        this.projects = this.projects.concat(data);
+        this.loadMoreVisibilty();
+        // hide spinner
+        this.loaderService.display(false);
+      }, err => {
+        // hide spinner
+        this.loaderService.display(false);
+      });
+    }
 
   }
   projectsById(event) {
     // show spinner
-    // console.log(event);
-    this.loaderService.display(true);
-    var id = event.target.id;
-    this.viewService.getView('browse_projects', [['category', id]]).subscribe(data => {
-      this.projects = data;
-      // console.log(data.length)
-      //this.projects= this.projects.concat(data);
-      this.loadMoreVisibilty();
-
-
-      if (this.projects.length == 0) {
-        this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
-      }
-      // hide spinner
-      this.loaderService.display(false);
-    }, err => {
-
-    });
+    this.categoryId = event.target.id;
+    this.getProjects();
   }
   /* function to get count projects */
   getCountProject() {
     this.viewService.getView('maker_count_all_projects').subscribe(data => {
       this.countProject = data[0];
-      // console.log(this.countProject);
     }, err => {
 
     });
@@ -129,7 +161,6 @@ export class ProjectsComponent implements OnInit {
    getProjectCategories() {
     this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
       this.all_categories = categories;
-      // console.log(this.all_categories)
       categories.forEach((element, index) => {
         if (element.parent_tid) {
           this.viewService.getView('browse_projects', [['category', element.tid]]).subscribe(data => {
@@ -140,9 +171,7 @@ export class ProjectsComponent implements OnInit {
         } else {
           this.categories_parents.push(element);
         }
-      });
-      //  console.log(this.categories_childs);
-      // console.log(this.categories_parents);          
+      });        
     });
   }
   idCategory(term) {
@@ -153,7 +182,6 @@ export class ProjectsComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_category', body).subscribe(res => {
       this.countProject = res['_body'].replace(']', '').replace('[', '')
-    //  console.log(res)
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
@@ -161,8 +189,10 @@ export class ProjectsComponent implements OnInit {
   }//end function
   selectParent(value){
     this.childCategory = []; 
-    if(value == 0) {
-      this.allProject();
+    if(value == 1) {
+      this.categoryId = null;
+      this.pages = 0;
+      this.getProjects();
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value){
@@ -180,9 +210,6 @@ export class ProjectsComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    // this.getCountProject();
-    // console.log(this.countProject)
-    // console.log(this.projects.length)
     if (this.countProject <= this.projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.projects.length) {
@@ -191,110 +218,17 @@ export class ProjectsComponent implements OnInit {
     }
   }/* END FUNCTION loadMoreVisibilty */
   /* function to sort challenge Title A-z */
-  sortAsc() {
+
+  sortBy(type) {
     this.projects = [];
     this.pages = 0;
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "title";
-    this.ActionName = "Title A-Z"
-    this.getCountProject();
-
-    this.getProjects();
-  }/* end function to sort challenge Title A-z */
-  /* function to sort challenge Title Z-A */
-  sortDesc() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "title_1"
-    this.ActionName = "Title Z-A"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }/* end function to sort challenge Title Z-A */
-  /* function to sort challenge Recently */
-  mostRecent() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC"
-    this.sort.sort_by = "created_2"
-    this.ActionName = "Most recent"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }
-  /* function to sort challenge Oldest */
-  oldest() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "created_1"
-    this.ActionName = "Oldest"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }/* end function to sort challenge Oldest */
-
-  /* function to sort challenge MostLiked */
-  mostLiked() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "count"
-    this.ActionName = "Most liked"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }/* end function to sort challenge MostLiked */
-  /* function to sort challenge mostViewed */
-  mostViewed() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php"
-    this.ActionName = "Most viewed"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }/* end function to sort challenge mostViewed */
-
-  mostFeatured(){
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "field_projects_target_id"
-    this.ActionName = "Featured"
-    this.getCountProject();
-
-    this.getProjects();
-  }/* function to sort challenge MostForked */
-  mostForked() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "field_total_forks_value";
-    this.ActionName = "Most forked"
-    this.getCountProject();
-
-    this.getProjects();
-
-  }
-  /* end function to sort challenge MostLiked */
-  allProject() {
-    this.projects = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC"
-    this.sort.sort_by = "created_2"
-    this.ActionName = "Most recent"
-    this.getCountProject();
+    this.sort.sort_order = this.sortingSet[type].sort_order;
+    this.sort.sort_by = this.sortingSet[type].sort_by;
+    this.ActionName = this.sortingSet[type].ActionName;
+    this.getCountProject();    
     this.getProjects();
   }
   sortProjects(sort){
-    this[this.sort_functions[sort]]();
-  }
+    this.sortBy([this.sort_functions[sort]]);
+  }  
 }
