@@ -98,12 +98,12 @@
         .card-maker-meta-row {
             overflow: hidden;
 
-            &-icon, p {
+            &.icon, p {
                 float: left;
                 margin-bottom: 5px;
                 margin-top: 5px;
             }
-            &-icon {
+            &.icon {
                 width: 10px;
                 margin-right: 7px;
                 &.lnr-bullhorn {
