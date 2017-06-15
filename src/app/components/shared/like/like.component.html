@@ -6,7 +6,7 @@
       <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
       <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip">{{countlikes}}
       <span class="new-tooltiptext"> 
-       <span *ngFor="let liker of whoLike;"> {{liker?.first_name}} {{liker?.last_name}}<br>
+       <span *ngFor="let liker of whoLike;"><span *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
     </span>
       <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
       </span>
@@ -23,7 +23,9 @@
     <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
       <div class="model-likes">
         <div class="modal-header">
-          <span *ngIf="countLikers">{{countLikers}} Likes</span>
+          <span *ngIf="countLikers == 1">{{countLikers}} Like</span>
+          <span *ngIf="countLikers > 1">{{countLikers}} Likes</span>
+
           <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -33,7 +35,8 @@
             <span *ngFor="let liker2 of whoLike2; "> 
        <img *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="{{liker2?.portfolio_photo}}" (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')"><span *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
             <img *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)"
+              (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
 
 
             </span>
@@ -77,7 +80,9 @@
     <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
       <div class="model-likes">
         <div class="modal-header">
-          <span *ngIf="countLikers">{{countLikers}} Likes</span>
+          <span *ngIf="countLikers == 1">{{countLikers}} Like</span>
+          <span *ngIf="countLikers > 1">{{countLikers}} Likes</span>
+
           <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -87,7 +92,8 @@
             <span *ngFor="let liker2 of whoLike2; "> 
        <img *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="{{liker2?.portfolio_photo}}" (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')"><span *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
             <img *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
+              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)"
+              (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
 
 
             </span>
