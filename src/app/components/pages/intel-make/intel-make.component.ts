@@ -27,6 +27,7 @@ export class IntelMakeComponent implements OnInit {
       this.meta.setTitle(`Maker Share | ${this.title}`);
       this.meta.setTag('og:image', '/assets/logo.png');
       this.meta.setTag('og:description', this.body);
+
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
