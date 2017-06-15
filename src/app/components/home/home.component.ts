@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
       this.meta.setTitle(`Maker Share`);
       this.meta.setTag('og:image', '/assets/logo.png');
-      this.meta.setTag('og:description', 'Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share Maker Share ');
+      this.meta.setTag('og:description', 'Maker Share Home Page');
       this.loaderService.display(false);
       // for (let r of data)
       // if(r.type=="project"){
