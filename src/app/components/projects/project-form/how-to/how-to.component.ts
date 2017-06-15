@@ -103,6 +103,9 @@ export class HowToComponent implements OnInit {
       this.Durations = data;
     });
     this.buildForm();
+    setTimeout(function(){
+       $("html,body").animate({scrollTop: 0}, "slow");
+    }, 0);
   }
 
   SetToolMaterialPart(arrayelementname, ControlName,value, index) {
