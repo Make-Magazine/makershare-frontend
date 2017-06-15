@@ -173,7 +173,9 @@
               <div class="col-md-6 d-flex col-xs-12 resources-button">
                 <p class="resource-float-text">Upload files or save URL links.</p>
                 <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" (click)="OpenModal(resourcefile)" class="btn btn-load-more">Choose a file</button>
-                <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="btn btn-load-more fake-btn" (click)="OpenModal(linkreop)">URL Link <i class="lnr lnr-plus-circle"></i></button>
+                <span *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected">Or</span>
+                <button *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="btn btn-load-more fake-btn" (click)="OpenModal(linkreop)">URL Link</button>
+                <i *ngIf="!ResourceFileSelected && !ResourceRepoLinkSelected" class="add-lnr lnr lnr-plus-circle"></i>
                 <div class="selected" *ngIf="ResourceFileSelected">{{ResourceFileSelected.filename}}</div>
                 <div class="selected" *ngIf="ResourceRepoLinkSelected">{{ResourceRepoLinkSelected}}</div>
                 <a class="add-button" class="selected" *ngIf="ResourceFileSelected" (click)="SetResourceFile()"><i class="lnr lnr-plus-circle"></i>Add</a>
@@ -262,9 +264,13 @@
     </a>
         </div>
         <div class="recommended-section col-md-4">
-          <p class="drag-text mt-4 mb-0">
-            Maximum file size: 8MB<br>
+          <!--<p class="drag-text mt-4 mb-0">
             File types allowed: doc, docx, odt, txt, wpd, wps, csv, pps, ppt, pptx, xml, 3gp, avi, flv, mov, mp4, mpg, swf, max, 3ds, gif, bmp, jpg, png, psd, tif, svg, pdf, xlsx, xls, db, html, zip, rar, 7z, tar, ai, cdr
+          </p>-->
+          <p class="drag-text mt-4 mb-0">
+            Choose a file users can download.
+            <br>
+            Maximum file size: 8MB
           </p>
         </div>
       </div>
