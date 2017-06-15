@@ -8,7 +8,7 @@
       <span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"> {{liker?.first_name}} {{liker?.last_name}}<br>
     </span>
-      <span *ngIf="!LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
+      <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
       </span>
       </span>
       <span *ngIf="!countlikes">
