@@ -4,7 +4,7 @@ import { LoaderService } from '../shared/loader/loader.service';
 import { ISorting } from '../../models/makers/sorting';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
-
+import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-makers',
@@ -87,12 +87,17 @@ export class MakersComponent implements OnInit {
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
+    private meta: MetaService,
   ) { }
 
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
+
+    this.meta.setTitle(`Maker Share | Makers`);
+    this.meta.setTag('og:image', '/assets/logo.png');
+    this.meta.setTag('og:description', 'All Our Makers');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {
