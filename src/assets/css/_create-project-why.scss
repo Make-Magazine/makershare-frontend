@@ -392,18 +392,24 @@
 											height: 35px;
 									}
 									.fake-btn {
-										width: 70%;
+										width: 40%;
 										text-align: left;
 										color: $shade-3;
 										border: none;
-										i {
-											float: right;
-											margin-top: 3px;
-											margin-right: 7px;
-											font-size: 15px;
-											color: $shade-4;
-										}
+										// i {
+										// 	float: right;
+										// 	margin-top: 3px;
+										// 	margin-right: 7px;
+										// }
 									}
+                                    .add-lnr {
+                                        font-size: 15px;
+                                        color: $shade-4;
+                                        margin: auto;
+                                    }
+                                    span {
+                                        margin: auto 10px;
+                                    }
 									.selected {
 											margin: 20px 5px 1rem;
 											line-height: 35px;
