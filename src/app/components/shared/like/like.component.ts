@@ -77,13 +77,11 @@ export class LikeComponent implements OnInit {
       if (this.whoLike.length > 7) {
         this.LoadCount = this.whoLike.length - 7;
       }
-      // console.log(this.whoLike.length)
     });
   }
   getWhoLike2() {
     this.viewService.getView('who-liked2', [['nid', this.nodeNid], ['page', this.pages]]).subscribe(data => {
       if (data[0]) {
-        // console.log(data[0]['likes_count'])
         this.countLikers = data[0]['likes_count'];
       }
       this.whoLike2 = this.whoLike2.concat(data);
@@ -113,7 +111,7 @@ export class LikeComponent implements OnInit {
     })
   }
   goToProfile(path: string) {
-    
+
     this.router.navigate(['/portfolio/', path]);
   }
   /* function like */

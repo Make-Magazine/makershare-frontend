@@ -92,13 +92,13 @@ export class SinglShowcaseComponent implements OnInit {
       this.page_arg = ['page', this.pages];
     }
 
-    console.log(this.makers)
+   // console.log(this.makers)
 
     this.route.params
     this.viewService.getView('showcase_makers', [['page', this.pages],['nid', this.idFromUrl], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
       .subscribe(data => {
         this.makers = this.makers.concat(data);
-        console.log(this.makers);
+        //console.log(this.makers);
         this.loadMoreVisibilty();
         // hide spinner
         this.loaderService.display(false);
@@ -235,6 +235,7 @@ export class SinglShowcaseComponent implements OnInit {
     this.viewService.getView('maker_count_showcases/' + this.idFromUrl)
       .subscribe(data => {
         this.makersCount = data;
+        console.log (this.makersCount);
       });
 
   }
