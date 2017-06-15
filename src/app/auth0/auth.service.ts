@@ -328,6 +328,10 @@ export class Auth {
     });
     this.lock.on('authorization_error', (err) => {
       //this.router.navigate(['/']);
+      if (err.error == "unauthorized") {
+         localStorage.setItem('under_age', 'true');
+         this.notificationBarService.create({ message: 'Only Makers 13 and older can use our site; please come back and create an account when you\'re a teenager.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });      
+      }
     });
   }
 
