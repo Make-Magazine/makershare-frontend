@@ -6062,6 +6062,7 @@ button:hover {
       background-color: white;
       padding: 18px 10px 34px 10px;
       text-align: center;
+      margin-bottom: 25px;
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
       box-shadow: 2px 2px 8px #BDBDBD; }
@@ -6085,7 +6086,6 @@ button:hover {
         color: #4F4F4F; }
     .page-project .project-body .how-to-sidebar .tools-kits {
       background-color: white;
-      margin-top: 26px;
       padding: 10px 10px 26px 10px;
       -moz-box-shadow: 2px 2px 8px #BDBDBD;
       -webkit-box-shadow: 2px 2px 8px #BDBDBD;
@@ -6150,7 +6150,7 @@ button:hover {
         border: none;
         padding: 6px; }
         .page-project .project-body .how-to-sidebar .tools-kits .resources li a {
-          text-decoration: underline;
+          text-decoration: none;
           color: #00AEEF !important;
           font-family: "Messina Sans Regular";
           font-size: 0.95rem;
@@ -6158,6 +6158,10 @@ button:hover {
           line-height: 100%;
           color: #828282;
           line-height: inherit !important; }
+        .page-project .project-body .how-to-sidebar .tools-kits .resources li i, .page-project .project-body .how-to-sidebar .tools-kits .resources li .file-size {
+          color: #4F4F4F; }
+        .page-project .project-body .how-to-sidebar .tools-kits .resources li i {
+          padding-right: 10px; }
   .page-project .region-content .how-to-tab h3 {
     font-weight: normal; }
   .page-project .feedback-group .feedback {
@@ -6219,7 +6223,6 @@ button:hover {
     text-align: right;
     margin: 5px 0 10px; }
   .page-project .project-collaborates .collaborate {
-    margin-top: 10px;
     margin-bottom: 26px; }
     .page-project .project-collaborates .collaborate .profile-container {
       margin: 10px 0; }
@@ -8065,19 +8068,22 @@ img {
   .page-create-project-why .how-to .materials .inputs-container .resources-button .fake-btn,
   .page-create-project-why .how-to .parts .inputs-container .resources-button .fake-btn,
   .page-create-project-why .how-to .resources-row .inputs-container .resources-button .fake-btn {
-    width: 70%;
+    width: 40%;
     text-align: left;
     color: #BDBDBD;
     border: none; }
-    .page-create-project-why .how-to .tools .inputs-container .resources-button .fake-btn i,
-    .page-create-project-why .how-to .materials .inputs-container .resources-button .fake-btn i,
-    .page-create-project-why .how-to .parts .inputs-container .resources-button .fake-btn i,
-    .page-create-project-why .how-to .resources-row .inputs-container .resources-button .fake-btn i {
-      float: right;
-      margin-top: 3px;
-      margin-right: 7px;
-      font-size: 15px;
-      color: #4F4F4F; }
+  .page-create-project-why .how-to .tools .inputs-container .resources-button .add-lnr,
+  .page-create-project-why .how-to .materials .inputs-container .resources-button .add-lnr,
+  .page-create-project-why .how-to .parts .inputs-container .resources-button .add-lnr,
+  .page-create-project-why .how-to .resources-row .inputs-container .resources-button .add-lnr {
+    font-size: 15px;
+    color: #4F4F4F;
+    margin: auto; }
+  .page-create-project-why .how-to .tools .inputs-container .resources-button span,
+  .page-create-project-why .how-to .materials .inputs-container .resources-button span,
+  .page-create-project-why .how-to .parts .inputs-container .resources-button span,
+  .page-create-project-why .how-to .resources-row .inputs-container .resources-button span {
+    margin: auto 10px; }
   .page-create-project-why .how-to .tools .inputs-container .resources-button .selected,
   .page-create-project-why .how-to .materials .inputs-container .resources-button .selected,
   .page-create-project-why .how-to .parts .inputs-container .resources-button .selected,
@@ -11572,7 +11578,7 @@ ckeditor #cke_23 {
 
 .maker-mobile-card {
   position: relative;
-  margin: 15px 0;
+  margin: 0 0 15px 0;
   border: none;
   padding: 50px 15px 15px;
   background-color: #fff;
