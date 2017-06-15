@@ -12,6 +12,7 @@ export class FileManagerComponent implements OnInit {
   files: FileEntityManage[];
   ProjectsUsingFile: string[] = [];
   fileCard: FileEntityManage;
+  FiletypesWithImageAvailable:string[] = ["doc","docx","epub","gif","pdf","ppt","pptx","sxls","txt","xsls"];
 
   constructor(
     private viewService: ViewService,
@@ -27,15 +28,11 @@ export class FileManagerComponent implements OnInit {
     this.viewService.getView('maker_manage_file/' + localStorage.getItem("user_id")).subscribe((data: FileManageService) => {
       this.fileManageService = data;
 
-      // this.fileManageService.files.forEach(function (file, index) {
-      //   let fileType = file.filename.split('.');
-      //   let sourceType = fileType[1];
-      //   // console.log(sourceType);
-
-      // });
-      // this.files = [];
-      // this.LoadMore();
-      // console.log(this.fileManageService);
+      this.fileManageService.files.forEach((file:FileEntity, index:number)=>{
+        let fileType = file.filename.split('.');
+        let sourceType = fileType[fileType.length - 1];
+        this.fileManageService.files[index].sourceType = sourceType;
+      });
       this.fileManageService.files = this.fileManageService.files.reverse();
       this.files = [];
       this.LoadMore();
