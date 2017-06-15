@@ -1560,12 +1560,16 @@ ngb-typeahead-window.dropdown-menu {
     .notifications-container .success .close-click:hover {
       color: #fff !important; }
 .notifications-container .error, .notifications-container .warning {
-  background-color: #4F4F4F !important;
-  border-bottom: 1px solid #4F4F4F !important;
   height: 45px !important;
   text-align: center !important;
   font-size: 1em !important;
   padding-top: 10px !important; }
+  .notifications-container .error .warning, .notifications-container .warning .warning {
+    background-color: #4F4F4F !important;
+    border-bottom: 1px solid #4F4F4F !important; }
+  .notifications-container .error .error, .notifications-container .warning .error {
+    background-color: #ED1C24 !important;
+    border-bottom: 1px solid #ED1C24 !important; }
   .notifications-container .error .message, .notifications-container .warning .message {
     margin-top: 10px;
     color: #fff !important; }
