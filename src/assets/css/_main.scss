@@ -656,12 +656,18 @@ ngb-typeahead-window {
         }
     }
     .error ,.warning{
-        background-color: $shade-4 !important;
-        border-bottom: 1px solid $shade-4 !important;
         height: 45px !important;
         text-align: center !important;
         font-size: 1em !important; 
         padding-top: 10px !important;
+        .warning{
+            background-color: $shade-4 !important;
+            border-bottom: 1px solid $shade-4 !important;
+        }
+        .error {
+            background-color: $red !important;
+            border-bottom: 1px solid $red !important;
+        }
         .message {
             margin-top: 10px;
             color: #fff !important;
