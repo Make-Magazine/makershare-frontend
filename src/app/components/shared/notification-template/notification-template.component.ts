@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService, UserService, PmService } from '../../../d7services';
+import { MainService, UserService, PmService,NodeService } from '../../../d7services';
 import * as globals from '../../../d7services/globals';
 
 @Component({
@@ -23,6 +23,7 @@ export class NotificationTemplateComponent implements OnInit {
     private mainService: MainService,
     private userService: UserService,
     private pm: PmService,
+    private nodeService :NodeService
   ) { }
 
   ngOnInit() {
@@ -73,7 +74,10 @@ export class NotificationTemplateComponent implements OnInit {
           } else if (this.notification.type == "new_message_sent") {
             this.router.navigate(["/account/inbox/view", this.notification.pm_mid]);
           } else {
-            this.router.navigate(["/projects", this.notification.nid]);
+            this.nodeService.getUrlFromId(this.notification.nid, 'project').subscribe(data => {
+              this.router.navigate(['/projects/'+data]);
+
+            })
           }
         }
       });
