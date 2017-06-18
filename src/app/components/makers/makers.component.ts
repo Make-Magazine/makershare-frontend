@@ -166,6 +166,7 @@ export class MakersComponent implements OnInit {
       this.pages == 0;
       this.categoryId = null;
       this.getMakers();
+      this.countAllMakers();
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
