@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService, UserService, PmService,NodeService } from '../../../d7services';
+import { MainService, UserService, PmService, NodeService } from '../../../d7services';
 import * as globals from '../../../d7services/globals';
 
 @Component({
@@ -16,14 +16,16 @@ export class NotificationTemplateComponent implements OnInit {
   // @Input() notificationId;
   // @Input() msgDeleted;
   messageDetails;
-
+  userId;
+  reply_text;
+  reply_author;
 
   constructor(
     private router: Router,
     private mainService: MainService,
     private userService: UserService,
     private pm: PmService,
-    private nodeService :NodeService
+    private nodeService: NodeService
   ) { }
 
   ngOnInit() {
@@ -75,7 +77,7 @@ export class NotificationTemplateComponent implements OnInit {
             this.router.navigate(["/account/inbox/view", this.notification.pm_mid]);
           } else {
             this.nodeService.getUrlFromId(this.notification.nid, 'project').subscribe(data => {
-              this.router.navigate(['/projects/'+data]);
+              this.router.navigate(['/projects/' + data]);
 
             })
           }
@@ -117,15 +119,16 @@ export class NotificationTemplateComponent implements OnInit {
     return date + ' ago';
   }
   messageNotifications() {
+    this.userId = localStorage.getItem('user_id');
     if (this.notification.type == 'new_message_sent') {
-      // console.log(this.notification)
-      // let mid = { "data": this.notification.pm_mid };
-      // this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details',mid['data']).subscribe(res => {
-      //   this.messageDetails = res['_body'].replace(']', '').replace('[', '')  
-      //    console.log(this.messageDetails)
-      // }, err => { 
-      //   // console.log(err)
-      // });
+      let body = { "mid": this.notification.pm_mid };
+      this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details', body).map(res => res.json()).subscribe(res => {
+        this.messageDetails = res;
+        if (this.messageDetails.reply) {
+          this.reply_text = this.messageDetails.reply;
+          this.reply_author = this.messageDetails.reply_author[0].author;
+        }
+      });
     }
   }
 
