@@ -104,10 +104,14 @@ export class MakersComponent implements OnInit {
       this.makersCount = res['_body'].replace(']', '').replace('[', '');
     });
   }
+  resetView() {
+    this.pages = 0;
+    this.makers = [];
+  }
   getMakers() {
     this.loaderService.display(true);
     if (this.pages == 0) {
-      this.makers = [];
+      this.resetView();
     }
     if (this.categoryId) {
       this.viewService.getView('makers', [['page', this.pages],
@@ -160,16 +164,15 @@ export class MakersComponent implements OnInit {
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
-    this.makers = [];
-    this.pages = 0;
+    this.resetView();
     this.getMakers();
   }//end function
   selectParent(value) {
     // console.log(value);
     this.childCategory = [];
     if (value == 1) {
-      this.pages == 0;
-      this.makers = [];
+      // this.pages == 0;
+      // this.makers = [];
       this.categoryId = null;
       this.getMakers();
       this.countCategory(value);
