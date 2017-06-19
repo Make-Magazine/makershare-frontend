@@ -2163,6 +2163,16 @@ i.dropdownIcon {
   margin-right: 20px;
   margin-top: 8px; }
 
+.claim-profile {
+  margin-top: 30px;
+  text-align: center; }
+  .claim-profile .claim-success {
+    font-size: 4.5rem;
+    color: #00AEEF;
+    font-weight: bold;
+    margin-bottom: 30px;
+    display: block; }
+
 .front {
   background-color: #F2F2F2; }
   .front .banner {
