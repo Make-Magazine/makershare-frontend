@@ -1,0 +1,8 @@
+<div class="container">
+  <div *ngIf="!missing && !access_denied && success">
+  Your profile has been claimed successfully, thank your for joining Maker Share community.
+  Click here to <a (click)="auth.login()">login/register</a>, please use this email address "{{email}}" to login or to create new account.
+  </div>
+  <div *ngIf="missing && !access_denied">URL is wrong, please contact one of our community managers.</div>
+  <div *ngIf="errorMsg">{{errorMsg}}</div>
+</div>
