@@ -19,6 +19,9 @@ import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-port
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 
+// Claim your profile component
+import { ClaimProfileComponent } from './components/pages/claim-profile/claim-profile.component';
+
 
 //modules
 import { HomeModule } from './components/home/home.module';
@@ -57,6 +60,7 @@ const APP_ROUTES: Routes = [
     { path: 'maker-camp', component: MakerCampComponent },
     { path: 'maker-shed', component: MakerShedComponent },
     { path: 'intel-innovation-programs', component: IntelInnovationComponent },
+    { path: 'claim-profile', component: ClaimProfileComponent },
     { path: '404', component: Four04Component },
     { path: 'access-restricted', component: AccessRestrictedComponent },
     { path: '**', redirectTo: '/404' },

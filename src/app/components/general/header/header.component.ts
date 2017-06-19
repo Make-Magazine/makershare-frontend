@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../../d7services';
+import { UserService,NodeService } from '../../../d7services';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
   registrationFormStatusObs: Observable<any>;
   registrationFormStatus = false;
   registrationFormState: string;
+  user_id;
+  user_url;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -40,6 +42,15 @@ export class HeaderComponent implements OnInit {
         this.roles.indexOf('8') != -1 || this.roles.indexOf('9') != -1 || this.roles.indexOf('10') != -1){
         this.Manager = true;
       }
+    }
+    if(localStorage.getItem('user_id')){
+        this.user_id = localStorage.getItem('user_id');
+            this.userService.getUrlFromId(this.user_id).subscribe(data => {
+              this.user_url=data.url;
+
+            })
+
+
     }
     this.profilePictureService.url.subscribe((val: string) => {
       this.user_photo = val;
