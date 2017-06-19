@@ -6,8 +6,8 @@
       <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
       <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip">{{countlikes}}
       <span class="new-tooltiptext"> 
-       <span *ngFor="let liker of whoLike;"><span *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
-    </span>
+       <span *ngFor="let liker of whoLike;"><span class="text-tooltip-name" *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
+      </span>
       <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
       </span>
       </span>
@@ -64,7 +64,7 @@
       <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip" (click)="open(content)">{{countlikes}}
       <!--<span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"><span *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
-    </span>
+      </span>
       <span *ngIf="!LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
       </span>-->
       </span>
