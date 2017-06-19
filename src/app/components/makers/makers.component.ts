@@ -106,6 +106,7 @@ export class MakersComponent implements OnInit {
   }
   resetView() {
     this.pages = 0;
+    this.makersCount = 0;
     this.makers = [];
   }
   getMakers() {
@@ -171,8 +172,7 @@ export class MakersComponent implements OnInit {
     // console.log(value);
     this.childCategory = [];
     if (value == 1) {
-      // this.pages == 0;
-      // this.makers = [];
+      this.resetView();
       this.categoryId = null;
       this.getMakers();
       this.countCategory(value);
