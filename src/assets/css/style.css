@@ -2166,12 +2166,18 @@ i.dropdownIcon {
 .claim-profile {
   margin-top: 30px;
   text-align: center; }
-  .claim-profile .claim-success {
+  .claim-profile p {
+    font-size: 1.3em; }
+  .claim-profile .claim-success,
+  .claim-profile .claim-fail {
     font-size: 4.5rem;
-    color: #00AEEF;
-    font-weight: bold;
     margin-bottom: 30px;
     display: block; }
+  .claim-profile .claim-success {
+    font-weight: bold;
+    color: #00AEEF; }
+  .claim-profile .claim-fail {
+    color: #ED1C24; }
 
 .front {
   background-color: #F2F2F2; }
