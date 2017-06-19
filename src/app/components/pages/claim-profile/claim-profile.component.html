@@ -1,5 +1,5 @@
 <div class="container claim-profile">
-  <div *ngIf="missing && !access_denied">
+  <div *ngIf="!missing  && success">
     <i class="lnr lnr-checkmark-circle claim-success"></i>
     <h2>Your profile has been claimed successfully.</h2>
     <p>Thank your for joining Maker Share community.</p>
@@ -10,12 +10,12 @@
     </p>
     <p>Please use this email address: {{email}} to login or to create a new account.</p>
   </div>
-  <!--<div *ngIf="missing && !access_denied">
+  <div *ngIf="missing">
     <i class="lnr lnr-cross-circle claim-fail"></i>  
     <p>
       URL is wrong, please <a href="mailto:help@makershare.com" target="_blank">contact</a> us to help you claimming your profile.
     </p>
-  </div>-->
+  </div>
   <div *ngIf="errorMsg">
     <i class="lnr lnr-cross-circle claim-fail"></i>      
     {{errorMsg}}
