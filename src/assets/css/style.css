@@ -2077,7 +2077,7 @@ i.dropdownIcon {
     border-radius: 6px;
     padding: 7px;
     position: absolute;
-    z-index: 1;
+    z-index: 9999999;
     bottom: 125%;
     left: 50%;
     margin-left: -50px;
@@ -2093,6 +2093,8 @@ i.dropdownIcon {
       border-width: 5px;
       border-style: solid;
       border-color: #555 transparent transparent transparent; }
+    .new-tooltip .new-tooltiptext .text-tooltip-name {
+      color: #fff !important; }
 
 .like-photo {
   padding: 10px;
@@ -3823,6 +3825,8 @@ footer {
         .project .card-stats ul li img.project-views {
           width: 20px;
           padding-bottom: 3px; }
+      .project .card-stats ul li span {
+        color: #BDBDBD; }
 
 .lg-card .icons-side-project {
   position: absolute;
@@ -3834,8 +3838,6 @@ footer {
   .lg-card .content-side .card-stats ul {
     width: 100%;
     margin-bottom: 6px; }
-    .lg-card .content-side .card-stats ul span {
-      color: #BDBDBD; }
 .lg-card .project-maker-lg {
   position: absolute;
   z-index: 11;

@@ -113,6 +113,7 @@ export class LikeComponent implements OnInit {
   goToProfile(path: string) {
 
     this.router.navigate(['/portfolio/', path]);
+
   }
   /* function like */
   likeThis(e: Event) {

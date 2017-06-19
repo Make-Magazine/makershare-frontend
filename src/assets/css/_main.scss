@@ -1255,7 +1255,7 @@ i.dropdownIcon {
         border-radius: 6px;
         padding: 7px;
         position: absolute;
-        z-index: 1;
+        z-index: 9999999;
         bottom: 125%;
         left: 50%;
         margin-left: -50px;
@@ -1272,6 +1272,9 @@ i.dropdownIcon {
             border-width: 5px;
             border-style: solid;
             border-color: #555 transparent transparent transparent;
+        }
+        .text-tooltip-name{
+            color: #fff !important;
         }
     }
     // &:hover .new-tooltiptext {

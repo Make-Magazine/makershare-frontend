@@ -16,12 +16,15 @@ export class ProjectCardPortfolioComponent implements OnInit {
   @Input() Visibility: number;
   @Output() emitter = new EventEmitter();
   projectCard
-  badges=[];
+  badges = [];
   pages: number = 0;
   constructor(
     private nodeService: NodeService,
     private viewService: ViewService,
+
     private router: Router,
+    private route: ActivatedRoute,
+
     private modal: NgbModal,
     private userService: UserService,
 
@@ -29,11 +32,12 @@ export class ProjectCardPortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.GetProjectCard();
-    this. getBadgesProject();
+    this.getBadgesProject();
   }
 
   GetProjectCard() {
     this.viewService.getView('api-project-card', [['nid', this.Project.nid]]).subscribe(res => {
+
       var categories_string = res[0].project_categories;
       categories_string = categories_string.substring(0, categories_string.length - 2);
       var categories_array = categories_string.split(', ');
@@ -82,16 +86,16 @@ export class ProjectCardPortfolioComponent implements OnInit {
     this.router.navigate(['/projects/', path]);
   }
   getBadgesProject() {
-    if(this.Project.nid){
-    this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {
-      for (let i = 0; i < data.length && i < 4; i++) {
-        this.badges.push(data[i]);
-      }
-      // for (let i = 0; i < data.length; i++) {
-      //   //this.badges.push(data[i]);
-      //   console.log(data[i])
-      // }
-    });
+    if (this.Project.nid) {
+      this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {
+        for (let i = 0; i < data.length && i < 4; i++) {
+          this.badges.push(data[i]);
+        }
+        // for (let i = 0; i < data.length; i++) {
+        //   //this.badges.push(data[i]);
+        //   console.log(data[i])
+        // }
+      });
     }
   }
   /* function load more  */
@@ -104,11 +108,11 @@ export class ProjectCardPortfolioComponent implements OnInit {
     if (this.projectCard['uid']) {
       this.userService.getUrlFromId(this.projectCard['uid']).subscribe(res => {
         this.router.navigate(['/portfolio/' + res.url]);
-      //  console.log(res.url)
+        //  console.log(res.url)
       });
-      
+
     }
-          //console.log("fsafasf")
+    //console.log("fsafasf")
 
   }
 }
