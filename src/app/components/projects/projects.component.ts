@@ -148,6 +148,8 @@ export class ProjectsComponent implements OnInit {
   projectsById(event) {
     // show spinner
     this.categoryId = event.target.id;
+    this.projects = [];
+    this.pages = 0;
     this.getProjects();
   }
   /* function to get count projects */
