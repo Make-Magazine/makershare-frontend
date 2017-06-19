@@ -1,8 +1,25 @@
-<div class="container">
+<!--<div class="container">
   <div *ngIf="!missing && !access_denied && success">
-  Your profile has been claimed successfully, thank your for joining Maker Share community.
+  Your profile has been claimed successfully, Thank your for joining Maker Share community.
   Click here to <a (click)="auth.login()">login/register</a>. <br> Please use this email address: {{email}} to login or to create a new account.
   </div>
-  <div *ngIf="missing && !access_denied">URL is wrong, please <a href="mailto:help@makershare.com">contact</a> us to help you claimming your profile.</div>
+  <div *ngIf="missing && !access_denied">URL is wrong, please <a href="mailto:help@makershare.com" target="_blank">contact</a> us to help you claimming your profile.</div>
+  <div *ngIf="errorMsg">{{errorMsg}}</div>
+</div>-->
+
+
+<div class="container claim-profile">
+  <div *ngIf="missing && !access_denied">
+    <i class="lnr lnr-checkmark-circle claim-success"></i>
+    <h2>Your profile has been claimed successfully.</h2>
+    <p>Thank your for joining Maker Share community.</p>
+    <p>Click here to
+      <span class="button-container-main-1">
+        <a class="btn btn-main" (click)="auth.login()">Login / Register</a>
+      </span>
+    </p>
+    <p>Please use this email address: {{email}} to login or to create a new account.</p>
+  </div>
+  <!--<div *ngIf="missing && !access_denied">URL is wrong, please <a href="mailto:help@makershare.com" target="_blank">contact</a> us to help you claimming your profile.</div>-->
   <div *ngIf="errorMsg">{{errorMsg}}</div>
 </div>
