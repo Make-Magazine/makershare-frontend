@@ -595,6 +595,7 @@ body {
         &.warning {
             .message {
                 color: $shade-7;
+                
             }
         }
     }
@@ -660,27 +661,27 @@ ngb-typeahead-window {
         text-align: center !important;
         font-size: 1em !important; 
         padding-top: 10px !important;
-        .warning{
-            background-color: $shade-4 !important;
-            border-bottom: 1px solid $shade-4 !important;
-        }
-        .error {
-            background-color: $red !important;
-            border-bottom: 1px solid $red !important;
-        }
-        .message {
-            margin-top: 10px;
-            color: #fff !important;
-        }  
-        .close-click {
-            position: absolute;
-            right: 10px;
-            top: 0px;
-            font-size: 2em !important;
-            color: $white*0.8;
-            &:hover {
-                color: $white !important;
-            }
+    }
+    .warning{
+        background-color: $shade-4 !important;
+        border-bottom: 1px solid $shade-4 !important;
+    }
+    .error {
+        background-color: $red !important;
+        border-bottom: 1px solid $red !important;
+    }
+    .message {
+        margin-top: 10px;
+        color: #fff !important;
+    }  
+    .close-click {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        font-size: 2em !important;
+        color: $white*0.8;
+        &:hover {
+            color: $white !important;
         }
     }
 }
@@ -1371,6 +1372,26 @@ i.dropdownIcon {
         margin-left: 20px;
         margin-right: 20px;
         margin-top: 8px;
+    }
+}
+.claim-profile {
+    margin-top: 30px;
+    text-align: center;
+    p {
+        font-size: 1.3em;
+    }
+    .claim-success,
+    .claim-fail {
+        font-size: 4.5rem;
+        margin-bottom: 30px;
+        display: block;
+    }
+    .claim-success {
+        font-weight: bold;
+        color: $blue;        
+    }    
+    .claim-fail {
+        color: $red;        
     }
 }
 
