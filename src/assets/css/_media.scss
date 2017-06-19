@@ -834,6 +834,12 @@
              }
          }
     }
+    header.main-header .navbar-brand {
+        margin-right: 1px;
+    }
+    header.main-header nav.navbar {
+        height: auto !important;
+    }
 }
 
 @media only screen and (max-width: 623px) {}
