@@ -1564,23 +1564,23 @@ ngb-typeahead-window.dropdown-menu {
   text-align: center !important;
   font-size: 1em !important;
   padding-top: 10px !important; }
-  .notifications-container .error .warning, .notifications-container .warning .warning {
-    background-color: #4F4F4F !important;
-    border-bottom: 1px solid #4F4F4F !important; }
-  .notifications-container .error .error, .notifications-container .warning .error {
-    background-color: #ED1C24 !important;
-    border-bottom: 1px solid #ED1C24 !important; }
-  .notifications-container .error .message, .notifications-container .warning .message {
-    margin-top: 10px;
+.notifications-container .warning {
+  background-color: #4F4F4F !important;
+  border-bottom: 1px solid #4F4F4F !important; }
+.notifications-container .error {
+  background-color: #ED1C24 !important;
+  border-bottom: 1px solid #ED1C24 !important; }
+.notifications-container .message {
+  margin-top: 10px;
+  color: #fff !important; }
+.notifications-container .close-click {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 2em !important;
+  color: #cccccc; }
+  .notifications-container .close-click:hover {
     color: #fff !important; }
-  .notifications-container .error .close-click, .notifications-container .warning .close-click {
-    position: absolute;
-    right: 10px;
-    top: 0px;
-    font-size: 2em !important;
-    color: #cccccc; }
-    .notifications-container .error .close-click:hover, .notifications-container .warning .close-click:hover {
-      color: #fff !important; }
 
 .project-bookmakr .fa-bookmark-o:hover {
   color: #00AEEF; }
@@ -11601,7 +11601,7 @@ ckeditor #cke_23 {
   position: relative;
   margin: 0 0 15px 0;
   border: none;
-  padding: 50px 15px 15px;
+  padding: 15px 15px;
   background-color: #fff;
   -moz-box-shadow: 2px 2px 8px #BDBDBD;
   -webkit-box-shadow: 2px 2px 8px #BDBDBD;
