@@ -2163,16 +2163,6 @@ i.dropdownIcon {
   margin-right: 20px;
   margin-top: 8px; }
 
-.claim-profile {
-  margin-top: 30px;
-  text-align: center; }
-  .claim-profile .claim-success {
-    font-size: 4.5rem;
-    color: #00AEEF;
-    font-weight: bold;
-    margin-bottom: 30px;
-    display: block; }
-
 .front {
   background-color: #F2F2F2; }
   .front .banner {
@@ -11269,13 +11259,7 @@ iframe {
   .page-inbox .inbox-container .inbox-controls .new-message p {
     display: none; }
   .page-inbox .inbox-container .inbox-controls .new-message i {
-    font-size: 2rem; }
-
-  header.main-header .navbar-brand {
-    margin-right: 1px; }
-
-  header.main-header nav.navbar {
-    height: auto !important; } }
+    font-size: 2rem; } }
 @media only screen and (max-width: 767px) {
   header .project-button {
     display: none; }
@@ -11723,4 +11707,4 @@ ckeditor #cke_23 {
     display: block;
     font-family: "Messina Sans bold"; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=styl.map */
