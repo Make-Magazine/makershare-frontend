@@ -169,6 +169,7 @@ export class MakersComponent implements OnInit {
     this.childCategory = [];
     if (value == 1) {
       this.pages == 0;
+      this.makers = [];
       this.categoryId = null;
       this.getMakers();
       this.countCategory(value);
