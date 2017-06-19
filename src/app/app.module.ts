@@ -35,7 +35,7 @@ import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.
 import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
 import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
 // GA
-import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+// import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { MetaModule } from '@nglibs/meta';
@@ -95,7 +95,7 @@ let config = {
     MessagesModule,
     NotificationBarModule,
     DndModule.forRoot(),
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     MetaModule.forRoot(),
     ShareButtonsModule.forRoot(),
   ],
