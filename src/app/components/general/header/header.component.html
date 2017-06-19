@@ -26,7 +26,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <a target="_blank" *ngIf="Manager" href="{{Back_End_Domain}}" class="dropdown-item">Manage</a>
-              <button class="dropdown-item" [routerLink]="['/portfolio']">Profile</button>
+              <button class="dropdown-item" [routerLink]="['/portfolio/'+user_url]">Profile</button>
               <button class="dropdown-item" [routerLink]="['/inbox-notifications']">Inbox</button>
               <button class="dropdown-item" [routerLink]="['/account/collection/bookmark']">Bookmarks</button>
               <button class="dropdown-item" [routerLink]="['/account/settings/notifications']">Account Settings</button>
