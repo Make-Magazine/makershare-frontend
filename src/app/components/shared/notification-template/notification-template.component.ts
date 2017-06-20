@@ -125,7 +125,7 @@ export class NotificationTemplateComponent implements OnInit {
       let body = { "mid": this.notification.pm_mid };
       this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details', body).map(res => res.json()).subscribe(res => {
         this.messageDetails = res;
-        console.log(res)
+        // console.log(res)
         //this notification equal thread notification (i mean it should be user sent you a new message)
         if (this.notification.pm_mid == this.messageDetails.thread_id) {
           // this is a group message between more than 2 users
