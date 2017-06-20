@@ -25,7 +25,7 @@ export class MakersComponent implements OnInit {
     pageNo: 0
   };
   makersCount;
-  hideloadmore = false;
+  hideloadmore = true;
   all_categories = [];
   categories_childs = [];
   categories_parents = [];
@@ -68,14 +68,14 @@ export class MakersComponent implements OnInit {
   };
   sort_functions = [
     'dummy',
-    'randomized',   
-    'mostProjects',   
+    'randomized',
+    'mostProjects',
     'mostRecent',
     'sortAsc',
-    'sortDesc',   
-    'mostLiked',   
-    'mostViewed',   
-    ];
+    'sortDesc',
+    'mostLiked',
+    'mostViewed',
+  ];
   CurrentActiveParentIndex;
   CurrentActiveChildIndex;
   nameCat;
@@ -115,6 +115,7 @@ export class MakersComponent implements OnInit {
       ['sort_order', this.sort.sort_order],
       ['category', this.categoryId]]).subscribe(data => {
         this.makers = this.makers.concat(data);
+        this.loadMoreVisibilty();
         this.loaderService.display(false);
         if (this.makers.length == 0) {
           this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
@@ -122,9 +123,11 @@ export class MakersComponent implements OnInit {
       })
     } else {
       this.viewService.getView('makers', [['page', this.pages],
-      ['sort_by', this.sort.sort_by],
-      ['sort_order', this.sort.sort_order]]).subscribe(data => {
+                                          ['sort_by', this.sort.sort_by],
+                                          ['sort_order', this.sort.sort_order]]).subscribe(data => {
+        this.countAllMakers();
         this.makers = this.makers.concat(data);
+        this.loadMoreVisibilty();
         this.loaderService.display(false);
       })
     }
@@ -135,12 +138,12 @@ export class MakersComponent implements OnInit {
       for (let element of this.all_categories) {
         if (element.parent_tid) {
           this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
-            if (data.length > 0){
-                this.categories_childs.push(element);        
+            if (data.length > 0) {
+              this.categories_childs.push(element);
             }
-        });
+          });
         } else {
-              this.categories_parents.push(element);
+          this.categories_parents.push(element);
         }
       }
     });
@@ -161,8 +164,9 @@ export class MakersComponent implements OnInit {
   selectParent(value) {
     this.childCategory = [];
     if (value == 1) {
-      this.pages == 0;
+      this.pages = 0;
       this.categoryId = null;
+        this.countAllMakers();      
       this.getMakers();
     } else {
       for (let cate of this.categories_childs) {
@@ -172,7 +176,7 @@ export class MakersComponent implements OnInit {
       }
     }
   }
-  selectCategory(event,term) {
+  selectCategory(event, term) {
     // show spinner
     this.loaderService.display(true);
     this.categoryId = event.target.id;
@@ -184,10 +188,12 @@ export class MakersComponent implements OnInit {
   }
 
   loadMoreVisibilty() {
-    if (this.makersCount >= this.makers.length) {
-      this.hideloadmore = false;
-    } else if (this.makersCount < this.makers.length) {
+    console.log(this.makersCount);
+    console.log(this.makers.length);
+    if (this.makersCount <= this.makers.length) {
       this.hideloadmore = true;
+    } else if (this.makersCount > this.makers.length) {
+      this.hideloadmore = false;
     }
   }
   sortBy(type) {
@@ -198,7 +204,7 @@ export class MakersComponent implements OnInit {
     this.ActionName = this.sortingSet[type].ActionName;
     this.getMakers();
   }
-  sortMakers(sort){
+  sortMakers(sort) {
     this.sortBy(this.sort_functions[sort]);
   }
 }
