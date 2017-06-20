@@ -1,19 +1,20 @@
 <div class="container claim-profile">
   <div *ngIf="!missing  && success">
     <i class="lnr lnr-checkmark-circle claim-success"></i>
-    <h2>Your profile has been claimed successfully.</h2>
-    <p>Thank your for joining Maker Share community.</p>
-    <p>Click here to
+    <p>Success! Your Maker Portfolio is now published.</p>
+    <p>Just one more step to join the Maker Share community.
       <span class="button-container-main-1">
-        <a class="btn btn-main" (click)="auth.login()">Login / Register</a>
+        <a class="btn btn-main" (click)="auth.login()">Login/Signup</a>.
       </span>
     </p>
-    <p>Please use this email address: {{email}} to login or to create a new account.</p>
+    <p>If you already have a Maker Faire login, use it to login. If not, then Signup using this email address.</p>
   </div>
   <div *ngIf="missing">
     <i class="lnr lnr-cross-circle claim-fail"></i>  
     <p>
-      Oops! something went wrong, please <a href="mailto:help@makershare.com" target="_blank">contact us</a>.
+      Oops. Something has gone wrong.<br> But Maker Share needs you! Send us your name and email address and our community managers will help you claim your Maker Portfolio.<br>
+        <br>
+        <a href="mailto:help@makershare.com" target="_blank">Email Us</a>
     </p>
   </div>
   <div *ngIf="errorMsg">
