@@ -191,10 +191,10 @@ export class MakersComponent implements OnInit {
   }
 
   loadMoreVisibilty() {
-    if (this.makersCount >= this.makers.length) {
-      this.hideloadmore = false;
-    } else if (this.makersCount < this.makers.length) {
+    if (this.makersCount <= this.makers.length) {
       this.hideloadmore = true;
+    } else if (this.makersCount > this.makers.length) {
+      this.hideloadmore = false;
     }
   }
   sortBy(type) {
