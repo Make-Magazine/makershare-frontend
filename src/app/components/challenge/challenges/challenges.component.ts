@@ -33,9 +33,9 @@ export class ChallengesComponent implements OnInit {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
-    this.meta.setTitle(`Maker Share | Missions`);
+    this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
     this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Missions Missions Missions Missions Missions Missions Missions Missions Missions ');
+    this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
 
   }
   /* function to get challenges and count followers  */
