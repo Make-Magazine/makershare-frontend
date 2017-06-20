@@ -38,9 +38,9 @@ export class ShowcaseSortingComponent implements OnInit {
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    this.meta.setTitle(`Maker Share | Showcase}`);
+    this.meta.setTitle(`Showcases | Awe-inspiring Projects and Makers | Maker Share`);
     this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'showcase showcase showcase showcase showcase');
+    this.meta.setTag('og:description', 'Curated collections of projects and portfolios. Find your inspiration here for own projects. Maker Share is a project by Make: + Intel.');
 
   }
 
