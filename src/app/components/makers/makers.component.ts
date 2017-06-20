@@ -95,9 +95,9 @@ export class MakersComponent implements OnInit {
     this.getMakers();
     this.getMakerCategories();
 
-    this.meta.setTitle(`Maker Share | Makers`);
+    this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
     this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'All Our Makers');
+    this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {
