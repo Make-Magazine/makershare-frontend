@@ -192,8 +192,6 @@ export class MakersComponent implements OnInit {
   }
 
   loadMoreVisibilty() {
-    console.log(this.makersCount);
-    console.log(this.makers.length);
     if (this.makersCount <= this.makers.length) {
       this.hideloadmore = true;
     } else if (this.makersCount > this.makers.length) {
