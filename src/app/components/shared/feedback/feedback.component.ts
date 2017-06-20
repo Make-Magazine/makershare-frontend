@@ -392,7 +392,7 @@ export class FeedbackComponent implements OnInit {
 
   SaveNode() {
     var now = Date.now();
-    var feedback = this.feedback;
+    let feedback = this.feedback;
     //console.log(feedback);
     if(this.full_name){
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
@@ -437,7 +437,9 @@ export class FeedbackComponent implements OnInit {
     }
     else if (feedback.field_want_submit.und == "1186") {
       if (this.feedbackForm.value.field_would_like) {
-        feedback.field_would_like.und = this.feedbackForm.value.field_would_like;
+        if(feedback.field_would_like){
+          feedback.field_would_like.und = this.feedbackForm.value.field_would_like;
+        }
       } else {
         delete (feedback.field_would_like);
       }

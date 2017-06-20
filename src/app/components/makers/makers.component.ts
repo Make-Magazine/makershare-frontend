@@ -25,7 +25,7 @@ export class MakersComponent implements OnInit {
     pageNo: 0
   };
   makersCount;
-  hideloadmore = false;
+  hideloadmore = true;
   all_categories = [];
   categories_childs = [];
   categories_parents = [];
@@ -68,14 +68,14 @@ export class MakersComponent implements OnInit {
   };
   sort_functions = [
     'dummy',
-    'randomized',   
-    'mostProjects',   
+    'randomized',
+    'mostProjects',
     'mostRecent',
     'sortAsc',
-    'sortDesc',   
-    'mostLiked',   
-    'mostViewed',   
-    ];
+    'sortDesc',
+    'mostLiked',
+    'mostViewed',
+  ];
   CurrentActiveParentIndex;
   CurrentActiveChildIndex;
   nameCat;
@@ -95,9 +95,9 @@ export class MakersComponent implements OnInit {
     this.getMakers();
     this.getMakerCategories();
 
-    this.meta.setTitle(`Maker Share | Makers`);
+    this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
     this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'All Our Makers');
+    this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {
@@ -122,8 +122,9 @@ export class MakersComponent implements OnInit {
       })
     } else {
       this.viewService.getView('makers', [['page', this.pages],
-      ['sort_by', this.sort.sort_by],
-      ['sort_order', this.sort.sort_order]]).subscribe(data => {
+                                          ['sort_by', this.sort.sort_by],
+                                          ['sort_order', this.sort.sort_order]]).subscribe(data => {
+        this.countAllMakers();
         this.makers = this.makers.concat(data);
         this.loaderService.display(false);
       })
@@ -135,17 +136,18 @@ export class MakersComponent implements OnInit {
       for (let element of this.all_categories) {
         if (element.parent_tid) {
           this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
-            if (data.length > 0){
-                this.categories_childs.push(element);        
+            if (data.length > 0) {
+              this.categories_childs.push(element);
             }
-        });
+          });
         } else {
-              this.categories_parents.push(element);
+          this.categories_parents.push(element);
         }
       }
     });
   }
   countCategory(term) {
+
     this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
     this.nameCat = term.name;
     let body = {
@@ -153,6 +155,7 @@ export class MakersComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
       this.makersCount = res['_body'].replace(']', '').replace('[', '')
+
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
@@ -161,9 +164,11 @@ export class MakersComponent implements OnInit {
   selectParent(value) {
     this.childCategory = [];
     if (value == 1) {
-      this.pages == 0;
+      this.pages = 0;
       this.categoryId = null;
+      this.countAllMakers();      
       this.getMakers();
+      
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
@@ -172,7 +177,8 @@ export class MakersComponent implements OnInit {
       }
     }
   }
-  selectCategory(event,term) {
+
+  selectCategory(event, term) {
     // show spinner
     this.loaderService.display(true);
     this.categoryId = event.target.id;
@@ -198,7 +204,7 @@ export class MakersComponent implements OnInit {
     this.ActionName = this.sortingSet[type].ActionName;
     this.getMakers();
   }
-  sortMakers(sort){
+  sortMakers(sort) {
     this.sortBy(this.sort_functions[sort]);
   }
 }
