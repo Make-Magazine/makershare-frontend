@@ -42,7 +42,7 @@ export class ClaimProfileComponent implements OnInit {
           }
           
         }, err => {
-          console.log(err);
+          //console.log(err);
             this.errorMsg = true;
             //this.errorMsg = 'Your account is already claimed, if you have a problem with claimming your profile please contact the community administrator.'
           
