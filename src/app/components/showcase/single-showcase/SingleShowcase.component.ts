@@ -210,7 +210,7 @@ export class SinglShowcaseComponent implements OnInit {
           this.router.navigate(['**']);
         }
         this.customDescription = this.showcase['description']
-        this.meta.setTitle(`Maker Share | ${this.showcase['showcase_name']}`);
+        this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
         this.meta.setTag('og:image', this.showcase['cover_photo']);
         this.meta.setTag('og:description', this.showcase['description']);
 
