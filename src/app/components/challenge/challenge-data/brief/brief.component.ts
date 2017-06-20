@@ -14,7 +14,7 @@ briefContent;
    }
 
   ngOnInit() {
-    console.log(this.challenge)
+    // console.log(this.challenge)
     this.briefContent = this.sanitizer.bypassSecurityTrustHtml(this.challenge.brief);
 
   }
