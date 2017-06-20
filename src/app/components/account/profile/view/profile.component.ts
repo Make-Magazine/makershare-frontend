@@ -451,7 +451,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making_short = user.started_making;
     }
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
-    this.meta.setTitle(`Maker Share | ${this.profile.first_name} ${this.profile.last_name}`);
+    this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
     this.meta.setTag('og:image', this.profile.user_photo);
     this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();

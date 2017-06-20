@@ -118,7 +118,7 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
-        this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
+        this.meta.setTitle(`${this.project.title.value} | Maker Share`);
         this.meta.setTag('og:image', this.project.field_cover_photo.url);
         this.meta.setTag('og:description', this.project.field_teaser.value);
         this.projectDetails = this.project;

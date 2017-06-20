@@ -110,9 +110,9 @@ export class ProjectsComponent implements OnInit {
     this.getCountProject();
     this.getProjectCategories();
 
-    this.meta.setTitle(`Maker Share | Projects`);
+    this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
     this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Projects Projects Projects Projects Projects Projects Projects Projects ');
+    this.meta.setTag('og:description', 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.');
   }
   getProjects() {
     // show spinner
@@ -195,6 +195,7 @@ export class ProjectsComponent implements OnInit {
     if(value == 1) {
       this.categoryId = null;
       this.pages = 0;
+      this.getCountProject();
       this.getProjects();
     } else {
       for (let cate of this.categories_childs) {

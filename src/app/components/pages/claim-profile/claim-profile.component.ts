@@ -35,7 +35,7 @@ export class ClaimProfileComponent implements OnInit {
         }
 
         this.mainService.post('/api/maker_claim/activate', body).map(res => res.json()).subscribe(data => {
-          console.log(data);
+          // console.log(data);
           if(data.status == "activated"){
             this.success = true;
             this.email = data.email;
