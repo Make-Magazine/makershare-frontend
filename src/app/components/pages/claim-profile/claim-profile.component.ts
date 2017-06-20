@@ -12,7 +12,7 @@ export class ClaimProfileComponent implements OnInit {
   private key: string;
   success: boolean = false;
   missing = false;
-  errorMsg: string;
+  errorMsg: boolean = false;
   email: string;
   constructor(
     private route: ActivatedRoute,
@@ -43,13 +43,9 @@ export class ClaimProfileComponent implements OnInit {
           
         }, err => {
           console.log(err);
-          if(err.statusText == ": already claimed"){
-            this.errorMsg = 'Your account is already claimed, if you have a problem with claimming your profile please contact the community administrator.'
-          }else if (err.statusText == ": not valid"){
-            this.errorMsg = 'Sorry, this link is not valid, please contact the community administrator to generate a new link';
-          }else {
-            this.errorMsg = 'Sorry, this link is not valid, please contact the community administrator to generate a new link';
-          }
+            this.errorMsg = true;
+            //this.errorMsg = 'Your account is already claimed, if you have a problem with claimming your profile please contact the community administrator.'
+          
 
 
         });

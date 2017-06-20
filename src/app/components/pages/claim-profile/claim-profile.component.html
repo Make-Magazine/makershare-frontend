@@ -12,13 +12,14 @@
   <div *ngIf="missing">
     <i class="lnr lnr-cross-circle claim-fail"></i>  
     <p>
-      Oops. Something has gone wrong.<br> But Maker Share needs you! Send us your name and email address and our community managers will help you claim your Maker Portfolio.<br>
-        <br>
-        <a href="mailto:help@makershare.com" target="_blank">Email Us</a>
+      Oops. Something has gone wrong.<br> But Maker Share needs you! Send us your name and email address and our community managers will help you claim your Maker Portfolio.
+      <a href="mailto:help@makershare.com" target="_blank">Email Us</a>
     </p>
   </div>
   <div *ngIf="errorMsg">
-    <i class="lnr lnr-cross-circle claim-fail"></i>      
-    {{errorMsg}}
+    <i class="lnr lnr-cross-circle claim-fail"></i>  
+    <p>    
+      This email token is expired. <a href="mailto:help@makershare.com" target="_blank">Contact community management</a> and we’ll send you a new invitation. 
+    <p>
     </div>
 </div>
