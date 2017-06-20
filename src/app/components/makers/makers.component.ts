@@ -161,6 +161,7 @@ export class MakersComponent implements OnInit {
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
+    this.pages = 0;
     this.getMakers();
   }//end function
   selectParent(value) {
