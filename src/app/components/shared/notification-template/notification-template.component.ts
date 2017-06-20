@@ -121,7 +121,8 @@ export class NotificationTemplateComponent implements OnInit {
     if (this.notification.type == 'new_message_sent') {
       let body = { "mid": this.notification.pm_mid };
       this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details', body).map(res => res.json()).subscribe(res => {
-        this.messageDetails = res;
+ console.log(res)
+  this.messageDetails = res;
         if (this.messageDetails.reply) {
           this.reply_text = this.messageDetails.reply;
           this.reply_author = this.messageDetails.reply_author[0].author;
