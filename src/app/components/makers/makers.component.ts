@@ -115,6 +115,7 @@ export class MakersComponent implements OnInit {
       ['sort_order', this.sort.sort_order],
       ['category', this.categoryId]]).subscribe(data => {
         this.makers = this.makers.concat(data);
+        this.loadMoreVisibilty();
         this.loaderService.display(false);
         if (this.makers.length == 0) {
           this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
@@ -126,6 +127,7 @@ export class MakersComponent implements OnInit {
                                           ['sort_order', this.sort.sort_order]]).subscribe(data => {
         this.countAllMakers();
         this.makers = this.makers.concat(data);
+        this.loadMoreVisibilty();        
         this.loaderService.display(false);
       })
     }
@@ -168,7 +170,6 @@ export class MakersComponent implements OnInit {
       this.categoryId = null;
       this.countAllMakers();      
       this.getMakers();
-      
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
