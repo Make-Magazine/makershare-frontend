@@ -290,8 +290,7 @@ export class Auth {
 
               this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
               // if the first time, navigate to edit profile page
-
-
+              window.location.hash='';
             });
 
           } else {
