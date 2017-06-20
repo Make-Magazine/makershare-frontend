@@ -127,7 +127,7 @@ export class MakersComponent implements OnInit {
                                           ['sort_order', this.sort.sort_order]]).subscribe(data => {
         this.countAllMakers();
         this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();        
+        this.loadMoreVisibilty();
         this.loaderService.display(false);
       })
     }
@@ -170,6 +170,8 @@ export class MakersComponent implements OnInit {
       this.categoryId = null;
       this.countAllMakers();      
       this.getMakers();
+      this.countAllMakers();
+
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
@@ -178,7 +180,6 @@ export class MakersComponent implements OnInit {
       }
     }
   }
-
   selectCategory(event, term) {
     // show spinner
     this.loaderService.display(true);
