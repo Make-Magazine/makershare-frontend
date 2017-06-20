@@ -1,0 +1,12 @@
+.cat-filters {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 80%;
+	margin: auto;
+
+	.cat-filter-item {
+		display: flex;
+		align-self: center;
+	}
+}
