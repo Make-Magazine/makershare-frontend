@@ -196,6 +196,7 @@ export class HowToComponent implements OnInit {
       this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
       this.project.field_difficulty.und = this.HowToForm.controls['field_difficulty'].value;
       this.project.field_duration.und = this.HowToForm.controls['field_duration'].value;
+      this.project.field_how_to.und[0].value = data.field_how_to;
       this.emitter.emit(this.resources_files);
     });
     this.onValueChanged(this.HowToForm, this.formErrors, this.validationMessages);
