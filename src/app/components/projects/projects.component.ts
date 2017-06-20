@@ -195,6 +195,7 @@ export class ProjectsComponent implements OnInit {
     if(value == 1) {
       this.categoryId = null;
       this.pages = 0;
+      this.getCountProject();
       this.getProjects();
     } else {
       for (let cate of this.categories_childs) {
