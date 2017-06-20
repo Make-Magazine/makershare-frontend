@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
             this.userService.getUrlFromId(this.user_id).subscribe(data => {
               this.user_url=data.url;
 
-            })
+    })
 
 
     }
