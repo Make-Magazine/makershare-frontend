@@ -392,7 +392,7 @@ export class FeedbackComponent implements OnInit {
 
   SaveNode() {
     var now = Date.now();
-    var feedback = this.feedback;
+    let feedback = this.feedback;
     //console.log(feedback);
     if(this.full_name){
     feedback.title = this.feedbackForm.value.title = this.full_name + '_' + now;
@@ -406,7 +406,9 @@ export class FeedbackComponent implements OnInit {
         feedback.field_describe_bug.und[0].value = this.feedbackForm.value.field_describe_bug;
       }
       if (this.feedbackForm.value.field_browser) {
+        if(feedback.field_browser){
         feedback.field_browser.und[0].value = this.feedbackForm.value.field_browser;
+        }
       }
       if (this.feedbackForm.value.field_os) {
         feedback.field_os.und[0].value = this.feedbackForm.value.field_os;
@@ -437,7 +439,9 @@ export class FeedbackComponent implements OnInit {
     }
     else if (feedback.field_want_submit.und == "1186") {
       if (this.feedbackForm.value.field_would_like) {
-        feedback.field_would_like.und = this.feedbackForm.value.field_would_like;
+        if(feedback.field_would_like){
+          feedback.field_would_like.und = this.feedbackForm.value.field_would_like;
+        }
       } else {
         delete (feedback.field_would_like);
       }
@@ -456,10 +460,14 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_recommend_site);
     }else if (feedback.field_want_submit.und == "1187") {
       if (this.feedbackForm.value.field_better_site) {
+        if(feedback.field_better_site){
         feedback.field_better_site.und[0].value = this.feedbackForm.value.field_better_site;
+        }
       }
       if (this.feedbackForm.value.field_recommend_site) {
+        if(feedback.field_recommend_site){
         feedback.field_recommend_site.und[0].value = this.feedbackForm.value.field_recommend_site;
+        }
       }
       delete (feedback.body);
       delete (feedback.field_my_bug);

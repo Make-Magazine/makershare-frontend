@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Maker Share | 404 Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./static-assets/images/icons/m-favicon.ico">
+    <link rel="stylesheet" href="./static-assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static-assets/css/linear-style.css">
+    <style>
+    @font-face {
+      font-family: "Messina Sans SemiBold";
+      src: url("./static-assets/fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-SemiBold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-SemiBold.otf") format('opentype')
+    }
+    @font-face {
+      font-family: "Messina Sans Regular";
+      src: url("./static-assets/fonts/MessinaSansWeb-Regular.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-Regular.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-Regular.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-Regular.otf") format('opentype')
+    }
+    @font-face {
+      font-family: "Messina Sans Bold";
+      src: url("./static-assets/fonts/MessinaSansWeb-Bold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaSansWeb-Bold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaSansWeb-Bold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaSans-Bold.otf") format('opentype')
+    }
+    @font-face {
+      font-family: "Messina Modern Regular";
+      src: url("./static-assets/fonts/MessinaModernWeb-Regular.eot") format("eot"),
+         url("./static-assets/fonts/MessinaModernWeb-Regular.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaModernWeb-Regular.woff") format("woff"),
+         url("./static-assets/fonts/MessinaModern-Regular.otf") format('opentype')
+    }
+    @font-face {
+      font-family: "Messina Modern Bold";
+      src: url("./static-assets/fonts/MessinaModernWeb-Bold.eot") format("eot"),
+         url("./static-assets/fonts/MessinaModernWeb-Bold.woff2") format("woff2"),
+         url("./static-assets/fonts/MessinaModernWeb-Bold.woff") format("woff"),
+         url("./static-assets/fonts/MessinaModern-Bold.otf") format('opentype')
+    }
+      #page-404 {
+          position: fixed;
+          overflow: hidden;
+          text-align: center;
+          width: 100%;
+          height: 100vh;
+      }
+      #page-404 .image-container img {
+        width: 100%;
+        display: block;
+        height: 100%;
+        background-size: cover;
+      }
+      #page-404 .image-container::before {
+        content: '';
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.65;
+        background: url(./static-assets/images/background/background-pattern.png) 90%;
+      }
+      #page-404 .text-block {
+        position: absolute;
+        bottom: 20px;
+        right: 90px;
+        padding: 15px;
+        background-color: rgba(0,0,0,0.7);
+      }
+      #page-404 .text-block h4, #page-404 .text-block p {
+        color: #fff;
+        font-family: "Messina Sans Regular";
+        font-weight: 500;
+      }
+      #page-404 .text-block h4 {
+        font-size: 1.4rem;
+      }
+      #page-404 .text-block p {
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+      #page-404 .text-block ul {
+        margin-top: 15px;
+      }
+      #page-404 .text-block ul li {
+        display: inline-block;
+      }
+      #page-404 .text-block ul li:not(:first-of-type) a {
+        padding-left: 10px;
+        border-left: 3px solid #fff;
+      }
+      #page-404 .text-block ul li a {
+        color: #00AEEF;
+        padding-right: 10px;
+        font-size: 1.2rem;
+      }
+      #page-404 .text-block ul li a:hover {
+        text-decoration: none;
+      }
+      #page-404 .text-block input::-webkit-input-placeholder {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input:-moz-placeholder {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input::-moz-placeholder {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input:-ms-input-placeholder {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Messina Sans Modern";
+      }
+      #page-404 .text-block input:focus::-webkit-input-placeholder { color:transparent; }
+      #page-404 .text-block input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+      #page-404 .text-block input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+      #page-404 .text-block input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+      #page-404 .search-form-group {
+        position: relative;
+      }
+      #page-404 .search-form-group h3 {
+        color: white;
+        font-size: 1.8rem;
+      }
+      #page-404 .search-form-group #search-box-input-404 {
+        width: 100%;
+        color: white;
+        background: transparent;
+        border: 0 none;
+        border-bottom: 1px solid white;
+        padding: 10px;
+      }
+      #page-404 .search-form-group .search-form-group {
+        position: relative;
+        max-width: 100%;
+        margin-top: 20px;
+        width: 400px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      #page-404 .search-form-group .go-search {
+        color: #fff;
+        font-size: 1.3rem;
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+        cursor: pointer;
+      }
+      #page-404 .search-form-group .clear-search {
+        color: #fff;
+        bottom: 13px;
+        position: absolute;
+        right: 25px;
+        font-size: 1rem;
+      }
+      @media (max-width: 992px) {
+        #page-404 .text-block {
+            left: 0;
+            right: 0;
+            width: 320px;
+            margin: auto;
+            bottom: 10%;
+        }
+      }
+      @media (min-width: 1200px) {
+          #page-404 .text-block { 
+             
+          }
+      }
+
+    </style>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="mt-0">
+    <div id="page-404">
+      <div class="image-container hidden-md-down" style="background-image: url('./static-assets/images/background/404-Error-Page-Desktop.jpg');width: 100%;height: 100%;background-size: cover;">
+        <!--<img src="./static-assets/images/background/404-Error-Page-Desktop.jpg" alt="">-->
+      </div>
+      <div class="image-container hidden-sm-down hidden-lg-up" style="background-image: url('./static-assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;">
+        <!--<img src="./static-assets/images/background/404-Error-Tablet.jpg" alt="">-->
+      </div>
+      <div class="image-container hidden-md-up" style="background: url('./static-assets/images/background/404-Error-Mobile.jpg') 50% 0%;width: 100%;height: 100%;background-size: cover;">
+        <!--<img src="./static-assets/images/background/404-Error-Mobile.jpg" alt="">-->
+      </div>
+      <div class="text-block">
+        <h4>error code: 404</h4>
+        <p>Looks like we can't find this page.</p>
+        <p>But we've for sure got these pages:</p>
+        <ul class="list-unstyled">
+          <li><a href="http://preview.makershare.com">Home</a></li>
+          <li><a href="http://preview.makershare.com/projects">Projects</a></li>
+          <li><a href="http://preview.makershare.com/makers">Makers</a></li>
+        </ul>
+        <div class="search-form-group">
+          <form>
+            <input type="text" name="searchQuery" placeholder="Or... you can search here" id="search-box-input-404"/>
+            <span class="lnr lnr-chevron-right go-search" aria-hidden="true" id="static-search-term"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./static-assets/js/jquery-3.1.1.min.js"></script>
+    <script src="./static-assets/js/tether.min.js"></script>
+    <script src="./static-assets/js/bootstrap.min.js"></script>
+    <script src="./static-assets/js/custom.js"></script>
+  </body>
+</html>
