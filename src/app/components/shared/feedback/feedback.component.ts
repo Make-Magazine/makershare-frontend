@@ -406,7 +406,9 @@ export class FeedbackComponent implements OnInit {
         feedback.field_describe_bug.und[0].value = this.feedbackForm.value.field_describe_bug;
       }
       if (this.feedbackForm.value.field_browser) {
+        if(feedback.field_browser){
         feedback.field_browser.und[0].value = this.feedbackForm.value.field_browser;
+        }
       }
       if (this.feedbackForm.value.field_os) {
         feedback.field_os.und[0].value = this.feedbackForm.value.field_os;
@@ -458,10 +460,14 @@ export class FeedbackComponent implements OnInit {
       delete (feedback.field_recommend_site);
     }else if (feedback.field_want_submit.und == "1187") {
       if (this.feedbackForm.value.field_better_site) {
+        if(feedback.field_better_site){
         feedback.field_better_site.und[0].value = this.feedbackForm.value.field_better_site;
+        }
       }
       if (this.feedbackForm.value.field_recommend_site) {
+        if(feedback.field_recommend_site){
         feedback.field_recommend_site.und[0].value = this.feedbackForm.value.field_recommend_site;
+        }
       }
       delete (feedback.body);
       delete (feedback.field_my_bug);
