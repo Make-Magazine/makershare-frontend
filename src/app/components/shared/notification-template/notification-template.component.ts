@@ -19,6 +19,9 @@ export class NotificationTemplateComponent implements OnInit {
   userId;
   reply_text;
   reply_author;
+  groupMsg;
+  privateMsg;
+  firstMessage = false;
 
   constructor(
     private router: Router,
@@ -32,7 +35,7 @@ export class NotificationTemplateComponent implements OnInit {
     if (this.notification) {
       this.notification.fullname = this.notification.first_name + ' ' + this.notification.last_name;
       this.notification.date = this.timeago(this.notification.date);
-     
+
     }
     this.messageNotifications();
 
@@ -67,12 +70,12 @@ export class NotificationTemplateComponent implements OnInit {
               this.router.navigateByUrl("/portfolio/" + url);
             });
           }
-          // open entity page
+          // open entity page 
         } else {
           if (this.notification.type == 'challenge_follow_deadline' || this.notification.type == 'new_entry_challenge') {
             this.router.navigate(["/missions", this.notification.nid]);
           } else if (this.notification.type == "new_message_sent") {
-            this.router.navigate(["/account/inbox/view", this.notification.pm_mid]);
+            this.router.navigate(["/account/inbox/view", this.messageDetails.thread_id]);
           } else {
             this.nodeService.getUrlFromId(this.notification.nid, 'project').subscribe(data => {
               this.router.navigate(['/projects/' + data]);
@@ -122,9 +125,23 @@ export class NotificationTemplateComponent implements OnInit {
       let body = { "mid": this.notification.pm_mid };
       this.mainService.post(globals.endpoint + '/maker_get_pm_author/retrieve_message_details', body).map(res => res.json()).subscribe(res => {
         this.messageDetails = res;
-        if (this.messageDetails.reply) {
-          this.reply_text = this.messageDetails.reply;
-          this.reply_author = this.messageDetails.reply_author[0].author;
+        // console.log(res)
+        //this notification equal thread notification (i mean it should be user sent you a new message)
+        if (this.notification.pm_mid == this.messageDetails.thread_id) {
+          // this is a group message between more than 2 users
+          if (this.messageDetails.group) {
+            this.groupMsg = this.messageDetails.group;
+          }
+          // this is aprivate message between to users
+          if (this.messageDetails.private) {
+            this.privateMsg = this.messageDetails.private;
+          }
+        } else {
+          // this message has reply
+          if (this.messageDetails.reply) {
+            this.reply_text = this.messageDetails.reply;
+            this.reply_author = this.messageDetails.reply_author[0].author;
+          }
         }
       });
     }

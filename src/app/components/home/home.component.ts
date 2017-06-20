@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
     this.viewService.getView('maker_homepage_api').subscribe(data =>{
       this.homeCards = data;
 
-      this.meta.setTitle(`Maker Share`);
+      this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
       this.meta.setTag('og:image', '/assets/logo.png');
-      this.meta.setTag('og:description', 'Maker Share Home Page');
+      this.meta.setTag('og:description', 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.');
       this.loaderService.display(false);
       // for (let r of data)
       // if(r.type=="project"){
