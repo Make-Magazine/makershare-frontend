@@ -115,7 +115,6 @@ export class MakersComponent implements OnInit {
       ['sort_order', this.sort.sort_order],
       ['category', this.categoryId]]).subscribe(data => {
         this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();
         this.loaderService.display(false);
         if (this.makers.length == 0) {
           this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
@@ -126,7 +125,6 @@ export class MakersComponent implements OnInit {
       ['sort_by', this.sort.sort_by],
       ['sort_order', this.sort.sort_order]]).subscribe(data => {
         this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();
         this.loaderService.display(false);
       })
     }
@@ -148,7 +146,6 @@ export class MakersComponent implements OnInit {
     });
   }
   countCategory(term) {
-    console.log(term);
     this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
     this.nameCat = term.name;
     let body = {
@@ -156,20 +153,17 @@ export class MakersComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
       this.makersCount = res['_body'].replace(']', '').replace('[', '')
-      console.log(this.makersCount)
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
     this.getMakers();
   }//end function
   selectParent(value) {
-    console.log(value);
     this.childCategory = [];
     if (value == 1) {
       this.pages == 0;
       this.categoryId = null;
       this.getMakers();
-      this.countCategory(value);
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
@@ -179,7 +173,6 @@ export class MakersComponent implements OnInit {
     }
   }
   selectCategory(event,term) {
-  
     // show spinner
     this.loaderService.display(true);
     this.categoryId = event.target.id;
@@ -191,12 +184,11 @@ export class MakersComponent implements OnInit {
   }
 
   loadMoreVisibilty() {
-    if (this.makersCount <= this.makers.length) {
-      this.hideloadmore = true;
-    } else if (this.makersCount > this.makers.length) {
+    if (this.makersCount >= this.makers.length) {
       this.hideloadmore = false;
+    } else if (this.makersCount < this.makers.length) {
+      this.hideloadmore = true;
     }
-    
   }
   sortBy(type) {
     this.makers = [];
