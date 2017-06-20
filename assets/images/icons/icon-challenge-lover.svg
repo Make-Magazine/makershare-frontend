@@ -1,0 +1,14 @@
+<svg width="30" height="37" viewBox="0 0 30 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon-challenge-lover</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-579 -352)" figma:type="canvas">
+<g id="icon-challenge-lover" style="mix-blend-mode:normal;" figma:type="symbol">
+<g id="icon-challenge-lover" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(579 352.204)" fill="#4F4F4F" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 30 0L 30 27.6832L 15 36.061L 0 27.6832L 0 0ZM 22.6008 17.4831C 24.4664 15.7751 24.4664 13.0059 22.6008 11.2979C 20.735 9.58995 17.7102 9.58995 15.8445 11.2979L 15.0001 12.0711L 14.1555 11.2979C 12.2898 9.58995 9.26495 9.58997 7.39923 11.2979C 5.53357 13.0059 5.53357 15.7751 7.39929 17.4831L 8.24384 18.2562L 15 24.4413L 21.7562 18.2562L 22.6008 17.4831Z"/>
+</defs>
+</svg>
