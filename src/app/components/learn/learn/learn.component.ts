@@ -69,7 +69,7 @@ export class LearnComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountWorkshop();
-    console.log(this.countWorkshop)
+    // console.log(this.countWorkshop)
     if (this.countWorkshop == this.learns.length) {
       this.hideloadmoreworkshop = true;
 
