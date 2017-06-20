@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   ) {
 
     auth.handleAuthentication();
-
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
