@@ -111,9 +111,11 @@ export class LikeComponent implements OnInit {
     })
   }
   goToProfile(path: string) {
-
-    this.router.navigate(['/portfolio/', path]);
-
+    if(window.location.href.indexOf('portfolio') != -1){
+      window.location.href = '/portfolio/'+path;
+    }else{
+      this.router.navigate(['/portfolio/', path]);
+    }
   }
   /* function like */
   likeThis(e: Event) {
