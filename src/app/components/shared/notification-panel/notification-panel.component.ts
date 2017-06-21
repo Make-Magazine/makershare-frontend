@@ -73,6 +73,7 @@ export class NotificationPanelComponent implements OnInit {
   }
 
   lastSeen() {
+    this.notifications = [];
     this.userService.getStatus().subscribe(data => {
       if(data.user.uid != 0 && this.notifications.length > 0 ){
         this.statisticsService.notificationSetLastSeen(data.user.uid, this.notifications[0].mid).subscribe();
