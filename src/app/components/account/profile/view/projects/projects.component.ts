@@ -26,7 +26,7 @@ export class ProjectsComponent implements OnInit {
   @Input('userFullName') userFullName;
   page_arg;
   countProject = 0;
-  hideloadmoreproject = false;
+  hideloadmoreproject = true;
 
   userPic = false;
   profile_projects = [];
@@ -69,6 +69,7 @@ export class ProjectsComponent implements OnInit {
     ];
     this.viewService.getView('profile_projects_grid', args).subscribe(res => {
       this.profile_projects = this.profile_projects.concat(res);
+      this.loadMoreVisibilty();
       this.profileContent = true;
 
     }, err => {
@@ -92,7 +93,7 @@ export class ProjectsComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     this.getCountProject();
-    if (this.countProject == this.profile_projects.length) {
+    if (this.countProject <= this.profile_projects.length) {
       this.hideloadmoreproject = true;
 
     } else if (this.countProject > this.profile_projects.length) {
