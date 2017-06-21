@@ -3,6 +3,7 @@ import { ViewService, UserService, MainService } from '../../../../../../d7servi
 import { ProjectCardPortfolio } from '../../../../../../models';
 import { Observable } from "rxjs";
 import { Router } from '@angular/router';
+import * as globals from '../../../../../../d7services/globals';
 
 @Component({
   selector: 'portfolio-tab',
@@ -22,7 +23,7 @@ export class PortfolioTabComponent implements OnInit {
   hideloadmoreproject = true;
   countProject: number;
   isLoaded = false;
-
+  projectsCountPublic1 = this.projectsCountPublic;
 
   constructor(
     private viewService: ViewService,
@@ -32,7 +33,7 @@ export class PortfolioTabComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.getCounts();
     this.UpdateProjects(0)
   }
 
@@ -49,10 +50,11 @@ export class PortfolioTabComponent implements OnInit {
       } else {
         this.Projects = this.Projects.concat(projects);
         // console.log( this.Projects)
-        this.pages++;
+        //this.pages++;
       }
-      this.loadMoreVisibilty();
+      this.getCounts();
     });
+
   }
 
   SaveProjectsOrder() {
@@ -63,6 +65,37 @@ export class PortfolioTabComponent implements OnInit {
       this.UpdateProjects(1);
     });
   }
+  /*get count public */
+  getCounts() {
+    let userId = localStorage.getItem('user_id');
+
+    let body = {
+      "uid": userId,
+    };
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
+      this.projectsCountPublic = res['_body'].replace(']', '').replace('[', '')
+      this.loadMoreVisibilty();
+
+    }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    });
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_private', body).subscribe(res => {
+      this.projectsCountPrivate = res['_body'].replace(']', '').replace('[', '')
+      this.loadMoreVisibilty();
+
+    }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    });
+    this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_draft', body).subscribe(res => {
+      this.projectsCountDraft = res['_body'].replace(']', '').replace('[', '')
+      this.loadMoreVisibilty();
+
+    }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    });
+
+  }
+
   /* function load more  */
   loadMoreProject() {
     this.pages++;
@@ -72,20 +105,15 @@ export class PortfolioTabComponent implements OnInit {
   // Function to control load more button
   loadMoreVisibilty() {
     // get the challenges array count
-    // this.getCountProject();
-    // console.log(this.countProject)
-    // console.log(this.projects.length)
-    // if(this.status==370){this.countProject=this.projectsCountPublic}
+
     if (this.status == 370) { this.countProject = this.projectsCountPublic }
 
     if (this.status == 371) { this.countProject = this.projectsCountPrivate }
     if (this.status == 1115) { this.countProject = this.projectsCountDraft }
-    // console.log(this.countProject)
-    // console.log(this.Projects.length)
+
     if (this.countProject <= this.Projects.length) {
       this.hideloadmoreproject = true;
     } else if (this.countProject > this.Projects.length) {
-      //  setTimeout(10000);
       this.hideloadmoreproject = false;
     }
   }
