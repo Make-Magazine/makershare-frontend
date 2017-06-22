@@ -25,7 +25,7 @@
             </div>
             <div class="maker-info">
               <div class="name-badge d-flex justify-content-between">
-                <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="userProfile(card.first_name,card.last_name)">{{card.first_name}} {{card.last_name}}</a></h4>
+                <h4 class="user-name" *ngIf="(card.first_name) && (card.last_name)"><a (click)="getProfile()">{{card.first_name}} {{card.last_name}}</a></h4>
               </div>
               <h4 class="user-name" *ngIf="(!card.first_name) && (!card.last_name)"><a href="#">{{card.name}}</a></h4>
               <p class="user-nickname"><a href="#">{{card.nickname}}</a></p>
