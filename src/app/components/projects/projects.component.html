@@ -17,13 +17,13 @@
             <div class="dropdown-group">
               <i class="dropdownIcon lnr lnr-chevron-down"></i>
               <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortProjects($event.target.value)">
-                <option value="0" disabled class="btn" disabled>Sort By</option>
-                <option value="1" class="btn">Most recent</option>
-                <option value="2" class="btn">Oldest</option>
-                <option value="3" class="btn">Title A-Z</option>
-                <option value="4" class="btn">Title Z-A</option>
-                <option value="5" class="btn">Most liked</option>
-                <option value="6" class="btn">Most viewed</option>
+                <option value="_none" disabled class="btn" disabled>Sort By</option>
+                <option value="created_2" class="btn">Most recent</option>
+                <option value="created_1" class="btn">Oldest</option>
+                <option value="title" class="btn">Title A-Z</option>
+                <option value="title_1" class="btn">Title Z-A</option>
+                <option value="count" class="btn">Most liked</option>
+                <option value="php" class="btn">Most viewed</option>
               </select>
             </div>
           </div>

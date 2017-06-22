@@ -1,81 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
-import { ISorting } from '../../models/makers/sorting';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { MetaService } from '@nglibs/meta';
+import { SortBySortingSet, SortingSet } from '../../models';
 
 @Component({
   selector: 'app-makers',
-  templateUrl: './makers.component.html',
-  styles: [`
-  
-  `]
+  templateUrl: './makers.component.html'
 })
 export class MakersComponent implements OnInit {
 
+  CurrentSortSet:SortingSet = {
+    sort_by:"random",
+    sort_order:"ASC",
+  };
+  SortBy:SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
+
   makers = [];
   pages: number = 0;
-  page_arg
-  ActionName = "Sort";
-  sort: ISorting = {
-    sort_by: "random",
-    sort_order: "ASC",
-    pageNo: 0
-  };
   makersCount;
   hideloadmore = true;
   all_categories = [];
   categories_childs = [];
   categories_parents = [];
-  sortingSet = {
-    'randomized': {
-      'sort_order': "ASC",
-      'sort_by': "random",
-      'ActionName': "Sort",
-    },
-    'mostProjects': {
-      'sort_order': "DESC",
-      'sort_by': "php_1",
-      'ActionName': "Most projects",
-    },
-    'mostRecent': {
-      'sort_order': "DESC",
-      'sort_by': "created",
-      'ActionName': "Newest",
-    },
-    'sortAsc': {
-      'sort_order': "ASC",
-      'sort_by': "field_first_name_value_1",
-      'ActionName': "Title A-Z",
-    },
-    'sortDesc': {
-      'sort_order': "DESC",
-      'sort_by': "field_first_name_value",
-      'ActionName': "Title Z-A",
-    },
-    'mostLiked': {
-      'sort_order': "DESC",
-      'sort_by': "php_2",
-      'ActionName': "Most likes",
-    },
-    'mostViewed': {
-      'sort_order': "DESC",
-      'sort_by': "php",
-      'ActionName': "Most views",
-    },
-  };
-  sort_functions = [
-    'dummy',
-    'randomized',
-    'mostProjects',
-    'mostRecent',
-    'sortAsc',
-    'sortDesc',
-    'mostLiked',
-    'mostViewed',
-  ];
+
   CurrentActiveParentIndex;
   CurrentActiveChildIndex;
   nameCat;
@@ -109,28 +59,14 @@ export class MakersComponent implements OnInit {
     if (this.pages == 0) {
       this.makers = [];
     }
-    if (this.categoryId) {
-      this.viewService.getView('makers', [['page', this.pages],
-      ['sort_by', this.sort.sort_by],
-      ['sort_order', this.sort.sort_order],
-      ['category', this.categoryId]]).subscribe(data => {
-        this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();
-        this.loaderService.display(false);
-        if (this.makers.length == 0) {
-          this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
-        }
-      })
-    } else {
-      this.viewService.getView('makers', [['page', this.pages],
-                                          ['sort_by', this.sort.sort_by],
-                                          ['sort_order', this.sort.sort_order]]).subscribe(data => {
-        this.countAllMakers();
-        this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();
-        this.loaderService.display(false);
-      })
-    }
+    this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
+      this.makers = this.makers.concat(data);
+      this.loadMoreVisibilty();
+      this.loaderService.display(false);
+      if (this.makers.length == 0) {
+        this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
+      }
+    });
   }
   getMakerCategories() {
     this.viewService.getView('projects_categories').subscribe((categories) => {
@@ -187,6 +123,7 @@ export class MakersComponent implements OnInit {
     this.categoryId = event.target.id;
     this.countCategory(term)
   }
+
   loadMoreMakers() {
     this.pages++;
     this.getMakers();
@@ -199,15 +136,15 @@ export class MakersComponent implements OnInit {
       this.hideloadmore = false;
     }
   }
-  sortBy(type) {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = this.sortingSet[type].sort_order;
-    this.sort.sort_by = this.sortingSet[type].sort_by;
-    this.ActionName = this.sortingSet[type].ActionName;
-    this.getMakers();
-  }
+
   sortMakers(sort) {
-    this.sortBy(this.sort_functions[sort]);
+    if(sort == "_none") return;
+    this.pages = 0;
+    this.CurrentSortSet.sort_order = "DESC";
+    if(sort == "field_first_name_value_1" || sort == "random"){
+      this.CurrentSortSet.sort_order = "ASC";
+    }
+    this.CurrentSortSet.sort_by = sort;
+    this.getMakers();
   }
 }
