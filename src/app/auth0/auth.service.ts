@@ -249,6 +249,7 @@ export class Auth {
   // Call this method in app.component
   // if using path-based routing
   public handleAuthentication(): void {
+    var self = this;
     this.lock.on('authenticated', (authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
 
@@ -263,6 +264,7 @@ export class Auth {
           if (profile.email_verified == true) {
             this.userService.auth0_authenticate(data).subscribe(res => {
               if (res.user.uid != 0) {
+
                 localStorage.setItem('access_token', authResult.accessToken);
                 localStorage.setItem('id_token', authResult.idToken);
                 localStorage.setItem('user_id', res.user.uid);
@@ -273,13 +275,17 @@ export class Auth {
                 //localStorage.setItem('user_photo', res.user_photo);
 
                 // first time - redirection to profile edit page
+                // console.log(res.first_time);
+                // console.log(self, this);
 
                 if (res.first_time == true) {
+                  setTimeout(function() {
+                    self.router.navigate(['/portfolio/']);
+                  }, 1000);
 
-                  this.router.navigate(['/portfolio']);
 
                 } else {
-
+                  this.router.navigate(['/']);
                 }
 
 
@@ -326,7 +332,7 @@ export class Auth {
             return;
           }
           this.setSession(authResult);
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
         });
       });
   }
