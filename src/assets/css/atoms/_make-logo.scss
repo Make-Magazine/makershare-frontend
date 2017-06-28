@@ -1,0 +1,13 @@
+.make-logo {
+	width: 120px; // default desktop width
+	@if $beta {
+		margin-bottom: 15px;
+	}
+	@else {
+		margin-bottom: 0px;
+	}
+
+	// @include phone() {
+	// 	width: 90px;
+	// }
+}

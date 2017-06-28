@@ -1,0 +1,99 @@
+// ///////////////////
+// card organism
+@import "variables";
+// ///////////////////
+.card {
+	background: $white;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+	// ///////////////////
+	// card image
+	.card-image, .info-top {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		background-size: cover;
+		background-position: 100% 75%;
+		transition: background-color 0.3s ease;
+		background-color: transparent;
+		cursor: pointer;
+
+		&.alt { // card-image selector plus alt
+			opacity: 0;
+			transition: opacity 1.3s ease;
+		}
+
+		&:hover {
+			.alt { // child .alt of .info-top
+				background-color: $card-hover;
+				background-blend-mode: overlay;
+				opacity: 1;
+			}
+			.card-description-long {
+				opacity: 1;
+				pointer-events: initial;
+			}
+		}
+	}
+	// ///////////////////
+
+	// ///////////////////
+	// badges
+	.badge-group {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+	// ///////////////////
+
+	// ///////////////////
+	// info bottom
+	.info-bottom {
+		padding: $badge-height 1rem 1.5rem;
+	}
+	// ///////////////////
+
+	// ///////////////////
+	// info top
+	.info-top {
+		color: $white;
+		.flex-text-container {
+			display: flex;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 1rem;
+			right: 1rem;
+			align-content: center;
+		}
+		.card-description-long {
+			position: absolute;
+			opacity: 0;
+			transition: opacity 0.5s ease;
+			pointer-events: none;
+
+			font-size: 2rem;
+			line-height: 2.5rem;
+
+			align-self: center;
+		}
+	}
+	// ///////////////////
+
+	// ///////////////////
+	// social stats
+	.social-stat-group {
+
+	}
+	// ///////////////////
+}
+
+
+// ///////////////////
+// imports
+@import "card-states";
+// ///////////////////

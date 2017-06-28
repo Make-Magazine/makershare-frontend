@@ -1,0 +1,19 @@
+.social-stat {
+	i, span, .icon, .info {
+		display: inline-block;
+		font-size: 1.2rem;
+	}
+	span.icon {
+		font-weight: bold;
+		color: $dark-grey;
+	}
+	i.icon {
+		width: 30px;
+		height: 40px;
+		color: $dark-grey;
+	}
+
+	.info {
+		color: $medium-grey;
+	}
+}
