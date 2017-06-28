@@ -296,6 +296,42 @@ footer {
 
 .width-fix {padding: 0;}
 
+.has-dropdown {
+    position: relative;
+
+    &:hover {
+        .dropdown-menu {
+            display: block;
+            margin-top: 0; // remove the gap so it doesn't close
+        }
+    }
+}
+
+nav .project-button {
+    width: 43px;
+    height: 43px;
+    .btn {
+        width: 40px;
+        height: 40px;
+        padding: 1rem !important;
+        line-height: 7px;
+    }
+}
+
+.dropdown-menu.rel {
+    left: -1rem;
+    width: 340px;
+    top: 90%;
+    padding: 1rem 0;
+}
+
+.dropdown-toggle.hover:hover {
+    + .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+}
+
 .user-card {
     .profile-pic-container {
         .maker-photo {
@@ -523,7 +559,7 @@ footer {
 /* Notification menue in header */
 .dropdown-notification{
     width: 330px;
-    height: 408px;
+    // height: 408px;
     overflow-y: auto;
     max-width: 350px;
     max-height: 408px;

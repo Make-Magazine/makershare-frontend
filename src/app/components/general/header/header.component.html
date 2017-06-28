@@ -6,7 +6,7 @@
               justify-content-md-start 
               align-items-center
               navbar-toggleable-sm 
-              flex-row">
+              flex-row" style="background-color: #e9e9e9;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#MainNav" aria-controls="MainNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,8 +15,16 @@
     <div class="log-block d-flex flex-row flex-last ml-auto align-items-center">
       <ul class="list-unstyled login-block">
         <li *ngIf="!auth.authenticated()"><a (click)="auth.login()">Join / Log in</a></li>
+        <li class="project-button button-container-main-1" *ngIf="auth.authenticated()">
+          <a class="btn btn-main btn-sharp" [routerLink]="['/projects/create']">
+            +
+          </a>
+        </li>
+        <li class="search-icon">
+          <a id="search-icon" (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
+        </li>
         <li *ngIf="auth.authenticated()">
-          <app-notification-panel></app-notification-panel>
+          
         </li>
         <li class="min-user-img" *ngIf="auth.authenticated()">
           <div ngbDropdown class="d-inline-block account-controls dropdown">
@@ -31,37 +39,9 @@
               <button class="dropdown-item" [routerLink]="['/account/collection/bookmark']">Bookmarks</button>
               <button class="dropdown-item" [routerLink]="['/account/settings/notifications']">Account Settings</button>
               <button class="dropdown-item" (click)="auth.logout()">Logout</button>
+              <hr />
+              <app-notification-panel></app-notification-panel>
             </div>
-          </div>
-        </li>
-        <li class="search-icon">
-          <a id="search-icon" (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
-        </li>
-        <li class="nav-item dropdown hamburger-menu">
-          <a href="#" class="nav-link dropdown-toggle navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
-            aria-expanded="false">
-            <img src="./assets/images/icons/hamburger.png" alt="">
-          </a>
-          <div class="dropdown-menu" id="makerMenu" aria-labelledby="makerMenu">
-            <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>
-            <a [routerLink]="['projects/create']" class="dropdown-item add-project mobile-menu-item">Add a Project</a>
-            <hr class="line-mobile">
-            <a [routerLink]="['makers']" class="dropdown-item mobile-menu-item">Makers</a>
-            <a [routerLink]="['projects']" class="dropdown-item mobile-menu-item">Projects</a>
-            <a [routerLink]="['showcases']" class="dropdown-item mobile-menu-item">Showcases</a>
-            <a [routerLink]="['missions']" class="dropdown-item mobile-menu-item">Missions</a>
-            <!--<a [routerLink]="['workshops']"  class="dropdown-item mobile-menu-item">Workshops</a>-->
-            <hr class="line-mobile">
-            <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
-            <a [routerLink]="['guidelines']" class="dropdown-item">Community Guidelines</a>
-            <a [routerLink]="['badges']" class="dropdown-item">About Badges</a>
-            <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
-            <a [routerLink]="['about-us']" class="dropdown-item">About Us</a>
-            <!--<a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>-->
-            <hr class="line-mobile">
-            <a class="dropdown-item beta-feedback">
-              <app-feedback></app-feedback>
-            </a>
           </div>
         </li>
       </ul>
@@ -83,6 +63,34 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['missions']">Missions</a>
         </li>
+        <li class="nav-item has-dropdown">
+          <!-- <a class="nav-link" [routerLink]="['missions']">About</a> -->
+           <a href="#" class="nav-link dropdown-toggle hover navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            About
+          </a>
+          <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
+            <!-- <a class="close-hamburger"><img src="./assets/images/icons/close.png"></a> -->
+            <a [routerLink]="['projects/create']" class="dropdown-item add-project mobile-menu-item">Add a Project</a>
+            <hr class="line-mobile">
+            <a [routerLink]="['makers']" class="dropdown-item mobile-menu-item">Makers</a>
+            <a [routerLink]="['projects']" class="dropdown-item mobile-menu-item">Projects</a>
+            <a [routerLink]="['showcases']" class="dropdown-item mobile-menu-item">Showcases</a>
+            <a [routerLink]="['missions']" class="dropdown-item mobile-menu-item">Missions</a>
+            <!--<a [routerLink]="['workshops']"  class="dropdown-item mobile-menu-item">Workshops</a>-->
+            <hr class="line-mobile">
+            <a [routerLink]="['make-intel']" class="dropdown-item">Make + Intel</a>
+            <a [routerLink]="['guidelines']" class="dropdown-item">Community Guidelines</a>
+            <a [routerLink]="['badges']" class="dropdown-item">About Badges</a>
+            <a [routerLink]="['why-portfolio']" class="dropdown-item">Why Makers Need Portfolios</a>
+            <a [routerLink]="['about-us']" class="dropdown-item">About Us</a>
+            <!--<a [routerLink]="['show-and-tell']" class="dropdown-item">Documenting Your Work</a>-->
+            <hr class="line-mobile">
+            <a class="dropdown-item beta-feedback">
+              <app-feedback></app-feedback>
+            </a>
+          </div>
+        </li>
         <li class="nav-item">
           <a class="nav-link disabled coming-soon">Learning<span class="coming-soon-text">Coming soon</span></a>
         </li>
@@ -90,11 +98,6 @@
           <a class="nav-link color-text" *ngIf="auth.authenticated()" (click)="auth.logout()">Log Out</a>
         </li>
       </ul>
-    </div>
-    <div class="project-button button-container-main-1" *ngIf="auth.authenticated()">
-      <a class="btn btn-main btn-sharp" [routerLink]="['/projects/create']">
-        + Add a Project
-      </a>
     </div>
   </nav>
 

@@ -75,11 +75,17 @@ header.main-header {
       header.main-header .login-block li .btn {
         padding: 0 10px; }
       header.main-header .login-block li img {
-        width: 30px;
-        height: 30px; }
+        width: 40px;
+        height: 40px; }
       header.main-header .login-block li.search-icon {
-        width: 20px;
         margin-left: 15px; }
+        header.main-header .login-block li.search-icon a {
+          width: 40px;
+          height: 40px;
+          display: block; }
+        header.main-header .login-block li.search-icon img {
+          width: 40px;
+          height: 40px; }
       header.main-header .login-block li.hamburger-menu {
         margin-left: 15px; }
         header.main-header .login-block li.hamburger-menu a img {
@@ -2402,6 +2408,31 @@ footer {
 .width-fix {
   padding: 0; }
 
+.has-dropdown {
+  position: relative; }
+  .has-dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; }
+
+nav .project-button {
+  width: 43px;
+  height: 43px; }
+  nav .project-button .btn {
+    width: 40px;
+    height: 40px;
+    padding: 1rem !important;
+    line-height: 7px; }
+
+.dropdown-menu.rel {
+  left: -1rem;
+  width: 340px;
+  top: 90%;
+  padding: 1rem 0; }
+
+.dropdown-toggle.hover:hover + .dropdown-menu {
+  display: block;
+  margin-top: 0; }
+
 .user-card .profile-pic-container .maker-photo {
   display: block;
   width: 80px;
@@ -2574,7 +2605,6 @@ footer {
 /* Notification menue in header */
 .dropdown-notification {
   width: 330px;
-  height: 408px;
   overflow-y: auto;
   max-width: 350px;
   max-height: 408px; }
@@ -11365,9 +11395,9 @@ iframe {
   .community-guidelines-page .icons-section .icons-container .left-side {
     padding: 27px 20px; } }
 @media only screen and (min-width: 769px) {
-  header.main-header .login-block li.hamburger-menu .mobile-menu-item {
+  header.main-header .mobile-menu-item {
     display: none !important; }
-  header.main-header .login-block li.hamburger-menu .line-mobile {
+  header.main-header .line-mobile {
     display: none !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .front .lone-card {
