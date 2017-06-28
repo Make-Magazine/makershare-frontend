@@ -1,0 +1,51 @@
+.card-owner-meta {
+	@extend .clearfix;
+	.card-owner-media, .card-owner-meta-info {
+		float: left;
+	}
+
+	.card-owner-meta-info {
+		max-width: calc(100% - 60px - 2rem); // width of media and margins
+	}
+
+	.card-owner-media {
+		width: 60px;
+		height: auto;
+		margin-right: 1rem;
+	}
+	.card-title {
+		font-size: 1.8rem;
+		display: block;
+		margin-bottom: 1rem;
+	}
+	.card-owner-link {
+		display: block;
+	}
+
+	.card-owners-group {
+
+	}
+
+	.card-meta-row {
+		margin-bottom: .625rem;
+		overflow: hidden;
+
+		&-description, &-icon {
+			float: left;
+		}
+
+		&-icon {
+			font-size: 1rem;
+			margin-right: 0.25rem;
+			width: 1.5rem;
+			position: relative;
+			top: 0;
+			line-height: 1.35rem;
+			padding-left: 1px; // fix for lnr icons cutoff
+		}
+
+		&-description {
+			max-width: calc(90% - 1.5rem);
+		}
+	}
+}

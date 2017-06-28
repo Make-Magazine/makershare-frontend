@@ -1,67 +1,56 @@
-<div class="maker-card card" *ngIf="card" (click)="goToProfile(card.profile_url)" (mouseover)='over()' (mouseleave)='leave()'>
-  <!--<div class="card-type-grey">
-    <div class="type-layer-2">
-      Maker
-    </div>
-  </div>-->
-  <div class="image-top">
-    <div class="overlay"></div>
-    <img *ngIf="card.photo_lg" [class.show]="!swtichImage" class="maker-card-photo step" src="{{card.photo_lg}}"
-      alt="">
-    <img *ngIf="latestPorjectImg" [class.show]="swtichImage" class="latest-project-image step" src="{{latestPorjectImg}}"
-      alt="">
-    <img *ngIf="!card.photo_lg" [class.show]="!swtichImage" class="step" src="./assets/images/Gears-Grey.png" alt="">
-  </div>
-  <div class="card-block d-flex flex-column justify-content-around">
-    <div class="icons-side-project d-flex flex-row" *ngIf="badges">
-      <div class="project-icon" *ngFor="let badge of badges;">
-        <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
-      </div>
-    </div>
-    <h4 class="maker-name" *ngIf="card.first_name && card.last_name" innerHTML="{{card.first_name}} {{card.last_name}}"></h4>
-    <h4 class="maker-name" *ngIf="!card.first_name && !card.last_name">{{card.username}}</h4>
-    
-    <div class="card-maker-meta-row" *ngIf="card.nickname">
-      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-user"></span>
-      <p class="maker-nickname" *ngIf="card.nickname" innerHTML="{{card.nickname}}"></p>
-    </div>
-    
-    <div class="card-maker-meta-row" *ngIf="card.location_locality && card.country && card.country == 'United States'">
-      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-map-marker"></span>
-      <p class="maker-city">{{card.location_locality}}, {{card.city}}</p>
-    </div>
-
-    <div class="card-maker-meta-row" *ngIf="card.location_locality && card.country && card.country != 'United States'">
-      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-map-marker"></span>
-      <p class="maker-city" >{{card.location_locality}}, {{card.country}}</p>
-    </div>
-
-    <div class="card-maker-meta-row descripe-container" *ngIf="card.descripe_yourself">
-      <span class="lnr card-maker-meta-row-icon maker-card-ico lnr-bullhorn"></span>
-      <p class="maker-descripe" [innerHTML]="card.descripe_yourself"></p>
-    </div>
-
-
-    <div class="content-side col d-flex flex-column justify-content-start">
-      <div class="card-stats mt-auto">
-        <ul class="list-unstyled">
-          <li *ngIf="projectsCount">
-            <span *ngIf="projectsCount == 1"><b>{{projectsCount}}</b> project</span>
-            <span *ngIf="projectsCount != 1"><b>{{projectsCount}}</b> projects</span>
-          </li>
-          <!--<li>
-            <img *ngIf="card.profile_likes == 0" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
-            <img *ngIf="card.profile_likes != 0" src="./assets/images/icons/light-selected.png" class="project-likes" alt="">
-            <span *ngIf="card.profile_likes">{{card.profile_likes}}</span>
-          </li>
-          <li class="pt-1">
-            <img src="./assets/images/icons/views.png" class="project-views" alt="">
-            <span *ngIf="card.profile_views">{{card.profile_views}}</span>
-            <span *ngIf="!card.profile_views">0</span>
-          </li>-->
-
+<div class="maker-card card tall" *ngIf="card" (click)="goToProfile(card.profile_url)" (mouseover)='over()' (mouseleave)='leave()'>
+  <div class="card-image" style="background-image: url('{{card.photo_lg}}')"></div>
+  
+  <div class="card-info">
+  
+    <div class="info-top">
+  
+      <div *ngIf="latestPorjectImg" class="card-image alt" style="background-image: url('{{latestPorjectImg}}')"></div>
+  
+      <div class="flag project">project</div>
+      <div *ngIf="badges">
+        <ul class="badge-group" *ngFor="let badge of badges;">
+          <li class="badge {{badge}}" ngbTooltip="{{badge?.title}}"></li>
+          <!-- <li class="badge badge-awards"></li> -->
+         <!--  <li class="badge badge-community-engagement"></li>
+          <li class="badge badge-maker-faire"></li> -->
         </ul>
       </div>
+    
+      <div class="flex-text-container">
+        <p class="card-description-long">pollack biconjugate rencounter thump Listerize seductiveness Mass chiseler maenadic weichselwood siliculous semiroyal diplosphenal festive portionize synthesization Naaman conodont toilsomeness rebankrupt infrustrably finely brieflessness dichotomically</p>
+      </div>
+    
+    </div>
+    
+    <div class="info-bottom">
+      <div class="card-owner-meta">
+        <img class="card-owner-media" src="http://lorempixel.com/400/400/people"/>
+        <div class="card-owner-meta-info">
+          <span class="card-title">Lorem Ipsum Total Wow</span>
+          <div class="card-owners-group">
+            <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);" innerHTML="{{card.first_name}} {{card.last_name}}"></a>
+            <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
+          </div>
+        </div>
+
+      </div>
+      <ul class="social-stat-group">
+        <li class="social-stat">
+          <i class="fa fa-lightbulb-o"></i>
+          <span class="info">54678</span>
+        </li>
+        <li class="social-stat">
+          <i class="fa fa-eye"></i>
+          <span class="info">176834</span>
+        </li>
+        <li class="social-stat" *ngIf="projectsCount">
+          <span class="icon">{{projectsCount}}</span>
+          <span class="info" *ngIf="projectsCount != 1">Projects</span>
+          <span class="info" *ngIf="projectsCount == 1">Project</span>
+        </li>
+      </ul>
+
     </div>
   </div>
 </div>
