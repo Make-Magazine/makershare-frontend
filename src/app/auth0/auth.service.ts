@@ -272,6 +272,7 @@ export class Auth {
                 localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
                 this.profilePictureService.update(res.user_photo);
+
                 //localStorage.setItem('user_photo', res.user_photo);
 
                 // first time - redirection to profile edit page
@@ -284,9 +285,11 @@ export class Auth {
                   }, 1000);
 
 
-                } else {
+                } else  if (res.user_photo.indexOf('profile-default') < 0) {
                   this.router.navigate(['/']);
                 }
+
+
 
 
               } else {
@@ -297,6 +300,13 @@ export class Auth {
               this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
               // if the first time, navigate to edit profile page
               window.location.hash='';
+              if(res.user_photo.indexOf('profile-default.png') >= 0) {
+                console.log('doesnt have a photo');
+                this.notificationBarService.create({ message: 'Please upload a profile photo now to get started creating projects.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
+                setTimeout(function(context) {
+                    context.router.navigate(['/portfolio/']);
+                }, 500, this);
+              }
             });
 
           } else {
