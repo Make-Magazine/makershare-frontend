@@ -2,11 +2,17 @@
 // card organism
 @import "variables";
 // ///////////////////
+.maker-card-wrapper {
+	min-height: calc(100% + 2rem);
+	margin-bottom: 2rem;
+}
 .card {
 	background: $white;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
+	min-height: 100%;
+
 
 	// ///////////////////
 	// card image
@@ -42,6 +48,14 @@
 	// ///////////////////
 
 	// ///////////////////
+	// card info (just to override bootstrap)
+	// ///////////////////
+	.card-info {
+		background: white;
+		border: 0px;
+	}
+	
+	// ///////////////////
 	// badges
 	.badge-group {
 		position: absolute;
@@ -53,7 +67,7 @@
 	// ///////////////////
 	// info bottom
 	.info-bottom {
-		padding: $badge-height 1rem 1.5rem;
+		padding: $badge-height 1rem;
 	}
 	// ///////////////////
 
@@ -96,4 +110,5 @@
 // ///////////////////
 // imports
 @import "card-states";
+@import "card-mission";
 // ///////////////////
