@@ -15,7 +15,9 @@
 			top: initial;
 		}
 		.social-stat-group {
-			margin-top: 1.5rem;
+			position: absolute;
+    		bottom: 1rem;
+    		left: 1rem;
 		}
 		.card-description-long {
 			font-size: 1.5rem;
@@ -63,9 +65,82 @@
 			margin-top: -1.2rem;
 		}
 	}
+
+	// ///////////////////
+	// missions - wide
+	&.mission.wide {
+		padding-top: 0;
+		.info-top {
+			width: 45%;
+		}
+		.card-info {
+			margin-left: 45%;
+		    width: 55%;
+		    padding-bottom: 56.25%;
+		    height: 0;
+		}
+		.info-bottom {
+			padding: 3rem;
+		}
+		.card-title {
+			margin-bottom: 1.5rem;
+		}
+		.social-stat-group {
+			position: absolute;
+		    bottom: 1.5rem;
+		    left: calc(45% + 3rem);
+		    width: 55%;
+		}
+		.card-image {
+			width: 45%;
+			left: 0;
+			padding-bottom: 0;
+			height: 100%;
+			&.alt {
+				width: 100%;
+			}
+		}
+	}
+	// ///////////////////
+	// mission - tall
+	&.mission.tall {
+		padding-top: 56.25%;
+		.card-image {
+			padding-bottom: 56.25%;
+		}
+		.info-bottom {
+			position: relative;
+			padding-top: 5rem;
+		}
+		.social-stat-group {
+			margin-top: 2.5rem;
+		}
+	}
+	// ///////////////////
+	// mission - short
+	&.mission.short {
+		.card-description-long {
+			display: none;
+		}
+	}
 	// ///////////////////
 	// short
 	&.short {
+		&:hover {
+			.card-image {
+				opacity: 0.3;
+			}
+		}
+		.card-image {
+			height: 100%;
+    		z-index: 0;
+    		opacity: 0.1;
+    		transition: all 0.3s ease;
+		}
+		.card-info {
+			z-index: 1;
+			position: relative;
+		}
 		.badge-group {
 			top: 0;
 			right: 0;
@@ -78,6 +153,13 @@
 		}
 		.social-stat-group {
 			margin-top: 1.5rem;
+		}
+	}
+	// ///////////////////
+	// maker - short
+	&.maker.short {
+		.card-image {
+			height: 0;
 		}
 	}
 	// ///////////////////
