@@ -224,17 +224,14 @@ $(window).on('load', function () {
 	
 });
 $(window).scroll(function(){
-  var sticky = $('header'),
+  var $sticky = $('header'),
       scroll = $(window).scrollTop();
 if (jQuery(window).width() >= 526) {
-  if (scroll >= 100 && !sticky.hasClass('shrink')) {
-		sticky.addClass('shrink');
-		$('html,body').animate().stop();
+  if (scroll >= 1 && !$sticky.hasClass('shrink')) {
+		$sticky.addClass('shrink');
 	} 
-  if (scroll < 100 && sticky.hasClass('shrink')) {
-		sticky.removeClass('shrink');
-		$('html,body').animate({ scrollTop: 0 }, 'slow');
-		
+  if (scroll < 1 && $sticky.hasClass('shrink')) {
+		$sticky.removeClass('shrink');
 	}
 }
 });
