@@ -1383,46 +1383,46 @@ footer {
       line-height: 2.5rem;
       align-self: center; }
 
-.card.tall {
+.card.tall, .card.grid {
   padding-top: 80%; }
-  .card.tall .card-image, .card.tall .info-top {
+  .card.tall .card-image, .card.tall .info-top, .card.grid .card-image, .card.grid .info-top {
     padding-bottom: 80%; }
-  .card.tall .badge-group {
+  .card.tall .badge-group, .card.grid .badge-group {
     bottom: -2.275rem;
     left: 1rem;
     right: initial;
     top: initial; }
-  .card.tall .social-stat-group {
+  .card.tall .social-stat-group, .card.grid .social-stat-group {
     position: absolute;
     bottom: 1rem;
     left: 1rem; }
-  .card.tall .card-description-long {
+  .card.tall .card-description-long, .card.grid .card-description-long {
     font-size: 1.5rem;
     line-height: 1.7rem; }
-.card.wide {
+.card.wide, .card.showcase {
   padding-top: 56.25%; }
-  .card.wide .card-image, .card.wide .info-top {
+  .card.wide .card-image, .card.wide .info-top, .card.showcase .card-image, .card.showcase .info-top {
     padding-bottom: 56.25%; }
-  .card.wide .info-bottom {
+  .card.wide .info-bottom, .card.showcase .info-bottom {
     padding: 1rem; }
-    .card.wide .info-bottom:hover .card-owners-group {
+    .card.wide .info-bottom:hover .card-owners-group, .card.showcase .info-bottom:hover .card-owners-group {
       left: -1rem; }
-  .card.wide .card-owner-media {
+  .card.wide .card-owner-media, .card.showcase .card-owner-media {
     display: none; }
-  .card.wide .card-owner-meta {
+  .card.wide .card-owner-meta, .card.showcase .card-owner-meta {
     position: relative; }
-  .card.wide .card-owners-group {
+  .card.wide .card-owners-group, .card.showcase .card-owners-group {
     background: #fff;
     position: absolute;
     left: -100%;
     bottom: 100%;
     padding: 1rem;
     transition: all 0.5s ease; }
-    .card.wide .card-owners-group .card-owner-link {
+    .card.wide .card-owners-group .card-owner-link, .card.showcase .card-owners-group .card-owner-link {
       margin-bottom: .625rem; }
-  .card.wide .card-owner-meta .card-title {
+  .card.wide .card-owner-meta .card-title, .card.showcase .card-owner-meta .card-title {
     margin-bottom: 0; }
-  .card.wide .social-stat-group {
+  .card.wide .social-stat-group, .card.showcase .social-stat-group {
     float: right;
     margin-top: -1.2rem; }
 .card.mission.wide {

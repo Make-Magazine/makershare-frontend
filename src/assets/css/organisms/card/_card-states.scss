@@ -3,7 +3,7 @@
 .card {
 	// ///////////////////
 	// tall
-	&.tall {
+	&.tall, &.grid {
 		padding-top: $card_tallRatio;
 		.card-image, .info-top {
 			padding-bottom: $card_tallRatio;
@@ -26,7 +26,7 @@
 	}
 	// ///////////////////
 	// wide
-	&.wide {
+	&.wide, &.showcase {
 		padding-top: $card_wideRatio;
 		.card-image, .info-top {
 			padding-bottom: $card_wideRatio;
