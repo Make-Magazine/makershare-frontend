@@ -4,11 +4,7 @@
     <div class="info-top">
       <div class="card-image alt" [style.background-image]="'url('+latestPorjectImg+')'"></div>
       <div class="flag maker">maker</div>
-       <div *ngIf="badges">
-        <ul class="badge-group" *ngFor="let badge of badges;">
-          <li class="badge {{badge}}" ngbTooltip="{{badge?.title}}"></li>
-        </ul>
-      </div>
+       <app-card-badges [badges]="badges"></app-card-badges>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
