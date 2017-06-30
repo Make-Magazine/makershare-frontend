@@ -24,6 +24,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
+import { CardBadges } from './card-badges/card-badges.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
@@ -121,6 +122,7 @@ export function ResponsiveDefinition() {
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
+    CardBadges,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -166,6 +168,7 @@ export function ResponsiveDefinition() {
     ShowcaseGeneralCardComponent,
     MessageModalComponent,
     MakerCardComponent,
+    CardBadges,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
     ChallengeSearchCardComponent,
