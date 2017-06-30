@@ -46,7 +46,7 @@
       </div>
     </header>
     <div class="projects-grid row">
-      <app-maker-card class="maker-card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+      <app-maker-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid" [class]="'tall'"></app-maker-card>
     </div>
   </div>
   <div class="text-center" *ngIf="!hideloadmore">

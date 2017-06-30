@@ -13,6 +13,7 @@ export class ProjectCardComponent implements OnInit {
   @Input() nid;
   @Input() view: string;
   @Input() front;
+  @Input() class;
 
   badges = [];
   project = {};
@@ -62,6 +63,10 @@ export class ProjectCardComponent implements OnInit {
         this.project['maker_project_count'] = data[0];
       });
 
+      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
+        this.project['maker_url'] = '/portfolio/'+res.url;
+      });
+
     });
   }
 
@@ -87,10 +92,8 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['portfolio/', path]);
   }
   getProfile() {
-    if (this.project['uid']) {
-      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
-        this.router.navigate(['/portfolio/' + res.url]);
-      });
-    }
+    // if (this.project['uid']) {
+      
+    // }
   }
 }
