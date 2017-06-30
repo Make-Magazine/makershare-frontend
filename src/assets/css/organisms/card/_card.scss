@@ -2,7 +2,7 @@
 // card organism
 @import "variables";
 // ///////////////////
-.maker-card-wrapper {
+.card-wrapper {
 	min-height: calc(100% + 2rem);
 	margin-bottom: 2rem;
 }
@@ -80,9 +80,13 @@
 			position: absolute;
 			top: 0;
 			bottom: 0;
-			left: 1rem;
-			right: 1rem;
+			left: 0;
+			padding-left: 1rem;
+			right:0;
+			padding-right: 1rem;
 			align-content: center;
+			color: $white;
+			cursor: pointer;
 		}
 		.card-description-long {
 			position: absolute;

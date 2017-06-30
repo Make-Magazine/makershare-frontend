@@ -1,13 +1,14 @@
-<div class="card tall" *ngIf="project">
+<div *ngIf="project" class="card project {{class}}">
   <div class="card-image" [style.background-image]="'url('+project.cover_photo+')'"></div>
   <div class="card-info">
     <div class="info-top">
     <div class="card-image alt" [style.background-image]="'url('+project.cover_photo+')'"></div> <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">project</div>
       <app-card-badges [badges]="badges"></app-card-badges>
-      <div class="flex-text-container">
-        <p class="card-description-long">pollack biconjugate rencounter thump Listerize seductiveness Mass chiseler maenadic weichselwood siliculous semiroyal diplosphenal festive portionize synthesization Naaman conodont toilsomeness rebankrupt infrustrably finely brieflessness dichotomically</p>
-      </div>
+      <a class="flex-text-container" href="projects/{{project.path}}">
+        <p class="card-description-long" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
+        <p class="card-description-long" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
+      </a>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
@@ -15,7 +16,7 @@
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{project.project_name}}"></span>
           <div class="card-owners-group">
-            <a class="card-owner-link" href="" (click)="getProfile()" innerHTML="By {{project.first_name}} {{project.last_name}}"></a>
+            <a class="card-owner-link" href="{{project.maker_url}}" innerHTML="By {{project.first_name}} {{project.last_name}}"></a>
           </div>
         </div>
       </div>
