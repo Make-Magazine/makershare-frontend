@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService, MainService, ProfileService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
@@ -38,6 +38,7 @@ export class MakersComponent implements OnInit {
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
     private meta: MetaService,
+    private profileService: ProfileService,
   ) { }
 
   ngOnInit() {
@@ -60,6 +61,10 @@ export class MakersComponent implements OnInit {
       this.makers = [];
     }
     this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
+      // console.log(data[0]);
+      // this.profileService.getUser(parseInt(data[i].uid)).subscribe(res => { 
+      //   console.log(res.user_photo.index('default.png') >= 0);
+      // });   
       this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
       this.loaderService.display(false);
