@@ -120,11 +120,7 @@
       </div>
       <div class="container">
         <div class="projects-grid row">
-          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of makers; let i = index;">
-            <!--<app-project-card [view]="view" [nid]="project.nid"></app-project-card>-->
-            <app-maker-card [uid]="maker.uid"></app-maker-card>
-            <!--<div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>-->
-          </div>
+          <app-maker-card class="card-wrapper project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of makers;" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
         </div>
       </div>
       <div class="text-center pt-3 pb-1" *ngIf="!hideloadmore">

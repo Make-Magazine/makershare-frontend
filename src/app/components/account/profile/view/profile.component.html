@@ -62,14 +62,8 @@
 								<!-- describe yourself-->
 								<hr class="hideData">
 								<!-- start Badges-->
-								<div class="icons hideData" *ngIf="badges !=''">
-									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
-										<p class="badges">{{badge?.title}}</p><br>
-									</div>
-									<hr>
-								</div>
+								<!--  -->
+								<app-card-badges [badges]="badges"></app-card-badges>
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div class="bio hideData">
@@ -265,14 +259,7 @@
 								<!-- describe yourself-->
 								<hr class="hideData 2" *ngIf="ProfileInfo.describe_yourself">
 								<!-- start Badges-->
-								<div class="icons hideData" *ngIf="badges !=''">
-									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
-										<p class="badges">{{badge?.title}}</p><br>
-									</div>
-									<hr *ngIf="badges !=''">
-								</div>
+								<app-card-badges [badges]="badges"></app-card-badges>
 								<!--End Badges -->
 								<!-- Start Bio -->
 
