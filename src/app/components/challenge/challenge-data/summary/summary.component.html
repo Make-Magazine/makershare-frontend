@@ -1,0 +1,61 @@
+<div class="challenge-summary">
+  <div class="summary-content">
+    <div *ngIf="projectsCount>0">
+      <div *ngIf="challenge">
+        <div *ngIf="challenge.display_entries =='1'">
+          <!--start if -->
+          <div class="filters">
+            <div class="container">
+
+              <div class="row float-right">
+                <div class="entries-count btn">
+                  <p *ngIf="projectsCount == 1">{{projectsCount}} Entry</p>
+                  <p *ngIf="projectsCount > 1">{{projectsCount}} Entries</p>
+                </div>
+                <div class="sorting-filter dropdown">
+                  <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-challenges" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
+                    </button>
+                  <div class="dropdown-menu" aria-labelledby="filter-challenges">
+                    <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
+                    <a class="dropdown-item" (click)="oldest($event)" class="btn">Oldest</a>
+                    <a class="dropdown-item" (click)="sortAsc($event)" class="btn">Title A-Z</a>
+                    <a class="dropdown-item" (click)="sortDesc($event)" class="btn">Title Z-A</a>
+                    <a class="dropdown-item" (click)="mostLiked($event)" class="btn">Most Liked</a>
+                    <a class="dropdown-item" (click)="mostForked($event)" class="btn">Most Forked</a>
+                  </div>
+                </div>
+                <!-- End sorting-filter -->
+              </div>
+              <!-- End row -->
+            </div>
+          </div>
+          <!-- End filters -->
+        </div>
+        <!--end if -->
+      </div>
+      <!--end if -->
+    </div>
+    <!--end if projects-->
+    <div class="entries" *ngIf="challenge">
+      <div class="entries-section" *ngIf="challenge.display_entries =='1'">
+        <div *ngIf="projectsChallenge" class="projects-grid  row">
+          <!-- Start Project Card -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let project of projectsChallenge">
+            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+            <app-project-vote [nodeNid]="project.nid"></app-project-vote>
+          </div>
+          <!-- End Project Card -->
+        </div>
+      </div>
+      <div class="text-center pt-3 pb-1">
+        <div *ngIf="!hideLoadMore">
+          <a class="btn btn-load-more" *ngIf="!hideLoadMore" (click)="loadMoreProject($event)">Load more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End summary-content -->
+</div>
+<!-- End challenge-summary -->
