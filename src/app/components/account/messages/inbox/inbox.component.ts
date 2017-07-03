@@ -206,6 +206,7 @@ export class InboxComponent implements OnInit {
       }
 
       this.msg = this.msg.concat(msg_arr);
+      console.log(this.msg)
       // console.log(this.msg)
       //two participent or more
       for (let i = 0; i < this.msg.length; i++) {
@@ -357,6 +358,15 @@ export class InboxComponent implements OnInit {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
   }
+
+  //  getProfile() {
+  //   if (this.card.uid) {
+  //     this.userService.getUrlFromId(this.card.uid).subscribe(res => {
+  //       this.router.navigate(['/portfolio/' + res.url]);
+  //       console.log(res)
+  //     });
+  //   }
+  // }
 
 
 }

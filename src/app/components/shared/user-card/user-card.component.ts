@@ -59,7 +59,7 @@ export class UserCardComponent implements OnInit {
     // service to get profile card 
     this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      // console.log( this.card);
+       console.log( this.card);
       
       this.isCurrentUser();
     }, err => {
@@ -190,6 +190,15 @@ export class UserCardComponent implements OnInit {
     userProfile(fName, lName) {
     var name = fName + '-' + lName;
     this.router.navigate(['/portfolio/', name]);
+  }
+
+  getProfile() {
+    if (this.card.uid) {
+      this.userService.getUrlFromId(this.card.uid).subscribe(res => {
+        this.router.navigate(['/portfolio/' + res.url]);
+        console.log(res)
+      });
+    }
   }
 
 }
