@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService,UserService } from '../../../d7services';
+import { ViewService, FlagService, UserService } from '../../../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 @Component({
   selector: 'app-follow',
@@ -28,15 +28,15 @@ export class FollowComponent implements OnInit {
   countFollowers = 0;
   ngOnInit() {
     this.flagService.flagCount(this.nodeNid, 'follow').subscribe(response => {
-      if(response['count'] >=1){
-      this.countFollowers = response['count'];
-      this.countNumber.emit(this.countFollowers);
-      }else{
-                this.countFollowers = 0;
-      this.countNumber.emit(this.countFollowers);
+      if (response['count'] >= 1) {
+        this.countFollowers = response['count'];
+        this.countNumber.emit(this.countFollowers);
+      } else {
+        this.countFollowers = 0;
+        this.countNumber.emit(this.countFollowers);
       }
     }, err => {
-         
+
 
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
@@ -75,7 +75,7 @@ export class FollowComponent implements OnInit {
           this.countFollowers--;
           this.countNumber.emit(this.countFollowers);
           this.HideLoadMore.emit();
-          this.nodeNid=this.nodeNid;
+          this.nodeNid = this.nodeNid;
         }, err => {
           //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
