@@ -44,6 +44,7 @@ import { SharedButtonsComponent } from './shared-buttons/shared-buttons.componen
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
 import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
+import { SocialStats } from './social-stats/social-stats.component';
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -147,6 +148,7 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
+    SocialStats
   ],
   exports: [
     CommentComponent,
@@ -190,7 +192,8 @@ export function ResponsiveDefinition() {
     MakerCkeditorComponent,
     ImageCropperComponent,
     Ng2FileDropDirective,
-    ReverseArray
+    ReverseArray,
+    SocialStats
   ],
 })
 export class SharedModule {

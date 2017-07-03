@@ -1,3 +1,80 @@
+setTimeout(function() {
+	if($('.profile-page').length) {
+		console.log('yes');
+		var st,
+			$ot = $('.profile-sidebar'),
+			ot = $ot.offset().top,
+			hh = 0,
+			pad = 30,
+			$c = $('.card', $ot),
+			cd;
+		$(document).on('scroll', function() {
+			st = $('body').scrollTop();
+
+			console.log(st, ot);
+			if(st > 1) {
+				hh = $('.site-header').outerHeight(true);
+			}
+
+			if(hh > 0 && (st + hh + pad) >= ot) {
+				$c.addClass('short').removeClass('tall');
+				$c.css({
+					'position': 'fixed',
+					'top': hh + pad, // cannot used the cached version
+					'left': $ot.offset().left,
+					'width': $ot.width(),
+					'z-index': 99
+				});
+				ch = $c.outerHeight();
+
+				$ot.addClass('collapsed').css({
+					'padding-top': ch *2
+				});
+				// $c.css({
+				// 	'position': 'fixed',
+				// 	'top': st + hh + pad,
+				// 	'left': $ot.offset().left
+				// });
+
+			} else {
+				$ot.removeClass('collapsed').removeAttr('style');
+				$c.addClass('tall').removeClass('short').removeAttr('style');
+			}
+		});
+	}
+},5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// olllllld javascript
+////////////////////////
+
+
 
 $(window).bind("load resize slid.bs.carousel", function () {
 	var imageHeight = $(".active .holder").height();

@@ -99,6 +99,10 @@ a, .link {
   font-size: 1.1rem;
   line-height: 1.6rem; }
 
+p, .paragraph {
+  font-size: 1.2rem;
+  line-height: 1.4rem; }
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1140,6 +1144,8 @@ nav.secondary {
   color: #4f4f4f; }
 .social-stat .info {
   color: #828282; }
+.social-stat.right {
+  float: right; }
 
 .social-stat-group .social-stat, .social-stat-group li {
   display: inline-block;
@@ -1175,6 +1181,81 @@ nav.secondary {
     padding-left: 1px; }
   .card-owner-meta .card-meta-row-description {
     max-width: calc(90% - 1.5rem); }
+
+.profile-social-links {
+  margin-top: 15px; }
+  .profile-social-links .social-container {
+    width: 20%; }
+  .profile-social-links li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top; }
+  .profile-social-links i.fa-star {
+    font-size: 12px;
+    color: #00AEEF;
+    display: none;
+    margin-top: 5px; }
+  .profile-social-links a.social {
+    position: relative;
+    text-align: center;
+    padding: 15px;
+    width: 35px;
+    height: 35px;
+    color: #FFFFFF;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -khtml-border-radius: 20px 20px 20px 20px; }
+    .profile-social-links a.social i {
+      font-size: 1.1rem;
+      position: absolute; }
+  .profile-social-links a.social {
+    margin: 5px 0;
+    cursor: pointer;
+    background: #4F4F4F;
+    color: #fff; }
+    .profile-social-links a.social.hackster, .profile-social-links a.social.instruct, .profile-social-links a.social.hackday {
+      padding: 5px; }
+    .profile-social-links a.social.github, .profile-social-links a.social.gitlab, .profile-social-links a.social.twitch, .profile-social-links a.social.stack {
+      padding: 5px; }
+      .profile-social-links a.social.github img, .profile-social-links a.social.gitlab img, .profile-social-links a.social.twitch img, .profile-social-links a.social.stack img {
+        -webkit-filter: invert(1);
+        filter: invert(1); }
+    .profile-social-links a.social.twitch img {
+      width: 80%;
+      padding-top: 3px; }
+    .profile-social-links a.social.thingy {
+      padding: 5px; }
+  .profile-social-links a.social:hover.fb {
+    background-color: #014c8c; }
+  .profile-social-links a.social:hover.tw {
+    background-color: #33ccff; }
+  .profile-social-links a.social:hover.pin {
+    background-color: #cc2127; }
+  .profile-social-links a.social:hover.ut {
+    background-color: #cc2127; }
+  .profile-social-links a.social:hover.ln {
+    background-color: #014c8c; }
+  .profile-social-links a.social:hover.in {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%); }
+  .profile-social-links a.social:hover.ext {
+    background-color: #fff;
+    border: 0.5px solid #4F4F4F; }
+  .profile-social-links a.social:hover.github, .profile-social-links a.social:hover.gitlab, .profile-social-links a.social:hover.twitch, .profile-social-links a.social:hover.stack {
+    background-color: #fff;
+    border: 0.5px solid #4F4F4F; }
+    .profile-social-links a.social:hover.github img, .profile-social-links a.social:hover.gitlab img, .profile-social-links a.social:hover.twitch img, .profile-social-links a.social:hover.stack img {
+      -webkit-filter: invert(0);
+      filter: invert(0); }
+  .profile-social-links a.social:hover.hackster, .profile-social-links a.social:hover.instruct, .profile-social-links a.social:hover.hackday, .profile-social-links a.social:hover.thingy {
+    background-color: #fff;
+    border: 0.5px solid #4F4F4F; }
+    .profile-social-links a.social:hover.hackster img, .profile-social-links a.social:hover.instruct img, .profile-social-links a.social:hover.hackday img, .profile-social-links a.social:hover.thingy img {
+      -webkit-filter: invert(1);
+      filter: invert(1); }
 
 .site-header {
   background: #e9e9e9;
@@ -1330,6 +1411,9 @@ footer {
   overflow: hidden;
   position: relative;
   min-height: 100%; }
+  .card * {
+    transition: all 0.6s ease;
+    -webkit-backface-visibility: hidden; }
   .card .card-image, .card .info-top {
     position: absolute;
     top: 0;
@@ -1383,6 +1467,9 @@ footer {
       line-height: 2.5rem;
       align-self: center; }
 
+.profile-container .card.maker {
+  min-height: 0; }
+
 .card.tall, .card.grid {
   padding-top: 80%; }
   .card.tall .card-image, .card.tall .info-top, .card.grid .card-image, .card.grid .info-top {
@@ -1395,7 +1482,8 @@ footer {
   .card.tall .social-stat-group, .card.grid .social-stat-group {
     position: absolute;
     bottom: 1rem;
-    left: 1rem; }
+    left: 1rem;
+    width: calc(100% - 2rem); }
   .card.tall .card-description-long, .card.grid .card-description-long {
     font-size: 1.5rem;
     line-height: 1.7rem; }
@@ -1475,7 +1563,8 @@ footer {
   top: 0;
   right: 0; }
 .card.short .info-bottom {
-  padding-top: 5.25rem; }
+  padding-top: 5.25rem;
+  padding-bottom: 0.5rem; }
 .card.short .card-description-long {
   display: none; }
 .card.short .social-stat-group {
@@ -1512,6 +1601,22 @@ footer {
   padding: 2rem; }
 
 .main-container {
-  padding-top: 107px; }
+  padding-top: 157px; }
+
+.profile-view-control-container {
+  margin-top: -2.7rem;
+  position: relative;
+  padding-bottom: 0.7rem;
+  overflow: hidden; }
+  .profile-view-control-container i {
+    font-size: 2rem;
+    cursor: pointer;
+    float: right; }
+
+.left-section {
+  border-right: 1px solid #828282; }
+
+.profile-info {
+  margin-top: 2rem; }
 
 /*# sourceMappingURL=style.css.map */

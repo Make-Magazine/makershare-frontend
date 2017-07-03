@@ -1,3 +1,8 @@
+.profile-container {
+	.card.maker {
+		min-height: 0;
+	}
+}
 // ///////////////////
 // card states
 .card {
@@ -18,6 +23,7 @@
 			position: absolute;
     		bottom: 1rem;
     		left: 1rem;
+			width: calc(100% - 2rem);
 		}
 		.card-description-long {
 			font-size: 1.5rem;
@@ -147,6 +153,7 @@
 		}
 		.info-bottom {
 			padding-top: 5.25rem;
+			padding-bottom: 0.5rem;
 		}
 		.card-description-long {
 			display: none;
