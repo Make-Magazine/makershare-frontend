@@ -59,7 +59,7 @@ export class MakersComponent implements OnInit {
     if (this.pages == 0) {
       this.makers = [];
     }
-    this.SortBy.Sort(this.pages,this.categoryId).subscribe(data => {
+    this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
       this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
       this.loaderService.display(false);

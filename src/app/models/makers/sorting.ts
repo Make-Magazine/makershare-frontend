@@ -13,11 +13,11 @@ export class SortBySortingSet{
     this._viewService = viewService;
   }
 
-  Sort(Pages:number,categoryId?:number){
+  Sort(ViewName:string ,Pages:number,categoryId?:number){
     var Params = [['page', Pages],['sort_by', this._SortSet.sort_by],['sort_order', this._SortSet.sort_order]];
     if(categoryId){
       Params.push(['category', categoryId]);
     }
-    return this._viewService.getView('makers',Params);
+    return this._viewService.getView(ViewName,Params);
   }
 }
