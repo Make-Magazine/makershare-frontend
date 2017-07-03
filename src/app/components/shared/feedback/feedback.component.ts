@@ -412,12 +412,11 @@ export class FeedbackComponent implements OnInit {
       }
       if (this.feedbackForm.value.field_os) {
         if(feedback.field_os){
-        feedback.field_os.und[0].value = this.feedbackForm.value.field_os;
+          feedback.field_os.und[0].value = this.feedbackForm.value.field_os;
         } 
     }
       if (this.feedbackForm.value.field_bug_not_in_page_) {
             feedback.field_bug_not_in_page_.und[0].url = this.feedbackForm.value.field_bug_not_in_page_;
-       // console.log(this.feedbackForm.value.field_bug_not_in_page_)
         delete (feedback.field_bug_in_page);
       } else {
        feedback.field_bug_in_page.und[0].url = this.full_url;
