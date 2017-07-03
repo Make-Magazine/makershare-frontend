@@ -16,4 +16,8 @@
 	.info {
 		color: $medium-grey;
 	}
+
+	&.right {
+		float: right;
+	}
 }
