@@ -13,6 +13,7 @@ export class MakerCardComponent implements OnInit {
 
   @Input() uid;
   @Input() state;
+  @Input() profile;
 
   badges = [];
   project = {};

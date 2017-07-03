@@ -16,6 +16,7 @@ $beta: true;
 	@import "base/base";
 	@import "base/a";
 	@import "base/typography";
+	@import "base/p";
 	// ///////////////////
 
 
@@ -51,6 +52,7 @@ $beta: true;
 @import "molecules/social-stat";
 @import "molecules/social-stat-group";
 @import "molecules/card-owner-meta";
+@import "molecules/profile-social-links";
 // ///////////////////
 // ///////////////////
 
@@ -71,5 +73,9 @@ $beta: true;
 // layout
 // ///////////////////
 @import "layout/main-container";
+@import "layout/profile-view-control-container";
+@import "layout/left-section";
+@import "layout/profile-info";
+@import "layout/profile-sidebar";
 // ///////////////////
 // ///////////////////

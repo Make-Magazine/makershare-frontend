@@ -1,4 +1,9 @@
-<a (click)="open(content)" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a>
+<!-- <a (click)="open(content)" class="btn btn-soft-grey btn-fit"><i class="fa fa-lg fa-share"></i></a> -->
+<div (click)="open(content)">
+  <i class="fa fa-share"></i>
+  <span class="info">Share</span>
+</div>
+
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-share">
     <div class="modal-header">
