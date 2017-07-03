@@ -24,23 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_project_likes'">
-        <div class="media wrapper d-flex d-row message-info w-100">
-            <div class="media-left">
-                <a>
-                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="media-body">
-                <span class="link text-capitalize" (click)="OpenNotification(notification.uid)">{{notification.first_name}}&nbsp{{notification.last_name}}</span>
-                <span> added a lightbulb to </span>
-                <span class="link">{{notification.title}}</span>.
-            </div>
-            <div class="delete">
-                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
-            </div>
-        </div>
-    </div>
+   
     <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_comment_project'">
         <div class="media wrapper d-flex d-row message-info w-100">
             <div class="media-left">
@@ -87,7 +71,25 @@
             </div>
            <div class="media-body">
                 <span class="link text-capitalize" (click)="OpenNotification(notification.uid)">{{notification.fullname}}</span>
-                <span> finish editing project </span>
+                <span> finished editing the project </span>
+                <span class="link">{{notification.title}}</span>.<br>
+                <p class="notf-date">{{notification.date}}</p>
+            </div>
+            <div class="delete">
+                <a class="lnr lnr-trash delete-message" (click)="deleteNotifications()"></a>
+            </div>
+        </div>
+    </div>
+       <div class="notification-item wrapper d-flex d-row" *ngIf="notification.type == 'new_project_likes'">
+        <div class="media wrapper d-flex d-row message-info w-100">
+            <div class="media-left">
+                <a>
+                    <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
+                </a>
+            </div>
+           <div class="media-body">
+                <span class="link text-capitalize" (click)="OpenNotification(notification.uid)">{{notification.fullname}}</span>
+                <span> liked project </span>
                 <span class="link">{{notification.title}}</span>.<br>
                 <p class="notf-date">{{notification.date}}</p>
             </div>
