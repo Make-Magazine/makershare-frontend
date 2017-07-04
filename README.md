@@ -38,17 +38,8 @@ npm cache clean
 npm install -g @angular/cli@latest
 ```
 ------------------------------
-### Build AoT
-npm run build:aot
-
-### Serve AoT
-npm run serve:aot
-
-### Build Universal
-npm run build:uni
-
-### Serve Universal
-npm run serve:uni
-
-### Build Both AoT & Universal
-npm run build:aot:uni
+### Build Univirsal and run it
+```bash
+npm run start
+```
+then navigate to http://localhost:4000
