@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 
     // loader for routing
     this.loaderService.status.subscribe((val: boolean) => {
-      // this.showLoader = val;
+      this.showLoader = val;
     });
     setTimeout(function () {
       window.scrollTo(0, 1);
