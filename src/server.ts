@@ -6,7 +6,6 @@ import { AppServerModuleNgFactory } from '../dist/ngfactory/src/app/app.server.m
 import * as express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-
 const PORT = 4000;
 
 enableProdMode();
