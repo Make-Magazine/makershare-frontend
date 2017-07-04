@@ -129,7 +129,7 @@ export class YourStoryComponent implements OnInit {
     this.meta.setTag('og:image', '/assets/logo.png');
     this.meta.setTag('og:description', ' Create Project ');
     setTimeout(function(){
-       $("html,body").animate({scrollTop: 0}, "slow");
+      //  $("html,body").animate({scrollTop: 0}, "slow");
     }, 0);
   }
 
