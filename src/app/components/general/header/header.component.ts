@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   registrationFormState: string;
   user_id;
   user_url;
+  
   constructor(
     private userService: UserService,
     private router: Router,
@@ -35,14 +36,19 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+ this.auth.IsCommuintyManager();
+  this.Manager = this.auth.IsCommuintyManager();
+
     this.Back_End_Domain = domain;
-    if(localStorage.getItem('roles')){
-      this.roles = localStorage.getItem('roles').split(',');
-      if(this.roles.indexOf('3') != -1 || this.roles.indexOf('4') != -1 || this.roles.indexOf('6') != -1 || this.roles.indexOf('7') != -1 ||
-        this.roles.indexOf('8') != -1 || this.roles.indexOf('9') != -1 || this.roles.indexOf('10') != -1){
-        this.Manager = true;
-      }
-    }
+    // if(localStorage.getItem('roles')){
+    //   this.roles = localStorage.getItem('roles').split(',');
+    //   if(this.roles.indexOf('3') != -1 || this.roles.indexOf('4') != -1 || this.roles.indexOf('6') != -1 || this.roles.indexOf('7') != -1 ||
+    //     this.roles.indexOf('8') != -1 || this.roles.indexOf('9') != -1 || this.roles.indexOf('10') != -1){
+    //     this.Manager = true;
+    //   }
+    // }
     if(localStorage.getItem('user_id')){
         this.user_id = localStorage.getItem('user_id');
             this.userService.getUrlFromId(this.user_id).subscribe(data => {
@@ -85,5 +91,6 @@ export class HeaderComponent implements OnInit {
   onNotify(event) {
     this.showSearchBox = false;
   }
+
 
 }
