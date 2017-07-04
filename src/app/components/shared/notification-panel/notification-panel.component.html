@@ -18,9 +18,11 @@
       <div *ngIf="noNotification" class="text-center pt-5">
         <p class="no-notfy">You do not have any notifications</p>
       </div>
+      <div *ngIf="!noNotification">
       <ul class="list-group">
         <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
       </ul>
+      <div>
     </div>
   </div>
 </div>
