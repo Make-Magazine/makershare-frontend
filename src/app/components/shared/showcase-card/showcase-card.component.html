@@ -17,31 +17,20 @@
           <div class="card-description">
             <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
           </div>
-
-
-
-
-          <div class="projects-count-div  1" style="color: #4f4f4f;" *ngIf="contentType == 1">
+          <div class="projects-count-div" style="color: #4f4f4f;" *ngIf="contentType == 1">
             <span class="projects-count">{{projectsCount}}
             <span *ngIf="projectsCount>1">Projects</span>
             <span *ngIf="projectsCount==0">Projects</span>
             <span *ngIf="projectsCount==1">Project</span>
             </span>
           </div>
-
-
-
-          <div class="projects-count-div  2" style="color: #4f4f4f;" *ngIf="contentType == 2">
+          <div class="projects-count-div" style="color: #4f4f4f;" *ngIf="contentType == 2">
             <span class="projects-count">{{makersCount}}
                    <span *ngIf="makersCount>1">Makers</span>
             <span *ngIf="makersCount==0">Makers</span>
             <span *ngIf="makersCount==1">Maker</span>
             </span>
           </div>
-
-
-
-
           <div class="showcase-card-footer mt-auto d-flex">
             <div class="showcase-card-footer-1 hidden-xs-down">
               <div class="button-container-main-1">
@@ -52,10 +41,9 @@
               <div class="showcase-card-count">
                 <div class=" d-flex flex-row">
                   <div class="showcase-likes">
-                    <img *ngIf="numLikes" src="./assets/images/icons/light-selected.png" alt="">
-                    <span *ngIf="numLikes">{{numLikes.count}}</span>
-                    <img *ngIf="!numLikes" src="./assets/images/icons/light-not-selected.png" alt="">
-                    <span *ngIf="!numLikes">0</span>
+                    <div class="likes-count-div" *ngIf="showcase.nid && userId">
+                      <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
+                    </div>
                   </div>
                   <div class="views-count">
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
