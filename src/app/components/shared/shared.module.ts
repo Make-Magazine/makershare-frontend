@@ -67,6 +67,7 @@ import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
+import { FollowUserComponent } from './follow-user/follow-user.component';
 
 
 let config = {
@@ -137,6 +138,7 @@ export function ResponsiveDefinition() {
     NotificationPanelComponent,
     NotificationTemplateComponent,
     SharedButtonsComponent,
+    FollowUserComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -145,10 +147,12 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
+    
   ],
   exports: [
     CommentComponent,
     FollowComponent,
+    FollowUserComponent,
     BookmarkComponent,
     LikeComponent,
     ForkComponent,
