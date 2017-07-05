@@ -30,11 +30,18 @@
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                     <span class="views-count" *ngIf="showcase.views_count">{{showcase.views_count}}</span>
                   </div>
-                  <div class="projects-count-div">
-                    <span class="projects-count" *ngIf="projectsCount">{{projectsCount}}
-                      <span *ngIf="projectsCount>1">{{projectsCount}}projects</span>
-                    <span *ngIf="projectsCount==1">{{projectsCount}}project</span>
-                    <span *ngIf="!projectsCount || projectsCount==0">0 projects</span>
+                  <div class="projects-count-div" style="color: #4f4f4f;" *ngIf="contentType == 1">
+                    <span class="projects-count">{{projectsCount}}
+            <span *ngIf="projectsCount>1">Projects</span>
+                    <span *ngIf="projectsCount==0">Projects</span>
+                    <span *ngIf="projectsCount==1">Project</span>
+                    </span>
+                  </div>
+                  <div class="projects-count-div" style="color: #4f4f4f;" *ngIf="contentType == 2">
+                    <span class="projects-count">{{makersCount}}
+                   <span *ngIf="makersCount>1">Makers</span>
+                    <span *ngIf="makersCount==0">Makers</span>
+                    <span *ngIf="makersCount==1">Maker</span>
                     </span>
                   </div>
                 </div>
