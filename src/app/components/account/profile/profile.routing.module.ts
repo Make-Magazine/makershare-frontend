@@ -8,7 +8,7 @@ import { FeedComponent } from './feed/feed.component';
 
 
 export const ProfileRouts: Routes = [
-  { path: 'feed', component: FeedComponent },
+  // { path: 'feed', component: FeedComponent },
   {
     path: '',
     children: [
