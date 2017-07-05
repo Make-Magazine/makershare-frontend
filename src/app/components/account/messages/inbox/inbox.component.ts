@@ -110,12 +110,14 @@ export class InboxComponent implements OnInit {
                 if (this.messages[key].recipient[i].recipient != this.userId) {
                   //console.log(this.messages[key].recipient[i].recipient);
                   this.user.getUser(this.messages[key].recipient[i].recipient).subscribe(res => {
+                    // console.log(res);
                     if (this.messages[key].recipient.length > 2) {
                       var temp_user = {};
                       temp_user['send_group_msg'] = true;
                       temp_user['user_photo'] = res.user_photo;
                       temp_user['first_name'] = res.first_name;
                       temp_user['last_name'] = res.last_name;
+                      temp_user['alias'] = res.path_alias;
                       temp_user['status'] = res.status;
                       this.messages[key].recivers.push(temp_user);
                     } else {
@@ -123,6 +125,7 @@ export class InboxComponent implements OnInit {
                       this.messages[key].user_photo = res.user_photo;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
+                      this.messages[key].alias = res.path_alias;
                       this.messages[key].status = res.status;
                     }
                   })
@@ -135,6 +138,7 @@ export class InboxComponent implements OnInit {
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
+                this.messages[key].alias = res.path_alias;
                 this.messages[key].status = res.status;
 
               })
@@ -152,6 +156,7 @@ export class InboxComponent implements OnInit {
                       this.messages[key].user_photo = res.user_photo;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
+                      this.messages[key].alias = res.path_alias;
                       this.messages[key].status = res.status;
                     })
                   }
@@ -162,6 +167,7 @@ export class InboxComponent implements OnInit {
                   this.messages[key].user_photo = res.user_photo;
                   this.messages[key].first_name = res.first_name;
                   this.messages[key].last_name = res.last_name;
+                  this.messages[key].alias = res.path_alias;
                   this.messages[key].status = res.status;
                 })
               }
@@ -172,6 +178,7 @@ export class InboxComponent implements OnInit {
                 this.messages[key].user_photo = res.user_photo;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
+                this.messages[key].alias = res.path_alias;
                 this.messages[key].status = res.status;
               })
             }
@@ -207,7 +214,6 @@ export class InboxComponent implements OnInit {
 
       this.msg = this.msg.concat(msg_arr);
       console.log(this.msg)
-      // console.log(this.msg)
       //two participent or more
       for (let i = 0; i < this.msg.length; i++) {
         // this.recipentCount = (this.msg[i].recipient.length) -1;
@@ -359,11 +365,11 @@ export class InboxComponent implements OnInit {
     this.router.navigate(['/portfolio/', name]);
   }
 
-  //  getProfile() {
-  //   if (this.card.uid) {
-  //     this.userService.getUrlFromId(this.card.uid).subscribe(res => {
+  //  getProfile(uid) {
+  //   if (uid) {
+  //     this.user.getUrlFromId(uid).subscribe(res => {
   //       this.router.navigate(['/portfolio/' + res.url]);
-  //       console.log(res)
+  //       // console.log(res)
   //     });
   //   }
   // }

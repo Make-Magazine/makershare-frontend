@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService } from '../../../d7services';
+import { ViewService, MainService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../../d7services/user/user.service';
+import * as globals from '../../../d7services/globals';
 
 @Component({
   selector: 'app-project-card',
@@ -24,6 +25,7 @@ export class ProjectCardComponent implements OnInit {
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     private userService: UserService,
+    private mainService: MainService
 
   ) {
     config.placement = 'bottom';
