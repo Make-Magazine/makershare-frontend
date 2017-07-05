@@ -27,10 +27,10 @@
           </div>
         </div>-->
         <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge'" class="challenge-page-data container">
-          <div class="challenges-container">
-            <app-challenge-card [challengeNid]="item.id" [front]=true></app-challenge-card>
-          </div>
+        <div *ngIf="item.type == 'challenge'" class="card-wrapper">
+          <!-- <div class="challenges-container"> -->
+            <app-challenge-card [challengeNid]="item.id" [front]=true [state]="'wide'"></app-challenge-card>
+          <!-- </div> -->
         </div>
 
         <!-- Showcase Cards -->
@@ -41,12 +41,14 @@
         </div>
 
         <!-- Maker Cards -->
-        <div *ngIf="item.type == 'maker'">
-          <app-maker-card [uid]="item.id"></app-maker-card>
+        <div class="card-wrapper" *ngIf="item.type == 'maker'">
+          <app-maker-card [uid]="item.id" [state]="'tall'"></app-maker-card>
         </div>
 
         <!-- Project Cards -->
-        <app-project-card *ngIf="item.type == 'project'" [view]="view" [nid]="item.id" [front]=true></app-project-card>
+        <div class="card-wrapper" *ngIf="item.type == 'project'">
+          <app-project-card [view]="view" [nid]="item.id" [state]="'tall'" [front]=true></app-project-card>
+        </div>
 
         <!-- Learn Cards -->
         <div *ngIf="item.type == 'learning_sequence'" class="container">

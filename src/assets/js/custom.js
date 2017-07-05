@@ -42,7 +42,8 @@ setTimeout(function() {
 			}
 		});
 	}
-},5000);
+},8000); // need a promise here instead of relying on this timeoutf
+// look into promise for dom content loaded
 
 
 
