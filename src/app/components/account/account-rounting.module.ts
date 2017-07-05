@@ -7,6 +7,7 @@ import { CollectionModule } from './collection/collection.module';
 import { AccountSettingsModule } from './account-settings/account-settings.module';
 import { MessagesModule } from './messages/messages.module';
 
+ 
 const AccountRouts: Routes = [
   {
     path: '',
@@ -14,6 +15,7 @@ const AccountRouts: Routes = [
       { path: 'collection', loadChildren: './collection/collection.module#CollectionModule',  canActivate: [AuthGuardService]},
       { path: 'settings', loadChildren: './account-settings/account-settings.module#AccountSettingsModule',  canActivate: [AuthGuardService]},
       { path: 'inbox', loadChildren: './messages/messages.module#MessagesModule',  canActivate: [AuthGuardService]},
+      
     ]
   }
 ];

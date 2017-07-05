@@ -40,7 +40,7 @@ const APP_ROUTES: Routes = [
     { path: 'makers', loadChildren: 'app/components/makers/makers.module#MakersModule' },
     { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
-    { path: 'portfolio/:name', loadChildren: './components/account/profile/profile.module#ProfileModule' },
+    // { path: 'portfolio/:name', loadChildren: './components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
     { path: 'search', loadChildren: './components/search/search.module#SearchModule' },
     { path: 'learning', loadChildren: './components/learn/learn.module#LearnModule' },
