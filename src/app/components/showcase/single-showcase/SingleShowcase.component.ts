@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { SortingSet, SortBySortingSet } from '../../../models/makers/sorting';
+import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -91,7 +91,6 @@ export class SinglShowcaseComponent implements OnInit {
       .subscribe(data => {
         this.showcase = data[0];
         this.contentType = this.showcase['showcase_type'];
-        console.log(this.contentType)
         //this.customDescription = this.showcase['description']
         //this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
         //this.meta.setTag('og:image', this.showcase['cover_photo']);
@@ -118,31 +117,31 @@ export class SinglShowcaseComponent implements OnInit {
 
 
   getProjects() {
+    //  [['nid', this.showcaseNid]]
     this.DataRetriver.Sort('showcase_projects', this.pageNumber).subscribe(data => {
+      console.log("PROJECTS");
       console.log(data);
       this.Projects = this.Projects.concat(data);
+      // hide spinner
       this.loaderService.display(false);
     }, err => {
-
+      // hide spinner
+      this.loaderService.display(false);
     });
-    // this.viewService.getView('showcase_projects', [['page', this.pageNumber],['nid', this.showcaseNid], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
-    //   .subscribe(data => {
-    //     this.Projects = this.Projects.concat(data);
-    //     //this.loadMoreVisibilty();
-    //     // hide spinner
-    //     this.loaderService.display(false);
-    //   });
 
   }
 
 
   getMakers() {
     this.DataRetriver.Sort('showcase_makers', this.pageNumber).subscribe(data => {
+      console.log("MAKERS");
       console.log(data);
       this.Makers = this.Makers.concat(data);
+      // hide spinner
       this.loaderService.display(false);
     }, err => {
-
+      // hide spinner
+      this.loaderService.display(false);
     });
   }
 
