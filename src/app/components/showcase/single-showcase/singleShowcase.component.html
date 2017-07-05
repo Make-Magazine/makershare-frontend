@@ -120,13 +120,8 @@
         </div>
       </div>
       <div class="container">
-<<<<<<< HEAD
-        <div class="projects-grid row" >
-          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of makers; let i = index;">
-=======
         <div class="projects-grid row" *ngIf="contentType == 2">
           <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of Makers; let i = index;">
->>>>>>> 889692293b5d2d96c4e663f4a7cd3afe5acb1b1e
             <app-maker-card [uid]="maker.uid"></app-maker-card>
           </div>
         </div>
