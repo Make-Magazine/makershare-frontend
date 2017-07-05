@@ -3,7 +3,6 @@ import { MainService } from '../main/main.service';
 import { Observable } from "rxjs";
 import * as globals from '../globals';
 import { Http, RequestOptionsArgs ,Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { Promise} from "@types/q";
 
 
 
