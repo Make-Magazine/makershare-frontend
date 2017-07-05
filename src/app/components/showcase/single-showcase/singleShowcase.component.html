@@ -23,7 +23,6 @@
             <div class="card-container">
               <div class="card">
                 <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
-                <!--<h3 class="card-title">{{showcase.showcase_name}}</h3>-->
                 <div class="card-description">
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
