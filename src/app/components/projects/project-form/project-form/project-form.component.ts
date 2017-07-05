@@ -410,7 +410,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   SetProjectOwner() {
     let owner: field_collection_item_member = {
       field_team_member: { und: [{ target_id: localStorage.getItem("user_name") + ' (' + localStorage.getItem("user_id") + ')' }] },
-      field_membership_role: { und: [{ value: 'admin' }] },
+      field_membership_role: { und: [{ value: 'Project Lead' }] },
     }
     this.project.SetField(owner, 'field_maker_memberships');
     this.ProjectLoaded = true;

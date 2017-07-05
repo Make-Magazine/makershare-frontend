@@ -22,7 +22,8 @@
           <div class="col-lg-8 col-md-6 col-sm-12 content-container">
             <div class="card-container">
               <div class="card">
-                <h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>
+                <!--<h3 class="card-title" (click)="ShowSingleShowcase(showcase.nid)">{{showcase.showcase_name}}</h3>-->
+                <h3 class="card-title">{{showcase.showcase_name}}</h3>
                 <div class="card-description">
                   <p [innerHTML]="showcase.description" *ngIf="showcase.description"></p>
                 </div>
@@ -127,15 +128,15 @@
         <div class="projects-grid row" *ngIf="contentType == 1">
           <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of Projects; let i = index;">
             <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
-            <div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>
+            <!--<div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>-->
           </div>
         </div>
       </div>
-      <div class="text-center pt-3 pb-1" *ngIf="!hideloadmore">
+      <!--<div class="text-center pt-3 pb-1" *ngIf="!hideloadmore">
         <div *ngIf="!hideloadmore">
           <a *ngIf="!hideloadmore" class="btn btn-load-more" (click)="loadmore()">Load more</a>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
   <section>
