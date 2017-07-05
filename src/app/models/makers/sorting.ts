@@ -4,6 +4,11 @@ export interface SortingSet{
   sort_order: "ASC" | "DESC",
   sort_by: string,
 }
+export interface ViewProperty{
+  filterName: string,
+  fitlerValue: number|string;
+  // Value Can be number or string
+}
 
 export class SortBySortingSet{
   private _SortSet:SortingSet;
