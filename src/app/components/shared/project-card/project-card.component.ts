@@ -79,13 +79,6 @@ export class ProjectCardComponent implements OnInit {
   }
   ShowProjectDetails(path) {
     this.router.navigate(['/projects/', path]);
-
-    let body = {
-      "nid": this.nid,
-    };
-    this.mainService.post(globals.endpoint + '/feed/make_seen/', body).map(res => res.json()).subscribe(res => {
-      // console.log(res)
-    })
   }
   userProfile(fName, lName) {
     var name = fName + '-' + lName;
