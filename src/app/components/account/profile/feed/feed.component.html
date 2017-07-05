@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5" *ngIf="projects">Seen 
+      <div *ngFor="let project of projects">
+        <div *ngIf="project.status == 'seen'"> 
+          <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+   <div class="col-md-5" *ngIf="projects">Not seen
+      <div *ngFor="let project of projects">
+        <div *ngIf="project.status == 'not_seen'">
+          <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
