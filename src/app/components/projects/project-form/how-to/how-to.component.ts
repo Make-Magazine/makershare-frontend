@@ -104,7 +104,7 @@ export class HowToComponent implements OnInit {
     });
     this.buildForm();
     setTimeout(function(){
-       $("html,body").animate({scrollTop: 0}, "slow");
+      //  $("html,body").animate({scrollTop: 0}, "slow");
     }, 0);
   }
 
