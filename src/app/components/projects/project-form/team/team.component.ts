@@ -70,7 +70,7 @@ export class TeamComponent implements OnInit {
     let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(this.project.field_maker_memberships.und[0].field_team_member.und[0].target_id);
     this.InvitationEmails = new UserInvitations(uid, this.project.nid);
     setTimeout(function(){
-       $("html,body").animate({scrollTop: 0}, "slow");
+      //  $("html,body").animate({scrollTop: 0}, "slow");
     }, 0);
   }
   
@@ -142,6 +142,7 @@ export class TeamComponent implements OnInit {
       field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
       field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
     };
+    console.log(member);
     if(!this.project.field_maker_memberships.und[index])
       this.project.field_maker_memberships.und.push(member);
     control.valueChanges.subscribe(values=>{
