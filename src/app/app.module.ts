@@ -46,6 +46,8 @@ import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-port
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 import { CookieModule } from 'ngx-cookie';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 let config = {
   breakPoints: {
     xs: { max: 575 },
@@ -101,6 +103,7 @@ let config = {
     // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     MetaModule.forRoot(),
     ShareButtonsModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   entryComponents: [],
   bootstrap: [AppComponent],
