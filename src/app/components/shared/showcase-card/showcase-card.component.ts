@@ -83,8 +83,8 @@ export class ShowcaseCardComponent implements OnInit {
     });
 
   }
-  ShowSingleShowcase(path) {
-    this.router.navigate(['/showcases/', path]);
+  ShowSingleShowcase() {
+    this.router.navigate(['/showcases/', this.showcase['path']]);
   }
 
   countLikes() {
