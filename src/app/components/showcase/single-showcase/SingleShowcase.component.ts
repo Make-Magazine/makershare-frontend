@@ -108,24 +108,19 @@ export class SinglShowcaseComponent implements OnInit {
     if (this.contentType == 1) {
       // this case for projects
       this.viewService.getView('showcase_projects_sort', [['nid', this.showcaseNid]]).subscribe(data => {
-        console.log(data.length)
-        
         this.contentCount = data.length;
       });
 
     } else if (this.contentType == 2) {
       // this case for makers
       this.viewService.getView('showcase_makers_sort', [['nid', this.showcaseNid]]).subscribe(data => {
-        console.log(data.length)
         this.contentCount = data.length;
-        console.log(this.contentCount)
       });
 
     }
   }
   getProjects() {
     this.DataRetriver.Sort('showcase_projects', this.pageNumber, this.showcaseNid).subscribe(data => {
-      console.log(data);
       this.Projects = this.Projects.concat(data);
       this.loadMoreVisibilty(this.Projects.length);
       this.loaderService.display(false);
