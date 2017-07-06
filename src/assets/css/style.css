@@ -1414,6 +1414,16 @@ footer {
   .card * {
     transition: all 0.6s ease;
     -webkit-backface-visibility: hidden; }
+  .card .card-image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden; }
+    .card .card-image-grid app-maker-photo {
+      flex: 0 33.3333%; }
+      .card .card-image-grid app-maker-photo img {
+        width: 100%;
+        height: auto; }
   .card .card-image, .card .info-top {
     position: absolute;
     top: 0;
@@ -1423,6 +1433,7 @@ footer {
     background-size: cover;
     background-position: 100% 75%;
     transition: background-color 0.3s ease;
+    background-repeat: no-repeat;
     background-color: transparent;
     cursor: pointer; }
     .card .card-image.alt, .card .info-top.alt {
@@ -1466,51 +1477,56 @@ footer {
       font-size: 2rem;
       line-height: 2.5rem;
       align-self: center; }
+      .card .info-top .card-description-long p {
+        font-size: 2rem;
+        line-height: 2.5rem; }
 
 .profile-container .card.maker {
   min-height: 0; }
 
-.card.tall, .card.grid {
+.card.tall, .card.grid, .card.showcase.tall {
   padding-top: 80%; }
-  .card.tall .card-image, .card.tall .info-top, .card.grid .card-image, .card.grid .info-top {
+  .card.tall .card-image, .card.tall .info-top, .card.grid .card-image, .card.grid .info-top, .card.showcase.tall .card-image, .card.showcase.tall .info-top {
     padding-bottom: 80%; }
-  .card.tall .badge-group, .card.grid .badge-group {
+  .card.tall .badge-group, .card.grid .badge-group, .card.showcase.tall .badge-group {
     bottom: -2.275rem;
     left: 1rem;
     right: initial;
     top: initial; }
-  .card.tall .social-stat-group, .card.grid .social-stat-group {
+  .card.tall .social-stat-group, .card.grid .social-stat-group, .card.showcase.tall .social-stat-group {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
     width: calc(100% - 2rem); }
-  .card.tall .card-description-long, .card.grid .card-description-long {
+  .card.tall .card-description-long, .card.tall .card-description-long p, .card.grid .card-description-long, .card.grid .card-description-long p, .card.showcase.tall .card-description-long, .card.showcase.tall .card-description-long p {
     font-size: 1.5rem;
     line-height: 1.7rem; }
-.card.wide, .card.showcase {
+.card.showcase.tall .card-image .maker-photo {
+  opacity: 0.6; }
+.card.wide, .card.showcase:not(.tall) {
   padding-top: 56.25%; }
-  .card.wide .card-image, .card.wide .info-top, .card.showcase .card-image, .card.showcase .info-top {
+  .card.wide .card-image, .card.wide .info-top, .card.showcase:not(.tall) .card-image, .card.showcase:not(.tall) .info-top {
     padding-bottom: 56.25%; }
-  .card.wide .info-bottom, .card.showcase .info-bottom {
+  .card.wide .info-bottom, .card.showcase:not(.tall) .info-bottom {
     padding: 1rem; }
-    .card.wide .info-bottom:hover .card-owners-group, .card.showcase .info-bottom:hover .card-owners-group {
+    .card.wide .info-bottom:hover .card-owners-group, .card.showcase:not(.tall) .info-bottom:hover .card-owners-group {
       left: -1rem; }
-  .card.wide .card-owner-media, .card.showcase .card-owner-media {
+  .card.wide .card-owner-media, .card.showcase:not(.tall) .card-owner-media {
     display: none; }
-  .card.wide .card-owner-meta, .card.showcase .card-owner-meta {
+  .card.wide .card-owner-meta, .card.showcase:not(.tall) .card-owner-meta {
     position: relative; }
-  .card.wide .card-owners-group, .card.showcase .card-owners-group {
+  .card.wide .card-owners-group, .card.showcase:not(.tall) .card-owners-group {
     background: #fff;
     position: absolute;
     left: -100%;
     bottom: 100%;
     padding: 1rem;
     transition: all 0.5s ease; }
-    .card.wide .card-owners-group .card-owner-link, .card.showcase .card-owners-group .card-owner-link {
+    .card.wide .card-owners-group .card-owner-link, .card.showcase:not(.tall) .card-owners-group .card-owner-link {
       margin-bottom: .625rem; }
-  .card.wide .card-owner-meta .card-title, .card.showcase .card-owner-meta .card-title {
+  .card.wide .card-owner-meta .card-title, .card.showcase:not(.tall) .card-owner-meta .card-title {
     margin-bottom: 0; }
-  .card.wide .social-stat-group, .card.showcase .social-stat-group {
+  .card.wide .social-stat-group, .card.showcase:not(.tall) .social-stat-group {
     float: right;
     margin-top: -1.2rem; }
 .card.mission.wide {
@@ -1590,6 +1606,8 @@ footer {
   .card.mission .card-description-long {
     display: block;
     opacity: 1; }
+  .card.mission .card-info {
+    background: transparent; }
 
 .user-menu .profile-photo {
   width: 3.5rem;

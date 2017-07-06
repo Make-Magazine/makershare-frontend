@@ -8,7 +8,7 @@
 .card {
 	// ///////////////////
 	// tall
-	&.tall, &.grid {
+	&.tall, &.grid, &.showcase.tall {
 		padding-top: $card_tallRatio;
 		.card-image, .info-top {
 			padding-bottom: $card_tallRatio;
@@ -25,14 +25,29 @@
     		left: 1rem;
 			width: calc(100% - 2rem);
 		}
-		.card-description-long {
+		.card-description-long, .card-description-long p {
 			font-size: 1.5rem;
 			line-height: 1.7rem;
 		}
 	}
 	// ///////////////////
+	// showcase
+	// special state for the homepage only ?? 
+	&.showcase.tall {
+		.card-image {
+			.maker-photo {
+				opacity: 0.6;
+			}
+		}
+		.flex-text-container {
+			// color: $med-grey;
+		}
+
+	}
+
+	// ///////////////////
 	// wide
-	&.wide, &.showcase {
+	&.wide, &.showcase:not(.tall) {
 		padding-top: $card_wideRatio;
 		.card-image, .info-top {
 			padding-bottom: $card_wideRatio;
