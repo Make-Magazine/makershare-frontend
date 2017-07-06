@@ -1,12 +1,14 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService, FlagService, UserService, NodeService, StatisticsService } from '../../../d7services';
+import { ViewService, FlagService, UserService, NodeService, StatisticsService, MainService } from '../../../d7services';
 import 'rxjs/Rx';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { Auth } from '../../../auth0/auth.service';
+import * as globals from '../../../d7services/globals';
+
 
 @Component({
   selector: 'app-project-details',
@@ -41,6 +43,8 @@ export class ProjectDetailsComponent implements OnInit {
     private readonly meta: MetaService,
     private statisticsService: StatisticsService,
     public auth: Auth,
+    private mainService: MainService,
+
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -59,52 +63,58 @@ export class ProjectDetailsComponent implements OnInit {
      this.Manager = this.auth.IsCommuintyManager();
      
     this.loaderService.display(true);
-
     this.sub = this.route.params.subscribe(params => {
       let path = params['path'];
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
+        
+        let body = {
+          "nid": this.id,
+        };
+        this.mainService.post(globals.endpoint + '/feed/make_seen/', body).map(res => res.json()).subscribe(res => {
+          // console.log(res)
+        })
         this.currentuser = Number(localStorage.getItem('user_id'));
-        if(!this.id){
+        if (!this.id) {
           this.router.navigateByUrl('**');
           this.loaderService.display(false);
         }
 
-        
+
 
         this.viewService.getView('views/project_visibility', [['nid', this.id]]).subscribe(data => {
-          if(data[0].status == 0){
+          if (data[0].status == 0) {
 
             // check if the current user is one of the team
             this.viewService.getView('views/project_team_members', [['nid', this.id]]).subscribe(list => {
               let members = list[0].members.split(", ");
-              if(members.length == 1 && this.currentuser == data[0].uid){
+              if (members.length == 1 && this.currentuser == data[0].uid) {
                 // there is only one team mebmer, and the current user is the author
                 this.loadProject();
-              }else {
+              } else {
                 // check if the user is one of a team
                 if (members.indexOf(this.currentuser.toString()) > -1) {
                   this.loadProject();
-                }else {
+                } else {
                   this.router.navigateByUrl('access-restricted');
                   this.loaderService.display(false);
                 }
 
               }
-              
+
             });
 
             // this.router.navigateByUrl('access-restricted');
             this.loaderService.display(false);
-          }else {
+          } else {
 
             this.loadProject();
           }
 
-            
 
 
-        }, err => {});
+
+        }, err => { });
       });
       /* service to get challenge name if project enter in it */
       // get challenge name and nid for challenge if found from a view      
@@ -112,7 +122,7 @@ export class ProjectDetailsComponent implements OnInit {
   }// End ngOnInit
 
 
-  loadProject () {
+  loadProject() {
     this.viewService.getView('maker_project_api/' + this.id)
       .subscribe(data => {
         this.project = data;
@@ -137,7 +147,7 @@ export class ProjectDetailsComponent implements OnInit {
       }, err => {
         this.router.navigate(['/projects']);
         this.loaderService.display(false);
-      });    
+      });
   }
 
 
