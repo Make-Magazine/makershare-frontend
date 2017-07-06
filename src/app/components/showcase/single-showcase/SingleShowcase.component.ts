@@ -1,54 +1,45 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { Component, OnInit, } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { ISorting } from '../../../models/challenge/sorting';
+import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-single-showcases',
   templateUrl: './singleShowcase.component.html',
   providers: [NgbTooltipConfig],
 })
+
 export class SinglShowcaseComponent implements OnInit {
-  customDescription: string
-  showcase;
-  view = 'grid';
-  idFromUrl: number;
-  path: string;
-  profile = {};
-  makers = [];
-  hideloadmore = false;
-  // loadFlag = false;
-  makersCount = 0;
-  sortData: ISorting;
-  sort_order: string;
-  sort_by: string;
-  limit = 9;
-  showcasenumber;
-  showcaseNid;
-  userId;
-  numLikes;
-  toolTips = {
-    'like': 'Like these ideas',
-    'bookmark': 'Bookmark this maker',
-    'share': 'Share this maker',
-  };
-  pages: number = 0;
-  page_arg;
 
-  ActionName = "Sort";
-  sort: ISorting = {
+  LoggedInUserID: number = +localStorage.getItem('user_id');
+  showcaseNid: number;
+  showcase = {};
+  contentType: number = 2;
+  contentCount: number;
+  // Content type values
+  // 1 = projects
+  // 2 = makers
+
+
+  // Cotnent Types Arrays
+  Makers = [];
+  Projects = [];
+
+  // Sorting & Pagination Variables
+  pageNumber = 0;
+
+  sort: SortingSet = {
     sort_by: "random",
-    sort_order: "ASC",
-    pageNo: 0
+    sort_order: "DESC"
   };
-
-  // @Output() showcaseNid = new EventEmitter();
+  DataRetriver = new SortBySortingSet(this.sort, this.viewService);
+  numLikes;
+  hideloadmore: boolean = true;
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
     private meta: MetaService,
@@ -56,206 +47,149 @@ export class SinglShowcaseComponent implements OnInit {
     private statisticsService: StatisticsService,
     private config: NgbTooltipConfig,
     private nodeService: NodeService,
-
+    private route: ActivatedRoute,
+    private router: Router,
 
   ) {
     config.placement = 'bottom';
     config.triggers = 'hover';
-  }
 
+  }
   ngOnInit() {
-    // show spinner
     this.loaderService.display(true);
-    this.route.params
-
-    this.path = this.route.snapshot.params['path'];
-    if (this.path) {
-      this.nodeService.getIdFromUrl(this.path, 'showcase').subscribe(data => {
-        this.idFromUrl = data[0];
-        this.getShowcase();
-
-        //load showcase projects count
-        this.getMakersCount();
-        //load showcaseprojects data
-        this.getshowCaseMakers();
-        //  this.showcaseNid = this.route.params['value'].nid
-        this.userId = localStorage.getItem('user_id');
+    let path = this.route.snapshot.params['path'];
+    if (path) {
+      this.nodeService.getIdFromUrl(path, 'showcase').subscribe(data => {
+        this.showcaseNid = data[0];
+        // load the showcase details (without projects or makers)
+        if (this.showcaseNid) {
+          this.getShowcase();
+          //this.sortShowcase('_none')
+        } else {
+          this.router.navigateByUrl('404');
+        }
       });
     }
-  }
-  getshowCaseMakers() {
-    // if (this.loadFlag) {
-    //   this.limit += 9;
-    // }
-
-    if (this.pages >= 0) {
-      this.page_arg = ['page', this.pages];
-    }
-
-   // console.log(this.makers)
-
-    this.route.params
-    this.viewService.getView('showcase_makers', [['page', this.pages],['nid', this.idFromUrl], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
-      .subscribe(data => {
-        this.makers = this.makers.concat(data);
-        //console.log(this.makers);
-        this.loadMoreVisibilty();
-        // hide spinner
-        this.loaderService.display(false);
-      });
-    // this.loadFlag = false;
-  }
-  // get more click
-  loadmore() {
-    this.pages++;
-    this.getshowCaseMakers();
-  }
-
-  // control load more button
-  loadMoreVisibilty() {
-    // get the challenges array count
-    if (this.makers.length >= this.makersCount) {
-
-      this.hideloadmore = true;
-
-    } else {
-      this.hideloadmore = false;
-    }
-
-  }
-
-  randomized() {
-    this.makers = [];
-    this.pages = 0
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "random"
-    this.ActionName = "Mix 'Em Up"
-    this.getshowCaseMakers();
-
-  }
-
-  mostProjects() {
-    this.makers = [];
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php_1"
-    this.ActionName = "Most projects"
-    this.getshowCaseMakers();
-
-  }
-
-  mostRecent() {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "created";
-    this.ActionName = "Newest";
-    // this.getCountProject();
-    this.getshowCaseMakers();
-
-  }
-
-  sortAsc() {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "field_first_name_value_1";
-    this.ActionName = "Title A-Z";
-    this.getshowCaseMakers();
-  }
-  sortDesc() {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "field_first_name_value";
-    this.ActionName = "Title Z-A";
-    this.getshowCaseMakers();
-
-  }
-  mostLiked() {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php_2";
-    this.ActionName = "Most likes";
-    this.getshowCaseMakers();
-
-  }
-  mostViewed() {
-    this.makers = [];
-    this.pages = 0;
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "php";
-    this.ActionName = "Most views";
-    this.getshowCaseMakers();
-
-  }
-
-  goHome() {
-    this.router.navigate(['']);
-  }
-
-
-  goToProfile(nid) {
-    this.router.navigate(['user']);
   }
 
   getShowcase() {
     // load the showcase data
-    this.route.params
-    this.viewService.getView('showcase', [['nid', this.idFromUrl]])
+    this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        if (data.length == 0) {
-          this.router.navigate(['**']);
-        }
-        this.customDescription = this.showcase['description']
-        this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
-        this.meta.setTag('og:image', this.showcase['cover_photo']);
-        this.meta.setTag('og:description', this.showcase['description']);
+        this.contentType = this.showcase['showcase_type'];
+        //this.customDescription = this.showcase['description']
+        //this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
+        //this.meta.setTag('og:image', this.showcase['cover_photo']);
+        //this.meta.setTag('og:description', this.showcase['description']);
 
-        // statistics
-        if (this.userId != this.showcase.uid) {
-          let showcaseNid = data[0].nid;
-          this.statisticsService.view_record(showcaseNid, 'node').subscribe();
+        // get showcase related content according to contentType value
+
+        if (this.contentType == 1) {
+          // this case for projects
+          this.getCount();
+          this.getProjects();
+        } else if (this.contentType == 2) {
+          // this case for makers
+          this.getCount();
+          this.getMakers();
+        }
+
+
+        // statistics, record page view hit for visitors
+        if (this.LoggedInUserID != this.showcase['uid']) {
+          this.statisticsService.view_record(this.showcaseNid, 'node').subscribe();
         }
 
       });
   }
 
-  // getSortType(event: any) {
-  //   this.sortData = event;
-  //   this.sort_by = this.sortData.sort_by;
-  //   this.sort_order = this.sortData.sort_order;
-  //   this.getshowCaseMakers();
-  // }
-
-  getMakersCount() {
-    this.route.params
-    this.viewService.getView('maker_count_showcases/' + this.idFromUrl)
-      .subscribe(data => {
-        this.makersCount = data;
-        console.log (this.makersCount);
+  getCount() {
+    if (this.contentType == 1) {
+      // this case for projects
+      this.viewService.getView('showcase_projects_sort', [['nid', this.showcaseNid]]).subscribe(data => {
+        this.contentCount = data.length;
       });
 
+    } else if (this.contentType == 2) {
+      // this case for makers
+      this.viewService.getView('showcase_makers_sort', [['nid', this.showcaseNid]]).subscribe(data => {
+        this.contentCount = data.length;
+      });
+
+    }
   }
-  // ShowcasePojectNav(nid, snid) {
-  //   this.router.navigate(['/makers/project2/', snid, this.sort_by, this.sort_order, nid]);
-  //   // this.showcaseNid.emit(this.route.params['value'].nid)
-  // }
+  getProjects() {
+    this.DataRetriver.Sort('showcase_projects', this.pageNumber, this.showcaseNid).subscribe(data => {
+      this.Projects = this.Projects.concat(data);
+      this.loadMoreVisibilty(this.Projects.length);
+      this.loaderService.display(false);
+    }, err => {
+      this.loaderService.display(false);
+    });
 
-  // countLikes(){
-  //   this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
-  //     if(res['count']>0){
-  //     this.numLikes = res;
-  //     }else{
-  //        this.numLikes=0;
-  //     }
+  }
 
-  //   })
-  // }
+
+  getMakers() {
+    this.DataRetriver.Sort('showcase_makers', this.pageNumber, this.showcaseNid).subscribe(data => {
+      this.Makers = this.Makers.concat(data);
+      this.loadMoreVisibilty(this.Makers.length);
+      this.loaderService.display(false);
+    }, err => {
+      this.loaderService.display(false);
+    });
+  }
+
+
+  // get more click
+  loadmore() {
+    this.pageNumber++;
+    if (this.contentType == 1) {
+      // this case for projects
+      this.getProjects();
+    } else if (this.contentType == 2) {
+      // this case for makers
+      this.getMakers();
+    }
+  }
+
+  // control load more button
+  loadMoreVisibilty(count) {
+    if (count >= this.contentCount) {
+      this.hideloadmore = true;
+    } else {
+      this.hideloadmore = false;
+    }
+  }
+
+
+  sortShowcase(sort) {
+    this.loaderService.display(true);
+    this.Makers = this.Projects = [];
+    if (sort == "_none") return;
+    this.pageNumber = 0;
+    this.sort.sort_order = "DESC";
+    if (sort == "field_first_name_value_1" || sort == "random" || sort == "title" || sort == "created_1") {
+      this.sort.sort_order = "ASC";
+    }
+    this.sort.sort_by = sort;
+    if (this.contentType == 1) {
+      this.getProjects();
+    } else if (this.contentType == 2) {
+      this.getMakers();
+    }
+  }
+  countLikes() {
+    this.flagService.flagCount(this.showcaseNid, 'like').subscribe(res => {
+      if (res['count'] > 0) {
+        this.numLikes = res;
+      } else {
+        this.numLikes = 0;
+      }
+    })
+  }
   likesCounter(count) {
     this.numLikes = count;
   }
-
 }

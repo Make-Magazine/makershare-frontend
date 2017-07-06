@@ -47,6 +47,7 @@ import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
 import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
 import { SocialStats } from './social-stats/social-stats.component';
 
+
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
@@ -70,6 +71,7 @@ import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
+import { FeatureProjectComponent } from './feature-project/feature-project.component';
 
 
 let config = {
@@ -126,6 +128,7 @@ export function ResponsiveDefinition() {
     MakerCardComponent,
     CardBadges,
     MakerPhoto,
+    SocialStats,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -150,7 +153,7 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
-    SocialStats
+    FeatureProjectComponent,
   ],
   exports: [
     CommentComponent,
@@ -175,6 +178,7 @@ export function ResponsiveDefinition() {
     CardBadges,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
+    SocialStats,
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
@@ -195,7 +199,7 @@ export function ResponsiveDefinition() {
     ImageCropperComponent,
     Ng2FileDropDirective,
     ReverseArray,
-    SocialStats
+   FeatureProjectComponent,
   ],
 })
 export class SharedModule {

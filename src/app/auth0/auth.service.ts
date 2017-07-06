@@ -6,6 +6,7 @@ import Auth0Lock from 'auth0-lock';
 import { UserService, MainService } from '../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
+import { Observable } from "rxjs";
 
 @Injectable()
 export class Auth {
@@ -380,5 +381,38 @@ export class Auth {
     }
   }
 
+public IsCommuintyManager(): boolean {
+  if (this.authenticated() == true){
+
+    var roles = JSON.parse(localStorage.getItem('roles'));
+       if ('4' in roles){
+         console.log("communty manager");
+         return true;
+             }
+} else {
+  console.log("is nor a communty manager");
+  return false;
+}
+    //  var obs = Observable.create(observer => {
+      
+    //     this.authenticated().subscribe( data => {
+    //         if(data.user.uid && data.user.uid > 0){
+    //           observer.next(true);
+    //           observer.complete();
+    //         }else{
+    //           observer.next(false);
+    //           observer.complete();
+    //         }
+    //     });
+
+    // else {
+    //     observer.next(false);
+    //     observer.complete();
+    //   }
+
+//     });
+//     return obs;
+//   }
+}
 
 }

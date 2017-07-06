@@ -39,6 +39,8 @@ export class NotificationPanelComponent implements OnInit {
 
       if (this.notifications.length == 0) {
         this.noNotification = true;
+      }else{
+        this.noNotification=false;
       }
 
     }, err => {
