@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/makers/sorting';
+import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,7 @@ export class SinglShowcaseComponent implements OnInit {
   showcaseNid: number;
   showcase = {};
   contentType: number = 2;
+  contentCount: number;
   // Content type values
   // 1 = projects
   // 2 = makers
@@ -35,7 +36,8 @@ export class SinglShowcaseComponent implements OnInit {
     sort_order: "ASC"
   };
   DataRetriver = new SortBySortingSet(this.sort, this.viewService);
-  numLikes
+  numLikes;
+  hideloadmore:boolean = true;
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
@@ -58,17 +60,15 @@ export class SinglShowcaseComponent implements OnInit {
   ngOnInit() {
     // show spinner
     this.loaderService.display(true);
-
     let path = this.route.snapshot.params['path'];
     if (path) {
       this.nodeService.getIdFromUrl(path, 'showcase').subscribe(data => {
         this.showcaseNid = data[0];
-        console.log(this.showcaseNid);
-
-
+        // console.log(this.showcaseNid);
         // load the showcase details (without projects or makers)
         if(this.showcaseNid){
           this.getShowcase();
+          this.getCount();    
         }else {
           // there is no id return from the API, so go to 404
           this.router.navigateByUrl('404');
@@ -115,13 +115,27 @@ export class SinglShowcaseComponent implements OnInit {
       });
   }
 
-
+  getCount(){
+    if(this.contentType == 1){
+      // this case for projects
+    this.viewService.getView('showcase_projects_sort',[['nid',this.showcaseNid]]).subscribe(data => {
+      this.contentCount = data.length;
+    });
+     
+    }else if(this.contentType == 2) {
+      // this case for makers
+    this.viewService.getView('showcase_makers_sort',[['nid',this.showcaseNid]]).subscribe(data => {
+      this.contentCount = data.length;
+    });
+      
+    }
+  }
   getProjects() {
-    //  [['nid', this.showcaseNid]]
-    this.DataRetriver.Sort('showcase_projects', this.pageNumber).subscribe(data => {
-      console.log("PROJECTS");
-      console.log(data);
+    this.DataRetriver.Sort('showcase_projects', this.pageNumber,this.showcaseNid).subscribe(data => {
+      // console.log("PROJECTS");
+      // console.log(data);
       this.Projects = this.Projects.concat(data);
+      this.loadMoreVisibilty(this.Projects.length);
       // hide spinner
       this.loaderService.display(false);
     }, err => {
@@ -133,10 +147,11 @@ export class SinglShowcaseComponent implements OnInit {
 
 
   getMakers() {
-    this.DataRetriver.Sort('showcase_makers', this.pageNumber).subscribe(data => {
-      console.log("MAKERS");
-      console.log(data);
+    this.DataRetriver.Sort('showcase_makers', this.pageNumber,this.showcaseNid).subscribe(data => {
+      // console.log("MAKERS");
+      // console.log(data);
       this.Makers = this.Makers.concat(data);
+      this.loadMoreVisibilty(this.Makers.length);      
       // hide spinner
       this.loaderService.display(false);
     }, err => {
@@ -153,16 +168,16 @@ export class SinglShowcaseComponent implements OnInit {
   // }
 
   // control load more button
-  // loadMoreVisibilty() {
-  //   if (this.makers.length >= this.makersCount) {
+  loadMoreVisibilty(count) {
+    if (count >= this.contentCount) {
 
-  //     this.hideloadmore = true;
+      this.hideloadmore = true;
 
-  //   } else {
-  //     this.hideloadmore = false;
-  //   }
+    } else {
+      this.hideloadmore = false;
+    }
 
-  // }
+  }
 
   // goHome() {
   //   this.router.navigate(['']);
@@ -171,14 +186,6 @@ export class SinglShowcaseComponent implements OnInit {
 
   // goToProfile(nid) {
   //   this.router.navigate(['user']);
-  // }
-
-
-  // getSortType(event: any) {
-  //   this.sortData = event;
-  //   this.sort_by = this.sortData.sort_by;
-  //   this.sort_order = this.sortData.sort_order;
-  //   this.getshowCaseMakers();
   // }
 
   // getMakersCount() {
