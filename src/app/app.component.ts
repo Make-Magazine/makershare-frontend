@@ -1,76 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { LoaderService } from './components/shared/loader/loader.service';
-import { UserService, MainService } from './d7services';
-import { Router, NavigationEnd } from '@angular/router';
-// import { Auth } from './auth0/auth.service';
-declare var ga:Function;
+import {Component, Optional, OnInit, OnDestroy} from '@angular/core';
+
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
+
+import {DialogContent} from './dialog-content.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
 })
+export class AppComponent implements OnInit, OnDestroy {
+  public isDarkTheme: boolean = false;
 
-export class AppComponent implements OnInit {
-  showLoader: boolean;
-  public location = '';
-  constructor(
-    // public auth: Auth,
-    private loaderService: LoaderService,
-    private userService: UserService,
-    private mainService: MainService,
-    public router: Router,
-  ) {
+  public foods = [
+    {name: 'Pizza', rating: 'Excellent'},
+    {name: 'Burritos', rating: 'Great'},
+    {name: 'French fries', rating: 'Pretty good'},
+  ];
 
-    // auth.handleAuthentication();
-    router.events
-      .filter(event => event instanceof NavigationEnd)
-      .subscribe((event: NavigationEnd) => {
-        setTimeout(function () {
-          window.scrollTo(0, 1);
-        }, 0);
-      });
-          // Using Rx's built in `distinctUntilChanged ` feature to handle url change c/o @dloomb's answer
-        router.events.distinctUntilChanged((previous: any, current: any) => {
-            // Subscribe to any `NavigationEnd` events where the url has changed
-            if(current instanceof NavigationEnd) {
-                return previous.url === current.url;
-            }
-            return true;
-        }).subscribe((x: any) => {
-            // ga('set', 'page', x.url);
-            // ga('send', 'pageview')
-        });
-      }
-  
+  public progress: number = 0;
+
+  private timer;
+
+  constructor(private dialog: MdDialog, private snackbar: MdSnackBar) {}
 
   ngOnInit() {
-    // check if the user is logged in at the back-end or not, if not, logged the user out too from the front-end
-    this.userService.getStatus().subscribe(status => {
-      if (status.user.uid == 0) {
-        this.mainService.removeCookies();
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('user_id');
-        localStorage.removeItem('user_name');
-        localStorage.removeItem('user_photo');
-        this.userService.getAnonymousToken().subscribe(data => { });
-      }
-    }, err => {
-      // console.log(err);
-      this.mainService.removeCookies();
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('user_id');
-      localStorage.removeItem('user_name');
-      localStorage.removeItem('user_photo');
-    })
+    const update = () => this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
 
-
-    // loader for routing
-    this.loaderService.status.subscribe((val: boolean) => {
-      // this.showLoader = val;
-    });
-    setTimeout(function () {
-      window.scrollTo(0, 1);
-    }, 0);
+    this.timer = setInterval(() => update, 200);
   }
 
+  ngOnDestroy() {
+    clearInterval(this.timer);
+  }
+
+  openDialog() {
+    this.dialog.open(DialogContent);
+  }
+
+  showSnackbar() {
+    this.snackbar.open('Yum snacks', 'Chew');
+  }
 }
