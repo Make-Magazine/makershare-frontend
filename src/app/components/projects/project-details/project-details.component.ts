@@ -6,6 +6,7 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } f
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-project-details',
@@ -26,6 +27,7 @@ export class ProjectDetailsComponent implements OnInit {
   projects = [];
   projectdata;
   id: number;
+  Manager:boolean = false;
 
   private sub: any;
   constructor(
@@ -38,6 +40,7 @@ export class ProjectDetailsComponent implements OnInit {
     private loaderService: LoaderService,
     private readonly meta: MetaService,
     private statisticsService: StatisticsService,
+    public auth: Auth,
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -52,6 +55,9 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   ngOnInit() {
+     this.auth.IsCommuintyManager();
+     this.Manager = this.auth.IsCommuintyManager();
+     
     this.loaderService.display(true);
 
     this.sub = this.route.params.subscribe(params => {
