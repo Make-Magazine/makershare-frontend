@@ -41,7 +41,7 @@
 <div *ngIf="front">
   <div class="learn-card row">
     <div class="col-md-6 col-sm-12">
-      <div class="card-partnership-mobile" *showItBootstrap="['sm','xs']">
+      <div class="card-partnership-mobile">
         <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
       </div>
       <div class="image-container">
@@ -59,7 +59,7 @@
     <div class="col-md-6 col-sm-12 container-content">
       <div class="card-container h-100">
         <div class="card h-100">
-          <div class="card-partership" *hideItBootstrap="['sm','xs']">
+          <div class="card-partership">
             <p *ngIf="learn.brought_by"> Brought to you by {{learn.brought_by}} </p>
           </div>
           <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.path)"></h3>

@@ -58,9 +58,9 @@ export class HeaderComponent implements OnInit {
 
 
     }
-    this.profilePictureService.url.subscribe((val: string) => {
-      this.user_photo = val;
-    })
+    // this.profilePictureService.url.subscribe((val: string) => {
+    //   this.user_photo = val;
+    // })
 
     // handle the registration form to collect the firstname, lastname and age for the new created user
     this.registrationFormStatusObs = this.route.queryParams.map(params => params || null);
