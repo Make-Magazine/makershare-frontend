@@ -20,8 +20,22 @@
 	}
 
 
-	// ///////////////////
+	// //////////////
+	/////
 	// card image
+	.card-image-grid {
+		display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+	    overflow: hidden;
+	    app-maker-photo {
+			flex: 0 33.3333%;
+			img {
+				width: 100%;
+    			height: auto;		
+			}
+	    }
+	}
 	.card-image, .info-top {
 		position: absolute;
 		top: 0;
@@ -31,6 +45,7 @@
 		background-size: cover;
 		background-position: 100% 75%;
 		transition: background-color 0.3s ease;
+		background-repeat: no-repeat;
 		background-color: transparent;
 		cursor: pointer;
 
@@ -102,6 +117,12 @@
 
 			font-size: 2rem;
 			line-height: 2.5rem;
+
+			// sometimes drupal will return strings pre-wrapped in a <p> tag
+			p {
+				font-size: 2rem;
+				line-height: 2.5rem;
+			}
 
 			align-self: center;
 		}
