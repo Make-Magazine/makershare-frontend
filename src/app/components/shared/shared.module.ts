@@ -44,6 +44,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
 import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
 
+
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
 import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
@@ -67,6 +68,7 @@ import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
+import { FeatureProjectComponent } from './feature-project/feature-project.component';
 
 
 let config = {
@@ -145,6 +147,7 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
+    FeatureProjectComponent,
   ],
   exports: [
     CommentComponent,
@@ -187,7 +190,9 @@ export function ResponsiveDefinition() {
     MakerCkeditorComponent,
     ImageCropperComponent,
     Ng2FileDropDirective,
-    ReverseArray
+    ReverseArray,
+   FeatureProjectComponent,
+
   ],
 })
 export class SharedModule {
