@@ -7143,6 +7143,12 @@ textarea {
       color: #828282;
       width: 85%;
       margin: auto; }
+  .page-showcase .filters-container,
+  .page-single-showcase .filters-container {
+    text-align: right; }
+    .page-showcase .filters-container > .filters .filters .dropdown-group,
+    .page-single-showcase .filters-container > .filters .filters .dropdown-group {
+      min-width: 160px; }
 
 .aha {
   border-radius: 0; }
@@ -11205,7 +11211,10 @@ iframe {
     display: none !important; }
 
   header.main-header .login-block li.hamburger-menu .line-mobile {
-    display: block !important; } }
+    display: block !important; }
+
+  .page-single-showcase .filters-container {
+    text-align: center; } }
 @media only screen and (min-width: 575px) and (max-width: 768px) {
   .project .card-title {
     max-width: 370px; } }

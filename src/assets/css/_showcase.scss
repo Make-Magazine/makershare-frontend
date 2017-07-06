@@ -24,6 +24,18 @@
     // .showcases-container {
     //     padding: 25px 15px 0px 15px;
     // }
+    .filters-container {
+        text-align: right;
+        &>.filters {
+            // display: inline-block;
+            // float: right;
+            .filters {
+                .dropdown-group {
+                    min-width: 160px;
+                }
+            }
+        }
+    }
 }
   .aha {
        border-radius: 0;
@@ -928,3 +940,4 @@ img {
         }
     }
 }
+
