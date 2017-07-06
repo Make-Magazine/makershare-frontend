@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
 import { UserService, MainService } from './d7services';
 import { Router, NavigationEnd } from '@angular/router';
-import { Auth } from './auth0/auth.service';
+// import { Auth } from './auth0/auth.service';
 declare var ga:Function;
 
 @Component({
@@ -14,14 +14,14 @@ export class AppComponent implements OnInit {
   showLoader: boolean;
   public location = '';
   constructor(
-    public auth: Auth,
+    // public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
     private mainService: MainService,
     public router: Router,
   ) {
 
-    auth.handleAuthentication();
+    // auth.handleAuthentication();
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -37,8 +37,8 @@ export class AppComponent implements OnInit {
             }
             return true;
         }).subscribe((x: any) => {
-            ga('set', 'page', x.url);
-            ga('send', 'pageview')
+            // ga('set', 'page', x.url);
+            // ga('send', 'pageview')
         });
       }
   
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
 
     // loader for routing
     this.loaderService.status.subscribe((val: boolean) => {
-      this.showLoader = val;
+      // this.showLoader = val;
     });
     setTimeout(function () {
       window.scrollTo(0, 1);

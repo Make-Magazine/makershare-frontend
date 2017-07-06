@@ -39,7 +39,7 @@ import { ClaimProfileComponent } from './components/pages/claim-profile/claim-pr
 // GA
 // import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+// import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { MetaModule } from '@nglibs/meta';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
@@ -90,7 +90,7 @@ let config = {
     }),
     CookieModule.forRoot(),
     SharedModule.forRoot(),
-    ResponsiveModule,
+    // ResponsiveModule,
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
@@ -100,16 +100,15 @@ let config = {
     MessagesModule,
     NotificationBarModule,
     DndModule.forRoot(),
-    // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     MetaModule.forRoot(),
     ShareButtonsModule.forRoot(),
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
   ],
   entryComponents: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { };
-export function ResponsiveDefinition() {
-  return new ResponsiveConfig(config);
-};
+// export function ResponsiveDefinition() {
+//   return new ResponsiveConfig(config);
+// };
 export { AppComponent };

@@ -1,45 +1,69 @@
-# Maker
+# @angular/cli project with server-side rendering at build time
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
+The purpose of this application is to illustrate the simplest possible use-case of angular-ssr: an `@angular/cli`-based application which renders all of its routes as part of the build step, and writes `index.html` file for each route in the application. So you will end up with a `dist` folder containing:
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-### Updating Angular CLI
-
-To update Angular CLI to a new version, you must update both the global package and your project's local package.
-
-Global package:
-```bash
-npm uninstall -g angular-cli @angular/cli
-npm cache clean
-npm install -g @angular/cli@latest
 ```
-------------------------------
-### Build Univirsal and run it
-```bash
-npm run start
+index.html (matches URL: /)
+foo/index.html (matches URL: /foo)
+foo/biz/index.html (matches URL: /foo/biz)
 ```
-then navigate to http://localhost:4000
+
+Where each of these folder names matches a route in the application. Each of these `index.html` files will contain a pre-rendered version of the application, rendered specficially for that route. They also contain `<script>` tags that will cause the regular client-side application to boot immediately. The pre-rendered content is a performance optimization that allows you to display the real application while the process of client-side bootstrap occurs.
+
+I performed these steps to arrive at this code:
+
+1. Generated an application with `ng new`.
+
+2. Added a dependency on `@angular/material` with `npm install @angular/material --save`
+
+3. Imported `MaterialModule` from `@angular/material` into `AppModule`.
+
+4. Added some material components into the main application component to illustrate usage of material, and the fact that it works with `angular-ssr`.
+
+5. I edited `package.json` to add a `postbuild` step to run `ng-render`:
+
+```json
+  "scripts": {
+    "build": "ng build",
+    "postbuild": "ng-render"
+  }
+```
+
+6. These are the only changes that were done on top of the base `ng new` project.
+
+Now when I run `npm run build`, I see this output:
+
+```
+despair:cli bond$ npm run build
+
+> angular-ssr-cli-example@0.0.0 build /Users/bond/z/examples/cli
+> ng build
+
+Hash: f06f6ae5f67bc2a7403f                                                               
+Time: 8300ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 456 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 6.49 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 31.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.92 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+
+> angular-ssr-cli-example@0.0.0 postbuild /Users/bond/z/examples/cli
+> ng-render
+
+[info] Rendering application from source (working path: /Users/bond/z/examples/cli) 
+Could not find HammerJS. Certain Angular Material components may not work correctly.
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+Could not find HammerJS. Certain Angular Material components may not work correctly.
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+[info] Writing rendered route / to /Users/bond/z/examples/cli/dist/index.html 
+```
+
+Now I can simply go in to the `dist` folder and run a simple HTTP server:
+
+```sh
+despair:cli bond$ cd dist
+despair:dist bond$ npm install -g http-server
+despair:dist bond$ http-server .
+```
+
+And then load the application on `http://localhost:8080`. The transition from server-rendered to client-rendered happens so fast that it is difficult to observe, so you can set throttling very low in Chrome DevTools to see the original SSR version while the client app boots.

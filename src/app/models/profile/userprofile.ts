@@ -35,18 +35,3 @@ export interface UserProfile {
   pass?:string,
   status?:string
 }
-
-export class UserProfile implements UserProfile {
-  constructor(){
-    this.name =  '';
-    this.user_photo = '';
-    this.bio = '';
-    this.bioShort = '';
-    this.started_making = '';
-    this.started_making_short = '';
-    this.field_social_accounts = new ProfileSocial();
-    this.address = '';
-    this.total_likes = 0;
-    this.views_count = 0;
-  }
-}

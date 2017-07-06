@@ -31,7 +31,7 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
+// import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
@@ -82,9 +82,9 @@ let config = {
 
 
 
-export function ResponsiveDefinition() {
-  return new ResponsiveConfig(config);
-};
+// export function ResponsiveDefinition() {
+//   return new ResponsiveConfig(config);
+// };
 
 
 @NgModule({
@@ -95,7 +95,7 @@ export function ResponsiveDefinition() {
     NgbModule,
     RouterModule,
     ShareButtonsModule,
-    ResponsiveModule,
+    // ResponsiveModule,
     CKEditorModule,
     ImageCropperModule,
     Ng2FileDropModule
@@ -198,7 +198,7 @@ export class SharedModule {
         D7ServicesForRoot,
         NotificationBarService,
         AuthGuardService,
-        {provide: ResponsiveConfig,useFactory: ResponsiveDefinition},
+        // {provide: ResponsiveConfig,useFactory: ResponsiveDefinition},
         Auth,
         ProfilePictureService,
         LoaderService,
