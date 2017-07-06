@@ -132,7 +132,7 @@
         </div>
         <div class="projects-grid row" *ngIf="contentType == 1">
           <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of Projects; let i = index;">
-            <app-project-card [view]="grid" [nid]="project.nid"></app-project-card>
+            <app-project-card  [nid]="project.nid"></app-project-card>
             <!--<div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>-->
           </div>
         </div>
