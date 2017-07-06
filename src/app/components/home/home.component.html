@@ -34,10 +34,10 @@
         </div>
 
         <!-- Showcase Cards -->
-        <div *ngIf="item.type == 'showcase'" class="showcase-card-backlayer-home">
-          <div class="showcase-card-backlayer-home-2" *ngIf="item.id">
-            <app-showcase-gen-card [showcaseNid]="item.id"></app-showcase-gen-card>
-          </div>
+        <div *ngIf="item.type == 'showcase' && item.id" class="card-wrapper">
+          <!-- <div class="showcase-card-backlayer-home-2" *ngIf="item.id"> -->
+            <app-showcase-gen-card [showcaseNid]="item.id" [state]="'tall'"></app-showcase-gen-card>
+          <!-- </div> -->
         </div>
 
         <!-- Maker Cards -->
