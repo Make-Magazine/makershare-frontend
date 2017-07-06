@@ -35,7 +35,6 @@ export class NotificationTemplateComponent implements OnInit {
     if (this.notification) {
       this.notification.fullname = this.notification.first_name + ' ' + this.notification.last_name;
       this.notification.date = this.timeago(this.notification.date);
-
     }
     this.messageNotifications();
 
