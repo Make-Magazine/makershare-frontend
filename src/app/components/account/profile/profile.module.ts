@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
 import { ResponsiveModule } from 'ng2-responsive';
 import { TruncatePipe } from '../../../pipes/truncate';
+import { FeedComponent } from './feed/feed.component';
 
 //import { MetaModule } from '@nglibs/meta';
 // import { PipeModule } from '../../../pipes/custom-pipes.module';
@@ -31,7 +32,7 @@ import { TruncatePipe } from '../../../pipes/truncate';
     NgbModule,
     CKEditorModule,
     DndModule,
-    ResponsiveModule
+    ResponsiveModule,
     //MetaModule.forRoot()
     // PipeModule.forRoot(),
   ],
@@ -43,7 +44,8 @@ import { TruncatePipe } from '../../../pipes/truncate';
     PortfolioTabComponent,
     ProjectCardPortfolioComponent,
     FileManagerComponent,
-    TruncatePipe
+    TruncatePipe,
+    FeedComponent,
   ]
 })
 export class ProfileModule { }
