@@ -106,7 +106,8 @@
 <!--Challenge card for tablets and ipad-->
 <div class="tablet-challenge-card row hidden-lg-up" *ngIf="challenge && !front">
   <div class="col-md-6 col-sm-12">
-    <div *showItBootstrap="['sm','xs']">
+    <!--<div *showItBootstrap="['sm','xs']">-->
+      <div>
       <div class="card-partnership-mobile" *ngIf="challenge.sponsored_by">
         <p>Sponsored by {{challenge.sponsored_by}}</p>
       </div>
@@ -127,7 +128,8 @@
   <div class="col-md-6 col-sm-12 content-container">
     <div class="card-container h-100">
       <div class="card h-100">
-        <div *hideItBootstrap="['sm','xs']">
+        <div>
+        <!--<div *hideItBootstrap="['sm','xs']">-->
           <div class="card-partership" *ngIf="challenge.sponsored_by">
             <p>Sponsored by {{challenge.sponsored_by}}</p>
           </div>
@@ -186,7 +188,8 @@
 
 <div class="front-challenge-card row" *ngIf="challenge && front && !first">
   <div class="col-md-6 col-sm-12">
-    <div *showItBootstrap="['sm','xs']">
+    <!--<div *showItBootstrap="['sm','xs']">-->
+      <div>
       <div class="card-partnership-mobile" *ngIf="challenge.sponsored_by">
         <p>Sponsored by {{challenge.sponsored_by}}</p>
       </div>
@@ -208,7 +211,8 @@
   <div class="col-md-6 col-sm-12 content-container">
     <div class="card-container h-100">
       <div class="card h-100">
-        <div *hideItBootstrap="['sm','xs']">
+        <!--<div *hideItBootstrap="['sm','xs']">-->
+          <div>
           <div class="card-partership" *ngIf="challenge.sponsored_by">
             <p>Sponsored by {{challenge.sponsored_by}}</p>
           </div>

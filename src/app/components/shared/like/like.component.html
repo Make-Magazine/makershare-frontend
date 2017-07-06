@@ -1,5 +1,5 @@
-<div *hideItBootstrap="['sm', 'xs']">
-
+<!--<div *hideItBootstrap="['sm', 'xs']">-->
+<div>
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
       <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
@@ -55,7 +55,8 @@
     </ng-template>
   </div>
 </div>
-<div *hideItBootstrap="['lg', 'xl','md']">
+<div>
+<!--<div *hideItBootstrap="['lg', 'xl','md']">-->
 
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
