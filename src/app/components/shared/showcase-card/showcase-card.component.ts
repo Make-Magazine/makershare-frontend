@@ -15,6 +15,7 @@ export class ShowcaseCardComponent implements OnInit {
   Makers = [];
   Projects = [];
   contentType: number = 2;
+  showcaseType: string = 'Makers';
     pageNumber = 0;
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
@@ -55,6 +56,7 @@ export class ShowcaseCardComponent implements OnInit {
         if(this.contentType == 1){
           // this case for projects
           this.getProjectsCount();
+          this.showcaseType = 'Projects';
         }else if(this.contentType == 2) {
           // this case for makers
           this.getMakersCount();
@@ -83,8 +85,8 @@ export class ShowcaseCardComponent implements OnInit {
     });
 
   }
-  ShowSingleShowcase() {
-    this.router.navigate(['/showcases/', this.showcase['path']]);
+  ShowSingleShowcase(path) {
+    this.router.navigate(['showcases', path]);
   }
 
   countLikes() {
