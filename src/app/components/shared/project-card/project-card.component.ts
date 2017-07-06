@@ -12,7 +12,7 @@ import * as globals from '../../../d7services/globals';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view: string;
+  @Input() view: string = 'grid';
   @Input() front;
 
   badges = [];
