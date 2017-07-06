@@ -12,9 +12,9 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 export class FeatureProjectComponent implements OnInit {
 
 @Input() featuredProjectId;
-isFeatured = false;
+isFeatured:boolean = false;
 userId;
-ButtonFeature;
+ButtonFeature:string = 'Feature this project';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -42,17 +42,19 @@ ButtonFeature;
    featureProject(e: Event){
       e.preventDefault();
         if (this.isFeatured){
-           this.flagService.unflag(this.featuredProjectId, this.userId, 'feature_project').subscribe(response =>{
-             this.isFeatured = false;
+          this.isFeatured = false;
               this.ButtonFeature = 'Feature this project';
+          //  this.flagService.unflag(this.featuredProjectId, this.userId, 'feature_project').subscribe(response =>{
              
-           });
+             
+          //  });
          
         }else{
-      this.flagService.isFlagged(this.featuredProjectId, this.userId, 'feature_project').subscribe(response => {
           this.isFeatured = true;
            this.ButtonFeature = 'Unfeature this project';
-        });
+      // this.flagService.isFlagged(this.featuredProjectId, this.userId, 'feature_project').subscribe(response => {
+          
+      //   });
         }
    }
 
