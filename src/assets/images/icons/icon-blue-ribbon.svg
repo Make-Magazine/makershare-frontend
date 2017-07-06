@@ -1,0 +1,14 @@
+<svg width="30" height="37" viewBox="0 0 30 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>icon-blue-ribbon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(1521 -255)" figma:type="canvas">
+<g id="icon-blue-ribbon" style="mix-blend-mode:normal;" figma:type="instance">
+<g id="icon-blue-ribbon" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-1521 255.03)" fill="#00AEEF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 30 0L 30 27.6832L 15 36.061L 0 27.6832L 0 0ZM 14.9496 18.9192C 15.1934 18.9192 15.4338 18.9048 15.6701 18.877L 19.3235 25.2526L 19.6131 21.9126L 22.629 23.33L 19.144 17.2486C 20.3377 16.121 21.0836 14.5178 21.0836 12.7392C 21.0836 9.32602 18.3373 6.55913 14.9496 6.55913C 11.562 6.55913 8.81573 9.32602 8.81573 12.7392C 8.81573 14.6053 9.63678 16.2782 10.9346 17.4114L 7.54303 23.33L 10.5588 21.9126L 10.8483 25.2527L 14.4875 18.9019C 14.6401 18.9133 14.7943 18.9192 14.9496 18.9192Z"/>
+</defs>
+</svg>
