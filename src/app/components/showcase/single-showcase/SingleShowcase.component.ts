@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { SortingSet, SortBySortingSet } from '../../../models/makers/sorting';
+import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,7 @@ export class SinglShowcaseComponent implements OnInit {
   showcaseNid: number;
   showcase = {};
   contentType: number = 2;
+  contentCount: number;
   // Content type values
   // 1 = projects
   // 2 = makers
@@ -35,7 +36,8 @@ export class SinglShowcaseComponent implements OnInit {
     sort_order: "ASC"
   };
   DataRetriver = new SortBySortingSet(this.sort, this.viewService);
-
+  numLikes;
+  hideloadmore:boolean = true;
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
@@ -58,17 +60,15 @@ export class SinglShowcaseComponent implements OnInit {
   ngOnInit() {
     // show spinner
     this.loaderService.display(true);
-
     let path = this.route.snapshot.params['path'];
     if (path) {
       this.nodeService.getIdFromUrl(path, 'showcase').subscribe(data => {
         this.showcaseNid = data[0];
-        console.log(this.showcaseNid);
-
-
+        // console.log(this.showcaseNid);
         // load the showcase details (without projects or makers)
         if(this.showcaseNid){
           this.getShowcase();
+          this.getCount();    
         }else {
           // there is no id return from the API, so go to 404
           this.router.navigateByUrl('404');
@@ -115,31 +115,48 @@ export class SinglShowcaseComponent implements OnInit {
       });
   }
 
-
-  getProjects() {
-    this.DataRetriver.Sort('showcase_projects', this.pageNumber).subscribe(data => {
-      console.log(data);
-      this.Projects = data;
-    }, err => {
-
+  getCount(){
+    if(this.contentType == 1){
+      // this case for projects
+    this.viewService.getView('showcase_projects_sort',[['nid',this.showcaseNid]]).subscribe(data => {
+      this.contentCount = data.length;
     });
-    // this.viewService.getView('showcase_projects', [['page', this.pageNumber],['nid', this.showcaseNid], ['sort_by', this.sort.sort_by], ['sort_order', this.sort.sort_order]])
-    //   .subscribe(data => {
-    //     this.Projects = this.Projects.concat(data);
-    //     //this.loadMoreVisibilty();
-    //     // hide spinner
-    //     this.loaderService.display(false);
-    //   });
+     
+    }else if(this.contentType == 2) {
+      // this case for makers
+    this.viewService.getView('showcase_makers_sort',[['nid',this.showcaseNid]]).subscribe(data => {
+      this.contentCount = data.length;
+    });
+      
+    }
+  }
+  getProjects() {
+    this.DataRetriver.Sort('showcase_projects', this.pageNumber,this.showcaseNid).subscribe(data => {
+      // console.log("PROJECTS");
+      // console.log(data);
+      this.Projects = this.Projects.concat(data);
+      this.loadMoreVisibilty(this.Projects.length);
+      // hide spinner
+      this.loaderService.display(false);
+    }, err => {
+      // hide spinner
+      this.loaderService.display(false);
+    });
 
   }
 
 
   getMakers() {
-    this.DataRetriver.Sort('showcase_makers', this.pageNumber).subscribe(data => {
-      console.log(data);
-      this.Makers = data;
+    this.DataRetriver.Sort('showcase_makers', this.pageNumber,this.showcaseNid).subscribe(data => {
+      // console.log("MAKERS");
+      // console.log(data);
+      this.Makers = this.Makers.concat(data);
+      this.loadMoreVisibilty(this.Makers.length);      
+      // hide spinner
+      this.loaderService.display(false);
     }, err => {
-
+      // hide spinner
+      this.loaderService.display(false);
     });
   }
 
@@ -151,83 +168,16 @@ export class SinglShowcaseComponent implements OnInit {
   // }
 
   // control load more button
-  // loadMoreVisibilty() {
-  //   if (this.makers.length >= this.makersCount) {
+  loadMoreVisibilty(count) {
+    if (count >= this.contentCount) {
 
-  //     this.hideloadmore = true;
+      this.hideloadmore = true;
 
-  //   } else {
-  //     this.hideloadmore = false;
-  //   }
+    } else {
+      this.hideloadmore = false;
+    }
 
-  // }
-
-  // randomized() {
-  //   this.makers = [];
-  //   this.pages = 0
-  //   this.sort.sort_order = "ASC";
-  //   this.sort.sort_by = "random"
-  //   this.ActionName = "Mix 'Em Up"
-  //   this.getshowCaseMakers();
-
-  // }
-
-  // mostProjects() {
-  //   this.makers = [];
-  //   this.pages = 0
-  //   this.sort.sort_order = "DESC";
-  //   this.sort.sort_by = "php_1"
-  //   this.ActionName = "Most projects"
-  //   this.getshowCaseMakers();
-
-  // }
-
-  // mostRecent() {
-  //   this.makers = [];
-  //   this.pages = 0;
-  //   this.sort.sort_order = "DESC";
-  //   this.sort.sort_by = "created";
-  //   this.ActionName = "Newest";
-  //   // this.getCountProject();
-  //   this.getshowCaseMakers();
-
-  // }
-
-  // sortAsc() {
-  //   this.makers = [];
-  //   this.pages = 0;
-  //   this.sort.sort_order = "ASC";
-  //   this.sort.sort_by = "field_first_name_value_1";
-  //   this.ActionName = "Title A-Z";
-  //   this.getshowCaseMakers();
-  // }
-  // sortDesc() {
-  //   this.makers = [];
-  //   this.pages = 0;
-  //   this.sort.sort_order = "DESC";
-  //   this.sort.sort_by = "field_first_name_value";
-  //   this.ActionName = "Title Z-A";
-  //   this.getshowCaseMakers();
-
-  // }
-  // mostLiked() {
-  //   this.makers = [];
-  //   this.pages = 0;
-  //   this.sort.sort_order = "DESC";
-  //   this.sort.sort_by = "php_2";
-  //   this.ActionName = "Most likes";
-  //   this.getshowCaseMakers();
-
-  // }
-  // mostViewed() {
-  //   this.makers = [];
-  //   this.pages = 0;
-  //   this.sort.sort_order = "DESC";
-  //   this.sort.sort_by = "php";
-  //   this.ActionName = "Most views";
-  //   this.getshowCaseMakers();
-
-  // }
+  }
 
   // goHome() {
   //   this.router.navigate(['']);
@@ -236,14 +186,6 @@ export class SinglShowcaseComponent implements OnInit {
 
   // goToProfile(nid) {
   //   this.router.navigate(['user']);
-  // }
-
-
-  // getSortType(event: any) {
-  //   this.sortData = event;
-  //   this.sort_by = this.sortData.sort_by;
-  //   this.sort_order = this.sortData.sort_order;
-  //   this.getshowCaseMakers();
   // }
 
   // getMakersCount() {
@@ -260,18 +202,18 @@ export class SinglShowcaseComponent implements OnInit {
   //   // this.showcaseNid.emit(this.route.params['value'].nid)
   // }
 
-  // countLikes(){
-  //   this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
-  //     if(res['count']>0){
-  //     this.numLikes = res;
-  //     }else{
-  //        this.numLikes=0;
-  //     }
+  countLikes(){
+    this.flagService.flagCount(this.showcaseNid,'like').subscribe(res=>{
+      if(res['count']>0){
+      this.numLikes = res;
+      }else{
+         this.numLikes=0;
+      }
 
-  //   })
-  // }
-  // likesCounter(count) {
-  //   this.numLikes = count;
-  // }
+    })
+  }
+  likesCounter(count) {
+    this.numLikes = count;
+  }
 
 }
