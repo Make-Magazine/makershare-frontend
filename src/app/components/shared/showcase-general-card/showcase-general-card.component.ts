@@ -9,7 +9,9 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
   numLikes;
   userId;
+  makers;
   @Input() showcaseNid;
+  @Input() state;
   projectsCount;
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -24,17 +26,33 @@ export class ShowcaseGeneralCardComponent implements OnInit {
     this.getShowcases();
     this.getProjectsCount();
     this.countLikes();
+    this.getShowcaseMakers();
   }
 
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
       this.showcase = data[0];
+      console.log(data);
+    });
+  }
+  getShowcaseMakers() {
+    this.viewService.getView('showcase_makers', [
+      ['page', 0],
+      ['nid', this.showcaseNid],
+      ['sort_by', 'created'],
+      ['sort_order', 'ASC']
+      ]).subscribe(data => {
+          this.makers = data;
+          // console.log('data here we go?');
+          // console.log(data);
     });
   }
   getProjectsCount() {
     this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
 
       this.projectsCount = data.length;
+      // console.log('projects count');
+      // console.log(data);
     });
 
   }
