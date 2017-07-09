@@ -10,6 +10,8 @@ import { IChallenge } from '../../../models/challenge/challenge';
   templateUrl: './challenge-card.component.html',
 })
 export class ChallengeCardComponent implements OnInit {
+  @Input() state;
+  
   announce_date;
   countProjects=0;
   challenge: IChallengeData = {

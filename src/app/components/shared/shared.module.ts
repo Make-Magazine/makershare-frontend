@@ -24,6 +24,8 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
+import { CardBadges } from './card-badges/card-badges.component';
+import { MakerPhoto } from './maker-photo/maker-photo.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
@@ -43,6 +45,8 @@ import { SharedButtonsComponent } from './shared-buttons/shared-buttons.componen
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
 import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
+import { SocialStats } from './social-stats/social-stats.component';
+
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -68,6 +72,8 @@ import { ProfilePictureService } from '../../components/shared/profile-picture/p
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
 import { FollowUserComponent } from './follow-user/follow-user.component';
+
+import { FeatureProjectComponent } from './feature-project/feature-project.component';
 
 
 let config = {
@@ -122,6 +128,9 @@ export function ResponsiveDefinition() {
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
+    CardBadges,
+    MakerPhoto,
+    SocialStats,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -147,7 +156,7 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
-    
+    FeatureProjectComponent,
   ],
   exports: [
     CommentComponent,
@@ -170,8 +179,10 @@ export function ResponsiveDefinition() {
     ShowcaseGeneralCardComponent,
     MessageModalComponent,
     MakerCardComponent,
+    CardBadges,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
+    SocialStats,
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
@@ -191,7 +202,8 @@ export function ResponsiveDefinition() {
     MakerCkeditorComponent,
     ImageCropperComponent,
     Ng2FileDropDirective,
-    ReverseArray
+    ReverseArray,
+   FeatureProjectComponent,
   ],
 })
 export class SharedModule {
