@@ -486,11 +486,11 @@ export class ProfileComponent implements OnInit {
   leave() {
     this.currentHover = '';
   }
-  followersCounter(count) {
-    this.no_of_followers = count;
-  }
-  followingCounter(countFollowing) {
-    this.numberFollowing = countFollowing;
-  }
+  // followersCounter(count) {
+  //   this.no_of_followers = count;
+  // }
+  // followingCounter(countFollowing) {
+  //   this.numberFollowing = countFollowing;
+  // }
 
 }
