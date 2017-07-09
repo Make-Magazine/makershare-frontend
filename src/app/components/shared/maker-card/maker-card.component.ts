@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-maker-card',
@@ -20,16 +21,22 @@ export class MakerCardComponent implements OnInit {
   card;
   projectsCount;
   latestPorjectImg;
-  swtichImage:boolean = false;
+  swtichImage: boolean = false;
+  Manager: boolean = false;
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
+    public auth: Auth,
+
   ) {
     config.placement = 'bottom';
     config.triggers = 'hover';
   }
   ngOnInit() {
+    this.Manager = this.auth.IsCommuintyManager();
+    console.log(this.Manager)
     this.getMakerCard();
     this.getMakerBadges();
     this.CountMakerProjects();
@@ -56,7 +63,7 @@ export class MakerCardComponent implements OnInit {
 
   getMakerBadges() {
     this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
-        this.badges=data;
+      this.badges = data;
     });
   }
 
@@ -73,7 +80,7 @@ export class MakerCardComponent implements OnInit {
     });
   }
   goToProfile(path: string) {
-    
+
     this.router.navigate(['/portfolio/', path]);
   }
   // ProfileLikes(){
@@ -82,11 +89,11 @@ export class MakerCardComponent implements OnInit {
   //   })
   // }
   over() {
-    if(this.latestPorjectImg)
-    this.swtichImage=true;
+    if (this.latestPorjectImg)
+      this.swtichImage = true;
   }
   leave() {
-    if(this.latestPorjectImg)    
-    this.swtichImage=false;  
+    if (this.latestPorjectImg)
+      this.swtichImage = false;
   }
 }
