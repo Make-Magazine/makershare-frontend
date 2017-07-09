@@ -12,6 +12,8 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class MakerCardComponent implements OnInit {
 
   @Input() uid;
+  @Input() state;
+  @Input() profile;
 
   badges = [];
   project = {};
