@@ -17,8 +17,7 @@
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
       <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
-        'col-md-6 col-lg-4'   : item.type == 'project' || item.type == 'showcase' || item.type == 'maker' ,
-        'col-md-12 col-lg-8'  : item.type == 'challenge' || item.type == 'learning_sequence'        
+        'col-md-6 col-lg-4'   : item.type == 'node' || item.type == 'user'         
           }" class="item-{{i}}">
         <!-- Challenge Cards -->
         <!--<div *ngIf="item.type == 'challenge'" class="challenge-page-data container p-0">
@@ -27,33 +26,33 @@
           </div>
         </div>-->
         <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge'" class="card-wrapper">
+        <!--<div *ngIf="item.type == 'challenge'" class="card-wrapper">-->
           <!-- <div class="challenges-container"> -->
-            <app-challenge-card [challengeNid]="item.id" [front]=true [state]="'wide'"></app-challenge-card>
+            <!--<app-challenge-card [challengeNid]="item.id" [front]=true [state]="'wide'"></app-challenge-card>-->
           <!-- </div> -->
-        </div>
+        <!--</div>-->
 
         <!-- Showcase Cards -->
-        <div *ngIf="item.type == 'showcase' && item.id" class="card-wrapper">
+        <!--<div *ngIf="item.type == 'showcase' && item.id" class="card-wrapper">-->
           <!-- <div class="showcase-card-backlayer-home-2" *ngIf="item.id"> -->
-            <app-showcase-gen-card [showcaseNid]="item.id" [state]="'tall'"></app-showcase-gen-card>
+            <!--<app-showcase-gen-card [showcaseNid]="item.id" [state]="'tall'"></app-showcase-gen-card>-->
           <!-- </div> -->
-        </div>
+        <!--</div>-->
 
         <!-- Maker Cards -->
-        <div class="card-wrapper" *ngIf="item.type == 'maker'">
+        <div class="card-wrapper" *ngIf="item.type == 'user'">
           <app-maker-card [uid]="item.id" [state]="'tall'"></app-maker-card>
         </div>
 
         <!-- Project Cards -->
-        <div class="card-wrapper" *ngIf="item.type == 'project'">
+        <div class="card-wrapper" *ngIf="item.type == 'node'">
           <app-project-card [view]="view" [nid]="item.id" [state]="'tall'" [front]=true></app-project-card>
         </div>
 
         <!-- Learn Cards -->
-        <div *ngIf="item.type == 'learning_sequence'" class="container">
+        <!--<div *ngIf="item.type == 'learning_sequence'" class="container">
           <app-learn-card [workshopNid]="item.id" [front]=true></app-learn-card>
-        </div>
+        </div>-->
       </div>
     </div>
     <div *ngIf="!homeCards || homeCards.length == 0">
