@@ -5,6 +5,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 import * as globals from '../../d7services/globals';
 import { MetaService } from '@nglibs/meta';
 import { SortBySortingSet, SortingSet } from '../../models';
+import {Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-makers',
@@ -38,7 +39,22 @@ export class MakersComponent implements OnInit {
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
     private meta: MetaService,
-  ) { }
+    // title: Title,
+    // meta: Meta
+  ) { 
+    // title.setTitle('this is makers title');
+    // meta.addTags([
+    //   {
+    //     name: 'author', content: 'this is maker name'
+    //   },
+    //   {
+    //     name: 'description', content: 'this is description this is description this is description '
+    //   },
+    //   {
+    //     name: 'image', content: '/assets/logo.png'
+    //   }
+    // ])
+  }
 
   ngOnInit() {
     this.countAllMakers();
