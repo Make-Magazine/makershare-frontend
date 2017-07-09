@@ -1,0 +1,18 @@
+$badges: awards, callenge-lover, challenge-winner, community-engagement, community-manager, founding-member, maker-faire, productivity, role-model;
+$badge-height: 3.5rem;
+
+// ///////////////////
+// base badge class
+// ///////////////////
+.badge {
+	width: 3rem;
+	height: 3.5rem;
+	background-size: cover;
+	background-repeat: no-repeat;	
+}
+
+@each $badge in $badges {
+	.badge-#{$badge} {
+		background-image: url('assets/images/badges/#{$badge}.svg');
+	}
+}
