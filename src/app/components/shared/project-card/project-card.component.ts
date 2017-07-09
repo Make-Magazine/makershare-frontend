@@ -33,7 +33,7 @@ export class ProjectCardComponent implements OnInit {
     config.triggers = 'hover';
   }
   ngOnInit() {
-    console.log(this.state);
+    // console.log(this.state);
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = +localStorage.getItem('user_id');

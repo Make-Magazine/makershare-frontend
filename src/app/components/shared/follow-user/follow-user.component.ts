@@ -159,7 +159,7 @@ export class FollowUserComponent implements OnInit {
         }
         this.whoFollow = this.whoFollow.concat(data);
        // this.whoFollow = data;
-        console.log(data)
+        // console.log(data)
         this.loadMoreVisibilty();
       });
     }
@@ -172,7 +172,7 @@ export class FollowUserComponent implements OnInit {
         }
         //this.whoFollowing = this.whoFollowing.concat(data);
         this.whoFollowing = data;
-        console.log(data)
+        // console.log(data)
         //this.loadMoreVisibilty();
       });
     }
