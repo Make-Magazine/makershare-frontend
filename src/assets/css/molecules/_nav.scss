@@ -1,0 +1,42 @@
+nav.primary, nav.secondary {
+	display: flex;
+	.nav-content {
+		list-style: none;
+		display: flex;
+	}
+	.nav-item {
+		display: flex;
+		padding: 1.5rem;
+		align-self: center;
+		position: relative;
+
+		@include transition(0.5s);
+
+		&:hover {
+			.nav-link {
+				color: $dark-grey;
+			}
+		}
+		&.has-dropdown:hover {
+			.dropdown-menu {
+			    display: block;
+			    margin-top: 0; // remove the gap so it doesn't close
+			 }
+		}
+	}
+}
+.nav-link {
+	font-size: 2rem;
+	color: lighten($dark-grey, 15%);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	padding: 0;
+}
+
+nav.secondary {
+	margin-left: auto;
+}
+
+.mobile-menu-item {
+	// need to add my mixin for responsive
+}
