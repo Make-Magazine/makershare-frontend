@@ -383,14 +383,13 @@ export class Auth {
 
 public IsCommuintyManager(): boolean {
   if (this.authenticated() == true){
-
     var roles = JSON.parse(localStorage.getItem('roles'));
-       if ('4' in roles){
-         console.log("communty manager");
+       if ('4' in roles){ 
          return true;
-             }
+        }else {
+          return false;
+        }
 } else {
-  console.log("is nor a communty manager");
   return false;
 }
     //  var obs = Observable.create(observer => {
