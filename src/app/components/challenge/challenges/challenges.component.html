@@ -1,0 +1,49 @@
+
+  <section class="challenge-page-data">
+    <div class="container region region-content page-challenge">
+      <header class="challenge-header">
+        <div class="container">
+          <h3>Missions</h3>
+          <p>Missions bring makers together to build with a purpose. Find a mission that allows you to focus your making skills on an objective.</p>
+        </div>
+      </header>
+      <!--/header -->
+      <div class="filters">
+        <div class="container">
+          <div class="row justify-content-end align-items-center">
+            <div class="entries-count btn">
+              <p *ngIf="currentCount==1">{{currentCount}} Mission</p>
+              <p *ngIf="currentCount>1">{{currentCount}} Missions</p>
+            </div>
+            <div ngbDropdown class="d-inline-block sorting-filter dropdown">
+              <button class="btn btn-transparent dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{currentStatusName}} <i class="fa fa-lg fa-angle-down"></i></button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <button class="dropdown-item" *ngFor="let status of allstatuses" (click)="SetCurrentStatus($event)" data-id="{{status.tid}}"
+                  data-name="{{status.name}}">
+                  {{status.name}}
+                  </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End filters -->
+      <div class="container challenges-container">
+        <div *ngFor="let challenge of challenges" >
+          <!-- Start Shared Challenge Card -->
+         <app-challenge-card [challengeNid]="challenge.nid" ></app-challenge-card>
+         <!-- End Shared  Challenge Card-->
+        </div>
+        <div *ngIf="challenges.length == 0">
+          <h4  class="text-center mt-5 mb-5">There are no missions to show</h4>
+        </div>
+        <!-- End challenge-card -->
+      </div>
+      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmore">
+        <div *ngIf="!hideloadmore">
+          <a *ngIf="!hideloadmore" (click)="loadmore()" class="btn btn-load-more">Load more</a>
+        </div>
+      </div>
+    </div>
+    <!-- End region-content -->
+  </section>
