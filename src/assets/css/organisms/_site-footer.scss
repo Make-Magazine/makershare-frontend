@@ -1,0 +1,165 @@
+footer {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    min-height: 35px;
+    font-size: 14px;
+    background: white;
+    border-top: 5px solid $blue;
+    .newsletter {
+        p {
+            font-size: 0.65rem;
+            color: $text-color-2;
+            line-height: 25px;
+            margin-bottom: 0;
+        }
+    }
+    .footer-copyright {
+            color: $text-color-2;
+    }
+    .copy {
+        .first-logo-link {
+            margin-right: 10px;
+            position: relative;
+            span {
+                color: #00AEEF;
+                font-size: 10px;
+                position: absolute;
+                bottom: 0px;
+                right: 4px;
+            }
+        }
+        .second-logo-link {
+            padding-left: 10px;
+            // border-left: 1px solid #4f4f4f;
+        }
+        .first-logo {
+            width: 100px;
+            max-width: 100px;
+        }
+        .second-logo {
+            width: 70px;
+            max-width: 70px;
+            height: 40px;
+        }
+        .vertical-line {
+            height: 17px;
+            width: 1px;
+            background-color: #828282;
+            margin: 12px 5px 10px 7px;
+        }
+        p {
+            margin: 0;
+            font-size: 12px;
+            color: #4f4f4f;
+        }
+        .copyright {
+            padding-top: 8px;
+        }
+        .logo-title {
+            padding: 12px 0px 0px 4px;
+            text-align: left;
+            font-weight: bold;
+            color: #818181;
+        }
+    }
+    a.nav-link {
+        color: $text-color-1;
+        padding: 0;
+    }
+    .fa-stack-2x {
+        font-size: 1.7em;
+    } 
+    .fa-stack {
+        position: relative;
+        display: inline-block;
+        width: 1.7em;
+        height: 1.7em;
+        line-height: 1.7em;
+        vertical-align: middle;
+    }
+    .socials-newsletter {
+        div {
+            padding-bottom: 4px;
+        }
+        .newsletter {
+            .input-group-addon {
+                background: none;
+                background-color: $text-color-6;
+                color: white;
+            }
+        }
+    }
+    .footer-subtitle {
+        color: $dark-blue;
+        font-size: 1.3em;
+        width: 100%;
+        padding-bottom: 4px;
+        margin: 0px;
+    } 
+    .sitemap-1, .sitemap-2 {
+        a {
+            font-size: 1.1em;
+            padding: 3px 0;
+            color: $text-color-2;
+            line-height: 25px;
+        }
+    }
+    .footer-social-links {
+        // margin-bottom: 15px;
+        a {
+            position:relative;
+            text-align:center;
+            width:0px;
+            height:0px;
+            padding:15px;
+            border-top-right-radius: 	20px;
+            border-top-left-radius: 	20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 	20px; 
+            -moz-border-radius: 		20px 20px 20px 20px;
+            -webkit-border-radius: 		20px 20px 20px 20px;
+            -khtml-border-radius: 		20px 20px 20px 20px; 	
+            color:#FFFFFF;
+            i {
+              font-size:1.1em;
+              position:absolute;
+              left: 0px;
+              right:0px;
+              top: 11px;
+             
+
+            }
+          }
+    
+        a.social {
+            float: left;
+            margin:0 5px 0 0;
+            cursor:pointer;
+            background:$shade-2;
+            color:#fff;
+        
+        }
+        a.social:hover {
+            &.fb {
+                background-color: #014c8c;
+            }
+            &.tw {
+                background-color: #33ccff;
+            }
+            &.pin {
+                background-color: #cc2127;
+            }
+           &.in {
+            background:
+            radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+            radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+            radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+            linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+        }
+        }
+    }
+}

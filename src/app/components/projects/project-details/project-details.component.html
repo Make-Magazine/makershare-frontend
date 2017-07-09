@@ -5,6 +5,9 @@
             <div class="container">
               <div class="project-full-card">
                 <app-project-header [ActiveTab]="current_active_tab" [project]="projectDetails" (SwitchTab)="changeProjectTab($event)"></app-project-header>
+             <!--<div *ngIf="Manager"> 
+                <app-feature-project [featuredProjectId]="projectId"> </app-feature-project>
+              </div>-->
               </div>
             </div>
             <!-- End container -->
