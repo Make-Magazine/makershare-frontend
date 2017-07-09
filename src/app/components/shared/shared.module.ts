@@ -71,6 +71,8 @@ import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
+import { FollowUserComponent } from './follow-user/follow-user.component';
+
 import { FeatureProjectComponent } from './feature-project/feature-project.component';
 
 
@@ -145,6 +147,7 @@ export function ResponsiveDefinition() {
     NotificationPanelComponent,
     NotificationTemplateComponent,
     SharedButtonsComponent,
+    FollowUserComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -158,6 +161,7 @@ export function ResponsiveDefinition() {
   exports: [
     CommentComponent,
     FollowComponent,
+    FollowUserComponent,
     BookmarkComponent,
     LikeComponent,
     ForkComponent,

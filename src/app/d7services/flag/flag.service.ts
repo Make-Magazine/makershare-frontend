@@ -8,41 +8,48 @@ export class FlagService {
 
   constructor(private mainService: MainService) { }
 
-  isFlagged(nid: number, uid: number, flag_name: string): Observable<any>{
+  isFlagged(nid: number, uid: number, flag_name: string): Observable<any> {
     var obj = {
-      "flag_name" : flag_name,// like, fork, node_bookmark
-      "entity_id" : nid,
-      "uid" : uid,
-    }   
+      "flag_name": flag_name,// like, fork, node_bookmark
+      "entity_id": nid,
+      "uid": uid,
+    }
     return this.mainService.post(globals.endpoint + '/flag/is_flagged', obj).map(response => response.json()).catch(err => Observable.throw(err));
   }
-  flag(nid: number,  uid: number, flag_name: string, fields?: {}): Observable<any>{
+  flag(nid: number, uid: number, flag_name: string, fields?: {}): Observable<any> {
     var obj = {
-      "flag_name" : flag_name,
-      "entity_id" : nid,
-      "action" : "flag",
-      "uid" : uid,
+      "flag_name": flag_name,
+      "entity_id": nid,
+      "action": "flag",
+      "uid": uid,
     }
-    if(fields){
+    if (fields) {
       Object.assign(obj, fields);
     }
-    
+
     return this.mainService.post(globals.endpoint + '/flag/flag', obj).map(response => response.json()).catch(err => Observable.throw(err));
   }
-  unflag(nid: number,  uid: number, flag_name: string): Observable<any>{
+  unflag(nid: number, uid: number, flag_name: string): Observable<any> {
     var obj = {
-      "flag_name" : flag_name,
-      "entity_id" : nid,
-      "action" : "unflag",
-      "uid" : uid,
+      "flag_name": flag_name,
+      "entity_id": nid,
+      "action": "unflag",
+      "uid": uid,
     }
     return this.mainService.post(globals.endpoint + '/flag/flag', obj).map(response => response.json()).catch(err => Observable.throw(err));
   }
-  flagCount(nid: number, flag_name): Observable<any>{
+  flagCount(nid: number, flag_name): Observable<any> {
     var obj = {
-      "flag_name" : flag_name,
-      "entity_id" : nid
-    }    
+      "flag_name": flag_name,
+      "entity_id": nid
+    }
     return this.mainService.post(globals.endpoint + '/flag/countall', obj).map(response => response.json()).catch(err => Observable.throw(err));
+  }
+
+  getCountFollowing(uid: number): Observable<any> {
+    let body = {
+      uid: uid
+    }
+    return this.mainService.post(globals.endpoint + '/maker_count_api/following', body).map(res => res.json()).catch(err => Observable.throw(err));
   }
 }
