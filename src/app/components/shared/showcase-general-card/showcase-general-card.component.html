@@ -1,4 +1,4 @@
-<div *ngIf="showcase" class="card showcase {{state}}">
+<div *ngIf="showcase && makers" class="card showcase {{state}}">
   <div *ngIf="!makers.length > 0" class="card-image" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
 
   <div class="card-image card-image-grid" *ngIf="makers.length > 0">
