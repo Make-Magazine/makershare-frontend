@@ -76,7 +76,7 @@ export class MakersComponent implements OnInit {
       this.makers = [];
     }
     this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
-      console.log(data[0]);
+      // console.log(data[0]);
       // this.profileService.getUser(parseInt(data[i].uid)).subscribe(res => { 
       //   console.log(res.user_photo.index('default.png') >= 0);
       // });   
