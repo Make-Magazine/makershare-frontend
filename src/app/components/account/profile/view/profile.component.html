@@ -10,6 +10,8 @@
 				<div class="left-section col-lg-4 col-md-6">
 					<div class="profile-sidebar">
 						<div class="profile-container" *ngIf="CurrentLoggedUserId == uid">
+
+							<app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'"></app-maker-card>
 							<div class="container-override">
 								<div class="image-container">
 									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
@@ -62,14 +64,9 @@
 								<!-- describe yourself-->
 								<hr class="hideData">
 								<!-- start Badges-->
-								<div class="icons hideData" *ngIf="badges !=''">
-									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
-										<p class="badges">{{badge?.title}}</p><br>
-									</div>
-									<hr>
-								</div>
+								<!--  -->
+								<app-card-badges [badges]="badges"></app-card-badges>
+								<hr>
 								<!--End Badges -->
 								<!-- Start Bio -->
 								<div class="bio hideData">
@@ -232,59 +229,31 @@
 							</div>
 							<!-- End col-md-3 -->
 						</div>
+
+
+
+
+
+
+
+						<!--- WHAT THE HELL????? -->
+						<!-- asldkfjsdlkfjsdlfkjsdlkfjsdlkfjsldkfjsldkfjsdlkfjdsf -->
+
+
+
+
 						<div class="profile-container" *ngIf="CurrentLoggedUserId != uid">
-							<div class="container-override">
-								<div class="image-container">
-									<img *ngIf="profile.user_photo_with_style" src="{{profile.user_photo_with_style}}" alt="" class="">
-									<img *ngIf="!profile.user_photo_with_style" src="{{profile.user_photo}}" alt="" class="">
-								</div>
-								<app-message-modal class="profile-message" [uid]="uid"></app-message-modal>
-							</div>
+							<app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'" [profile]="true"></app-maker-card>
 							<div class="profile-info">
-								<div class="userInfo">
-									<h4 class="profile-fullname">{{profile.full_name}}</h4>
-									<p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
-									<ul *ngIf="ProfileInfo.address_publish" class="list-unstyled location">
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
-										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
-										</li>
-									</ul>
-									<span class="toggleProfile" (click)="ToggleProfile()">
-										<i class="lnr lnr lnr-chevron-down open"></i>
-										<i class="lnr lnr lnr-cross close"></i>
-									</span>
-									<a class="profile-share">
-										<app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
-									</a>
-								</div>
-								<hr class="hideData 3">
-								<!-- describe yourself-->
-								<ul class="list-unstyled post hideData" *ngIf="ProfileInfo.describe_yourself != ''">
-									<li class="profile-describe-yourself">{{ProfileInfo.describe_yourself}}</li>
-								</ul>
-								<!-- describe yourself-->
-								<hr class="hideData 2" *ngIf="ProfileInfo.describe_yourself">
-								<!-- start Badges-->
-								<div class="icons hideData" *ngIf="badges !=''">
-									<!--<p class="global-title">Badges</p>-->
-									<div class="single-icon d-flex flex-row align-items-center" *ngFor="let badge of badges;">
-										<img src="{{badge?.goal_image}}" alt="{{badge?.title}}">
-										<p class="badges">{{badge?.title}}</p><br>
-									</div>
-									<hr *ngIf="badges !=''">
-								</div>
-								<!--End Badges -->
-								<!-- Start Bio -->
 
 									<div class="bio hideData">
-									<!--<p class="global-title" *ngIf="ProfileInfo.bio && CurrentLoggedUserId == uid">Bio</p>-->
 									<div *ngIf="ProfileInfo.bio" class="bio">
 										<div *ngIf="ReadMoreFields.bio">
 											<span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
-											<div [innerHTML]="ProfileInfo.bio"></div>
+											<p [innerHTML]="ProfileInfo.bio"></p>
 										</div>
 										<div *ngIf="!ReadMoreFields.bio">
-											<div [innerHTML]="ProfileInfo.bioShort"></div><span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
+											<p [innerHTML]="ProfileInfo.bioShort"></p><span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
 										</div>
 									</div>
 									<div *ngIf="!ProfileInfo.bio" class="bio">
@@ -432,61 +401,21 @@
 						<!-- End sidebar-left -->
 					</div>
 				</div>
+
+
+
+
+
+
+
+				<!--- content section - needs to be broken out into smaller pieces -->
 				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
-					<div class="d-flex justify-content-between" *ngIf="CurrentLoggedUserId != uid">
-						<div class="d-flex flex-row page-portfolio hidden-md-down">
-							<div class="nav-portfolio ml-auto">
-								<div class="display-style d-flex">
-									<p [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'grid'" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-									<p [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'showcase'" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
-								</div>
-							</div>
-						</div>
-						<div class="profile-header ml-auto justify-content-end d-flex hidden-sm-down">
-							<ul class="list-unstyled stats d-flex flex-row justify-content-end">
-								<li *ngIf="ProjectsCountPublic">
-									<p *ngIf="ProjectsCountPublic == 0"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
-									<p *ngIf="ProjectsCountPublic > 1"><span class="number">{{ProjectsCountPublic}}</span> projects</p>
-									<p *ngIf="ProjectsCountPublic == 1 || profile.total_projects == 0"><span class="number">{{ProjectsCountPublic}}</span> project</p>
-								</li>
-								<!--<li *ngIf="profile.total_likes != 0">
-									<p><span class="number">{{profile.total_likes}}</span> project likes</p>
-								</li>-->
-								<li>
-
-									<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
-									<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
-								</li>
-								<!-- Start Bookmsrk-section -->
-								<!--<li>
-									<a><i class="fa fa-lg fa-bookmark-o"></i></a>
-								</li>-->
-							</ul>
-							<!-- End Bookmark-section -->
-						</div>
+					<div class="profile-view-control-container" *ngIf="CurrentLoggedUserId != uid">
+						<i *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'showcase'" class="grid-view fa fa-th-large"></i>
+						<i *ngIf="profile.projects_view == 'showcase'" [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'" class="fa fa-bars"></i>
 					</div>
-					<!--This is for small devices-->
-					<div class="profile-header ml-auto d-flex hidden-md-up">
-						<ul class="list-unstyled stats d-flex flex-row">
-							<li *ngIf="ProjectsCount">
-								<p *ngIf="ProjectsCount > 1"><span class="number">{{ProjectsCount}}</span> projects</p>
-								<p *ngIf="ProjectsCount == 1 || ProjectsCount == 0"><span class="number">{{ProjectsCount}}</span> project</p>
-							</li>
-							<!--<li *ngIf="profile.total_likes != 0">
-								<p><span class="number">{{profile.total_likes}}</span> project likes</p>
-							</li>-->
-							<li>
-								<p *ngIf="profile.views_count > 1"><span class="number">{{profile.views_count}}</span> views</p>
-								<p *ngIf="profile.views_count == 1 || profile.views_count == 0"><span class="number">{{profile.views_count}}</span> view</p>
-							</li>
-							<!-- Start Bookmsrk-section -->
-							<!--<li>
-							<a><i class="fa fa-lg fa-bookmark-o"></i></a>
-						</li>-->
-						</ul>
-						<!-- End Bookmark-section -->
-					</div>
+				
 					<div class="profile-stats">
 						<div class="profile-content">
 							<div class="row">

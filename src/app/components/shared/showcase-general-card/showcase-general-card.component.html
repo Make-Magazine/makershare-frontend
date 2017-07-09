@@ -1,45 +1,48 @@
-<div class="showcase-card" *ngIf="showcase">
-  <div class="content-container h-100">
-    <div class="card-container">
-      <div class="card">
-        <div class="showcase-type" (click)="ShowSingleShowcase(showcase.path)">
-          <p>Showcase</p>
-        </div>
-        <h2 (click)="ShowSingleShowcase(showcase.path)" class="card-title">{{showcase.showcase_name}}</h2>
-        <div class="card-description" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)">
-          <p [innerHTML]="showcase.description_trim"></p>
-        </div>
-        <div class="showcase-card-footer mt-auto mb-3 d-flex">
-          <div class="showcase-card-footer-2">
-            <div class="showcase-card-count d-felx">
-              <div class="likes-count-div" *ngIf="showcase.nid && !userId">
-                <!--<img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
-                <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
-                <img class="showcase-likes" *ngIf="numLikes == 0" src="./assets/images/icons/light-not-selected.png" alt="">
-                <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>-->
-                <app-like [nodeNid]="showcase.nid" [showcase]="true"></app-like>
+<div *ngIf="showcase" class="card showcase {{state}}">
+  <div *ngIf="!makers.length > 0" class="card-image" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
 
-              </div>
-              <div class="likes-count-div" *ngIf="showcase.nid && userId">
-
-                <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
-              </div>
-
-              <div class="views-count-div">
-                <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
-                <span class="views-count">{{showcase.views_count}}</span>
-              </div>
-              <div class="projects-count-div" *ngIf="projectsCount">
-                <span class="projects-count">{{projectsCount}}
-                  <span *ngIf="projectsCount>1">projects</span>
-                <span *ngIf="projectsCount<=1">project</span>
-                </span>
-              </div>
-            </div>
+  <div class="card-image card-image-grid" *ngIf="makers.length > 0">
+    <!-- <div > -->
+      <app-maker-photo  *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>
+    <!-- </div> -->
+  </div>
+  <div class="card-info">
+    <div class="info-top">
+    <div class="card-image alt" *ngIf="!makers.length > 0" [style.background-image]="'url('+showcase.cover_photo+')'"></div> 
+    <div class="card-image alt" *ngIf="makers.length > 0"></div> <!-- no alt bg for projects but we still need the div here for hovers -->
+      <div class="flag project">showcase</div>
+      <a class="flex-text-container" href="showcases/{{showcase.path}}">
+        <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
+        <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.description_trim}}"></p>
+      </a>
+    </div>
+    <div class="info-bottom">
+      <div class="card-owner-meta">
+        <img class="card-owner-media" src="{{showcase.cover_photo}}"/>
+        <div class="card-owner-meta-info">
+          <span class="card-title" innerHTML="{{showcase.showcase_name}}"></span>
+          <div class="card-owners-group">
+            <!-- <a class="card-owner-link" href="showcases/{{showcase.showcase_path}" innerHTML="{{showcase.updated_date}}"></a> -->
           </div>
         </div>
       </div>
+      <ul class="social-stat-group">
+        <li class="social-stat" *ngIf="showcase.nid && userId">
+          <app-like [nodeNid]="showcase.nid"  [showcase]="true"></app-like>
+          <!-- <i class="fa fa-lightbulb-o"></i> -->
+          <!-- <span class="info">54678</span> -->
+        </li>
+        <li class="social-stat" *ngIf="showcase.number_of_project">
+          <!-- <app-like [nodeNid]="showcase.nid" [user]="userId" [project]="true"></app-like> -->
+          <i class="fa fa-dot-circle-o"></i>
+          <span class="info">{{showcase.number_of_project}}</span>
+        </li>
+        <li class="social-stat">
+          <i class="fa fa-eye"></i>
+          <span class="info">{{showcase.views_count}}</span>
+        </li>
+      </ul>
+
     </div>
-    <!--End card-container -->
-  </div>
+  </div>  
 </div>

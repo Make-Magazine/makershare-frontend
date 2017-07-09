@@ -7,9 +7,8 @@ import { LoaderService } from '../shared/loader/loader.service';
 import { MetaService } from '@nglibs/meta';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { SortBySortingSet, SortingSet } from '../../models/makers'
-
-
+import { SortBySortingSet, SortingSet } from '../../models/makers';
+import { Auth } from '../../auth0/auth.service';
 
 @Component({
   selector: 'app-projects',
@@ -36,6 +35,7 @@ export class ProjectsComponent implements OnInit {
   all_categories: ProjectCategory[];
   childCategory = [];
   categoryId;
+  Manager:boolean = false;
   
   constructor(
     private router: Router,
@@ -44,13 +44,17 @@ export class ProjectsComponent implements OnInit {
     private meta: MetaService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
+    public auth: Auth,
   ) { }
 
   ngOnInit() {
+     this.auth.IsCommuintyManager();
+     this.Manager = this.auth.IsCommuintyManager();
 
     this.getProjects();
     this.getCountProject();
     this.getProjectCategories();
+
 
     this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
     this.meta.setTag('og:image', '/assets/logo.png');
