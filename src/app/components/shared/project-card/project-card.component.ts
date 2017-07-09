@@ -12,8 +12,9 @@ import * as globals from '../../../d7services/globals';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view: string;
+  @Input() view: string = 'grid';
   @Input() front;
+  @Input() state;
 
   badges = [];
   project = {};
@@ -32,7 +33,7 @@ export class ProjectCardComponent implements OnInit {
     config.triggers = 'hover';
   }
   ngOnInit() {
-
+    console.log(this.state);
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = +localStorage.getItem('user_id');
@@ -64,6 +65,10 @@ export class ProjectCardComponent implements OnInit {
         this.project['maker_project_count'] = data[0];
       });
 
+      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
+        this.project['maker_url'] = '/portfolio/'+res.url;
+      });
+
     });
   }
 
@@ -89,10 +94,8 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['portfolio/', path]);
   }
   getProfile() {
-    if (this.project['uid']) {
-      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
-        this.router.navigate(['/portfolio/' + res.url]);
-      });
-    }
+    // if (this.project['uid']) {
+      
+    // }
   }
 }
