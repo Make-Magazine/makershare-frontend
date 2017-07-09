@@ -28,6 +28,8 @@
 
 # misc
 /.sass-cache
+**/*/.sass-cache
+**/*/style.css
 /connect.lock
 /coverage/*
 /libpeerconnection.log

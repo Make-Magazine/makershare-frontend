@@ -1,28 +1,19 @@
-<div class="dropdown">
-  <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-    aria-expanded="false" (click)="lastSeen()">
-    <li>
-     <div class ="notification-count">{{newCount}}</div>
-      <a class="notification-icon"> <img src="./assets/images/icons/notifications.png" alt=""></a>
-    </li>
-    </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <ul class="list-group menutool-notification">
-      <li class="d-flex justify-content-end">
-        <a class="view-all mr-auto" [routerLink]="['/inbox-notifications']">View All</a>
-        <a class="notf-gear"><i class="lnr lnr-cog float-right p-2" [routerLink]="['/account/settings/notifications']"  aria-hidden="true"></i></a>
-        <a class="notf-Cancel"><i class="lnr lnr-cross float-right p-2" aria-hidden="true"></i></a>
-      </li>
-    </ul>
-    <div class="dropdown-notification">
-      <div *ngIf="noNotification" class="text-center pt-5">
-        <p class="no-notfy">You do not have any notifications</p>
-      </div>
-      <div *ngIf="!noNotification">
-      <ul class="list-group">
-        <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
-      </ul>
-      <div>
-    </div>
+ <ul class="list-group menutool-notification">
+  <li class="d-flex justify-content-end">
+    <a class="view-all mr-auto" [routerLink]="['/inbox-notifications']">View All</a>
+    <a class="notf-gear"><i class="lnr lnr-cog float-right p-2" [routerLink]="['/account/settings/notifications']"  aria-hidden="true"></i></a>
+    <a class="notf-Cancel"><i class="lnr lnr-cross float-right p-2" aria-hidden="true" style="position: absolute;top: -220px;left: 285px;"></i></a>
+  </li>
+</ul>
+<div class="dropdown-notification">
+  <div *ngIf="noNotification" class="text-center pt-5">
+    <p class="no-notfy">You do not have any notifications</p>
   </div>
+  <div *ngIf="!noNotification">
+    <ul class="list-group">
+      <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }" [notification]="notification" *ngFor="let notification of notifications"></notification-tpl>
+    </ul>
+  <div>
 </div>
+<!--   </div>
+</div> -->
