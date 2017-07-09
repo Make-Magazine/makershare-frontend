@@ -42,8 +42,7 @@ export class ProjectCardComponent implements OnInit {
     this.auth.IsCommuintyManager();
      this.Manager = this.auth.IsCommuintyManager();
      console.log(this.Manager)
-      //   console.log(this.state);
-
+    
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = +localStorage.getItem('user_id');
