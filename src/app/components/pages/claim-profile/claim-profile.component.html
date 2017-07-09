@@ -1,0 +1,25 @@
+<div class="container claim-profile">
+  <div *ngIf="!missing  && success">
+    <i class="lnr lnr-checkmark-circle claim-success"></i>
+    <p>Success! Your Maker Portfolio is now published.</p>
+    <p>Just one more step to join the Maker Share community.
+      <span class="button-container-main-1">
+        <a class="btn btn-main" (click)="auth.login()">Login/Signup</a>
+      </span>
+    </p>
+    <p>If you already have a Maker Faire login, use it to login. If not, then Signup using this email address.</p>
+  </div>
+  <div *ngIf="missing">
+    <i class="lnr lnr-cross-circle claim-fail"></i>  
+    <p>
+      Oops. Something has gone wrong.<br> But Maker Share needs you! Send us your name and email address and our community managers will help you claim your Maker Portfolio.
+      <a href="mailto:help@makershare.com" target="_blank">Email Us</a>
+    </p>
+  </div>
+  <div *ngIf="errorMsg">
+    <i class="lnr lnr-cross-circle claim-fail"></i>  
+    <p>    
+      This email token is expired. <a href="mailto:help@makershare.com" target="_blank">Contact community management</a> and we’ll send you a new invitation. 
+    <p>
+    </div>
+</div>

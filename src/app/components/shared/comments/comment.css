@@ -1,0 +1,45 @@
+  .feedback-group .feedback {
+    background-color: #ecf0f1;
+    overflow: hidden;
+    padding: 10px 0px 0;
+    margin: 10px 0; }
+  .feedback-group .feedback .feed-user, .page-project .feedback-group .feedback .feed-body, .page-project .feedback-group .feedback .feed-timestamp {
+      display: inline-block;
+      vertical-align: top; }
+  .feedback-group .feedback .feed-user {
+      width: 35%;
+      padding-left: 10px;
+      margin-right: 10px; }
+  .feedback-group .feedback .feed-user img {
+        width: 60px;
+        background-color: #fff;
+        border: 1px solid #757575;
+        margin-right: 10px;
+        margin-bottom: 5px; }
+      .feedback-group .feedback .feed-user .name {
+        font-size: 14px; }
+        .feedback-group .feedback .feed-user .name h5 {
+          margin-top: 0; }
+    .feedback-group .feedback .feed-body {
+      width: 35%;
+      font-size: 12px; }
+    .feedback-group .feedback .feed-timestamp {
+      padding-left: 10px;
+      width: 25%;
+      font-size: 12px; }
+  .feedback-group form {
+    }
+    .feedback-group form .feedback {
+      padding-bottom: 10px; }
+      .feedback-group form .feedback img {
+        width: 40px;
+        margin-left: 15px;
+        float: left; }
+      .feedback-group form .feedback textarea {
+        margin-left: 15px;
+        float: left;
+        resize: none; }
+    .feedback-group form a {
+      padding: 0px 25px;
+      margin: 40px 0 0 5px;
+      font-size: 16px; }
