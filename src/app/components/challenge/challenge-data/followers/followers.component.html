@@ -1,0 +1,22 @@
+    <p *ngIf="followers" class="title-tab">Followers</p>
+
+<div class="followers conatiner" *ngIf="followers">
+
+  <div class="followers-cards row d-flex align-items-stretch">
+    <div class="col-lg-6 col-md-12 mb-1" *ngFor="let follower of followers">
+      <div class="follower-card h-100">
+        <!-- Start User Card -->
+        <app-user-card-small [uid]="follower.uid"></app-user-card-small>
+        <!-- End User Card -->
+      </div>
+      <!-- End follower-card -->
+    </div>
+    <!-- End col-md-4 -->
+  </div>
+  <div class="text-center">
+    <div class="button-container-sec-3" *ngIf="!hideloadmorefollower">
+      <a class="btn btn-grey"  (click)="loadMoreFollower($event)">Load more</a>
+    </div>
+  </div>
+</div>
+<!-- End followers -->

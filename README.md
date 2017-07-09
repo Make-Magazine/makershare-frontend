@@ -67,3 +67,12 @@ despair:dist bond$ http-server .
 ```
 
 And then load the application on `http://localhost:8080`. The transition from server-rendered to client-rendered happens so fast that it is difficult to observe, so you can set throttling very low in Chrome DevTools to see the original SSR version while the client app boots.
+
+---------------------------------------
+# UNIVERSAL BUILD ERRORS AND FIXES
+ga is not a function in app components.ts.
+angular animation error in notification-bar component included in header.
+screen is not defind in feedback component.
+auth-lock crash the hole application in auth.service.ts.
+Expression has changed after it was checked. Previous value: 'false'. Current value: 'true'. app component.ts loader.
+removing ng2-responsive, all hideitbootstrap and showitbootstrap commented.
