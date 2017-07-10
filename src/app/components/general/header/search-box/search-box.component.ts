@@ -24,44 +24,33 @@ export class SearchBoxComponent implements OnInit {
   }
 
   goSearch() {
-    this.solrService.autocomplete(this.searchQuery).subscribe(res=>{
+    this.solrService.autocomplete(this.searchQuery).subscribe(res => {
 
-
-      if( this.router.url.indexOf('/search') >= 0){
-        // in search page
-          this.boxStatus = false;
-          this.notify.emit();
-          let navigationExtras: NavigationExtras = {
-            queryParams: { 'query': encodeURIComponent(this.searchQuery) },
-            // fragment: 'anchor'
-          };
-          this.router.navigate(['/search'], navigationExtras);        
-      }else {
-
-        // if(res.response.numFound == 0){
-        //   // this.router.navigate(['/']);
-        //   this.boxStatus = false;
-        //   this.closeSearchBox();
-        //   return;
-        // }else {
-            this.boxStatus = false;
-            this.notify.emit();
-            let navigationExtras: NavigationExtras = {
-              queryParams: { 'query': encodeURIComponent(this.searchQuery) },
-              // fragment: 'anchor'
-            };
-            this.router.navigate(['/search'], navigationExtras);
-        // }
+      if (this.router.url.indexOf('/search') >= 0) {
+        // if the current page is search page
+        this.boxStatus = false;
+        this.notify.emit();
+        let navigationExtras: NavigationExtras = {
+          queryParams: { 'query': encodeURIComponent(this.searchQuery) },
+        };
+        this.router.navigate(['/search'], navigationExtras);
+      } else {
+        this.boxStatus = false;
+        this.notify.emit();
+        let navigationExtras: NavigationExtras = {
+          queryParams: { 'query': encodeURIComponent(this.searchQuery) },
+        };
+        this.router.navigate(['/search'], navigationExtras);
 
       }
     })
-    
+
   }
 
   keyDownFunction(event) {
-    if(event.keyCode == 13 && this.searchQuery.length > 0) {
+    if (event.keyCode == 13 && this.searchQuery.length > 0) {
       this.goSearch();
-    }else if(event.keyCode == 13 && this.searchQuery.length == 0){
+    } else if (event.keyCode == 13 && this.searchQuery.length == 0) {
       this.closeSearchBox();
     }
   }
