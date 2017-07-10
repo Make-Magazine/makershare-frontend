@@ -1,6 +1,6 @@
 setTimeout(function() {
 	if($('.profile-page').length) {
-		console.log('yes');
+		// console.log('yes');
 		var st,
 			$ot = $('.profile-sidebar'),
 			ot = $ot.offset().top,
@@ -11,7 +11,7 @@ setTimeout(function() {
 		$(document).on('scroll', function() {
 			st = $('body').scrollTop();
 
-			console.log(st, ot);
+			// console.log(st, ot);
 			if(st > 1) {
 				hh = $('.site-header').outerHeight(true);
 			}
