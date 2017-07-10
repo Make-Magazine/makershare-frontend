@@ -74,6 +74,7 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
 import { FollowUserComponent } from './follow-user/follow-user.component';
 
 import { FeatureProjectComponent } from './feature-project/feature-project.component';
+import { FeatureMakerComponent } from './feature-maker/feature-maker.component';
 
 
 let config = {
@@ -157,6 +158,7 @@ export function ResponsiveDefinition() {
     //pipes
     ReverseArray,
     FeatureProjectComponent,
+    FeatureMakerComponent,
   ],
   exports: [
     CommentComponent,
@@ -204,6 +206,7 @@ export function ResponsiveDefinition() {
     Ng2FileDropDirective,
     ReverseArray,
    FeatureProjectComponent,
+   FeatureMakerComponent,
   ],
 })
 export class SharedModule {
