@@ -41,7 +41,6 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit() {
     this.auth.IsCommuintyManager();
      this.Manager = this.auth.IsCommuintyManager();
-     console.log(this.Manager)
     
     this.getProjectCard();
     this.getBadgesProject();
