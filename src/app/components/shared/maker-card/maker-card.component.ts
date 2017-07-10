@@ -36,7 +36,6 @@ export class MakerCardComponent implements OnInit {
   }
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
-    console.log(this.Manager)
     this.getMakerCard();
     this.getMakerBadges();
     this.CountMakerProjects();
@@ -73,6 +72,7 @@ export class MakerCardComponent implements OnInit {
     })
   }
   getLatestProject() {
+    // this.latestPorjectImg=null;
     this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
       if (data[0]) {
         this.latestPorjectImg = data[0].latest_project_cover_photo;
