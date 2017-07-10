@@ -1,3 +1,7 @@
+<div *ngIf="Manager && uid">
+  <app-feature-maker [featuredMakerId]="uid"> </app-feature-maker>
+</div>
+
 <div class="card maker {{state}}" *ngIf="card" (click)="goToProfile(card.profile_url)">
   <div class="card-image" [style.background-image]="'url('+card.photo_lg+')'"></div>
   <div class="card-info">
@@ -5,20 +9,22 @@
       <div class="card-image alt" *ngIf="profile"></div>
       <div class="card-image alt" *ngIf="!profile" [style.background-image]="'url('+latestPorjectImg+')'"></div>
       <div class="flag maker">maker</div>
-       <app-card-badges [badges]="badges"></app-card-badges>
+
+
+      <app-card-badges [badges]="badges"></app-card-badges>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{card.photo_lg}}"/>
+        <img class="card-owner-media" src="{{card.photo_lg}}" />
         <div class="card-owner-meta-info">
-            <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);" innerHTML="{{card.first_name}} {{card.last_name}}"></a>
-            <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
+          <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);" innerHTML="{{card.first_name}} {{card.last_name}}"></a>
+          <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
 
           <div class="card-meta-row" *ngIf="card.nickname">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
             <p class="maker-nickname card-meta-row-description" innerHTML="{{card.nickname}}"></p>
           </div>
-          
+
 
           <div class="card-meta-row" *ngIf="card.location_locality && card.country && card.country == 'United States'">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
