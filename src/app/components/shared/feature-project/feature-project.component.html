@@ -4,7 +4,6 @@
   <a class="feature-project" *ngIf="!isFeature" (click)="featureProject($event)"><p>Feature this project</p></a>
   <p *ngIf="isFeature"> Unfeature this project </p>
 </div>-->
-
   <div class="button-container-sec-2" >
   <span class="btn btn-main-2" (click)="featureProject($event)" [class.active]="isFeatured">{{ButtonFeature}}</span>
   </div>
