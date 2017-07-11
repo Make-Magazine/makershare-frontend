@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist --port=4200 --host=localhost",
-    "build": "webpack -p --config webpack.uni.config.js",
-    "postbuild": "ng-render --environment=prod --preboot=true --debug --inline",
+    "build": "ng build --prod --aot",
+    "postbuild": "ng-render --environment=prod --preboot=true --debug --inline > logs.txt",
     "build:start": "npm run build && npm run start",
     "lint": "ng lint"
   },
