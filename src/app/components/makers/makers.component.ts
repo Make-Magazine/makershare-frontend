@@ -21,7 +21,7 @@ export class MakersComponent implements OnInit {
 
   makers = [];
   pages: number = 0;
-  makersCount;
+  makersCount = 0;
   hideloadmore = true;
   all_categories = [];
   categories_childs = [];

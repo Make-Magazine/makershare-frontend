@@ -49,7 +49,6 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
      this.Manager = this.auth.IsCommuintyManager();
-     console.log(this.Manager)
      
     this.getProjects();
     this.getCountProject();
