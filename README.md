@@ -76,3 +76,5 @@ screen is not defind in feedback component.
 auth-lock crash the hole application in auth.service.ts.
 Expression has changed after it was checked. Previous value: 'false'. Current value: 'true'. app component.ts loader.
 removing ng2-responsive, all hideitbootstrap and showitbootstrap commented.
+some commented static pages giving xhr zone error.
+
