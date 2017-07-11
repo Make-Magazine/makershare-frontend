@@ -7,12 +7,12 @@ import { ViewService, FlagService } from '../../../d7services';
 })
 export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
-  numLikes;
+  numLikes=0;
   userId;
-  makers;
+  makers=[];
   @Input() showcaseNid;
   @Input() state;
-  projectsCount;
+  projectsCount=0;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
@@ -44,7 +44,7 @@ export class ShowcaseGeneralCardComponent implements OnInit {
       ]).subscribe(data => {
           this.makers = data;
           // console.log('data here we go?');
-          // console.log(data);
+           console.log(this.makers.length);
     });
   }
   getProjectsCount() {
