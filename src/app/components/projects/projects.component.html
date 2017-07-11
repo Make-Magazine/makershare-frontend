@@ -31,9 +31,10 @@
           <div class="filters projects-counter">
             <div class="entries-count btn">
               <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-              <p *ngIf="countProject < 2">{{countProject}} Project</p>                
+              <p *ngIf="countProject < 2">{{countProject}} Project</p>
             </div>
-          </div><!-- End filters -->
+          </div>
+          <!-- End filters -->
         </div>
         <div class="submenus" *ngIf="childCategory.length>0">
           <ul class="list-unstyled cat-filters">
@@ -46,7 +47,8 @@
       </div>
     </header>
     <div class="projects-grid row" *ngIf="projects.length > 0">
-      <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.nid" [state]="'tall'"></app-project-card>
+      <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.nid"
+        [state]="'tall'"></app-project-card>
     </div>
     <div class="text-center pt-3 pb-5" *ngIf="showloadmoreproject">
       <div>
