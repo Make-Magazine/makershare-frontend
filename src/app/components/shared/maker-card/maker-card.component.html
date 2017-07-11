@@ -7,7 +7,7 @@
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt" *ngIf="profile"></div>
-      <div class="card-image alt" *ngIf="!profile" [style.background-image]="'url('+latestPorjectImg+')'"></div>
+      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'"></div>
       <div class="flag maker">maker</div>
 
 

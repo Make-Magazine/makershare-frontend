@@ -246,7 +246,6 @@ export class Auth {
     this.lock.show();
   }
 
-
   // Call this method in app.component
   // if using path-based routing
   public handleAuthentication(): void {
@@ -271,27 +270,16 @@ export class Auth {
                 localStorage.setItem('user_id', res.user.uid);
                 localStorage.setItem('user_name', res.user.name);
                 localStorage.setItem('roles', JSON.stringify(res.user.roles));
-
+                // update profile picture globally
                 this.profilePictureService.update(res.user_photo);
-
-                //localStorage.setItem('user_photo', res.user_photo);
-
-                // first time - redirection to profile edit page
-                // console.log(res.first_time);
-                // console.log(self, this);
-
+                // redirect to the profile page if it's first time
                 if (res.first_time == true) {
-                  setTimeout(function() {
-                    self.router.navigate(['/portfolio/']);
+                  setTimeout(function () {
+                    self.router.navigate(['portfolio']);
                   }, 1000);
-
-
-                } else  if (res.user_photo.indexOf('profile-default') < 0) {
+                } else if (res.user_photo.indexOf('profile-default') < 0) {
                   this.router.navigate(['/']);
                 }
-
-
-
 
               } else {
                 //localStorage.setItem('user_photo', res.user_photo);
@@ -300,12 +288,12 @@ export class Auth {
 
               this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
               // if the first time, navigate to edit profile page
-              window.location.hash='';
-              if(res.user_photo.indexOf('profile-default.png') >= 0) {
+              window.location.hash = '';
+              if (res.user_photo.indexOf('profile-default.png') >= 0) {
                 console.log('doesnt have a photo');
                 this.notificationBarService.create({ message: 'Please upload a profile photo now to get started creating projects.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
-                setTimeout(function(context) {
-                    context.router.navigate(['/portfolio/']);
+                setTimeout(function (context) {
+                  context.router.navigate(['/portfolio/']);
                 }, 500, this);
               }
             });
@@ -320,7 +308,6 @@ export class Auth {
       }
     });
     this.lock.on('authorization_error', (err) => {
-      //this.router.navigate(['/']);
       if (err.error == "unauthorized") {
         localStorage.setItem('under_age', 'true');
         this.notificationBarService.create({ message: 'Only Makers 13 years and older can register. Please come back when you\'re a teenager.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
@@ -381,40 +368,21 @@ export class Auth {
     }
   }
 
-public IsCommuintyManager(): boolean {
-  if (this.authenticated() == true){
-    var roles = JSON.parse(localStorage.getItem('roles'));
+  public IsCommuintyManager(): boolean {
+    if (this.authenticated() == true) {
+      var roles = JSON.parse(localStorage.getItem('roles'));
 
-       if ('4' in roles){
+      if ('4' in roles) {
         //  console.log("communty manager");
-         return true;
-        }else {
-          return false;
-        }
-} else {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
 
-  return false;
-}
-    //  var obs = Observable.create(observer => {
-      
-    //     this.authenticated().subscribe( data => {
-    //         if(data.user.uid && data.user.uid > 0){
-    //           observer.next(true);
-    //           observer.complete();
-    //         }else{
-    //           observer.next(false);
-    //           observer.complete();
-    //         }
-    //     });
+      return false;
+    }
 
-    // else {
-    //     observer.next(false);
-    //     observer.complete();
-    //   }
-
-//     });
-//     return obs;
-//   }
-}
+  }
 
 }
