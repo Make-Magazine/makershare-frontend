@@ -42,8 +42,32 @@ import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-port
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
 
+// temp solution to disable lazyload 
+import { HomeModule } from './components/home/home.module';
+import { ShowcaseModule } from './components/showcase/showcase.module';
+import { ProjectsModule } from './components/projects/projects.module';
+import { MakersModule } from './components/makers/makers.module';
+import { ChallengeModule } from './components/challenge/challenge.module';
+import { ProfileModule } from './components/account/profile/profile.module';
+import { AccountModule } from './components/account/account.module';
+import { SearchModule } from './components/search/search.module';
+import { LearnModule } from './components/learn/learn.module';
+
+const TempModules = [
+  HomeModule,
+  // ShowcaseModule,
+  // ProjectsModule,
+  // MakersModule,
+  // ChallengeModule,
+  // ProfileModule,
+  // AccountModule,
+  // SearchModule,
+  // LearnModule,
+];
+
 @NgModule({
   imports: [
+    TempModules,
     //angular modules
     BrowserAnimationsModule,
     BrowserModule,

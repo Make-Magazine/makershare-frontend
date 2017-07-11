@@ -1,0 +1,109 @@
+[2017-07-11T15:57:33.596Z] [info] [] Rendering application from source (working path: /tmp/2888da1744254) 
+
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+is nor a communty manager
+is nor a communty manager
+Angular is running in the development mode. Call enableProdMode() to enable the production mode.
+[2017-07-11T15:58:13.828Z] [info] [] Rendered route / to /home/orange/Desktop/projects/maker/maker-front/dist/index.html 
+
+[2017-07-11T15:58:13.911Z] [info] [] Rendered route /about-us to /home/orange/Desktop/projects/maker/maker-front/dist/about-us/index.html 
+
+[2017-07-11T15:58:13.989Z] [info] [] Rendered route /make-intel to /home/orange/Desktop/projects/maker/maker-front/dist/make-intel/index.html 
+
+[2017-07-11T15:58:14.040Z] [info] [] Rendered route /makezine to /home/orange/Desktop/projects/maker/maker-front/dist/makezine/index.html 
+
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).
+[2017-07-11T15:58:14.165Z] [info] [] Rendered route /badges to /home/orange/Desktop/projects/maker/maker-front/dist/badges/index.html 
+
+[2017-07-11T15:58:14.197Z] [info] [] Rendered route /show-and-tell to /home/orange/Desktop/projects/maker/maker-front/dist/show-and-tell/index.html 
+
+[2017-07-11T15:58:14.217Z] [info] [] Rendered route /maker-faire to /home/orange/Desktop/projects/maker/maker-front/dist/maker-faire/index.html 
+
+[2017-07-11T15:58:14.236Z] [info] [] Rendered route /terms-of-use to /home/orange/Desktop/projects/maker/maker-front/dist/terms-of-use/index.html 
+
+[2017-07-11T15:58:14.265Z] [info] [] Rendered route /guidelines to /home/orange/Desktop/projects/maker/maker-front/dist/guidelines/index.html 
+
+[2017-07-11T15:58:14.439Z] [info] [] Rendered route /claim-profile to /home/orange/Desktop/projects/maker/maker-front/dist/claim-profile/index.html 
+
+[2017-07-11T15:58:14.584Z] [info] [] Rendered route /intel-innovation-programs to /home/orange/Desktop/projects/maker/maker-front/dist/intel-innovation-programs/index.html 
+
+[2017-07-11T15:58:14.616Z] [info] [] Rendered route /access-denied to /home/orange/Desktop/projects/maker/maker-front/dist/access-denied/index.html 
+
+[2017-07-11T15:58:14.640Z] [info] [] Rendered route /makers-intel to /home/orange/Desktop/projects/maker/maker-front/dist/makers-intel/index.html 
+
+[2017-07-11T15:58:14.675Z] [info] [] Rendered route /the-maker-movement to /home/orange/Desktop/projects/maker/maker-front/dist/the-maker-movement/index.html 
+
+[2017-07-11T15:58:14.695Z] [info] [] Rendered route /maker-camp to /home/orange/Desktop/projects/maker/maker-front/dist/maker-camp/index.html 
+
+[2017-07-11T15:58:14.711Z] [info] [] Rendered route /maker-shed to /home/orange/Desktop/projects/maker/maker-front/dist/maker-shed/index.html 
+
+[2017-07-11T15:58:14.810Z] [info] [] Rendered route /access-restricted to /home/orange/Desktop/projects/maker/maker-front/dist/access-restricted/index.html 
+
+[2017-07-11T15:58:15.020Z] [info] [] Rendered route /other-sites to /home/orange/Desktop/projects/maker/maker-front/dist/other-sites/index.html 
+
+[2017-07-11T15:58:17.639Z] [info] [] Rendered route /404 to /home/orange/Desktop/projects/maker/maker-front/dist/404/index.html 
+
