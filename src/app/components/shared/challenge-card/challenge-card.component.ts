@@ -25,6 +25,9 @@ export class ChallengeCardComponent implements OnInit {
     opened: false,
     display_entries: 0,
     nid: 0,
+    path:"",
+    status_id:0,
+    summary_trim:"",
     challenge_start_date: {
       value: "",
       timezone: "",
