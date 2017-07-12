@@ -27,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   view = 'grid';
   pages: number = 0;
   countProject = 0;
-  hideloadmoreproject = true;
+  showloadmoreproject = false;
   CurrentActiveParentIndex = -1;
   CurrentActiveChildIndex = -1;
   categories_parents: ProjectCategory[] = [];
@@ -49,9 +49,8 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
      this.Manager = this.auth.IsCommuintyManager();
-     
+     this.getCountProject();
     this.getProjects();
-    this.getCountProject();
     this.getProjectCategories();
 
 
@@ -141,9 +140,9 @@ export class ProjectsComponent implements OnInit {
   }
   loadMoreVisibilty() {
     if (this.countProject <= this.projects.length) {
-      this.hideloadmoreproject = true;
+      this.showloadmoreproject = false;
     } else if (this.countProject > this.projects.length) {
-      this.hideloadmoreproject = false;
+      this.showloadmoreproject = true;
     }
   }
 
