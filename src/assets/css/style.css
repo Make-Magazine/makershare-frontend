@@ -1095,6 +1095,23 @@ p, .paragraph {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+app-feature {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9; }
+
+.feature-container {
+  background: #828282;
+  cursor: pointer;
+  padding: 1rem; }
+  .feature-container .feature {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    line-height: 1rem; }
+  .feature-container.active, .feature-container:hover {
+    background: #00AEEF; }
+
 .badge-group {
   list-style: none; }
   .badge-group li, .badge-group .badge {

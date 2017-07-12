@@ -1,15 +1,15 @@
-<div *ngIf="Manager && uid">
-  <app-feature-maker [featuredMakerId]="uid"> </app-feature-maker>
-</div>
 
-<div class="card maker {{state}}" *ngIf="card" (click)="goToProfile(card.profile_url)">
+
+
+<div class="card maker {{state}}" *ngIf="card" >
   <div class="card-image" [style.background-image]="'url('+card.photo_lg+')'"></div>
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt" *ngIf="profile"></div>
-      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'"></div>
+      <div class="card-image alt" *ngIf="profile" (click)="goToProfile(card.profile_url)"></div>
+      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(card.profile_url)"></div>
       <div class="flag maker">maker</div>
 
+      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"> </app-feature>
 
       <app-card-badges [badges]="badges"></app-card-badges>
     </div>
