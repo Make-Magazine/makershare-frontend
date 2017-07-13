@@ -162,8 +162,13 @@
 											</a>
 										</div>
 										<div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow	 != '' ">
+<<<<<<< HEAD
+											<a class="nav-link social ext" target="_blank" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
+												<img src="./assets/images/icons/stackoverflow .svg" alt="">
+=======
 											<a class="nav-link social stack" target="_blank" href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
 												<img src="./assets/images/icons/stackoverflow.svg" alt="">
+>>>>>>> 0ba64aba19d3f57f1a04711af994cf317cc0d112
 											</a>
 										</div>
 									</div>
@@ -848,6 +853,8 @@
 							<small *ngIf="!formGroup.controls.field_add_your_makerspace_s_['controls'][i].controls.field_makerspace_url.valid" class="text-danger">
 													Invalid URL, ex: http://example.com
 											</small>
+<<<<<<< HEAD
+=======
 											</div>
 											<div *ngIf="formGroup.controls.field_add_your_makerspace_s_['controls'].length != 1" (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);"
 											 class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>
@@ -856,6 +863,7 @@
 								</div>
 							</div>
 							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid && formGroup.controls.field_add_your_makerspace_s_['controls'].length < 10" class="btn add-other" (click)="AddMakerspaceRow()"><i class="lnr lnr-plus-circle" aria-hidden="true"></i><span>Add another</span></a>
+>>>>>>> 0ba64aba19d3f57f1a04711af994cf317cc0d112
 						</div>
 						<div *ngIf="formGroup.controls.field_add_your_makerspace_s_['controls'].length != 1" (click)="formGroup.controls.field_add_your_makerspace_s_.removeAt(i);"
 							class="maker-space-remove col-md-4 mt-2"><i class="lnr lnr-cross-circle" aria-hidden="true"></i></div>

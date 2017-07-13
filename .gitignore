@@ -1,8 +1,15 @@
+<<<<<<< HEAD
+dist
+dist-server
+app/**/*.js
+app/**/*.map
+node_modules
+yarn.lock
+=======
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
-/dist-server
 /tmp
 
 # dependencies
@@ -51,5 +58,4 @@ Thumbs.db
 /src/*.ngfactory.ts
 /src/*.ngsummary.ts
 /.vscode/
-app/**/*.js
-app/**/*.map
+>>>>>>> ng4
