@@ -1,0 +1,126 @@
+.page-create-profile {
+	background-color: $main-bg;
+	margin: 0px;
+	.top-content-wrapper {
+		background-color: $main-grey;
+		color: $white;
+		padding-bottom: 10px;		
+		h3,h5  {color: $white;}
+		p {}
+	}
+	.create-nav {
+		background-color: $main-bg;
+		overflow: hidden;
+		padding-top: 20px;
+		padding-bottom: 0;
+		vertical-align: bottom;
+		ul {
+			float: left;
+			margin-bottom: 0;
+			li {
+				float: left;
+				.active {
+					background-color: $white;
+					border-bottom: $white;
+				}
+			}
+		}
+		.save-next,.skip {
+			float: right;
+			position: relative;
+			bottom: 10px;
+
+		}
+		.skip {padding: 7px 35px;display: none;}
+	}
+	.save-next,.skip {
+					background-color: #fff;
+					
+		}
+		// .skip {padding: 7px 35px;display: none;}
+	.basic-info {
+		width: 60%;
+		margin: auto;
+		margin-top: 20px;
+		color: $main-grey;
+		input{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		#profile-photo-upload {
+			display: none;
+		}
+		.custom-control.custom-checkbox {
+			margin-right: 0;
+		}
+		// #userName, #describe, #birthday, #email {width: 50%;font-size: 15px;}, #country {},#state {}
+		#userName {
+			width: 40%;
+		}
+		.ng2-tags-container {
+			align-items: center;
+		}
+
+	}
+	.optional-info {
+		@extend .basic-info;
+		a.btn {
+
+		}
+		i {
+			font-size: 30px;
+		}
+		span {
+			    padding-left: 8px;
+    font-size: 1.2rem;
+    position: relative;
+    top: -2px;
+		}
+		
+		.social-links {
+			li:first-of-type {
+				h4 {
+					margin-left: 82%;
+					font-size: 14px;
+				}
+			}
+			label {
+				width: 30%;
+				font-size: 15px;
+			}
+			input[type="checkbox"] {
+				margin-left: 30px;
+				font-size: 15px;
+			}
+			input[type="text"] {
+				width: 50%;
+				margin: 0;
+				padding: 3px;
+				font-size: 15px;
+			}
+			i {width: 25px;}
+			p {margin-top: 5px;font-size: 15px;}
+		}
+	}
+	.guide {
+		background-color: $light-grey;
+		padding: 15px;
+		margin: 15px 0;
+	}
+	.create-cover {
+		padding: 14px;
+		overflow: hidden;
+	}
+}
+
+
+.page-create-profile {
+	.basic-info  {
+		.form-group {
+			.image-preview {
+				width: 160px;
+				height: auto;
+			}
+		}
+	}
+}
