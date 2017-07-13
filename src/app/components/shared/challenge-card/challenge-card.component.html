@@ -1,4 +1,4 @@
- <div class="card mission {{state}}">
+<div class="card mission {{state}}">
   <div class="card-image" [style.background-image]="'url('+challenge.cover_image+')'"></div>
   <div class="card-info">
     <div class="info-top">
@@ -6,12 +6,13 @@
       <div class="flag mission">mission</div>
     </div>
     <div class="info-bottom">
+      <app-feature *ngIf="Manager && challenge.nid" [id]="challenge.nid" [type]="'node'"> </app-feature>
       <span class="card-mission-sponsor" *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}</span>
       <div class="card-owner-meta">
-          <div class="card-owner-meta-info">
-            <span class="card-title" innerHTML="{{challenge.title}}"></span>
-            <p class="card-description-long" [innerHTML]="challenge.summary_trim"></p>
-          </div>
+        <div class="card-owner-meta-info">
+          <span class="card-title" innerHTML="{{challenge.title}}"></span>
+          <p class="card-description-long" [innerHTML]="challenge.summary_trim"></p>
+        </div>
       </div>
       <ul class="social-stat-group">
         <li class="social-stat">
@@ -21,7 +22,7 @@
           <i class="fa fa-dot-circle-o"></i>
           <span class="info">{{countProjects}}</span>
         </li>
-       <!--  <li class="social-stat">
+        <!--  <li class="social-stat">
           <i class="fa fa-dot-circle-o"></i>
           <span class="info">{{challenge.followers}}</span>
         </li> -->
@@ -34,7 +35,7 @@
           <span class="info" *ngIf="challenge.status_id == 1107">{{challenge.winners_announcement_date.value}}</span>
           <span class="info" *ngIf="challenge.status_id == 1108">{{challenge.winners_announcement_date.value}}</span>
           <span class="info" *ngIf="challenge.status_id == 376 && announce_date < 0">{{challenge.winners_announcement_date.value}}</span>
-          <span class="info" *ngIf="challenge.status_id == 376 && announce_date > 0">{{challenge.winners_announcement_date.value}}</span> 
+          <span class="info" *ngIf="challenge.status_id == 376 && announce_date > 0">{{challenge.winners_announcement_date.value}}</span>
         </li>
 
         <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> Submissions close: {{challenge.challenge_end_date.value}}</span> -->

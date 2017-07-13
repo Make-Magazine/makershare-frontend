@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,UserService } from '../../../d7services';
+import { ViewService, UserService } from '../../../d7services';
 import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
 import { IChallenge } from '../../../models/challenge/challenge';
+import { Auth } from '../../../auth0/auth.service';
 
 
 @Component({
@@ -11,9 +12,9 @@ import { IChallenge } from '../../../models/challenge/challenge';
 })
 export class ChallengeCardComponent implements OnInit {
   @Input() state;
-  
+
   announce_date;
-  countProjects=0;
+  countProjects = 0;
   challenge: IChallengeData = {
     title: "",
     cover_image: "",
@@ -25,9 +26,9 @@ export class ChallengeCardComponent implements OnInit {
     opened: false,
     display_entries: 0,
     nid: 0,
-    path:"",
-    status_id:0,
-    summary_trim:"",
+    path: "",
+    status_id: 0,
+    summary_trim: "",
     challenge_start_date: {
       value: "",
       timezone: "",
@@ -54,18 +55,21 @@ export class ChallengeCardComponent implements OnInit {
     date_type: "",
   };
   challengeData = [];
+  Manager: boolean = false;
+
   @Input() challengeNid;
-  @Input() front:boolean = false;
-  @Input() first:boolean = false;
+  @Input() front: boolean = false;
+  @Input() first: boolean = false;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-
-
+    public auth: Auth,
   ) { }
 
   ngOnInit() {
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
     this.getChallenges();
     this.getCountProject();
   }
@@ -79,11 +83,11 @@ export class ChallengeCardComponent implements OnInit {
         var todayDate = new Date();
         let dateArray = this.challenge.challenge_end_date.value.split(" ");
         let YearDayMonth = dateArray[0].split("-");
-        var endDate = new Date(+YearDayMonth[0],+YearDayMonth[1],+YearDayMonth[2]);
+        var endDate = new Date(+YearDayMonth[0], +YearDayMonth[1], +YearDayMonth[2]);
         var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
         let winnerdate = this.challenge.winners_announcement_date.value.split(" ");
         let winnerdateArray = winnerdate[0].split("-");
-        var announceDate = new Date(+winnerdateArray[0],+winnerdateArray[1],+winnerdateArray[2]);
+        var announceDate = new Date(+winnerdateArray[0], +winnerdateArray[1], +winnerdateArray[2]);
         var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
         this.announce_date = announce;
 
@@ -98,13 +102,13 @@ export class ChallengeCardComponent implements OnInit {
       this.challenge.challenge_start_date.value = this.changeDateFormat(this.challenge.challenge_start_date.value);
       this.challenge.winners_announcement_date.value = this.changeDateFormat(this.challenge.winners_announcement_date.value);
     }, err => {
-    //  console.log(err);
+      //  console.log(err);
     });
   }
-   /* function to get count projects in challenge */
+  /* function to get count projects in challenge */
   getCountProject() {
     // var nid;
-      this.viewService.getView('maker_count_project_challenge_api/' +this.challengeNid)
+    this.viewService.getView('maker_count_project_challenge_api/' + this.challengeNid)
       .subscribe(data => {
         if (data == null) {
           this.countProjects = 0
@@ -112,14 +116,14 @@ export class ChallengeCardComponent implements OnInit {
           this.countProjects = data;
         }
       }, err => {
-     //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+        //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
       });
   }
   /*end function count project in challenge*/
   /* function to change data format */
   changeDateFormat(date) {
     var d;
-    if(!date)
+    if (!date)
       return '';
     date = date.split(" ")[0];
     // d = new Date(date);
@@ -131,7 +135,7 @@ export class ChallengeCardComponent implements OnInit {
     // var day = d.getDate();
     // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
-    return date[1]+'/'+date[2]+'/'+date[0];
+    return date[1] + '/' + date[2] + '/' + date[0];
   }
   /* end function to change data format */
   /* function to navigate to challenge summary page */
