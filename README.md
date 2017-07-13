@@ -2,7 +2,7 @@
 
 ```bash
 npm run build
-cp -r assets dist/assets
+cp -r src/assets dist/assets
 npm run watch
 ```
 
