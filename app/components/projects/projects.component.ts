@@ -4,9 +4,8 @@ import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { SortBySortingSet, SortingSet } from '../../models/makers'
-
-
+import { SortBySortingSet, SortingSet } from '../../models/makers';
+import { Auth } from '../../auth0/auth.service';
 
 @Component({
   selector: 'app-projects',
@@ -25,7 +24,7 @@ export class ProjectsComponent implements OnInit {
   view = 'grid';
   pages: number = 0;
   countProject = 0;
-  hideloadmoreproject = true;
+  showloadmoreproject = false;
   CurrentActiveParentIndex = -1;
   CurrentActiveChildIndex = -1;
   categories_parents: ProjectCategory[] = [];
@@ -33,18 +32,20 @@ export class ProjectsComponent implements OnInit {
   all_categories: ProjectCategory[];
   childCategory = [];
   categoryId;
+  Manager:boolean = false;
   
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
-  ) { }
+    public auth: Auth,
+  ) { }CONFLICT 
 
   ngOnInit() {
-
+     this.Manager = this.auth.IsCommuintyManager();
+     this.getCountProject();
     this.getProjects();
-    this.getCountProject();
     this.getProjectCategories();
 
     // this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
@@ -133,9 +134,9 @@ export class ProjectsComponent implements OnInit {
   }
   loadMoreVisibilty() {
     if (this.countProject <= this.projects.length) {
-      this.hideloadmoreproject = true;
+      this.showloadmoreproject = false;
     } else if (this.countProject > this.projects.length) {
-      this.hideloadmoreproject = false;
+      this.showloadmoreproject = true;
     }
   }
 

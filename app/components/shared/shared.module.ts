@@ -24,6 +24,8 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
+import { CardBadges } from './card-badges/card-badges.component';
+import { MakerPhoto } from './maker-photo/maker-photo.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
@@ -41,6 +43,8 @@ import { SharedButtonsComponent } from './shared-buttons/shared-buttons.componen
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
 // import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
+import { SocialStats } from './social-stats/social-stats.component';
+
 
 // custom directives
 import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
@@ -65,6 +69,9 @@ import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
+import { FollowUserComponent } from './follow-user/follow-user.component';
+
+import { FeatureComponent } from './feature/feature.component';
 
 @NgModule({
   imports: [
@@ -99,6 +106,9 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
     LearnUserCardComponent,
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
+    CardBadges,
+    MakerPhoto,
+    SocialStats,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -115,6 +125,7 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
     NotificationPanelComponent,
     NotificationTemplateComponent,
     SharedButtonsComponent,
+    FollowUserComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -123,10 +134,12 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
+    FeatureComponent,
   ],
   exports: [
     CommentComponent,
     FollowComponent,
+    FollowUserComponent,
     BookmarkComponent,
     LikeComponent,
     ForkComponent,
@@ -144,8 +157,10 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
     ShowcaseGeneralCardComponent,
     MessageModalComponent,
     MakerCardComponent,
+    CardBadges,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
+    SocialStats,
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
@@ -165,7 +180,8 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
     MakerCkeditorComponent,
     ImageCropperComponent,
     // Ng2FileDropDirective,
-    ReverseArray
+    ReverseArray,
+    FeatureComponent
   ],
 })
 export class SharedModule {

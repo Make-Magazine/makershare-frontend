@@ -5,7 +5,7 @@ import { BaseComponent } from './base/base.component';
 
 
 export const ProfileRouts: Routes = [
-  // { path: 'feed', component: FeedComponent },
+  { path: 'feed', component: FeedComponent },
   {
     path: '',
     children: [

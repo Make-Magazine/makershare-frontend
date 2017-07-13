@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     this.loaderService.display(true);
     this.viewService.getView('maker_homepage_api').subscribe(data =>{
       this.homeCards = data;
+      // console.log(this.homeCards[0].id)
 
       // this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
       // this.meta.setTag('og:image', '/assets/logo.png');

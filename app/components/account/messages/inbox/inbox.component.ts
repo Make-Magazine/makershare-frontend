@@ -199,7 +199,7 @@ export class InboxComponent implements OnInit {
       }
 
       this.msg = this.msg.concat(msg_arr);
-      console.log(this.msg)
+      // console.log(this.msg)
       //two participent or more
       for (let i = 0; i < this.msg.length; i++) {
         // this.recipentCount = (this.msg[i].recipient.length) -1;

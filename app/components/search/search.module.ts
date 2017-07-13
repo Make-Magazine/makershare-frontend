@@ -7,7 +7,6 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { AllResultComponent } from './all-result/all-result.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-// Services
 import { SolrService } from '../../d7services';
 
 

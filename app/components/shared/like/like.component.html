@@ -2,8 +2,8 @@
 <div>
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
-      <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
-      <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" class="fa fa-lightbulb-o"></i>
+      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" class="fa fa-lightbulb-o"></i>
       <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip">{{countlikes}}
       <span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"><span class="text-tooltip-name" *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
@@ -59,8 +59,8 @@
 <div>
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
-      <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" src="/assets/images/icons/light-selected.png">
-      <img ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" src="/assets/images/icons/light-not-selected.png">
+      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" class="fa fa-lightbulb-o"></i>
+      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" class="fa fa-lightbulb-o"></i>
       <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip" (click)="open(content)">{{countlikes}}
       <!--<span class="new-tooltiptext"> 
        <span *ngFor="let liker of whoLike;"><span *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>

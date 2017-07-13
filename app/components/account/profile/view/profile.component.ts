@@ -70,12 +70,14 @@ export class ProfileComponent implements OnInit {
       'field_twitch': [this.profile.field_social_accounts.field_twitch, [URLNoProtocol()]],
       'field_gitlabs': [this.profile.field_social_accounts.field_gitlabs, [URLNoProtocol()]],
       'field_thingyverse': [this.profile.field_social_accounts.field_thingyverse, [URLNoProtocol()]],
-      'field_stackoverflow':[this.profile.field_social_accounts.field_stackoverflow, [URLNoProtocol()]],
+      'field_stackoverflow': [this.profile.field_social_accounts.field_stackoverflow, [URLNoProtocol()]],
       'field_preferred': [this.profile.field_social_accounts.field_preferred],
       'field_website_title': [this.profile.field_social_accounts.field_website_title],
       'field_blog_title': [this.profile.field_social_accounts.field_blog_title]
     });
   }
+  no_of_followers: number;
+  numberFollowing: number;
   PhotoModalTab: string;
   countProject: number;
   CurrentInfoTab: string;
@@ -86,8 +88,8 @@ export class ProfileComponent implements OnInit {
   ProjectsCountPrivate: number;
   ProjectsCountDraft: number;
   ReadMoreFields = {
-    bio:false,
-    started_making:false,
+    bio: false,
+    started_making: false,
   }
 
   ProfilecropperSettings: CropperSettings;
@@ -196,7 +198,7 @@ export class ProfileComponent implements OnInit {
         this.uid = res.uid;
         this.GetUserDetails();
       }, err => {
-         this.router.navigate(['**']);
+        this.router.navigate(['**']);
       });
     } else {
       this.uid = +localStorage.getItem('user_id');
@@ -214,11 +216,11 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
-  isEmpty(variable:any):boolean {
-    var empty = Object.keys(variable).every(function(key) {
-      if(key == 'field_website_title' || key == 'field_blog_title' || key == 'field_preferred' || key == 'field_website_or_blog' || key == 'field_additional_site')
+  isEmpty(variable: any): boolean {
+    var empty = Object.keys(variable).every(function (key) {
+      if (key == 'field_website_title' || key == 'field_blog_title' || key == 'field_preferred' || key == 'field_website_or_blog' || key == 'field_additional_site')
         return true;
-      return variable[key]== '' || variable[key]== null;
+      return variable[key] == '' || variable[key] == null;
     });
     return empty;
   }
@@ -237,7 +239,7 @@ export class ProfileComponent implements OnInit {
     }
 
     var tasks = [];
-    let body = { "data": this.uid  };
+    let body = { "data": this.uid };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.viewService.getView('projects_categories'));
     tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_public', body));
@@ -288,7 +290,7 @@ export class ProfileComponent implements OnInit {
     this.AssignParentChildInterests();
   }
   RemoveInterest(InterestId: number): void {
-    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.map(term=>term.tid).indexOf(InterestId), 1);
+    this.ProfileInfo.maker_interests.splice(this.ProfileInfo.maker_interests.map(term => term.tid).indexOf(InterestId), 1);
   }
   OpenModal(Template, ModalName: string) {
     if (ModalName == 'Portfolio Photo') {
@@ -385,7 +387,7 @@ export class ProfileComponent implements OnInit {
       describe_yourself: [this.ProfileInfo.describe_yourself, Validators.maxLength(140)],
       bio: [this.ProfileInfo.bio, Validators.maxLength(800)],
       started_making: [this.ProfileInfo.started_making, Validators.maxLength(800)],
-      field_add_your_makerspace_s_: this.fb.array([],Validators.maxLength(10)),
+      field_add_your_makerspace_s_: this.fb.array([], Validators.maxLength(10)),
     });
     if (this.ProfileInfo.field_add_your_makerspace_s_) {
       this.ProfileInfo.field_add_your_makerspace_s_.forEach((makerspace, index) => {
@@ -412,8 +414,8 @@ export class ProfileComponent implements OnInit {
     this.ImageFile.src = user.user_photo;
     this.ProfileInfo.nickname = user.nickname;
 
-    if(user.bio.length > 160) {
-      this.ProfileInfo.bioShort = user.bio.substring(0,160) + '...';
+    if (user.bio.length > 160) {
+      this.ProfileInfo.bioShort = user.bio.substring(0, 160) + '...';
     } else {
       this.ProfileInfo.bioShort = user.bio;
     }
@@ -439,8 +441,8 @@ export class ProfileComponent implements OnInit {
     this.ProfileInfo.field_add_your_makerspace_s_ = user.field_add_your_makerspace_s_;
     this.ProfileInfo.maker_interests = user.maker_interests;
     this.ProfileInfo.started_making = user.started_making;
-    if(user.started_making.length > 160) {
-      this.ProfileInfo.started_making_short = user.started_making.substring(0,160) + '...';
+    if (user.started_making.length > 160) {
+      this.ProfileInfo.started_making_short = user.started_making.substring(0, 160) + '...';
     } else {
       this.ProfileInfo.started_making_short = user.started_making;
     }
@@ -472,10 +474,17 @@ export class ProfileComponent implements OnInit {
   nextTab() {
     this.CurrentInfoTab = this.ModalTabs[this.ModalTabs.indexOf(this.CurrentInfoTab) + 1]
   }
-  over(socialActive:string){
+  over(socialActive: string) {
     this.currentHover = socialActive;
   }
-  leave(){
-    this.currentHover = '';    
+  leave() {
+    this.currentHover = '';
   }
+  // followersCounter(count) {
+  //   this.no_of_followers = count;
+  // }
+  // followingCounter(countFollowing) {
+  //   this.numberFollowing = countFollowing;
+  // }
+
 }
