@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService } from '../../../d7services';
+import { ViewService, FlagService } from '../../../d7services';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-showcase-card',
@@ -17,14 +18,20 @@ export class ShowcaseCardComponent implements OnInit {
   contentType: number = 2;
   showcaseType: string = 'Makers';
   pageNumber = 0;
+  Manager: boolean = false;
+
   @Input() showcaseNid;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
+    public auth: Auth,
+
 
   ) { }
   ngOnInit() {
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
     this.getShowcase();
     this.getShowcases();
     this.userId = localStorage.getItem('user_id');
@@ -42,12 +49,12 @@ export class ShowcaseCardComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.contentType = data[0]['showcase_type'];
-        if(this.contentType == 1){
+        if (this.contentType == 1) {
           this.getProjectsCount();
           this.showcaseType = 'Projects';
-        }else if(this.contentType == 2) {
+        } else if (this.contentType == 2) {
           this.getMakersCount();
-          this.showcaseType = 'Makers';          
+          this.showcaseType = 'Makers';
         }
       });
   }

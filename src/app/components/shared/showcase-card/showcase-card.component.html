@@ -1,5 +1,5 @@
 <div class="showcase-card-backlayer hidden-xs-down" *ngIf="showcase">
-  <div class="showcase-card row " (click)="ShowSingleShowcase(showcase.path)">
+  <div class="showcase-card row ">
     <div class="col-md-4 col-sm-12 col-xs-12 image-container">
       <img *ngIf="showcase.cover_photo" src="{{showcase.cover_photo}}" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.path)">
       <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
@@ -14,6 +14,7 @@
       <div class="card-container h-100">
         <div class="card h-100">
           <h3 class="card-title">{{showcase.showcase_name}}</h3>
+          <app-feature *ngIf="Manager && showcase.nid" [id]="showcase.nid" [type]="'project'"> </app-feature>
           <div class="card-description">
             <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
           </div>

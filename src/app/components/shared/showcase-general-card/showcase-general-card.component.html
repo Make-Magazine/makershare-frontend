@@ -3,13 +3,14 @@
 
   <div class="card-image card-image-grid" *ngIf="makers.length > 0">
     <!-- <div > -->
-      <app-maker-photo  *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>
+    <app-maker-photo *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>
     <!-- </div> -->
   </div>
   <div class="card-info">
     <div class="info-top">
-    <div class="card-image alt" *ngIf="makers.length == 0" [style.background-image]="'url('+showcase.cover_photo+')'"></div> 
-    <div class="card-image alt" *ngIf="makers.length > 0"></div> <!-- no alt bg for projects but we still need the div here for hovers -->
+      <div class="card-image alt" *ngIf="makers.length == 0" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
+      <div class="card-image alt" *ngIf="makers.length > 0"></div>
+      <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">showcase</div>
       <a class="flex-text-container" href="showcases/{{showcase.path}}">
         <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
@@ -18,7 +19,7 @@
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{showcase.cover_photo}}"/>
+        <img class="card-owner-media" src="{{showcase.cover_photo}}" />
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{showcase.showcase_name}}"></span>
           <div class="card-owners-group">
@@ -28,7 +29,7 @@
       </div>
       <ul class="social-stat-group">
         <li class="social-stat" *ngIf="showcase.nid && userId">
-          <app-like [nodeNid]="showcase.nid"  [showcase]="true"></app-like>
+          <app-like [nodeNid]="showcase.nid" [showcase]="true"></app-like>
           <!-- <i class="fa fa-lightbulb-o"></i> -->
           <!-- <span class="info">54678</span> -->
         </li>
@@ -44,5 +45,5 @@
       </ul>
 
     </div>
-  </div>  
+  </div>
 </div>
