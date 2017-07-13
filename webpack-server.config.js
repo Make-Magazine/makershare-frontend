@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const {join, resolve} = require('path');
 
-const loaders = require('./webpack/loaders');
+const loaders = require('./src/webpack/loaders');
 
 module.exports = {
   target: 'node',
   entry: {
-    server: ['./server/index.ts'],
+    server: ['./src/server/index.ts'],
   },
   output: {
     filename: 'index.js',

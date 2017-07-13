@@ -8,10 +8,10 @@ import {Observable} from 'rxjs';
 
 import {prebootClient} from 'preboot/__build/src/browser/preboot_browser';
 
-import {RootComponent} from './root.component';
+import {AppComponent} from './app.component';
 
 //
-import { routing } from "./root.routing";
+import { routing } from "./app.routing";
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 
@@ -50,7 +50,7 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
-  bootstrap: [RootComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -68,7 +68,7 @@ import { CookieModule } from 'ngx-cookie';
     HttpModule,
   ],
   declarations: [
-    RootComponent,
+    AppComponent,
     HeaderComponent,
     FooterComponent,
     SearchBoxComponent,
@@ -92,7 +92,7 @@ import { CookieModule } from 'ngx-cookie';
     ClaimProfileComponent
   ]
 })
-export class RootModule {
+export class AppModule {
   constructor(router: Router, zone: NgZone) {
     if (typeof prebootstrap === 'undefined') {
       return;

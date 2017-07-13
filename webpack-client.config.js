@@ -1,12 +1,12 @@
 const {join, resolve} = require('path');
 
-const loaders = require('./webpack/loaders');
+const loaders = require('./src/webpack/loaders');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    client: ['./app/main.ts']
+    client: ['./src/main.ts']
   },
   output: {
     filename: 'app.js',
@@ -22,7 +22,7 @@ module.exports = {
   ],
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app/index.html',
+      template: './src/index.html',
       inject: 'body',
     }),
   ],
