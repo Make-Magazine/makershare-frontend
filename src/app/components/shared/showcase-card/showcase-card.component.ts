@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,FlagService } from '../../../d7services';
+import { ViewService, FlagService } from '../../../d7services';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-showcase-card',
@@ -17,14 +18,20 @@ export class ShowcaseCardComponent implements OnInit {
   contentType: number = 2;
   showcaseType: string = 'Makers';
   pageNumber = 0;
+  Manager: boolean = false;
+
   @Input() showcaseNid;
   constructor(
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
+    public auth: Auth,
+
 
   ) { }
   ngOnInit() {
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
     this.getShowcase();
     this.userId = localStorage.getItem('user_id');
     this.countLikes();

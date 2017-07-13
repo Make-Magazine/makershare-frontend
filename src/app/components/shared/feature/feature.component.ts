@@ -28,7 +28,7 @@ export class FeatureComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data) {
-        this.flagService.isFlagged(this.id, this.userId, 'feature_'+this.type).subscribe(data => {
+        this.flagService.isFlagged(this.id, this.userId, 'feature_' + this.type).subscribe(data => {
           this.isFeatured = data[0];
         })
       }
@@ -37,16 +37,16 @@ export class FeatureComponent implements OnInit {
   feature(e: Event) {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
-      if(!data) {
+      if (!data) {
         this.router.navigate(['/access-denied']);
       }
       e.preventDefault();
 
-      this.isFeatured ? this.flagger('unflag') : this.flagger('flag');     
+      this.isFeatured ? this.flagger('unflag') : this.flagger('flag');
     })
   }
   flagger(type: string) {
-    this.flagService[type](this.id, this.userId, 'feature_'+this.type).subscribe(response => {
+    this.flagService[type](this.id, this.userId, 'feature_' + this.type).subscribe(response => {
       this.isFeatured = !this.isFeatured;
     })
   }
