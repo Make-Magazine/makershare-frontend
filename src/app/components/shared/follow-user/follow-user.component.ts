@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ViewService, FlagService, UserService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+// import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-follow-user',
@@ -15,7 +15,7 @@ export class FollowUserComponent implements OnInit {
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    private notificationBarService: NotificationBarService,
+    // private notificationBarService: NotificationBarService,
     private modalService: NgbModal,
   ) { }
   @Input() userfollower;
