@@ -12,6 +12,9 @@
     <div class="card-container h-100">
       <div class="card h-100">
         <div class="card-partership">
+          <!-- Start Feature Learn -->
+          <app-feature *ngIf="Manager && learn.nid" [id]="learn.nid" [type]="'node'"> </app-feature>
+          <!-- End Feature Learn -->
           <p *ngIf="learn.brought_by"> Sponsored by {{learn.brought_by}} </p>
         </div>
         <h3 class="card-title" [innerHTML]="learn.workshop_title" (click)="WorkshopDetails(learn.path)"></h3>
