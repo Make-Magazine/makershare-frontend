@@ -8,9 +8,9 @@ declare var ga:Function;
 
 @Component({
   selector: 'application',
-  templateUrl: 'root.component.html',
+  templateUrl: 'app.component.html',
 })
-export class RootComponent implements OnInit{
+export class AppComponent implements OnInit{
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
 
   showLoader: boolean;
