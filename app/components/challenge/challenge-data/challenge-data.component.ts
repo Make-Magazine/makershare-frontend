@@ -88,7 +88,7 @@ export class ChallengeDataComponent implements OnInit {
             }, err => {
               // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
             });
-          this.cheackenter();
+          this.checkenter();
 
           this.getChallengeFollowers(true);
           this.getProjects();
@@ -347,8 +347,8 @@ export class ChallengeDataComponent implements OnInit {
   }
   /* function cheack user allowe to enter challenge */
 
-  cheackenter() {
-    this.viewService.cheackEnterStatus('maker_challenge_entry_api/enter_status', this.idFromUrl).subscribe(data => {
+  checkenter() {
+    this.viewService.checkEnterStatus('maker_challenge_entry_api/enter_status', this.idFromUrl).subscribe(data => {
       this.enterStatus = data.status;
       this.submitStatus.emit(this.enterStatus);
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../../d7services/user/user.service';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-project-card',
@@ -11,25 +12,30 @@ import { UserService } from '../../../d7services/user/user.service';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() nid;
-  @Input() view: string;
+  @Input() view: string = 'grid';
   @Input() front;
+  @Input() state;
 
   badges = [];
   project = {};
   userId;
   smallWindow: number;
+  Manager: boolean = false;
+
 
   constructor(private router: Router,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     private userService: UserService,
-
+    public auth: Auth,
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
   }
   ngOnInit() {
-
+    this.auth.IsCommuintyManager();
+     this.Manager = this.auth.IsCommuintyManager();
+    
     this.getProjectCard();
     this.getBadgesProject();
     this.userId = +localStorage.getItem('user_id');
@@ -61,6 +67,10 @@ export class ProjectCardComponent implements OnInit {
         this.project['maker_project_count'] = data[0];
       });
 
+      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
+        this.project['maker_url'] = '/portfolio/' + res.url;
+      });
+
     });
   }
 
@@ -86,10 +96,8 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['portfolio/', path]);
   }
   getProfile() {
-    if (this.project['uid']) {
-      this.userService.getUrlFromId(this.project['uid']).subscribe(res => {
-        this.router.navigate(['/portfolio/' + res.url]);
-      });
-    }
+    // if (this.project['uid']) {
+
+    // }
   }
 }

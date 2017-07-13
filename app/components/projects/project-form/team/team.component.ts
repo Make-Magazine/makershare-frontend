@@ -140,7 +140,7 @@ export class TeamComponent implements OnInit {
       field_membership_role:{und:[{value:control['controls'].field_membership_role.value}]},
       field_team_member:{und:[{target_id:control['controls'].field_team_member.value}]},
     };
-    console.log(member);
+    // console.log(member);
     if(!this.project.field_maker_memberships.und[index])
       this.project.field_maker_memberships.und.push(member);
     control.valueChanges.subscribe(values=>{

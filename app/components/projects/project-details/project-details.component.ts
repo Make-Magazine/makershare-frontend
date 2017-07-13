@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ViewService, NodeService, StatisticsService, MainService } from '../../../d7services';
 import 'rxjs/Rx';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Auth } from '../../../auth0/auth.service';
 import * as globals from '../../../d7services/globals';
 
 
@@ -25,6 +26,7 @@ export class ProjectDetailsComponent implements OnInit {
   projects = [];
   projectdata;
   id: number;
+  Manager:boolean = false;
 
   private sub: any;
   constructor(
@@ -34,7 +36,9 @@ export class ProjectDetailsComponent implements OnInit {
     private nodeService: NodeService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
+    public auth: Auth,
     private mainService: MainService,
+
   ) {
 
     this.route.queryParams.subscribe(params => {
@@ -49,6 +53,9 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   ngOnInit() {
+     this.auth.IsCommuintyManager();
+     this.Manager = this.auth.IsCommuintyManager();
+     
     this.loaderService.display(true);
     this.sub = this.route.params.subscribe(params => {
       let path = params['path'];

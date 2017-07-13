@@ -7,34 +7,51 @@ import { ViewService, FlagService } from '../../../d7services';
 })
 export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
-  numLikes;
+  numLikes=0;
   userId;
+  makers=[];
   @Input() showcaseNid;
-  projectsCount;
+  @Input() state;
+  projectsCount=0;
   constructor(
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
-
-
   ) { }
+  
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
 
     this.getShowcases();
     this.getProjectsCount();
     this.countLikes();
+    this.getShowcaseMakers();
   }
 
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
       this.showcase = data[0];
+      // console.log(data);
+    });
+  }
+  getShowcaseMakers() {
+    this.viewService.getView('showcase_makers', [
+      ['page', 0],
+      ['nid', this.showcaseNid],
+      ['sort_by', 'created'],
+      ['sort_order', 'ASC']
+      ]).subscribe(data => {
+          this.makers = data;
+          // console.log('data here we go?');
+           console.log(this.makers.length);
     });
   }
   getProjectsCount() {
     this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
 
       this.projectsCount = data.length;
+      // console.log('projects count');
+      // console.log(data);
     });
 
   }

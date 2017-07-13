@@ -33,8 +33,8 @@ headers:Headers;
     return this.mainService.get(globals.endpoint + '/' + viewName + string_args).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
-/* function cheack user allowe to enter challenge */
- cheackEnterStatus(viewName: string,nid :number ): Observable<any>{
+/* function check user allowe to enter challenge */
+ checkEnterStatus(viewName: string,nid :number ): Observable<any>{
     
     return this.mainService.post(globals.endpoint + '/'+viewName, {"challenge_id": nid}).map(res => res.json())
    

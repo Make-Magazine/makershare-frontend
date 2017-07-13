@@ -25,6 +25,7 @@
                 <option value="field_first_name_value" class="btn">Name Z-A</option>
                 <option value="php_2" class="btn">Most likes</option>
                 <option value="php" class="btn">Most views</option>
+                <option value="timestamp" class="btn">Featured</option>
               </select>
             </div>
           </div>
@@ -46,7 +47,7 @@
       </div>
     </header>
     <div class="projects-grid row">
-      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid"></app-maker-card>
+      <app-maker-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let maker of makers" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
     </div>
   </div>
   <div class="text-center" *ngIf="!hideloadmore">
