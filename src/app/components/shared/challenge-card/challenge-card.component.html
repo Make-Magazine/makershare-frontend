@@ -6,7 +6,9 @@
       <div class="flag mission">mission</div>
     </div>
     <div class="info-bottom">
+      <!-- Start Feature Mission -->
       <app-feature *ngIf="Manager && challenge.nid" [id]="challenge.nid" [type]="'node'"> </app-feature>
+      <!-- End Feature Mission -->
       <span class="card-mission-sponsor" *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}</span>
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
