@@ -4,13 +4,13 @@ import {applicationBuilderFromModule} from 'angular-ssr';
 
 import {enableProdMode} from '@angular/core';
 
-import {RootModule} from '../app/root.module';
+import {AppModule} from '../app/app.module';
 import {absoluteUri, configure, listen} from './http';
 import {index} from './paths';
 
 enableProdMode();
 
-const builder = applicationBuilderFromModule(RootModule, index);
+const builder = applicationBuilderFromModule(AppModule, index);
 
 builder.preboot({appRoot: 'application'});
 // builder.stabilizeTimeout(20000);
