@@ -5,8 +5,9 @@
       <div class="card-image alt" [style.background-image]="'url('+project.cover_photo+')'"></div>
       <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">project</div>
-
+      <!-- Start Feature Project -->
       <app-feature *ngIf="Manager && project.nid" [id]="project.nid" [type]="'node'"> </app-feature>
+      <!-- End Feature Project -->
       <app-card-badges [badges]="badges"></app-card-badges>
       <a class="flex-text-container" href="projects/{{project.path}}">
         <p class="card-description-long" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
