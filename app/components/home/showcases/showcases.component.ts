@@ -16,6 +16,7 @@ export class ShowcasesComponent implements OnInit {
   ngOnInit() {
     // load the showcases
     this.viewService.getView('home_page_showcase').subscribe(data => {
+      // console.log(data);
       this.showcases = data;
     }, err => {
 

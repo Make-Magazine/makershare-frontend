@@ -9,6 +9,12 @@ opened:boolean;
 diffDays:number;
 display_entries: number;
 nid: number;
+path: string;
+status_id:number;
+summary_trim:string;
+
+
+
 challenge_start_date?:IChallengeStartDate;
 challenge_end_date?: IChallengeEndDate;
 winners_announcement_date?: IChallengeAnnouncementData;

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService, MainService, ProfileService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models';
+// import {Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-makers',
@@ -19,7 +20,7 @@ export class MakersComponent implements OnInit {
 
   makers = [];
   pages: number = 0;
-  makersCount;
+  makersCount = 0;
   hideloadmore = true;
   all_categories = [];
   categories_childs = [];
@@ -36,8 +37,22 @@ export class MakersComponent implements OnInit {
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
-  ) { }
-
+    // title: Title,
+    // meta: Meta
+  ) { 
+    // title.setTitle('this is makers title');
+    // meta.addTags([
+    //   {
+    //     name: 'author', content: 'this is maker name'
+    //   },
+    //   {
+    //     name: 'description', content: 'this is description this is description this is description '
+    //   },
+    //   {
+    //     name: 'image', content: '/assets/logo.png'
+    //   }
+    // ])
+  }
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
@@ -58,6 +73,10 @@ export class MakersComponent implements OnInit {
       this.makers = [];
     }
     this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
+      // console.log(data[0]);
+      // this.profileService.getUser(parseInt(data[i].uid)).subscribe(res => { 
+      //   console.log(res.user_photo.index('default.png') >= 0);
+      // });   
       this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
       this.loaderService.display(false);

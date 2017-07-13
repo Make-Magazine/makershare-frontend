@@ -1,0 +1,38 @@
+$flags: (
+	'project': $highlight-bright-blue, 
+	'maker': $dark-grey,
+	'mission': $dark-grey,
+	'learn': $dark-grey
+);
+.flag {
+	color: white;
+	position: absolute;
+	top: 1rem;
+	left: 0;
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	padding: 1rem;
+	line-height: 1rem;
+
+	&:after {
+		content: ' ';
+    width: 0;
+    height: 0;
+    border-top: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    left: 100%;
+    position: absolute;
+    top: 0px;
+	}
+
+	@each $flag, $color in $flags {
+		&.#{$flag} {
+			background-color: #{$color};
+
+			&:after {
+				border-left: 1.25rem solid #{$color};
+			}
+		}
+	}
+}
+    

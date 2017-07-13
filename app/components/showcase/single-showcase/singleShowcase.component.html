@@ -7,7 +7,7 @@
             <div class="image-container">
               <img src="{{showcase.cover_photo}}" *ngIf="showcase.cover_photo" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcase.nid)">
               <img *ngIf="!showcase.cover_photo" src="./assets/images/placeholder.png" alt="">
-            <!--   <div class="card-type-blue">
+              <!--   <div class="card-type-blue">
                 <div class="type-layer-2">
                   Showcase
                 </div>
@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="entries-count d-flex btn">
-                  <p *ngIf="makersCount==1">{{makersCount}} Maker</p>
-                  <p *ngIf="makersCount>1">{{makersCount}} Makers</p>
+                  <p *ngIf="makersCount==1">{{contentCount}} Maker</p>
+                  <p *ngIf="makersCount>1">{{contentCount}} Makers</p>
                 </div>
                 <div class="showcase-card-footer d-flex mt-auto">
                   <div class="showcase-card-footer-2 d-flex justify-content-end w-100">
@@ -65,70 +65,73 @@
           </div>
         </div>
       </div>
-      <div class="container clearfix">
-        <div class="filters" style="float: right;">
+      <div class="filters-container container clearfix">
+        <div class="filters" *ngIf="contentType == 2">
           <!-- <div class="container"> -->
-            <!--hide in mobiles screens-->
-            <div class="row justify-content-end align-items-center hidden-xs-down">
-              <div *ngIf="makersCount" class="entries-count btn">
-                <p *ngIf="makersCount==1">{{makersCount}} Maker &nbsp;</p>
-                <p *ngIf="makersCount>1">{{makersCount}} Makers &nbsp;</p>
-              </div>
-              <div class="container text-center" *ngIf="makersCount == 0">
-                <p>No Makers yet</p>
-              </div>
-              <div class="sorting-filter dropdown" *ngIf="makersCount > 0">
-                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
-                  </button>
-                <div class="dropdown-menu" aria-labelledby="filter-projects">
-                  <a class="dropdown-item" (click)="randomized()" class="btn">Mix 'Em Up</a>
-                  <a class="dropdown-item" (click)="mostProjects()" class="btn">Most projects</a>
-                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Newest</a>
-                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Name A-Z</a>
-                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Name Z-A</a>
-                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most likes</a>
-                  <a class="dropdown-item" (click)="mostViewed()" class="btn">Most views</a>
-
-                </div>
+          <!--hide in mobiles screens-->
+          <div class="row justify-content-end align-items-center hidden-xs-down">
+            <div *ngIf="contentCount" class="entries-count btn">
+              <p *ngIf="contentCount==1">{{contentCount}} Maker &nbsp;</p>
+              <p *ngIf="contentCount>1">{{contentCount}} Makers &nbsp;</p>
+            </div>
+            <div class="container text-center" *ngIf="contentCount == 0">
+              <p>No Makers yet</p>
+            </div>
+            <div class="filters" *ngIf="contentCount">
+              <div class="dropdown-group">
+                <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortShowcase($event.target.value)">
+                  <option value="_none" class="btn" disabled>Sort By</option>
+                  <option value="random" class="btn">Mix 'Em Up</option>
+                  <option value="php_1" class="btn">Most projects</option>
+                  <option value="created" class="btn">Newest</option>
+                  <option value="field_first_name_value_1" class="btn">Name A-Z</option>
+                  <option value="field_first_name_value" class="btn">Name Z-A</option>
+                  <option value="php_2" class="btn">Most likes</option>
+                  <option value="php" class="btn">Most views</option>
+                </select>
               </div>
             </div>
-            <!--show on mobile screens-->
-            <div class="row hidden-sm-up d-flex flex-column">
-              <div *ngIf="makersCount" class="entries-count btn">
-                <p>{{makersCount}} Makers</p>
-              </div>
-              <div class="sorting-filter dropdown">
-                <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-projects" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
-                  </button>
-                <div class="dropdown-menu" aria-labelledby="filter-projects">
-                  <a class="dropdown-item" (click)="randomized()" class="btn">Mix 'Em Up</a>
-                  <a class="dropdown-item" (click)="mostProjects()" class="btn">Most projects</a>
-                  <a class="dropdown-item" (click)="mostRecent()" class="btn">Newest</a>
-                  <a class="dropdown-item" (click)="sortAsc()" class="btn">Name A-Z</a>
-                  <a class="dropdown-item" (click)="sortDesc()" class="btn">Name Z-A</a>
-                  <a class="dropdown-item" (click)="mostLiked()" class="btn">Most likes</a>
-                  <a class="dropdown-item" (click)="mostViewed()" class="btn">Most views</a>
-                </div>
+          </div>
+        </div>
+        <div class="filters" *ngIf="contentType == 1">
+          <!-- <div class="container"> -->
+          <!--hide in mobiles screens-->
+          <div class="row justify-content-end align-items-center hidden-xs-down">
+            <div *ngIf="contentCount" class="entries-count btn">
+              <p *ngIf="contentCount==1">{{contentCount}} Project &nbsp;</p>
+              <p *ngIf="contentCount>1">{{contentCount}} Projects &nbsp;</p>
+            </div>
+            <div class="container text-center" *ngIf="contentCount == 0">
+              <p>No Projects yet</p>
+            </div>
+            <div class="filters" *ngIf="contentCount">
+              <div class="dropdown-group">
+                <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortShowcase($event.target.value)">
+                  <option value="_none" class="btn" disabled>Sort By</option>
+                  <option value="random" class="btn">Mix 'Em Up</option>
+                  <option value="title" class="btn">Name A-Z</option>
+                  <option value="title_1" class="btn">Name Z-A</option>
+                  <option value="count" class="btn">Most likes</option>
+                  <option value="php" class="btn">Most viewed</option>
+                  <option value="created" class="btn">Newest</option>
+                  <option value="created_1" class="btn">Oldest</option>
+                  <option value="changed" class="btn">Last updated</option>
+                </select>
               </div>
             </div>
-          <!-- </div> -->
+          </div>
         </div>
       </div>
       <div class="container">
+        <!-- <div class="projects-grid row"> -->
+          <!-- <app-maker-card class="card-wrapper project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of makers;" [uid]="maker.uid" [state]="'tall'"></app-maker-card> -->
         <div class="projects-grid row" *ngIf="contentType == 2">
-          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let maker of Makers; let i = index;">
-            <app-maker-card [uid]="maker.uid"></app-maker-card>
-          </div>
+          <app-maker-card *ngFor="let maker of Makers; let i = index;" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
         </div>
         <div class="projects-grid row" *ngIf="contentType == 1">
-          <div class="project col-lg-4 col-md-6 col-xs-12" *ngFor="let project of Projects; let i = index;">
-            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
-            <!--<div class="showcase-wrapper" (click)="ShowcasePojectNav(project.nid, showcaseNid)"></div>-->
-          </div>
+            <app-project-card  *ngFor="let project of Projects; let i = index;" [nid]="project.nid" [state]="'tall'"></app-project-card>
         </div>
       </div>
       <div class="text-center pt-3 pb-1" *ngIf="!hideloadmore">

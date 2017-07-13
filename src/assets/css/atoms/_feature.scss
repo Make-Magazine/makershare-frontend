@@ -1,0 +1,21 @@
+app-feature {
+	position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.feature-container {
+	background: $medium-grey;
+	cursor: pointer;
+	padding: 1rem;
+
+	.feature {
+		font-size: 1.4rem;
+	    text-transform: uppercase;
+	    line-height: 1rem;
+	}
+	&.active, &:hover {
+		background: $highlight-bright-blue;
+	}
+}

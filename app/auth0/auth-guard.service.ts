@@ -12,47 +12,37 @@ export class AuthGuardService implements CanActivate, CanLoad{
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    // check if the user is logged in
-    //state.url
     
+    // check if the user is logged in
     var obs = Observable.create(observer => {
       this.userService.isLogedIn().subscribe(data => {
-        if(data == false){
-         // localStorage.setItem('redirectUrl', state.url);
-        //  this.router.navigate(['/access-denied']);          
-        }
+        // data is a boolean value whather the user is logged in or not
         observer.next(data);
         observer.complete();
       }, err => {
-        
+        // in case of error, return false (not logged in)
         observer.next(false);
         observer.complete();
-        
       });
-
     });
     return obs;
-    
+   
   }
 
   canLoad(route): boolean {
     var obs2 = Observable.create(observer => {
       this.userService.isLogedIn().subscribe(data => {
-        if(data == false){
-          observer.next(false);  
-        }
+        // data is a boolean value whather the user is logged in or not
         observer.next(data);
         observer.complete();
       }, err => {
-        
+        // in case of error, return false (not logged in)
         observer.next(false);
         observer.complete();
         
       });
-
     });
     return obs2;
   }
-  
 
 }

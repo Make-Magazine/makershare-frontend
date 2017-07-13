@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-maker-card',
@@ -12,21 +13,28 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class MakerCardComponent implements OnInit {
 
   @Input() uid;
+  @Input() state;
+  @Input() profile;
 
   badges = [];
   project = {};
   card;
   projectsCount;
   latestPorjectImg;
-  swtichImage:boolean = false;
+  swtichImage: boolean = false;
+  Manager: boolean = false;
+
   constructor(private router: Router,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
+    public auth: Auth,
+
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
   }
   ngOnInit() {
+    this.Manager = this.auth.IsCommuintyManager();
     this.getMakerCard();
     this.getMakerBadges();
     this.CountMakerProjects();
@@ -53,7 +61,7 @@ export class MakerCardComponent implements OnInit {
 
   getMakerBadges() {
     this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
-        this.badges=data;
+      this.badges = data;
     });
   }
 
@@ -63,6 +71,7 @@ export class MakerCardComponent implements OnInit {
     })
   }
   getLatestProject() {
+    // this.latestPorjectImg=null;
     this.viewService.getView('maker_latest_project', [['uid', this.uid]]).subscribe(data => {
       if (data[0]) {
         this.latestPorjectImg = data[0].latest_project_cover_photo;
@@ -70,7 +79,7 @@ export class MakerCardComponent implements OnInit {
     });
   }
   goToProfile(path: string) {
-    
+
     this.router.navigate(['/portfolio/', path]);
   }
   // ProfileLikes(){
@@ -79,11 +88,11 @@ export class MakerCardComponent implements OnInit {
   //   })
   // }
   over() {
-    if(this.latestPorjectImg)
-    this.swtichImage=true;
+    if (this.latestPorjectImg)
+      this.swtichImage = true;
   }
   leave() {
-    if(this.latestPorjectImg)    
-    this.swtichImage=false;  
+    if (this.latestPorjectImg)
+      this.swtichImage = false;
   }
 }
