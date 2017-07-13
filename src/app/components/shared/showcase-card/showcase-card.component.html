@@ -14,7 +14,9 @@
       <div class="card-container h-100">
         <div class="card h-100">
           <h3 class="card-title">{{showcase.showcase_name}}</h3>
-          <app-feature *ngIf="Manager && showcase.nid" [id]="showcase.nid" [type]="'project'"> </app-feature>
+          <!-- Start Feature Showcase -->
+          <app-feature *ngIf="Manager && showcase.nid" [id]="showcase.nid" [type]="'node'"> </app-feature>
+          <!-- End Feature Showcase -->
           <div class="card-description">
             <p [innerHTML]="showcase.description_trim" *ngIf="showcase.description"></p>
           </div>
