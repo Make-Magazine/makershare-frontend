@@ -1,0 +1,10 @@
+<app-header *ngIf="router.url != '/404'"></app-header>  
+<div class="main-container">
+  <router-outlet></router-outlet>
+  <!--Routing loader-->
+  <div *ngIf="showLoader">
+    <span class="loading"></span>
+  </div>
+</div>
+<ng-template id="modal-container" ngbModalContainer></ng-template>
+<app-footer *ngIf="router.url != '/404'"></app-footer>
