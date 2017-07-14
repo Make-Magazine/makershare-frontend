@@ -1,4 +1,4 @@
-<section class="container pt-5 pb-5">
+<section class="container padded">
   <div id="homeBanner" class="text-center mx-auto">
     <h2>Welcome to Maker Share</h2>
     <h1>A community of makers sharing what they can do.</h1>
@@ -9,16 +9,18 @@
          *ngIf="!auth.authenticated()"
          class="button-container-main-1">
       <button class="button"
-              (click)="auth.login()">Add a Project</button>
+              (click)="auth.login()">Add a Project
+      </button>
     </div>
   </div>
 </section>
-<div class="parallax-scroll">
-  <section class="info-w-parallax parallax-bg">
+
+<section class="parallax-scroll">
+  <div class="info-w-parallax parallax-bg">
     <img src="assets/images/Home-Page-Science-Drawing.jpg"
          alt="Science drawing background"/>
     <div class="parallax-container">
-      <div class="container">
+      <div class="container padded-half">
         <div *ngFor="let infoCard of infoCards" class="row">
           <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
             <div class="info-card">
@@ -37,20 +39,23 @@
         </div>
       </div>
     </div>
-  </section>
-</div>
-<section class="what-is-ms">
+  </div>
+</section>
+
+<section class="padded">
   <div class="container">
-    <h2 class="text-center">A Project By:</h2>
+    <h2>A Project By:</h2>
     <div class="row">
       <div class="col-12 home-body-logos d-flex align-items-center justify-content-center">
-        <a href="http://www.makezine.com" target="_blank">
+        <a href="http://www.makezine.com"
+           target="_blank">
           <img src="./assets/images/icons/Make-Logo-2x.png"
                alt="Maker Share Logo"
                class="img-fluid home-body-logo maker"/>
         </a>
         <span class="border"></span>
-        <a href="http://www.intel.com" target="_blank">
+        <a href="http://www.intel.com"
+           target="_blank">
           <img src="./assets/images/icons/Intel-Logo-2x.png"
                alt="Intel logo"
                class="img-fluid home-body-logo intel"/>
@@ -63,10 +68,9 @@
     </div>
   </div>
 </section>
-<section class="what-is-ms p-0 mt-4" *ngIf="!auth.authenticated()">
+<section class="what-is-ms p-0 mt-4"
+         *ngIf="!auth.authenticated()">
   <div class="container">
-    <div class="explore-maker-share">
-      <h1 class="text-center">Explore Maker Share</h1>
-    </div>
+    <h1 class="big">Explore Maker Share</h1>
   </div>
 </section>
