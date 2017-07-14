@@ -1,56 +1,36 @@
-<section class="banner pb-3">
+<section class="container pt-5 pb-5">
   <div id="homeBanner" class="text-center mx-auto">
     <h2>Welcome to Maker Share</h2>
     <h1>A community of makers sharing what they can do.</h1>
-    <img src="./assets/images/makers_intro.png" alt="" class="img-fluid" />
-    <div (click)="auth.login()" *ngIf="!auth.authenticated()" class="button-container-main-1">
-      <button class="button" (click)="auth.login()">Add a Project</button>
+    <img src="./assets/images/makers_intro.png"
+         alt=""
+         class="img-fluid pt-4 pb-4"/>
+    <div (click)="auth.login()"
+         *ngIf="!auth.authenticated()"
+         class="button-container-main-1">
+      <button class="button"
+              (click)="auth.login()">Add a Project</button>
     </div>
   </div>
 </section>
 <div class="parallax-scroll">
   <section class="info-w-parallax parallax-bg">
-    <img src="assets/images/Home-Page-Science-Drawing.jpg" alt="Science drawing background" />
+    <img src="assets/images/Home-Page-Science-Drawing.jpg"
+         alt="Science drawing background"/>
     <div class="parallax-container">
       <div class="container">
-        <div class="row">
+        <div *ngFor="let infoCard of infoCards" class="row">
           <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
             <div class="info-card">
-              <h2>Portfolios</h2>
-              <h3>From Passion to Profession</h3>
-              <p>Your Maker Portfolio organizes and documents your work, whether you’re a weekend Maker or a professional. Tell the story behind each project: what inspired you, what went right or wrong, what will you make next?</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-            <div class="info-card">
-              <h2>Missions</h2>
-              <h3>Making that Matters</h3>
-              <p>Participating in a mission means using your skills to positively impact people’s lives. On Maker Share, you
-                find missions that allow you to join others and focus your projects on an objective.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-            <div class="info-card">
-              <h2>Learning Workshops</h2>
-              <h3>Push Your Progress</h3>
-              <p>Learn new skills and acquire new capabilities as a maker. Maker Share workshops guide you through learning
-                paths on topics like electronics, robotics, Internet of Things and more.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-            <div class="info-card">
-              <h2>Get Started</h2>
-              <h3>Create Your Maker Portfolio</h3>
-              <div class="button-container-onboarding">
-                <div class="project-add button-container-main-1" *ngIf="!auth.authenticated()">
-                  <a class="btn btn-main btn-sharp" (click)="auth.login()">Add a Project</a>
-                </div>
+              <h2>{{infoCard.title}}</h2>
+              <h3>{{infoCard.subtitle}}</h3>
+              <p *ngIf="infoCard.description"
+                 [innerHTML]="infoCard.description"></p>
+              <div class="button-container-onboarding"
+                   *ngIf="infoCard.action && infoCard.button">
+                <button class="button"
+                        (click)="infoCard.action()">{{infoCard.button}}
+                </button>
               </div>
             </div>
           </div>
@@ -64,9 +44,17 @@
     <h2 class="text-center">A Project By:</h2>
     <div class="row">
       <div class="col-12 home-body-logos d-flex align-items-center justify-content-center">
-        <a href="http://www.makezine.com" target="_blank"><img src="./assets/images/icons/Make-Logo-2x.png" alt="Maker Share Logo" class="img-fluid home-body-logo maker" /></a>
+        <a href="http://www.makezine.com" target="_blank">
+          <img src="./assets/images/icons/Make-Logo-2x.png"
+               alt="Maker Share Logo"
+               class="img-fluid home-body-logo maker"/>
+        </a>
         <span class="border"></span>
-        <a href="http://www.intel.com" target="_blank"><img src="./assets/images/icons/Intel-Logo-2x.png" alt="Intel logo" class="img-fluid home-body-logo intel" /></a>
+        <a href="http://www.intel.com" target="_blank">
+          <img src="./assets/images/icons/Intel-Logo-2x.png"
+               alt="Intel logo"
+               class="img-fluid home-body-logo intel"/>
+        </a>
       </div>
       <div class="col-12">
         <h5>Make: and Intel</h5>
