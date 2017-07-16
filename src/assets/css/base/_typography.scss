@@ -1,43 +1,73 @@
 $callout: (
-		'size': 6.4,
-		'line-height': 7.4
-	);
+  'size': 6.4,
+  'line-height': 7.4
+);
 $header-main: (
-		'size': 4.8,
-		'line-height': 5.8
-	);
+  'size': 3.2,
+  'line-height': 4.16
+);
 $header-small: (
-		'size': 3.2,
-		'line-height': 4.2
-	);
+  'size': 1.8,
+  'line-height': 2
+);
 $header-sub: (
-		'size': 1.6,
-		'line-height': 2.6
-	);
+  'size': 1.6,
+  'line-height': 2.6
+);
 $body: (
-		'size': 1.1,
-		'line-height': 1.6
-	);
+  'size': 1.44,
+  'line-height': 2.4
+);
 
+h1, h3, h5 {
+  font-family: 'Messina Modern Regular';
+}
 
 .callout {
-	font-size: map-get($callout, 'size') * 1rem;
-	line-height: map-get($callout, 'line-height') * 1rem;
+  font-size: map-get($callout, 'size') * 1rem;
+  line-height: map-get($callout, 'line-height') * 1rem;
 }
+
 .header-main, h1 {
-	font-size: map-get($header-main, 'size') * 1rem;
-	line-height: map-get($header-main, 'line-height') * 1rem;
+  font-family: 'Messina Modern Regular';
+
+  font-size: map-get($header-main, 'size') * 1rem;
+  line-height: map-get($header-main, 'line-height') * 1rem;
+
+  &.big {
+    font-size: 6.4rem;
+    line-height: 7.68rem;
+  }
 }
+
 .header-small, h2 {
-	font-size: map-get($header-small, 'size') * 1rem;
-	line-height: map-get($header-small, 'line-height') * 1rem;
+  font-size: map-get($header-small, 'size') * 1rem;
+  line-height: map-get($header-small, 'line-height') * 1rem;
+
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
 }
+
+h3 {
+  font-size: 3.3rem;
+}
+
+h4 {
+
+}
+
+h5 {
+  font-size: 2.4rem;
+  line-height: 2.64rem;
+}
+
 .header-sub, h6 {
-	font-size: map-get($header-sub, 'size') * 1rem;
-	line-height: map-get($header-sub, 'line-height') * 1rem;
-	text-transform: uppercase;
+  font-size: map-get($header-sub, 'size') * 1rem;
+  line-height: map-get($header-sub, 'line-height') * 1rem;
+  text-transform: uppercase;
 }
+
 .body-text, p, body {
-	font-size: map-get($body, 'size') * 1rem;
-	line-height: map-get($body, 'line-height') * 1rem;
+  font-size: map-get($body, 'size') * 1rem;
+  line-height: map-get($body, 'line-height') * 1rem;
 }
