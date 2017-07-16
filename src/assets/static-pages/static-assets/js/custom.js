@@ -134,7 +134,7 @@ $(document).ready(function () {
 	// 404 Search
 	$(document).on('click','#static-search-term', function(){
 		let searchVal = $('#search-box-input-404').val();
-		window.location.replace("http://preview.makershare.com/search?query=" + searchVal);		
+		window.location.replace("http://preview.makershare.com/search?query=" + searchVal);
 	})
 
 	// Show and hide project stats on project card
@@ -152,7 +152,7 @@ $(document).ready(function () {
 			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
 			// $(this).find(".overlay-portfolio" ).animate({opacity: 1});
 			$(this).find('.profile-edit-buttons').stop();
-			$(this).find('.profile-edit-buttons').fadeIn(400);			
+			$(this).find('.profile-edit-buttons').fadeIn(400);
 		}
 	});
 	$(document).on('mouseleave', '.project , .maker-card', function () {
@@ -162,12 +162,12 @@ $(document).ready(function () {
 			$(this).find('.overlay').stop();
 			$(this).find('.overlay').fadeOut('400');
 			$(this).find('.overlay-portfolio').stop();
-			$(this).find('.overlay-portfolio').fadeOut(400);			
+			$(this).find('.overlay-portfolio').fadeOut(400);
 			$(this).find('.profile-edit-buttons').stop();
 			$(this).find('.profile-edit-buttons').fadeOut(400);
 			// $(".overlay-portfolio" ).animate({opacity: 0},400, function(){
 			// 	$(this).find('.overlay-portfolio').removeClass('d-flex');
-			// })			
+			// })
 			$(this).find('.teaser').stop();
 			$(this).find('.teaser').fadeOut('400');
 		}
@@ -176,7 +176,7 @@ $(document).ready(function () {
 	$(document).on('click','#search-icon', function(){
 		$('#search-box-input').focus();
 	})
-	
+
 	// Toggle profile sidebar view
 	$(document).on('click','.toggleProfile', function(){
 		$('.toggleProfile').children().toggle();
@@ -194,8 +194,6 @@ $(document).ready(function () {
 
 	makerShare.initAnimationsCheck();
 	makerShare.checkScrollForParallax();
-
-	
 });
 
 
@@ -203,7 +201,7 @@ $(window).on('load', function () {
 	//after the content is loaded we reinitialize all the waypoints for the animations
 	makerShare.initAnimationsCheck();
 		$('html,body').animate({ scrollTop: 0 }, 'slow');
-	
+
 });
 $(window).scroll(function(){
   var sticky = $('header'),
@@ -212,11 +210,11 @@ $(window).scroll(function(){
   if (scroll >= 100 && !sticky.hasClass('shrink')) {
 		sticky.addClass('shrink');
 		$('html,body').animate().stop();
-	} 
+	}
   if (scroll < 100 && sticky.hasClass('shrink')) {
 		sticky.removeClass('shrink');
 		$('html,body').animate({ scrollTop: 0 }, 'slow');
-		
+
 	}
 });
 
@@ -244,8 +242,9 @@ makerShare = {
 
 	checkScrollForParallax: debounce(function () {
 		no_of_elements = 0;
-    $('.parallax-scroll').each(function() {
-			var $elem = $(this);
+
+		$('[data-el="parallax-scroll"]').each(function() {
+      var $elem = $(this);
 
 			if (isElementInViewport($elem)) {
 				var parent_top = $elem.offset().top;
@@ -256,8 +255,8 @@ makerShare = {
         var oVal2 = ((window_bottom - parent_top) / 7);
         $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');
         $redLines.each(function() {
-          $redLines.children().css('transform','translate3d(0px, ' + oVal2 + 'px, 0px)');  
-        });    
+          $redLines.children().css('transform','translate3d(0px, ' + oVal2 + 'px, 0px)');
+        });
 			}
 		});
 	}, 6)
