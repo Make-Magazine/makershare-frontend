@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="main-header">
   <nav>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#MainNav" aria-controls="MainNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@
           <a id="search-icon" (click)="openSearchBox()"><img src="./assets/images/icons/search.svg" alt=""></a>
         </li>
         <li *ngIf="auth.authenticated()">
-          
+
         </li>
         <li class="min-user-img" *ngIf="auth.authenticated()">
           <div ngbDropdown class="d-inline-block account-controls dropdown">

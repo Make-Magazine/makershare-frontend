@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from './../../d7services';
 import { MetaService } from '@nglibs/meta';
-import { LoaderService } from '../shared/loader/loader.service';
 import { Auth } from '../../auth0/auth.service';
+import { LoaderService } from '../shared/loader/loader.service';
+import { ViewService } from './../../d7services';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   homeCards;
 
-  constructor(
-    private viewService: ViewService,
-    private meta: MetaService,
-    private loaderService: LoaderService,
-    public auth: Auth,
-  ) { } 
+  constructor(private viewService: ViewService,
+              private meta: MetaService,
+              private loaderService: LoaderService,
+              public auth: Auth) {
+  }
 
   ngOnInit() {
     this.loaderService.display(true);
-    this.viewService.getView('maker_homepage_api').subscribe(data =>{
+    this.viewService.getView('maker_homepage_api').subscribe(data => {
       this.homeCards = data;
       // console.log(this.homeCards[0].id)
 
@@ -32,10 +31,10 @@ export class HomeComponent implements OnInit {
       // if(r.type=="project"){
       //   //console.log(r)
       // }
-      //console.log(data)
+      // console.log(data)
     }, err => {
       this.loaderService.display(true);
-    })
+    });
   }
 
 }
