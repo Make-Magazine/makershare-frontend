@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
 import { domain } from '../../../d7services/globals';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 
 @Component({

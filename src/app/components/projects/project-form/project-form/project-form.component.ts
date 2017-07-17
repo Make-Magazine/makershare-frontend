@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NodeService,FileService,ViewService,MainService,TaxonomyService,UserService } from '../../../../d7services';
 import { Observable } from "rxjs";
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import {
   FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper,
