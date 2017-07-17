@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Meta, Title } from '@angular/platform-browser';
+import * as globals from '../../../d7services/globals';
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -13,7 +15,20 @@ export class AboutUsComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-  ) { }
+    title: Title,
+    meta: Meta
+
+  ) { 
+     title.setTitle('About Us | Maker Share');
+    meta.addTags([
+      {
+        name: 'description', content: 'The Maker Share Team'
+      },
+      {
+        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
+  }
 
   ngOnInit() {
     this.getMakers();

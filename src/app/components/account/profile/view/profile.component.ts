@@ -14,6 +14,7 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 import * as globals from '../../../../d7services/globals';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -167,6 +168,9 @@ export class ProfileComponent implements OnInit {
 
     private profilePictureService: ProfilePictureService,
     private statisticsService: StatisticsService,
+
+    private title: Title,
+    private meta: Meta
 
   ) {
     this.ProfilecropperSettings = new CropperSettings();
@@ -450,6 +454,17 @@ export class ProfileComponent implements OnInit {
     // this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
     // this.meta.setTag('og:image', this.profile.user_photo);
     // this.meta.setTag('og:description', this.customDescription);
+
+    this.title.setTitle(this.profile.first_name + ' ' + this.profile.last_name + ' | Maker Share');
+    this.meta.addTags([
+      {
+        name: 'description', content: this.customDescription
+      },
+      {
+        name: 'image', content: this.profile.user_photo
+      }
+    ])
+
     this.BuildForm();
     this.buildFormSocial();
     this.AssignParentChildInterests();
