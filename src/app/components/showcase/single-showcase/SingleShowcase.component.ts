@@ -34,7 +34,7 @@ export class SinglShowcaseComponent implements OnInit {
   pageNumber = 0;
 
   sort: SortingSet = {
-    sort_by: "random",
+    sort_by: "random_seed",
     sort_order: "DESC"
   };
   DataRetriver = new SortBySortingSet(this.sort, this.viewService);
