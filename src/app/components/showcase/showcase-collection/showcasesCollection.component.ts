@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../d7services';
 import { SortBySortingSet, SortingSet } from '../../../models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
@@ -22,7 +21,6 @@ export class ShowcasesCollectionComponent implements OnInit {
 
   constructor(
     private viewService: ViewService,
-    private router: Router,
     private loaderService: LoaderService,
   ) { }
 
