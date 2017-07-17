@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ViewService, FlagService, UserService } from '../../../d7services';
-// import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+// import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
