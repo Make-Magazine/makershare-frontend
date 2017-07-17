@@ -181,14 +181,6 @@ export class ChallengeProjectComponent implements OnInit {
     if (!date)
       return '';
     date = date.split(" ")[0];
-    // d = new Date(date);
-    // var monthNames = ["January", "February", "March", "April", "May", "June",
-    //   "July", "August", "September", "October", "November", "December"
-    // ];
-    // var month = monthNames[d.getMonth()];
-    // var fullYear = d.getFullYear();
-    // var day = d.getDate();
-    // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
     return date[1] + '/' + date[2] + '/' + date[0];
   }
