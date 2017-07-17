@@ -17,7 +17,8 @@
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
       <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
-        'col-md-6 col-lg-4'   : item.entity_type == 'node' || item.entity_type == 'user'         
+        'col-md-6 col-lg-4'   : item.entity_type == 'node' || item.entity_type == 'user',
+        'col-md-6 col-lg-8'   : item.type == 'challenge'      
           }" class="item-{{i}}">
         <!-- Challenge Cards Full Width Container -->
         <!--<div *ngIf="item.type == 'challenge'" class="challenge-page-data container p-0">
@@ -27,16 +28,14 @@
         </div>-->
         <!-- Challenge Cards -->
         <div *ngIf="item.type == 'challenge'" class="card-wrapper">
-          <div class="challenges-container">
-            <app-challenge-card [challengeNid]="item.entity_id" [front]=true [state]="'wide'"></app-challenge-card>
-          </div>
+          <app-challenge-card [challengeNid]="item.entity_id" [front]=true [state]="'wide'"></app-challenge-card>
         </div>
 
         <!-- Showcase Cards -->
         <div *ngIf="item.type == 'showcase' && item.entity_id" class="card-wrapper">
-          <div class="showcase-card-backlayer-home-2" *ngIf="item.entity_id">
-            <app-showcase-gen-card [showcaseNid]="item.entity_id" [state]="'tall'"></app-showcase-gen-card>
-          </div>
+          <!-- <div class="showcase-card-backlayer-home-2" > -->
+            <app-showcase-gen-card *ngIf="item.entity_id" [showcaseNid]="item.entity_id" [state]="'tall'"></app-showcase-gen-card>
+          <!-- </div> -->
         </div>
 
         <!-- Maker Cards -->
