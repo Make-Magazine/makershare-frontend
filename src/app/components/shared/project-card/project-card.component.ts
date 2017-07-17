@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService, MainService } from '../../../d7services';
+import { Router } from '@angular/router';
+import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../../d7services/user/user.service';
 import { Auth } from '../../../auth0/auth.service';
-
-import * as globals from '../../../d7services/globals';
 
 @Component({
   selector: 'app-project-card',
@@ -26,17 +24,13 @@ export class ProjectCardComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     private userService: UserService,
-    private mainService: MainService,
     public auth: Auth,
-
-
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.auth.IsCommuintyManager();
