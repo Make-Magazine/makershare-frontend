@@ -25,7 +25,7 @@ export class NotificationPanelComponent implements OnInit {
         this.getNewCont();
         this.getNotificationsCount();
         let self = this;
-        var timer = setInterval(function () {
+        setInterval(function () {
           self.reload();
         }, 120000);
       }

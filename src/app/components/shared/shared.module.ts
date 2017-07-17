@@ -33,18 +33,16 @@ import { ChallengeSearchCardComponent } from './search-cards/challenge-search-ca
 import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { ReportUserComponent } from './report-user/report-user.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { FileBrowserComponent } from './file-browser/file-browser.component'
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
-import { MessagesModule } from '../account/messages/messages.module';
 import { NotificationTemplateComponent } from './notification-template/notification-template.component';
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
-import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
+// import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
 import { SocialStats } from './social-stats/social-stats.component';
 
 
@@ -75,25 +73,6 @@ import { FollowUserComponent } from './follow-user/follow-user.component';
 
 import { FeatureComponent } from './feature/feature.component';
 
-
-let config = {
-  breakPoints: {
-    xs: { max: 575 },
-    sm: { min: 576, max: 767 },
-    md: { min: 768, max: 991 },
-    lg: { min: 992, max: 1199 },
-    xl: { min: 1200 }
-  },
-  debounceTime: 100 // allow to debounce checking timer
-};
-
-
-
-export function ResponsiveDefinition() {
-  return new ResponsiveConfig(config);
-};
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -102,10 +81,9 @@ export function ResponsiveDefinition() {
     NgbModule,
     RouterModule,
     ShareButtonsModule,
-    ResponsiveModule,
     CKEditorModule,
     ImageCropperModule,
-    Ng2FileDropModule
+    // Ng2FileDropModule
   ],
   declarations: [
     CommentComponent,
@@ -201,9 +179,9 @@ export function ResponsiveDefinition() {
     RegistrationCollectComponent,
     MakerCkeditorComponent,
     ImageCropperComponent,
-    Ng2FileDropDirective,
+    // Ng2FileDropDirective,
     ReverseArray,
-   FeatureComponent,
+    FeatureComponent
   ],
 })
 export class SharedModule {
@@ -214,7 +192,6 @@ export class SharedModule {
         D7ServicesForRoot,
         NotificationBarService,
         AuthGuardService,
-        {provide: ResponsiveConfig,useFactory: ResponsiveDefinition},
         Auth,
         ProfilePictureService,
         LoaderService,

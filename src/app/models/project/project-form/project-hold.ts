@@ -1,4 +1,4 @@
-import { Node,field_entity_reference,field_date,date_time } from '../../Drupal';
+import { Node,field_entity_reference,date_time } from '../../Drupal';
 
 export interface ProjectHold extends Node{
   field_project_to_edit:{und:field_entity_reference[]},

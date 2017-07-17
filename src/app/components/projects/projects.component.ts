@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService,MainService } from '../../d7services';
-import { RouterModule, Router } from '@angular/router';
-import { ISorting } from '../../models/explore/sorting';
 import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models/makers';
@@ -38,14 +35,12 @@ export class ProjectsComponent implements OnInit {
   Manager:boolean = false;
   
   constructor(
-    private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
     public auth: Auth,
-  ) { }
+  ) { }CONFLICT 
 
   ngOnInit() {
      this.Manager = this.auth.IsCommuintyManager();
@@ -53,10 +48,9 @@ export class ProjectsComponent implements OnInit {
     this.getProjects();
     this.getProjectCategories();
 
-
-    this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.');
   }
   getProjects() {
     this.loaderService.display(true);

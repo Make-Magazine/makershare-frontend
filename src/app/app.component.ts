@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
 import { UserService, MainService } from './d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './auth0/auth.service';
+import { isPlatformBrowser } from '@angular/common';
 declare var ga:Function;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'application',
+  templateUrl: 'app.component.html',
 })
+export class AppComponent implements OnInit{
+  private isBrowser: boolean = isPlatformBrowser(this.platform_id);
 
-export class AppComponent implements OnInit {
   showLoader: boolean;
   public location = '';
   constructor(
+    @Inject(PLATFORM_ID) private platform_id,
     public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
@@ -37,8 +40,10 @@ export class AppComponent implements OnInit {
             }
             return true;
         }).subscribe((x: any) => {
+          if (this.isBrowser) { 
             ga('set', 'page', x.url);
             ga('send', 'pageview')
+          }
         });
       }
   
@@ -72,5 +77,6 @@ export class AppComponent implements OnInit {
       window.scrollTo(0, 1);
     }, 0);
   }
-
 }
+
+

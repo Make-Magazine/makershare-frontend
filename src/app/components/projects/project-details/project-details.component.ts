@@ -1,11 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService, FlagService, UserService, NodeService, StatisticsService, MainService } from '../../../d7services';
+import { Component, OnInit, } from '@angular/core';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { ViewService, NodeService, StatisticsService, MainService } from '../../../d7services';
 import 'rxjs/Rx';
-import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 import { Auth } from '../../../auth0/auth.service';
 import * as globals from '../../../d7services/globals';
 
@@ -36,11 +33,8 @@ export class ProjectDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
-    private userService: UserService,
     private nodeService: NodeService,
-    private flagService: FlagService,
     private loaderService: LoaderService,
-    private readonly meta: MetaService,
     private statisticsService: StatisticsService,
     public auth: Auth,
     private mainService: MainService,
@@ -134,9 +128,9 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
-        this.meta.setTitle(`${this.project.title.value} | Maker Share`);
-        this.meta.setTag('og:image', this.project.field_cover_photo.url);
-        this.meta.setTag('og:description', this.project.field_teaser.value);
+        // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
+        // this.meta.setTag('og:image', this.project.field_cover_photo.url);
+        // this.meta.setTag('og:description', this.project.field_teaser.value);
         this.projectDetails = this.project;
         this.projectDetails.nid = this.id;
         this.loaderService.display(false);

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { ViewService,FlagService,UserService } from '../../../d7services';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ViewService } from '../../../d7services';
 import 'rxjs/Rx';
-import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-showcase-project',
@@ -36,16 +33,11 @@ export class ShowcaseProjectComponent implements OnInit {
     index: Number,
     length: Number
   };
-  private sub: any;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
-    private userService: UserService,
-    private flagService: FlagService,
     private loaderService: LoaderService,
-    private meta: MetaService,
   ) { }
 
   ngOnInit() {
@@ -96,9 +88,9 @@ export class ShowcaseProjectComponent implements OnInit {
       //hide spinner
       this.loaderService.display(false);
       
-      this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
-      this.meta.setTag('og:image', this.project.field_cover_photo.url);
-      this.meta.setTag('og:description', this.project.field_teaser.value);
+      // this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
+      // this.meta.setTag('og:image', this.project.field_cover_photo.url);
+      // this.meta.setTag('og:description', this.project.field_teaser.value);
 
     }, err => {
       //hide spinner
@@ -141,14 +133,4 @@ export class ShowcaseProjectComponent implements OnInit {
     this.getShowcaseData();
     this.current_active_tab = 'project-story';
   }
-  // navigateSetting(){
-  //   setTimeout(500)
-  //   if(this.showcase['showcase_name'] && this.projectIndex && this.allProjects)
-  //   this.navigateShowcase = {
-  //     "name":this.showcase['showcase_name'],
-  //     "index":this.projectIndex,
-  //     "totalNumber":this.allProjects.length
-  //   }
-  //   console.log(this.navigateShowcase)
-  // }
 }
