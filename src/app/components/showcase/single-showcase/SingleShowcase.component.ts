@@ -26,8 +26,9 @@ export class SinglShowcaseComponent implements OnInit {
 
 
   // Cotnent Types Arrays
-  Makers = [];
-  Projects = [];
+  ShowcaseItems = [];
+  // Makers = [];
+  // Projects = [];
 
   // Sorting & Pagination Variables
   pageNumber = 0;
@@ -124,8 +125,8 @@ export class SinglShowcaseComponent implements OnInit {
   }
   getProjects() {
     this.DataRetriver.Sort('showcase_projects', this.pageNumber, this.showcaseNid).subscribe(data => {
-      this.Projects = this.Projects.concat(data);
-      this.loadMoreVisibilty(this.Projects.length);
+      this.ShowcaseItems = this.ShowcaseItems.concat(data);
+      this.loadMoreVisibilty(this.ShowcaseItems.length);
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
@@ -136,8 +137,8 @@ export class SinglShowcaseComponent implements OnInit {
 
   getMakers() {
     this.DataRetriver.Sort('showcase_makers', this.pageNumber, this.showcaseNid).subscribe(data => {
-      this.Makers = this.Makers.concat(data);
-      this.loadMoreVisibilty(this.Makers.length);
+      this.ShowcaseItems = this.ShowcaseItems.concat(data);
+      this.loadMoreVisibilty(this.ShowcaseItems.length);
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
@@ -169,7 +170,7 @@ export class SinglShowcaseComponent implements OnInit {
 
   sortShowcase(sort) {
     this.loaderService.display(true);
-    this.Makers = this.Projects = [];
+    this.ShowcaseItems = [];
     if (sort == "_none") return;
     this.pageNumber = 0;
     this.sort.sort_order = "DESC";
