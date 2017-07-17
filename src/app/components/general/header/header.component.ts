@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserService,NodeService } from '../../../d7services';
-import { Router, ActivatedRoute } from "@angular/router";
+import { UserService } from '../../../d7services';
+import { ActivatedRoute } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
-import { SearchBoxComponent } from './search-box/search-box.component';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
 import { domain } from '../../../d7services/globals';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
@@ -27,7 +26,6 @@ export class HeaderComponent implements OnInit {
   
   constructor(
     private userService: UserService,
-    private router: Router,
     private route: ActivatedRoute,
     public auth: Auth,
     private profilePictureService: ProfilePictureService,

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService, ProfileService } from '../../d7services';
+import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { MetaService } from '@nglibs/meta';
 import { SortBySortingSet, SortingSet } from '../../models';
 // import {Meta, Title } from '@angular/platform-browser';
 
@@ -38,8 +37,6 @@ export class MakersComponent implements OnInit {
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
-    private meta: MetaService,
-    private profileService: ProfileService,
     // title: Title,
     // meta: Meta
   ) { 
@@ -61,9 +58,9 @@ export class MakersComponent implements OnInit {
     this.getMakers();
     this.getMakerCategories();
 
-    this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {

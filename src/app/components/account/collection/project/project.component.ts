@@ -1,9 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter,NgModule } from '@angular/core';
-import { Location } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { ViewService,FlagService } from '../../../../d7services';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-project',
@@ -23,11 +19,9 @@ export class ProjectComponent implements OnInit {
   type = 'project';
   checkState = false;
   check = false;
-  constructor(private route: ActivatedRoute,
-    private router: Router,
+  constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-    private _location: Location,
   ) { }
   ngOnInit() {
     this.getProjectBookmark();

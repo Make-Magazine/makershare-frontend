@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../d7services';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 declare var jQuery: any;
@@ -93,7 +92,6 @@ export class SliderComponent implements OnInit {
     {src:'./assets/images/slider/Maker-Share-Intro-35.jpg'},
   ]
   constructor(
-    private ViewService: ViewService,
   ) {
     
    }

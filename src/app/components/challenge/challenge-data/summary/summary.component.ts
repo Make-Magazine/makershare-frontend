@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISorting } from '../../../../models/challenge/sorting';
-import { RouterModule, Router } from '@angular/router';
-import { MetaService } from '@nglibs/meta';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-summary',
@@ -26,14 +25,13 @@ export class SummaryComponent implements OnInit {
   };
   constructor(
     private router: Router,
-    private meta: MetaService,
      ) { }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    this.meta.setTitle(`${this.challenge.title} | Maker Share`);
-    this.meta.setTag('og:image', this.challenge.cover_image);
-    this.meta.setTag('og:description', this.challenge.body);
+    // this.meta.setTitle(`${this.challenge.title} | Maker Share`);
+    // this.meta.setTag('og:image', this.challenge.cover_image);
+    // this.meta.setTag('og:description', this.challenge.body);
 
     // console.log(this.projectsChallenge);
   }

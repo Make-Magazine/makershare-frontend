@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService,UserService } from '../../../d7services';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { FlagService,UserService } from '../../../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,17 +13,15 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class BookmarkComponent implements OnInit {
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
     private notificationBarService: NotificationBarService,
     private config: NgbTooltipConfig,
   ) {
     this.router = router;
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   @Input() nodeNid;
   @Input() user;
