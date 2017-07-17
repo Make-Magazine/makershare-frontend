@@ -40,5 +40,7 @@ export const D7ServicesForRoot = [
   FlagService,
   StatisticsService,
   ProfileService,
-  SolrService
+  SolrService,
+  CommentService,
+  VocabularyService
 ];

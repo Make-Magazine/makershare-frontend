@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService,FlagService,UserService } from '../../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,14 +19,13 @@ export class ProjectSearchCardComponent implements OnInit {
   checkUserLogin = false;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     private userService: UserService,
     private flagService: FlagService,
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.getProjectCard();

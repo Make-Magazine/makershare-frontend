@@ -1,6 +1,5 @@
 declare var ePub: any;
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../d7services';
 
 @Component({
   selector: 'app-book',
@@ -15,8 +14,6 @@ export class BookComponent implements OnInit {
   epubFile= false;
 
   constructor(   
-    private viewService: ViewService,
-    
     ) {}
 
 @Input() link;

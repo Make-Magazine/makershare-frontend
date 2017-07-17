@@ -1,11 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { ViewService,FlagService } from '../../../../d7services';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Location } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-maker',
   templateUrl: './maker.component.html',
@@ -18,11 +12,9 @@ export class MakerComponent implements OnInit {
   pages: number = 0;
   hideloadmoremaker = true;
   page_arg;
-  constructor(private route: ActivatedRoute,
-    private router: Router,
+  constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-    private _location: Location,
   ) { }
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');

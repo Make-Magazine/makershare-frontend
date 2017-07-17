@@ -1,9 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter,NgModule } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { ViewService,FlagService } from '../../../../d7services';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Location } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-showcase',
@@ -19,11 +15,9 @@ export class ShowcaseComponent implements OnInit {
   page_arg;
   @Input() countShowcase;
 
-  constructor(private route: ActivatedRoute,
-    private router: Router,
+  constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-    private _location: Location,
  //   private loaderComponentService: LoaderComponentService,
   ) { }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Input,EventEmitter,Output } from '@angular/core';
-import { UserService, ViewService } from '../../../../../../d7services';
+import { Component, OnInit, Input,EventEmitter,Output } from '@angular/core';
+import { UserService } from '../../../../../../d7services';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +13,6 @@ export class EditPortfolioComponent implements OnInit {
   CurrentTab: string;
   DefaultView: string;
   constructor(
-    private viewService: ViewService,
     private userService: UserService,
     private route: ActivatedRoute,
   ) { }

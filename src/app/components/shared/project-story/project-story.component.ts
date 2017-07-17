@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommentService,UserService,ViewService } from '../../../d7services';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Observable } from "rxjs";
+import { CommentService, ViewService } from '../../../d7services';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { IComment } from '../../../models/challenge/comment';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -17,7 +16,6 @@ export class ProjectStoryComponent implements OnInit {
     private commentService: CommentService,
     private fb: FormBuilder,
     private viewService: ViewService,
-    private userService: UserService,
     private sanitizer:DomSanitizer,
   ) { }
   currentUser;
@@ -42,7 +40,6 @@ export class ProjectStoryComponent implements OnInit {
     })
     this.getComments();
     this.buildForm();
-    var i = 0;
     // var source = Observable.create(observer => {
       if(this.project.field_collaborators){
         let i=0;

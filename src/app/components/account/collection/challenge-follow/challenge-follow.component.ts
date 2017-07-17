@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FlagService,ViewService } from '../../../../d7services';
-//import { LoaderComponentService } from '../../../shared/loader-component/loader-component.service';
 
 @Component({
   selector: 'app-challenge-follow',
@@ -17,15 +16,11 @@ export class ChallengeFollowComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-  //  private loaderComponentService: LoaderComponentService,
 
   ) { }
   ngOnInit() {
-
-  //  this.loaderComponentService.display(true);
     this.getChallengeFollow();
     this.userId = localStorage.getItem('user_id');
-
   }
   getChallengeFollow() {
     if (this.pages >= 0) {
