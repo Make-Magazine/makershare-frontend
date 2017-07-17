@@ -2,6 +2,9 @@
 
 # compiled output
 /dist
+/dist-server
+app/**/*.js
+app/**/*.map
 /tmp
 
 # dependencies

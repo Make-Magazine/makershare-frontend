@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService } from './../../../d7services';
 import { SortBySortingSet, SortingSet } from '../../../models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CommentService,ViewService,UserService } from '../../../../d7services';
 import { IComment } from '../../../../models/challenge/comment';
 import { Auth } from '../../../../auth0/auth.service';
@@ -68,13 +68,6 @@ export class CommentFormComponent implements OnInit {
       this.commentData.comment_body.und[0].value = this.commentForm.value.comment_body;
       this.commentData.nid = this.nodeId;
       this.commentService.createComment(this.commentData).subscribe(res => {
-        var newComment = {
-          photo: this.currentuser.photo,
-          nickname: this.currentuser.nickname,
-          comment: this.commentData.comment_body.und[0].value,
-        }
-        //console.log(newComment)
-      //  this.comments.value.unshift(newComment);
       this.getcomments();
       }, err => { });
     }

@@ -1,20 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../models/profile/userprofile";
 import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ProfileService, UserService, ViewService, FileService, StatisticsService, MainService } from '../../../../d7services';
-import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+// import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-import { FileEntity, NodeHelper, FileEntityManage, field_URL } from '../../../../models';
+import { FileEntity, NodeHelper, FileEntityManage } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
-import { LoaderService } from '../../../shared/loader/loader.service';
-import { Intrests } from '../../../../models/profile/intrests';
 import { Auth } from '../../../../auth0/auth.service';
-import { ActivatedRoute, Router, Params } from '@angular/router';
-import { CustomValidators } from 'ng2-validation';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCropperComponent } from 'ng2-img-cropper';
-import { MetaService } from '@nglibs/meta';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 import * as globals from '../../../../d7services/globals';
@@ -166,11 +162,9 @@ export class ProfileComponent implements OnInit {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router,
-    private loaderService: LoaderService,
     public auth: Auth,
     private mainService: MainService,
 
-    private readonly meta: MetaService,
     private profilePictureService: ProfilePictureService,
     private statisticsService: StatisticsService,
 
@@ -253,7 +247,7 @@ export class ProfileComponent implements OnInit {
     tasks.push(this.mainService.post(globals.endpoint + '/maker_count_all_projects/retrieve_count_project_draft', body));
 
     tasks.push(this.viewService.getView('maker_address_api'));
-    let source = Observable.forkJoin(tasks).subscribe((data) => {
+    Observable.forkJoin(tasks).subscribe((data) => {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
@@ -312,7 +306,7 @@ export class ProfileComponent implements OnInit {
       this.modalService.open(Template, { size: 'lg' });
     }
   }
-  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+  dragFileAccepted(acceptedFile, cropper) {
     this.fileChangeListener(acceptedFile.file, cropper);
   }
   fileChangeListener(file: File, cropper) {
@@ -453,9 +447,9 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.started_making_short = user.started_making;
     }
     this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
-    this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
-    this.meta.setTag('og:image', this.profile.user_photo);
-    this.meta.setTag('og:description', this.customDescription);
+    // this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
+    // this.meta.setTag('og:image', this.profile.user_photo);
+    // this.meta.setTag('og:description', this.customDescription);
     this.BuildForm();
     this.buildFormSocial();
     this.AssignParentChildInterests();

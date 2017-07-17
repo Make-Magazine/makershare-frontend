@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { Auth } from '../../../auth0/auth.service';
 
@@ -14,7 +14,7 @@ export class LearnCardComponent implements OnInit {
 
   @Input() workshopNid;
   @Input() front;
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private viewService: ViewService,
     public auth: Auth,

@@ -1,21 +1,21 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaxonomyService,UserService,NodeService,FileService } from '../../../d7services';
 import { TaxonomyTerm } from '../../../models/Drupal/taxonomy-term';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
 import { FileEntity } from '../../../models';
 import { NodeHelper } from '../../../models';
 import { Observable } from "rxjs";
-
-
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
 })
 export class FeedbackComponent implements OnInit {
+  private isBrowser: boolean = isPlatformBrowser(this.platform_id);
   feedbackForm: FormGroup;
   feedback_types;
   bug_types;
@@ -139,6 +139,7 @@ export class FeedbackComponent implements OnInit {
     // field_browser:und[0].value
   }
   constructor(
+    @Inject(PLATFORM_ID) private platform_id,
     private modalService: NgbModal,
     private fb: FormBuilder,
     private taxonomyService: TaxonomyService,
@@ -183,6 +184,12 @@ export class FeedbackComponent implements OnInit {
   }
 
   buildform() {
+    var screen_height = 100;
+    var screen_width = 100;
+    if(this.isBrowser){
+      screen_height = screen.height;
+      screen_width = screen.width;
+    }
     //document.getElementById('field_bug_in_page').innerHTML=this.full_url
     this.feedbackForm = this.fb.group({
       // We can set default values by passing in the corresponding value or leave blank if we wish to not set the value. For our example, we’ll default the gender to female.
@@ -195,7 +202,7 @@ export class FeedbackComponent implements OnInit {
       //'field_bug_in_page': this.full_url,
       'field_browser': this.device.browserName + ' ' + this.device.browserVersion,
       'field_os': navigator.platform,
-      'field_screen_size': screen.height + 'X' + screen.width,
+      'field_screen_size': screen_width + 'X' + screen_height,
       'body': '',
       'field_describe_feature': '',
       'field_better_site': '',
@@ -242,7 +249,13 @@ export class FeedbackComponent implements OnInit {
         });
       this.feedbackForm.controls['field_browser'].setValue(this.device.browserName + ' ' + this.device.browserVersion);
       this.feedbackForm.controls['field_os'].setValue(navigator.platform);
-      this.feedbackForm.controls['field_screen_size'].setValue(screen.height + 'X' + screen.width);
+      var screen_height = 100;
+      var screen_width = 100;
+      if(this.isBrowser){
+        screen_height = screen.height;
+        screen_width = screen.width;
+      }
+      this.feedbackForm.controls['field_screen_size'].setValue(screen_width + 'X' + screen_height);
       this.modalService.open(content).result.then((result) => {
         this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
@@ -253,19 +266,8 @@ export class FeedbackComponent implements OnInit {
     });//end userservice isLogedIn
    
   }
-  //close modal
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
   changeDateFormat(date) {
-    var d;
     if(!date)
       return '';
     date = date.split(" ")[0];
@@ -307,7 +309,6 @@ export class FeedbackComponent implements OnInit {
 
   uploadFile(event) {
     this.formErrors.field_upload_screenshots=[];
-    const control = this.feedbackForm.controls['field_upload_screenshots'];
     //selected files ftom event
     //console.log(event);
     if (event.srcElement) {
@@ -321,7 +322,6 @@ export class FeedbackComponent implements OnInit {
 
         var str = files[i].type;
         var n = str.search("image");
-                  let file1:FileEntity
 
         //if type is image
         if (n !== -1) {
@@ -342,7 +342,6 @@ export class FeedbackComponent implements OnInit {
   }
 
   deviceInfo() {
-    var objappVersion = navigator.appVersion;
     var objAgent = navigator.userAgent;
     var objbrowserName = navigator.appName;
     var objfullVersion = '' + parseFloat(navigator.appVersion);
@@ -504,7 +503,6 @@ export class FeedbackComponent implements OnInit {
   if(this.FeatureType){
     this.feedbackForm.controls['field_would_like'].setValue(this.FeatureType)
   }
-    var feedback = this.feedback;
    // console.log(this.feedback)
     this.onValueChanged();
     if(this.fileArray.length != 0){
@@ -523,7 +521,7 @@ export class FeedbackComponent implements OnInit {
         this.fileArray.forEach((element, index) => {
           tasks.push(this.fileService.SendCreatedFile(element));
         });
-        let source = Observable.forkJoin(tasks).subscribe(
+        Observable.forkJoin(tasks).subscribe(
           (x) => {
             this.fileArray.forEach((element, index) => {
               let file = x[index] as FileEntity;

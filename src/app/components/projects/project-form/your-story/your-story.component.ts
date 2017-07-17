@@ -1,18 +1,15 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input  } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { ViewService,FileService,MainService } from '../../../../d7services';
+import { ViewService } from '../../../../d7services';
 import { ProjectCategory,NodeHelper,ProjectForm,FileEntity } from '../../../../models';
 import { CropperSettings } from 'ng2-img-cropper';
-import { DomSanitizer } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { MetaService } from '@nglibs/meta';
-import { ImageCropperComponent } from 'ng2-img-cropper';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
-import { trigger, style, transition,animate, group } from '@angular/core';
+import { trigger, style, transition,animate } from '@angular/core';
 
 @Component({
   selector: 'app-project-form-your-story',
@@ -79,17 +76,13 @@ export class YourStoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private viewService: ViewService,
-    private fileService: FileService,
-    private mainService: MainService,
     private modalService: NgbModal,
     private config: NgbTooltipConfig,
-    private sanitizer: DomSanitizer,
-    private meta: MetaService
 
   ) {
     this.SetCropperSettings();
-    config.placement = 'right';
-    config.triggers = 'hover';
+    this.config.placement = 'right';
+    this.config.triggers = 'hover';
   }
 
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
@@ -125,9 +118,9 @@ export class YourStoryComponent implements OnInit {
         }
       });
     });
-    this.meta.setTitle(`Create Project | Maker Share`);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', ' Create Project ');
+    // this.meta.setTitle(`Create Project | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', ' Create Project ');
     setTimeout(function(){
       //  $("html,body").animate({scrollTop: 0}, "slow");
     }, 0);

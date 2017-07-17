@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, FlagService, MainService, NodeService } from '../../../d7services';
-import { RouterModule, Router, NavigationExtras } from '@angular/router';
-import { IChallenge } from '../../../models/challenge/challenge';
-import { ActivatedRoute, Params, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import * as globals from '../../../d7services/globals';
-import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
+import { IChallengeStartDate, IChallengeData } from '../../../models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
 
 
@@ -123,7 +122,6 @@ export class ChallengeProjectComponent implements OnInit {
 
   /* function to get count projects in challenge */
   getCountProject() {
-    var nid = this.route.snapshot.params['nid'];
     this.route.params
       .switchMap((nid) => this.viewService.getView('maker_count_project_challenge_api/' + nid['nid']))
       .subscribe(data => {
@@ -165,7 +163,6 @@ export class ChallengeProjectComponent implements OnInit {
   }
   /* function to change data format */
   changeDateFormat(date) {
-    var d;
     if (!date)
       return '';
     date = date.split(" ")[0];
@@ -225,7 +222,6 @@ export class ChallengeProjectComponent implements OnInit {
       }, err => {
         this.loaderService.display(false);
         this.tab = 'rules';
-        var rules = '<a id="rules-id" data-nodeId=' + this.nid + '>Rules & Instructions </a>';
         this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
         this.router.navigate(['/missions/' + this.path]);
         this.tab = 'rules';

@@ -1,9 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/ViewsHelper/viewsHelper';
+import { SortingSet, SortBySortingSet } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -43,7 +42,6 @@ export class SinglShowcaseComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService,
     private flagService: FlagService,
     private statisticsService: StatisticsService,
     private config: NgbTooltipConfig,
@@ -52,9 +50,8 @@ export class SinglShowcaseComponent implements OnInit {
     private router: Router,
 
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
-
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.loaderService.display(true);

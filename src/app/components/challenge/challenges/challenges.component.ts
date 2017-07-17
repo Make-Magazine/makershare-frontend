@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, FlagService, UserService } from '../../../d7services';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-challenges',
@@ -25,17 +24,15 @@ export class ChallengesComponent implements OnInit {
     private flagService: FlagService,
     private loaderService: LoaderService,
     private userService: UserService,
-    private meta: MetaService
-
   ) { }
 
   ngOnInit() {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
-    this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
 
   }
   /* function to get challenges and count followers  */

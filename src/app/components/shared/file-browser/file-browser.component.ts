@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ViewService,FileService } from '../../../d7services';
-import { FileEntityManage, FileManageService, NodeHelper, FileEntity } from '../../../models';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { ViewService } from '../../../d7services';
+import { FileEntityManage, FileManageService } from '../../../models';
 
 @Component({
   selector: 'app-file-browser',
@@ -13,7 +13,6 @@ export class FileBrowserComponent implements OnInit {
 
   constructor(
     private viewService:ViewService,
-    private fileService:FileService,
   ) { }
 
   ngOnInit() {
