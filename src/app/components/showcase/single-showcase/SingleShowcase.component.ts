@@ -77,7 +77,10 @@ export class SinglShowcaseComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        this.contentType = this.showcase['showcase_type'];
+        console.log(data[0])
+        if(this.showcase['showcase_type'] == 'Project'){
+          this.contentType = 1
+        }
         //this.customDescription = this.showcase['description']
         //this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
         //this.meta.setTag('og:image', this.showcase['cover_photo']);
