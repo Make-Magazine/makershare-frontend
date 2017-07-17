@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '../../../auth0/auth.service';
-import { InfoCard } from 'app/models/cards/info-card';
+import { InfoCard } from '../../../models/cards/info-card';
 
 @Component({
   selector: 'app-onboarding',
@@ -8,7 +8,7 @@ import { InfoCard } from 'app/models/cards/info-card';
 })
 
 export class OnboardingComponent implements OnInit {
-  private infoCards: InfoCard[] = [
+  infoCards: InfoCard[] = [
     <InfoCard>{
       title: 'Portfolios',
       subtitle: 'From Passion to Profession',

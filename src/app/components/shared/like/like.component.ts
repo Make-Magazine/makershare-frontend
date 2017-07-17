@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService, FlagService, UserService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-like',
@@ -31,19 +30,18 @@ export class LikeComponent implements OnInit {
   @Output() countNumber = new EventEmitter<number>();
   like: string;
   isLiked = false;
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    private notificationBarService: NotificationBarService,
     private config: NgbTooltipConfig,
     private modalService: NgbModal,
 
   ) {
     this.router = router;
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.countLikes();

@@ -1,18 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService, FlagService, UserService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { Router } from '@angular/router';
+import { FlagService, UserService } from '../../../d7services';
+// import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+
 @Component({
   selector: 'app-follow',
   templateUrl: './follow.component.html',
 })
 export class FollowComponent implements OnInit {
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
-    private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    private notificationBarService: NotificationBarService,
   ) {
     this.router = router;
   }

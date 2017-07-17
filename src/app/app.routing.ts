@@ -18,29 +18,15 @@ import { GuidelinesComponent } from './components/pages/guidelines/guidelines.co
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
-
-// Claim your profile component
 import { ClaimProfileComponent } from './components/pages/claim-profile/claim-profile.component';
-
-
-//modules
-import { HomeModule } from './components/home/home.module';
-import { ShowcaseModule } from './components/showcase/showcase.module';
-import { ProjectsModule } from './components/projects/projects.module';
-import { ChallengeModule } from './components/challenge/challenge.module';
-import { ProfileModule } from './components/account/profile/profile.module';
-import { AccountModule } from './components/account/account.module';
-import { SearchModule } from './components/search/search.module';
-import { LearnModule } from './components/learn/learn.module';
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: './components/home/home.module#HomeModule' },
-    { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
+    { path: 'showcases', loadChildren: './components/showcase/showcase.module#ShowcaseModule' },
     { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
-    { path: 'makers', loadChildren: 'app/components/makers/makers.module#MakersModule' },
+    { path: 'makers', loadChildren: './components/makers/makers.module#MakersModule' },
     { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
-    // { path: 'portfolio/:name', loadChildren: './components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
     { path: 'search', loadChildren: './components/search/search.module#SearchModule' },
     { path: 'learning', loadChildren: './components/learn/learn.module#LearnModule' },

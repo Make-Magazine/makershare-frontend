@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService,PmService,UserService } from '../../../../d7services';
+import { PmService,UserService } from '../../../../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 
 @Component({
@@ -13,7 +13,6 @@ web_notifications:Array<Object> = [];
 uid;
 
   constructor(
-    private viewservice: ViewService,
     private notificationBarService: NotificationBarService,
     private pm: PmService,
     private userService:UserService

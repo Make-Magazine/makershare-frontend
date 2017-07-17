@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LearnComponent } from './learn/learn.component';
 import { IndividualWorkshopComponent } from './individual-workshop/individual-workshop.component';
 import { SingleObjectComponent } from './individual-workshop/single-object/single-object.component';
-
-
-
-
 
 const LearnRouts: Routes = [
   {
