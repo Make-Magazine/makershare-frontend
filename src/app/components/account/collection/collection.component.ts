@@ -1,5 +1,5 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { ViewService,MainService } from '../../../d7services';
+import { Component, OnInit } from '@angular/core';
+import { MainService } from '../../../d7services';
 import * as globals from '../../../d7services/globals';
 import { LoaderService } from '../../shared/loader/loader.service';
 
@@ -25,7 +25,6 @@ export class CollectionComponent implements OnInit {
      "challenge-enter": "2"
    }*/
   constructor(
-    private viewService: ViewService,
     private mainService: MainService,
     private loaderService: LoaderService,
   ) { }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-learn',
@@ -23,16 +22,15 @@ export class LearnComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService
   ) { }
 
   ngOnInit() {
     this.getWorkshop();
     this.getCountWorkshop();
 
-    this.meta.setTitle(`Maker Share | Learning`);
-      this.meta.setTag('og:image', '/assets/logo.png');
-      this.meta.setTag('og:description', 'Learning Learning Learning Learning Learning Learning Learning Learning ');
+    // this.meta.setTitle(`Maker Share | Learning`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'Learning Learning Learning Learning Learning Learning Learning Learning ');
   }
   getWorkshop() {
     this.loaderService.display(true);

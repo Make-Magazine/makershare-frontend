@@ -1,7 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, Input,ViewChild } from '@angular/core';
-import { Validators, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms'
-import { CustomValidators } from 'ng2-validation'
-import { NodeService,ViewService,FileService,MainService,TaxonomyService } from '../../../../d7services'
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms'
+import { NodeService,ViewService,TaxonomyService } from '../../../../d7services'
 import { ProjectForm } from '../../../../models';
 import { ToolMaterialPart } from '../../../../models';
 import { TaxonomyTerm } from '../../../../models';
@@ -11,10 +10,9 @@ import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
-import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+// import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 
-declare var CKEDITOR:any;
 @Component({
   selector: 'app-project-form-how-to',
   templateUrl: './how-to.component.html',
@@ -86,8 +84,6 @@ export class HowToComponent implements OnInit {
     private taxonomyService: TaxonomyService,
     private nodeService: NodeService,
     private modalService: NgbModal,
-    private fileService: FileService,
-    private mainService: MainService,
     private viewService: ViewService
   ) { }
 
@@ -257,6 +253,8 @@ export class HowToComponent implements OnInit {
             'field_label': [data && data.field_label? data.field_label.und[0].value : '',Validators.required],
           });
         }
+      default:
+        return this.fb.group({});
     }
   }
 
@@ -433,7 +431,7 @@ export class HowToComponent implements OnInit {
     this.ResetInputFields();
   }
 
-  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile,CloseBtn:HTMLButtonElement) {
+  dragFileAccepted(acceptedFile ,CloseBtn:HTMLButtonElement) {
     this.ResourceFileUploaded(acceptedFile.file,CloseBtn);
   }
 

@@ -1,6 +1,4 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ViewService } from '../../../../../d7services';
-import { Http } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -15,8 +13,6 @@ export class ObjectViewComponent implements OnInit {
   PDFLink;
 
   constructor(
-    private viewService:ViewService,
-    private http:Http,
     private sanitizer:DomSanitizer
   ) { }
 

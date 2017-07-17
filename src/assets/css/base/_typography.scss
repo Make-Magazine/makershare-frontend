@@ -19,6 +19,10 @@ $body: (
   'line-height': 2.4
 );
 
+h1, h3, h5 {
+  font-family: 'Messina Modern Regular';
+}
+
 .callout {
   font-size: map-get($callout, 'size') * 1rem;
   line-height: map-get($callout, 'line-height') * 1rem;
@@ -29,6 +33,11 @@ $body: (
 
   font-size: map-get($header-main, 'size') * 1rem;
   line-height: map-get($header-main, 'line-height') * 1rem;
+
+  &.big {
+    font-size: 6.4rem;
+    line-height: 7.68rem;
+  }
 }
 
 .header-small, h2 {
@@ -40,8 +49,16 @@ $body: (
 }
 
 h3 {
-  font-family: 'Messina Modern Regular';
   font-size: 3.3rem;
+}
+
+h4 {
+
+}
+
+h5 {
+  font-size: 2.4rem;
+  line-height: 2.64rem;
 }
 
 .header-sub, h6 {

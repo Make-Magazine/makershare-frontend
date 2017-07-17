@@ -1,9 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
-import { SortingSet, SortBySortingSet, ViewProperty } from '../../../models/ViewsHelper/viewsHelper';
+import { SortingSet, SortBySortingSet } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -26,14 +25,15 @@ export class SinglShowcaseComponent implements OnInit {
 
 
   // Cotnent Types Arrays
-  Makers = [];
-  Projects = [];
+  ShowcaseItems = [];
+  // Makers = [];
+  // Projects = [];
 
   // Sorting & Pagination Variables
   pageNumber = 0;
 
   sort: SortingSet = {
-    sort_by: "random",
+    sort_by: "random_seed",
     sort_order: "DESC"
   };
   DataRetriver = new SortBySortingSet(this.sort, this.viewService);
@@ -42,7 +42,6 @@ export class SinglShowcaseComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService,
     private flagService: FlagService,
     private statisticsService: StatisticsService,
     private config: NgbTooltipConfig,
@@ -51,9 +50,8 @@ export class SinglShowcaseComponent implements OnInit {
     private router: Router,
 
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
-
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.loaderService.display(true);
@@ -77,7 +75,10 @@ export class SinglShowcaseComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        this.contentType = this.showcase['showcase_type'];
+        console.log(data[0])
+        if(this.showcase['showcase_type'] == 'Project'){
+          this.contentType = 1
+        }
         //this.customDescription = this.showcase['description']
         //this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
         //this.meta.setTag('og:image', this.showcase['cover_photo']);
@@ -121,8 +122,8 @@ export class SinglShowcaseComponent implements OnInit {
   }
   getProjects() {
     this.DataRetriver.Sort('showcase_projects', this.pageNumber, this.showcaseNid).subscribe(data => {
-      this.Projects = this.Projects.concat(data);
-      this.loadMoreVisibilty(this.Projects.length);
+      this.ShowcaseItems = this.ShowcaseItems.concat(data);
+      this.loadMoreVisibilty(this.ShowcaseItems.length);
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
@@ -133,8 +134,8 @@ export class SinglShowcaseComponent implements OnInit {
 
   getMakers() {
     this.DataRetriver.Sort('showcase_makers', this.pageNumber, this.showcaseNid).subscribe(data => {
-      this.Makers = this.Makers.concat(data);
-      this.loadMoreVisibilty(this.Makers.length);
+      this.ShowcaseItems = this.ShowcaseItems.concat(data);
+      this.loadMoreVisibilty(this.ShowcaseItems.length);
       this.loaderService.display(false);
     }, err => {
       this.loaderService.display(false);
@@ -166,7 +167,7 @@ export class SinglShowcaseComponent implements OnInit {
 
   sortShowcase(sort) {
     this.loaderService.display(true);
-    this.Makers = this.Projects = [];
+    this.ShowcaseItems = [];
     if (sort == "_none") return;
     this.pageNumber = 0;
     this.sort.sort_order = "DESC";

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService,FlagService,UserService } from '../../../d7services';
+import { FlagService,UserService } from '../../../d7services';
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-comment',
@@ -14,7 +14,7 @@ export class ReportCommentComponent implements OnInit {
 
   @Input() commentReportId;
 
-  constructor(private viewService: ViewService,
+  constructor(
     private router: Router,
     private userService: UserService,
     private flagService: FlagService,
