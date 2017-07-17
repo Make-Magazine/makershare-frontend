@@ -1,3 +1,13 @@
+section,
+.container {
+  &.padded {
+    padding: 3rem 0;
+  }
+  &.padded-half {
+    padding: 1.5rem 0;
+  }
+}
+
 .main-container {
-	padding-top: 157px;
+	padding-top: 117px;
 }

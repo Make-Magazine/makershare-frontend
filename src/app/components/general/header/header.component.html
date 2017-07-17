@@ -1,7 +1,7 @@
-<header class="site-header">
+<header class="main-header">
   <div class="header-wrapper">
     <a class="make-logo" [routerLink]="['/']"></a>
-    
+
     <!-- main nav -->
     <nav class="primary">
       <ul class="nav-content">
@@ -118,4 +118,5 @@
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
   <app-registration-collect *ngIf="registrationFormStatus" [registrationFormState]="registrationFormState"></app-registration-collect>
 </header>
-<notification-bar></notification-bar>
+<!--
+<notification-bar></notification-bar>-->

@@ -1,26 +1,32 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { ViewService, FlagService } from '../../../d7services';
+import { Auth } from '../../../auth0/auth.service';
+
 @Component({
   selector: 'app-showcase-gen-card',
   templateUrl: './showcase-general-card.component.html',
 })
 export class ShowcaseGeneralCardComponent implements OnInit {
   showcase = [];
-  numLikes=0;
+  numLikes = 0;
   userId;
-  makers=[];
+  makers = [];
+  Manager: boolean = false;
   @Input() showcaseNid;
   @Input() state;
-  projectsCount=0;
+  projectsCount = 0;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private flagService: FlagService,
+    public auth: Auth,
 
 
   ) { }
   ngOnInit() {
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
     this.userId = localStorage.getItem('user_id');
 
     this.getShowcases();
@@ -32,7 +38,6 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   getShowcases() {
     this.viewService.getView('shared-showcase-card', [['nid', this.showcaseNid]]).subscribe(data => {
       this.showcase = data[0];
-      // console.log(data);
     });
   }
   getShowcaseMakers() {
@@ -41,18 +46,15 @@ export class ShowcaseGeneralCardComponent implements OnInit {
       ['nid', this.showcaseNid],
       ['sort_by', 'created'],
       ['sort_order', 'ASC']
-      ]).subscribe(data => {
-          this.makers = data;
-          // console.log('data here we go?');
-           console.log(this.makers.length);
+    ]).subscribe(data => {
+      this.makers = data;
     });
   }
   getProjectsCount() {
     this.viewService.getView('showcase_projects_nid', [['nid', this.showcaseNid]]).subscribe(data => {
 
       this.projectsCount = data.length;
-      // console.log('projects count');
-      // console.log(data);
+
     });
 
   }
