@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewService, UserService } from '../../../d7services';
-import { IChallengeStartDate, IChallengeData, IChallengeEndDate, IChallengeAnnouncementData } from '../../../models/challenge/challengeData';
-import { IChallenge } from '../../../models/challenge/challenge';
+import { IChallengeStartDate, IChallengeData } from '../../../models/challenge/challengeData';
 import { Auth } from '../../../auth0/auth.service';
 
 
@@ -60,7 +59,7 @@ export class ChallengeCardComponent implements OnInit {
   @Input() challengeNid;
   @Input() front: boolean = false;
   @Input() first: boolean = false;
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
@@ -122,18 +121,9 @@ export class ChallengeCardComponent implements OnInit {
   /*end function count project in challenge*/
   /* function to change data format */
   changeDateFormat(date) {
-    var d;
     if (!date)
       return '';
     date = date.split(" ")[0];
-    // d = new Date(date);
-    // var monthNames = ["January", "February", "March", "April", "May", "June",
-    //   "July", "August", "September", "October", "November", "December"
-    // ];
-    // var month = monthNames[d.getMonth()];
-    // var fullYear = d.getFullYear();
-    // var day = d.getDate();
-    // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
     return date[1] + '/' + date[2] + '/' + date[0];
   }

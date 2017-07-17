@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MetaService } from '@nglibs/meta';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../shared/loader/loader.service';
 import { ViewService } from './../../d7services';
@@ -12,9 +11,8 @@ export class HomeComponent implements OnInit {
   homeCards;
 
   constructor(private viewService: ViewService,
-              private meta: MetaService,
-              private loaderService: LoaderService,
-              public auth: Auth) {
+    private loaderService: LoaderService,
+    public auth: Auth) {
   }
 
   ngOnInit() {
@@ -23,9 +21,9 @@ export class HomeComponent implements OnInit {
       this.homeCards = data;
       // console.log(this.homeCards[0].id)
 
-      this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
-      this.meta.setTag('og:image', '/assets/logo.png');
-      this.meta.setTag('og:description', 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.');
+      // this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
+      // this.meta.setTag('og:image', '/assets/logo.png');
+      // this.meta.setTag('og:description', 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.');
       this.loaderService.display(false);
       // for (let r of data)
       // if(r.type=="project"){

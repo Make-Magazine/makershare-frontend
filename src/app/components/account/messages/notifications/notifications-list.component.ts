@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService,UserService } from '../../../../d7services';
+import { ViewService } from '../../../../d7services';
 import { Notification } from '../../../../models';
-import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'notifications-list',
@@ -18,7 +17,6 @@ export class NotificationsListComponent implements OnInit {
   intervalString='';
   constructor(
     private viewService: ViewService,
-    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {

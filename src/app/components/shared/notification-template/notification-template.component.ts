@@ -108,7 +108,6 @@ export class NotificationTemplateComponent implements OnInit {
   }
   timeago(date) {
     var n = date.includes("min") || date.includes('sec');
-    var current;
     if (n) {
       date = date.substring(0, date.indexOf("hours"));
       if (!date) {

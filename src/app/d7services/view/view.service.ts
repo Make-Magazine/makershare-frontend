@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MainService } from '../main/main.service';
 import { Observable } from "rxjs";
 import * as globals from '../globals';
-import { Http, RequestOptionsArgs ,Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Headers } from '@angular/http';
 
 
 
@@ -10,7 +10,7 @@ import { Http, RequestOptionsArgs ,Response, Headers, RequestOptions, URLSearchP
 export class ViewService {
     promisehandleError: any;
 headers:Headers;
-  constructor(private mainService: MainService , private http: Http) {
+  constructor(private mainService: MainService ) {
     // this.buildHeaders();
   
    }
@@ -42,9 +42,7 @@ headers:Headers;
 
 /* end function cheack user allowe to enter challenge */
 
-getCountProjectByID(viewName: string , id:string): Observable<any>{
-    var string_args = '';
-    
+getCountProjectByID(viewName: string , id:string): Observable<any>{    
    // console.log(string_args);
     return this.mainService.get(globals.endpoint + '/' + viewName + '/'+id).map(res => res.json()).catch(err => Observable.throw(err));
   }

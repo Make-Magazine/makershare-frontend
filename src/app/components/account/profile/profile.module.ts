@@ -13,14 +13,9 @@ import { EditPortfolioComponent } from './view/edit-portfolio/edit-portfolio/edi
 import { PortfolioTabComponent } from './view/edit-portfolio/portfolio-tab/portfolio-tab.component';
 import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-card-portfolio/project-card-portfolio.component';
 import { DndModule } from 'ng2-dnd';
-import { RouterModule } from '@angular/router';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
-import { ResponsiveModule } from 'ng2-responsive';
 import { TruncatePipe } from '../../../pipes/truncate';
 import { FeedComponent } from './feed/feed.component';
-
-//import { MetaModule } from '@nglibs/meta';
-// import { PipeModule } from '../../../pipes/custom-pipes.module';
 
 @NgModule({
   imports: [
@@ -32,9 +27,6 @@ import { FeedComponent } from './feed/feed.component';
     NgbModule,
     CKEditorModule,
     DndModule,
-    ResponsiveModule,
-    //MetaModule.forRoot()
-    // PipeModule.forRoot(),
   ],
   declarations: [
     ProfileComponent,

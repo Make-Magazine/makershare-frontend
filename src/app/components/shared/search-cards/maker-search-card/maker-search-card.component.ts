@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService } from '../../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,12 +20,11 @@ export class MakerSearchCardComponent implements OnInit {
   latestPorjectImg;
   swtichImage:boolean = false;
   constructor(private router: Router,
-    private route: ActivatedRoute,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.getMakerCard();
