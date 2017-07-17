@@ -73,8 +73,7 @@ import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.componen
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
 import { FollowUserComponent } from './follow-user/follow-user.component';
 
-import { FeatureProjectComponent } from './feature-project/feature-project.component';
-import { FeatureMakerComponent } from './feature-maker/feature-maker.component';
+import { FeatureComponent } from './feature/feature.component';
 
 
 let config = {
@@ -157,8 +156,7 @@ export function ResponsiveDefinition() {
     AccessRestrictedComponent,
     //pipes
     ReverseArray,
-    FeatureProjectComponent,
-    FeatureMakerComponent,
+    FeatureComponent,
   ],
   exports: [
     CommentComponent,
@@ -205,8 +203,7 @@ export function ResponsiveDefinition() {
     ImageCropperComponent,
     Ng2FileDropDirective,
     ReverseArray,
-   FeatureProjectComponent,
-   FeatureMakerComponent,
+   FeatureComponent,
   ],
 })
 export class SharedModule {

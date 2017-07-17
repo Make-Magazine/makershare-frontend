@@ -14,7 +14,7 @@ import { SortBySortingSet, SortingSet } from '../../models';
 export class MakersComponent implements OnInit {
 
   CurrentSortSet:SortingSet = {
-    sort_by:"random",
+    sort_by:"random_seed",
     sort_order:"ASC",
   };
   SortBy:SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
