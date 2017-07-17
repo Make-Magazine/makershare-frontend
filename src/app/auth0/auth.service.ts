@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import Auth0Lock from 'auth0-lock';
 import { UserService, MainService } from '../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
 
 @Injectable()

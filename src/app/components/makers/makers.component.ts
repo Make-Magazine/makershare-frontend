@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models';
-// import {Meta, Title } from '@angular/platform-browser';
+import {Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-makers',
@@ -37,21 +37,18 @@ export class MakersComponent implements OnInit {
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
-    // title: Title,
-    // meta: Meta
+    title: Title,
+    meta: Meta
   ) { 
-    // title.setTitle('this is makers title');
-    // meta.addTags([
-    //   {
-    //     name: 'author', content: 'this is maker name'
-    //   },
-    //   {
-    //     name: 'description', content: 'this is description this is description this is description '
-    //   },
-    //   {
-    //     name: 'image', content: '/assets/logo.png'
-    //   }
-    // ])
+    title.setTitle('Maker Portfolios | Connect with the Global Community | Maker Share');
+    meta.addTags([
+      {
+        name: 'description', content: 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.'
+      },
+      {
+        name: 'image',content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
   }
   ngOnInit() {
     this.countAllMakers();
