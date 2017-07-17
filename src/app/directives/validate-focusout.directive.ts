@@ -12,6 +12,6 @@ export class ValidateOnFocusoutDirective {
     }
 
     onFocusout($event) {
-      this.formControl.control.markAsUntouched(false);
+      this.formControl.control.markAsUntouched();
     }
 }

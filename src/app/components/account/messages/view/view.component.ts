@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
-import { PmService, UserService, ViewService } from '../../../../d7services';
-import { Observable } from 'rxjs/Observable'
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PmService, UserService } from '../../../../d7services';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
 import { Location } from '@angular/common';
 import { LoaderService } from '../../../shared/loader/loader.service';
@@ -50,13 +49,12 @@ export class ViewComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,
-    private viewService: ViewService,
     private loaderService: LoaderService,
     private config: NgbTooltipConfig,
 
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
 
   ngOnInit() {
@@ -64,7 +62,6 @@ export class ViewComponent implements OnInit {
     this.getStatus();
     this.buildForm();
     this.getThreads();
-    var thread_id;
     this.getCurrentUser();
     this.loaderService.display(true);
     this.userId = parseInt(localStorage.getItem('user_id'));
@@ -107,9 +104,6 @@ export class ViewComponent implements OnInit {
             }
             this.messages = this.msg.messages
             for (let message of this.messages) {
-              var date = new Date(message.timestamp * 1000);
-              var hour = date.getHours() - (date.getHours() >= 12 ? 12 : 0);
-              var period = date.getHours() >= 12 ? 'PM' : 'AM';
               let i = 0
               this.userService.getUser(message.author).subscribe(res => {
                 Object.assign(message, res);

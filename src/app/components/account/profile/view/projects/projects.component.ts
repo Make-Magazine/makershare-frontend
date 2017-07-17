@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ViewService, UserService, MainService } from '../../../../../d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MetaService } from '@nglibs/meta';
 import * as globals from '../../../../../d7services/globals';
 @Component({
   selector: 'profile-projects',
@@ -15,7 +14,6 @@ export class ProjectsComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private viewService: ViewService,
-    private meta: MetaService,
     private mainService: MainService,
 
   ) { }

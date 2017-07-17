@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService,FlagService,UserService } from '../../../d7services';
-import { RouterModule, Router } from '@angular/router';
+import { ViewService, FlagService, UserService } from '../../../d7services';
+import { Router } from '@angular/router';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-challenges',
@@ -25,17 +24,15 @@ export class ChallengesComponent implements OnInit {
     private flagService: FlagService,
     private loaderService: LoaderService,
     private userService: UserService,
-    private meta: MetaService
-
   ) { }
 
   ngOnInit() {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
-    this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
 
   }
   /* function to get challenges and count followers  */
@@ -73,18 +70,15 @@ export class ChallengesComponent implements OnInit {
       this.loaderService.display(false);
     }, err => {
       // hide spinner
-      this.loaderService.display(false);      
+      this.loaderService.display(false);
     });
   }
-  /* end function to get challenges and count followers  */
 
-  /* function to get more click */
   loadmore() {
     this.pageNumber++;
     this.getChallenges();
   }
-  /* end  function get more  */
-  /* function to Get challenges status to render them in the component */
+
   getStatuses() {
     this.viewService.getView('maker_taxonomy_category/14').subscribe(data => {
       let arr = [];
@@ -100,32 +94,25 @@ export class ChallengesComponent implements OnInit {
     });
 
   }
-  /* end function get challenge status */
 
-  /* function to get the count of challenges per status*/
   challengesCount() {
     this.viewService.getView('maker_count_api', []).subscribe(data => {
       this.statusesCount = data;
     });
   }
-  /* end function to get count of challenges*/
 
-  /* function to click function on status */
   SetCurrentStatus(event) {
     if (this.currentStatusId != event.target.id) {
       this.challenges = [];
     }
     this.currentStatusName = event.target.name;
     this.currentStatusId = event.target.id;
-    this.challenges=[];
+    this.challenges = [];
     this.pageNumber = 0;
     this.getChallenges();
   }
-  /* end function to click function  */
 
-  /* function to  control load more button*/
   loadMoreVisibilty() {
-    // get the challenges array count
     var ch_arr_count = this.challenges.length;
     if (this.statusesCount[this.currentStatusId] == ch_arr_count) {
       this.hideloadmore = true;
@@ -133,23 +120,19 @@ export class ChallengesComponent implements OnInit {
       this.hideloadmore = false;
     }
   }
-  /* end function to  control load more button */
 
-  /* function to navigate to challenge summary page */
   ShowChallengeDetails(nid) {
-    this.router.navigate(['/challenges', nid]);
+    this.router.navigate(['challenges', nid]);
   }
 
-    enterToChallengeProject(nid) {
-      
-     this.userService.isLogedIn().subscribe(data => {
-      //this.checkUserLogin = data;
+  enterToChallengeProject(nid) {
+
+    this.userService.isLogedIn().subscribe(data => {
       if (data == false) {
-        //localStorage.setItem('redirectUrl', this.router.url);
-        this.router.navigate(['/access-denied']);
-      }else{
-    this.router.navigate(['challenges/enter-challenge', nid]);
+        this.router.navigate(['access-denied']);
+      } else {
+        this.router.navigate(['challenges/enter-challenge', nid]);
       }
-          });
+    });
   }
 }

@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, FormArray } from '@angular/forms';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +6,6 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 })
 export class FooterComponent implements OnInit {
   constructor(
-    private notificationBarService: NotificationBarService,
   ) { }
 
   ngOnInit() {

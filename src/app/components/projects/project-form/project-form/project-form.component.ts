@@ -1,12 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { NodeService,FileService,ViewService,MainService,TaxonomyService,UserService } from '../../../../d7services';
 import { Observable } from "rxjs";
 import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { Router, NavigationExtras, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import {
-  FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper, UserInvitations,
-  field_number, field_collection_item_member, field_collection_item_tool, field_collection_item_material,
+  FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper,
+  field_collection_item_member, field_collection_item_tool, field_collection_item_material,
   field_collection_item_part, field_collection_item_resource,ProjectHold
 }from '../../../../models';
 import { ComponentCanDeactivate } from '../pending-changes.guard';

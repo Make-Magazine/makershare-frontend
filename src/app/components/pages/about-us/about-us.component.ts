@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
-
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -15,7 +13,6 @@ export class AboutUsComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService    
   ) { }
 
   ngOnInit() {
