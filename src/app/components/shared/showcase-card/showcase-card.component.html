@@ -39,7 +39,6 @@
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                     <span class="views-count">{{showcaseCard.views_count}}</span>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -73,11 +72,9 @@
             <div class="showcase-card-footer mt-auto mb-3 d-flex">
               <div class="showcase-card-footer-2">
                 <div class="showcase-card-count d-felx">
-                  <div class="projects-count-div" *ngIf="showcaseCard.number_of_project">
-                    <span class="projects-count">{{showcaseCard.number_of_project}}
-                  <span *ngIf="showcaseCard.number_of_project>1">Maker</span>
-                    <span *ngIf="showcaseCard.number_of_project<=1">Makers</span>
-                    </span>
+                  <div class="projects-count-div">
+                    <span class="projects-count" *ngIf="projects_makers_count !=1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}s</span>
+                    <span class="projects-count" *ngIf="projects_makers_count ==1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}</span>
                   </div>
                   <div class="likes-count-div">
                     <img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png" alt="">
@@ -89,7 +86,6 @@
                     <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
                     <span class="views-count">{{showcaseCard.views_count}}</span>
                   </div>
-
                 </div>
               </div>
             </div>
