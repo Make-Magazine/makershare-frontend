@@ -1,6 +1,6 @@
 // Maker Share ui kit
 $beta: true;
- 
+
 // ///////////////////
 // utils & includes
 // ///////////////// //
@@ -9,24 +9,22 @@ $beta: true;
 @import "includes/old_mixins"; // temporary only
 @import "includes/mixins";
 @import "includes/utils";
-	// ///////////////////
-	// base
-	// ///////////////////
-	@import "base/reset";
-	@import "base/base";
-	@import "base/a";
-	@import "base/typography";
-	@import "base/p";
-	// ///////////////////
+// ///////////////////
+// base
+// ///////////////////
+@import "base/reset";
+@import "base/base";
+@import "base/a";
+@import "base/typography";
+@import "base/h";
+@import "base/p";
+// ///////////////////
 
-
-	// ///////////////////
-	// libs
-	// ///////////////////
-	@import "libs/bootstrap_dropdown";
-	@import "libs/linear-style";
-
-
+// ///////////////////
+// libs
+// ///////////////////
+@import "libs/bootstrap_dropdown";
+@import "libs/linear-style";
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -40,9 +38,9 @@ $beta: true;
 @import "atoms/badge";
 @import "atoms/flag";
 @import "atoms/loader";
+@import "atoms/feature";
 // ///////////////////
 // ///////////////////
-
 
 // ///////////////////
 // molecules
@@ -56,7 +54,6 @@ $beta: true;
 // ///////////////////
 // ///////////////////
 
-
 // ///////////////////
 // organisms
 // ///////////////////
@@ -67,7 +64,6 @@ $beta: true;
 @import "organisms/dropdown-menu";
 // ///////////////////
 // ///////////////////
-
 
 // ///////////////////
 // layout

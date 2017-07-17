@@ -1,15 +1,21 @@
-.site-header {
-	background: $nav-bg;
-	width: 100vw;
-	position: fixed;         
-	z-index: 99;
-	
+.main-header {
+	padding: 0 !important;
+  margin: 0 !important;
+  color: #333333;
+  width: 100vw;
+  background-color: $lighter-grey;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 110px;
+
 	.header-wrapper {
 		margin: auto;
 		width: 70vw;
 		display: flex;
 		padding: 2rem 0;
-		@include transition(0.5s);   
+		@include transition(0.5s);
 	}
 
 	 &.shrink {
@@ -67,7 +73,7 @@
 //                 position: absolute;
 //                 bottom: -14px;
 //                 right: 5px;
-//                 @include transition(0.5s);                
+//                 @include transition(0.5s);
 //             }
 //         }
 //         .color-text {
@@ -76,7 +82,7 @@
 //         .login-block {
 //             margin-bottom: 0;
 //             margin-top: 3px;
-            
+
 //             li {
 //                 display: inline-block;
 //                 .btn {
@@ -97,13 +103,13 @@
 //                         width: 40px;
 //                         height: 40px;
 //                     }
-//                     margin-left: 15px;                
-                    
+//                     margin-left: 15px;
+
 //                 }
 //                 &.hamburger-menu {
-//                 margin-left: 15px;                
+//                 margin-left: 15px;
 //                 a img {
-//                         width: 40px;                
+//                         width: 40px;
 
 //                     }
 //                     .nav-link {
@@ -133,7 +139,7 @@
 //                     .beta-feedback {
 //                         color: $blue;
 //                     }
-                    
+
 //                 }
 //                 a.nav-linkdropdown-toggle.navbar-left{
 //                     padding-left: 0;
@@ -184,7 +190,7 @@
 //                 a.btn {
 //                     font-size: 10px;
 //                     padding: 5px 10px;
-                    
+
 //                 }
 //                 &.mail-icon {
 //                     img {
@@ -204,23 +210,23 @@
 //                 }
 //             }
 //         }
-        
+
 //         &.shrink {
 //             height: 80px;
-//             @include transition(0.5s);            
+//             @include transition(0.5s);
 //             .navbar-brand {
 //                 width: 75px;
 //                 @include transition(0.5s);
 //                 span {
 //                     right: 3px;
 //                     font-size: 8px;
-//                     @include transition(0.3s);  
+//                     @include transition(0.3s);
 //                 }
 //             }
 //             nav.navbar {
 //                 padding: 10px 15px 0px;
 //                 height: 80px;
-//                 @include transition(0.5s);                
+//                 @include transition(0.5s);
 //                 #MainNav {
 //                     .nav-item {
 //                         a {
@@ -235,7 +241,7 @@
 //             }
 //         }
 //     }
-//     nav {  
+//     nav {
 //         font-size: 14px;
 //         color: $main-grey;
 //         &.navbar {
@@ -245,7 +251,7 @@
 //             height: 110px;
 //             padding: 20px 15px;
 //             @include transition(0.5s);
-            
+
 //         }
 //         .collapse.navbar-collapse {
 //             width: auto;
@@ -291,7 +297,7 @@
 //             border-radius: 0;
 //             background-color: $white;
 //             border: none;
-//             @include boxShadow(2px, 2px ,8px, $shade-3);        
+//             @include boxShadow(2px, 2px ,8px, $shade-3);
 //             right: 0;
 //             left: auto;
 //             z-index: 10000;
@@ -330,7 +336,7 @@
 //                 padding: 0 0 0 15px;
 //             }
 //         }
-    
+
 //     }
 
 //     .notification-count{
@@ -342,7 +348,7 @@
 //     bottom: 2px;
 //     font-weight: bold;
 //     z-index: 1;
-    
+
 //   }
 
 // }
@@ -366,7 +372,7 @@
 //             img {
 //                 filter: brightness(0) invert(1);
 //                 &:hover {
-//                     filter: brightness(2) invert(1); 
+//                     filter: brightness(2) invert(1);
 //                 }
 //             }
 //             &.min-user-img {
@@ -375,7 +381,7 @@
 
 //                 }
 //             }
-//         } 
+//         }
 //     }
 // }
 // #page-404 {
