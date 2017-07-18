@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 import { AuthGuardService } from '../../auth0/auth-guard.service';
 
-//modules
-import { ProjectFormModule } from './project-form/project-form.module';
-import { ProjectDetailsModule } from './project-details/project-details.module';
-
 const ProjectsRouts: Routes = [
   { path: '', component:ProjectsComponent },
   { path: 'create', loadChildren: './project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},

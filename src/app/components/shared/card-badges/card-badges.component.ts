@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MakerCardComponent } from '../maker-card/maker-card.component';
 
 @Component({
   selector: 'app-card-badges',

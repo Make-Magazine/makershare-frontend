@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService,MainService,PmService } from '../../../../d7services';
 import * as globals from '../../../../d7services/globals';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-default-settings',
@@ -34,16 +34,6 @@ export class defaultSettingsComponent implements OnInit {
 
  open(content) {
     this.modalService.open(content);
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
   getNotificationSettings() {

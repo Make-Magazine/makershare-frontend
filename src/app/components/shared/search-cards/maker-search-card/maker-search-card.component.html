@@ -1,5 +1,5 @@
 <div *ngIf="card">
-  <div *hideItBootstrap="['xs','sm','md']">
+  <div class="hidden-md-down">
     <div class="maker-card card" *ngIf="card" (click)="goToProfile(card.profile_url)" (mouseover)='over()' (mouseleave)='leave()'>
       <!--<div class="card-type-grey">
         <div class="type-layer-2">
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  <div *hideItBootstrap="['lg','xl']">
+  <div class="hidden-lg-up">
     <div class="maker-mobile-card card" (click)="goToProfile(card.profile_url)">
       <!--<div class="card-type-grey">
         <div class="type-layer-2">

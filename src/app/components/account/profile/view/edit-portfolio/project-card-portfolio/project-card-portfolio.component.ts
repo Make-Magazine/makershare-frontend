@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectCardPortfolio } from '../../../../../../models';
 import { NodeService, ViewService } from '../../../../../../d7services';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { UserService } from '../../../../../../d7services/user/user.service';
 
@@ -23,7 +23,6 @@ export class ProjectCardPortfolioComponent implements OnInit {
     private viewService: ViewService,
 
     private router: Router,
-    private route: ActivatedRoute,
 
     private modal: NgbModal,
     private userService: UserService,

@@ -1,11 +1,10 @@
-import { Component, OnInit, TemplateRef, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ViewService, FlagService, UserService, NodeService } from '../../../d7services';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ViewService, UserService, NodeService } from '../../../d7services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-individual-workshop',
@@ -65,13 +64,11 @@ export class IndividualWorkshopComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private flagService: FlagService,
     private viewService: ViewService,
     private sanitizer: DomSanitizer,
     private http: Http,
     private modalService: NgbModal,
     private loaderService: LoaderService,
-    private meta: MetaService,
     private nodeService: NodeService,
 
   ) { }
@@ -84,15 +81,14 @@ export class IndividualWorkshopComponent implements OnInit {
         if (this.idFromUrl) {
           this.loaderService.display(true);
           this.uid = localStorage.getItem('user_id');
-          let userId = localStorage.getItem('user_id');
           //this.nid = this.route.params['value'].nid
           this.viewService.getView('individual-workshop', [['nid', this.idFromUrl]])
             .subscribe(data => {
               this.workshop = data[0];
 
-              this.meta.setTitle(`Maker Share | ${this.workshop.workshop_title}`);
-              this.meta.setTag('og:image', this.workshop.cover_photo);
-              this.meta.setTag('og:description', this.workshop.brief_description);
+              // this.meta.setTitle(`Maker Share | ${this.workshop.workshop_title}`);
+              // this.meta.setTag('og:image', this.workshop.cover_photo);
+              // this.meta.setTag('og:description', this.workshop.brief_description);
 
               if (this.workshop.uid) {
                 this.viewService.getView('maker_profile_card_data2', [['uid', this.workshop.uid]]).subscribe(data => {
@@ -189,7 +185,6 @@ export class IndividualWorkshopComponent implements OnInit {
         //  console.log(this.element)
         // this.element.classList.add('epub-width');
       } else {
-        var x = this.objects[i].book.split('.').pop();
         delete this.popupPreview;
         this.epubFile = null;
         this.sanitizethis = '<iframe src="https://docs.google.com/viewer?url=' + this.objects[i].book + '&embedded=true" frameborder="0" style="width:100%; height:750px;"></iframe>';

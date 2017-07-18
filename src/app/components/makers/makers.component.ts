@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService, ProfileService } from '../../d7services';
+import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { MetaService } from '@nglibs/meta';
 import { SortBySortingSet, SortingSet } from '../../models';
-// import {Meta, Title } from '@angular/platform-browser';
+import {Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-makers',
@@ -14,7 +13,7 @@ import { SortBySortingSet, SortingSet } from '../../models';
 export class MakersComponent implements OnInit {
 
   CurrentSortSet:SortingSet = {
-    sort_by:"random",
+    sort_by:"random_seed",
     sort_order:"ASC",
   };
   SortBy:SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
@@ -38,32 +37,27 @@ export class MakersComponent implements OnInit {
     private loaderService: LoaderService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
-    private meta: MetaService,
-    private profileService: ProfileService,
-    // title: Title,
-    // meta: Meta
+    title: Title,
+    meta: Meta
   ) { 
-    // title.setTitle('this is makers title');
-    // meta.addTags([
-    //   {
-    //     name: 'author', content: 'this is maker name'
-    //   },
-    //   {
-    //     name: 'description', content: 'this is description this is description this is description '
-    //   },
-    //   {
-    //     name: 'image', content: '/assets/logo.png'
-    //   }
-    // ])
+    title.setTitle('Maker Portfolios | Connect with the Global Community | Maker Share');
+    meta.addTags([
+      {
+        name: 'description', content: 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.'
+      },
+      {
+        name: 'image',content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
   }
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
 
-    this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {

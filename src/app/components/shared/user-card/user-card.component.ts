@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,PmService,UserService,FlagService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ViewService,PmService,UserService } from '../../../d7services';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons,NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -32,19 +32,18 @@ export class UserCardComponent implements OnInit {
   @Input() communityManager = false;
 
   
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
-    private flagService: FlagService,
     private notificationBarService: NotificationBarService,
     private pm: PmService,
     private fb: FormBuilder,
     private modalService: NgbModal,
     private config: NgbTooltipConfig,
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.getProjectCountByUser();

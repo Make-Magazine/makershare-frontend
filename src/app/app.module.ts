@@ -1,26 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {NgModule, NgZone} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NavigationEnd, NavigationError, RouterModule, Router} from '@angular/router';
+
+import {Observable} from 'rxjs';
+
+import {prebootClient} from 'preboot/__build/src/browser/preboot_browser';
+
+import {AppComponent} from './app.component';
+
+//
 import { routing } from "./app.routing";
-import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule } from 'angular2-notification-bar/release';
+import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
 import { ShareButtonsModule } from "ngx-sharebuttons";
-// import custom auth0 service
-
-import { FormsModule } from '@angular/forms';
 import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
+import { HttpModule } from '@angular/http';
 
 // static pages
 import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
@@ -39,27 +44,29 @@ import { ClaimProfileComponent } from './components/pages/claim-profile/claim-pr
 // GA
 // import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
-import { MetaModule } from '@nglibs/meta';
 import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
 import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 import { CookieModule } from 'ngx-cookie';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-let config = {
-  breakPoints: {
-    xs: { max: 575 },
-    sm: { min: 576, max: 767 },
-    md: { min: 768, max: 991 },
-    lg: { min: 992, max: 1199 },
-    xl: { min: 1200 }
-  },
-  debounceTime: 100 // allow to debounce checking timer
-};
-
 @NgModule({
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    CookieModule.forRoot(),
+    SharedModule.forRoot(),
+    FormsModule,
+    NgbModule.forRoot(),
+    RouterModule,
+    routing,
+    MessagesModule,
+    NotificationBarModule,
+    DndModule.forRoot(),
+    ShareButtonsModule.forRoot(),
+    HttpModule,
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -83,33 +90,33 @@ let config = {
     AboutUsComponent,
     ShowTellComponent,
     ClaimProfileComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({
-      appId: 'maker'
-    }),
-    CookieModule.forRoot(),
-    SharedModule.forRoot(),
-    ResponsiveModule,
-    HttpModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgbModule.forRoot(),
-    RouterModule,
-    routing,
-    MessagesModule,
-    NotificationBarModule,
-    DndModule.forRoot(),
-    // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    MetaModule.forRoot(),
-    ShareButtonsModule.forRoot(),
-    BrowserAnimationsModule,
-  ],
-  entryComponents: [],
-  bootstrap: [AppComponent],
+  ]
 })
-export class AppModule { };
-export function ResponsiveDefinition() {
-  return new ResponsiveConfig(config);
-};
-export { AppComponent };
+export class AppModule {
+  constructor(router: Router, zone: NgZone) {
+    if (typeof prebootstrap === 'undefined') {
+      return;
+    }
+
+    const finished = Observable.combineLatest(router.events, zone.onMicrotaskEmpty);
+
+    const subscription = finished.subscribe(([event, stable]) => {
+      if (stable === false) {
+        return;
+      }
+
+      switch (true) {
+        case event instanceof NavigationError:
+        case event instanceof NavigationEnd:
+          setImmediate(() => prebootClient().complete());
+
+          subscription.unsubscribe();
+          break;
+        default:
+          break;
+      }
+    });
+  }
+}
+
+declare const prebootstrap;

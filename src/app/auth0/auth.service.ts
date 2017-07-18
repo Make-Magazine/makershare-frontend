@@ -1,12 +1,10 @@
 import * as globals from '../d7services/globals';
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import 'rxjs/add/operator/filter';
 import Auth0Lock from 'auth0-lock';
 import { UserService, MainService } from '../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
-import { Observable } from "rxjs";
 
 @Injectable()
 export class Auth {
@@ -232,7 +230,6 @@ export class Auth {
       }],
   });
 
-
   constructor(
     public router: Router,
     private mainService: MainService,
@@ -371,9 +368,7 @@ export class Auth {
   public IsCommuintyManager(): boolean {
     if (this.authenticated() == true) {
       var roles = JSON.parse(localStorage.getItem('roles'));
-
       if ('4' in roles) {
-        //  console.log("communty manager");
         return true;
       } else {
         return false;
