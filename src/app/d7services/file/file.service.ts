@@ -34,4 +34,28 @@ export class FileService {
     return this.mainService.delete(globals.endpoint + '/file/' + fid).map(res => res.json()).catch(err => Observable.throw(err));
   }
 
+  getSiteMap(): Observable<any>{
+    let out=this.mainService.get('/sitemap.xml');
+     return out;
+     
+  }
+  // getXMLFile():Observable<any>{
+  //     var obs = Observable.create(observer => {
+  //       this.getSiteMap().subscribe( data => {
+  //         console.log(data);
+  //           if(data ){
+
+  //             observer.next(true);
+  //             observer.complete();
+
+  //           }else{
+  //             observer.next(false);
+  //             observer.complete();
+  //           }
+  //       });
+
+  //   });
+  //   return obs;
+    
+  // }
 }

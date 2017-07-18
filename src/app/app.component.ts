@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
-import { UserService, MainService } from './d7services';
+import { UserService, MainService,FileService } from './d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './auth0/auth.service';
+import { FileEntity} from './models';
+
 declare var ga:Function;
 
 @Component({
@@ -12,11 +14,13 @@ declare var ga:Function;
 
 export class AppComponent implements OnInit {
   showLoader: boolean;
+  siteMap;
   public location = '';
   constructor(
     public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
+    private fileService:  FileService,
     private mainService: MainService,
     public router: Router,
   ) {
@@ -71,6 +75,10 @@ export class AppComponent implements OnInit {
     setTimeout(function () {
       window.scrollTo(0, 1);
     }, 0);
+
+
+  
   }
+        
 
 }
