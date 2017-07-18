@@ -21,3 +21,6 @@ export class SortBySortingSet{
     return this._viewService.getView(ViewName,Params);
   }
 }
+
+
+
