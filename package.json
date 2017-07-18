@@ -66,8 +66,5 @@
     "typescript": "2.4.1",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.13"
-  },
-  "devDependencies": {
-    "node-sass": "^4.5.3"
   }
 }
