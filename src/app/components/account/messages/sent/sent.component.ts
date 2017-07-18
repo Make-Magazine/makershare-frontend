@@ -1,14 +1,7 @@
-import { Component, OnInit, Input, forwardRef, Injector, Injectable, state, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PmService,ViewService,UserService } from '../../../../d7services';
-import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common'
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-import { LoaderService } from '../../../shared/loader/loader.service';
-
 
 @Component({
   selector: 'app-sent',
@@ -38,17 +31,12 @@ export class SentComponent implements OnInit {
   loginUser = false
 
   //hideUser= true;
-  constructor(private route: ActivatedRoute,
-    private fb: FormBuilder,
+  constructor(
     private pm: PmService,
     private router: Router,
-    private http: Http,
     private user: UserService,
     private viewService: ViewService,
     private _location: Location,
-    private modalService: NgbModal,
-    private notificationBarService: NotificationBarService,
-    private loaderService: LoaderService,
 
   ) { }
   ngOnInit(): void {

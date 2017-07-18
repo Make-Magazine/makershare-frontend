@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ViewService } from '../../../d7services';
 
 @Component({
@@ -11,8 +10,7 @@ export class MakerPhoto implements OnInit {
   photo_url;
   @Input() maker;
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
+  constructor(
     private viewService: ViewService,
   ) {
 

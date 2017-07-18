@@ -1,16 +1,13 @@
-import { Component, AfterViewInit, ViewChild, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor,NG_VALUE_ACCESSOR,NG_VALIDATORS } from '@angular/forms';
+import { Component, ViewChild, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor,NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { domain,endpoint } from '../../../d7services/globals';
-import { MainService,FileService } from '../../../d7services';
+import { FileService } from '../../../d7services';
 import { FileEntity,NodeHelper } from '../../../models';
 import { CropperSettings } from 'ng2-img-cropper';
-import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
+// import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { URLNoProtocol } from '../../../validations/url-no-protocol.validation';
 import { FormControl } from '@angular/forms';
-import { Http,ResponseContentType } from '@angular/http';
 
-declare var CKEDITOR:any;
 @Component({
   selector: 'maker-ckeditor',
   templateUrl: './maker-ckeditor.component.html',
@@ -41,9 +38,7 @@ export class MakerCkeditorComponent implements ControlValueAccessor {
   FetchImageByUrl:FormControl = new FormControl('',URLNoProtocol());
   constructor(
     private modalService: NgbModal,
-    private mainService: MainService,
     private fileService: FileService,
-    private http:Http,
   ) { }
 
   SetCropperSettings(): void {
@@ -105,7 +100,7 @@ export class MakerCkeditorComponent implements ControlValueAccessor {
     };
     myReader.readAsDataURL(file);
   }
-  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+  dragFileAccepted(acceptedFile, cropper) {
     this.UploadBtn(acceptedFile.file,cropper);
   }
   ImageUpdated(closebtn: HTMLButtonElement) {

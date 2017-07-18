@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService,UserService,NodeService,StatisticsService } from '../../../d7services';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ViewService, UserService,NodeService,StatisticsService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 
@@ -57,7 +57,6 @@ export class ChallengeDataComponent implements OnInit {
     private viewService: ViewService,
     private nodeService: NodeService,
     private userService: UserService,
-    private flagService: FlagService,
     private notificationBarService: NotificationBarService,
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
@@ -211,18 +210,9 @@ export class ChallengeDataComponent implements OnInit {
 
   /* function to change data format */
   changeDateFormat(date) {
-    var d;
     if (!date)
       return '';
     date = date.split(" ")[0];
-    // d = new Date(date);
-    // var monthNames = ["January", "February", "March", "April", "May", "June",
-    //   "July", "August", "September", "October", "November", "December"
-    // ];
-    // var month = monthNames[d.getMonth()];
-    // var fullYear = d.getFullYear();
-    // var day = d.getDate();
-    // var datestring = month + " " + day + "," + " " + fullYear;
     date = date.split("-");
     return date[1] + '/' + date[2] + '/' + date[0];
   }
@@ -235,8 +225,6 @@ export class ChallengeDataComponent implements OnInit {
     /*cheack display_entries */
     //challenge entries projects
     this.projects = [];
-    var sort: string;
-    //  this.page_arg = [];
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
@@ -261,9 +249,6 @@ export class ChallengeDataComponent implements OnInit {
     //challenge entries projects
     this.userId = localStorage.getItem('user_id');
     this.projects = [];
-
-    var sort: string;
-    //  this.page_arg = [];
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
@@ -328,7 +313,6 @@ export class ChallengeDataComponent implements OnInit {
   /* function to get count projects in challenge */
   getCountProject() {
     // var nid;
-    var nid = this.route.snapshot.params['nid'];
     this.route.params
     this.viewService.getView('maker_count_project_challenge_api/' + this.idFromUrl)
       .subscribe(data => {
@@ -364,7 +348,6 @@ export class ChallengeDataComponent implements OnInit {
   /* function cheack user allowe to enter challenge */
 
   checkenter() {
-    var path = this.route.snapshot.params['path'];
     this.viewService.checkEnterStatus('maker_challenge_entry_api/enter_status', this.idFromUrl).subscribe(data => {
       this.enterStatus = data.status;
       this.submitStatus.emit(this.enterStatus);

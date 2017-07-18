@@ -1,5 +1,4 @@
-import { Component, OnInit, Input,EventEmitter   } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input   } from '@angular/core';
 
 @Component({
   selector: 'app-registration-collect',
@@ -10,7 +9,6 @@ export class RegistrationCollectComponent implements OnInit {
   showForm: boolean = false;
   @Input() registrationFormState: string;
   constructor(
-    private modalService: NgbModal
   ) {
     
    }
