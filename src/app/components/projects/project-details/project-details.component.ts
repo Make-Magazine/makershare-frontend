@@ -40,7 +40,7 @@ export class ProjectDetailsComponent implements OnInit {
     public auth: Auth,
     private mainService: MainService,
     private meta: Meta,
-    private title: Title
+    private meta_title: Title
 
   ) {
 
@@ -56,6 +56,17 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.meta_title.setTitle(' test title | Maker Share');
+          this.meta.addTags([
+            {
+              name: 'description', content: 'description description description '
+            },
+            {
+              name: 'image', content: 'image image image image image image image image '
+            }
+          ])
+
     this.auth.IsCommuintyManager();
     this.Manager = this.auth.IsCommuintyManager();
 
@@ -123,6 +134,18 @@ export class ProjectDetailsComponent implements OnInit {
     this.viewService.getView('maker_project_api/' + this.id)
       .subscribe(data => {
         this.project = data;
+        // if (this.project) {
+        //   this.meta_title.setTitle(this.project.title.value + ' | Maker Share');
+        //   this.meta.addTags([
+        //     {
+        //       name: 'description', content: this.project.field_teaser.value
+        //     },
+        //     {
+        //       name: 'image', content: this.project.field_cover_photo.url
+        //     }
+        //   ])
+        // }
+
         var i = 0;
         if (this.project.field_resources) {
           for (let resource of this.project.field_resources) {
@@ -132,15 +155,6 @@ export class ProjectDetailsComponent implements OnInit {
           }
         }
 
-        this.title.setTitle(this.project.title.value + ' | Maker Share');
-        this.meta.addTags([
-          {
-            name: 'description', content: this.project.field_teaser.value
-          },
-          {
-            name: 'image', content: this.project.field_cover_photo.url
-          }
-        ])
         // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
         // this.meta.setTag('og:image', this.project.field_cover_photo.url);
         // this.meta.setTag('og:description', this.project.field_teaser.value);
