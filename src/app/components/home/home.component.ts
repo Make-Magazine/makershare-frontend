@@ -33,9 +33,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loaderService.display(true);
     this.viewService.getView('maker_homepage_api').subscribe(data => {
-      this.homeCards = data;
+      // this.homeCards = data;
       // console.log(this.homeCards[0].id)
+      for(var i = 0; i < data.length; i++) {
+        data[i].forcedNarrow = false; // set them all to false by default
 
+        if(i > 0) {
+          if(data[i-1].type == 'challenge') { //wide
+            data[i].forcedNarrow = true;
+          }
+        }
+      }
+      this.homeCards = data;
       // this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
       // this.meta.setTag('og:image', '/assets/logo.png');
       // this.meta.setTag('og:description', 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.');
