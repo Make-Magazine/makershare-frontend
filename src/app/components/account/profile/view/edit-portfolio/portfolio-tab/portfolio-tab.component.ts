@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ViewService, UserService, MainService } from '../../../../../../d7services';
+import { ViewService, MainService } from '../../../../../../d7services';
 import { ProjectCardPortfolio } from '../../../../../../models';
-import { Observable } from "rxjs";
-import { Router } from '@angular/router';
 import * as globals from '../../../../../../d7services/globals';
 
 @Component({
@@ -27,9 +25,7 @@ export class PortfolioTabComponent implements OnInit {
 
   constructor(
     private viewService: ViewService,
-    private userService: UserService,
     private mainService: MainService,
-    private router: Router,
   ) { }
 
   ngOnInit() {

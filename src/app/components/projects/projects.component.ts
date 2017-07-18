@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService,MainService } from '../../d7services';
-import { RouterModule, Router } from '@angular/router';
-import { ISorting } from '../../models/explore/sorting';
+import { ViewService, MainService } from '../../d7services';
 import { ProjectCategory } from '../../models';
 import { LoaderService } from '../shared/loader/loader.service';
-import { MetaService } from '@nglibs/meta';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models/makers';
 import { Auth } from '../../auth0/auth.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',
@@ -35,35 +33,44 @@ export class ProjectsComponent implements OnInit {
   all_categories: ProjectCategory[];
   childCategory = [];
   categoryId;
-  Manager:boolean = false;
-  
+  Manager: boolean = false;
+
   constructor(
-    private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private meta: MetaService,
     private mainService: MainService,
     private notificationBarService: NotificationBarService,
     public auth: Auth,
-  ) { }
+    private meta: Meta,
+    private title: Title
+  ) { } CONFLICT
 
   ngOnInit() {
-     this.Manager = this.auth.IsCommuintyManager();
-     this.getCountProject();
+    this.Manager = this.auth.IsCommuintyManager();
+    this.getCountProject();
     this.getProjects();
     this.getProjectCategories();
 
+    this.title.setTitle('Maker Projects | Learn the Stories Behind the Projects | Maker Share');
+    this.meta.addTags([
+      {
+        name: 'description', content: 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.'
+      },
+      {
+        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
 
-    this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
-    this.meta.setTag('og:image', '/assets/logo.png');
-    this.meta.setTag('og:description', 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.');
+    // this.meta.setTitle(`Maker Projects |Learn the Stories Behind the Projects | Maker Share `);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.');
   }
   getProjects() {
     this.loaderService.display(true);
     if (this.pages == 0) {
       this.projects = [];
     }
-    this.SortBy.Sort('browse_projects',this.pages,this.categoryId).subscribe(data => {
+    this.SortBy.Sort('browse_projects', this.pages, this.categoryId).subscribe(data => {
       this.projects = this.projects.concat(data);
       this.loadMoreVisibilty();
       if (this.projects.length == 0) {
@@ -89,20 +96,20 @@ export class ProjectsComponent implements OnInit {
 
     });
   }
-   getProjectCategories() {
+  getProjectCategories() {
     this.viewService.getView('projects_categories').subscribe((categories: ProjectCategory[]) => {
       this.all_categories = categories;
       categories.forEach((element, index) => {
         if (element.parent_tid) {
           this.viewService.getView('browse_projects', [['category', element.tid]]).subscribe(data => {
-            if(data.length > 0) {
+            if (data.length > 0) {
               this.categories_childs.push(element);
             }
           });
         } else {
           this.categories_parents.push(element);
         }
-      });        
+      });
     });
   }
   idCategory(term) {
@@ -118,17 +125,17 @@ export class ProjectsComponent implements OnInit {
     });
 
   }
-  selectParent(value){
+  selectParent(value) {
     this.CurrentActiveChildIndex = -1;
-    this.childCategory = []; 
-    if(value == 1) {
+    this.childCategory = [];
+    if (value == 1) {
       this.categoryId = null;
       this.pages = 0;
       this.getCountProject();
       this.getProjects();
     } else {
       for (let cate of this.categories_childs) {
-        if (cate.parent_tid == value){
+        if (cate.parent_tid == value) {
           this.childCategory.push(cate);
         }
       }
@@ -146,15 +153,15 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  sortProjects(sort){   
-    if(sort == '_none') return;
+  sortProjects(sort) {
+    if (sort == '_none') return;
     this.pages = 0;
     this.CurrentSortSet.sort_order = "DESC";
-    if( sort == 'created_1' || sort == 'title') {
+    if (sort == 'created_1' || sort == 'title') {
       this.CurrentSortSet.sort_order = "ASC";
     }
     this.CurrentSortSet.sort_by = sort;
-    this.getCountProject();        
+    this.getCountProject();
     this.getProjects();
-  }  
+  }
 }

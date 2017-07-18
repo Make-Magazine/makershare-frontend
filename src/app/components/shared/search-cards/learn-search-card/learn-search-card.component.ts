@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewService } from '../../../../d7services';
 
 @Component({
@@ -10,7 +10,7 @@ export class LearnSearchCardComponent implements OnInit {
 learn;
 countlessons;
 @Input() workshopNid; 
- constructor(private route: ActivatedRoute,
+ constructor(
     private router: Router,
     private viewService: ViewService,
 

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router,ActivatedRouteSnapshot,RouterStateSnapshot,NavigationExtras } from '@angular/router';
+import { ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
 import { Observable } from "rxjs";
-import { CanActivate, CanDeactivate, CanLoad } from '@angular/router';
-import { Auth } from './auth.service';
+import { CanActivate, CanLoad } from '@angular/router';
 import { UserService } from './../d7services';
 
 @Injectable()
@@ -10,7 +9,6 @@ export class AuthGuardService implements CanActivate, CanLoad{
 
   constructor(
     private userService: UserService,
-    private router: Router,
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

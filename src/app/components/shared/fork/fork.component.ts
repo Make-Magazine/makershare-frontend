@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, Params } from '@angular/router';
-import { ViewService,FlagService,UserService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { FlagService,UserService } from '../../../d7services';
 
 @Component({
   selector: 'app-fork',
@@ -17,12 +15,10 @@ userId;
 
 currentuser;
 isForked;
-constructor(private route: ActivatedRoute,
+constructor(
     private router: Router,
-    private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    private notificationBarService: NotificationBarService,
    
   ) {  this.router = router; }
   ngOnInit() {

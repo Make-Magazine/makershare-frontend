@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CommentService,ViewService } from '../../../../d7services';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { ViewService } from '../../../../d7services';
+import { FormGroup } from '@angular/forms';
 import { IComment } from '../../../../models/challenge/comment';
 import { Router} from '@angular/router';
 
@@ -49,9 +49,6 @@ export class CommentsComponent implements OnInit {
 
   /* function get comments */
   getcommentsByID(id) {
-    if (this.pages > 0) {
-      var page_arg = ['page', this.pages]
-    }
     //console.log(this.page_arg)
     this.viewService.getView('node-comments', [['nid', this.nodeId], ['page', this.pages]]).subscribe(data => {
       this.comments.value = this.comments.value.concat(data);

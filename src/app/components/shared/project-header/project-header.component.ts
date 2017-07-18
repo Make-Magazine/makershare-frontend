@@ -1,7 +1,6 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { UserService,ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-// import { MetaService } from '@nglibs/meta';
 
 @Component({
   selector: 'app-project-header',
@@ -20,10 +19,9 @@ export class ProjectHeaderComponent implements OnInit {
     private userService: UserService,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
-    // private readonly meta: MetaService,
   ) {
-    config.placement = 'bottom';
-    config.triggers = 'hover';    
+    this.config.placement = 'bottom';
+    this.config.triggers = 'hover';    
   }
   userLogin;
   currentuser;
@@ -59,7 +57,6 @@ export class ProjectHeaderComponent implements OnInit {
     if(this.showcaseInfo){
       
     }
-    let i =0;
     for (let tag in this.project.field_tags) {
       if(this.project.field_tags[tag] != "")
       this.tags.push(this.project.field_tags[tag]);

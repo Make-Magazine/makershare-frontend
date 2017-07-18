@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PmService } from '../../../../d7services'
 import { LoaderService } from '../../../shared/loader/loader.service';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
 import { Location } from '@angular/common';
 
 @Component({
@@ -14,7 +13,6 @@ export class BlockedUsersComponent implements OnInit {
   constructor(
     private pm: PmService,
     private loaderService: LoaderService,
-    private notificationBarService: NotificationBarService,
     private _location: Location,
   ) { }
 

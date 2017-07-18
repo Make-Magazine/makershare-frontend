@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISorting } from '../../../../models/challenge/sorting';
-import { RouterModule, Router } from '@angular/router';
-import { MetaService } from '@nglibs/meta';
+import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-summary',
@@ -26,20 +26,34 @@ export class SummaryComponent implements OnInit {
   };
   constructor(
     private router: Router,
-    private meta: MetaService,
-     ) { }
+    private title: Title,
+    private  meta: Meta
+  ) {
+
+    
+  }
 
   ngOnInit() {
     this.ActionName = "Most Recent"
-    this.meta.setTitle(`${this.challenge.title} | Maker Share`);
-    this.meta.setTag('og:image', this.challenge.cover_image);
-    this.meta.setTag('og:description', this.challenge.body);
+
+    this.title.setTitle(this.challenge.title + ' | Maker Share');
+    this.meta.addTags([
+      {
+        name: 'description', content: this.challenge.body
+      },
+      {
+        name: 'image', content: this.challenge.cover_image
+      }
+    ])
+    // this.meta.setTitle(`${this.challenge.title} | Maker Share`);
+    // this.meta.setTag('og:image', this.challenge.cover_image);
+    // this.meta.setTag('og:description', this.challenge.body);
 
     // console.log(this.projectsChallenge);
   }
   /* function to sort challenge Title A-z */
   sortAsc(sort: ISorting) {
-    
+
     this.pages = 0
     this.sort.sort_order = "ASC";
     this.sort.sort_by = "title"
