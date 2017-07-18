@@ -169,7 +169,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
   ConvertProjectToCreateForm(data: ProjectView) {
     var tasks = [];
-    let NotReadyFields = ["field_visibility2", "field_categories", "field_difficulty", "field_duration", "field_tags", "field_tools", "field_materials", "field_parts", "field_resources", "field_maker_memberships"];
+    let NotReadyFields = ["field_creation_date", "field_visibility2", "field_categories", "field_difficulty", "field_duration", "field_tags", "field_tools", "field_materials", "field_parts", "field_resources", "field_maker_memberships"];
     for (let index in data) {
       let field = data[index];
       if (NotReadyFields.indexOf(index) == -1) {
@@ -181,6 +181,13 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
               field.und.forEach(category => {
                 this.project.field_categories.und.push(category.tid);
               });
+              break;
+            }
+          case 'field_creation_date':
+            {
+              let date = field.und[0].value.split(" ");
+              date = date[0].split("-");
+              this.project.field_creation_date.und[0].value.date = date[1]+'/'+date[2]+'/'+date[0];
               break;
             }
           case "field_difficulty":
@@ -427,8 +434,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   SaveProject() {
     this.ProjectLoaded = false;
-      this.project.CheckIfReadyToPublic();
-    
+    this.project.CheckIfReadyToPublic();
+    delete this.project.field_creation_date.und[0].value.time;
     if(this.project.field_categories.und.length == 0){
       this.project.field_categories.und = [""];
     }
