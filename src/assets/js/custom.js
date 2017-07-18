@@ -1,6 +1,6 @@
 setTimeout(function() {
 	if($('.profile-page').length) {
-		// console.log('yes');
+		console.log('yes');
 		var st,
 			$ot = $('.profile-sidebar'),
 			ot = $ot.offset().top,

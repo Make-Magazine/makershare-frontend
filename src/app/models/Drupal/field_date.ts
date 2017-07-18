@@ -13,17 +13,18 @@ export class date_time implements date_time{
       this.date = date_with_time.date;
       this.time = date_with_time.time;
     }else{
-      let now = new Date(); //Get current date
-      let date = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds()); //reset date to UTC
-      date = new Date(date.getTime() - 3*60*60*1000); //convert to america time zone
-      date = new Date(date.getTime() + 10*60000); // add 10 mins to timeout
-      let day = date.getDate();
-      let month = date.getMonth()+1;
+      let date = new Date(); //Get current date
+      let day = date.getDate().toString();
+      let month = (date.getMonth()+1).toString();
       let year = date.getFullYear();
       let minutes = date.getMinutes();
       let hours = date.getHours();
-      this.date = year+'-'+month+'-'+day;
-      this.time = hours+':'+(minutes)+':00';
+      if(+month < 10)
+        month = '0'+month;
+      if(+day < 10)
+        day = '0'+day;
+      this.date = month+'/'+day+'/'+year;
+      this.time = hours+':'+minutes+':00';
     }
   }
 }
