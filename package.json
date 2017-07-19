@@ -66,5 +66,9 @@
     "typescript": "2.4.1",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.13"
+  },
+  "devDependencies": {
+    "codelyzer": "^3.1.2",
+    "tslint": "^5.5.0"
   }
 }
