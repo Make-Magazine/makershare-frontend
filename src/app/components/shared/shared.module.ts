@@ -62,7 +62,7 @@ import { ReverseArray } from '../../pipes/reverse-array';
 //drupal 7 services
 import { D7ServicesForRoot } from '../../d7services';
 //shared services
-import { NotificationBarService } from 'angular2-notification-bar/release';
+import { NotificationBarService } from 'ngx-notification-bar/release';
 import { AuthGuardService } from '../../auth0/auth-guard.service';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';

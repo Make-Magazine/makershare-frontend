@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models';
-// import {Meta, Title } from '@angular/platform-browser';
+import {Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-makers',
@@ -13,8 +13,8 @@ import { SortBySortingSet, SortingSet } from '../../models';
 export class MakersComponent implements OnInit {
 
   CurrentSortSet: SortingSet = {
-    sort_by: "random_seed",
-    sort_order: "ASC",
+    sort_by: "php_1",
+    sort_order: "DESC",
   };
   SortBy: SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
 
@@ -36,7 +36,21 @@ export class MakersComponent implements OnInit {
     private viewService: ViewService,
     private loaderService: LoaderService,
     private mainService: MainService,
-    private notificationBarService: NotificationBarService) { }
+
+    private notificationBarService: NotificationBarService,
+    title: Title,
+    meta: Meta
+  ) { 
+    title.setTitle('Maker Portfolios | Connect with the Global Community | Maker Share');
+    meta.addTags([
+      {
+        name: 'description', content: 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.'
+      },
+      {
+        name: 'image',content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
+  }
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
@@ -52,9 +66,8 @@ export class MakersComponent implements OnInit {
     if (this.pages == 0) {
       this.makers = [];
     }
-    this.SortBy.Sort('maker_card_data_one', this.pages, this.categoryId).subscribe(data => {
-      console.log(data)
-     // this.makers = this.makers.concat(data);
+    this.SortBy.Sort('makers', this.pages, this.categoryId).subscribe(data => {
+     this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
       this.loaderService.display(false);
       if (this.makers.length == 0) {
