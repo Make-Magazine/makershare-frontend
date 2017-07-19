@@ -33,10 +33,10 @@ export class ChallengesComponent implements OnInit {
     title.setTitle('Community Missions | Making that Matters | Maker Share');
     meta.addTags([
       {
-        name: 'description', content: 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.'
+        name: 'og:description', content: 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.'
       },
       {
-        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
   }

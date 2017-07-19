@@ -43,10 +43,10 @@ export class MakersComponent implements OnInit {
     title.setTitle('Maker Portfolios | Connect with the Global Community | Maker Share');
     meta.addTags([
       {
-        name: 'description', content: 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.'
+        name: 'og:description', content: 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.'
       },
       {
-        name: 'image',content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image',content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
   }

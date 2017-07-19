@@ -1,6 +1,8 @@
-import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import { UserService,ViewService } from '../../../d7services';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserService, ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-project-header',
@@ -10,18 +12,20 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 export class ProjectHeaderComponent implements OnInit {
   @Input('project') project;
   @Input() showcaseInfo;
-  @Input('ActiveTab') ActiveTab:string = "project-story";$white
+  @Input('ActiveTab') ActiveTab: string = "project-story"; $white
   @Output() SwitchTab = new EventEmitter();
   @Output() ProjectNewId = new EventEmitter();
   badges = [];
-  
+
   constructor(
     private userService: UserService,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
+    private meta: Meta,
+    private title: Title
   ) {
     this.config.placement = 'bottom';
-    this.config.triggers = 'hover';    
+    this.config.triggers = 'hover';
   }
   userLogin;
   currentuser;
@@ -31,9 +35,9 @@ export class ProjectHeaderComponent implements OnInit {
   customDescription: string = '';
   customImage: string = '';
   toolTips = {
-    'like':'Like this idea',
-    'bookmark':'Bookmark this project',
-    'share':'Share this project',
+    'like': 'Like this idea',
+    'bookmark': 'Bookmark this project',
+    'share': 'Share this project',
   }
 
   ngOnInit() {
@@ -50,20 +54,32 @@ export class ProjectHeaderComponent implements OnInit {
     if (this.project.field_cover_photo) {
       this.customImage = this.project.field_cover_photo.url;
     }
+    if (this.project) {
+      this.title.setTitle(this.project.title.value + ' | Maker Share');
+      this.meta.addTags([
+        {
+          name: 'og:description', content: this.project.field_teaser.value
+        },
+        {
+          name: 'og:image', content: this.project.field_cover_photo.url
+        }
+      ])
+    }
+
     // this.meta.setTitle(this.project.title);
     // this.meta.setTag('og:image', this.project.field_cover_photo);
     // this.meta.setTag('og:description', this.project.field_teaser.value);
 
-    if(this.showcaseInfo){
-      
+    if (this.showcaseInfo) {
+
     }
     for (let tag in this.project.field_tags) {
-      if(this.project.field_tags[tag] != "")
-      this.tags.push(this.project.field_tags[tag]);
+      if (this.project.field_tags[tag] != "")
+        this.tags.push(this.project.field_tags[tag]);
     }
   }
-  
-  getcurrentuser(){
+
+  getcurrentuser() {
     this.userService.getStatus().subscribe(data => {
       this.userLogin = data;
     });
@@ -81,7 +97,7 @@ export class ProjectHeaderComponent implements OnInit {
     });
   }
 
-  SwitchProjectFunc(e,action) {
+  SwitchProjectFunc(e, action) {
     if (action == "back") {
       this.showcaseInfo.index--;
       this.ProjectNewId.emit(this.showcaseInfo.index);
