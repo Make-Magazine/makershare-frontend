@@ -1,0 +1,11 @@
+ <div class="filters-group">
+	<div class="dropdown-group">
+		<i class="dropdownIcon lnr lnr-chevron-down"></i>
+		<select class="shadowed explore-tags" (change)="ref.selectParent.call(ref, $event.target.value);ref.CurrentActiveChildIndex = -1">
+		  <option value="0" disabled>Filter By</option>
+		  <option value="1">All Makers</option>
+		  <option *ngFor="let parent of data;let i = index" value="{{parent.tid}}" [innerHTML]="parent.name">
+		  </option>
+		</select>
+	</div>
+</div>
