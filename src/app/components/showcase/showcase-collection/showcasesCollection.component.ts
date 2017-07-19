@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../d7services';
 import { SortBySortingSet, SortingSet } from '../../../models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Meta, Title } from '@angular/platform-browser';
+import * as globals from '../../../d7services/globals';
 
 @Component({
   selector: 'app-showcases',
@@ -22,9 +24,20 @@ export class ShowcasesCollectionComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private meta: Meta,
+    private title: Title
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('Showcases | Maker Share');
+    this.meta.addTags([
+      {
+        name: 'description', content: 'Maker Showcases are collections of projects and makers curated by our Community Managers.'
+      },
+      {
+        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
     this.showcasesCount();
     this.getShowCases();
   }

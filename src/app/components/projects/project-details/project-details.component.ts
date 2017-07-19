@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 import * as globals from '../../../d7services/globals';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ProjectDetailsComponent implements OnInit {
   projects = [];
   projectdata;
   id: number;
-  Manager:boolean = false;
+  Manager: boolean = false;
 
   private sub: any;
   constructor(
@@ -38,6 +39,8 @@ export class ProjectDetailsComponent implements OnInit {
     private statisticsService: StatisticsService,
     public auth: Auth,
     private mainService: MainService,
+    private meta: Meta,
+    private title: Title
 
   ) {
 
@@ -53,15 +56,15 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-     this.auth.IsCommuintyManager();
-     this.Manager = this.auth.IsCommuintyManager();
-     
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
+
     this.loaderService.display(true);
     this.sub = this.route.params.subscribe(params => {
       let path = params['path'];
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
-        
+
         let body = {
           "nid": this.id,
         };
@@ -128,6 +131,16 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
+
+        this.title.setTitle(this.project.title.value + ' | Maker Share');
+        this.meta.addTags([
+          {
+            name: 'description', content: this.project.field_teaser.value
+          },
+          {
+            name: 'image', content: this.project.field_cover_photo.url
+          }
+        ])
         // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
         // this.meta.setTag('og:image', this.project.field_cover_photo.url);
         // this.meta.setTag('og:description', this.project.field_teaser.value);

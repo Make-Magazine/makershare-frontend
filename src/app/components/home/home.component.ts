@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../shared/loader/loader.service';
 import { ViewService } from './../../d7services';
+import { Meta, Title } from '@angular/platform-browser';
+import * as globals from '../../d7services/globals';
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +15,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private viewService: ViewService,
     private loaderService: LoaderService,
-    public auth: Auth) {
+    public auth: Auth,
+    title: Title,
+    meta: Meta
+  ) {
+    title.setTitle(' Maker Share | Create. Connect. Learn. | By Make: + Intel');
+    meta.addTags([
+      {
+        name: 'description', content: 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills'
+      },
+      {
+        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
   }
 
   ngOnInit() {
