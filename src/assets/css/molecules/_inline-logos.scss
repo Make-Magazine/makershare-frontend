@@ -1,0 +1,19 @@
+.inline-logos {
+  img {
+    display: block;
+  }
+  .vertical-line {
+    margin: 0 20px;
+  }
+
+  &.-small {
+    img {
+      width: 70px;
+      height: 40px;
+    }
+    .vertical-line {
+      height: 16px;
+      margin: 12px 7px 15px;
+    }
+  }
+}
