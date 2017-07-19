@@ -34,10 +34,10 @@ export class TermsComponent implements OnInit {
       this.meta_title.setTitle(this.title + ' | Maker Share');
       this.meta.addTags([
         {
-          name: 'description', content: this.body
+          name: 'og:description', content: this.body
         },
         {
-          name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+          name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
         }
       ])
 

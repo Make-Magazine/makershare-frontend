@@ -423,10 +423,10 @@ export class ProfileComponent implements OnInit {
       this.title.setTitle(this.profile.first_name + ' ' + this.profile.last_name + ' | Maker Share');
       this.meta.addTags([
         {
-          name: 'description', content: this.customDescription
+          name: 'og:description', content: this.customDescription
         },
         {
-          name: 'image', content: this.profile.user_photo
+          name: 'og:image', content: this.profile.user_photo
         }
       ])
     }

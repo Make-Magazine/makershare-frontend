@@ -56,17 +56,6 @@ export class ProjectDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.meta_title.setTitle(' test title | Maker Share');
-          this.meta.addTags([
-            {
-              name: 'description', content: 'description description description '
-            },
-            {
-              name: 'image', content: 'image image image image image image image image '
-            }
-          ])
-
     this.auth.IsCommuintyManager();
     this.Manager = this.auth.IsCommuintyManager();
 
@@ -134,17 +123,17 @@ export class ProjectDetailsComponent implements OnInit {
     this.viewService.getView('maker_project_api/' + this.id)
       .subscribe(data => {
         this.project = data;
-        // if (this.project) {
-        //   this.meta_title.setTitle(this.project.title.value + ' | Maker Share');
-        //   this.meta.addTags([
-        //     {
-        //       name: 'description', content: this.project.field_teaser.value
-        //     },
-        //     {
-        //       name: 'image', content: this.project.field_cover_photo.url
-        //     }
-        //   ])
-        // }
+        if (this.project) {
+          this.meta_title.setTitle(this.project.title.value + ' | Maker Share');
+          this.meta.addTags([
+            {
+              name: 'og:description', content: this.project.field_teaser.value
+            },
+            {
+              name: 'og:image', content: this.project.field_cover_photo.url
+            }
+          ])
+        }
 
         var i = 0;
         if (this.project.field_resources) {
