@@ -7,7 +7,8 @@ const ProjectsRouts: Routes = [
   { path: '', component:ProjectsComponent },
   { path: 'create', loadChildren: './project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
   { path: ':path/edit', loadChildren: './project-form/project-form.module#ProjectFormModule', canActivate: [AuthGuardService]},
-  { path: ':path', loadChildren: './project-details/project-details.module#ProjectDetailsModule' },
+  { path: ':ProjectName', loadChildren: './project-details/project-details.module#ProjectDetailsModule' },
+  { path: ':showcaseName/:ProjectName/:sortBy/:sortOrder', loadChildren: './project-details/project-details.module#ProjectDetailsModule' },
 ];
 
 @NgModule({

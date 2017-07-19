@@ -87,11 +87,6 @@ export class ShowcaseProjectComponent implements OnInit {
       this.projectDetails.nid = this.projectNid;
       //hide spinner
       this.loaderService.display(false);
-      
-      // this.meta.setTitle(`Maker Share | ${this.project.title.value}`);
-      // this.meta.setTag('og:image', this.project.field_cover_photo.url);
-      // this.meta.setTag('og:description', this.project.field_teaser.value);
-
     }, err => {
       //hide spinner
       this.loaderService.display(false);
