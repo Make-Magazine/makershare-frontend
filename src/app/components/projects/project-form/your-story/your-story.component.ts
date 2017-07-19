@@ -9,6 +9,7 @@ import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { YoutubeOrVimeoLink } from '../../../../validations/youtube-or-vimeo-link.validation';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
+import { UsaDate } from '../../../../validations/usa-date.validation';
 import { trigger, style, transition,animate } from '@angular/core';
 
 @Component({
@@ -144,6 +145,7 @@ export class YourStoryComponent implements OnInit {
       'field_story': [this.project.field_story.und[0].value, [Validators.required]],
       'field_tags': [this.tags],
       'field_categories': [this.project.field_categories.und, [Validators.required]],
+      'field_creation_date':[this.project.field_creation_date.und[0].value.date ,[Validators.required, UsaDate()]]
     });
     this.YourStoryForm.valueChanges.subscribe(data => {
       this.onValueChanged(data);
@@ -184,7 +186,11 @@ export class YourStoryComponent implements OnInit {
     if (typeof field === 'string') {
       this.project[index] = value;
     } else if (field.und[0] && typeof field.und[0] === 'object') {
-      this.project[index].und[0].value = value;
+      if (index == 'field_creation_date') {
+        this.project[index].und[0]['value'].date = value
+      }else{
+        this.project[index].und[0].value = value;
+      }
     } else if (index != 'field_tags') {
       value ? this.project[index].und = value : this.project[index].und = [];
     }

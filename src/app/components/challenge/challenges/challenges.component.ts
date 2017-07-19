@@ -3,6 +3,9 @@ import { ViewService, FlagService, UserService } from '../../../d7services';
 import { Router } from '@angular/router';
 import { IChallenge } from '../../../models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Meta, Title } from '@angular/platform-browser';
+import * as globals from '../../../d7services/globals';
+
 
 @Component({
   selector: 'app-challenges',
@@ -24,7 +27,19 @@ export class ChallengesComponent implements OnInit {
     private flagService: FlagService,
     private loaderService: LoaderService,
     private userService: UserService,
-  ) { }
+    meta: Meta,
+    title: Title
+  ) {
+    title.setTitle('Community Missions | Making that Matters | Maker Share');
+    meta.addTags([
+      {
+        name: 'og:description', content: 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.'
+      },
+      {
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
+  }
 
   ngOnInit() {
     this.challengesCount();

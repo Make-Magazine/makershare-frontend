@@ -3,6 +3,38 @@
 		min-height: 0;
 	}
 }
+
+// ///////////////////
+// homepage
+.col-lg-8 + .col-lg-8 {
+	flex: 0 0 33.33333333%;
+	.mission.wide {
+		// faking the .mission.tall class here
+		// there must be a better way to do it
+		padding-top: 56.25%;
+		.card-image {
+			padding-bottom: 56.25%;
+			width: 100%;
+			left: 0;
+			height: auto;
+			&.alt {
+				width: 100%;
+			}
+		}
+		.info-top {
+			width: 100%;
+		}
+		.info-bottom {
+			position: relative;
+			padding-top: 5rem;
+			width: 100%;
+		}
+		.social-stat-group {
+			margin-top: 2.5rem;
+		}
+	}
+}
+// ///////////////////
 // ///////////////////
 // card states
 .card {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService,MainService,PmService } from '../../../../d7services';
 import * as globals from '../../../../d7services/globals';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

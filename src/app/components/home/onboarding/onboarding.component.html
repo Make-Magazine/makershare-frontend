@@ -5,8 +5,7 @@
     <img src="./assets/images/makers_intro.png"
          alt=""
          class="img-fluid pt-4 pb-4"/>
-    <div (click)="auth.login()"
-         *ngIf="!auth.authenticated()"
+    <div *ngIf="!auth.authenticated()"
          class="button-container-main-1">
       <button class="button"
               (click)="auth.login()">Add a Project
@@ -46,21 +45,22 @@
   <div class="container">
     <h2>A Project By:</h2>
     <div class="row">
-      <div class="col-12 home-body-logos d-flex align-items-center justify-content-center">
+      <div class="col-12 mt-3 mb-4 inline-logos d-flex align-items-center justify-content-center">
         <a href="http://www.makezine.com"
            target="_blank">
-          <img src="./assets/images/icons/Make-Logo-2x.png"
-               alt="Maker Share Logo"
-               class="img-fluid home-body-logo maker"/>
+          <img src="./assets/images/logos/make-logo.png"
+               alt="Maker Share Logo"/>
         </a>
-        <span class="border"></span>
-        <a href="http://www.intel.com"
+        <span class="vertical-line -large"></span>
+        <a href="https://www.intel.com"
            target="_blank">
-          <img src="./assets/images/icons/Intel-Logo-2x.png"
-               alt="Intel logo"
-               class="img-fluid home-body-logo intel"/>
+          <img src="./assets/images/logos/intel-logo.png"
+               alt="Intel logo"/>
         </a>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-12">
         <h5>Make: and Intel</h5>
         <h5>supporting innovation and collaboration among Makers around the world.</h5>
@@ -68,7 +68,7 @@
     </div>
   </div>
 </section>
-<section class="what-is-ms p-0 mt-4"
+<section class="what-is-ms p-0 mt-4 mb-5"
          *ngIf="!auth.authenticated()">
   <div class="container">
     <h1 class="big">Explore Maker Share</h1>

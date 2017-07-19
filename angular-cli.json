@@ -16,11 +16,19 @@
       "polyfills": "polyfills.ts",
       "tsconfig": "../tsconfig.json",
       "prefix": "app",
-      "scripts": []
+      "scripts": [],
+      "styles": [
+        "assets/css/style.scss"
+      ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "assets/css"
+        ]
+      }
     }
   ],
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }
