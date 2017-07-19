@@ -22,10 +22,10 @@ export class AboutUsComponent implements OnInit {
      title.setTitle('About Us | Maker Share');
     meta.addTags([
       {
-        name: 'description', content: 'The Maker Share Team'
+        name: 'og:description', content: 'The Maker Share Team'
       },
       {
-        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
   }
