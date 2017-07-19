@@ -10,7 +10,6 @@ import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 
-// import {} from './'
 @NgModule({
   imports: [
     CommonModule,
@@ -24,8 +23,7 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
     ChallengeComponent,
     ShowcasesComponent,
     SpotlightComponent,
-    OnboardingComponent,    
+    OnboardingComponent,
   ],
-  
 })
-export class HomeModule { }
+export class HomeModule {}

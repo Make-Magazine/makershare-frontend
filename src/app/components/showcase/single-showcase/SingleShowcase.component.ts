@@ -85,10 +85,10 @@ export class SinglShowcaseComponent implements OnInit {
         this.title.setTitle(this.showcase['showcase_name'] + ' | Maker Share');
         this.meta.addTags([
           {
-            name: 'description', content: this.showcase['description']
+            name: 'og:description', content: this.showcase['description']
           },
           {
-            name: 'image', content: this.showcase['cover_photo']
+            name: 'og:image', content: this.showcase['cover_photo']
           }
         ])
         //this.customDescription = this.showcase['description']

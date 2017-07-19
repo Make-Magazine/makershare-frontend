@@ -1,5 +1,5 @@
 <div class="showcase-card-backlayer hidden-xs-down" *ngIf="showcaseCard">
-  <div class="showcase-card row ">
+  <div class="showcase-card row">
     <div class="col-md-4 col-sm-12 col-xs-12 image-container">
       <img *ngIf="showcaseCard.Cover_Photo" src="{{showcaseCard.Cover_Photo}}" alt="" class="img-responsive" (click)="ShowSingleShowcase(showcaseCard.path)">
       <img *ngIf="!showcaseCard.Cover_Photo" src="./assets/images/placeholder.png" alt="">

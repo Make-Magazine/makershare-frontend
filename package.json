@@ -68,6 +68,7 @@
     "zone.js": "^0.8.13"
   },
   "devDependencies": {
-    "node-sass": "^4.5.3"
+    "codelyzer": "^3.1.2",
+    "tslint": "^5.5.0"
   }
 }

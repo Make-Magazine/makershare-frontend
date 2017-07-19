@@ -39,10 +39,10 @@ export class SummaryComponent implements OnInit {
     this.title.setTitle(this.challenge.title + ' | Maker Share');
     this.meta.addTags([
       {
-        name: 'description', content: this.challenge.body
+        name: 'og:description', content: this.challenge.body
       },
       {
-        name: 'image', content: this.challenge.cover_image
+        name: 'og:image', content: this.challenge.cover_image
       }
     ])
     // this.meta.setTitle(`${this.challenge.title} | Maker Share`);

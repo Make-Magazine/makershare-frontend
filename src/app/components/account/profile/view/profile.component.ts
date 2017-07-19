@@ -14,7 +14,7 @@ import { ImageCropperComponent } from 'ng2-img-cropper';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 import * as globals from '../../../../d7services/globals';
-import {Meta, Title} from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -185,6 +185,7 @@ export class ProfileComponent implements OnInit {
     this.ProfilecropperSettings.noFileInput = true;
   }
   ngOnInit() {
+
     this.CurrentInfoTab = 'Personal Info';
     this.currentHover = '';
     this.PhotoModalTab = 'upload';
@@ -265,6 +266,7 @@ export class ProfileComponent implements OnInit {
     if (this.uid != this.CurrentLoggedUserId) {
       this.statisticsService.view_record(this.uid, 'user').subscribe();
     }
+
 
   }
   AssignParentChildInterests() {
@@ -413,6 +415,23 @@ export class ProfileComponent implements OnInit {
   }
   SetUser(user: UserProfile) {
     this.profile = user;
+    // this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
+    // this.meta.setTag('og:image', this.profile.user_photo);
+    // this.meta.setTag('og:description', this.customDescription);
+    if (this.profile) {
+      this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
+      this.title.setTitle(this.profile.first_name + ' ' + this.profile.last_name + ' | Maker Share');
+      this.meta.addTags([
+        {
+          name: 'og:description', content: this.customDescription
+        },
+        {
+          name: 'og:image', content: this.profile.user_photo
+        }
+      ])
+    }
+
+
     this.FileName = user.user_photo.substring(user.user_photo.lastIndexOf('/') + 1);
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
@@ -450,20 +469,6 @@ export class ProfileComponent implements OnInit {
     } else {
       this.ProfileInfo.started_making_short = user.started_making;
     }
-    this.customDescription = this.profile.first_name + " " + this.profile.last_name + " Learn all about about this Maker and their work.";
-    // this.meta.setTitle(`${this.profile.first_name} ${this.profile.last_name} | Maker Share`);
-    // this.meta.setTag('og:image', this.profile.user_photo);
-    // this.meta.setTag('og:description', this.customDescription);
-
-    this.title.setTitle(this.profile.first_name + ' ' + this.profile.last_name + ' | Maker Share');
-    this.meta.addTags([
-      {
-        name: 'description', content: this.customDescription
-      },
-      {
-        name: 'image', content: this.profile.user_photo
-      }
-    ])
 
     this.BuildForm();
     this.buildFormSocial();

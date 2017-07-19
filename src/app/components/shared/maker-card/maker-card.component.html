@@ -1,7 +1,4 @@
-
-
-
-<div class="card maker {{state}}" *ngIf="card" >
+<div class="card maker {{state}}" *ngIf="card">
   <div class="card-image" *ngIf="card.photo_lg" [style.background-image]="'url('+card.photo_lg+')'"></div>
   <div class="card-info">
     <div class="info-top">
@@ -58,3 +55,57 @@
     </div> -->
   </div>
 </div>
+
+
+<!-- Start Test Card Data -->
+<div class="card maker {{state}}" *ngIf="cardData">
+  <div class="card-image" *ngIf="cardData.photo_lg" [style.background-image]="'url('+cardData.photo_lg+')'"></div>
+  <div class="card-info">
+    <div class="info-top">
+      <div class="card-image alt" *ngIf="profile" (click)="goToProfile(cardData.profile_url)"></div>
+      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(cardData.profile_url)"></div>
+      <div class="flag maker">maker</div>
+
+      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"> </app-feature>
+
+      <app-card-badges [badges]="badges"></app-card-badges>
+    </div>
+    <div class="info-bottom">
+      <div class="card-owner-meta">
+        <img class="card-owner-media" *ngIf="cardData.photo_lg" src="{{cardData.photo_lg}}" />
+        <div class="card-owner-meta-info">
+          <a class="card-owner-link" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a>
+          <a class="card-owner-link" *ngIf="!cardData.first_name && !cardData.last_name" innerHTML="{{cardData.username}}"></a>
+
+          <div class="card-meta-row" *ngIf="cardData.nickname">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
+            <p class="maker-nickname card-meta-row-description" innerHTML="{{cardData.nickname}}"></p>
+          </div>
+
+
+          <div class="card-meta-row" *ngIf="cardData.location_locality && cardData.country && cardData.country == 'United States'">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
+            <p class="maker-city card-meta-row-description">{{cardData.location_locality}}, {{cardData.city}}</p>
+          </div>
+
+          <div class="card-meta-row" *ngIf="cardData.location_locality && cardData.country && cardData.country != 'United States'">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
+            <p class="maker-city card-meta-row-description">{{cardData.location_locality}}, {{cardData.country}}</p>
+          </div>
+
+          <div class="card-meta-row" *ngIf="cardData.descripe_yourself">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-bullhorn"></span>
+            <p class="maker-description card-meta-row-description" innerHTML="{{cardData.descripe_yourself}}"></p>
+          </div>
+
+
+        </div>
+
+      </div>
+      <social-stats [profileViews]="cardData.profile_views" [projectsCount]="projectsCount" [profileView]="profile" [uid]="uid"></social-stats>
+
+    </div>
+
+  </div>
+</div>
+<!-- End Test Card Data -->
