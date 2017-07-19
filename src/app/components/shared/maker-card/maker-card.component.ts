@@ -15,6 +15,7 @@ export class MakerCardComponent implements OnInit {
   @Input() uid;
   @Input() state;
   @Input() profile;
+  @Input() cardData;
 
   badges = [];
   project = {};
@@ -35,27 +36,18 @@ export class MakerCardComponent implements OnInit {
   }
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
-    this.getMakerCard();
+   if (this.uid) {
+      this.getMakerCard();
+    } else if (this.cardData) {
+      this.uid = this.cardData.uid;
+    }
     this.getMakerBadges();
     this.CountMakerProjects();
     this.getLatestProject();
-    // this.ProfileLikes();
   }
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-
-      //testing
-      // if(!this.card.nickname.length){
-      //   this.card.nickname = 'Ally Gator'
-      // }
-      // if(!this.card.descripe_yourself.length){
-      //   if(this.uid % 2 == 0) {
-      //     this.card.descripe_yourself = "ectodermal incliner perinephritis catholicon warner tarpauli";
-      //   } else {
-      //     this.card.descripe_yourself = 'Just a real fungi';
-      //   }
-      // }
     });
   }
 
@@ -82,11 +74,7 @@ export class MakerCardComponent implements OnInit {
 
     this.router.navigate(['/portfolio/', path]);
   }
-  // ProfileLikes(){
-  //   this.viewService.getView('/maker_count_api/' + this.uid).subscribe(data=>{
-  //     console.log(data);
-  //   })
-  // }
+
   over() {
     if (this.latestPorjectImg)
       this.swtichImage = true;

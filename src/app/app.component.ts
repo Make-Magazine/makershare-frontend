@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
 
   showLoader: boolean;
+  siteMap;
   public location = '';
   constructor(
     @Inject(PLATFORM_ID) private platform_id,
@@ -76,7 +77,11 @@ export class AppComponent implements OnInit{
     setTimeout(function () {
       window.scrollTo(0, 1);
     }, 0);
+
+
+  
   }
+
 }
 
 

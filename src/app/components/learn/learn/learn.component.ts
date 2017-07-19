@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../d7services';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../shared/loader/loader.service';
+import { Meta, Title } from '@angular/platform-browser';
+import * as globals from '../../../d7services/globals';
+
 
 @Component({
   selector: 'app-learn',
@@ -22,11 +25,22 @@ export class LearnComponent implements OnInit {
     private router: Router,
     private viewService: ViewService,
     private loaderService: LoaderService,
+    private title: Title,
+    private meta: Meta,
   ) { }
 
   ngOnInit() {
     this.getWorkshop();
     this.getCountWorkshop();
+    this.title.setTitle('Learn | Maker Share');
+    this.meta.addTags([
+      {
+        name: 'og:description', content: 'Learn with us'
+      },
+      {
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+      }
+    ])
 
     // this.meta.setTitle(`Maker Share | Learning`);
     // this.meta.setTag('og:image', '/assets/logo.png');

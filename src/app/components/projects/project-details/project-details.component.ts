@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 import * as globals from '../../../d7services/globals';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -41,6 +42,8 @@ export class ProjectDetailsComponent implements OnInit {
     private statisticsService: StatisticsService,
     public auth: Auth,
     private mainService: MainService,
+    private meta: Meta,
+    private meta_title: Title
 
   ) {}
 
@@ -71,6 +74,10 @@ export class ProjectDetailsComponent implements OnInit {
       let path = params['ProjectName'];
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
+<<<<<<< HEAD
+=======
+
+>>>>>>> aaed6fadd17a1f92f27ab7c17add5f2543189763
         let body = {
           "nid": this.id,
         };
@@ -120,6 +127,18 @@ export class ProjectDetailsComponent implements OnInit {
     this.viewService.getView('maker_project_api/' + this.id)
       .subscribe(data => {
         this.project = data;
+        if (this.project) {
+          this.meta_title.setTitle(this.project.title.value + ' | Maker Share');
+          this.meta.addTags([
+            {
+              name: 'og:description', content: this.project.field_teaser.value
+            },
+            {
+              name: 'og:image', content: this.project.field_cover_photo.url
+            }
+          ])
+        }
+
         var i = 0;
         if (this.project.field_resources) {
           for (let resource of this.project.field_resources) {
@@ -128,6 +147,13 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
+<<<<<<< HEAD
+=======
+
+        // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
+        // this.meta.setTag('og:image', this.project.field_cover_photo.url);
+        // this.meta.setTag('og:description', this.project.field_teaser.value);
+>>>>>>> aaed6fadd17a1f92f27ab7c17add5f2543189763
         this.projectDetails = this.project;
         this.projectDetails.nid = this.id;
         this.loaderService.display(false);

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ViewService, UserService,NodeService,StatisticsService } from '../../../d7services';
 import { ISorting } from '../../../models/challenge/sorting';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
 

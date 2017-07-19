@@ -4,6 +4,7 @@ import { ViewService, StatisticsService, NodeService } from '../../../d7services
 import { SortingSet, SortBySortingSet } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -47,6 +48,8 @@ export class SinglShowcaseComponent implements OnInit {
     private nodeService: NodeService,
     private route: ActivatedRoute,
     private router: Router,
+    private meta: Meta,
+    private title: Title
 
   ) {
     this.config.placement = 'bottom';
@@ -77,6 +80,15 @@ export class SinglShowcaseComponent implements OnInit {
           this.contentType = 1;
         }
         this.getShowcaseItems();
+        this.title.setTitle(this.showcase['showcase_name'] + ' | Maker Share');
+        this.meta.addTags([
+          {
+            name: 'og:description', content: this.showcase['description']
+          },
+          {
+            name: 'og:image', content: this.showcase['cover_photo']
+          }
+        ])
         if (this.LoggedInUserID != this.showcase['uid']) {
           this.statisticsService.view_record(this.showcaseNid, 'node').subscribe();
         }
