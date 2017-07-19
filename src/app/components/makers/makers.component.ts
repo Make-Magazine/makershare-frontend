@@ -12,11 +12,11 @@ import {Meta, Title } from '@angular/platform-browser';
 })
 export class MakersComponent implements OnInit {
 
-  CurrentSortSet:SortingSet = {
-    sort_by:"random_seed",
-    sort_order:"ASC",
+  CurrentSortSet: SortingSet = {
+    sort_by: "php_1",
+    sort_order: "DESC",
   };
-  SortBy:SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
+  SortBy: SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
 
   makers = [];
   pages: number = 0;
@@ -36,6 +36,7 @@ export class MakersComponent implements OnInit {
     private viewService: ViewService,
     private loaderService: LoaderService,
     private mainService: MainService,
+
     private notificationBarService: NotificationBarService,
     title: Title,
     meta: Meta
@@ -54,10 +55,6 @@ export class MakersComponent implements OnInit {
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
-
-    // this.meta.setTitle(` Maker Portfolios | Connect with the Global Community | Maker Share`);
-    // this.meta.setTag('og:image', '/assets/logo.png');
-    // this.meta.setTag('og:description', 'Search for Makers by interest or location or create own Maker Portfolio and share your projects. Maker Share is a project by Make: + Intel.');
   }
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {
@@ -69,12 +66,8 @@ export class MakersComponent implements OnInit {
     if (this.pages == 0) {
       this.makers = [];
     }
-    this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
-      // console.log(data[0]);
-      // this.profileService.getUser(parseInt(data[i].uid)).subscribe(res => { 
-      //   console.log(res.user_photo.index('default.png') >= 0);
-      // });   
-      this.makers = this.makers.concat(data);
+    this.SortBy.Sort('makers', this.pages, this.categoryId).subscribe(data => {
+     this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
       this.loaderService.display(false);
       if (this.makers.length == 0) {
@@ -99,7 +92,6 @@ export class MakersComponent implements OnInit {
     });
   }
   countCategory(term) {
-
     this.CurrentActiveParentIndex = this.categories_parents.map(element => element.tid).indexOf(term.parent_tid);
     this.nameCat = term.name;
     let body = {
@@ -107,9 +99,7 @@ export class MakersComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
       this.makersCount = res['_body'].replace(']', '').replace('[', '')
-
     }, err => {
-      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
     this.pages = 0;
     this.getMakers();
@@ -119,10 +109,9 @@ export class MakersComponent implements OnInit {
     if (value == 1) {
       this.pages = 0;
       this.categoryId = null;
-      this.countAllMakers();      
+      this.countAllMakers();
       this.getMakers();
       this.countAllMakers();
-
     } else {
       for (let cate of this.categories_childs) {
         if (cate.parent_tid == value) {
@@ -152,10 +141,10 @@ export class MakersComponent implements OnInit {
   }
 
   sortMakers(sort) {
-    if(sort == "_none") return;
+    if (sort == "_none") return;
     this.pages = 0;
     this.CurrentSortSet.sort_order = "DESC";
-    if(sort == "field_first_name_value_1" || sort == "random"){
+    if (sort == "field_first_name_value_1" || sort == "random") {
       this.CurrentSortSet.sort_order = "ASC";
     }
     this.CurrentSortSet.sort_by = sort;
