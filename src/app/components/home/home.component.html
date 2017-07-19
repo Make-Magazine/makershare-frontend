@@ -18,7 +18,7 @@
           }">-->
       <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
         'col-md-6 col-lg-4'   : item.entity_type == 'node' || item.entity_type == 'user',
-        'col-md-6 col-lg-8'   : item.type == 'challenge'      
+        'col-md-6 col-lg-8'   : item.type == 'challenge' && !item.forcedNarrow
           }" class="item-{{i}}">
         <!-- Challenge Cards Full Width Container -->
         <!--<div *ngIf="item.type == 'challenge'" class="challenge-page-data container p-0">
@@ -28,7 +28,7 @@
         </div>-->
         <!-- Challenge Cards -->
         <div *ngIf="item.type == 'challenge'" class="card-wrapper">
-          <app-challenge-card [challengeNid]="item.entity_id" [front]=true [state]="'wide'"></app-challenge-card>
+          <app-challenge-card [challengeNid]="item.entity_id" [front]=true [state]="item.forcedNarrow ? 'tall' : 'wide'"></app-challenge-card>
         </div>
 
         <!-- Showcase Cards -->
