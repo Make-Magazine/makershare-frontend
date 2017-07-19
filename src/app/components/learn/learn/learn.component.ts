@@ -35,10 +35,10 @@ export class LearnComponent implements OnInit {
     this.title.setTitle('Learn | Maker Share');
     this.meta.addTags([
       {
-        name: 'description', content: 'Learn with us'
+        name: 'og:description', content: 'Learn with us'
       },
       {
-        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
 

@@ -6,6 +6,7 @@ import * as field_collection_item from './field_collection_item';
 import { field_term_reference } from '../../';
 import { field_entity_reference } from '../../';
 import { field_number } from '../../';
+import { field_date, date_time } from '../../';
 
 export interface ProjectForm extends Node {
 	field_story: { und: field_text[] };
@@ -32,6 +33,7 @@ export interface ProjectForm extends Node {
 	field_cover_photo: { und: field_file_reference[] };
 	field_how_to?: { und: field_text[] };
 	field_categories: { und: any[] };
+	field_creation_date: { und: field_date[] };
 }
 
 export interface ProjectView extends Node {
@@ -104,6 +106,7 @@ export class ProjectForm extends Node implements ProjectForm {
 		this.field_aha_moment = { und: [new field_text(null)] };
 		this.field_uh_oh_moment = { und: [new field_text(null)] };
 		this.field_sort_order = { und: [{ value: 0 }] };
+		this.field_creation_date = { und: [new field_date(new date_time())] };
 	}
 
 	public SetField(value: any, FieldName: string): void {

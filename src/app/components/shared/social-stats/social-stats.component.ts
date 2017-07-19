@@ -10,6 +10,8 @@ export class SocialStats implements OnInit {
   @Input() projectsCount;
   @Input() profileView;
   @Input() uid;
+  @Input() nid;
+  @Input() like;
   constructor(
 
   ) {}

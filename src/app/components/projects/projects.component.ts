@@ -54,10 +54,10 @@ export class ProjectsComponent implements OnInit {
     this.title.setTitle('Maker Projects | Learn the Stories Behind the Projects | Maker Share');
     this.meta.addTags([
       {
-        name: 'description', content: 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.'
+        name: 'og:description', content: 'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.'
       },
       {
-        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
 
