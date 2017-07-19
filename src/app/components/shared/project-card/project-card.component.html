@@ -25,24 +25,7 @@
         </div>
       </div>
       <ul class="social-stat-group">
-        <li class="social-stat" *ngIf="project.nid && !userId">
-          <app-like [nodeNid]="project.nid" [project]="true"></app-like>
-          <!-- <i class="fa fa-lightbulb-o"></i> -->
-          <!-- <span class="info">54678</span> -->
-        </li>
-        <li class="social-stat" *ngIf="project.nid && userId">
-          <app-like [nodeNid]="project.nid" [user]="userId" [project]="true"></app-like>
-          <!-- <i class="fa fa-lightbulb-o"></i> -->
-          <!-- <span class="info">54678</span> -->
-        </li>
-        <li class="social-stat">
-          <i class="fa fa-eye"></i>
-          <span class="info">{{project.number_of_views}}</span>
-        </li>
-        <!--   <li class="social-stat">
-          <span class="icon">15</span>
-          <span class="info">Projects</span>
-        </li> -->
+         <social-stats [profileViews]="project.number_of_views" [uid]="project.nid" [like]="true" [nid]="project.nid"></social-stats>
       </ul>
 
     </div>

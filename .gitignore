@@ -38,6 +38,8 @@ app/**/*.map
 npm-debug.log
 testem.log
 /typings
+package-lock.json
+src/assets/css/style.css
 
 # e2e
 /e2e/

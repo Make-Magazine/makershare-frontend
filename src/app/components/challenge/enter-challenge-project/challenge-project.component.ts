@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IChallengeProject } from '../../../models/challenge/challengeProjects';
 import * as globals from '../../../d7services/globals';
 import { IChallengeStartDate, IChallengeData } from '../../../models/challenge/challengeData';
-import { NotificationBarService, NotificationType } from 'angular2-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
