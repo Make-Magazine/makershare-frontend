@@ -25,6 +25,7 @@ import { LearnUserCardComponent } from './learn-user-card/learn-user-card.compon
 import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
 import { MakerCardComponent } from './maker-card/maker-card.component';
 import { CardBadges } from './card-badges/card-badges.component';
+import { Filters } from './filters/filters.component';
 import { MakerPhoto } from './maker-photo/maker-photo.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
@@ -107,6 +108,7 @@ import { FeatureComponent } from './feature/feature.component';
     ShowcaseGeneralCardComponent,
     MakerCardComponent,
     CardBadges,
+    Filters,
     MakerPhoto,
     SocialStats,
     MakerSearchCardComponent,
@@ -158,6 +160,7 @@ import { FeatureComponent } from './feature/feature.component';
     MessageModalComponent,
     MakerCardComponent,
     CardBadges,
+    Filters,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
     SocialStats,
