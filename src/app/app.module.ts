@@ -17,7 +17,7 @@ import { FooterComponent } from './components/general/footer/footer.component';
 
 // New Structure
 import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule } from 'angular2-notification-bar/release';
+import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { SharedModule } from './components/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DndModule } from 'ng2-dnd';
