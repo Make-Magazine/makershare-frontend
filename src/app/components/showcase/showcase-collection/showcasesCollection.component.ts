@@ -32,10 +32,10 @@ export class ShowcasesCollectionComponent implements OnInit {
     this.title.setTitle('Showcases | Maker Share');
     this.meta.addTags([
       {
-        name: 'description', content: 'Maker Showcases are collections of projects and makers curated by our Community Managers.'
+        name: 'og:description', content: 'Maker Showcases are collections of projects and makers curated by our Community Managers.'
       },
       {
-        name: 'image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
     this.showcasesCount();
