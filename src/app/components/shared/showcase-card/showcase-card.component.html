@@ -41,27 +41,25 @@
             </div>
             <div class="showcase-card-footer-2 ml-4">
               <div class="showcase-card-count">
-                <div class=" d-flex flex-row">
+                <div class="d-flex flex-row">
                   <div class="showcase-likes"
-                       *ngIf="showcaseCard.nid && userId">
-                    <div class="likes-count-div">
-                      <app-like [nodeNid]="showcaseCard.nid"
-                                [user]="userId"
-                                [showcase]="true"></app-like>
-                    </div>
+                       *ngIf="showcaseCard.likes_count">
+                    <img src="./assets/images/icons/light-selected.png"
+                         alt="{{showcaseCard.likes_count}} Showcase Likes">
+                    <span>{{showcaseCard.likes_count}}</span>
                   </div>
-                  <div class="views-count">
+                  <div class="showcase-views">
                     <img src="./assets/images/icons/views.png"
-                         class="showcase-views"
-                         alt="">
-                    <span class="views-count">{{showcaseCard.views_count}}</span>
+                         alt="{{showcaseCard.views_count}} Showcase Views">
+                    <span>{{showcaseCard.views_count}}</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="showcase-card-footer-1 hidden-sm-up mt-3">
               <div class="button-container-main-1 w-100">
-                <span class="btn btn-main w-100" (click)="ShowSingleShowcase(showcaseCard.path)">See Showcase</span>
+                <span class="btn btn-main w-100"
+                      (click)="ShowSingleShowcase(showcaseCard.path)">See Showcase</span>
               </div>
             </div>
           </div>

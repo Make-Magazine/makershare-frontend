@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
 import { AccessRestrictedComponent } from './components/shared/access-restricted/access-restricted.component';
@@ -21,35 +21,59 @@ import { ShowTellComponent } from './components/pages/show-tell/show-tell.compon
 import { ClaimProfileComponent } from './components/pages/claim-profile/claim-profile.component';
 
 const APP_ROUTES: Routes = [
-    { path: '', loadChildren: './components/home/home.module#HomeModule' },
-    { path: 'showcases', loadChildren: './components/showcase/showcase.module#ShowcaseModule' },
-    { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
-    { path: 'makers', loadChildren: './components/makers/makers.module#MakersModule' },
-    { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
-    { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
-    { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
-    { path: 'search', loadChildren: './components/search/search.module#SearchModule' },
-    { path: 'learning', loadChildren: './components/learn/learn.module#LearnModule' },
-    { path: 'access-denied', component: AccessDeniedComponent },
-    { path: 'the-maker-movement', component: MakerMovementComponent },
-    { path: 'make-intel', component: IntelMakeComponent },
-    { path: 'guidelines', component: GuidelinesComponent },
-    { path: 'why-portfolio', component: WhyPortfolioComponent },
-    { path: 'about-us', component: AboutUsComponent },
-    { path: 'badges', component: AboutBadgesComponent },
-    { path: 'show-and-tell', component: ShowTellComponent },
-    { path: 'terms-of-use', component: TermsComponent },
-    { path: 'other-sites', component: OtherSitesComponent },
-    { path: 'makezine', component: MakezineComponent },
-    { path: 'maker-faire', component: MakerFaireComponent },
-    { path: 'makers-intel', component: MakerIntelComponent },
-    { path: 'maker-camp', component: MakerCampComponent },
-    { path: 'maker-shed', component: MakerShedComponent },
-    { path: 'intel-innovation-programs', component: IntelInnovationComponent },
-    { path: 'claim-profile', component: ClaimProfileComponent },
-    { path: '404', component: Four04Component },
-    { path: 'access-restricted', component: AccessRestrictedComponent },
-    { path: '**', redirectTo: '/404' },
+  { path: '', loadChildren: './components/home/home.module#HomeModule' },
+  {
+    path: 'showcases',
+    loadChildren: './components/showcase/showcase.module#ShowcaseModule',
+  },
+  {
+    path: 'projects',
+    loadChildren: './components/projects/projects.module#ProjectsModule',
+  },
+  {
+    path: 'makers',
+    loadChildren: './components/makers/makers.module#MakersModule',
+  },
+  {
+    path: 'missions',
+    loadChildren: './components/challenge/challenge.module#ChallengeModule',
+  },
+  {
+    path: 'portfolio',
+    loadChildren: './components/account/profile/profile.module#ProfileModule',
+  },
+  {
+    path: 'account',
+    loadChildren: './components/account/account.module#AccountModule',
+  },
+  {
+    path: 'search',
+    loadChildren: './components/search/search.module#SearchModule',
+  },
+  {
+    path: 'learning',
+    loadChildren: './components/learn/learn.module#LearnModule',
+  },
+  { path: 'access-denied', component: AccessDeniedComponent },
+  { path: 'the-maker-movement', component: MakerMovementComponent },
+  { path: 'make-intel', component: IntelMakeComponent },
+  { path: 'guidelines', component: GuidelinesComponent },
+  { path: 'why-portfolio', component: WhyPortfolioComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'badges', component: AboutBadgesComponent },
+  { path: 'show-and-tell', component: ShowTellComponent },
+  { path: 'terms-of-use', component: TermsComponent },
+  { path: 'other-sites', component: OtherSitesComponent },
+  { path: 'makezine', component: MakezineComponent },
+  { path: 'maker-faire', component: MakerFaireComponent },
+  { path: 'makers-intel', component: MakerIntelComponent },
+  { path: 'maker-camp', component: MakerCampComponent },
+  { path: 'maker-shed', component: MakerShedComponent },
+  { path: 'intel-innovation-programs', component: IntelInnovationComponent },
+  { path: 'claim-profile', component: ClaimProfileComponent },
+  { path: '404', component: Four04Component },
+  { path: 'access-restricted', component: AccessRestrictedComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
