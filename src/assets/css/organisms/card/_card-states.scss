@@ -79,8 +79,10 @@
 
 	// ///////////////////
 	// wide
-	&.wide, &.showcase:not(.tall) {
+	&.wide {
 		padding-top: $card_wideRatio;
+	}
+	&.wide, &.showcase:not(.tall) {
 		.card-image, .info-top {
 			padding-bottom: $card_wideRatio;
 		}
