@@ -38,16 +38,23 @@
             .showcase-card-count {
               span {
                 vertical-align: super;
+                color: $light-grey;
               }
               div {
                 min-width: 60px;
                 text-align: center;
-                color: $light-grey;
+              }
+              .showcase-likes {
+                img {
+                  width: 12px;
+                }
               }
               .showcase-views {
-                width: 22px;
-                height: auto;
-                padding-bottom: 3px;
+                img {
+                  width: 22px;
+                  height: auto;
+                  padding-bottom: 3px;
+                }
               }
             }
           }

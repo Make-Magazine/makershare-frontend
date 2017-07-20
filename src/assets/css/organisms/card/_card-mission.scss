@@ -1,25 +1,27 @@
-.card.mission {
-	background: $darker-grey;
-	color: $white;
+.card {
+  &.mission {
+    background: $darker-grey;
+    color: $white;
 
-	.card-mission-sponsor {
-		position: absolute;
-		top: 1.5rem;
-		right: 1.5rem;
-	}
-	.card-owner-meta .card-owner-meta-info {
-		max-width: 100%;
-	}
-	.card-description-long {
-		display: block;
-		opacity: 1;
-	}
+    .card-mission-sponsor {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+    .card-owner-meta .card-owner-meta-info {
+      max-width: 100%;
+    }
+    .card-description-long {
+      display: block;
+      opacity: 1;
+    }
 
-	.card-info {
-		background: transparent;
-	}
+    .card-info {
+      background: transparent;
+    }
 
-	.card-owner-meta {
-		// height: 100%;
-	}
+    .card-owner-meta {
+      // height: 100%;
+    }
+  }
 }
