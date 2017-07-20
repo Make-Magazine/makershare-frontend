@@ -7,7 +7,6 @@ import { ChallengeRoutingModule } from './challenge-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,13 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     ChallengeRoutingModule,
     SharedModule.forChild(),
   ],
-  declarations: [
-    ChallengesComponent,
-    ChallengeProjectComponent,
-
-  ],
-  providers: []
+  declarations: [ChallengesComponent, ChallengeProjectComponent],
+  providers: [],
 })
-export class ChallengeModule { }
+export class ChallengeModule {}
 export { ChallengesComponent };
-
