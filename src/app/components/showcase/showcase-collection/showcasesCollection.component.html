@@ -1,4 +1,4 @@
-<section class="page-showcase">
+<section class="page-showcase mb-5">
   <div class="region region-content">
     <div class="container page-header">
       <h3>Showcases</h3>
@@ -29,10 +29,9 @@
       </div>
     </div>
     <!-- End filters -->
-    <div class="container showcases-container p-414">
-      <div class="container" *ngFor="let showcase of showcases">
-        <app-showcase-card [showcaseCard]="showcase"></app-showcase-card>
-      </div>
+    <div class="container showcases-container p-414 mb-2">
+      <app-showcase-card [showcaseCard]="showcase"
+                         *ngFor="let showcase of showcases"></app-showcase-card>
       <div *ngIf="showcases.length == 0">
         <h4 class="text-center mt-5 mb-5">There are no showcases to show</h4>
       </div>

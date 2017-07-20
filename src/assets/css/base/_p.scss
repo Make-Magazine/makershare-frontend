@@ -1,4 +1,8 @@
 p, .paragraph {
   font-weight: 300;
   margin-bottom: 1rem;
+
+  &.card-description {
+    font-size: 1.5rem;
+  }
 }
