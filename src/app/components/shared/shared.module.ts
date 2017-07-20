@@ -73,6 +73,7 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
 import { FollowUserComponent } from './follow-user/follow-user.component';
 
 import { FeatureComponent } from './feature/feature.component';
+import { CompanyCardComponent } from './company-card/company-card.component';
 
 @NgModule({
   imports: [
@@ -137,6 +138,7 @@ import { FeatureComponent } from './feature/feature.component';
     //pipes
     ReverseArray,
     FeatureComponent,
+    CompanyCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -159,6 +161,7 @@ import { FeatureComponent } from './feature/feature.component';
     ShowcaseGeneralCardComponent,
     MessageModalComponent,
     MakerCardComponent,
+    CompanyCardComponent,
     CardBadges,
     Filters,
     MakerSearchCardComponent,
