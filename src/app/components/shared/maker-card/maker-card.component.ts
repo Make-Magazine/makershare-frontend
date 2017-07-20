@@ -36,11 +36,11 @@ export class MakerCardComponent implements OnInit {
   }
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
-   if (this.uid) {
+   // if (this.uid) {
       this.getMakerCard();
-    } else if (this.cardData) {
-      this.uid = this.cardData.uid;
-    }
+    // } else if (this.cardData) {
+      // this.uid = this.cardData.uid;
+    // }
     this.getMakerBadges();
     this.CountMakerProjects();
     this.getLatestProject();
@@ -48,6 +48,7 @@ export class MakerCardComponent implements OnInit {
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
+      console.log(this.card);
     });
   }
 
