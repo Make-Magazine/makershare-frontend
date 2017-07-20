@@ -80,11 +80,7 @@ export class MakersComponent implements OnInit {
       this.all_categories = categories;
       for (let element of this.all_categories) {
         if (element.parent_tid) {
-          this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
-            if (data.length > 0) {
               this.categories_childs.push(element);
-            }
-          });
         } else {
           this.categories_parents.push(element);
         }
