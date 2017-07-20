@@ -1,26 +1,26 @@
 $callout: (
-  'size': 6.4,
-  'line-height': 7.4
+        'size': 6.4,
+        'line-height': 7.4
 );
 $header-main: (
-  'size': 3.2,
-  'line-height': 4.16
+        'size': 3.2,
+        'line-height': 4.16
 );
 $header-small: (
-  'size': 1.8,
-  'line-height': 2
+        'size': 1.8,
+        'line-height': 2
 );
 $header-sub: (
-  'size': 1.6,
-  'line-height': 2.6
+        'size': 1.6,
+        'line-height': 2.6
 );
 $body: (
-  'size': 1.44,
-  'line-height': 2.4
+        'size': 1.44,
+        'line-height': 2.4
 );
 
 h1, h3, h5 {
-  font-family: 'Messina Modern Regular';
+  font-family: $font-messina-modern-regular;
 }
 
 .callout {
@@ -29,8 +29,7 @@ h1, h3, h5 {
 }
 
 .header-main, h1 {
-  font-family: 'Messina Modern Regular';
-
+  font-family: $font-messina-modern-regular;
   font-size: map-get($header-main, 'size') * 1rem;
   line-height: map-get($header-main, 'line-height') * 1rem;
 
@@ -51,6 +50,10 @@ h1, h3, h5 {
 h3 {
   font-size: 3.3rem;
   line-height: 3.3rem;
+
+  &.-header {
+    font-size: 5.44rem;
+  }
 }
 
 h4 {

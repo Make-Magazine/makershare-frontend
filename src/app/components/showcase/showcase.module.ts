@@ -14,15 +14,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule.forChild(),
     NgbModule,
     ShowcaseProjectModule,
-
   ],
-  declarations: [
-    ShowcasesCollectionComponent,
-    SinglShowcaseComponent,
-    
-  ],
+  declarations: [ShowcasesCollectionComponent, SinglShowcaseComponent],
 })
-
-export class ShowcaseModule { }
-export  {ShowcasesCollectionComponent};
-export  {SinglShowcaseComponent};
+export class ShowcaseModule {}
+export { ShowcasesCollectionComponent };
+export { SinglShowcaseComponent };
