@@ -49,6 +49,8 @@ import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-port
 import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
 import { CookieModule } from 'ngx-cookie';
 
+
+
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
@@ -89,7 +91,10 @@ import { CookieModule } from 'ngx-cookie';
     WhyPortfolioComponent,
     AboutUsComponent,
     ShowTellComponent,
-    ClaimProfileComponent
+    ClaimProfileComponent,
+  
+  
+  
   ]
 })
 export class AppModule {
