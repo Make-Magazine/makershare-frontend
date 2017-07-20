@@ -52,6 +52,10 @@ export class MakersComponent implements OnInit {
   countAllMakers() {
     this.mainService.post(globals.endpoint + '/maker_count_api/makers_count').subscribe(res => {
       this.makersCount = res['_body'].replace(']', '').replace('[', '');
+      // to fix load more issue tmp
+      if(this.makersCount > 24) {
+        this.hideloadmore = false;
+      }
     });
   }
   getMakers() {
@@ -62,6 +66,9 @@ export class MakersComponent implements OnInit {
     this.SortBy.Sort('makers',this.pages,this.categoryId).subscribe(data => {
       this.makers = this.makers.concat(data);
       this.loadMoreVisibilty();
+
+      
+
       this.loaderService.display(false);
       if (this.makers.length == 0) {
         this.notificationBarService.create({ message: "There aren't any makers Favorite this topic yet!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
