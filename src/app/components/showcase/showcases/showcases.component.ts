@@ -7,9 +7,9 @@ import * as globals from '../../../d7services/globals';
 
 @Component({
   selector: 'app-showcases',
-  templateUrl: './showcasesCollection.component.html',
+  templateUrl: './showcases.component.html',
 })
-export class ShowcasesCollectionComponent implements OnInit {
+export class ShowcasesComponent implements OnInit {
   showcases = [];
   showcaseCount: number = 0;
   hideloadmore: boolean = false;
