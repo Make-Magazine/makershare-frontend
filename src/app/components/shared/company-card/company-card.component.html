@@ -1,23 +1,22 @@
 <!-- start company card test  -->
 <div *ngIf="cardData" class="card project {{state}}">
-  <div class="card-image" [style.background-image]="'url('+cardData.company_cover_photo+')'"></div>
+  <div class="card-image"  [style.background-image]="'url('+cardData.company_cover_photo+')'"></div>
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt" [style.background-image]="'url('+cardData.company_cover_photo+')'"></div>
-      <!-- no alt bg for projects but we still need the div here for hovers -->
+      <!-- no alt bg for companies but we still need the div here for hovers -->
       <div class="flag project">Company</div>
-      <!-- Start Feature Project -->
-      <app-feature *ngIf="Manager && project.nid" [id]="project.nid" [type]="'node'"> </app-feature>
-      <!-- End Feature Project -->
+      <!-- Start Feature Company -->
+      <!-- <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'"> </app-feature> -->
+      <!-- End Feature Company -->
       <app-card-badges [badges]="badges"></app-card-badges>
-      <a class="flex-text-container" href="">
+      <a class="flex-text-container" href="orgs/{{cardData.path}}">
         <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
-        <!-- <p class="card-description-long" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p> -->
       </a>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{cardData.company_cover_photo}}" />
+        <img class="card-owner-media" src="{{cardData.company_logo}}" />
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{cardData.company_name}}"></span>
           <div class="card-owners-group">
@@ -26,7 +25,6 @@
         </div>
       </div>
       <ul class="social-stat-group">
-         <!-- <social-stats [profileViews]="project.number_of_views" [uid]="project.nid" [like]="true" [nid]="project.nid"></social-stats> -->
       </ul>
 
     </div>
