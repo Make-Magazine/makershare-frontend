@@ -1,6 +1,6 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ViewService, FlagService, StatisticsService, NodeService } from '../../../d7services';
+import { ViewService, StatisticsService, NodeService } from '../../../d7services';
 import { SortingSet, SortBySortingSet } from '../../../models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -20,15 +20,14 @@ export class SinglShowcaseComponent implements OnInit {
   showcase = {};
   contentType: number = 2;
   contentCount: number;
+  path:string;
   // Content type values
   // 1 = projects
   // 2 = makers
 
 
-  // Cotnent Types Arrays
+  // Projects/Makers Array
   ShowcaseItems = [];
-  // Makers = [];
-  // Projects = [];
 
   // Sorting & Pagination Variables
   pageNumber = 0;
@@ -38,12 +37,12 @@ export class SinglShowcaseComponent implements OnInit {
     sort_order: "DESC"
   };
   DataRetriver = new SortBySortingSet(this.sort, this.viewService);
-  numLikes;
   hideloadmore: boolean = true;
+  // Prevent multiple clicks during request;
+  disableLoadMore: boolean = true;
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
-    private flagService: FlagService,
     private statisticsService: StatisticsService,
     private config: NgbTooltipConfig,
     private nodeService: NodeService,
@@ -58,14 +57,12 @@ export class SinglShowcaseComponent implements OnInit {
   }
   ngOnInit() {
     this.loaderService.display(true);
-    let path = this.route.snapshot.params['path'];
-    if (path) {
-      this.nodeService.getIdFromUrl(path, 'showcase').subscribe(data => {
+    this.path = this.route.snapshot.params['path'];
+    if (this.path) {
+      this.nodeService.getIdFromUrl(this.path, 'showcase').subscribe(data => {
         this.showcaseNid = data[0];
-        // load the showcase details (without projects or makers)
         if (this.showcaseNid) {
           this.getShowcase();
-          //this.sortShowcase('_none')
         } else {
           this.router.navigateByUrl('404');
         }
@@ -78,10 +75,11 @@ export class SinglShowcaseComponent implements OnInit {
     this.viewService.getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        console.log(data[0])
-        if(this.showcase['showcase_type'] == 'Project'){
-          this.contentType = 1
+        this.contentCount = data[0].projects_makers_count;
+        if (this.showcase['showcase_type'] == 'Project') {
+          this.contentType = 1;
         }
+        this.getShowcaseItems();
         this.title.setTitle(this.showcase['showcase_name'] + ' | Maker Share');
         this.meta.addTags([
           {
@@ -91,80 +89,31 @@ export class SinglShowcaseComponent implements OnInit {
             name: 'og:image', content: this.showcase['cover_photo']
           }
         ])
-        //this.customDescription = this.showcase['description']
-        //this.meta.setTitle(`${this.showcase['showcase_name']} | Maker Share`);
-        //this.meta.setTag('og:image', this.showcase['cover_photo']);
-        //this.meta.setTag('og:description', this.showcase['description']);
-
-        // get showcase related content according to contentType value
-
-        if (this.contentType == 1) {
-          // this case for projects
-          this.getCount();
-          this.getProjects();
-        } else if (this.contentType == 2) {
-          // this case for makers
-          this.getCount();
-          this.getMakers();
-        }
-
-
-        // statistics, record page view hit for visitors
         if (this.LoggedInUserID != this.showcase['uid']) {
           this.statisticsService.view_record(this.showcaseNid, 'node').subscribe();
         }
-
       });
   }
 
-  getCount() {
-    if (this.contentType == 1) {
-      // this case for projects
-      this.viewService.getView('showcase_projects_sort', [['nid', this.showcaseNid]]).subscribe(data => {
-        this.contentCount = data.length;
-      });
-
-    } else if (this.contentType == 2) {
-      // this case for makers
-      this.viewService.getView('showcase_makers_sort', [['nid', this.showcaseNid]]).subscribe(data => {
-        this.contentCount = data.length;
-      });
-
+  getShowcaseItems() {
+    let viewName = 'showcase_makers';
+    if (this.showcase['showcase_type'] == 'Project') {
+      viewName = 'showcase_projects'
     }
-  }
-  getProjects() {
-    this.DataRetriver.Sort('showcase_projects', this.pageNumber, this.showcaseNid).subscribe(data => {
+    this.DataRetriver.Sort(viewName, this.pageNumber, this.showcaseNid).subscribe(data => {
       this.ShowcaseItems = this.ShowcaseItems.concat(data);
       this.loadMoreVisibilty(this.ShowcaseItems.length);
-      this.loaderService.display(false);
-    }, err => {
-      this.loaderService.display(false);
-    });
-
-  }
-
-
-  getMakers() {
-    this.DataRetriver.Sort('showcase_makers', this.pageNumber, this.showcaseNid).subscribe(data => {
-      this.ShowcaseItems = this.ShowcaseItems.concat(data);
-      this.loadMoreVisibilty(this.ShowcaseItems.length);
-      this.loaderService.display(false);
-    }, err => {
+      this.disableLoadMore = false;
       this.loaderService.display(false);
     });
   }
-
 
   // get more click
   loadmore() {
+    if (this.disableLoadMore) return;
+    this.disableLoadMore = true;
     this.pageNumber++;
-    if (this.contentType == 1) {
-      // this case for projects
-      this.getProjects();
-    } else if (this.contentType == 2) {
-      // this case for makers
-      this.getMakers();
-    }
+    this.getShowcaseItems();
   }
 
   // control load more button
@@ -176,7 +125,6 @@ export class SinglShowcaseComponent implements OnInit {
     }
   }
 
-
   sortShowcase(sort) {
     this.loaderService.display(true);
     this.ShowcaseItems = [];
@@ -187,22 +135,10 @@ export class SinglShowcaseComponent implements OnInit {
       this.sort.sort_order = "ASC";
     }
     this.sort.sort_by = sort;
-    if (this.contentType == 1) {
-      this.getProjects();
-    } else if (this.contentType == 2) {
-      this.getMakers();
-    }
+    this.getShowcaseItems();
   }
-  countLikes() {
-    this.flagService.flagCount(this.showcaseNid, 'like').subscribe(res => {
-      if (res['count'] > 0) {
-        this.numLikes = res;
-      } else {
-        this.numLikes = 0;
-      }
-    })
+  navigateShowcaseItem(id:string){
+    this.router.navigate(['projects/', this.path, id, this.sort.sort_by, this.sort.sort_order])  
   }
-  likesCounter(count) {
-    this.numLikes = count;
-  }
+
 }

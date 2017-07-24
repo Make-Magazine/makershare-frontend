@@ -1,114 +1,59 @@
-<!-- <div *hideItBootstrap="['sm', 'xs']"> -->
-<div>
+<div class="hidden-sm-down">
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
-      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" class="fa fa-lightbulb-o"></i>
-      <!-- <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" class="fa fa-lightbulb-o"></i> -->
-      <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip">{{countlikes}}
-      <span class="new-tooltiptext"> 
-       <span *ngFor="let liker of whoLike;"><span class="text-tooltip-name" *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
-      </span>
-      <span *ngIf="LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
-      </span>
-      </span>
-      <span *ngIf="!countlikes">
-      0
-    </span>
-
-    </a>
-
-
-    <!-- Model Who Like -->
-
-    <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
-      <div class="model-likes">
-        <div class="modal-header">
-          <span *ngIf="countLikers == 1">{{countLikers}} Like</span>
-          <span *ngIf="countLikers > 1">{{countLikers}} Likes</span>
-
-          <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-        </div>
-        <div class="modal-body" *ngIf="whoLike2">
-          <div class="model-likes">
-            <span *ngFor="let liker2 of whoLike2; "> 
-       <img *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="{{liker2?.portfolio_photo}}" (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')"><span *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
-            <img *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
-
-
-            </span>
-          </div>
-          <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike && whoLike2.length > 0 ">
-            <div *ngIf="!hideloadmoreproject && whoLike2.length > 0 ">
-              <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="list-unstyled actions d-flex flex-row">
-          </div>
-        </div>
+      <div class="d-inline">
+        <span *ngIf="countlikes &&  whoLikeMini " class="projects-count new-tooltip">{{countlikes}}</span>
+        <span *ngIf="!countlikes">0</span>
+        <i ngbTooltip="{{like}}" (click)="likeThis($event)" class="fa fa-lightbulb-o"></i>
+        <!-- <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" class="fa fa-lightbulb-o"></i>  -->
       </div>
-    </ng-template>
+      <ul class="new-tooltiptext list-unstyled d-inline">
+        <li *ngFor="let liker of whoLikeMini;">
+          <span class="text-tooltip-name" *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span>
+        </li>
+        <span *ngIf="whoLikeMini < whoLikeFull" (click)="open(content)">+ {{whoLikeFull.length - whoLikeMini.length}} more</span>
+      </ul>
+    </a>
   </div>
 </div>
-<!-- <div *hideItBootstrap="['lg', 'xl','md']"> -->
-<div>
+<div class="hidden-md-up">
   <div class="project-like " *ngIf="project || showcase">
     <a class="btn btn-soft-grey btn-fit">
-      <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="isLiked" class="fa fa-lightbulb-o"></i>
+      <span *ngIf="whoLikeFull" class="projects-count new-tooltip" (click)="open(content)">{{countlikes}}</span>
+      <span *ngIf="!countlikes">0</span>
+      <i (click)="likeThis($event)" class="fa fa-lightbulb-o"></i>
       <!-- <i ngbTooltip="{{like}}" (click)="likeThis($event)" *ngIf="!isLiked" class="fa fa-lightbulb-o"></i> -->
-      <span *ngIf="countlikes &&  whoLike " class="projects-count new-tooltip" (click)="open(content)">{{countlikes}}
-      <!--<span class="new-tooltiptext"> 
-       <span *ngFor="let liker of whoLike;"><span *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span><br>
-      </span>
-      <span *ngIf="!LoadCount" (click)="open(content)">+ {{LoadCount}} more</span>
-      </span>-->
-      </span>
-      <span *ngIf="!countlikes">
-      0
-    </span>
-
     </a>
-
-
-    <!-- Model Who Like -->
-
-    <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
-      <div class="model-likes">
-        <div class="modal-header">
-          <span *ngIf="countLikers == 1">{{countLikers}} Like</span>
-          <span *ngIf="countLikers > 1">{{countLikers}} Likes</span>
-
-          <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-        </div>
-        <div class="modal-body" *ngIf="whoLike2">
-          <div class="model-likes">
-            <span *ngFor="let liker2 of whoLike2; "> 
-       <img *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="{{liker2?.portfolio_photo}}" (click)="goToProfile(liker2.profile_url)" (click)="d('Cross click')"><span *ngIf="liker2?.portfolio_photo && liker2.profile_url " class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
-            <img *ngIf="!liker2?.portfolio_photo && liker2.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')"><span *ngIf="!liker2?.portfolio_photo && liker2.profile_url " (click)="goToProfile(liker2.profile_url)"
-              (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker2?.first_name}} {{liker2?.last_name}} </span><br>
-
-
-            </span>
-          </div>
-          <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike && whoLike2.length > 0 ">
-            <div *ngIf="!hideloadmoreproject && whoLike2.length > 0 ">
-              <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="list-unstyled actions d-flex flex-row">
-          </div>
-        </div>
-      </div>
-    </ng-template>
   </div>
 </div>
+
+<!-- Model Who Like -->
+<ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+  <div class="model-likes">
+    <div class="modal-header">
+      <span *ngIf="countLikers == 1">{{countLikers}} Like</span>
+      <span *ngIf="countLikers > 1">{{countLikers}} Likes</span>
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body" *ngIf="whoLikeFull">
+      <ul class="model-likes list-unstyled">
+        <li *ngFor="let liker of whoLikeFull; ">
+          <img *ngIf="liker?.portfolio_photo && liker.profile_url " class="like-photo w-50" src="{{liker?.portfolio_photo}}" (click)="goToProfile(liker.profile_url)"
+            (click)="d('Cross click')">
+          <img *ngIf="!liker?.portfolio_photo && liker.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker.profile_url)"
+            (click)="d('Cross click')">
+            <span (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{liker?.first_name}} {{liker?.last_name}} </span>
+        </li>
+      </ul>
+      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike && whoLikeFull.length > 0 ">        
+          <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="list-unstyled actions d-flex flex-row">
+      </div>
+    </div>
+  </div>
+</ng-template>
