@@ -6,7 +6,6 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
 import * as globals from '../../../d7services/globals';
 
-
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
@@ -28,17 +27,22 @@ export class ChallengesComponent implements OnInit {
     private loaderService: LoaderService,
     private userService: UserService,
     meta: Meta,
-    title: Title
+    title: Title,
   ) {
     title.setTitle('Community Missions | Making that Matters | Maker Share');
     meta.addTags([
       {
-        name: 'og:description', content: 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.'
+        name: 'og:description',
+        content:
+          'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.',
       },
       {
-        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
-      }
-    ])
+        name: 'og:image',
+        content:
+          globals.appURL +
+            '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+      },
+    ]);
   }
 
   ngOnInit() {
@@ -48,7 +52,6 @@ export class ChallengesComponent implements OnInit {
     // this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
     // this.meta.setTag('og:image', '/assets/logo.png');
     // this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
-
   }
   /* function to get challenges and count followers  */
   getChallenges() {
@@ -66,27 +69,32 @@ export class ChallengesComponent implements OnInit {
     if (this.pageNumber >= 0) {
       page_arg = ['page', this.pageNumber];
     }
-    this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(data => {
-      // console.log(data);
-      this.challenges = this.challenges.concat(data);
+    this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(
+      data => {
+        // console.log(data);
+        this.challenges = this.challenges.concat(data);
 
-      this.loadMoreVisibilty();
-      if (!this.currentCount) {
-        this.currentCount = this.statusesCount['0'];
-      }
-      // count followers
-      for (let challenge of this.challenges) {
-        this.flagService.flagCount(challenge.nid, 'follow').subscribe(data => {
-          Object.assign(challenge, data)
-        }, err => {
-        });
-      }
-      // hide spinner
-      this.loaderService.display(false);
-    }, err => {
-      // hide spinner
-      this.loaderService.display(false);
-    });
+        this.loadMoreVisibilty();
+        if (!this.currentCount) {
+          this.currentCount = this.statusesCount['0'];
+        }
+        // count followers
+        for (let challenge of this.challenges) {
+          this.flagService.flagCount(challenge.nid, 'follow').subscribe(
+            data => {
+              Object.assign(challenge, data);
+            },
+            err => {},
+          );
+        }
+        // hide spinner
+        this.loaderService.display(false);
+      },
+      err => {
+        // hide spinner
+        this.loaderService.display(false);
+      },
+    );
   }
 
   loadmore() {
@@ -95,19 +103,19 @@ export class ChallengesComponent implements OnInit {
   }
 
   getStatuses() {
-    this.viewService.getView('maker_taxonomy_category/14').subscribe(data => {
-      let arr = [];
-      for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-          arr.push(data[key]);
+    this.viewService.getView('maker_taxonomy_category/14').subscribe(
+      data => {
+        let arr = [];
+        for (let key in data) {
+          if (data.hasOwnProperty(key)) {
+            arr.push(data[key]);
+          }
         }
-      }
-      arr.unshift({ "tid": 0, "name": "All" });
-      this.allstatuses = arr;
-    }, err => {
-
-    });
-
+        arr.unshift({ tid: 0, name: 'All' });
+        this.allstatuses = arr;
+      },
+      err => {},
+    );
   }
 
   challengesCount() {
@@ -141,7 +149,6 @@ export class ChallengesComponent implements OnInit {
   }
 
   enterToChallengeProject(nid) {
-
     this.userService.isLogedIn().subscribe(data => {
       if (data == false) {
         this.router.navigate(['access-denied']);

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShowcasesCollectionComponent } from './showcase-collection/showcasesCollection.component';
+import { ShowcasesComponent } from './showcases/showcases.component';
 import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.component';
 import { ShowcaseRoutingModule } from './showcase-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -15,8 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ShowcaseProjectModule,
   ],
-  declarations: [ShowcasesCollectionComponent, SinglShowcaseComponent],
+  declarations: [ShowcasesComponent, SinglShowcaseComponent],
 })
 export class ShowcaseModule {}
-export { ShowcasesCollectionComponent };
+export { ShowcasesComponent };
 export { SinglShowcaseComponent };
