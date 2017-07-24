@@ -13,7 +13,7 @@ import {Meta, Title } from '@angular/platform-browser';
 export class MakersComponent implements OnInit {
 
   CurrentSortSet: SortingSet = {
-    sort_by: "php_1",
+    sort_by: "random_seed",
     sort_order: "DESC",
   };
   SortBy: SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
