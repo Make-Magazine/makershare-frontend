@@ -18,4 +18,4 @@ const companiesRouts: Routes = [
 })
 
 
-export class ProjectsRoutingModule { }
+export class CompaniesRoutingModule { }
