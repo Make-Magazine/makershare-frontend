@@ -1,0 +1,41 @@
+
+<div class="card maker {{state}}" *ngIf="cardData">
+  <div class="card-info">
+    <div class="info-top">
+      
+      <div class="flag maker">Company</div>
+    </div>
+    <div class="info-bottom">
+      <div class="card-owner-meta">
+        <img class="card-owner-media" *ngIf="cardData.company_cover_photo" src="{{cardData.company_cover_photo}}">
+        <div class="card-owner-meta-info">
+          <a class="card-owner-link" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);" innerHTML="{{cardData.first_name}}
+           {{cardData.last_name}}"></a>
+          <div class="card-meta-row" *ngIf="cardData.company_name">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>{{cardData.company_name}}
+            <p class="maker-nickname card-meta-row-description" innerHTML="{{cardData.company_name}}"></p>
+          </div>
+
+
+          <div class="card-meta-row" *ngIf="cardData.role">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
+            <p class="maker-city card-meta-row-description">{{cardData.role}}</p>
+          </div>
+
+       
+
+          <div class="card-meta-row" *ngIf="cardData.breif_info">
+            <span class="lnr card-meta-row-icon maker-card-ico lnr-bullhorn"></span>
+            <p class="maker-description card-meta-row-description" innerHTML="{{cardData.breif_info}}"></p>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
