@@ -9,25 +9,23 @@ const ChallengeRouts: Routes = [
     path: '',
     children: [
       { path: '', component: ChallengesComponent },
-      { path: ':path', loadChildren: './challenge-data/challenge-data.module#ChallengeDataModule' },
-    { path: 'enter-mission/:nid', component: ChallengeProjectComponent , canActivate: [AuthGuardService] },
-    ]
+      {
+        path: ':path',
+        loadChildren:
+          './challenge-data/challenge-data.module#ChallengeDataModule',
+      },
+      {
+        path: 'enter-mission/:nid',
+        component: ChallengeProjectComponent,
+        canActivate: [AuthGuardService],
+      },
+    ],
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(ChallengeRouts),
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: []
+  imports: [RouterModule.forChild(ChallengeRouts)],
+  exports: [RouterModule],
+  declarations: [],
 })
-
-export class ChallengeRoutingModule { }
-
-
-
-
-
+export class ChallengeRoutingModule {}

@@ -1,23 +1,12 @@
 .card {
   &.showcase {
-    background-color: $highlight-light-blue;
-    transition: background-color 0.8s ease;
-    padding-right: 23px;
-    padding-bottom: 9px;
     margin-bottom: 10px;
-    box-shadow: 2px 2px 8px $light-grey;
     overflow: initial;
     border: 0;
     border-radius: 0;
 
-    &:hover {
-      background-color: $highlight-bright-blue;
-      transition: background-color 0.8s ease;
-    }
-
     .showcase-content {
       position: relative;
-      padding: 16px;
       background-color: white;
       cursor: pointer;
       box-shadow: 2px 2px 8px $light-grey;
@@ -26,11 +15,9 @@
         position: relative;
         display: flex;
         flex-direction: column;
+        padding: 1.5rem 0;
         * {
           text-align: left;
-        }
-        p, span {
-          color: $dark-grey;
         }
         .showcase-card-footer {
           .showcase-card-footer-2 {
@@ -38,16 +25,23 @@
             .showcase-card-count {
               span {
                 vertical-align: super;
+                color: $light-grey;
               }
               div {
                 min-width: 60px;
                 text-align: center;
-                color: $light-grey;
+              }
+              .showcase-likes {
+                img {
+                  width: 12px;
+                }
               }
               .showcase-views {
-                width: 22px;
-                height: auto;
-                padding-bottom: 3px;
+                img {
+                  width: 22px;
+                  height: auto;
+                  padding-bottom: 3px;
+                }
               }
             }
           }
