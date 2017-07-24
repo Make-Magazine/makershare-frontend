@@ -11,7 +11,7 @@ import { Auth } from '../../../auth0/auth.service';
 })
 export class CompanyCardComponent implements OnInit {
 
-   @Input() nid;
+   @Input() cardData;
  card;
   constructor(public router: Router,
     public viewService: ViewService,
@@ -24,11 +24,6 @@ export class CompanyCardComponent implements OnInit {
 
   ngOnInit() {
   }
-  getCompanyCard() {
-    this.viewService.getView('company_cards' + this.nid).subscribe(data => {
-      this.card = data[0];
-     
-    });
-  }
+
 
 }
