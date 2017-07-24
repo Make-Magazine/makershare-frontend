@@ -26,7 +26,7 @@
                     </div>
                     <div class="showcase-card-count  d-flex flex-row">
                       <div class="showcase-like" *ngIf="showcase.nid">
-                        <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true" (countNumber)="likesCounter($event)"></app-like>
+                        <app-like [nodeNid]="showcase.nid" [user]="userId" [showcase]="true"></app-like>
                       </div>
                       <div class="views-count-div">
                         <img src="./assets/images/icons/views.png" class="showcase-views" alt="">
@@ -94,14 +94,15 @@
           <app-maker-card *ngFor="let maker of ShowcaseItems; let i = index;" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
         </div>
         <div class="projects-grid row" *ngIf="contentType == 1">
-          <app-project-card *ngFor="let project of ShowcaseItems; let i = index;" [nid]="project.nid" [state]="'tall'"></app-project-card>
+          <div *ngFor="let project of ShowcaseItems; let i = index;" class="col-md-4" style="position: relative;">
+            <span style="position:absolute;z-index:100;width:100%;height:100%;" (click)="navigateShowcaseItem(project.path)"></span>
+            <app-project-card [nid]="project.nid" [state]="'tall'"></app-project-card>
+          </div>
         </div>
       </div>
       <div class="text-center pt-3 pb-1" *ngIf="!hideloadmore">
-        <div *ngIf="!hideloadmore">
-          <a *ngIf="!hideloadmore" class="btn btn-load-more" (click)="loadmore()">Load more</a>
-        </div>
+        <a class="btn btn-load-more" (click)="loadmore()">Load more</a>
       </div>
     </div>
   </div>
-  <section>
+<section>

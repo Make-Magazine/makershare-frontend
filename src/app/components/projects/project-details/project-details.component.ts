@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { ViewService, NodeService, StatisticsService, MainService } from '../../../d7services';
 import 'rxjs/Rx';
 import { LoaderService } from '../../shared/loader/loader.service';
@@ -22,8 +22,11 @@ export class ProjectDetailsComponent implements OnInit {
   projectDetails;
   currentuser;
   projectId;
+  showcaseName: string = null;
   showcase = {};
   projectIndex: number = 0;
+  previousProject: string = null;
+  nextProject: string = null;
   projects = [];
   projectdata;
   id: number;
@@ -42,17 +45,7 @@ export class ProjectDetailsComponent implements OnInit {
     private meta: Meta,
     private meta_title: Title
 
-  ) {
-
-    this.route.queryParams.subscribe(params => {
-      if (params && params["showcase"]) {
-        this.projectId = params["projectId"];
-        this.showcase = JSON.parse(params["showcase"]);
-        this.projectIndex = params["projectIndex"];
-        this.projects = JSON.parse(params["projects"]);
-      }
-    });
-  }
+  ) {}
 
 
   ngOnInit() {
@@ -60,25 +53,38 @@ export class ProjectDetailsComponent implements OnInit {
     this.Manager = this.auth.IsCommuintyManager();
 
     this.loaderService.display(true);
-    this.sub = this.route.params.subscribe(params => {
-      let path = params['path'];
+    this.route.params.subscribe(params => {
+      this.sub = params;
+      if (params['showcaseName']) {
+        this.showcaseName = params["showcaseName"];
+        this.nodeService.getIdFromUrl(this.showcaseName, 'showcase').subscribe(nid => {
+          this.viewService.getView('showcase_projects_full', [['nid', nid], ['sort_by', this.sub.sortBy], ['sort_order', this.sub.sortOrder]]).subscribe(res => {
+            let i = 0;
+            for (let element of res) {
+              if (element.path == params['ProjectName']) {
+                this.previousProject = res[i - 1].path
+                this.nextProject = res[i + 1].path;
+              }
+              i++
+            }
+          });
+        })
+
+      }
+      let path = params['ProjectName'];
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
-
         let body = {
           "nid": this.id,
         };
-        this.mainService.post(globals.endpoint + '/feed/make_seen/', body).map(res => res.json()).subscribe(res => {
-          // console.log(res)
-        })
         this.currentuser = Number(localStorage.getItem('user_id'));
+        if (this.currentuser != 0) {
+          this.mainService.post(globals.endpoint + '/feed/make_seen/', body).map(res => res.json());
+        }
         if (!this.id) {
           this.router.navigateByUrl('**');
           this.loaderService.display(false);
         }
-
-
-
         this.viewService.getView('views/project_visibility', [['nid', this.id]]).subscribe(data => {
           if (data[0].status == 0) {
 
@@ -96,28 +102,22 @@ export class ProjectDetailsComponent implements OnInit {
                   this.router.navigateByUrl('access-restricted');
                   this.loaderService.display(false);
                 }
-
               }
-
             });
-
             // this.router.navigateByUrl('access-restricted');
             this.loaderService.display(false);
           } else {
-
             this.loadProject();
           }
-
-
-
-
         }, err => { });
       });
       /* service to get challenge name if project enter in it */
       // get challenge name and nid for challenge if found from a view      
     });
   }// End ngOnInit
-
+  NavigateShowcase(path: string) {
+    this.router.navigate(['projects/', this.sub.showcaseName, path, this.sub.sortBy, this.sub.sortOrder])
+  }
 
   loadProject() {
     this.viewService.getView('maker_project_api/' + this.id)
@@ -143,10 +143,6 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
-
-        // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
-        // this.meta.setTag('og:image', this.project.field_cover_photo.url);
-        // this.meta.setTag('og:description', this.project.field_teaser.value);
         this.projectDetails = this.project;
         this.projectDetails.nid = this.id;
         this.loaderService.display(false);
@@ -159,27 +155,6 @@ export class ProjectDetailsComponent implements OnInit {
         this.loaderService.display(false);
       });
   }
-
-
-  getProject(event: Event, action: any) {
-    event.preventDefault();
-    if (action == "back") {
-      this.projectIndex--;
-    } else if (action == "next") {
-      this.projectIndex++;
-    }
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        "projectId": this.projects[this.projectIndex].nid,
-        "showcase": JSON.stringify(this.showcase),
-        "projectIndex": this.projectIndex,
-        "projects": JSON.stringify(this.projects)
-      }
-    }
-    this.router.navigate(['projects', this.projects[this.projectIndex].nid], navigationExtras);
-    this.ngOnInit();
-  }
-
 
   forkThis(e: Event) {
     e.preventDefault();
