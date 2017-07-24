@@ -84,7 +84,7 @@
       <maker-ckeditor [id]="'project-story'" [error]="!YourStoryForm.controls['field_story'].valid && TryToSubmitPrivatePublic" formControlName='field_story' ngDefaultControl></maker-ckeditor>    
     </div>
     <div class="form-group required projectDate">
-      <label for="projectDate" [ngClass]="{valErrorString: !YourStoryForm.controls['field_creation_date'].valid && TryToSubmitPrivatePublic}">Project Create Date</label>
+      <label for="projectDate" [ngClass]="{valErrorString: !YourStoryForm.controls['field_creation_date'].valid && TryToSubmitPrivatePublic}">Project Creation Date</label>
       <input [ngClass]="{valError: !YourStoryForm.controls['field_creation_date'].valid && TryToSubmitPrivatePublic}" type="text" class="form-control"
         id="projectDate" formControlName="field_creation_date" placeholder="ex:09/18/2018" validate-onfocusout>
         {{YourStoryForm.controls['field_creation_date'].valid}}
