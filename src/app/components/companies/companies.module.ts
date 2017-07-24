@@ -8,7 +8,13 @@ import { ProjectsRoutingModule } from './companies.routing.module';
     CommonModule,
     ProjectsRoutingModule
   ],
-  declarations: [CompaniesComponent]
+  declarations: [
+    CompaniesComponent,
+    
+    ]
 })
 export class CompaniesModule { }
-export {CompaniesComponent};
+export {
+  CompaniesComponent,
+  
+};
