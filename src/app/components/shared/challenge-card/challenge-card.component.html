@@ -1,52 +1,91 @@
-<div class="card mission {{state}}">
-  <div class="card-image" [style.background-image]="'url('+challenge.cover_image+')'"></div>
-  <div class="card-info">
-    <div class="info-top">
-      <div class="card-image alt" style="background-image: url('/assets/images/test_images/project.jpg')"></div>
-      <div class="flag mission">mission</div>
-    </div>
-    <div class="info-bottom">
-      <!-- Start Feature Mission -->
-      <app-feature *ngIf="Manager && challenge.nid" [id]="challenge.nid" [type]="'node'"> </app-feature>
-      <!-- End Feature Mission -->
-      <span class="card-mission-sponsor" *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}</span>
-      <div class="card-owner-meta">
-        <div class="card-owner-meta-info">
-          <span class="card-title" innerHTML="{{challenge.title}}"></span>
-          <p class="card-description-long" [innerHTML]="challenge.summary_trim"></p>
+<div class="container"
+     *ngIf="challenge">
+  <div class="card showcase mission {{state}}">
+    <div class="showcase-content row">
+
+      <div class="col-md-4 col-sm-12 col-xs-12 image-container">
+        <img *ngIf="challenge.cover_image"
+             src="{{challenge.cover_image}}"
+             alt="{{challenge.title}}"
+             class="img-responsive"
+             (click)="ShowSingleMission(challenge.path)">
+        <img *ngIf="!challenge.cover_image"
+             src="./assets/images/placeholder.png">
+
+        <div class="card-type -grey">
+          <div class="card-type-label">Mission</div>
         </div>
       </div>
-      <ul class="social-stat-group">
-        <li class="social-stat">
-          <button class="button-cta" (click)="ShowChallengeDetails(challenge.path)">View Mission</button>
-        </li>
-        <li class="social-stat">
-          <i class="fa fa-dot-circle-o"></i>
-          <span class="info">{{countProjects}}</span>
-        </li>
-        <!--  <li class="social-stat">
-          <i class="fa fa-dot-circle-o"></i>
-          <span class="info">{{challenge.followers}}</span>
-        </li> -->
-        <!-- we may want to add followers to card, not sure yet -->
-        <li class="social-stat">
-          <i class="fa fa-calendar-times-o"></i>
-          <!-- <span class="info">{{challenge.challenge_end_date.value}}</span> -->
 
-          <span class="info" *ngIf="challenge.status_id == 375">{{challenge.challenge_end_date.value}}</span>
-          <span class="info" *ngIf="challenge.status_id == 1107">{{challenge.winners_announcement_date.value}}</span>
-          <span class="info" *ngIf="challenge.status_id == 1108">{{challenge.winners_announcement_date.value}}</span>
-          <span class="info" *ngIf="challenge.status_id == 376 && announce_date < 0">{{challenge.winners_announcement_date.value}}</span>
-          <span class="info" *ngIf="challenge.status_id == 376 && announce_date > 0">{{challenge.winners_announcement_date.value}}</span>
-        </li>
+      <div class="col-md-8">
+        <div class="h-100 content-container">
+          <h3 class="card-title">{{challenge.title}}</h3>
 
-        <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 375"> Submissions close: {{challenge.challenge_end_date.value}}</span> -->
-        <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 1107"> In review. Winners to be announced: {{challenge.winners_announcement_date.value}}</span> -->
-        <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span> -->
-        <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date < 0"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span> -->
-        <!-- <span class="challenge-end-date" *ngIf="challenge.status_id == 376 && announce_date > 0"> Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span> -->
-      </ul>
+          <span class="card-mission-sponsor"
+                *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}</span>
 
+          <app-feature *ngIf="Manager && showcaseCard.nid"
+                       [id]="showcaseCard.nid"
+                       [type]="'node'"></app-feature>
+
+          <div class="card-description">
+            <p [innerHTML]="challenge.summary_trim"
+               *ngIf="challenge.summary_trim"></p>
+          </div>
+
+          <div class="showcase-card-footer mt-auto d-flex">
+            <div class="showcase-card-footer-1 hidden-xs-down">
+              <div class="button-container-main-1">
+                <button class="button"
+                        (click)="ShowChallengeDetails(challenge.path)">Participate
+                </button>
+              </div>
+            </div>
+            <div class="showcase-card-footer-2 ml-4">
+              <div class="showcase-card-count">
+                <div class="d-flex flex-row">
+                  <span *ngIf="countProjects > 0"><i class="fa fa-dot-circle-o"></i> {{countProjects}}</span>
+                  <span *ngIf="challenge.followers > 0"><i class="fa fa-user-o"></i> {{challenge.followers}}</span>
+                  <span *ngIf="challenge.status_id == 375"> Submissions close: {{challenge.challenge_end_date.value}}</span>
+                  <span *ngIf="challenge.status_id == 1107"> In review. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
+                  <span *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
+                  <span *ngIf="challenge.status_id == 376 && announce_date < 0"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
+                  <span *ngIf="challenge.status_id == 376 && announce_date > 0"> Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
+                </div>
+
+                <!--<ul class="social-stat-group">
+                  <li class="social-stat">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="info">{{countProjects}}</span>
+                  </li>
+                  <li class="social-stat">
+                    <i class="fa fa-dot-circle-o"></i>
+                    <span class="info">{{challenge.followers}}</span>
+                  </li>
+                  &lt;!&ndash; we may want to add followers to card, not sure yet &ndash;&gt;
+                  <li class="social-stat">
+                    <i class="fa fa-calendar-times-o"></i>
+                    &lt;!&ndash; <span class="info">{{challenge.challenge_end_date.value}}</span> &ndash;&gt;
+
+                    <span class="info" *ngIf="challenge.status_id == 375">{{challenge.challenge_end_date.value}}</span>
+                    <span class="info" *ngIf="challenge.status_id == 1107">{{challenge.winners_announcement_date.value}}</span>
+                    <span class="info" *ngIf="challenge.status_id == 1108">{{challenge.winners_announcement_date.value}}</span>
+                    <span class="info" *ngIf="challenge.status_id == 376 && announce_date < 0">{{challenge.winners_announcement_date.value}}</span>
+                    <span class="info" *ngIf="challenge.status_id == 376 && announce_date > 0">{{challenge.winners_announcement_date.value}}</span>
+                  </li>
+                </ul>-->
+
+              </div>
+            </div>
+            <div class="showcase-card-footer-1 hidden-sm-up mt-3">
+              <div class="button-container-main-1 w-100">
+                <span class="btn btn-main w-100"
+                      (click)="ShowChallengeDetails(challenge.path)">View Mission</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

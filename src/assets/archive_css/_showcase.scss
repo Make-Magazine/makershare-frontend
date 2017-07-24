@@ -52,7 +52,7 @@
 }
 
 
-.showcase-card-backlayer {
+/*.showcase-card-backlayer {
     background-color: $showcase-layer;
     transition: background-color 0.8s ease;
     padding-right: 23px;
@@ -237,7 +237,7 @@
             color: $shade-3;
         }
     }
-}
+}*/
 
 .page-single-showcase {
     .showcase-card-backlayer {
@@ -380,6 +380,8 @@ img {
         }
     }
 }
+
+/*
 .showcase-card-backlayer-home {
     background-color: $showcase-layer;
     transition: background-color 0.8s ease;
@@ -580,7 +582,7 @@ img {
             }
         }
     }
-}
+}*/
 
 /* showcase for mobile */
 .showcase-card-backlayer-mobile {

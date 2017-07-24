@@ -35,6 +35,7 @@ $beta: true;
 // ///////////////////
 @import "atoms/badge";
 @import "atoms/button";
+@import "atoms/card-type";
 @import "atoms/feature";
 @import "atoms/flag";
 @import "atoms/icon-search";
@@ -65,6 +66,7 @@ $beta: true;
 @import "organisms/card/card";
 @import "organisms/user-menu";
 @import "organisms/dropdown-menu";
+@import "organisms/sorting";
 // ///////////////////
 // ///////////////////
 
@@ -72,6 +74,7 @@ $beta: true;
 // layout
 // ///////////////////
 @import "layout/main-container";
+@import "layout/page";
 @import "layout/profile-view-control-container";
 @import "layout/left-section";
 @import "layout/profile-info";

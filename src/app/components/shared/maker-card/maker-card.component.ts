@@ -15,8 +15,7 @@ export class MakerCardComponent implements OnInit {
   @Input() uid;
   @Input() state;
   @Input() profile;
-  @Input() cardData;
-
+  @Input() cardData; // Input 'cardData' contain all maker data it's work on makers component only for test now
   badges = [];
   project = {};
   card;
@@ -38,8 +37,8 @@ export class MakerCardComponent implements OnInit {
     this.Manager = this.auth.IsCommuintyManager();
    if (this.uid) {
       this.getMakerCard();
-    } else if (this.cardData) {
-      this.uid = this.cardData.uid;
+    }else if (this.cardData.uid){
+      this.uid=this.cardData.uid;
     }
     this.getMakerBadges();
     this.CountMakerProjects();

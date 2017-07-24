@@ -7,37 +7,44 @@ import * as globals from '../../../d7services/globals';
 
 @Component({
   selector: 'app-showcases',
-  templateUrl: './showcasesCollection.component.html',
+  templateUrl: './showcases.component.html',
 })
-
-export class ShowcasesCollectionComponent implements OnInit {
+export class ShowcasesComponent implements OnInit {
   showcases = [];
   showcaseCount: number = 0;
   hideloadmore: boolean = false;
   pageNo: number = 0;
   CurrentSort: SortingSet = {
     sort_by: 'changed',
-    sort_order: 'DESC'
-  }
-  SortBy: SortBySortingSet = new SortBySortingSet(this.CurrentSort, this.viewService);
+    sort_order: 'DESC',
+  };
+  SortBy: SortBySortingSet = new SortBySortingSet(
+    this.CurrentSort,
+    this.viewService,
+  );
 
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
     private meta: Meta,
-    private title: Title
-  ) { }
+    private title: Title,
+  ) {}
 
   ngOnInit() {
     this.title.setTitle('Showcases | Maker Share');
     this.meta.addTags([
       {
-        name: 'og:description', content: 'Maker Showcases are collections of projects and makers curated by our Community Managers.'
+        name: 'og:description',
+        content:
+          'Maker Showcases are collections of projects and makers curated by our Community Managers.',
       },
       {
-        name: 'og:image', content: globals.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
-      }
-    ])
+        name: 'og:image',
+        content:
+          globals.appURL +
+            '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+      },
+    ]);
     this.showcasesCount();
     this.getShowCases();
   }

@@ -79,8 +79,10 @@
 
 	// ///////////////////
 	// wide
-	&.wide, &.showcase:not(.tall) {
+	&.wide {
 		padding-top: $card_wideRatio;
+	}
+	&.wide, &.showcase:not(.tall) {
 		.card-image, .info-top {
 			padding-bottom: $card_wideRatio;
 		}
@@ -225,7 +227,7 @@
 	}
 	&.maker.tall, &.maker.short {
 		.card-owner-link {
-			margin-bottom: 0.5rem;
+			margin-bottom: 1rem;
 			font-size: 1.8rem;
 			line-height: 2rem;
 		}

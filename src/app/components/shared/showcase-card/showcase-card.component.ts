@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ShowcaseCard } from '../../../models'
+import { ShowcaseCard } from '../../../models';
 
 @Component({
   selector: 'app-showcase-card',
@@ -8,10 +8,8 @@ import { ShowcaseCard } from '../../../models'
 })
 export class ShowcaseCardComponent implements OnInit {
   userId;
-  @Input() showcaseCard:ShowcaseCard;
-  constructor(
-    private router: Router,
-  ) { }
+  @Input() showcaseCard: ShowcaseCard;
+  constructor(private router: Router) {}
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
   }
