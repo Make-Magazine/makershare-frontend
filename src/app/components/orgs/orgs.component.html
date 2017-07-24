@@ -1,0 +1,39 @@
+<section class="container" *ngIf="company">
+  <div class="container">
+    <div class="row">
+      <div class="w-100"> Company Cover Photo
+        <img src={{company.company_cover_photo}} class=" p-2" alt="Responsive image">
+      </div>
+      <div> Company Logo
+        <img src={{company.company_logo}} class="p-2" alt="Responsive image">
+      </div>
+      <div> Company Name
+        <p>{{company.company_name}}</p>
+      </div>
+      <div *ngIf="company.field_company_tags">
+        <div *ngFor="let tags of  company.field_company_tags">
+          <p *ngIf="!tags.is_parent">
+            {{tags.name}}
+          </p>
+        </div>
+      </div>
+      <div> About us
+        <p [innerHTML]="trustedLink"></p>
+      </div>
+      <div *ngIf="company.field_maker_memberships"> Our Team
+        <div *ngFor="let team of company.field_maker_memberships">
+          <p>{{team.full_name}} </p>
+          <p>{{team.field_membership_role}} </p>
+        </div>
+      </div>
+      <div> Social
+        <p>Facebook: {{company.field_facebook}}</p>
+        <p>Linkedin: {{company.field_linkedin}}</p>
+        <p>Twitter: {{company.field_twitter}}</p>
+      </div>
+      <div> Websites
+        <a href="{{company.field_website_or_blog}}"></a>
+      </div>
+    </div>
+  </div>
+</section>
