@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService, ViewService } from '../../../d7services';
+import { UserService, ViewService } from '../../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
 

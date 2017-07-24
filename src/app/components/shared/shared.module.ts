@@ -15,9 +15,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ShareButtonsModule } from "ngx-sharebuttons";
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
-import { ProjectHeaderComponent } from './project-header/project-header.component';
-import { ProjectStoryComponent } from './project-story/project-story.component';
-import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
 import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
 import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
@@ -99,9 +96,6 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     ProjectCardComponent,
     FeedbackComponent,
     ChallengeCardComponent,
-    ProjectHeaderComponent,
-    ProjectStoryComponent,
-    ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
@@ -151,9 +145,6 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     ProjectCardComponent,
     FeedbackComponent,
     ChallengeCardComponent,
-    ProjectHeaderComponent,
-    ProjectStoryComponent,
-    ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
