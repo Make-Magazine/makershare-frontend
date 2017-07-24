@@ -4,7 +4,6 @@ import { ShowcasesComponent } from './showcases/showcases.component';
 import { SinglShowcaseComponent } from './single-showcase/SingleShowcase.component';
 import { ShowcaseRoutingModule } from './showcase-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { ShowcaseProjectModule } from './showcase-project/showcase-project.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShowcaseRoutingModule,
     SharedModule.forChild(),
     NgbModule,
-    ShowcaseProjectModule,
   ],
   declarations: [ShowcasesComponent, SinglShowcaseComponent],
 })
