@@ -1,10 +1,10 @@
 .col {
-	&-lg-4 {
-		max-width: initial;
-		display: flex;
-		margin-bottom: 4rem;
-		.card-wrapper {
-			width: 100%;
-		}
-	}
+  &-lg-4 {
+    max-width: initial;
+    display: flex;
+    margin-bottom: 4rem;
+    .card-wrapper {
+      width: 100%;
+    }
+  }
 }

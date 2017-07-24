@@ -13,7 +13,7 @@ import {Meta, Title } from '@angular/platform-browser';
 export class MakersComponent implements OnInit {
 
   CurrentSortSet: SortingSet = {
-    sort_by: "php_1",
+    sort_by: "random_seed",
     sort_order: "DESC",
   };
   SortBy: SortBySortingSet = new SortBySortingSet(this.CurrentSortSet, this.viewService);
@@ -80,11 +80,7 @@ export class MakersComponent implements OnInit {
       this.all_categories = categories;
       for (let element of this.all_categories) {
         if (element.parent_tid) {
-          this.viewService.getView('makers', [['category', element.tid]]).subscribe(data => {
-            if (data.length > 0) {
               this.categories_childs.push(element);
-            }
-          });
         } else {
           this.categories_parents.push(element);
         }
