@@ -4,7 +4,7 @@ import { OrgsComponent } from './orgs.component';
 
 
 const orgsRouts: Routes = [
-   { path: '', component:OrgsComponent }
+   { path: ':path', component:OrgsComponent }
 ];
 
 @NgModule({
