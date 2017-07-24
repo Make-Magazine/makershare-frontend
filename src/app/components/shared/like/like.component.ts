@@ -12,22 +12,21 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LikeComponent implements OnInit {
   @Input() nodeNid;
+  // DKY user is input??
   @Input() user;
   @Input() showcase = false;
   @Input() project = false;
+  @Output() countNumber = new EventEmitter<number>();
   userId;
   hideloadmorelike = true;
   closeResult: string;
   pages: number = 0;
-  currentuser;
-  whoLike = [];
-  whoLike2 = [];
-  LoadCount: number;
-  checkUserLogin = false;
-  countlikes = 0;
+  whoLikeMini = [];
+  whoLikeFull = [];
+  countlikes:number = 0;
   countLikers: number = 0;
   liked = false;
-  @Output() countNumber = new EventEmitter<number>();
+  toggleFlag:string;
   like: string;
   isLiked = false;
   constructor(
@@ -39,67 +38,27 @@ export class LikeComponent implements OnInit {
     private modalService: NgbModal,
 
   ) {
-    this.router = router;
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
   }
   ngOnInit() {
     this.countLikes();
     this.getWhoLike();
-    this.getWhoLike2()
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data == false) {
-
-      } else {
+      if (data && this.userId) {
         /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
-          if (this.isLiked) { this.like = "Unlike this idea"; }
-          else { this.like = "Like this idea"; }
-          // console.log(this.isLiked)
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-          // console.log(err);
+          this.like = this.isLiked? "Unlike this idea": "Like this idea";
         })
-
-        /*like end*/
       }//end else 
     });//end userservice isLogedIn
-
-  }
-  getWhoLike() {
-    this.viewService.getView('who-liked', [['nid', this.nodeNid]]).subscribe(data => {
-      this.whoLike = data;
-      if (this.whoLike.length > 7) {
-        this.LoadCount = this.whoLike.length - 7;
-      }
-    });
-  }
-  getWhoLike2() {
-    this.viewService.getView('who-liked2', [['nid', this.nodeNid], ['page', this.pages]]).subscribe(data => {
-      if (data[0]) {
-        this.countLikers = data[0]['likes_count'];
-      }
-      this.whoLike2 = this.whoLike2.concat(data);
-      this.loadMoreVisibilty();
-    });
-  }
-  open(content) {
-
-    this.modalService.open(content, { size: 'sm' }).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
-    });
-
 
   }
   countLikes() {
     this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
       this.countlikes = response['count'];
-
       if (this.countlikes >= 1) {
         this.countNumber.emit(this.countlikes);
       } else {
@@ -108,6 +67,49 @@ export class LikeComponent implements OnInit {
       }
     })
   }
+  /* function like */
+  likeThis(e: Event) {
+    e.preventDefault();
+    this.toggleFlag = this.isLiked? 'flag':'unflag';
+    this.flagService[this.toggleFlag](this.nodeNid, this.userId, 'like').subscribe(response => {
+      this.countlikes = this.isLiked? this.countlikes--:this.countlikes++;
+      this.isLiked = !this.isLiked;
+      this.like = this.isLiked? "Unlike this idea": "Like this idea";
+      this.whoLikeMini = [];
+      this.whoLikeFull = [];
+      this.getWhoLike();
+    });
+  }
+  getWhoLike() {
+    this.viewService.getView('who-liked', [['nid', this.nodeNid]]).subscribe(data => {
+      this.whoLikeFull = this.whoLikeFull.concat(data);
+      if(this.whoLikeMini.length == 0){
+        this.whoLikeMini = data;
+        if(this.whoLikeMini.length > 7){
+          this.whoLikeMini.length = 7;
+        }
+      }
+    });
+  }
+  open(content) {
+    this.modalService.open(content, { size: 'sm' }).result.then((result) => {
+      this.closeResult = 'Closed with: ${result}';
+    }, (reason) => {
+      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+    });
+  }
+  /* end function like */
+  loadMoreLike() {
+    this.pages++;
+    this.getWhoLike();
+  }
+  loadMoreVisibilty() {
+    if (this.countLikers >= this.whoLikeFull.length) {
+      this.hideloadmorelike = true;
+    } else if (this.countLikers > this.whoLikeFull.length) {
+      this.hideloadmorelike = false;
+    }
+  }
   goToProfile(path: string) {
     if(window.location.href.indexOf('portfolio') != -1){
       window.location.href = '/portfolio/'+path;
@@ -115,65 +117,4 @@ export class LikeComponent implements OnInit {
       this.router.navigate(['/portfolio/', path]);
     }
   }
-  /* function like */
-  likeThis(e: Event) {
-    this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data == false) {
-        //localStorage.setItem('redirectUrl', this.router.url);
-        this.router.navigate(['/access-denied']);
-      }
-      e.preventDefault();
-      if (this.isLiked && data == true) {
-        this.flagService.unflag(this.nodeNid, this.user, 'like').subscribe(response => {
-          this.isLiked = false;
-          this.countlikes--;
-          this.countNumber.emit(this.countlikes);
-          this.like = "Like this idea";
-          this.whoLike = [];
-          this.getWhoLike();
-          this.whoLike2 = [];
-          this.getWhoLike2();
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-          // console.log(err);
-        });
-      } else if (!this.isLiked && data == true) {
-        this.flagService.flag(this.nodeNid, this.user, 'like').subscribe(response => {
-          this.isLiked = true;
-          this.countlikes++;
-          this.countNumber.emit(this.countlikes);
-          this.like = "Unlike this idea";
-          this.whoLike = [];
-          this.getWhoLike();
-          this.whoLike2 = [];
-          this.getWhoLike2();
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-          // console.log(err);
-        });
-      }
-    });//end if check user login
-
-  }
-  /* end function like */
-
-  /* function load more  */
-  loadMoreLike() {
-    this.pages++;
-    this.getWhoLike2();
-  }
-  /* end function load more  */
-  // Function to control load more button
-  loadMoreVisibilty() {
-    // get the challenges array count
-    if (this.countLikers >= this.whoLike2.length) {
-
-      this.hideloadmorelike = true;
-
-    } else if (this.countLikers > this.whoLike2.length) {
-      this.hideloadmorelike = false;
-    }
-  }
-  /* END FUNCTION loadMoreVisibilty */
 }

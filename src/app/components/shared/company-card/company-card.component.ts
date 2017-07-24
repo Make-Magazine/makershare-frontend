@@ -12,6 +12,8 @@ import { Auth } from '../../../auth0/auth.service';
 export class CompanyCardComponent implements OnInit {
 
    @Input() cardData;
+     @Input() state;
+
  card;
   constructor(public router: Router,
     public viewService: ViewService,

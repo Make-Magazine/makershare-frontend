@@ -3,6 +3,11 @@
       <div class="container p-414">
           <div class="top-content-wrapper">
             <div class="container">
+              <div class="row" *ngIf="showcaseName">
+                <div class="col-md-3 prev text-left" *ngIf="previousProject"><a (click)="NavigateShowcase(previousProject)">&lt; Previous</a></div>
+                <div class="col-md-6 title text-center">Showcase Name</div>
+                <div class="col-md-3 next text-right" *ngIf="nextProject"><a (click)="NavigateShowcase(nextProject)">Next &gt;</a></div>
+              </div>
               <div class="project-full-card">
                 <app-project-header [ActiveTab]="current_active_tab" [project]="projectDetails" (SwitchTab)="changeProjectTab($event)"></app-project-header>
              <!--<div *ngIf="Manager"> 

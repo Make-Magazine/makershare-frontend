@@ -56,23 +56,16 @@ export class ShowcasesComponent implements OnInit {
       this.showcases = [];
     }
     // load the showcases
-    this.SortBy.Sort('showcases', this.pageNo).subscribe(
-      data => {
-        this.showcases = this.showcases.concat(data);
-        // console.log(this.showcases[0])
-        // for(let item in this.showcases[0]){
-        //   console.log(item);
-        //   console.log(typeof(item));
-        // }
-        this.loadMoreVisibilty();
-        // hide spinner
-        this.loaderService.display(false);
-      },
-      err => {
-        // hide spinner
-        this.loaderService.display(false);
-      },
-    );
+    this.SortBy.Sort('showcases', this.pageNo).subscribe(data => {
+      this.showcases = this.showcases.concat(data);
+      this.loadMoreVisibilty();
+      // hide spinner
+      this.loaderService.display(false);
+
+    }, err => {
+      // hide spinner
+      this.loaderService.display(false);
+    });
   }
   // get more click
   loadmore() {
