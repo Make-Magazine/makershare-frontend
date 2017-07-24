@@ -74,10 +74,6 @@ export class ProjectDetailsComponent implements OnInit {
       let path = params['ProjectName'];
       this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
         this.id = ids[0];
-<<<<<<< HEAD
-=======
-
->>>>>>> aaed6fadd17a1f92f27ab7c17add5f2543189763
         let body = {
           "nid": this.id,
         };
@@ -147,13 +143,6 @@ export class ProjectDetailsComponent implements OnInit {
             i++
           }
         }
-<<<<<<< HEAD
-=======
-
-        // this.meta.setTitle(`${this.project.title.value} | Maker Share`);
-        // this.meta.setTag('og:image', this.project.field_cover_photo.url);
-        // this.meta.setTag('og:description', this.project.field_teaser.value);
->>>>>>> aaed6fadd17a1f92f27ab7c17add5f2543189763
         this.projectDetails = this.project;
         this.projectDetails.nid = this.id;
         this.loaderService.display(false);
