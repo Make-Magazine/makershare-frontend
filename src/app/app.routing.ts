@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
 import { AccessRestrictedComponent } from './components/shared/access-restricted/access-restricted.component';
@@ -25,6 +25,7 @@ const APP_ROUTES: Routes = [
     { path: 'showcases', loadChildren: './components/showcase/showcase.module#ShowcaseModule' },
     { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
     { path: 'makers', loadChildren: './components/makers/makers.module#MakersModule' },
+    { path: 'companies', loadChildren: './components/companies/companies.module#CompaniesModule' },
     { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: './components/account/account.module#AccountModule' },

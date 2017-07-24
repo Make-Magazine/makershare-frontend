@@ -1,10 +1,10 @@
 html {
-	font-size: 10px; //baseline for our rem
-	// temp
-	font-family: Arial;
-	background: $lighter-grey;
+  font-size: 10px; //baseline for our rem
+  font-family: $font-messina-regular, Arial;
+  background: $lighter-grey;
 }
 
 body {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
+  color: $dark-grey;
 }

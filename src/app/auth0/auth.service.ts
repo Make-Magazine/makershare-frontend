@@ -1,10 +1,10 @@
-import * as globals from '../d7services/globals';
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import Auth0Lock from 'auth0-lock';
 import { UserService, MainService } from '../d7services';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
+import * as globals from '../d7services/globals';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 @Injectable()
 export class Auth {
@@ -381,3 +381,139 @@ export class Auth {
   }
 
 }
+
+
+
+
+// UI version
+// import { Injectable } from '@angular/core';
+// import { Router } from '@angular/router';
+// import 'rxjs/add/operator/filter';
+// import * as auth0 from 'auth0-js';
+// import * as globals from '../d7services/globals';
+// import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+// import { UserService,MainService } from '../d7services';
+// import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
+
+// @Injectable()
+// export class Auth {
+
+//   auth0 = new auth0.WebAuth({
+//     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
+//     domain: 'makermedia.auth0.com',
+//     responseType: 'token id_token',
+//     audience: 'https://makermedia.auth0.com/userinfo',
+//     redirectUri: globals.appURL,
+//     scope: 'openid profile email'
+//   });
+
+//   constructor(
+//     public router: Router,
+//     private mainService: MainService,
+//     private userService: UserService,
+//     private profilePictureService: ProfilePictureService,
+//     private notificationBarService: NotificationBarService,
+//   ) { }
+
+//   public login(): void {
+//     this.auth0.authorize()
+//   }
+
+//   public authenticated(): boolean {
+//     if (localStorage.getItem('access_token') && localStorage.getItem('id_token')) {
+//       const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+//       return new Date().getTime() < expiresAt;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   public IsCommuintyManager(): boolean {
+//     if (this.authenticated()) {
+//       var roles = JSON.parse(localStorage.getItem('roles'));
+//       if ('4' in roles)
+//         return true;
+//     }
+//     return false;
+//   }
+
+//   public handleAuthentication(): void {
+//     const self = this;
+//     this.auth0.parseHash((err, authResult) => {
+//       if (err && err.error == "unauthorized") {
+//         localStorage.setItem('under_age', 'true');
+//         this.notificationBarService.create({ message: 'Only Makers 13 years and older can register. Please come back when you\'re a teenager.', type: NotificationType.Error, autoHide: false, allowClose: true, hideOnHover: false });
+//         return ;
+//       }
+//       if (authResult && authResult.accessToken && authResult.idToken) {
+//         self.auth0.client.userInfo(authResult.accessToken, (perr, profile) => {
+//           if (perr || !profile) {
+//             console.log(perr);
+//             return;
+//           }
+//           var data = profile;
+//           data.idToken = authResult.idToken;
+//           data.user_id = profile.sub;
+//           data.access_token = authResult.access_token;
+//           if (!profile.email_verified) {
+//             this.notificationBarService.create({ message: 'For your security, check email for our Welcome message and activate your Maker Share account.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
+//             return;
+//           }
+//           this.userService.auth0_authenticate(data).subscribe(res => {
+//             if (res.user.uid != 0) {
+//               self.setSession(authResult,res.user);
+//               this.profilePictureService.update(res.user_photo);
+//               if (res.first_time == true) {
+//                 setTimeout(function () {
+//                   self.router.navigate(['portfolio']);
+//                 }, 1000);
+//               } else if (res.user_photo.indexOf('profile-default') < 0) {
+//                 this.router.navigate(['/']);
+//               }
+//             } else {
+//               localStorage.setItem('user_id', '0');
+//             }
+//             this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
+//             // if the first time, navigate to edit profile page
+//             if (res.user_photo.indexOf('profile-default.png') >= 0) {
+//               this.notificationBarService.create({ message: 'Please upload a profile photo now to get started creating projects.', type: NotificationType.Warning, autoHide: false, allowClose: true, hideOnHover: false });
+//               setTimeout(function (context) {
+//                 context.router.navigate(['/portfolio/']);
+//               }, 500, this);
+//             }
+//           });
+//         });
+//       }
+//     });
+//   }
+
+
+//   private setSession(authResult,user): void {
+//     // Set the time that the access token will expire at
+//     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+//     localStorage.setItem('expires_at', expiresAt);
+//     localStorage.setItem('access_token', authResult.accessToken);
+//     localStorage.setItem('id_token', authResult.idToken);
+//     localStorage.setItem('user_id', user.uid);
+//     localStorage.setItem('user_name', user.name);
+//     localStorage.setItem('roles', JSON.stringify(user.roles));
+//     window.location.hash = '';
+//   }
+
+//   public logout(): void {
+//     // logout from back-end
+//     this.userService.auth0_logout().subscribe(res => {
+//       this.mainService.removeCookies();
+//       this.router.navigateByUrl('/');
+//     }, err => {});
+//     // Remove tokens and expiry time from localStorage
+//     localStorage.removeItem('access_token');
+//     localStorage.removeItem('id_token');;
+//     localStorage.removeItem('user_id');
+//     localStorage.removeItem('user_name');
+//     localStorage.removeItem('user_photo');
+//     localStorage.removeItem('expires_at');
+//     // Go back to the home route
+//     this.router.navigate(['/']);
+//   }
+// }
