@@ -1,4 +1,5 @@
-
+<div class="container">
 <div class="projects-grid row" *ngIf="companies">
- <app-company-card *ngFor="let company of companies; let i=index" [cardData]="companies[i]"> </app-company-card>
+ <app-company-card *ngFor="let company of companies; let i=index" class="card-wrapper col-md-6 col-lg-4 pull-left" [cardData]="companies[i]" [state]="'tall'"> </app-company-card>
+</div>
 </div>
