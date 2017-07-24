@@ -16,6 +16,7 @@ export class LikeComponent implements OnInit {
   @Input() user;
   @Input() showcase = false;
   @Input() project = false;
+  // Emits Count to parent Component
   @Output() countNumber = new EventEmitter<number>();
   userId;
   hideloadmorelike = true;
@@ -36,7 +37,6 @@ export class LikeComponent implements OnInit {
     private flagService: FlagService,
     private config: NgbTooltipConfig,
     private modalService: NgbModal,
-
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
@@ -47,7 +47,6 @@ export class LikeComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       if (data && this.userId) {
-        /*like start */
         this.flagService.isFlagged(this.nodeNid, this.userId, 'like').subscribe(data => {
           this.isLiked = data[0];
           this.like = this.isLiked? "Unlike this idea": "Like this idea";
@@ -70,7 +69,7 @@ export class LikeComponent implements OnInit {
   /* function like */
   likeThis(e: Event) {
     e.preventDefault();
-    this.toggleFlag = this.isLiked? 'flag':'unflag';
+    this.toggleFlag = this.isLiked? 'unflag':'flag';
     this.flagService[this.toggleFlag](this.nodeNid, this.userId, 'like').subscribe(response => {
       this.countlikes = this.isLiked? this.countlikes--:this.countlikes++;
       this.isLiked = !this.isLiked;
@@ -98,7 +97,6 @@ export class LikeComponent implements OnInit {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
   }
-  /* end function like */
   loadMoreLike() {
     this.pages++;
     this.getWhoLike();
