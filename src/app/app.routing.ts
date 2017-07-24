@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
 import { Four04Component } from './auth0/four04/four04.component';
 import { AccessRestrictedComponent } from './components/shared/access-restricted/access-restricted.component';

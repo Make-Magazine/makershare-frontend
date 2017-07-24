@@ -1,0 +1,45 @@
+<section class="page-showcase mb-5">
+  <div class="region region-content">
+    <div class="container page-header">
+      <h3>Showcases</h3>
+      <p>
+        Maker Showcases are collections of projects and makers curated by our Community Managers.
+      </p>
+    </div>
+    <div class="container clearfix">
+      <div class="filters" style="float: right;">
+        <div class="row justify-content-end align-items-center">
+          <div class="entries-count btn">
+            <p>{{showcaseCount}} Showcase{{showcaseCount > 1 ? 's' : ''}}</p>
+          </div>
+          <div class="dropdown-group">
+            <i class="dropdownIcon lnr lnr-chevron-down"></i>
+            <select class="shadowed explore-tags sorting-filter" id="filter-projects"
+                    (change)="SortShowcases($event.target.value)">
+              <option value="_none" class="btn" disabled>Sort By</option>
+              <option value="changed" class="btn">Most Recent</option>
+              <option value="changed_1" class="btn">Oldest</option>
+              <option value="title" class="btn">Title A-Z</option>
+              <option value="title_1" class="btn">Title Z-A</option>
+              <option value="count" class="btn">Most Liked</option>
+              <option value="php" class="btn">Most Viewed</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container showcases-container p-414">
+      <app-showcase-card [showcaseCard]="showcase"
+                         *ngFor="let showcase of showcases"></app-showcase-card>
+      <div *ngIf="showcases.length == 0">
+        <h4 class="text-center mt-5 mb-5">There are no showcases to show</h4>
+      </div>
+    </div>
+  </div>
+  <div class="text-center pt-3 pb-5" *ngIf="!hideloadmore">
+    <div>
+      <a class="btn btn-load-more" (click)="loadmore()">Load more</a>
+    </div>
+  </div>
+</section>

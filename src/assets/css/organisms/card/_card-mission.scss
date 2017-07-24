@@ -1,25 +1,49 @@
-.card.mission {
-	background: $darker-grey;
-	color: $white;
+.card {
+  &.mission {
+    padding-right: 0;
+    padding-bottom: 0;
+    .showcase-content {
+      background: $darker-grey;
 
-	.card-mission-sponsor {
-		position: absolute;
-		top: 1.5rem;
-		right: 1.5rem;
-	}
-	.card-owner-meta .card-owner-meta-info {
-		max-width: 100%;
-	}
-	.card-description-long {
-		display: block;
-		opacity: 1;
-	}
+      h3, p, span {
+        color: $white;
+      }
 
-	.card-info {
-		background: transparent;
-	}
+      .content-container {
+        .showcase-card-footer {
+          .showcase-card-footer-2 {
+            .showcase-card-count {
+              div {
+                line-height: 2.2rem;
+                text-align: left;
+              }
+              span {
+                vertical-align: baseline;
+                padding-right: 1rem;
+                i {
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
-	.card-owner-meta {
-		// height: 100%;
-	}
+    .card-mission-sponsor {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+    .card-owner-meta .card-owner-meta-info {
+      max-width: 100%;
+    }
+    .card-description-long {
+      display: block;
+      opacity: 1;
+    }
+    .card-info {
+      background: transparent;
+    }
+  }
 }
