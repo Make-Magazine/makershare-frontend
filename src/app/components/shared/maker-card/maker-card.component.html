@@ -7,7 +7,7 @@
       <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(card.profile_url)"></div>
       <div class="flag maker">maker</div>
 
-      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"> </app-feature>
+      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"> </app-feature>
 
       <app-card-badges [badges]="badges"></app-card-badges>
     </div>

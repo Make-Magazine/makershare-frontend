@@ -6,7 +6,7 @@
       <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">project</div>
       <!-- Start Feature Project -->
-      <app-feature *ngIf="Manager && project.nid" [id]="project.nid" [type]="'node'"> </app-feature>
+      <app-feature *ngIf="Manager && project.nid" [id]="project.nid" [type]="'node'" (Featured)="emitFeatured()"> </app-feature>
       <!-- End Feature Project -->
       <app-card-badges [badges]="badges"></app-card-badges>
       <a class="flex-text-container" href="projects/{{project.path}}">

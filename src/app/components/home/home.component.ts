@@ -6,12 +6,13 @@ import { Meta, Title } from '@angular/platform-browser';
 import * as globals from '../../d7services/globals';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  homeCards;
+  homeCards = [];
 
   constructor(private viewService: ViewService,
     private loaderService: LoaderService,
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     title: Title,
     meta: Meta
   ) {
-    
+
     title.setTitle(' Maker Share | Create. Connect. Learn. | By Make: + Intel');
     meta.addTags([
       {
@@ -36,11 +37,11 @@ export class HomeComponent implements OnInit {
     this.viewService.getView('maker_homepage_api').subscribe(data => {
       // this.homeCards = data;
       // console.log(this.homeCards[0].id)
-      for(var i = 0; i < data.length; i++) {
+      for (var i = 0; i < data.length; i++) {
         data[i].forcedNarrow = false; // set them all to false by default
 
-        if(i > 0) {
-          if(data[i-1].type == 'challenge') { //wide
+        if (i > 0) {
+          if (data[i - 1].type == 'challenge') { //wide
             data[i].forcedNarrow = true;
           }
         }
@@ -60,4 +61,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  UnFlagged() {
+    this.homeCards = [];
+    this.viewService.getView('maker_homepage_api').subscribe(data => {
+      for (var i = 0; i < data.length; i++) {
+        data[i].forcedNarrow = false;
+        if (i > 0) {
+          if (data[i - 1].type == 'challenge') {
+            data[i].forcedNarrow = true;
+          }
+        }
+      }
+      this.homeCards = data;
+    });
+  }
 }
