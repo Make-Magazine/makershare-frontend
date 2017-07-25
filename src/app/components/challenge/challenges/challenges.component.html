@@ -26,8 +26,9 @@
     </div>
 
     <div class="container">
-      <app-challenge-card [challengeNid]="challenge.nid"
-                          *ngFor="let challenge of challenges"></app-challenge-card>
+
+      <app-challenge-card class="card-wrapper" [challengeNid]="challenge.nid"
+                          *ngFor="let challenge of challenges" [state]="'wide'"></app-challenge-card>
 
       <div *ngIf="challenges.length == 0">
         <h4 class="text-center mt-5 mb-5">There are no missions to show</h4>
