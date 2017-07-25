@@ -20,7 +20,7 @@
 
           <app-feature *ngIf="Manager && showcaseCard.nid"
                        [id]="showcaseCard.nid"
-                       [type]="'node'"></app-feature>
+                       [type]="'node'" (Featured)="emitFeatured()"></app-feature>
 
           <div class="card-description">
             <p [innerHTML]="showcaseCard.description"

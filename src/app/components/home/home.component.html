@@ -26,24 +26,24 @@
         </div>-->
         <!-- Challenge Cards -->
         <div *ngIf="item.type == 'challenge'" class="card-wrapper">
-          <app-challenge-card [challengeNid]="item.entity_id" [front]=true [state]="item.forcedNarrow ? 'tall' : 'wide'"></app-challenge-card>
+          <app-challenge-card (Featured)="UnFlagged()" [challengeNid]="item.entity_id" [front]=true [state]="item.forcedNarrow ? 'tall' : 'wide'"></app-challenge-card>
         </div>
 
         <!-- Showcase Cards -->
         <div *ngIf="item.type == 'showcase' && item.entity_id" class="card-wrapper">
           <!-- <div class="showcase-card-backlayer-home-2" > -->
-            <app-showcase-gen-card *ngIf="item.entity_id" [showcaseNid]="item.entity_id" [state]="'tall'"></app-showcase-gen-card>
+            <app-showcase-gen-card (Featured)="UnFlagged()" *ngIf="item.entity_id" [showcaseNid]="item.entity_id" [state]="'tall'"></app-showcase-gen-card>
           <!-- </div> -->
         </div>
 
         <!-- Maker Cards -->
         <div class="card-wrapper" *ngIf="item.entity_type == 'user'">
-          <app-maker-card [uid]="item.entity_id" [state]="'tall'"></app-maker-card>
+          <app-maker-card (Featured)="UnFlagged()" [uid]="item.entity_id" [state]="'tall'"></app-maker-card>
         </div>
 
         <!-- Project Cards -->
         <div class="card-wrapper" *ngIf="item.entity_type == 'node' && item.type == 'project' ">
-          <app-project-card [view]="view" [nid]="item.entity_id" [state]="'tall'" [front]=true></app-project-card>
+          <app-project-card (Featured)="UnFlagged()" [view]="view" [nid]="item.entity_id" [state]="'tall'" [front]=true></app-project-card>
         </div>
 
         <!-- Learn Cards -->
