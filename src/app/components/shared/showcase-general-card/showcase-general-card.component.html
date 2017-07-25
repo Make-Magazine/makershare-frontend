@@ -1,6 +1,8 @@
 <div *ngIf="showcase && makers" class="card showcase {{state}}">
   <div *ngIf="makers.length == 0" class="card-image" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
-
+<app-feature *ngIf="Manager && showcaseNid"
+                       [id]="showcaseNid"
+                       [type]="'node'" (Featured)="emitFeatured()"></app-feature>
   <div class="card-image card-image-grid" *ngIf="makers.length > 0">
     <!-- <div > -->
     <app-maker-photo *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>

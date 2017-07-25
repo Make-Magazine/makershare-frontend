@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService, UserService } from '../../../d7services';
 import {
@@ -61,6 +61,9 @@ export class ChallengeCardComponent implements OnInit {
   @Input() challengeNid;
   @Input() front: boolean = false;
   @Input() first: boolean = false;
+  @Output() Featured = new EventEmitter<boolean>();
+  
+  
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -177,5 +180,8 @@ export class ChallengeCardComponent implements OnInit {
         this.router.navigate(['missions/enter-mission', nid]);
       }
     });
+  }
+  emitFeatured(){
+  this.Featured.emit()
   }
 }

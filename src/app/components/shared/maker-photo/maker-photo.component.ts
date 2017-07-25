@@ -20,11 +20,14 @@ export class MakerPhoto implements OnInit {
   }
   getMakerCard() {
     // console.log(this.maker);
-    this.viewService.getView('maker_card_data', [['uid', this.maker.uid]]).subscribe(data => {
-      // this.card = data[0];
-      // console.log('photo data');
-      // console.log(data);
-      this.photo_url = data[0].photo;
-    });
+    if (this.maker) {
+      this.viewService.getView('maker_card_data', [['uid', this.maker.uid]]).subscribe(data => {
+        // this.card = data[0];
+        // console.log('photo data');
+        if (data[0]) {
+          this.photo_url = data[0].photo;
+        }
+      });
+    }
   }
 }
