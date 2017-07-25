@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -15,7 +15,8 @@ export class ProjectCardComponent implements OnInit {
   @Input() view: string = 'grid';
   @Input() front;
   @Input() state;
-
+  @Output() Featured = new EventEmitter<boolean>();
+  
   badges = [];
   project = {};
   userId;
@@ -99,5 +100,8 @@ export class ProjectCardComponent implements OnInit {
     // if (this.project['uid']) {
 
     // }
+  }
+  emitFeatured(){
+    this.Featured.emit()
   }
 }
