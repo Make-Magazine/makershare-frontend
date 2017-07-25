@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,8 @@ export class MakerCardComponent implements OnInit {
   @Input() state;
   @Input() profile;
   @Input() cardData; // Input 'cardData' contain all maker data it's work on makers component only for test now
+  @Output() Featured = new EventEmitter<boolean>();
+  
   badges = [];
   project = {};
   card;
@@ -82,5 +84,8 @@ export class MakerCardComponent implements OnInit {
   leave() {
     if (this.latestPorjectImg)
       this.swtichImage = false;
+  }
+  emitFeatured(){
+  this.Featured.emit()
   }
 }
