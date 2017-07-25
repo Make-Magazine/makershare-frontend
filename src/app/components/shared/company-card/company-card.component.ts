@@ -7,25 +7,27 @@ import { Auth } from '../../../auth0/auth.service';
 @Component({
   selector: 'app-company-card',
   templateUrl: './company-card.component.html',
-   providers: [NgbTooltipConfig],
+  providers: [NgbTooltipConfig],
 })
 export class CompanyCardComponent implements OnInit {
 
-   @Input() cardData;
-     @Input() state;
+  @Input() cardData;
+  @Input() state;
 
- card;
+  card;
   constructor(public router: Router,
     public viewService: ViewService,
     public config: NgbTooltipConfig,
     public auth: Auth,
-    ) {
+  ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
   }
 
   ngOnInit() {
   }
-
+  goToProfile(path: string) {
+    this.router.navigate(['/portfolio/', path]);
+  }
 
 }
