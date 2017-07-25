@@ -2,28 +2,20 @@
   &.mission {
     padding-right: 0;
     padding-bottom: 0;
-    .showcase-content {
-      background: $darker-grey;
+    background: $darker-grey;
+    color: $white;
 
-      h3, p, span {
-        color: $white;
-      }
-
-      .content-container {
-        .showcase-card-footer {
-          .showcase-card-footer-2 {
-            .showcase-card-count {
-              div {
-                line-height: 2.2rem;
-                text-align: left;
-              }
-              span {
-                vertical-align: baseline;
-                padding-right: 1rem;
-                i {
-                  color: $white;
-                }
-              }
+    .content-container {
+      .showcase-card-footer {
+        .showcase-card-footer-2 {
+          .showcase-card-count {
+            div {
+              line-height: 2.2rem;
+              text-align: left;
+            }
+            span {
+              vertical-align: baseline;
+              padding-right: 1rem;
             }
           }
         }
