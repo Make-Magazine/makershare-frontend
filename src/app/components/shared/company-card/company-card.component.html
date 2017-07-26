@@ -22,7 +22,7 @@
           <div class="card-owners-group">
             <p>Admin : <a class="card-owner-link d-inline" (click)="goToProfile(cardData.profile_url)" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a></p>
           </div>
-          <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span>
+          <!-- <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span> -->
 
         </div>
       </div>
