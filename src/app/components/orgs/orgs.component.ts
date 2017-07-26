@@ -16,6 +16,7 @@ export class OrgsComponent implements OnInit {
   trustedLink;
   nid;
   path;
+  current_active_tab;
 
   constructor(
     private viewService: ViewService,
@@ -26,7 +27,7 @@ export class OrgsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.current_active_tab = 'about-us';
     this.path = this.route.snapshot.params['path'];
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'company_profile').subscribe(id => {
@@ -34,7 +35,7 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
-            console.log(this.company)
+            // console.log(this.company)
             if (this.company.company_description) {
               let link = this.company.company_description;
               this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
