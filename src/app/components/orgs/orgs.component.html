@@ -57,43 +57,51 @@
       </div>
     </div>
   </div>-->
-  <div *ngIf="company">
+<div *ngIf="company">
   <div class="container-fluid">
     <!-- Oraganization Header  -->
-     <img class="card-img" src="{{company.company_cover_photo}}">
-      
-       <div>
-        <h2 class="text-center">{{company.company_name}}</h2>
-      </div>
-       <div>
-        <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
+    <img class="card-img" src="{{company.company_cover_photo}}">
+
+    <div>
+      <h2 class="text-center">{{company.company_name}}</h2>
+    </div>
+    <div>
+      <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
           {{company.address.administrative_area}}</small></p>
-      </div>
-      
+    </div>
+
   </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <!-- About Us Text Area  -->
-        <a href="" class="btn button-item"
-                    (click)="changeOrgsTab('followers',$event)">Followers</a>
-      </div>
-      <div class="col-md-4" *ngIf="company">
-        <!-- About Us Side Bar  -->
-        
-        <ul>
-          <h1>Contact</h1>
-           <li> Phone: {{company.phone_number}}</li>
-           <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
-           <li> # of employees: {{company.employees}}</li>
-           <li> Founder: {{company.founder_name}}</li>
-           <li> Founded: {{company.founded_date}}</li>
-           <li> Type of business: {{company.business}}</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <!-- Our Team  -->
-      </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- About Us Text Area  -->
+      <a href="" class="btn button-item" (click)="changeOrgsTab('followers',$event)">Followers</a>
+    </div>
+    <div class="col-md-4" *ngIf="company">
+      <!-- About Us Side Bar  -->
+
+      <ul>
+        <h1>Contact</h1>
+        <li> Phone: {{company.phone_number}}</li>
+        <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
+        <li> # of employees: {{company.employees}}</li>
+        <li> Founder: {{company.founder_name}}</li>
+        <li> Founded: {{company.founded_date}}</li>
+        <li> Type of business: {{company.business}}</li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <!-- Our Team  -->
+      <app-orgs-followers *ngIf="activeTab=='followers'" [company_nid]="nid"></app-orgs-followers>
+      <!-- {{Followers | json}} -->
+       <!-- <div *ngIf="Followers" class="">
+          <div *ngFor="let maker of Followers;">   
+          <img *ngIf="maker.user_photo" src={{maker.user_photo}} class="" alt="Responsive image">  
+         </div>  
+         <!-- <span *ngIf="Followers.count_all > 3">Load More</span> -->
+        <!-- </div>  -->
+
     </div>
   </div>
+</div>
