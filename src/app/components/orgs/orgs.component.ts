@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../d7services/view/view.service';
+import { ViewService, MainService } from '../../d7services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NodeService } from '../../d7services';
-
+import * as globals from '../../d7services/globals';
 
 @Component({
   selector: 'app-orgs',
@@ -17,9 +17,11 @@ export class OrgsComponent implements OnInit {
   nid;
   path;
   activeTab;
-
+  Followers;
+  folow
   constructor(
     private viewService: ViewService,
+    private mainService: MainService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private nodeService: NodeService,
@@ -41,6 +43,7 @@ export class OrgsComponent implements OnInit {
               this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
             }
           });
+          this.getFollowers();
         } else {
           this.router.navigate(['**']);
         }
@@ -54,4 +57,19 @@ export class OrgsComponent implements OnInit {
     this.activeTab = NewTab;
   }
   /*  end function to change tab*/
+
+  getFollowers() {
+    let body = {
+      "nid": this.nid,
+    };
+
+    this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_company_followers', body).map(res => res.json()).subscribe(res => {
+      this.Followers = res;
+
+      console.log(this.Followers);
+
+    }, err => {
+      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
+    });
+  }
 }
