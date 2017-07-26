@@ -59,7 +59,7 @@ export class LikeComponent implements OnInit {
     e.preventDefault();
     this.toggleFlag = this.isLiked? 'unflag':'flag';
     this.flagService[this.toggleFlag](this.nodeNid, this.userId, 'like').subscribe(response => {
-      this.countlikes = this.isLiked? this.countlikes--:this.countlikes++;
+      this.countlikes = this.isLiked? --this.countlikes:++this.countlikes;
       this.isLiked = !this.isLiked;
       this.like = this.isLiked? "Unlike this idea": "Like this idea";
       this.whoLikeMini = this.whoLikeFull = [];
