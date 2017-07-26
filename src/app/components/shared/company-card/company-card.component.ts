@@ -25,6 +25,7 @@ export class CompanyCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.cardData)
   }
   goToProfile(path: string) {
     this.router.navigate(['/portfolio/', path]);
