@@ -16,9 +16,7 @@
           }">-->
       <div *ngFor="let item of homeCards"
            class="item-{{index}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
-
-        <div class="card-wrapper"
-             *ngIf="item.entity_id">
+        <div class="card-wrapper">
           <!-- Mission -->
           <app-challenge-card *ngIf="item.type == 'challenge'"
                               [challengeNid]="item.entity_id"
