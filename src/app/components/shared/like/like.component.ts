@@ -91,7 +91,7 @@ export class LikeComponent implements OnInit {
     this.getWhoLike();
   }
   loadMoreVisibilty() {
-      this.hideloadmorelike = (this.countlikes >= this.whoLikeFull.length)? true:false;
+      this.hideloadmorelike = (this.countlikes <= this.whoLikeFull.length)? true:false;
   }
   goToProfile(path: string) {
     if(window.location.href.indexOf('portfolio') != -1){
