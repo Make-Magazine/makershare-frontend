@@ -7,7 +7,7 @@
     <li class="d-block" *ngFor="let liker of whoLikeMini;">
       <span class="text-tooltip-name" *ngIf="liker.profile_url" (click)="goToProfile(liker.profile_url)"> {{liker?.first_name}} {{liker?.last_name}}</span>
     </li>
-    <span *ngIf="whoLikeMini < whoLikeFull" (click)="open(content)">+ {{whoLikeFull.length - whoLikeMini.length}} more</span>
+    <span *ngIf="whoLikeMini < whoLikeFull" (click)="open(content)">+ {{countlikes - whoLikeMini.length}} more</span>
   </ul>
 </div>
 
