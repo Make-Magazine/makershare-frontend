@@ -1,0 +1,105 @@
+<!--<div  *ngIf="company">
+    
+    <section class="container">
+      <div class="row ">
+          <img src={{company.company_cover_photo}} class="w-100 h-25 p-2" alt="Responsive image">
+      </div>
+    </section>
+
+    <div> Company Logo
+      <img src={{company.company_logo}} class="p-2" alt="Responsive image">
+    </div>
+    <div> Company Name
+      <p>{{company.company_name}}</p>
+    </div>
+    <div *ngIf="company.field_company_tags">
+      <div *ngFor="let tags of  company.field_company_tags">
+        <p *ngIf="!tags.is_parent">
+          {{tags.name}}
+        </p>
+      </div>
+    </div>
+    <div> About us
+      <p [innerHTML]="trustedLink"></p>
+    </div>
+    <div *ngIf="company.field_maker_memberships"> Our Team
+      <div *ngFor="let team of company.field_maker_memberships">
+        <p>{{team.full_name}} </p>
+        <p>{{team.field_membership_role}} </p>
+      </div>
+    </div>
+    <div> Social
+      <p>Facebook: {{company.field_facebook}}</p>
+      <p>Linkedin: {{company.field_linkedin}}</p>
+      <p>Twitter: {{company.field_twitter}}</p>
+    </div>
+    <div> Websites
+      <a href="{{company.field_website_or_blog}}"></a>
+    </div>
+  </div>-->
+
+<!--<div *ngIf="company">
+  <div class="card card-inverse">
+    <img class="card-img" src="{{company.company_cover_photo}}">
+    <div class="card-img-overlay">
+      <div class="card-block text-nowrap w-25 p-3">
+        <h2 class="text-center bg-inverse text-white">{{company.company_name}}</h2>
+      </div>
+      <div class="text-center" style="display:-webkit-box;" *ngIf="company.field_company_tags">
+        <div *ngFor="let tags of  company.field_company_tags">
+          <p class="text-white" *ngIf="!tags.is_parent">
+            {{tags.name}},
+          </p>
+        </div>
+      </div>
+      <div>
+        <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.company_name}}</small></p>
+      </div>
+    </div>
+  </div>-->
+<div *ngIf="company">
+  <div class="container-fluid">
+    <!-- Oraganization Header  -->
+    <img class="card-img" src="{{company.company_cover_photo}}">
+
+    <div>
+      <h2 class="text-center">{{company.company_name}}</h2>
+    </div>
+    <div>
+      <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
+          {{company.address.administrative_area}}</small></p>
+    </div>
+
+
+    <header class="mr-auto col-lg-6">
+      <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center">
+        <li><a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }">About Us</a></li>
+        <li><a (click)="current_active_tab = 'projects'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'projects' }">Projects</a></li>
+      </ul>
+    </header>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
+      <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
+    </div>
+    <div class="col-md-4" *ngIf="company">
+      <!-- About Us Side Bar  -->
+
+      <ul>
+        <h1>Contact</h1>
+        <li> Phone: {{company.phone_number}}</li>
+        <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
+        <li> # of employees: {{company.employees}}</li>
+        <li> Founder: {{company.founder_name}}</li>
+        <li> Founded: {{company.founded_date}}</li>
+        <li> Type of business: {{company.business}}</li>
+      </ul>
+    </div>
+    <div class="col-md-12">
+      <!-- Our Team  -->
+    </div>
+  </div>
+</div>

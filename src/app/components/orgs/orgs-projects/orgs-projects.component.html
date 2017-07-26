@@ -1,5 +1,6 @@
- <div class="container">
+<div class="container">
   <div class="row" *ngIf="projects">
-    <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.target_id" [state]="'tall'"></app-project-card>
+    <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.nid"
+        [state]="'tall'"></app-project-card>
   </div>
 </div> 
