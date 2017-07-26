@@ -35,7 +35,6 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
-            // console.log(this.company)
             if (this.company.company_description) {
               let link = this.company.company_description;
               this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
