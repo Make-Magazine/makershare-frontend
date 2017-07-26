@@ -16,6 +16,7 @@ export class OrgsComponent implements OnInit {
   trustedLink;
   nid;
   path;
+  activeTab;
 
   constructor(
     private viewService: ViewService,
@@ -46,4 +47,11 @@ export class OrgsComponent implements OnInit {
       })
     }
   }
+
+  /* function to change tab*/
+  changeOrgsTab(NewTab, e) {
+    e.preventDefault();
+    this.activeTab = NewTab;
+  }
+  /*  end function to change tab*/
 }
