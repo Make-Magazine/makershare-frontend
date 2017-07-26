@@ -23,6 +23,6 @@ export class SimpleOverviewEntity implements ISimpleOverviewEntity {
   entity_id: string;
   entity_type: string;
   forcedNarrow: boolean = false;
-  type: EntityType;
+  type: EntityType = null;
   size: EntityGridSize = null;
 }
