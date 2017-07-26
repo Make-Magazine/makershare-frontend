@@ -54,7 +54,7 @@ export class LikeComponent implements OnInit {
       this.countNumber.emit(this.countlikes);
     })
   }
-  
+
   likeThis(e: Event) {
     e.preventDefault();
     this.toggleFlag = this.isLiked? 'unflag':'flag';
@@ -63,11 +63,12 @@ export class LikeComponent implements OnInit {
       this.isLiked = !this.isLiked;
       this.like = this.isLiked? "Unlike this idea": "Like this idea";
       this.whoLikeMini = this.whoLikeFull = [];
+      this.pages = 0;
       this.getWhoLike();
     });
   }
   getWhoLike() {
-    this.viewService.getView('who-liked', [['nid', this.nodeNid]]).subscribe(data => {
+    this.viewService.getView('who-liked', [['nid', this.nodeNid],['page',this.pages]]).subscribe(data => {
       this.whoLikeFull = this.whoLikeFull.concat(data);
       if(this.whoLikeMini.length == 0){
         this.whoLikeMini = data;
