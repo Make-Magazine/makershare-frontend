@@ -8,25 +8,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-like',
   templateUrl: './like.component.html',
   providers: [NgbTooltipConfig],
-
 })
 export class LikeComponent implements OnInit {
   @Input() nodeNid;
-  // DKY user is input??
-  @Input() user;
   @Input() showcase = false;
   @Input() project = false;
-  // Emits Count to parent Component
   @Output() countNumber = new EventEmitter<number>();
   userId;
-  hideloadmorelike = true;
+  hideloadmorelike = false;
   closeResult: string;
   pages: number = 0;
   whoLikeMini = [];
   whoLikeFull = [];
   countlikes:number = 0;
-  countLikers: number = 0;
-  liked = false;
   toggleFlag:string;
   like: string;
   isLiked = false;
@@ -51,22 +45,16 @@ export class LikeComponent implements OnInit {
           this.isLiked = data[0];
           this.like = this.isLiked? "Unlike this idea": "Like this idea";
         })
-      }//end else 
-    });//end userservice isLogedIn
-
+      }
+    });
   }
   countLikes() {
     this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
-      this.countlikes = response['count'];
-      if (this.countlikes >= 1) {
-        this.countNumber.emit(this.countlikes);
-      } else {
-        this.countlikes = 0;
-        this.countNumber.emit(this.countlikes);
-      }
+      this.countlikes = response['count']? response['count']:0;
+      this.countNumber.emit(this.countlikes);
     })
   }
-  /* function like */
+  
   likeThis(e: Event) {
     e.preventDefault();
     this.toggleFlag = this.isLiked? 'unflag':'flag';
@@ -74,8 +62,7 @@ export class LikeComponent implements OnInit {
       this.countlikes = this.isLiked? this.countlikes--:this.countlikes++;
       this.isLiked = !this.isLiked;
       this.like = this.isLiked? "Unlike this idea": "Like this idea";
-      this.whoLikeMini = [];
-      this.whoLikeFull = [];
+      this.whoLikeMini = this.whoLikeFull = [];
       this.getWhoLike();
     });
   }
@@ -88,6 +75,7 @@ export class LikeComponent implements OnInit {
           this.whoLikeMini.length = 7;
         }
       }
+      this.loadMoreVisibilty();
     });
   }
   open(content) {
@@ -102,11 +90,7 @@ export class LikeComponent implements OnInit {
     this.getWhoLike();
   }
   loadMoreVisibilty() {
-    if (this.countLikers >= this.whoLikeFull.length) {
-      this.hideloadmorelike = true;
-    } else if (this.countLikers > this.whoLikeFull.length) {
-      this.hideloadmorelike = false;
-    }
+      this.hideloadmorelike = (this.countlikes >= this.whoLikeFull.length)? true:false;
   }
   goToProfile(path: string) {
     if(window.location.href.indexOf('portfolio') != -1){
