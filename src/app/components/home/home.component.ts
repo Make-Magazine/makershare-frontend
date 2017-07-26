@@ -49,38 +49,46 @@ export class HomeComponent implements OnInit {
           let usedColumnsOnLine: number = 0;
           const columnsPerLine: number = 3;
 
-          this.homeCards = data.map((card: SimpleOverviewEntity, i: number) => {
-            // let forcedNarrow: boolean = false;
-            let elementSize: EntityGridSize = EntityGridSize.TALL;
+          this.homeCards = data.reduce(
+            (
+              results: SimpleOverviewEntity[],
+              card: SimpleOverviewEntity,
+              i: number,
+            ) => {
+              let elementSize: EntityGridSize = EntityGridSize.TALL;
 
-            // When type is missing, it's a maker
-            if (!card.type) {
-              if (card.entity_type === 'user') {
-                card.type = EntityType.MAKER;
+              // When type is missing, it's a maker
+              if (!card.type) {
+                if (card.entity_type === 'user') {
+                  card.type = EntityType.MAKER;
+                }
               }
-            }
 
-            // If type challenge and more than one column remaining on the line
-            // if (i > 0) {
-            if (
-              data[i].type === EntityType.CHALLENGE &&
-              usedColumnsOnLine < 2
-            ) {
-              elementSize = EntityGridSize.WIDE;
-            }
-            // }
+              // If type challenge and more than one column remaining on the line
+              if (
+                data[i].type === EntityType.CHALLENGE &&
+                usedColumnsOnLine < 2
+              ) {
+                elementSize = EntityGridSize.WIDE;
+              }
 
-            card.size = elementSize;
+              card.size = elementSize;
 
-            // Increment columns
-            usedColumnsOnLine += elementSize === EntityGridSize.WIDE ? 2 : 1;
+              // Increment columns
+              usedColumnsOnLine += elementSize === EntityGridSize.WIDE ? 2 : 1;
 
-            if (usedColumnsOnLine === columnsPerLine) {
-              usedColumnsOnLine = 0;
-            }
+              if (usedColumnsOnLine === columnsPerLine) {
+                usedColumnsOnLine = 0;
+              }
 
-            return card;
-          });
+              if (card.type && card.entity_id) {
+                results.push(card);
+              }
+
+              return results;
+            },
+            [],
+          );
 
           // this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
           // this.meta.setTag('og:image', '/assets/logo.png');
