@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService } from '../../../d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ export class MakerCardComponent implements OnInit {
   @Input() profile;
   @Input() cardData; // Input 'cardData' contain all maker data it's work on makers component only for test now
   @Output() Featured = new EventEmitter<boolean>();
-  
+
   badges = [];
   project = {};
   card;
@@ -37,15 +37,16 @@ export class MakerCardComponent implements OnInit {
   }
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
-    if (this.cardData.uid){
-      this.uid=this.cardData.uid;
-    }
-   if (this.uid) {
-      this.getMakerCard();
-    }
+    // if (this.cardData.uid){
+    //   this.uid=this.cardData.uid;
+    // }
+
+    this.getMakerCard();
+
     this.getMakerBadges();
     this.CountMakerProjects();
     this.getLatestProject();
+
   }
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
@@ -85,7 +86,7 @@ export class MakerCardComponent implements OnInit {
     if (this.latestPorjectImg)
       this.swtichImage = false;
   }
-  emitFeatured(){
-  this.Featured.emit()
+  emitFeatured() {
+    this.Featured.emit()
   }
 }

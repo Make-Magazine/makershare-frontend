@@ -1,9 +1,9 @@
 <!-- start company card test  -->
 <div *ngIf="cardData" class="card project {{state}}">
-  <div class="card-image" [style.background-image]="'url('+cardData.company_cover_photo+')'"></div>
+  <div class="card-image" [style.background-image]="'url('+cardData.orgs_cover_photo+')'"></div>
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt" [style.background-image]="'url('+cardData.company_cover_photo+')'"></div>
+      <div class="card-image alt" [style.background-image]="'url('+cardData.orgs_cover_photo+')'"></div>
       <!-- no alt bg for companies but we still need the div here for hovers -->
       <div class="flag project">Company</div>
       <!-- Start Feature Company -->
@@ -16,13 +16,15 @@
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{cardData.company_logo}}" />
+        <img class="card-owner-media" src="{{cardData.orgs_logo}}" />
         <div class="card-owner-meta-info">
-          <span class="card-title" innerHTML="{{cardData.company_name}}"></span>
+          <span class="card-title" innerHTML="{{cardData.Orgs_name}}"></span>
           <div class="card-owners-group">
             <p>Admin : <a class="card-owner-link d-inline" (click)="goToProfile(cardData.profile_url)" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a></p>
           </div>
-          <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span>
+
+          <!-- <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span> -->
+
 
         </div>
       </div>
