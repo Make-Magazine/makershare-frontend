@@ -19,6 +19,7 @@ export class OrgsAboutUsComponent implements OnInit {
       for (let i = 0; i < this.description.videos.length; i++) {
         let link = this.description.videos[i].video;
         this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
+        console.log(this.trustedLink)
       }
     }
   }
