@@ -1,39 +1,57 @@
 // default blue
 .button, button {
-	-webkit-appearance: none;
-	background: $highlight-bright-blue;
-	color: $white;
-	padding: 1rem 1.5rem;
-	border: 0;
-	font-size: 1.2rem;
-	transition: background 0.3s ease;
-	cursor: pointer;
+  -webkit-appearance: none;
+  background: $highlight-bright-blue;
+  color: $white;
+  padding: 1rem 1.5rem;
+  border: 0;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+  cursor: pointer;
 
-	&:focus {
-		border: 0;
-		box-shadow: none;
-	}
+  &:focus {
+    border: 0;
+    box-shadow: none;
+  }
 
-	&:hover, &:active {
-		background: darken($highlight-bright-blue, 20%);
-	}
+  &:hover, &:active {
+    background: darken($highlight-bright-blue, 20%);
+  }
 
+  &.grey, &.disabled {
+    background: $medium-grey;
+    cursor: not-allowed;
 
-	&.grey, &.disabled {
-		background: $medium-grey;
-		cursor: not-allowed;
+    &.-no-bg {
+      color: $dark-grey;
+    }
 
-		&:hover, &:active {
-			background: $medium-grey; // no hover for disabled
-		}
-	}
+    &.-border {
+      border: .1rem $dark-grey solid;
+    }
 
-	&.red, &.warning {
-		background: $highlight-red;
+    &:hover, &:active {
+      background: $medium-grey; // no hover for disabled
+    }
+  }
 
-		&:hover, &:active {
-			background: darken($highlight-red, 20%);
-		}
-	}
+  &.red, &.warning {
+    background: $highlight-red;
 
+    &:hover, &:active {
+      background: darken($highlight-red, 20%);
+    }
+  }
+
+  &.-no-bg {
+    background-color: transparent;
+  }
+
+  &.-big {
+    font-size: 1.6rem;
+  }
+
+  &.-slim {
+    padding: .5rem 1.5rem;
+  }
 }
