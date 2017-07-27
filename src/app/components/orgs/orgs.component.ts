@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, MainService } from '../../d7services';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NodeService } from '../../d7services';
 import * as globals from '../../d7services/globals';
@@ -28,7 +27,6 @@ export class OrgsComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private mainService: MainService,
-    private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private nodeService: NodeService,
     private router: Router,
@@ -43,10 +41,8 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
-            this.team = this.company['field_maker_memberships'];
-            if (this.company.company_description) {
-              let link = this.company.company_description;
-              this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
+            if (this.company) {
+              this.team = this.company['field_maker_memberships'];
             }
           });
           this.getLimitedFollowers();
@@ -71,6 +67,9 @@ export class OrgsComponent implements OnInit {
   getAllFollowers() {
     this.viewService.getView('company_followers', [['page', this.page], ['nid', this.nid]]).subscribe(data => {
       this.allFollwers = this.allFollwers.concat(data);
+      // console.log(this.allFollwers)
+      // this.loadMoreVisibilty();
+
       this.loadMoreVisibilty();
     }, err => {
     });
