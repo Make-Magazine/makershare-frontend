@@ -42,13 +42,13 @@
           <li> Founded: {{company.founded_date}}</li>
           <li> Type of business: {{company.business}}</li>
         </ul>
-        <div *ngIf="followers">
+        <div *ngIf="followers"> <p>Followers</p>
           <div *ngFor="let maker of followers;" class="d-inline">
 
             <img  *ngIf="maker.user_photo" width="100" height="100" src="{{maker.user_photo}}">
 
           </div>
-          <span *ngIf="followersCount"><span (click)="open(content)">+ {{followersCount-3}} loadmore</span></span>
+          <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
         </div>
       </div>
     </div>
