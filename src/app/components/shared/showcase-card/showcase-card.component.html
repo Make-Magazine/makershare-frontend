@@ -67,7 +67,8 @@
              *ngIf="showcaseCard.last_updated && singleView">
           <span class="update-date">Last updated: {{showcaseCard.last_updated}}</span>
         </div>
-        <div class="showcase-card-count d-flex flex-row">
+        <div class="showcase-card-count d-flex flex-row"
+             *ngIf="singleView">
           <div class="showcase-like" *ngIf="showcaseCard.nid">
             <app-like [nodeNid]="showcaseCard.nid" [user]="userId" [showcase]="true"
                       (countNumber)="likesCounter($event)"></app-like>
