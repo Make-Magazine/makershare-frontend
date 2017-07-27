@@ -21,7 +21,6 @@ export class FollowUserComponent implements OnInit {
   @Input() userfollower;
   @Output() countNumber = new EventEmitter<number>();
   @Output() countNumberFollowing = new EventEmitter<number>();
-
   @Output() HideLoadMore = new EventEmitter();
   userId;
   currentuser;
@@ -33,9 +32,6 @@ export class FollowUserComponent implements OnInit {
   hideloadmorefollow = true;
   hideloadmorefollowing = true;
   pages: number = 0;
-
-
-
   isFollowed;
   ButtonFollow;
   countFollowers = 0;
@@ -50,21 +46,14 @@ export class FollowUserComponent implements OnInit {
       } else {
         this.countFollowers = 0;
         this.countNumber.emit(this.countFollowers);
-
       }
     }, err => {
-
-
-      // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.flagService.getCountFollowing(this.userfollower).subscribe(response => {
       this.countFollowing = response[0];
       console.log(this.countFollowing);
       this.countNumberFollowing.emit(this.countFollowing);
     }, err => {
-
-
-      // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
@@ -116,7 +105,6 @@ export class FollowUserComponent implements OnInit {
           this.getWhoFollow();
           this.getWhoFollowing();
         }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
 
       } else {
@@ -129,7 +117,6 @@ export class FollowUserComponent implements OnInit {
           this.getWhoFollow();
           this.getWhoFollowing();
         }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
         });
       }
     });//end if check user login
@@ -156,11 +143,8 @@ export class FollowUserComponent implements OnInit {
 
       this.viewService.getView('who-follow', [['uid', this.CurrentLoggedUserId], ['page', this.pages]]).subscribe(data => {
         if (data[0]) {
-          //this.countLikers = data[0]['likes_count'];
         }
         this.whoFollow = this.whoFollow.concat(data);
-        // this.whoFollow = data;
-        // console.log(data)
         this.loadMoreVisibilty();
       });
     }
@@ -169,11 +153,8 @@ export class FollowUserComponent implements OnInit {
     if (this.CurrentLoggedUserId) {
       this.viewService.getView('who-following', [['uid', this.CurrentLoggedUserId]]).subscribe(data => {
         if (data[0]) {
-          //this.countLikers = data[0]['likes_count'];
         }
-        //this.whoFollowing = this.whoFollowing.concat(data);
         this.whoFollowing = data;
-        // console.log(data)
         //this.loadMoreVisibilty();
       });
     }
