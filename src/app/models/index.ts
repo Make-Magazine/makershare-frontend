@@ -4,3 +4,4 @@ export * from './filemanager';
 export * from './profile';
 export * from './makers';
 export * from './cards';
+export * from './molecules';

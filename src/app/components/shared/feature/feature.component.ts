@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlagService, UserService } from '../../../d7services';
 // import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -10,6 +10,7 @@ import { FlagService, UserService } from '../../../d7services';
 export class FeatureComponent implements OnInit {
   @Input() id;
   @Input() type;
+  @Output() Featured = new EventEmitter<boolean>();
   isFeatured: boolean = false;
   userId;
   checkUserLogin = false;
@@ -47,10 +48,11 @@ export class FeatureComponent implements OnInit {
     });
   }
   flagger(type: string) {
-    this.flagService
-      [type](this.id, this.userId, 'feature_' + this.type)
-      .subscribe(response => {
-        this.isFeatured = !this.isFeatured;
-      });
+    this.flagService[type](this.id, this.userId, 'feature_' + this.type).subscribe(response => {
+      this.isFeatured = !this.isFeatured;
+      if (!this.isFeatured) {
+        this.Featured.emit(true)
+      }
+    })
   }
 }

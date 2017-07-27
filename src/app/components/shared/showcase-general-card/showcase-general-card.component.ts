@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewService, FlagService } from '../../../d7services';
 import { Auth } from '../../../auth0/auth.service';
@@ -15,6 +15,7 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   Manager: boolean = false;
   @Input() showcaseNid;
   @Input() state;
+  @Output() Featured = new EventEmitter<boolean>();
   projectsCount = 0;
   constructor(
     private router: Router,
@@ -24,7 +25,6 @@ export class ShowcaseGeneralCardComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    this.auth.IsCommuintyManager();
     this.Manager = this.auth.IsCommuintyManager();
     this.userId = localStorage.getItem('user_id');
 
@@ -70,5 +70,8 @@ export class ShowcaseGeneralCardComponent implements OnInit {
       }
 
     })
+  }
+  emitFeatured(){
+  this.Featured.emit()
   }
 }
