@@ -1,5 +1,6 @@
 <div *ngIf="showcase && makers" class="card showcase {{state}}">
-  <div *ngIf="makers.length == 0" class="card-image" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
+  <div *ngIf="makers.length == 0" class="card-image"
+       [style.background-image]="'url('+showcase.cover_photo+')'"></div>
 
   <div class="card-image card-image-grid" *ngIf="makers.length > 0">
     <!-- <div > -->
@@ -8,18 +9,20 @@
   </div>
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt" *ngIf="makers.length == 0" [style.background-image]="'url('+showcase.cover_photo+')'"></div>
+      <div class="card-image alt" *ngIf="makers.length == 0"
+           [style.background-image]="'url('+showcase.cover_photo+')'"></div>
       <div class="card-image alt" *ngIf="makers.length > 0"></div>
       <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">showcase</div>
       <a class="flex-text-container" href="showcases/{{showcase.path}}">
         <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
-        <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.description_trim}}"></p>
+        <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)"
+           innerHTML="{{showcase.description_trim}}"></p>
       </a>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{showcase.cover_photo}}" />
+        <img class="card-owner-media" src="{{showcase.cover_photo}}"/>
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{showcase.showcase_name}}"></span>
           <div class="card-owners-group">

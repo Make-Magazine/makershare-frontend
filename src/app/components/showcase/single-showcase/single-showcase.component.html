@@ -1,0 +1,77 @@
+<section *ngIf="showcase" class="page-single-showcase">
+  <div class="region region-content">
+    <div class="container showcases-container">
+      <app-showcase-card [showcaseCard]="showcase"
+                         [singleView]="true"></app-showcase-card>
+    </div>
+
+    <div>
+      <div class="filters-container container clearfix">
+        <div class="filters">
+          <!--hide in mobiles screens-->
+          <div class="row justify-content-end align-items-center hidden-xs-down">
+            <div *ngIf="contentCount" class="entries-count btn">
+              <p *ngIf="contentCount==1">{{contentCount}} {{showcase.showcase_type}} &nbsp;</p>
+              <p *ngIf="contentCount>1">{{contentCount}} {{showcase.showcase_type}}s &nbsp;</p>
+            </div>
+            <div class="container text-center" *ngIf="contentCount == 0">
+              <p>No {{showcase.showcase_type}}s yet</p>
+            </div>
+            <div class="filters" *ngIf="contentCount">
+              <div class="dropdown-group" *ngIf='showcase.showcase_type == "Maker"'>
+                <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                <select class="shadowed explore-tags sorting-filter" id="filter-projects"
+                        (change)="sortShowcase($event.target.value)">
+                  <option value="_none" class="btn" disabled>Sort By</option>
+                  <option value="random_seed" class="btn">Mix 'Em Up</option>
+                  <option value="php_1" class="btn">Most projects</option>
+                  <option value="created" class="btn">Newest</option>
+                  <option value="field_first_name_value_1" class="btn">Name A-Z</option>
+                  <option value="field_first_name_value" class="btn">Name Z-A</option>
+                  <option value="php_2" class="btn">Most likes</option>
+                  <option value="php" class="btn">Most views</option>
+                </select>
+              </div>
+              <div class="dropdown-group" *ngIf='showcase.showcase_type == "Project"'>
+                <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                <select class="shadowed explore-tags sorting-filter" id="filter-projects"
+                        (change)="sortShowcase($event.target.value)">
+                  <option value="_none" class="btn" disabled>Sort By</option>
+                  <option value="random_seed" class="btn">Mix 'Em Up</option>
+                  <option value="title" class="btn">Name A-Z</option>
+                  <option value="title_1" class="btn">Name Z-A</option>
+                  <option value="count" class="btn">Most likes</option>
+                  <option value="php" class="btn">Most viewed</option>
+                  <option value="created" class="btn">Newest</option>
+                  <option value="created_1" class="btn">Oldest</option>
+                  <option value="changed" class="btn">Last updated</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4"
+               *ngFor="let item of ShowcaseItems; let i = index;">
+            <div class="card-wrapper">
+              <app-maker-card [uid]="item.uid"
+                              *ngIf="contentType == 2"
+                              [state]="'tall'"></app-maker-card>
+              <app-project-card [nid]="item.nid"
+                                *ngIf="contentType == 1"
+                                [state]="'tall'"></app-project-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-3 mb-5"
+           *ngIf="!hideloadmore">
+        <button class="grey -no-bg -border -big -slim"
+                (click)="loadmore()">Load more
+        </button>
+      </div>
+    </div>
+  </div>
+  <section>

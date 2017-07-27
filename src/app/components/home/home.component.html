@@ -14,8 +14,8 @@
         'col-md-8'            : item.type == 'challenge' ,
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
-      <div *ngFor="let item of homeCards"
-           class="item-{{index}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
+      <div *ngFor="let item of homeCards;let i=index"
+           class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
         <div class="card-wrapper">
           <!-- Mission -->
           <app-challenge-card *ngIf="item.type == 'challenge'"
