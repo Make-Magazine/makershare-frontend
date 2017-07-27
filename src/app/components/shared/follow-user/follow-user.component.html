@@ -1,10 +1,10 @@
 <div class="button-container-sec-2" *ngIf="ButtonFollow">
   <a class="btn btn-main-2" (click)="followThis($event)" [class.active]="!isFollowed">{{ButtonFollow}}</a>
 </div>
-<div *ngIf="countFollowers">
+<div *ngIf="countFollowers >= 1">
   <span (click)="follower(contentfollower)">{{countFollowers}} Followers</span>
 </div>
-<div *ngIf=" countFollowing">
+<div *ngIf="countFollowing >= 1">
   <span (click)="following(contentfollowing)">{{countFollowing}} Following</span>
 </div>
 <ng-template #contentfollower let-c="close" let-d="dismiss" class="like-modal">
