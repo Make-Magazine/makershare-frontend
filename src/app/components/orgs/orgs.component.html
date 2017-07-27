@@ -1,45 +1,57 @@
 <div *ngIf="company">
-  <div class="container-fluid">
-    <!-- Oraganization Header  -->
-    <img class="card-img" src="{{company.company_cover_photo}}">
-
-    <div>
-      <h2 class="text-center">{{company.company_name}}</h2>
-    </div>
-    <div>
-      <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <!-- Oraganization Header  -->
+        <img class="card-img" src="{{company.company_cover_photo}}">
+        <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center">
+          <li><a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }">About Us</a></li>
+          <li><a (click)="current_active_tab = 'projects'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'projects' }">Projects</a></li>
+        </ul>
+        <div>
+          <h2 class="text-center">{{company.company_name}}</h2>
+        </div>
+        <div>
+          <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
           {{company.address.administrative_area}}</small></p>
+        </div>
+      </div>
+      <div class="col-md-4" *ngIf="company">
+        <!-- About Us Side Bar  -->
+
+        <ul>
+          <h1>Contact</h1>
+          <li> Phone: {{company.phone_number}}</li>
+          <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
+          <li> # of employees: {{company.employees}}</li>
+          <li> Founder: {{company.founder_name}}</li>
+          <li> Founded: {{company.founded_date}}</li>
+          <li> Type of business: {{company.business}}</li>
+        </ul>
+      </div>
     </div>
+    <!-- <div class="row">
+      <header class="mr-auto col-lg-6">
+        
+      </header>
+    </div> -->
 
+    <div class="row">
+      <div class="col-md-8">
+        <a href="" class="btn button-item" (click)="changeOrgsTab('followers',$event)">Followers</a>
 
-    <header class="mr-auto col-lg-6">
-      <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center">
-        <li><a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }">About Us</a></li>
-        <li><a (click)="current_active_tab = 'projects'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'projects' }">Projects</a></li>
-      </ul>
-    </header>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <a href="" class="btn button-item" (click)="changeOrgsTab('followers',$event)">Followers</a>
+        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
+        <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
+      </div>
 
-      <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
-      <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
     </div>
-    <div class="col-md-4" *ngIf="company">
-      <!-- About Us Side Bar  -->
-
-      <ul>
-        <h1>Contact</h1>
-        <li> Phone: {{company.phone_number}}</li>
-        <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
-        <li> # of employees: {{company.employees}}</li>
-        <li> Founder: {{company.founder_name}}</li>
-        <li> Founded: {{company.founded_date}}</li>
-        <li> Type of business: {{company.business}}</li>
-      </ul>
+    <div class="text-center">
+      <h1>Our Team</h1>
+    </div>
+    <div class="row p-2" *ngIf="team">
+      <div class="col-4" *ngFor="let teams of team">
+        <app-user-card-small [uid]="teams.field_team_member"></app-user-card-small>
+      </div>
     </div>
     <div class="col-md-12" *ngIf="followers">
       <!-- Our Team  -->
@@ -52,27 +64,27 @@
       </div>
       <span *ngIf="followersCount"><span (click)="open(content)">{{followersCount-3}}loadmore</span></span>
     </div>
-  </div>
-</div>
-<ng-template #content let-c="close" let-d="dismiss" class="like-modal">
-  <div class="modal-header">
-    <span>{{countlikes}} Followers</span>
-    <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+    <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+      <div class="modal-header">
+        <span>{{countlikes}} Followers</span>
+        <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
+      </div>
+      <div class="modal-body" *ngIf="allFollwers">
+        <ul class="model-likes list-unstyled">
+          <li *ngFor="let follwer of allFollwers; ">
+            <img *ngIf="follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="{{follwer?.portfolio_photo}}"
+              (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')">
+            <img *ngIf="!follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="./assets/images/Gears-Grey.svg"
+              (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')">
+            <span (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{follwer?.first_name}} {{follwer?.last_name}} </span>
+          </li>
+        </ul>
+        <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike">
+          <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
+        </div>
+      </div>
+    </ng-template>
   </div>
-  <div class="modal-body" *ngIf="allFollwers">
-    <ul class="model-likes list-unstyled">
-      <li *ngFor="let follwer of allFollwers; ">
-        <img *ngIf="follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="{{follwer?.portfolio_photo}}"
-          (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')">
-        <img *ngIf="!follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="./assets/images/Gears-Grey.svg"
-          (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')">
-        <span (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{follwer?.first_name}} {{follwer?.last_name}} </span>
-      </li>
-    </ul>
-    <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike">
-      <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
-    </div>
-  </div>
-</ng-template>
+</div>
