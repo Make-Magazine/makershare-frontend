@@ -57,8 +57,9 @@ export class FollowUserComponent implements OnInit {
 
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
-    this.flagService.getCountFollowing(this.userId).subscribe(response => {
+    this.flagService.getCountFollowing(this.userfollower).subscribe(response => {
       this.countFollowing = response[0];
+      console.log(this.countFollowing);
       this.countNumberFollowing.emit(this.countFollowing);
     }, err => {
 
