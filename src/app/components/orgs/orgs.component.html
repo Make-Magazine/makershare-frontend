@@ -40,7 +40,7 @@
       <div class="col-md-8">
         <a href="" class="btn button-item" (click)="changeOrgsTab('followers',$event)">Followers</a>
 
-        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
+        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'" [description]="company.company_description"></app-orgs-about-us>
         <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
       </div>
 

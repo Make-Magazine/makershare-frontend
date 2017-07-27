@@ -1,13 +1,13 @@
 <div class="container">
     <header class="explore-header">
         <div class="container">
-            <h3>Companies</h3>
+            <h3>Organizations</h3>
             <div class="filters-group">
                 <div class="dropdown-group">
                     <i class="dropdownIcon lnr lnr-chevron-down"></i>
                     <select class="shadowed explore-tags" (change)="selectCompanyType($event.target.value)">
               <option value="0" disabled>Filter By</option>
-              <option value="All">All Companies</option>
+              <option value="All">All Organizations</option>
               <option value="non_profit">non-profit</option>
               <option value="start_up">startup</option>
             </select>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="filters projects-counter">
                     <div class="entries-count btn">
-                        <p *ngIf="countCompanies > 1">{{countCompanies}} Companies</p>
-                        <p *ngIf="countCompanies < 2">{{countCompanies}} Company</p>
+                        <p *ngIf="countCompanies > 1">{{countCompanies}} Organizations</p>
+                        <p *ngIf="countCompanies < 2">{{countCompanies}} Organization</p>
                     </div>
                 </div>
                 <!-- End filters -->

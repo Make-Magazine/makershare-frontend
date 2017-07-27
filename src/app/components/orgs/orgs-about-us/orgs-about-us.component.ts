@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-orgs-about-us',
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgsAboutUsComponent implements OnInit {
 
-  constructor() { }
+  @Input() description;
+  trustedLink
+  constructor(
+    private sanitizer: DomSanitizer,
+  ) { }
 
   ngOnInit() {
+    console.log(this.description)
+    if (this.description) {
+      for (let i = 0; i < this.description.videos.length; i++) {
+        let link = this.description.videos[i].video;
+        this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
+      }
+    }
   }
-
 }
