@@ -42,8 +42,38 @@
         <li> Type of business: {{company.business}}</li>
       </ul>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="followers">
       <!-- Our Team  -->
+              
+ <!-- {{Followers | json}} -->
+      <div *ngFor="let maker of followers;"> 
+       
+           <img *ngIf="maker.user_photo" class="card-img" src="{{maker.user_photo}}">
+
+      </div>
+          <span *ngIf="followersCount"><span (click)="open(content)">{{followersCount-3}}loadmore</span></span>
     </div>
   </div>
 </div>
+<ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+  <div class="modal-header">
+    <span>{{countlikes}} Followers</span>
+    <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="allFollwers">
+    <ul class="model-likes list-unstyled">
+      <li *ngFor="let follwer of allFollwers; ">
+        <img *ngIf="follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="{{follwer?.portfolio_photo}}" (click)="goToProfile(liker.profile_url)"
+          (click)="d('Cross click')">
+        <img *ngIf="!follwer?.portfolio_photo || follwer.profile_url " class="like-photo w-50" src="./assets/images/Gears-Grey.svg" (click)="goToProfile(liker.profile_url)"
+          (click)="d('Cross click')">
+        <span (click)="goToProfile(liker.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{follwer?.first_name}} {{follwer?.last_name}} </span>
+      </li>
+    </ul>
+    <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorelike">
+      <a class="btn btn-load-more" (click)="loadMoreLike()">Load more</a>
+    </div>
+  </div>
+</ng-template>
