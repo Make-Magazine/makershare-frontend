@@ -23,7 +23,11 @@ export class OrgsComponent implements OnInit {
   followersCount: number;
   folow
   current_active_tab;
+
   closeResult: string;
+
+  team = [];
+
 
   constructor(
     private viewService: ViewService,
@@ -45,6 +49,8 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
+            this.team = this.company['field_maker_memberships'];
+            // console.log(this.company)
             if (this.company.company_description) {
               let link = this.company.company_description;
               this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
@@ -76,6 +82,7 @@ export class OrgsComponent implements OnInit {
       this.followers = res['followers'];
       this.followersCount = res['count_all'];
       console.log(this.followersCount);
+
 
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
