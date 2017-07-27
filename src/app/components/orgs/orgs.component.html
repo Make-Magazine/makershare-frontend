@@ -1,9 +1,12 @@
 <div *ngIf="company">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <!-- Oraganization Header  -->
         <img class="card-img" src="{{company.company_cover_photo}}">
+
+        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
+        <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
         <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center">
           <li><a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }">About Us</a></li>
           <li><a (click)="current_active_tab = 'projects'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'projects' }">Projects</a></li>
@@ -16,7 +19,18 @@
           {{company.address.administrative_area}}</small></p>
         </div>
       </div>
-      <div class="col-md-4" *ngIf="company">
+
+    </div>
+    <!-- <div class="row">
+      <header class="mr-auto col-lg-6">
+        
+      </header>
+    </div> -->
+    <div class="row">
+      <div class="col-md-7">
+
+      </div>
+      <div class="col-md-5" *ngIf="company">
         <!-- About Us Side Bar  -->
 
         <ul>
@@ -28,23 +42,17 @@
           <li> Founded: {{company.founded_date}}</li>
           <li> Type of business: {{company.business}}</li>
         </ul>
+        <div *ngIf="followers">
+          <div *ngFor="let maker of followers;" class="d-inline">
+
+            <img *ngIf="maker.user_photo" width="100" height="100" src="{{maker.user_photo}}">
+
+          </div>
+          <span *ngIf="followersCount"><span (click)="open(content)">{{followersCount-3}}loadmore</span></span>
+        </div>
       </div>
     </div>
-    <!-- <div class="row">
-      <header class="mr-auto col-lg-6">
-        
-      </header>
-    </div> -->
 
-    <div class="row">
-      <div class="col-md-8">
-        <a href="" class="btn button-item" (click)="changeOrgsTab('followers',$event)">Followers</a>
-
-        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"></app-orgs-about-us>
-        <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
-      </div>
-
-    </div>
     <div class="text-center">
       <h1>Our Team</h1>
     </div>
@@ -57,12 +65,7 @@
       <!-- Our Team  -->
 
       <!-- {{Followers | json}} -->
-      <div *ngFor="let maker of followers;">
 
-        <img *ngIf="maker.user_photo" class="card-img" src="{{maker.user_photo}}">
-
-      </div>
-      <span *ngIf="followersCount"><span (click)="open(content)">{{followersCount-3}}loadmore</span></span>
     </div>
     <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
       <div class="modal-header">

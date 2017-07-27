@@ -17,9 +17,8 @@ export class OrgsComponent implements OnInit {
   trustedLink;
   nid;
   path;
-  activeTab;
   followers = [];
-  allFollwers=[];
+  allFollwers = [];
   followersCount: number;
   folow
   current_active_tab;
@@ -65,12 +64,7 @@ export class OrgsComponent implements OnInit {
     }
   }
 
-  /* function to change tab*/
-  changeOrgsTab(NewTab, e) {
-    e.preventDefault();
-    this.activeTab = NewTab;
-  }
-  /*  end function to change tab*/
+
 
   getLimitedFollowers() {
     let body = {
