@@ -10,12 +10,14 @@ import {
   EntityGridSize,
 } from '../../models/cards';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  private homeCards;
+
+  private homeCards = [];
 
   constructor(
     private viewService: ViewService,
@@ -28,7 +30,7 @@ export class HomeComponent implements OnInit {
     meta.addTags([
       {
         name: 'og:description',
-        content: 'test description in home page with og description',
+        content: 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.',
       },
       {
         name: 'og:image',
@@ -40,7 +42,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loaderService.display(true);
+    this.load();
+  }
+
+  /**
+   * load
+   *
+   * @param {boolean} showLoader
+   */
+  load(showLoader: boolean = true) {
+    if (showLoader) {
+      this.loaderService.display(true);
+    }
+
     this.viewService
       .getView<SimpleOverviewEntity[]>('maker_homepage_api')
       .subscribe(
@@ -90,18 +104,14 @@ export class HomeComponent implements OnInit {
             [],
           );
 
-          // this.meta.setTitle(` Maker Share | Create. Connect. Learn. | By Make: + Intel`);
-          // this.meta.setTag('og:image', '/assets/logo.png');
-          // this.meta.setTag('og:description', 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.');
-          this.loaderService.display(false);
-          // for (let r of data)
-          // if(r.type=="project"){
-          //   //console.log(r)
-          // }
-          // console.log(data)
+          if (showLoader) {
+            this.loaderService.display(false);
+          }
         },
         err => {
-          this.loaderService.display(true);
+          if (showLoader) {
+            this.loaderService.display(true);
+          }
         },
       );
   }

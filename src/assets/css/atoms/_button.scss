@@ -20,7 +20,6 @@
 
   &.grey, &.disabled {
     background: $medium-grey;
-    cursor: not-allowed;
 
     &.-no-bg {
       color: $dark-grey;
@@ -33,6 +32,10 @@
     &:hover, &:active {
       background: $medium-grey; // no hover for disabled
     }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
   }
 
   &.red, &.warning {

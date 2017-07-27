@@ -13,10 +13,13 @@ export class SortBySortingSet{
     this._viewService = viewService;
   }
 
-  Sort(ViewName:string ,Pages:number,categoryId?:number){
+  Sort(ViewName:string ,Pages:number,categoryId?:number,comapnyFilter?:string){
     var Params = [['page', Pages],['sort_by', this._SortSet.sort_by],['sort_order', this._SortSet.sort_order]];
     if(categoryId){
       Params.push(['category', categoryId]);
+    }
+    if(comapnyFilter){
+      Params.push(['orgs_type', comapnyFilter]);
     }
     return this._viewService.getView(ViewName,Params);
   }

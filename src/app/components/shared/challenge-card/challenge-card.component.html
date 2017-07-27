@@ -10,7 +10,11 @@
     </div>
     <div class="info-bottom">
       <span class="card-mission-sponsor"
-            *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}</span>
+            *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}
+        <div *ngIf="challenge">
+          <app-feature *ngIf="Manager && challengeNid" [id]="challengeNid" [type]="'node'" (Featured)="emitFeatured()"></app-feature>
+        </div>
+      </span>
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
           <span class="card-title">{{challenge.title}}</span>
@@ -46,8 +50,4 @@
       </ul>
     </div>
   </div>
-
-  <!--<app-feature *ngIf="Manager && showcaseCard.nid"
-               [id]="showcaseCard.nid"
-               [type]="'node'"></app-feature>-->
 </div>
