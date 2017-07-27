@@ -5,14 +5,14 @@
     <div class="info-top">
       <div class="card-image alt" [style.background-image]="'url('+cardData.orgs_cover_photo+')'"></div>
       <!-- no alt bg for companies but we still need the div here for hovers -->
-      <div class="flag project">Company</div>
+      <div class="flag project">Company </div>
       <!-- Start Feature Company -->
       <!-- <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'"> </app-feature> -->
       <!-- End Feature Company -->
       <app-card-badges [badges]="badges"></app-card-badges>
-      <a class="flex-text-container" href="orgs/{{cardData.path}}">
+      <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/orgs/',cardData.path]">
         <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
-      </a>
+      </span>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
