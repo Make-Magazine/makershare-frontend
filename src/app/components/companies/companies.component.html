@@ -16,21 +16,22 @@
                     <div class="dropdown-group">
                         <i class="dropdownIcon lnr lnr-chevron-down"></i>
                         <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortCompanies($event.target.value)">
-                <option value="_none" disabled class="btn" disabled>Sort By</option>
-                <option value="random_seed" class="btn">Mix 'Em Up</option>
-                <option value="created" class="btn">Most recent</option>
-                <option value="created_1" class="btn">Oldest</option>
-                <option value="title" class="btn">Title A-Z</option>
-                <option value="title_1" class="btn">Title Z-A</option>
-                <option value="count" class="btn">Most Followers</option>
-                <!-- <option value="php" class="btn">Most Project</option> -->
-            </select>
+                            <option value="_none" disabled class="btn" disabled>Sort By</option>
+                            <option value="random_seed" class="btn">Mix 'Em Up</option>
+                            <option value="created" class="btn">Most recent</option>
+                            <option value="created_1" class="btn">Oldest</option>
+                            <option value="title" class="btn">Title A-Z</option>
+                            <option value="title_1" class="btn">Title Z-A</option>
+                            <option value="count" class="btn">Most Followers</option>
+                            <!-- <option value="php" class="btn">Most Project</option> -->
+                        </select>
                     </div>
                 </div>
                 <div class="filters projects-counter">
                     <div class="entries-count btn">
                         <p *ngIf="countCompanies > 1">{{countCompanies}} Companies</p>
-                        <p *ngIf="countCompanies < 2">{{countCompanies}} Company</p>
+                        <p *ngIf="countCompanies == 1">{{countCompanies}} Company</p>
+
                     </div>
                 </div>
                 <!-- End filters -->
@@ -38,13 +39,15 @@
 
         </div>
     </header>
-    <div class="projects-grid row" *ngIf="companies">
+    <div class="projects-grid row" *ngIf="companies.length !=0;else noCompanies">
         <app-company-card *ngFor="let company of companies; let i=index" class="card-wrapper col-md-6 col-lg-4 pull-left" [cardData]="companies[i]"
             [state]="'tall'"> </app-company-card>
     </div>
+        
+    <ng-template #noCompanies class="text-center">
+        <h1>No Companies added yet</h1>
+    </ng-template>
     <div class="text-center pt-3 pb-5" *ngIf="showloadmoreCompany">
-        <div>
-            <a class="btn btn-load-more" (click)="loadMoreCompany()">Load more</a>
-        </div>
+        <a class="btn btn-load-more" (click)="loadMoreCompany()">Load more</a>
     </div>
 </div>
