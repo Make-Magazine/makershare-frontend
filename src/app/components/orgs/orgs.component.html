@@ -1,4 +1,3 @@
-
 <div *ngIf="company">
   <div class="container-fluid">
     <!-- Oraganization Header  -->
@@ -42,8 +41,12 @@
         <li> Type of business: {{company.business}}</li>
       </ul>
     </div>
-    <div class="col-md-12">
-      <!-- Our Team  -->
+  </div>
+  <div class="text-center">
+    <h1>Our Team</h1>
+  </div>
+  <div class="row p-2" *ngIf="team">
+    <div class="col-4" *ngFor="let teams of team">
+      <app-user-card-small [uid]="teams.field_team_member"></app-user-card-small>
     </div>
   </div>
-</div>
