@@ -37,8 +37,6 @@ export class OrgsFollowersComponent implements OnInit {
     };
     this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_company_followers',body).map(res => res.json()).subscribe(res => {
       this.countFollowers = res[0];
-     // console.log(res)
-    
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
