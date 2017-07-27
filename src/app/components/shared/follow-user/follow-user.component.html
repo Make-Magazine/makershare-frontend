@@ -1,5 +1,5 @@
-<div class="button-container-sec-2" *ngIf="ButtonFollow && CurrentLoggedUserId != userId && countFollowers">
-  <span class="btn btn-main-2" (click)="followThis($event)" [class.active]="!isFollowed">{{countFollowers}}{{ButtonFollow}}</span>
+<div class="button-container-sec-2" *ngIf="ButtonFollow">
+  <a class="btn btn-main-2" (click)="followThis($event)" [class.active]="!isFollowed">{{ButtonFollow}}</a>
 </div>
 <div *ngIf="countFollowers">
   <span (click)="follower(contentfollower)">{{countFollowers}} Followers</span>
