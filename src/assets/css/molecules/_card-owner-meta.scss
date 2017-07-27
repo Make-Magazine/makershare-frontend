@@ -1,57 +1,56 @@
 .card-owner-meta {
-	@extend .clearfix;
-	.card-owner-media, .card-owner-meta-info {
-		float: left;
-	}
+  @extend .clearfix;
+  .card-owner-media, .card-owner-meta-info {
+    float: left;
+  }
 
-	.card-owner-meta-info {
-		max-width: calc(100% - 60px - 2rem); // width of media and margins
-		width: 100%;
-	}
+  .card-owner-meta-info {
+    max-width: calc(100% - 60px - 2rem); // width of media and margins
+    width: 100%;
+  }
 
-	.card-owner-media {
-		width: 60px;
-		height: auto;
-		margin-right: 1rem;
-	}
-	.card-title {
-		font-size: 1.8rem;
-		display: block;
-		margin-bottom: 1rem;
-	}
-	.card-owner-link {
-		display: block;
-	}
+  .card-owner-media {
+    width: 60px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  .card-title {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .card-owner-link {
+    display: block;
+  }
 
-	.card-owners-group {
+  .card-owners-group {
 
-	}
+  }
 
-	.card-meta-row {
-		margin-bottom: .625rem;
-		overflow: hidden;
+  .card-meta-row {
+    margin-bottom: .625rem;
+    overflow: hidden;
 
-		&-description, &-icon {
-			float: left;
-		}
+    &-description, &-icon {
+      float: left;
+    }
 
-		&-icon {
-			font-size: 1rem;
-			margin-right: 0.25rem;
-			width: 1.5rem;
-			line-height: 2.35rem;
-			position: relative;
-			top: 0;
-			padding-left: 1px; // fix for lnr icons cutoff
-		}
+    &-icon {
+      font-size: 1rem;
+      margin-right: 0.25rem;
+      width: 1.5rem;
+      line-height: 2.35rem;
+      position: relative;
+      top: 0;
+      padding-left: 1px; // fix for lnr icons cutoff
+    }
 
-		p { // override defaults here
-			margin-bottom: 0;
-		}
+    p { // override defaults here
+      margin-bottom: 0;
+    }
 
-		&-description {
-			max-width: calc(90% - 1.5rem);
-		}
-
-	}
+    &-description {
+      max-width: calc(90% - 1.5rem);
+    }
+  }
 }

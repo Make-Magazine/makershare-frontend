@@ -14,42 +14,43 @@
         'col-md-8'            : item.type == 'challenge' ,
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
-      <div *ngFor="let item of homeCards;let i = index" [ngClass]="{
-        'col-md-6 col-lg-4'   : item.entity_type == 'node' || item.entity_type == 'user',
-        'col-md-6 col-lg-8'   : item.type == 'challenge' && !item.forcedNarrow
-          }" class="item-{{i}}">
-        <!-- Challenge Cards Full Width Container -->
-        <!--<div *ngIf="item.type == 'challenge'" class="challenge-page-data container p-0">
-          <div class="challenges-container">
-            <app-challenge-card [challengeNid]="item.entity_id" [front]=true [first]=true></app-challenge-card>
-          </div>
-        </div>-->
-        <!-- Challenge Cards -->
-        <div *ngIf="item.type == 'challenge'" class="card-wrapper">
-          <app-challenge-card (Featured)="UnFlagged()" [challengeNid]="item.entity_id" [front]=true [state]="item.forcedNarrow ? 'tall' : 'wide'"></app-challenge-card>
-        </div>
 
-        <!-- Showcase Cards -->
-        <div *ngIf="item.type == 'showcase' && item.entity_id" class="card-wrapper">
-          <!-- <div class="showcase-card-backlayer-home-2" > -->
-            <app-showcase-gen-card (Featured)="UnFlagged()" *ngIf="item.entity_id" [showcaseNid]="item.entity_id" [state]="'tall'"></app-showcase-gen-card>
-          <!-- </div> -->
-        </div>
+      <div *ngFor="let item of homeCards;let i=index"
+           class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
+        <div class="card-wrapper">
+          <!-- Mission -->
+          <app-challenge-card *ngIf="item.type == 'challenge'"
+                              [challengeNid]="item.entity_id"
+                              (Featured)="UnFlagged(false)"
+                              [front]=true
+                              [state]="item.size"></app-challenge-card>
 
-        <!-- Maker Cards -->
-        <div class="card-wrapper" *ngIf="item.entity_type == 'user'">
-          <app-maker-card (Featured)="UnFlagged()" [uid]="item.entity_id" [state]="'tall'"></app-maker-card>
-        </div>
+          <!-- Showcase Cards -->
+          <app-showcase-gen-card *ngIf="item.type == 'showcase'"
+                                 (Featured)="UnFlagged(false)"
+                                 [showcaseNid]="item.entity_id"
+                                 [state]="item.size"></app-showcase-gen-card>
 
-        <!-- Project Cards -->
-        <div class="card-wrapper" *ngIf="item.entity_type == 'node' && item.type == 'project' ">
-          <app-project-card (Featured)="UnFlagged()" [view]="view" [nid]="item.entity_id" [state]="'tall'" [front]=true></app-project-card>
-        </div>
+          <!-- Maker Cards -->
+          <app-maker-card *ngIf="item.type == 'maker'"
+                          (Featured)="UnFlagged(false)"
+                          [uid]="item.entity_id"
+                          [state]="item.size"></app-maker-card>
 
-        <!-- Learn Cards -->
-        <!--<div *ngIf="item.type == 'learning_sequence' && item.entity_type == 'node'" class="container">
-          <app-learn-card [workshopNid]="item.entity_id" [front]=true></app-learn-card>
-        </div>-->
+          <!-- Project Cards -->
+          <app-project-card *ngIf="item.type == 'project'"
+                            (Featured)="UnFlagged(false)"
+                            [view]="view"
+                            [nid]="item.entity_id"
+                            [state]="item.size"
+                            [front]=true></app-project-card>
+
+          <!-- Learning Sequence -->
+          <!--<app-learn-card *ngIf="item.type == 'learning_sequence'"
+                          (Featured)="UnFlagged(false)"
+                          [workshopNid]="item.entity_id"
+                          [front]=true></app-learn-card>-->
+        </div>
       </div>
     </div>
     <div *ngIf="!homeCards || homeCards.length == 0">

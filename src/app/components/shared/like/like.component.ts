@@ -14,7 +14,7 @@ export class LikeComponent implements OnInit {
   @Input() showcase = false;
   @Input() project = false;
   @Output() countNumber = new EventEmitter<number>();
-  userId;
+  @Input() userId;
   hideloadmorelike = false;
   closeResult: string;
   pages: number = 0;
