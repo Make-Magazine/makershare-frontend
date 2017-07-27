@@ -49,7 +49,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   selectCompanyType(value) {
-    console.log(value);
+    // console.log(value);
     let body = {
       "value": value,
     };
