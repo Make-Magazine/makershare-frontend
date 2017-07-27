@@ -17,7 +17,7 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-  private homeCards = [];
+  homeCards = [];
 
   constructor(
     private viewService: ViewService,
