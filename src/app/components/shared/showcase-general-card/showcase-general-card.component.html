@@ -1,7 +1,9 @@
 <div *ngIf="showcase && makers" class="card showcase {{state}}">
   <div *ngIf="makers.length == 0" class="card-image"
        [style.background-image]="'url('+showcase.cover_photo+')'"></div>
-
+  <app-feature *ngIf="Manager && showcaseNid"
+               [id]="showcaseNid"
+               [type]="'node'" (Featured)="emitFeatured()"></app-feature>
   <div class="card-image card-image-grid" *ngIf="makers.length > 0">
     <!-- <div > -->
     <app-maker-photo *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>
@@ -37,7 +39,7 @@
           <!-- <span class="info">54678</span> -->
         </li>
         <li class="social-stat" *ngIf="showcase.number_of_project">
-          <!-- <app-like [nodeNid]="showcase.nid" [user]="userId" [project]="true"></app-like> -->
+          <!-- <app-like [nodeNid]="showcase.nid" [project]="true"></app-like> -->
           <i class="fa fa-dot-circle-o"></i>
           <span class="info">{{showcase.number_of_project}}</span>
         </li>

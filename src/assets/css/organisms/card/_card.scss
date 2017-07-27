@@ -13,10 +13,18 @@
   overflow: hidden;
   position: relative;
   min-height: 100%;
+  //cursor: default;
+  //pointer-events: none;
 
   * {
     transition: all 0.6s ease;
     -webkit-backface-visibility: hidden;
+  }
+
+  // Allow CTA
+  &.allow-cta {
+    cursor: pointer;
+    pointer-events: auto;
   }
 
   // ///////////////

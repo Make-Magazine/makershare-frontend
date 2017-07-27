@@ -57,8 +57,9 @@ export class FollowUserComponent implements OnInit {
 
       // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
-    this.flagService.getCountFollowing(this.userId).subscribe(response => {
+    this.flagService.getCountFollowing(this.userfollower).subscribe(response => {
       this.countFollowing = response[0];
+      console.log(this.countFollowing);
       this.countNumberFollowing.emit(this.countFollowing);
     }, err => {
 
@@ -158,7 +159,7 @@ export class FollowUserComponent implements OnInit {
           //this.countLikers = data[0]['likes_count'];
         }
         this.whoFollow = this.whoFollow.concat(data);
-       // this.whoFollow = data;
+        // this.whoFollow = data;
         // console.log(data)
         this.loadMoreVisibilty();
       });
@@ -195,7 +196,7 @@ export class FollowUserComponent implements OnInit {
     }
   }
   /* END FUNCTION loadMoreVisibilty */
-   /* function load more  */
+  /* function load more  */
   loadMoreFollowing() {
     this.pages++;
     this.getWhoFollow();

@@ -27,16 +27,16 @@
 
           <app-feature *ngIf="Manager && showcaseCard.nid"
                        [id]="showcaseCard.nid"
-                       [type]="'node'"></app-feature>
+                       [type]="'node'" (Featured)="emitFeatured()"></app-feature>
 
           <div class="card-description"
                *ngIf="showcaseCard.description">
             <p [innerHTML]="showcaseCard.description"></p>
           </div>
           <div class="projects-count-div"
-               *ngIf="showcaseCard.projects_makers_count">
+               *ngIf="showcaseCard.projects_makers_count || projectsCount">
             <span class="projects-count">
-              <span>{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}{{showcaseCard.projects_makers_count > 1 ? 's' : ''}}</span>
+              <span>{{showcaseCard.projects_makers_count || projectsCount}} {{showcaseCard.showcase_type}}{{(showcaseCard.projects_makers_count || projectsCount) > 1 ? 's' : ''}}</span>
             </span>
           </div>
         </div>
@@ -70,7 +70,9 @@
         <div class="showcase-card-count d-flex flex-row"
              *ngIf="singleView">
           <div class="showcase-like" *ngIf="showcaseCard.nid">
-            <app-like [nodeNid]="showcaseCard.nid" [user]="userId" [showcase]="true"
+            <app-like [nodeNid]="showcaseCard.nid"
+                      [userId]="userId"
+                      [showcase]="true"
                       (countNumber)="likesCounter($event)"></app-like>
           </div>
           <div class="views-count-div">

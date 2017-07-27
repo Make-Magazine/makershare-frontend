@@ -15,9 +15,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ShareButtonsModule } from "ngx-sharebuttons";
 import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
-import { ProjectHeaderComponent } from './project-header/project-header.component';
-import { ProjectStoryComponent } from './project-story/project-story.component';
-import { ProjectHowToComponent } from './project-how-to/project-how-to.component';
 import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
 import { LearnCardComponent } from './learn-card/learn-card.component';
 import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
@@ -73,6 +70,7 @@ import { AccessRestrictedComponent } from './access-restricted/access-restricted
 import { FollowUserComponent } from './follow-user/follow-user.component';
 
 import { FeatureComponent } from './feature/feature.component';
+import { CompanyCardComponent } from './company-card/company-card.component';
 
 @NgModule({
   imports: [
@@ -98,9 +96,6 @@ import { FeatureComponent } from './feature/feature.component';
     ProjectCardComponent,
     FeedbackComponent,
     ChallengeCardComponent,
-    ProjectHeaderComponent,
-    ProjectStoryComponent,
-    ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
@@ -137,6 +132,7 @@ import { FeatureComponent } from './feature/feature.component';
     //pipes
     ReverseArray,
     FeatureComponent,
+    CompanyCardComponent,
   ],
   exports: [
     CommentComponent,
@@ -149,9 +145,6 @@ import { FeatureComponent } from './feature/feature.component';
     ProjectCardComponent,
     FeedbackComponent,
     ChallengeCardComponent,
-    ProjectHeaderComponent,
-    ProjectStoryComponent,
-    ProjectHowToComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
@@ -159,6 +152,7 @@ import { FeatureComponent } from './feature/feature.component';
     ShowcaseGeneralCardComponent,
     MessageModalComponent,
     MakerCardComponent,
+    CompanyCardComponent,
     CardBadges,
     Filters,
     MakerSearchCardComponent,
