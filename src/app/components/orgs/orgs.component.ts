@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NodeService } from '../../d7services';
 import * as globals from '../../d7services/globals';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-orgs',
@@ -17,9 +18,12 @@ export class OrgsComponent implements OnInit {
   nid;
   path;
   activeTab;
-  Followers;
+  followers = [];
+  allFollwers=[];
+  followersCount: number;
   folow
   current_active_tab;
+  closeResult: string;
 
   constructor(
     private viewService: ViewService,
@@ -27,7 +31,9 @@ export class OrgsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private nodeService: NodeService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal,
+
   ) { }
 
   ngOnInit() {
@@ -44,7 +50,8 @@ export class OrgsComponent implements OnInit {
               this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
             }
           });
-          this.getFollowers();
+          this.getLimitedFollowers();
+          this.getAllFollowers();
         } else {
           this.router.navigate(['**']);
         }
@@ -59,18 +66,36 @@ export class OrgsComponent implements OnInit {
   }
   /*  end function to change tab*/
 
-  getFollowers() {
+  getLimitedFollowers() {
     let body = {
       "nid": this.nid,
     };
 
     this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_company_followers', body).map(res => res.json()).subscribe(res => {
-      this.Followers = res;
 
-      console.log(this.Followers);
+      this.followers = res['followers'];
+      this.followersCount = res['count_all'];
+      console.log(this.followersCount);
 
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
   }
+  getAllFollowers() {
+    this.viewService.getView('company_followers', [['nid', this.nid]]).subscribe(data => {
+      this.allFollwers = this.allFollwers.concat(data);
+      console.log(this.allFollwers)
+      // this.loadMoreVisibilty();
+    }, err => {
+
+    });
+  }
+  open(content) {
+    this.modalService.open(content, { size: 'sm' }).result.then((result) => {
+      this.closeResult = 'Closed with: ${result}';
+    }, (reason) => {
+      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+    });
+  }
+
 }
