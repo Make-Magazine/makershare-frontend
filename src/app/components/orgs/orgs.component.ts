@@ -10,33 +10,27 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './orgs.component.html'
 })
 export class OrgsComponent implements OnInit {
-
   company;
   link;
   trustedLink;
   nid;
   path;
-  activeTab;
   followers = [];
-  allFollwers=[];
+  allFollwers = [];
   followersCount: number;
-  folow
+  folow;
+  page: number = 0;
   current_active_tab;
-
+  showloadmoreFollowers = false;
   closeResult: string;
-
   team = [];
-
-
   constructor(
     private viewService: ViewService,
     private mainService: MainService,
     private route: ActivatedRoute,
     private nodeService: NodeService,
     private router: Router,
-    private modalService: NgbModal,
-
-  ) { }
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.current_active_tab = 'about-us';
@@ -47,8 +41,9 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
-            this.team = this.company['field_maker_memberships'];
-            // console.log(this.company)
+            if (this.company) {
+              this.team = this.company['field_maker_memberships'];
+            }
           });
           this.getLimitedFollowers();
           this.getAllFollowers();
@@ -59,36 +54,24 @@ export class OrgsComponent implements OnInit {
     }
   }
 
-  /* function to change tab*/
-  changeOrgsTab(NewTab, e) {
-    e.preventDefault();
-    this.activeTab = NewTab;
-  }
-  /*  end function to change tab*/
-
   getLimitedFollowers() {
     let body = {
       "nid": this.nid,
     };
-
     this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_company_followers', body).map(res => res.json()).subscribe(res => {
-
       this.followers = res['followers'];
       this.followersCount = res['count_all'];
-      // console.log(this.followersCount);
-
-
     }, err => {
-      // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
   }
   getAllFollowers() {
-    this.viewService.getView('company_followers', [['nid', this.nid]]).subscribe(data => {
+    this.viewService.getView('company_followers', [['page', this.page], ['nid', this.nid]]).subscribe(data => {
       this.allFollwers = this.allFollwers.concat(data);
       // console.log(this.allFollwers)
       // this.loadMoreVisibilty();
-    }, err => {
 
+      this.loadMoreVisibilty();
+    }, err => {
     });
   }
   open(content) {
@@ -97,6 +80,17 @@ export class OrgsComponent implements OnInit {
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
+  }
+  loadMoreFollowers() {
+    this.page++;
+    this.getAllFollowers();
+  }
+  loadMoreVisibilty() {
+    if (this.followersCount <= this.allFollwers.length) {
+      this.showloadmoreFollowers = false;
+    } else if (this.followersCount > this.allFollwers.length) {
+      this.showloadmoreFollowers = true;
+    }
   }
 
 }
