@@ -75,7 +75,6 @@
     .flex-text-container {
       // color: $med-grey;
     }
-
   }
 
   // ///////////////////
@@ -83,7 +82,7 @@
   &.wide {
     padding-top: $card_wideRatio;
   }
-  &.wide, &.showcase:not(.tall) {
+  &.wide { //&.showcase:not(.tall)
     .card-image, .info-top {
       padding-bottom: $card_wideRatio;
     }
@@ -119,6 +118,48 @@
     .social-stat-group {
       float: right;
       margin-top: -1.2rem;
+    }
+  }
+
+  // ///////////////////
+  // full
+  &.full {
+    padding-top: 0;
+    .info-top {
+      width: 25%;
+      height: 100%;
+    }
+    .card-info {
+      margin-left: 25%;
+      width: 75%;
+      padding-bottom: 26.25%;
+      height: 0;
+    }
+    .info-bottom {
+      padding: 1.6rem;
+      text-align: left;
+    }
+    .card-title {
+      margin-bottom: 1.5rem;
+    }
+    .social-stat-group {
+      position: absolute;
+      bottom: 1.5rem;
+    }
+    .card-image {
+      width: 25%;
+      left: 0;
+      padding-bottom: 0;
+      height: 100%;
+      &.alt {
+        width: 100%;
+      }
+    }
+
+    &.showcase {
+      .info-top {
+        height: auto;
+      }
     }
   }
 
