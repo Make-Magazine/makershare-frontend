@@ -158,7 +158,7 @@ export class FollowUserComponent implements OnInit {
           //this.countLikers = data[0]['likes_count'];
         }
         this.whoFollow = this.whoFollow.concat(data);
-       // this.whoFollow = data;
+        // this.whoFollow = data;
         // console.log(data)
         this.loadMoreVisibilty();
       });
@@ -195,7 +195,7 @@ export class FollowUserComponent implements OnInit {
     }
   }
   /* END FUNCTION loadMoreVisibilty */
-   /* function load more  */
+  /* function load more  */
   loadMoreFollowing() {
     this.pages++;
     this.getWhoFollow();
