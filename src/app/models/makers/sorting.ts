@@ -19,7 +19,7 @@ export class SortBySortingSet{
       Params.push(['category', categoryId]);
     }
     if(comapnyFilter){
-      Params.push(['company_type', comapnyFilter]);
+      Params.push(['orgs_type', comapnyFilter]);
     }
     return this._viewService.getView(ViewName,Params);
   }
