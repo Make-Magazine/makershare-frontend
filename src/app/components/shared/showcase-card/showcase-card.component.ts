@@ -11,7 +11,7 @@ export class ShowcaseCardComponent implements OnInit {
   @Input() showcaseCard: ShowcaseCard;
   @Input() projectsCount: number;
   @Input() singleView: boolean = false;
-  @Output() Featured = new EventEmitter<boolean>();
+  @Output() Featured = new EventEmitter<number>();
 
   private userId;
   private numLikes: number = 0;

@@ -16,7 +16,7 @@ export class ProjectCardComponent implements OnInit {
   @Input() front;
   @Input() state;
   @Input() clickAction: Function = null;
-  @Output() Featured = new EventEmitter<boolean>();
+  @Output() Featured = new EventEmitter<number>();
 
   badges = [];
   project = {};

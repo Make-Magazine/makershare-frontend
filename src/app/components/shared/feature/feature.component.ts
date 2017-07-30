@@ -10,7 +10,7 @@ import { FlagService, UserService } from '../../../d7services';
 export class FeatureComponent implements OnInit {
   @Input() id;
   @Input() type;
-  @Output() Featured = new EventEmitter<boolean>();
+  @Output() Featured = new EventEmitter<number>();
   isFeatured: boolean = false;
   userId;
   checkUserLogin = false;
@@ -51,7 +51,7 @@ export class FeatureComponent implements OnInit {
     this.flagService[type](this.id, this.userId, 'feature_' + this.type).subscribe(response => {
       this.isFeatured = !this.isFeatured;
       if (!this.isFeatured) {
-        this.Featured.emit(true)
+        this.Featured.emit()
       }
     })
   }

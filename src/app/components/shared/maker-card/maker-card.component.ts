@@ -16,7 +16,7 @@ export class MakerCardComponent implements OnInit {
   @Input() state;
   @Input() profile;
   @Input() cardData; // Input 'cardData' contain all maker data it's work on makers component only for test now
-  @Output() Featured = new EventEmitter<boolean>();
+  @Output() Featured = new EventEmitter<number>();
 
   badges = [];
   project = {};
