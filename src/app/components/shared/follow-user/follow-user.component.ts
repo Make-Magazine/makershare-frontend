@@ -23,9 +23,7 @@ export class FollowUserComponent implements OnInit {
   @Output() countNumber = new EventEmitter<number>();
   @Output() countNumberFollowing = new EventEmitter<number>();
   @Output() HideLoadMore = new EventEmitter();
-  userId;
   flagToggler: string;
-  currentuser;
   CurrentLoggedUserId: number;
   closeResult: string;
   myFollowers = [];
@@ -41,7 +39,6 @@ export class FollowUserComponent implements OnInit {
 
   ngOnInit() {
     this.CurrentLoggedUserId = Number(localStorage.getItem('user_id'));
-    this.userId = this.CurrentLoggedUserId;
     this.getFollowingCount();
     this.getFollowersCount();
     this.userService.isLogedIn().subscribe(data => {
@@ -74,7 +71,7 @@ export class FollowUserComponent implements OnInit {
       this.router.navigate(['/access-denied']);
     }
     this.flagToggler = this.isFollowed ? 'unflag' : 'flag';
-    this.flagService[this.flagToggler](this.targetUid, this.userId, 'follow_user').subscribe(response => {
+    this.flagService[this.flagToggler](this.targetUid, this.CurrentLoggedUserId, 'follow_user').subscribe(response => {
       this.countFollowers = this.isFollowed ? --this.countFollowers : ++this.countFollowers;
       this.isFollowed = !this.isFollowed;
       this.ButtonFollow = this.isFollowed ? 'Following' : 'Follow';
@@ -96,28 +93,28 @@ export class FollowUserComponent implements OnInit {
   getWhoFollow() {
     this.viewService.getView('who-follow', [['uid', this.targetUid], ['page', this.pages]]).subscribe(data => {
       this.myFollowers = this.myFollowers.concat(data);
-      this.loadMoreVisibilty();
+      this.hideloadmorefollow = (this.countFollowers <= this.myFollowers.length) ? true : false;    
     });
   }
   getWhoFollowing() {
-    this.viewService.getView('who-following', [['uid', this.targetUid]]).subscribe(data => {
-      this.meFollowing = data;
-      //this.loadMoreVisibilty();
+    this.viewService.getView('who-following', [['uid', this.targetUid], ['page', this.pages]]).subscribe(data => {
+      this.meFollowing = this.meFollowing.concat(data);
+      this.hideloadmorefollowing = (this.countFollowing <= this.meFollowing.length) ? true : false;    
     });
   }
   loadMoreFollow() {
     this.pages++;
     this.getWhoFollow();
   }
-  loadMoreVisibilty() {
-    this.hideloadmorefollow = (this.countFollowers <= this.myFollowers.length) ? true : false;
-  }
   loadMoreFollowing() {
     this.pages++;
-    this.getWhoFollow();
+    this.getWhoFollowing();
   }
-  loadMoreVisibiltyFollowing() {
-    this.hideloadmorefollowing = (this.countFollowing <= this.meFollowing.length) ? true : false;
+  goToProfile(path: string) {
+    if(window.location.href.indexOf('portfolio') != -1){
+      window.location.href = '/portfolio/'+path;
+    }else{
+      this.router.navigate(['/portfolio/', path]);
+    }
   }
-
 }
