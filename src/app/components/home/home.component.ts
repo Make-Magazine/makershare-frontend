@@ -115,4 +115,12 @@ export class HomeComponent implements OnInit {
         },
       );
   }
+
+  UnFlagged() {
+    this.homeCards = [];
+    this.viewService.getView('maker_homepage_api').subscribe(data => {
+      this.homeCards = data;
+      console.log(this.homeCards)
+    })
+  }
 }

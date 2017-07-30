@@ -11,16 +11,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class OrgsComponent implements OnInit {
   company;
-  link;
-  trustedLink;
   nid;
   path;
   followers = [];
   allFollwers = [];
   followersCount: number;
-  folow;
   page: number = 0;
-  current_active_tab;
+  current_active_tab:string = 'about-us';
   showloadmoreFollowers = false;
   closeResult: string;
   team = [];
@@ -33,7 +30,6 @@ export class OrgsComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.current_active_tab = 'about-us';
     this.path = this.route.snapshot.params['path'];
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'company_profile').subscribe(id => {
@@ -46,7 +42,7 @@ export class OrgsComponent implements OnInit {
             }
           });
           this.getLimitedFollowers();
-          this.getAllFollowers();
+          this.getAllFollowers(false);
         } else {
           this.router.navigate(['**']);
         }
@@ -61,17 +57,13 @@ export class OrgsComponent implements OnInit {
     this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_company_followers', body).map(res => res.json()).subscribe(res => {
       this.followers = res['followers'];
       this.followersCount = res['count_all'];
-    }, err => {
     });
   }
-  getAllFollowers() {
+  getAllFollowers(more?:boolean) {
+    if(more) this.page++;
     this.viewService.getView('company_followers', [['page', this.page], ['nid', this.nid]]).subscribe(data => {
       this.allFollwers = this.allFollwers.concat(data);
-      // console.log(this.allFollwers)
-      // this.loadMoreVisibilty();
-
-      this.loadMoreVisibilty();
-    }, err => {
+      this.showloadmoreFollowers = (this.followersCount <= this.allFollwers.length)? false:true;
     });
   }
   open(content) {
@@ -81,16 +73,4 @@ export class OrgsComponent implements OnInit {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
   }
-  loadMoreFollowers() {
-    this.page++;
-    this.getAllFollowers();
-  }
-  loadMoreVisibilty() {
-    if (this.followersCount <= this.allFollwers.length) {
-      this.showloadmoreFollowers = false;
-    } else if (this.followersCount > this.allFollwers.length) {
-      this.showloadmoreFollowers = true;
-    }
-  }
-
 }
