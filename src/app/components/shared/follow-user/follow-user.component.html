@@ -1,11 +1,11 @@
-<div class="button-container-sec-2" *ngIf="ButtonFollow">
+<div class="button-container-sec-2" *ngIf="CurrentLoggedUserId != targetUid">
   <a class="btn btn-main-2" (click)="followThis($event)" [class.active]="!isFollowed">{{ButtonFollow}}</a>
 </div>
 <div *ngIf="countFollowers >= 1">
-  <span (click)="follower(contentfollower)">{{countFollowers}} Followers</span>
+  <span (click)="openModal(contentfollower)">{{countFollowers}} Followers</span>
 </div>
 <div *ngIf="countFollowing >= 1">
-  <span (click)="following(contentfollowing)">{{countFollowing}} Following</span>
+  <span (click)="openModal(contentfollowing)">{{countFollowing}} Following</span>
 </div>
 <ng-template #contentfollower let-c="close" let-d="dismiss" class="like-modal">
   <div class="model-likes">
@@ -19,24 +19,14 @@
       <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div class="modal-body" *ngIf="whoFollow">
-      <div class="model-likes">
-        <span *ngFor="let follow of whoFollow; "> 
+    <div class="modal-body" *ngIf="myFollowers">
+      <div class="model-likes" *ngFor="let follow of myFollowers; ">
        <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo" src="{{follow?.default_profile_photo}}" (click)="goToProfile(follow.profile_url)" (click)="d('Cross click')">
        <span *ngIf="follow?.default_profile_photo && follow.profile_url " class="new-tooltiptext like-name">
           {{follow?.first_name}} {{follow?.last_name}} </span><br>
-
-
-
-        </span>
       </div>
-      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollow && whoFollow.length > 0 ">
+      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollow && myFollowers.length > 0 ">
           <a class="btn btn-load-more" (click)="loadMoreFollow()">Load more</a>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div class="list-unstyled actions d-flex flex-row">
       </div>
     </div>
   </div>
@@ -52,23 +42,15 @@
       <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div class="modal-body" *ngIf="whoFollowing">
-      <div class="model-likes">
-        <span *ngFor="let following of whoFollowing; "> 
+    <div class="modal-body" *ngIf="meFollowing">
+      <div class="model-likes" *ngFor="let following of meFollowing; ">
        <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo" src="{{following?.portfolio_photo}}" (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span *ngIf="following?.portfolio_photo && following.profile_url " class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
         <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg"
           (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span *ngIf="!following?.portfolio_photo && following.profile_url "
           (click)="goToProfile(following.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
-
-
-        </span>
       </div>
-      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollowing && whoFollowing.length > 0 ">
+      <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollowing && meFollowing.length > 0 ">
           <a class="btn btn-load-more" (click)="loadMoreFollowing()">Load more</a>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <div class="list-unstyled actions d-flex flex-row">
       </div>
     </div>
   </div>
