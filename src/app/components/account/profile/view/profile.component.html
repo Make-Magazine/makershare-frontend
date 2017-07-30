@@ -8,8 +8,8 @@
 				<div class="profile-overlay"></div>
 				<div class="left-section col-lg-4 col-md-6">
 					<div class="profile-sidebar">
+						<app-follow-user [targetUid]="uid"></app-follow-user>
 						<div class="profile-container" *ngIf="CurrentLoggedUserId == uid">
-
 							<app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'"></app-maker-card>
 							<div class="container-override">
 								<div class="image-container">
@@ -228,19 +228,8 @@
 							</div>
 							<!-- End col-md-3 -->
 						</div>
-
-
-
-
-<app-follow-user [targetUid]="uid"></app-follow-user>
-
-
 						<!--- WHAT THE HELL????? -->
 						<!-- asldkfjsdlkfjsdlfkjsdlkfjsdlkfjsldkfjsldkfjsdlkfjdsf -->
-
-
-
-
 						<div class="profile-container" *ngIf="CurrentLoggedUserId != uid">
 							<app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'" [profile]="true"></app-maker-card>
 							<div class="profile-info">
