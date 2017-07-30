@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          globals.appURL +
-            '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+        globals.appURL +
+        '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);
   }
@@ -58,69 +58,68 @@ export class HomeComponent implements OnInit {
     this.viewService
       .getView<SimpleOverviewEntity[]>('maker_homepage_api')
       .subscribe(
-        data => {
-          // Keep track of columns used on line
-          let usedColumnsOnLine: number = 0;
-          const columnsPerLine: number = 3;
+      data => {
+        // Keep track of columns used on line
+        let usedColumnsOnLine: number = 0;
+        const columnsPerLine: number = 3;
 
-          this.homeCards = data.reduce(
-            (
-              results: SimpleOverviewEntity[],
-              card: SimpleOverviewEntity,
-              i: number,
-            ) => {
-              let elementSize: EntityGridSize = EntityGridSize.TALL;
+        this.homeCards = data.reduce(
+          (
+            results: SimpleOverviewEntity[],
+            card: SimpleOverviewEntity,
+            i: number,
+          ) => {
+            let elementSize: EntityGridSize = EntityGridSize.TALL;
 
-              // When type is missing, it's a maker
-              if (!card.type) {
-                if (card.entity_type === 'user') {
-                  card.type = EntityType.MAKER;
-                }
+            // When type is missing, it's a maker
+            if (!card.type) {
+              if (card.entity_type === 'user') {
+                card.type = EntityType.MAKER;
               }
+            }
 
-              // If type challenge and more than one column remaining on the line
-              if (
-                data[i].type === EntityType.CHALLENGE &&
-                usedColumnsOnLine < 2
-              ) {
-                elementSize = EntityGridSize.WIDE;
-              }
+            // If type challenge and more than one column remaining on the line
+            if (
+              data[i].type === EntityType.CHALLENGE &&
+              usedColumnsOnLine < 2
+            ) {
+              elementSize = EntityGridSize.WIDE;
+            }
 
-              card.size = elementSize;
+            card.size = elementSize;
 
-              // Increment columns
-              usedColumnsOnLine += elementSize === EntityGridSize.WIDE ? 2 : 1;
+            // Increment columns
+            usedColumnsOnLine += elementSize === EntityGridSize.WIDE ? 2 : 1;
 
-              if (usedColumnsOnLine === columnsPerLine) {
-                usedColumnsOnLine = 0;
-              }
+            if (usedColumnsOnLine === columnsPerLine) {
+              usedColumnsOnLine = 0;
+            }
 
-              if (card.type && card.entity_id) {
-                results.push(card);
-              }
+            if (card.type && card.entity_id) {
+              results.push(card);
+            }
 
-              return results;
-            },
-            [],
-          );
+            return results;
+          },
+          [],
+        );
 
-          if (showLoader) {
-            this.loaderService.display(false);
-          }
-        },
-        err => {
-          if (showLoader) {
-            this.loaderService.display(true);
-          }
-        },
-      );
+        if (showLoader) {
+          this.loaderService.display(false);
+        }
+      },
+      err => {
+        if (showLoader) {
+          this.loaderService.display(true);
+        }
+      },
+    );
   }
 
-  UnFlagged() {
-    this.homeCards = [];
-    this.viewService.getView('maker_homepage_api').subscribe(data => {
-      this.homeCards = data;
-      console.log(this.homeCards)
-    })
+  UnFlagged(i: number) {
+    var index = this.homeCards.indexOf(this.homeCards[i], 0);
+    if (index > -1) {
+      this.homeCards.splice(index, 1);
+    }
   }
 }

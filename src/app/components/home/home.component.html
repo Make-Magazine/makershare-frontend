@@ -15,31 +15,31 @@
         'col-md-8'            : item.type == 'learning_sequence'
           }">-->
 
-      <div *ngFor="let item of homeCards;let i=index"
+      <div *ngFor="let item of homeCards;let i=index;"
            class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
         <div class="card-wrapper">
           <!-- Mission -->
           <app-challenge-card *ngIf="item.type == 'challenge'"
                               [challengeNid]="item.entity_id"
-                              (Featured)="UnFlagged(false)"
+                              (Featured)="UnFlagged(i)"
                               [front]=true
                               [state]="item.size"></app-challenge-card>
 
           <!-- Showcase Cards -->
           <app-showcase-gen-card *ngIf="item.type == 'showcase'"
-                                 (Featured)="UnFlagged(false)"
+                                 (Featured)="UnFlagged(i)"
                                  [showcaseNid]="item.entity_id"
                                  [state]="item.size"></app-showcase-gen-card>
 
           <!-- Maker Cards -->
           <app-maker-card *ngIf="item.type == 'maker'"
-                          (Featured)="UnFlagged(false)"
+                          (Featured)="UnFlagged(i)"
                           [uid]="item.entity_id"
                           [state]="item.size"></app-maker-card>
 
           <!-- Project Cards -->
           <app-project-card *ngIf="item.type == 'project'"
-                            (Featured)="UnFlagged(false)"
+                            (Featured)="UnFlagged(i)"
                             [view]="view"
                             [nid]="item.entity_id"
                             [state]="item.size"
@@ -47,7 +47,7 @@
 
           <!-- Learning Sequence -->
           <!--<app-learn-card *ngIf="item.type == 'learning_sequence'"
-                          (Featured)="UnFlagged(false)"
+                          (Featured)="UnFlagged(i)"
                           [workshopNid]="item.entity_id"
                           [front]=true></app-learn-card>-->
         </div>
