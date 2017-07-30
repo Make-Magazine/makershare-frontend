@@ -1,8 +1,0 @@
-<div *ngIf="followers">
-   <app-maker-card class="col-md-6" *ngFor="let maker of followers" [uid]="maker.uid"></app-maker-card>
-    <div class="text-center">
-    <div class="button-container-sec-3" *ngIf="showloadmoreFollowers">
-      <a class="btn btn-grey"  (click)="loadMoreFollowers($event)">Load more</a>
-    </div>
-  </div>
-  </div>
