@@ -6,7 +6,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import {
   FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper,
   field_collection_item_member, field_collection_item_tool, field_collection_item_material,
-  field_collection_item_part, field_collection_item_resource,ProjectHold
+  field_collection_item_part, field_collection_item_resource,ProjectHold,field_date,date_time
 }from '../../../../models';
 import { ComponentCanDeactivate } from '../pending-changes.guard';
 declare var swal:any;
@@ -255,6 +255,26 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
               break;
             }
         }
+      }else if (index == "field_creation_date" && !field.und){
+        let created = new Date(data.created*1000);
+        let date = new Date(created.getUTCFullYear(), created.getUTCMonth(), created.getUTCDate(),  created.getUTCHours(), created.getUTCMinutes(), created.getUTCSeconds()); //reset date to UTC
+        date = new Date(date.getTime() - 3*60*60*1000); //convert to america time zone
+        let day = date.getDate().toString();
+        let month = (date.getMonth()+1).toString();
+        let year = date.getFullYear();
+        let minutes = date.getMinutes();
+        let hours = date.getHours();
+      if(+month < 10)
+        month = '0'+month;
+      if(+day < 10)
+        day = '0'+day;
+
+      let datetime = new date_time;
+
+      datetime.date = month+'/'+day+'/'+year;
+      datetime.time = hours+':'+minutes+':00';
+
+      this.project.field_creation_date = {und:[new field_date(datetime)]};
       }
     }
     var subtasks = [];
@@ -425,6 +445,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   RemoveStaticFields(){
     delete this.project.field_original_team_members;
     delete this.project.field_forks;
+    delete this.project.field_faire_name;
     this.project.sticky = null;
     this.project.promote = null;
   }

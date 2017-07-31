@@ -29,6 +29,7 @@ export interface ProjectForm extends Node {
 	field_total_forks?: { und: field_number[] };
 	field_forks?: { und: field_entity_reference[] };
 	field_visibility2: { und: number[] };
+	field_faire_name: { und: number[] };
 	field_mfba17_project_id?: { und: field_text[] };
 	field_cover_photo: { und: field_file_reference[] };
 	field_how_to?: { und: field_text[] };
