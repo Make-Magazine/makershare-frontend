@@ -4,6 +4,8 @@ import { UserService, MainService } from './d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
+import { AppSingleton } from './models';
+
 declare var ga:Function;
 
 @Component({
@@ -50,6 +52,8 @@ export class AppComponent implements OnInit{
   
 
   ngOnInit() {
+    this.SetApplicationSingleton();
+
     // check if the user is logged in at the back-end or not, if not, logged the user out too from the front-end
     this.userService.getStatus().subscribe(status => {
       if (status.user.uid == 0) {
@@ -80,6 +84,12 @@ export class AppComponent implements OnInit{
 
 
   
+  }
+
+
+  SetApplicationSingleton(){
+    console.log(AppSingleton.Settings.LANGUAGE);
+    AppSingleton.Settings.LANGUAGE = "ar";
   }
 
 }
