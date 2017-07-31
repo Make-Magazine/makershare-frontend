@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlagService, UserService } from '../../../d7services';
-// import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 @Component({
   selector: 'app-follow',
