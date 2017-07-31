@@ -1,0 +1,47 @@
+.profile-container {
+  padding: 0;
+  float: left;
+  font-size: 12px;
+  width: 100%;
+  .spotlight-item {
+    .user-card {
+      padding: 30px 11px 8px 0;
+      // .count {
+      //     color: #fff;
+      // }
+
+      .media {
+        .profile-pic-container {
+          width: 80px;
+          .icons-side-user {
+            width: auto;
+            overflow: initial;
+            position: absolute;
+            top: -13px;
+            left: 10px;
+            .user-icon {
+              width: auto;
+              img {
+                height: 35px;
+                width: 30px;
+                margin-right: 5px;
+              }
+            }
+          }
+          .maker-photo {
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 4px;
+          }
+        }
+        .media-body {
+          width: calc(100% - 80px);
+          .user-icon {
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+}

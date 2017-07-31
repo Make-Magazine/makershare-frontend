@@ -1,97 +1,90 @@
-<!--<div  *ngIf="company">
-    
-    <section class="container">
-      <div class="row ">
-          <img src={{company.company_cover_photo}} class="w-100 h-25 p-2" alt="Responsive image">
-      </div>
-    </section>
-
-    <div> Company Logo
-      <img src={{company.company_logo}} class="p-2" alt="Responsive image">
-    </div>
-    <div> Company Name
-      <p>{{company.company_name}}</p>
-    </div>
-    <div *ngIf="company.field_company_tags">
-      <div *ngFor="let tags of  company.field_company_tags">
-        <p *ngIf="!tags.is_parent">
-          {{tags.name}}
-        </p>
-      </div>
-    </div>
-    <div> About us
-      <p [innerHTML]="trustedLink"></p>
-    </div>
-    <div *ngIf="company.field_maker_memberships"> Our Team
-      <div *ngFor="let team of company.field_maker_memberships">
-        <p>{{team.full_name}} </p>
-        <p>{{team.field_membership_role}} </p>
-      </div>
-    </div>
-    <div> Social
-      <p>Facebook: {{company.field_facebook}}</p>
-      <p>Linkedin: {{company.field_linkedin}}</p>
-      <p>Twitter: {{company.field_twitter}}</p>
-    </div>
-    <div> Websites
-      <a href="{{company.field_website_or_blog}}"></a>
-    </div>
-  </div>-->
-
-<!--<div *ngIf="company">
-  <div class="card card-inverse">
-    <img class="card-img" src="{{company.company_cover_photo}}">
-    <div class="card-img-overlay">
-      <div class="card-block text-nowrap w-25 p-3">
-        <h2 class="text-center bg-inverse text-white">{{company.company_name}}</h2>
-      </div>
-      <div class="text-center" style="display:-webkit-box;" *ngIf="company.field_company_tags">
-        <div *ngFor="let tags of  company.field_company_tags">
-          <p class="text-white" *ngIf="!tags.is_parent">
-            {{tags.name}},
-          </p>
-        </div>
-      </div>
-      <div>
-        <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.company_name}}</small></p>
-      </div>
-    </div>
-  </div>-->
-  <div *ngIf="company">
-  <div class="container-fluid">
-    <!-- Oraganization Header  -->
-     <img class="card-img" src="{{company.company_cover_photo}}">
-      
-       <div>
-        <h2 class="text-center">{{company.company_name}}</h2>
-      </div>
-       <div>
-        <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
-          {{company.address.administrative_area}}</small></p>
-      </div>
-      
-  </div>
-  </div>
+<div *ngIf="company">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <!-- About Us Text Area  -->
-      </div>
-      <div class="col-md-4" *ngIf="company">
-        <!-- About Us Side Bar  -->
-        
-        <ul>
-          <h1>Contact</h1>
-           <li> Phone: {{company.phone_number}}</li>
-           <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
-           <li> # of employees: {{company.employees}}</li>
-           <li> Founder: {{company.founder_name}}</li>
-           <li> Founded: {{company.founded_date}}</li>
-           <li> Type of business: {{company.business}}</li>
-        </ul>
-      </div>
       <div class="col-md-12">
-        <!-- Our Team  -->
+        <!-- Oraganization Header  -->
+        <img class="card-img w-100" height="200" src="{{company.company_cover_photo}}">
+        <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center text-center">
+          <li><a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }"><h5>About Us</h5></a></li>
+          <li><a (click)="current_active_tab = 'projects'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'projects' }"><h5>Projects</h5></a></li>
+        </ul>
+        <div>
+          <h2 class="text-center">{{company.company_name}}</h2>
+        </div>
+        <div>
+          <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
+          {{company.address.administrative_area}}</small></p>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="row">
+      <header class="mr-auto col-lg-6">
+        
+      </header>
+    </div> -->
+    <div class="row">
+      <div class="col-md-7">
+        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'" [description]="company.company_description"></app-orgs-about-us>
+        <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
+      </div>
+      <div class="col-md-5" *ngIf="company">
+        <!-- About Us Side Bar  -->
+
+        <ul>
+          <h1 class="text-left">Contact</h1>
+          <li> Phone: {{company.phone_number}}</li>
+          <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
+          <li> # of employees: {{company.employees}}</li>
+          <li> Founder: {{company.founder_name}}</li>
+          <li> Founded: {{company.founded_date}}</li>
+          <li> Type of business: {{company.business}}</li>
+        </ul>
+        <div *ngIf="followers">
+          <p>Followers</p>
+          <div *ngFor="let maker of followers;" class="d-inline">
+            <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
+          </div>
+          <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
+        </div>
       </div>
     </div>
+
+    <div class="text-center">
+      <h1 class="p-2">Our Team</h1>
+    </div>
+    <div class="row p-2" *ngIf="team">
+      <div class="col-4" *ngFor="let teams of team">
+        <app-user-card-small [uid]="teams.field_team_member"></app-user-card-small>
+      </div>
+    </div>
+    <div class="col-md-12" *ngIf="followers">
+      <!-- Our Team  -->
+
+      <!-- {{Followers | json}} -->
+
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+      <div class="modal-header">
+        <span *ngIf="followersCount">{{followersCount}} Followers</span>
+        <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      </div>
+      <div class="modal-body" *ngIf="allFollwers">
+        <ul class="model-likes list-unstyled">
+          <li *ngFor="let follower of allFollwers; ">
+            <img *ngIf="follower?.portfolio_photo && follower.profile_url " class="like-photo w-50" src="{{follower?.portfolio_photo}}"
+              [routerLink]="['/portfolio/',follower.profile_url]" (click)="d('Cross click')">
+            <img *ngIf="!follower?.portfolio_photo && follower.profile_url " class="like-photo w-50" src="./assets/images/Gears-Grey.svg"
+              [routerLink]="['/portfolio/',follower.profile_url]" (click)="d('Cross click')">
+            <span [routerLink]="['/portfolio/',follower.profile_url]" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{follower?.first_name}} {{follower?.last_name}} </span>
+          </li>
+        </ul>
+        <div class="text-center pt-3 pb-5" *ngIf="showloadmoreFollowers">
+          <a class="btn btn-load-more" (click)="getAllFollowers(true)">Load more</a>
+        </div>
+      </div>
+    </ng-template>
   </div>
+</div>
