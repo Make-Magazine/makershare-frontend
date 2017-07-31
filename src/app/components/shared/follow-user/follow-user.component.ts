@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ViewService, FlagService, UserService } from '../../../d7services';
-// import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,208 +9,103 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FollowUserComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
-    // private notificationBarService: NotificationBarService,
     private modalService: NgbModal,
   ) { }
-  @Input() userfollower;
+  @Input() targetUid;
   @Output() countNumber = new EventEmitter<number>();
   @Output() countNumberFollowing = new EventEmitter<number>();
-
   @Output() HideLoadMore = new EventEmitter();
-  userId;
-  currentuser;
+  flagToggler: string;
   CurrentLoggedUserId: number;
-  checkUserLogin = false;
   closeResult: string;
-  whoFollow = [];
-  whoFollowing = [];
+  myFollowers = [];
+  meFollowing = [];
   hideloadmorefollow = true;
   hideloadmorefollowing = true;
   pages: number = 0;
-
-
-
   isFollowed;
-  ButtonFollow;
+  ButtonFollow: string = 'Follow';
   countFollowers = 0;
   countFollowing = 0;
+  ifLoggedIn: boolean
 
   ngOnInit() {
-    this.userId = localStorage.getItem('user_id');
-    this.flagService.flagCount(this.userfollower, 'follow_user').subscribe(response => {
-      if (response['count'] >= 1) {
-        this.countFollowers = response['count'];
-        this.countNumber.emit(this.countFollowers);
-      } else {
-        this.countFollowers = 0;
-        this.countNumber.emit(this.countFollowers);
-
+    this.CurrentLoggedUserId = Number(localStorage.getItem('user_id'));
+    this.getFollowingCount();
+    this.getFollowersCount();
+    this.userService.isLogedIn().subscribe(data => {
+      this.ifLoggedIn = data;
+      if (this.ifLoggedIn) {
+        this.flagService.isFlagged(this.targetUid, this.CurrentLoggedUserId, 'follow_user').subscribe(data => {
+          this.isFollowed = data[0];
+          this.ButtonFollow = this.isFollowed ? 'Following' : 'Follow';
+        });
       }
-    }, err => {
-
-
-      // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
-    this.flagService.getCountFollowing(this.userId).subscribe(response => {
+    this.getWhoFollow(false);
+    this.getWhoFollowing(false);
+  }
+  getFollowingCount() {
+    this.flagService.flagCount(this.targetUid, 'follow_user').subscribe(response => {
+      this.countFollowers = response['count'] ? response['count'] : 0;
+      this.countNumber.emit(this.countFollowers);
+    });
+  }
+  getFollowersCount() {
+    this.flagService.getCountFollowing(this.targetUid).subscribe(response => {
       this.countFollowing = response[0];
       this.countNumberFollowing.emit(this.countFollowing);
-    }, err => {
-
-
-      // this.notificationBarService.create({ message: 'Sorry Error msg, somthing went wrong, try again later.', type: NotificationType.Error });
     });
-    this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data == false) {
-        this.ButtonFollow = 'Follow';
-      } else {
-        this.flagService.isFlagged(this.userfollower, this.userId, 'follow_user').subscribe(data => {
-          this.isFollowed = data[0];
-          /* initialize Button Follow*/
-          if (this.isFollowed == false) {/* start if  */
-            this.ButtonFollow = 'Follow';
-          } else {
-            this.ButtonFollow = 'Following';
-          }/* end else if  */
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        })
-      }//end else if
-    });//end if check user login
-    let userName = this.route.snapshot.params['user_name'];
-    if (userName) {
-      this.userService.getIdFromUrl(userName).subscribe(res => {
-        this.CurrentLoggedUserId = res.uid;
-        console.log(this.CurrentLoggedUserId)
-        this.getWhoFollow();
-        this.getWhoFollowing();
-      }, err => {
-      });
-    }
-
-
   }
-  /* function follow */
+
   followThis(e: Event) {
-    this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data == false) {
-        this.router.navigate(['/access-denied']);
-      }
-      e.preventDefault();
-      if (this.isFollowed) {
-        this.flagService.unflag(this.userfollower, this.userId, 'follow_user').subscribe(response => {
-          this.isFollowed = false;
-          this.ButtonFollow = 'Follow';
-          this.countFollowers--;
-          this.countNumber.emit(this.countFollowers);
-          this.HideLoadMore.emit();
-          // this.nodeNid = this.nodeNid;
-          this.getWhoFollow();
-          this.getWhoFollowing();
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        });
-
-      } else {
-        this.flagService.flag(this.userfollower, this.userId, 'follow_user').subscribe(response => {
-          this.isFollowed = true;
-          this.ButtonFollow = 'Following';
-          this.countFollowers++;
-          this.countNumber.emit(this.countFollowers);
-          this.HideLoadMore.emit();
-          this.getWhoFollow();
-          this.getWhoFollowing();
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        });
-      }
-    });//end if check user login
+    if (!this.ifLoggedIn) {
+      this.router.navigate(['/access-denied']);
+    }
+    this.flagToggler = this.isFollowed ? 'unflag' : 'flag';
+    this.flagService[this.flagToggler](this.targetUid, this.CurrentLoggedUserId, 'follow_user').subscribe(response => {
+      this.countFollowers = this.isFollowed ? --this.countFollowers : ++this.countFollowers;
+      this.isFollowed = !this.isFollowed;
+      this.ButtonFollow = this.isFollowed ? 'Following' : 'Follow';
+      this.countNumber.emit(this.countFollowers);
+      this.HideLoadMore.emit();
+      this.getWhoFollow(false);
+      this.getWhoFollowing(false);
+    });
   }
 
-  follower(contentfollower) {
-
+  openModal(contentfollower) {
     this.modalService.open(contentfollower, { size: 'sm' }).result.then((result) => {
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
   }
-  following(content) {
 
-    this.modalService.open(content, { size: 'sm' }).result.then((result) => {
-      this.closeResult = 'Closed with: ${result}';
-    }, (reason) => {
-      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+  getWhoFollow(more?: boolean) {
+    if (more) this.pages++;
+    this.viewService.getView('who-follow', [['uid', this.targetUid], ['page', this.pages]]).subscribe(data => {
+      this.myFollowers = this.myFollowers.concat(data);
+      this.hideloadmorefollow = (this.countFollowers <= this.myFollowers.length) ? true : false;
     });
   }
-  getWhoFollow() {
-    if (this.CurrentLoggedUserId) {
-
-      this.viewService.getView('who-follow', [['uid', this.CurrentLoggedUserId], ['page', this.pages]]).subscribe(data => {
-        if (data[0]) {
-          //this.countLikers = data[0]['likes_count'];
-        }
-        this.whoFollow = this.whoFollow.concat(data);
-       // this.whoFollow = data;
-        // console.log(data)
-        this.loadMoreVisibilty();
-      });
+  getWhoFollowing(more?: boolean) {
+    if (more) this.pages++;
+    this.viewService.getView('who-following', [['uid', this.targetUid], ['page', this.pages]]).subscribe(data => {
+      this.meFollowing = this.meFollowing.concat(data);
+      this.hideloadmorefollowing = (this.countFollowing <= this.meFollowing.length) ? true : false;
+    });
+  }
+  goToProfile(path: string) {
+    if (window.location.href.indexOf('portfolio') != -1) {
+      window.location.href = '/portfolio/' + path;
+    } else {
+      this.router.navigate(['/portfolio/', path]);
     }
   }
-  getWhoFollowing() {
-    if (this.CurrentLoggedUserId) {
-      this.viewService.getView('who-following', [['uid', this.CurrentLoggedUserId]]).subscribe(data => {
-        if (data[0]) {
-          //this.countLikers = data[0]['likes_count'];
-        }
-        //this.whoFollowing = this.whoFollowing.concat(data);
-        this.whoFollowing = data;
-        // console.log(data)
-        //this.loadMoreVisibilty();
-      });
-    }
-  }
-  /* function load more  */
-  loadMoreFollow() {
-    this.pages++;
-    this.getWhoFollow();
-  }
-  /* end function load more  */
-  // Function to control load more button
-  loadMoreVisibilty() {
-    // get the challenges array count
-    if (this.countFollowers <= this.whoFollow.length) {
-
-      this.hideloadmorefollow = true;
-
-    } else if (this.countFollowers > this.whoFollow.length) {
-      this.hideloadmorefollow = false;
-    }
-  }
-  /* END FUNCTION loadMoreVisibilty */
-   /* function load more  */
-  loadMoreFollowing() {
-    this.pages++;
-    this.getWhoFollow();
-  }
-  /* end function load more  */
-  // Function to control load more button
-  loadMoreVisibiltyFollowing() {
-    // get the challenges array count
-    if (this.countFollowing <= this.whoFollowing.length) {
-
-      this.hideloadmorefollowing = true;
-
-    } else if (this.countFollowing > this.whoFollowing.length) {
-      this.hideloadmorefollowing = false;
-    }
-  }
-  /* END FUNCTION loadMoreVisibilty */
-
 }
