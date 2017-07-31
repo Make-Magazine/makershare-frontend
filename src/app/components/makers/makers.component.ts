@@ -5,6 +5,7 @@ import { NotificationBarService, NotificationType } from 'ngx-notification-bar/r
 import * as globals from '../../d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../models';
 import {Meta, Title } from '@angular/platform-browser';
+import { AppSingleton } from '../../models';
 
 @Component({
   selector: 'app-makers',
@@ -52,6 +53,7 @@ export class MakersComponent implements OnInit {
     ])
   }
   ngOnInit() {
+    console.log(AppSingleton.Settings.LANGUAGE);
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
