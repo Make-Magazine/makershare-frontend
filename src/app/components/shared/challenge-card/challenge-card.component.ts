@@ -61,7 +61,7 @@ export class ChallengeCardComponent implements OnInit {
   @Input() challengeNid;
   @Input() front: boolean = false;
   @Input() first: boolean = false;
-  @Output() Featured = new EventEmitter<boolean>();
+  @Output() Featured = new EventEmitter<number>();
   
   
   constructor(

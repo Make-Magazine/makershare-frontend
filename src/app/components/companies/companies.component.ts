@@ -40,6 +40,7 @@ export class CompaniesComponent implements OnInit {
     }
     this.SortBy.Sort('company_cards', this.pages, null, this.comapnyFilter).subscribe(data => {
       this.companies = this.companies.concat(data);
+      console.log(this.companies);
       this.loadMoreVisibilty();
       if (this.companies.length == 0) {
         this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
@@ -49,7 +50,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   selectCompanyType(value) {
-    console.log(value);
+    // console.log(value);
     let body = {
       "value": value,
     };
@@ -69,6 +70,7 @@ export class CompaniesComponent implements OnInit {
   getCountCompanies() {
     this.mainService.post(globals.endpoint + '/company_profile_api/retrieve_count_of_companies').map(res => res.json()).subscribe(res => {
       this.countCompanies = res[0];
+     // console.log(this.countCompanies);
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });

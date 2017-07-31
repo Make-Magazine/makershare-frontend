@@ -32,12 +32,13 @@ export class HeaderComponent implements OnInit {
     private notificationBarService: NotificationBarService,
   ) { }
 
-
   ngOnInit() {
-
-
- this.auth.IsCommuintyManager();
-  this.Manager = this.auth.IsCommuintyManager();
+    //temp fix for manager
+    setInterval(()=>{
+      this.Manager = this.auth.IsCommuintyManager();
+    },100);
+    
+    //
 
     this.Back_End_Domain = domain;
     // if(localStorage.getItem('roles')){
