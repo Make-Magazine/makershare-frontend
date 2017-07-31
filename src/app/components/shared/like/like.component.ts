@@ -67,7 +67,8 @@ export class LikeComponent implements OnInit {
       this.getWhoLike();
     });
   }
-  getWhoLike() {
+  getWhoLike(more?:boolean) {
+    if(more) this.pages++;
     this.viewService.getView('who-liked', [['nid', this.nodeNid],['page',this.pages]]).subscribe(data => {
       this.whoLikeFull = this.whoLikeFull.concat(data);
       if(this.whoLikeMini.length == 0){
@@ -76,7 +77,7 @@ export class LikeComponent implements OnInit {
           this.whoLikeMini.length = 7;
         }
       }
-      this.loadMoreVisibilty();
+      this.hideloadmorelike = (this.countlikes <= this.whoLikeFull.length)? true:false;
     });
   }
   open(content) {
@@ -85,13 +86,6 @@ export class LikeComponent implements OnInit {
     }, (reason) => {
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
-  }
-  loadMoreLike() {
-    this.pages++;
-    this.getWhoLike();
-  }
-  loadMoreVisibilty() {
-      this.hideloadmorelike = (this.countlikes <= this.whoLikeFull.length)? true:false;
   }
   goToProfile(path: string) {
     if(window.location.href.indexOf('portfolio') != -1){
