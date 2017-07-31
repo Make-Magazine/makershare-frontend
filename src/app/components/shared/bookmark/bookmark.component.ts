@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlagService,UserService } from '../../../d7services';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+// import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -16,7 +16,7 @@ export class BookmarkComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private flagService: FlagService,
-    private notificationBarService: NotificationBarService,
+    // private notificationBarService: NotificationBarService,
     private config: NgbTooltipConfig,
   ) {
     this.router = router;
@@ -24,62 +24,36 @@ export class BookmarkComponent implements OnInit {
     this.config.triggers = 'hover';
   }
   @Input() nodeNid;
-  @Input() user;
   @Input() nodeType: string = '';
   userId;
   checkUserLogin = false;
 
-  currentuser;
   isBookmarked;
   bookmark: string;
-
+  toggleFlag:string;
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
-      if (data == false) { } else if (this.nodeNid) {
-        /*bookmark start */
+      if (this.nodeNid) {
         this.flagService.isFlagged(this.nodeNid, this.userId, 'node_bookmark').subscribe(data => {
           this.isBookmarked = data[0];
-
-          if (this.isBookmarked) { this.bookmark = "Unbookmark this " + this.nodeType; }
-          else { this.bookmark = "Bookmark this " + this.nodeType; }
-        }, err => {
-          this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
+          this.bookmark = (this.isBookmarked? 'Unbookmark this ':'Bookmark this ') + this.nodeType;
         })
-      }//end else
-    });//end userservice isLogedIn
-    /*bookmark end*/
+      }
+    });
   }
 
-  /* function bookmark */
   bookmarkThis(e: Event) {
-    this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data == false) {
-        //localStorage.setItem('redirectUrl', this.router.url);
+      if (!this.checkUserLogin) {
         this.router.navigate(['/access-denied']);
-      }
-      e.preventDefault();
-      if (this.isBookmarked) {
-        this.flagService.unflag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
-          this.isBookmarked = false;
-          //   console.log(this.isBookmarked)
-          this.bookmark = "Bookmark this " + this.nodeType;
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        });
       } else {
-        this.flagService.flag(this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
-          this.isBookmarked = true;
-          //  console.log(this.isBookmarked)
-          this.bookmark = "Unbookmark this " + this.nodeType;
-        }, err => {
-          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-        });
+        this.toggleFlag = this.isBookmarked? 'unflag':'flag';
+        this.flagService[this.toggleFlag](this.nodeNid, this.userId, 'node_bookmark').subscribe(response => {
+            this.isBookmarked = !this.isBookmarked;
+            this.bookmark = (this.isBookmarked? 'Unbookmark this ':'Bookmark this ') + this.nodeType;
+        });         
       }
-    });//end if check user login
   }
-  /* end function bookmark */
 
 }
