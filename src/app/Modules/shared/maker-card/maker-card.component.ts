@@ -51,7 +51,7 @@ export class MakerCardComponent implements OnInit {
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      console.log(this.card)
+      console.log(this.card.org_logo)
     });
   }
 
