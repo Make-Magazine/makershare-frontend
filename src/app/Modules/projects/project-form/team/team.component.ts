@@ -66,7 +66,7 @@ export class TeamComponent implements OnInit {
     this.InvitationEmails = this.FormPrintableValues.InvitationEmails;
     this.buildForm();
     let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(this.project.field_maker_memberships.und[0].field_team_member.und[0].target_id);
-    this.InvitationEmails = new UserInvitations(uid, this.project.nid);
+    this.InvitationEmails = new UserInvitations(uid, this.project.GetField("nid"));
     setTimeout(function(){
       //  $("html,body").animate({scrollTop: 0}, "slow");
     }, 0);
