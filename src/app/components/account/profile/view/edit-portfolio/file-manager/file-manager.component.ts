@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, FileService } from '../../../../../../d7services';
-import { FileEntityManage, FileManageService, NodeHelper, FileEntity } from '../../../../../../models';
+import { FileEntityManage, FileManageService, NodeHelper, FileEntity } from '../../../../../../CORE';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

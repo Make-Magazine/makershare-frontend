@@ -8,11 +8,11 @@ import {
 import {
   SortingSet,
   SortBySortingSet,
-} from '../../../models/ViewsHelper/viewsHelper';
+} from '../../../CORE/Models/ViewsHelper/viewsHelper';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
-import { FilterOption } from '../../../models/molecules';
+import { FilterOption } from '../../../CORE/Models/molecules';
 
 @Component({
   selector: 'app-single-showcases',

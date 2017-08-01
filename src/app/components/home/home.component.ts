@@ -8,7 +8,7 @@ import {
   SimpleOverviewEntity,
   EntityType,
   EntityGridSize,
-} from '../../models/cards';
+} from '../../CORE/Models/cards';
 
 
 @Component({

@@ -1,13 +1,13 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms'
 import { NodeService,ViewService,TaxonomyService } from '../../../../d7services'
-import { ProjectForm } from '../../../../models';
-import { ToolMaterialPart } from '../../../../models';
-import { TaxonomyTerm } from '../../../../models';
-import { field_collection_item_tool, field_collection_item_part, field_collection_item_material, field_collection_item_resource } from '../../../../models';
-import { FileEntity } from '../../../../models';
+import { ProjectForm } from '../../../../CORE';
+import { ToolMaterialPart } from '../../../../CORE';
+import { TaxonomyTerm } from '../../../../CORE';
+import { field_collection_item_tool, field_collection_item_part, field_collection_item_material, field_collection_item_resource } from '../../../../CORE';
+import { FileEntity } from '../../../../CORE';
 import { Observable } from 'rxjs/Observable';
-import { NodeHelper } from '../../../../models';
+import { NodeHelper } from '../../../../CORE';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { domain,endpoint } from '../../../../d7services/globals';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';

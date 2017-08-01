@@ -7,7 +7,7 @@ import {
   FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper,
   field_collection_item_member, field_collection_item_tool, field_collection_item_material,
   field_collection_item_part, field_collection_item_resource,ProjectHold,field_date,date_time
-}from '../../../../models';
+}from '../../../../CORE';
 import { ComponentCanDeactivate } from '../pending-changes.guard';
 declare var swal:any;
 @Component({
