@@ -1,5 +1,3 @@
-// Singleton
-export { Settings } from './Settings';
 //base entities
 export { Node } from './Node';
 export { TaxonomyTerm } from './taxonomy-term';

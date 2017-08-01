@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService, UserService, PmService, NodeService } from '../../../d7services';
-import * as globals from '../../../d7services/globals';
+import { MainService, UserService, PmService, NodeService } from '../../../CORE/d7services';
+import * as globals from '../../../CORE/d7services/globals';
 
 @Component({
   selector: 'notification-tpl',

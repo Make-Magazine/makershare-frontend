@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,UserService } from '../../../../d7services';
+import { ViewService,UserService } from '../../../../CORE/d7services';
 import { IChallengeStartDate, IChallengeData } from '../../../../CORE/Models/challenge/challengeData';
 
 

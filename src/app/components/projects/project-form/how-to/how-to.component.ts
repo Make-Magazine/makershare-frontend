@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms'
-import { NodeService,ViewService,TaxonomyService } from '../../../../d7services'
+import { NodeService,ViewService,TaxonomyService } from '../../../../CORE/d7services'
 import { ProjectForm } from '../../../../CORE';
 import { ToolMaterialPart } from '../../../../CORE';
 import { TaxonomyTerm } from '../../../../CORE';
@@ -9,7 +9,7 @@ import { FileEntity } from '../../../../CORE';
 import { Observable } from 'rxjs/Observable';
 import { NodeHelper } from '../../../../CORE';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { domain,endpoint } from '../../../../d7services/globals';
+import { domain,endpoint } from '../../../../CORE/d7services/globals';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
 

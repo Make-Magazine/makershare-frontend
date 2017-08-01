@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FlagService,ViewService } from '../../../../d7services';
+import { FlagService,ViewService } from '../../../../CORE/d7services';
 
 @Component({
   selector: 'app-challenge-follow',

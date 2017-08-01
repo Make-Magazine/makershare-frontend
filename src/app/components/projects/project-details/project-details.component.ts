@@ -1,10 +1,10 @@
 import { Component, OnInit, } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ViewService, NodeService, StatisticsService, MainService, UserService } from '../../../d7services';
+import { ViewService, NodeService, StatisticsService, MainService, UserService } from '../../../CORE/d7services';
 import 'rxjs/Rx';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Auth } from '../../../auth0/auth.service';
-import * as globals from '../../../d7services/globals';
+import * as globals from '../../../CORE/d7services/globals';
 import { Meta, Title } from '@angular/platform-browser';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 

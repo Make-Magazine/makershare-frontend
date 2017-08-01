@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PmService, UserService } from '../../../../d7services';
+import { PmService, UserService } from '../../../../CORE/d7services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Reply } from './reply';
 import { Location } from '@angular/common';

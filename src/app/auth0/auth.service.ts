@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import Auth0Lock from 'auth0-lock';
-import { UserService, MainService } from '../d7services';
+import { UserService, MainService } from '../CORE/d7services';
 import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
-import * as globals from '../d7services/globals';
+import * as globals from '../CORE/d7services/globals';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 @Injectable()
@@ -390,9 +390,9 @@ export class Auth {
 // import { Router } from '@angular/router';
 // import 'rxjs/add/operator/filter';
 // import * as auth0 from 'auth0-js';
-// import * as globals from '../d7services/globals';
+// import * as globals from '../CORE/d7services/globals';
 // import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
-// import { UserService,MainService } from '../d7services';
+// import { UserService,MainService } from '../CORE/d7services';
 // import { ProfilePictureService } from '../components/shared/profile-picture/profile-picture.service';
 
 // @Injectable()

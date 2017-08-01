@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
-import { SolrService } from '../../../d7services';
+import { SolrService } from '../../../CORE/d7services';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({

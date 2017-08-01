@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserProfile } from "../../../../CORE/Models/profile/userprofile";
 import { ProfileSocial } from "../../../../CORE/Models/profile/ProfileSocial";
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { ProfileService, UserService, ViewService, FileService, StatisticsService, MainService } from '../../../../d7services';
+import { ProfileService, UserService, ViewService, FileService, StatisticsService, MainService } from '../../../../CORE/d7services';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
 import { FileEntity, NodeHelper, FileEntityManage } from '../../../../CORE';
@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCropperComponent } from 'ng2-img-cropper';
 import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 import { URLNoProtocol } from '../../../../validations/url-no-protocol.validation';
-import * as globals from '../../../../d7services/globals';
+import * as globals from '../../../../CORE/d7services/globals';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({

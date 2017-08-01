@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService, MainService } from '../../CORE/d7services';
 import { ProjectCategory } from '../../CORE';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
-import * as globals from '../../d7services/globals';
+import * as globals from '../../CORE/d7services/globals';
 import { SortBySortingSet, SortingSet } from '../../CORE/Models/makers';
 import { Auth } from '../../auth0/auth.service';
 import { Meta, Title } from '@angular/platform-browser';

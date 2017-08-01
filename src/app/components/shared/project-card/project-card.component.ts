@@ -2,8 +2,8 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 import { Router } from '@angular/router';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../../auth0/auth.service';
-import { ViewService } from '../../../d7services';
-import { UserService } from '../../../d7services/user/user.service';
+import { ViewService } from '../../../CORE/d7services';
+import { UserService } from '../../../CORE/d7services/user/user.service';
 
 @Component({
   selector: 'app-project-card',
