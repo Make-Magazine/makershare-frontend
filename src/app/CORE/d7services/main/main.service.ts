@@ -4,17 +4,12 @@ import { Observable } from "rxjs";
 import { CookieService } from 'ngx-cookie';
 import { Singleton } from '../../';
 
-
 @Injectable()
 export class MainService {
-
-
-  constructor(private http: Http, private cookieService: CookieService) {   }
-
-
-  GetOptions(){
+  constructor(private http: Http, public cookieService: CookieService) {}
+  private GetOptions(){
     let headers = new Headers();
-    headers.set('X-CSRF-Token', this.getToken());
+    headers.set('X-CSRF-Token', this.cookieService.get('token'));
     headers.set('Content-Type', 'application/json');
     headers.set('Accept', 'application/json');
     let options = new RequestOptions();
@@ -23,80 +18,25 @@ export class MainService {
     return options;
   }
 
- 	getURL(url: string,WithoutEndPoint?): string {
+ 	private getURL(url: string, WithoutEndPoint?:boolean): string {
     if(WithoutEndPoint)
       return Singleton.Settings.GetBackEndUrl() + url;
  		return Singleton.Settings.GetBackEndUrlWithEndpoint() + url;
  	}
 
-  get(endpoint: string,WithoutEndPoint?): Observable<Response>{
-  	let url = this.getURL(endpoint,WithoutEndPoint);
-  	return this.http.get(url,this.GetOptions()).timeout(20000);
+  get(RequestURL: string, WithoutEndPoint?:boolean): Observable<Response>{
+  	return this.http.get(this.getURL(RequestURL,WithoutEndPoint),this.GetOptions()).timeout(20000);
   }
 
-  post(endpoint: string, body?: any): Observable<Response>{
-  	let url = this.getURL(endpoint);
-  	return this.http.post(url, body ? body: {},this.GetOptions()).timeout(20000);
+  post(RequestURL: string, body?: any): Observable<Response>{
+  	return this.http.post(this.getURL(RequestURL), body ? body: {},this.GetOptions()).timeout(20000);
   }
 
-  put(endpoint: string, body: any): Observable<Response>{
-  	let url = this.getURL(endpoint);
-  	return this.http.put(url, body,this.GetOptions()).timeout(20000);
+  put(RequestURL: string, body: any): Observable<Response>{
+  	return this.http.put(this.getURL(RequestURL), body,this.GetOptions()).timeout(20000);
   }
 
-  delete(endpoint: string): Observable<Response>{
-  	let url = this.getURL(endpoint);
-  	return this.http.delete(url,this.GetOptions()).timeout(20000);
-  }
-
-  saveCookies(token: string, session_name: string, sessid: string){
-    var expires = new Date();
-    expires.setDate(expires.getDate() + 23);
-    var options = {
-      expires: expires
-    };
-    var someText = token.replace(/(\r\n|\n|\r)/gm,"");
-    var tokenFinal = someText.split(' ').join('')
-
-    this.cookieService.put('sessid', sessid, options);
-    this.cookieService.put('session_name', session_name, options);
-    this.cookieService.put('token', tokenFinal, options);
-  }
-
-  removeCookies(){
-    this.cookieService.remove('sessid');
-    this.cookieService.remove('session_name');
-    this.cookieService.remove('token');
-  }
-
-  getToken(): string{
-    var token = this.cookieService.get('token');
-    if(token){
-      return token;
-    }
-    return null;
-  }
-
-  getSession(): string{
-    var session = this.cookieService.get('session_name') + '=' + this.cookieService.get('sessid');
-    if(session){
-      return session;
-    }
-    return null;
+  delete(RequestURL: string): Observable<Response>{
+  	return this.http.delete(this.getURL(RequestURL),this.GetOptions()).timeout(20000);
   }
 }
-
-/*
-CRUD
-The basis of the REST server. In the below:
-
-[endpoint_path] refers to the Path to the endpoint you defined when setting up the endpoint.
-[resource] is the name of the resource, like node or taxonomy_term.
-[resource_id] is the id of the resource you're acting on.
-Create: POST /[endpoint_path]/[resource] + body data
-Retrieve: GET /[endpoint_path]/[resource]/[resource_id]
-Retrieve: GET /[endpoint_path]/[resource]
-Update: PUT /[endpoint_path]/[resource]/[resource_id] + body data
-Delete: DELETE /[endpoint_path]/[resource]/[resource_id]
-http://localhost:81/api/node?parameters[uid]=1
-*/
