@@ -1,11 +1,11 @@
 import { ISettings } from '../../Models';
 
 export class Settings implements ISettings{
-  // APIProtocol = 'http';
-  APIProtocol = 'https';
-  // APIHost = 'localhost';
-  APIHost = 'preview-manage.makershare.com';
-  APIPort;
+  APIProtocol = 'http';
+  // APIProtocol = 'https';
+  APIHost = 'localhost';
+  // APIHost = 'preview-manage.makershare.com';
+  APIPort=333;
   APIEndPoint = 'api';
   
   solrPath = 'http://192.168.0.208:333/solr/drupal/';

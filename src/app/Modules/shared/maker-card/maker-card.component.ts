@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService } from '../../../CORE/d7services';
+import { ViewService, MainService } from '../../../CORE/d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../auth0/auth.service';
 
@@ -30,6 +30,8 @@ export class MakerCardComponent implements OnInit {
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     public auth: Auth,
+    private mainService: MainService,
+
 
   ) {
     this.config.placement = 'bottom';
@@ -37,12 +39,7 @@ export class MakerCardComponent implements OnInit {
   }
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
-    // if (this.cardData.uid){
-    //   this.uid=this.cardData.uid;
-    // }
-
     this.getMakerCard();
-
     this.getMakerBadges();
     this.CountMakerProjects();
     this.getLatestProject();
@@ -51,14 +48,13 @@ export class MakerCardComponent implements OnInit {
   getMakerCard() {
     this.viewService.getView('maker_card_data', [['uid', this.uid]]).subscribe(data => {
       this.card = data[0];
-      console.log(this.card)
     });
   }
 
   getMakerBadges() {
-    this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
-      this.badges = data;
-      console.log(this.badges)
+    let body = {"uid": this.uid,};
+    this.mainService.post('maker_count_api/retrieve_badge_image', body).map(res => res.json()).subscribe(res => {
+      this.badges = res;
     });
   }
 
