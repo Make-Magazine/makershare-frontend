@@ -34,7 +34,10 @@ export class CompaniesComponent implements OnInit {
     if (more) this.pages++;
     this.SortBy.Sort('company_cards', this.pages, null, this.comapnyFilter).subscribe(data => {
       this.companies = this.companies.concat(data);
+
+      // console.log(this.companies);
       this.showloadmoreCompany = (this.countCompanies <= this.companies.length) ? false : true;
+
       this.loaderService.display(false);
     });
   }
