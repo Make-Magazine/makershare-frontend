@@ -57,6 +57,7 @@ export class MakerCardComponent implements OnInit {
   getMakerBadges() {
     this.viewService.getView('api_user_badges', [['uid', this.uid]]).subscribe(data => {
       this.badges = data;
+      console.log(this.badges)
     });
   }
 
