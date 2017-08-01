@@ -107,9 +107,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   UpdateHolder(){
     let self = this;
     setInterval(function(){
-      let projectHold = new ProjectHold(self.project.title+' ('+self.project.nid+')');
-      projectHold.title = self.project.title;
-      projectHold.nid = self.Holder.nid;
+      let projectHold = new ProjectHold(self.project.GetField('title')+' ('+self.project.GetField('nid')+')');
+      projectHold.SetField('title',self.project.GetField('title'));
+      projectHold.SetField('nid',self.Holder.nid,);
       if(self.Holder.field_users_wants_edit)
         projectHold.field_users_wants_edit = self.Holder.field_users_wants_edit;
       self.nodeService.UpdateNode(projectHold).subscribe();
@@ -118,17 +118,17 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
   GetProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
-      this.viewService.getView('api_project_hold',[["nid", project.nid]]).subscribe((hold)=>{
+      this.viewService.getView('api_project_hold',[["nid", project.GetField('nid')]]).subscribe((hold)=>{
         if(hold.length == 0 || hold[0].uid == +localStorage.getItem("user_id")){
-          let projectHold = new ProjectHold(project.title+' ('+nid+')');
-          projectHold.title = project.title;
+          let projectHold = new ProjectHold(project.GetField('title')+' ('+nid+')');
+          projectHold.SetField('title',this.project.GetField('title'));
           if(hold.length == 0){
             this.nodeService.createNode(projectHold).subscribe(node=>{
               this.Holder = node;
               this.ConvertProjectToCreateForm(project);
             });
           }else{
-            projectHold.nid = hold[0].nid;
+            projectHold.SetField("nid",hold[0].nid);
             delete projectHold.field_project_to_edit;
             this.nodeService.UpdateNode(projectHold).subscribe(node=>{
               this.Holder = hold[0];
@@ -256,7 +256,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             }
         }
       }else if (index == "field_creation_date" && !field.und){
-        let created = new Date(data.created*1000);
+        let created = new Date(+data.GetField("created")*1000);
         let date = new Date(created.getUTCFullYear(), created.getUTCMonth(), created.getUTCDate(),  created.getUTCHours(), created.getUTCMinutes(), created.getUTCSeconds()); //reset date to UTC
         date = new Date(date.getTime() - 3*60*60*1000); //convert to america time zone
         let day = date.getDate().toString();
@@ -438,7 +438,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       field_team_member: { und: [{ target_id: localStorage.getItem("user_name") + ' (' + localStorage.getItem("user_id") + ')' }] },
       field_membership_role: { und: [{ value: 'Project Lead' }] },
     }
-    this.project.SetField(owner, 'field_maker_memberships');
+    this.project.SetField('field_maker_memberships',owner);
     this.ProjectLoaded = true;
   }
 
@@ -446,8 +446,8 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     delete this.project.field_original_team_members;
     delete this.project.field_forks;
     delete this.project.field_faire_name;
-    this.project.sticky = null;
-    this.project.promote = null;
+    this.project.SetField("sticky",null);
+    this.project.SetField("promote",null);
   }
 
   /**
@@ -464,10 +464,10 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.RemoveStaticFields();
       this.nodeService.UpdateNode(this.project).subscribe((project: ProjectView) => {
         this.CanNavigate = true;
-        this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
+        this.FormPrintableValues.InvitationEmails.project = project.GetField("nid").toString();
         this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
         if(this.project.field_visibility2.und[0] == 1115)
-          this.GetProject(project.nid);
+          this.GetProject(+project.GetField("nid"));
         this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
@@ -477,12 +477,12 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     } else {
       this.nodeService.createNode(this.project).subscribe((project: ProjectView) => {
         this.CanNavigate = true;
-        this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
+        this.FormPrintableValues.InvitationEmails.project = project.GetField("nid").toString();
         if (!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)) {
           this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
         }
         if(this.project.field_visibility2.und[0] == 1115)
-          this.GetProject(project.nid);
+          this.GetProject(+project.GetField("nid"));
         this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
         this.project = new ProjectForm();
       }, err => {
@@ -526,10 +526,10 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.TryToSubmitPrivatePublic = true;
       return;
     }
-    this.project.SetField(Visibility, 'field_visibility2');
-    this.project.SetField(Status, "status");
-    if (!this.project.title) {
-      this.project.SetField("Untitled", "title");
+    this.project.SetField('field_visibility2',Visibility);
+    this.project.SetField("status",Status);
+    if (!this.project.GetField("title")) {
+      this.project.SetField("title","Untitled");
     }
     if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
       delete this.project.field_show_tell_video_as_default.und;
@@ -543,7 +543,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   SetPrjectValues() {
     var tasks = [];
-    this.project.SetField(this.FormPrintableValues.tags.toString(), "field_tags");
+    this.project.SetField("field_tags", this.FormPrintableValues.tags.toString());
     var image: FileEntity = { file: this.FormPrintableValues.cover_image.file, filename: this.FormPrintableValues.cover_image.filename };
     if (!this.FormPrintableValues.cover_image['fid']) {
       image.file = NodeHelper.RemoveFileTypeFromBase64(this.FormPrintableValues.cover_image.file);
@@ -566,7 +566,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       (x) => {
         var index = 0;
         if (!this.FormPrintableValues.cover_image['fid'] && image.file) {
-          this.project.SetField(x[0] as field_file_reference, 'field_cover_photo');
+          this.project.SetField('field_cover_photo', x[0] as field_file_reference);
           index++;
         }
         this.project.field_resources.und.forEach((item,resourcesindex)=>{
@@ -614,7 +614,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
   InviteTeam() {
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
-      this.mainService.post('/api/team_service/build', this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data => {
+      this.mainService.post('team_service/build', this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data => {
         for (let email in data) {
           let user = data[email];
           this.project.field_maker_memberships.und.forEach((row: field_collection_item_member, index: number) => {
