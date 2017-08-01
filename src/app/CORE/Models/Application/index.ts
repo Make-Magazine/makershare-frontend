@@ -1,0 +1,1 @@
+export { ISettings } from './Settings';
