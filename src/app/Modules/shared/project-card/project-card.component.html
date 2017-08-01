@@ -1,6 +1,12 @@
 <div *ngIf="project"
      class="card project {{state}} {{clickAction != null ? 'allow-cta' : ''}}"> <!--(click)="clickItem()"-->
-  <div class="card-image" [style.background-image]="'url('+project.cover_photo+')'"></div>
+  <div class="card-image" [style.background-image]="'url('+project.cover_photo+')'">
+    <br>
+    <img *ngIf="project.orgs_logo" class="rounded-circle bg-danger" src="{{project.orgs_logo}}" alt="">
+  </div>
+   <!-- <div class="badge badge-default" >
+    
+  </div>  -->
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt" [style.background-image]="'url('+project.cover_photo+')'"></div>

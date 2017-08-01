@@ -14,12 +14,12 @@ export class OrgsAboutUsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.description)
+    // console.log(this.description)
     if (this.description) {
       for (let i = 0; i < this.description.videos.length; i++) {
         let link = this.description.videos[i].video;
         this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
-        console.log(this.trustedLink)
+        // console.log(this.trustedLink)
       }
     }
   }

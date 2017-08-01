@@ -19,7 +19,7 @@ export class ProjectCardComponent implements OnInit {
   @Output() Featured = new EventEmitter<number>();
 
   badges = [];
-  project = {};
+  project;
   userId;
   smallWindow: number;
   Manager: boolean = false;
@@ -87,6 +87,7 @@ export class ProjectCardComponent implements OnInit {
           this.project['maker_url'] = '/portfolio/' + res.url;
         });
       });
+      
   }
 
   getBadgesProject() {
