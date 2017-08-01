@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { LoaderService } from './components/shared/loader/loader.service';
-import { UserService, MainService } from './d7services';
+import { LoaderService } from './Modules/shared/loader/loader.service';
+import { UserService, MainService } from './CORE/d7services';
 import { Router, NavigationEnd } from '@angular/router';
-import { Auth } from './auth0/auth.service';
+import { Auth } from './Modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
+
 declare var ga:Function;
 
 @Component({
