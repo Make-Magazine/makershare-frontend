@@ -49,7 +49,7 @@
           <li> Type of business: {{company.business}}</li>
         </ul>
         <p>
-          <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Email</a>
+          <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
         </p>
         <div *ngIf="followers">
           <p>Followers</p>   
