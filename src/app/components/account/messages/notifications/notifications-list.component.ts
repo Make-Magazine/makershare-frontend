@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from '../../../../d7services';
-import { Notification } from '../../../../models';
+import { Notification } from '../../../../CORE';
 
 @Component({
   selector: 'notifications-list',

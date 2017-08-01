@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService, FlagService, UserService } from '../../../d7services';
 import { Router } from '@angular/router';
-import { IChallenge } from '../../../models/challenge/challenge';
+import { IChallenge } from '../../../CORE/Models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
 import * as globals from '../../../d7services/globals';
