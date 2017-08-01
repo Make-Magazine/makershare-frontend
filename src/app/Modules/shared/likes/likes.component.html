@@ -1,0 +1,7 @@
+<div class="app-likes"
+     ngbTooltip="{{isLiked ? 'Unlike this idea' : 'Like this idea'}}"
+     (click)="likeThis($event)">
+  <img src="./assets/images/icons/light-{{isLiked ? '' : 'not-'}}selected.png"
+       alt="{{countlikes}} likes">
+  <span>{{countlikes}}</span>
+</div>

@@ -126,12 +126,12 @@
   &.full {
     padding-top: 0;
     .info-top {
-      width: 25%;
       height: 100%;
+      width: 33%;
     }
     .card-info {
-      margin-left: 25%;
-      width: 75%;
+      margin-left: 33%;
+      width: 66%;
       padding-bottom: 26.25%;
       height: 0;
     }
@@ -147,7 +147,7 @@
       bottom: 1.5rem;
     }
     .card-image {
-      width: 25%;
+      width: 33%;
       left: 0;
       padding-bottom: 0;
       height: 100%;
@@ -158,7 +158,31 @@
 
     &.showcase {
       .info-top {
+        //height: auto;
+      }
+    }
+
+    &.single-view {
+      .info-top {
         height: auto;
+        position: relative;
+        float: left;
+      }
+      .card-info {
+        margin-left: 0;
+        width: auto;
+        padding-bottom: 0;
+        height: auto;
+      }
+      .info-bottom {
+        float: left;
+        width: 66%;
+      }
+      .social-stat-group {
+        padding-top: 1.6rem;
+        div {
+          text-align: left;
+        }
       }
     }
   }
