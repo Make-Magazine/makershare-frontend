@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, FlagService, UserService } from '../../../CORE/d7services';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Singleton } from '../../../CORE';
+import { FlagService, UserService, ViewService } from '../../../CORE/d7services';
 import { IChallenge } from '../../../CORE/Models/challenge/challenge';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from '../../../CORE';
 
 @Component({
   selector: 'app-challenges',
@@ -15,7 +15,6 @@ export class ChallengesComponent implements OnInit {
   pageNumber = 0;
   allstatuses = [];
   statusesCount = {};
-  currentStatusName = 'All';
   currentStatusId = 0;
   hideloadmore = true;
   currentCount = 0;
@@ -40,7 +39,7 @@ export class ChallengesComponent implements OnInit {
         name: 'og:image',
         content:
           Singleton.Settings.AppURL +
-            '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+          '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);
   }
@@ -49,17 +48,16 @@ export class ChallengesComponent implements OnInit {
     this.challengesCount();
     this.getStatuses();
     this.getChallenges();
-    // this.meta.setTitle(`Community Missions | Making that Matters | Maker Share`);
     // this.meta.setTag('og:image', '/assets/logo.png');
-    // this.meta.setTag('og:description', 'Use your maker skills to positively impact people’s lives. Find a mission that inspires you to create. Maker Share is a project by Make: + Intel.');
   }
+
   /* function to get challenges and count followers  */
   getChallenges() {
     // show spinner
     this.loaderService.display(true);
 
-    var status_arg = [];
-    var page_arg = [];
+    let status_arg = [];
+    let page_arg = [];
     if (this.currentStatusId != 0) {
       status_arg = ['status', this.currentStatusId];
       this.currentCount = this.statusesCount[this.currentStatusId];
@@ -71,7 +69,6 @@ export class ChallengesComponent implements OnInit {
     }
     this.viewService.getView('challenges', [status_arg, page_arg]).subscribe(
       data => {
-        // console.log(data);
         this.challenges = this.challenges.concat(data);
 
         this.loadMoreVisibilty();
@@ -79,7 +76,7 @@ export class ChallengesComponent implements OnInit {
           this.currentCount = this.statusesCount['0'];
         }
         // count followers
-        for (let challenge of this.challenges) {
+        for (const challenge of this.challenges) {
           this.flagService.flagCount(challenge.nid, 'follow').subscribe(
             data => {
               Object.assign(challenge, data);
@@ -106,7 +103,7 @@ export class ChallengesComponent implements OnInit {
     this.viewService.getView('maker_taxonomy_category/14').subscribe(
       data => {
         let arr = [];
-        for (let key in data) {
+        for (const key in data) {
           if (data.hasOwnProperty(key)) {
             arr.push(data[key]);
           }
@@ -124,24 +121,18 @@ export class ChallengesComponent implements OnInit {
     });
   }
 
-  SetCurrentStatus(event) {
-    if (this.currentStatusId != event.target.id) {
+  SetCurrentStatus(filterValue) {
+    if (this.currentStatusId != filterValue) {
       this.challenges = [];
     }
-    this.currentStatusName = event.target.name;
-    this.currentStatusId = event.target.id;
+    this.currentStatusId = filterValue;
     this.challenges = [];
     this.pageNumber = 0;
     this.getChallenges();
   }
 
   loadMoreVisibilty() {
-    var ch_arr_count = this.challenges.length;
-    if (this.statusesCount[this.currentStatusId] == ch_arr_count) {
-      this.hideloadmore = true;
-    } else {
-      this.hideloadmore = false;
-    }
+    this.hideloadmore = this.statusesCount[this.currentStatusId] == this.challenges.length;
   }
 
   ShowChallengeDetails(nid) {

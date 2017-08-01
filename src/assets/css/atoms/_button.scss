@@ -21,16 +21,19 @@
   &.grey, &.disabled {
     background: $medium-grey;
 
-    &.-no-bg {
-      color: $dark-grey;
-    }
-
     &.-border {
       border: .1rem $dark-grey solid;
     }
 
     &:hover, &:active {
       background: $medium-grey; // no hover for disabled
+    }
+
+    &.-no-bg {
+      color: $dark-grey;
+      &:hover {
+        color: $white;
+      }
     }
   }
 

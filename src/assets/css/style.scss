@@ -63,12 +63,14 @@ $beta: true;
 // ///////////////////
 // organisms
 // ///////////////////
+@import "organisms/card/card";
+@import "organisms/dropdown-group";
+@import "organisms/dropdown-menu";
+@import "organisms/filter";
 @import "organisms/site-header";
 @import "organisms/site-footer";
-@import "organisms/card/card";
-@import "organisms/user-menu";
-@import "organisms/dropdown-menu";
 @import "organisms/sorting";
+@import "organisms/user-menu";
 // ///////////////////
 // ///////////////////
 
