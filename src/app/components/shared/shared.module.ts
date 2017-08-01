@@ -1,76 +1,73 @@
-import { NgModule,ModuleWithProviders } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommentComponent } from './comments/comment.component';
-import { CommentsComponent } from './comments/comments/comments.component';
-import { CommentFormComponent } from './comments/comments/comment-form.component';
-import { FollowComponent } from './follow/follow.component';
-import { BookmarkComponent } from './bookmark/bookmark.component';
-import { LikeComponent } from './like/like.component';
-import { ForkComponent } from './fork/fork.component';
-import { UserCardComponent } from './user-card/user-card.component';
-import { ProjectCardComponent } from './project-card/project-card.component';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FeedbackComponent } from './feedback/feedback.component';
-import { ShareButtonsModule } from "ngx-sharebuttons";
-import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
-import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
-import { LearnCardComponent } from './learn-card/learn-card.component';
-import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
-import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
-import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
-import { MakerCardComponent } from './maker-card/maker-card.component';
-import { CardBadges } from './card-badges/card-badges.component';
-import { Filters } from './filters/filters.component';
-import { MakerPhoto } from './maker-photo/maker-photo.component';
-import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
-import { MessageModalComponent } from './message-modal/message-modal.component';
-import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
-import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
-import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
-import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
-import { ReportUserComponent } from './report-user/report-user.component';
-import { ReportProjectComponent } from './report-project/report-project.component';
-import { ProjectVoteComponent } from './project-vote/project-vote.component';
-import { FileBrowserComponent } from './file-browser/file-browser.component'
-import { ReportCommentComponent } from './report-comment/report-comment.component';
-import { VideoViewerComponent } from './video-viewer/video-viewer.component';
-import { NotificationTemplateComponent } from './notification-template/notification-template.component';
-import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
-// import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
-import { SocialStats } from './social-stats/social-stats.component';
-
-
-// custom directives
-import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
-import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
-import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
-import { AddProtocolDirective } from '../../directives/add-protocol.directive';
-import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
-
-//pipes
-import { ReverseArray } from '../../pipes/reverse-array';
-
-/**
- * Providers
- */
-//drupal 7 services
-import { D7ServicesForRoot } from '../../d7services';
-//shared services
+import { ImageCropperComponent, ImageCropperModule } from 'ng2-img-cropper';
+// shared services
 import { NotificationBarService } from 'ngx-notification-bar/release';
+import { ShareButtonsModule } from 'ngx-sharebuttons';
 import { AuthGuardService } from '../../auth0/auth-guard.service';
 import { Auth } from '../../auth0/auth.service';
 import { LoaderService } from '../../components/shared/loader/loader.service';
 import { ProfilePictureService } from '../../components/shared/profile-picture/profile-picture.service';
-import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
+/**
+ * Providers
+ */
+// drupal 7 services
+import { D7ServicesForRoot } from '../../d7services';
+import { AddProtocolDirective } from '../../directives/add-protocol.directive';
+// custom directives
+import { ValidateOnFocusoutDirective } from '../../directives/validate-focusout.directive';
+// pipes
+import { ReverseArray } from '../../pipes/reverse-array';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
-import { FollowUserComponent } from './follow-user/follow-user.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+import { CardBadges } from './card-badges/card-badges.component';
+import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
+import { CommentComponent } from './comments/comment.component';
+import { CommentFormComponent } from './comments/comments/comment-form.component';
+import { CommentsComponent } from './comments/comments/comments.component';
+import { CompanyCardComponent } from './company-card/company-card.component';
 
 import { FeatureComponent } from './feature/feature.component';
-import { CompanyCardComponent } from './company-card/company-card.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FileBrowserComponent } from './file-browser/file-browser.component'
+import { Filters } from './filters/filters.component';
+import { FollowUserComponent } from './follow-user/follow-user.component';
+import { FollowComponent } from './follow/follow.component';
+import { ForkComponent } from './fork/fork.component';
+import { LearnCardComponent } from './learn-card/learn-card.component';
+import { LearnUserCardComponent } from './learn-user-card/learn-user-card.component';
+import { LikesComponent } from './likes/likes.component';
+import { MakerCardComponent } from './maker-card/maker-card.component';
+import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
+import { MakerPhoto } from './maker-photo/maker-photo.component';
+import { MessageModalComponent } from './message-modal/message-modal.component';
+import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
+import { NotificationTemplateComponent } from './notification-template/notification-template.component';
+import { ProjectCardComponent } from './project-card/project-card.component';
+import { ProjectVoteComponent } from './project-vote/project-vote.component';
+import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
+import { ReportCommentComponent } from './report-comment/report-comment.component';
+import { ReportProjectComponent } from './report-project/report-project.component';
+import { ReportUserComponent } from './report-user/report-user.component';
+import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
+import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
+import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
+import { ProjectSearchCardComponent } from './search-cards/project-search-card/project-search-card.component';
+import { ShowcaeSearchCardComponent } from './search-cards/showcase-search-card/showcase-search-card.component';
+import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
+import { ShowcaseCardComponent } from './showcase-card/showcase-card.component';
+import { ShowcaseGeneralCardComponent } from './showcase-general-card/showcase-general-card.component';
+// import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
+import { SocialStats } from './social-stats/social-stats.component';
+import { UserCardMsgsComponent } from './user-card-msgs/user-card-msgs.component';
+import { UserCardSmallComponent } from './user-card-small/user-card-small.component';
+import { UserCardComponent } from './user-card/user-card.component';
+import { VideoViewerComponent } from './video-viewer/video-viewer.component';
+import { ViewsComponent } from './views/views.component';
 
 @NgModule({
   imports: [
@@ -90,7 +87,8 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     CommentFormComponent,
     FollowComponent,
     BookmarkComponent,
-    LikeComponent,
+    LikesComponent,
+    ViewsComponent,
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,
@@ -129,7 +127,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     RegistrationCollectComponent,
     MakerCkeditorComponent,
     AccessRestrictedComponent,
-    //pipes
+    // pipes
     ReverseArray,
     FeatureComponent,
     CompanyCardComponent,
@@ -139,7 +137,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     FollowComponent,
     FollowUserComponent,
     BookmarkComponent,
-    LikeComponent,
+    LikesComponent,
     ForkComponent,
     UserCardComponent,
     ProjectCardComponent,

@@ -58,3 +58,15 @@
     padding: .5rem 1.5rem;
   }
 }
+
+.btn-soft-grey,
+a:not([href]):not([tabindex]).btn-soft-grey {
+  color: #757575 !important;
+  border-radius: 0;
+  font-size: 1.3rem;
+}
+
+.btn-fit,
+a:not([href]):not([tabindex]).btn-fit {
+  padding: .5rem 1rem;
+}
