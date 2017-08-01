@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PmService,UserService } from '../../../../d7services';
+import { PmService,UserService } from '../../../../CORE/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 @Component({

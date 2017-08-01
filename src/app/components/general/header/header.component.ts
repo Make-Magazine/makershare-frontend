@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../../d7services';
+import { UserService } from '../../../CORE/d7services';
 import { ActivatedRoute } from "@angular/router";
 import { Auth } from '../../../auth0/auth.service';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
-import { domain } from '../../../d7services/globals';
+import { domain } from '../../../CORE/d7services/globals';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 

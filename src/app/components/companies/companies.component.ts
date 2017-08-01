@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService, MainService } from '../../CORE/d7services';
 import { SortBySortingSet, SortingSet } from '../../CORE';
-import * as globals from '../../d7services/globals';
+import * as globals from '../../CORE/d7services/globals';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 

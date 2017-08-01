@@ -4,7 +4,7 @@ import {
   ViewService,
   StatisticsService,
   NodeService,
-} from '../../../d7services';
+} from '../../../CORE/d7services';
 import {
   SortingSet,
   SortBySortingSet,

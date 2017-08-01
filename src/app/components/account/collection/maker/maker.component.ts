@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService,FlagService } from '../../../../d7services';
+import { ViewService,FlagService } from '../../../../CORE/d7services';
 @Component({
   selector: 'app-maker',
   templateUrl: './maker.component.html',

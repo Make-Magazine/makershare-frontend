@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { CommentService,ViewService,UserService } from '../../../../d7services';
+import { CommentService,ViewService,UserService } from '../../../../CORE/d7services';
 import { IComment } from '../../../../CORE/Models/challenge/comment';
 import { Auth } from '../../../../auth0/auth.service';
 

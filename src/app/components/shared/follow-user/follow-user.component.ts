@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, FlagService, UserService } from '../../../d7services';
+import { ViewService, FlagService, UserService } from '../../../CORE/d7services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ViewService, UserService, NodeService } from '../../../d7services';
+import { ViewService, UserService, NodeService } from '../../../CORE/d7services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

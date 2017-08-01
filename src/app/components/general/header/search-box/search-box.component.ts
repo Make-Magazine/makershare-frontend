@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { SolrService } from '../../../../d7services/solr/solr.service';
+import { SolrService } from '../../../../CORE/d7services/solr/solr.service';
 
 @Component({
   selector: 'app-search-box',

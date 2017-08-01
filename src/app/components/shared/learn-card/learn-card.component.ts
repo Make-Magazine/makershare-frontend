@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService } from '../../../d7services';
+import { ViewService } from '../../../CORE/d7services';
 import { Auth } from '../../../auth0/auth.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from '../../../d7services';
-import * as globals from '../../../d7services/globals';
+import { MainService } from '../../../CORE/d7services';
+import * as globals from '../../../CORE/d7services/globals';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
