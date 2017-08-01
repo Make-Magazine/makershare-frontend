@@ -49,7 +49,6 @@ src/assets/css/style.css
 Thumbs.db
 /nbproject/private/
 
-/src/app/d7services/globals.ts
 /src/assets/css/style.css.map
 /src/dist/
 /src/*.ngfactory.ts
