@@ -2,13 +2,10 @@
   &.showcase {
     margin-bottom: 10px;
     overflow: initial;
-    //border: 0;
     border-radius: 0;
-
     position: relative;
     background-color: white;
     cursor: pointer;
-    //box-shadow: 2px 2px 8px $light-grey;
 
     &.full {
       &.single-view {
@@ -31,27 +28,11 @@
     }
 
     .social-stat-group {
+      width: calc(66% - 2*1.6rem);
       .stats-list {
-        padding-top: 1rem;
-      }
-      span {
-        vertical-align: super;
-        color: $light-grey;
-      }
-      div {
-        min-width: 60px;
-        text-align: center;
-      }
-      .showcase-likes {
-        img {
-          width: 12px;
-        }
-      }
-      .showcase-views {
-        img {
-          width: 22px;
-          height: auto;
-          padding-bottom: 3px;
+        div {
+          float: left;
+          min-width: 6rem;
         }
       }
     }

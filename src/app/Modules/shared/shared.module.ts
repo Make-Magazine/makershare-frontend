@@ -1,4 +1,4 @@
-import { NgModule,ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -7,7 +7,8 @@ import { CommentsComponent } from './comments/comments/comments.component';
 import { CommentFormComponent } from './comments/comments/comment-form.component';
 import { FollowComponent } from './follow/follow.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
-import { LikeComponent } from './like/like.component';
+import { LikesComponent } from './likes/likes.component';
+import { ViewsComponent } from './views/views.component';
 import { ForkComponent } from './fork/fork.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
@@ -39,7 +40,7 @@ import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { NotificationTemplateComponent } from './notification-template/notification-template.component';
 import { SharedButtonsComponent } from './shared-buttons/shared-buttons.component';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { ImageCropperModule,ImageCropperComponent } from 'ng2-img-cropper';
+import { ImageCropperModule, ImageCropperComponent } from 'ng2-img-cropper';
 // import { Ng2FileDropModule,Ng2FileDropDirective } from 'ng2-file-drop';
 import { SocialStats } from './social-stats/social-stats.component';
 
@@ -51,15 +52,15 @@ import { NotificationPanelComponent } from './notification-panel/notification-pa
 import { AddProtocolDirective } from '../../Angular/directives/add-protocol.directive';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 
-//pipes
+// pipes
 import { ReverseArray } from '../../Angular/pipes/reverse-array';
 
 /**
  * Providers
  */
-//drupal 7 services
+// drupal 7 services
 import { D7ServicesForRoot } from '../../CORE/d7services';
-//shared services
+// shared services
 import { NotificationBarService } from 'ngx-notification-bar/release';
 import { AuthGuardService } from '../auth0/auth-guard.service';
 import { Auth } from '../auth0/auth.service';
@@ -90,8 +91,9 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     CommentFormComponent,
     FollowComponent,
     BookmarkComponent,
-    LikeComponent,
+    LikesComponent,
     ForkComponent,
+    ViewsComponent,
     UserCardComponent,
     ProjectCardComponent,
     FeedbackComponent,
@@ -129,7 +131,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     RegistrationCollectComponent,
     MakerCkeditorComponent,
     AccessRestrictedComponent,
-    //pipes
+    // pipes
     ReverseArray,
     FeatureComponent,
     CompanyCardComponent,
@@ -139,8 +141,9 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     FollowComponent,
     FollowUserComponent,
     BookmarkComponent,
-    LikeComponent,
+    LikesComponent,
     ForkComponent,
+    ViewsComponent,
     UserCardComponent,
     ProjectCardComponent,
     FeedbackComponent,

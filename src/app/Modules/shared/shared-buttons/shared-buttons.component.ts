@@ -10,7 +10,8 @@ export class SharedButtonsComponent implements OnInit {
   @Input() PageTitle;
   @Input() PageDescription;
   @Input() PageImage;
-  CancelTitle = 'Cancel';
+  @Input() showLabel: boolean = true;
+  private CancelTitle: string = 'Cancel';
 
   constructor(
     private modalService: NgbModal,
