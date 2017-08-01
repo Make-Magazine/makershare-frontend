@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../d7services';
-import { SortBySortingSet, SortingSet } from '../../../models/makers/sorting';
+import { SortBySortingSet, SortingSet } from '../../../CORE/Models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
 import * as globals from '../../../d7services/globals';

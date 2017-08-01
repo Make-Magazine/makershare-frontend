@@ -1,7 +1,5 @@
 // Singleton
 export { Settings } from './Settings';
-export { AppSingleton } from './Singleton';
-
 //base entities
 export { Node } from './Node';
 export { TaxonomyTerm } from './taxonomy-term';

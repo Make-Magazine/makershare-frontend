@@ -4,7 +4,7 @@ import { UserService, MainService } from './d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
-import { AppSingleton } from './models';
+import { Singleton } from './CORE';
 
 declare var ga:Function;
 
@@ -88,8 +88,8 @@ export class AppComponent implements OnInit{
 
 
   SetApplicationSingleton(){
-    console.log(AppSingleton.Settings.LANGUAGE);
-    AppSingleton.Settings.LANGUAGE = "ar";
+    console.log(Singleton.Settings.LANGUAGE);
+    Singleton.Settings.LANGUAGE = "ar";
   }
 
 }

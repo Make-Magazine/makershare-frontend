@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ViewService, MainService } from '../../../../../../d7services';
-import { ProjectCardPortfolio } from '../../../../../../models';
+import { ProjectCardPortfolio } from '../../../../../../CORE';
 import * as globals from '../../../../../../d7services/globals';
 
 @Component({

@@ -2,11 +2,11 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaxonomyService,UserService,NodeService,FileService } from '../../../d7services';
-import { TaxonomyTerm } from '../../../models/Drupal/taxonomy-term';
+import { TaxonomyTerm } from '../../../CORE/Models/Drupal/taxonomy-term';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
-import { FileEntity } from '../../../models';
-import { NodeHelper } from '../../../models';
+import { FileEntity } from '../../../CORE';
+import { NodeHelper } from '../../../CORE';
 import { Observable } from "rxjs";
 import { isPlatformBrowser } from '@angular/common';
 

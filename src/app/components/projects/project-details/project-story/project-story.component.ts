@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService, ViewService } from '../../../../d7services';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IComment } from '../../../../models/challenge/comment';
+import { IComment } from '../../../../CORE/Models/challenge/comment';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

@@ -1,12 +1,12 @@
-import { Settings } from './';
+import { Settings } from '../../';
 
-export interface AppSingleton{
-  instance:AppSingleton,
+export interface Singleton{
+  instance:Singleton,
   Settings:Settings,
 }
 
-export class AppSingleton{
-    private static instance: AppSingleton;
+export class Singleton{
+    private static instance: Singleton;
     private settings:Settings;
 
     constructor() {
@@ -15,7 +15,7 @@ export class AppSingleton{
 
     static get Instance() {
       if (this.instance === null || this.instance === undefined) {
-        this.instance = new AppSingleton();
+        this.instance = new Singleton();
       }
       return this.instance;
     }

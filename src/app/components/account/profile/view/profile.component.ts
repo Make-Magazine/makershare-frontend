@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserProfile } from "../../../../models/profile/userprofile";
-import { ProfileSocial } from "../../../../models/profile/ProfileSocial";
+import { UserProfile } from "../../../../CORE/Models/profile/userprofile";
+import { ProfileSocial } from "../../../../CORE/Models/profile/ProfileSocial";
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ProfileService, UserService, ViewService, FileService, StatisticsService, MainService } from '../../../../d7services';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
-import { FileEntity, NodeHelper, FileEntityManage } from '../../../../models';
+import { FileEntity, NodeHelper, FileEntityManage } from '../../../../CORE';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable'
 import { Auth } from '../../../../auth0/auth.service';

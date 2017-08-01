@@ -3,9 +3,9 @@ import { ViewService, MainService } from '../../d7services';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import * as globals from '../../d7services/globals';
-import { SortBySortingSet, SortingSet } from '../../models';
+import { SortBySortingSet, SortingSet } from '../../CORE';
 import {Meta, Title } from '@angular/platform-browser';
-import { AppSingleton } from '../../models';
+import { Singleton } from '../../CORE';
 
 @Component({
   selector: 'app-makers',
@@ -53,7 +53,7 @@ export class MakersComponent implements OnInit {
     ])
   }
   ngOnInit() {
-    console.log(AppSingleton.Settings.LANGUAGE);
+    console.log(Singleton.Settings.LANGUAGE);
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();

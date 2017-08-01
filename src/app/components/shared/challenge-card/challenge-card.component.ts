@@ -4,7 +4,7 @@ import { ViewService, UserService } from '../../../d7services';
 import {
   IChallengeStartDate,
   IChallengeData,
-} from '../../../models/challenge/challengeData';
+} from '../../../CORE/Models/challenge/challengeData';
 import { Auth } from '../../../auth0/auth.service';
 
 @Component({
