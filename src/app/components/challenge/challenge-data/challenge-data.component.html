@@ -26,7 +26,7 @@
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
                     </div>-->
                     <div class="button-container-main-1" *ngIf="challenge.status_id == 375">
-                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton && enterStatus" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
                     <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                   </div>
@@ -35,7 +35,7 @@
                       <span class="btn btn-main" (click)="enterToChallengeProjectClosed($event)">Participate</span>
                     </div>-->
                     <div class="button-container-main-1 m-0 mb-2" *ngIf="challenge.status_id == 375">
-                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+                      <span class="btn btn-main" *ngIf="challenge.status_id != 376 && hideButton && enterStatus" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                     </div>
                     <app-follow [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                     <div class="ml-auto hidden-lg-down">
@@ -95,9 +95,9 @@
                       </div>
                       <div class="challene-card-footer-3 hidden-md-up">
                         <div class="button-container-main-1 w-100 mb-2 ml-0" *ngIf="challenge.status_id != 376">
-                          <span class="btn btn-main w-100" *ngIf="challenge.status_id != 376 && hideButton==true && enterStatus==true" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
+                          <span class="btn btn-main w-100" *ngIf="challenge.status_id != 376 && hideButton && enterStatus" (click)="enterToChallengeProject(challenge.nid)">Participate</span>
                         </div>
-                        <app-follow class="w-100" *ngIf="hideButton==true" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
+                        <app-follow class="w-100" *ngIf="hideButton" [nodeNid]="challenge.nid" (countNumber)="followersCounter($event)"></app-follow>
                       </div>
                       <div *ngIf="submittedBefore">
                         <p class="check-entered">You have submitted a project to this mission</p>
@@ -115,16 +115,16 @@
         <!-- End top-content-wrapper -->
         <div class="container">
           <div class="region region-content col-sm-12 row">
-            <div id="rules-route" hidden (click)="changeChallangeTab('rules',$event)"></div>
+            <div id="rules-route" hidden (click)="activeTab = 'rules'"></div>
             <div class="tabs-buttons col-md-4 p-0">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}" (click)="changeChallangeTab('brief',$event)">Design Brief</a></li>
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="changeChallangeTab('awards',$event)">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="changeChallangeTab('rules',$event)">Rules &amp; Instructions</a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}" (click)="activeTab = 'brief'">Design Brief</a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="activeTab = 'awards'">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
+                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="activeTab = 'rules'">Rules &amp; Instructions</a></li>
                 <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
-                    (click)="changeChallangeTab('discussion',$event)">Questions</a></li>
+                    (click)="activeTab = 'discussion'">Questions</a></li>
                 <li *ngIf="no_of_followers>0"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}"
-                    (click)="changeChallangeTab('followers',$event)">Followers <span class="badge">{{no_of_followers}}</span></a></li>
+                    (click)="activeTab = 'followers'">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>
             <div class="challenge-details col-md-8 p-0">
