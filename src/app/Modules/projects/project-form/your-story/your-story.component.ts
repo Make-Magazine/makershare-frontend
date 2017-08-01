@@ -135,7 +135,7 @@ export class YourStoryComponent implements OnInit {
    */
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
-      'title': [this.project.title, [Validators.required, Validators.minLength(4), Validators.maxLength(50),CustomValidators.notEqual('Untitled'),CustomValidators.notEqual('untitled')]],
+      'title': [this.project.GetField("title"), [Validators.required, Validators.minLength(4), Validators.maxLength(50),CustomValidators.notEqual('Untitled'),CustomValidators.notEqual('untitled')]],
       'field_teaser': [this.project.field_teaser.und[0].value, [Validators.required,Validators.maxLength(250)]],
       'field_cover_photo': [this.cover_image, [Validators.required]],
       'field_show_tell_video': [this.project.field_show_tell_video.und[0].value, [URLNoProtocol(),YoutubeOrVimeoLink()]],

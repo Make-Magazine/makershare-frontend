@@ -1,9 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,PmService,UserService } from '../../../CORE/d7services';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { ViewService, PmService, UserService } from '../../../CORE/d7services';
+import {
+  NotificationBarService,
+  NotificationType,
+} from 'ngx-notification-bar/release';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgbModal, ModalDismissReasons,NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbTooltipConfig,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-card',
@@ -11,10 +18,15 @@ import { NgbModal, ModalDismissReasons,NgbTooltipConfig } from '@ng-bootstrap/ng
   providers: [NgbTooltipConfig],
 })
 export class UserCardComponent implements OnInit {
+  @Input() uid;
+  @Input() name;
+  @Input() showMessage: boolean = true;
+  @Input() communityManager: boolean = false;
+  @Input() showProjects: boolean = false;
+
   closeResult: string;
   card;
-  projectCount={};
-  projectCount2 = {};
+  projectCount = {};
   badges = [];
   active = true;
   userId;
@@ -26,12 +38,21 @@ export class UserCardComponent implements OnInit {
     subject: '',
     body: '',
   };
-  @Input() uid;
-  @Input() name;
-  @Input() showMessage = true;
-  @Input() communityManager = false;
 
-  
+  formErrors = {
+    subject: '',
+    body: '',
+  };
+
+  validationMessages = {
+    subject: {
+      required: 'Subject is required.',
+    },
+    body: {
+      required: 'Message Body is required.',
+    },
+  };
+
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -46,54 +67,91 @@ export class UserCardComponent implements OnInit {
     this.config.triggers = 'hover';
   }
   ngOnInit() {
-    this.getProjectCountByUser();
+    if (this.showProjects) {
+      this.getProjectCountByUser();
+    }
+
     this.getcard();
     this.getBadges();
     this.buildForm();
-    this.checkUserLogin()
+    this.checkUserLogin();
   }
 
   getcard() {
     // get card profile
-    // service to get profile card 
-    this.viewService.getView('maker_profile_card_data2', [['uid', this.uid]]).subscribe(data => {
-      this.card = data[0];
-      //  console.log( this.card);
-      
-      this.isCurrentUser();
-    }, err => {
-      // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
-    });
+    // service to get profile card
+    this.viewService
+      .getView('maker_profile_card_data2', [['uid', this.uid]])
+      .subscribe(
+        data => {
+          this.card = data[0];
+          //  console.log( this.card);
+
+          this.isCurrentUser();
+        },
+        err => {
+          // notification error  in service
+          this.notificationBarService.create({
+            message: 'Sorry, somthing went wrong, try again later.',
+            type: NotificationType.Error,
+            allowClose: true,
+            autoHide: false,
+            hideOnHover: false,
+          });
+        },
+      );
   }
+
   getBadges() {
     // service to get profile card Badges
-    this.viewService.getView('api_user_badges_card', [['uid', this.uid]]).subscribe(data => {
-      this.badges = data;      
-      if(this.communityManager){
-        for (let badge of data){
-          if(badge.title == "Community Manager"){
-            // this.badges = [];
-            this.badges = [badge];         
+    this.viewService
+      .getView('api_user_badges_card', [['uid', this.uid]])
+      .subscribe(
+        data => {
+          this.badges = data;
+          if (this.communityManager) {
+            for (const badge of data) {
+              if (badge.title == 'Community Manager') {
+                // this.badges = [];
+                this.badges = [badge];
+              }
+            }
           }
-        }
-      } 
-      //console.log(data);
-    
-    }, err => {
-      // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
-    });
+        },
+        err => {
+          // notification error  in service
+          this.notificationBarService.create({
+            message: 'Sorry, somthing went wrong, try again later.',
+            type: NotificationType.Error,
+            allowClose: true,
+            autoHide: false,
+            hideOnHover: false,
+          });
+        },
+      );
   }
+
   getProjectCountByUser() {
     // service to get profile card Badges
-    this.viewService.getView('maker_projects_count', [['uid', this.uid]]).subscribe(data => {
-      this.projectCount = data[0];
-    }, err => {
-      // notification error  in service 
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
-    });
+    this.viewService
+      .getView('maker_projects_count', [['uid', this.uid]])
+      .subscribe(
+        data => {
+          this.projectCount = data[0];
+        },
+        err => {
+          // notification error  in service
+          this.notificationBarService.create({
+            message: 'Sorry, something went wrong, try again later.',
+            type: NotificationType.Error,
+            allowClose: true,
+            autoHide: false,
+            hideOnHover: false,
+          });
+        },
+      );
   }
+
   onSubmit(e) {
     e.preventDefault();
     if (this.messageForm.valid) {
@@ -101,10 +159,17 @@ export class UserCardComponent implements OnInit {
       this.messageObj.body = this.messageForm.value.body;
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
-        this.notificationBarService.create({ message: 'Message sent successfully', type: NotificationType.Success,allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({
+          message: 'Message sent successfully',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
       });
     }
   }
+
   resetForm(e) {
     e.preventDefault();
     this.messageForm.reset();
@@ -112,16 +177,17 @@ export class UserCardComponent implements OnInit {
 
   buildForm(): void {
     this.messageForm = this.fb.group({
-      'subject': ['', Validators.required],
-      'body': ['', Validators.required]
+      subject: ['', Validators.required],
+      body: ['', Validators.required],
     });
-    this.messageForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
+    this.messageForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged(); // (re)set validation messages now
   }
 
   onValueChanged(data?: any) {
-    if (!this.messageForm) { return; }
+    if (!this.messageForm) {
+      return;
+    }
     const form = this.messageForm;
     for (const field in this.formErrors) {
       // clear previous error message (if any)
@@ -136,20 +202,6 @@ export class UserCardComponent implements OnInit {
     }
   }
 
-  formErrors = {
-    'subject': '',
-    'body': ''
-  };
-
-  validationMessages = {
-    'subject': {
-      'required': 'Subject is required.',
-    },
-    'body': {
-      'required': 'Message Body is required.',
-    },
-  };
-
   isCurrentUser() {
     this.userId = localStorage.getItem('user_id');
     if (this.card['uid'] === this.userId) {
@@ -159,17 +211,20 @@ export class UserCardComponent implements OnInit {
     }
   }
   open(content) {
-       this.userService.isLogedIn().subscribe(data => {
+    this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
         localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
       }
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+      this.modalService.open(content).result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        },
+      );
     });
   }
 
@@ -182,22 +237,17 @@ export class UserCardComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  checkUserLogin(){
-    
-  }
+  checkUserLogin() {}
 
-    userProfile(fName, lName) {
-    var name = fName + '-' + lName;
-    this.router.navigate(['/portfolio/', name]);
+  userProfile(fName, lName) {
+    this.router.navigate(['/portfolio/', `${fName + '-' + lName}`]);
   }
 
   getProfile() {
     if (this.card.uid) {
       this.userService.getUrlFromId(this.card.uid).subscribe(res => {
         this.router.navigate(['/portfolio/' + res.url]);
-        // console.log(res)
       });
     }
   }
-
 }

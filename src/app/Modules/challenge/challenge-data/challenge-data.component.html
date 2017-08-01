@@ -118,12 +118,12 @@
             <div id="rules-route" hidden (click)="activeTab = 'rules'"></div>
             <div class="tabs-buttons col-md-4 p-0">
               <ul class="list-unstyled challenge-submenu">
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}" (click)="activeTab = 'brief'">Design Brief</a></li>
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="activeTab = 'awards'">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
-                <li><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="activeTab = 'rules'">Rules &amp; Instructions</a></li>
-                <li *ngIf="challenge.discussion =='1' && challenge"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
+                <li><a class="btn button-item" [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}" (click)="activeTab = 'brief'">Design Brief</a></li>
+                <li><a class="btn button-item" [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}" (click)="activeTab = 'awards'">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a></li>
+                <li><a class="btn button-item" [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}" (click)="activeTab = 'rules'">Rules &amp; Instructions</a></li>
+                <li *ngIf="challenge.discussion =='1' && challenge"><a class="btn button-item" [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
                     (click)="activeTab = 'discussion'">Questions</a></li>
-                <li *ngIf="no_of_followers>0"><a href="" class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}"
+                <li *ngIf="no_of_followers>0"><a class="btn button-item" [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}"
                     (click)="activeTab = 'followers'">Followers <span class="badge">{{no_of_followers}}</span></a></li>
               </ul>
             </div>

@@ -56,7 +56,7 @@
                 <!--<img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                 <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
                 <span *ngIf="!projectCard.number_of_likes">0</span>-->
-                <app-like [nodeNid]="Project.nid" [project]="true"></app-like>
+                <app-likes [nodeNid]="Project.nid"></app-likes> <!--[project]="true"-->
 
               </li>
               <li>
@@ -131,7 +131,7 @@
                   <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
                   <img *ngIf="!projectCard.number_of_likes" src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
                   <span *ngIf="!projectCard.number_of_likes">0</span>-->
-                  <app-like [nodeNid]="Project.nid" [project]="true"></app-like>
+                  <app-likes [nodeNid]="Project.nid"></app-likes> <!--[project]="true"-->
 
                 </li>
                 <li>
@@ -204,7 +204,7 @@
               <!--<img src="./assets/images/icons/light-not-selected.png" class="project-likes" alt="">
               <span *ngIf="projectCard.number_of_likes">{{projectCard.number_of_likes}}</span>
               <span *ngIf="!projectCard.number_of_likes">0</span>-->
-              <app-like [nodeNid]="Project.nid" [project]="true"></app-like>
+              <app-likes [nodeNid]="Project.nid"></app-likes> <!--[project]="true"-->
 
 
             </li>
