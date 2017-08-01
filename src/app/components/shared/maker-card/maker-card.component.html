@@ -5,6 +5,8 @@
     <div class="info-top">
       <div class="card-image alt" *ngIf="profile" (click)="goToProfile(card.profile_url)"></div>
       <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(card.profile_url)"></div>
+                <br>
+          <img *ngIf="card.orgs_logo" class="rounded-circle bg-danger" src="{{card.orgs_logo}}" alt=""> 
       <div class="flag maker">maker</div>
 
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"> </app-feature>

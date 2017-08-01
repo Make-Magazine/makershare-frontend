@@ -40,7 +40,7 @@ export class CompaniesComponent implements OnInit {
     }
     this.SortBy.Sort('company_cards', this.pages, null, this.comapnyFilter).subscribe(data => {
       this.companies = this.companies.concat(data);
-      console.log(this.companies);
+      // console.log(this.companies);
       this.loadMoreVisibilty();
       if (this.companies.length == 0) {
         this.notificationBarService.create({ message: "There aren't any projects yet for this topic. Go make one!", type: NotificationType.Error, allowClose: false, autoHide: true, hideOnHover: false });
