@@ -13,7 +13,7 @@ export class BookmarkComponent implements OnInit {
   @Input() nodeType: string = '';
   userId;
   private checkUserLogin: boolean = false;
-  private isBookmarked: boolean;
+  isBookmarked: boolean;
   private toggleFlag: string;
 
   constructor(
