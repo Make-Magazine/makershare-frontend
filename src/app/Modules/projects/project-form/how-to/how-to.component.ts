@@ -442,7 +442,7 @@ export class HowToComponent implements OnInit {
   AddNewToolMaterialPart(ControlName:string) {
     let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(ControlName);
     let FieldName = 'field_' + ControlName + 's';
-    NewToolMaterialPart.SetField(this.InputToolMaterialPart[ControlName], "title");
+    NewToolMaterialPart.SetField("title", this.InputToolMaterialPart[ControlName]);
     this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
       NewNode.name = this.InputToolMaterialPart[ControlName];
       this.InputToolMaterialPart[ControlName] = '';

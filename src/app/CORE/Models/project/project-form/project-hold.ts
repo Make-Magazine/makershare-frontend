@@ -13,7 +13,7 @@ export class ProjectHold extends Node implements ProjectHold{
   }
 
   protected Init(Project_title_id){
-    super.Init('project_hold');
+    super.InitFields('project_hold');
     this.status = 1;
     this.field_project_to_edit = {und:[{target_id:Project_title_id}]};
     
