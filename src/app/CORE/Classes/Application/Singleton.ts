@@ -2,21 +2,21 @@ import { ISettings } from '../../Models';
 import { Settings } from './';
 
 export class Singleton{
-    private static instance:Singleton;
-    private settings:ISettings;
+    private static _instance:Singleton;
+    private _settings:ISettings;
 
     constructor() {
-      this.settings = new Settings();
+      this._settings = new Settings();
     }
 
     static get Instance() {
-      if (this.instance === null || this.instance === undefined) {
-        this.instance = new Singleton();
+      if (this._instance === null || this._instance === undefined) {
+        this._instance = new Singleton();
       }
-      return this.instance;
+      return this._instance;
     }
 
     static get Settings (){
-      return this.Instance.settings;
+      return this.Instance._settings;
     }
 }

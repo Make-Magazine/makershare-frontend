@@ -76,10 +76,10 @@ export class ProjectView extends Node implements ProjectView {
 	}
 
 	protected Init(Type, Project: ProjectView) {
-		super.Init(Type);
+		super.InitFields(Type);
 		for (let FieldName in Project) {
 			let FieldValue = Project[FieldName];
-			this.SetField(FieldValue, FieldName);
+			this.SetField(FieldName, FieldValue);
 		}
 	}
 }
@@ -87,7 +87,7 @@ export class ProjectView extends Node implements ProjectView {
 export class ProjectForm extends Node implements ProjectForm {
 
 	protected Init(): void {
-		super.Init("project");
+		super.InitFields("project");
 		this.field_how_to = { und: [new field_text(null)] };
 		this.field_tools = { und: [] };
 		this.field_parts = { und: [] };
@@ -110,12 +110,16 @@ export class ProjectForm extends Node implements ProjectForm {
 		this.field_creation_date = { und: [new field_date(new date_time())] };
 	}
 
-	public SetField(value: any, FieldName: string): void {
+	public SetField(FieldName: string, value: any): void {
 		if (this[FieldName] instanceof Object) {
 			this.SetCustomFields(value, FieldName);
 		} else {
-			super.SetField(value, FieldName);
+			super.SetField(FieldName, value);
 		}
+	}
+
+	GetField(FieldName:string):any{
+		super.GetField(FieldName);
 	}
 
 	/**
@@ -124,16 +128,16 @@ export class ProjectForm extends Node implements ProjectForm {
    */
 	public CheckIfReadyToPublic() {
 		if (this.GetField('title') == "") {
-			this.SetField("Untitled", "title");
+			this.SetField("title", "Untitled");
 		}
 		if (this.GetField("field_categories").und.length == 0 || this.GetField("field_cover_photo").und[0].fid == 0 ||
 			this.GetField('title') == ("Untitled" || "untitled") || this.GetField('field_story').und[0].value == "") {
 			this.GetField('field_visibility2').und[0] = 1115;
 		}
 		if (this.GetField('field_visibility2').und[0] == 370) {
-			this.SetField(1, 'status');
+			this.SetField('status', 1);
 		} else {
-			this.SetField(null, 'status');
+			this.SetField('status', null);
 		}
 
 	}
