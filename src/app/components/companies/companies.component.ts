@@ -58,7 +58,7 @@ export class CompaniesComponent implements OnInit {
   }
   sortCompanies(sort) {
     this.companies = [];
-    this.pages=0;
+    this.pages = 0;
     if (sort == '_none') return;
     this.CurrentSortSet.sort_order = "DESC";
     if (sort == 'created_1' || sort == 'title') {
