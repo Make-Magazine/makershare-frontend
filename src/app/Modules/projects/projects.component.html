@@ -1,60 +1,66 @@
-<div class="page-explore">
-  <div class="container">
-    <header class="explore-header">
-      <div class="container">
-        <h3>Projects</h3>
-        <div class="filters-group">
-          <div class="dropdown-group">
-            <i class="dropdownIcon lnr lnr-chevron-down"></i>
-            <select class="shadowed explore-tags" (change)="selectParent($event.target.value)">
-              <option value="0" disabled>Filter By</option>
-              <option value="1">All Projects</option>
-              <option *ngFor="let parent of categories_parents;let i = index" value="{{parent.tid}}" [innerHTML]="parent.name">
-              </option>
-            </select>
-          </div>
-          <div class="filters">
-            <div class="dropdown-group">
-              <i class="dropdownIcon lnr lnr-chevron-down"></i>
-              <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortProjects($event.target.value)">
-                <option value="_none" disabled class="btn" disabled>Sort By</option>
-                <option value="created_2" class="btn">Most recent</option>
-                <option value="created_1" class="btn">Oldest</option>
-                <option value="title" class="btn">Title A-Z</option>
-                <option value="title_1" class="btn">Title Z-A</option>
-                <option value="count" class="btn">Most liked</option>
-                <option value="php" class="btn">Most viewed</option>
-                <option value="timestamp" class="btn">Featured</option>
-              </select>
-            </div>
-          </div>
-          <div class="filters projects-counter">
-            <div class="entries-count btn">
-              <p *ngIf="countProject > 1">{{countProject}} Projects</p>
-              <p *ngIf="countProject < 2">{{countProject}} Project</p>
-            </div>
-          </div>
-          <!-- End filters -->
-        </div>
-        <div class="submenus" *ngIf="childCategory.length>0">
-          <ul class="list-unstyled cat-filters">
-            <li class="cat-filter-item" *ngFor="let term of childCategory;let i = index">
-              <a [ngClass]="{'active':CurrentActiveChildIndex == i}" (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
-                class="btn btn-category" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
-            </li>
-          </ul>
+<div class="page-explore mb-5">
+  <div class="container page-header mb-5">
+    <h3>Projects</h3>
+  </div>
+
+  <div class="container clearfix mb-5">
+    <div class="filters-group mb-3">
+      <app-filters [data]="categories_parents"
+                   [type]="'project'"
+                   [ref]="this"></app-filters>
+
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags sorting-filter"
+                id="filter-projects"
+                (change)="sortProjects($event.target.value)">
+          <option value="_none" disabled class="btn">Sort By</option>
+          <option value="created_2" class="btn">Most recent</option>
+          <option value="created_1" class="btn">Oldest</option>
+          <option value="title" class="btn">Title A-Z</option>
+          <option value="title_1" class="btn">Title Z-A</option>
+          <option value="count" class="btn">Most liked</option>
+          <option value="php" class="btn">Most viewed</option>
+          <option value="timestamp" class="btn">Featured</option>
+        </select>
+      </div>
+
+      <div class="filters projects-counter">
+        <div *ngIf="countProject"
+             class="entries-count btn">
+          <p>{{countProject}} Project{{ countProject > 1 ? 's': '' }}</p>
         </div>
       </div>
-    </header>
-    <div class="projects-grid row" *ngIf="projects.length > 0">
-      <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.nid"
-        [state]="'tall'"></app-project-card>
     </div>
-    <div class="text-center pt-3 pb-5" *ngIf="showloadmoreproject">
-      <div>
-        <a class="btn btn-load-more" (click)="loadMoreProject()">Load more</a>
-      </div>
+
+    <div class="submenus"
+         *ngIf="childCategory.length>0">
+      <ul class="list-unstyled cat-filters">
+        <li class="cat-filter-item" *ngFor="let term of childCategory;let i = index">
+          <a [ngClass]="{'active':CurrentActiveChildIndex == i}"
+             (click)="CurrentActiveChildIndex = i;idCategory(term);projectsById($event);"
+             class="btn btn-category" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
+        </li>
+      </ul>
     </div>
+  </div>
+
+  <div class="container items-container p-414"
+       *ngIf="projects.length > 0">
+    <div class="row">
+      <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left"
+                        *ngFor="let project of projects"
+                        [view]="view"
+                        [nid]="project.nid"
+                        [state]="'tall'"></app-project-card>
+    </div>
+  </div>
+
+  <div class="text-center pt-3 pb-5"
+       *ngIf="showloadmoreproject && projects.length > 0">
+    <button class="grey -no-bg -big -border -slim"
+            (click)="loadMoreProject()">Load more
+    </button>
   </div>
 
   <!--<div *ngIf="Manager"> 
