@@ -7,8 +7,9 @@ import { ViewService } from '../../../../CORE/d7services';
   templateUrl: './feed.component.html'
 })
 export class FeedComponent implements OnInit {
-  
+
   projects;
+  noFeed =false;
   constructor(
     private viewService: ViewService,
   ) { }
@@ -18,8 +19,11 @@ export class FeedComponent implements OnInit {
   }
   getFeed() {
     this.viewService.getView('feed').subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
+      if (data.length >= 1) {
         this.projects = data
+        console.log(this.projects)
+      } else {
+        this.noFeed = true;
       }
     })
   }
