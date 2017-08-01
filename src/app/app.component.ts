@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { LoaderService } from './Modules/shared/loader/loader.service';
-import { UserService, MainService } from './CORE/d7services';
+import { UserService } from './CORE/d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './Modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit{
     public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
-    private mainService: MainService,
     public router: Router,
   ) {
 
@@ -54,7 +53,7 @@ export class AppComponent implements OnInit{
     // check if the user is logged in at the back-end or not, if not, logged the user out too from the front-end
     this.userService.getStatus().subscribe(status => {
       if (status.user.uid == 0) {
-        this.mainService.removeCookies();
+        this.userService.removeCookies();
         localStorage.removeItem('id_token');
         localStorage.removeItem('user_id');
         localStorage.removeItem('user_name');
@@ -63,7 +62,7 @@ export class AppComponent implements OnInit{
       }
     }, err => {
       // console.log(err);
-      this.mainService.removeCookies();
+      this.userService.removeCookies();
       localStorage.removeItem('id_token');
       localStorage.removeItem('user_id');
       localStorage.removeItem('user_name');
