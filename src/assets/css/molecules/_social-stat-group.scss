@@ -1,6 +1,11 @@
 .social-stat-group {
-	.social-stat, li {
-		display: inline-block;
-		margin-right: 1rem;
-	}
+  .showcase-date {
+    .update-date {
+      color: $light-grey;
+    }
+  }
+  .social-stat, li {
+    display: inline-block;
+    margin-right: 1rem;
+  }
 }

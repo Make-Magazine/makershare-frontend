@@ -13,7 +13,7 @@
 		ul {
 			li {
 				display: inline-block;
-				&.project-like,&.project-bookmakr {
+				&.project-like, &.app-bookmark {
 					a.active {
 						i {
 							color: $red;

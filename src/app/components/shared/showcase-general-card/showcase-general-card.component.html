@@ -34,12 +34,12 @@
       </div>
       <ul class="social-stat-group">
         <li class="social-stat" *ngIf="showcase.nid && userId">
-          <app-like [nodeNid]="showcase.nid" [showcase]="true"></app-like>
+          <app-likes [nodeNid]="showcase.nid"></app-likes> <!--[showcase]="true"-->
           <!-- <i class="fa fa-lightbulb-o"></i> -->
           <!-- <span class="info">54678</span> -->
         </li>
         <li class="social-stat" *ngIf="showcase.number_of_project">
-          <!-- <app-like [nodeNid]="showcase.nid" [project]="true"></app-like> -->
+          <!-- <app-likes [nodeNid]="showcase.nid" [project]="true"></app-likes> -->
           <i class="fa fa-dot-circle-o"></i>
           <span class="info">{{showcase.number_of_project}}</span>
         </li>
