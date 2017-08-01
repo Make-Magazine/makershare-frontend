@@ -52,7 +52,7 @@ export class OrgsProjectsComponent implements OnInit {
     let body = {
       nid: this.nid
     }
-    this.mainService.post('/api/company_profile_api/count_projects_in_orgs', body).map(res => res.json()).subscribe(data => {
+    this.mainService.post('company_profile_api/count_projects_in_orgs', body).map(res => res.json()).subscribe(data => {
       this.projectsCount = data;
     })
   }

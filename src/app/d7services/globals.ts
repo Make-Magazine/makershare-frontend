@@ -5,3 +5,4 @@ export var domain = 'http://localhost:333';
 export var solrPath = 'http://192.168.0.208:333/solr/drupal/';
 export var endpoint = '/api';
 export var appName = 'Maker Share';
+
