@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,MainService,PmService } from '../../../../CORE/d7services';
+import { ViewService,MainService,PmService,UserService } from '../../../../CORE/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,6 +20,7 @@ export class defaultSettingsComponent implements OnInit {
   constructor(
     private viewservice: ViewService,
     private mainService: MainService,
+    private userService: UserService,
     private router: Router,
     private notificationBarService: NotificationBarService,
     private modalService: NgbModal,
@@ -89,7 +90,7 @@ export class defaultSettingsComponent implements OnInit {
   deleteMyAcount(){
     this.userId = localStorage.getItem('user_id');
    this.pm.deleteAcount(this.userId).subscribe(data=>{
-     this.mainService.removeCookies();
+     this.userService.removeCookies();
      localStorage.removeItem('id_token');
      localStorage.removeItem('user_id');
      localStorage.removeItem('user_name');
