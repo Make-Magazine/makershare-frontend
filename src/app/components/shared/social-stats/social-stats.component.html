@@ -5,7 +5,7 @@
   </li>
 
   <li class="social-stat" *ngIf="like && nid">
-    <app-like [nodeNid]="nid" [project]="true"></app-like>
+    <app-likes [nodeNid]="nid"></app-likes> <!--[project]="true"-->
   </li>
   <li class="social-stat" *ngIf="profileViews">
     <i class="fa fa-eye"></i>
