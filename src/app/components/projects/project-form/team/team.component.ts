@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { ViewService } from '../../../../d7services'
+import { ViewService } from '../../../../CORE/d7services'
 import { ProjectForm } from '../../../../CORE';
 import { field_collection_item_member }  from '../../../../CORE';
 import { Observable } from 'rxjs/Observable';

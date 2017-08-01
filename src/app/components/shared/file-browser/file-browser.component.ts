@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ViewService } from '../../../d7services';
+import { ViewService } from '../../../CORE/d7services';
 import { FileEntityManage, FileManageService } from '../../../CORE';
 
 @Component({

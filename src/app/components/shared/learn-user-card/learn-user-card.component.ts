@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService } from '../../../d7services';
+import { ViewService } from '../../../CORE/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { FormGroup } from '@angular/forms';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';

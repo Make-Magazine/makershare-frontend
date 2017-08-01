@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService, UserService, MainService } from '../../../../../d7services';
+import { ViewService, UserService, MainService } from '../../../../../CORE/d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import * as globals from '../../../../../d7services/globals';
+import * as globals from '../../../../../CORE/d7services/globals';
 @Component({
   selector: 'profile-projects',
   templateUrl: './projects.component.html',

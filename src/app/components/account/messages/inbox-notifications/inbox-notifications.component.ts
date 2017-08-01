@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PmService,ViewService,UserService } from '../../../../d7services'
+import { PmService,ViewService,UserService } from '../../../../CORE/d7services'
 import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common'

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ViewService, MainService } from '../../../../../../d7services';
+import { ViewService, MainService } from '../../../../../../CORE/d7services';
 import { ProjectCardPortfolio } from '../../../../../../CORE';
-import * as globals from '../../../../../../d7services/globals';
+import * as globals from '../../../../../../CORE/d7services/globals';
 
 @Component({
   selector: 'portfolio-tab',

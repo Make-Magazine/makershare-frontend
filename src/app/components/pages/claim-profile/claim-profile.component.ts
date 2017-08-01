@@ -1,9 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MainService } from '../../../d7services/main/main.service';
+import { MainService } from '../../../CORE/d7services/main/main.service';
 import { Auth } from '../../../auth0/auth.service';
 import { Meta, Title } from '@angular/platform-browser';
-import * as globals from '../../../d7services/globals';
+import * as globals from '../../../CORE/d7services/globals';
 
 @Component({
   selector: 'app-claim-profile',

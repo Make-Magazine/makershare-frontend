@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, FlagService, MainService, NodeService } from '../../../d7services';
+import { ViewService, FlagService, MainService, NodeService } from '../../../CORE/d7services';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { IChallengeProject } from '../../../CORE/Models/challenge/challengeProjects';
-import * as globals from '../../../d7services/globals';
+import * as globals from '../../../CORE/d7services/globals';
 import { IChallengeStartDate, IChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { LoaderService } from './components/shared/loader/loader.service';
-import { UserService, MainService } from './d7services';
+import { UserService, MainService } from './CORE/d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -88,8 +88,7 @@ export class AppComponent implements OnInit{
 
 
   SetApplicationSingleton(){
-    console.log(Singleton.Settings.LANGUAGE);
-    Singleton.Settings.LANGUAGE = "ar";
+    console.log(Singleton.Settings);
   }
 
 }

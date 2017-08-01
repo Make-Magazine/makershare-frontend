@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ViewService } from '../../../../d7services';
+import { ViewService } from '../../../../CORE/d7services';
 
 @Component({
   selector: 'app-single-object',

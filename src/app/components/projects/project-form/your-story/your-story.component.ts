@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input  } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { ViewService } from '../../../../d7services';
+import { ViewService } from '../../../../CORE/d7services';
 import { ProjectCategory,NodeHelper,ProjectForm,FileEntity } from '../../../../CORE';
 import { CropperSettings } from 'ng2-img-cropper';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

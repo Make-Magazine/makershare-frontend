@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from '../../d7services';
+import { ViewService, MainService } from '../../CORE/d7services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NodeService } from '../../d7services';
-import * as globals from '../../d7services/globals';
+import { NodeService } from '../../CORE/d7services';
+import * as globals from '../../CORE/d7services/globals';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

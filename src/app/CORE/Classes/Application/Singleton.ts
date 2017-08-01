@@ -1,13 +1,9 @@
-import { Settings } from '../../';
-
-export interface Singleton{
-  instance:Singleton,
-  Settings:Settings,
-}
+import { ISettings } from '../../Models';
+import { Settings } from './';
 
 export class Singleton{
-    private static instance: Singleton;
-    private settings:Settings;
+    private static instance:Singleton;
+    private settings:ISettings;
 
     constructor() {
       this.settings = new Settings();

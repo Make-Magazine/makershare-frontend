@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../../d7services';
+import { ViewService } from '../../../../CORE/d7services';
 import { FormGroup } from '@angular/forms';
 import { IComment } from '../../../../CORE/Models/challenge/comment';
 import { Router} from '@angular/router';

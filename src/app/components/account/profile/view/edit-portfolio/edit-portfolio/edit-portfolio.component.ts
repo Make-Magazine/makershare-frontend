@@ -1,5 +1,5 @@
 import { Component, OnInit, Input,EventEmitter,Output } from '@angular/core';
-import { UserService } from '../../../../../../d7services';
+import { UserService } from '../../../../../../CORE/d7services';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
