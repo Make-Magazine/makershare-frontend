@@ -44,6 +44,7 @@ export class OrgsProjectsComponent implements OnInit {
     }
     this.viewServcie.getView('orgs-projects', [['page',this.pages],['nid', this.nid]]).subscribe(data => {
       this.projects =this.projects.concat(data);
+      // console.log(this.projects[1].org_views)
       this.loadMoreVisibilty();
     })
   }
