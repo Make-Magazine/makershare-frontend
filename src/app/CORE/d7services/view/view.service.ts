@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MainService } from '../main/main.service';
 import { Observable } from 'rxjs';
-import * as globals from '../globals';
 import { Headers } from '@angular/http';
 
 @Injectable()
@@ -25,7 +24,7 @@ export class ViewService {
       });
     }
     return this.mainService
-      .get(globals.endpoint + '/' + viewName + string_args)
+      .get(viewName + string_args)
       .map(res => res.json())
       .catch(err => Observable.throw(err));
   }
@@ -33,7 +32,7 @@ export class ViewService {
   /* function check user allowe to enter challenge */
   checkEnterStatus(viewName: string, nid: number): Observable<any> {
     return this.mainService
-      .post(globals.endpoint + '/' + viewName, { challenge_id: nid })
+      .post(viewName, { challenge_id: nid })
       .map(res => res.json());
   }
 
@@ -42,7 +41,7 @@ export class ViewService {
   getCountProjectByID(viewName: string, id: string): Observable<any> {
     // console.log(string_args);
     return this.mainService
-      .get(globals.endpoint + '/' + viewName + '/' + id)
+      .get(viewName + '/' + id)
       .map(res => res.json())
       .catch(err => Observable.throw(err));
   }

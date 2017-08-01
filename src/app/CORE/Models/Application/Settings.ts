@@ -1,8 +1,14 @@
 export interface ISettings{
-  appURL:string,
-  domain:string,
-  solrPath?:string,
-  endpoint:string,
-  appName:string,
+  APIProtocol:string,
+  APIHost:string,
+  APIPort:number,
+  APIEndPoint:string,
+  solrPath:string,
+
+  AppURL:string,
+  AppName:string,
   LANGUAGE:string,
+
+  GetBackEndUrl():string;
+  GetBackEndUrlWithEndpoint():string;
 }
