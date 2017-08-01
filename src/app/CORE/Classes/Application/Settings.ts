@@ -6,6 +6,7 @@ export class Settings implements ISettings{
   APIHost = 'localhost';
   // APIHost = 'preview-manage.makershare.com';
   APIPort=333;
+
   APIEndPoint = 'api';
   
   solrPath = 'http://192.168.0.208:333/solr/drupal/';
