@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from "rxjs";
 import { CookieService } from 'ngx-cookie';
-import * as globals from '../globals';
+import { Singleton } from '../../';
 
 
 @Injectable()
 export class MainService {
 
-  private serviceURL: string = globals.domain;
+
   constructor(private http: Http, private cookieService: CookieService) {   }
 
 
@@ -23,12 +23,14 @@ export class MainService {
     return options;
   }
 
- 	getURL(url: string): string {
- 		return this.serviceURL + url;
+ 	getURL(url: string,WithoutEndPoint?): string {
+    if(WithoutEndPoint)
+      return Singleton.Settings.GetBackEndUrl() + url;
+ 		return Singleton.Settings.GetBackEndUrlWithEndpoint() + url;
  	}
 
-  get(endpoint: string): Observable<Response>{
-  	let url = this.getURL(endpoint);
+  get(endpoint: string,WithoutEndPoint?): Observable<Response>{
+  	let url = this.getURL(endpoint,WithoutEndPoint);
   	return this.http.get(url,this.GetOptions()).timeout(20000);
   }
 

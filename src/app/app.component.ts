@@ -1,10 +1,9 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { LoaderService } from './components/shared/loader/loader.service';
+import { LoaderService } from './Modules/shared/loader/loader.service';
 import { UserService, MainService } from './CORE/d7services';
 import { Router, NavigationEnd } from '@angular/router';
-import { Auth } from './auth0/auth.service';
+import { Auth } from './Modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
-import { Singleton } from './CORE';
 
 declare var ga:Function;
 
@@ -52,8 +51,6 @@ export class AppComponent implements OnInit{
   
 
   ngOnInit() {
-    this.SetApplicationSingleton();
-
     // check if the user is logged in at the back-end or not, if not, logged the user out too from the front-end
     this.userService.getStatus().subscribe(status => {
       if (status.user.uid == 0) {
@@ -84,11 +81,6 @@ export class AppComponent implements OnInit{
 
 
   
-  }
-
-
-  SetApplicationSingleton(){
-    console.log(Singleton.Settings);
   }
 
 }
