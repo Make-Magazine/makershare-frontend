@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { MainService } from '../main/main.service';
+import { CookieOptions } from 'ngx-cookie';
 
 @Injectable()
 export class UserService {
@@ -25,10 +26,10 @@ export class UserService {
 
   login(username, password): Observable<any>{
     return this.mainService.get('services/session/token',true).map(response => response.text()).map(token => {
-      this.mainService.saveCookies(token, null, null);
+      this.saveCookies(token, null, null);
       var body = {"name": username, "pass": password};
       return this.mainService.post('user/login', body).map(response => response.json()).map(user => {
-        this.mainService.saveCookies(user.token, user.session_name, user.sessid);
+        this.saveCookies(user.token, user.session_name, user.sessid);
         return user;
       });
     });
@@ -36,7 +37,7 @@ export class UserService {
 
   getAnonymousToken(): Observable<any>{
     return this.mainService.get('services/session/token',true).map(response => response.text()).map(token => {
-      this.mainService.saveCookies(token, null, null);
+      this.saveCookies(token, null, null);
     });    
   }
 
@@ -54,10 +55,11 @@ export class UserService {
   }
 
   isLogedIn(): Observable<any>{
-    var obs = Observable.create(observer => {
-      var token = this.mainService.getToken();
-      var session = this.mainService.getSession();
-      if(session && token){
+    let obs = Observable.create(observer => {
+      if(this.mainService.cookieService.get('sessid') &&
+         this.mainService.cookieService.get('session_name') &&
+         this.mainService.cookieService.get('token')
+      ){
         this.getStatus().subscribe( data => {
             if(data.user.uid && data.user.uid > 0){
               observer.next(true);
@@ -81,7 +83,7 @@ export class UserService {
     this.userInfo = data;
     var obs = Observable.create(observer => {
       this.mainService.get('services/session/token',true).map(response => response.text()).subscribe(token => {
-         this.mainService.saveCookies(token, null, null);
+         this.saveCookies(token, null, null);
          this.mainService.post('auth0_service/authenticate', this.userInfo).map(res => res.json()).catch(err => Observable.throw(err)).subscribe( res => {
            observer.next(res);
            observer.complete();
@@ -115,4 +117,29 @@ export class UserService {
     }
     return this.mainService.post('maker_profile_api/get_picture', body).map(res => res.json()).catch(err => Observable.throw(err));    
   }
+
+
+
+
+
+  saveCookies(token: string, session_name: string, sessid: string):void{
+    const expires = new Date();
+    expires.setDate(expires.getDate() + 23);
+    let options:CookieOptions = {
+      expires: expires,
+    };
+    let someText = token.replace(/(\r\n|\n|\r)/gm,"");
+    let tokenFinal = someText.split(' ').join('');
+
+    this.mainService.cookieService.put('sessid', sessid, options);
+    this.mainService.cookieService.put('session_name', session_name, options);
+    this.mainService.cookieService.put('token', tokenFinal, options);
+  }
+
+  removeCookies():void{
+    this.mainService.cookieService.remove('sessid');
+    this.mainService.cookieService.remove('session_name');
+    this.mainService.cookieService.remove('token');
+  }
+
 }

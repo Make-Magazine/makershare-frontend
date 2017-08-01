@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import Auth0Lock from 'auth0-lock';
-import { UserService, MainService } from '../../CORE/d7services';
+import { UserService } from '../../CORE/d7services';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 import { Singleton } from '../../CORE';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -232,7 +232,6 @@ export class Auth {
 
   constructor(
     public router: Router,
-    private mainService: MainService,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -283,7 +282,7 @@ export class Auth {
                 localStorage.setItem('user_id', '0');
               }
 
-              this.mainService.saveCookies(res['token'], res['session_name'], res['sessid']);
+              this.userService.saveCookies(res['token'], res['session_name'], res['sessid']);
               // if the first time, navigate to edit profile page
               window.location.hash = '';
               if (res.user_photo.indexOf('profile-default.png') >= 0) {
@@ -343,7 +342,7 @@ export class Auth {
   public logout(): void {
     // logout from back-end
     this.userService.auth0_logout().subscribe(res => {
-      this.mainService.removeCookies();
+      this.userService.removeCookies();
       this.router.navigateByUrl('/');
     }, err => {
     });
