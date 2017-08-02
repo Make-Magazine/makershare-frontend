@@ -1,9 +1,9 @@
-<div (click)="open(content)"
-     class="app-bookmark">
+<a (click)="open(content)"
+   class="button app-btn-share -icon">
   <i class="fa fa-share"></i>
   <span class="info"
         *ngIf="showLabel">Share</span>
-</div>
+</a>
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-share">

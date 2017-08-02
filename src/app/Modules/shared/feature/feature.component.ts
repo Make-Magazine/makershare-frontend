@@ -18,10 +18,9 @@ export class FeatureComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private flagService: FlagService,
-  ) // private notificationBarService: NotificationBarService,
-  {
-  }
+    private flagService: FlagService, // private notificationBarService: NotificationBarService,
+  ) {}
+
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
 
@@ -36,6 +35,7 @@ export class FeatureComponent implements OnInit {
       }
     });
   }
+
   feature(e: Event) {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
@@ -47,12 +47,15 @@ export class FeatureComponent implements OnInit {
       this.isFeatured ? this.flagger('unflag') : this.flagger('flag');
     });
   }
+
   flagger(type: string) {
-    this.flagService[type](this.id, this.userId, 'feature_' + this.type).subscribe(response => {
-      this.isFeatured = !this.isFeatured;
-      if (!this.isFeatured) {
-        this.Featured.emit()
-      }
-    })
+    this.flagService
+      [type](this.id, this.userId, 'feature_' + this.type)
+      .subscribe(response => {
+        this.isFeatured = !this.isFeatured;
+        if (!this.isFeatured) {
+          this.Featured.emit();
+        }
+      });
   }
 }

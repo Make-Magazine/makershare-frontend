@@ -5,7 +5,8 @@
       <div class="card-image alt" *ngIf="profile" (click)="goToProfile(card.profile_url)"></div>
       <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(card.profile_url)"></div>
 
-      <div class="flag maker">maker</div>
+      <div class="flag maker"
+           *ngIf="showFlag">maker</div>
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"> </app-feature>
       <app-card-badges [badges]="badges"></app-card-badges>
       <br><br>
@@ -13,7 +14,7 @@
         <img *ngIf="card.org_logo" class="rounded-circle bg-danger" src="{{card.org_logo}}" alt="">
       </div>
     </div>
-    <div class="info-bottom">
+    <div class="info-bottom {{showFlag ? '' : 'no-flag'}}">
       <div class="card-owner-meta">
         <img class="card-owner-media" *ngIf="card.photo_lg" src="{{card.photo_lg}}" />
         <div class="card-owner-meta-info">
@@ -51,7 +52,7 @@
 
     <!-- <div class="profile-info" *ngIf="profile">
       <a class="profile-share">
-        <app-shared-buttons [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-shared-buttons>
+        <app-btn-share [PageTitle]="'Maker Portfolio'" [PageDescription]="customDescription" [PageImage]="profile.user_photo"></app-btn-share>
       </a>
       <hr>
       <div [innerHTML]="ProfileInfo.bio"></div>

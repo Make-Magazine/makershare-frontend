@@ -1,6 +1,12 @@
-  <div *ngIf="ButtonVoted == 'Vote'"><a><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
-  <span>{{ButtonVoted}}</span>
-  </div></a></div>
-    <div *ngIf="ButtonVoted == 'Voted'"><div class="btn-vote" (click)="voteThis($event)" [class.active]="isVoted">
-  <i class="fa fa-check" aria-hidden="true"><span>{{ButtonVoted}}</span></i>
-  </div></div>
+<div class="btns-container">
+  <button class="-vote {{isVoted ? 'active' : ''}}"
+       (click)="voteThis($event)"
+       [class.active]="isVoted">
+    <i class="fa fa-check"
+       *ngIf="isVoted"
+       aria-hidden>
+      <span>{{ButtonVoted}}</span>
+    </i>
+    <span *ngIf="!isVoted">{{ButtonVoted}}</span>
+  </button>
+</div>

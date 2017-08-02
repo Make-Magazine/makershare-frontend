@@ -5,7 +5,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-summary',
-  templateUrl: './summary.component.html'
+  templateUrl: './summary.component.html',
 })
 export class SummaryComponent implements OnInit {
   @Input() projectsChallenge;
@@ -20,31 +20,30 @@ export class SummaryComponent implements OnInit {
   view = 'grid';
   pages: number = 0;
   sort: ISorting = {
-    sort_by: "",
-    sort_order: "",
-    pageNo: 0
+    sort_by: '',
+    sort_order: '',
+    pageNo: 0,
   };
   constructor(
     private router: Router,
     private title: Title,
-    private  meta: Meta
-  ) {
-
-    
-  }
+    private meta: Meta,
+  ) {}
 
   ngOnInit() {
-    this.ActionName = "Most Recent"
+    this.ActionName = 'Most Recent';
 
     this.title.setTitle(this.challenge.title + ' | Maker Share');
     this.meta.addTags([
       {
-        name: 'og:description', content: this.challenge.body
+        name: 'og:description',
+        content: this.challenge.body,
       },
       {
-        name: 'og:image', content: this.challenge.cover_image
-      }
-    ])
+        name: 'og:image',
+        content: this.challenge.cover_image,
+      },
+    ]);
     // this.meta.setTitle(`${this.challenge.title} | Maker Share`);
     // this.meta.setTag('og:image', this.challenge.cover_image);
     // this.meta.setTag('og:description', this.challenge.body);
@@ -53,67 +52,63 @@ export class SummaryComponent implements OnInit {
   }
   /* function to sort challenge Title A-z */
   sortAsc(sort: ISorting) {
-
-    this.pages = 0
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "title"
+    this.pages = 0;
+    this.sort.sort_order = 'ASC';
+    this.sort.sort_by = 'title';
     this.sortType.emit(this.sort);
-    this.ActionName = "Title A-z"
+    this.ActionName = 'Title A-z';
   }
   /* end function to sort challenge Title A-z */
 
   /* function to sort challenge Title Z-A */
   sortDesc(sort: string) {
-
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "title"
+    this.pages = 0;
+    this.sort.sort_order = 'DESC';
+    this.sort.sort_by = 'title';
     this.sortType.emit(this.sort);
-    this.ActionName = "Title Z-A"
+    this.ActionName = 'Title Z-A';
   }
   /* end function to sort challenge Title Z-A */
 
   /* function to sort challenge Recently */
   mostRecent(sort: string) {
-
-    this.pages = 0
-    this.sort.sort_order = "DESC"
+    this.pages = 0;
+    this.sort.sort_order = 'DESC';
     // this.sort.sort_by = "createpageNumberd"
-    this.sort.sort_by = "created"
+    this.sort.sort_by = 'created';
 
     this.sortType.emit(this.sort);
-    this.ActionName = "Most Recent"
+    this.ActionName = 'Most Recent';
   }
   /* end function to sort challenge Recently */
 
   /* function to sort challenge Oldest */
   oldest(sort: string) {
-    this.pages = 0
-    this.sort.sort_order = "ASC";
-    this.sort.sort_by = "created"
+    this.pages = 0;
+    this.sort.sort_order = 'ASC';
+    this.sort.sort_by = 'created';
     this.sortType.emit(this.sort);
-    this.ActionName = "Oldest"
+    this.ActionName = 'Oldest';
   }
   /* end function to sort challenge Oldest */
 
   /* function to sort challenge MostLiked */
   mostLiked(sort: string) {
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "count"
+    this.pages = 0;
+    this.sort.sort_order = 'DESC';
+    this.sort.sort_by = 'count';
     this.sortType.emit(this.sort);
-    this.ActionName = "Most Liked"
-
+    this.ActionName = 'Most Liked';
   }
   /* end function to sort challenge MostLiked */
 
   /* function to sort challenge MostForked */
   mostForked(sort: string) {
-    this.pages = 0
-    this.sort.sort_order = "DESC";
-    this.sort.sort_by = "field_total_forks_value";
+    this.pages = 0;
+    this.sort.sort_order = 'DESC';
+    this.sort.sort_by = 'field_total_forks_value';
     this.sortType.emit(this.sort);
-    this.ActionName = "Most Forked"
+    this.ActionName = 'Most Forked';
   }
   /* end function to sort challenge MostLiked */
 
@@ -130,5 +125,4 @@ export class SummaryComponent implements OnInit {
     this.router.navigate(['/projects', nid]);
   }
   /* end function to navigate to project details */
-
 }

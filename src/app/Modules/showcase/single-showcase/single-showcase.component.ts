@@ -46,7 +46,7 @@ export class SingleShowcaseComponent implements OnInit {
 
   // Filter dropdown options
   private filterOptions: FilterOption[] = [
-    { label: 'Mix \'Em Up', value: 'random_seed' },
+    { label: "Mix 'Em Up", value: 'random_seed' },
     { label: 'Newest', value: 'created' },
     { label: 'Most viewed', value: 'php' },
   ];
@@ -121,18 +121,22 @@ export class SingleShowcaseComponent implements OnInit {
    * buildFilterDropdown
    */
   private buildFilterDropdown() {
-    this.filterOptions = this.filterOptions.concat(this.contentType === 1 ? [
-        { label: 'Most projects', value: 'php_1' },
-        { label: 'Name A-Z', value: 'field_first_name_value_1' },
-        { label: 'Name Z-A', value: 'field_first_name_value' },
-        { label: 'Most likes', value: 'php_2\'' },
-      ] : [
-        { label: 'Name A-Z', value: 'title' },
-        { label: 'Name Z-A', value: 'title_1' },
-        { label: 'Most likes', value: 'count' },
-        { label: 'Oldest', value: 'created_1' },
-        { label: 'Last updated', value: 'changed' },
-      ]);
+    this.filterOptions = this.filterOptions.concat(
+      this.contentType === 1
+        ? [
+            { label: 'Most projects', value: 'php_1' },
+            { label: 'Name A-Z', value: 'field_first_name_value_1' },
+            { label: 'Name Z-A', value: 'field_first_name_value' },
+            { label: 'Most likes', value: "php_2'" },
+          ]
+        : [
+            { label: 'Name A-Z', value: 'title' },
+            { label: 'Name Z-A', value: 'title_1' },
+            { label: 'Most likes', value: 'count' },
+            { label: 'Oldest', value: 'created_1' },
+            { label: 'Last updated', value: 'changed' },
+          ],
+    );
   }
 
   getCount() {
