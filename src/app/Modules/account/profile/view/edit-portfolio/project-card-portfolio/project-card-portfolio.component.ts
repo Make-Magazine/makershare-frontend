@@ -56,7 +56,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
 
   DeleteProject(closebtn) {
     closebtn.click();
-    this.nodeService.deleteNode(this.Project.GetField("nid")).subscribe(data => {
+    this.nodeService.deleteNode(+this.Project.GetField("nid")).subscribe(data => {
       this.emitter.emit();
     });
   }
@@ -70,7 +70,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
     if (NewVisibility == 370) {
       status = 1;
     }
-    let project = {
+    let project:any = {
       nid: this.Project.GetField("nid"),
       field_visibility2: { und: [NewVisibility] },
       field_sort_order: { und: [{ value: 0 }] },

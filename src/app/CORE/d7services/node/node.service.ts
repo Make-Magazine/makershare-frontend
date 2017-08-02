@@ -11,19 +11,19 @@ export class NodeService extends MainService{
   	return super.get();
   }
 
-  getNode(nid): Observable<Node>{
+  getNode(nid:number): Observable<Node>{
   	return super.get(nid);
   }
 
-  createNode(body): Observable<Node>{
+  createNode(body:Node): Observable<Node>{
   	return super.post(body);
   }
 
-  updateNode(body): Observable<Node>{
-  	return super.put(body.nid, body);
+  updateNode(body:Node): Observable<Node>{
+  	return super.put(body['nid'], body);
   }
 
-  deleteNode(nid): Observable<Node>{
+  deleteNode(nid:number): Observable<Node>{
   	return super.delete(nid);
   }
 
