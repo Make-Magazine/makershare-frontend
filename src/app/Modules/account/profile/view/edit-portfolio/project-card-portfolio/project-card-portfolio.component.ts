@@ -56,7 +56,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
 
   DeleteProject(closebtn) {
     closebtn.click();
-    this.nodeService.DeleteNode(this.Project.GetField("nid")).subscribe(data => {
+    this.nodeService.deleteNode(this.Project.GetField("nid")).subscribe(data => {
       this.emitter.emit();
     });
   }
@@ -77,7 +77,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       status: status,
     }
 
-    this.nodeService.UpdateNode(project).subscribe(data => {
+    this.nodeService.updateNode(project).subscribe(data => {
       this.emitter.emit();
     });
   }

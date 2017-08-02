@@ -54,7 +54,7 @@ export class MakerCardComponent implements OnInit {
 
   getMakerBadges() {
     let body = {"uid": this.uid,};
-    this.mainService.post('maker_count_api/retrieve_badge_image', body).map(res => res.json()).subscribe(res => {
+    this.mainService.custompost('maker_count_api/retrieve_badge_image', body).subscribe(res => {
       this.badges = res;
     });
   }

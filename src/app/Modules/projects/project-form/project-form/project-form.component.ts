@@ -112,7 +112,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       projectHold.SetField('nid',self.Holder.nid,);
       if(self.Holder.field_users_wants_edit)
         projectHold.field_users_wants_edit = self.Holder.field_users_wants_edit;
-      self.nodeService.UpdateNode(projectHold).subscribe();
+      self.nodeService.updateNode(projectHold).subscribe();
     },180000)
   }
 
@@ -130,7 +130,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           }else{
             projectHold.SetField("nid",hold[0].nid);
             delete projectHold.field_project_to_edit;
-            this.nodeService.UpdateNode(projectHold).subscribe(node=>{
+            this.nodeService.updateNode(projectHold).subscribe(node=>{
               this.Holder = hold[0];
               this.ConvertProjectToCreateForm(project);
             });
@@ -152,7 +152,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
                 nid:hold[0].nid,
                 uid:localStorage.getItem("user_id")
               };
-              this.mainService.post('/api/maker_project_api/hold_queue',hoder).subscribe((data)=>{
+              this.mainService.EntityType = 'maker_project_api/hold_queue';
+              this.mainService.post(hoder).subscribe((data)=>{
+                this.mainService.EntityType = '';
                 this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
                 this.router.navigate(['/portfolio']);
               });
@@ -462,7 +464,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }
     if (this.project.GetField("nid")) {
       this.RemoveStaticFields();
-      this.nodeService.UpdateNode(this.project).subscribe((project: ProjectView) => {
+      this.nodeService.updateNode(this.project).subscribe((project: ProjectView) => {
         this.CanNavigate = true;
         this.FormPrintableValues.InvitationEmails.project = project.GetField("nid").toString();
         this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
@@ -493,7 +495,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   sendInvitedEmails(emails) {
-    this.mainService.post('/api/team_service/send', emails).map(res => res.json()).subscribe(data => {
+    this.mainService.custompost('team_service/send', emails).subscribe(data => {
 
     }, err => {
     //  console.log(err);
@@ -614,7 +616,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
 
   InviteTeam() {
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
-      this.mainService.post('team_service/build', this.FormPrintableValues.InvitationEmails).map(res => res.json()).subscribe(data => {
+      this.mainService.custompost('team_service/build', this.FormPrintableValues.InvitationEmails).subscribe(data => {
         for (let email in data) {
           let user = data[email];
           this.project.field_maker_memberships.und.forEach((row: field_collection_item_member, index: number) => {
