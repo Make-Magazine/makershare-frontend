@@ -1,10 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, UserService } from '../../../CORE/d7services';
-import {
-  IChallengeStartDate,
-  IChallengeData,
-} from '../../../CORE/Models/challenge/challengeData';
+import { UserService, ViewService } from '../../../CORE/d7services';
+import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { Auth } from '../../auth0/auth.service';
 
 @Component({
@@ -13,57 +10,16 @@ import { Auth } from '../../auth0/auth.service';
 })
 export class ChallengeCardComponent implements OnInit {
   @Input() state;
-
-  announce_date;
-  countProjects = 0;
-  challenge: IChallengeData = {
-    title: '',
-    cover_image: '',
-    sponsored_by: '',
-    public_voting: 0,
-    body: '',
-    rules: '',
-    diffDays: 0,
-    opened: false,
-    display_entries: 0,
-    nid: 0,
-    path: '',
-    status_id: 0,
-    summary_trim: '',
-    challenge_start_date: {
-      value: '',
-      timezone: '',
-      timezone_db: '',
-      date_type: '',
-    },
-    challenge_end_date: {
-      value: '',
-      timezone: '',
-      timezone_db: '',
-      date_type: '',
-    },
-    winners_announcement_date: {
-      value: '',
-      timezone: '',
-      timezone_db: '',
-      date_type: '',
-    },
-  };
-  challangStartDate: IChallengeStartDate = {
-    value: '',
-    timezone: '',
-    timezone_db: '',
-    date_type: '',
-  };
-  challengeData = [];
-  Manager: boolean = false;
-
+  @Input() singleView: boolean = false;
   @Input() challengeNid;
   @Input() front: boolean = false;
   @Input() first: boolean = false;
+  @Input() challenge: ChallengeData = new ChallengeData();
   @Output() Featured = new EventEmitter<number>();
-  
-  
+
+  private announce_date;
+  private Manager: boolean = false;
+
   constructor(
     private router: Router,
     private viewService: ViewService,
@@ -74,21 +30,25 @@ export class ChallengeCardComponent implements OnInit {
   ngOnInit() {
     this.auth.IsCommuintyManager();
     this.Manager = this.auth.IsCommuintyManager();
-    this.getChallenges();
-    this.getCountProject();
+
+    // If not single view, get challenge & project count
+    if (!this.singleView) {
+      this.getChallenge();
+      this.getCountProject();
+    }
   }
 
-  getChallenges() {
+  getChallenge() {
     this.viewService
       .getView('shared-challenge-card', [['nid', this.challengeNid]])
       .subscribe(
         data => {
-          this.challenge = data[0];
+          let tmpChallenge = data[0];
           // calculate days difference
           if (this.challenge) {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
             const todayDate = new Date();
-            const dateArray = this.challenge.challenge_end_date.value.split(
+            const dateArray = tmpChallenge.challenge_end_date.value.split(
               ' ',
             );
             const YearDayMonth = dateArray[0].split('-');
@@ -100,7 +60,7 @@ export class ChallengeCardComponent implements OnInit {
             const diffDays = Math.round(
               (endDate.getTime() - todayDate.getTime()) / oneDay,
             );
-            const winnerdate = this.challenge.winners_announcement_date.value.split(
+            const winnerdate = tmpChallenge.winners_announcement_date.value.split(
               ' ',
             );
             const winnerdateArray = winnerdate[0].split('-');
@@ -109,52 +69,46 @@ export class ChallengeCardComponent implements OnInit {
               +winnerdateArray[1],
               +winnerdateArray[2],
             );
-            const announce = Math.round(
+            this.announce_date = Math.round(
               (announceDate.getTime() - todayDate.getTime()) / oneDay,
             );
-            this.announce_date = announce;
 
             if (diffDays >= 0) {
-              this.challenge.opened = true;
-              this.challenge.diffDays = diffDays;
+              tmpChallenge.opened = true;
+              tmpChallenge.diffDays = diffDays;
             } else {
-              this.challenge.opened = false;
+              tmpChallenge.opened = false;
             }
           }
-          this.challenge.challenge_end_date.value = this.changeDateFormat(
-            this.challenge.challenge_end_date.value,
+          tmpChallenge.challenge_end_date.value = this.changeDateFormat(
+            tmpChallenge.challenge_end_date.value,
           );
-          this.challenge.challenge_start_date.value = this.changeDateFormat(
-            this.challenge.challenge_start_date.value,
+          tmpChallenge.challenge_start_date.value = this.changeDateFormat(
+            tmpChallenge.challenge_start_date.value,
           );
-          this.challenge.winners_announcement_date.value = this.changeDateFormat(
-            this.challenge.winners_announcement_date.value,
+          tmpChallenge.winners_announcement_date.value = this.changeDateFormat(
+            tmpChallenge.winners_announcement_date.value,
           );
+
+          Object.assign(this.challenge, tmpChallenge);
         },
-        err => {
-          //  console.log(err);
-        },
+        err => {},
       );
   }
+
   /* function to get count projects in challenge */
   getCountProject() {
-    // var nid;
     this.viewService
       .getView('maker_count_project_challenge_api/' + this.challengeNid)
       .subscribe(
-        data => {
-          if (data == null) {
-            this.countProjects = 0;
-          } else {
-            this.countProjects = data;
-          }
+        d => {
+          this.challenge.nbProjects = d ? 0 : d;
         },
-        err => {
-          //   this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
-        },
+        err => {},
       );
   }
-  /*end function count project in challenge*/
+
+  /* end function count project in challenge*/
   /* function to change data format */
   changeDateFormat(date) {
     if (!date) {
@@ -164,6 +118,7 @@ export class ChallengeCardComponent implements OnInit {
     date = date.split('-');
     return date[1] + '/' + date[2] + '/' + date[0];
   }
+
   /* end function to change data format */
   /* function to navigate to challenge summary page */
   ShowChallengeDetails(path) {
@@ -181,7 +136,12 @@ export class ChallengeCardComponent implements OnInit {
       }
     });
   }
-  emitFeatured(){
-  this.Featured.emit()
+
+  followersCounter(count) {
+    this.challenge.nbFollowers = count;
+  }
+
+  emitFeatured() {
+    this.Featured.emit();
   }
 }

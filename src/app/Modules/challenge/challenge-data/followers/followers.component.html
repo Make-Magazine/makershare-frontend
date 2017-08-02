@@ -1,21 +1,27 @@
-    <p *ngIf="followers" class="title-tab">Followers</p>
+<p *ngIf="followers" class="title-tab">Followers</p>
 
 <div class="followers conatiner" *ngIf="followers">
-
   <div class="followers-cards row d-flex align-items-stretch">
-    <div class="col-lg-6 col-md-12 mb-1" *ngFor="let follower of followers">
+    <div class="col-lg-6 col-md-12 mb-4"
+         *ngFor="let follower of followers">
       <div class="follower-card h-100">
         <!-- Start User Card -->
-        <app-user-card-small [uid]="follower.uid"></app-user-card-small>
+        <!--<app-user-card-small [uid]="follower.uid"></app-user-card-small>-->
+        <app-maker-card class="card-wrapper"
+                        [uid]="follower.uid"
+                        [state]="'short'"
+                        [showFlag]="false"></app-maker-card>
         <!-- End User Card -->
       </div>
       <!-- End follower-card -->
     </div>
     <!-- End col-md-4 -->
   </div>
-  <div class="text-center">
-    <div class="button-container-sec-3" *ngIf="!hideloadmorefollower">
-      <a class="btn btn-grey"  (click)="loadMoreFollower($event)">Load more</a>
+  <div class="text-center mt-5">
+    <div class="button-container-sec-3"
+         *ngIf="!hideloadmorefollower">
+      <button class="grey -no-bg -border -slim"
+         (click)="loadMoreFollower($event)">Load more</button>
     </div>
   </div>
 </div>

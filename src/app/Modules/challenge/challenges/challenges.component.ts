@@ -3,7 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Singleton } from '../../../CORE';
 import { FlagService, UserService, ViewService } from '../../../CORE/d7services';
-import { IChallenge } from '../../../CORE/Models/challenge/challenge';
+import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
   templateUrl: './challenges.component.html',
 })
 export class ChallengesComponent implements OnInit {
-  challenges: IChallenge[] = [];
+  challenges: ChallengeData[] = [];
   pageNumber = 0;
   allstatuses = [];
   statusesCount = {};
@@ -19,6 +19,7 @@ export class ChallengesComponent implements OnInit {
   hideloadmore = true;
   currentCount = 0;
   challenge;
+
   constructor(
     private viewService: ViewService,
     private router: Router,
@@ -76,14 +77,16 @@ export class ChallengesComponent implements OnInit {
           this.currentCount = this.statusesCount['0'];
         }
         // count followers
-        for (const challenge of this.challenges) {
-          this.flagService.flagCount(challenge.nid, 'follow').subscribe(
-            data => {
-              Object.assign(challenge, data);
+        for (let c = 0; c < this.challenges.length; c++) {
+          const nid: number = this.challenges[c].nid;
+          this.flagService.flagCount(nid, 'follow').subscribe(
+            d => {
+              this.challenges[c].nbFollowers = d.count;
             },
             err => {},
           );
         }
+
         // hide spinner
         this.loaderService.display(false);
       },
@@ -102,7 +105,7 @@ export class ChallengesComponent implements OnInit {
   getStatuses() {
     this.viewService.getView('maker_taxonomy_category/14').subscribe(
       data => {
-        let arr = [];
+        const arr = [];
         for (const key in data) {
           if (data.hasOwnProperty(key)) {
             arr.push(data[key]);

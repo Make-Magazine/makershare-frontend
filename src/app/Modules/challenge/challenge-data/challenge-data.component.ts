@@ -1,29 +1,42 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ViewService, UserService,NodeService,StatisticsService } from '../../../CORE/d7services';
-import { ISorting } from '../../../CORE/Models/challenge/sorting';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { Auth } from '../../../Modules/auth0/auth.service';
-
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  NotificationBarService,
+  NotificationType,
+} from 'ngx-notification-bar/release';
 import 'rxjs/Rx';
+import {
+  NodeService,
+  StatisticsService,
+  UserService,
+  ViewService,
+} from '../../../CORE/d7services';
+import { ISorting } from '../../../CORE/Models/challenge/sorting';
+import { Auth } from '../../../Modules/auth0/auth.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import {
+  ChallengeData,
+  IChallengeData,
+} from '../../../CORE/Models/challenge/challengeData';
+
 @Component({
   selector: 'app-challenge-data',
   templateUrl: './challenge-data.component.html',
 })
 export class ChallengeDataComponent implements OnInit {
+  @Input() countFoll;
+  @Input() sortType: ISorting;
+  @Input() pageNo: number;
+  @Output() submitStatus = new EventEmitter<boolean>();
 
   customDescription: string;
   customImage: string;
   submittedBefore: boolean;
-  challenge;
+  challenge: ChallengeData;
   idFromUrl: number;
   dates;
   awards;
   userId;
-  countProjects = 0;
-  no_of_followers = 0;
   projects = [];
   path: string;
   type: string;
@@ -34,19 +47,15 @@ export class ChallengeDataComponent implements OnInit {
   followers = [];
   currentuser;
   hideButton = false;
-  activeTab:string = 'brief';
+  activeTab: string = 'brief';
   sortData: ISorting;
-  sort_order: string = "DESC";
-  sort_by: string = "created";
+  sort_order: string = 'DESC';
+  sort_by: string = 'created';
   enterStatus = true;
   page_arg = [];
-  challengeDate;
-  @Input() countFoll;
-  @Input() sortType: ISorting;
-  @Input() pageNo: number;
-  @Output() submitStatus = new EventEmitter<boolean>();
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private viewService: ViewService,
     private nodeService: NodeService,
@@ -55,7 +64,7 @@ export class ChallengeDataComponent implements OnInit {
     private loaderService: LoaderService,
     private statisticsService: StatisticsService,
     public auth: Auth,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.path = this.route.snapshot.params['path'];
@@ -66,21 +75,18 @@ export class ChallengeDataComponent implements OnInit {
         if (this.idFromUrl) {
           this.loaderService.display(true);
           this.userEnteredProject();
-          this.getCountProject();
           this.getChallengeData();
-          this.viewService.getView('award_block', [['nid', this.idFromUrl]])
-            .subscribe(data => {
-              this.awards = data
+          this.viewService
+            .getView('award_block', [['nid', this.idFromUrl]])
+            .subscribe(d => {
+              this.awards = d;
             });
           this.checkenter();
-          this.getChallengeFollowers(true);
-          this.getProjects();
           this.getCurrentUser();
-          this.userService.getStatus().subscribe(data => {
-            this.currentuser = data;
+          this.userService.getStatus().subscribe(d => {
+            this.currentuser = d;
           });
-        }
-        else {
+        } else {
           this.router.navigate(['**']);
         }
       });
@@ -88,76 +94,116 @@ export class ChallengeDataComponent implements OnInit {
   }
 
   getChallengeFollowers(follow_update: boolean) {
-    this.route.params
-    this.viewService.getView('challenge_followers', [['nid', this.idFromUrl], ['page', this.pageNo]])
+    // this.route.params;
+    this.viewService
+      .getView('challenge_followers', [
+        ['nid', this.idFromUrl],
+        ['page', this.pageNo],
+      ])
       .subscribe(data => {
-        if (follow_update) {
-          this.followers = this.followers.concat(data);
-        } else {
-          this.followers = data;
-        }
+        this.followers = follow_update ? this.followers.concat(data) : data;
         if (!this.followers.length) {
           this.hideloadmorefollower = true;
         } else {
           if (this.followers[0]['follow_counter'] == this.followers.length) {
             this.hideloadmorefollower = true;
           }
-          this.no_of_followers = this.followers[0]['follow_counter'];
+          this.challenge.nbFollowers = this.followers[0]['follow_counter'];
         }
       });
   }
 
   getCurrentUser() {
-    this.userService.getStatus().subscribe(data => {
-      this.currentuser = data;
-    }, err => {
-      this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error });
-    });
+    this.userService.getStatus().subscribe(
+      data => {
+        this.currentuser = data;
+      },
+      err => {
+        this.notificationBarService.create({
+          message: 'Sorry, somthing went wrong, try again later.',
+          type: NotificationType.Error,
+        });
+      },
+    );
   }
 
   getChallengeData() {
-    this.route.params
-    this.viewService.getView('challenge_data', [['nid', this.idFromUrl]]).subscribe(data => {
-      this.challenge = data[0];
-      this.customDescription = this.challenge.body;
-      this.customImage = this.challenge.cover_image;
-      this.hideButton = false;
-      if (this.challenge['status_id'] == '375') {
-        this.hideButton = true;
-      }
-      //calculate days difference
-      if (this.challenge) {
-        var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-        var todayDate = new Date();
-        let dateArray = this.challenge.challenge_end_date.value.split(" ");
-        let YearDayMonth = dateArray[0].split("-");
-        var endDate = new Date(+YearDayMonth[0], +YearDayMonth[1], +YearDayMonth[2]);
-        var diffDays = Math.round(((endDate.getTime() - todayDate.getTime()) / (oneDay)));
-        let winnerdate = this.challenge.winners_announcement_date.value.split(" ");
-        let winnerdateArray = winnerdate[0].split("-");
-        var announceDate = new Date(+winnerdateArray[0], +winnerdateArray[1], +winnerdateArray[2]);
-        var announce = Math.round(((announceDate.getTime() - todayDate.getTime()) / (oneDay)));
-        this.challengeDate = announce;
-
-        if (diffDays >= 0) {
-          this.challenge.opened = true;
-          this.challenge.diffDays = diffDays
-        } else {
-          this.challenge.opened = false;
+    // this.route.params;
+    this.viewService
+      .getView<IChallengeData>('challenge_data', [['nid', this.idFromUrl]])
+      .subscribe(d => {
+        this.challenge = d[0];
+        this.customDescription = this.challenge.body;
+        this.customImage = this.challenge.cover_image;
+        this.hideButton = false;
+        if (this.challenge.status_id === 375) {
+          this.hideButton = true;
         }
-      }
-      this.challenge.challenge_end_date = this.changeDateFormat(this.challenge.challenge_end_date.value);
-      this.challenge.challenge_start_date = this.changeDateFormat(this.challenge.challenge_start_date.value);
-      this.challenge.winners_announcement_date = this.changeDateFormat(this.challenge.winners_announcement_date.value);
-      this.statisticsService.view_record(this.challenge.nid, 'node').subscribe();
-    });
+        // calculate days difference
+        if (this.challenge) {
+          const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+          const todayDate = new Date();
+          const dateArray = this.challenge.challenge_end_date.value.split(' ');
+          const YearDayMonth = dateArray[0].split('-');
+          const endDate = new Date(
+            +YearDayMonth[0],
+            +YearDayMonth[1],
+            +YearDayMonth[2],
+          );
+          const diffDays = Math.round(
+            (endDate.getTime() - todayDate.getTime()) / oneDay,
+          );
+          const winnerdate = this.challenge.winners_announcement_date.value.split(
+            ' ',
+          );
+          const winnerdateArray = winnerdate[0].split('-');
+          const announceDate = new Date(
+            +winnerdateArray[0],
+            +winnerdateArray[1],
+            +winnerdateArray[2],
+          );
+          const announce = Math.round(
+            (announceDate.getTime() - todayDate.getTime()) / oneDay,
+          );
+          this.challenge.challengeDate = announce;
+
+          if (diffDays >= 0) {
+            this.challenge.opened = true;
+            this.challenge.diffDays = diffDays;
+          } else {
+            this.challenge.opened = false;
+          }
+        }
+        this.challenge.challenge_end_date.value = this.changeDateFormat(
+          this.challenge.challenge_end_date.value,
+        );
+        this.challenge.challenge_start_date.value = this.changeDateFormat(
+          this.challenge.challenge_start_date.value,
+        );
+        this.challenge.winners_announcement_date.value = this.changeDateFormat(
+          this.challenge.winners_announcement_date.value,
+        );
+        this.statisticsService
+          .view_record(this.challenge.nid, 'node')
+          .subscribe();
+
+        // Get count project
+        this.getCountProject();
+
+        // Get followers
+        this.getChallengeFollowers(true);
+
+        // Get projects
+        this.getProjects();
+      });
   }
 
   changeDateFormat(date) {
-    if (!date)
+    if (!date) {
       return '';
-    date = date.split(" ")[0];
-    date = date.split("-");
+    }
+    date = date.split(' ')[0];
+    date = date.split('-');
     return date[1] + '/' + date[2] + '/' + date[0];
   }
 
@@ -167,15 +213,24 @@ export class ChallengeDataComponent implements OnInit {
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
-    this.route.params
-    this.viewService.getView('challenge_entries', [['nid', this.idFromUrl], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]])
-      .subscribe(data => {
-        this.projects = this.projects.concat(data);
-        this.loadMoreVisibilty();
-        this.loaderService.display(false);
-      }, err => {
-        this.loaderService.display(false);
-      });
+    // this.route.params;
+    this.viewService
+      .getView('challenge_entries', [
+        ['nid', this.idFromUrl],
+        ['page', this.pageNo],
+        ['sort_by', this.sort_by],
+        ['sort_order', this.sort_order],
+      ])
+      .subscribe(
+        data => {
+          this.projects = this.projects.concat(data);
+          this.loadMoreVisibilty();
+          this.loaderService.display(false);
+        },
+        err => {
+          this.loaderService.display(false);
+        },
+      );
   }
 
   myEnteriesProject() {
@@ -184,15 +239,24 @@ export class ChallengeDataComponent implements OnInit {
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
-    this.route.params
-    this.viewService.getView('challenge_entries', [['nid', this.idFromUrl], ['uid', this.userId], ['page', this.pageNo], ['sort_by', this.sort_by], ['sort_order', this.sort_order]])
+    // this.route.params;
+    this.viewService
+      .getView('challenge_entries', [
+        ['nid', this.idFromUrl],
+        ['uid', this.userId],
+        ['page', this.pageNo],
+        ['sort_by', this.sort_by],
+        ['sort_order', this.sort_order],
+      ])
       .subscribe(data => {
         this.projects = this.projects.concat(data);
       });
   }
+
   loadMoreVisibilty() {
     this.getCountProject();
-    this.hideloadmoreproject =(this.countProjects <= this.projects.length)? true:false;
+    this.hideloadmoreproject =
+      this.challenge.nbProjects <= this.projects.length;
   }
 
   getSortType(event: any) {
@@ -203,34 +267,33 @@ export class ChallengeDataComponent implements OnInit {
     this.pageNo = 0;
     this.getProjects();
     this.hideloadmoreproject = false;
-    this.loadMoreVisibilty(); 
+    this.loadMoreVisibilty();
   }
 
   getPageNumber(event: any) {
-    this.pageNo = event
+    this.pageNo = event;
     this.getProjects();
   }
+
   followersCounter(count) {
-    this.no_of_followers = count;
+    this.challenge.nbFollowers = count;
     this.pageNo = 0;
     this.getChallengeFollowers(false);
   }
 
   getPageNumberFollowers(event: any) {
-    this.pageNo = event
+    this.pageNo = event;
     this.getChallengeFollowers(true);
   }
 
   getCountProject() {
-    this.route.params
-    this.viewService.getView('maker_count_project_challenge_api/' + this.idFromUrl)
-      .subscribe(data => {
-        this.countProjects = 0
-        if (data) 
-          this.countProjects = data;
+    // this.route.params;
+    this.viewService
+      .getView('maker_count_project_challenge_api/' + this.idFromUrl)
+      .subscribe(d => {
+        this.challenge.nbProjects = d ? d : 0;
       });
   }
-
 
   enterToChallengeProject(nid) {
     this.userService.isLogedIn().subscribe(data => {
@@ -241,30 +304,48 @@ export class ChallengeDataComponent implements OnInit {
       }
     });
   }
+
   enterToChallengeProjectClosed() {
-    this.notificationBarService.create({ message: 'Sorry, the Challenge not Open for submissions.', type: NotificationType.Info, allowClose: true, autoHide: false, hideOnHover: false });
+    this.notificationBarService.create({
+      message: 'Sorry, the Challenge not Open for submissions.',
+      type: NotificationType.Info,
+      allowClose: true,
+      autoHide: false,
+      hideOnHover: false,
+    });
   }
 
   checkenter() {
-    this.viewService.checkEnterStatus('maker_challenge_entry_api/enter_status', this.idFromUrl).subscribe(data => {
-      this.enterStatus = data.status;
-      this.submitStatus.emit(this.enterStatus);
-    });
+    this.viewService
+      .checkEnterStatus(
+        'maker_challenge_entry_api/enter_status',
+        this.idFromUrl,
+      )
+      .subscribe(data => {
+        this.enterStatus = data.status;
+        this.submitStatus.emit(this.enterStatus);
+      });
   }
 
   userEnteredProject() {
-    this.viewService.getView('user-entered-project', [['uid', this.userId]]).subscribe(data => {
-      for (var key in data) {
-        if (!data.hasOwnProperty(key)) continue;
-        var obj = data[key];
-        for (var prop in obj) {
-          if (!obj.hasOwnProperty(prop)) continue;
-          var nid = this.route.snapshot.params['nid'];
-          if (nid == obj[prop]) {
-            this.submittedBefore = true;
+    this.viewService
+      .getView('user-entered-project', [['uid', this.userId]])
+      .subscribe(data => {
+        for (const key in data) {
+          if (!data.hasOwnProperty(key)) {
+            continue;
+          }
+          const obj = data[key];
+          for (const prop in obj) {
+            if (!obj.hasOwnProperty(prop)) {
+              continue;
+            }
+            const nid = this.route.snapshot.params['nid'];
+            if (nid == obj[prop]) {
+              this.submittedBefore = true;
+            }
           }
         }
-      }
-    });
+      });
   }
 }
