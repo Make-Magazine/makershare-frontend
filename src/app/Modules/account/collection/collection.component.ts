@@ -41,7 +41,7 @@ export class CollectionComponent implements OnInit {
   }
   /*  end function to change tab*/
   getCollectionCount() {
-    this.mainService.post('maker_count_api/collections/', {}).map(res => res.json()).subscribe(res => {
+    this.mainService.custompost('maker_count_api/collections/', {}).subscribe(res => {
       //console.log(res.bookmarked_projects);
       this.checkArray = res;
       this.countProjectBookmark=this.checkArray['bookmarked_projects']

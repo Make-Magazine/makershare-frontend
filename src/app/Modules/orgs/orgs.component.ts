@@ -54,7 +54,7 @@ export class OrgsComponent implements OnInit {
     let body = {
       "nid": this.nid,
     };
-    this.mainService.post('company_profile_api/retrieve_count_of_company_followers', body).map(res => res.json()).subscribe(res => {
+    this.mainService.custompost('company_profile_api/retrieve_count_of_company_followers', body).subscribe(res => {
       this.followers = res['followers'];
       this.followersCount = res['count_all'];
     });

@@ -77,8 +77,8 @@ export class ProjectsComponent implements OnInit {
   /* function to get count projects */
   getCountProject() {
     let body = { "data": this.uid};
-    this.mainService.post('maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
-      this.countProject = res['_body'].replace(']', '').replace('[', '')
+    this.mainService.custompost('maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
+      this.countProject = res[0]
         // console.log("sadsadsad")
     }, err => { });
   }

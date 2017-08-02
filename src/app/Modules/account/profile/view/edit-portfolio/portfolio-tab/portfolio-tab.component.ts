@@ -53,7 +53,7 @@ export class PortfolioTabComponent implements OnInit {
   }
 
   SaveProjectsOrder() {
-    this.mainService.post('/api/maker_sort_project_api/sort', this.Projects.map(project => project['nid'])).subscribe((data) => {
+    this.mainService.custompost('maker_sort_project_api/sort', this.Projects.map(project => project['nid'])).subscribe((data) => {
 
     }, err => {
     }, () => {
@@ -67,22 +67,22 @@ export class PortfolioTabComponent implements OnInit {
     let body = {
       "uid": userId,
     };
-    this.mainService.post('maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
-      this.projectsCountPublic = res['_body'].replace(']', '').replace('[', '')
+    this.mainService.custompost('maker_count_all_projects/retrieve_count_project_public', body).subscribe(res => {
+      this.projectsCountPublic = res[0]
       this.loadMoreVisibilty();
 
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
-    this.mainService.post('maker_count_all_projects/retrieve_count_project_private', body).subscribe(res => {
-      this.projectsCountPrivate = res['_body'].replace(']', '').replace('[', '')
+    this.mainService.custompost('maker_count_all_projects/retrieve_count_project_private', body).subscribe(res => {
+      this.projectsCountPrivate = res[0]
       this.loadMoreVisibilty();
 
     }, err => {
       // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
     });
-    this.mainService.post('maker_count_all_projects/retrieve_count_project_draft', body).subscribe(res => {
-      this.projectsCountDraft = res['_body'].replace(']', '').replace('[', '')
+    this.mainService.custompost('maker_count_all_projects/retrieve_count_project_draft', body).subscribe(res => {
+      this.projectsCountDraft = res[0]
       this.loadMoreVisibilty();
 
     }, err => {
