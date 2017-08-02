@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.viewService
-      .getView<SimpleOverviewEntity[]>('maker_homepage_api')
+      .getView('maker_homepage_api')
       .subscribe(
       data => {
         // Keep track of columns used on line
@@ -97,7 +97,6 @@ export class HomeComponent implements OnInit {
             if (card.type && card.entity_id) {
               results.push(card);
             }
-
             return results;
           },
           [],

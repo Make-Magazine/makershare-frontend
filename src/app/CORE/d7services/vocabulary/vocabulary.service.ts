@@ -8,22 +8,22 @@ export class VocabularyService {
   constructor(private mainService: MainService) { }
 
   getVocabularies(): Observable<any>{
-    return this.mainService.get('taxonomy_vocabulary').map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.get('taxonomy_vocabulary');
   }
 
   getVocabulary(vid: number): Observable<any>{
-    return this.mainService.get('taxonomy_vocabulary/' + vid).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.get('taxonomy_vocabulary/' + vid);
   }
 
   createVocabulray(body): Observable<any> {
-    return this.mainService.post('taxonomy_vocabulary', body).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.custompost('taxonomy_vocabulary', body);
   }
 
   updateVocabulray(body): Observable<any> {
-    return this.mainService.put('taxonomy_vocabulary/' + body.vid, body).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.put('taxonomy_vocabulary/' + body.vid, body);
   }
 
   deleteVocabulray(vid: number): Observable<any> {
-    return this.mainService.delete('taxonomy_vocabulary/' +vid).map(response => response.json()).catch(err => Observable.throw(err));
+    return this.mainService.delete('taxonomy_vocabulary/' +vid);
   }
 }

@@ -52,6 +52,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 import { ReportCommentComponent } from './report-comment/report-comment.component';
+
+import { ReportOrgsComponent } from './report-orgs/report-orgs.component';
 import { ReportProjectComponent } from './report-project/report-project.component';
 import { ReportUserComponent } from './report-user/report-user.component';
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
@@ -68,6 +70,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { UserCardComponent } from './user-card/user-card.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { ViewsComponent } from './views/views.component';
+
 
 @NgModule({
   imports: [
@@ -122,6 +125,9 @@ import { ViewsComponent } from './views/views.component';
     NotificationTemplateComponent,
 
     FollowUserComponent,
+    FeatureComponent,
+    CompanyCardComponent,
+    ReportOrgsComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -130,8 +136,7 @@ import { ViewsComponent } from './views/views.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
-    FeatureComponent,
-    CompanyCardComponent,
+
   ],
   exports: [
     CommentComponent,
@@ -178,7 +183,8 @@ import { ViewsComponent } from './views/views.component';
     ImageCropperComponent,
     // Ng2FileDropDirective,
     ReverseArray,
-    FeatureComponent
+    FeatureComponent,
+    ReportOrgsComponent
   ],
 })
 export class SharedModule {

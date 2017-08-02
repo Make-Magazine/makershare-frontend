@@ -52,7 +52,7 @@ export class NotificationTemplateComponent implements OnInit {
       field_seen: { und: [{ value: seen }] },
       type: this.notification.type,
     }
-    return this.mainService.put('/api/entity_message/' + this.notification.mid, notification);
+    return this.mainService.put('entity_message/' + this.notification.mid, notification);
   }
 
   OpenNotification(ShowcaseUserID?: number) {
@@ -120,7 +120,7 @@ export class NotificationTemplateComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     if (this.notification.type == 'new_message_sent') {
       let body = { "mid": this.notification.pm_mid };
-      this.mainService.post('maker_get_pm_author/retrieve_message_details', body).map(res => res.json()).subscribe(res => {
+      this.mainService.custompost('maker_get_pm_author/retrieve_message_details', body).subscribe(res => {
 
         this.messageDetails = res;
         // console.log(res)

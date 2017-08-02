@@ -57,8 +57,8 @@ export class MakersComponent implements OnInit {
     this.getMakerCategories();
   }
   countAllMakers() {
-    this.mainService.post('maker_count_api/makers_count').subscribe(res => {
-      this.makersCount = res['_body'].replace(']', '').replace('[', '');
+    this.mainService.custompost('maker_count_api/makers_count').subscribe(res => {
+      this.makersCount = res[0];
     });
   }
   getMakers() {
@@ -93,8 +93,8 @@ export class MakersComponent implements OnInit {
     let body = {
       "tid": term.tid,
     };
-    this.mainService.post('maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
-      this.makersCount = res['_body'].replace(']', '').replace('[', '')
+    this.mainService.custompost('maker_count_api/retrieve_count_makers_in_category', body).subscribe(res => {
+      this.makersCount = res[0];
     }, err => {
     });
     this.pages = 0;

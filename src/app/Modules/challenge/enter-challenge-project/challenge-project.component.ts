@@ -199,7 +199,7 @@ export class ChallengeProjectComponent implements OnInit {
         "field_entry_challenge": this.nid,
       };
 
-      this.mainService.post('maker_challenge_entry_api', body).subscribe(res => {
+      this.mainService.custompost('maker_challenge_entry_api', body).subscribe(res => {
         this.router.navigate(['missions/', this.path]);
         this.loaderService.display(false);
 
