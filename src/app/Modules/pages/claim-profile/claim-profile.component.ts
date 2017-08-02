@@ -49,7 +49,7 @@ export class ClaimProfileComponent implements OnInit {
           key: this.key
         }
 
-        this.mainService.post('/api/maker_claim/activate', body).map(res => res.json()).subscribe(data => {
+        this.mainService.custompost('maker_claim/activate', body).subscribe(data => {
           // console.log(data);
           if (data.status == "activated") {
             this.success = true;

@@ -1,20 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MainService } from '../main/main.service';
 import { Observable } from 'rxjs';
-import { Headers } from '@angular/http';
 
 @Injectable()
-export class ViewService {
-  promisehandleError: any;
-  headers: Headers;
-  constructor(private mainService: MainService) {
-    // this.buildHeaders();
-  }
-
-  // public buildHeaders() {
-  //     return this.mainService.getOptions(Option);
-  // }
-
+export class ViewService extends MainService{
   getView<T>(viewName: string, args?: (string | any)[][]): Observable<T | any> {
     var string_args = '';
     if (args && args.length > 0) {
@@ -23,26 +12,24 @@ export class ViewService {
         string_args += item[0] + '=' + item[1] + '&';
       });
     }
-    return this.mainService
-      .get(viewName + string_args)
-      .map(res => res.json())
-      .catch(err => Observable.throw(err));
+    return super
+      .get(viewName + string_args);
   }
 
   /* function check user allowe to enter challenge */
   checkEnterStatus(viewName: string, nid: number): Observable<any> {
-    return this.mainService
-      .post(viewName, { challenge_id: nid })
-      .map(res => res.json());
+    return super
+      .custompost(viewName, { challenge_id: nid })
+      ;
   }
 
   /* end function cheack user allowe to enter challenge */
 
   getCountProjectByID(viewName: string, id: string): Observable<any> {
     // console.log(string_args);
-    return this.mainService
-      .get(viewName + '/' + id)
-      .map(res => res.json())
+    return super
+      .get(viewName+'/'+id)
+      
       .catch(err => Observable.throw(err));
   }
 }

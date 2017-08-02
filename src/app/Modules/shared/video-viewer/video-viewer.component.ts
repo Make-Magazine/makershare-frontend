@@ -30,7 +30,7 @@ export class VideoViewerComponent implements OnInit {
     }else if(this.link.indexOf('vimeo') != -1){
       this.type = 'vimeo';
       let url = "https://vimeo.com/api/oembed.json?url=" + this.link;
-      this.http.get(url).map(res => res.json()).subscribe(data => {
+      this.http.get(url).subscribe((data:any) => {
         this.SantinizedHtml = this.sanitizer.bypassSecurityTrustHtml(data.html);
       });
     }

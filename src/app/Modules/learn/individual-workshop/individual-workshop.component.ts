@@ -110,14 +110,14 @@ export class IndividualWorkshopComponent implements OnInit {
                   this.sanitizethis = '<iframe src="https://www.youtube.com/embed/' + this.youtube_parser(this.workshop.introductory_video) + ' "frameborder="0" style="width:100%; height:270px;" ></iframe>';
                   this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
                   // this.sanitizethis = "https://www.youtube.com/oembed?url=" + this.workshop.introductory_video;
-                  // this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                  // this.http.get(this.sanitizethis).subscribe(data => {
                   //   this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
                   // });
 
                 }
                 else if (this.vimeo_parser(this.workshop.introductory_video)) {
                   this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.workshop.introductory_video;
-                  this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                  this.http.get(this.sanitizethis).subscribe((data:any) => {
                     this.workshop.introductory_video = this.sanitizer.bypassSecurityTrustHtml(data.html);
                   });
                 }
@@ -139,7 +139,7 @@ export class IndividualWorkshopComponent implements OnInit {
                     // this.sanitizethis = '<iframe src="https://player.vimeo.com/video/' + this.vimeo_parser(this.objects[object].video) +' "frameborder="0" style="width:480px; height:270px;"></iframe>';
                     // this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(this.sanitizethis);
                     this.sanitizethis = "https://vimeo.com/api/oembed.json?url=" + this.objects[object].video;
-                    this.http.get(this.sanitizethis).map(res => res.json()).subscribe(data => {
+                    this.http.get(this.sanitizethis).subscribe((data:any) => {
                       this.objects[object].videolink = this.sanitizer.bypassSecurityTrustHtml(data.html);
                       this.objects[object].videoImage = data.thumbnail_url_with_play_button;
                     });

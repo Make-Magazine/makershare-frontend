@@ -15,7 +15,7 @@ export class OrgFormComponent implements OnInit {
   }
 
   // Fires when clicking on publish button
-  PublishButtonPressed(){
+  PublishButtonClick(){
     console.log("saving org");
   }
 
