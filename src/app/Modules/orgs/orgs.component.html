@@ -58,9 +58,9 @@
           </div>
           <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
         </div>
-        <h3>
+        <a>
           <app-report-orgs *ngIf="nid" [organizationNid]="nid"> </app-report-orgs>
-        </h3>
+        </a>
 
       </div>
     </div>
