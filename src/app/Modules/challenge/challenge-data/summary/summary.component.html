@@ -1,6 +1,6 @@
 <div class="challenge-summary">
   <div class="summary-content">
-    <div *ngIf="projectsCount>0">
+    <div *ngIf="projectsCount > 0">
       <div *ngIf="challenge">
         <div *ngIf="challenge.display_entries =='1'">
           <!--start if -->
@@ -9,14 +9,17 @@
 
               <div class="row float-right">
                 <div class="entries-count btn">
-                  <p *ngIf="projectsCount == 1">{{projectsCount}} Entry</p>
-                  <p *ngIf="projectsCount > 1">{{projectsCount}} Entries</p>
+                  <p>{{projectsCount}} {{projectsCount > 1 ? 'Entries' : 'Entry'}}</p>
                 </div>
                 <div class="sorting-filter dropdown">
-                  <button class="btn btn-transparent dropdown-toggle" type="button" id="filter-challenges" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
+                  <button class="btn btn-transparent dropdown-toggle"
+                          type="button"
+                          id="filter-challenges"
+                          data-toggle="dropdown"
+                          aria-haspopup
+                          aria-expanded="false">
                     {{ActionName}} <i class="fa fa-lg fa-angle-down"></i>
-                    </button>
+                  </button>
                   <div class="dropdown-menu" aria-labelledby="filter-challenges">
                     <a class="dropdown-item" (click)="mostRecent($event)" class="btn">Most recent</a>
                     <a class="dropdown-item" (click)="oldest($event)" class="btn">Oldest</a>
@@ -39,11 +42,17 @@
     </div>
     <!--end if projects-->
     <div class="entries" *ngIf="challenge">
-      <div class="entries-section" *ngIf="challenge.display_entries =='1'">
+      <div class="entries-section"
+           *ngIf="challenge.display_entries =='1'">
         <div *ngIf="projectsChallenge" class="projects-grid  row">
           <!-- Start Project Card -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-3" *ngFor="let project of projectsChallenge">
-            <app-project-card [view]="view" [nid]="project.nid"></app-project-card>
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3"
+               *ngFor="let project of projectsChallenge">
+            <div class="mb-3">
+              <app-project-card [view]="view"
+                                [nid]="project.nid"
+                                [state]="'tall'"></app-project-card>
+            </div>
             <app-project-vote [nodeNid]="project.nid"></app-project-vote>
           </div>
           <!-- End Project Card -->

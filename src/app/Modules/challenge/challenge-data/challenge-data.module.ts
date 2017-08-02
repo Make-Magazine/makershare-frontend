@@ -22,7 +22,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule.forChild(),
     NgbModule,
     // MetaModule.forRoot(),
-    
   ],
   declarations: [
     FollowersComponent,
@@ -32,7 +31,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SummaryComponent,
     AwardsComponent,
     ChallengeDataComponent
-
   ]
 })
 export class ChallengeDataModule { }

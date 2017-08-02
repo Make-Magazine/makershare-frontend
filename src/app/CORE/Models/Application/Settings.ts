@@ -1,14 +1,14 @@
-export interface ISettings{
-  APIProtocol:string,
-  APIHost:string,
-  APIPort:number,
-  APIEndPoint:string,
-  solrPath:string,
+export interface ISettings {
+  APIProtocol: string;
+  APIHost: string;
+  APIPort: number;
+  APIEndPoint: string;
+  solrPath: string;
 
-  AppURL:string,
-  AppName:string,
-  LANGUAGE:string,
+  AppURL: string;
+  AppName: string;
+  LANGUAGE: string;
 
-  GetBackEndUrl():string;
-  GetBackEndUrlWithEndpoint():string;
+  GetBackEndUrl(): string;
+  GetBackEndUrlWithEndpoint(): string;
 }

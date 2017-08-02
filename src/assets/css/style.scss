@@ -51,12 +51,13 @@ $beta: true;
 @import "molecules/app-stats";
 @import "molecules/app-user";
 @import "molecules/badge-group";
+@import "molecules/card-owner-meta";
 @import "molecules/inline-logos";
 @import "molecules/nav";
+@import "molecules/profile-social-links";
 @import "molecules/social-stat";
 @import "molecules/social-stat-group";
-@import "molecules/card-owner-meta";
-@import "molecules/profile-social-links";
+@import "molecules/tabs";
 // ///////////////////
 // ///////////////////
 
@@ -64,6 +65,7 @@ $beta: true;
 // organisms
 // ///////////////////
 @import "organisms/card/card";
+@import "organisms/challenges";
 @import "organisms/dropdown-group";
 @import "organisms/dropdown-menu";
 @import "organisms/filter";

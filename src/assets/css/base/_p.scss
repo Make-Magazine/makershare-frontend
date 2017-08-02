@@ -5,4 +5,17 @@ p, .paragraph {
   &.card-description {
     font-size: 1.5rem;
   }
+
+  .card-description & {
+    line-height: 1.9rem;
+  }
+
+  &.check-entered {
+    margin-bottom: 0;
+    color: $highlight-bright-blue;
+  }
+
+  &.title-tab {
+    color: $highlight-red;
+  }
 }

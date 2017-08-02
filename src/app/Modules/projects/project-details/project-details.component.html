@@ -9,11 +9,15 @@
               <div class="projectsingle-card row">
                 <div class="col-lg-8 col-md-12 left-side">
                   <div class="image-container">
-                    <div *ngIf="!(project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1)">
-                      <img *ngIf="project.field_cover_photo.styled_url" src="{{project.field_cover_photo?.styled_url}}" alt="" class="img-responsive">
-                      <img *ngIf="!project.field_cover_photo.styled_url" src="./assets/images/placeholder.png" alt="" class="img-responsive">
+                    <div
+                        *ngIf="!(project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1)">
+                      <img *ngIf="project.field_cover_photo.styled_url" src="{{project.field_cover_photo?.styled_url}}"
+                           alt="" class="img-responsive">
+                      <img *ngIf="!project.field_cover_photo.styled_url" src="./assets/images/placeholder.png" alt=""
+                           class="img-responsive">
                     </div>
-                    <div *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1">
+                    <div
+                        *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1">
                       <video-viewer [link]="project.field_show_tell_video.value"></video-viewer>
                     </div>
                     <ul class="project-card-badges d-flex" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
@@ -29,7 +33,8 @@
                         <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [nodeType]="'project'"></app-bookmark>
                       </li>
                       <li ngbTooltip="{{toolTips.share}}">
-                        <app-shared-buttons *ngIf="customTitle" [PageTitle]="customTitle" [PageDescription]="customDescription" [PageImage]="customImage"></app-shared-buttons>
+                        <app-btn-share *ngIf="customTitle" [PageTitle]="customTitle"
+                                       [PageDescription]="customDescription" [PageImage]="customImage"></app-btn-share>
                       </li>
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
@@ -46,11 +51,14 @@
                   <div class="card-container">
                     <div class="card">
                       <div class="projects-circle" *ngIf="showcaseName">
-                        <div class="projects-circle m-auto d-flex justify-content-start align-items-center" *ngIf="showcaseName">
-                          <a *ngIf="previousProject" (click)="NavigateShowcase(previousProject)" class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                          <p class=" showcase-nav" *ngIf="showcaseName"><a>{{showcaseName}}: project {{index}} of Total</a></p>
+                        <div class="projects-circle m-auto d-flex justify-content-start align-items-center"
+                             *ngIf="showcaseName">
+                          <a *ngIf="previousProject" (click)="NavigateShowcase(previousProject)"
+                             class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                          <p class=" showcase-nav" *ngIf="showcaseName"><a>{{showcaseName}}: project {{index}} of
+                            Total</a></p>
                           <a *ngIf="nextProject" (click)="NavigateShowcase(nextProject)"
-                            class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                             class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                       </div>
                       <h3 class="card-title pt-2" innerHTML="{{project.title.value}}"></h3>
@@ -71,10 +79,15 @@
                           <!--<span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>-->
                         </div>
                       </div>
-                      <div class="project-card-footer d-flex mt-auto" *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_how_to.value">
+                      <div class="project-card-footer d-flex mt-auto"
+                           *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_how_to.value">
                         <ul class="list-unstyled project-aside d-flex">
-                          <li id="read-story" [ngClass]="{'active': ActiveTab == 'project-story'}"><a class="btn btn-tabs read-story" (click)="current_active_tab = 'project-story'">Project Story</a></li>
-                          <li id="build-project" [ngClass]="{'active': ActiveTab == 'project-how-to'}"><a class="btn btn-tabs build-project" (click)="current_active_tab = 'project-how-to'">How-to</a></li>
+                          <li id="read-story" [ngClass]="{'active': ActiveTab == 'project-story'}"><a
+                              class="btn btn-tabs read-story" (click)="current_active_tab = 'project-story'">Project
+                            Story</a></li>
+                          <li id="build-project" [ngClass]="{'active': ActiveTab == 'project-how-to'}"><a
+                              class="btn btn-tabs build-project"
+                              (click)="current_active_tab = 'project-how-to'">How-to</a></li>
                         </ul>
                       </div>
                     </div>
@@ -95,7 +108,8 @@
       <!-- End top-content-wrapper -->
       <div class="container">
         <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
-        <app-project-how-to [project]="projectDetails" *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+        <app-project-how-to [project]="projectDetails"
+                            *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
       </div>
     </div>
   </div>

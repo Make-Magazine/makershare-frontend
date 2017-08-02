@@ -1,7 +1,8 @@
 <section class="page-challenge mb-5">
   <div class="container page-header mb-5">
     <h3>Missions</h3>
-    <p>Missions bring makers together to build with a purpose. Find a mission that allows you to focus your making skills on an objective.</p>
+    <p>Missions bring makers together to build with a purpose. Find a mission that allows you to focus your making
+      skills on an objective.</p>
   </div>
 
   <div class="container clearfix mb-5">
@@ -14,10 +15,12 @@
                 (change)="SetCurrentStatus($event.target.value)">
           <option value="_none"
                   disabled
-                  class="btn">Filter By</option>
+                  class="btn">Filter By
+          </option>
           <option *ngFor="let status of allstatuses"
                   value="{{status.tid}}"
-                  class="btn">{{status.name}}</option>
+                  class="btn">{{status.name}}
+          </option>
         </select>
       </div>
 
@@ -31,16 +34,22 @@
   </div>
 
   <div class="container">
-    <app-challenge-card class="card-wrapper" [challengeNid]="challenge.nid"
-                        *ngFor="let challenge of challenges" [state]="'wide'"></app-challenge-card>
+    <app-challenge-card class="card-wrapper"
+                        [challengeNid]="challenge.nid"
+                        [challenge]="challenge"
+                        *ngFor="let challenge of challenges"
+                        [state]="'wide'"></app-challenge-card>
 
     <div *ngIf="challenges.length == 0">
       <h4 class="text-center mt-5 mb-5">There are no missions to show</h4>
     </div>
   </div>
-  <div class="text-center pt-3 pb-5" *ngIf="!hideloadmore">
+  <div class="text-center pt-3 pb-5"
+       *ngIf="!hideloadmore">
     <div>
-      <a (click)="loadmore()" class="btn btn-load-more">Load more</a>
+      <button (click)="loadmore()"
+              class="button -grey -no-bg -slim">Load more
+      </button>
     </div>
   </div>
 </section>

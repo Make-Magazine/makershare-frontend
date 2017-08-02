@@ -11,8 +11,7 @@
            *ngIf="singleView">
         <img [src]="showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png'"
              alt=""
-             class="img-responsive"
-             (click)="showSingleShowcase(showcase.nid)">
+             class="img-responsive">
       </div>
       <div *ngIf="singleView">
         <app-user-card *ngIf="showcaseCard.uid"
@@ -21,6 +20,7 @@
                        [communityManager]="true"></app-user-card>
       </div>
     </div>
+
     <div class="info-bottom">
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
@@ -42,20 +42,22 @@
           </div>
         </div>
       </div>
-      <div class="social-stat-group d-flex">
+      <ul class="social-stat-group d-flex">
         <!-- Not a single view -->
-        <button class="button"
-                *ngIf="!singleView"
-                (click)="showSingleShowcase(showcaseCard.path)">See Showcase
-        </button>
+        <li>
+          <button class="button"
+                  *ngIf="!singleView"
+                  (click)="showSingleShowcase(showcaseCard.path)">See Showcase
+          </button>
+        </li>
 
-        <div class="showcase-date w-100"
-             *ngIf="showcaseCard.last_updated && singleView">
+        <li class="showcase-date w-100"
+            *ngIf="showcaseCard.last_updated && singleView">
           <span class="update-date">Last updated: {{showcaseCard.last_updated}}</span>
-        </div>
+        </li>
 
-        <div class="stats-list ml-4 d-flex flex-row"
-             *ngIf="showcaseCard.nid">
+        <li class="stats-list ml-4 d-flex flex-row"
+            *ngIf="showcaseCard.nid">
           <app-likes [likesCount]="showcaseCard.likes_count"
                      [nodeNid]="showcaseCard.nid"
                      [userId]="userId"
@@ -66,13 +68,13 @@
                         [nodeType]="'showcase'"></app-bookmark>
           <div class="profile-share"
                *ngIf="singleView">
-            <app-shared-buttons [showLabel]="false"
-                                [PageTitle]="'Maker Portfolio'"
-                                [PageDescription]="customDescription"
-                                [PageImage]="showcaseCard.cover_photo"></app-shared-buttons>
+            <app-btn-share [showLabel]="false"
+                           [PageTitle]="'Maker Portfolio'"
+                           [PageDescription]="customDescription"
+                           [PageImage]="showcaseCard.cover_photo"></app-btn-share>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 

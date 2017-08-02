@@ -1,11 +1,19 @@
-// default blue
+.btns-container {
+  text-align: center;
+  .button, button {
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+}
+
 .button, button {
   -webkit-appearance: none;
   background: $highlight-bright-blue;
   color: $white;
   padding: 1rem 1.5rem;
   border: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   transition: background 0.3s ease;
   cursor: pointer;
 
@@ -18,15 +26,17 @@
     background: darken($highlight-bright-blue, 20%);
   }
 
+  &.grey {
+    &:hover, &:active {
+      background-color: $xtra-dark-grey;
+    }
+  }
+
   &.grey, &.disabled {
-    background: $medium-grey;
+    background-color: $medium-grey;
 
     &.-border {
       border: .1rem $dark-grey solid;
-    }
-
-    &:hover, &:active {
-      background: $medium-grey; // no hover for disabled
     }
 
     &.-no-bg {
@@ -34,6 +44,12 @@
       &:hover {
         color: $white;
       }
+    }
+  }
+
+  &.disabled {
+    &:hover, &:active {
+      background-color: $medium-grey; // no hover for disabled
     }
   }
 
@@ -59,6 +75,67 @@
 
   &.-slim {
     padding: .5rem 1.5rem;
+  }
+
+  &.-icon {
+    background-color: transparent;
+    border: none;
+    i {
+      font-size: 1.73rem;
+    }
+    &:hover {
+      i {
+        color: $highlight-bright-blue;
+      }
+    }
+  }
+
+  &.-link {
+    padding: .8rem 1.5rem;
+    border: none;
+    margin-right: .2rem;
+    margin-top: .2rem;
+    background: none;
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    clear: both;
+
+    &:hover {
+      color: $highlight-bright-blue !important;
+    }
+  }
+
+  &.-vote {
+    font-family: $font-messina-modern-regular;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 120%;
+    color: $dark-grey;
+    background: $white;
+    border: .5px solid $dark-grey;
+    padding: 1.5rem 0;
+    width: 18rem;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+
+    &:hover,
+    &.active {
+      color: $white;
+      background-color: $highlight-red;
+      box-shadow: none;
+      border: .1rem solid;
+    }
+
+    i {
+      span {
+        font-family: $font-messina-modern-regular;
+      }
+    }
   }
 }
 
