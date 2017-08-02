@@ -443,7 +443,7 @@ export class HowToComponent implements OnInit {
     let NewToolMaterialPart: ToolMaterialPart = new ToolMaterialPart(ControlName);
     let FieldName = 'field_' + ControlName + 's';
     NewToolMaterialPart.SetField("title", this.InputToolMaterialPart[ControlName]);
-    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode) => {
+    this.nodeService.createNode(NewToolMaterialPart).subscribe((NewNode:any) => {
       NewNode.name = this.InputToolMaterialPart[ControlName];
       this.InputToolMaterialPart[ControlName] = '';
       this.searchFailed[ControlName] = false;

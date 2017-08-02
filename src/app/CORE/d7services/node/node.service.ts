@@ -1,42 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { MainService } from '../main/main.service';
+import { Node } from '../../Models';
 
 @Injectable()
-export class NodeService {
+export class NodeService extends MainService{
+  public EntityType = 'node';
 
-  constructor(private mainService: MainService) { }
-
-  getPosts(): Observable<any>{
-  	return this.mainService.get('node').map(res => res.json()).catch(err => Observable.throw(err));
+  getAllNodes(): Observable<Node>{
+  	return super.get();
   }
 
-  getNode(nid): Observable<any>{
-  	return this.mainService.get('node/'+nid).map(res => res.json()).catch(err => Observable.throw(err));
+  getNode(nid:number): Observable<Node>{
+  	return super.get(nid);
   }
 
-  createNode(body): Observable<any>{
-  	return this.mainService.post('node', body).map(res => res.json()).catch(err => Observable.throw(err));
+  createNode(body:Node): Observable<Node>{
+  	return super.post(body);
   }
 
-  createProject(body): Observable<any>{
-  	return this.mainService.post('maker_project_api/', body).map(res => res.json()).catch(err => Observable.throw(err));
+  updateNode(body:Node): Observable<Node>{
+  	return super.put(body['nid'], body);
   }
 
-  UpdateNode(body): Observable<any>{
-  	return this.mainService.put('node/' + body.nid, body).map(res => res.json()).catch(err => Observable.throw(err));
-  }
-
-  DeleteNode(nid): Observable<any>{
-  	return this.mainService.delete('node/' + nid).map(res => res.json()).catch(err => Observable.throw(err));
-  }
-
-  getIdFromUrl(url: string, type: string): Observable<any>{
-    let body = {
-      url: url,
-      type: type,
-    }
-    return this.mainService.post('maker_urls/get_id', body).map(res => res.json()).catch(err => Observable.throw(err));
+  deleteNode(nid:number): Observable<Node>{
+  	return super.delete(nid);
   }
 
   getUrlFromId(nid: number, type: string): Observable<any>{
@@ -44,8 +32,15 @@ export class NodeService {
       nid: nid,
       type: type,
     }
-    return this.mainService.post('maker_urls/get_url', body).map(res => res.json()).catch(err => Observable.throw(err));
+    return super.custompost('maker_urls/get_url', body);
   }
 
+  getIdFromUrl(url: string, type: string): Observable<any>{
+    let body = {
+      url: url,
+      type: type,
+    }
+    return super.custompost('maker_urls/get_id',body);
+  }
 
 }

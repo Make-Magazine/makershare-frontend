@@ -74,7 +74,7 @@ export class ProjectDetailsComponent implements OnInit {
         };
         this.currentuser = Number(localStorage.getItem('user_id'));
         if (this.currentuser != 0) {
-          this.mainService.post('feed/make_seen/', body).map(res => res.json());
+          this.mainService.custompost('feed/make_seen/', body);
           if (!this.id) {
             this.router.navigateByUrl('**');
             this.loaderService.display(false);
