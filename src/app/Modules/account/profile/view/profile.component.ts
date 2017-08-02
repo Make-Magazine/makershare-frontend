@@ -246,18 +246,18 @@ export class ProfileComponent implements OnInit {
     let body = { "data": this.uid };
     tasks.push(this.viewService.getView('api_user_badges', [['uid', this.uid]]));
     tasks.push(this.viewService.getView('projects_categories'));
-    tasks.push(this.mainService.post('maker_count_all_projects/retrieve_count_project_public', body));
-    tasks.push(this.mainService.post('maker_count_all_projects/retrieve_count_project_private', body));
-    tasks.push(this.mainService.post('maker_count_all_projects/retrieve_count_project_draft', body));
+    tasks.push(this.mainService.custompost('maker_count_all_projects/retrieve_count_project_public', body));
+    tasks.push(this.mainService.custompost('maker_count_all_projects/retrieve_count_project_private', body));
+    tasks.push(this.mainService.custompost('maker_count_all_projects/retrieve_count_project_draft', body));
 
     tasks.push(this.viewService.getView('maker_address_api'));
     Observable.forkJoin(tasks).subscribe((data) => {
       let index = 0;
       this.badges = data[index++] as Array<any>;
       this.allIntersets = data[index++] as Array<any>;
-      this.ProjectsCountPublic = data[index++]['_body'].replace(']', '').replace('[', '') as number;
-      this.ProjectsCountPrivate = data[index++]['_body'].replace(']', '').replace('[', '') as number;
-      this.ProjectsCountDraft = data[index++]['_body'].replace(']', '').replace('[', '') as number;
+      this.ProjectsCountPublic = data[index++][0] as number;
+      this.ProjectsCountPrivate = data[index++][0] as number;
+      this.ProjectsCountDraft = data[index++][0] as number;
       this.CountriesList = data[index++] as Array<any>;
       this.UpdateUser();
     });

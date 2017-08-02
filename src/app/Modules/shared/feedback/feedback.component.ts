@@ -5,8 +5,7 @@ import { TaxonomyService,UserService,NodeService,FileService } from '../../../CO
 import { TaxonomyTerm } from '../../../CORE/Models/Drupal/taxonomy-term';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
-import { FileEntity } from '../../../CORE/Models/';
-import { NodeHelper } from '../../../CORE/Models/';
+import { FileEntity, NodeHelper } from '../../../CORE';
 import { Observable } from "rxjs";
 import { isPlatformBrowser } from '@angular/common';
 
@@ -484,7 +483,7 @@ export class FeedbackComponent implements OnInit {
     }
    // console.log(this.feedbackForm);
     // console.log(feedback);
-    this.nodeService.createNode(this.feedback).subscribe((NewNode) => {
+    this.nodeService.createNode(this.feedback as any).subscribe((NewNode:any) => {
      // console.log(NewNode.nid);
       this.NID = NewNode.nid;
       this.submitted=true

@@ -1,23 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  NotificationBarService,
-  NotificationType,
-} from 'ngx-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import 'rxjs/Rx';
-import {
-  NodeService,
-  StatisticsService,
-  UserService,
-  ViewService,
-} from '../../../CORE/d7services';
+import { NodeService, StatisticsService, UserService, ViewService } from '../../../CORE/d7services';
+import { ChallengeData, IChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { ISorting } from '../../../CORE/Models/challenge/sorting';
 import { Auth } from '../../../Modules/auth0/auth.service';
 import { LoaderService } from '../../shared/loader/loader.service';
-import {
-  ChallengeData,
-  IChallengeData,
-} from '../../../CORE/Models/challenge/challengeData';
 
 @Component({
   selector: 'app-challenge-data',

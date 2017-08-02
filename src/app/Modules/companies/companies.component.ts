@@ -45,7 +45,7 @@ export class CompaniesComponent implements OnInit {
     this.pages = 0;
     let body = { "value": value };
     if (value == 'All') { this.getCountCompanies() } else {
-      this.mainService.post('company_profile_api/retrieve_count_of_companies_startup_or_non_profit', body).map(res => res.json()).subscribe(res => {
+      this.mainService.custompost('company_profile_api/retrieve_count_of_companies_startup_or_non_profit', body).subscribe(res => {
         this.countCompanies = res;
       });
     }
@@ -54,7 +54,7 @@ export class CompaniesComponent implements OnInit {
   }
   /* function to get count companies */
   getCountCompanies() {
-    this.mainService.post('company_profile_api/retrieve_count_of_companies').map(res => res.json()).subscribe(res => {
+    this.mainService.custompost('company_profile_api/retrieve_count_of_companies').subscribe(res => {
       this.countCompanies = res[0];
     });
   }

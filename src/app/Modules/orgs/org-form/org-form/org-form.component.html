@@ -4,7 +4,7 @@
   <div (click)="CurrentFormTab = 'Products'">Products</div>
 </div>
 
-<button class="btn-primaty" (click)="PublishButtonPressed()">Publish</button>
+<button class="btn-primaty" (click)="PublishButtonClick()">Publish</button>
 
 <app-basic-info *ngIf="CurrentFormTab == 'Basic Info'"></app-basic-info>
 <app-about-us *ngIf="CurrentFormTab == 'About Us'"></app-about-us>
