@@ -72,6 +72,7 @@ import { FollowUserComponent } from './follow-user/follow-user.component';
 
 import { FeatureComponent } from './feature/feature.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
+import { ReportOrgsComponent } from './report-orgs/report-orgs.component';
 
 @NgModule({
   imports: [
@@ -125,6 +126,9 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     NotificationTemplateComponent,
     SharedButtonsComponent,
     FollowUserComponent,
+    FeatureComponent,
+    CompanyCardComponent,
+    ReportOrgsComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -133,8 +137,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
-    FeatureComponent,
-    CompanyCardComponent,
+
   ],
   exports: [
     CommentComponent,
@@ -181,7 +184,8 @@ import { CompanyCardComponent } from './company-card/company-card.component';
     ImageCropperComponent,
     // Ng2FileDropDirective,
     ReverseArray,
-    FeatureComponent
+    FeatureComponent,
+    ReportOrgsComponent
   ],
 })
 export class SharedModule {

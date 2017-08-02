@@ -36,7 +36,8 @@ export class OrgsComponent implements OnInit {
         if (this.nid) {
           this.viewService.getView('company_profile_api/' + this.nid).subscribe(data => {
             this.company = data;
-            console.log(this.company.contact)
+            // console.log(this.company)
+            // console.log(this.nid)
             if (this.company) {
               this.team = this.company['field_maker_memberships'];
             }
