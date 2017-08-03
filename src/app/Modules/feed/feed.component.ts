@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../../CORE/d7services';
-
+import { ViewService } from '../../CORE/d7services';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html'
 })
 export class FeedComponent implements OnInit {
-
   projects;
-  noFeed =false;
+  noFeed = false;
   constructor(
     private viewService: ViewService,
   ) { }
@@ -20,8 +18,7 @@ export class FeedComponent implements OnInit {
   getFeed() {
     this.viewService.getView('feed').subscribe(data => {
       if (data.length >= 1) {
-        this.projects = data
-        console.log(this.projects)
+        this.projects = data;
       } else {
         this.noFeed = true;
       }

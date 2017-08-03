@@ -51,7 +51,7 @@
         <p>
           <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
         </p>
-        <div *ngIf="followers">
+        <div *ngIf="followers && company.minimum_followers < followersCount">
           <p>Followers</p>
           <div *ngFor="let maker of followers;" class="d-inline">
             <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
