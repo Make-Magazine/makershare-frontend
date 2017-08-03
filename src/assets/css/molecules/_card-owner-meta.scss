@@ -1,5 +1,6 @@
 .card-owner-meta {
   @extend .clearfix;
+  padding-bottom: 3rem; // to clear the absolute positioning of the card social stats
   .card-owner-media, .card-owner-meta-info {
     float: left;
   }
