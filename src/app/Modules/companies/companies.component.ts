@@ -40,6 +40,7 @@ export class CompaniesComponent implements OnInit {
       this.loaderService.display(false);
     });
   }
+ 
   selectCompanyType(value) {
     this.companies = [];
     this.pages = 0;
