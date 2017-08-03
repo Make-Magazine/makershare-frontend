@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="text-right" *ngIf="projectsCount">{{projectsCount}} projects | # views</div>
+  <div class="text-right" *ngIf="projectsCount && company_views ">{{projectsCount}} projects |{{company_views}} views</div>
   <div class="row" *ngIf="projects">
     <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left" *ngFor="let project of projects" [view]="view" [nid]="project.nid"
       [state]="'tall'"></app-project-card>
   </div>
-  <div class="text-center" *ngIf="!hideloadmore">
-    <a class="btn btn-load-more" (click)="loadMoreProjects()">Load more</a>
+  <div class="text-center" *ngIf="showloadmoreProject">
+    <a class="btn btn-load-more" (click)="getProjects(false)">Load more</a>
   </div>
 </div>

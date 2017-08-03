@@ -35,7 +35,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
   }
 
   GetProjectCard() {
-    this.viewService.getView('api-project-card', [['nid', this.Project.GetField("nid")]]).subscribe(res => {
+    this.viewService.getView('api-project-card', [['nid', this.Project.nid]]).subscribe(res => {
 
       var categories_string = res[0].project_categories;
       categories_string = categories_string.substring(0, categories_string.length - 2);
@@ -56,7 +56,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
 
   DeleteProject(closebtn) {
     closebtn.click();
-    this.nodeService.deleteNode(+this.Project.GetField("nid")).subscribe(data => {
+    this.nodeService.deleteNode(+this.Project.nid).subscribe(data => {
       this.emitter.emit();
     });
   }
@@ -71,7 +71,7 @@ export class ProjectCardPortfolioComponent implements OnInit {
       status = 1;
     }
     let project:any = {
-      nid: this.Project.GetField("nid"),
+      nid: this.Project.nid,
       field_visibility2: { und: [NewVisibility] },
       field_sort_order: { und: [{ value: 0 }] },
       status: status,
@@ -85,8 +85,8 @@ export class ProjectCardPortfolioComponent implements OnInit {
     this.router.navigate(['/projects/', path]);
   }
   getBadgesProject() {
-    if (this.Project.GetField("nid")) {
-      this.viewService.getView('api-project-badges', [['nid', this.Project.GetField("nid")]]).subscribe(data => {
+    if (this.Project.nid) {
+      this.viewService.getView('api-project-badges', [['nid', this.Project.nid]]).subscribe(data => {
         for (let i = 0; i < data.length && i < 4; i++) {
           this.badges.push(data[i]);
         }

@@ -15,7 +15,6 @@ import { ProjectCardPortfolioComponent } from './view/edit-portfolio/project-car
 import { DndModule } from 'ng2-dnd';
 import { FileManagerComponent } from './view/edit-portfolio/file-manager/file-manager.component';
 import { TruncatePipe } from '../../../Angular/pipes/truncate';
-import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   imports: [
@@ -37,7 +36,7 @@ import { FeedComponent } from './feed/feed.component';
     ProjectCardPortfolioComponent,
     FileManagerComponent,
     TruncatePipe,
-    FeedComponent,
+    
   ]
 })
 export class ProfileModule { }

@@ -26,6 +26,7 @@ const APP_ROUTES: Routes = [
     { path: 'projects', loadChildren: './Modules/projects/projects.module#ProjectsModule' },
     { path: 'makers', loadChildren: './Modules/makers/makers.module#MakersModule' },
     { path: 'organizations', loadChildren: './Modules/companies/companies.module#CompaniesModule' },
+    { path: 'feed', loadChildren: './Modules/feed/feed.module#FeedModule' },
     { path: 'orgs', loadChildren: './Modules/orgs/orgs.module#OrgsModule' },
     { path: 'missions', loadChildren: './Modules/challenge/challenge.module#ChallengeModule' },
     { path: 'portfolio', loadChildren: './Modules/account/profile/profile.module#ProfileModule' },
