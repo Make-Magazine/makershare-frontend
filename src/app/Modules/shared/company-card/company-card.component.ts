@@ -13,6 +13,7 @@ export class CompanyCardComponent implements OnInit {
 
   @Input() cardData;
   @Input() state;
+  badges;
 
   card;
   constructor(public router: Router,
@@ -25,9 +26,19 @@ export class CompanyCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCompanyBadge();
   }
   goToProfile(path: string) {
     this.router.navigate(['/portfolio/', path]);
+  }
+  getCompanyBadge() {
+    this.viewService
+      .getView('org-badge', [['nid', this.cardData.nid]])
+      .subscribe(data => {
+        if (data) {
+          this.badges = data;
+        }
+      });
   }
 
 }

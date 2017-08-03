@@ -10,7 +10,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from "rxjs";
 
-
 @Component({
   selector: 'enter-challenges-project',
   templateUrl: './challenge-project.component.html',
