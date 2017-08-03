@@ -3,7 +3,7 @@ import { ViewService, FlagService, MainService, NodeService } from '../../../COR
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { IChallengeProject } from '../../../CORE/Models/challenge/challengeProjects';
-import { IChallengeStartDate, IChallengeData } from '../../../CORE/Models/challenge/challengeData';
+import { IChallengeDate, IChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -66,7 +66,7 @@ export class ChallengeProjectComponent implements OnInit {
       date_type: "",
     },
   };
-  challangStartDate: IChallengeStartDate = {
+  challangStartDate: IChallengeDate = {
     value: "",
     timezone: "",
     timezone_db: "",
