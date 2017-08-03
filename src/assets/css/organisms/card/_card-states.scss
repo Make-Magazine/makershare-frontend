@@ -186,112 +186,148 @@
 
   // ///////////////////
   // missions - wide
-  &.mission.wide {
-    padding-top: 0;
-    margin-bottom: 1rem;
-    .info-top {
-      width: 45%;
-      height: 100%;
-      .sponsor_bar {
-        position: absolute;
-        width: 60px !important;
-        height: 60px !important;
-        max-width: 60px !important;
-        display: block;
-        top: 10px;
-        right: 10px;
-      }
-    }
-    .card-info {
-      margin-left: 45%;
-      width: 55%;
-      padding-bottom: 29%;
-      height: 0;
-    }
-    .info-bottom {
-      padding: 3rem;
-    }
+  &.mission {
     .card-title {
-      margin-bottom: 1.5rem;
-      font-size: 4.1rem;
-      line-height: 5rem;
       text-align: left;
       color: $white;
     }
-    .social-stat-group {
-      position: absolute;
-      bottom: 1.5rem;
-      left: calc(45% + 3rem);
-
-      .social-stat {
-        float: left;
-      }
-
-      .social-stat-group-section {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .social-stat-line {
-        line-height: 2.2rem;
-        span {
-          padding: 0 .5rem;
-          border-left: $white solid .1rem;
-          float: left;
-          &:first-child {
-            padding-left: 0;
-            border-left: none;
-          }
-        }
-      }
-    }
-    .card-image {
-      width: 45%;
-      left: 0;
-      padding-bottom: 0;
-      height: 100%;
-      &.alt {
-        width: 100%;
-      }
-    }
-
-    &.single-view {
+    &.wide {
+      padding-top: 0;
+      margin-bottom: 1rem;
       .info-top {
-        width: 33%;
-        height: auto;
-        position: relative;
-        float: left;
-        padding-bottom: 0;
-        .btns-container {
-          text-align: center;
+        width: 45%;
+        height: 100%;
+        .sponsor_bar {
+          position: absolute;
+          width: 60px !important;
+          height: 60px !important;
+          max-width: 60px !important;
+          display: block;
+          top: 10px;
+          right: 10px;
         }
       }
       .card-info {
-        margin-left: 0;
-        width: auto;
-        padding-bottom: 0;
-        height: auto;
+        margin-left: 45%;
+        width: 55%;
+        padding-bottom: 54%;
+        height: 0;
       }
       .info-bottom {
-        position: relative;
-        float: left;
-        width: 66%;
-        padding: 1.5rem;
-        justify-content: space-between;
-        flex-direction: column;
+        padding: 3rem;
+      }
+      .card-title {
+        margin-bottom: 1.5rem;
       }
       .social-stat-group {
-        width: 100%;
-        position: relative;
-        padding-top: 1.6rem;
-        bottom: 0;
-        left: 0;
-        div {
-          text-align: left;
+        position: absolute;
+        bottom: 1.5rem;
+        left: calc(45% + 3rem);
+
+        .social-stat {
+          float: left;
         }
+
+        .social-stat-group-section {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
         .social-stat-line {
-          line-height: 1.6rem;
+          line-height: 2.2rem;
+          span {
+            padding: 0 .5rem;
+            border-left: $white solid .1rem;
+            float: left;
+            &:first-child {
+              padding-left: 0;
+              border-left: none;
+            }
+          }
+        }
+      }
+      .card-image {
+        width: 45%;
+        left: 0;
+        padding-bottom: 0;
+        height: 100%;
+        &.alt {
+          width: 100%;
+        }
+      }
+    }
+
+    &.full {
+      .card-title {
+        font-size: 4.1rem;
+        line-height: 5rem;
+      }
+      .social-stat-group {
+        position: absolute;
+        bottom: 1.5rem;
+        //left: calc(45% + 3rem);
+
+        .social-stat {
+          float: left;
+        }
+
+        .social-stat-group-section {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .social-stat-line {
+          line-height: 2.2rem;
+          span {
+            padding: 0 .5rem;
+            border-left: $white solid .1rem;
+            float: left;
+            &:first-child {
+              padding-left: 0;
+              border-left: none;
+            }
+          }
+        }
+      }
+      &.single-view {
+        .info-top {
+          width: 33%;
+          height: auto;
+          position: relative;
+          float: left;
+          padding-bottom: 0;
+          .btns-container {
+            text-align: center;
+          }
+        }
+        .card-info {
+          margin-left: 0;
+          width: auto;
+          padding-bottom: 0;
+          height: auto;
+        }
+        .info-bottom {
+          position: relative;
+          float: left;
+          width: 66%;
+          padding: 1.5rem;
+          justify-content: space-between;
+          flex-direction: column;
+        }
+        .social-stat-group {
+          width: 100%;
+          position: relative;
+          padding-top: 1.6rem;
+          bottom: 0;
+          left: 0;
+          div {
+            text-align: left;
+          }
+          .social-stat-line {
+            line-height: 1.6rem;
+          }
         }
       }
     }

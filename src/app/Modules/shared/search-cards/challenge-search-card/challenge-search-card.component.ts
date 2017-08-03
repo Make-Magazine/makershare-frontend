@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,UserService } from '../../../../CORE/d7services';
-import { IChallengeStartDate, IChallengeData } from '../../../../CORE/Models/challenge/challengeData';
-
+import { ViewService, UserService } from '../../../../CORE/d7services';
+import { IChallengeData, IChallengeDate } from '../../../../CORE/Models/challenge/challengeData';
 
 @Component({
   selector: 'app-challenge-search-card',
@@ -42,7 +41,7 @@ export class ChallengeSearchCardComponent implements OnInit {
       date_type: "",
     },
   };
-  challangStartDate: IChallengeStartDate = {
+  challangStartDate: IChallengeDate = {
     value: "",
     timezone: "",
     timezone_db: "",
