@@ -56,15 +56,18 @@ export class ReportOrgsComponent implements OnInit {
   }
   updateSelectedReason(item: any) {
     this.selectedReasonName = item.target.value;
-    console.log(this.selectedReasonName)
+    //console.log(this.selectedReasonName)
   }
   onSubmit(e: Event, content) {
     if (!this.checkUserLogin) this.router.navigate(['/access-denied']);
     this.toggleFlag = this.isReported ? 'unflag' : 'flag';
+    this.reasonReport = this.reportForm.value.field_explain_problem;
+
     var report = {
-      field_reason_reporting: this.selectedReasonName,
-      field_appropriate_for_response: this.reasonReport
+      field_reason_reporting_org: this.selectedReasonName,
+      field_explain_problem: this.reasonReport
     }
+    console.log(report)
     this.flagService[this.toggleFlag](this.orgNid, this.userId, 'report_organization', report)
       .subscribe(response => {
         this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
