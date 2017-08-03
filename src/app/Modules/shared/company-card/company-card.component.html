@@ -22,18 +22,13 @@
           <div class="card-owners-group">
             <p>Admin : <a class="card-owner-link d-inline" (click)="goToProfile(cardData.profile_url)" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a></p>
           </div>
-
           <!-- <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span> -->
-
-
         </div>
       </div>
-      <ul class="social-stat-group">
+      <ul class="followers-count" *ngIf="cardData.minimum_number_followers < cardData.followers_count ">
         <span *ngIf="cardData.followers_count >1"> {{cardData.followers_count}} Followers</span>
         <span *ngIf="cardData.followers_count == 1"> {{cardData.followers_count}} Follower</span>
       </ul>
-
-
     </div>
   </div>
 </div>
