@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChallengesComponent } from './challenges/challenges.component';
-import { ChallengeProjectComponent } from './enter-challenge-project/challenge-project.component';
+import { MissionsComponent } from './missions/missions.component';
+import { MissionProjectComponent } from './enter-mission-project/mission-project.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChallengeRoutingModule } from './challenge-routing.module';
+import { MissionRoutingModule } from './mission-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 
@@ -13,11 +13,11 @@ import { SharedModule } from '../shared/shared.module';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    ChallengeRoutingModule,
+    MissionRoutingModule,
     SharedModule.forChild(),
   ],
-  declarations: [ChallengesComponent, ChallengeProjectComponent],
+  declarations: [MissionsComponent, MissionProjectComponent],
   providers: [],
 })
-export class ChallengeModule {}
-export { ChallengesComponent };
+export class MissionModule {}
+export { MissionsComponent };

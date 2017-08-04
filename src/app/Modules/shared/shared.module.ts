@@ -25,7 +25,6 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { BtnFollowComponent } from './btn-follow/btn-follow.component';
 import { BtnShareComponent } from './btn-share/btn-share.component';
 import { CardBadges } from './card-badges/card-badges.component';
-import { ChallengeCardComponent } from './challenge-card/challenge-card.component';
 import { CommentComponent } from './comments/comment.component';
 import { CommentFormComponent } from './comments/comments/comment-form.component';
 import { CommentsComponent } from './comments/comments/comments.component';
@@ -33,7 +32,7 @@ import { CompanyCardComponent } from './company-card/company-card.component';
 
 import { FeatureComponent } from './feature/feature.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { FileBrowserComponent } from './file-browser/file-browser.component'
+import { FileBrowserComponent } from './file-browser/file-browser.component';
 import { Filters } from './filters/filters.component';
 import { FollowUserComponent } from './follow-user/follow-user.component';
 import { ForkComponent } from './fork/fork.component';
@@ -45,6 +44,7 @@ import { MakerCardComponent } from './maker-card/maker-card.component';
 import { MakerCkeditorComponent } from './maker-ckeditor/maker-ckeditor.component';
 import { MakerPhoto } from './maker-photo/maker-photo.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
+import { MissionCardComponent } from './mission-card/mission-card.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
 import { NotificationTemplateComponent } from './notification-template/notification-template.component';
 import { ProfilePictureService } from './profile-picture/profile-picture.service';
@@ -71,7 +71,6 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { ViewsComponent } from './views/views.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -97,7 +96,7 @@ import { ViewsComponent } from './views/views.component';
     UserCardComponent,
     ProjectCardComponent,
     FeedbackComponent,
-    ChallengeCardComponent,
+    MissionCardComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
@@ -136,7 +135,6 @@ import { ViewsComponent } from './views/views.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
-
   ],
   exports: [
     CommentComponent,
@@ -150,7 +148,7 @@ import { ViewsComponent } from './views/views.component';
     UserCardComponent,
     ProjectCardComponent,
     FeedbackComponent,
-    ChallengeCardComponent,
+    MissionCardComponent,
     ShowcaseCardComponent,
     LearnCardComponent,
     UserCardSmallComponent,
@@ -184,7 +182,7 @@ import { ViewsComponent } from './views/views.component';
     // Ng2FileDropDirective,
     ReverseArray,
     FeatureComponent,
-    ReportOrgsComponent
+    ReportOrgsComponent,
   ],
 })
 export class SharedModule {
@@ -198,7 +196,7 @@ export class SharedModule {
         Auth,
         ProfilePictureService,
         LoaderService,
-      ]
+      ],
     };
   }
   static forChild(): ModuleWithProviders {
