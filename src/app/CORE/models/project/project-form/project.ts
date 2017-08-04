@@ -1,12 +1,15 @@
-import { Node } from '../../';
-import { FieldFileReference } from '../../';
-import { field_text } from '../../';
-import { field_URL } from '../../';
-import * as FieldCollectionItem from './field-collection-item';
-import { field_term_reference } from '../../';
-import { field_entity_reference } from '../../';
-import { field_number } from '../../';
-import { field_date, date_time } from '../../';
+import * as FieldCollectionItem from 'app/CORE/models/project/project-form/field-collection-item';
+import {
+  date_time,
+  field_date,
+  field_entity_reference,
+  field_number,
+  field_term_reference,
+  field_text,
+  field_URL,
+  FieldFileReference,
+  Node,
+} from '../../';
 
 export interface ProjectForm extends Node {
   field_story: { und: field_text[] };

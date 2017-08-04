@@ -1,7 +1,7 @@
-import { IAddress } from './address';
-import { IInterests } from './interests';
-import { MakerSpace } from './makerspace';
-import { IProfileSocial } from './profile-social';
+import { IAddress } from 'app/CORE/models/profile/address';
+import { IInterests } from 'app/CORE/models/profile/interests';
+import { MakerSpace } from 'app/CORE/models/profile/makerspace';
+import { IProfileSocial } from 'app/CORE/models/profile/profile-social';
 
 export interface UserProfile {
   name?: string;

@@ -1,6 +1,12 @@
-export { UserInvitations } from './user-invitations';
-export { ToolMaterialPart } from './tool-material-part';
-export { ProjectCategory } from './project-category';
+export {
+  UserInvitations,
+} from 'app/CORE/models/project/project-form/user-invitations';
+export {
+  ToolMaterialPart,
+} from 'app/CORE/models/project/project-form/tool-material-part';
+export {
+  ProjectCategory,
+} from 'app/CORE/models/project/project-form/project-category';
 export {
   FieldCollectionItemTool,
   FieldCollectionItemPart,
@@ -8,6 +14,6 @@ export {
   FieldCollectionItemResource,
   FieldCollectionItemMember,
   FieldCollectionItemReferenceRow,
-} from './field-collection-item';
-export { ProjectCardPortfolio, ProjectForm, ProjectView } from './project';
-export { ProjectHold } from './project-hold';
+} from 'app/CORE/models/project/project-form/field-collection-item';
+export { ProjectCardPortfolio, ProjectForm, ProjectView } from 'app/CORE/models/project/project-form/project';
+export { ProjectHold } from 'app/CORE/models/project/project-form/project-hold';

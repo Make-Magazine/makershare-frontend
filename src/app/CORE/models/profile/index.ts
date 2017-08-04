@@ -1,1 +1,1 @@
-export { Notification } from './notification';
+export { Notification } from 'app/CORE/models/profile/notification';
