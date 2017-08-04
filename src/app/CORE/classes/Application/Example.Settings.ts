@@ -1,9 +1,8 @@
-import { ISettings } from '../../models';
+import { ISettings } from 'app/CORE/models';
 
-export class Settings implements ISettings{
-
+export class Settings implements ISettings {
   APIEndPoint = 'api';
-  
+
   // // connect to stage
   // APIProtocol = 'https';
   // APIHost = 'preview-manage.makershare.com';
@@ -19,13 +18,12 @@ export class Settings implements ISettings{
   AppName = 'Maker Share';
   LANGUAGE = 'und';
 
-  GetBackEndUrl():string {
-    const url = this.APIProtocol+'://'+this.APIHost;
-    return this.APIPort? url+':'+this.APIPort+'/' : url+'/' ;
+  GetBackEndUrl(): string {
+    const url = this.APIProtocol + '://' + this.APIHost;
+    return this.APIPort ? url + ':' + this.APIPort + '/' : url + '/';
   }
 
-  GetBackEndUrlWithEndpoint():string{
-    return this.GetBackEndUrl()+this.APIEndPoint+'/';
+  GetBackEndUrlWithEndpoint(): string {
+    return this.GetBackEndUrl() + this.APIEndPoint + '/';
   }
-
 }

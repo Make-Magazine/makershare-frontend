@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { MainService } from '../main/main.service';
+import { MainService } from 'app/CORE/d7services/main/main.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PmService {
-
-  constructor(private mainService: MainService) { }
+  constructor(private mainService: MainService) {}
 
   getMessage(mid: number): Observable<any> {
     return this.mainService.get('privatemsg/' + mid);
@@ -32,9 +31,9 @@ export class PmService {
 
   blockUser(recipient: number, author: number): Observable<any> {
     let data = {
-      "recipient": recipient,
-      "author": author,
-    }
+      recipient: recipient,
+      author: author,
+    };
     return this.mainService.custompost('privatemsgblock/', data);
   }
 
@@ -46,13 +45,13 @@ export class PmService {
     return this.mainService.get('privatemsgblock/');
   }
 
-  updateSettings(mid:number,data: any): Observable<any> {
+  updateSettings(mid: number, data: any): Observable<any> {
     return this.mainService.put('privatemsg/' + mid, data);
   }
-  postView(viewName: string, uid: number){
-    return this.mainService.custompost(viewName, {"uid" : uid});
+  postView(viewName: string, uid: number) {
+    return this.mainService.custompost(viewName, { uid: uid });
   }
-  
+
   getStatus(uid: number): Observable<any> {
     return this.mainService.get('privatemsggetstatus/' + uid);
   }
@@ -72,7 +71,7 @@ export class PmService {
     return this.mainService.get('maker_get_pm_participent/' + mid);
   }
 
-  getInboxCount(uid: number){
+  getInboxCount(uid: number) {
     return this.mainService.get('maker_get_pm_author/' + uid);
   }
 
@@ -94,11 +93,11 @@ export class PmService {
   deleteNotification(mid: number): Observable<any> {
     return this.mainService.delete('maker_notification_api/' + mid);
   }
-  
-  postAction(viewName: string,uid:any){
+
+  postAction(viewName: string, uid: any) {
     return this.mainService.custompost(viewName, uid);
   }
-  updateAction(viewName: string,uid: any){
+  updateAction(viewName: string, uid: any) {
     return this.mainService.custompost(viewName, uid);
   }
- }
+}

@@ -1,9 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ViewService, NodeService, StatisticsService, MainService, UserService } from '../../../CORE/d7services';
+import { ViewService, NodeService, StatisticsService, MainService, UserService } from 'app/CORE/d7services';
 import 'rxjs/Rx';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { Auth } from '../..//auth0/auth.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { Auth } from 'app/modules/auth0/auth.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MainService } from '../../../CORE/d7services/main/main.service';
-import { Auth } from '../../auth0/auth.service';
+import { MainService } from 'app/CORE/d7services/main/main.service';
+import { Auth } from 'app/modules/auth0/auth.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from '../../../CORE/';
+import { Singleton } from 'app/CORE/';
 
 @Component({
   selector: 'app-claim-profile',

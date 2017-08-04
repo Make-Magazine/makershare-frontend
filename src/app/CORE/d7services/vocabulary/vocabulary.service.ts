@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { MainService} from '../main/main.service';
+import { Observable } from 'rxjs/Observable';
+import { MainService } from 'app/CORE/d7services/main/main.service';
 
 @Injectable()
 export class VocabularyService {
+  constructor(private mainService: MainService) {}
 
-  constructor(private mainService: MainService) { }
-
-  getVocabularies(): Observable<any>{
+  getVocabularies(): Observable<any> {
     return this.mainService.get('taxonomy_vocabulary');
   }
 
-  getVocabulary(vid: number): Observable<any>{
+  getVocabulary(vid: number): Observable<any> {
     return this.mainService.get('taxonomy_vocabulary/' + vid);
   }
 
@@ -24,6 +23,6 @@ export class VocabularyService {
   }
 
   deleteVocabulray(vid: number): Observable<any> {
-    return this.mainService.delete('taxonomy_vocabulary/' +vid);
+    return this.mainService.delete('taxonomy_vocabulary/' + vid);
   }
 }

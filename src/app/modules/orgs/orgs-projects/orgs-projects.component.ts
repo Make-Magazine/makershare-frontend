@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, StatisticsService } from '../../../CORE/d7services';
+import { ViewService, StatisticsService } from 'app/CORE/d7services';
 import { ActivatedRoute } from '@angular/router';
-import { NodeService, MainService } from '../../../CORE/d7services';
+import { NodeService, MainService } from 'app/CORE/d7services';
 
 
 @Component({

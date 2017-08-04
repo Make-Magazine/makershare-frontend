@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FlagService,UserService } from '../../../CORE/d7services';
+import { FlagService,UserService } from 'app/CORE/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Router } from '@angular/router';
 

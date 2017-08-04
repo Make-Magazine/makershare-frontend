@@ -16,7 +16,7 @@ import {
   ProjectForm,
   ProjectHold,
   ProjectView
-} from '../../../../CORE';
+} from 'app/CORE';
 import {
   FileService,
   MainService,
@@ -24,8 +24,8 @@ import {
   TaxonomyService,
   UserService,
   ViewService
-} from '../../../../CORE/d7services';
-import { ComponentCanDeactivate } from '../pending-changes.guard';
+} from 'app/CORE/d7services';
+import { ComponentCanDeactivate } from 'app/modules/projects/project-form/pending-changes.guard';
 
 declare var swal: any;
 @Component({

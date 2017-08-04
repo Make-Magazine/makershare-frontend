@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { MainService } from '../main/main.service';
+import { MainService } from 'app/CORE/d7services/main/main.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProfileService {
-
-  constructor(private mainService: MainService) { }
-
+  constructor(private mainService: MainService) {}
 
   createProfile(Profile): Observable<any> {
     return this.mainService.custompost('maker_profile_api', Profile);
   }
 
-  updateProfile(id,Profile): Observable<any> {
-    return this.mainService.put('maker_profile_api/'+id, Profile);
+  updateProfile(id, Profile): Observable<any> {
+    return this.mainService.put('maker_profile_api/' + id, Profile);
   }
 
   getUser(userId): Observable<any> {
@@ -23,16 +21,15 @@ export class ProfileService {
   getAllCountries(): Observable<any> {
     return this.mainService.get('maker_address_api');
   }
-    getAllMarkers(): Observable<any> {
+  getAllMarkers(): Observable<any> {
     return this.mainService.get('marker-space');
   }
 
- getAllInterests(): Observable<any> {
+  getAllInterests(): Observable<any> {
     return this.mainService.get('interests_category');
   }
 
   getByCountry(country: string): Observable<any> {
     return this.mainService.get('maker_address_api/' + country);
   }
-
 }

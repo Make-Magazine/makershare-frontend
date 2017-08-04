@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import 'rxjs/Rx';
-import { NodeService, StatisticsService, UserService, ViewService } from '../../../CORE/d7services';
-import { MissionData, IMissionData } from '../../../CORE/models/mission/mission-data';
-import { ISorting } from '../../../CORE/models/mission/sorting';
-import { Auth } from '../../auth0/auth.service';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { NodeService, StatisticsService, UserService, ViewService } from 'app/CORE/d7services';
+import { MissionData, IMissionData } from 'app/CORE/models/mission/mission-data';
+import { ISorting } from 'app/CORE/models/mission/sorting';
+import { Auth } from 'app/modules/auth0/auth.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 
 @Component({
   selector: 'app-mission-data',

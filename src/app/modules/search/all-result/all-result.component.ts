@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { SolrService } from '../../../CORE/d7services';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { SolrService } from 'app/CORE/d7services';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import 'rxjs/add/operator/map';
 
 

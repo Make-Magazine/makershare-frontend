@@ -1,11 +1,11 @@
 import { Component, ViewChild, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor,NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FileService } from '../../../CORE/d7services';
-import { FileEntity,NodeHelper } from '../../../CORE/models';
+import { FileService } from 'app/CORE/d7services';
+import { FileEntity, NodeHelper } from 'app/CORE/models';
 import { CropperSettings } from 'ng2-img-cropper';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
-import { URLNoProtocol } from '../../../Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -22,24 +22,24 @@ import { FormControl } from '@angular/forms';
     //   useExisting: forwardRef(() => MakerCkeditorComponent),
     //   multi: true,
     // }
-    ] 
+  ],
 })
 export class MakerCkeditorComponent implements ControlValueAccessor {
-  @ViewChild('ckeditor') ckeditor:any;
-  @Input("error") error = false;
-  @Input("id") id = 'ckeditor';
-  event:any;
-  Content:any = '';
-  isDisabled:boolean;
+  @ViewChild('ckeditor') ckeditor: any;
+  @Input('error') error = false;
+  @Input('id') id = 'ckeditor';
+  event: any;
+  Content: any = '';
+  isDisabled: boolean;
   imagedata: any = {};
-  PhotoModalTab:string = 'upload';
+  PhotoModalTab: string = 'upload';
   cropperSettings: CropperSettings;
   SelectedImage: FileEntity = new FileEntity();
-  FetchImageByUrl:FormControl = new FormControl('',URLNoProtocol());
+  FetchImageByUrl: FormControl = new FormControl('', URLNoProtocol());
   constructor(
     private modalService: NgbModal,
     private fileService: FileService,
-  ) { }
+  ) {}
 
   SetCropperSettings(): void {
     this.cropperSettings = new CropperSettings();
@@ -55,38 +55,37 @@ export class MakerCkeditorComponent implements ControlValueAccessor {
     this.imagedata = {};
   }
 
-  propagateChange = (_: any) => { };
+  propagateChange = (_: any) => {};
 
-  writeValue(obj: string) : void{
-    if(obj)
-      this.Content = obj;
+  writeValue(obj: string): void {
+    if (obj) this.Content = obj;
   }
-  registerOnChange(fn: any) : void{
+  registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
-  registerOnTouched(fn: any) : void{
-
-  }
-  setDisabledState(isDisabled: boolean) : void{
+  registerOnTouched(fn: any): void {}
+  setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
-  Add_Photo(event,template){
+  Add_Photo(event, template) {
     this.SetCropperSettings();
     this.event = event;
     this.OpenModal(template);
   }
-  SelectFileAndSave(closebtn:HTMLButtonElement,file:FileEntity){
+  SelectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
     this.imagedata = {};
-    this.fileService.getFileById(file.fid).subscribe((fileEntity:FileEntity)=>{
-      this.InsertImage(fileEntity.uri_full);
-      closebtn.click();
-    });
+    this.fileService
+      .getFileById(file.fid)
+      .subscribe((fileEntity: FileEntity) => {
+        this.InsertImage(fileEntity.uri_full);
+        closebtn.click();
+      });
     // this.InsertImage(file['url']);
   }
-  InsertImage(link){
-    this.event.insertHtml('<img src="'+link+'" class="img-responsive">');
+  InsertImage(link) {
+    this.event.insertHtml('<img src="' + link + '" class="img-responsive">');
   }
-  OpenModal(template){
+  OpenModal(template) {
     this.modalService.open(template);
   }
   UploadBtn(file, cropper) {
@@ -94,27 +93,33 @@ export class MakerCkeditorComponent implements ControlValueAccessor {
     var image: any = new Image();
     this.SelectedImage.filename = file.name;
     var myReader: FileReader = new FileReader();
-    myReader.onloadend = function (loadEvent: any) {
+    myReader.onloadend = function(loadEvent: any) {
       image.src = loadEvent.target.result;
       cropper.setImage(image);
     };
     myReader.readAsDataURL(file);
   }
   dragFileAccepted(acceptedFile, cropper) {
-    this.UploadBtn(acceptedFile.file,cropper);
+    this.UploadBtn(acceptedFile.file, cropper);
   }
   ImageUpdated(closebtn: HTMLButtonElement) {
     closebtn.click();
     delete this.SelectedImage.fid;
     this.SelectedImage.file = '';
     if (!NodeHelper.isEmpty(this.imagedata)) {
-      this.SelectedImage.file = NodeHelper.RemoveFileTypeFromBase64(this.imagedata.image);
+      this.SelectedImage.file = NodeHelper.RemoveFileTypeFromBase64(
+        this.imagedata.image,
+      );
       this.imagedata = {};
-      this.fileService.SendCreatedFile(this.SelectedImage).subscribe((data:FileEntity)=>{
-        this.fileService.getFileById(data.fid).subscribe((fileEntity:FileEntity)=>{
-          this.InsertImage(fileEntity.uri_full);
+      this.fileService
+        .SendCreatedFile(this.SelectedImage)
+        .subscribe((data: FileEntity) => {
+          this.fileService
+            .getFileById(data.fid)
+            .subscribe((fileEntity: FileEntity) => {
+              this.InsertImage(fileEntity.uri_full);
+            });
         });
-      });
     }
   }
 }

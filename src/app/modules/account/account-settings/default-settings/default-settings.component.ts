@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,MainService,PmService,UserService } from '../../../../CORE/d7services';
+import { ViewService,MainService,PmService,UserService } from 'app/CORE/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

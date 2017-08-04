@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, ViewService } from '../../../../CORE/d7services';
+import { UserService, ViewService } from 'app/CORE/d7services';
 import {
   IMissionData,
   IMissionDate,
-} from '../../../../CORE/models/mission/mission-data';
+} from 'app/CORE/models/mission/mission-data';
 
 @Component({
   selector: 'app-challenge-search-card',
