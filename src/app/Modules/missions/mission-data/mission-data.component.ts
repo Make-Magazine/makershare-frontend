@@ -9,10 +9,10 @@ import { Auth } from '../../../Modules/auth0/auth.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
-  selector: 'app-challenge-data',
-  templateUrl: './challenge-data.component.html',
+  selector: 'app-mission-data',
+  templateUrl: './mission-data.component.html',
 })
-export class ChallengeDataComponent implements OnInit {
+export class MissionDataComponent implements OnInit {
   @Input() countFoll;
   @Input() sortType: ISorting;
   @Input() pageNo: number;

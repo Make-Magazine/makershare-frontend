@@ -19,11 +19,11 @@
            class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
         <div class="card-wrapper">
           <!-- Mission -->
-          <app-challenge-card *ngIf="item.type == 'challenge'"
-                              [challengeNid]="item.entity_id"
-                              (Featured)="UnFlagged(i)"
-                              [front]=true
-                              [state]="item.size"></app-challenge-card>
+          <app-mission-card *ngIf="item.type == 'challenge'"
+                            [challengeNid]="item.entity_id"
+                            (Featured)="UnFlagged(i)"
+                            [front]=true
+                            [state]="item.size"></app-mission-card>
 
           <!-- Showcase Cards -->
           <app-showcase-gen-card *ngIf="item.type == 'showcase'"

@@ -36,10 +36,10 @@
   <div class="container">
     <div class="mb-5"
          *ngFor="let challenge of challenges">
-      <app-challenge-card class="card-wrapper"
-                          [challengeNid]="challenge.nid"
-                          [challenge]="challenge"
-                          [state]="'full'"></app-challenge-card>
+      <app-mission-card class="card-wrapper"
+                        [challengeNid]="challenge.nid"
+                        [challenge]="challenge"
+                        [state]="'full'"></app-mission-card>
     </div>
 
     <div *ngIf="challenges.length == 0">

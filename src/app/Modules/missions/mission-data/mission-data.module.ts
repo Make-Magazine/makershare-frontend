@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChallengeDataComponent } from './challenge-data.component';
-import { ChallengeDataRoutingModule } from './challenge-data-routing.module'
-import { RulesComponent } from './rules/rules.component'
-import { BriefComponent } from './brief/brief.component'
+import { MissionDataComponent } from './mission-data.component';
+import { MissionDataRoutingModule } from './mission-data-routing.module';
+import { RulesComponent } from './rules/rules.component';
+import { BriefComponent } from './brief/brief.component';
 import { DiscussionComponent } from './discussion/discussion.component';
 import { FollowersComponent } from './followers/followers.component';
 import { SummaryComponent } from './summary/summary.component';
@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
-    ChallengeDataRoutingModule,
+    MissionDataRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule.forChild(),
@@ -30,9 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DiscussionComponent,
     SummaryComponent,
     AwardsComponent,
-    ChallengeDataComponent
-  ]
+    MissionDataComponent,
+  ],
 })
-export class ChallengeDataModule { }
-export { ChallengeDataComponent };
-
+export class MissionDataModule {}
+export { MissionDataComponent };

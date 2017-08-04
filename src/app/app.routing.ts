@@ -28,7 +28,7 @@ const APP_ROUTES: Routes = [
     { path: 'organizations', loadChildren: './Modules/companies/companies.module#CompaniesModule' },
     { path: 'feed', loadChildren: './Modules/feed/feed.module#FeedModule' },
     { path: 'orgs', loadChildren: './Modules/orgs/orgs.module#OrgsModule' },
-    { path: 'missions', loadChildren: './Modules/challenge/challenge.module#ChallengeModule' },
+    { path: 'missions', loadChildren: './Modules/missions/mission.module#MissionModule' },
     { path: 'portfolio', loadChildren: './Modules/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: './Modules/account/account.module#AccountModule' },
     { path: 'search', loadChildren: './Modules/search/search.module#SearchModule' },
