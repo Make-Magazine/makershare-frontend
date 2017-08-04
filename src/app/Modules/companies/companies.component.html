@@ -1,53 +1,54 @@
-<div class="container">
-    <header class="explore-header">
-        <div class="container">
-            <h3>Organizations</h3>
-            <div class="filters-group">
-                <div class="dropdown-group">
-                    <i class="dropdownIcon lnr lnr-chevron-down"></i>
-                    <select class="shadowed explore-tags" (change)="selectCompanyType($event.target.value)">
-              <option value="0" disabled>Filter By</option>
-              <option value="All">All Organizations</option>
-              <option value="non_profit">non-profit</option>
-              <option value="start_up">startup</option>
-            </select>
-                </div>
-                <div class="filters">
-                    <div class="dropdown-group">
-                        <i class="dropdownIcon lnr lnr-chevron-down"></i>
-                        <select class="shadowed explore-tags sorting-filter" id="filter-projects" (change)="sortCompanies($event.target.value)">
-                            <option value="_none" disabled class="btn">Sort By</option>
-                            <option value="random_seed" class="btn">Mix 'Em Up</option>
-                            <option value="created" class="btn">Most recent</option>
-                            <option value="created_1" class="btn">Oldest</option>
-                            <option value="title" class="btn">Title A-Z</option>
-                            <option value="title_1" class="btn">Title Z-A</option>
-                            <option value="count" class="btn">Most Followers</option>
-                             <option value="php" class="btn">Most Project</option> 
-                        </select>
-                    </div>
-                </div>
-                <div class="filters projects-counter">
-                    <div class="entries-count btn">
+<div class="page-explore mb-5">
+  <div class="container page-header mb-5">
+    <h3>Organizations</h3>
+  </div>
 
-                        <p *ngIf="countCompanies > 1">{{countCompanies}} Organizations</p>
-                        <p *ngIf="countCompanies == 1">{{countCompanies}} Organization</p>
-                    </div>
-                </div>
-                <!-- End filters -->
-            </div>
+  <div class="container clearfix mb-5">
+    <div class="filters-group">
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags"
+                (change)="selectCompanyType($event.target.value)">
+          <option value="0" disabled>Filter By</option>
+          <option value="All">All Organizations</option>
+          <option value="non_profit">non-profit</option>
+          <option value="start_up">startup</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags sorting-filter"
+                id="filter-projects"
+                (change)="sortCompanies($event.target.value)">
+          <option value="_none" disabled class="btn">Sort By</option>
+          <option value="random_seed" class="btn">Mix 'Em Up</option>
+          <option value="created" class="btn">Most recent</option>
+          <option value="created_1" class="btn">Oldest</option>
+          <option value="title" class="btn">Title A-Z</option>
+          <option value="title_1" class="btn">Title Z-A</option>
+          <option value="count" class="btn">Most Followers</option>
+          <option value="php" class="btn">Most Project</option>
+        </select>
+      </div>
 
+      <div class="filters projects-counter">
+        <div class="entries-count btn">
+          <p>{{countCompanies}} Organization{{ countCompanies > 1 ? 's': '' }}</p>
         </div>
-    </header>
-    <div class="projects-grid row" *ngIf="companies">
-        <app-company-card *ngFor="let company of companies; let i=index" class="card-wrapper col-md-6 col-lg-4 pull-left" [cardData]="companies[i]"
-            [state]="'tall'"> </app-company-card>
+      </div>
     </div>
-        
-    <!-- <ng-template #noCompanies class="text-center">
-        <h1>No Organizations added yet</h1>
-    </ng-template> -->
-    <div class="text-center pt-3 pb-5" *ngIf="showloadmoreCompany">
-        <a class="btn btn-load-more" (click)="getCompanies(true)">Load more</a>
-    </div>
+  </div>
+
+  <div class="projects-grid row" *ngIf="companies">
+    <app-company-card *ngFor="let company of companies; let i=index" class="card-wrapper col-md-6 col-lg-4 pull-left"
+                      [cardData]="companies[i]"
+                      [state]="'tall'"></app-company-card>
+  </div>
+
+  <!-- <ng-template #noCompanies class="text-center">
+      <h1>No Organizations added yet</h1>
+  </ng-template> -->
+  <div class="text-center pt-3 pb-5" *ngIf="showloadmoreCompany">
+    <a class="btn btn-load-more" (click)="getCompanies(true)">Load more</a>
+  </div>
 </div>

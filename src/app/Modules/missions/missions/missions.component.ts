@@ -2,15 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Singleton } from '../../../CORE';
-import { FlagService, UserService, ViewService } from '../../../CORE/d7services';
+import {
+  FlagService,
+  UserService,
+  ViewService,
+} from '../../../CORE/d7services';
 import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
-  selector: 'app-challenges',
-  templateUrl: './challenges.component.html',
+  selector: 'app-missions',
+  templateUrl: './missions.component.html',
 })
-export class ChallengesComponent implements OnInit {
+export class MissionsComponent implements OnInit {
   challenges: ChallengeData[] = [];
   pageNumber = 0;
   allstatuses = [];
@@ -135,7 +139,8 @@ export class ChallengesComponent implements OnInit {
   }
 
   loadMoreVisibilty() {
-    this.hideloadmore = this.statusesCount[this.currentStatusId] == this.challenges.length;
+    this.hideloadmore =
+      this.statusesCount[this.currentStatusId] == this.challenges.length;
   }
 
   ShowChallengeDetails(nid) {

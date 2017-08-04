@@ -5,10 +5,10 @@ import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
 import { Auth } from '../../auth0/auth.service';
 
 @Component({
-  selector: 'app-challenge-card',
-  templateUrl: './challenge-card.component.html',
+  selector: 'app-mission-card',
+  templateUrl: './mission-card.component.html',
 })
-export class ChallengeCardComponent implements OnInit {
+export class MissionCardComponent implements OnInit {
   @Input() state;
   @Input() singleView: boolean = false;
   @Input() challengeNid;
