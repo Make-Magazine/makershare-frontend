@@ -1,86 +1,85 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, UserService, StatisticsService } from '../../../CORE/d7services';
+import {
+  StatisticsService,
+  UserService,
+  ViewService,
+} from '../../../CORE/d7services';
 
 @Component({
   selector: 'app-notification-panel',
-  templateUrl: './notification-panel.component.html'
+  templateUrl: './notification-panel.component.html',
 })
 export class NotificationPanelComponent implements OnInit {
   notifications = [];
   userId;
-  countNotifications;
+  countNotifications: number = 0;
   newCount: number = 0;
-  noNotification = false;
+
   constructor(
     private viewService: ViewService,
     private userService: UserService,
     private statisticsService: StatisticsService,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.userService.isLogedIn().subscribe(data => {
-      if (data) {
-        this.userId = localStorage.getItem('user_id');
-        this.getNotifications();
-        this.getNewCont();
-        this.getNotificationsCount();
-        let self = this;
-        setInterval(function () {
-          self.reload();
-        }, 120000);
-      }
-    }, err => {
-      // console.log('user not logged in');
-    });
+    this.userService.isLogedIn().subscribe(
+      data => {
+        if (data) {
+          this.userId = localStorage.getItem('user_id');
+          this.getNotifications();
+          this.getNewCont();
+          this.getNotificationsCount();
+          setInterval(() => {
+            this.reload();
+          }, 120000);
+        }
+      },
+      err => {},
+    );
   }
+
   getNotifications() {
-    this.viewService.getView('views/api_notifications', [['display_id', 'services_1'], ['uid', this.userId]]).subscribe(data => {
-      this.notifications = data;
-
-      if (this.notifications.length == 0) {
-        this.noNotification = true;
-      }else{
-        this.noNotification=false;
-      }
-
-    }, err => {
-      //  console.log(err);
-    });
-
+    this.viewService
+      .getView('views/api_notifications', [
+        ['display_id', 'services_1'],
+        ['uid', this.userId],
+      ])
+      .subscribe(
+        data => {
+          this.notifications = data;
+        },
+        err => {},
+      );
   }
-  getNotificationsCount() {
-    this.viewService.getView('maker_notification_api/' + this.userId).subscribe(data => {
-      if (data[0] == 0 || data[0] == false) {
-        this.countNotifications = 0;
-      } else {
-        this.countNotifications = data[0];
-      }
 
-    }, err => {
-      console.log(err)
-    });
+  getNotificationsCount() {
+    this.viewService.getView('maker_notification_api/' + this.userId).subscribe(
+      data => {
+        this.countNotifications = data[0] || 0;
+      },
+      err => {
+      },
+    );
   }
 
   getNewCont() {
-    this.statisticsService.notificationGetNewCount(this.userId).subscribe(count => {
-      // console.log(count[0]);
-      if (count[0] == 0 || count[0] == false) {
-        this.newCount = 0;
-      } else {
-        this.newCount = count;
-      }
-    });
+    this.statisticsService
+      .notificationGetNewCount(this.userId)
+      .subscribe(count => {
+        this.newCount = count || 0;
+      });
   }
 
   lastSeen() {
     this.notifications = [];
     this.userService.getStatus().subscribe(data => {
       if (data.user.uid != 0 && this.notifications.length > 0) {
-        this.statisticsService.notificationSetLastSeen(data.user.uid, this.notifications[0].mid).subscribe();
+        this.statisticsService
+          .notificationSetLastSeen(data.user.uid, this.notifications[0].mid)
+          .subscribe();
       }
     });
     this.getNotifications();
-
   }
 
   reload() {
@@ -88,5 +87,4 @@ export class NotificationPanelComponent implements OnInit {
     this.getNewCont();
     this.getNotificationsCount();
   }
-
 }
