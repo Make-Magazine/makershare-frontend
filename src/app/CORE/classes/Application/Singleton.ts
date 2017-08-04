@@ -1,8 +1,8 @@
-import { Settings } from './';
+import { Settings } from 'app/CORE/classes/Application/Settings';
 
-export class Singleton{
-  private static _instance:Singleton;
-  private _settings:Settings;
+export class Singleton {
+  private static _instance: Singleton;
+  private _settings: Settings;
 
   constructor() {
     this._settings = new Settings();
@@ -15,7 +15,7 @@ export class Singleton{
     return this._instance;
   }
 
-  static get Settings (){
+  static get Settings() {
     return this.Instance._settings;
   }
 }

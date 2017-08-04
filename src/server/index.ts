@@ -1,18 +1,15 @@
 import express = require('express');
-
-import {applicationBuilderFromModule} from 'angular-ssr';
-
-import {enableProdMode} from '@angular/core';
-
-import {AppModule} from '../app/app.module';
-import {absoluteUri, configure, listen} from './http';
-import {index} from './paths';
+import { enableProdMode } from '@angular/core';
+import { applicationBuilderFromModule } from 'angular-ssr';
+import { AppModule } from 'app/app.module';
+import { absoluteUri, configure, listen } from 'server/http';
+import { index } from 'server/paths';
 
 enableProdMode();
 
 const builder = applicationBuilderFromModule(AppModule, index);
 
-builder.preboot({appRoot: 'application'});
+builder.preboot({ appRoot: 'application' });
 // builder.stabilizeTimeout(20000);
 const application = builder.build();
 
@@ -25,8 +22,7 @@ http.get(/.*/, async (request, response) => {
     const snapshot = await application.renderUri(absoluteUri(request));
 
     response.send(snapshot.renderedDocument);
-  }
-  catch (exception) {
+  } catch (exception) {
     console.error('Rendering exception', exception);
 
     response.send(builder.templateDocument()); // fall back on client document

@@ -1,1 +1,1 @@
-export * from './project-form';
+export * from 'app/CORE/models/project/project-form';

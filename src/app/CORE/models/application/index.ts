@@ -1,1 +1,1 @@
-export { ISettings } from './Settings';
+export { ISettings } from 'app/CORE/models/application/Settings';

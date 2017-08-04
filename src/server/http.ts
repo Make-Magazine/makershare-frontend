@@ -1,13 +1,10 @@
-import express = require('express');
-
 import cookieParser = require('cookie-parser');
-
+import express = require('express');
 import url = require('url');
-
-import {dist, index} from './paths';
+import { dist, index } from 'server/paths';
 
 export const configure = (http: express.Application): void => {
-  http.use(express.static(dist, {index}));
+  http.use(express.static(dist, { index }));
 
   http.use(require('express-blank-favicon'));
 
@@ -21,18 +18,17 @@ export const listen = (http: express.Application): Promise<number> => {
     http.listen(port, err => {
       if (err) {
         reject(err);
-      }
-      else {
+      } else {
         resolve(port);
       }
-    })
+    });
   });
-}
+};
 
 export const absoluteUri = (request: express.Request): string => {
   return url.format({
     protocol: request.protocol,
     host: request.get('host'),
-    pathname: request.originalUrl
+    pathname: request.originalUrl,
   });
 };

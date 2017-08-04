@@ -1,55 +1,49 @@
-import {NgModule, NgZone} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NavigationEnd, NavigationError, RouterModule, Router} from '@angular/router';
-
-import {Observable} from 'rxjs';
-
-import {prebootClient} from 'preboot/__build/src/browser/preboot_browser';
-
-import {AppComponent} from './app.component';
-
-//
-import { routing } from "./app.routing";
-import { HeaderComponent } from './Modules/general/header/header.component';
-import { FooterComponent } from './Modules/general/footer/footer.component';
-
-// New Structure
-import { MessagesModule } from './Modules/account/messages/messages.module';
-import { NotificationBarModule } from 'ngx-notification-bar/release';
-import { SharedModule } from './Modules/shared/shared.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DndModule } from 'ng2-dnd';
-import { ShareButtonsModule } from "ngx-sharebuttons";
-import { SearchBoxComponent } from './Modules/general/header/search-box/search-box.component';
-import { AccessDeniedComponent } from './Modules/auth0/access-denied/access-denied.component';
-import { Four04Component } from './Modules/auth0/four04/four04.component';
+import { NgModule, NgZone } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'app/modules/shared/shared.module';
+import { DndModule } from 'ng2-dnd';
+import { CookieModule } from 'ngx-cookie';
+import { NotificationBarModule } from 'ngx-notification-bar/release';
+import { ShareButtonsModule } from 'ngx-sharebuttons';
 
+import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+
+import { Observable } from 'rxjs/Observable';
+
+import { AppComponent } from 'app/app.component';
+//
+import { routing } from 'app/app.routing';
+// New Structure
+import { MessagesModule } from 'app/modules/account/messages/messages.module';
+import { AccessDeniedComponent } from 'app/modules/auth0/access-denied/access-denied.component';
+import { Four04Component } from 'app/modules/auth0/four04/four04.component';
+import { FooterComponent } from 'app/modules/general/footer/footer.component';
+import { HeaderComponent } from 'app/modules/general/header/header.component';
+import { SearchBoxComponent } from 'app/modules/general/header/search-box/search-box.component';
+import { AboutBadgesComponent } from 'app/modules/pages/about-badges/about-badges.component';
+import { AboutUsComponent } from 'app/modules/pages/about-us/about-us.component';
+import { ClaimProfileComponent } from 'app/modules/pages/claim-profile/claim-profile.component';
+import { GuidelinesComponent } from 'app/modules/pages/guidelines/guidelines.component';
+import { IntelInnovationComponent } from 'app/modules/pages/intel-innovation/intel-innovation.component';
+import { IntelMakeComponent } from 'app/modules/pages/intel-make/intel-make.component';
+import { MakerCampComponent } from 'app/modules/pages/maker-camp/maker-camp.component';
+import { MakerFaireComponent } from 'app/modules/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from 'app/modules/pages/maker-intel/maker-intel.component';
 // static pages
-import { MakerMovementComponent } from './Modules/pages/maker-movement/maker-movement.component';
-import { IntelMakeComponent } from './Modules/pages/intel-make/intel-make.component';
-import { AboutBadgesComponent } from './Modules/pages/about-badges/about-badges.component';
-import { AboutUsComponent } from './Modules/pages/about-us/about-us.component';
-import { TermsComponent } from './Modules/pages/terms/terms.component';
-import { OtherSitesComponent } from './Modules/pages/other-sites/other-sites.component';
-import { MakezineComponent } from './Modules/pages/makezine/makezine.component';
-import { MakerFaireComponent } from './Modules/pages/maker-faire/maker-faire.component';
-import { MakerIntelComponent } from './Modules/pages/maker-intel/maker-intel.component';
-import { MakerCampComponent } from './Modules/pages/maker-camp/maker-camp.component';
-import { IntelInnovationComponent } from './Modules/pages/intel-innovation/intel-innovation.component';
-import { ClaimProfileComponent } from './Modules/pages/claim-profile/claim-profile.component';
-
+import { MakerMovementComponent } from 'app/modules/pages/maker-movement/maker-movement.component';
 // GA
 // import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
-import { MakerShedComponent } from './Modules/pages/maker-shed/maker-shed.component';
-import { GuidelinesComponent } from './Modules/pages/guidelines/guidelines.component';
-import { WhyPortfolioComponent } from './Modules/pages/why-portfolio/why-portfolio.component';
-import { ShowTellComponent } from './Modules/pages/show-tell/show-tell.component';
-import { CookieModule } from 'ngx-cookie';
-
-
+import { MakerShedComponent } from 'app/modules/pages/maker-shed/maker-shed.component';
+import { MakezineComponent } from 'app/modules/pages/makezine/makezine.component';
+import { OtherSitesComponent } from 'app/modules/pages/other-sites/other-sites.component';
+import { ShowTellComponent } from 'app/modules/pages/show-tell/show-tell.component';
+import { TermsComponent } from 'app/modules/pages/terms/terms.component';
+import { WhyPortfolioComponent } from 'app/modules/pages/why-portfolio/why-portfolio.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -92,10 +86,7 @@ import { CookieModule } from 'ngx-cookie';
     AboutUsComponent,
     ShowTellComponent,
     ClaimProfileComponent,
-  
-  
-  
-  ]
+  ],
 })
 export class AppModule {
   constructor(router: Router, zone: NgZone) {
@@ -103,7 +94,10 @@ export class AppModule {
       return;
     }
 
-    const finished = Observable.combineLatest(router.events, zone.onMicrotaskEmpty);
+    const finished = Observable.combineLatest(
+      router.events,
+      zone.onMicrotaskEmpty,
+    );
 
     const subscription = finished.subscribe(([event, stable]) => {
       if (stable === false) {

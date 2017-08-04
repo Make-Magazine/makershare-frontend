@@ -1,2 +1,2 @@
-export { Settings } from './Settings';
-export { Singleton } from './Singleton';
+export { Settings } from 'app/CORE/classes/Application/Settings';
+export { Singleton } from 'app/CORE/classes/Application/Singleton';
