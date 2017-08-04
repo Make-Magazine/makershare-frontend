@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewService } from './../../../CORE/d7services';
-import { SortBySortingSet, SortingSet } from '../../../CORE/Models/makers/sorting';
+import { SortBySortingSet, SortingSet } from '../../../CORE/models/makers/sorting';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { Singleton } from '../../../CORE';

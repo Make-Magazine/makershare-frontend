@@ -1,11 +1,11 @@
-export interface IChallengeDate {
+export interface IMissionDate {
   value: string;
   timezone?: string;
   timezone_db?: string;
   date_type?: string;
 }
 
-export interface IChallengeData {
+export interface IMissionData {
   title: string;
   cover_image: string;
   sponsor_bar?: string;
@@ -25,12 +25,12 @@ export interface IChallengeData {
   nbProjects?: number;
   nbFollowers?: number;
   challengeDate?: number;
-  challenge_start_date?: IChallengeDate;
-  challenge_end_date?: IChallengeDate;
-  winners_announcement_date?: IChallengeDate;
+  challenge_start_date?: IMissionDate;
+  challenge_end_date?: IMissionDate;
+  winners_announcement_date?: IMissionDate;
 }
 
-export class ChallengeData {
+export class MissionData {
   title = '';
   cover_image = '';
   sponsor_bar = '';

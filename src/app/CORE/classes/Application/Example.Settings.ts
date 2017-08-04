@@ -1,4 +1,4 @@
-import { ISettings } from '../../Models';
+import { ISettings } from '../../models';
 
 export class Settings implements ISettings{
 

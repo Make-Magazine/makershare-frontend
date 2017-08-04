@@ -1,7 +1,5 @@
-const {join, resolve} = require('path');
-
+const path = require('path');
 const loaders = require('./src/webpack/loaders');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -10,27 +8,21 @@ module.exports = {
   },
   output: {
     filename: 'app.js',
-    path: resolve(join(__dirname, 'dist')),
-    publicPath: '/',
+    path: path.resolve(path.join(__dirname, 'dist')),
+    publicPath: '/'
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['.ts', '.js', '.json']
   },
-  externals: [
-    'ng2-file-drop',
-  ],
+  externals: ['ng2-file-drop'],
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      inject: 'body',
-    }),
+      inject: 'body'
+    })
   ],
   module: {
-    rules: [
-      loaders.tsjit,
-      loaders.html,
-      loaders.css
-    ]
+    rules: [loaders.tsjit, loaders.html, loaders.css]
   }
 };

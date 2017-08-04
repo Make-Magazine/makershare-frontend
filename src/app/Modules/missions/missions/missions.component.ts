@@ -7,7 +7,7 @@ import {
   UserService,
   ViewService,
 } from '../../../CORE/d7services';
-import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
+import { MissionData } from '../../../CORE/models/mission/mission-data';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
   templateUrl: './missions.component.html',
 })
 export class MissionsComponent implements OnInit {
-  challenges: ChallengeData[] = [];
+  challenges: MissionData[] = [];
   pageNumber = 0;
   allstatuses = [];
   statusesCount = {};

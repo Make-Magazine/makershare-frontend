@@ -1,4 +1,4 @@
-export interface Intrests {
+export interface IInterests {
   tid?: number,
   name?: string
 }

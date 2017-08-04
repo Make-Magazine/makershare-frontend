@@ -4,7 +4,7 @@ import { ProjectCategory } from '../../CORE';
 import { LoaderService } from '../shared/loader/loader.service';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Singleton } from '../../CORE';
-import { SortBySortingSet, SortingSet } from '../../CORE/Models/makers';
+import { SortBySortingSet, SortingSet } from '../../CORE/models/makers';
 import { Auth } from '../../Modules/auth0/auth.service';
 import { Meta, Title } from '@angular/platform-browser';
 
