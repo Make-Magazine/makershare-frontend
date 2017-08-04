@@ -5,7 +5,7 @@ import { ProfileComponent } from './view/profile.component';
 import { ProjectsComponent } from './view/projects/projects.component';
 import { ProfileRoutingModule } from './profile.routing.module';
 import { FormsModule } from '@angular/forms';
-import { SharedModule }  from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BaseComponent } from './base/base.component';
@@ -36,7 +36,6 @@ import { TruncatePipe } from '../../../Angular/pipes/truncate';
     ProjectCardPortfolioComponent,
     FileManagerComponent,
     TruncatePipe,
-    
-  ]
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}
