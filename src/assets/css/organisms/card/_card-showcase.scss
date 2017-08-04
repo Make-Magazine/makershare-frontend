@@ -9,6 +9,19 @@
 
     &.full {
       &.single-view {
+        .card-info {
+          width: 100%;
+          margin-left: 0;
+          .info-top {
+            position: relative;
+            float: left;
+          }
+          .info-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+        }
         .card-image {
           padding-bottom: 0;
         }
@@ -28,7 +41,7 @@
     }
 
     .social-stat-group {
-      width: calc(66% - 2*1.6rem);
+      width: calc(66% - 2 * 1.6rem);
       .stats-list {
         div {
           float: left;
