@@ -1,5 +1,5 @@
-import { FileEntity } from '../Drupal';
-import { Node } from '../Drupal';
+import { FileEntity } from '../drupal';
+import { Node } from '../drupal';
 
 export interface FileEntityManage extends FileEntity{
   url:URL;

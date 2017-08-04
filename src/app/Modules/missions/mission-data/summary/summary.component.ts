@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISorting } from '../../../../CORE/Models/challenge/sorting';
+import { ISorting } from '../../../../CORE/models/mission/sorting';
 import { Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 

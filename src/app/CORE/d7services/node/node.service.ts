@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { MainService } from '../main/main.service';
-import { Node } from '../../Models';
+import { Node } from '../../models';
 
 @Injectable()
 export class NodeService extends MainService{

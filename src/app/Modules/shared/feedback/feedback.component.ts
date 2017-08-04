@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaxonomyService,UserService,NodeService,FileService } from '../../../CORE/d7services';
-import { TaxonomyTerm } from '../../../CORE/Models/Drupal/taxonomy-term';
+import { TaxonomyTerm } from '../../../CORE/models/drupal/taxonomy-term';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
 import { FileEntity, NodeHelper } from '../../../CORE';
