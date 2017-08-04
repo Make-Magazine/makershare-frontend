@@ -3,7 +3,7 @@
      *ngIf="showcaseCard">
   <div class="card-image"
        *ngIf="!singleView"
-       [style.background-image]="'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'"></div>
+       [ngStyle]="{'background-image':'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'}"></div>
 
   <div class="card-info">
     <div class="info-top">
@@ -42,30 +42,38 @@
           </div>
         </div>
       </div>
-      <ul class="social-stat-group d-flex">
-        <!-- Not a single view -->
-        <li>
+
+      <ul class="social-stat-group">
+        <li class="social-stat">
           <button class="button"
                   *ngIf="!singleView"
                   (click)="showSingleShowcase(showcaseCard.path)">See Showcase
           </button>
         </li>
 
-        <li class="showcase-date w-100"
+        <li class="social-stat"
             *ngIf="showcaseCard.last_updated && singleView">
           <span class="update-date">Last updated: {{showcaseCard.last_updated}}</span>
         </li>
 
-        <li class="stats-list ml-4 d-flex flex-row"
-            *ngIf="showcaseCard.nid">
+        <li class="social-stat">
           <app-likes [likesCount]="showcaseCard.likes_count"
                      [nodeNid]="showcaseCard.nid"
                      [userId]="userId"
                      (countNumber)="likesCounter($event)"></app-likes>
+        </li>
+
+        <li class="social-stat">
           <app-views [viewsCount]="showcaseCard.views_count"></app-views>
+        </li>
+
+        <li class="social-stat">
           <app-bookmark *ngIf="singleView"
                         [nodeNid]="showcaseCard.nid"
                         [nodeType]="'showcase'"></app-bookmark>
+        </li>
+
+        <li class="social-stat fl-r">
           <div class="profile-share"
                *ngIf="singleView">
             <app-btn-share [showLabel]="false"

@@ -1,27 +1,30 @@
 .social-stat {
-	i, span, .icon, .info {
-		display: inline-block;
-		font-size: 1.2rem;
-	}
-	span.icon {
-		font-weight: bold;
-		color: $dark-grey;
-	}
-	i.icon {
-		width: 30px;
-		height: 40px;
-		color: $dark-grey;
-	}
+  span {
+    line-height: 3.7rem;
+  }
+  i, span, .icon, .info {
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  span.icon {
+    font-weight: bold;
+    color: $dark-grey;
+  }
+  i.icon {
+    width: 30px;
+    height: 40px;
+    color: $dark-grey;
+  }
 
-	.info {
-		color: $medium-grey;
-	}
+  .info {
+    color: $medium-grey;
+  }
 
-	&.right {
-		float: right;
-	}
+  &.right {
+    float: right;
+  }
 
-	i.is-liked {
-		color: $red;
-	}
+  i.is-liked {
+    color: $red;
+  }
 }
