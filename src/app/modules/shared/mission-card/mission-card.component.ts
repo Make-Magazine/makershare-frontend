@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, ViewService } from '../../../CORE/d7services';
-import { MissionData } from '../../../CORE/models/mission/mission-data';
-import { Auth } from '../../auth0/auth.service';
+import { UserService, ViewService } from 'app/CORE/d7services';
+import { MissionData } from 'app/CORE/models/mission/mission-data';
+import { Auth } from 'app/modules/auth0/auth.service';
 
 @Component({
   selector: 'app-mission-card',

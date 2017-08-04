@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { SolrService } from '../../../CORE/d7services/solr/solr.service';
-import { Auth } from '../auth.service';
+import { SolrService } from 'app/CORE/d7services/solr/solr.service';
+import { Auth } from 'app/modules/auth0/auth.service';
 
 @Component({
   selector: 'app-four04',

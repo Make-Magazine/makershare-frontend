@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, FlagService } from '../../../CORE/d7services';
-import { Auth } from '../../auth0/auth.service';
+import { ViewService, FlagService } from 'app/CORE/d7services';
+import { Auth } from 'app/modules/auth0/auth.service';
 
 @Component({
   selector: 'app-showcase-gen-card',

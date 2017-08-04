@@ -4,19 +4,19 @@ import {
   FlagService,
   MainService,
   NodeService,
-} from '../../../CORE/d7services';
+} from 'app/CORE/d7services';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { IMissionProject } from '../../../CORE/models/mission/mission-project';
+import { IMissionProject } from 'app/CORE/models/mission/mission-project';
 import {
   IMissionDate,
   IMissionData,
-} from '../../../CORE/models/mission/mission-data';
+} from 'app/CORE/models/mission/mission-data';
 import {
   NotificationBarService,
   NotificationType,
 } from 'ngx-notification-bar/release';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';

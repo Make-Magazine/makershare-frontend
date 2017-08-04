@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { FlagService, UserService } from '../../../CORE/d7services';
+import { FlagService, UserService } from 'app/CORE/d7services';
 
 @Component({
   selector: 'app-likes',

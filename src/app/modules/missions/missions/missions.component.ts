@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Singleton } from '../../../CORE';
+import { Singleton } from 'app/CORE';
 import {
   FlagService,
   UserService,
   ViewService,
-} from '../../../CORE/d7services';
-import { MissionData } from '../../../CORE/models/mission/mission-data';
-import { LoaderService } from '../../shared/loader/loader.service';
+} from 'app/CORE/d7services';
+import { MissionData } from 'app/CORE/models/mission/mission-data';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 
 @Component({
   selector: 'app-missions',

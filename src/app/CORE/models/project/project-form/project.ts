@@ -1,4 +1,3 @@
-import * as FieldCollectionItem from 'app/CORE/models/project/project-form/field-collection-item';
 import {
   date_time,
   field_date,
@@ -9,7 +8,8 @@ import {
   field_URL,
   FieldFileReference,
   Node,
-} from '../../';
+} from 'app/CORE/models';
+import * as FieldCollectionItem from 'app/CORE/models/project/project-form/field-collection-item';
 
 export interface ProjectForm extends Node {
   field_story: { und: field_text[] };

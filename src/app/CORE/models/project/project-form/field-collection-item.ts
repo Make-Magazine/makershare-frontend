@@ -1,4 +1,4 @@
-import { FieldFileReference } from '../../';
+import { FieldFileReference } from 'app/CORE/models';
 
 export interface IFieldCollectionItemTool {
   field_tool_name: { und: [FieldCollectionItemReferenceEntity] };
@@ -32,7 +32,8 @@ export interface IFieldCollectionItemReferenceRow {
   revision_id: number;
 }
 
-export class FieldCollectionItemReferenceRow implements IFieldCollectionItemReferenceRow {
+export class FieldCollectionItemReferenceRow
+  implements IFieldCollectionItemReferenceRow {
   value: number;
   revision_id: number;
 }
@@ -85,8 +86,7 @@ export class FieldCollectionItemReferenceUrl
   }*/
 }
 
-export class FieldCollectionItemMember
-  implements IFieldCollectionItemMember {
+export class FieldCollectionItemMember implements IFieldCollectionItemMember {
   field_team_member;
   field_membership_role;
   field_anonymous_member_name?;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService, UserService, MainService } from '../../../../../CORE/d7services';
+import { ViewService, UserService, MainService } from 'app/CORE/d7services';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({

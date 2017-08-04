@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PmService } from '../../../../CORE/d7services'
-import { LoaderService } from '../../../shared/loader/loader.service';
+import { PmService } from 'app/CORE/d7services'
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { Location } from '@angular/common';
 
 @Component({

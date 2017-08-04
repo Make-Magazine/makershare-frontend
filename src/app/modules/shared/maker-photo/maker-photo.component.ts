@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../CORE/d7services';
+import { ViewService } from 'app/CORE/d7services';
 
 @Component({
   selector: 'app-maker-photo',

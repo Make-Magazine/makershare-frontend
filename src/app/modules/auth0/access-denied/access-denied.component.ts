@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../auth.service';
+import { Auth } from 'app/modules/auth0/auth.service';
 
 @Component({
   selector: 'app-access-denied',
