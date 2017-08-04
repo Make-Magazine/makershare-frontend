@@ -2,102 +2,86 @@
      [ngClass]="{'single-view': singleView}"
      *ngIf="challenge">
   <div class="card-image"
-       *ngIf="!singleView"
        [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}"></div>
 
-  <div class="card-info {{singleView ? 'd-flex' : ''}}">
+  <div class="card-info">
     <div class="info-top">
-      <div class="image-container"
-           *ngIf="singleView">
-        <img [src]="challenge.cover_image || './assets/images/placeholder.png'"
-             alt=""
-             class="img-responsive">
-        <img src="{{challenge.sponsor_bar}}"
-             alt=""
-             *ngIf="!challenge.sponsor_bar"
-             class="sponsor_bar img-responsive">
-        <div class="flag mission"
-             *ngIf="singleView">mission
-        </div>
-      </div>
-
-      <div *ngIf="singleView"
-           class="m-3 btns-container">
-        <button class="button button-cta"
-                (click)="enterToChallengeProject(challenge.nid)">Participate
-        </button>
-        <app-btn-follow [nodeNid]="challenge.nid"
-                        (countNumber)="followersCounter($event)"></app-btn-follow>
-      </div>
-
-      <div *ngIf="!singleView">
-        <div class="card-image alt"
-             [ngStyle]="{'background-image': 'url(' + challenge.cover_image + ')'}"></div>
-        <div class="flag mission">mission</div>
-      </div>
+      <div class="card-image alt"
+           [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}"></div>
+      <div class="flag mission">mission</div>
     </div>
 
-    <div class="info-bottom {{singleView ? 'd-flex' : ''}}">
+    <div class="info-bottom {{challenge.sponsored_by ? '' : '-no-sponsor'}}">
       <span class="card-mission-sponsor"
             *ngIf="challenge.sponsored_by">Sponsored by: {{challenge.sponsored_by}}
-        <div>
-          <app-feature *ngIf="Manager && challengeNid" [id]="challengeNid" [type]="'node'"
-                       (Featured)="emitFeatured()"></app-feature>
-        </div>
       </span>
 
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
-          <h3 class="card-title">{{challenge.title}}</h3>
+          <span class="card-title">{{challenge.title}}</span>
 
-          <div class="card-description">
-            <p [innerHTML]="singleView ? challenge.body : challenge.summary_trim"></p>
-          </div>
+          <p class="card-description-long"
+             [innerHTML]="singleView ? challenge.body : challenge.summary_trim">
+          </p>
         </div>
       </div>
-      <div class="social-stat-group {{singleView ? 'd-flex' : ''}}">
-        <div class="{{singleView ? 'social-stat-group-section' : 'd-flex'}}">
 
-          <div class="social-stat" *ngIf="!singleView">
-            <button class="button button-cta"
-                    (click)="ShowChallengeDetails(challenge.path)">Participate
-            </button>
-          </div>
+      <ul class="social-stat-group">
 
-          <div class="social-stat"
-               *ngIf="challenge.nbProjects > 0 && !singleView">
-            <i class="fa fa-dot-circle-o"></i>
-            <span class="info">{{challenge.nbProjects}}</span>
-          </div>
+        <li class="social-stat">
+          <button class="button-cta"
+                  *ngIf="!singleView"
+                  (click)="ShowChallengeDetails(challenge.path)">Participate
+          </button>
 
-          <div class="social-stat">
-            <div class="social-stat-line">
-              <span>{{challenge.nbProjects > 0 ? challenge.nbProjects : 'No'}} {{challenge.nbProjects === 1 ? 'Entry' : 'Entries'}}</span>
-              <span>{{challenge.nbFollowers > 0 ? challenge.nbFollowers : 'No'}} {{challenge.nbFollowers === 1 ? 'Follower' : 'Followers'}}</span>
-            </div>
-            <div class="social-stat-line">
-              <span class="challenge-end-date"
-                    *ngIf="challenge.status_id == 375"> Submissions close: {{challenge.challenge_end_date.value}}</span>
-              <span class="challenge-end-date"
-                    *ngIf="challenge.status_id == 1107"> In review. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
-              <span class="challenge-end-date"
-                    *ngIf="challenge.status_id == 1108"> Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
-              <span class="challenge-end-date"
-                    *ngIf="challenge.status_id == 376 && challenge.challengeDate < 0">Closed for submissions. Winners announced: {{challenge.winners_announcement_date.value}}</span>
-              <span class="challenge-end-date"
-                    *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0">Closed for submissions. Winners to be announced: {{challenge.winners_announcement_date.value}}</span>
-            </div>
-          </div>
+          <button class="button-cta"
+                  *ngIf="singleView"
+                  (click)="enterToChallengeProject(challenge.nid)">Participate
+          </button>
+        </li>
 
-          <div class="social-stat" *ngIf="singleView">
-            <app-btn-share *ngIf="challenge.title"
-                           [showLabel]="false"
-                           [PageTitle]="challenge.title"
-                           [PageDescription]="challenge.body"
-                           [PageImage]="challenge.cover_image"></app-btn-share>
-          </div>
-        </div>
-      </div>
+        <li class="social-stat"
+            *ngIf="singleView">
+          <app-btn-follow [nodeNid]="challenge.nid"
+                          (countNumber)="followersCounter($event)"></app-btn-follow>
+        </li>
+
+        <!-- Projects -->
+        <li class="social-stat">
+          <i class="fa fa-dot-circle-o"></i>
+          <span class="info">{{challenge.nbProjects}}</span>
+        </li>
+
+        <!-- Followers -->
+        <li class="social-stat">
+          <i class="fa fa-users"></i>
+          <span class="info">{{challenge.nbFollowers}}</span>
+        </li>
+
+        <!-- Date -->
+        <li class="social-stat">
+          <i class="fa fa-calendar-times-o"></i>
+          <span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 375"><!-- Submissions close: -->{{challenge.challenge_end_date.value}}</span>
+          <span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 1107"><!-- In review. Winners to be announced: -->{{challenge.winners_announcement_date.value}}</span>
+          <span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 1108"><!-- Closed for submissions. Winners announced: -->{{challenge.winners_announcement_date.value}}</span>
+          <span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 376 && challenge.challengeDate < 0"><!--Closed for submissions. Winners announced: -->{{challenge.winners_announcement_date.value}}</span>
+          <span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0"><!--Closed for submissions. Winners to be announced: -->{{challenge.winners_announcement_date.value}}</span>
+        </li>
+
+        <li class="social-stat fl-r"
+            *ngIf="singleView">
+          <app-btn-share *ngIf="challenge.title"
+                         [showLabel]="false"
+                         [PageTitle]="challenge.title"
+                         [PageDescription]="challenge.body"
+                         [PageImage]="challenge.cover_image"></app-btn-share>
+        </li>
+      </ul>
 
       <div *ngIf="submittedBefore"
            class="mb-3 mt-3">

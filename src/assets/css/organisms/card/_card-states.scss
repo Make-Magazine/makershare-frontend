@@ -28,6 +28,9 @@
       position: relative;
       padding-top: 5rem;
       width: 100%;
+      &.-no-sponsor {
+        padding: 2rem 1.5rem;
+      }
     }
     .social-stat-group {
       margin-top: 2.5rem;
@@ -51,12 +54,6 @@
       left: 1rem;
       right: initial;
       top: initial;
-    }
-    .social-stat-group {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      width: calc(100% - 2rem);
     }
     .card-description-long, .card-description-long p {
       font-size: 1.5rem;
@@ -121,7 +118,6 @@
   // ///////////////////
   // full
   &.full {
-    padding-top: 0;
     .info-top {
       height: 100%;
       width: 33%;
@@ -162,18 +158,11 @@
     &.single-view {
       .info-top {
         height: auto;
-        position: relative;
-        float: left;
       }
       .card-info {
-        margin-left: 0;
-        width: auto;
+        width: 100%;
         padding-bottom: 0;
         height: auto;
-      }
-      .info-bottom {
-        float: left;
-        width: 66%;
       }
       .social-stat-group {
         padding-top: 1.6rem;
@@ -187,16 +176,11 @@
   // ///////////////////
   // missions - wide
   &.mission {
-    .card-title {
-      text-align: left;
-      color: $white;
-    }
     &.wide {
       padding-top: 0;
       margin-bottom: 1rem;
       .info-top {
         width: 45%;
-        height: 100%;
         .sponsor_bar {
           position: absolute;
           width: 60px !important;
@@ -210,7 +194,7 @@
       .card-info {
         margin-left: 45%;
         width: 55%;
-        padding-bottom: 54%;
+        padding-bottom: 56.25%;
         height: 0;
       }
       .info-bottom {
@@ -223,10 +207,6 @@
         position: absolute;
         bottom: 1.5rem;
         left: calc(45% + 3rem);
-
-        .social-stat {
-          float: left;
-        }
 
         .social-stat-group-section {
           width: 100%;
@@ -266,10 +246,10 @@
       .social-stat-group {
         position: absolute;
         bottom: 1.5rem;
-        //left: calc(45% + 3rem);
 
-        .social-stat {
-          float: left;
+        .card-description-long {
+          font-size: 1.44rem;
+          line-height: 2.4rem;
         }
 
         .social-stat-group-section {
@@ -292,27 +272,14 @@
         }
       }
       &.single-view {
-        .info-top {
-          width: 33%;
-          height: auto;
-          position: relative;
-          float: left;
-          padding-bottom: 0;
-          .btns-container {
-            text-align: center;
-          }
-        }
         .card-info {
-          margin-left: 0;
-          width: auto;
+          width: 100%;
           padding-bottom: 0;
           height: auto;
         }
         .info-bottom {
-          position: relative;
           float: left;
           width: 66%;
-          padding: 1.5rem;
           justify-content: space-between;
           flex-direction: column;
         }
@@ -342,9 +309,11 @@
     .info-bottom {
       position: relative;
       padding-top: 5rem;
+      &.-no-sponsor {
+        padding: 2rem 1.5rem;
+      }
     }
     .social-stat-group {
-      bottom: initial;
       margin-top: 2.5rem;
     }
   }

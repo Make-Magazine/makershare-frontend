@@ -4,8 +4,15 @@
       color: $light-grey;
     }
   }
+
   .social-stat, li {
     display: inline-block;
     margin-right: 1rem;
+
+    &.fl-r {
+      float: right;
+      margin-right: 0;
+      margin-left: 1rem;
+    }
   }
 }
