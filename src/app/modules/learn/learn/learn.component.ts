@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from '../../../CORE/d7services';
+import { ViewService } from 'app/CORE/d7services';
 import { Router } from '@angular/router';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from '../../../CORE';
+import { Singleton } from 'app/CORE';
 
 
 @Component({

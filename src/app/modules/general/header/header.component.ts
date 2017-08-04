@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../../CORE/d7services';
+import { UserService } from 'app/CORE/d7services';
 import { ActivatedRoute } from "@angular/router";
-import { Auth } from '../..//auth0/auth.service';
-import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
-import { Singleton } from '../../../CORE';
+import { Auth } from 'app/modules/auth0/auth.service';
+import { ProfilePictureService } from 'app/modules/shared/profile-picture/profile-picture.service';
+import { Singleton } from 'app/CORE';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 

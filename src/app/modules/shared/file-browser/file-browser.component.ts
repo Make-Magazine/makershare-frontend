@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ViewService } from '../../../CORE/d7services';
-import { FileEntityManage, FileManageService } from '../../../CORE/models';
+import { ViewService } from 'app/CORE/d7services';
+import { FileEntityManage, FileManageService } from 'app/CORE/models';
 
 @Component({
   selector: 'app-file-browser',

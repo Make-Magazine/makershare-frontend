@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { PmService, UserService } from '../../../../CORE/d7services';
+// import { PmService, UserService } from 'app/CORE/d7services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-// import { LoaderService } from '../../../shared/loader/loader.service';
+// import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Reply } from 'app/modules/account/messages/view/reply';
 import { PmService } from 'app/CORE/d7services/pm/pm.service';

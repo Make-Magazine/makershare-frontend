@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService } from '../../../../CORE/d7services';
+import { ViewService } from 'app/CORE/d7services';
 import { FormGroup } from '@angular/forms';
-import { IComment } from '../../../../CORE/models/mission/comment';
+import { IComment } from 'app/CORE/models/mission/comment';
 import { Router} from '@angular/router';
 
 @Component({

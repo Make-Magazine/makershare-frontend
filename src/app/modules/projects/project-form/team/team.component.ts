@@ -6,8 +6,8 @@ import {
   NodeHelper,
   ProjectForm,
   UserInvitations,
-} from '../../../../CORE';
-import { ViewService } from '../../../../CORE/d7services';
+} from 'app/CORE';
+import { ViewService } from 'app/CORE/d7services';
 
 @Component({
   selector: 'app-project-form-team',

@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MainService } from '../main/main.service';
-import { Observable } from "rxjs";
+import { MainService } from 'app/CORE/d7services/main/main.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class StatisticsService {
-
-  constructor(
-    private mainService: MainService,
-  ) { }
-
+  constructor(private mainService: MainService) {}
 
   view_record(entityId: number, entityType: string): Observable<any> {
     let body = {
@@ -28,10 +24,11 @@ export class StatisticsService {
 
   notificationGetNewCount(uid: number): Observable<any> {
     let body = {
-      uid: uid
+      uid: uid,
     };
-    return this.mainService.custompost('maker_counting/notification_count', body);
+    return this.mainService.custompost(
+      'maker_counting/notification_count',
+      body,
+    );
   }
-
-
 }

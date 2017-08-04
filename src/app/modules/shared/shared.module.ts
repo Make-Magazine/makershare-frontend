@@ -54,7 +54,7 @@ import { ProjectSearchCardComponent } from 'app/modules/shared/search-cards/proj
 import { ShowcaeSearchCardComponent } from 'app/modules/shared/search-cards/showcase-search-card/showcase-search-card.component';
 import { ShowcaseCardComponent } from 'app/modules/shared/showcase-card/showcase-card.component';
 import { ShowcaseGeneralCardComponent } from 'app/modules/shared/showcase-general-card/showcase-general-card.component';
-import { SocialStats } from 'app/modules/shared/social-stats/social-stats.component';
+import { SocialStatsComponent } from 'app/modules/shared/social-stats/social-stats.component';
 import { UserCardMsgsComponent } from 'app/modules/shared/user-card-msgs/user-card-msgs.component';
 import { UserCardSmallComponent } from 'app/modules/shared/user-card-small/user-card-small.component';
 import { UserCardComponent } from 'app/modules/shared/user-card/user-card.component';
@@ -101,7 +101,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons';
     CardBadges,
     Filters,
     MakerPhoto,
-    SocialStats,
+    SocialStatsComponent,
     MakerSearchCardComponent,
     MessageModalComponent,
     ProjectSearchCardComponent,
@@ -156,7 +156,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons';
     Filters,
     MakerSearchCardComponent,
     ProjectSearchCardComponent,
-    SocialStats,
+    SocialStatsComponent,
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,

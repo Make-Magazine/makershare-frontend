@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../../auth0/auth.service';
-import { InfoCard } from '../../../CORE/models/cards/info-card';
+import { Auth } from 'app/modules/auth0/auth.service';
+import { InfoCard } from 'app/CORE/models/cards/info-card';
 
 @Component({
   selector: 'app-onboarding',

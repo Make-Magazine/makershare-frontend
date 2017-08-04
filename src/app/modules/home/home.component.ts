@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../auth0/auth.service';
-import { LoaderService } from '../shared/loader/loader.service';
-import { ViewService } from '../../CORE/d7services';
+import { Auth } from 'app/modules/auth0/auth.service';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { ViewService } from 'app/CORE/d7services';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from '../../CORE';
+import { Singleton } from 'app/CORE';
 import {
   SimpleOverviewEntity,
   EntityType,
   EntityGridSize,
-} from '../../CORE/models/cards';
-
+} from 'app/CORE/models/cards';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-
   homeCards = [];
 
   constructor(
@@ -30,12 +28,14 @@ export class HomeComponent implements OnInit {
     meta.addTags([
       {
         name: 'og:description',
-        content: 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.',
+        content:
+          'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.',
       },
       {
         name: 'og:image',
         content:
-        Singleton.Settings.AppURL + 'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+          Singleton.Settings.AppURL +
+          'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);
   }
@@ -54,9 +54,7 @@ export class HomeComponent implements OnInit {
       this.loaderService.display(true);
     }
 
-    this.viewService
-      .getView('maker_homepage_api')
-      .subscribe(
+    this.viewService.getView('maker_homepage_api').subscribe(
       data => {
         // Keep track of columns used on line
         let usedColumnsOnLine: number = 0;

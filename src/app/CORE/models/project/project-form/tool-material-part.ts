@@ -1,11 +1,11 @@
-import { Node } from '../../';
+import { Node } from 'app/CORE/models';
 
-export interface ToolMaterialPart extends Node{
-  
+export interface IToolMaterialPart extends Node {
+  type: string;
 }
 
-export class ToolMaterialPart extends Node implements ToolMaterialPart{
-  constructor(ControlName:string){
+export class ToolMaterialPart extends Node implements IToolMaterialPart {
+  constructor(ControlName: string) {
     super();
     this.type = ControlName;
   }

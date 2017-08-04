@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ShowcaseCard } from '../../../CORE/models';
-import { Auth } from '../../auth0/auth.service';
+import { ShowcaseCard } from 'app/CORE/models';
+import { Auth } from 'app/modules/auth0/auth.service';
 
 @Component({
   selector: 'app-showcase-card',

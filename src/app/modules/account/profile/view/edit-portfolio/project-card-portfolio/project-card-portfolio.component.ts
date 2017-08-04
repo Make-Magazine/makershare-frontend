@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProjectCardPortfolio } from '../../../../../../CORE';
-import { NodeService, ViewService } from '../../../../../../CORE/d7services';
+import { ProjectCardPortfolio } from 'app/CORE';
+import { NodeService, ViewService } from 'app/CORE/d7services';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { UserService } from '../../../../../../CORE/d7services/user/user.service';
+import { UserService } from 'app/CORE/d7services/user/user.service';
 
 @Component({
   selector: 'project-card-portfolio',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
-import { SolrService } from '../../../CORE/d7services';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { SolrService } from 'app/CORE/d7services';
+import { LoaderService } from 'app/modules/shared/loader/loader.service';
 
 @Component({
   selector: 'app-search-result',
@@ -26,7 +26,7 @@ export class SearchResultComponent implements OnInit {
   workshopsCount = 0;
   usersCount = 0;
 
-  //Query Counts
+  // Query Counts
   projectsCountQuery = 6;
   challengesCountQuery = 3;
   showcasesCountQuery = 3;
@@ -42,7 +42,7 @@ export class SearchResultComponent implements OnInit {
     challenges: false,
     learning: false,
     makers: false,
-  }
+  };
   selectedAll = true;
 
   constructor(
@@ -50,67 +50,64 @@ export class SearchResultComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
-  ) { }
-
+  ) {}
 
   search = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
-      .do(() => this.searchFailed = false)
-      .switchMap((query) => {
+      .do(() => (this.searchFailed = false))
+      .switchMap(query => {
         this.query = query;
         if (query.length > 1) {
-          return this.solrService.autocomplete(query)
-            .map(result => {
-              var newResult = [];
-              result.response.docs.forEach(element => {
-                if (element.tm_title && element.tm_title.length > 0) {
-                  newResult.push(element.tm_title[0]);
-                } else if (element.tm_name && element.tm_name.length > 0) {
-                  if (element.tm_field_first_name) {
-                    newResult.push(element.tm_field_first_name[0] + " " + element.tm_field_last_name[0]);
-                  } else {
-                    newResult.push(element.tm_name[0]);
-                  }
-
+          return this.solrService.autocomplete(query).map(result => {
+            var newResult = [];
+            result.response.docs.forEach(element => {
+              if (element.tm_title && element.tm_title.length > 0) {
+                newResult.push(element.tm_title[0]);
+              } else if (element.tm_name && element.tm_name.length > 0) {
+                if (element.tm_field_first_name) {
+                  newResult.push(
+                    element.tm_field_first_name[0] +
+                      ' ' +
+                      element.tm_field_last_name[0],
+                  );
+                } else {
+                  newResult.push(element.tm_name[0]);
                 }
+              }
+            });
 
-              });
-
-              return newResult;
-            })
+            return newResult;
+          });
         }
         return [];
-      }
-      )
+      });
   };
 
   ngOnInit() {
     this.query = '';
-    this.urlQuery = this.route.queryParams.map(params => params['query'] || null);
+    this.urlQuery = this.route.queryParams.map(
+      params => params['query'] || null,
+    );
     this.urlQuery.subscribe(query => {
       if (query && query.length > 0) {
         this.query = decodeURIComponent(query);
         this.searchQuery();
       }
-
     });
-
-
   }
 
   itemSelected(item) {
     this.searchURL(item);
   }
 
-
   searchURL(item) {
     if (item.length > 0) {
       this.query = item;
     }
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'query': encodeURIComponent(this.query) },
+    const navigationExtras: NavigationExtras = {
+      queryParams: { query: encodeURIComponent(this.query) },
     };
     this.router.navigate(['/search'], navigationExtras);
   }
@@ -128,65 +125,86 @@ export class SearchResultComponent implements OnInit {
 
     this.searchTerm = this.query;
     if (this.filter.projects || this.selectedAll == true) {
-      this.solrService.selectProjects(this.query, this.projectsCountQuery).subscribe(result => {
-        this.projects = [];
-        this.projects = result.response.docs;
-        this.projectsCount = result.response.numFound;
-        this.loaderService.display(false);
-      }, err => {
-        console.log(err);
-      });
+      this.solrService
+        .selectProjects(this.query, this.projectsCountQuery)
+        .subscribe(
+          result => {
+            this.projects = [];
+            this.projects = result.response.docs;
+            this.projectsCount = result.response.numFound;
+            this.loaderService.display(false);
+          },
+          err => {
+            console.log(err);
+          },
+        );
     }
 
     // challenges
     if (this.filter.challenges || this.selectedAll == true) {
-
-      this.solrService.selectChallenges(this.query, this.challengesCountQuery).subscribe(result => {
-        this.challenges = [];
-        this.challenges = result.response.docs;
-        this.challengesCount = result.response.numFound;
-        this.loaderService.display(false);
-      }, err => {
-        console.log(err);
-      });
+      this.solrService
+        .selectChallenges(this.query, this.challengesCountQuery)
+        .subscribe(
+          result => {
+            this.challenges = [];
+            this.challenges = result.response.docs;
+            this.challengesCount = result.response.numFound;
+            this.loaderService.display(false);
+          },
+          err => {
+            console.log(err);
+          },
+        );
     }
 
     // showcases
     if (this.filter.showcases || this.selectedAll == true) {
-      this.solrService.selectShowcases(this.query, this.showcasesCountQuery).subscribe(result => {
-        this.showcases = [];
-        this.showcases = result.response.docs;
-        this.showcasesCount = result.response.numFound;
-        this.loaderService.display(false);
-      }, err => {
-        console.log(err);
-      });
+      this.solrService
+        .selectShowcases(this.query, this.showcasesCountQuery)
+        .subscribe(
+          result => {
+            this.showcases = [];
+            this.showcases = result.response.docs;
+            this.showcasesCount = result.response.numFound;
+            this.loaderService.display(false);
+          },
+          err => {
+            console.log(err);
+          },
+        );
     }
 
     // workshops
     if (this.filter.learning || this.selectedAll == true) {
-      this.solrService.selectworkshops(this.query, this.workshopsCountQuery).subscribe(result => {
-        this.workshops = [];
-        this.workshops = result.response.docs;
-        this.workshopsCount = result.response.numFound;
-        this.loaderService.display(false);
-      }, err => {
-        console.log(err);
-      });
+      this.solrService
+        .selectworkshops(this.query, this.workshopsCountQuery)
+        .subscribe(
+          result => {
+            this.workshops = [];
+            this.workshops = result.response.docs;
+            this.workshopsCount = result.response.numFound;
+            this.loaderService.display(false);
+          },
+          err => {
+            console.log(err);
+          },
+        );
     }
 
     // users
     if (this.filter.makers || this.selectedAll == true) {
-      this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(result => {
-        this.users = [];
-        this.users = result.response.docs;
-        this.usersCount = result.response.numFound;
-        this.loaderService.display(false);
-      }, err => {
-        console.log(err);
-      });
+      this.solrService.selectUsers(this.query, this.usersCountQuery).subscribe(
+        result => {
+          this.users = [];
+          this.users = result.response.docs;
+          this.usersCount = result.response.numFound;
+          this.loaderService.display(false);
+        },
+        err => {
+          console.log(err);
+        },
+      );
     }
-
   }
 
   CheckFilter() {
@@ -206,7 +224,13 @@ export class SearchResultComponent implements OnInit {
     if (this.filter.makers == true) {
       this.selectedAll = false;
     }
-    if (!this.filter.projects && !this.filter.showcases && !this.filter.learning && !this.filter.challenges && !this.filter.makers) {
+    if (
+      !this.filter.projects &&
+      !this.filter.showcases &&
+      !this.filter.learning &&
+      !this.filter.challenges &&
+      !this.filter.makers
+    ) {
       this.selectedAll = true;
     }
     if (this.query.length > 0) {
@@ -218,8 +242,8 @@ export class SearchResultComponent implements OnInit {
 
   searchTypeNavigate(type: string) {
     // append/update the selected type in the URL to filter the result
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'query': encodeURIComponent(this.query) },
+    const navigationExtras: NavigationExtras = {
+      queryParams: { query: encodeURIComponent(this.query) },
     };
     this.router.navigate(['/search', type], navigationExtras);
   }
@@ -234,16 +258,11 @@ export class SearchResultComponent implements OnInit {
   }
 
   ShowEmptyResult() {
-    // return boolean value, true if the global arrays are empty
-    if (this.projects.length == 0 &&
+    return this.projects.length == 0 &&
       this.showcases.length == 0 &&
       this.challenges.length == 0 &&
       this.workshops.length == 0 &&
-      this.users.length == 0) {
-      return true;
-    } else {
-      return false;
-    }
+      this.users.length == 0;
   }
 
   clearQuery() {

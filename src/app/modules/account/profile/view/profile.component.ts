@@ -6,8 +6,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
-import { FileEntity, FileEntityManage, NodeHelper } from '../../../../CORE';
+import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
+import { FileEntity, FileEntityManage, NodeHelper } from 'app/CORE';
 import {
   FileService,
   MainService,
@@ -15,11 +15,11 @@ import {
   StatisticsService,
   UserService,
   ViewService,
-} from '../../../../CORE/d7services';
-import { ProfileSocial } from '../../../../CORE/models/profile/profile-social';
-import { UserProfile } from '../../../../CORE/models/profile/user-profile';
-import { Auth } from '../../..//auth0/auth.service';
-import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
+} from 'app/CORE/d7services';
+import { ProfileSocial } from 'app/CORE/models/profile/profile-social';
+import { UserProfile } from 'app/CORE/models/profile/user-profile';
+import { Auth } from 'app/modules/auth0/auth.service';
+import { ProfilePictureService } from 'app/modules/shared/profile-picture/profile-picture.service';
 
 @Component({
   selector: 'app-profile',
@@ -474,7 +474,9 @@ export class ProfileComponent implements OnInit {
 
   SaveInfo(closebtn: HTMLButtonElement) {
     if (this.ProfileInfo.address.governorate == '_none') {
-      this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails['administrative_areas'][0].value;
+      this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails[
+        'administrative_areas'
+      ][0].value;
     }
     if (this.FormGroupSocial.valid) {
       this.ProfileInfo.field_social_accounts = this.FormGroupSocial.value;

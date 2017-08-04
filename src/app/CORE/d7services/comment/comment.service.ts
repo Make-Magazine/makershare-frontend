@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { MainService } from '../main/main.service';
+import { MainService } from 'app/CORE/d7services/main/main.service';
 
 @Injectable()
 export class CommentService {

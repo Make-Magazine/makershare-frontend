@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
 import {
   FieldCollectionItemMaterial,
   FieldCollectionItemPart,
@@ -13,12 +13,8 @@ import {
   ProjectForm,
   TaxonomyTerm,
   ToolMaterialPart,
-} from '../../../../CORE';
-import {
-  NodeService,
-  TaxonomyService,
-  ViewService,
-} from '../../../../CORE/d7services';
+} from 'app/CORE';
+import { NodeService, TaxonomyService, ViewService } from 'app/CORE/d7services';
 
 @Component({
   selector: 'app-project-form-how-to',
@@ -26,7 +22,6 @@ import {
   styles: ['.tools textarea {max-width:100%;resize:none;}'],
 })
 export class HowToComponent implements OnInit {
-
   /**
    * Output will return the value to the parent component
    * this will match the same name of the event inside the parent component html tag for this child component

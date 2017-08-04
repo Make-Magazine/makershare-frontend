@@ -1,20 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-// import { MakerCardComponent } from '../maker-card/maker-card.component';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'social-stats',
-  templateUrl: './social-stats.component.html'
+  templateUrl: './social-stats.component.html',
 })
-export class SocialStats implements OnInit {
+export class SocialStatsComponent implements OnInit {
   @Input() profileViews;
   @Input() projectsCount;
   @Input() profileView;
   @Input() uid;
   @Input() nid;
   @Input() like;
-  constructor(
-
-  ) {}
+  constructor() {}
   ngOnInit() {
     // nothing to see here
   }
