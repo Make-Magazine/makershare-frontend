@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService, ViewService } from '../../../CORE/d7services';
-import { ChallengeData } from '../../../CORE/Models/challenge/challengeData';
+import { MissionData } from '../../../CORE/models/mission/mission-data';
 import { Auth } from '../../auth0/auth.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class MissionCardComponent implements OnInit {
   @Input() challengeNid;
   @Input() front: boolean = false;
   @Input() first: boolean = false;
-  @Input() challenge: ChallengeData = new ChallengeData();
+  @Input() challenge: MissionData = new MissionData();
   @Output() Featured = new EventEmitter<number>();
 
   private announce_date;
@@ -43,14 +43,12 @@ export class MissionCardComponent implements OnInit {
       .getView('shared-challenge-card', [['nid', this.challengeNid]])
       .subscribe(
         data => {
-          let tmpChallenge = data[0];
+          const tmpChallenge = data[0];
           // calculate days difference
           if (this.challenge) {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
             const todayDate = new Date();
-            const dateArray = tmpChallenge.challenge_end_date.value.split(
-              ' ',
-            );
+            const dateArray = tmpChallenge.challenge_end_date.value.split(' ');
             const YearDayMonth = dateArray[0].split('-');
             const endDate = new Date(
               +YearDayMonth[0],

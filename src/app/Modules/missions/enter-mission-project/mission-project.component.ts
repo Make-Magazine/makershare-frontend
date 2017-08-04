@@ -7,11 +7,11 @@ import {
 } from '../../../CORE/d7services';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { IChallengeProject } from '../../../CORE/Models/challenge/challengeProjects';
+import { IMissionProject } from '../../../CORE/models/mission/mission-project';
 import {
-  IChallengeDate,
-  IChallengeData,
-} from '../../../CORE/Models/challenge/challengeData';
+  IMissionDate,
+  IMissionData,
+} from '../../../CORE/models/mission/mission-data';
 import {
   NotificationBarService,
   NotificationType,
@@ -19,10 +19,10 @@ import {
 import { LoaderService } from '../../shared/loader/loader.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'enter-missions-project',
+  selector: 'app-enter-missions-project',
   templateUrl: './mission-project.component.html',
 })
 export class MissionProjectComponent implements OnInit {
@@ -32,7 +32,7 @@ export class MissionProjectComponent implements OnInit {
   submittedBefore: boolean;
   countProjects = 0;
   button = false;
-  projects: IChallengeProject[];
+  projects: IMissionProject[];
   selectedProject: number;
   hiddenAfterSubmit: boolean = false;
   userId: number;
@@ -43,7 +43,7 @@ export class MissionProjectComponent implements OnInit {
   nid: number;
   enterStatus = true;
   selectedProjectName;
-  challangeData: IChallengeData = {
+  challangeData: IMissionData = {
     title: '',
     cover_image: '',
     sponsored_by: '',
@@ -76,7 +76,7 @@ export class MissionProjectComponent implements OnInit {
       date_type: '',
     },
   };
-  challangStartDate: IChallengeDate = {
+  challangStartDate: IMissionDate = {
     value: '',
     timezone: '',
     timezone_db: '',
@@ -107,10 +107,10 @@ export class MissionProjectComponent implements OnInit {
     this.getCountProject();
     this.geturlformid();
     this.nid = this.route.snapshot.params['nid'];
-    this.userId = parseInt(localStorage.getItem('user_id'));
+    this.userId = parseInt(localStorage.getItem('user_id'), 10);
     this.userName = localStorage.getItem('user_name');
     this.getAllProject();
-    this.getChallangeData();
+    this.getChallengeData();
     this.getProjectsInMission();
     this.createProject = 'test';
     // set default tab according to url parameter "tab"
@@ -156,8 +156,9 @@ export class MissionProjectComponent implements OnInit {
         err => {},
       );
   }
+
   /*end function count project in challenge*/
-  getChallangeData() {
+  getChallengeData() {
     this.route.params
       .switchMap(nid =>
         this.viewService.getView('challenge_data', [['nid', this.nid]]),
@@ -165,21 +166,20 @@ export class MissionProjectComponent implements OnInit {
       .subscribe(
         data => {
           this.challangeData = data[0];
-          //calculate days difference
+          // calculate days difference
           if (this.challangeData) {
-            var todayDate = new Date();
-            var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-            var todayDate = new Date();
-            let dateArray = this.challangeData.challenge_end_date.value.split(
+            const todayDate = new Date();
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            const dateArray = this.challangeData.challenge_end_date.value.split(
               ' ',
             );
-            let YearDayMonth = dateArray[0].split('-');
-            var endDate = new Date(
+            const YearDayMonth = dateArray[0].split('-');
+            const endDate = new Date(
               +YearDayMonth[0],
               +YearDayMonth[1],
               +YearDayMonth[2],
             );
-            var diffDays = Math.round(
+            const diffDays = Math.round(
               (endDate.getTime() - todayDate.getTime()) / oneDay,
             );
             if (diffDays >= 0) {
@@ -201,13 +201,17 @@ export class MissionProjectComponent implements OnInit {
         err => {},
       );
   }
+
   /* function to change data format */
   changeDateFormat(date) {
-    if (!date) return '';
+    if (!date) {
+      return '';
+    }
     date = date.split(' ')[0];
     date = date.split('-');
     return date[1] + '/' + date[2] + '/' + date[0];
   }
+
   /* end function to change data format */
   getProjectsInMission() {
     this.viewService
@@ -216,26 +220,29 @@ export class MissionProjectComponent implements OnInit {
         this.projectsList = data;
       });
   }
+
   updateSelectedProject(item: any) {
     this.selectedProjectName = item.target.selectedOptions[0].text;
     this.selectedProject = item.target.value;
     this.submittedBefore = false;
-    for (let element of this.projectsList) {
+    for (const element of this.projectsList) {
       if (element.project_nid == item.target.value) {
         this.submittedBefore = true;
       }
     }
   }
-  /*end check project entered */
+
+  /* end check project entered */
   onCancel() {
     this.addProjectForm.reset();
     this.geturlformid();
     this.router.navigate(['/missions/' + this.path]);
   }
+
   onSubmit() {
     if (this.checked) {
       this.loaderService.display(true);
-      let body = {
+      const body = {
         type: 'challenge_entry',
         field_entry_project: this.selectedProject,
         field_entry_challenge: this.nid,
@@ -295,25 +302,26 @@ export class MissionProjectComponent implements OnInit {
         'You must agree to challenge rules and eligibility requirements before entering.';
     }
   }
+
   createNewProjectForChallenge() {
-    let navigationExtras: NavigationExtras = {
+    const navigationExtras: NavigationExtras = {
       queryParams: {
         redirectTo: encodeURIComponent('/missions/enter-mission/' + this.nid),
       },
     };
     this.router.navigate(['/projects/create'], navigationExtras);
   }
+
   /* function build form */
   buildForm() {
     this.addProjectForm = this.fb.group({
       field_agreement: ['', Validators.required],
     });
   }
-  /* end function build form */
-  /* function check user allowe to enter challenge */
 
+  /* function check user allowe to enter challenge */
   checkenter() {
-    var nid = this.route.snapshot.params['nid'];
+    const nid = this.route.snapshot.params['nid'];
     this.viewService
       .checkEnterStatus('maker_challenge_entry_api/enter_status', nid)
       .subscribe(
@@ -326,6 +334,7 @@ export class MissionProjectComponent implements OnInit {
         err => {},
       );
   }
+
   /* end function cheack user allowe to enter challenge */
   checkBoxValue(item: any) {
     this.error = '';
@@ -336,6 +345,7 @@ export class MissionProjectComponent implements OnInit {
       this.button = false;
     }
   }
+
   open(content) {
     if (!this.submittedBefore) {
       this.modalService.open(content).result.then(
@@ -357,8 +367,9 @@ export class MissionProjectComponent implements OnInit {
       });
     }
   }
+
   geturlformid() {
-    var nid = this.route.snapshot.params['nid'];
+    const nid = this.route.snapshot.params['nid'];
 
     this.nodeService.getUrlFromId(nid, 'challenge').subscribe(data => {
       this.path = data[0];

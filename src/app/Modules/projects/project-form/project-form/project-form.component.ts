@@ -1,33 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { NodeService,FileService,ViewService,MainService,TaxonomyService,UserService } from '../../../../CORE/d7services';
-import { Observable } from "rxjs";
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
-import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import {
-  FileEntity, ProjectForm, ProjectView, field_file_reference, NodeHelper,
-  field_collection_item_member, field_collection_item_tool, field_collection_item_material,
-  field_collection_item_part, field_collection_item_resource,ProjectHold,field_date,date_time
-}from '../../../../CORE';
+  date_time,
+  FieldCollectionItemMaterial,
+  FieldCollectionItemMember,
+  FieldCollectionItemPart,
+  FieldCollectionItemResource,
+  FieldCollectionItemTool,
+  field_date,
+  FieldFileReference,
+  FileEntity,
+  NodeHelper,
+  ProjectForm,
+  ProjectHold,
+  ProjectView
+} from '../../../../CORE';
+import {
+  FileService,
+  MainService,
+  NodeService,
+  TaxonomyService,
+  UserService,
+  ViewService
+} from '../../../../CORE/d7services';
 import { ComponentCanDeactivate } from '../pending-changes.guard';
-declare var swal:any;
+
+declare var swal: any;
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
 })
-
-/**
+export /**
  * Hello and welcome to project create and edit component
  * this component is used to managing the project like editing or creating new projects
  * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :) - Breaker "Wasim Nabil"
  */
-export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
+class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   CanNavigate: boolean = true;
-  canDeactivate(): Observable<boolean> | boolean {
-    // insert logic to check if there are pending changes here;
-    // returning true will navigate without confirmation
-    // returning false will show a confirm alert before navigating away
-    return this.CanNavigate;
-  }
 
   // // @HostListener allows us to also guard against browser refresh, close, etc.
   // @HostListener('window:beforeunload', ['$event'])
@@ -38,12 +49,12 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   // }
   /**
    * this variables are used to navigating or static project fields
-   * also contain the values what will be printed in the form 
+   * also contain the values what will be printed in the form
    * because the values what drupal returns are just a references to the entity
    * so we need a separated variables to store the display values
    */
   defaultTabObs: Observable<string>;
-  missionRedirection: string='no';
+  missionRedirection: string = 'no';
 
   Holder;
   ProjectLoaded: boolean;
@@ -51,11 +62,11 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   current_active_tab: string;
   TryToSubmitPrivatePublic: boolean = false;
   FormPrintableValues = {
-    cover_image: { file: "", filename: "" },
+    cover_image: { file: '', filename: '' },
     tags: [],
     resources_files: [],
-    InvitationEmails: { uid: '', project: '', mails: [] }
-  }
+    InvitationEmails: { uid: '', project: '', mails: [] },
+  };
 
   /**
    * the project object with empty values which will be transfared to the sub components to set the values inside it before posting them
@@ -72,19 +83,26 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     private router: Router,
     private route: ActivatedRoute,
     private mainService: MainService,
+  ) {}
 
-  ) { }
+  canDeactivate(): Observable<boolean> | boolean {
+    // insert logic to check if there are pending changes here;
+    // returning true will navigate without confirmation
+    // returning false will show a confirm alert before navigating away
+    return this.CanNavigate;
+  }
 
   ngOnInit(): void {
-    var path;
+    let path;
     this.ProjectLoaded = false;
     this.route.params.subscribe(params => {
-      path = params["path"];
+      path = params['path'];
     });
-    this.nodeService.getIdFromUrl(path,'project').subscribe(ids=>{
-      var nid = ids[0];  
-      if(path && !ids[0])
+    this.nodeService.getIdFromUrl(path, 'project').subscribe(ids => {
+      let nid = ids[0];
+      if (path && !ids[0]) {
         nid = path;
+      }
       if (nid) {
         this.GetProject(nid);
       } else {
@@ -92,215 +110,276 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       }
       this.current_active_tab = 'Your Story';
       // set default tab according to url parameter "tab"
-      this.defaultTabObs = this.route.queryParams.map(params => params['redirectTo']);
+      this.defaultTabObs = this.route.queryParams.map(
+        params => params['redirectTo'],
+      );
       this.defaultTabObs.subscribe(tab => {
         if (tab != undefined || tab != '') {
           this.missionRedirection = decodeURIComponent(tab);
-        }
-        else if(tab =undefined){
-        //  console.log("asdsadsadsadsa");
+        } else if ((tab = undefined)) {
+          //  console.log("asdsadsadsadsa");
         }
       });
     });
   }
 
-  UpdateHolder(){
-    let self = this;
-    setInterval(function(){
-      let projectHold = new ProjectHold(self.project.GetField('title')+' ('+self.project.GetField('nid')+')');
-      projectHold.SetField('title',self.project.GetField('title'));
-      projectHold.SetField('nid',self.Holder.nid,);
-      if(self.Holder.field_users_wants_edit)
-        projectHold.field_users_wants_edit = self.Holder.field_users_wants_edit;
-      self.nodeService.updateNode(projectHold).subscribe();
-    },180000)
+  UpdateHolder() {
+    setInterval(() => {
+      const projectHold = new ProjectHold(
+        this.project.GetField('title') +
+          ' (' +
+        this.project.GetField('nid') +
+          ')',
+      );
+      projectHold.SetField('title', this.project.GetField('title'));
+      projectHold.SetField('nid', this.Holder.nid);
+      if (this.Holder.field_users_wants_edit) {
+        projectHold.field_users_wants_edit = this.Holder.field_users_wants_edit;
+      }
+      this.nodeService.updateNode(projectHold).subscribe();
+    }, 180000);
   }
 
   GetProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
-      this.viewService.getView('api_project_hold',[["nid", project.GetField('nid')]]).subscribe((hold)=>{
-        if(hold.length == 0 || hold[0].uid == +localStorage.getItem("user_id")){
-          let projectHold = new ProjectHold(project.GetField('title')+' ('+nid+')');
-          projectHold.SetField('title',this.project.GetField('title'));
-          if(hold.length == 0){
-            this.nodeService.createNode(projectHold).subscribe(node=>{
-              this.Holder = node;
-              this.ConvertProjectToCreateForm(project);
-            });
-          }else{
-            projectHold.SetField("nid",hold[0].nid);
-            delete projectHold.field_project_to_edit;
-            this.nodeService.updateNode(projectHold).subscribe(node=>{
-              this.Holder = hold[0];
-              this.ConvertProjectToCreateForm(project);
-            });
-          }
-        this.UpdateHolder();
-        }else{
-          swal({
-            title: "Wait!",
-            text: hold[0].name+" is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#4F4F4F",
-            confirmButtonText: "Yes, notify me!",
-            closeOnConfirm: true
-          },
-          (confirm)=>{
-            if(confirm){
-              let hoder = {
-                nid:hold[0].nid,
-                uid:localStorage.getItem("user_id")
-              };
-              this.mainService.EntityType = 'maker_project_api/hold_queue';
-              this.mainService.post(hoder).subscribe((data)=>{
-                this.mainService.EntityType = '';
-                this.notificationBarService.create({ message: 'Successfully added to notify list', type: NotificationType.Success });
-                this.router.navigate(['/portfolio']);
+      this.viewService
+        .getView('api_project_hold', [['nid', project.GetField('nid')]])
+        .subscribe(hold => {
+          if (
+            hold.length == 0 ||
+            hold[0].uid == +localStorage.getItem('user_id')
+          ) {
+            const projectHold = new ProjectHold(
+              project.GetField('title') + ' (' + nid + ')',
+            );
+            projectHold.SetField('title', this.project.GetField('title'));
+            if (hold.length == 0) {
+              this.nodeService.createNode(projectHold).subscribe(node => {
+                this.Holder = node;
+                this.ConvertProjectToCreateForm(project);
               });
-            }else{
-              this.router.navigate(['/portfolio']);
+            } else {
+              projectHold.SetField('nid', hold[0].nid);
+              delete projectHold.field_project_to_edit;
+              this.nodeService.updateNode(projectHold).subscribe(node => {
+                this.Holder = hold[0];
+                this.ConvertProjectToCreateForm(project);
+              });
             }
-          });
-          return;
-        }
-      });
-      
+            this.UpdateHolder();
+          } else {
+            swal(
+              {
+                title: 'Wait!',
+                text:
+                  hold[0].name +
+                  ' is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4F4F4F',
+                confirmButtonText: 'Yes, notify me!',
+                closeOnConfirm: true,
+              },
+              confirm => {
+                if (confirm) {
+                  const hoder = {
+                    nid: hold[0].nid,
+                    uid: localStorage.getItem('user_id'),
+                  };
+                  this.mainService.EntityType = 'maker_project_api/hold_queue';
+                  this.mainService.post(hoder).subscribe(data => {
+                    this.mainService.EntityType = '';
+                    this.notificationBarService.create({
+                      message: 'Successfully added to notify list',
+                      type: NotificationType.Success,
+                    });
+                    this.router.navigate(['/portfolio']);
+                  });
+                } else {
+                  this.router.navigate(['/portfolio']);
+                }
+              },
+            );
+            return;
+          }
+        });
     });
   }
 
   ConvertProjectToCreateForm(data: ProjectView) {
-    var tasks = [];
-    let NotReadyFields = ["field_creation_date", "field_visibility2", "field_categories", "field_difficulty", "field_duration", "field_tags", "field_tools", "field_materials", "field_parts", "field_resources", "field_maker_memberships"];
-    for (let index in data) {
-      let field = data[index];
+    const tasks = [];
+    const NotReadyFields = [
+      'field_creation_date',
+      'field_visibility2',
+      'field_categories',
+      'field_difficulty',
+      'field_duration',
+      'field_tags',
+      'field_tools',
+      'field_materials',
+      'field_parts',
+      'field_resources',
+      'field_maker_memberships',
+    ];
+    for (const index in data) {
+      const field = data[index];
       if (NotReadyFields.indexOf(index) == -1) {
         this.project[index] = field;
       } else if (field.und) {
         switch (index) {
-          case "field_categories":
-            {
-              field.und.forEach(category => {
-                this.project.field_categories.und.push(category.tid);
-              });
-              break;
+          case 'field_categories': {
+            field.und.forEach(category => {
+              this.project.field_categories.und.push(category.tid);
+            });
+            break;
+          }
+          case 'field_creation_date': {
+            let date = field.und[0].value.split(' ');
+            date = date[0].split('-');
+            this.project.field_creation_date.und[0].value.date =
+              date[1] + '/' + date[2] + '/' + date[0];
+            break;
+          }
+          case 'field_difficulty': {
+            this.project.field_difficulty.und = field.und[0].tid;
+            break;
+          }
+          case 'field_duration': {
+            this.project.field_duration.und = field.und[0].tid;
+            break;
+          }
+          case 'field_tags': {
+            field.und.forEach(tag => {
+              tasks.push(this.taxonomyService.getTermByID(tag.tid));
+            });
+            break;
+          }
+          case 'field_maker_memberships': {
+            field.und.forEach(member => {
+              tasks.push(
+                this.viewService.getView(
+                  'entity_field_collection_item/' + member.value,
+                ),
+              );
+            });
+            break;
+          }
+          case 'field_tools': {
+            field.und.forEach(tool => {
+              tasks.push(
+                this.viewService.getView(
+                  'entity_field_collection_item/' + tool.value,
+                ),
+              );
+            });
+            break;
+          }
+          case 'field_materials': {
+            field.und.forEach(material => {
+              tasks.push(
+                this.viewService.getView(
+                  'entity_field_collection_item/' + material.value,
+                ),
+              );
+            });
+            break;
+          }
+          case 'field_parts': {
+            field.und.forEach(part => {
+              tasks.push(
+                this.viewService.getView(
+                  'entity_field_collection_item/' + part.value,
+                ),
+              );
+            });
+            break;
+          }
+          case 'field_resources': {
+            field.und.forEach(resource => {
+              tasks.push(
+                this.viewService.getView(
+                  'entity_field_collection_item/' + resource.value,
+                ),
+              );
+            });
+            break;
+          }
+          case 'field_visibility2': {
+            this.project.field_visibility2.und[0] = field.und[0].tid;
+            if (this.project.field_visibility2.und[0] != 1115) {
+              this.StoryFormValid = true;
             }
-          case 'field_creation_date':
-            {
-              let date = field.und[0].value.split(" ");
-              date = date[0].split("-");
-              this.project.field_creation_date.und[0].value.date = date[1]+'/'+date[2]+'/'+date[0];
-              break;
-            }
-          case "field_difficulty":
-            {
-              this.project.field_difficulty.und = field.und[0].tid;
-              break;
-            }
-          case "field_duration":
-            {
-              this.project.field_duration.und = field.und[0].tid;
-              break;
-            }
-          case "field_tags":
-            {
-              field.und.forEach(tag => {
-                tasks.push(this.taxonomyService.getTermByID(tag.tid));
-              });
-              break;
-            }
-          case "field_maker_memberships":
-            {
-              field.und.forEach(member => {
-                tasks.push(this.viewService.getView("entity_field_collection_item/" + member.value));
-              });
-              break;
-            }
-          case "field_tools":
-            {
-              field.und.forEach(tool => {
-                tasks.push(this.viewService.getView("entity_field_collection_item/" + tool.value));
-              });
-              break;
-            }
-          case "field_materials":
-            {
-              field.und.forEach(material => {
-                tasks.push(this.viewService.getView("entity_field_collection_item/" + material.value));
-              });
-              break;
-            }
-          case "field_parts":
-            {
-              field.und.forEach(part => {
-                tasks.push(this.viewService.getView("entity_field_collection_item/" + part.value));
-              });
-              break;
-            }
-          case "field_resources":
-            {
-              field.und.forEach(resource => {
-                tasks.push(this.viewService.getView("entity_field_collection_item/" + resource.value));
-              });
-              break;
-            }
-          case "field_visibility2":
-            {
-              this.project.field_visibility2.und[0] = field.und[0].tid;
-              if(this.project.field_visibility2.und[0] != 1115){
-                this.StoryFormValid = true;
-              }
-              break;
-            }
-          default:
-            {
-              break;
-            }
+            break;
+          }
+          default: {
+            break;
+          }
         }
-      }else if (index == "field_creation_date" && !field.und){
-        let created = new Date(+data.GetField("created")*1000);
-        let date = new Date(created.getUTCFullYear(), created.getUTCMonth(), created.getUTCDate(),  created.getUTCHours(), created.getUTCMinutes(), created.getUTCSeconds()); //reset date to UTC
-        date = new Date(date.getTime() - 3*60*60*1000); //convert to america time zone
+      } else if (index == 'field_creation_date' && !field.und) {
+        const created = new Date(+data.GetField('created') * 1000);
+        let date = new Date(
+          created.getUTCFullYear(),
+          created.getUTCMonth(),
+          created.getUTCDate(),
+          created.getUTCHours(),
+          created.getUTCMinutes(),
+          created.getUTCSeconds(),
+        ); // reset date to UTC
+        date = new Date(date.getTime() - 3 * 60 * 60 * 1000); // convert to america time zone
         let day = date.getDate().toString();
-        let month = (date.getMonth()+1).toString();
-        let year = date.getFullYear();
-        let minutes = date.getMinutes();
-        let hours = date.getHours();
-      if(+month < 10)
-        month = '0'+month;
-      if(+day < 10)
-        day = '0'+day;
+        let month = (date.getMonth() + 1).toString();
+        const year = date.getFullYear();
+        const minutes = date.getMinutes();
+        const hours = date.getHours();
+        if (+month < 10) {
+          month = '0' + month;
+        }
+        if (+day < 10) {
+          day = '0' + day;
+        }
 
-      let datetime = new date_time;
+        const datetime = new date_time();
 
-      datetime.date = month+'/'+day+'/'+year;
-      datetime.time = hours+':'+minutes+':00';
+        datetime.date = month + '/' + day + '/' + year;
+        datetime.time = hours + ':' + minutes + ':00';
 
-      this.project.field_creation_date = {und:[new field_date(datetime)]};
+        this.project.field_creation_date = { und: [new field_date(datetime)] };
       }
     }
-    var subtasks = [];
-    let source = Observable.forkJoin(tasks);
+    const subtasks = [];
+    const source = Observable.forkJoin(tasks);
     source.subscribe(
-      (x) => {
-        var index = 0;
-        //field tools
+      x => {
+        let index = 0;
+        // field tools
         if (data.field_tools.und) {
           for (index; index < data.field_tools.und.length; index++) {
-            let tool = x[index];
+            const tool = x[index];
             if (tool['field_tool_name'].und) {
-              subtasks.push(this.nodeService.getNode(tool['field_tool_name'].und[0].target_id));
-              this.project.field_tools.und.push(tool as field_collection_item_tool);
+              subtasks.push(
+                this.nodeService.getNode(
+                  tool['field_tool_name'].und[0].target_id,
+                ),
+              );
+              this.project.field_tools.und.push(
+                tool as FieldCollectionItemTool,
+              );
             }
           }
         }
-        //field materials
+        // field materials
         if (data.field_materials.und) {
           for (let i = 0; i < data.field_materials.und.length; i++) {
-            let material = x[index];
+            const material = x[index];
             if (material['field_material_name'].und) {
-              subtasks.push(this.nodeService.getNode(material['field_material_name'].und[0].target_id));
-              this.project.field_materials.und.push(material as field_collection_item_material);
+              subtasks.push(
+                this.nodeService.getNode(
+                  material['field_material_name'].und[0].target_id,
+                ),
+              );
+              this.project.field_materials.und.push(
+                material as FieldCollectionItemMaterial,
+              );
             }
             index++;
           }
@@ -308,10 +387,16 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         // field parts
         if (data.field_parts.und) {
           for (let i = 0; i < data.field_parts.und.length; i++) {
-            let part = x[index];
+            const part = x[index];
             if (part['field_part_name'].und) {
-              subtasks.push(this.nodeService.getNode(part['field_part_name'].und[0].target_id));
-              this.project.field_parts.und.push(part as field_collection_item_part);
+              subtasks.push(
+                this.nodeService.getNode(
+                  part['field_part_name'].und[0].target_id,
+                ),
+              );
+              this.project.field_parts.und.push(
+                part as FieldCollectionItemPart,
+              );
             }
             index++;
           }
@@ -319,7 +404,7 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         // field tags
         if (data.field_tags.und) {
           for (let i = 0; i < data.field_tags.und.length; i++) {
-            let tag = x[index];
+            const tag = x[index];
             this.FormPrintableValues.tags.push(tag['name']);
             index++;
           }
@@ -327,11 +412,13 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         // field resources
         if (data.field_resources.und) {
           for (let i = 0; i < data.field_resources.und.length; i++) {
-            let resource = x[index] as field_collection_item_resource;
-            if(resource.field_label.und){
-                this.project.field_resources.und.push(resource);
+            const resource = x[index] as FieldCollectionItemResource;
+            if (resource.field_label.und) {
+              this.project.field_resources.und.push(resource);
               if (resource['field_resource_file'].und) {
-                this.FormPrintableValues.resources_files.push(resource['field_resource_file'].und[0]);
+                this.FormPrintableValues.resources_files.push(
+                  resource['field_resource_file'].und[0],
+                );
               }
             }
             index++;
@@ -340,32 +427,42 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         // field team
         if (data.field_maker_memberships.und) {
           for (let i = 0; i < data.field_maker_memberships.und.length; i++) {
-            let member = x[index];
+            const member = x[index];
             if (member['field_team_member'].und) {
-              subtasks.push(this.userService.getUser(member['field_team_member'].und[0].target_id));
+              subtasks.push(
+                this.userService.getUser(
+                  member['field_team_member'].und[0].target_id,
+                ),
+              );
             }
-            this.project.field_maker_memberships.und.push(member as field_collection_item_member);
+            this.project.field_maker_memberships.und.push(
+              member as FieldCollectionItemMember,
+            );
             index++;
           }
         } else {
           this.SetProjectOwner();
         }
       },
-      (err) => {
-       // console.log('Error: %s', err);
+      err => {
+        // console.log('Error: %s', err);
       },
       () => {
-        let subsource = Observable.forkJoin(subtasks);
+        const subsource = Observable.forkJoin(subtasks);
         subsource.subscribe(
-          (subx) => {
-            var subindex = 0;
+          subx => {
+            let subindex = 0;
             // field tools
             if (data.field_tools.und) {
               for (let i = 0; i < data.field_tools.und.length; i++) {
-                let tool = subx[subindex];
+                const tool = subx[subindex];
                 if (tool && tool['title']) {
-                  let id = this.project.field_tools.und[i].field_tool_name.und[0].target_id;
-                  this.project.field_tools.und[i].field_tool_name.und[0].target_id = tool['title'] + ' (' + id + ')';
+                  const id = this.project.field_tools.und[i].field_tool_name
+                    .und[0].target_id;
+                  this.project.field_tools.und[
+                    i
+                  ].field_tool_name.und[0].target_id =
+                    tool['title'] + ' (' + id + ')';
                   subindex++;
                 }
               }
@@ -373,10 +470,14 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             // field materials
             if (data.field_materials.und) {
               for (let i = 0; i < data.field_materials.und.length; i++) {
-                let material = subx[subindex];
+                const material = subx[subindex];
                 if (material && material['title']) {
-                  let id = this.project.field_materials.und[i].field_material_name.und[0].target_id;
-                  this.project.field_materials.und[i].field_material_name.und[0].target_id = material['title'] + ' (' + id + ')';
+                  const id = this.project.field_materials.und[i]
+                    .field_material_name.und[0].target_id;
+                  this.project.field_materials.und[
+                    i
+                  ].field_material_name.und[0].target_id =
+                    material['title'] + ' (' + id + ')';
                   subindex++;
                 }
               }
@@ -384,51 +485,67 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             // field parts
             if (data.field_parts.und) {
               for (let i = 0; i < data.field_parts.und.length; i++) {
-                let part = subx[subindex];
+                const part = subx[subindex];
                 if (part && part['title']) {
-                  let id = this.project.field_parts.und[i].field_part_name.und[0].target_id;
-                  this.project.field_parts.und[i].field_part_name.und[0].target_id = part['title'] + ' (' + id + ')';
+                  const id = this.project.field_parts.und[i].field_part_name
+                    .und[0].target_id;
+                  this.project.field_parts.und[
+                    i
+                  ].field_part_name.und[0].target_id =
+                    part['title'] + ' (' + id + ')';
                   subindex++;
                 }
               }
             }
             // field team
             for (let i = 0; i < data.field_maker_memberships.und.length; i++) {
-              let member = subx[subindex];
+              const member = subx[subindex];
               if (member && member['name']) {
-                this.project.field_maker_memberships.und.forEach((element,ind)=>{
-                  if(element.field_team_member.und){
-                    let id = this.project.field_maker_memberships.und[ind].field_team_member.und[0].target_id;
-                    this.project.field_maker_memberships.und[ind].field_team_member.und[0].target_id = member['name'] + ' (' + id + ')';
-                    subindex++;
-                  }
-                });
+                this.project.field_maker_memberships.und.forEach(
+                  (element, ind) => {
+                    if (element.field_team_member.und) {
+                      const id = this.project.field_maker_memberships.und[ind]
+                        .field_team_member.und[0].target_id;
+                      this.project.field_maker_memberships.und[
+                        ind
+                      ].field_team_member.und[0].target_id =
+                        member['name'] + ' (' + id + ')';
+                      subindex++;
+                    }
+                  },
+                );
               }
             }
           },
-          (err) => {
-            //console.log('Error: %s', err);
+          err => {
           },
           () => {
             if (this.project.field_cover_photo.und) {
-              this.fileService.getFileById(this.project.field_cover_photo.und[0].fid as number).subscribe((file: FileEntity) => {
-                file.file = NodeHelper.AddFileTypeToBase64(file.file, file.filemime);
-                this.FormPrintableValues.cover_image = file;
-                this.ProjectLoaded = true;
-              });
+              this.fileService
+                .getFileById(
+                  this.project.field_cover_photo.und[0].fid as number,
+                )
+                .subscribe((file: FileEntity) => {
+                  file.file = NodeHelper.AddFileTypeToBase64(
+                    file.file,
+                    file.filemime,
+                  );
+                  this.FormPrintableValues.cover_image = file;
+                  this.ProjectLoaded = true;
+                });
             } else {
               this.ProjectLoaded = true;
             }
             this.ReInitEmptyFields();
-          }
+          },
         );
-      }
+      },
     );
   }
 
   ReInitEmptyFields() {
-    let newproject: ProjectForm = new ProjectForm();
-    for (let index in this.project) {
+    const newproject: ProjectForm = new ProjectForm();
+    for (const index in this.project) {
       if (!this.project[index] || NodeHelper.isEmpty(this.project[index])) {
         this.project[index] = newproject[index];
       }
@@ -436,20 +553,30 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   SetProjectOwner() {
-    let owner: field_collection_item_member = {
-      field_team_member: { und: [{ target_id: localStorage.getItem("user_name") + ' (' + localStorage.getItem("user_id") + ')' }] },
+    const owner: FieldCollectionItemMember = {
+      field_team_member: {
+        und: [
+          {
+            target_id:
+              localStorage.getItem('user_name') +
+              ' (' +
+              localStorage.getItem('user_id') +
+              ')',
+          },
+        ],
+      },
       field_membership_role: { und: [{ value: 'Project Lead' }] },
-    }
-    this.project.SetField('field_maker_memberships',owner);
+    };
+    this.project.SetField('field_maker_memberships', owner);
     this.ProjectLoaded = true;
   }
 
-  RemoveStaticFields(){
+  RemoveStaticFields() {
     delete this.project.field_original_team_members;
     delete this.project.field_forks;
     delete this.project.field_faire_name;
-    this.project.SetField("sticky",null);
-    this.project.SetField("promote",null);
+    this.project.SetField('sticky', null);
+    this.project.SetField('promote', null);
   }
 
   /**
@@ -459,47 +586,73 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.ProjectLoaded = false;
     this.project.CheckIfReadyToPublic();
     delete this.project.field_creation_date.und[0].value.time;
-    if(this.project.field_categories.und.length == 0){
-      this.project.field_categories.und = [""];
+    if (this.project.field_categories.und.length == 0) {
+      this.project.field_categories.und = [''];
     }
-    if (this.project.GetField("nid")) {
+    if (this.project.GetField('nid')) {
       this.RemoveStaticFields();
-      this.nodeService.updateNode(this.project).subscribe((project: ProjectView) => {
-        this.CanNavigate = true;
-        this.FormPrintableValues.InvitationEmails.project = project.GetField("nid").toString();
-        this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
-        if(this.project.field_visibility2.und[0] == 1115)
-          this.GetProject(+project.GetField("nid"));
-        this.showSuccessMessage('update', this.project.field_visibility2['und'][0]);
-        this.project = new ProjectForm();
-      }, err => {
-       // console.log(err);
-        this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
-      });
-    } else {
-      this.nodeService.createNode(this.project).subscribe((project: ProjectView) => {
-        this.CanNavigate = true;
-        this.FormPrintableValues.InvitationEmails.project = project.GetField("nid").toString();
-        if (!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)) {
+      this.nodeService.updateNode(this.project).subscribe(
+        (project: ProjectView) => {
+          this.CanNavigate = true;
+          this.FormPrintableValues.InvitationEmails.project = project
+            .GetField('nid')
+            .toString();
           this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
-        }
-        if(this.project.field_visibility2.und[0] == 1115)
-          this.GetProject(+project.GetField("nid"));
-        this.showSuccessMessage('create', this.project.field_visibility2['und'][0]);
-        this.project = new ProjectForm();
-      }, err => {
-       // console.log(err);
-        this.notificationBarService.create({ message: 'Project not saved , check the logs please', type: NotificationType.Error });
-      });
+          if (this.project.field_visibility2.und[0] == 1115) {
+            this.GetProject(+project.GetField('nid'));
+          }
+          this.showSuccessMessage(
+            'update',
+            this.project.field_visibility2['und'][0],
+          );
+          this.project = new ProjectForm();
+        },
+        err => {
+          // console.log(err);
+          this.notificationBarService.create({
+            message: 'Project not saved , check the logs please',
+            type: NotificationType.Error,
+          });
+        },
+      );
+    } else {
+      this.nodeService.createNode(this.project).subscribe(
+        (project: ProjectView) => {
+          this.CanNavigate = true;
+          this.FormPrintableValues.InvitationEmails.project = project
+            .GetField('nid')
+            .toString();
+          if (
+            !NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)
+          ) {
+            this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
+          }
+          if (this.project.field_visibility2.und[0] == 1115) {
+            this.GetProject(+project.GetField('nid'));
+          }
+          this.showSuccessMessage(
+            'create',
+            this.project.field_visibility2['und'][0],
+          );
+          this.project = new ProjectForm();
+        },
+        err => {
+          this.notificationBarService.create({
+            message: 'Project not saved , check the logs please',
+            type: NotificationType.Error,
+          });
+        },
+      );
     }
   }
 
   sendInvitedEmails(emails) {
-    this.mainService.custompost('team_service/send', emails).subscribe(data => {
-
-    }, err => {
-    //  console.log(err);
-    });
+    this.mainService.custompost('team_service/send', emails).subscribe(
+      data => {},
+      err => {
+        //  console.log(err);
+      },
+    );
   }
 
   /**
@@ -507,9 +660,9 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * @param event : the value of the object from sub componet emitter
    */
   UpdateFields(event, component) {
-    if (component === "Your Story") {
+    if (component === 'Your Story') {
       this.FormPrintableValues.tags = event;
-    } else if (component === "Team") {
+    } else if (component === 'Team') {
       this.FormPrintableValues.InvitationEmails = event;
     } else {
       this.FormPrintableValues.resources_files = event;
@@ -523,15 +676,22 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   GettingFieldsReady(Status: number, Visibility: number) {
     this.current_active_tab = 'Your Story';
-    if (Visibility != 1115 && !this.StoryFormValid && this.project.field_visibility2['und'][0] == 1115) {
-      this.notificationBarService.create({ message: "You're missing some required fields before you can publish.", type: NotificationType.Error });
+    if (
+      Visibility != 1115 &&
+      !this.StoryFormValid &&
+      this.project.field_visibility2['und'][0] == 1115
+    ) {
+      this.notificationBarService.create({
+        message: "You're missing some required fields before you can publish.",
+        type: NotificationType.Error,
+      });
       this.TryToSubmitPrivatePublic = true;
       return;
     }
-    this.project.SetField('field_visibility2',Visibility);
-    this.project.SetField("status",Status);
-    if (!this.project.GetField("title")) {
-      this.project.SetField("title","Untitled");
+    this.project.SetField('field_visibility2', Visibility);
+    this.project.SetField('status', Status);
+    if (!this.project.GetField('title')) {
+      this.project.SetField('title', 'Untitled');
     }
     if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
       delete this.project.field_show_tell_video_as_default.und;
@@ -544,90 +704,124 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    * for example you must upload the file image then reference the project cover_image field to this fid
    */
   SetPrjectValues() {
-    var tasks = [];
-    this.project.SetField("field_tags", this.FormPrintableValues.tags.toString());
-    var image: FileEntity = { file: this.FormPrintableValues.cover_image.file, filename: this.FormPrintableValues.cover_image.filename };
+    const tasks = [];
+    this.project.SetField(
+      'field_tags',
+      this.FormPrintableValues.tags.toString(),
+    );
+    const image: FileEntity = {
+      file: this.FormPrintableValues.cover_image.file,
+      filename: this.FormPrintableValues.cover_image.filename,
+    };
     if (!this.FormPrintableValues.cover_image['fid']) {
-      image.file = NodeHelper.RemoveFileTypeFromBase64(this.FormPrintableValues.cover_image.file);
+      image.file = NodeHelper.RemoveFileTypeFromBase64(
+        this.FormPrintableValues.cover_image.file,
+      );
       if (image.file) {
         tasks.push(this.fileService.SendCreatedFile(image));
       }
     } else {
-      this.project.field_cover_photo.und[0].fid = this.FormPrintableValues.cover_image['fid'];
+      this.project.field_cover_photo.und[0].fid = this.FormPrintableValues.cover_image[
+        'fid'
+      ];
     }
     if (this.FormPrintableValues.resources_files.length > 0) {
-      this.FormPrintableValues.resources_files.forEach((element: FileEntity, index: number) => {
-        if (!element.fid) {
-          element.file = NodeHelper.RemoveFileTypeFromBase64(element.file);
-          tasks.push(this.fileService.SendCreatedFile(element));
-        }
-      });
+      this.FormPrintableValues.resources_files.forEach(
+        (element: FileEntity, index: number) => {
+          if (!element.fid) {
+            element.file = NodeHelper.RemoveFileTypeFromBase64(element.file);
+            tasks.push(this.fileService.SendCreatedFile(element));
+          }
+        },
+      );
     }
-    let source = Observable.forkJoin(tasks);
+    const source = Observable.forkJoin(tasks);
     source.subscribe(
-      (x) => {
-        var index = 0;
+      x => {
+        let index = 0;
         if (!this.FormPrintableValues.cover_image['fid'] && image.file) {
-          this.project.SetField('field_cover_photo', x[0] as field_file_reference);
+          this.project.SetField(
+            'field_cover_photo',
+            x[0] as FieldFileReference,
+          );
           index++;
         }
-        this.project.field_resources.und.forEach((item,resourcesindex)=>{
-          for (let i = 0; i < this.FormPrintableValues.resources_files.length; i++) {
-            if (!this.FormPrintableValues.resources_files[i].fid && item.field_resource_file.und[0].filename == this.FormPrintableValues.resources_files[i].filename) {
-              this.project.field_resources.und[resourcesindex].field_resource_file.und[0] = x[index] as field_file_reference;
+        this.project.field_resources.und.forEach((item, resourcesindex) => {
+          for (
+            let i = 0;
+            i < this.FormPrintableValues.resources_files.length;
+            i++
+          ) {
+            if (
+              !this.FormPrintableValues.resources_files[i].fid &&
+              item.field_resource_file.und[0].filename ==
+                this.FormPrintableValues.resources_files[i].filename
+            ) {
+              this.project.field_resources.und[
+                resourcesindex
+              ].field_resource_file.und[0] = x[index] as FieldFileReference;
               index++;
               return;
             }
           }
         });
       },
-      (err) => {
-       // console.log('Error: %s', err);
+      err => {
       },
       () => {
         this.ResetFieldCollectionEmptyRows();
-      }
+      },
     );
   }
 
   ResetFieldCollectionEmptyRows() {
-    for (let i = this.project.field_maker_memberships.und.length - 1; i < 6; i++) {
-      let member = new field_collection_item_member();
-      this.project.field_maker_memberships.und.push(member);
+    for (
+      let i = this.project.field_maker_memberships.und.length - 1;
+      i < 6;
+      i++
+    ) {
+      this.project.field_maker_memberships.und.push(new FieldCollectionItemMember());
     }
     for (let i = this.project.field_tools.und.length - 1; i < 19; i++) {
-      let tool = new field_collection_item_tool();
-      this.project.field_tools.und.push(tool);
+      this.project.field_tools.und.push(new FieldCollectionItemTool());
     }
     for (let i = this.project.field_parts.und.length - 1; i < 19; i++) {
-      let part = new field_collection_item_part();
-      this.project.field_parts.und.push(part);
+      this.project.field_parts.und.push(new FieldCollectionItemPart());
     }
     for (let i = this.project.field_materials.und.length - 1; i < 19; i++) {
-      let material = new field_collection_item_material();
-      this.project.field_materials.und.push(material);
+      this.project.field_materials.und.push(new FieldCollectionItemMaterial());
     }
     for (let i = this.project.field_resources.und.length - 1; i < 19; i++) {
-      let resource = new field_collection_item_resource();
-      this.project.field_resources.und.push(resource);
+      this.project.field_resources.und.push(new FieldCollectionItemResource());
     }
     this.InviteTeam();
   }
 
   InviteTeam() {
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
-      this.mainService.custompost('team_service/build', this.FormPrintableValues.InvitationEmails).subscribe(data => {
-        for (let email in data) {
-          let user = data[email];
-          this.project.field_maker_memberships.und.forEach((row: field_collection_item_member, index: number) => {
-            if (row.field_team_member.und && row.field_team_member.und[0].target_id === email) {
-              row.field_team_member.und[0].target_id = user.name + ' (' + user.uid + ')';
-              return;
-            }
-          });
-        } 
-        this.SaveProject();
-      });
+      this.mainService
+        .custompost(
+          'team_service/build',
+          this.FormPrintableValues.InvitationEmails,
+        )
+        .subscribe(data => {
+          for (const email in data) {
+            const user = data[email];
+            this.project.field_maker_memberships.und.forEach(
+              (row: FieldCollectionItemMember, index: number) => {
+                if (
+                  row.field_team_member.und &&
+                  row.field_team_member.und[0].target_id === email
+                ) {
+                  row.field_team_member.und[0].target_id =
+                    user.name + ' (' + user.uid + ')';
+                  return;
+                }
+              },
+            );
+          }
+          this.SaveProject();
+        });
     } else {
       this.SaveProject();
     }
@@ -640,49 +834,85 @@ export class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   showSuccessMessage(action: string, visibility: number) {
     // update success messages
-    var tab: string = 'public';
+    let tab: string = 'public';
     if (action == 'update') {
-
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is saved as a Draft. Publish to make it public.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false  });
+        this.notificationBarService.create({
+          message:
+            'Your project is saved as a Draft. Publish to make it public.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
         tab = 'draft';
       } else if (visibility == 371) {
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been updated as private.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({
+          message: 'Your project has been updated as private.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
         tab = 'private';
       } else {
         // save is public
-        this.notificationBarService.create({ message: 'Your project has been updated.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({
+          message: 'Your project has been updated.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
         tab = 'public';
       }
     } else if (action == 'create') {
       if (visibility == 1115) {
         // updates as draft
-        this.notificationBarService.create({ message: 'Your project is saved as a Draft. Publish to make it public.', type: NotificationType.Success , allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({
+          message:
+            'Your project is saved as a Draft. Publish to make it public.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
         tab = 'draft';
-
       } else if (visibility == 371) {
         // save as private
-        this.notificationBarService.create({ message: 'Your project has been saved as private.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+        this.notificationBarService.create({
+          message: 'Your project has been saved as private.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
         tab = 'private';
       } else {
         // save is public
-        this.notificationBarService.create({ message: 'Your project has been created.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
-        if (this.missionRedirection.includes("/missions/enter-mission/")) {
-          let navigationExtras: NavigationExtras = {
-            queryParams: { 'projectId': "newproject" },
+        this.notificationBarService.create({
+          message: 'Your project has been created.',
+          type: NotificationType.Success,
+          allowClose: true,
+          autoHide: false,
+          hideOnHover: false,
+        });
+        if (this.missionRedirection.includes('/missions/enter-mission/')) {
+          const navExtras: NavigationExtras = {
+            queryParams: { projectId: 'newproject' },
           };
-          this.router.navigate([this.missionRedirection], navigationExtras);
+          this.router.navigate([this.missionRedirection], navExtras);
         }
         tab = 'public';
       }
     }
     // navigate to the portfolio with required tab
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'tab': tab },
+    const navigationExtras: NavigationExtras = {
+      queryParams: { tab: tab },
     };
-    let userID = +localStorage.getItem("user_id");
+    const userID = +localStorage.getItem('user_id');
     if (visibility != 1115 && this.missionRedirection == 'undefined') {
       this.userService.getUrlFromId(userID).subscribe(res => {
         this.router.navigate(['/portfolio/' + res.url], navigationExtras);

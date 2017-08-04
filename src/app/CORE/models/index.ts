@@ -1,5 +1,5 @@
-export * from './Application';
-export * from './Drupal';
+export * from './application';
+export * from './drupal';
 export * from './project';
 export * from './filemanager';
 export * from './profile';

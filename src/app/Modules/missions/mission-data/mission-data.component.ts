@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import 'rxjs/Rx';
 import { NodeService, StatisticsService, UserService, ViewService } from '../../../CORE/d7services';
-import { ChallengeData, IChallengeData } from '../../../CORE/Models/challenge/challengeData';
-import { ISorting } from '../../../CORE/Models/challenge/sorting';
+import { MissionData, IMissionData } from '../../../CORE/models/mission/mission-data';
+import { ISorting } from '../../../CORE/models/mission/sorting';
 import { Auth } from '../../../Modules/auth0/auth.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 
@@ -21,7 +21,7 @@ export class MissionDataComponent implements OnInit {
   customDescription: string;
   customImage: string;
   submittedBefore: boolean;
-  challenge: ChallengeData;
+  challenge: MissionData;
   idFromUrl: number;
   dates;
   awards;
@@ -119,7 +119,7 @@ export class MissionDataComponent implements OnInit {
   getChallengeData() {
     // this.route.params;
     this.viewService
-      .getView<IChallengeData>('challenge_data', [['nid', this.idFromUrl]])
+      .getView<IMissionData>('challenge_data', [['nid', this.idFromUrl]])
       .subscribe(d => {
         this.challenge = d[0];
         this.customDescription = this.challenge.body;

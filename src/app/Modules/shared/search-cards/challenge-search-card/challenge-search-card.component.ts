@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, UserService } from '../../../../CORE/d7services';
+import { UserService, ViewService } from '../../../../CORE/d7services';
 import {
-  IChallengeData,
-  IChallengeDate,
-} from '../../../../CORE/Models/challenge/challengeData';
+  IMissionData,
+  IMissionDate,
+} from '../../../../CORE/models/mission/mission-data';
 
 @Component({
   selector: 'app-challenge-search-card',
   templateUrl: './challenge-search-card.component.html',
 })
 export class ChallengeSearchCardComponent implements OnInit {
-  challenge: IChallengeData = {
+  challenge: IMissionData = {
     title: '',
     cover_image: '',
     sponsored_by: '',
@@ -44,7 +44,7 @@ export class ChallengeSearchCardComponent implements OnInit {
       date_type: '',
     },
   };
-  challangStartDate: IChallengeDate = {
+  challangStartDate: IMissionDate = {
     value: '',
     timezone: '',
     timezone_db: '',
@@ -69,18 +69,18 @@ export class ChallengeSearchCardComponent implements OnInit {
       .subscribe(
         data => {
           this.challenge = data[0];
-          //calculate days difference
+          // calculate days difference
           if (this.challenge) {
-            var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-            var todayDate = new Date();
-            let dateArray = this.challenge.challenge_end_date.value.split(' ');
-            let YearDayMonth = dateArray[0].split('-');
-            var endDate = new Date(
+            const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            const todayDate = new Date();
+            const dateArray = this.challenge.challenge_end_date.value.split(' ');
+            const YearDayMonth = dateArray[0].split('-');
+            const endDate = new Date(
               +YearDayMonth[0],
               +YearDayMonth[1],
               +YearDayMonth[2],
             );
-            var diffDays = Math.round(
+            const diffDays = Math.round(
               (endDate.getTime() - todayDate.getTime()) / oneDay,
             );
             if (diffDays >= 0) {
@@ -103,13 +103,17 @@ export class ChallengeSearchCardComponent implements OnInit {
         err => {},
       );
   }
+
   /* function to change data format */
   changeDateFormat(date) {
-    if (!date) return '';
+    if (!date) {
+      return '';
+    }
     date = date.split(' ')[0];
     date = date.split('-');
     return date[1] + '/' + date[2] + '/' + date[0];
   }
+
   /* end function to change data format */
   /* function to navigate to challenge summary page */
   ShowChallengeDetails(path) {
@@ -118,9 +122,9 @@ export class ChallengeSearchCardComponent implements OnInit {
 
   enterToChallengeProject(nid) {
     this.userService.isLogedIn().subscribe(data => {
-      //this.checkUserLogin = data;
+      // this.checkUserLogin = data;
       if (data == false) {
-        //localStorage.setItem('redirectUrl', this.router.url);
+        // localStorage.setItem('redirectUrl', this.router.url);
         this.router.navigate(['/access-denied']);
       } else {
         this.router.navigate(['missions/enter-mission', nid]);
