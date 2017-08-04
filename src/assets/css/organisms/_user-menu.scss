@@ -1,9 +1,10 @@
 .user-menu {
-	.profile-photo {
-		width:3.5rem;
-		height: 3.5rem;
-	}
-	.dropdown-toggle {
-		line-height: 0;
-	}
+  .profile-photo {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .dropdown-toggle {
+    line-height: 0;
+    cursor: pointer;
+  }
 }
