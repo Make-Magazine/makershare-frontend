@@ -14,7 +14,7 @@ export class Settings {
   solrPath = 'http://192.168.0.208:333/solr/drupal/';
   AppURL = 'http://localhost:4200';
   AppName = 'Maker Share';
-  LANGUAGE = 'und';
+  language = 'und';
 
   GetBackEndUrl(): string {
     const url = this.APIProtocol + '://' + this.APIHost;

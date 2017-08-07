@@ -7,7 +7,7 @@ export interface ISettings {
 
   AppURL: string;
   AppName: string;
-  LANGUAGE: string;
+  language: string;
 
   GetBackEndUrl(): string;
   GetBackEndUrlWithEndpoint(): string;
