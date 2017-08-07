@@ -1,9 +1,19 @@
 <div *ngIf="company">
-  <div class="container">
-    <div class="row">
+  <div class="container organization-layout">
+    <div class="row org-hero">
+      <div class="card-img org-feature-photo w-100" [style.background-image]="'url('+company.company_cover_photo+')'"></div>
       <div class="col-md-12">
         <!-- Oraganization Header  -->
-        <img class="card-img w-100" height="200" src="{{company.company_cover_photo}}">
+        <div>
+          <h2 class="text-center">{{company.company_name}}</h2>
+        </div>
+        <div>
+          <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
+          {{company.address.administrative_area}}</small></p>
+        </div>
+
+
+        
         <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center text-center">
           <li>
             <a (click)="current_active_tab = 'about-us'" class="btn btn-tab" [ngClass]="{'active': current_active_tab == 'about-us' }">
@@ -16,54 +26,50 @@
             </a>
           </li>
         </ul>
-        <div>
-          <h2 class="text-center">{{company.company_name}}</h2>
-        </div>
-        <div>
-          <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
-          {{company.address.administrative_area}}</small></p>
-        </div>
       </div>
 
+    </div>
     </div>
     <!-- <div class="row">
       <header class="mr-auto col-lg-6">
         
       </header>
     </div> -->
-    <div class="row">
-      <div class="col-md-7">
-        <app-orgs-about-us *ngIf="current_active_tab == 'about-us'" [description]="company.company_description"></app-orgs-about-us>
-        <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
-      </div>
-      <div class="col-md-5" *ngIf="company">
-        <!-- About Us Side Bar  -->
-
-        <ul>
-          <h1 class="text-left">Contact</h1>
-          <li> Phone: {{company.phone_number}}</li>
-          <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
-          <li> # of employees: {{company.employees}}</li>
-          <li> Founder: {{company.founder_name}}</li>
-          <li> Founded: {{company.founded_date}}</li>
-          <li> Type of business: {{company.business}}</li>
-        </ul>
-        <p>
-          <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
-        </p>
-        <div *ngIf="followers && company.minimum_followers < followersCount">
-          <p>Followers</p>
-          <div *ngFor="let maker of followers;" class="d-inline">
-            <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
-          </div>
-          <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
+    <div class="org-content">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <app-orgs-about-us *ngIf="current_active_tab == 'about-us'" [description]="company.company_description"></app-orgs-about-us>
+          <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
         </div>
-        <a>
-          <app-report-orgs *ngIf="nid" [organizationNid]="nid"> </app-report-orgs>
-        </a>
+        <div class="col-md-5" *ngIf="company">
+          <!-- About Us Side Bar  -->
 
+          <ul>
+            <h1 class="text-left">Contact</h1>
+            <li> Phone: {{company.phone_number}}</li>
+            <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
+            <li> # of employees: {{company.employees}}</li>
+            <li> Founder: {{company.founder_name}}</li>
+            <li> Founded: {{company.founded_date}}</li>
+            <li> Type of business: {{company.business}}</li>
+          </ul>
+          <p>
+            <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
+          </p>
+          <div *ngIf="followers && company.minimum_followers < followersCount">
+            <p>Followers</p>
+            <div *ngFor="let maker of followers;" class="d-inline">
+              <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
+            </div>
+            <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
+          </div>
+          <a>
+            <app-report-orgs *ngIf="nid" [organizationNid]="nid"> </app-report-orgs>
+          </a>
+
+        </div>
       </div>
-    </div>
 
     <div class="text-center">
       <h1 class="p-2">Our Team</h1>
@@ -101,5 +107,6 @@
         </div>
       </div>
     </ng-template>
+  </div>
   </div>
 </div>

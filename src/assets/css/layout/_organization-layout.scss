@@ -1,0 +1,29 @@
+.organization-layout {
+	// padding-top: 110px;
+}
+
+.org-hero {
+	height: 50vh;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.org-feature-photo {
+	position: fixed;
+	opacity: 0.45;
+	top: 110px;
+	left: 0;
+	right: 0;
+	height: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-bottom: 50vh;
+}
+
+.org-content {
+	background: white;
+    overflow: hidden;
+    position: relative;
+}
