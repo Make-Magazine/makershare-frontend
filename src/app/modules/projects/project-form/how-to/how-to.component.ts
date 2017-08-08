@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
 import {
   FieldCollectionItemMaterial,
   FieldCollectionItemPart,

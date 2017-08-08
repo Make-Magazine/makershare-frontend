@@ -8,11 +8,11 @@ import { ImageCropperComponent, ImageCropperModule } from 'ng2-img-cropper';
 // shared services
 import { NotificationBarService } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-import { AddProtocolDirective } from '../../Angular/directives/add-protocol.directive';
+import { AddProtocolDirective } from '../../angular/directives/add-protocol.directive';
 // custom directives
-import { ValidateOnFocusoutDirective } from '../../Angular/directives/validate-focusout.directive';
+import { ValidateOnFocusoutDirective } from '../../angular/directives/validate-focusout.directive';
 // pipes
-import { ReverseArray } from '../../Angular/pipes/reverse-array';
+import { ReverseArray } from '../../angular/pipes/reverse-array';
 /**
  * Providers
  */

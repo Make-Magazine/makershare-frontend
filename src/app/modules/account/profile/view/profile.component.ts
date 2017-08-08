@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
 import { FileEntity, FileEntityManage, NodeHelper } from '../../../../core';
 import {
   FileService,
