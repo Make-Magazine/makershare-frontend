@@ -23,7 +23,7 @@ export class SolrService {
           ') OR tm_name:(' +
           query +
           ')&spellcheck=true&wt=json&fl=tm_title,tm_name,tm_field_first_name,tm_field_last_name,tm_name',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -47,7 +47,7 @@ export class SolrService {
           '&start=' +
           skip +
           '&indent=on&wt=json&fl=is_nid',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -65,7 +65,7 @@ export class SolrService {
           '")&rows=' +
           count +
           '&indent=on&wt=json&fl=is_nid&fq=is_field_visibility2:370',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -83,7 +83,7 @@ export class SolrService {
           '")&rows=' +
           count +
           '&indent=on&wt=json&fl=is_nid',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -101,7 +101,7 @@ export class SolrService {
           '")&rows=' +
           count +
           '&indent=on&wt=json&fl=is_nid',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -119,7 +119,7 @@ export class SolrService {
           '")&rows=' +
           count +
           '&indent=on&wt=json&fl=is_nid',
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 
@@ -149,7 +149,7 @@ export class SolrService {
           category +
           '")&indent=on&fl=is_uid&wt=json&rows=' +
           count,
-      )
+      ).map(res => res.json())
       .timeout(10000);
   }
 }

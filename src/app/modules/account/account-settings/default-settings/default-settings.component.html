@@ -234,7 +234,7 @@
       </div>
       <div class="form-check row">
         <label class="form-check-label col-9">
-            someone finished editing project you want to edit
+            Someone finished editing project you want to edit
           </label>
         <div class="col-1 check-label">
           <label class="custom-control custom-checkbox">
@@ -251,7 +251,7 @@
       </div>
        <div class="form-check row">
         <label class="form-check-label col-9">
-            someone followed me
+            Someone followed me
           </label>
         <div class="col-1 check-label">
           <label class="custom-control custom-checkbox">
@@ -268,7 +268,7 @@
       </div>
         <div class="form-check row">
         <label class="form-check-label col-9">
-            someone liked one of my projects
+            Someone liked one of my projects
           </label>
         <div class="col-1 check-label">
           <label class="custom-control custom-checkbox">
@@ -283,6 +283,24 @@
           </label>
         </div>
       </div>
+        <div class="form-check row">
+        <label class="form-check-label col-9">
+            Someone added a project to organization
+          </label>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="org_email" clas id="collaborator_email" value="option" [checked]= "email_notifications.indexOf('18') !== -1" (change)="checkedEmail('18',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-1 check-label">
+          <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" name="org_web" id="collaborator_web" value="option" [checked]= "web_notifications.indexOf('17') !== -1" (change)="checkedWeb('17',$event)" >
+          <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+      
     </div>
     <button type="submit" class="btn btn-simple-small pull-right mt-5 mr-3" (click)="updateNotificationSettings($event)">Save changes</button>
   </fieldset>
