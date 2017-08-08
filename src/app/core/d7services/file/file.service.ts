@@ -23,34 +23,15 @@ export class FileService {
   }
 
   editFile(file): Observable<any> {
-    return this.mainService.put('file/' + file.fid, file);
+    return this.mainService.put('file', file.fid, file);
   }
 
   deleteFile(fid): Observable<any> {
-    return this.mainService.delete('file/' + fid);
+    return this.mainService.delete('file', fid);
   }
 
   getSiteMap(): Observable<any> {
-    let out = this.mainService.get('sitemap.xml', true);
-    return out;
+    const out = this.mainService.get('', 'sitemap.xml', true);
+     return out;
   }
-  // getXMLFile():Observable<any>{
-  //     var obs = Observable.create(observer => {
-  //       this.getSiteMap().subscribe( data => {
-  //         console.log(data);
-  //           if(data ){
-
-  //             observer.next(true);
-  //             observer.complete();
-
-  //           }else{
-  //             observer.next(false);
-  //             observer.complete();
-  //           }
-  //       });
-
-  //   });
-  //   return obs;
-
-  // }
 }

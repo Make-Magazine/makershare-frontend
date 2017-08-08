@@ -1,4 +1,4 @@
-import { FileEntity, Node } from '../drupal';
+import { FileEntity, NodeEntity } from '../drupal';
 
 export interface FileEntityManage extends FileEntity {
   url: URL;
@@ -7,7 +7,7 @@ export interface FileEntityManage extends FileEntity {
 }
 
 interface FileUsage {
-  node?: Node[];
-  field_collection_item?: Node[];
+  node?: NodeEntity[];
+  field_collection_item?: NodeEntity[];
   profile2?: number[];
 }

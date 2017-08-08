@@ -54,7 +54,7 @@ export class NotificationTemplateComponent implements OnInit {
       type: this.notification.type,
     };
     return this.mainService.put(
-      'entity_message/' + this.notification.mid,
+      'entity_message' , this.notification.mid,
       notification,
     );
   }

@@ -1,4 +1,7 @@
-export interface FileEntity {
+import { DrupalCustomField } from './custom-field';
+
+export class FileEntity extends DrupalCustomField{
+
   fid?: number;
   filename: string;
   file: string;
@@ -10,11 +13,14 @@ export interface FileEntity {
   uri_full?: URL;
   uid?: number;
   filepath?: string;
-}
 
-export class FileEntity implements FileEntity {
-  constructor() {
+  constructor(){
+    super();
     this.file = '';
     this.filename = '';
+  }
+
+  init(){
+    return [this];
   }
 }

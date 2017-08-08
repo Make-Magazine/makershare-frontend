@@ -11,7 +11,7 @@ export class VocabularyService {
   }
 
   getVocabulary(vid: number): Observable<any> {
-    return this.mainService.get('taxonomy_vocabulary/' + vid);
+    return this.mainService.get('taxonomy_vocabulary', vid);
   }
 
   createVocabulray(body): Observable<any> {
@@ -19,10 +19,10 @@ export class VocabularyService {
   }
 
   updateVocabulray(body): Observable<any> {
-    return this.mainService.put('taxonomy_vocabulary/' + body.vid, body);
+    return this.mainService.put('taxonomy_vocabulary', body.vid, body);
   }
 
   deleteVocabulray(vid: number): Observable<any> {
-    return this.mainService.delete('taxonomy_vocabulary/' + vid);
+    return this.mainService.delete('taxonomy_vocabulary', vid);
   }
 }

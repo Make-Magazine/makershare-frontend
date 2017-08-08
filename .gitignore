@@ -48,7 +48,7 @@ src/assets/css/style.css
 .DS_Store
 Thumbs.db
 /nbproject/private/
-/src/app/CORE/application/settings.ts
+/src/app/core/models/application/settings.ts
 /src/assets/css/style.css.map
 /src/dist/
 /src/*.ngfactory.ts

@@ -1,4 +1,4 @@
-export interface IFieldFileReference {
+export class FieldFileReference{
   fid: number|'';
   uid?: number;
   filename?: string;
@@ -12,12 +12,7 @@ export interface IFieldFileReference {
   title?: string;
   height?: number;
   width?: number;
-}
-
-export class FieldFileReference implements IFieldFileReference {
-  fid;
-
-  constructor() {
+  constructor(){
     this.fid = '';
   }
 }
