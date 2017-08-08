@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MainService } from '../main/main.service';
 import { CookieOptions } from 'ngx-cookie';
 import { Observable } from 'rxjs/Observable';
+import { MainService } from '../main/main.service';
 
 @Injectable()
 export class UserService {

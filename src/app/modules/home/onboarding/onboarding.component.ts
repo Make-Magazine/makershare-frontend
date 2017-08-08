@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoCard } from '../../../core/models/cards/info-card';
+import { InfoCard } from '../../../core/models/cards/infoCard';
 import { Auth } from '../../auth0/auth.service';
 
 @Component({
