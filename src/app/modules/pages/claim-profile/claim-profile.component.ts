@@ -1,9 +1,9 @@
-import { Component, OnInit, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MainService } from 'app/CORE/d7services/main/main.service';
-import { Auth } from 'app/modules/auth0/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE/';
+import { ActivatedRoute } from '@angular/router';
+import { Singleton } from '../../../core/';
+import { MainService } from '../../../core/d7services/main/main.service';
+import { Auth } from '../../auth0/auth.service';
 
 @Component({
   selector: 'app-claim-profile',
@@ -30,7 +30,7 @@ export class ClaimProfileComponent implements OnInit {
         name: 'description', content: 'If you already have a Maker Faire login, use it to login. If not, then Signup using this email address.'
       },
       {
-        name: 'image', content: Singleton.Settings.AppURL + 'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'image', content: Singleton.Settings.appURL + 'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
   }

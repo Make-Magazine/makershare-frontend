@@ -1,4 +1,4 @@
-import { ViewService } from 'app/CORE/d7services';
+import { ViewService } from '../..//d7services';
 
 export interface SortingSet {
   sort_order: 'ASC' | 'DESC';

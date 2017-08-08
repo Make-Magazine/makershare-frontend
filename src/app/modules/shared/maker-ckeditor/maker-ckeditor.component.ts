@@ -1,11 +1,11 @@
 import { Component, ViewChild, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FileService } from 'app/CORE/d7services';
-import { FileEntity, NodeHelper } from 'app/CORE/models';
+import { FileService } from '../../../core/d7services';
+import { FileEntity, NodeHelper } from '../../../core/models';
 import { CropperSettings } from 'ng2-img-cropper';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
-import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from '../../../Angular/validations/url-no-protocol.validation';
 import { FormControl } from '@angular/forms';
 
 @Component({

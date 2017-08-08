@@ -1,1 +1,1 @@
-export * from 'app/CORE/models/molecules/filter';
+export * from '../molecules/filter';

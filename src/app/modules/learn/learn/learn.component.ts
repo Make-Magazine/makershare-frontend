@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from 'app/CORE/d7services';
-import { Router } from '@angular/router';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE';
+import { Router } from '@angular/router';
+import { Singleton } from '../../../core';
+import { ViewService } from '../../../core/d7services';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 
 @Component({
@@ -38,7 +38,7 @@ export class LearnComponent implements OnInit {
         name: 'og:description', content: 'Learn with us'
       },
       {
-        name: 'og:image', content: Singleton.Settings.AppURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+        name: 'og:image', content: Singleton.Settings.appURL + '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
       }
     ])
 

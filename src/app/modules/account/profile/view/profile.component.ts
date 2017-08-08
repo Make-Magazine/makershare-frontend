@@ -6,20 +6,20 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
-import { FileEntity, FileEntityManage, NodeHelper } from 'app/CORE';
+import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
+import { FileEntity, FileEntityManage, NodeHelper } from '../../../../core';
 import {
   FileService,
   MainService,
   ProfileService,
   StatisticsService,
   UserService,
-  ViewService,
-} from 'app/CORE/d7services';
-import { ProfileSocial } from 'app/CORE/models/profile/profile-social';
-import { UserProfile } from 'app/CORE/models/profile/user-profile';
-import { Auth } from 'app/modules/auth0/auth.service';
-import { ProfilePictureService } from 'app/modules/shared/profile-picture/profile-picture.service';
+  ViewService
+} from '../../../../core/d7services';
+import { ProfileSocial } from '../../../../core/models/profile/profile-social';
+import { UserProfile } from '../../../../core/models/profile/user-profile';
+import { Auth } from '../../../auth0/auth.service';
+import { ProfilePictureService } from '../../../shared/profile-picture/profile-picture.service';
 
 @Component({
   selector: 'app-profile',

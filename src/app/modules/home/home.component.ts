@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from 'app/modules/auth0/auth.service';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
-import { ViewService } from 'app/CORE/d7services';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE';
-import {
-  SimpleOverviewEntity,
-  EntityType,
-  EntityGridSize,
-} from 'app/CORE/models/cards';
+import { Singleton } from '../../core';
+import { ViewService } from '../../core/d7services';
+import { EntityGridSize, EntityType, SimpleOverviewEntity } from '../../core/models/cards';
+import { Auth } from '../auth0/auth.service';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +30,7 @@ export class HomeComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.AppURL +
+          Singleton.Settings.appURL +
           'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);

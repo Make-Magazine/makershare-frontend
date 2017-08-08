@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { NodeService } from 'app/CORE/d7services/node/node.service';
-import { StatisticsService } from 'app/CORE/d7services/statistics/statistics.service';
-import { ViewService } from 'app/CORE/d7services/view/view.service';
-import { SortBySortingSet, SortingSet } from 'app/CORE/models/makers';
-import { FilterOption } from 'app/CORE/models/molecules';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { NodeService } from '../../../core/d7services/node/node.service';
+import { StatisticsService } from '../../../core/d7services/statistics/statistics.service';
+import { ViewService } from '../../../core/d7services/view/view.service';
+import { SortBySortingSet, SortingSet } from '../../../core/models/makers';
+import { FilterOption } from '../../../core/models/molecules';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-single-showcases',

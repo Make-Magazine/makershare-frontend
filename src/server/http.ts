@@ -1,7 +1,7 @@
 import cookieParser = require('cookie-parser');
 import express = require('express');
 import url = require('url');
-import { dist, index } from 'server/paths';
+import { dist, index } from './paths';
 
 export const configure = (http: express.Application): void => {
   http.use(express.static(dist, { index }));

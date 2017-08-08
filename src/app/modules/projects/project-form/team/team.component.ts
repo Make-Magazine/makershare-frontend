@@ -1,13 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import {
-  FieldCollectionItemMember,
-  NodeHelper,
-  ProjectForm,
-  UserInvitations,
-} from 'app/CORE';
-import { ViewService } from 'app/CORE/d7services';
+import { FieldCollectionItemMember, NodeHelper, ProjectForm, UserInvitations } from '../../../../core';
+import { ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-project-form-team',

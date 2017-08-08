@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CompaniesComponent } from 'app/modules/companies/companies.component';
-import { CompaniesRoutingModule } from 'app/modules/companies/companies.routing.module';
-import { SharedModule } from 'app/modules/shared/shared.module';
+import { CompaniesComponent } from '../companies/companies.component';
+import { CompaniesRoutingModule } from '../companies/companies.routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [CommonModule, SharedModule, CompaniesRoutingModule],

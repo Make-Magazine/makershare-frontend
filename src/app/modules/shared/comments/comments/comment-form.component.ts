@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { CommentService, ViewService, UserService } from 'app/CORE/d7services';
-import { IComment } from 'app/CORE/models/mission/comment';
-import { Auth } from 'app/modules/auth0/auth.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommentService, UserService, ViewService } from '../../../../core/d7services';
+import { IComment } from '../../../../core/models/mission/comment';
+import { Auth } from '../../../auth0/auth.service';
 
 @Component({
   selector: 'app-comment-form',

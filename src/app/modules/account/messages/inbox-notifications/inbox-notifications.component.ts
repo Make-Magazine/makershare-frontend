@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { PmService,ViewService,UserService } from 'app/CORE/d7services'
-import { Observable } from 'rxjs/Observable';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common'
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { Observable } from 'rxjs/Observable';
+import { PmService, UserService, ViewService } from '../../../../core/d7services'
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-inbox-notifications',

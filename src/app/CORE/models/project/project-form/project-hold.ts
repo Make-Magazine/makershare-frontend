@@ -2,7 +2,7 @@ import {
   date_time,
   field_entity_reference,
   Node,
-} from 'app/CORE/models/drupal';
+} from '../../drupal';
 
 export interface ProjectHold extends Node {
   field_project_to_edit: { und: field_entity_reference[] };

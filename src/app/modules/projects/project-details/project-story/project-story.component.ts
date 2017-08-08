@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CommentService, ViewService } from 'app/CORE/d7services';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IComment } from 'app/CORE/models/mission/comment';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CommentService, ViewService } from '../../../../core/d7services';
+import { IComment } from '../../../../core/models/mission/comment';
 
 @Component({
   selector: 'app-project-story',

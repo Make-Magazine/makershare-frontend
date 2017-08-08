@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ChallengeComponent } from 'app/modules/home/challenge/challenge.component';
-import { HomeRoutingModule } from 'app/modules/home/home-routing.module';
-import { HomeComponent } from 'app/modules/home/home.component';
-import { OnboardingComponent } from 'app/modules/home/onboarding/onboarding.component';
-import { ShowcasesComponent } from 'app/modules/home/showcases/showcases.component';
-import { SliderComponent } from 'app/modules/home/slider/slider.component';
-import { SpotlightComponent } from 'app/modules/home/spotlight/spotlight.component';
-import { SharedModule } from 'app/modules/shared/shared.module';
+import { ChallengeComponent } from './challenge/challenge.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './home.component';
+import { OnboardingComponent } from './onboarding/onboarding.component';
+import { ShowcasesComponent } from './showcases/showcases.component';
+import { SliderComponent } from './slider/slider.component';
+import { SpotlightComponent } from './spotlight/spotlight.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [

@@ -1,1 +1,1 @@
-export { SortBySortingSet, SortingSet } from 'app/CORE/models/makers/sorting';
+export { SortBySortingSet, SortingSet } from '../makers/sorting';

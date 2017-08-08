@@ -1,16 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
-import { ViewService } from 'app/CORE/d7services';
-import { ProjectCategory, NodeHelper, ProjectForm, FileEntity } from 'app/CORE';
-import { CropperSettings } from 'ng2-img-cropper';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { animate, Component, EventEmitter, Input, OnInit, Output, style, transition, trigger } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
-import { YoutubeOrVimeoLink } from 'app/Angular/validations/youtube-or-vimeo-link.validation';
-import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
-import { UsaDate } from 'app/Angular/validations/usa-date.validation';
-import { trigger, style, transition, animate } from '@angular/core';
+import { CropperSettings } from 'ng2-img-cropper';
+import { CustomValidators } from 'ng2-validation';
+import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
+import { UsaDate } from '../../../../Angular/validations/usa-date.validation';
+import { YoutubeOrVimeoLink } from '../../../../Angular/validations/youtube-or-vimeo-link.validation';
+import { FileEntity, NodeHelper, ProjectCategory, ProjectForm } from '../../../../core';
+import { ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-project-form-your-story',

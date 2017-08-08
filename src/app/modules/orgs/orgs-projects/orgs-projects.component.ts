@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, StatisticsService } from 'app/CORE/d7services';
 import { ActivatedRoute } from '@angular/router';
-import { NodeService, MainService } from 'app/CORE/d7services';
-
+import { MainService, NodeService, StatisticsService, ViewService } from '../../../core/d7services';
 
 @Component({
   selector: 'app-orgs-projects',

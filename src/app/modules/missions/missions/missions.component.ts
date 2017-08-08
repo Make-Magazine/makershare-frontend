@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Singleton } from 'app/CORE';
-import {
-  FlagService,
-  UserService,
-  ViewService,
-} from 'app/CORE/d7services';
-import { MissionData } from 'app/CORE/models/mission/mission-data';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { Singleton } from '../../../core';
+import { FlagService, UserService, ViewService } from '../../../core/d7services';
+import { MissionData } from '../../../core/models/mission/mission-data';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-missions',
@@ -43,7 +39,7 @@ export class MissionsComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.AppURL +
+          Singleton.Settings.appURL +
           '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);

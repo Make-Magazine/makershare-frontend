@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, PmService, UserService } from 'app/CORE/d7services';
+import { ViewService, PmService, UserService } from '../../../core/d7services';
 import {
   NotificationBarService,
   NotificationType,

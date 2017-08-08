@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ISorting } from 'app/CORE/models/mission/sorting';
+import { ISorting } from '../../../../core/models/mission/sorting';
 
 @Component({
   selector: 'app-followers',

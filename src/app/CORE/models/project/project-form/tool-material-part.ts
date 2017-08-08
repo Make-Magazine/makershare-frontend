@@ -1,4 +1,4 @@
-import { Node } from 'app/CORE/models';
+import { Node } from '../../';
 
 export interface IToolMaterialPart extends Node {
   type: string;

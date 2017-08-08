@@ -4,19 +4,19 @@ import { NotificationBarService, NotificationType } from 'ngx-notification-bar/r
 import { Observable } from 'rxjs/Observable';
 import {
   date_time,
+  field_date,
   FieldCollectionItemMaterial,
   FieldCollectionItemMember,
   FieldCollectionItemPart,
   FieldCollectionItemResource,
   FieldCollectionItemTool,
-  field_date,
   FieldFileReference,
   FileEntity,
   NodeHelper,
   ProjectForm,
   ProjectHold,
   ProjectView
-} from 'app/CORE';
+} from '../../../../core';
 import {
   FileService,
   MainService,
@@ -24,8 +24,8 @@ import {
   TaxonomyService,
   UserService,
   ViewService
-} from 'app/CORE/d7services';
-import { ComponentCanDeactivate } from 'app/modules/projects/project-form/pending-changes.guard';
+} from '../../../../core/d7services';
+import { ComponentCanDeactivate } from '../../../projects/project-form/pending-changes.guard';
 
 declare var swal: any;
 @Component({

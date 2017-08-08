@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService, UserService, PmService, NodeService } from 'app/CORE/d7services';
+import { MainService, UserService, PmService, NodeService } from '../../../core/d7services';
 
 @Component({
   selector: 'notification-tpl',

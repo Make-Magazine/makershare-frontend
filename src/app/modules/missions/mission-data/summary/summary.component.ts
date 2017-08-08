@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISorting } from 'app/CORE/models/mission/sorting';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ISorting } from '../../../../core/models/mission/sorting';
 
 @Component({
   selector: 'app-summary',
