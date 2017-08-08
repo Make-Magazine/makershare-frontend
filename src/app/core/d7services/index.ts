@@ -7,15 +7,11 @@ export { NodeService } from './node/node.service';
 export { PmService } from './pm/pm.service';
 export { ProfileService } from './profile/profile.service';
 export { SolrService } from './solr/solr.service';
-export {
-  StatisticsService,
-} from './statistics/statistics.service';
+export { StatisticsService } from './statistics/statistics.service';
 export { TaxonomyService } from './taxonomy/taxonomy.service';
 export { UserService } from './user/user.service';
 export { ViewService } from './view/view.service';
-export {
-  VocabularyService,
-} from './vocabulary/vocabulary.service';
+export { VocabularyService } from './vocabulary/vocabulary.service';
 // imports
 import { CommentService } from './comment/comment.service';
 import { FileService } from './file/file.service';
