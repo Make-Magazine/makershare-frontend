@@ -27,6 +27,7 @@ import { ProfilePictureService } from '../../../shared/profile-picture/profile-p
 })
 export class ProfileComponent implements OnInit {
   searchFailed: boolean = false;
+  canCreateOrNot = false;
   CurrentLoggedUserId: number;
   formGroup: FormGroup;
   FormGroupSocial: FormGroup;
@@ -245,6 +246,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.canCreateOrg();
     this.CurrentInfoTab = 'Personal Info';
     this.currentHover = '';
     this.PhotoModalTab = 'upload';
@@ -511,6 +513,20 @@ export class ProfileComponent implements OnInit {
         this.CountryFieldsAndDetails = data;
         this.ReSetAddressValues();
       });
+  }
+
+  canCreateOrg() {
+    this.uid = +localStorage.getItem('user_id');
+    let body = {
+      "uid": this.uid
+    }
+    this.mainService.custompost('company_profile_api/check_if_user_has_org', body).subscribe(res => {
+      if(res[0] == 'can_not_create_org'){
+        this.canCreateOrNot == false;
+      }else if(res[0] == 'can_create_org'){
+        this.canCreateOrNot = true;
+      }
+    })
   }
 
   AddMakerspaceRow(makerspace?) {

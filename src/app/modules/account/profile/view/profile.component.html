@@ -2,6 +2,13 @@
 	<div *ngIf="profile && profile.status == 'active'">
 		<section class="container-fluid cover-region">
 		</section>
+
+		<div class="add-org" *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
+			<!--it should be orgs/create like commented line  -->
+			 <!-- <button  [routerLink]="['/orgs/create']"> Create Org </button> -->
+			 <button  [routerLink]="['/']"> Create Org </button>
+		</div>
+		
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row body-content">
