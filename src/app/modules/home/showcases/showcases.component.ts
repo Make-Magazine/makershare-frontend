@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from 'app/CORE/d7services';
 import { Router } from '@angular/router';
+import { ViewService } from '../../../core/d7services';
 
 @Component({
   selector: 'app-showcases',

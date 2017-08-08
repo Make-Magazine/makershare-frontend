@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewService,FlagService } from 'app/CORE/d7services';
+import { ViewService, FlagService } from '../../../../core/d7services';
 @Component({
   selector: 'app-maker',
   templateUrl: './maker.component.html',
 })
 export class MakerComponent implements OnInit {
-  @Input()countMaker;
+  @Input() countMaker;
   users = [];
   deletedArr = [];
   userId;
@@ -15,33 +15,38 @@ export class MakerComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private flagService: FlagService,
-  ) { }
+  ) {}
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.getUserBookmark();
   }
   getUserBookmark() {
-       if (this.pages >= 0) {
-      this.page_arg =
-        ['page', this.pages]
-        ;
+    if (this.pages >= 0) {
+      this.page_arg = ['page', this.pages];
     }
     if (this.pages == 0) {
       this.users = [];
     }
     // get users Has Bookmark from a view
-    this.viewService.getView('maker-bookmark',[this.page_arg]).subscribe(res => {
-      this.users = this.users.concat(res);
-      this.loadMoreVisibilty();
-    }, err => {
-    });
+    this.viewService.getView('maker-bookmark', [this.page_arg]).subscribe(
+      res => {
+        this.users = this.users.concat(res);
+        this.loadMoreVisibilty();
+      },
+      err => {},
+    );
   }
   deleteMessage(i) {
-    this.flagService.unflag(this.users[i]['uid'], this.userId, 'maker_bookmark').subscribe(response => {
-      this.getUserBookmark();
-    }, err => {
-      //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-    });
+    this.flagService
+      .unflag(this.users[i]['uid'], this.userId, 'maker_bookmark')
+      .subscribe(
+        response => {
+          this.getUserBookmark();
+        },
+        err => {
+          //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+        },
+      );
   }
   valueChanged(mid, event) {
     // add to deletedArr
@@ -60,22 +65,25 @@ export class MakerComponent implements OnInit {
 * delete selected messages
 */
   deleteMessages() {
-    
     for (var i = 0; i < this.deletedArr.length; i++) {
-      this.flagService.unflag(this.deletedArr[i], this.userId, 'maker_bookmark').subscribe(response => {
-        this.getUserBookmark();
-      }, err => {
-        //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
-      });
+      this.flagService
+        .unflag(this.deletedArr[i], this.userId, 'maker_bookmark')
+        .subscribe(
+          response => {
+            this.getUserBookmark();
+          },
+          err => {
+            //this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+          },
+        );
     }
   }
 
   checkAll(ev) {
-    this.users.forEach(x => x.state = ev.target.checked)
+    this.users.forEach(x => (x.state = ev.target.checked));
     for (var _i = 0; _i < this.users.length; _i++) {
       if (ev.target.checked === true) {
         this.deletedArr.push(this.users[_i].nid);
-        
       } else {
         var index = this.deletedArr.indexOf(this.users[_i].nid, 0);
         if (index > -1) {
@@ -87,7 +95,7 @@ export class MakerComponent implements OnInit {
   isAllChecked() {
     return this.users.every(_ => _.state);
   }
-    /* function load more  */
+  /* function load more  */
   loadMoreMaker() {
     this.pages++;
     this.getUserBookmark();
@@ -97,9 +105,7 @@ export class MakerComponent implements OnInit {
   loadMoreVisibilty() {
     // get the challenges array count
     if (this.countMaker == this.users.length) {
-
       this.hideloadmoremaker = true;
-
     } else if (this.countMaker > this.users.length) {
       this.hideloadmoremaker = false;
     }

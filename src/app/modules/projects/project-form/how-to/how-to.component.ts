@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
-import { URLNoProtocol } from 'app/Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
 import {
   FieldCollectionItemMaterial,
   FieldCollectionItemPart,
@@ -12,9 +12,9 @@ import {
   NodeHelper,
   ProjectForm,
   TaxonomyTerm,
-  ToolMaterialPart,
-} from 'app/CORE';
-import { NodeService, TaxonomyService, ViewService } from 'app/CORE/d7services';
+  ToolMaterialPart
+} from '../../../../core';
+import { NodeService, TaxonomyService, ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-project-form-how-to',

@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChallengeEnterComponent } from 'app/modules/account/collection/challenge-enter/challenge-enter.component';
-import { ChallengeFollowComponent } from 'app/modules/account/collection/challenge-follow/challenge-follow.component';
-import { CollectionRoutingModule } from 'app/modules/account/collection/collection-routing.module';
-import { CollectionComponent } from 'app/modules/account/collection/collection.component';
-import { MakerComponent } from 'app/modules/account/collection/maker/maker.component';
-import { ProjectComponent } from 'app/modules/account/collection/project/project.component';
-import { ShowcaseComponent } from 'app/modules/account/collection/showcase/showcase.component';
+import { ChallengeEnterComponent } from '../collection/challenge-enter/challenge-enter.component';
+import { ChallengeFollowComponent } from '../collection/challenge-follow/challenge-follow.component';
+import { MakerComponent } from '../collection/maker/maker.component';
+import { ProjectComponent } from '../collection/project/project.component';
+import { ShowcaseComponent } from '../collection/showcase/showcase.component';
+import { CollectionRoutingModule } from './collection-routing.module';
+import { CollectionComponent } from './collection.component';
 
 @NgModule({
   imports: [CommonModule, CollectionRoutingModule, FormsModule],

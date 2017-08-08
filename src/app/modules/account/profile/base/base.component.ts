@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'app/CORE/d7services';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../../../core/d7services';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-base',

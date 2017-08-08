@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SortBySortingSet, SortingSet } from 'app/CORE/models/makers';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
-import { ViewService } from 'app/CORE/d7services/view/view.service';
-import { MainService } from 'app/CORE/d7services/main/main.service';
+import { MainService } from '../../core/d7services/main/main.service';
+import { ViewService } from '../../core/d7services/view/view.service';
+import { SortBySortingSet, SortingSet } from '../../core/models/makers';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   selector: 'app-companies',

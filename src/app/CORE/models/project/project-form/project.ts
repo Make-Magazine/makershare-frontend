@@ -8,8 +8,8 @@ import {
   field_URL,
   FieldFileReference,
   Node,
-} from 'app/CORE/models';
-import * as FieldCollectionItem from 'app/CORE/models/project/project-form/field-collection-item';
+} from '../../';
+import * as FieldCollectionItem from '../../project/project-form/field-collection-item';
 
 export interface ProjectForm extends Node {
   field_story: { und: field_text[] };

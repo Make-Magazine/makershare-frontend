@@ -3,7 +3,7 @@ import {
   StatisticsService,
   UserService,
   ViewService,
-} from 'app/CORE/d7services';
+} from '../../../core/d7services';
 
 @Component({
   selector: 'app-notification-panel',

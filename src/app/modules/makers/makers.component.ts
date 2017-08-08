@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from 'app/CORE/d7services';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
-import {
-  NotificationBarService,
-  NotificationType,
-} from 'ngx-notification-bar/release';
-import { Singleton } from 'app/CORE';
-import { SortBySortingSet, SortingSet } from 'app/CORE';
 import { Meta, Title } from '@angular/platform-browser';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { Singleton, SortBySortingSet, SortingSet } from '../../core';
+import { MainService, ViewService } from '../../core/d7services';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   selector: 'app-makers',
@@ -57,7 +53,7 @@ export class MakersComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.AppURL +
+          Singleton.Settings.appURL +
           '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);

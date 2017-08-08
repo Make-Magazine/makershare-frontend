@@ -1,1 +1,2 @@
-export { ISettings } from 'app/CORE/models/application/settings';
+export { ISettings } from './isettings';
+export { Singleton } from './singleton';

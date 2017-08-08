@@ -5,45 +5,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedModule } from 'app/modules/shared/shared.module';
 import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
 import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-
 import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
-
 import { Observable } from 'rxjs/Observable';
-
-import { AppComponent } from 'app/app.component';
-//
-import { routing } from 'app/app.routing';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 // New Structure
-import { MessagesModule } from 'app/modules/account/messages/messages.module';
-import { AccessDeniedComponent } from 'app/modules/auth0/access-denied/access-denied.component';
-import { Four04Component } from 'app/modules/auth0/four04/four04.component';
-import { FooterComponent } from 'app/modules/general/footer/footer.component';
-import { HeaderComponent } from 'app/modules/general/header/header.component';
-import { SearchBoxComponent } from 'app/modules/general/header/search-box/search-box.component';
-import { AboutBadgesComponent } from 'app/modules/pages/about-badges/about-badges.component';
-import { AboutUsComponent } from 'app/modules/pages/about-us/about-us.component';
-import { ClaimProfileComponent } from 'app/modules/pages/claim-profile/claim-profile.component';
-import { GuidelinesComponent } from 'app/modules/pages/guidelines/guidelines.component';
-import { IntelInnovationComponent } from 'app/modules/pages/intel-innovation/intel-innovation.component';
-import { IntelMakeComponent } from 'app/modules/pages/intel-make/intel-make.component';
-import { MakerCampComponent } from 'app/modules/pages/maker-camp/maker-camp.component';
-import { MakerFaireComponent } from 'app/modules/pages/maker-faire/maker-faire.component';
-import { MakerIntelComponent } from 'app/modules/pages/maker-intel/maker-intel.component';
+import { MessagesModule } from './modules/account/messages/messages.module';
+import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
+import { Four04Component } from './modules/auth0/four04/four04.component';
+import { FooterComponent } from './modules/general/footer/footer.component';
+import { HeaderComponent } from './modules/general/header/header.component';
+import { SearchBoxComponent } from './modules/general/header/search-box/search-box.component';
+import { AboutBadgesComponent } from './modules/pages/about-badges/about-badges.component';
+import { AboutUsComponent } from './modules/pages/about-us/about-us.component';
+import { ClaimProfileComponent } from './modules/pages/claim-profile/claim-profile.component';
+import { GuidelinesComponent } from './modules/pages/guidelines/guidelines.component';
+import { IntelInnovationComponent } from './modules/pages/intel-innovation/intel-innovation.component';
+import { IntelMakeComponent } from './modules/pages/intel-make/intel-make.component';
+import { MakerCampComponent } from './modules/pages/maker-camp/maker-camp.component';
+import { MakerFaireComponent } from './modules/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from './modules/pages/maker-intel/maker-intel.component';
 // static pages
-import { MakerMovementComponent } from 'app/modules/pages/maker-movement/maker-movement.component';
-// GA
-// import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
-import { MakerShedComponent } from 'app/modules/pages/maker-shed/maker-shed.component';
-import { MakezineComponent } from 'app/modules/pages/makezine/makezine.component';
-import { OtherSitesComponent } from 'app/modules/pages/other-sites/other-sites.component';
-import { ShowTellComponent } from 'app/modules/pages/show-tell/show-tell.component';
-import { TermsComponent } from 'app/modules/pages/terms/terms.component';
-import { WhyPortfolioComponent } from 'app/modules/pages/why-portfolio/why-portfolio.component';
+import { MakerMovementComponent } from './modules/pages/maker-movement/maker-movement.component';
+import { MakerShedComponent } from './modules/pages/maker-shed/maker-shed.component';
+import { MakezineComponent } from './modules/pages/makezine/makezine.component';
+import { OtherSitesComponent } from './modules/pages/other-sites/other-sites.component';
+import { ShowTellComponent } from './modules/pages/show-tell/show-tell.component';
+import { TermsComponent } from './modules/pages/terms/terms.component';
+import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfolio.component';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   bootstrap: [AppComponent],

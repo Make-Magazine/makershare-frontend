@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FeedRoutingModule } from 'app/modules/feed/feed-routing';
-import { FeedComponent } from 'app/modules/feed/feed.component';
-import { SharedModule } from 'app/modules/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
+import { FeedRoutingModule } from './feed-routing';
+import { FeedComponent } from './feed.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule.forChild(), FeedRoutingModule],

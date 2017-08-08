@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService, FlagService, UserService } from 'app/CORE/d7services';
+import { ViewService, FlagService, UserService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-showcase-search-card',

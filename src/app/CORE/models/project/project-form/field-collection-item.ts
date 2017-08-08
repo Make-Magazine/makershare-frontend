@@ -1,4 +1,4 @@
-import { FieldFileReference } from 'app/CORE/models';
+import { FieldFileReference } from '../../..//models';
 
 export interface IFieldCollectionItemTool {
   field_tool_name: { und: [FieldCollectionItemReferenceEntity] };

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService, MainService } from 'app/CORE/d7services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NodeService } from 'app/CORE/d7services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MainService, NodeService, ViewService } from '../../core/d7services';
 
 @Component({
   selector: 'app-orgs',

@@ -1,4 +1,4 @@
-import { FileEntityManage } from 'app/CORE/models/filemanager/file-entity-manage';
+import { FileEntityManage } from '../filemanager/file-entity-manage';
 
 export interface FileManageService {
   count: number;

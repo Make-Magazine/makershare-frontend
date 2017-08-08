@@ -1,14 +1,30 @@
-export interface ISettings {
-  APIProtocol: string;
-  APIHost: string;
-  APIPort: number;
-  APIEndPoint: string;
-  solrPath: string;
+import { ISettings } from './isettings';
 
-  AppURL: string;
-  AppName: string;
-  language: string;
+export class Settings implements ISettings {
 
-  GetBackEndUrl(): string;
-  GetBackEndUrlWithEndpoint(): string;
+  apiEndPoint: string = 'api';
+
+  // connect to stage
+  apiProtocol: 'http'|'https' = 'https';
+  apiHost: string = 'preview-manage.makershare.com';
+  apiPort: number;
+
+  // // connect locally
+  // apiProtocol: 'http'|'https' = 'http';
+  // apiHost: string = 'localhost';
+  // apiPort: number = 333;
+
+  solrPath: string = 'http://192.168.0.208:333/solr/drupal/';
+  appURL: string = 'http://localhost:4200';
+  appName: string = 'Maker Share';
+  language: string = 'und';
+
+  getBackEndUrl(): string {
+    const url = this.apiProtocol + '://' + this.apiHost;
+    return this.apiPort ? url + ':' + this.apiPort + '/' : url + '/';
+  }
+
+  getBackEndUrlWithEndpoint(): string {
+    return this.getBackEndUrl() + this.apiEndPoint + '/';
+  }
 }

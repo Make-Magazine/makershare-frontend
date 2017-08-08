@@ -2,15 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AwardsComponent } from 'app/modules/missions/mission-data/awards/awards.component';
-import { BriefComponent } from 'app/modules/missions/mission-data/brief/brief.component';
-import { DiscussionComponent } from 'app/modules/missions/mission-data/discussion/discussion.component';
-import { FollowersComponent } from 'app/modules/missions/mission-data/followers/followers.component';
-import { MissionDataRoutingModule } from 'app/modules/missions/mission-data/mission-data-routing.module';
-import { MissionDataComponent } from 'app/modules/missions/mission-data/mission-data.component';
-import { RulesComponent } from 'app/modules/missions/mission-data/rules/rules.component';
-import { SummaryComponent } from 'app/modules/missions/mission-data/summary/summary.component';
-import { SharedModule } from 'app/modules/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
+import { AwardsComponent } from './awards/awards.component';
+import { BriefComponent } from './brief/brief.component';
+import { DiscussionComponent } from './discussion/discussion.component';
+import { FollowersComponent } from './followers/followers.component';
+import { MissionDataRoutingModule } from './mission-data-routing.module';
+import { MissionDataComponent } from './mission-data.component';
+import { RulesComponent } from './rules/rules.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   imports: [

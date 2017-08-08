@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from 'app/modules/auth0/auth-guard.service';
-import { MissionProjectComponent } from 'app/modules/missions/enter-mission-project/mission-project.component';
-import { MissionsComponent } from 'app/modules/missions/missions/missions.component';
+import { AuthGuardService } from '../auth0/auth-guard.service';
+import { MissionProjectComponent } from '../missions/enter-mission-project/mission-project.component';
+import { MissionsComponent } from '../missions/missions/missions.component';
 
 const MissionRoutes: Routes = [
   {

@@ -1,11 +1,10 @@
-export abstract class Node{
+export abstract class Node {
   public title: string;
   public status: number;
   public promote: number;
   public sticky: number;
   public type: string;
   public comment: number;
-  
   public name?: string;
   public picture?: number;
   public nid?: number;
@@ -24,23 +23,22 @@ export abstract class Node{
   public revision_uid?: number;
   public cid?: number;
   public last_comment_timestamp?: number;
-  public last_comment_name?: null|string;
+  public last_comment_name?: null | string;
   public last_comment_uid?: number;
   public comment_count?: number;
 
-  constructor(){
-  }
+  constructor() {}
 
-  public SetField(FieldName:string, value:number|string):void{
+  public SetField(FieldName: string, value: number | string): void {
     this[FieldName] = value;
   }
 
-  public GetField(FieldName:string):string|number{
+  public GetField(FieldName: string): string | number {
     return this[FieldName];
   }
-  
-  protected InitFields(Type:string):void{
-    this.title = "";
+
+  protected InitFields(Type: string): void {
+    this.title = '';
     this.status = null;
     this.promote = null;
     this.sticky = null;

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,FlagService,UserService } from 'app/CORE/d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FlagService, UserService, ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-project-search-card',

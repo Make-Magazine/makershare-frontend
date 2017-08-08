@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CollectionComponent } from 'app/modules/account/collection/collection.component';
+import { CollectionComponent } from '../../account/collection/collection.component';
 
 const CollectionRouts: Routes = [
   { path: 'bookmark', component: CollectionComponent },
