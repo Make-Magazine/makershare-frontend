@@ -5,7 +5,7 @@ import { FileService } from '../../../core/d7services';
 import { FileEntity, NodeHelper } from '../../../core/models';
 import { CropperSettings } from 'ng2-img-cropper';
 // import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
-import { URLNoProtocol } from '../../../Angular/validations/url-no-protocol.validation';
+import { URLNoProtocol } from '../../../angular/validations/url-no-protocol.validation';
 import { FormControl } from '@angular/forms';
 
 @Component({

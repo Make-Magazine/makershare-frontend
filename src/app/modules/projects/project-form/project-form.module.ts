@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
-import { EntityReferenceNoNid } from '../../../Angular/pipes/EntityReferenceWithoutNid';
+import { EntityReferenceNoNid } from '../../../angular/pipes/EntityReferenceWithoutNid';
 import { HowToComponent } from '../../projects/project-form/how-to/how-to.component';
 import { PendingChangesGuard } from '../../projects/project-form/pending-changes.guard';
 import { ProjectFormRoutingModule } from '../../projects/project-form/project-form-routing.module';

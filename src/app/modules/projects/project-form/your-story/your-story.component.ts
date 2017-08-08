@@ -4,9 +4,9 @@ import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
 import { CustomValidators } from 'ng2-validation';
-import { URLNoProtocol } from '../../../../Angular/validations/url-no-protocol.validation';
-import { UsaDate } from '../../../../Angular/validations/usa-date.validation';
-import { YoutubeOrVimeoLink } from '../../../../Angular/validations/youtube-or-vimeo-link.validation';
+import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
+import { UsaDate } from '../../../../angular/validations/usa-date.validation';
+import { YoutubeOrVimeoLink } from '../../../../angular/validations/youtube-or-vimeo-link.validation';
 import { FileEntity, NodeHelper, ProjectCategory, ProjectForm } from '../../../../core';
 import { ViewService } from '../../../../core/d7services';
 
