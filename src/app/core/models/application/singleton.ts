@@ -1,4 +1,4 @@
-import { Settings } from './Settings';
+import { Settings } from './settings';
 
 export class Singleton {
   private static _instance: Singleton;
