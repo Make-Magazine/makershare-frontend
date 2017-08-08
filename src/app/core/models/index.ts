@@ -1,6 +1,7 @@
 export * from './application';
 export * from './drupal';
 export * from './project';
+export * from './organization';
 export * from './filemanager';
 export * from './profile';
 export * from './makers';

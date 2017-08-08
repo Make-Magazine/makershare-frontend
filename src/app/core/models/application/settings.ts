@@ -15,14 +15,14 @@ export class Settings {
   solrPath: string = 'http://192.168.0.208:333/solr/drupal/';
   appURL: string = 'http://localhost:4200';
   appName: string = 'Maker Share';
-  Language: string = 'und';
+  language: string = 'und';
 
   getBackEndUrl(): string {
     const url = this.apiProtocol + '://' + this.apiHost;
     return this.apiPort ? url + ':' + this.apiPort + '/' : url + '/';
   }
 
-  getBackEndUrlWithEndpoint(): string {
+  getBackEndUrlWithEndPoint(): string {
     return this.getBackEndUrl() + this.apiEndPoint + '/';
   }
 

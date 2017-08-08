@@ -18,8 +18,8 @@ export class TaxonomyService {
     return this.mainService.get('taxonomy_term?parameters[name]=' + name);
   }
 
-  getTermByID(tid: number): Observable<any> {
-    return this.mainService.get('taxonomy_term/' + tid);
+  getTermByID(tid: number): Observable<any>{
+    return this.mainService.get('taxonomy_term', tid);
   }
 
   createTerm(term): Observable<any> {
@@ -27,10 +27,10 @@ export class TaxonomyService {
   }
 
   updateTerm(term): Observable<any> {
-    return this.mainService.put('taxonomy_term/' + term.vid, term);
+    return this.mainService.put('taxonomy_term' , term.vid, term);
   }
 
   deleteTerm(tid: number): Observable<any> {
-    return this.mainService.delete('taxonomy_term/' + tid);
+    return this.mainService.delete('taxonomy_term' , tid);
   }
 }

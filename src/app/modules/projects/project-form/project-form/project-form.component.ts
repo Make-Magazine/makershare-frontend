@@ -131,8 +131,8 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         this.project.GetField('nid') +
           ')',
       );
-      projectHold.SetField('title', this.project.GetField('title'));
-      projectHold.SetField('nid', this.Holder.nid);
+      projectHold.setField('title', this.project.GetField('title'));
+      projectHold.setField('nid', this.Holder.nid);
       if (this.Holder.field_users_wants_edit) {
         projectHold.field_users_wants_edit = this.Holder.field_users_wants_edit;
       }
@@ -143,23 +143,23 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   GetProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
       this.viewService
-        .getView('api_project_hold', [['nid', project.GetField('nid')]])
+        .getView('api_project_hold', [['nid', project.getField('nid')]])
         .subscribe(hold => {
           if (
             hold.length == 0 ||
             hold[0].uid == +localStorage.getItem('user_id')
           ) {
             const projectHold = new ProjectHold(
-              project.GetField('title') + ' (' + nid + ')',
+              project.getField('title') + ' (' + nid + ')',
             );
-            projectHold.SetField('title', this.project.GetField('title'));
+            projectHold.setField('title', this.project.GetField('title'));
             if (hold.length == 0) {
               this.nodeService.createNode(projectHold).subscribe(node => {
                 this.Holder = node;
                 this.ConvertProjectToCreateForm(project);
               });
             } else {
-              projectHold.SetField('nid', hold[0].nid);
+              projectHold.setField('nid', hold[0].nid);
               delete projectHold.field_project_to_edit;
               this.nodeService.updateNode(projectHold).subscribe(node => {
                 this.Holder = hold[0];
@@ -186,9 +186,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
                     nid: hold[0].nid,
                     uid: localStorage.getItem('user_id'),
                   };
-                  this.mainService.EntityType = 'maker_project_api/hold_queue';
-                  this.mainService.post(hoder).subscribe(data => {
-                    this.mainService.EntityType = '';
+                  this.mainService.custompost('maker_project_api/hold_queue', hoder).subscribe(data => {
                     this.notificationBarService.create({
                       message: 'Successfully added to notify list',
                       type: NotificationType.Success,
@@ -316,7 +314,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           }
         }
       } else if (index == 'field_creation_date' && !field.und) {
-        const created = new Date(+data.GetField('created') * 1000);
+        const created = new Date(+data.getField('created') * 1000);
         let date = new Date(
           created.getUTCFullYear(),
           created.getUTCMonth(),
@@ -595,11 +593,11 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         (project: ProjectView) => {
           this.CanNavigate = true;
           this.FormPrintableValues.InvitationEmails.project = project
-            .GetField('nid')
+            .getField('nid')
             .toString();
           this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.GetProject(+project.GetField('nid'));
+            this.GetProject(+project.getField('nid'));
           }
           this.showSuccessMessage(
             'update',
@@ -620,7 +618,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         (project: ProjectView) => {
           this.CanNavigate = true;
           this.FormPrintableValues.InvitationEmails.project = project
-            .GetField('nid')
+            .getField('nid')
             .toString();
           if (
             !NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)
@@ -628,7 +626,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
           }
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.GetProject(+project.GetField('nid'));
+            this.GetProject(+project.getField('nid'));
           }
           this.showSuccessMessage(
             'create',
@@ -709,7 +707,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       'field_tags',
       this.FormPrintableValues.tags.toString(),
     );
-    const image: FileEntity = {
+    const image = {
       file: this.FormPrintableValues.cover_image.file,
       filename: this.FormPrintableValues.cover_image.filename,
     };

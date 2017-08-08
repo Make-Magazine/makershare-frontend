@@ -92,7 +92,7 @@ export class DefaultSettingsComponent implements OnInit {
     e.preventDefault();
     this.userId = localStorage.getItem('user_id');
     this.mainService
-      .put('maker_notification_settings_api/' + this.userId, {
+      .put('maker_notification_settings_api', this.userId, {
         field_email_notifications: this.email_notifications,
         field_web_notifications: this.web_notifications,
       })

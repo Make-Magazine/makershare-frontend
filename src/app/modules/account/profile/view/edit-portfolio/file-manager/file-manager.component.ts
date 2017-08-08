@@ -85,7 +85,7 @@ export class FileManagerComponent implements OnInit {
     const self = this;
     var myReader: FileReader = new FileReader();
     myReader.onloadend = function(loadEvent: any) {
-      let fileEntity: FileEntity = {
+      let fileEntity = {
         file: NodeHelper.RemoveFileTypeFromBase64(loadEvent.target.result),
         filename: file.name,
         status: 1,

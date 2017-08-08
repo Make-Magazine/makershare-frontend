@@ -22,7 +22,7 @@ export class PmService {
   }
 
   deleteMessage(mid: number): Observable<any> {
-    return this.mainService.delete('privatemsg/' + mid);
+    return this.mainService.delete('privatemsg', mid);
   }
 
   sendMessage(message: any): Observable<any> {
@@ -38,20 +38,20 @@ export class PmService {
   }
 
   unBlockUser(recipient: number): Observable<any> {
-    return this.mainService.delete('privatemsgblock/' + recipient);
+    return this.mainService.delete('privatemsgblock', recipient);
   }
 
   blockedUsers(): Observable<any> {
-    return this.mainService.get('privatemsgblock/');
+    return this.mainService.get('privatemsgblock');
   }
 
-  updateSettings(mid: number, data: any): Observable<any> {
-    return this.mainService.put('privatemsg/' + mid, data);
+  updateSettings(mid:number,data: any): Observable<any> {
+    return this.mainService.put('privatemsg', mid, data);
   }
-  postView(viewName: string, uid: number) {
-    return this.mainService.custompost(viewName, { uid: uid });
+  postView(viewName: string, uid: number){
+    return this.mainService.custompost(viewName, {uid: uid});
   }
-
+  
   getStatus(uid: number): Observable<any> {
     return this.mainService.get('privatemsggetstatus/' + uid);
   }
@@ -64,15 +64,15 @@ export class PmService {
   }
 
   deleteReplay(mid: number): Observable<any> {
-    return this.mainService.delete('privatemsgdeletereplay/' + mid);
+    return this.mainService.delete('privatemsgdeletereplay', mid);
   }
 
   getParticipents(mid: number): Observable<any> {
-    return this.mainService.get('maker_get_pm_participent/' + mid);
+    return this.mainService.get('maker_get_pm_participent', mid);
   }
 
-  getInboxCount(uid: number) {
-    return this.mainService.get('maker_get_pm_author/' + uid);
+  getInboxCount(uid: number){
+    return this.mainService.get('maker_get_pm_author', uid);
   }
 
   getInboxOrSent(name: string, args?: (string | any)[][]): Observable<any> {
@@ -91,9 +91,9 @@ export class PmService {
   }
 
   deleteNotification(mid: number): Observable<any> {
-    return this.mainService.delete('maker_notification_api/' + mid);
+    return this.mainService.delete('maker_notification_api', mid);
   }
-
+  
   postAction(viewName: string, uid: any) {
     return this.mainService.custompost(viewName, uid);
   }

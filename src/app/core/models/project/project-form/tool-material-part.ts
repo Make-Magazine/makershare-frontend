@@ -1,10 +1,6 @@
-import { Node } from '../../';
+import { NodeEntity } from '../../';
 
-export interface IToolMaterialPart extends Node {
-  type: string;
-}
-
-export class ToolMaterialPart extends Node implements IToolMaterialPart {
+export class ToolMaterialPart extends NodeEntity{
   constructor(ControlName: string) {
     super();
     this.type = ControlName;
