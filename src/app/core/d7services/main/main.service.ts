@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { CookieService } from 'ngx-cookie';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Singleton } from '../../models/application/singleton';
 
 @Injectable()

@@ -1,3 +1,3 @@
 export { SimpleOverviewEntity, EntityType, EntityGridSize } from '../cards/entity';
-export { ShowcaseCard } from '../cards/showcase-card';
-export { InfoCard } from '../cards/info-card';
+export { ShowcaseCard } from '../cards/showcaseCard';
+export { InfoCard } from '../cards/infoCard';
