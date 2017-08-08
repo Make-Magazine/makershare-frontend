@@ -1,0 +1,11 @@
+<div>
+  <div (click)="currentFormTab = 'Basic Info'">Basic Info</div>
+  <div (click)="currentFormTab = 'About Us'">About Us</div>
+  <div (click)="currentFormTab = 'Products'">Products</div>
+</div>
+
+<button class="btn-primaty" (click)="publishButtonClick()">Publish</button>
+
+<app-basic-info *ngIf="currentFormTab == 'Basic Info'"></app-basic-info>
+<app-about-us *ngIf="currentFormTab == 'About Us'"></app-about-us>
+<app-projects *ngIf="currentFormTab == 'Products'"></app-projects>

@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Node } from '../..//models';
+import { NodeEntity } from '../../models';
 import { MainService } from '../main/main.service';
 
 @Injectable()
-export class NodeService extends MainService {
-  public EntityType = 'node';
+export class NodeService {
+  private entityType = 'node';
 
-  getAllNodes(): Observable<Node> {
-    return super.get();
+  constructor(private mainService: MainService) {}
+
+  getAllNodes(): Observable<NodeEntity[]> {
+    return this.mainService.get(this.entityType);
   }
 
-  getNode(nid: number): Observable<Node> {
-    return super.get(nid);
+  getNode(nid: number): Observable<NodeEntity> {
+    return this.mainService.get(this.entityType, nid);
   }
 
-  createNode(body: Node): Observable<Node> {
-    return super.post(body);
+  createNode(body: NodeEntity): Observable<NodeEntity> {
+    return this.mainService.post(this.entityType, body);
   }
 
-  updateNode(body: Node): Observable<Node> {
-    return super.put(body['nid'], body);
+  updateNode(body: NodeEntity): Observable<NodeEntity> {
+    return this.mainService.put(this.entityType, body['nid'], body);
   }
 
-  deleteNode(nid: number): Observable<Node> {
-    return super.delete(nid);
+  deleteNode(nid: number): Observable<NodeEntity> {
+    return this.mainService.delete(this.entityType, nid);
   }
 
   getUrlFromId(nid: number, type: string): Observable<any> {
@@ -32,7 +34,7 @@ export class NodeService extends MainService {
       nid: nid,
       type: type,
     };
-    return super.custompost('maker_urls/get_url', body);
+    return this.mainService.custompost('maker_urls/get_url', body);
   }
 
   getIdFromUrl(url: string, type: string): Observable<any> {
@@ -40,6 +42,6 @@ export class NodeService extends MainService {
       url: url,
       type: type,
     };
-    return super.custompost('maker_urls/get_id', body);
+    return this.mainService.custompost('maker_urls/get_id', body);
   }
 }

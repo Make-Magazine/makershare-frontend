@@ -1,23 +1,23 @@
 import {
   date_time,
   field_entity_reference,
-  Node,
+  NodeEntity,
 } from '../../drupal';
 
-export interface ProjectHold extends Node {
+export interface ProjectHold extends NodeEntity {
   field_project_to_edit: { und: field_entity_reference[] };
   field_users_wants_edit?: { und: field_entity_reference[] };
   unpublish_on: date_time;
 }
 
-export class ProjectHold extends Node implements ProjectHold {
+export class ProjectHold extends NodeEntity implements ProjectHold {
   constructor(Project_title_id: string) {
     super();
     this.Init(Project_title_id);
   }
 
   protected Init(Project_title_id) {
-    super.InitFields('project_hold');
+    super.initFields('project_hold');
     this.status = 1;
     this.field_project_to_edit = { und: [{ target_id: Project_title_id }] };
 

@@ -11,7 +11,7 @@ export class ProfileService {
   }
 
   updateProfile(id, Profile): Observable<any> {
-    return this.mainService.put('maker_profile_api/' + id, Profile);
+    return this.mainService.put('maker_profile_api', id, Profile);
   }
 
   getUser(userId): Observable<any> {
@@ -21,11 +21,11 @@ export class ProfileService {
   getAllCountries(): Observable<any> {
     return this.mainService.get('maker_address_api');
   }
-  getAllMarkers(): Observable<any> {
+    getAllMarkers(): Observable<any> {
     return this.mainService.get('marker-space');
   }
 
-  getAllInterests(): Observable<any> {
+ getAllInterests(): Observable<any> {
     return this.mainService.get('interests_category');
   }
 

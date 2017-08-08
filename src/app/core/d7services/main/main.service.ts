@@ -6,15 +6,14 @@ import { Singleton } from '../../models/application/singleton';
 
 @Injectable()
 export class MainService {
-  EntityType: string = '';
-  private _timeout: number = 20000;
-  private _options: RequestOptionsArgs;
+  private timeout: number = 20000;
+  private options: RequestOptionsArgs;
 
-  constructor(private _http: Http, public cookieService: CookieService) {
-    this._options = this.GetOptions();
+  constructor(private http: Http, public cookieService: CookieService) {
+    this.options = this.getOptions();
   }
 
-  private GetOptions(): RequestOptionsArgs {
+  private getOptions(): RequestOptionsArgs {
     const headers = new Headers();
     headers.set('X-CSRF-Token', this.cookieService.get('token'));
     headers.set('Content-Type', 'application/json');
@@ -27,17 +26,18 @@ export class MainService {
   }
 
   private getURL(
+    entityType: string,
     selector?: string | number,
     without_end_point?: boolean,
   ): string {
-    let request_url = Singleton.Settings.getBackEndUrlWithEndpoint();
+    var request_url = Singleton.Settings.getBackEndUrlWithEndPoint();
 
     if (without_end_point) {
       request_url = Singleton.Settings.getBackEndUrl();
     }
 
-    if (this.EntityType) {
-      request_url += this.EntityType + '/';
+    if (entityType) {
+      request_url += entityType + '/';
     }
 
     if (selector) {
@@ -56,44 +56,45 @@ export class MainService {
         res.json(),
       );
     }
-    return HttpObservableRequest.timeout(this._timeout).catch(err =>
+    return HttpObservableRequest.timeout(this.timeout).catch(err =>
       Observable.throw(err),
     );
   }
 
   get(
+    entityType: string,
     selector?: string | number,
     without_end_point?: boolean,
   ): Observable<any> {
     return this.HttpRequestWithConfig(
-      this._http.get(this.getURL(selector, without_end_point), this._options),
+      this.http.get(this.getURL(entityType, selector, without_end_point), this.options),
       without_end_point,
     );
   }
 
-  post(body?: any): Observable<any> {
+  post(entityType: string, body?: any): Observable<any> {
     return this.HttpRequestWithConfig(
-      this._http.post(this.getURL(), body ? body : {}, this._options),
+      this.http.post(this.getURL(entityType), body ? body : {}, this.options),
     );
   }
 
-  put(selector: number | string, body: any): Observable<any> {
+  put(entityType: string, selector: number | string, body: any): Observable<any> {
     return this.HttpRequestWithConfig(
-      this._http.put(this.getURL(selector), body, this._options),
+      this.http.put(this.getURL(entityType, selector), body, this.options),
     );
   }
 
-  delete(selector: string | number): Observable<any> {
+  delete(entityType: string, selector: string | number): Observable<any> {
     return this.HttpRequestWithConfig(
-      this._http.delete(this.getURL(selector), this._options),
+      this.http.delete(this.getURL(entityType, selector), this.options),
     );
   }
 
   // temp solution for custom services
   custompost(url, body?: any): Observable<any> {
-    url = Singleton.Settings.getBackEndUrlWithEndpoint() + url;
+    url = Singleton.Settings.getBackEndUrlWithEndPoint() + url;
     return this.HttpRequestWithConfig(
-      this._http.post(url, body ? body : {}, this._options),
+      this.http.post(url, body ? body : {}, this.options),
     );
   }
 }

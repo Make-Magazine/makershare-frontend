@@ -9,7 +9,6 @@
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "noImplicitUseStrict": true,
-    "noInferrableTypes": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "sourceMap": true,

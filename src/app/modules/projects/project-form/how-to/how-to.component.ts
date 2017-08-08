@@ -517,11 +517,11 @@ export class HowToComponent implements OnInit {
     const control = this.HowToForm.controls['field_resources']['controls'][
       this.HowToForm.controls['field_resources']['controls'].length - 1
     ];
-    const fileEntity: FileEntity = {
+    const fileEntity = {
       file: '',
       filename: file.name,
     };
-    this.ResourceFileSelected = fileEntity;
+    this.ResourceFileSelected = fileEntity as FileEntity;
     NodeHelper.ConvertToBase64(file, this.ResourceFileSelected);
     control.controls.field_resources_filename.setValue(fileEntity.filename);
     if (!control.controls.field_label.value) {
@@ -536,11 +536,11 @@ export class HowToComponent implements OnInit {
     if (!control.valid) {
       return;
     }
-    const newfile: FileEntity = {
+    const newfile = {
       file: this.ResourceFileSelected.file,
       filename: this.ResourceFileSelected.filename,
     };
-    this.resources_files.push(newfile);
+    this.resources_files.push(newfile as FileEntity);
     const field_resource: FieldCollectionItemResource = {
       field_label: { und: [{ value: control.value.field_label }] },
       field_resource_file: { und: [{ filename: newfile.filename, fid: 0 }] },
@@ -603,7 +603,7 @@ export class HowToComponent implements OnInit {
       ControlName,
     );
     const FieldName = 'field_' + ControlName + 's';
-    NewToolMaterialPart.SetField(
+    NewToolMaterialPart.setField(
       'title',
       this.InputToolMaterialPart[ControlName],
     );

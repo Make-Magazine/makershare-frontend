@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import { Observable } from 'rxjs/Observable';
 import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
-import { FileEntity, FileEntityManage, NodeHelper } from '../../../../core';
+import { FileEntityManage, NodeHelper } from '../../../../core';
 import {
   FileService,
   MainService,
@@ -448,7 +448,7 @@ export class ProfileComponent implements OnInit {
   }
 
   SaveImage() {
-    const image: FileEntity = {
+    const image = {
       file: NodeHelper.RemoveFileTypeFromBase64(this.ProfilePicData.image),
       filename: this.FileName,
     };

@@ -36,10 +36,10 @@ export class CommentService {
   }
 
   updateComment(comment): Observable<any>{
-    return this.mainService.put('comment/' + comment.cid, comment);
+    return this.mainService.put('comment', comment.cid, comment);
   }
 
   deleteComment(cid: number): Observable<any>{
-    return this.mainService.delete('comment/' + cid);
+    return this.mainService.delete('comment', cid);
   }
 }
