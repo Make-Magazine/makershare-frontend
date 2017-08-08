@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService } from 'app/CORE/d7services';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Auth } from 'app/modules/auth0/auth.service';
+import { ViewService } from '../../../core/d7services';
+import { Auth } from '../../auth0/auth.service';
 
 @Component({
   selector: 'app-company-card',

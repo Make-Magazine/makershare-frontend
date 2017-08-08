@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { PmService,ViewService,UserService } from 'app/CORE/d7services';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common'
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PmService, UserService, ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-sent',

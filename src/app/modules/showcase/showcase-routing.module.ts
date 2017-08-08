@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShowcasesComponent } from 'app/modules/showcase/showcases/showcases.component';
-import { SingleShowcaseComponent } from 'app/modules/showcase/single-showcase/single-showcase.component';
+import { ShowcasesComponent } from '../showcase/showcases/showcases.component';
+import { SingleShowcaseComponent } from '../showcase/single-showcase/single-showcase.component';
 
 const ShowcaseRoutes: Routes = [
   {

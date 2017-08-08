@@ -1,4 +1,4 @@
-import { FileEntity, Node } from 'app/CORE/models/drupal';
+import { FileEntity, Node } from '../drupal';
 
 export interface FileEntityManage extends FileEntity {
   url: URL;

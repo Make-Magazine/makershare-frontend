@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from 'app/CORE/d7services';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { MainService } from '../../../core/d7services';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-collection',

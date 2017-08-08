@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-// import { PmService, UserService } from 'app/CORE/d7services';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+// import { PmService, UserService } from 'app/CORE/d7services';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Reply } from 'app/modules/account/messages/view/reply';
-import { PmService } from 'app/CORE/d7services/pm/pm.service';
-import { UserService } from 'app/CORE/d7services/user/user.service';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { PmService } from '../../../../core/d7services/pm/pm.service';
+import { UserService } from '../../../../core/d7services/user/user.service';
+import { Reply } from '../../../account/messages/view/reply';
+import { LoaderService } from '../../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-view',

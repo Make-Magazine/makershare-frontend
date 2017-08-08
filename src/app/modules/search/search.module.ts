@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { SearchRoutingModule } from './search-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SolrService } from 'app/CORE/d7services/solr/solr.service';
-import { AllResultComponent } from 'app/modules/search/all-result/all-result.component';
-import { SearchInputComponent } from 'app/modules/search/search-input/search-input.component';
-import { SearchResultComponent } from 'app/modules/search/search-result/search-result.component';
-import { SearchRoutingModule } from 'app/modules/search/search-routing.module';
-import { SharedModule } from 'app/modules/shared/shared.module';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { AllResultComponent } from './all-result/all-result.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { SolrService } from '../../core/d7services';
 
 @NgModule({
   imports: [

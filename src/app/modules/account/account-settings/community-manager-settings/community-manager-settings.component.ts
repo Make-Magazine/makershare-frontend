@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PmService, UserService } from 'app/CORE/d7services';
 import {
   NotificationBarService,
   NotificationType,
 } from 'ngx-notification-bar/release';
+import { PmService, UserService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-community-manager-settings',

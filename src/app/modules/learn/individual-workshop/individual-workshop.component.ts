@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ViewService, UserService, NodeService } from 'app/CORE/d7services';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, Input, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { NodeService, UserService, ViewService } from '../../../core/d7services';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-individual-workshop',

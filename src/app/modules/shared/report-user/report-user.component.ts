@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FlagService,UserService } from 'app/CORE/d7services';
+import { FlagService,UserService } from '../../../core/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';

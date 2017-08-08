@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE/classes/Application';
-import { MainService } from 'app/CORE/d7services/main/main.service';
-import { ViewService } from 'app/CORE/d7services/view/view.service';
-import { SortBySortingSet, SortingSet } from 'app/CORE/models/makers';
-import { ProjectCategory } from 'app/CORE/models/project/project-form';
-import { Auth } from 'app/modules/auth0/auth.service';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
-import {
-  NotificationBarService,
-  NotificationType,
-} from 'ngx-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { Singleton } from '../../core/models/application';
+import { MainService } from '../../core/d7services/main/main.service';
+import { ViewService } from '../../core/d7services/view/view.service';
+import { SortBySortingSet, SortingSet } from '../../core/models/makers';
+import { ProjectCategory } from '../../core/models/project/project-form';
+import { Auth } from '../auth0/auth.service';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   selector: 'app-projects',
@@ -70,7 +67,7 @@ export class ProjectsComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.AppURL +
+          Singleton.Settings.appURL +
           '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);

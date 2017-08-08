@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService,MainService,PmService,UserService } from 'app/CORE/d7services';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NotificationBarService,
+  NotificationType,
+} from 'ngx-notification-bar/release';
+import {
+  MainService,
+  PmService,
+  UserService,
+  ViewService,
+} from '../../../../core/d7services';
 
 @Component({
   selector: 'app-default-settings',
   templateUrl: './default-settings.component.html',
 })
-export class defaultSettingsComponent implements OnInit {
+export class DefaultSettingsComponent implements OnInit {
   notifications;
   email_notifications: Array<string> = [];
   web_notifications: Array<string> = [];
@@ -25,23 +33,24 @@ export class defaultSettingsComponent implements OnInit {
     private notificationBarService: NotificationBarService,
     private modalService: NgbModal,
     private pm: PmService,
-
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getNotificationSettings();
   }
 
- open(content) {
+  open(content) {
     this.modalService.open(content);
   }
 
   getNotificationSettings() {
-    this.viewservice.getView('maker_notification_settings_api').subscribe(data => {
-      this.notifications = data;
-      this.email_notifications = this.notifications.email_notifications;
-      this.web_notifications = this.notifications.web_notifications;
-    })
+    this.viewservice
+      .getView('maker_notification_settings_api')
+      .subscribe(data => {
+        this.notifications = data;
+        this.email_notifications = this.notifications.email_notifications;
+        this.web_notifications = this.notifications.web_notifications;
+      });
   }
   checkedEmail(num, event) {
     // add to checkedArr
@@ -70,7 +79,6 @@ export class defaultSettingsComponent implements OnInit {
       } else {
         this.web_notifications.push(num);
       }
-
     } else {
       // remove from checkedArr
       var index = this.web_notifications.indexOf(num, 0);
@@ -83,19 +91,30 @@ export class defaultSettingsComponent implements OnInit {
   updateNotificationSettings(e) {
     e.preventDefault();
     this.userId = localStorage.getItem('user_id');
-    this.mainService.put('maker_notification_settings_api/' + this.userId, { 'field_email_notifications': this.email_notifications, 'field_web_notifications': this.web_notifications }).subscribe()
-    this.notificationBarService.create({ message: 'Settings updated successfully', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+    this.mainService
+      .put('maker_notification_settings_api/' + this.userId, {
+        field_email_notifications: this.email_notifications,
+        field_web_notifications: this.web_notifications,
+      })
+      .subscribe();
+    this.notificationBarService.create({
+      message: 'Settings updated successfully',
+      type: NotificationType.Success,
+      allowClose: true,
+      autoHide: false,
+      hideOnHover: false,
+    });
   }
 
-  deleteMyAcount(){
+  deleteMyAcount() {
     this.userId = localStorage.getItem('user_id');
-   this.pm.deleteAcount(this.userId).subscribe(data=>{
-     this.userService.removeCookies();
-     localStorage.removeItem('id_token');
-     localStorage.removeItem('user_id');
-     localStorage.removeItem('user_name');
-     localStorage.removeItem('user_photo');
-     this.router.navigate(['/']);
-   })
+    this.pm.deleteAcount(this.userId).subscribe(data => {
+      this.userService.removeCookies();
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('user_name');
+      localStorage.removeItem('user_photo');
+      this.router.navigate(['/']);
+    });
   }
 }

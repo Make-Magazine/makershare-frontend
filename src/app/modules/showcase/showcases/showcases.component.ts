@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE/classes/Application';
-import { ViewService } from 'app/CORE/d7services/view/view.service';
-import { SortBySortingSet, SortingSet } from 'app/CORE/models/makers';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
+import { Singleton } from '../../../core/models/application';
+import { ViewService } from '../../../core/d7services/view/view.service';
+import { SortBySortingSet, SortingSet } from '../../../core/models/makers';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-showcases',
@@ -41,7 +41,7 @@ export class ShowcasesComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.AppURL +
+          Singleton.Settings.appURL +
           '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);

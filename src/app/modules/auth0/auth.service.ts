@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import Auth0Lock from 'auth0-lock';
-import { UserService } from 'app/CORE/d7services';
-import { ProfilePictureService } from 'app/modules/shared/profile-picture/profile-picture.service';
-import { Singleton } from 'app/CORE';
-import {
-  NotificationBarService,
-  NotificationType,
-} from 'ngx-notification-bar/release';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { Singleton } from '../../core';
+import { UserService } from '../../core/d7services';
+import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
 @Injectable()
 export class Auth {
@@ -22,7 +19,7 @@ export class Auth {
     'makermedia.auth0.com',
     {
       auth: {
-        redirectUrl: Singleton.Settings.AppURL,
+        redirectUrl: Singleton.Settings.appURL,
         responseType: 'token id_token',
         params: {
           scope: 'openid',
@@ -37,7 +34,7 @@ export class Auth {
       languageDictionary: this.languageDictionary,
       theme: {
         logo:
-          Singleton.Settings.GetBackEndUrl() +
+          Singleton.Settings.getBackEndUrl() +
           'sites/default/files/make-logo.png',
         displayName: '...',
         primaryColor: '#00597E',
@@ -438,7 +435,7 @@ export class Auth {
 //     domain: 'makermedia.auth0.com',
 //     responseType: 'token id_token',
 //     audience: 'https://makermedia.auth0.com/userinfo',
-//     redirectUri: Singleton.Settings.AppURL,
+//     redirectUri: Singleton.Settings.appURL,
 //     scope: 'openid profile email'
 //   });
 

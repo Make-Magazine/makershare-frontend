@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from 'app/modules/auth0/auth-guard.service';
-import { PendingChangesGuard } from 'app/modules/projects/project-form/pending-changes.guard';
-import { ProjectFormComponent } from 'app/modules/projects/project-form/project-form/project-form.component';
+import { ProjectFormComponent } from './project-form/project-form.component';
+import { PendingChangesGuard } from './pending-changes.guard';
+import { AuthGuardService } from '../../auth0/auth-guard.service';
 
 export const ProjectFormRoutes: Routes = [
   {

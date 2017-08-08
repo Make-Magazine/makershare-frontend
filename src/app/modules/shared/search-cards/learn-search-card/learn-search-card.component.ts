@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewService } from 'app/CORE/d7services';
+import { ViewService } from '../../../../core/d7services';
 
 @Component({
   selector: 'app-learn-search-card',

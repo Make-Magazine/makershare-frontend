@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ViewService, UserService, MainService } from 'app/CORE/d7services';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MainService, UserService, ViewService } from '../../../../../core/d7services';
 
 @Component({
   selector: 'profile-projects',

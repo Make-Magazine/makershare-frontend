@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { FlagService, UserService } from 'app/CORE/d7services';
+import { FlagService, UserService } from '../../../core/d7services';
 
 @Component({
   selector: 'app-btn-follow',

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SortOrder } from 'app/Angular/pipes/sort-order';
+import { SortOrder } from './sort-order';
 
 @NgModule({
   imports: [],

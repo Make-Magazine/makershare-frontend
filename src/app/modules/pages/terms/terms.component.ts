@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewService } from 'app/CORE/d7services';
-import { LoaderService } from 'app/modules/shared/loader/loader.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { Singleton } from 'app/CORE/';
+import { Singleton } from '../../../core/';
+import { ViewService } from '../../../core/d7services';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-about-badges',
@@ -37,7 +37,7 @@ export class TermsComponent implements OnInit {
           name: 'og:description', content: this.body
         },
         {
-          name: 'og:image', content: Singleton.Settings.AppURL + 'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
+          name: 'og:image', content: Singleton.Settings.appURL + 'assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'
         }
       ])
 

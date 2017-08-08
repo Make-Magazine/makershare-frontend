@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedModule } from 'app/modules/shared/shared.module';
-import { ShowcaseRoutingModule } from 'app/modules/showcase/showcase-routing.module';
-import { ShowcasesComponent } from 'app/modules/showcase/showcases/showcases.component';
-import { SingleShowcaseComponent } from 'app/modules/showcase/single-showcase/single-showcase.component';
+import { SharedModule } from '../shared/shared.module';
+import { ShowcaseRoutingModule } from '../showcase/showcase-routing.module';
+import { ShowcasesComponent } from '../showcase/showcases/showcases.component';
+import { SingleShowcaseComponent } from '../showcase/single-showcase/single-showcase.component';
 
 @NgModule({
   imports: [
