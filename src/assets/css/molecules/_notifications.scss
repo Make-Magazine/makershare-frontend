@@ -1,0 +1,87 @@
+.dropdown-notification {
+  ul {
+    position: relative;
+    padding-top: 12px;
+    li {
+      padding: 8px 12px;
+      position: absolute;
+      display: block;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      right: 0;
+      .view-all {
+        padding: .4rem 0rem;
+        color: $blue;
+      }
+      .notf-gear {
+        i {
+          font-size: 19px;
+        }
+      }
+      .notf-Cancel {
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+    .notification-container {
+      padding: 0px 12px;
+      .notification-item {
+        border-bottom: 0.5px solid $text-color-2;
+        @include desc-font-1 ();
+        padding: 5px 0px;
+        font-size: 0.96em !important;
+        .media-left {
+          width: 40px;
+          height: auto;
+          margin-right: 6px;
+          img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+          }
+        }
+        .media-body {
+          padding: 0px 2px;
+          span {
+            margin-bottom: 1px;
+          }
+          p {
+            margin: 2px 0px 0px 0px;
+
+          }
+        }
+        .delete {
+          padding-top: 14px;
+          display: none;
+        }
+        .link {
+          color: $blue;
+          &:hover {
+            text-decoration: none !important;
+            color: $blue !important;
+          }
+        }
+        .notf-date {
+          color: $text-color-2;
+          @include desc-font-2 ();
+          font-size: 0.83em !important;
+        }
+      }
+      .inner-text {
+        color: $text-color-1;
+        padding: 2px 0px;
+        line-height: 17px;
+      }
+    }
+    .not-seen {
+      .notification-container {
+        background-color: rgba(241, 241, 241, 0.53);
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

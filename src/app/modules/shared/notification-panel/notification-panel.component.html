@@ -20,7 +20,7 @@
        class="text-center pt-2">
     <p class="no-notfy">You do not have any notifications</p>
   </div>
-  <div *ngIf="this.notifications.length > 0">
+  <div *ngIf="notifications.length > 0">
     <ul class="list-group">
       <notification-tpl [ngClass]="{'not-seen': notification.seen == 0 }"
                         [notification]="notification"
