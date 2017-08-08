@@ -21,15 +21,14 @@
           <a class="nav-link" [routerLink]="['organizations']">Organizations</a>
         </li>
         <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link dropdown-toggle hover navbar-left" data-toggle="dropdown" data-target="makerMenu"
-             role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="nav-link dropdown-toggle hover navbar-left" data-toggle="dropdown" data-target="makerMenu" role="button"
+            aria-haspopup="true" aria-expanded="false">
             About
           </a>
           <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
             <ul class="subnav">
               <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['projects/create']" class="dropdown-item add-project nav-link mobile-menu-item">Add a
-                  Project</a>
+                <a [routerLink]="['projects/create']" class="dropdown-item add-project nav-link mobile-menu-item">Add a Project</a>
               </li>
               <hr class="line-mobile">
               <li class="sub-nav-item dropdown-item">
@@ -94,8 +93,7 @@
           <div ngbDropdown class="dropdown sub-nav" class="user-menu">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
               <img *ngIf="user_photo" class="profile-photo" src="{{user_photo}}" alt="Profile Photo">
-              <img *ngIf="!user_photo" class="profile-photo" src="./assets/images/icons/no-profile-pic.png"
-                   alt="Profile Photo">
+              <img *ngIf="!user_photo" class="profile-photo" src="./assets/images/icons/no-profile-pic.png" alt="Profile Photo">
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
               <li class="sub-nav-item dropdown-item" *ngIf="Manager">
@@ -104,30 +102,34 @@
               <li class="sub-nav-item dropdown-item" [routerLink]="['/portfolio/']">
                 <span class="nav-link">Profile</span>
               </li>
-              <li class="sub-nav-item dropdown-item" [routerLink]="['/inbox-notifications']">
-                <span class="nav-link">Inbox</span>
+              <span *ngIf="org_data">
+                <li *ngIf="org_data.path" class="sub-nav-item dropdown-item" [routerLink]="[org_data.path]">
+                <span class="nav-link">Company Profile</span>
               </li>
-              <li class="sub-nav-item dropdown-item" [routerLink]="['/account/collection/bookmark']">
-                <span class="nav-link">Bookmarks</span>
-              </li>
-              <li class="sub-nav-item dropdown-item" [routerLink]="['/account/settings/notifications']">
-                <span class="nav-link">Account Settings</span>
-              </li>
-              <li class="sub-nav-item dropdown-item" (click)="auth.logout()">
-                <span class="nav-link">Logout</span>
-              </li>
-              <hr/>
-              <li class="sub-nav-item dropdown-item">
-                <app-notification-panel></app-notification-panel>
-              </li>
-            </ul>
-          </div>
+              </span>
+        <li class="sub-nav-item dropdown-item" [routerLink]="['/inbox-notifications']">
+          <span class="nav-link">Inbox</span>
+        </li>
+        <li class="sub-nav-item dropdown-item" [routerLink]="['/account/collection/bookmark']">
+          <span class="nav-link">Bookmarks</span>
+        </li>
+        <li class="sub-nav-item dropdown-item" [routerLink]="['/account/settings/notifications']">
+          <span class="nav-link">Account Settings</span>
+        </li>
+        <li class="sub-nav-item dropdown-item" (click)="auth.logout()">
+          <span class="nav-link">Logout</span>
+        </li>
+        <hr />
+        <li class="sub-nav-item dropdown-item">
+          <app-notification-panel></app-notification-panel>
+        </li>
+        </ul>
+        </div>
         </li>
       </ul>
     </nav>
   </div>
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
-  <app-registration-collect *ngIf="registrationFormStatus"
-                            [registrationFormState]="registrationFormState"></app-registration-collect>
+  <app-registration-collect *ngIf="registrationFormStatus" [registrationFormState]="registrationFormState"></app-registration-collect>
 </header>
 <!--<notification-bar></notification-bar>-->
