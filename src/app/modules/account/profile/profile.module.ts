@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TruncatePipe } from '../../../Angular/pipes/truncate';
+import { TruncatePipe } from '../../../angular/pipes/truncate';
 import { BaseComponent } from './base/base.component';
 import { ProfileRoutingModule } from './profile.routing.module';
 import { EditPortfolioComponent } from './view/edit-portfolio/edit-portfolio/edit-portfolio.component';
