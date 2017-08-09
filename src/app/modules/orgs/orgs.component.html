@@ -53,84 +53,84 @@
         </p>
         <div *ngIf="company.website_or_blog">
           <h1 class="text-left">Websites</h1>
-          <a class="row"  *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+          <a class="row" *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
         </div>
         <div *ngIf="company.field_social_accounts">
           <h1 class="text-left">Social</h1>
-									<div class="org-social-links d-flex flex-wrap">
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
-											<a class="nav-link social fb" target="_blank" href="{{company.field_social_accounts[0].field_facebook}}">
+          <div class="org-social-links d-flex flex-wrap">
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
+              <a class="nav-link social fb" target="_blank" href="{{company.field_social_accounts[0].field_facebook}}">
 												<i class="fa fa-facebook fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_twitter != '' ">
-											<a class="nav-link social tw" target="_blank" href="{{company.field_social_accounts[0].field_twitter}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_twitter != '' ">
+              <a class="nav-link social tw" target="_blank" href="{{company.field_social_accounts[0].field_twitter}}">
 												<i class="fa fa-twitter fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_instagram != '' ">
-											<a class="nav-link social in" target="_blank" href="{{company.field_social_accounts[0].field_instagram}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_instagram != '' ">
+              <a class="nav-link social in" target="_blank" href="{{company.field_social_accounts[0].field_instagram}}">
 												<i class="fa fa-instagram fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_linkedin != '' ">
-											<a class="nav-link social ln" target="_blank" href="{{company.field_social_accounts[0].field_linkedin}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_linkedin != '' ">
+              <a class="nav-link social ln" target="_blank" href="{{company.field_social_accounts[0].field_linkedin}}">
 												<i class="fa fa-linkedin fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_pinterest != '' ">
-											<a class="nav-link social pin" target="_blank" href="{{company.field_social_accounts[0].field_pinterest}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_pinterest != '' ">
+              <a class="nav-link social pin" target="_blank" href="{{company.field_social_accounts[0].field_pinterest}}">
 												<i class="fa fa-pinterest-p fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_youtube != '' ">
-											<a class="nav-link social ut" target="_blank" href="{{company.field_social_accounts[0].field_youtube}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_youtube != '' ">
+              <a class="nav-link social ut" target="_blank" href="{{company.field_social_accounts[0].field_youtube}}">
 												<i class="fa fa-youtube fa-lg"></i>
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_hackster_io != '' ">
-											<a class="nav-link social hackster" target="_blank" href="{{company.field_social_accounts[0].field_hackster_io}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_hackster_io != '' ">
+              <a class="nav-link social hackster" target="_blank" href="{{company.field_social_accounts[0].field_hackster_io}}">
 												<img src="./assets/images/icons/hackster_white.svg" *ngIf="currentHover != 'hackster'" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_instructables != '' ">
-											<a class="nav-link social instruct" target="_blank" href="{{company.field_social_accounts[0].field_instructables}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_instructables != '' ">
+              <a class="nav-link social instruct" target="_blank" href="{{company.field_social_accounts[0].field_instructables}}">
 												<img src="./assets/images/icons/instructables_white.svg" *ngIf="currentHover != 'instructables'" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_hackday != '' ">
-											<a class="nav-link social hackday" target="_blank" href="{{company.field_social_accounts[0].field_hackday}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_hackday != '' ">
+              <a class="nav-link social hackday" target="_blank" href="{{company.field_social_accounts[0].field_hackday}}">
 												<img src="./assets/images/icons/hackaday_white.svg" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_github != '' ">
-											<a class="nav-link social github" target="_blank" href="{{company.field_social_accounts[0].field_github}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_github != '' ">
+              <a class="nav-link social github" target="_blank" href="{{company.field_social_accounts[0].field_github}}">
 												<img src="./assets/images/icons/github.svg" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_twitch != '' ">
-											<a class="nav-link social twitch" target="_blank" href="{{company.field_social_accounts[0].field_twitch}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_twitch != '' ">
+              <a class="nav-link social twitch" target="_blank" href="{{company.field_social_accounts[0].field_twitch}}">
 												<img src="./assets/images/icons/twitch.svg" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_gitlabs != '' ">
-											<a class="nav-link social gitlab" target="_blank" href="{{company.field_social_accounts[0].field_gitlabs}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_gitlabs != '' ">
+              <a class="nav-link social gitlab" target="_blank" href="{{company.field_social_accounts[0].field_gitlabs}}">
 												<img src="./assets/images/icons/gitlab.svg" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_thingyverse != '' ">
-											<a class="nav-link social thingy" target="_blank" href="{{company.field_social_accounts[0].field_thingyverse}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_thingyverse != '' ">
+              <a class="nav-link social thingy" target="_blank" href="{{company.field_social_accounts[0].field_thingyverse}}">
 												<img src="./assets/images/icons/thingiverse.svg" alt="">
 											</a>
-										</div>
-										<div class="social-container" *ngIf="company.field_social_accounts[0].field_stackoverflow	 != '' ">
-											<a class="nav-link social stack" target="_blank" href="{{company.field_social_accounts[0].field_stackoverflow}}">
+            </div>
+            <div class="social-container" *ngIf="company.field_social_accounts[0].field_stackoverflow	 != '' ">
+              <a class="nav-link social stack" target="_blank" href="{{company.field_social_accounts[0].field_stackoverflow}}">
 												<img src="./assets/images/icons/stackoverflow.svg" alt="">
 											</a>
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
         <div *ngIf="followers && company.minimum_followers < followersCount">
           <p>Followers</p>
           <div *ngFor="let maker of followers;" class="d-inline">
@@ -139,12 +139,10 @@
           <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
         </div>
         <a>
-          <app-report-orgs *ngIf="nid" [organizationNid]="nid"> </app-report-orgs>
+          <app-report *ngIf="nid" [nodeNid]="nid" [nodeType]="'node'" [typeOfNode]="'orgs'"></app-report>
         </a>
-
       </div>
     </div>
-
     <div class="text-center">
       <h1 class="p-2">Our Team</h1>
     </div>
@@ -155,9 +153,6 @@
     </div>
     <div class="col-md-12" *ngIf="followers">
       <!-- Our Team  -->
-
-      <!-- {{Followers | json}} -->
-
     </div>
     <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
       <div class="modal-header">
