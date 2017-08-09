@@ -22,14 +22,28 @@ export class DrupalCustomLanguageField {
       }
       return field[index];
     }
-    return this[Singleton.Settings.language];
+    return field;
   }
   
   setField(value: any): void {
-    if(value instanceof DrupalCustomField && this[Singleton.Settings.language] instanceof Array) {
+    const field = this[Singleton.Settings.language];
+    if(value instanceof DrupalCustomField && field instanceof Array) {
       this[Singleton.Settings.language][0] = value;
       return;      
     }
     this[Singleton.Settings.language] = value;
+  }
+
+  updateField(value: any, index?: number) {
+    const field = this[Singleton.Settings.language];
+    if(field instanceof Array) {
+      if(index) {
+        field[index].updateValue(value);
+      } else {
+        field[0].updateValue(value);
+      }
+      return;
+    }
+    field.updateValue(value);
   }
 }

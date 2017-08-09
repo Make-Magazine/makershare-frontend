@@ -23,4 +23,9 @@ export class FileEntity extends DrupalCustomField{
   init(){
     return [this];
   }
+
+  updateValue(value) {
+    this.file = value.file;
+    this.filename = value.filename;
+  }
 }

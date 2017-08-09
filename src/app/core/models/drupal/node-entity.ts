@@ -68,4 +68,6 @@ export abstract class NodeEntity {
     }
   }
 
+  abstract updateField(field_name: string, value: any);
+
 }

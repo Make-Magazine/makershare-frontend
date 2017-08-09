@@ -91,20 +91,28 @@ export interface ProjectCardPortfolio extends NodeEntity {
 export class ProjectView extends NodeEntity implements ProjectView {
   constructor(Project: ProjectView) {
     super();
-    this.Init('project', Project);
+    this.init('project', Project);
   }
 
-  protected Init(Type, Project: ProjectView) {
+  protected init(Type, Project: ProjectView) {
     super.initFields(Type);
     for (const FieldName in Project) {
       const FieldValue = Project[FieldName];
       this.setField(FieldName, FieldValue);
     }
   }
+  updateField() {
+    
+  }
 }
 
 export class ProjectForm extends NodeEntity implements ProjectForm {
-  protected Init(): void {
+  constructor() {
+    super();
+    this.initFields();
+  }
+
+  protected initFields(): void {
     super.initFields('project');
     this.field_how_to = { und: [new FieldText(null)] };
     this.field_tools = { und: [] };
@@ -128,16 +136,16 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
     this.field_creation_date = { und: [new field_date(new date_time())] };
   }
 
-  public SetField(FieldName: string, value: any): void {
+  public setField(FieldName: string, value: any): void {
     if (this[FieldName] instanceof Object) {
-      this.SetCustomFields(value, FieldName);
+      this.setCustomFields(value, FieldName);
     } else {
       super.setField(FieldName, value);
     }
   }
 
-  GetField(FieldName: string): any {
-    super.getField(FieldName);
+  getField(FieldName: string): any {
+    this[FieldName];
   }
 
   /**
@@ -145,25 +153,26 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
    * otherwhise will be saved as a draft
    */
   public CheckIfReadyToPublic() {
-    if (this.GetField('title') == '') {
-      this.SetField('title', 'Untitled');
+    if (this.getField('title') == '') {
+      this.setField('title', 'Untitled');
     }
     if (
-      this.GetField('field_categories').und.length == 0 ||
-      this.GetField('field_cover_photo').und[0].fid == 0 ||
-      this.GetField('title') == ('Untitled' || 'untitled') ||
-      this.GetField('field_story').und[0].value == ''
+      this.field_categories.und.length == 0 ||
+      this.field_cover_photo.und[0].fid == 0 ||
+      this.title == ('Untitled' || 'untitled') ||
+      this.field_story.und[0].value == ''
     ) {
-      this.GetField('field_visibility2').und[0] = 1115;
+      this.field_visibility2.und[0] = 1115;
     }
-    if (this.GetField('field_visibility2').und[0] == 370) {
-      this.SetField('status', 1);
+    if (this.field_visibility2.und[0] == 370) {
+      this.setField('status', 1);
     } else {
-      this.SetField('status', null);
+      this.setField('status', null);
     }
+    
   }
 
-  private SetCustomFields(value: any, FieldName: string): void {
+  private setCustomFields(value: any, FieldName: string): void {
     if (typeof value === 'string' || typeof value === 'number') {
       if (
         typeof this[FieldName].und === 'string' ||
@@ -178,5 +187,8 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
     } else {
       this[FieldName].und[0] = value;
     }
+  }
+  updateField() {
+    
   }
 }

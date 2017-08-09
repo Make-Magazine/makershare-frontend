@@ -11,4 +11,8 @@ export class FieldNumber extends DrupalCustomField{
   init() {
     return [this];
   }
+
+  updateValue(value) {
+    this.value = value;
+  }
 }
