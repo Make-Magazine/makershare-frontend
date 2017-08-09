@@ -15,6 +15,10 @@
     "start:watch": "nodemon -C ./dist-server/index.js"
   },
   "license": "BSD-2-Clause",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "dependencies": {
     "@angular/animations": "^4.3.0",
     "@angular/common": "^4.3.0",
