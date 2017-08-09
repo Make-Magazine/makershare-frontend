@@ -53,7 +53,6 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 
-import { ReportUserComponent } from './report-user/report-user.component';
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
 import { MakerSearchCardComponent } from './search-cards/maker-search-card/maker-search-card.component';
@@ -113,7 +112,6 @@ import { ReportComponent } from './report/report.component';
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
-    ReportUserComponent,
     ProjectVoteComponent,
     FileBrowserComponent,
     ReportCommentComponent,
@@ -165,7 +163,6 @@ import { ReportComponent } from './report/report.component';
     ChallengeSearchCardComponent,
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
-    ReportUserComponent,
     ProjectVoteComponent,
     ReportCommentComponent,
     FileBrowserComponent,

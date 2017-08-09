@@ -10,9 +10,9 @@ import { NotificationBarService, NotificationType } from 'ngx-notification-bar/r
   templateUrl: './report.component.html',
 })
 export class ReportComponent implements OnInit {
-  @Input('nodeNid') Nid;
-  @Input('nodeType') type;
-  @Input('typeOfNode') typeNode;
+  @Input() EntityId;
+  @Input() EntityType;
+  @Input() typeOfNode;
   userId;
   checkUserLogin = false;
   isReported = false;
@@ -20,17 +20,22 @@ export class ReportComponent implements OnInit {
   closeResult;
   reportForm: FormGroup;
   constructor(
-    private userService: UserService, private flagService: FlagService, private modalService: NgbModal,
-    private router: Router, private notificationBarService: NotificationBarService, private fb: FormBuilder) { }
+    private userService: UserService,
+    private flagService: FlagService,
+    private modalService: NgbModal,
+    private router: Router,
+    private notificationBarService: NotificationBarService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.buildForm();
     this.userId = localStorage.getItem('user_id');
     this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data; //return true or false
+      this.checkUserLogin = data;
       if (this.checkUserLogin && this.userId) {
-        this.flagService.isFlagged(this.Nid, this.userId, 'report_node').subscribe(data => {
-          this.isReported = data[0]; //return true or false
+        this.flagService.isFlagged(this.EntityId, this.userId, 'report_node').subscribe(data => {
+          this.isReported = data[0];
         });
       }
     });
@@ -44,25 +49,25 @@ export class ReportComponent implements OnInit {
   }
   buildForm() {
     this.reportForm = this.fb.group({
-      "field_reason_reporting_node": ['', Validators.required],
-      "field_other_data": ['', Validators.required],
+      "field_reason_reporting": ['', Validators.required],
+      "field_explain": ['', Validators.required],
     });
   }
   updateSelectedReason(item: any) {
     this.selectedReasonName = item.target.value;
-    console.log(this.selectedReasonName)
   }
   onSubmit(e: Event) {
+    let reportReasons: object = {};
+    for (let key in this.reportForm.value) {
+      reportReasons[key + '_' + this.EntityType] = this.reportForm.value[key];
+    }
+    this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+
     if (!this.checkUserLogin) { this.router.navigate(['/access-denied']) };
-    let reportReasons = {
-      field_reason_reporting_node: this.selectedReasonName,
-      field_other_data: this.reportForm.value.field_other_data,
-    };
-    this.flagService.flag(this.Nid, this.userId, 'report_node', reportReasons).subscribe(response => {
+    this.flagService.flag(this.EntityId, this.userId, 'report_' + this.EntityType, reportReasons).subscribe(response => {
       this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       this.isReported = !this.isReported;
     });
-
   }
 
 }

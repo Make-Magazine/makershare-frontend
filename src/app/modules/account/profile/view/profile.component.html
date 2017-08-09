@@ -386,9 +386,7 @@
 								<!--<a class="report">Report this user</a>-->
 								<div class="hideData report-div" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<!--<hr>-->
-									<app-report-user [userReportId]="uid"></app-report-user>
-									<!-- <app-report *ngIf="uid" [nodeNid]="uid" [nodeType]="'user'"></app-report> -->
-
+									 <app-report *ngIf="uid" [EntityId]="uid" [EntityType]="'user'"></app-report> 
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
 										<i class="lnr lnr lnr-cross close"></i>
