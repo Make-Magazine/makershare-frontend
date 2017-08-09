@@ -5,10 +5,10 @@
 
 		<div class="add-org" *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
 			<!--it should be orgs/create like commented line  -->
-			 <!-- <button  [routerLink]="['/orgs/create']"> Create Org </button> -->
-			 <button  [routerLink]="['/']"> Create Org </button>
+			<!-- <button  [routerLink]="['/orgs/create']"> Create Org </button> -->
+			<button [routerLink]="['/']"> Create Org </button>
 		</div>
-		
+
 		<section class="container body-region">
 			<!-- Start sidebar-left -->
 			<div class="row body-content">
@@ -51,7 +51,9 @@
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}</li>
 										<li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
 										</li>
-										<li *ngIf="!ProfileInfo.address || ProfileInfo.address == '' || ProfileInfo.address.country == '' "><p class="placeholder-text">{{PlaceholderText.address}}</p></li>
+										<li *ngIf="!ProfileInfo.address || ProfileInfo.address == '' || ProfileInfo.address.country == '' ">
+											<p class="placeholder-text">{{PlaceholderText.address}}</p>
+										</li>
 									</ul>
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
@@ -183,7 +185,8 @@
 										</div>
 									</span>
 								</ul>
-								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])" class="list-unstyled makerspaces hideData">
+								<ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])"
+								 class="list-unstyled makerspaces hideData">
 									<p class="placeholder-text">{{PlaceholderText.maker_space}}</p>
 								</ul>
 								<hr class="hideData">
@@ -202,19 +205,19 @@
 									<!-- Start How -->
 									<p class="global-title">My Maker Moment</p>
 									<div class="paragraph-style-sheesh">
-									<div  *ngIf="ProfileInfo.started_making" class="started_making">
-										<div *ngIf="ReadMoreFields.started_making">
-										<span class="read-less" (click)="ReadMoreFields.started_making = false"><i class="lnr lnr-cross"></i></span>
-											<div [innerHTML]="ProfileInfo.started_making"></div>
-										</div>
-										<div *ngIf="!ReadMoreFields.started_making">
-											<div [innerHTML]="ProfileInfo.started_making_short"></div><span class="read-more" *ngIf="ProfileInfo.started_making.length > 160" (click)="ReadMoreFields.started_making = true">Read More</span>
-										</div>
-										<!-- <div *ngIf="!ReadMoreFields.started_making">
+										<div *ngIf="ProfileInfo.started_making" class="started_making">
+											<div *ngIf="ReadMoreFields.started_making">
+												<span class="read-less" (click)="ReadMoreFields.started_making = false"><i class="lnr lnr-cross"></i></span>
+												<div [innerHTML]="ProfileInfo.started_making"></div>
+											</div>
+											<div *ngIf="!ReadMoreFields.started_making">
+												<div [innerHTML]="ProfileInfo.started_making_short"></div><span class="read-more" *ngIf="ProfileInfo.started_making.length > 160" (click)="ReadMoreFields.started_making = true">Read More</span>
+											</div>
+											<!-- <div *ngIf="!ReadMoreFields.started_making">
 											<div>{{ProfileInfo.started_making | truncate : 85}}</div>
 											<span *ngIf="ProfileInfo.started_making.length > 85" (click)="ReadMoreFields.started_making = true">Read More</span>
 										</div> -->
-									</div>
+										</div>
 									</div>
 									<p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">{{PlaceholderText.started_making}}</p>
 								</div>
@@ -241,7 +244,7 @@
 							<app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'" [profile]="true"></app-maker-card>
 							<div class="profile-info">
 
-									<div class="bio hideData">
+								<div class="bio hideData">
 									<div *ngIf="ProfileInfo.bio" class="bio">
 										<div *ngIf="ReadMoreFields.bio">
 											<span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
@@ -256,7 +259,7 @@
 									</div>
 									<hr class="hideData">
 								</div>
-											
+
 								<!-- End Bio -->
 								<div class="hideData 1" *ngIf="!emptySocial">
 									<p class="global-title" *ngIf="!emptySocial">Social</p>
@@ -336,7 +339,7 @@
 								</div>
 								<hr class="hideData" *ngIf="!emptySocial">
 								<ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
-									<p  class="global-title">Makerspaces</p>
+									<p class="global-title">Makerspaces</p>
 									<span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url" href="{{makerspace.field_makerspace_url}}" target="_blank">  {{makerspace.field_makerspace_name}} </a>
@@ -359,7 +362,7 @@
 									<p class="global-title">My Maker Moment</p>
 									<div class="paragraph-style-sheesh" *ngIf="ProfileInfo.started_making" class="started_making">
 										<div *ngIf="ReadMoreFields.started_making">
-										<span class="read-less" (click)="ReadMoreFields.started_making = false"><i class="lnr lnr-cross"></i></span>
+											<span class="read-less" (click)="ReadMoreFields.started_making = false"><i class="lnr lnr-cross"></i></span>
 											<div [innerHTML]="ProfileInfo.started_making"></div>
 										</div>
 										<div *ngIf="!ReadMoreFields.started_making">
@@ -384,6 +387,8 @@
 								<div class="hideData report-div" *ngIf="CurrentLoggedUserId && uid && CurrentLoggedUserId != uid  && auth.authenticated()">
 									<!--<hr>-->
 									<app-report-user [userReportId]="uid"></app-report-user>
+									<!-- <app-report *ngIf="uid" [nodeNid]="uid" [nodeType]="'user'"></app-report> -->
+
 									<span class="toggleProfile" (click)="ToggleProfile()">
 										<i class="lnr lnr lnr-chevron-down open"></i>
 										<i class="lnr lnr lnr-cross close"></i>
@@ -407,16 +412,19 @@
 				<div class="right-section col-lg-8 col-md-6">
 					<!-- Start Content-region -->
 					<div class="profile-view-control-container" *ngIf="CurrentLoggedUserId != uid">
-						<i *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'showcase'" class="grid-view fa fa-th-large"></i>
-						<i *ngIf="profile.projects_view == 'showcase'" [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'" class="fa fa-bars"></i>
+						<i *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'showcase'"
+						 class="grid-view fa fa-th-large"></i>
+						<i *ngIf="profile.projects_view == 'showcase'" [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'"
+						 class="fa fa-bars"></i>
 					</div>
-				
+
 					<div class="profile-stats">
 						<div class="profile-content">
 							<div class="row">
 								<div class="col-lg-12 col-md-12">
 									<profile-projects *ngIf="CurrentLoggedUserId != uid" [uid]="uid" [view]="profile.projects_view" [userFullName]="profile.full_name"></profile-projects>
-									<app-edit-portfolio (emitter)="GetUserDetails()" *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic" [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
+									<app-edit-portfolio (emitter)="GetUserDetails()" *ngIf="CurrentLoggedUserId == uid" [projectsCountPublic]="ProjectsCountPublic"
+									 [projectsCountPrivate]="ProjectsCountPrivate" [projectsCountDraft]="ProjectsCountDraft" [LikesCount]="profile.total_likes"
 									 [ViewsCount]="profile.views_count"></app-edit-portfolio>
 								</div>
 							</div>
@@ -695,8 +703,8 @@
 											</div>
 											<div class="col-lg-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_github.valid}" class="col-md-12 form-control"
-													 type="text" name="web-url" formControlName="field_github" placeholder="Github">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_github.valid}" class="col-md-12 form-control" type="text"
+													 name="web-url" formControlName="field_github" placeholder="Github">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_github"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_github'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_github.valid && FormGroupSocial.controls.field_github.touched" class="alert alert-danger error-msg">
@@ -706,8 +714,8 @@
 											</div>
 											<div class="col-lg-6">
 												<li class="form-group">
-													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitch.valid}" class="col-md-12 form-control"
-													 type="text" name="web-url" formControlName="field_twitch" placeholder="Twitch">
+													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_twitch.valid}" class="col-md-12 form-control" type="text"
+													 name="web-url" formControlName="field_twitch" placeholder="Twitch">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_twitch"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_twitch'" validate-onfocusout>-->
 													<div *ngIf="!FormGroupSocial.controls.field_twitch.valid && FormGroupSocial.controls.field_twitch.touched" class="alert alert-danger error-msg">
@@ -735,19 +743,20 @@
 													<div *ngIf="!FormGroupSocial.controls.field_thingyverse.valid && FormGroupSocial.controls.field_thingyverse.touched" class="alert alert-danger error-msg">
 														Invalid URL, ex: http://example.com
 													</div>
-												</li>	
-											</div>	
+												</li>
+											</div>
 											<div class="col-lg-6">
 												<li class="form-group">
 													<input add-protocol [ngClass]="{valError: !FormGroupSocial.controls.field_stackoverflow.valid}" class="col-md-12 form-control"
 													 type="text" name="web-url" formControlName="field_stackoverflow" placeholder="stackoverflow">
 													<!--<input class="radio-breferred" type="radio" formControlName="field_preferred" name="field_preferred" value="field_thingyverse"-->
 													<!--[checked]="profile.field_social_accounts.field_preferred == 'field_thingyverse'" validate-onfocusout>-->
-													<div *ngIf="!FormGroupSocial.controls.field_stackoverflow.valid && FormGroupSocial.controls.field_stackoverflow.touched" class="alert alert-danger error-msg">
+													<div *ngIf="!FormGroupSocial.controls.field_stackoverflow.valid && FormGroupSocial.controls.field_stackoverflow.touched"
+													 class="alert alert-danger error-msg">
 														Invalid URL, ex: http://example.com
 													</div>
-												</li>	
-											</div>											
+												</li>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -778,7 +787,8 @@
 									</div>
 								</div>
 							</div>
-							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid && formGroup.controls.field_add_your_makerspace_s_['controls'].length < 10" class="btn add-other" (click)="AddMakerspaceRow()"><i class="lnr lnr-plus-circle" aria-hidden="true"></i><span>Add another</span></a>
+							<a *ngIf="formGroup.controls.field_add_your_makerspace_s_.valid && formGroup.controls.field_add_your_makerspace_s_['controls'].length < 10"
+							 class="btn add-other" (click)="AddMakerspaceRow()"><i class="lnr lnr-plus-circle" aria-hidden="true"></i><span>Add another</span></a>
 						</div>
 
 					</div>

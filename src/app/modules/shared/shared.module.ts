@@ -70,6 +70,7 @@ import { UserCardSmallComponent } from './user-card-small/user-card-small.compon
 import { UserCardComponent } from './user-card/user-card.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { ViewsComponent } from './views/views.component';
+import { ReportComponent } from './report/report.component';
 
 
 @NgModule({
@@ -128,6 +129,7 @@ import { ViewsComponent } from './views/views.component';
     FeatureComponent,
     CompanyCardComponent,
     ReportOrgsComponent,
+    ReportComponent,
     // directives
     ValidateOnFocusoutDirective,
     AddProtocolDirective,
@@ -136,6 +138,7 @@ import { ViewsComponent } from './views/views.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
+    
   ],
   exports: [
     CommentComponent,
@@ -184,6 +187,7 @@ import { ViewsComponent } from './views/views.component';
     ReverseArray,
     FeatureComponent,
     ReportOrgsComponent,
+    ReportComponent,
   ],
 })
 export class SharedModule {
