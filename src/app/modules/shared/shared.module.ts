@@ -53,8 +53,6 @@ import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
 import { ReportCommentComponent } from './report-comment/report-comment.component';
 
-import { ReportOrgsComponent } from './report-orgs/report-orgs.component';
-import { ReportProjectComponent } from './report-project/report-project.component';
 import { ReportUserComponent } from './report-user/report-user.component';
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
@@ -116,7 +114,6 @@ import { ReportComponent } from './report/report.component';
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ReportUserComponent,
-    ReportProjectComponent,
     ProjectVoteComponent,
     FileBrowserComponent,
     ReportCommentComponent,
@@ -128,7 +125,6 @@ import { ReportComponent } from './report/report.component';
     FollowUserComponent,
     FeatureComponent,
     CompanyCardComponent,
-    ReportOrgsComponent,
     ReportComponent,
     // directives
     ValidateOnFocusoutDirective,
@@ -138,7 +134,7 @@ import { ReportComponent } from './report/report.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
-    
+
   ],
   exports: [
     CommentComponent,
@@ -170,7 +166,6 @@ import { ReportComponent } from './report/report.component';
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ReportUserComponent,
-    ReportProjectComponent,
     ProjectVoteComponent,
     ReportCommentComponent,
     FileBrowserComponent,
@@ -186,7 +181,7 @@ import { ReportComponent } from './report/report.component';
     // Ng2FileDropDirective,
     ReverseArray,
     FeatureComponent,
-    ReportOrgsComponent,
+
     ReportComponent,
   ],
 })
