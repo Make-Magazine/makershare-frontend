@@ -9,9 +9,8 @@
            *ngIf="showFlag">maker</div>
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"> </app-feature>
       <app-card-badges [badges]="badges"></app-card-badges>
-      <br><br>
-      <div class="float-right orgs-class">
-        <img *ngIf="card.orgs_logo" class="rounded-circle bg-danger orgs-class" src="{{card.orgs_logo}}" alt="">
+      <div class="float-right" *ngIf="card.orgs_logo">
+        <img class="rounded-circle bg-danger" src="{{card.orgs_logo}}" alt="">
       </div>
     </div>
     <div class="info-bottom {{showFlag ? '' : 'no-flag'}}">
