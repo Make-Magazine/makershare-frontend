@@ -10,14 +10,14 @@
     <!-- community managers -->
     <h2 class="sub-header red">COMMUNITY MANAGERS</h2>
     <div class="projects-grid row" *ngIf="communityManagers">
-      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of communityManagers" [uid]="maker.uid"></app-maker-card>
+      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of communityManagers" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
     </div>
 
     <!-- make: + intel -->
     <div style="margin-top: 4rem;">
       <h2 class="sub-header red">MAKE: + INTEL</h2>
       <div class="projects-grid row" *ngIf="makeIntel">
-        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makeIntel" [uid]="maker.uid"></app-maker-card>
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makeIntel" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
     <div style="margin-top: 4rem;">
       <h2 class="sub-header red">PARTNERS</h2>
       <div class="projects-grid row" *ngIf="partners">
-        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of partners" [uid]="maker.uid"></app-maker-card>
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of partners" [uid]="maker.uid" [state]="'tall'"></app-maker-card>
       </div>
     </div>
   </div>
