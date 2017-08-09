@@ -1,7 +1,7 @@
 export class Settings {
   apiEndPoint: string = 'api';
 
-  // // connect to stage
+  // connect to stage
   apiProtocol: 'http' | 'https' = 'https';
   apiHost: string = 'preview-manage.makershare.com';
   apiPort: number;

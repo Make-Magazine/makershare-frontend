@@ -8,7 +8,7 @@
       </div>
       <!-- End body -->
     </div>
-    <div class="feedback-group">
+    <div>
       <app-comment [nid]="project.nid"></app-comment>
     </div>
   </div>
@@ -17,7 +17,8 @@
       <div class="project-story-tab">
         <div class="project-collaborates" *ngIf="project.field_maker_memberships">
           <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
-            <app-user-card-small [uid]="collaborator.membership_team" [anonymosname]="collaborator.anonymous_member_name"></app-user-card-small>
+
+            <app-maker-card class="card-wrapper" [uid]="collaborator.membership_team" [state]="'short'"></app-maker-card>
             <div class="collaborate-role">
               <p>ROLE ON THE PROJECT</p>
               <p class="capitalize">{{collaborator.membership_role}}</p>
