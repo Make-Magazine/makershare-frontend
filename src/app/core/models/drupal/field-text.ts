@@ -14,6 +14,10 @@ export class FieldText extends DrupalCustomField {
   init() {
     return [this];
   }
+
+  updateValue(value) {
+    this.value = value;
+  }
 }
 
 export class FieldLongText extends FieldText {

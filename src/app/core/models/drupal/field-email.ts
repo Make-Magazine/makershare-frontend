@@ -12,4 +12,8 @@ export class FieldEmail extends DrupalCustomField {
   init() {
     return [this];
   }
+
+  updateValue(value) {
+    this.email = value;
+  }
 }

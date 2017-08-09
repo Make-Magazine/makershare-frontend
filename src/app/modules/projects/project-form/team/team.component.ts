@@ -102,7 +102,7 @@ export class TeamComponent implements OnInit {
     );
     this.InvitationEmails = new UserInvitations(
       uid,
-      this.project.GetField('nid'),
+      this.project.getField('nid'),
     );
     setTimeout(function() {
       //  $("html,body").animate({scrollTop: 0}, "slow");
