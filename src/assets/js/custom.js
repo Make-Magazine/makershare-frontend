@@ -4,19 +4,19 @@ setTimeout(function() {
 		var st,
 			$ot = $('.profile-sidebar'),
 			ot = $ot.offset().top,
-			hh = 0,
+			hh = $('.main-header').outerHeight(true),
 			pad = 30,
 			$c = $('.card', $ot),
 			cd;
 		$(document).on('scroll', function() {
 			st = $('body').scrollTop();
 
-			// console.log(st, ot);
-			if(st > 1) {
-				hh = $('.site-header').outerHeight(true);
-			}
+			// // console.log(st, ot);
+			// if(st > 1) { // sucks that this checks the height every time
+			// 	console.log('should only fire the first time');
+			// }
 
-			if(hh > 0 && (st + hh + pad) >= ot) {
+			if(st >= (hh - ot + pad)) {
 				$c.addClass('short').removeClass('tall');
 				$c.css({
 					'position': 'fixed',
@@ -42,7 +42,7 @@ setTimeout(function() {
 			}
 		});
 	}
-},8000); // need a promise here instead of relying on this timeoutf
+},6000); // need a promise here instead of relying on this timeoutf
 // look into promise for dom content loaded
 
 
