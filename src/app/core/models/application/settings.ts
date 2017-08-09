@@ -12,7 +12,7 @@ export class Settings {
   apiHost: string = 'localhost';
   apiPort: number = 333;
 
-  solrPath: string = 'http://192.168.0.208:333/solr/drupal/';
+  solrPath: string = 'https://preview-manage.makershare.com/solr/drupal/';
   appURL: string = 'http://localhost:4200';
   appName: string = 'Maker Share';
   language: string = 'und';
