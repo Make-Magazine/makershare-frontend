@@ -45,7 +45,7 @@ export abstract class NodeEntity {
     this.type = node_type;
   }
 
-  setField(field_name: string, value: number | string): void {
+  setField(field_name: string, value: any): void {
     this[field_name] = value;
   }
 

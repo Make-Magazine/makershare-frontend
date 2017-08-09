@@ -24,4 +24,12 @@ export class DrupalCustomLanguageField {
     }
     return this[Singleton.Settings.language];
   }
+  
+  setField(value: any): void {
+    if(value instanceof DrupalCustomField && this[Singleton.Settings.language] instanceof Array) {
+      this[Singleton.Settings.language][0] = value;
+      return;      
+    }
+    this[Singleton.Settings.language] = value;
+  }
 }

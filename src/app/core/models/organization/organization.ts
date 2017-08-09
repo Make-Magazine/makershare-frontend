@@ -1,17 +1,17 @@
 import { 
-  NodeEntity, DrupalCustomLanguageField, FileEntity, FieldEmail, FieldNumber,
+  NodeEntity, DrupalCustomLanguageField, DrupalCustomField, FileEntity, FieldEmail, FieldNumber,
   FieldText, FieldLongText
 } from '../';
 
 export class Organization extends NodeEntity {
 
-  private field_orgs_logo: FileEntity;
-  private field_orgs_cover_photo: FileEntity;
-  private field_orgs_type: 'non-profit'|'startup';
-  private field_orgs_contact: FieldEmail;
-  private field_minimum_number_of_follower: FieldNumber;
-  private field_breif_info: FieldText;
-  private body: FieldLongText;
+  field_orgs_logo: FileEntity;
+  field_orgs_cover_photo: FileEntity;
+  field_orgs_type: 'non-profit'|'startup';
+  field_orgs_contact: FieldEmail;
+  field_minimum_number_of_follower: FieldNumber;
+  field_breif_info: FieldText;
+  body: FieldLongText;
 
   // field_social_accounts?;
   // field_website_blog?;
@@ -29,7 +29,6 @@ export class Organization extends NodeEntity {
   constructor() {
     super();
     this.initFields();
-    // this.implementSetGet();
   }
 
   protected initFields() {
@@ -50,20 +49,13 @@ export class Organization extends NodeEntity {
     }
     return field;
   }
-
-  implementSetGet() {
-    super.implementSetGet();
-    // for (let key in this) {
-    //   if(this[key] !instanceof DrupalCustomLanguageField) {
-    //     return;
-    //   }
-    //   Object.defineProperty(this, key, {
-    //     get: () => { return this[key] },
-    //     set: (value: string|number) => {
-    //       console.log("test");
-    //       this[key] = value;
-    //     },
-    //   });
-    // }
+  
+  setField(fieldName: string, value: DrupalCustomField | string | number, index?: number): void {
+    const field = this[fieldName];
+    if (field instanceof DrupalCustomLanguageField) {
+      field.setField(value);
+      return;
+    }
+    super.setField(fieldName, value);
   }
 }
