@@ -13,10 +13,10 @@ export interface ProjectHold extends NodeEntity {
 export class ProjectHold extends NodeEntity implements ProjectHold {
   constructor(Project_title_id: string) {
     super();
-    this.Init(Project_title_id);
+    this.initFields(Project_title_id);
   }
 
-  protected Init(Project_title_id) {
+  protected initFields(Project_title_id) {
     super.initFields('project_hold');
     this.status = 1;
     this.field_project_to_edit = { und: [{ target_id: Project_title_id }] };
@@ -41,5 +41,9 @@ export class ProjectHold extends NodeEntity implements ProjectHold {
     date_with_time.date = year + '-' + month + '-' + day;
     date_with_time.time = hours + ':' + minutes + ':00';
     this.unpublish_on = new date_time(date_with_time);
+  }
+
+  updateField() {
+    
   }
 }

@@ -5,4 +5,7 @@ export class ToolMaterialPart extends NodeEntity{
     super();
     this.type = ControlName;
   }
+  updateField() {
+    
+  }
 }
