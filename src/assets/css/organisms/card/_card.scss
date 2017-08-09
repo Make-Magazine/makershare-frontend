@@ -3,9 +3,14 @@
 @import "variables";
 // ///////////////////
 
+
 .card-wrapper {
   min-height: calc(100% + 2rem);
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  app-project-card, app-showcase-gen-card, app-showcase-card, app-mission-card, app-maker-card {
+    min-width: 100%; //this may be bad
+  }
 }
 
 .card {
