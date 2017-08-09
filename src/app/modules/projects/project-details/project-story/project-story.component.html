@@ -50,7 +50,7 @@
       />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
       <hr>
       <div *ngIf="project.nid && project.uid ">
-        <app-report *ngIf="project.nid" [nodeNid]="project.nid" [nodeType]="'node'" [typeOfNode]="'project'"></app-report>
+        <app-report *ngIf="project.nid" [EntityId]="project.nid" [EntityType]="'node'" [typeOfNode]="'project'"></app-report>
       </div>
     </div>
 
