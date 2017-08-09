@@ -126,12 +126,12 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   UpdateHolder() {
     setInterval(() => {
       const projectHold = new ProjectHold(
-        this.project.GetField('title') +
+        this.project.getField('title') +
           ' (' +
-        this.project.GetField('nid') +
+        this.project.getField('nid') +
           ')',
       );
-      projectHold.setField('title', this.project.GetField('title'));
+      projectHold.setField('title', this.project.getField('title'));
       projectHold.setField('nid', this.Holder.nid);
       if (this.Holder.field_users_wants_edit) {
         projectHold.field_users_wants_edit = this.Holder.field_users_wants_edit;
@@ -143,16 +143,16 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   GetProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
       this.viewService
-        .getView('api_project_hold', [['nid', project.getField('nid')]])
+        .getView('api_project_hold', [['nid', nid]])
         .subscribe(hold => {
           if (
             hold.length == 0 ||
             hold[0].uid == +localStorage.getItem('user_id')
           ) {
             const projectHold = new ProjectHold(
-              project.getField('title') + ' (' + nid + ')',
+              project.title + ' (' + nid + ')',
             );
-            projectHold.setField('title', this.project.GetField('title'));
+            projectHold.setField('title', project.title);
             if (hold.length == 0) {
               this.nodeService.createNode(projectHold).subscribe(node => {
                 this.Holder = node;
@@ -565,7 +565,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       },
       field_membership_role: { und: [{ value: 'Project Lead' }] },
     };
-    this.project.SetField('field_maker_memberships', owner);
+    this.project.setField('field_maker_memberships', owner);
     this.ProjectLoaded = true;
   }
 
@@ -573,8 +573,8 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     delete this.project.field_original_team_members;
     delete this.project.field_forks;
     delete this.project.field_faire_name;
-    this.project.SetField('sticky', null);
-    this.project.SetField('promote', null);
+    this.project.setField('sticky', null);
+    this.project.setField('promote', null);
   }
 
   /**
@@ -587,7 +587,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     if (this.project.field_categories.und.length == 0) {
       this.project.field_categories.und = [''];
     }
-    if (this.project.GetField('nid')) {
+    if (this.project.getField('nid')) {
       this.RemoveStaticFields();
       this.nodeService.updateNode(this.project).subscribe(
         (project: ProjectView) => {
@@ -617,16 +617,14 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.nodeService.createNode(this.project).subscribe(
         (project: ProjectView) => {
           this.CanNavigate = true;
-          this.FormPrintableValues.InvitationEmails.project = project
-            .getField('nid')
-            .toString();
+          this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
           if (
             !NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)
           ) {
             this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
           }
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.GetProject(+project.getField('nid'));
+            this.GetProject(+project.nid);
           }
           this.showSuccessMessage(
             'create',
@@ -686,10 +684,10 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.TryToSubmitPrivatePublic = true;
       return;
     }
-    this.project.SetField('field_visibility2', Visibility);
-    this.project.SetField('status', Status);
-    if (!this.project.GetField('title')) {
-      this.project.SetField('title', 'Untitled');
+    this.project.setField('field_visibility2', Visibility);
+    this.project.setField('status', Status);
+    if (!this.project.getField('title')) {
+      this.project.setField('title', 'Untitled');
     }
     if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
       delete this.project.field_show_tell_video_as_default.und;
@@ -703,7 +701,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
    */
   SetPrjectValues() {
     const tasks = [];
-    this.project.SetField(
+    this.project.setField(
       'field_tags',
       this.FormPrintableValues.tags.toString(),
     );
@@ -738,7 +736,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       x => {
         let index = 0;
         if (!this.FormPrintableValues.cover_image['fid'] && image.file) {
-          this.project.SetField(
+          this.project.setField(
             'field_cover_photo',
             x[0] as FieldFileReference,
           );

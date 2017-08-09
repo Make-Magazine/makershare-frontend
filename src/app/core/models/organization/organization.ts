@@ -1,39 +1,38 @@
 import { 
-  NodeEntity, DrupalCustomLanguageField, FileEntity, FieldEmail, FieldNumber,
+  NodeEntity, DrupalCustomLanguageField, DrupalCustomField, FileEntity, FieldEmail, FieldNumber,
   FieldText, FieldLongText
 } from '../';
 
 export class Organization extends NodeEntity {
 
-  private field_orgs_logo: FileEntity;
-  private field_orgs_cover_photo: FileEntity;
-  private field_orgs_type: 'non-profit'|'startup';
-  private field_orgs_contact: FieldEmail;
-  private field_minimum_number_of_follower: FieldNumber;
-  private field_breif_info: FieldText;
-  private body: FieldLongText;
+  field_orgs_logo: FileEntity;
+  field_orgs_cover_photo: FileEntity;
+  field_orgs_type: 'non-profit'|'startup';
+  field_orgs_contact: FieldEmail;
+  field_minimum_number_of_follower: FieldNumber;
+  field_breif_info: FieldText;
+  body: FieldLongText;
 
   // field_social_accounts?;
-  // field_website_blog?;
+  field_website_blog?: FieldText;
   // field_orgs_address?;
   // field_orgs_projects?;
-  // field_orgs_phone?;
-  // FieldNumber_of_employees?;
-  // field_founder_name?;
+  field_orgs_phone?: FieldText;
+  field_number_of_employees?: FieldNumber;
+  field_founder_name?: FieldText;
   // field_founded_date?;
-  // field_type_of_business?;  
+  field_type_of_business?: FieldText; 
   // field_badges?;
-  // group_about_us?;
   // field_maker_memberships?;
 
   constructor() {
     super();
     this.initFields();
-    // this.implementSetGet();
   }
 
   protected initFields() {
     super.initFields('company_profile');
+    this.status = 1;
     this.field_orgs_logo = this.fieldsFactory.fileEntityReference();
     this.field_orgs_cover_photo = this.fieldsFactory.fileEntityReference();
     this.field_orgs_type = this.fieldsFactory.listText('non-profit');
@@ -41,6 +40,11 @@ export class Organization extends NodeEntity {
     this.field_minimum_number_of_follower = this.fieldsFactory.number();
     this.field_breif_info = this.fieldsFactory.text(null);
     this.body = this.fieldsFactory.longText(null);
+    this.field_website_blog = this.fieldsFactory.longText(null);
+    this.field_orgs_phone = this.fieldsFactory.longText(null);
+    this.field_number_of_employees = this.fieldsFactory.number();
+    this.field_founder_name = this.fieldsFactory.text(null);
+    this.field_type_of_business = this.fieldsFactory.text(null);
   }
 
   getField(fieldName: string, index?: number): any {
@@ -50,20 +54,22 @@ export class Organization extends NodeEntity {
     }
     return field;
   }
+  
+  setField(fieldName: string, value: DrupalCustomField | string | number, index?: number): void {
+    const field = this[fieldName];
+    if (field instanceof DrupalCustomLanguageField) {
+      field.setField(value);
+      return;
+    }
+    super.setField(fieldName, value);
+  }
 
-  implementSetGet() {
-    super.implementSetGet();
-    // for (let key in this) {
-    //   if(this[key] !instanceof DrupalCustomLanguageField) {
-    //     return;
-    //   }
-    //   Object.defineProperty(this, key, {
-    //     get: () => { return this[key] },
-    //     set: (value: string|number) => {
-    //       console.log("test");
-    //       this[key] = value;
-    //     },
-    //   });
-    // }
+  updateField(fieldName: string, value: any, index?: number) {
+    const field = this[fieldName];
+    if (field instanceof DrupalCustomLanguageField) {
+      field.updateField(value, index);
+      return;
+    }
+    super.setField(fieldName, value);
   }
 }
