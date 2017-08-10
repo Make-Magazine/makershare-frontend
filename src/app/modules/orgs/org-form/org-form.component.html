@@ -6,6 +6,8 @@
 
 <button class="btn-primaty" (click)="publishButtonClick()">Publish</button>
 
-<app-basic-info *ngIf="currentFormTab == 'Basic Info'"></app-basic-info>
-<app-about-us *ngIf="currentFormTab == 'About Us'"></app-about-us>
-<app-projects *ngIf="currentFormTab == 'Products'"></app-projects>
+<div *ngIf="organizationReady">
+  <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'" [organizationForm]="organizationForm"></app-org-form-basic-info>
+  <app-org-form-about-us *ngIf="currentFormTab == 'About Us'" [organizationForm]="organizationForm"></app-org-form-about-us>
+  <app-org-form-projects *ngIf="currentFormTab == 'Projects'" [organizationForm]="organizationForm"></app-org-form-projects>
+</div>

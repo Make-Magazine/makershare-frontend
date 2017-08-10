@@ -104,9 +104,12 @@
               </li>
               <span *ngIf="org_data">
                 <li *ngIf="org_data.path" class="sub-nav-item dropdown-item" [routerLink]="[org_data.path]">
-                <span class="nav-link">Company Profile</span>
-              </li>
-              </span>
+                <span class="nav-link">Organization Profile</span>
+        </li>
+        </span>
+        <li  class="sub-nav-item dropdown-item" [routerLink]="['/feed']">
+          <span class="nav-link">My Feed</span>
+        </li>
         <li class="sub-nav-item dropdown-item" [routerLink]="['/inbox-notifications']">
           <span class="nav-link">Inbox</span>
         </li>
