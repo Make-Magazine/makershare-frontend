@@ -1,0 +1,943 @@
+.page-create-project-why {
+  label {
+    color: $dark-grey;
+  }
+  .form-control::-webkit-input-placeholder {
+    color: $light-grey;
+  }
+  .form-control::-moz-input-placeholder {
+    color: $light-grey;
+  }
+  .form-control::-ms-input-placeholder {
+    color: $light-grey;
+  }
+  .form-control::-moz-input-placeholder {
+    color: $light-grey;
+  }
+  .words-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $light-grey;
+  }
+  .ng2-imgcrop {
+    display: block;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $dark-grey;
+  }
+  color: $dark-grey;
+  background-color: $lighter-grey;
+  .form-group > input,
+  textarea,
+  #cke_how-to-make {
+    max-width: 100%;
+  }
+  .add-controls {
+    padding: 1rem 0 .5rem;
+    h1 {
+      @include header-font();
+      text-transform: capitalize;
+    }
+    .project-create-buttons {
+      .contorls {
+        .create-project-buttons {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        button {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .project-private,
+        .project-public {
+          .btn {
+            /*background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);*/
+            background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            padding: .4rem .6rem;
+          }
+          .btn-main {
+            background: $highlight-red !important;
+            border-color: #d51920;
+          }
+        }
+        /*.project-public {
+          .btn {
+            background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
+            padding: 4px 6px 4px 6px;
+          }
+          .btn-main {
+            background: $highlight-red !important;
+            border-color: #d51920;
+          }
+        }*/
+        .project-delete {
+          .btn {
+            padding: .4rem .6rem;
+          }
+        }
+        .project-publish {
+          .btn {
+            padding: 1rem 4rem;
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+  .form-group {
+    margin-top: 2rem;
+    br {
+      display: none;
+    }
+  }
+  input {
+    border-radius: 0;
+  }
+  #projectCategory {
+    height: auto;
+    padding: 0;
+    select {
+      width: 75%;
+    }
+  }
+  .nav-create {
+    ul {
+      overflow: hidden;
+      margin-bottom: 0;
+      border-bottom: .1rem solid $light-grey;
+      li {
+        float: left;
+        .btn-grey-inverse {
+          padding: .7rem 5.5rem;
+        }
+      }
+    }
+  }
+  .guideline {
+    color: $darker-grey;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    padding: 1rem 1rem 1rem 15px;
+    .question-mark {
+      padding-right: 2rem;
+      i {
+        font-size: 2.2rem;
+        font-weight: 200;
+      }
+    }
+    .content {
+      width: 80%;
+      p {
+        @include desc-font-3 ();
+        line-height: 1.4rem;
+        color: $dark-grey;
+      }
+    }
+  }
+  .small-text {
+    font-size: 1.08rem;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: .5rem;
+  }
+  .your-story,
+  .how-to,
+  .team {
+    .add-button {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .your-story {
+    .cover {
+      label {
+        display: inline-block;
+      }
+    }
+    .projectName {
+      width: 100%;
+    }
+    .red-text {
+      font-size: 1.296rem;
+      color: $highlight-red;
+    }
+    .projectCategory {
+      width: 100%;
+      align-items: flex-start;
+      label {
+        margin-top: .5rem;
+      }
+      .add-cate {
+        margin-bottom: .5rem;
+        margin-left: .5rem;
+        width: auto;
+        padding-top: .9rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .categories-group {
+        width: 100%;
+        .dropdownIcon {
+          position: absolute;
+          right: 2.6rem;
+          top: 1.4rem;
+          pointer-events: none;
+        }
+      }
+      .list-group-item {
+        width: 50%;
+      }
+    }
+    .cate-list {
+      padding: 0 3rem;
+      .remove-cate {
+        font-size: 1.944rem;
+      }
+      .category-container {
+        position: relative;
+        z-index: 1;
+      }
+      p.cate-name {
+        margin: .3rem 0;
+        border-radius: 0;
+        font-size: 1.3rem;
+        padding: .8rem 1rem;
+        @include boxShadow(.2rem, .2rem, .8rem, $light-grey);
+      }
+    }
+    .cover {
+      a {
+      }
+      .image-preview {
+        width: 50%;
+        p {
+          width: 100%;
+          color: $light-grey;
+          padding: 1rem 0;
+          font-size: 1.4rem;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+      input {
+        display: inline-block;
+      }
+      #cover-upload {
+        display: none;
+      }
+      .file-upload {
+        font-size: 1.6rem;
+      }
+    }
+    .projectTags {
+      input {
+        height: auto;
+        padding: 0;
+      }
+    }
+  }
+  .how-to {
+    form {
+      padding-bottom: 13rem;
+    }
+    .sort {
+      width: 4rem;
+      margin: 0 1rem;
+    }
+    .quantity {
+      width: 5rem;
+    }
+    .carets {
+      display: inline-block;
+      width: 3rem;
+      position: relative;
+      margin-left: .5rem;
+      height: 3rem;
+      i {
+        line-height: 1rem;
+      }
+    }
+    .tools {
+      thead {
+        th:first-child {
+          width: 45%;
+        }
+        th:nth-child(2) {
+          width: 35%;
+        }
+      }
+    }
+    .tools,
+    .materials,
+    .parts,
+    .resources-row {
+      input {
+        max-width: 100%;
+      }
+      .panel-body {
+        padding: 0;
+      }
+      .tool-list {
+        @include desc-font-4 ();
+        font-size: 1.92rem;
+        margin-bottom: .5rem;
+        text-transform: uppercase;
+      }
+      .result,
+      .how-to-select
+      {
+        @include desc-font-2();
+        font-size: 1.76rem;
+        margin-top: 1rem;
+        padding-left: 0;
+      }
+
+      .btn-load-more {
+        font-size: 1.4rem;
+        padding: .4rem;
+        display: block;
+        width: 10rem;
+        text-align: center;
+        margin: 0;
+        background-color: $white;
+        border-color: $light-grey;
+        color: $dark-grey;
+      }
+      .panel-heading {
+        cursor: move;
+      }
+      .inputs-container {
+        .resources-button {
+          .btn {
+            margin: 2rem .5rem 1rem;
+            height: 3.5rem;
+          }
+          .fake-btn {
+            width: 40%;
+            text-align: left;
+            color: $light-grey;
+            border: none;
+          }
+          .add-lnr {
+            font-size: 1.5rem;
+            color: $dark-grey;
+            margin: auto;
+          }
+          span {
+            margin: auto 1rem;
+          }
+          .selected {
+            margin: 2rem .5rem 1rem;
+            line-height: 3.5rem;
+          }
+          a.selected {
+            margin-left: auto;
+          }
+          .resource-float-text {
+            position: absolute;
+            right: 2rem;
+            color: $medium-grey;
+            font-size: 1.296rem;
+          }
+        }
+      }
+    }
+    .difficulty {
+      width: 45%;
+      margin-right: 5%;
+      display: inline-block;
+    }
+    .duration {
+      width: 45%;
+      display: inline-block;
+    }
+    .difficulties,
+    .durations {
+      i.dropdownIcon {
+        position: absolute;
+        //top: 5rem;
+        z-index: 6;
+        right: 40%;
+        pointer-events: none;
+      }
+    }
+    #difficulty,
+    #duration {
+      position: relative;
+    }
+    .resources {
+      input[type="file"] {
+        display: none;
+      }
+      select {
+        width: 40%;
+      }
+      label {
+        margin-top: 1rem;
+      }
+      a.btn-white {
+        font-size: 1.4rem;
+      }
+      a.another-resource {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+  .team {
+    .add-teammember {
+      font-size: 2.08rem;
+      display: block;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    padding-top: 2rem;
+    .maker-mobile-card {
+      padding: 1.5rem 1.5rem .5rem;
+      height: 14.5rem;
+      width: 37rem;
+      .card-type-grey {
+        display: none;
+      }
+    }
+    form {
+      padding-bottom: 3rem;
+    }
+    input {
+      max-width: 100%;
+    }
+    .form-group {
+      margin-top: 0;
+    }
+    .add-collaborate {
+      border-radius: 0;
+    }
+    .sort {
+      label {
+        display: block;
+      }
+      input {
+        width: 4.5rem;
+        text-align: center;
+        display: inline-block;
+        margin-right: .5rem;
+      }
+    }
+    .carets {
+      width: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+      i {
+        font-size: 3.2rem;
+      }
+    }
+    .add-collaborate {
+      position: relative;
+      background-color: $medium-light-grey;
+      margin: 2rem 0;
+      padding: 0 1.5rem;
+    }
+    .remove {
+      position: absolute;
+      left: 80%;
+      bottom: 10%;
+    }
+    .collaborate {
+      position: relative;
+      background-color: $light-grey;
+      overflow: hidden;
+      margin: 2rem 0;
+      .form-group {
+        margin-top: .7rem;
+      }
+    }
+    .profile-container {
+      width: 100%;
+      .profile-card {
+        .left {
+          width: 11rem;
+        }
+        .right {
+          width: 60%;
+        }
+        .user-city {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .admin {
+      text-align: center;
+      i {
+        color: $highlight-bright-blue;
+        font-size: 2rem;
+      }
+    }
+    a.new-collab {
+      font-size: 1.4rem;
+      padding: .5rem;
+      i {
+        width: 3rem;
+      }
+    }
+    .result {
+      background-color: $white;
+      width: 100%;
+      padding: .5rem;
+      overflow: hidden;
+      border-bottom: .1rem solid $light-grey;
+      .user-image-container {
+        width: 15%;
+        float: left;
+        margin-right: 3%;
+        img {
+          max-width: 100%;
+        }
+      }
+      .data-container {
+        float: left;
+        width: 75%;
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+      &:hover {
+        background-color: $light-grey;
+      }
+    }
+  }
+
+  .your-story-guide, aside {
+    h2, h4, h5 {
+      text-align: left;
+    }
+  }
+}
+
+.borderedless td,
+.borderedless th {
+  border: none !important;
+  padding-left: 0 !important;
+}
+
+.modal-body {
+  .file-upload {
+    a {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.tooltip-inner {
+  max-width: 40rem !important;
+}
+
+.project-create-buttons {
+  p {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: $medium-grey;
+    margin-bottom: 0;
+    margin-right: .5rem;
+    padding: 1rem 0;
+    &.btn {
+      background-color: $lighter-grey;
+      border: .1rem solid $darker-grey;
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $highlight-red;
+        border-color: $highlight-red;
+        color: $white;
+      }
+    }
+  }
+  span {
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 2.56rem !important;
+  }
+  .btn-shadow {
+    min-width: 11rem;
+    font-size: 1.3rem;
+  }
+  .btn-shadow,
+  a:not([href]):not([tabindex]).btn-shadow {
+    color: $darker-grey;
+    background: linear-gradient(to bottom, #999 0, $white 7px, $white 100%);
+    border-radius: 0;
+    font-size: 2.56rem;
+    border: .1rem solid #999;
+    &:focus {
+      color: $white;
+      background: $highlight-red*1.3;
+      border-color: transparent;
+    }
+    &:active,
+    &:hover,
+    &.active {
+      color: $white;
+      background: $highlight-red;
+      border-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+.form-group.required {
+  label::after {
+    content: " *";
+    color: red;
+  }
+}
+
+.cke_button.cke_button__maximize.cke_button_off {
+  position: absolute;
+  right: 2rem;
+  &::after {
+    display: none;
+  }
+}
+
+.your-story,
+.how-to {
+  label {
+    @include card-header-font-md();
+    color: $dark-grey;
+    &.selected-topic {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.show-tell-as-default {
+  label {
+    font-size: 1rem;
+  }
+  input {
+    margin-right: 1rem;
+  }
+  .custom-control-description {
+    line-height: 2.5rem;
+  }
+}
+
+/* upload photo create project */
+
+.upload-cover-modal {
+  background-color: $main-bg;
+  .modal-dialog {
+    width: 60%;
+  }
+  .modal-header {
+    border-bottom: none !important;
+    padding: .8rem;
+    .close-form {
+      padding: 0;
+    }
+  }
+  .modal-body {
+    min-height: 44rem;
+    max-height: 54rem;
+    overflow-y: auto;
+    padding: 0 1.5rem;
+  }
+  .modal-footer {
+    border-top: none !important;
+    padding: 0 3.2rem;
+    button {
+      width: 12rem;
+    }
+  }
+  .info {
+    float: right;
+    background-color: $light-grey;
+    font-size: 1rem;
+    width: 50%;
+    padding: 1rem;
+    margin-bottom: .5rem;
+  }
+  ul {
+    li {
+      display: inline-block;
+    }
+  }
+  .modal-tabs {
+    padding: 0 .8rem;
+  }
+  .upload,
+  .your-photos {
+    bottom: 0;
+    a {
+      font-size: 1.8rem;
+      color: $darker-grey;
+      border-radius: 0;
+      padding: .5rem 1rem .5rem 4px !important;
+      color: $highlight-red !important;
+      &.active {
+        border-bottom: 1px solid $highlight-bright-blue;
+      }
+    }
+  }
+  .your-photo-tab {
+    display: none;
+    .progress {
+      width: 30%;
+    }
+    .image-container {
+      position: relative;
+      height: 15rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      i {
+        position: absolute;
+        top: 1rem;
+        right: 2.5rem;
+        color: $darker-grey;
+      }
+    }
+  }
+  .modal-footer {
+    text-align: center;
+    .buttons-section {
+      display: block;
+      margin: 0 auto;
+      button {
+        width: 16rem;
+        padding: 1.2rem;
+        background-color: $white !important;
+      }
+    }
+  }
+  .upload-tab {
+    margin: auto;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $darker-grey;
+    padding: 1.4rem;
+    background-color: $lighter-grey !important;
+    canvas {
+      background-color: $lighter-grey;
+      cursor: pointer;
+    }
+    .btn {
+      padding: 1.2rem !important;
+      width: 14rem;
+      background-color: $white !important;
+      color: $dark-grey !important;
+      &.big {
+        width: 22rem !important;
+      }
+      &.btn-load-more {
+        margin-bottom: 0;
+      }
+
+    }
+    .drag-photo {
+      color: $dark-grey;
+    }
+    .drag-or {
+      color: $dark-grey;
+    }
+    .drag-text {
+      color: $light-grey;
+      text-align: left;
+      padding-top: 10rem;
+    }
+    .image-background {
+      width: 30rem;
+      height: auto;
+    }
+  }
+  .upload-pic-container {
+    .image-container {
+      position: relative;
+      @include boxShadow(.2rem, .2rem, .5rem, rgba(136, 136, 136, 0.5));
+      img {
+        width: 100%;
+        margin: auto;
+      }
+      .upload-select {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+        background-color: $white;
+        color: $medium-grey;
+        padding: .5rem;
+        border: none;
+      }
+    }
+    .upload-pic-footer {
+      text-align: center;
+      a {
+        color: $medium-grey;
+        &:hover {
+          color: $medium-grey;
+        }
+      }
+    }
+  }
+  .modal-footer {
+    border-top: none !important;
+    padding: 1.8rem 3.2rem 0 3.2rem;
+    button {
+      width: 12rem;
+      padding: 1.2rem;
+      background-color: $white !important;
+    }
+  }
+  .scroll-container {
+    overflow-y: auto;
+    width: 100%;
+    height: 48rem;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 1.4rem 0;
+    background-color: #f3f3f3;
+    /*-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);*/
+    box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.5);
+    .file-browser-btn {
+      background-color: $white;
+    }
+  }
+}
+
+.account-settings {
+  .form-check,
+  .check-label {
+    /*display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;*/
+    display: flex !important;
+    //-webkit-box-pack: center !important;
+    //-webkit-justify-content: center !important;
+    //-ms-flex-pack: center !important;
+    justify-content: center !important;
+  }
+  .custom-control {
+    margin: auto;
+    position: absolute;
+    left: 40%;
+  }
+  .add-controls {
+    overflow: hidden;
+  }
+}
+
+.commuinty-manager-page {
+  small {
+    font-size: 90%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .page-create-project-why {
+    .how-to {
+      .difficulties,
+      .durations {
+        i.dropdownIcon {
+          right: 3rem;
+        }
+      }
+    }
+    .add-controls {
+      .btn-tab, a:not([href]):not([tabindex]).btn-tab {
+        padding: .9rem 1rem 2.5rem;
+        font-size: 1.76rem;
+      }
+    }
+    .project-create-buttons {
+      p {
+        padding: 1rem;
+      }
+      .controls {
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .page-create-project-why {
+    .nav-create {
+      ul {
+        li {
+          float: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .page-create-project-why {
+    .team {
+      padding-top: 0;
+    }
+    .region-content {
+      padding: 0;
+    }
+    .add-collaborate {
+      .inputs-container {
+        padding: .8rem;
+        .col-md-9 {
+          padding: .6rem;
+          .maker-mobile-card {
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .page-create-project-why {
+    h2 {
+      padding: 0;
+    }
+    p {
+      padding: 0;
+    }
+    .your-story-guide {
+      .content {
+        width: 100% !important;
+      }
+    }
+    .guideline {
+      padding: .6rem;
+      .content {
+        width: 100% !important;
+      }
+    }
+    .content {
+      width: 100% !important;
+    }
+    .question-mark {
+      i {
+        display: none;
+      }
+    }
+  }
+}
