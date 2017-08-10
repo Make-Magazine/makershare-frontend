@@ -2,9 +2,13 @@
   <a class="report" *ngIf="!isReported && EntityType=='user'" (click)="open(content)">Report this user</a>
   <a class="report" *ngIf="!isReported && typeOfNode=='orgs'" (click)="open(content)">Report this organization</a>
   <a class="report" *ngIf="!isReported && typeOfNode=='project'" (click)="open(content)">Report this project</a>
-  <p *ngIf="isReported && EntityType=='user'"> user has been reported </p>
+  <a class="report" *ngIf="!isReported && EntityType=='comment'" (click)="onSubmit($event)">Report this comment</a>
+
+  <p *ngIf="isReported && EntityType=='user'"> User has been reported </p>
   <p *ngIf="isReported && typeOfNode=='orgs'"> Organization has been reported </p>
   <p *ngIf="isReported  && typeOfNode=='project'"> Project has been reported </p>
+  <p *ngIf="isReported && EntityType=='comment'"> Comment has been reported </p>
+
 </div>
 <ng-template id="model" #content let-c="close" let-d="dismiss">
   <div class="modal-report">
@@ -18,8 +22,7 @@
         <div class="col-md-12">
           <form class="row" [formGroup]="reportForm">
             <div class="form-group">
-              <select class="form-control" #item (change)="updateSelectedReason($event)"  formControlName="field_reason_reporting">
-              <!-- <select class="form-control" #item (change)="updateSelectedReason($event)" *ngIf="type=='user'" formControlName="field_reason_reporting_user"> -->
+              <select class="form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
                   <option  value="none" selected disabled>Select a reason</option> 
                   <option *ngIf="typeOfNode=='project'"  value="not_safe">Not safe for work</option>
                   <option *ngIf="typeOfNode=='project'" value="hate_language">Uses hate language</option>
@@ -30,10 +33,8 @@
                   <option *ngIf="EntityType=='user'" value="safe">This profile Isn't safe for work</option>
                   <option value="other">Other</option>  
             </select>
-            <!-- </select *ngIf="type=='user'"> -->
             </div>
             <div class="form-group col-md-12 form-textarea">
-              <!-- <textarea *ngIf="type=='node'" class="w-100 p-2" placeholder="Explain the problem in more details." cols="50" rows="6" formControlName="field_other_data"></textarea> -->
               <textarea class="w-100 p-2" placeholder="Explain the problem in more details." cols="50" rows="6" formControlName="field_explain"></textarea>
               <button class="" type="submit" [disabled]="!reportForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">
                   <i class="lnr lnr-chevron-right" aria-hidden="true"></i>

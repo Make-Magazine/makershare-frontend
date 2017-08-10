@@ -34,7 +34,7 @@ export class ReportComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (this.checkUserLogin && this.userId) {
-        this.flagService.isFlagged(this.EntityId, this.userId, 'report_node').subscribe(data => {
+        this.flagService.isFlagged(this.EntityId, this.userId, 'report_' + this.EntityType).subscribe(data => {
           this.isReported = data[0];
         });
       }
