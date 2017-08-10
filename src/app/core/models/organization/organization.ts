@@ -16,7 +16,7 @@ export class Organization extends NodeEntity {
   // field_social_accounts?;
   field_website_blog?: FieldText;
   // field_orgs_address?;
-  // field_orgs_projects?;
+  field_orgs_projects?: Array<number>;
   field_orgs_phone?: FieldText;
   field_number_of_employees?: FieldNumber;
   field_founder_name?: FieldText;
@@ -45,6 +45,7 @@ export class Organization extends NodeEntity {
     this.field_number_of_employees = this.fieldsFactory.number();
     this.field_founder_name = this.fieldsFactory.text(null);
     this.field_type_of_business = this.fieldsFactory.text(null);
+    this.field_orgs_projects = this.fieldsFactory.array();
   }
 
   getField(fieldName: string, index?: number): any {
