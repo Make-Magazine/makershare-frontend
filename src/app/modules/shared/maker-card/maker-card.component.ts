@@ -48,7 +48,7 @@ export class MakerCardComponent implements OnInit {
     this.viewService
       .getView('maker_card_data', [['uid', this.uid]])
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.card = data[0];
         // console.log(this.card)
       });
