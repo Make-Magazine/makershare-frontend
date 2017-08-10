@@ -29,6 +29,10 @@ export class FieldsFactory {
     return this.addLanguage(new FieldLongText(format));
   }
 
+  array(): any {
+    return this.addLanguage([]);
+  }
+
   private addLanguage(field: any): DrupalCustomLanguageField {
     return new DrupalCustomLanguageField(field);
   }

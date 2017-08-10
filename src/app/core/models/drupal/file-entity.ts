@@ -1,4 +1,4 @@
-import { DrupalCustomField } from './custom-field';
+import { DrupalCustomField } from './fields/custom-field';
 
 export class FileEntity extends DrupalCustomField{
 
@@ -13,6 +13,7 @@ export class FileEntity extends DrupalCustomField{
   uri_full?: URL;
   uid?: number;
   filepath?: string;
+  url?: string;
 
   constructor(){
     super();
