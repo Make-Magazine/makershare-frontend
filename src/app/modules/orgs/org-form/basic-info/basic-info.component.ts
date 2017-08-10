@@ -12,6 +12,7 @@ export class BasicInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.organizationForm);
   }
 
 }
