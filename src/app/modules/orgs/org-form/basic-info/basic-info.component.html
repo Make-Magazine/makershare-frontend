@@ -1,6 +1,92 @@
 <div [formGroup]="organizationForm">
+
   <div>
-    <label>Project Name</label>
+    <label>Organization Type</label>
+    <input type="checkbox" name="field_orgs_type" value="non-profit" [checked]= "organizationForm.value.field_orgs_type === 'non-profit'" (click)="updateType($event.target.value)">non-profit
+    <input type="checkbox" name="field_orgs_type" value="startup" [checked]= "organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
+  </div>
+
+  <div>
+    <label>Organization Name</label>
     <input type="text" formControlName="title" maxlength="50">
   </div>
+
+  <div>
+    <div>
+      <label>Logo</label>
+      <p>logo must work at small size (20 x 20)</p>
+    </div>
+    <div>
+      <a (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose</a>
+      <div>
+        <img *ngIf="organizationForm.value.field_orgs_logo.file" [src]="organizationForm.value.field_orgs_logo.file">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <label>Cover Photo</label>
+      <p>For the top of the profile page (at least 300 x 2000)</p>
+    </div>
+    <div>
+      <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</a>
+      <div>
+        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file" [src]="organizationForm.value.field_orgs_cover_photo.file">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label>FIELD SOCIAL "WIP"</label>
+    
+  </div>
+
+  <div>
+    <label>Website</label>
+    <input type="text" formControlName="field_orgs_contact">
+  </div>
+
 </div>
+
+<!--Cover image modal-->
+<ng-template #imagemodal let-c="close" let-d="dismiss">
+  <div class="upload-image-modal">
+    <div class="modal-header">
+      <button type="button" class="close ml-auto" #closebtn aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div>
+      <ul>
+        <li (click)="imageModalTab = 'upload'">
+          <a>Upload</a>
+        </li>
+        <li (click)="imageModalTab = 'filemanager'">
+          <a>Your Photos</a>
+        </li>
+      </ul>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+          <div>
+            <img *ngIf="!imageData.original" src="./assets/images/icons/Photos Icon.png">
+            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+            <a (click)="file.click()">
+              <span *ngIf="!imageData.original">Choose</span>
+              <span *ngIf="imageData.original">Choose a Different Photo</span>
+              <input [hidden]="true" type="file" #file (change)="uploadBtn($event.target.files[0], imagecropper)">
+            </a>
+          </div>
+        </div>
+        <app-file-browser *ngIf="imageModalTab == 'filemanager'" (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="imageModalTab == 'upload'" (click)="imageUpdated(closebtn)">Save
+      </button>
+    </div>
+  </div>
+</ng-template>
