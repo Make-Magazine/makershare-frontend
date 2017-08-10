@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-basic-info',
+  selector: 'app-org-form-basic-info',
   templateUrl: './basic-info.component.html'
 })
 export class BasicInfoComponent implements OnInit {
+
+  @Input() organizationForm: FormGroup;
 
   constructor() { }
 
