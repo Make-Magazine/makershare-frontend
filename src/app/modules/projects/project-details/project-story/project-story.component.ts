@@ -34,7 +34,6 @@ export class ProjectStoryComponent implements OnInit {
   story = false;
   storyHTML;
   ngOnInit() {
-    console.log(this.project)
     this.checkLoggedUser();
     if (this.project.field_story) {
       this.story = true;
