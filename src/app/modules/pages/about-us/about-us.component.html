@@ -1,7 +1,7 @@
 <div class="page-explore">
   <div class="container">
     <header class="explore-header">
-      <div class="container">
+      <div class="container" style="margin-top: 4rem;">
         <h3>The Maker Share Team</h3>
         <p style="width: 59%; margin:auto;">Our Community Managers curate Makers and Projects and are your contacts for questions and concerns about the site. Maker Share is a project from Make: and Intel.</p>
       </div>
@@ -10,14 +10,14 @@
     <!-- community managers -->
     <h2 class="sub-header red">COMMUNITY MANAGERS</h2>
     <div class="projects-grid row" *ngIf="communityManagers">
-      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of communityManagers" [uid]="maker.uid"></app-maker-card>
+      <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of communityManagers" [uid]="maker.uid" [state]="'tall'" [showFlag]="false"></app-maker-card>
     </div>
 
     <!-- make: + intel -->
     <div style="margin-top: 4rem;">
       <h2 class="sub-header red">MAKE: + INTEL</h2>
       <div class="projects-grid row" *ngIf="makeIntel">
-        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makeIntel" [uid]="maker.uid"></app-maker-card>
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of makeIntel" [uid]="maker.uid" [state]="'tall'" [showFlag]="false"></app-maker-card>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
     <div style="margin-top: 4rem;">
       <h2 class="sub-header red">PARTNERS</h2>
       <div class="projects-grid row" *ngIf="partners">
-        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of partners" [uid]="maker.uid"></app-maker-card>
+        <app-maker-card class="col-md-6 col-lg-4 pull-left" *ngFor="let maker of partners" [uid]="maker.uid" [state]="'tall'" [showFlag]="false"></app-maker-card>
       </div>
     </div>
   </div>
