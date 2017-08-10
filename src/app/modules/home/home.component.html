@@ -16,8 +16,8 @@
           }">-->
 
       <div *ngFor="let item of homeCards;let i=index;"
-           class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}}">
-        <div class="card-wrapper">
+           class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}} card-wrapper">
+        <!-- <div class="card-wrapper"> -->
           <!-- Mission -->
           <app-mission-card *ngIf="item.type == 'challenge'"
                             [challengeNid]="item.entity_id"
@@ -50,7 +50,7 @@
                           (Featured)="UnFlagged(i)"
                           [workshopNid]="item.entity_id"
                           [front]=true></app-learn-card>-->
-        </div>
+        <!-- </div> -->
       </div>
     </div>
     <div *ngIf="!homeCards || homeCards.length == 0">

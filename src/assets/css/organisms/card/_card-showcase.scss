@@ -42,6 +42,8 @@
 
     .social-stat-group {
       width: calc(66% - 2 * 1.6rem);
+      position: absolute;
+      bottom: 0;
       .stats-list {
         div {
           float: left;
