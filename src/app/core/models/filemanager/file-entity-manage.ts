@@ -1,7 +1,6 @@
 import { FileEntity, NodeEntity } from '../drupal';
 
 export interface FileEntityManage extends FileEntity {
-  url: URL;
   usage: FileUsage;
   sourceType: string;
 }
