@@ -3,8 +3,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Observable } from 'rxjs/Observable';
 import {
-  date_time,
-  field_date,
+  DateTime,
+  FieldDateTime,
   FieldCollectionItemMaterial,
   FieldCollectionItemMember,
   FieldCollectionItemPart,
@@ -336,12 +336,12 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
           day = '0' + day;
         }
 
-        const datetime = new date_time();
+        const datetime = new DateTime();
 
         datetime.date = month + '/' + day + '/' + year;
         datetime.time = hours + ':' + minutes + ':00';
 
-        this.project.field_creation_date = { und: [new field_date(datetime)] };
+        this.project.field_creation_date = { und: [new FieldDateTime(datetime)] };
       }
     }
     const subtasks = [];

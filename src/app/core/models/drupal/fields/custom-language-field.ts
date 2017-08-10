@@ -36,8 +36,16 @@ export class DrupalCustomLanguageField {
   }
 
   updateField(value: any, index?: number) {
-    const field = this[Singleton.Settings.language];
-    if(field instanceof Array) {
+    const self = this;
+    const field = self[Singleton.Settings.language];
+    if(value instanceof DrupalCustomField && field instanceof Array) {
+      if(index) {
+        field[index] = value;
+      } else {
+        field[0] = value;
+      }
+      return;
+    }else if (field instanceof Array && field[0] instanceof DrupalCustomField) {
       if(index) {
         field[index].updateValue(value);
       } else {
@@ -45,6 +53,6 @@ export class DrupalCustomLanguageField {
       }
       return;
     }
-    field.updateValue(value);
+    this[Singleton.Settings.language] = value;
   }
 }
