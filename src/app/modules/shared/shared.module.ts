@@ -67,6 +67,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { ViewsComponent } from './views/views.component';
 import { ReportComponent } from './report/report.component';
+import { FollowOrgsComponent } from './follow-orgs/follow-orgs.component';
 
 
 @NgModule({
@@ -130,6 +131,7 @@ import { ReportComponent } from './report/report.component';
     AccessRestrictedComponent,
     // pipes
     ReverseArray,
+    FollowOrgsComponent,
 
   ],
   exports: [
@@ -177,6 +179,7 @@ import { ReportComponent } from './report/report.component';
     FeatureComponent,
 
     ReportComponent,
+    FollowOrgsComponent,
   ],
 })
 export class SharedModule {
