@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CommentService, ViewService } from '../../../../core/d7services';
+import { CommentService, ViewService, UserService } from '../../../../core/d7services';
 import { IComment } from '../../../../core/models/mission/comment';
 
 @Component({
@@ -16,9 +16,12 @@ export class ProjectStoryComponent implements OnInit {
     private commentService: CommentService,
     private fb: FormBuilder,
     private viewService: ViewService,
-    private sanitizer:DomSanitizer,
+    private sanitizer: DomSanitizer,
+    private userService: UserService,
+
   ) { }
   currentUser;
+  CurrentLoggedUserId: number;
   CommenterNid;
   comments;
   collabs = [];
@@ -31,7 +34,9 @@ export class ProjectStoryComponent implements OnInit {
   story = false;
   storyHTML;
   ngOnInit() {
-    if(this.project.field_story){
+    console.log(this.project)
+    this.checkLoggedUser();
+    if (this.project.field_story) {
       this.story = true;
       this.storyHTML = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
     }
@@ -41,21 +46,21 @@ export class ProjectStoryComponent implements OnInit {
     this.getComments();
     this.buildForm();
     // var source = Observable.create(observer => {
-      if(this.project.field_collaborators){
-        let i=0;
-          for (let maker of this.project.field_collaborators){
-          // observer.next(
-            this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
-              // console.log(data)
-              this.collabs[i] = {};
-              this.collabs[i] = data[0];
-            })
-            // )
-            i++
-        };
-      }
-      
-      // observer.onCompleted();
+    if (this.project.field_collaborators) {
+      let i = 0;
+      for (let maker of this.project.field_collaborators) {
+        // observer.next(
+        this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
+          // console.log(data)
+          this.collabs[i] = {};
+          this.collabs[i] = data[0];
+        })
+        // )
+        i++
+      };
+    }
+
+    // observer.onCompleted();
 
     // }
     // );
@@ -66,7 +71,13 @@ export class ProjectStoryComponent implements OnInit {
     // () => console.log('onCompleted'));
 
   }//End ngOnInit
-
+  checkLoggedUser() {
+    this.userService.getStatus().subscribe(data => {
+      if (data.user.uid > 0) {
+        this.CurrentLoggedUserId = data.user.uid;
+      }
+    });
+  }
   getComments() {
     this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
       // console.log(data);
@@ -94,12 +105,12 @@ export class ProjectStoryComponent implements OnInit {
         // this.comments.push(this.commentData)
         let tempComm = {
           subject: this.commentData.subject,
-          comment: this.commentData.comment_body.und[0].value ,
-          update_date : new Date(),
-          first_name : this.currentUser.first_name,
-          last_name : this.currentUser.last_name,
-          nickname : this.currentUser.nickname,
-          photo : this.currentUser.photo,
+          comment: this.commentData.comment_body.und[0].value,
+          update_date: new Date(),
+          first_name: this.currentUser.first_name,
+          last_name: this.currentUser.last_name,
+          nickname: this.currentUser.nickname,
+          photo: this.currentUser.photo,
         }
         // console.log(tempComm)
         // console.log(this.commentData)

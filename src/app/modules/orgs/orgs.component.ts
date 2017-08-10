@@ -34,7 +34,7 @@ export class OrgsComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.cheakLoggedUser();
+    this.checkLoggedUser();
     this.path = this.route.snapshot.params['path'];
     if (this.path) {
       this.nodeService.getIdFromUrl(this.path, 'company_profile').subscribe(id => {
@@ -54,7 +54,7 @@ export class OrgsComponent implements OnInit {
       })
     }
   }
-  cheakLoggedUser() {
+  checkLoggedUser() {
     this.userService.getStatus().subscribe(data => {
       if (data.user.uid > 0) {
         this.CurrentLoggedUserId = data.user.uid;
