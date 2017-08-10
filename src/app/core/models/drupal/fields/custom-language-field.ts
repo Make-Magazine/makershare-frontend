@@ -14,13 +14,14 @@ export class DrupalCustomLanguageField {
   getField(index?: number): any {
     const field = this[Singleton.Settings.language];
     if(field instanceof Array){
-      if(!index) {
+      if(!index && field[0]) {
         if(field.length > 1) {
-          return field
+          return field;
         }
         return field[0];
+      }else if(index) {
+        return field[index];
       }
-      return field[index];
     }
     return field;
   }
