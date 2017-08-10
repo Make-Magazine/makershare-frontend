@@ -12,6 +12,7 @@ export class OrgFormComponent implements OnInit {
   // Current active form tab, the default is Basic Info
   currentFormTab:string = 'Basic Info';
   organizationProxy = new EntityProxy(new Organization());
+  organizationReady:boolean = false;
 
   organizationForm:FormGroup;
   
@@ -23,6 +24,8 @@ export class OrgFormComponent implements OnInit {
 
   ngOnInit() {
     this.fileService;
+    this.nodeService;
+
     this.organizationProxy.title = 'test change0';
     this.organizationProxy.body.value = 'new value';
     this.organizationProxy.field_breif_info.value = 'test';
@@ -31,19 +34,12 @@ export class OrgFormComponent implements OnInit {
     this.organizationProxy.field_orgs_contact.email = 'example@bla.com';
     this.organizationProxy.field_minimum_number_of_follower.value = 4987;
     this.buildForm();
-  }
-
-  // Fires when clicking on publish button
-  publishButtonClick() {
-    console.log(this.organizationProxy);
-    this.nodeService.createNode(this.organizationProxy.entity).subscribe(data => {
-      console.log(data);
-    });
+    this.organizationReady = true;
   }
 
   buildForm() {
     this.organizationForm = this.formBuilder.group({
-      title: [this.organizationProxy.title, [Validators.required]],
+      title: [this.organizationProxy.title, [Validators.required, Validators.maxLength(50)]],
       field_orgs_type: [this.organizationProxy.field_orgs_type, [Validators.required]],
       field_orgs_logo: [this.organizationProxy.field_orgs_logo, [Validators.required]],
       field_orgs_cover_photo: [this.organizationProxy.field_orgs_cover_photo, [Validators.required]],
@@ -61,5 +57,14 @@ export class OrgFormComponent implements OnInit {
       field_maker_memberships: this.formBuilder.array([]),
       field_orgs_projects: this.formBuilder.array([]),
     });
+  }
+
+  // Fires when clicking on publish button
+  publishButtonClick() {
+    console.log(this.organizationForm.value);
+    // console.log(this.organizationProxy);
+    // this.nodeService.createNode(this.organizationProxy.entity).subscribe(data => {
+    //   console.log(data);
+    // });
   }
 }
