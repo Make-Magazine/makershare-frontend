@@ -1,3 +1,21 @@
-<p>
-  about-us works!
-</p>
+<div class="region region-content col-md-8" [formGroup]="organizationForm">
+
+    <div class="form-group required">
+      <label for="brief-intro">Brief Intro</label>
+      <textarea maxlength="250" class="form-control"
+                rows="5" id="brief-intro" formControlName='field_breif_info'
+                placeholder="this breif description will be shown in the directory and in Search results"></textarea>
+      <span class="words-count">{{organizationForm.value.field_breif_info.length}}\250 chars</span>
+    </div>
+
+
+    <div class="form-group required">
+      <label for="body">Company Description</label>
+      <textarea maxlength="250" class="form-control"
+                rows="5" id="body" formControlName='body'
+                placeholder="Describe your company mission and what you do"></textarea>
+      <span class="words-count">{{organizationForm.value.body.length}}\250 chars</span>
+    </div>
+
+
+</div>
