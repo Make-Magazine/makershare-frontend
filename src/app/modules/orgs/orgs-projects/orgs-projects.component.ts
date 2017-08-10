@@ -33,7 +33,7 @@ export class OrgsProjectsComponent implements OnInit {
       this.nodeService.getIdFromUrl(this.path, 'company_profile').subscribe(id => {
         this.nid = id[0]
         if (this.nid) {
-          this.getProjects(false);
+          this.getProjects(false); 
           this.orgsProjectsCount();
         }
       })
@@ -41,9 +41,6 @@ export class OrgsProjectsComponent implements OnInit {
   }
 
   getProjects(more?: boolean) {
-    if (this.pages == 0) {
-      this.projects = [];
-    }
     if (more) this.pages++;
     this.viewServcie.getView('orgs-projects', [['page', this.pages], ['nid', this.nid]]).subscribe(data => {
       this.projects = this.projects.concat(data);
