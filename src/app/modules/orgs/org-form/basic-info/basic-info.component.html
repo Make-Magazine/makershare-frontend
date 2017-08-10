@@ -128,7 +128,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button *ngIf="imageModalTab == 'upload'" (click)="imageUpdated(closebtn)">Save
+      <button *ngIf="imageModalTab == 'upload'" (click)="imageUpdated(closebtn, file.files[0])">Save
       </button>
     </div>
   </div>
