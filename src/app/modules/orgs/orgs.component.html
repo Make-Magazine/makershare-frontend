@@ -150,13 +150,14 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div *ngIf="followers && company.minimum_followers < followersCount">
+        <div *ngIf="followers && company.minimum_followers <= followersCount">
           <p>Followers</p>
           <div *ngFor="let maker of followers;" class="d-inline">
             <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
           </div>
           <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
         </div>
+        <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
         <a *ngIf="CurrentLoggedUserId != company.admin">
           <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
         </a>
