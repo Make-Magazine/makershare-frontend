@@ -53,3 +53,4 @@ Thumbs.db
 /src/*.ngfactory.ts
 /src/*.ngsummary.ts
 /.vscode/
+/src/app/core/models/application/settings.ts
