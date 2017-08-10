@@ -50,7 +50,7 @@
 
   &.disabled {
     &:hover, &:active {
-      background-color: $medium-grey; // no hover for disabled
+      //background-color: $medium-grey; // no hover for disabled
     }
   }
 
@@ -213,6 +213,95 @@ a:not([href]):not([tabindex]).btn-white {
   &:hover, &:focus, &:active {
     color: $highlight-bright-blue;
     border: .1rem solid $highlight-bright-blue*1.3;
+  }
+}
+
+// Grey Button
+.btn-grey, a:not([href]):not([tabindex]).btn-grey {
+  color: $dark-grey;
+  background-color: $medium-light-grey;
+  border-color: $medium-light-grey*0.9;
+  border-radius: 0;
+  font-size: 1.92rem;
+  padding: 1rem 1.5rem;
+  margin-left: .5rem;
+  &:focus, &:active, &:hover {
+    color: $white;
+    background-color: $dark-grey*0.9;
+    border-color: $dark-grey*0.8;
+  }
+  &.disabled {
+    color: $medium-light-grey;
+    border: .05rem solid $medium-light-grey;
+    background-color: $white;
+  }
+}
+
+.btn-load-more,
+a:not([href]):not([tabindex]).btn-load-more {
+  background-color: $lighter-grey;
+  border: .1rem solid $medium-grey;
+  color: $dark-grey;
+  margin-bottom: 3rem;
+  font-size: 1.6rem;
+}
+
+.btn-tabs,
+a:not([href]):not([tabindex]).btn-tabs {
+  background-color: white;
+  border: .1rem solid $lighter-grey;
+  &:active {
+    background-color: $lighter-grey;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Tabs switching blue bottom border button
+.btn-tab, a:not([href]):not([tabindex]).btn-tab {
+  border-radius: 0;
+  font-size: 1.92rem;
+  padding: .9rem 3rem 2.5rem 3rem;
+  height: 3.5rem;
+  color: $light-grey;
+  background-color: inherit;
+  &:focus {
+    color: $dark-grey;
+  }
+  &:active, &:hover, &.active {
+    cursor: pointer;
+    color: $dark-grey;
+    border-bottom: .5rem solid $highlight-bright-blue;
+  }
+}
+
+.btn-tabs.active,
+a:not([href]):not([tabindex]).btn-tabs.active {
+  background-color: $lighter-grey;
+}
+
+// Prev and Next button
+.btn-advance, a:not([href]):not([tabindex]).btn-advance {
+  color: $dark-grey;
+  background-color: transparent;
+  border-color: $medium-light-grey*0.9;
+  border-radius: 0;
+  font-size: 3.84rem;
+  border: .05rem solid $dark-grey;
+  width: 5rem;
+  height: 5rem;
+  margin-left: .5rem;
+  &:hover {
+    background-color: $white;
+    border-color: $button-dark-grey*0.8;
+  }
+  &.disabled {
+    opacity: .5;
+  }
+  i {
+    text-align: center;
+    margin-left: -.7rem;
   }
 }
 

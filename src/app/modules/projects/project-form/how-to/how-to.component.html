@@ -124,12 +124,14 @@
       <div class="row">
         <div *ngIf="Difficulties" class="form-group difficulties col-md-6">
           <label for="">Difficulty</label>
-          <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_difficulty.value == '_none'"></i>
-          <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="shadowed form-control col-lg-8"
-            title="Select one" formControlName='field_difficulty'>
-            <option value="_none" disabled>Choose one</option>
-            <option *ngFor="let Difficulty of Difficulties; let i=index" value="{{Difficulty.tid}}" >{{Difficulty.name}}</option>
-          </select>
+          <div class="dropdown-group -no-margin">
+            <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_difficulty.value == '_none'"></i>
+            <select id="difficulty" *ngIf="HowToForm.controls.field_difficulty.value == '_none'" class="shadowed form-control col-lg-8"
+              title="Select one" formControlName='field_difficulty'>
+              <option value="_none" disabled>Choose one</option>
+              <option *ngFor="let Difficulty of Difficulties; let i=index" value="{{Difficulty.tid}}" >{{Difficulty.name}}</option>
+            </select>
+          </div>
           <div *ngIf="HowToForm.controls.field_difficulty.value != '_none'">
             <div *ngFor="let Difficulty of Difficulties; let i=index">
               <div class="how-to-select d-flex flex-row" *ngIf="Difficulty.tid == HowToForm.controls.field_difficulty.value">
@@ -141,12 +143,14 @@
         </div>
         <div *ngIf="Durations" class="form-group durations col-md-6">
           <label for="">Duration</label>
-          <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_duration.value == '_none'"></i>
-          <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="shadowed form-control col-lg-8" title="Select one"
-            formControlName='field_duration'>
-            <option value="_none" disabled>Choose one</option>
-            <option *ngFor="let Duration of Durations; let i=index" value="{{Duration.tid}}" >{{Duration.name}}</option>
-          </select>
+          <div class="dropdown-group -no-margin">
+            <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="HowToForm.controls.field_duration.value == '_none'"></i>
+            <select id="duration" *ngIf="HowToForm.controls.field_duration.value == '_none'" class="shadowed form-control col-lg-8" title="Select one"
+              formControlName='field_duration'>
+              <option value="_none" disabled>Choose one</option>
+              <option *ngFor="let Duration of Durations; let i=index" value="{{Duration.tid}}" >{{Duration.name}}</option>
+            </select>
+          </div>
           <div *ngIf="HowToForm.controls.field_duration.value != '_none'">
             <div *ngFor="let Duration of Durations; let i=index">
               <div class="how-to-select d-flex flex-row" *ngIf="Duration.tid == HowToForm.controls.field_duration.value">
@@ -204,7 +208,7 @@
 </div>
 <aside class="col-md-4">
   <div class="how-to-guide hidden-sm-down">
-    <h2 class="col-12">Helpful Hints</h2>
+    <h2 class="-secondary col-12">Helpful Hints</h2>
     <p class="col-12">This tab isn't required to publish your project.</p>
     <br>
     <div class="guideline">

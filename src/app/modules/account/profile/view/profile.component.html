@@ -1043,7 +1043,7 @@
               <div class="form-subgroup container ProfileInfo.maker_interests">
                 <div class="row">
                   <div class="col-sm-4">
-                    <div class="dropdown-group -no-margin">
+                    <div class="dropdown-group -no-margin -full">
                       <i class="dropdownIcon lnr lnr-chevron-down"></i>
                       <select class="shadowed" #parentinterest
                               (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
@@ -1055,7 +1055,7 @@
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="dropdown-group -no-margin">
+                    <div class="dropdown-group -no-margin -full">
                       <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest"></i>
                       <select class="shadowed" *ngIf="SelectedParentInterest"
                               (change)="SelectedChildInterest = $event.target.value;SetInterest(parentinterest)">

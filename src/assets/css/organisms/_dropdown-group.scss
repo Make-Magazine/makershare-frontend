@@ -2,7 +2,10 @@
   position: relative;
   display: inline-block;
   margin: 0 1.5rem;
-  width: 100%;
+
+  &.-full {
+    width: 100%;
+  }
 
   &.-no-margin {
     margin: 0;
@@ -20,6 +23,7 @@
   select.shadowed,
   .shadowed button {
     width: 100%;
+    height: auto !important;
     background: $white;
     @include boxShadow(0, 0, .5rem, rgba(0, 0, 0, 0.2));
     font-family: $font-messina-regular;
